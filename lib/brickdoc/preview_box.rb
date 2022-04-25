@@ -18,13 +18,15 @@ module Brickdoc
     def self.preview(url)
       response = @connection.get('/api/iframely', { url: url })
       thumbnail = response.body.dig('links', 'thumbnail') || []
+      icon = response.body.dig('links', 'icon') || []
       medium = response.body.dig('meta', 'medium')
 
       if response.status == 200
         data = {
           title: response.body.dig('meta', 'title') || url,
           description: response.body.dig('meta', 'description'),
-          cover: thumbnail[0]&.dig('href') || '',
+          cover: thumbnail[0]&.dig('href') || icon.select { |i| i["rel"]&.include?('apple-touch-icon') }[0]&.dig('href') || '',
+          icon: icon.select { |i| i["rel"]&.include?('shortcut') }[0]&.dig('href') || '',
           type: "website"
         }
 

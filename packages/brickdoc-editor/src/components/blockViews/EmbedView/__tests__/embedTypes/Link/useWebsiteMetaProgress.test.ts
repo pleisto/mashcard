@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { act } from 'react-dom/test-utils'
-import { useWebsiteMetaProgress } from '../types/useWebsiteMetaProgress'
+import { useWebsiteMetaProgress } from '../../../embedTypes/Link/useWebsiteMetaProgress'
 
 jest.useFakeTimers()
 

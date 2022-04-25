@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { mockEditor } from '../../../common/tests/editor'
+import { mockEditor } from '../../../../test'
 import { ToolbarItemOption, ToolbarSubMenuOption } from '../../../ui'
 import { UseActionOptionsProps, useBasicActionOptions } from '../useBasicActionOptions'
 

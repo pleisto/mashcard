@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { UserAttributes, UserOptions } from '../../../../extensions'
-import { mockBlockViewProps } from '../../../common/tests'
+import { mockBlockViewProps } from '../../../../test'
 import { UserView } from '../UserView'
 
 describe('UserView', () => {

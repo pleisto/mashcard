@@ -6,7 +6,7 @@ import { Dashboard, ImportSourceOption, UploadProgress, UploadResultData } from 
 import { linkStorage, sizeFormat } from '../../../../../helpers/file'
 import { EditorContext } from '../../../../../context/EditorContext'
 import { useExternalProps } from '../../../../../hooks/useExternalProps'
-import { usePopoverVisible } from '../../../EmbedView/types/usePopoverVisible'
+import { usePopoverVisible } from './usePopoverVisible'
 import { ImageViewProps } from '../../../../../extensions/blocks/image/meta'
 
 export interface UploaderModeProps {

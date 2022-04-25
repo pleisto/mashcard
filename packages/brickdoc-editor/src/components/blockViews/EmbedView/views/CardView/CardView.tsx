@@ -10,6 +10,7 @@ import { BlockContainer } from '../../../BlockContainer'
 import { Spin, styled } from '@brickdoc/design-system'
 import { useWebViewer } from './useWebViewer'
 import { EmbedViewProps } from '../../../../../extensions/blocks/embed/meta'
+import { EmbedBlockType } from '../../EmbedView'
 
 const containerHeight = 472
 
@@ -27,7 +28,8 @@ const PreviewContainer = styled('div', {
   }
 })
 
-export interface PreviewModeProps extends Omit<UseAttachmentMethodsProps, 'webViewer'> {
+export interface CardViewProps extends Omit<UseAttachmentMethodsProps, 'webViewer'> {
+  blockType: EmbedBlockType
   deleteNode: EmbedViewProps['deleteNode']
   getPos: EmbedViewProps['getPos']
   node: EmbedViewProps['node']
@@ -35,7 +37,7 @@ export interface PreviewModeProps extends Omit<UseAttachmentMethodsProps, 'webVi
   fileType: FileType
 }
 
-export const PreviewMode: FC<PreviewModeProps> = ({
+export const CardView: FC<CardViewProps> = ({
   deleteNode,
   getPos,
   fileName,
@@ -56,7 +58,7 @@ export const PreviewMode: FC<PreviewModeProps> = ({
     })
   })
 
-  const [{ onDownload, onToLinkMode, onFullScreen, onToPreviewMode }] = useAttachmentMethods({
+  const [{ onDownload, onFullScreen }] = useAttachmentMethods({
     webViewer: viewerInstance,
     ...attachmentMethodsProps
   })
@@ -64,8 +66,6 @@ export const PreviewMode: FC<PreviewModeProps> = ({
   const [actionOptions] = useActionOptions({
     mode: 'preview',
     onDownload,
-    onToLinkMode,
-    onToPreviewMode,
     onFullScreen
   })
 

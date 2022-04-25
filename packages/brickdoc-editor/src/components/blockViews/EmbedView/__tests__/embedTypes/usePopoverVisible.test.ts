@@ -1,7 +1,7 @@
 import { BlockJustCreated, BrickdocEventBus } from '@brickdoc/schema'
 import { renderHook } from '@testing-library/react-hooks'
 import { act } from 'react-dom/test-utils'
-import { usePopoverVisible } from '../types/usePopoverVisible'
+import { usePopoverVisible } from '../../embedTypes/usePopoverVisible'
 
 describe('EmbedView > usePopoverVisible', () => {
   it('responds for BlockJustCreated event correctly', () => {

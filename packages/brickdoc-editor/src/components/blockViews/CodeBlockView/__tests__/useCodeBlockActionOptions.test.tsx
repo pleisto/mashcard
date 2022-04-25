@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { renderHook } from '@testing-library/react-hooks'
 import { CodeBlockAttributes, CodeBlockOptions } from '../../../../extensions'
-import { mockBlockViewProps } from '../../../common/tests'
+import { mockBlockViewProps } from '../../../../test'
 import { ToolbarGroupOption, ToolbarItemOption, ToolbarSubMenuOption } from '../../../ui'
 import { BlockActionsMenu, BlockActionsMenuProps } from '../../BlockActions/BlockActionsMenu'
 import { useOptions } from '../useOptions'

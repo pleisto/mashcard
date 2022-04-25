@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { mockEditor } from '../../../common/tests/editor'
+import { mockEditor } from '../../../../test/editor'
 import { BubbleMenu, shouldShow } from '../BubbleMenu'
 import * as helpers from '../../../../helpers/selection'
 

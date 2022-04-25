@@ -1,6 +1,6 @@
 import { Menu } from '@brickdoc/design-system'
 import { render, screen, fireEvent } from '@testing-library/react'
-import { mockEditor } from '../../../common/tests/editor'
+import { mockEditor } from '../../../../test/editor'
 import { PageGroup, PageGroupProps } from '../PageGroup'
 
 describe('MentionMenuPageGroup', () => {

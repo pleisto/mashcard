@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { renderHook } from '@testing-library/react-hooks'
 import { ParagraphAttributes, ParagraphOptions } from '../../../../extensions'
-import { mockBlockViewProps } from '../../../common/tests'
+import { mockBlockViewProps } from '../../../../test'
 import { usePlaceholder } from '../usePlaceholder'
 import * as editableHooks from '../../../../hooks/useDocumentEditable'
 

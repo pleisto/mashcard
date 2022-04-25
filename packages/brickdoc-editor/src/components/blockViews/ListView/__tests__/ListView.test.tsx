@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import { BulletList, OrderedList } from '../../../../extensions'
-import { mockBlockViewProps } from '../../../common/tests'
+import { mockBlockViewProps } from '../../../../test'
 import { ListView } from '../ListView'
 
 describe('ListView', () => {

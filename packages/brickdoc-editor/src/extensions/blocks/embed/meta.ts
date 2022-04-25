@@ -7,6 +7,8 @@ export const meta: ExtensionMeta = {
 }
 
 export interface EmbedOptions {}
+
+export type EmbedViewMode = 'link' | 'preview' | 'bookmark'
 export interface EmbedAttributes {
   embedMeta: {
     type: 'EmbedMeta'
@@ -16,9 +18,11 @@ export interface EmbedAttributes {
   link: {
     type: 'LINK'
     key?: string
-    title?: string
-    description?: string
-    cover?: string
+    title?: string | null
+    description?: string | null
+    cover?: string | null
+    icon?: string | null
+    mode?: EmbedViewMode
   }
   image: {
     type: 'IMAGE'
@@ -28,10 +32,10 @@ export interface EmbedAttributes {
   attachment: {
     name?: string
     key?: string
-    contentType?: string
+    contentType?: string | null
     type: 'ATTACHMENT'
     source?: 'EXTERNAL' | 'ORIGIN'
-    mode?: 'link' | 'preview' | undefined
+    mode?: EmbedViewMode
   }
 }
 

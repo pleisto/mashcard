@@ -226,6 +226,7 @@ export const queryChildrenBlocks = gql`
           cover
           description
           title
+          icon
         }
       }
     }

@@ -1,7 +1,7 @@
 import { BrowserRouter as Router } from 'react-router-dom'
 import { render, screen } from '@testing-library/react'
 import { PageLinkView } from '../PageLinkView'
-import { mockBlockViewProps } from '../../../common/tests'
+import { mockBlockViewProps } from '../../../../test'
 import { PageLinkAttributes, PageLinkOptions } from '../../../../extensions'
 
 describe('PageLinkView', () => {

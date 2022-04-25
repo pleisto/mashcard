@@ -1,4 +1,4 @@
-import { mockEditor } from '../../../../components/common/tests/editor'
+import { mockEditor } from '../../../../test'
 import { ExternalProps } from '../../../../context'
 import { filterMenuItemsByQuery } from '../filterMenuItemsByQuery'
 import { MentionCommandsOptions } from '../mentionCommands'

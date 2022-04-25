@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 import * as editorContextHooks from '../../../../hooks/useEditorContext'
-import { mockEditor } from '../../../common/tests/editor'
+import { mockEditor } from '../../../../test/editor'
 import { useCommentedNodes } from '../useCommentedNodes'
 import { meta as discussionMeta } from '../../../../extensions/marks/discussion/meta'
 import { act } from 'react-dom/test-utils'

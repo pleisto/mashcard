@@ -875,6 +875,25 @@ en-US:
         ini: INI
         properties: Properties
     embed_block:
+      view_types:
+        card:
+          name: card view
+        bookmark:
+          name: bookmark view
+        text:
+          name: text view
+      embed_types:
+        link:
+          label: Add a link to web or file.
+          description: You can add a link to web or file.
+          panel:
+            link_validate: Please input valid link first.
+            submit_error: Please make sure link is valid and then try again.
+            head: Embed
+            text:
+              placeholder: Text to display
+            link:
+              placeholder: Paste link
       types:
         gallery:
           title: Gallery
@@ -885,17 +904,6 @@ en-US:
         upload:
           label: You can upload anything locally.
           description: Upload image、PDF、Word、PPT、Excel and more.
-        link:
-          label: Add a link to web or file.
-          description: You can add a link to web or file.
-          panel:
-            link_validate: Please input valid link first.
-            submit_error: Please make sure link is valid and then try again.
-            head: Link
-            text:
-              placeholder: Text to display
-            link:
-              placeholder: Paste link
     pdf_section:
       hint: Embed a PDF
       deletion_confirm:

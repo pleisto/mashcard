@@ -1,41 +1,20 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { useAttachmentMethods } from '../modes/useAttachmentMethods'
+import { useAttachmentMethods } from '../views/useAttachmentMethods'
 
 describe('useAttachmentMethods', () => {
-  it('onToLinkMode works correctly', () => {
-    const fileUrl = 'file-url'
-    const updateAttachmentAttributes = jest.fn()
-    const { result } = renderHook(() => useAttachmentMethods({ fileUrl, updateAttachmentAttributes }))
-
-    const { onToLinkMode } = result.current[0]
-
-    onToLinkMode()
-
-    expect(updateAttachmentAttributes).toBeCalledWith({ mode: 'link' })
-  })
-
-  it('onToPreviewMode works correctly', () => {
-    const fileUrl = 'file-url'
-    const updateAttachmentAttributes = jest.fn()
-    const { result } = renderHook(() => useAttachmentMethods({ fileUrl, updateAttachmentAttributes }))
-
-    const { onToPreviewMode } = result.current[0]
-
-    onToPreviewMode()
-
-    expect(updateAttachmentAttributes).toBeCalledWith({ mode: 'preview' })
-  })
-
   it('onFullScreen works correctly', () => {
     const fileUrl = 'file-url'
-    const updateAttachmentAttributes = jest.fn()
+    const updateEmbedBlockAttributes = jest.fn()
+    const blockType = 'attachment'
     const webViewer: any = {
       UI: {
         toggleFullScreen: jest.fn()
       }
     }
 
-    const { result } = renderHook(() => useAttachmentMethods({ webViewer, fileUrl, updateAttachmentAttributes }))
+    const { result } = renderHook(() =>
+      useAttachmentMethods({ webViewer, fileUrl, blockType, updateEmbedBlockAttributes })
+    )
 
     const { onFullScreen } = result.current[0]
 
@@ -46,14 +25,17 @@ describe('useAttachmentMethods', () => {
 
   it('onDownload works correctly', () => {
     const fileUrl = 'file-url'
-    const updateAttachmentAttributes = jest.fn()
+    const updateEmbedBlockAttributes = jest.fn()
+    const blockType = 'attachment'
     const webViewer: any = {
       UI: {
         downloadPdf: jest.fn()
       }
     }
 
-    const { result } = renderHook(() => useAttachmentMethods({ webViewer, fileUrl, updateAttachmentAttributes }))
+    const { result } = renderHook(() =>
+      useAttachmentMethods({ webViewer, fileUrl, blockType, updateEmbedBlockAttributes })
+    )
 
     const { onDownload } = result.current[0]
 
@@ -64,9 +46,10 @@ describe('useAttachmentMethods', () => {
 
   it('onDownload works correctly without webViewer', () => {
     const fileUrl = 'file-url'
-    const updateAttachmentAttributes = jest.fn()
+    const updateEmbedBlockAttributes = jest.fn()
+    const blockType = 'attachment'
 
-    const { result } = renderHook(() => useAttachmentMethods({ fileUrl, updateAttachmentAttributes }))
+    const { result } = renderHook(() => useAttachmentMethods({ fileUrl, blockType, updateEmbedBlockAttributes }))
 
     const { onDownload } = result.current[0]
 

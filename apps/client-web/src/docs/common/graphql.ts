@@ -44,6 +44,7 @@ export const queryPreviewBox = gql`
       title
       description
       cover
+      icon
       type
       size
     }

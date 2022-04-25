@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import { CodeBlockAttributes, CodeBlockOptions } from '../../../../extensions'
-import { mockBlockViewProps } from '../../../common/tests'
+import { mockBlockViewProps } from '../../../../test'
 import { CodeBlockView } from '../CodeBlockView'
 
 const uuid = 'code block'

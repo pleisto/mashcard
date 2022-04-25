@@ -9944,6 +9944,18 @@
               "deprecationReason": null
             },
             {
+              "name": "icon",
+              "description": "preview icon",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "size",
               "description": "preview conetent size",
               "args": [],

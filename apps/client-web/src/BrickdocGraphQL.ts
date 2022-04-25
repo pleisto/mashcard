@@ -1600,6 +1600,8 @@ export type Preview_Box = {
   cover?: Maybe<Scalars['String']>
   /** preview description */
   description?: Maybe<Scalars['String']>
+  /** preview icon */
+  icon?: Maybe<Scalars['String']>
   /** preview conetent size */
   size?: Maybe<Scalars['String']>
   /** preview title */
@@ -1961,6 +1963,7 @@ export type QueryPreviewBoxQuery = {
     title: string
     description?: string | null
     cover?: string | null
+    icon?: string | null
     type?: string | null
     size?: string | null
   }
@@ -3483,6 +3486,7 @@ export const QueryPreviewBoxDocument = gql`
       title
       description
       cover
+      icon
       type
       size
     }
@@ -4852,6 +4856,7 @@ export const GetChildrenBlocksDocument = gql`
           type
           source
           cover
+          icon
           description
           title
         }

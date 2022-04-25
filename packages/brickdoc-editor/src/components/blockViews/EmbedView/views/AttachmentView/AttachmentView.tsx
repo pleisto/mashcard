@@ -6,7 +6,7 @@ import { FileIcon } from '../../../../ui'
 import { FileType } from '../../../../../helpers/file'
 import { BlockContainer } from '../../../BlockContainer'
 
-export interface AttachmentModeProps extends UseAttachmentMethodsProps {
+export interface AttachmentViewProps extends UseAttachmentMethodsProps {
   deleteNode: NodeViewProps['deleteNode']
   getPos: NodeViewProps['getPos']
   node: NodeViewProps['node']
@@ -14,7 +14,7 @@ export interface AttachmentModeProps extends UseAttachmentMethodsProps {
   fileType: FileType
 }
 
-export const AttachmentMode: FC<AttachmentModeProps> = ({
+export const AttachmentView: FC<AttachmentViewProps> = ({
   deleteNode,
   getPos,
   node,
@@ -22,12 +22,10 @@ export const AttachmentMode: FC<AttachmentModeProps> = ({
   fileType,
   ...attachmentMethodsProps
 }) => {
-  const [{ onDownload, onToPreviewMode, onToLinkMode }] = useAttachmentMethods(attachmentMethodsProps)
+  const [{ onDownload }] = useAttachmentMethods(attachmentMethodsProps)
   const [actionOptions] = useActionOptions({
     mode: 'link',
-    onDownload,
-    onToPreviewMode,
-    onToLinkMode
+    onDownload
   })
 
   return (

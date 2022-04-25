@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import { HeadingOptions, HeadingAttributes } from '../../../../extensions/blocks/heading/meta'
-import { mockBlockViewProps } from '../../../common/tests'
+import { mockBlockViewProps } from '../../../../test'
 import { HeadingView } from '../HeadingView'
 
 describe('HeadingView', () => {

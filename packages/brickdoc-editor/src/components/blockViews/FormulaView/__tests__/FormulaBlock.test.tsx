@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import { mockBlockViewProps } from '../../../common/tests'
+import { mockBlockViewProps } from '../../../../test'
 import { FormulaBlock, FormulaBlockProps } from '../FormulaBlock'
 
 describe('FormulaBlock', () => {

@@ -2,7 +2,7 @@ import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { EditorContext } from '../../../../context/EditorContext'
 import { TocAttributes, TocOptions } from '../../../../extensions'
-import { mockBlockViewProps } from '../../../common/tests'
+import { mockBlockViewProps } from '../../../../test'
 import { TocView } from '../TocView'
 
 const buildDoc = (nodes: any[]): any => {

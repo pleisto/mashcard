@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { mockEditor } from '../../../common/tests/editor'
+import { mockEditor } from '../../../../test'
 import { ToolbarGroupOption } from '../../../ui'
 import { BlockActionsMenuProps } from '../BlockActionsMenu'
 import { useOptions } from '../BlockActionsMenu/useOptions'

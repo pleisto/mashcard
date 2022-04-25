@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import { ParagraphAttributes, ParagraphOptions } from '../../../../extensions'
-import { mockBlockViewProps } from '../../../common/tests'
+import { mockBlockViewProps } from '../../../../test'
 import { ParagraphView } from '../ParagraphView'
 
 describe('ParagraphView', () => {

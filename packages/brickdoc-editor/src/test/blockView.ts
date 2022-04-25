@@ -1,4 +1,4 @@
-import { BlockViewProps } from '../../../extensions/common'
+import { BlockViewProps } from '../extensions/common'
 import { mockEditor } from './editor'
 
 type DeepPartial<T> = T extends object

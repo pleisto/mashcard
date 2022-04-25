@@ -6,7 +6,7 @@ import { UploadProgress, UploadResultData, imperativeUpload } from '@brickdoc/up
 import { getFileTypeByExtension, linkStorage } from '../../../../helpers/file'
 import { BlockContainer } from '../../BlockContainer'
 import { EditorContext } from '../../../../context/EditorContext'
-import { EmbedBlockAttributes } from '../EmbedView'
+import { UpdateEmbedBlockAttributes } from '../EmbedView'
 import { useExternalProps } from '../../../../hooks/useExternalProps'
 import { EmbedViewProps } from '../../../../extensions/blocks/embed/meta'
 import { useDefaultFile } from './useDefaultFile'
@@ -16,7 +16,7 @@ export interface UploadTypeEmbedBlockProps {
   deleteNode: EmbedViewProps['deleteNode']
   node: EmbedViewProps['node']
   getPos: EmbedViewProps['getPos']
-  updateEmbedBlockAttributes: (attrs: EmbedBlockAttributes, type: 'link' | 'image' | 'attachment') => void
+  updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
 }
 
 const FileInput = styled('input', {
@@ -37,7 +37,7 @@ export const UploadTypeEmbedBlock: FC<UploadTypeEmbedBlockProps> = ({
       linkStorage.set(node.attrs.uuid, data.downloadUrl ?? '')
       const fileType = getFileTypeByExtension(data.meta?.name ?? '')
       updateEmbedBlockAttributes(
-        { key: data.url!, source: 'ORIGIN', size: data.meta?.size, name: data.meta?.name },
+        { key: data.url!, source: 'ORIGIN', name: data.meta?.name },
         fileType === 'image' ? 'image' : 'attachment'
       )
     },

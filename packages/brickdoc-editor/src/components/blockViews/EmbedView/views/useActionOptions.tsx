@@ -7,17 +7,9 @@ export interface UseActionOptionsProps {
   mode: 'link' | 'preview'
   onFullScreen?: () => void
   onDownload: () => void
-  onToLinkMode: () => void
-  onToPreviewMode: () => void
 }
 
-export function useActionOptions({
-  mode,
-  onFullScreen,
-  onDownload,
-  onToLinkMode,
-  onToPreviewMode
-}: UseActionOptionsProps): [BlockActionOptions] {
+export function useActionOptions({ mode, onFullScreen, onDownload }: UseActionOptionsProps): [BlockActionOptions] {
   const { t } = useEditorContext()
   return useMemo(() => {
     const group: ActionGroupOption = {
@@ -43,26 +35,8 @@ export function useActionOptions({
       })
     }
 
-    if (mode === 'link') {
-      group.items.push({
-        name: 'preview mode',
-        label: t('block_actions.embed_block.preview_mode'),
-        type: 'item',
-        icon: <Icon.Preview />,
-        onAction: onToPreviewMode
-      })
-    } else if (mode === 'preview') {
-      group.items.push({
-        name: 'attachment mode',
-        label: t('block_actions.embed_block.attachment_mode'),
-        type: 'item',
-        icon: <Icon.TextView />,
-        onAction: onToLinkMode
-      })
-    }
-
     const actionOptions: BlockActionOptions = [group, 'copy', 'delete']
 
     return [actionOptions]
-  }, [mode, onDownload, onFullScreen, onToLinkMode, onToPreviewMode, t])
+  }, [onDownload, onFullScreen, t])
 }

@@ -6,7 +6,7 @@ import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { EmbedBlockPlaceholder } from '../Placeholder'
 import { BlockContainer } from '../../BlockContainer'
 import { EditorContext } from '../../../../context/EditorContext'
-import { EmbedBlockAttributes } from '../EmbedView'
+import { UpdateEmbedBlockAttributes } from '../EmbedView'
 import { useExternalProps } from '../../../../hooks/useExternalProps'
 import { EmbedViewProps } from '../../../../extensions/blocks/embed/meta'
 import { usePopoverVisible } from './usePopoverVisible'
@@ -15,7 +15,7 @@ export interface GalleryTypeEmbedBlockProps {
   deleteNode: EmbedViewProps['deleteNode']
   getPos: EmbedViewProps['getPos']
   node: EmbedViewProps['node']
-  updateEmbedBlockAttributes: (attrs: EmbedBlockAttributes, type: 'link' | 'image' | 'attachment') => void
+  updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
 }
 
 const Gallery = styled('div', {

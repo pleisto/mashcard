@@ -2727,6 +2727,11 @@ type preview_box {
   description: String
 
   """
+  preview icon
+  """
+  icon: String
+
+  """
   preview conetent size
   """
   size: String

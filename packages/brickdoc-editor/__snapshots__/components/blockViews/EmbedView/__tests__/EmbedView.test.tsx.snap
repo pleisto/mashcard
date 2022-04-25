@@ -7,32 +7,137 @@ exports[`EmbedView matches correct snapshot 1`] = `
     style="pointer-events: none; white-space: normal;"
   >
     <button
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brickdoc-link-block-link"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-hpfoBr-size-md"
       data-testid="editor-embed-block-link"
       role="button"
       type="button"
     >
       <div
-        class="link-block-cover"
+        class="brd-c-bVyxqJ"
         style="background-image: url(cover);"
       />
       <div
-        class="link-block-content"
+        class="brd-c-bzfXri"
       >
         <div
-          class="link-block-title"
+          class="brd-c-hVJEfX"
         >
           brickdoc
         </div>
         <div
-          class="link-block-description"
+          class="brd-c-hlZlxc"
         >
           desc
         </div>
         <div
-          class="link-block-url"
+          class="brd-c-lfxUtP"
         >
+          
           https://www.brickdoc.com
+        </div>
+        <div
+          class="brd-c-isbGtc"
+        >
+          <ul
+            class="brd-c-gRhnPc"
+            role="menu"
+          >
+            <li
+              aria-describedby=""
+              aria-haspopup="false"
+              aria-label="embed_block.view_types.card.name"
+              class="brd-c-gGXCgU"
+              role="menuitem"
+            >
+              <span
+                class="brd-c-PJLV"
+              >
+                <span
+                  aria-label="preview"
+                  class="brd-icon brd-icon-preview"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      d="M19.5 5h-15C3.672 5 3 5.756 3 6.688v5.625C3 13.244 3.672 14 4.5 14h15c.828 0 1.5-.755 1.5-1.688V6.689C21 5.755 20.328 5 19.5 5ZM3 18h18"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </li>
+            <li
+              aria-describedby=""
+              aria-haspopup="false"
+              aria-label="embed_block.view_types.bookmark.name"
+              class="brd-c-gGXCgU brd-c-gGXCgU-bTgvkf-active-true"
+              role="menuitem"
+            >
+              <span
+                class="brd-c-PJLV brd-c-PJLV-ilbRFi-active-true"
+              >
+                <span
+                  aria-label="bookmark-view"
+                  class="brd-icon brd-icon-bookmark-view"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M4 9.6875C4 9.19382 4.33133 9 4.5 9H8L8 16H4.5C4.33133 16 4 15.8062 4 15.3125V9.6875ZM10 16H19.5C19.6687 16 20 15.8062 20 15.3125V9.6875C20 9.19382 19.6687 9 19.5 9H10L10 16ZM4.5 7C3.01181 7 2 8.31722 2 9.6875V15.3125C2 16.6828 3.01181 18 4.5 18H19.5C20.9882 18 22 16.6828 22 15.3125V9.6875C22 8.31722 20.9882 7 19.5 7H4.5Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </li>
+            <li
+              aria-describedby=""
+              aria-haspopup="false"
+              aria-label="embed_block.view_types.text.name"
+              class="brd-c-gGXCgU"
+              role="menuitem"
+            >
+              <span
+                class="brd-c-PJLV"
+              >
+                <span
+                  aria-label="text-view"
+                  class="brd-icon brd-icon-text-view"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      d="M8 11h13M3 11h2"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </li>
+          </ul>
         </div>
       </div>
     </button>

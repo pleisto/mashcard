@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import { HorizontalRuleOptions, HorizontalRuleAttributes } from '../../../../extensions'
-import { mockBlockViewProps } from '../../../common/tests'
+import { mockBlockViewProps } from '../../../../test'
 import { HorizontalRuleView } from '../HorizontalRuleView'
 
 describe('HorizontalRuleView', () => {

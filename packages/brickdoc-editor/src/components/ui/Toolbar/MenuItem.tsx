@@ -31,13 +31,13 @@ export const ToolbarMenuItem: FC<ToolbarMenuItemProps> = ({ option, ...props }) 
 
   return (
     <MenuItem
+      {...props}
       role="menuitem"
       aria-label={option.label ?? option.name}
-      {...props}
+      aria-describedby=""
       onClick={handleClick}
       active={option.active}
-      css={option.css}
-    >
+      css={option.css}>
       {option.content ?? option.icon ?? option.label}
     </MenuItem>
   )

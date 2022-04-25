@@ -1,32 +1,20 @@
 import { useCallback } from 'react'
 import { WebViewerInstance } from '@pdftron/webviewer'
+import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../EmbedView'
 
 export interface UseAttachmentMethodsProps {
   fileUrl: string
   webViewer?: WebViewerInstance
-  updateAttachmentAttributes: (attrs: Record<string, any>) => void
+  blockType: EmbedBlockType
+  updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
 }
 
 export interface AttachmentMethods {
   onFullScreen: () => void
-  onToLinkMode: () => void
-  onToPreviewMode: () => void
   onDownload: () => void
 }
 
-export function useAttachmentMethods({
-  webViewer,
-  fileUrl,
-  updateAttachmentAttributes
-}: UseAttachmentMethodsProps): [AttachmentMethods] {
-  const handleChangeModeToLink = useCallback((): void => {
-    updateAttachmentAttributes({ mode: 'link' })
-  }, [updateAttachmentAttributes])
-
-  const handleChangeModeToPreview = useCallback((): void => {
-    updateAttachmentAttributes({ mode: 'preview' })
-  }, [updateAttachmentAttributes])
-
+export function useAttachmentMethods({ webViewer, fileUrl }: UseAttachmentMethodsProps): [AttachmentMethods] {
   const handleDownload = useCallback((): void => {
     if (webViewer?.UI) {
       void webViewer.UI.downloadPdf()
@@ -45,8 +33,6 @@ export function useAttachmentMethods({
 
   return [
     {
-      onToLinkMode: handleChangeModeToLink,
-      onToPreviewMode: handleChangeModeToPreview,
       onDownload: handleDownload,
       onFullScreen: handleFullscreen
     }

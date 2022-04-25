@@ -2,8 +2,6 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import { ToolbarOptionGroup } from '..'
 import { Toolbar } from '../Toolbar'
 
-jest.mock('../../../../../../brickdoc-design-system/src/hooks/useId')
-
 describe('Toolbar', () => {
   it(`matches snapshot correctly`, () => {
     const options: ToolbarOptionGroup = [

@@ -1,9 +1,9 @@
-import { FC, Key, ReactElement, ReactNode, useContext, useMemo } from 'react'
+import { FC, Key, ReactElement, ReactNode, useMemo } from 'react'
 import { CSS } from '@stitches/react'
 import { styled, theme, Tooltip } from '@brickdoc/design-system'
 import { ToolbarMenuItem } from './MenuItem'
 import { ToolbarMenuSubMenuItem } from './MenuSubMenuItem'
-import { EditorContext } from '../../../context/EditorContext'
+import { useEditorI18n } from '../../../hooks'
 
 export interface ToolbarOptionBase {
   type: 'item' | 'subMenu'
@@ -57,11 +57,12 @@ export type ToolbarItemOptionGroup = Array<ToolbarItemGroupOption | ToolbarItemO
 export type ToolbarOptionGroup = Array<ToolbarGroupOption | ToolbarOption>
 
 export interface ToolbarProps {
+  type?: 'default' | 'transparent'
   options: ToolbarOptionGroup
 }
 
 const ToolbarMenu = styled('ul', {
-  include: ['ceramicPrimary', 'flexCenter'],
+  include: ['flexCenter'],
   borderBottomLeftRadius: '8px',
   borderBottomRightRadius: '4px',
   borderTopLeftRadius: '4px',
@@ -73,6 +74,15 @@ const ToolbarMenu = styled('ul', {
   padding: '.375rem .5rem',
   'li + li': {
     marginLeft: '2px'
+  },
+
+  variants: {
+    type: {
+      default: {
+        include: ['ceramicPrimary']
+      },
+      transparent: {}
+    }
   }
 })
 
@@ -134,8 +144,8 @@ const ToolbarMenuOption: FC<{ option: ToolbarOption }> = ({ option }) => {
 }
 
 // TODO: implement by menu
-export const Toolbar: FC<ToolbarProps> = ({ options }) => {
-  const { t } = useContext(EditorContext)
+export const Toolbar: FC<ToolbarProps> = ({ type, options }) => {
+  const [t] = useEditorI18n()
 
   const menuOptions = useMemo(
     () =>
@@ -156,5 +166,9 @@ export const Toolbar: FC<ToolbarProps> = ({ options }) => {
     [options, t]
   )
 
-  return <ToolbarMenu role="menu">{menuOptions}</ToolbarMenu>
+  return (
+    <ToolbarMenu type={type ?? 'default'} role="menu">
+      {menuOptions}
+    </ToolbarMenu>
+  )
 }

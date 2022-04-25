@@ -49,7 +49,7 @@
     }
 
     /** Bullet List **/
-    ul {
+    ul[data-node-view-content=""] {
       padding: 0 0 0 24px;
       margin: 0;
       
@@ -59,7 +59,7 @@
       }
     }
 
-    ol {
+    ol[data-node-view-content=""] {
       padding: 0;
       counter-reset: item;
       list-style-type: none;
@@ -81,30 +81,32 @@
       }
     }
 
-    li::marker {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
-      letter-spacing: 0;
-      text-align: center;
-    }
+    ul[data-node-view-content=""], ol[data-node-view-content=""] {
+      li::marker {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0;
+        text-align: center;
+      }
 
-    li + li {
-      margin-top: 8px;
-    }
+      li + li {
+        margin-top: 8px;
+      }
 
-    li > ol,
-    li > ul {
-      margin-top: 8px;
-      margin-bottom: 0;
+      li > ol,
+      li > ul {
+        margin-top: 8px;
+        margin-bottom: 0;
 
-      li {
-        margin-top: 4px;
+        li {
+          margin-top: 4px;
+        }
       }
     }
 
     .bullet-list() {
-      ul {
+      ul[data-node-view-content=""] {
         list-style-type: disc;
 
         ul {
@@ -116,6 +118,7 @@
         }
       }
     }
+
     .bullet-list();
 
     ul ul ul {

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 import { SpreadsheetBlockView } from '..'
 import { SpreadsheetAttributes, SpreadsheetOptions } from '../../../../extensions'
-import { mockBlockViewProps } from '../../../common/tests'
+import { mockBlockViewProps } from '../../../../test'
 
 describe('SpreadsheetBlockView', () => {
   it('matches correct snapshot', () => {

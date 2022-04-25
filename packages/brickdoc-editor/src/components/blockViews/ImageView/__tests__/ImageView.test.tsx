@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { ImageView } from '../ImageView'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { ExternalProps, ExternalPropsContext } from '../../../../context'
-import { mockBlockViewProps } from '../../../common/tests'
+import { mockBlockViewProps } from '../../../../test'
 import { ImageOptions, ImageAttributes } from '../../../../extensions/blocks/image/meta'
 
 describe('ImageView', () => {
