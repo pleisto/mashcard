@@ -27,6 +27,7 @@ const SPREADSHEET = createSlashMenuItem(BLOCK.SPREADSHEET)
 const UPLOAD = createSlashMenuItem(BLOCK.UPLOAD)
 const GALLERY = createSlashMenuItem(BLOCK.GALLERY)
 const LINK = createSlashMenuItem(BLOCK.LINK)
+const EMBED = createSlashMenuItem(BLOCK.EMBED)
 const HEADING_1 = createSlashMenuItem(BLOCK.HEADING_1)
 const HEADING_2 = createSlashMenuItem(BLOCK.HEADING_2)
 const HEADING_3 = createSlashMenuItem(BLOCK.HEADING_3)
@@ -46,7 +47,7 @@ export const slashMenuGroup = [
   },
   {
     key: 'embed',
-    items: [UPLOAD, LINK, GALLERY]
+    items: [UPLOAD, LINK, EMBED, GALLERY]
   },
   {
     key: 'text',
@@ -63,6 +64,7 @@ const slashMenuItems = [
   SPREADSHEET,
   UPLOAD,
   LINK,
+  EMBED,
   HEADING_1,
   HEADING_2,
   HEADING_3,

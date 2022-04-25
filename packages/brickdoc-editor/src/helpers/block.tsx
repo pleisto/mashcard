@@ -36,6 +36,7 @@ export type BlockItemKey =
   | 'formula'
   | 'spreadsheet'
   | 'upload'
+  | 'embed'
   | 'gallery'
   | 'link'
   | 'h1'
@@ -124,6 +125,12 @@ export const LINK: BlockCommandItem = {
   setBlock: chain => chain.setEmbedBlock(Embedtype.Link),
   toggleBlock: chain => chain.setEmbedBlock(Embedtype.Link),
   insertBlockAt: (chain, position) => chain.setEmbedBlock(Embedtype.Link, undefined, position)
+}
+
+export const EMBED: BlockCommandItem = {
+  ...LINK,
+  key: 'embed',
+  alias: ['em']
 }
 
 export const HEADING_1: BlockCommandItem = {
@@ -256,6 +263,7 @@ export const BLOCK = {
   UPLOAD,
   GALLERY,
   LINK,
+  EMBED,
   HEADING_1,
   HEADING_2,
   HEADING_3,

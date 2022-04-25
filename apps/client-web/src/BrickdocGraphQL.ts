@@ -4859,6 +4859,7 @@ export const GetChildrenBlocksDocument = gql`
           icon
           description
           title
+          mode
         }
       }
     }

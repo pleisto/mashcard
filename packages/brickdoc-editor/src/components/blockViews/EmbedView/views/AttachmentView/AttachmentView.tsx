@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { NodeViewProps } from '@tiptap/react'
 import { useActionOptions } from '../useActionOptions'
-import { useAttachmentMethods, UseAttachmentMethodsProps } from '../useAttachmentMethods'
+import { UseAttachmentMethodsProps } from '../useAttachmentMethods'
 import { FileIcon } from '../../../../ui'
 import { FileType } from '../../../../../helpers/file'
 import { BlockContainer } from '../../../BlockContainer'
@@ -22,11 +22,7 @@ export const AttachmentView: FC<AttachmentViewProps> = ({
   fileType,
   ...attachmentMethodsProps
 }) => {
-  const [{ onDownload }] = useAttachmentMethods(attachmentMethodsProps)
-  const [actionOptions] = useActionOptions({
-    mode: 'link',
-    onDownload
-  })
+  const [actionOptions] = useActionOptions()
 
   return (
     <BlockContainer

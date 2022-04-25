@@ -669,6 +669,8 @@ en-US:
         label: Numbered List
       link:
         label: Link
+      embed:
+        label: Embed
       upload:
         label: Upload
       gallery:

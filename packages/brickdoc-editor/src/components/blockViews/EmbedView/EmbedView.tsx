@@ -112,6 +112,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
           fileUrl={linkUrl}
           fileType="html"
           fileName={title ?? ''}
+          icon={icon}
           getPos={getPos}
           deleteNode={deleteNode}
         />
