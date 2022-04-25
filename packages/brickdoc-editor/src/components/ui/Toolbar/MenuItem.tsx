@@ -37,7 +37,8 @@ export const ToolbarMenuItem: FC<ToolbarMenuItemProps> = ({ option, ...props }) 
       aria-describedby=""
       onClick={handleClick}
       active={option.active}
-      css={option.css}>
+      css={option.css}
+    >
       {option.content ?? option.icon ?? option.label}
     </MenuItem>
   )

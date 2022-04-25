@@ -1,12 +1,6 @@
-import { useCallback, useState, useMemo, useContext, ChangeEventHandler, useEffect, cloneElement } from 'react'
+import { useCallback, useState, useMemo, useContext, ChangeEventHandler, cloneElement, useEffect } from 'react'
 import { Icon, Menu } from '@brickdoc/design-system'
-import {
-  BrickdocEventBus,
-  DiscussionMarkActive,
-  ExplorerMenuGroup,
-  ExplorerMenuItem,
-  ExplorerMenuTrigger
-} from '@brickdoc/schema'
+import { BrickdocEventBus, ExplorerMenuGroup, ExplorerMenuItem, ExplorerMenuTrigger } from '@brickdoc/schema'
 import { EditorContext } from '../../../context/EditorContext'
 import {
   InnerMenu,
@@ -18,6 +12,7 @@ import {
   SearchInputContainer
 } from './styled'
 import { Drawer } from '../../ui'
+import { useDrawer } from '../../ui/Drawer'
 
 export interface ExplorerMenuProps {}
 
@@ -30,30 +25,22 @@ const isMatchSearch =
 
 export const ExplorerMenu: React.FC<ExplorerMenuProps> = () => {
   const { t } = useContext(EditorContext)
-  const [visible, setVisible] = useState(false)
-  const [groupSource, setGroupSource] = useState<ExplorerMenuGroup[]>()
+  const { visible, setVisible } = useDrawer('explorerMenu')
   const [search, setSearch] = useState('')
+  const [groupSource, setGroupSource] = useState<ExplorerMenuGroup[]>([])
 
-  useEffect(() => {
-    const listener = BrickdocEventBus.subscribe(ExplorerMenuTrigger, event => {
-      setGroupSource(event.payload.items)
-      setVisible(event.payload.visible)
-    })
-
-    // TODO: create a drawer manager to manage all drawers' visible state
-    const listener2 = BrickdocEventBus.subscribe(DiscussionMarkActive, event => {
-      setVisible(false)
-    })
-    return () => {
-      listener.unsubscribe()
-      listener2.unsubscribe()
-    }
-  }, [])
+  useEffect(
+    () =>
+      BrickdocEventBus.subscribe(ExplorerMenuTrigger, event => {
+        setGroupSource(event.payload.items ?? [])
+      }).unsubscribe,
+    []
+  )
 
   const groups = useMemo<ExplorerMenuGroup[]>(
     () =>
       // filter groups by search
-      groupSource?.reduce<ExplorerMenuGroup[]>((prev, group) => {
+      groupSource.reduce<ExplorerMenuGroup[]>((prev, group) => {
         const newGroup: ExplorerMenuGroup = {
           ...group,
           items: group.items
@@ -70,16 +57,12 @@ export const ExplorerMenu: React.FC<ExplorerMenuProps> = () => {
 
         if (newGroup.items.length > 0) return [...prev, newGroup]
         return prev
-      }, []) ?? [],
+      }, []),
     [groupSource, search]
   )
 
   const handleSearchChange = useCallback<ChangeEventHandler<HTMLInputElement>>(event => {
     setSearch(event.target.value)
-  }, [])
-
-  const handleClose = useCallback(() => {
-    setVisible(false)
   }, [])
 
   return (
@@ -106,7 +89,7 @@ export const ExplorerMenu: React.FC<ExplorerMenuProps> = () => {
                     <MenuItem
                       onAction={() => {
                         item.onAction?.()
-                        handleClose()
+                        setVisible(false)
                       }}
                       key={index}
                       itemKey={`item-${index}`}

@@ -54,7 +54,8 @@
     "tippy.js": "^6.3.7",
     "uuid": "^8.3.2",
     "y-protocols": "^1.0.5",
-    "yjs": "^13.5.35"
+    "yjs": "^13.5.35",
+    "zustand": "^4.0.0-rc.0"
   },
   "devDependencies": {
     "@types/react-pdf": "^5.7.1",
