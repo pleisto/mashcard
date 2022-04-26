@@ -353,6 +353,10 @@ const testCases: TestCase[] = [
     errorMessage: 'Unknown function a'
   },
   {
+    input: '={a: 1}.a+1',
+    value: 2
+  },
+  {
     input: '={a: 1}[1]',
     value: 'Key 1 not found'
   },

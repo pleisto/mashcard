@@ -215,6 +215,16 @@ const spreadsheetTestCases: TestCase[] = [
     value: [CELL_FLAG, 1]
   },
   {
+    label: 'thisRow ROW',
+    input: `=ROW(ThisRow)`,
+    value: 1
+  },
+  {
+    label: 'thisRow.B ROW',
+    input: `=ROW(ThisRow.B)`,
+    value: 1
+  },
+  {
     label: 'thisRow [B]',
     input: `=ThisRow["B"]`,
     value: [CELL_FLAG, 1]
@@ -281,6 +291,16 @@ const testCases: TestCase[] = [
     label: 'row 1 TODO',
     input: `=${spreadsheetToken}.1`,
     value: [ROW_FLAG, '1']
+  },
+  {
+    label: 'row 3 ROW',
+    input: `=ROW(${spreadsheetToken}.3)`,
+    value: 3
+  },
+  {
+    label: 'row 3 [A] ROW',
+    input: `=ROW(${spreadsheetToken}.3.A)`,
+    value: 3
   },
   {
     label: 'row 1 2 TODO',

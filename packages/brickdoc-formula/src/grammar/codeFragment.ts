@@ -389,6 +389,8 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 
         if (newFirstArgumentType) {
           firstArgumentType = newFirstArgumentType
+        } else {
+          firstArgumentType = 'any'
         }
 
         codeFragments.push(

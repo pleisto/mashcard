@@ -14,6 +14,18 @@ import {
 } from '../types'
 import { buildPredicate } from '../grammar/lambda'
 
+export const getRow = (ctx: FunctionContext, { type, result }: AnyTypeResult): NumberResult => {
+  if (type === 'Cell') {
+    return { type: 'number', result: result.rowIndex + 1 }
+  }
+
+  if (type === 'Row') {
+    return { type: 'number', result: result.rowIndex + 1 }
+  }
+
+  return { type: 'number', result: 0 }
+}
+
 export const SUM = (ctx: FunctionContext, { result: column }: ColumnResult): NumberResult | ErrorResult => {
   const rows: number[] = column.spreadsheet
     .listRows()
@@ -324,6 +336,23 @@ export const CORE_SPREADSHEET_CLAUSES: Array<BaseFunctionClause<'number' | 'stri
     testCases: [],
     chain: true,
     reference: SUM
+  },
+  {
+    name: 'Row',
+    async: false,
+    pure: true,
+    persist: false,
+    lazy: false,
+    acceptError: false,
+    effect: false,
+    examples: [{ input: '=123', output: null }],
+    description: 'Returns line number.',
+    group: 'core',
+    args: [{ name: 'input', type: 'any' }],
+    returns: 'number',
+    testCases: [],
+    chain: true,
+    reference: getRow
   },
   {
     name: 'COLUMN_COUNT',

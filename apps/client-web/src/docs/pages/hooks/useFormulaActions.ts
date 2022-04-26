@@ -26,10 +26,14 @@ export function useFormulaActions(): useFormulaActionsResult {
 
   return {
     commitFormula: async (commitFormulas, deleteFormulas) => {
-      const { errors } = await commitFormula({ variables: { input: { commitFormulas, deleteFormulas } } })
-
-      return {
-        success: !errors || errors.length === 0
+      try {
+        const { errors } = await commitFormula({ variables: { input: { commitFormulas, deleteFormulas } } })
+        return {
+          success: !errors || errors.length === 0
+        }
+      } catch (e) {
+        console.log('commit error', e)
+        return { success: false }
       }
     },
 

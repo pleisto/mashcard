@@ -22,6 +22,7 @@ export interface SpreadsheetCellProps {
   block: BlockInput
   rowIdx: number
   columnSort: number
+  columnTitle: string | undefined
   tableId: string
   saveBlock: (block: BlockInput) => void
   width?: number
@@ -34,6 +35,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   block,
   rowIdx,
   columnSort,
+  columnTitle,
   saveBlock,
   width,
   height
@@ -83,7 +85,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
           spreadsheetId: tableId,
           scope: {
             rows: [String(rowIdx + 1), rowId],
-            columns: [block.data.columnId, columnDisplayIndex(columnSort)]
+            columns: [block.data.columnId, columnDisplayIndex(columnSort), ...(columnTitle ? [columnTitle] : [])]
           },
           namespaceId: rootId,
           key: variable?.currentUUID ?? tableId
@@ -92,7 +94,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       // console.log('dispatch update cell', variable)
       // setEditing(false)
     },
-    [tableId, rowIdx, rowId, block, columnSort, rootId, cellId, saveBlock]
+    [tableId, rowIdx, rowId, block, columnSort, rootId, cellId, saveBlock, columnTitle]
   )
 
   React.useEffect(() => {

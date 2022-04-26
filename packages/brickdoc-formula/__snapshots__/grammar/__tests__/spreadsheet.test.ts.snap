@@ -8365,6 +8365,292 @@ Array [
 ]
 `;
 
+exports[`Spreadsheet Functions [row 3 [A] ROW] =ROW(#57622108-1337-4edd-833a-2557835bcfe0.MySpreadsheet.3.A) 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Function",
+    "display": "ROW",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "LParen",
+    "display": "(",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
+      "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "name": "MySpreadsheet",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    },
+    "code": "Spreadsheet",
+    "display": "MySpreadsheet",
+    "errors": Array [],
+    "hide": false,
+    "type": "Spreadsheet",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "3",
+      },
+      "id": "05f5ae67-b982-406e-a92f-e559c10a7ba6",
+      "kind": "LogicRow",
+      "name": "3",
+      "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    },
+    "code": "Row",
+    "display": "3",
+    "errors": Array [],
+    "hide": false,
+    "type": "Row",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "FunctionName",
+    "display": "A",
+    "errors": Array [],
+    "hide": false,
+    "type": "string",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "RParen",
+    "display": ")",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+]
+`;
+
+exports[`Spreadsheet Functions [row 3 [A] ROW] =ROW(#57622108-1337-4edd-833a-2557835bcfe0.MySpreadsheet.3.A) 2`] = `
+Array [
+  Object {
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "SpreadsheetName",
+    "scope": Object {},
+  },
+  Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#3",
+    "kind": "Row",
+    "scope": Object {
+      "rows": Array [
+        "3",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#3",
+      "kind": "Row",
+      "scope": Object {
+        "rows": Array [
+          "3",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Row#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#A#3",
+    "kind": "Cell",
+    "scope": Object {
+      "columns": Array [
+        "A",
+      ],
+      "rows": Array [
+        "3",
+      ],
+    },
+  },
+]
+`;
+
+exports[`Spreadsheet Functions [row 3 ROW] =ROW(#57622108-1337-4edd-833a-2557835bcfe0.MySpreadsheet.3) 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Function",
+    "display": "ROW",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "LParen",
+    "display": "(",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
+      "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "name": "MySpreadsheet",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    },
+    "code": "Spreadsheet",
+    "display": "MySpreadsheet",
+    "errors": Array [],
+    "hide": false,
+    "type": "Spreadsheet",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "3",
+      },
+      "id": "05f5ae67-b982-406e-a92f-e559c10a7ba6",
+      "kind": "LogicRow",
+      "name": "3",
+      "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    },
+    "code": "Row",
+    "display": "3",
+    "errors": Array [],
+    "hide": false,
+    "type": "Row",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "RParen",
+    "display": ")",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+]
+`;
+
+exports[`Spreadsheet Functions [row 3 ROW] =ROW(#57622108-1337-4edd-833a-2557835bcfe0.MySpreadsheet.3) 2`] = `
+Array [
+  Object {
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "SpreadsheetName",
+    "scope": Object {},
+  },
+  Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#3",
+    "kind": "Row",
+    "scope": Object {
+      "rows": Array [
+        "3",
+      ],
+    },
+  },
+]
+`;
+
 exports[`Spreadsheet Functions [row 100] =#57622108-1337-4edd-833a-2557835bcfe0.MySpreadsheet.100 1`] = `
 Array [
   Object {
@@ -9575,6 +9861,77 @@ Array [
 ]
 `;
 
+exports[`Spreadsheet Functions Spreadsheet [thisRow ROW] =ROW(ThisRow) 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Function",
+    "display": "ROW",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "LParen",
+    "display": "(",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      },
+      "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      "kind": "Row",
+      "name": "1",
+      "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    },
+    "code": "ThisRow",
+    "display": "ThisRow",
+    "errors": Array [],
+    "hide": false,
+    "type": "Row",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "RParen",
+    "display": ")",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+]
+`;
+
+exports[`Spreadsheet Functions Spreadsheet [thisRow ROW] =ROW(ThisRow) 2`] = `
+Array [
+  Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+    "kind": "Row",
+    "scope": Object {
+      "rows": Array [
+        "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      ],
+    },
+  },
+]
+`;
+
 exports[`Spreadsheet Functions Spreadsheet [thisRow second] =ThisRow.second 1`] = `
 Array [
   Object {
@@ -9661,6 +10018,125 @@ Array [
     "scope": Object {
       "columns": Array [
         "second",
+      ],
+      "rows": Array [
+        "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      ],
+    },
+  },
+]
+`;
+
+exports[`Spreadsheet Functions Spreadsheet [thisRow.B ROW] =ROW(ThisRow.B) 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Function",
+    "display": "ROW",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "LParen",
+    "display": "(",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      },
+      "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      "kind": "Row",
+      "name": "1",
+      "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    },
+    "code": "ThisRow",
+    "display": "ThisRow",
+    "errors": Array [],
+    "hide": false,
+    "type": "Row",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "FunctionName",
+    "display": "B",
+    "errors": Array [],
+    "hide": false,
+    "type": "string",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "RParen",
+    "display": ")",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+]
+`;
+
+exports[`Spreadsheet Functions Spreadsheet [thisRow.B ROW] =ROW(ThisRow.B) 2`] = `
+Array [
+  Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+    "kind": "Row",
+    "scope": Object {
+      "rows": Array [
+        "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      "kind": "Row",
+      "scope": Object {
+        "rows": Array [
+          "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Row#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#B#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+    "kind": "Cell",
+    "scope": Object {
+      "columns": Array [
+        "B",
       ],
       "rows": Array [
         "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
@@ -12167,6 +12643,52 @@ Object {
           "returns": "number",
           "testCases": Array [],
         },
+        "ROW": Object {
+          "acceptError": false,
+          "args": Array [
+            Object {
+              "name": "input",
+              "type": "any",
+            },
+          ],
+          "async": false,
+          "chain": true,
+          "description": "Returns line number.",
+          "effect": false,
+          "examples": Array [
+            Object {
+              "codeFragments": Array [
+                Object {
+                  "attrs": undefined,
+                  "code": "Equal",
+                  "display": "=",
+                  "errors": Array [],
+                  "hide": false,
+                  "type": "any",
+                },
+                Object {
+                  "attrs": undefined,
+                  "code": "NumberLiteral",
+                  "display": "123",
+                  "errors": Array [],
+                  "hide": false,
+                  "type": "number",
+                },
+              ],
+              "input": "=123",
+              "output": null,
+            },
+          ],
+          "group": "core",
+          "key": "ROW",
+          "lazy": false,
+          "name": "Row",
+          "persist": false,
+          "pure": true,
+          "reference": [Function],
+          "returns": "number",
+          "testCases": Array [],
+        },
         "ROW_COUNT": Object {
           "acceptError": false,
           "args": Array [
@@ -14715,6 +15237,7 @@ Object {
         "VLOOKUP",
         "XLOOKUP",
         "SUM",
+        "ROW",
         "COLUMN_COUNT",
         "ROW_COUNT",
         "SUMIFS",
@@ -17205,6 +17728,52 @@ Object {
           "returns": "number",
           "testCases": Array [],
         },
+        "ROW": Object {
+          "acceptError": false,
+          "args": Array [
+            Object {
+              "name": "input",
+              "type": "any",
+            },
+          ],
+          "async": false,
+          "chain": true,
+          "description": "Returns line number.",
+          "effect": false,
+          "examples": Array [
+            Object {
+              "codeFragments": Array [
+                Object {
+                  "attrs": undefined,
+                  "code": "Equal",
+                  "display": "=",
+                  "errors": Array [],
+                  "hide": false,
+                  "type": "any",
+                },
+                Object {
+                  "attrs": undefined,
+                  "code": "NumberLiteral",
+                  "display": "123",
+                  "errors": Array [],
+                  "hide": false,
+                  "type": "number",
+                },
+              ],
+              "input": "=123",
+              "output": null,
+            },
+          ],
+          "group": "core",
+          "key": "ROW",
+          "lazy": false,
+          "name": "Row",
+          "persist": false,
+          "pure": true,
+          "reference": [Function],
+          "returns": "number",
+          "testCases": Array [],
+        },
         "ROW_COUNT": Object {
           "acceptError": false,
           "args": Array [
@@ -19753,6 +20322,7 @@ Object {
         "VLOOKUP",
         "XLOOKUP",
         "SUM",
+        "ROW",
         "COLUMN_COUNT",
         "ROW_COUNT",
         "SUMIFS",
