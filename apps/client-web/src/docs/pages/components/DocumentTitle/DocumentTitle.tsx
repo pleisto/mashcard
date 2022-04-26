@@ -76,9 +76,13 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
       setMeta(newMeta)
       if (docId) {
         BrickdocEventBus.dispatch(UpdateDocMeta({ id: docId, meta: newMeta }))
+        editor?.commands.setDocAttrs({
+          ...editor.state.doc.attrs,
+          ...newMeta
+        })
       }
     },
-    [docId]
+    [docId, editor]
   )
 
   const createDocAttrsUpdater = React.useCallback(
