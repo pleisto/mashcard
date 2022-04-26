@@ -87,6 +87,7 @@ test.describe('Editor', () => {
 
   test.describe('Drag', () => {
     test('drags element in Text block only', async () => {
+      test.setTimeout(30000)
       await editor.getNodeByIndex().fill('000')
       await editor.createTextBelowIndex(0)
       await editor.getNodeByIndex(1).fill('111')

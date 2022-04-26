@@ -8,6 +8,10 @@ export class BasePage {
     return this.page.locator(COMMON_SELECTORS.tooltip)
   }
 
+  getItemInMenubar(): Locator {
+    return this.page.locator(COMMON_SELECTORS.menubarItem)
+  }
+
   async scrollUntilElementIntoView(waitingSelector: string, scrollSelector: string, offset = 100): Promise<void> {
     while (!(await this.page.locator(waitingSelector).isVisible())) {
       await this.page.evaluate(

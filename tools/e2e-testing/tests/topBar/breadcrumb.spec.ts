@@ -1,4 +1,4 @@
-import { FIVE_LAYER_PAGE_TREE, SINGLE_PAGE, SINGLE_PAGE_WITH_ICON } from '@/data/breadcrumb'
+import { FIVE_LAYER_PAGE_TREE, SUPER_LONG_TITLE_PAGE } from '@/data/breadcrumb'
 import { INITIAL_PAGE, TWO_LAYER_PAGE_TREE } from '@/data/common'
 import { test, expect } from '@/fixtures'
 import { PageListPage } from '@/pages/sidebar/PageListPage'
@@ -31,46 +31,46 @@ test.describe('Breadcrumb', () => {
     await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(2)
   })
 
-  test('Verify breadcrumb width is less than 150px', async ({ api }) => {
+  test('Verify breadcrumb width is less than 400px', async ({ api }) => {
     await api.createPage(INITIAL_PAGE)
     await api.pageReload()
 
     await pageList.clickPage()
-    const lessThan150px = /(^\b(?:1[0-4][0-9]|[1-9]\d|\d)(?:\.\d+)?|150)px\b/
+    const lessThan400px = /(^\b(?:1[0-4][0-9]|[1-9]\d|\d)(?:\.\d+)?|400)px\b/
 
-    await expect(breadcrumb.getBreadcrumbItems().nth(0)).toHaveCSS('width', lessThan150px)
+    await expect(breadcrumb.getBreadcrumbItems().nth(0)).toHaveCSS('width', lessThan400px)
   })
 
-  test('Verify breadcrumb max width is equal 150px', async ({ api }) => {
-    await api.createPage(SINGLE_PAGE)
+  test('Verify breadcrumb max width is equal 400px', async ({ api }) => {
+    await api.createPage(SUPER_LONG_TITLE_PAGE)
     await api.pageReload()
 
     await pageList.clickPage()
 
-    await expect(breadcrumb.getBreadcrumbItems().nth(0)).toHaveCSS('width', '150px')
+    await expect(breadcrumb.getBreadcrumbItems().nth(0)).toHaveCSS('width', '400px')
     await expect(breadcrumb.getBreadcrumbTextByIndex()).toHaveCSS('overflow', 'hidden')
     await expect(breadcrumb.getBreadcrumbTextByIndex()).toHaveCSS('text-overflow', 'ellipsis')
     await expect(breadcrumb.getBreadcrumbTextByIndex()).toHaveCSS('white-space', 'nowrap')
   })
 
   test('Verify breadcrumb tooltip is working with icon', async ({ api }) => {
-    await api.createPage(SINGLE_PAGE_WITH_ICON)
+    await api.createPage(SUPER_LONG_TITLE_PAGE)
     await api.pageReload()
 
     await pageList.clickPage()
     await breadcrumb.getBreadcrumbTextByIndex().hover()
 
-    await expect(breadcrumb.getTooltip()).toContainText('😛')
+    await expect(breadcrumb.getTooltip()).toContainText(SUPER_LONG_TITLE_PAGE.icon?.emoji as string)
   })
 
   test('Verify breadcrumb tooltip is working without icon', async ({ api }) => {
-    await api.createPage(SINGLE_PAGE)
+    await api.createPage(SUPER_LONG_TITLE_PAGE)
     await api.pageReload()
 
     await pageList.clickPage()
     await breadcrumb.getBreadcrumbTextByIndex().hover()
 
-    await expect(breadcrumb.getTooltip()).toHaveText('It is a breadcrumb which is more than 150px')
+    await expect(breadcrumb.getTooltip()).toContainText(SUPER_LONG_TITLE_PAGE.title)
   })
 
   test('Verify breadcrumb max layer equal 4', async ({ api }) => {
@@ -81,7 +81,7 @@ test.describe('Breadcrumb', () => {
     await pageList.clickPage(4)
 
     await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(4)
-    await expect(breadcrumb.getBreadcrumbTextByIndex(2)).toContainText('...')
+    await expect(breadcrumb.getBreadcrumbTextByIndex(1)).toContainText('...')
   })
 
   test('Verify can redirect to other page by breadcrumb', async ({ api }) => {
@@ -91,21 +91,33 @@ test.describe('Breadcrumb', () => {
     await pageList.expandSubPageOneByOne(4)
     await pageList.clickPage(4)
     await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(4)
-    await breadcrumb.getBreadcrumbTextByIndex(1).click()
+    await breadcrumb.getBreadcrumbTextByIndex().click()
 
-    await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(2)
+    await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(1)
   })
 
-  test('Verify the last breadcrumb will be changed when clicking on the omitted breadcrumb', async ({ api }) => {
+  test('Verify the omitted item exists in the menubar when hover on ... breadcrumb', async ({ api }) => {
     await api.createPageTree(FIVE_LAYER_PAGE_TREE)
     await api.pageReload()
 
     await pageList.expandSubPageOneByOne(4)
     await pageList.clickPage(4)
-    await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(4)
     await expect(breadcrumb.getBreadcrumbTextByIndex(3)).toHaveText('page 1-1-1-1-1')
-    await breadcrumb.getBreadcrumbTextByIndex(2).click()
+    await breadcrumb.getBreadcrumbTextByIndex(1).hover()
 
-    await expect(breadcrumb.getBreadcrumbTextByIndex(3)).toHaveText('page 1-1-1-1')
+    await expect(breadcrumb.getItemInMenubar()).toHaveCount(2)
+  })
+
+  test('Verify it can direct to the page when clicking on the omitted item', async ({ api }) => {
+    await api.createPageTree(FIVE_LAYER_PAGE_TREE)
+    await api.pageReload()
+
+    await pageList.expandSubPageOneByOne(4)
+    await pageList.clickPage(4)
+    await expect(breadcrumb.getBreadcrumbTextByIndex(3)).toHaveText('page 1-1-1-1-1')
+    await breadcrumb.getBreadcrumbTextByIndex(1).hover()
+    await breadcrumb.getItemInMenubar().nth(0).click()
+
+    await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(2)
   })
 })

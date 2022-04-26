@@ -1,14 +1,9 @@
 import { PageBlock } from './types'
 
-export const SINGLE_PAGE: PageBlock = {
-  title: 'It is a breadcrumb which is more than 150px'
-}
-
-export const SINGLE_PAGE_WITH_ICON: PageBlock = {
-  title: 'page 1',
+export const SUPER_LONG_TITLE_PAGE: PageBlock = {
+  title: 'It is a Super Super Super Super Long breadcrumb which is more than 400px',
   icon: { name: 'face with tongue', emoji: '😛' }
 }
-
 export const FIVE_LAYER_PAGE_TREE: PageBlock[] = [
   {
     title: 'page 1',
