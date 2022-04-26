@@ -17,14 +17,14 @@ const italicSettings = {
 export const fontFaceSets = {
   '@font-face': [
     {
-      fontFamily: 'Inter var',
+      fontFamily: '42sans',
       ...webFontCommonSettings,
-      src: fontSrc('Inter-roman.var.woff2?v=3.19')
+      src: fontSrc('42sans-roman.var.woff2?v=4.26')
     },
     {
-      fontFamily: 'Inter var',
+      fontFamily: '42sans',
       ...webFontCommonSettings,
-      src: fontSrc('Inter-italic.var.woff2?v=3.19'),
+      src: fontSrc('42sans-italic.var.woff2?v=4.26'),
       ...italicSettings
     },
     {
@@ -98,3 +98,4 @@ export const fontFaceSets = {
     }
   ]
 }
+

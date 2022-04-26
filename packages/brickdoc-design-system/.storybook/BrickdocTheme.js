@@ -12,8 +12,7 @@ export const BrickdocTheme = create({
   appBorderColor: '#e0e0e0',
   barTextColor: '#292323',
   barSelectedColor: '#2c5bff',
-  fontBase:
-    '"Inter var" ,-apple-system ,system-ui ,"Segoe UI" ,"Helvetica Neue" ,Tahoma ,"Apple Color Emoji", sans-serif',
+  fontBase: '"42sans" ,-apple-system ,system-ui ,"Segoe UI" ,"Helvetica Neue" ,Tahoma ,"Apple Color Emoji", sans-serif',
   fontCode: '"Fira Code" ,"SF Mono" ,"Cascadia Code" ,Menlo ,Consolas ,"Courier New", monospace',
   textColor: '#292323'
 })

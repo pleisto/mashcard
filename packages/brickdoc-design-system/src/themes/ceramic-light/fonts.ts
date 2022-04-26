@@ -1,7 +1,7 @@
 const fontSeparator = ' ,'
 
 const sansSerif = [
-  '"Inter var"', // Web Font
+  '"42sans"', // Web Font
   '-apple-system',
   'system-ui',
   '"Segoe UI"',
