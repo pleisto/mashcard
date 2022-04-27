@@ -21,8 +21,6 @@ jobs:
           cache: yarn
       - name: Run yarn install
         run: yarn install --immutable
-      - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install libsodium23 rustc
       - name: Install Playwright
         run: yarn e2e-testing install-deps
       - name: Setup Ruby
