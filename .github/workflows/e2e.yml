@@ -44,14 +44,13 @@ jobs:
           E2E_CHROMIUM_LOGIN_PASSWORD: ${{ steps.e2e-account.outputs.chromium-password }}
           E2E_FIREFOX_LOGIN_EMAIL: ${{ steps.e2e-account.outputs.firefox-email }}
           E2E_FIREFOX_LOGIN_PASSWORD: ${{ steps.e2e-account.outputs.firefox-password }}
-      - name: Generate Allure reports
-        run: yarn e2e-testing allure:generate
       - name: Send reports to the allure server
         uses: Xotabu4/send-to-allure-server-action@1
         id: allure
         if: ${{ always() }}
         with:
           allure-server-url: https://allure.brickdoc.dev
+          allure-results: tools/e2e-testing/allure-results
       - name: Get current date
         id: date
         if: ${{ always() }}
@@ -63,4 +62,4 @@ jobs:
         with:
           slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_TOKEN }}
           slack-channel: C03D6SMBGTW
-          slack-text: Your report is uploaded in ${{ steps.allure.outputs.report-url }} at ${{ steps.date.outputs.upload-date }}, hurry to check it~ 😉
+          slack-text: Your report is uploaded in ${{ steps.allure.outputs.report-url }} at ${{ steps.date.outputs.upload-date }}, go to check it~ 😉
