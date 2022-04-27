@@ -8,6 +8,9 @@
   "files": [
     "dist"
   ],
+  "volta": {
+    "extends": "../../package.json"
+  },
   "dependencies": {
     "@brickdoc/active-support": "workspace:^",
     "@brickdoc/design-icons": "workspace:^",

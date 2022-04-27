@@ -2,6 +2,9 @@
   "name": "@brickdoc/server-api",
   "private": true,
   "schematics": "./src/cli/schematics/collection.json",
+  "volta": {
+    "extends": "../../package.json"
+  },
   "scripts": {
     "dev": "node-dev --enable-source-maps --inspect --notify=false src/main.ts server",
     "start": "ts-node src/main.ts server",

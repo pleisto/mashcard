@@ -1,6 +1,9 @@
 {
   "name": "@brickdoc/e2e-testing",
   "private": true,
+  "volta": {
+    "extends": "../../package.json"
+  },
   "scripts": {
     "install-deps": "playwright install --with-deps",
     "start": "yarn cleanup && yarn run-playwright",

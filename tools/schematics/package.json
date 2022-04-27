@@ -4,6 +4,9 @@
   "description": "Schematics for Brickdoc",
   "sideEffects": false,
   "main": "src/index.ts",
+  "volta": {
+    "extends": "../../package.json"
+  },
   "dependencies": {
     "@angular-devkit/core": "^13.3.3",
     "@angular-devkit/schematics": "^13.3.3",

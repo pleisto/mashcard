@@ -3,6 +3,9 @@
   "version": "0.5.0",
   "description": "brickdoc design system",
   "license": "Apache-2.0",
+  "volta": {
+    "extends": "../../package.json"
+  },
   "scripts": {
     "storybook": "start-storybook -p 6006 -h localhost",
     "build-storybook": "build-storybook",

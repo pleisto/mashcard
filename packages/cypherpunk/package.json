@@ -12,6 +12,9 @@
   "license": "Apache-2.0",
   "main": "./src/index.ts",
   "module": "./src/index.ts",
+  "volta": {
+    "extends": "../../package.json"
+  },
   "dependencies": {
     "blake3": "^2.1.7",
     "sodium-native": "^3.3.0"

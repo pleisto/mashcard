@@ -2,6 +2,9 @@
   "name": "@brickdoc/client-web",
   "description": "The web client app for the Brickdoc website.",
   "private": true,
+  "volta": {
+    "extends": "../../package.json"
+  },
   "dependencies": {
     "@apollo/client": "^3.5.10",
     "@brickdoc/active-support": "workspace:^",

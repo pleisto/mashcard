@@ -8,6 +8,9 @@
   "files": [
     "dist"
   ],
+  "volta": {
+    "extends": "../../package.json"
+  },
   "devDependencies": {
     "@brickdoc/eslint-plugin": "workspace:^"
   },

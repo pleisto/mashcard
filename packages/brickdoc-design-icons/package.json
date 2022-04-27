@@ -8,6 +8,9 @@
   "sideEffects": false,
   "main": "src/index.ts",
   "module": "src/index.ts",
+  "volta": {
+    "extends": "../../package.json"
+  },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",
     "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
