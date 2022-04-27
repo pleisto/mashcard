@@ -16,16 +16,11 @@ export interface AttachmentMethods {
 
 export function useAttachmentMethods({ webViewer, fileUrl }: UseAttachmentMethodsProps): [AttachmentMethods] {
   const handleDownload = useCallback((): void => {
-    if (webViewer?.UI) {
-      void webViewer.UI.downloadPdf()
-      return
-    }
-
     const link = document.createElement('a')
     link.download = 'true'
     link.href = fileUrl
     link.click()
-  }, [fileUrl, webViewer?.UI])
+  }, [fileUrl])
 
   const handleFullscreen = useCallback(() => {
     webViewer?.UI.toggleFullScreen()

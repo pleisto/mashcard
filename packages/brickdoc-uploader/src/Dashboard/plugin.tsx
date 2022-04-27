@@ -32,6 +32,7 @@ export interface UploadResultData {
   meta?: {
     name?: string
     size?: number
+    contentType?: string
     source: 'origin' | 'external'
   }
 }

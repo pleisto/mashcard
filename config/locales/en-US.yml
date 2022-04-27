@@ -672,7 +672,7 @@ en-US:
       embed:
         label: Embed
       upload:
-        label: Upload
+        label: Local File
       gallery:
         label: Gallery
       spreadsheet:
@@ -896,6 +896,9 @@ en-US:
               placeholder: Text to display
             link:
               placeholder: Paste link
+        upload:
+          label: You can upload anything locally.
+          description: Upload image、PDF、Word、PPT、Excel and more.
       types:
         gallery:
           title: Gallery
@@ -903,9 +906,6 @@ en-US:
             placeholder: Search...
           label: Select a picture from Unsplash.
           description: Unsplash image.
-        upload:
-          label: You can upload anything locally.
-          description: Upload image、PDF、Word、PPT、Excel and more.
     pdf_section:
       hint: Embed a PDF
       deletion_confirm:

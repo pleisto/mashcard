@@ -1,6 +1,6 @@
-import { FC, useCallback, useRef } from 'react'
+import { FC, ReactElement, useCallback, useRef } from 'react'
 import { Embedtype } from '@brickdoc/schema'
-import { AttachmentView, CardView, WebBookmarkView } from './views'
+import { AttachmentView, CardView, BookmarkView } from './views'
 import { linkStorage, getFileTypeByExtension, FileType, getBlobUrl, getFileTypeByContentType } from '../../../helpers'
 import { GalleryTypeEmbedBlock, LinkTypeEmbedBlock, UploadTypeEmbedBlock } from './embedTypes'
 import { ImageView } from '../ImageView'
@@ -8,9 +8,10 @@ import './EmbedBlock.less'
 import { EmbedAttributes, EmbedViewMode, EmbedViewProps } from '../../../extensions/blocks/embed/meta'
 import { useExternalProps } from '../../../hooks/useExternalProps'
 import { ModeSwitchProps } from './views/ModeSwitch'
+import { FileIcon } from '../../ui'
 
 const canFilePreview = (fileType: FileType, mode: EmbedAttributes['attachment']['mode']): boolean =>
-  mode !== 'link' && ['pdf', 'excel', 'word', 'ppt'].includes(fileType)
+  mode !== 'link' && mode !== 'bookmark' && ['pdf', 'excel', 'word', 'ppt'].includes(fileType)
 
 const blockModeToViewMode = (mode: EmbedViewMode | undefined): ModeSwitchProps['mode'] | undefined => {
   if (mode === 'bookmark') return 'bookmark'
@@ -26,6 +27,59 @@ export type UpdateEmbedBlockAttributes = <T extends 'link' | 'image' | 'attachme
   attrs: Partial<EmbedAttributes[T]>,
   type: T
 ) => void
+
+const renderAttachment = (
+  fileUrl: string,
+  updateEmbedBlockAttributes: UpdateEmbedBlockAttributes,
+  { node, deleteNode, getPos }: EmbedViewProps
+): ReactElement => {
+  const { name, contentType, mode } = node.attrs.attachment
+  let fileType = getFileTypeByContentType(contentType ?? '')
+  fileType = fileType === 'unknown' ? getFileTypeByExtension(name) : fileType
+
+  if (canFilePreview(fileType, node.attrs.attachment?.mode)) {
+    return (
+      <CardView
+        blockType="attachment"
+        fileName={name!}
+        fileType={fileType}
+        fileUrl={fileUrl}
+        deleteNode={deleteNode}
+        getPos={getPos}
+        node={node}
+        updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+      />
+    )
+  }
+
+  if (mode === 'bookmark') {
+    return (
+      <BookmarkView
+        blockType="attachment"
+        title={name ?? ''}
+        icon={<FileIcon fileType={fileType} />}
+        linkUrl={fileUrl}
+        node={node}
+        deleteNode={deleteNode}
+        getPos={getPos}
+        updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+      />
+    )
+  }
+
+  return (
+    <AttachmentView
+      blockType="attachment"
+      name={name!}
+      fileType={fileType}
+      fileUrl={fileUrl}
+      deleteNode={deleteNode}
+      node={node}
+      getPos={getPos}
+      updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+    />
+  )
+}
 
 export const EmbedView: FC<EmbedViewProps> = props => {
   const { node, updateAttributes, deleteNode, getPos } = props
@@ -62,37 +116,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
   if (node.attrs.attachment?.key) {
     const fileUrl = getBlobUrl(externalProps.rootId, node.attrs?.attachment ?? {}, externalProps.blobs) ?? defaultUrl
     if (fileUrl) {
-      const { name, contentType } = node.attrs.attachment
-      let fileType = getFileTypeByContentType(contentType ?? '')
-      fileType = fileType === 'unknown' ? getFileTypeByExtension(name) : fileType
-
-      if (canFilePreview(fileType, node.attrs.attachment?.mode)) {
-        return (
-          <CardView
-            blockType="attachment"
-            fileName={name!}
-            fileType={fileType}
-            fileUrl={fileUrl}
-            deleteNode={deleteNode}
-            getPos={getPos}
-            node={node}
-            updateEmbedBlockAttributes={updateEmbedBlockAttributes}
-          />
-        )
-      }
-
-      return (
-        <AttachmentView
-          blockType="attachment"
-          name={name!}
-          fileType={fileType}
-          fileUrl={fileUrl}
-          deleteNode={deleteNode}
-          node={node}
-          getPos={getPos}
-          updateEmbedBlockAttributes={updateEmbedBlockAttributes}
-        />
-      )
+      return renderAttachment(fileUrl, updateEmbedBlockAttributes, props)
     }
   }
 
@@ -120,7 +144,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
     }
 
     return (
-      <WebBookmarkView
+      <BookmarkView
         blockType="link"
         title={title ?? ''}
         cover={cover ?? ''}

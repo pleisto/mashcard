@@ -1,3 +1,3 @@
 export * from './AttachmentView'
-export * from './WebBookmarkView'
+export * from './BookmarkView'
 export * from './CardView'

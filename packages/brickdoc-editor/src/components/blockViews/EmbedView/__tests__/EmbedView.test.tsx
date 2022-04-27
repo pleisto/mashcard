@@ -173,7 +173,7 @@ describe('EmbedView', () => {
 
     render(<EmbedView {...props} />)
 
-    expect(screen.getByText('embed_block.types.upload.label')).toBeInTheDocument()
+    expect(screen.getByText('embed_block.embed_types.upload.label')).toBeInTheDocument()
   })
 
   it('renders link', () => {

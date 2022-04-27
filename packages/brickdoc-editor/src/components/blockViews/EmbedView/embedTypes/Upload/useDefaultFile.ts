@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { imperativeUpload, ImperativeUploadOptions } from '@brickdoc/uploader'
-import { getFileTypeByExtension } from '../../../../helpers'
-import { useExternalProps } from '../../../../hooks'
-import { EmbedViewProps } from '../../../../extensions/blocks/embed/meta'
+import { getFileTypeByExtension } from '../../../../../helpers'
+import { useExternalProps } from '../../../../../hooks'
+import { EmbedViewProps } from '../../../../../extensions/blocks/embed/meta'
 
 export function useDefaultFile(
   node: EmbedViewProps['node'],

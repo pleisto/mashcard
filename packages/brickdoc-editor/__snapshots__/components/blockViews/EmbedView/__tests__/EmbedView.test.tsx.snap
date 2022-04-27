@@ -20,20 +20,24 @@ exports[`EmbedView matches correct snapshot 1`] = `
         class="brd-c-bzfXri"
       >
         <div
-          class="brd-c-hVJEfX"
+          class="brd-c-eJsVBJ"
         >
           brickdoc
         </div>
         <div
-          class="brd-c-hlZlxc"
+          class="brd-c-hVTxZy"
         >
           desc
         </div>
         <div
-          class="brd-c-lfxUtP"
+          class="brd-c-ihEKuP"
         >
           
-          https://www.brickdoc.com
+          <span
+            class="brd-c-hSIMwt"
+          >
+            https://www.brickdoc.com
+          </span>
         </div>
         <div
           class="brd-c-isbGtc"

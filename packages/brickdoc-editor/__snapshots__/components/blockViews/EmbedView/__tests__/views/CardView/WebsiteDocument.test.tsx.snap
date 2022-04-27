@@ -3,7 +3,7 @@
 exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
 <div>
   <div
-    class="brd-c-iDaLcP"
+    class="brd-c-euukif"
   >
     <iframe
       class="brd-c-bPNjhd"
@@ -11,10 +11,10 @@ exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
       title="title"
     />
     <div
-      class="brd-c-gIfkgt"
+      class="brd-c-fzqzBr"
     >
       <div
-        class="brd-c-fNpTls"
+        class="brd-c-cAUyZH"
       >
         <img
           alt="icon"

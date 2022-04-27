@@ -1,19 +1,20 @@
-import { FC, MouseEvent, useCallback } from 'react'
+import { FC, MouseEvent, ReactElement, useCallback } from 'react'
 import { Button, styled, theme } from '@brickdoc/design-system'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { BlockContainer } from '../../../BlockContainer'
 import { EmbedViewProps } from '../../../../../extensions/blocks/embed/meta'
 import { ModeSwitch } from '../ModeSwitch'
 import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../../EmbedView'
+import { useActionOptions } from '../useActionOptions'
 
-export interface WebBookmarkViewProps {
+export interface BookmarkViewProps {
   deleteNode: EmbedViewProps['deleteNode']
   getPos: EmbedViewProps['getPos']
   node: EmbedViewProps['node']
-  cover: string
-  icon: string
+  cover?: string
+  icon?: string | ReactElement
   title: string
-  description: string
+  description?: string
   linkUrl: string
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
   blockType: EmbedBlockType
@@ -52,32 +53,32 @@ const Cover = styled('div', {
 })
 
 const Title = styled('div', {
-  boxOrient: 'vertical',
   fontSize: theme.fontSizes.body,
   fontWeight: 600,
-  lineClamp: 2,
   lineHeight: '1.5rem',
   marginBottom: '.375rem',
+  display: '-webkit-box',
+  '-webkit-line-clamp': 2,
+  '-webkit-box-orient': 'vertical',
   overflow: 'hidden',
-  textOverflow: 'ellipsis',
+  maxWidth: '100%',
   whiteSpace: 'normal',
-  wordBreak: 'break-all',
-  wordWrap: 'anywhere'
+  wordBreak: 'break-all'
 })
 
 const Description = styled('div', {
-  boxOrient: 'vertical',
   color: theme.colors.typeThirdary,
   fontSize: theme.fontSizes.callout,
   fontWeight: 450,
-  lineClamp: 3,
   lineHeight: '1.25rem',
   marginBottom: '.25rem',
+  display: '-webkit-box',
+  '-webkit-line-clamp': 3,
+  '-webkit-box-orient': 'vertical',
   overflow: 'hidden',
-  textOverflow: 'ellipsis',
+  maxWidth: '100%',
   whiteSpace: 'normal',
-  wordBreak: 'break-all',
-  wordWrap: 'anywhere'
+  wordBreak: 'break-all'
 })
 
 const Link = styled('div', {
@@ -87,17 +88,38 @@ const Link = styled('div', {
   flexDirection: 'row',
   fontSize: theme.fontSizes.callout,
   fontWeight: 450,
-  lineClamp: 3,
-  lineHeight: '1.125rem'
+  maxWidth: '100%'
 })
+
+const LinkText = styled('span', {
+  display: '-webkit-box',
+  '-webkit-line-clamp': 1,
+  '-webkit-box-orient': 'vertical',
+  overflow: 'hidden',
+  maxWidth: '80%',
+  whiteSpace: 'normal',
+  wordBreak: 'break-all'
+})
+
+const iconMarginRight = '.25rem'
 
 const LinkIcon = styled('img', {
   height: '.875rem',
-  marginRight: '.25rem',
+  marginRight: iconMarginRight,
   width: '.875rem'
 })
 
-const WebBookmarkContainer = styled(Button, {
+const FileIconWrapper = styled('div', {
+  include: ['flexCenter'],
+
+  display: 'flex',
+  fontSize: '.875rem',
+  height: '.875rem',
+  marginRight: iconMarginRight,
+  width: '.875rem'
+})
+
+const BookmarkContainer = styled(Button, {
   variants: {
     size: {
       md: {
@@ -123,7 +145,7 @@ const WebBookmarkContainer = styled(Button, {
   }
 })
 
-export const WebBookmarkView: FC<WebBookmarkViewProps> = ({
+export const BookmarkView: FC<BookmarkViewProps> = ({
   linkUrl,
   cover,
   icon,
@@ -138,6 +160,8 @@ export const WebBookmarkView: FC<WebBookmarkViewProps> = ({
   const handleStopPropagation = useCallback((event: MouseEvent) => {
     event.stopPropagation()
   }, [])
+  const isWebsite = blockType === 'link'
+  const [actionOptions] = useActionOptions(isWebsite ? undefined : linkUrl)
 
   return (
     <BlockContainer
@@ -145,9 +169,9 @@ export const WebBookmarkView: FC<WebBookmarkViewProps> = ({
       contentForCopy={linkUrl}
       deleteNode={deleteNode}
       getPos={getPos}
-      actionOptions={['copy', 'delete']}
+      actionOptions={actionOptions}
     >
-      <WebBookmarkContainer
+      <BookmarkContainer
         data-testid={TEST_ID_ENUM.editor.embedBlock.link.id}
         size="md"
         onClick={() => window.open(linkUrl, '_blank')}
@@ -157,14 +181,19 @@ export const WebBookmarkView: FC<WebBookmarkViewProps> = ({
           {title && <Title>{title}</Title>}
           {description && <Description>{description}</Description>}
           <Link>
-            {icon && <LinkIcon alt="icon" src={icon} />}
-            {linkUrl}
+            {icon &&
+              (typeof icon === 'string' ? (
+                <LinkIcon alt="icon" src={icon} />
+              ) : (
+                <FileIconWrapper>{icon}</FileIconWrapper>
+              ))}
+            <LinkText>{linkUrl}</LinkText>
           </Link>
           <ModeSwitchContainer onClick={handleStopPropagation}>
             <ModeSwitch mode="bookmark" blockType={blockType} updateEmbedBlockAttributes={updateEmbedBlockAttributes} />
           </ModeSwitchContainer>
         </Content>
-      </WebBookmarkContainer>
+      </BookmarkContainer>
     </BlockContainer>
   )
 }

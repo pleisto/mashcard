@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react-hooks'
 import * as uploader from '@brickdoc/uploader/src/imperativeUpload'
-import { EmbedAttributes } from '../../../../../extensions/blocks/embed/meta'
-import { mockBlockViewProps } from '../../../../../test'
-import { useDefaultFile } from '../../embedTypes/useDefaultFile'
+import { EmbedAttributes } from '../../../../../../extensions/blocks/embed/meta'
+import { mockBlockViewProps } from '../../../../../../test'
+import { useDefaultFile } from '../../../embedTypes/Upload/useDefaultFile'
 
 describe('EmbedView > useDefaultFile', () => {
   it('uploads file when defaultFile exists', () => {

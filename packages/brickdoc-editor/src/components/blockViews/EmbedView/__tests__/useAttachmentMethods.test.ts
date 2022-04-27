@@ -27,27 +27,6 @@ describe('useAttachmentMethods', () => {
     const fileUrl = 'file-url'
     const updateEmbedBlockAttributes = jest.fn()
     const blockType = 'attachment'
-    const webViewer: any = {
-      UI: {
-        downloadPdf: jest.fn()
-      }
-    }
-
-    const { result } = renderHook(() =>
-      useAttachmentMethods({ webViewer, fileUrl, blockType, updateEmbedBlockAttributes })
-    )
-
-    const { onDownload } = result.current[0]
-
-    onDownload()
-
-    expect(webViewer.UI.downloadPdf).toBeCalled()
-  })
-
-  it('onDownload works correctly without webViewer', () => {
-    const fileUrl = 'file-url'
-    const updateEmbedBlockAttributes = jest.fn()
-    const blockType = 'attachment'
 
     const { result } = renderHook(() => useAttachmentMethods({ fileUrl, blockType, updateEmbedBlockAttributes }))
 

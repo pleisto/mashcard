@@ -44,7 +44,8 @@ export const imperativeUpload = async (
       meta: {
         name: file.name,
         size: file.size,
-        source: 'origin'
+        source: 'origin',
+        contentType: file.type
       }
     })
     uppy.off('upload-success', handleUploadSuccess)

@@ -36,6 +36,7 @@ export interface EmbedAttributes {
     type: 'ATTACHMENT'
     source?: 'EXTERNAL' | 'ORIGIN'
     mode?: EmbedViewMode
+    size?: number
   }
 }
 

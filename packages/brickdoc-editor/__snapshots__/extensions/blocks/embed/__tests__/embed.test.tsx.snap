@@ -59,12 +59,12 @@ exports[`Embed renders Embed correctly 1`] = `
               <span
                 class="brd-c-eCJrGa"
               >
-                embed_block.types.upload.label
+                embed_block.embed_types.upload.label
               </span>
               <span
                 class="brd-c-mVgbw"
               >
-                embed_block.types.upload.description
+                embed_block.embed_types.upload.description
               </span>
             </div>
             <div

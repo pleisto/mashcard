@@ -6,6 +6,8 @@ import { EmbedViewProps } from '../../../../../extensions/blocks/embed/meta'
 import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../../EmbedView'
 import { PdftronDocument } from './PdftronDocument/PdftronDocument'
 import { WebsiteDocument } from './WebsiteDocument'
+import { styled } from '@brickdoc/design-system'
+import { ModeSwitchContainer } from './DocumentFooter'
 
 export interface CardViewProps {
   blockType: EmbedBlockType
@@ -19,6 +21,15 @@ export interface CardViewProps {
   icon?: string | null
 }
 
+const DocumentContainer = styled('div', {
+  '&:hover': {
+    [`& ${ModeSwitchContainer}`]: {
+      opacity: 1,
+      pointerEvents: 'inherit'
+    }
+  }
+})
+
 export const CardView: FC<CardViewProps> = ({
   blockType,
   updateEmbedBlockAttributes,
@@ -30,8 +41,8 @@ export const CardView: FC<CardViewProps> = ({
   icon,
   node
 }) => {
-  const [actionOptions] = useActionOptions()
   const isWebsite = fileType === 'html'
+  const [actionOptions] = useActionOptions(isWebsite ? undefined : fileUrl)
 
   return (
     <BlockContainer
@@ -41,16 +52,25 @@ export const CardView: FC<CardViewProps> = ({
       getPos={getPos}
       actionOptions={actionOptions}
     >
-      {isWebsite && (
-        <WebsiteDocument
-          blockType={blockType}
-          updateEmbedBlockAttributes={updateEmbedBlockAttributes}
-          url={fileUrl}
-          icon={icon}
-          title={fileName}
-        />
-      )}
-      {!isWebsite && <PdftronDocument fileName={fileName} fileUrl={fileUrl} fileType={fileType} />}
+      <DocumentContainer>
+        {isWebsite ? (
+          <WebsiteDocument
+            blockType={blockType}
+            updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+            url={fileUrl}
+            icon={icon}
+            title={fileName}
+          />
+        ) : (
+          <PdftronDocument
+            blockType={blockType}
+            updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+            fileName={fileName}
+            fileUrl={fileUrl}
+            fileType={fileType}
+          />
+        )}
+      </DocumentContainer>
     </BlockContainer>
   )
 }
