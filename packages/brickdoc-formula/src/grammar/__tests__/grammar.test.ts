@@ -1035,8 +1035,9 @@ const testCases: TestCase[] = [
   },
   {
     input: '= nottrue',
-    label: 'TODO not is a operator',
-    value: false
+    label: 'not is a operator',
+    parseErrorType: 'syntax',
+    errorMessage: 'Unknown function nottrue'
   },
   {
     input: '=1.T()',

@@ -7,30 +7,53 @@ export const MultiplicationOperator = createToken({ name: 'MultiplicationOperato
 export const CombineOperator = createToken({ name: 'CombineOperator', pattern: Lexer.NA })
 export const InOperator = createToken({ name: 'InOperator', pattern: Lexer.NA })
 
-export const In = createToken({ name: 'In', pattern: /in/i, categories: InOperator })
-export const ExactIn = createToken({ name: 'ExactIn', pattern: /exactin/i, categories: InOperator })
+const WORD_BOUNDARY_PATTERN = String.raw`,"'\`&#@:!\$%\^<>/?*=.;~|[(){}+\\\-\]\s`
+// export const FUNCTION_NAME_REGEX = /[a-zA-Z_]((?![,"'`&#@:!$%^<>/?*=.;~|[(){}+\\\-\]\s]).)*/
+export const FUNCTION_NAME_REGEX = RegExp(String.raw`[a-zA-Z_]((?![${WORD_BOUNDARY_PATTERN}]).)*`)
 
-export const Self = createToken({ name: 'Self', pattern: /Self/i })
-export const CurrentBlock = createToken({ name: 'CurrentBlock', pattern: /CurrentBlock/i })
-export const Input = createToken({ name: 'Input', pattern: /Input/i })
-export const ThisRow = createToken({ name: 'ThisRow', pattern: /ThisRow/i })
-export const ThisRecord = createToken({ name: 'ThisRecord', pattern: /ThisRecord/i })
+export const TOKEN_SUFFIX_PATTERN = String.raw`(?![^${WORD_BOUNDARY_PATTERN}])`
+
+export const In = createToken({
+  name: 'In',
+  pattern: RegExp(String.raw`in${TOKEN_SUFFIX_PATTERN}`, 'i'),
+  categories: InOperator
+})
+export const ExactIn = createToken({
+  name: 'ExactIn',
+  pattern: RegExp(String.raw`exactin${TOKEN_SUFFIX_PATTERN}`, 'i'),
+  categories: InOperator
+})
+
+export const Self = createToken({ name: 'Self', pattern: RegExp(String.raw`Self${TOKEN_SUFFIX_PATTERN}`, 'i') })
+export const CurrentBlock = createToken({
+  name: 'CurrentBlock',
+  pattern: RegExp(String.raw`CurrentBlock${TOKEN_SUFFIX_PATTERN}`, 'i')
+})
+export const Input = createToken({ name: 'Input', pattern: RegExp(String.raw`Input${TOKEN_SUFFIX_PATTERN}`, 'i') })
+export const ThisRow = createToken({
+  name: 'ThisRow',
+  pattern: RegExp(String.raw`ThisRow${TOKEN_SUFFIX_PATTERN}`, 'i')
+})
+export const ThisRecord = createToken({
+  name: 'ThisRecord',
+  pattern: RegExp(String.raw`ThisRecord${TOKEN_SUFFIX_PATTERN}`, 'i')
+})
 
 export const And = createToken({
   name: 'And',
-  pattern: /and|&&/i,
+  pattern: RegExp(String.raw`(?:&&|and${TOKEN_SUFFIX_PATTERN})`, 'i'),
   categories: CombineOperator
 })
 
 export const Or = createToken({
   name: 'Or',
-  pattern: /or|\|\|/i,
+  pattern: RegExp(String.raw`(?:\|\||or${TOKEN_SUFFIX_PATTERN})`, 'i'),
   categories: CombineOperator
 })
 
 export const Not = createToken({
   name: 'Not',
-  pattern: /not|!/i
+  pattern: RegExp(String.raw`(?:!|not${TOKEN_SUFFIX_PATTERN})`, 'i')
 })
 
 export const GreaterThan = createToken({
@@ -170,7 +193,7 @@ export const DecimalLiteral = createToken({
 
 export const BooleanLiteral = createToken({
   name: 'BooleanLiteral',
-  pattern: /true|false/i
+  pattern: RegExp(String.raw`(?:true|false)${TOKEN_SUFFIX_PATTERN}`, 'i')
 })
 
 export const StringLiteral = createToken({
@@ -180,7 +203,7 @@ export const StringLiteral = createToken({
 
 export const NullLiteral = createToken({
   name: 'NullLiteral',
-  pattern: /null/i
+  pattern: RegExp(String.raw`null${TOKEN_SUFFIX_PATTERN}`, 'i')
 })
 
 export const Comma = createToken({ name: 'Comma', pattern: /,/ })
@@ -191,19 +214,9 @@ export const DoubleColon = createToken({ name: 'DoubleColon', pattern: /::/ })
 
 export const Colon = createToken({ name: 'Colon', pattern: /:/ })
 
-export const FunctionName = createToken({
-  name: 'FunctionName',
-  // pattern: /[a-zA-Z][a-zA-Z0-9_]*/
-  pattern: /[a-zA-Z_]((?![,"'`&#@:!$%^<>/?*=.;~|[(){}+\\\-\]\s]).)*/
-  // pattern: /\S+/
-})
+export const FunctionName = createToken({ name: 'FunctionName', pattern: FUNCTION_NAME_REGEX })
 
 export const AnyName = createToken({ name: 'AnyName', pattern: /\S+/ })
-
-// export const FunctionName = createToken({
-//   name: 'FunctionName',
-//   pattern: /[A-Z][A-Z0-9_]*/
-// })
 
 // marking WhiteSpace as 'SKIPPED' makes the lexer skip it.
 export const WhiteSpace = createToken({
@@ -315,3 +328,21 @@ export const tokenVocabulary = allTokens.reduce((o: Record<string, TokenType>, a
   o[acc.name] = acc
   return o
 }, {})
+
+export const checkValidName = (name: string): boolean => {
+  if (name.length !== name.trim().length) {
+    return false
+  }
+
+  const { tokens, errors } = FormulaLexer.tokenize(name)
+
+  if (errors.length > 0) {
+    return false
+  }
+
+  if (tokens.length !== 1) {
+    return false
+  }
+
+  return tokens[0].tokenType.name === 'FunctionName'
+}

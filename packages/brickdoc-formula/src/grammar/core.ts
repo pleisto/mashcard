@@ -24,14 +24,14 @@ import {
   EventDependency
 } from '../types'
 import { VariableClass, castVariable } from '../context/variable'
-import { FormulaLexer } from './lexer'
+import { checkValidName, FormulaLexer } from './lexer'
 import { FORMULA_PARSER_VERSION } from '../version'
 import { FormulaParser } from './parser'
 import { complete } from './completer'
 import { FormulaInterpreter } from './interpreter'
 import { CodeFragmentVisitor } from './codeFragment'
 import { blockKey } from './convert'
-import { checkValidName, parseString, shouldReturnEarly } from './util'
+import { parseString, shouldReturnEarly } from './util'
 import { createVariableTask } from '../context'
 import { hideDotStep, addSpaceStep, applyThisRecordStep } from './steps'
 

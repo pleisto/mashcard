@@ -76,6 +76,9 @@ const validInputs: string[] = [
   '1+123',
   '-1.%',
   '01.2000100',
+  'hel"lo',
+  'he中文"',
+  '中文"123asd',
   '1:',
   '1:1',
   '1.%',
@@ -96,7 +99,8 @@ const validInputs: string[] = [
   '<',
   '<>',
   'ABS(1 {a: 1}.a',
-  '(1 {}.'
+  '(1 {}.',
+  '='
 ]
 
 describe('parser', () => {

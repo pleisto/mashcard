@@ -87,6 +87,8 @@ const complexMetas: VariableMetadata[] = [
 const SNAPSHOT_FLAG = '<SNAPSHOT>'
 
 const simpleCommonTestCases = [
+  { input: '=', positions: [0], resultData: 'TODO mismatch token startExpression' },
+  { input: '==', positions: [0], resultData: 'Missing expression' },
   { input: '123', positions: [0, 1, 3], resultData: 123 },
   { input: '1 +　1 　 +　 　1', newInput: '1 + 1   +   1', positions: [0, 1, 13], resultData: 3 },
   { input: '  123     ', positions: [1, 2, 4, 6, 8], resultData: 123 },
@@ -160,7 +162,7 @@ const simpleCommonTestCases = [
 ]
 
 const simpleNormalTestCases = [
-  { input: '', newInput: undefined, positions: [], resultData: undefined },
+  { input: '', newInput: undefined, positions: [0], resultData: 'Parse error: ""' },
   ...simpleCommonTestCases
 ]
 
@@ -169,13 +171,13 @@ const simpleNormalTestCasesWithPosition = simpleNormalTestCases.flatMap(t =>
 )
 
 const simpleSpreadsheetTestCases = [
-  { input: '', newInput: undefined, positions: [], resultData: '' },
-  { input: '=', newInput: undefined, positions: [], resultData: '=' },
-  { input: '=  ', newInput: undefined, positions: [], resultData: '=  ' },
+  { input: '', newInput: undefined, positions: [0], resultData: '' },
+  { input: '=', newInput: undefined, positions: [0], resultData: '=' },
+  { input: '=  ', newInput: undefined, positions: [0], resultData: '=  ' },
 
-  { input: ' =', newInput: undefined, positions: [], resultData: ' =' },
-  { input: ' foo baz ', newInput: undefined, positions: [], resultData: ' foo baz ' },
-  { input: '   ', newInput: undefined, positions: [], resultData: '   ' },
+  { input: ' =', newInput: undefined, positions: [0], resultData: ' =' },
+  { input: ' foo baz ', newInput: undefined, positions: [0], resultData: ' foo baz ' },
+  { input: '   ', newInput: undefined, positions: [0], resultData: '   ' },
 
   ...simpleCommonTestCases.map(({ input, newInput, positions, resultData }) => ({
     input: `=${input}`,

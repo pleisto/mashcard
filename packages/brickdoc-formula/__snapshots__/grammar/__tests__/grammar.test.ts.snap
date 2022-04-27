@@ -1103,7 +1103,7 @@ Object {
                                                                                                               "startOffset": 3,
                                                                                                               "tokenType": Object {
                                                                                                                 "CATEGORIES": Array [],
-                                                                                                                "PATTERN": /true\\|false/i,
+                                                                                                                "PATTERN": /\\(\\?:true\\|false\\)\\(\\?!\\[\\^,"'\\\\\`&#@:!\\\\\\$%\\\\\\^<>/\\?\\*=\\.;~\\|\\[\\(\\)\\{\\}\\+\\\\\\\\\\\\-\\\\\\]\\\\s\\]\\)/i,
                                                                                                                 "categoryMatches": Array [],
                                                                                                                 "categoryMatchesMap": Object {},
                                                                                                                 "isParent": false,
@@ -1656,43 +1656,6 @@ Array [
     ],
     "hide": false,
     "type": "number",
-  },
-]
-`;
-
-exports[`Simple test case [TODO not is a operator] = nottrue // => false 1`] = `
-Array [
-  Object {
-    "attrs": undefined,
-    "code": "Equal",
-    "display": "=",
-    "errors": Array [],
-    "hide": false,
-    "type": "any",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "Space",
-    "display": " ",
-    "errors": Array [],
-    "hide": false,
-    "type": "any",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "Not",
-    "display": "not",
-    "errors": Array [],
-    "hide": false,
-    "type": "boolean",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "BooleanLiteral",
-    "display": "true",
-    "errors": Array [],
-    "hide": false,
-    "type": "boolean",
   },
 ]
 `;
@@ -3401,6 +3364,44 @@ Array [
     "code": "Space",
     "display": " ",
     "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+]
+`;
+
+exports[`Simple test case [not is a operator] = nottrue // => ✗ 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Function",
+    "display": "nottrue",
+    "errors": Array [
+      Object {
+        "message": "Unknown function nottrue",
+        "type": "syntax",
+      },
+      Object {
+        "message": "TODO mismatch token FunctionCall",
+        "type": "parse",
+      },
+    ],
     "hide": false,
     "type": "any",
   },

@@ -411,6 +411,7 @@ export type SimpleCodeFragmentType =
   | 'BooleanLiteral'
   | 'NullLiteral'
   | 'Dot'
+  | 'Equal2'
   | 'Equal'
 export type SpecialCodeFragmentType = 'unknown' | 'parseErrorOther' | 'Space' | 'literal'
 export type CodeFragmentCodes = ComplexCodeFragmentType | SimpleCodeFragmentType | SpecialCodeFragmentType
