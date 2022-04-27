@@ -11,7 +11,7 @@
   "dependencies": {
     "@brickdoc/design-system": "workspace:^",
     "@brickdoc/schema": "workspace:^",
-    "axios": "^0.26.1",
+    "axios": "^0.27.1",
     "chevrotain": "^10.1.2",
     "qrcode.react": "^3.0.1",
     "react-vega": "^7.5.0",

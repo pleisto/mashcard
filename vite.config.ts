@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import RubyPlugin from 'vite-plugin-ruby'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import swc from 'unplugin-swc'
 import { visualizer } from 'rollup-plugin-visualizer'
 
 // eslint-disable-next-line import/no-default-export
@@ -61,6 +62,7 @@ export default defineConfig({
         ]
       }
     }),
+    swc.vite(),
     process.env.BUNDLE_STATS
       ? visualizer({
           brotliSize: true,

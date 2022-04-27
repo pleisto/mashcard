@@ -95,7 +95,7 @@ exports[`ImageView matches correct snapshot 1`] = `
           />
           <div
             class="image-section-control-right-drag"
-            style="position: absolute; user-select: none; width: 6px; height: 40px; top: 50%; right: 8px; cursor: col-resize;"
+            style="position: absolute; user-select: none; width: 6px; height: 40px; top: 50%; cursor: col-resize; right: 8px;"
           />
         </div>
       </div>
