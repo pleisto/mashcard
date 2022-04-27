@@ -1926,6 +1926,7 @@ __metadata:
   resolution: "@brickdoc/e2e-testing@workspace:tools/e2e-testing"
   dependencies:
     "@playwright/test": ^1.21.1
+    allure-commandline: ^2.17.2
     allure-playwright: ^2.0.0-beta.16
   languageName: unknown
   linkType: soft
@@ -9174,6 +9175,15 @@ __metadata:
     require-from-string: ^2.0.2
     uri-js: ^4.2.2
   checksum: 5e0ff226806763be73e93dd7805b634f6f5921e3e90ca04acdf8db81eed9d8d3f0d4c5f1213047f45ebbf8047ffe0c840fa1ef2ec42c3a644899f69aa72b5bef
+  languageName: node
+  linkType: hard
+
+"allure-commandline@npm:^2.17.2":
+  version: 2.17.2
+  resolution: "allure-commandline@npm:2.17.2"
+  bin:
+    allure: bin/allure
+  checksum: 976835b1de9f73b2f18bfe543be217089b4aa83e54cf7c4f39caa2b05a83b9089e485bbb6532590011fa08f56d0fb21a57eb847eb924b104cef8c87e330277d7
   languageName: node
   linkType: hard
 
