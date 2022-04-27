@@ -38,7 +38,7 @@ export class PageListPage extends BasePage {
   }
 
   async clickPage(index?: number): Promise<void> {
-    await this.waitForResponseWithAction('GetBlockInfo', this.getPageByIndex(index).click())
+    await this.waitForResponseWithAction('GetChildrenBlocks', this.getPageByIndex(index).click())
   }
 
   async expandArrow(index?: number): Promise<void> {

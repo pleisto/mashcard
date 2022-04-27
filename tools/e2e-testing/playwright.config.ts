@@ -8,7 +8,7 @@ const config: PlaywrightTestConfig = {
   testDir: './tests',
   forbidOnly: isCI,
   retries: 2,
-  reporter: isCI ? [['dot'], ['github']] : 'list',
+  reporter: [['list'], ['allure-playwright']],
   timeout: 20000,
   workers: 1,
   use: {

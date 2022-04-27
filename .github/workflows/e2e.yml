@@ -1,27 +1,15 @@
-name: E2E Testing
-on: [deployment_status]
-concurrency:
-  group: monolith-e2e-${{ github.ref }}
-  cancel-in-progress: true
+name: Full E2E test
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 18 * * *'
 env:
   YARN_CHECKSUM_BEHAVIOR: update
-jobs:
-  changes:
-    runs-on: ubuntu-latest
-    outputs:
-      apps: ${{ steps.filter.outputs.changes }}
-    steps:
-      - name: Checkout the codebase
-        uses: actions/checkout@v3
-      - uses: dorny/paths-filter@v2
-        id: filter
-        with:
-          filters: .github/e2e_rule.yml
 
+jobs:
   playwright:
-    needs: changes
     name: Playwright Test
-    if: fromJSON(needs.changes.outputs.apps)[0] != null && github.event.deployment_status.state == 'success' && (github.event.deployment_status.environment == 'pr_preview' || github.event.deployment_status.environment == 'trunk')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the codebase
@@ -45,34 +33,40 @@ jobs:
       - name: Get E2E account email & password
         id: get_e2e_account
         run: |
-          if [[ $DEPLOY_ENV == 'trunk' ]]; then
-              echo ::set-output name=chromium_email::${{ secrets.TRUNK_E2E_LOGIN_EMAIL_1 }}
-              echo ::set-output name=chromium_password::${{ secrets.TRUNK_E2E_LOGIN_PASSWORD_1 }}
-              echo ::set-output name=firefox_email::${{ secrets.TRUNK_E2E_LOGIN_EMAIL_2 }}
-              echo ::set-output name=firefox_password::${{ secrets.TRUNK_E2E_LOGIN_PASSWORD_2 }}
-          else
-              echo ::set-output name=chromium_email::ADMIN3@brickdoc.com
-              echo ::set-output name=chromium_password::PASSWORD3
-              echo ::set-output name=firefox_email::ADMIN4@brickdoc.com
-              echo ::set-output name=firefox_password::PASSWORD4
-          fi
-        env:
-          DEPLOY_ENV: ${{ github.event.deployment_status.environment }}
+          echo ::set-output name=chromium_email::${{ secrets.TRUNK_E2E_LOGIN_EMAIL_1 }}
+          echo ::set-output name=chromium_password::${{ secrets.TRUNK_E2E_LOGIN_PASSWORD_1 }}
+          echo ::set-output name=firefox_email::${{ secrets.TRUNK_E2E_LOGIN_EMAIL_2 }}
+          echo ::set-output name=firefox_password::${{ secrets.TRUNK_E2E_LOGIN_PASSWORD_2 }}
       - name: Run Playwright tests
-        run: yarn e2e-testing run-playwright ${{ join(fromJSON(needs.changes.outputs.apps), ' ') }}
-        if: success()
+        run: yarn e2e-testing start
         env:
           NODE_OPTIONS: '--max-old-space-size=5950'
-          PLAYWRIGHT_BASE_URL: ${{ github.event.deployment_status.environment_url }}
+          PLAYWRIGHT_BASE_URL: https://trunk.brickdoc.dev
           E2E_CHROMIUM_LOGIN_EMAIL: ${{ steps.get_e2e_account.outputs.chromium_email }}
           E2E_CHROMIUM_LOGIN_PASSWORD: ${{ steps.get_e2e_account.outputs.chromium_password }}
           E2E_FIREFOX_LOGIN_EMAIL: ${{ steps.get_e2e_account.outputs.firefox_email }}
           E2E_FIREFOX_LOGIN_PASSWORD: ${{ steps.get_e2e_account.outputs.firefox_password }}
-      - name: Upload Playwright screenshots/traces/videos (when failed or flaky)
-        if: always()
-        uses: actions/upload-artifact@v3
+      - name: Send Results and Generate Allure Report
+        uses: Xotabu4/send-to-allure-server-action@1
+        id: allure
+        if: ${{ always() }}
         with:
-          name: playwright-test-results
-          if-no-files-found: ignore
-          retention-days: 3
-          path: tools/e2e-testing/test-results/
+          allure-server-url: https://allure.brickdoc.dev
+
+  slack:
+    needs: playwright
+    name: Slack
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get current date
+        id: date
+        run: |
+          echo "::set-output name=uploadedDate::$(TZ=":Asia/Shanghai" date +'%Y-%m-%d %H:%M')"
+
+      - name: Send Slack Message
+        uses: archive/github-actions-slack@master
+        id: send-message
+        with:
+          slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_TOKEN }}
+          slack-channel: C03D6SMBGTW
+          slack-text: Your report is uploaded in ${{needs.playwright.outputs.reportUrl}} at ${{steps.date.outputs.uploadedDate}}, hurry to check it~ 😉

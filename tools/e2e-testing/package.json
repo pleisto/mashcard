@@ -3,10 +3,11 @@
   "private": true,
   "scripts": {
     "install-deps": "yarn playwright install --with-deps",
-    "start": "yarn cleanup && yarn run-playwright && yarn report",
+    "start": "yarn cleanup && yarn run-playwright",
     "run-playwright": "yarn playwright test",
-    "cleanup": "rm -rf .nyc_output test-results",
-    "report": "nyc report --reporter=lcov --reporter=text-summary --cwd ../../ --temp-dir tools/e2e-testing/.nyc_output",
+    "cleanup": "rm -rf allure-report test-results allure-results",
+    "allure:generate": "npx allure generate ./allure-results --clean",
+    "allure:open": "npx allure open ./allure-report",
     "lint": "yarn lint:eslint && yarn lint:type",
     "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx .",
     "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx . --fix",
@@ -14,6 +15,6 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.21.1",
-    "nyc": "^15.1.0"
+    "allure-playwright": "^2.0.0-beta.16"
   }
 }
