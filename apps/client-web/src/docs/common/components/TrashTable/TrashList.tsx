@@ -147,18 +147,18 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
 
   return (
     <>
+      <Item type="title" key="title">
+        <Page>
+          <SelectBlock />
+          {t('trash.pages')}
+        </Page>
+        <Time>{t('trash.deleted_at')}</Time>
+        <Action>
+          <Card />
+        </Action>
+      </Item>
       <List>
         {showSpin && <Spin size="lg" className="trash-spin" />}
-        <Item type="title" key="title">
-          <Page>
-            <SelectBlock />
-            {t('trash.pages')}
-          </Page>
-          <Time>{t('trash.deleted_at')}</Time>
-          <Action>
-            <Card />
-          </Action>
-        </Item>
         {list.map((item: Block, index: number) => (
           <Item type="item" key={getKey(index)}>
             <TrashItem

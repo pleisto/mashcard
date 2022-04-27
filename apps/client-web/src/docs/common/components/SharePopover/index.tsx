@@ -46,7 +46,6 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
   const [spaceValue, setSpaceValue] = React.useState<SpaceValue[]>([])
   const spaceSearch = useImperativeQuery<Query, Variables>(QuerySpaceSearchDocument)
   const [options, setOptions] = React.useState<SpaceType[]>([])
-
   const [inviteUserPolicy, setInviteUserPolicy] = useState<Policytype>(Policytype.View)
 
   const inviteUsers = useCallback(async () => {
@@ -61,8 +60,9 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
     }
     await blockCreateShareLink({ variables: { input } })
     setSpaceValue([])
+    setOptions([])
     setInviteLoading(false)
-  }, [spaceValue, inviteUserPolicy, blockCreateShareLink, docMeta.id])
+  }, [spaceValue, inviteUserPolicy, blockCreateShareLink, docMeta.id, setOptions])
 
   const link = `${docMeta.host}${docMeta.path}`
   const handleCopy = async (): Promise<void> => {
@@ -174,7 +174,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
           ))}
         </Select>
         {policyData}
-        <Button onClick={inviteUsers} disabled={inviteLoading} className="invite-btn">
+        <Button onClick={inviteUsers} disabled={inviteLoading || !spaceValue.length} className="invite-btn">
           {t('share.invite_button')}
         </Button>
       </InviteBar>
@@ -193,7 +193,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
       <Popover
         title={null}
         trigger="click"
-        placement="bottom"
+        placement="bottomStart"
         visible={visible}
         overlayStyle={{ zIndex: 1 }}
         content={shareContent}

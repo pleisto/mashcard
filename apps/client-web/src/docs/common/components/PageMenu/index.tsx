@@ -13,6 +13,7 @@ import {
 } from '@brickdoc/design-system'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
+import { useImperativeQuery } from '@/common/hooks'
 import {
   useBlockSoftDeleteMutation,
   Scalars,
@@ -68,6 +69,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   const [popoverVisible, setPopoverVisible] = React.useState(false)
   const [dropdownVisible, setDropdownVisible] = React.useState(false)
   const [copied, setCopied] = React.useState<boolean>(false)
+  const getPageBlocks = useImperativeQuery(queryPageBlocks)
 
   const [blockSoftDelete, { loading: blockDeleteLoading }] = useBlockSoftDeleteMutation({
     refetchQueries: [queryPageBlocks, GetTrashBlocksDocument]
@@ -90,20 +92,29 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   })
 
   const deletePage = async (): Promise<void> => {
+    const createNew = async () => {
+      const newPageInput = { title: '' }
+      const { data } = await blockCreate({ variables: { input: newPageInput } })
+      if (data?.blockCreate?.id) {
+        navigate(`/${domain}/${data?.blockCreate?.id}`)
+      }
+    }
     const input = { id: pageId, hardDelete: false }
     await blockSoftDelete({ variables: { input } })
     if (location.pathname !== `/${domain}/${pageId}`) {
+      const {
+        data: { pageBlocks }
+      } = await getPageBlocks({ domain })
+      if (!pageBlocks.length) {
+        createNew()
+      }
       return
     }
     if (nearNodeId ?? parentId) {
       navigate(`/${domain}/${nearNodeId ?? parentId}`)
       return
     }
-    const newPageInput = { title: '' }
-    const { data } = await blockCreate({ variables: { input: newPageInput } })
-    if (data?.blockCreate?.id) {
-      navigate(`/${domain}/${data?.blockCreate?.id}`)
-    }
+    createNew()
   }
 
   const onPressAddSubPage = async (): Promise<void> => {

@@ -9,7 +9,8 @@ export const SharePopTitle = styled('h5', {
   lineHeight: '22px',
   fontSize: 14,
   color: theme.colors.typeSecondary,
-  margin: '3px 0 19px 0'
+  margin: '3px 0 19px 0',
+  padding: 0
 })
 
 export const InviteBar = styled('div', {

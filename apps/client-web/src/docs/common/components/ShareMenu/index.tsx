@@ -14,7 +14,7 @@ export const ShareMenu: React.FC<ShareMenuProps> = ({ docMeta, className }) => {
   const [shareModalVisible, setShareModalVisible] = useState<boolean>(false)
 
   const onClick = (): void => {
-    setShareModalVisible(true)
+    setShareModalVisible(status => !status)
   }
 
   const sharePopover = shareModalVisible ? (
