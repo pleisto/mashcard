@@ -39,16 +39,7 @@ spec:
             tcpSocket:
               port: http
           resources:
-            {{- if .Values.previewEnv }}
-            requests:
-              cpu: "0.01"
-              memory: 32Mi
-            limits:
-              cpu: "0.5"
-              memory: 512Mi
-            {{- else }}
             {{- toYaml .Values.resources | nindent 12 }}
-            {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

@@ -126,6 +126,8 @@ jobs:
             --set-string ingress.host=${{ env.domain }} \
             --set serviceAccount.create=false \
             --set-string serviceAccount.name=saas-main-app \
+            --set-string resources.requests.cpu=1 \
+            --set-string resources.requests.memory=1024Mi \
             --set-string envs.SMTP_FROM=saas-no-reply@push-service.brickdoc.com \
             --set-string envs.SENTRY_DSN=https://f44be883f4d7479bb089213767508c1a@o1150336.ingest.sentry.io/6223078 \
             --set-string envs.HOST=${{ env.domain }} \

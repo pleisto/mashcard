@@ -120,6 +120,8 @@ jobs:
             --set-string ingress.host=${{ env.domain }} \
             --set serviceAccount.create=false \
             --set-string serviceAccount.name=trunk-or-pr-main \
+            --set-string resources.limits.cpu=0.5 \
+            --set-string resources.limits.memory=512Mi \
             --set-string envs.SENTRY_DSN=https://4aa5075a3b484af6a251f3677a9f665e@o1150336.ingest.sentry.io/6257651 \
             --set-string envs.HOST=${{ env.domain }} \
             --set-string secrets.SECRET_KEY_SEED=${{ secrets.PR_SECRET_KEY_SEED }} \
