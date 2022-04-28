@@ -36,6 +36,7 @@
     "@google-cloud/debug-agent": "^5.2.8",
     "@google-cloud/kms": "^2.11.1",
     "@google-cloud/profiler": "^4.1.7",
-    "@google-cloud/storage": "^5.19.3"
+    "@google-cloud/storage": "^5.19.3",
+    "@node-rs/crc32": "^1.5.0"
   }
 }

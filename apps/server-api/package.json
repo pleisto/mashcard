@@ -35,7 +35,7 @@
     "@brickdoc/nestjs-slonik": "workspace:^",
     "@fastify/cookie": "^6.0.0",
     "@fastify/helmet": "^8.0.0",
-    "@fastify/secure-session": "github:brickdoc/fastify-secure-session",
+    "@fastify/secure-session": "github:brickdoc/fastify-secure-session#v4.0.0",
     "@nestjs/apollo": "^10.0.9",
     "@nestjs/common": "^8.4.4",
     "@nestjs/core": "^8.4.4",

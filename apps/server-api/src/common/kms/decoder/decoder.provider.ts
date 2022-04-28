@@ -1,34 +1,36 @@
 import { Provider, Scope } from '@nestjs/common'
 import { Buffer } from 'buffer'
 import { BrickdocBaseError } from '../../errors'
+import { HooksExplorer, HookType } from '../../server-plugin'
 import { PlainSeedDecoder } from './plain.decoder'
 import { SeedDecoder } from './base.decoder'
-import { KMS_MODULE_OPTIONS, KMSModuleOptions } from '../kms.interface'
+import { KMS_MODULE_OPTIONS, KMSModuleOptions, KMS_ROOT_SECRET_KEY } from '../kms.interface'
 
 /**
  * Create a SeedDecoder Provider
  * @returns
  */
 export const createSeedDecoder = (): Provider => ({
-  provide: SeedDecoder,
-  useFactory: (options: KMSModuleOptions) => {
+  provide: KMS_ROOT_SECRET_KEY,
+  useFactory: async (options: KMSModuleOptions, explorer: HooksExplorer) => {
     const [decoderName, rawVal] = options.seed.split(':')
-    return decoderResolver(decoderName, Buffer.from(rawVal, 'base64'))
+    const extraDecoders = explorer.findByType(HookType.COMMON_KMS_DECODER)
+    const decoder = decoderResolver(decoderName, extraDecoders)
+    return await decoder.rootSecret(Buffer.from(rawVal, 'base64'))
   },
-  inject: [KMS_MODULE_OPTIONS],
+  inject: [KMS_MODULE_OPTIONS, HooksExplorer],
   scope: Scope.DEFAULT
 })
 
 /**
  * Resolve SeedDecoder
- * @param decoder decoder name
+ * @param decoderName decoder name
+ * @param extraDecoders Extra SeedDecoder that injected by server plugin
  * @returns
  */
-const decoderResolver = (decoder: string, rawSeed: Buffer): SeedDecoder => {
-  switch (decoder) {
-    case 'plain':
-      return new PlainSeedDecoder(rawSeed)
-    default:
-      throw new BrickdocBaseError('apiSrv.kms.UNKNOWN_SEED_DECODER', `Unknown seed decoder \`${decoder}\``)
-  }
+const decoderResolver = (decoderName: string, extraDecoders?: SeedDecoder[]): SeedDecoder => {
+  if (decoderName === 'plain' || decoderName === 'PlainSeedDecoder') return new PlainSeedDecoder()
+  const decoder = extraDecoders?.find(d => d.constructor.name === decoderName)
+  if (!decoder) throw new BrickdocBaseError('apiSrv.kms.UNKNOWN_SEED_DECODER', `KMS decoder ${decoder} not found`)
+  return decoder
 }

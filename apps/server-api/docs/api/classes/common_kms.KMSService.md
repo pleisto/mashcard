@@ -8,10 +8,6 @@
 
 - [constructor](common_kms.KMSService.md#constructor)
 
-### Accessors
-
-- [rootSecret](common_kms.KMSService.md#rootsecret)
-
 ### Methods
 
 - [dataMasking](common_kms.KMSService.md#datamasking)
@@ -24,31 +20,17 @@
 
 ### <a id="constructor" name="constructor"></a> constructor
 
-• **new KMSService**(`seedDecoder`)
+• **new KMSService**(`rootSecret`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `seedDecoder` | `SeedDecoder` |
+| `rootSecret` | `string` |
 
 #### Defined in
 
-[common/kms/kms.service.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L9)
-
-## Accessors
-
-### <a id="rootsecret" name="rootsecret"></a> rootSecret
-
-• `get` **rootSecret**(): `string`
-
-#### Returns
-
-`string`
-
-#### Defined in
-
-[common/kms/kms.service.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L11)
+[common/kms/kms.service.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L8)
 
 ## Methods
 
@@ -73,7 +55,7 @@ The hashed data string
 
 #### Defined in
 
-[common/kms/kms.service.ts:31](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L31)
+[common/kms/kms.service.ts:26](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L26)
 
 ___
 
@@ -96,7 +78,7 @@ Get a new sub key
 
 #### Defined in
 
-[common/kms/kms.service.ts:21](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L21)
+[common/kms/kms.service.ts:16](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L16)
 
 ___
 
@@ -119,7 +101,7 @@ Symmetric-key decryption
 
 #### Defined in
 
-[common/kms/kms.service.ts:53](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L53)
+[common/kms/kms.service.ts:48](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L48)
 
 ___
 
@@ -142,7 +124,7 @@ Symmetric-key encryption
 
 #### Defined in
 
-[common/kms/kms.service.ts:43](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L43)
+[common/kms/kms.service.ts:38](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L38)
 
 ___
 
@@ -164,4 +146,4 @@ Get a symmetric key
 
 #### Defined in
 
-[common/kms/kms.service.ts:62](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L62)
+[common/kms/kms.service.ts:57](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L57)

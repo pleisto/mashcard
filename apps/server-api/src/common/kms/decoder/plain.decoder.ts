@@ -4,7 +4,7 @@ export class PlainSeedDecoder extends SeedDecoder {
   /**
    * Decode raw seed via base64
    */
-  get seed(): string {
-    return this.rawSeed.toString('utf8')
+  async seed(rawSeed: Buffer): Promise<string> {
+    return rawSeed.toString('utf8')
   }
 }

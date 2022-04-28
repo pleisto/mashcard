@@ -13,6 +13,10 @@ on:
       - .husky/**
       - packages/eslint-plugin-brickdoc/**
       - gems/rubocop-brickdoc/**
+      - 'app/**'
+      - 'lib/**'
+      - 'spec/**'
+      - 'db/**'
       - '**/LICENSE'
       - '**/NOTICE'
       - '**/VERSION'
@@ -24,6 +28,10 @@ on:
       - .husky/**
       - packages/eslint-plugin-brickdoc/**
       - gems/rubocop-brickdoc/**
+      - 'app/**'
+      - 'lib/**'
+      - 'spec/**'
+      - 'db/**'
       - '**/LICENSE'
       - '**/NOTICE'
       - '**/VERSION'

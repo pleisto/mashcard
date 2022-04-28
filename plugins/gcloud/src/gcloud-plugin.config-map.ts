@@ -25,4 +25,10 @@ export class GcloudConfigMap {
     validation: boolean()
   })
   enabledCloudDebugger: boolean = !!env.GCP_ENABLED_CLOUD_DEBUGGER
+
+  @Item({
+    scope: ScopeLookupStrategy.LOCAL_STATIC,
+    validation: string()
+  })
+  kmsFrn: string | undefined = env.GCP_KMS_FRN
 }

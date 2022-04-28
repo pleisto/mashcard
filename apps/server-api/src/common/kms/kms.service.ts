@@ -1,16 +1,11 @@
 import { Injectable, Inject } from '@nestjs/common'
-import { SeedDecoder } from './decoder/base.decoder'
-import { SecretSubKey } from './kms.interface'
+import { SecretSubKey, KMS_ROOT_SECRET_KEY } from './kms.interface'
 import { deriveKey, genericHash, aeadDecrypt, aeadEncrypt } from '@brickdoc/cypherpunk'
 import { memoize } from '@brickdoc/active-support'
 
 @Injectable()
 export class KMSService {
-  constructor(@Inject(SeedDecoder) private readonly seedDecoder: SeedDecoder) {}
-
-  get rootSecret(): string {
-    return this.seedDecoder.rootSecret
-  }
+  constructor(@Inject(KMS_ROOT_SECRET_KEY) private readonly rootSecret: string) {}
 
   /**
    * Get a new sub key

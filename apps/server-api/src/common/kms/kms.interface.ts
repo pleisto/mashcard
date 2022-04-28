@@ -6,6 +6,7 @@ export enum SecretSubKey {
 }
 
 export const KMS_MODULE_OPTIONS = Symbol('KMS_MODULE_OPTIONS')
+export const KMS_ROOT_SECRET_KEY = Symbol('KMS_ROOT_SECRET_KEY')
 
 export interface KMSModuleOptions {
   /**

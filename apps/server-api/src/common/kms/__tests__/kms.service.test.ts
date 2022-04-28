@@ -2,6 +2,7 @@ import { Test } from '@nestjs/testing'
 import { env } from 'process'
 import { KMSModule } from '../kms.module'
 import { KMSService } from '../kms.service'
+import { SecretSubKey } from '../kms.interface'
 import { faker } from '@faker-js/faker'
 
 describe('KMSService', () => {
@@ -14,8 +15,8 @@ describe('KMSService', () => {
     kms = moduleRef.get<KMSService>(KMSService)
   })
 
-  it('should get rootSecret', async () => {
-    expect(kms.rootSecret).toBeTruthy()
+  it('should get key', async () => {
+    expect(kms.subKey(SecretSubKey.ROOT_KEY)).toBeTruthy()
   })
 
   it('should dataMasking work and it is pure function', async () => {
