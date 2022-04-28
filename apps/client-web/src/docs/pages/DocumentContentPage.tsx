@@ -16,7 +16,7 @@ import { validate as isValidUUID } from 'uuid'
 import { appendFormulas, FormulaContext } from '@brickdoc/formula'
 import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
-import { AppError404 } from '@/AppError'
+import { AppError404 } from '@/core/app-error'
 
 type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
 export type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['pathArray'][0]

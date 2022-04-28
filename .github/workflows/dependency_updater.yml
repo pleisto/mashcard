@@ -20,15 +20,6 @@ jobs:
         with:
           node-version: 18
           cache: yarn
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.0.2
-          bundler-cache: true
-      - name: Unset deployment
-        run: bundle config unset deployment
-      - name: Update ruby gems
-        run: bundle update
       - name: Update yarn packages
         run: eval "yarn up $PATTERNS --mode=update-lockfile && yarn up $PATTERNS --recursive --mode=update-lockfile"
         env:

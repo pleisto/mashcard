@@ -20,7 +20,7 @@ spec:
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}-postgres
-          image: postgres:12.4-alpine
+          image: postgres:14.2-alpine
           env:
             - name: POSTGRES_DB
               value: brickdoc_cicd
@@ -35,10 +35,10 @@ spec:
               cpu: "0.01"
               memory: 16Mi
             limits:
-              cpu: "0.5"
+              cpu: "0.3"
               memory: 512Mi
         - name: {{ .Chart.Name }}-redis
-          image: redis:6-alpine
+          image: redis:7-alpine
           ports:
             - name: redis
               containerPort: 6379
@@ -46,19 +46,19 @@ spec:
           resources:
             requests:
               cpu: "0.01"
-              memory: 16Mi
+              memory: 8Mi
             limits:
               cpu: "0.5"
-              memory: 512Mi
+              memory: 128Mi
         - name: {{ .Chart.Name }}-mailhog
           image: mailhog/mailhog:v1.0.1
           resources:
             requests:
               cpu: "0.01"
-              memory: 8Mi
+              memory: 4Mi
             limits:
-              cpu: "0.5"
-              memory: 64Mi
+              cpu: "0.25"
+              memory: 32Mi
           env:
             - name: MH_UI_WEB_PATH
               value: devtools/mailer

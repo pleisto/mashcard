@@ -27,7 +27,7 @@
 
 #### Defined in
 
-common/server-plugin/hooks.explorer.ts:9
+[common/server-plugin/hooks.explorer.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hooks.explorer.ts#L9)
 
 ## Methods
 
@@ -55,4 +55,4 @@ Find all hooks by type that have @ServerPluginHook() decorator
 
 #### Defined in
 
-common/server-plugin/hooks.explorer.ts:17
+[common/server-plugin/hooks.explorer.ts:17](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hooks.explorer.ts#L17)

@@ -7,7 +7,7 @@ import { ContentSidebar } from './components/ContentSidebar'
 import { useGetSpacesQuery } from '@/BrickdocGraphQL'
 import { useDocsI18n } from '../common/hooks'
 import { TrashTable } from '@/docs/common/components/TrashTable'
-import { AppError404 } from '@/AppError'
+import { AppError404 } from '@/core/app-error'
 import { getSidebarStyle, logSideBarWidth } from '@/common/utils/sidebarStyle'
 import * as Root from './DocumentContentPage.style'
 

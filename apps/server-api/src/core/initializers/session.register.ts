@@ -1,5 +1,5 @@
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
-import secureSession from 'fastify-secure-session'
+import secureSession from '@fastify/secure-session'
 import { ms, Result } from '@brickdoc/active-support'
 
 export const sessionRegister = (

@@ -17,7 +17,7 @@
 
 #### Defined in
 
-common/server-plugin/server-plugin.interface.ts:10
+[common/server-plugin/server-plugin.interface.ts:10](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L10)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-common/server-plugin/server-plugin.interface.ts:11
+[common/server-plugin/server-plugin.interface.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L11)

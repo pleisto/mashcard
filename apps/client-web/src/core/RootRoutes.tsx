@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { JoinSpacePage } from '@/docs/invite/JoinSpacePage'
 import { DocumentContentPage } from '@/docs/pages/DocumentContentPage'
 import { Trash } from '@/docs/pages/Trash'
-import { AppError404, AppError403, AppError500 } from '@/AppError'
+import { AppError404, AppError403, AppError500 } from './app-error'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { rootPath } from '@/common/utils'
 

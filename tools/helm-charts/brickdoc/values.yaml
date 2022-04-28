@@ -35,6 +35,6 @@ postgresql:
 redis:
   architecture: standalone
   image:
-    tag: 6.2
+    tag: 7-alpine
   auth:
     enabled: false

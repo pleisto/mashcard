@@ -41,7 +41,7 @@
 
 #### Defined in
 
-common/server-plugin/server-plugin.interface.ts:25
+[common/server-plugin/server-plugin.interface.ts:25](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L25)
 
 ## Variables
 
@@ -51,7 +51,7 @@ common/server-plugin/server-plugin.interface.ts:25
 
 #### Defined in
 
-common/server-plugin/server-plugin.interface.ts:7
+[common/server-plugin/server-plugin.interface.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L7)
 
 ## Functions
 
@@ -71,4 +71,4 @@ common/server-plugin/server-plugin.interface.ts:7
 
 #### Defined in
 
-common/server-plugin/hook.decorator.ts:4
+[common/server-plugin/hook.decorator.ts:4](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hook.decorator.ts#L4)
