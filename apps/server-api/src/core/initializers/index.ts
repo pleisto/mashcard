@@ -1,5 +1,6 @@
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import { SettingsService } from '../../common/settings'
+import { HooksExplorer, HookType } from '../../common/server-plugin'
 import { KMSService } from '../../common/kms/kms.service'
 import { SecretSubKey } from '../../common/kms/kms.interface'
 import { loggerRegister } from './logger.register'
@@ -19,6 +20,7 @@ export const loadInitializers = async (app: NestFastifyApplication): Promise<voi
   // Get Injection Service
   const kmsService = app.get(KMSService)
   const settingsService = app.get(SettingsService)
+  const initializerHooks = app.get(HooksExplorer).findByType(HookType.CORE_INITIALIZER)
 
   // common initializers
   app.enableShutdownHooks()
@@ -34,4 +36,9 @@ export const loadInitializers = async (app: NestFastifyApplication): Promise<voi
   const v8InspectorEnabled =
     typeof (globalThis as any).v8debug === 'object' || /--debug|--inspect/.test(process.execArgv.join(' '))
   if (v8InspectorEnabled) await debugContextRegister()
+
+  // hooks initializers
+  initializerHooks.forEach(async hook => {
+    await hook.forHookAsync(settingsService)
+  })
 }

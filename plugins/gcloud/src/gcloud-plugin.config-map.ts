@@ -1,9 +1,9 @@
 import { env } from 'process'
 import { ConfigMap, Item, ScopeLookupStrategy } from '@brickdoc/server-api/src/common/settings'
-import { string } from 'yup'
+import { string, boolean } from 'yup'
 
 @ConfigMap('plugin.brickdoc.gcloud')
-export class CoreConfigMap {
+export class GcloudConfigMap {
   /**
    * Google cloud project id
    * @returns default value
@@ -12,5 +12,17 @@ export class CoreConfigMap {
     scope: ScopeLookupStrategy.LOCAL_STATIC,
     validation: string().required()
   })
-  projectID: string = env.GCP_PROJECT!
+  projectId: string = env.GCP_PROJECT!
+
+  @Item({
+    scope: ScopeLookupStrategy.LOCAL_STATIC,
+    validation: boolean()
+  })
+  enabledCloudProfiler: boolean = !!env.GCP_ENABLED_CLOUD_PROFILER
+
+  @Item({
+    scope: ScopeLookupStrategy.LOCAL_STATIC,
+    validation: boolean()
+  })
+  enabledCloudDebugger: boolean = !!env.GCP_ENABLED_CLOUD_DEBUGGER
 }

@@ -9,15 +9,16 @@ export class LoggingPlugin implements ApolloServerPlugin {
   constructor(@Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger) {}
   async requestDidStart(requestContext: GraphQLRequestContext): Promise<GraphQLRequestListener> {
     const logger = this.logger.child({
-      request: {
-        trackId: requestContext.request.http?.headers?.get('x-request-id'),
-        ip: requestContext.request.http?.headers?.get('x-forwarded-for'),
+      trace: requestContext.request.http?.headers?.get('x-request-id'),
+      httpRequest: {
+        remoteIp: requestContext.request.http?.headers?.get('x-forwarded-for'),
         protocol: requestContext.request.http?.headers?.get('x-forwarded-proto'),
         userAgent: requestContext.request.http?.headers?.get('user-agent'),
         acceptLanguage: requestContext.request.http?.headers?.get('accept-language'),
-        method: requestContext.request.http?.method,
-        url: requestContext.request.http?.url,
-        operationName: requestContext.request.operationName
+        requestMethod: requestContext.request.http?.method,
+        requestUrl: requestContext.request.http?.url,
+        operationName: requestContext.request.operationName,
+        referer: requestContext.request.http?.headers?.get('referer')
       },
       context: 'GraphQLModule'
     })

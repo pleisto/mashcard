@@ -47,6 +47,7 @@
     "fastify-cookie": "^5.6.1",
     "fastify-helmet": "^7.0.1",
     "fastify-secure-session": "github:brickdoc/fastify-secure-session",
+    "globby": "^11.0.4",
     "graphql": "^16.4.0",
     "graphql-type-json": "^0.3.2",
     "lru-cache": "^7.8.1",

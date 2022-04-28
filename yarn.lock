@@ -2148,12 +2148,9 @@ __metadata:
   resolution: "@brickdoc/plugin-gcloud@workspace:plugins/gcloud"
   dependencies:
     "@google-cloud/debug-agent": ^5.2.8
-    "@google-cloud/error-reporting": ^2.0.5
     "@google-cloud/kms": ^2.11.1
-    "@google-cloud/logging-winston": ^4.2.3
     "@google-cloud/profiler": ^4.1.7
     "@google-cloud/storage": ^5.19.3
-    "@google-cloud/trace-agent": ^5.1.6
     "@nestjs/common": ^8.4.4
     "@nestjs/core": ^8.4.4
     "@nestjs/testing": ^8.4.4
@@ -2207,6 +2204,7 @@ __metadata:
     fastify-cookie: ^5.6.1
     fastify-helmet: ^7.0.1
     fastify-secure-session: "github:brickdoc/fastify-secure-session"
+    globby: ^11.0.4
     graphql: ^16.4.0
     graphql-type-json: ^0.3.2
     leaked-handles: ^5.2.0
@@ -2867,16 +2865,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google-cloud/error-reporting@npm:^2.0.5":
-  version: 2.0.5
-  resolution: "@google-cloud/error-reporting@npm:2.0.5"
-  dependencies:
-    "@google-cloud/common": ^3.0.0
-    console-log-level: ^1.4.1
-  checksum: 7cd3734cfa5fc48070769574d6e9cd4d28befa676dad289088d5bc0775e546e35d45af0387948f13b8cb683460574ce333b3d7c8846c8c3b146e8479c08a0952
-  languageName: node
-  linkType: hard
-
 "@google-cloud/kms@npm:^2.11.1":
   version: 2.11.1
   resolution: "@google-cloud/kms@npm:2.11.1"
@@ -2906,43 +2894,6 @@ __metadata:
     stream-events: ^1.0.5
     uuid: ^8.0.0
   checksum: 4f3076b0b765b3d1692f7c02b3d8a9983b234dea4616eb674d0a2d4c5b20ec0591a6b6d2d551d285eb852b4a76a1efb75adb2a3954e08cda811f403c8743ef92
-  languageName: node
-  linkType: hard
-
-"@google-cloud/logging-winston@npm:^4.2.3":
-  version: 4.2.3
-  resolution: "@google-cloud/logging-winston@npm:4.2.3"
-  dependencies:
-    "@google-cloud/logging": ^9.6.9
-    google-auth-library: ^7.0.0
-    lodash.mapvalues: ^4.6.0
-    winston-transport: ^4.3.0
-  peerDependencies:
-    winston: ">=3.2.1"
-  checksum: aab1801033716538c7d781a0b134ec21a2d2f6795b4b9ba83d0e1efb9c266579cd5df8762fd343d2d72bcb65997ee5b1ebeecd5bb57a4f5be1d8d43331cc91d2
-  languageName: node
-  linkType: hard
-
-"@google-cloud/logging@npm:^9.6.9":
-  version: 9.8.3
-  resolution: "@google-cloud/logging@npm:9.8.3"
-  dependencies:
-    "@google-cloud/common": ^3.4.1
-    "@google-cloud/paginator": ^3.0.0
-    "@google-cloud/projectify": ^2.0.0
-    "@google-cloud/promisify": ^2.0.0
-    arrify: ^2.0.1
-    dot-prop: ^6.0.0
-    eventid: ^2.0.0
-    extend: ^3.0.2
-    gcp-metadata: ^4.0.0
-    google-auth-library: ^7.0.0
-    google-gax: ^2.24.1
-    on-finished: ^2.3.0
-    pumpify: ^2.0.1
-    stream-events: ^1.0.5
-    uuid: ^8.0.0
-  checksum: d90f287542877bad227b7d827792564d29bd20fc69f44405bd44e8c02cb486bab9343346e63469093929e8039af4a777e31b4cbd5127983a45f087d01006eebb
   languageName: node
   linkType: hard
 
@@ -3022,30 +2973,6 @@ __metadata:
     teeny-request: ^7.1.3
     xdg-basedir: ^4.0.0
   checksum: 7eae1b7cafbc2736005546b436067eaef1806ac0550e8277f7a542c098cf66b630ec42072f40a4033161de91730bb16fbe7d6fb8d4e1f9c21aab45d19c6f9e4e
-  languageName: node
-  linkType: hard
-
-"@google-cloud/trace-agent@npm:^5.1.6":
-  version: 5.1.6
-  resolution: "@google-cloud/trace-agent@npm:5.1.6"
-  dependencies:
-    "@google-cloud/common": ^3.0.0
-    "@opencensus/propagation-stackdriver": 0.1.0
-    builtin-modules: ^3.0.0
-    console-log-level: ^1.4.0
-    continuation-local-storage: ^3.2.1
-    extend: ^3.0.2
-    gcp-metadata: ^4.0.0
-    google-auth-library: ^7.0.0
-    hex2dec: ^1.0.1
-    is: ^3.2.0
-    methods: ^1.1.1
-    require-in-the-middle: ^5.0.0
-    semver: ^7.0.0
-    shimmer: ^1.2.0
-    source-map-support: ^0.5.16
-    uuid: ^8.0.0
-  checksum: b16ffd2004e2a6729e811734f4a051851a7937eda1d73502d3f2322e72246c244d21056c8e0937f3ff90c94984c6f93fb16cda94e42e4057daa1e3501c22367a
   languageName: node
   linkType: hard
 
@@ -4511,30 +4438,6 @@ __metadata:
   bin:
     opencollective: bin/opencollective.js
   checksum: fd3737c12edf55b5c2279674664c3ed5e756410ea82e9cd324c3f0e032ed5ccd8df1959ec69ea97f2f1c9c33c884aae3d7a7108a73ea0faa90d74ea47cf364d4
-  languageName: node
-  linkType: hard
-
-"@opencensus/core@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "@opencensus/core@npm:0.1.0"
-  dependencies:
-    continuation-local-storage: ^3.2.1
-    log-driver: ^1.2.7
-    semver: ^7.0.0
-    shimmer: ^1.2.0
-    uuid: ^8.0.0
-  checksum: 52d21ef371d8d61ec5b25dbf64951ed3fb0221a08496745ea9155af2525ef80b5c2f018c56c6c701303d1d070ac95dc449ab1a5a090814a42d82d4b938bdabd5
-  languageName: node
-  linkType: hard
-
-"@opencensus/propagation-stackdriver@npm:0.1.0":
-  version: 0.1.0
-  resolution: "@opencensus/propagation-stackdriver@npm:0.1.0"
-  dependencies:
-    "@opencensus/core": ^0.1.0
-    hex2dec: ^1.0.1
-    uuid: ^8.0.0
-  checksum: f6f5b776a4f801210fa3746c137f6d43e7e5387dfa94e70282994a8e22575626784cf1cff78f1064e981747baa3fe20b9b4c064095db96f884c6569aa30362ee
   languageName: node
   linkType: hard
 
@@ -9791,16 +9694,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"async-listener@npm:^0.6.0":
-  version: 0.6.10
-  resolution: "async-listener@npm:0.6.10"
-  dependencies:
-    semver: ^5.3.0
-    shimmer: ^1.1.0
-  checksum: f64cb835ad1a07d4ee800df6c1532f2a4f99e1c2a11da8e83c1bd4452bc01729a85552377bc120f144abc17be6c0bd0f740ebedfdf4b79ebd18844a51e307326
-  languageName: node
-  linkType: hard
-
 "async-retry@npm:^1.2.1, async-retry@npm:^1.3.3":
   version: 1.3.3
   resolution: "async-retry@npm:1.3.3"
@@ -10699,7 +10592,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"builtin-modules@npm:^3.0.0, builtin-modules@npm:^3.1.0":
+"builtin-modules@npm:^3.1.0":
   version: 3.2.0
   resolution: "builtin-modules@npm:3.2.0"
   checksum: 0265aa1ba78e1a16f4e18668d815cb43fb364e6a6b8aa9189c6f44c7b894a551a43b323c40206959d2d4b2568c1f2805607ad6c88adc306a776ce6904cca6715
@@ -11830,7 +11723,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"console-log-level@npm:^1.4.0, console-log-level@npm:^1.4.1":
+"console-log-level@npm:^1.4.0":
   version: 1.4.1
   resolution: "console-log-level@npm:1.4.1"
   checksum: 8c4f8d52331402bf66611307c0db6b4f3dbfbf64a6de345adf7f051dbfe7bcc031c241b0ff7da2cc9d0b175d190c3fc24f32ef68ed9133e3c3ddc674238ffbc2
@@ -11868,16 +11761,6 @@ __metadata:
   version: 1.0.4
   resolution: "content-type@npm:1.0.4"
   checksum: 3d93585fda985d1554eca5ebd251994327608d2e200978fdbfba21c0c679914d5faf266d17027de44b34a72c7b0745b18584ecccaa7e1fdfb6a68ac7114f12e0
-  languageName: node
-  linkType: hard
-
-"continuation-local-storage@npm:^3.2.1":
-  version: 3.2.1
-  resolution: "continuation-local-storage@npm:3.2.1"
-  dependencies:
-    async-listener: ^0.6.0
-    emitter-listener: ^1.1.1
-  checksum: 5ac1dcf354563a7121fc1653676ed8dda93565c469698dd7454c3485d9e2c3ca61347d754d02179d13d9e51665d23fffe6bf9e53e89a1865a0c5530384258c2f
   languageName: node
   linkType: hard
 
@@ -13473,15 +13356,6 @@ __metadata:
     minimalistic-assert: ^1.0.1
     minimalistic-crypto-utils: ^1.0.1
   checksum: d56d21fd04e97869f7ffcc92e18903b9f67f2d4637a23c860492fbbff5a3155fd9ca0184ce0c865dd6eb2487d234ce9551335c021c376cd2d3b7cb749c7d10f4
-  languageName: node
-  linkType: hard
-
-"emitter-listener@npm:^1.1.1":
-  version: 1.1.2
-  resolution: "emitter-listener@npm:1.1.2"
-  dependencies:
-    shimmer: ^1.2.0
-  checksum: 05166bad42a27e51a765ebac3b7d26ac111564fc2d36443cd819f95ef88ea1b9ba6f2895becbcea36f8009890a2a8cb7c36eb9e776d4978e370bd33cb0a181e8
   languageName: node
   linkType: hard
 
@@ -16606,13 +16480,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hex2dec@npm:^1.0.1":
-  version: 1.1.2
-  resolution: "hex2dec@npm:1.1.2"
-  checksum: 885d5035105ce20efa5b47f5b7e6f5cf714fcfa262f9cc2575009f3b662465ff07037c96cbdd26ec97794101d8c208488356fee3e3a56e02569e079060c9562a
-  languageName: node
-  linkType: hard
-
 "hey-listen@npm:^1.0.8":
   version: 1.0.8
   resolution: "hey-listen@npm:1.0.8"
@@ -17979,13 +17846,6 @@ __metadata:
   dependencies:
     is-docker: ^2.0.0
   checksum: 20849846ae414997d290b75e16868e5261e86ff5047f104027026fd61d8b5a9b0b3ade16239f35e1a067b3c7cc02f70183cb661010ed16f4b6c7c93dad1b19d8
-  languageName: node
-  linkType: hard
-
-"is@npm:^3.2.0":
-  version: 3.3.0
-  resolution: "is@npm:3.3.0"
-  checksum: 81fad3b40c606984c2d0699207c4c48d2a0d29cc834b274d0b74c172f3eeebdb981301fe0d690ce090a96bf021a8a1f8b1325262ad9870c525e557ac4a559c56
   languageName: node
   linkType: hard
 
@@ -19711,13 +19571,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.mapvalues@npm:^4.6.0":
-  version: 4.6.0
-  resolution: "lodash.mapvalues@npm:4.6.0"
-  checksum: 0ff1b252fda318fc36e47c296984925e98fbb0fc5a2ecc4ef458f3c739a9476d47e40c95ac653e8314d132aa59c746d4276527b99d6e271940555c6e12d2babd
-  languageName: node
-  linkType: hard
-
 "lodash.merge@npm:4.6.2, lodash.merge@npm:^4.6.2":
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
@@ -19764,13 +19617,6 @@ __metadata:
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
-  languageName: node
-  linkType: hard
-
-"log-driver@npm:^1.2.7":
-  version: 1.2.7
-  resolution: "log-driver@npm:1.2.7"
-  checksum: 14949119f830d897f52a0f83b058d8af3d13b9d21deedcc341c65c523091d4f95b0c151798b0bb988ed2712f487d9d44c302cd95b177708a80ac8e47a6a28a16
   languageName: node
   linkType: hard
 
@@ -20343,7 +20189,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"methods@npm:^1.1.1, methods@npm:~1.1.2":
+"methods@npm:~1.1.2":
   version: 1.1.2
   resolution: "methods@npm:1.1.2"
   checksum: 0917ff4041fa8e2f2fda5425a955fe16ca411591fbd123c0d722fcf02b73971ed6f764d85f0a6f547ce49ee0221ce2c19a5fa692157931cecb422984f1dcd13a
@@ -20747,13 +20593,6 @@ __metadata:
     _mocha: bin/_mocha
     mocha: bin/mocha
   checksum: 4d5ca4ce33fc66627e63acdf09a634e2358c9a00f61de7788b1091b6aad430da04f97f9ecb82d56dc034b623cb833b65576136fd010d77679c03fcea5bc1e12d
-  languageName: node
-  linkType: hard
-
-"module-details-from-path@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "module-details-from-path@npm:1.0.3"
-  checksum: 378a8a26013889aa3086bfb0776b7860c5bb957336253e1ba5d779c2f239a218930b145ca76e52c1dd7c8079d52b2af64b8eec30822f81ffdb0dfa27d6fe6f33
   languageName: node
   linkType: hard
 
@@ -25102,17 +24941,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"require-in-the-middle@npm:^5.0.0":
-  version: 5.1.0
-  resolution: "require-in-the-middle@npm:5.1.0"
-  dependencies:
-    debug: ^4.1.1
-    module-details-from-path: ^1.0.3
-    resolve: ^1.12.0
-  checksum: 375f2e4b822c3fac5d65613082d93d5f9451cdbfb1cdfaf757febe2983aac3525ea5b8f95a10f2ee8304e6328d304d3c885830e255209d359faf66e5a3aa62e8
-  languageName: node
-  linkType: hard
-
 "require-main-filename@npm:^2.0.0":
   version: 2.0.0
   resolution: "require-main-filename@npm:2.0.0"
@@ -25667,7 +25495,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.3.0, semver@npm:^5.4.1, semver@npm:^5.6.0":
+"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.4.1, semver@npm:^5.6.0":
   version: 5.7.1
   resolution: "semver@npm:5.7.1"
   bin:
@@ -25922,13 +25750,6 @@ __metadata:
     vscode-oniguruma: ^1.6.1
     vscode-textmate: 5.2.0
   checksum: fb746f3cb3de7e545e3b10a6cb658d3938f840e4ccc9a3c90ceb7e69a8f89dbb432171faac1e9f02a03f103684dad88ee5e54b5c4964fa6b579fca6e8e26424d
-  languageName: node
-  linkType: hard
-
-"shimmer@npm:^1.1.0, shimmer@npm:^1.2.0":
-  version: 1.2.1
-  resolution: "shimmer@npm:1.2.1"
-  checksum: aa0d6252ad1c682a4fdfda69e541be987f7a265ac7b00b1208e5e48cc68dc55f293955346ea4c71a169b7324b82c70f8400b3d3d2d60b2a7519f0a3522423250
   languageName: node
   linkType: hard
 
@@ -29693,7 +29514,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"winston-transport@npm:^4.3.0, winston-transport@npm:^4.5.0":
+"winston-transport@npm:^4.5.0":
   version: 4.5.0
   resolution: "winston-transport@npm:4.5.0"
   dependencies:

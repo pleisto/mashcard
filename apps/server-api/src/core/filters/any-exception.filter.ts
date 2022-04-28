@@ -9,14 +9,14 @@ import { CustomApolloError } from '../graphql/custom-apollo-error.errors'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const reqCommonContext = (req: FastifyRequest) => ({
-  traceId: req.id,
-  ip: req.ip,
+  remoteIp: req.ip,
   protocol: req.protocol,
-  method: req.method,
-  url: req.url,
+  requestMethod: req.method,
+  requestUrl: req.url,
   params: req.params,
   userAgent: req.headers['user-agent'],
-  acceptLanguage: req.headers['accept-language']
+  acceptLanguage: req.headers['accept-language'],
+  referer: req.headers.referer
 })
 
 const context = 'AnyExceptionFilter'
@@ -33,8 +33,9 @@ export class AnyExceptionFilter implements GqlExceptionFilter {
         // eslint-disable-next-line no-case-declarations
         const req = host.switchToHttp().getRequest<FastifyRequest>()
         this.logger.error('Non-GraphQL Exception in AnyExceptionFilter', {
+          trace: req.id,
           exception,
-          request: reqCommonContext(req),
+          httpRequest: reqCommonContext(req),
           type: host.getType(),
           context
         })
@@ -47,7 +48,7 @@ export class AnyExceptionFilter implements GqlExceptionFilter {
    */
   graphQLFilter(exception: Error, host: GqlArgumentsHost): Error {
     const req = host.getContext().req as FastifyRequest
-    const request = {
+    const httpRequest = {
       ...reqCommonContext(req),
       query: (req.body as any)?.query,
       operationName: (req.body as any)?.operationName
@@ -63,14 +64,14 @@ export class AnyExceptionFilter implements GqlExceptionFilter {
       graphQLError.extensions.kind = `${exception.name}`
       graphQLError.extensions.details = {
         time: new Date().toISOString(),
-        traceId: request.traceId,
+        traceId: req.id,
         ...exception.details
       }
       graphQLError.originalError = exception.originalError
       const logLevel = exception.code >= 500 ? 'error' : 'info'
-      this.logger.log(logLevel, { request, exception, context })
+      this.logger.log(logLevel, { trace: req.id, httpRequest, exception, context })
     } else {
-      this.logger.error({ request, exception, context })
+      this.logger.error({ trace: req.id, httpRequest, exception, context })
       graphQLError.originalError = exception
     }
 

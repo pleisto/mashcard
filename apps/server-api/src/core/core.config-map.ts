@@ -1,6 +1,6 @@
 import { env } from 'process'
 import { ConfigMap, Item, ScopeLookupStrategy } from '../common/settings'
-import { string, mixed, array } from 'yup'
+import { string, mixed } from 'yup'
 import { supportLocales } from './locales'
 import { supportedTimezones } from './timezones'
 
@@ -45,13 +45,4 @@ export class CoreConfigMap {
     validation: mixed().oneOf(supportedTimezones)
   })
   defaultTimezone: string = 'Etc/UTC'
-
-  /**
-   * Enabled server plugins
-   */
-  @Item({
-    scope: ScopeLookupStrategy.LOCAL_STATIC,
-    validation: array(string()).ensure()
-  })
-  enabledServerPlugins: string[] = env.ENABLED_SERVER_PLUGINS?.split(',') ?? []
 }

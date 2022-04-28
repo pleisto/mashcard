@@ -4,6 +4,7 @@ import { RedisModule } from '@brickdoc/nestjs-redis'
 import { SlonikModule } from '@brickdoc/nestjs-slonik'
 import { KMSModule, KMSService } from './kms'
 import { SettingsModule } from './settings'
+import { ServerPluginModule } from './server-plugin'
 
 /**
  * All Modules in the Common Module are global modules.
@@ -22,7 +23,8 @@ import { SettingsModule } from './settings'
       connectionUri: `${env.DATABASE_URL_BASE}/${env.DATABASE_NAME}`,
       verboseRetryLog: true
     }),
-    SettingsModule.forRoot()
+    SettingsModule.forRoot(),
+    ServerPluginModule
   ]
 })
 export class CommonModule {}
