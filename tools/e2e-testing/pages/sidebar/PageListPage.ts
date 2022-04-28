@@ -5,6 +5,10 @@ import { BasePage } from '../BasePage'
 type ActionButton = 'Pin page' | 'Copy link' | 'Duplicate' | 'Rename' | 'Delete'
 
 export class PageListPage extends BasePage {
+  getPages(): Locator {
+    return this.page.locator(PAGE_SELECTOR.pages)
+  }
+
   getPageSectionTitle(): Locator {
     return this.page.locator(PAGE_SELECTOR.pageSection)
   }
