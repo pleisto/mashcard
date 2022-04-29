@@ -70,7 +70,7 @@ describe('EmbedView', () => {
             title: 'brickdoc',
             description: 'desc',
             cover: 'cover',
-            mode: 'bookmark'
+            mode: 'card'
           },
           attachment: {
             type: 'ATTACHMENT'
@@ -190,7 +190,8 @@ describe('EmbedView', () => {
             key: url,
             title,
             description,
-            cover: 'cover'
+            cover: 'cover',
+            mode: 'card'
           },
           attachment: {
             type: 'ATTACHMENT'
@@ -238,7 +239,7 @@ describe('EmbedView', () => {
     expect(screen.getByText(name)).toBeInTheDocument()
   })
 
-  it('renders file preview', () => {
+  it('renders file in preview mode', () => {
     const name = 'file.pdf'
     const props = mockBlockViewProps<EmbedOptions, EmbedAttributes>({
       node: {
@@ -251,7 +252,8 @@ describe('EmbedView', () => {
             type: 'ATTACHMENT',
             key: url,
             source: 'ORIGIN',
-            name
+            name,
+            mode: 'preview'
           }
         }
       }
@@ -260,5 +262,55 @@ describe('EmbedView', () => {
     render(<EmbedView {...props} />)
 
     expect(screen.getByTestId(TEST_ID_ENUM.editor.embedBlock.pdftron.id)).toBeInTheDocument()
+  })
+
+  it('renders file in card mode', () => {
+    const name = 'file.pdf'
+    const props = mockBlockViewProps<EmbedOptions, EmbedAttributes>({
+      node: {
+        uuid,
+        attrs: {
+          link: {
+            type: 'LINK'
+          },
+          attachment: {
+            type: 'ATTACHMENT',
+            key: url,
+            source: 'ORIGIN',
+            name,
+            mode: 'card'
+          }
+        }
+      }
+    })
+
+    render(<EmbedView {...props} />)
+
+    expect(screen.getByText(name)).toBeInTheDocument()
+  })
+
+  it('renders file in text mode', () => {
+    const name = 'file.pdf'
+    const props = mockBlockViewProps<EmbedOptions, EmbedAttributes>({
+      node: {
+        uuid,
+        attrs: {
+          link: {
+            type: 'LINK'
+          },
+          attachment: {
+            type: 'ATTACHMENT',
+            key: url,
+            source: 'ORIGIN',
+            name,
+            mode: 'text'
+          }
+        }
+      }
+    })
+
+    render(<EmbedView {...props} />)
+
+    expect(screen.getByText(name)).toBeInTheDocument()
   })
 })

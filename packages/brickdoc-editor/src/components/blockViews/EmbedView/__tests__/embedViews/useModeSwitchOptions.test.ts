@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { ToolbarItemOption } from '../../../../ui'
-import { useModeSwitchOptions } from '../../views/useModeSwitchOptions'
+import { useModeSwitchOptions } from '../../embedViews/useModeSwitchOptions'
 
 describe('useModeSwitchOptions', () => {
   it('triggers card view correctly', () => {
@@ -15,12 +15,12 @@ describe('useModeSwitchOptions', () => {
 
     option.onAction?.('key')
 
-    expect(updateEmbedBlockAttributes).toBeCalledWith({ mode: 'preview' }, blockType)
+    expect(updateEmbedBlockAttributes).toBeCalledWith({ mode: 'card' }, blockType)
   })
 
-  it('triggers bookmark view correctly', () => {
+  it('triggers preview view correctly', () => {
     const blockType = 'attachment'
-    const mode = 'bookmark'
+    const mode = 'preview'
     const updateEmbedBlockAttributes = jest.fn()
     const { result } = renderHook(() => useModeSwitchOptions(mode, blockType, updateEmbedBlockAttributes))
 
@@ -45,6 +45,6 @@ describe('useModeSwitchOptions', () => {
 
     option.onAction?.('key')
 
-    expect(updateEmbedBlockAttributes).toBeCalledWith({ mode: 'link' }, blockType)
+    expect(updateEmbedBlockAttributes).toBeCalledWith({ mode: 'text' }, blockType)
   })
 })

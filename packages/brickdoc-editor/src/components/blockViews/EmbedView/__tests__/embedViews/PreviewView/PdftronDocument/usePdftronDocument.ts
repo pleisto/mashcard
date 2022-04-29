@@ -1,7 +1,7 @@
 /* eslint-disable max-nested-callbacks */
 import { renderHook } from '@testing-library/react-hooks'
 import { act } from 'react-dom/test-utils'
-import { usePdftronDocument } from '../../../../views/CardView/PdftronDocument/usePdftronDocument'
+import { usePdftronDocument } from '../../../../embedViews/PreviewView/PdftronDocument/usePdftronDocument'
 
 jest.mock('@pdftron/webviewer', () => ({
   __esModule: true,

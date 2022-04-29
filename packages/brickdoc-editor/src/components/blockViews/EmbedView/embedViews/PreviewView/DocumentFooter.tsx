@@ -54,7 +54,7 @@ export const DocumentFooter: FC<DocumentFooterProps> = ({ name, icon, blockType,
       {name}
     </Info>
     <ModeSwitchContainer>
-      <ModeSwitch mode="card" blockType={blockType} updateEmbedBlockAttributes={updateEmbedBlockAttributes} />
+      <ModeSwitch mode="preview" blockType={blockType} updateEmbedBlockAttributes={updateEmbedBlockAttributes} />
     </ModeSwitchContainer>
   </Footer>
 )

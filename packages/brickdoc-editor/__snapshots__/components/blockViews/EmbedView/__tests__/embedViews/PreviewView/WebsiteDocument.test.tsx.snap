@@ -33,7 +33,7 @@ exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
           <li
             aria-describedby=""
             aria-haspopup="false"
-            aria-label="embed_block.view_types.card.name"
+            aria-label="embed_block.view_types.preview.name"
             class="brd-c-gGXCgU brd-c-gGXCgU-bTgvkf-active-true"
             role="menuitem"
           >
@@ -65,7 +65,7 @@ exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
           <li
             aria-describedby=""
             aria-haspopup="false"
-            aria-label="embed_block.view_types.bookmark.name"
+            aria-label="embed_block.view_types.card.name"
             class="brd-c-gGXCgU"
             role="menuitem"
           >

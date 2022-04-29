@@ -7,14 +7,14 @@ import { ModeSwitch } from '../ModeSwitch'
 import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../../EmbedView'
 import { useActionOptions } from '../useActionOptions'
 
-export interface BookmarkViewProps {
+export interface CardViewProps {
   deleteNode: EmbedViewProps['deleteNode']
   getPos: EmbedViewProps['getPos']
   node: EmbedViewProps['node']
-  cover?: string
+  cover?: string | null
   icon?: string | ReactElement
   title: string
-  description?: string
+  description?: string | null
   linkUrl: string
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
   blockType: EmbedBlockType
@@ -119,7 +119,7 @@ const FileIconWrapper = styled('div', {
   width: '.875rem'
 })
 
-const BookmarkContainer = styled(Button, {
+const CardContainer = styled(Button, {
   variants: {
     size: {
       md: {
@@ -145,7 +145,7 @@ const BookmarkContainer = styled(Button, {
   }
 })
 
-export const BookmarkView: FC<BookmarkViewProps> = ({
+export const CardView: FC<CardViewProps> = ({
   linkUrl,
   cover,
   icon,
@@ -171,7 +171,7 @@ export const BookmarkView: FC<BookmarkViewProps> = ({
       getPos={getPos}
       actionOptions={actionOptions}
     >
-      <BookmarkContainer
+      <CardContainer
         data-testid={TEST_ID_ENUM.editor.embedBlock.link.id}
         size="md"
         onClick={() => window.open(linkUrl, '_blank')}
@@ -190,10 +190,10 @@ export const BookmarkView: FC<BookmarkViewProps> = ({
             <LinkText>{linkUrl}</LinkText>
           </Link>
           <ModeSwitchContainer onClick={handleStopPropagation}>
-            <ModeSwitch mode="bookmark" blockType={blockType} updateEmbedBlockAttributes={updateEmbedBlockAttributes} />
+            <ModeSwitch mode="card" blockType={blockType} updateEmbedBlockAttributes={updateEmbedBlockAttributes} />
           </ModeSwitchContainer>
         </Content>
-      </BookmarkContainer>
+      </CardContainer>
     </BlockContainer>
   )
 }

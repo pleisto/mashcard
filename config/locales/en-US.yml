@@ -880,8 +880,8 @@ en-US:
       view_types:
         card:
           name: card view
-        bookmark:
-          name: bookmark view
+        preview:
+          name: preview view
         text:
           name: text view
       embed_types:

@@ -8,7 +8,7 @@ export const meta: ExtensionMeta = {
 
 export interface EmbedOptions {}
 
-export type EmbedViewMode = 'link' | 'preview' | 'bookmark'
+export type EmbedViewMode = 'text' | 'preview' | 'card'
 export interface EmbedAttributes {
   embedMeta: {
     type: 'EmbedMeta'

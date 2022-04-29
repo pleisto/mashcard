@@ -4,7 +4,7 @@ exports[`FileIcon renders excel icon correctly 1`] = `
 <div>
   <img
     alt=""
-    class="brickdoc-link-block-attachment-img-icon"
+    class="brd-c-gRpUcK"
     src=""
   />
 </div>
@@ -13,33 +13,37 @@ exports[`FileIcon renders excel icon correctly 1`] = `
 exports[`FileIcon renders image icon correctly 1`] = `
 <div>
   <span
-    aria-label="image"
-    class="brd-icon brd-icon-image brickdoc-link-block-attachment-cion"
-    role="img"
+    class="brd-c-bVEyrJ"
   >
-    <svg
-      fill="none"
-      height="1em"
-      viewBox="0 0 24 24"
-      width="1em"
+    <span
+      aria-label="image"
+      class="brd-icon brd-icon-image"
+      role="img"
     >
-      <path
-        clip-rule="evenodd"
-        d="M1 4a1 1 0 0 1 1-1h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4zm2 1v14h18V5H3z"
-        fill="currentColor"
-        fill-rule="evenodd"
-      />
-      <path
-        clip-rule="evenodd"
-        d="M16.31 8.777a1 1 0 0 1 1.359-.02l5 4.5-1.338 1.486-4.311-3.88-10.33 9.86-1.38-1.446 11-10.5z"
-        fill="currentColor"
-        fill-rule="evenodd"
-      />
-      <path
-        d="M9 9a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
-        fill="currentColor"
-      />
-    </svg>
+      <svg
+        fill="none"
+        height="1em"
+        viewBox="0 0 24 24"
+        width="1em"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M1 4a1 1 0 0 1 1-1h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4zm2 1v14h18V5H3z"
+          fill="currentColor"
+          fill-rule="evenodd"
+        />
+        <path
+          clip-rule="evenodd"
+          d="M16.31 8.777a1 1 0 0 1 1.359-.02l5 4.5-1.338 1.486-4.311-3.88-10.33 9.86-1.38-1.446 11-10.5z"
+          fill="currentColor"
+          fill-rule="evenodd"
+        />
+        <path
+          d="M9 9a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
   </span>
 </div>
 `;
@@ -48,7 +52,7 @@ exports[`FileIcon renders pdf icon correctly 1`] = `
 <div>
   <img
     alt=""
-    class="brickdoc-link-block-attachment-img-icon"
+    class="brd-c-gRpUcK"
     src=""
   />
 </div>
@@ -58,7 +62,7 @@ exports[`FileIcon renders ppt icon correctly 1`] = `
 <div>
   <img
     alt=""
-    class="brickdoc-link-block-attachment-img-icon"
+    class="brd-c-gRpUcK"
     src=""
   />
 </div>
@@ -67,23 +71,27 @@ exports[`FileIcon renders ppt icon correctly 1`] = `
 exports[`FileIcon renders unknown file icon correctly 1`] = `
 <div>
   <span
-    aria-label="paper-clip"
-    class="brd-icon brd-icon-paper-clip brickdoc-link-block-attachment-icon"
-    role="img"
+    class="brd-c-bVEyrJ"
   >
-    <svg
-      fill="none"
-      height="1em"
-      viewBox="0 0 24 24"
-      width="1em"
+    <span
+      aria-label="paper-clip"
+      class="brd-icon brd-icon-paper-clip"
+      role="img"
     >
-      <path
-        clip-rule="evenodd"
-        d="M11.477 3.453a5 5 0 0 1 7.07 7.07l-.003.003-6.41 6.583-.002.001a2.999 2.999 0 1 1-4.248-4.237l6.58-6.58a1 1 0 1 1 1.415 1.414l-6.586 6.586-.012.012a1 1 0 1 0 1.414 1.414l.003-.003 6.41-6.583.002-.001a3 3 0 0 0-4.233-4.25l-6.413 6.582a5 5 0 1 0 7.072 7.072l6.258-6.244a1 1 0 1 1 1.412 1.416L14.95 19.95a7.002 7.002 0 0 1-9.905-9.895l6.41-6.58.022-.022Z"
-        fill="currentColor"
-        fill-rule="evenodd"
-      />
-    </svg>
+      <svg
+        fill="none"
+        height="1em"
+        viewBox="0 0 24 24"
+        width="1em"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M11.477 3.453a5 5 0 0 1 7.07 7.07l-.003.003-6.41 6.583-.002.001a2.999 2.999 0 1 1-4.248-4.237l6.58-6.58a1 1 0 1 1 1.415 1.414l-6.586 6.586-.012.012a1 1 0 1 0 1.414 1.414l.003-.003 6.41-6.583.002-.001a3 3 0 0 0-4.233-4.25l-6.413 6.582a5 5 0 1 0 7.072 7.072l6.258-6.244a1 1 0 1 1 1.412 1.416L14.95 19.95a7.002 7.002 0 0 1-9.905-9.895l6.41-6.58.022-.022Z"
+          fill="currentColor"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
   </span>
 </div>
 `;
@@ -92,7 +100,7 @@ exports[`FileIcon renders word icon correctly 1`] = `
 <div>
   <img
     alt=""
-    class="brickdoc-link-block-attachment-img-icon"
+    class="brd-c-gRpUcK"
     src=""
   />
 </div>

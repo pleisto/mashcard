@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { ToolbarGroupOption, ToolbarItemOption } from '../../../../ui'
-import { useActionOptions } from '../../views/useActionOptions'
+import { useActionOptions } from '../../embedViews/useActionOptions'
 
 describe('useActionOptions', () => {
   it('triggers download correctly', () => {

@@ -1,10 +1,11 @@
 import { FC } from 'react'
+import { EmbedViewMode } from '../../../../extensions/blocks/embed/meta'
 import { Toolbar } from '../../../ui'
 import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../EmbedView'
 import { useModeSwitchOptions } from './useModeSwitchOptions'
 
 export interface ModeSwitchProps {
-  mode: 'card' | 'bookmark' | 'text'
+  mode: EmbedViewMode
   blockType: EmbedBlockType
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
 }

@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import { WebsiteDocument } from '../../../views/CardView/WebsiteDocument'
+import { WebsiteDocument } from '../../../embedViews/PreviewView/WebsiteDocument'
 
 describe('WebsiteDocument', () => {
   it('renders WebsiteDocument correctly', () => {

@@ -32,7 +32,6 @@ exports[`EmbedView matches correct snapshot 1`] = `
         <div
           class="brd-c-ihEKuP"
         >
-          
           <span
             class="brd-c-hSIMwt"
           >
@@ -49,7 +48,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
             <li
               aria-describedby=""
               aria-haspopup="false"
-              aria-label="embed_block.view_types.card.name"
+              aria-label="embed_block.view_types.preview.name"
               class="brd-c-gGXCgU"
               role="menuitem"
             >
@@ -81,7 +80,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
             <li
               aria-describedby=""
               aria-haspopup="false"
-              aria-label="embed_block.view_types.bookmark.name"
+              aria-label="embed_block.view_types.card.name"
               class="brd-c-gGXCgU brd-c-gGXCgU-bTgvkf-active-true"
               role="menuitem"
             >

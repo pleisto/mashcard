@@ -9,7 +9,7 @@ import { WebsiteDocument } from './WebsiteDocument'
 import { styled } from '@brickdoc/design-system'
 import { ModeSwitchContainer } from './DocumentFooter'
 
-export interface CardViewProps {
+export interface PreviewViewProps {
   blockType: EmbedBlockType
   deleteNode: EmbedViewProps['deleteNode']
   getPos: EmbedViewProps['getPos']
@@ -30,7 +30,7 @@ const DocumentContainer = styled('div', {
   }
 })
 
-export const CardView: FC<CardViewProps> = ({
+export const PreviewView: FC<PreviewViewProps> = ({
   blockType,
   updateEmbedBlockAttributes,
   deleteNode,
