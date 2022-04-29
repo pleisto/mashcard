@@ -66,12 +66,10 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
       <Box>{headMenu}</Box>
       <Box>
         <Root.Menu>
-          {isSaving && (
-            <Root.Loading>
-              <Root.LoadingIcon src={loadingIcon} alt="" />
-              <span>{t('saving')}</span>
-            </Root.Loading>
-          )}
+          <Root.Loading>
+            <Root.LoadingIcon isSaving={isSaving} src={loadingIcon} alt="" />
+            <span>{t('saving')}</span>
+          </Root.Loading>
           {editableMenu}
           {loginMenu}
         </Root.Menu>

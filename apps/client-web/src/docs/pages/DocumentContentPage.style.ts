@@ -22,6 +22,7 @@ export const Section = styled('section', {
   justifyContent: 'space-between',
   minWidth: 270,
   maxWidth: 496,
+  flexShrink: 0,
   '.mainActions': {
     position: 'sticky',
     flex: 1,

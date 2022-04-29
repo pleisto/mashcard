@@ -55,7 +55,15 @@ export const LoadingIcon = styled('img', {
   width: 11,
   height: 11,
   animation: `${spin} infinite linear 800ms`,
-  marginRight: 7
+  marginRight: 7,
+  opacity: 0,
+  variants: {
+    isSaving: {
+      true: {
+        opacity: 1
+      }
+    }
+  }
 })
 
 export const Loading = styled('div', {
@@ -63,7 +71,7 @@ export const Loading = styled('div', {
   color: theme.colors.deepPurple3,
   fontSize: theme.fontSizes.callout,
   lineHeight: theme.lineHeights.callout,
-  marginRight: '0.4rem',
+  margin: '0 0.4rem',
   alignItems: 'center'
 })
 
