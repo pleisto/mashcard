@@ -82,16 +82,20 @@ export const currentMigrator = async (): Promise<SlonikMigrator> => {
  */
 export const dumpCurrentDbSchema = async (): Promise<void> => {
   const dump = spawn('pg_dump', ['--dbname', currentDbUri, '--schema-only', '--no-owner'])
-  for await (const data of dump.stdout) {
-    const fileBanner = `-----------------------------------------------------------
+  const fileBanner = `-----------------------------------------------------------
 -- THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY) --
 -----------------------------------------------------------`
+  const contents = [fileBanner]
+  for await (const data of dump.stdout) {
     const content = data
       .toString()
       .replace(/^(--|SET|SELECT pg_).*$/gm, '') // remove comments and server settings
       .replace(/(\n\n|\r\n\r\n)/g, '') // remove empty lines
       .replace(/;/g, ';\n') // add new line after each semicolon
-    writeFileSync(join(dbDir, 'structure.sql'), `${fileBanner}\n${content}`, { encoding: 'utf8', flag: 'w' })
+
+    contents.push(content)
   }
+
+  writeFileSync(join(dbDir, 'structure.sql'), `${contents.join('\n\n\n')}`, { encoding: 'utf8', flag: 'w' })
   console.log(`${Styles.FgGreen}Database schema dumped to ${dbDir}/structure.sql.`)
 }
