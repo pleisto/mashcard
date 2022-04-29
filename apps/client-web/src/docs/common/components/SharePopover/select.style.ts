@@ -190,7 +190,7 @@ export const selectStyle = css({
     background: theme.colors.blue2,
     borderRadius: '1.25rem',
     paddingLeft: 6,
-    margin: '4px 0',
+    margin: '3px 0',
     height: '1.5rem'
   },
   '&-selection-item-remove': {

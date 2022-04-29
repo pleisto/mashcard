@@ -24,4 +24,12 @@ export function mutationResultHandler(
   result && isEmpty(result.errors) ? onSuccess() : onError(result?.errors ?? [])
 }
 
+export const sleep = async (time: number): Promise<number> => {
+  return await new Promise(resolve =>
+    setTimeout(() => {
+      resolve(time)
+    }, time)
+  )
+}
+
 export * from './paths'

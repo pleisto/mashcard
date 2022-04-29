@@ -5,11 +5,10 @@ import {
   ShareLinkState,
   useBlockCreateShareLinkMutation
 } from '@/BrickdocGraphQL'
-import anyoneIcon from '@/common/assets/anyone.svg'
 import { Dropdown, Menu, MenuProps } from '@brickdoc/design-system'
 import React from 'react'
 import { useDocsI18n } from '../../hooks'
-import { LineDown } from '@brickdoc/design-icons'
+import { LineDown, Anyone, Check } from '@brickdoc/design-icons'
 import { queryBlockShareLinks } from '../../graphql'
 import * as Root from './index.style'
 import { SpaceCard, SpaceType } from '@/common/components/SpaceCard'
@@ -79,6 +78,7 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ docMeta, i
           <div className="head">{t('invite.view_message')}</div>
           <div className="desc">{t('invite.view_message_description')}</div>
         </div>
+        {item.state === ShareLinkState.Enabled && <Check className="check-icon" />}
       </Menu.Item>
       <Menu.Item
         className={menuClassName}
@@ -89,6 +89,7 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ docMeta, i
           <div className="head">{t('invite.no_view_message')}</div>
           <div className="desc">{t('invite.no_view_message_description')}</div>
         </div>
+        {item.state === ShareLinkState.Disabled && <Check className="check-icon" />}
       </Menu.Item>
     </Menu>
   ) : (
@@ -121,7 +122,14 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ docMeta, i
     isAnyOne
       ? {
           domain: ANYONE_DOMAIN,
-          avatarData: { url: anyoneIcon }
+          avatarData: {
+            __typename: 'avatarComp',
+            comp: (
+              <div className="anyone-icon">
+                <Anyone />
+              </div>
+            )
+          }
         }
       : item.shareSpaceData
   ) as SpaceType

@@ -7,7 +7,11 @@ export interface SpaceType {
   name?: string | null | undefined
   domain: string
   email?: string | null | undefined
-  avatarData?: { __typename?: 'avatar'; url: string } | null | undefined
+  avatarData?:
+    | { __typename?: 'avatar'; url: string }
+    | { __typename: 'avatarComp'; comp: React.ReactElement }
+    | null
+    | undefined
   personal?: boolean
 }
 

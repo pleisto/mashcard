@@ -3,7 +3,18 @@ import { theme, styled, css } from '@brickdoc/design-system'
 export const Item = styled('div', {
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'space-between'
+  justifyContent: 'space-between',
+  '.anyone-icon': {
+    height: '2rem',
+    width: '2rem',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: theme.colors.ceramicSecondary,
+    border: '1px solid',
+    borderColor: theme.colors.borderSecondary,
+    borderRadius: '100%'
+  }
 })
 
 export const Action = styled('div', {
@@ -21,7 +32,8 @@ export const menu = css({
   '.content': {
     display: 'flex',
     flexFlow: 'column nowrap',
-    padding: '0 1rem'
+    padding: '0 1rem',
+    flex: 1
   },
 
   '.head': {
@@ -32,5 +44,10 @@ export const menu = css({
   '.desc': {
     lineHeight: theme.lineHeights.callout,
     fontSize: theme.fontSizes.callout
+  },
+
+  '.check-icon': {
+    marginRight: '1rem',
+    color: theme.colors.primaryDefault
   }
 })

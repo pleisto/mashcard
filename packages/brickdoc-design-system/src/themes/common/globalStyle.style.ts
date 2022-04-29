@@ -98,7 +98,9 @@ export const globalStyleSheet = {
   },
   p: {
     marginTop: 0,
-    marginBottom: 0
+    marginBottom: 0,
+    fontSize: ceramicLightTheme.fontSizes.body,
+    lineHeight: ceramicLightTheme.lineHeights.body
   },
   'input, button, select, optgroup, textarea': {
     margin: 0,

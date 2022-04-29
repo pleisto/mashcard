@@ -1,13 +1,14 @@
 import React from 'react'
 
+// always return a valid width!!! can avoid flex sidebar
 export const getSidebarStyle = (): React.CSSProperties => {
   const sidebarWidth = Number(localStorage.getItem('SIDEBAR_WIDTH'))
-  if (sidebarWidth > 15 && sidebarWidth < 50) {
+  if (sidebarWidth > 5 && sidebarWidth < 50) {
     return {
       width: `${sidebarWidth}%`
     }
   }
-  return {}
+  return { width: 270 }
 }
 
 export const logSideBarWidth = (width: number) => {

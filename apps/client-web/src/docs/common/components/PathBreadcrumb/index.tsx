@@ -28,9 +28,9 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
           </Root.Tip>
         }
       >
-        <Root.Warp>
+        <Root.Warp to={link}>
           <Root.Emoji show={Boolean(hasEmoji)}>{emoji}</Root.Emoji>
-          <Root.Path to={link}>{path.text || t('title.untitled')}</Root.Path>
+          <Root.Path>{path.text || t('title.untitled')}</Root.Path>
           <Root.Split show={showSplit}>/</Root.Split>
         </Root.Warp>
       </Tooltip>
@@ -52,12 +52,12 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
               </Menu>
             }
             title={null}
-            placement="bottom"
+            placement="bottomStart"
             overlayInnerStyle={{ padding: 0, minHeight: 'fit-content' }}
             trigger={['click', 'hover']}
           >
             <div style={{ display: 'flex' }}>
-              <Root.Path to="">...</Root.Path>
+              <Root.Path>...</Root.Path>
               <Root.Split show>/</Root.Split>
             </div>
           </Popover>,

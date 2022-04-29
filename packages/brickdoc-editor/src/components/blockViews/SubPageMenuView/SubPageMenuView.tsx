@@ -10,6 +10,7 @@ const SubPageMenu = styled('div', {
   borderRadius: '8px',
   display: 'inline-block',
   minWidth: '23.375rem',
+  maxWidth: '100%',
   padding: '1rem .25rem'
 })
 

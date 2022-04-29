@@ -29,6 +29,7 @@ import { useApolloClient, useReactiveVar } from '@apollo/client'
 import { editorVar, FormulaContextVar } from '@/docs/reactiveVars'
 import { appendFormulas } from '@brickdoc/formula'
 import { useFormulaActions } from '@/docs/pages/hooks/useFormulaActions'
+import { sleep } from '@/common/utils'
 
 type UUID = Scalars['UUID']
 
@@ -96,21 +97,23 @@ export const PageMenu: React.FC<PageMenuProps> = ({
       const newPageInput = { title: '' }
       const { data } = await blockCreate({ variables: { input: newPageInput } })
       if (data?.blockCreate?.id) {
+        await sleep(100)
         navigate(`/${domain}/${data?.blockCreate?.id}`)
       }
     }
     const input = { id: pageId, hardDelete: false }
     await blockSoftDelete({ variables: { input } })
+    const {
+      data: { pageBlocks }
+    } = await getPageBlocks({ domain })
     if (location.pathname !== `/${domain}/${pageId}`) {
-      const {
-        data: { pageBlocks }
-      } = await getPageBlocks({ domain })
       if (!pageBlocks.length) {
         createNew()
       }
       return
     }
     if (nearNodeId ?? parentId) {
+      await sleep(100)
       navigate(`/${domain}/${nearNodeId ?? parentId}`)
       return
     }
