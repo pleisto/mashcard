@@ -159,8 +159,8 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
       </Item>
       <List>
         {showSpin && <Spin size="lg" className="trash-spin" />}
-        {list.map((item: Block, index: number) => (
-          <Item type="item" key={getKey(index)}>
+        {list.map((item: BlockWithChecked, index: number) => (
+          <Item checked={!!item.checked} type="item" key={getKey(index)}>
             <TrashItem
               domain={domain}
               block={item}

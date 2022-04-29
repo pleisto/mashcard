@@ -25,6 +25,7 @@ export const itemStyle = {
   borderRadius: 4,
   fontSize: '1.25rem',
   lineHeight: '1.25rem',
+  flexShrink: 0,
   '&:hover': {
     background: theme.colors.secondaryHover
   }
@@ -55,7 +56,16 @@ export const LoadingIcon = styled('img', {
   width: 11,
   height: 11,
   animation: `${spin} infinite linear 800ms`,
-  marginRight: 7,
+  marginRight: 7
+})
+
+export const Loading = styled('div', {
+  display: 'flex',
+  color: theme.colors.deepPurple3,
+  fontSize: theme.fontSizes.callout,
+  lineHeight: theme.lineHeights.callout,
+  margin: '0 0.4rem',
+  alignItems: 'center',
   opacity: 0,
   variants: {
     isSaving: {
@@ -66,15 +76,6 @@ export const LoadingIcon = styled('img', {
   }
 })
 
-export const Loading = styled('div', {
-  display: 'flex',
-  color: theme.colors.deepPurple3,
-  fontSize: theme.fontSizes.callout,
-  lineHeight: theme.lineHeights.callout,
-  margin: '0 0.4rem',
-  alignItems: 'center'
-})
-
 export const TopBar = styled('div', {
   display: 'flex',
   flexDirection: 'row',
@@ -82,7 +83,7 @@ export const TopBar = styled('div', {
   justifyContent: 'space-between',
   height: '3.5rem',
   overflow: 'hidden',
-
+  flexShrink: 0,
   variants: {
     width: {
       md: {

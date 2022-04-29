@@ -169,8 +169,13 @@ export const Item = styled('li', {
           [SelectBlock.toString()]: {
             opacity: 1
           }
-        },
-        '&:hover, &:active': {
+        }
+      }
+    },
+    checked: {
+      true: {
+        backgroundColor: theme.colors.secondarySelected,
+        '&:hover': {
           backgroundColor: theme.colors.secondarySelected
         }
       }
