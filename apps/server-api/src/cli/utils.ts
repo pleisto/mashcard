@@ -84,7 +84,9 @@ export const dumpCurrentDbSchema = async (): Promise<void> => {
   const dump = spawn('pg_dump', ['--dbname', currentDbUri, '--schema-only', '--no-owner'])
   const fileBanner = `-----------------------------------------------------------
 -- THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY) --
------------------------------------------------------------`
+-----------------------------------------------------------
+
+`
   const contents = [fileBanner]
   for await (const data of dump.stdout) {
     const content = data
@@ -96,6 +98,6 @@ export const dumpCurrentDbSchema = async (): Promise<void> => {
     contents.push(content)
   }
 
-  writeFileSync(join(dbDir, 'structure.sql'), `${contents.join('\n\n\n')}`, { encoding: 'utf8', flag: 'w' })
+  writeFileSync(join(dbDir, 'structure.sql'), `${contents.join('')}`, { encoding: 'utf8', flag: 'w' })
   console.log(`${Styles.FgGreen}Database schema dumped to ${dbDir}/structure.sql.`)
 }

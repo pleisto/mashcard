@@ -5,7 +5,7 @@ export const up: Migration = async ({ context: { connection, sql } }) => {
   CREATE EXTENSION IF NOT EXISTS "ltree";
   CREATE EXTENSION IF NOT EXISTS "pgcrypto";
   CREATE TABLE "settings" (
-    "id" SERIAL PRIMARY KEY,
+    "id" BIGSERIAL PRIMARY KEY,
     "key" LTREE NOT NULL,
     "value" JSONB,
     "scope" LTREE NOT NULL,
