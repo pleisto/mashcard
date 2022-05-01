@@ -2297,6 +2297,7 @@ __metadata:
     node-dev: ^7.4.3
     reflect-metadata: ^0.1.13
     rxjs: ^7.5.5
+    slonik-sql-tag-raw: ^1.1.4
     tzdata: ^1.0.30
     winston: ^3.7.2
     yargs: ^17.4.1
@@ -26023,6 +26024,19 @@ __metadata:
     ansi-styles: ^6.0.0
     is-fullwidth-code-point: ^4.0.0
   checksum: 7e600a2a55e333a21ef5214b987c8358fe28bfb03c2867ff2cbf919d62143d1812ac27b4297a077fdaf27a03da3678e49551c93e35f9498a3d90221908a1180e
+  languageName: node
+  linkType: hard
+
+"slonik-sql-tag-raw@npm:^1.1.4":
+  version: 1.1.4
+  resolution: "slonik-sql-tag-raw@npm:1.1.4"
+  dependencies:
+    lodash: ^4.17.20
+    serialize-error: ^8.0.0
+  peerDependencies:
+    roarr: ">=7.0.3"
+    slonik: ">=27.0.0"
+  checksum: d106f24d457bd6334ec1f7931fc74f2ddb211c211e468c3551cc58e094e746e5c47a9ffeaaede8a324f3a58f7ddd662eeec5868099f44fbe657f92dd4418104d
   languageName: node
   linkType: hard
 

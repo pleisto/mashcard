@@ -9,6 +9,8 @@ db/schema.gql linguist-generated merge=ours
 db/schema.rb linguist-generated merge=ours
 db/graphql/* linguist-generated merge=ours
 apps/client-web/BrickdocGraphQL.ts linguist-generated merge=ours
+apps/server-api/db/schema.gql linguist-generated merge=ours
+apps/server-api/db/structure.sql linguist-generated merge=ours
 yarn.lock linguist-generated
 Gemfile.lock linguist-generated
 *.mdx linguist-language=TypeScript

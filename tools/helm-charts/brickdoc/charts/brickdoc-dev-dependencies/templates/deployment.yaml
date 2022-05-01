@@ -20,7 +20,7 @@ spec:
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}-postgres
-          image: postgres:14.2-alpine
+          image: postgres:14-alpine
           env:
             - name: POSTGRES_DB
               value: brickdoc_cicd

@@ -15,6 +15,7 @@
     "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
     "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
+    "test:jest": "NODE_ENV=test run -T jest",
     "tsdoc": "run -T typedoc --excludeExternals --options ../../tools/typedoc/config.json --out ./docs/api ./src/**/index.ts"
   },
   "devDependencies": {
@@ -24,7 +25,8 @@
     "@types/graphql-type-json": "^0.3.2",
     "@types/lru-cache": "^7.6.1",
     "leaked-handles": "^5.2.0",
-    "node-dev": "^7.4.3"
+    "node-dev": "^7.4.3",
+    "slonik-sql-tag-raw": "^1.1.4"
   },
   "dependencies": {
     "@brickdoc/active-support": "workspace:^",

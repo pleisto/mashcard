@@ -41,10 +41,36 @@ on:
 
 env:
   YARN_CHECKSUM_BEHAVIOR: update
+  REDIS_URL: redis://localhost:6379
+  DATABASE_URL_BASE: postgres://postgres:just4testing@localhost:5432
 jobs:
   jest:
     name: Jest Test
     runs-on: ubuntu-latest
+    services:
+      # image version suggestion same as tools/helm-charts/brickdoc
+      postgres:
+        image: postgres:14-alpine
+        env:
+          POSTGRES_DB: 'brickdoc_next_test'
+          POSTGRES_USER: 'postgres'
+          POSTGRES_PASSWORD: 'just4testing'
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3

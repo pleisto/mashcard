@@ -9,7 +9,7 @@ import { NotFoundError } from './server-plugin.errors'
  * Return all enabled plugins's metadata
  * @returns
  */
-const allServerPlugins = async (): Promise<ServerPluginMeta[]> => {
+export const allServerPlugins = async (): Promise<ServerPluginMeta[]> => {
   // all npm packages from plugins directory
   const $packages = from(
     globbySync(posix.join(__dirname, '../../../../..', 'plugins/*/package.json')).map(path => posix.dirname(path))

@@ -21,7 +21,18 @@ import { ServerPluginModule } from './server-plugin'
     }),
     SlonikModule.forRoot({
       connectionUri: `${env.DATABASE_URL_BASE}/${env.DATABASE_NAME}`,
-      verboseRetryLog: true
+      verboseRetryLog: true,
+      clientConfigurationInput:
+        /**
+         * https://github.com/gajus/slonik/issues/63
+         * avoid jest open handle error
+         */
+        env.NODE_ENV === 'test'
+          ? {
+              idleTimeout: 'DISABLE_TIMEOUT',
+              maximumPoolSize: 1
+            }
+          : undefined
     }),
     SettingsModule.forRoot(),
     ServerPluginModule
