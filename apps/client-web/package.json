@@ -6,7 +6,7 @@
     "extends": "../../package.json"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.0",
+    "@apollo/client": "^3.6.1",
     "@brickdoc/active-support": "workspace:^",
     "@brickdoc/design-icons": "workspace:^",
     "@brickdoc/design-system": "workspace:^",
@@ -22,7 +22,7 @@
     "@sentry/tracing": "^6.19.7",
     "@uiw/react-split": "^5.8.7",
     "dayjs": "^1.11.1",
-    "framer-motion": "^6.3.2",
+    "framer-motion": "^6.3.3",
     "graphql": "^16.4.0",
     "graphql-ruby-client": "^1.10.7",
     "i18next": "^21.6.16",
@@ -36,19 +36,9 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^2.6.2",
-    "@graphql-codegen/typescript": "^2.4.8",
-    "@graphql-codegen/typescript-operations": "^2.3.5",
-    "@graphql-codegen/typescript-react-apollo": "^3.2.11",
-    "@types/rails__actioncable": "^6.1.6",
-    "@types/rails__activestorage": "^7.0.1",
-    "autoprefixer": "^10.4.5",
-    "browserlist": "^1.0.1",
-    "postcss": "^8.4.12",
+    "postcss": "^8.4.13",
     "postcss-less": "^6.0.0",
-    "postcss-preset-env": "^7.4.4",
-    "vite-plugin-pwa": "^0.12.0",
-    "vite-plugin-ruby": "^3.0.9"
+    "postcss-preset-env": "^7.4.4"
   },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",
