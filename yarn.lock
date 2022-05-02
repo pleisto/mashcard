@@ -2241,6 +2241,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@brickdoc/plugin-sentry@workspace:plugins/sentry":
+  version: 0.0.0-use.local
+  resolution: "@brickdoc/plugin-sentry@workspace:plugins/sentry"
+  dependencies:
+    "@nestjs/common": ^8.4.4
+    "@nestjs/core": ^8.4.4
+    "@nestjs/testing": ^8.4.4
+    "@sentry/node": ^6.19.7
+    "@sentry/tracing": ^6.19.7
+  languageName: unknown
+  linkType: soft
+
 "@brickdoc/schema@workspace:^, @brickdoc/schema@workspace:packages/brickdoc-schema":
   version: 0.0.0-use.local
   resolution: "@brickdoc/schema@workspace:packages/brickdoc-schema"
@@ -5118,6 +5130,22 @@ __metadata:
     "@sentry/types": 6.19.7
     tslib: ^1.9.3
   checksum: 9153ac426ee056fc34c5be898f83d74ec08f559d69f544c5944ec05e584b62ed356b92d1a9b08993a7022ad42b5661c3d72881221adc19bee5fc1af3ad3864a8
+  languageName: node
+  linkType: hard
+
+"@sentry/node@npm:^6.19.7":
+  version: 6.19.7
+  resolution: "@sentry/node@npm:6.19.7"
+  dependencies:
+    "@sentry/core": 6.19.7
+    "@sentry/hub": 6.19.7
+    "@sentry/types": 6.19.7
+    "@sentry/utils": 6.19.7
+    cookie: ^0.4.1
+    https-proxy-agent: ^5.0.0
+    lru_map: ^0.3.3
+    tslib: ^1.9.3
+  checksum: 2293b0d1d1f9fac3a451eb94f820bc27721c8edddd1f373064666ddd6272f0a4c70dbe58c6c4b3d3ccaf4578aab8f466d71ee69f6f6ff93521bbb02dfe829ce5
   languageName: node
   linkType: hard
 
@@ -12120,7 +12148,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:0.4.2, cookie@npm:^0.4.0":
+"cookie@npm:0.4.2, cookie@npm:^0.4.0, cookie@npm:^0.4.1":
   version: 0.4.2
   resolution: "cookie@npm:0.4.2"
   checksum: a00833c998bedf8e787b4c342defe5fa419abd96b32f4464f718b91022586b8f1bafbddd499288e75c037642493c83083da426c6a9080d309e3bd90fd11baa9b
@@ -20039,6 +20067,13 @@ __metadata:
   dependencies:
     es5-ext: ~0.10.2
   checksum: 7f2c53c5e7f2de20efb6ebb3086b7aea88d6cf9ae91ac5618ece974122960c4e8ed04988e81d92c3e63d60b12c556b14d56ef7a9c5a4627b23859b813e39b1a2
+  languageName: node
+  linkType: hard
+
+"lru_map@npm:^0.3.3":
+  version: 0.3.3
+  resolution: "lru_map@npm:0.3.3"
+  checksum: ca9dd43c65ed7a4f117c548028101c5b6855e10923ea9d1f635af53ad20c5868ff428c364d454a7b57fe391b89c704982275410c3c5099cca5aeee00d76e169a
   languageName: node
   linkType: hard
 

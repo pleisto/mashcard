@@ -7,7 +7,6 @@
 ### Enumeration members
 
 - [COMMON\_KMS\_DECODER](common_server_plugin.HookType.md#common_kms_decoder)
-- [CORE\_ERROR\_REPORTER](common_server_plugin.HookType.md#core_error_reporter)
 - [CORE\_INITIALIZER](common_server_plugin.HookType.md#core_initializer)
 
 ## Enumeration members
@@ -20,19 +19,7 @@ KMS Seed Decoder Hook.
 
 #### Defined in
 
-[common/server-plugin/server-plugin.interface.ts:24](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L24)
-
-___
-
-### <a id="core_error_reporter" name="core_error_reporter"></a> CORE\_ERROR\_REPORTER
-
-• **CORE\_ERROR\_REPORTER** = `"core.error.REPORTER"`
-
-Exception Reporter Hook.
-
-#### Defined in
-
-[common/server-plugin/server-plugin.interface.ts:14](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L14)
+[common/server-plugin/server-plugin.interface.ts:19](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L19)
 
 ___
 
@@ -44,4 +31,4 @@ Hook for server initialization.
 
 #### Defined in
 
-[common/server-plugin/server-plugin.interface.ts:19](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L19)
+[common/server-plugin/server-plugin.interface.ts:14](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L14)

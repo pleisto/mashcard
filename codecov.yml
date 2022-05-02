@@ -30,3 +30,4 @@ ignore:
   - 'spec/**/*'
   - 'tmp/**/*'
   - 'plugins/gcloud/**/*'
+  - 'plugins/sentry/**/*'

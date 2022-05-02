@@ -41,7 +41,7 @@
 
 #### Defined in
 
-[common/server-plugin/server-plugin.interface.ts:39](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L39)
+[common/server-plugin/server-plugin.interface.ts:31](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L31)
 
 ## Variables
 
