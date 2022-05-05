@@ -13,6 +13,7 @@ export const fontSizes = {
   title3: rem(22),
   title2: rem(26),
   title1: rem(30),
+  titlePage: rem(36),
   largeTitle: rem(48),
   superTitle: rem(64)
 }

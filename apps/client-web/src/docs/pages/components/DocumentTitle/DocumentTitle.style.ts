@@ -66,7 +66,7 @@ export const popover = css({
 })
 
 export const Input = styled(input, {
-  fontSize: theme.fontSizes.title1,
+  fontSize: theme.fontSizes.titlePage,
   padding: '0px !important',
   input: {
     lineHeight: '54px',
