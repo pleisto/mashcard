@@ -6,7 +6,6 @@ import { Schema as ComponentOptions } from './schema'
 import { migrationDir, rootDir } from '../../utils'
 
 export function migration(options: ComponentOptions): Rule {
-  console.log(999, relative(rootDir, migrationDir))
   return chain([
     (): Rule =>
       mergeWith(

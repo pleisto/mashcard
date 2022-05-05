@@ -10,6 +10,11 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
 
 COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
 
+CREATE TYPE public.blob_bucket AS ENUM (
+    'public_read',
+    'private_attachment'
+);
+
 CREATE TYPE public.pod_type AS ENUM (
     'user',
     'space'
@@ -31,6 +36,33 @@ $$;
 
 COMMENT ON FUNCTION public.settings_scope_priority(scope public.ltree, fallback text, root text) IS 'Returns the priority of a scope. The root scope has the lowest priority.';
 
+CREATE TABLE public.blobs (
+    id bigint NOT NULL,
+    pod_id bigint NOT NULL,
+    cid text NOT NULL,
+    bucket public.blob_bucket NOT NULL,
+    mime_type text DEFAULT 'application/octet-stream'::text NOT NULL,
+    metadata jsonb DEFAULT '{"analyzed": false}'::jsonb NOT NULL,
+    byte_size integer NOT NULL,
+    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+COMMENT ON TABLE public.blobs IS 'blobs is a table for uploaded files metadata';
+
+COMMENT ON COLUMN public.blobs.pod_id IS 'associated with a pod';
+
+COMMENT ON COLUMN public.blobs.cid IS 'cid is the unique content id of the file. It is compatible with IPFS CIDv1 spec.
+    Multihash is blake3(mime_type:byte_size:md5_checksum)';
+
+CREATE SEQUENCE public.blobs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.blobs_id_seq OWNED BY public.blobs.id;
+
 CREATE TABLE public.db_migrations (
     name text NOT NULL,
     hash text NOT NULL,
@@ -43,7 +75,7 @@ CREATE TABLE public.event_logs (
     actor_id text,
     event public.ltree NOT NULL,
     context jsonb DEFAULT '{}'::jsonb NOT NULL,
-    created_at timestamp without time zone NOT NULL
+    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
 )
 WITH (fillfactor='95');
 
@@ -64,12 +96,41 @@ CREATE SEQUENCE public.event_logs_id_seq
 
 ALTER SEQUENCE public.event_logs_id_seq OWNED BY public.event_logs.id;
 
+CREATE TABLE public.pod_access_credentials (
+    id bigint NOT NULL,
+    pod_type public.pod_type NOT NULL,
+    pod_id bigint NOT NULL,
+    provider text NOT NULL,
+    subject text NOT NULL,
+    meta jsonb DEFAULT '{}'::jsonb NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+COMMENT ON TABLE public.pod_access_credentials IS 'pod_access_credentials stores user authentication providers, and it is will delete cascade on user deletion';
+
+COMMENT ON COLUMN public.pod_access_credentials.provider IS 'provider is the identity provider, such as google, WebAuthn, etc.';
+
+COMMENT ON COLUMN public.pod_access_credentials.subject IS 'subject is the unique identifier of the user in the provider';
+
+COMMENT ON COLUMN public.pod_access_credentials.meta IS 'meta is a JSON object that contains extra information about the user in the provider';
+
+CREATE SEQUENCE public.pod_access_credentials_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.pod_access_credentials_id_seq OWNED BY public.pod_access_credentials.id;
+
 CREATE TABLE public.pods (
+    type public.pod_type NOT NULL,
     id bigint NOT NULL,
     slug text NOT NULL,
     name text NOT NULL,
     bio text,
-    type public.pod_type NOT NULL,
+    avatar_url text,
     locked_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -79,7 +140,8 @@ CREATE TABLE public.pods (
     space_invite_secret text
 );
 
-COMMENT ON TABLE public.pods IS 'pods is an abstract table used to represent tenants, which can be either users or spaces';
+COMMENT ON TABLE public.pods IS 'A data pod is a place for storing documents, with mechanisms for controlling who can access what.
+  In Brickdoc, pods is an abstract table used to represent tenants, which can be either users or spaces';
 
 CREATE SEQUENCE public.pods_id_seq
     START WITH 1
@@ -133,39 +195,13 @@ CREATE SEQUENCE public.spaces_members_id_seq
 
 ALTER SEQUENCE public.spaces_members_id_seq OWNED BY public.spaces_members.id;
 
-CREATE TABLE public.users_providers (
-    id bigint NOT NULL,
-    user_id bigint NOT NULL,
-    provider text NOT NULL,
-    subject text NOT NULL,
-    meta jsonb DEFAULT '{}'::jsonb NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-COMMENT ON TABLE public.users_providers IS 'users_providers stores user authentication providers, and it is will delete cascade on user deletion';
-
-COMMENT ON COLUMN public.users_providers.provider IS 'provider is the identity provider, such as google, WebAuthn, etc.';
-
-COMMENT ON COLUMN public.users_providers.subject IS 'subject is the unique identifier of the user in the provider';
-
-COMMENT ON COLUMN public.users_providers.meta IS 'meta is a JSON object that contains extra information about the user in the provider';
-
-CREATE SEQUENCE public.users_providers_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-ALTER SEQUENCE public.users_providers_id_seq OWNED BY public.users_providers.id;
-
 CREATE VIEW public.v_spaces AS
  SELECT pods.id,
     pods.slug,
     pods.name,
     pods.bio,
     pods.type,
+    pods.avatar_url,
     pods.locked_at,
     pods.created_at,
     pods.updated_at,
@@ -184,6 +220,7 @@ CREATE VIEW public.v_users AS
     pods.name,
     pods.bio,
     pods.type,
+    pods.avatar_url,
     pods.locked_at,
     pods.created_at,
     pods.updated_at,
@@ -194,7 +231,11 @@ CREATE VIEW public.v_users AS
 
 COMMENT ON VIEW public.v_users IS 'v_users is a updatable database view of user pod.';
 
+ALTER TABLE ONLY public.blobs ALTER COLUMN id SET DEFAULT nextval('public.blobs_id_seq'::regclass);
+
 ALTER TABLE ONLY public.event_logs ALTER COLUMN id SET DEFAULT nextval('public.event_logs_id_seq'::regclass);
+
+ALTER TABLE ONLY public.pod_access_credentials ALTER COLUMN id SET DEFAULT nextval('public.pod_access_credentials_id_seq'::regclass);
 
 ALTER TABLE ONLY public.pods ALTER COLUMN id SET DEFAULT nextval('public.pods_id_seq'::regclass);
 
@@ -202,13 +243,17 @@ ALTER TABLE ONLY public.settings ALTER COLUMN id SET DEFAULT nextval('public.set
 
 ALTER TABLE ONLY public.spaces_members ALTER COLUMN id SET DEFAULT nextval('public.spaces_members_id_seq'::regclass);
 
-ALTER TABLE ONLY public.users_providers ALTER COLUMN id SET DEFAULT nextval('public.users_providers_id_seq'::regclass);
+ALTER TABLE ONLY public.blobs
+    ADD CONSTRAINT blobs_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY public.db_migrations
     ADD CONSTRAINT db_migrations_pkey PRIMARY KEY (name);
 
 ALTER TABLE ONLY public.event_logs
     ADD CONSTRAINT event_logs_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY public.pod_access_credentials
+    ADD CONSTRAINT pod_access_credentials_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY public.pods
     ADD CONSTRAINT pods_pkey PRIMARY KEY (id);
@@ -219,12 +264,15 @@ ALTER TABLE ONLY public.settings
 ALTER TABLE ONLY public.spaces_members
     ADD CONSTRAINT spaces_members_pkey PRIMARY KEY (id);
 
-ALTER TABLE ONLY public.users_providers
-    ADD CONSTRAINT users_providers_pkey PRIMARY KEY (id);
+CREATE INDEX blobs_metadata ON public.blobs USING gin (metadata);
 
-CREATE INDEX events_actor_type_actor_id ON public.event_logs USING btree (actor_type, actor_id);
+CREATE UNIQUE INDEX blobs_pod_id_cid_bucket_ukey ON public.blobs USING btree (pod_id, cid, bucket);
 
-CREATE INDEX events_created_at ON public.event_logs USING brin (created_at);
+CREATE INDEX event_logs_actor_type_actor_id ON public.event_logs USING btree (actor_type, actor_id);
+
+CREATE INDEX event_logs_created_at ON public.event_logs USING brin (created_at);
+
+CREATE UNIQUE INDEX pod_access_credentials_provider_subject_ukey ON public.pod_access_credentials USING btree (provider, subject);
 
 CREATE UNIQUE INDEX pods_lower_slug_text_ukey ON public.pods USING btree (lower(slug));
 
@@ -232,7 +280,8 @@ CREATE UNIQUE INDEX pods_space_invite_secret_ukey ON public.pods USING btree (sp
 
 CREATE UNIQUE INDEX settings_key_scope_ukey ON public.settings USING btree (key, scope);
 
-CREATE UNIQUE INDEX users_providers_provider_subject_ukey ON public.users_providers USING btree (provider, subject);
+ALTER TABLE ONLY public.pod_access_credentials
+    ADD CONSTRAINT pod_access_credentials_pod_id_fk FOREIGN KEY (pod_id) REFERENCES public.pods(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY public.pods
     ADD CONSTRAINT pods_owner_id_fkey FOREIGN KEY (space_owner_id) REFERENCES public.pods(id) ON DELETE RESTRICT;
@@ -244,7 +293,4 @@ ALTER TABLE ONLY public.spaces_members
 
 ALTER TABLE ONLY public.spaces_members
     ADD CONSTRAINT spaces_members_user_id_fk FOREIGN KEY (user_id) REFERENCES public.pods(id) ON DELETE CASCADE;
-
-ALTER TABLE ONLY public.users_providers
-    ADD CONSTRAINT users_providers_user_id_fk FOREIGN KEY (user_id) REFERENCES public.pods(id) ON DELETE CASCADE;
 
