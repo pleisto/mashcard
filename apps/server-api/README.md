@@ -31,6 +31,13 @@ Options:
   --version  Show version number                                       [boolean]
 ```
 
+To run `db:dump`, you need to have `pg_dump` installed locally. If you are running postgres via [docker-compose](../../docker-compose.yml), yan can create a script named `pg_dump` under `/usr/local/bin/` with the following content:
+
+```sh
+#!/bin/sh
+docker exec brickdoc-postgres-1 pg_dump $@
+```
+
 ### schematics
 
 * `dotenv`: Generate or update .env.local file.

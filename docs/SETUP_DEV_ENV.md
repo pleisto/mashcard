@@ -27,6 +27,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 Sure you can use any other editor/IDE you like, but we highly recommend [VSCode](https://code.visualstudio.com/) for a better out-of-the-box experience.
 
+We provide an out-of-box workspace file for VSCode, which contains all the necessary settings to work with this monorepo. We recommend you open this monorepo by `File` menu -> `Open Workspace from File` -> select `workspace.code-workspace` file in the repo root.
+
 ### Database
 
 > TIPS: you can run docker compose to quickly start a local database.

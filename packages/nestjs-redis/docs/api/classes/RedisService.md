@@ -34,7 +34,7 @@
 
 | Name | Type |
 | :------ | :------ |
-| `redisClient` | [`RedisClientType`](../README.md#redisclienttype)<`Record`<`string`, `never`\>, `Record`<`string`, `never`\>\> |
+| `redisClient` | [`RedisClientType`](../README.md#redisclienttype)<`Record`<`string`, `never`\>, `Record`<`string`, `never`\>, `Record`<`string`, `never`\>\> |
 
 #### Defined in
 
@@ -64,7 +64,7 @@ ___
 
 ### <a id="client" name="client"></a> client
 
-• `get` **client**(): [`RedisClientType`](../README.md#redisclienttype)<`Record`<`string`, `never`\>, `Record`<`string`, `never`\>\>
+• `get` **client**(): [`RedisClientType`](../README.md#redisclienttype)<`Record`<`string`, `never`\>, `Record`<`string`, `never`\>, `Record`<`string`, `never`\>\>
 
 Get node-redis client instance
 
@@ -72,7 +72,7 @@ Get node-redis client instance
 
 #### Returns
 
-[`RedisClientType`](../README.md#redisclienttype)<`Record`<`string`, `never`\>, `Record`<`string`, `never`\>\>
+[`RedisClientType`](../README.md#redisclienttype)<`Record`<`string`, `never`\>, `Record`<`string`, `never`\>, `Record`<`string`, `never`\>\>
 
 #### Defined in
 

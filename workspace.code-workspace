@@ -1,0 +1,139 @@
+{
+  "folders": [
+    {
+      "name": "/",
+      "path": "."
+    },
+    {
+      "name": "apps/client-web",
+      "path": "apps/client-web"
+    },
+    {
+      "name": "apps/landing-page",
+      "path": "apps/landing-page"
+    },
+    {
+      "name": "apps/server-api",
+      "path": "apps/server-api"
+    },
+    {
+      "name": "packages/active-support",
+      "path": "packages/active-support"
+    },
+    {
+      "name": "packages/brickdoc-design-icons",
+      "path": "packages/brickdoc-design-icons"
+    },
+    {
+      "name": "packages/brickdoc-design-system",
+      "path": "packages/brickdoc-design-system"
+    },
+    {
+      "name": "packages/brickdoc-editor",
+      "path": "packages/brickdoc-editor"
+    },
+    {
+      "name": "packages/brickdoc-formula",
+      "path": "packages/brickdoc-formula"
+    },
+    {
+      "name": "packages/brickdoc-schema",
+      "path": "packages/brickdoc-schema"
+    },
+    {
+      "name": "packages/brickdoc-test-helper",
+      "path": "packages/brickdoc-test-helper"
+    },
+    {
+      "name": "packages/brickdoc-uploader",
+      "path": "packages/brickdoc-uploader"
+    },
+    {
+      "name": "packages/cypherpunk",
+      "path": "packages/cypherpunk"
+    },
+    {
+      "name": "packages/dotenv",
+      "path": "packages/dotenv"
+    },
+    {
+      "name": "packages/eslint-plugin-brickdoc",
+      "path": "packages/eslint-plugin-brickdoc"
+    },
+    {
+      "name": "packages/nestjs-redis",
+      "path": "packages/nestjs-redis"
+    },
+    {
+      "name": "packages/nestjs-slonik",
+      "path": "packages/nestjs-slonik"
+    },
+    {
+      "name": "plugins/gcloud",
+      "path": "plugins/gcloud"
+    },
+    {
+      "name": "plugins/sentry",
+      "path": "plugins/sentry"
+    },
+    {
+      "name": "tools/e2e-testing",
+      "path": "tools/e2e-testing"
+    },
+    {
+      "name": "tools/schematics",
+      "path": "tools/schematics"
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      ".babelrc": "json",
+      ".eslintrc": "jsonc",
+      ".eslintrc*.json": "jsonc"
+    },
+    "typescript.tsc.autoDetect": "on",
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.validate.enable": true,
+    "eslint.alwaysShowStatus": true,
+    "jest.jestCommandLine": "yarn run -T jest",
+    "jest.disabledWorkspaceFolders": [
+      "/",
+      "apps/landing-page",
+      "packages/brickdoc-design-icons",
+      "packages/brickdoc-test-helper",
+      "packages/dotenv",
+      "packages/eslint-plugin-brickdoc",
+      "plugins/gcloud",
+      "plugins/sentry",
+      "tools/e2e-testing",
+      "tools/schematics"
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "editorconfig.editorconfig",
+      "esbenp.prettier-vscode",
+      "graphql.vscode-graphql",
+      "DavidAnson.vscode-markdownlint",
+      "ms-ossdata.vscode-postgresql",
+      "dtsvet.vscode-wasm",
+      "github.copilot",
+      "VisualStudioExptTeam.vscodeintellicode",
+      "VisualStudioExptTeam.intellicode-api-usage-examples",
+      "Orta.vscode-jest",
+      "drKnoxy.eslint-disable-snippets",
+      "streetsidesoftware.code-spell-checker",
+      "aaron-bond.better-comments",
+      "jock.svg",
+      "mikestead.dotenv",
+      "forbeslindesay.vscode-sql-template-literal",
+      "ms-kubernetes-tools.vscode-kubernetes-tools",
+      "ms-azuretools.vscode-docker",
+      "ms-playwright.playwright",
+      "foxundermoon.shell-format",
+      "Gruntfuggly.todo-tree",
+      "rangav.vscode-thunder-client"
+    ]
+  }
+}

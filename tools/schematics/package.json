@@ -8,9 +8,9 @@
     "extends": "../../package.json"
   },
   "dependencies": {
-    "@angular-devkit/core": "^13.3.3",
-    "@angular-devkit/schematics": "^13.3.3",
-    "@angular-devkit/schematics-cli": "^13.3.3",
+    "@angular-devkit/core": "^13.3.5",
+    "@angular-devkit/schematics": "^13.3.5",
+    "@angular-devkit/schematics-cli": "^13.3.5",
     "@types/yargs": "^17.0.10"
   },
   "scripts": {

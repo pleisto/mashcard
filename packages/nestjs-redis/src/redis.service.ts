@@ -6,7 +6,7 @@ import {
   RedisModuleOptions,
   CryptoService
 } from './redis.interface'
-import type { transformArguments } from '@node-redis/client/dist/lib/commands/SET'
+import type { transformArguments } from '@redis/client/dist/lib/commands/SET'
 
 type SetOptions = Parameters<typeof transformArguments>[2]
 

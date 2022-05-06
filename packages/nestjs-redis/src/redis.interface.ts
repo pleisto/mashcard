@@ -1,5 +1,5 @@
 import { ModuleMetadata } from '@nestjs/common/interfaces'
-import { RedisClientOptions, RedisClientType } from '@node-redis/client/dist/lib/client'
+import { RedisClientOptions, RedisClientType } from '@redis/client/dist/lib/client'
 
 export type { RedisClientType }
 

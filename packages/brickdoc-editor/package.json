@@ -61,8 +61,8 @@
     "zustand": "^4.0.0-rc.1"
   },
   "devDependencies": {
-    "@types/react-pdf": "^5.7.1",
-    "i18next": "^21.6.16",
+    "@types/react-pdf": "^5.7.2",
+    "i18next": "^21.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

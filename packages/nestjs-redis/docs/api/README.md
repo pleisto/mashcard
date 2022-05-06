@@ -27,18 +27,19 @@
 
 ### <a id="redisclienttype" name="redisclienttype"></a> RedisClientType
 
-Ƭ **RedisClientType**<`M`, `S`\>: `RedisClient`<`M`, `S`\> & `WithCommands` & `WithModules`<`M`\> & `WithScripts`<`S`\>
+Ƭ **RedisClientType**<`M`, `F`, `S`\>: `RedisClient`<`M`, `F`, `S`\> & `WithCommands` & `WithModules`<`M`\> & `WithFunctions`<`F`\> & `WithScripts`<`S`\>
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
 | `M` | extends `RedisModules` = `Record`<`string`, `never`\> |
+| `F` | extends `RedisFunctions` = `Record`<`string`, `never`\> |
 | `S` | extends `RedisScripts` = `Record`<`string`, `never`\> |
 
 #### Defined in
 
-node_modules/@node-redis/client/dist/lib/client/index.d.ts:43
+node_modules/@redis/client/dist/lib/client/index.d.ts:43
 
 ## Variables
 

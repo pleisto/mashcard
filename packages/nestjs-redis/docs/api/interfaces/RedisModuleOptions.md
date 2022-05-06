@@ -14,6 +14,7 @@
 - [cryptoService](RedisModuleOptions.md#cryptoservice)
 - [database](RedisModuleOptions.md#database)
 - [disableOfflineQueue](RedisModuleOptions.md#disableofflinequeue)
+- [functions](RedisModuleOptions.md#functions)
 - [isolationPoolOptions](RedisModuleOptions.md#isolationpooloptions)
 - [legacyMode](RedisModuleOptions.md#legacymode)
 - [modules](RedisModuleOptions.md#modules)
@@ -37,7 +38,7 @@ RedisClientOptions.commandsQueueMaxLength
 
 #### Defined in
 
-node_modules/@node-redis/client/dist/lib/client/index.d.ts:21
+node_modules/@redis/client/dist/lib/client/index.d.ts:21
 
 ___
 
@@ -64,7 +65,7 @@ RedisClientOptions.database
 
 #### Defined in
 
-node_modules/@node-redis/client/dist/lib/client/index.d.ts:20
+node_modules/@redis/client/dist/lib/client/index.d.ts:20
 
 ___
 
@@ -78,7 +79,21 @@ RedisClientOptions.disableOfflineQueue
 
 #### Defined in
 
-node_modules/@node-redis/client/dist/lib/client/index.d.ts:22
+node_modules/@redis/client/dist/lib/client/index.d.ts:22
+
+___
+
+### <a id="functions" name="functions"></a> functions
+
+• `Optional` **functions**: `Record`<`string`, `never`\>
+
+#### Inherited from
+
+RedisClientOptions.functions
+
+#### Defined in
+
+node_modules/@redis/client/dist/lib/commands/index.d.ts:45
 
 ___
 
@@ -92,7 +107,7 @@ RedisClientOptions.isolationPoolOptions
 
 #### Defined in
 
-node_modules/@node-redis/client/dist/lib/client/index.d.ts:25
+node_modules/@redis/client/dist/lib/client/index.d.ts:25
 
 ___
 
@@ -106,7 +121,7 @@ RedisClientOptions.legacyMode
 
 #### Defined in
 
-node_modules/@node-redis/client/dist/lib/client/index.d.ts:24
+node_modules/@redis/client/dist/lib/client/index.d.ts:24
 
 ___
 
@@ -120,7 +135,7 @@ RedisClientOptions.modules
 
 #### Defined in
 
-node_modules/@node-redis/client/dist/lib/commands/index.d.ts:31
+node_modules/@redis/client/dist/lib/commands/index.d.ts:44
 
 ___
 
@@ -134,7 +149,7 @@ RedisClientOptions.name
 
 #### Defined in
 
-node_modules/@node-redis/client/dist/lib/client/index.d.ts:19
+node_modules/@redis/client/dist/lib/client/index.d.ts:19
 
 ___
 
@@ -148,7 +163,7 @@ RedisClientOptions.password
 
 #### Defined in
 
-node_modules/@node-redis/client/dist/lib/client/index.d.ts:18
+node_modules/@redis/client/dist/lib/client/index.d.ts:18
 
 ___
 
@@ -162,13 +177,13 @@ RedisClientOptions.readonly
 
 #### Defined in
 
-node_modules/@node-redis/client/dist/lib/client/index.d.ts:23
+node_modules/@redis/client/dist/lib/client/index.d.ts:23
 
 ___
 
 ### <a id="scripts" name="scripts"></a> scripts
 
-• `Optional` **scripts**: `Record`<`string`, `never`\>
+• `Optional` **scripts**: `RedisScripts`
 
 #### Inherited from
 
@@ -176,7 +191,7 @@ RedisClientOptions.scripts
 
 #### Defined in
 
-node_modules/@node-redis/client/dist/lib/commands/index.d.ts:32
+node_modules/@redis/client/dist/lib/commands/index.d.ts:46
 
 ___
 
@@ -190,7 +205,7 @@ RedisClientOptions.socket
 
 #### Defined in
 
-node_modules/@node-redis/client/dist/lib/client/index.d.ts:16
+node_modules/@redis/client/dist/lib/client/index.d.ts:16
 
 ___
 
@@ -204,7 +219,7 @@ RedisClientOptions.url
 
 #### Defined in
 
-node_modules/@node-redis/client/dist/lib/client/index.d.ts:15
+node_modules/@redis/client/dist/lib/client/index.d.ts:15
 
 ___
 
@@ -218,4 +233,4 @@ RedisClientOptions.username
 
 #### Defined in
 
-node_modules/@node-redis/client/dist/lib/client/index.d.ts:17
+node_modules/@redis/client/dist/lib/client/index.d.ts:17

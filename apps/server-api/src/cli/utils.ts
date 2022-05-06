@@ -81,7 +81,7 @@ export const currentMigrator = async (): Promise<SlonikMigrator> => {
  * Dump current database's schema to a file.
  */
 export const dumpCurrentDbSchema = async (): Promise<void> => {
-  const dump = spawn('pg_dump', ['--dbname', currentDbUri, '--schema-only', '--no-owner'])
+  const dump = spawn('pg_dump', ['--dbname', currentDbUri, '--schema-only', '--no-owner'], { shell: true })
   const fileBanner = `-----------------------------------------------------------
 -- THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY) --
 -----------------------------------------------------------

@@ -6,7 +6,7 @@ import { commands } from './commands'
 import { command as ServerCommand, aliases as ServerAliases } from './commands/server'
 
 function runCli(): void {
-  yargs(hideBin(process.argv))
+  void yargs(hideBin(process.argv))
     .command(commands as unknown as CommandModule<{}, unknown>)
     .scriptName('yarn cli')
     .usage('Brickdoc API Server CLI')
