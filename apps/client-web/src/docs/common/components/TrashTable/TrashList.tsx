@@ -173,7 +173,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
       </List>
       {selectedNum > 0 && (
         <SelectedBar>
-          <Page>
+          <Page css={{ alignItems: 'center' }}>
             <SelectBlock checked>
               <Checkbox
                 onClick={handleClick}

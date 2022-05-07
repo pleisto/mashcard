@@ -196,7 +196,14 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, children })
 
   return (
     <>
-      <Popover title={null} trigger="click" placement="bottom" overlayStyle={{ zIndex: 1 }} content={shareContent}>
+      <Popover
+        title={null}
+        trigger="click"
+        placement="bottom"
+        overlayStyle={{ zIndex: 1 }}
+        overlayInnerStyle={{ marginRight: 52 }}
+        content={shareContent}
+      >
         {children}
       </Popover>
     </>

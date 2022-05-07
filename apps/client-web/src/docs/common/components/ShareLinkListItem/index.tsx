@@ -136,7 +136,7 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ docMeta, i
   return (
     <Root.Item>
       <SpaceCard
-        aliasName={isAnyOne ? 'Anyone with the link' : item.shareSpaceData.name}
+        aliasName={isAnyOne ? t('invite.anyone_with_link') : item.shareSpaceData.name}
         space={space}
         label={item.shareSpaceData.name !== ANYONE_DOMAIN && ''}
       />

@@ -577,6 +577,7 @@ en-US:
       no_view_message: Can’t view
       no_view_message_description: Cannot view or share with others.
       remove_message: Remove
+      anyone_with_link: Anyone with the link
     snapshots:
       name: Snapshot
       restore: Restore version

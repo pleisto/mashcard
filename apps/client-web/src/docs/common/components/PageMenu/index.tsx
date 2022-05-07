@@ -132,21 +132,6 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   const linkPath = `/${domain}/${pageId}`
   const link = `${host}${linkPath}`
 
-  /* const addSelectedKey = (): void => {
-*   setPopoverKey(pageId)
-* }
-
-* const removeSelectedKey = (): void => {
-*   setPopoverKey(undefined)
-* } */
-
-  const onClickMoreButton = (e: { preventDefault: () => void; stopPropagation: () => void }): void => {
-    e.preventDefault()
-    e.stopPropagation()
-    setDropdownVisible(true)
-    // addSelectedKey()
-  }
-
   const onRename = async (e: any): Promise<void> => {
     const title = e?.target?.value
     const input = { id: pageId, title }
@@ -222,13 +207,21 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   }
 
   const inputRef = React.useRef<any>(null)
+  const handleEscape: React.KeyboardEventHandler<HTMLInputElement> = React.useCallback(e => {
+    if (e.key === 'Escape') {
+      setPopoverVisible(false)
+    }
+  }, [])
   const renamePopoverContent = (
     <Input
+      // eslint-disable-next-line
+      autoFocus
       prefix={<Icon.Edit />}
       disabled={renameBlockLoading}
       size="sm"
       bordered={false}
       onPressEnter={onRename}
+      onKeyDown={handleEscape}
       onBlur={onRename}
       ref={inputRef}
       defaultValue={titleText}
@@ -297,13 +290,13 @@ export const PageMenu: React.FC<PageMenuProps> = ({
     <Popover
       content={renamePopoverContent}
       title={null}
-      placement="bottom"
+      placement="bottomStart"
       trigger="customEvent"
       visible={popoverVisible}
       onVisibleChange={onRenamePopoverVisibleChange}
       destroyTooltipOnHide={true}
-      className={styles.title}
-    >
+      overlayInnerStyle={{ marginLeft: -36 }}
+      className={styles.title}>
       <Link to={linkPath}>{title}</Link>
     </Popover>
   )
@@ -320,14 +313,17 @@ export const PageMenu: React.FC<PageMenuProps> = ({
         destoryPopupOnHide={true}
         visible={dropdownVisible}
         onVisibleChange={onDropdownVisibleChange}
+        placement="bottomStart"
       >
         <div className={styles.menu}>
           {linkData}
           <div>
             <Tooltip title={t('blocks.more')}>
-              <Button className={styles.moreBtn} type="text" onClick={onClickMoreButton}>
-                <Icon.More />
-              </Button>
+              <Dropdown destoryPopupOnHide={true} trigger={['click']} overlay={menu} placement="bottomStart">
+                <Button className={styles.moreBtn} type="text">
+                  <Icon.More />
+                </Button>
+              </Dropdown>
             </Tooltip>
             <Tooltip title={t('blocks.create_sub_pages')}>
               <Button
