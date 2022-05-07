@@ -1,4 +1,4 @@
-import { PageBlock } from './types'
+import { PageBlock } from './types.data'
 
 export const SUPER_LONG_TITLE_PAGE: PageBlock = {
   title: 'It is a Super Super Super Super Long breadcrumb which is more than 400px',

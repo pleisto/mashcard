@@ -1,6 +1,6 @@
 import { EmojiGroup, ICON_SELECTOR } from '@/selectors/document'
 import { Locator } from '@playwright/test'
-import { UploaderDashboardPage } from './UploaderDashboardPage'
+import { UploaderDashboardPage } from './UploaderDashboard.page'
 
 export class IconPage extends UploaderDashboardPage {
   getEmojiByGroup(group: EmojiGroup, index?: number): Locator {

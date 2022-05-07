@@ -1,6 +1,6 @@
 import { BLOCK_ACTION_SELECTORS } from '@/selectors/document'
 import { Locator } from '@playwright/test'
-import { BasePage } from '../../BasePage'
+import { BasePage } from '../../Base.page'
 
 export class BlockAction extends BasePage {
   getBlockActionByIndex(index?: number): Locator {

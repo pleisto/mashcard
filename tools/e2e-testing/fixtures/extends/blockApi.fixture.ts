@@ -1,5 +1,5 @@
 import { BlockApi } from '@/helpers/api/BlockApi'
-import { FixtureReturnType } from '../types'
+import { FixtureReturnType } from '../types.fixture'
 
 export function apiFixture(): FixtureReturnType<BlockApi> {
   return async ({ page }, use): Promise<void> => {

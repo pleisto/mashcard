@@ -1,5 +1,5 @@
-import { CoverTab } from './cover'
-import { IconTab } from './icon'
+import { CoverTab } from './cover.selector'
+import { IconTab } from './icon.selector'
 
 export type TabType = IconTab | CoverTab
 

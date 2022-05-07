@@ -1,4 +1,4 @@
-import { PageBlock } from './types'
+import { PageBlock } from './types.data'
 
 export const INITIAL_PAGE: PageBlock = {
   title: 'Untitled'

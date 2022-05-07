@@ -1,5 +1,5 @@
 import { TRASH_SELECTOR } from '@/selectors/sidebar'
-import { BasePage } from '../BasePage'
+import { BasePage } from '../Base.page'
 
 export class TrashPage extends BasePage {
   async openTrashPage(): Promise<void> {

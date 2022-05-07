@@ -1,3 +1,3 @@
-export * from './coverageFixture'
-export * from './pageExtendFixture'
-export * from './apiFixture'
+export * from './coverage.fixture'
+export * from './pageExtend.fixture'
+export * from './blockApi.fixture'

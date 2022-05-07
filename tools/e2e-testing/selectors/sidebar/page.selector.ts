@@ -1,4 +1,4 @@
-import { COMMON_SELECTORS } from '../common'
+import { BASE_SELECTORS } from '../base'
 
 export const PAGE_SELECTOR = {
   pageSection: '[data-testid=page-tree-heading]',
@@ -10,6 +10,6 @@ export const PAGE_SELECTOR = {
   pageItem: (index: number) => `[data-testid=BrkTree] >> nth=${index}`,
   pageIndent: (index: number) => `[data-testid=indent] >> nth=${index}`,
   actionButton: (button: string, index: number) => `[role="menuitem"]:has-text("${button}") >> nth=${index}`,
-  renameInput: `${COMMON_SELECTORS.tooltip} .MuiInput-input`,
+  renameInput: `${BASE_SELECTORS.tooltip} .MuiInput-input`,
   arrow: (index: number) => `[data-testid=content-arrow] >> nth=${index}`
 }

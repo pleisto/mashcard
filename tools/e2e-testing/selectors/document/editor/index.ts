@@ -1,3 +1,3 @@
-export * from './editor'
-export * from './slashMenu'
-export * from './blockAction'
+export * from './editor.selector'
+export * from './slashMenu.selector'
+export * from './blockAction.selector'

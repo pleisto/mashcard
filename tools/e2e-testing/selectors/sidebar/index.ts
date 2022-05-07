@@ -1,2 +1,2 @@
-export * from './page'
-export * from './trash'
+export * from './page.selector'
+export * from './trash.selector'

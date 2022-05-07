@@ -1,5 +1,5 @@
 import { Locator } from '@playwright/test'
-import { BasePage } from '@/pages/BasePage'
+import { BasePage } from '@/pages/Base.page'
 import { BREADCRUMB_SELECTOR } from '@/selectors/topBar'
 
 export class BreadcrumbPage extends BasePage {

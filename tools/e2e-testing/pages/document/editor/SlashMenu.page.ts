@@ -1,6 +1,6 @@
 import { SLASH_MENU_SELECTORS } from '@/selectors/document'
 import { Locator } from '@playwright/test'
-import { BasePage } from '../../BasePage'
+import { BasePage } from '../../Base.page'
 
 export class SlashMenu extends BasePage {
   getSlashMenu(): Locator {

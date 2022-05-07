@@ -1,7 +1,7 @@
-import { INITIAL_PAGE } from '@/data/common'
+import { INITIAL_PAGE } from '@/data/common.data'
 import { test, expect } from '@/fixtures'
-import { EditorPage } from '@/pages/document/editor/EditorPage'
-import { PageListPage } from '@/pages/sidebar/PageListPage'
+import { EditorPage } from '@/pages/document/editor/Editor.page'
+import { PageListPage } from '@/pages/sidebar/PageList.page'
 
 test.describe('Editor', () => {
   let pageList: PageListPage

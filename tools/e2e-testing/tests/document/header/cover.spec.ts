@@ -1,11 +1,11 @@
-import { INITIAL_PAGE } from '@/data/common'
-import { UPLOADER_DATA } from '@/data/uploaderDashboard'
+import { INITIAL_PAGE } from '@/data/common.data'
+import { UPLOADER_DATA } from '@/data/uploaderDashboard.data'
 import { test, expect } from '@/fixtures'
-import { CoverPage } from '@/pages/document/header/CoverPage'
-import { DocumentTitlePage } from '@/pages/document/header/DocumentTitlePage'
-import { PageListPage } from '@/pages/sidebar/PageListPage'
-import { COMMON_SELECTORS } from '@/selectors/common'
-import { CoverTab } from '@/selectors/document/header/cover'
+import { CoverPage } from '@/pages/document/header/Cover.page'
+import { DocumentTitlePage } from '@/pages/document/header/DocumentTitle.page'
+import { PageListPage } from '@/pages/sidebar/PageList.page'
+import { BASE_SELECTORS } from '@/selectors/base'
+import { CoverTab } from '@/selectors/document/header/cover.selector'
 import path from 'path'
 
 test.describe('Add Cover', () => {
@@ -25,7 +25,7 @@ test.describe('Add Cover', () => {
 
   test.describe('Cover popup', async () => {
     test('Verify cover popup is in viewport', async ({ pageExtend }) => {
-      await expect(pageExtend.isInViewPort(COMMON_SELECTORS.tooltip)).toBeTruthy()
+      await expect(pageExtend.isInViewPort(BASE_SELECTORS.tooltip)).toBeTruthy()
     })
 
     test('Verify popup will be closed when click out of popup', async () => {

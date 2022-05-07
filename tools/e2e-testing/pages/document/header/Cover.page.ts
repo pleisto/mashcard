@@ -1,6 +1,6 @@
 import { COVER_SELECTOR } from '@/selectors/document'
 import { Locator } from '@playwright/test'
-import { UploaderDashboardPage } from './UploaderDashboardPage'
+import { UploaderDashboardPage } from './UploaderDashboard.page'
 
 export class CoverPage extends UploaderDashboardPage {
   getSearchInput(): Locator {

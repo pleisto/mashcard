@@ -1,5 +1,5 @@
 import { blockSyncBatchConverter } from '@/data/converter/blockSyncBatchConverter'
-import { PageBlock } from '@/data/types'
+import { PageBlock } from '@/data/types.data'
 import { Page } from '@playwright/test'
 import { createBlockConverter } from '../../data/converter/createBlockConverter'
 import { BLOCK_SOFT_DELETE, BLOCK_SYNC_BATCH, CREATE_BLOCK, GET_PAGE_BLOCKS } from './graphql'

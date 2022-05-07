@@ -1,7 +1,7 @@
-import { PageListPage } from '@/pages/sidebar/PageListPage'
+import { PageListPage } from '@/pages/sidebar/PageList.page'
 import { test, expect } from '@/fixtures'
 import { rem2Pixel } from '@/helpers/utils/rem2Pixel'
-import { INITIAL_PAGE, TWO_LAYER_PAGE_TREE } from '@/data/common'
+import { INITIAL_PAGE, TWO_LAYER_PAGE_TREE } from '@/data/common.data'
 
 test.describe('Page List', () => {
   let pageList: PageListPage

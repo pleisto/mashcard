@@ -1,8 +1,8 @@
 import { DOCUMENT_TITLE_SELECTORS } from '@/selectors/document'
 import { Locator } from '@playwright/test'
-import { BasePage } from '../../BasePage'
-import { CoverPage } from './CoverPage'
-import { IconPage } from './IconPage'
+import { BasePage } from '../../Base.page'
+import { CoverPage } from './Cover.page'
+import { IconPage } from './Icon.page'
 
 export class DocumentTitlePage extends BasePage {
   getArticle(): Locator {

@@ -1,6 +1,6 @@
 import { LINK_MENU_BLOCK_SELECTORS } from '@/selectors/document'
 import { Locator } from '@playwright/test'
-import { BasePage } from '../../BasePage'
+import { BasePage } from '../../Base.page'
 
 export class LinkMenuBlockPage extends BasePage {
   getLinkMenuPopup(): Locator {

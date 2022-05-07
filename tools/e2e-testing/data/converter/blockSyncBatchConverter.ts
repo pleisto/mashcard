@@ -1,5 +1,5 @@
 import { Block, BlockSyncBatchInput } from '@/helpers/api/types'
-import { PageBlock } from '../types'
+import { PageBlock } from '../types.data'
 
 export function blockSyncBatchConverter(page: PageBlock, id: string): BlockSyncBatchInput {
   return {

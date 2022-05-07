@@ -1,6 +1,6 @@
 import { PAGE_SELECTOR } from '@/selectors/sidebar'
 import { Locator } from '@playwright/test'
-import { BasePage } from '../BasePage'
+import { BasePage } from '../Base.page'
 
 type ActionButton = 'Pin page' | 'Copy link' | 'Duplicate' | 'Rename' | 'Delete'
 

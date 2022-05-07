@@ -1,15 +1,15 @@
-import { COMMON_SELECTORS } from '@/selectors/common'
+import { BASE_SELECTORS } from '@/selectors/base'
 import { Locator, Page } from '@playwright/test'
 
 export class BasePage {
   constructor(readonly page: Page) {}
 
   getTooltip(): Locator {
-    return this.page.locator(COMMON_SELECTORS.tooltip)
+    return this.page.locator(BASE_SELECTORS.tooltip)
   }
 
   getItemInMenubar(): Locator {
-    return this.page.locator(COMMON_SELECTORS.menubarItem)
+    return this.page.locator(BASE_SELECTORS.menubarItem)
   }
 
   async scrollUntilElementIntoView(waitingSelector: string, scrollSelector: string, offset = 100): Promise<void> {

@@ -1,8 +1,8 @@
-import { FIVE_LAYER_PAGE_TREE, SUPER_LONG_TITLE_PAGE } from '@/data/breadcrumb'
-import { INITIAL_PAGE, TWO_LAYER_PAGE_TREE } from '@/data/common'
+import { FIVE_LAYER_PAGE_TREE, SUPER_LONG_TITLE_PAGE } from '@/data/breadcrumb.data'
+import { INITIAL_PAGE, TWO_LAYER_PAGE_TREE } from '@/data/common.data'
 import { test, expect } from '@/fixtures'
-import { PageListPage } from '@/pages/sidebar/PageListPage'
-import { BreadcrumbPage } from '@/pages/topBar/BreadcrumbPage'
+import { PageListPage } from '@/pages/sidebar/PageList.page'
+import { BreadcrumbPage } from '@/pages/topBar/Breadcrumb.page'
 
 test.describe('Breadcrumb', () => {
   let pageList: PageListPage

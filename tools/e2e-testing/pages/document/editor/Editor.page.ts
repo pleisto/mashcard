@@ -1,12 +1,12 @@
 import { Locator } from '@playwright/test'
 import { EDITOR_SELECTORS } from '@/selectors/document'
-import { BasePage } from '../../BasePage'
-import { SlashMenu } from './SlashMenuPage'
-import { TextBlock } from '../block/TextBlockPage'
-import { BulletListBlock } from '../block/BulletListBlockPage'
-import { OrderedListBlock } from '../block/OrderedListBlockPage'
-import { FormulaBlock } from '../block/FormulaBlockPage'
-import { LinkMenuBlockPage } from '../block/LinkMenuBlockPage'
+import { BasePage } from '../../Base.page'
+import { SlashMenu } from './SlashMenu.page'
+import { TextBlock } from '../block/TextBlock.page'
+import { BulletListBlock } from '../block/BulletListBlock.page'
+import { OrderedListBlock } from '../block/OrderedListBlock.page'
+import { FormulaBlock } from '../block/FormulaBlock.page'
+import { LinkMenuBlockPage } from '../block/LinkMenuBlock.page'
 
 export class EditorPage extends BasePage {
   getEditorContent(): Locator {

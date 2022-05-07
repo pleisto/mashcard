@@ -1,4 +1,4 @@
-import { Tester } from '@/data/tester'
+import { Tester } from '@/data/tester.data'
 import { SIGN_IN_SELECTOR } from '@/selectors/account'
 import { Page } from '@playwright/test'
 
