@@ -6,9 +6,10 @@
     "extends": "../../package.json"
   },
   "scripts": {
-    "dev": "node-dev --enable-source-maps --inspect --notify=false src/main.ts server",
+    "build-rust-deps": "run -T api-crate build",
+    "dev": "build-rust-deps && node-dev --enable-source-maps --inspect --notify=false src/main.ts server",
     "start": "run -T ts-node src/main.ts server",
-    "console": "run -T ts-node src/main.ts console",
+    "console": "build-rust-deps && run -T ts-node src/main.ts console",
     "cli": "run -T ts-node src/main.ts",
     "g": "run -T ts-node src/cli/schematics/main.ts",
     "lint": "yarn lint:eslint && yarn lint:type",
@@ -34,6 +35,7 @@
     "@brickdoc/dotenv": "workspace:^",
     "@brickdoc/nestjs-redis": "workspace:^",
     "@brickdoc/nestjs-slonik": "workspace:^",
+    "@brickdoc/server-api-crate": "workspace:^",
     "@fastify/cookie": "^6.0.0",
     "@fastify/helmet": "^8.0.0",
     "@fastify/secure-session": "github:brickdoc/fastify-secure-session#v4.0.0",

@@ -2188,6 +2188,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@brickdoc/server-api-crate@workspace:^, @brickdoc/server-api-crate@workspace:packages/brickdoc-server-api-crate":
+  version: 0.0.0-use.local
+  resolution: "@brickdoc/server-api-crate@workspace:packages/brickdoc-server-api-crate"
+  dependencies:
+    "@faker-js/faker": ^6.3.1
+    "@napi-rs/cli": ^2.8.0
+  languageName: unknown
+  linkType: soft
+
 "@brickdoc/server-api@workspace:apps/server-api":
   version: 0.0.0-use.local
   resolution: "@brickdoc/server-api@workspace:apps/server-api"
@@ -2198,6 +2207,7 @@ __metadata:
     "@brickdoc/nestjs-redis": "workspace:^"
     "@brickdoc/nestjs-slonik": "workspace:^"
     "@brickdoc/schematics": "workspace:^"
+    "@brickdoc/server-api-crate": "workspace:^"
     "@faker-js/faker": ^6.3.1
     "@fastify/cookie": ^6.0.0
     "@fastify/helmet": ^8.0.0
@@ -4092,6 +4102,15 @@ __metadata:
   peerDependencies:
     graphql: ^15.4.0 || ^16.0.0
   checksum: 746c7a2b23440a2daee5737aece454c756bf9f3e77decd53feed921f88907743301b569209d124afde63271b3f9db59a1fb997c0c280205662a7622992057e4a
+  languageName: node
+  linkType: hard
+
+"@napi-rs/cli@npm:^2.8.0":
+  version: 2.8.0
+  resolution: "@napi-rs/cli@npm:2.8.0"
+  bin:
+    napi: scripts/index.js
+  checksum: 1fcf9ee3418833c539a5e9b200ed5fc979d949d0bff28ee8e35dc40f473b56b524515a64c37e2763ce75647e621a5d99405a5553cedfe499c48eb0da7bf62237
   languageName: node
   linkType: hard
 

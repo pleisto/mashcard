@@ -20,4 +20,4 @@ set up environment for graphql testing
 
 #### Defined in
 
-common/testing/graphql.utils.ts:13
+[common/testing/graphql.utils.ts:13](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/testing/graphql.utils.ts#L13)

@@ -1,0 +1,28 @@
+[package]
+name = "brickdoc-server-api-crate"
+version = "0.1.0"
+edition = "2021"
+description = "crate has some utilities written in Rust and based on napi-rs to make them could be used in NodeJS Server."
+license = "Apache-2.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+napi = "2"
+napi-derive = "2"
+any_ascii = "0.3"
+bs58 = "0.4"
+radix_fmt = "1"
+
+[dependencies.uuid]
+version = "1"
+features = ["v4", "fast-rng"]
+
+[build-dependencies]
+napi-build = "1"
+
+[profile.release]
+lto = true

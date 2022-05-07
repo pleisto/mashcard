@@ -88,13 +88,18 @@ jobs:
             **/*.jsx
       - name: Setup NodeJS
         uses: actions/setup-node@v3
-        if: steps.changed-es-files.outputs.any_changed == 'true'
         with:
           node-version: 18
           cache: yarn
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
       - name: Run yarn install
         run: yarn install --immutable
         if: steps.changed-es-files.outputs.any_changed == 'true'
+      - name: build Rust deps
+        run: yarn api-crate build:prod
       - name: Run Jest tests
         if: steps.changed-es-files.outputs.any_changed == 'true'
         run: yarn test:jest

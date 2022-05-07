@@ -1,0 +1,25 @@
+{
+  "name": "@brickdoc/server-api-crate",
+  "version": "0.1.0",
+  "description": "An omakase-style high-level wrapper for modern crypto libraries for NodeJS.",
+  "license": "Apache-2.0",
+  "main": "./index.js",
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@faker-js/faker": "^6.3.1",
+    "@napi-rs/cli": "^2.8.0"
+  },
+  "scripts": {
+    "build": "napi build --platform && yarn fmt",
+    "build:prod": "napi build --platform --release",
+    "lint": "yarn lint:eslint && yarn lint:rust",
+    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx __tests__",
+    "lint:rust": "cargo clippy",
+    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx __tests__ --fix",
+    "test:jest": "run -T jest",
+    "fmt": "cargo fmt"
+  }
+}

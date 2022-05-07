@@ -35,9 +35,14 @@ jobs:
         with:
           node-version: 18
           cache: yarn
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
       - name: Run yarn install
-        if: steps.changed-es-files.outputs.any_changed == 'true'
         run: yarn install --immutable
-      - name: Run TypeScript checks
+      - name: build Rust deps
+        run: yarn api-crate build:prod
+      - name: Run Linter
         if: steps.changed-es-files.outputs.any_changed == 'true'
         run: yarn lint
