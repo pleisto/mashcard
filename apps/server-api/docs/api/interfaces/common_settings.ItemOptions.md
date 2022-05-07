@@ -2,6 +2,8 @@
 
 [common/settings](../modules/common_settings.md).ItemOptions
 
+ConfigMap item options
+
 ## Table of contents
 
 ### Properties
@@ -21,7 +23,7 @@ The public fields will be exposed to the client.
 
 #### Defined in
 
-[common/settings/settings.interface.ts:54](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L54)
+[common/settings/settings.interface.ts:70](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L70)
 
 ___
 
@@ -34,7 +36,7 @@ if `clientExposed` is true or scope is`LOCAL_STATIC`, encrypted will be ignored.
 
 #### Defined in
 
-[common/settings/settings.interface.ts:60](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L60)
+[common/settings/settings.interface.ts:76](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L76)
 
 ___
 
@@ -47,7 +49,7 @@ Defaults to `ScopeLookupStrategy.ROOT_ONLY`.
 
 #### Defined in
 
-[common/settings/settings.interface.ts:66](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L66)
+[common/settings/settings.interface.ts:82](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L82)
 
 ___
 
@@ -59,4 +61,4 @@ yup schema for validation
 
 #### Defined in
 
-[common/settings/settings.interface.ts:71](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L71)
+[common/settings/settings.interface.ts:87](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L87)

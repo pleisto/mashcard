@@ -148,29 +148,29 @@ export class SettingsService {
   }
 
   /**
-   * calculate the scope based on the session context
+   * Calculate the scope based on the session context
    */
   protected calculateScope(
     strategy: ScopeLookupStrategy = ScopeLookupStrategy.ROOT_ONLY,
     context: ScopeContext
   ): [scope: string, fallbackScope?: string] {
     const user = context.userId ? `.user_${context.userId}` : ''
-    const workspace = context.workspaceId ? `.workspace_${context.workspaceId}` : ''
+    const space = context.spaceId ? `.space_${context.spaceId}` : ''
 
     switch (strategy) {
       case ScopeLookupStrategy.ROOT_ONLY:
         return [SCOPE_ROOT_NODE]
-      case ScopeLookupStrategy.WORKSPACE_BASED:
+      case ScopeLookupStrategy.SPACE_BASED:
         return [
-          `${SCOPE_ROOT_NODE}${workspace}${user}`,
+          `${SCOPE_ROOT_NODE}${space}${user}`,
           // fallback scope
           `${SCOPE_ROOT_NODE}${user}`
         ]
       case ScopeLookupStrategy.USER_BASED:
         return [
-          `${SCOPE_ROOT_NODE}${user}${workspace}`,
+          `${SCOPE_ROOT_NODE}${user}${space}`,
           // fallback scope
-          `${SCOPE_ROOT_NODE}${workspace}`
+          `${SCOPE_ROOT_NODE}${space}`
         ]
       default:
         throw new UnSupportedScopeLookupStrategyError(strategy)
@@ -189,7 +189,7 @@ export class SettingsService {
 
   protected allExportedItemsCachedKey(context: ScopeContext = {}): string {
     const ALL_EXPOSED_ITEMS_CACHED_KEY = 'all-exposed-items'
-    return `${ALL_EXPOSED_ITEMS_CACHED_KEY}:${context.userId}.${context.workspaceId}`
+    return `${ALL_EXPOSED_ITEMS_CACHED_KEY}:${context.userId}.${context.spaceId}`
   }
 
   /**

@@ -8,6 +8,7 @@
 
 - [DATA\_ENCRYPTION](common_kms.SecretSubKey.md#data_encryption)
 - [HASH\_SALT](common_kms.SecretSubKey.md#hash_salt)
+- [INT\_ID\_OBFUSCATION](common_kms.SecretSubKey.md#int_id_obfuscation)
 - [ROOT\_KEY](common_kms.SecretSubKey.md#root_key)
 - [SECURE\_COOKIE](common_kms.SecretSubKey.md#secure_cookie)
 
@@ -30,6 +31,16 @@ ___
 #### Defined in
 
 [common/kms/kms.interface.ts:3](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.interface.ts#L3)
+
+___
+
+### <a id="int_id_obfuscation" name="int_id_obfuscation"></a> INT\_ID\_OBFUSCATION
+
+• **INT\_ID\_OBFUSCATION** = `4`
+
+#### Defined in
+
+[common/kms/kms.interface.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.interface.ts#L6)
 
 ___
 

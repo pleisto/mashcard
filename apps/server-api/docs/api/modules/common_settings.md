@@ -65,11 +65,14 @@ ___
 
 ▸ **ConfigMap**(`namespace`): `ClassDecorator`
 
+Decorator for declaring config map class.
+ConfigMap is inspired by Kubernetes ConfigMap, it is a way to distribute stored configurations schemas.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `namespace` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `namespace` | `string` | Config map namespace (e.g. 'plugins.plugin-name') |
 
 #### Returns
 
@@ -77,13 +80,16 @@ ___
 
 #### Defined in
 
-[common/settings/config-map.decorator.ts:4](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/config-map.decorator.ts#L4)
+[common/settings/config-map.decorator.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/config-map.decorator.ts#L9)
 
 ___
 
 ### <a id="item" name="item"></a> Item
 
 ▸ **Item**(`options`): `PropertyDecorator`
+
+Decorator for declaring config map item.
+Item is a field of config map, that defines metadata about item.
 
 #### Parameters
 
@@ -97,4 +103,4 @@ ___
 
 #### Defined in
 
-[common/settings/item.decorator.ts:3](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/item.decorator.ts#L3)
+[common/settings/item.decorator.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/item.decorator.ts#L7)

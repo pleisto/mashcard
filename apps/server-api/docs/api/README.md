@@ -12,6 +12,7 @@
 - [common/kms](modules/common_kms.md)
 - [common/server-plugin](modules/common_server_plugin.md)
 - [common/settings](modules/common_settings.md)
+- [common/testing](modules/common_testing.md)
 - [core/initializers](modules/core_initializers.md)
 - [core/locales](modules/core_locales.md)
 - [core/locales/en-US](modules/core_locales_en_US.md)

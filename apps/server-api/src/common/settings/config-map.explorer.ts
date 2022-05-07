@@ -13,6 +13,9 @@ export class ConfigMapExplorer implements OnApplicationBootstrap {
     private readonly metadataAccessor: ConfigMapMetadataAccessor
   ) {}
 
+  /**
+   * A NestJS lifecycle hook that is called when the application is bootstrapped.
+   */
   onApplicationBootstrap(): void {
     // Check if all config maps namespaces are unique on application bootstrap
     const uniqNamespaces = uniq(this.allNamespaces())

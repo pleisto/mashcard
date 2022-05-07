@@ -14,7 +14,10 @@ export const createSeedDecoder = (): Provider => ({
   provide: KMS_ROOT_SECRET_KEY,
   useFactory: async (options: KMSModuleOptions, explorer: HooksExplorer) => {
     const [decoderName, rawVal] = options.seed.split(':')
+
+    // find extra decoder adapter from server plugin hooks
     const extraDecoders = explorer.findByType(HookType.COMMON_KMS_DECODER)
+
     const decoder = decoderResolver(decoderName, extraDecoders)
     return await decoder.rootSecret(Buffer.from(rawVal, 'base64'))
   },

@@ -2,7 +2,7 @@
 
 [common/settings](../modules/common_settings.md).ScopeLookupStrategy
 
-scope lookup strategy
+Scope lookup strategy for config item.
 
 ## Table of contents
 
@@ -10,8 +10,8 @@ scope lookup strategy
 
 - [LOCAL\_STATIC](common_settings.ScopeLookupStrategy.md#local_static)
 - [ROOT\_ONLY](common_settings.ScopeLookupStrategy.md#root_only)
+- [SPACE\_BASED](common_settings.ScopeLookupStrategy.md#space_based)
 - [USER\_BASED](common_settings.ScopeLookupStrategy.md#user_based)
-- [WORKSPACE\_BASED](common_settings.ScopeLookupStrategy.md#workspace_based)
 
 ## Enumeration members
 
@@ -19,15 +19,14 @@ scope lookup strategy
 
 • **LOCAL\_STATIC** = `"local-static"`
 
-Static item will not read/write from/to the database.
-It's value will be get from the ConfigMap file directly.
+LOCAL_STATIC means that config value is use static value and don't support modification.
 
 reading order:
 1. from the ConfigMap file
 
 #### Defined in
 
-[common/settings/settings.interface.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L20)
+[common/settings/settings.interface.ts:19](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L19)
 
 ___
 
@@ -36,13 +35,39 @@ ___
 • **ROOT\_ONLY** = `"root-only"`
 
 This is default strategy.
+ROOT_ONLY means that values will try to be read from database,
+or use default value defined in ConfigMap as fallback.
+In database this value is global, and can be used by multiple tenants(scope context).
+
 reading order:
 1. from db with scope: 'root'
-2. from the ConfigMap file
+2. from the ConfigMap default value
 
 #### Defined in
 
-[common/settings/settings.interface.ts:28](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L28)
+[common/settings/settings.interface.ts:31](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L31)
+
+___
+
+### <a id="space_based" name="space_based"></a> SPACE\_BASED
+
+• **SPACE\_BASED** = `"space-based"`
+
+SPACE_BASED means that values will try to be read from database,
+and could override the value for different tenants(scope context).
+If the scope context has both spaceId and userId, it will allow to
+set different value for different users in the same space.
+
+reading order if scopeContext is `{user:x, space:y}`:
+1. from db with scope: 'space_y.user_x'
+2. from db with scope: 'space_y'
+3. from db with scope: 'user_x'
+4. from db with scope: 'root'
+5. from the ConfigMap default value
+
+#### Defined in
+
+[common/settings/settings.interface.ts:45](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L45)
 
 ___
 
@@ -50,30 +75,18 @@ ___
 
 • **USER\_BASED** = `"user-based"`
 
-reading order:
-1. from db with scope: 'user_*.workspace_*'
-2. from db with scope: 'user_*'
-3. from db with scope: 'workspace_*'
+USER_BASED means that values will try to be read from database,
+and could override the value for different tenants(scope context).
+If the scope context has both spaceId and userId, it will allow to
+set different value for different spaces in the same user.
+
+reading order if scopeContext is `{user:x, space:y}`:
+1. from db with scope: 'user_x.space_y'
+2. from db with scope: 'user_x'
+3. from db with scope: 'space_y'
 4. from db with scope: 'root'
-5. from the ConfigMap file
+5. from the ConfigMap default value
 
 #### Defined in
 
-[common/settings/settings.interface.ts:46](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L46)
-
-___
-
-### <a id="workspace_based" name="workspace_based"></a> WORKSPACE\_BASED
-
-• **WORKSPACE\_BASED** = `"workspace-based"`
-
-reading order:
-1. from db with scope: 'workspace_*.user_*'
-2. from db with scope: 'workspace_*'
-3. from db with scope: 'user_*'
-4. from db with scope: 'root'
-5. from the ConfigMap file
-
-#### Defined in
-
-[common/settings/settings.interface.ts:37](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L37)
+[common/settings/settings.interface.ts:59](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L59)

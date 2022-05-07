@@ -162,7 +162,7 @@ ___
 
 ▸ `Protected` **calculateScope**(`strategy?`, `context`): [scope: string, fallbackScope?: string]
 
-calculate the scope based on the session context
+Calculate the scope based on the session context
 
 #### Parameters
 

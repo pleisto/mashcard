@@ -4,6 +4,9 @@ import { InstanceWrapper } from '@nestjs/core/injector/instance-wrapper'
 import { HookMetadataAccessor } from './hook-metadata.accessor'
 import { HookType, HookProvider } from './server-plugin.interface'
 
+/**
+ * HooksExplorer could be used to discover server plugin hooks.
+ */
 @Injectable()
 export class HooksExplorer {
   constructor(

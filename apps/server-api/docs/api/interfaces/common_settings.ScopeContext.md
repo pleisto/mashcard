@@ -8,10 +8,20 @@ session context for calculating scope
 
 ### Properties
 
+- [spaceId](common_settings.ScopeContext.md#spaceid)
 - [userId](common_settings.ScopeContext.md#userid)
-- [workspaceId](common_settings.ScopeContext.md#workspaceid)
 
 ## Properties
+
+### <a id="spaceid" name="spaceid"></a> spaceId
+
+• `Optional` **spaceId**: `string`
+
+#### Defined in
+
+[common/settings/settings.interface.ts:106](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L106)
+
+___
 
 ### <a id="userid" name="userid"></a> userId
 
@@ -19,14 +29,4 @@ session context for calculating scope
 
 #### Defined in
 
-[common/settings/settings.interface.ts:89](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L89)
-
-___
-
-### <a id="workspaceid" name="workspaceid"></a> workspaceId
-
-• `Optional` **workspaceId**: `string`
-
-#### Defined in
-
-[common/settings/settings.interface.ts:90](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L90)
+[common/settings/settings.interface.ts:105](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L105)

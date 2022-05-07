@@ -3,6 +3,9 @@ import { Buffer } from 'buffer'
 import { deriveKey } from '@brickdoc/cypherpunk'
 import { SecretSubKey } from '../kms.interface'
 
+/**
+ * Abstract SeedDecoder class
+ */
 export abstract class SeedDecoder {
   /**
    * get Root Secret Key from seed

@@ -40,4 +40,21 @@ describe('KMSService', () => {
     const encrypted = kms.symmetricEncrypt(text, context)
     expect(kms.symmetricDecrypt(encrypted, context)).toEqual(text)
   })
+
+  // eslint-disable-next-line jest/no-commented-out-tests
+  /*
+  it('should obfuscateIntId work', async () => {
+    const testData = [
+      1,
+      2,
+      faker.datatype.number(speck4896MaxInt),
+      faker.datatype.number(speck4896MaxInt),
+      speck4896MaxInt
+    ]
+    testData.forEach(intId => {
+      console.log(kms.obfuscateIntId(intId))
+      expect(kms.deobfuscateIntId(kms.obfuscateIntId(intId))).toEqual(intId)
+    })
+  })
+  */
 })

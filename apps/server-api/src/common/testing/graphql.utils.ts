@@ -3,7 +3,7 @@ import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify
 import type { ApolloServerBase } from 'apollo-server-core'
 import { GraphQLModule } from '@nestjs/graphql'
 import { ApolloDriver } from '@nestjs/apollo'
-import { AppModule } from '../app.module'
+import { AppModule } from '../../app.module'
 
 /**
  * set up environment for graphql testing

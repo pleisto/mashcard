@@ -41,7 +41,7 @@
 
 #### Defined in
 
-[common/server-plugin/server-plugin.interface.ts:31](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L31)
+[common/server-plugin/server-plugin.interface.ts:33](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L33)
 
 ## Variables
 
@@ -59,6 +59,16 @@
 
 ▸ **ServerPluginHook**(`type`): `ClassDecorator`
 
+Decorator for registering server plugin hooks.
+
+**`example`**
+```ts
+@Hook(HookType.CORE_INITIALIZER)
+export class MyPlugin {
+ async forHookAsync(setting: SettingsService) {}
+}
+```
+
 #### Parameters
 
 | Name | Type |
@@ -71,4 +81,4 @@
 
 #### Defined in
 
-[common/server-plugin/hook.decorator.ts:4](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hook.decorator.ts#L4)
+[common/server-plugin/hook.decorator.ts:16](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hook.decorator.ts#L16)

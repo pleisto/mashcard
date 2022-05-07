@@ -10,11 +10,13 @@ export const SERVER_PLUGIN_HOOK_OPTIONS_METADATA = 'brickdoc-server-plugin:hook'
 export enum HookType {
   /**
    * Hook for server initialization.
+   * see /core/initializers/index.ts
    */
   CORE_INITIALIZER = 'core.INITIALIZER',
 
   /**
    * KMS Seed Decoder Hook.
+   * see /common/kms/decoder/decoder.provider.ts
    */
   COMMON_KMS_DECODER = 'common.kms.DECODER'
 }

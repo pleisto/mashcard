@@ -2,6 +2,8 @@
 
 [common/server-plugin](../modules/common_server_plugin.md).HooksExplorer
 
+HooksExplorer could be used to discover server plugin hooks.
+
 ## Table of contents
 
 ### Constructors
@@ -27,7 +29,7 @@
 
 #### Defined in
 
-[common/server-plugin/hooks.explorer.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hooks.explorer.ts#L9)
+[common/server-plugin/hooks.explorer.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hooks.explorer.ts#L12)
 
 ## Methods
 
@@ -55,4 +57,4 @@ Find all hooks by type that have @ServerPluginHook() decorator
 
 #### Defined in
 
-[common/server-plugin/hooks.explorer.ts:17](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hooks.explorer.ts#L17)
+[common/server-plugin/hooks.explorer.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hooks.explorer.ts#L20)

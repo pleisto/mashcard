@@ -7,12 +7,11 @@ export const ITEM_OPTIONS_METADATA = `${REFLECT_METADATA_PREFIX}itemOptions`
 export const SCOPE_ROOT_NODE = 'root'
 
 /**
- * scope lookup strategy
+ * Scope lookup strategy for config item.
  */
 export enum ScopeLookupStrategy {
   /**
-   * Static item will not read/write from/to the database.
-   * It's value will be get from the ConfigMap file directly.
+   * LOCAL_STATIC means that config value is use static value and don't support modification.
    *
    * reading order:
    * 1. from the ConfigMap file
@@ -21,32 +20,49 @@ export enum ScopeLookupStrategy {
 
   /**
    * This is default strategy.
+   * ROOT_ONLY means that values will try to be read from database,
+   * or use default value defined in ConfigMap as fallback.
+   * In database this value is global, and can be used by multiple tenants(scope context).
+   *
    * reading order:
    * 1. from db with scope: 'root'
-   * 2. from the ConfigMap file
+   * 2. from the ConfigMap default value
    */
   ROOT_ONLY = 'root-only',
   /**
-   * reading order:
-   * 1. from db with scope: 'workspace_*.user_*'
-   * 2. from db with scope: 'workspace_*'
-   * 3. from db with scope: 'user_*'
+   * SPACE_BASED means that values will try to be read from database,
+   * and could override the value for different tenants(scope context).
+   * If the scope context has both spaceId and userId, it will allow to
+   * set different value for different users in the same space.
+   *
+   * reading order if scopeContext is `{user:x, space:y}`:
+   * 1. from db with scope: 'space_y.user_x'
+   * 2. from db with scope: 'space_y'
+   * 3. from db with scope: 'user_x'
    * 4. from db with scope: 'root'
-   * 5. from the ConfigMap file
+   * 5. from the ConfigMap default value
    */
-  WORKSPACE_BASED = 'workspace-based',
+  SPACE_BASED = 'space-based',
   /**
-   * reading order:
-   * 1. from db with scope: 'user_*.workspace_*'
-   * 2. from db with scope: 'user_*'
-   * 3. from db with scope: 'workspace_*'
+   * USER_BASED means that values will try to be read from database,
+   * and could override the value for different tenants(scope context).
+   * If the scope context has both spaceId and userId, it will allow to
+   * set different value for different spaces in the same user.
+   *
+   * reading order if scopeContext is `{user:x, space:y}`:
+   * 1. from db with scope: 'user_x.space_y'
+   * 2. from db with scope: 'user_x'
+   * 3. from db with scope: 'space_y'
    * 4. from db with scope: 'root'
-   * 5. from the ConfigMap file
+   * 5. from the ConfigMap default value
    */
   USER_BASED = 'user-based'
 }
 
 // todo: add mutual exclusion for `public` and `encrypted` properties
+/**
+ * ConfigMap item options
+ */
 export interface ItemOptions {
   /**
    * The public fields will be exposed to the client.
@@ -87,5 +103,5 @@ export interface SettingsItem<T> {
  */
 export interface ScopeContext {
   userId?: string
-  workspaceId?: string
+  spaceId?: string
 }

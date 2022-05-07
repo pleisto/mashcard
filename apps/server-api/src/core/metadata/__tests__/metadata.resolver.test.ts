@@ -1,4 +1,4 @@
-import { useGraphQLTestingInstance } from '../../../utils/testing'
+import { useGraphQLTestingInstance } from '../../../common/testing'
 import { gql } from 'graphql-tag'
 describe('MetadataResolver', () => {
   const getInstance = useGraphQLTestingInstance()

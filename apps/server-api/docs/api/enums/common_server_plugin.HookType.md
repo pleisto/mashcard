@@ -16,10 +16,11 @@
 • **COMMON\_KMS\_DECODER** = `"common.kms.DECODER"`
 
 KMS Seed Decoder Hook.
+see /common/kms/decoder/decoder.provider.ts
 
 #### Defined in
 
-[common/server-plugin/server-plugin.interface.ts:19](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L19)
+[common/server-plugin/server-plugin.interface.ts:21](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L21)
 
 ___
 
@@ -28,7 +29,8 @@ ___
 • **CORE\_INITIALIZER** = `"core.INITIALIZER"`
 
 Hook for server initialization.
+see /core/initializers/index.ts
 
 #### Defined in
 
-[common/server-plugin/server-plugin.interface.ts:14](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L14)
+[common/server-plugin/server-plugin.interface.ts:15](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L15)
