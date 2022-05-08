@@ -50,7 +50,7 @@
     "@graphql-codegen/typescript-operations": "^2.3.7",
     "@graphql-codegen/typescript-react-apollo": "^3.2.13",
     "@swc/cli": "^0.1.57",
-    "@swc/jest": "^0.2.20",
+    "@swc/jest": "^0.2.21",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.5",
     "@testing-library/react-hooks": "^8.0.0",
@@ -70,7 +70,7 @@
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "depcheck": "^1.4.3",
-    "eslint": "^8.14.0",
+    "eslint": "^8.15.0",
     "fs-extra": "^10.1.0",
     "glob": "^8.0.1",
     "graphql-tag": "^2.12.6",
@@ -112,7 +112,7 @@
     "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.10#.yarn/patches/vite-plugin-mdx-npm-3.5.10-ae54c30668"
   },
   "dependencies": {
-    "@swc/core": "^1.2.177",
+    "@swc/core": "^1.2.179",
     "@swc/helpers": "^0.3.13",
     "dayjs": "^1.11.2",
     "ts-node": "^10.7.0"
