@@ -51,8 +51,7 @@ export const Name = styled('span', {
 export const TitleRow = styled('div', {
   display: 'flex',
   alignItems: 'center',
-  width: '100%',
-  height: 60
+  width: '100%'
 })
 
 export const popover = css({

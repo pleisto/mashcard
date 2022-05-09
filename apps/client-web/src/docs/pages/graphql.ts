@@ -155,6 +155,7 @@ export const queryChildrenBlocks = gql`
         title
         level
         language
+        autoWrap
         start
         image {
           type

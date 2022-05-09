@@ -36,6 +36,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.6.2",
     "postcss": "^8.4.13",
     "postcss-less": "^6.0.0",
     "postcss-preset-env": "^7.5.0"

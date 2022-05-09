@@ -18,6 +18,15 @@ export const CodeBlock = TiptapCodeBlock.extend<CodeBlockOptions>({
     }
   },
 
+  addAttributes() {
+    return {
+      ...this.parent?.(),
+      autoWrap: {
+        default: true
+      }
+    }
+  },
+
   addNodeView() {
     return ReactNodeViewRenderer(CodeBlockView)
   },

@@ -49,13 +49,13 @@ exports[`Tree Basic should match the snapshot 1`] = `
                       />
                     </div>
                     <a
-                      class="brd-c-bsmMAn"
+                      class="brd-c-jJXXBy"
                       data-testid="content-icon"
                     >
                       🔆
                     </a>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -98,7 +98,7 @@ exports[`Tree Basic should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -141,7 +141,7 @@ exports[`Tree Basic should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -184,7 +184,7 @@ exports[`Tree Basic should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -227,7 +227,7 @@ exports[`Tree Basic should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -295,13 +295,13 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                       />
                     </div>
                     <a
-                      class="brd-c-bsmMAn"
+                      class="brd-c-jJXXBy"
                       data-testid="content-icon"
                     >
                       🔆
                     </a>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -344,7 +344,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -387,7 +387,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -430,7 +430,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -473,7 +473,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -516,7 +516,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -559,7 +559,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -602,7 +602,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -670,13 +670,13 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                       />
                     </div>
                     <a
-                      class="brd-c-bsmMAn"
+                      class="brd-c-jJXXBy"
                       data-testid="content-icon"
                     >
                       🔆
                     </a>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -719,7 +719,7 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -762,7 +762,7 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -805,7 +805,7 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -848,7 +848,7 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -891,7 +891,7 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -959,13 +959,13 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
                       />
                     </div>
                     <a
-                      class="brd-c-bsmMAn"
+                      class="brd-c-jJXXBy"
                       data-testid="content-icon"
                     >
                       🔆
                     </a>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -1008,7 +1008,7 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -1051,7 +1051,7 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -1094,7 +1094,7 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -1137,7 +1137,7 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -1205,13 +1205,13 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
                       />
                     </div>
                     <a
-                      class="brd-c-bsmMAn"
+                      class="brd-c-jJXXBy"
                       data-testid="content-icon"
                     >
                       🔆
                     </a>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div
@@ -1256,7 +1256,7 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div
@@ -1301,7 +1301,7 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div
@@ -1346,7 +1346,7 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div
@@ -1391,7 +1391,7 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div
@@ -1463,13 +1463,13 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                       />
                     </div>
                     <a
-                      class="brd-c-bsmMAn"
+                      class="brd-c-jJXXBy"
                       data-testid="content-icon"
                     >
                       🔆
                     </a>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -1512,7 +1512,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -1555,7 +1555,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -1598,7 +1598,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -1641,7 +1641,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -1684,7 +1684,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -1727,7 +1727,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>
@@ -1770,7 +1770,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                       />
                     </div>
                     <div
-                      class="brd-c-jdnGAW"
+                      class="brd-c-ddXcjq"
                       data-testid="content-action"
                     >
                       <div>

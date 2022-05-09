@@ -518,6 +518,11 @@ type BlockLink {
   height: Int
 
   """
+  icon
+  """
+  icon: String
+
+  """
   key
   """
   key: String
@@ -563,6 +568,11 @@ type BlockMeta {
   attachment
   """
   attachment: BlockAttachment
+
+  """
+  code auto wrap
+  """
+  autoWrap: Boolean
 
   """
   cover

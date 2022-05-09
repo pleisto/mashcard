@@ -112,6 +112,7 @@ export const Layout = styled('div', {
         display: 'flex',
         minHeight: '0',
         '--brd-editor-max-width': '960px',
+        minWidth: '8rem',
         borderRadius: '2px'
       },
       '& > aside': {

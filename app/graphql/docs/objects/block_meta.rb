@@ -11,7 +11,7 @@ module Docs
       field :title, String, 'title', null: true
       field :people, BlockPeople, 'people', null: true
       field :page, BlockPage, 'page', null: true
-
+      field :autoWrap, Boolean, 'code auto wrap', null: true
       ## NOTE: Prosemirror builtin
       field :level, Int, 'Prosemirror builtin level', null: true
       field :language, String, 'Prosemirror builtin language', null: true

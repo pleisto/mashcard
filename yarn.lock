@@ -1802,6 +1802,7 @@ __metadata:
     "@brickdoc/schema": "workspace:^"
     "@brickdoc/test-helper": "workspace:^"
     "@brickdoc/uploader": "workspace:^"
+    "@graphql-codegen/cli": ^2.6.2
     "@rails/actioncable": ^7.0.1
     "@rails/activestorage": ^7.0.1
     "@sentry/integrations": ^6.19.7

@@ -11,7 +11,7 @@ import {
   Tooltip,
   devWarning
 } from '@brickdoc/design-system'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import { useImperativeQuery } from '@/common/hooks'
 import {
@@ -24,7 +24,7 @@ import {
   GetTrashBlocksDocument
 } from '@/BrickdocGraphQL'
 import { queryBlockPins, queryPageBlocks } from '../../graphql'
-import styles from './styles.module.less'
+import * as Root from './index.style'
 import { useApolloClient, useReactiveVar } from '@apollo/client'
 import { editorVar, FormulaContextVar } from '@/docs/reactiveVars'
 import { appendFormulas } from '@brickdoc/formula'
@@ -296,13 +296,13 @@ export const PageMenu: React.FC<PageMenuProps> = ({
       onVisibleChange={onRenamePopoverVisibleChange}
       destroyTooltipOnHide={true}
       overlayInnerStyle={{ marginLeft: -36 }}
-      className={styles.title}>
-      <Link to={linkPath}>{title}</Link>
+    >
+      <Root.Title to={linkPath}>{title}</Root.Title>
     </Popover>
   )
 
   if (!mutable) {
-    return <div className={styles.menu}>{linkData}</div>
+    return <Root.Menu>{linkData}</Root.Menu>
   }
 
   return (
@@ -315,19 +315,19 @@ export const PageMenu: React.FC<PageMenuProps> = ({
         onVisibleChange={onDropdownVisibleChange}
         placement="bottomStart"
       >
-        <div className={styles.menu}>
+        <Root.Menu>
           {linkData}
           <div>
             <Tooltip title={t('blocks.more')}>
               <Dropdown destoryPopupOnHide={true} trigger={['click']} overlay={menu} placement="bottomStart">
-                <Button className={styles.moreBtn} type="text">
+                <Button className="moreBtn" type="text">
                   <Icon.More />
                 </Button>
               </Dropdown>
             </Tooltip>
             <Tooltip title={t('blocks.create_sub_pages')}>
               <Button
-                className={styles.addBtn}
+                className="addBtn"
                 type="text"
                 onClick={onPressAddSubPage}
                 loading={createBlockLoading}
@@ -337,7 +337,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
               </Button>
             </Tooltip>
           </div>
-        </div>
+        </Root.Menu>
       </Dropdown>
     </>
   )

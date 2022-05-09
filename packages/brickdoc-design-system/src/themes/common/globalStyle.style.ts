@@ -69,7 +69,8 @@ export const globalStyleSheet = {
     marginTop: 0,
     marginBottom: 0,
     fontWeight: '600',
-    color: '$colors$typePrimary'
+    color: '$colors$typePrimary',
+    wordBreak: 'break-word'
   },
   h1: {
     fontSize: ceramicLightTheme.fontSizes.title1,
@@ -100,7 +101,8 @@ export const globalStyleSheet = {
     marginTop: 0,
     marginBottom: 0,
     fontSize: ceramicLightTheme.fontSizes.body,
-    lineHeight: ceramicLightTheme.lineHeights.body
+    lineHeight: ceramicLightTheme.lineHeights.body,
+    wordBreak: 'break-word'
   },
   'input, button, select, optgroup, textarea': {
     margin: 0,

@@ -110,6 +110,10 @@ export const LinkTypeEmbedBlock: FC<LinkTypeEmbedBlockProps> = ({
         visible={popoverVisible}
         onVisibleChange={handlePopoverVisibleChange}
         trigger="click"
+        overlayInnerStyle={{
+          marginTop: -30,
+          marginLeft: 94
+        }}
         content={
           <LinkInputPanel
             link={link}
@@ -118,7 +122,7 @@ export const LinkTypeEmbedBlock: FC<LinkTypeEmbedBlockProps> = ({
             onLinkChange={handleLinkChange}
           />
         }
-        placement="bottom"
+        placement="bottomStart"
       >
         <EmbedBlockPlaceholder
           data-testid={TEST_ID_ENUM.editor.embedBlock.addButton.id}

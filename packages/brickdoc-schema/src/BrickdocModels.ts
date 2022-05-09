@@ -291,6 +291,8 @@ export type BlockLink = {
   description?: Maybe<Scalars['String']>
   /** height */
   height?: Maybe<Scalars['Int']>
+  /** icon */
+  icon?: Maybe<Scalars['String']>
   /** key */
   key?: Maybe<Scalars['String']>
   /** mode */
@@ -313,6 +315,8 @@ export type BlockMeta = {
   __typename?: 'BlockMeta'
   /** attachment */
   attachment?: Maybe<BlockAttachment>
+  /** code auto wrap */
+  autoWrap?: Maybe<Scalars['Boolean']>
   /** cover */
   cover?: Maybe<BlockCover>
   /** embedMeta */

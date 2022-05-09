@@ -85,7 +85,6 @@ export const ContentTitle = styled('div', {
 })
 
 export const ContentAction = styled('div', {
-  marginBottom: theme.space.xxxs,
   width: `calc(100% - ${theme.space.lg})`,
   fontSize: theme.fontSizes.body,
   fontWeight: '500',

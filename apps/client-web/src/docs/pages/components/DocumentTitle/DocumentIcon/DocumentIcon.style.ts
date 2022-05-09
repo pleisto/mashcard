@@ -19,12 +19,12 @@ export const Root = styled(Button, {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  height: 60,
-  width: 60,
+  height: 54,
+  width: 54,
   fontSize: size,
   borderRadius: 2,
   padding: 0,
-  marginRight: 1,
+  marginRight: 3,
   variants: {
     width: {
       md: {},

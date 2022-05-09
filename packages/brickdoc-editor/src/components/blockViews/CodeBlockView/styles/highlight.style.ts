@@ -1,4 +1,40 @@
-import { css, theme } from '@brickdoc/design-system'
+import { css, styled, theme } from '@brickdoc/design-system'
+
+export const ViewModeBar = styled('div', {
+  height: 47,
+  borderBottom: '1px solid',
+  borderColor: theme.colors.dividerOverlayPrimary,
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  cursor: 'pointer',
+  margin: '0 16px 16px',
+  color: theme.colors.typeThirdary
+})
+
+export const CodeContainer = styled('div', {
+  borderRadius: 4,
+  background: theme.colors.backgroundPrimary,
+  border: '1px solid',
+  borderColor: theme.colors.grey3
+})
+
+export const CodeScroll = css({
+  '& > div': {
+    overflowX: 'auto',
+    whiteSpace: 'pre!important'
+  }
+})
+
+export const SwitchContainer = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  '.label': {
+    fontSize: theme.fontSizes.callout,
+    lineHeight: theme.lineHeights.callout,
+    marginRight: 8
+  }
+})
 
 export const highlightStyle = css({
   'code[class*="language-"], pre[class*="language-"]': {

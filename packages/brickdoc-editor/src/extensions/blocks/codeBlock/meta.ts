@@ -13,6 +13,7 @@ export interface CodeBlockOptions extends TiptapCodeBlockOptions {
 
 export interface CodeBlockAttributes {
   language?: string | null
+  autoWrap?: boolean | null
 }
 
 export interface CodeBlockViewProps extends BlockViewProps<CodeBlockOptions, CodeBlockAttributes> {}

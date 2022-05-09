@@ -17,22 +17,84 @@ exports[`CodeBlock renders CodeBlock correctly 1`] = `
           data-node-view-wrapper=""
           style="pointer-events: none; white-space: normal;"
         >
-          <pre>
-            <code
-              as="code"
-              data-node-view-content=""
-              style="white-space: pre-wrap;"
+          <div
+            class="brd-c-ibqHiI"
+          >
+            <div
+              class="brd-c-gFLTCK"
             >
               <div
-                style="white-space: inherit;"
+                aria-haspopup="dialog"
+                role="tab"
+                tabindex="0"
               >
-                      
+                code_block.languages.typescript
+                 
+                <span
+                  aria-label="line-down"
+                  class="brd-icon brd-icon-line-down"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="m18.5 9-6 6-6-6"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="brd-c-fldGjR"
+              >
+                <span
+                  class="label"
+                >
+                  Auto Wrap
+                </span>
+                <label
+                  class="brd-c-kHLHuS"
+                >
+                  <div
+                    class="brd-c-fGLdFf brd-c-fGLdFf-dAvqMh-checked-true brd-c-fGLdFf-iARJwO-size-sm brd-c-fGLdFf-gsmDXe-disabled-false"
+                  >
+                    <div
+                      class="brd-c-dENxiO"
+                    >
+                      <input
+                        checked=""
+                        type="checkbox"
+                      />
+                    </div>
+                    <div
+                      class="brd-c-kumvPm"
+                    />
+                  </div>
+                </label>
+              </div>
+            </div>
+            <pre>
+              <code
+                as="code"
+                data-node-view-content=""
+                style="white-space: pre-wrap;"
+              >
+                <div
+                  style="white-space: inherit;"
+                >
+                        
         code content
       
     
-              </div>
-            </code>
-          </pre>
+                </div>
+              </code>
+            </pre>
+          </div>
         </div>
       </div>
     </div>

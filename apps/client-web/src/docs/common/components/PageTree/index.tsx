@@ -246,7 +246,6 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
         initialSelectedId={docMeta.id}
         currentSelectedId={docMeta.id}
         treeNodeClassName={mode === 'subPage' ? subPageModeNodeStyle() : ''}
-        height={mode === 'subPage' ? 200 : undefined}
         data={treeData as unknown as TreeNode[]}
         draggable={draggable && isDraggable}
         onDrop={onDrop}
@@ -331,14 +330,15 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
       }
     })
   const showPin = !!pinTreeBlocks.length
-  const pinTree = showPin ? (
-    <>
-      <PageTreeHeading style={{ top: 0 }}>Pin</PageTreeHeading>
-      {treeElement(pinTreeBlocks, false)}
-    </>
-  ) : (
-    <></>
-  )
+  const pinTree =
+    mode !== 'subPage' && showPin ? (
+      <>
+        <PageTreeHeading style={{ top: 0 }}>Pin</PageTreeHeading>
+        {treeElement(pinTreeBlocks, false)}
+      </>
+    ) : (
+      <></>
+    )
 
   return pageBlocks.length ? (
     <>

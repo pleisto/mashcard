@@ -294,6 +294,8 @@ export type BlockLink = {
   description?: Maybe<Scalars['String']>
   /** height */
   height?: Maybe<Scalars['Int']>
+  /** icon */
+  icon?: Maybe<Scalars['String']>
   /** key */
   key?: Maybe<Scalars['String']>
   /** mode */
@@ -316,6 +318,8 @@ export type BlockMeta = {
   __typename?: 'BlockMeta'
   /** attachment */
   attachment?: Maybe<BlockAttachment>
+  /** code auto wrap */
+  autoWrap?: Maybe<Scalars['Boolean']>
   /** cover */
   cover?: Maybe<BlockCover>
   /** embedMeta */
@@ -2478,6 +2482,8 @@ export type GetChildrenBlocksQuery = {
         cover?: string | null
         description?: string | null
         title?: string | null
+        icon?: string | null
+        mode?: string | null
       } | null
     }
   }> | null
@@ -4788,6 +4794,7 @@ export const GetChildrenBlocksDocument = gql`
         title
         level
         language
+        autoWrap
         start
         image {
           type
@@ -4856,9 +4863,9 @@ export const GetChildrenBlocksDocument = gql`
           type
           source
           cover
-          icon
           description
           title
+          icon
           mode
         }
       }
