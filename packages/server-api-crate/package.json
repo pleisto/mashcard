@@ -1,7 +1,7 @@
 {
   "name": "@brickdoc/server-api-crate",
   "version": "0.1.0",
-  "description": "An omakase-style high-level wrapper for modern crypto libraries for NodeJS.",
+  "description": "Crate has some utilities written in Rust and based on napi-rs.",
   "license": "Apache-2.0",
   "main": "./index.js",
   "volta": {

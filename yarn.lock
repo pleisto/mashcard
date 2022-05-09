@@ -2190,9 +2190,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@brickdoc/server-api-crate@workspace:^, @brickdoc/server-api-crate@workspace:packages/brickdoc-server-api-crate":
+"@brickdoc/server-api-crate@workspace:^, @brickdoc/server-api-crate@workspace:packages/server-api-crate":
   version: 0.0.0-use.local
-  resolution: "@brickdoc/server-api-crate@workspace:packages/brickdoc-server-api-crate"
+  resolution: "@brickdoc/server-api-crate@workspace:packages/server-api-crate"
   dependencies:
     "@faker-js/faker": ^6.3.1
     "@napi-rs/cli": ^2.8.0
