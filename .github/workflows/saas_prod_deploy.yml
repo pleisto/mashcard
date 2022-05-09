@@ -61,7 +61,7 @@ jobs:
             brickdocCE-saas-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-buildx-
       - run: sentry-cli releases new brickdoc@${{ steps.get_version.outputs.VERSION }} && sentry-cli releases set-commits brickdoc@${{ steps.get_version.outputs.VERSION }} --auto --ignore-missing
       - name: Build and push
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: .
           push: true
