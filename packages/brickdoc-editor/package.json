@@ -57,12 +57,12 @@
     "tippy.js": "^6.3.7",
     "uuid": "^8.3.2",
     "y-protocols": "^1.0.5",
-    "yjs": "^13.5.35",
+    "yjs": "^13.5.36",
     "zustand": "^4.0.0-rc.1"
   },
   "devDependencies": {
     "@types/react-pdf": "^5.7.2",
-    "i18next": "^21.7.1",
+    "i18next": "^21.8.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
