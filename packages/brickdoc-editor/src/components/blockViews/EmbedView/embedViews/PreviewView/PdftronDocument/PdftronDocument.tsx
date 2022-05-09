@@ -6,6 +6,7 @@ import { FileIcon } from '../../../../../ui'
 import { usePdftronDocument } from './usePdftronDocument'
 import { DocumentFooter } from '../DocumentFooter'
 import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../../../EmbedView'
+import { DocumentUnavailable } from '../DocumentUnavailable'
 
 export interface PdftronDocumentProps {
   blockType: EmbedBlockType
@@ -59,16 +60,17 @@ export const PdftronDocument: FC<PdftronDocumentProps> = ({
   fileType,
   fileUrl
 }) => {
-  const [documentReady, viewer] = usePdftronDocument(fileUrl)
+  const [documentStatus, viewer] = usePdftronDocument(fileUrl)
 
   return (
     <PdftronDocumentWrapper data-testid={TEST_ID_ENUM.editor.embedBlock.pdftron.id}>
-      {!documentReady && (
+      {documentStatus === 'loading' && (
         <SpinWrapper css={{ height: containerHeight }}>
           <DocumentSpin size="lg" />
         </SpinWrapper>
       )}
-      <PdftronDocumentContainer ref={viewer} ready={documentReady} />
+      {documentStatus === 'error' && <DocumentUnavailable url={fileUrl} />}
+      <PdftronDocumentContainer ref={viewer} ready={documentStatus === 'ready'} />
       <DocumentFooter
         icon={<DocumentFileIcon fileType={fileType} />}
         name={fileName}

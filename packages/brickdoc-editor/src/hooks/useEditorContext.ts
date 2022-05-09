@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import { EditorContext } from '../context/EditorContext'
+import { EditorContext, EditorContextData } from '../context/EditorContext'
 
-export function useEditorContext() {
+export function useEditorContext(): EditorContextData {
   return useContext(EditorContext)
 }

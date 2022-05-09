@@ -97,7 +97,7 @@ export const SPREADSHEET: BlockCommandItem = {
 export const UPLOAD: BlockCommandItem = {
   key: 'upload',
   blockType: embedMeta.name,
-  alias: ['up', 'file', 'pdf', 'excel', 'ppt', 'image', 'img'],
+  alias: ['up', 'local', 'file', 'pdf', 'excel', 'ppt', 'image', 'img'],
   squareIcon: <Upload square={true} />,
   icon: <Upload />,
   setBlock: chain => chain.setEmbedBlock(Embedtype.Upload),

@@ -1,10 +1,12 @@
 import { RefObject, useCallback, useEffect, useRef, useState } from 'react'
 import WebViewer, { WebViewerInstance } from '@pdftron/webviewer'
 
-export function usePdftronDocument(initialDoc: string): [boolean, RefObject<HTMLDivElement>, VoidFunction] {
+export type DocumentStatus = 'ready' | 'error' | 'loading'
+
+export function usePdftronDocument(initialDoc: string): [DocumentStatus, RefObject<HTMLDivElement>, VoidFunction] {
   const viewer = useRef<HTMLDivElement>(null)
   const [instance, setInstance] = useState<WebViewerInstance>()
-  const [documentReady, setDocumentReady] = useState(false)
+  const [documentStatus, setDocumentStatus] = useState<DocumentStatus>('loading')
 
   const path = '/pdftron'
 
@@ -22,7 +24,11 @@ export function usePdftronDocument(initialDoc: string): [boolean, RefObject<HTML
       instance.UI.setFitMode(instance.UI.FitMode.FitWidth)
       const { documentViewer } = instance.Core
       documentViewer.addEventListener('documentLoaded', () => {
-        setDocumentReady(true)
+        setDocumentStatus('ready')
+      })
+      instance.UI.addEventListener(instance.UI.Events.LOAD_ERROR, err => {
+        console.error(err)
+        setDocumentStatus('error')
       })
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -32,5 +38,5 @@ export function usePdftronDocument(initialDoc: string): [boolean, RefObject<HTML
     instance?.UI.toggleFullScreen()
   }, [instance?.UI])
 
-  return [documentReady, viewer, toggleFullScreen]
+  return [documentStatus, viewer, toggleFullScreen]
 }

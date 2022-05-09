@@ -2,6 +2,8 @@ import { styled, theme } from '@brickdoc/design-system'
 import { FC } from 'react'
 import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../../EmbedView'
 import { DocumentFooter } from './DocumentFooter'
+import { DocumentUnavailable } from './DocumentUnavailable'
+import { useWebsiteDocumentStatus } from './useWebsiteDocumentStatus'
 
 export interface WebsiteDocumentProps {
   blockType: EmbedBlockType
@@ -17,13 +19,12 @@ const WebsiteDocumentContainer = styled('div', {
   borderRadius: '4px',
   display: 'flex',
   flexDirection: 'column',
-  height: '40rem',
   maxWidth: '100%',
   width: '60rem'
 })
 
 const WebsiteFrame = styled('iframe', {
-  flex: 1
+  height: '37rem'
 })
 
 export const WebsiteDocument: FC<WebsiteDocumentProps> = ({
@@ -33,9 +34,11 @@ export const WebsiteDocument: FC<WebsiteDocumentProps> = ({
   url,
   title
 }) => {
+  const [error, handleLoad] = useWebsiteDocumentStatus()
+
   return (
     <WebsiteDocumentContainer>
-      <WebsiteFrame src={url} title={title ?? ''} />
+      {error ? <DocumentUnavailable url={url} /> : <WebsiteFrame src={url} title={title ?? ''} onLoad={handleLoad} />}
       <DocumentFooter
         name={url}
         icon={icon}

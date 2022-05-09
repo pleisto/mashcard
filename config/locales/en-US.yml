@@ -883,6 +883,9 @@ en-US:
           name: card view
         preview:
           name: preview view
+          unavailable:
+            tip: Unable to preview content.
+            link_button: Open Link
         text:
           name: text view
       embed_types:
@@ -907,22 +910,6 @@ en-US:
             placeholder: Search...
           label: Select a picture from Unsplash.
           description: Unsplash image.
-    pdf_section:
-      hint: Embed a PDF
-      deletion_confirm:
-        title: Are you sure you want to delete this property?
-        ok: Delete
-        cancel: Cancel
-      menu:
-        copy: Copy link
-        delete: Remove
-      import_sources:
-        upload:
-          button_text: Choose an file
-        link:
-          placeholder: Paste in https://...
-          button_text: Embed PDF
-          button_hint: Embed a PDF file
     user_block:
       anonymous: Anonymous
     page_link_block:

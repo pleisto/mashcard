@@ -3,12 +3,12 @@ import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { Input, Popover, styled, theme } from '@brickdoc/design-system'
 import { EmbedBlockPlaceholder } from '../../Placeholder'
 import { BlockContainer } from '../../../BlockContainer'
-import { usePopoverVisible } from '../usePopoverVisible'
 import { EmbedViewProps } from '../../../../../extensions/blocks/embed/meta'
 import { useLinkValue } from './useLinkValue'
 import { useEditorI18n } from '../../../../../hooks'
 import { CloseOneFill, Link } from '@brickdoc/design-icons'
 import { UpdateEmbedBlockAttributes } from '../../EmbedView'
+import { usePopoverVisible } from '../usePopoverVisible'
 
 export interface LinkTypeEmbedBlockProps {
   deleteNode: EmbedViewProps['deleteNode']
@@ -99,13 +99,12 @@ export const LinkTypeEmbedBlock: FC<LinkTypeEmbedBlockProps> = ({
   updateEmbedBlockAttributes
 }) => {
   const [t] = useEditorI18n()
-  const [popoverVisible, handlePopoverVisibleChange] = usePopoverVisible(node.attrs.uuid)
   const [link, handleLinkChange, handleLinkClear, handleSubmit, progress] = useLinkValue(updateEmbedBlockAttributes)
+  const [popoverVisible, handlePopoverVisibleChange] = usePopoverVisible(node.attrs.uuid)
 
   return (
     <BlockContainer node={node} getPos={getPos} actionOptions={['delete']} deleteNode={deleteNode}>
       <Popover
-        defaultVisible={popoverVisible}
         compact={true}
         visible={popoverVisible}
         onVisibleChange={handlePopoverVisibleChange}

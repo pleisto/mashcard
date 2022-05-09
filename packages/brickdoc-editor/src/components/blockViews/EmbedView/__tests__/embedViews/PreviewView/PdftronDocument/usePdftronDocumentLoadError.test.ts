@@ -8,16 +8,20 @@ jest.mock('@pdftron/webviewer', () => ({
   default: async () =>
     await Promise.resolve({
       UI: {
+        addEventListener: (event: string, cb: Function) => {
+          cb()
+        },
         FitMode: {
           FitWidth: 1
+        },
+        Events: {
+          LOAD_ERROR: 'LOAD_ERROR'
         },
         setFitMode: () => {}
       },
       Core: {
         documentViewer: {
-          addEventListener: (event: string, cb: Function) => {
-            cb()
-          }
+          addEventListener: (event: string, cb: Function) => {}
         }
       }
     })
@@ -25,8 +29,8 @@ jest.mock('@pdftron/webviewer', () => ({
 
 jest.useRealTimers()
 
-describe('usePdftronDocument', () => {
-  it('marks document ready when document has been setup', async () => {
+describe('usePdftronDocument load error', () => {
+  it('handles load error correctly', async () => {
     await act(async () => {
       const { result } = renderHook(() => usePdftronDocument('doc'))
 
@@ -37,9 +41,9 @@ describe('usePdftronDocument', () => {
         }, 10)
       })
 
-      const [documentReady] = result.current
+      const [documentStatus] = result.current
 
-      expect(documentReady).toBeTruthy()
+      expect(documentStatus).toBe('error')
     })
   })
 })

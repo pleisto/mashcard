@@ -101,7 +101,6 @@ export const GalleryTypeEmbedBlock: FC<GalleryTypeEmbedBlockProps> = ({
   const { t } = useContext(EditorContext)
   const externalProps = useExternalProps()
   const [unsplashImages, setUnsplashImages] = useState<UnsplashImage[]>([])
-
   const [popoverVisible, handlePopoverVisibleChange] = usePopoverVisible(node.attrs.uuid)
 
   const fetching = useRef(false)
@@ -186,8 +185,8 @@ export const GalleryTypeEmbedBlock: FC<GalleryTypeEmbedBlockProps> = ({
   return (
     <BlockContainer node={node} actionOptions={['delete']} deleteNode={deleteNode} getPos={getPos}>
       <Popover
-        trigger="click"
         visible={popoverVisible}
+        trigger="click"
         onVisibleChange={handlePopoverVisibleChange}
         content={
           <Gallery>
