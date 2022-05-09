@@ -104,7 +104,7 @@
     "@rails/actioncable": "patch:@rails/actioncable@npm:7.0.1#.yarn/patches/@rails-actioncable-npm-7.0.1-7dd9553527",
     "cached-path-relative": ">=1.1.0",
     "trim": ">= 1.0.1",
-    "dayjs": "^1.11.1",
+    "dayjs": ">=1.11.1",
     "cpy": "npm:@brickdoc/cpy@>=8.1.2-patch.1",
     "@jest/transform": "npm:@jest/transform@>=27",
     "prosemirror-view": "patch:prosemirror-view@npm:1.23.7#.yarn/patches/prosemirror-view-npm-1.23.7-5085f0bf9b",

@@ -18,7 +18,7 @@
     },
     {
       "name": "server-api-crate",
-      "path": "packages/brickdoc-server-api-crate"
+      "path": "packages/server-api-crate"
     },
     {
       "name": "packages/active-support",
@@ -51,10 +51,6 @@
     {
       "name": "packages/brickdoc-uploader",
       "path": "packages/brickdoc-uploader"
-    },
-    {
-      "name": "packages/cypherpunk",
-      "path": "packages/cypherpunk"
     },
     {
       "name": "packages/dotenv",

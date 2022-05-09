@@ -101,7 +101,7 @@ Symmetric-key decryption
 
 #### Defined in
 
-[common/kms/kms.service.ts:48](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L48)
+[common/kms/kms.service.ts:49](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L49)
 
 ___
 
@@ -124,7 +124,7 @@ Symmetric-key encryption
 
 #### Defined in
 
-[common/kms/kms.service.ts:38](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L38)
+[common/kms/kms.service.ts:39](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L39)
 
 ___
 
@@ -146,4 +146,4 @@ Get a symmetric key
 
 #### Defined in
 
-[common/kms/kms.service.ts:57](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L57)
+[common/kms/kms.service.ts:58](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L58)

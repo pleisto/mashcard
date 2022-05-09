@@ -10,7 +10,8 @@
   "sideEffects": false,
   "devDependencies": {
     "@faker-js/faker": "^6.3.1",
-    "@napi-rs/cli": "^2.8.0"
+    "@napi-rs/cli": "^2.8.0",
+    "benny": "^3.7.1"
   },
   "scripts": {
     "build": "napi build --platform && yarn fmt",
@@ -20,6 +21,7 @@
     "lint:rust": "cargo clippy",
     "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx __tests__ --fix",
     "test:jest": "run -T jest",
-    "fmt": "cargo fmt"
+    "fmt": "cargo fmt",
+    "tsdoc": "run -T typedoc --options ../../tools/typedoc/config.json --out ./docs/api ./index.d.ts"
   }
 }

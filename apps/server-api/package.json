@@ -6,8 +6,8 @@
     "extends": "../../package.json"
   },
   "scripts": {
-    "build-rust-deps": "run -T api-crate build",
-    "dev": "build-rust-deps && node-dev --enable-source-maps --inspect --notify=false src/main.ts server",
+    "build-rust-deps": "run -T api-crate build:prod",
+    "dev": "yarn build-rust-deps && node-dev --enable-source-maps --inspect --notify=false src/main.ts server",
     "start": "run -T ts-node src/main.ts server",
     "console": "build-rust-deps && run -T ts-node src/main.ts console",
     "cli": "run -T ts-node src/main.ts",
@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "@brickdoc/active-support": "workspace:^",
-    "@brickdoc/cypherpunk": "workspace:^",
     "@brickdoc/dotenv": "workspace:^",
     "@brickdoc/nestjs-redis": "workspace:^",
     "@brickdoc/nestjs-slonik": "workspace:^",

@@ -218,12 +218,42 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { anyAscii, base58Encode, base58Decode, UUIDShorten, shortUUIDGen, shortUUIDExpand, genSlug } = nativeBinding
+const {
+  passwordHash,
+  passwordHashVerify,
+  genericHash,
+  deriveKey,
+  generateKey,
+  intEncrypt,
+  intDecrypt,
+  aeadEncrypt,
+  aeadDecrypt,
+  anyAscii,
+  base58Encode,
+  base58Decode,
+  UUIDShorten,
+  shortUUIDGen,
+  shortUUIDExpand,
+  z85Encode,
+  z85Decode,
+  genSlug
+} = nativeBinding
 
+module.exports.passwordHash = passwordHash
+module.exports.passwordHashVerify = passwordHashVerify
+module.exports.genericHash = genericHash
+module.exports.deriveKey = deriveKey
+module.exports.generateKey = generateKey
+module.exports.intEncrypt = intEncrypt
+module.exports.intDecrypt = intDecrypt
+module.exports.aeadEncrypt = aeadEncrypt
+module.exports.aeadDecrypt = aeadDecrypt
 module.exports.anyAscii = anyAscii
 module.exports.base58Encode = base58Encode
 module.exports.base58Decode = base58Decode
 module.exports.UUIDShorten = UUIDShorten
 module.exports.shortUUIDGen = shortUUIDGen
 module.exports.shortUUIDExpand = shortUUIDExpand
+module.exports.z85Encode = z85Encode
+module.exports.z85Decode = z85Decode
 module.exports.genSlug = genSlug

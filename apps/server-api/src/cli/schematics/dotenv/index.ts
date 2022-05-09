@@ -1,7 +1,7 @@
 import { Rule, url, apply, applyTemplates, chain, mergeWith, MergeStrategy, move } from '@brickdoc/schematics'
 import { Buffer } from 'buffer'
 import { env } from 'process'
-import { generateKey } from '@brickdoc/cypherpunk'
+import { generateKey } from '@brickdoc/server-api-crate'
 import { Schema as ComponentOptions } from './schema'
 
 export function dotenv(options: ComponentOptions): Rule {

@@ -11,18 +11,25 @@ license = "Apache-2.0"
 crate-type = ["cdylib"]
 
 [dependencies]
-napi = "2"
+napi = { version = "2",  default-features = false, features=["napi8", "async"] }
 napi-derive = "2"
 any_ascii = "0.3"
 bs58 = "0.4"
 radix_fmt = "1"
-
+mimalloc = { version = "*", default-features = false }
+blake3 = "1"
+hex = "0.4"
+rand ={ version = "0.8", features = ["getrandom"] }
+rand_chacha = "0.3.1"
+argon2 = { version = "0.4", features = ["parallel"] }
+chacha20poly1305 = "0.9"
+z85 = "3"
 [dependencies.uuid]
 version = "1"
 features = ["v4", "fast-rng"]
 
 [build-dependencies]
-napi-build = "1"
+napi-build = "2"
 
 [profile.release]
 lto = true

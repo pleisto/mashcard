@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common.crypto should genericHash work 1`] = `"Error salt: Invalid string length"`;

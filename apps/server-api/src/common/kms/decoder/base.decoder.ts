@@ -1,6 +1,6 @@
 import { env } from 'process'
 import { Buffer } from 'buffer'
-import { deriveKey } from '@brickdoc/cypherpunk'
+import { deriveKey } from '@brickdoc/server-api-crate'
 import { SecretSubKey } from '../kms.interface'
 
 /**

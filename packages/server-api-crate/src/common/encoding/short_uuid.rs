@@ -9,7 +9,7 @@ use uuid::Uuid;
 #[napi(js_name = "UUIDShorten")]
 pub fn js_uuid_shorten(uuid_v4: String) -> Result<String> {
   Uuid::parse_str(&uuid_v4)
-    .map_err(|e| napi::Error::new(napi::Status::GenericFailure, e.to_string()))
+    .map_err(|e| Error::new(Status::GenericFailure, e.to_string()))
     .map(uuid_shorten)
 }
 
@@ -28,7 +28,7 @@ pub fn short_uuid_expand(short_uuid: String) -> Result<String> {
   let mut uuid_buf = [0u8; 16];
   bs58::decode(short_uuid)
     .into(&mut uuid_buf)
-    .map_err(|e| napi::Error::new(napi::Status::GenericFailure, e.to_string()))
+    .map_err(|e| Error::new(Status::GenericFailure, e.to_string()))
     .map(|_| Uuid::from_bytes(uuid_buf).as_hyphenated().to_string())
 }
 

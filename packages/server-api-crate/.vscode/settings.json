@@ -1,3 +1,14 @@
 {
-  "cSpell.words": ["bindgen", "msvc", "napi"]
+  "cSpell.words": [
+    "bindgen",
+    "chacha",
+    "hasher",
+    "hashids",
+    "libsodium's",
+    "mimalloc",
+    "msvc",
+    "napi",
+    "Seedable",
+    "xchacha"
+  ]
 }

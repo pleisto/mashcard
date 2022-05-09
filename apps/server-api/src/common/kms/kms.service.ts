@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common'
 import { SecretSubKey, KMS_ROOT_SECRET_KEY } from './kms.interface'
-import { deriveKey, genericHash, aeadDecrypt, aeadEncrypt } from '@brickdoc/cypherpunk'
+import { deriveKey, genericHash, aeadDecrypt, aeadEncrypt } from '@brickdoc/server-api-crate'
 import { memoize } from '@brickdoc/active-support'
 
 @Injectable()
@@ -26,7 +26,8 @@ export class KMSService {
   public dataMasking(data: string, length = 32): string {
     // memoize data masking salt
     const salt = memoize(deriveKey)(this.rootSecret, SecretSubKey.HASH_SALT, 'data masking')
-    return genericHash(data, salt, length)
+    const hash = genericHash(data, salt)
+    return length >= 32 ? hash : hash.slice(0, length)
   }
 
   /**
@@ -46,7 +47,7 @@ export class KMSService {
    * @returns
    */
   public symmetricDecrypt(data: string, context: string): string {
-    return aeadDecrypt(data, this.symmetricKey(context))
+    return aeadDecrypt(data, this.symmetricKey(context)).toString('utf-8')
   }
 
   /**

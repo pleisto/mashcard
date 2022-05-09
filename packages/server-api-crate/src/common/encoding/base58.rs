@@ -20,6 +20,6 @@ pub fn base58_encode(input: Either<String, Buffer>) -> String {
 pub fn base58_decode(input: String) -> Result<Buffer> {
   bs58::decode(input)
     .into_vec()
-    .map_err(|e| napi::Error::new(napi::Status::GenericFailure, e.to_string()))
+    .map_err(|e| Error::new(Status::GenericFailure, e.to_string()))
     .map(Buffer::from)
 }

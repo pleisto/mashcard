@@ -1,7 +1,7 @@
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import { FastifyPluginCallback } from 'fastify'
 import { fastifyCookie } from '@fastify/cookie'
-import { genericHash } from '@brickdoc/cypherpunk'
+import { genericHash } from '@brickdoc/server-api-crate'
 
 interface CustomSigner {
   sign: (value: string) => string
