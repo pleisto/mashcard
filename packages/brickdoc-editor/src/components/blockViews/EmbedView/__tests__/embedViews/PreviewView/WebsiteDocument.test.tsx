@@ -9,6 +9,7 @@ describe('WebsiteDocument', () => {
         blockType="link"
         icon="icon"
         title="title"
+        displayName="displayName"
         updateEmbedBlockAttributes={updateEmbedBlockAttributes}
         url="url"
       />

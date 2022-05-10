@@ -21,7 +21,7 @@ const renderAttachment = (
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes,
   { node, deleteNode, getPos }: EmbedViewProps
 ): ReactElement => {
-  const { name, contentType, mode } = node.attrs.attachment
+  const { name, displayName, contentType, mode } = node.attrs.attachment
   let fileType = getFileTypeByContentType(contentType ?? '')
   fileType = fileType === 'unknown' ? getFileTypeByExtension(name) : fileType
 
@@ -29,7 +29,8 @@ const renderAttachment = (
     return (
       <PreviewView
         blockType="attachment"
-        fileName={name!}
+        displayName={displayName! || name! || ''}
+        fileName={name ?? ''}
         fileType={fileType}
         fileUrl={fileUrl}
         deleteNode={deleteNode}
@@ -44,7 +45,7 @@ const renderAttachment = (
     return (
       <CardView
         blockType="attachment"
-        title={name ?? ''}
+        displayName={displayName! || name! || ''}
         icon={<FileIcon fileType={fileType} />}
         linkUrl={fileUrl}
         node={node}
@@ -58,7 +59,8 @@ const renderAttachment = (
   return (
     <TextView
       blockType="attachment"
-      name={name!}
+      name={name ?? ''}
+      displayName={displayName! || name! || ''}
       fileType={fileType}
       url={fileUrl}
       deleteNode={deleteNode}
@@ -69,6 +71,7 @@ const renderAttachment = (
   )
 }
 
+// eslint-disable-next-line complexity
 export const EmbedView: FC<EmbedViewProps> = props => {
   const { node, updateAttributes, deleteNode, getPos } = props
   const externalProps = useExternalProps()
@@ -81,6 +84,15 @@ export const EmbedView: FC<EmbedViewProps> = props => {
       }
 
       updateAttributes({
+        attachment: {
+          type: 'ATTACHMENT'
+        },
+        link: {
+          type: 'LINK'
+        },
+        image: {
+          type: 'IMAGE'
+        },
         [type]: {
           ...node.attrs[type],
           ...latestEmbedBlockAttributes.current
@@ -111,7 +123,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
   // link
   const linkUrl = node.attrs.link?.key
   if (linkUrl) {
-    const { title, description, cover, icon, mode } = node.attrs.link
+    const { title, displayName, description, cover, icon, mode } = node.attrs.link
 
     if (mode === 'card') {
       return (
@@ -123,7 +135,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
           cover={cover}
           description={description}
           getPos={getPos}
-          title={title ?? ''}
+          displayName={displayName! || title! || ''}
           linkUrl={linkUrl}
         />
       )
@@ -138,6 +150,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
           fileUrl={linkUrl}
           fileType="html"
           fileName={title ?? ''}
+          displayName={displayName! || title! || ''}
           icon={icon}
           getPos={getPos}
           deleteNode={deleteNode}
@@ -149,6 +162,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
       <TextView
         blockType="link"
         name={title ?? ''}
+        displayName={displayName! || title! || ''}
         fileType="html"
         url={linkUrl}
         node={node}

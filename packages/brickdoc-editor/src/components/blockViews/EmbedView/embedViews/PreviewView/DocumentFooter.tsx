@@ -6,6 +6,8 @@ import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../../EmbedView'
 export interface DocumentFooterProps {
   icon?: ReactElement | string | null
   name: string
+  displayName: string
+  url: string
   blockType: EmbedBlockType
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
 }
@@ -47,14 +49,27 @@ export const ModeSwitchContainer = styled('div', {
   [`& ${ModeSwitch}`]: {}
 })
 
-export const DocumentFooter: FC<DocumentFooterProps> = ({ name, icon, blockType, updateEmbedBlockAttributes }) => (
+export const DocumentFooter: FC<DocumentFooterProps> = ({
+  url,
+  displayName,
+  name,
+  icon,
+  blockType,
+  updateEmbedBlockAttributes
+}) => (
   <Footer>
     <Info>
       {icon && (typeof icon === 'string' ? <LinkIcon alt="icon" src={icon} /> : icon)}
       {name}
     </Info>
     <ModeSwitchContainer>
-      <ModeSwitch mode="preview" blockType={blockType} updateEmbedBlockAttributes={updateEmbedBlockAttributes} />
+      <ModeSwitch
+        url={url}
+        displayName={displayName}
+        mode="preview"
+        blockType={blockType}
+        updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+      />
     </ModeSwitchContainer>
   </Footer>
 )

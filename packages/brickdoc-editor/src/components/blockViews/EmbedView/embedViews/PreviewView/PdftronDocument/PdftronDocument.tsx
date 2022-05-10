@@ -11,6 +11,7 @@ import { DocumentUnavailable } from '../DocumentUnavailable'
 export interface PdftronDocumentProps {
   blockType: EmbedBlockType
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
+  displayName: string
   fileName: string
   fileUrl: string
   fileType: FileType
@@ -58,7 +59,8 @@ export const PdftronDocument: FC<PdftronDocumentProps> = ({
   updateEmbedBlockAttributes,
   fileName,
   fileType,
-  fileUrl
+  fileUrl,
+  displayName
 }) => {
   const [documentStatus, viewer] = usePdftronDocument(fileUrl)
 
@@ -72,6 +74,8 @@ export const PdftronDocument: FC<PdftronDocumentProps> = ({
       {documentStatus === 'error' && <DocumentUnavailable url={fileUrl} />}
       <PdftronDocumentContainer ref={viewer} ready={documentStatus === 'ready'} />
       <DocumentFooter
+        displayName={displayName}
+        url={fileUrl}
         icon={<DocumentFileIcon fileType={fileType} />}
         name={fileName}
         blockType={blockType}

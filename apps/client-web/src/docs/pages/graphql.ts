@@ -161,6 +161,7 @@ export const queryChildrenBlocks = gql`
           type
           source
           key
+          displayName
           height
           width
           ratio
@@ -189,6 +190,7 @@ export const queryChildrenBlocks = gql`
           height
           width
           name
+          displayName
           size
           mode
         }
@@ -227,6 +229,7 @@ export const queryChildrenBlocks = gql`
           cover
           description
           title
+          displayName
           icon
           mode
         }

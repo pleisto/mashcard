@@ -7,10 +7,11 @@ import { LinkTypeEmbedBlockProps } from './Link'
 import { useWebsiteMetaProgress } from './useWebsiteMetaProgress'
 
 export function useLinkValue(
-  updateEmbedBlockAttributes: LinkTypeEmbedBlockProps['updateEmbedBlockAttributes']
+  updateEmbedBlockAttributes: LinkTypeEmbedBlockProps['updateEmbedBlockAttributes'],
+  defaultUrl?: string
 ): [string, ChangeEventHandler<HTMLInputElement>, () => void, () => void, UploadProgress] {
   const externalProps = useExternalProps()
-  const [url, setUrl] = useState('')
+  const [url, setUrl] = useState(defaultUrl ?? '')
   const [progress, resetProgress, progressing] = useWebsiteMetaProgress()
   const [t] = useEditorI18n()
 

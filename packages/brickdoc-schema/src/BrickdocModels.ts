@@ -54,6 +54,8 @@ export type BlockAlias = {
 
 export type BlockAttachment = {
   __typename?: 'BlockAttachment'
+  /** display name */
+  displayName?: Maybe<Scalars['String']>
   /** height */
   height?: Maybe<Scalars['Int']>
   /** url or blob key */
@@ -165,6 +167,8 @@ export type BlockDuplicatePayload = {
 
 export type BlockEmbedMeta = {
   __typename?: 'BlockEmbedMeta'
+  /** display name */
+  displayName?: Maybe<Scalars['String']>
   /** embedType */
   embedType?: Maybe<Embedtype>
   /** height */
@@ -217,6 +221,8 @@ export type BlockIcon = BlockEmoji | BlockImage
 
 export type BlockImage = {
   __typename?: 'BlockImage'
+  /** display name */
+  displayName?: Maybe<Scalars['String']>
   /** height */
   height?: Maybe<Scalars['Int']>
   /** key */
@@ -289,6 +295,8 @@ export type BlockLink = {
   cover?: Maybe<Scalars['String']>
   /** description */
   description?: Maybe<Scalars['String']>
+  /** display name */
+  displayName?: Maybe<Scalars['String']>
   /** height */
   height?: Maybe<Scalars['Int']>
   /** icon */
@@ -364,6 +372,8 @@ export type BlockMovePayload = {
 
 export type BlockPage = {
   __typename?: 'BlockPage'
+  /** display name */
+  displayName?: Maybe<Scalars['String']>
   /** height */
   height?: Maybe<Scalars['Int']>
   /** icon */
@@ -402,6 +412,8 @@ export type BlockPeople = {
   __typename?: 'BlockPeople'
   /** avatar */
   avatarUrl?: Maybe<Scalars['String']>
+  /** display name */
+  displayName?: Maybe<Scalars['String']>
   /** key */
   domain: Scalars['String']
   /** height */

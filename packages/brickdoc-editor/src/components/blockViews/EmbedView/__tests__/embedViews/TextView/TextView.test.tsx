@@ -11,11 +11,14 @@ describe('TextView', () => {
     const url = 'url'
     const updateEmbedBlockAttributes = jest.fn()
     const name = 'name'
+    const displayName = 'displayName'
+
     render(
       <TextView
         blockType="link"
         {...props}
         name={name}
+        displayName={displayName}
         url={url}
         updateEmbedBlockAttributes={updateEmbedBlockAttributes}
         fileType="html"

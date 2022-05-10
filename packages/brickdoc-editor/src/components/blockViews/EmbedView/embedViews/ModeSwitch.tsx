@@ -7,11 +7,13 @@ import { useModeSwitchOptions } from './useModeSwitchOptions'
 export interface ModeSwitchProps {
   mode: EmbedViewMode
   blockType: EmbedBlockType
+  displayName: string
+  url: string
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
 }
 
-export const ModeSwitch: FC<ModeSwitchProps> = ({ mode, blockType, updateEmbedBlockAttributes }) => {
-  const [options] = useModeSwitchOptions(mode, blockType, updateEmbedBlockAttributes)
+export const ModeSwitch: FC<ModeSwitchProps> = ({ mode, blockType, displayName, url, updateEmbedBlockAttributes }) => {
+  const [options] = useModeSwitchOptions(mode, blockType, displayName, url, updateEmbedBlockAttributes)
 
   return <Toolbar type="transparent" options={options} />
 }

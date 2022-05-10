@@ -19,6 +19,7 @@ export interface EmbedAttributes {
     type: 'LINK'
     key?: string
     title?: string | null
+    displayName?: string | null
     description?: string | null
     cover?: string | null
     icon?: string | null
@@ -27,10 +28,12 @@ export interface EmbedAttributes {
   image: {
     type: 'IMAGE'
     key?: string
+    displayName?: string | null
     source?: 'EXTERNAL' | 'ORIGIN'
   }
   attachment: {
     name?: string
+    displayName?: string | null
     key?: string
     contentType?: string | null
     type: 'ATTACHMENT'

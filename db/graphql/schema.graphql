@@ -14,12 +14,12 @@ enum AuthMethod {
   email_password
 
   """
-  Federated Authentication
+   Federated Authentication
   """
   github
 
   """
-  Federated Authentication
+   Federated Authentication
   """
   google_oauth2
 }
@@ -58,6 +58,11 @@ type BlockAlias {
 }
 
 type BlockAttachment {
+  """
+  display name
+  """
+  displayName: String
+
   """
   height
   """
@@ -255,6 +260,11 @@ type BlockDuplicatePayload {
 
 type BlockEmbedMeta {
   """
+  display name
+  """
+  displayName: String
+
+  """
   embedType
   """
   embedType: Embedtype
@@ -353,6 +363,11 @@ GraphQL
 union BlockIcon = BlockEmoji | BlockImage
 
 type BlockImage {
+  """
+  display name
+  """
+  displayName: String
+
   """
   height
   """
@@ -511,6 +526,11 @@ type BlockLink {
   description
   """
   description: String
+
+  """
+  display name
+  """
+  displayName: String
 
   """
   height
@@ -672,6 +692,11 @@ type BlockMovePayload {
 
 type BlockPage {
   """
+  display name
+  """
+  displayName: String
+
+  """
   height
   """
   height: Int
@@ -749,6 +774,11 @@ type BlockPeople {
   avatar
   """
   avatarUrl: String
+
+  """
+  display name
+  """
+  displayName: String
 
   """
   key
@@ -1651,6 +1681,7 @@ type RootMutation {
   ): UserAppearanceUpdatePayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userConfirmationEmailResend(
@@ -1661,6 +1692,7 @@ type RootMutation {
   ): UserConfirmationEmailResendPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userCreate(
@@ -1671,6 +1703,7 @@ type RootMutation {
   ): UserCreatePayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userDestroy(
@@ -1681,6 +1714,7 @@ type RootMutation {
   ): UserDestroyPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userEmailPasswordSignIn(
@@ -1691,6 +1725,7 @@ type RootMutation {
   ): UserEmailPasswordSignInPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userForgetPasswordMailSend(
@@ -1701,6 +1736,7 @@ type RootMutation {
   ): UserForgetPasswordMailSendPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userPasswordReset(
@@ -1711,6 +1747,7 @@ type RootMutation {
   ): UserPasswordResetPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userSignOut(

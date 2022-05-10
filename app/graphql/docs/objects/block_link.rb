@@ -8,6 +8,7 @@ module Docs
       field :cover, String, "cover", null: true
       field :description, String, "description", null: true
       field :title, String, "title", null: true
+      field :displayName, String, 'display name', null: true
       field :icon, String, "icon", null: true
     end
   end

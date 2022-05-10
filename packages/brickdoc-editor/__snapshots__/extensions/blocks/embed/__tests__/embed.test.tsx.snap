@@ -18,7 +18,7 @@ exports[`Embed renders Embed correctly 1`] = `
           style="pointer-events: none; white-space: normal;"
         >
           <div
-            class="brd-c-lTtiT"
+            class="brd-c-cUYirU"
             data-testid="editor-embed-block-add-button"
             role="button"
           >

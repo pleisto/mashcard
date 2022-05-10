@@ -10,6 +10,7 @@ export interface WebsiteDocumentProps {
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
   url: string
   title?: string
+  displayName: string
   icon?: string | null
 }
 
@@ -32,7 +33,8 @@ export const WebsiteDocument: FC<WebsiteDocumentProps> = ({
   updateEmbedBlockAttributes,
   icon,
   url,
-  title
+  title,
+  displayName
 }) => {
   const [error, handleLoad] = useWebsiteDocumentStatus()
 
@@ -40,6 +42,8 @@ export const WebsiteDocument: FC<WebsiteDocumentProps> = ({
     <WebsiteDocumentContainer>
       {error ? <DocumentUnavailable url={url} /> : <WebsiteFrame src={url} title={title ?? ''} onLoad={handleLoad} />}
       <DocumentFooter
+        displayName={displayName}
+        url={url}
         name={url}
         icon={icon}
         blockType={blockType}

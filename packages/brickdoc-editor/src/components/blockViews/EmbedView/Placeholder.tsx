@@ -1,9 +1,10 @@
-import React from 'react'
+import { FC, ReactNode } from 'react'
 import { styled, theme } from '@brickdoc/design-system'
 import { UploadProgress } from '@brickdoc/uploader'
+import { maxWidth } from './styled'
 
 export interface EmbedBlockPlaceholderProps {
-  icon: React.ReactNode
+  icon: ReactNode
   label: string
   description: string
   progress?: UploadProgress
@@ -18,6 +19,7 @@ const Placeholder = styled('div', {
   display: 'flex',
   flexDirection: 'row',
   height: '4rem',
+  maxWidth,
   padding: '.75rem 1rem',
   position: 'relative'
 })
@@ -55,7 +57,7 @@ const Progress = styled('div', {
   transition: 'width 300ms linear'
 })
 
-export const EmbedBlockPlaceholder: React.FC<EmbedBlockPlaceholderProps> = props => {
+export const EmbedBlockPlaceholder: FC<EmbedBlockPlaceholderProps> = props => {
   const { icon, label, description, progress, onClick, children, ...restProps } = props
   return (
     <Placeholder {...restProps} role="button" onClick={onClick}>

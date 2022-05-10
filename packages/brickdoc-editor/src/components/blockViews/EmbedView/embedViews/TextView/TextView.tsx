@@ -14,6 +14,7 @@ export interface TextViewProps {
   getPos: EmbedViewProps['getPos']
   node: EmbedViewProps['node']
   name: string
+  displayName: string
   fileType: FileType
   url: string
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
@@ -80,6 +81,7 @@ export const TextView: FC<TextViewProps> = ({
   getPos,
   node,
   name,
+  displayName,
   fileType,
   url
 }) => {
@@ -97,12 +99,17 @@ export const TextView: FC<TextViewProps> = ({
       contentForCopy={url}
       deleteNode={deleteNode}
       getPos={getPos}
-      actionOptions={actionOptions}
-    >
+      actionOptions={actionOptions}>
       <TextViewContainer onClick={handleClick}>
         <ModeSwitchContainer onClick={handleModeSwitchClick}>
           <ModeSwitchContainerInner>
-            <ModeSwitch mode="text" blockType={blockType} updateEmbedBlockAttributes={updateEmbedBlockAttributes} />
+            <ModeSwitch
+              mode="text"
+              displayName={displayName}
+              url={url}
+              blockType={blockType}
+              updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+            />
           </ModeSwitchContainerInner>
         </ModeSwitchContainer>
         <TextViewIcon>
