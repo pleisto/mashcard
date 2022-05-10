@@ -47,9 +47,9 @@ pub fn derive_key(
 /// Generate context for key derivation.
 /// sub_key_id and context compatible with libsodium's kdf function.
 fn gen_context(sub_key_id: u32, context: Either<String, ()>) -> String {
-  let sub_key = format!("[subKeyId={}]", sub_key_id);
+  let sub_key = format!("[subKeyId={sub_key_id}]");
   match context {
-    Either::A(c) => format!("{} [extra={}]", sub_key, c),
+    Either::A(c) => format!("{sub_key} [extra={c}]"),
     Either::B(_) => sub_key,
   }
 }

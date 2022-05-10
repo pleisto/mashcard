@@ -14,6 +14,6 @@ pub fn gen_slug(name: String) -> Vec<String> {
     .duration_since(UNIX_EPOCH)
     .unwrap()
     .as_millis();
-  let alternative = format!("{}-{}", preferred, radix_fmt::radix_36(timestamp / 100));
+  let alternative = format!("{preferred}-{}", radix_fmt::radix_36(timestamp / 100));
   vec![preferred, alternative]
 }

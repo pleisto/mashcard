@@ -6,7 +6,7 @@
     "extends": "../../package.json"
   },
   "scripts": {
-    "build-rust-deps": "run -T api-crate build:prod",
+    "build-rust-deps": "run -T api-crate build",
     "dev": "yarn build-rust-deps && node-dev --enable-source-maps --inspect --notify=false src/main.ts server",
     "start": "run -T ts-node src/main.ts server",
     "console": "build-rust-deps && run -T ts-node src/main.ts console",
@@ -37,7 +37,6 @@
     "@brickdoc/server-api-crate": "workspace:^",
     "@fastify/cookie": "^6.0.0",
     "@fastify/helmet": "^8.0.0",
-    "@fastify/secure-session": "github:brickdoc/fastify-secure-session#v4.0.0",
     "@nestjs/apollo": "^10.0.11",
     "@nestjs/common": "^8.4.4",
     "@nestjs/core": "^8.4.4",
@@ -49,8 +48,9 @@
     "cross-spawn": "^7.0.3",
     "date-fns": "^2.28.0",
     "enquirer": "^2.3.6",
+    "fastify-plugin": "^3.0.1",
     "globby": "^11.1.0",
-    "graphql": "^16.4.0",
+    "graphql": "^16.5.0",
     "graphql-type-json": "^0.3.2",
     "lru-cache": "^7.9.0",
     "nest-winston": "^1.6.2",

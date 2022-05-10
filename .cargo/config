@@ -1,0 +1,6 @@
+[cargo-new]
+vsc = "git"
+
+[build]
+pipelining = true
+rustflags = ["-C", "target-cpu=native"]

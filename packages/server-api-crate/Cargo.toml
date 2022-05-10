@@ -24,6 +24,7 @@ rand_chacha = "0.3.1"
 argon2 = { version = "0.4", features = ["parallel"] }
 chacha20poly1305 = "0.9"
 z85 = "3"
+base64 = "0.13"
 [dependencies.uuid]
 version = "1"
 features = ["v4", "fast-rng"]
@@ -33,3 +34,7 @@ napi-build = "2"
 
 [profile.release]
 lto = true
+codegen-units = 1
+
+[profile.dev]
+incremental=true

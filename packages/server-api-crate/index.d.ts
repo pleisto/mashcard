@@ -60,12 +60,12 @@ export function intDecrypt(dataStr: string, keyStr: string): number
  * Encrypts a message using XChaCha20-Poly1305-IETF
  * @param plain - plaintext
  * @param key - 32bytes encryption key
- * @returns ciphertext - z85 encoded ciphertext with nonce
+ * @returns ciphertext - base64 url-safe encoded ciphertext with nonce
  */
 export function aeadEncrypt(plain: string | Buffer, key: string): string
 /**
  * Decrypts a message using XChaCha20-Poly1305-IETF
- * @param cipher - z85 encoded ciphertext with nonce
+ * @param cipher - base64 url-safe encoded ciphertext with nonce
  * @param key - 32bytes encryption key
  * @returns plaintext buffer
  */
@@ -119,6 +119,18 @@ export function z85Encode(input: string | Buffer): string
  * @returns decoded buffer
  */
 export function z85Decode(input: string): Buffer
+/**
+ * Base64 encoding (url safe)
+ * @param input string or buffer
+ * @returns base64 encoded string
+ */
+export function base64UrlSafeEncode(input: string | Buffer): string
+/**
+ * Base64 decoding (url safe)
+ * @param input base64 encoded string
+ * @returns decoded buffer
+ */
+export function base64UrlSafeDecode(input: string): Buffer
 /**
  * Generate a slug based on the User Name
  * @param input UserName

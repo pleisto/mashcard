@@ -81,7 +81,7 @@ pub(crate) fn add_round_key(state: u64, round_key: u64) -> u64 {
 pub(crate) fn bytes_to_state(bytes: &[u8]) -> u64 {
   let mut state = 0u64;
   for (i, byte) in bytes.iter().take(BLOCK_SIZE_IN_BYTES).enumerate() {
-    let x = (*byte as u64) << (7 - i) * 8;
+    let x = (*byte as u64) << ((7 - i) * 8);
     state |= x as u64;
   }
   state
@@ -90,7 +90,7 @@ pub(crate) fn bytes_to_state(bytes: &[u8]) -> u64 {
 pub(crate) fn state_to_bytes(state: u64) -> [u8; BLOCK_SIZE_IN_BYTES] {
   let mut bytes = [0u8; BLOCK_SIZE_IN_BYTES];
   for i in 0..BLOCK_SIZE_IN_BYTES {
-    let x = (state >> (7 - i) * 8) & 0xff;
+    let x = (state >> ((7 - i) * 8)) & 0xff;
     bytes[i] = x as u8;
   }
   bytes

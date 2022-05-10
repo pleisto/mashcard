@@ -25,7 +25,10 @@ struct KeyRegister {
 impl Key {
   pub fn new(bytes: &[u8]) -> Key {
     let mut b = [0u8; KEY_LENGTH_IN_BYTES];
-    bytes.take(KEY_LENGTH_IN_BYTES as u64).read(&mut b).unwrap();
+    bytes
+      .take(KEY_LENGTH_IN_BYTES as u64)
+      .read_exact(&mut b)
+      .unwrap();
 
     Key { bytes: b }
   }
@@ -165,9 +168,9 @@ pub fn int_encrypt(data: i64, key_str: String) -> Result<String> {
     let blocks: Vec<[u8; 8]> = data
       .to_be_bytes()
       .chunks(super::BLOCK_SIZE_IN_BYTES)
-      .map(|bytes| super::bytes_to_state(bytes))
+      .map(super::bytes_to_state)
       .map(|state| encrypt(state, &round_keys))
-      .map(|state| super::state_to_bytes(state))
+      .map(super::state_to_bytes)
       .collect();
 
     let num_blocks = blocks.len() * super::BLOCK_SIZE_IN_BYTES;
@@ -190,13 +193,13 @@ pub fn int_decrypt(data_str: String, key_str: String) -> Result<i64> {
   let round_keys = string2key(key_str)?;
   bs58::decode(data_str)
     .into_vec()
-    .map_err(|e| Error::new(Status::InvalidArg, format!("Invalid ciphertext: {}", e)))
+    .map_err(|e| Error::new(Status::InvalidArg, format!("Invalid ciphertext: {e}")))
     .map(|data| {
       let blocks: Vec<[u8; 8]> = data
         .chunks(super::BLOCK_SIZE_IN_BYTES)
-        .map(|bytes| super::bytes_to_state(bytes))
+        .map(super::bytes_to_state)
         .map(|state| decrypt(state, &round_keys))
-        .map(|state| super::state_to_bytes(state))
+        .map(super::state_to_bytes)
         .collect();
       let num_blocks = blocks.len() * super::BLOCK_SIZE_IN_BYTES;
       let mut decrypted: Vec<u8> = Vec::with_capacity(num_blocks);

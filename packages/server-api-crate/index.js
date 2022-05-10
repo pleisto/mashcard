@@ -236,6 +236,8 @@ const {
   shortUUIDExpand,
   z85Encode,
   z85Decode,
+  base64UrlSafeEncode,
+  base64UrlSafeDecode,
   genSlug
 } = nativeBinding
 
@@ -256,4 +258,6 @@ module.exports.shortUUIDGen = shortUUIDGen
 module.exports.shortUUIDExpand = shortUUIDExpand
 module.exports.z85Encode = z85Encode
 module.exports.z85Decode = z85Decode
+module.exports.base64UrlSafeEncode = base64UrlSafeEncode
+module.exports.base64UrlSafeDecode = base64UrlSafeDecode
 module.exports.genSlug = genSlug
