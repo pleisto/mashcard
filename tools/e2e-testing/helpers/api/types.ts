@@ -36,7 +36,7 @@ export interface CreateBlockInput {
 export interface BlockSoftDeleteInput {
   input: {
     id: string
-    hardDelete: true
+    hardDelete: boolean
   }
 }
 
@@ -52,9 +52,32 @@ export interface CreateBlockOutput {
   }
 }
 
-export type OperationName = 'blockSyncBatch' | 'blockCreate' | 'blockSoftDelete' | 'GetPageBlocks'
+export interface BlockHardDeleteInput {
+  input: {
+    ids: string[]
+  }
+}
 
-export type InputType = BlockSyncBatchInput | CreateBlockInput | BlockSoftDeleteInput | GetPageBlocksInput
+export interface GetTrashBlocksInput {
+  domain: string
+  search: string
+}
+
+export type OperationName =
+  | 'GetPageBlocks'
+  | 'GetTrashBlocks'
+  | 'blockSyncBatch'
+  | 'blockCreate'
+  | 'blockSoftDelete'
+  | 'blockHardDelete'
+
+export type InputType =
+  | GetPageBlocksInput
+  | GetTrashBlocksInput
+  | BlockSyncBatchInput
+  | CreateBlockInput
+  | BlockSoftDeleteInput
+  | BlockHardDeleteInput
 
 export interface OptionsType {
   data: {

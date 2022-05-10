@@ -11,6 +11,7 @@ test.describe('Editor', () => {
     pageList = new PageListPage(page)
     editor = new EditorPage(page)
 
+    await api.removeAllPages()
     await api.createPage(INITIAL_PAGE)
     await api.pageReload()
     await pageList.clickPage()

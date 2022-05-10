@@ -6,7 +6,6 @@ export function apiFixture(): FixtureReturnType<BlockApi> {
     await page.goto('/')
     const csrfToken: string = await page.evaluate(() => (window as any).brickdocContext.csrfToken)
     const blockApi = new BlockApi(page, csrfToken)
-    await blockApi.removeAllPages()
     await use(blockApi)
   }
 }

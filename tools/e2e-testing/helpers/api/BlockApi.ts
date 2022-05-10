@@ -2,7 +2,14 @@ import { blockSyncBatchConverter } from '@/data/converter/blockSyncBatchConverte
 import { PageBlock } from '@/data/types.data'
 import { Page } from '@playwright/test'
 import { createBlockConverter } from '../../data/converter/createBlockConverter'
-import { BLOCK_SOFT_DELETE, BLOCK_SYNC_BATCH, CREATE_BLOCK, GET_PAGE_BLOCKS } from './graphql'
+import {
+  BLOCK_HARD_DELETE,
+  BLOCK_SOFT_DELETE,
+  BLOCK_SYNC_BATCH,
+  CREATE_BLOCK,
+  GET_PAGE_BLOCKS,
+  GET_TRASH_BLOCKS
+} from './graphql'
 import { BlockSoftDeleteInput, CreateBlockInput, InputType, OperationName, OptionsType, PageType } from './types'
 
 export class BlockApi {
@@ -48,11 +55,13 @@ export class BlockApi {
     await this.request.post(this.REQUEST_URL, this.options(BLOCK_SOFT_DELETE, 'blockSoftDelete', variables))
   }
 
-  async removeAllPages(): Promise<void> {
+  async removeAllPages(isHardDeleted: boolean = true): Promise<void> {
     const domain = await this.page.evaluate(() => (window as any).brickdocContext.currentSpace.domain)
     const pages = await this.getBlocks(domain)
     await Promise.all(
-      pages.map(page => (!page.parentId ? this.removePage({ input: { id: page.id, hardDelete: true } }) : undefined))
+      pages.map(page =>
+        !page.parentId ? this.removePage({ input: { id: page.id, hardDelete: isHardDeleted } }) : undefined
+      )
     )
   }
 
@@ -80,5 +89,26 @@ export class BlockApi {
   async blockSyncBatch(page: PageBlock, id: string): Promise<void> {
     const variables = blockSyncBatchConverter(page, id)
     await this.request.post(this.REQUEST_URL, this.options(BLOCK_SYNC_BATCH, 'blockSyncBatch', variables))
+  }
+
+  async getTrashBlock(domain: string, search: string = ''): Promise<PageType[]> {
+    const response = await this.request.post(
+      this.REQUEST_URL,
+      this.options(GET_TRASH_BLOCKS, 'GetTrashBlocks', {
+        domain,
+        search
+      })
+    )
+    return (await response.json()).data.trashBlocks
+  }
+
+  async removeAllTrashPages(): Promise<void> {
+    const domain = await this.page.evaluate(() => (window as any).brickdocContext.currentSpace.domain)
+    const pages = (await this.getTrashBlock(domain)).map(page => page.id)
+
+    await this.request.post(
+      this.REQUEST_URL,
+      this.options(BLOCK_HARD_DELETE, 'blockHardDelete', { input: { ids: pages } })
+    )
   }
 }

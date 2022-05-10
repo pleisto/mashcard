@@ -8,9 +8,10 @@ test.describe('Breadcrumb', () => {
   let pageList: PageListPage
   let breadcrumb: BreadcrumbPage
 
-  test.beforeEach(async ({ page }) => {
+  test.beforeEach(async ({ api, page }) => {
     breadcrumb = new BreadcrumbPage(page)
     pageList = new PageListPage(page)
+    await api.removeAllPages()
   })
 
   test('Verify the initial breadcrumbs count equal 1 and named Untitled', async ({ api }) => {

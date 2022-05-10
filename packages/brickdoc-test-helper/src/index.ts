@@ -218,5 +218,49 @@ export const TEST_ID_ENUM = {
         }
       }
     }
+  },
+  trash: {
+    button: {
+      id: 'trash-button'
+    },
+    pageItem: {
+      id: 'trash-pageItem',
+      title: {
+        id: 'trash-pageItem-title'
+      },
+      path: {
+        id: 'trash-pageItem-path'
+      },
+      icon: {
+        id: 'trash-pageItem-icon'
+      },
+      button: {
+        checkbox: {
+          id: 'trash-pageItem-button-checkbox'
+        },
+        restore: {
+          id: 'trash-pageItem-button-restore'
+        },
+        remove: {
+          id: 'trash-pageItem-button-remove'
+        }
+      }
+    },
+    selectedBar: {
+      count: {
+        id: 'trash-selectedBar-count'
+      },
+      button: {
+        checkbox: {
+          id: 'trash-selectedBar-button-checkbox'
+        },
+        restore: {
+          id: 'trash-selectedBar-button-restore'
+        },
+        remove: {
+          id: 'trash-selectedBar-button-remove'
+        }
+      }
+    }
   }
 }

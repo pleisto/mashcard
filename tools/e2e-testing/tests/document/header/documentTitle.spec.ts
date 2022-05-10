@@ -12,6 +12,7 @@ test.describe('Document Title', () => {
     documentTitle = new DocumentTitlePage(page)
     pageList = new PageListPage(page)
 
+    await api.removeAllPages()
     await api.createPage(INITIAL_PAGE)
     await api.pageReload()
     await pageList.clickPage()

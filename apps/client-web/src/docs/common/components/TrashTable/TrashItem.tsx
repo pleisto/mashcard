@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 import { Page, Time, Action, ActionButtonStyle, AvatarEmoji, SelectBlock, PageTile } from './Trash.style'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 interface TrashItemProps {
   block: BlockWithChecked
@@ -26,7 +27,7 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
   const [hardDeleteModalVisible, setHardDeleteModalVisible] = useState(false)
   // TODO support image type
   const avatar = (
-    <AvatarEmoji>
+    <AvatarEmoji data-testid={TEST_ID_ENUM.trash.pageItem.icon.id}>
       {block.meta.icon?.type === Blocktype.Emoji ? (
         (block.meta.icon as BlockEmoji).emoji
       ) : (
@@ -47,12 +48,16 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
     return path.icon && path.icon.type === Blocktype.Emoji ? (path.icon as BlockEmoji).emoji : ''
   }
 
-  const title = <span className="ellipsis">{block.text || t('title.untitled')}</span>
+  const title = (
+    <span className="ellipsis" data-testid={TEST_ID_ENUM.trash.pageItem.title.id}>
+      {block.text || t('title.untitled')}
+    </span>
+  )
   const titleData =
     block.pathArray.length === 0 ? (
       <></>
     ) : (
-      <div className="path ellipsis">
+      <div className="path ellipsis" data-testid={TEST_ID_ENUM.trash.pageItem.path.id}>
         {block.pathArray.map(p => `${getEmoji(p)}${p.text || t('title.untitled')}`).join(' / ')}
       </div>
     )
@@ -75,7 +80,7 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
   return (
     <>
       <Page>
-        <SelectBlock checked={!!block.checked}>
+        <SelectBlock checked={!!block.checked} data-testid={TEST_ID_ENUM.trash.pageItem.button.checkbox.id}>
           <Checkbox
             checked={!!block.checked}
             onChange={onChange as any}
@@ -98,10 +103,20 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
       <Action>
         {!block.checked && (
           <>
-            <Button css={ActionButtonStyle} type="text" onClick={onClickRestore}>
+            <Button
+              css={ActionButtonStyle}
+              type="text"
+              onClick={onClickRestore}
+              data-testid={TEST_ID_ENUM.trash.pageItem.button.restore.id}
+            >
               <Undo />
             </Button>
-            <Button css={ActionButtonStyle} type="text" onClick={() => setHardDeleteModalVisible(true)}>
+            <Button
+              css={ActionButtonStyle}
+              type="text"
+              onClick={() => setHardDeleteModalVisible(true)}
+              data-testid={TEST_ID_ENUM.trash.pageItem.button.remove.id}
+            >
               <Delete />
             </Button>
           </>

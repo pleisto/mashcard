@@ -12,6 +12,18 @@ export class BasePage {
     return this.page.locator(BASE_SELECTORS.menubarItem)
   }
 
+  getDialog(): Locator {
+    return this.page.locator(BASE_SELECTORS.dialog.component)
+  }
+
+  getDialogCancelButton(): Locator {
+    return this.page.locator(BASE_SELECTORS.dialog.cancelButton)
+  }
+
+  getDialogDeleteButton(): Locator {
+    return this.page.locator(BASE_SELECTORS.dialog.deleteButton)
+  }
+
   async scrollUntilElementIntoView(waitingSelector: string, scrollSelector: string, offset = 100): Promise<void> {
     while (!(await this.page.locator(waitingSelector).isVisible())) {
       await this.page.evaluate(

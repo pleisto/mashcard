@@ -16,6 +16,7 @@ import { debounce } from '@brickdoc/active-support'
 import { queryPageBlocks, queryTrashBlocks } from '../../graphql'
 import { useApolloClient } from '@apollo/client'
 import { List, Item, NotFound, Page, Time, Action, SelectBlock, SelectedBar } from './Trash.style'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 interface PageTrashProps {
   domain: string
@@ -160,7 +161,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
       <List>
         {showSpin && <Spin size="lg" className="trash-spin" />}
         {list.map((item: BlockWithChecked, index: number) => (
-          <Item checked={!!item.checked} type="item" key={getKey(index)}>
+          <Item checked={!!item.checked} type="item" key={getKey(index)} data-testid={TEST_ID_ENUM.trash.pageItem.id}>
             <TrashItem
               domain={domain}
               block={item}
@@ -174,7 +175,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
       {selectedNum > 0 && (
         <SelectedBar>
           <Page css={{ alignItems: 'center' }}>
-            <SelectBlock checked>
+            <SelectBlock checked data-testid={TEST_ID_ENUM.trash.selectedBar.button.checkbox.id}>
               <Checkbox
                 onClick={handleClick}
                 checked
@@ -183,15 +184,25 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
                 indeterminate={indeterminate}
               />
             </SelectBlock>
-            <span>
+            <span data-testid={TEST_ID_ENUM.trash.selectedBar.count.id}>
               {t('trash.selected')} {selectedNum}
             </span>
           </Page>
           <Action>
-            <Button style={{ marginRight: '0.5rem' }} icon={<Undo />} onClick={onClickBatchRestore}>
+            <Button
+              style={{ marginRight: '0.5rem' }}
+              icon={<Undo />}
+              onClick={onClickBatchRestore}
+              data-testid={TEST_ID_ENUM.trash.selectedBar.button.restore.id}
+            >
               {t('trash.restore_action')}
             </Button>
-            <Button icon={<Delete />} type="danger" onClick={() => setHardDeleteModalVisible(true)}>
+            <Button
+              icon={<Delete />}
+              type="danger"
+              onClick={() => setHardDeleteModalVisible(true)}
+              data-testid={TEST_ID_ENUM.trash.selectedBar.button.remove.id}
+            >
               {t('trash.hard_delete_action')}
             </Button>
           </Action>

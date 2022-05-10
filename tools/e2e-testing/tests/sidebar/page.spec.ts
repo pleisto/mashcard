@@ -6,8 +6,9 @@ import { INITIAL_PAGE, TWO_LAYER_PAGE_TREE } from '@/data/common.data'
 test.describe('Page List', () => {
   let pageList: PageListPage
 
-  test.beforeEach(async ({ page }) => {
+  test.beforeEach(async ({ api, page }) => {
     pageList = new PageListPage(page)
+    await api.removeAllPages()
   })
 
   test.describe('Create', () => {
