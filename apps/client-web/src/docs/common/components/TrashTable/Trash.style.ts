@@ -48,11 +48,11 @@ export const Page = styled('div', {
   display: 'flex',
   alignItems: 'start',
   cursor: 'pointer',
-  overflow: 'hidden',
+  overflowX: 'hidden',
   minWidth: 0,
   paddingRight: '0.5rem',
   '.ellipsis': {
-    overflow: 'hidden',
+    overflowX: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap'
   },
@@ -63,7 +63,7 @@ export const Page = styled('div', {
     fontSize: '0.875rem',
     lineHeight: '1.375rem',
     color: theme.colors.typePrimary,
-    overflow: 'hidden',
+    overflowX: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap'
   },
@@ -71,7 +71,7 @@ export const Page = styled('div', {
     margin: '0 0 0 1.75rem',
     fontSize: '0.75rem',
     lineHeight: 1.5,
-    overflow: 'hidden',
+    overflowX: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap'
   }
