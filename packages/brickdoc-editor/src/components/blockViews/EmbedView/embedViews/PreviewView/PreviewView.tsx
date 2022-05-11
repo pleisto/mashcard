@@ -7,7 +7,7 @@ import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../../EmbedView'
 import { PdftronDocument } from './PdftronDocument/PdftronDocument'
 import { WebsiteDocument } from './WebsiteDocument'
 import { styled } from '@brickdoc/design-system'
-import { ModeSwitchContainer } from './DocumentFooter'
+import { EmbedToolbarContainer } from './DocumentFooter'
 import { maxWidth } from '../../styled'
 
 export interface PreviewViewProps {
@@ -27,7 +27,7 @@ const DocumentContainer = styled('div', {
   maxWidth,
 
   '&:hover': {
-    [`& ${ModeSwitchContainer}`]: {
+    [`& ${EmbedToolbarContainer}`]: {
       opacity: 1,
       pointerEvents: 'inherit'
     }

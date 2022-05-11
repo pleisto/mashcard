@@ -878,6 +878,8 @@ en-US:
         ini: INI
         properties: Properties
     embed_block:
+      full_screen:
+        tooltip: Edit
       edit:
         tooltip: Edit
       view_types:

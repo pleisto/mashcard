@@ -1,7 +1,7 @@
 import { FC, ReactElement, useCallback, useRef } from 'react'
 import { Embedtype } from '@brickdoc/schema'
 import { TextView, PreviewView, CardView } from './embedViews'
-import { linkStorage, getFileTypeByExtension, getBlobUrl, getFileTypeByContentType } from '../../../helpers'
+import { linkStorage, getFileTypeByExtension, getBlobUrl, getFileTypeByContentType, sizeFormat } from '../../../helpers'
 import { GalleryTypeEmbedBlock, LinkTypeEmbedBlock, UploadTypeEmbedBlock } from './embedTypes'
 import { ImageView } from '../ImageView'
 import './EmbedBlock.less'
@@ -21,7 +21,7 @@ const renderAttachment = (
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes,
   { node, deleteNode, getPos }: EmbedViewProps
 ): ReactElement => {
-  const { name, displayName, contentType, mode } = node.attrs.attachment
+  const { name, displayName, contentType, size, mode } = node.attrs.attachment
   let fileType = getFileTypeByContentType(contentType ?? '')
   fileType = fileType === 'unknown' ? getFileTypeByExtension(name) : fileType
 
@@ -46,6 +46,7 @@ const renderAttachment = (
       <CardView
         blockType="attachment"
         displayName={displayName! || name! || ''}
+        description={sizeFormat(size)}
         icon={<FileIcon fileType={fileType} />}
         linkUrl={fileUrl}
         node={node}

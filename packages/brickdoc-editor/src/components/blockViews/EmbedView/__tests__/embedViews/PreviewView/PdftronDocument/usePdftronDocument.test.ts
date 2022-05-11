@@ -8,6 +8,7 @@ jest.mock('@pdftron/webviewer', () => ({
   default: async () =>
     await Promise.resolve({
       UI: {
+        toggleFullScreen: () => {},
         addEventListener: (event: string, cb: Function) => {
           if (event === 'LOAD_ERROR') return
           cb()
@@ -48,5 +49,13 @@ describe('usePdftronDocument', () => {
 
       expect(documentStatus).toBe('ready')
     })
+  })
+
+  it('toggles full screen correctly', async () => {
+    const { result } = renderHook(() => usePdftronDocument('doc'))
+
+    expect(() => {
+      result.current[2]()
+    }).not.toThrow()
   })
 })

@@ -7,7 +7,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
     style="pointer-events: none; white-space: normal;"
   >
     <button
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-kKmfgQ-size-md"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-jFlAGq-contentType-default brd-c-PJLV-hpfoBr-size-md"
       data-testid="editor-embed-block-link"
       role="button"
       type="button"
@@ -17,15 +17,15 @@ exports[`EmbedView matches correct snapshot 1`] = `
         style="background-image: url(cover);"
       />
       <div
-        class="brd-c-bzfXri"
+        class="brd-c-dParqV brd-c-dParqV-pkUDF-type-default"
       >
         <div
-          class="brd-c-eJsVBJ"
+          class="brd-c-jZdmfj brd-c-jZdmfj-egpYxb-type-default"
         >
           brickdoc
         </div>
         <div
-          class="brd-c-hVTxZy"
+          class="brd-c-inSKMy brd-c-inSKMy-mFKrh-type-default"
         >
           desc
         </div>
@@ -39,7 +39,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
           </span>
         </div>
         <div
-          class="brd-c-isbGtc"
+          class="brd-c-fpWMiR"
         >
           <ul
             class="brd-c-gRhnPc"

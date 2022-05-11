@@ -1,11 +1,11 @@
-import { Preview, BookmarkView, TextView, Edit, Link } from '@brickdoc/design-icons'
-import { Input, Popover, styled, theme } from '@brickdoc/design-system'
+import { Preview, BookmarkView, TextView, Edit, Link, ScreenFull } from '@brickdoc/design-icons'
+import { Input, Popover, Spin, styled, theme } from '@brickdoc/design-system'
 import { ChangeEventHandler, FC, useCallback, useState } from 'react'
-import { EmbedViewMode } from '../../../../extensions/blocks/embed/meta'
 import { useEditorI18n } from '../../../../hooks'
 import { ToolbarOptionGroup } from '../../../ui/Toolbar'
 import { useLinkValue } from '../embedTypes/Link/useLinkValue'
 import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../EmbedView'
+import { EmbedToolbarProps } from './EmbedToolbar'
 
 const Icon = styled('span', {
   variants: {
@@ -27,10 +27,17 @@ const EditPanelContainer = styled('div', {
   padding: '.8rem 1rem'
 })
 
+const EditField = styled('div', {
+  alignItems: 'center',
+  display: 'flex',
+  flexDirection: 'row'
+})
+
 const EditInput = styled(Input, {
   variants: {
     size: {
       md: {
+        flex: '1 !important',
         paddingLeft: 0,
         paddingRight: 0
       }
@@ -67,7 +74,7 @@ export const EditPanel: FC<{
     displayName,
     updateEmbedBlockAttributes
   )
-  const [editLink, onLinkChange, , onSubmitLink] = useLinkValue(updateEmbedBlockAttributes, link)
+  const [editLink, onLinkChange, , onSubmitLink, progress] = useLinkValue(updateEmbedBlockAttributes, link)
 
   return (
     <EditPanelContainer>
@@ -79,25 +86,29 @@ export const EditPanel: FC<{
         onChange={onDisplayNameChange}
       />
       <InputDivider />
-      <EditInput
-        onPressEnter={onSubmitLink}
-        bordered={false}
-        size="md"
-        prefix={<Link />}
-        value={editLink}
-        onChange={onLinkChange}
-      />
+      <EditField>
+        <EditInput
+          onPressEnter={onSubmitLink}
+          bordered={false}
+          size="md"
+          prefix={<Link />}
+          value={editLink}
+          onChange={onLinkChange}
+        />
+        {progress.percentage > 0 && progress.percentage !== 1 && <Spin />}
+      </EditField>
     </EditPanelContainer>
   )
 }
 
-export function useModeSwitchOptions(
-  mode: EmbedViewMode,
-  blockType: EmbedBlockType,
-  displayName: string,
-  url: string,
-  updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
-): [ToolbarOptionGroup] {
+export function useEmbedToolbarOptions({
+  mode,
+  blockType,
+  displayName,
+  url,
+  updateEmbedBlockAttributes,
+  onFullScreen
+}: EmbedToolbarProps): [ToolbarOptionGroup] {
   const isPreview = mode === 'preview'
   const isCard = mode === 'card'
   const isText = mode === 'text'
@@ -187,6 +198,21 @@ export function useModeSwitchOptions(
       ]
     }
   ]
+
+  if (typeof onFullScreen === 'function') {
+    options.push({
+      type: 'group',
+      items: [
+        {
+          type: 'item',
+          name: 'full_screen',
+          tooltip: t('embed_block.full_screen.tooltip'),
+          icon: <ScreenFull />,
+          onAction: onFullScreen
+        }
+      ]
+    })
+  }
 
   return [options]
 }

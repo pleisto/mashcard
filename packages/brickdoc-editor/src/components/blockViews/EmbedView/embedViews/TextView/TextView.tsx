@@ -6,7 +6,7 @@ import { BlockContainer } from '../../../BlockContainer'
 import { EmbedViewProps } from '../../../../../extensions/blocks/embed/meta'
 import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../../EmbedView'
 import { styled, theme } from '@brickdoc/design-system'
-import { ModeSwitch } from '../ModeSwitch'
+import { EmbedToolbar } from '../EmbedToolbar'
 
 export interface TextViewProps {
   blockType: EmbedBlockType
@@ -20,7 +20,7 @@ export interface TextViewProps {
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
 }
 
-const ModeSwitchContainer = styled('div', {
+const EmbedToolbarContainer = styled('div', {
   left: '50%',
   opacity: 0,
   paddingBottom: '5px',
@@ -31,7 +31,7 @@ const ModeSwitchContainer = styled('div', {
   pointerEvents: 'none'
 })
 
-const ModeSwitchContainerInner = styled('div', {
+const EmbedToolbarContainerInner = styled('div', {
   background: theme.colors.backgroundPrimary,
   borderRadius: '4px'
 })
@@ -43,7 +43,7 @@ const TextViewContainer = styled('div', {
   position: 'relative',
 
   '&:hover': {
-    [`& ${ModeSwitchContainer}`]: {
+    [`& ${EmbedToolbarContainer}`]: {
       opacity: 1,
       pointerEvents: 'inherit'
     }
@@ -86,7 +86,7 @@ export const TextView: FC<TextViewProps> = ({
   url
 }) => {
   const [actionOptions] = useActionOptions()
-  const handleModeSwitchClick = useCallback((event: MouseEvent) => {
+  const handleEmbedToolbarClick = useCallback((event: MouseEvent) => {
     event.stopPropagation()
   }, [])
   const handleClick = useCallback(() => {
@@ -101,17 +101,17 @@ export const TextView: FC<TextViewProps> = ({
       getPos={getPos}
       actionOptions={actionOptions}>
       <TextViewContainer onClick={handleClick}>
-        <ModeSwitchContainer onClick={handleModeSwitchClick}>
-          <ModeSwitchContainerInner>
-            <ModeSwitch
+        <EmbedToolbarContainer onClick={handleEmbedToolbarClick}>
+          <EmbedToolbarContainerInner>
+            <EmbedToolbar
               mode="text"
               displayName={displayName}
               url={url}
               blockType={blockType}
               updateEmbedBlockAttributes={updateEmbedBlockAttributes}
             />
-          </ModeSwitchContainerInner>
-        </ModeSwitchContainer>
+          </EmbedToolbarContainerInner>
+        </EmbedToolbarContainer>
         <TextViewIcon>
           <FileIcon fileType={fileType} />
         </TextViewIcon>

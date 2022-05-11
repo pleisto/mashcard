@@ -62,7 +62,7 @@ export const PdftronDocument: FC<PdftronDocumentProps> = ({
   fileUrl,
   displayName
 }) => {
-  const [documentStatus, viewer] = usePdftronDocument(fileUrl)
+  const [documentStatus, viewer, toggleFullScreen] = usePdftronDocument(fileUrl)
 
   return (
     <PdftronDocumentWrapper data-testid={TEST_ID_ENUM.editor.embedBlock.pdftron.id}>
@@ -80,6 +80,7 @@ export const PdftronDocument: FC<PdftronDocumentProps> = ({
         name={fileName}
         blockType={blockType}
         updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+        onFullScreen={toggleFullScreen}
       />
     </PdftronDocumentWrapper>
   )

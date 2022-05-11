@@ -1,15 +1,10 @@
 import { FC, ReactElement } from 'react'
 import { styled, theme } from '@brickdoc/design-system'
-import { ModeSwitch } from '../ModeSwitch'
-import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../../EmbedView'
+import { EmbedToolbar, EmbedToolbarProps } from '../EmbedToolbar'
 
-export interface DocumentFooterProps {
+export interface DocumentFooterProps extends Omit<EmbedToolbarProps, 'mode'> {
   icon?: ReactElement | string | null
   name: string
-  displayName: string
-  url: string
-  blockType: EmbedBlockType
-  updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
 }
 
 const Footer = styled('div', {
@@ -38,7 +33,7 @@ const LinkIcon = styled('img', {
   width: '.875rem'
 })
 
-export const ModeSwitchContainer = styled('div', {
+export const EmbedToolbarContainer = styled('div', {
   bottom: '.5rem',
   opacity: 0,
   pointerEvents: 'none',
@@ -46,7 +41,7 @@ export const ModeSwitchContainer = styled('div', {
   right: '.75rem',
   transition: 'opacity 100ms ease-in-out',
 
-  [`& ${ModeSwitch}`]: {}
+  [`& ${EmbedToolbar}`]: {}
 })
 
 export const DocumentFooter: FC<DocumentFooterProps> = ({
@@ -55,21 +50,23 @@ export const DocumentFooter: FC<DocumentFooterProps> = ({
   name,
   icon,
   blockType,
-  updateEmbedBlockAttributes
+  updateEmbedBlockAttributes,
+  onFullScreen
 }) => (
   <Footer>
     <Info>
       {icon && (typeof icon === 'string' ? <LinkIcon alt="icon" src={icon} /> : icon)}
       {name}
     </Info>
-    <ModeSwitchContainer>
-      <ModeSwitch
+    <EmbedToolbarContainer>
+      <EmbedToolbar
         url={url}
         displayName={displayName}
         mode="preview"
         blockType={blockType}
         updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+        onFullScreen={onFullScreen}
       />
-    </ModeSwitchContainer>
+    </EmbedToolbarContainer>
   </Footer>
 )
