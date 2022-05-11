@@ -2,7 +2,16 @@ export const TEST_ID_ENUM = {
   layout: {
     header: {
       PathBreadcrumb: {
-        id: 'layout-header-path-bread-crumb'
+        id: 'layout-header-path-bread-crumb',
+        item: {
+          id: 'layout-header-path-bread-crumb-item',
+          text: {
+            id: 'layout-header-path-bread-crumb-item-text'
+          },
+          emoji: {
+            id: 'layout-header-path-bread-crumb-item-emoji'
+          }
+        }
       }
     }
   },

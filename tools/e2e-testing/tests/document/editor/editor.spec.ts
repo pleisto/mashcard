@@ -1,20 +1,20 @@
-import { INITIAL_PAGE } from '@/data/common.data'
 import { test, expect } from '@/fixtures'
-import { EditorPage } from '@/pages/document/editor/Editor.page'
-import { PageListPage } from '@/pages/sidebar/PageList.page'
+import { EditorPage } from '@/tests/document/editor/editor.page'
+import { PageTreePage } from '@/tests/sidebar/pageTree/pageTree.page'
+import { INITIAL_PAGE } from '@/tests/common/common.data'
 
 test.describe('Editor', () => {
-  let pageList: PageListPage
+  let pageTree: PageTreePage
   let editor: EditorPage
 
   test.beforeEach(async ({ api, page }) => {
-    pageList = new PageListPage(page)
+    pageTree = new PageTreePage(page)
     editor = new EditorPage(page)
 
     await api.removeAllPages()
     await api.createPage(INITIAL_PAGE)
     await api.pageReload()
-    await pageList.clickPage()
+    await pageTree.clickPage()
   })
 
   test.describe('Editor', () => {

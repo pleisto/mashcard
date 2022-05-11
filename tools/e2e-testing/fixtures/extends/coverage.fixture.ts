@@ -2,7 +2,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 import * as crypto from 'crypto'
 import { BrowserContext } from '@playwright/test'
-import { FixtureReturnType } from '../types.fixture'
+import { FixtureReturnType } from '@/helpers/types/fixture.types'
 
 const istanbulCLIOutput = path.join(process.cwd(), '.nyc_output')
 

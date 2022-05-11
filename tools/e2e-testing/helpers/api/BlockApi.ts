@@ -1,16 +1,16 @@
-import { blockSyncBatchConverter } from '@/data/converter/blockSyncBatchConverter'
-import { PageBlock } from '@/data/types.data'
+import { blockSyncBatchConverter } from '@/helpers/converter/blockSyncBatchConverter'
 import { Page } from '@playwright/test'
-import { createBlockConverter } from '../../data/converter/createBlockConverter'
+import { createBlockConverter } from '@/helpers/converter/createBlockConverter'
+import { PageBlock } from '@/helpers/types/data.types'
+import { GRAPHQL_GROUP } from './graphql'
 import {
-  BLOCK_HARD_DELETE,
-  BLOCK_SOFT_DELETE,
-  BLOCK_SYNC_BATCH,
-  CREATE_BLOCK,
-  GET_PAGE_BLOCKS,
-  GET_TRASH_BLOCKS
-} from './graphql'
-import { BlockSoftDeleteInput, CreateBlockInput, InputType, OperationName, OptionsType, PageType } from './types'
+  BlockSoftDeleteInput,
+  CreateBlockInput,
+  InputType,
+  OperationName,
+  OptionsType,
+  PageType
+} from '@/helpers/types/graphql.types'
 
 export class BlockApi {
   private readonly page
@@ -44,7 +44,7 @@ export class BlockApi {
   async getBlocks(domain: string): Promise<PageType[]> {
     const response = await this.request.post(
       this.REQUEST_URL,
-      this.options(GET_PAGE_BLOCKS, 'GetPageBlocks', {
+      this.options(GRAPHQL_GROUP.GET_PAGE_BLOCKS, 'GetPageBlocks', {
         domain
       })
     )
@@ -52,7 +52,10 @@ export class BlockApi {
   }
 
   async removePage(variables: BlockSoftDeleteInput): Promise<void> {
-    await this.request.post(this.REQUEST_URL, this.options(BLOCK_SOFT_DELETE, 'blockSoftDelete', variables))
+    await this.request.post(
+      this.REQUEST_URL,
+      this.options(GRAPHQL_GROUP.BLOCK_SOFT_DELETE, 'blockSoftDelete', variables)
+    )
   }
 
   async removeAllPages(isHardDeleted: boolean = true): Promise<void> {
@@ -82,19 +85,22 @@ export class BlockApi {
   }
 
   async createPageApi(variables: CreateBlockInput): Promise<string> {
-    const response = await this.request.post(this.REQUEST_URL, this.options(CREATE_BLOCK, 'blockCreate', variables))
+    const response = await this.request.post(
+      this.REQUEST_URL,
+      this.options(GRAPHQL_GROUP.CREATE_BLOCK, 'blockCreate', variables)
+    )
     return (await response.json()).data.blockCreate.id
   }
 
   async blockSyncBatch(page: PageBlock, id: string): Promise<void> {
     const variables = blockSyncBatchConverter(page, id)
-    await this.request.post(this.REQUEST_URL, this.options(BLOCK_SYNC_BATCH, 'blockSyncBatch', variables))
+    await this.request.post(this.REQUEST_URL, this.options(GRAPHQL_GROUP.BLOCK_SYNC_BATCH, 'blockSyncBatch', variables))
   }
 
   async getTrashBlock(domain: string, search: string = ''): Promise<PageType[]> {
     const response = await this.request.post(
       this.REQUEST_URL,
-      this.options(GET_TRASH_BLOCKS, 'GetTrashBlocks', {
+      this.options(GRAPHQL_GROUP.GET_TRASH_BLOCKS, 'GetTrashBlocks', {
         domain,
         search
       })
@@ -108,7 +114,7 @@ export class BlockApi {
 
     await this.request.post(
       this.REQUEST_URL,
-      this.options(BLOCK_HARD_DELETE, 'blockHardDelete', { input: { ids: pages } })
+      this.options(GRAPHQL_GROUP.BLOCK_HARD_DELETE, 'blockHardDelete', { input: { ids: pages } })
     )
   }
 }

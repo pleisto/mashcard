@@ -28,9 +28,13 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
           </Root.Tip>
         }
       >
-        <Root.Warp to={link}>
-          <Root.Emoji show={Boolean(hasEmoji)}>{emoji}</Root.Emoji>
-          <Root.Path>{path.text || t('title.untitled')}</Root.Path>
+        <Root.Warp to={link} data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.id}>
+          <Root.Emoji show={Boolean(hasEmoji)} data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.emoji.id}>
+            {emoji}
+          </Root.Emoji>
+          <Root.Path data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.text.id}>
+            {path.text || t('title.untitled')}
+          </Root.Path>
           <Root.Split show={showSplit}>/</Root.Split>
         </Root.Warp>
       </Tooltip>
@@ -56,7 +60,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
             overlayInnerStyle={{ padding: 0, minHeight: 'fit-content' }}
             trigger={['click', 'hover']}
           >
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'flex' }} data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.id}>
               <Root.Path>...</Root.Path>
               <Root.Split show>/</Root.Split>
             </div>
