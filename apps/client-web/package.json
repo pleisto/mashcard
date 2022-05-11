@@ -35,12 +35,6 @@
     "rfc4648": "^1.5.1",
     "yup": "^0.32.11"
   },
-  "devDependencies": {
-    "@graphql-codegen/cli": "^2.6.2",
-    "postcss": "^8.4.13",
-    "postcss-less": "^6.0.0",
-    "postcss-preset-env": "^7.5.0"
-  },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",
     "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",

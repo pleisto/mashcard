@@ -3,12 +3,8 @@
   "compilerOptions": {
     "outDir": "dist",
     "strictPropertyInitialization": false,
-    "lib": [
-      "es2021"
-    ]
+    "lib": ["es2021"]
   },
   "include": ["**/*"],
-  "exclude": [
-    "dist/**/*"
-  ]
+  "exclude": ["dist/**/*"]
 }

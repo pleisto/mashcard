@@ -2,11 +2,15 @@
 
 ## Get Started
 
-* `yarn dev`: Starts the server in development mode with node debugger and hot reloading.
-* `yarn start`: Starts the server in production mode.
-* `yarn cli {sub-command}`: Use the CLI to run commands.
-* `yarn g {schematics}`: Use the schematics to generate files.
-* `yarn g --list-schematics`: List all available schematics.
+- `yarn dev`: Starts the server in development mode with node debugger and hot reloading.
+- `yarn start`: Starts the server in production mode.
+- `yarn cli {sub-command}`: Use the CLI to run commands.
+- `yarn g {schematics}`: Use the schematics to generate files.
+- `yarn g --list-schematics`: List all available schematics.
+
+### HTTPS in development
+
+When `NODE_ENV=development`, the server will be served over HTTPS with a self-signed certificate. Learn how to bypass cert check for Chromium-based browsers: <https://stackoverflow.com/a/71236409/3542546>.
 
 ### CLI sub-commands
 
@@ -40,15 +44,15 @@ docker exec brickdoc-postgres-1 pg_dump $@
 
 ### schematics
 
-* `dotenv`: Generate or update .env.local file.
-* `migration`: Generate a db migration file.
+- `dotenv`: Generate or update .env.local file.
+- `migration`: Generate a db migration file.
 
 e.g. `yarn g migration --name create-users`
 
 ### Required Environment Variables
 
-* `NODE_ENV`: The environment to run the server in.
-* `SECRET_KEY_SEED`: The secret key seed used to generate the secret key.
-* `REDIS_URL`: The url of the redis server.
-* `DATABASE_URL_BASE`: The url of the database server without the database name.
-* `DATABASE_NAME`: The name of the database.
+- `NODE_ENV`: The environment to run the server in.
+- `SECRET_KEY_SEED`: The secret key seed used to generate the secret key.
+- `REDIS_URL`: The url of the redis server.
+- `DATABASE_URL_BASE`: The url of the database server without the database name.
+- `DATABASE_NAME`: The name of the database.

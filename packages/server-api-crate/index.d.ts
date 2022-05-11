@@ -15,11 +15,7 @@ export function passwordHash(password: string, abortSignal?: AbortSignal | undef
  * @param password - password string to verify
  * @returns true if the password is correct
  */
-export function passwordHashVerify(
-  hashed: string,
-  password: string,
-  abortSignal?: AbortSignal | undefined | null
-): Promise<boolean>
+export function passwordHashVerify(hashed: string, password: string, abortSignal?: AbortSignal | undefined | null): Promise<boolean>
 /**
  * Computes a fixed-length fingerprint of a string.
  * Suitable for most use cases other than hashing passwords.

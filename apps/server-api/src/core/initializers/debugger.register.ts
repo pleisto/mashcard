@@ -1,22 +1,19 @@
-import { NestFactory } from '@nestjs/core'
-import { NestApplicationContextOptions } from '@nestjs/common/interfaces/nest-application-context-options.interface'
-import { AppModule } from '../../app.module'
+import { NestFastifyApplication } from '@nestjs/platform-fastify'
 
 /**
  * Inject Context to Debugger console.
  *
  */
-export async function debugContextRegister(options: NestApplicationContextOptions = {}): Promise<void> {
+export async function debugContextRegister(app: NestFastifyApplication): Promise<void> {
   /**
    * Register Server Application Context.
    * @see {@url https://code.visualstudio.com/docs/nodejs/nodejs-debugging} for more details.
    */
-  const server = await NestFactory.createApplicationContext(AppModule, options)
 
   /**
    * A token list that can be found by a token string.
    */
-  const tokens = Array.from((server as any).instanceLinksHost.instanceLinks.keys())
+  const tokens = Array.from((app as any).instanceLinksHost.instanceLinks.keys())
     // eslint-disable-next-line no-return-assign
     .reduce(
       (obj, token) =>
@@ -31,11 +28,11 @@ export async function debugContextRegister(options: NestApplicationContextOption
    * @param token
    * @returns IoC Provider Instance
    */
-  const get = (token: string): unknown => server.get(tokens[token])
+  const get = (token: string): unknown => app.get(tokens[token])
 
   // @ts-expect-error
   globalThis.ctx = {
-    server,
+    app,
     tokens,
     get
   }

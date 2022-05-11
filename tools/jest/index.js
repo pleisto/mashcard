@@ -29,7 +29,12 @@ module.exports = {
       '^.+\\.(t|j)sx?$': ['@swc/jest']
     },
     collectCoverage: true,
-    collectCoverageFrom: ['**/src/**/*.(ts|tsx)', '!**/@(node_modules|__tests__)/**', '!**/*.@(spec|test).(ts|tsx)'],
+    collectCoverageFrom: [
+      '**/src/**/*.(ts|tsx)',
+      '!**/@(node_modules|__tests__)/**',
+      '!**/*.@(spec|test).(ts|tsx)',
+      '!**/*.d.ts'
+    ],
     coverageReporters: ['lcov', 'text-summary'],
     moduleNameMapper: hasDom
       ? {

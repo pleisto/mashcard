@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * @fileoverview Generate a VSCode workspace file from available yarn workspace projects.
+ * @file Generate a VSCode workspace file from available yarn workspace projects.
  */
 const { spawnSync } = require('child_process')
 const { readFileSync, writeFileSync, existsSync } = require('fs')
