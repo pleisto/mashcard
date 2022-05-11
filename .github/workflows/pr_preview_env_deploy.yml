@@ -37,7 +37,8 @@ env:
 jobs:
   build:
     name: 'Build and Push Docker Image'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3
@@ -84,6 +85,7 @@ jobs:
       name: pr_preview
       url: https://${{ env.domain }}/
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     needs: build
     steps:
       - name: Checkout the codebase

@@ -4,7 +4,7 @@ Build toolings & utilities for the Brickdoc web App.
 
 ## Commands
 
-- `yarn build` - Build the web app and put the artifacts in `<monorepo>/public/esm-bundle`, which will be consumed by `@brickdoc/server-api` in production mode.
+- `yarn build:client-web` - Build the web app and put the artifacts in `<monorepo>/public/esm-bundle`, which will be consumed by `@brickdoc/server-api` in production mode.
 
 ## NestJS Module
 

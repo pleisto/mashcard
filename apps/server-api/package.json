@@ -6,11 +6,11 @@
     "extends": "../../package.json"
   },
   "scripts": {
-    "build:rust-deps": "run -T api-crate build",
-    "build:client-web": "run -T build-support build:client-web",
-    "dev": "yarn build:rust-deps && node-dev --enable-source-maps --inspect --notify=false src/main.ts server",
+    "prepare:rust-deps": "run -T build:rust",
+    "prepare:client-web": "run -T build-support build:client-web",
+    "dev": "yarn prepare:rust-deps && node-dev --enable-source-maps --inspect --notify=false src/main.ts server",
     "start": "run -T ts-node src/main.ts server",
-    "console": "build:rust-deps && run -T ts-node src/main.ts console",
+    "console": "yarn prepare:rust-deps && run -T ts-node src/main.ts console",
     "cli": "run -T ts-node src/main.ts",
     "g": "run -T ts-node src/cli/schematics/main.ts",
     "lint": "yarn lint:eslint && yarn lint:type",

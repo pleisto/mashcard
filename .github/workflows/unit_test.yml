@@ -1,52 +1,24 @@
-# https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idsteps
----
-name: CI
+name: Unit Test
 concurrency:
   group: monolith-ci-${{ github.ref }}
   cancel-in-progress: true
 on:
   pull_request:
-    # Make sure same as push
-    paths-ignore:
-      - .github/**
-      - '!.github/workflow/ci.yml'
-      - .husky/**
-      - packages/eslint-plugin-brickdoc/**
-      - gems/rubocop-brickdoc/**
-      - 'app/**'
-      - 'lib/**'
-      - 'spec/**'
-      - 'db/**'
-      - '**/LICENSE'
-      - '**/NOTICE'
-      - '**/VERSION'
   push:
-    # Make sure same as pull_request
-    paths-ignore:
-      - .github/**
-      - '!.github/workflow/ci.yml'
-      - .husky/**
-      - packages/eslint-plugin-brickdoc/**
-      - gems/rubocop-brickdoc/**
-      - 'app/**'
-      - 'lib/**'
-      - 'spec/**'
-      - 'db/**'
-      - '**/LICENSE'
-      - '**/NOTICE'
-      - '**/VERSION'
     branches:
       - master
       - main
-
 env:
   YARN_CHECKSUM_BEHAVIOR: update
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: brickdoc
   REDIS_URL: redis://localhost:6379
   DATABASE_URL_BASE: postgres://postgres:just4testing@localhost:5432
 jobs:
   jest:
-    name: Jest Test
+    name: Jest
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     services:
       # image version suggestion same as tools/helm-charts/brickdoc
       postgres:
@@ -74,18 +46,6 @@ jobs:
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 2 # To retrieve the preceding commit.
-      - name: Get changed ES files
-        id: changed-es-files
-        uses: tj-actions/changed-files@v19
-        with:
-          files: |
-            yarn.lock
-            **/*.ts
-            **/*.tsx
-            **/*.js
-            **/*.jsx
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
@@ -97,22 +57,19 @@ jobs:
           toolchain: stable
       - name: Run yarn install
         run: yarn install --immutable
-        if: steps.changed-es-files.outputs.any_changed == 'true'
-      - name: build Rust deps
-        run: yarn api-crate build
+      - name: Build Rust deps
+        run: yarn build:rust
       - name: Run Jest tests
-        if: steps.changed-es-files.outputs.any_changed == 'true'
         run: yarn test:jest
         env:
           NODE_OPTIONS: '--max-old-space-size=5950'
       - name: Publish Jest test reports
-        if: always() && steps.changed-es-files.outputs.any_changed == 'true'
+        if: always()
         uses: mikepenz/action-junit-report@v3.0.3
         with:
-          report_paths: junit-reports/jest.xml
+          report_paths: '**/junit-reports/jest.xml'
           check_name: Jest Test Report
       - name: Publish Jest code coverage reports
-        if: steps.changed-es-files.outputs.any_changed == 'true'
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}

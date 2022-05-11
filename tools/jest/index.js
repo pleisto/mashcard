@@ -21,6 +21,7 @@ const monoRoot = path.join(__dirname, '..', '..')
 module.exports = {
   esModules,
   baseConfig: hasDom => ({
+    passWithNoTests: true,
     testEnvironmentOptions: {
       url: 'http://localhost'
     },

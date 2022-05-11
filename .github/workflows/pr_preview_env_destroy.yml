@@ -30,6 +30,7 @@ jobs:
   clean:
     name: 'Helm Remove'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: GCP Login
         uses: google-github-actions/auth@v0

@@ -32,6 +32,7 @@ jobs:
   build:
     name: 'Build and Push Docker Image'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3
@@ -62,6 +63,7 @@ jobs:
   deploy:
     name: 'Deployment to GKE'
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     needs: build
     steps:
       - name: Checkout the codebase

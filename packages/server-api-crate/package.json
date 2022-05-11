@@ -14,14 +14,14 @@
     "benny": "^3.7.1"
   },
   "scripts": {
-    "build": "napi build --platform && yarn fmt",
-    "build:prod": "napi build --platform --release",
+    "build:rust": "napi build --platform && yarn fmt",
+    "build:rust:prod": "napi build --platform --release",
     "lint": "yarn lint:eslint && yarn lint:rust",
     "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx __tests__",
     "lint:rust": "cargo clippy",
     "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx __tests__ --fix",
     "test:jest": "run -T jest",
-    "fmt": "cargo fmt",
+    "fmt": "cargo fmt && run -T prettier --write index.js index.d.ts",
     "tsdoc": "run -T typedoc --options ../../tools/typedoc/config.json --out ./docs/api ./index.d.ts"
   }
 }

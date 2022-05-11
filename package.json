@@ -15,6 +15,7 @@
     "start": "./bin/vite dev",
     "dist": "./bin/vite build",
     "analyze": "BUNDLE_STATS=1 yarn dist && open ./tmp/esm-bundle-stats.html",
+    "build:rust": "turbo run build:rust",
     "lint": "turbo run lint:eslint lint:type",
     "lint:eslint": "turbo run lint:eslint",
     "lint:fix": "turbo run lint:fix",

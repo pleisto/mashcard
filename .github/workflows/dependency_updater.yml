@@ -9,6 +9,7 @@ jobs:
   dependency_updater:
     name: Check and Upgrade
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     env:
       YARN_ENABLE_IMMUTABLE_INSTALLS: false
       NODE_OPTIONS: '--max-old-space-size=5950'

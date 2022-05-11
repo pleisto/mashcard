@@ -1,6 +1,7 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "baseBranch": "origin/master",
+  "globalDependencies": ["$CI"],
   "pipeline": {
     "lint:eslint": {
       "outputs": [".eslintcache"]
@@ -16,6 +17,9 @@
     },
     "tsdoc": {
       "outputs": ["docs/api/**"]
+    },
+    "build:rust": {
+      "outputs": ["*.node", "index.d.ts", "index.js"]
     }
   }
 }

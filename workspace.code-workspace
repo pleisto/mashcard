@@ -97,9 +97,7 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
     },
-    "editor.rulers": [
-      120
-    ],
+    "editor.rulers": [120],
     "files.watcherExclude": {
       "**/.git": true,
       "**/node_modules": true,
@@ -131,31 +129,6 @@
       "/yarn.lock": true,
       "**/storybook-static": true
     },
-    "[plaintext]": {
-      "files.insertFinalNewline": false
-    },
-    "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-      "editor.defaultFormatter": "vscode.json-language-features",
-      "editor.tabSize": 2,
-      "editor.formatOnType": true
-    },
-    "[jsonc]": {
-      "editor.defaultFormatter": "vscode.json-language-features",
-      "editor.tabSize": 2,
-      "editor.formatOnType": true
-    },
     "npm.packageManager": "yarn",
     "typescript.tsc.autoDetect": "on",
     "typescript.tsdk": "node_modules/typescript/lib",
@@ -169,12 +142,7 @@
     "eslint.format.enable": true,
     "eslint.alwaysShowStatus": true,
     "eslint.codeActionsOnSave.mode": "problems",
-    "eslint.validate": [
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact"
-    ],
+    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
     "eslint.lintTask.enable": true,
     "eslint.packageManager": "yarn",
     "eslint.useESLintClass": true,
@@ -270,7 +238,43 @@
       "vitejs",
       "xxxl",
       "yarnpkg"
-    ]
+    ],
+    "[plaintext]": {
+      "files.insertFinalNewline": false
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[less]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[markdown]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[handlebars]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
   },
   "extensions": {
     "recommendations": [

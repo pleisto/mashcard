@@ -4,33 +4,27 @@ concurrency:
   cancel-in-progress: true
 on:
   pull_request:
+  push:
+    branches:
+      - master
+      - main
+env:
+  YARN_CHECKSUM_BEHAVIOR: update
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: brickdoc
 jobs:
   es:
     name: ECMAScript
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
     env:
       # GitHub-hosted runner have 7 gb RAM.
       # 5250mb === 7gb * 0.75
-      YARN_CHECKSUM_BEHAVIOR: update
       NODE_OPTIONS: '--max-old-space-size=5950'
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 2 # To retrieve the preceding commit.
-      - name: Get changed ES files
-        id: changed-es-files
-        uses: tj-actions/changed-files@v19
-        with:
-          files: |
-            yarn.lock
-            **/*.ts
-            **/*.tsx
-            **/*.js
-            **/*.jsx
       - name: Setup NodeJS
-        if: steps.changed-es-files.outputs.any_changed == 'true'
         uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -41,8 +35,5 @@ jobs:
           toolchain: stable
       - name: Run yarn install
         run: yarn install --immutable
-      - name: build Rust deps
-        run: yarn api-crate build
-      - name: Run Linter
-        if: steps.changed-es-files.outputs.any_changed == 'true'
+      - name: Run yarn lint
         run: yarn lint
