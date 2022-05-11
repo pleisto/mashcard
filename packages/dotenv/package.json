@@ -9,7 +9,7 @@
     "extends": "../../package.json"
   },
   "dependencies": {
-    "dotenv": "^16.0.0",
+    "dotenv": "^16.0.1",
     "dotenv-expand": "^8.0.3"
   },
   "sideEffects": false,

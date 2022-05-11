@@ -59,7 +59,7 @@
     "handlebars": "^4.7.7",
     "lru-cache": "^7.9.0",
     "nest-winston": "^1.6.2",
-    "point-of-view": "^5.2.1",
+    "point-of-view": "^6.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.5.5",
     "tzdata": "^1.0.30",
