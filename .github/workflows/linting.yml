@@ -42,7 +42,7 @@ jobs:
       - name: Run yarn install
         run: yarn install --immutable
       - name: build Rust deps
-        run: yarn api-crate build:prod
+        run: yarn api-crate build
       - name: Run Linter
         if: steps.changed-es-files.outputs.any_changed == 'true'
         run: yarn lint

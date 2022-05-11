@@ -28,6 +28,7 @@
     "@types/lru-cache": "^7.6.1",
     "leaked-handles": "^5.2.0",
     "node-dev": "^7.4.3",
+    "selfsigned": "^2.0.1",
     "slonik-sql-tag-raw": "^1.1.4"
   },
   "dependencies": {

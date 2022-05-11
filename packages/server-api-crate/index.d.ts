@@ -15,7 +15,11 @@ export function passwordHash(password: string, abortSignal?: AbortSignal | undef
  * @param password - password string to verify
  * @returns true if the password is correct
  */
-export function passwordHashVerify(hashed: string, password: string, abortSignal?: AbortSignal | undefined | null): Promise<boolean>
+export function passwordHashVerify(
+  hashed: string,
+  password: string,
+  abortSignal?: AbortSignal | undefined | null
+): Promise<boolean>
 /**
  * Computes a fixed-length fingerprint of a string.
  * Suitable for most use cases other than hashing passwords.
@@ -86,6 +90,18 @@ export function base58Encode(input: string | Buffer): string
  */
 export function base58Decode(input: string): Buffer
 /**
+ * Base64 encoding (url safe)
+ * @param input string or buffer
+ * @returns base64 encoded string
+ */
+export function base64UrlSafeEncode(input: string | Buffer): string
+/**
+ * Base64 decoding (url safe)
+ * @param input base64 encoded string
+ * @returns decoded buffer
+ */
+export function base64UrlSafeDecode(input: string): Buffer
+/**
  * Make UUID v4 string shorted
  * @param uuid_v4 UUID v4 string
  * @returns shorted UUID v4 string
@@ -115,18 +131,6 @@ export function z85Encode(input: string | Buffer): string
  * @returns decoded buffer
  */
 export function z85Decode(input: string): Buffer
-/**
- * Base64 encoding (url safe)
- * @param input string or buffer
- * @returns base64 encoded string
- */
-export function base64UrlSafeEncode(input: string | Buffer): string
-/**
- * Base64 decoding (url safe)
- * @param input base64 encoded string
- * @returns decoded buffer
- */
-export function base64UrlSafeDecode(input: string): Buffer
 /**
  * Generate a slug based on the User Name
  * @param input UserName

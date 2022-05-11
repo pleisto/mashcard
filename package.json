@@ -11,7 +11,7 @@
     "plugins/*"
   ],
   "scripts": {
-    "postinstall": "husky install && ./bin/pdftron static ",
+    "postinstall": "husky install && ./tools/scripts/pdftron static ",
     "start": "./bin/vite dev",
     "dist": "./bin/vite build",
     "analyze": "BUNDLE_STATS=1 yarn dist && open ./tmp/esm-bundle-stats.html",
@@ -103,7 +103,7 @@
     "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.10#.yarn/patches/vite-plugin-mdx-npm-3.5.10-ae54c30668"
   },
   "dependencies": {
-    "@swc/core": "^1.2.181",
+    "@swc/core": "^1.2.182",
     "@swc/helpers": "^0.3.13",
     "dayjs": "^1.11.2",
     "ts-node": "^10.7.0"

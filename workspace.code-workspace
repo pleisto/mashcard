@@ -296,7 +296,11 @@
       "ms-playwright.playwright",
       "foxundermoon.shell-format",
       "Gruntfuggly.todo-tree",
-      "rangav.vscode-thunder-client"
+      "rangav.vscode-thunder-client",
+      "bungcip.better-toml",
+      "matklad.rust-analyzer",
+      "dustypomerleau.rust-syntax",
+      "serayuzgur.crates"
     ]
   }
 }

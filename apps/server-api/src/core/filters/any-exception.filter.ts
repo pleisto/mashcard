@@ -6,18 +6,14 @@ import {
   HttpServer,
   Optional,
   HttpStatus,
-  HttpException,
-  NotFoundException
+  HttpException
 } from '@nestjs/common'
 import { HttpArgumentsHost } from '@nestjs/common/interfaces/features/arguments-host.interface'
 import { AbstractHttpAdapter, HttpAdapterHost } from '@nestjs/core'
 import { GqlExceptionFilter, GqlArgumentsHost, GqlContextType } from '@nestjs/graphql'
-import { type ViteDevServer, VITE_DEV_SERVER, WEB_APP_ENTRYPOINT } from '@brickdoc/build-support'
-import path from 'path'
-import fs from 'fs'
-import { env } from 'process'
+
 import { ApolloError } from 'apollo-server-errors'
-import { FastifyRequest, FastifyReply, FastifyInstance } from 'fastify'
+import { FastifyRequest } from 'fastify'
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston'
 import { type Logger } from 'winston'
 import { BrickdocBaseError, ErrorCode } from '../../common/errors'
@@ -40,22 +36,10 @@ const context = 'AnyExceptionFilter'
 @Injectable()
 @Catch()
 export class AnyExceptionFilter implements GqlExceptionFilter {
-  private readonly webAppEntrypoint: string = `/${WEB_APP_ENTRYPOINT}`
-
   constructor(
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
-    @Inject(VITE_DEV_SERVER) @Optional() private readonly viteServer?: ViteDevServer,
     @Optional() protected readonly httpAdapterHost?: HttpAdapterHost
-  ) {
-    if (env.NODE_ENV !== 'development') {
-      const esmManifestFilePath = path.resolve(__dirname, '../../../../../public/esm-bundle/manifest.json')
-      if (fs.existsSync(esmManifestFilePath)) {
-        const esmManifest = JSON.parse(fs.readFileSync(esmManifestFilePath, 'utf8'))
-        if (esmManifest[WEB_APP_ENTRYPOINT])
-          this.webAppEntrypoint = `/esm-bundle/${esmManifest[WEB_APP_ENTRYPOINT].file}`
-      }
-    }
-  }
+  ) {}
 
   catch(exception: Error, host: ArgumentsHost): Error | void {
     const applicationRef = this.httpAdapterHost?.httpAdapter
@@ -141,30 +125,6 @@ export class AnyExceptionFilter implements GqlExceptionFilter {
         },
         exception.code
       ]
-    } else if (
-      exception instanceof NotFoundException &&
-      req.method === 'GET' &&
-      (!req.headers['sec-fetch-dest'] || req.headers['sec-fetch-dest'] === 'document')
-    ) {
-      // Fallback to SPA entry html
-      const reply = host.getResponse<FastifyReply>()
-      const fastify: FastifyInstance = applicationRef.getInstance()
-      // eslint-disable-next-line func-names
-      void (async () => {
-        // @ts-expect-error
-        let view: string | undefined = await fastify.view('index.hbs', {
-          webAppEntrypoint: this.webAppEntrypoint,
-          enableGoogleAnalytics: env.NODE_ENV === 'production'
-        })
-
-        if (env.NODE_ENV === 'development') {
-          view = await this.viteServer?.transformIndexHtml(req.url, view!)
-        }
-
-        void reply.header('Content-Type', 'text/html; charset=utf-8')
-        void reply.send(view)
-      })()
-      return
     } else if (exception instanceof HttpException) {
       resp = [exception.getResponse(), exception.getStatus()]
     } else {

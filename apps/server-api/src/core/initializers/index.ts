@@ -1,3 +1,4 @@
+import { Logger } from '@nestjs/common'
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import { SettingsService } from '../../common/settings'
 import { HooksExplorer, HookType } from '../../common/server-plugin'
@@ -11,11 +12,12 @@ import { sessionRegister } from './session.register'
 import { debugContextRegister } from './debugger.register'
 import { viewEngineRegister } from './view-engine.register'
 import { initCheckRegister } from './init-check.register'
+import { uncaughtHandlerRegister } from './uncaught-handler.register'
 
 /**
  * loadInitializers will be called by `/main.ts` when the application is bootstrapped and listening for connections.
  */
-export const loadInitializers = async (app: NestFastifyApplication): Promise<void> => {
+export const loadInitializers = async (app: NestFastifyApplication, log: Logger): Promise<void> => {
   await initCheckRegister(app)
 
   // Get Injection Service
@@ -39,6 +41,8 @@ export const loadInitializers = async (app: NestFastifyApplication): Promise<voi
   const v8InspectorEnabled =
     typeof (globalThis as any).v8debug === 'object' || /--debug|--inspect/.test(process.execArgv.join(' '))
   if (v8InspectorEnabled) await debugContextRegister(app)
+
+  uncaughtHandlerRegister(app, log)
 
   // hooks initializers
   initializerHooks.forEach(async hook => {

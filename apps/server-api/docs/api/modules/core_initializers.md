@@ -10,7 +10,7 @@
 
 ### <a id="loadinitializers" name="loadinitializers"></a> loadInitializers
 
-▸ **loadInitializers**(`app`): `Promise`<`void`\>
+▸ **loadInitializers**(`app`, `log`): `Promise`<`void`\>
 
 loadInitializers will be called by `/main.ts` when the application is bootstrapped and listening for connections.
 
@@ -19,6 +19,7 @@ loadInitializers will be called by `/main.ts` when the application is bootstrapp
 | Name | Type |
 | :------ | :------ |
 | `app` | `NestFastifyApplication` |
+| `log` | `Logger` |
 
 #### Returns
 
@@ -26,4 +27,4 @@ loadInitializers will be called by `/main.ts` when the application is bootstrapp
 
 #### Defined in
 
-[core/initializers/index.ts:18](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/initializers/index.ts#L18)
+[core/initializers/index.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/initializers/index.ts#L20)

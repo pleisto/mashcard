@@ -28,6 +28,7 @@
     </style>
     {{! TODO: inject brickdoc context here }}
     <script type='module' src='{{webAppEntrypoint}}'></script>
+    {{{devContext}}}
   </head>
   <body style='overflow-y: hidden'>
     <noscript>
@@ -46,14 +47,5 @@
         {{! TODO: insert localized noscript message here }}
       </span>
     </noscript>
-
-    {{#if enableGoogleAnalytics}}
-      <script async src='https://www.googletagmanager.com/gtag/js?id=G-8D93T65J3Z'></script>
-      {{! TODO: set user_id in GA config}}
-      <script>
-        window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
-        gtag('config', 'G-8D93T65J3Z');
-      </script>
-    {{/if}}
   </body>
 </html>

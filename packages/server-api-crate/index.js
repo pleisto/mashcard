@@ -231,13 +231,13 @@ const {
   anyAscii,
   base58Encode,
   base58Decode,
+  base64UrlSafeEncode,
+  base64UrlSafeDecode,
   UUIDShorten,
   shortUUIDGen,
   shortUUIDExpand,
   z85Encode,
   z85Decode,
-  base64UrlSafeEncode,
-  base64UrlSafeDecode,
   genSlug
 } = nativeBinding
 
@@ -253,11 +253,11 @@ module.exports.aeadDecrypt = aeadDecrypt
 module.exports.anyAscii = anyAscii
 module.exports.base58Encode = base58Encode
 module.exports.base58Decode = base58Decode
+module.exports.base64UrlSafeEncode = base64UrlSafeEncode
+module.exports.base64UrlSafeDecode = base64UrlSafeDecode
 module.exports.UUIDShorten = UUIDShorten
 module.exports.shortUUIDGen = shortUUIDGen
 module.exports.shortUUIDExpand = shortUUIDExpand
 module.exports.z85Encode = z85Encode
 module.exports.z85Decode = z85Decode
-module.exports.base64UrlSafeEncode = base64UrlSafeEncode
-module.exports.base64UrlSafeDecode = base64UrlSafeDecode
 module.exports.genSlug = genSlug
