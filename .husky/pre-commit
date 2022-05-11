@@ -1,7 +1,10 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn lint-staged
-yarn precommit
+yarn turbo run lint:type
 
-find . -name '*.md' -exec chmod -x {} +
+yarn turbo run tsdoc
+git ls-files --deleted | grep 'docs\/api\/' | xargs -i sh -c 'git rm {}'
+{ git ls-files --modified && git ls-files -o --exclude-standard; } | grep 'docs\/api\/' | xargs -i sh -c 'chmod -x {} && git add {}'
+
+yarn lint-staged

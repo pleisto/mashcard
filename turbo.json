@@ -3,19 +3,19 @@
   "baseBranch": "origin/master",
   "pipeline": {
     "lint:eslint": {
-      "outputs": []
+      "outputs": [".eslintcache"]
+    },
+    "lint:fix": {
+      "outputs": [".eslintcache"]
     },
     "lint:type": {
       "outputs": ["dist/tsconfig.tsbuildinfo"]
     },
     "test:jest": {
-      "outputs": ["coverage/**"]
+      "outputs": ["coverage/**", "junit-reports/jest.xml"]
     },
     "tsdoc": {
       "outputs": ["docs/api/**"]
-    },
-    "precommit": {
-      "dependsOn": ["lint:eslint", "lint:type", "tsdoc"]
     }
   }
 }

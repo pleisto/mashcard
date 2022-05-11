@@ -15,6 +15,10 @@ export class WebAppAssetHostMiddleware implements NestMiddleware, OnModuleDestro
   }
 
   async onModuleDestroy(): Promise<void> {
-    await this.viteServer?.close()
+    try {
+      await this.viteServer?.close()
+    } catch (e) {
+      // ignored
+    }
   }
 }

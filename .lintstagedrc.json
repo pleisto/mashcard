@@ -1,4 +1,5 @@
 {
-  "*.(json|yml|md|graphql|ts|tsx|js|jsx)": ["prettier --write"],
-  "packages/brickdoc-design-icons/assets/**/*.svg": ["yarn workspace @brickdoc/design-icons generator"]
+  "*.{json,yml,yaml,md,graphql,gql,css,less}": ["prettier --write"],
+  "**/*.{js,jsx,ts,tsx}": ["eslint --cache --fix", "prettier --write"],
+  "packages/brickdoc-design-icons/assets/**/*.svg": ["yarn design-icons generator"]
 }
