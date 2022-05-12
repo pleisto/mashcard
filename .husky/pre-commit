@@ -4,8 +4,8 @@
 yarn turbo run lint:type
 
 yarn turbo run tsdoc
-git ls-files --deleted | grep 'docs\/api\/' | xargs -i sh -c 'git rm {}'
-{ git ls-files --modified && git ls-files -o --exclude-standard; } | grep 'docs\/api\/' | xargs -i sh -c 'chmod -x {} && git add {}'
+git ls-files --deleted | grep 'docs\/api\/' | xargs -I{} sh -c 'git rm {}'
+{ git ls-files --modified && git ls-files -o --exclude-standard; } | grep 'docs\/api\/' | xargs -I{} sh -c 'chmod -x {} && git add {}'
 
 chmod -x packages/server-api-crate/index.d.ts packages/server-api-crate/index.js
 
