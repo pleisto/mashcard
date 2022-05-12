@@ -193,7 +193,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
       {selectedNum > 0 && (
         <SelectedBar>
           <Page css={{ alignItems: 'center', lineHeight: '2em' }}>
-            <SelectBlock checked>
+            <SelectBlock checked data-testid={TEST_ID_ENUM.trash.selectedBar.button.checkbox.id}>
               <Checkbox
                 onClick={handleClick}
                 checked
@@ -211,14 +211,16 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
               style={{ marginRight: '0.5rem' }}
               icon={<Undo />}
               onClick={onClickBatchRestore}
-              data-testid={TEST_ID_ENUM.trash.selectedBar.button.restore.id}>
+              data-testid={TEST_ID_ENUM.trash.selectedBar.button.restore.id}
+            >
               {t('trash.restore_action')}
             </Button>
             <Button
               icon={<Delete />}
               type="danger"
               onClick={() => setHardDeleteModalVisible(true)}
-              data-testid={TEST_ID_ENUM.trash.selectedBar.button.remove.id}>
+              data-testid={TEST_ID_ENUM.trash.selectedBar.button.remove.id}
+            >
               {t('trash.hard_delete_action')}
             </Button>
           </Action>
@@ -231,7 +233,8 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
             cancelBtnText={t('trash.delete_confirmation_cancel')}
             onCancel={() => setHardDeleteModalVisible(false)}
             onConfirm={onClickBatchDelete}
-            open={hardDeleteModalVisible}>
+            open={hardDeleteModalVisible}
+          >
             {selectedNum > 1
               ? t('trash.batch_delete_confirmation_body', { number: selectedNum })
               : t('trash.delete_confirmation_body')}

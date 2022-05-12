@@ -1,5 +1,5 @@
 import { SIGN_IN_SELECTOR } from '@/tests/account/signIn/signIn.selector'
-import { Tester } from '@/tests/account/signIn/tester.data'
+import { Tester } from '@/tests/account/signIn/signIn.data'
 import { Page } from '@playwright/test'
 
 export const login = async (page: Page, tester: Tester): Promise<void> => {

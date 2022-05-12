@@ -1,5 +1,5 @@
 import { BrowserType, chromium, firefox, FullConfig, webkit } from '@playwright/test'
-import { TESTER } from '@/tests/account/signIn/tester.data'
+import { TESTER } from '@/tests/account/signIn/signIn.data'
 import { login } from '@/helpers/login/login'
 
 const browserList: { [key: string]: BrowserType } = {

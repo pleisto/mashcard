@@ -120,7 +120,7 @@ test.describe('Trash', () => {
     test('Verify selected checkbox behavior is correct', async () => {
       await trash.getItemCheckbox().click()
 
-      await expect(trash.getImmediateCheckbox()).toContainText('-')
+      await expect(trash.getImmediateCheckbox()).toBeVisible()
 
       await trash.getItemCheckbox(1).click()
       await trash.getItemCheckbox(2).click()
@@ -129,14 +129,15 @@ test.describe('Trash', () => {
     })
 
     test('Verify restore selected is working well', async ({ page }) => {
+      await trash.searchTrash('for search')
       await trash.getItemCheckbox().click()
       await trash.getItemCheckbox(1).click()
       await trash.selectedBarRestore()
 
+      await expect(trash.getTrashes()).toHaveCount(0)
       const pageTree = new PageTreePage(page)
-      await expect(trash.getTrashes()).toHaveCount(1)
-      await expect(pageTree.getPageByIndex()).toContainText(TRASH_PAGE_TREE[1].title)
-      await expect(pageTree.getPageByIndex(1)).toContainText(TRASH_PAGE_TREE[2].title)
+      await expect(pageTree.getPageByIndex()).toContainText('for search')
+      await expect(pageTree.getPageByIndex(1)).toContainText('for search')
     })
 
     test('Verify remove selected is working well', async () => {

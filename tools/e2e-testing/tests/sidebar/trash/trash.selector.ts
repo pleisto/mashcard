@@ -13,7 +13,7 @@ export const TRASH_SELECTOR = {
   trashItemCheckbox: (nth: number) =>
     `main.content ul li div[data-testid=trash-pageItem-button-checkbox] >> nth=${nth}`,
   trashSelectedCount: 'main.content span[data-testid=trash-selectedBar-count]',
-  trashIndeterminate: 'main.content div[data-testid=trash-selectedBar-button-checkbox]:has-text("-")',
+  trashIndeterminate: 'main.content div[data-testid=trash-selectedBar-button-checkbox] span.brd-icon-minus',
   trashSelectedAll: 'main.content div[data-testid=trash-selectedBar-button-checkbox] span.brd-icon-check-box',
   trashSelectedRestore: 'main.content button[data-testid=trash-selectedBar-button-restore]',
   trashSelectedRemove: 'main.content button[data-testid=trash-selectedBar-button-remove]'
