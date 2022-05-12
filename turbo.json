@@ -19,6 +19,7 @@
       "outputs": ["docs/api/**"]
     },
     "build:rust": {
+      "dependsOn": ["$OSTYPE"],
       "outputs": ["*.node", "index.d.ts", "index.js"]
     }
   }
