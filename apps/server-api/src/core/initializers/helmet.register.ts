@@ -1,5 +1,6 @@
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import { fastifyHelmet } from '@fastify/helmet'
+import { IS_PROD_MODE } from '../../common/utils'
 
 export const helmetRegister = async (app: NestFastifyApplication): Promise<void> => {
   await app.register(fastifyHelmet, {
@@ -23,6 +24,7 @@ export const helmetRegister = async (app: NestFastifyApplication): Promise<void>
         manifestSrc: [`'self'`, 'apollo-server-landing-page.cdn.apollographql.com']
       }
     },
-    crossOriginEmbedderPolicy: false
+    crossOriginEmbedderPolicy: false,
+    hsts: IS_PROD_MODE
   })
 }

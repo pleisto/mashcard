@@ -17,10 +17,10 @@
     "lint:type": "run -T tsc"
   },
   "devDependencies": {
-    "@playwright/test": "^1.21.1",
+    "@playwright/test": "^1.22.0",
     "allure-commandline": "^2.17.2",
     "allure-playwright": "^2.0.0-beta.16",
-    "playwright": "^1.21.1",
+    "playwright": "^1.22.0",
     "playwright-fluent": "^1.51.0"
   }
 }
