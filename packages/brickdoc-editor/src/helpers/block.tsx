@@ -297,6 +297,29 @@ export const ORDER_NEW_BLOCK: BlockItemKey[] = [
   SUB_PAGE_MENU.key
 ]
 
+export const BLOCK_MAP = Object.fromEntries(
+  [
+    PARAPGRAPH,
+    FORMULA,
+    SPREADSHEET,
+    UPLOAD,
+    GALLERY,
+    LINK,
+    EMBED,
+    HEADING_1,
+    HEADING_2,
+    HEADING_3,
+    HEADING_4,
+    HEADING_5,
+    BULLETED_LIST,
+    ORDERED_LIST,
+    CODE,
+    DIVIDER,
+    TOC,
+    SUB_PAGE_MENU
+  ].map(item => [item.key, item])
+)
+
 export const ORDER_TOGGLE_BLOCK: BlockItemKey[] = [
   PARAPGRAPH.key,
   HEADING_1.key,

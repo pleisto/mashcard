@@ -40,7 +40,7 @@ const EXPLORE_KEY = 'explore'
 export const SlashMenu: React.FC<SlashMenuProps> = ({ items, command }) => {
   const { t } = React.useContext(EditorContext)
   const { query, type, suggestion: _suggestion, recent } = items
-  const [handleShowExplorerMenu] = useShowExplorerMenu(command)
+  const [handleShowExplorerMenu] = useShowExplorerMenu()
   const suggestion = React.useMemo<SlashMenuItem[]>(() => {
     if (query) {
       return [

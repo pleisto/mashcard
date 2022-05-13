@@ -15,7 +15,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
   const paths: Path[] = docMeta.pathArray.concat([{ id: docMeta.id, text: docMeta.title, icon: docMeta.icon }])
   const { t } = useDocsI18n()
 
-  const renderPath = (path: Path, idx: number, showSplit: boolean): React.ReactNode => {
+  const renderPath = (path: Path, idx: number, showSplit: boolean, fullwidth: Boolean = false): React.ReactNode => {
     const link = docMeta.isMine ? `/${docMeta.domain}/${path.id}` : '#'
     const hasEmoji = path.icon && path.icon.type === Blocktype.Emoji
     const emoji = hasEmoji ? (path.icon as BlockEmoji).emoji : ''
@@ -28,7 +28,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
           </Root.Tip>
         }
       >
-        <Root.Warp to={link} data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.id}>
+        <Root.Warp fullWidth={!!fullwidth} to={link} data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.id}>
           <Root.Emoji show={Boolean(hasEmoji)} data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.emoji.id}>
             {emoji}
           </Root.Emoji>
@@ -50,7 +50,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
               <Menu>
                 {paths.slice(1, -2).map((item, idx) => (
                   <Menu.Item key={idx} itemKey={String(idx)}>
-                    {renderPath(item, idx, false)}
+                    {renderPath(item, idx, false, true)}
                   </Menu.Item>
                 ))}
               </Menu>
@@ -58,6 +58,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
             title={null}
             placement="bottomStart"
             overlayInnerStyle={{ padding: 0, minHeight: 'fit-content' }}
+            visible={true}
             trigger={['click', 'hover']}
           >
             <div style={{ display: 'flex' }} data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.id}>

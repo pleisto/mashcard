@@ -1,5 +1,6 @@
 import { useCallback, useState, useMemo, useContext, ChangeEventHandler, cloneElement, useEffect } from 'react'
 import { Icon, Menu } from '@brickdoc/design-system'
+import { Editor } from '@tiptap/core'
 import { BrickdocEventBus, ExplorerMenuGroup, ExplorerMenuItem, ExplorerMenuTrigger } from '@brickdoc/schema'
 import { EditorContext } from '../../../context/EditorContext'
 import {
@@ -13,8 +14,11 @@ import {
 } from './styled'
 import { Drawer } from '../../ui'
 import { useDrawer } from '../../ui/Drawer'
+import { slashMenuGroup } from '../../../extensions/extensions/slashCommands/items'
 
-export interface ExplorerMenuProps {}
+export interface ExplorerMenuProps {
+  editor: Editor | null
+}
 
 const isMatchSearch =
   (search?: string) =>
@@ -31,10 +35,20 @@ export const ExplorerMenu: React.FC<ExplorerMenuProps> = () => {
 
   useEffect(
     () =>
-      BrickdocEventBus.subscribe(ExplorerMenuTrigger, event => {
-        setGroupSource(event.payload.items ?? [])
+      BrickdocEventBus.subscribe(ExplorerMenuTrigger, () => {
+        setGroupSource(
+          slashMenuGroup.map(group => ({
+            label: t(`slash_menu.explorer_menu.group.${group.key}.label`),
+            items: group.items.map(item => ({
+              label: t(`blocks.${item.key}.label`),
+              labelText: t(`blocks.${item.key}.label`),
+              key: item.key,
+              icon: item.icon
+            }))
+          }))
+        )
       }).unsubscribe,
-    []
+    [setGroupSource, t]
   )
 
   const groups = useMemo<ExplorerMenuGroup[]>(
@@ -87,14 +101,14 @@ export const ExplorerMenu: React.FC<ExplorerMenuProps> = () => {
                 <Menu.Group key={index} label={<MenuGroupLabel>{group.label}</MenuGroupLabel>}>
                   {group.items.map((item, index) => (
                     <MenuItem
-                      onAction={() => {
-                        item.onAction?.()
-                        setVisible(false)
-                      }}
+                      draggable="true"
                       key={index}
                       itemKey={`item-${index}`}
                       label={item.label}
                       icon={cloneElement(item.icon, { className: menuIconStyle() })}
+                      onDragStart={e => {
+                        e.dataTransfer.setData('AddBlockKey', item.key)
+                      }}
                     />
                   ))}
                 </Menu.Group>

@@ -9,6 +9,7 @@ export const SlashMenuKeyboardEventTrigger = event<{ key: string }>()('SlashMenu
 export interface ExplorerMenuItem {
   label: React.ReactElement
   labelText: string
+  key: string
   icon: React.ReactElement
   onAction?: () => void
   items?: ExplorerMenuItem[]
@@ -19,12 +20,9 @@ export interface ExplorerMenuGroup {
   items: ExplorerMenuItem[]
 }
 
-export const ExplorerMenuTrigger = event<{ items?: ExplorerMenuGroup[]; visible: boolean }>()(
-  'ExplorerMenuTrigger',
-  ({ visible, items }) => {
-    return { visible, items }
-  }
-)
+export const ExplorerMenuTrigger = event<{ visible?: boolean }>()('ExplorerMenuTrigger', ({ visible }) => {
+  return { visible }
+})
 
 export const DiscussionMarkActive = event<{ markId: string }>()('DiscussionMarkActive', ({ markId }) => {
   return { markId }
@@ -37,3 +35,5 @@ export const DiscussionMarkInactive = event<{ markId?: string }>()('DiscussionMa
 export const DiscussionListToggle = event<{ visible?: boolean }>()('DiscussionListTrigger', ({ visible }) => {
   return { visible }
 })
+
+export const Undo = event<{}>()('Undo')

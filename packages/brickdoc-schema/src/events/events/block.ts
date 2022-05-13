@@ -29,3 +29,7 @@ export const BlockNameLoad = event<{ id: string; name: string }>()('BlockNameLoa
 export const BlockJustCreated = event<{ id: string }>({ sticky: true })('BlockJustCreated', ({ id }) => {
   return { id }
 })
+
+export const BlockDropAdd = event<{ key: string; pos: number }>()('BlockDropAdd', ({ key, pos }) => {
+  return { key, pos }
+})

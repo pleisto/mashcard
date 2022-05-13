@@ -514,6 +514,7 @@ en-US:
       create_sub_pages: Add Subpage
       delete: Delete
       rename: Rename
+      undo: Undo
       more: Delete, Duplicate, and more...
     copy_link:
       button: Copy link
@@ -549,6 +550,8 @@ en-US:
     discussion:
       menu: Comment
       tooltip: show comments on current page
+    more:
+      tooltip: more options
     share:
       menu: Share
       invite: Invite
@@ -724,6 +727,7 @@ en-US:
       suggestion: Suggestions
       no_suggestion: No result
       footer: Explore
+      tooltip: Explore Slash Menu
       explorer_menu:
         group:
           data:

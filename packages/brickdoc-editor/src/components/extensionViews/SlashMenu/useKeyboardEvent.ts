@@ -10,6 +10,7 @@ export function useKeyboardEvent(
   command: SlashMenuProps['command']
 ): [MutableRefObject<HTMLUListElement | undefined>] {
   const menuRef = useRef<HTMLUListElement>()
+
   const formulaMenuItem = type.find(item => item.key === 'formula')
 
   const scrollItemIntoView = (index: number): void =>

@@ -2,7 +2,7 @@ import React from 'react'
 import { styled, theme } from '@brickdoc/design-system'
 
 // TODO: replace by theme token
-const IconBackgroundOverlay = styled('div', {
+export const IconBackgroundOverlay = styled('div', {
   backdropFilter: 'blur(6px)',
   background: 'linear-gradient(0deg, rgba(248, 251, 255, 0.36), rgba(248, 251, 255, 0.36)), rgba(255, 255, 255, 0.74)',
   border: 0,

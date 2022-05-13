@@ -43,6 +43,13 @@ export const Warp = styled(Link, {
   maxWidth: '25rem',
   '&:hover': {
     textDecoration: 'none'
+  },
+  variants: {
+    fullWidth: {
+      true: {
+        width: '100%'
+      }
+    }
   }
 })
 

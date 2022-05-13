@@ -47,6 +47,7 @@ export interface BaseOptions {
   uniqueID: Partial<EXTENSION.UniqueIDOptions> | boolean
   user: Partial<EXTENSION.UserOptions> | boolean
   collaboration: Partial<EXTENSION.CollaborationOptions> | boolean
+  dropBlock: boolean
 }
 
 const getConfigure = <T>(configure: T | boolean): Partial<T> => (configure === true ? {} : (configure as T))
@@ -123,6 +124,8 @@ export const Base = Extension.create<BaseOptions>({
 
     if (!this.options.collaboration && this.options.history)
       extensions.push(EXTENSION.History.configure(getConfigure(this.options?.history)))
+
+    if (this.options.dropBlock) extensions.push(EXTENSION.dropBlock.configure())
 
     return extensions
   }

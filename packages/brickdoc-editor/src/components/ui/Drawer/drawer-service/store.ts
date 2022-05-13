@@ -33,8 +33,20 @@ export const useDrawerStore = create<DrawerStore>((set, get) => ({
 
     const subscriptions: EventSubscribed[] = [
       BrickdocEventBus.subscribe(ExplorerMenuTrigger, ({ payload }) => {
-        const { open, close } = get()
-        payload.visible ? open('explorerMenu') : close()
+        const { state, open, close } = get()
+        if (payload.visible === undefined) {
+          if (state === 'closed' || state === 'discussionList') {
+            open('explorerMenu')
+          } else {
+            close()
+          }
+          return
+        }
+        if (payload.visible) {
+          open('explorerMenu')
+        } else {
+          close()
+        }
       }),
       BrickdocEventBus.subscribe(DiscussionListToggle, ({ payload }) => {
         const { state: view, open, close } = get()

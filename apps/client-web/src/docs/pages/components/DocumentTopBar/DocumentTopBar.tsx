@@ -1,16 +1,17 @@
 import React from 'react'
 import { CollaboratorsMenu } from '@/docs/common/components/CollaboratorsMenu'
 import { PathBreadcrumb } from '@/docs/common/components/PathBreadcrumb'
-import { PinMenu } from '@/docs/common/components/PinMenu'
-import { DiscussionMenu } from '@/docs/common/components/DiscussionMenu'
+import { ExploreSlash } from '@/docs/common/components/ExploreSlash'
+import { TopbarMore } from '@/docs/common/components/TopbarMore'
 import { useReactiveVar } from '@apollo/client'
 import { Button, Box } from '@brickdoc/design-system'
 import { useNavigate } from 'react-router-dom'
-import { HistoryMenu } from '../../../common/components/HistoryMenu'
+// import { HistoryMenu } from '../../../common/components/HistoryMenu'
 import { ShareMenu } from '../../../common/components/ShareMenu'
 import { useDocsI18n } from '../../../common/hooks'
 import { isSavingVar } from '../../../reactiveVars'
 import { DocMeta, NonNullDocMeta } from '../../DocumentContentPage'
+import { DiscussionMenu } from '@/docs/common/components/DiscussionMenu'
 import { BrickdocContext } from '@/common/brickdocContext'
 import Logo from '@/common/assets/logo_brickdoc.svg'
 import * as Root from './DocumentTopBar.style'
@@ -41,9 +42,10 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
     <>
       <Root.HiddenItem as={CollaboratorsMenu} docMeta={docMeta as NonNullDocMeta} />
       <ShareMenu docMeta={docMeta as NonNullDocMeta} />
-      {features.page_history && <HistoryMenu docMeta={docMeta as NonNullDocMeta} />}
-      {docMeta.isMine && <PinMenu docMeta={docMeta as NonNullDocMeta} />}
       {features.experiment_discussion && <DiscussionMenu />}
+      {/* {features.page_history && <HistoryMenu docMeta={docMeta as NonNullDocMeta} />} */}
+      {docMeta.editable && <ExploreSlash />}
+      <TopbarMore docMeta={docMeta} />
     </>
   )
 
