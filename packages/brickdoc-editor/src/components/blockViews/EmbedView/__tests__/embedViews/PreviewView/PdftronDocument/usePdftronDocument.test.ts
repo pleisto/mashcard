@@ -52,10 +52,19 @@ describe('usePdftronDocument', () => {
   })
 
   it('toggles full screen correctly', async () => {
-    const { result } = renderHook(() => usePdftronDocument('doc'))
+    await act(async () => {
+      const { result } = renderHook(() => usePdftronDocument('doc'))
 
-    expect(() => {
-      result.current[2]()
-    }).not.toThrow()
+      // wait for async effect
+      await new Promise<void>(resolve => {
+        setTimeout(() => {
+          resolve()
+        }, 10)
+      })
+
+      expect(() => {
+        result.current[2]()
+      }).not.toThrow()
+    })
   })
 })

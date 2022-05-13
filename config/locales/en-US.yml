@@ -913,7 +913,6 @@ en-US:
           description: Upload image、PDF、Word、PPT、Excel and more.
       types:
         gallery:
-          title: Gallery
           search:
             placeholder: Search...
           label: Select a picture from Unsplash.

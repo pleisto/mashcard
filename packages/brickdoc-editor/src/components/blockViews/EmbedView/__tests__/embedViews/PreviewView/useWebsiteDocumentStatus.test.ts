@@ -1,4 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
+import { act } from 'react-dom/test-utils'
 import { useWebsiteDocumentStatus } from '../../../embedViews/PreviewView/useWebsiteDocumentStatus'
 
 describe('useWebsiteDocumentStatus', () => {
@@ -9,7 +10,9 @@ describe('useWebsiteDocumentStatus', () => {
 
     expect(result.current[0]).toBe(false)
 
-    handleLoad({})
+    act(() => {
+      handleLoad({})
+    })
 
     expect(result.current[0]).toBe(true)
   })

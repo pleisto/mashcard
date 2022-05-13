@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react'
 import { renderHook } from '@testing-library/react-hooks'
+import { act } from 'react-dom/test-utils'
 import { ToolbarGroupOption, ToolbarItemGroupOption, ToolbarItemOption } from '../../../../ui'
 import { EditPanel, useDisplayName, useEmbedToolbarOptions } from '../../embedViews/useEmbedToolbarOptions'
 
@@ -95,7 +96,9 @@ describe('useEmbedToolbarOptions', () => {
 
     const [, onDisplayNameChange] = result.current
 
-    onDisplayNameChange({ target: { value: newDisplayName } } as any)
+    act(() => {
+      onDisplayNameChange({ target: { value: newDisplayName } } as any)
+    })
 
     expect(result.current[0]).toEqual(newDisplayName)
 
