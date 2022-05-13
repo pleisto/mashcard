@@ -2115,6 +2115,7 @@ __metadata:
     "@types/is-ci": ^3.0.0
     "@types/jest": ^27.5.1
     "@types/jest-axe": ^3.5.3
+    "@types/mime-types": ^2.1.1
     "@types/node": ^17.0.32
     "@types/rails__actioncable": ^6.1.6
     "@types/rails__activestorage": ^7.0.1
@@ -2274,6 +2275,7 @@ __metadata:
     handlebars: ^4.7.7
     leaked-handles: ^5.2.0
     lru-cache: ^7.10.1
+    mime-types: ^2.1.35
     nest-winston: ^1.6.2
     node-dev: ^7.4.3
     point-of-view: ^5.3.0
@@ -7561,6 +7563,13 @@ __metadata:
   dependencies:
     "@types/unist": "*"
   checksum: 3f587bfc0a9a2403ecadc220e61031b01734fedaf82e27eb4d5ba039c0eb54db8c85681ccc070ab4df3f7ec711b736a82b990e69caa14c74bf7ac0ccf2ac7313
+  languageName: node
+  linkType: hard
+
+"@types/mime-types@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "@types/mime-types@npm:2.1.1"
+  checksum: 106b5d556add46446a579ad25ff15d6b421851790d887edcad558c90c1e64b1defc72bfbaf4b08f208916e21d9cc45cdb951d77be51268b18221544cfe054a3c
   languageName: node
   linkType: hard
 
@@ -20320,7 +20329,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mime-types@npm:^2.0.8, mime-types@npm:^2.1.12, mime-types@npm:^2.1.27, mime-types@npm:^2.1.30, mime-types@npm:~2.1.24, mime-types@npm:~2.1.34":
+"mime-types@npm:^2.0.8, mime-types@npm:^2.1.12, mime-types@npm:^2.1.27, mime-types@npm:^2.1.30, mime-types@npm:^2.1.35, mime-types@npm:~2.1.24, mime-types@npm:~2.1.34":
   version: 2.1.35
   resolution: "mime-types@npm:2.1.35"
   dependencies:

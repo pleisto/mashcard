@@ -6,31 +6,45 @@
 
 ### Enumeration members
 
-- [COMMON\_KMS\_DECODER](common_server_plugin.HookType.md#common_kms_decoder)
-- [CORE\_INITIALIZER](common_server_plugin.HookType.md#core_initializer)
+- [COMMON_KMS_SEED_DECODER](common_server_plugin.HookType.md#common_kms_seed_decoder)
+- [CORE_BLOBS_STORAGE_ADAPTOR](common_server_plugin.HookType.md#core_blobs_storage_adaptor)
+- [CORE_INITIALIZER](common_server_plugin.HookType.md#core_initializer)
 
 ## Enumeration members
 
-### <a id="common_kms_decoder" name="common_kms_decoder"></a> COMMON\_KMS\_DECODER
+### <a id="common_kms_seed_decoder" name="common_kms_seed_decoder"></a> COMMON_KMS_SEED_DECODER
 
-• **COMMON\_KMS\_DECODER** = `"common.kms.DECODER"`
+• **COMMON_KMS_SEED_DECODER** = `"common.kms.DECODER"`
 
 KMS Seed Decoder Hook.
 see /common/kms/decoder/decoder.provider.ts
 
 #### Defined in
 
-[common/server-plugin/server-plugin.interface.ts:21](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L21)
+[common/server-plugin/server-plugin.interface.ts:22](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L22)
 
-___
+---
 
-### <a id="core_initializer" name="core_initializer"></a> CORE\_INITIALIZER
+### <a id="core_blobs_storage_adaptor" name="core_blobs_storage_adaptor"></a> CORE_BLOBS_STORAGE_ADAPTOR
 
-• **CORE\_INITIALIZER** = `"core.INITIALIZER"`
+• **CORE_BLOBS_STORAGE_ADAPTOR** = `"core.BLOBS_ADAPTOR"`
+
+Blobs Adaptor Hook.
+see /core/blobs/adaptors/adaptor.provider.ts
+
+#### Defined in
+
+[common/server-plugin/server-plugin.interface.ts:28](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L28)
+
+---
+
+### <a id="core_initializer" name="core_initializer"></a> CORE_INITIALIZER
+
+• **CORE_INITIALIZER** = `"core.INITIALIZER"`
 
 Hook for server initialization.
 see /core/initializers/index.ts
 
 #### Defined in
 
-[common/server-plugin/server-plugin.interface.ts:15](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L15)
+[common/server-plugin/server-plugin.interface.ts:16](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L16)

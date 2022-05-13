@@ -1,7 +1,7 @@
 import { Controller, Get, Render, Optional, Inject, Req } from '@nestjs/common'
 import { type ViteDevServer, VITE_DEV_SERVER, webAppEntrypointUrl } from '@brickdoc/build-support'
 import { FastifyRequest } from 'fastify'
-import { env } from 'process'
+import { IS_DEV_MODE } from '../../../common/utils'
 
 @Controller()
 export class IndexController {
@@ -11,7 +11,7 @@ export class IndexController {
   @Get('*')
   @Render('index')
   async spaRoot(@Req() req: FastifyRequest): Promise<object> {
-    const devContext = env.NODE_ENV === 'development' ? await this.viteServer?.transformIndexHtml(req.url, '') : ''
+    const devContext = IS_DEV_MODE ? await this.viteServer?.transformIndexHtml(req.url, '') : ''
 
     return {
       webAppEntrypoint: this.webAppEntrypoint,

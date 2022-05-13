@@ -5,6 +5,8 @@ import { SlonikModule } from '@brickdoc/nestjs-slonik'
 import { KMSModule, KMSService } from './kms'
 import { SettingsModule } from './settings'
 import { ServerPluginModule } from './server-plugin'
+import { BlobsModule } from './blobs/blobs.module'
+import { IS_TEST_MODE } from './utils'
 
 /**
  * All Modules in the Common Module are global modules.
@@ -27,7 +29,7 @@ import { ServerPluginModule } from './server-plugin'
          * https://github.com/gajus/slonik/issues/63
          * avoid jest open handle error
          */
-        env.NODE_ENV === 'test'
+        IS_TEST_MODE
           ? {
               idleTimeout: 'DISABLE_TIMEOUT',
               maximumPoolSize: 1
@@ -35,7 +37,8 @@ import { ServerPluginModule } from './server-plugin'
           : undefined
     }),
     SettingsModule.forRoot(),
-    ServerPluginModule
+    ServerPluginModule,
+    BlobsModule
   ]
 })
 export class CommonModule {}

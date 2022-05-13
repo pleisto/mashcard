@@ -24,7 +24,7 @@ export class CoreConfigMap {
    * @returns default value
    */
   @Item({})
-  tlsEnabled: boolean = env.NODE_ENV === 'production'
+  tlsEnabled: boolean = true
 
   /**
    * Default language

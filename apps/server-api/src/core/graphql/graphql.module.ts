@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common'
 import { GraphQLModule as ApolloGraphQLModule } from '@nestjs/graphql'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
-import { env } from 'process'
 import { join } from 'path/posix'
 import { LoggingPlugin } from './logging.plugin'
+import { IS_PROD_MODE } from '../../common/utils'
 
 @Module({
   imports: [
@@ -13,7 +13,7 @@ import { LoggingPlugin } from './logging.plugin'
       useFactory: () => ({
         disableHealthCheck: true,
         sortSchema: true,
-        debug: env.NODE_ENV !== 'production',
+        debug: !IS_PROD_MODE,
         path: '/.internal-apis/$graph',
         autoSchemaFile: join(process.cwd(), 'db/schema.gql'),
         playground: false,

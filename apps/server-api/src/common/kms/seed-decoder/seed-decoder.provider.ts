@@ -2,8 +2,8 @@ import { Provider, Scope } from '@nestjs/common'
 import { Buffer } from 'buffer'
 import { BrickdocBaseError } from '../../errors'
 import { HooksExplorer, HookType } from '../../server-plugin'
-import { PlainSeedDecoder } from './plain.decoder'
-import { SeedDecoder } from './base.decoder'
+import { PlainSeedDecoder } from './plain.seed-decoder'
+import { BaseSeedDecoder } from './base.seed-decoder'
 import { KMS_MODULE_OPTIONS, KMSModuleOptions, KMS_ROOT_SECRET_KEY } from '../kms.interface'
 
 /**
@@ -16,7 +16,7 @@ export const createSeedDecoder = (): Provider => ({
     const [decoderName, rawVal] = options.seed.split(':')
 
     // find extra decoder adapter from server plugin hooks
-    const extraDecoders = explorer.findByType(HookType.COMMON_KMS_DECODER)
+    const extraDecoders = explorer.findByType(HookType.COMMON_KMS_SEED_DECODER)
 
     const decoder = decoderResolver(decoderName, extraDecoders)
     return await decoder.rootSecret(Buffer.from(rawVal, 'base64'))
@@ -31,8 +31,8 @@ export const createSeedDecoder = (): Provider => ({
  * @param extraDecoders Extra SeedDecoder that injected by server plugin
  * @returns
  */
-const decoderResolver = (decoderName: string, extraDecoders?: SeedDecoder[]): SeedDecoder => {
-  if (decoderName === 'plain' || decoderName === 'PlainSeedDecoder') return new PlainSeedDecoder()
+const decoderResolver = (decoderName: string, extraDecoders?: BaseSeedDecoder[]): BaseSeedDecoder => {
+  if (decoderName === 'PlainSeedDecoder') return new PlainSeedDecoder()
   const decoder = extraDecoders?.find(d => d.constructor.name === decoderName)
   if (!decoder) throw new BrickdocBaseError('apiSrv.kms.UNKNOWN_SEED_DECODER', `KMS decoder ${decoder} not found`)
   return decoder

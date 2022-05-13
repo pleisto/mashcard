@@ -21,7 +21,7 @@
 
 ### Variables
 
-- [SERVER\_PLUGIN\_HOOK\_OPTIONS\_METADATA](common_server_plugin.md#server_plugin_hook_options_metadata)
+- [SERVER_PLUGIN_HOOK_OPTIONS_METADATA](common_server_plugin.md#server_plugin_hook_options_metadata)
 
 ### Functions
 
@@ -35,23 +35,23 @@
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends [`HookType`](../enums/common_server_plugin.HookType.md) |
+| Name | Type                                                            |
+| :--- | :-------------------------------------------------------------- |
+| `T`  | extends [`HookType`](../enums/common_server_plugin.HookType.md) |
 
 #### Defined in
 
-[common/server-plugin/server-plugin.interface.ts:33](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L33)
+[common/server-plugin/server-plugin.interface.ts:41](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L41)
 
 ## Variables
 
-### <a id="server_plugin_hook_options_metadata" name="server_plugin_hook_options_metadata"></a> SERVER\_PLUGIN\_HOOK\_OPTIONS\_METADATA
+### <a id="server_plugin_hook_options_metadata" name="server_plugin_hook_options_metadata"></a> SERVER_PLUGIN_HOOK_OPTIONS_METADATA
 
-• `Const` **SERVER\_PLUGIN\_HOOK\_OPTIONS\_METADATA**: ``"brickdoc-server-plugin:hook"``
+• `Const` **SERVER_PLUGIN_HOOK_OPTIONS_METADATA**: `"brickdoc-server-plugin:hook"`
 
 #### Defined in
 
-[common/server-plugin/server-plugin.interface.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L8)
+[common/server-plugin/server-plugin.interface.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L9)
 
 ## Functions
 
@@ -62,17 +62,18 @@
 Decorator for registering server plugin hooks.
 
 **`example`**
+
 ```ts
 @Hook(HookType.CORE_INITIALIZER)
 export class MyPlugin {
- async forHookAsync(setting: SettingsService) {}
+  async forHookAsync(setting: SettingsService) {}
 }
 ```
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                                    |
+| :----- | :------------------------------------------------------ |
 | `type` | [`HookType`](../enums/common_server_plugin.HookType.md) |
 
 #### Returns

@@ -1,9 +1,9 @@
-import { SeedDecoder } from './base.decoder'
+import { BaseSeedDecoder } from './base.seed-decoder'
 
 /**
  * Built-in Plain SeedDecoder Adapter.
  */
-export class PlainSeedDecoder extends SeedDecoder {
+export class PlainSeedDecoder extends BaseSeedDecoder {
   /**
    * Directly return the seed string.
    */

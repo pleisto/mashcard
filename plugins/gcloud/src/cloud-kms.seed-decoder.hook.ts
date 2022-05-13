@@ -1,13 +1,13 @@
 import { env } from 'process'
 import { KeyManagementServiceClient } from '@google-cloud/kms'
 import { crc32c } from '@node-rs/crc32'
-import { SeedDecoder } from '@brickdoc/server-api/src/common/kms/decoder/base.decoder'
+import { BaseSeedDecoder } from '@brickdoc/server-api/src/common/kms/seed-decoder/base.seed-decoder'
 import { ServerPluginHook, HookType, HookProvider } from '@brickdoc/server-api/src/common/server-plugin'
 import { BrickdocBaseError } from '@brickdoc/server-api/src/common/errors'
 import { projectId } from './gcloud-plugin.utils'
 
-@ServerPluginHook(HookType.COMMON_KMS_DECODER)
-export class CloudKMSDecoderHook extends SeedDecoder implements HookProvider<HookType.COMMON_KMS_DECODER> {
+@ServerPluginHook(HookType.COMMON_KMS_SEED_DECODER)
+export class CloudKMSSeedDecoderHook extends BaseSeedDecoder implements HookProvider<HookType.COMMON_KMS_SEED_DECODER> {
   /**
    * Decode raw seed via base64
    */

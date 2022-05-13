@@ -1,21 +1,20 @@
 import { Module } from '@nestjs/common'
-import { env } from 'process'
 import { WinstonModule } from 'nest-winston'
 import { format, transports } from 'winston'
+import { IS_DEV_MODE, IS_PROD_MODE } from '../../common/utils'
 
-const localFormats =
-  env.NODE_ENV === 'development'
-    ? [
-        format.prettyPrint({
-          colorize: true
-        })
-      ]
-    : []
+const localFormats = IS_DEV_MODE
+  ? [
+      format.prettyPrint({
+        colorize: true
+      })
+    ]
+  : []
 
 @Module({
   imports: [
     WinstonModule.forRoot({
-      level: env.NODE_ENV === 'production' ? 'info' : 'debug',
+      level: IS_PROD_MODE ? 'info' : 'debug',
       format: format.combine(format.timestamp(), format.json(), ...localFormats),
       transports: [new transports.Console()]
     })

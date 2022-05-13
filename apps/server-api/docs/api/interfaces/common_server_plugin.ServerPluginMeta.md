@@ -17,9 +17,9 @@
 
 #### Defined in
 
-[common/server-plugin/server-plugin.interface.ts:4](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L4)
+[common/server-plugin/server-plugin.interface.ts:5](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L5)
 
-___
+---
 
 ### <a id="dir" name="dir"></a> dir
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-[common/server-plugin/server-plugin.interface.ts:5](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L5)
+[common/server-plugin/server-plugin.interface.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L6)

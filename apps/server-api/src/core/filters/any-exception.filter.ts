@@ -16,20 +16,9 @@ import { ApolloError } from 'apollo-server-errors'
 import { FastifyRequest } from 'fastify'
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston'
 import { type Logger } from 'winston'
+import { requestLoggingContext } from '../../common/utils'
 import { BrickdocBaseError, ErrorCode } from '../../common/errors'
 import { CustomApolloError } from '../graphql/custom-apollo-error.errors'
-
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const reqCommonContext = (req: FastifyRequest) => ({
-  remoteIp: req.ip,
-  protocol: req.protocol,
-  requestMethod: req.method,
-  requestUrl: req.url,
-  params: req.params,
-  userAgent: req.headers['user-agent'],
-  acceptLanguage: req.headers['accept-language'],
-  referer: req.headers.referer
-})
 
 const context = 'AnyExceptionFilter'
 
@@ -60,7 +49,7 @@ export class AnyExceptionFilter implements GqlExceptionFilter {
   graphQLFilter(exception: Error, host: GqlArgumentsHost): Error {
     const req = host.getContext().req as FastifyRequest
     const httpRequest = {
-      ...reqCommonContext(req),
+      ...requestLoggingContext(req),
       query: (req.body as any)?.query,
       operationName: (req.body as any)?.operationName
     }
@@ -79,7 +68,7 @@ export class AnyExceptionFilter implements GqlExceptionFilter {
         ...exception.details
       }
       graphQLError.originalError = exception.originalError
-      const logLevel = exception.code >= 500 ? 'error' : 'info'
+      const logLevel = exception.code >= 500 ? 'error' : 'warn'
       this.logger.log(logLevel, { trace: req.id, httpRequest, exception, context })
     } else {
       this.logger.error({ trace: req.id, httpRequest, exception, context })
@@ -94,15 +83,12 @@ export class AnyExceptionFilter implements GqlExceptionFilter {
 
   httpFilter(exception: Error, host: HttpArgumentsHost, applicationRef: AbstractHttpAdapter | HttpServer): void {
     const req = host.getRequest<FastifyRequest>()
-    this.logger.error({
-      trace: req.id,
-      exception,
-      httpRequest: reqCommonContext(req),
-      context
-    })
+
     let resp: [any, number]
+    let logLevel: 'error' | 'warn'
 
     if (exception instanceof BrickdocBaseError) {
+      logLevel = 'warn'
       resp = [
         {
           message: exception.message,
@@ -115,7 +101,7 @@ export class AnyExceptionFilter implements GqlExceptionFilter {
                   traceId: req.id,
                   ...exception.details
                 },
-                httpErrorAddition: {
+                httpHandlerContext: {
                   method: req.method,
                   protocol: req.protocol
                 }
@@ -126,10 +112,19 @@ export class AnyExceptionFilter implements GqlExceptionFilter {
         exception.code
       ]
     } else if (exception instanceof HttpException) {
+      logLevel = 'warn'
       resp = [exception.getResponse(), exception.getStatus()]
     } else {
+      logLevel = 'error'
       resp = ['Internal Server Error', HttpStatus.INTERNAL_SERVER_ERROR]
     }
+
+    this.logger.log(logLevel, {
+      trace: req.id,
+      exception,
+      httpRequest: requestLoggingContext(req),
+      context
+    })
     applicationRef.reply(host.getResponse(), ...resp)
   }
 

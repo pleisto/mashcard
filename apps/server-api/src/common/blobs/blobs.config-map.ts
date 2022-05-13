@@ -1,14 +1,13 @@
 import { env } from 'process'
 import { ConfigMap, Item, ScopeLookupStrategy } from '@brickdoc/server-api/src/common/settings'
 
-@ConfigMap('common.kms')
-export class CoreConfigMap {
+@ConfigMap('core.blobs')
+export class BlobsConfigMap {
   /**
-   * Google cloud project id
-   * @returns default value
+   * Blob storage adaptor
    */
   @Item({
     scope: ScopeLookupStrategy.LOCAL_STATIC
   })
-  decoder: string = env.KMS_DECODER ?? 'plain'
+  adaptor: string = env.BLOB_ADAPTOR ?? 'DiskBlobsAdaptor'
 }

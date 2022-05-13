@@ -5,6 +5,7 @@ import { env } from 'process'
 import { join } from 'path'
 import { writeFileSync } from 'fs'
 import { spawn } from 'cross-spawn'
+import { SERVER_SRC_ROOT } from '../common/utils'
 
 export { sql } from '@brickdoc/nestjs-slonik'
 
@@ -38,7 +39,7 @@ const currentDbUri = `${env.DATABASE_URL_BASE}/${currentDbName}`
 /**
  * Get the root path of the project.
  */
-export const rootDir = join(__dirname, '../../')
+export const rootDir = join(SERVER_SRC_ROOT, '../')
 /**
  * Get the db directory path.
  */

@@ -4,6 +4,7 @@ import { posix } from 'path'
 import { from, mergeMap, lastValueFrom, toArray, filter, distinct } from 'rxjs'
 import { ServerPluginMeta } from './server-plugin.interface'
 import { NotFoundError } from './server-plugin.errors'
+import { MONOREPO_ROOT } from '../utils'
 
 /**
  * Return all enabled plugins's metadata
@@ -12,7 +13,7 @@ import { NotFoundError } from './server-plugin.errors'
 export const allServerPlugins = async (): Promise<ServerPluginMeta[]> => {
   // all npm packages from plugins directory
   const $packages = from(
-    globbySync(posix.join(__dirname, '../../../../..', 'plugins/*/package.json')).map(path => posix.dirname(path))
+    globbySync(posix.join(MONOREPO_ROOT, 'plugins/*/package.json')).map(path => posix.dirname(path))
   )
   return await lastValueFrom(
     $packages.pipe(

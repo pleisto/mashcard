@@ -58,6 +58,7 @@
     "graphql-type-json": "^0.3.2",
     "handlebars": "^4.7.7",
     "lru-cache": "^7.10.1",
+    "mime-types": "^2.1.35",
     "nest-winston": "^1.6.2",
     "point-of-view": "^5.3.0",
     "reflect-metadata": "^0.1.13",

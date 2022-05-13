@@ -6,7 +6,7 @@ import { SecretSubKey } from '../kms.interface'
 /**
  * Abstract SeedDecoder class
  */
-export abstract class SeedDecoder {
+export abstract class BaseSeedDecoder {
   /**
    * get Root Secret Key from seed
    * @param seed - seed string
