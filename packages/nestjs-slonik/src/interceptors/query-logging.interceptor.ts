@@ -1,7 +1,7 @@
 import type { Interceptor, QueryContext } from 'slonik'
 import { ms } from '@brickdoc/active-support'
 import { logger } from '../slonik.utils'
-import { err } from 'pino-std-serializers'
+import errorToJSON from 'error-to-json'
 /**
  * check auto explain json message exist
  * @param noticeMessage
@@ -106,7 +106,7 @@ export const queryLoggingInterceptor = (): Interceptor => {
     queryExecutionError: (context, query, error) => {
       logger.error('query execution produced an error', {
         query,
-        error: err(error),
+        error: errorToJSON(error),
         ...loggerContext(context)
       })
 

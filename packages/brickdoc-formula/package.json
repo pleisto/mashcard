@@ -18,7 +18,6 @@
     "chevrotain": "^10.1.2",
     "qrcode.react": "^3.0.1",
     "react-vega": "^7.5.1",
-    "uuid": "^8.3.2",
     "vega": "^5.22.1",
     "vega-lite": "^5.2.0"
   },

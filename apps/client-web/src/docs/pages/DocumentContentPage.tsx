@@ -12,7 +12,7 @@ import { GetBlockInfoQuery, Policytype, useBlockCreateMutation, useGetBlockInfoQ
 import { useDocsI18n } from '../common/hooks'
 import { queryPageBlocks } from '../common/graphql'
 import { FormulaContextVar } from '../reactiveVars'
-import { validate as isValidUUID } from 'uuid'
+import { isUUID } from '@brickdoc/active-support'
 import { appendFormulas, FormulaContext } from '@brickdoc/formula'
 import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
@@ -98,7 +98,7 @@ export const DocumentContentPage: React.FC = () => {
     const isMine = loginDomain === domain || !!data?.blockInfo?.isMaster
     const pin = !!data?.blockInfo?.pin
     const icon = data?.blockInfo?.icon
-    const isAlias = docid ? !isValidUUID(docid) : false
+    const isAlias = docid ? !isUUID(docid) : false
     const shareable = isMine
     const editable = isMine || policy === Policytype.Edit
     const viewable = isMine || (!!policy && [Policytype.View, Policytype.Edit].includes(policy))

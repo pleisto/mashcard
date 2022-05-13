@@ -186,6 +186,9 @@ export const reject = <T>(arr: T[], predicate: (value: T, index: number, array: 
  * @returns Returns the cloned value.
  */
 export const cloneDeep = (value: any): any | never => {
+  // @see https://developer.mozilla.org/en-US/docs/Web/API/structuredClone
+  if (typeof globalThis?.structuredClone === 'function') return globalThis.structuredClone(value)
+
   const typeofValue = typeof value
   // primatives are copied by value.
   if (

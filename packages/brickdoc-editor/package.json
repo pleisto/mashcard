@@ -55,7 +55,6 @@
     "react-medium-image-zoom": "^4.3.7",
     "refractor": "^4.6.0",
     "tippy.js": "^6.3.7",
-    "uuid": "^8.3.2",
     "y-protocols": "^1.0.5",
     "yjs": "^13.5.36",
     "zustand": "^4.0.0-rc.1"

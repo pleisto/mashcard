@@ -1,6 +1,6 @@
 import { mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { v4 as uuid } from 'uuid'
+import { uuid } from '@brickdoc/active-support'
 import { SpreadsheetBlockView } from '../../../components/blockViews'
 import { createBlock } from '../../common'
 import { SpreadsheetOptions, SpreadsheetAttributes, meta } from './meta'

@@ -26,7 +26,7 @@ import {
   Cell
 } from '../controls'
 import { FORMULA_FEATURE_CONTROL } from '../context'
-import { v4 as uuid } from 'uuid'
+import { uuid } from '@brickdoc/active-support'
 import { columnDisplayIndex } from '../grammar'
 
 export const Spreadsheet = (

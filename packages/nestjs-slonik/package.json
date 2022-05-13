@@ -24,7 +24,7 @@
     "tsdoc": "run -T typedoc --options ../../tools/typedoc/config.json --out ./docs/api ./src/index.ts"
   },
   "dependencies": {
-    "pino-std-serializers": "^5.2.0",
+    "error-to-json": "^2.0.0",
     "slonik": "^28.1.0"
   },
   "sideEffects": false,

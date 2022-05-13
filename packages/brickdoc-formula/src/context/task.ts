@@ -1,5 +1,5 @@
 import { FunctionContext, VariableTask, VariableValue } from '../types'
-import { v4 as uuid } from 'uuid'
+import { uuid } from '@brickdoc/active-support'
 import { BrickdocEventBus } from '@brickdoc/schema'
 import { ParseResult } from '../grammar'
 import { FormulaTaskCompleted, FormulaTaskStarted } from '../events'

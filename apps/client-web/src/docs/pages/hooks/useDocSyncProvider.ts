@@ -1,7 +1,7 @@
 import React from 'react'
 import { Y } from '@brickdoc/editor'
 import { base64 } from 'rfc4648'
-import { v4 } from 'uuid'
+import { uuid } from '@brickdoc/active-support'
 
 import { useGetDocumentQuery, useSyncDocumentMutation, useYdocSubscription } from '@/BrickdocGraphQL'
 import { BrickdocContext } from '@/common/brickdocContext'
@@ -58,7 +58,7 @@ export function useDocSyncProvider(queryVariables: { docId: string }): {
       if (documentCommitting.current) return
       documentCommitting.current = true
 
-      const stateIdToSync = v4()
+      const stateIdToSync = uuid()
       const updatesToSync = [...updatesToCommit.current.values()]
       const mergedUpdates = Y.mergeUpdates(updatesToSync)
       devLog(`updates to state ydoc`)

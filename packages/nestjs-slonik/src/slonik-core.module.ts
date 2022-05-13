@@ -10,7 +10,7 @@ import {
   SlonikOptionsFactory,
   LOGGER_NAME
 } from './slonik.interface'
-import { err } from 'pino-std-serializers'
+import errorToJSON from 'error-to-json'
 @Global()
 @Module({})
 export class SlonikCoreModule implements OnApplicationShutdown {
@@ -79,7 +79,7 @@ export class SlonikCoreModule implements OnApplicationShutdown {
       // Note: pool.end() does not terminate active connections/ transactions.
       await pool?.end()
     } catch (e: any) {
-      this.logger.error(err(e))
+      this.logger.error(errorToJSON(e))
     }
   }
 

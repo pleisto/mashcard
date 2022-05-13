@@ -24,12 +24,12 @@
     "tsdoc": "run -T typedoc --options ../../tools/typedoc/config.json --out ./docs/api ./src/index.ts"
   },
   "dependencies": {
+    "@lukeed/uuid": "^2.0.0",
     "lodash": "^4.17.21",
     "moize": "^6.1.1",
     "ms": "^3.0.0-canary.1",
     "neverthrow": "^4.3.1",
-    "performant-array-to-tree": "^1.11.0",
-    "uuid": "^8.3.2"
+    "performant-array-to-tree": "^1.11.0"
   },
   "sideEffects": false,
   "devDependencies": {

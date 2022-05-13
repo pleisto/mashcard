@@ -16,7 +16,7 @@ import {
 import { parse, interpret } from '../grammar/core'
 import { dumpValue } from './persist'
 import { codeFragments2definition, variableKey } from '../grammar/convert'
-import { v4 as uuid } from 'uuid'
+import { uuid } from '@brickdoc/active-support'
 import { cleanupEventDependency, maybeEncodeString, shouldReceiveEvent } from '../grammar'
 import {
   FormulaContextNameChanged,

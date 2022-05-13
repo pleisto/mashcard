@@ -40,6 +40,7 @@
     "redis": "yarn workspace @brickdoc/nestjs-redis",
     "slonik": "yarn workspace @brickdoc/nestjs-slonik",
     "api-crate": "yarn workspace @brickdoc/server-api-crate",
+    "active-support": "yarn workspace @brickdoc/active-support",
     "build-support": "yarn workspace @brickdoc/build-support"
   },
   "devDependencies": {
@@ -59,8 +60,7 @@
     "@types/is-ci": "^3.0.0",
     "@types/jest": "^27.5.1",
     "@types/jest-axe": "^3.5.3",
-    "@types/mime-types": "^2.1.1",
-    "@types/node": "^17.0.32",
+    "@types/node": "^17.0.33",
     "@types/rails__actioncable": "^6.1.6",
     "@types/rails__activestorage": "^7.0.1",
     "@types/react": "^18.0.9",
@@ -71,7 +71,7 @@
     "depcheck": "^1.4.3",
     "eslint": "^8.15.0",
     "fs-extra": "^10.1.0",
-    "glob": "^8.0.1",
+    "glob": "^8.0.2",
     "graphql-tag": "^2.12.6",
     "husky": "^8.0.1",
     "identity-obj-proxy": "^3.0.0",
@@ -87,7 +87,7 @@
     "typedoc": "^0.22.15",
     "typedoc-plugin-markdown": "^3.12.1",
     "typescript": "^4.6.4",
-    "vite-plugin-ruby": "^3.0.10"
+    "vite-plugin-ruby": "^3.0.11"
   },
   "packageManager": "yarn@3.2.0",
   "resolutions": {
@@ -105,7 +105,7 @@
     "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.10#.yarn/patches/vite-plugin-mdx-npm-3.5.10-ae54c30668"
   },
   "dependencies": {
-    "@swc/core": "^1.2.182",
+    "@swc/core": "^1.2.183",
     "@swc/helpers": "^0.3.13",
     "dayjs": "^1.11.2",
     "ts-node": "^10.7.0"
