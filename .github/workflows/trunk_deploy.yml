@@ -104,7 +104,7 @@ jobs:
       - name: 'Get the GKE cluster Configuration'
         uses: 'google-github-actions/get-gke-credentials@v0'
         with:
-          cluster_name: 'kube-us-dev'
+          cluster_name: 'kube-us-dev-clone-1'
           location: 'us-central1'
       - name: 'Deploy to GKE'
         run: |-
