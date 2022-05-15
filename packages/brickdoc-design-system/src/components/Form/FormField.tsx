@@ -26,7 +26,7 @@ const MemoizedFormField = memo(
         label={label ?? name}
         invalidMessage={error?.message}
       >
-        {name && register && isValidElement(children)
+        {name && !!register && isValidElement(children)
           ? cloneElement(children, {
               ...register(name, options),
               'aria-invalid': error ? 'true' : 'false'

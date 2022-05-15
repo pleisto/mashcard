@@ -1,6 +1,6 @@
 import { Module, Global, DynamicModule, Inject } from '@nestjs/common'
 import { createSeedDecoder } from './seed-decoder/seed-decoder.provider'
-import { KMSModuleOptions, KMS_MODULE_OPTIONS } from './kms.interface'
+import { type KMSModuleOptions, KMS_MODULE_OPTIONS } from './kms.interface'
 import { KMSService } from './kms.service'
 
 @Global()

@@ -2,7 +2,7 @@
 
 ## Hierarchy
 
-- `Pick`<`ModuleMetadata`, ``"imports"``\>
+- `Pick`<`ModuleMetadata`, `"imports"`\>
 
   ↳ **`RedisModuleAsyncOptions`**
 
@@ -21,7 +21,7 @@
 
 ### <a id="imports" name="imports"></a> imports
 
-• `Optional` **imports**: (`DynamicModule` \| `Type`<`any`\> \| `Promise`<`DynamicModule`\> \| `ForwardReference`<`any`\>)[]
+• `Optional` **imports**: (`Type`<`any`\> \| `DynamicModule` \| `Promise`<`DynamicModule`\> \| `ForwardReference`<`any`\>)[]
 
 Optional list of imported modules that export the providers which are
 required in this module.
@@ -34,7 +34,7 @@ Pick.imports
 
 node_modules/@nestjs/common/interfaces/modules/module-metadata.interface.d.ts:18
 
-___
+---
 
 ### <a id="inject" name="inject"></a> inject
 
@@ -52,8 +52,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type    |
+| :-------- | :------ |
 | `...args` | `any`[] |
 
 #### Returns

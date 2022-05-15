@@ -2,7 +2,7 @@
 import { lookup } from 'mime-types'
 import { Controller, Get, UseInterceptors, UseFilters, Inject, Param, Query, Res } from '@nestjs/common'
 import { isNonEmptyString } from '@brickdoc/active-support'
-import { FastifyReply } from 'fastify'
+import { type FastifyReply } from 'fastify'
 import { BlobsLocalEndpointFlagInterceptor } from './blobs-local-endpoint-flag.interceptor'
 import { LocalBaseStorageAdaptor, QueryParams } from './storage-adaptor/local-base.storage-adaptor'
 import { BLOB_STORAGE, STORAGE_BUCKETS } from './blobs.interface'

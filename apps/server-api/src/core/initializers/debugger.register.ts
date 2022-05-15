@@ -16,7 +16,7 @@ export async function debugContextRegister(app: NestFastifyApplication): Promise
   const tokens = Array.from((app as any).instanceLinksHost.instanceLinks.keys())
     // eslint-disable-next-line no-return-assign
     .reduce(
-      (obj, token) =>
+      (obj: any, token) =>
         Object.assign(obj, {
           [typeof token === 'function' ? token.name : (token as any)]: token
         }),

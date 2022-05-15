@@ -6,7 +6,7 @@ import {
   SLONIK_MODULE_ID,
   SLONIK_MODULE_OPTIONS,
   SlonikModuleAsyncOptions,
-  SlonikModuleOptions,
+  type SlonikModuleOptions,
   SlonikOptionsFactory,
   LOGGER_NAME
 } from './slonik.interface'

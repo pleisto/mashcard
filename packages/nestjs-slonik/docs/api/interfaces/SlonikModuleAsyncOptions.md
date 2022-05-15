@@ -2,7 +2,7 @@
 
 ## Hierarchy
 
-- `Pick`<`ModuleMetadata`, ``"imports"``\>
+- `Pick`<`ModuleMetadata`, `"imports"`\>
 
   ↳ **`SlonikModuleAsyncOptions`**
 
@@ -24,7 +24,7 @@
 
 ### <a id="imports" name="imports"></a> imports
 
-• `Optional` **imports**: (`Type`<`any`\> \| `DynamicModule` \| `Promise`<`DynamicModule`\> \| `ForwardReference`<`any`\>)[]
+• `Optional` **imports**: (`DynamicModule` \| `Type`<`any`\> \| `Promise`<`DynamicModule`\> \| `ForwardReference`<`any`\>)[]
 
 Optional list of imported modules that export the providers which are
 required in this module.
@@ -37,7 +37,7 @@ Pick.imports
 
 node_modules/@nestjs/common/interfaces/modules/module-metadata.interface.d.ts:18
 
-___
+---
 
 ### <a id="inject" name="inject"></a> inject
 
@@ -47,7 +47,7 @@ ___
 
 [packages/nestjs-slonik/src/slonik.interface.ts:45](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-slonik/src/slonik.interface.ts#L45)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -57,7 +57,7 @@ ___
 
 [packages/nestjs-slonik/src/slonik.interface.ts:41](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-slonik/src/slonik.interface.ts#L41)
 
-___
+---
 
 ### <a id="useclass" name="useclass"></a> useClass
 
@@ -67,7 +67,7 @@ ___
 
 [packages/nestjs-slonik/src/slonik.interface.ts:43](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-slonik/src/slonik.interface.ts#L43)
 
-___
+---
 
 ### <a id="useexisting" name="useexisting"></a> useExisting
 
@@ -85,8 +85,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type    |
+| :-------- | :------ |
 | `...args` | `any`[] |
 
 #### Returns

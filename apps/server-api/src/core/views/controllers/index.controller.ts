@@ -1,6 +1,6 @@
 import { Controller, Get, Render, Optional, Inject, Req } from '@nestjs/common'
 import { type ViteDevServer, VITE_DEV_SERVER, webAppEntrypointUrl } from '@brickdoc/build-support'
-import { FastifyRequest } from 'fastify'
+import { type FastifyRequest } from 'fastify'
 import { IS_DEV_MODE } from '../../../common/utils'
 
 @Controller()

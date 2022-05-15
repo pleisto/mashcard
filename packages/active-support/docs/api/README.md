@@ -2645,7 +2645,7 @@ Converts an array of items with ids and parent ids to a nested tree in a perform
 
 ### <a id="attempt" name="attempt"></a> attempt
 
-▸ **attempt**<`TResult`\>(`func`, ...`args`): `TResult` \| `Error`
+▸ **attempt**<`TResult`\>(`func`, ...`args`): `Error` \| `TResult`
 
 Attempts to invoke func, returning either the result or the caught error object. Any additional arguments
 are provided to func when it’s invoked.
@@ -2665,7 +2665,7 @@ are provided to func when it’s invoked.
 
 #### Returns
 
-`TResult` \| `Error`
+`Error` \| `TResult`
 
 Returns the func result or error object.
 

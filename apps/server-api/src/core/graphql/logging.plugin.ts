@@ -2,7 +2,7 @@ import { Plugin } from '@nestjs/apollo'
 import { Inject } from '@nestjs/common'
 import { ApolloServerPlugin, GraphQLRequestListener, GraphQLRequestContext } from 'apollo-server-plugin-base'
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston'
-import { Logger } from 'winston'
+import { type Logger } from 'winston'
 
 @Plugin()
 export class LoggingPlugin implements ApolloServerPlugin {

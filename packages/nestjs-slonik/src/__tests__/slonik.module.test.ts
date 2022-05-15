@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
-import { DatabasePool, sql, createMockPool, createMockQueryResult, ConnectionError } from 'slonik'
+import { type DatabasePool, sql, createMockPool, createMockQueryResult, ConnectionError } from 'slonik'
 import { getPoolToken, logger } from '../slonik.utils'
 import { InjectPool } from '../slonik.decorator'
 import { SlonikModule } from '../slonik.module'

@@ -10,7 +10,7 @@ import {
 } from './settings.errors'
 import { ConfigMapExplorer } from './config-map.explorer'
 import { SettingsItem, SCOPE_ROOT_NODE, ScopeLookupStrategy, ScopeContext } from './settings.interface'
-import { InjectPool, DatabasePool } from '@brickdoc/nestjs-slonik'
+import { InjectPool, type DatabasePool } from '@brickdoc/nestjs-slonik'
 import { KMSService } from '../kms'
 import { createOrUpdateSetting, findSetting, findSettings } from './settings.sql-builder'
 

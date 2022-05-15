@@ -7,6 +7,19 @@ rules:
   jest/no-done-callback: off
   import/no-default-export: off
   jest/no-conditional-expect: off
+  jest/no-standalone-expect: off
+  jest/no-disabled-tests: off
+  jest/no-focused-tests: off
+  jest/no-identical-title: off
+  jest/prefer-to-have-length: off
+  jest/valid-expect: off
+  jest/no-test-prefixes: off
+  jest/expect-expect: off
+  jest/valid-title: off
+  jest/no-export: off
+  jest/valid-describe-callback: off
+  jest/valid-expect-in-promise: off
+  max-nested-callbacks: [warn, 4]
 
 parserOptions:
   project: ./tsconfig.json

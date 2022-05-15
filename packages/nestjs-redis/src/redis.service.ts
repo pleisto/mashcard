@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common'
 import {
   REDIS_CLIENT,
-  RedisClientType,
+  type RedisClientType,
   RedisCommandOptions,
   RedisModuleOptions,
   CryptoService

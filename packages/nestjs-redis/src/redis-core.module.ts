@@ -2,8 +2,8 @@ import { DynamicModule, Module, OnModuleDestroy, Inject, Global } from '@nestjs/
 import { RedisService } from './redis.service'
 import {
   REDIS_CLIENT,
-  RedisClientType,
-  RedisModuleOptions,
+  type RedisClientType,
+  type RedisModuleOptions,
   RedisModuleAsyncOptions,
   REDIS_MODULE_OPTIONS
 } from './redis.interface'

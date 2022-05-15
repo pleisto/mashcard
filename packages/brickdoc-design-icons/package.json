@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@icon-park/compiler": "^1.0.7",
-    "glob": "^8.0.2",
+    "glob": "^8.0.3",
     "mkdirp": "^1.0.4"
   }
 }

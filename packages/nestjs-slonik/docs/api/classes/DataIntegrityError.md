@@ -50,9 +50,9 @@ node_modules/slonik/dist/src/errors.d.ts:33
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1023
+node_modules/typescript/lib/lib.es5.d.ts:1029
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -64,9 +64,9 @@ ___
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1022
+node_modules/typescript/lib/lib.es5.d.ts:1028
 
-___
+---
 
 ### <a id="stack" name="stack"></a> stack
 
@@ -78,9 +78,9 @@ ___
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1024
+node_modules/typescript/lib/lib.es5.d.ts:1030
 
-___
+---
 
 ### <a id="preparestacktrace" name="preparestacktrace"></a> prepareStackTrace
 
@@ -98,9 +98,9 @@ Optional override for formatting stack traces
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `err` | `Error` |
+| Name          | Type         |
+| :------------ | :----------- |
+| `err`         | `Error`      |
 | `stackTraces` | `CallSite`[] |
 
 ##### Returns
@@ -115,7 +115,7 @@ Optional override for formatting stack traces
 
 node_modules/@types/node/globals.d.ts:11
 
-___
+---
 
 ### <a id="stacktracelimit" name="stacktracelimit"></a> stackTraceLimit
 
@@ -139,9 +139,9 @@ Create .stack property on a target object
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `targetObject` | `object` |
+| Name              | Type       |
+| :---------------- | :--------- |
+| `targetObject`    | `object`   |
 | `constructorOpt?` | `Function` |
 
 #### Returns
