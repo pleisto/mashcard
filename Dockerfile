@@ -39,7 +39,7 @@ FROM ghcr.io/brickdoc/ruby-3:latest
 
 WORKDIR /app
 
-LABEL org.opencontainers.iamge.authors="secure@brickdoc.com"
+LABEL org.opencontainers.image.authors="secure@brickdoc.com"
 LABEL org.opencontainers.image.source="https://github.com/brickdoc/brickdoc"
 
 ARG RAILS_ENV=production

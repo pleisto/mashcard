@@ -115,7 +115,7 @@ class Space < ApplicationRecord
   end
 
   def generate_invite_secret
-    secret = Blake3::Hasher.hexdigest("#{id}-#{Time.now.to_i}", key: Brickdoc::Crypto.derive_key(:hash_salt))
+    secret = Digest::SHA256.hexdigest("#{id}-#{Time.now.to_i}-#{Brickdoc::Crypto.derive_key(:hash_salt)}")
     "#{secret[0...16]}#{hashed_id}#{secret[60..64]}"
   end
 

@@ -59,8 +59,6 @@ gem 'devise-async', '~> 1.0.0'
 gem 'omniauth', '~> 2.0', '>= 2.0.4'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'rbnacl', '~> 7.1', '>= 7.1.1'
-gem 'blake3', '~> 0.1.3'
-
 ## oauth2 1.4.8 has compatibility issues with omniauth
 gem 'oauth2', '1.4.7'
 

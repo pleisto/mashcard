@@ -22,12 +22,11 @@ module Brickdoc
       def derive_key(sub_key, context = 'unknown')
         key_id = SUBKEY_MAPPING[sub_key]
         raise 'Unknown sub key' unless key_id.present?
-        Blake3.derive_key("#{PREFIX}://#{key_id}/#{context}",
-          Brickdoc::Crypto.root_key)
+        Digest::SHA256.hexdigest("#{PREFIX}://#{key_id}/#{context}?key=#{Brickdoc::Crypto.root_key}")
       end
 
       def data_masking(data)
-        Blake3::Hasher.hexdigest(data, key: derive_key(:data_encryption))
+        Digest::SHA256.hexdigest("#{data}#{derive_key(:data_encryption)}")
       end
 
       def gcp_kms_decrypt(ciphertext)
