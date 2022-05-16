@@ -23,7 +23,7 @@ export enum QueryParams {
 export interface SignatureQueryParams {
   [QueryParams.Date]: string
   [QueryParams.Expires]: string
-  [QueryParams.Signature]: string
+  [QueryParams.Signature]?: string
   [QueryParams.Algorithm]?: string
   [QueryParams.Credential]?: string
   [QueryParams.SignedHeaders]?: string
@@ -68,12 +68,32 @@ export abstract class LocalBaseStorageAdaptor extends BaseStorageAdaptor {
     return new URL(`/blobs/${bucket}/${key}`, host).toString()
   }
 
-  async directDownloadUrl(bucket: STORAGE_BUCKETS, key: string, expires: number): Promise<undefined | string> {
-    return await this.endpoint(bucket, key)
+  async directDownloadUrl(bucket: STORAGE_BUCKETS, key: string, expires: number): Promise<string> {
+    return await this.signedUrl('get', bucket, key, expires)
   }
 
-  async directUploadUrl(bucket: STORAGE_BUCKETS, key: string, expires: number): Promise<undefined | string> {
-    return await this.endpoint(bucket, key)
+  async directUploadUrl(bucket: STORAGE_BUCKETS, key: string, expires: number): Promise<string> {
+    return await this.signedUrl('put', bucket, key, expires)
+  }
+
+  /**
+   * Generate a signed url for blob download/upload
+   */
+  protected async signedUrl(
+    method: 'get' | 'put',
+    bucket: STORAGE_BUCKETS,
+    key: string,
+    expires: number
+  ): Promise<string> {
+    const endpoint = await this.endpoint(bucket, key)
+    // Get blobs from public bucket does not require signature
+    if (bucket === STORAGE_BUCKETS.PUBLIC && method === 'get') return endpoint
+
+    const queryString = this.signedQueryParams(method, bucket, key, {
+      [QueryParams.Date]: new Date().toISOString(),
+      [QueryParams.Expires]: expires.toString()
+    })
+    return `${endpoint}?${queryString}`
   }
 
   /**
@@ -82,7 +102,7 @@ export abstract class LocalBaseStorageAdaptor extends BaseStorageAdaptor {
   async handleDownloadRequest(
     bucket: STORAGE_BUCKETS,
     key: string,
-    params: SignatureQueryParams
+    params: string | ParsedUrlQuery
   ): Promise<Result<ReadableStream, Error>> {
     if (STORAGE_BUCKETS.PRIVATE === bucket && !this.authSignedRequest('get', bucket, key, params)) {
       return err(new AccessDeniedError())
@@ -97,12 +117,15 @@ export abstract class LocalBaseStorageAdaptor extends BaseStorageAdaptor {
   /**
    * Authenticate signature request
    */
-  private authSignedRequest(
+  public authSignedRequest(
     method: 'put' | 'get',
     bucket: STORAGE_BUCKETS,
     key: string,
-    params: SignatureQueryParams
+    queryString: string | ParsedUrlQuery
   ): boolean {
+    const params = (typeof queryString === 'string'
+      ? parse(queryString)
+      : queryString) as unknown as SignatureQueryParams
     // expired timestamp
     const expiredTime =
       Date.parse(params[QueryParams.Date]) +
@@ -113,7 +136,8 @@ export abstract class LocalBaseStorageAdaptor extends BaseStorageAdaptor {
       !isNonEmptyString(params[QueryParams.Signature]) ||
       isNaN(expiredTime) ||
       expiredTime < Date.now() ||
-      this.signedQueryParams(method, bucket, key, params)[QueryParams.Signature] !== params[QueryParams.Signature]
+      parse(this.signedQueryParams(method, bucket, key, params))[QueryParams.Signature] !==
+        params[QueryParams.Signature]
     ) {
       return false
     } else {
@@ -126,7 +150,7 @@ export abstract class LocalBaseStorageAdaptor extends BaseStorageAdaptor {
     bucket: STORAGE_BUCKETS,
     key: string,
     params: SignatureQueryParams
-  ): ParsedUrlQuery {
+  ): string {
     const date = params[QueryParams.Date]
     const expires = params[QueryParams.Expires]
 
@@ -151,6 +175,6 @@ export abstract class LocalBaseStorageAdaptor extends BaseStorageAdaptor {
       `BRD4:common.blobs.local`
     )
 
-    return parse(`${baseQueryParams}&${QueryParams.Signature}=${signature}`)
+    return `${baseQueryParams}&${QueryParams.Signature}=${signature}`
   }
 }

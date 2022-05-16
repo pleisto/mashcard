@@ -1,5 +1,14 @@
-import { join } from 'path'
-import { promises, access, constants, createReadStream, ReadStream, accessSync } from 'fs'
+import { join, dirname } from 'path'
+import {
+  promises,
+  access,
+  constants,
+  createReadStream,
+  ReadStream,
+  accessSync,
+  createWriteStream,
+  WriteStream
+} from 'fs'
 import { Injectable, OnModuleInit } from '@nestjs/common'
 import { LocalBaseStorageAdaptor } from '../local-base.storage-adaptor'
 import { BlobPutOptions, BlobMetadata, STORAGE_BUCKETS } from '../../blobs.interface'
@@ -47,7 +56,7 @@ export class DiskStorageAdaptor extends LocalBaseStorageAdaptor implements OnMod
   }
 
   async get(bucket: STORAGE_BUCKETS, key: string): Promise<ReadStream | undefined> {
-    const path = join(await this.getUploadDir(bucket), key)
+    const path = await this.getPath(bucket, key)
     try {
       accessSync(path, constants.R_OK)
       return createReadStream(path)
@@ -60,9 +69,32 @@ export class DiskStorageAdaptor extends LocalBaseStorageAdaptor implements OnMod
     }
   }
 
-  async put(bucket: STORAGE_BUCKETS, key: string, data: Buffer, options?: BlobPutOptions): Promise<void> {
-    const opts = options?.overwrite ? { flag: 'w' } : {}
-    await promises.writeFile(join(await this.getUploadDir(bucket), key), data, opts)
+  async put(bucket: STORAGE_BUCKETS, key: string, options?: BlobPutOptions): Promise<WriteStream> {
+    const filePath = await this.getPath(bucket, key)
+    // recursive create dir if not exists
+    await promises.mkdir(dirname(filePath), { recursive: true })
+    return createWriteStream(filePath, {})
+  }
+
+  async delete(bucket: STORAGE_BUCKETS, key: string): Promise<boolean> {
+    const filePath = await this.getPath(bucket, key)
+    try {
+      await promises.rm(filePath)
+      return true
+    } catch (e: any) {
+      if (e?.code === 'ENOENT') {
+        return false
+      } else {
+        throw e
+      }
+    }
+  }
+
+  /**
+   * get file path form bucket and key
+   */
+  async getPath(bucket: STORAGE_BUCKETS, key: string): Promise<string> {
+    return join(await this.getUploadDir(bucket), key)
   }
 
   /**

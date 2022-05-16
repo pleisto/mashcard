@@ -1,8 +1,9 @@
 /* eslint-disable max-params */
 import { lookup } from 'mime-types'
-import { Controller, Get, UseInterceptors, UseFilters, Inject, Param, Query, Res } from '@nestjs/common'
+import { ParsedUrlQuery } from 'node:querystring'
+import { Controller, Get, UseInterceptors, UseFilters, Inject, Param, Query, Res, Req } from '@nestjs/common'
 import { isNonEmptyString } from '@brickdoc/active-support'
-import { type FastifyReply } from 'fastify'
+import type { FastifyReply, FastifyRequest } from 'fastify'
 import { BlobsLocalEndpointFlagInterceptor } from './blobs-local-endpoint-flag.interceptor'
 import { LocalBaseStorageAdaptor, QueryParams } from './storage-adaptor/local-base.storage-adaptor'
 import { BLOB_STORAGE, STORAGE_BUCKETS } from './blobs.interface'
@@ -29,16 +30,13 @@ export class BlobsLocalEndpointController {
     @Query(QueryParams.Signature) sign: string,
     @Query(QueryParams.Date) date: string,
     @Query(QueryParams.Expires) expires: string,
+    @Req() req: FastifyRequest,
     @Res() reply: FastifyReply
   ): Promise<void> {
     if (!(Object.values(STORAGE_BUCKETS) as string[]).includes(bucket)) throw new InvalidBucketError(bucket)
     if (!isNonEmptyString(key)) throw new NotFoundKeyError(key)
 
-    const result = await this.storage.handleDownloadRequest(bucket as STORAGE_BUCKETS, key, {
-      [QueryParams.Signature]: sign,
-      [QueryParams.Date]: date,
-      [QueryParams.Expires]: expires
-    })
+    const result = await this.storage.handleDownloadRequest(bucket as STORAGE_BUCKETS, key, req.query as ParsedUrlQuery)
     if (result.isErr()) throw result.error
     await reply.header('Content-Type', lookup(key) ?? 'application/octet-stream').send(result.value)
   }

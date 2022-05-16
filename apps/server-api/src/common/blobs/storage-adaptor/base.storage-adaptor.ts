@@ -1,5 +1,5 @@
 import { BlobMetadata, BlobPutOptions, STORAGE_BUCKETS } from '../blobs.interface'
-import { ReadStream } from 'fs'
+import { ReadStream, WriteStream } from 'fs'
 
 /**
  * Abstract class for blob storage class adaptors.
@@ -19,16 +19,22 @@ export abstract class BaseStorageAdaptor {
    * @param bucket Storage bucket
    * @param key blob key
    */
-  public abstract get(bucket: STORAGE_BUCKETS, key: string): Promise<Buffer | ReadStream | undefined>
+  public abstract get(bucket: STORAGE_BUCKETS, key: string): Promise<ReadStream | undefined>
 
   /**
-   * Upload blob from buffer
+   * Upload blob from write stream
    * @param bucket Storage bucket
    * @param key blob key
-   * @param buffer blob data
    * @param options blob put options
    */
-  public abstract put(bucket: STORAGE_BUCKETS, key: string, buffer: Buffer, options?: BlobPutOptions): Promise<void>
+  public abstract put(bucket: STORAGE_BUCKETS, key: string, options?: BlobPutOptions): Promise<WriteStream>
+
+  /**
+   * Delete blob
+   * @param bucket Storage bucket
+   * @param key blob key
+   */
+  public abstract delete(bucket: STORAGE_BUCKETS, key: string): Promise<boolean>
 
   /**
    * Get a download url for a blob
