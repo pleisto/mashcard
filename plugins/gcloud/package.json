@@ -33,7 +33,6 @@
     "@nestjs/testing": "^8.4.5"
   },
   "dependencies": {
-    "@google-cloud/debug-agent": "5.2.9",
     "@google-cloud/kms": "^2.11.1",
     "@google-cloud/profiler": "^4.1.7",
     "@google-cloud/storage": "^5.19.4",

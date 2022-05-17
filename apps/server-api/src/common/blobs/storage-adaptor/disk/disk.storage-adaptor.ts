@@ -1,17 +1,8 @@
 import { join, dirname } from 'path'
-import {
-  promises,
-  access,
-  constants,
-  createReadStream,
-  ReadStream,
-  accessSync,
-  createWriteStream,
-  WriteStream
-} from 'fs'
+import { promises, access, constants, createReadStream, accessSync, createWriteStream } from 'fs'
 import { Injectable, OnModuleInit } from '@nestjs/common'
 import { LocalBaseStorageAdaptor } from '../local-base.storage-adaptor'
-import { BlobPutOptions, BlobMetadata, STORAGE_BUCKETS } from '../../blobs.interface'
+import { BlobMetadata, STORAGE_BUCKETS } from '../../blobs.interface'
 import { SettingsService } from '../../../settings'
 import { KMSService } from '../../../kms'
 
@@ -55,7 +46,7 @@ export class DiskStorageAdaptor extends LocalBaseStorageAdaptor implements OnMod
     }
   }
 
-  async get(bucket: STORAGE_BUCKETS, key: string): Promise<ReadStream | undefined> {
+  async get(bucket: STORAGE_BUCKETS, key: string): Promise<NodeJS.ReadableStream | undefined> {
     const path = await this.getPath(bucket, key)
     try {
       accessSync(path, constants.R_OK)
@@ -69,7 +60,7 @@ export class DiskStorageAdaptor extends LocalBaseStorageAdaptor implements OnMod
     }
   }
 
-  async put(bucket: STORAGE_BUCKETS, key: string, options?: BlobPutOptions): Promise<WriteStream> {
+  async put(bucket: STORAGE_BUCKETS, key: string): Promise<NodeJS.WritableStream> {
     const filePath = await this.getPath(bucket, key)
     // recursive create dir if not exists
     await promises.mkdir(dirname(filePath), { recursive: true })

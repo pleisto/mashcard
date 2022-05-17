@@ -4,6 +4,9 @@ import { NestFastifyApplication } from '@nestjs/platform-fastify'
 
 const REQUEST_ID_HEADER = 'X-Request-Id'
 
+/**
+ * Add a request ID to the response headers.
+ */
 const RequestIDPlugin: FastifyPluginAsync = async (fastify, _options) => {
   fastify.addHook('preHandler', async (req, reply) => {
     if (req.headers[REQUEST_ID_HEADER]) {

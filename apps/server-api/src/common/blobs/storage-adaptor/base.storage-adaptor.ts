@@ -1,5 +1,4 @@
-import { BlobMetadata, BlobPutOptions, STORAGE_BUCKETS } from '../blobs.interface'
-import { ReadStream, WriteStream } from 'fs'
+import { BlobMetadata, STORAGE_BUCKETS } from '../blobs.interface'
 
 /**
  * Abstract class for blob storage class adaptors.
@@ -19,15 +18,14 @@ export abstract class BaseStorageAdaptor {
    * @param bucket Storage bucket
    * @param key blob key
    */
-  public abstract get(bucket: STORAGE_BUCKETS, key: string): Promise<ReadStream | undefined>
+  public abstract get(bucket: STORAGE_BUCKETS, key: string): Promise<NodeJS.ReadableStream | undefined>
 
   /**
    * Upload blob from write stream
    * @param bucket Storage bucket
    * @param key blob key
-   * @param options blob put options
    */
-  public abstract put(bucket: STORAGE_BUCKETS, key: string, options?: BlobPutOptions): Promise<WriteStream>
+  public abstract put(bucket: STORAGE_BUCKETS, key: string): Promise<NodeJS.WritableStream>
 
   /**
    * Delete blob

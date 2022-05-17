@@ -2,7 +2,7 @@ import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import { fastifyHelmet } from '@fastify/helmet'
 import { IS_PROD_MODE } from '../../common/utils'
 
-export const helmetRegister = async (app: NestFastifyApplication): Promise<void> => {
+export const helmetRegister = async (app: NestFastifyApplication, tlsEnabled: boolean): Promise<void> => {
   await app.register(fastifyHelmet, {
     /**
      * For Apollo landing page:
@@ -25,6 +25,7 @@ export const helmetRegister = async (app: NestFastifyApplication): Promise<void>
       }
     },
     crossOriginEmbedderPolicy: false,
-    hsts: IS_PROD_MODE
+    // add HSTS header to all requests when TLS is enabled and server is in production mode
+    hsts: IS_PROD_MODE && tlsEnabled
   })
 }

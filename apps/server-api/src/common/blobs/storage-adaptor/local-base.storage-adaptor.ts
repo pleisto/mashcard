@@ -48,9 +48,7 @@ export abstract class LocalBaseStorageAdaptor extends BaseStorageAdaptor {
     this.storageOverLocalHttpService = true
   }
 
-  /**
-   * static value for aws s3 signature v4 mock
-   */
+  // Static values for aws s3 signature v4 mock
   public readonly scope: string = `${format(new Date(), 'yyyyMMdd')}/brickdoc-srv/local_blobs/brd4_request`
   public readonly credential: string = `BlobsService/${this.scope}`
   public readonly algorithm: string = 'BRD4-HMAC-BLAKE3'
@@ -83,7 +81,8 @@ export abstract class LocalBaseStorageAdaptor extends BaseStorageAdaptor {
     method: 'get' | 'put',
     bucket: STORAGE_BUCKETS,
     key: string,
-    expires: number
+    expires: number,
+    extraParams?: SignatureQueryParams
   ): Promise<string> {
     const endpoint = await this.endpoint(bucket, key)
     // Get blobs from public bucket does not require signature
@@ -91,7 +90,8 @@ export abstract class LocalBaseStorageAdaptor extends BaseStorageAdaptor {
 
     const queryString = this.signedQueryParams(method, bucket, key, {
       [QueryParams.Date]: new Date().toISOString(),
-      [QueryParams.Expires]: expires.toString()
+      [QueryParams.Expires]: expires.toString(),
+      ...extraParams
     })
     return `${endpoint}?${queryString}`
   }
@@ -103,7 +103,8 @@ export abstract class LocalBaseStorageAdaptor extends BaseStorageAdaptor {
     bucket: STORAGE_BUCKETS,
     key: string,
     params: string | ParsedUrlQuery
-  ): Promise<Result<ReadableStream, Error>> {
+  ): Promise<Result<NodeJS.ReadableStream, Error>> {
+    // Get blobs from public bucket does not require signature
     if (STORAGE_BUCKETS.PRIVATE === bucket && !this.authSignedRequest('get', bucket, key, params)) {
       return err(new AccessDeniedError())
     }
@@ -111,7 +112,25 @@ export abstract class LocalBaseStorageAdaptor extends BaseStorageAdaptor {
     const blob = await this.get(bucket, key)
     if (blob === undefined) return err(new NotFoundKeyError(key))
 
-    return ok(blob as unknown as ReadableStream)
+    return ok(blob)
+  }
+
+  /**
+   * handle upload request from BlobLocalEndpointController
+   */
+  async handleUploadRequest(
+    bucket: STORAGE_BUCKETS,
+    key: string,
+    params: string | ParsedUrlQuery
+  ): Promise<Result<NodeJS.WritableStream, Error>> {
+    // All uploads request require valid signature
+    if (!this.authSignedRequest('put', bucket, key, params)) {
+      return err(new AccessDeniedError())
+    }
+
+    const stream = await this.put(bucket, key)
+
+    return ok(stream)
   }
 
   /**
@@ -124,7 +143,8 @@ export abstract class LocalBaseStorageAdaptor extends BaseStorageAdaptor {
     queryString: string | ParsedUrlQuery
   ): boolean {
     const params = (typeof queryString === 'string'
-      ? parse(queryString)
+      ? // remove leading '?'
+        parse(queryString.replace(/^\?/, ''))
       : queryString) as unknown as SignatureQueryParams
     // expired timestamp
     const expiredTime =
@@ -133,9 +153,12 @@ export abstract class LocalBaseStorageAdaptor extends BaseStorageAdaptor {
       parseInt(params[QueryParams.Expires], 10) * 1000
 
     if (
+      // signature is required
       !isNonEmptyString(params[QueryParams.Signature]) ||
+      // expired timestamp should be not expired
       isNaN(expiredTime) ||
       expiredTime < Date.now() ||
+      // signature should be valid
       parse(this.signedQueryParams(method, bucket, key, params))[QueryParams.Signature] !==
         params[QueryParams.Signature]
     ) {
@@ -151,30 +174,53 @@ export abstract class LocalBaseStorageAdaptor extends BaseStorageAdaptor {
     key: string,
     params: SignatureQueryParams
   ): string {
-    const date = params[QueryParams.Date]
-    const expires = params[QueryParams.Expires]
+    const {
+      [QueryParams.Date]: date,
+      [QueryParams.Expires]: expires,
 
-    const baseQueryParams: string = stringify({
+      // ignore some params
+      [QueryParams.Signature]: _signature,
+      [QueryParams.Algorithm]: _algorithm,
+      [QueryParams.Credential]: _credential,
+      [QueryParams.SignedHeaders]: _signedHeaders,
+
+      // add other params
+      ...extraParams
+    } = params
+
+    const baseQueryParams = {
       [QueryParams.Algorithm]: this.algorithm,
       [QueryParams.Credential]: this.credential,
       [QueryParams.Date]: date,
       [QueryParams.Expires]: expires,
       [QueryParams.SignedHeaders]: this.signedHeaders
-    })
+    }
 
+    // Similar to AWS S3 Signature V4, but not exactly the same.
     const request = [
       this.algorithm,
       date,
       this.scope,
       genericHash(
-        [method, `/${bucket}/${key}`, baseQueryParams, `host: ${this.host}`, '', 'host', 'UNSIGNED-PAYLOAD'].join('\n')
+        [
+          method,
+          `/${bucket}/${key}`,
+          stringify(baseQueryParams),
+          `host: ${this.host}`,
+          '',
+          'host',
+          'UNSIGNED-PAYLOAD'
+        ].join('\n')
       )
     ].join('\n')
     const signature = [date, request].reduce(
       (acc, x) => genericHash(x, this.kms.subKey(SecretSubKey.DATA_ENCRYPTION, acc)),
-      `BRD4:common.blobs.local`
+      `BRD4:common.blobs.local` // fixed identity
     )
 
-    return `${baseQueryParams}&${QueryParams.Signature}=${signature}`
+    return `${stringify({
+      ...extraParams,
+      ...baseQueryParams
+    })}&${QueryParams.Signature}=${signature}`
   }
 }

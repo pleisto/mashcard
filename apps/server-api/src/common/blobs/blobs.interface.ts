@@ -5,10 +5,6 @@ export interface BlobMetadata {
   updatedAt: Date
 }
 
-export interface BlobPutOptions {
-  overwrite?: boolean
-}
-
 export enum STORAGE_BUCKETS {
   PUBLIC = 'public_read',
   PRIVATE = 'private_attachment'

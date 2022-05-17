@@ -1,5 +1,6 @@
 /* eslint-disable max-classes-per-file */
 import { BrickdocBaseError, ErrorCode } from '../errors'
+import { isNonEmptyString } from '@brickdoc/active-support'
 
 export class BlobsError extends BrickdocBaseError {
   xmlCode: string
@@ -9,10 +10,19 @@ export class BlobsError extends BrickdocBaseError {
   }
 }
 
-export class LocalEndpointUnsupportedError extends BlobsError {
-  constructor() {
-    super('LOCAL_ENDPOINT_UNSUPPORTED', 'Current storage adaptor does not support local endpoint')
+export class RequestUnsupportedError extends BlobsError {
+  constructor(detail?: string) {
+    super(
+      'UNSUPPORTED_REQUEST',
+      'Current storage adaptor does not support local endpoint or request payload is invalid.'
+    )
+    this.xmlCode = 'BAD_REQUEST'
     this.code = ErrorCode.BAD_USER_INPUT
+    if (isNonEmptyString(detail)) {
+      this.details = {
+        ErrorDetail: detail
+      }
+    }
   }
 }
 
@@ -43,5 +53,17 @@ export class AccessDeniedError extends BlobsError {
     super('ACCESS_DENIED', 'Access denied, signature does not match or the request has expired')
     this.xmlCode = 'AccessDenied'
     this.code = ErrorCode.FORBIDDEN
+  }
+}
+
+export class ObjectUploadFailedError extends BlobsError {
+  constructor(key: string, detail: string, originalError?: Error) {
+    super('OBJECT_UPLOAD_FAILED', 'Object upload failed')
+    this.xmlCode = 'UploadFailed'
+    this.code = ErrorCode.UNAVAILABLE
+    this.originalError = originalError
+    this.details = {
+      ErrorDetail: this.details
+    }
   }
 }

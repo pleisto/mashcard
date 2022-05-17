@@ -13,7 +13,7 @@ interface CustomSigner {
 }
 
 /**
- * Fixed error type definition for `fastify-cookie`
+ * Fix error type definition for `@fastify/cookie`
  * to add custom signer support
  */
 interface FastifyCookieOptions {
@@ -22,7 +22,9 @@ interface FastifyCookieOptions {
     decode?: (value: string) => string
   }
 }
-
+/**
+ * Add `@fastify/cookie` integration to the fastify.
+ */
 export const cookieRegister = (app: NestFastifyApplication, secretKey: string): void => {
   const separator = '$'
   void app.register(fastifyCookie as FastifyPluginCallback<NonNullable<FastifyCookieOptions>>, {

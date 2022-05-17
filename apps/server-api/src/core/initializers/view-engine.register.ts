@@ -3,6 +3,9 @@ import path from 'path'
 import handlebars from 'handlebars'
 import { MONOREPO_ROOT, SERVER_SRC_ROOT } from '../../common/utils'
 
+/**
+ * Set the view engine to `handlebars`, and define the view directory path.
+ */
 export const viewEngineRegister = (app: NestFastifyApplication): void => {
   app.setViewEngine({ engine: { handlebars }, templates: path.resolve(SERVER_SRC_ROOT, 'core/views/templates') })
   app.useStaticAssets({ root: path.resolve(MONOREPO_ROOT, 'public'), index: false, wildcard: false })

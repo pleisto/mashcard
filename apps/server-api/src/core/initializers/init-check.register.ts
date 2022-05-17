@@ -3,8 +3,11 @@ import { env } from 'process'
 import { BrickdocBaseError } from '../../common/errors'
 import { currentMigrator } from '../../cli/utils'
 
+/**
+ * Check required environment variables are set
+ * @param _app
+ */
 export const initCheckRegister = async (_app: NestFastifyApplication): Promise<void> => {
-  // Check required environment variables are set
   const missedEnvVars = ['NODE_ENV', 'REDIS_URL', 'SECRET_KEY_SEED', 'DATABASE_URL_BASE', 'DATABASE_NAME'].filter(
     // eslint-disable-next-line no-prototype-builtins
     key => !env.hasOwnProperty(key)
