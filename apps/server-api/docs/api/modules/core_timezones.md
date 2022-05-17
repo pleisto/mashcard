@@ -14,4 +14,4 @@
 
 #### Defined in
 
-[core/timezones/index.ts:3](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/timezones/index.ts#L3)
+[apps/server-api/src/core/timezones/index.ts:3](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/timezones/index.ts#L3)

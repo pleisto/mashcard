@@ -35,7 +35,7 @@
 
 #### Defined in
 
-[common/testing/http.utils.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/testing/http.utils.ts#L8)
+[apps/server-api/src/common/testing/http.utils.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/testing/http.utils.ts#L8)
 
 ## Functions
 
@@ -58,7 +58,7 @@ Create app module for testing
 
 #### Defined in
 
-[common/testing/http.utils.ts:15](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/testing/http.utils.ts#L15)
+[apps/server-api/src/common/testing/http.utils.ts:15](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/testing/http.utils.ts#L15)
 
 ---
 
@@ -81,7 +81,7 @@ Create GraphQL server based on app module for testing
 
 #### Defined in
 
-[common/testing/graphql.utils.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/testing/graphql.utils.ts#L12)
+[apps/server-api/src/common/testing/graphql.utils.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/testing/graphql.utils.ts#L12)
 
 ---
 
@@ -104,4 +104,4 @@ Create http server based on app module for testing
 
 #### Defined in
 
-[common/testing/http.utils.ts:43](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/testing/http.utils.ts#L43)
+[apps/server-api/src/common/testing/http.utils.ts:43](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/testing/http.utils.ts#L43)

@@ -14,8 +14,8 @@
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `options` | `Schema` |
 
 #### Returns
@@ -24,4 +24,4 @@
 
 #### Defined in
 
-[cli/schematics/dotenv/index.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/cli/schematics/dotenv/index.ts#L12)
+[apps/server-api/src/cli/schematics/dotenv/index.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/cli/schematics/dotenv/index.ts#L12)

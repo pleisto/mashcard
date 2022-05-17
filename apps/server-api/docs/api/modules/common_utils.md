@@ -13,6 +13,7 @@
 ### Functions
 
 - [requestLoggingContext](common_utils.md#requestloggingcontext)
+- [safeJsonParse](common_utils.md#safejsonparse)
 
 ## Variables
 
@@ -22,7 +23,7 @@
 
 #### Defined in
 
-[common/utils/constants.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L7)
+[apps/server-api/src/common/utils/constants.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L7)
 
 ---
 
@@ -32,7 +33,7 @@
 
 #### Defined in
 
-[common/utils/constants.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L8)
+[apps/server-api/src/common/utils/constants.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L8)
 
 ---
 
@@ -42,7 +43,7 @@
 
 #### Defined in
 
-[common/utils/constants.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L9)
+[apps/server-api/src/common/utils/constants.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L9)
 
 ---
 
@@ -52,7 +53,7 @@
 
 #### Defined in
 
-[common/utils/constants.ts:5](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L5)
+[apps/server-api/src/common/utils/constants.ts:5](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L5)
 
 ---
 
@@ -62,7 +63,7 @@
 
 #### Defined in
 
-[common/utils/constants.ts:4](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L4)
+[apps/server-api/src/common/utils/constants.ts:4](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L4)
 
 ## Functions
 
@@ -93,4 +94,26 @@
 
 #### Defined in
 
-[common/utils/logging.ts:4](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/logging.ts#L4)
+[apps/server-api/src/common/utils/logging.ts:4](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/logging.ts#L4)
+
+---
+
+### <a id="safejsonparse" name="safejsonparse"></a> safeJsonParse
+
+▸ **safeJsonParse**(...`args`): `Result`<`any`, `unknown`\>
+
+JSON Parser with result wrapper
+
+#### Parameters
+
+| Name      | Type                               |
+| :-------- | :--------------------------------- |
+| `...args` | [text: string, reviver?: Function] |
+
+#### Returns
+
+`Result`<`any`, `unknown`\>
+
+#### Defined in
+
+[apps/server-api/src/common/utils/neverthrow.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/neverthrow.ts#L6)

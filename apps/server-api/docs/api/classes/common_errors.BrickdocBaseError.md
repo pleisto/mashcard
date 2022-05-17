@@ -38,11 +38,11 @@ Append additional details to the error for server-side logging.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `name` | `string` |
-| `message` | `string` |
-| `originalError?` | `Error` |
+| Name             | Type     |
+| :--------------- | :------- |
+| `name`           | `string` |
+| `message`        | `string` |
+| `originalError?` | `Error`  |
 
 #### Overrides
 
@@ -50,7 +50,7 @@ Error.constructor
 
 #### Defined in
 
-[common/errors/base.error.ts:43](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L43)
+[apps/server-api/src/common/errors/base.error.ts:43](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L43)
 
 ## Properties
 
@@ -62,9 +62,9 @@ It may be exposed to the client.
 
 #### Defined in
 
-[common/errors/base.error.ts:22](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L22)
+[apps/server-api/src/common/errors/base.error.ts:22](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L22)
 
-___
+---
 
 ### <a id="details" name="details"></a> details
 
@@ -80,9 +80,9 @@ So it is recommended that all variables used in the `message` be stored there.
 
 #### Defined in
 
-[common/errors/base.error.ts:29](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L29)
+[apps/server-api/src/common/errors/base.error.ts:29](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L29)
 
-___
+---
 
 ### <a id="message" name="message"></a> message
 
@@ -97,9 +97,9 @@ Error.message
 
 #### Defined in
 
-[common/errors/base.error.ts:17](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L17)
+[apps/server-api/src/common/errors/base.error.ts:17](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L17)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -114,9 +114,9 @@ Error.name
 
 #### Defined in
 
-[common/errors/base.error.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L11)
+[apps/server-api/src/common/errors/base.error.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L11)
 
-___
+---
 
 ### <a id="originalerror" name="originalerror"></a> originalError
 
@@ -126,4 +126,4 @@ originalError is used to store the original error that was thrown
 
 #### Defined in
 
-[common/errors/base.error.ts:36](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L36)
+[apps/server-api/src/common/errors/base.error.ts:36](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L36)

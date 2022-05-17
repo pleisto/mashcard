@@ -20,4 +20,4 @@ Secret key seed. {seedName}:{base64-encoded-seed}
 
 #### Defined in
 
-[common/kms/kms.interface.ts:17](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.interface.ts#L17)
+[apps/server-api/src/common/kms/kms.interface.ts:17](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.interface.ts#L17)

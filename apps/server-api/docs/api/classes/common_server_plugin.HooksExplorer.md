@@ -22,14 +22,14 @@ HooksExplorer could be used to discover server plugin hooks.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `discoveryService` | `DiscoveryService` |
+| Name               | Type                   |
+| :----------------- | :--------------------- |
+| `discoveryService` | `DiscoveryService`     |
 | `metadataAccessor` | `HookMetadataAccessor` |
 
 #### Defined in
 
-[common/server-plugin/hooks.explorer.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hooks.explorer.ts#L12)
+[apps/server-api/src/common/server-plugin/hooks.explorer.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hooks.explorer.ts#L12)
 
 ## Methods
 
@@ -41,15 +41,15 @@ Find all hooks by type that have @ServerPluginHook() decorator
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends [`HookType`](../enums/common_server_plugin.HookType.md) |
+| Name | Type                                                            |
+| :--- | :-------------------------------------------------------------- |
+| `T`  | extends [`HookType`](../enums/common_server_plugin.HookType.md) |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `type` | `T` |
+| Name   | Type |
+| :----- | :--- |
+| `type` | `T`  |
 
 #### Returns
 
@@ -57,4 +57,4 @@ Find all hooks by type that have @ServerPluginHook() decorator
 
 #### Defined in
 
-[common/server-plugin/hooks.explorer.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hooks.explorer.ts#L20)
+[apps/server-api/src/common/server-plugin/hooks.explorer.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hooks.explorer.ts#L20)

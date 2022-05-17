@@ -19,9 +19,9 @@ session context for calculating scope
 
 #### Defined in
 
-[common/settings/settings.interface.ts:106](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L106)
+[apps/server-api/src/common/settings/settings.interface.ts:106](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L106)
 
-___
+---
 
 ### <a id="userid" name="userid"></a> userId
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-[common/settings/settings.interface.ts:105](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L105)
+[apps/server-api/src/common/settings/settings.interface.ts:105](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L105)

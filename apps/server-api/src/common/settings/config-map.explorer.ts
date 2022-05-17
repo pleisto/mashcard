@@ -2,7 +2,8 @@ import { Injectable, OnApplicationBootstrap } from '@nestjs/common'
 import { DiscoveryService } from '@nestjs/core'
 import { InstanceWrapper } from '@nestjs/core/injector/instance-wrapper'
 import { uniq } from '@brickdoc/active-support'
-import { DuplicateNameSpaceError } from './settings.errors'
+import { ValidationError } from 'yup'
+import { DuplicateNameSpaceError, ValueValidationError } from './settings.errors'
 import { SettingsItem, ConfigMapProviders } from './settings.interface'
 import { ConfigMapMetadataAccessor } from './config-map-metadata.accessor'
 
@@ -82,7 +83,12 @@ export class ConfigMapExplorer implements OnApplicationBootstrap {
     const value = wrapper.instance[itemName]
     if (!options) return undefined
     if (options.validation) {
-      options.validation.validateSync(value)
+      try {
+        options.validation.validateSync(value)
+      } catch (e: any) {
+        if (e instanceof ValidationError) throw new ValueValidationError(`${namespace}.${itemName}`, e)
+        throw e
+      }
     }
     return {
       key: this.fullKey(namespace, itemName),

@@ -5,8 +5,8 @@
 ## Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 ## Table of contents
 
@@ -25,9 +25,9 @@
 
 #### Defined in
 
-[common/settings/settings.interface.ts:97](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L97)
+[apps/server-api/src/common/settings/settings.interface.ts:97](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L97)
 
-___
+---
 
 ### <a id="key" name="key"></a> key
 
@@ -35,9 +35,9 @@ ___
 
 #### Defined in
 
-[common/settings/settings.interface.ts:95](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L95)
+[apps/server-api/src/common/settings/settings.interface.ts:95](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L95)
 
-___
+---
 
 ### <a id="options" name="options"></a> options
 
@@ -45,9 +45,9 @@ ___
 
 #### Defined in
 
-[common/settings/settings.interface.ts:98](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L98)
+[apps/server-api/src/common/settings/settings.interface.ts:98](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L98)
 
-___
+---
 
 ### <a id="value" name="value"></a> value
 
@@ -55,4 +55,4 @@ ___
 
 #### Defined in
 
-[common/settings/settings.interface.ts:96](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L96)
+[apps/server-api/src/common/settings/settings.interface.ts:96](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L96)

@@ -20,13 +20,13 @@
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type                                                               |
+| :-------- | :----------------------------------------------------------------- |
 | `options` | [`KMSModuleOptions`](../interfaces/common_kms.KMSModuleOptions.md) |
 
 #### Defined in
 
-[common/kms/kms.module.ts:15](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.module.ts#L15)
+[apps/server-api/src/common/kms/kms.module.ts:15](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.module.ts#L15)
 
 ## Methods
 
@@ -36,8 +36,8 @@
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type                                                               |
+| :-------- | :----------------------------------------------------------------- |
 | `options` | [`KMSModuleOptions`](../interfaces/common_kms.KMSModuleOptions.md) |
 
 #### Returns
@@ -46,4 +46,4 @@
 
 #### Defined in
 
-[common/kms/kms.module.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.module.ts#L20)
+[apps/server-api/src/common/kms/kms.module.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.module.ts#L20)

@@ -1,7 +1,28 @@
 import { env } from 'process'
 import { ConfigMap, Item, ScopeLookupStrategy } from '@brickdoc/server-api/src/common/settings'
-import { string, boolean } from 'yup'
+import { safeJsonParse } from '@brickdoc/server-api/src/common/utils'
+import { string, boolean, object, InferType } from 'yup'
 
+const gcsBucketSchema = object({
+  /**
+   * Bucket Name
+   */
+  name: string().required(),
+  /**
+   * Use virtual hosted-style URLs ('https://mybucket.storage.googleapis.com/...') instead of path-style
+   * ('https://storage.googleapis.com/mybucket/...'). Virtual hosted-style URLs should generally be preferred
+   * instead of path-style URL. Currently defaults to false for path-style, although this may change in a future
+   * major-version release.
+   */
+  virtualHostedStyle: boolean().default(false),
+  /**
+   * The cname for this bucket, i.e., "https://cdn.example.com".
+   * See reference https://cloud.google.com/storage/docs/access-control/signed-urls#example
+   */
+  cname: string().url().optional()
+})
+
+export type GCSBucketOptions = InferType<typeof gcsBucketSchema>
 @ConfigMap('plugin.brickdoc.gcloud')
 export class GcloudConfigMap {
   /**
@@ -30,5 +51,17 @@ export class GcloudConfigMap {
     scope: ScopeLookupStrategy.LOCAL_STATIC,
     validation: string()
   })
-  kmsFrn: string | undefined = env.GCP_KMS_FRN
+  kmsFrn: string = env.GCP_KMS_FRN!
+
+  @Item({
+    scope: ScopeLookupStrategy.LOCAL_STATIC,
+    validation: gcsBucketSchema
+  })
+  gcsPublicBucket: GCSBucketOptions = safeJsonParse(env.GCP_GCS_PUBLIC_BUCKET!).unwrapOr({})
+
+  @Item({
+    scope: ScopeLookupStrategy.LOCAL_STATIC,
+    validation: gcsBucketSchema
+  })
+  gcsPrivateBucket: GCSBucketOptions = safeJsonParse(env.GCP_GCS_PRIVATE_BUCKET!).unwrapOr({})
 }

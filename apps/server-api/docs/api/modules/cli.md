@@ -16,8 +16,8 @@ CLI entry point.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name        | Type                  | Description                |
+| :---------- | :-------------------- | :------------------------- |
 | `runServer` | `ServerBootstrapFunc` | Server bootstrap function. |
 
 #### Returns
@@ -26,4 +26,4 @@ CLI entry point.
 
 #### Defined in
 
-[cli/index.ts:25](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/cli/index.ts#L25)
+[apps/server-api/src/cli/index.ts:25](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/cli/index.ts#L25)

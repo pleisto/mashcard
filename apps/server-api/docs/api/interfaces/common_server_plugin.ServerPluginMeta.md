@@ -17,7 +17,7 @@
 
 #### Defined in
 
-[common/server-plugin/server-plugin.interface.ts:5](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L5)
+[apps/server-api/src/common/server-plugin/server-plugin.interface.ts:5](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L5)
 
 ---
 
@@ -27,4 +27,4 @@
 
 #### Defined in
 
-[common/server-plugin/server-plugin.interface.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L6)
+[apps/server-api/src/common/server-plugin/server-plugin.interface.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L6)

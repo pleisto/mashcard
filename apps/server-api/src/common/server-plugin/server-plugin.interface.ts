@@ -23,9 +23,9 @@ export enum HookType {
 
   /**
    * Blobs Adaptor Hook.
-   * see /core/blobs/adaptors/adaptor.provider.ts
+   * see /common/blobs/adaptors/adaptor.provider.ts
    */
-  CORE_BLOBS_STORAGE_ADAPTOR = 'core.BLOBS_ADAPTOR'
+  COMMON_BLOBS_STORAGE_ADAPTOR = 'common.BLOBS_ADAPTOR'
 }
 
 type AsyncProvider<T> = (setting: SettingsService) => Promise<T>
@@ -35,7 +35,7 @@ interface HookProviders {
     forHookAsync: AsyncProvider<void>
   }
   [HookType.COMMON_KMS_SEED_DECODER]: BaseSeedDecoder
-  [HookType.CORE_BLOBS_STORAGE_ADAPTOR]: BaseStorageAdaptor
+  [HookType.COMMON_BLOBS_STORAGE_ADAPTOR]: BaseStorageAdaptor
 }
 
 export type HookProvider<T extends HookType> = HookProviders[T]

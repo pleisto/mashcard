@@ -10,6 +10,19 @@ import { BlobsLocalEndpointFlagInterceptor } from './blobs-local-endpoint-flag.i
  * Blobs module is a global module that provides blob storage services.
  * See `./blobs.service.ts` for more details.
  *
+ * In default, it uses local disk storage as the default storage adaptor, you could set `env.DISK_UPLOAD_DIR` to
+ * change the upload directory. And, you can also set `env.BLOBS_STORAGE_ADAPTOR` to change the storage adaptor.
+ *
+ * For example, you could use Google Cloud Storage by enabled GCloud Plugin:
+ * ```
+ * // dotenv file
+ * ENABLED_SERVER_PLUGINS="brickdoc.gcloud,${other-plugins}"
+ * BLOB_ADAPTOR="GCSStorageAdaptorHook"
+ * GCP_PROJECT="foo"
+ * GCP_GCS_PUBLIC_BUCKET="{"name":"$public","cname":"https://public.cdn.example.com"}"
+ * GCP_GCS_PRIVATE_BUCKET="{"name":"$private","virtualHostedStyle": true}"
+ * ```
+ *
  */
 @Global()
 @Module({

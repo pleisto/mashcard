@@ -20,7 +20,7 @@ export const storageAdaptorProvider = (): Provider => ({
     if (adapterName === undefined || adapterName === 'DiskBlobsAdaptor') return new DiskStorageAdaptor(settings, kms)
     // Otherwise, try to load from server-plugin hooks
     const adapter = explorer
-      .findByType(HookType.CORE_BLOBS_STORAGE_ADAPTOR)
+      .findByType(HookType.COMMON_BLOBS_STORAGE_ADAPTOR)
       ?.find(d => d.constructor.name === adapterName)
     if (!adapter) throw new BrickdocBaseError('apiSrv.blobs.UNKNOWN_ADAPTOR', `Blob adaptor ${adapterName} not found`)
     return adapter

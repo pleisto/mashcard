@@ -28,9 +28,9 @@
 
 #### Defined in
 
-[core/locales/locale.model.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/locale.model.ts#L12)
+[apps/server-api/src/core/locales/locale.model.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/locale.model.ts#L12)
 
-___
+---
 
 ### <a id="language" name="language"></a> language
 
@@ -38,9 +38,9 @@ ___
 
 #### Defined in
 
-[core/locales/locale.model.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/locale.model.ts#L9)
+[apps/server-api/src/core/locales/locale.model.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/locale.model.ts#L9)
 
-___
+---
 
 ### <a id="tag" name="tag"></a> tag
 
@@ -48,4 +48,4 @@ ___
 
 #### Defined in
 
-[core/locales/locale.model.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/locale.model.ts#L6)
+[apps/server-api/src/core/locales/locale.model.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/locale.model.ts#L6)

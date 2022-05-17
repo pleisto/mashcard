@@ -4,7 +4,45 @@ This server plugin makes the Brickdoc server a first-class citizen in Google Clo
 
 ## Features
 
-All features needed your set `env.GCP_PROJECT` is your gcp project id.
+All features needed your set `env.GCP_PROJECT` is your gcp project id. And you can set `env.GOOGLE_APPLICATION_CREDENTIALS`
+to manually set the path to your gcp credentials.
+
+### Cloud Storage Adapter
+
+[Cloud storage](https://cloud.google.com/storage) is a s3-like object storage service, your could use it as a storage adapter in Brickdoc server.
+
+Set `env.BLOB_ADAPTOR="GCSStorageAdaptorHook"` to enabled this feature. Next you also need to set the GCS Bucket options in `env.GCP_GCS_PUBLIC_BUCKET` and `env.GCP_GCS_PRIVATE_BUCKET`. The values of these options should be the JSON string of the following schema:
+
+```ts
+object({
+  /**
+   * Bucket Name
+   */
+  name: string().required(),
+  /**
+   * Use virtual hosted-style URLs ('https://mybucket.storage.googleapis.com/...') instead of path-style
+   * ('https://storage.googleapis.com/mybucket/...'). Virtual hosted-style URLs should generally be preferred
+   * instead of path-style URL. Currently defaults to false for path-style, although this may change in a future
+   * major-version release.
+   */
+  virtualHostedStyle: boolean().default(false),
+  /**
+   * The cname for this bucket, i.e., "https://cdn.example.com".
+   * See reference https://cloud.google.com/storage/docs/access-control/signed-urls#example
+   */
+  cname: string().url().optional()
+})
+```
+
+For example, you dotenv file could be:
+
+```dotenv
+ENABLED_SERVER_PLUGINS="brickdoc.gcloud,${other-plugins}"
+BLOB_ADAPTOR="GCSStorageAdaptorHook"
+GCP_PROJECT="foo"
+GCP_GCS_PUBLIC_BUCKET="{"name":"$public","cname":"https://public.cdn.example.com"}"
+GCP_GCS_PRIVATE_BUCKET="{"name":"$private","virtualHostedStyle":true}"
+```
 
 ### Cloud KMS encryption of secrets key seeds
 
@@ -20,12 +58,6 @@ gcloud kms encrypt --plaintext-file=seed.txt --ciphertext-file=seed.txt.enc --ke
 rm seed.txt
 cat seed.txt.enc | base64 -w0
 ```
-
-### Cloud Debugger Integration
-
-Cloud Debugger is a feature of Google Cloud Platform that lets you inspect the state of an application, at any code location, without stopping or slowing down the running app. Cloud Debugger makes it easier to view the application state without adding logging statements.
-
-Set `env.GCP_ENABLED_CLOUD_DEBUGGER` to `true` to enable Cloud Debugger. See [Cloud Debugger Docs](https://cloud.google.com/debugger/docs) for more details.
 
 ### Cloud Profiler Integration
 
