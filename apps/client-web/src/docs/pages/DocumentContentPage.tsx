@@ -6,7 +6,6 @@ import { DocumentTopBar } from './components/DocumentTopBar'
 import { ContentSidebar } from './components/ContentSidebar'
 import { DocumentPage } from './DocumentPage'
 import { BrickdocContext } from '@/common/brickdocContext'
-import { SpaceSelect } from '@/docs/common/components/SpaceSelect'
 import { Helmet } from 'react-helmet-async'
 import { GetBlockInfoQuery, Policytype, useBlockCreateMutation, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
 import { useDocsI18n } from '../common/hooks'
@@ -186,8 +185,7 @@ export const DocumentContentPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blockCreate, docid, history, domain, docMeta, lastDomain, lastBlockIds])
 
-  const siderBar =
-    !docMeta.isAnonymous && (docMeta.isMine ? <ContentSidebar docMeta={docMeta} /> : <SpaceSelect docMeta={docMeta} />)
+  const siderBar = <ContentSidebar docMeta={docMeta} />
   if (docMeta.isNotExist) {
     return <AppError404 btnCallback={() => navigate('/')} />
   }

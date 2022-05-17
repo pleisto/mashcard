@@ -31,6 +31,7 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
   const [loading, { setTrue, setFalse }] = useBoolean(false)
   const fetching = React.useRef(false)
   const lastQuery = React.useRef('')
+  const scrollRef = React.useRef<HTMLDivElement>(null)
   const page = React.useRef(1)
 
   const handleFetchUnsplashImage = async (query?: string): Promise<void> => {
@@ -50,7 +51,7 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
 
       if (response.success) {
         const prevData = page.current === 1 ? [] : unsplashImages
-        setUnsplashImages([...prevData, ...response.data])
+        setUnsplashImages(prevData.concat(response.data))
         page.current += 1
       }
     } catch (error) {
@@ -71,27 +72,6 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
     void handleFetchUnsplashImage(query)
   }, 300)
 
-  const observeY = React.useRef<number>()
-  const createScrollObserver = (ele: HTMLElement): void => {
-    if (!ele) {
-      return
-    }
-
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 1.0
-    }
-
-    new IntersectionObserver((entities): void => {
-      const y = entities[0].boundingClientRect.y
-      if (observeY.current! > y) {
-        void handleFetchUnsplashImage()
-      }
-      observeY.current = y
-    }, options).observe(ele)
-  }
-
   const handleUnsplashImageSelect = (image: UnsplashImage) => (): void => {
     pluginOptions.onUploaded?.({
       action: 'add',
@@ -102,6 +82,22 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
     })
   }
 
+  const handleScroll = () => {
+    if (loading || page.current > 5 || !scrollRef.current) {
+      return
+    }
+
+    const listRef = scrollRef.current
+
+    const scrollHeight = listRef.scrollHeight
+    const clientHeight = listRef.clientHeight
+    const scrollTop = listRef.scrollTop
+
+    if (scrollHeight - (scrollTop + 10) <= clientHeight) {
+      handleFetchUnsplashImage()
+    }
+  }
+
   return (
     <div className="uploader-dashboard-unsplash-panel">
       <input
@@ -110,29 +106,15 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
         onChange={handleUnsplashSearchInput}
       />
 
-      <div className="dashboard-unsplash-image-list">
+      <div className="dashboard-unsplash-image-list" ref={scrollRef} onScroll={handleScroll}>
         {!loading && !unsplashImages.length && <Notfound>No result found.</Notfound>}
-        {loading ? (
-          <Loading />
-        ) : (
-          unsplashImages.map(image => (
-            <Button
-              type="text"
-              key={image.id}
-              className="unsplash-image-item"
-              onClick={handleUnsplashImageSelect(image)}
-            >
-              <ImageWithSpin src={image.smallUrl} className="unsplash-image" />
-              <div className="unsplash-image-username">@{image.username}</div>
-            </Button>
-          ))
-        )}
-        <div
-          ref={container => {
-            createScrollObserver(container!)
-          }}
-          className="unsplash-load-more-placeholder"
-        />
+        {unsplashImages.map(image => (
+          <Button type="text" key={image.id} className="unsplash-image-item" onClick={handleUnsplashImageSelect(image)}>
+            <ImageWithSpin src={image.smallUrl} className="unsplash-image" />
+            <div className="unsplash-image-username">@{image.username}</div>
+          </Button>
+        ))}
+        {loading && <Loading />}
       </div>
     </div>
   )

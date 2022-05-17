@@ -31,7 +31,7 @@ export const Trash: React.FC = () => {
     return <AppError404 />
   }
 
-  const siderBar = <ContentSidebar docMeta={{ loginDomain, host, domain }} />
+  const siderBar = <ContentSidebar docMeta={{ loginDomain, host, domain, isAnonymous: false, isMine: true }} />
   return (
     <>
       <Helmet titleTemplate={`${t('trash.name')} - %s`} title={domain} />
