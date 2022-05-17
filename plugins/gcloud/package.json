@@ -35,7 +35,7 @@
   "dependencies": {
     "@google-cloud/kms": "^2.11.1",
     "@google-cloud/profiler": "^4.2.0",
-    "@google-cloud/storage": "^5.20.1",
+    "@google-cloud/storage": "^5.20.2",
     "@node-rs/crc32": "^1.5.1"
   }
 }

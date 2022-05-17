@@ -2,6 +2,7 @@
 -- THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY) --
 -----------------------------------------------------------
 
+
 CREATE EXTENSION IF NOT EXISTS ltree WITH SCHEMA public;
 
 COMMENT ON EXTENSION ltree IS 'data type for hierarchical tree-like structures';
@@ -9,11 +10,6 @@ COMMENT ON EXTENSION ltree IS 'data type for hierarchical tree-like structures';
 CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
 
 COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
-
-CREATE TYPE public.blob_bucket AS ENUM (
-    'public_read',
-    'private_attachment'
-);
 
 CREATE TYPE public.pod_type AS ENUM (
     'user',
@@ -29,39 +25,10 @@ BEGIN
          WHEN fallback THEN 1
          ELSE nlevel(scope)
          END;
-
 END;
-
 $$;
 
 COMMENT ON FUNCTION public.settings_scope_priority(scope public.ltree, fallback text, root text) IS 'Returns the priority of a scope. The root scope has the lowest priority.';
-
-CREATE TABLE public.blobs (
-    id bigint NOT NULL,
-    pod_id bigint NOT NULL,
-    cid text NOT NULL,
-    bucket public.blob_bucket NOT NULL,
-    mime_type text DEFAULT 'application/octet-stream'::text NOT NULL,
-    metadata jsonb DEFAULT '{"analyzed": false}'::jsonb NOT NULL,
-    byte_size integer NOT NULL,
-    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
-);
-
-COMMENT ON TABLE public.blobs IS 'blobs is a table for uploaded files metadata';
-
-COMMENT ON COLUMN public.blobs.pod_id IS 'associated with a pod';
-
-COMMENT ON COLUMN public.blobs.cid IS 'cid is the unique content id of the file. It is compatible with IPFS CIDv1 spec.
-    Multihash is blake3(mime_type:byte_size:md5_checksum)';
-
-CREATE SEQUENCE public.blobs_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-ALTER SEQUENCE public.blobs_id_seq OWNED BY public.blobs.id;
 
 CREATE TABLE public.db_migrations (
     name text NOT NULL,
@@ -231,8 +198,6 @@ CREATE VIEW public.v_users AS
 
 COMMENT ON VIEW public.v_users IS 'v_users is a updatable database view of user pod.';
 
-ALTER TABLE ONLY public.blobs ALTER COLUMN id SET DEFAULT nextval('public.blobs_id_seq'::regclass);
-
 ALTER TABLE ONLY public.event_logs ALTER COLUMN id SET DEFAULT nextval('public.event_logs_id_seq'::regclass);
 
 ALTER TABLE ONLY public.pod_access_credentials ALTER COLUMN id SET DEFAULT nextval('public.pod_access_credentials_id_seq'::regclass);
@@ -242,9 +207,6 @@ ALTER TABLE ONLY public.pods ALTER COLUMN id SET DEFAULT nextval('public.pods_id
 ALTER TABLE ONLY public.settings ALTER COLUMN id SET DEFAULT nextval('public.settings_id_seq'::regclass);
 
 ALTER TABLE ONLY public.spaces_members ALTER COLUMN id SET DEFAULT nextval('public.spaces_members_id_seq'::regclass);
-
-ALTER TABLE ONLY public.blobs
-    ADD CONSTRAINT blobs_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY public.db_migrations
     ADD CONSTRAINT db_migrations_pkey PRIMARY KEY (name);
@@ -263,10 +225,6 @@ ALTER TABLE ONLY public.settings
 
 ALTER TABLE ONLY public.spaces_members
     ADD CONSTRAINT spaces_members_pkey PRIMARY KEY (id);
-
-CREATE INDEX blobs_metadata ON public.blobs USING gin (metadata);
-
-CREATE UNIQUE INDEX blobs_pod_id_cid_bucket_ukey ON public.blobs USING btree (pod_id, cid, bucket);
 
 CREATE INDEX event_logs_actor_type_actor_id ON public.event_logs USING btree (actor_type, actor_id);
 

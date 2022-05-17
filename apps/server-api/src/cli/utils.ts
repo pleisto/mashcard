@@ -88,17 +88,23 @@ export const dumpCurrentDbSchema = async (): Promise<void> => {
 -----------------------------------------------------------
 
 `
-  const contents = [fileBanner]
+  const contents = []
   for await (const data of dump.stdout) {
-    const content = data
-      .toString()
-      .replace(/^(--|SET|SELECT pg_).*$/gm, '') // remove comments and server settings
-      .replace(/(\n\n|\r\n\r\n)/g, '') // remove empty lines
-      .replace(/;/g, ';\n') // add new line after each semicolon
-
+    const content = data.toString().replace(/\r\n/g, '\n')
     contents.push(content)
   }
 
-  writeFileSync(join(dbDir, 'structure.sql'), `${contents.join('')}`, { encoding: 'utf8', flag: 'w' })
+  writeFileSync(
+    join(dbDir, 'structure.sql'),
+    `${fileBanner}${contents
+      .join('')
+      .replace(/^(--|SET|SELECT pg_).*$/gm, '') // remove comments and server settings
+      .replace(/(\n\n\n\n)/g, '') // remove multi empty lines
+      .replace(/\n\n/g, '\n')}`,
+    {
+      encoding: 'utf8',
+      flag: 'w'
+    }
+  )
   console.log(`${Styles.FgGreen}Database schema dumped to ${dbDir}/structure.sql.`)
 }

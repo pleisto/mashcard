@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "author": "Brickdoc LTD",
   "description": "Brickdoc Monorepo Root",
+  "license": "GPL-3.0-or-later WITH Classpath-exception-2.0",
   "private": true,
   "workspaces": [
     "packages/*",
@@ -108,7 +109,7 @@
     "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.10#.yarn/patches/vite-plugin-mdx-npm-3.5.10-ae54c30668"
   },
   "dependencies": {
-    "@swc/core": "^1.2.185",
+    "@swc/core": "^1.2.186",
     "@swc/helpers": "^0.3.13",
     "dayjs": "^1.11.2",
     "ts-node": "^10.7.0"

@@ -35,7 +35,6 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (props, re
   return (
     <InputComponent
       componentsProps={{
-        // @ts-expect-error
         input: {
           ref: inputRef
         }

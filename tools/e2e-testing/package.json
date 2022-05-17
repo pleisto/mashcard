@@ -1,6 +1,7 @@
 {
   "name": "@brickdoc/e2e-testing",
   "private": true,
+  "license": "GPL-3.0-or-later WITH Classpath-exception-2.0",
   "volta": {
     "extends": "../../package.json"
   },
@@ -17,10 +18,10 @@
     "lint:type": "run -T tsc"
   },
   "devDependencies": {
-    "@playwright/test": "^1.22.0",
+    "@playwright/test": "^1.22.1",
     "allure-commandline": "^2.17.2",
     "allure-playwright": "^2.0.0-beta.16",
-    "playwright": "^1.22.0",
+    "playwright": "^1.22.1",
     "playwright-fluent": "^1.51.0"
   }
 }

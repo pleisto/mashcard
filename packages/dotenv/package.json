@@ -2,7 +2,7 @@
   "name": "@brickdoc/dotenv",
   "version": "0.1.0",
   "description": "Smart load environment variables from a .env file.",
-  "license": "Apache-2.0",
+  "license": "GPL-3.0-or-later WITH Classpath-exception-2.0",
   "main": "./src/index.ts",
   "module": "./src/index.ts",
   "volta": {
