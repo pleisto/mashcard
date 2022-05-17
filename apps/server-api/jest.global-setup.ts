@@ -16,7 +16,6 @@ module.exports = async function (): Promise<void> {
   ).connect(async conn => {
     // Clean up the testing database.
     await conn.query(sql`DROP SCHEMA public CASCADE;CREATE SCHEMA public;`)
-
     // Load database schema from 'db/structure.sql'.
     const dbSchema = readFileSync(join(dbDir, 'structure.sql'), 'utf8')
     await conn.query(sql`${raw(dbSchema)}`)

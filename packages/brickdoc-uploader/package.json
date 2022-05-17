@@ -15,10 +15,10 @@
     "@brickdoc/active-support": "workspace:^",
     "@brickdoc/design-system": "workspace:^",
     "@brickdoc/test-helper": "workspace:^",
-    "@uppy/core": "^2.1.10",
-    "@uppy/dashboard": "^2.1.4",
-    "@uppy/react": "^2.1.2",
-    "@uppy/xhr-upload": "^2.0.7"
+    "@uppy/core": "^2.2.0",
+    "@uppy/dashboard": "^2.2.0",
+    "@uppy/react": "^2.2.0",
+    "@uppy/xhr-upload": "^2.1.0"
   },
   "devDependencies": {
     "@brickdoc/eslint-plugin": "workspace:^"

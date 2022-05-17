@@ -1,21 +1,17 @@
-import { Test, TestingModule } from '@nestjs/testing'
+import { TestingModule } from '@nestjs/testing'
 import { env } from 'process'
-import { AppModule } from '../../../app.module'
 import { SettingsService } from '../settings.service'
+import { useAppInstance } from '../../testing'
 
 describe('SettingService', () => {
   let settings: SettingsService
-  let module: TestingModule
 
-  beforeAll(async () => {
-    module = await Test.createTestingModule({
-      imports: [AppModule]
-    }).compile()
-    settings = module.get<SettingsService>(SettingsService)
+  const createInstance = useAppInstance(async (_app: unknown, moduleRef: TestingModule) => {
+    settings = moduleRef.get<SettingsService>(SettingsService)
   })
 
-  afterAll(async () => {
-    await module?.close()
+  beforeAll(async () => {
+    ;(await createInstance)()
   })
 
   it('should get local setting', async () => {

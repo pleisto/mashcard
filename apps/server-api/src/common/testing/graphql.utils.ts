@@ -1,30 +1,23 @@
-import { Test } from '@nestjs/testing'
-import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify'
+import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import type { ApolloServerBase } from 'apollo-server-core'
 import { GraphQLModule } from '@nestjs/graphql'
 import { ApolloDriver } from '@nestjs/apollo'
-import { AppModule } from '../../app.module'
+import { CallBack, useAppInstance } from './http.utils'
 
 /**
- * set up environment for graphql testing
+ * Create GraphQL server based on app module for testing
  *
  * @returns
  */
-export const useGraphQLTestingInstance = async (): Promise<() => [ApolloServerBase<any>, NestFastifyApplication]> => {
-  let app: NestFastifyApplication
+export const useAppInstanceWithGraphQL = async (
+  beforeAllCallback?: CallBack,
+  afterAllCallback?: CallBack
+): Promise<() => [ApolloServerBase<any>, NestFastifyApplication]> => {
   let apollo: ApolloServerBase
-
-  beforeAll(async () => {
-    const moduleFixture = await Test.createTestingModule({
-      imports: [AppModule]
-    }).compile()
-    app = moduleFixture.createNestApplication(new FastifyAdapter())
-    await app.init()
+  const instance = await useAppInstance(async (app, moduleRef) => {
     const graphqlModule = app.get<GraphQLModule<ApolloDriver>>(GraphQLModule)
     apollo = graphqlModule.graphQlAdapter?.instance
-  })
-
-  afterAll(async () => await app?.close())
-
-  return () => [apollo, app]
+    await beforeAllCallback?.(app, moduleRef)
+  }, afterAllCallback)
+  return () => [apollo, instance()]
 }

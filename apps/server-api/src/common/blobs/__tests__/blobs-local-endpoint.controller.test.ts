@@ -1,64 +1,64 @@
-/* eslint-disable jest/expect-expect */
-import request from 'supertest'
-import { Test, TestingModule } from '@nestjs/testing'
-import { HttpStatus } from '@nestjs/common'
-import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify'
 import { Readable, PassThrough } from 'node:stream'
+import request from 'supertest'
+import { HttpStatus } from '@nestjs/common'
+import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import { LocalBaseStorageAdaptor } from '../storage-adaptor/local-base.storage-adaptor'
-import { BlobsPlugin } from '../blobs.fastify-plugin'
-import { AppModule } from '../../../app.module'
 import { BLOB_STORAGE, STORAGE_BUCKETS } from '../blobs.interface'
+import { useAppInstanceWithHttp } from '../../testing'
 
 describe('BlobsLocalEndpointController', () => {
-  let moduleRef: TestingModule
   let app: NestFastifyApplication
+  let getSpy: any
+  let putSpy: any
   let storage: LocalBaseStorageAdaptor
   let getSignedQuery: (method: 'get' | 'put', key: string, bucket?: STORAGE_BUCKETS) => Promise<string>
 
-  beforeAll(async () => {
-    moduleRef = await Test.createTestingModule({
-      imports: [AppModule]
-    }).compile()
-
-    app = moduleRef.createNestApplication<NestFastifyApplication>(new FastifyAdapter())
-    storage = moduleRef.get<LocalBaseStorageAdaptor>(BLOB_STORAGE)
-
-    await app.init()
-    await app.register(BlobsPlugin)
-    await app.getHttpAdapter().getInstance().ready()
-
+  const instance = useAppInstanceWithHttp(
     /**
-     * Mock storage adaptor
-     * do not actually use disk storage
+     * Before all
      */
-    jest.spyOn(storage, 'get').mockImplementation(async (bucket: STORAGE_BUCKETS, key: string) => {
-      return key === 'exist' ? Readable.from('exist-file') : undefined
-    })
-    jest.spyOn(storage, 'put').mockImplementation(async (bucket: STORAGE_BUCKETS, key: string) => {
-      const stream = new PassThrough()
-      stream.end()
-      stream.destroy()
-      return stream
-    })
+    async (app, moduleRef) => {
+      storage = moduleRef.get<LocalBaseStorageAdaptor>(BLOB_STORAGE)
+      /**
+       * Mock storage adaptor
+       * do not actually use disk storage
+       */
+      getSpy = jest.spyOn(storage, 'get').mockImplementation(async (bucket: STORAGE_BUCKETS, key: string) => {
+        return key === 'exist' ? Readable.from('exist-file') : undefined
+      })
+      putSpy = jest.spyOn(storage, 'put').mockImplementation(async (bucket: STORAGE_BUCKETS, key: string) => {
+        const stream = new PassThrough()
+        stream.end()
+        stream.destroy()
+        return stream
+      })
 
+      /**
+       * Create signed query string helper
+       * @param httpMethod - HTTP method
+       * @param bucket - bucket name
+       * @param key - key name
+       */
+      getSignedQuery = async (httpMethod, key, bucket = STORAGE_BUCKETS.PRIVATE) => {
+        const expired = 3600
+        const url =
+          httpMethod === 'get'
+            ? await storage.directDownloadUrl(bucket, key, expired)
+            : await storage.directUploadUrl(bucket, key, expired)
+        return new URL(url).search
+      }
+    },
     /**
-     * Create signed query string helper
-     * @param httpMethod - HTTP method
-     * @param bucket - bucket name
-     * @param key - key name
+     * After all
      */
-    getSignedQuery = async (httpMethod, key, bucket = STORAGE_BUCKETS.PRIVATE) => {
-      const expired = 3600
-      const url =
-        httpMethod === 'get'
-          ? await storage.directDownloadUrl(bucket, key, expired)
-          : await storage.directUploadUrl(bucket, key, expired)
-      return new URL(url).search
+    async app => {
+      getSpy.mockRestore()
+      putSpy.mockRestore()
     }
-  })
+  )
 
-  afterAll(async () => {
-    await app.close()
+  beforeAll(async () => {
+    app = (await instance)()
   })
 
   it('findOne action should work', async () => {

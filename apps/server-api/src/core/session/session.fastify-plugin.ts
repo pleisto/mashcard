@@ -3,11 +3,16 @@ import fp from 'fastify-plugin'
 import { aeadEncrypt, aeadDecrypt } from '@brickdoc/server-api-crate'
 import { FastifyPluginCallback } from 'fastify'
 import { SecureSessionPluginOptions, kObj, kCookieOptions, SessionData } from './session.interface'
+import { isNonEmptyString } from '@brickdoc/active-support'
 import { Session } from './session.class'
 import { sessionProxyHandler } from './session.proxy-handler'
 
 const sessionPlugin: FastifyPluginCallback<SecureSessionPluginOptions> = (fastify, options, next) => {
   const key = options.key
+
+  if (!isNonEmptyString(key)) {
+    throw new Error('SessionPlugin: options.key is required')
+  }
 
   const cookieName = 'brd_encrypted_payload'
   const cookieOptions = options.cookie ?? {}

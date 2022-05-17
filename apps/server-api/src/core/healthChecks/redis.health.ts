@@ -8,7 +8,8 @@ export class RedisHealthIndicator extends HealthIndicator {
     super()
   }
 
-  async pingCheck(key: string): Promise<HealthIndicatorResult> {
+  async pingCheck(): Promise<HealthIndicatorResult> {
+    const key = 'redis'
     try {
       await this.redis.ping()
       return this.getStatus(key, true)
