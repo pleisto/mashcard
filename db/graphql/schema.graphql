@@ -364,6 +364,11 @@ union BlockIcon = BlockEmoji | BlockImage
 
 type BlockImage {
   """
+  align
+  """
+  align: String
+
+  """
   display name
   """
   displayName: String

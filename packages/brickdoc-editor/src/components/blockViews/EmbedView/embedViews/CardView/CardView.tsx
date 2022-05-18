@@ -88,7 +88,7 @@ export const CardView: FC<CardViewProps> = ({
         <CardCover blockType={blockType} cover={cover} icon={icon} />
         <Content type={type}>
           {displayName && <Title type={type}>{displayName}</Title>}
-          {description && <Description type={type}>{description}</Description>}
+          <Description type={type}>{description}</Description>
           {!isFile && (
             <Link>
               <CardIcon blockType={blockType} icon={icon} />

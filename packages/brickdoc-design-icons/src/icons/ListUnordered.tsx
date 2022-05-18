@@ -8,16 +8,25 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('list-unordered', false, (props: ISvgIconProps) => (
-  <svg viewBox="0 0 24 24" width={props.size} height={props.size} fill="none">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm2-10a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM8 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 20a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 4a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Z"
-      fill={props.colors[0]}
-    />
-  </svg>
-))
+export default IconWrapper(
+    'list-unordered',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            viewBox="0 0 24 24"
+            width={props.size}
+            height={props.size}
+            fill="none"
+        >
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm2-10a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM8 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 20a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 4a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Z"
+                fill={props.colors[0]}
+            />
+        </svg>
+    )
+);

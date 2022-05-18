@@ -43,8 +43,7 @@ export const PreviewMode: FC<PreviewModeProps> = ({ node, deleteNode, getPos, ur
       contentForCopy={url}
       getPos={getPos}
       deleteNode={deleteNode}
-      actionOptions={['copy', 'delete']}
-    >
+      actionOptions={['copy', 'delete']}>
       {!loaded && (
         <div className="spining-wrapper">
           <Spin size="lg" className="spin" />
@@ -92,16 +91,14 @@ export const PreviewMode: FC<PreviewModeProps> = ({ node, deleteNode, getPos, ur
             updateImageAttributes({
               width: Math.min(Number(node.attrs.image?.width) + d.width, MAX_WIDTH)
             })
-          }}
-        >
+          }}>
           <ImagePreview
             wrapStyle={{ pointerEvents: 'none', width: '100%' }}
             overlayBgColorEnd="rgba(153, 153, 153, 0.4)"
             isZoomed={showPreview}
             onZoomChange={shouldZoom => {
               setShowPreview(shouldZoom)
-            }}
-          >
+            }}>
             <img
               data-testid={TEST_ID_ENUM.editor.imageBlock.image.id}
               role="img"

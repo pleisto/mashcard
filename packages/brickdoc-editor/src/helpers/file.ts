@@ -1,5 +1,5 @@
 export const sizeFormat = (size?: number): string => {
-  if (size === undefined) return ''
+  if (size === undefined || size === null) return ''
   if (size < 1024) return `${size} b`
   if (size < 1024 * 1024) return `${(size / 1024).toFixed(1)} KB`
 

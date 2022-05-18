@@ -221,6 +221,8 @@ export type BlockIcon = BlockEmoji | BlockImage
 
 export type BlockImage = {
   __typename?: 'BlockImage'
+  /** align */
+  align?: Maybe<Scalars['String']>
   /** display name */
   displayName?: Maybe<Scalars['String']>
   /** height */

@@ -8,20 +8,29 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('remove-anchor-mark', false, (props: ISvgIconProps) => (
-  <svg viewBox="0 0 24 24" width={props.size} height={props.size} fill="none">
-    <path
-      d="M11 14.818v6.127A9.004 9.004 0 0 1 3.055 13H5a1 1 0 1 0 0-2H2a1 1 0 0 0-1 1c0 6.075 4.925 11 11 11 2.058 0 3.985-.565 5.632-1.55l-1.469-1.469a8.941 8.941 0 0 1-3.163.964v-4.127l-2-2ZM19.981 16.163l1.47 1.47A10.949 10.949 0 0 0 23 12a1 1 0 0 0-1-1h-3a1 1 0 1 0 0 2h1.945a8.941 8.941 0 0 1-.964 3.163Z"
-      fill={props.colors[0]}
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M13 9.182 8.505 4.687A3.5 3.5 0 1 1 13 7.856v1.326Zm.5-4.682a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM2.293 2.293a1 1 0 0 1 1.414 0l18 18a1 1 0 0 1-1.414 1.414l-18-18a1 1 0 0 1 0-1.414Z"
-      fill={props.colors[0]}
-    />
-  </svg>
-))
+export default IconWrapper(
+    'remove-anchor-mark',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            viewBox="0 0 24 24"
+            width={props.size}
+            height={props.size}
+            fill="none"
+        >
+            <path
+                d="M11 14.818v6.127A9.004 9.004 0 0 1 3.055 13H5a1 1 0 1 0 0-2H2a1 1 0 0 0-1 1c0 6.075 4.925 11 11 11 2.058 0 3.985-.565 5.632-1.55l-1.469-1.469a8.941 8.941 0 0 1-3.163.964v-4.127l-2-2ZM19.981 16.163l1.47 1.47A10.949 10.949 0 0 0 23 12a1 1 0 0 0-1-1h-3a1 1 0 1 0 0 2h1.945a8.941 8.941 0 0 1-.964 3.163Z"
+                fill={props.colors[0]}
+            />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M13 9.182 8.505 4.687A3.5 3.5 0 1 1 13 7.856v1.326Zm.5-4.682a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM2.293 2.293a1 1 0 0 1 1.414 0l18 18a1 1 0 0 1-1.414 1.414l-18-18a1 1 0 0 1 0-1.414Z"
+                fill={props.colors[0]}
+            />
+        </svg>
+    )
+);

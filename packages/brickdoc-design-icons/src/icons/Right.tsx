@@ -8,11 +8,21 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('right', false, (props: ISvgIconProps) => (
-  <svg viewBox="0 0 24 24" fill="none">
-    <path fill={props.colors[0]} d="m16 12-7 6V6l7 6z" />
-  </svg>
-))
+export default IconWrapper(
+    'right',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+        >
+            <path
+                fill={props.colors[0]}
+                d="m16 12-7 6V6l7 6z"
+            />
+        </svg>
+    )
+);

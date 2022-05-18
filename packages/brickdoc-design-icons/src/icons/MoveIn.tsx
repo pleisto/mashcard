@@ -8,20 +8,29 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('move-in', false, (props: ISvgIconProps) => (
-  <svg viewBox="0 0 24 24" width={props.size} height={props.size} fill="none">
-    <path
-      d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v7a1 1 0 1 1-2 0V4H4v16h6.5a1 1 0 1 1 0 2H4a2 2 0 0 1-2-2V4Z"
-      fill={props.colors[0]}
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M13.293 13.293a1 1 0 0 1 .903-.274l7 1.4a1 1 0 0 1 .359 1.813l-1.085.723 1.237 1.238a1 1 0 0 1 0 1.414l-2.1 2.1a1 1 0 0 1-1.414 0l-1.238-1.237-.723 1.085a1 1 0 0 1-1.813-.359l-1.4-7a1 1 0 0 1 .274-.903Zm2.614 5.144.06-.092a1 1 0 0 1 1.54-.152l1.393 1.393.686-.686-1.393-1.393a1 1 0 0 1 .152-1.54l.092-.06-3.162-.632.632 3.162Z"
-      fill={props.colors[0]}
-    />
-  </svg>
-))
+export default IconWrapper(
+    'move-in',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            viewBox="0 0 24 24"
+            width={props.size}
+            height={props.size}
+            fill="none"
+        >
+            <path
+                d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v7a1 1 0 1 1-2 0V4H4v16h6.5a1 1 0 1 1 0 2H4a2 2 0 0 1-2-2V4Z"
+                fill={props.colors[0]}
+            />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M13.293 13.293a1 1 0 0 1 .903-.274l7 1.4a1 1 0 0 1 .359 1.813l-1.085.723 1.237 1.238a1 1 0 0 1 0 1.414l-2.1 2.1a1 1 0 0 1-1.414 0l-1.238-1.237-.723 1.085a1 1 0 0 1-1.813-.359l-1.4-7a1 1 0 0 1 .274-.903Zm2.614 5.144.06-.092a1 1 0 0 1 1.54-.152l1.393 1.393.686-.686-1.393-1.393a1 1 0 0 1 .152-1.54l.092-.06-3.162-.632.632 3.162Z"
+                fill={props.colors[0]}
+            />
+        </svg>
+    )
+);

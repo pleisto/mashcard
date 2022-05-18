@@ -8,16 +8,25 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('arrow-shortcut', false, (props: ISvgIconProps) => (
-  <svg viewBox="0 0 24 24" width={props.size} height={props.size} fill="none">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M7 6a1 1 0 0 0 0 2h7.594l-9.301 9.301a1 1 0 1 0 1.414 1.414L16 9.422V17a1 1 0 1 0 2 0V7a1 1 0 0 0-1-1H7Z"
-      fill={props.colors[0]}
-    />
-  </svg>
-))
+export default IconWrapper(
+    'arrow-shortcut',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            viewBox="0 0 24 24"
+            width={props.size}
+            height={props.size}
+            fill="none"
+        >
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M7 6a1 1 0 0 0 0 2h7.594l-9.301 9.301a1 1 0 1 0 1.414 1.414L16 9.422V17a1 1 0 1 0 2 0V7a1 1 0 0 0-1-1H7Z"
+                fill={props.colors[0]}
+            />
+        </svg>
+    )
+);

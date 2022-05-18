@@ -14,7 +14,9 @@ export const EmbedToolbarContainer = styled('div', {
 })
 
 export const Content = styled('div', {
+  display: 'flex',
   flex: 1,
+  flexDirection: 'column',
   position: 'relative',
 
   '&:hover': {
@@ -41,6 +43,7 @@ export const Cover = styled('div', {
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
+  height: '9rem',
   width: '14.25rem'
 })
 
@@ -70,6 +73,7 @@ export const Title = styled('div', {
 
 export const Description = styled('div', {
   color: theme.colors.typeThirdary,
+  flex: 1,
   fontSize: theme.fontSizes.callout,
   fontWeight: 450,
   lineHeight: '1.25rem',
@@ -108,7 +112,7 @@ export const LinkText = styled('span', {
   '-webkit-line-clamp': 1,
   '-webkit-box-orient': 'vertical',
   overflow: 'hidden',
-  maxWidth: '80%',
+  maxWidth: '72%',
   whiteSpace: 'normal',
   wordBreak: 'break-all'
 })
@@ -157,7 +161,7 @@ export const CardContainer = styled(Button, {
     },
     size: {
       md: {
-        alignItems: 'center',
+        alignItems: 'stretch',
         background: theme.colors.backgroundPrimary,
         border: `1px solid ${theme.colors.borderPrimary}`,
         borderRadius: '4px',

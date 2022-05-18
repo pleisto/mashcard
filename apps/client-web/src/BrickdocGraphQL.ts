@@ -224,6 +224,8 @@ export type BlockIcon = BlockEmoji | BlockImage
 
 export type BlockImage = {
   __typename?: 'BlockImage'
+  /** align */
+  align?: Maybe<Scalars['String']>
   /** display name */
   displayName?: Maybe<Scalars['String']>
   /** height */
@@ -2427,6 +2429,7 @@ export type GetChildrenBlocksQuery = {
       title?: string | null
       level?: number | null
       language?: string | null
+      autoWrap?: boolean | null
       start?: string | null
       image?: {
         __typename?: 'BlockImage'
@@ -2437,6 +2440,10 @@ export type GetChildrenBlocksQuery = {
         height?: number | null
         width?: number | null
         ratio?: number | null
+        mode?: string | null
+        name?: string | null
+        size?: number | null
+        align?: string | null
       } | null
       page?: {
         __typename?: 'BlockPage'
@@ -4819,6 +4826,10 @@ export const GetChildrenBlocksDocument = gql`
           height
           width
           ratio
+          mode
+          name
+          size
+          align
         }
         page {
           type

@@ -91,7 +91,8 @@ describe('EmbedView', () => {
           image: {
             type: 'IMAGE',
             key: 'image',
-            source: 'EXTERNAL'
+            source: 'EXTERNAL',
+            mode: 'preview'
           }
         }
       }
@@ -100,6 +101,50 @@ describe('EmbedView', () => {
     render(<EmbedView {...props} />)
 
     expect(screen.getByTestId(TEST_ID_ENUM.editor.imageBlock.image.id)).toBeInTheDocument()
+  })
+
+  it('renders image in card view correctly', () => {
+    const name = 'name'
+    const props = mockBlockViewProps<EmbedOptions, EmbedAttributes>({
+      node: {
+        uuid,
+        attrs: {
+          image: {
+            type: 'IMAGE',
+            key: 'image',
+            source: 'EXTERNAL',
+            name,
+            mode: 'card'
+          }
+        }
+      }
+    })
+
+    render(<EmbedView {...props} />)
+
+    expect(screen.getByText(name)).toBeInTheDocument()
+  })
+
+  it('renders image in text view correctly', () => {
+    const name = 'name'
+    const props = mockBlockViewProps<EmbedOptions, EmbedAttributes>({
+      node: {
+        uuid,
+        attrs: {
+          image: {
+            type: 'IMAGE',
+            key: 'image',
+            source: 'EXTERNAL',
+            name,
+            mode: 'text'
+          }
+        }
+      }
+    })
+
+    render(<EmbedView {...props} />)
+
+    expect(screen.getByText(name)).toBeInTheDocument()
   })
 
   it('renders link placeholder correctly', () => {
@@ -213,6 +258,72 @@ describe('EmbedView', () => {
 
     fireEvent.click(screen.getByText(title))
     expect(mockOpenUrl).toBeCalledWith(url)
+  })
+
+  it('renders link in text mode', () => {
+    const title = 'brickdoc'
+    const description = 'desc'
+    const props = mockBlockViewProps<EmbedOptions, EmbedAttributes>({
+      node: {
+        uuid,
+        attrs: {
+          link: {
+            type: 'LINK',
+            key: url,
+            title,
+            description,
+            cover: 'cover',
+            mode: 'text'
+          },
+          attachment: {
+            type: 'ATTACHMENT'
+          }
+        }
+      },
+      extension: {
+        options: {
+          prepareFileUpload: () => {},
+          getAttachmentUrl: () => ''
+        }
+      }
+    })
+
+    render(<EmbedView {...props} />)
+
+    expect(screen.getByText(title)).toBeInTheDocument()
+  })
+
+  it('renders link in preview mode', () => {
+    const title = 'brickdoc'
+    const description = 'desc'
+    const props = mockBlockViewProps<EmbedOptions, EmbedAttributes>({
+      node: {
+        uuid,
+        attrs: {
+          link: {
+            type: 'LINK',
+            key: url,
+            title,
+            description,
+            cover: 'cover',
+            mode: 'preview'
+          },
+          attachment: {
+            type: 'ATTACHMENT'
+          }
+        }
+      },
+      extension: {
+        options: {
+          prepareFileUpload: () => {},
+          getAttachmentUrl: () => ''
+        }
+      }
+    })
+
+    render(<EmbedView {...props} />)
+
+    expect(screen.getByText(url)).toBeInTheDocument()
   })
 
   it('renders attachment file', () => {

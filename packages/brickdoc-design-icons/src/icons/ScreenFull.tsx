@@ -8,23 +8,38 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('screen-full', false, (props: ISvgIconProps) => (
-  <svg viewBox="0 0 24 24" width={props.size} height={props.size} fill="none">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M14 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0V4h-5a1 1 0 0 1-1-1ZM3 14a1 1 0 0 1 1 1v5h5a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1Z"
-      fill={props.colors[0]}
-    />
-    <path d="m21 3-6.5 6.5" stroke={props.colors[0]} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M10.207 13.793a1 1 0 0 1 0 1.414l-6.5 6.5a1 1 0 0 1-1.414-1.414l6.5-6.5a1 1 0 0 1 1.414 0Z"
-      fill={props.colors[0]}
-    />
-  </svg>
-))
+export default IconWrapper(
+    'screen-full',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            viewBox="0 0 24 24"
+            width={props.size}
+            height={props.size}
+            fill="none"
+        >
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M14 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0V4h-5a1 1 0 0 1-1-1ZM3 14a1 1 0 0 1 1 1v5h5a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1Z"
+                fill={props.colors[0]}
+            />
+            <path
+                d="m21 3-6.5 6.5"
+                stroke={props.colors[0]}
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M10.207 13.793a1 1 0 0 1 0 1.414l-6.5 6.5a1 1 0 0 1-1.414-1.414l6.5-6.5a1 1 0 0 1 1.414 0Z"
+                fill={props.colors[0]}
+            />
+        </svg>
+    )
+);

@@ -8,22 +8,31 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('file-pages', false, (props: ISvgIconProps) => (
-  <svg viewBox="0 0 24 24" width={props.size} height={props.size} fill="none">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M3 3a2 2 0 0 1 2-2h10a1 1 0 0 1 .707.293l5 5A1 1 0 0 1 21 7v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3Zm11.586 0H5v18h14V7.414L14.586 3Z"
-      fill={props.colors[0]}
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M7 12a1 1 0 0 1 1-1h5a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1ZM7 16a1 1 0 0 1 1-1h7a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1ZM7 8a1 1 0 0 1 1-1h7a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Z"
-      fill={props.colors[0]}
-    />
-  </svg>
-))
+export default IconWrapper(
+    'file-pages',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            viewBox="0 0 24 24"
+            width={props.size}
+            height={props.size}
+            fill="none"
+        >
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M3 3a2 2 0 0 1 2-2h10a1 1 0 0 1 .707.293l5 5A1 1 0 0 1 21 7v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3Zm11.586 0H5v18h14V7.414L14.586 3Z"
+                fill={props.colors[0]}
+            />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M7 12a1 1 0 0 1 1-1h5a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1ZM7 16a1 1 0 0 1 1-1h7a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1ZM7 8a1 1 0 0 1 1-1h7a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Z"
+                fill={props.colors[0]}
+            />
+        </svg>
+    )
+);

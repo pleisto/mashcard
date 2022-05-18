@@ -7,6 +7,7 @@ import { EmbedViewProps } from '../../../../../extensions/blocks/embed/meta'
 import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../../EmbedView'
 import { styled, theme } from '@brickdoc/design-system'
 import { EmbedToolbar } from '../EmbedToolbar'
+import { maxWidth } from '../../styled'
 
 export interface TextViewProps {
   blockType: EmbedBlockType
@@ -40,6 +41,7 @@ const TextViewContainer = styled('div', {
   alignItems: 'center',
   display: 'inline-flex',
   flexDirection: 'row',
+  maxWidth,
   position: 'relative',
 
   '&:hover': {
@@ -60,13 +62,18 @@ const TextViewContent = styled('div', {
   alignItems: 'center',
   cursor: 'pointer',
   display: 'flex',
-  flexDirection: 'row'
+  flexDirection: 'row',
+  overflow: 'hidden'
 })
 
 const Name = styled('span', {
   fontSize: theme.fontSizes.body,
   fontWeight: 400,
   lineHeight: '1.5rem',
+  maxWidth: '100%',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
 
   '&:hover': {
     textDecoration: 'underline',
@@ -116,7 +123,7 @@ export const TextView: FC<TextViewProps> = ({
           <FileIcon fileType={fileType} />
         </TextViewIcon>
         <TextViewContent>
-          <Name>{name}</Name>
+          <Name>{name || url}</Name>
         </TextViewContent>
       </TextViewContainer>
     </BlockContainer>

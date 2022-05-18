@@ -3,7 +3,7 @@ import { Embedtype } from '@brickdoc/schema'
 import { TextView, PreviewView, CardView } from './embedViews'
 import { linkStorage, getFileTypeByExtension, getBlobUrl, getFileTypeByContentType, sizeFormat } from '../../../helpers'
 import { GalleryTypeEmbedBlock, LinkTypeEmbedBlock, UploadTypeEmbedBlock } from './embedTypes'
-import { ImageView } from '../ImageView'
+import { ImageView } from './embedViews/ImageView'
 import { EmbedAttributes, EmbedViewProps } from '../../../extensions/blocks/embed/meta'
 import { useExternalProps } from '../../../hooks/useExternalProps'
 import { FileIcon } from '../../ui'
@@ -14,6 +14,61 @@ export type UpdateEmbedBlockAttributes = <T extends 'link' | 'image' | 'attachme
   attrs: Partial<EmbedAttributes[T]>,
   type: T
 ) => void
+
+const renderImage = (
+  imageUrl: string,
+  updateEmbedBlockAttributes: UpdateEmbedBlockAttributes,
+  { node, deleteNode, getPos }: EmbedViewProps
+): ReactElement => {
+  const { name, displayName, height, width, align, size, mode } = node.attrs.image
+
+  if (node.attrs.image.mode === 'preview') {
+    return (
+      <ImageView
+        displayName={displayName! || name! || ''}
+        url={imageUrl}
+        height={height}
+        width={width}
+        align={align}
+        deleteNode={deleteNode}
+        getPos={getPos}
+        node={node}
+        updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+      />
+    )
+  }
+
+  if (mode === 'card') {
+    return (
+      <CardView
+        blockType="image"
+        displayName={displayName! || name! || ''}
+        description={sizeFormat(size)}
+        cover={imageUrl}
+        icon={<FileIcon fileType="image" />}
+        linkUrl={imageUrl}
+        node={node}
+        deleteNode={deleteNode}
+        getPos={getPos}
+        updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+      />
+    )
+  }
+
+  return (
+    <TextView
+      blockType="image"
+      name={name ?? ''}
+      displayName={displayName! || name! || ''}
+      fileType="image"
+      url={imageUrl}
+      deleteNode={deleteNode}
+      node={node}
+      getPos={getPos}
+      updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+    />
+  )
+}
 
 const renderAttachment = (
   fileUrl: string,
@@ -108,7 +163,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
   if (node.attrs.image?.key) {
     const imageUrl = getBlobUrl(externalProps.rootId, node.attrs?.image ?? {}, externalProps.blobs) ?? defaultUrl
     if (imageUrl) {
-      return <ImageView {...props} />
+      return renderImage(imageUrl, updateEmbedBlockAttributes, props)
     }
   }
 

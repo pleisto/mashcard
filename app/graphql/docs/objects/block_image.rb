@@ -9,6 +9,10 @@ module Docs
       field :height, Int, "height", null: true
       field :width, Int, "width", null: true
       field :ratio, Float, 'aspect ratio', null: true
+      field :name, String, "name", null: true
+      field :size, Int, "size", null: true
+      field :mode, String, "mode", null: true
+      field :align, String, "align", null: true
     end
   end
 end

@@ -8,24 +8,35 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('rss', false, (props: ISvgIconProps) => (
-  <svg viewBox="0 0 24 24" fill="none">
-    <path fillOpacity=".01" fill={props.colors[2]} d="M24 0H0v24h24V0z" />
-    <path
-      strokeLinejoin="round"
-      strokeWidth="2"
-      stroke={props.colors[0]}
-      d="M4 22V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v19l-8-4.136L4 22z"
-    />
-    <path
-      strokeLinejoin="round"
-      strokeLinecap="round"
-      strokeWidth="2"
-      stroke={props.colors[0]}
-      d="M11.975 6.975v6m-3-3h6"
-    />
-  </svg>
-))
+export default IconWrapper(
+    'rss',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+        >
+            <path
+                fillOpacity=".01"
+                fill={props.colors[2]}
+                d="M24 0H0v24h24V0z"
+            />
+            <path
+                strokeLinejoin="round"
+                strokeWidth="2"
+                stroke={props.colors[0]}
+                d="M4 22V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v19l-8-4.136L4 22z"
+            />
+            <path
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                strokeWidth="2"
+                stroke={props.colors[0]}
+                d="M11.975 6.975v6m-3-3h6"
+            />
+        </svg>
+    )
+);

@@ -1,4 +1,14 @@
-import { Preview, BookmarkView, TextView, Edit, Link, ScreenFull } from '@brickdoc/design-icons'
+import {
+  Preview,
+  BookmarkView,
+  TextView,
+  Edit,
+  Link,
+  ScreenFull,
+  AlignLeft,
+  AlignCenter,
+  AlignRight
+} from '@brickdoc/design-icons'
 import { Input, Popover, Spin, styled, theme } from '@brickdoc/design-system'
 import { ChangeEventHandler, FC, useCallback, useState } from 'react'
 import { useEditorI18n } from '../../../../hooks'
@@ -107,7 +117,8 @@ export function useEmbedToolbarOptions({
   displayName,
   url,
   updateEmbedBlockAttributes,
-  onFullScreen
+  onFullScreen,
+  align
 }: EmbedToolbarProps): [ToolbarOptionGroup] {
   const isPreview = mode === 'preview'
   const isCard = mode === 'card'
@@ -124,6 +135,18 @@ export function useEmbedToolbarOptions({
 
   const setToTextView = useCallback((): void => {
     updateEmbedBlockAttributes({ mode: 'text' }, blockType)
+  }, [blockType, updateEmbedBlockAttributes])
+
+  const setAlignLeft = useCallback((): void => {
+    updateEmbedBlockAttributes({ align: 'left' }, blockType)
+  }, [blockType, updateEmbedBlockAttributes])
+
+  const setAlignRight = useCallback((): void => {
+    updateEmbedBlockAttributes({ align: 'right' }, blockType)
+  }, [blockType, updateEmbedBlockAttributes])
+
+  const setAlignCenter = useCallback((): void => {
+    updateEmbedBlockAttributes({ align: 'center' }, blockType)
   }, [blockType, updateEmbedBlockAttributes])
 
   const options: ToolbarOptionGroup = [
@@ -170,8 +193,41 @@ export function useEmbedToolbarOptions({
           active: isText
         }
       ]
-    },
-    {
+    }
+  ]
+
+  if (blockType === 'image' && isPreview) {
+    options.push({
+      type: 'group',
+      items: [
+        {
+          type: 'item',
+          name: 'alignLeft',
+          tooltip: t('embed_block.align.left'),
+          icon: <AlignLeft />,
+          onAction: setAlignLeft,
+          active: align === 'left'
+        },
+        {
+          type: 'item',
+          name: 'alignCenter',
+          tooltip: t('embed_block.align.center'),
+          icon: <AlignCenter />,
+          onAction: setAlignCenter,
+          active: !align || align === 'center'
+        },
+        {
+          type: 'item',
+          name: 'alignRight',
+          tooltip: t('embed_block.align.right'),
+          icon: <AlignRight />,
+          onAction: setAlignRight,
+          active: align === 'right'
+        }
+      ]
+    })
+  } else {
+    options.push({
       type: 'group',
       items: [
         {
@@ -196,8 +252,8 @@ export function useEmbedToolbarOptions({
           )
         }
       ]
-    }
-  ]
+    })
+  }
 
   if (typeof onFullScreen === 'function') {
     options.push({

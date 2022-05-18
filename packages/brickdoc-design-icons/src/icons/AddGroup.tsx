@@ -8,34 +8,43 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('add-group', false, (props: ISvgIconProps) => (
-  <svg viewBox="0 0 24 24" width={props.size} height={props.size} fill="none">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M4.333 4A.333.333 0 0 0 4 4.333v13.334c0 .184.15.333.333.333H6.5v2H4.333A2.333 2.333 0 0 1 2 17.667V4.333A2.333 2.333 0 0 1 4.333 2h13.334A2.333 2.333 0 0 1 20 4.333V7h-2V4.333A.333.333 0 0 0 17.667 4H4.333Z"
-      fill={props.colors[0]}
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M8.167 8A.167.167 0 0 0 8 8.167v11.666c0 .092.075.167.167.167h11.666a.167.167 0 0 0 .167-.167V8.167A.167.167 0 0 0 19.833 8H8.167ZM6 8.167C6 6.97 6.97 6 8.167 6h11.666C21.03 6 22 6.97 22 8.167v11.666C22 21.03 21.03 22 19.833 22H8.167A2.167 2.167 0 0 1 6 19.833V8.167Z"
-      fill={props.colors[0]}
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M14 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z"
-      fill={props.colors[0]}
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M10 14a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2h-6a1 1 0 0 1-1-1Z"
-      fill={props.colors[0]}
-    />
-  </svg>
-))
+export default IconWrapper(
+    'add-group',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            viewBox="0 0 24 24"
+            width={props.size}
+            height={props.size}
+            fill="none"
+        >
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M4.333 4A.333.333 0 0 0 4 4.333v13.334c0 .184.15.333.333.333H6.5v2H4.333A2.333 2.333 0 0 1 2 17.667V4.333A2.333 2.333 0 0 1 4.333 2h13.334A2.333 2.333 0 0 1 20 4.333V7h-2V4.333A.333.333 0 0 0 17.667 4H4.333Z"
+                fill={props.colors[0]}
+            />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M8.167 8A.167.167 0 0 0 8 8.167v11.666c0 .092.075.167.167.167h11.666a.167.167 0 0 0 .167-.167V8.167A.167.167 0 0 0 19.833 8H8.167ZM6 8.167C6 6.97 6.97 6 8.167 6h11.666C21.03 6 22 6.97 22 8.167v11.666C22 21.03 21.03 22 19.833 22H8.167A2.167 2.167 0 0 1 6 19.833V8.167Z"
+                fill={props.colors[0]}
+            />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M14 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z"
+                fill={props.colors[0]}
+            />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M10 14a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2h-6a1 1 0 0 1-1-1Z"
+                fill={props.colors[0]}
+            />
+        </svg>
+    )
+);

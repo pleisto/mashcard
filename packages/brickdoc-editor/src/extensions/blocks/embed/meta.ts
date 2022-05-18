@@ -27,9 +27,16 @@ export interface EmbedAttributes {
   }
   image: {
     type: 'IMAGE'
+    name?: string
     key?: string
     displayName?: string | null
     source?: 'EXTERNAL' | 'ORIGIN'
+    mode?: EmbedViewMode
+    size?: number
+    height?: number
+    width?: number
+    ratio?: number
+    align?: 'left' | 'right' | 'center'
   }
   attachment: {
     name?: string

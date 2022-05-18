@@ -39,9 +39,7 @@ export const EmbedToolbarContainer = styled('div', {
   pointerEvents: 'none',
   position: 'absolute',
   right: '.75rem',
-  transition: 'opacity 100ms ease-in-out',
-
-  [`& ${EmbedToolbar}`]: {}
+  transition: 'opacity 100ms ease-in-out'
 })
 
 export const DocumentFooter: FC<DocumentFooterProps> = ({

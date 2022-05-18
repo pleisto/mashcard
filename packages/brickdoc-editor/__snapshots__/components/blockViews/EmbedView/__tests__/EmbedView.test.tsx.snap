@@ -7,17 +7,17 @@ exports[`EmbedView matches correct snapshot 1`] = `
     style="pointer-events: none; white-space: normal;"
   >
     <button
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-jFlAGq-contentType-default brd-c-PJLV-hpfoBr-size-md"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-jFlAGq-contentType-default brd-c-PJLV-jjlgHv-size-md"
       data-testid="editor-embed-block-link"
       role="button"
       type="button"
     >
       <div
-        class="brd-c-bVyxqJ"
+        class="brd-c-ldVfwr"
         style="background-image: url(cover);"
       />
       <div
-        class="brd-c-dParqV brd-c-dParqV-pkUDF-type-default"
+        class="brd-c-eANlUU brd-c-eANlUU-pkUDF-type-default"
       >
         <div
           class="brd-c-jZdmfj brd-c-jZdmfj-egpYxb-type-default"
@@ -25,7 +25,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
           brickdoc
         </div>
         <div
-          class="brd-c-inSKMy brd-c-inSKMy-mFKrh-type-default"
+          class="brd-c-elWMbS brd-c-elWMbS-mFKrh-type-default"
         >
           desc
         </div>
@@ -33,7 +33,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
           class="brd-c-ihEKuP"
         >
           <span
-            class="brd-c-hSIMwt"
+            class="brd-c-XzYTI"
           >
             https://www.brickdoc.com
           </span>
