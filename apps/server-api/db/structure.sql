@@ -102,9 +102,10 @@ CREATE TABLE public.pods (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     user_is_initialized boolean DEFAULT false NOT NULL,
-    space_owner_id bigint NOT NULL,
+    space_owner_id bigint,
     space_is_invite_enabled boolean DEFAULT false NOT NULL,
-    space_invite_secret text
+    space_invite_secret text,
+    CONSTRAINT space_owner_id_non_null CHECK (((type <> 'space'::public.pod_type) OR (space_owner_id IS NOT NULL)))
 );
 
 COMMENT ON TABLE public.pods IS 'A data pod is a place for storing documents, with mechanisms for controlling who can access what.

@@ -1,21 +1,30 @@
-import Fastify from 'fastify'
+import Fastify, { type FastifyInstance } from 'fastify'
 import { fastifyCookie } from '@fastify/cookie'
 import { SessionPlugin } from '../session.fastify-plugin'
 import { generateKey } from '@brickdoc/server-api-crate'
 
 describe('SessionFastifyPlugin', () => {
-  it('should access', () => {
-    const server = Fastify()
+  let server: FastifyInstance
+
+  beforeAll(async () => {
+    server = await Fastify()
+  })
+
+  afterAll(async () => {
+    await server.close()
+  })
+
+  it('should access', async () => {
     // session plugin requires cookie plugin
-    void server.register(fastifyCookie)
-    void server.register(SessionPlugin, {
+    await server.register(fastifyCookie)
+    await server.register(SessionPlugin, {
       key: generateKey()
     })
 
-    server.post('/', (req, res) => {
+    server.post('/', async (req, res) => {
       req.session.set('data1', req.body)
       req.session.data2 = req.body
-      void res.send('hoo')
+      await res.send('hoo')
     })
 
     server.get('/', (req, res) => {
@@ -31,40 +40,31 @@ describe('SessionFastifyPlugin', () => {
       void res.send({ data1, data2, data3, data4 })
     })
 
-    server.inject(
-      {
-        method: 'POST',
-        url: '/',
-        payload: {
-          some: 'data'
-        }
-      },
-      (err, res) => {
-        expect(err).toBeNull()
-        expect(res.statusCode).toBe(200)
-        expect(res.headers['set-cookie']).not.toBeUndefined()
-
-        server.inject(
-          {
-            method: 'GET',
-            url: '/',
-            headers: {
-              cookie: res.headers['set-cookie']
-            }
-          },
-          (err, res) => {
-            expect(err).toBeNull()
-            expect(res.body).toEqual(
-              JSON.stringify({
-                data1: { some: 'data' },
-                data2: { some: 'data' },
-                data3: { some: 'data' },
-                data4: { some: 'data' }
-              })
-            )
-          }
-        )
+    let res = await server.inject({
+      method: 'POST',
+      url: '/',
+      payload: {
+        some: 'data'
       }
+    })
+
+    expect(res.statusCode).toBe(200)
+
+    res = await server.inject({
+      method: 'GET',
+      url: '/',
+      headers: {
+        cookie: res.headers['set-cookie']
+      }
+    })
+
+    expect(res.body).toEqual(
+      JSON.stringify({
+        data1: { some: 'data' },
+        data2: { some: 'data' },
+        data3: { some: 'data' },
+        data4: { some: 'data' }
+      })
     )
   })
 })

@@ -77,6 +77,14 @@
       "path": "plugins/gcloud"
     },
     {
+      "name": "plugins/google-auth",
+      "path": "plugins/google-auth"
+    },
+    {
+      "name": "plugins/mock-auth",
+      "path": "plugins/mock-auth"
+    },
+    {
       "name": "plugins/sentry",
       "path": "plugins/sentry"
     },
@@ -156,6 +164,8 @@
       "packages/eslint-plugin-brickdoc",
       "plugins/gcloud",
       "plugins/sentry",
+      "plugins/google-auth",
+      "plugins/mock-auth",
       "tools/e2e-testing",
       "tools/schematics"
     ],

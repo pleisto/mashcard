@@ -56,11 +56,14 @@ export class AnyExceptionFilter implements GqlExceptionFilter {
    */
   graphQLFilter(exception: Error, host: GqlArgumentsHost): Error {
     const req = host.getContext().req as FastifyRequest
-    const httpRequest = {
-      ...requestLoggingContext(req),
-      query: (req.body as any)?.query,
-      operationName: (req.body as any)?.operationName
-    }
+    // TODO req can be undefined
+    const httpRequest = req.id
+      ? {
+          ...requestLoggingContext(req),
+          query: (req.body as any)?.query,
+          operationName: (req.body as any)?.operationName
+        }
+      : {}
 
     const graphQLError = new CustomApolloError(exception.name, exception.message)
     graphQLError.stack = exception.stack

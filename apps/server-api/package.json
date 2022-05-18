@@ -30,7 +30,8 @@
     "leaked-handles": "^5.2.0",
     "node-dev": "^7.4.3",
     "selfsigned": "^2.0.1",
-    "slonik-sql-tag-raw": "^1.1.4"
+    "slonik-sql-tag-raw": "^1.1.4",
+    "supertest": "^6.2.3"
   },
   "dependencies": {
     "@brickdoc/active-support": "workspace:^",
@@ -45,6 +46,7 @@
     "@nestjs/common": "^8.4.5",
     "@nestjs/core": "^8.4.5",
     "@nestjs/graphql": "^10.0.11",
+    "@nestjs/passport": "^8.2.1",
     "@nestjs/platform-fastify": "^8.4.5",
     "@nestjs/terminus": "^8.0.6",
     "@slonik/migrator": "^0.11.2",
@@ -61,6 +63,8 @@
     "lru-cache": "^7.10.1",
     "mime-types": "^2.1.35",
     "nest-winston": "^1.6.2",
+    "passport": "^0.5.2",
+    "passport-custom": "^1.1.1",
     "point-of-view": "^5.3.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.5.5",

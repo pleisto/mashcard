@@ -12,6 +12,7 @@
 
 ### Functions
 
+- [MaskId](common_utils.md#maskid)
 - [requestLoggingContext](common_utils.md#requestloggingcontext)
 - [safeJsonParse](common_utils.md#safejsonparse)
 
@@ -66,6 +67,28 @@
 [apps/server-api/src/common/utils/constants.ts:4](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L4)
 
 ## Functions
+
+### <a id="maskid" name="maskid"></a> MaskId
+
+▸ **MaskId**(`id`): `string`
+
+Convert Id to a masked string
+
+#### Parameters
+
+| Name | Type     |
+| :--- | :------- |
+| `id` | `number` |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[apps/server-api/src/common/utils/maskId.ts:4](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/maskId.ts#L4)
+
+---
 
 ### <a id="requestloggingcontext" name="requestloggingcontext"></a> requestLoggingContext
 

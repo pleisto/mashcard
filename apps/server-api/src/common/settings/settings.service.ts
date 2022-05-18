@@ -32,6 +32,25 @@ export class SettingsService {
   }
 
   /**
+   * Get a setting value where the scope is LOCAL_STATIC in a synchronous way
+   * @param key
+   * @param context
+   */
+  getLocalSync<T = unknown>(key: string, context: ScopeContext = {}): Result<T | undefined, Error> {
+    const item = this.findItem<T>(key as string)
+    if (!item) return ok(undefined)
+    // LOCAL_STATIC items are not stored in the database
+    if (item.options.scope === ScopeLookupStrategy.LOCAL_STATIC) return ok(item.defaultValue)
+    return err(
+      new ChangeConflictError({
+        key,
+        options: item.options,
+        reason: 'ScopeLookupStrategy.LOCAL_STATIC needs to be used with getLocalSync'
+      })
+    )
+  }
+
+  /**
    * Get a setting value
    * @param key
    * @param scope

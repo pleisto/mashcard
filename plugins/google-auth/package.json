@@ -1,0 +1,40 @@
+{
+  "name": "@brickdoc/plugin-google-auth",
+  "version": "0.1.0",
+  "description": "Google Auth Plugin for Brickdoc",
+  "addonsId": "brickdoc.google-auth",
+  "addonsType": "serverPlugin",
+  "engines": {
+    "brickdoc": ">=0.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brickdoc/brickdoc-ce.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brickdoc/brickdoc-ce/labels/plugin-google-auth"
+  },
+  "license": "Apache-2.0",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "scripts": {
+    "lint": "yarn lint:eslint && yarn lint:type",
+    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
+    "lint:type": "run -T tsc"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@nestjs/common": "^8.4.4",
+    "@nestjs/core": "^8.4.4",
+    "@nestjs/testing": "^8.4.4",
+    "@types/passport-google-oauth20": "^2.0.11"
+  },
+  "dependencies": {
+    "passport": "^0.5.2",
+    "passport-google-oauth20": "^2.0.0"
+  }
+}

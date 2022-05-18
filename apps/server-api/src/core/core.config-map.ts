@@ -15,7 +15,7 @@ export class CoreConfigMap {
   /**
    * Application base URL, it's used to generate links in emails or other places
    */
-  @Item({ clientExposed: true, validation: string().url() })
+  @Item({ clientExposed: true, validation: string().url(), scope: ScopeLookupStrategy.LOCAL_STATIC })
   appUrl: string = env.SERVER_BASE_URL ?? 'http://example.com/'
 
   /**

@@ -23,6 +23,7 @@
 - [calculateScope](common_settings.SettingsService.md#calculatescope)
 - [findItem](common_settings.SettingsService.md#finditem)
 - [get](common_settings.SettingsService.md#get)
+- [getLocalSync](common_settings.SettingsService.md#getlocalsync)
 - [update](common_settings.SettingsService.md#update)
 
 ## Constructors
@@ -87,7 +88,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.service.ts:190](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L190)
+[apps/server-api/src/common/settings/settings.service.ts:209](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L209)
 
 ---
 
@@ -109,7 +110,7 @@ Get all setting items that are exposed to the client
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.service.ts:115](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L115)
+[apps/server-api/src/common/settings/settings.service.ts:134](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L134)
 
 ---
 
@@ -131,7 +132,7 @@ Batch delete cached items
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.service.ts:198](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L198)
+[apps/server-api/src/common/settings/settings.service.ts:217](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L217)
 
 ---
 
@@ -154,7 +155,7 @@ generate a cache key for the given scope and key
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.service.ts:186](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L186)
+[apps/server-api/src/common/settings/settings.service.ts:205](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L205)
 
 ---
 
@@ -177,7 +178,7 @@ Calculate the scope based on the session context
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.service.ts:153](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L153)
+[apps/server-api/src/common/settings/settings.service.ts:172](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L172)
 
 ---
 
@@ -205,7 +206,7 @@ Find the config map item by key
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.service.ts:146](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L146)
+[apps/server-api/src/common/settings/settings.service.ts:165](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L165)
 
 ---
 
@@ -231,6 +232,35 @@ Get a setting value
 #### Returns
 
 `Promise`<`Result`<`undefined` \| `T`, `Error`\>\>
+
+#### Defined in
+
+[apps/server-api/src/common/settings/settings.service.ts:58](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L58)
+
+---
+
+### <a id="getlocalsync" name="getlocalsync"></a> getLocalSync
+
+▸ **getLocalSync**<`T`\>(`key`, `context?`): `Result`<`undefined` \| `T`, `Error`\>
+
+Get a setting value where the scope is LOCAL_STATIC in a synchronous way
+
+#### Type parameters
+
+| Name | Type      |
+| :--- | :-------- |
+| `T`  | `unknown` |
+
+#### Parameters
+
+| Name      | Type                                                            |
+| :-------- | :-------------------------------------------------------------- |
+| `key`     | `string`                                                        |
+| `context` | [`ScopeContext`](../interfaces/common_settings.ScopeContext.md) |
+
+#### Returns
+
+`Result`<`undefined` \| `T`, `Error`\>
 
 #### Defined in
 
@@ -264,4 +294,4 @@ Update a setting value on the database
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.service.ts:71](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L71)
+[apps/server-api/src/common/settings/settings.service.ts:90](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L90)

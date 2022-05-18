@@ -13,6 +13,7 @@ import { debugContextRegister } from './debugger.register'
 import { viewEngineRegister } from './view-engine.register'
 import { initCheckRegister } from './init-check.register'
 import { uncaughtHandlerRegister } from './uncaught-handler.register'
+import { passportRegister } from './passport.register'
 import { blobsRegister } from './blobs.register'
 
 /**
@@ -35,6 +36,7 @@ export const loadInitializers = async (app: NestFastifyApplication, log: Logger)
   // common initializers
   await initCheckRegister(app)
   await requestIDRegister(app)
+  await passportRegister(app)
   loggerRegister(app)
   // cookieRegister should be registered before sessionRegister. because sessionRegister will
   // use cookieRegister to sign the session cookie

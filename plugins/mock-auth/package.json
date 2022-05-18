@@ -1,0 +1,39 @@
+{
+  "name": "@brickdoc/plugin-mock-auth",
+  "version": "0.1.0",
+  "description": "Mock Auth Plugin for Brickdoc",
+  "addonsId": "brickdoc.mock-auth",
+  "addonsType": "serverPlugin",
+  "engines": {
+    "brickdoc": ">=0.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brickdoc/brickdoc-ce.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brickdoc/brickdoc-ce/labels/plugin-mock-auth"
+  },
+  "license": "Apache-2.0",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "scripts": {
+    "lint": "yarn lint:eslint && yarn lint:type",
+    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
+    "lint:type": "run -T tsc",
+    "test:jest": "run -T jest --silent=false"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@nestjs/common": "^8.4.4",
+    "@nestjs/core": "^8.4.4",
+    "@nestjs/platform-fastify": "^8.4.5",
+    "@nestjs/testing": "^8.4.4",
+    "@types/supertest": "^2.0.12",
+    "supertest": "^6.2.3"
+  }
+}

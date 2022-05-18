@@ -15,10 +15,11 @@ export const up: Migration = async ({ context: { connection, sql } }) => {
     "created_at" TIMESTAMP NOT NULL,
     "updated_at" TIMESTAMP NOT NULL,
     "user_is_initialized" BOOLEAN NOT NULL DEFAULT FALSE,
-    "space_owner_id" BIGINT NOT NULL,
+    "space_owner_id" BIGINT,
     "space_is_invite_enabled" BOOLEAN NOT NULL DEFAULT FALSE,
     "space_invite_secret" TEXT,
-    CONSTRAINT pods_owner_id_fkey FOREIGN KEY(space_owner_id) REFERENCES pods(id) ON DELETE RESTRICT
+    CONSTRAINT pods_owner_id_fkey FOREIGN KEY(space_owner_id) REFERENCES pods(id) ON DELETE RESTRICT,
+    CONSTRAINT space_owner_id_non_null CHECK (type <> 'space' OR space_owner_id IS NOT NULL)
   );
   CREATE UNIQUE INDEX "pods_lower_slug_text_ukey" ON "pods" (lower(("slug")::text));
   CREATE UNIQUE INDEX "pods_space_invite_secret_ukey" ON "pods" ("space_invite_secret");
