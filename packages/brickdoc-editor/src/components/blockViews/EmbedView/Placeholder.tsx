@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react'
 import { styled, theme } from '@brickdoc/design-system'
 import { UploadProgress } from '@brickdoc/uploader'
-import { maxWidth } from './styled'
+import { maxWidth } from './styles'
 
 export interface EmbedBlockPlaceholderProps {
   icon: ReactNode

@@ -17,7 +17,7 @@ import {
   Description,
   LinkText,
   EmbedToolbarContainer
-} from './styled'
+} from './styles'
 
 export interface CardViewProps {
   deleteNode: EmbedViewProps['deleteNode']

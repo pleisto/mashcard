@@ -1,6 +1,6 @@
 import { Dispatch, FC, SetStateAction } from 'react'
 import { Conversation } from './Conversation'
-import { ListPanel, ListWrapper, ConversationWrapper } from './styled'
+import { ListPanel, ListWrapper, ConversationWrapper } from './styles'
 import { CommentedNode } from './useCommentedNodes'
 import { useConversationActions } from './useConversationActions'
 import { useConversationPositionEffect } from './useConversationPositionEffect'
@@ -31,8 +31,7 @@ export const DiscussionPanel: FC<DiscussionPanelProps> = ({
             ref={setConversationRef(commentedNode.markId)}
             onClick={handleConversationSelect(commentedNode)}
             onMouseEnter={handleConversationHover(commentedNode)}
-            onMouseLeave={handleConversationLeave(commentedNode)}
-          >
+            onMouseLeave={handleConversationLeave(commentedNode)}>
             <Conversation active={activeMarkId === commentedNode.markId} commentedNode={commentedNode} />
           </ConversationWrapper>
         ))}

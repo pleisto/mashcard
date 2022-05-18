@@ -1,4 +1,5 @@
 import { CSS, globalCss, theme } from '@brickdoc/design-system'
+import { rgba } from 'polished'
 import anchorLine from './assets/anchor-line.png'
 
 const anchorMarkStyles = {
@@ -188,7 +189,7 @@ export const documentEditorStyles = globalCss({
         color: 'unset',
         // selection background color overrides line-through style
         // we need set alpha to make line-through style visible
-        background: '#2c5bff1f'
+        background: rgba(theme.colors.secondarySelected.value, 0.18)
       },
 
       '&:focus-visible': {

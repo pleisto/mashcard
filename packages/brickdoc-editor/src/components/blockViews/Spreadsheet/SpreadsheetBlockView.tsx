@@ -4,7 +4,7 @@ import { Input, Icon } from '@brickdoc/design-system'
 import { useEditorI18n, useDocumentEditable } from '../../../hooks'
 import { BlockContainer, BlockContainerProps } from '../BlockContainer'
 import { SpreadsheetViewProps } from '../../../extensions/blocks/spreadsheet/meta'
-import { MenuIcon } from '../../extensionViews/SlashMenu/styled'
+import { MenuIcon } from '../../extensionViews/SlashMenu/styles'
 
 import { useSpreadsheet } from './useSpreadsheet'
 import { columnDisplayTitle } from './helper'
@@ -190,8 +190,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
       node={node}
       deleteNode={handleDeleteNode}
       actionOptions={actionOptions}
-      onMouseDown={onSpreadsheetClick}
-    >
+      onMouseDown={onSpreadsheetClick}>
       {documentEditable ? (
         <Input
           bordered={false}
@@ -291,8 +290,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                     draggable={documentEditable}
                     onResize={onResize}
                     width={finalColumnWidths[column.uuid]}
-                    setWidth={number => setColumnWidths({ ...columnWidths, [column.uuid]: number })}
-                  >
+                    setWidth={number => setColumnWidths({ ...columnWidths, [column.uuid]: number })}>
                     <SpreadsheetColumnEditable
                       context={spreadsheetContext}
                       index={i}
@@ -313,8 +311,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                     rowId={rowBlock.id}
                     onHeightChange={(height: number) =>
                       setRowLayoutHeights({ ...rowLayoutHeights, [rowBlock.id]: height })
-                    }
-                  >
+                    }>
                     {columns.map((column, columnIdx) => {
                       const block = getCellBlock(rowBlock.id, column.uuid)
                       return (

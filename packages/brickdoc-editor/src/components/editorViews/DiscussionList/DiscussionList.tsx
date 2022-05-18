@@ -4,7 +4,7 @@ import { EditorContext } from '../../../context/EditorContext'
 import { Drawer } from '../../ui'
 import { DiscussionPanel } from './DiscussionPanel'
 import { PageDiscussionContext, usePageDiscussionContextValue } from './PageDiscussionContext'
-import { FilterTabs, DiscussionListContainer } from './styled'
+import { FilterTabs, DiscussionListContainer } from './styles'
 import { useActiveMarkId } from './useActiveMarkId'
 import { useCommentedNodes } from './useCommentedNodes'
 import { useDiscussionList } from './useDiscussionList'
@@ -36,8 +36,7 @@ export const DiscussionList: FC<DiscussionListProps> = () => {
       container={document.getElementById('aside') as HTMLElement}
       visible={visible}
       onClose={() => setVisible(false)}
-      title={t('discussion.title')}
-    >
+      title={t('discussion.title')}>
       <PageDiscussionContext.Provider value={pageDiscussion}>
         <DiscussionListContainer>
           <FilterTabs activeKey={activeTab} onTabClick={handleTabClick}>

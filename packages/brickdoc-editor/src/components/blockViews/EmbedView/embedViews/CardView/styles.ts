@@ -1,5 +1,5 @@
 import { styled, theme, Button } from '@brickdoc/design-system'
-import { maxWidth } from '../../styled'
+import { maxWidth } from '../../styles'
 import { EmbedToolbar } from '../EmbedToolbar'
 
 export const EmbedToolbarContainer = styled('div', {
@@ -138,6 +138,7 @@ export const FileIconWrapper = styled('div', {
 export const FileCoverWrapper = styled('div', {
   include: ['flexCenter'],
 
+  alignSelf: 'center',
   display: 'flex',
   fontSize: '2rem',
   height: '2rem',

@@ -8,7 +8,7 @@ import { PdftronDocument } from './PdftronDocument/PdftronDocument'
 import { WebsiteDocument } from './WebsiteDocument'
 import { styled } from '@brickdoc/design-system'
 import { EmbedToolbarContainer } from './DocumentFooter'
-import { maxWidth } from '../../styled'
+import { maxWidth } from '../../styles'
 
 export interface PreviewViewProps {
   blockType: EmbedBlockType

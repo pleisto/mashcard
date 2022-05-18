@@ -11,7 +11,7 @@ import {
   MenuItem,
   SearchInput,
   SearchInputContainer
-} from './styled'
+} from './styles'
 import { Drawer } from '../../ui'
 import { useDrawer } from '../../ui/Drawer'
 import { slashMenuGroup } from '../../../extensions/extensions/slashCommands/items'

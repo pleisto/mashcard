@@ -16,7 +16,7 @@ import { Base } from '../../extensions/base'
 import { ExternalProps, ExternalPropsContext } from '../../context'
 import { useDrawerService } from '../../components/ui/Drawer'
 import { useDropBlock, useUndo } from '../../helpers'
-import { documentEditorStyles } from './styled'
+import { documentEditorStyles } from './styles'
 
 export interface EditorContentProps {
   editor: TiptapEditor | null

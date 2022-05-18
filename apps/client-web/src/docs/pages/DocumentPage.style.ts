@@ -22,7 +22,7 @@ export const Page = styled('div', {
     width: {
       md: {},
       sm: {
-        width: '100vw',
+        width: '100%',
         [`${PageContent}`]: {
           padding: '0 1rem'
         }
