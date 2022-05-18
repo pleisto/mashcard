@@ -3,7 +3,6 @@ import { BubbleMenu as TiptapBubbleMenu } from '@tiptap/react'
 import { BubbleMenuViewProps } from '@tiptap/extension-bubble-menu'
 import { Editor } from '@tiptap/core'
 import { Toolbar } from '../../ui/Toolbar'
-import './index.less'
 import { useBubbleMenuItems } from './useBubbleMenuItems'
 import { findNodesInSelection } from '../../../helpers'
 import { Button } from '@brickdoc/design-system'
@@ -59,8 +58,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
     <TiptapBubbleMenu
       tippyOptions={{ placement: 'top-start', maxWidth: '500px', delay: [1000, 0] }}
       shouldShow={shouldShow}
-      editor={editor}
-    >
+      editor={editor}>
       {visible && (
         // Puts toolbar inside a button to prevent toolbar from blink.
         // ref: https://tiptap.dev/api/extensions/bubble-menu

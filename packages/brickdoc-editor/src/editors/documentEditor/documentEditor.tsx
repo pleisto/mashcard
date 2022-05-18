@@ -14,9 +14,9 @@ import { BubbleMenu } from '../../components/extensionViews'
 import { SyncOptions } from '../../extensions'
 import { Base } from '../../extensions/base'
 import { ExternalProps, ExternalPropsContext } from '../../context'
-import './styles.less'
 import { useDrawerService } from '../../components/ui/Drawer'
 import { useDropBlock, useUndo } from '../../helpers'
+import { documentEditorStyles } from './styled'
 
 export interface EditorContentProps {
   editor: TiptapEditor | null
@@ -66,6 +66,7 @@ const typesWithUuid = [
 ]
 
 export function useEditor(options: EditorOptions): TiptapEditor | null {
+  documentEditorStyles()
   const { onSave, editable, externalProps, ydoc, ...restOptions } = options
 
   return useTiptapEditor(
