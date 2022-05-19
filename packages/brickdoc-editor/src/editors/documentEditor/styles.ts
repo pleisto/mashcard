@@ -1,5 +1,4 @@
-import { CSS, globalCss, theme } from '@brickdoc/design-system'
-import { rgba } from 'polished'
+import { CSS, globalCss, theme, rgba } from '@brickdoc/design-system'
 import anchorLine from './assets/anchor-line.png'
 
 const anchorMarkStyles = {

@@ -1,6 +1,5 @@
 import React from 'react'
-import { rgba } from 'polished'
-import { Icon, IconProps, theme } from '@brickdoc/design-system'
+import { Icon, IconProps, theme, rgba } from '@brickdoc/design-system'
 import { IconBackground } from './IconBackground'
 
 export { IconBackground }

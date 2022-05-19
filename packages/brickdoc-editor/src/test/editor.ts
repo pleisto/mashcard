@@ -1,11 +1,6 @@
+import { DeepPartial } from '@brickdoc/active-support'
 import { Editor } from '@tiptap/react'
 import { merge } from 'lodash'
-
-type DeepPartial<T> = T extends object
-  ? {
-      [P in keyof T]?: DeepPartial<T[P]>
-    }
-  : T
 
 export interface MockEditorProps extends DeepPartial<Editor> {}
 

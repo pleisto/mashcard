@@ -6,3 +6,5 @@ export interface HSL {
   /** Lightness, range 0-100. */
   l: number
 }
+
+export { hsl, hsla } from 'polished'

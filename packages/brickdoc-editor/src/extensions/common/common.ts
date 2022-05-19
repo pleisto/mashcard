@@ -1,3 +1,4 @@
+import { RequiredKeys } from '@brickdoc/active-support'
 import {
   Mark,
   MarkConfig as TipTapMarkConfig,
@@ -13,8 +14,6 @@ import { Node as ProseMirrorNode } from 'prosemirror-model'
 type GenericConfig = TipTapMarkConfig | TipTapNodeConfig | TipTapExtensionConfig
 
 export type Attribute = Partial<TiptapAttribute>
-
-type RequiredKeys<T> = { [K in keyof T]-?: {} extends Pick<T, K> ? never : K }[keyof T]
 
 export type AddAttributes<Config extends GenericConfig, Attributes> = (
   this: ThisParameterType<NonNullable<Config['addAttributes']>>

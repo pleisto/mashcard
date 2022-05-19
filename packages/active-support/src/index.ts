@@ -7,6 +7,7 @@ export * from './modernLodash'
 export * from './inflections'
 export * from 'neverthrow' // rust style error handing
 export * from './results'
+export * from './typescript'
 
 export {
   ms // Use this package to easily convert various time formats to milliseconds.

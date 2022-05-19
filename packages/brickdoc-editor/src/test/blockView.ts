@@ -1,11 +1,6 @@
+import { DeepPartial } from '@brickdoc/active-support'
 import { BlockViewProps } from '../extensions/common'
 import { mockEditor } from './editor'
-
-type DeepPartial<T> = T extends object
-  ? {
-      [P in keyof T]?: DeepPartial<T[P]>
-    }
-  : T
 
 export interface MockBlockViewPropsProps<Option, Attribute>
   extends Partial<Omit<BlockViewProps<Option, Attribute>, 'node' | 'extension' | 'editor'>> {

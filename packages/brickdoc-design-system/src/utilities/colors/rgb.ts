@@ -29,3 +29,5 @@ export const MAX_RGBA_LENGTH = 3
 export const HEX_REGEX = /^[\da-f]{0,6}$/i
 /** Regular expression matching only numbers */
 export const RGBA_REGEX = /^\d{0,3}$/
+
+export { rgb, rgba } from 'polished'
