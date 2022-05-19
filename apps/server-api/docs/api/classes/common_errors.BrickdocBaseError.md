@@ -50,7 +50,7 @@ Error.constructor
 
 #### Defined in
 
-[apps/server-api/src/common/errors/base.error.ts:43](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L43)
+[common/errors/base.error.ts:43](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L43)
 
 ## Properties
 
@@ -62,7 +62,7 @@ It may be exposed to the client.
 
 #### Defined in
 
-[apps/server-api/src/common/errors/base.error.ts:22](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L22)
+[common/errors/base.error.ts:22](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L22)
 
 ---
 
@@ -80,7 +80,7 @@ So it is recommended that all variables used in the `message` be stored there.
 
 #### Defined in
 
-[apps/server-api/src/common/errors/base.error.ts:29](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L29)
+[common/errors/base.error.ts:29](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L29)
 
 ---
 
@@ -97,7 +97,7 @@ Error.message
 
 #### Defined in
 
-[apps/server-api/src/common/errors/base.error.ts:17](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L17)
+[common/errors/base.error.ts:17](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L17)
 
 ---
 
@@ -114,7 +114,7 @@ Error.name
 
 #### Defined in
 
-[apps/server-api/src/common/errors/base.error.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L11)
+[common/errors/base.error.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L11)
 
 ---
 
@@ -126,4 +126,4 @@ originalError is used to store the original error that was thrown
 
 #### Defined in
 
-[apps/server-api/src/common/errors/base.error.ts:36](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L36)
+[common/errors/base.error.ts:36](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L36)

@@ -24,4 +24,4 @@
 
 #### Defined in
 
-[apps/server-api/src/cli/schematics/migration/index.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/cli/schematics/migration/index.ts#L8)
+[cli/schematics/migration/index.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/cli/schematics/migration/index.ts#L8)

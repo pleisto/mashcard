@@ -10,6 +10,7 @@
 - [cli/schematics/migration](modules/cli_schematics_migration.md)
 - [common/errors](modules/common_errors.md)
 - [common/kms](modules/common_kms.md)
+- [common/scalars](modules/common_scalars.md)
 - [common/server-plugin](modules/common_server_plugin.md)
 - [common/settings](modules/common_settings.md)
 - [common/testing](modules/common_testing.md)

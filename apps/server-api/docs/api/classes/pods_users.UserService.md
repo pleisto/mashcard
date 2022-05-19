@@ -28,7 +28,7 @@
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.service.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.service.ts#L9)
+[pods/users/user.service.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.service.ts#L9)
 
 ## Methods
 
@@ -50,7 +50,7 @@ Find or create a user by credential
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.service.ts:15](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.service.ts#L15)
+[pods/users/user.service.ts:15](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.service.ts#L15)
 
 ---
 
@@ -72,7 +72,7 @@ Get a user by id
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.service.ts:32](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.service.ts#L32)
+[pods/users/user.service.ts:32](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.service.ts#L32)
 
 ---
 
@@ -94,4 +94,4 @@ Get a user by slug
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.service.ts:39](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.service.ts#L39)
+[pods/users/user.service.ts:39](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.service.ts#L39)

@@ -33,6 +33,7 @@
     "@nestjs/testing": "^8.4.5"
   },
   "dependencies": {
+    "@envelop/sentry": "^3.4.1",
     "@sentry/node": "^6.19.7",
     "@sentry/tracing": "^6.19.7"
   }

@@ -27,4 +27,4 @@ Api path for auth redirect.
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.interface.ts:41](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L41)
+[pods/users/user.interface.ts:41](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L41)

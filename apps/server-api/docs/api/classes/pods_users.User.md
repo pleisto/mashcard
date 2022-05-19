@@ -34,7 +34,7 @@
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.model.ts:25](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.model.ts#L25)
+[pods/users/user.object-type.ts:16](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L16)
 
 ---
 
@@ -44,7 +44,7 @@
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.model.ts:22](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.model.ts#L22)
+[pods/users/user.object-type.ts:13](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L13)
 
 ---
 
@@ -54,7 +54,7 @@
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.model.ts:31](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.model.ts#L31)
+[pods/users/user.object-type.ts:14](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L14)
 
 ---
 
@@ -62,11 +62,9 @@
 
 • **id**: `number`
 
-Masked id
-
 #### Defined in
 
-[apps/server-api/src/pods/users/user.model.ts:10](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.model.ts#L10)
+[pods/users/user.object-type.ts:10](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L10)
 
 ---
 
@@ -76,7 +74,7 @@ Masked id
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.model.ts:16](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.model.ts#L16)
+[pods/users/user.object-type.ts:19](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L19)
 
 ---
 
@@ -86,7 +84,7 @@ Masked id
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.model.ts:28](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.model.ts#L28)
+[pods/users/user.object-type.ts:22](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L22)
 
 ---
 
@@ -96,7 +94,7 @@ Masked id
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.model.ts:19](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.model.ts#L19)
+[pods/users/user.object-type.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L12)
 
 ---
 
@@ -106,7 +104,7 @@ Masked id
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.model.ts:13](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.model.ts#L13)
+[pods/users/user.object-type.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L11)
 
 ---
 
@@ -116,4 +114,4 @@ Masked id
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.model.ts:34](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.model.ts#L34)
+[pods/users/user.object-type.ts:15](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L15)

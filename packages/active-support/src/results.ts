@@ -1,4 +1,4 @@
-import { Result } from '@brickdoc/active-support'
+import { Result } from 'neverthrow'
 
 /**
  * JSON Parser with result wrapper

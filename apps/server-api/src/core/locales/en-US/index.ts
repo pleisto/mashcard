@@ -1,4 +1,4 @@
-import { Locale } from '../locale.model'
+import { Locale } from '../locale.object-type'
 
 export const enUS: Locale = {
   tag: 'en-US',

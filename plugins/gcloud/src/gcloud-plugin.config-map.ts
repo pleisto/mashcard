@@ -1,7 +1,9 @@
 import { env } from 'process'
 import { ConfigMap, Item, ScopeLookupStrategy } from '@brickdoc/server-api/src/common/settings'
-import { safeJsonParse } from '@brickdoc/server-api/src/common/utils'
+import { safeJsonParse } from '@brickdoc/active-support'
 import { string, boolean, object, InferType } from 'yup'
+
+const blobAdaptorEnabled = env.BLOB_ADAPTOR === 'GCSStorageAdaptorHook'
 
 const gcsBucketSchema = object({
   /**
@@ -55,13 +57,13 @@ export class GcloudConfigMap {
 
   @Item({
     scope: ScopeLookupStrategy.LOCAL_STATIC,
-    validation: gcsBucketSchema
+    validation: blobAdaptorEnabled ? gcsBucketSchema : undefined
   })
   gcsPublicBucket: GCSBucketOptions = safeJsonParse(env.GCP_GCS_PUBLIC_BUCKET!).unwrapOr({})
 
   @Item({
     scope: ScopeLookupStrategy.LOCAL_STATIC,
-    validation: gcsBucketSchema
+    validation: blobAdaptorEnabled ? gcsBucketSchema : undefined
   })
   gcsPrivateBucket: GCSBucketOptions = safeJsonParse(env.GCP_GCS_PRIVATE_BUCKET!).unwrapOr({})
 }

@@ -2289,6 +2289,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@brickdoc/plugin-sentry@workspace:plugins/sentry"
   dependencies:
+    "@envelop/sentry": ^3.4.1
     "@nestjs/common": ^8.4.5
     "@nestjs/core": ^8.4.5
     "@nestjs/testing": ^8.4.5
@@ -2337,6 +2338,8 @@ __metadata:
     "@brickdoc/nestjs-slonik": "workspace:^"
     "@brickdoc/schematics": "workspace:^"
     "@brickdoc/server-api-crate": "workspace:^"
+    "@envelop/core": ^2.3.2
+    "@envelop/depth-limit": ^1.5.2
     "@faker-js/faker": ^6.3.1
     "@fastify/cookie": ^6.0.0
     "@fastify/helmet": ^8.0.1
@@ -2771,6 +2774,49 @@ __metadata:
   peerDependencies:
     cosmiconfig: ">=6"
   checksum: 7fe0198622b1063c40572034df7e8ba867865a1b4815afe230795929abcf785758b34d7806a8e2100ba8ab4e92c5a1c3e11a980c466c4406df6e7ec6e50df8b6
+  languageName: node
+  linkType: hard
+
+"@envelop/core@npm:^2.3.2":
+  version: 2.3.2
+  resolution: "@envelop/core@npm:2.3.2"
+  dependencies:
+    "@envelop/types": 2.2.0
+  peerDependencies:
+    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
+  checksum: 51bed0f6bc7a93905e9d9718d6e849cbd9e1a8a3f12316a46a07a657aeee4bd8c94cef50ca17c37c67f40a52857003c4bc4e61acbfdc467ea869ae030bb021ca
+  languageName: node
+  linkType: hard
+
+"@envelop/depth-limit@npm:^1.5.2":
+  version: 1.5.2
+  resolution: "@envelop/depth-limit@npm:1.5.2"
+  dependencies:
+    graphql-depth-limit: ^1.1.0
+  peerDependencies:
+    "@envelop/core": ^2.3.2
+    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
+  checksum: 957a0bcace6f8466b114199cb5c9d056c2aac81ad9dd5fa5fc14cdf2865864de731c259a88f541f1cced3da64ca43850bc63ffceb43520ba7ca2910e48a4a80b
+  languageName: node
+  linkType: hard
+
+"@envelop/sentry@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "@envelop/sentry@npm:3.4.1"
+  peerDependencies:
+    "@envelop/core": ^2.3.2
+    "@sentry/node": ^6
+    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
+  checksum: 21c09be02b17d3a035291a0e6204c67146964e11fb6f04935cf1e244cc05e3177eb10b4edb0d00c026000330359af2957cdf2280b206f4b63180306c182247c5
+  languageName: node
+  linkType: hard
+
+"@envelop/types@npm:2.2.0":
+  version: 2.2.0
+  resolution: "@envelop/types@npm:2.2.0"
+  peerDependencies:
+    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
+  checksum: 52f9d1635f310be46a6e1ee28cbde398b8a1dba7a2f11f89175103c8871f67f51a44e72abf6d7766862aa73538d33e7c71ab54868c129f4a2d054d1096aeb3fc
   languageName: node
   linkType: hard
 
@@ -16140,6 +16186,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"graphql-depth-limit@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "graphql-depth-limit@npm:1.1.0"
+  dependencies:
+    arrify: ^1.0.1
+  peerDependencies:
+    graphql: "*"
+  checksum: e43c8c0462612870797c0691e2c9488d6773eb794dda2b71c2c5659f721ec28be42e6c1f381e3b05a892c25d212d9babe08888a8ce6fd4f83ecc19a988675e56
+  languageName: node
+  linkType: hard
+
 "graphql-executor@npm:0.0.23":
   version: 0.0.23
   resolution: "graphql-executor@npm:0.0.23"
@@ -20979,7 +21036,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:2.6.7, node-fetch@npm:^2.6.0, node-fetch@npm:^2.6.1, node-fetch@npm:^2.6.7":
+"node-fetch@npm:2.6.7":
   version: 2.6.7
   resolution: "node-fetch@npm:2.6.7"
   dependencies:
@@ -20990,6 +21047,20 @@ __metadata:
     encoding:
       optional: true
   checksum: 8d816ffd1ee22cab8301c7756ef04f3437f18dace86a1dae22cf81db8ef29c0bf6655f3215cb0cdb22b420b6fe141e64b26905e7f33f9377a7fa59135ea3e10b
+  languageName: node
+  linkType: hard
+
+"node-fetch@patch:node-fetch@npm:2.6.7#.yarn/patches/node-fetch-npm-2.6.7-777aa2a6df.patch::locator=%40brickdoc%2Fmonorepo%40workspace%3A.":
+  version: 2.6.7
+  resolution: "node-fetch@patch:node-fetch@npm%3A2.6.7#.yarn/patches/node-fetch-npm-2.6.7-777aa2a6df.patch::version=2.6.7&hash=e8e9b8&locator=%40brickdoc%2Fmonorepo%40workspace%3A."
+  dependencies:
+    whatwg-url: ^5.0.0
+  peerDependencies:
+    encoding: ^0.1.0
+  peerDependenciesMeta:
+    encoding:
+      optional: true
+  checksum: 498a7aa66c04bc33d0af5733f5bd1a8c7b06d2055662bb140519fa3f464c325a71733d732b9e11ad415888912b255558ea3401c730763dbae45c6b076593f6ca
   languageName: node
   linkType: hard
 

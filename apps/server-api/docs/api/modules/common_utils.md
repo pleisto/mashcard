@@ -12,9 +12,7 @@
 
 ### Functions
 
-- [MaskId](common_utils.md#maskid)
 - [requestLoggingContext](common_utils.md#requestloggingcontext)
-- [safeJsonParse](common_utils.md#safejsonparse)
 
 ## Variables
 
@@ -24,7 +22,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/utils/constants.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L7)
+[common/utils/constants.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L7)
 
 ---
 
@@ -34,7 +32,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/utils/constants.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L8)
+[common/utils/constants.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L8)
 
 ---
 
@@ -44,7 +42,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/utils/constants.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L9)
+[common/utils/constants.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L9)
 
 ---
 
@@ -54,7 +52,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/utils/constants.ts:5](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L5)
+[common/utils/constants.ts:5](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L5)
 
 ---
 
@@ -64,31 +62,9 @@
 
 #### Defined in
 
-[apps/server-api/src/common/utils/constants.ts:4](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L4)
+[common/utils/constants.ts:4](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L4)
 
 ## Functions
-
-### <a id="maskid" name="maskid"></a> MaskId
-
-▸ **MaskId**(`id`): `string`
-
-Convert Id to a masked string
-
-#### Parameters
-
-| Name | Type     |
-| :--- | :------- |
-| `id` | `number` |
-
-#### Returns
-
-`string`
-
-#### Defined in
-
-[apps/server-api/src/common/utils/maskId.ts:4](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/maskId.ts#L4)
-
----
 
 ### <a id="requestloggingcontext" name="requestloggingcontext"></a> requestLoggingContext
 
@@ -114,29 +90,8 @@ Convert Id to a masked string
 | `requestMethod`  | `string`                |
 | `requestUrl`     | `string`                |
 | `userAgent`      | `undefined` \| `string` |
+| `userId`         | `number`                |
 
 #### Defined in
 
-[apps/server-api/src/common/utils/logging.ts:4](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/logging.ts#L4)
-
----
-
-### <a id="safejsonparse" name="safejsonparse"></a> safeJsonParse
-
-▸ **safeJsonParse**(...`args`): `Result`<`any`, `unknown`\>
-
-JSON Parser with result wrapper
-
-#### Parameters
-
-| Name      | Type                               |
-| :-------- | :--------------------------------- |
-| `...args` | [text: string, reviver?: Function] |
-
-#### Returns
-
-`Result`<`any`, `unknown`\>
-
-#### Defined in
-
-[apps/server-api/src/common/utils/neverthrow.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/neverthrow.ts#L6)
+[common/utils/logging.ts:5](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/logging.ts#L5)

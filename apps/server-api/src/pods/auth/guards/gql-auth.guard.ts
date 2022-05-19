@@ -6,6 +6,7 @@ import { AuthGuard } from '@nestjs/passport'
 export class GqlAuthGuard extends AuthGuard('session') {
   getRequest(context: ExecutionContext): Request {
     const ctx = GqlExecutionContext.create(context)
+
     // TODO mock request here
     // console.log('getRequest', ctx, ctx.getContext())
     return ctx.getContext().req

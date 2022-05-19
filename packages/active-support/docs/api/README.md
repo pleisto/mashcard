@@ -127,6 +127,7 @@
 - [rangeRight](README.md#rangeright)
 - [reject](README.md#reject)
 - [remove](README.md#remove)
+- [safeJsonParse](README.md#safejsonparse)
 - [sample](README.md#sample)
 - [sampleSize](README.md#samplesize)
 - [set](README.md#set)
@@ -2639,7 +2640,7 @@ Converts an array of items with ids and parent ids to a nested tree in a perform
 
 #### Defined in
 
-[packages/active-support/src/index.ts:20](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/index.ts#L20)
+[packages/active-support/src/index.ts:21](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/index.ts#L21)
 
 ---
 
@@ -5958,6 +5959,28 @@ Returns the new array of removed elements.
 #### Defined in
 
 node_modules/@types/lodash/common/array.d.ts:1117
+
+---
+
+### <a id="safejsonparse" name="safejsonparse"></a> safeJsonParse
+
+▸ **safeJsonParse**(...`args`): [`Result`](README.md#result)<`any`, `unknown`\>
+
+JSON Parser with result wrapper
+
+#### Parameters
+
+| Name      | Type                               |
+| :-------- | :--------------------------------- |
+| `...args` | [text: string, reviver?: Function] |
+
+#### Returns
+
+[`Result`](README.md#result)<`any`, `unknown`\>
+
+#### Defined in
+
+[packages/active-support/src/results.ts:6](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/results.ts#L6)
 
 ---
 

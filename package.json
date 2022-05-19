@@ -106,7 +106,8 @@
     "@jest/transform": "npm:@jest/transform@>=27",
     "prosemirror-view": "patch:prosemirror-view@npm:1.23.7#.yarn/patches/prosemirror-view-npm-1.23.7-5085f0bf9b",
     "minimist": ">= 1.2.6",
-    "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.10#.yarn/patches/vite-plugin-mdx-npm-3.5.10-ae54c30668"
+    "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.10#.yarn/patches/vite-plugin-mdx-npm-3.5.10-ae54c30668",
+    "node-fetch": "patch:node-fetch@npm:2.6.7#.yarn/patches/node-fetch-npm-2.6.7-777aa2a6df.patch"
   },
   "dependencies": {
     "@swc/core": "^1.2.186",

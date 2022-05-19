@@ -2,16 +2,6 @@ import { FastifyPluginAsync, type FastifyRequest, type FastifyReply } from 'fast
 import fp from 'fastify-plugin'
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 
-declare module 'fastify' {
-  interface FastifyReply {
-    setHeader: FastifyReply['raw']['setHeader']
-    end: FastifyReply['raw']['end']
-  }
-  interface FastifyRequest {
-    res: FastifyReply
-  }
-}
-
 // HACK: support redirect to fastify instance `request`
 // SEE: https://github.com/nestjs/nest/issues/5702#issuecomment-979893525
 const PassportPlugin: FastifyPluginAsync = async (fastify, _options) => {

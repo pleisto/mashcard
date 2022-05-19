@@ -36,7 +36,6 @@ export class AnyExceptionFilter implements GqlExceptionFilter {
 
   catch(exception: Error, host: ArgumentsHost): Error | void {
     const applicationRef = this.httpAdapterHost?.httpAdapter
-
     /**
      * NestJS has many types of execution context.
      * @see https://docs.nestjs.com/fundamentals/execution-context
@@ -57,11 +56,11 @@ export class AnyExceptionFilter implements GqlExceptionFilter {
   graphQLFilter(exception: Error, host: GqlArgumentsHost): Error {
     const req = host.getContext().req as FastifyRequest
     // TODO req can be undefined
-    const httpRequest = req.id
+    const httpRequest = req?.id
       ? {
           ...requestLoggingContext(req),
-          query: (req.body as any)?.query,
-          operationName: (req.body as any)?.operationName
+          query: (req?.body as any)?.query,
+          operationName: (req?.body as any)?.operationName
         }
       : {}
 
@@ -75,14 +74,14 @@ export class AnyExceptionFilter implements GqlExceptionFilter {
       graphQLError.extensions.kind = `${exception.name}`
       graphQLError.extensions.details = {
         time: new Date().toISOString(),
-        traceId: req.id,
+        traceId: req?.id,
         ...exception.details
       }
       graphQLError.originalError = exception.originalError
       const logLevel = exception.code >= 500 ? 'error' : 'warn'
-      this.logger.log(logLevel, { trace: req.id, httpRequest, exception, context })
+      this.logger.log(logLevel, { trace: req?.id, httpRequest, exception, context })
     } else {
-      this.logger.error({ trace: req.id, httpRequest, exception, context })
+      this.logger.error({ trace: req?.id, httpRequest, exception, context })
       graphQLError.originalError = exception
     }
 
@@ -167,11 +166,11 @@ export class AnyExceptionFilter implements GqlExceptionFilter {
       statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
       message: 'Unknown Exception Throw in AnyExceptionFilter'
     }
-    applicationRef.reply(host.getArgByIndex(1), body, body.statusCode)
     this.logger.error(body.message, {
       exception,
       type: host.getType(),
       context
     })
+    applicationRef.reply(host.getArgByIndex(1), body, body.statusCode)
   }
 }

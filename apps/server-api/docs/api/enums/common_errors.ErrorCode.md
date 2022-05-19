@@ -26,7 +26,7 @@ This values are based on HTTP status code
 
 #### Defined in
 
-[apps/server-api/src/common/errors/errors.interface.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L6)
+[common/errors/errors.interface.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L6)
 
 ---
 
@@ -38,7 +38,7 @@ e.g. Resource already exists or read-modify-write conflict
 
 #### Defined in
 
-[apps/server-api/src/common/errors/errors.interface.ts:13](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L13)
+[common/errors/errors.interface.ts:13](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L13)
 
 ---
 
@@ -48,7 +48,7 @@ e.g. Resource already exists or read-modify-write conflict
 
 #### Defined in
 
-[apps/server-api/src/common/errors/errors.interface.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L8)
+[common/errors/errors.interface.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L8)
 
 ---
 
@@ -58,7 +58,7 @@ e.g. Resource already exists or read-modify-write conflict
 
 #### Defined in
 
-[apps/server-api/src/common/errors/errors.interface.ts:18](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L18)
+[common/errors/errors.interface.ts:18](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L18)
 
 ---
 
@@ -68,7 +68,7 @@ e.g. Resource already exists or read-modify-write conflict
 
 #### Defined in
 
-[apps/server-api/src/common/errors/errors.interface.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L9)
+[common/errors/errors.interface.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L9)
 
 ---
 
@@ -80,7 +80,7 @@ Either out of resource quota or reaching rate limiting
 
 #### Defined in
 
-[apps/server-api/src/common/errors/errors.interface.ts:17](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L17)
+[common/errors/errors.interface.ts:17](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L17)
 
 ---
 
@@ -90,7 +90,7 @@ Either out of resource quota or reaching rate limiting
 
 #### Defined in
 
-[apps/server-api/src/common/errors/errors.interface.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L7)
+[common/errors/errors.interface.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L7)
 
 ---
 
@@ -100,4 +100,4 @@ Either out of resource quota or reaching rate limiting
 
 #### Defined in
 
-[apps/server-api/src/common/errors/errors.interface.ts:19](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L19)
+[common/errors/errors.interface.ts:19](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/errors.interface.ts#L19)

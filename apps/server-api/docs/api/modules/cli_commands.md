@@ -14,4 +14,4 @@
 
 #### Defined in
 
-[apps/server-api/src/cli/commands/index.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/cli/commands/index.ts#L11)
+[cli/commands/index.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/cli/commands/index.ts#L11)

@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common'
-import { Metadata } from './metadata.model'
+import { Metadata } from './metadata.object-type'
 import { MetadataResolver } from './metadata.resolver'
 
 @Module({

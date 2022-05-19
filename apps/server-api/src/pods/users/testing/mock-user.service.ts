@@ -1,5 +1,5 @@
 import { Result, ok } from '@brickdoc/active-support'
-import { User } from '../user.model'
+import { User } from '../user.object-type'
 
 export const mockUserService = {
   async getUserById(id: number): Promise<Result<User, Error>> {

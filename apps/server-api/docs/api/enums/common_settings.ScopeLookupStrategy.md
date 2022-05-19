@@ -27,7 +27,7 @@ reading order:
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.interface.ts:19](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L19)
+[common/settings/settings.interface.ts:19](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L19)
 
 ---
 
@@ -47,7 +47,7 @@ reading order:
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.interface.ts:31](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L31)
+[common/settings/settings.interface.ts:31](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L31)
 
 ---
 
@@ -70,7 +70,7 @@ reading order if scopeContext is `{user:x, space:y}`:
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.interface.ts:45](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L45)
+[common/settings/settings.interface.ts:45](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L45)
 
 ---
 
@@ -93,4 +93,4 @@ reading order if scopeContext is `{user:x, space:y}`:
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.interface.ts:59](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L59)
+[common/settings/settings.interface.ts:59](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L59)

@@ -41,7 +41,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/server-plugin/server-plugin.interface.ts:41](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L41)
+[common/server-plugin/server-plugin.interface.ts:52](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L52)
 
 ## Variables
 
@@ -51,7 +51,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/server-plugin/server-plugin.interface.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L9)
+[common/server-plugin/server-plugin.interface.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L11)
 
 ## Functions
 
@@ -82,4 +82,4 @@ export class MyPlugin {
 
 #### Defined in
 
-[apps/server-api/src/common/server-plugin/hook.decorator.ts:16](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hook.decorator.ts#L16)
+[common/server-plugin/hook.decorator.ts:16](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hook.decorator.ts#L16)

@@ -21,7 +21,7 @@ User's id.
 
 #### Defined in
 
-[apps/server-api/src/pods/auth/auth.interface.ts:10](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.interface.ts#L10)
+[pods/auth/auth.interface.ts:10](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.interface.ts#L10)
 
 ---
 
@@ -33,4 +33,4 @@ User's slug.
 
 #### Defined in
 
-[apps/server-api/src/pods/auth/auth.interface.ts:17](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.interface.ts#L17)
+[pods/auth/auth.interface.ts:17](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.interface.ts#L17)

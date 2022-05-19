@@ -30,7 +30,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/kms/kms.service.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L8)
+[common/kms/kms.service.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L8)
 
 ## Methods
 
@@ -55,7 +55,7 @@ The hashed data string
 
 #### Defined in
 
-[apps/server-api/src/common/kms/kms.service.ts:26](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L26)
+[common/kms/kms.service.ts:26](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L26)
 
 ---
 
@@ -78,7 +78,7 @@ Get a new sub key
 
 #### Defined in
 
-[apps/server-api/src/common/kms/kms.service.ts:16](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L16)
+[common/kms/kms.service.ts:16](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L16)
 
 ---
 
@@ -101,7 +101,7 @@ Symmetric-key decryption
 
 #### Defined in
 
-[apps/server-api/src/common/kms/kms.service.ts:49](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L49)
+[common/kms/kms.service.ts:49](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L49)
 
 ---
 
@@ -124,7 +124,7 @@ Symmetric-key encryption
 
 #### Defined in
 
-[apps/server-api/src/common/kms/kms.service.ts:39](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L39)
+[common/kms/kms.service.ts:39](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L39)
 
 ---
 
@@ -146,4 +146,4 @@ Get a symmetric key
 
 #### Defined in
 
-[apps/server-api/src/common/kms/kms.service.ts:58](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L58)
+[common/kms/kms.service.ts:58](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L58)

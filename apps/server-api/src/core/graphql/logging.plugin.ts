@@ -1,33 +1,22 @@
-import { Plugin } from '@nestjs/apollo'
-import { Inject } from '@nestjs/common'
-import { ApolloServerPlugin, GraphQLRequestListener, GraphQLRequestContext } from 'apollo-server-plugin-base'
-import { WINSTON_MODULE_PROVIDER } from 'nest-winston'
-import { type Logger } from 'winston'
+import { Plugin } from '@envelop/types'
+import { useLogger } from '@envelop/core'
+import { Logger } from '@nestjs/common'
+import { requestLoggingContext } from '@brickdoc/server-api/src/common/utils'
 
-@Plugin()
-export class LoggingPlugin implements ApolloServerPlugin {
-  constructor(@Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger) {}
-  async requestDidStart(requestContext: GraphQLRequestContext): Promise<GraphQLRequestListener> {
-    const logger = this.logger.child({
-      trace: requestContext.request.http?.headers?.get('x-request-id'),
-      httpRequest: {
-        remoteIp: requestContext.request.http?.headers?.get('x-forwarded-for'),
-        protocol: requestContext.request.http?.headers?.get('x-forwarded-proto'),
-        userAgent: requestContext.request.http?.headers?.get('user-agent'),
-        acceptLanguage: requestContext.request.http?.headers?.get('accept-language'),
-        requestMethod: requestContext.request.http?.method,
-        requestUrl: requestContext.request.http?.url,
-        operationName: requestContext.request.operationName,
-        referer: requestContext.request.http?.headers?.get('referer')
-      },
-      context: 'GraphQLModule'
-    })
-    logger.debug('GraphQL request started')
-    const profiler = logger.startTimer()
-    return {
-      async willSendResponse() {
-        profiler.done('GraphQL request finished')
-      }
+const logger = new Logger('GraphQLModule')
+
+export const useLogging = (): Plugin =>
+  useLogger({
+    skipIntrospection: false,
+    logFn: (eventName, { args }) => {
+      const req = args?.contextValue?.req
+      logger.log({
+        message: eventName,
+        trace: req?.id,
+        httpRequest: {
+          ...requestLoggingContext(req),
+          operationName: args.operationName
+        }
+      })
     }
-  }
-}
+  })

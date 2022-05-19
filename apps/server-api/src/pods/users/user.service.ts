@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { UserCredentialInput } from './user.interface'
 import { InjectPool, type DatabasePool } from '@brickdoc/nestjs-slonik'
-import { User } from './user.model'
+import { User } from './user.object-type'
 import { createUserByCredential, findCredential, findUserById, findUserBySlug } from './user.sql-builder'
 import { err, Result } from '@brickdoc/active-support'
 @Injectable()

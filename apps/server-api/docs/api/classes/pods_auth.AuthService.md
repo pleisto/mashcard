@@ -27,7 +27,7 @@
 
 #### Defined in
 
-[apps/server-api/src/pods/auth/auth.service.ts:10](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.service.ts#L10)
+[pods/auth/auth.service.ts:10](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.service.ts#L10)
 
 ## Methods
 
@@ -50,7 +50,7 @@ Create session for user.
 
 #### Defined in
 
-[apps/server-api/src/pods/auth/auth.service.ts:15](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.service.ts#L15)
+[pods/auth/auth.service.ts:15](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.service.ts#L15)
 
 ---
 
@@ -70,4 +70,4 @@ Create session for user.
 
 #### Defined in
 
-[apps/server-api/src/pods/auth/auth.service.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.service.ts#L20)
+[pods/auth/auth.service.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.service.ts#L20)

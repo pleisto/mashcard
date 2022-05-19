@@ -1,38 +1,47 @@
 import { Module } from '@nestjs/common'
 import { GraphQLModule as ApolloGraphQLModule } from '@nestjs/graphql'
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
-import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
 import { join } from 'path/posix'
-import { LoggingPlugin } from './logging.plugin'
+import { ApolloDriverWithEnvelop } from './apollo-envelop.driver'
+import { ApolloDriverWithEnvelopConfig } from './apollo-envelop.interface'
+import { HooksExplorer, HookType } from '../../common/server-plugin'
+import { SettingsService } from '../../common/settings'
+import { useLogging } from './logging.plugin'
 import { IS_PROD_MODE } from '../../common/utils'
-import { idSlugDirectiveTransformer, ID_SLUG_DIRECTIVE_NAME } from './directives/slug.directive'
-import { DirectiveLocation, GraphQLDirective } from 'graphql'
+import { useDepthLimit } from '@envelop/depth-limit'
+import { PluginOrDisabledPlugin } from '@envelop/core'
 
 @Module({
   imports: [
-    ApolloGraphQLModule.forRootAsync<ApolloDriverConfig>({
-      driver: ApolloDriver,
-      useFactory: () => ({
-        disableHealthCheck: true,
-        sortSchema: true,
-        debug: !IS_PROD_MODE,
-        path: '/.internal-apis/$graph',
-        autoSchemaFile: join(process.cwd(), 'db/schema.gql'),
-        transformSchema: schema => idSlugDirectiveTransformer(schema, ID_SLUG_DIRECTIVE_NAME),
-        buildSchemaOptions: {
-          directives: [
-            new GraphQLDirective({
-              name: ID_SLUG_DIRECTIVE_NAME,
-              locations: [DirectiveLocation.FIELD_DEFINITION]
-            })
+    ApolloGraphQLModule.forRootAsync<ApolloDriverWithEnvelopConfig>({
+      driver: ApolloDriverWithEnvelop,
+      useFactory: (hookExplorer: HooksExplorer, settings: SettingsService) => {
+        // Append envelop plugins from server-plugin's hooks
+        const pluginsHook =
+          (hookExplorer
+            .findByType(HookType.GRAPHQL_ENVELOP_PLUGIN)
+            .map(async hook => await hook.forHookAsync(settings)) as PluginOrDisabledPlugin[]) || []
+
+        return {
+          disableHealthCheck: true,
+          sortSchema: true,
+          debug: !IS_PROD_MODE,
+          path: '/.internal-apis/$graph',
+          autoSchemaFile: join(process.cwd(), 'db/schema.gql'),
+          playground: true,
+          autoTransformHttpErrors: false,
+          buildSchemaOptions: {},
+          envelopPlugins: [
+            useLogging(),
+            useDepthLimit({
+              maxDepth: 10
+            }),
+            // Append envelop plugins from server-plugin's hooks
+            ...pluginsHook
           ]
-        },
-        playground: false,
-        plugins: [ApolloServerPluginLandingPageLocalDefault()],
-        autoTransformHttpErrors: false
-      })
+        }
+      },
+      inject: [HooksExplorer, SettingsService]
     })
-  ],
-  providers: [LoggingPlugin]
+  ]
 })
 export class GraphQLModule {}

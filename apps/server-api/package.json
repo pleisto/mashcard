@@ -40,6 +40,8 @@
     "@brickdoc/nestjs-redis": "workspace:^",
     "@brickdoc/nestjs-slonik": "workspace:^",
     "@brickdoc/server-api-crate": "workspace:^",
+    "@envelop/core": "^2.3.2",
+    "@envelop/depth-limit": "^1.5.2",
     "@fastify/cookie": "^6.0.0",
     "@fastify/helmet": "^8.0.1",
     "@nestjs/apollo": "^10.0.11",

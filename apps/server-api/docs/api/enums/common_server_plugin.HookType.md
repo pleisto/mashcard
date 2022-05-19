@@ -9,6 +9,7 @@
 - [COMMON_BLOBS_STORAGE_ADAPTOR](common_server_plugin.HookType.md#common_blobs_storage_adaptor)
 - [COMMON_KMS_SEED_DECODER](common_server_plugin.HookType.md#common_kms_seed_decoder)
 - [CORE_INITIALIZER](common_server_plugin.HookType.md#core_initializer)
+- [GRAPHQL_ENVELOP_PLUGIN](common_server_plugin.HookType.md#graphql_envelop_plugin)
 
 ## Enumeration members
 
@@ -21,7 +22,7 @@ see /common/blobs/adaptors/adaptor.provider.ts
 
 #### Defined in
 
-[apps/server-api/src/common/server-plugin/server-plugin.interface.ts:28](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L28)
+[common/server-plugin/server-plugin.interface.ts:30](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L30)
 
 ---
 
@@ -34,7 +35,7 @@ see /common/kms/decoder/decoder.provider.ts
 
 #### Defined in
 
-[apps/server-api/src/common/server-plugin/server-plugin.interface.ts:22](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L22)
+[common/server-plugin/server-plugin.interface.ts:24](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L24)
 
 ---
 
@@ -47,4 +48,17 @@ see /core/initializers/index.ts
 
 #### Defined in
 
-[apps/server-api/src/common/server-plugin/server-plugin.interface.ts:16](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L16)
+[common/server-plugin/server-plugin.interface.ts:18](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L18)
+
+---
+
+### <a id="graphql_envelop_plugin" name="graphql_envelop_plugin"></a> GRAPHQL_ENVELOP_PLUGIN
+
+• **GRAPHQL_ENVELOP_PLUGIN** = `"common.GRAPHQL_ENVELOP_PLUGIN"`
+
+GraphQL Envelop Plugin Hook.
+see /core/graphql/graphql.module.ts
+
+#### Defined in
+
+[common/server-plugin/server-plugin.interface.ts:36](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L36)

@@ -26,7 +26,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/kms/kms.module.ts:15](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.module.ts#L15)
+[common/kms/kms.module.ts:15](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.module.ts#L15)
 
 ## Methods
 
@@ -46,4 +46,4 @@
 
 #### Defined in
 
-[apps/server-api/src/common/kms/kms.module.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.module.ts#L20)
+[common/kms/kms.module.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.module.ts#L20)

@@ -30,7 +30,7 @@ User credential for login.
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.interface.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L8)
+[pods/users/user.interface.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L8)
 
 ---
 
@@ -40,7 +40,7 @@ User credential for login.
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.interface.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L9)
+[pods/users/user.interface.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L9)
 
 ---
 
@@ -50,7 +50,7 @@ User credential for login.
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.interface.ts:10](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L10)
+[pods/users/user.interface.ts:10](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L10)
 
 ---
 
@@ -60,7 +60,7 @@ User credential for login.
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.interface.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L11)
+[pods/users/user.interface.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L11)
 
 ---
 
@@ -70,7 +70,7 @@ User credential for login.
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.interface.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L7)
+[pods/users/user.interface.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L7)
 
 ---
 
@@ -80,7 +80,7 @@ User credential for login.
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.interface.ts:5](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L5)
+[pods/users/user.interface.ts:5](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L5)
 
 ---
 
@@ -90,4 +90,4 @@ User credential for login.
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.interface.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L6)
+[pods/users/user.interface.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L6)

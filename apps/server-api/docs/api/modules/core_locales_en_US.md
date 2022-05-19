@@ -14,4 +14,4 @@
 
 #### Defined in
 
-[apps/server-api/src/core/locales/en-US/index.ts:3](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/en-US/index.ts#L3)
+[core/locales/en-US/index.ts:3](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/en-US/index.ts#L3)

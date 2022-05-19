@@ -28,7 +28,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/kms/kms.interface.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.interface.ts#L9)
+[common/kms/kms.interface.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.interface.ts#L9)
 
 ---
 
@@ -38,4 +38,4 @@
 
 #### Defined in
 
-[apps/server-api/src/common/kms/kms.interface.ts:10](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.interface.ts#L10)
+[common/kms/kms.interface.ts:10](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.interface.ts#L10)

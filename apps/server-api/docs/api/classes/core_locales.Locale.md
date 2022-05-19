@@ -28,7 +28,7 @@
 
 #### Defined in
 
-[apps/server-api/src/core/locales/locale.model.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/locale.model.ts#L12)
+[core/locales/locale.object-type.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/locale.object-type.ts#L12)
 
 ---
 
@@ -38,7 +38,7 @@
 
 #### Defined in
 
-[apps/server-api/src/core/locales/locale.model.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/locale.model.ts#L9)
+[core/locales/locale.object-type.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/locale.object-type.ts#L9)
 
 ---
 
@@ -48,4 +48,4 @@
 
 #### Defined in
 
-[apps/server-api/src/core/locales/locale.model.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/locale.model.ts#L6)
+[core/locales/locale.object-type.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/locale.object-type.ts#L6)

@@ -1,4 +1,4 @@
 import { enUS } from './en-US'
 
-export { Locale } from './locale.model'
+export { Locale } from './locale.object-type'
 export const supportLocales = [enUS]

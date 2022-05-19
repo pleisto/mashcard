@@ -29,7 +29,7 @@ HooksExplorer could be used to discover server plugin hooks.
 
 #### Defined in
 
-[apps/server-api/src/common/server-plugin/hooks.explorer.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hooks.explorer.ts#L12)
+[common/server-plugin/hooks.explorer.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hooks.explorer.ts#L12)
 
 ## Methods
 
@@ -57,4 +57,4 @@ Find all hooks by type that have @ServerPluginHook() decorator
 
 #### Defined in
 
-[apps/server-api/src/common/server-plugin/hooks.explorer.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hooks.explorer.ts#L20)
+[common/server-plugin/hooks.explorer.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/hooks.explorer.ts#L20)

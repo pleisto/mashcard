@@ -30,7 +30,7 @@ Metadata
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.interface.ts:35](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L35)
+[pods/users/user.interface.ts:35](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L35)
 
 ---
 
@@ -42,7 +42,7 @@ podId.
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.interface.ts:28](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L28)
+[pods/users/user.interface.ts:28](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L28)
 
 ---
 
@@ -54,7 +54,7 @@ podType. `space` or `user`
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.interface.ts:23](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L23)
+[pods/users/user.interface.ts:23](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L23)
 
 ---
 
@@ -64,7 +64,7 @@ podType. `space` or `user`
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.interface.ts:29](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L29)
+[pods/users/user.interface.ts:29](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L29)
 
 ---
 
@@ -74,4 +74,4 @@ podType. `space` or `user`
 
 #### Defined in
 
-[apps/server-api/src/pods/users/user.interface.ts:30](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L30)
+[pods/users/user.interface.ts:30](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L30)

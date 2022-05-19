@@ -1,4 +1,4 @@
-import { User } from '../user.model'
+import { User } from '../user.object-type'
 import { UserCredentialInput } from '../user.interface'
 import { UserService } from '../user.service'
 import { useAppInstance } from '../../../common/testing'

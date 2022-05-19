@@ -25,7 +25,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.interface.ts:97](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L97)
+[common/settings/settings.interface.ts:97](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L97)
 
 ---
 
@@ -35,7 +35,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.interface.ts:95](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L95)
+[common/settings/settings.interface.ts:95](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L95)
 
 ---
 
@@ -45,7 +45,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.interface.ts:98](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L98)
+[common/settings/settings.interface.ts:98](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L98)
 
 ---
 
@@ -55,4 +55,4 @@
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.interface.ts:96](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L96)
+[common/settings/settings.interface.ts:96](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L96)

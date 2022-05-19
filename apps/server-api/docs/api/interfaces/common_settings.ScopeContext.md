@@ -19,7 +19,7 @@ session context for calculating scope
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.interface.ts:106](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L106)
+[common/settings/settings.interface.ts:106](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L106)
 
 ---
 
@@ -29,4 +29,4 @@ session context for calculating scope
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.interface.ts:105](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L105)
+[common/settings/settings.interface.ts:105](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L105)

@@ -25,4 +25,4 @@ Session key.
 
 #### Defined in
 
-[apps/server-api/src/pods/auth/auth.interface.ts:23](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.interface.ts#L23)
+[pods/auth/auth.interface.ts:23](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.interface.ts#L23)

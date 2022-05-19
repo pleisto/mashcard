@@ -1,7 +1,7 @@
 import { DatabasePool, sql, withResultType } from '@brickdoc/nestjs-slonik'
 import { Result } from '@brickdoc/active-support'
 import { PodAccessCredentialSchema, UserCredentialInput } from './user.interface'
-import { User } from './user.model'
+import { User } from './user.object-type'
 import { genSlug } from '@brickdoc/server-api-crate'
 
 /**

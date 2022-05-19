@@ -26,4 +26,4 @@ CLI entry point.
 
 #### Defined in
 
-[apps/server-api/src/cli/index.ts:25](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/cli/index.ts#L25)
+[cli/index.ts:25](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/cli/index.ts#L25)

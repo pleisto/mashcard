@@ -54,4 +54,4 @@ export class LoggerConfigMap {
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.module.ts:38](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.module.ts#L38)
+[common/settings/settings.module.ts:38](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.module.ts#L38)

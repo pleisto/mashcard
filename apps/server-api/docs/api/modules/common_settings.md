@@ -37,7 +37,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.interface.ts:5](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L5)
+[common/settings/settings.interface.ts:5](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L5)
 
 ---
 
@@ -47,7 +47,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.interface.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L6)
+[common/settings/settings.interface.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L6)
 
 ---
 
@@ -57,7 +57,7 @@
 
 #### Defined in
 
-[apps/server-api/src/common/settings/settings.interface.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L7)
+[common/settings/settings.interface.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L7)
 
 ## Functions
 
@@ -80,7 +80,7 @@ ConfigMap is inspired by Kubernetes ConfigMap, it is a way to distribute stored 
 
 #### Defined in
 
-[apps/server-api/src/common/settings/config-map.decorator.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/config-map.decorator.ts#L9)
+[common/settings/config-map.decorator.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/config-map.decorator.ts#L9)
 
 ---
 
@@ -103,4 +103,4 @@ Item is a field of config map, that defines metadata about item.
 
 #### Defined in
 
-[apps/server-api/src/common/settings/item.decorator.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/item.decorator.ts#L7)
+[common/settings/item.decorator.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/item.decorator.ts#L7)

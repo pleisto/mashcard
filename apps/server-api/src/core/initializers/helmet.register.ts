@@ -15,11 +15,11 @@ export const helmetRegister = async (app: NestFastifyApplication, tlsEnabled: bo
     contentSecurityPolicy: {
       directives: {
         defaultSrc: [`'self'`],
-        styleSrc: [`'self'`, `'unsafe-inline'`, 'fonts.googleapis.com'],
+        styleSrc: [`'self'`, `'unsafe-inline'`, 'fonts.googleapis.com', 'cdn.jsdelivr.net'],
         fontSrc: [`'self'`, 'fonts.gstatic.com'],
         imgSrc: [`'self'`, 'https:', 'data:', 'blob:'],
         mediaSrc: [`'self'`, 'https:', 'data:', 'blob:'],
-        scriptSrc: [`'self'`, `'unsafe-inline'`, `apollo-server-landing-page.cdn.apollographql.com`],
+        scriptSrc: [`'self'`, `'unsafe-inline'`, `cdn.jsdelivr.net`],
         connectSrc: [`'self'`, 'wss:'],
         manifestSrc: [`'self'`, 'apollo-server-landing-page.cdn.apollographql.com']
       }

@@ -6,6 +6,7 @@ import { KMSModule, KMSService } from './kms'
 import { SettingsModule } from './settings'
 import { ServerPluginModule } from './server-plugin'
 import { BlobsModule } from './blobs/blobs.module'
+import { ScalarsModule } from './scalars/scalars.module'
 import { IS_TEST_MODE } from './utils'
 
 /**
@@ -38,7 +39,8 @@ import { IS_TEST_MODE } from './utils'
     }),
     SettingsModule.forRoot(),
     ServerPluginModule,
-    BlobsModule
+    BlobsModule,
+    ScalarsModule
   ]
 })
 export class CommonModule {}

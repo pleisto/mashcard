@@ -1,6 +1,6 @@
 import { Resolver, Query } from '@nestjs/graphql'
 import { SettingsService } from '../../common/settings'
-import { Metadata } from './metadata.model'
+import { Metadata } from './metadata.object-type'
 
 @Resolver((of: unknown) => Metadata)
 export class MetadataResolver {
