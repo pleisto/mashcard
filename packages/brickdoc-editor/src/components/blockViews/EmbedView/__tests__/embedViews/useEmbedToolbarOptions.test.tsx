@@ -127,4 +127,33 @@ describe('useEmbedToolbarOptions', () => {
 
     expect(onFullScreen).toBeCalled()
   })
+
+  it('triggers image align correctly', () => {
+    const blockType = 'image'
+    const mode = 'preview'
+    const updateEmbedBlockAttributes = jest.fn()
+    const displayName = 'displayName'
+    const url = 'url'
+    const { result } = renderHook(() =>
+      useEmbedToolbarOptions({ mode, blockType, displayName, url, updateEmbedBlockAttributes })
+    )
+
+    const [options] = result.current
+
+    const alignLeft = (options[1] as ToolbarGroupOption).items[0] as ToolbarItemOption
+    alignLeft.onAction?.('key')
+    expect(updateEmbedBlockAttributes).toBeCalledWith({ align: 'left' }, 'image')
+
+    const alignCenter = (options[1] as ToolbarGroupOption).items[1] as ToolbarItemOption
+    alignCenter.onAction?.('key')
+    expect(updateEmbedBlockAttributes).toBeCalledWith({ align: 'center' }, 'image')
+
+    const alignRight = (options[1] as ToolbarGroupOption).items[2] as ToolbarItemOption
+    alignRight.onAction?.('key')
+    expect(updateEmbedBlockAttributes).toBeCalledWith({ align: 'right' }, 'image')
+
+    const alignFullWidth = (options[1] as ToolbarGroupOption).items[3] as ToolbarItemOption
+    alignFullWidth.onAction?.('key')
+    expect(updateEmbedBlockAttributes).toBeCalledWith({ align: 'full-width' }, 'image')
+  })
 })

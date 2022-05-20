@@ -11,6 +11,8 @@ export interface EmbedToolbarProps {
   url: string
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
   onFullScreen?: VoidFunction
+  zoomInImage?: VoidFunction
+  zoomOutImage?: VoidFunction
   align?: EmbedAttributes['image']['align']
 }
 
@@ -21,6 +23,8 @@ export const EmbedToolbar: FC<EmbedToolbarProps> = ({
   url,
   updateEmbedBlockAttributes,
   onFullScreen,
+  zoomInImage,
+  zoomOutImage,
   align
 }) => {
   const [options] = useEmbedToolbarOptions({
@@ -30,7 +34,9 @@ export const EmbedToolbar: FC<EmbedToolbarProps> = ({
     url,
     updateEmbedBlockAttributes,
     onFullScreen,
-    align
+    align,
+    zoomInImage,
+    zoomOutImage
   })
 
   return <Toolbar type="transparent" options={options} />

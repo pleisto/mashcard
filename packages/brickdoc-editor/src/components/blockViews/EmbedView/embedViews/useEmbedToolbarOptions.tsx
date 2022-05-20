@@ -7,7 +7,10 @@ import {
   ScreenFull,
   AlignLeft,
   AlignCenter,
-  AlignRight
+  AlignRight,
+  AlignFull,
+  Plus,
+  Minus
 } from '@brickdoc/design-icons'
 import { Input, Popover, Spin, styled, theme } from '@brickdoc/design-system'
 import { ChangeEventHandler, FC, useCallback, useState } from 'react'
@@ -118,7 +121,9 @@ export function useEmbedToolbarOptions({
   url,
   updateEmbedBlockAttributes,
   onFullScreen,
-  align
+  align,
+  zoomInImage,
+  zoomOutImage
 }: EmbedToolbarProps): [ToolbarOptionGroup] {
   const isPreview = mode === 'preview'
   const isCard = mode === 'card'
@@ -147,6 +152,10 @@ export function useEmbedToolbarOptions({
 
   const setAlignCenter = useCallback((): void => {
     updateEmbedBlockAttributes({ align: 'center' }, blockType)
+  }, [blockType, updateEmbedBlockAttributes])
+
+  const setAlignFullWidth = useCallback((): void => {
+    updateEmbedBlockAttributes({ align: 'full-width' }, blockType)
   }, [blockType, updateEmbedBlockAttributes])
 
   const options: ToolbarOptionGroup = [
@@ -203,7 +212,7 @@ export function useEmbedToolbarOptions({
         {
           type: 'item',
           name: 'alignLeft',
-          tooltip: t('embed_block.align.left'),
+          tooltip: t('embed_block.align.left.tooltip'),
           icon: <AlignLeft />,
           onAction: setAlignLeft,
           active: align === 'left'
@@ -211,7 +220,7 @@ export function useEmbedToolbarOptions({
         {
           type: 'item',
           name: 'alignCenter',
-          tooltip: t('embed_block.align.center'),
+          tooltip: t('embed_block.align.center.tooltip'),
           icon: <AlignCenter />,
           onAction: setAlignCenter,
           active: !align || align === 'center'
@@ -219,13 +228,43 @@ export function useEmbedToolbarOptions({
         {
           type: 'item',
           name: 'alignRight',
-          tooltip: t('embed_block.align.right'),
+          tooltip: t('embed_block.align.right.tooltip'),
           icon: <AlignRight />,
           onAction: setAlignRight,
           active: align === 'right'
+        },
+        {
+          type: 'item',
+          name: 'alignFull',
+          tooltip: t('embed_block.align.full_width.tooltip'),
+          icon: <AlignFull />,
+          onAction: setAlignFullWidth,
+          active: align === 'full-width'
         }
       ]
     })
+
+    if (align !== 'full-width') {
+      options.push({
+        type: 'group',
+        items: [
+          {
+            type: 'item',
+            name: 'zoomIn',
+            tooltip: t('embed_block.zoom_in.tooltip'),
+            icon: <Plus />,
+            onAction: zoomInImage
+          },
+          {
+            type: 'item',
+            name: 'zoomOut',
+            tooltip: t('embed_block.zoom_out.tooltip'),
+            icon: <Minus />,
+            onAction: zoomOutImage
+          }
+        ]
+      })
+    }
   } else {
     options.push({
       type: 'group',

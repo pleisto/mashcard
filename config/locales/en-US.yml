@@ -882,6 +882,19 @@ en-US:
         ini: INI
         properties: Properties
     embed_block:
+      zoom_in:
+        tooltip: zoom in
+      zoom_out:
+        tooltip: zoom out
+      align:
+        left:
+          tooltip: align left
+        center:
+          tooltip: align center
+        right:
+          tooltip: align right
+        full_width:
+          tooltip: align full width
       full_screen:
         tooltip: Edit
       edit:

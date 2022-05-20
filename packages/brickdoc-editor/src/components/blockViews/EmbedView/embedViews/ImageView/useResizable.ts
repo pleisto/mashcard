@@ -12,6 +12,7 @@ const handleStyle = {
   height: '32px',
   opacity: 0,
   position: 'absolute',
+  pointerEvents: 'none',
   top: '50%',
   transform: 'translateY(-50%)',
   transition: 'opacity .3s ease-in',
@@ -33,22 +34,34 @@ const resizableContainerStyle = css({
     right: handleMargin
   },
 
-  '&:hover': {
-    '.left-handle': {
-      opacity: '100%'
-    },
-    '.right-handle': {
-      opacity: '100%'
+  variants: {
+    enabled: {
+      true: {
+        '&:hover': {
+          '.left-handle': {
+            opacity: '100%',
+            pointerEvents: 'initial'
+          },
+          '.right-handle': {
+            opacity: '100%',
+            pointerEvents: 'initial'
+          }
+        }
+      },
+      false: {}
     }
   }
 })
 
 export function useResizable(
+  disabled: boolean,
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes,
   width?: number | null
 ): ResizableProps {
   const onResizeStop = useCallback<ResizeCallback>(
     (e, direction, ref, d) => {
+      if (disabled) return
+
       updateEmbedBlockAttributes(
         {
           width: (width ?? 0) + d.width
@@ -56,13 +69,13 @@ export function useResizable(
         'image'
       )
     },
-    [updateEmbedBlockAttributes, width]
+    [disabled, updateEmbedBlockAttributes, width]
   )
 
   return useMemo(
     () => ({
       lockAspectRatio: true,
-      className: resizableContainerStyle(),
+      className: resizableContainerStyle({ enabled: !disabled }),
       maxWidth: `${maxWidth}px`,
       minWidth: `${minWidth}px`,
       handleClasses: {
@@ -94,11 +107,11 @@ export function useResizable(
         right: true
       },
       size: {
-        width: width ?? 'unset',
+        width: disabled ? '100%' : width ?? 'unset',
         height: 'auto'
       },
       onResizeStop
     }),
-    [onResizeStop, width]
+    [disabled, onResizeStop, width]
   )
 }

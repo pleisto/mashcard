@@ -3,7 +3,7 @@ import { useState, useCallback, SyntheticEvent, Dispatch, SetStateAction } from 
 import { BlockActionOptions } from '../../../BlockActions'
 import { useActionOptions } from '../useActionOptions'
 import { ImageViewProps } from './ImageView'
-import { maxWidth } from './styles'
+import { maxWidth, minWidth } from './styles'
 import { useResizable } from './useResizable'
 
 export function useImageState({ url, node, updateEmbedBlockAttributes, width }: ImageViewProps): {
@@ -14,14 +14,15 @@ export function useImageState({ url, node, updateEmbedBlockAttributes, width }: 
   previewImage: VoidFunction
   onImageLoad: (event: SyntheticEvent<HTMLImageElement>) => void
   resizableProps: ResizableProps
+  zoomInImage: VoidFunction
+  zoomOutImage: VoidFunction
 } {
   const [loaded, setLoaded] = useState(false)
   const [showPreview, setShowPreview] = useState(false)
   const [actionOptions] = useActionOptions(url)
 
   const previewImage = useCallback((): void => {
-    if (node.attrs.image?.key && !loaded) return
-    if (showPreview) return
+    if (!node.attrs.image?.key || !loaded || showPreview) return
     setShowPreview(true)
   }, [loaded, node.attrs.image?.key, showPreview])
 
@@ -43,7 +44,16 @@ export function useImageState({ url, node, updateEmbedBlockAttributes, width }: 
     [node.attrs.image?.ratio, updateEmbedBlockAttributes]
   )
 
-  const resizableProps = useResizable(updateEmbedBlockAttributes, width)
+  const resizableProps = useResizable(node.attrs.image.align === 'full-width', updateEmbedBlockAttributes, width)
+
+  const d = 50
+  const zoomInImage = useCallback(() => {
+    updateEmbedBlockAttributes({ width: Math.min(maxWidth, (node.attrs.image.width ?? 0) + d) }, 'image')
+  }, [node.attrs.image.width, updateEmbedBlockAttributes])
+
+  const zoomOutImage = useCallback(() => {
+    updateEmbedBlockAttributes({ width: Math.max(minWidth, (node.attrs.image.width ?? 0) - d) }, 'image')
+  }, [node.attrs.image.width, updateEmbedBlockAttributes])
 
   return {
     actionOptions,
@@ -52,6 +62,8 @@ export function useImageState({ url, node, updateEmbedBlockAttributes, width }: 
     previewImage,
     onImageLoad,
     resizableProps,
-    setShowPreview
+    setShowPreview,
+    zoomInImage,
+    zoomOutImage
   }
 }

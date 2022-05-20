@@ -20,7 +20,7 @@ export default IconWrapper(
             fill="none"
         >
             <g
-                clipPath={'url(#' + props.id + '07314c1b' + ')'}
+                clipPath={'url(#' + props.id + 'da531ee4' + ')'}
             >
                 <path
                     fillOpacity=".01"
@@ -48,7 +48,7 @@ export default IconWrapper(
             </g>
             <defs>
                 <clipPath
-                    id={props.id + '07314c1b'}
+                    id={props.id + 'da531ee4'}
                 >
                     <path
                         fill={props.colors[2]}

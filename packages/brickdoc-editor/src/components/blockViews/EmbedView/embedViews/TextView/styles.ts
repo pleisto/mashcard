@@ -2,7 +2,7 @@ import { styled, theme } from '@brickdoc/design-system'
 import { maxWidth } from '../../styles'
 
 export const EmbedToolbarContainer = styled('div', {
-  left: '50%',
+  left: '5rem',
   opacity: 0,
   paddingBottom: '5px',
   position: 'absolute',

@@ -47,6 +47,9 @@ const ImageViewLayout = styled('div', {
       },
       right: {
         alignItems: 'flex-end'
+      },
+      'full-width': {
+        alignItems: 'center'
       }
     }
   }
@@ -64,6 +67,7 @@ const ImageViewContainer = styled('div', {
       pointerEvents: 'inherit'
     }
   },
+
   [`[data-rmiz-wrap='hidden'], [data-rmiz-wrap='visible']`]: {
     display: 'flex'
   }
@@ -115,9 +119,21 @@ const PreviewButton = styled('button', {
 })
 
 export const ImageView: FC<ImageViewProps> = props => {
-  const { displayName, url, align, width, deleteNode, getPos, node, updateEmbedBlockAttributes } = props
-  const { loaded, showPreview, setShowPreview, actionOptions, previewImage, onImageLoad, resizableProps } =
-    useImageState(props)
+  const { displayName, url, align, width: imageWidth, deleteNode, getPos, node, updateEmbedBlockAttributes } = props
+  const {
+    loaded,
+    showPreview,
+    setShowPreview,
+    actionOptions,
+    previewImage,
+    onImageLoad,
+    resizableProps,
+    zoomInImage,
+    zoomOutImage
+  } = useImageState(props)
+
+  const isFullWidth = align === 'full-width'
+  const width = isFullWidth ? '100%' : imageWidth
 
   return (
     <BlockContainer
@@ -129,7 +145,7 @@ export const ImageView: FC<ImageViewProps> = props => {
       <ImageViewLayout align={align ?? 'center'}>
         {!loaded && (
           <SpinnerWrapper
-            css={{ width: width ?? '100%', height: (width ?? 0) / (node.attrs.image.ratio ?? 1) || 'auto' }}>
+            css={{ width: width ?? '100%', height: (imageWidth ?? 0) / (node.attrs.image.ratio ?? 1) || '100px' }}>
             <Spin size="lg" />
           </SpinnerWrapper>
         )}
@@ -159,6 +175,8 @@ export const ImageView: FC<ImageViewProps> = props => {
               blockType="image"
               updateEmbedBlockAttributes={updateEmbedBlockAttributes}
               onFullScreen={previewImage}
+              zoomInImage={zoomInImage}
+              zoomOutImage={zoomOutImage}
               align={align}
             />
           </EmbedToolbarContainer>
