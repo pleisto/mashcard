@@ -4,11 +4,11 @@
 
 ### Variables
 
-- [IS_DEV_MODE](common_utils.md#is_dev_mode)
-- [IS_PROD_MODE](common_utils.md#is_prod_mode)
-- [IS_TEST_MODE](common_utils.md#is_test_mode)
-- [MONOREPO_ROOT](common_utils.md#monorepo_root)
-- [SERVER_SRC_ROOT](common_utils.md#server_src_root)
+- [IS\_DEV\_MODE](common_utils.md#is_dev_mode)
+- [IS\_PROD\_MODE](common_utils.md#is_prod_mode)
+- [IS\_TEST\_MODE](common_utils.md#is_test_mode)
+- [MONOREPO\_ROOT](common_utils.md#monorepo_root)
+- [SERVER\_SRC\_ROOT](common_utils.md#server_src_root)
 
 ### Functions
 
@@ -16,49 +16,49 @@
 
 ## Variables
 
-### <a id="is_dev_mode" name="is_dev_mode"></a> IS_DEV_MODE
+### <a id="is_dev_mode" name="is_dev_mode"></a> IS\_DEV\_MODE
 
-• `Const` **IS_DEV_MODE**: `boolean`
+• `Const` **IS\_DEV\_MODE**: `boolean`
 
 #### Defined in
 
 [common/utils/constants.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L7)
 
----
+___
 
-### <a id="is_prod_mode" name="is_prod_mode"></a> IS_PROD_MODE
+### <a id="is_prod_mode" name="is_prod_mode"></a> IS\_PROD\_MODE
 
-• `Const` **IS_PROD_MODE**: `boolean`
+• `Const` **IS\_PROD\_MODE**: `boolean`
 
 #### Defined in
 
 [common/utils/constants.ts:8](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L8)
 
----
+___
 
-### <a id="is_test_mode" name="is_test_mode"></a> IS_TEST_MODE
+### <a id="is_test_mode" name="is_test_mode"></a> IS\_TEST\_MODE
 
-• `Const` **IS_TEST_MODE**: `boolean`
+• `Const` **IS\_TEST\_MODE**: `boolean`
 
 #### Defined in
 
 [common/utils/constants.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L9)
 
----
+___
 
-### <a id="monorepo_root" name="monorepo_root"></a> MONOREPO_ROOT
+### <a id="monorepo_root" name="monorepo_root"></a> MONOREPO\_ROOT
 
-• `Const` **MONOREPO_ROOT**: `string`
+• `Const` **MONOREPO\_ROOT**: `string`
 
 #### Defined in
 
 [common/utils/constants.ts:5](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/utils/constants.ts#L5)
 
----
+___
 
-### <a id="server_src_root" name="server_src_root"></a> SERVER_SRC_ROOT
+### <a id="server_src_root" name="server_src_root"></a> SERVER\_SRC\_ROOT
 
-• `Const` **SERVER_SRC_ROOT**: `string`
+• `Const` **SERVER\_SRC\_ROOT**: `string`
 
 #### Defined in
 
@@ -72,25 +72,25 @@
 
 #### Parameters
 
-| Name  | Type                                                                                                        |
-| :---- | :---------------------------------------------------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `req` | `FastifyRequest`<`RouteGenericInterface`, `Server`, `IncomingMessage`, `unknown`, `FastifyLoggerInstance`\> |
 
 #### Returns
 
 `Object`
 
-| Name             | Type                    |
-| :--------------- | :---------------------- |
+| Name | Type |
+| :------ | :------ |
 | `acceptLanguage` | `undefined` \| `string` |
-| `params`         | `unknown`               |
-| `protocol`       | `"http"` \| `"https"`   |
-| `referer`        | `undefined` \| `string` |
-| `remoteIp`       | `string`                |
-| `requestMethod`  | `string`                |
-| `requestUrl`     | `string`                |
-| `userAgent`      | `undefined` \| `string` |
-| `userId`         | `number`                |
+| `params` | `unknown` |
+| `protocol` | ``"http"`` \| ``"https"`` |
+| `referer` | `undefined` \| `string` |
+| `remoteIp` | `string` |
+| `requestMethod` | `string` |
+| `requestUrl` | `string` |
+| `userAgent` | `undefined` \| `string` |
+| `userId` | `number` |
 
 #### Defined in
 

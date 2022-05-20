@@ -5,8 +5,8 @@
 ## Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 ## Table of contents
 
@@ -27,7 +27,7 @@
 
 [common/settings/settings.interface.ts:97](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L97)
 
----
+___
 
 ### <a id="key" name="key"></a> key
 
@@ -37,7 +37,7 @@
 
 [common/settings/settings.interface.ts:95](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L95)
 
----
+___
 
 ### <a id="options" name="options"></a> options
 
@@ -47,7 +47,7 @@
 
 [common/settings/settings.interface.ts:98](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L98)
 
----
+___
 
 ### <a id="value" name="value"></a> value
 

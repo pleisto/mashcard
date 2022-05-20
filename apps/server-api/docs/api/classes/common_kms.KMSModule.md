@@ -20,8 +20,8 @@
 
 #### Parameters
 
-| Name      | Type                                                               |
-| :-------- | :----------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `options` | [`KMSModuleOptions`](../interfaces/common_kms.KMSModuleOptions.md) |
 
 #### Defined in
@@ -36,8 +36,8 @@
 
 #### Parameters
 
-| Name      | Type                                                               |
-| :-------- | :----------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `options` | [`KMSModuleOptions`](../interfaces/common_kms.KMSModuleOptions.md) |
 
 #### Returns

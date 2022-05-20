@@ -17,24 +17,24 @@
 
 ### Variables
 
-- [KMS_MODULE_OPTIONS](common_kms.md#kms_module_options)
-- [KMS_ROOT_SECRET_KEY](common_kms.md#kms_root_secret_key)
+- [KMS\_MODULE\_OPTIONS](common_kms.md#kms_module_options)
+- [KMS\_ROOT\_SECRET\_KEY](common_kms.md#kms_root_secret_key)
 
 ## Variables
 
-### <a id="kms_module_options" name="kms_module_options"></a> KMS_MODULE_OPTIONS
+### <a id="kms_module_options" name="kms_module_options"></a> KMS\_MODULE\_OPTIONS
 
-• `Const` **KMS_MODULE_OPTIONS**: typeof [`KMS_MODULE_OPTIONS`](common_kms.md#kms_module_options)
+• `Const` **KMS\_MODULE\_OPTIONS**: typeof [`KMS_MODULE_OPTIONS`](common_kms.md#kms_module_options)
 
 #### Defined in
 
 [common/kms/kms.interface.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.interface.ts#L9)
 
----
+___
 
-### <a id="kms_root_secret_key" name="kms_root_secret_key"></a> KMS_ROOT_SECRET_KEY
+### <a id="kms_root_secret_key" name="kms_root_secret_key"></a> KMS\_ROOT\_SECRET\_KEY
 
-• `Const` **KMS_ROOT_SECRET_KEY**: typeof [`KMS_ROOT_SECRET_KEY`](common_kms.md#kms_root_secret_key)
+• `Const` **KMS\_ROOT\_SECRET\_KEY**: typeof [`KMS_ROOT_SECRET_KEY`](common_kms.md#kms_root_secret_key)
 
 #### Defined in
 

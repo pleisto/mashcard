@@ -30,7 +30,7 @@
 
 [core/locales/locale.object-type.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/locale.object-type.ts#L12)
 
----
+___
 
 ### <a id="language" name="language"></a> language
 
@@ -40,7 +40,7 @@
 
 [core/locales/locale.object-type.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/locales/locale.object-type.ts#L9)
 
----
+___
 
 ### <a id="tag" name="tag"></a> tag
 

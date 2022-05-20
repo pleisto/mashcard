@@ -2,7 +2,7 @@
 
 ## Hierarchy
 
-- `Pick`<`ModuleMetadata`, `"imports"`\>
+- `Pick`<`ModuleMetadata`, ``"imports"``\>
 
   ↳ **`RedisModuleAsyncOptions`**
 
@@ -34,7 +34,7 @@ Pick.imports
 
 node_modules/@nestjs/common/interfaces/modules/module-metadata.interface.d.ts:18
 
----
+___
 
 ### <a id="inject" name="inject"></a> inject
 
@@ -52,8 +52,8 @@ node_modules/@nestjs/common/interfaces/modules/module-metadata.interface.d.ts:18
 
 #### Parameters
 
-| Name      | Type    |
-| :-------- | :------ |
+| Name | Type |
+| :------ | :------ |
 | `...args` | `any`[] |
 
 #### Returns

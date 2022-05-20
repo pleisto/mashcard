@@ -16,8 +16,8 @@ CLI entry point.
 
 #### Parameters
 
-| Name        | Type                  | Description                |
-| :---------- | :-------------------- | :------------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `runServer` | `ServerBootstrapFunc` | Server bootstrap function. |
 
 #### Returns

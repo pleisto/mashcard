@@ -6,57 +6,57 @@
 
 ### Enumeration members
 
-- [DATA_ENCRYPTION](common_kms.SecretSubKey.md#data_encryption)
-- [HASH_SALT](common_kms.SecretSubKey.md#hash_salt)
-- [INT_ID_OBFUSCATION](common_kms.SecretSubKey.md#int_id_obfuscation)
-- [ROOT_KEY](common_kms.SecretSubKey.md#root_key)
-- [SECURE_COOKIE](common_kms.SecretSubKey.md#secure_cookie)
+- [DATA\_ENCRYPTION](common_kms.SecretSubKey.md#data_encryption)
+- [HASH\_SALT](common_kms.SecretSubKey.md#hash_salt)
+- [INT\_ID\_OBFUSCATION](common_kms.SecretSubKey.md#int_id_obfuscation)
+- [ROOT\_KEY](common_kms.SecretSubKey.md#root_key)
+- [SECURE\_COOKIE](common_kms.SecretSubKey.md#secure_cookie)
 
 ## Enumeration members
 
-### <a id="data_encryption" name="data_encryption"></a> DATA_ENCRYPTION
+### <a id="data_encryption" name="data_encryption"></a> DATA\_ENCRYPTION
 
-• **DATA_ENCRYPTION** = `2`
+• **DATA\_ENCRYPTION** = `2`
 
 #### Defined in
 
 [common/kms/kms.interface.ts:4](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.interface.ts#L4)
 
----
+___
 
-### <a id="hash_salt" name="hash_salt"></a> HASH_SALT
+### <a id="hash_salt" name="hash_salt"></a> HASH\_SALT
 
-• **HASH_SALT** = `1`
+• **HASH\_SALT** = `1`
 
 #### Defined in
 
 [common/kms/kms.interface.ts:3](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.interface.ts#L3)
 
----
+___
 
-### <a id="int_id_obfuscation" name="int_id_obfuscation"></a> INT_ID_OBFUSCATION
+### <a id="int_id_obfuscation" name="int_id_obfuscation"></a> INT\_ID\_OBFUSCATION
 
-• **INT_ID_OBFUSCATION** = `4`
+• **INT\_ID\_OBFUSCATION** = `4`
 
 #### Defined in
 
 [common/kms/kms.interface.ts:6](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.interface.ts#L6)
 
----
+___
 
-### <a id="root_key" name="root_key"></a> ROOT_KEY
+### <a id="root_key" name="root_key"></a> ROOT\_KEY
 
-• **ROOT_KEY** = `0`
+• **ROOT\_KEY** = `0`
 
 #### Defined in
 
 [common/kms/kms.interface.ts:2](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.interface.ts#L2)
 
----
+___
 
-### <a id="secure_cookie" name="secure_cookie"></a> SECURE_COOKIE
+### <a id="secure_cookie" name="secure_cookie"></a> SECURE\_COOKIE
 
-• **SECURE_COOKIE** = `3`
+• **SECURE\_COOKIE** = `3`
 
 #### Defined in
 

@@ -11,3 +11,6 @@ export class Locale {
   @Field({ description: "Locale language's description of local" })
   describe: string
 }
+
+// Make typescript happy with `as const` and `as type`
+export const makeValidLocale = <T extends Locale>(o: T): T => o

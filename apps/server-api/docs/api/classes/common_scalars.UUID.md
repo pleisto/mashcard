@@ -50,8 +50,8 @@ CustomScalar.description
 
 #### Parameters
 
-| Name  | Type        |
-| :---- | :---------- |
+| Name | Type |
+| :------ | :------ |
 | `ast` | `ValueNode` |
 
 #### Returns
@@ -66,7 +66,7 @@ CustomScalar.parseLiteral
 
 [common/scalars/uuid.scalar.ts:28](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/scalars/uuid.scalar.ts#L28)
 
----
+___
 
 ### <a id="parsevalue" name="parsevalue"></a> parseValue
 
@@ -74,8 +74,8 @@ CustomScalar.parseLiteral
 
 #### Parameters
 
-| Name    | Type      |
-| :------ | :-------- |
+| Name | Type |
+| :------ | :------ |
 | `value` | `unknown` |
 
 #### Returns
@@ -90,7 +90,7 @@ CustomScalar.parseValue
 
 [common/scalars/uuid.scalar.ts:24](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/scalars/uuid.scalar.ts#L24)
 
----
+___
 
 ### <a id="serialize" name="serialize"></a> serialize
 
@@ -98,8 +98,8 @@ CustomScalar.parseValue
 
 #### Parameters
 
-| Name    | Type      |
-| :------ | :-------- |
+| Name | Type |
+| :------ | :------ |
 | `value` | `unknown` |
 
 #### Returns

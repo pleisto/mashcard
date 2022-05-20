@@ -15,13 +15,13 @@
 
 ### Variables
 
-- [AUTH_REDIRECT_PATH](pods_users.md#auth_redirect_path)
+- [AUTH\_REDIRECT\_PATH](pods_users.md#auth_redirect_path)
 
 ## Variables
 
-### <a id="auth_redirect_path" name="auth_redirect_path"></a> AUTH_REDIRECT_PATH
+### <a id="auth_redirect_path" name="auth_redirect_path"></a> AUTH\_REDIRECT\_PATH
 
-• `Const` **AUTH_REDIRECT_PATH**: `"/.internal-apis/accounts/profile"`
+• `Const` **AUTH\_REDIRECT\_PATH**: ``"/.internal-apis/accounts/profile"``
 
 Api path for auth redirect.
 

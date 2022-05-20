@@ -6,16 +6,16 @@
 
 ### Enumeration members
 
-- [COMMON_BLOBS_STORAGE_ADAPTOR](common_server_plugin.HookType.md#common_blobs_storage_adaptor)
-- [COMMON_KMS_SEED_DECODER](common_server_plugin.HookType.md#common_kms_seed_decoder)
-- [CORE_INITIALIZER](common_server_plugin.HookType.md#core_initializer)
-- [GRAPHQL_ENVELOP_PLUGIN](common_server_plugin.HookType.md#graphql_envelop_plugin)
+- [COMMON\_BLOBS\_STORAGE\_ADAPTOR](common_server_plugin.HookType.md#common_blobs_storage_adaptor)
+- [COMMON\_KMS\_SEED\_DECODER](common_server_plugin.HookType.md#common_kms_seed_decoder)
+- [CORE\_INITIALIZER](common_server_plugin.HookType.md#core_initializer)
+- [GRAPHQL\_ENVELOP\_PLUGIN](common_server_plugin.HookType.md#graphql_envelop_plugin)
 
 ## Enumeration members
 
-### <a id="common_blobs_storage_adaptor" name="common_blobs_storage_adaptor"></a> COMMON_BLOBS_STORAGE_ADAPTOR
+### <a id="common_blobs_storage_adaptor" name="common_blobs_storage_adaptor"></a> COMMON\_BLOBS\_STORAGE\_ADAPTOR
 
-• **COMMON_BLOBS_STORAGE_ADAPTOR** = `"common.BLOBS_ADAPTOR"`
+• **COMMON\_BLOBS\_STORAGE\_ADAPTOR** = `"common.BLOBS_ADAPTOR"`
 
 Blobs Adaptor Hook.
 see /common/blobs/adaptors/adaptor.provider.ts
@@ -24,11 +24,11 @@ see /common/blobs/adaptors/adaptor.provider.ts
 
 [common/server-plugin/server-plugin.interface.ts:30](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L30)
 
----
+___
 
-### <a id="common_kms_seed_decoder" name="common_kms_seed_decoder"></a> COMMON_KMS_SEED_DECODER
+### <a id="common_kms_seed_decoder" name="common_kms_seed_decoder"></a> COMMON\_KMS\_SEED\_DECODER
 
-• **COMMON_KMS_SEED_DECODER** = `"common.kms.DECODER"`
+• **COMMON\_KMS\_SEED\_DECODER** = `"common.kms.DECODER"`
 
 KMS Seed Decoder Hook.
 see /common/kms/decoder/decoder.provider.ts
@@ -37,11 +37,11 @@ see /common/kms/decoder/decoder.provider.ts
 
 [common/server-plugin/server-plugin.interface.ts:24](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L24)
 
----
+___
 
-### <a id="core_initializer" name="core_initializer"></a> CORE_INITIALIZER
+### <a id="core_initializer" name="core_initializer"></a> CORE\_INITIALIZER
 
-• **CORE_INITIALIZER** = `"core.INITIALIZER"`
+• **CORE\_INITIALIZER** = `"core.INITIALIZER"`
 
 Hook for server initialization.
 see /core/initializers/index.ts
@@ -50,11 +50,11 @@ see /core/initializers/index.ts
 
 [common/server-plugin/server-plugin.interface.ts:18](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L18)
 
----
+___
 
-### <a id="graphql_envelop_plugin" name="graphql_envelop_plugin"></a> GRAPHQL_ENVELOP_PLUGIN
+### <a id="graphql_envelop_plugin" name="graphql_envelop_plugin"></a> GRAPHQL\_ENVELOP\_PLUGIN
 
-• **GRAPHQL_ENVELOP_PLUGIN** = `"common.GRAPHQL_ENVELOP_PLUGIN"`
+• **GRAPHQL\_ENVELOP\_PLUGIN** = `"common.GRAPHQL_ENVELOP_PLUGIN"`
 
 GraphQL Envelop Plugin Hook.
 see /core/graphql/graphql.module.ts

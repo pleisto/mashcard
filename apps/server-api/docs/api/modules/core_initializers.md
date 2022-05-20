@@ -16,10 +16,10 @@ loadInitializers will be called by `/main.ts` when the application is bootstrapp
 
 #### Parameters
 
-| Name  | Type                     |
-| :---- | :----------------------- |
+| Name | Type |
+| :------ | :------ |
 | `app` | `NestFastifyApplication` |
-| `log` | `Logger`                 |
+| `log` | `Logger` |
 
 #### Returns
 

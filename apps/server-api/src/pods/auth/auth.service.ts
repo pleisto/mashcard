@@ -17,6 +17,12 @@ export class AuthService {
     req.session.set(SESSION_USER_KEY, user)
   }
 
+  async deleteSession(req: FastifyRequest): Promise<boolean> {
+    this.logger.info({ trace: req.id, context: 'DeleteSession' })
+    req.session.del(SESSION_USER_KEY)
+    return true
+  }
+
   async validate({ body }: Request): Promise<User | null> {
     return null
   }

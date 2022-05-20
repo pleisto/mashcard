@@ -11,6 +11,7 @@
 ### Methods
 
 - [createSession](pods_auth.AuthService.md#createsession)
+- [deleteSession](pods_auth.AuthService.md#deletesession)
 - [validate](pods_auth.AuthService.md#validate)
 
 ## Constructors
@@ -21,8 +22,8 @@
 
 #### Parameters
 
-| Name     | Type     |
-| :------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `logger` | `Logger` |
 
 #### Defined in
@@ -39,10 +40,10 @@ Create session for user.
 
 #### Parameters
 
-| Name   | Type                                                                                                        |
-| :----- | :---------------------------------------------------------------------------------------------------------- |
-| `req`  | `FastifyRequest`<`RouteGenericInterface`, `Server`, `IncomingMessage`, `unknown`, `FastifyLoggerInstance`\> |
-| `user` | [`UserSession`](../interfaces/pods_auth.UserSession.md)                                                     |
+| Name | Type |
+| :------ | :------ |
+| `req` | `FastifyRequest`<`RouteGenericInterface`, `Server`, `IncomingMessage`, `unknown`, `FastifyLoggerInstance`\> |
+| `user` | [`UserSession`](../interfaces/pods_auth.UserSession.md) |
 
 #### Returns
 
@@ -52,22 +53,42 @@ Create session for user.
 
 [pods/auth/auth.service.ts:15](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.service.ts#L15)
 
----
+___
 
-### <a id="validate" name="validate"></a> validate
+### <a id="deletesession" name="deletesession"></a> deleteSession
 
-▸ **validate**(`__namedParameters`): `Promise`<`null` \| [`User`](pods_users.User.md)\>
+▸ **deleteSession**(`req`): `Promise`<`boolean`\>
 
 #### Parameters
 
-| Name                | Type      |
-| :------------------ | :-------- |
-| `__namedParameters` | `Request` |
+| Name | Type |
+| :------ | :------ |
+| `req` | `FastifyRequest`<`RouteGenericInterface`, `Server`, `IncomingMessage`, `unknown`, `FastifyLoggerInstance`\> |
 
 #### Returns
 
-`Promise`<`null` \| [`User`](pods_users.User.md)\>
+`Promise`<`boolean`\>
 
 #### Defined in
 
 [pods/auth/auth.service.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.service.ts#L20)
+
+___
+
+### <a id="validate" name="validate"></a> validate
+
+▸ **validate**(`__namedParameters`): `Promise`<``null`` \| [`User`](pods_users.User.md)\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Request` |
+
+#### Returns
+
+`Promise`<``null`` \| [`User`](pods_users.User.md)\>
+
+#### Defined in
+
+[pods/auth/auth.service.ts:26](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.service.ts#L26)

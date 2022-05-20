@@ -22,9 +22,9 @@ HooksExplorer could be used to discover server plugin hooks.
 
 #### Parameters
 
-| Name               | Type                   |
-| :----------------- | :--------------------- |
-| `discoveryService` | `DiscoveryService`     |
+| Name | Type |
+| :------ | :------ |
+| `discoveryService` | `DiscoveryService` |
 | `metadataAccessor` | `HookMetadataAccessor` |
 
 #### Defined in
@@ -41,15 +41,15 @@ Find all hooks by type that have @ServerPluginHook() decorator
 
 #### Type parameters
 
-| Name | Type                                                            |
-| :--- | :-------------------------------------------------------------- |
-| `T`  | extends [`HookType`](../enums/common_server_plugin.HookType.md) |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`HookType`](../enums/common_server_plugin.HookType.md) |
 
 #### Parameters
 
-| Name   | Type |
-| :----- | :--- |
-| `type` | `T`  |
+| Name | Type |
+| :------ | :------ |
+| `type` | `T` |
 
 #### Returns
 

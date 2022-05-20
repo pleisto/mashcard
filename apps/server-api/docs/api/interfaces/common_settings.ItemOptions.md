@@ -25,7 +25,7 @@ The public fields will be exposed to the client.
 
 [common/settings/settings.interface.ts:70](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L70)
 
----
+___
 
 ### <a id="encrypted" name="encrypted"></a> encrypted
 
@@ -38,7 +38,7 @@ if `clientExposed` is true or scope is`LOCAL_STATIC`, encrypted will be ignored.
 
 [common/settings/settings.interface.ts:76](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L76)
 
----
+___
 
 ### <a id="scope" name="scope"></a> scope
 
@@ -51,7 +51,7 @@ Defaults to `ScopeLookupStrategy.ROOT_ONLY`.
 
 [common/settings/settings.interface.ts:82](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L82)
 
----
+___
 
 ### <a id="validation" name="validation"></a> validation
 

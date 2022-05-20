@@ -10,7 +10,7 @@ export class UserController {
   @UseGuards(SessionAuthGuard)
   @Get('profile')
   async getProfile(@Request() req: FastifyRequest): Promise<User> {
-    const result = await this.userService.getUserById(req.user.id)
+    const result = await this.userService.findUserById(req.user.id)
     if (result.isErr()) throw result.error
     return result.value
   }

@@ -77,12 +77,30 @@ describe('UserService', () => {
     expect(result.isOk()).toBe(true)
     const id = result._unsafeUnwrap().id
 
-    const result2 = await userService.getUserById(id)
+    const result2 = await userService.findUserById(id)
     expect(result2.isOk()).toBe(true)
     expect(result2._unsafeUnwrap().slug).toEqual(baz)
 
-    const result3 = await userService.getUserBySlug(baz)
+    const result3 = await userService.findUserBySlug(baz)
     expect(result3.isOk()).toBe(true)
     expect(result3._unsafeUnwrap().id).toEqual(id)
+  })
+
+  it('user appearance', async () => {
+    const user = { id: 123, slug: 'test' }
+    const appearanceResult = await userService.findUserApprearance(user)
+    expect(appearanceResult.isOk()).toBe(true)
+    const timezone = appearanceResult._unsafeUnwrap().timezone
+
+    const input = { locale: 'en-US', timezone: 'Africa/Mogadishu' } as const
+    expect(timezone).not.toEqual(input.timezone)
+
+    const result = await userService.updateUserAppearance(user, input)
+    expect(result.isOk()).toBe(true)
+    expect(result._unsafeUnwrap()).toEqual(true)
+
+    const appearanceResult2 = await userService.findUserApprearance(user)
+    expect(appearanceResult2.isOk()).toBe(true)
+    expect(appearanceResult2._unsafeUnwrap().timezone).toEqual(input.timezone)
   })
 })

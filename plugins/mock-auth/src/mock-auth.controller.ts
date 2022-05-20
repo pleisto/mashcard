@@ -11,7 +11,7 @@ export class MockAuthController {
   async loginAsRealUser(@Req() req: FastifyRequest): Promise<void> {
     const slug = (req.query as any).slug
     if (!slug) throw new Error('slug is required')
-    const result = await this.userService.getUserBySlug(slug)
+    const result = await this.userService.findUserBySlug(slug)
     if (result.isErr()) throw result.error
 
     await this.authService.createSession(req, result.value!)

@@ -64,7 +64,7 @@ export class SettingsService {
     const [scope, fallbackScope] = this.calculateScope(item.options.scope, context)
     // try to get the value from the cache first
     const cachedKeyWithScope = this.cachedKey(key as string, scope)
-    const cachedValue = this.cache.get(this.cachedKey(key as string, scope))
+    const cachedValue = this.cache.get(cachedKeyWithScope)
     if (cachedValue) return ok(cachedValue as T)
 
     // query the database
@@ -119,7 +119,7 @@ export class SettingsService {
         this.cache.set(this.cachedKey(key as string, SCOPE_ROOT_NODE), value)
       } else {
         // cascade delete the cache
-        this.batchDeleteCache(scope)
+        this.batchDeleteCache(this.cachedKey(key as string, scope))
       }
       // clear the cache for all exposed items if this item is exposed
       if (item.options.clientExposed) this.cache.delete(this.allExportedItemsCachedKey(context))
@@ -217,7 +217,9 @@ export class SettingsService {
   protected batchDeleteCache(keyPrefix: string): void {
     for (const key of this.cache.keys()) {
       // clear the cache for sub-scopes
-      key.startsWith(keyPrefix) && this.cache.delete(key)
+      if (key.startsWith(keyPrefix)) {
+        this.cache.delete(key)
+      }
     }
   }
 }

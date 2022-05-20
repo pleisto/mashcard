@@ -38,11 +38,11 @@ Append additional details to the error for server-side logging.
 
 #### Parameters
 
-| Name             | Type     |
-| :--------------- | :------- |
-| `name`           | `string` |
-| `message`        | `string` |
-| `originalError?` | `Error`  |
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+| `message` | `string` |
+| `originalError?` | `Error` |
 
 #### Overrides
 
@@ -64,7 +64,7 @@ It may be exposed to the client.
 
 [common/errors/base.error.ts:22](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L22)
 
----
+___
 
 ### <a id="details" name="details"></a> details
 
@@ -82,7 +82,7 @@ So it is recommended that all variables used in the `message` be stored there.
 
 [common/errors/base.error.ts:29](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L29)
 
----
+___
 
 ### <a id="message" name="message"></a> message
 
@@ -99,7 +99,7 @@ Error.message
 
 [common/errors/base.error.ts:17](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L17)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -116,7 +116,7 @@ Error.name
 
 [common/errors/base.error.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/errors/base.error.ts#L11)
 
----
+___
 
 ### <a id="originalerror" name="originalerror"></a> originalError
 

@@ -24,8 +24,8 @@
 
 #### Parameters
 
-| Name         | Type     |
-| :----------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `rootSecret` | `string` |
 
 #### Defined in
@@ -42,10 +42,10 @@ Data masking
 
 #### Parameters
 
-| Name     | Type     | Default value | Description            |
-| :------- | :------- | :------------ | :--------------------- |
-| `data`   | `string` | `undefined`   | The data to mask       |
-| `length` | `number` | `32`          | The length of the hash |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `data` | `string` | `undefined` | The data to mask |
+| `length` | `number` | `32` | The length of the hash |
 
 #### Returns
 
@@ -57,7 +57,7 @@ The hashed data string
 
 [common/kms/kms.service.ts:26](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L26)
 
----
+___
 
 ### <a id="subkey" name="subkey"></a> subKey
 
@@ -67,10 +67,10 @@ Get a new sub key
 
 #### Parameters
 
-| Name         | Type                                                  | Description                                           |
-| :----------- | :---------------------------------------------------- | :---------------------------------------------------- |
-| `subKeyType` | [`SecretSubKey`](../enums/common_kms.SecretSubKey.md) | the type of sub key to generate                       |
-| `context?`   | `string`                                              | It don't have to be secret and can have a low entropy |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `subKeyType` | [`SecretSubKey`](../enums/common_kms.SecretSubKey.md) | the type of sub key to generate |
+| `context?` | `string` | It don't have to be secret and can have a low entropy |
 
 #### Returns
 
@@ -80,7 +80,7 @@ Get a new sub key
 
 [common/kms/kms.service.ts:16](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L16)
 
----
+___
 
 ### <a id="symmetricdecrypt" name="symmetricdecrypt"></a> symmetricDecrypt
 
@@ -90,9 +90,9 @@ Symmetric-key decryption
 
 #### Parameters
 
-| Name      | Type     |
-| :-------- | :------- |
-| `data`    | `string` |
+| Name | Type |
+| :------ | :------ |
+| `data` | `string` |
 | `context` | `string` |
 
 #### Returns
@@ -103,7 +103,7 @@ Symmetric-key decryption
 
 [common/kms/kms.service.ts:49](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L49)
 
----
+___
 
 ### <a id="symmetricencrypt" name="symmetricencrypt"></a> symmetricEncrypt
 
@@ -113,9 +113,9 @@ Symmetric-key encryption
 
 #### Parameters
 
-| Name      | Type     |
-| :-------- | :------- |
-| `data`    | `string` |
+| Name | Type |
+| :------ | :------ |
+| `data` | `string` |
 | `context` | `string` |
 
 #### Returns
@@ -126,7 +126,7 @@ Symmetric-key encryption
 
 [common/kms/kms.service.ts:39](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/kms/kms.service.ts#L39)
 
----
+___
 
 ### <a id="symmetrickey" name="symmetrickey"></a> symmetricKey
 
@@ -136,8 +136,8 @@ Get a symmetric key
 
 #### Parameters
 
-| Name      | Type     |
-| :-------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `context` | `string` |
 
 #### Returns

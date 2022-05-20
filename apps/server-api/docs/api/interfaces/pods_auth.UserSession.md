@@ -23,7 +23,7 @@ User's id.
 
 [pods/auth/auth.interface.ts:10](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/auth/auth.interface.ts#L10)
 
----
+___
 
 ### <a id="slug" name="slug"></a> slug
 

@@ -1,7 +1,7 @@
-import { Locale } from '../locale.object-type'
+import { makeValidLocale } from '../locale.object-type'
 
-export const enUS: Locale = {
+export const enUS = makeValidLocale({
   tag: 'en-US',
   language: 'english',
   describe: 'English (United States)'
-}
+} as const)

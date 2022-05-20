@@ -10,7 +10,15 @@
 
 ### <a id="enus" name="enus"></a> enUS
 
-• `Const` **enUS**: [`Locale`](../classes/core_locales.Locale.md)
+• `Const` **enUS**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `describe` | ``"English (United States)"`` |
+| `language` | ``"english"`` |
+| `tag` | ``"en-US"`` |
 
 #### Defined in
 

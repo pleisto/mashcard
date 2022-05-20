@@ -21,7 +21,7 @@ session context for calculating scope
 
 [common/settings/settings.interface.ts:106](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L106)
 
----
+___
 
 ### <a id="userid" name="userid"></a> userId
 

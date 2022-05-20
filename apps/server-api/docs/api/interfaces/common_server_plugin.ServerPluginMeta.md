@@ -19,7 +19,7 @@
 
 [common/server-plugin/server-plugin.interface.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/server-plugin/server-plugin.interface.ts#L7)
 
----
+___
 
 ### <a id="dir" name="dir"></a> dir
 

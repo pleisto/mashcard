@@ -34,11 +34,11 @@
 
 #### Parameters
 
-| Name       | Type                                     |
-| :--------- | :--------------------------------------- |
-| `explorer` | `ConfigMapExplorer`                      |
-| `kms`      | [`KMSService`](common_kms.KMSService.md) |
-| `pool`     | `DatabasePool`                           |
+| Name | Type |
+| :------ | :------ |
+| `explorer` | `ConfigMapExplorer` |
+| `kms` | [`KMSService`](common_kms.KMSService.md) |
+| `pool` | `DatabasePool` |
 
 #### Defined in
 
@@ -54,7 +54,7 @@
 
 [common/settings/settings.service.ts:19](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L19)
 
----
+___
 
 ### <a id="configmap" name="configmap"></a> configMap
 
@@ -64,7 +64,7 @@
 
 [common/settings/settings.service.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L20)
 
----
+___
 
 ### <a id="explorer" name="explorer"></a> explorer
 
@@ -78,8 +78,8 @@
 
 #### Parameters
 
-| Name      | Type                                                            |
-| :-------- | :-------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `context` | [`ScopeContext`](../interfaces/common_settings.ScopeContext.md) |
 
 #### Returns
@@ -90,7 +90,7 @@
 
 [common/settings/settings.service.ts:209](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L209)
 
----
+___
 
 ### <a id="allexposeditems" name="allexposeditems"></a> allExposedItems
 
@@ -100,8 +100,8 @@ Get all setting items that are exposed to the client
 
 #### Parameters
 
-| Name      | Type                                                            |
-| :-------- | :-------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `context` | [`ScopeContext`](../interfaces/common_settings.ScopeContext.md) |
 
 #### Returns
@@ -112,7 +112,7 @@ Get all setting items that are exposed to the client
 
 [common/settings/settings.service.ts:134](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L134)
 
----
+___
 
 ### <a id="batchdeletecache" name="batchdeletecache"></a> batchDeleteCache
 
@@ -122,8 +122,8 @@ Batch delete cached items
 
 #### Parameters
 
-| Name        | Type     |
-| :---------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `keyPrefix` | `string` |
 
 #### Returns
@@ -134,7 +134,7 @@ Batch delete cached items
 
 [common/settings/settings.service.ts:217](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L217)
 
----
+___
 
 ### <a id="cachedkey" name="cachedkey"></a> cachedKey
 
@@ -144,9 +144,9 @@ generate a cache key for the given scope and key
 
 #### Parameters
 
-| Name    | Type     |
-| :------ | :------- |
-| `key`   | `string` |
+| Name | Type |
+| :------ | :------ |
+| `key` | `string` |
 | `scope` | `string` |
 
 #### Returns
@@ -157,7 +157,7 @@ generate a cache key for the given scope and key
 
 [common/settings/settings.service.ts:205](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L205)
 
----
+___
 
 ### <a id="calculatescope" name="calculatescope"></a> calculateScope
 
@@ -167,10 +167,10 @@ Calculate the scope based on the session context
 
 #### Parameters
 
-| Name       | Type                                                                     | Default value                   |
-| :--------- | :----------------------------------------------------------------------- | :------------------------------ |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
 | `strategy` | [`ScopeLookupStrategy`](../enums/common_settings.ScopeLookupStrategy.md) | `ScopeLookupStrategy.ROOT_ONLY` |
-| `context`  | [`ScopeContext`](../interfaces/common_settings.ScopeContext.md)          | `undefined`                     |
+| `context` | [`ScopeContext`](../interfaces/common_settings.ScopeContext.md) | `undefined` |
 
 #### Returns
 
@@ -180,7 +180,7 @@ Calculate the scope based on the session context
 
 [common/settings/settings.service.ts:172](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L172)
 
----
+___
 
 ### <a id="finditem" name="finditem"></a> findItem
 
@@ -191,13 +191,13 @@ Find the config map item by key
 #### Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 #### Parameters
 
-| Name  | Type     |
-| :---- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `key` | `string` |
 
 #### Returns
@@ -208,7 +208,7 @@ Find the config map item by key
 
 [common/settings/settings.service.ts:165](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L165)
 
----
+___
 
 ### <a id="get" name="get"></a> get
 
@@ -218,15 +218,15 @@ Get a setting value
 
 #### Type parameters
 
-| Name | Type      |
-| :--- | :-------- |
-| `T`  | `unknown` |
+| Name | Type |
+| :------ | :------ |
+| `T` | `unknown` |
 
 #### Parameters
 
-| Name      | Type                                                            |
-| :-------- | :-------------------------------------------------------------- |
-| `key`     | `string`                                                        |
+| Name | Type |
+| :------ | :------ |
+| `key` | `string` |
 | `context` | [`ScopeContext`](../interfaces/common_settings.ScopeContext.md) |
 
 #### Returns
@@ -237,7 +237,7 @@ Get a setting value
 
 [common/settings/settings.service.ts:58](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L58)
 
----
+___
 
 ### <a id="getlocalsync" name="getlocalsync"></a> getLocalSync
 
@@ -247,15 +247,15 @@ Get a setting value where the scope is LOCAL_STATIC in a synchronous way
 
 #### Type parameters
 
-| Name | Type      |
-| :--- | :-------- |
-| `T`  | `unknown` |
+| Name | Type |
+| :------ | :------ |
+| `T` | `unknown` |
 
 #### Parameters
 
-| Name      | Type                                                            |
-| :-------- | :-------------------------------------------------------------- |
-| `key`     | `string`                                                        |
+| Name | Type |
+| :------ | :------ |
+| `key` | `string` |
 | `context` | [`ScopeContext`](../interfaces/common_settings.ScopeContext.md) |
 
 #### Returns
@@ -266,31 +266,31 @@ Get a setting value where the scope is LOCAL_STATIC in a synchronous way
 
 [common/settings/settings.service.ts:39](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L39)
 
----
+___
 
 ### <a id="update" name="update"></a> update
 
-▸ **update**<`T`\>(`key`, `value`, `context?`): `Promise`<`Result`<`null`, `Error`\>\>
+▸ **update**<`T`\>(`key`, `value`, `context?`): `Promise`<`Result`<``null``, `Error`\>\>
 
 Update a setting value on the database
 
 #### Type parameters
 
-| Name | Type      |
-| :--- | :-------- |
-| `T`  | `unknown` |
+| Name | Type |
+| :------ | :------ |
+| `T` | `unknown` |
 
 #### Parameters
 
-| Name      | Type                                                            |
-| :-------- | :-------------------------------------------------------------- |
-| `key`     | `string`                                                        |
-| `value`   | `T`                                                             |
+| Name | Type |
+| :------ | :------ |
+| `key` | `string` |
+| `value` | `T` |
 | `context` | [`ScopeContext`](../interfaces/common_settings.ScopeContext.md) |
 
 #### Returns
 
-`Promise`<`Result`<`null`, `Error`\>\>
+`Promise`<`Result`<``null``, `Error`\>\>
 
 #### Defined in
 

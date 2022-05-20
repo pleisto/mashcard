@@ -21,7 +21,7 @@
 
 ### Variables
 
-- [SERVER_PLUGIN_HOOK_OPTIONS_METADATA](common_server_plugin.md#server_plugin_hook_options_metadata)
+- [SERVER\_PLUGIN\_HOOK\_OPTIONS\_METADATA](common_server_plugin.md#server_plugin_hook_options_metadata)
 
 ### Functions
 
@@ -35,9 +35,9 @@
 
 #### Type parameters
 
-| Name | Type                                                            |
-| :--- | :-------------------------------------------------------------- |
-| `T`  | extends [`HookType`](../enums/common_server_plugin.HookType.md) |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`HookType`](../enums/common_server_plugin.HookType.md) |
 
 #### Defined in
 
@@ -45,9 +45,9 @@
 
 ## Variables
 
-### <a id="server_plugin_hook_options_metadata" name="server_plugin_hook_options_metadata"></a> SERVER_PLUGIN_HOOK_OPTIONS_METADATA
+### <a id="server_plugin_hook_options_metadata" name="server_plugin_hook_options_metadata"></a> SERVER\_PLUGIN\_HOOK\_OPTIONS\_METADATA
 
-• `Const` **SERVER_PLUGIN_HOOK_OPTIONS_METADATA**: `"brickdoc-server-plugin:hook"`
+• `Const` **SERVER\_PLUGIN\_HOOK\_OPTIONS\_METADATA**: ``"brickdoc-server-plugin:hook"``
 
 #### Defined in
 
@@ -62,18 +62,17 @@
 Decorator for registering server plugin hooks.
 
 **`example`**
-
 ```ts
 @Hook(HookType.CORE_INITIALIZER)
 export class MyPlugin {
-  async forHookAsync(setting: SettingsService) {}
+ async forHookAsync(setting: SettingsService) {}
 }
 ```
 
 #### Parameters
 
-| Name   | Type                                                    |
-| :----- | :------------------------------------------------------ |
+| Name | Type |
+| :------ | :------ |
 | `type` | [`HookType`](../enums/common_server_plugin.HookType.md) |
 
 #### Returns

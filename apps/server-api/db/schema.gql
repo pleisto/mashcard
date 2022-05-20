@@ -7,9 +7,7 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-"""
-Hashed IntID Scalar
-"""
+"""Hashed IntID Scalar"""
 scalar HashedID
 
 """
@@ -17,73 +15,55 @@ The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](
 """
 scalar JSONObject
 
-"""
-Locale
-"""
+"""Locale"""
 type Locale {
-  """
-  Locale language's description of local
-  """
+  """Locale language's description of local"""
   describe: String!
 
-  """
-  English name of Language
-  """
+  """English name of Language"""
   language: String!
 
-  """
-  Locale tag
-  """
+  """Locale tag"""
   tag: String!
 }
 
-"""
-Brickdoc Server Instance Metadata
-"""
+"""Brickdoc Server Instance Metadata"""
 type Metadata {
-  """
-  Some settings are exposed to the client.
-  """
+  """Some settings are exposed to the client."""
   exposedSettings: JSONObject
 
-  """
-  Supported locales
-  """
+  """Supported locales"""
   supportedLocales: [Locale!]!
 
-  """
-  Supported IANA timezones
-  """
+  """Supported IANA timezones"""
   supportedTimezones: [String!]!
+}
+
+type Mutation {
+  """Logout current user."""
+  logout: Boolean!
+
+  """Update user appearance."""
+  userAppearanceUpdate(input: UserAppearanceUpdateInput!): Boolean!
 }
 
 """
 In Brickdoc, Pod is an abstract table used to represent tenants, which can be either users or spaces. A data pod is a place for storing documents, with mechanisms for controlling who can access what.
 """
 interface Pod {
-  """
-  Avatar URL
-  """
+  """Avatar URL"""
   avatarUrl: URL
 
-  """
-  BIO
-  """
+  """BIO"""
   bio: String
 
-  """
-  Identifies the date and time when the object was created.
-  """
+  """Identifies the date and time when the object was created."""
   createdAt: DateTime!
 
-  """
-  Hashed Unique ID
-  """
+  """Hashed Unique ID"""
   id: HashedID!
 
-  """
-  Display Name
-  """
+  """Display Name"""
   name: String!
 
   """
@@ -91,22 +71,19 @@ interface Pod {
   """
   slug: String!
 
-  """
-  Identifies the date and time when the object was last updated.
-  """
+  """Identifies the date and time when the object was last updated."""
   updatedAt: DateTime!
 }
 
 type Query {
-  """
-  Get information about current user.
-  """
+  """Get information about current user."""
   currentUser: User!
 
-  """
-  Return information about current Brickdoc server instance.
-  """
+  """Return information about current Brickdoc server instance."""
   metadata: Metadata!
+
+  """Query user appearance."""
+  userAppearance: UserAppearance!
 }
 
 """
@@ -118,39 +95,25 @@ scalar URL
 A user is an individual's account on Brickdoc that owns spaces and can make new content.
 """
 type User implements Pod {
-  """
-  Avatar URL
-  """
+  """Avatar URL"""
   avatarUrl: URL
 
-  """
-  BIO
-  """
+  """BIO"""
   bio: String
 
-  """
-  Identifies the date and time when the object was created.
-  """
+  """Identifies the date and time when the object was created."""
   createdAt: DateTime!
 
-  """
-  Hashed Unique ID
-  """
+  """Hashed Unique ID"""
   id: HashedID!
 
-  """
-  User is initialized
-  """
+  """User is initialized"""
   isInitialized: Boolean!
 
-  """
-  User locked at
-  """
+  """User locked at"""
   lockedAt: DateTime
 
-  """
-  Display Name
-  """
+  """Display Name"""
   name: String!
 
   """
@@ -158,8 +121,24 @@ type User implements Pod {
   """
   slug: String!
 
-  """
-  Identifies the date and time when the object was last updated.
-  """
+  """Identifies the date and time when the object was last updated."""
   updatedAt: DateTime!
+}
+
+"""User appearance object"""
+type UserAppearance {
+  """locale"""
+  locale: String!
+
+  """timezone"""
+  timezone: String!
+}
+
+"""User appearance update input"""
+input UserAppearanceUpdateInput {
+  """locale"""
+  locale: String!
+
+  """timezone"""
+  timezone: String!
 }

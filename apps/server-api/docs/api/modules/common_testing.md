@@ -24,10 +24,10 @@
 
 ##### Parameters
 
-| Name        | Type                     |
-| :---------- | :----------------------- |
-| `app`       | `NestFastifyApplication` |
-| `moduleRef` | `TestingModule`          |
+| Name | Type |
+| :------ | :------ |
+| `app` | `NestFastifyApplication` |
+| `moduleRef` | `TestingModule` |
 
 ##### Returns
 
@@ -47,10 +47,10 @@ Create app module for testing
 
 #### Parameters
 
-| Name                 | Type                                     |
-| :------------------- | :--------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `beforeAllCallback?` | [`CallBack`](common_testing.md#callback) |
-| `afterAllCallback?`  | [`CallBack`](common_testing.md#callback) |
+| `afterAllCallback?` | [`CallBack`](common_testing.md#callback) |
 
 #### Returns
 
@@ -60,7 +60,7 @@ Create app module for testing
 
 [common/testing/http.utils.ts:15](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/testing/http.utils.ts#L15)
 
----
+___
 
 ### <a id="useappinstancewithgraphql" name="useappinstancewithgraphql"></a> useAppInstanceWithGraphQL
 
@@ -70,10 +70,10 @@ Create GraphQL server based on app module for testing
 
 #### Parameters
 
-| Name                 | Type                                     |
-| :------------------- | :--------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `beforeAllCallback?` | [`CallBack`](common_testing.md#callback) |
-| `afterAllCallback?`  | [`CallBack`](common_testing.md#callback) |
+| `afterAllCallback?` | [`CallBack`](common_testing.md#callback) |
 
 #### Returns
 
@@ -83,7 +83,7 @@ Create GraphQL server based on app module for testing
 
 [common/testing/graphql.utils.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/testing/graphql.utils.ts#L12)
 
----
+___
 
 ### <a id="useappinstancewithhttp" name="useappinstancewithhttp"></a> useAppInstanceWithHttp
 
@@ -93,10 +93,10 @@ Create http server based on app module for testing
 
 #### Parameters
 
-| Name                 | Type                                     |
-| :------------------- | :--------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `beforeAllCallback?` | [`CallBack`](common_testing.md#callback) |
-| `afterAllCallback?`  | [`CallBack`](common_testing.md#callback) |
+| `afterAllCallback?` | [`CallBack`](common_testing.md#callback) |
 
 #### Returns
 

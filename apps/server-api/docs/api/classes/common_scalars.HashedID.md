@@ -31,8 +31,8 @@
 
 #### Parameters
 
-| Name  | Type                                     |
-| :---- | :--------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `kms` | [`KMSService`](common_kms.KMSService.md) |
 
 #### Defined in
@@ -67,7 +67,7 @@ CustomScalar.description
 
 [common/scalars/hashedid.scalar.ts:26](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/scalars/hashedid.scalar.ts#L26)
 
----
+___
 
 ### <a id="parseliteral" name="parseliteral"></a> parseLiteral
 
@@ -75,8 +75,8 @@ CustomScalar.description
 
 #### Parameters
 
-| Name  | Type        |
-| :---- | :---------- |
+| Name | Type |
+| :------ | :------ |
 | `ast` | `ValueNode` |
 
 #### Returns
@@ -91,7 +91,7 @@ CustomScalar.parseLiteral
 
 [common/scalars/hashedid.scalar.ts:19](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/scalars/hashedid.scalar.ts#L19)
 
----
+___
 
 ### <a id="parsevalue" name="parsevalue"></a> parseValue
 
@@ -99,8 +99,8 @@ CustomScalar.parseLiteral
 
 #### Parameters
 
-| Name    | Type      |
-| :------ | :-------- |
+| Name | Type |
+| :------ | :------ |
 | `value` | `unknown` |
 
 #### Returns
@@ -115,7 +115,7 @@ CustomScalar.parseValue
 
 [common/scalars/hashedid.scalar.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/scalars/hashedid.scalar.ts#L11)
 
----
+___
 
 ### <a id="serialize" name="serialize"></a> serialize
 
@@ -123,8 +123,8 @@ CustomScalar.parseValue
 
 #### Parameters
 
-| Name    | Type      |
-| :------ | :-------- |
+| Name | Type |
+| :------ | :------ |
 | `value` | `unknown` |
 
 #### Returns

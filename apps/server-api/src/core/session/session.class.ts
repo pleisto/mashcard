@@ -24,6 +24,12 @@ export class Session {
     this[kObj][key] = value
   }
 
+  del<Key extends keyof SessionData>(key: Key): void {
+    this.changed = true
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+    delete this[kObj][key]
+  }
+
   delete(): void {
     this.changed = true
     this.deleted = true

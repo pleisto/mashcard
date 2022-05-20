@@ -1,7 +1,7 @@
 import { Field, ObjectType } from '@nestjs/graphql'
 import { Injectable } from '@nestjs/common'
 import { GraphQLJSONObject } from 'graphql-type-json'
-import { Locale, supportLocales } from '../locales'
+import { Locale, type LocalesType, supportLocales } from '../locales'
 import { supportedTimezones } from '../timezones'
 
 @Injectable()
@@ -21,7 +21,7 @@ export class Metadata {
   @Field(type => [Locale], {
     description: 'Supported locales'
   })
-  public supportedLocales: Locale[]
+  public supportedLocales: LocalesType
 
   constructor() {
     this.supportedTimezones = supportedTimezones

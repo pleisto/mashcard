@@ -1,8 +1,8 @@
 import { env } from 'process'
 import { ConfigMap, Item, ScopeLookupStrategy } from '../common/settings'
 import { string, mixed } from 'yup'
-import { supportLocales } from './locales'
-import { supportedTimezones } from './timezones'
+import { type LocaleTagType, supportLocales } from './locales'
+import { supportedTimezones, type TimezoneType } from './timezones'
 
 @ConfigMap('core')
 export class CoreConfigMap {
@@ -34,7 +34,7 @@ export class CoreConfigMap {
     scope: ScopeLookupStrategy.USER_BASED,
     validation: mixed().oneOf(supportLocales.map(l => l.tag))
   })
-  defaultLanguage: string = 'en-US'
+  defaultLanguage: LocaleTagType = 'en-US'
 
   /**
    * Default timezone
@@ -44,5 +44,5 @@ export class CoreConfigMap {
     scope: ScopeLookupStrategy.USER_BASED,
     validation: mixed().oneOf(supportedTimezones)
   })
-  defaultTimezone: string = 'Etc/UTC'
+  defaultTimezone: TimezoneType = 'Etc/UTC'
 }

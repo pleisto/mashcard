@@ -15,7 +15,7 @@ const log = new Logger('BrickdocServer')
  */
 async function startServer(): Promise<void> {
   // In development mode use Http2DevServer, otherwise use http/1 server.
-  const serverConfig = IS_DEV_MODE ? (await import('@brickdoc/build-support')).http2DevServerConfig : {}
+  const serverConfig = !IS_DEV_MODE ? (await import('@brickdoc/build-support')).http2DevServerConfig : {}
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter(serverConfig), {
     bufferLogs: true
   })

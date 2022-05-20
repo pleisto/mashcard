@@ -40,5 +40,7 @@ describe('SettingService', () => {
     expect((await settings.get<string>(key, { userId, spaceId: 'nil' }))._unsafeUnwrap()).toEqual(sgTz)
     expect((await settings.get<string>(key, { spaceId, userId: 'nil' }))._unsafeUnwrap()).toEqual(pstTZ)
     expect((await settings.get<string>(key, { spaceId: 'nil', userId: 'nil' }))._unsafeUnwrap()).toEqual(defaultTz)
+    expect((await settings.get<string>(key, { userId }))._unsafeUnwrap()).toEqual(sgTz)
+    expect((await settings.get<string>(key, { spaceId }))._unsafeUnwrap()).toEqual(pstTZ)
   })
 })

@@ -42,11 +42,11 @@
 
 #### Parameters
 
-| Name         | Type     |
-| :----------- | :------- |
-| `error`      | `Error`  |
+| Name | Type |
+| :------ | :------ |
+| `error` | `Error` |
 | `constraint` | `string` |
-| `message?`   | `string` |
+| `message?` | `string` |
 
 #### Overrides
 
@@ -66,7 +66,7 @@ node_modules/slonik/dist/src/errors.d.ts:37
 
 node_modules/slonik/dist/src/errors.d.ts:36
 
----
+___
 
 ### <a id="message" name="message"></a> message
 
@@ -80,7 +80,7 @@ WrappedPGError.message
 
 node_modules/slonik/dist/src/errors.d.ts:5
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -94,7 +94,7 @@ WrappedPGError.name
 
 node_modules/typescript/lib/lib.es5.d.ts:1028
 
----
+___
 
 ### <a id="originalerror" name="originalerror"></a> originalError
 
@@ -108,7 +108,7 @@ WrappedPGError.originalError
 
 node_modules/slonik/dist/src/errors.d.ts:6
 
----
+___
 
 ### <a id="stack" name="stack"></a> stack
 
@@ -122,7 +122,7 @@ WrappedPGError.stack
 
 node_modules/typescript/lib/lib.es5.d.ts:1030
 
----
+___
 
 ### <a id="preparestacktrace" name="preparestacktrace"></a> prepareStackTrace
 
@@ -138,9 +138,9 @@ Optional override for formatting stack traces
 
 ##### Parameters
 
-| Name          | Type         |
-| :------------ | :----------- |
-| `err`         | `Error`      |
+| Name | Type |
+| :------ | :------ |
+| `err` | `Error` |
 | `stackTraces` | `CallSite`[] |
 
 ##### Returns
@@ -155,7 +155,7 @@ WrappedPGError.prepareStackTrace
 
 node_modules/@types/node/globals.d.ts:11
 
----
+___
 
 ### <a id="stacktracelimit" name="stacktracelimit"></a> stackTraceLimit
 
@@ -179,9 +179,9 @@ Create .stack property on a target object
 
 #### Parameters
 
-| Name              | Type       |
-| :---------------- | :--------- |
-| `targetObject`    | `object`   |
+| Name | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
 | `constructorOpt?` | `Function` |
 
 #### Returns

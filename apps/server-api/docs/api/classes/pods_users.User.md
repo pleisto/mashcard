@@ -30,23 +30,23 @@
 
 ### <a id="avatarurl" name="avatarurl"></a> avatarUrl
 
-• **avatarUrl**: `null` \| `string`
+• **avatarUrl**: ``null`` \| `string`
 
 #### Defined in
 
 [pods/users/user.object-type.ts:16](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L16)
 
----
+___
 
 ### <a id="bio" name="bio"></a> bio
 
-• **bio**: `null` \| `string`
+• **bio**: ``null`` \| `string`
 
 #### Defined in
 
 [pods/users/user.object-type.ts:13](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L13)
 
----
+___
 
 ### <a id="createdat" name="createdat"></a> createdAt
 
@@ -56,7 +56,7 @@
 
 [pods/users/user.object-type.ts:14](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L14)
 
----
+___
 
 ### <a id="id" name="id"></a> id
 
@@ -66,7 +66,7 @@
 
 [pods/users/user.object-type.ts:10](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L10)
 
----
+___
 
 ### <a id="isinitialized" name="isinitialized"></a> isInitialized
 
@@ -76,17 +76,17 @@
 
 [pods/users/user.object-type.ts:19](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L19)
 
----
+___
 
 ### <a id="lockedat" name="lockedat"></a> lockedAt
 
-• **lockedAt**: `null` \| `number`
+• **lockedAt**: ``null`` \| `number`
 
 #### Defined in
 
 [pods/users/user.object-type.ts:22](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L22)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -96,7 +96,7 @@
 
 [pods/users/user.object-type.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L12)
 
----
+___
 
 ### <a id="slug" name="slug"></a> slug
 
@@ -106,7 +106,7 @@
 
 [pods/users/user.object-type.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.object-type.ts#L11)
 
----
+___
 
 ### <a id="updatedat" name="updatedat"></a> updatedAt
 

@@ -6,9 +6,9 @@ Pod access credential schema.
 
 ## Type parameters
 
-| Name | Type                       |
-| :--- | :------------------------- |
-| `T`  | `Record`<`string`, `any`\> |
+| Name | Type |
+| :------ | :------ |
+| `T` | `Record`<`string`, `any`\> |
 
 ## Table of contents
 
@@ -32,7 +32,7 @@ Metadata
 
 [pods/users/user.interface.ts:35](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L35)
 
----
+___
 
 ### <a id="podid" name="podid"></a> podId
 
@@ -44,7 +44,7 @@ podId.
 
 [pods/users/user.interface.ts:28](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L28)
 
----
+___
 
 ### <a id="podtype" name="podtype"></a> podType
 
@@ -56,7 +56,7 @@ podType. `space` or `user`
 
 [pods/users/user.interface.ts:23](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L23)
 
----
+___
 
 ### <a id="provider" name="provider"></a> provider
 
@@ -66,7 +66,7 @@ podType. `space` or `user`
 
 [pods/users/user.interface.ts:29](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/pods/users/user.interface.ts#L29)
 
----
+___
 
 ### <a id="subject" name="subject"></a> subject
 

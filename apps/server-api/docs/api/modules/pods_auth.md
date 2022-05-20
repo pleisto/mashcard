@@ -13,13 +13,13 @@
 
 ### Variables
 
-- [SESSION_USER_KEY](pods_auth.md#session_user_key)
+- [SESSION\_USER\_KEY](pods_auth.md#session_user_key)
 
 ## Variables
 
-### <a id="session_user_key" name="session_user_key"></a> SESSION_USER_KEY
+### <a id="session_user_key" name="session_user_key"></a> SESSION\_USER\_KEY
 
-• `Const` **SESSION_USER_KEY**: `"user"`
+• `Const` **SESSION\_USER\_KEY**: ``"user"``
 
 Session key.
 
