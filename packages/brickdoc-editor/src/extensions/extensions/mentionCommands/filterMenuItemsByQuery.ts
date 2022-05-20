@@ -5,8 +5,8 @@ export const filterMenuItemsByQuery =
   (options: MentionCommandsOptions) =>
   ({ query }: { query: string }): MenuItems => {
     const searchValue = (query ?? '').toLowerCase()
-    const pages = options.externalProps.documentPages
-    const domain = options.externalProps.domain
+    const pages = options.editorProps.documentPages
+    const domain = options.editorProps.domain
     const pagePath = (parentId: string | null | undefined, path: string[] = []): string[] => {
       const parent = pages.find(p => p.key === parentId)
 
@@ -15,14 +15,19 @@ export const filterMenuItemsByQuery =
     }
     return {
       users:
-        options.externalProps.spaceMembers
+        options.editorProps.spaceMembers
           .filter(item => (item.name ?? '').toLowerCase().includes(searchValue))
           .map(item => ({
             name: item.name,
             domain: item.domain,
-            avatar: item.avatar,
+            avatar: item.avatar ?? '',
             command(editor: Editor, range: Range) {
-              editor.chain().focus().deleteRange(range).setUserBlock(item.domain, item.name, item.avatar).run()
+              editor
+                .chain()
+                .focus()
+                .deleteRange(range)
+                .setUserBlock(item.domain, item.name, item.avatar ?? '')
+                .run()
             }
           }))
           .slice(0, 5) ?? [],

@@ -8,7 +8,7 @@ import { CodeBlockViewProps } from '../../../extensions/blocks/codeBlock/meta'
 import { CodeBlockAttributes } from '../../../extensions'
 import { languageNames } from '../../../extensions/blocks/codeBlock/refractorLanguagesBundle'
 import { useOptions } from './useOptions'
-import { useEditorContext } from '../../../hooks'
+import { useEditorI18n } from '../../../hooks'
 
 const LanguageChecked = styled(Check, {
   fontSize: '1rem',
@@ -22,10 +22,10 @@ interface ILanguageSelect {
 }
 
 const LanguageSelect: FC<ILanguageSelect> = (props: ILanguageSelect) => {
-  const { t } = useEditorContext()
+  const [t] = useEditorI18n()
   const { language, updateAttributes } = props
 
-  const onAction = (key: string) => {
+  const onAction = (key: string): void => {
     if (key === 'search') {
       return
     }
@@ -60,7 +60,7 @@ const LanguageSelect: FC<ILanguageSelect> = (props: ILanguageSelect) => {
         ))}
     </Menu>
   )
-  const updateVisible = () => setVisible(state => !state)
+  const updateVisible = (): void => setVisible(state => !state)
   return (
     <Popover
       trigger="click"
@@ -84,7 +84,7 @@ export const CodeBlockView: FC<CodeBlockViewProps> = ({ node, updateAttributes, 
     attrs: { language, autoWrap: _autoWrap }
   } = node
   const autoWrap = _autoWrap !== false
-  const onAutoWrapChange = () => {
+  const onAutoWrapChange = (): void => {
     updateAttributes({
       autoWrap: !autoWrap
     })

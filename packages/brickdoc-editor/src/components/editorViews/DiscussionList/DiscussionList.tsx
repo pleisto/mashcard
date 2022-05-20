@@ -1,6 +1,6 @@
 import { TabPane } from '@brickdoc/design-system'
-import { FC, useCallback, useContext, useState } from 'react'
-import { EditorContext } from '../../../context/EditorContext'
+import { FC, useCallback, useState } from 'react'
+import { useEditorI18n } from '../../../hooks'
 import { Drawer } from '../../ui'
 import { DiscussionPanel } from './DiscussionPanel'
 import { PageDiscussionContext, usePageDiscussionContextValue } from './PageDiscussionContext'
@@ -15,7 +15,7 @@ const TAB_ALL = 'all'
 const TAB_RESOLVED = 'resolved'
 
 export const DiscussionList: FC<DiscussionListProps> = () => {
-  const { t } = useContext(EditorContext)
+  const [t] = useEditorI18n()
 
   const [activeTab, setActiveTab] = useState(TAB_ALL)
   const [commentedNodes] = useCommentedNodes()
@@ -36,7 +36,8 @@ export const DiscussionList: FC<DiscussionListProps> = () => {
       container={document.getElementById('aside') as HTMLElement}
       visible={visible}
       onClose={() => setVisible(false)}
-      title={t('discussion.title')}>
+      title={t('discussion.title')}
+    >
       <PageDiscussionContext.Provider value={pageDiscussion}>
         <DiscussionListContainer>
           <FilterTabs activeKey={activeTab} onTabClick={handleTabClick}>

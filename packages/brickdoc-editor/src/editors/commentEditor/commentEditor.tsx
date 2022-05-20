@@ -1,13 +1,13 @@
-import { FC, MouseEvent, useCallback, useContext, useEffect } from 'react'
+import { FC, MouseEvent, useCallback, useEffect } from 'react'
 import { Editor, JSONContent } from '@tiptap/core'
 import { Button } from '@brickdoc/design-system'
 import { BrickdocEventBus, DiscussionMarkInactive } from '@brickdoc/schema'
-import { EditorContext } from '../../context/EditorContext'
 import { usePlaceholder } from './usePlaceholder'
 import { EditorContainer, EditorAvatar, EditorInput, ActionsRow } from './styles'
 import { useCommentEditor } from './useCommentEditor'
 import { clearDraft, getDraft } from './draft'
 import { useContentUpdated } from './useContentUpdated'
+import { useEditorI18n } from '../../hooks'
 
 export interface CommentEditorProps {
   markId: string
@@ -15,7 +15,7 @@ export interface CommentEditorProps {
 }
 
 export const CommentEditorContent: FC<CommentEditorProps> = ({ markId, onSend }) => {
-  const { t } = useContext(EditorContext)
+  const [t] = useEditorI18n()
   const editor = useCommentEditor(getDraft(markId))
   const [placeholder] = usePlaceholder(editor)
 

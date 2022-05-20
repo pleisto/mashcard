@@ -1,15 +1,16 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { ImageView } from '../ImageView'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
-import { ExternalProps, ExternalPropsContext } from '../../../../context'
+import { EditorPropsContext } from '../../../../context'
 import { mockBlockViewProps } from '../../../../test'
 import { ImageOptions, ImageAttributes } from '../../../../extensions/blocks/image/meta'
+import * as editorPropsHooks from '../../../../hooks/useEditorPropsContext'
 
 describe('ImageView', () => {
-  const externalProps = new ExternalProps()
+  const editorProps = { ...EditorPropsContext }
   const imageUuid = 'image-uuid'
-  externalProps.rootId = imageUuid
-  externalProps.prepareFileUpload = (() => {}) as any
+  editorProps.rootId = imageUuid
+  editorProps.prepareFileUpload = (() => {}) as any
 
   const imageUrl =
     'https://images.unsplash.com/photo-1628189847457-b4607de7d222?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80'
@@ -29,12 +30,9 @@ describe('ImageView', () => {
         }
       }
     })
+    jest.spyOn(editorPropsHooks, 'useEditorPropsContext').mockImplementation(() => editorProps)
 
-    const { container } = render(
-      <ExternalPropsContext.Provider value={externalProps}>
-        <ImageView {...props} />
-      </ExternalPropsContext.Provider>
-    )
+    const { container } = render(<ImageView {...props} />)
     expect(container).toMatchSnapshot()
   })
 
@@ -62,12 +60,9 @@ describe('ImageView', () => {
         }
       }
     })
+    jest.spyOn(editorPropsHooks, 'useEditorPropsContext').mockImplementation(() => editorProps)
 
-    render(
-      <ExternalPropsContext.Provider value={externalProps}>
-        <ImageView {...props} />
-      </ExternalPropsContext.Provider>
-    )
+    render(<ImageView {...props} />)
 
     expect(screen.getByText('image_block.hint')).toBeInTheDocument()
   })
@@ -87,12 +82,9 @@ describe('ImageView', () => {
         }
       }
     })
+    jest.spyOn(editorPropsHooks, 'useEditorPropsContext').mockImplementation(() => editorProps)
 
-    render(
-      <ExternalPropsContext.Provider value={externalProps}>
-        <ImageView {...props} />
-      </ExternalPropsContext.Provider>
-    )
+    render(<ImageView {...props} />)
 
     expect(screen.getByTestId(TEST_ID_ENUM.editor.imageBlock.image.id)).toBeInTheDocument()
   })
@@ -115,12 +107,9 @@ describe('ImageView', () => {
           }
         }
       })
+      jest.spyOn(editorPropsHooks, 'useEditorPropsContext').mockImplementation(() => editorProps)
 
-      render(
-        <ExternalPropsContext.Provider value={externalProps}>
-          <ImageView {...props} />
-        </ExternalPropsContext.Provider>
-      )
+      render(<ImageView {...props} />)
 
       fireEvent.click(screen.getByText('image_block.hint'))
 
@@ -129,6 +118,7 @@ describe('ImageView', () => {
 
     it('embeds image by paste link', async () => {
       jest.useRealTimers()
+      jest.spyOn(editorPropsHooks, 'useEditorPropsContext').mockImplementation(() => editorProps)
       const props = mockBlockViewProps<ImageOptions, ImageAttributes>({
         node: {
           uuid: imageUuid,
@@ -145,19 +135,11 @@ describe('ImageView', () => {
           }
         },
         onUpdateAttributes: () => {
-          rerender(
-            <ExternalPropsContext.Provider value={externalProps}>
-              <ImageView {...props} />
-            </ExternalPropsContext.Provider>
-          )
+          rerender(<ImageView {...props} />)
         }
       })
 
-      const { rerender } = render(
-        <ExternalPropsContext.Provider value={externalProps}>
-          <ImageView {...props} />
-        </ExternalPropsContext.Provider>
-      )
+      const { rerender } = render(<ImageView {...props} />)
 
       fireEvent.click(screen.getByText('image_block.hint'))
       fireEvent.input(screen.getByPlaceholderText('image_block.import_sources.link.placeholder'), {

@@ -1,7 +1,7 @@
 import { useCallback, useState, ChangeEventHandler, RefObject } from 'react'
 import { UploadResultData, UploadProgress, imperativeUpload } from '@brickdoc/uploader'
 import { linkStorage, getFileTypeByExtension, getFileTypeByContentType, FileType } from '../../../../../helpers'
-import { useExternalProps } from '../../../../../hooks'
+import { useEditorPropsContext } from '../../../../../hooks'
 import { useBlockJustCreated } from '../useBlockJustCreated'
 import { useDefaultFile } from './useDefaultFile'
 import { EmbedViewProps } from '../../../../../extensions/blocks/embed/meta'
@@ -18,7 +18,7 @@ export function useUploadProgress(
   file: File | undefined
   fileType: FileType | undefined
 } {
-  const externalProps = useExternalProps()
+  const editorProps = useEditorPropsContext()
 
   const [file, setFile] = useState<File>()
   const [fileType, setFileType] = useState<FileType>()
@@ -65,14 +65,14 @@ export function useUploadProgress(
       setFileType(fileType)
 
       void imperativeUpload(file, {
-        prepareFileUpload: externalProps.prepareFileUpload,
-        blockId: externalProps.rootId,
+        prepareFileUpload: editorProps.prepareFileUpload,
+        blockId: editorProps.rootId,
         fileType,
         onUploaded,
         onProgress
       })
     },
-    [externalProps.prepareFileUpload, externalProps.rootId, onUploaded]
+    [editorProps.prepareFileUpload, editorProps.rootId, onUploaded]
   )
   const handleChooseFile = useCallback(() => {
     inputRef.current?.click()

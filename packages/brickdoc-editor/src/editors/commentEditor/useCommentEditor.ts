@@ -1,9 +1,9 @@
 import { useEditor, Editor, Content } from '@tiptap/react'
 import { Base } from '../../extensions/base'
-import { useExternalProps } from '../../hooks/useExternalProps'
+import { useEditorPropsContext } from '../../hooks/useEditorPropsContext'
 
 export function useCommentEditor(defaultContent?: Content): Editor | null {
-  const externalProps = useExternalProps()
+  const editorProps = useEditorPropsContext()
   return useEditor({
     autofocus: 'end',
     content: defaultContent,
@@ -12,7 +12,7 @@ export function useCommentEditor(defaultContent?: Content): Editor | null {
         commandHelper: true,
         document: true,
         mentionCommands: {
-          externalProps,
+          editorProps,
           size: 'sm'
         },
         pageLink: {

@@ -1,8 +1,7 @@
-import { useContext } from 'react'
 import { isEmpty } from '@brickdoc/active-support'
 import { styled, Avatar, theme } from '@brickdoc/design-system'
-import { EditorContext } from '../../../context/EditorContext'
 import { UserAttributes, UserOptions } from '../../../extensions/blocks/user/meta'
+import { useEditorI18n } from '../../../hooks'
 
 export interface UserProps {
   attributes: UserAttributes
@@ -48,7 +47,7 @@ const UserBlockContainer = styled('span', {
 export const User: React.FC<UserProps> = ({ attributes, options }) => {
   const { name, domain, avatarUrl } = attributes?.people ?? {}
   const size = options?.size ?? 'md'
-  const { t } = useContext(EditorContext)
+  const [t] = useEditorI18n()
   const showAvatar = size !== 'sm'
 
   return (

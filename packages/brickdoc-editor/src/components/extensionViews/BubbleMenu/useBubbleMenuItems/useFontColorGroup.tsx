@@ -4,7 +4,7 @@ import { ToolbarOption, ToolbarGroupOption } from '../../../ui'
 import { COLOR } from '../../../../helpers'
 import { BubbleItemMeta, NodeIcon } from './useBubbleMenuItems'
 import { isBubbleMenuVisible } from '../BubbleMenu'
-import { useEditorContext } from '../../../../hooks'
+import { useEditorContext, useEditorI18n } from '../../../../hooks'
 
 const FontColorIcon = styled('span', {
   include: ['flexCenter'],
@@ -15,7 +15,8 @@ const FontColorIcon = styled('span', {
 })
 
 export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { t, editor } = useEditorContext()
+  const { editor } = useEditorContext()
+  const [t] = useEditorI18n()
 
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null

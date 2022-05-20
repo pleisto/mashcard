@@ -1,7 +1,7 @@
-import { FC, useCallback, useContext } from 'react'
+import { FC, useCallback } from 'react'
 import { Editor, Range } from '@tiptap/core'
 import { Avatar, Menu, styled, theme } from '@brickdoc/design-system'
-import { EditorContext } from '../../../../context'
+import { useEditorI18n } from '../../../../hooks'
 
 export interface UserItem {
   avatar: string | undefined
@@ -52,7 +52,7 @@ const GroupLabel = styled('span', {
 })
 
 export const UserGroup: FC<UserGroupProps> = ({ editor, range, items, active, activeIndex }) => {
-  const { t } = useContext(EditorContext)
+  const [t] = useEditorI18n()
   const groupTitle = t(items.length === 0 ? 'mention.people.no_content' : 'mention.people.head')
 
   const handleUserSelect = useCallback(

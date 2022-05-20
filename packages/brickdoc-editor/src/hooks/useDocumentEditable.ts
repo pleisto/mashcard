@@ -1,14 +1,15 @@
-import { useState } from 'react'
-import { useExternalProps } from './useExternalProps'
+import { useEffect, useState } from 'react'
+import { useEditorPropsContext } from './useEditorPropsContext'
 
 export function useDocumentEditable(defaultEditable: boolean | undefined): [boolean] {
-  const externalProps = useExternalProps()
-  const [documentEditable, setEditable] = useState(externalProps.documentEditable)
-  externalProps.onUpdate(type => {
-    if (type === 'documentEditable') {
-      setEditable(externalProps.documentEditable)
+  const editorProps = useEditorPropsContext()
+  const [documentEditable, setEditable] = useState(editorProps.documentEditable)
+
+  useEffect(() => {
+    if (documentEditable !== editorProps.documentEditable) {
+      setEditable(editorProps.documentEditable)
     }
-  })
+  }, [documentEditable, editorProps.documentEditable])
 
   return [defaultEditable ?? documentEditable]
 }

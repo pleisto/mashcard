@@ -10,7 +10,7 @@ import { TrashPrompt } from '../common/components/TrashPrompt'
 import { Navigate } from 'react-router-dom'
 import { DocMeta, NonNullDocMeta } from './DocumentContentPage'
 import { editorVar } from '../reactiveVars'
-import { useEditorExternalProps } from './hooks/useEditorExternalProps'
+import { useEditorProps } from './hooks/useEditorProps'
 import { useDocumentEditable } from './hooks/useDocumentEditable'
 import * as Root from './DocumentPage.style'
 
@@ -44,7 +44,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
   // TODO: refactor editor and editable reactive var
   // const documentEditable = !freeze
 
-  const externalProps = useEditorExternalProps({
+  const editorProps = useEditorProps({
     docMeta,
     documentEditable,
     blocks: data?.childrenBlocks
@@ -52,7 +52,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
 
   const editor = useEditor({
     onSave: onDocSave,
-    externalProps,
+    props: editorProps,
     editable: documentEditable,
     ydoc: ydoc.current
   })
@@ -103,7 +103,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
       >
         <DocumentTitle docId={docMeta.id} blocks={data?.childrenBlocks} editable={documentEditable} />
         <Root.PageContent>
-          <EditorContent editor={editor} externalProps={externalProps} />
+          <EditorContent editor={editor} {...editorProps} />
         </Root.PageContent>
       </Root.Page>
     </>

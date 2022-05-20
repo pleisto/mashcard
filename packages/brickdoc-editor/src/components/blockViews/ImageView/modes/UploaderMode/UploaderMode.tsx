@@ -1,13 +1,13 @@
-import { FC, useCallback, useContext, useMemo, useState } from 'react'
+import { FC, useCallback, useMemo, useState } from 'react'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { Button, Icon, Popover } from '@brickdoc/design-system'
 import { BlockContainer } from '../../../BlockContainer'
 import { Dashboard, ImportSourceOption, UploadProgress, UploadResultData } from '@brickdoc/uploader'
 import { linkStorage, sizeFormat } from '../../../../../helpers/file'
-import { EditorContext } from '../../../../../context/EditorContext'
-import { useExternalProps } from '../../../../../hooks/useExternalProps'
+import { useEditorPropsContext } from '../../../../../hooks/useEditorPropsContext'
 import { usePopoverVisible } from './usePopoverVisible'
 import { ImageViewProps } from '../../../../../extensions/blocks/image/meta'
+import { useEditorI18n } from '../../../../../hooks'
 
 export interface UploaderModeProps {
   node: ImageViewProps['node']
@@ -17,8 +17,8 @@ export interface UploaderModeProps {
 }
 
 export const UploaderMode: FC<UploaderModeProps> = ({ node, deleteNode, getPos, updateImageAttributes }) => {
-  const externalProps = useExternalProps()
-  const { t } = useContext(EditorContext)
+  const editorPropsContext = useEditorPropsContext()
+  const [t] = useEditorI18n()
   const [popoverVisible, handlePopoverVisibleChange] = usePopoverVisible(node.attrs.uuid)
 
   const onUploaded = useCallback(
@@ -64,8 +64,8 @@ export const UploaderMode: FC<UploaderModeProps> = ({ node, deleteNode, getPos, 
           <Dashboard
             fileType="image"
             blockId={node.attrs.uuid}
-            prepareFileUpload={externalProps.prepareFileUpload}
-            fetchUnsplashImages={externalProps.fetchUnsplashImages}
+            prepareFileUpload={editorPropsContext.prepareFileUpload}
+            fetchUnsplashImages={editorPropsContext.fetchUnsplashImages}
             onUploaded={onUploaded}
             onProgress={onProgress}
             importSources={importSources}

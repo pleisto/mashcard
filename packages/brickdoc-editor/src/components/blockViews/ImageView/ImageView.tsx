@@ -6,11 +6,11 @@ import { getBlobUrl } from '../../../helpers/getBlobUrl'
 import { UploaderMode } from './modes/UploaderMode'
 import { PreviewMode } from './modes/PreviewMode'
 import { ImageAttributes, ImageViewProps } from '../../../extensions/blocks/image/meta'
-import { useExternalProps } from '../../../hooks/useExternalProps'
+import { useEditorPropsContext } from '../../../hooks/useEditorPropsContext'
 
 // TODO: handle image load on error
 export const ImageView: FC<ImageViewProps> = ({ node, deleteNode, getPos, updateAttributes }) => {
-  const externalProps = useExternalProps()
+  const editorProps = useEditorPropsContext()
   const latestImageAttributes = useRef<Partial<ImageAttributes['image']>>({})
   const updateImageAttributes = useCallback(
     (newAttributes: Partial<ImageAttributes['image']>): void => {
@@ -30,7 +30,7 @@ export const ImageView: FC<ImageViewProps> = ({ node, deleteNode, getPos, update
   )
 
   const url =
-    getBlobUrl(externalProps.rootId, node.attrs?.image ?? {}, externalProps.blobs) ?? linkStorage.get(node.attrs.uuid)
+    getBlobUrl(editorProps.rootId, node.attrs?.image ?? {}, editorProps.blobs) ?? linkStorage.get(node.attrs.uuid)
 
   if (url) {
     return (

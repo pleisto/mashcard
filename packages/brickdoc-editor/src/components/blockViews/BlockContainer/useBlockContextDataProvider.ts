@@ -1,8 +1,8 @@
-import { useContext, useMemo } from 'react'
+import { useMemo } from 'react'
 import { toast } from '@brickdoc/design-system'
 import { BlockContainerProps } from '.'
 import { BlockContextData } from '../../../context/BlockContext'
-import { EditorContext } from '../../../context/EditorContext'
+import { useEditorI18n } from '../../../hooks'
 
 export interface UseBlockContextDataProviderProps {
   deleteNode?: BlockContainerProps['deleteNode']
@@ -21,7 +21,7 @@ export function useBlockContextDataProvider({
   updateDragging,
   node
 }: UseBlockContextDataProviderProps): [BlockContextData] {
-  const { t } = useContext(EditorContext)
+  const [t] = useEditorI18n()
   const data = useMemo<BlockContextData>(
     () => ({
       deleteBlock: () => deleteNode?.(),

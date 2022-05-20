@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { imperativeUpload, ImperativeUploadOptions } from '@brickdoc/uploader'
 import { getFileTypeByExtension } from '../../../../../helpers'
-import { useExternalProps } from '../../../../../hooks'
+import { useEditorPropsContext } from '../../../../../hooks'
 import { EmbedViewProps } from '../../../../../extensions/blocks/embed/meta'
 
 export function useDefaultFile(
@@ -9,7 +9,7 @@ export function useDefaultFile(
   onUploaded: ImperativeUploadOptions['onUploaded'],
   onProgress: ImperativeUploadOptions['onProgress']
 ): void {
-  const externalProps = useExternalProps()
+  const editorProps = useEditorPropsContext()
 
   useEffect(() => {
     const file = node.attrs.defaultFile
@@ -18,8 +18,8 @@ export function useDefaultFile(
     const fileType = getFileTypeByExtension(file.name)
 
     void imperativeUpload(file, {
-      prepareFileUpload: externalProps.prepareFileUpload,
-      blockId: externalProps.rootId,
+      prepareFileUpload: editorProps.prepareFileUpload,
+      blockId: editorProps.rootId,
       fileType,
       onUploaded,
       onProgress

@@ -1,10 +1,10 @@
-import { cloneElement, FC, Key, ReactElement, useCallback, useContext } from 'react'
+import { cloneElement, FC, Key, ReactElement, useCallback } from 'react'
 import { cx, css, Menu, MenuProps, styled, theme } from '@brickdoc/design-system'
 import { ActionOptionGroup } from '../BlockActions'
 import { Add, IconBackground, ToolbarOption } from '../../../ui'
-import { EditorContext } from '../../../../context/EditorContext'
 import { useOptions } from './useOptions'
 import { ActionGroupOption } from '..'
+import { useEditorI18n } from '../../../../hooks'
 
 export interface BlockActionsMenuProps {
   baseId?: MenuProps['baseId']
@@ -36,7 +36,7 @@ const ActionMenuItem = styled(Menu.Item, {
 })
 
 export const BlockActionsMenu: FC<BlockActionsMenuProps> = ({ extraOptions, basicOptions, baseId, onClose }) => {
-  const { t } = useContext(EditorContext)
+  const [t] = useEditorI18n()
   const [options, blockOptions] = useOptions(extraOptions, basicOptions)
 
   const renderMenuItem = useCallback(
@@ -53,8 +53,7 @@ export const BlockActionsMenu: FC<BlockActionsMenuProps> = ({ extraOptions, basi
             onAction={key => {
               option.onAction?.(key)
               if (option.closeOnAction !== false) onClose?.()
-            }}
-          >
+            }}>
             {option.content}
           </ActionMenuItem>
         )
@@ -65,8 +64,7 @@ export const BlockActionsMenu: FC<BlockActionsMenuProps> = ({ extraOptions, basi
             key={key}
             itemKey={option.name}
             label={option.label}
-            icon={option.icon}
-          >
+            icon={option.icon}>
             {typeof option.items === 'function'
               ? option.items()
               : option.items?.reduce<ReactElement[]>((elements, option, index, array) => {
@@ -118,8 +116,7 @@ export const BlockActionsMenu: FC<BlockActionsMenuProps> = ({ extraOptions, basi
         baseId={`${baseId}-add-block`}
         itemKey="addBlock"
         label={t('block_actions.add_block')}
-        icon={<Add square={true} className={cx(actionIconStyle(), actionIconBackgroundStyle())} />}
-      >
+        icon={<Add square={true} className={cx(actionIconStyle(), actionIconBackgroundStyle())} />}>
         {blockOptions?.reduce<ReactElement[]>((elements, option, index, array) => {
           if (option.type === 'group')
             return [

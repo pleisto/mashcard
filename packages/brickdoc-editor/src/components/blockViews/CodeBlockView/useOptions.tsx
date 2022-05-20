@@ -3,10 +3,10 @@ import { toast } from '@brickdoc/design-system'
 import { BlockActionOptions } from '../BlockActions'
 import { actionIconStyle } from '../BlockActions/BlockActionsMenu'
 import { CodeBlockViewProps } from '../../../extensions/blocks/codeBlock/meta'
-import { useEditorContext } from '../../../hooks'
+import { useEditorI18n } from '../../../hooks'
 
 export function useOptions(node: CodeBlockViewProps['node']): [BlockActionOptions] {
-  const { t } = useEditorContext()
+  const [t] = useEditorI18n()
   const actionOptions: BlockActionOptions = [
     {
       type: 'item',

@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 import * as editorContextHook from '../../../../hooks/useEditorContext'
-import * as externalPropsHook from '../../../../hooks/useExternalProps'
+import * as editorPropsHook from '../../../../hooks/useEditorPropsContext'
 import * as selectionHelpers from '../../../../helpers/selection'
 import { useNodeGroup } from '../useBubbleMenuItems/useNodeGroup'
 import { mockEditor } from '../../../../test/editor'
@@ -9,9 +9,9 @@ import { useTextStyleGroup } from '../useBubbleMenuItems/useTextStyleGroup'
 import { useLinkGroup } from '../useBubbleMenuItems/useLinkGroup'
 import { useFontColorGroup } from '../useBubbleMenuItems/useFontColorGroup'
 import { useFormulaItem } from '../useBubbleMenuItems/useFormulaItem'
-import { ExternalProps } from '../../../../context'
 import { useExtraItemsGroup } from '../useBubbleMenuItems/useExtraItemsGroup'
 import { useBubbleMenuItems } from '../useBubbleMenuItems'
+import { EditorPropsContext } from '../../../../context'
 
 describe('useBubbleMenuItems', () => {
   it('gets menu items correctly', () => {
@@ -29,7 +29,6 @@ describe('useBubbleMenuItems', () => {
       nodeKey: ''
     }))
     jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-      t: key => key,
       editor
     }))
     const { result } = renderHook(() => useBubbleMenuItems())
@@ -56,7 +55,6 @@ describe('useBubbleMenuItems', () => {
         nodeKey: ''
       }))
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        t: key => key,
         editor
       }))
       const { result } = renderHook(() => useNodeGroup())
@@ -86,7 +84,6 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        t: key => key,
         editor
       }))
       const { result } = renderHook(() => useFontColorGroup())
@@ -115,7 +112,6 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        t: key => key,
         editor
       }))
       const { result } = renderHook(() => useFormulaItem())
@@ -149,7 +145,6 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        t: key => key,
         editor
       }))
       const { result } = renderHook(() => useTextStyleGroup())
@@ -184,7 +179,6 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        t: key => key,
         editor
       }))
       const { result } = renderHook(() => useLinkGroup())
@@ -214,7 +208,6 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        t: key => key,
         editor
       }))
       const { result } = renderHook(() => useLinkGroup())
@@ -246,7 +239,6 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        t: key => key,
         editor
       }))
       const { result } = renderHook(() => useLinkGroup())
@@ -275,14 +267,13 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        t: key => key,
         editor
       }))
-      const externalProps = new ExternalProps()
-      externalProps.featureFlags = {
+      const editorProps = { ...EditorPropsContext }
+      editorProps.featureFlags = {
         experiment_discussion: true
       }
-      jest.spyOn(externalPropsHook, 'useExternalProps').mockImplementation(() => externalProps)
+      jest.spyOn(editorPropsHook, 'useEditorPropsContext').mockImplementation(() => editorProps)
       const { result } = renderHook(() => useExtraItemsGroup())
       const items = (result.current[0] as ToolbarGroupOption).items
 
@@ -306,14 +297,13 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        t: key => key,
         editor
       }))
-      const externalProps = new ExternalProps()
-      externalProps.featureFlags = {
+      const editorProps = { ...EditorPropsContext }
+      editorProps.featureFlags = {
         experiment_discussion: true
       }
-      jest.spyOn(externalPropsHook, 'useExternalProps').mockImplementation(() => externalProps)
+      jest.spyOn(editorPropsHook, 'useEditorPropsContext').mockImplementation(() => editorProps)
       const { result } = renderHook(() => useExtraItemsGroup())
       const items = ((result.current[0] as ToolbarGroupOption).items[1] as ToolbarSubMenuOption)
         .items as ToolbarItemOption[]
@@ -338,14 +328,13 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        t: key => key,
         editor
       }))
-      const externalProps = new ExternalProps()
-      externalProps.featureFlags = {
+      const editorProps = { ...EditorPropsContext }
+      editorProps.featureFlags = {
         experiment_discussion: true
       }
-      jest.spyOn(externalPropsHook, 'useExternalProps').mockImplementation(() => externalProps)
+      jest.spyOn(editorPropsHook, 'useEditorPropsContext').mockImplementation(() => editorProps)
       const { result } = renderHook(() => useExtraItemsGroup())
       const items = ((result.current[0] as ToolbarGroupOption).items[1] as ToolbarSubMenuOption)
         .items as ToolbarItemOption[]

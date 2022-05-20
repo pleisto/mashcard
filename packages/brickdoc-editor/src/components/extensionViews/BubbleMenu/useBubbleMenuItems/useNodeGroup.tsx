@@ -5,14 +5,15 @@ import { findFirstSelectedNodes } from '../../../../helpers/selection'
 import { BLOCK, BlockCommandItem, ORDER_TOGGLE_BLOCK } from '../../../../helpers/block'
 import { isBubbleMenuVisible } from '../BubbleMenu'
 import { NodeIcon } from './useBubbleMenuItems'
-import { useEditorContext } from '../../../../hooks'
+import { useEditorContext, useEditorI18n } from '../../../../hooks'
 
 const blockItems: BlockCommandItem[] = ORDER_TOGGLE_BLOCK.map(
   key => Object.values(BLOCK).find(block => block.key === key)!
 )
 
 export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { t, editor } = useEditorContext()
+  const { editor } = useEditorContext()
+  const [t] = useEditorI18n()
 
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null

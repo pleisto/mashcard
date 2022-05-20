@@ -1,8 +1,7 @@
-import { useCallback, useState, useMemo, useContext, ChangeEventHandler, cloneElement, useEffect } from 'react'
+import { useCallback, useState, useMemo, ChangeEventHandler, cloneElement, useEffect } from 'react'
 import { Icon, Menu } from '@brickdoc/design-system'
 import { Editor } from '@tiptap/core'
 import { BrickdocEventBus, ExplorerMenuGroup, ExplorerMenuItem, ExplorerMenuTrigger } from '@brickdoc/schema'
-import { EditorContext } from '../../../context/EditorContext'
 import {
   InnerMenu,
   InnerMenuContainer,
@@ -15,6 +14,7 @@ import {
 import { Drawer } from '../../ui'
 import { useDrawer } from '../../ui/Drawer'
 import { slashMenuGroup } from '../../../extensions/extensions/slashCommands/items'
+import { useEditorI18n } from '../../../hooks'
 
 export interface ExplorerMenuProps {
   editor: Editor | null
@@ -28,7 +28,7 @@ const isMatchSearch =
   }
 
 export const ExplorerMenu: React.FC<ExplorerMenuProps> = () => {
-  const { t } = useContext(EditorContext)
+  const [t] = useEditorI18n()
   const { visible, setVisible } = useDrawer('explorerMenu')
   const [search, setSearch] = useState('')
   const [groupSource, setGroupSource] = useState<ExplorerMenuGroup[]>([])

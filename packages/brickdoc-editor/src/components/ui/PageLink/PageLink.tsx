@@ -1,10 +1,10 @@
 import { isEmpty } from '@brickdoc/active-support'
 import { ArrowShortcut, FilePages } from '@brickdoc/design-icons'
 import { styled, theme } from '@brickdoc/design-system'
-import { useContext, useMemo } from 'react'
-import { EditorContext } from '../../../context/EditorContext'
+import { useMemo } from 'react'
 import { PageLinkOptions, PageLinkAttributes } from '../../../extensions/blocks/pageLink/meta'
-import { useExternalProps } from '../../../hooks/useExternalProps'
+import { useEditorI18n } from '../../../hooks'
+import { useEditorPropsContext } from '../../../hooks/useEditorPropsContext'
 
 export interface PageLinkProps {
   options?: PageLinkOptions
@@ -53,12 +53,12 @@ const PageName = styled('span', {
 })
 
 export const PageLink: React.FC<PageLinkProps> = ({ attributes, options }) => {
-  const { t } = useContext(EditorContext)
-  const { documentPages } = useExternalProps()
+  const [t] = useEditorI18n()
+  const editorProps = useEditorPropsContext()
   const size = options?.size ?? 'md'
   const { key } = attributes?.page ?? {}
 
-  const page = useMemo(() => documentPages.find(page => page.key === key), [documentPages, key])
+  const page = useMemo(() => editorProps.documentPages.find(page => page.key === key), [editorProps.documentPages, key])
   const icon = page?.icon ?? attributes?.page?.icon
   const title = page?.title ?? attributes?.page?.title
 

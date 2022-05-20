@@ -1,15 +1,15 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 import { useUnsplashImages } from '../../../embedTypes/Gallery/useUnsplashImages'
-import * as hooks from '../../../../../../hooks/useExternalProps'
-import { ExternalProps } from '../../../../../../context'
+import * as hooks from '../../../../../../hooks/useEditorPropsContext'
 import { useRef } from 'react'
+import { EditorPropsContext } from '../../../../../../context'
 
 jest.useRealTimers()
 
 describe('useUnsplashImages', () => {
   it('fetches images correctly', async () => {
-    const externalProps = new ExternalProps()
-    externalProps.fetchUnsplashImages = async () => {
+    const editorPropsContext = { ...EditorPropsContext }
+    editorPropsContext.fetchUnsplashImages = async () => {
       return {
         success: true,
         data: [
@@ -25,7 +25,7 @@ describe('useUnsplashImages', () => {
       }
     }
 
-    jest.spyOn(hooks, 'useExternalProps').mockImplementation(() => externalProps)
+    jest.spyOn(hooks, 'useEditorPropsContext').mockImplementation(() => editorPropsContext)
     window.IntersectionObserver = jest.fn(() => ({
       observe: jest.fn(),
       unobserve: jest.fn()
@@ -51,8 +51,8 @@ describe('useUnsplashImages', () => {
   })
 
   it('fetches images correctly when observer triggers', async () => {
-    const externalProps = new ExternalProps()
-    externalProps.fetchUnsplashImages = async () => {
+    const editorPropsContext = { ...EditorPropsContext }
+    editorPropsContext.fetchUnsplashImages = async () => {
       return {
         success: true,
         data: [
@@ -68,7 +68,7 @@ describe('useUnsplashImages', () => {
       }
     }
 
-    jest.spyOn(hooks, 'useExternalProps').mockImplementation(() => externalProps)
+    jest.spyOn(hooks, 'useEditorPropsContext').mockImplementation(() => editorPropsContext)
     window.IntersectionObserver = class IntersectionObserver {
       cb: any
 
@@ -109,8 +109,8 @@ describe('useUnsplashImages', () => {
   })
 
   it('fetches images by query correctly', async () => {
-    const externalProps = new ExternalProps()
-    externalProps.fetchUnsplashImages = async () => {
+    const editorPropsContext = { ...EditorPropsContext }
+    editorPropsContext.fetchUnsplashImages = async () => {
       return {
         success: true,
         data: [
@@ -126,7 +126,7 @@ describe('useUnsplashImages', () => {
       }
     }
 
-    jest.spyOn(hooks, 'useExternalProps').mockImplementation(() => externalProps)
+    jest.spyOn(hooks, 'useEditorPropsContext').mockImplementation(() => editorPropsContext)
     window.IntersectionObserver = jest.fn(() => ({
       observe: jest.fn(),
       unobserve: jest.fn()

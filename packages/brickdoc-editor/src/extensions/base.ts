@@ -125,7 +125,7 @@ export const Base = Extension.create<BaseOptions>({
     if (!this.options.collaboration && this.options.history)
       extensions.push(EXTENSION.History.configure(getConfigure(this.options?.history)))
 
-    if (this.options.dropBlock) extensions.push(EXTENSION.dropBlock.configure())
+    if (this.options.dropBlock) extensions.push(EXTENSION.DropBlock.configure())
 
     return extensions
   }

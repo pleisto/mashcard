@@ -11,7 +11,7 @@ import {
 import { BlockInput, BrickdocEventBus } from '@brickdoc/schema'
 import { SpreadsheetColumn } from './useSpreadsheet'
 import { columnDisplayIndex, columnDisplayTitle } from './helper'
-import { useExternalProps } from '../../../hooks/useExternalProps'
+import { useEditorPropsContext } from '../../../hooks/useEditorPropsContext'
 
 interface useFormulaSpreadsheetProps {
   spreadsheetId: string
@@ -31,9 +31,9 @@ export function useFormulaSpreadsheet({
   deleteSpreadsheet: () => void
 } {
   const title = originalTitle || 'Untitled Spreadsheet'
-  const externalProps = useExternalProps()
-  const formulaContext = externalProps.formulaContext
-  const rootId = externalProps.rootId
+  const editorProps = useEditorPropsContext()
+  const formulaContext = editorProps.formulaContext
+  const rootId = editorProps.rootId
   const titleRef = React.useRef(title)
 
   const rowData: Row[] = React.useMemo(

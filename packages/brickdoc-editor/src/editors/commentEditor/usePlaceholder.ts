@@ -1,9 +1,9 @@
 import { Editor } from '@tiptap/core'
-import { useContext, useState, useEffect, useRef } from 'react'
-import { EditorContext } from '../../context/EditorContext'
+import { useState, useEffect, useRef } from 'react'
+import { useEditorI18n } from '../../hooks'
 
 export function usePlaceholder(editor: Editor | null): [string] {
-  const { t } = useContext(EditorContext)
+  const [t] = useEditorI18n()
   const placeholderText = t('discussion.editor.placeholder')
   const [placeholder, setPlaceholder] = useState(editor?.isEmpty ? placeholderText : '')
   const unmount = useRef(false)

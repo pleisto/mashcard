@@ -3,11 +3,11 @@ import { Check, Delete, More } from '@brickdoc/design-icons'
 import { Button, ConfirmDialog, css, Menu, Popover, styled, theme, toast } from '@brickdoc/design-system'
 import { Link, IconBackground } from '../../ui'
 import { Comment, CommentCard } from './Comment'
-import { EditorContext } from '../../../context/EditorContext'
 import { CommentEditorContent, CommentEditorProps } from '../../../editors/commentEditor'
 import { useConversationItem } from './useConversationItem'
 import { CommentedNode } from './useCommentedNodes'
 import { ConversationData, PageDiscussionContext } from './PageDiscussionContext'
+import { useEditorContext, useEditorI18n } from '../../../hooks'
 
 export interface ConversationItem extends ConversationData {}
 
@@ -104,7 +104,8 @@ const menuIconStyles = css({
 })
 
 export const Conversation: FC<ConversationProps> = ({ active, commentedNode }) => {
-  const { t, editor } = useContext(EditorContext)
+  const { editor } = useEditorContext()
+  const [t] = useEditorI18n()
   const { addConversation, removeConversation, resolveConversation, openConversation, addComment } =
     useContext(PageDiscussionContext)
   const handleCopyUrl = useCallback(async () => {

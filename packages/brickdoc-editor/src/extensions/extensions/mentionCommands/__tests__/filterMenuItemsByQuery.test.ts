@@ -1,14 +1,14 @@
 import { mockEditor } from '../../../../test'
-import { ExternalProps } from '../../../../context'
+import { EditorPropsContext } from '../../../../context'
 import { filterMenuItemsByQuery } from '../filterMenuItemsByQuery'
 import { MentionCommandsOptions } from '../mentionCommands'
 
 describe('filterMenuItemsByQuery', () => {
   it('filters items correctly', () => {
-    const externalProps = new ExternalProps()
+    const editorProps = { ...EditorPropsContext }
     const query = 'query'
 
-    externalProps.spaceMembers = [
+    editorProps.spaceMembers = [
       {
         name: query,
         domain: 'domain',
@@ -21,7 +21,7 @@ describe('filterMenuItemsByQuery', () => {
       }
     ]
 
-    externalProps.documentPages = [
+    editorProps.documentPages = [
       {
         key: 'key1',
         value: 'value',
@@ -47,7 +47,7 @@ describe('filterMenuItemsByQuery', () => {
     ]
 
     const option: MentionCommandsOptions = {
-      externalProps
+      editorProps
     }
 
     const { users, pages } = filterMenuItemsByQuery(option)({ query })
@@ -60,9 +60,9 @@ describe('filterMenuItemsByQuery', () => {
   })
 
   it('clicks item correctly', () => {
-    const externalProps = new ExternalProps()
+    const editorProps = { ...EditorPropsContext }
 
-    externalProps.spaceMembers = [
+    editorProps.spaceMembers = [
       {
         name: 'user2',
         domain: 'domain',
@@ -70,7 +70,7 @@ describe('filterMenuItemsByQuery', () => {
       }
     ]
 
-    externalProps.documentPages = [
+    editorProps.documentPages = [
       {
         key: 'key1',
         value: 'value',
@@ -96,7 +96,7 @@ describe('filterMenuItemsByQuery', () => {
     ]
 
     const option: MentionCommandsOptions = {
-      externalProps
+      editorProps
     }
 
     const { users, pages } = filterMenuItemsByQuery(option)({ query: '' })

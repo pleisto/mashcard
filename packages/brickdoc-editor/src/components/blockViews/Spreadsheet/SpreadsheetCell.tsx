@@ -14,7 +14,7 @@ import {
 } from '@brickdoc/formula'
 import { SpreadsheetContext } from './SpreadsheetContext'
 import { devLog } from '@brickdoc/design-system'
-import { useExternalProps } from '../../../hooks/useExternalProps'
+import { useEditorPropsContext } from '../../../hooks/useEditorPropsContext'
 import { FormulaDisplay } from '../../ui/Formula'
 
 export interface SpreadsheetCellProps {
@@ -40,9 +40,9 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   width,
   height
 }) => {
-  const externalProps = useExternalProps()
-  const formulaContext = externalProps.formulaContext
-  const rootId = externalProps.rootId
+  const editorProps = useEditorPropsContext()
+  const formulaContext = editorProps.formulaContext
+  const rootId = editorProps.rootId
   const minHeight = height ? height - 3 : undefined
 
   const [currentBlock, setCurrentBlock] = React.useState(block)

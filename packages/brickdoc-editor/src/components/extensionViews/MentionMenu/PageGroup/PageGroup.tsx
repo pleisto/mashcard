@@ -1,9 +1,9 @@
-import { FC, useCallback, useContext } from 'react'
+import { FC, useCallback } from 'react'
 import { Editor, Range } from '@tiptap/core'
 import { Menu, styled, theme } from '@brickdoc/design-system'
 import { FilePages } from '@brickdoc/design-icons'
-import { EditorContext } from '../../../../context'
 import { IconBackground } from '../../../ui'
+import { useEditorI18n } from '../../../../hooks'
 
 export interface PageItem {
   icon: string | null
@@ -32,7 +32,7 @@ const GroupLabel = styled('span', {
 })
 
 export const PageGroup: FC<PageGroupProps> = ({ active, activeIndex, editor, items, range }) => {
-  const { t } = useContext(EditorContext)
+  const [t] = useEditorI18n()
 
   const handlePageSelect = useCallback(
     (item: PageItem) => (): void => {

@@ -4,7 +4,7 @@ import { BlockActionsMenuProps, blockIconStyle } from './BlockActionsMenu'
 import { BlockContextData } from '../../../../context/BlockContext'
 import { BlockCommandItem, BLOCK, ORDER_NEW_BLOCK, sortBlock } from '../../../../helpers/block'
 import { Editor } from '@tiptap/core'
-import { useBlockContext, useEditorContext } from '../../../../hooks'
+import { useBlockContext, useEditorContext, useEditorI18n } from '../../../../hooks'
 
 const getEndPosition = (editor: Editor, getPosition: BlockContextData['getPosition']): number | undefined => {
   const position = getPosition()
@@ -21,7 +21,8 @@ export function useOptions(
   extraOptions: BlockActionsMenuProps['extraOptions'],
   basicOptions: BlockActionsMenuProps['basicOptions']
 ): [ToolbarOptionGroup, ToolbarOptionGroup] {
-  const { t, editor } = useEditorContext()
+  const { editor } = useEditorContext()
+  const [t] = useEditorI18n()
   const { getPosition } = useBlockContext()
 
   const options = useMemo<ToolbarOptionGroup>(() => {

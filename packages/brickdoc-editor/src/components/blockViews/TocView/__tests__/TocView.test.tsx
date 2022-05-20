@@ -1,6 +1,6 @@
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { EditorContext } from '../../../../context/EditorContext'
+import * as editorHooks from '../../../../hooks/useEditorContext'
 import { TocAttributes, TocOptions } from '../../../../extensions'
 import { mockBlockViewProps } from '../../../../test'
 import { TocView } from '../TocView'
@@ -254,13 +254,11 @@ describe('TocView', () => {
         }
       }
     })
+    jest.spyOn(editorHooks, 'useEditorContext').mockImplementation(() => ({
+      editor: props.editor
+    }))
 
-    render(
-      // eslint-disable-next-line react/jsx-no-constructed-context-values
-      <EditorContext.Provider value={{ editor: props.editor, t: key => key }}>
-        <TocView {...props} />
-      </EditorContext.Provider>
-    )
+    render(<TocView {...props} />)
 
     const position = 0
     fireEvent.click(screen.getAllByTestId(TEST_ID_ENUM.editor.tocBlock.item.title.id)[position])
@@ -278,13 +276,11 @@ describe('TocView', () => {
         }
       }
     })
+    jest.spyOn(editorHooks, 'useEditorContext').mockImplementation(() => ({
+      editor: props.editor
+    }))
 
-    render(
-      // eslint-disable-next-line react/jsx-no-constructed-context-values
-      <EditorContext.Provider value={{ editor: props.editor, t: key => key }}>
-        <TocView {...props} />
-      </EditorContext.Provider>
-    )
+    render(<TocView {...props} />)
 
     const position = 0
     fireEvent.click(screen.getAllByTestId(TEST_ID_ENUM.editor.tocBlock.item.toggleIcon.id)[position])

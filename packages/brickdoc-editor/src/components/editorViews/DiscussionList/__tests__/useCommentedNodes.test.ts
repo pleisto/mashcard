@@ -80,7 +80,6 @@ describe('useCommentedNodes', () => {
     })
 
     jest.spyOn(editorContextHooks, 'useEditorContext').mockImplementation(() => ({
-      t: key => key,
       editor
     }))
     const { result } = renderHook(() => useCommentedNodes())

@@ -3,7 +3,7 @@ import { BrickdocEventBus, BlockDropAdd } from '@brickdoc/schema'
 import { BLOCK_MAP } from '../helpers/block'
 import { Editor as TiptapEditor } from '@tiptap/react'
 
-export const useDropBlock = (editor: TiptapEditor | null) => {
+export const useDropBlock = (editor: TiptapEditor | null): void => {
   useEffect(
     () =>
       BrickdocEventBus.subscribe(BlockDropAdd, event => {

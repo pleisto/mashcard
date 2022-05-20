@@ -15,7 +15,7 @@ export const EventHandler = createExtension<EventHandlerOptions, ExtensionAttrib
     const editor = this.editor
     return [
       new Plugin({
-        key: new PluginKey('eventHandler'),
+        key: new PluginKey(meta.name),
         props: {
           handlePaste(view, event, slice): boolean {
             return pasteImageHandler(editor, event)

@@ -2,7 +2,7 @@ import { toast } from '@brickdoc/design-system'
 import { UploadProgress } from '@brickdoc/uploader'
 import { useState, useCallback, ChangeEventHandler } from 'react'
 import { prependHttp } from '../../../../../helpers'
-import { useEditorI18n, useExternalProps } from '../../../../../hooks'
+import { useEditorI18n, useEditorPropsContext } from '../../../../../hooks'
 import { LinkTypeEmbedBlockProps } from './Link'
 import { useWebsiteMetaProgress } from './useWebsiteMetaProgress'
 
@@ -10,7 +10,7 @@ export function useLinkValue(
   updateEmbedBlockAttributes: LinkTypeEmbedBlockProps['updateEmbedBlockAttributes'],
   defaultUrl?: string
 ): [string, ChangeEventHandler<HTMLInputElement>, () => void, () => void, UploadProgress] {
-  const externalProps = useExternalProps()
+  const editorPropsContext = useEditorPropsContext()
   const [url, setUrl] = useState(defaultUrl ?? '')
   const [progress, resetProgress, progressing] = useWebsiteMetaProgress()
   const [t] = useEditorI18n()
@@ -22,7 +22,7 @@ export function useLinkValue(
     }
 
     progressing()
-    const { success, data } = await externalProps.fetchWebsiteMeta(prependHttp(url))
+    const { success, data } = await editorPropsContext.fetchWebsiteMeta(prependHttp(url))
 
     if (!success) {
       resetProgress()
@@ -58,7 +58,7 @@ export function useLinkValue(
         'attachment'
       )
     }
-  }, [externalProps, progressing, resetProgress, t, updateEmbedBlockAttributes, url])
+  }, [editorPropsContext, progressing, resetProgress, t, updateEmbedBlockAttributes, url])
 
   const handleLinkChange = useCallback<ChangeEventHandler<HTMLInputElement>>(event => {
     setUrl(event.target.value)

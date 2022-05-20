@@ -1,10 +1,10 @@
-import { FC, MouseEvent, useCallback, useContext, useEffect, useRef, useState } from 'react'
+import { FC, MouseEvent, useCallback, useEffect, useRef, useState } from 'react'
 import { styled, theme } from '@brickdoc/design-system'
 import { ArrowFilleRight } from '@brickdoc/design-icons'
 import { isEmpty } from '@brickdoc/active-support'
 import { TocNode } from './tocTree'
-import { EditorContext } from '../../../context/EditorContext'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { useEditorContext, useEditorI18n } from '../../../hooks'
 
 export interface TocNodePanelProps {
   tocNode: TocNode
@@ -142,7 +142,8 @@ export const TocContainer: FC<TocContainerProps> = ({ tocItemCount, children }) 
 }
 
 export const TocNodePanel: FC<TocNodePanelProps> = ({ tocNode }) => {
-  const { t, editor } = useContext(EditorContext)
+  const { editor } = useEditorContext()
+  const [t] = useEditorI18n()
   const contentRef = useRef<HTMLDivElement>(null)
   const [collapse, setCollapse] = useState(false)
   const toggleCollapse = useCallback(

@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { useLinkValue } from '../../../embedTypes/Link/useLinkValue'
-import * as hooks from '../../../../../../hooks/useExternalProps'
-import { ExternalProps } from '../../../../../../context'
+import * as hooks from '../../../../../../hooks/useEditorPropsContext'
 import { act } from 'react-dom/test-utils'
+import { EditorPropsContext } from '../../../../../../context'
 
 jest.mock('../../../embedTypes/Link/useWebsiteMetaProgress.ts', () => ({
   useWebsiteMetaProgress: () => [0, () => {}, () => {}]
@@ -49,9 +49,9 @@ describe('useLinkValue', () => {
   })
 
   it('triggers handleSubmit correctly when fetch website meta failed', () => {
-    jest.spyOn(hooks, 'useExternalProps').mockImplementation(() => {
-      const externalProps = new ExternalProps()
-      externalProps.fetchWebsiteMeta = async () =>
+    jest.spyOn(hooks, 'useEditorPropsContext').mockImplementation(() => {
+      const editorPropsContext = { ...EditorPropsContext }
+      editorPropsContext.fetchWebsiteMeta = async () =>
         await Promise.resolve({
           success: false,
           data: {
@@ -60,7 +60,7 @@ describe('useLinkValue', () => {
           }
         })
 
-      return externalProps
+      return editorPropsContext
     })
     const updateEmbedBlockAttributes = jest.fn()
 
@@ -78,9 +78,9 @@ describe('useLinkValue', () => {
   })
 
   it('triggers handleSubmit correctly when fetched website data', async () => {
-    jest.spyOn(hooks, 'useExternalProps').mockImplementation(() => {
-      const externalProps = new ExternalProps()
-      externalProps.fetchWebsiteMeta = async () =>
+    jest.spyOn(hooks, 'useEditorPropsContext').mockImplementation(() => {
+      const editorPropsContext = { ...EditorPropsContext }
+      editorPropsContext.fetchWebsiteMeta = async () =>
         await Promise.resolve({
           success: true,
           data: {
@@ -90,7 +90,7 @@ describe('useLinkValue', () => {
           }
         })
 
-      return externalProps
+      return editorPropsContext
     })
     const updateEmbedBlockAttributes = jest.fn()
 
@@ -109,9 +109,9 @@ describe('useLinkValue', () => {
   })
 
   it('triggers handleSubmit correctly when fetched image data', async () => {
-    jest.spyOn(hooks, 'useExternalProps').mockImplementation(() => {
-      const externalProps = new ExternalProps()
-      externalProps.fetchWebsiteMeta = async () =>
+    jest.spyOn(hooks, 'useEditorPropsContext').mockImplementation(() => {
+      const editorPropsContext = { ...EditorPropsContext }
+      editorPropsContext.fetchWebsiteMeta = async () =>
         await Promise.resolve({
           success: true,
           data: {
@@ -121,7 +121,7 @@ describe('useLinkValue', () => {
           }
         })
 
-      return externalProps
+      return editorPropsContext
     })
     const updateEmbedBlockAttributes = jest.fn()
 
@@ -140,9 +140,9 @@ describe('useLinkValue', () => {
   })
 
   it('triggers handleSubmit correctly when fetched attachment data', async () => {
-    jest.spyOn(hooks, 'useExternalProps').mockImplementation(() => {
-      const externalProps = new ExternalProps()
-      externalProps.fetchWebsiteMeta = async () =>
+    jest.spyOn(hooks, 'useEditorPropsContext').mockImplementation(() => {
+      const editorPropsContext = { ...EditorPropsContext }
+      editorPropsContext.fetchWebsiteMeta = async () =>
         await Promise.resolve({
           success: true,
           data: {
@@ -152,7 +152,7 @@ describe('useLinkValue', () => {
           }
         })
 
-      return externalProps
+      return editorPropsContext
     })
     const updateEmbedBlockAttributes = jest.fn()
 

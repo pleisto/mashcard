@@ -5,7 +5,7 @@ import { linkStorage, getFileTypeByExtension, getBlobUrl, getFileTypeByContentTy
 import { GalleryTypeEmbedBlock, LinkTypeEmbedBlock, UploadTypeEmbedBlock } from './embedTypes'
 import { ImageView } from './embedViews/ImageView'
 import { EmbedAttributes, EmbedViewProps } from '../../../extensions/blocks/embed/meta'
-import { useExternalProps } from '../../../hooks/useExternalProps'
+import { useEditorPropsContext } from '../../../hooks/useEditorPropsContext'
 import { FileIcon } from '../../ui'
 
 export type EmbedBlockType = 'link' | 'attachment' | 'image'
@@ -129,7 +129,7 @@ const renderAttachment = (
 // eslint-disable-next-line complexity
 export const EmbedView: FC<EmbedViewProps> = props => {
   const { node, updateAttributes, deleteNode, getPos } = props
-  const externalProps = useExternalProps()
+  const editorProps = useEditorPropsContext()
   const latestEmbedBlockAttributes = useRef<Partial<EmbedAttributes>>({})
   const updateEmbedBlockAttributes = useCallback<UpdateEmbedBlockAttributes>(
     (newAttributes, type): void => {
@@ -161,7 +161,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
 
   // image
   if (node.attrs.image?.key) {
-    const imageUrl = getBlobUrl(externalProps.rootId, node.attrs?.image ?? {}, externalProps.blobs) ?? defaultUrl
+    const imageUrl = getBlobUrl(editorProps.rootId, node.attrs?.image ?? {}, editorProps.blobs) ?? defaultUrl
     if (imageUrl) {
       return renderImage(imageUrl, updateEmbedBlockAttributes, props)
     }
@@ -169,7 +169,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
 
   // file
   if (node.attrs.attachment?.key) {
-    const fileUrl = getBlobUrl(externalProps.rootId, node.attrs?.attachment ?? {}, externalProps.blobs) ?? defaultUrl
+    const fileUrl = getBlobUrl(editorProps.rootId, node.attrs?.attachment ?? {}, editorProps.blobs) ?? defaultUrl
     if (fileUrl) {
       return renderAttachment(fileUrl, updateEmbedBlockAttributes, props)
     }

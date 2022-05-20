@@ -1,7 +1,6 @@
-import * as React from 'react'
+import { cloneElement, FC, ReactElement, useMemo } from 'react'
 import { Editor, Range } from '@tiptap/core'
 import { Menu } from '@brickdoc/design-system'
-import { EditorContext } from '../../../context/EditorContext'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import {
   StyledSlashMenu,
@@ -17,11 +16,12 @@ import {
 } from './styles'
 import { useActiveStatus } from './useActiveStatus'
 import { useShowExplorerMenu } from './useShowExplorerMenu'
+import { useEditorI18n } from '../../../hooks'
 
 export interface SlashMenuItem {
   key: string
   alias?: string[]
-  icon: React.ReactElement
+  icon: ReactElement
   command: ({ editor, range }: { editor: Editor; range: Range }) => void
 }
 
@@ -37,11 +37,11 @@ export interface SlashMenuProps {
 
 const EXPLORE_KEY = 'explore'
 
-export const SlashMenu: React.FC<SlashMenuProps> = ({ items, command }) => {
-  const { t } = React.useContext(EditorContext)
+export const SlashMenu: FC<SlashMenuProps> = ({ items, command }) => {
+  const [t] = useEditorI18n()
   const { query, type, suggestion: _suggestion, recent } = items
   const [handleShowExplorerMenu] = useShowExplorerMenu()
-  const suggestion = React.useMemo<SlashMenuItem[]>(() => {
+  const suggestion = useMemo<SlashMenuItem[]>(() => {
     if (query) {
       return [
         ..._suggestion,
@@ -66,7 +66,8 @@ export const SlashMenu: React.FC<SlashMenuProps> = ({ items, command }) => {
         {!query && recent.length > 0 && (
           <Menu.Group
             title={t('slash_menu.recent')}
-            label={<SlashMenuGroupLabel>{t('slash_menu.recent')}</SlashMenuGroupLabel>}>
+            label={<SlashMenuGroupLabel>{t('slash_menu.recent')}</SlashMenuGroupLabel>}
+          >
             <RecentGroup>
               {recent.map((item, index) => (
                 <RecentItem
@@ -75,8 +76,9 @@ export const SlashMenu: React.FC<SlashMenuProps> = ({ items, command }) => {
                   onAction={() => command(item)}
                   key={item.key}
                   itemKey={item.key}
-                  active={index === activeIndex}>
-                  {React.cloneElement(item.icon, { className: recentItemIconStyle() })}
+                  active={index === activeIndex}
+                >
+                  {cloneElement(item.icon, { className: recentItemIconStyle() })}
                 </RecentItem>
               ))}
             </RecentGroup>
@@ -92,9 +94,10 @@ export const SlashMenu: React.FC<SlashMenuProps> = ({ items, command }) => {
                 key={item.key}
                 active={index === activeIndex}
                 itemKey={item.key}
-                icon={React.cloneElement(item.icon, { className: menuIconStyle() })}
+                icon={cloneElement(item.icon, { className: menuIconStyle() })}
                 label={t(`blocks.${item.key}.label`)}
-                tip={item.alias?.[0] && <Shortcut>{item.alias[0]}</Shortcut>}>
+                tip={item.alias?.[0] && <Shortcut>{item.alias[0]}</Shortcut>}
+              >
                 {item.key === EXPLORE_KEY && (
                   <ExploreItem>
                     <span aria-label={t(`slash_menu.items.${item.key}.label`)}>
@@ -110,7 +113,8 @@ export const SlashMenu: React.FC<SlashMenuProps> = ({ items, command }) => {
         {!query && (
           <Menu.Group
             title={t('slash_menu.type')}
-            label={<SlashMenuGroupLabel>{t('slash_menu.type')}</SlashMenuGroupLabel>}>
+            label={<SlashMenuGroupLabel>{t('slash_menu.type')}</SlashMenuGroupLabel>}
+          >
             {type.map((item, index) => (
               <Menu.Item
                 data-testid={TEST_ID_ENUM.editor.slashCommands.item.id}
@@ -119,7 +123,7 @@ export const SlashMenu: React.FC<SlashMenuProps> = ({ items, command }) => {
                 key={item.key}
                 active={recent.length + index === activeIndex}
                 itemKey={item.key}
-                icon={React.cloneElement(item.icon, { className: menuIconStyle() })}
+                icon={cloneElement(item.icon, { className: menuIconStyle() })}
                 label={t(`blocks.${item.key}.label`)}
                 tip={item.alias?.[0] && <Shortcut>{item.alias[0]}</Shortcut>}
               />

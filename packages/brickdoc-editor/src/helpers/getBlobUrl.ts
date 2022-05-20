@@ -1,4 +1,4 @@
-import { ExternalProps } from '../context'
+import { EditorProps } from '../context'
 
 export const getBlobUrl = (
   uuid: string,
@@ -7,7 +7,7 @@ export const getBlobUrl = (
     source?: 'EXTERNAL' | 'ORIGIN'
     [key: string]: any
   },
-  blobs: ExternalProps['blobs']
+  blobs: EditorProps['blobs']
 ): string | undefined => {
   if (!uuid) return undefined
   if (attrs.source === 'EXTERNAL') return attrs.key

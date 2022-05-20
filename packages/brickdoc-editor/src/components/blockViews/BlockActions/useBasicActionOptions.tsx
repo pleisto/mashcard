@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react'
 import { Icon } from '@brickdoc/design-system'
 import { BLOCK, BlockCommandItem, ORDER_TOGGLE_BLOCK } from '../../../helpers/block'
-import { useDocumentEditable, useEditorContext } from '../../../hooks'
+import { useDocumentEditable, useEditorContext, useEditorI18n } from '../../../hooks'
 import { ActionGroupOption, ActionItemOption } from './BlockActions'
 import { useBlockContext } from '../../../hooks/useBlockContext'
 
@@ -15,7 +15,8 @@ const transformBlocks = ORDER_TOGGLE_BLOCK.map(key => Object.values(BLOCK).find(
 
 export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionGroupOption | null {
   const { deleteBlock, duplicateBlock, copyContent, moveBlock, getPosition, node } = useBlockContext()
-  const { t, editor } = useEditorContext()
+  const { editor } = useEditorContext()
+  const [t] = useEditorI18n()
   const [documentEditable] = useDocumentEditable(undefined)
 
   const createActionOption = useCallback(

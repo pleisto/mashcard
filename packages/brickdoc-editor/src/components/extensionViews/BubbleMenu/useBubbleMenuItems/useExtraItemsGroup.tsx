@@ -2,11 +2,12 @@ import { useMemo } from 'react'
 import { Icon } from '@brickdoc/design-system'
 import { ToolbarSubMenuOption, ToolbarOption, ToolbarGroupOption } from '../../../ui/Toolbar'
 import { isBubbleMenuVisible } from '../BubbleMenu'
-import { useEditorContext, useExternalProps } from '../../../../hooks'
+import { useEditorContext, useEditorI18n, useEditorPropsContext } from '../../../../hooks'
 
 export function useExtraItemsGroup(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { editor, t } = useEditorContext()
-  const { featureFlags } = useExternalProps()
+  const { editor } = useEditorContext()
+  const [t] = useEditorI18n()
+  const editorProps = useEditorPropsContext()
 
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
@@ -16,7 +17,7 @@ export function useExtraItemsGroup(): [ToolbarOption | ToolbarGroupOption | null
       items: []
     }
 
-    if (featureFlags.experiment_discussion) {
+    if (editorProps.featureFlags.experiment_discussion) {
       extraItemsGroup.items.push({
         type: 'item',
         name: 'comment',

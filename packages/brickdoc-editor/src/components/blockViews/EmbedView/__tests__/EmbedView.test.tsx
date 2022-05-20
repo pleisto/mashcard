@@ -1,7 +1,7 @@
 import { Embedtype } from '@brickdoc/schema'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { ExternalProps } from '../../../../context'
+import { EditorPropsContext } from '../../../../context'
 import { EmbedAttributes, EmbedOptions } from '../../../../extensions'
 import { mockBlockViewProps } from '../../../../test'
 import { EmbedView } from '../EmbedView'
@@ -9,12 +9,12 @@ import { EmbedView } from '../EmbedView'
 const uuid = 'uuid'
 const url = 'https://www.brickdoc.com'
 
-jest.mock('../../../../hooks/useExternalProps.ts', () => {
+jest.mock('../../../../hooks/useEditorPropsContext.ts', () => {
   const uuid = 'uuid'
   const url = 'https://www.brickdoc.com'
-  const externalProps = new ExternalProps()
-  externalProps.rootId = uuid
-  externalProps.fetchUnsplashImages = async (query: string) => {
+  const editorPropsContext = { ...EditorPropsContext }
+  editorPropsContext.rootId = uuid
+  editorPropsContext.fetchUnsplashImages = async (query: string) => {
     return await new Promise(resolve => {
       resolve({
         success: true,
@@ -39,8 +39,8 @@ jest.mock('../../../../hooks/useExternalProps.ts', () => {
       })
     })
   }
-  externalProps.prepareFileUpload = (() => {}) as any
-  externalProps.blobs = {
+  editorPropsContext.prepareFileUpload = (() => {}) as any
+  editorPropsContext.blobs = {
     [uuid]: [
       {
         key: url,
@@ -50,7 +50,7 @@ jest.mock('../../../../hooks/useExternalProps.ts', () => {
   }
 
   return {
-    useExternalProps: () => externalProps
+    useEditorPropsContext: () => editorPropsContext
   }
 })
 

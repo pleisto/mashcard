@@ -9,7 +9,6 @@ jest.mock('../../../../hooks/useDocumentEditable.ts', () => ({
 
 jest.mock('../../../../hooks/useEditorContext.ts', () => ({
   useEditorContext: () => ({
-    t: (k: string) => k,
     editor: mockEditor()
   })
 }))

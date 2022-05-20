@@ -1,14 +1,14 @@
 import { debounce, uniqBy } from '@brickdoc/active-support'
 import { UnsplashImage } from '@brickdoc/uploader'
 import { useState, useRef, useCallback, useEffect, ChangeEvent, RefObject } from 'react'
-import { useExternalProps } from '../../../../../hooks'
+import { useEditorPropsContext } from '../../../../../hooks'
 
 const UNSPLASH_PER_PAGE = 20
 
 export function useUnsplashImages(
   loadMoreRef: RefObject<HTMLDivElement>
 ): [UnsplashImage[], boolean, (event: ChangeEvent<HTMLInputElement>) => void] {
-  const externalProps = useExternalProps()
+  const editorPropsContext = useEditorPropsContext()
   const [unsplashImages, setUnsplashImages] = useState<UnsplashImage[]>([])
   const [fetching, setFetching] = useState(false)
 
@@ -27,7 +27,11 @@ export function useUnsplashImages(
       setFetching(true)
 
       try {
-        const response = await externalProps.fetchUnsplashImages(lastQuery.current, page.current, UNSPLASH_PER_PAGE)
+        const response = await editorPropsContext.fetchUnsplashImages(
+          lastQuery.current,
+          page.current,
+          UNSPLASH_PER_PAGE
+        )
 
         if (response.success) {
           setUnsplashImages(prevData => uniqBy([...(page.current === 1 ? [] : prevData), ...response.data], 'id'))
@@ -39,7 +43,7 @@ export function useUnsplashImages(
 
       setFetching(false)
     },
-    [externalProps, fetching]
+    [editorPropsContext, fetching]
   )
 
   const observeY = useRef<number>()

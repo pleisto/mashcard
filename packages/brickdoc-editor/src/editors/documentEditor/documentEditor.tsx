@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, FC } from 'react'
 import {
   useEditor as useTiptapEditor,
   EditorContent as TiptapEditorContent,
@@ -13,36 +13,35 @@ import { DiscussionList, ExplorerMenu } from '../../components/editorViews'
 import { BubbleMenu } from '../../components/extensionViews'
 import { SyncOptions } from '../../extensions'
 import { Base } from '../../extensions/base'
-import { ExternalProps, ExternalPropsContext } from '../../context'
 import { useDrawerService } from '../../components/ui/Drawer'
 import { useDropBlock, useUndo } from '../../helpers'
 import { documentEditorStyles } from './styles'
+import { EditorProps, useEditorPropsEffect } from '../../context'
 
-export interface EditorContentProps {
+export interface EditorContentProps extends EditorProps {
   editor: TiptapEditor | null
-  externalProps: ExternalProps
 }
 
-export const EditorContent: React.FC<EditorContentProps> = ({ editor, externalProps }) => {
+export const EditorContent: FC<EditorContentProps> = ({ editor, ...props }) => {
   const [t] = useEditorI18n()
   const editorContext = useMemo<EditorContextData>(() => ({ editor, t }), [editor, t])
   useDrawerService()
   useDropBlock(editor)
   useUndo(editor)
+  useEditorPropsEffect(props)
+
   return (
     <EditorContext.Provider value={editorContext}>
-      <ExternalPropsContext.Provider value={externalProps}>
-        <BubbleMenu editor={editor} />
-        <TiptapEditorContent className="brickdoc" editor={editor} />
-        <DiscussionList />
-        <ExplorerMenu editor={editor} />
-      </ExternalPropsContext.Provider>
+      <BubbleMenu editor={editor} />
+      <TiptapEditorContent className="brickdoc" editor={editor} />
+      <DiscussionList />
+      <ExplorerMenu editor={editor} />
     </EditorContext.Provider>
   )
 }
 
 export interface EditorOptions extends Partial<TiptapEditorOptions> {
-  externalProps: ExternalProps
+  props: EditorProps
   onSave: SyncOptions['onSave']
   ydoc?: Y.Doc
 }
@@ -67,7 +66,7 @@ const typesWithUuid = [
 
 export function useEditor(options: EditorOptions): TiptapEditor | null {
   documentEditorStyles()
-  const { onSave, editable, externalProps, ydoc, ...restOptions } = options
+  const { onSave, editable, props, ydoc, ...restOptions } = options
 
   return useTiptapEditor(
     {
@@ -105,7 +104,7 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
           },
           listItem: true,
           mentionCommands: {
-            externalProps
+            editorProps: props
           },
           orderedList: true,
           pageLink: true,

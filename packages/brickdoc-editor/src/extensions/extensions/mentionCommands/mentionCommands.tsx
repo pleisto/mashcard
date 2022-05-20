@@ -8,7 +8,7 @@ import { UserItem } from '../../../components/extensionViews/MentionMenu/UserGro
 import { PageItem } from '../../../components/extensionViews/MentionMenu/PageGroup'
 import { meta } from './meta'
 import { createExtension } from '../../common'
-import { ExternalProps } from '../../../context'
+import { EditorProps } from '../../../context'
 import { filterMenuItemsByQuery } from './filterMenuItemsByQuery'
 
 const TRIGGER_CHAR = '@'
@@ -19,7 +19,7 @@ export interface MenuItems {
 }
 
 export interface MentionCommandsOptions {
-  externalProps: ExternalProps
+  editorProps: EditorProps
   size?: 'sm' | 'md'
 }
 

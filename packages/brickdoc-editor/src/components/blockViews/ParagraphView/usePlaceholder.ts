@@ -2,7 +2,7 @@ import { findParentNode } from '@tiptap/react'
 import { RefObject, useEffect, useRef } from 'react'
 import { BulletList, OrderedList } from '../../../extensions'
 import { ParagraphViewProps } from '../../../extensions/blocks/paragraph/meta'
-import { useDocumentEditable, useEditorContext } from '../../../hooks'
+import { useDocumentEditable, useEditorI18n } from '../../../hooks'
 
 // eslint-disable-next-line max-params
 export function usePlaceholder(
@@ -12,7 +12,7 @@ export function usePlaceholder(
   blockContainerRef: RefObject<HTMLDivElement>,
   getPos: ParagraphViewProps['getPos']
 ): void {
-  const { t } = useEditorContext()
+  const [t] = useEditorI18n()
   const placeholderText = extension?.options?.placeholder ?? t('placeholder') ?? ''
   const [documentEditable] = useDocumentEditable(undefined)
   const dataRef = useRef({ node, documentEditable })

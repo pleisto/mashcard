@@ -2,7 +2,7 @@ import React from 'react'
 import { Icon } from '@brickdoc/design-system'
 import { FormulaSourceType, VariableDisplayData, loadDisplayResult } from '@brickdoc/formula'
 import { SelectedType } from '../../blockViews/FormulaView/useFormula'
-import { useExternalProps } from '../../../hooks/useExternalProps'
+import { useEditorPropsContext } from '../../../hooks/useEditorPropsContext'
 import { FormulaLiteral, FormulaValue } from '.'
 
 export interface FormulaDisplayProps {
@@ -23,7 +23,7 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({
   disablePopover,
   ...props
 }) => {
-  const externalProps = useExternalProps()
+  const editorProps = useEditorPropsContext()
   if (!displayData) {
     if (formulaType === 'normal') {
       return (
@@ -45,7 +45,7 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({
     )
   }
 
-  const formulaContext = externalProps.formulaContext!
+  const formulaContext = editorProps.formulaContext!
 
   const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
   const newDisplayData = loadDisplayResult(ctx, displayData)

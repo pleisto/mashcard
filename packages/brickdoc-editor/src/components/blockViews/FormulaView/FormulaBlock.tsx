@@ -2,7 +2,7 @@ import React from 'react'
 import { NodeViewProps } from '@tiptap/core'
 import { displayValue, dumpDisplayResultForDisplay, fetchResult, VariableData } from '@brickdoc/formula'
 import { BlockContainer } from '../BlockContainer'
-import { useExternalProps } from '../../../hooks/useExternalProps'
+import { useEditorPropsContext } from '../../../hooks/useEditorPropsContext'
 import { FormulaDisplay } from '../../ui/Formula'
 import { FormulaMenuProps, useFormula, FormulaMenu } from '.'
 
@@ -21,9 +21,9 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
 }) => {
   const defaultVisible = isNew
   const formulaId = uuid
-  const externalProps = useExternalProps()
-  const rootId = externalProps.rootId
-  const formulaContext = externalProps.formulaContext
+  const editorProps = useEditorPropsContext()
+  const rootId = editorProps.rootId
+  const formulaContext = editorProps.formulaContext
   const formulaType = 'normal'
   const formulaName = ''
   const {
@@ -87,8 +87,8 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
 
 export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, updateAttributes, getPos }) => {
   const defaultVisible = node.attrs.isNew
-  const externalProps = useExternalProps()
-  const formulaContext = externalProps.formulaContext
+  const editorProps = useEditorPropsContext()
+  const formulaContext = editorProps.formulaContext
 
   const handleDelete = React.useCallback(
     async (variableT?: VariableData): Promise<void> => {

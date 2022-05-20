@@ -3,10 +3,11 @@ import { Icon } from '@brickdoc/design-system'
 import { ToolbarOption, ToolbarGroupOption } from '../../../ui'
 import { BubbleItemMeta } from './useBubbleMenuItems'
 import { isBubbleMenuVisible } from '../BubbleMenu'
-import { useEditorContext } from '../../../../hooks'
+import { useEditorContext, useEditorI18n } from '../../../../hooks'
 
 export function useTextStyleGroup(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { t, editor } = useEditorContext()
+  const { editor } = useEditorContext()
+  const [t] = useEditorI18n()
 
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null

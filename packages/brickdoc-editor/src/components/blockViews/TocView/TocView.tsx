@@ -1,10 +1,10 @@
-import { FC, ReactNode, useCallback, useContext, useEffect, useState } from 'react'
+import { FC, ReactNode, useCallback, useEffect, useState } from 'react'
 import { styled, theme } from '@brickdoc/design-system'
 import { BlockContainer } from '../BlockContainer'
 import { initialTocTree, TocNode } from './tocTree'
 import { TocContainer, TocNodePanel } from './TocNodePanel'
-import { EditorContext } from '../../../context/EditorContext'
 import { TocViewProps } from '../../../extensions/blocks/toc/meta'
+import { useEditorI18n } from '../../../hooks'
 
 export interface TocItem {
   level: 'root' | 1 | 2 | 3 | 4 | 5 | 'text'
@@ -23,7 +23,7 @@ const TocPlaceholder = styled('span', {
 export const TocView: FC<TocViewProps> = ({ editor, node, deleteNode, getPos }) => {
   const [tocRoot, setTocRoot] = useState<TocNode>()
   const [tocItemCount, setTocItemCount] = useState<number>(0)
-  const { t } = useContext(EditorContext)
+  const [t] = useEditorI18n()
 
   const updateItems = useCallback(() => {
     const [tocRoot, count] = initialTocTree(editor.state.doc)
