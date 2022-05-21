@@ -1,7 +1,6 @@
 import { FC, useCallback, useRef } from 'react'
 import { linkStorage } from '../../../helpers/file'
 import 'react-medium-image-zoom/dist/styles.css'
-import './styles.less'
 import { getBlobUrl } from '../../../helpers/getBlobUrl'
 import { UploaderMode } from './modes/UploaderMode'
 import { PreviewMode } from './modes/PreviewMode'

@@ -1,13 +1,14 @@
 /* eslint-disable no-nested-ternary */
 import { FC, useMemo, useCallback } from 'react'
 import { Popover } from '@brickdoc/design-system'
-import '../../ui/Formula/Formula.less'
 import { FormulaEditor, EditorContentType } from '../../../editors/formulaEditor'
 import { BrickdocEventBus, FormulaEditorSaveEventTrigger } from '@brickdoc/schema'
 import { AutocompleteList, FormulaResult } from '../../ui/Formula'
 import { VariableData } from '@brickdoc/formula'
 import { JSONContent } from '@tiptap/core'
 import { CompletionType } from './useFormula'
+import * as Root from '../../ui/Formula/Formula.style'
+
 export interface FormulaBlockRenderProps {
   formulaId: string
   rootId: string
@@ -34,10 +35,10 @@ export const FormulaBlockRender: FC<FormulaBlockRenderProps> = ({
 }) => {
   const formulaResult = useMemo(
     () => (
-      <div className="brickdoc-formula-menu">
+      <Root.BrickdocFormulaMenu>
         <FormulaResult variableT={variableT} pageId={rootId} />
         <AutocompleteList rootId={rootId} formulaId={formulaId} completion={completion} />
-      </div>
+      </Root.BrickdocFormulaMenu>
     ),
     [completion, formulaId, rootId, variableT]
   )
@@ -70,7 +71,7 @@ export const FormulaBlockRender: FC<FormulaBlockRenderProps> = ({
     <Popover
       defaultVisible={true}
       visible={visible}
-      className="brickdoc-formula-menu-popover"
+      className={Root.BrickdocFormulaMenuPopover}
       destroyTooltipOnHide={true}
       content={formulaResult}
       placement="bottom"

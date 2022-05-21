@@ -12,7 +12,6 @@ import {
   SpreadsheetCellContainer,
   SpreadsheetColumnEditable
 } from './SpreadsheetView'
-import './Spreadsheet.less'
 import { VariableDisplayData } from '@brickdoc/formula'
 import React from 'react'
 import { FormulaDisplay } from '../../ui/Formula'

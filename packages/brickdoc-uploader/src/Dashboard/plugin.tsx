@@ -2,7 +2,6 @@ import ReactDOM from 'react-dom'
 import { BasePlugin, Uppy } from '@uppy/core'
 import findDOMElement from '@uppy/utils/lib/findDOMElement'
 import { Dashboard, ImportSourceOption } from './Dashboard'
-import './index.less'
 
 export type { ImportSourceOption } from './Dashboard'
 export interface UploadProgress {

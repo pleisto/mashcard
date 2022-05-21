@@ -4,6 +4,7 @@ import { FormulaSourceType, VariableDisplayData, loadDisplayResult } from '@bric
 import { SelectedType } from '../../blockViews/FormulaView/useFormula'
 import { useEditorPropsContext } from '../../../hooks/useEditorPropsContext'
 import { FormulaLiteral, FormulaValue } from '.'
+import * as Root from './Formula.style'
 
 export interface FormulaDisplayProps {
   displayData?: VariableDisplayData
@@ -27,7 +28,7 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({
   if (!displayData) {
     if (formulaType === 'normal') {
       return (
-        <span {...props} className="brickdoc-formula-empty">
+        <span {...props} className={Root.BrickdocFormulaEmpty}>
           <Icon.Formula className="brickdoc-formula-empty-icon" />
         </span>
       )

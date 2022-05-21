@@ -11,14 +11,14 @@ export function useDocumentIconUploader(
     blockId,
     prepareFileUpload,
     fetchUnsplashImages,
-    styles,
+    overlayClassName,
     onChange,
     onFileLoaded
   }: {
     blockId: string
     prepareFileUpload: DashboardProps['prepareFileUpload']
     fetchUnsplashImages: DashboardProps['fetchUnsplashImages']
-    styles: any
+    overlayClassName: string
     onChange: (icon: DocumentIconMeta | null | undefined) => void
     onFileLoaded: (localUrl: string) => void
   }
@@ -87,7 +87,7 @@ export function useDocumentIconUploader(
   }
 
   const popoverProps: Partial<PopoverProps> = {
-    overlayClassName: styles.popover,
+    overlayClassName,
     trigger: 'click',
     placement: 'bottom',
     destroyTooltipOnHide: true,

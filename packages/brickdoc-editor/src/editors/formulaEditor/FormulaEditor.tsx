@@ -1,9 +1,9 @@
 import React from 'react'
 import { useEditor, EditorContent, JSONContent, EditorEvents } from '@tiptap/react'
 import { devLog } from '@brickdoc/design-system'
-import './FormulaEditor.less'
 import { BrickdocEventBus, FormulaEditorReplaceRootTrigger } from '@brickdoc/schema'
 import { Base } from '../../extensions/base'
+import {  BrickdocFomulaEditor }from './style'
 
 export interface EditorContentType {
   content: JSONContent | undefined
@@ -127,7 +127,7 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
           ...(width ? { width: `${width}px` } : {}),
           ...(minHeight ? { minHeight: `${minHeight}px` } : {})
         }}
-        className="brickdoc-formula-editor"
+        className={BrickdocFomulaEditor}
         editor={editor}
       />
     </>

@@ -3,7 +3,7 @@
 exports[`Dashboard Emoji matches correct snapshot 1`] = `
 <div>
   <div
-    class="brickdoc-uploader-dashboard"
+    class="brd-c-dtfeqj"
     role="dialog"
   >
     <div
@@ -8422,7 +8422,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
 
 exports[`Dashboard Gallery matches correct snapshot 1`] = `
 <div
-  class="brickdoc-uploader-dashboard"
+  class="brd-c-dtfeqj"
   role="dialog"
 >
   <div
@@ -8531,7 +8531,7 @@ exports[`Dashboard Gallery matches correct snapshot 1`] = `
 
 exports[`Dashboard Link matches correct snapshot 1`] = `
 <div
-  class="brickdoc-uploader-dashboard"
+  class="brd-c-dtfeqj"
   role="dialog"
 >
   <div
@@ -8579,7 +8579,7 @@ exports[`Dashboard Link matches correct snapshot 1`] = `
 
 exports[`Dashboard Upload matches correct snapshot 1`] = `
 <div
-  class="brickdoc-uploader-dashboard"
+  class="brd-c-dtfeqj"
   role="dialog"
 >
   <div

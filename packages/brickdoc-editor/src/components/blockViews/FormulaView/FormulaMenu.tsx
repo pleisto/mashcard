@@ -2,12 +2,12 @@ import React from 'react'
 import { Button, Icon, Input, Popover } from '@brickdoc/design-system'
 import { VariableData } from '@brickdoc/formula'
 import { useEditorI18n } from '../../../hooks'
-import '../../ui/Formula/Formula.less'
 import { EditorContentType, FormulaEditor } from '../../../editors/formulaEditor'
 import { FormulaResult, AutocompleteList } from '../../ui/Formula'
 import { CompletionType } from './useFormula'
 import { BrickdocEventBus, FormulaCalculateTrigger, FormulaEditorSavedTrigger } from '@brickdoc/schema'
 import { JSONContent } from '@tiptap/core'
+import * as Root from '../../ui/Formula/Formula.style'
 
 export interface FormulaMenuProps {
   formulaId: string
@@ -105,7 +105,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const namePlaceholder = editorContent.input.trim() === '=' ? 'Add Name' : defaultName
 
   const menu = (
-    <div className="brickdoc-formula-menu">
+    <Root.BrickdocFormulaMenu>
       {/* <div className="formula-menu-header">{t(`${i18nKey}.header`)}</div> */}
       <div className="formula-menu-row">
         <div className="formula-menu-item">
@@ -134,7 +134,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           />
         </div>
       </div>
-      <div className="formula-divider" />
+      <Root.FormulaDivider />
       <FormulaResult variableT={variableT} pageId={rootId} />
       <AutocompleteList rootId={rootId} formulaId={formulaId} completion={completion} />
       <div className="formula-menu-footer">
@@ -146,8 +146,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           size="sm"
           type="primary"
           onClick={handleSave}
-          disabled={isDisableSave()}
-        >
+          disabled={isDisableSave()}>
           {t(`${i18nKey}.save`)}
         </Button>
         <Button
@@ -155,12 +154,11 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           size="sm"
           type="text"
           danger={true}
-          onClick={() => handleDelete(variableT!)}
-        >
+          onClick={() => handleDelete(variableT!)}>
           {t(`${i18nKey}.delete`)}
         </Button>
       </div>
-    </div>
+    </Root.BrickdocFormulaMenu>
   )
 
   return (
@@ -168,12 +166,11 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       onVisibleChange={onPopoverVisibleChange}
       defaultVisible={defaultVisible}
       visible={visible}
-      className="brickdoc-formula-menu-popover"
+      className={Root.BrickdocFormulaMenuPopover}
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottom"
-      trigger={['click']}
-    >
+      trigger={['click']}>
       {children}
     </Popover>
   )

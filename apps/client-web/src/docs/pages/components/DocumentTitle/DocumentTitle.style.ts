@@ -119,3 +119,13 @@ export const TitleWrapper = styled('div', {
     }
   }
 })
+
+export const Popover = css({
+  ':global(.brd-popover-arrow)': {
+    display: 'none'
+  },
+  ':global(.brd-popover-inner-content)': {
+    padding: 0,
+    color: 'unset'
+  }
+})()

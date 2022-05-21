@@ -2,8 +2,7 @@
 import React from 'react'
 import { Icon, cx } from '@brickdoc/design-system'
 import { Completion, CompletionKind } from '@brickdoc/formula'
-import '../../../blockViews/Spreadsheet/Spreadsheet.less'
-import './AutocompleteList.less'
+import {FormulaAutocomplete} from './style'
 import { CompletionType } from '../../../blockViews/FormulaView'
 import { BlockPreview, ColumnPreview, SpreadsheetPreview, FunctionPreview, VariablePreview } from '../Preview'
 import { BrickdocEventBus, FormulaKeyboardEventTrigger } from '@brickdoc/schema'
@@ -61,7 +60,7 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({ rootId, form
   }
 
   return (
-    <div className="formula-autocomplete">
+    <FormulaAutocomplete>
       {completion.kind === 'Completion' && (
         <div className="formula-autocomplete-list">
           {completion.completions.map((c: Completion, index) => {
@@ -86,6 +85,6 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({ rootId, form
         </div>
       )}
       <div className="formula-autocomplete-preview">{preview}</div>
-    </div>
+    </FormulaAutocomplete>
   )
 }

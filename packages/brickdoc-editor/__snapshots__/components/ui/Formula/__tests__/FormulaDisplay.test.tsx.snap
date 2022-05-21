@@ -4,7 +4,7 @@ exports[`FormulaDisplay renders constant kind correctly 1`] = `
 <div>
   <span>
     <span
-      class="brd-c-ijlRdH brd-c-ijlRdH-zQVcS-selected-false brickdoc-formula-normal"
+      class="brd-c-ijlRdH brd-c-ijlRdH-zQVcS-selected-false brd-c-feQtUf"
     >
       <span
         class="brickdoc-formula-normal-icon"
@@ -64,7 +64,7 @@ exports[`FormulaDisplay renders literal kind correctly 1`] = `
 exports[`FormulaDisplay renders normal type empty correctly 1`] = `
 <div>
   <span
-    class="brickdoc-formula-empty"
+    class="brd-c-cfdOjj"
   >
     <span
       aria-label="formula"

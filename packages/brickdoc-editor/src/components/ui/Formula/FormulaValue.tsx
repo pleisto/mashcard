@@ -1,9 +1,9 @@
 import { FC, ReactElement } from 'react'
 import { resultToColorType, VariableDisplayData } from '@brickdoc/formula'
-import './Formula.less'
 import { cx, Icon, Tooltip } from '@brickdoc/design-system'
 import { SelectedType } from '../../blockViews/FormulaView'
 import { FORMULA_COLOR_METAS, FORMULA_ICONS, FORMULA_STYLES } from './color'
+import * as Root from './Formula.style'
 
 export interface FormulaValueProps {
   displayData: VariableDisplayData
@@ -50,7 +50,7 @@ export const FormulaValue: FC<FormulaValueProps> = ({
   switch (result.type) {
     case 'Error':
       data = (
-        <span className={cx(formulaStyle, 'brickdoc-formula-error')}>
+        <span className={cx(formulaStyle, Root.BrickdocFormulaError)}>
           <Icon.Formula className="brickdoc-formula-error-icon" />
         </span>
       )
@@ -58,14 +58,14 @@ export const FormulaValue: FC<FormulaValueProps> = ({
     case 'Waiting':
     case 'Pending':
       data = (
-        <span className={cx(formulaStyle, 'brickdoc-formula-pending')}>
+        <span className={cx(formulaStyle, Root.BrickdocFormulaPending)}>
           <Icon.Formula className="brickdoc-formula-pending-icon" />
         </span>
       )
       break
     default:
       data = (
-        <span className={cx(formulaStyle, 'brickdoc-formula-normal')}>
+        <span className={cx(formulaStyle, Root.BrickdocFormulaNormal)}>
           <span className="brickdoc-formula-normal-icon">{icon}</span>
           <span className="brickdoc-formula-normal-display">{finalDisplay}</span>
         </span>

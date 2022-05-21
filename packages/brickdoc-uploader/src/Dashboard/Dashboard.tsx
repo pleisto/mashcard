@@ -10,6 +10,7 @@ import { UploadPanel } from './UploadPanel'
 import { UnsplashPanel } from './UnsplashPanel'
 import { GalleryPanel } from './GalleryPanel'
 import { useEmoji } from './useEmoji'
+import { BrickdocUploaderDashboard } from './index.styl'
 
 export interface ImportSourceOption {
   type: SourceType
@@ -95,7 +96,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
   }
 
   return (
-    <div role="dialog" className="brickdoc-uploader-dashboard">
+    <BrickdocUploaderDashboard role="dialog">
       <div className="uploader-dashboard-navbar">
         {importSources.map(source => (
           <Button
@@ -137,6 +138,6 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
       )}
       {activeSource?.type === 'unsplash' && <UnsplashPanel pluginOptions={pluginOptions} />}
       {activeSource?.type === 'gallery' && <GalleryPanel pluginOptions={pluginOptions} />}
-    </div>
+    </BrickdocUploaderDashboard>
   )
 }

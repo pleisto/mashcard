@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button, Popover, Icon } from '@brickdoc/design-system'
-import styles from './DocumentTitle.module.less'
 import * as Root from './DocumentTitle.style'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { DocumentIcon } from './DocumentIcon'
@@ -18,7 +17,6 @@ import { editorVar } from '@/docs/reactiveVars'
 import { useBlobGetter } from '../../hooks/useBlobGetter'
 import { GetChildrenBlocksQuery } from '@/BrickdocGraphQL'
 // import { EditorContentProps } from '@brickdoc/editor'
-
 export interface DocumentTitleProps {
   docId?: string
   blocks: GetChildrenBlocksQuery['childrenBlocks']
@@ -118,7 +116,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
     blockId,
     prepareFileUpload,
     fetchUnsplashImages,
-    styles,
+    overlayClassName: Root.Popover,
     onChange: setIcon,
     onFileLoaded: setLocalIcon
   })
@@ -126,7 +124,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
     blockId,
     prepareFileUpload,
     fetchUnsplashImages,
-    styles,
+    overlayClassName: Root.Popover,
     onChange: setCover,
     onFileLoaded: setLocalCover
   })

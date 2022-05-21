@@ -15,7 +15,7 @@ exports[`FormulaBlock matches correct snapshot 1`] = `
     </span>
     <span
       aria-haspopup="dialog"
-      class="brickdoc-formula-empty"
+      class="brd-c-cfdOjj"
     >
       <span
         aria-label="formula"

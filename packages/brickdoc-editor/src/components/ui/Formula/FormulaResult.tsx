@@ -8,8 +8,8 @@ import {
   resultToColorType,
   VariableData
 } from '@brickdoc/formula'
-import './Formula.less'
 import { FormulaValue, FORMULA_ICONS } from '.'
+import * as Root from './Formula.style'
 
 export interface FormulaResultProps {
   variableT: VariableData | undefined
@@ -52,8 +52,8 @@ export const FormulaResult: FC<FormulaResultProps> = ({ variableT, pageId }) => 
 
   return (
     <>
-      <div className="formula-result">{formulaResult}</div>
-      <div className="formula-divider" />
+      <Root.FormulaResult>{formulaResult}</Root.FormulaResult>
+      <Root.FormulaDivider />
     </>
   )
 }
