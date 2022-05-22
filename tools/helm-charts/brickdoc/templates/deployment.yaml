@@ -24,6 +24,19 @@ spec:
         - name: {{ .Chart.Name }}-db-migrate
           command: ["/app/apps/server-monolith/bin/kube-init"]
           {{- include "brickdoc.deploymentCommon" . }}
+          resources:
+            {{- if .Values.previewEnv }}
+            requests:
+              cpu: "0.1"
+              memory: 64Mi
+            limits:
+              cpu: "1.5"
+              memory: 512Mi
+            {{- else }}
+            requests:
+              cpu: "1"
+              memory: 1024Mi
+            {{- end }}
       containers:
         - name: {{ .Chart.Name }}-web
           {{- include "brickdoc.deploymentCommon" . }}

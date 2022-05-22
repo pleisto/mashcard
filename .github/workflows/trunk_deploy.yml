@@ -102,8 +102,8 @@ jobs:
             --set-string ingress.host=${{ env.domain }} \
             --set serviceAccount.create=false \
             --set-string serviceAccount.name=trunk-or-pr-main \
-            --set-string resources.requests.cpu=1 \
-            --set-string resources.requests.memory=1024Mi \
+            --set-string resources.requests.cpu=0.5 \
+            --set-string resources.requests.memory=512Mi \
             --set-string envs.SMTP_FROM=brickdoc-ce-trunk@intl-email-service.brickdoc.app \
             --set-string envs.SENTRY_DSN=https://4aa5075a3b484af6a251f3677a9f665e@o1150336.ingest.sentry.io/6257651 \
             --set-string envs.HOST=${{ env.domain }} \
