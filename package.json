@@ -12,13 +12,12 @@
     "plugins/*"
   ],
   "scripts": {
-    "postinstall": "husky install && ./tools/scripts/pdftron static ",
-    "start": "./bin/vite dev",
-    "dist": "./bin/vite build",
+    "postinstall": "husky install && ./tools/scripts/pdftron static",
     "analyze": "BUNDLE_STATS=1 yarn dist && open ./tmp/esm-bundle-stats.html",
     "build:rust": "turbo run build:rust",
     "lint": "turbo run lint:eslint lint:type",
     "lint:eslint": "turbo run lint:eslint",
+    "lint:rubocop": "turbo run lint:rubocop",
     "lint:fix": "turbo run lint:fix",
     "lint:type": "turbo run lint:type",
     "tsdoc": "turbo run tsdoc",
@@ -26,9 +25,10 @@
     "test:update-snap": "NODE_ENV=test yarn workspaces foreach --since -p -j unlimited run test:jest -u",
     "test:jest": "NODE_ENV=test turbo run test:jest",
     "test:playwright": "yarn e2e-testing start",
+    "test:rspec": "turbo run test:rspec",
     "commit": "git add . && cz",
-    "graphql": "bundle exec rails graphql:schema:dump && yarn workspace @brickdoc/client-web graphql-codegen --config codegen.yml",
-    "cleanup": "rimraf node_modules/.cache public/esm-bundle '{packages,tools,apps}/*/{dist,junit-reports,coverage,.turbo,.nyc_output,.eslintcache,.next}' 'tools/e2e-testing/{allure-report,allure-results,test-results,storageState-*.json}' 'packages/server-api-crate/{target,*.node}'",
+    "graphql": "yarn server bundle exec rails graphql:schema:dump && yarn workspace @brickdoc/client-web graphql-codegen --config codegen.yml",
+    "cleanup": "rimraf node_modules/.cache public/esm-bundle '{packages,tools,apps}/*/{dist,junit-reports,coverage,.turbo,.nyc_output,.eslintcache,.next}' 'tools/e2e-testing/{allure-report,allure-results,test-results,storageState-*.json}'",
     "schema": "yarn workspace @brickdoc/schema",
     "design-system": "yarn workspace @brickdoc/design-system",
     "design-icons": "yarn workspace @brickdoc/design-icons",
@@ -36,13 +36,9 @@
     "formula": "yarn workspace @brickdoc/formula",
     "uploader": "yarn workspace @brickdoc/uploader",
     "web": "yarn workspace @brickdoc/client-web",
-    "api": "yarn workspace @brickdoc/server-api",
     "e2e-testing": "yarn workspace @brickdoc/e2e-testing",
-    "redis": "yarn workspace @brickdoc/nestjs-redis",
-    "slonik": "yarn workspace @brickdoc/nestjs-slonik",
-    "api-crate": "yarn workspace @brickdoc/server-api-crate",
     "active-support": "yarn workspace @brickdoc/active-support",
-    "build-support": "yarn workspace @brickdoc/build-support"
+    "server": "yarn workspace @brickdoc/server-monolith"
   },
   "devDependencies": {
     "@brickdoc/eslint-plugin": "workspace:^",
@@ -61,18 +57,17 @@
     "@types/is-ci": "^3.0.0",
     "@types/jest": "^27.5.1",
     "@types/jest-axe": "^3.5.3",
-    "@types/node": "^17.0.34",
+    "@types/node": "^17.0.35",
     "@types/rails__actioncable": "^6.1.6",
     "@types/rails__activestorage": "^7.0.1",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
     "@types/supertest": "^2.0.12",
     "@types/uuid": "^8.3.4",
-    "api": "^4.4.0",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "depcheck": "^1.4.3",
-    "eslint": "^8.15.0",
+    "eslint": "^8.16.0",
     "fs-extra": "^10.1.0",
     "glob": "^8.0.3",
     "graphql-tag": "^2.12.6",
@@ -86,12 +81,10 @@
     "lint-staged": "^12.4.1",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
-    "supertest": "^6.2.3",
     "turbo": "^1.2.9",
     "typedoc": "^0.22.15",
     "typedoc-plugin-markdown": "^3.12.1",
-    "typescript": "^4.7.1-rc",
-    "vite-plugin-ruby": "^3.0.12"
+    "typescript": "^4.7.1-rc"
   },
   "packageManager": "yarn@3.2.1",
   "resolutions": {
@@ -106,16 +99,15 @@
     "@jest/transform": "npm:@jest/transform@>=27",
     "prosemirror-view": "patch:prosemirror-view@npm:1.23.7#.yarn/patches/prosemirror-view-npm-1.23.7-5085f0bf9b",
     "minimist": ">= 1.2.6",
-    "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.10#.yarn/patches/vite-plugin-mdx-npm-3.5.10-ae54c30668",
-    "node-fetch": "patch:node-fetch@npm:2.6.7#.yarn/patches/node-fetch-npm-2.6.7-777aa2a6df.patch"
+    "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.10#.yarn/patches/vite-plugin-mdx-npm-3.5.10-ae54c30668"
   },
   "dependencies": {
-    "@swc/core": "^1.2.186",
+    "@swc/core": "^1.2.189",
     "@swc/helpers": "^0.3.13",
     "dayjs": "^1.11.2",
     "ts-node": "^10.7.0"
   },
   "volta": {
-    "node": "18.1.0"
+    "node": "18.2.0"
   }
 }

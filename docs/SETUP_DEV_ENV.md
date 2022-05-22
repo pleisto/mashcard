@@ -4,6 +4,22 @@
 
 ### Toolchain
 
+#### Ruby
+
+```bash
+gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+curl -sSL https://get.rvm.io | bash -s stable
+rvm install ruby-3.1
+```
+
+**Note:** If you are using a Apple Silicon M1 device, you may need execute the following command after installing Ruby:
+
+```bash
+brew install openssl@1.1
+sudo ln -s $(brew --prefix openssl@1.1)/lib/libcrypto.dylib /usr/local/lib/
+sudo ln -s $(brew --prefix openssl@1.1)/lib/libssl.dylib  /usr/local/lib
+```
+
 #### NodeJS
 
 We high recommended using [volta](https://volta.sh/) to manage your nodejs environment.
@@ -12,12 +28,12 @@ Volta better than nvm because it could automatically detect the Node.js version 
 
 ```bash
 curl https://get.volta.sh | bash
-volta install node@16
+volta install node@18
 ```
 
 #### Rust
 
-Rust is a required dependency for building some native node modules.And, [rustup](https://www.rust-lang.org/tools/install) is a recommended way to install rust toolchain.
+Rust is a required dependency for building some native gems. And, [rustup](https://www.rust-lang.org/tools/install) is a recommended way to install rust toolchain.
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -53,14 +69,14 @@ Some plugins require external dependencies such as api keys, credentials, etc. Y
 
 ## Start development
 
-1. Run `yarn install` to install all dependencies.
+1. Run `yarn install && yarn server bundle install` to install all dependencies.
 2. Run `yarn dev generate dotenv` to initialize the dotenv file.
-3. Run `yarn dev dev db:create && yarn dev db:migrate` to updates your database using migrations.
-4. Run `yarn start` to start the development server.
+3. Run `yarn server db:create && yarn server db:migrate` to updates your database using migrations.
+4. Run `yarn server s` && `yarn web start` to start the development server.
 5. Visit `http://localhost:3000`, and you should now see the login page.
 
 - To lint your code, run `yarn lint`
-- To run unit tests: `yarn test:jest`
+- To run unit tests: `yarn test:jest && yarn test:rspec`
 - To run frond end E2E tests: `yarn test:playwright`
 
 ## Commands Reference
@@ -78,11 +94,12 @@ yarn cleanup # Clean up all the building artifacts / intermediates
 yarn graphql # Generate GraphQL schema and run graphql-codegen
 
 # API Server
-yarn api start
-yarn dev console # Rails-like console
-yarn dev db:{create | migrate | drop} # Create or drop database
+yarn server s # rails server
+yarn server c # rails console
+yarn server db:{create | migrate | drop} # Create or drop database
 
 # Generator
+yarn server g # Rails generators
 yarn dev g {dotenv} # Angular schematics tools
 
 # Other packages

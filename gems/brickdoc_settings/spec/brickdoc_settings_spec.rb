@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 require 'spec_helper'
@@ -6,7 +7,7 @@ require 'active_record'
 require 'lockbox'
 
 Lockbox.master_key = '0000000000000000000000000000000000000000000000000000000000000000'
-ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: ":memory:")
+ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: ':memory:')
 
 ActiveRecord::Schema.define do
   self.verbose = false
@@ -22,7 +23,7 @@ end
 
 ActiveRecord::Base.cache_versioning = true if ActiveRecord::Base.respond_to?(:cache_versioning)
 
-class BrickSettings < ActiveRecord::Base
+class BrickSettings < ApplicationRecord
   include BrickdocSettings::Base
   serialize :value
 
@@ -44,7 +45,7 @@ end
 
 describe BrickdocSettings do
   it 'can set and get settings' do
-    expect(BrickSettings.get('int')).to eq(nil)
+    expect(BrickSettings.get('int')).to be_nil
     BrickSettings.set('int', 1)
     expect(BrickSettings.get('int')).to eq(1)
 
@@ -54,14 +55,14 @@ describe BrickdocSettings do
     expect(BrickSettings.new_value).to eq('new')
     expect(BrickSettings.find_by!(key: 'new_value', scope: '', domain: '').value).to eq('new')
 
-    expect(BrickSettings.get('bool')).to eq(nil)
-    expect(BrickSettings.bool?).to eq(false)
+    expect(BrickSettings.get('bool')).to be_nil
+    expect(BrickSettings.bool?).to be(false)
     BrickSettings.set('bool', true)
-    expect(BrickSettings.get('bool')).to eq(true)
-    expect(BrickSettings.bool?).to eq(true)
+    expect(BrickSettings.get('bool')).to be(true)
+    expect(BrickSettings.bool?).to be(true)
     BrickSettings.set('bool', false)
-    expect(BrickSettings.get('bool')).to eq(false)
-    expect(BrickSettings.bool?).to eq(false)
+    expect(BrickSettings.get('bool')).to be(false)
+    expect(BrickSettings.bool?).to be(false)
 
     expect(BrickSettings.get('default_val')).to eq('test')
     BrickSettings.set('default_val', 'test2')
@@ -77,10 +78,10 @@ describe BrickdocSettings do
 
     expect(BrickSettings.scope('l1.l2').defined_keys).to eq(['l3_val'])
 
-    expect(BrickSettings.respond_to?(:int)).to eq(true)
-    expect(BrickSettings.respond_to?(:l3_val)).to eq(false)
-    expect(BrickSettings.scope('l1.l2').respond_to?(:l3_val)).to eq(true)
-    expect(BrickSettings.scope('l1.l2').respond_to?(:int)).to eq(false)
+    expect(BrickSettings.respond_to?(:int)).to be(true)
+    expect(BrickSettings.respond_to?(:l3_val)).to be(false)
+    expect(BrickSettings.scope('l1.l2').respond_to?(:l3_val)).to be(true)
+    expect(BrickSettings.scope('l1.l2').respond_to?(:int)).to be(false)
 
     expect(BrickSettings.ro_val).to eq('x')
     expect { BrickSettings.ro_val = 'y' }.to raise_error(BrickdocSettings::ReadOnlyField)

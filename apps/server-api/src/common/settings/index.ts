@@ -1,5 +1,0 @@
-export * from './settings.module'
-export * from './settings.interface'
-export * from './config-map.decorator'
-export * from './item.decorator'
-export * from './settings.service'

@@ -8,7 +8,6 @@ on:
     paths-ignore:
       - '.husky/**'
       - 'bin/**'
-      - 'packages/less-vars-loader/**'
       - 'packages/eslint-plugin-brickdoc/**'
       - 'gems/rubocop-brickdoc/**'
       - '**/*.md'
@@ -48,8 +47,9 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.2
+          ruby-version: 3.1.2
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          working-directory: 'apps/server-monolith'
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Login to GitHub Container Registry

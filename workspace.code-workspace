@@ -8,13 +8,9 @@
       "name": "apps/client-web",
       "path": "apps/client-web"
     },
-    {
-      "name": "apps/landing-page",
-      "path": "apps/landing-page"
-    },
-    {
-      "name": "apps/server-api",
-      "path": "apps/server-api"
+        {
+      "name": "apps/server-monolith",
+      "path": "apps/server-monolith"
     },
     {
       "name": "packages/active-support",
@@ -49,44 +45,8 @@
       "path": "packages/brickdoc-uploader"
     },
     {
-      "name": "packages/build-support",
-      "path": "packages/build-support"
-    },
-    {
-      "name": "packages/dotenv",
-      "path": "packages/dotenv"
-    },
-    {
       "name": "packages/eslint-plugin-brickdoc",
       "path": "packages/eslint-plugin-brickdoc"
-    },
-    {
-      "name": "packages/nestjs-redis",
-      "path": "packages/nestjs-redis"
-    },
-    {
-      "name": "packages/nestjs-slonik",
-      "path": "packages/nestjs-slonik"
-    },
-    {
-      "name": "packages/server-api-crate",
-      "path": "packages/server-api-crate"
-    },
-    {
-      "name": "plugins/gcloud",
-      "path": "plugins/gcloud"
-    },
-    {
-      "name": "plugins/google-auth",
-      "path": "plugins/google-auth"
-    },
-    {
-      "name": "plugins/mock-auth",
-      "path": "plugins/mock-auth"
-    },
-    {
-      "name": "plugins/sentry",
-      "path": "plugins/sentry"
     },
     {
       "name": "tools/e2e-testing",
@@ -157,19 +117,26 @@
     "jest.jestCommandLine": "yarn run -T jest",
     "jest.disabledWorkspaceFolders": [
       "/",
-      "apps/landing-page",
       "packages/brickdoc-design-icons",
       "packages/brickdoc-test-helper",
       "packages/dotenv",
       "packages/eslint-plugin-brickdoc",
-      "plugins/gcloud",
-      "plugins/sentry",
-      "plugins/google-auth",
-      "plugins/mock-auth",
       "tools/e2e-testing",
       "tools/schematics"
     ],
     "pgsql.debugServerPort": 13000,
+    "ruby.useBundler": false,
+    "ruby.useLanguageServer": false,
+    "solargraph.useBundler": false,
+    "solargraph.completion": true,
+    "solargraph.rename": true,
+    "solargraph.references": true,
+    "solargraph.autoformat": true,
+    "solargraph.formatting": true,
+    "byesig.fold": false,
+    "byesig.enabled": true,
+    "byesig.opacity": 0.70,
+    "byesig.showIcon": false,
     "cSpell.diagnosticLevel": "Hint",
     "cSpell.words": [
       "affordance",
@@ -178,7 +145,6 @@
       "bigserial",
       "borderless",
       "brickdoc",
-      "Brickdoc",
       "Broooooklyn's",
       "builtins",
       "Cascadia",
@@ -191,7 +157,6 @@
       "eqeqeq",
       "esbuild",
       "falsey",
-      "Fastify",
       "Fira",
       "fkey",
       "fontset",
@@ -205,21 +170,16 @@
       "kysely",
       "livez",
       "memex",
-      "memlimit",
       "Menlo",
       "Microservices",
       "modulepreload",
       "moize",
       "monospace",
-      "napi",
-      "nestjs",
       "Neue",
       "neverthrow",
       "npub",
       "NPUBBYTES",
       "omakase",
-      "opslimit",
-      "ormconfig",
       "OWASP",
       "pgcrypto",
       "pino",
@@ -232,7 +192,6 @@
       "reakit",
       "Schneier's",
       "Segoe",
-      "Slonik",
       "STRBYTES",
       "styleguide",
       "Tahoma",
@@ -273,9 +232,6 @@
     "[json]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "[less]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
     "[css]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -304,17 +260,19 @@
       "aaron-bond.better-comments",
       "jock.svg",
       "mikestead.dotenv",
-      "forbeslindesay.vscode-sql-template-literal",
-      "ms-kubernetes-tools.vscode-kubernetes-tools",
       "ms-azuretools.vscode-docker",
       "ms-playwright.playwright",
       "foxundermoon.shell-format",
       "Gruntfuggly.todo-tree",
       "rangav.vscode-thunder-client",
       "bungcip.better-toml",
-      "matklad.rust-analyzer",
+      "rust-lang.rust-analyzer",
       "dustypomerleau.rust-syntax",
-      "serayuzgur.crates"
+      "serayuzgur.crates",
+      "rebornix.ruby",
+      "koichisasada.vscode-rdbg",
+      "itarato.byesig",
+      "castwide.solargraph"
     ]
   }
 }

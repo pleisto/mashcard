@@ -33,17 +33,6 @@ jobs:
       - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v/}
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm
-      - run: npm install -g @sentry/cli
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.0.2
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Login to GitHub Container Registry
@@ -52,13 +41,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Cache Docker layers
-        uses: actions/cache@v3
-        with:
-          path: /tmp/.buildx-cache
-          key: brickdocCE-saas-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-buildx-${{ github.sha }}
-          restore-keys: |
-            brickdocCE-saas-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-buildx-
       - run: sentry-cli releases new brickdoc@${{ steps.get_version.outputs.VERSION }} && sentry-cli releases set-commits brickdoc@${{ steps.get_version.outputs.VERSION }} --auto --ignore-missing
       - name: Build and push
         uses: docker/build-push-action@v3

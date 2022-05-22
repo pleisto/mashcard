@@ -93,7 +93,7 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
     </Menu>
   )
   const policyDropdown = (
-    <Dropdown placement="bottomStart" className='policyDropdown' overlay={menu}>
+    <Dropdown placement="bottomStart" className="policyDropdown" overlay={menu}>
       <div>
         {policyMessage} <Icon.LineDown />
       </div>
@@ -122,7 +122,7 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
 
   const dropdownRender = (node: React.ReactElement): React.ReactElement => (
     <div className={styles.options}>
-      {options.length > 0 && <div className='head'>Select a person</div>}
+      {options.length > 0 && <div className="head">Select a person</div>}
       {node}
     </div>
   )
@@ -131,7 +131,7 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
 
   const selectData = (
     <Select
-      className='select'
+      className="select"
       showSearch
       placeholder={t('invite.search')}
       mode="multiple"
@@ -163,14 +163,14 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
         <div className={cx('input', { filled: spaceValue.length > 0 })}>
           {selectData}
           {policyDropdown}
-          <Button className='inviteButton' type="primary" onClick={onInviteClick} loading={inviteButtonLoading}>
+          <Button className="inviteButton" type="primary" onClick={onInviteClick} loading={inviteButtonLoading}>
             {t(spaceValue.length ? 'invite.confirm_button' : 'invite.button')}
           </Button>
         </div>
       </div>
 
       <div ref={inviteListRef} className={styles.inviteList}>
-        <span className='placeholder'>{t('invite.type_hint')}</span>
+        <span className="placeholder">{t('invite.type_hint')}</span>
       </div>
 
       <div className={styles.footer}>

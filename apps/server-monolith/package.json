@@ -1,0 +1,26 @@
+{
+  "name": "@brickdoc/server-monolith",
+  "private": true,
+  "description": "It's a stub package for make turborepo could be work with rails",
+  "scripts": {
+    "lint:rubocop": "bundle exec rubocop --parallel --config .rubocop.yml",
+    "test:rspec": "bundle exec rspec",
+    "bundle": "bundle",
+    "rake": "rake",
+    "rails": "rails",
+    "start": "rails s",
+    "s": "rails s",
+    "g": "rails g",
+    "c": "rails c",
+    "db:create": "rails db:create",
+    "db:drop": "rails db:drop",
+    "db:migrate": "rails db:migrate",
+    "db:rollback": "rails db:rollback",
+    "console": "rails c",
+    "lint:brakeman": "bundle exec brakeman  --no-pager --exit-on-warn",
+    "lint:fix": "bundle exec rubocop --config .rubocop.yml -a",
+    "lint:sorbet": "bundle exec sorbet tc",
+    "vite:start": "./bin/vite dev",
+    "vite:build": "./bin/vite build"
+  }
+}

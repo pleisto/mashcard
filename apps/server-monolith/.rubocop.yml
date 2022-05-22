@@ -1,0 +1,85 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-graphql
+  - rubocop-sorbet
+inherit_gem:
+  rubocop-shopify: rubocop.yml
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.1
+  UseCache: true
+  CacheRootDirectory: tmp/cache/rubocop_cache
+
+Layout/LineLength:
+  Max: 140
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: single_quotes
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/DynamicFindBy:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false
+
+RSpec/RepeatedDescription:
+  Enabled: false
+
+RSpec/LeakyConstantDeclaration:
+  Enabled: false
+
+RSpec/VerifiedDoubles:
+  Enabled: false
+
+Rails/CreateTableWithTimestamps:
+  Enabled: false
+
+Style/CaseEquality:
+  Enabled: false
+
+Style/OpenStructUse:
+  Enabled: false
+
+# TODO: FIXME
+GraphQL/ArgumentDescription:
+  Enabled: false
+
+GraphQL/ObjectDescription:
+  Enabled: false
+
+GraphQL/ExtractInputType:
+  Enabled: false
+
+GraphQL/FieldDescription:
+  Enabled: false
+
+GraphQL/ExtractType:
+  Enabled: false

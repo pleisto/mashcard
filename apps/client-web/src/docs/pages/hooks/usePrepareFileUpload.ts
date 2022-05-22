@@ -41,6 +41,7 @@ export function usePrepareFileUpload(): EditorProps['prepareFileUpload'] {
         checksum: await checksum(file)
       }
 
+      // eslint-disable-next-line @typescript-eslint/return-await
       return await directUpload({
         variables: {
           input: {

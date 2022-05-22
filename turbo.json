@@ -4,16 +4,25 @@
   "globalDependencies": ["$CI"],
   "pipeline": {
     "lint:eslint": {
-      "outputs": [".eslintcache"]
+      "outputs": [".eslintcache"],
+      "inputs": ["src/**/*.tsx", "src/**/*.ts"]
     },
     "lint:fix": {
-      "outputs": [".eslintcache"]
+      "outputs": [".eslintcache", "tmp/cache/rubocop_cache/**"]
     },
     "lint:type": {
       "outputs": ["dist/tsconfig.tsbuildinfo"]
     },
+    "lint:rubocop": {
+      "outputs": ["tmp/cache/rubocop_cache/**"],
+      "inputs": ["**/*.rb", "Gemfile"]
+    },
     "test:jest": {
-      "outputs": ["coverage/**", "junit-reports/jest.xml"]
+      "outputs": ["coverage/**", "junit-reports/jest.xml"],
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "package.json"]
+    },
+    "test:rspec": {
+      "inputs": ["**/*.rb", "Gemfile"]
     },
     "tsdoc": {
       "outputs": ["docs/api/**"]

@@ -4,13 +4,9 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     }
   },
-  "include": ["**/*"],
-  "exclude": [
-    "dist/**/*"
-  ]
+  "include": ["**/*", "../server-monolith/vite.config.ts"],
+  "exclude": ["dist/**/*"]
 }

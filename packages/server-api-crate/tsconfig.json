@@ -1,9 +1,0 @@
-{
-  "extends": "../../tsconfig.shared.json",
-  "compilerOptions": {
-    "outDir": "target/ts",
-    "isolatedModules": false
-  },
-  "include": ["**/*"],
-  "exclude": ["dist/**/*"]
-}

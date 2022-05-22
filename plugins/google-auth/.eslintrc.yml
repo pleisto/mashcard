@@ -1,8 +1,0 @@
-root: true
-
-extends:
-  - plugin:@brickdoc/eslint-plugin/node
-
-parserOptions:
-  project:
-    - ./tsconfig.json

@@ -1,0 +1,12 @@
+{
+  "all": {
+    "sourceCodeDir": "../client-web/src",
+    "watchAdditionalPaths": ["../../packages/**/*"],
+    "publicOutputDir": "esm-bundle"
+  },
+  "development": {
+    "autoBuild": false,
+    "host": "localhost",
+    "port": 3036
+  }
+}

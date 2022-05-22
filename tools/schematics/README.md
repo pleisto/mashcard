@@ -1,3 +1,3 @@
 # @brickdoc/schematics
 
-SEE [server-api/src/cli/schematics/](../../apps/server-api/src/cli/schematics/) as an example of how to use this tool.
+Some schematics that can be used to generate a file.

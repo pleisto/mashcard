@@ -29,11 +29,60 @@ jobs:
         with:
           node-version: 18
           cache: yarn
-      - name: Setup Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
       - name: Run yarn install
         run: yarn install --immutable
       - name: Run yarn lint
         run: yarn lint
+  ruby:
+    name: Ruby
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2 # To retrieve the preceding commit.
+      - name: Get changed ruby files
+        id: changed-ruby-files
+        uses: tj-actions/changed-files@v14.1
+        with:
+          files: |
+            .(rb)$
+            Gemfile.lock
+      - name: Install Dependencies
+        if: steps.changed-ruby-files.outputs.any_changed == 'true'
+        run: sudo apt-get update && sudo apt-get install libsodium23
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        if: steps.changed-ruby-files.outputs.any_changed == 'true'
+        with:
+          working-directory: 'apps/server-monolith'
+          ruby-version: 3.1.2
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Setup NodeJS
+        if: steps.changed-ruby-files.outputs.any_changed == 'true'
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+      - name: Run yarn install
+        if: steps.changed-ruby-files.outputs.any_changed == 'true'
+        run: yarn install --immutable
+      - name: Run Rubocop
+        if: steps.changed-ruby-files.outputs.any_changed == 'true'
+        run: |
+          echo "::add-matcher::.github/matchers/rubocop.json"
+          yarn lint:rubocop
+      - name: Run Brakeman
+        if: steps.changed-ruby-files.outputs.any_changed == 'true'
+        run: |
+          echo "::add-matcher::.github/matchers/brakeman.json"
+          yarn server lint:brakeman
+      - name: Run Sorbet Static Type Checker
+        if: steps.changed-ruby-files.outputs.any_changed == 'true'
+        run: |
+          yarn server lint:sorbet

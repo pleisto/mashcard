@@ -1,4 +1,0 @@
-inherit_gem:
-  rubocop-brickdoc: rubocop.yml
-AllCops:
-  UseCache: true

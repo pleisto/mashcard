@@ -27,7 +27,8 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.2
+          working-directory: 'apps/server-monolith'
+          ruby-version: 3.1.2
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Get E2E account email & password
         id: e2e-account

@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 module BrickdocSettings
@@ -48,7 +49,7 @@ module BrickdocSettings
           type: type,
           default: default,
           read_only: read_only,
-          options: options
+          options: options,
         }
       end
 
@@ -100,6 +101,7 @@ module BrickdocSettings
 
       def set(key, value, scope: '', domain: '')
         raise ReadOnlyField.new(self, key, scope: scope) if @defined_fields.dig(scope, key, :read_only)
+
         field_config = @defined_fields.dig(scope, key) || {}
 
         # encrypted type fields
@@ -125,6 +127,7 @@ module BrickdocSettings
 
       def _get_value(key, scope: '', domain: '')
         return unless _table_exists?
+
         records = cached_records[scope] ||= where(scope: scope).order('domain_len ASC').to_a.group_by(&:key)
         if records[key].present?
           domain_len = domain.split('.').count
