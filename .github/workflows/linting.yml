@@ -44,7 +44,7 @@ jobs:
           fetch-depth: 2 # To retrieve the preceding commit.
       - name: Get changed ruby files
         id: changed-ruby-files
-        uses: tj-actions/changed-files@v14.1
+        uses: tj-actions/changed-files@v20
         with:
           files: |
             .(rb)$
