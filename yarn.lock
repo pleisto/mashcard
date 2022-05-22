@@ -2666,8 +2666,8 @@ __metadata:
     lint-staged: ^12.4.1
     prettier: ^2.6.2
     rimraf: ^3.0.2
-    ts-node: ^10.7.0
-    turbo: ^1.2.9
+    ts-node: ^10.8.0
+    turbo: ^1.2.11
     typedoc: ^0.22.15
     typedoc-plugin-markdown: ^3.12.1
     typescript: ^4.7.1-rc
@@ -3024,6 +3024,15 @@ __metadata:
   dependencies:
     "@cspotcode/source-map-consumer": 0.8.0
   checksum: 9faddda7757cd778b5fd6812137b2cc265810043680d6399acc20441668fafcdc874053be9dccd0d9110087287bfad27eb3bf342f72bceca9aa9059f5d0c4be8
+  languageName: node
+  linkType: hard
+
+"@cspotcode/source-map-support@npm:^0.8.0":
+  version: 0.8.1
+  resolution: "@cspotcode/source-map-support@npm:0.8.1"
+  dependencies:
+    "@jridgewell/trace-mapping": 0.3.9
+  checksum: 5718f267085ed8edb3e7ef210137241775e607ee18b77d95aa5bd7514f47f5019aa2d82d96b3bf342ef7aa890a346fa1044532ff7cc3009e7d24fce3ce6200fa
   languageName: node
   linkType: hard
 
@@ -3948,6 +3957,16 @@ __metadata:
   version: 1.4.13
   resolution: "@jridgewell/sourcemap-codec@npm:1.4.13"
   checksum: f14449096f60a5f921262322fef65ce0bbbfb778080b3b20212080bcefdeba621c43a58c27065bd536ecb4cc767b18eb9c45f15b6b98a4970139572b60603a1c
+  languageName: node
+  linkType: hard
+
+"@jridgewell/trace-mapping@npm:0.3.9":
+  version: 0.3.9
+  resolution: "@jridgewell/trace-mapping@npm:0.3.9"
+  dependencies:
+    "@jridgewell/resolve-uri": ^3.0.3
+    "@jridgewell/sourcemap-codec": ^1.4.10
+  checksum: d89597752fd88d3f3480845691a05a44bd21faac18e2185b6f436c3b0fd0c5a859fbbd9aaa92050c4052caf325ad3e10e2e1d1b64327517471b7d51babc0ddef
   languageName: node
   linkType: hard
 
@@ -23679,6 +23698,44 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ts-node@npm:^10.8.0":
+  version: 10.8.0
+  resolution: "ts-node@npm:10.8.0"
+  dependencies:
+    "@cspotcode/source-map-support": ^0.8.0
+    "@tsconfig/node10": ^1.0.7
+    "@tsconfig/node12": ^1.0.7
+    "@tsconfig/node14": ^1.0.0
+    "@tsconfig/node16": ^1.0.2
+    acorn: ^8.4.1
+    acorn-walk: ^8.1.1
+    arg: ^4.1.0
+    create-require: ^1.1.0
+    diff: ^4.0.1
+    make-error: ^1.1.1
+    v8-compile-cache-lib: ^3.0.1
+    yn: 3.1.1
+  peerDependencies:
+    "@swc/core": ">=1.2.50"
+    "@swc/wasm": ">=1.2.50"
+    "@types/node": "*"
+    typescript: ">=2.7"
+  peerDependenciesMeta:
+    "@swc/core":
+      optional: true
+    "@swc/wasm":
+      optional: true
+  bin:
+    ts-node: dist/bin.js
+    ts-node-cwd: dist/bin-cwd.js
+    ts-node-esm: dist/bin-esm.js
+    ts-node-script: dist/bin-script.js
+    ts-node-transpile-only: dist/bin-transpile.js
+    ts-script: dist/bin-script-deprecated.js
+  checksum: 1c22dc8dd80d0ba4dd4250b82cc032b63f6fbe8c87f8197cef43e7f9e2d43f5b333b445ed712e3006e24119257b4bff2c46605f7da61ab6f5e9514885d296f0c
+  languageName: node
+  linkType: hard
+
 "ts-node@npm:^9":
   version: 9.1.1
   resolution: "ts-node@npm:9.1.1"
@@ -23768,114 +23825,114 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo-darwin-64@npm:1.2.9":
-  version: 1.2.9
-  resolution: "turbo-darwin-64@npm:1.2.9"
+"turbo-darwin-64@npm:1.2.11":
+  version: 1.2.11
+  resolution: "turbo-darwin-64@npm:1.2.11"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-darwin-arm64@npm:1.2.9":
-  version: 1.2.9
-  resolution: "turbo-darwin-arm64@npm:1.2.9"
+"turbo-darwin-arm64@npm:1.2.11":
+  version: 1.2.11
+  resolution: "turbo-darwin-arm64@npm:1.2.11"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-freebsd-64@npm:1.2.9":
-  version: 1.2.9
-  resolution: "turbo-freebsd-64@npm:1.2.9"
+"turbo-freebsd-64@npm:1.2.11":
+  version: 1.2.11
+  resolution: "turbo-freebsd-64@npm:1.2.11"
   conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-freebsd-arm64@npm:1.2.9":
-  version: 1.2.9
-  resolution: "turbo-freebsd-arm64@npm:1.2.9"
+"turbo-freebsd-arm64@npm:1.2.11":
+  version: 1.2.11
+  resolution: "turbo-freebsd-arm64@npm:1.2.11"
   conditions: os=freebsd & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-32@npm:1.2.9":
-  version: 1.2.9
-  resolution: "turbo-linux-32@npm:1.2.9"
+"turbo-linux-32@npm:1.2.11":
+  version: 1.2.11
+  resolution: "turbo-linux-32@npm:1.2.11"
   conditions: os=linux & cpu=ia32
   languageName: node
   linkType: hard
 
-"turbo-linux-64@npm:1.2.9":
-  version: 1.2.9
-  resolution: "turbo-linux-64@npm:1.2.9"
+"turbo-linux-64@npm:1.2.11":
+  version: 1.2.11
+  resolution: "turbo-linux-64@npm:1.2.11"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm64@npm:1.2.9":
-  version: 1.2.9
-  resolution: "turbo-linux-arm64@npm:1.2.9"
+"turbo-linux-arm64@npm:1.2.11":
+  version: 1.2.11
+  resolution: "turbo-linux-arm64@npm:1.2.11"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm@npm:1.2.9":
-  version: 1.2.9
-  resolution: "turbo-linux-arm@npm:1.2.9"
+"turbo-linux-arm@npm:1.2.11":
+  version: 1.2.11
+  resolution: "turbo-linux-arm@npm:1.2.11"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"turbo-linux-mips64le@npm:1.2.9":
-  version: 1.2.9
-  resolution: "turbo-linux-mips64le@npm:1.2.9"
+"turbo-linux-mips64le@npm:1.2.11":
+  version: 1.2.11
+  resolution: "turbo-linux-mips64le@npm:1.2.11"
   conditions: os=linux & cpu=mips64el
   languageName: node
   linkType: hard
 
-"turbo-linux-ppc64le@npm:1.2.9":
-  version: 1.2.9
-  resolution: "turbo-linux-ppc64le@npm:1.2.9"
+"turbo-linux-ppc64le@npm:1.2.11":
+  version: 1.2.11
+  resolution: "turbo-linux-ppc64le@npm:1.2.11"
   conditions: os=linux & cpu=ppc64
   languageName: node
   linkType: hard
 
-"turbo-windows-32@npm:1.2.9":
-  version: 1.2.9
-  resolution: "turbo-windows-32@npm:1.2.9"
+"turbo-windows-32@npm:1.2.11":
+  version: 1.2.11
+  resolution: "turbo-windows-32@npm:1.2.11"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"turbo-windows-64@npm:1.2.9":
-  version: 1.2.9
-  resolution: "turbo-windows-64@npm:1.2.9"
+"turbo-windows-64@npm:1.2.11":
+  version: 1.2.11
+  resolution: "turbo-windows-64@npm:1.2.11"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-windows-arm64@npm:1.2.9":
-  version: 1.2.9
-  resolution: "turbo-windows-arm64@npm:1.2.9"
+"turbo-windows-arm64@npm:1.2.11":
+  version: 1.2.11
+  resolution: "turbo-windows-arm64@npm:1.2.11"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo@npm:^1.2.9":
-  version: 1.2.9
-  resolution: "turbo@npm:1.2.9"
+"turbo@npm:^1.2.11":
+  version: 1.2.11
+  resolution: "turbo@npm:1.2.11"
   dependencies:
-    turbo-darwin-64: 1.2.9
-    turbo-darwin-arm64: 1.2.9
-    turbo-freebsd-64: 1.2.9
-    turbo-freebsd-arm64: 1.2.9
-    turbo-linux-32: 1.2.9
-    turbo-linux-64: 1.2.9
-    turbo-linux-arm: 1.2.9
-    turbo-linux-arm64: 1.2.9
-    turbo-linux-mips64le: 1.2.9
-    turbo-linux-ppc64le: 1.2.9
-    turbo-windows-32: 1.2.9
-    turbo-windows-64: 1.2.9
-    turbo-windows-arm64: 1.2.9
+    turbo-darwin-64: 1.2.11
+    turbo-darwin-arm64: 1.2.11
+    turbo-freebsd-64: 1.2.11
+    turbo-freebsd-arm64: 1.2.11
+    turbo-linux-32: 1.2.11
+    turbo-linux-64: 1.2.11
+    turbo-linux-arm: 1.2.11
+    turbo-linux-arm64: 1.2.11
+    turbo-linux-mips64le: 1.2.11
+    turbo-linux-ppc64le: 1.2.11
+    turbo-windows-32: 1.2.11
+    turbo-windows-64: 1.2.11
+    turbo-windows-arm64: 1.2.11
   dependenciesMeta:
     turbo-darwin-64:
       optional: true
@@ -23905,7 +23962,7 @@ __metadata:
       optional: true
   bin:
     turbo: bin/turbo
-  checksum: 7f8bbe9ff37590e01a10f8e9859a99fb74def0c94f38d46844f3a29d7559ad95f9c85944085783f122d5ee2fff20f49e2d838d953343a45680a9089190eee2a3
+  checksum: a4ea5b68f82e8f616152eb74d007874730b48114baa6da455e36671b907410a2d8cbdf2e0cc18d932a9b5c54becdbfce021629f77e8a114f126b69ec760f4770
   languageName: node
   linkType: hard
 
@@ -24581,7 +24638,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"v8-compile-cache-lib@npm:^3.0.0":
+"v8-compile-cache-lib@npm:^3.0.0, v8-compile-cache-lib@npm:^3.0.1":
   version: 3.0.1
   resolution: "v8-compile-cache-lib@npm:3.0.1"
   checksum: 78089ad549e21bcdbfca10c08850022b22024cdcc2da9b168bcf5a73a6ed7bf01a9cebb9eac28e03cd23a684d81e0502797e88f3ccd27a32aeab1cfc44c39da0
