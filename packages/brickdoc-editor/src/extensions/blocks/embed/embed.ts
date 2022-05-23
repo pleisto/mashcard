@@ -1,10 +1,13 @@
 import { mergeAttributes, Content } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
+import { Plugin, PluginKey } from 'prosemirror-state'
 import { BlockJustCreated, BrickdocEventBus, Embedtype } from '@brickdoc/schema'
 import { EmbedView } from '../../../components/blockViews'
 import { createBlock, createJSONAttributeHtmlParser, createJSONAttributeHtmlRender } from '../../common'
 import { EmbedAttributes, EmbedOptions, meta } from './meta'
 import { uuid } from '@brickdoc/active-support'
+import { pasteImageHandler } from './pasteImageHandler'
+import { dropImageHandler } from './dropImageHandler'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -105,5 +108,22 @@ export const Embed = createBlock<EmbedOptions, EmbedAttributes>({
           return result
         }
     }
+  },
+
+  addProseMirrorPlugins() {
+    const editor = this.editor
+    return [
+      new Plugin({
+        key: new PluginKey(`${meta.name}Plugin`),
+        props: {
+          handlePaste(view, event, slice): boolean {
+            return pasteImageHandler(editor, event)
+          },
+          handleDrop(view, event, slice): boolean {
+            return dropImageHandler(editor, event as DragEvent)
+          }
+        }
+      })
+    ]
   }
 })

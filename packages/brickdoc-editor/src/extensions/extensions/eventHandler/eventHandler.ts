@@ -1,6 +1,5 @@
 import { ExtensionAttribute } from '@tiptap/core'
 import { Plugin, PluginKey } from 'prosemirror-state'
-import { pasteImageHandler } from './pasteImageHandler'
 import { gapClickHandler } from './gapClickHandler'
 import { meta } from './meta'
 import { createExtension } from '../../common'
@@ -17,9 +16,6 @@ export const EventHandler = createExtension<EventHandlerOptions, ExtensionAttrib
       new Plugin({
         key: new PluginKey(meta.name),
         props: {
-          handlePaste(view, event, slice): boolean {
-            return pasteImageHandler(editor, event)
-          },
           handleClick(view, pos, event) {
             gapClickHandler(editor, view, pos, event)
             return false
