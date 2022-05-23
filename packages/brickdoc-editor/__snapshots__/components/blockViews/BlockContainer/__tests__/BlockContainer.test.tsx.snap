@@ -13,7 +13,7 @@ exports[`BlockContainer changes block pointer event when editor editable state c
 <div>
   <div
     data-node-view-wrapper=""
-    style="pointer-events: unset; white-space: normal;"
+    style="pointer-events: none; white-space: normal;"
   />
 </div>
 `;

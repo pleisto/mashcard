@@ -1,15 +1,7 @@
-import { useEffect, useState } from 'react'
-import { useEditorPropsContext } from './useEditorPropsContext'
+import { useEditorContext } from './useEditorContext'
 
 export function useDocumentEditable(defaultEditable: boolean | undefined): [boolean] {
-  const editorProps = useEditorPropsContext()
-  const [documentEditable, setEditable] = useState(editorProps.documentEditable)
-
-  useEffect(() => {
-    if (documentEditable !== editorProps.documentEditable) {
-      setEditable(editorProps.documentEditable)
-    }
-  }, [documentEditable, editorProps.documentEditable])
+  const { documentEditable } = useEditorContext()
 
   return [defaultEditable ?? documentEditable]
 }

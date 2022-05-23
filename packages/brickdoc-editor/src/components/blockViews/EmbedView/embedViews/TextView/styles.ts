@@ -64,8 +64,5 @@ export const Name = styled('span', {
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
 
-  '&:hover': {
-    textDecoration: 'underline',
-    textDecorationColor: theme.colors.grey5
-  }
+  borderBottom: `1px solid ${theme.colors.grey5}`
 })

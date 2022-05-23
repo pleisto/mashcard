@@ -33,7 +33,7 @@ export interface CardViewProps {
 }
 
 export const CardCover: FC<Pick<CardViewProps, 'cover' | 'icon' | 'blockType'>> = ({ blockType, cover, icon }) => {
-  const isFile = blockType === 'attachment'
+  const isFile = blockType === 'attachment' || blockType === 'image'
 
   if (isFile && icon) return <FileCoverWrapper>{icon}</FileCoverWrapper>
 
@@ -43,7 +43,7 @@ export const CardCover: FC<Pick<CardViewProps, 'cover' | 'icon' | 'blockType'>> 
 }
 
 export const CardIcon: FC<Pick<CardViewProps, 'blockType' | 'icon'>> = ({ blockType, icon }) => {
-  const isFile = blockType === 'attachment'
+  const isFile = blockType === 'attachment' || blockType === 'image'
 
   if (isFile || !icon) return null
 
@@ -68,7 +68,7 @@ export const CardView: FC<CardViewProps> = ({
     event.stopPropagation()
   }, [])
   const isWebsite = blockType === 'link'
-  const isFile = blockType === 'attachment'
+  const isFile = blockType === 'attachment' || blockType === 'image'
   const type = isFile ? 'file' : 'default'
   const [actionOptions] = useActionOptions(isWebsite ? undefined : linkUrl)
   const onClick = useCallback(() => window.open(linkUrl, '_blank'), [linkUrl])
@@ -88,7 +88,7 @@ export const CardView: FC<CardViewProps> = ({
         <CardCover blockType={blockType} cover={cover} icon={icon} />
         <Content type={type}>
           {displayName && <Title type={type}>{displayName}</Title>}
-          <Description type={type}>{description}</Description>
+          <Description type={type}>{(description ?? '') || ' '}</Description>
           {!isFile && (
             <Link>
               <CardIcon blockType={blockType} icon={icon} />

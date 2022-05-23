@@ -83,8 +83,7 @@ export const BlockContainer: FC<BlockContainerProps> = forwardRef<HTMLElement, B
           } else if (ref) {
             ref.current = container
           }
-        }}
-      >
+        }}>
         <BlockContext.Provider value={blockContextData}>{blockElement}</BlockContext.Provider>
       </NodeViewWrapper>
     )

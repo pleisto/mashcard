@@ -23,8 +23,11 @@ export interface EditorContentProps extends EditorProps {
 }
 
 export const EditorContent: FC<EditorContentProps> = ({ editor, ...props }) => {
-  const [t] = useEditorI18n()
-  const editorContext = useMemo<EditorContextData>(() => ({ editor, t }), [editor, t])
+  const editorContext = useMemo<EditorContextData>(
+    () => ({ editor, documentEditable: props.documentEditable }),
+    [editor, props.documentEditable]
+  )
+  useEditorI18n()
   useDrawerService()
   useDropBlock(editor)
   useUndo(editor)

@@ -73,11 +73,11 @@ export const Title = styled('div', {
 
 export const Description = styled('div', {
   color: theme.colors.typeThirdary,
-  flex: 1,
+  display: '-webkit-box',
   fontSize: theme.fontSizes.callout,
   fontWeight: 450,
+  height: '1.25rem',
   lineHeight: '1.25rem',
-  display: '-webkit-box',
   '-webkit-line-clamp': 3,
   '-webkit-box-orient': 'vertical',
   overflow: 'hidden',
@@ -140,10 +140,14 @@ export const FileCoverWrapper = styled('div', {
 
   alignSelf: 'center',
   display: 'flex',
-  fontSize: '2rem',
+  fontSize: '1.75rem',
   height: '2rem',
   marginLeft: '1.25rem',
   width: '2rem',
+
+  '> span': {
+    fontSize: '1.75rem'
+  },
 
   '> img': {
     width: '100%'

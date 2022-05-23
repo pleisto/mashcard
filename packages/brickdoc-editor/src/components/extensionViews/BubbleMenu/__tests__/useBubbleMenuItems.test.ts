@@ -29,7 +29,8 @@ describe('useBubbleMenuItems', () => {
       nodeKey: ''
     }))
     jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-      editor
+      editor,
+      documentEditable: true
     }))
     const { result } = renderHook(() => useBubbleMenuItems())
     const items = result.current[0]
@@ -55,7 +56,8 @@ describe('useBubbleMenuItems', () => {
         nodeKey: ''
       }))
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        editor
+        editor,
+        documentEditable: true
       }))
       const { result } = renderHook(() => useNodeGroup())
       const item = (
@@ -84,7 +86,8 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        editor
+        editor,
+        documentEditable: true
       }))
       const { result } = renderHook(() => useFontColorGroup())
       const items = ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption)
@@ -112,7 +115,8 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        editor
+        editor,
+        documentEditable: true
       }))
       const { result } = renderHook(() => useFormulaItem())
       const item = result.current[0] as ToolbarItemOption
@@ -145,7 +149,8 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        editor
+        editor,
+        documentEditable: true
       }))
       const { result } = renderHook(() => useTextStyleGroup())
       const items = (result.current[0] as ToolbarGroupOption).items
@@ -179,7 +184,8 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        editor
+        editor,
+        documentEditable: true
       }))
       const { result } = renderHook(() => useLinkGroup())
       const items = ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption)
@@ -208,7 +214,8 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        editor
+        editor,
+        documentEditable: true
       }))
       const { result } = renderHook(() => useLinkGroup())
       const items = ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption)
@@ -239,7 +246,8 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        editor
+        editor,
+        documentEditable: true
       }))
       const { result } = renderHook(() => useLinkGroup())
       const items = ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption)
@@ -267,7 +275,8 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        editor
+        editor,
+        documentEditable: true
       }))
       const editorProps = { ...EditorPropsContext }
       editorProps.featureFlags = {
@@ -297,7 +306,8 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        editor
+        editor,
+        documentEditable: true
       }))
       const editorProps = { ...EditorPropsContext }
       editorProps.featureFlags = {
@@ -328,7 +338,8 @@ describe('useBubbleMenuItems', () => {
         }
       })
       jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        editor
+        editor,
+        documentEditable: true
       }))
       const editorProps = { ...EditorPropsContext }
       editorProps.featureFlags = {

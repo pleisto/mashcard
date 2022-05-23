@@ -255,7 +255,8 @@ describe('TocView', () => {
       }
     })
     jest.spyOn(editorHooks, 'useEditorContext').mockImplementation(() => ({
-      editor: props.editor
+      editor: props.editor,
+      documentEditable: true
     }))
 
     render(<TocView {...props} />)
@@ -277,7 +278,8 @@ describe('TocView', () => {
       }
     })
     jest.spyOn(editorHooks, 'useEditorContext').mockImplementation(() => ({
-      editor: props.editor
+      editor: props.editor,
+      documentEditable: true
     }))
 
     render(<TocView {...props} />)
