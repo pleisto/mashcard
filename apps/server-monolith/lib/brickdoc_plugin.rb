@@ -30,7 +30,10 @@ class BrickdocPlugin
 
     def load_plugins(plugins_paths = Brickdoc.monorepo_root.join('plugins/*'))
       Dir[plugins_paths].each do |path|
-        load_plugin(path)
+        plugin_file = "#{path}/plugin.rb"
+        if File.exist?(plugin_file)
+          load_plugin(path)
+        end
       end
     end
 

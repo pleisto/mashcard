@@ -6,8 +6,8 @@
 *.sublime-project
 *.sublime-workspace
 /.settings
-/.ruby-gemset
-/.rvmrc
+*.ruby-gemset
+*.rvmrc
 
 # IDE - VSCode
 .vscode/*
