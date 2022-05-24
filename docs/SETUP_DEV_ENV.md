@@ -69,8 +69,8 @@ Some plugins require external dependencies such as api keys, credentials, etc. Y
 
 ## Start development
 
-1. Run `yarn install && yarn server bundle install` to install all dependencies.
-2. Run `yarn dev generate dotenv` to initialize the dotenv file.
+1. Run `yarn install && yarn server i` to install all dependencies and build rust native extensions for server.
+2. Run `yarn server g dotenv` to initialize the dotenv file.
 3. Run `yarn server db:create && yarn server db:migrate` to updates your database using migrations.
 4. Run `yarn server s` && `yarn web start` to start the development server.
 5. Visit `http://localhost:3000`, and you should now see the login page.
@@ -93,16 +93,27 @@ yarn cleanup # Clean up all the building artifacts / intermediates
 
 yarn graphql # Generate GraphQL schema and run graphql-codegen
 
-# API Server
+# Monolith Server
 yarn server s # rails server
 yarn server c # rails console
 yarn server db:{create | migrate | drop} # Create or drop database
+yarn server i # equivalent to `bundle install && rake rust:build`
+yarn server g # equivalent to `rails generate`
+yarn test:rspec # Run rspec tests
+yarn lint:rubocop # Run rubocop
+yarn lint:fix # Run rubocop --auto-correct
+yarn lint:brakeman # Run brakeman
+yarn lint:clippy # Run clippy in rust
+yarn fmt:rust # Run rust-fmt
+yarn build:dev # Build rust native extensions in dev profile
+yarn server bundle # Run bundle in any monorepo directory
+yarn server rake # Run rake in any monorepo directory
 
-# Generator
-yarn server g # Rails generators
-yarn dev g {dotenv} # Angular schematics tools
 
 # Other packages
 yarn ${package-name} build
 yarn ${package-name} test
+yarn ${package-name} lint:eslint
+yarn ${package-name} lint:type
+yarn ${package-name} test:jest
 ```

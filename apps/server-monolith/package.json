@@ -10,6 +10,7 @@
     "rake": "rake",
     "rails": "rails",
     "start": "rails s",
+    "i": "bundle install && rake rust:build",
     "s": "rails s",
     "g": "rails g",
     "c": "rails c",

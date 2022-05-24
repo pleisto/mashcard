@@ -98,8 +98,8 @@ jobs:
           ruby-version: 3.1.2
           working-directory: 'apps/server-monolith'
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - name: Run bundle install for native build
-        run: bundle install
+      - name: Run native build
+        run: yarn server build
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
       - name: Run DB migrations
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'

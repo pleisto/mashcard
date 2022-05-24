@@ -32,8 +32,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     accept_language (2.0.2)
-    action_policy (0.6.0)
-      ruby-next-core (>= 0.11.0)
+    action_policy (0.6.1)
+      ruby-next-core (>= 0.14.0)
     action_policy-graphql (0.5.3)
       action_policy (>= 0.5.0)
       graphql (>= 1.9.3)
@@ -481,7 +481,7 @@ GEM
       parser (>= 3.1.1.0)
     rubocop-graphql (0.14.3)
       rubocop (>= 0.87, < 2)
-    rubocop-performance (1.13.3)
+    rubocop-performance (1.14.0)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
     rubocop-rails (2.14.2)

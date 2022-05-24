@@ -72,8 +72,8 @@ jobs:
           working-directory: 'apps/server-monolith'
           ruby-version: 3.1.2
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - name: Run bundle install for native build
-        run: bundle install
+      - name: Run native build
+        run: yarn server build
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
       - name: Setup NodeJS
         uses: actions/setup-node@v3

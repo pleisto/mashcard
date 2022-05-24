@@ -106,10 +106,3 @@ end
 
 # Plugin dependencies
 Dir.glob(MONOREPO_ROOT.join('plugins/*/Gemfile')).each { |p| eval_gemfile(p) }
-
-# Build native extensions when bundle install
-if ARGV[0] == 'install' && !ENV['SKIP_RUST_BUILD_ON_BUNDLE_INSTALL']
-  require 'rake'
-  Rake.load_rakefile(File.join(__dir__, 'ext', 'Rakefile'))
-  Rake::Task['rust:build'].invoke
-end

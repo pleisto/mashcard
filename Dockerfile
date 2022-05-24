@@ -24,7 +24,6 @@ ENV SENTRY_ORG=$SENTRY_ORG
 ENV SENTRY_PROJECT=$SENTRY_PROJECT
 ENV YARN_CHECKSUM_BEHAVIOR=update
 ENV BUNDLE_WITHOUT="test development"
-ENV SKIP_RUST_BUILD_ON_BUNDLE_INSTALL=true
 COPY . .
 RUN sed -i "s/[\"]version[\"]: [\"]0.0.0[\"]/\"version\": \"$VERSION\"/g" package.json
 RUN yarn install --immutable \
