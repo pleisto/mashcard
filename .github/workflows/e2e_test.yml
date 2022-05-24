@@ -24,12 +24,20 @@ jobs:
         run: yarn install --immutable
       - name: Install Playwright
         run: yarn e2e-testing install-deps
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
+        with:
+          toolchain: stable
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           working-directory: 'apps/server-monolith'
           ruby-version: 3.1.2
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Run bundle install for native build
+        run: bundle install
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
       - name: Get E2E account email & password
         id: e2e-account
         run: |

@@ -1,4 +1,3 @@
-# typed: false
 # frozen_string_literal: true
 
 module Sortable
@@ -44,8 +43,8 @@ module Sortable
 
         ## Rebalance
         if need_rebalance
-          new_sorts = size.times.map { |idx| idx * Docs::Block::SORT_GAP }
-          current_blocks = size.times.map { |idx| hash.fetch("idx_#{idx}") }
+          new_sorts = Array.new(size) { |idx| idx * Docs::Block::SORT_GAP }
+          current_blocks = Array.new(size) { |idx| hash.fetch("idx_#{idx}") }
           current_blocks = do_rebalance(domain, parent_id, current_blocks, new_sorts)
           hash = flatten_hash(current_blocks)
         end

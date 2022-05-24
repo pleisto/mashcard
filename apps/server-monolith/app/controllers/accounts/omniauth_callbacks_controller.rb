@@ -1,10 +1,9 @@
-# typed: false
 # frozen_string_literal: true
 
 module Accounts
   class OmniauthCallbacksController < ::Devise::OmniauthCallbacksController
     def action_missing(name)
-      raise ActionController::RoutingError, 'Not Found' unless Devise.omniauth_configs.keys.include?(name.to_sym)
+      raise ActionController::RoutingError, 'Not Found' unless Devise.omniauth_configs.key?(name.to_sym)
       redirect_to(new_user_session_path) && return if omniauth_auth.blank?
 
       @identity = Accounts::FederatedIdentity.find_by(provider: omniauth_auth[:provider], uid: omniauth_auth[:uid])

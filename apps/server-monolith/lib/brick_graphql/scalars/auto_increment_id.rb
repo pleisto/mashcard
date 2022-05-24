@@ -1,4 +1,3 @@
-# typed: true
 # frozen_string_literal: true
 
 module BrickGraphQL
@@ -7,7 +6,7 @@ module BrickGraphQL
       description 'AutoIncrement Primary Key'
 
       def self.coerce_input(input_value, _context)
-        unless input_value =~ /^[a-z0-9]+$/
+        unless /^[a-z0-9]+$/.match?(input_value)
           raise GraphQL::CoercionError,
             "#{input_value.inspect} is not a valid encrypted auto increment ID"
         end

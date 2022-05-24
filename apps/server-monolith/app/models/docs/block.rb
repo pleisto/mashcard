@@ -1,4 +1,3 @@
-# typed: false
 # frozen_string_literal: true
 
 # == Schema Information
@@ -80,7 +79,7 @@ module Docs
 
       return [nil, nil] if space_id.nil?
 
-      if id =~ Brickdoc::Validators::UUIDValidator::REGEXP
+      if Brickdoc::Validators::UUIDValidator::REGEXP.match?(id)
         o = find_by(space_id: space_id, id: id)
         [o, nil]
       else
@@ -430,7 +429,7 @@ module Docs
               new_formula = old_formula.dup
               new_formula.id = new_formula_id
               new_formula.block_id = descendants_ids_map.fetch(old_formula.block_id)
-              new_formula.name = "Cell_#{new_row_id}_#{new_column_id}".gsub('-', '')
+              new_formula.name = "Cell_#{new_row_id}_#{new_column_id}".delete('-')
 
               insert_formulas[new_formula_id] =
                 new_formula.attributes.slice(*Docs::Formula.column_names).merge('created_at' => now,

@@ -1,4 +1,3 @@
-# typed: true
 # frozen_string_literal: true
 
 class ChangeColumnNames < ActiveRecord::Migration[7.0]

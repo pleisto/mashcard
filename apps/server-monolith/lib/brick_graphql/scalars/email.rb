@@ -1,4 +1,3 @@
-# typed: true
 # frozen_string_literal: true
 
 module BrickGraphQL
@@ -7,7 +6,7 @@ module BrickGraphQL
       description 'Email Address'
 
       def self.coerce_input(input_value, _context)
-        unless input_value =~ Brickdoc::Validators::EmailValidator::REGEXP
+        unless Brickdoc::Validators::EmailValidator::REGEXP.match?(input_value)
           raise GraphQL::CoercionError,
             "#{input_value.inspect} is not a valid email address"
         end

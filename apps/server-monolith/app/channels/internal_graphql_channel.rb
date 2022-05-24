@@ -1,4 +1,3 @@
-# typed: false
 # frozen_string_literal: true
 
 # @see https://graphql-ruby.org/api-doc/1.11.6/GraphQL/Subscriptions/ActionCableSubscriptions

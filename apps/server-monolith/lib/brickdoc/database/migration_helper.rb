@@ -1,4 +1,3 @@
-# typed: false
 # frozen_string_literal: true
 
 module Brickdoc
@@ -11,7 +10,7 @@ module Brickdoc
         dbname = Database.database_name
         user = Database.username
 
-        warn(<<~MSG) if e.to_s =~ /permission denied/
+        warn(<<~MSG) if /permission denied/.match?(e.to_s)
           Brickdoc requires the PostgreSQL extension '#{extension}' installed in database '#{dbname}', but
           the database user is not allowed to install the extension.
 

@@ -2,6 +2,7 @@
   "name": "@brickdoc/server-monolith",
   "private": true,
   "description": "It's a stub package for make turborepo could be work with rails",
+  "license": "GPL-3.0-or-later WITH Classpath-exception-2.0",
   "scripts": {
     "lint:rubocop": "bundle exec rubocop --parallel --config .rubocop.yml",
     "test:rspec": "bundle exec rspec",
@@ -19,8 +20,11 @@
     "console": "rails c",
     "lint:brakeman": "bundle exec brakeman  --no-pager --exit-on-warn",
     "lint:fix": "bundle exec rubocop --config .rubocop.yml -a",
-    "lint:sorbet": "bundle exec sorbet tc",
     "vite:start": "./bin/vite dev",
-    "vite:build": "./bin/vite build"
+    "vite:build": "./bin/vite build",
+    "build": "rake rust:build",
+    "build:dev": "rake rust:build PROFILE=dev",
+    "lint:clippy": "rake rust:clippy",
+    "fmt:rust": "rake rust:fmt"
   }
 }

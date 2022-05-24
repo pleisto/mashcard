@@ -1,4 +1,3 @@
-# typed: false
 # frozen_string_literal: true
 
 require 'faraday'
@@ -27,10 +26,10 @@ module Brickdoc
         data = {
           title: response.body.dig('meta', 'title') || url,
           description: response.body.dig('meta', 'description'),
-          cover: thumbnail[0]&.dig('href') || icon.select do |i|
+          cover: thumbnail[0]&.dig('href') || icon.find do |i|
                                                 i['rel']&.include?('apple-touch-icon')
-                                              end [0]&.dig('href') || '',
-          icon: icon.select { |i| i['rel']&.include?('shortcut') }[0]&.dig('href') || '',
+                                              end&.dig('href') || '',
+          icon: icon.find { |i| i['rel']&.include?('shortcut') }&.dig('href') || '',
           type: 'website',
         }
 

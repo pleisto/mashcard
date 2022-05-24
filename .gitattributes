@@ -30,4 +30,3 @@ packages/brickdoc-design-icons/**/*.tsx linguist-generated merge=ours
 /.yarn/cache/* linguist-vendored
 **/docs/api/** linguist-vendored
 /.vscode/*.json linguist-language=JSON5
-apps/server-monolith/sorbet/** binary linguist-generated

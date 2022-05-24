@@ -1,4 +1,3 @@
-# typed: false
 # frozen_string_literal: true
 
 # See https://docs.gitlab.com/ee/development/migration_style_guide.html

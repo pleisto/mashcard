@@ -1,4 +1,3 @@
-# typed: strict
 # frozen_string_literal: true
 
 Lockbox.master_key = Brickdoc::Crypto.derive_key :data_encryption

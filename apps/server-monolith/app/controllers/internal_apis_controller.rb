@@ -1,5 +1,3 @@
-# rubocop:disable Sorbet/FalseSigil, Sorbet/ValidSigil
-# typed: ignore
 # frozen_string_literal: true
 
 class InternalApisController < ActionController::API

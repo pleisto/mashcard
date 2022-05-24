@@ -48,7 +48,6 @@ apps/server-monolith/storage/*
 apps/server-monolith/public/esm-bundle/
 apps/server-monolith/public/packs-test/
 
-
 .env.local
 .env.development.local
 .env.test.local
@@ -78,8 +77,9 @@ coverage/
 # build
 dist/
 storybook-static/
-
+*.gem
 apps/server-monolith/vendor
+target/
 
 # Vite Ruby
 /apps/server-monolith/public/vite

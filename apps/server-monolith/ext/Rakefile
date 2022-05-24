@@ -1,0 +1,157 @@
+# frozen_string_literal: true
+
+# rubocop:disable Rails/RakeEnvironment
+require 'shellwords'
+
+# Check if command exists
+# @param [String] name
+# @return [Boolean]
+def sh_command_exist?(name)
+  exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
+  ENV['PATH'].split(File::PATH_SEPARATOR).any? do |path|
+    exts.any? do |ext|
+      exe = File.join(path, "#{name}#{ext}")
+      File.executable?(exe) && !File.directory?(exe)
+    end
+  end
+end
+
+# RakeCargoHelper could be helpful to build rust binary in ruby gem
+# original: https://github.com/matsadler/halton-rb/blob/main/ext/halton/Rakefile
+# Copyright (c) 2017 Mat Sadler | MIT License
+class RakeCargoHelper
+  attr_reader :gemname
+
+  def initialize(gemname = 'brickdoc_ext')
+    @gemname = gemname
+  end
+
+  # Get profile for env
+  def self.profile
+    ENV['PROFILE'] || 'release'
+  end
+
+  def self.flags
+    cc_flags = Shellwords.split(RbConfig.expand(RbConfig::MAKEFILE_CONFIG['CC'].dup))
+
+    ['-C', "linker=#{cc_flags.shift}",
+     *cc_flags.flat_map { |a| ['-C', "link-arg=#{a}"] },
+     '-L', "native=#{RbConfig::CONFIG['libdir']}",
+     *dld_flags,
+     *platform_flags,]
+  end
+
+  def self.dld_flags
+    Shellwords.split(RbConfig::CONFIG['DLDFLAGS']).flat_map do |arg|
+      arg = arg.gsub(/\$\((\w+)\)/) do
+        Regexp.last_match(1) == 'DEFFILE' ? nil : RbConfig::CONFIG[name]
+      end.strip
+      next [] if arg.empty?
+
+      transform_flag(arg)
+    end
+  end
+
+  def self.platform_flags
+    return unless /mingw/i.match?(RbConfig::CONFIG['target_os'])
+
+    [*Shellwords.split(RbConfig::CONFIG['LIBRUBYARG']).flat_map { |arg| transform_flag(arg) },
+     '-C', 'link-arg=-Wl,--dynamicbase',
+     '-C', 'link-arg=-Wl,--disable-auto-image-base',
+     '-C', 'link-arg=-static-libgcc',]
+  end
+
+  def self.transform_flag(arg)
+    k, v = arg.split(/(?<=..)/, 2)
+    case k
+    when '-L'
+      [k, "native=#{v}"]
+    when '-l'
+      [k, v]
+    when '-F'
+      ['-l', "framework=#{v}"]
+    else
+      ['-C', "link_arg=#{k}#{v}"]
+    end
+  end
+
+  def install_dir
+    File.expand_path(File.join('..', 'lib'), __dir__)
+  end
+
+  def rust_name
+    prefix = 'lib' unless Gem.win_platform?
+    suffix = if /darwin/i.match?(RbConfig::CONFIG['target_os'])
+      '.dylib'
+    elsif Gem.win_platform?
+      '.dll'
+    else
+      '.so'
+    end
+    "#{prefix}#{gemname}#{suffix}"
+  end
+
+  def ruby_name
+    "#{gemname}.#{RbConfig::CONFIG['DLEXT']}"
+  end
+
+  def self.cargo_target_dir
+    return @cargo_target_dir if defined? @cargo_target_dir
+
+    str = %x(cargo metadata --format-version 1 --offline --no-deps --quiet)
+    begin
+      require 'json'
+      dir = JSON.parse(str)['target_directory']
+    rescue LoadError # json is usually part of the stdlib, but just in case
+      /"target_directory"\s*:\s*"(?<dir>[^"]*)"/ =~ str
+    end
+    @cargo_target_dir = dir || 'target'
+  end
+
+  # make class method private
+  private_class_method :dld_flags, :platform_flags, :transform_flag
+end
+
+namespace :rust do
+  # Build and copy dist
+  task build: [:cargo_build] do
+    helper = RakeCargoHelper.new
+    profile_dir = RakeCargoHelper.profile === 'dev' ? 'debug' : 'release'
+    source = File.join(RakeCargoHelper.cargo_target_dir, profile_dir, helper.rust_name)
+    dest = File.join(helper.install_dir, helper.ruby_name)
+    mkdir_p(helper.install_dir)
+    rm(dest) if File.exist?(dest)
+    cp(source, dest)
+  end
+
+  # Build rust binary
+  task cargo_build: [:cargo_check] do
+    profile = RakeCargoHelper.profile
+    args = profile == 'release' ? ['--release'] : ['--profile', profile]
+    sh 'cargo', 'rustc', *args, '--', *RakeCargoHelper.flags
+  end
+
+  task clean: [:cargo_check] do
+    sh 'cargo clean'
+  end
+
+  task fmt: [:cargo_check] do
+    sh 'cargo fmt'
+  end
+
+  task clippy: [:cargo_check] do
+    sh 'cargo clippy'
+  end
+
+  # Check if the rust
+  task :cargo_check do
+    raise <<-MSG unless sh_command_exist?('cargo')
+
+    Build this gem requirs rust build toolchain.
+    Run `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh` to install.
+
+    See https://rust-lang.github.io/rustup/installation/index.html for more details.
+
+    MSG
+  end
+end

@@ -1,4 +1,3 @@
-# typed: true
 # frozen_string_literal: true
 
 module BrickGraphQL
@@ -9,7 +8,7 @@ module BrickGraphQL
 
       def self.coerce_input(input_value, _context)
         raise GraphQL::CoercionError,
-          "#{input_value.inspect} is not a valid Hex Color Code" unless input_value =~ REGEXP
+          "#{input_value.inspect} is not a valid Hex Color Code" unless REGEXP.match?(input_value)
         input_value
       end
 

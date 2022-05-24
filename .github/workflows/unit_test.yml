@@ -77,50 +77,54 @@ jobs:
         with:
           fetch-depth: 2 # To retrieve the preceding commit.
       - name: Get changed ruby files
-        id: changed-ruby-files
+        id: changed-ruby-or-rust-files
         uses: tj-actions/changed-files@v20
         with:
           files: |
-            .(rb)$
+            .(rb|rs)$
             Gemfile.lock
+            Cargo.lock
       - name: Install Dependencies
-        run: sudo apt-get update && sudo apt-get install libsodium23 rustc
+        run: sudo apt-get update && sudo apt-get install libsodium23
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
+        with:
+          toolchain: stable
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
-        if: steps.changed-ruby-files.outputs.any_changed == 'true'
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         with:
           ruby-version: 3.1.2
           working-directory: 'apps/server-monolith'
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - name: Setup Rust
-        uses: actions-rs/toolchain@v1
-        if: steps.changed-ruby-files.outputs.any_changed == 'true'
-        with:
-          toolchain: stable
+      - name: Run bundle install for native build
+        run: bundle install
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
       - name: Run DB migrations
-        if: steps.changed-ruby-files.outputs.any_changed == 'true'
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         run: yarn server bundle exec rails db:prepare
         env:
           RAILS_ENV: test
       - name: Run RSpec tests
-        if: steps.changed-ruby-files.outputs.any_changed == 'true'
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         env:
           RAILS_ENV: test
         run: yarn server bundle exec rspec --format RspecJunitFormatter --out junit-reports/rspec.xml
       - name: Publish RSpec test reports
-        if: always() && steps.changed-ruby-files.outputs.any_changed == 'true'
+        if: always() && steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         uses: mikepenz/action-junit-report@v2
         with:
           report_paths: junit-reports/rspec.xml
           check_name: Rails RSpec Test Report
       - name: Publish RSpec setting test reports
-        if: always() && steps.changed-ruby-files.outputs.any_changed == 'true'
+        if: always() && steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         uses: mikepenz/action-junit-report@v2
         with:
           report_paths: junit-reports/rspec_setting.xml
           check_name: Rails RSpec Test Setting Report
       - name: Publish RSpec code coverage reports
-        if: steps.changed-ruby-files.outputs.any_changed == 'true'
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}

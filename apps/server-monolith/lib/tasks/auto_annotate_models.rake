@@ -1,4 +1,3 @@
-# typed: false
 # frozen_string_literal: true
 
 # NOTE: only doing this in development as some production environments (Heroku)

@@ -1,4 +1,3 @@
-# typed: false
 # frozen_string_literal: true
 
 # == Schema Information
@@ -72,7 +71,7 @@ module Accounts
     def save_last_position!(domain, block_id)
       return true if last_space_domain == domain && last_block_ids[domain] == block_id
 
-      unless last_block_ids.keys.include?(domain)
+      unless last_block_ids.key?(domain)
         return false unless spaces.find_by(domain: domain)
       end
 
@@ -174,7 +173,7 @@ module Accounts
     end
 
     def has_team_spaces?
-      spaces.select { |p| !p.personal }.count > 0
+      spaces.count { |p| !p.personal } > 0
     end
 
     def hashed_id

@@ -1,4 +1,3 @@
-# typed: false
 # frozen_string_literal: true
 
 # This file should contain all the record creation needed to seed the database with its default values.
@@ -11,7 +10,7 @@
 
 return if Rails.env.production?
 
-users = 5.times.map do |n|
+users = Array.new(5) do |n|
   Accounts::User.create!(name: "ADMIN#{n}", password: "PASSWORD#{n}", email: "ADMIN#{n}@brickdoc.com",
     domain: "ADMIN#{n}").tap(&:confirm)
 end

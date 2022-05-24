@@ -1,7 +1,4 @@
-# typed: true
 # frozen_string_literal: true
-
-# rubocop:disable Sorbet/ConstantsFromStrings
 
 module BrickGraphQL
   # Find all ruby modules that match the rules

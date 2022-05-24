@@ -1,7 +1,4 @@
-# typed: true
 # frozen_string_literal: true
-
-# rubocop:disable Sorbet/ConstantsFromStrings
 
 class BrickdocPlugin
   @plugins = {}

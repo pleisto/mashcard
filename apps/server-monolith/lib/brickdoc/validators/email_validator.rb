@@ -1,4 +1,3 @@
-# typed: true
 # frozen_string_literal: true
 
 module Brickdoc
@@ -8,7 +7,7 @@ module Brickdoc
 
       ## TODO don't work
       def validate_each(record, attribute, value)
-        record.errors.add attribute, ::I18n.t('errors.messages.email_invalid') unless value =~ REGEXP
+        record.errors.add attribute, ::I18n.t('errors.messages.email_invalid') unless REGEXP.match?(value)
       end
     end
   end

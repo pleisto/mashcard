@@ -1,4 +1,5 @@
 {
   "*.{json,yml,yaml,md,graphql,gql,css,js,jsx,ts,tsx}": ["prettier --write"],
-  "packages/brickdoc-design-icons/assets/**/*.svg": ["yarn design-icons generator"]
+  "packages/brickdoc-design-icons/assets/**/*.svg": ["yarn design-icons generator"],
+  "apps/server-monolith/*.{rs}": ["cargo fmt --manifest-path=apps/server-monolith/Cargo.toml && :"]
 }

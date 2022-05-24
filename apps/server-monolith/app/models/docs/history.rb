@@ -1,4 +1,3 @@
-# typed: false
 # frozen_string_literal: true
 
 # == Schema Information
@@ -38,7 +37,7 @@ module Docs
 
       # parameters = version_meta.map { |k, v| "(#{k},#{v})" }.join(',')
       # Docs::History.where("(block_id, history_version) IN (?)", parameters)
-      parameters = version_meta.size.times.collect { '(?,?)' }.join(',')
+      parameters = Array.new(version_meta.size) { '(?,?)' }.join(',')
       Docs::History.where(deleted_at: nil).where("(block_id, history_version) IN (#{parameters})",
         *version_meta.flatten)
     end

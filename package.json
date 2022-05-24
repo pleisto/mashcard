@@ -61,7 +61,7 @@
     "@types/rails__actioncable": "^6.1.6",
     "@types/rails__activestorage": "^7.0.1",
     "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.4",
+    "@types/react-dom": "^18.0.5",
     "@types/supertest": "^2.0.12",
     "@types/uuid": "^8.3.4",
     "commitizen": "^4.2.4",
