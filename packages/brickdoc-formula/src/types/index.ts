@@ -713,7 +713,7 @@ export interface EventScope {
 
 export interface EventDependency {
   readonly kind: 'SpreadsheetName' | 'ColumnName' | 'Spreadsheet' | 'Column' | 'Row' | 'Cell'
-  readonly event: EventType<any>
+  readonly event: EventType<any, any>
   readonly eventId: string
   readonly scope: EventScope
   readonly key: string

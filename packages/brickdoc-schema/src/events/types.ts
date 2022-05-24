@@ -1,4 +1,5 @@
-export interface Event<EventPayload = {}> {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export interface Event<EventPayload = {}, _CallbackResult = void> {
   type: string
   payload: EventPayload
   configure: EventConfigure
@@ -9,12 +10,12 @@ export interface EventConfigure {
   sticky?: boolean
 }
 
-export interface EventType<EventPayload = {}> {
+export interface EventType<EventPayload = {}, CallbackResult = void> {
   eventType: string
-  (args: EventPayload): Event<EventPayload>
+  (args: EventPayload): Event<EventPayload, CallbackResult>
 }
 
-export type EventCallback<EventPayload> = (event: Event<EventPayload>) => void
+export type EventCallback<EventPayload, EventResult> = (event: Event<EventPayload, EventResult>) => EventResult
 
 export type EventConstructor<T> = (payload: T) => { [key: string]: any }
 
@@ -25,13 +26,13 @@ export interface EventSubscribeConfig {
   subscribeId?: string
 }
 
-export interface EventSubscriber {
-  callback: EventCallback<any>
+export interface EventSubscriber<EventPayload, EventResult> {
+  callback: EventCallback<EventPayload, EventResult>
   config: EventSubscribeConfig
 }
 
 export interface EventSubscribers {
-  [key: string]: EventSubscriber[] | undefined
+  [key: string]: Array<EventSubscriber<any, any>> | undefined
 }
 
 export interface EventIdSubscribers {

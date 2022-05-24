@@ -117,7 +117,38 @@ describe('BrickdocEventBus', () => {
     expect(str).toEqual('a1b1c1')
   })
 
-  it('can only subscribe once with same subscribeId', () => {
+  it('define callback result type and check dispatch result', async () => {
+    const subscribeAsyncIdEvent = event<number, Promise<number>>()('subscribeAsyncIdEvent')
+
+    let counter = 0
+
+    BrickdocEventBus.subscribe(
+      subscribeAsyncIdEvent,
+      async (e: any) => {
+        counter += 1
+
+        await Promise.resolve(1)
+        counter += 100
+
+        return counter
+      },
+      { subscribeId: 'subscribe1' }
+    )
+
+    const event1 = subscribeAsyncIdEvent(0)
+
+    const promise1 = BrickdocEventBus.dispatch(event1)
+    expect(counter).toEqual(1)
+
+    const result = await Promise.all(promise1)
+
+    expect(counter).toEqual(101)
+    counter += 1000
+
+    expect(result).toEqual([101])
+  })
+
+  it('can only subscribe once with same subscribeId', async () => {
     const subscribeIdEvent = event<number>()('subscribeIdEvent')
 
     let counter = 0
