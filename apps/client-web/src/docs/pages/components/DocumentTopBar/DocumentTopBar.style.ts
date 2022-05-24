@@ -7,6 +7,13 @@ export const LogoIcon = styled('img', {
   display: 'none'
 })
 
+export const LogoIconTry = styled('img', {
+  height: '20px',
+  width: '110px',
+  margin: '18px 0 18px 16px',
+  display: 'block'
+})
+
 export const Menu = styled('div', {
   display: 'flex',
   flexDirection: 'row',

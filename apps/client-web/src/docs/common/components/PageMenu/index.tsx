@@ -49,6 +49,7 @@ interface PageMenuProps {
   pin: boolean
   parentId?: string | null
   nearNodeId?: string
+  icon?: string
 }
 
 export const PageMenu: React.FC<PageMenuProps> = ({
@@ -60,7 +61,8 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   title,
   titleText,
   parentId,
-  nearNodeId
+  nearNodeId,
+  icon
 }) => {
   const navigate = useNavigate()
   const client = useApolloClient()
@@ -295,7 +297,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
       visible={popoverVisible}
       onVisibleChange={onRenamePopoverVisibleChange}
       destroyTooltipOnHide={true}
-      overlayInnerStyle={{ marginLeft: -36 }}
+      overlayInnerStyle={{ marginLeft: icon ? -18 : -40 }}
     >
       <Root.Title to={linkPath}>{title}</Root.Title>
     </Popover>

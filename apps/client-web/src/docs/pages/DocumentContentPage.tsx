@@ -202,11 +202,11 @@ export const DocumentContentPage: React.FC = () => {
           '@smDown': 'sm'
         }}
       >
-        <Split onDragEnd={logSideBarWidth}>
-          {siderBar && <Root.Section style={preSidebarStyle}>{siderBar}</Root.Section>}
+        <Split visiable={!docMeta.isAnonymous} onDragEnd={logSideBarWidth}>
+          {!isAnonymous && <Root.Section style={preSidebarStyle}>{siderBar}</Root.Section>}
           <main className="content">
             {(!loading || docMeta.isMine) && (
-              <header>
+              <header style={docMeta.isAnonymous ? { paddingRight: 0 } : undefined}>
                 <DocumentTopBar docMeta={docMeta} />
               </header>
             )}
@@ -219,7 +219,7 @@ export const DocumentContentPage: React.FC = () => {
                   />
                 )}
               </article>
-              <aside id="aside" />
+              {!isAnonymous && <aside id="aside" />}
             </section>
           </main>
         </Split>

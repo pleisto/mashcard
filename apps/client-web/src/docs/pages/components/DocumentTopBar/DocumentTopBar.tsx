@@ -14,6 +14,7 @@ import { DocMeta, NonNullDocMeta } from '../../DocumentContentPage'
 import { DiscussionMenu } from '@/docs/common/components/DiscussionMenu'
 import { BrickdocContext } from '@/common/brickdocContext'
 import Logo from '@/common/assets/logo_brickdoc.svg'
+import Logo_Try from '@/common/assets/logo_brickdoc_try.svg'
 import * as Root from './DocumentTopBar.style'
 import loadingIcon from './loading.png'
 
@@ -33,8 +34,12 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
 
   const headMenu = docMeta.id && (
     <>
-      <Root.Menu as={PathBreadcrumb as any} docMeta={docMeta as NonNullDocMeta} />
-      <Root.LogoIcon src={Logo} alt="Brickdoc" />
+      {!docMeta.isAnonymous && <Root.Menu as={PathBreadcrumb as any} docMeta={docMeta as NonNullDocMeta} />}
+      {docMeta.isAnonymous ? (
+        <Root.LogoIconTry role="button" onClick={() => navigate('/')} src={Logo_Try} alt="Try Brickdoc" />
+      ) : (
+        <Root.LogoIcon src={Logo} alt="Brickdoc" />
+      )}
     </>
   )
 
@@ -42,7 +47,7 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
     <>
       <Root.HiddenItem as={CollaboratorsMenu} docMeta={docMeta as NonNullDocMeta} />
       <ShareMenu docMeta={docMeta as NonNullDocMeta} />
-      {features.experiment_discussion && <DiscussionMenu />}
+      {features.experiment_discussion && !docMeta.isAnonymous && <DiscussionMenu />}
       {/* {features.page_history && <HistoryMenu docMeta={docMeta as NonNullDocMeta} />} */}
       {docMeta.editable && <ExploreSlash />}
       <TopbarMore docMeta={docMeta} />

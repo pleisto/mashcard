@@ -150,6 +150,9 @@ export const Layout = styled('div', {
         [`${Section}`]: {
           display: 'none'
         },
+        '.w-split-bar': {
+          display: 'none'
+        },
         '& main.content': {
           flex: 1,
           '& > header': {

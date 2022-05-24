@@ -201,7 +201,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, children })
         trigger="click"
         placement="bottom"
         overlayStyle={{ zIndex: 1 }}
-        overlayInnerStyle={{ marginRight: 52 }}
+        overlayInnerStyle={{ marginRight: 48, marginTop: -5 }}
         content={shareContent}
       >
         {children}
