@@ -52,7 +52,7 @@
     "re-resizable": "^6.9.9",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
-    "react-medium-image-zoom": "^4.4.2",
+    "react-medium-image-zoom": "^4.4.3",
     "refractor": "^4.7.0",
     "tippy.js": "^6.3.7",
     "y-protocols": "^1.0.5",

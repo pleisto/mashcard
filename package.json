@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@brickdoc/eslint-plugin": "workspace:^",
-    "@commitlint/cli": "^17.0.0",
+    "@commitlint/cli": "^17.0.1",
     "@commitlint/config-conventional": "^17.0.0",
     "@graphql-codegen/cli": "^2.6.2",
     "@graphql-codegen/typescript": "^2.4.11",
@@ -78,13 +78,13 @@
     "jest-axe": "^6.0.0",
     "jest-environment-jsdom": "^28.1.0",
     "jest-junit": "^13.2.0",
-    "lint-staged": "^12.4.1",
+    "lint-staged": "^12.4.2",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
-    "turbo": "^1.2.11",
+    "turbo": "^1.2.12",
     "typedoc": "^0.22.15",
     "typedoc-plugin-markdown": "^3.12.1",
-    "typescript": "^4.7.1-rc"
+    "typescript": "^4.7.2"
   },
   "packageManager": "yarn@3.2.1",
   "resolutions": {
@@ -102,12 +102,13 @@
     "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.10#.yarn/patches/vite-plugin-mdx-npm-3.5.10-ae54c30668"
   },
   "dependencies": {
-    "@swc/core": "^1.2.189",
+    "@swc/core": "^1.2.192",
     "@swc/helpers": "^0.3.15",
     "dayjs": "^1.11.2",
     "ts-node": "^10.8.0"
   },
   "volta": {
-    "node": "18.2.0"
+    "node": "18.2.0",
+    "yarn": "1.22.18"
   }
 }

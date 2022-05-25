@@ -3,6 +3,9 @@
   "private": true,
   "description": "It's a stub package for make turborepo could be work with rails",
   "license": "GPL-3.0-or-later WITH Classpath-exception-2.0",
+  "volta": {
+    "extends": "../../package.json"
+  },
   "scripts": {
     "lint:rubocop": "bundle exec rubocop --parallel --config .rubocop.yml",
     "test:rspec": "bundle exec rspec",
