@@ -14,19 +14,19 @@ path = "ext/lib.rs"
 [dependencies]
 magnus = "0.3"
 any_ascii = "0.3"
-#bs58 = "0.4"
-#radix_fmt = "1"
-#blake3 = "1"
-#hex = "0.4"
-#rand ={ version = "0.8", features = ["getrandom"] }
-#rand_chacha = "0.3.1"
-#argon2 = { version = "0.4", features = ["parallel"] }
-#chacha20poly1305 = "0.9"
-#z85 = "3"
-#base64 = "0.13"
-#[dependencies.uuid]
-#version = "1"
-#features = ["v4", "fast-rng"]
+bs58 = "0.4"
+radix_fmt = "1"
+blake3 = "1"
+hex = "0.4"
+rand ={ version = "0.8", features = ["getrandom"] }
+rand_chacha = "0.3.1"
+argon2 = { version = "0.4", features = ["parallel"] }
+chacha20poly1305 = "0.9"
+z85 = "3"
+base64-simd = "0.5"
+[dependencies.uuid]
+version = "1"
+features = ["v4", "fast-rng"]
 
 
 [profile.release]

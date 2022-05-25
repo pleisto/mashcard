@@ -133,7 +133,7 @@ describe Docs::Mutations::BlockMove, type: :mutation do
 
       root = block1
 
-      id = SecureRandom.uuid
+      id = Brickdoc::Utils::Encoding::UUID.gen_v4
       child = create(:docs_block, space: user.personal_space, id: id, root_id: id, parent: root)
 
       input = { input: { id: root.id, targetParentId: child.id, sort: 300 } }

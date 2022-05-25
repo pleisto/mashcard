@@ -19,7 +19,7 @@ module Docs
         Rails.logger.info("pub #{doc_id} by #{operator_id} #{updates}")
 
         if document.state_id.blank? || (document.state_id == previous_state_id)
-          document.state = Base64.strict_decode64(state)
+          document.state = Brickdoc::Utils::Encoding::Base64.strict_decode64(state)
           # document.state = state
           document.state_id = state_id
           document.save

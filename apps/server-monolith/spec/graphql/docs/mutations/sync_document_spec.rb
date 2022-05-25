@@ -24,15 +24,15 @@ describe Docs::Mutations::SyncDocument, type: :mutation do
       self.current_user = user
       self.current_space = user.personal_space.as_session_context
 
-      doc_id = SecureRandom.uuid
+      doc_id = Brickdoc::Utils::Encoding::UUID.gen_v4
       state = Random.bytes(50)
-      state_id = SecureRandom.uuid
+      state_id = Brickdoc::Utils::Encoding::UUID.gen_v4
 
       input = {
         input: {
           docId: doc_id,
-          operatorId: SecureRandom.uuid,
-          state: Base64.strict_encode64(state),
+          operatorId: Brickdoc::Utils::Encoding::UUID.gen_v4,
+          state: Brickdoc::Utils::Encoding::Base64.strict_encode64(state),
           stateId: state_id,
         },
       }
@@ -57,22 +57,22 @@ describe Docs::Mutations::SyncDocument, type: :mutation do
       document = create(:docs_document)
 
       state = Random.bytes(50)
-      state_id = SecureRandom.uuid
+      state_id = Brickdoc::Utils::Encoding::UUID.gen_v4
 
       input = {
         input: {
           docId: document.id,
-          operatorId: SecureRandom.uuid,
-          state: Base64.strict_encode64(state),
+          operatorId: Brickdoc::Utils::Encoding::UUID.gen_v4,
+          state: Brickdoc::Utils::Encoding::Base64.strict_encode64(state),
           stateId: state_id,
-          previousStateId: SecureRandom.uuid,
+          previousStateId: Brickdoc::Utils::Encoding::UUID.gen_v4,
         },
       }
       internal_graphql_execute(mutation, input)
 
       expect(response.success?).to be(true)
       expect(response.data['syncDocument']['document']['stateId']).to eq(document.state_id)
-      expect(response.data['syncDocument']['document']['state']).to eq(Base64.strict_encode64(document.state))
+      expect(response.data['syncDocument']['document']['state']).to eq(Brickdoc::Utils::Encoding::Base64.strict_encode64(document.state))
 
       # document = Docs::Document.find(document.id)
       # # expect(document.state).to eq(state)

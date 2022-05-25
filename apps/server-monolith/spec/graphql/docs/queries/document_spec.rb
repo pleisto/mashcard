@@ -20,7 +20,7 @@ describe Docs::Queries::SpreadsheetChildren, type: :query do
         }
       GRAPHQL
 
-      internal_graphql_execute(query, { doc_id: SecureRandom.uuid })
+      internal_graphql_execute(query, { doc_id: Brickdoc::Utils::Encoding::UUID.gen_v4 })
 
       expect(response.success?).to be true
 
@@ -51,7 +51,7 @@ describe Docs::Queries::SpreadsheetChildren, type: :query do
 
       expect(response.data['document']['id']).to eq document.id
       expect(response.data['document']['stateId']).to eq document.state_id
-      expect(response.data['document']['state']).to eq Base64.strict_encode64(document.state)
+      expect(response.data['document']['state']).to eq Brickdoc::Utils::Encoding::Base64.strict_encode64(document.state)
     end
   end
 end

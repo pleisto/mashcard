@@ -32,7 +32,7 @@ parent.id => parent.history_version, })
     end
 
     it 'create' do
-      params = attrs.merge({ page: true, space: space, id: SecureRandom.uuid, collaborators: [space.owner.id] })
+      params = attrs.merge({ page: true, space: space, id: Brickdoc::Utils::Encoding::UUID.gen_v4, collaborators: [space.owner.id] })
       block = described_class.create!(params)
 
       expect(block.histories.count).to eq(1)

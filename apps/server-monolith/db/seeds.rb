@@ -47,7 +47,7 @@ def create_block(space, id, parent_id, spaces)
 end
 
 parent_map = BLOCK_SEEDS.reduce([{}, []]) do |(result, prev), seed|
-  uuids = seed.to_a.sample.times.to_a.map { SecureRandom.uuid }
+  uuids = seed.to_a.sample.times.to_a.map { Brickdoc::Utils::Encoding::UUID.gen_v4 }
   uuids.each { |uuid| result[uuid] = prev.sample }
   [result, uuids]
 end.first

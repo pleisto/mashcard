@@ -20,8 +20,8 @@ RSpec.describe Docs::Block, type: :model do
     block = create(:docs_block, text: old_text)
     child_block1 = create(:docs_block, text: old_text, space: block.space, parent: block, root_id: block.id)
     child_block2 = create(:docs_block, text: old_text, space: block.space, parent: block, root_id: block.id)
-    _sub_block1 = create(:docs_block, text: old_text, space: block.space, parent: block, id: SecureRandom.uuid)
-    sub_block2 = create(:docs_block, text: old_text, space: block.space, parent: block, id: SecureRandom.uuid)
+    _sub_block1 = create(:docs_block, text: old_text, space: block.space, parent: block, id: Brickdoc::Utils::Encoding::UUID.gen_v4)
+    sub_block2 = create(:docs_block, text: old_text, space: block.space, parent: block, id: Brickdoc::Utils::Encoding::UUID.gen_v4)
 
     expect(block.descendants.ids.sort).to eq([block.id, child_block1.id, child_block2.id].sort)
 

@@ -42,7 +42,7 @@ module Docs
 
     before_create do
       self.space_id ||= block.space_id
-      self.key = SecureRandom.uuid
+      self.key = Brickdoc::Utils::Encoding::UUID.gen_v4
     end
 
     def underway?

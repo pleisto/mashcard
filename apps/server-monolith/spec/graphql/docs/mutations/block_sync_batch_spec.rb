@@ -13,13 +13,13 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
     GRAPHQL
 
     let(:user) { create(:accounts_user) }
-    let(:operator_id) { SecureRandom.uuid }
+    let(:operator_id) { Brickdoc::Utils::Encoding::UUID.gen_v4 }
 
     it 'empty' do
       self.current_user = user
       self.current_space = user.personal_space.as_session_context
 
-      root_id = SecureRandom.uuid
+      root_id = Brickdoc::Utils::Encoding::UUID.gen_v4
 
       input = { input: { operatorId: operator_id, rootId: root_id, deletedIds: [], blocks: [{
         id: root_id,
@@ -51,7 +51,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       expect(user.last_space_domain).to be_nil
       expect(user.last_block_ids).to eq({})
 
-      root_id = SecureRandom.uuid
+      root_id = Brickdoc::Utils::Encoding::UUID.gen_v4
       input = { input: { operatorId: operator_id, rootId: root_id, deletedIds: [], blocks: [{
         id: root_id,
         type: 'doc',
@@ -73,10 +73,10 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       self.current_user = user
       self.current_space = user.personal_space.as_session_context
 
-      root_id = SecureRandom.uuid
+      root_id = Brickdoc::Utils::Encoding::UUID.gen_v4
 
       blocks = [{
-        id: SecureRandom.uuid,
+        id: Brickdoc::Utils::Encoding::UUID.gen_v4,
         type: 'doc',
         parentId: root_id,
         meta: {},
@@ -125,8 +125,8 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       self.current_user = user
       self.current_space = user.personal_space.as_session_context
 
-      root_id = SecureRandom.uuid
-      block_id = SecureRandom.uuid
+      root_id = Brickdoc::Utils::Encoding::UUID.gen_v4
+      block_id = Brickdoc::Utils::Encoding::UUID.gen_v4
 
       blocks = [{
         id: block_id,

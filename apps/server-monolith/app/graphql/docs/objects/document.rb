@@ -11,7 +11,7 @@ module Docs
       field :state_id, BrickGraphQL::Scalars::UUID, null: true
 
       def state
-        object.respond_to?(:state) ? Base64.strict_encode64(object.state) : nil
+        object.respond_to?(:state) ? Brickdoc::Utils::Encoding::Base64.strict_encode64(object.state) : nil
         # object.respond_to?(:state) ? object.state : nil
       end
     end

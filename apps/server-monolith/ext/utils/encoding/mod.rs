@@ -1,8 +1,15 @@
 use magnus::{module::RModule, Error, Module};
-//mod any_ascii;
+
+mod base58;
+mod base64;
+mod z85;
+mod uuid;
 
 pub fn init(parent: RModule) -> Result<(), Error> {
-    let _module = parent.define_module("Encoding")?;
-    //module.define_module_function("any_ascii", function!(any_ascii::for_rb_str, 1))?;
+    let module = parent.define_module("Encoding")?;
+    base58::init(module)?;
+    base64::init(module)?;
+    z85::init(module)?;
+    uuid::init(module)?;
     Ok(())
 }

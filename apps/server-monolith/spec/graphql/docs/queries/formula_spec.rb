@@ -27,7 +27,7 @@ describe Docs::Queries::Formulas, type: :query do
 
       block = create(:docs_block, space: user.personal_space)
       formula = Docs::Formula.create!(
-        block_id: block.id, id: SecureRandom.uuid, name: 'foo', meta: {},
+        block_id: block.id, id: Brickdoc::Utils::Encoding::UUID.gen_v4, name: 'foo', meta: {},
         cache_value: { 'type' => 'string', 'value' => '123' }, definition: '=123'
       )
 

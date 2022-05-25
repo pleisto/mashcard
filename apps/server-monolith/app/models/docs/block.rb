@@ -325,7 +325,7 @@ module Docs
         preload_descendants = descendants_raw.to_a
         now = Time.current
         descendants_ids_map = preload_descendants.map(&:id).index_with do |_old_id|
-          SecureRandom.uuid
+          Brickdoc::Utils::Encoding::UUID.gen_v4
         end
         descendants_ids_map[parent_id] = parent_id
         new_root_id = descendants_ids_map.fetch(id)
@@ -379,7 +379,7 @@ module Docs
                 hash[row.id] = descendants_ids_map.fetch(row.id)
               end
               new_columns = columns.map do |c|
-                new_column_id = SecureRandom.uuid
+                new_column_id = Brickdoc::Utils::Encoding::UUID.gen_v4
                 column_map[c.fetch('uuid')] = new_column_id
                 c.merge('uuid' => new_column_id)
               end
@@ -413,7 +413,7 @@ module Docs
           end
           preload_spreadsheet_formulas = Docs::Formula.where(id: formula_ids).index_by(&:id)
           new_formula_id_conversions = preload_spreadsheet_formulas.keys.index_with do |_old_id|
-            SecureRandom.uuid
+            Brickdoc::Utils::Encoding::UUID.gen_v4
           end
           row_map.values.each do |new_row_id|
             insert_data.values.filter do |b|
@@ -495,7 +495,7 @@ module Docs
     def create_sub_block!(title)
       max_sort = descendants_raw.where(parent_id: id).maximum(:sort) || 0
       Docs::Block.create!(
-        id: SecureRandom.uuid,
+        id: Brickdoc::Utils::Encoding::UUID.gen_v4,
         parent_id: id,
         page: true,
         type: 'doc',

@@ -22,7 +22,7 @@ describe Docs::Mutations::FormulaCommit, type: :mutation do
 
       input = { input: {
         commitFormulas: [{
-          id: SecureRandom.uuid,
+          id: Brickdoc::Utils::Encoding::UUID.gen_v4,
           blockId: block.id,
           type: 'normal',
           name: 'create_formula',
@@ -46,7 +46,7 @@ describe Docs::Mutations::FormulaCommit, type: :mutation do
 
       formula = Docs::Formula.create!(
         block_id: block.id,
-        id: SecureRandom.uuid,
+        id: Brickdoc::Utils::Encoding::UUID.gen_v4,
         name: 'formula_update',
         definition: '=123',
         meta: {},
@@ -84,7 +84,7 @@ describe Docs::Mutations::FormulaCommit, type: :mutation do
       self.current_space = user.personal_space.as_session_context
 
       formula = Docs::Formula.create!(
-        block_id: block.id, id: SecureRandom.uuid, name: 'formula delete', meta: {},
+        block_id: block.id, id: Brickdoc::Utils::Encoding::UUID.gen_v4, name: 'formula delete', meta: {},
         definition: '=123', cache_value: { 'value' => '123', 'type' => 'number' }
       )
 

@@ -19,7 +19,7 @@ module Docs
             data: {},
             content: [],
             text: args[:title],
-            id: SecureRandom.uuid,
+            id: Brickdoc::Utils::Encoding::UUID.gen_v4,
             parent_id: nil,
             page: true,
             sort: max_sort + Docs::Block::SORT_GAP,
