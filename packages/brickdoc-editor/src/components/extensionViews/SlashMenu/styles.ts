@@ -63,12 +63,24 @@ export const RecentGroup = styled(Menu.Group, {
 })
 
 export const Shortcut = styled('kbd', {
-  border: `1px solid ${theme.colors.borderPrimary}`,
-  borderRadius: '4px',
   color: theme.colors.typeDisabled,
-  fontSize: '.875rem',
+  fontSize: theme.fontSizes.callout,
   lineHeight: '1em',
-  padding: '.25rem'
+  padding: '.25rem',
+  position: 'relative',
+  '&::before': {
+    borderRadius: 8,
+    content: '',
+    position: 'absolute',
+    top: '-50%',
+    bottom: '-50%',
+    left: '-50%',
+    right: '-50%',
+    transform: 'scale(0.5)',
+    border: 'solid 1px',
+    borderColor: theme.colors.grey5,
+    boxSizing: 'border-box'
+  }
 })
 
 export const Footer = styled('div', {

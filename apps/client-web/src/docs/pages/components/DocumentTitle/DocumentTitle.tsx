@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Popover, Icon } from '@brickdoc/design-system'
 import * as Root from './DocumentTitle.style'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
@@ -21,6 +21,7 @@ export interface DocumentTitleProps {
   docId?: string
   blocks: GetChildrenBlocksQuery['childrenBlocks']
   editable: boolean
+  title: string
 }
 
 // const createDocAttrsUpdater =
@@ -33,7 +34,7 @@ export interface DocumentTitleProps {
 //     })
 //   }
 
-export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, blocks }) => {
+export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, blocks, title: _title }) => {
   const { t } = useDocsI18n()
   const editor = useReactiveVar(editorVar)
   const blockId = editor?.state.doc.attrs.uuid
@@ -50,13 +51,11 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
 
   const icon = meta.icon ?? docBlock?.meta?.icon
   const cover = meta.cover ?? docBlock?.meta?.cover
-  const title = meta.title ?? docBlock?.meta?.title
+  const title = meta.title ?? _title
 
-  // React.useEffect(() => {
-  //   if (inputRef.current && title !== undefined) {
-  //     inputRef.current.value = title
-  //   }
-  // }, [title])
+  useEffect(() => {
+    setMeta(meta => ({ ...meta, title: _title }))
+  }, [_title])
 
   BrickdocEventBus.subscribe(
     DocMetaLoaded,

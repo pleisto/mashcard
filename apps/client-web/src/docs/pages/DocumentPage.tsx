@@ -101,7 +101,12 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
           '@smDown': 'sm'
         }}
       >
-        <DocumentTitle docId={docMeta.id} blocks={data?.childrenBlocks} editable={documentEditable} />
+        <DocumentTitle
+          title={docMeta.title}
+          docId={docMeta.id}
+          blocks={data?.childrenBlocks}
+          editable={documentEditable}
+        />
         <Root.PageContent>
           <EditorContent editor={editor} {...editorProps} />
         </Root.PageContent>

@@ -58,7 +58,6 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
             title={null}
             placement="bottomStart"
             overlayInnerStyle={{ padding: 0, minHeight: 'fit-content' }}
-            visible={true}
             trigger={['click', 'hover']}
           >
             <div style={{ display: 'flex' }} data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.id}>
