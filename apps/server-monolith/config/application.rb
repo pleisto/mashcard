@@ -54,7 +54,6 @@ module Brickdoc
       loader = Zeitwerk::Loader.new
       loader.inflector = Rails.autoloaders.main.inflector
       loader.push_dir Rails.root.join('lib')
-      loader.ignore Rails.root.join('lib/brickdoc/native_extension_helper')
       loader.setup
     end
 
