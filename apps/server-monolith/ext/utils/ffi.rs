@@ -1,27 +1,21 @@
 /// Provide some helper functions for Rust FFI
 use magnus::{
     encoding::{self, EncodingCapable, RbEncoding},
-    exception, Error, RString,
+    RString,
 };
 
 /// covert a ruby string to vec
 /// Returns Error if the encoding is not UTF-8 or ascii-8bit
-pub fn rstring_to_vec(str: RString) -> Result<Vec<u8>, Error> {
+pub fn rstring_to_vec(str: RString) -> Vec<u8> {
     let enc = str.enc_get();
-    if enc == encoding::Index::utf8() {
+    if enc == encoding::Index::utf8() || enc == encoding::Index::usascii() {
         // This string has been validated as UTF-8, so `unwrap` is safe
-        Ok(str.to_string().unwrap().as_bytes().to_vec())
-    } else if enc == encoding::Index::ascii8bit() {
+        str.to_string().unwrap().as_bytes().to_vec()
+    } else {
         // This is directly viewing memory owned and managed by Ruby.
         // Ruby may modify or free the memory backing the returned slice.
         // So we use `to_vec` to make a copy.
-        unsafe { Ok(str.as_slice().to_vec()) }
-    } else {
-        // We are not prepared to support legacy encodings such as EUC-JP or GBK.
-        Err(Error::new(
-            exception::encoding_error(),
-            "Unsupported encoding",
-        ))
+        unsafe { str.as_slice().to_vec() }
     }
 }
 

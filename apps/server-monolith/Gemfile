@@ -25,7 +25,6 @@ gem 'connection_pool', '~> 2.2', '>= 2.2.5'
 gem 'faraday', '~> 1.10'
 gem 'faraday_middleware', '~> 1.2'
 gem 'oj'
-gem 'fast_blank', '>= 1.0.1'
 gem 'fast_underscore', '>= 0.3.3', require: false
 gem 'second_level_cache', '~> 2.7.1'
 gem 'paranoia', '~> 2.5', '>= 2.5.2'
@@ -74,9 +73,6 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0', '>= 1.0.1'
 gem 'sidekiq', '~> 6.4'
 gem 'sidekiq-scheduler', '~> 4.0'
 gem 'sidekiq-unique-jobs', '~> 7.1', '>= 7.1.22'
-
-# stafftools
-gem 'console1984'
 
 group :development, :test do
   gem 'brakeman'

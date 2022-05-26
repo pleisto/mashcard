@@ -123,12 +123,8 @@ GEM
     builder (3.2.4)
     cloak-rb (0.1.1)
       miscreant
-    colorize (0.8.1)
     concurrent-ruby (1.1.10)
     connection_pool (2.2.5)
-    console1984 (0.1.24)
-      colorize
-      parser
     crack (0.4.5)
       rexml
     crass (1.0.6)
@@ -190,7 +186,6 @@ GEM
     faraday-retry (1.0.3)
     faraday_middleware (1.2.0)
       faraday (~> 1.0)
-    fast_blank (1.0.1)
     fast_underscore (0.3.3)
     ffaker (2.21.0)
     ffi (1.15.5)
@@ -554,7 +549,7 @@ GEM
     strscan (3.0.3)
     thor (1.2.1)
     tilt (2.0.10)
-    timeout (0.2.0)
+    timeout (0.3.0)
     trailblazer-option (0.1.2)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -612,7 +607,6 @@ DEPENDENCIES
   brickdoc_settings!
   cloak-rb (>= 0.1.1)
   connection_pool (~> 2.2, >= 2.2.5)
-  console1984
   debug
   default_value_for!
   devise (~> 4.8.1)
@@ -622,7 +616,6 @@ DEPENDENCIES
   factory_bot_rails (>= 6.2)
   faraday (~> 1.10)
   faraday_middleware (~> 1.2)
-  fast_blank (>= 1.0.1)
   fast_underscore (>= 0.3.3)
   ffaker
   flipper (~> 0.24.1)

@@ -3,7 +3,7 @@ use magnus::{exception, function, module::RModule, Error, Module, RString};
 
 /// Z85 encoding
 fn encode(input: RString) -> String {
-    z85::encode(rstring_to_vec(input).unwrap_or_default())
+    z85::encode(rstring_to_vec(input))
 }
 
 /// Z85 decoding

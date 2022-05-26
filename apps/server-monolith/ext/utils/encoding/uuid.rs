@@ -13,22 +13,22 @@ fn gen_short() -> String {
 
 /// Convert a UUID to a short UUID
 fn shorten(uuid_v4: String) -> Result<String, Error> {
-      Uuid::parse_str(&uuid_v4)
-      .map_err(|e| Error::new(exception::arg_error(), e.to_string()))
-      .map(v4_to_short_internal)
+    Uuid::parse_str(&uuid_v4)
+        .map_err(|e| Error::new(exception::arg_error(), e.to_string()))
+        .map(v4_to_short_internal)
 }
 
 fn expand(short_uuid: String) -> Result<String, Error> {
     let mut uuid_buf = [0u8; 16];
     bs58::decode(short_uuid)
-    .into(&mut uuid_buf)
-    .map_err(|e| Error::new(exception::arg_error(), e.to_string()))
-    .map(|_| Uuid::from_bytes(uuid_buf).as_hyphenated().to_string())
+        .into(&mut uuid_buf)
+        .map_err(|e| Error::new(exception::arg_error(), e.to_string()))
+        .map(|_| Uuid::from_bytes(uuid_buf).as_hyphenated().to_string())
 }
 
 /// Internal function to convert a UUID to a shorted UUID
 fn v4_to_short_internal(uuid: Uuid) -> String {
-  bs58::encode(uuid.as_simple().as_ref()).into_string()
+    bs58::encode(uuid.as_simple().as_ref()).into_string()
 }
 
 pub fn init(parent: RModule) -> Result<(), Error> {

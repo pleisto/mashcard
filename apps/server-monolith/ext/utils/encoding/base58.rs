@@ -3,7 +3,7 @@ use magnus::{function, module::RModule, Error, Module, RString};
 
 /// Base58 encoding (Bitcoin style)
 fn encode(input: RString) -> String {
-    bs58::encode(rstring_to_vec(input).unwrap_or_default()).into_string()
+    bs58::encode(rstring_to_vec(input)).into_string()
 }
 
 /// Base58 decoding (Bitcoin style)

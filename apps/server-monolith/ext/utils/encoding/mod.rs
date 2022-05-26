@@ -2,8 +2,8 @@ use magnus::{module::RModule, Error, Module};
 
 mod base58;
 mod base64;
-mod z85;
 mod uuid;
+mod z85;
 
 pub fn init(parent: RModule) -> Result<(), Error> {
     let module = parent.define_module("Encoding")?;

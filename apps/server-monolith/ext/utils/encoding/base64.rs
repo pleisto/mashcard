@@ -6,7 +6,7 @@ use magnus::{exception, function, module::RModule, Error, Module, RString};
 /// No line feeds are added.
 fn strict_encode64(input: RString) -> String {
     Base64::STANDARD
-        .encode_to_boxed_str(&rstring_to_vec(input).unwrap())
+        .encode_to_boxed_str(&rstring_to_vec(input))
         .to_string()
 }
 
@@ -28,7 +28,7 @@ fn urlsafe_encode64(input: RString, padding: Option<bool>) -> String {
         None => Base64::URL_SAFE, // default
     };
     encoder
-        .encode_to_boxed_str(&rstring_to_vec(input).unwrap())
+        .encode_to_boxed_str(&rstring_to_vec(input))
         .to_string()
 }
 
