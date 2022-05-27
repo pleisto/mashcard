@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Icon } from '@brickdoc/design-system'
+import { Message, RemoveAnchorMark, AnchorMark, More } from '@brickdoc/design-icons'
 import { ToolbarSubMenuOption, ToolbarOption, ToolbarGroupOption } from '../../../ui/Toolbar'
 import { isBubbleMenuVisible } from '../BubbleMenu'
 import { useEditorContext, useEditorI18n, useEditorPropsContext } from '../../../../hooks'
@@ -21,7 +21,7 @@ export function useExtraItemsGroup(): [ToolbarOption | ToolbarGroupOption | null
       extraItemsGroup.items.push({
         type: 'item',
         name: 'comment',
-        icon: <Icon.Message />,
+        icon: <Message />,
         tooltip: t('bubble_menu.comment.title') as string,
         onAction: () => {
           editor.chain().focus().setDiscussion().run()
@@ -36,7 +36,7 @@ export function useExtraItemsGroup(): [ToolbarOption | ToolbarGroupOption | null
         moreItems.push({
           type: 'item',
           name: 'removeAnchor',
-          icon: <Icon.RemoveAnchorMark />,
+          icon: <RemoveAnchorMark />,
           label: t('bubble_menu.anchor.remove'),
           onAction: () => editor.chain().focus().unsetAnchor().run()
         })
@@ -44,7 +44,7 @@ export function useExtraItemsGroup(): [ToolbarOption | ToolbarGroupOption | null
         moreItems.push({
           type: 'item',
           name: 'anchor',
-          icon: <Icon.AnchorMark />,
+          icon: <AnchorMark />,
           label: t('bubble_menu.anchor.add'),
           onAction: () => editor.chain().focus().setAnchor().run()
         })
@@ -54,8 +54,9 @@ export function useExtraItemsGroup(): [ToolbarOption | ToolbarGroupOption | null
     if (moreItems.length !== 0) {
       extraItemsGroup.items.push({
         type: 'subMenu',
+        trigger: 'hover',
         name: 'more',
-        content: <Icon.More />,
+        content: <More />,
         items: moreItems
       })
     }

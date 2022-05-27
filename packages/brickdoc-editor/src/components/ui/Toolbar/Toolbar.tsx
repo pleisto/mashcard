@@ -1,6 +1,6 @@
 import { FC, Key, ReactElement, ReactNode, useMemo } from 'react'
 import { CSS } from '@stitches/react'
-import { styled, theme, Tooltip } from '@brickdoc/design-system'
+import { MenuProps, PopoverProps, styled, theme, Tooltip } from '@brickdoc/design-system'
 import { ToolbarMenuItem } from './MenuItem'
 import { ToolbarMenuSubMenuItem } from './MenuSubMenuItem'
 import { useEditorI18n } from '../../../hooks'
@@ -9,6 +9,7 @@ export interface ToolbarOptionBase {
   type: 'item' | 'subMenu'
   name: string
   css?: CSS
+  className?: string
   icon?: ReactElement
   label?: string
   content?: ReactNode
@@ -29,15 +30,20 @@ export interface ToolbarItemOption extends ToolbarOptionBase {
   type: 'item'
 }
 
-export interface ToolbarGroupOption {
+interface ToolbarGroupOptionBase {
   type: 'group'
+  disableSeparator?: boolean
+  className?: string
   title?: string
+  label?: string
+  orientation?: MenuProps['orientation']
+}
+
+export interface ToolbarGroupOption extends ToolbarGroupOptionBase {
   items: ToolbarOption[]
 }
 
-export interface ToolbarItemGroupOption {
-  type: 'group'
-  title?: string
+export interface ToolbarItemGroupOption extends ToolbarGroupOptionBase {
   items: ToolbarItemOption[]
 }
 
@@ -47,6 +53,8 @@ export interface ToolbarSubMenuOption extends ToolbarOptionBase {
   [x: string]: ReactNode
   type: 'subMenu'
   baseId?: string
+  orientation?: MenuProps['orientation']
+  trigger?: PopoverProps['trigger']
   items: Array<ToolbarItemGroupOption | ToolbarItemOption> | ToolbarSubMenuItemsRender
 }
 
@@ -92,7 +100,18 @@ const ToolbarMenuGroup = styled('ul', {
   flexDirection: 'row',
   listStyle: 'none',
   margin: 0,
-  padding: 0
+  padding: 0,
+
+  variants: {
+    orientation: {
+      vertical: {
+        flexDirection: 'column'
+      },
+      horizontal: {
+        flexDirection: 'row'
+      }
+    }
+  }
 })
 
 const ToolbarSeparator = styled('li', {
@@ -136,8 +155,7 @@ const ToolbarMenuOption: FC<{ option: ToolbarOption }> = ({ option }) => {
           <div>{tooltipDescription}</div>
         </>
       }
-      placement="top"
-    >
+      placement="top">
       <ToolbarMenuOptionInner option={option} />
     </Tooltip>
   )
@@ -153,11 +171,18 @@ export const Toolbar: FC<ToolbarProps> = ({ type, options }) => {
         if (option.type === 'group')
           return [
             ...elements,
-            <ToolbarMenuGroup role="presentation" title={option.title} key={option.title ?? `section-${index}`}>
+            <ToolbarMenuGroup
+              orientation={option.orientation}
+              role="presentation"
+              title={option.title}
+              className={option.className}
+              key={option.title ?? `section-${index}`}>
               {option.items.map((option, optionIndex) => (
                 <ToolbarMenuOption key={`${index}-${optionIndex}`} option={option} />
               ))}
-              {index < array.length - 1 && <ToolbarSeparator aria-label={t('toolbar.separator')} />}
+              {!option.disableSeparator && index < array.length - 1 && (
+                <ToolbarSeparator aria-label={t('toolbar.separator')} />
+              )}
             </ToolbarMenuGroup>
           ]
 

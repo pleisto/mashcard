@@ -28,6 +28,7 @@ export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {
           name: 'node',
           label: t(`bubble_menu.node.items.${nodeKey ?? 'paragraph'}`),
           tooltip: t('bubble_menu.node.section_title') as string,
+          trigger: 'hover',
           items: [
             {
               type: 'group',

@@ -18,6 +18,18 @@ const SubMenuItem = styled('li', {
   variants
 })
 
+const HorizontalGroup = styled(Menu.Group, {
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  maxWidth: '100%',
+  padding: '0 1.25rem',
+
+  'li + li': {
+    marginLeft: 0
+  }
+})
+
 const ArrowDown = styled(Icon.ArrowDown, {
   color: theme.colors.iconThirdary,
   fontSize: '.5rem',
@@ -28,48 +40,56 @@ export interface ToolbarMenuSubMenuItemProps {
   option: ToolbarSubMenuOption
 }
 
+const renderMenuInner = (option: ToolbarItemGroupOption, closeMenu: VoidFunction): ReactElement => {
+  const items = option.items.map(item => (
+    <Menu.Item
+      className={item.className}
+      key={item.name}
+      itemKey={item.name}
+      icon={item.icon}
+      label={item.label}
+      onAction={key => {
+        item.onAction?.(key)
+        if (item.closeOnAction) closeMenu()
+      }}>
+      {item.content}
+    </Menu.Item>
+  ))
+
+  if (option.orientation === 'horizontal') return <HorizontalGroup>{items}</HorizontalGroup>
+
+  return <>{items}</>
+}
+
 const renderMenu = (
   option: ToolbarSubMenuOption,
   items: Array<ToolbarItemGroupOption | ToolbarItemOption>,
   closeMenu: () => void
 ): ReactElement => {
   return (
-    <Menu aria-label={option.name} type="ghost">
+    <Menu orientation={option.orientation} className={option.className} aria-label={option.name} type="ghost">
       {items.map((menuItem, index) => {
         if (menuItem.type === 'group') {
           return (
             <Fragment key={index}>
-              <Menu.Group title={menuItem.title} key={index}>
-                {menuItem.items.map(item => (
-                  <Menu.Item
-                    key={item.name}
-                    itemKey={item.name}
-                    icon={item.icon}
-                    label={item.label ?? item.name}
-                    onAction={key => {
-                      item.onAction?.(key)
-                      if (item.closeOnAction) closeMenu()
-                    }}
-                  >
-                    {item.content}
-                  </Menu.Item>
-                ))}
+              <Menu.Group className={menuItem.className} title={menuItem.title} label={menuItem.label} key={index}>
+                {renderMenuInner(menuItem, closeMenu)}
               </Menu.Group>
-              {index < items.length - 1 && <Menu.Separator key={`separator-${index}`} />}
+              {!menuItem.disableSeparator && index < items.length - 1 && <Menu.Separator key={`separator-${index}`} />}
             </Fragment>
           )
         }
         return (
           <Menu.Item
             key={menuItem.name}
+            className={menuItem.className}
             itemKey={menuItem.name}
             icon={menuItem.icon}
             label={menuItem.label ?? menuItem.name}
             onAction={key => {
               menuItem.onAction?.(key)
               if (menuItem.closeOnAction) closeMenu()
-            }}
-          >
+            }}>
             {menuItem.content}
           </Menu.Item>
         )
@@ -90,15 +110,14 @@ export const ToolbarMenuSubMenuItem: FC<ToolbarMenuSubMenuItemProps> = ({ option
   return (
     <Popover
       {...props}
-      trigger="click"
+      trigger={option.trigger ?? 'click'}
       visible={visible}
       onVisibleChange={handleVisibleChange}
       placement="bottom"
       compact={true}
       getPopupContainer={element => element}
       content={MenuContent}
-      destroyTooltipOnHide={true}
-    >
+      destroyTooltipOnHide={true}>
       {hasContent && <ToolbarMenuItem option={option} />}
       {!hasContent && (
         <SubMenuItem role="menuitem" aria-label={option.label ?? option.name} active={option.active} css={option.css}>

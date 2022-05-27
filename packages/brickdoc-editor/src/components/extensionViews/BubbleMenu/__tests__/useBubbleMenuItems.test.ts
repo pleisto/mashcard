@@ -71,7 +71,7 @@ describe('useBubbleMenuItems', () => {
   })
 
   describe('Font Color Group', () => {
-    it('triggers item action correctly', () => {
+    it('triggers font color action correctly', () => {
       const mockSetFontColor = jest.fn()
 
       const editor = mockEditor({
@@ -90,12 +90,73 @@ describe('useBubbleMenuItems', () => {
         documentEditable: true
       }))
       const { result } = renderHook(() => useFontColorGroup())
-      const items = ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption)
-        .items as ToolbarItemOption[]
+      const items = (
+        (
+          ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption).items as any
+        )[0] as ToolbarItemGroupOption
+      ).items
 
       items[0].onAction?.('')
 
       expect(mockSetFontColor).toBeCalled()
+    })
+
+    it('triggers font bg color action correctly', () => {
+      const mockSetFontBgColor = jest.fn()
+
+      const editor = mockEditor({
+        commands: {
+          setFontBgColor: mockSetFontBgColor
+        },
+        state: {
+          selection: {
+            from: 1,
+            to: 10
+          }
+        }
+      })
+      jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
+        editor,
+        documentEditable: true
+      }))
+      const { result } = renderHook(() => useFontColorGroup())
+      const items = (
+        (
+          ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption).items as any
+        )[1] as ToolbarItemGroupOption
+      ).items
+
+      items[0].onAction?.('')
+
+      expect(mockSetFontBgColor).toBeCalled()
+    })
+
+    it('triggers reset action correctly', () => {
+      const mockUnsetFontColor = jest.fn()
+
+      const editor = mockEditor({
+        commands: {
+          unsetFontColor: mockUnsetFontColor
+        },
+        state: {
+          selection: {
+            from: 1,
+            to: 10
+          }
+        }
+      })
+      jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
+        editor,
+        documentEditable: true
+      }))
+      const { result } = renderHook(() => useFontColorGroup())
+      const item = (
+        ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption).items as any
+      )[2] as ToolbarItemOption
+
+      item.onAction?.('')
+
+      expect(mockUnsetFontColor).toBeCalled()
     })
   })
 

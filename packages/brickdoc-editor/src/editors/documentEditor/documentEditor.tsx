@@ -36,9 +36,9 @@ export const EditorContent: FC<EditorContentProps> = ({ editor, ...props }) => {
   return (
     <EditorContext.Provider value={editorContext}>
       <BubbleMenu editor={editor} />
-        <TiptapEditorContent className={brickdocCls} editor={editor} />
-        <DiscussionList />
-        <ExplorerMenu editor={editor} />
+      <TiptapEditorContent className={brickdocCls} editor={editor} />
+      <DiscussionList />
+      <ExplorerMenu editor={editor} />
     </EditorContext.Provider>
   )
 }
@@ -92,6 +92,7 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
           embed: true,
           eventHandler: true,
           fontColor: true,
+          fontBgColor: true,
           formula: true,
           gapcursor: false,
           hardBreak: true,

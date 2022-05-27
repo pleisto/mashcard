@@ -16,6 +16,7 @@ export interface BaseOptions {
   dropcursor: Partial<EXTENSION.DropcursorOptions> | boolean
   embed: Partial<EXTENSION.EmbedOptions> | boolean
   eventHandler: Partial<EXTENSION.EventHandlerOptions> | boolean
+  fontBgColor: Partial<EXTENSION.FontBgColorOptions> | boolean
   fontColor: Partial<EXTENSION.FontColorOptions> | boolean
   formula: Partial<EXTENSION.FormulaOptions> | boolean
   formulaKeyDown: Partial<EXTENSION.FormulaHandleKeyDownOptions> | boolean
@@ -73,8 +74,9 @@ export const Base = Extension.create<BaseOptions>({
     if (this.options.eventHandler)
       extensions.push(EXTENSION.EventHandler.configure(getConfigure(this.options?.eventHandler)))
     if (this.options.fontColor) extensions.push(EXTENSION.FontColor.configure(getConfigure(this.options?.fontColor)))
+    if (this.options.fontBgColor)
+      extensions.push(EXTENSION.FontBgColor.configure(getConfigure(this.options?.fontBgColor)))
     if (this.options.formula) extensions.push(EXTENSION.Formula.configure(getConfigure(this.options?.formula)))
-    // NOTE: formula only
     if (this.options.formulaKeyDown)
       extensions.push(EXTENSION.FormulaHandleKeyDown.configure(getConfigure(this.options?.formulaKeyDown)))
     if (this.options.formulaType)

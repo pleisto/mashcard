@@ -1,3 +1,4 @@
+import { act } from '@testing-library/react'
 import { renderHook } from '@testing-library/react-hooks'
 import { EmbedAttributes, EmbedOptions } from '../../../../../../extensions'
 import { mockBlockViewProps } from '../../../../../../test'
@@ -25,11 +26,15 @@ describe('useImageState', () => {
     // make image loaded
     const image = { naturalWidth: 1, naturalHeight: 1 }
     const event: any = { target: image }
-    onImageLoad(event)
+    act(() => {
+      onImageLoad(event)
+    })
 
     expect(result.current.showPreview).toBeFalsy()
 
-    result.current.previewImage()
+    act(() => {
+      result.current.previewImage()
+    })
 
     expect(result.current.showPreview).toBeTruthy()
   })
@@ -76,7 +81,9 @@ describe('useImageState', () => {
 
     const image = { naturalWidth: width, naturalHeight: height }
     const event: any = { target: image }
-    onImageLoad(event)
+    act(() => {
+      onImageLoad(event)
+    })
 
     expect(result.current.loaded).toBeTruthy()
     expect(updateEmbedBlockAttributes).toBeCalledWith({ width, ratio: width / height }, 'image')

@@ -10,8 +10,8 @@ import { MenuItemSubMenu } from './menuItemSubMenu'
 
 export interface MenuProps extends MenuBarHTMLProps {
   baseId?: string
-  // TODO: add horizontal
-  orientation?: 'vertical'
+  // TODO: horizontal
+  orientation?: 'vertical' | 'horizontal'
   onAction?: (key: string) => void
   type?: 'default' | 'ghost'
 }
@@ -32,6 +32,9 @@ export const menubarStyles = css({
     orientation: {
       vertical: {
         flexDirection: 'column'
+      },
+      horizontal: {
+        flexDirection: 'row'
       }
     }
   }
@@ -54,8 +57,7 @@ const _Menu: React.ForwardRefRenderFunction<HTMLUListElement, MenuProps> = (prop
           {...restProps}
           orientation={orientation}
           className={menuBarClass}
-          ref={ref}
-        >
+          ref={ref}>
           {children}
         </ReakitMenuBar>
       </MenuContext.Provider>

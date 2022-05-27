@@ -764,16 +764,12 @@ en-US:
         title: Strike
       fontColor:
         title: Font color
-        Default: Default
-        Gray: Gray
-        Cyan: Cyan
-        Red: Red
-        Orange: Orange
-        Yellow: Yellow
-        Green: Green
-        Blue: Blue
-        Purple: Purple
-        Purplish Red: Purplish Red
+        text_color:
+          label: Text Color
+        bg_color:
+          label: Background
+        reset_button:
+          label: Reset
       comment:
         title: Comment
       formula:
