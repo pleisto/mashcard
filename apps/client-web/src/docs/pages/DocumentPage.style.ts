@@ -11,8 +11,7 @@ export const PageContent = styled('div', {
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center',
-  padding: '0 5.5rem'
+  alignItems: 'center'
 })
 
 export const Page = styled('div', {

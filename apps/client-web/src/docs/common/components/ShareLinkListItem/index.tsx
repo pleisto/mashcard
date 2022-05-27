@@ -99,12 +99,14 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ docMeta, i
           <div className="head">{t('invite.view_message')}</div>
           <div className="desc">{t('invite.view_message_description')}</div>
         </div>
+        {item.policy === Policytype.View && <Check className="check-icon" />}
       </Menu.Item>
       <Menu.Item className={menuClassName} itemKey={Policytype.Edit} active={item.policy === Policytype.Edit}>
         <div className="content">
           <div className="head">{t('invite.edit_message')}</div>
           <div className="desc">{t('invite.edit_message_description')}</div>
         </div>
+        {item.policy === Policytype.Edit && <Check className="check-icon" />}
       </Menu.Item>
       <Menu.Item className={menuClassName} itemKey="remove" danger>
         <div className="content">{t('invite.remove_message')}</div>

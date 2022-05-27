@@ -54,7 +54,8 @@ export const selectStyle = css({
     color: theme.colors.typeThirdary,
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
-    pointerEvents: 'none'
+    pointerEvents: 'none',
+    fontSize: theme.fontSizes.subHeadline
   },
   '&-selection-search-mirror': {
     position: 'absolute',

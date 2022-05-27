@@ -4,6 +4,8 @@ import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { findChildren } from '@tiptap/core'
 import type { Refractor, RefractorRoot, RefractorElement, Text } from 'refractor/lib/core'
 
+const NEW_LINE_EXP = /\n(?!$)/g
+
 function parseNodes(nodes: any[], className: string[] = []): Array<{ text: string; classes: string[] }> {
   return nodes
     .map(node => {
@@ -40,6 +42,7 @@ function getDecorations({
 
   findChildren(doc, node => node.type.name === name).forEach(block => {
     let from = block.pos + 1
+    let lineFrom = block.pos + 1
     const language = block.node.attrs.language || defaultLanguage
     const languages = refractor.listLanguages()
 
@@ -48,6 +51,18 @@ function getDecorations({
         ? getHighlightNodes(refractor.highlight(block.node.textContent, language))
         : // refractor doesn't support `hightlightAuto` api, use defaultLanguage as fallback
           getHighlightNodes(refractor.highlight(block.node.textContent, defaultLanguage))
+    if (block.node.textContent) {
+      block.node.textContent.split(NEW_LINE_EXP).forEach((line: string) => {
+        const decoration = Decoration.widget(lineFrom, () => {
+          const ele = document.createElement('div')
+          ele.className = 'line-numbers-rows'
+          ele.contentEditable = 'false'
+          return ele
+        })
+        decorations.push(decoration)
+        lineFrom = lineFrom + line.length + 1
+      })
+    }
 
     parseNodes(nodes).forEach(node => {
       const to = from + node.text.length

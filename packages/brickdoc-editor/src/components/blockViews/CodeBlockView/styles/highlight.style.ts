@@ -9,7 +9,8 @@ export const ViewModeBar = styled('div', {
   alignItems: 'center',
   cursor: 'pointer',
   margin: '0 16px 16px',
-  color: theme.colors.typeThirdary
+  color: theme.colors.typeThirdary,
+  fontSize: theme.fontSizes.callout
 })
 
 export const CodeContainer = styled('div', {
@@ -21,7 +22,7 @@ export const CodeContainer = styled('div', {
 
 export const CodeScroll = css({
   '& > div': {
-    overflowX: 'auto',
+    wordBreak: 'break-all!important',
     whiteSpace: 'pre!important'
   }
 })
@@ -40,13 +41,13 @@ export const highlightStyle = css({
   'code[class*="language-"], pre[class*="language-"]': {
     color: theme.colors.typePrimary,
     textShadow: '0 1px white',
-    fontSize: '1em',
+    fontSize: theme.fontSizes.callout,
+    lineHeight: theme.lineHeights.code,
     textAlign: 'left',
     whiteSpace: 'pre',
     wordSpacing: 'normal',
     wordBreak: 'normal',
     wordWrap: 'normal',
-    lineHeight: 1.5,
     tabSize: 2,
     hyphens: 'none'
   },
@@ -54,6 +55,34 @@ export const highlightStyle = css({
     {
       textShadow: 'none'
     },
+  'pre[class*="language-"].line-numbers': {
+    position: 'relative',
+    paddingLeft: '3rem',
+    counterReset: 'linenumber'
+  },
+  'pre[class*="language-"].line-numbers > code': {
+    position: 'relative',
+    whiteSpace: 'inherit'
+  },
+  '.line-numbers .line-numbers-rows': {
+    position: 'relative',
+    pointerEvents: 'none',
+    width: 0,
+    height: 0,
+    display: ' inline-block'
+  },
+  '.line-numbers-rows::after': {
+    content: 'counter(linenumber)',
+    position: 'absolute',
+    top: -17,
+    left: '-3rem',
+    width: '2rem',
+    counterIncrement: 'linenumber',
+    color: theme.colors.typeSecondary,
+    lineHeight: theme.lineHeights.code,
+    display: 'block',
+    textAlign: 'right'
+  },
   '@media print': {
     'code[class*="language-"], pre[class*="language-"]': {
       textShadow: 'none'

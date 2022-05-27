@@ -7,6 +7,7 @@ export const lineHeights = {
   footnote: rem(16),
   callout: rem(18),
   subHeadline: rem(22),
+  code: rem(26),
   body: rem(28),
   title5: rem(24),
   title4: rem(30),

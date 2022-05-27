@@ -828,7 +828,7 @@ en-US:
         ok: Delete
         cancel: Cancel
       languages:
-        'plain text': Plaintext
+        'plain text': Plain text
         markdown: Markdown
         css: CSS
         javascript: JavaScript

@@ -3,7 +3,7 @@
 exports[`CodeBlockView matches snapshot correctly 1`] = `
 <div>
   <div
-    class="brd-c-hIBjYz"
+    class="brd-c-fwHUHW"
     data-node-view-wrapper=""
     style="pointer-events: none; white-space: normal;"
   >
@@ -11,7 +11,7 @@ exports[`CodeBlockView matches snapshot correctly 1`] = `
       class="brd-c-ibqHiI"
     >
       <div
-        class="brd-c-gFLTCK"
+        class="brd-c-blEDBb"
       >
         <div
           aria-haspopup="dialog"
@@ -68,9 +68,13 @@ exports[`CodeBlockView matches snapshot correctly 1`] = `
           </label>
         </div>
       </div>
-      <pre>
+      <pre
+        class="line-numbers language-javascript"
+        spellcheck="false"
+      >
         <code
           as="code"
+          class="undefined language-javascript"
           data-node-view-content=""
           style="white-space: pre-wrap;"
         />

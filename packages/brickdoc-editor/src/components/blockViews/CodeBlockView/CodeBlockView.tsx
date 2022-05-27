@@ -38,27 +38,29 @@ const LanguageSelect: FC<ILanguageSelect> = (props: ILanguageSelect) => {
   const [visible, setVisible] = useState(false)
   const handleVisibleChange = (visible: boolean): void => setVisible(visible)
   const menu = (
-    <Menu type="ghost" style={{ maxHeight: 400, overflow: 'auto' }}>
-      <Menu.Item key="search" itemKey="search">
+    <>
+      <div style={{ width: 244, padding: '8px 16px' }}>
         <Input
-          bordered={false}
           placeholder={t('code_block.search_placeholder')}
           value={search}
           onChange={e => setSearch(e.target.value)}
+          size="sm"
         />
-      </Menu.Item>
-      {([defaultLanguage, ...languageNames] as string[])
-        .filter(lang => lang.toLowerCase().includes(search?.toLowerCase() ?? ''))
-        .map(name => (
-          <Menu.Item
-            key={name}
-            itemKey={name}
-            onAction={onAction}
-            label={t(`code_block.languages.${name}`)}
-            tip={name === language ? <LanguageChecked /> : undefined}
-          />
-        ))}
-    </Menu>
+      </div>
+      <Menu type="ghost" style={{ maxHeight: 400, overflow: 'auto' }}>
+        {([defaultLanguage, ...languageNames] as string[])
+          .filter(lang => lang.toLowerCase().includes(search?.toLowerCase() ?? ''))
+          .map(name => (
+            <Menu.Item
+              key={name}
+              itemKey={name}
+              onAction={onAction}
+              label={t(`code_block.languages.${name}`)}
+              tip={name === language ? <LanguageChecked /> : undefined}
+            />
+          ))}
+      </Menu>
+    </>
   )
   const updateVisible = (): void => setVisible(state => !state)
   return (
@@ -107,8 +109,11 @@ export const CodeBlockView: FC<CodeBlockViewProps> = ({ node, updateAttributes, 
             <Switch checked={!!autoWrap} size="sm" onChange={onAutoWrapChange} />
           </SwitchContainer>
         </ViewModeBar>
-        <pre>
-          <NodeViewContent className={autoWrap ? undefined : CodeScroll()} as="code" />
+        <pre className={`line-numbers language-${language ?? defaultLanguage}`} spellCheck={false}>
+          <NodeViewContent
+            className={`${autoWrap ? undefined : CodeScroll()} language-${language ?? defaultLanguage}`}
+            as="code"
+          />
         </pre>
       </CodeContainer>
     </BlockContainer>

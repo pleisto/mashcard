@@ -80,7 +80,6 @@ export const TitleWrapper = styled('div', {
   width: '100%',
   marginBottom: '3rem',
   marginTop: '4.25rem',
-  padding: '0 5.5rem',
   fontSize: '2.5rem',
   display: 'flex',
   flexDirection: 'column',

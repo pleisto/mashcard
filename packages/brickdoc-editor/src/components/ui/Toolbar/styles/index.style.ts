@@ -1,4 +1,4 @@
-import { theme } from '@brickdoc/design-system'
+import { styled, theme } from '@brickdoc/design-system'
 
 export const itemHeight = '1.25rem'
 
@@ -21,3 +21,10 @@ export const itemCommon = {
   ...hover,
   ...pressed
 }
+
+export const LinkInputWrapper = styled('div', {
+  width: 204,
+  margin: '0 16px',
+  borderBottom: '1px solid',
+  borderBlockColor: theme.colors.primaryDefault
+})

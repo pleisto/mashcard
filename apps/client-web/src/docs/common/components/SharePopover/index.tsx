@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useCallback, useState } from 'react'
-import { Button, Icon, Popover, toast, Spin, Select, Menu, Dropdown } from '@brickdoc/design-system'
+import { Button, Icon, Popover, toast, Spin, Select, Menu, Dropdown, theme } from '@brickdoc/design-system'
 
 import { debounce } from '@brickdoc/active-support'
 import { useDocsI18n } from '../../hooks'
@@ -153,12 +153,17 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, children })
       <SharePopTitle>{t('share.share_title')}</SharePopTitle>
       <InviteBar>
         <Select
+          menuItemSelectedIcon={<Check fill={theme.colors.primaryDefault.value} className="check-icon" />}
           prefixCls={prefixCls}
           className="user-picker"
           showSearch
           placeholder={t('invite.search')}
           notFoundContent={
-            fetching ? <Spin size="sm" /> : <span style={{ padding: '0 8px' }}>{t('invite.no_result')}</span>
+            fetching ? (
+              <Spin size="sm" />
+            ) : (
+              <span style={{ padding: '0 8px', color: theme.colors.typeSecondary.value }}>{t('invite.no_result')}</span>
+            )
           }
           mode="multiple"
           filterOption={false}

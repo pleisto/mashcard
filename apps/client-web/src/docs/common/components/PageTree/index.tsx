@@ -209,6 +209,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
         docMeta={docMeta}
         pin={pin}
         pageId={node.id}
+        icon={!!node.icon}
         title={getTitle(node.text)}
         titleText={node.text}
         nearNodeId={node.nearNodeId}
