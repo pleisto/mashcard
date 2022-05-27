@@ -11,6 +11,27 @@
     "tools/*",
     "plugins/*"
   ],
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.{json,yml,yaml,md,graphql,gql,css,js,jsx,ts,tsx}": [
+      "prettier --write"
+    ],
+    "packages/brickdoc-design-icons/assets/**/*.svg": [
+      "yarn design-icons generator"
+    ],
+    "apps/server-monolith/*.rs": [
+      "cargo fmt --manifest-path=apps/server-monolith/Cargo.toml && :"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "scripts": {
     "postinstall": "husky install && ./tools/scripts/pdftron static",
     "analyze": "BUNDLE_STATS=1 yarn dist && open ./tmp/esm-bundle-stats.html",
@@ -41,7 +62,7 @@
     "server": "yarn workspace @brickdoc/server-monolith"
   },
   "devDependencies": {
-    "@brickdoc/eslint-plugin": "workspace:^",
+    "@brickdoc/eslint-plugin": "^1.0.1",
     "@commitlint/cli": "^17.0.1",
     "@commitlint/config-conventional": "^17.0.0",
     "@graphql-codegen/cli": "^2.6.2",

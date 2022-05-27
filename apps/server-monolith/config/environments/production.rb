@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require 'active_support/core_ext/integer/time'
-require 'brickdoc/logger'
-require 'brickdoc/log/json_formatter'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -63,27 +61,6 @@ Rails.application.configure do
 
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
-
-  ## Logger
-  config.logger = Brickdoc::Logger.new($stdout)
-  config.colorize_logging = false
-  config.lograge.enabled = true
-  config.lograge.keep_original_rails_log = false
-  config.lograge.base_controller_class = ['ActionController::API']
-  config.lograge.formatter = Lograge::Formatters::Raw.new
-  config.lograge.custom_options = lambda do |event|
-    exceptions = ['controller', 'action', 'format', 'id']
-
-    {
-      event: 'http.request',
-      exception: event.payload[:exception], # ["ExceptionClass", "the message"]
-      exception_object: event.payload[:exception_object], # the exception instance
-      request_id: event.payload[:request_id],
-      params: event.payload[:params]&.except(*exceptions),
-      current_user_id: event.payload[:current_user]&.id,
-      current_space_id: event.payload[:current_space]&.fetch('id'),
-    }
-  end
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false

@@ -20,9 +20,6 @@
     "@uppy/react": "^2.2.0",
     "@uppy/xhr-upload": "^2.1.0"
   },
-  "devDependencies": {
-    "@brickdoc/eslint-plugin": "workspace:^"
-  },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",
     "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",

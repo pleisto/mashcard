@@ -32,10 +32,10 @@ spec:
               protocol: TCP
           resources:
             requests:
-              cpu: "0.01"
-              memory: 16Mi
+              cpu: "0.05"
+              memory: 32Mi
             limits:
-              cpu: "0.3"
+              cpu: "0.5"
               memory: 512Mi
         - name: {{ .Chart.Name }}-redis
           image: redis:7-alpine
@@ -45,8 +45,8 @@ spec:
               protocol: TCP
           resources:
             requests:
-              cpu: "0.01"
-              memory: 8Mi
+              cpu: "0.05"
+              memory: 16Mi
             limits:
               cpu: "0.5"
               memory: 128Mi

@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_02_110359) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_26_160155) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "ltree"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -101,14 +102,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_02_110359) do
   end
 
   create_table "brickdoc_configs", force: :cascade do |t|
-    t.string "key", null: false
-    t.text "value"
-    t.string "scope", null: false
-    t.string "domain", null: false
-    t.integer "domain_len"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["key", "scope", "domain"], name: "index_brickdoc_configs_on_key_and_scope_and_domain", unique: true
+    t.ltree "key", null: false, comment: "setting key with namespace"
+    t.ltree "scope", default: "R", null: false, comment: "scope for recursive search. e.g. R.user_1.pod_2 or R.pod_1"
+    t.jsonb "value"
+    t.index ["key", "scope"], name: "index_brickdoc_configs_on_key_and_scope", unique: true
   end
 
   create_table "docs_aliases", force: :cascade do |t|
@@ -254,25 +251,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_02_110359) do
     t.index ["owner_id"], name: "index_spaces_on_owner_id"
   end
 
-  create_table "stafftools_role_assignments", force: :cascade do |t|
-    t.bigint "accounts_user_id", null: false
-    t.bigint "stafftools_role_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["accounts_user_id"], name: "index_stafftools_role_assignments_on_accounts_user_id"
-    t.index ["stafftools_role_id"], name: "index_stafftools_role_assignments_on_stafftools_role_id"
-  end
-
-  create_table "stafftools_roles", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "permissions", default: [], array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_stafftools_roles_on_name", unique: true
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "stafftools_role_assignments", "accounts_users"
-  add_foreign_key "stafftools_role_assignments", "stafftools_roles"
 end

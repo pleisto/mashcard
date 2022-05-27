@@ -45,20 +45,12 @@
       "path": "packages/brickdoc-uploader"
     },
     {
-      "name": "packages/eslint-plugin-brickdoc",
-      "path": "packages/eslint-plugin-brickdoc"
-    },
-    {
       "name": "tools/e2e-testing",
       "path": "tools/e2e-testing"
     },
     {
       "name": "tools/schematics",
       "path": "tools/schematics"
-    },
-    {
-      "name": "gems/rubocop-brickdoc",
-      "path": "gems/rubocop-brickdoc"
     }
   ],
   "settings": {
@@ -124,7 +116,6 @@
       "packages/brickdoc-design-icons",
       "packages/brickdoc-test-helper",
       "packages/dotenv",
-      "packages/eslint-plugin-brickdoc",
       "tools/e2e-testing",
       "tools/schematics"
     ],

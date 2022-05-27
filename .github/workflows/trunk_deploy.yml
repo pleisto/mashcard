@@ -4,8 +4,6 @@ on:
     paths-ignore:
       - '.husky/**'
       - 'bin/**'
-      - 'packages/rubocop-brickdoc/**'
-      - 'packages/eslint-plugin-brickdoc/**'
       - '**/*.md'
       - 'packages/**/Dockerfile'
       - '**/.git*'

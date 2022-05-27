@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+set -e
 # Kubernetes Deployment initContainer Entrypoint
 bundle exec rails db:migrate
+
 if [ "$PREVIEW_ENV" = true ] ; then
 echo "run rails db:seed"
     # ignore rails db:seed error
-    bundle exec rails db:seed  || true
+    bundle exec rails db:seed || true
 fi

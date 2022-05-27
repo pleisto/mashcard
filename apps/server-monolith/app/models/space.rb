@@ -100,6 +100,7 @@ class Space < ApplicationRecord
 
   ANONYMOUS_CONTEXT = {
     'domain' => ANONYMOUS_DOMAIN,
+    'id' => nil,
   }
 
   def ensure_owner_member!

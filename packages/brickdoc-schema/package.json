@@ -11,9 +11,6 @@
   "volta": {
     "extends": "../../package.json"
   },
-  "devDependencies": {
-    "@brickdoc/eslint-plugin": "workspace:^"
-  },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",
     "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",

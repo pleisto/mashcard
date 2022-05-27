@@ -12,15 +12,9 @@ GIT
     inertia_rails (1.12.1)
       rails (>= 5)
 
-PATH
-  remote: ../../gems/brickdoc_settings
-  specs:
-    brickdoc_settings (0.0.1)
-      activesupport (>= 7.0.0)
-      lockbox (>= 0.6.6)
-
-PATH
-  remote: ../../gems/rubocop-brickdoc
+GIT
+  remote: https://github.com/brickdoc/rubocop-brickdoc.git
+  revision: 9e665ba77f0a15e428ccede932d230024c5a8711
   specs:
     rubocop-brickdoc (1.0.0)
       rubocop (>= 1.29)
@@ -319,7 +313,7 @@ GEM
     mini_portile2 (2.8.0)
     minitest (5.15.0)
     miscreant (0.3.0)
-    msgpack (1.5.1)
+    msgpack (1.5.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
@@ -424,6 +418,8 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    rbnacl (7.1.1)
+      ffi
     redis (4.5.1)
     redis-namespace (1.8.2)
       redis (>= 3.0.4)
@@ -604,7 +600,6 @@ DEPENDENCIES
   benchmark-ips (~> 2.10)
   bootsnap
   brakeman
-  brickdoc_settings!
   cloak-rb (>= 0.1.1)
   connection_pool (~> 2.2, >= 2.2.5)
   debug
@@ -641,6 +636,7 @@ DEPENDENCIES
   puma (~> 5.6.4)
   puma_worker_killer (~> 0.3.1)
   rails (= 7.0.3)
+  rbnacl (~> 7.1, >= 7.1.1)
   redis (~> 4.5.1)
   redis-namespace
   redis-objects (~> 1.6.0)

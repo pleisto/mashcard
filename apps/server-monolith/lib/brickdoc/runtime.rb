@@ -7,7 +7,7 @@ module Brickdoc
   module Runtime
     class << self
       def hostname
-        @hostname ||= ENV['HOST'] || Socket.gethostname
+        @hostname ||= ENV['HOSTNAME'] || Socket.gethostname
       end
 
       def web_server?

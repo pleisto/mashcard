@@ -155,23 +155,6 @@ module Accounts
     default_value_for :locale, BrickdocConfig.default_locale
     default_value_for :timezone, BrickdocConfig.default_timezone
 
-    ## Stafftools
-    has_many :stafftools_role_assignments, dependent: :destroy, class_name: 'Stafftools::RoleAssignment',
-      foreign_key: 'accounts_user_id', inverse_of: :accounts_user
-    has_many :stafftools_roles, through: :stafftools_role_assignments, class_name: 'Stafftools::Role', inverse_of: :accounts_users
-
-    def stafftools_permissions
-      stafftools_roles.map(&:permissions).flatten.uniq
-    end
-
-    def has_stafftools_permission?(permission)
-      stafftools_permissions.include?(permission)
-    end
-
-    def staff?
-      Stafftools::RoleAssignment.exists?(accounts_user_id: id)
-    end
-
     def has_team_spaces?
       spaces.count { |p| !p.personal } > 0
     end

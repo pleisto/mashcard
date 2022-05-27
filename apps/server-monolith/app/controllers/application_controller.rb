@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_current_config
-    BrickdocConfig.current = BrickdocConfig.at("space.#{current_space['id']}")
+    BrickdocConfig.current = BrickdocConfig.at(user_id: current_user&.id, space_id: current_space[:id])
   end
 end

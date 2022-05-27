@@ -8,10 +8,7 @@ module System
       authenticate_user!
 
       def resolve
-        domain = current_space.present? ? ::Space.find(current_space['id']) : :global
-        BrickdocConfig.on(domain) do
-          BrickdocPlugin.enabled_plugins.map(&:attributes)
-        end
+        BrickdocPlugin.enabled_plugins.map(&:attributes)
       end
     end
   end

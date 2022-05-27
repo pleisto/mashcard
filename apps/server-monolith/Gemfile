@@ -30,7 +30,6 @@ gem 'second_level_cache', '~> 2.7.1'
 gem 'paranoia', '~> 2.5', '>= 2.5.2'
 gem 'easymon'
 gem 'default_value_for', github: 'brickdoc/default_value_for'
-gem 'brickdoc_settings', path: '../../gems/brickdoc_settings'
 gem 'unsplash'
 gem 'cloak-rb', '>= 0.1.1'
 gem 'lockbox', '>= 0.6.8'
@@ -40,6 +39,7 @@ gem 'accept_language', '>= 2.0.1'
 gem 'nokogiri', '>= 1.13.6'
 gem 'bootsnap', require: false
 gem 'tzinfo-data', '~> 1.2021', '>= 1.2021.5' # Don't rely on Linux/macOS timezone data.
+gem 'rbnacl', '~> 7.1', '>= 7.1.1'
 
 # Feature toggles
 gem 'flipper', '~> 0.24.1'
@@ -77,7 +77,7 @@ gem 'sidekiq-unique-jobs', '~> 7.1', '>= 7.1.22'
 group :development, :test do
   gem 'brakeman'
   gem 'ffaker'
-  gem 'rubocop-brickdoc', require: false, path: '../../gems/rubocop-brickdoc'
+  gem 'rubocop-brickdoc', require: false, github: 'brickdoc/rubocop-brickdoc'
   gem 'rubocop-graphql', '~> 0.14.3', require: false
   gem 'rubocop-rails', '~> 2.14', '>= 2.14.2', require: false
   gem 'factory_bot_rails', '>= 6.2'

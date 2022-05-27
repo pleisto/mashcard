@@ -4,7 +4,7 @@ module CurrentSpace
   extend ActiveSupport::Concern
 
   def current_space
-    fetch_space_by_user || Space::ANONYMOUS_CONTEXT
+    fetch_space_by_user || ::Space::ANONYMOUS_CONTEXT
   end
 
   private

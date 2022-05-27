@@ -25,8 +25,10 @@ packages/brickdoc-design-icons/**/*.tsx linguist-generated merge=ours
 *.wbmp            binary
 *.webp            binary
 # This way Git won't bother showing massive diffs when each time we subsequently add or update yarn & plugins:
-/.yarn/releases/** binary linguist-vendored=false
-/.yarn/plugins/** binary linguist-vendored=false
-/.yarn/cache/* linguist-vendored=false
-**/docs/api/** linguist-vendored=false
+/.yarn/releases/** binary linguist-vendored
+/.yarn/plugins/** binary linguist-vendored
+/.yarn/cache/* linguist-vendored
+**/docs/api/** linguist-vendored
 /.vscode/*.json linguist-language=JSON5
+/tools/**/*.js linguist-vendored
+**/.storybook/** linguist-vendored

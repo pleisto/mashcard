@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.shared.json",
+  "extends": "../../tools/typescript/tsconfig.shared.json",
   "compilerOptions": {
     "outDir": "dist",
     "jsx": "react-jsx",
@@ -7,7 +7,5 @@
     "strictNullChecks": false
   },
   "include": ["**/*"],
-  "exclude": [
-    "dist/**/*"
-  ]
+  "exclude": ["dist/**/*"]
 }

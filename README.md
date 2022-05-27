@@ -35,7 +35,7 @@ Instructions on how to set up the environment for development are available [her
 
 ## Contributing
 
-Brickdoc is an open source project and we are very happy to accept community contributions. To contribute to Brickdoc, you have to agree with the Brickdoc Contributor License Agreement.Please refer to [Contributing Documentation](CONTRIBUTING.md) for more details.
+Brickdoc is an open source project and we are very happy to accept community contributions. To contribute to Brickdoc, you have to agree with the Brickdoc Contributor License Agreement.Please refer to [Contributing Documentation](./docs/CONTRIBUTING.md) for more details.
 
 ## Copyright/License
 

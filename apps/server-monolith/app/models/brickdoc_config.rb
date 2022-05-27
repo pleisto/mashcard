@@ -4,73 +4,19 @@
 #
 # Table name: brickdoc_configs
 #
-#  id         :bigint           not null, primary key
-#  domain     :string           not null
-#  domain_len :integer
-#  key        :string           not null
-#  scope      :string           not null
-#  value      :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                                                                :bigint           not null, primary key
+#  key(setting key with namespace)                                   :ltree            not null
+#  scope(scope for recursive search. e.g. R.user_1.pod_2 or R.pod_1) :ltree            default("R"), not null
+#  value                                                             :jsonb
 #
 # Indexes
 #
-#  index_brickdoc_configs_on_key_and_scope_and_domain  (key,scope,domain) UNIQUE
+#  index_brickdoc_configs_on_key_and_scope  (key,scope) UNIQUE
 #
 
 class BrickdocConfig < ApplicationRecord
-  include BrickdocSettings::Base
-
-  @frontend_fields = {}
-
-  class << self
-    attr_accessor :frontend_fields
-
-    def current
-      Thread.current[:brickdoc_config_current] || self
-    end
-
-    def current=(config)
-      Thread.current[:brickdoc_config_current] = config
-    end
-
-    # around current domian
-    #
-    # example:
-    # BrickdocConfig.on(:global) { Brickdoc.current.something }
-    # BrickdocConfig.on(Space.find(1)) { Brickdoc.current.something = 1 }
-    def on(domain, &block)
-      # domian argument must is :global or Space instance
-      raise ArgumentError, "unsupported domain: #{domain}" unless domain == :global || domain.class == Space
-
-      config = domain == :global ? self : at("space.#{domain.id}")
-      old_current = current
-      self.current = config
-      begin
-        yield block
-      ensure
-        self.current = old_current
-      end
-    end
-
-    def field(key, scope: '', **opts)
-      key = key.to_s
-      scope = scope.to_s
-      if opts[:frontend]
-        frontend_fields[scope] ||= []
-        frontend_fields[scope].push key
-      end
-      super key, scope: scope, **opts
-    end
-
-    def to_frontend(scope: '')
-      scope = scope.to_s
-      frontend_fields[scope].uniq.index_with do |key|
-        get(key, scope: scope)
-      end
-    end
-  end
-
+  # See lib/brickdoc/settings/base.rb for more details
+  include Brickdoc::Settings::Base
   serialize :value
 
   field :default_locale, default: 'en-US'
@@ -128,7 +74,7 @@ class BrickdocConfig < ApplicationRecord
     changing_domain: 'https://help.brickdoc.com/en/articles/5972616-brickdoc-username-policy',
   }, frontend: true
 
-  scope :features do
+  namespace :features do
     field :page_history, type: :boolean, default: (Rails.env.development? ? true : false), frontend: true
     field :experiment_discussion, type: :boolean, default: (Rails.env.development? ? true : false), frontend: true
     field :experiment_collaboration, type: :boolean, default: false, frontend: true

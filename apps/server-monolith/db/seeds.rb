@@ -67,11 +67,3 @@ root_block.update!(meta: root_block.meta.merge('changed' => true))
 
 ## Manual save snapshot
 root_block.save_snapshot!
-
-### Stafftools Role
-unless Stafftools::Role.exists?(name: 'super_admin')
-  super_admin = Stafftools::Role.create!(name: 'super_admin', permissions: [:root])
-  default_user = Accounts::User.first
-  default_user.stafftools_roles << super_admin
-  default_user.save
-end

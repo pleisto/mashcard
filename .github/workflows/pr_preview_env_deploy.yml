@@ -8,8 +8,6 @@ on:
     paths-ignore:
       - '.husky/**'
       - 'bin/**'
-      - 'packages/eslint-plugin-brickdoc/**'
-      - 'gems/rubocop-brickdoc/**'
       - '**/*.md'
       - 'packages/**/Dockerfile'
       - '**/.git*'

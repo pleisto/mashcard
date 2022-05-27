@@ -91,10 +91,10 @@ class BrickdocPlugin
       @plugins
     end
 
-    # TODO: switch domain of BrickdocConfig and enable Hook scopes in one place
-    def update_hooks_scopes
-      BrickdocHook.enabled_scopes =
-        BrickdocHook.enabled_scopes.select { |s| !s.start_with?('plugin.') } +
+    # TODO: switch domain of BrickdocConfig and enable Hook namespaces in one place
+    def update_hooks_namespaces
+      BrickdocHook.enabled_namespaces =
+        BrickdocHook.enabled_namespaces.select { |s| !s.start_with?('plugin.') } +
         enabled_plugin_keys.map { |pn| "plugin.#{pn}" }
     end
   end
@@ -106,7 +106,11 @@ class BrickdocPlugin
   def initialize(plugin_name)
     @plugin_name = plugin_name
     @loader = BrickdocPlugin::Loader.new
-    BrickdocConfig.field("#{@plugin_name}_enabled", type: :boolean, scope: 'plugins', default: false)
+    BrickdocConfig.field("#{@plugin_name}_enabled",
+      type: :boolean,
+      namespace: 'plugins',
+      belongs_to: :space,
+      default: false)
   end
 
   def config(&block)
@@ -124,7 +128,7 @@ class BrickdocPlugin
   end
 
   def settings(&block)
-    BrickdocConfig.current.scope("plugin.#{@plugin_name}", &block)
+    BrickdocConfig.current.namespace("plugin.#{@plugin_name}", &block)
   end
 
   def attributes
@@ -139,17 +143,17 @@ class BrickdocPlugin
 
   # enable this plugin by default
   def default_enabled!
-    BrickdocConfig.current.get_field("#{@plugin_name}_enabled", scope: 'plugins')[:default] = true
-    BrickdocPlugin.update_hooks_scopes
+    BrickdocConfig.current.get_field("#{@plugin_name}_enabled", namespace: 'plugins')[:default] = true
+    BrickdocPlugin.update_hooks_namespaces
   end
 
   def enabled?
-    BrickdocConfig.current.get("#{@plugin_name}_enabled", scope: 'plugins')
+    BrickdocConfig.current.get("#{@plugin_name}_enabled", namespace: 'plugins')
   end
 
   def enabled=(enabled)
-    BrickdocConfig.current.set("#{@plugin_name}_enabled", enabled, scope: 'plugins')
-    BrickdocPlugin.update_hooks_scopes
+    BrickdocConfig.current.set("#{@plugin_name}_enabled", enabled, namespace: 'plugins', allow_global: true)
+    BrickdocPlugin.update_hooks_namespaces
   end
 
   def enabled!
@@ -161,6 +165,6 @@ class BrickdocPlugin
   end
 
   def on(hook_name, &block)
-    BrickdocHook.on(hook_name, scope: "plugin.#{@plugin_name}", &block)
+    BrickdocHook.on(hook_name, namespace: "plugin.#{@plugin_name}", &block)
   end
 end

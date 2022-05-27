@@ -19,7 +19,7 @@ module ApplicationHelper
       isDesktopApp: false,
       featureFlags: Flipper.features.map(&:name),
       settings: BrickdocConfig.to_frontend,
-      features: BrickdocConfig.to_frontend(scope: :features),
+      features: BrickdocConfig.to_frontend(namespace: :features),
       serverMessage: flash[:alert] == I18n.t('devise.failure.unauthenticated') ? nil : flash[:alert],
       sentryDsn: BrickdocConfig.sentry_dsn,
     }
