@@ -6,7 +6,7 @@ import {
 } from '@/BrickdocGraphQL'
 import { BackendActions, BaseFunctionClause, FunctionContext, StringResult } from '@brickdoc/formula'
 import { useImperativeQuery } from '@/common/hooks'
-import { DocMeta } from '../DocumentContentPage'
+import { type DocMeta } from '@/docs/store/DocMeta'
 
 interface useFormulaActionsResult {
   commitFormula: BackendActions['commit']

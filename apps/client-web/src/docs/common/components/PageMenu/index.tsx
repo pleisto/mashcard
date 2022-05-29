@@ -30,18 +30,12 @@ import { editorVar, FormulaContextVar } from '@/docs/reactiveVars'
 import { appendFormulas } from '@brickdoc/formula'
 import { useFormulaActions } from '@/docs/pages/hooks/useFormulaActions'
 import { sleep } from '@/common/utils'
+import { useDocMeta } from '@/docs/store/DocMeta'
 
 type UUID = Scalars['UUID']
 
-interface DocMeta {
-  id?: string | undefined
-  domain: string
-  host: string
-}
-
 interface PageMenuProps {
   mutable?: boolean
-  docMeta: DocMeta
   pageId: UUID
   title: Scalars['String']
   // setPopoverKey: React.Dispatch<React.SetStateAction<string | undefined>>
@@ -53,7 +47,6 @@ interface PageMenuProps {
 }
 
 export const PageMenu: React.FC<PageMenuProps> = ({
-  docMeta: { id, domain, host },
   // setPopoverKey,
   pageId,
   mutable = true,
@@ -68,6 +61,8 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   const client = useApolloClient()
   const editor = useReactiveVar(editorVar)
   const formulaContext = useReactiveVar(FormulaContextVar)
+
+  const { id, domain, host } = useDocMeta()
 
   const [popoverVisible, setPopoverVisible] = React.useState(false)
   const [dropdownVisible, setDropdownVisible] = React.useState(false)

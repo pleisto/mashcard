@@ -24,6 +24,7 @@
     "@uiw/react-split": "^5.8.7",
     "@vitejs/plugin-react": "^1.3.2",
     "dayjs": "^1.11.2",
+    "fast-deep-equal": "^3.1.3",
     "framer-motion": "^6.3.4",
     "graphql": "^16.5.0",
     "graphql-ruby-client": "^1.10.7",
@@ -40,7 +41,8 @@
     "vite": "^2.9.9",
     "vite-plugin-pwa": "^0.12.0",
     "vite-plugin-ruby": "^3.0.12",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "zustand": "^4.0.0-rc.1"
   },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",

@@ -17,17 +17,16 @@ import {
 import { LineDown, Check } from '@brickdoc/design-icons'
 import { useImperativeQuery } from '@/common/hooks'
 import { ShareLinkListItem } from '../ShareLinkListItem'
-import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 import { SpaceCard, SpaceType } from '@/common/components/SpaceCard'
 import { queryBlockShareLinks } from '../../graphql'
 import { Wrapper, InviteBar, List, Item, SharePopTitle, CopyLinkWrapper } from './index.style'
 import { Action, menu } from '../ShareLinkListItem/index.style'
 import { selectStyle } from './select.style'
+import { useNonNullDocMeta } from '@/docs/store/DocMeta'
 
 const menuClassName = menu()
 const prefixCls = selectStyle()
 interface SharePopoverProps {
-  docMeta: NonNullDocMeta
   children: React.ReactElement
 }
 
@@ -35,12 +34,13 @@ const debounceTimeout = 800
 
 type SpaceValue = string
 
-export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, children }) => {
+export const SharePopover: React.FC<SharePopoverProps> = ({ children }) => {
   const { t } = useDocsI18n()
+  const { id, host, path, domain } = useNonNullDocMeta()
   const [inviteLoading, setInviteLoading] = React.useState<boolean>(false)
   const [copied, setCopied] = React.useState<boolean>(false)
   const [blockCreateShareLink] = useBlockCreateShareLinkMutation({ refetchQueries: [queryBlockShareLinks] })
-  const { data } = useGetBlockShareLinksQuery({ fetchPolicy: 'no-cache', variables: { id: docMeta.id } })
+  const { data } = useGetBlockShareLinksQuery({ fetchPolicy: 'no-cache', variables: { id } })
   const [fetching, setFetching] = React.useState(false)
   const [spaceValue, setSpaceValue] = React.useState<SpaceValue[]>([])
   const spaceSearch = useImperativeQuery<Query, Variables>(QuerySpaceSearchDocument)
@@ -50,7 +50,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, children })
   const inviteUsers = useCallback(async () => {
     setInviteLoading(true)
     const input: BlockCreateShareLinkInput = {
-      id: docMeta.id,
+      id,
       target: spaceValue.map(domain => ({
         domain,
         policy: inviteUserPolicy,
@@ -61,9 +61,9 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, children })
     setSpaceValue([])
     setOptions([])
     setInviteLoading(false)
-  }, [spaceValue, inviteUserPolicy, blockCreateShareLink, docMeta.id, setOptions])
+  }, [spaceValue, inviteUserPolicy, blockCreateShareLink, id, setOptions])
 
-  const link = `${docMeta.host}${docMeta.path}`
+  const link = `${host}${path}`
   const handleCopy = async (): Promise<void> => {
     await navigator.clipboard.writeText(link)
     void toast.success(t('share.copy_hint'))
@@ -82,14 +82,14 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, children })
   const inviteList = (
     <List>
       <Item key="anyone">
-        <ShareLinkListItem docMeta={docMeta} item={anyoneItem} isAnyOne />
+        <ShareLinkListItem item={anyoneItem} isAnyOne />
       </Item>
       {data?.blockShareLinks
         .filter(item => item.shareSpaceData.name !== 'anyone')
         .filter(item => item.state !== ShareLinkState.Disabled)
         .map(item => (
           <Item key={item.key}>
-            <ShareLinkListItem docMeta={docMeta} item={item} />
+            <ShareLinkListItem item={item} />
           </Item>
         ))}
     </List>
@@ -100,13 +100,13 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, children })
       setOptions([])
       setFetching(true)
       const { data } = await spaceSearch({ input: value })
-      const spaces: SpaceType[] = data?.spaceSearch?.filter(space => space.domain !== docMeta.domain) ?? []
+      const spaces: SpaceType[] = data?.spaceSearch?.filter(space => space.domain !== domain) ?? []
       setOptions(spaces)
       setFetching(false)
     }
 
     return debounce(loadOptions, debounceTimeout)
-  }, [spaceSearch, docMeta.domain])
+  }, [spaceSearch, domain])
 
   const onChangeInviterPolicy = (key: string) => {
     setInviteUserPolicy(key as Policytype)

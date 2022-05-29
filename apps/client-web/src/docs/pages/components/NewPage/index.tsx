@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import { Add } from '@brickdoc/design-icons'
 import { useDocsI18n } from '../../../common/hooks'
 import { Button } from '@brickdoc/design-system'
@@ -8,15 +8,11 @@ import { queryPageBlocks } from '../../../common/graphql'
 
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { sidebarButtonStyles } from '../../DocumentContentPage.style'
+import { useDocMeta } from '@/docs/store/DocMeta'
 
-export interface NewPageProps {
-  docMeta: {
-    domain: string
-  }
-}
-
-export const NewPage: React.FC<NewPageProps> = ({ docMeta }) => {
+export const NewPage: FC = () => {
   const { t } = useDocsI18n()
+  const { domain } = useDocMeta()
 
   const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({
     refetchQueries: [queryPageBlocks]
@@ -27,7 +23,7 @@ export const NewPage: React.FC<NewPageProps> = ({ docMeta }) => {
     const input = { title: '' }
     const { data } = await blockCreate({ variables: { input } })
     if (data?.blockCreate?.id) {
-      navigate(`/${docMeta.domain}/${data?.blockCreate?.id}`)
+      navigate(`/${domain}/${data?.blockCreate?.id}`)
     }
   }
 

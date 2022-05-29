@@ -10,7 +10,6 @@ import {
 } from '@/BrickdocGraphQL'
 import { queryBlockPins, queryPageBlocks } from '@/docs/common/graphql'
 import { useApolloClient, useReactiveVar } from '@apollo/client'
-import { DocMeta } from '@/docs/pages/DocumentContentPage'
 import { itemStyle } from '@/docs/pages/components/DocumentTopBar/DocumentTopBar.style'
 import { Button, Icon, Popover, Menu } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
@@ -22,14 +21,15 @@ import { FormulaContextVar } from '@/docs/reactiveVars'
 import { useFormulaActions } from '@/docs/pages/hooks/useFormulaActions'
 import { appendFormulas } from '@brickdoc/formula'
 import { IconWrapper, KeyBindTip } from './index.style'
+import { useDocMeta } from '@/docs/store/DocMeta'
 
 export interface DiscussionMenuProps {
   className?: string
-  docMeta: DocMeta
 }
 
-const PopMenu = (props: { docMeta: DocMeta; menuToggle: (state: boolean) => void }) => {
-  const { docMeta, menuToggle } = props
+const PopMenu = (props: { menuToggle: (state: boolean) => void }) => {
+  const { menuToggle } = props
+  const { id, pin, isMine, editable } = useDocMeta()
   const navigate = useNavigate()
   const { t } = useDocsI18n()
   const client = useApolloClient()
@@ -52,27 +52,25 @@ const PopMenu = (props: { docMeta: DocMeta; menuToggle: (state: boolean) => void
     refetchQueries: [queryPageBlocks]
   })
 
-  const iconRender = docMeta.pin ? <Icon.Pin /> : <Icon.Unpin />
+  const iconRender = pin ? <Icon.Pin /> : <Icon.Unpin />
 
-  const showPin = docMeta.isMine
-
-  const { editable, isMine } = docMeta
+  const showPin = isMine
 
   const onPin = async (): Promise<void> => {
-    const input = { blockId: docMeta.id!, pin: !docMeta.pin }
+    const input = { blockId: id!, pin: !pin }
     await blockPinOrUnpin({ variables: { input } })
     client.cache.modify({
-      id: client.cache.identify({ __typename: 'BlockInfo', id: docMeta.id }),
+      id: client.cache.identify({ __typename: 'BlockInfo', id }),
       fields: {
         pin() {
-          return !docMeta.pin
+          return !pin
         }
       }
     })
   }
 
   const onDuplicate = useCallback(async (): Promise<void> => {
-    const input = { id: docMeta.id as string }
+    const input = { id: id! }
     const { data } = await blockDuplicate({ variables: { input } })
     const formulaIds = data?.blockDuplicate?.formulaIds ?? []
 
@@ -84,10 +82,10 @@ const PopMenu = (props: { docMeta: DocMeta; menuToggle: (state: boolean) => void
     }
 
     menuToggle(false)
-  }, [blockDuplicate, docMeta, queryFormulas, menuToggle, formulaContext, loginDomain])
+  }, [blockDuplicate, id, queryFormulas, menuToggle, formulaContext, loginDomain])
 
   const onDel = useCallback(async (): Promise<void> => {
-    const input = { id: docMeta.id as string, hardDelete: false }
+    const input = { id: id!, hardDelete: false }
     const createNewAndJump = async () => {
       const newPageInput = { title: '' }
       const { data } = await blockCreate({ variables: { input: newPageInput } })
@@ -102,17 +100,17 @@ const PopMenu = (props: { docMeta: DocMeta; menuToggle: (state: boolean) => void
     pageBlocks = [...pageBlocks].sort((a: any, b: any) => Number(a.sort) - Number(b.sort))
     await blockSoftDelete({ variables: { input } })
     menuToggle(false)
-    const matchBlock = pageBlocks.find((item: any) => item.id === docMeta.id)
+    const matchBlock = pageBlocks.find((item: any) => item.id === id)
     if (!matchBlock) {
       createNewAndJump()
       return
     }
-    if (matchBlock.parentId && matchBlock.parentId !== docMeta.id) {
+    if (matchBlock.parentId && matchBlock.parentId !== id) {
       const sameLevelItems = pageBlocks.filter((item: any) => item.parentId === matchBlock.parentId)
       if (sameLevelItems.length < 2) {
         navigate(`/${loginDomain}/${matchBlock.parentId}`)
       }
-      const preIdx = sameLevelItems.findIndex((item: any) => item.id === docMeta.id) - 1
+      const preIdx = sameLevelItems.findIndex((item: any) => item.id === id) - 1
       const nearItem = sameLevelItems[preIdx < 0 ? 1 : preIdx]
       navigate(`/${loginDomain}/${nearItem.id}`)
       return
@@ -122,10 +120,10 @@ const PopMenu = (props: { docMeta: DocMeta; menuToggle: (state: boolean) => void
       createNewAndJump()
       return
     }
-    const preIdx = tree.findIndex((item: any) => item.id === docMeta.id) - 1
+    const preIdx = tree.findIndex((item: any) => item.id === id) - 1
     const nearItem = tree[preIdx < 0 ? 1 : preIdx]
     navigate(`/${loginDomain}/${nearItem.id}`)
-  }, [blockCreate, navigate, menuToggle, blockSoftDelete, docMeta.id, getPageBlocks, loginDomain])
+  }, [blockCreate, navigate, menuToggle, blockSoftDelete, id, getPageBlocks, loginDomain])
 
   const onUndo = () => {
     BrickdocEventBus.dispatch(Undo({}))
@@ -154,7 +152,7 @@ const PopMenu = (props: { docMeta: DocMeta; menuToggle: (state: boolean) => void
           itemKey="pin"
           disabled={blockPinOrUnpinLoading}
           icon={<IconWrapper>{iconRender}</IconWrapper>}
-          label={t(docMeta.pin ? 'pin.remove_tooltip' : 'pin.add_tooltip')}
+          label={t(pin ? 'pin.remove_tooltip' : 'pin.add_tooltip')}
         />
       )}
       <Menu.Item
@@ -198,7 +196,7 @@ const PopMenu = (props: { docMeta: DocMeta; menuToggle: (state: boolean) => void
   )
 }
 
-export const TopbarMore: React.FC<DiscussionMenuProps> = ({ className, docMeta }) => {
+export const TopbarMore: React.FC<DiscussionMenuProps> = ({ className }) => {
   const { t } = useDocsI18n()
   const [popoverVisible, setPopoverVisible] = React.useState(false)
   return (
@@ -210,7 +208,7 @@ export const TopbarMore: React.FC<DiscussionMenuProps> = ({ className, docMeta }
       destroyTooltipOnHide
       visible={popoverVisible}
       onVisibleChange={setPopoverVisible}
-      content={<PopMenu docMeta={docMeta} menuToggle={setPopoverVisible} />}
+      content={<PopMenu menuToggle={setPopoverVisible} />}
     >
       <Button className={className} type="text" css={itemStyle}>
         <Icon.More aria-label={t('more.tooltip')} />

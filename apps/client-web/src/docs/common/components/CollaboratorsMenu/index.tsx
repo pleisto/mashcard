@@ -1,22 +1,20 @@
-import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
-import { Dropdown, Tooltip, Menu } from '@brickdoc/design-system'
-import React from 'react'
-import { Avatar } from './index.style'
+import { FC } from 'react'
 
-interface CollaboratorsMenuProps {
-  docMeta: NonNullDocMeta
-}
+import { useDocMeta } from '@/docs/store/DocMeta'
+import { Dropdown, Tooltip, Menu } from '@brickdoc/design-system'
+import { Avatar } from './index.style'
 
 const limit = 5
 
-export const CollaboratorsMenu: React.FC<CollaboratorsMenuProps> = ({ docMeta }) => {
-  if (!docMeta.collaborators.length) {
+export const CollaboratorsMenu: FC = () => {
+  const { collaborators } = useDocMeta()
+  if (!collaborators.length) {
     return <></>
   }
 
-  const hasMore = docMeta.collaborators.length > limit
+  const hasMore = collaborators.length > limit
 
-  const avatars = docMeta.collaborators.slice(0, hasMore ? limit - 1 : limit).map((space, i) => (
+  const avatars = collaborators.slice(0, hasMore ? limit - 1 : limit).map((space, i) => (
     <Tooltip title={space.domain} key={i}>
       <span>
         <Avatar size={24} space={space} />
@@ -26,7 +24,7 @@ export const CollaboratorsMenu: React.FC<CollaboratorsMenuProps> = ({ docMeta })
 
   const menu = (
     <Menu>
-      {docMeta.collaborators.slice(limit - 1).map(space => (
+      {collaborators.slice(limit - 1).map(space => (
         <Menu.Item
           icon={<Avatar size={24} space={space} />}
           key={space.domain}
@@ -44,7 +42,7 @@ export const CollaboratorsMenu: React.FC<CollaboratorsMenuProps> = ({ docMeta })
           isMore
           size={24}
           space={{
-            domain: String(docMeta.collaborators.length - limit + 1)
+            domain: String(collaborators.length - limit + 1)
           }}
         />
       </span>

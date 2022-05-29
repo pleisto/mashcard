@@ -11,14 +11,13 @@ import { usePrepareFileUpload } from './usePrepareFileUpload'
 import { useFetchUnsplashImages } from './useFetchUnsplashImages'
 import { useImperativeQuery } from '@/common/hooks'
 import { PageTree } from '@/docs/common/components/PageTree'
-import { DocMeta } from '../DocumentContentPage'
 import { useReactiveVar } from '@apollo/client'
 import { FormulaContextVar, pagesVar } from '@/docs/reactiveVars'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { Block } from '@brickdoc/schema'
+import { useDocMeta } from '@/docs/store/DocMeta'
 
 export interface UseEditorProps {
-  docMeta: DocMeta
   blocks: Block[]
   documentEditable: boolean
 }
@@ -29,7 +28,8 @@ function useQuery(): URLSearchParams {
   return useMemo(() => new URLSearchParams(search), [search])
 }
 
-export function useEditorProps({ docMeta, documentEditable, blocks }: UseEditorProps): EditorProps {
+export function useEditorProps({ documentEditable, blocks }: UseEditorProps): EditorProps {
+  const { id, collaborators: metaCollaborators, domain } = useDocMeta()
   const { data } = useGetSpaceMembersQuery()
   const pageQuery = useQuery()
   const prepareFileUpload = usePrepareFileUpload()
@@ -51,7 +51,7 @@ export function useEditorProps({ docMeta, documentEditable, blocks }: UseEditorP
     [data?.spaceMembers]
   )
 
-  const renderPageTree = useCallback(() => <PageTree mode="subPage" docMeta={docMeta} />, [docMeta])
+  const renderPageTree = useCallback(() => <PageTree mode="subPage" />, [])
 
   // fetch website meta
   const fetchWebsiteMeta = useCallback(
@@ -89,12 +89,12 @@ export function useEditorProps({ docMeta, documentEditable, blocks }: UseEditorP
   // collaborators
   const collaborators = useMemo(
     () =>
-      docMeta.collaborators.map(user => ({
+      metaCollaborators.map(user => ({
         name: user.name,
         domain: user.domain,
         avatar: user.avatarData?.url ?? undefined
       })),
-    [docMeta.collaborators]
+    [metaCollaborators]
   )
 
   return {
@@ -103,7 +103,7 @@ export function useEditorProps({ docMeta, documentEditable, blocks }: UseEditorP
     collaborators,
     documentEditable,
     documentPages,
-    domain: docMeta.domain,
+    domain,
     featureFlags: features,
     fetchUnsplashImages,
     fetchWebsiteMeta,
@@ -111,7 +111,7 @@ export function useEditorProps({ docMeta, documentEditable, blocks }: UseEditorP
     pageQuery,
     prepareFileUpload,
     renderPageTree,
-    rootId: docMeta.id ?? '',
+    rootId: id ?? '',
     settings,
     spaceMembers
   }

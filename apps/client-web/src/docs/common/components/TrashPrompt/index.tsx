@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { Button, ConfirmDialog } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import {
@@ -11,16 +11,13 @@ import {
 } from '@/BrickdocGraphQL'
 import { useNavigate } from 'react-router-dom'
 import { queryPageBlocks } from '../../graphql'
-import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 import { useApolloClient } from '@apollo/client'
 import * as Root from './index.style'
+import { useNonNullDocMeta } from '@/docs/store/DocMeta'
 
-interface TrashPromptProps {
-  docMeta: NonNullDocMeta
-}
-
-export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, domain, pathArray } }) => {
+export const TrashPrompt: FC = () => {
   const { t } = useDocsI18n()
+  const { id, domain, pathArray } = useNonNullDocMeta()
   const client = useApolloClient()
   const [hardDeleteModalVisible, setHardDeleteModalVisible] = useState<boolean>(false)
   const [hardDeleteConfirmLoading, setHardDeleteConfirmLoading] = React.useState<boolean>(false)

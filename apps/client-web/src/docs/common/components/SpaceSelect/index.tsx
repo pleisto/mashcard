@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import { useState, useContext, FC } from 'react'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { useGetSpacesQuery, useUserSignOutMutation, UserSignOutInput, SpaceOperation } from '@/BrickdocGraphQL'
 import { Box, Dropdown, Menu, MenuProps, Tooltip, Button, ButtonProps, devWarning, css } from '@brickdoc/design-system'
@@ -7,14 +7,10 @@ import { SpaceCard } from '@/common/components/SpaceCard'
 import { Setting, Change, Check } from '@brickdoc/design-icons'
 import { useDocsI18n } from '../../hooks'
 import { ProfileModal } from '../ProfileModal'
+import { useDocMeta } from '@/docs/store/DocMeta'
 
-export interface SpaceSelectProps {
-  docMeta: {
-    loginDomain: string
-  }
-}
-
-export const SpaceSelect: React.FC<SpaceSelectProps> = ({ docMeta }) => {
+export const SpaceSelect: FC = () => {
+  const { loginDomain } = useDocMeta()
   const { t } = useDocsI18n()
   const { loading, data } = useGetSpacesQuery()
   const [userSignOut, { loading: signOutLoading }] = useUserSignOutMutation()
@@ -25,7 +21,7 @@ export const SpaceSelect: React.FC<SpaceSelectProps> = ({ docMeta }) => {
     return <></>
   }
 
-  const space = data?.spaces.find(p => p.domain === docMeta.loginDomain)
+  const space = data?.spaces.find(p => p.domain === loginDomain)
 
   if (!space) {
     console.error('Domain does not match the current user')

@@ -10,6 +10,7 @@ import { TrashTable } from '@/docs/common/components/TrashTable'
 import { AppError404 } from '@/core/app-error'
 import { getSidebarStyle, logSideBarWidth } from '@/common/utils/sidebarStyle'
 import * as Root from './DocumentContentPage.style'
+import { DocMetaProvider } from '../store/DocMeta'
 
 export const Trash: React.FC = () => {
   const { t } = useDocsI18n()
@@ -31,9 +32,17 @@ export const Trash: React.FC = () => {
     return <AppError404 />
   }
 
-  const siderBar = <ContentSidebar docMeta={{ loginDomain, host, domain, isAnonymous: false, isMine: true }} />
+  const siderBar = <ContentSidebar />
   return (
-    <>
+    <DocMetaProvider
+      docMeta={{
+        loginDomain,
+        host,
+        domain,
+        isAnonymous: false,
+        isMine: true
+      }}
+    >
       <Helmet titleTemplate={`${t('trash.name')} - %s`} title={domain} />
       <Root.Layout
         width={{
@@ -48,6 +57,6 @@ export const Trash: React.FC = () => {
           </main>
         </Split>
       </Root.Layout>
-    </>
+    </DocMetaProvider>
   )
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC, useContext } from 'react'
 import { CollaboratorsMenu } from '@/docs/common/components/CollaboratorsMenu'
 import { PathBreadcrumb } from '@/docs/common/components/PathBreadcrumb'
 import { ExploreSlash } from '@/docs/common/components/ExploreSlash'
@@ -10,32 +10,30 @@ import { useNavigate } from 'react-router-dom'
 import { ShareMenu } from '../../../common/components/ShareMenu'
 import { useDocsI18n } from '../../../common/hooks'
 import { isSavingVar } from '../../../reactiveVars'
-import { DocMeta, NonNullDocMeta } from '../../DocumentContentPage'
 import { DiscussionMenu } from '@/docs/common/components/DiscussionMenu'
 import { BrickdocContext } from '@/common/brickdocContext'
 import Logo from '@/common/assets/logo_brickdoc.svg'
 import Logo_Try from '@/common/assets/logo_brickdoc_try.svg'
 import * as Root from './DocumentTopBar.style'
 import loadingIcon from './loading.png'
+import { useDocMeta } from '@/docs/store/DocMeta'
 
-export interface DocumentTopBarProps {
-  docMeta: DocMeta
-}
-
-export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
+export const DocumentTopBar: FC = () => {
   const { t } = useDocsI18n()
   const navigate = useNavigate()
   const isSaving = useReactiveVar(isSavingVar)
-  const { features } = React.useContext(BrickdocContext)
+  const { features } = useContext(BrickdocContext)
 
-  if (!docMeta.viewable) {
+  const { id, viewable, editable, isAnonymous, isDeleted } = useDocMeta()
+
+  if (!viewable) {
     return <></>
   }
 
-  const headMenu = docMeta.id && (
+  const headMenu = id && (
     <>
-      {!docMeta.isAnonymous && <Root.Menu as={PathBreadcrumb as any} docMeta={docMeta as NonNullDocMeta} />}
-      {docMeta.isAnonymous ? (
+      {!isAnonymous && <Root.Menu as={PathBreadcrumb as any} />}
+      {isAnonymous ? (
         <Root.LogoIconTry role="button" onClick={() => navigate('/')} src={Logo_Try} alt="Try Brickdoc" />
       ) : (
         <Root.LogoIcon src={Logo} alt="Brickdoc" />
@@ -43,14 +41,14 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
     </>
   )
 
-  const editableMenu = docMeta.id && !docMeta.isDeleted && (
+  const editableMenu = id && !isDeleted && (
     <>
-      <Root.HiddenItem as={CollaboratorsMenu} docMeta={docMeta as NonNullDocMeta} />
-      <ShareMenu docMeta={docMeta as NonNullDocMeta} />
-      {features.experiment_discussion && !docMeta.isAnonymous && <DiscussionMenu />}
-      {/* {features.page_history && <HistoryMenu docMeta={docMeta as NonNullDocMeta} />} */}
-      {docMeta.editable && <ExploreSlash />}
-      <TopbarMore docMeta={docMeta} />
+      <Root.HiddenItem as={CollaboratorsMenu} />
+      <ShareMenu />
+      {features.experiment_discussion && !isAnonymous && <DiscussionMenu />}
+      {/* {features.page_history && <HistoryMenu />} */}
+      {editable && <ExploreSlash />}
+      <TopbarMore />
     </>
   )
 
@@ -58,7 +56,7 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
     navigate('/')
   }
 
-  const loginMenu = docMeta.editable && docMeta.isAnonymous && (
+  const loginMenu = editable && isAnonymous && (
     <Button type="text" onClick={handleLogin}>
       {t('anonymous.edit_button')}
     </Button>

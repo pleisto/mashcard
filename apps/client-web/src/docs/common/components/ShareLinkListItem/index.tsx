@@ -12,7 +12,7 @@ import { LineDown, Anyone, Check } from '@brickdoc/design-icons'
 import { queryBlockShareLinks } from '../../graphql'
 import * as Root from './index.style'
 import { SpaceCard, SpaceType } from '@/common/components/SpaceCard'
-import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
+import { useNonNullDocMeta } from '@/docs/store/DocMeta'
 
 interface ShareLinkListItemProps {
   isAnyOne?: boolean
@@ -24,14 +24,14 @@ interface ShareLinkListItemProps {
       name?: string | null
     }
   }
-  docMeta: NonNullDocMeta
 }
 
 const menuClassName = Root.menu()
 const ANYONE_DOMAIN = 'anyone'
 
-export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ docMeta, item, isAnyOne }) => {
+export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ item, isAnyOne }) => {
   const { t } = useDocsI18n()
+  const { id } = useNonNullDocMeta()
   const [blockCreateShareLink] = useBlockCreateShareLinkMutation({ refetchQueries: [queryBlockShareLinks] })
 
   const anyOneMessage = item.state === ShareLinkState.Enabled ? t('invite.view_message') : t('invite.no_view_message')
@@ -41,7 +41,7 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ docMeta, i
   const onSwitchShareAnonymous = async (state: string): Promise<void> => {
     const policy: Policytype = Policytype.View
     const input: BlockCreateShareLinkInput = {
-      id: docMeta.id,
+      id,
       target: [{ domain: ANYONE_DOMAIN, policy, state: state as ShareLinkState }]
     }
     await blockCreateShareLink({ variables: { input } })
@@ -62,7 +62,7 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ docMeta, i
         break
     }
     const shareLink: ShareLinkInput = { domain: item.shareSpaceData.domain, policy, state }
-    const input: BlockCreateShareLinkInput = { id: docMeta.id, target: [shareLink] }
+    const input: BlockCreateShareLinkInput = { id, target: [shareLink] }
 
     await blockCreateShareLink({ variables: { input } })
   }

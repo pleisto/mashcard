@@ -2,22 +2,22 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { Block } from '@/BrickdocGraphQL'
 import { editorVar } from '@/docs/reactiveVars'
 import { useReactiveVar } from '@apollo/client'
-import { DocMeta } from '../DocumentContentPage'
+import { useDocMeta } from '@/docs/store/DocMeta'
 
 export function useDocumentEditable(
   freeze: boolean,
-  docMeta: DocMeta,
   currentRootBlock: Block | undefined
 ): [boolean, Dispatch<SetStateAction<boolean>>] {
+  const { id, editable } = useDocMeta()
   // if there is no doc id, document will not have deleted status
-  const [documentEditable, setDocumentEditable] = useState(!freeze && !docMeta.id)
+  const [documentEditable, setDocumentEditable] = useState(!freeze && !id)
   const editor = useReactiveVar(editorVar)
 
   useEffect(() => {
     if (freeze) return
     if (currentRootBlock) {
       if (editor) {
-        const nextEditable = docMeta.editable
+        const nextEditable = editable
         if (editor.options.editable !== nextEditable) {
           editor.options.editable = nextEditable
           editor.view.update(editor.view.props)
@@ -25,7 +25,7 @@ export function useDocumentEditable(
         }
       }
     }
-  }, [currentRootBlock, editor, docMeta.editable, freeze])
+  }, [currentRootBlock, editor, editable, freeze])
 
   return [documentEditable, setDocumentEditable]
 }

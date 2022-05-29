@@ -15,7 +15,7 @@ import { debounce } from '@brickdoc/active-support'
 import * as styles from './index.styles'
 import { useImperativeQuery } from '@/common/hooks'
 import { SpaceCard, SpaceType } from '@/common/components/SpaceCard'
-import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
+import { type NonNullDocMeta } from '@/docs/store/DocMeta'
 interface InviteModalProps {
   docMeta: NonNullDocMeta
   visible: boolean

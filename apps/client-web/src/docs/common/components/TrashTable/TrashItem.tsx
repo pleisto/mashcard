@@ -9,7 +9,7 @@ import React, { useState } from 'react'
 import { FilePages, Delete, Undo } from '@brickdoc/design-icons'
 import { useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
-import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
+import { type NonNullDocMeta } from '@/docs/store/DocMeta'
 import { Page, Time, Action, ActionButtonStyle, AvatarEmoji, SelectBlock, PageTile } from './Trash.style'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 

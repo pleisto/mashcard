@@ -8,25 +8,25 @@ import { blocksToJSONContents } from '../common/blocks'
 import { JSONContent } from '@tiptap/core'
 import { TrashPrompt } from '../common/components/TrashPrompt'
 import { Navigate } from 'react-router-dom'
-import { DocMeta, NonNullDocMeta } from './DocumentContentPage'
 import { editorVar } from '../reactiveVars'
 import { useEditorProps } from './hooks/useEditorProps'
 import { useDocumentEditable } from './hooks/useDocumentEditable'
 import * as Root from './DocumentPage.style'
+import { useDocMeta } from '../store/DocMeta'
 
 interface DocumentPageProps {
-  docMeta: DocMeta
   // default: user can edit/view document normally
   // presentation: just for viewing and can not edit it.
   mode?: 'default' | 'presentation'
 }
 
-export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => {
+export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
   // apollo doesn't work well with React Suspense. We must place this suspense-related hook above
   // apollo useQuery API to avoid issues like sending request twice.
   // useEditorI18n() is called inside useEditor(), which is below useGetChildrenBlocksQuery(). So we
   // promote this call to the beginning of this render fn.
   useEditorI18n()
+  const docMeta = useDocMeta()
 
   const queryVariables = useMemo(
     () => ({ rootId: docMeta.id as string, snapshotVersion: docMeta.snapshotVersion }),
@@ -39,13 +39,12 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
 
   const freeze = mode === 'presentation'
   const currentRootBlock = rootBlock.current
-  const [documentEditable] = useDocumentEditable(freeze ?? false, docMeta, currentRootBlock)
+  const [documentEditable] = useDocumentEditable(freeze ?? false, currentRootBlock)
 
   // TODO: refactor editor and editable reactive var
   // const documentEditable = !freeze
 
   const editorProps = useEditorProps({
-    docMeta,
     documentEditable,
     blocks: data?.childrenBlocks
   })
@@ -94,7 +93,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
 
   const PageElement = (
     <>
-      {docMeta.id && docMeta.isDeleted && <TrashPrompt docMeta={docMeta as NonNullDocMeta} />}
+      {docMeta.id && docMeta.isDeleted && <TrashPrompt />}
       <Root.Page
         width={{
           '@mdOnly': 'md',

@@ -30,14 +30,8 @@ import { queryBlockInfo } from '@/docs/pages/graphql'
 import { pagesVar } from '@/docs/reactiveVars'
 import { BlockNameLoad, BrickdocEventBus } from '@brickdoc/schema'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
-interface DocMeta {
-  id?: string | undefined
-  domain: string
-  host: string
-}
-
+import { useDocMeta } from '@/docs/store/DocMeta'
 export interface PageTreeProps {
-  docMeta: DocMeta
   mode?: 'default' | 'subPage'
 }
 
@@ -70,12 +64,14 @@ const PageTreeHeading = styled('div', {
 const TREE_HEAD_HEIGHT = 32
 const FOOTER_HEIGHT = 46
 
-export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
+export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
   type BlockType = Exclude<Exclude<GetPageBlocksQuery['pageBlocks'], undefined>, null>[0]
   const mutable = mode !== 'subPage'
   const hideHeading = mode === 'subPage'
 
-  const { data } = useGetPageBlocksQuery({ variables: { domain: docMeta.domain } })
+  const { id, domain } = useDocMeta()
+
+  const { data } = useGetPageBlocksQuery({ variables: { domain } })
   // recreate these blocks because we can't modify [data.pageBlocks]'s properties
   const [dataPageBlocks, setDataPageBlocks] = useState(
     data?.pageBlocks?.map(block => ({
@@ -195,7 +191,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
           })
           .sort((a, b) => a.sort - b.sort)
       )
-    } else if (docMeta.id === sourceBlock.id) {
+    } else if (id === sourceBlock.id) {
       await blockMoveClient.refetchQueries({ include: [queryBlockInfo] })
     }
   }
@@ -206,7 +202,6 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     return (
       <PageMenu
         mutable={mutable}
-        docMeta={docMeta}
         pin={pin}
         pageId={node.id}
         icon={!!node.icon}
@@ -244,8 +239,8 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     return (
       <Tree
         emptyNode={t('blocks.no_pages')}
-        initialSelectedId={docMeta.id}
-        currentSelectedId={docMeta.id}
+        initialSelectedId={id}
+        currentSelectedId={id}
         treeNodeClassName={mode === 'subPage' ? subPageModeNodeStyle() : ''}
         data={treeData as unknown as TreeNode[]}
         draggable={draggable && isDraggable}
@@ -262,7 +257,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
       const isNodeInsideCurrentRoot = (id: string): boolean => {
         const parentId = blocks.find(b => b.id === id)?.parentId
         // docMeta.id is the root of current page
-        if (parentId === docMeta.id) return true
+        if (parentId === id) return true
         if (parentId) return isNodeInsideCurrentRoot(parentId)
         return false
       }
@@ -271,12 +266,12 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
         .filter(b => isNodeInsideCurrentRoot(b.id))
         .map(b => ({
           ...b,
-          parentId: b.parentId === docMeta.id ? undefined : b.parentId
+          parentId: b.parentId === id ? undefined : b.parentId
         }))
     }
 
     return blocks
-  }, [dataPageBlocks, docMeta.id, mode])
+  }, [dataPageBlocks, id, mode])
 
   useEffect(() => {
     pageBlocks.forEach(b => {

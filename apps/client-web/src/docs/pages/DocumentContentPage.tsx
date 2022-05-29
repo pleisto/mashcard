@@ -7,7 +7,7 @@ import { ContentSidebar } from './components/ContentSidebar'
 import { DocumentPage } from './DocumentPage'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { Helmet } from 'react-helmet-async'
-import { GetBlockInfoQuery, Policytype, useBlockCreateMutation, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
+import { Policytype, useBlockCreateMutation, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
 import { useDocsI18n } from '../common/hooks'
 import { queryPageBlocks } from '../common/graphql'
 import { FormulaContextVar } from '../reactiveVars'
@@ -16,46 +16,7 @@ import { appendFormulas, FormulaContext } from '@brickdoc/formula'
 import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
 import { AppError404 } from '@/core/app-error'
-
-type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
-export type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['pathArray'][0]
-type icon = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['icon']
-
-export interface DocMeta {
-  id: string | undefined
-  domain: string
-  personalDomain: string
-  loginDomain: string
-  isAlias: boolean
-  alias: string | undefined
-  payload: object
-  snapshotVersion: number
-  isAnonymous: boolean
-  isDeleted: boolean
-  isMine: boolean
-  isRedirect: boolean
-  isNotExist?: boolean
-  pin: boolean
-  title: string
-  icon?: icon
-  host: string
-  path: string
-  collaborators: Collaborator[]
-  pathArray: Path[]
-  documentInfoLoading: boolean
-  shareable: boolean
-  editable: boolean
-  viewable: boolean
-}
-
-export interface NonNullDocMeta extends DocMeta {
-  id: string
-  alias: string
-}
-
-export interface DocMetaProps {
-  docMeta: DocMeta
-}
+import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
 
 /* const Layout = styled('div', base) */
 
@@ -185,12 +146,12 @@ export const DocumentContentPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blockCreate, docid, history, domain, docMeta, lastDomain, lastBlockIds])
 
-  const siderBar = <ContentSidebar docMeta={docMeta} />
+  const siderBar = <ContentSidebar />
   if (docMeta.isNotExist) {
     return <AppError404 btnCallback={() => navigate('/')} />
   }
   return (
-    <>
+    <DocMetaProvider docMeta={docMeta}>
       <Helmet
         titleTemplate={`%s - ${t('app_title')}`}
         defaultTitle={t('app_title')}
@@ -207,16 +168,20 @@ export const DocumentContentPage: React.FC = () => {
           <main className="content">
             {(!loading || docMeta.isMine) && (
               <header style={docMeta.isAnonymous ? { paddingRight: 0 } : undefined}>
-                <DocumentTopBar docMeta={docMeta} />
+                <DocumentTopBar />
               </header>
             )}
             <section>
               <article id="article">
                 {docMeta.id && (
-                  <DocumentPage
-                    docMeta={{ ...docMeta, editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted }}
-                    mode={!docMeta.editable || isAnonymous ? 'presentation' : 'default'}
-                  />
+                  <DocMetaProvider
+                    inherit
+                    docMeta={{
+                      editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted
+                    }}
+                  >
+                    <DocumentPage mode={!docMeta.editable || isAnonymous ? 'presentation' : 'default'} />
+                  </DocMetaProvider>
                 )}
               </article>
               {!isAnonymous && <aside id="aside" />}
@@ -224,7 +189,7 @@ export const DocumentContentPage: React.FC = () => {
           </main>
         </Split>
       </Root.Layout>
-    </>
+    </DocMetaProvider>
   )
 }
 

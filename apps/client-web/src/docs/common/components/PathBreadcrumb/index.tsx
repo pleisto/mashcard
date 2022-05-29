@@ -1,22 +1,22 @@
 import React from 'react'
 import { BlockEmoji, Blocktype } from '@/BrickdocGraphQL'
 import { Tooltip, Popover, Menu } from '@brickdoc/design-system'
-import { NonNullDocMeta, Path } from '@/docs/pages/DocumentContentPage'
 import { useDocsI18n } from '../../hooks'
 import * as Root from './index.style'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { useNonNullDocMeta, type Path } from '@/docs/store/DocMeta'
 
 interface PathBreadcrumbProps {
-  docMeta: NonNullDocMeta
   className: string
 }
 
-export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, className }) => {
-  const paths: Path[] = docMeta.pathArray.concat([{ id: docMeta.id, text: docMeta.title, icon: docMeta.icon }])
+export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ className }) => {
+  const { pathArray, id, title, icon, isMine, domain } = useNonNullDocMeta()
+  const paths: Path[] = pathArray.concat([{ id, text: title, icon }])
   const { t } = useDocsI18n()
 
   const renderPath = (path: Path, idx: number, showSplit: boolean, fullwidth: Boolean = false): React.ReactNode => {
-    const link = docMeta.isMine ? `/${docMeta.domain}/${path.id}` : '#'
+    const link = isMine ? `/${domain}/${path.id}` : '#'
     const hasEmoji = path.icon && path.icon.type === Blocktype.Emoji
     const emoji = hasEmoji ? (path.icon as BlockEmoji).emoji : ''
     return (
