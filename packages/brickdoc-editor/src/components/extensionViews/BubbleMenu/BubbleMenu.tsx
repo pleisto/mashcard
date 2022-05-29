@@ -58,12 +58,13 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
     <TiptapBubbleMenu
       tippyOptions={{ placement: 'top-start', maxWidth: '500px', delay: [1000, 0] }}
       shouldShow={shouldShow}
-      editor={editor}>
+      editor={editor}
+    >
       {visible && (
         // Puts toolbar inside a button to prevent toolbar from blink.
         // ref: https://tiptap.dev/api/extensions/bubble-menu
         // Not sure why
-        <Button type="unstyled">
+        <Button type="unstyled" css={{ boxShadow: 'none!important' }}>
           <Toolbar options={options} />
         </Button>
       )}
