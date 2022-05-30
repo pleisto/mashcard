@@ -78,7 +78,7 @@ jobs:
           fetch-depth: 2 # To retrieve the preceding commit.
       - name: Get changed ruby files
         id: changed-ruby-or-rust-files
-        uses: tj-actions/changed-files@v20
+        uses: tj-actions/changed-files@v21
         with:
           files: |
             .(rb|rs)$
@@ -131,13 +131,13 @@ jobs:
           flags: backend-unit
       - name: Get changed database migrations
         id: changed-db-migrations
-        uses: tj-actions/changed-files@v20
+        uses: tj-actions/changed-files@v21
         with:
           files: |
             apps\/server-monolith\/db\/migrate
       - name: Get changed GraphQL type definitions
         id: changed-gql-typeds
-        uses: tj-actions/changed-files@v20
+        uses: tj-actions/changed-files@v21
         with:
           files: |
             apps\/server-monolith\/app\/graphql
