@@ -20,7 +20,7 @@
     "@brickdoc/test-helper": "workspace:^",
     "@brickdoc/uploader": "workspace:^",
     "@pdftron/webviewer": "^8.5.0",
-    "@tiptap/core": "^2.0.0-beta.175",
+    "@tiptap/core": "^2.0.0-beta.176",
     "@tiptap/extension-blockquote": "^2.0.0-beta.26",
     "@tiptap/extension-bold": "^2.0.0-beta.26",
     "@tiptap/extension-bubble-menu": "^2.0.0-beta.56",
@@ -37,7 +37,7 @@
     "@tiptap/extension-history": "^2.0.0-beta.21",
     "@tiptap/extension-horizontal-rule": "^2.0.0-beta.31",
     "@tiptap/extension-italic": "^2.0.0-beta.26",
-    "@tiptap/extension-link": "^2.0.0-beta.37",
+    "@tiptap/extension-link": "^2.0.0-beta.38",
     "@tiptap/extension-list-item": "^2.0.0-beta.20",
     "@tiptap/extension-ordered-list": "^2.0.0-beta.27",
     "@tiptap/extension-paragraph": "^2.0.0-beta.23",
@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@types/react-pdf": "^5.7.2",
-    "i18next": "^21.8.4",
+    "i18next": "^21.8.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

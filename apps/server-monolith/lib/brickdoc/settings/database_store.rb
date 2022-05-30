@@ -73,7 +73,10 @@ module Brickdoc
 
       # Check database table exists or not
       def _table_exists?
-        table_exists?
+        table_exists? &&
+          # Fix old version of BrickdocSettings
+          # TODO: remove this check berfore public release
+          BrickdocConfig.column_names.exclude?('domain_len')
       rescue
         false
       end

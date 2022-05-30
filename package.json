@@ -78,7 +78,7 @@
     "@types/is-ci": "^3.0.0",
     "@types/jest": "^27.5.1",
     "@types/jest-axe": "^3.5.3",
-    "@types/node": "^17.0.35",
+    "@types/node": "^17.0.36",
     "@types/rails__actioncable": "^6.1.6",
     "@types/rails__activestorage": "^7.0.1",
     "@types/react": "^18.0.9",
@@ -99,7 +99,7 @@
     "jest-axe": "^6.0.0",
     "jest-environment-jsdom": "^28.1.0",
     "jest-junit": "^13.2.0",
-    "lint-staged": "^12.4.2",
+    "lint-staged": "^12.4.3",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
     "turbo": "^1.2.14",
@@ -112,7 +112,6 @@
     "preact": "10.6.6",
     "@types/react": "^17.0.44",
     "@types/react-dom": "^17.0.15",
-    "@rails/actioncable": "patch:@rails/actioncable@npm:7.0.1#.yarn/patches/@rails-actioncable-npm-7.0.1-7dd9553527",
     "cached-path-relative": ">=1.1.0",
     "trim": ">= 1.0.1",
     "dayjs": ">=1.11.1",
@@ -120,7 +119,8 @@
     "@jest/transform": "npm:@jest/transform@>=27",
     "prosemirror-view": "patch:prosemirror-view@npm:1.23.7#.yarn/patches/prosemirror-view-npm-1.23.7-5085f0bf9b",
     "minimist": ">= 1.2.6",
-    "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.10#.yarn/patches/vite-plugin-mdx-npm-3.5.10-ae54c30668"
+    "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.10#.yarn/patches/vite-plugin-mdx-npm-3.5.10-ae54c30668",
+    "@rails/actioncable": "patch:@rails/actioncable@npm:7.0.3#.yarn/patches/@rails-actioncable-npm-7.0.3-9e882d37e5.patch"
   },
   "dependencies": {
     "@swc/core": "^1.2.194",

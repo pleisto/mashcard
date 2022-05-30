@@ -1,34 +1,31 @@
 diff --git a/app/assets/javascripts/action_cable.js b/app/assets/javascripts/action_cable.js
-index d2c264baa44065696529d9547c1779c23f39eb2d..6e17f796fb0aeb34b43cfebcfe79ba97ff27d708 100644
+index 22edeccf30ab51c0d77e19b6ce95a6b175f30066..5287d8c6b4eac1d82ef7402e75d4f54437f4f32b 100644
 --- a/app/assets/javascripts/action_cable.js
 +++ b/app/assets/javascripts/action_cable.js
-@@ -108,7 +108,9 @@
+@@ -108,7 +108,7 @@
        }
      }
    }
 -  ConnectionMonitor.staleThreshold = 6;
-+  
-+  // Patched: Server:: Connections:: BEAT_INTERVAL * 2(missed two pings)
 +  ConnectionMonitor.staleThreshold = 60;
    ConnectionMonitor.reconnectionBackoffRate = .15;
    var INTERNAL = {
      message_types: {
 diff --git a/app/assets/javascripts/actioncable.esm.js b/app/assets/javascripts/actioncable.esm.js
-index 416448ce6c2fcc75450109fea39b9107b220af76..3c00eb9a3eb04b5acade817f95ab325b399daaba 100644
+index 2187eb90bf097ad8bd2fa1e9922ec0101d7f3cf3..b5b1b9f6906af3f8bad467805b25352726f38526 100644
 --- a/app/assets/javascripts/actioncable.esm.js
 +++ b/app/assets/javascripts/actioncable.esm.js
-@@ -108,7 +108,8 @@ class ConnectionMonitor {
+@@ -108,7 +108,7 @@ class ConnectionMonitor {
    }
  }
  
 -ConnectionMonitor.staleThreshold = 6;
-+// Patched: Server:: Connections:: BEAT_INTERVAL * 2(missed two pings)
 +ConnectionMonitor.staleThreshold = 60;
  
  ConnectionMonitor.reconnectionBackoffRate = .15;
  
 diff --git a/app/assets/javascripts/actioncable.js b/app/assets/javascripts/actioncable.js
-index e8f48805e0d6a90cecfca5495c72775f7525f1f6..f85a0b10d77d93ddf61f0f43c8f3d2855cd4aa3e 100644
+index b3cc4299dbc94da1edee2a699853d57a5117fbd1..45a245784337bfa95ec20208e16b640230ff598c 100644
 --- a/app/assets/javascripts/actioncable.js
 +++ b/app/assets/javascripts/actioncable.js
 @@ -108,7 +108,8 @@

@@ -7,7 +7,7 @@
     "extends": "../../package.json"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.5",
+    "@apollo/client": "^3.6.6",
     "@brickdoc/active-support": "workspace:^",
     "@brickdoc/design-icons": "workspace:^",
     "@brickdoc/design-system": "workspace:^",
@@ -16,7 +16,7 @@
     "@brickdoc/schema": "workspace:^",
     "@brickdoc/test-helper": "workspace:^",
     "@brickdoc/uploader": "workspace:^",
-    "@rails/actioncable": "^7.0.1",
+    "@rails/actioncable": "^7.0.3",
     "@rails/activestorage": "^7.0.3",
     "@sentry/integrations": "^6.19.7",
     "@sentry/react": "^6.19.7",
@@ -28,7 +28,7 @@
     "framer-motion": "^6.3.4",
     "graphql": "^16.5.0",
     "graphql-ruby-client": "^1.10.7",
-    "i18next": "^21.8.4",
+    "i18next": "^21.8.5",
     "i18next-http-backend": "^1.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
