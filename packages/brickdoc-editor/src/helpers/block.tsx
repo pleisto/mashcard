@@ -23,13 +23,15 @@ import {
   RteH3,
   RteH4,
   RteH5,
-  TextStyle
+  TextStyle,
+  Quote
 } from '../components/ui'
 import { meta as formulaMeta } from '../extensions/blocks/formula/meta'
 import { meta as spreadsheetMeta } from '../extensions/blocks/spreadsheet/meta'
 import { meta as embedMeta } from '../extensions/blocks/embed/meta'
 import { meta as subPageMenuMeta } from '../extensions/blocks/subPageMenu/meta'
 import { meta as tocMeta } from '../extensions/blocks/toc/meta'
+import { meta as blockquoteMeta } from '../extensions/blocks/blockquote/meta'
 
 export type BlockItemKey =
   | 'text'
@@ -50,6 +52,7 @@ export type BlockItemKey =
   | 'toc'
   | 'subPageMenu'
   | 'divider'
+  | 'blockquote'
 
 export interface BlockCommandItem {
   key: BlockItemKey
@@ -212,6 +215,17 @@ export const ORDERED_LIST: BlockCommandItem = {
     chain.insertBlockAt({ type: Paragraph.name }, position).wrapInBrickList(OrderedList.name)
 }
 
+export const BLOCKQUOTE: BlockCommandItem = {
+  key: 'blockquote',
+  blockType: blockquoteMeta.name,
+  alias: ['quo'],
+  squareIcon: <Quote square={true} />,
+  icon: <Quote />,
+  setBlock: chain => chain.setBlockquote(),
+  toggleBlock: chain => chain.toggleBlockquote(),
+  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: blockquoteMeta.name }, position)
+}
+
 export const CODE: BlockCommandItem = {
   key: 'code',
   blockType: CodeBlock.name,
@@ -272,6 +286,7 @@ export const BLOCK = {
   BULLETED_LIST,
   ORDERED_LIST,
   CODE,
+  BLOCKQUOTE,
   DIVIDER,
   TOC,
   SUB_PAGE_MENU
@@ -292,6 +307,7 @@ export const ORDER_NEW_BLOCK: BlockItemKey[] = [
   BULLETED_LIST.key,
   ORDERED_LIST.key,
   CODE.key,
+  BLOCKQUOTE.key,
   DIVIDER.key,
   TOC.key,
   SUB_PAGE_MENU.key
@@ -314,6 +330,7 @@ export const BLOCK_MAP = Object.fromEntries(
     BULLETED_LIST,
     ORDERED_LIST,
     CODE,
+    BLOCKQUOTE,
     DIVIDER,
     TOC,
     SUB_PAGE_MENU
@@ -330,7 +347,8 @@ export const ORDER_TOGGLE_BLOCK: BlockItemKey[] = [
   ORDERED_LIST.key,
   BULLETED_LIST.key,
   FORMULA.key,
-  CODE.key
+  CODE.key,
+  BLOCKQUOTE.key
 ]
 
 export const sortBlock =

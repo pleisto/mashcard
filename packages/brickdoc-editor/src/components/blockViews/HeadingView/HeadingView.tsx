@@ -41,12 +41,11 @@ export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, getPos }) 
   return (
     <BlockContainer
       node={node}
-      actionOptions={['copy', 'delete', 'transform']}
+      actionOptions={['cut', 'copy', 'delete', 'transform']}
       actionButtonClassName={actionButtonClassName}
       getPos={getPos}
       deleteNode={deleteNode}
-      contentForCopy={node.textContent}
-    >
+      contentForCopy={node.textContent}>
       <NodeViewContent as={as} />
     </BlockContainer>
   )

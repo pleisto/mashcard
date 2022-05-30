@@ -7,7 +7,7 @@ export function useActionOptions(url?: string): [BlockActionOptions] {
   const [t] = useEditorI18n()
 
   return useMemo(() => {
-    const actionOptions: BlockActionOptions = ['copy', 'delete']
+    const actionOptions: BlockActionOptions = ['cut', 'copy', 'delete']
 
     if (url) {
       actionOptions.unshift({

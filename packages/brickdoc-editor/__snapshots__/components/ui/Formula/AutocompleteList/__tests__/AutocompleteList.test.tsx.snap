@@ -137,7 +137,7 @@ exports[`AutocompleteList Active Completion renders column kind correctly 1`] = 
       class="formula-autocomplete-preview"
     >
       <div
-        class="brd-c-gWdvyz"
+        class="brickdoc"
       >
         <div
           class="ProseMirror"
@@ -378,7 +378,7 @@ exports[`AutocompleteList Active Completion renders spreadsheet kind correctly 1
       class="formula-autocomplete-preview"
     >
       <div
-        class="brd-c-gWdvyz"
+        class="brickdoc"
       >
         <div
           class="ProseMirror"

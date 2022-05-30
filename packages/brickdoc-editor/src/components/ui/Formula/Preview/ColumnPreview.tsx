@@ -1,6 +1,5 @@
 import { ColumnType } from '@brickdoc/formula'
 import { FormulaSpreadsheet } from '../Render'
-import { brickdocCls } from '../../../../editors/documentEditor/styles'
 
 export interface ColumnPreviewProps {
   column: ColumnType
@@ -9,7 +8,7 @@ export interface ColumnPreviewProps {
 
 export const ColumnPreview: React.FC<ColumnPreviewProps> = ({ column, rootId }) => {
   return (
-    <div className={brickdocCls}>
+    <div className="brickdoc">
       <div className="ProseMirror">
         <div className="autocomplete-preview-column">
           <FormulaSpreadsheet spreadsheet={column.spreadsheet} columnIds={[column.columnId]} select={true} />

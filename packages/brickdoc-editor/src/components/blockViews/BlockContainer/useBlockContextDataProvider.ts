@@ -25,8 +25,6 @@ export function useBlockContextDataProvider({
   const data = useMemo<BlockContextData>(
     () => ({
       deleteBlock: () => deleteNode?.(),
-      duplicateBlock() {},
-      moveBlock() {},
       getPosition: () => getPos?.(),
       copyContent: async () => {
         await navigator.clipboard.writeText(contentForCopy ?? '')

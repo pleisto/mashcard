@@ -4,7 +4,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
 <div>
   <div>
     <div
-      class="brd-c-gWdvyz"
+      class="brickdoc"
     >
       <div
         class="ProseMirror"

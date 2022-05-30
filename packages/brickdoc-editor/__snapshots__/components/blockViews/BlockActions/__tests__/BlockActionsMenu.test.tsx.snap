@@ -163,7 +163,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <span
-                  class="brd-c-gowino"
+                  class="brd-c-klOYXj"
                 >
                   delete
                 </span>
@@ -203,7 +203,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
           class="brd-c-OVPdU"
         >
           <span
-            class="brd-c-frQDkN brd-c-gowino brd-c-fDvJQE"
+            class="brd-c-frQDkN brd-c-klOYXj brd-c-fDvJQE"
           >
             <div
               class="brd-c-fRlUEu brd-c-fRlUEu-igcOMTV-css"

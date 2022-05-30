@@ -51,8 +51,7 @@ const Trigger: FC<{
       draggable={true}
       data-drag-handle
       data-testid={TEST_ID_ENUM.editor.blockAction.button.id}
-      {...restProps}
-    >
+      {...restProps}>
       <StyledBlockActionButton
         onClick={event => {
           event.stopPropagation()
@@ -65,8 +64,7 @@ const Trigger: FC<{
           setHovered(true)
         }}
         size="sm"
-        type="text"
-      >
+        type="text">
         <DragSecondary {...iconProps} />
       </StyledBlockActionButton>
     </div>
@@ -101,8 +99,7 @@ export const BlockActionButton: FC<BlockActionButtonProps> = ({ className, child
       destroyTooltipOnHide={true}
       trigger="hover"
       placement="startTop"
-      content={<BlockActionsMenu onClose={handleCloseMenu} {...props} />}
-    >
+      content={<BlockActionsMenu onClose={handleCloseMenu} {...props} />}>
       <Trigger className={className} onDragStart={handleDragStart} onDragEnd={handleDragEnd} />
     </Popover>
   )

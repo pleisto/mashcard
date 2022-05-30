@@ -43,7 +43,7 @@ export const TocView: FC<TocViewProps> = ({ editor, node, deleteNode, getPos }) 
   }, [editor, updateItems])
 
   return (
-    <BlockContainer node={node} getPos={getPos} deleteNode={deleteNode} actionOptions={['delete']}>
+    <BlockContainer node={node} getPos={getPos} deleteNode={deleteNode} actionOptions={['cut', 'delete']}>
       <TocContainer tocItemCount={tocItemCount}>
         {tocItemCount === 0 && <TocPlaceholder>{t('blocks.toc.placeholder')}</TocPlaceholder>}
         {tocRoot?.children.map((node, index) => (

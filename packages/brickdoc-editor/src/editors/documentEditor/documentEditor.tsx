@@ -15,7 +15,7 @@ import { SyncOptions } from '../../extensions'
 import { Base } from '../../extensions/base'
 import { useDrawerService } from '../../components/ui/Drawer'
 import { useDropBlock, useUndo } from '../../helpers'
-import { documentEditorStyles, brickdocCls } from './styles'
+import { documentEditorStyles } from './styles'
 import { EditorProps, useEditorPropsEffect } from '../../context'
 
 export interface EditorContentProps extends EditorProps {
@@ -36,7 +36,7 @@ export const EditorContent: FC<EditorContentProps> = ({ editor, ...props }) => {
   return (
     <EditorContext.Provider value={editorContext}>
       <BubbleMenu editor={editor} />
-      <TiptapEditorContent className={brickdocCls} editor={editor} />
+      <TiptapEditorContent className="brickdoc" editor={editor} />
       <DiscussionList />
       <ExplorerMenu editor={editor} />
     </EditorContext.Provider>

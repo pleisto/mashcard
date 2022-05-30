@@ -1,11 +1,13 @@
 import { useCallback, useMemo } from 'react'
-import { Icon } from '@brickdoc/design-system'
+import { __serializeForClipboard } from 'prosemirror-view'
+import { NodeSelection } from 'prosemirror-state'
+import { Cutting, Link, Delete, CornerDownRight } from '@brickdoc/design-icons'
 import { BLOCK, BlockCommandItem, ORDER_TOGGLE_BLOCK } from '../../../helpers/block'
 import { useDocumentEditable, useEditorContext, useEditorI18n } from '../../../hooks'
 import { ActionGroupOption, ActionItemOption } from './BlockActions'
 import { useBlockContext } from '../../../hooks/useBlockContext'
 
-export type BasicActionOptionType = 'delete' | 'duplicate' | 'copy' | 'move' | 'transform'
+export type BasicActionOptionType = 'delete' | 'cut' | 'copy' | 'transform'
 
 export interface UseActionOptionsProps {
   types: BasicActionOptionType[]
@@ -14,10 +16,21 @@ export interface UseActionOptionsProps {
 const transformBlocks = ORDER_TOGGLE_BLOCK.map(key => Object.values(BLOCK).find(block => block.key === key))
 
 export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionGroupOption | null {
-  const { deleteBlock, duplicateBlock, copyContent, moveBlock, getPosition, node } = useBlockContext()
+  const { deleteBlock, copyContent, getPosition, node } = useBlockContext()
   const { editor } = useEditorContext()
   const [t] = useEditorI18n()
   const [documentEditable] = useDocumentEditable(undefined)
+
+  const setNodeSelection = useCallback(() => {
+    if (!editor) return false
+    const position = getPosition()
+    if (position === undefined) return false
+    const selection = NodeSelection.create(editor.view.state.doc, position)
+    const transaction = editor.view.state.tr.setSelection(selection)
+    editor.view.dispatch(transaction)
+
+    return true
+  }, [editor, getPosition])
 
   const createActionOption = useCallback(
     (blockItem: BlockCommandItem): ActionItemOption => ({
@@ -27,13 +40,11 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionG
       icon: blockItem.squareIcon,
       onAction: () => {
         if (!editor) return
-        const position = getPosition()
-        if (position === undefined) return
-        const chain = editor?.chain().setNodeSelection(position)
-        blockItem.setBlock(chain).run()
+        if (!setNodeSelection()) return
+        blockItem.setBlock(editor.chain()).run()
       }
     }),
-    [editor, getPosition, t]
+    [editor, setNodeSelection, t]
   )
 
   const hasTextContent = (node?.textContent?.length ?? 0) > 0
@@ -45,13 +56,29 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionG
       return null
     }
 
-    if (types.includes('duplicate')) {
+    if (types.includes('cut')) {
       group.items.push({
-        label: t('block_actions.basic.duplicate'),
-        name: 'duplicate',
+        label: t('block_actions.basic.cut'),
+        name: 'cut',
         type: 'item',
-        icon: <Icon.Copy />,
-        onAction: duplicateBlock
+        icon: <Cutting />,
+        onAction: async () => {
+          if (!editor) return
+          if (!setNodeSelection()) return
+
+          const slice = editor.state.selection.content()
+          const { dom, text } = __serializeForClipboard(editor.view, slice)
+
+          // copy block to clipboard
+          await navigator.clipboard.write([
+            new ClipboardItem({
+              'text/html': new Blob([dom.innerHTML], { type: 'text/html' }),
+              'text/plain': new Blob([text], { type: 'text/plain' })
+            })
+          ])
+
+          deleteBlock()
+        }
       })
     }
 
@@ -60,7 +87,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionG
         name: 'copy',
         label: t('block_actions.basic.copy'),
         type: 'item',
-        icon: <Icon.Link />,
+        icon: <Link />,
         onAction: copyContent
       })
     }
@@ -70,7 +97,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionG
         label: t('block_actions.basic.delete'),
         name: 'delete',
         type: 'item',
-        icon: <Icon.Delete />,
+        icon: <Delete />,
         onAction: deleteBlock
       })
 
@@ -79,18 +106,8 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionG
         label: t('block_actions.basic.transform'),
         name: 'transform',
         type: 'subMenu',
-        icon: <Icon.CornerDownRight />,
+        icon: <CornerDownRight />,
         items: transformBlocks.filter(i => !!i).map(item => createActionOption(item!))
-      })
-    }
-
-    if (types.includes('move')) {
-      group.items.push({
-        label: t('block_actions.basic.move'),
-        name: 'move',
-        type: 'item',
-        icon: <Icon.MoveIn />,
-        onAction: moveBlock
       })
     }
 
@@ -100,9 +117,9 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionG
     createActionOption,
     deleteBlock,
     documentEditable,
-    duplicateBlock,
+    editor,
     hasTextContent,
-    moveBlock,
+    setNodeSelection,
     t,
     types
   ])

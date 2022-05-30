@@ -17,7 +17,9 @@ const iconSize = '.8125rem'
 
 export const actionIconStyle = css({
   color: theme.colors.deepPurple4,
-  fontSize: iconSize
+  fontSize: iconSize,
+  lineHeight: 1,
+  marginTop: '2px'
 })
 
 export const actionIconBackgroundStyle = css({

@@ -3,8 +3,6 @@ import { NodeViewProps } from '@tiptap/core'
 
 export interface BlockContextData {
   deleteBlock: () => void
-  duplicateBlock: () => void
-  moveBlock: () => void
   copyContent: () => void
   getPosition: () => number | undefined
   updateDraggingStatus: (dragging: boolean) => void
@@ -14,8 +12,6 @@ export interface BlockContextData {
 
 export const BlockContext = createContext<BlockContextData>({
   deleteBlock() {},
-  duplicateBlock() {},
-  moveBlock() {},
   copyContent() {},
   getPosition() {
     return undefined

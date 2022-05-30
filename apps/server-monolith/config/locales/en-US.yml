@@ -693,11 +693,13 @@ en-US:
         label: Subpage menu
       code:
         label: Code
+      blockquote:
+        label: Quote
     block_actions:
       basic:
+        cut: Cut
         copy: Copy
         move: Move
-        duplicate: Duplicate
         delete: Delete
         transform: Turn into
       embed_block:

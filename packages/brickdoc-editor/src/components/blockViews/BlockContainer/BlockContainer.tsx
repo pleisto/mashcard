@@ -5,7 +5,7 @@ import { BlockContext } from '../../../context/BlockContext'
 import { useDocumentEditable, useEditorContext } from '../../../hooks'
 import { useBlockContextDataProvider } from './useBlockContextDataProvider'
 import { useBlockElement } from './useBlockElement'
-import { ListItem } from '../../../extensions'
+import { Blockquote, ListItem } from '../../../extensions'
 export interface BlockContainerProps {
   inline?: boolean
   editable?: boolean
@@ -45,12 +45,13 @@ export const BlockContainer: FC<BlockContainerProps> = forwardRef<HTMLElement, B
 
     // check if block inside a list
     const blockResolvedPosition = editor?.state.doc.resolve(getPos?.() ?? 0)
-    const insideList = !blockResolvedPosition
+
+    const disableActionOptions = !blockResolvedPosition
       ? true
-      : !!findParentNodeClosestToPos(blockResolvedPosition, node => node.type.name === ListItem.name)?.node
-
-    const disableActionOptions = insideList
-
+      : !!findParentNodeClosestToPos(
+          blockResolvedPosition,
+          node => node.type.name === ListItem.name || node.type.name === Blockquote.name
+        )?.node
     const [blockDragging, setBlockDragging] = useState(false)
     const [blockContextData] = useBlockContextDataProvider({
       deleteNode,

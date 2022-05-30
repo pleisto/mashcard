@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlockquoteView renders blockquote correctly 1`] = `
+<div>
+  <div
+    data-node-view-wrapper=""
+    style="pointer-events: none; white-space: normal;"
+  >
+    <blockquote
+      as="blockquote"
+      data-node-view-content=""
+      style="white-space: pre-wrap;"
+    />
+  </div>
+</div>
+`;

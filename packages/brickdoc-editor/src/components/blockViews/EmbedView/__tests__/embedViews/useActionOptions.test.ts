@@ -8,7 +8,7 @@ describe('useActionOptions', () => {
     const { result } = renderHook(() => useActionOptions(url))
     const [options] = result.current
 
-    expect(options).toHaveLength(3)
+    expect(options).toHaveLength(4)
 
     const downloadOption = (options[0] as ToolbarGroupOption).items[0] as ToolbarItemOption
 

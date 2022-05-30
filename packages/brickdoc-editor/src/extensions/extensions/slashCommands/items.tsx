@@ -36,6 +36,7 @@ const HEADING_5 = createSlashMenuItem(BLOCK.HEADING_5)
 const BULLETED_LIST = createSlashMenuItem(BLOCK.BULLETED_LIST)
 const ORDERED_LIST = createSlashMenuItem(BLOCK.ORDERED_LIST)
 const CODE = createSlashMenuItem(BLOCK.CODE)
+const BLOCKQUOTE = createSlashMenuItem(BLOCK.BLOCKQUOTE)
 const DIVIDER = createSlashMenuItem(BLOCK.DIVIDER)
 const TOC = createSlashMenuItem(BLOCK.TOC)
 const SUB_PAGE_MENU = createSlashMenuItem(BLOCK.SUB_PAGE_MENU)
@@ -51,7 +52,7 @@ export const slashMenuGroup = [
   },
   {
     key: 'text',
-    items: [HEADING_1, HEADING_2, HEADING_3, HEADING_4, HEADING_5, BULLETED_LIST, ORDERED_LIST, CODE]
+    items: [HEADING_1, HEADING_2, HEADING_3, HEADING_4, HEADING_5, BULLETED_LIST, ORDERED_LIST, CODE, BLOCKQUOTE]
   },
   {
     key: 'others',
@@ -73,6 +74,7 @@ const slashMenuItems = [
   BULLETED_LIST,
   ORDERED_LIST,
   CODE,
+  BLOCKQUOTE,
   DIVIDER,
   TOC,
   SUB_PAGE_MENU

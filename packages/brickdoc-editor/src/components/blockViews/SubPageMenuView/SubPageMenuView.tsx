@@ -18,7 +18,7 @@ export const SubPageMenuView: FC<SubPageMenuViewProps> = ({ node, deleteNode, ge
   const editorProps = useEditorPropsContext()
 
   return (
-    <BlockContainer node={node} deleteNode={deleteNode} getPos={getPos} actionOptions={['delete']}>
+    <BlockContainer node={node} deleteNode={deleteNode} getPos={getPos} actionOptions={['cut', 'delete']}>
       <SubPageMenu>{editorProps.renderPageTree()}</SubPageMenu>
     </BlockContainer>
   )

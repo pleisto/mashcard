@@ -21,34 +21,6 @@ describe('useBlockContextDataProvider', () => {
     expect(mockUpdateDragging).toBeCalledWith(true)
   })
 
-  it('moves node normally', () => {
-    const { result } = renderHook(() =>
-      useBlockContextDataProvider({
-        dragging: true,
-        getPos: () => 1,
-        updateDragging: () => {},
-        node: {} as any
-      })
-    )
-
-    const data = result.current[0]
-    expect(() => data.moveBlock()).not.toThrow()
-  })
-
-  it('duplicates node normally', () => {
-    const { result } = renderHook(() =>
-      useBlockContextDataProvider({
-        dragging: true,
-        getPos: () => 1,
-        updateDragging: () => {},
-        node: {} as any
-      })
-    )
-
-    const data = result.current[0]
-    expect(() => data.duplicateBlock()).not.toThrow()
-  })
-
   it('gets node position normally', () => {
     const position = 1
     const { result } = renderHook(() =>
