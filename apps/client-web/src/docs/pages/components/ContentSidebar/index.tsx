@@ -19,10 +19,10 @@ export const ContentSidebar: FC = () => {
         <div className="mainActions">
           <nav>
             <PageTree />
+            <TrashButton />
           </nav>
           <footer>
             <NewPage />
-            <TrashButton />
           </footer>
         </div>
       )}

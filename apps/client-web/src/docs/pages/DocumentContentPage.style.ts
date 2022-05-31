@@ -181,3 +181,9 @@ export const sidebarButtonStyles = {
   flex: 1,
   padding: '0.75rem'
 }
+
+export const sidebarTrashLinkstyles = {
+  width: '100%',
+  paddingTop: '1rem',
+  paddingLeft: '1.25rem',
+}

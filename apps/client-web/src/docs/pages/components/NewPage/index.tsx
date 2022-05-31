@@ -34,7 +34,7 @@ export const NewPage: FC = () => {
       css={sidebarButtonStyles}
       onClick={onClick}
       loading={createBlockLoading}
-      icon={<Add />}
+      icon={<Add size={18}/>}
       disabled={createBlockLoading}
     >
       {t('blocks.create_pages')}
