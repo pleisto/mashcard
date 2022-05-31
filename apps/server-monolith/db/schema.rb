@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_26_160155) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_31_080007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
   enable_extension "pgcrypto"
@@ -35,6 +35,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_160155) do
     t.integer "state", default: 0, null: false
     t.index ["space_id"], name: "index_accounts_members_on_space_id"
     t.index ["user_id"], name: "index_accounts_members_on_user_id"
+  end
+
+  create_table "accounts_notifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "notification_type", null: false
+    t.json "data", default: {}, null: false, comment: "Notification data"
+    t.integer "status", null: false, comment: "Unread / read / deleted"
+    t.string "source_id"
+    t.string "source_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["source_type", "source_id"], name: "index_accounts_notifications_on_source_type_and_source_id"
+    t.index ["user_id"], name: "index_accounts_notifications_on_user_id"
   end
 
   create_table "accounts_users", force: :cascade do |t|
@@ -141,6 +154,34 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_160155) do
     t.index ["collaborators"], name: "index_docs_blocks_on_collaborators", using: :gin
     t.index ["parent_id"], name: "index_docs_blocks_on_parent_id"
     t.index ["space_id"], name: "index_docs_blocks_on_space_id"
+  end
+
+  create_table "docs_comments", force: :cascade do |t|
+    t.bigint "conversation_id", null: false
+    t.bigint "creator_id", null: false
+    t.json "content", null: false, comment: "Comment content"
+    t.integer "status", null: false, comment: "deleted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_docs_comments_on_conversation_id"
+    t.index ["creator_id"], name: "index_docs_comments_on_creator_id"
+  end
+
+  create_table "docs_conversations", force: :cascade do |t|
+    t.bigint "space_id", null: false
+    t.uuid "mark_ids", default: [], comment: "Mark ids", array: true
+    t.uuid "block_ids", default: [], comment: "Block ids", array: true
+    t.uuid "doc_id", null: false
+    t.bigint "creator_id", null: false
+    t.bigint "collaborators", default: [], null: false, array: true
+    t.integer "status", null: false, comment: "opened / resolved / deleted"
+    t.datetime "latest_reply_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collaborators"], name: "index_docs_conversations_on_collaborators", using: :gin
+    t.index ["creator_id"], name: "index_docs_conversations_on_creator_id"
+    t.index ["doc_id"], name: "index_docs_conversations_on_doc_id"
+    t.index ["space_id"], name: "index_docs_conversations_on_space_id"
   end
 
   create_table "docs_documents", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

@@ -28,6 +28,53 @@ export const FormulaCommit = gql`
   }
 `
 
+export const ConversationCommentCreate = gql`
+  mutation conversationCommentCreate($input: ConversationCommentCreateInput!) {
+    conversationCommentCreate(input: $input) {
+      errors
+    }
+  }
+`
+
+export const ConversationCommentAppend = gql`
+  mutation conversationCommentAppend($input: ConversationCommentAppendInput!) {
+    conversationCommentAppend(input: $input) {
+      errors
+    }
+  }
+`
+
+export const queryConversationComments = gql`
+  query GetConversationComments($pageIds: [UUID!]!) {
+    conversationComments(pageIds: $pageIds) {
+      id
+      docId
+      markIds
+      blockIds
+      latestReplyAt
+      updatedAt
+      createdAt
+      status
+      comments {
+        id
+        content
+        status
+        createdAt
+        updatedAt
+        creator {
+          name
+          domain
+          avatarData {
+            url
+            downloadUrl
+            signedId
+          }
+        }
+      }
+    }
+  }
+`
+
 export const queryFormulas = gql`
   query GetFormulas($domain: String!, $ids: String) {
     formulas(domain: $domain, ids: $ids) {

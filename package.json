@@ -48,7 +48,7 @@
     "test:playwright": "yarn e2e-testing start",
     "test:rspec": "turbo run test:rspec",
     "commit": "git add . && cz",
-    "graphql": "yarn server bundle exec rails graphql:schema:dump && yarn workspace @brickdoc/client-web graphql-codegen --config codegen.yml",
+    "graphql": "yarn server bundle exec rails graphql:schema:dump && yarn workspace @brickdoc/client-web run -T graphql-codegen --config codegen.yml",
     "cleanup": "rimraf node_modules/.cache public/esm-bundle '{packages,tools,apps}/*/{dist,junit-reports,coverage,.turbo,.nyc_output,.eslintcache,.next}' 'tools/e2e-testing/{allure-report,allure-results,test-results,storageState-*.json}'",
     "schema": "yarn workspace @brickdoc/schema",
     "design-system": "yarn workspace @brickdoc/design-system",

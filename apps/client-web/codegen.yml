@@ -1,6 +1,6 @@
 overwrite: true
 schema:
-  - ../db/graphql/schema.json
+  - ../server-monolith/db/graphql/schema.json
   - src/core/typePolicies/clientFileds.graphql
 documents: ['./src/**/*.graphql.ts', './src/**/graphql.ts']
 generates:

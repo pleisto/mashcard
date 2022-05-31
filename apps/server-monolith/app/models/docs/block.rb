@@ -53,6 +53,7 @@ module Docs
     has_many :enabled_share_links, -> { enabled }, class_name: 'Docs::ShareLink', dependent: :restrict_with_exception, inverse_of: :block
     has_one :enabled_alias, -> { enabled }, class_name: 'Docs::Alias', inverse_of: :block, dependent: :destroy
     has_many :aliases, dependent: :destroy, inverse_of: :block
+    has_many :doc_conversations, dependent: :restrict_with_exception, class_name: 'Docs::Conversation', foreign_key: :doc_id
 
     validates :meta, presence: true, allow_blank: true
     # validates :data, presence: true
