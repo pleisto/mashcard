@@ -13,6 +13,7 @@ exports[`OrderedList renders OrderedList correctly 1`] = `
         class="react-renderer node-orderedList"
       >
         <div
+          class="brd-c-dliBAz"
           data-node-view-wrapper=""
           style="pointer-events: none; white-space: normal;"
         >

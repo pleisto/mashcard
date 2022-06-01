@@ -1,13 +1,13 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { useTestEditor } from '../../../../test/testEditor'
-import { BulletList, OrderedList } from '../../../blocks'
+import { BulletList, OrderedList, TaskItem, TaskList } from '../../../blocks'
 import { Indent } from '../indent'
 
 describe('Indent', () => {
   it('triggers indent correctly', () => {
     const { result } = renderHook(() =>
       useTestEditor({
-        extensions: [BulletList, OrderedList, Indent]
+        extensions: [BulletList, OrderedList, TaskList, TaskItem, Indent]
       })
     )
 
@@ -21,7 +21,7 @@ describe('Indent', () => {
   it('triggers indent through keyboard shortcut correctly', () => {
     const { result } = renderHook(() =>
       useTestEditor({
-        extensions: [BulletList, OrderedList, Indent]
+        extensions: [BulletList, OrderedList, TaskList, TaskItem, Indent]
       })
     )
 
@@ -36,7 +36,7 @@ describe('Indent', () => {
     const { result } = renderHook(() =>
       useTestEditor({
         content: '<ul><li>item 1</li></ul>',
-        extensions: [BulletList, OrderedList, Indent]
+        extensions: [BulletList, OrderedList, TaskList, TaskItem, Indent]
       })
     )
 
@@ -50,7 +50,7 @@ describe('Indent', () => {
   it('triggers deindent correctly', () => {
     const { result } = renderHook(() =>
       useTestEditor({
-        extensions: [BulletList, OrderedList, Indent]
+        extensions: [BulletList, OrderedList, TaskList, TaskItem, Indent]
       })
     )
 
@@ -64,7 +64,7 @@ describe('Indent', () => {
   it('triggers deindent through keyboard shortcut correctly', () => {
     const { result } = renderHook(() =>
       useTestEditor({
-        extensions: [BulletList, OrderedList, Indent]
+        extensions: [BulletList, OrderedList, TaskList, TaskItem, Indent]
       })
     )
 
@@ -79,7 +79,7 @@ describe('Indent', () => {
     const { result } = renderHook(() =>
       useTestEditor({
         content: '<ul><li>item 1</li></ul>',
-        extensions: [BulletList, OrderedList, Indent]
+        extensions: [BulletList, OrderedList, TaskList, TaskItem, Indent]
       })
     )
 

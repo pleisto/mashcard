@@ -2660,12 +2660,14 @@ __metadata:
     "@tiptap/extension-ordered-list": ^2.0.0-beta.27
     "@tiptap/extension-paragraph": ^2.0.0-beta.23
     "@tiptap/extension-strike": ^2.0.0-beta.27
+    "@tiptap/extension-task-item": ^2.0.0-beta.32
+    "@tiptap/extension-task-list": ^2.0.0-beta.26
     "@tiptap/extension-text": ^2.0.0-beta.15
     "@tiptap/extension-text-style": ^2.0.0-beta.23
     "@tiptap/extension-underline": ^2.0.0-beta.23
     "@tiptap/extension-unique-id": ^2.0.0-beta.4
     "@tiptap/react": ^2.0.0-beta.109
-    "@tiptap/suggestion": ^2.0.0-beta.91
+    "@tiptap/suggestion": ^2.0.0-beta.92
     "@types/react-pdf": ^5.7.2
     i18next: ^21.8.5
     popper-max-size-modifier: ^0.2.0
@@ -6432,6 +6434,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tiptap/extension-task-item@npm:^2.0.0-beta.32":
+  version: 2.0.0-beta.32
+  resolution: "@tiptap/extension-task-item@npm:2.0.0-beta.32"
+  peerDependencies:
+    "@tiptap/core": ^2.0.0-beta.1
+  checksum: 0d895bbe1c5f80698a88fca104d8de8dd0a761951945e72e01870784e43eceb370e8345cd16ceeb83093fe255466bfda12ed6fad394b92156737c5e1059ce9cb
+  languageName: node
+  linkType: hard
+
+"@tiptap/extension-task-list@npm:^2.0.0-beta.26":
+  version: 2.0.0-beta.26
+  resolution: "@tiptap/extension-task-list@npm:2.0.0-beta.26"
+  peerDependencies:
+    "@tiptap/core": ^2.0.0-beta.1
+  checksum: 11cde88eec8b8762f3cdd5d2fb49cce986d05c6912fe78741ac2d0ee4f0ea4180a69c99dbacbfcfe4949bca1b830583a02b9fc840bd42f66e3017d2e12e78f45
+  languageName: node
+  linkType: hard
+
 "@tiptap/extension-text-style@npm:^2.0.0-beta.23":
   version: 2.0.0-beta.23
   resolution: "@tiptap/extension-text-style@npm:2.0.0-beta.23"
@@ -6489,16 +6509,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/suggestion@npm:^2.0.0-beta.91":
-  version: 2.0.0-beta.91
-  resolution: "@tiptap/suggestion@npm:2.0.0-beta.91"
+"@tiptap/suggestion@npm:^2.0.0-beta.92":
+  version: 2.0.0-beta.92
+  resolution: "@tiptap/suggestion@npm:2.0.0-beta.92"
   dependencies:
     prosemirror-model: ^1.16.1
     prosemirror-state: ^1.3.4
     prosemirror-view: ^1.23.6
   peerDependencies:
     "@tiptap/core": ^2.0.0-beta.1
-  checksum: cc6919a2241632a248e9b31326b8ed84f4285847aa28b42a9005687a893f201ec980190900f64f2de45794bbbe140a9fa8c269b4c81d2b839a11c20745d8c312
+  checksum: 043d38411596beda120c4c2d4ddf0864ce5f657a97f6a8062445c28860e146611599bd4668c8c269c8782792b48daa0ea00f6cea69b85b6d2ee5ff407c146060
   languageName: node
   linkType: hard
 

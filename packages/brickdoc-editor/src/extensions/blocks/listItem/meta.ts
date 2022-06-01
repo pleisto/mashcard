@@ -5,3 +5,6 @@ export const meta: ExtensionMeta = {
   name: ListItem.name,
   extensionType: 'block'
 }
+
+export type { ListItemOptions } from '@tiptap/extension-list-item'
+export interface ListItemAttributes {}

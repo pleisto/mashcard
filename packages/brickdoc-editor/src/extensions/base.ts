@@ -41,6 +41,8 @@ export interface BaseOptions {
   strike: Partial<EXTENSION.StrikeOptions> | boolean
   subPageMenu: Partial<EXTENSION.SubPageMenuOptions> | boolean
   sync: Partial<EXTENSION.SyncOptions> | boolean
+  taskItem: Partial<EXTENSION.TaskItemOptions> | boolean
+  taskList: Partial<EXTENSION.TaskListOptions> | boolean
   text: boolean
   textStyle: Partial<EXTENSION.TextStyleOptions> | boolean
   toc: Partial<EXTENSION.TocOptions> | boolean
@@ -112,6 +114,8 @@ export const Base = Extension.create<BaseOptions>({
     if (this.options.subPageMenu)
       extensions.push(EXTENSION.SubPageMenu.configure(getConfigure(this.options?.subPageMenu)))
     if (this.options.sync) extensions.push(EXTENSION.Sync.configure(getConfigure(this.options?.sync)))
+    if (this.options.taskItem) extensions.push(EXTENSION.TaskItem.configure(getConfigure(this.options?.taskItem)))
+    if (this.options.taskList) extensions.push(EXTENSION.TaskList.configure(getConfigure(this.options?.taskList)))
     if (this.options.text) extensions.push(EXTENSION.Text)
     if (this.options.textStyle) extensions.push(EXTENSION.TextStyle.configure(getConfigure(this.options?.textStyle)))
     if (this.options.toc) extensions.push(EXTENSION.Toc.configure(getConfigure(this.options?.toc)))

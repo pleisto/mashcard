@@ -3,6 +3,7 @@ import { joinBackward as originalJoinBackward, liftEmptyBlock as originalLiftEmp
 import { NodeType } from 'prosemirror-model'
 import { liftListItem as originalLiftListItem } from 'prosemirror-schema-list'
 import { TextSelection } from 'prosemirror-state'
+import { BulletList, OrderedList, TaskList } from '../../blocks'
 import { createExtension } from '../../common'
 import { meta } from './meta'
 
@@ -32,7 +33,7 @@ export const isListType = (nameOrType: string | NodeType) => (editor: Editor) =>
 }
 
 export const isAnyListType = (editor: Editor): boolean =>
-  isListType('bulletList')(editor) || isListType('orderedList')(editor)
+  isListType(BulletList.name)(editor) || isListType(OrderedList.name)(editor) || isListType(TaskList.name)(editor)
 
 export const BrickList = createExtension<BrickListOptions, BrickListAttributes>({
   name: meta.name,

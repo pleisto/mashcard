@@ -21,90 +21,6 @@ const anchorMarkStyles = {
   }
 }
 
-const listLevelStyles = {
-  'ul[data-node-view-content=""]': {
-    listStyleType: 'disc',
-
-    ul: {
-      listStyleType: 'circle',
-
-      ul: {
-        listStyleType: 'square'
-      }
-    }
-  }
-}
-
-const listStyles: CSS = {
-  'ul[data-node-view-content=""]': {
-    margin: 0,
-    padding: '0 0 0 1.5rem',
-    ...listLevelStyles['ul[data-node-view-content=""]'],
-
-    li: {
-      fontSize: '1rem',
-      lineHeight: '1.75rem'
-    }
-  },
-
-  'ol[data-node-view-content=""]': {
-    counterReset: 'item',
-    listStyleType: 'none',
-    padding: 0,
-
-    li: {
-      counterIncrement: 'item',
-      display: 'table',
-      fontSize: '1rem',
-      lineHeight: '1.75rem',
-      width: '100%'
-    },
-
-    'li::before': {
-      content: `counters(item, '.') '.'`,
-      display: 'table-cell',
-      fontWeight: 'bold',
-      paddingRight: '4px',
-      width: '10px'
-    }
-  },
-
-  'ul[data-node-view-content=""], ol[data-node-view-content=""]': {
-    'li::marker': {
-      fontSize: '1rem',
-      fontWeight: 400,
-      letterSpacing: 0,
-      lineHeight: '1.5rem',
-      textAlign: 'center'
-    },
-
-    'li + li': {
-      marginTop: '.5rem'
-    },
-
-    'li > ol, li > ul': {
-      marginBottom: 0,
-      marginTop: '.5rem',
-
-      li: {
-        marginTop: '4px'
-      }
-    }
-  },
-
-  'ul ul ul': {
-    ...listLevelStyles,
-
-    'ul ul ul': {
-      ...listLevelStyles,
-
-      'ul ul ul': {
-        ...listLevelStyles
-      }
-    }
-  }
-}
-
 const strikeStyles: CSS = {
   s: {
     textDecoration: 'line-through'
@@ -208,8 +124,6 @@ export const documentEditorStyles = globalCss({
       },
 
       ...anchorMarkStyles,
-
-      ...listStyles,
 
       ...strikeStyles,
 

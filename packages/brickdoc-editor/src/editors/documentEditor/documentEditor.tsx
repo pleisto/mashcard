@@ -11,7 +11,26 @@ import { useEditorI18n } from '../../hooks'
 import { EditorContext, EditorContextData } from '../../context/EditorContext'
 import { DiscussionList, ExplorerMenu } from '../../components/editorViews'
 import { BubbleMenu } from '../../components/extensionViews'
-import { SyncOptions } from '../../extensions'
+import {
+  Blockquote,
+  BulletList,
+  CodeBlock,
+  Embed,
+  Formula,
+  HardBreak,
+  Heading,
+  HorizontalRule,
+  Image,
+  ListItem,
+  OrderedList,
+  Paragraph,
+  Spreadsheet,
+  SubPageMenu,
+  SyncOptions,
+  TaskItem,
+  TaskList,
+  Toc
+} from '../../extensions'
 import { Base } from '../../extensions/base'
 import { useDrawerService } from '../../components/ui/Drawer'
 import { useDropBlock, useUndo } from '../../helpers'
@@ -50,21 +69,23 @@ export interface EditorOptions extends Partial<TiptapEditorOptions> {
 }
 
 const typesWithUuid = [
-  'blockquote',
-  'bulletList',
-  'codeBlock',
-  'embedBlock',
-  'formulaBlock',
-  'hardBreak',
-  'heading',
-  'horizontalRule',
-  'imageBlock',
-  'listItem',
-  'orderedList',
-  'paragraph',
-  'subPageMenuBlock',
-  'tocBlock',
-  'spreadsheetBlock'
+  Blockquote.name,
+  BulletList.name,
+  CodeBlock.name,
+  Embed.name,
+  Formula.name,
+  HardBreak.name,
+  Heading.name,
+  HorizontalRule.name,
+  Image.name,
+  ListItem.name,
+  TaskItem.name,
+  TaskList.name,
+  OrderedList.name,
+  Paragraph.name,
+  SubPageMenu.name,
+  Toc.name,
+  Spreadsheet.name
 ]
 
 export function useEditor(options: EditorOptions): TiptapEditor | null {
@@ -121,6 +142,10 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
             onSave,
             types: typesWithUuid
           },
+          taskItem: {
+            nested: true
+          },
+          taskList: true,
           text: true,
           textStyle: true,
           toc: true,
