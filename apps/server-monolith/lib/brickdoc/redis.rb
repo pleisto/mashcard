@@ -4,7 +4,9 @@ require 'active_support/core_ext/hash/keys'
 
 module Brickdoc
   class Redis
+    # default redis url for development environment
     DEFAULT_REDIS_URL = 'redis://localhost:6379'
+    # Redis database index map
     DB_MAPPING = {
       cache: 0,
       state: 1,
@@ -14,30 +16,30 @@ module Brickdoc
     }
 
     class << self
+      # Run a block of code with a Redis connection pool
+      # db [DB_MAPPING] - Redis database index
+      # &block - block of code to run
+      # @example
+      #  Brickdoc::Redis.pool(:cache) do |redis|
+      #    redis.set('foo', 'bar')
+      #  end
       def with(db, &block)
         pool(db).with(&block)
       end
 
-      def with_encryption(db, &block)
-        encryption_pool(db).with(&block)
-      end
-
+      # Return a Redis Server version
       def version
         with(:state) { |redis| redis.info['redis_version'] }
       end
 
+      # Get a Redis connection pool
+      # db [DB_MAPPING] - Redis database index
       def pool(db)
         @pool ||= ConnectionPool.new(size: pool_size) { ::Redis.new(params(db)) }
       end
 
-      # AES-SIV Key must 32 or 64 bytes long.
-      # See {https://github.com/ankane/cloak}
-      def encryption_pool(db)
-        @encryption_pool ||= ConnectionPool.new(size: pool_size) do
-          Cloak::Redis.new(**params(db).merge({ key: "#{Rails.application.secret_key_base[0..57]}:redis" }))
-        end
-      end
-
+      # Calculate Redis Pool size based on the max number of threads in the app
+      # @return [Integer]
       def pool_size
         # heuristic constant 4 should be a config setting somewhere -- related to CPU count?
         size = 4
@@ -45,21 +47,19 @@ module Brickdoc
         size
       end
 
-      def default_url
-        DEFAULT_REDIS_URL
-      end
-
+      # Get Redis URL
       def url
         ENV['REDIS_URL'] || DEFAULT_REDIS_URL
       end
 
+      # Get Redis params based on the Redis database index
       def params(db)
         {
           url: url,
           id: nil,
           logger: Rails.logger,
           db: DB_MAPPING[db],
-          namespace: "#{Rails.env}:brickdoc:#{db}",
+          namespace: "brickdoc:#{db}",
           ssl_params: {
             verify_mode: OpenSSL::SSL::VERIFY_NONE,
           },

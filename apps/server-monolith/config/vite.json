@@ -2,6 +2,7 @@
   "all": {
     "sourceCodeDir": "../client-web/src",
     "watchAdditionalPaths": ["../../packages/**/*"],
+    "additionalEntrypoints": ["../../plugins/*/src/entrypoints/*", "../../plugins/*/assets/*"],
     "publicOutputDir": "esm-bundle"
   },
   "development": {

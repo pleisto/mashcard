@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 settings do
@@ -6,6 +5,6 @@ settings do
   field :client_secret, type: :encrypted, default: ENV['GITHUB_SECRET']
 end
 
-on :omniauth_providers_setup do |config|
-  config.omniauth :github, settings.client_id, settings.client_secret, { logo: metadata[:logo] }
+on :oauth_provider do
+  [:github, settings.client_id, settings.client_secret, { logo: asset_url('assets/logo.svg') }]
 end

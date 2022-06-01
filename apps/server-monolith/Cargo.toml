@@ -24,6 +24,9 @@ argon2 = { version = "0.4", features = ["parallel"] }
 z85 = "3"
 base64-simd = "0.5"
 woothee = "0.13"
+jsonschema = "0.16.0"
+serde = "1.0"
+serde_json = "1.0"
 [dependencies.uuid]
 version = "1"
 features = ["v4", "fast-rng"]

@@ -23,7 +23,6 @@
     <%= vite_client_tag %>
     <%= vite_react_refresh_tag %>
     <%= vite_typescript_tag 'entrypoints/application.tsx' %>
-    <%= vite_stylesheet_bundle_tag %>
     <% if Rails.env.production? %>
     <script src="/esm-bundle/registerSW.js"></script>
     <% end %>

@@ -1,7 +1,7 @@
 {
   "name": "@brickdoc/e2e-testing",
   "private": true,
-  "license": "GPL-3.0-or-later WITH Classpath-exception-2.0",
+  "license": "Apache-2.0",
   "volta": {
     "extends": "../../package.json"
   },

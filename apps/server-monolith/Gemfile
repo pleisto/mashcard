@@ -31,7 +31,6 @@ gem 'paranoia', '~> 2.5', '>= 2.5.2'
 gem 'easymon'
 gem 'default_value_for', github: 'brickdoc/default_value_for'
 gem 'unsplash'
-gem 'cloak-rb', '>= 0.1.1'
 gem 'lockbox', '>= 0.6.8'
 gem 'lograge', '~> 0.12.0'
 gem 'logstop', '~> 0.2.8'
@@ -40,6 +39,7 @@ gem 'nokogiri', '>= 1.13.6'
 gem 'bootsnap', require: false
 gem 'tzinfo-data', '~> 1.2021', '>= 1.2021.5' # Don't rely on Linux/macOS timezone data.
 gem 'rbnacl', '~> 7.1', '>= 7.1.1'
+gem 'dry-container', '~> 0.9.0'
 
 # Feature toggles
 gem 'flipper', '~> 0.24.1'

@@ -1148,8 +1148,6 @@ export type RootQuery = {
    * Required `context[:entrypoints]` is `[:internal]`.
    */
   passwordAvailable: Validate_Result
-  /** return all plugins for space. */
-  plugins: Array<Plugin>
   /** return preview box data of url */
   previewBox: Preview_Box
   /** return current space for user. */
@@ -1721,21 +1719,6 @@ export type Pin = {
   meta: BlockMeta
   /** text */
   text: Scalars['String']
-}
-
-/** Brickdoc Plugin. */
-export type Plugin = {
-  __typename?: 'plugin'
-  /** Enabled */
-  enabled: Scalars['Boolean']
-  /** logo */
-  logo: Scalars['String']
-  /** metadata */
-  metadata: Scalars['JSON']
-  /** Plugin Name */
-  name: Scalars['String']
-  /** version */
-  version: Scalars['String']
 }
 
 export type Preview_Box = {

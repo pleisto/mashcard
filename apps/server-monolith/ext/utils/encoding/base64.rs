@@ -1,6 +1,11 @@
 use crate::utils::ffi::{rstring_to_vec, vec_to_rstring};
 use base64_simd::Base64;
-use magnus::{exception, function, module::RModule, Error, Module, Value, RString, scan_args::{scan_args, get_kwargs}};
+use magnus::{
+    exception, function,
+    module::RModule,
+    scan_args::{get_kwargs, scan_args},
+    Error, Module, RString, Value,
+};
 
 /// Returns the Base64-encoded version of bin. This method complies with RFC 4648.
 /// No line feeds are added.
@@ -24,9 +29,9 @@ fn strict_decode64(input: String) -> Result<RString, Error> {
 fn urlsafe_encode64(args: &[Value]) -> Result<String, Error> {
     let args = scan_args(args)?;
     let (input,): (RString,) = args.required;
-    let _:() = args.optional;
-    let _:() = args.splat;
-    let _:() = args.trailing;
+    let _: () = args.optional;
+    let _: () = args.splat;
+    let _: () = args.trailing;
     let _: () = args.block;
     let kw = get_kwargs::<_, (), (Option<bool>,), ()>(args.keywords, &[], &["padding"])?;
     let (padding,): (Option<bool>,) = kw.optional;

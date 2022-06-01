@@ -27,9 +27,9 @@ Rails.application.routes.draw do
   # Pages
   get '/.well-know/unsupported' => 'pages#unsupported', as: :unsupported
 
-  BrickdocPlugin.engines_to_mount.each do |plugin_name, engine|
-    mount engine => "/plugin/#{plugin_name}"
-  end
+  # BrickdocPlugin.engines_to_mount.each do |plugin_name, engine|
+  #  mount engine => "/plugin/#{plugin_name}"
+  # end
 
   # PWA
   root 'pages#pwa'

@@ -9,16 +9,6 @@ describe Brickdoc::Redis do
     end
   end
 
-  describe '.with_encryption' do
-    it 'is encrypted' do
-      key = 'cloak_test'
-      val = '锟斤拷烫烫烫'
-      described_class.with_encryption(:cache) { |r| r.set key, val }
-      expect(described_class.with_encryption(:cache) { |r| r.get key }).to eq(val)
-      expect(described_class.with(:cache) { |r| r.get key }).to be_nil
-    end
-  end
-
   describe '.ping' do
     it 'return pong' do
       described_class::DB_MAPPING.each do |db|

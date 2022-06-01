@@ -2046,11 +2046,6 @@ type RootQuery {
   passwordAvailable(password: String!): validate_result!
 
   """
-  return all plugins for space.
-  """
-  plugins: [plugin!]!
-
-  """
   return preview box data of url
   """
   previewBox(url: String!): preview_box!
@@ -2936,36 +2931,6 @@ type pin {
   text
   """
   text: String!
-}
-
-"""
-Brickdoc Plugin.
-"""
-type plugin {
-  """
-  Enabled
-  """
-  enabled: Boolean!
-
-  """
-  logo
-  """
-  logo: String!
-
-  """
-  metadata
-  """
-  metadata: JSON!
-
-  """
-  Plugin Name
-  """
-  name: String!
-
-  """
-  version
-  """
-  version: String!
 }
 
 type preview_box {

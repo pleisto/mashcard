@@ -2,7 +2,7 @@
   "name": "@brickdoc/design-system",
   "version": "0.5.0",
   "description": "brickdoc design system",
-  "license": "GPL-3.0-or-later WITH Classpath-exception-2.0",
+  "license": "Apache-2.0",
   "volta": {
     "extends": "../../package.json"
   },

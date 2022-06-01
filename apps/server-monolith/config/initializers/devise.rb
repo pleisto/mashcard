@@ -23,7 +23,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = BrickdocConfig.mailer[:from]
+  config.mailer_sender = ::BrickdocConfig.mailer[:from]
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -269,10 +269,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  BrickdocHook.trigger :omniauth_providers_setup, config
-  # BrickdocConfig.accounts_federated_providers.each do |provider|
-  #  config.omniauth provider[:name], provider[:key], provider[:secret], provider[:options]
-  # end
+  # Inject OmniAuth providers from plugin
+  Brickdoc::Plugins::ServerPlugin::Hooks.oauth_provider(config)
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

@@ -2,7 +2,8 @@
   "name": "@brickdoc/server-monolith",
   "private": true,
   "description": "It's a stub package for make turborepo could be work with rails",
-  "license": "GPL-3.0-or-later WITH Classpath-exception-2.0",
+  "license": "Apache-2.0",
+  "version": "0.11.0",
   "volta": {
     "extends": "../../package.json"
   },

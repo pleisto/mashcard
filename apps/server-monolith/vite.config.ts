@@ -94,7 +94,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      lodash: 'lodash-es'
+      lodash: 'lodash-es',
+      plugins: join(__dirname, '../../plugins')
     },
     dedupe: ['react', 'react-dom', 'i18next', 'react-i18next']
   },

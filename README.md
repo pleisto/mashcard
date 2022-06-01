@@ -39,24 +39,9 @@ Brickdoc is an open source project and we are very happy to accept community con
 
 ## Copyright/License
 
-> TLDR; Brickdoc Application uses GPL3 with "Classpath Exception", other packages in this monorepo are licensed as listed in the "License" file in their folder (most are Apache-2.0).
-
-### Brickdoc Application
-
-Copyright 2022 Brickdoc, Inc.
-
-Brickdoc Software Licensed under the [GNU General Public License Version 3.0 (or later) **with a “Classpath Exception” making it safe for commercial use**](./LICENSE); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
-
-<https://www.gnu.org/licenses/>
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
-Linking this library statically or dynamically with other modules is making a combined work based on this library. Thus, the terms and conditions of the GNU General Public License cover the whole combination.
-
-As a special exception, the copyright holders of this library give you permission to link this library with independent modules to produce an executable, regardless of the license terms of these independent modules, and to copy and distribute the resulting executable under terms of your choice, provided that you also meet, for each linked independent module, the terms and conditions of the license of that module. An independent module is a module which is not derived from or based on this library. If you modify this library, you may extend this exception to your version of the library, but you are not obligated to do so. If you do not wish to do so, delete this exception statement from your version.
-
-### Other packages in thi Monorepo
+Brickdoc © 2022, Brickdoc Inc - Released under the Apache 2.0 License
 
 - All content residing under the "docs/" directory of this repository is licensed under "Creative Commons: CC BY-SA 4.0 license".
 - All third party components incorporated into the Brickdoc Software are licensed under the original license provided by the owner of the applicable component.
 - All content that resides under the "packages/_", "gems/_" or "plugins/\*" directory of this repository, if that directory exists, is licensed under the license defined in "/LICENSE" in the corresponding directory.
+- Content outside of the above mentioned directories or restrictions above is available under the "Apache 2.0" license as defined below.

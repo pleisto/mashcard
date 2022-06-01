@@ -2724,6 +2724,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@brickdoc/github-auth@workspace:plugins/github_auth":
+  version: 0.0.0-use.local
+  resolution: "@brickdoc/github-auth@workspace:plugins/github_auth"
+  languageName: unknown
+  linkType: soft
+
+"@brickdoc/google-auth@workspace:plugins/google_auth":
+  version: 0.0.0-use.local
+  resolution: "@brickdoc/google-auth@workspace:plugins/google_auth"
+  languageName: unknown
+  linkType: soft
+
 "@brickdoc/monorepo@workspace:.":
   version: 0.0.0-use.local
   resolution: "@brickdoc/monorepo@workspace:."

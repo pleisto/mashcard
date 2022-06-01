@@ -25,7 +25,12 @@ module ApplicationHelper
     }
   end
 
-  def vite_stylesheet_bundle_tag
-    vite_stylesheet_tag '~/style.css' unless ViteRuby.instance.dev_server_running?
+  def vite_plugin_bundle_tags
+    entrypoints = Brickdoc::Plugins::JsBundlePlugin.enabled_entrypoints
+    return if entrypoints.blank?
+
+    entrypoints.map do |entrypoint|
+      concat javascript_include_tag Brickdoc::Plugins::Vite.get_path(entrypoint), extname: false
+    end
   end
 end

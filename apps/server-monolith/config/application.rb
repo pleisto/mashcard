@@ -29,11 +29,11 @@ module Brickdoc
 
     config.action_mailer.deliver_later_queue_name = :default
 
-    config.autoload_paths << Rails.root.join('app/graphql')
-    config.autoload_paths << Rails.root.join('app/services')
-
     config.active_record.query_log_tags_enabled = true
     config.active_job.queue_adapter = :async
+
+    # kubernetes ingress controller could generate etags
+    config.middleware.delete Rack::ETag
 
     # Run some initializers before Zeitwerk is loaded.
     # This empty initializer forces the :let_zeitwerk_take_over initializer to run before we load initializers
@@ -58,17 +58,24 @@ module Brickdoc
       loader.setup
     end
 
-    initializer :load_plugins, after: :prepend_helpers_path, before: :load_config_initializers do
+    initializer :load_libs, after: :prepend_helpers_path, before: :load_config_initializers do
       require_relative '../app/models/application_record'
       require_relative '../app/models/brickdoc_config'
-      BrickdocPlugin.load_plugins
+      Hash.prepend Patches::Hash
+      String.prepend Patches::String
+      Array.prepend Patches::Array
+      Brickdoc::Plugins.load_all!
 
-      ## Enabled Global Plugin
-      default_global_plugins = [:google_auth, :github_auth]
-      default_global_plugins.each { |name| BrickdocPlugin.plugin(name).default_enabled! }
+      ## Enabled Global Plugin defaults
+      default_plugins = [
+        '@brickdoc/github-auth',
+        '@brickdoc/google-auth',
+      ]
+      default_plugins.each do |name|
+        plugin = Brickdoc::Plugins.find(name)
+        raise "Plugin #{name} not found, but it should be enabled by default" if plugin.nil?
 
-      Devise.setup do |config|
-        BrickdocHook.trigger :omniauth_providers_setup, config
+        plugin.default_enabled!
       end
     end
   end

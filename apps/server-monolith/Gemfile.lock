@@ -115,8 +115,6 @@ GEM
       concurrent-ruby (~> 1.0, >= 1.0.5)
       redis (>= 1.0, <= 5.0)
     builder (3.2.4)
-    cloak-rb (0.1.1)
-      miscreant
     concurrent-ruby (1.1.10)
     connection_pool (2.2.5)
     crack (0.4.5)
@@ -144,6 +142,14 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     dry-cli (0.7.0)
+    dry-configurable (0.15.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 0.6)
+    dry-container (0.9.0)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 0.13, >= 0.13.0)
+    dry-core (0.7.1)
+      concurrent-ruby (~> 1.0)
     e2mmap (0.1.0)
     easymon (1.6.1)
       redis
@@ -312,7 +318,6 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
     minitest (5.15.0)
-    miscreant (0.3.0)
     msgpack (1.5.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -600,13 +605,13 @@ DEPENDENCIES
   benchmark-ips (~> 2.10)
   bootsnap
   brakeman
-  cloak-rb (>= 0.1.1)
   connection_pool (~> 2.2, >= 2.2.5)
   debug
   default_value_for!
   devise (~> 4.8.1)
   devise-async (~> 1.0.0)
   dotenv-rails
+  dry-container (~> 0.9.0)
   easymon
   factory_bot_rails (>= 6.2)
   faraday (~> 1.10)

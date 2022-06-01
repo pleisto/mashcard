@@ -82,3 +82,12 @@ Brickdoc::Crypto.data_masking('some data') #=> Data masked with hash
 ```ruby
 Brickdoc::Utils::UserAgent.parser('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36') #=> {name: foo, category: bar, version: 1.0, ...}
 ```
+
+#### JSONSchema
+
+JSONSchema Draft 7 validator. It also supports fetch schema from a Internet.
+
+```ruby
+Brickdoc::Utils::JSONSchema.new(...schema).validate!(...json_str) #=> throws an exception if invalid
+Brickdoc::Utils::JSONSchema.new(...schema).valid?(...json_str) #=> Boolean
+```

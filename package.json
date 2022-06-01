@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "author": "Brickdoc LTD",
   "description": "Brickdoc Monorepo Root",
-  "license": "GPL-3.0-or-later WITH Classpath-exception-2.0",
+  "license": "Apache-2.0",
   "private": true,
   "workspaces": [
     "packages/*",
@@ -48,7 +48,7 @@
     "test:playwright": "yarn e2e-testing start",
     "test:rspec": "turbo run test:rspec",
     "commit": "git add . && cz",
-    "graphql": "yarn server bundle exec rails graphql:schema:dump && yarn workspace @brickdoc/client-web run -T graphql-codegen --config codegen.yml",
+    "graphql": "yarn server bundle exec rails graphql:schema:dump && yarn web run -T graphql-codegen --config codegen.yml",
     "cleanup": "rimraf node_modules/.cache public/esm-bundle '{packages,tools,apps}/*/{dist,junit-reports,coverage,.turbo,.nyc_output,.eslintcache,.next}' 'tools/e2e-testing/{allure-report,allure-results,test-results,storageState-*.json}'",
     "schema": "yarn workspace @brickdoc/schema",
     "design-system": "yarn workspace @brickdoc/design-system",
@@ -59,7 +59,9 @@
     "web": "yarn workspace @brickdoc/client-web",
     "e2e-testing": "yarn workspace @brickdoc/e2e-testing",
     "active-support": "yarn workspace @brickdoc/active-support",
-    "server": "yarn workspace @brickdoc/server-monolith"
+    "server": "yarn workspace @brickdoc/server-monolith",
+    "github-auth": "yarn workspace @brickdoc/github-auth",
+    "google-auth": "yarn workspace @brickdoc/google-auth"
   },
   "devDependencies": {
     "@brickdoc/eslint-plugin": "^1.0.1",

@@ -1,8 +1,9 @@
 /// Provide some helper functions for Rust FFI
 use magnus::{
     encoding::{self, EncodingCapable, RbEncoding},
-    RString,
+    exception, Error, RString,
 };
+use serde_json::Value;
 
 /// covert a ruby string to vec
 /// Returns Error if the encoding is not UTF-8 or ascii-8bit
@@ -28,4 +29,15 @@ pub fn vec_to_rstring(vec: Vec<u8>) -> RString {
     } else {
         str
     }
+}
+
+/// convert a &str to serde_json::Value
+/// Returns Ruby Error if the string is not valid JSON
+pub fn str_to_json_value(str: &str, arg_name: &str) -> Result<Value, Error> {
+    serde_json::from_str(str).map_err(|e| {
+        Error::new(
+            exception::arg_error(),
+            format!("{arg_name} is not invalid JSON: {e}"),
+        )
+    })
 }

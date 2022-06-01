@@ -1,17 +1,5 @@
 import { gql } from '@apollo/client'
 
-export const queryPlugins = gql`
-  query GetPlugin {
-    plugins {
-      name
-      version
-      logo
-      enabled
-      metadata
-    }
-  }
-`
-
 export const BlockSyncBatch = gql`
   mutation blockSyncBatch($input: BlockSyncBatchInput!) {
     blockSyncBatch(input: $input) {
