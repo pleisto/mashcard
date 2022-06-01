@@ -79,4 +79,13 @@ class BrickdocConfig < ApplicationRecord
     field :experiment_discussion, type: :boolean, default: (Rails.env.development? ? true : false), frontend: true
     field :experiment_collaboration, type: :boolean, default: false, frontend: true
   end
+
+  def self.accounts_federated_providers
+    Devise.omniauth_configs.map(&:last).map do |p|
+      {
+        name: p.provider,
+        logo: p.options[:logo],
+      }
+    end
+  end
 end

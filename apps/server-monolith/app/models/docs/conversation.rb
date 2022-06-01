@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: docs_conversations
@@ -23,9 +25,9 @@
 #
 module Docs
   class Conversation < ApplicationRecord
-    belongs_to :doc, class_name: 'Docs::Block', foreign_key: :doc_id
+    belongs_to :doc, class_name: 'Docs::Block'
     belongs_to :space, optional: true
-    belongs_to :creator, class_name: 'Accounts::User', foreign_key: :creator_id
+    belongs_to :creator, class_name: 'Accounts::User'
     has_many :comments, dependent: :restrict_with_exception
     has_many :notifications, class_name: 'Accounts::Notification', as: :source, dependent: :restrict_with_exception
 
@@ -35,13 +37,13 @@ module Docs
     end
 
     after_create do
-      self.notify_doc_collaborators!
+      notify_doc_collaborators!
     end
 
     enum status: {
       opened: 0,
       resolved: 1,
-      deleted: 10
+      deleted: 10,
     }
 
     def to_graphql
@@ -50,8 +52,8 @@ module Docs
 
     # NOTE: exclude conversation creator
     def notify_doc_collaborators!
-      (doc.collaborators - [self.creator_id]).each do |user_id|
-        self.notify_doc_collaborators_by_user_id!(user_id)
+      (doc.collaborators - [creator_id]).each do |user_id|
+        notify_doc_collaborators_by_user_id!(user_id)
       end
     end
 
@@ -59,8 +61,8 @@ module Docs
       Accounts::Notification.create!(
         user_id: user_id,
         source_type: 'Docs::Conversation',
-        source_id: self.id,
-        data: self.notify_doc_collaborators_data,
+        source_id: id,
+        data: notify_doc_collaborators_data,
         notification_type: :create_conversation_on_page
       )
     end
@@ -71,7 +73,7 @@ module Docs
 
     # NOTE: exclude conversation creator
     def notify_collaborators_by_comment!(comment)
-      (self.collaborators - [comment.creator_id]).each do |user_id|
+      (collaborators - [comment.creator_id]).each do |user_id|
         comment.notify_conversation_collaborator_by_user_id!(user_id)
       end
     end
@@ -79,7 +81,7 @@ module Docs
     # 1. refresh `latest_reply_at`
     # 2. update `collaborators`
     def update_latest_comment!(comment)
-      self.update!(latest_reply_at: comment.created_at, collaborators: (self.collaborators + [comment.creator_id]).uniq)
+      update!(latest_reply_at: comment.created_at, collaborators: (collaborators + [comment.creator_id]).uniq)
     end
 
     def self.create_conversation_comment!(creator:, doc:, content:, block_ids: [], mark_ids: [])
@@ -100,8 +102,8 @@ module Docs
     end
 
     def append_comment!(creator:, content:)
-      self.transaction do
-        self.comments.create!(
+      transaction do
+        comments.create!(
           content: content,
           creator_id: creator.id
         )

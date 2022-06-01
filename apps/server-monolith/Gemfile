@@ -53,7 +53,7 @@ gem 'sentry-ruby', '~> 5.0.2'
 gem 'sentry-rails', '~> 5.0.2'
 
 # GraphQL
-gem 'graphql', '~> 2.0', '>= 2.0.7'
+gem 'graphql', '~> 2.0', '>= 2.0.9'
 gem 'graphql-fragment_cache', '~> 1.11'
 gem 'graphql-batch', '~> 0.5.1'
 

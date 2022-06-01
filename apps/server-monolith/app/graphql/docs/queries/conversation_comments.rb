@@ -12,7 +12,7 @@ module Docs
         return [] if args[:page_ids].blank?
 
         Docs::Conversation.where(doc_id: args[:page_ids]).includes([
-          comments: [creator: [personal_space: :avatar_attachment]]
+          comments: [creator: [personal_space: :avatar_attachment]],
         ]).map(&:to_graphql)
       end
     end

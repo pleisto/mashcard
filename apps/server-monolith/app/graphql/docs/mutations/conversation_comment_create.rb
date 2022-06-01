@@ -3,9 +3,9 @@
 module Docs
   module Mutations
     class ConversationCommentCreate < BrickGraphQL::BaseMutation
-      argument :doc_id, BrickGraphQL::Scalars::UUID, 'comment doc id', required: true
-      argument :content, GraphQL::Types::JSON, required: true
       argument :block_ids, [BrickGraphQL::Scalars::UUID], required: false
+      argument :content, GraphQL::Types::JSON, required: true
+      argument :doc_id, BrickGraphQL::Scalars::UUID, 'comment doc id', required: true
       argument :mark_ids, [BrickGraphQL::Scalars::UUID], required: false
 
       def resolve(args)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: accounts_notifications
@@ -24,13 +26,13 @@ module Accounts
     enum notification_type: {
       at: 0,
       create_conversation_on_page: 5,
-      conversation_update: 6
+      conversation_update: 6,
     }
 
     enum status: {
       unread: 0,
       read: 1,
-      deleted: 10
+      deleted: 10,
     }
 
     before_create do

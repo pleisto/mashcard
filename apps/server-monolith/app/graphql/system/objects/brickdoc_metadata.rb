@@ -9,7 +9,7 @@ module System
 
       field :available_locales, [BrickdesignSelectOption], 'Current available locales.', null: false
       field :available_timezones, [String], null: false
-      field :config, BrickdocConfig, 'Brickdoc Global Config', null: false
+      field :config, Objects::BrickdocConfig, 'Brickdoc Global Config', null: false
 
       def available_locales
         Brickdoc::I18n::AVAILABLE_LANGUAGES.map { |k, v| { label: v, value: k } }

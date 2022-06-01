@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: docs_comments
@@ -17,8 +19,8 @@
 #
 module Docs
   class Comment < ApplicationRecord
-    belongs_to :conversation, class_name: 'Docs::Conversation', foreign_key: :conversation_id
-    belongs_to :creator, class_name: 'Accounts::User', foreign_key: :creator_id
+    belongs_to :conversation, class_name: 'Docs::Conversation'
+    belongs_to :creator, class_name: 'Accounts::User'
     has_many :notifications, class_name: 'Accounts::Notification', as: :source, dependent: :restrict_with_exception
 
     before_create do
@@ -27,12 +29,12 @@ module Docs
 
     enum status: {
       normal: 0,
-      deleted: 10
+      deleted: 10,
     }
 
     after_create do
-      self.conversation.notify_collaborators_by_comment!(self)
-      self.conversation.update_latest_comment!(self)
+      conversation.notify_collaborators_by_comment!(self)
+      conversation.update_latest_comment!(self)
     end
 
     def to_graphql
@@ -43,8 +45,8 @@ module Docs
       Accounts::Notification.create!(
         user_id: user_id,
         source_type: 'Docs::Comment',
-        source_id: self.id,
-        data: self.notify_conversation_collaborators_data,
+        source_id: id,
+        data: notify_conversation_collaborators_data,
         notification_type: :conversation_update
       )
     end

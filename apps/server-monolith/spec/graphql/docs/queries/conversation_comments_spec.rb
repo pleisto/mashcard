@@ -55,6 +55,7 @@ describe Docs::Queries::ConversationComments, type: :query do
 
       block = create(:docs_block, space: user.personal_space)
       conversation = Docs::Conversation.create!(
+        creator_id: user.id,
         doc_id: block.id,
         space_id: block.space_id
       )
@@ -63,17 +64,17 @@ describe Docs::Queries::ConversationComments, type: :query do
 
       expect(response.errors).to be {}
       expect(response.success?).to be true
-      conversations = response.data['conversationComments'].map { |x|
+      conversations = response.data['conversationComments'].map do |x|
         x.slice!('createdAt', 'updatedAt')
-      }
+      end
       expect(conversations).to eq([{
-        "blockIds" => [], "markIds" => [],
+        'blockIds' => [], 'markIds' => [],
         'docId' => block.id, 'id' => conversation.id.to_s, 'latestReplyAt' => nil,
-        'status' => 'opened', 'comments' => []
+        'status' => 'opened', 'comments' => [],
       }])
 
       comment = conversation.comments.create!(
-        content: { hello: "world" },
+        content: { hello: 'world' },
         creator_id: user.id
       )
 
@@ -82,11 +83,11 @@ describe Docs::Queries::ConversationComments, type: :query do
       expect(response.errors).to be {}
       expect(response.success?).to be true
       comments = response.data['conversationComments'].flat_map { |x| x['comments'] }.map { |x| x.slice!('createdAt', 'updatedAt') }
-      expect(comments).to eq([{ "content" => { "hello" => "world" }, "id" => comment.id.to_s, "status" => "normal", 'creator' => {
+      expect(comments).to eq([{ 'content' => { 'hello' => 'world' }, 'id' => comment.id.to_s, 'status' => 'normal', 'creator' => {
         'domain' => user.domain,
         'name' => user.name,
-        'avatarData' => user.avatar_data
-      } }])
+        'avatarData' => user.avatar_data,
+      }, }])
     end
   end
 end

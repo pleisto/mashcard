@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class RootSubscription < BrickGraphQL::BaseObject
-  include AutoGraphQLFields
-
-  add_fields_for BrickGraphQL::Component.subscription_modules(BrickdocSchema::NAMESPACES), :subscription
+  field :new_patch, subscription: Docs::Subscriptions::NewPatch
+  field :ydoc, subscription: Docs::Subscriptions::Ydoc
 end

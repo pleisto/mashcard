@@ -8,7 +8,7 @@ RSpec.describe BrickdocConfig, type: :model do
   end
 
   it 'can be read' do
-    # expect(BrickdocConfig.accounts_federated_providers.first[:name]).to eq('github')
+    expect(described_class.accounts_federated_providers.size).to be >= 1
     expect(described_class.accounts_email_password_auth?).to be(true)
   end
 

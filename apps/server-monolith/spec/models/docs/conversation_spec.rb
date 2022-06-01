@@ -9,7 +9,7 @@ RSpec.describe Docs::Conversation, type: :model do
   it 'create conversation comment' do
     expect(block.doc_conversations.length).to eq(0)
 
-    comment = Docs::Conversation.create_conversation_comment!(
+    comment = described_class.create_conversation_comment!(
       creator: user,
       doc: block,
       content: { foo: 'bar' }
@@ -23,7 +23,7 @@ RSpec.describe Docs::Conversation, type: :model do
     user2 = create(:accounts_user)
     expect(block.doc_conversations.length).to eq(0)
 
-    comment1 = Docs::Conversation.create_conversation_comment!(
+    comment1 = described_class.create_conversation_comment!(
       creator: user,
       doc: block,
       content: { foo: 'bar' }
