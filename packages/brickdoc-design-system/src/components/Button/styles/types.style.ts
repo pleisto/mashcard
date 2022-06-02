@@ -23,7 +23,7 @@ export const btnType = {
       backgroundColor: theme.colors.backgroundSecondary
     },
     '&:active': {
-      backgroundColor: theme.colors.grey3,
+      backgroundColor: theme.colors.secondaryPressed,
       border: `1px solid ${theme.colors.borderSecondary}`,
       color: theme.colors.typePrimary
     }
@@ -34,10 +34,10 @@ export const btnType = {
     color: theme.colors.typePrimary,
     '&:hover,&:focus-visible': {
       textDecoration: 'none',
-      backgroundColor: 'transparent'
+      backgroundColor: theme.colors.secondaryHover
     },
     '&:active': {
-      backgroundColor: theme.colors.grey3,
+      backgroundColor: theme.colors.secondaryPressed,
       color: theme.colors.typePrimary
     }
   },

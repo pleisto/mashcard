@@ -18,6 +18,7 @@ describe System::Queries::UnsplashImage, type: :query do
             fullUrl,
             smallUrl,
             username
+            blurHash
           }
         }
       GRAPHQL
@@ -33,6 +34,7 @@ describe System::Queries::UnsplashImage, type: :query do
       expect(data.first[:fullUrl]).not_to be_nil
       expect(data.first[:smallUrl]).not_to be_nil
       expect(data.first[:username]).not_to be_nil
+      expect(data.first[:blurHash]).not_to be_nil
     end
 
     it 'works with blank search' do
@@ -48,7 +50,8 @@ describe System::Queries::UnsplashImage, type: :query do
             height,
             fullUrl,
             smallUrl,
-            username
+            username,
+            blurHash
           }
         }
       GRAPHQL
@@ -64,6 +67,7 @@ describe System::Queries::UnsplashImage, type: :query do
       expect(data.first[:fullUrl]).not_to be_nil
       expect(data.first[:smallUrl]).not_to be_nil
       expect(data.first[:username]).not_to be_nil
+      expect(data.first[:blurHash]).not_to be_nil
     end
   end
 end

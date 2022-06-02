@@ -21,6 +21,7 @@ export const Path = styled('div', {
 })
 
 export const Emoji = styled('span', {
+  fontFamily: theme.fonts.emoji,
   fontSize: '1.25rem',
   lineHeight: '1.5rem',
   marginRight: '4px',

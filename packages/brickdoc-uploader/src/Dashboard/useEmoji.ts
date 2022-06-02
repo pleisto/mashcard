@@ -23,7 +23,7 @@ export function useEmoji(
     localStorage.setItem(RECENT_EMOJI_LOCAL_STORAGE_KEY, JSON.stringify(newRecentEmojis))
   }
 
-  const handleSelectEmoji = (emoji: EmojiMeta, action: UploadResultData['action']): void => {
+  const handleSelectEmoji = (emoji: EmojiMeta | undefined, action: UploadResultData['action']): void => {
     updateRecentEmojis(emoji)
     pluginOptions.onUploaded?.({ emoji, action })
   }

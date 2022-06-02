@@ -1,4 +1,4 @@
-const fontSeparator = ' ,'
+const fontSeparator = ', '
 
 const sansSerif = [
   '"42sans"', // Web Font
@@ -6,8 +6,7 @@ const sansSerif = [
   'system-ui',
   '"Segoe UI"',
   '"Helvetica Neue"',
-  'Tahoma',
-  '"Apple Color Emoji"'
+  'Tahoma'
 ].join(fontSeparator)
 
 const serif = [
@@ -42,8 +41,12 @@ export const fonts = {
   zhHanSSans: `"Biaodian Pro Sans GB", ${sansSerif}, "Han Heiti GB",  sans-serif`,
   zhHanSSerif: `"Biaodian Pro Serif GB", ${serif}, "Han Songti GB", serif`,
   zhHanSMonospace: `${monospace}, monospace, "Biaodian Pro Sans GB"`,
+
   // Japanese
-  jaSans: `"Yakumono Sans", ${sansSerif},  "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "Noto Sans JP", "Meiryo UI", Meiryo，  sans-serif`,
+  jaSans: `"Yakumono Sans", ${sansSerif},  "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "Noto Sans JP", "Meiryo UI", Meiryo, sans-serif`,
   jaSerif: `"Yakumono Serif", ${serif}, "Hiragino Mincho", "Noto Serif JP", "Yu Mincho", "MS PMincho", serif`,
-  jaMonospace: `"Yakumono Sans", ${monospace}, "Hiragino Kaku Gothic Pro", Meiryo, monospace`
+  jaMonospace: `"Yakumono Sans", ${monospace}, "Hiragino Kaku Gothic Pro", Meiryo, monospace`,
+
+  // Emoji only
+  emoji: '"Platform Emoji"'
 }

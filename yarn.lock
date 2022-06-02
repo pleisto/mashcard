@@ -2580,6 +2580,7 @@ __metadata:
     "@types/react-transition-group": ^4.4.4
     ahooks: ^3.4.1
     babel-loader: ^8.2.5
+    blurhash: ^1.1.5
     classnames: ^2.3.1
     fast-deep-equal: ^3.1.3
     framer-motion: ^6.3.6
@@ -2593,6 +2594,7 @@ __metadata:
     rc-util: ^5.21.5
     rc-virtual-list: ^3.4.8
     react: ^18.1.0
+    react-blurhash: ^0.1.3
     react-colorful: ^5.5.1
     react-content-loader: ^6.2.0
     react-dnd: ^16.0.1
@@ -2754,7 +2756,7 @@ __metadata:
     "@swc/helpers": ^0.3.17
     "@swc/jest": ^0.2.21
     "@testing-library/jest-dom": ^5.16.4
-    "@testing-library/react": ^12.1.5
+    "@testing-library/react": ^13.3.0
     "@testing-library/react-hooks": ^8.0.0
     "@testing-library/user-event": ^14.2.0
     "@types/is-ci": ^3.0.0
@@ -2833,6 +2835,7 @@ __metadata:
     "@uppy/dashboard": ^2.3.0
     "@uppy/react": ^2.2.1
     "@uppy/xhr-upload": ^2.1.1
+    react-virtuoso: ^2.12.1
   languageName: unknown
   linkType: soft
 
@@ -6092,7 +6095,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^8.0.0":
+"@testing-library/dom@npm:^8.5.0":
   version: 8.13.0
   resolution: "@testing-library/dom@npm:8.13.0"
   dependencies:
@@ -6147,17 +6150,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:^12.1.5":
-  version: 12.1.5
-  resolution: "@testing-library/react@npm:12.1.5"
+"@testing-library/react@npm:^13.3.0":
+  version: 13.3.0
+  resolution: "@testing-library/react@npm:13.3.0"
   dependencies:
     "@babel/runtime": ^7.12.5
-    "@testing-library/dom": ^8.0.0
-    "@types/react-dom": <18.0.0
+    "@testing-library/dom": ^8.5.0
+    "@types/react-dom": ^18.0.0
   peerDependencies:
-    react: <18.0.0
-    react-dom: <18.0.0
-  checksum: 4abd0490405e709a7df584a0db604e508a4612398bb1326e8fa32dd9393b15badc826dcf6d2f7525437886d507871f719f127b9860ed69ddd204d1fa834f576a
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: 98fd8616a7cae0ecfcbe97b5b3c5b91fbafccf449c04875395ccc0e3f0b139e53b3261b9536ec2169a5e2883a1be2098907209064061fe0c2ff21dfbc785dd40
   languageName: node
   linkType: hard
 
@@ -7101,16 +7104,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:<18.0.0":
-  version: 17.0.17
-  resolution: "@types/react-dom@npm:17.0.17"
-  dependencies:
-    "@types/react": ^17
-  checksum: 23caf98aa03e968811560f92a2c8f451694253ebe16b670929b24eaf0e7fa62ba549abe9db0ac028a9d8a9086acd6ab9c6c773f163fa21224845edbc00ba6232
-  languageName: node
-  linkType: hard
-
-"@types/react-dom@npm:^18.0.5":
+"@types/react-dom@npm:^18.0.0, @types/react-dom@npm:^18.0.5":
   version: 18.0.5
   resolution: "@types/react-dom@npm:18.0.5"
   dependencies:
@@ -7164,17 +7158,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 333c99bd46cc2190ec6f6e4f3fa6cdee07e1d4d028fb2bd895d3927d9de6e86ede57befdc79d9acbfb7b1c058091bf3b38b8de3703f83e0f8cd8d15d7457b3d8
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^17":
-  version: 17.0.45
-  resolution: "@types/react@npm:17.0.45"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: 3cc13a02824c13f6fa4807a83abd065ac1d9943359e76bd995cc7cd2b4148c1176ebd54a30a9f4eb8a0f141ff359d712876f256c4fee707e4290607ef8410b3e
   languageName: node
   linkType: hard
 
@@ -7799,6 +7782,24 @@ __metadata:
   peerDependencies:
     "@uppy/core": ^2.3.0
   checksum: 0b5f685e29730274193893467fe6f7248c49cff272fb53fae1076b10ae6340903cf330d88ebc9e3922b65f1d25d52b01a88ffa6022a9c977bd48f354aba54fe4
+  languageName: node
+  linkType: hard
+
+"@virtuoso.dev/react-urx@npm:^0.2.12":
+  version: 0.2.13
+  resolution: "@virtuoso.dev/react-urx@npm:0.2.13"
+  dependencies:
+    "@virtuoso.dev/urx": ^0.2.13
+  peerDependencies:
+    react: ">=16"
+  checksum: 173e91c21f6a8cd506ad3b72af10656897fe1951124ed9eeb1fd85575534993bea2f97cba3f81c08ae1e88a2613df348e2c80d0ceecb3021f8c8c8fe0e053ee2
+  languageName: node
+  linkType: hard
+
+"@virtuoso.dev/urx@npm:^0.2.12, @virtuoso.dev/urx@npm:^0.2.13":
+  version: 0.2.13
+  resolution: "@virtuoso.dev/urx@npm:0.2.13"
+  checksum: 682a99cf40ccc429241268dd37495cd1ed4695ae58b5a1169c75df1630d5dc3fd8eb3aaa655f71c37f39ba9c23c0aaf4401b76d8a986986d1a38a422d596a6ba
   languageName: node
   linkType: hard
 
@@ -9464,6 +9465,13 @@ __metadata:
   version: 3.7.2
   resolution: "bluebird@npm:3.7.2"
   checksum: 869417503c722e7dc54ca46715f70e15f4d9c602a423a02c825570862d12935be59ed9c7ba34a9b31f186c017c23cac6b54e35446f8353059c101da73eac22ef
+  languageName: node
+  linkType: hard
+
+"blurhash@npm:^1.1.5":
+  version: 1.1.5
+  resolution: "blurhash@npm:1.1.5"
+  checksum: 8a647024948552e7250d4f123a0dc2a56941be476811c1c999b182cde01e6e15cc6938a8c523f1a2fea8c0dc12c1fffc1cf2001b86683e196bed03e88e176af2
   languageName: node
   linkType: hard
 
@@ -20890,6 +20898,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-blurhash@npm:^0.1.3":
+  version: 0.1.3
+  resolution: "react-blurhash@npm:0.1.3"
+  peerDependencies:
+    blurhash: ^1.1.1
+    react: ">=15"
+  checksum: 0a073d8a75ca2d4210eeb871f4d0c1ab2975139fd255aa75b34c4a25143b34c30c70ba9e1f652d6284239dad7c5f81b7905c821dc63ee2cd1d3daef72cd94739
+  languageName: node
+  linkType: hard
+
 "react-colorful@npm:^5.5.1":
   version: 5.5.1
   resolution: "react-colorful@npm:5.5.1"
@@ -21232,6 +21250,19 @@ __metadata:
     vega: "*"
     vega-lite: "*"
   checksum: c61fc440c2445551323518f74146e35e695a90ed3beac9c0db83c3157868a65e550b855d299ccc20536e33349eccfc3b290c66d037049fd889c86d5601f44dcd
+  languageName: node
+  linkType: hard
+
+"react-virtuoso@npm:^2.12.1":
+  version: 2.12.1
+  resolution: "react-virtuoso@npm:2.12.1"
+  dependencies:
+    "@virtuoso.dev/react-urx": ^0.2.12
+    "@virtuoso.dev/urx": ^0.2.12
+  peerDependencies:
+    react: ">=16 || >=17 || >= 18"
+    react-dom: ">=16 || >=17 || >= 18"
+  checksum: 2611b21e40b42fb548512b27ea681afd7faab540588baced02e9f3959af73b90cdf9a438b406ad7d0f2df8a61f7c8ac621a6fd7df52e167aed427d8bf7d213a1
   languageName: node
   linkType: hard
 

@@ -3,7 +3,7 @@
 exports[`FormulaButton renders FormulaButton correctly 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eFvWIl-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md"
     role="button"
     type="button"
   >

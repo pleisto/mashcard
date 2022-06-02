@@ -10,7 +10,7 @@ exports[`BlockActionButton matches snapshot correctly 1`] = `
     draggable="true"
   >
     <button
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-ivBjhy-size-sm"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-Zmjpo-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-ivBjhy-size-sm"
       role="button"
       type="button"
     >
@@ -54,7 +54,7 @@ exports[`BlockActionButton triggers mouse enter/leave event normally 1`] = `
     draggable="true"
   >
     <button
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-ivBjhy-size-sm"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-Zmjpo-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-ivBjhy-size-sm"
       role="button"
       type="button"
     >
@@ -98,7 +98,7 @@ exports[`BlockActionButton triggers mouse enter/leave event normally 2`] = `
     draggable="true"
   >
     <button
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-ivBjhy-size-sm"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-Zmjpo-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-ivBjhy-size-sm"
       role="button"
       type="button"
     >

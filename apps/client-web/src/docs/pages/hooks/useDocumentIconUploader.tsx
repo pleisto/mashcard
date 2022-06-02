@@ -89,7 +89,7 @@ export function useDocumentIconUploader(
   const popoverProps: Partial<PopoverProps> = {
     overlayClassName,
     trigger: 'click',
-    placement: 'bottom',
+    placement: 'bottomStart',
     destroyTooltipOnHide: true,
     overlayStyle: {
       maxWidth: '100vw',

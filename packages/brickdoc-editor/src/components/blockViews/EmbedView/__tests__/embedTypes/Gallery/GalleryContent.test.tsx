@@ -12,7 +12,8 @@ describe('GalleryContent', () => {
         fullUrl: 'fullUrl',
         username: 'username',
         width: 100,
-        height: 100
+        height: 100,
+        blurHash: 'LRE3@]RkxYV@00t7IVt7nNoL%2WV'
       }
     ]
 
@@ -32,7 +33,8 @@ describe('GalleryContent', () => {
         fullUrl: 'fullUrl',
         username: 'username',
         width: 100,
-        height: 100
+        height: 100,
+        blurHash: 'LRE3@]RkxYV@00t7IVt7nNoL%2WV'
       }
     ]
 

@@ -33,6 +33,7 @@ export const queryUnsplashImage = gql`
       fullUrl
       smallUrl
       username
+      blurHash
     }
   }
 `

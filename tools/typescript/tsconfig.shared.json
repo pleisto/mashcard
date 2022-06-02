@@ -13,14 +13,15 @@
     "importHelpers": true,
     "sourceMap": true,
     "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noEmitOnError": true,
-    "useDefineForClassFields": true,
-    "noFallthroughCasesInSwitch": true
+    "useDefineForClassFields": true
   },
   "ts-node": {
     "swc": true,

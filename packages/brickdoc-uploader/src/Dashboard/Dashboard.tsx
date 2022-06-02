@@ -1,6 +1,7 @@
 import React from 'react'
 import { Uppy } from '@uppy/core'
 import { Button, cx } from '@brickdoc/design-system'
+import { Delete } from '@brickdoc/design-icons'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import emojiData from './data-by-group.json'
 import { EmojiPanel } from './EmojiPanel'
@@ -10,7 +11,7 @@ import { UploadPanel } from './UploadPanel'
 import { UnsplashPanel } from './UnsplashPanel'
 import { GalleryPanel } from './GalleryPanel'
 import { useEmoji } from './useEmoji'
-import { BrickdocUploaderDashboard } from './index.styl'
+import { BrickdocUploaderDashboard } from './index.style'
 
 export interface ImportSourceOption {
   type: SourceType
@@ -62,7 +63,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
   }
 
   const handleRemoveEmoji = (): void => {
-    handleSelectEmoji({} as any, 'remove')
+    handleSelectEmoji(undefined, 'remove')
   }
 
   const handleRemoveGalleryImage = (): void => {
@@ -79,6 +80,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
     if (canbeRemove) {
       EMOJI_ACTION_BUTTONS.push({
         label: 'Remove',
+        icon: Delete,
         onClick: handleRemoveEmoji
       })
     }
@@ -89,6 +91,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
     if (canbeRemove) {
       GALLERY_ACTION_BUTTONS.push({
         label: 'Remove',
+        icon: Delete,
         onClick: handleRemoveGalleryImage
       })
     }

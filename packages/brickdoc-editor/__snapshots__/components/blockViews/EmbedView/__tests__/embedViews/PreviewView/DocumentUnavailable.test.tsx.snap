@@ -11,7 +11,7 @@ exports[`DocumentUnavailable renders DocumentUnavailable correctly 1`] = `
       embed_block.view_types.preview.unavailable.tip
     </span>
     <button
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-bfySCS-size-md"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eFvWIl-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-bfySCS-size-md"
       role="button"
       type="button"
     >

@@ -92,6 +92,7 @@ export const ContentAction = styled('div', {
 })
 
 export const ContentIcon = styled('a', {
+  fontFamily: theme.fonts.emoji,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

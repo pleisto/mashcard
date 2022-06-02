@@ -49,6 +49,7 @@ export interface UnsplashImage {
   fullUrl: string
   smallUrl: string
   username: string
+  blurHash: string
 }
 
 export interface DashboardPluginOptions {

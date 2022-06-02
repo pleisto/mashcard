@@ -11911,6 +11911,20 @@
           "description": "Unspash image.",
           "fields": [
             {
+              "name": "blurHash",
+              "description": "Blur hash for this image (see https://blurha.sh/)",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "fullUrl",
               "description": "url for full size image",
               "args": [

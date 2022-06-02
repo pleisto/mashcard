@@ -1,21 +1,25 @@
 import * as React from 'react'
-import { ImageWithSpinWrapper, Image } from './style'
+import { Blurhash } from 'react-blurhash'
+import { ImageWithSpinWrapper, Image, BlurHashWrapper } from './style'
 import { Spin } from '../Spin'
+import { CSSProperties } from '@stitches/react'
 
-export interface IImageWithSpin {
+interface ImageWithSpinProps {
   alt?: string
   src?: string
   className?: string
+  blurHash?: string
+  style?: CSSProperties
 }
 
-export const ImageWithSpin: React.FC<IImageWithSpin> = ({ src, alt, ...otherProps }) => {
-  const [spining, setSpining] = React.useState(true)
+export const ImageWithSpin: React.FC<ImageWithSpinProps> = ({ src, alt, blurHash, ...otherProps }) => {
+  const [loading, setLoading] = React.useState(true)
   const [isInitLoad, setIsInitLoad] = React.useState(true)
   const [currentSrc, setSrc] = React.useState<string | undefined>(src)
   React.useEffect(() => {
     if (currentSrc && src !== currentSrc) {
       setSrc(src)
-      setSpining(true)
+      setLoading(true)
       setIsInitLoad(false)
     }
   }, [src, currentSrc])
@@ -23,13 +27,21 @@ export const ImageWithSpin: React.FC<IImageWithSpin> = ({ src, alt, ...otherProp
   return (
     <ImageWithSpinWrapper {...otherProps}>
       <Image
-        hidePic={isInitLoad && spining}
-        spining={spining}
+        hidePic={isInitLoad && loading}
+        spining={loading}
         alt={alt}
         src={currentSrc}
-        onLoad={() => setSpining(false)}
+        onLoad={() => setLoading(false)}
       />
-      {isInitLoad && spining && <Spin size="lg" className="cover-spin" />}
+      {isInitLoad &&
+        loading &&
+        (blurHash && otherProps.style ? (
+          <BlurHashWrapper>
+            <Blurhash hash={blurHash} width={otherProps.style.width} height={otherProps.style.height} />
+          </BlurHashWrapper>
+        ) : (
+          <Spin size="lg" className="cover-spin" />
+        ))}
     </ImageWithSpinWrapper>
   )
 }

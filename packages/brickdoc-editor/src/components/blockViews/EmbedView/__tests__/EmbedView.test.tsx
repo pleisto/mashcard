@@ -25,7 +25,8 @@ jest.mock('../../../../hooks/useEditorPropsContext.ts', () => {
             fullUrl: 'url1',
             smallUrl: 'url1',
             width: 1,
-            height: 1
+            height: 1,
+            blurHash: 'L9A^j]IAtRD%_3WBx]Rj00tRMxxu'
           },
           {
             id: 'id2',
@@ -33,7 +34,8 @@ jest.mock('../../../../hooks/useEditorPropsContext.ts', () => {
             fullUrl: 'url2',
             smallUrl: 'url2',
             width: 1,
-            height: 1
+            height: 1,
+            blurHash: 'L9A^j]IAtRD%_3WBx]Rj00tRMxxu'
           }
         ].filter(item => item.username === query)
       })

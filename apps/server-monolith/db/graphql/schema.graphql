@@ -3082,6 +3082,11 @@ Unspash image.
 """
 type unsplash_image {
   """
+  Blur hash for this image (see https://blurha.sh/)
+  """
+  blurHash: String
+
+  """
   url for full size image
   """
   fullUrl: String!

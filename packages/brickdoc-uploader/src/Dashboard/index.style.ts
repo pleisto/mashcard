@@ -1,32 +1,23 @@
 import { theme, styled } from '@brickdoc/design-system'
 
 export const BrickdocUploaderDashboard = styled('div', {
-  minWidth: 500,
-  minHeight: 153,
+  minWidth: 635,
   boxSize: 'border-box',
   display: 'flex',
   flexDirection: 'column',
+  margin: '0 -8px',
 
   '.uploader-dashboard-navbar': {
     position: 'relative',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    padding: '0 4px',
     height: 40,
-
-    '&::after': {
-      content: '',
-      position: 'absolute',
-      left: 24,
-      right: 24,
-      bottom: 0,
-      height: 1,
-      backgroundColor: '#efefef'
-    },
 
     '.uploader-dashboard-action-buttons': {
       position: 'absolute',
-      right: 24,
+      right: 12,
       top: 0,
       bottom: 0,
       display: 'flex',
@@ -49,7 +40,8 @@ export const BrickdocUploaderDashboard = styled('div', {
 
         '.dashboard-action-button-label': {
           color: '#a6a6a6',
-          fontSize: 14,
+          fontSize: theme.fontSizes.callout,
+          fontWeight: 500,
           marginLeft: 4
         }
       }
@@ -58,33 +50,15 @@ export const BrickdocUploaderDashboard = styled('div', {
     '.uploader-dashboard-navbar-item': {
       display: 'flex',
       alignItems: 'center',
-      marginLeft: 24,
       cursor: 'pointer',
-      fontSize: 14,
-      fontWeight: 400,
+      fontSize: theme.fontSizes.subHeadline,
+      fontWeight: 600,
       height: '100%',
       position: 'relative',
+      padding: '0 12px',
 
       '&.active, &.focus, &.hover': {
-        background: 'none',
         color: theme.colors.primaryDefault
-      },
-
-      '&::after': {
-        content: 'none',
-        position: 'absolute',
-        zIndex: 1,
-        height: 2,
-        backgroundColor: theme.colors.primaryDefault,
-        left: 0,
-        right: 0,
-        bottom: 0
-      },
-
-      '&.active': {
-        '&::after': {
-          content: ''
-        }
       }
     }
   },
@@ -112,7 +86,7 @@ export const BrickdocUploaderDashboard = styled('div', {
   },
 
   '.uploader-dashboard-upload-panel': {
-    padding: '0 16px',
+    padding: '8px 12px 2px',
     flex: '1',
     display: 'flex',
     flexDirection: 'column',
@@ -128,25 +102,10 @@ export const BrickdocUploaderDashboard = styled('div', {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: 24,
+    padding: '8px 12px 2px',
 
     '.dashboard-panel-button': {
       marginTop: 16
-    },
-
-    '.dashboard-link-panel-input': {
-      width: '100%',
-      background: '#f7f7f7',
-      borderRadius: 4,
-      border: 'none',
-      lineHeight: '20px',
-      fontSize: 14,
-      color: '#3e3e3e',
-      padding: '6px 16.5px',
-
-      '&::placeholder': {
-        color: '#a6a6a6'
-      }
     }
   },
 
@@ -187,12 +146,11 @@ export const BrickdocUploaderDashboard = styled('div', {
   },
 
   '.uploader-dashboard-emoji-panel': {
-    padding: 24,
+    padding: '8px 12px 2px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 16,
 
     '.dashboard-emoji-search-input': {
       padding: '6px 10px',
@@ -204,7 +162,7 @@ export const BrickdocUploaderDashboard = styled('div', {
       outline: 'none',
       color: '#3e3e3e',
       fontSize: 14,
-      marginBottom: 16,
+      marginBottom: 6,
 
       '&::placeholder': {
         color: '#a6a6a6'
@@ -212,43 +170,49 @@ export const BrickdocUploaderDashboard = styled('div', {
     },
 
     '.dashboard-emoji-section': {
-      width: 512,
-      height: 323,
-      overflow: 'scroll',
+      width: 611,
       display: 'flex',
       flexDirection: 'column',
 
-      '.dashboard-emoji-group': {
-        marginBottom: 18,
+      '.dashboard-emoji-list': {
+        overflow: 'hidden'
+      },
 
-        '.dashboard-emoji-group-name': {
-          color: '#a6a6a6',
-          fontSize: 14,
-          lineHeight: '20px'
-        },
+      '.dashboard-emoji-group-name': {
+        color: theme.colors.typeThirdary,
+        fontSize: theme.fontSizes.subHeadline,
+        fontWeight: 600,
+        lineHeight: theme.lineHeights.subHeadline,
+        background: '#fdfeff',
+        height: 37,
+        display: 'flex',
+        alignItems: 'end',
+        paddingLeft: 4,
+        paddingBottom: 3
+      },
 
-        '.dashboard-emoji-list': {
+      '.dashboard-emoji-line': {
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        marginTop: 3,
+
+        '.dashboard-emoji-item': {
+          fontFamily: theme.fonts.emoji,
+          padding: 0,
+          fontSize: 27,
+          boxSizing: 'border-box',
+          marginLeft: 3,
+          height: 34,
+          width: 34,
           display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
           alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
 
-          '.dashboard-emoji-item': {
-            padding: 0,
-            borderRadius: 0,
-            fontSize: 27,
-            boxSizing: 'border-box',
-            height: 32,
-            width: 32,
-            marginTop: 9,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-
-            '&:active, &:focus, &:hover': {
-              background: '#efefef'
-            }
+          '&:first-of-type': {
+            marginLeft: 0
           }
         }
       }
@@ -256,68 +220,69 @@ export const BrickdocUploaderDashboard = styled('div', {
   },
 
   '.uploader-dashboard-unsplash-panel': {
-    padding: 24,
+    padding: '8px 12px 2px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
 
-    '.dashboard-unsplash-search-input': {
-      padding: '6px 10px',
-      width: '100%',
-      height: 32,
-      background: '#f7f7f7',
-      border: 'none',
-      borderRadius: 4,
-      outline: 'none',
-      color: '#3e3e3e',
-      fontSize: 14,
+    '.dashboard-unsplash-image-list': {
+      width: 611,
+      marginTop: 16,
+      overflowX: 'hidden'
+    },
 
-      '&::placeholder': {
-        color: '#a6a6a6'
+    '.unsplash-image-item': {
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      marginBottom: 8,
+      marginLeft: 8,
+      cursor: 'pointer',
+      height: 'unset',
+      borderRadius: 2,
+      padding: 0,
+      position: 'relative',
+
+      '&:first-of-type': {
+        marginLeft: 0
+      },
+
+      '&:hover, &:active, &:focus': {
+        '.unsplash-image-username': {
+          opacity: 1
+        }
       }
     },
 
-    '.dashboard-unsplash-image-list': {
-      width: 574,
-      height: 328,
-      marginTop: 16,
-      overflow: 'scroll',
-      display: 'flex',
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      alignItems: 'center',
-      justifyContent: 'space-between',
+    '.unsplash-image': {
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      borderRadius: 2
+    },
 
-      '.unsplash-image-item': {
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        marginBottom: '6px',
-        cursor: 'pointer',
-        height: 'unset',
-        borderRadius: 0,
-        padding: 0
-      },
-
-      '.unsplash-image': {
-        width: 120,
-        height: 90,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        borderRadius: 4
-      },
-
-      '.unsplash-image-username': {
-        width: 120,
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-        color: '#a6a6a6',
-        fontSize: 12,
-        lineHeight: '16px',
-        marginTop: 4
-      }
+    '.unsplash-image-username': {
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+      color: theme.colors.white,
+      fontSize: 12,
+      lineHeight: '16px',
+      position: 'absolute',
+      bottom: 8,
+      left: 8,
+      opacity: 0,
+      transition: `opacity 200ms ${theme.transitions.easeIn}`
     }
   }
+})
+
+export const NotFound = styled('p', {
+  color: theme.colors.typeSecondary,
+  fontSize: theme.fontSizes.subHeadline,
+  lineHeight: theme.lineHeights.subHeadline,
+  marginTop: '1rem',
+  display: 'block',
+  width: '100%',
+  textAlign: 'center'
 })

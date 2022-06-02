@@ -48,14 +48,15 @@ const basicStyle = {
     paddingRight: distance
   },
   '&-inner': {
-    include: ['ceramicPrimary'],
+    include: ['ceramicPrimary', 'refractionPrimary'],
     backgroundColor: theme.colors.white,
     backgroundClip: 'padding-box',
     color: theme.colors.typePrimary,
     padding: '10px 12px',
     minHeight: '3rem',
-    borderRadius: '2px',
-    minWidth: '10rem'
+    borderRadius: '4px',
+    minWidth: '10rem',
+    border: `0.2px solid ${theme.colors.white}`
   },
   '&-title': {
     textAlign: 'left',

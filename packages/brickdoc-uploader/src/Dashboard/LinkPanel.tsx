@@ -1,4 +1,4 @@
-import { Button, toast } from '@brickdoc/design-system'
+import { Button, Input, toast } from '@brickdoc/design-system'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import React from 'react'
 import { ImportSourceOption } from './Dashboard'
@@ -31,11 +31,11 @@ export const LinkPanel: React.FC<LinkPanelProps> = ({ importSource, pluginOption
 
   return (
     <div className="uploader-dashboard-link-panel">
-      <input
+      <Input
+        size="sm"
         data-testid={TEST_ID_ENUM.uploader.Dashboard.modules.link.input.id}
-        onChange={handleLinkInput}
-        className="dashboard-link-panel-input"
         placeholder={importSource.linkInputPlaceholder}
+        onChange={handleLinkInput}
       />
       <Button
         type="primary"

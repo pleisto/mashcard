@@ -1797,6 +1797,8 @@ export type Space_Member = {
 /** Unspash image. */
 export type Unsplash_Image = {
   __typename?: 'unsplash_image'
+  /** Blur hash for this image (see https://blurha.sh/) */
+  blurHash?: Maybe<Scalars['String']>
   /** url for full size image */
   fullUrl: Scalars['String']
   /** Image height */
@@ -2078,6 +2080,7 @@ export type QueryUnsplashImageQuery = {
     fullUrl: string
     smallUrl: string
     username?: string | null
+    blurHash?: string | null
   }> | null
 }
 
@@ -3613,6 +3616,7 @@ export const QueryUnsplashImageDocument = gql`
       fullUrl
       smallUrl
       username
+      blurHash
     }
   }
 `

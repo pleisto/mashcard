@@ -33,3 +33,9 @@ export const Image = styled('img', {
     }
   }
 })
+
+export const BlurHashWrapper = styled('div', {
+  position: 'absolute',
+  left: 0,
+  top: 0
+})

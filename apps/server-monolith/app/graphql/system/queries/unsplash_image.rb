@@ -25,6 +25,7 @@ module System
             full_url: photo.urls.full,
             small_url: photo.urls.small,
             username: photo.user.username,
+            blur_hash: photo.blur_hash,
           }
         end
       end

@@ -8,7 +8,7 @@ exports[`Drawer renders Drawer visible correctly 1`] = `
     style="width: 17.5rem;"
   >
     <button
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-iDpwiq-hasIcon-true brd-c-idRjzH"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-Zmjpo-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-iDpwiq-hasIcon-true brd-c-idRjzH"
       role="button"
       type="button"
     >

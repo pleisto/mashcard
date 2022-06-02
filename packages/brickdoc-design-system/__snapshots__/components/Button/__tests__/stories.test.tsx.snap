@@ -18,7 +18,7 @@ exports[`Button rendering IconOnly should match the snapshot 1`] = `
 <div>
   <button
     aria-label="Add Record"
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-iCyVCv-size-lg brd-c-dsuUsp-kaXTQH-circle-lg brd-c-dsuUsp-iDpwiq-hasIcon-true"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eFvWIl-btnType-secondary brd-c-dsuUsp-iCyVCv-size-lg brd-c-dsuUsp-kaXTQH-circle-lg brd-c-dsuUsp-iDpwiq-hasIcon-true"
     role="button"
     type="button"
   >
@@ -32,7 +32,7 @@ exports[`Button rendering IconOnly should match the snapshot 1`] = `
 exports[`Button rendering Loading should match the snapshot 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root Mui-disabled brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-gvlAwB-loading-true brd-c-dsuUsp-iDpwiq-hasIcon-true"
+    class="ButtonUnstyled-root Mui-disabled brd-c-dsuUsp brd-c-dsuUsp-eFvWIl-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-gvlAwB-loading-true brd-c-dsuUsp-iDpwiq-hasIcon-true"
     disabled=""
     role="button"
     type="button"
@@ -96,7 +96,7 @@ exports[`Button rendering Loading should match the snapshot 1`] = `
 exports[`Button rendering LoadingAfter5Seconds should match the snapshot 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eFvWIl-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md"
     role="button"
     type="button"
   >
@@ -231,7 +231,7 @@ exports[`Button rendering should match the snapshot by type "primary" 1`] = `
 exports[`Button rendering should match the snapshot by type "secondary" 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eFvWIl-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md"
     role="button"
     type="button"
   >
@@ -245,7 +245,7 @@ exports[`Button rendering should match the snapshot by type "secondary" 1`] = `
 exports[`Button rendering should match the snapshot by type "text" 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-Zmjpo-btnType-text brd-c-dsuUsp-cAxcPy-size-md"
     role="button"
     type="button"
   >

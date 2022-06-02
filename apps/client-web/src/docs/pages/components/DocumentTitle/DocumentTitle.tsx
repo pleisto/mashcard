@@ -148,7 +148,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
             <Root.Actions data-testid={TEST_ID_ENUM.page.DocumentPage.actionButtons.id}>
               {!documentIconMeta && (
                 <Popover {...iconPopoverProps}>
-                  <Root.Item as={Button} type="unstyled" disabled={!editable}>
+                  <Root.Item as={Button} type="text" disabled={!editable}>
                     <Root.Icon as={Icon.Face} />
                     <Root.Name>{t('title.add_icon')}</Root.Name>
                   </Root.Item>
@@ -159,7 +159,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
                   <Root.Item
                     as={Button}
                     data-testid={TEST_ID_ENUM.page.DocumentPage.coverButton.id}
-                    type="unstyled"
+                    type="text"
                     disabled={!editable}
                   >
                     <Root.Icon as={Icon.Image} />

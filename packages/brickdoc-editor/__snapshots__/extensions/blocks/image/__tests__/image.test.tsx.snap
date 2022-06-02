@@ -19,7 +19,7 @@ exports[`Image renders Image correctly 1`] = `
         >
           <button
             aria-haspopup="dialog"
-            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brickdoc-block-image-section"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-Zmjpo-btnType-text brd-c-dsuUsp-cAxcPy-size-md brickdoc-block-image-section"
             data-testid="editor-image-block-add-button"
             role="button"
             type="button"

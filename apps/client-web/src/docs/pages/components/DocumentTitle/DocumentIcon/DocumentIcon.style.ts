@@ -1,10 +1,11 @@
-import { Button, styled } from '@brickdoc/design-system'
+import { Button, styled, theme } from '@brickdoc/design-system'
 
 const size = '50px'
 const smSize = '34px'
 
 export const EmojiIcon = styled('span', {
-  fontSize: size
+  fontSize: size,
+  fontFamily: theme.fonts.emoji
 })
 
 export const ImageIcon = styled('div', {

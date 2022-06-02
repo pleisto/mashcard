@@ -45,6 +45,14 @@ export const fontFaceSets = {
       src: fontSrc('FiraCode-VF.woff2')
     },
     {
+      fontFamily: 'Platform Emoji',
+      src: `local('Apple Color Emoji'),
+       local('Android Emoji'),
+       local('Segoe UI Emoji'),
+       local(EmojiSymbols),
+       local(Symbola)`
+    },
+    {
       fontFamily: 'Biaodian Pro Sans CNS',
       src: 'local("PingFang TC"), local("PingFang HK"), local("Noto Sans TC"), local("Noto Sans HK"), local("Microsoft JhengHei"), local("Hiragino Sans TC"), local("Heiti TC")',
       unicodeRange:

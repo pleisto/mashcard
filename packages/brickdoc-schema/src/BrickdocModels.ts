@@ -1794,6 +1794,8 @@ export type Space_Member = {
 /** Unspash image. */
 export type Unsplash_Image = {
   __typename?: 'unsplash_image'
+  /** Blur hash for this image (see https://blurha.sh/) */
+  blurHash?: Maybe<Scalars['String']>
   /** url for full size image */
   fullUrl: Scalars['String']
   /** Image height */

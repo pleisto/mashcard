@@ -7,7 +7,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
     style="pointer-events: none; white-space: normal;"
   >
     <button
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-jFlAGq-contentType-default brd-c-PJLV-jjlgHv-size-md"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eFvWIl-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-jFlAGq-contentType-default brd-c-PJLV-jjlgHv-size-md"
       data-testid="editor-embed-block-link"
       role="button"
       type="button"

@@ -6,7 +6,7 @@ interface SetDocAttrStepJSON {
 }
 
 export class SetDocAttrStep extends Step {
-  static fromJSON<S extends Schema = any>(schema: S, json: SetDocAttrStepJSON): SetDocAttrStep {
+  static override fromJSON<S extends Schema = any>(schema: S, json: SetDocAttrStepJSON): SetDocAttrStep {
     return new SetDocAttrStep(json.newAttrs)
   }
 
@@ -15,21 +15,21 @@ export class SetDocAttrStep extends Step {
     super()
   }
 
-  apply(doc: ProsemirrorNode): StepResult {
+  override apply(doc: ProsemirrorNode): StepResult {
     this.prevAttrs = doc.attrs
     doc.attrs = this.newAttrs
     return StepResult.ok(doc)
   }
 
-  invert(): Step {
+  override invert(): Step {
     return new SetDocAttrStep(this.prevAttrs)
   }
 
-  map(): Step {
+  override map(): Step {
     return this
   }
 
-  toJSON(): SetDocAttrStepJSON {
+  override toJSON(): SetDocAttrStepJSON {
     return {
       newAttrs: this.newAttrs
     }

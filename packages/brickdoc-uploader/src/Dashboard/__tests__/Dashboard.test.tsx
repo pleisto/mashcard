@@ -1,16 +1,33 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
+import { VirtuosoProps, GroupedVirtuosoProps } from 'react-virtuoso'
 import { Dashboard, ImportSourceOption } from '../Dashboard'
 import { DashboardPluginOptions } from '../plugin'
 import { RECENT_EMOJI_LOCAL_STORAGE_KEY } from '../useEmoji'
 
-describe('Dashboard', () => {
-  beforeAll(() => {
-    global.IntersectionObserver = jest.fn(() => ({
-      observe: jest.fn()
-    })) as any
-  })
+jest.mock('react-virtuoso', () => {
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  function Virtuoso(props: VirtuosoProps<unknown, unknown>) {
+    return <>{props.data?.map((value, index) => props.itemContent?.(index, value, undefined))}</>
+  }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  function GroupedVirtuoso(props: GroupedVirtuosoProps<unknown, unknown>) {
+    return (
+      <>
+        {Array(props.groupCounts!.reduce((partialSum, a) => partialSum + a, 0))
+          .fill(0)
+          .map((value, index) => (
+            <div key={index}>{props.itemContent?.(index, 0, value, undefined)}</div>
+          ))}
+      </>
+    )
+  }
+
+  return { ...jest.requireActual('react-virtuoso'), Virtuoso, GroupedVirtuoso }
+})
+
+describe('Dashboard', () => {
   describe('Upload', () => {
     const source: ImportSourceOption = {
       type: 'upload',
@@ -331,7 +348,7 @@ describe('Dashboard', () => {
       fireEvent.click(screen.getByText('Remove'))
 
       expect(options.onUploaded).toHaveBeenCalledTimes(1)
-      expect(options.onUploaded).toBeCalledWith({ action: 'remove', emoji: {} })
+      expect(options.onUploaded).toBeCalledWith({ action: 'remove', emoji: undefined })
     })
   })
 })

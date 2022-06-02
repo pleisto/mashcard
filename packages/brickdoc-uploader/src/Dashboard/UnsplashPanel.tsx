@@ -1,24 +1,17 @@
-import { Button, Spin, ImageWithSpin, styled, theme } from '@brickdoc/design-system'
+import { Button, Spin, ImageWithSpin, styled, Input } from '@brickdoc/design-system'
 import React from 'react'
+import { Virtuoso } from 'react-virtuoso'
 import { useBoolean } from 'ahooks'
 import { debounce } from '@brickdoc/active-support'
 import { DashboardPluginOptions, UnsplashImage } from './plugin'
+import { NotFound } from './index.style'
 
 interface UnsplashPanelProps {
   pluginOptions: DashboardPluginOptions
 }
 
-const UNSPLASH_PER_PAGE = 20
-
-const Notfound = styled('p', {
-  color: theme.colors.typeSecondary,
-  fontSize: theme.fontSizes.subHeadline,
-  lineHeight: theme.lineHeights.subHeadline,
-  marginTop: '1rem',
-  display: 'block',
-  width: '100%',
-  textAlign: 'center'
-})
+const UNSPLASH_PER_PAGE = 24
+const IMAGES_PER_LINE = 4
 
 const Loading = styled(Spin, {
   display: 'block',
@@ -31,15 +24,25 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
   const [loading, { setTrue, setFalse }] = useBoolean(false)
   const fetching = React.useRef(false)
   const lastQuery = React.useRef('')
-  const scrollRef = React.useRef<HTMLDivElement>(null)
   const page = React.useRef(1)
+
+  const grouppedData = React.useMemo(() => {
+    const lineCount = Math.ceil(unsplashImages.length / IMAGES_PER_LINE)
+
+    // group images into lines
+    const imagesByLine: UnsplashImage[][] = []
+    for (let i = 0; i < lineCount; i++) {
+      imagesByLine.push(unsplashImages.slice(i * IMAGES_PER_LINE, (i + 1) * IMAGES_PER_LINE))
+    }
+    return imagesByLine
+  }, [unsplashImages])
 
   const handleFetchUnsplashImage = async (query?: string): Promise<void> => {
     if (fetching.current) {
       return
     }
 
-    if (query && query !== lastQuery.current) {
+    if (query !== undefined && query !== lastQuery.current) {
       page.current = 1
       lastQuery.current = query
     }
@@ -82,40 +85,48 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
     })
   }
 
-  const handleScroll = () => {
-    if (loading || page.current > 5 || !scrollRef.current) {
-      return
-    }
-
-    const listRef = scrollRef.current
-
-    const scrollHeight = listRef.scrollHeight
-    const clientHeight = listRef.clientHeight
-    const scrollTop = listRef.scrollTop
-
-    if (scrollHeight - (scrollTop + 10) <= clientHeight) {
-      handleFetchUnsplashImage()
-    }
+  const handleEndReached = (): void => {
+    void handleFetchUnsplashImage()
   }
 
   return (
     <div className="uploader-dashboard-unsplash-panel">
-      <input
-        className="dashboard-unsplash-search-input"
-        placeholder="Search for an image..."
-        onChange={handleUnsplashSearchInput}
-      />
+      <Input size="sm" placeholder="Search for an image..." onChange={handleUnsplashSearchInput} />
 
-      <div className="dashboard-unsplash-image-list" ref={scrollRef} onScroll={handleScroll}>
-        {!loading && !unsplashImages.length && <Notfound>No result found.</Notfound>}
-        {unsplashImages.map(image => (
-          <Button type="text" key={image.id} className="unsplash-image-item" onClick={handleUnsplashImageSelect(image)}>
-            <ImageWithSpin src={image.smallUrl} className="unsplash-image" />
-            <div className="unsplash-image-username">@{image.username}</div>
-          </Button>
-        ))}
-        {loading && <Loading />}
-      </div>
+      <Virtuoso
+        className="dashboard-unsplash-image-list"
+        style={{ height: 323 }}
+        defaultItemHeight={113}
+        fixedItemHeight={113}
+        increaseViewportBy={200}
+        endReached={handleEndReached}
+        data={grouppedData}
+        // eslint-disable-next-line react/no-unstable-nested-components
+        itemContent={(index, images) => {
+          return images.map(image => (
+            <Button
+              type="text"
+              key={image.id}
+              className="unsplash-image-item"
+              onClick={handleUnsplashImageSelect(image)}
+            >
+              <ImageWithSpin
+                src={image.smallUrl}
+                className="unsplash-image"
+                blurHash={image.blurHash}
+                style={{ width: 145, height: 105 }}
+              />
+              <div className="unsplash-image-username">by {image.username}</div>
+            </Button>
+          ))
+        }}
+        components={{
+          // eslint-disable-next-line react/no-unstable-nested-components
+          Header: () => (!loading && !unsplashImages.length ? <NotFound>No result found.</NotFound> : null),
+          // eslint-disable-next-line react/no-unstable-nested-components
+          Footer: () => (loading ? <Loading /> : null)
+        }}
+      />
     </div>
   )
 }
