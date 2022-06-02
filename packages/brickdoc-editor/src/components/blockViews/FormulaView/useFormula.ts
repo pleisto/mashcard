@@ -174,7 +174,7 @@ export const useFormula = ({
 
   // Callbacks
   const doSelectFormula = React.useCallback(
-    (selectRootId, selectFormulaId) => {
+    (selectRootId: any, selectFormulaId: any) => {
       selectFormula.current = { selectFormulaId, selectRootId }
       BrickdocEventBus.dispatch(
         FormulaEditorSelectEventTrigger({

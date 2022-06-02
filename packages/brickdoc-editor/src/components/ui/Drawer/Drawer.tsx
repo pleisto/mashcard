@@ -11,6 +11,7 @@ export interface DrawerProps {
   container?: HTMLElement
   onClose?: () => void
   renderBody?: () => ReactNode
+  children?: ReactNode
 }
 
 export const width = '17.5rem'

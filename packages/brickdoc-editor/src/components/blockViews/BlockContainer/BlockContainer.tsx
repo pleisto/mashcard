@@ -1,4 +1,4 @@
-import { CSSProperties, FC, forwardRef, MouseEventHandler, useState } from 'react'
+import { CSSProperties, FC, forwardRef, MouseEventHandler, ReactNode, useState } from 'react'
 import { NodeViewWrapper, NodeViewWrapperProps, NodeViewProps } from '@tiptap/react'
 import { BlockActionsProps } from '../BlockActions'
 import { BlockContext } from '../../../context/BlockContext'
@@ -21,6 +21,7 @@ export interface BlockContainerProps {
   onClick?: MouseEventHandler
   onMouseDown?: MouseEventHandler
   node: NodeViewProps['node']
+  children?: ReactNode
 }
 
 export const BlockContainer: FC<BlockContainerProps> = forwardRef<HTMLElement, BlockContainerProps>(
@@ -76,7 +77,8 @@ export const BlockContainer: FC<BlockContainerProps> = forwardRef<HTMLElement, B
           } else if (ref) {
             ref.current = container
           }
-        }}>
+        }}
+      >
         <BlockContext.Provider value={blockContextData}>{blockElement}</BlockContext.Provider>
       </NodeViewWrapper>
     )

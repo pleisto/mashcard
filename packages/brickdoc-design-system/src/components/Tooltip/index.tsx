@@ -5,7 +5,7 @@ import useMergedState from 'rc-util/lib/hooks/useMergedState'
 import { AbstractTriggerProps, getPlacements } from './trigger'
 import { tooltipStyle } from './styles/index.style'
 import { useId } from '../../hooks'
-import { RenderFunction } from '../../utilities'
+import { RenderFunction, getRenderPropValue } from '../../utilities'
 
 interface TooltipPropsWithOverlay extends AbstractTriggerProps {
   title?: React.ReactNode | RenderFunction
@@ -46,7 +46,7 @@ const Tooltip: ForwardRefRenderFunction<unknown, TooltipProps> = (props, ref) =>
 
   const getOverlay = (): ReactNode | RenderFunction => {
     const { title, overlay } = props
-    return <span id={overlayId}>{overlay ?? title ?? ''}</span>
+    return <span id={overlayId}>{getRenderPropValue(overlay) ?? getRenderPropValue(title) ?? ''}</span>
   }
 
   const onPopupAlign = (domNode: HTMLElement, align: any): void => {

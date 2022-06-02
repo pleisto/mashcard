@@ -40,6 +40,7 @@ const IconContainer = styled('span', {
 export interface IconBackgroundProps {
   color?: string
   className?: string
+  children?: React.ReactNode
 }
 
 export const IconBackground: React.FC<IconBackgroundProps> = ({ color, children, ...props }) => (

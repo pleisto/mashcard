@@ -1,4 +1,4 @@
-import { FC, lazy, useContext } from 'react'
+import { FC, lazy, useContext, ReactNode } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { JoinSpacePage } from '@/docs/invite/JoinSpacePage'
 import { DocumentContentPage } from '@/docs/pages/DocumentContentPage'
@@ -10,7 +10,7 @@ import { rootPath } from '@/common/utils'
 const AccountsModule = lazy(async () => await import('@/accounts/Module'))
 const SettingsModule = lazy(async () => await import('@/settings/Module'))
 
-const RequireLogin: FC = ({ children }) => {
+const RequireLogin: FC<{ children?: ReactNode }> = ({ children }) => {
   const context = useContext(BrickdocContext)
   return context.currentUser ? <>{children}</> : <Navigate replace={true} to="/accounts/sign_in" />
 }

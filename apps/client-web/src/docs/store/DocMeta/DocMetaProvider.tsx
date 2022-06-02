@@ -1,5 +1,5 @@
 import { isEqual } from '@brickdoc/active-support'
-import { FC, useRef, useMemo, useContext } from 'react'
+import { FC, useRef, useMemo, useContext, ReactNode } from 'react'
 import { DocMeta, DocMetaContext } from './types'
 
 const emptyDocMeta: DocMeta = {
@@ -30,6 +30,7 @@ const emptyDocMeta: DocMeta = {
 interface Props {
   docMeta: Partial<DocMeta>
   inherit?: boolean
+  children?: ReactNode
 }
 
 export const DocMetaProvider: FC<Props> = ({ docMeta, inherit, children }) => {

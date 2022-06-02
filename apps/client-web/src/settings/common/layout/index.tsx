@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { styled } from '@brickdoc/design-system'
 import { layoutStyle } from './index.style'
@@ -7,7 +7,7 @@ import { useSettingsI18n } from '../hooks'
 
 const Layout = styled('div', layoutStyle)
 
-export const SettingsLayout: FC = ({ children }) => {
+export const SettingsLayout: FC<{ children?: ReactNode }> = ({ children }) => {
   const { t } = useSettingsI18n()
 
   return (

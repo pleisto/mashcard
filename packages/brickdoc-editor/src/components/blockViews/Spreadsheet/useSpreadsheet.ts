@@ -59,7 +59,7 @@ export const useSpreadsheet = (options: {
   const cellsMap = React.useRef<SpreadsheetCellsMap>(new Map<string, Map<string, BlockInput>>())
 
   const updateSpreadsheetAttributes = React.useCallback(
-    (columns): void => {
+    (columns: any): void => {
       setColumns(columns)
       updateAttributeData({
         ...data,

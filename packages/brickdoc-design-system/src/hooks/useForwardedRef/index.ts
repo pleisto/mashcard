@@ -10,7 +10,7 @@ import { ForwardedRef, RefObject, useRef, useCallback } from 'react'
 export function useForwardedRef<T>(ref: ForwardedRef<T>): [RefObject<T>, (instance: T) => void] {
   const innerRef = useRef<T | null>(null)
   const updateCallback = useCallback(
-    node => {
+    (node: any) => {
       innerRef.current = node
       if (ref) {
         if (typeof ref === 'function') {

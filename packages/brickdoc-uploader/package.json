@@ -15,10 +15,10 @@
     "@brickdoc/active-support": "workspace:^",
     "@brickdoc/design-system": "workspace:^",
     "@brickdoc/test-helper": "workspace:^",
-    "@uppy/core": "^2.2.0",
-    "@uppy/dashboard": "^2.2.0",
-    "@uppy/react": "^2.2.0",
-    "@uppy/xhr-upload": "^2.1.0"
+    "@uppy/core": "^2.3.0",
+    "@uppy/dashboard": "^2.3.0",
+    "@uppy/react": "^2.2.1",
+    "@uppy/xhr-upload": "^2.1.1"
   },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",

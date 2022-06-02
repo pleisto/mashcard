@@ -7,7 +7,7 @@ import * as TreeStories from '../tree.stories'
 const storyTable = toStoryTable(composeStories(TreeStories))
 
 jest.mock('react-dnd', () => ({
-  DndProvider: ({ children }: { children: ReactNode }) => {
+  DndProvider: ({ children }: { children?: ReactNode }) => {
     return <>{children}</>
   },
   useDrag: jest.fn().mockReturnValue([{ isDragging: false }, jest.fn()]),

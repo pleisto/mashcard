@@ -2,6 +2,7 @@ import { Dispatch, MutableRefObject, SetStateAction, useEffect, useRef } from 'r
 import { BrickdocEventBus, SlashMenuKeyboardEventTrigger, SlashMenuHide } from '@brickdoc/schema'
 import { SlashMenuItem, SlashMenuProps } from '.'
 
+// eslint-disable-next-line max-params
 export function useKeyboardEvent(
   type: SlashMenuItem[],
   currentItem: MutableRefObject<SlashMenuItem | undefined>,

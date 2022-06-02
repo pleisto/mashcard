@@ -3,7 +3,11 @@ import { IconProvider, DEFAULT_ICON_CONFIGS } from '@brickdoc/design-icons'
 import { IDProvider } from './IDProvider'
 import { ToasterPortal } from '../Toast'
 
-export const Provider: FC = ({ children }) => (
+interface Props {
+  children?: React.ReactNode
+}
+
+export const Provider: FC<Props> = ({ children }) => (
   <IDProvider>
     <IconProvider
       value={{

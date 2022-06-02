@@ -9,6 +9,7 @@ export interface EmbedBlockPlaceholderProps {
   description: string
   progress?: UploadProgress
   onClick?: VoidFunction
+  children?: ReactNode
 }
 
 const Placeholder = styled('div', {

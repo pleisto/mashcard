@@ -15,7 +15,7 @@ const styles = css({
   }
 })
 
-export const DemoGrid: React.FC = props => {
+export const DemoGrid: React.FC<any> = props => {
   const [bg, setBg] = useState('#fff')
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const val = e.target.value

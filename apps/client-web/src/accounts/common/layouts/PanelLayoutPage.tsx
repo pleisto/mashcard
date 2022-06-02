@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import Logo from '@/common/assets/logo_brickdoc.svg'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { styled, theme } from '@brickdoc/design-system'
@@ -60,7 +60,7 @@ const PanelLayout = styled('div', {
   }
 })
 
-export const PanelLayoutPage: FC = ({ children }) => {
+export const PanelLayoutPage: FC<{ children?: ReactNode }> = ({ children }) => {
   const { t } = useAccountsI18n()
 
   return (

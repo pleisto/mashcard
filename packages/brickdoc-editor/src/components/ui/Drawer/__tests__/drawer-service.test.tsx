@@ -1,6 +1,6 @@
 /* eslint-disable max-nested-callbacks */
 import { act, Renderer, renderHook, RenderHookResult } from '@testing-library/react-hooks'
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import { useDrawer, useDrawerService } from '..'
 import { UseDrawerReturn } from '../drawer-service'
 import { DrawerView, useDrawerStore } from '../drawer-service/store'
@@ -17,7 +17,7 @@ describe('useDrawerService', () => {
 })
 
 describe('useDrawer', () => {
-  const Wrapper: FC = ({ children }) => {
+  const Wrapper: FC<{ children?: ReactNode }> = ({ children }) => {
     useDrawerService()
     return <>{children}</>
   }

@@ -131,6 +131,7 @@ const TocStyledContainerInner = styled('div', {
 
 export interface TocContainerProps {
   tocItemCount: number
+  children: React.ReactNode
 }
 
 export const TocContainer: FC<TocContainerProps> = ({ tocItemCount, children }) => {

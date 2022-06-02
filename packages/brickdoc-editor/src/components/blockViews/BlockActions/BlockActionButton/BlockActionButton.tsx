@@ -1,4 +1,4 @@
-import { DragEventHandler, FC, MouseEventHandler, useCallback, useMemo, useState } from 'react'
+import { DragEventHandler, FC, MouseEventHandler, useCallback, useMemo, useState, ReactNode } from 'react'
 import { Button, IconProps, Popover, styled, theme } from '@brickdoc/design-system'
 import { BlockActionsMenu, BlockActionsMenuProps } from '../BlockActionsMenu'
 import { DragSecondary } from '../../../ui'
@@ -7,6 +7,7 @@ import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface BlockActionButtonProps extends Omit<BlockActionsMenuProps, 'onClose'> {
   className?: string
+  children?: ReactNode
 }
 
 const StyledBlockActionButton = styled(Button, {
@@ -51,7 +52,8 @@ const Trigger: FC<{
       draggable={true}
       data-drag-handle
       data-testid={TEST_ID_ENUM.editor.blockAction.button.id}
-      {...restProps}>
+      {...restProps}
+    >
       <StyledBlockActionButton
         onClick={event => {
           event.stopPropagation()
@@ -64,7 +66,8 @@ const Trigger: FC<{
           setHovered(true)
         }}
         size="sm"
-        type="text">
+        type="text"
+      >
         <DragSecondary {...iconProps} />
       </StyledBlockActionButton>
     </div>
@@ -99,7 +102,8 @@ export const BlockActionButton: FC<BlockActionButtonProps> = ({ className, child
       destroyTooltipOnHide={true}
       trigger="hover"
       placement="startTop"
-      content={<BlockActionsMenu onClose={handleCloseMenu} {...props} />}>
+      content={<BlockActionsMenu onClose={handleCloseMenu} {...props} />}
+    >
       <Trigger className={className} onDragStart={handleDragStart} onDragEnd={handleDragEnd} />
     </Popover>
   )

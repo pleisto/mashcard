@@ -32,6 +32,7 @@ export interface BlockActionsProps {
   buttonClassName?: string
   baseId?: MenuProps['baseId']
   options?: BlockActionOptions
+  children?: React.ReactNode
 }
 
 const BlockActionButtonContainer = styled(BlockActionButton, {

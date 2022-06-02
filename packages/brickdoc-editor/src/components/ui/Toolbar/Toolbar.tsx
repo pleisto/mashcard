@@ -50,7 +50,7 @@ export interface ToolbarItemGroupOption extends ToolbarGroupOptionBase {
 export type ToolbarSubMenuItemsRender = () => ReactNode
 
 export interface ToolbarSubMenuOption extends ToolbarOptionBase {
-  [x: string]: ReactNode
+  [x: string]: any
   type: 'subMenu'
   baseId?: string
   orientation?: MenuProps['orientation']
@@ -155,7 +155,8 @@ const ToolbarMenuOption: FC<{ option: ToolbarOption }> = ({ option }) => {
           <div>{tooltipDescription}</div>
         </>
       }
-      placement="top">
+      placement="top"
+    >
       <ToolbarMenuOptionInner option={option} />
     </Tooltip>
   )
@@ -176,7 +177,8 @@ export const Toolbar: FC<ToolbarProps> = ({ type, options }) => {
               role="presentation"
               title={option.title}
               className={option.className}
-              key={option.title ?? `section-${index}`}>
+              key={option.title ?? `section-${index}`}
+            >
               {option.items.map((option, optionIndex) => (
                 <ToolbarMenuOption key={`${index}-${optionIndex}`} option={option} />
               ))}

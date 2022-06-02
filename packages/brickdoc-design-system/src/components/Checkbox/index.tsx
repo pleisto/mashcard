@@ -1,6 +1,6 @@
 import { ForwardRefRenderFunction, createRef, forwardRef, InputHTMLAttributes } from 'react'
 import { VisuallyHidden } from '../VisuallyHidden'
-import { SwitchInputProps } from '@mui/base/SwitchUnstyled'
+import { UseSwitchInputSlotProps } from '@mui/base/SwitchUnstyled'
 import { styled } from '../../themes'
 import { useControllableValue } from '../../hooks'
 import { CheckBox as Check, Minus } from '@brickdoc/design-icons'
@@ -8,7 +8,7 @@ import { root, checkbox } from './styles/index.style'
 
 export interface CheckboxProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'css'>,
-    Omit<SwitchInputProps, 'onBlur' | 'onChange' | 'onFocus'> {
+    Omit<UseSwitchInputSlotProps, 'onBlur' | 'onChange' | 'onFocus' | 'type'> {
   labelFirst?: boolean
   defaultChecked?: boolean
   noLabel?: boolean

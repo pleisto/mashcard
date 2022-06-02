@@ -23,6 +23,7 @@ export interface FormulaMenuProps {
   isDisableSave: () => boolean
   onSaveFormula: () => void
   completion: CompletionType
+  children?: React.ReactNode
 }
 
 const i18nKey = 'formula.menu'
@@ -146,7 +147,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           size="sm"
           type="primary"
           onClick={handleSave}
-          disabled={isDisableSave()}>
+          disabled={isDisableSave()}
+        >
           {t(`${i18nKey}.save`)}
         </Button>
         <Button
@@ -154,7 +156,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           size="sm"
           type="text"
           danger={true}
-          onClick={() => handleDelete(variableT!)}>
+          onClick={() => handleDelete(variableT!)}
+        >
           {t(`${i18nKey}.delete`)}
         </Button>
       </div>
@@ -170,7 +173,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottom"
-      trigger={['click']}>
+      trigger={['click']}
+    >
       {children}
     </Popover>
   )
