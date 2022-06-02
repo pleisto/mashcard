@@ -53,24 +53,4 @@ describe('useBlockContextDataProvider', () => {
 
     expect(mockDelete).toBeCalled()
   })
-
-  it('copies content normally', () => {
-    const content = 'content'
-    const mockCopy = jest.fn()
-    jest.spyOn(navigator.clipboard, 'writeText').mockImplementation(content => mockCopy(content))
-    const { result } = renderHook(() =>
-      useBlockContextDataProvider({
-        dragging: true,
-        contentForCopy: content,
-        getPos: () => 1,
-        updateDragging: () => {},
-        node: {} as any
-      })
-    )
-
-    const data = result.current[0]
-    data.copyContent()
-
-    expect(mockCopy).toBeCalledWith(content)
-  })
 })

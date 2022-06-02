@@ -20,7 +20,6 @@ describe('useBasicActionOptions', () => {
   it('returns options according to types', () => {
     jest.spyOn(blockHooks, 'useBlockContext').mockImplementation(() => ({
       deleteBlock() {},
-      copyContent() {},
       getPosition() {
         return 1
       },
@@ -44,7 +43,6 @@ describe('useBasicActionOptions', () => {
     const mockDelete = jest.fn()
     jest.spyOn(blockHooks, 'useBlockContext').mockImplementation(() => ({
       deleteBlock: mockDelete,
-      copyContent() {},
       getPosition() {
         return 1
       },
@@ -89,7 +87,6 @@ describe('useBasicActionOptions', () => {
     const mockDelete = jest.fn()
     jest.spyOn(blockHooks, 'useBlockContext').mockImplementation(() => ({
       deleteBlock: mockDelete,
-      copyContent() {},
       getPosition() {
         return 1
       },
@@ -117,7 +114,6 @@ describe('useBasicActionOptions', () => {
   it('clicks transform option will trigger action correctly', () => {
     jest.spyOn(blockHooks, 'useBlockContext').mockImplementation(() => ({
       deleteBlock() {},
-      copyContent() {},
       getPosition() {
         return 1
       },

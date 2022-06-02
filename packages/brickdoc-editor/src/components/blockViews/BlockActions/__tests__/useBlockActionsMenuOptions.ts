@@ -27,7 +27,6 @@ jest.mock('../../../../hooks/useBlockContext.ts', () => ({
     deleteBlock() {},
     duplicateBlock() {},
     moveBlock() {},
-    copyContent() {},
     getPosition() {
       return 1
     },

@@ -23,7 +23,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
             >
               <p
                 as="p"
-                class="brd-c-hMGRDP"
+                class="brd-c-hMGRDP brd-c-qcqS"
                 data-node-view-content=""
                 data-placeholder=""
                 draggable="false"

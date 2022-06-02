@@ -141,23 +141,7 @@ export const documentEditorStyles = globalCss({
 
       ...dividerStyles,
 
-      ...spreadsheetStyles,
-
-      /* Placeholder (on every new line) */
-      'p.is-empty::before': {
-        letterSpacing: 0,
-        textAlign: 'left',
-        fontStyle: 'normal',
-        content: 'attr(data-placeholder)',
-        float: 'left',
-        color: '#a6a6a6',
-        pointerEvents: 'none',
-        height: 0,
-        fontSize: '1rem',
-        fontWeight: 400,
-        lineHeight: '1.5rem',
-        paddingLeft: '4px'
-      }
+      ...spreadsheetStyles
     }
   }
 })

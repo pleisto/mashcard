@@ -24,7 +24,8 @@ import {
   RteH4,
   RteH5,
   TextStyle,
-  Quote
+  Quote,
+  CheckboxSquare
 } from '../components/ui'
 import { meta as formulaMeta } from '../extensions/blocks/formula/meta'
 import { meta as spreadsheetMeta } from '../extensions/blocks/spreadsheet/meta'
@@ -32,6 +33,7 @@ import { meta as embedMeta } from '../extensions/blocks/embed/meta'
 import { meta as subPageMenuMeta } from '../extensions/blocks/subPageMenu/meta'
 import { meta as tocMeta } from '../extensions/blocks/toc/meta'
 import { meta as blockquoteMeta } from '../extensions/blocks/blockquote/meta'
+import { meta as taskListMeta } from '../extensions/blocks/taskList/meta'
 
 export type BlockItemKey =
   | 'text'
@@ -53,6 +55,7 @@ export type BlockItemKey =
   | 'subPageMenu'
   | 'divider'
   | 'blockquote'
+  | 'taskList'
 
 export interface BlockCommandItem {
   key: BlockItemKey
@@ -65,7 +68,7 @@ export interface BlockCommandItem {
   insertBlockAt: (chain: ChainedCommands, position: number) => ChainedCommands
 }
 
-export const PARAPGRAPH: BlockCommandItem = {
+export const PARAGRAPH: BlockCommandItem = {
   key: 'text',
   blockType: Paragraph.name,
   squareIcon: <TextStyle square={true} />,
@@ -215,6 +218,18 @@ export const ORDERED_LIST: BlockCommandItem = {
     chain.insertBlockAt({ type: Paragraph.name }, position).wrapInBrickList(OrderedList.name)
 }
 
+export const TASK_LIST: BlockCommandItem = {
+  key: 'taskList',
+  blockType: taskListMeta.name,
+  alias: ['todo'],
+  squareIcon: <CheckboxSquare square={true} />,
+  icon: <CheckboxSquare />,
+  setBlock: chain => chain.setToBrickList(taskListMeta.name),
+  toggleBlock: chain => chain.toggleBrickList(taskListMeta.name),
+  insertBlockAt: (chain, position) =>
+    chain.insertBlockAt({ type: Paragraph.name }, position).wrapInBrickList(taskListMeta.name)
+}
+
 export const BLOCKQUOTE: BlockCommandItem = {
   key: 'blockquote',
   blockType: blockquoteMeta.name,
@@ -271,7 +286,7 @@ export const SUB_PAGE_MENU: BlockCommandItem = {
 }
 
 export const BLOCK = {
-  PARAPGRAPH,
+  PARAGRAPH,
   FORMULA,
   SPREADSHEET,
   UPLOAD,
@@ -285,6 +300,7 @@ export const BLOCK = {
   HEADING_5,
   BULLETED_LIST,
   ORDERED_LIST,
+  TASK_LIST,
   CODE,
   BLOCKQUOTE,
   DIVIDER,
@@ -293,7 +309,7 @@ export const BLOCK = {
 }
 
 export const ORDER_NEW_BLOCK: BlockItemKey[] = [
-  PARAPGRAPH.key,
+  PARAGRAPH.key,
   FORMULA.key,
   SPREADSHEET.key,
   UPLOAD.key,
@@ -306,6 +322,7 @@ export const ORDER_NEW_BLOCK: BlockItemKey[] = [
   HEADING_5.key,
   BULLETED_LIST.key,
   ORDERED_LIST.key,
+  TASK_LIST.key,
   CODE.key,
   BLOCKQUOTE.key,
   DIVIDER.key,
@@ -315,7 +332,7 @@ export const ORDER_NEW_BLOCK: BlockItemKey[] = [
 
 export const BLOCK_MAP = Object.fromEntries(
   [
-    PARAPGRAPH,
+    PARAGRAPH,
     FORMULA,
     SPREADSHEET,
     UPLOAD,
@@ -329,6 +346,7 @@ export const BLOCK_MAP = Object.fromEntries(
     HEADING_5,
     BULLETED_LIST,
     ORDERED_LIST,
+    TASK_LIST,
     CODE,
     BLOCKQUOTE,
     DIVIDER,
@@ -338,7 +356,7 @@ export const BLOCK_MAP = Object.fromEntries(
 )
 
 export const ORDER_TOGGLE_BLOCK: BlockItemKey[] = [
-  PARAPGRAPH.key,
+  PARAGRAPH.key,
   HEADING_1.key,
   HEADING_2.key,
   HEADING_3.key,
@@ -346,6 +364,7 @@ export const ORDER_TOGGLE_BLOCK: BlockItemKey[] = [
   HEADING_5.key,
   ORDERED_LIST.key,
   BULLETED_LIST.key,
+  TASK_LIST.key,
   FORMULA.key,
   CODE.key,
   BLOCKQUOTE.key

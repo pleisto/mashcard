@@ -30,6 +30,7 @@ export const actionIconBackgroundStyle = css({
 export const blockIconStyle = css({
   fontSize: iconSize,
   height: '1.625rem',
+  lineHeight: iconSize,
   width: '1.625rem'
 })
 

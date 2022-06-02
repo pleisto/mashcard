@@ -28,11 +28,13 @@ export const SlashMenuGroupLabel = styled('span', {
 export const MenuIcon = styled(IconBackground, {
   fontSize: '.8125rem',
   height: '1.3rem',
+  lineHeight: '.8125rem',
   width: '1.3rem'
 })
 
 export const menuIconStyle = css({
   fontSize: '.8125rem',
+  lineHeight: '.8125rem',
   height: '1.3rem',
   width: '1.3rem'
 })

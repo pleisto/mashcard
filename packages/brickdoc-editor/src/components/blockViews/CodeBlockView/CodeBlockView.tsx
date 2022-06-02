@@ -7,8 +7,8 @@ import { highlightStyle, ViewModeBar, CodeContainer, CodeScroll, SwitchContainer
 import { CodeBlockViewProps } from '../../../extensions/blocks/codeBlock/meta'
 import { CodeBlockAttributes } from '../../../extensions'
 import { languageNames } from '../../../extensions/blocks/codeBlock/refractorLanguagesBundle'
-import { useOptions } from './useOptions'
 import { useEditorI18n } from '../../../hooks'
+import { BlockActionOptions } from '../BlockActions'
 
 const LanguageChecked = styled(Check, {
   fontSize: '1rem',
@@ -72,8 +72,7 @@ const LanguageSelect: FC<ILanguageSelect> = (props: ILanguageSelect) => {
       compact={true}
       getPopupContainer={element => element}
       content={menu}
-      destroyTooltipOnHide={true}
-    >
+      destroyTooltipOnHide={true}>
       <div role="tab" tabIndex={0} onClick={updateVisible} onKeyDown={updateVisible}>
         {t(`code_block.languages.${language}`)} <LineDown />
       </div>
@@ -91,7 +90,7 @@ export const CodeBlockView: FC<CodeBlockViewProps> = ({ node, updateAttributes, 
       autoWrap: !autoWrap
     })
   }
-  const [actionOptions] = useOptions(node)
+  const actionOptions: BlockActionOptions = ['cut', 'copy', 'delete']
 
   return (
     <BlockContainer
@@ -99,8 +98,7 @@ export const CodeBlockView: FC<CodeBlockViewProps> = ({ node, updateAttributes, 
       className={highlightStyle()}
       getPos={getPos}
       deleteNode={deleteNode}
-      actionOptions={actionOptions}
-    >
+      actionOptions={actionOptions}>
       <CodeContainer>
         <ViewModeBar>
           <LanguageSelect language={language ?? defaultLanguage} updateAttributes={updateAttributes} />

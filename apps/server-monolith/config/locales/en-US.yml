@@ -671,6 +671,8 @@ en-US:
         label: Bulleted List
       orderedList:
         label: Numbered List
+      taskList:
+        label: Todo
       link:
         label: Link
       embed:

@@ -34,6 +34,7 @@ export const InnerMenu = styled(Menu, {
 export const menuIconStyle = css({
   fontSize: '.8125rem',
   height: '1.3rem',
+  lineHeight: '.8125rem',
   width: '1.3rem'
 })
 

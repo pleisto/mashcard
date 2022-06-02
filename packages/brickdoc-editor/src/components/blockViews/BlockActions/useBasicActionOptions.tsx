@@ -16,7 +16,7 @@ export interface UseActionOptionsProps {
 const transformBlocks = ORDER_TOGGLE_BLOCK.map(key => Object.values(BLOCK).find(block => block.key === key))
 
 export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionGroupOption | null {
-  const { deleteBlock, copyContent, getPosition, node } = useBlockContext()
+  const { deleteBlock, getPosition, contentForCopy, node } = useBlockContext()
   const { editor } = useEditorContext()
   const [t] = useEditorI18n()
   const [documentEditable] = useDocumentEditable(undefined)
@@ -39,15 +39,31 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionG
       label: t(`blocks.${blockItem.key}.label`),
       icon: blockItem.squareIcon,
       onAction: () => {
-        if (!editor) return
         if (!setNodeSelection()) return
-        blockItem.setBlock(editor.chain()).run()
+        blockItem.setBlock(editor!.chain()).run()
       }
     }),
     [editor, setNodeSelection, t]
   )
 
   const hasTextContent = (node?.textContent?.length ?? 0) > 0
+
+  const copyBlock = useCallback(async () => {
+    if (!setNodeSelection()) return false
+
+    const slice = editor!.state.selection.content()
+    const { dom, text } = __serializeForClipboard(editor!.view, slice)
+
+    // copy block to clipboard
+    await navigator.clipboard.write([
+      new ClipboardItem({
+        'text/html': new Blob([dom.innerHTML], { type: 'text/html' }),
+        'text/plain': new Blob([contentForCopy ?? text], { type: 'text/plain' })
+      })
+    ])
+
+    return true
+  }, [contentForCopy, editor, setNodeSelection])
 
   return useMemo<ActionGroupOption | null>(() => {
     const group: ActionGroupOption = { type: 'group', items: [] }
@@ -63,20 +79,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionG
         type: 'item',
         icon: <Cutting />,
         onAction: async () => {
-          if (!editor) return
-          if (!setNodeSelection()) return
-
-          const slice = editor.state.selection.content()
-          const { dom, text } = __serializeForClipboard(editor.view, slice)
-
-          // copy block to clipboard
-          await navigator.clipboard.write([
-            new ClipboardItem({
-              'text/html': new Blob([dom.innerHTML], { type: 'text/html' }),
-              'text/plain': new Blob([text], { type: 'text/plain' })
-            })
-          ])
-
+          if (!(await copyBlock())) return
           deleteBlock()
         }
       })
@@ -88,7 +91,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionG
         label: t('block_actions.basic.copy'),
         type: 'item',
         icon: <Link />,
-        onAction: copyContent
+        onAction: copyBlock
       })
     }
 
@@ -112,15 +115,5 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionG
     }
 
     return group
-  }, [
-    copyContent,
-    createActionOption,
-    deleteBlock,
-    documentEditable,
-    editor,
-    hasTextContent,
-    setNodeSelection,
-    t,
-    types
-  ])
+  }, [copyBlock, createActionOption, deleteBlock, documentEditable, hasTextContent, t, types])
 }
