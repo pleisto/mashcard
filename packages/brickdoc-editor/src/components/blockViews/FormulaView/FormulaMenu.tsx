@@ -8,6 +8,7 @@ import { CompletionType } from './useFormula'
 import { BrickdocEventBus, FormulaCalculateTrigger, FormulaEditorSavedTrigger } from '@brickdoc/schema'
 import { JSONContent } from '@tiptap/core'
 import * as Root from '../../ui/Formula/Formula.style'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface FormulaMenuProps {
   formulaId: string
@@ -106,7 +107,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const namePlaceholder = editorContent.input.trim() === '=' ? 'Add Name' : defaultName
 
   const menu = (
-    <Root.BrickdocFormulaMenu>
+    <Root.BrickdocFormulaMenu data-testid={TEST_ID_ENUM.editor.formulaBlock.menu.id}>
       {/* <div className="formula-menu-header">{t(`${i18nKey}.header`)}</div> */}
       <div className="formula-menu-row">
         <div className="formula-menu-item">

@@ -24,14 +24,16 @@ const config: PlaywrightTestConfig = {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        storageState: './storageState-chromium.json'
+        storageState: './storageState-chromium.json',
+        viewport: { width: 1780, height: 720 }
       }
     },
     {
       name: 'firefox',
       use: {
         ...devices['Desktop Firefox'],
-        storageState: './storageState-chromium.json'
+        storageState: './storageState-chromium.json',
+        viewport: { width: 1780, height: 720 }
       }
     }
     // {

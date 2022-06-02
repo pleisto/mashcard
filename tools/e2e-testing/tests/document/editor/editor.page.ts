@@ -40,39 +40,39 @@ export class EditorPage extends CommonPage {
     })
   }
 
-  async fillToBlock(content: string, blockIndex?: number): Promise<void> {
-    await this.getNodeByIndex(blockIndex).click()
-    await this.getNodeByIndex(blockIndex).type(content)
+  async fillToBlock(content: string): Promise<void> {
+    await this.getEditorContent().click()
+    await this.getEditorContent().type(content)
   }
 
-  async triggerSlashMenuInBlock(blockIndex?: number): Promise<SlashMenu> {
-    await this.fillToBlock('/', blockIndex)
+  async triggerSlashMenuInBlock(): Promise<SlashMenu> {
+    await this.fillToBlock('/')
     return new SlashMenu(this.page)
   }
 
-  async createTextBelowIndex(blockIndex?: number): Promise<TextBlock> {
-    await this.getNodeByIndex(blockIndex).click()
-    await this.getNodeByIndex(blockIndex).press('Enter')
+  async createTextBelowIndex(): Promise<TextBlock> {
+    await this.getEditorContent().click()
+    await this.getEditorContent().press('Enter')
     return new TextBlock(this.page)
   }
 
-  async createBulletListInBlock(blockIndex?: number): Promise<BulletListBlock> {
-    await this.fillToBlock('- ', blockIndex)
+  async createBulletListInBlock(): Promise<BulletListBlock> {
+    await this.fillToBlock('- ')
     return new BulletListBlock(this.page)
   }
 
-  async createOrderedListInBlock(blockIndex?: number): Promise<OrderedListBlock> {
-    await this.fillToBlock('1. ', blockIndex)
+  async createOrderedListInBlock(): Promise<OrderedListBlock> {
+    await this.fillToBlock('1. ')
     return new OrderedListBlock(this.page)
   }
 
-  async createFormulaInBlock(blockIndex?: number): Promise<FormulaBlock> {
-    await this.fillToBlock('/=', blockIndex)
+  async createFormulaInBlock(): Promise<FormulaBlock> {
+    await this.fillToBlock('/=')
     return new FormulaBlock(this.page)
   }
 
-  async triggerLinkMenuInBlock(blockIndex?: number): Promise<LinkMenuBlockPage> {
-    await this.fillToBlock('@', blockIndex)
+  async triggerLinkMenuInBlock(): Promise<LinkMenuBlockPage> {
+    await this.fillToBlock('@')
     return new LinkMenuBlockPage(this.page)
   }
 }

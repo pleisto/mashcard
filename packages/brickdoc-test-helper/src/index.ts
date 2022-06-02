@@ -199,6 +199,11 @@ export const TEST_ID_ENUM = {
       pdftron: {
         id: 'editor-embed-block-pdftron'
       }
+    },
+    formulaBlock: {
+      menu: {
+        id: 'editor-formula-block-menu'
+      }
     }
   },
   uploader: {

@@ -1,3 +1,3 @@
 export const FORMULA_BLOCK_SELECTORS = {
-  formulaPopup: '.brickdoc-formula-menu'
+  formulaPopup: 'div[data-testid=editor-formula-block-menu]'
 }
