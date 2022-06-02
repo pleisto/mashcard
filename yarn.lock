@@ -2578,7 +2578,7 @@ __metadata:
     "@storybook/testing-react": ^1.3.0
     "@storybook/theming": ^6.5.6
     "@types/react-transition-group": ^4.4.4
-    ahooks: ^3.4.0
+    ahooks: ^3.4.1
     babel-loader: ^8.2.5
     classnames: ^2.3.1
     fast-deep-equal: ^3.1.3
@@ -2758,7 +2758,7 @@ __metadata:
     "@testing-library/react-hooks": ^8.0.0
     "@testing-library/user-event": ^14.2.0
     "@types/is-ci": ^3.0.0
-    "@types/jest": ^27.5.2
+    "@types/jest": ^28.1.0
     "@types/jest-axe": ^3.5.3
     "@types/node": ^17.0.38
     "@types/rails__actioncable": ^6.1.6
@@ -2786,7 +2786,7 @@ __metadata:
     prettier: ^2.6.2
     rimraf: ^3.0.2
     ts-node: ^10.8.0
-    turbo: ^1.2.14
+    turbo: ^1.2.15
     typedoc: ^0.22.17
     typedoc-plugin-markdown: ^3.12.1
     typescript: ^4.7.2
@@ -6763,13 +6763,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^27.5.2":
-  version: 27.5.2
-  resolution: "@types/jest@npm:27.5.2"
+"@types/jest@npm:^28.1.0":
+  version: 28.1.0
+  resolution: "@types/jest@npm:28.1.0"
   dependencies:
     jest-matcher-utils: ^27.0.0
     pretty-format: ^27.0.0
-  checksum: 7e11c6826aa429ad990dc262e4e4b54aa36573287fddf15773e4137f07d11d3105f0dd9f1baff73252160a057df23f5529bb83b1bf83cd3f45f9460a5ca5c22e
+  checksum: be4d887b2452e8c1367cd19b23906ba4b64af95e22ca871f81c7af5e945bd39b370e124086356aa9380c4543123b1387448bc2c00a604c6f0a92bc3e4a24e9ce
   languageName: node
   linkType: hard
 
@@ -8419,9 +8419,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ahooks@npm:^3.4.0":
-  version: 3.4.0
-  resolution: "ahooks@npm:3.4.0"
+"ahooks@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "ahooks@npm:3.4.1"
   dependencies:
     "@types/js-cookie": ^2.x.x
     ahooks-v3-count: ^1.0.0
@@ -8433,7 +8433,7 @@ __metadata:
     screenfull: ^5.0.0
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 78a57c232a32507fd7c4ad6ddd76cd669d268e00c21c9d20d17cfe435b0bfcc4a6464ef383750b84571d75271a6e3ba82e39afefde2e96abaa1be70a609930c7
+  checksum: bbc41172536df594377263c2e3afc901f6713e49978be51b32b616fcba1d7f6a36392068e0be1bb545271cc4e7abf55a0e3c30efc20f483185ab584f91ab1bf9
   languageName: node
   linkType: hard
 
@@ -24043,114 +24043,114 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo-darwin-64@npm:1.2.14":
-  version: 1.2.14
-  resolution: "turbo-darwin-64@npm:1.2.14"
+"turbo-darwin-64@npm:1.2.15":
+  version: 1.2.15
+  resolution: "turbo-darwin-64@npm:1.2.15"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-darwin-arm64@npm:1.2.14":
-  version: 1.2.14
-  resolution: "turbo-darwin-arm64@npm:1.2.14"
+"turbo-darwin-arm64@npm:1.2.15":
+  version: 1.2.15
+  resolution: "turbo-darwin-arm64@npm:1.2.15"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-freebsd-64@npm:1.2.14":
-  version: 1.2.14
-  resolution: "turbo-freebsd-64@npm:1.2.14"
+"turbo-freebsd-64@npm:1.2.15":
+  version: 1.2.15
+  resolution: "turbo-freebsd-64@npm:1.2.15"
   conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-freebsd-arm64@npm:1.2.14":
-  version: 1.2.14
-  resolution: "turbo-freebsd-arm64@npm:1.2.14"
+"turbo-freebsd-arm64@npm:1.2.15":
+  version: 1.2.15
+  resolution: "turbo-freebsd-arm64@npm:1.2.15"
   conditions: os=freebsd & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-32@npm:1.2.14":
-  version: 1.2.14
-  resolution: "turbo-linux-32@npm:1.2.14"
+"turbo-linux-32@npm:1.2.15":
+  version: 1.2.15
+  resolution: "turbo-linux-32@npm:1.2.15"
   conditions: os=linux & cpu=ia32
   languageName: node
   linkType: hard
 
-"turbo-linux-64@npm:1.2.14":
-  version: 1.2.14
-  resolution: "turbo-linux-64@npm:1.2.14"
+"turbo-linux-64@npm:1.2.15":
+  version: 1.2.15
+  resolution: "turbo-linux-64@npm:1.2.15"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm64@npm:1.2.14":
-  version: 1.2.14
-  resolution: "turbo-linux-arm64@npm:1.2.14"
+"turbo-linux-arm64@npm:1.2.15":
+  version: 1.2.15
+  resolution: "turbo-linux-arm64@npm:1.2.15"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm@npm:1.2.14":
-  version: 1.2.14
-  resolution: "turbo-linux-arm@npm:1.2.14"
+"turbo-linux-arm@npm:1.2.15":
+  version: 1.2.15
+  resolution: "turbo-linux-arm@npm:1.2.15"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"turbo-linux-mips64le@npm:1.2.14":
-  version: 1.2.14
-  resolution: "turbo-linux-mips64le@npm:1.2.14"
+"turbo-linux-mips64le@npm:1.2.15":
+  version: 1.2.15
+  resolution: "turbo-linux-mips64le@npm:1.2.15"
   conditions: os=linux & cpu=mips64el
   languageName: node
   linkType: hard
 
-"turbo-linux-ppc64le@npm:1.2.14":
-  version: 1.2.14
-  resolution: "turbo-linux-ppc64le@npm:1.2.14"
+"turbo-linux-ppc64le@npm:1.2.15":
+  version: 1.2.15
+  resolution: "turbo-linux-ppc64le@npm:1.2.15"
   conditions: os=linux & cpu=ppc64
   languageName: node
   linkType: hard
 
-"turbo-windows-32@npm:1.2.14":
-  version: 1.2.14
-  resolution: "turbo-windows-32@npm:1.2.14"
+"turbo-windows-32@npm:1.2.15":
+  version: 1.2.15
+  resolution: "turbo-windows-32@npm:1.2.15"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"turbo-windows-64@npm:1.2.14":
-  version: 1.2.14
-  resolution: "turbo-windows-64@npm:1.2.14"
+"turbo-windows-64@npm:1.2.15":
+  version: 1.2.15
+  resolution: "turbo-windows-64@npm:1.2.15"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-windows-arm64@npm:1.2.14":
-  version: 1.2.14
-  resolution: "turbo-windows-arm64@npm:1.2.14"
+"turbo-windows-arm64@npm:1.2.15":
+  version: 1.2.15
+  resolution: "turbo-windows-arm64@npm:1.2.15"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo@npm:^1.2.14":
-  version: 1.2.14
-  resolution: "turbo@npm:1.2.14"
+"turbo@npm:^1.2.15":
+  version: 1.2.15
+  resolution: "turbo@npm:1.2.15"
   dependencies:
-    turbo-darwin-64: 1.2.14
-    turbo-darwin-arm64: 1.2.14
-    turbo-freebsd-64: 1.2.14
-    turbo-freebsd-arm64: 1.2.14
-    turbo-linux-32: 1.2.14
-    turbo-linux-64: 1.2.14
-    turbo-linux-arm: 1.2.14
-    turbo-linux-arm64: 1.2.14
-    turbo-linux-mips64le: 1.2.14
-    turbo-linux-ppc64le: 1.2.14
-    turbo-windows-32: 1.2.14
-    turbo-windows-64: 1.2.14
-    turbo-windows-arm64: 1.2.14
+    turbo-darwin-64: 1.2.15
+    turbo-darwin-arm64: 1.2.15
+    turbo-freebsd-64: 1.2.15
+    turbo-freebsd-arm64: 1.2.15
+    turbo-linux-32: 1.2.15
+    turbo-linux-64: 1.2.15
+    turbo-linux-arm: 1.2.15
+    turbo-linux-arm64: 1.2.15
+    turbo-linux-mips64le: 1.2.15
+    turbo-linux-ppc64le: 1.2.15
+    turbo-windows-32: 1.2.15
+    turbo-windows-64: 1.2.15
+    turbo-windows-arm64: 1.2.15
   dependenciesMeta:
     turbo-darwin-64:
       optional: true
@@ -24180,7 +24180,7 @@ __metadata:
       optional: true
   bin:
     turbo: bin/turbo
-  checksum: 1652628d22f3d24af80569a425a9ae0c4b3dcf3e0dfdc13704d4444c6a28631a63742064280f4f955e0b42dc7d8082f4ebcc090d89a43367716323a88b51382c
+  checksum: 790b5111d9a504abc885bbfac3f2edfdf084c15a637a097c0bf5de0c7c66ce43f8a36e03339d0069a6dc56905d4d27026358b3b11fa7fbdf7a80396f76cd5e76
   languageName: node
   linkType: hard
 
