@@ -39,7 +39,7 @@ Brickdoc is an open source project and we are very happy to accept community con
 
 ## Copyright/License
 
-Brickdoc © 2022, Brickdoc Inc - Released under the Apache 2.0 License
+Copyright © 2022, Brickdoc Inc - Released under the Apache 2.0 License
 
 - All content residing under the "docs/" directory of this repository is licensed under "Creative Commons: CC BY-SA 4.0 license".
 - All third party components incorporated into the Brickdoc Software are licensed under the original license provided by the owner of the applicable component.

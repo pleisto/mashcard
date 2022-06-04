@@ -14,9 +14,11 @@
             - name: {{ $key }}
               value: {{ $value | quote }}
             {{- end }}
+            - name: BRICKDOC_DOTCOM_LICENSE
+              value: {{ .Values.license | quote }}
             {{- if .Values.previewEnv }}
             - name: PREVIEW_ENV
-              value: "true"
+              value: "I hereby swear that I have obtained written permission from the Brickdoc Inc of this plugin to use it."
             # previewEnv is transient environment, so we use a fixed reversible int seed here.
             - name: SECURITY_REVERSIBLE_INT_PRIME
               value: "1828824083"

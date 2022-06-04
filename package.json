@@ -61,7 +61,8 @@
     "active-support": "yarn workspace @brickdoc/active-support",
     "server": "yarn workspace @brickdoc/server-monolith",
     "github-auth": "yarn workspace @brickdoc/github-auth",
-    "google-auth": "yarn workspace @brickdoc/google-auth"
+    "google-auth": "yarn workspace @brickdoc/google-auth",
+    "dotcom": "yarn workspace @brickdoc/dotcom"
   },
   "devDependencies": {
     "@brickdoc/eslint-plugin": "^1.0.1",
@@ -80,17 +81,17 @@
     "@types/is-ci": "^3.0.0",
     "@types/jest": "^28.1.0",
     "@types/jest-axe": "^3.5.3",
-    "@types/node": "^17.0.38",
+    "@types/node": "^17.0.39",
     "@types/rails__actioncable": "^6.1.6",
     "@types/rails__activestorage": "^7.0.1",
-    "@types/react": "^18.0.10",
+    "@types/react": "^18.0.11",
     "@types/react-dom": "^18.0.5",
     "@types/supertest": "^2.0.12",
     "@types/uuid": "^8.3.4",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "depcheck": "^1.4.3",
-    "eslint": "^8.16.0",
+    "eslint": "^8.17.0",
     "fs-extra": "^10.1.0",
     "glob": "^8.0.3",
     "graphql-tag": "^2.12.6",
@@ -104,10 +105,10 @@
     "lint-staged": "^13.0.0",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
-    "turbo": "^1.2.15",
+    "turbo": "^1.2.16",
     "typedoc": "^0.22.17",
     "typedoc-plugin-markdown": "^3.12.1",
-    "typescript": "^4.7.2"
+    "typescript": "^4.7.3"
   },
   "packageManager": "yarn@3.2.1",
   "resolutions": {
@@ -125,7 +126,7 @@
     "@swc/core": "^1.2.196",
     "@swc/helpers": "^0.3.17",
     "dayjs": "^1.11.2",
-    "ts-node": "^10.8.0"
+    "ts-node": "^10.8.1"
   },
   "volta": {
     "node": "18.2.0",

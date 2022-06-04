@@ -80,13 +80,11 @@ module Brickdoc
           field_config = _field_metadata(namespace, key, allow_blank: true)
           belongs_to = field_config[:belongs_to]
           cache_key = _cached_field_key(namespace, key, space_id, user_id, belongs_to)
+          return field_config[:default] if field_config[:read_only]
+
           unless _get_cached_values(cache_key)
             # Do not query database if the field is readonly
-            value = if field_config[:read_only]
-              nil
-            else
-              _find_field(key, namespace: namespace, space_id: space_id, user_id: user_id, belongs_to: belongs_to)
-            end
+            value = _find_field(key, namespace: namespace, space_id: space_id, user_id: user_id, belongs_to: belongs_to)
             value = value.nil? ? field_config[:default] : decode_value(field_config[:type], value, cache_key: cache_key)
             value = value.deep_symbolize_keys if field_config.dig(:options, :symbolize_keys)
             _set_cached_values(cache_key, value)
@@ -170,7 +168,7 @@ module Brickdoc
         # Get all frontend fields in the namespace.
         def to_frontend(namespace: '')
           namespace = namespace.to_s
-          frontend_fields[namespace].uniq.index_with { |key| get(key, namespace: namespace) }
+          frontend_fields[namespace]&.uniq&.index_with { |key| get(key, namespace: namespace) }
         end
 
         # Get field metadata.
@@ -186,7 +184,7 @@ module Brickdoc
         # @param :namespace [Symbol, String] the namespace of the field. set to nil if you want it to be global.
         # @return [Array<Symbol>] the list of defined fields.
         def defined_keys(namespace: '', **_)
-          defined_fields[namespace].keys
+          defined_fields[namespace]&.keys
         end
       end
     end

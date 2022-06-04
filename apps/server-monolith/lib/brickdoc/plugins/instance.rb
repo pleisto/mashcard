@@ -16,8 +16,13 @@ module Brickdoc
         # Clear the cache to avoid the default value cache remaning when the plugin no longer
         # calls the `default_enabled!` method.
         config.touch(enabled_field_name)
+        load! if enabled?
+      end
 
-        # Call extension points loaders
+      # Call extension points loaders
+      def load!
+        return if @loaded
+
         ServerPlugin.load!(self) if extension_points.include?(:server)
         JsBundlePlugin.load!(self) if extension_points.include?(:js_bundle)
         # TODO: block and formula extension point is not supported yet
@@ -26,6 +31,7 @@ module Brickdoc
 
         # Load i18n translations for the plugin if it exists
         Rails.application.config.i18n.load_path += Dir["#{path}/config/locales/*.yml"]
+        @loaded = true
       end
 
       # Check if the plugin is enabled
@@ -36,6 +42,7 @@ module Brickdoc
       # Set plugin enabled state
       def enabled=(enabled)
         config.set(enabled_field_name, enabled, allow_global: true)
+        load! if enabled
       end
 
       # Enable plugin
@@ -53,11 +60,12 @@ module Brickdoc
         config.get_field(enabled_field_name)[:default] = true
         # clear cache
         config.touch(enabled_field_name)
+        load!
         # Return true
         true
       end
 
-      # protected
+      protected
 
       # BrickdocConfig.current with plugin namespace
       def config

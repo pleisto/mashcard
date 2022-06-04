@@ -21,10 +21,11 @@ module ApplicationHelper
       settings: BrickdocConfig.to_frontend,
       features: BrickdocConfig.to_frontend(namespace: :features),
       serverMessage: flash[:alert] == I18n.t('devise.failure.unauthenticated') ? nil : flash[:alert],
-      sentryDsn: BrickdocConfig.sentry_dsn,
+      sentryDsn: ENV['SENTRY_DSN'],
     }
   end
 
+  # Loads js-bundle plugins entrypoint js file.
   def vite_plugin_bundle_tags
     entrypoints = Brickdoc::Plugins::JsBundlePlugin.enabled_entrypoints
     return if entrypoints.blank?
@@ -32,5 +33,13 @@ module ApplicationHelper
     entrypoints.map do |entrypoint|
       concat javascript_include_tag Brickdoc::Plugins::Vite.get_path(entrypoint), extname: false
     end
+  end
+
+  # Render a partial when it is exist. The main purpose of this method is to
+  # as a hooks for a plugin that declares themselves as an extended edition.
+  # @param [String] path_to_partial path to partial
+  def render_if_exists(path_to_partial)
+    path = path_to_partial.is_a?(Hash) ? path_to_partial[:partial] : path_to_partial
+    render path_to_partial if lookup_context.find_all(path, [], true).any?
   end
 end

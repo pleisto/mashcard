@@ -19,7 +19,7 @@ module Brickdoc
         # example:  Config.foo?
         elsif method_name[-1] == '?'
           get(method_name[0..-2], *args, **options).present?
-        elsif defined_keys.include? method_name.to_s
+        elsif defined_keys&.include? method_name.to_s
           # example: Config.foo
           get(method_name, *args, **options)
         else

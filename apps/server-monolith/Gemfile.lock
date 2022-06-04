@@ -321,7 +321,7 @@ GEM
     msgpack (1.5.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
-    multipart-post (2.1.1)
+    multipart-post (2.2.0)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -352,7 +352,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
-    oj (3.13.13)
+    oj (3.13.14)
     omniauth (2.1.0)
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
@@ -426,8 +426,6 @@ GEM
     rbnacl (7.1.1)
       ffi
     redis (4.5.1)
-    redis-namespace (1.8.2)
-      redis (>= 3.0.4)
     redis-objects (1.6.0)
       redis (< 4.6)
     regexp_parser (2.5.0)
@@ -503,13 +501,13 @@ GEM
     second_level_cache (2.7.1)
       activerecord (>= 6.0)
       activesupport (>= 6.0)
-    sentry-rails (5.0.2)
+    sentry-rails (5.3.1)
       railties (>= 5.0)
-      sentry-ruby-core (~> 5.0.2)
-    sentry-ruby (5.0.2)
+      sentry-ruby-core (~> 5.3.1)
+    sentry-ruby (5.3.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      sentry-ruby-core (= 5.0.2)
-    sentry-ruby-core (5.0.2)
+      sentry-ruby-core (= 5.3.1)
+    sentry-ruby-core (5.3.1)
       concurrent-ruby
     shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
@@ -568,7 +566,7 @@ GEM
     vite_rails (3.0.9)
       railties (>= 5.1, < 8)
       vite_ruby (~> 3.0)
-    vite_ruby (3.1.5)
+    vite_ruby (3.1.6)
       dry-cli (~> 0.7.0)
       rack-proxy (~> 0.6, >= 0.6.1)
       zeitwerk (~> 2.2)
@@ -587,7 +585,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    yard (0.9.27)
+    yard (0.9.28)
       webrick (~> 1.7.0)
     zeitwerk (2.5.4)
 
@@ -599,7 +597,7 @@ PLATFORMS
 
 DEPENDENCIES
   accept_language (>= 2.0.1)
-  action_policy (~> 0.6.0)
+  action_policy (~> 0.6.1)
   action_policy-graphql (~> 0.5.3)
   annotate
   benchmark-ips (~> 2.10)
@@ -643,22 +641,21 @@ DEPENDENCIES
   rails (= 7.0.3)
   rbnacl (~> 7.1, >= 7.1.1)
   redis (~> 4.5.1)
-  redis-namespace
-  redis-objects (~> 1.6.0)
+  redis-objects (~> 1.6)
   rspec-rails (>= 5.1.2)
   rspec_junit_formatter (>= 0.4)
   rubocop-brickdoc!
   rubocop-graphql (~> 0.14.3)
   rubocop-rails (~> 2.14, >= 2.14.2)
   second_level_cache (~> 2.7.1)
-  sentry-rails (~> 5.0.2)
-  sentry-ruby (~> 5.0.2)
+  sentry-rails (~> 5.3.1)
+  sentry-ruby (~> 5.3.1)
   shoulda-matchers
   sidekiq (~> 6.4)
   sidekiq-scheduler (~> 4.0)
-  sidekiq-unique-jobs (~> 7.1, >= 7.1.22)
+  sidekiq-unique-jobs (~> 7.1, >= 7.1.23)
   solargraph
-  tzinfo-data (~> 1.2021, >= 1.2021.5)
+  tzinfo-data (~> 1.2022)
   unsplash
   vcr (~> 6.1)
   vite_rails (~> 3.0.9)

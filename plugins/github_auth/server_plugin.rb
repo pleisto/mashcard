@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 settings do
-  field :client_id, default: ENV['GITHUB_KEY']
-  field :client_secret, type: :encrypted, default: ENV['GITHUB_SECRET']
+  field :client_id, default: ENV['GITHUB_KEY'], belongs_to: :global
+  field :client_secret, type: :encrypted, default: ENV['GITHUB_SECRET'], belongs_to: :global
 end
 
 on :oauth_provider do

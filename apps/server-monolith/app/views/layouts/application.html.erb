@@ -8,6 +8,7 @@
     <%= csp_meta_tag %>
     <%= action_cable_meta_tag %>
     <%= render partial: 'layouts/head' %>
+    <%= render_if_exists partial: 'layouts/head_extra' %>
     <meta name="renderer" content="webkit">
     <meta name="browsermode" content="application">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
@@ -18,7 +19,6 @@
       noscript { display: block; background: #fff2f0; color: #292929; z-index: 999; width: 100%; min-height: 3rem; position: fixed; top: 0; padding: 8px; } noscript .icon { vertical-align: -0.125em; color: #ff4d4f; }
     </style>
     <%= yield :stylesheet_head %>
-    <%# icon font  %>
     <%= render partial: 'layouts/context' %>
     <%= vite_client_tag %>
     <%= vite_react_refresh_tag %>
@@ -31,16 +31,6 @@
   <body style="overflow-y: hidden">
   <%= render partial: 'layouts/noscript' %>
   <%= yield %>
-  <% if Rails.env.production? %>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D93T65J3Z"></script>
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-8D93T65J3Z'<%= ", {
-    'user_id': '#{h(Current.user&.hashed_id)}'
-    }".html_safe if current_user.present? %>);
-  </script>
-  <% end %>
+  <%= render_if_exists partial: 'layouts/footer_extra' %>
   </body>
 </html>

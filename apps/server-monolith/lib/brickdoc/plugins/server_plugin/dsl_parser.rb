@@ -35,16 +35,6 @@ module Brickdoc
           BrickdocConfig.current.namespace("plugin.#{@id}", &block)
         end
 
-        # enabled rails engine
-        def as_rails_engine!
-          @is_rails_engine = true
-        end
-
-        # Check if the plugin is enabled rails engine
-        def rails_engine?
-          @is_rails_engine
-        end
-
         # Enable extended edition mode for the plugin extended edition means that the plugin
         # will have same directory structure as server-monolith. It is helpful for create a
         # new distribution of the Brickdoc, such as Brickdoc Enterprise Edition.
