@@ -883,20 +883,20 @@ en-US:
         properties: Properties
     embed_block:
       zoom_in:
-        tooltip: zoom in
+        tooltip: Zoom In
       zoom_out:
-        tooltip: zoom out
+        tooltip: Zoom Out
       align:
         left:
-          tooltip: align left
+          tooltip: Align Left
         center:
-          tooltip: align center
+          tooltip: Align Center
         right:
-          tooltip: align right
+          tooltip: Align Right
         full_width:
-          tooltip: align full width
+          tooltip: Align Full Width
       full_screen:
-        tooltip: Edit
+        tooltip: Full Screen
       edit:
         tooltip: Edit
       view_types:

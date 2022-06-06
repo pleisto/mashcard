@@ -33,28 +33,6 @@ const EmbedToolbarContainer = styled('div', {
   transition: 'opacity 100ms ease-in-out'
 })
 
-const ImageViewLayout = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-
-  variants: {
-    align: {
-      left: {
-        alignItems: 'flex-start'
-      },
-      center: {
-        alignItems: 'center'
-      },
-      right: {
-        alignItems: 'flex-end'
-      },
-      'full-width': {
-        alignItems: 'center'
-      }
-    }
-  }
-})
-
 const ImageViewContainer = styled('div', {
   display: 'inline-flex',
   maxWidth: '100%',
@@ -73,10 +51,37 @@ const ImageViewContainer = styled('div', {
   }
 })
 
+const ImageViewLayout = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+
+  variants: {
+    align: {
+      left: {
+        alignItems: 'flex-start'
+      },
+      center: {
+        alignItems: 'center'
+      },
+      right: {
+        alignItems: 'flex-end'
+      },
+      'full-width': {
+        alignItems: 'center',
+
+        [`& ${ImageViewContainer}`]: {
+          width: '100%'
+        }
+      }
+    }
+  }
+})
+
 const Img = styled('img', {
   borderRadius: '4px',
   maxWidth: '100%',
   minWidth: `${minWidth}px`,
+  width: '100%',
 
   variants: {
     loading: {
