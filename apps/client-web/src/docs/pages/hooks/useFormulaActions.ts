@@ -4,7 +4,7 @@ import {
   GetFormulasQueryVariables as Variables,
   GetFormulasQuery as Query
 } from '@/BrickdocGraphQL'
-import { BackendActions, BaseFunctionClause, FunctionContext, StringResult } from '@brickdoc/formula'
+import { AnyFunctionClause, BackendActions, createFunctionClause } from '@brickdoc/formula'
 import { useImperativeQuery } from '@/common/hooks'
 import { type DocMeta } from '@/docs/store/DocMeta'
 
@@ -17,7 +17,7 @@ interface useFormulaActionsResult {
     success: boolean
     data: Query['formulas']
   }>
-  generateFormulaFunctionClauses: (docMeta: DocMeta) => Array<BaseFunctionClause<any>>
+  generateFormulaFunctionClauses: (docMeta: DocMeta) => AnyFunctionClause[]
 }
 
 export function useFormulaActions(): useFormulaActionsResult {
@@ -44,7 +44,7 @@ export function useFormulaActions(): useFormulaActionsResult {
 
     generateFormulaFunctionClauses: docMeta => {
       return [
-        {
+        createFunctionClause({
           name: 'User',
           async: false,
           pure: false,
@@ -59,8 +59,8 @@ export function useFormulaActions(): useFormulaActionsResult {
           testCases: [],
           returns: 'string',
           chain: false,
-          reference: (ctx: FunctionContext): StringResult => ({ result: docMeta.personalDomain, type: 'string' })
-        }
+          reference: ctx => ({ result: docMeta.personalDomain, type: 'string' })
+        })
       ]
     }
   }

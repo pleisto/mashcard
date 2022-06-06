@@ -4,7 +4,7 @@ import { displayValue, dumpDisplayResultForDisplay, fetchResult, VariableData } 
 import { BlockContainer } from '../BlockContainer'
 import { useEditorPropsContext } from '../../../hooks/useEditorPropsContext'
 import { FormulaDisplay } from '../../ui/Formula'
-import { FormulaMenuProps, useFormula, FormulaMenu } from '.'
+import { FormulaMenuProps, useFormula, FormulaMenu, UseFormulaInput } from '.'
 
 export interface FormulaBlockProps extends NodeViewProps {}
 
@@ -26,26 +26,14 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
   const formulaContext = editorProps.formulaContext
   const formulaType = 'normal'
   const formulaName = ''
-  const {
-    variableT,
-    selected,
-    savedVariableT,
-    isDisableSave,
-    nameRef,
-    onSaveFormula,
-    updateEditor,
-    defaultName,
-    editorContent,
-    completion
-  } = useFormula({
-    meta: {
-      namespaceId: rootId,
-      variableId: formulaId,
-      richType: { type: formulaType },
-      name: formulaName
-    },
-    formulaContext
-  })
+  const meta: UseFormulaInput['meta'] = {
+    namespaceId: rootId,
+    variableId: formulaId,
+    richType: { type: formulaType },
+    name: formulaName
+  }
+  const { selected, savedVariableT, temporaryVariableT, isDisableSave, nameRef, onSaveFormula, content, completion } =
+    useFormula({ meta, formulaContext })
 
   const hasMenu = handleDefaultPopoverVisibleChange && handleDelete
 
@@ -53,7 +41,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
     <FormulaDisplay
       disablePopover={!hasMenu}
       selected={selected}
-      name={savedVariableT?.name}
+      name={savedVariableT?.meta.name}
       display={savedVariableT ? displayValue(fetchResult(savedVariableT), rootId) : undefined}
       displayData={savedVariableT ? dumpDisplayResultForDisplay(savedVariableT) : undefined}
       formulaType={formulaType}
@@ -66,16 +54,13 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
 
   return (
     <FormulaMenu
-      rootId={rootId}
-      formulaId={formulaId}
-      editorContent={editorContent}
+      meta={meta}
+      temporaryVariableT={temporaryVariableT}
+      content={content}
       defaultVisible={defaultVisible}
       onVisibleChange={handleDefaultPopoverVisibleChange}
-      updateEditor={updateEditor}
       isDisableSave={isDisableSave}
       onSaveFormula={onSaveFormula}
-      variableT={variableT}
-      defaultName={defaultName}
       nameRef={nameRef}
       completion={completion}
       handleDelete={handleDelete}
@@ -93,7 +78,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
   const handleDelete = React.useCallback(
     async (variableT?: VariableData): Promise<void> => {
       const position = getPos()
-      variableT && (await formulaContext?.removeVariable(variableT.namespaceId, variableT.variableId))
+      variableT && (await formulaContext?.removeVariable(variableT.meta.namespaceId, variableT.meta.variableId))
       if (!position || !node) return
       editor.commands.deleteRange({ from: position, to: position + node.nodeSize })
     },

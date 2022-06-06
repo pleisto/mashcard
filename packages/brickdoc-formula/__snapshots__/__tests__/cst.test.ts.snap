@@ -1,0 +1,688 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cst parenthesis "= ( 3 + 4 ) * 5 - 2" -> 33 1`] = `
+Object {
+  "children": Object {
+    "Equal": Array [
+      Object {
+        "endColumn": 1,
+        "endLine": 1,
+        "endOffset": 0,
+        "image": "=",
+        "startColumn": 1,
+        "startLine": 1,
+        "startOffset": 0,
+        "tokenType": Object {
+          "CATEGORIES": Array [
+            Object {
+              "CATEGORIES": Array [],
+              "PATTERN": /NOT_APPLICABLE/,
+              "categoryMatches": Array [
+                20,
+                21,
+                23,
+                24,
+              ],
+              "categoryMatchesMap": Object {
+                "20": true,
+                "21": true,
+                "23": true,
+                "24": true,
+              },
+              "isParent": true,
+              "name": "EqualCompareOperator",
+              "tokenTypeIdx": 3,
+            },
+          ],
+          "PATTERN": /=/,
+          "categoryMatches": Array [],
+          "categoryMatchesMap": Object {},
+          "isParent": false,
+          "name": "Equal",
+          "tokenTypeIdx": 20,
+        },
+        "tokenTypeIdx": 20,
+      },
+    ],
+    "expression": Array [
+      Object {
+        "children": Object {
+          "lhs": Array [
+            Object {
+              "children": Object {
+                "lhs": Array [
+                  Object {
+                    "children": Object {
+                      "lhs": Array [
+                        Object {
+                          "children": Object {
+                            "lhs": Array [
+                              Object {
+                                "children": Object {
+                                  "lhs": Array [
+                                    Object {
+                                      "children": Object {
+                                        "lhs": Array [
+                                          Object {
+                                            "children": Object {
+                                              "AdditionOperator": Array [
+                                                Object {
+                                                  "endColumn": 17,
+                                                  "endLine": 1,
+                                                  "endOffset": 16,
+                                                  "image": "-",
+                                                  "startColumn": 17,
+                                                  "startLine": 1,
+                                                  "startOffset": 16,
+                                                  "tokenType": Object {
+                                                    "CATEGORIES": Array [
+                                                      Object {
+                                                        "CATEGORIES": Array [],
+                                                        "PATTERN": /NOT_APPLICABLE/,
+                                                        "categoryMatches": Array [
+                                                          27,
+                                                          36,
+                                                        ],
+                                                        "categoryMatchesMap": Object {
+                                                          "27": true,
+                                                          "36": true,
+                                                        },
+                                                        "isParent": true,
+                                                        "name": "AdditionOperator",
+                                                        "tokenTypeIdx": 5,
+                                                      },
+                                                    ],
+                                                    "PATTERN": /-/,
+                                                    "categoryMatches": Array [],
+                                                    "categoryMatchesMap": Object {},
+                                                    "isParent": false,
+                                                    "name": "Minus",
+                                                    "tokenTypeIdx": 36,
+                                                  },
+                                                  "tokenTypeIdx": 36,
+                                                },
+                                              ],
+                                              "lhs": Array [
+                                                Object {
+                                                  "children": Object {
+                                                    "MultiplicationOperator": Array [
+                                                      Object {
+                                                        "endColumn": 13,
+                                                        "endLine": 1,
+                                                        "endOffset": 12,
+                                                        "image": "*",
+                                                        "startColumn": 13,
+                                                        "startLine": 1,
+                                                        "startOffset": 12,
+                                                        "tokenType": Object {
+                                                          "CATEGORIES": Array [
+                                                            Object {
+                                                              "CATEGORIES": Array [],
+                                                              "PATTERN": /NOT_APPLICABLE/,
+                                                              "categoryMatches": Array [
+                                                                29,
+                                                                37,
+                                                                38,
+                                                              ],
+                                                              "categoryMatchesMap": Object {
+                                                                "29": true,
+                                                                "37": true,
+                                                                "38": true,
+                                                              },
+                                                              "isParent": true,
+                                                              "name": "MultiplicationOperator",
+                                                              "tokenTypeIdx": 6,
+                                                            },
+                                                          ],
+                                                          "PATTERN": /\\\\\\*/,
+                                                          "categoryMatches": Array [],
+                                                          "categoryMatchesMap": Object {},
+                                                          "isParent": false,
+                                                          "name": "Multi",
+                                                          "tokenTypeIdx": 37,
+                                                        },
+                                                        "tokenTypeIdx": 37,
+                                                      },
+                                                    ],
+                                                    "lhs": Array [
+                                                      Object {
+                                                        "children": Object {
+                                                          "lhs": Array [
+                                                            Object {
+                                                              "children": Object {
+                                                                "lhs": Array [
+                                                                  Object {
+                                                                    "children": Object {
+                                                                      "lhs": Array [
+                                                                        Object {
+                                                                          "children": Object {
+                                                                            "lhs": Array [
+                                                                              Object {
+                                                                                "children": Object {
+                                                                                  "simpleAtomicExpression": Array [
+                                                                                    Object {
+                                                                                      "children": Object {
+                                                                                        "parenthesisExpression": Array [
+                                                                                          Object {
+                                                                                            "children": Object {
+                                                                                              "LParen": Array [
+                                                                                                Object {
+                                                                                                  "endColumn": 3,
+                                                                                                  "endLine": 1,
+                                                                                                  "endOffset": 2,
+                                                                                                  "image": "(",
+                                                                                                  "startColumn": 3,
+                                                                                                  "startLine": 1,
+                                                                                                  "startOffset": 2,
+                                                                                                  "tokenType": Object {
+                                                                                                    "CATEGORIES": Array [],
+                                                                                                    "PATTERN": /\\\\\\(/,
+                                                                                                    "categoryMatches": Array [],
+                                                                                                    "categoryMatchesMap": Object {},
+                                                                                                    "isParent": false,
+                                                                                                    "name": "LParen",
+                                                                                                    "tokenTypeIdx": 39,
+                                                                                                  },
+                                                                                                  "tokenTypeIdx": 39,
+                                                                                                },
+                                                                                              ],
+                                                                                              "RParen": Array [
+                                                                                                Object {
+                                                                                                  "endColumn": 11,
+                                                                                                  "endLine": 1,
+                                                                                                  "endOffset": 10,
+                                                                                                  "image": ")",
+                                                                                                  "startColumn": 11,
+                                                                                                  "startLine": 1,
+                                                                                                  "startOffset": 10,
+                                                                                                  "tokenType": Object {
+                                                                                                    "CATEGORIES": Array [],
+                                                                                                    "PATTERN": /\\\\\\)/,
+                                                                                                    "categoryMatches": Array [],
+                                                                                                    "categoryMatchesMap": Object {},
+                                                                                                    "isParent": false,
+                                                                                                    "name": "RParen",
+                                                                                                    "tokenTypeIdx": 40,
+                                                                                                  },
+                                                                                                  "tokenTypeIdx": 40,
+                                                                                                },
+                                                                                              ],
+                                                                                              "expression": Array [
+                                                                                                Object {
+                                                                                                  "children": Object {
+                                                                                                    "lhs": Array [
+                                                                                                      Object {
+                                                                                                        "children": Object {
+                                                                                                          "lhs": Array [
+                                                                                                            Object {
+                                                                                                              "children": Object {
+                                                                                                                "lhs": Array [
+                                                                                                                  Object {
+                                                                                                                    "children": Object {
+                                                                                                                      "lhs": Array [
+                                                                                                                        Object {
+                                                                                                                          "children": Object {
+                                                                                                                            "lhs": Array [
+                                                                                                                              Object {
+                                                                                                                                "children": Object {
+                                                                                                                                  "lhs": Array [
+                                                                                                                                    Object {
+                                                                                                                                      "children": Object {
+                                                                                                                                        "AdditionOperator": Array [
+                                                                                                                                          Object {
+                                                                                                                                            "endColumn": 7,
+                                                                                                                                            "endLine": 1,
+                                                                                                                                            "endOffset": 6,
+                                                                                                                                            "image": "+",
+                                                                                                                                            "startColumn": 7,
+                                                                                                                                            "startLine": 1,
+                                                                                                                                            "startOffset": 6,
+                                                                                                                                            "tokenType": Object {
+                                                                                                                                              "CATEGORIES": Array [
+                                                                                                                                                Object {
+                                                                                                                                                  "CATEGORIES": Array [],
+                                                                                                                                                  "PATTERN": /NOT_APPLICABLE/,
+                                                                                                                                                  "categoryMatches": Array [
+                                                                                                                                                    27,
+                                                                                                                                                    36,
+                                                                                                                                                  ],
+                                                                                                                                                  "categoryMatchesMap": Object {
+                                                                                                                                                    "27": true,
+                                                                                                                                                    "36": true,
+                                                                                                                                                  },
+                                                                                                                                                  "isParent": true,
+                                                                                                                                                  "name": "AdditionOperator",
+                                                                                                                                                  "tokenTypeIdx": 5,
+                                                                                                                                                },
+                                                                                                                                              ],
+                                                                                                                                              "PATTERN": /\\\\\\+/,
+                                                                                                                                              "categoryMatches": Array [],
+                                                                                                                                              "categoryMatchesMap": Object {},
+                                                                                                                                              "isParent": false,
+                                                                                                                                              "name": "Plus",
+                                                                                                                                              "tokenTypeIdx": 27,
+                                                                                                                                            },
+                                                                                                                                            "tokenTypeIdx": 27,
+                                                                                                                                          },
+                                                                                                                                        ],
+                                                                                                                                        "lhs": Array [
+                                                                                                                                          Object {
+                                                                                                                                            "children": Object {
+                                                                                                                                              "lhs": Array [
+                                                                                                                                                Object {
+                                                                                                                                                  "children": Object {
+                                                                                                                                                    "lhs": Array [
+                                                                                                                                                      Object {
+                                                                                                                                                        "children": Object {
+                                                                                                                                                          "lhs": Array [
+                                                                                                                                                            Object {
+                                                                                                                                                              "children": Object {
+                                                                                                                                                                "lhs": Array [
+                                                                                                                                                                  Object {
+                                                                                                                                                                    "children": Object {
+                                                                                                                                                                      "lhs": Array [
+                                                                                                                                                                        Object {
+                                                                                                                                                                          "children": Object {
+                                                                                                                                                                            "simpleAtomicExpression": Array [
+                                                                                                                                                                              Object {
+                                                                                                                                                                                "children": Object {
+                                                                                                                                                                                  "constantExpression": Array [
+                                                                                                                                                                                    Object {
+                                                                                                                                                                                      "children": Object {
+                                                                                                                                                                                        "NumberLiteralExpression": Array [
+                                                                                                                                                                                          Object {
+                                                                                                                                                                                            "children": Object {
+                                                                                                                                                                                              "NumberLiteral": Array [
+                                                                                                                                                                                                Object {
+                                                                                                                                                                                                  "endColumn": 5,
+                                                                                                                                                                                                  "endLine": 1,
+                                                                                                                                                                                                  "endOffset": 4,
+                                                                                                                                                                                                  "image": "3",
+                                                                                                                                                                                                  "startColumn": 5,
+                                                                                                                                                                                                  "startLine": 1,
+                                                                                                                                                                                                  "startOffset": 4,
+                                                                                                                                                                                                  "tokenType": Object {
+                                                                                                                                                                                                    "CATEGORIES": Array [],
+                                                                                                                                                                                                    "PATTERN": /\\[0-9\\]\\+/,
+                                                                                                                                                                                                    "categoryMatches": Array [],
+                                                                                                                                                                                                    "categoryMatchesMap": Object {},
+                                                                                                                                                                                                    "isParent": false,
+                                                                                                                                                                                                    "name": "NumberLiteral",
+                                                                                                                                                                                                    "tokenTypeIdx": 46,
+                                                                                                                                                                                                  },
+                                                                                                                                                                                                  "tokenTypeIdx": 46,
+                                                                                                                                                                                                },
+                                                                                                                                                                                              ],
+                                                                                                                                                                                            },
+                                                                                                                                                                                            "name": "NumberLiteralExpression",
+                                                                                                                                                                                          },
+                                                                                                                                                                                        ],
+                                                                                                                                                                                      },
+                                                                                                                                                                                      "name": "constantExpression",
+                                                                                                                                                                                    },
+                                                                                                                                                                                  ],
+                                                                                                                                                                                },
+                                                                                                                                                                                "name": "simpleAtomicExpression",
+                                                                                                                                                                              },
+                                                                                                                                                                            ],
+                                                                                                                                                                          },
+                                                                                                                                                                          "name": "atomicExpression",
+                                                                                                                                                                        },
+                                                                                                                                                                      ],
+                                                                                                                                                                    },
+                                                                                                                                                                    "name": "chainExpression",
+                                                                                                                                                                  },
+                                                                                                                                                                ],
+                                                                                                                                                              },
+                                                                                                                                                              "name": "rangeExpression",
+                                                                                                                                                            },
+                                                                                                                                                          ],
+                                                                                                                                                        },
+                                                                                                                                                        "name": "notExpression",
+                                                                                                                                                      },
+                                                                                                                                                    ],
+                                                                                                                                                  },
+                                                                                                                                                  "name": "accessExpression",
+                                                                                                                                                },
+                                                                                                                                              ],
+                                                                                                                                            },
+                                                                                                                                            "name": "multiplicationExpression",
+                                                                                                                                          },
+                                                                                                                                        ],
+                                                                                                                                        "rhs": Array [
+                                                                                                                                          Object {
+                                                                                                                                            "children": Object {
+                                                                                                                                              "lhs": Array [
+                                                                                                                                                Object {
+                                                                                                                                                  "children": Object {
+                                                                                                                                                    "lhs": Array [
+                                                                                                                                                      Object {
+                                                                                                                                                        "children": Object {
+                                                                                                                                                          "lhs": Array [
+                                                                                                                                                            Object {
+                                                                                                                                                              "children": Object {
+                                                                                                                                                                "lhs": Array [
+                                                                                                                                                                  Object {
+                                                                                                                                                                    "children": Object {
+                                                                                                                                                                      "lhs": Array [
+                                                                                                                                                                        Object {
+                                                                                                                                                                          "children": Object {
+                                                                                                                                                                            "simpleAtomicExpression": Array [
+                                                                                                                                                                              Object {
+                                                                                                                                                                                "children": Object {
+                                                                                                                                                                                  "constantExpression": Array [
+                                                                                                                                                                                    Object {
+                                                                                                                                                                                      "children": Object {
+                                                                                                                                                                                        "NumberLiteralExpression": Array [
+                                                                                                                                                                                          Object {
+                                                                                                                                                                                            "children": Object {
+                                                                                                                                                                                              "NumberLiteral": Array [
+                                                                                                                                                                                                Object {
+                                                                                                                                                                                                  "endColumn": 9,
+                                                                                                                                                                                                  "endLine": 1,
+                                                                                                                                                                                                  "endOffset": 8,
+                                                                                                                                                                                                  "image": "4",
+                                                                                                                                                                                                  "startColumn": 9,
+                                                                                                                                                                                                  "startLine": 1,
+                                                                                                                                                                                                  "startOffset": 8,
+                                                                                                                                                                                                  "tokenType": Object {
+                                                                                                                                                                                                    "CATEGORIES": Array [],
+                                                                                                                                                                                                    "PATTERN": /\\[0-9\\]\\+/,
+                                                                                                                                                                                                    "categoryMatches": Array [],
+                                                                                                                                                                                                    "categoryMatchesMap": Object {},
+                                                                                                                                                                                                    "isParent": false,
+                                                                                                                                                                                                    "name": "NumberLiteral",
+                                                                                                                                                                                                    "tokenTypeIdx": 46,
+                                                                                                                                                                                                  },
+                                                                                                                                                                                                  "tokenTypeIdx": 46,
+                                                                                                                                                                                                },
+                                                                                                                                                                                              ],
+                                                                                                                                                                                            },
+                                                                                                                                                                                            "name": "NumberLiteralExpression",
+                                                                                                                                                                                          },
+                                                                                                                                                                                        ],
+                                                                                                                                                                                      },
+                                                                                                                                                                                      "name": "constantExpression",
+                                                                                                                                                                                    },
+                                                                                                                                                                                  ],
+                                                                                                                                                                                },
+                                                                                                                                                                                "name": "simpleAtomicExpression",
+                                                                                                                                                                              },
+                                                                                                                                                                            ],
+                                                                                                                                                                          },
+                                                                                                                                                                          "name": "atomicExpression",
+                                                                                                                                                                        },
+                                                                                                                                                                      ],
+                                                                                                                                                                    },
+                                                                                                                                                                    "name": "chainExpression",
+                                                                                                                                                                  },
+                                                                                                                                                                ],
+                                                                                                                                                              },
+                                                                                                                                                              "name": "rangeExpression",
+                                                                                                                                                            },
+                                                                                                                                                          ],
+                                                                                                                                                        },
+                                                                                                                                                        "name": "notExpression",
+                                                                                                                                                      },
+                                                                                                                                                    ],
+                                                                                                                                                  },
+                                                                                                                                                  "name": "accessExpression",
+                                                                                                                                                },
+                                                                                                                                              ],
+                                                                                                                                            },
+                                                                                                                                            "name": "multiplicationExpression",
+                                                                                                                                          },
+                                                                                                                                        ],
+                                                                                                                                      },
+                                                                                                                                      "name": "additionExpression",
+                                                                                                                                    },
+                                                                                                                                  ],
+                                                                                                                                },
+                                                                                                                                "name": "concatExpression",
+                                                                                                                              },
+                                                                                                                            ],
+                                                                                                                          },
+                                                                                                                          "name": "inExpression",
+                                                                                                                        },
+                                                                                                                      ],
+                                                                                                                    },
+                                                                                                                    "name": "compareExpression",
+                                                                                                                  },
+                                                                                                                ],
+                                                                                                              },
+                                                                                                              "name": "equalCompareExpression",
+                                                                                                            },
+                                                                                                          ],
+                                                                                                        },
+                                                                                                        "name": "combineExpression",
+                                                                                                      },
+                                                                                                    ],
+                                                                                                  },
+                                                                                                  "name": "expression",
+                                                                                                },
+                                                                                              ],
+                                                                                            },
+                                                                                            "name": "parenthesisExpression",
+                                                                                          },
+                                                                                        ],
+                                                                                      },
+                                                                                      "name": "simpleAtomicExpression",
+                                                                                    },
+                                                                                  ],
+                                                                                },
+                                                                                "name": "atomicExpression",
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                          "name": "chainExpression",
+                                                                        },
+                                                                      ],
+                                                                    },
+                                                                    "name": "rangeExpression",
+                                                                  },
+                                                                ],
+                                                              },
+                                                              "name": "notExpression",
+                                                            },
+                                                          ],
+                                                        },
+                                                        "name": "accessExpression",
+                                                      },
+                                                    ],
+                                                    "rhs": Array [
+                                                      Object {
+                                                        "children": Object {
+                                                          "lhs": Array [
+                                                            Object {
+                                                              "children": Object {
+                                                                "lhs": Array [
+                                                                  Object {
+                                                                    "children": Object {
+                                                                      "lhs": Array [
+                                                                        Object {
+                                                                          "children": Object {
+                                                                            "lhs": Array [
+                                                                              Object {
+                                                                                "children": Object {
+                                                                                  "simpleAtomicExpression": Array [
+                                                                                    Object {
+                                                                                      "children": Object {
+                                                                                        "constantExpression": Array [
+                                                                                          Object {
+                                                                                            "children": Object {
+                                                                                              "NumberLiteralExpression": Array [
+                                                                                                Object {
+                                                                                                  "children": Object {
+                                                                                                    "NumberLiteral": Array [
+                                                                                                      Object {
+                                                                                                        "endColumn": 15,
+                                                                                                        "endLine": 1,
+                                                                                                        "endOffset": 14,
+                                                                                                        "image": "5",
+                                                                                                        "startColumn": 15,
+                                                                                                        "startLine": 1,
+                                                                                                        "startOffset": 14,
+                                                                                                        "tokenType": Object {
+                                                                                                          "CATEGORIES": Array [],
+                                                                                                          "PATTERN": /\\[0-9\\]\\+/,
+                                                                                                          "categoryMatches": Array [],
+                                                                                                          "categoryMatchesMap": Object {},
+                                                                                                          "isParent": false,
+                                                                                                          "name": "NumberLiteral",
+                                                                                                          "tokenTypeIdx": 46,
+                                                                                                        },
+                                                                                                        "tokenTypeIdx": 46,
+                                                                                                      },
+                                                                                                    ],
+                                                                                                  },
+                                                                                                  "name": "NumberLiteralExpression",
+                                                                                                },
+                                                                                              ],
+                                                                                            },
+                                                                                            "name": "constantExpression",
+                                                                                          },
+                                                                                        ],
+                                                                                      },
+                                                                                      "name": "simpleAtomicExpression",
+                                                                                    },
+                                                                                  ],
+                                                                                },
+                                                                                "name": "atomicExpression",
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                          "name": "chainExpression",
+                                                                        },
+                                                                      ],
+                                                                    },
+                                                                    "name": "rangeExpression",
+                                                                  },
+                                                                ],
+                                                              },
+                                                              "name": "notExpression",
+                                                            },
+                                                          ],
+                                                        },
+                                                        "name": "accessExpression",
+                                                      },
+                                                    ],
+                                                  },
+                                                  "name": "multiplicationExpression",
+                                                },
+                                              ],
+                                              "rhs": Array [
+                                                Object {
+                                                  "children": Object {
+                                                    "lhs": Array [
+                                                      Object {
+                                                        "children": Object {
+                                                          "lhs": Array [
+                                                            Object {
+                                                              "children": Object {
+                                                                "lhs": Array [
+                                                                  Object {
+                                                                    "children": Object {
+                                                                      "lhs": Array [
+                                                                        Object {
+                                                                          "children": Object {
+                                                                            "lhs": Array [
+                                                                              Object {
+                                                                                "children": Object {
+                                                                                  "simpleAtomicExpression": Array [
+                                                                                    Object {
+                                                                                      "children": Object {
+                                                                                        "constantExpression": Array [
+                                                                                          Object {
+                                                                                            "children": Object {
+                                                                                              "NumberLiteralExpression": Array [
+                                                                                                Object {
+                                                                                                  "children": Object {
+                                                                                                    "NumberLiteral": Array [
+                                                                                                      Object {
+                                                                                                        "endColumn": 19,
+                                                                                                        "endLine": 1,
+                                                                                                        "endOffset": 18,
+                                                                                                        "image": "2",
+                                                                                                        "startColumn": 19,
+                                                                                                        "startLine": 1,
+                                                                                                        "startOffset": 18,
+                                                                                                        "tokenType": Object {
+                                                                                                          "CATEGORIES": Array [],
+                                                                                                          "PATTERN": /\\[0-9\\]\\+/,
+                                                                                                          "categoryMatches": Array [],
+                                                                                                          "categoryMatchesMap": Object {},
+                                                                                                          "isParent": false,
+                                                                                                          "name": "NumberLiteral",
+                                                                                                          "tokenTypeIdx": 46,
+                                                                                                        },
+                                                                                                        "tokenTypeIdx": 46,
+                                                                                                      },
+                                                                                                    ],
+                                                                                                  },
+                                                                                                  "name": "NumberLiteralExpression",
+                                                                                                },
+                                                                                              ],
+                                                                                            },
+                                                                                            "name": "constantExpression",
+                                                                                          },
+                                                                                        ],
+                                                                                      },
+                                                                                      "name": "simpleAtomicExpression",
+                                                                                    },
+                                                                                  ],
+                                                                                },
+                                                                                "name": "atomicExpression",
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                          "name": "chainExpression",
+                                                                        },
+                                                                      ],
+                                                                    },
+                                                                    "name": "rangeExpression",
+                                                                  },
+                                                                ],
+                                                              },
+                                                              "name": "notExpression",
+                                                            },
+                                                          ],
+                                                        },
+                                                        "name": "accessExpression",
+                                                      },
+                                                    ],
+                                                  },
+                                                  "name": "multiplicationExpression",
+                                                },
+                                              ],
+                                            },
+                                            "name": "additionExpression",
+                                          },
+                                        ],
+                                      },
+                                      "name": "concatExpression",
+                                    },
+                                  ],
+                                },
+                                "name": "inExpression",
+                              },
+                            ],
+                          },
+                          "name": "compareExpression",
+                        },
+                      ],
+                    },
+                    "name": "equalCompareExpression",
+                  },
+                ],
+              },
+              "name": "combineExpression",
+            },
+          ],
+        },
+        "name": "expression",
+      },
+    ],
+  },
+  "name": "startExpression",
+}
+`;

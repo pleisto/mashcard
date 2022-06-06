@@ -1,71 +1,58 @@
 /* eslint-disable no-nested-ternary */
-import { FC, useMemo, useCallback } from 'react'
+import { FC, useMemo } from 'react'
 import { Popover } from '@brickdoc/design-system'
-import { FormulaEditor, EditorContentType } from '../../../editors/formulaEditor'
-import { BrickdocEventBus, FormulaEditorSaveEventTrigger } from '@brickdoc/schema'
+import { FormulaEditor } from '../../../editors/formulaEditor'
 import { AutocompleteList, FormulaResult } from '../../ui/Formula'
 import { VariableData } from '@brickdoc/formula'
-import { JSONContent } from '@tiptap/core'
-import { CompletionType } from './useFormula'
+import { CompletionType, UseFormulaInput, UseFormulaOutput } from './useFormula'
 import * as Root from '../../ui/Formula/Formula.style'
 
 export interface FormulaBlockRenderProps {
-  formulaId: string
-  rootId: string
-  saveOnBlur: boolean
+  meta: UseFormulaInput['meta']
+  onSaveFormula: UseFormulaOutput['onSaveFormula']
+  content: UseFormulaOutput['content']
   width?: number
   minHeight?: number
 
-  variableT: VariableData | undefined
-  editorContent: EditorContentType
-  updateEditor: (content: JSONContent, position: number) => void
+  temporaryVariableT: VariableData | undefined
   completion: CompletionType
 }
 
 export const FormulaBlockRender: FC<FormulaBlockRenderProps> = ({
-  formulaId,
-  rootId,
-  saveOnBlur,
+  meta: { namespaceId: rootId, variableId: formulaId },
+  onSaveFormula,
   width,
   minHeight,
-  variableT,
-  editorContent,
-  completion,
-  updateEditor
+  temporaryVariableT,
+  content,
+  completion
 }) => {
   const formulaResult = useMemo(
     () => (
       <Root.BrickdocFormulaMenu>
-        <FormulaResult variableT={variableT} pageId={rootId} />
+        <FormulaResult variableT={temporaryVariableT} pageId={rootId} />
         <AutocompleteList rootId={rootId} formulaId={formulaId} completion={completion} />
       </Root.BrickdocFormulaMenu>
     ),
-    [completion, formulaId, rootId, variableT]
+    [completion, formulaId, rootId, temporaryVariableT]
   )
-
-  const onEditorBlur = useCallback((): void => {
-    if (saveOnBlur) {
-      BrickdocEventBus.dispatch(FormulaEditorSaveEventTrigger({ formulaId, rootId }))
-    }
-  }, [formulaId, rootId, saveOnBlur])
 
   const editor = useMemo(
     () => (
       <FormulaEditor
-        editorContent={editorContent}
-        updateEditor={updateEditor}
+        content={content}
         editable={true}
-        onBlur={onEditorBlur}
+        onBlur={onSaveFormula}
         formulaId={formulaId}
         rootId={rootId}
         width={width}
         minHeight={minHeight}
       />
     ),
-    [editorContent, formulaId, onEditorBlur, rootId, updateEditor, width, minHeight]
+    [content, formulaId, onSaveFormula, rootId, width, minHeight]
   )
 
-  const visible = !!(variableT && variableT.kind !== 'literal')
+  const visible = !!(temporaryVariableT && temporaryVariableT.variableParseResult.kind !== 'literal')
 
   return (
     <Popover

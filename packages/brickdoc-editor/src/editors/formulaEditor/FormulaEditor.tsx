@@ -1,21 +1,14 @@
 import React from 'react'
 import { useEditor, EditorContent, JSONContent, EditorEvents } from '@tiptap/react'
 import { devLog } from '@brickdoc/design-system'
-import { BrickdocEventBus, FormulaEditorReplaceRootTrigger } from '@brickdoc/schema'
+import { BrickdocEventBus, FormulaEditorReplaceRootTrigger, FormulaEditorUpdateTrigger } from '@brickdoc/schema'
 import { Base } from '../../extensions/base'
-import {  BrickdocFomulaEditor }from './style'
-
-export interface EditorContentType {
-  content: JSONContent | undefined
-  input: string
-  position: number
-}
+import { BrickdocFomulaEditor } from './style'
 
 export interface FormulaEditorProps {
-  editorContent: EditorContentType
+  content: JSONContent | undefined
   editable: boolean
   onBlur?: () => void
-  updateEditor?: (content: JSONContent, position: number) => void
   rootId?: string
   formulaId?: string
   width?: number
@@ -27,8 +20,7 @@ const findNearestWord = (content: string, targetIndex: number): string | undefin
 
 export const FormulaEditor: React.FC<FormulaEditorProps> = ({
   editable,
-  editorContent,
-  updateEditor,
+  content,
   onBlur,
   rootId,
   formulaId,
@@ -38,7 +30,7 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
   const editor = useEditor({
     editable,
     autofocus: 'end',
-    content: editorContent.content,
+    content,
     extensions: [
       Base.configure({
         document: true,
@@ -86,9 +78,9 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
         }
       }
 
-      if (rootId && formulaId && updateEditor) {
-        const jsonContent = editor.getJSON()
-        updateEditor(jsonContent, editorPosition)
+      if (rootId && formulaId) {
+        const content = editor.getJSON()
+        BrickdocEventBus.dispatch(FormulaEditorUpdateTrigger({ formulaId, rootId, content, position: editorPosition }))
       }
     }
   })

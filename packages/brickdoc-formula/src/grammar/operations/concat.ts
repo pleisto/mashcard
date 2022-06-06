@@ -10,5 +10,16 @@ export const concatOperator: OperatorType = {
     const rhsResult = rhs!.result as string
 
     return { result: lhsResult.concat(rhsResult), type: 'string' }
+  },
+  testCases: {
+    successTestCases: [
+      { definition: '= "a" & "b"', result: 'ab' },
+      { definition: '= "a" & "b" & "c"', result: 'abc' },
+      { definition: '= "" & ""', result: '' }
+    ],
+    errorTestCases: [
+      { definition: '= 1 & "foo"', errorType: 'type', errorMessage: 'Expected string but got number' },
+      { definition: '= "foo" & 1', errorType: 'type', errorMessage: 'Expected string but got number' }
+    ]
   }
 }

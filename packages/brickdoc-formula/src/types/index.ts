@@ -1,11 +1,10 @@
+import { RequireField } from '@brickdoc/active-support'
 import { EventType } from '@brickdoc/schema'
 import { CstNode } from 'chevrotain'
 import {
   ButtonType,
-  InputType,
   ColumnType,
   SpreadsheetType,
-  SelectType,
   SwitchType,
   BlockType,
   RowType,
@@ -14,37 +13,34 @@ import {
 } from '../controls'
 import { PositionFragment } from '../grammar'
 
-type FormulaBasicType = 'number' | 'string' | 'boolean' | 'null'
-type FormulaObjectType = 'Date' | 'Block' | 'Blank' | 'Record' | 'Array' | 'Error'
+const FORMULA_BASIC_TYPES = ['number', 'string', 'boolean', 'null'] as const
+const FORMULA_OBJECT_TYPES = ['Date', 'Block', 'Blank', 'Record', 'Array', 'Error'] as const
+const FORMULA_SPREADSHEET_TYPES = ['Spreadsheet', 'Row', 'Cell', 'Column', 'Range'] as const
+const FORMULA_COMPLEX_TYPES = ['Cst', 'Reference', 'Function', 'Predicate'] as const
+const FORMULA_CONTROL_TYPES = ['Button', 'Switch'] as const
+const FORMULA_OTHER_TYPES = ['literal', 'Pending', 'Waiting', 'NoPersist'] as const
 
-type FormulaSpreadsheetType = 'Spreadsheet' | 'Row' | 'Cell' | 'Column' | 'Range'
-type FormulaComplexType = 'Cst' | 'Reference' | 'Function' | 'Predicate'
+export const FORMULA_USED_TYPES = [
+  ...FORMULA_BASIC_TYPES,
+  ...FORMULA_OBJECT_TYPES,
+  ...FORMULA_SPREADSHEET_TYPES,
+  ...FORMULA_COMPLEX_TYPES,
+  ...FORMULA_CONTROL_TYPES,
+  ...FORMULA_OTHER_TYPES
+] as const
+const FORMULA_TYPES = [...FORMULA_USED_TYPES, 'any', 'void'] as const
 
-export type FormulaControlType = 'Button' | 'Switch' | 'Select' | 'Input' | 'Radio' | 'Rate' | 'Slider'
-
-type UnusedFormulaControlType = 'Radio' | 'Rate' | 'Slider'
-
-export type FormulaType =
-  | FormulaBasicType
-  | FormulaObjectType
-  | FormulaControlType
-  | FormulaComplexType
-  | FormulaSpreadsheetType
-  | 'literal'
-  | 'any'
-  | 'void'
-  | 'Pending'
-  | 'Waiting'
-  | 'NoPersist'
+type FormulaComplexType = typeof FORMULA_COMPLEX_TYPES[number]
+export type FormulaControlType = typeof FORMULA_CONTROL_TYPES[number]
+export type FormulaType = typeof FORMULA_TYPES[number]
+type UsedFormulaType = typeof FORMULA_USED_TYPES[number]
 
 export type PersistFormulaType = Exclude<
   FormulaType,
   'any' | 'void' | 'Blank' | 'Range' | FormulaControlType | FormulaComplexType
 >
 
-type UsedFormulaType = Exclude<FormulaType, 'any' | 'void' | UnusedFormulaControlType>
-
-export type FormulaCheckType = FormulaType | [FormulaType, ...FormulaType[]]
+export type FormulaCheckType = FormulaType | readonly [FormulaType, ...FormulaType[]]
 
 type FormulaCodeFragmentType = 'TRUE' | 'FALSE' | 'Function' | 'Variable' | 'FunctionName' | 'LogicColumn' | 'LogicRow'
 
@@ -279,19 +275,9 @@ export interface ButtonResult extends BaseResult {
   result: ButtonType
 }
 
-export interface InputResult extends BaseResult {
-  type: 'Input'
-  result: InputType
-}
-
 export interface SwitchResult extends BaseResult {
   type: 'Switch'
   result: SwitchType
-}
-
-export interface SelectResult extends BaseResult {
-  type: 'Select'
-  result: SelectType
 }
 
 export interface PendingResult extends BaseResult {
@@ -326,7 +312,7 @@ interface SelfReference extends BaseReference {
   kind: 'self'
 }
 
-type AnyResult =
+export type AnyResult =
   | NumberResult
   | BooleanResult
   | StringResult
@@ -345,8 +331,6 @@ type AnyResult =
   | PredicateResult
   | ButtonResult
   | SwitchResult
-  | SelectResult
-  | InputResult
   | ErrorResult
   | FunctionResult
   | CstResult
@@ -360,6 +344,8 @@ export type AnyTypeResult = UsedFormulaType extends AnyResult['type'] ? AnyResul
 export type TypedResult<T extends FormulaType> = Extract<AnyTypeResult, { type: T }>
 
 export type AnyFunctionResult<T extends FormulaType> = TypedResult<T> | ErrorResult
+
+export type FormulaResult<T extends FormulaType> = TypedResult<T>['result']
 
 export type FormulaSourceType = 'normal' | 'spreadsheet'
 export interface BaseFormula {
@@ -382,10 +368,10 @@ export type Formula = BaseFormula & {
   definition: Definition
 }
 
-export interface Argument {
+export interface Argument<T extends UsedFormulaType = UsedFormulaType> {
   readonly name: string
-  readonly type: FormulaType
-  readonly default?: AnyTypeResult
+  readonly type: T | readonly [T, ...T[]]
+  readonly default?: TypedResult<T>
   readonly spread?: boolean
 }
 
@@ -426,12 +412,13 @@ interface BaseCompletion {
   readonly value: any
   readonly preview: any
   readonly codeFragments: CodeFragment[]
+  readonly namespaceId?: NamespaceId
 }
 export interface FunctionCompletion extends BaseCompletion {
   readonly kind: 'function'
   readonly namespace: FunctionGroup
   readonly value: `${FunctionKey}()`
-  readonly preview: FunctionClause<FormulaType>
+  readonly preview: AnyFunctionClause
 }
 
 export interface VariableCompletion extends BaseCompletion {
@@ -507,21 +494,17 @@ export interface ContextInterface {
   listVariables: (namespaceId: NamespaceId) => VariableInterface[]
   findVariableById: (namespaceId: NamespaceId, variableId: VariableId) => VariableInterface | undefined
   findVariableByName: (namespaceId: NamespaceId, name: string) => VariableInterface | undefined
-  commitVariable: ({ variable }: { variable: VariableInterface }) => void
+  commitVariable: ({ variable }: { variable: VariableInterface }) => Promise<void>
   removeVariable: (namespaceId: NamespaceId, variableId: VariableId) => Promise<void>
-  findFunctionClause: (group: FunctionGroup, name: FunctionNameType) => FunctionClause<FormulaType> | undefined
+  findFunctionClause: (group: FunctionGroup, name: FunctionNameType) => AnyFunctionClauseWithKeyAndExample | undefined
   resetFormula: VoidFunction
   cleanup: VoidFunction
-}
-
-interface TestCase {
-  readonly input: any[]
-  readonly output: any
 }
 
 interface Example<T extends FormulaType> {
   readonly input: Definition
   readonly output: AnyFunctionResult<T> | null
+  readonly codeFragments?: CodeFragment[]
 }
 
 export interface BaseFunctionContext {
@@ -538,39 +521,71 @@ export interface InterpretContext {
   readonly arguments: AnyTypeResult[]
 }
 
-type FunctionReference<T extends FormulaType> =
-  | {
-      readonly reference: (ctx: FunctionContext, ...args: any[]) => Promise<AnyFunctionResult<T>>
-      readonly async: true
-      readonly chain: false
-    }
-  | {
-      readonly reference: (ctx: FunctionContext, ...args: any[]) => AnyFunctionResult<T>
-      readonly async: false
-      readonly chain: false
-    }
-  | {
-      readonly reference: (ctx: FunctionContext, chainResult: any, ...args: any[]) => Promise<AnyFunctionResult<T>>
-      readonly async: true
-      readonly chain: true
-    }
-  | {
-      readonly reference: (ctx: FunctionContext, chainResult: any, ...args: any[]) => AnyFunctionResult<T>
-      readonly async: false
-      readonly chain: true
-    }
+type FormulaArgumentsType<Chain extends boolean> = [
+  ...args: Chain extends true ? [firstArgs: Argument, ...args: Argument[]] : [...args: Argument[]]
+]
 
-type FunctionChain =
-  | {
-      readonly chain: false
-    }
-  | {
-      readonly chain: true
-      readonly args: [Argument, ...Argument[]]
-    }
+type FlattenType<
+  T extends UsedFormulaType | readonly UsedFormulaType[],
+  R extends UsedFormulaType = never
+> = T extends UsedFormulaType
+  ? T
+  : T extends [infer First, ...infer Other]
+  ? Other extends UsedFormulaType[]
+    ? First extends UsedFormulaType
+      ? FlattenType<Other, R | First>
+      : never
+    : never
+  : R
 
-export type BaseFunctionClause<T extends FormulaType> = {
+type ArgumentArrayToResultTypeArray<
+  Arguments extends Argument[],
+  AcceptError extends boolean,
+  R extends Array<TypedResult<any>> = []
+> = Arguments extends [infer First, ...infer Other]
+  ? Other extends Argument[]
+    ? First extends Argument
+      ? ArgumentArrayToResultTypeArray<
+          Other,
+          AcceptError,
+          [
+            ...R,
+            TypedResult<AcceptError extends true ? FlattenType<First['type']> | 'Error' : FlattenType<First['type']>>
+          ]
+        >
+      : never
+    : never
+  : R
+
+type ArgumentArrayToDataTypeArray<
+  Arguments extends Argument[],
+  AcceptError extends boolean,
+  R extends Array<FormulaResult<any>> = []
+> = Arguments extends [infer First, ...infer Other]
+  ? Other extends Argument[]
+    ? First extends Argument
+      ? ArgumentArrayToDataTypeArray<
+          Other,
+          AcceptError,
+          [
+            ...R,
+            FormulaResult<AcceptError extends true ? FlattenType<First['type']> | 'Error' : FlattenType<First['type']>>
+          ]
+        >
+      : never
+    : never
+  : R
+
+interface TestCase<T extends FormulaType, Input extends Array<FormulaResult<any>>> {
+  readonly input: Input
+  readonly output: AnyFunctionResult<T>
+}
+
+export interface AnyFunctionClause<T extends UsedFormulaType = any> {
   readonly name: FunctionNameType
+  readonly key?: FunctionKey
+  readonly async: boolean
+  readonly chain: boolean
   readonly pure: boolean
   readonly effect: boolean
   readonly persist: boolean
@@ -580,27 +595,59 @@ export type BaseFunctionClause<T extends FormulaType> = {
   readonly description: string
   readonly group: FunctionGroup
   readonly examples: [Example<T>, ...Array<Example<T>>]
+  readonly returns: T | readonly [T, ...T[]]
   readonly args: Argument[]
-  readonly returns: T
-  readonly testCases: TestCase[]
-} & FunctionReference<T> &
-  FunctionChain
-
-export type BaseFunctionClauseWithKey<T extends FormulaType> = BaseFunctionClause<T> & {
-  readonly key: FunctionKey
+  readonly testCases: Array<{
+    readonly input: Array<FormulaResult<any>>
+    readonly output: AnyFunctionResult<T>
+  }>
+  readonly reference: (ctx: FunctionContext, ...args: any[]) => Promise<AnyFunctionResult<T>> | AnyFunctionResult<T>
 }
 
-export interface ExampleWithCodeFragments<T extends FormulaType> extends Example<T> {
-  readonly codeFragments: CodeFragment[]
+export interface FunctionClause<
+  T extends UsedFormulaType,
+  Async extends boolean,
+  Chain extends boolean,
+  AcceptError extends boolean,
+  Arguments extends FormulaArgumentsType<Chain> = FormulaArgumentsType<Chain>
+> {
+  readonly name: FunctionNameType
+  readonly key?: FunctionKey
+  readonly async: Async
+  readonly chain: Chain
+  readonly pure: boolean
+  readonly effect: boolean
+  readonly persist: boolean
+  readonly feature?: Feature
+  readonly lazy: boolean
+  readonly acceptError: AcceptError
+  readonly description: string
+  readonly group: FunctionGroup
+  readonly examples: [Example<T>, ...Array<Example<T>>]
+  readonly returns: T | readonly [T, ...T[]]
+  readonly args: Arguments
+  readonly testCases: Array<TestCase<T, ArgumentArrayToDataTypeArray<Arguments, AcceptError>>>
+  readonly reference: (
+    ctx: FunctionContext,
+    ...args: ArgumentArrayToResultTypeArray<Arguments, AcceptError>
+  ) => Async extends true ? Promise<AnyFunctionResult<T>> : AnyFunctionResult<T>
 }
 
-export type FunctionClause<T extends FormulaType> = Omit<BaseFunctionClauseWithKey<T>, 'examples'> & {
-  readonly examples: [ExampleWithCodeFragments<T>, ...Array<ExampleWithCodeFragments<T>>]
-}
+export const createFunctionClause = <
+  Return extends UsedFormulaType | readonly [UsedFormulaType, ...UsedFormulaType[]],
+  Async extends boolean,
+  Chain extends boolean,
+  AcceptError extends boolean,
+  Arguments extends FormulaArgumentsType<Chain>,
+  RealReturn extends UsedFormulaType = FlattenType<Return>
+>(
+  t: FunctionClause<RealReturn, Async, Chain, AcceptError, Arguments>
+): FunctionClause<RealReturn, Async, Chain, AcceptError, Arguments> => t
+
+export type AnyFunctionClauseWithKeyAndExample = RequireField<AnyFunctionClause, 'key'>
 
 export interface BaseCodeFragment {
   readonly code: CodeFragmentCodes
-  readonly valuePrefix?: string
   readonly display: string
   readonly hide: boolean
   readonly type: FormulaType
@@ -640,7 +687,7 @@ export type CodeFragmentStep = ({
 
 export interface CodeFragmentResult {
   readonly codeFragments: CodeFragment[]
-  readonly type: FormulaType
+  readonly type: FormulaCheckType
   readonly image: string
 }
 
@@ -663,12 +710,12 @@ export interface NameDependencyWithKind extends NameDependency {
 interface BaseVariableValue {
   readonly success: boolean
   readonly result: AnyTypeResult
-  readonly runtimeEventDependencies?: EventDependency[]
+  readonly runtimeEventDependencies?: Array<EventDependency<FormulaEventPayload<any>>>
 }
 
 interface SuccessVariableValue extends BaseVariableValue {
   readonly success: true
-  readonly runtimeEventDependencies: EventDependency[]
+  readonly runtimeEventDependencies: Array<EventDependency<FormulaEventPayload<any>>>
   readonly result: AnyTypeResult
 }
 
@@ -711,39 +758,59 @@ export interface EventScope {
   columns?: string[]
 }
 
-export interface EventDependency {
-  readonly kind: 'SpreadsheetName' | 'ColumnName' | 'Spreadsheet' | 'Column' | 'Row' | 'Cell'
-  readonly event: EventType<any, any>
+export interface FormulaEventPayload<T> {
+  readonly key: string
+  readonly scope: EventScope | null
+  readonly id: string
+  readonly namespaceId: string
+  readonly meta: T
+}
+
+export interface EventDependency<T extends FormulaEventPayload<any>> {
+  readonly kind:
+    | 'SpreadsheetName'
+    | 'ColumnName'
+    | 'Spreadsheet'
+    | 'Column'
+    | 'Row'
+    | 'Cell'
+    | 'Variable'
+    | 'NameChange'
+    | 'NameRemove'
+    | 'BlockRenameOrDelete'
+  readonly event: EventType<T>
   readonly eventId: string
   readonly scope: EventScope
   readonly key: string
-  readonly definitionHandler?: (deps: EventDependency, variable: VariableInterface, payload: any) => string | undefined
-  readonly cleanup?: EventDependency
+  readonly skipIf?: (variable: VariableInterface, payload: T) => boolean
+  readonly definitionHandler?: (deps: EventDependency<T>, variable: VariableInterface, payload: T) => string | undefined
+  readonly cleanup?: EventDependency<FormulaEventPayload<any>>
 }
 
 export type VariableTask = AsyncVariableTask | SyncVariableTask
-export interface VariableData {
+export interface VariableParseResult {
   definition: Definition
-  isAsync: boolean
-  isEffect: boolean
-  isPure: boolean
-  isPersist: boolean
-  task: VariableTask
+  position: number
+  async: boolean
+  effect: boolean
+  pure: boolean
+  persist: boolean
   kind: VariableKind
-  richType: VariableRichType
-  name: VariableName
   version: number
-  namespaceId: NamespaceId
-  variableId: VariableId
   valid: boolean
-  cst?: CstNode
+  cst: CstNode | undefined
   codeFragments: CodeFragment[]
   flattenVariableDependencies: VariableDependency[]
   nameDependencies: NameDependency[]
   variableDependencies: VariableDependency[]
   blockDependencies: NamespaceId[]
-  eventDependencies: EventDependency[]
-  functionDependencies: Array<FunctionClause<FormulaType>>
+  eventDependencies: Array<EventDependency<FormulaEventPayload<any>>>
+  functionDependencies: AnyFunctionClauseWithKeyAndExample[]
+}
+export interface VariableData {
+  meta: Pick<VariableMetadata, 'namespaceId' | 'variableId' | 'name' | 'richType'>
+  variableParseResult: VariableParseResult
+  task: VariableTask
 }
 
 export type VariableRichType = {
@@ -768,13 +835,13 @@ export interface VariableMetadata {
   readonly variableId: VariableId
   readonly input: string
   readonly position: number
-  readonly name: VariableName
+  name: VariableName
   readonly richType: VariableRichType
 }
 
 export interface VariableInterface {
   t: VariableData
-  savedT: VariableData | undefined
+  isReadyT: boolean
   isNew: boolean
   currentUUID: string
   formulaContext: ContextInterface
@@ -783,20 +850,12 @@ export interface VariableInterface {
   cleanup: (hard: boolean) => void
   trackDependency: VoidFunction
   trackDirty: VoidFunction
-  save: VoidFunction
+  save: () => Promise<void>
   nameDependency: () => NameDependencyWithKind
   namespaceName: (pageId: NamespaceId) => string
-  updateDefinition: (definition: Definition) => void
+  updateDefinition: (definition: Definition) => Promise<void>
   meta: () => VariableMetadata
-  onUpdate: ({
-    skipPersist,
-    tNotMatched,
-    savedTNotMatched
-  }: {
-    skipPersist?: boolean
-    tNotMatched?: boolean
-    savedTNotMatched?: boolean
-  }) => void
+  onUpdate: ({ skipPersist }: { skipPersist?: boolean }) => void
 }
 
 export interface BackendActions {

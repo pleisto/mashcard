@@ -15,7 +15,7 @@ import {
 } from '../types'
 import { codeFragments2definition, CodeFragmentVisitor, FormulaInterpreter } from '../grammar'
 import { CellClass } from '.'
-import { SpreadsheetReloadViaId } from '../events'
+import { SpreadsheetReloadViaId, SpreadsheetUpdateNameViaIdPayload } from '../events'
 
 export class ColumnClass implements ColumnType {
   columnId: ColumnId
@@ -108,7 +108,7 @@ export class ColumnClass implements ColumnType {
     })
   }
 
-  eventDependency({ rowKey }: getEventDependencyInput): EventDependency {
+  eventDependency({ rowKey }: getEventDependencyInput): EventDependency<SpreadsheetUpdateNameViaIdPayload> {
     if (rowKey) {
       return {
         kind: 'Cell',
@@ -125,12 +125,12 @@ export class ColumnClass implements ColumnType {
         if (this.logic) return
         const newColumn = this.spreadsheet.listColumns().find(c => c.columnId === this.columnId)
         if (!newColumn) return
-        const newCodeFragments = variable.t.codeFragments.map(c => {
+        const newCodeFragments = variable.t.variableParseResult.codeFragments.map(c => {
           if (c.code !== 'Column') return c
           if (c.attrs.id !== this.columnId) return c
           return { ...c, attrs: { ...c.attrs, name: newColumn.name } }
         })
-        return codeFragments2definition(newCodeFragments, variable.t.namespaceId)
+        return codeFragments2definition(newCodeFragments, variable.t.meta.namespaceId)
       }
     }
   }

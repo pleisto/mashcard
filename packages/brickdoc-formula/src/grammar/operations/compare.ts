@@ -22,5 +22,14 @@ export const compareOperator: OperatorType = {
     } else {
       throw new Error(`Unexpected operator ${operator.image}`)
     }
+  },
+  testCases: {
+    successTestCases: [
+      { definition: '=1 > 2', result: false },
+      { definition: '=1 < 2', result: true },
+      { definition: '=1 >= 2', result: false },
+      { definition: '=1 <= 2', result: true },
+      { definition: '= 1 * 3 > 1 + 1', result: true }
+    ]
   }
 }

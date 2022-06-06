@@ -60,5 +60,26 @@ export const accessOperator: OperatorType = {
   rhsType: 'any',
   interpret: async ({ lhs, rhs, cst, interpreter }) => {
     return await accessAttribute(interpreter, lhs, String(rhs!.result) as string)
+  },
+  testCases: {
+    successTestCases: [
+      { definition: '=[1,2,3][1]', result: 1 },
+      { definition: '=[1,2,3][0]', result: 'Index 0 out of bounds' },
+      { definition: '=[][1]', result: 'Index 1 out of bounds' },
+      { definition: '={a: 1}["a" & ""]', result: 1 },
+      { definition: '={a: 1}[1+1]', result: 'Key 2 not found' },
+      { definition: '={a: 1}["b"]', result: 'Key b not found' },
+      { definition: '={}["a"]', result: 'Key a not found' },
+      { definition: '=1[1]', label: 'TODO check', result: 'Access not supported for number' },
+      { definition: '="123"[1]', label: 'TODO check', result: 'Access not supported for string' },
+      { definition: '=[2, "foo", true][2]', result: 'foo' },
+      { definition: '=[2, "foo", true]["2"]', result: 'foo' },
+      { definition: '=[2, "foo", true][1]+1 * 12', result: 14 }
+    ],
+    errorTestCases: [
+      { definition: '=[1,2,3][]', errorType: 'parse', errorMessage: 'Parse error: "]"', valid: false },
+      { definition: '=[1][', errorType: 'syntax', errorMessage: 'Missing closing bracket' },
+      { definition: '={a: 1}[a]', errorType: 'syntax', errorMessage: 'Unknown function a' }
+    ]
   }
 }

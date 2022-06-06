@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { BrickdocEventBus, BlockInput, SpreadsheetUpdateCellValue, FormulaEditorSavedTrigger } from '@brickdoc/schema'
-import { FormulaBlockRender, useFormula } from '../FormulaView'
+import { FormulaBlockRender, useFormula, UseFormulaInput } from '../FormulaView'
 import {
   columnDisplayIndex,
   displayValue,
@@ -9,8 +9,7 @@ import {
   fetchResult,
   SpreadsheetReloadViaId,
   VariableDisplayData,
-  VariableInterface,
-  VariableMetadata
+  VariableInterface
 } from '@brickdoc/formula'
 import { SpreadsheetContext } from './SpreadsheetContext'
 import { devLog } from '@brickdoc/design-system'
@@ -82,11 +81,12 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
 
       BrickdocEventBus.dispatch(
         SpreadsheetReloadViaId({
-          spreadsheetId: tableId,
+          id: tableId,
           scope: {
             rows: [String(rowIdx + 1), rowId],
             columns: [block.data.columnId, columnDisplayIndex(columnSort), ...(columnTitle ? [columnTitle] : [])]
           },
+          meta: null,
           namespaceId: rootId,
           key: variable?.currentUUID ?? tableId
         })
@@ -97,21 +97,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     [tableId, rowIdx, rowId, block, columnSort, rootId, cellId, saveBlock, columnTitle]
   )
 
-  React.useEffect(() => {
-    const listener = BrickdocEventBus.subscribe(
-      FormulaEditorSavedTrigger,
-      e => {
-        setEditing(false)
-      },
-      {
-        eventId: `${rootId},${formulaId}`,
-        subscribeId: `FormulaMenu#${rootId},${formulaId}`
-      }
-    )
-    return () => listener.unsubscribe()
-  }, [formulaId, rootId, setEditing])
-
-  const meta: Pick<VariableMetadata, 'richType' | 'variableId' | 'namespaceId' | 'name'> = {
+  const meta: UseFormulaInput['meta'] = {
     namespaceId: rootId,
     variableId: formulaId,
     name: formulaName,
@@ -125,7 +111,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     }
   }
 
-  const { variableT, editorContent, commitFormula, completion, updateEditor } = useFormula({
+  const { temporaryVariableT, savedVariableT, content, onSaveFormula, commitFormula, completion } = useFormula({
     meta,
     onUpdateFormula,
     formulaContext
@@ -151,23 +137,40 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     setEditing(true)
   }
 
+  React.useEffect(() => {
+    const listener = BrickdocEventBus.subscribe(
+      FormulaEditorSavedTrigger,
+      e => {
+        setEditing(false)
+      },
+      {
+        eventId: `${rootId},${formulaId}`,
+        subscribeId: `FormulaMenu#${rootId},${formulaId}`
+      }
+    )
+    return () => listener.unsubscribe()
+  }, [formulaId, rootId, setEditing])
+
+  const handleSaveFormula = async (): Promise<void> => {
+    await onSaveFormula()
+    setEditing(false)
+  }
+
   if (editingCell || editing) {
     return (
       <FormulaBlockRender
-        saveOnBlur={true}
-        rootId={rootId}
-        formulaId={formulaId}
-        variableT={variableT}
-        editorContent={editorContent}
+        onSaveFormula={handleSaveFormula}
+        meta={meta}
+        temporaryVariableT={temporaryVariableT}
+        content={content}
         completion={completion}
-        updateEditor={updateEditor}
         width={width}
         minHeight={minHeight}
       />
     )
   }
 
-  const display = variableT ? displayValue(fetchResult(variableT), rootId) : currentBlock.text
+  const display = savedVariableT ? displayValue(fetchResult(savedVariableT), rootId) : currentBlock.text
   const fallbackDisplayData: VariableDisplayData | undefined = display
     ? {
         definition: display,
@@ -177,8 +180,8 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
         result: { type: 'literal', result: display }
       }
     : undefined
-  const displayData: VariableDisplayData | undefined = variableT
-    ? dumpDisplayResultForDisplay(variableT)
+  const displayData: VariableDisplayData | undefined = savedVariableT
+    ? dumpDisplayResultForDisplay(savedVariableT)
     : currentBlock.data.displayData ?? fallbackDisplayData
 
   return (

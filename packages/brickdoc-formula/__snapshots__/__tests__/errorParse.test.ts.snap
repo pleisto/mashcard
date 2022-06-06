@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`errorParse variable "=#CurrentBlock.baz" -> [deps] ""baz" not found" 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "hide": false,
+      "type": "any",
+    },
+    Object {
+      "attrs": Object {
+        "findKey": Object {
+          "namespaceId": "00000000-0000-0000-0000-000000000000",
+          "type": "id",
+          "value": "00000000-0000-0000-0000-000000000000",
+        },
+        "id": "00000000-0000-0000-0000-000000000000",
+        "kind": "Block",
+        "name": "Default",
+        "namespaceId": "00000000-0000-0000-0000-000000000000",
+      },
+      "code": "Block",
+      "display": "Default",
+      "errors": Array [],
+      "hide": true,
+      "type": "Block",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "Dot",
+      "display": ".",
+      "errors": Array [],
+      "hide": false,
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "FunctionName",
+      "display": "baz",
+      "errors": Array [
+        Object {
+          "message": "\\"baz\\" not found",
+          "type": "deps",
+        },
+      ],
+      "hide": false,
+      "type": "string",
+    },
+  ],
+]
+`;
+
+exports[`errorParse variable "=Variable.baz" -> [deps] ""baz" not found" 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "hide": false,
+      "type": "any",
+    },
+    Object {
+      "attrs": Object {
+        "findKey": Object {
+          "namespaceId": "22222222-2222-2222-2222-222222222222",
+          "type": "id",
+          "value": "22222222-2222-2222-2222-222222222222",
+        },
+        "id": "22222222-2222-2222-2222-222222222222",
+        "kind": "Block",
+        "name": "Variable",
+        "namespaceId": "22222222-2222-2222-2222-222222222222",
+      },
+      "code": "Block",
+      "display": "Variable",
+      "errors": Array [],
+      "hide": false,
+      "type": "Block",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "Dot",
+      "display": ".",
+      "errors": Array [],
+      "hide": false,
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "FunctionName",
+      "display": "baz",
+      "errors": Array [
+        Object {
+          "message": "\\"baz\\" not found",
+          "type": "deps",
+        },
+      ],
+      "hide": false,
+      "type": "string",
+    },
+  ],
+]
+`;
+
+exports[`errorParse variable "=baz" -> [syntax] "Unknown function baz" 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "hide": false,
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "Function",
+      "display": "baz",
+      "errors": Array [
+        Object {
+          "message": "Unknown function baz",
+          "type": "syntax",
+        },
+        Object {
+          "message": "TODO mismatch token FunctionCall",
+          "type": "parse",
+        },
+      ],
+      "hide": false,
+      "type": "any",
+    },
+  ],
+]
+`;
+
+exports[`errorParse variable "=fo" -> [syntax] "Unknown function fo" 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "hide": false,
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "Function",
+      "display": "fo",
+      "errors": Array [
+        Object {
+          "message": "Unknown function fo",
+          "type": "syntax",
+        },
+        Object {
+          "message": "TODO mismatch token FunctionCall",
+          "type": "parse",
+        },
+      ],
+      "hide": false,
+      "type": "any",
+    },
+  ],
+]
+`;

@@ -28,9 +28,10 @@ import { queryPageBlocks } from '../../graphql'
 import { useDocsI18n } from '../../hooks'
 import { queryBlockInfo } from '@/docs/pages/graphql'
 import { pagesVar } from '@/docs/reactiveVars'
-import { BlockNameLoad, BrickdocEventBus } from '@brickdoc/schema'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { useDocMeta } from '@/docs/store/DocMeta'
+import { dispatchFormulaBlockNameChangeOrDelete } from '@brickdoc/formula'
+
 export interface PageTreeProps {
   mode?: 'default' | 'subPage'
 }
@@ -276,7 +277,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
   useEffect(() => {
     pageBlocks.forEach(b => {
       if (!b.parentId || b.type === 'doc') {
-        BrickdocEventBus.dispatch(BlockNameLoad({ id: b.id, name: b.text }))
+        dispatchFormulaBlockNameChangeOrDelete({ id: b.id, name: b.text, deleted: false })
       }
     })
   }, [pageBlocks])

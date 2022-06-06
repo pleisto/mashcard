@@ -11,7 +11,7 @@ import {
   FunctionContext,
   FormulaType,
   ExpressionType,
-  EventDependency
+  VariableParseResult
 } from '../types'
 import { extractSubType, parseString, runtimeCheckType, shouldReturnEarly } from './util'
 import { buildFunctionKey } from '../functions'
@@ -55,7 +55,7 @@ const InterpretCstVisitor = ParserInstance.getBaseCstVisitorConstructor<Interpre
 export class FormulaInterpreter extends InterpretCstVisitor {
   ctx: FunctionContext
   lazy: boolean = false
-  runtimeEventDependencies: EventDependency[] = []
+  runtimeEventDependencies: VariableParseResult['eventDependencies'] = []
 
   constructor({ ctx }: { ctx: FunctionContext }) {
     super()

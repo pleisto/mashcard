@@ -1,12 +1,5 @@
 import { AnyTypeResult, BaseResult, FunctionContext, NamespaceId, VariableData, VariableDisplayData } from '../types'
-import {
-  SwitchClass,
-  ButtonClass,
-  SelectClass,
-  ColumnClass,
-  SpreadsheetClass,
-  SpreadsheetDynamicPersistence
-} from '../controls'
+import { SwitchClass, ButtonClass, ColumnClass, SpreadsheetClass, SpreadsheetDynamicPersistence } from '../controls'
 import { BlockClass } from '../controls/block'
 import { fetchResult } from './variable'
 import { truncateArray, truncateString } from '../grammar'
@@ -16,17 +9,17 @@ const VARIABLE_VERSION = 0
 
 export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayData => {
   return {
-    definition: t.definition,
+    definition: t.variableParseResult.definition,
     result: fetchResult(t),
     version: VARIABLE_VERSION,
     display: displayValue(fetchResult(t), ''),
     meta: {
-      namespaceId: t.namespaceId,
-      variableId: t.variableId,
-      name: t.name,
-      position: 0,
-      input: t.definition,
-      richType: t.richType
+      namespaceId: t.meta.namespaceId,
+      variableId: t.meta.variableId,
+      name: t.meta.name,
+      position: t.variableParseResult.position,
+      input: t.variableParseResult.definition,
+      richType: t.meta.richType
     }
   }
 }
@@ -83,8 +76,6 @@ const innerDisplayValue = (v: AnyTypeResult, pageId: NamespaceId, disableTruncat
       return `#<${v.type}> ${v.result.name}`
     case 'Switch':
       return `#<${v.type}> ${v.result.checked}`
-    case 'Select':
-      return `#<${v.type}> ${JSON.stringify(v.result.options)}`
     case 'Reference':
       return `#<Reference> ${JSON.stringify(v.result)}`
     case 'Function':
@@ -107,7 +98,7 @@ export const loadDisplayResult = (ctx: FunctionContext, displayResult: VariableD
 }
 
 export const dumpValue = (result: BaseResult, t?: VariableData): BaseResult => {
-  if (t && !t.isPersist) {
+  if (t && !t.variableParseResult.persist) {
     return { type: 'NoPersist', result: null }
   }
 
@@ -116,7 +107,6 @@ export const dumpValue = (result: BaseResult, t?: VariableData): BaseResult => {
     result.result instanceof BlockClass ||
     result.result instanceof RowClass ||
     result.result instanceof ButtonClass ||
-    result.result instanceof SelectClass ||
     result.result instanceof SwitchClass
   ) {
     return { type: result.type, result: result.result.persistence() }
@@ -218,11 +208,6 @@ export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResu
   if (result.type === 'Switch' && !(result.result instanceof SwitchClass)) {
     const switchResult = new SwitchClass(ctx, result.result)
     return { type: 'Switch', result: switchResult }
-  }
-
-  if (result.type === 'Select' && !(result.result instanceof SelectClass)) {
-    const selectResult = new SelectClass(ctx, result.result)
-    return { type: 'Select', result: selectResult }
   }
 
   // devLog({ result })

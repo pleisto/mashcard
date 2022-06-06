@@ -17,7 +17,6 @@ import {
   Event,
   BlockUpdated,
   BlockDeleted,
-  BlockNameLoad,
   DocMetaLoaded,
   UpdateDocMeta,
   BlockSynced,
@@ -27,6 +26,7 @@ import {
   loadSpreadsheetBlocks,
   SpreadsheetLoaded
 } from '@brickdoc/schema'
+import { dispatchFormulaBlockNameChangeOrDelete } from '@brickdoc/formula'
 
 export type UpdateBlocks = (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
 
@@ -120,7 +120,7 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
       if (blocks.length > 0 || deletedIds.length > 0) {
         blocks.forEach(b => {
           if (b.type === 'doc') {
-            BrickdocEventBus.dispatch(BlockNameLoad({ id: b.id, name: b.text }))
+            dispatchFormulaBlockNameChangeOrDelete({ id: b.id, name: b.text, deleted: false })
           }
           BrickdocEventBus.dispatch(BlockUpdated(b as Block))
           dirtyBlocksMap.current.delete(b.id)

@@ -1,14 +1,7 @@
-import { event } from '@brickdoc/schema'
+import { BrickdocEventBus, event } from '@brickdoc/schema'
 import { ContextState } from './context'
 import { Column, Row } from './controls'
-import { EventScope, VariableInterface, VariableTask } from './types'
-
-export const FormulaInnerRefresh = event<{ namespaceId: string; variableId: string }>()(
-  'FormulaInnerRefresh',
-  ({ namespaceId, variableId }) => {
-    return { id: `${namespaceId},${variableId}` }
-  }
-)
+import { FormulaEventPayload, VariableInterface, VariableTask } from './types'
 
 export const FormulaTickViaId = event<{
   uuid: string
@@ -18,12 +11,12 @@ export const FormulaTickViaId = event<{
   return { id: `${namespaceId},${variableId}` }
 })
 
-export const FormulaUpdatedViaId = event<VariableInterface>()('FormulaUpdatedViaId', v => {
-  return { id: `${v.t.namespaceId},${v.t.variableId}` }
+export const FormulaUpdatedViaId = event<FormulaEventPayload<VariableInterface>>()('FormulaUpdatedViaId', v => {
+  return { id: `${v.namespaceId},${v.id}` }
 })
 
-export const FormulaUpdatedDraftTViaId = event<VariableInterface>()('FormulaUpdatedDraftTViaId', v => {
-  return { id: `${v.t.namespaceId},${v.t.variableId}` }
+export const FormulaInnerRefresh = event<FormulaEventPayload<null>>()('FormulaInnerRefresh', ({ namespaceId, id }) => {
+  return { id: `${namespaceId},${id}` }
 })
 
 export const FormulaTaskStarted = event<{ task: VariableTask; namespaceId: string; variableId: string }>()(
@@ -40,23 +33,56 @@ export const FormulaTaskCompleted = event<{ task: VariableTask; namespaceId: str
   }
 )
 
-export const SpreadsheetReloadViaId = event<{
-  spreadsheetId: string
-  namespaceId: string
-  scope?: EventScope
-  key?: string
-}>()('SpreadsheetReloadViaId', ({ spreadsheetId, namespaceId }) => {
-  return { id: `${namespaceId},${spreadsheetId}` }
-})
+export const FormulaBlockNameChangedOrDeleted = event<FormulaEventPayload<{ name: string; deleted: boolean }>>()(
+  'FormulaBlockNameChangedOrDeleted',
+  ({ id }) => {
+    return { id }
+  }
+)
 
-export const SpreadsheetUpdateNameViaId = event<{
-  spreadsheetId: string
-  namespaceId: string
+export const dispatchFormulaBlockNameChangeOrDelete = ({
+  id,
+  name,
+  deleted
+}: {
+  id: string
   name: string
-  key: string
-}>()('SpreadsheetUpdateNameViaId', ({ spreadsheetId, namespaceId }) => {
-  return { id: `${namespaceId},${spreadsheetId}` }
-})
+  deleted: boolean
+}): void => {
+  BrickdocEventBus.dispatch(
+    FormulaBlockNameChangedOrDeleted({ id, namespaceId: id, key: id, scope: null, meta: { name, deleted } })
+  )
+}
+
+export type SpreadsheetUpdateNameViaIdPayload = FormulaEventPayload<null>
+
+export const SpreadsheetReloadViaId = event<SpreadsheetUpdateNameViaIdPayload>()(
+  'SpreadsheetReloadViaId',
+  ({ id, namespaceId }) => {
+    return { id: `${namespaceId},${id}` }
+  }
+)
+
+export const SpreadsheetUpdateNameViaId = event<FormulaEventPayload<string>>()(
+  'SpreadsheetUpdateNameViaId',
+  ({ id, namespaceId }) => {
+    return { id: `${namespaceId},${id}` }
+  }
+)
+
+export const FormulaContextNameChanged = event<FormulaEventPayload<{ name: string; kind: string }>>()(
+  'FormulaContextNameChanged',
+  ({ namespaceId, meta: { name } }) => {
+    return { id: `${namespaceId}#${name}` }
+  }
+)
+
+export const FormulaContextNameRemove = event<FormulaEventPayload<{ name: string; kind: string }>>()(
+  'FormulaContextNameRemove',
+  ({ namespaceId, meta: { name } }) => {
+    return { id: `${namespaceId}#${name}` }
+  }
+)
 
 export const SpreadsheetUpdateRowsViaId = event<{
   spreadsheetId: string
@@ -74,24 +100,6 @@ export const SpreadsheetUpdateColumnsViaId = event<{
   key: string
 }>()('SpreadsheetUpdateColumnsViaId', ({ spreadsheetId, namespaceId }) => {
   return { id: `${namespaceId},${spreadsheetId}` }
-})
-
-export const FormulaContextNameChanged = event<{
-  id: string
-  namespaceId: string
-  name: string
-  kind: string
-}>()('FormulaContextNameChanged', ({ namespaceId, name }) => {
-  return { id: `${namespaceId}#${name}` }
-})
-
-export const FormulaContextNameRemove = event<{
-  id: string
-  namespaceId: string
-  name: string
-  kind: string
-}>()('FormulaContextNameRemove', ({ id, namespaceId, name }) => {
-  return { id: `${namespaceId}#${name}` }
 })
 
 export const FormulaContextTickTrigger = event<{ domain: string; state: ContextState }>()(

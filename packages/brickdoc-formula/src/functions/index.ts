@@ -1,23 +1,19 @@
-import { BaseFunctionClause, FunctionGroup, FunctionKey, FunctionNameType } from '../types'
-import { CORE_API_CLAUSES } from './api'
-import { CORE_SPREADSHEET_CLAUSES } from './spreadsheet'
-import { CORE_DATE_CLAUSES } from './date'
-import { CORE_ERROR_CLAUSES } from './error'
-import { CORE_LOGIC_CLAUSES } from './logic'
-import { CORE_MATH_CLAUSES } from './math'
-import { CORE_OBJECT_CLAUSES } from './object'
-import { CORE_STATISTICAL_CLAUSES } from './statistical'
-import { CORE_STRING_CLAUSES } from './string'
-import { CORE_TEXT_CLAUSES } from './text'
-import { CORE_POWERFX_CLAUSES } from './power_fx'
-import { CORE_CONTROL_CLAUSES } from './control'
-import { CORE_CORE_CLAUSES } from './core'
-import { CORE_CONVERT_CLAUSES } from './convert'
-import { CORE_ARRAY_CLAUSES } from './array'
-import { CUSTOM_CLAUSES } from './custom'
-import { CORE_PROCESS_CLAUSES } from './process'
-import { CORE_REQUEST_CLAUSES } from './request'
-import { CORE_EXCHANGE_CLAUSES } from './exchange'
+import { AnyFunctionClause, FunctionGroup, FunctionKey, FunctionNameType } from '../types'
+import { CORE_API_FUNCTION_CLAUSES } from './api'
+import { CORE_ARRAY_FUNCTION_CLAUSES } from './array'
+import { CORE_CONTROL_FUNCTION_CLAUSES } from './control'
+import { CORE_CONVERT_FUNCTION_CLAUSES } from './convert'
+import { CORE_CORE_FUNCTION_CLAUSES } from './core'
+import { CORE_DATE_FUNCTION_CLAUSES } from './date'
+import { CORE_ERROR_FUNCTION_CLAUSES } from './error'
+import { CORE_LOGIC_FUNCTION_CLAUSES } from './logic'
+import { CORE_MATH_FUNCTION_CLAUSES } from './math'
+import { CORE_OBJECT_FUNCTION_CLAUSES } from './object'
+import { CORE_POWERFX_FUNCTION_CLAUSES } from './powerfx'
+import { CORE_PROCESS_FUNCTION_CLAUSES } from './process'
+import { REQUEST_REQUEST_FUNCTION_CLAUSES } from './request'
+import { CORE_SPREADSHEET_FUNCTION_CLAUSES } from './spreadsheet'
+import { CORE_STRING_FUNCTION_CLAUSES } from './string'
 
 export const buildFunctionKey = (
   group: FunctionGroup,
@@ -31,24 +27,20 @@ export const buildFunctionKey = (
   return `${group}::${upcaseName}`
 }
 
-export const BUILTIN_CLAUSES: Array<BaseFunctionClause<any>> = [
-  ...CORE_API_CLAUSES,
-  ...CORE_REQUEST_CLAUSES,
-  ...CORE_PROCESS_CLAUSES,
-  ...CORE_EXCHANGE_CLAUSES,
-  ...CORE_TEXT_CLAUSES,
-  ...CORE_SPREADSHEET_CLAUSES,
-  ...CORE_STRING_CLAUSES,
-  ...CORE_LOGIC_CLAUSES,
-  ...CORE_MATH_CLAUSES,
-  ...CORE_STATISTICAL_CLAUSES,
-  ...CORE_DATE_CLAUSES,
-  ...CORE_OBJECT_CLAUSES,
-  ...CORE_ERROR_CLAUSES,
-  ...CORE_POWERFX_CLAUSES,
-  ...CORE_CONTROL_CLAUSES,
-  ...CORE_CORE_CLAUSES,
-  ...CORE_CONVERT_CLAUSES,
-  ...CORE_ARRAY_CLAUSES,
-  ...CUSTOM_CLAUSES
+export const BUILTIN_CLAUSES: AnyFunctionClause[] = [
+  ...CORE_API_FUNCTION_CLAUSES,
+  ...CORE_ARRAY_FUNCTION_CLAUSES,
+  ...CORE_CONTROL_FUNCTION_CLAUSES,
+  ...CORE_CONVERT_FUNCTION_CLAUSES,
+  ...CORE_CORE_FUNCTION_CLAUSES,
+  ...CORE_DATE_FUNCTION_CLAUSES,
+  ...CORE_ERROR_FUNCTION_CLAUSES,
+  ...CORE_LOGIC_FUNCTION_CLAUSES,
+  ...CORE_MATH_FUNCTION_CLAUSES,
+  ...CORE_OBJECT_FUNCTION_CLAUSES,
+  ...CORE_POWERFX_FUNCTION_CLAUSES,
+  ...CORE_PROCESS_FUNCTION_CLAUSES,
+  ...REQUEST_REQUEST_FUNCTION_CLAUSES,
+  ...CORE_SPREADSHEET_FUNCTION_CLAUSES,
+  ...CORE_STRING_FUNCTION_CLAUSES
 ]

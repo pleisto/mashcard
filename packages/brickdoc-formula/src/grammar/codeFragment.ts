@@ -4,16 +4,13 @@ import {
   ErrorMessage,
   FormulaType,
   Argument,
-  VariableDependency,
-  FunctionClause,
   CodeFragmentResult,
-  NamespaceId,
   FunctionContext,
   ExpressionType,
   SimpleCodeFragmentType,
-  NameDependency,
   CodeFragmentAttrs,
-  EventDependency
+  VariableParseResult,
+  FormulaCheckType
 } from '../types'
 import { buildFunctionKey } from '../functions'
 import { ParserInstance } from './parser'
@@ -52,7 +49,7 @@ export const token2fragment = (token: IToken, type: FormulaType): CodeFragment =
 
 export interface CstVisitorArgument {
   readonly type: ExpressionType
-  readonly firstArgumentType?: FormulaType
+  readonly firstArgumentType?: ExpressionType
   readonly clauseArguments?: Argument[]
 }
 
@@ -60,12 +57,12 @@ const CodeFragmentCstVisitor = ParserInstance.getBaseCstVisitorConstructor<CstVi
 
 export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
   ctx: FunctionContext
-  variableDependencies: VariableDependency[] = []
-  nameDependencies: NameDependency[] = []
-  functionDependencies: Array<FunctionClause<any>> = []
-  eventDependencies: EventDependency[] = []
-  blockDependencies: NamespaceId[] = []
-  flattenVariableDependencies: VariableDependency[] = []
+  variableDependencies: VariableParseResult['variableDependencies'] = []
+  nameDependencies: VariableParseResult['nameDependencies'] = []
+  functionDependencies: VariableParseResult['functionDependencies'] = []
+  eventDependencies: VariableParseResult['eventDependencies'] = []
+  blockDependencies: VariableParseResult['blockDependencies'] = []
+  flattenVariableDependencies: VariableParseResult['flattenVariableDependencies'] = []
   kind: 'constant' | 'expression' = 'constant'
   async: boolean = false
   pure: boolean = true
@@ -205,7 +202,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     codeFragments.push(...lhsCodeFragments)
     images.push(image)
 
-    let firstArgumentType: FormulaType = lhsType
+    let firstArgumentType: FormulaCheckType = lhsType
 
     ctx.LBracket.forEach((dotOperand: CstNode | CstNode[], idx: number) => {
       const rhsCst = ctx.rhs?.[idx]
@@ -288,7 +285,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     codeFragments.push(...lhsCodeFragments)
     images.push(image)
 
-    let firstArgumentType: FormulaType = lhsType
+    let firstArgumentType: FormulaCheckType = lhsType
 
     // eslint-disable-next-line complexity
     ctx.Dot.forEach((dotOperand: CstNode | CstNode[], idx: number) => {
@@ -320,7 +317,8 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
       if (rhsCst.name === 'keyExpression') {
         const extraErrorMessages: ErrorMessage[] = []
         const accessErrorMessages: ErrorMessage[] =
-          ['null', 'string', 'boolean', 'number'].includes(firstArgumentType) && type !== 'Reference'
+          (['null', 'string', 'boolean', 'number'] as const).some(r => [firstArgumentType].flat().includes(r)) &&
+          type !== 'Reference'
             ? [{ type: 'syntax', message: 'Access error' }]
             : []
         const { codeFragments: rhsCodeFragments, image: rhsImage }: CodeFragmentResult =
@@ -889,6 +887,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
           ]
 
     if (!ctx.LParen) {
+      // console.log('nameDependency', functionKey)
       this.nameDependencies.push({ namespaceId: this.ctx.meta.namespaceId, name: functionKey })
 
       return {

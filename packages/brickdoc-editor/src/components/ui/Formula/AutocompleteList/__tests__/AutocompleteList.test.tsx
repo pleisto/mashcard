@@ -1,11 +1,11 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import {
+  AnyFunctionClause,
   BlockType,
   ColumnType,
   Completion,
   FormulaContext,
-  FormulaType,
-  FunctionClause,
+  generateVariable,
   interpret,
   parse,
   SpreadsheetType,
@@ -186,7 +186,7 @@ describe('AutocompleteList', () => {
     })
 
     it('renders function kind correctly', () => {
-      const preview: Partial<FunctionClause<FormulaType>> = {
+      const preview: Partial<AnyFunctionClause> = {
         name: 'name',
         args: [
           {
@@ -206,7 +206,7 @@ describe('AutocompleteList', () => {
         kind: 'function',
         namespace: 'namespace',
         value: 'function()',
-        preview: preview as FunctionClause<FormulaType>
+        preview: preview as AnyFunctionClause
       }
       const completion: CompletionType = {
         kind: 'Completion',
@@ -232,8 +232,7 @@ describe('AutocompleteList', () => {
 
       const input = `=`
       const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, richType: { type: 'normal' } }
-      const parseInput = { ctx: { formulaContext, meta, interpretContext } }
-      const parseResult = parse(parseInput) as SuccessParseResult
+      const parseResult = parse({ formulaContext, meta, interpretContext }) as SuccessParseResult
 
       const ctx = {
         formulaContext,
@@ -241,7 +240,8 @@ describe('AutocompleteList', () => {
         interpretContext
       }
 
-      const variable = await interpret({ ctx, parseResult })
+      const tempT = await interpret({ ctx, parseResult })
+      const variable = generateVariable({ formulaContext, t: tempT })
 
       const activeCompletion: Partial<Completion> = {
         kind: 'variable',

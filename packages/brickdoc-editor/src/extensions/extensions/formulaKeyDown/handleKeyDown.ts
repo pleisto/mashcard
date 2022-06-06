@@ -104,7 +104,9 @@ export const FormulaHandleKeyDown = createExtension<FormulaHandleKeyDownOptions,
               return false
             },
             mouseleave(view, event) {
-              BrickdocEventBus.dispatch(FormulaEditorHoverEventTrigger({ attrs: undefined, formulaId, rootId }))
+              if (formulaId && rootId) {
+                BrickdocEventBus.dispatch(FormulaEditorHoverEventTrigger({ attrs: undefined, formulaId, rootId }))
+              }
               return false
             }
           }

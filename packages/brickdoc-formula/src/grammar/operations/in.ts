@@ -1,5 +1,8 @@
+import { SpreadsheetInput } from '../../tests'
 import { ExpressionType } from '../../types'
 import { OperatorType } from '../operator'
+
+const spreadsheetToken = 'InOperator.spreadsheet'
 
 export const inOperator: OperatorType = {
   name: 'in',
@@ -7,7 +10,7 @@ export const inOperator: OperatorType = {
   lhsType: ['number', 'boolean', 'null', 'string'],
   rhsType: ['Spreadsheet', 'Column', 'Array', 'string'],
   dynamicParseRhsType: (cst, prevType, args, index) => {
-    const newType: ExpressionType = ['string', 'number'].includes(prevType)
+    const newType: ExpressionType = (['string', 'number'] as const).some(r => [prevType].flat().includes(r))
       ? ['string', 'Array', 'Spreadsheet', 'Column']
       : ['Array']
     return { ...args, type: newType }
@@ -86,5 +89,76 @@ export const inOperator: OperatorType = {
     }
 
     throw new Error(`Unsupported type ${rhs!.type}`)
+  },
+  testCases: {
+    pages: [
+      {
+        pageName: 'InOperator',
+        spreadsheets: [
+          // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+          <SpreadsheetInput<3, 3>>{
+            name: 'spreadsheet',
+            columns: [
+              {
+                name: 'first',
+                displayIndex: 'A',
+                cells: [{ value: '1' }, { value: '3' }, { value: '5' }]
+              },
+              {
+                name: 'second',
+                displayIndex: 'B',
+                cells: [{ value: '2' }, { value: '4' }, { value: '6' }]
+              },
+              {
+                name: 'third',
+                displayIndex: 'C',
+                cells: [{ value: '3' }, { value: '' }, { value: 'Foo' }]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    successTestCases: [
+      // Array
+      { definition: '=1 in [1]', result: true },
+      { definition: '=1 in []', result: false },
+      { definition: '=1 in [1, 2]', result: true },
+      { definition: '= 1 in [1, "foo", true]', result: true },
+      { definition: '= "Foo" in [1, "foo", true, null]', result: true },
+      { definition: '= "Foo" exactin [1, "foo", true, null]', result: false },
+      { definition: '= true in [1, "foo", true, null]', result: true },
+      { definition: '= true exactin [1, "foo", true, null]', result: true },
+      { definition: '= null exactin [1, "foo", true, null]', result: true },
+      { definition: '= false exactin [1, "foo", true, null]', result: false },
+      // String
+      { definition: '= "foo" in "barfoobaz"', result: true },
+      { definition: '= "foo" in "barFoobaz"', result: true },
+      { definition: '= "foo" exactin "barFoobaz"', result: false },
+      { definition: '= "foo" exactin "barfoobaz"', result: true },
+
+      // Spreadsheet
+      { label: 'in spreadsheet true', definition: `=3 in ${spreadsheetToken}`, result: true },
+      { label: 'in spreadsheet false', definition: `=4 in ${spreadsheetToken}`, result: false },
+      { label: 'in column true', definition: `=3 in ${spreadsheetToken}."second"`, result: false },
+      { label: 'in column false', definition: `=4 in ${spreadsheetToken}.second`, result: true },
+      { label: 'exactin column true', definition: `="foo" in ${spreadsheetToken}.third`, result: true }
+    ],
+    errorTestCases: [
+      {
+        definition: '= "foo" in 123',
+        errorType: 'type',
+        errorMessage: 'Expected string,Array,Spreadsheet,Column but got number'
+      },
+      {
+        definition: '= false exactin "foo"',
+        errorType: 'type',
+        errorMessage: 'Expected Array but got string'
+      },
+      { definition: '= "foo" in', errorType: 'syntax', errorMessage: 'Missing expression' },
+      { definition: '=in', errorType: 'syntax', errorMessage: 'Missing expression' },
+      { definition: '=in 123', errorType: 'type', errorMessage: 'Expected Array but got number' },
+      { definition: '=in []', errorType: 'parse', errorMessage: 'Parse error: "in"', valid: false }
+    ]
   }
 }

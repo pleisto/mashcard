@@ -1,1 +1,1 @@
-export const FORMULA_FEATURE_CONTROL = 'formula-controls'
+export const FORMULA_FEATURE_CONTROL = 'formula-controls' as const

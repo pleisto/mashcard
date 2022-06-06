@@ -15,7 +15,6 @@ import { useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import { useImperativeQuery } from '@/common/hooks'
 import {
-  useBlockSoftDeleteMutation,
   Scalars,
   useBlockCreateMutation,
   useBlockRenameMutation,
@@ -31,6 +30,7 @@ import { appendFormulas } from '@brickdoc/formula'
 import { useFormulaActions } from '@/docs/pages/hooks/useFormulaActions'
 import { sleep } from '@/common/utils'
 import { useDocMeta } from '@/docs/store/DocMeta'
+import { useBlockSoftDelete } from '../../hooks/useBlockSoftDelete'
 
 type UUID = Scalars['UUID']
 
@@ -69,7 +69,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   const [copied, setCopied] = React.useState<boolean>(false)
   const getPageBlocks = useImperativeQuery(queryPageBlocks)
 
-  const [blockSoftDelete, { loading: blockDeleteLoading }] = useBlockSoftDeleteMutation({
+  const [blockSoftDelete, { loading: blockDeleteLoading }] = useBlockSoftDelete(pageId, {
     refetchQueries: [queryPageBlocks, GetTrashBlocksDocument]
   })
 

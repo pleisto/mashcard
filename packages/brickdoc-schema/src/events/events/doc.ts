@@ -8,3 +8,7 @@ export const DocMetaLoaded = event<{ id: string; meta: BlockMeta }>()('DocMetaLo
 export const UpdateDocMeta = event<{ id: string; meta: BlockMeta }>()('UpdateDocMeta', ({ id }) => {
   return { id }
 })
+
+export const DocSoftDeleted = event<{ id: string }>()('DocSoftDeleted', ({ id }) => {
+  return { id }
+})

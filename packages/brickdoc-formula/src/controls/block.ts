@@ -18,8 +18,12 @@ import {
   variable2codeFragment
 } from '../grammar'
 import { fetchResult } from '../context/variable'
-import { BlockNameLoad, BrickdocEventBus, EventSubscribed } from '@brickdoc/schema'
-import { SpreadsheetUpdateNameViaId } from '../events'
+import { BrickdocEventBus, EventSubscribed, EventType, DocSoftDeleted } from '@brickdoc/schema'
+import {
+  SpreadsheetUpdateNameViaId,
+  FormulaBlockNameChangedOrDeleted,
+  dispatchFormulaBlockNameChangeOrDelete
+} from '../events'
 
 export class BlockClass implements BlockType {
   _formulaContext: ContextInterface
@@ -37,15 +41,28 @@ export class BlockClass implements BlockType {
     }
 
     const blockNameSubscription = BrickdocEventBus.subscribe(
-      BlockNameLoad,
+      FormulaBlockNameChangedOrDeleted,
       e => {
-        this._name = e.payload.name || 'Untitled'
-        this._formulaContext.setName(this.nameDependency())
+        if (!e.payload.meta.deleted) {
+          this._name = e.payload.meta.name || 'Untitled'
+          this._formulaContext.setName(this.nameDependency())
+        }
       },
       { subscribeId: `Block#${this.id}`, eventId: this.id }
     )
 
-    this.eventListeners.push(blockNameSubscription)
+    const blockDeleteSubcription = BrickdocEventBus.subscribe(
+      DocSoftDeleted,
+      e => {
+        this._formulaContext.removeBlock(this.id)
+      },
+      {
+        subscribeId: `Block#${this.id}`,
+        eventId: this.id
+      }
+    )
+
+    this.eventListeners.push(blockNameSubscription, blockDeleteSubcription)
   }
 
   persistence(): BlockInitializer {
@@ -59,7 +76,7 @@ export class BlockClass implements BlockType {
     return {
       kind: 'Block',
       id: this.id,
-      namespaceId: this.id,
+      namespaceId: '$Block',
       name: this._name,
       renderTokens: (exist, pageId) => [
         { image: '#', type: 'Sharp' },
@@ -74,6 +91,7 @@ export class BlockClass implements BlockType {
       listener.unsubscribe()
     })
     this.eventListeners = []
+    dispatchFormulaBlockNameChangeOrDelete({ id: this.id, name: this._name, deleted: true })
   }
 
   async handleInterpret(interpreter: FormulaInterpreter, name: string): Promise<AnyTypeResult> {
@@ -83,14 +101,14 @@ export class BlockClass implements BlockType {
     }
 
     const variable = this._formulaContext.findVariableByName(this.id, name)
-    if (!variable || !variable.savedT) {
+    if (!variable) {
       return { type: 'Error', result: `"${name}" not found`, errorKind: 'runtime' }
     }
 
-    if (variable.savedT.task.async) {
-      return (await variable.savedT.task.variableValue).result
+    if (variable.t.task.async) {
+      return (await variable.t.task.variableValue).result
     } else {
-      return variable.savedT.task.variableValue.result
+      return variable.t.task.variableValue.result
     }
   }
 
@@ -113,19 +131,21 @@ export class BlockClass implements BlockType {
         finalCodeFragments = [spreadsheet2codeFragment(spreadsheet, visitor.ctx.meta.namespaceId)]
       }
 
-      const spreadsheetNameEventDependency: EventDependency = {
+      const spreadsheetNameEventDependency: EventDependency<
+        typeof SpreadsheetUpdateNameViaId extends EventType<infer X> ? X : never
+      > = {
         eventId: `${spreadsheet.namespaceId},${spreadsheet.spreadsheetId}`,
         event: SpreadsheetUpdateNameViaId,
         kind: 'SpreadsheetName',
-        key: spreadsheet.spreadsheetId,
+        key: `SpreadsheetName#${spreadsheet.spreadsheetId}`,
         scope: {},
         definitionHandler: (deps, variable, payload) => {
-          const newCodeFragments = variable.t.codeFragments.map(c => {
+          const newCodeFragments = variable.t.variableParseResult.codeFragments.map(c => {
             if (c.code !== 'Spreadsheet') return c
-            if (c.attrs.id !== payload.spreadsheetId) return c
-            return { ...c, attrs: { ...c.attrs, name: payload.name } }
+            if (c.attrs.id !== payload.id) return c
+            return { ...c, attrs: { ...c.attrs, name: payload.meta } }
           })
-          return codeFragments2definition(newCodeFragments, variable.t.namespaceId)
+          return codeFragments2definition(newCodeFragments, variable.t.meta.namespaceId)
         }
       }
 
@@ -152,16 +172,16 @@ export class BlockClass implements BlockType {
 
     const firstArgumentType = fetchResult(variable.t).type
 
-    if (variable.t.isAsync) {
+    if (variable.t.variableParseResult.async) {
       visitor.async = true
     }
-    if (variable.t.isEffect) {
+    if (variable.t.variableParseResult.effect) {
       visitor.effect = true
     }
-    if (variable.t.isPersist) {
+    if (variable.t.variableParseResult.persist) {
       visitor.persist = true
     }
-    if (!variable.t.isPure) {
+    if (!variable.t.variableParseResult.pure) {
       visitor.pure = false
     }
 
@@ -171,10 +191,10 @@ export class BlockClass implements BlockType {
       finalCodeFragments = [variable2codeFragment(variable, visitor.ctx.meta.namespaceId)]
     }
 
-    visitor.variableDependencies.push({ namespaceId: this.id, variableId: variable.t.variableId })
-    visitor.flattenVariableDependencies.push(...variable.t.flattenVariableDependencies, {
+    visitor.variableDependencies.push({ namespaceId: this.id, variableId: variable.t.meta.variableId })
+    visitor.flattenVariableDependencies.push(...variable.t.variableParseResult.flattenVariableDependencies, {
       namespaceId: this.id,
-      variableId: variable.t.variableId
+      variableId: variable.t.meta.variableId
     })
 
     return {

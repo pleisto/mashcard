@@ -9,17 +9,17 @@ export interface VariablePreviewProps {
 }
 
 export const VariablePreview: React.FC<VariablePreviewProps> = ({ variable, rootId }) => {
-  const content = variable.t.valid
-    ? codeFragmentsToJSONContentTotal(variable.t.codeFragments)
-    : { type: 'doc', content: [{ type: 'text', text: variable.t.definition }] }
+  const content = variable.t.variableParseResult.valid
+    ? codeFragmentsToJSONContentTotal(variable.t.variableParseResult.codeFragments)
+    : { type: 'doc', content: [{ type: 'text', text: variable.t.variableParseResult.definition }] }
 
   return (
     <div className="formula-autocomplete-preview-variable">
-      <div className="autocomplete-preview-name">{variable.t.name}</div>
+      <div className="autocomplete-preview-name">{variable.t.meta.name}</div>
       <div className="autocomplete-preview-section">
         <div className="autocomplete-preview-section-head">Definition</div>
         <div className="autocomplete-preview-definition">
-          <FormulaEditor editorContent={{ content, input: '', position: 0 }} editable={false} />
+          <FormulaEditor content={content} editable={false} />
         </div>
       </div>
       <div className="autocomplete-preview-section">

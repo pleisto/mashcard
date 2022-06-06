@@ -18,5 +18,27 @@ export const combineOperator: OperatorType = {
     } else {
       throw new Error(`Unexpected operator ${operator.image}`)
     }
+  },
+  testCases: {
+    successTestCases: [
+      { definition: '=true && false', result: false },
+      { definition: '=false || true', result: true },
+      { definition: '=false or true', result: true },
+      { definition: '=false and true', result: false },
+      { definition: '=true and !2 && true', result: false }
+    ],
+    errorTestCases: [
+      { definition: '=1 and 2', errorType: 'type', errorMessage: 'Expected boolean but got number' },
+      { definition: '=1 and false or 3', errorType: 'type', errorMessage: 'Expected boolean but got number' },
+      { definition: '=true and', errorType: 'syntax', errorMessage: 'Missing expression' },
+      { definition: '=and false', errorType: 'parse', errorMessage: 'Parse error: "and"', valid: false },
+      { definition: '=and', errorType: 'syntax', errorMessage: 'Missing expression' },
+      {
+        definition: '="f" &&& 1',
+        errorType: 'type',
+        label: 'TODO &&&',
+        errorMessage: 'Expected boolean but got string'
+      }
+    ]
   }
 }

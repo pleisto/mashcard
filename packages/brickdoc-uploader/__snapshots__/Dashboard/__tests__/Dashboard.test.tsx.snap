@@ -19119,7 +19119,7 @@ exports[`Dashboard Link matches correct snapshot 1`] = `
     class="uploader-dashboard-link-panel"
   >
     <div
-      class="MuiInput-root brd-c-esVllU brd-c-esVllU-bJUqxb-size-sm brd-c-esVllU-kBNXiP-bordered-true brd-c-esVllU-fBioDX-cv"
+      class="MuiInput-root brd-c-evILER brd-c-evILER-jiZAei-size-sm brd-c-evILER-kBNXiP-bordered-true brd-c-evILER-hGBFki-borderType-outline brd-c-evILER-iGlfwG-cv"
       data-testid="uploader-dashboard-modules-link-input"
     >
       <input

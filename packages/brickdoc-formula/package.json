@@ -29,7 +29,7 @@
     "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
     "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
-    "test:jest": "run -T jest --silent",
+    "test:jest": "run -T jest",
     "test:jest:fix": "run -T jest --silent -u"
   }
 }

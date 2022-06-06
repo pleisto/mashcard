@@ -113,11 +113,6 @@ export const FORMULA_COLOR_METAS: Record<FormulaColorType, FormulaColorMeta> = {
 
   // Unknown
   Switch: defaultColorMeta,
-  Select: defaultColorMeta,
-  Slider: defaultColorMeta,
-  Input: defaultColorMeta,
-  Radio: defaultColorMeta,
-  Rate: defaultColorMeta,
   void: defaultColorMeta,
   Cst: cyanColorMeta,
   Reference: pinkColorMeta,
@@ -186,11 +181,6 @@ export const FORMULA_ICONS: Record<FormulaColorType, JSX.Element> = {
 
   // Unknown
   Switch: defaultIcon,
-  Select: defaultIcon,
-  Slider: defaultIcon,
-  Input: defaultIcon,
-  Radio: defaultIcon,
-  Rate: defaultIcon,
   void: defaultIcon,
   Cst: defaultIcon,
   Reference: defaultIcon,

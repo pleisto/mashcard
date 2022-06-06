@@ -60,8 +60,9 @@ export function useFormulaSpreadsheet({
   React.useEffect(() => {
     BrickdocEventBus.dispatch(
       SpreadsheetUpdateNameViaId({
-        spreadsheetId,
-        name: title,
+        id: spreadsheetId,
+        meta: title,
+        scope: null,
         key: spreadsheetId,
         namespaceId: rootId
       })

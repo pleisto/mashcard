@@ -1,3 +1,26 @@
+import { OperatorType } from '../operator'
+import { accessOperator } from './access'
+import { additionOperator } from './addition'
+import { argumentsOperator } from './arguments'
+import { arrayOperator } from './array'
+import { blockOperator } from './block'
+import { chainOperator } from './chain'
+import { combineOperator } from './combine'
+import { compareOperator } from './compare'
+import { concatOperator } from './concat'
+import { equalCompareOperator } from './equalCompare'
+import { expressionOperator } from './expression'
+import { inOperator } from './in'
+import { multiplicationOperator } from './multiplication'
+import { notOperator } from './not'
+import { parenthesisOperator } from './parenthesis'
+import { predicateOperator } from './predicate'
+import { rangeOperator } from './range'
+import { recordOperator } from './record'
+import { recordFieldOperator } from './recordField'
+import { thisRecordOperator } from './thisRecord'
+import { thisRowOperator } from './thisRow'
+
 export * from './addition'
 export * from './concat'
 export * from './combine'
@@ -19,3 +42,27 @@ export * from './arguments'
 export * from './block'
 export * from './thisRow'
 export * from './thisRecord'
+
+export const OPERATORS: OperatorType[] = [
+  accessOperator,
+  additionOperator,
+  argumentsOperator,
+  arrayOperator,
+  blockOperator,
+  chainOperator,
+  combineOperator,
+  compareOperator,
+  concatOperator,
+  equalCompareOperator,
+  expressionOperator,
+  inOperator,
+  multiplicationOperator,
+  notOperator,
+  parenthesisOperator,
+  predicateOperator,
+  rangeOperator,
+  recordFieldOperator,
+  recordOperator,
+  thisRecordOperator,
+  thisRowOperator
+]

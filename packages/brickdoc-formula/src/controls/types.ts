@@ -19,7 +19,8 @@ import {
   SpreadsheetId,
   NameDependencyWithKind,
   EventDependency,
-  FindKey
+  FindKey,
+  FormulaEventPayload
 } from '../types'
 
 export interface ControlType {
@@ -52,7 +53,7 @@ export type getEventDependencyInput = { rowKey?: string; columnKey?: string } & 
   | {}
 )
 
-type getEventDependency = ({ rowKey, columnKey }: getEventDependencyInput) => EventDependency
+type getEventDependency = ({ rowKey, columnKey }: getEventDependencyInput) => EventDependency<FormulaEventPayload<any>>
 export interface handleCodeFragmentsResult {
   errors: ErrorMessage[]
   firstArgumentType: FormulaType | undefined
@@ -215,18 +216,6 @@ export interface ButtonInitializer extends ControlInitializer {
   fn: FunctionResult
 }
 
-export interface InputType extends ControlType {
-  kind: 'Input'
-  value: string
-  fn: FunctionResult
-  onChange?: (value: string) => void
-}
-
-export interface InputInitializer extends ControlInitializer {
-  value: string
-  fn: FunctionResult
-}
-
 export interface SwitchType extends ControlType {
   kind: 'Switch'
   checked: boolean
@@ -236,26 +225,5 @@ export interface SwitchType extends ControlType {
 
 export interface SwitchInitializer extends ControlInitializer {
   checked: boolean
-  fn: FunctionResult
-}
-
-// interface SelectOption {
-//   label: string
-//   value: string
-// }
-
-export type SelectOption = string
-
-export interface SelectType extends ControlType {
-  kind: 'Select'
-  options: [SelectOption, ...SelectOption[]]
-  value: SelectOption
-  fn: FunctionResult
-  onChange?: (value: string) => void
-}
-
-export interface SelectInitializer extends ControlInitializer {
-  options: [SelectOption, ...SelectOption[]]
-  value: SelectOption
   fn: FunctionResult
 }

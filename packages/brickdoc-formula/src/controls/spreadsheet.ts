@@ -3,6 +3,7 @@ import {
   SpreadsheetReloadViaId,
   SpreadsheetUpdateColumnsViaId,
   SpreadsheetUpdateNameViaId,
+  SpreadsheetUpdateNameViaIdPayload,
   SpreadsheetUpdateRowsViaId
 } from '../events'
 import {
@@ -87,7 +88,7 @@ export class SpreadsheetClass implements SpreadsheetType {
       this.name = () => {
         const v = formulaContext.findVariableById(meta.namespaceId, meta.variableId)
         if (v) {
-          return v.t.name
+          return v.t.meta.name
         }
         return this._name
       }
@@ -104,7 +105,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     const nameSubscription = BrickdocEventBus.subscribe(
       SpreadsheetUpdateNameViaId,
       e => {
-        this._name = e.payload.name
+        this._name = e.payload.meta
         this._formulaContext.setName(this.nameDependency())
       },
       { eventId: `${namespaceId},${spreadsheetId}`, subscribeId: `Spreadsheet#${spreadsheetId}` }
@@ -127,10 +128,11 @@ export class SpreadsheetClass implements SpreadsheetType {
 
         BrickdocEventBus.dispatch(
           SpreadsheetReloadViaId({
-            spreadsheetId: this.spreadsheetId,
+            id: this.spreadsheetId,
             scope: { columns: changedColumnIds },
             namespaceId: this.namespaceId,
-            key: this.spreadsheetId
+            key: this.spreadsheetId,
+            meta: null
           })
         )
       },
@@ -156,10 +158,11 @@ export class SpreadsheetClass implements SpreadsheetType {
 
         BrickdocEventBus.dispatch(
           SpreadsheetReloadViaId({
-            spreadsheetId: this.spreadsheetId,
+            id: this.spreadsheetId,
             scope: { rows: changedRowIds },
             namespaceId: this.namespaceId,
-            key: this.spreadsheetId
+            key: this.spreadsheetId,
+            meta: null
           })
         )
       },
@@ -235,7 +238,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     return { type: 'Column', result: column }
   }
 
-  eventDependency({ rowKey, columnKey }: getEventDependencyInput): EventDependency {
+  eventDependency({ rowKey, columnKey }: getEventDependencyInput): EventDependency<SpreadsheetUpdateNameViaIdPayload> {
     if (rowKey) {
       return {
         kind: 'Row',

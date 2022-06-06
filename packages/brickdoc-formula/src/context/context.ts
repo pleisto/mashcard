@@ -2,7 +2,6 @@ import { CstNode, ILexingResult } from 'chevrotain'
 import { ColumnType, SpreadsheetType, BlockType, RowType } from '../controls'
 import {
   ContextInterface,
-  FunctionClause,
   NamespaceId,
   VariableDependency,
   VariableId,
@@ -17,9 +16,7 @@ import {
   VariableKey,
   DefaultVariableName,
   CodeFragment,
-  ExampleWithCodeFragments,
-  BaseFunctionClause,
-  BaseFunctionClauseWithKey,
+  AnyFunctionClause,
   FunctionCompletion,
   VariableCompletion,
   SpreadsheetCompletion,
@@ -35,7 +32,8 @@ import {
   DeleteFormula,
   SpreadsheetId,
   NameDependencyWithKind,
-  FindKey
+  FindKey,
+  AnyFunctionClauseWithKeyAndExample
 } from '../types'
 import {
   function2completion,
@@ -48,7 +46,7 @@ import { buildFunctionKey, BUILTIN_CLAUSES } from '../functions'
 import { CodeFragmentVisitor } from '../grammar/codeFragment'
 import { FormulaParser } from '../grammar/parser'
 import { FormulaLexer } from '../grammar/lexer'
-import { BlockNameLoad, BrickdocEventBus, EventSubscribed } from '@brickdoc/schema'
+import { BrickdocEventBus, EventSubscribed } from '@brickdoc/schema'
 import { FORMULA_FEATURE_CONTROL } from './features'
 import { BlockClass } from '../controls/block'
 import { DEFAULT_VIEWS } from '../render'
@@ -56,13 +54,14 @@ import {
   FormulaContextTickTrigger,
   FormulaContextNameChanged,
   FormulaContextNameRemove,
-  SpreadsheetReloadViaId
+  SpreadsheetReloadViaId,
+  FormulaBlockNameChangedOrDeleted
 } from '../events'
 
 export interface FormulaContextArgs {
   domain: string
   tickTimeout?: number
-  functionClauses?: Array<BaseFunctionClause<any>>
+  functionClauses?: AnyFunctionClause[]
   backendActions?: BackendActions
   features?: string[]
 }
@@ -71,7 +70,7 @@ export type ContextState = any
 
 const matchRegex =
   // eslint-disable-next-line max-len
-  /(str|num|bool|record|blank|cst|array|null|date|predicate|reference|literal|spreadsheet|function|column|row|cell|range|button|switch|select|slider|input|radio|rate|error|block|var)([0-9]+)$/
+  /(str|num|bool|record|blank|cst|array|null|date|predicate|reference|literal|spreadsheet|function|column|row|cell|range|button|switch|error|block|var)([0-9]+)$/
 export const FormulaTypeCastName: Record<FormulaType, SpecialDefaultVariableName> = {
   string: 'str',
   literal: 'str',
@@ -81,11 +80,6 @@ export const FormulaTypeCastName: Record<FormulaType, SpecialDefaultVariableName
   Blank: 'blank',
   Cst: 'cst',
   Switch: 'switch',
-  Select: 'select',
-  Slider: 'slider',
-  Input: 'input',
-  Radio: 'radio',
-  Rate: 'rate',
   Button: 'button',
   Predicate: 'predicate',
   Pending: 'pending',
@@ -116,6 +110,7 @@ const ReverseCastName = Object.entries(FormulaTypeCastName).reduce(
 ) as Record<SpecialDefaultVariableName, FormulaType>
 
 export class FormulaContext implements ContextInterface {
+  private static instance?: FormulaContext
   domain: string
   tickKey: string
   tickTimeout: number
@@ -135,11 +130,6 @@ export class FormulaContext implements ContextInterface {
     Switch: {},
     literal: {},
     void: {},
-    Select: {},
-    Slider: {},
-    Input: {},
-    Radio: {},
-    Rate: {},
     Function: {},
     boolean: {},
     Blank: {},
@@ -165,7 +155,7 @@ export class FormulaContext implements ContextInterface {
 
   reverseVariableDependencies: Record<VariableKey, VariableDependency[]> = {}
   reverseFunctionDependencies: Record<FunctionKey, VariableDependency[]> = {}
-  functionClausesMap: Record<FunctionKey, FunctionClause<any>>
+  functionClausesMap: Record<FunctionKey, AnyFunctionClauseWithKeyAndExample> = {}
   backendActions: BackendActions | undefined
   reservedNames: string[] = []
   eventListeners: EventSubscribed[] = []
@@ -191,9 +181,9 @@ export class FormulaContext implements ContextInterface {
     }, {})
 
     const blockNameSubscription = BrickdocEventBus.subscribe(
-      BlockNameLoad,
+      FormulaBlockNameChangedOrDeleted,
       e => {
-        this.setBlock(e.payload.id, e.payload.name)
+        if (!e.payload.meta.deleted) this.setBlock(e.payload.id, e.payload.meta.name)
       },
       { subscribeId: `Domain#${this.domain}` }
     )
@@ -215,32 +205,30 @@ export class FormulaContext implements ContextInterface {
 
     void this.tick(undefined as ContextState)
 
-    const baseFunctionClauses: Array<BaseFunctionClause<any>> = [...BUILTIN_CLAUSES, ...functionClauses].filter(
+    const baseFunctionClauses: AnyFunctionClause[] = [...BUILTIN_CLAUSES, ...functionClauses].filter(
       f => !f.feature || this.features.includes(f.feature)
     )
 
     this.reservedNames = baseFunctionClauses.map(({ name }) => name.toUpperCase())
-    this.functionClausesMap = baseFunctionClauses.reduce(
-      (o: Record<FunctionKey, BaseFunctionClauseWithKey<any>>, acc: BaseFunctionClause<any>) => {
-        const clause: BaseFunctionClauseWithKey<any> = {
-          ...acc,
-          key: buildFunctionKey(acc.group, acc.name)
-        }
+    this.functionClausesMap = baseFunctionClauses.reduce<Record<FunctionKey, AnyFunctionClauseWithKeyAndExample>>(
+      (o, acc) => {
+        const clause = { ...acc, key: buildFunctionKey(acc.group, acc.name) }
         o[clause.key] = clause
         return o
       },
       {}
-    ) as Record<FunctionKey, FunctionClause<any>>
-
-    this.functionClausesMap = Object.values(this.functionClausesMap).reduce(
-      (o: Record<FunctionKey, FunctionClause<any>>, acc: FunctionClause<any>) => {
-        o[acc.key] = {
+    )
+    this.functionClausesMap = baseFunctionClauses.reduce<Record<FunctionKey, AnyFunctionClauseWithKeyAndExample>>(
+      (o, acc) => {
+        const clause = {
           ...acc,
-          examples: acc.examples.map(e => ({ ...e, codeFragments: this.parseCodeFragments(e.input) })) as [
-            ExampleWithCodeFragments<any>,
-            ...Array<ExampleWithCodeFragments<any>>
-          ]
+          key: buildFunctionKey(acc.group, acc.name),
+          examples: acc.examples.map(e => ({
+            ...e,
+            codeFragments: this.parseCodeFragments(e.input)
+          })) as AnyFunctionClause['examples']
         }
+        o[clause.key] = clause
         return o
       },
       {}
@@ -269,7 +257,7 @@ export class FormulaContext implements ContextInterface {
       return function2completion(f, weight)
     })
     const completionVariables: Array<[string, VariableInterface]> = Object.entries(this.variables).filter(
-      ([key, c]) => c.t.variableId !== variableId && c.t.richType.type === 'normal'
+      ([key, c]) => c.t.meta.variableId !== variableId && c.t.meta.richType.type === 'normal'
     )
     const variables: VariableCompletion[] = completionVariables.map(([key, v]) => {
       return variable2completion(v, namespaceId)
@@ -282,7 +270,9 @@ export class FormulaContext implements ContextInterface {
       return block2completion(this, b, namespaceId)
     })
 
-    return [...functions, ...variables, ...blocks, ...spreadsheets].sort((a, b) => b.weight - a.weight)
+    return [...functions, ...variables, ...blocks, ...spreadsheets]
+      .map(c => ({ ...c, weight: c.namespaceId === namespaceId ? c.weight + 100 : c.weight }))
+      .sort((a, b) => b.weight - a.weight)
   }
 
   public getDefaultVariableName(namespaceId: NamespaceId, type: FormulaType): DefaultVariableName {
@@ -310,10 +300,12 @@ export class FormulaContext implements ContextInterface {
   }
 
   public removeBlock(blockId: NamespaceId): void {
-    if (!this.blocks[blockId]) return
-    this.blocks[blockId].cleanup()
+    const block = this.blocks[blockId]
+    if (!block) return
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete this.blocks[blockId]
+
+    block.cleanup()
   }
 
   public findNames(namespaceId: NamespaceId, name: string): NameDependencyWithKind[] {
@@ -328,7 +320,18 @@ export class FormulaContext implements ContextInterface {
     this.names[nameDependency.id] = nameDependency
     if (oldName && oldName.name === nameDependency.name) return
 
-    BrickdocEventBus.dispatch(FormulaContextNameChanged(nameDependency))
+    BrickdocEventBus.dispatch(
+      FormulaContextNameChanged({
+        id: nameDependency.id,
+        namespaceId: nameDependency.namespaceId,
+        key: nameDependency.id,
+        scope: null,
+        meta: {
+          name: nameDependency.name,
+          kind: nameDependency.kind
+        }
+      })
+    )
   }
 
   public removeName(id: NamespaceId): void {
@@ -337,7 +340,18 @@ export class FormulaContext implements ContextInterface {
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete this.names[id]
 
-    BrickdocEventBus.dispatch(FormulaContextNameRemove(oldName))
+    BrickdocEventBus.dispatch(
+      FormulaContextNameRemove({
+        id: oldName.id,
+        namespaceId: oldName.namespaceId,
+        key: oldName.id,
+        scope: null,
+        meta: {
+          name: oldName.name,
+          kind: oldName.kind
+        }
+      })
+    )
   }
 
   public findSpreadsheet({ namespaceId, type, value }: FindKey): SpreadsheetType | undefined {
@@ -364,12 +378,14 @@ export class FormulaContext implements ContextInterface {
     if (this.spreadsheets[spreadsheet.spreadsheetId]) return
 
     this.spreadsheets[spreadsheet.spreadsheetId] = spreadsheet
-    this.setBlock(spreadsheet.namespaceId, '')
+    // this.setBlock(spreadsheet.namespaceId, '')
     this.setName(spreadsheet.nameDependency())
     BrickdocEventBus.dispatch(
       SpreadsheetReloadViaId({
-        spreadsheetId: spreadsheet.spreadsheetId,
+        id: spreadsheet.spreadsheetId,
         namespaceId: spreadsheet.namespaceId,
+        scope: null,
+        meta: null,
         key: spreadsheet.spreadsheetId
       })
     )
@@ -388,16 +404,16 @@ export class FormulaContext implements ContextInterface {
   }
 
   public findVariableByName(namespaceId: NamespaceId, name: string): VariableInterface | undefined {
-    const v = Object.values(this.variables).find(v => v.t.namespaceId === namespaceId && v.t.name === name)
+    const v = Object.values(this.variables).find(v => v.t.meta.namespaceId === namespaceId && v.t.meta.name === name)
     return v
   }
 
   public listVariables(namespaceId: NamespaceId): VariableInterface[] {
-    return Object.values(this.variables).filter(v => v.t.namespaceId === namespaceId)
+    return Object.values(this.variables).filter(v => v.t.meta.namespaceId === namespaceId)
   }
 
-  public commitVariable({ variable }: { variable: VariableInterface }): void {
-    const { namespaceId, variableId } = variable.t
+  public async commitVariable({ variable }: { variable: VariableInterface }): Promise<void> {
+    const { namespaceId, variableId } = variable.t.meta
     const oldVariable = this.findVariableById(namespaceId, variableId)
 
     // 1. clear old dependencies
@@ -406,7 +422,6 @@ export class FormulaContext implements ContextInterface {
     }
 
     variable.isNew = false
-    variable.savedT = variable.t
 
     // 2. replace variable object
     this.variables[variableKey(namespaceId, variableId)] = variable
@@ -415,7 +430,7 @@ export class FormulaContext implements ContextInterface {
     variable.trackDependency()
 
     // 4. update name counter
-    const match = variable.t.name.match(matchRegex)
+    const match = variable.t.meta.name.match(matchRegex)
     if (match) {
       const [, defaultName, count] = match
       const realName = ReverseCastName[defaultName as SpecialDefaultVariableName]
@@ -437,7 +452,10 @@ export class FormulaContext implements ContextInterface {
     delete this.variables[key]
   }
 
-  public findFunctionClause(group: FunctionGroup, name: FunctionNameType): FunctionClause<any> | undefined {
+  public findFunctionClause(
+    group: FunctionGroup,
+    name: FunctionNameType
+  ): AnyFunctionClauseWithKeyAndExample | undefined {
     return this.functionClausesMap[buildFunctionKey(group, name)]
   }
 
@@ -507,5 +525,12 @@ export class FormulaContext implements ContextInterface {
     }
 
     return codeFragments
+  }
+
+  public static getInstance(args: FormulaContextArgs): FormulaContext {
+    if (this.instance === undefined) {
+      this.instance = new FormulaContext(args)
+    }
+    return this.instance
   }
 }

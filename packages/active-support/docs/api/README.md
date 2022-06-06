@@ -14,7 +14,12 @@
 
 ### Type Aliases
 
+- [Cons](README.md#cons)
 - [DeepPartial](README.md#deeppartial)
+- [FixedLengthTuple](README.md#fixedlengthtuple)
+- [PrependParameter](README.md#prependparameter)
+- [Repeat](README.md#repeat)
+- [RequireField](README.md#requirefield)
 - [RequiredKeys](README.md#requiredkeys)
 - [Result](README.md#result)
 
@@ -2515,6 +2520,27 @@ node_modules/@types/lodash/common/object.d.ts:2008
 
 ## Other
 
+### <a id="cons" name="cons"></a> Cons
+
+Ƭ **Cons**<`H`, `T`\>: (`h`: `H`, ...`t`: `T`) => `void` extends (...`r`: infer R) => `void` ? `R` : `never`
+
+Prepend tuple.
+
+type Cons<1, [2, 3, 4]> // [1, 2, 3, 4]
+
+#### Type parameters
+
+| Name | Type                     |
+| :--- | :----------------------- |
+| `H`  | `H`                      |
+| `T`  | extends readonly `any`[] |
+
+#### Defined in
+
+[packages/active-support/src/typescript.ts:20](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/typescript.ts#L20)
+
+---
+
 ### <a id="deeppartial" name="deeppartial"></a> DeepPartial
 
 Ƭ **DeepPartial**<`T`\>: `T` extends `object` ? { [P in keyof T]?: DeepPartial<T[P]\> } : `T`
@@ -2530,6 +2556,106 @@ make all properties optional recursively.
 #### Defined in
 
 [packages/active-support/src/typescript.ts:4](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/typescript.ts#L4)
+
+---
+
+### <a id="fixedlengthtuple" name="fixedlengthtuple"></a> FixedLengthTuple
+
+Ƭ **FixedLengthTuple**<`T`, `N`, `R`\>: `R`[``"length"``] extends `N` ? `R` : [`FixedLengthTuple`](README.md#fixedlengthtuple)<`T`, `N`, readonly [`T`, ...R]\>
+
+Fixed length tuple.
+
+const x: FixedLengthTuple<number, 3> = [1, 2, 3]
+
+#### Type parameters
+
+| Name | Type                        |
+| :--- | :-------------------------- |
+| `T`  | `T`                         |
+| `N`  | extends `number`            |
+| `R`  | extends readonly `T`[] = [] |
+
+#### Defined in
+
+[packages/active-support/src/typescript.ts:37](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/typescript.ts#L37)
+
+---
+
+### <a id="prependparameter" name="prependparameter"></a> PrependParameter
+
+Ƭ **PrependParameter**<`Param`, `F`\>: (...`args`: `Extract`<[`Cons`](README.md#cons)<`Param`, `Parameters`<`F`\>\>, readonly `any`[]\>) => `ReturnType`<`F`\>
+
+#### Type parameters
+
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
+| `Param` | `Param`                               |
+| `F`     | extends (...`args`: `any`[]) => `any` |
+
+#### Type declaration
+
+▸ (...`args`): `ReturnType`<`F`\>
+
+Prepend Parameter.
+
+type F = (x: number) => boolean
+type F2 = PrependParameter<string, F> // type F2 = (s: string, x: number) => boolean
+
+##### Parameters
+
+| Name      | Type                                                                                 |
+| :-------- | :----------------------------------------------------------------------------------- |
+| `...args` | `Extract`<[`Cons`](README.md#cons)<`Param`, `Parameters`<`F`\>\>, readonly `any`[]\> |
+
+##### Returns
+
+`ReturnType`<`F`\>
+
+#### Defined in
+
+[packages/active-support/src/typescript.ts:28](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/typescript.ts#L28)
+
+---
+
+### <a id="repeat" name="repeat"></a> Repeat
+
+Ƭ **Repeat**<`Char`, `Count`, `Joined`, `Acc`\>: `Acc`[``"length"``] extends `Count` ? `Joined` : [`Repeat`](README.md#repeat)<`Char`, `Count`, \`${Joined}${Char}\`, [``0``, ...Acc]\>
+
+Repeat string
+
+const x: Repeat<'1' | '2', 4> = '1122'
+
+#### Type parameters
+
+| Name     | Type                    |
+| :------- | :---------------------- |
+| `Char`   | extends `string`        |
+| `Count`  | extends `number`        |
+| `Joined` | extends `string` = `""` |
+| `Acc`    | extends `0`[] = []      |
+
+#### Defined in
+
+[packages/active-support/src/typescript.ts:51](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/typescript.ts#L51)
+
+---
+
+### <a id="requirefield" name="requirefield"></a> RequireField
+
+Ƭ **RequireField**<`T`, `K`\>: `T` & `Required`<`Pick`<`T`, `K`\>\>
+
+Make some field required
+
+#### Type parameters
+
+| Name | Type              |
+| :--- | :---------------- |
+| `T`  | `T`               |
+| `K`  | extends keyof `T` |
+
+#### Defined in
+
+[packages/active-support/src/typescript.ts:44](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/typescript.ts#L44)
 
 ---
 

@@ -14,8 +14,7 @@ describe('FormulaResult', () => {
 
     const input = `= 1 + 1`
     const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, richType: { type: 'normal' } }
-    const parseInput = { ctx: { formulaContext, meta, interpretContext } }
-    const parseResult = parse(parseInput) as SuccessParseResult
+    const parseResult = parse({ formulaContext, meta, interpretContext }) as SuccessParseResult
 
     const ctx = {
       formulaContext,
@@ -23,9 +22,9 @@ describe('FormulaResult', () => {
       interpretContext
     }
 
-    const variable = await interpret({ ctx, parseResult })
+    const tempT = await interpret({ ctx, parseResult })
 
-    const { container } = render(<FormulaResult pageId="pageId" variableT={variable.t} />)
+    const { container } = render(<FormulaResult pageId="pageId" variableT={tempT} />)
 
     expect(container).toMatchSnapshot()
   })
@@ -38,8 +37,7 @@ describe('FormulaResult', () => {
     // incorrect syntax
     const input = `= 1 ++++ 1`
     const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, richType: { type: 'normal' } }
-    const parseInput = { ctx: { formulaContext, meta, interpretContext } }
-    const parseResult = parse(parseInput) as SuccessParseResult
+    const parseResult = parse({ formulaContext, meta, interpretContext }) as SuccessParseResult
 
     const ctx = {
       formulaContext,
@@ -47,9 +45,9 @@ describe('FormulaResult', () => {
       interpretContext
     }
 
-    const variable = await interpret({ ctx, parseResult })
+    const tempT = await interpret({ ctx, parseResult })
 
-    const { container } = render(<FormulaResult pageId="pageId" variableT={variable.t} />)
+    const { container } = render(<FormulaResult pageId="pageId" variableT={tempT} />)
 
     expect(container).toMatchSnapshot()
   })
@@ -67,8 +65,7 @@ describe('FormulaResult', () => {
 
     const input = `=`
     const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, richType: { type: 'normal' } }
-    const parseInput = { ctx: { formulaContext, meta, interpretContext } }
-    const parseResult = parse(parseInput) as SuccessParseResult
+    const parseResult = parse({ formulaContext, meta, interpretContext }) as SuccessParseResult
 
     const ctx = {
       formulaContext,
@@ -76,9 +73,9 @@ describe('FormulaResult', () => {
       interpretContext
     }
 
-    const variable = await interpret({ ctx, parseResult })
+    const tempT = await interpret({ ctx, parseResult })
 
-    const { container } = render(<FormulaResult pageId="pageId" variableT={variable.t} />)
+    const { container } = render(<FormulaResult pageId="pageId" variableT={tempT} />)
 
     expect(container).toMatchSnapshot()
   })

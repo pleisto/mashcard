@@ -107,7 +107,7 @@ export const DocumentContentPage: React.FC = () => {
 
   React.useEffect(() => {
     const functionClauses = generateFormulaFunctionClauses(docMeta)
-    const formulaContext = new FormulaContext({
+    const formulaContext = FormulaContext.getInstance({
       domain: loginDomain,
       backendActions: { commit: commitFormula },
       functionClauses,

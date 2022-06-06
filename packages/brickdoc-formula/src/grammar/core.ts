@@ -3,9 +3,7 @@ import {
   CodeFragment,
   ErrorMessage,
   ContextInterface,
-  FunctionClause,
   VariableData,
-  VariableDependency,
   VariableKind,
   VariableValue,
   VariableInterface,
@@ -18,10 +16,9 @@ import {
   BlockKey,
   BaseFormula,
   ErrorResult,
-  NameDependency,
-  FormulaType,
   VariableTask,
-  EventDependency
+  VariableParseResult,
+  FormulaCheckType
 } from '../types'
 import { VariableClass, castVariable } from '../context/variable'
 import { checkValidName, FormulaLexer } from './lexer'
@@ -36,54 +33,44 @@ import { createVariableTask } from '../context'
 import { hideDotStep, addSpaceStep, applyThisRecordStep } from './steps'
 
 export interface BaseParseResult {
+  variableParseResult: VariableParseResult
   success: boolean
-  valid: boolean
-  async: boolean
-  pure: boolean
-  effect: boolean
-  persist: boolean
-  input: string
-  version: number
-  position: number
   inputImage: string
   parseImage: string
-  expressionType: FormulaType
-  cst?: CstNode
+  expressionType: FormulaCheckType
   errorType?: ParseErrorType
-  kind: VariableKind
   errorMessages: ErrorMessage[]
-  variableDependencies: VariableDependency[]
-  nameDependencies: NameDependency[]
-  functionDependencies: Array<FunctionClause<any>>
-  blockDependencies: NamespaceId[]
-  eventDependencies: EventDependency[]
-  codeFragments: CodeFragment[]
-  flattenVariableDependencies: VariableDependency[]
   completions: Completion[]
 }
 
 export interface SuccessParseResult extends BaseParseResult {
   success: true
-  valid: true
   errorMessages: []
-  kind: Exclude<VariableKind, 'literal'>
-  cst: CstNode
+  variableParseResult: VariableParseResult & {
+    valid: true
+    kind: Exclude<VariableKind, 'literal'>
+    cst: CstNode
+  }
 }
 
 export interface LiteralParseResult extends BaseParseResult {
   success: true
-  valid: true
   errorMessages: []
-  kind: 'literal'
-  cst: undefined
+  variableParseResult: VariableParseResult & {
+    valid: true
+    kind: 'literal'
+    cst: undefined
+  }
 }
 
 export interface ErrorParseResult extends BaseParseResult {
   success: false
-  kind: 'unknown'
-  cst: CstNode | undefined
-  errorType: ParseErrorType
   errorMessages: [ErrorMessage, ...ErrorMessage[]]
+  errorType: ParseErrorType
+  variableParseResult: VariableParseResult & {
+    kind: 'unknown'
+    cst: CstNode | undefined
+  }
 }
 
 export type ParseResult = SuccessParseResult | ErrorParseResult | LiteralParseResult
@@ -282,7 +269,7 @@ const changePosition = (
 }
 
 // eslint-disable-next-line complexity
-export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): ParseResult => {
+export const parse = (ctx: FunctionContext): ParseResult => {
   const {
     formulaContext,
     meta: {
@@ -301,47 +288,52 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     inputImage: '',
     parseImage: '',
     expressionType: 'any',
-    valid: true,
-    async: false,
-    effect: false,
-    persist: false,
-    pure: true,
-    cst: undefined,
-    input,
-    position,
-    version,
-    kind: 'unknown',
     errorType: 'parse',
     errorMessages: [{ type: 'parse', message: '' }],
     completions: [],
-    codeFragments: [],
-    variableDependencies: [],
-    nameDependencies: [],
-    functionDependencies: [],
-    eventDependencies: [],
-    blockDependencies: [],
-    flattenVariableDependencies: []
+    variableParseResult: {
+      valid: true,
+      async: false,
+      effect: false,
+      persist: false,
+      pure: true,
+      cst: undefined,
+      definition: input,
+      position,
+      version,
+      kind: 'unknown',
+      codeFragments: [],
+      variableDependencies: [],
+      nameDependencies: [],
+      functionDependencies: [],
+      eventDependencies: [],
+      blockDependencies: [],
+      flattenVariableDependencies: []
+    }
   }
 
   if (!input.startsWith('=') || (type !== 'normal' && input.trim() === '=')) {
     return {
       ...returnValue,
-      valid: true,
-      kind: 'literal',
-      cst: undefined,
       errorType: undefined,
       success: true,
       errorMessages: [],
-      codeFragments: [
-        {
-          code: 'literal',
-          type: 'any',
-          hide: false,
-          display: input,
-          errors: [],
-          attrs: undefined
-        }
-      ]
+      variableParseResult: {
+        ...returnValue.variableParseResult,
+        valid: true,
+        kind: 'literal',
+        cst: undefined,
+        codeFragments: [
+          {
+            code: 'literal',
+            type: 'any',
+            hide: false,
+            display: input,
+            errors: [],
+            attrs: undefined
+          }
+        ]
+      }
     }
   }
 
@@ -350,13 +342,12 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
 
   const parser = new FormulaParser()
   const codeFragmentVisitor = new CodeFragmentVisitor({ ctx })
-  const positionWithEqual = type === 'normal' ? position + 1 : position
 
   const {
     lexResult: { tokens, errors: lexErrors },
     newInput,
     positionFragment
-  } = abbrev({ ctx, input, namespaceId, position: positionWithEqual })
+  } = abbrev({ ctx, input, namespaceId, position })
 
   parser.input = tokens
   const inputImage = tokens.map(t => t.image).join('')
@@ -372,21 +363,23 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
   const finalErrorMessages: ErrorMessage[] = errorCodeFragment ? errorCodeFragment.errors : []
 
   returnValue.expressionType = expressionType
-  returnValue.async = codeFragmentVisitor.async
-  returnValue.effect = codeFragmentVisitor.effect
-  returnValue.persist = codeFragmentVisitor.persist
-  returnValue.pure = codeFragmentVisitor.pure
-  returnValue.kind = codeFragmentVisitor.kind
-  returnValue.variableDependencies = [
+  returnValue.variableParseResult.async = codeFragmentVisitor.async
+  returnValue.variableParseResult.effect = codeFragmentVisitor.effect
+  returnValue.variableParseResult.persist = codeFragmentVisitor.persist
+  returnValue.variableParseResult.pure = codeFragmentVisitor.pure
+  returnValue.variableParseResult.kind = codeFragmentVisitor.kind
+  returnValue.variableParseResult.variableDependencies = [
     ...new Map(codeFragmentVisitor.variableDependencies.map(item => [item.variableId, item])).values()
   ]
-  returnValue.nameDependencies = [
+  returnValue.variableParseResult.nameDependencies = [
     ...new Map(codeFragmentVisitor.nameDependencies.map(item => [`${item.namespaceId},${item.name}`, item])).values()
   ]
-  returnValue.functionDependencies = codeFragmentVisitor.functionDependencies
-  returnValue.blockDependencies = [...new Map(codeFragmentVisitor.blockDependencies.map(item => [item, item])).values()]
+  returnValue.variableParseResult.functionDependencies = codeFragmentVisitor.functionDependencies
+  returnValue.variableParseResult.blockDependencies = [
+    ...new Map(codeFragmentVisitor.blockDependencies.map(item => [item, item])).values()
+  ]
 
-  returnValue.eventDependencies = [
+  returnValue.variableParseResult.eventDependencies = [
     ...new Map(
       codeFragmentVisitor.eventDependencies.map(item => [
         `${item.kind},${item.event.eventType},${item.eventId},${item.key}`,
@@ -394,14 +387,13 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
       ])
     ).values()
   ]
-  returnValue.flattenVariableDependencies = [
+  returnValue.variableParseResult.flattenVariableDependencies = [
     ...new Map(codeFragmentVisitor.flattenVariableDependencies.map(item => [item.variableId, item])).values()
   ]
 
   returnValue.inputImage = inputImage
 
-  returnValue.cst = cst
-  returnValue.input = newInput
+  returnValue.variableParseResult.cst = cst
   returnValue.parseImage = image
 
   const parseErrors: IRecognitionException[] = parser.errors
@@ -466,28 +458,31 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
   })
 
   const newPosition = changePosition(finalCodeFragments, position, input, finalPositionFragment)
-  const newPositionWithoutEqual = type === 'normal' ? newPosition - 1 : newPosition
 
   completions = complete({
-    position: newPositionWithoutEqual,
+    position: newPosition,
     cacheCompletions: baseCompletion,
     codeFragments: finalCodeFragments,
     tokens,
     ctx
   })
 
-  returnValue.codeFragments = finalCodeFragments
-  returnValue.position = newPositionWithoutEqual
+  returnValue.variableParseResult.codeFragments = finalCodeFragments
+  returnValue.variableParseResult.definition = finalCodeFragments.map(f => f.display).join('')
+  returnValue.variableParseResult.position = newPosition
   returnValue.completions = completions
 
   if (finalErrorMessages.length) {
     return {
       ...returnValue,
       success: false,
-      kind: 'unknown',
-      valid: finalErrorMessages[0].type !== 'parse' && finalCodeFragments.length > 0,
       errorType: 'syntax',
-      errorMessages: finalErrorMessages as [ErrorMessage, ...ErrorMessage[]]
+      errorMessages: finalErrorMessages as [ErrorMessage, ...ErrorMessage[]],
+      variableParseResult: {
+        ...returnValue.variableParseResult,
+        kind: 'unknown',
+        valid: finalErrorMessages[0].type !== 'parse' && finalCodeFragments.length > 0
+      }
     }
   }
 
@@ -499,9 +494,12 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     return {
       ...returnValue,
       success: false,
-      kind: 'unknown',
       errorType: 'syntax',
-      errorMessages: [{ message: 'Circular dependency found', type: 'circular_dependency' }]
+      errorMessages: [{ message: 'Circular dependency found', type: 'circular_dependency' }],
+      variableParseResult: {
+        ...returnValue.variableParseResult,
+        kind: 'unknown'
+      }
     }
   }
 
@@ -509,9 +507,12 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     return {
       ...returnValue,
       success: false,
-      kind: 'unknown',
       errorType: 'syntax',
-      errorMessages: [{ message: 'Variable name is not valid', type: 'name_invalid' }]
+      errorMessages: [{ message: 'Variable name is not valid', type: 'name_invalid' }],
+      variableParseResult: {
+        ...returnValue.variableParseResult,
+        kind: 'unknown'
+      }
     }
   }
 
@@ -519,9 +520,12 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     return {
       ...returnValue,
       success: false,
-      kind: 'unknown',
       errorType: 'syntax',
-      errorMessages: [{ message: 'Variable name is reserved', type: 'name_check' }]
+      errorMessages: [{ message: 'Variable name is reserved', type: 'name_check' }],
+      variableParseResult: {
+        ...returnValue.variableParseResult,
+        kind: 'unknown'
+      }
     }
   }
 
@@ -531,32 +535,39 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     return {
       ...returnValue,
       success: false,
-      kind: 'unknown',
       errorType: 'syntax',
-      errorMessages: [{ message: 'Name exist in same namespace', type: 'name_unique' }]
+      errorMessages: [{ message: 'Name exist in same namespace', type: 'name_unique' }],
+      variableParseResult: {
+        ...returnValue.variableParseResult,
+        kind: 'unknown'
+      }
     }
   }
 
   return {
     ...returnValue,
-    cst: cst!,
-    kind: codeFragmentVisitor.kind,
     errorType: undefined,
-    valid: true,
     success: true,
-    errorMessages: []
+    errorMessages: [],
+    variableParseResult: {
+      ...returnValue.variableParseResult,
+      valid: true,
+      cst: cst!,
+      kind: codeFragmentVisitor.kind
+    }
   }
 }
 
 const innerInterpretFirst = ({
-  parseResult: { cst, kind, errorMessages, async },
+  parseResult: {
+    errorMessages,
+    variableParseResult: { cst, kind, async }
+  },
   ctx
 }: {
   parseResult: {
-    cst: CstNode | undefined
-    kind: VariableKind
     errorMessages: ErrorMessage[]
-    async: boolean
+    variableParseResult: Pick<VariableParseResult, 'cst' | 'kind' | 'async'>
   }
   ctx: FunctionContext
 }): VariableValue | undefined => {
@@ -582,22 +593,20 @@ const innerInterpretFirst = ({
 }
 
 export const innerInterpret = async ({
-  parseResult: { cst, kind, errorMessages, async },
+  parseResult: { errorMessages, variableParseResult },
   ctx
 }: {
   parseResult: {
-    cst: CstNode | undefined
-    kind: VariableKind
     errorMessages: ErrorMessage[]
-    async: boolean
+    variableParseResult: Pick<VariableParseResult, 'cst' | 'kind' | 'async'>
   }
   ctx: FunctionContext
 }): Promise<VariableValue> => {
-  const result = innerInterpretFirst({ parseResult: { cst, kind, errorMessages, async }, ctx })
+  const result = innerInterpretFirst({ parseResult: { variableParseResult, errorMessages }, ctx })
   if (result) return result
   try {
     const interpreter = new FormulaInterpreter({ ctx })
-    const result: AnyTypeResult = await interpreter.visit(cst!, { type: 'any', finalTypes: [] })
+    const result: AnyTypeResult = await interpreter.visit(variableParseResult.cst!, { type: 'any', finalTypes: [] })
     // const lazy = interpreter.lazy
 
     return { success: true, result, runtimeEventDependencies: interpreter.runtimeEventDependencies }
@@ -641,14 +650,19 @@ const generateTask = async ({
 
   // Execute
   // 1. Non async
-  if (!parseResult.async) {
+  if (!parseResult.variableParseResult.async) {
     const interpretResult = await innerInterpret({ parseResult, ctx })
-    return createVariableTask({ async: parseResult.async, variableValue: interpretResult, ctx, parseResult })
+    return createVariableTask({
+      async: false,
+      variableValue: interpretResult,
+      ctx,
+      parseResult
+    })
   }
 
   // 2. Async
   return createVariableTask({
-    async: parseResult.async,
+    async: true,
     variableValue: innerInterpret({ parseResult, ctx }),
     ctx,
     parseResult
@@ -659,66 +673,26 @@ export const interpret = async ({
   variable,
   ctx,
   skipExecute,
-  isLoad,
   parseResult
 }: {
-  isLoad?: boolean
   variable?: VariableInterface
   skipExecute?: boolean
   ctx: FunctionContext
   parseResult: ParseResult
-}): Promise<VariableInterface> => {
+}): Promise<VariableData> => {
   const {
-    valid,
-    cst,
-    kind,
-    codeFragments,
-    version,
-    async,
-    effect,
-    persist,
-    pure,
-    variableDependencies,
-    nameDependencies,
-    functionDependencies,
-    blockDependencies,
-    eventDependencies,
-    flattenVariableDependencies
-  } = parseResult
-  const {
-    formulaContext,
-    meta: { name, input, namespaceId, variableId, richType }
+    meta: { name, namespaceId, variableId, richType }
   } = ctx
   const task = await generateTask({ variable, ctx, skipExecute, parseResult })
 
-  const t: VariableData = {
-    namespaceId,
-    variableId,
-    name,
-    cst,
-    richType,
-    version,
-    isAsync: async,
-    isEffect: effect,
-    isPure: pure,
-    isPersist: persist,
-    codeFragments,
-    definition: input,
-    valid,
-    kind: kind ?? 'constant',
-    variableDependencies,
-    nameDependencies,
-    flattenVariableDependencies,
-    blockDependencies,
-    eventDependencies,
-    functionDependencies,
+  return {
+    meta: { name, namespaceId, variableId, richType },
+    variableParseResult: parseResult.variableParseResult,
     task
   }
-
-  return generateVariable({ formulaContext, t, variable, isLoad, skipExecute })
 }
 
-const generateVariable = ({
+export const generateVariable = ({
   formulaContext,
   t,
   variable,
@@ -727,9 +701,9 @@ const generateVariable = ({
 }: {
   formulaContext: ContextInterface
   t: VariableData
-  variable: VariableInterface | undefined
-  isLoad: boolean | undefined
-  skipExecute: boolean | undefined
+  variable?: VariableInterface
+  isLoad?: boolean
+  skipExecute?: boolean
 }): VariableInterface => {
   let newVariable: VariableInterface
   if (variable) {
@@ -740,12 +714,7 @@ const generateVariable = ({
   }
 
   if (!skipExecute) {
-    if (isLoad) {
-      newVariable.isNew = false
-      newVariable.savedT = newVariable.t
-    } else {
-      newVariable.isNew = true
-    }
+    newVariable.isNew = !isLoad
   }
 
   return newVariable
@@ -755,6 +724,6 @@ export const appendFormulas = async (formulaContext: ContextInterface, formulas:
   for (const formula of formulas) {
     const oldVariable = formulaContext.findVariableById(formula.blockId, formula.id)
     const variable = await castVariable(oldVariable, formulaContext, formula)
-    variable.save()
+    await variable.save()
   }
 }

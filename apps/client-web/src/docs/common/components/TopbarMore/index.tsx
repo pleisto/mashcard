@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { BrickdocEventBus, Undo } from '@brickdoc/schema'
 import {
   useBlockPinOrUnpinMutation,
-  useBlockSoftDeleteMutation,
   GetTrashBlocksDocument,
   useBlockCreateMutation,
   useBlockDuplicateMutation
@@ -22,6 +21,7 @@ import { useFormulaActions } from '@/docs/pages/hooks/useFormulaActions'
 import { appendFormulas } from '@brickdoc/formula'
 import { IconWrapper, KeyBindTip } from './index.style'
 import { useDocMeta } from '@/docs/store/DocMeta'
+import { useBlockSoftDelete } from '../../hooks/useBlockSoftDelete'
 
 export interface DiscussionMenuProps {
   className?: string
@@ -42,7 +42,7 @@ const PopMenu = (props: { menuToggle: (state: boolean) => void }) => {
   const [blockPinOrUnpin, { loading: blockPinOrUnpinLoading }] = useBlockPinOrUnpinMutation({
     refetchQueries: [queryBlockPins]
   })
-  const [blockSoftDelete] = useBlockSoftDeleteMutation({
+  const [blockSoftDelete] = useBlockSoftDelete(id as string, {
     refetchQueries: [queryPageBlocks, GetTrashBlocksDocument]
   })
   const [blockCreate] = useBlockCreateMutation({

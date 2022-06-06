@@ -7,6 +7,7 @@ import {
   EventDependency,
   EventScope,
   ExpressionType,
+  FormulaCheckType,
   FormulaColorType,
   FormulaType,
   FunctionContext
@@ -15,7 +16,7 @@ import { InterpretArgument } from './interpreter'
 import { checkValidName } from './lexer'
 
 // eslint-disable-next-line complexity
-export const shouldReceiveEvent = (listenedScope: EventScope, eventScope: EventScope | undefined): boolean => {
+export const shouldReceiveEvent = (listenedScope: EventScope, eventScope: EventScope | null): boolean => {
   if (!eventScope) return true
 
   const listenedRows = listenedScope.rows ?? []
@@ -62,9 +63,12 @@ export const shouldReceiveEvent = (listenedScope: EventScope, eventScope: EventS
   }
 }
 
-export const cleanupEventDependency = (label: string, dependencies: EventDependency[]): EventDependency[] => {
+export const cleanupEventDependency = (
+  label: string,
+  dependencies: Array<EventDependency<any>>
+): Array<EventDependency<any>> => {
   if (!dependencies.length) return []
-  const finalEventDependencies: EventDependency[] = []
+  const finalEventDependencies: Array<EventDependency<any>> = []
 
   dependencies.forEach((dependency, index) => {
     const lastDependency = dependencies[index - 1]
@@ -156,10 +160,10 @@ export const extractSubType = (array: AnyTypeResult[]): FormulaType => {
 
 export const intersectType = (
   expectedArgumentType: ExpressionType,
-  contextResultType: FormulaType,
+  contextResultType: FormulaCheckType,
   label: string,
   ctx: FunctionContext
-): { errorMessages: ErrorMessage[]; newType: FormulaType } => {
+): { errorMessages: ErrorMessage[]; newType: FormulaCheckType } => {
   if (expectedArgumentType === undefined) {
     return { errorMessages: [], newType: contextResultType }
   }
@@ -172,14 +176,14 @@ export const intersectType = (
     return { errorMessages: [], newType: contextResultType }
   }
 
-  if (['any', 'Pending', 'Waiting'].includes(contextResultType)) {
+  if ((['any', 'Pending', 'Waiting'] as const).some(r => [contextResultType].flat().includes(r))) {
     return {
       errorMessages: [],
       newType: expectedArgumentType instanceof Array ? expectedArgumentType[0] : expectedArgumentType
     }
   }
 
-  if (expectedArgumentType instanceof Array && expectedArgumentType.includes(contextResultType)) {
+  if (expectedArgumentType instanceof Array && expectedArgumentType.some(r => [contextResultType].flat().includes(r))) {
     return { errorMessages: [], newType: contextResultType }
   }
 
@@ -212,7 +216,7 @@ export const intersectType = (
 
 export const runtimeCheckType = (
   { type: expectedArgumentType, skipCheck }: InterpretArgument,
-  contextResultType: FormulaType,
+  contextResultType: FormulaCheckType,
   label: string,
   ctx: FunctionContext
 ): ErrorResult | undefined => {

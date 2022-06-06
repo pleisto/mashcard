@@ -18,34 +18,6 @@ type TaskInput = (
   ctx: FunctionContext
 }
 
-// interface Deferred {
-//   promise: Promise<unknown>
-//   cancel: any
-// }
-
-// const deferred = (ms: number): Deferred => {
-//   let cancel
-//   const promise = new Promise((resolve, reject) => {
-//     cancel = reject
-//     setTimeout(resolve, ms)
-//   })
-//   return { promise, cancel }
-// }
-
-// const debounce = (task: (arg0: any) => any, ms: number): ((...args: any[]) => Promise<void>) => {
-//   let t: Deferred = { promise: null, cancel: () => {} }
-//   return async (...args) => {
-//     try {
-//       t.cancel()
-//       t = deferred(ms)
-//       await t.promise
-//       await task(...args)
-//     } catch (_) {
-//       /* prevent memory leak */
-//     }
-//   }
-// }
-
 export const createVariableTask = ({
   async,
   variableValue,

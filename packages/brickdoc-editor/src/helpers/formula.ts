@@ -1,6 +1,5 @@
-import { codeFragment2display, CodeFragment } from '@brickdoc/formula'
+import { CodeFragment } from '@brickdoc/formula'
 import { JSONContent } from '@tiptap/core'
-import { devWarning } from '@brickdoc/design-system'
 
 export const buildJSONContentByDefinition = (definition: string | undefined): JSONContent | undefined => {
   if (!definition) {
@@ -95,7 +94,7 @@ export const positionBasedContentArrayToInput = (
   let firstTime = true
 
   content.forEach((c: JSONContent, idx) => {
-    const text = JSONContentToText(c, content[idx - 1], pageId)
+    const text = JSONContentToText(c)
     const display = c.text ?? ''
     input = input.concat(display)
     if (!firstTime) {
@@ -132,43 +131,11 @@ export const positionBasedContentArrayToInput = (
 }
 
 export const contentArrayToInput = (content: JSONContent[], pageId: string): string => {
-  const input = content.map((c: JSONContent, idx) => JSONContentToText(c, content[idx - 1], pageId)).join('') ?? ''
+  const input = content.map((c: JSONContent) => JSONContentToText(c)).join('') ?? ''
   // console.log('contentArrayToInput', { content, input })
   return input
 }
 
-const JSONContentToText = (c: JSONContent, prevC: JSONContent | undefined, pageId: string): string => {
-  if (c.type !== 'text') {
-    devWarning(true, 'JSONContentToText: not text', c)
-    return ''
-  }
-
-  const text = c.text ?? ''
-
-  if (!c.marks) {
-    return text
-  }
-
-  const mark = c.marks[0]
-
-  if (!mark) {
-    return text
-  }
-
-  if (mark.type !== 'FormulaType') {
-    devWarning(true, 'JSONContentToText: not FormulaType', c)
-    return text
-  }
-
-  const codeFragment: CodeFragment | undefined = mark.attrs as CodeFragment
-
-  if (!codeFragment) {
-    devWarning(true, 'JSONContentToText: no attrs', c)
-    return text
-  }
-
-  const prevText = prevC?.text ?? ''
-  // TODO handle paste
-  const attrs = typeof codeFragment.attrs === 'string' ? JSON.parse(codeFragment.attrs) : codeFragment.attrs
-  return codeFragment2display({ ...codeFragment, attrs }, text, prevText, pageId)
+const JSONContentToText = (c: JSONContent): string => {
+  return c.text ?? ''
 }
