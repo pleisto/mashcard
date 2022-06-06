@@ -59,8 +59,7 @@ const linkStyles: CSS = {
 
 const imageStyles: CSS = {
   img: {
-    maxWidth: '100%',
-    height: 'auto'
+    maxWidth: '100%'
   }
 }
 

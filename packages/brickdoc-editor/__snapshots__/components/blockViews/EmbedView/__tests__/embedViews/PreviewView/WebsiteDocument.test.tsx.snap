@@ -14,17 +14,21 @@ exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
       class="brd-c-fzqzBr"
     >
       <div
-        class="brd-c-cAUyZH"
+        class="brd-c-hziiEv"
       >
         <img
-          alt="icon"
+          alt=""
           class="brd-c-fHCTpr"
           src="icon"
         />
-        url
+        <span
+          class="brd-c-juFreK"
+        >
+          url
+        </span>
       </div>
       <div
-        class="brd-c-kFulUu"
+        class="brd-c-jpqxpo"
       >
         <ul
           class="brd-c-gRhnPc"

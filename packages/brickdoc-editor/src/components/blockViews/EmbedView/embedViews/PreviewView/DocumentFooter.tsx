@@ -24,7 +24,15 @@ const Info = styled('div', {
   flexDirection: 'row',
   fontSize: '.875rem',
   fontWeight: 450,
-  lineHeight: '1.375rem'
+  lineHeight: '1.375rem',
+  maxWidth: '100%'
+})
+
+const Name = styled('span', {
+  maxWidth: '80%',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap'
 })
 
 const LinkIcon = styled('img', {
@@ -34,6 +42,7 @@ const LinkIcon = styled('img', {
 })
 
 export const EmbedToolbarContainer = styled('div', {
+  background: theme.colors.backgroundPrimary,
   bottom: '.5rem',
   opacity: 0,
   pointerEvents: 'none',
@@ -53,8 +62,8 @@ export const DocumentFooter: FC<DocumentFooterProps> = ({
 }) => (
   <Footer>
     <Info>
-      {icon && (typeof icon === 'string' ? <LinkIcon alt="icon" src={icon} /> : icon)}
-      {name}
+      {icon && (typeof icon === 'string' ? <LinkIcon alt="" src={icon} /> : icon)}
+      <Name>{name}</Name>
     </Info>
     <EmbedToolbarContainer>
       <EmbedToolbar

@@ -11,7 +11,15 @@ describe('useWebsiteDocumentStatus', () => {
     expect(result.current[0]).toBe(false)
 
     act(() => {
-      handleLoad({})
+      handleLoad({
+        target: {
+          contentWindow: {
+            window: {
+              length: 0
+            }
+          }
+        }
+      })
     })
 
     expect(result.current[0]).toBe(true)
