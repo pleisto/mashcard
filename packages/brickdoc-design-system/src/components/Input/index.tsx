@@ -9,6 +9,7 @@ export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'css' | 'startAdornment' | 'endAdornment'> {
   onPressEnter?: React.KeyboardEventHandler<HTMLInputElement>
   size?: 'sm' | 'md' | 'lg'
+  borderType?: 'outline' | 'underline'
   bordered?: boolean
   prefix?: React.ReactNode
   suffix?: React.ReactNode
@@ -27,6 +28,7 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (props, re
     size = 'md',
     bordered = true,
     disabled = false,
+    borderType = 'outline',
     ...otherProps
   } = props
   const inputRef = ref ?? createRef<HTMLInputElement>()
@@ -45,6 +47,7 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (props, re
       onKeyDown={keydownHandler}
       disabled={disabled}
       disabledVariant={disabled}
+      borderType={borderType}
       size={size}
       invalid={invalid}
       startAdornment={prefix}

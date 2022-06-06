@@ -24,7 +24,5 @@ export const itemCommon = {
 
 export const LinkInputWrapper = styled('div', {
   width: 204,
-  margin: '0 16px',
-  borderBottom: '1px solid',
-  borderBlockColor: theme.colors.primaryDefault
+  margin: '4px 16px',
 })

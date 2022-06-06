@@ -27,8 +27,6 @@ const LinkInput = styled(Input, {
   variants: {
     size: {
       md: {
-        borderBottom: `1px solid ${theme.colors.dividerOverlayThirdary}`,
-        borderRadius: 0,
         padding: '.4375rem 0',
 
         '> input': {
@@ -78,7 +76,7 @@ export const LinkInputPanel: FC<{
       <LinkInput
         // eslint-disable-next-line jsx-a11y/no-autofocus
         autoFocus={true}
-        bordered={false}
+        borderType="underline"
         suffix={link && <InputClearIcon onClick={onLinkClear} />}
         prefix={<IconLink />}
         placeholder={t('embed_block.embed_types.link.panel.link.placeholder')}
@@ -121,8 +119,7 @@ export const LinkTypeEmbedBlock: FC<LinkTypeEmbedBlockProps> = ({
             onLinkChange={handleLinkChange}
           />
         }
-        placement="bottomStart"
-      >
+        placement="bottomStart">
         <EmbedBlockPlaceholder
           data-testid={TEST_ID_ENUM.editor.embedBlock.addButton.id}
           icon={<Link />}

@@ -3,7 +3,7 @@
 exports[`FormulaInput renders FormulaInput correctly 1`] = `
 <div>
   <div
-    class="MuiInput-root brd-c-esVllU brd-c-esVllU-kehwYu-size-md brd-c-esVllU-kBNXiP-bordered-true brd-c-esVllU-fBioDX-cv"
+    class="MuiInput-root brd-c-evILER brd-c-evILER-hfCMDt-size-md brd-c-evILER-kBNXiP-bordered-true brd-c-evILER-hGBFki-borderType-outline brd-c-evILER-iGlfwG-cv"
   >
     <input
       class="MuiInput-input"

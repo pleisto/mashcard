@@ -6,7 +6,10 @@ export default {
   title: 'Components/Input',
   component: Input,
   args: {
-    size: 'md'
+    size: 'md',
+    bordered: true,
+    borderType: 'outline',
+    // 'aria-invalid': 'true',
   },
   argTypes: {
     name: {
@@ -15,6 +18,15 @@ export default {
     },
     disabled: {
       control: 'boolean'
+    },
+    bordered: {
+      control: 'boolean'
+    },
+    borderType: {
+      options: ['outline', 'underline'],
+      control: {
+        type: 'radio'
+      }
     },
     placeholder: {
       control: 'text',

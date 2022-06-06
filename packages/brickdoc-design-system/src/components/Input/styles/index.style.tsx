@@ -1,18 +1,25 @@
 import { theme, css } from '../../../themes'
 
+const onlyBottomBorder = {
+  borderTopColor: 'transparent!important',
+  borderLeftColor: 'transparent!important',
+  borderRightColor: 'transparent!important',
+  outline: 'none!important'
+}
+
 export const inputStyle = css({
   width: '100%',
   fontSize: '14px',
   position: 'relative',
   color: theme.colors.typePrimary,
   backgroundColor: theme.colors.ceramicQuaternary,
-  lineHeight: '1.5',
   borderRadius: '4px',
   margin: '0',
   display: 'inline-flex',
   alignItems: 'center',
   flexWrap: 'nowrap',
   transition: `all .2s ${theme.transitions.easeOut}`,
+
   '&.MuiInput-adornedStart, &.MuiInput-adornedEnd': {
     display: 'flex',
     flex: 'none',
@@ -27,6 +34,8 @@ export const inputStyle = css({
   input: {
     fontSize: '1em',
     lineHeight: 'inherit',
+    paddingTop: 0,
+    paddingBottom: 0,
     borderColor: 'transparent',
     background: 'transparent',
     flex: '1',
@@ -42,19 +51,23 @@ export const inputStyle = css({
   'input:focus-visible': {
     outline: 'none',
     caretColor: theme.colors.primaryDefault
-    // background: theme.colors.backgroundOverlayPrimary
   },
   variants: {
     size: {
       sm: {
-        padding: '3px 6px'
+        padding: '3px 6px',
+        lineHeight: theme.lineHeights.callout,
+        fontSize: theme.fontSizes.callout,
       },
       md: {
-        padding: '5px 10px'
+        padding: '4px 10px',
+        lineHeight: theme.lineHeights.subHeadline,
+        fontSize: theme.fontSizes.subHeadline,
       },
       lg: {
         padding: '7px 14px',
-        fontSize: '16px'
+        fontSize: theme.fontSizes.title5,
+        lineHeight: theme.lineHeights.title5
       }
     },
     disabledVariant: {
@@ -69,8 +82,6 @@ export const inputStyle = css({
       false: {},
       true: {
         borderColor: theme.colors.errorDefault,
-        boxShadow: `0 0 0 2px ${theme.colors.errorBorder}`,
-        backgroundColor: theme.colors.errorBg,
         color: theme.colors.errorDefault
       }
     },
@@ -81,17 +92,50 @@ export const inputStyle = css({
       true: {
         border: `1px solid ${theme.colors.borderSecondary}`
       }
+    },
+    borderType: {
+      underline: {
+        ...onlyBottomBorder,
+        borderBottomColor: 'transparent',
+        paddingLeft: '0!important',
+        paddingRight: '0!important',
+        borderRadius: 0,
+        boxShadow: 'none',
+        input: {
+          paddingLeft: 0,
+          paddingRight: 0,
+          border: 0
+        },
+        '&:hover': {
+          ...onlyBottomBorder,
+          borderBottomColor: theme.colors.dividerPrimary
+        },
+        '&:focus-within': {
+          ...onlyBottomBorder
+        }
+      },
+      outline: {
+        input: {
+          paddingTop: 0,
+          paddingBottom: 0,
+          border: 0
+        },
+        '&:hover': {
+          borderColor: theme.colors.borderSecondary,
+          background: theme.colors.secondaryHover
+        },
+        '&:focus-within': {
+          background: 'transparent'
+        }
+      }
     }
   },
   compoundVariants: [
     {
       disabledVariant: false,
       bordered: true,
+      invalid: false,
       css: {
-        '&:hover': {
-          borderColor: theme.colors.borderOverlayThirdary,
-          background: theme.colors.secondaryHover
-        },
         '&:focus-within': {
           outline: `none`,
           border: `1px solid ${theme.colors.borderOverlayThirdary}`
@@ -103,12 +147,37 @@ export const inputStyle = css({
       disabledVariant: false,
       bordered: true,
       css: {
+        borderColor: 'transparent',
         '&:hover': {
           borderColor: theme.colors.errorDefault
         },
         '&:focus-within': {
           outlineColor: theme.colors.errorDefault
         }
+      }
+    },
+    {
+      disabledVariant: true,
+      borderType: 'underline',
+      css: {
+        backgroundColor: 'unset',
+        color: theme.colors.typeDisabled
+      }
+    },
+    {
+      invalid: true,
+      borderType: 'outline',
+      css: {
+        borderColor: `${theme.colors.errorDefault}!important`,
+        boxShadow: `0 0 0 2px ${theme.colors.errorBorder}`,
+        backgroundColor: theme.colors.errorBg,
+      }
+    },
+    {
+      invalid: true,
+      borderType: 'underline',
+      css: {
+        borderBottomColor: `${theme.colors.errorDefault}!important`,
       }
     }
   ]

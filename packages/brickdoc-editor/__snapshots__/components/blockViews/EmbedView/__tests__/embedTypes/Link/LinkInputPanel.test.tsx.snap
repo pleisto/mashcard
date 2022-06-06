@@ -11,7 +11,7 @@ exports[`LinkInputPanel renders LinkInputPanel correctly 1`] = `
       embed_block.embed_types.link.panel.head
     </span>
     <div
-      class="MuiInput-root Mui-focused MuiInput-adornedStart MuiInput-adornedEnd brd-c-esVllU brd-c-esVllU-kehwYu-size-md brd-c-esVllU-jvaFlz-bordered-false brd-c-ctRiJR brd-c-ctRiJR-bSEVad-size-md"
+      class="MuiInput-root Mui-focused MuiInput-adornedStart MuiInput-adornedEnd brd-c-evILER brd-c-evILER-hfCMDt-size-md brd-c-evILER-kBNXiP-bordered-true brd-c-evILER-brRwLh-borderType-underline brd-c-evILER-iGlfwG-cv brd-c-ctRiJR brd-c-ctRiJR-jZSbRW-size-md"
       data-testid="editor-embed-block-link-input"
     >
       <span

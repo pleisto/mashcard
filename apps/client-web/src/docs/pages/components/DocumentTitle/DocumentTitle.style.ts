@@ -64,6 +64,7 @@ export const Input = styled(input, {
   padding: '0px !important',
   input: {
     lineHeight: '54px',
+    fontSize: '2.5rem',
     fontWeight: 600,
     border: 'none',
     padding: 0

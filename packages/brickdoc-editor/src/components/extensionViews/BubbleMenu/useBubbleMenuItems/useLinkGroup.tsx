@@ -27,7 +27,7 @@ export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
         name: 'linkInput',
         content: (
           <Input
-            bordered={false}
+            borderType='underline'
             value={inputLink}
             onChange={e => {
               setInputLink(e.target.value)

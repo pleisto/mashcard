@@ -31,11 +31,6 @@ const Icon = styled('span', {
   }
 })
 
-const InputDivider = styled('div', {
-  background: theme.colors.dividerOverlayThirdary,
-  height: '1px'
-})
-
 const EditPanelContainer = styled('div', {
   padding: '.8rem 1rem'
 })
@@ -93,16 +88,15 @@ export const EditPanel: FC<{
     <EditPanelContainer>
       <EditInput
         onPressEnter={onSubmitDisplayName}
-        bordered={false}
+        borderType='underline'
         size="md"
         value={editDisplayName}
         onChange={onDisplayNameChange}
       />
-      <InputDivider />
       <EditField>
         <EditInput
           onPressEnter={onSubmitLink}
-          bordered={false}
+          borderType='underline'
           size="md"
           prefix={<Link />}
           value={editLink}

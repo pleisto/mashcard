@@ -215,13 +215,13 @@ export const PageMenu: React.FC<PageMenuProps> = ({
       autoFocus
       prefix={<Icon.Edit />}
       disabled={renameBlockLoading}
-      size="sm"
-      bordered={false}
+      size="md"
       onPressEnter={onRename}
       onKeyDown={handleEscape}
       onBlur={onRename}
       ref={inputRef}
       defaultValue={titleText}
+      borderType="underline"
     />
   )
 
