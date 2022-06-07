@@ -2,7 +2,7 @@ import { parse } from '../grammar/core'
 import { makeContext } from '../tests/testHelper'
 import { buildTestCases } from '../tests'
 
-const testCases = buildTestCases('complete')
+const [testCases] = buildTestCases('complete')
 
 describe('completer', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>

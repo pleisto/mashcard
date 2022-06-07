@@ -1,5 +1,6 @@
 import { TestCaseInterface } from '../testType'
 import { AsyncTestCase } from './async'
+import { DependencyTestCase } from './dependency'
 import { FunctionCallTestCase } from './functionCall'
 import { NameTestCase } from './name'
 import { PowerFxTestCase } from './powerfx'
@@ -12,5 +13,6 @@ export const FeatureTestCases: TestCaseInterface[] = [
   PowerFxTestCase,
   SpreadsheetTestCase,
   NameTestCase,
-  AsyncTestCase
+  AsyncTestCase,
+  DependencyTestCase
 ]

@@ -2,7 +2,7 @@ import { parse } from '../grammar'
 import { buildTestCases } from '../tests'
 import { makeContext } from '../tests/testHelper'
 
-const finalTestCases = buildTestCases()
+const [finalTestCases] = buildTestCases()
 const validInputs: string[] = [
   '=a',
   '=-1.%',

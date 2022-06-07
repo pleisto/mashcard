@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`successExecute [Case insensitive] variable "=Variable.FOO" -> 10 1`] = `
+exports[`successExecute [Case insensitive] variable "=Variable.NUM1" -> 0 1`] = `
 Array [
   "codeFragments",
   Array [
@@ -43,15 +43,15 @@ Array [
         "findKey": Object {
           "namespaceId": "22222222-2222-2222-2222-222222222222",
           "type": "id",
-          "value": "22222222-2222-3333-2222-222222222222",
+          "value": "44444444-4444-5555-1111-222222222222",
         },
-        "id": "22222222-2222-3333-2222-222222222222",
+        "id": "44444444-4444-5555-1111-222222222222",
         "kind": "Variable",
-        "name": "foo",
+        "name": "num1",
         "namespaceId": "22222222-2222-2222-2222-222222222222",
       },
       "code": "Variable",
-      "display": "foo",
+      "display": "num1",
       "errors": Array [],
       "hide": false,
       "type": "number",
@@ -448,7 +448,7 @@ Array [
 ]
 `;
 
-exports[`successExecute variable "="foo"" -> 10 1`] = `
+exports[`successExecute variable "="num1"" -> 0 1`] = `
 Array [
   "codeFragments",
   Array [
@@ -465,15 +465,15 @@ Array [
         "findKey": Object {
           "namespaceId": "22222222-2222-2222-2222-222222222222",
           "type": "id",
-          "value": "22222222-2222-3333-2222-222222222222",
+          "value": "44444444-4444-5555-1111-222222222222",
         },
-        "id": "22222222-2222-3333-2222-222222222222",
+        "id": "44444444-4444-5555-1111-222222222222",
         "kind": "Variable",
-        "name": "foo",
+        "name": "num1",
         "namespaceId": "22222222-2222-2222-2222-222222222222",
       },
       "code": "Variable",
-      "display": "foo",
+      "display": "num1",
       "errors": Array [],
       "hide": false,
       "type": "number",
@@ -482,7 +482,7 @@ Array [
 ]
 `;
 
-exports[`successExecute variable "=#22222222-2222-2222-2222-222222222222.foo" -> 10 1`] = `
+exports[`successExecute variable "=#22222222-2222-2222-2222-222222222222.num1" -> 0 1`] = `
 Array [
   "codeFragments",
   Array [
@@ -525,15 +525,15 @@ Array [
         "findKey": Object {
           "namespaceId": "22222222-2222-2222-2222-222222222222",
           "type": "id",
-          "value": "22222222-2222-3333-2222-222222222222",
+          "value": "44444444-4444-5555-1111-222222222222",
         },
-        "id": "22222222-2222-3333-2222-222222222222",
+        "id": "44444444-4444-5555-1111-222222222222",
         "kind": "Variable",
-        "name": "foo",
+        "name": "num1",
         "namespaceId": "22222222-2222-2222-2222-222222222222",
       },
       "code": "Variable",
-      "display": "foo",
+      "display": "num1",
       "errors": Array [],
       "hide": false,
       "type": "number",
@@ -542,7 +542,7 @@ Array [
 ]
 `;
 
-exports[`successExecute variable "=#CurrentBlock.foo" -> 10 1`] = `
+exports[`successExecute variable "=#CurrentBlock.num1" -> 0 1`] = `
 Array [
   "codeFragments",
   Array [
@@ -559,15 +559,15 @@ Array [
         "findKey": Object {
           "namespaceId": "22222222-2222-2222-2222-222222222222",
           "type": "id",
-          "value": "22222222-2222-3333-2222-222222222222",
+          "value": "44444444-4444-5555-1111-222222222222",
         },
-        "id": "22222222-2222-3333-2222-222222222222",
+        "id": "44444444-4444-5555-1111-222222222222",
         "kind": "Variable",
-        "name": "foo",
+        "name": "num1",
         "namespaceId": "22222222-2222-2222-2222-222222222222",
       },
       "code": "Variable",
-      "display": "foo",
+      "display": "num1",
       "errors": Array [],
       "hide": false,
       "type": "number",
@@ -576,7 +576,7 @@ Array [
 ]
 `;
 
-exports[`successExecute variable "=Variable.foo" -> 10 1`] = `
+exports[`successExecute variable "=Variable.num1" -> 0 1`] = `
 Array [
   "codeFragments",
   Array [
@@ -619,15 +619,15 @@ Array [
         "findKey": Object {
           "namespaceId": "22222222-2222-2222-2222-222222222222",
           "type": "id",
-          "value": "22222222-2222-3333-2222-222222222222",
+          "value": "44444444-4444-5555-1111-222222222222",
         },
-        "id": "22222222-2222-3333-2222-222222222222",
+        "id": "44444444-4444-5555-1111-222222222222",
         "kind": "Variable",
-        "name": "foo",
+        "name": "num1",
         "namespaceId": "22222222-2222-2222-2222-222222222222",
       },
       "code": "Variable",
-      "display": "foo",
+      "display": "num1",
       "errors": Array [],
       "hide": false,
       "type": "number",
@@ -636,7 +636,7 @@ Array [
 ]
 `;
 
-exports[`successExecute variable "=foo" -> 10 1`] = `
+exports[`successExecute variable "=num1" -> 0 1`] = `
 Array [
   "codeFragments",
   Array [
@@ -653,15 +653,15 @@ Array [
         "findKey": Object {
           "namespaceId": "22222222-2222-2222-2222-222222222222",
           "type": "id",
-          "value": "22222222-2222-3333-2222-222222222222",
+          "value": "44444444-4444-5555-1111-222222222222",
         },
-        "id": "22222222-2222-3333-2222-222222222222",
+        "id": "44444444-4444-5555-1111-222222222222",
         "kind": "Variable",
-        "name": "foo",
+        "name": "num1",
         "namespaceId": "22222222-2222-2222-2222-222222222222",
       },
       "code": "Variable",
-      "display": "foo",
+      "display": "num1",
       "errors": Array [],
       "hide": false,
       "type": "number",

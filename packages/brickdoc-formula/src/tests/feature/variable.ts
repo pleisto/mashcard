@@ -1,9 +1,13 @@
 import { TestCaseInterface, DEFAULT_FIRST_NAMESPACEID } from '../testType'
 
 const pageId = '22222222-2222-2222-2222-222222222222'
-const fooId = '22222222-2222-3333-2222-222222222222'
-const fooPlusId = '22222222-2222-4444-7777-222222222222'
-const fooMaxId = '22222222-2222-5555-2222-222222222222'
+
+const num0Id = '44444444-4444-5555-0000-222222222222'
+const num1Id = '44444444-4444-5555-1111-222222222222'
+const num2Id = '44444444-4444-5555-2222-222222222222'
+const num3Id = '44444444-4444-5555-3333-222222222222'
+const num4Id = '44444444-4444-5555-4444-222222222222'
+const num5Id = '44444444-4444-5555-5555-222222222222'
 
 export const VariableTestCase: TestCaseInterface = {
   name: 'variable',
@@ -13,147 +17,141 @@ export const VariableTestCase: TestCaseInterface = {
         pageName: 'Variable',
         pageId,
         variables: [
-          { definition: '=24', variableName: 'bar' },
-          { definition: '=SLEEP(10)', variableName: 'foo', variableId: fooId },
-          { definition: '=foo+1', variableName: 'fooPlus1', variableId: fooPlusId },
-          {
-            definition: '=fooPlus1+1',
-            variableName: 'fooMax',
-            variableId: fooMaxId,
-            insertOptions: {}
-          }
+          { variableName: 'num0', definition: '=0', variableId: num0Id },
+          { variableName: 'num1', definition: '=0', variableId: num1Id },
+          { variableName: 'num2', definition: '=num1', variableId: num2Id },
+          { variableName: 'num3', definition: '=num1+num0', variableId: num3Id },
+          { variableName: 'num4', definition: '=num3+num2', variableId: num4Id },
+          { variableName: 'num5', definition: '=num4+num0', variableId: num5Id }
         ]
       }
     ],
     successTestCases: [
       {
-        definition: '=foo',
+        definition: '=num1',
         namespaceId: pageId,
-        groupOptions: [{ name: 'complete', options: { name: 'bar', kind: 'variable' } }],
-        result: 10,
+        groupOptions: [{ name: 'complete', options: { name: 'num0', kind: 'variable' } }],
+        result: 0,
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'blockDependencies', match: [pageId] },
-          { key: 'variableDependencies', match: [{ namespaceId: pageId, variableId: fooId }] },
-          { key: 'flattenVariableDependencies', match: [{ namespaceId: pageId, variableId: fooId }] },
-          { key: 'nameDependencies', match: [{ name: 'foo', namespaceId: pageId }] }
+          { key: 'variableDependencies', match: [{ namespaceId: pageId, variableId: num1Id }] },
+          { key: 'flattenVariableDependencies', match: [{ namespaceId: pageId, variableId: num1Id }] },
+          { key: 'nameDependencies', match: [{ name: 'num1', namespaceId: pageId }] }
         ]
       },
       {
-        definition: '="foo"',
+        definition: '="num1"',
         namespaceId: pageId,
-        result: 10,
+        result: 0,
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'blockDependencies', match: [pageId] },
-          { key: 'nameDependencies', match: [{ name: 'foo', namespaceId: pageId }] }
+          { key: 'nameDependencies', match: [{ name: 'num1', namespaceId: pageId }] }
         ]
       },
       {
-        definition: `=#${pageId}.foo`,
-        result: 10,
+        definition: `=#${pageId}.num1`,
+        result: 0,
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'blockDependencies', match: [pageId] },
-          { key: 'nameDependencies', match: [{ name: 'foo', namespaceId: pageId }] }
+          { key: 'nameDependencies', match: [{ name: 'num1', namespaceId: pageId }] }
         ]
       },
       {
-        definition: '=Variable.FOO',
-        result: 10,
+        definition: '=Variable.NUM1',
+        result: 0,
         label: 'Case insensitive',
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'blockDependencies', match: [pageId] },
-          { key: 'nameDependencies', match: [{ name: 'foo', namespaceId: pageId }] }
+          { key: 'nameDependencies', match: [{ name: 'num1', namespaceId: pageId }] }
         ]
       },
       {
-        definition: '=#CurrentBlock.foo',
-        result: 10,
+        definition: '=#CurrentBlock.num1',
+        result: 0,
         namespaceId: pageId,
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'blockDependencies', match: [pageId] },
-          { key: 'nameDependencies', match: [{ name: 'foo', namespaceId: pageId }] }
+          { key: 'nameDependencies', match: [{ name: 'num1', namespaceId: pageId }] }
         ]
       },
       {
-        definition: '=Variable.foo',
-        result: 10,
+        definition: '=Variable.num1',
+        result: 0,
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'blockDependencies', match: [pageId] },
-          { key: 'nameDependencies', match: [{ name: 'foo', namespaceId: pageId }] }
+          { key: 'nameDependencies', match: [{ name: 'num1', namespaceId: pageId }] }
         ]
       },
       {
-        definition: '=Variable.foo+Variable.bar',
-        result: 34,
+        definition: '=Variable.num1+Variable.num0',
+        result: 0,
         expected: [
           { key: 'blockDependencies', match: [pageId] },
           {
             key: 'nameDependencies',
             match: [
-              { name: 'foo', namespaceId: pageId },
-              { name: 'bar', namespaceId: pageId }
+              { name: 'num1', namespaceId: pageId },
+              { name: 'num0', namespaceId: pageId }
             ]
           }
         ]
       },
       {
-        definition: '=foo + bar',
-        result: 34,
+        definition: '=num1 + num0',
+        result: 0,
         namespaceId: pageId,
         expected: [
           { key: 'blockDependencies', match: [pageId] },
           {
             key: 'nameDependencies',
             match: [
-              { name: 'foo', namespaceId: pageId },
-              { name: 'bar', namespaceId: pageId }
+              { name: 'num1', namespaceId: pageId },
+              { name: 'num0', namespaceId: pageId }
             ]
           }
         ]
       },
       {
-        definition: '=Variable.fooPlus1 + foo',
+        definition: '=Variable.num3 + num1',
         namespaceId: pageId,
-        result: 21,
+        result: 0,
         expected: [
           { key: 'blockDependencies', match: [pageId] },
           {
             key: 'variableDependencies',
             match: [
-              { namespaceId: pageId, variableId: fooPlusId },
-              { namespaceId: pageId, variableId: fooId }
+              { namespaceId: pageId, variableId: num3Id },
+              { namespaceId: pageId, variableId: num1Id }
             ]
           },
           {
             key: 'nameDependencies',
             match: [
-              { name: 'fooPlus1', namespaceId: pageId },
-              { name: 'foo', namespaceId: pageId }
+              { name: 'num3', namespaceId: pageId },
+              { name: 'num1', namespaceId: pageId }
             ]
           }
         ]
       },
-      { definition: '= SLEEP(10)', result: 10 },
       {
-        definition: '=Variable.fooMax',
-        result: 12,
+        definition: '=num4 + num5 + num0',
+        namespaceId: pageId,
+        result: 0,
         expected: [
-          { key: 'blockDependencies', match: [pageId] },
-          { key: 'variableDependencies', match: [{ namespaceId: pageId, variableId: fooMaxId }] },
+          {
+            key: 'variableDependencies',
+            match: [num4Id, num5Id, num0Id].map(id => ({ namespaceId: pageId, variableId: id }))
+          },
           {
             key: 'flattenVariableDependencies',
-            match: [
-              { namespaceId: pageId, variableId: fooId },
-              { namespaceId: pageId, variableId: fooPlusId },
-              { namespaceId: pageId, variableId: fooMaxId }
-            ]
-          },
-          { key: 'nameDependencies', match: [{ name: 'fooMax', namespaceId: pageId }] }
+            match: [num1Id, num0Id, num3Id, num2Id, num4Id, num5Id].map(id => ({ namespaceId: pageId, variableId: id }))
+          }
         ]
       }
     ],
@@ -191,7 +189,7 @@ export const VariableTestCase: TestCaseInterface = {
       {
         definition: '=fo',
         namespaceId: pageId,
-        groupOptions: [{ name: 'complete', options: { name: 'bar', kind: 'variable' } }],
+        groupOptions: [{ name: 'complete', options: { name: 'num0', kind: 'variable' } }],
         errorType: 'syntax',
         errorMessage: 'Unknown function fo',
         expected: [
@@ -201,10 +199,26 @@ export const VariableTestCase: TestCaseInterface = {
         ]
       },
       {
-        definition: '=fooPlus1',
+        definition: '=num5',
         namespaceId: pageId,
-        variableId: fooId,
-        name: 'foo',
+        variableId: num0Id,
+        name: 'num0',
+        errorType: 'circular_dependency',
+        errorMessage: 'Circular dependency found'
+      },
+      {
+        definition: '=num4',
+        namespaceId: pageId,
+        variableId: num0Id,
+        name: 'num0',
+        errorType: 'circular_dependency',
+        errorMessage: 'Circular dependency found'
+      },
+      {
+        definition: '=IF(false, 1, num4)',
+        namespaceId: pageId,
+        variableId: num0Id,
+        name: 'num0',
         errorType: 'circular_dependency',
         errorMessage: 'Circular dependency found'
       }

@@ -5,6 +5,7 @@ import { ContextInterface, FunctionContext, InterpretContext } from '../types'
 import { Cell, Column, Row, SpreadsheetClass, SpreadsheetType } from '../controls'
 import { columnDisplayIndex } from '../grammar'
 import {
+  BaseTestCase,
   CellInput,
   ColumnInput,
   InsertOptions,
@@ -169,7 +170,7 @@ export const makeContext = async ({ pages, initializeOptions }: MakeContextOptio
 
   const meta: MakeContextResult['buildMeta'] = args => ({
     variableId: args.variableId ?? uuid(),
-    input: args.definition,
+    input: args.definition!,
     namespaceId: args.namespaceId ?? firstNamespaceId ?? uuid(),
     name: args.name ?? 'testInput',
     position: 0,
@@ -177,4 +178,12 @@ export const makeContext = async ({ pages, initializeOptions }: MakeContextOptio
   })
 
   return { formulaContext, interpretContext, buildMeta: meta }
+}
+
+export const trackTodo = (it: jest.It, testCases: Array<BaseTestCase<{}>>): void => {
+  testCases
+    .filter(t => t.todo)
+    .forEach(t => {
+      it.todo(`${t.jestTitle} -> ${t.todo!}`)
+    })
 }

@@ -1,14 +1,16 @@
 import { parse } from '../grammar'
-import { makeContext, buildTestCases } from '../tests'
+import { makeContext, buildTestCases, trackTodo } from '../tests'
 
+const [testCases] = buildTestCases()
 describe('errorParse', () => {
-  const testCases = buildTestCases()
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
     jest.useRealTimers()
     ctx = await makeContext(testCases.options)
     jest.clearAllTimers()
   })
+
+  trackTodo(it, testCases.errorTestCases)
 
   it.each(testCases.errorTestCases)('$jestTitle', async args => {
     jest.useRealTimers()
@@ -21,19 +23,21 @@ describe('errorParse', () => {
     ])
 
     for (const { key, match, matchType } of args.expected ?? []) {
+      const matchData = [key, parseResult.variableParseResult[key]]
+
       switch (matchType) {
         case undefined:
         case 'toStrictEqual':
           // eslint-disable-next-line jest/no-conditional-expect
-          expect([key, parseResult.variableParseResult[key]]).toStrictEqual([key, match])
+          expect(matchData).toStrictEqual([key, match])
           break
         case 'toMatchObject':
           // eslint-disable-next-line jest/no-conditional-expect
-          expect([key, parseResult.variableParseResult[key]]).toMatchObject([key, match])
+          expect(matchData).toMatchObject([key, match])
           break
         case 'toMatchSnapshot':
           // eslint-disable-next-line jest/no-conditional-expect
-          expect([key, parseResult.variableParseResult[key]]).toMatchSnapshot()
+          expect(matchData).toMatchSnapshot()
           break
       }
     }

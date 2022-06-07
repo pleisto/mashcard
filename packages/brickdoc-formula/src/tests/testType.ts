@@ -9,13 +9,12 @@ export const uuids = [...Array(999)].map(
   (o, index) => `00000000-0000-${String(index).padStart(4, '0')}-0000-000000000000` as const
 )
 
-type ExpectedType = {
-  key: keyof VariableParseResult
-} & (
+type Match =
   | { matchType?: 'toStrictEqual'; match: any }
   | { matchType: 'toMatchObject'; match: any }
   | { matchType: 'toMatchSnapshot'; match?: any }
-)
+
+type ExpectedType<T extends object> = T & Match
 
 export interface InsertOptions {
   ignoreParseError?: true
@@ -71,8 +70,8 @@ export interface PageInput {
   variables?: VariableInput[]
   spreadsheets?: Array<SpreadsheetInput<any, any>>
 }
-type FeatureName = 'async' | 'functionCall' | 'nameCheck' | 'powerfx' | 'spreadsheet' | 'variable'
-type FeatureTestName = 'complete' | 'cst' | 'dependency'
+type FeatureName = 'async' | 'functionCall' | 'nameCheck' | 'powerfx' | 'spreadsheet' | 'variable' | 'dependency'
+type FeatureTestName = 'complete' | 'cst'
 export type TestCaseName = OperatorName | FeatureName | FeatureTestName
 
 interface GroupOption {
@@ -80,32 +79,41 @@ interface GroupOption {
   options?: any
 }
 
-interface BaseTestCase {
-  definition: string
+export interface BaseTestCase<T extends object> {
+  definition?: string
   groupOptions?: GroupOption[]
   label?: string
-  expected?: ExpectedType[]
+  expected?: [ExpectedType<T>, ...Array<ExpectedType<T>>]
   namespaceId?: VariableMetadata['namespaceId']
   variableId?: VariableMetadata['variableId']
   name?: VariableMetadata['name']
   richType?: VariableMetadata['richType']
+  todo?: string
   jestTitle?: string
 }
-export interface SuccessTestCaseType extends BaseTestCase {
+export interface SuccessTestCaseType
+  extends RequireField<BaseTestCase<{ key: keyof VariableParseResult }>, 'definition'> {
   result: any
 }
 
-export interface ErrorTestCaseType extends BaseTestCase {
+export interface ErrorTestCaseType
+  extends RequireField<BaseTestCase<{ key: keyof VariableParseResult }>, 'definition'> {
   valid?: boolean
   errorType: ErrorType
   errorMessage: string
 }
 
-export interface TestCaseType {
-  functionClauses?: FormulaContextArgs['functionClauses']
-  pages?: PageInput[]
-  successTestCases?: SuccessTestCaseType[]
-  errorTestCases?: ErrorTestCaseType[]
+interface DependencyTestCase {
+  definition: string
+  result: any
+  expected: BaseTestCase<{
+    namespaceId: VariableMetadata['namespaceId']
+    name: VariableMetadata['name']
+  }>['expected'] & {}
+}
+
+export interface DependencyTestCaseType extends RequireField<BaseTestCase<{}>, 'namespaceId' | 'name'> {
+  testCases: [DependencyTestCase, ...DependencyTestCase[]]
 }
 
 export interface TestCaseInterface {
@@ -119,11 +127,20 @@ export interface MakeContextOptions {
 }
 
 export interface MakeContextResult extends Omit<FunctionContext, 'meta'> {
-  buildMeta: (args: BaseTestCase) => FunctionContext['meta']
+  buildMeta: (args: BaseTestCase<{}>) => FunctionContext['meta']
+}
+
+export interface TestCaseType {
+  functionClauses?: FormulaContextArgs['functionClauses']
+  pages?: PageInput[]
+  successTestCases?: SuccessTestCaseType[]
+  errorTestCases?: ErrorTestCaseType[]
+  dependencyTestCases?: DependencyTestCaseType[]
 }
 
 export interface TestCaseInput {
   options: Required<MakeContextOptions>
   successTestCases: Array<RequireField<SuccessTestCaseType, 'groupOptions' | 'jestTitle'>>
   errorTestCases: Array<RequireField<ErrorTestCaseType, 'groupOptions' | 'jestTitle'>>
+  dependencyTestCases: Array<RequireField<DependencyTestCaseType, 'groupOptions' | 'jestTitle'>>
 }
