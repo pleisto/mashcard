@@ -348,12 +348,15 @@ export type AnyFunctionResult<T extends FormulaType> = TypedResult<T> | ErrorRes
 export type FormulaResult<T extends FormulaType> = TypedResult<T>['result']
 
 export type FormulaSourceType = 'normal' | 'spreadsheet'
-export interface BaseFormula {
+
+export interface FormulaDefinition {
+  definition?: string
+  meta?: object
+  name?: VariableName
+}
+export interface BaseFormula extends Required<FormulaDefinition> {
   blockId: uuid
-  definition: string
-  meta: object
   id: uuid
-  name: VariableName
   cacheValue: BaseResult
   version: number
   type: string
@@ -481,16 +484,15 @@ export interface ContextInterface {
   completions: (namespaceId: NamespaceId, variableId: VariableId | undefined) => Completion[]
   findViewRender: (viewType: ViewType) => ViewRender | undefined
   findBlockById: (blockId: NamespaceId) => BlockType | undefined
-  setBlock: (blockId: NamespaceId, name: string) => void
-  removeBlock: (blockId: NamespaceId) => void
-  setName: (nameDependency: NameDependencyWithKind) => void
-  removeName: (id: NamespaceId) => void
+  removeBlock: (blockId: NamespaceId) => Promise<void>
+  setName: (nameDependency: NameDependencyWithKind) => Promise<void>
+  removeName: (id: NamespaceId) => Promise<void>
   findNames: (namespaceId: NamespaceId, name: string) => NameDependencyWithKind[]
   findSpreadsheet: (key: FindKey) => SpreadsheetType | undefined
   findColumn: (spreadsheetId: SpreadsheetId, key: FindKey) => ColumnType | undefined
   findRow: (spreadsheetId: SpreadsheetId, key: FindKey) => RowType | undefined
-  setSpreadsheet: (spreadsheet: SpreadsheetType) => void
-  removeSpreadsheet: (spreadsheetId: SpreadsheetId) => void
+  setSpreadsheet: (spreadsheet: SpreadsheetType) => Promise<void>
+  removeSpreadsheet: (spreadsheetId: SpreadsheetId) => Promise<void>
   listVariables: (namespaceId: NamespaceId) => VariableInterface[]
   findVariableById: (namespaceId: NamespaceId, variableId: VariableId) => VariableInterface | undefined
   findVariableByName: (namespaceId: NamespaceId, name: string) => VariableInterface | undefined
@@ -760,6 +762,7 @@ export interface EventScope {
 
 export interface FormulaEventPayload<T> {
   readonly key: string
+  readonly level?: number
   readonly scope: EventScope | null
   readonly id: string
   readonly namespaceId: string
@@ -778,7 +781,7 @@ export interface EventDependency<T extends FormulaEventPayload<any>> {
     | 'NameChange'
     | 'NameRemove'
     | 'BlockRenameOrDelete'
-  readonly event: EventType<T>
+  readonly event: EventType<T, Promise<void>>
   readonly eventId: string
   readonly scope: EventScope
   readonly key: string
@@ -843,19 +846,20 @@ export interface VariableInterface {
   t: VariableData
   isReadyT: boolean
   isNew: boolean
+  id: string
   currentUUID: string
   formulaContext: ContextInterface
 
-  buildFormula: (definition?: string) => Formula
-  cleanup: (hard: boolean) => void
-  trackDependency: VoidFunction
+  buildFormula: (input?: FormulaDefinition) => Formula
+  cleanup: () => void
+  trackDependency: () => Promise<void>
   trackDirty: VoidFunction
   save: () => Promise<void>
   nameDependency: () => NameDependencyWithKind
   namespaceName: (pageId: NamespaceId) => string
-  updateDefinition: (definition: Definition) => Promise<void>
+  updateDefinition: (input: FormulaDefinition) => Promise<void>
   meta: () => VariableMetadata
-  onUpdate: ({ skipPersist }: { skipPersist?: boolean }) => void
+  onUpdate: ({ skipPersist }: { skipPersist?: boolean }) => Promise<void>
 }
 
 export interface BackendActions {

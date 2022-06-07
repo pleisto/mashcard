@@ -1,6 +1,6 @@
 import { TestCaseInterface } from '../testType'
 
-const namespaceId = '11111111-1111-4444-aaaa-111111111111'
+const namespaceId = Symbol('nameCheck')
 
 export const NameTestCase: TestCaseInterface = {
   name: 'nameCheck',

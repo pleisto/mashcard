@@ -13,7 +13,6 @@ describe('errorParse', () => {
   trackTodo(it, testCases.errorTestCases)
 
   it.each(testCases.errorTestCases)('$jestTitle', async args => {
-    jest.useRealTimers()
     const newCtx = { ...ctx, meta: ctx.buildMeta(args) }
     const parseResult = parse(newCtx)
     expect(parseResult.success).toBe(false)
@@ -41,6 +40,5 @@ describe('errorParse', () => {
           break
       }
     }
-    jest.clearAllTimers()
   })
 })

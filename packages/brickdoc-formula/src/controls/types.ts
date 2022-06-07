@@ -69,7 +69,7 @@ export interface BlockType {
   _formulaContext: ContextInterface
   name: (pageId: NamespaceId) => string
   nameDependency: () => NameDependencyWithKind
-  cleanup: VoidFunction
+  cleanup: () => Promise<void>
   persistence: () => BlockInitializer
   handleCodeFragments: handleCodeFragmentsType
   handleInterpret: handleInterpretType
@@ -190,7 +190,7 @@ export interface SpreadsheetType {
   spreadsheetId: SpreadsheetId
   namespaceId: NamespaceId
   dynamic: boolean
-  cleanup: (hard: boolean) => void
+  cleanup: () => void
   persistence?: SpreadsheetDynamicPersistence
   handleCodeFragments: handleCodeFragmentsType
   handleInterpret: handleInterpretType

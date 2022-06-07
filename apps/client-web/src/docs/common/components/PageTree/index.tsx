@@ -277,7 +277,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
   useEffect(() => {
     pageBlocks.forEach(b => {
       if (!b.parentId || b.type === 'doc') {
-        dispatchFormulaBlockNameChangeOrDelete({ id: b.id, name: b.text, deleted: false })
+        void dispatchFormulaBlockNameChangeOrDelete({ id: b.id, name: b.text, deleted: false })
       }
     })
   }, [pageBlocks])

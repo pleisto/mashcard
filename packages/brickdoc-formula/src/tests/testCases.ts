@@ -39,7 +39,7 @@ const reduceTestCaseInput = (testCases: TestCaseInterface[]): TestCaseInput => {
           ...buildRequiredFields(
             curr,
             s,
-            `${s.name} ${s.testCases.map(s => s.definition).join(',')}`,
+            `${s.name} ${s.testCases.map(s => `${s.action} ${JSON.stringify(s.formula)}`).join(',')}`,
             s.testCases.map(s => String(s.result)).join(',')
           )
         }))

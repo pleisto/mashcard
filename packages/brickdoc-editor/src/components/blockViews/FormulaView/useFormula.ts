@@ -593,7 +593,7 @@ export const useFormula = ({
   React.useEffect(() => {
     const listener = BrickdocEventBus.subscribe(
       FormulaUpdatedViaId,
-      e => {
+      async e => {
         innerUpdateVariable(e.payload.meta)
       },
       {

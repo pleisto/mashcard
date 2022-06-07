@@ -42,10 +42,10 @@ export class BlockClass implements BlockType {
 
     const blockNameSubscription = BrickdocEventBus.subscribe(
       FormulaBlockNameChangedOrDeleted,
-      e => {
+      async e => {
         if (!e.payload.meta.deleted) {
           this._name = e.payload.meta.name || 'Untitled'
-          this._formulaContext.setName(this.nameDependency())
+          await this._formulaContext.setName(this.nameDependency())
         }
       },
       { subscribeId: `Block#${this.id}`, eventId: this.id }
@@ -54,7 +54,7 @@ export class BlockClass implements BlockType {
     const blockDeleteSubcription = BrickdocEventBus.subscribe(
       DocSoftDeleted,
       e => {
-        this._formulaContext.removeBlock(this.id)
+        void this._formulaContext.removeBlock(this.id)
       },
       {
         subscribeId: `Block#${this.id}`,
@@ -85,13 +85,13 @@ export class BlockClass implements BlockType {
     }
   }
 
-  public cleanup(): void {
-    this._formulaContext.removeName(this.id)
+  public async cleanup(): Promise<void> {
     this.eventListeners.forEach(listener => {
       listener.unsubscribe()
     })
     this.eventListeners = []
-    dispatchFormulaBlockNameChangeOrDelete({ id: this.id, name: this._name, deleted: true })
+    await this._formulaContext.removeName(this.id)
+    await dispatchFormulaBlockNameChangeOrDelete({ id: this.id, name: this._name, deleted: true })
   }
 
   async handleInterpret(interpreter: FormulaInterpreter, name: string): Promise<AnyTypeResult> {

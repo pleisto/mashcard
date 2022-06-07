@@ -3,21 +3,23 @@ import { ContextState } from './context'
 import { Column, Row } from './controls'
 import { FormulaEventPayload, VariableInterface, VariableTask } from './types'
 
-export const FormulaTickViaId = event<{
-  uuid: string
-  variableId: string
-  namespaceId: string
-}>()('FormulaTickViaId', ({ variableId, namespaceId }) => {
+export const FormulaTickViaId = event<
+  {
+    uuid: string
+    variableId: string
+    namespaceId: string
+  },
+  Promise<void>
+>()('FormulaTickViaId', ({ variableId, namespaceId }) => {
   return { id: `${namespaceId},${variableId}` }
 })
 
-export const FormulaUpdatedViaId = event<FormulaEventPayload<VariableInterface>>()('FormulaUpdatedViaId', v => {
-  return { id: `${v.namespaceId},${v.id}` }
-})
-
-export const FormulaInnerRefresh = event<FormulaEventPayload<null>>()('FormulaInnerRefresh', ({ namespaceId, id }) => {
-  return { id: `${namespaceId},${id}` }
-})
+export const FormulaUpdatedViaId = event<FormulaEventPayload<VariableInterface>, Promise<void>>()(
+  'FormulaUpdatedViaId',
+  v => {
+    return { id: `${v.namespaceId},${v.id}` }
+  }
+)
 
 export const FormulaTaskStarted = event<{ task: VariableTask; namespaceId: string; variableId: string }>()(
   'FormulaTaskStarted',
@@ -33,14 +35,14 @@ export const FormulaTaskCompleted = event<{ task: VariableTask; namespaceId: str
   }
 )
 
-export const FormulaBlockNameChangedOrDeleted = event<FormulaEventPayload<{ name: string; deleted: boolean }>>()(
-  'FormulaBlockNameChangedOrDeleted',
-  ({ id }) => {
-    return { id }
-  }
-)
+export const FormulaBlockNameChangedOrDeleted = event<
+  FormulaEventPayload<{ name: string; deleted: boolean }>,
+  Promise<void>
+>()('FormulaBlockNameChangedOrDeleted', ({ id }) => {
+  return { id }
+})
 
-export const dispatchFormulaBlockNameChangeOrDelete = ({
+export const dispatchFormulaBlockNameChangeOrDelete = async ({
   id,
   name,
   deleted
@@ -48,36 +50,37 @@ export const dispatchFormulaBlockNameChangeOrDelete = ({
   id: string
   name: string
   deleted: boolean
-}): void => {
-  BrickdocEventBus.dispatch(
+}): Promise<void> => {
+  const result = BrickdocEventBus.dispatch(
     FormulaBlockNameChangedOrDeleted({ id, namespaceId: id, key: id, scope: null, meta: { name, deleted } })
   )
+  await Promise.all(result)
 }
 
 export type SpreadsheetUpdateNameViaIdPayload = FormulaEventPayload<null>
 
-export const SpreadsheetReloadViaId = event<SpreadsheetUpdateNameViaIdPayload>()(
+export const SpreadsheetReloadViaId = event<SpreadsheetUpdateNameViaIdPayload, Promise<void>>()(
   'SpreadsheetReloadViaId',
   ({ id, namespaceId }) => {
     return { id: `${namespaceId},${id}` }
   }
 )
 
-export const SpreadsheetUpdateNameViaId = event<FormulaEventPayload<string>>()(
+export const SpreadsheetUpdateNameViaId = event<FormulaEventPayload<string>, Promise<void>>()(
   'SpreadsheetUpdateNameViaId',
   ({ id, namespaceId }) => {
     return { id: `${namespaceId},${id}` }
   }
 )
 
-export const FormulaContextNameChanged = event<FormulaEventPayload<{ name: string; kind: string }>>()(
+export const FormulaContextNameChanged = event<FormulaEventPayload<{ name: string; kind: string }>, Promise<void>>()(
   'FormulaContextNameChanged',
   ({ namespaceId, meta: { name } }) => {
     return { id: `${namespaceId}#${name}` }
   }
 )
 
-export const FormulaContextNameRemove = event<FormulaEventPayload<{ name: string; kind: string }>>()(
+export const FormulaContextNameRemove = event<FormulaEventPayload<{ name: string; kind: string }>, Promise<void>>()(
   'FormulaContextNameRemove',
   ({ namespaceId, meta: { name } }) => {
     return { id: `${namespaceId}#${name}` }
@@ -102,7 +105,7 @@ export const SpreadsheetUpdateColumnsViaId = event<{
   return { id: `${namespaceId},${spreadsheetId}` }
 })
 
-export const FormulaContextTickTrigger = event<{ domain: string; state: ContextState }>()(
+export const FormulaContextTickTrigger = event<{ domain: string; state: ContextState }, Promise<void>>()(
   'FormulaContextTickTrigger',
   ({ domain, state }) => {
     return { id: `FormulaContext#${domain}` }

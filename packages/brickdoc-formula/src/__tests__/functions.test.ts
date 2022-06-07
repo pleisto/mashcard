@@ -13,9 +13,7 @@ const testCases = BUILTIN_CLAUSES.flatMap(c =>
 describe('functions', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
-    jest.useRealTimers()
     ctx = await makeContext({ pages: [] })
-    jest.clearAllTimers()
   })
 
   it.each(testCases)('$title', async ({ t, title, reference, args }) => {

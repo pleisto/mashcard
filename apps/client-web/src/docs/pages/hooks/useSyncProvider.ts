@@ -120,7 +120,7 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
       if (blocks.length > 0 || deletedIds.length > 0) {
         blocks.forEach(b => {
           if (b.type === 'doc') {
-            dispatchFormulaBlockNameChangeOrDelete({ id: b.id, name: b.text, deleted: false })
+            void dispatchFormulaBlockNameChangeOrDelete({ id: b.id, name: b.text, deleted: false })
           }
           BrickdocEventBus.dispatch(BlockUpdated(b as Block))
           dirtyBlocksMap.current.delete(b.id)

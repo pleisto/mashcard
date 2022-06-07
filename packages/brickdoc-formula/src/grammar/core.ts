@@ -629,6 +629,7 @@ const generateTask = async ({
   parseResult: ParseResult
 }): Promise<VariableTask> => {
   const result = innerInterpretFirst({ parseResult, ctx })
+
   // Fail fast
   if (result) {
     return createVariableTask({ async: false, variableValue: result, ctx, parseResult })

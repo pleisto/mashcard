@@ -177,7 +177,7 @@ const testCases: Array<{
   }
 ]
 
-describe('event', () => {
+describe('shouldReceiveEvent', () => {
   it.each(testCases)('"$label => $result"', ({ listenedScope, eventScope, result }) => {
     expect(shouldReceiveEvent(listenedScope, eventScope)).toBe(result)
   })

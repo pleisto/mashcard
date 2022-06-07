@@ -1,8 +1,6 @@
-import { BrickdocEventBus } from '@brickdoc/schema'
 import { SwitchInitializer, SwitchType } from './types'
 import { ContextInterface, FunctionContext, FunctionResult, VariableMetadata } from '../types'
 import { functionResult2lambda } from '../grammar/lambda'
-import { FormulaInnerRefresh } from '../events'
 
 export class SwitchClass implements SwitchType {
   checked: boolean
@@ -29,15 +27,6 @@ export class SwitchClass implements SwitchType {
         this
       )()
       this.checked = checked
-      BrickdocEventBus.dispatch(
-        FormulaInnerRefresh({
-          namespaceId: ctx.meta.namespaceId,
-          id: ctx.meta.variableId,
-          meta: null,
-          scope: null,
-          key: ctx.meta.variableId
-        })
-      )
     }
   }
 

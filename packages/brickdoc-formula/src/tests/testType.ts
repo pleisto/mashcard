@@ -2,12 +2,17 @@ import { FixedLengthTuple, Repeat, RequireField } from '@brickdoc/active-support
 import { FormulaContextArgs } from '../context'
 import { Cell } from '../controls'
 import { OperatorName } from '../grammar'
-import { ErrorType, FunctionContext, VariableMetadata, VariableParseResult } from '../types'
+import { ErrorType, FormulaDefinition, FunctionContext, VariableMetadata, VariableParseResult } from '../types'
 
 export const DEFAULT_FIRST_NAMESPACEID = '00000000-0000-0000-0000-000000000000'
-export const uuids = [...Array(999)].map(
+const uuids = [...Array(999)].map(
   (o, index) => `00000000-0000-${String(index).padStart(4, '0')}-0000-000000000000` as const
 )
+export const DEFAULT_UUID_FUNCTION: UUIDState['uuidFunction'] = index => {
+  const uuid = uuids[index]
+  if (!uuid) throw new Error('uuid not found')
+  return uuid
+}
 
 type Match =
   | { matchType?: 'toStrictEqual'; match: any }
@@ -23,10 +28,11 @@ export interface InsertOptions {
 
 interface VariableInput {
   variableName: string
-  variableId?: string
+  variableId?: MockedUUIDV4
   definition: string
   position?: number
   insertOptions?: InsertOptions
+  result?: any
 }
 
 type Characters = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | 'a' | 'b' | 'c' | 'd' | 'e' | 'f'
@@ -39,10 +45,15 @@ type FirstPart12<T1 extends string = FirstSubPart4, T2 extends string = FirstSub
     : never
   : never
 
-export type MockedUUIDV4 = `${FirstPart12}-${UUIDPart4<Characters, 4>}-${UUIDPart4<Characters, 4>}-${UUIDPart4<
-  Characters,
-  12
->}`
+export type MockedUUIDV4 =
+  | `${FirstPart12}-${UUIDPart4<Characters, 4>}-${UUIDPart4<Characters, 4>}-${UUIDPart4<Characters, 12>}`
+  | symbol
+
+export interface UUIDState {
+  uuidFunction: (number: number) => string
+  counter: number
+  cache: Record<symbol, string>
+}
 
 export interface ColumnInput<RowCount extends number> {
   columnId?: MockedUUIDV4
@@ -84,8 +95,8 @@ export interface BaseTestCase<T extends object> {
   groupOptions?: GroupOption[]
   label?: string
   expected?: [ExpectedType<T>, ...Array<ExpectedType<T>>]
-  namespaceId?: VariableMetadata['namespaceId']
-  variableId?: VariableMetadata['variableId']
+  namespaceId?: MockedUUIDV4
+  variableId?: MockedUUIDV4
   name?: VariableMetadata['name']
   richType?: VariableMetadata['richType']
   todo?: string
@@ -104,10 +115,11 @@ export interface ErrorTestCaseType
 }
 
 interface DependencyTestCase {
-  definition: string
+  action: 'updateDefinition' | 'removeVariable'
+  formula: FormulaDefinition
   result: any
   expected: BaseTestCase<{
-    namespaceId: VariableMetadata['namespaceId']
+    namespaceId: MockedUUIDV4
     name: VariableMetadata['name']
   }>['expected'] & {}
 }
@@ -123,11 +135,13 @@ export interface TestCaseInterface {
 
 export interface MakeContextOptions {
   initializeOptions?: FormulaContextArgs
+  uuidFunction?: UUIDState['uuidFunction']
   pages: PageInput[]
 }
 
 export interface MakeContextResult extends Omit<FunctionContext, 'meta'> {
   buildMeta: (args: BaseTestCase<{}>) => FunctionContext['meta']
+  fetchUUID: (uuid: MockedUUIDV4) => string
 }
 
 export interface TestCaseType {
@@ -139,7 +153,7 @@ export interface TestCaseType {
 }
 
 export interface TestCaseInput {
-  options: Required<MakeContextOptions>
+  options: RequireField<MakeContextOptions, 'initializeOptions' | 'pages'>
   successTestCases: Array<RequireField<SuccessTestCaseType, 'groupOptions' | 'jestTitle'>>
   errorTestCases: Array<RequireField<ErrorTestCaseType, 'groupOptions' | 'jestTitle'>>
   dependencyTestCases: Array<RequireField<DependencyTestCaseType, 'groupOptions' | 'jestTitle'>>

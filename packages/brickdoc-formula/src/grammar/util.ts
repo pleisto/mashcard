@@ -206,7 +206,7 @@ export const intersectType = (
     return { errorMessages: [], newType: contextResultType }
   }
 
-  // console.error({ expectedArgumentType, contextResultType, label, ctx })
+  // console.error('type error', { expectedArgumentType, contextResultType, label, ctx })
 
   return {
     errorMessages: [{ type: 'type', message: `Expected ${expectedArgumentType} but got ${contextResultType}` }],
@@ -228,7 +228,7 @@ export const runtimeCheckType = (
 
   if (errorMessages.length > 0) {
     const { type, message } = errorMessages[0]
-    // console.log('runtimeCheckType', { label, expectedArgumentType, contextResultType, errorMessages })
+    // console.error('runtimeCheckType', { label, expectedArgumentType, contextResultType, errorMessages })
     return { type: 'Error', result: message, errorKind: type }
   }
 

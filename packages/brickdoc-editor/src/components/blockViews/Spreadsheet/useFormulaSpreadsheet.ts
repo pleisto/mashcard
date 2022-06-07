@@ -119,7 +119,7 @@ export function useFormulaSpreadsheet({
       }
     })
 
-    formulaContext.setSpreadsheet(spreadsheet)
+    void formulaContext.setSpreadsheet(spreadsheet)
     return () => {
       // formulaContext.removeSpreadsheet(spreadsheetId)
     }
@@ -127,7 +127,7 @@ export function useFormulaSpreadsheet({
 
   return {
     deleteSpreadsheet: () => {
-      formulaContext?.removeSpreadsheet(spreadsheetId)
+      void formulaContext?.removeSpreadsheet(spreadsheetId)
     }
   }
 }

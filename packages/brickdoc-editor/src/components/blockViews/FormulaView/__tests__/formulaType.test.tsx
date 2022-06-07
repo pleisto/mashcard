@@ -9,7 +9,7 @@ import { FormulaType } from '../../../../extensions/marks/formulaType'
 import { BrickdocEventBus, FormulaEditorUpdateTrigger } from '@brickdoc/schema'
 
 const rootId = 'eeeeeeee-eeee-4444-8888-444444444444'
-const formulaId = '2838c176-9a82-4e4f-a197-969d70c64694'
+const formulaId = '22222222-2222-ffff-aaaa-999999999999'
 const onUpdateFormula = (): void => {}
 
 const simpleCommonTestCases = [

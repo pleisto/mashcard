@@ -3,9 +3,7 @@ import { makeContext } from '../tests/testHelper'
 describe('context', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
-    jest.useRealTimers()
     ctx = await makeContext({ pages: [] })
-    jest.clearAllTimers()
   })
 
   it('invoke', async () => {

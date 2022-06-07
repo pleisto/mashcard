@@ -182,8 +182,8 @@ export class FormulaContext implements ContextInterface {
 
     const blockNameSubscription = BrickdocEventBus.subscribe(
       FormulaBlockNameChangedOrDeleted,
-      e => {
-        if (!e.payload.meta.deleted) this.setBlock(e.payload.id, e.payload.meta.name)
+      async e => {
+        if (!e.payload.meta.deleted) await this.setBlock(e.payload.id, e.payload.meta.name)
       },
       { subscribeId: `Domain#${this.domain}` }
     )
@@ -192,8 +192,8 @@ export class FormulaContext implements ContextInterface {
 
     const tickSubscription = BrickdocEventBus.subscribe(
       FormulaContextTickTrigger,
-      e => {
-        void this.tick(e.payload.state)
+      async e => {
+        await this.tick(e.payload.state)
       },
       {
         eventId: this.tickKey,
@@ -292,20 +292,20 @@ export class FormulaContext implements ContextInterface {
     return this.blocks[blockId]
   }
 
-  public setBlock(blockId: NamespaceId, name: string): void {
+  private async setBlock(blockId: NamespaceId, name: string): Promise<void> {
     if (this.blocks[blockId]) return
     const block = new BlockClass(this, { id: blockId, name })
     this.blocks[blockId] = block
-    this.setName(block.nameDependency())
+    await this.setName(block.nameDependency())
   }
 
-  public removeBlock(blockId: NamespaceId): void {
+  public async removeBlock(blockId: NamespaceId): Promise<void> {
     const block = this.blocks[blockId]
     if (!block) return
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete this.blocks[blockId]
 
-    block.cleanup()
+    await block.cleanup()
   }
 
   public findNames(namespaceId: NamespaceId, name: string): NameDependencyWithKind[] {
@@ -315,12 +315,12 @@ export class FormulaContext implements ContextInterface {
     )
   }
 
-  public setName(nameDependency: NameDependencyWithKind): void {
+  public async setName(nameDependency: NameDependencyWithKind): Promise<void> {
     const oldName = this.names[nameDependency.id]
     this.names[nameDependency.id] = nameDependency
     if (oldName && oldName.name === nameDependency.name) return
 
-    BrickdocEventBus.dispatch(
+    const result = BrickdocEventBus.dispatch(
       FormulaContextNameChanged({
         id: nameDependency.id,
         namespaceId: nameDependency.namespaceId,
@@ -332,15 +332,16 @@ export class FormulaContext implements ContextInterface {
         }
       })
     )
+    await Promise.all(result)
   }
 
-  public removeName(id: NamespaceId): void {
+  public async removeName(id: NamespaceId): Promise<void> {
     const oldName = this.names[id]
     if (!oldName) return
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete this.names[id]
 
-    BrickdocEventBus.dispatch(
+    const result = BrickdocEventBus.dispatch(
       FormulaContextNameRemove({
         id: oldName.id,
         namespaceId: oldName.namespaceId,
@@ -352,6 +353,7 @@ export class FormulaContext implements ContextInterface {
         }
       })
     )
+    await Promise.all(result)
   }
 
   public findSpreadsheet({ namespaceId, type, value }: FindKey): SpreadsheetType | undefined {
@@ -374,13 +376,13 @@ export class FormulaContext implements ContextInterface {
     return spreadsheet.findRow(key)
   }
 
-  public setSpreadsheet(spreadsheet: SpreadsheetType): void {
+  public async setSpreadsheet(spreadsheet: SpreadsheetType): Promise<void> {
     if (this.spreadsheets[spreadsheet.spreadsheetId]) return
 
     this.spreadsheets[spreadsheet.spreadsheetId] = spreadsheet
     // this.setBlock(spreadsheet.namespaceId, '')
-    this.setName(spreadsheet.nameDependency())
-    BrickdocEventBus.dispatch(
+    await this.setName(spreadsheet.nameDependency())
+    const result = BrickdocEventBus.dispatch(
       SpreadsheetReloadViaId({
         id: spreadsheet.spreadsheetId,
         namespaceId: spreadsheet.namespaceId,
@@ -389,11 +391,13 @@ export class FormulaContext implements ContextInterface {
         key: spreadsheet.spreadsheetId
       })
     )
+    await Promise.all(result)
   }
 
-  public removeSpreadsheet(spreadsheetId: SpreadsheetId): void {
+  public async removeSpreadsheet(spreadsheetId: SpreadsheetId): Promise<void> {
     if (!this.spreadsheets[spreadsheetId]) return
-    this.spreadsheets[spreadsheetId].cleanup(true)
+    this.spreadsheets[spreadsheetId].cleanup()
+    await this.removeName(spreadsheetId)
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete this.spreadsheets[spreadsheetId]
   }
@@ -418,7 +422,7 @@ export class FormulaContext implements ContextInterface {
 
     // 1. clear old dependencies
     if (oldVariable) {
-      oldVariable.cleanup(false)
+      oldVariable.cleanup()
     }
 
     variable.isNew = false
@@ -426,10 +430,7 @@ export class FormulaContext implements ContextInterface {
     // 2. replace variable object
     this.variables[variableKey(namespaceId, variableId)] = variable
 
-    // 3. track dependencies
-    variable.trackDependency()
-
-    // 4. update name counter
+    // 3. update name counter
     const match = variable.t.meta.name.match(matchRegex)
     if (match) {
       const [, defaultName, count] = match
@@ -440,16 +441,22 @@ export class FormulaContext implements ContextInterface {
       )
     }
 
+    // 4. track dependencies
+    await variable.trackDependency()
+
     // 5. Persist
-    variable.onUpdate({})
+    await variable.onUpdate({})
   }
 
   public async removeVariable(namespaceId: NamespaceId, variableId: VariableId): Promise<void> {
     const key = variableKey(namespaceId, variableId)
     if (!this.variables[key]) return
-    this.variables[key].cleanup(true)
+    await this.removeName(variableId)
+    const variable = this.variables[key]
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete this.variables[key]
+    variable.cleanup()
+    await variable.onUpdate({})
   }
 
   public findFunctionClause(
@@ -469,8 +476,8 @@ export class FormulaContext implements ContextInterface {
 
   private async tick(state: ContextState): Promise<void> {
     await this.commitDirty()
-    await new Promise(resolve => setTimeout(resolve, this.tickTimeout))
     const newState = state
+    await new Promise(resolve => setTimeout(resolve, this.tickTimeout))
     BrickdocEventBus.dispatch(FormulaContextTickTrigger({ domain: this.domain, state: newState }))
   }
 

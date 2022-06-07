@@ -16,8 +16,8 @@ interface TestCase {
 
 const namespaceId = '11111111-1111-4444-1111-111111111111'
 const barNamespaceId = '11111111-1111-6666-1111-111111111111'
-const barVariableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
-const bazVariableId = 'c53c6bf7-c79f-40ce-be2c-da916f1cdb5f'
+const barVariableId = '44444444-4444-7777-9999-cccccccccccc'
+const bazVariableId = 'cccccccc-cccc-1111-bbbb-dddddddddddd'
 
 const testCases: TestCase[] = [
   {

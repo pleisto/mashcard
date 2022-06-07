@@ -1,9 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export interface Event<EventPayload = {}, _CallbackResult = void> {
+export interface Event<EventPayload = {}, CallbackResult = void> {
   type: string
   payload: EventPayload
   configure: EventConfigure
   id?: string
+  // HACK: This is a hack to persist CallbackResult type
+  __hidden__?: () => CallbackResult
 }
 
 export interface EventConfigure {

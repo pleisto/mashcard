@@ -14,7 +14,8 @@ const VLOOKUP = (
   { result: spreadsheet }: SpreadsheetResult,
   { result: column }: ColumnResult,
   { result: range }: BooleanResult
-): StringResult | ErrorResult => {
+): // eslint-disable-next-line max-params
+StringResult | ErrorResult => {
   if (spreadsheet.spreadsheetId !== column.spreadsheetId) {
     return { type: 'Error', result: 'Column must be in the same namespace', errorKind: 'runtime' }
   }
