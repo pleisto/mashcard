@@ -88,7 +88,13 @@ export default defineConfig({
           vendor5: ['rc-dropdown', 'rc-select', 'rc-tabs', 'rc-trigger', 'rc-virtual-list', '@uiw/react-split'],
           vendor6: ['react-vega'],
           telemetry: ['@sentry/react', '@sentry/tracing', '@sentry/integrations'],
-          common: ['@brickdoc/active-support', '@brickdoc/design-system', '@brickdoc/design-icons', '@brickdoc/schema'],
+          common: [
+            '@brickdoc/active-support',
+            '@brickdoc/design-system',
+            '@brickdoc/design-icons',
+            '@brickdoc/schema',
+            '@brickdoc/test-helper'
+          ],
           editor: ['@brickdoc/editor'],
           formula: ['@brickdoc/formula'],
           uploader: ['@brickdoc/uploader']
