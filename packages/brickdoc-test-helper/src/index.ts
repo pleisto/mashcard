@@ -213,7 +213,10 @@ export const TEST_ID_ENUM = {
           id: 'uploader-dashboard-tabs-upload'
         },
         Unsplash: {
-          id: 'uploader-dashboard-tabs-unsplash'
+          id: 'uploader-dashboard-tabs-unsplash',
+          search: {
+            id: 'uploader-dashboard-tabs-unsplash-search'
+          }
         }
       },
       modules: {

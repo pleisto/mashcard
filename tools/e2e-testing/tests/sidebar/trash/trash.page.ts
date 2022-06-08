@@ -73,6 +73,7 @@ export class TrashPage extends CommonPage {
 
   async searchTrash(keyword: string): Promise<void> {
     await this.waitForResponseWithAction('GetTrashBlocks', this.getSearchInput().fill(keyword))
+    await this.page.waitForTimeout(300)
   }
 
   async itemRestore(index: number = 0): Promise<void> {

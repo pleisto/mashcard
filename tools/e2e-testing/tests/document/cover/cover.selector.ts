@@ -5,6 +5,6 @@ export enum CoverTab {
 }
 
 export const COVER_SELECTOR = {
-  searchInput: '.dashboard-unsplash-search-input',
+  searchInput: 'div[data-testid=uploader-dashboard-tabs-unsplash-search] input',
   unsplashImage: (index: number) => `.dashboard-unsplash-image-list button >> nth=${index}`
 }

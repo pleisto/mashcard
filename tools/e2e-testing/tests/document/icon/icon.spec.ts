@@ -6,12 +6,21 @@ import { PageTreePage } from '@/tests/sidebar/pageTree/pageTree.page'
 import path from 'path'
 import { INITIAL_PAGE } from '@/tests/common/common.data'
 import { COMMON_SELECTORS } from '@/tests/common/common.selector'
-import { EmojiGroup, IconTab } from './icon.selector'
+import { IconTab } from './icon.selector'
 
 test.describe('Add Icon', () => {
   let icon: IconPage
   let pageTree: PageTreePage
   let documentTitle: DocumentTitlePage
+  const EMOJI = {
+    name: 'grinning squinting face',
+    icon: '😆'
+  }
+
+  const EMOJI_2 = {
+    name: 'fearful face',
+    icon: '😨'
+  }
 
   test.beforeEach(async ({ api, page }) => {
     pageTree = new PageTreePage(page)
@@ -25,8 +34,8 @@ test.describe('Add Icon', () => {
   })
 
   test.describe('Icon popup', async () => {
-    test('Verify icon popup is in viewport', async ({ pageExtend }) => {
-      await expect(pageExtend.isInViewPort(COMMON_SELECTORS.tooltip)).toBeTruthy()
+    test('Verify icon popup is in viewport', ({ pageExtend }) => {
+      expect(pageExtend.isInViewPort(COMMON_SELECTORS.tooltip)).toBeTruthy()
     })
 
     test('Verify popup will be closed when click out of popup', async () => {
@@ -36,16 +45,16 @@ test.describe('Add Icon', () => {
     })
 
     test('Verify select icon will close popup when has not icon', async () => {
-      await icon.addEmoji(EmojiGroup.SmileysAndEmotion)
+      await icon.addEmoji(EMOJI.name)
 
       await expect(icon.getTooltip()).not.toBeVisible()
     })
 
     test('Verify select icon will not close popup when has icon', async () => {
-      await icon.addEmoji(EmojiGroup.SmileysAndEmotion)
+      await icon.addEmoji(EMOJI.name)
       await documentTitle.reopenIconPopup()
 
-      await icon.addEmoji(EmojiGroup.SmileysAndEmotion, 1)
+      await icon.addEmoji(EMOJI_2.name)
 
       await expect(icon.getTooltip()).toBeVisible()
     })
@@ -72,28 +81,23 @@ test.describe('Add Icon', () => {
   })
 
   test.describe('Emoji', async () => {
-    const EMOJI = {
-      name: 'grinning squinting face',
-      icon: '😆'
-    }
-
     test('Verify it will show responding emoji when search by name', async () => {
       await icon.searchEmoji(EMOJI.name)
 
-      await expect(icon.getEmojiByGroup(EmojiGroup.SmileysAndEmotion)).toContainText(EMOJI.icon)
+      await expect(icon.getEmojiByIndex()).toContainText(EMOJI.icon)
     })
 
     test('Verify emoji can be added front of title', async () => {
-      await icon.addEmoji(EmojiGroup.SmileysAndEmotion, 4)
+      await icon.addEmoji(EMOJI.name)
 
       await expect(documentTitle.getDocumentEmoji()).toContainText(EMOJI.icon)
     })
 
     test('Verify emoji will be shown in the RECENT group as first', async () => {
-      await icon.addEmoji(EmojiGroup.SmileysAndEmotion, 4)
+      await icon.addEmoji(EMOJI.name)
       await documentTitle.reopenIconPopup()
 
-      await expect(icon.getEmojiByGroup(EmojiGroup.Recent)).toContainText(EMOJI.icon)
+      await expect(icon.getEmojiByIndex()).toContainText(EMOJI.icon)
     })
   })
 
@@ -103,7 +107,7 @@ test.describe('Add Icon', () => {
     })
 
     test('Verify icon will be removed when click remove button', async () => {
-      await icon.addEmoji(EmojiGroup.SmileysAndEmotion)
+      await icon.addEmoji(EMOJI.name)
       await documentTitle.reopenIconPopup()
 
       await icon.remove()
@@ -113,13 +117,13 @@ test.describe('Add Icon', () => {
     })
 
     test('Verify Recent icon is not empty when remove icon', async () => {
-      await icon.addEmoji(EmojiGroup.SmileysAndEmotion)
+      await icon.addEmoji(EMOJI.name)
       await documentTitle.reopenIconPopup()
       await icon.remove()
 
       await documentTitle.openIconPopup()
 
-      await expect(icon.getEmojiByGroup(EmojiGroup.Recent)).toContainText('😀')
+      await expect(icon.getEmojiByIndex()).toContainText(EMOJI.icon)
     })
   })
 

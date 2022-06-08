@@ -5,6 +5,7 @@ import { useBoolean } from 'ahooks'
 import { debounce } from '@brickdoc/active-support'
 import { DashboardPluginOptions, UnsplashImage } from './plugin'
 import { NotFound } from './index.style'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 interface UnsplashPanelProps {
   pluginOptions: DashboardPluginOptions
@@ -91,7 +92,12 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
 
   return (
     <div className="uploader-dashboard-unsplash-panel">
-      <Input size="sm" placeholder="Search for an image..." onChange={handleUnsplashSearchInput} />
+      <Input
+        size="sm"
+        placeholder="Search for an image..."
+        onChange={handleUnsplashSearchInput}
+        data-testid={TEST_ID_ENUM.uploader.Dashboard.tabs.Unsplash.search.id}
+      />
 
       <Virtuoso
         className="dashboard-unsplash-image-list"

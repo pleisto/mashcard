@@ -1,21 +1,23 @@
 import { Locator } from '@playwright/test'
 import { UploaderDashboardPage } from '@/tests/document/uploaderDashboard/uploaderDashboard.page'
-import { EmojiGroup, ICON_SELECTOR } from './icon.selector'
+import { ICON_SELECTOR } from './icon.selector'
 
 export class IconPage extends UploaderDashboardPage {
-  getEmojiByGroup(group: EmojiGroup, index?: number): Locator {
-    return this.page.locator(ICON_SELECTOR.emojiByGroup(group, index))
-  }
-
   getEmojiSearchInput(): Locator {
     return this.page.locator(ICON_SELECTOR.emojiSearchInput)
   }
 
-  async addEmoji(group: EmojiGroup, index?: number): Promise<void> {
-    await this.getEmojiByGroup(group, index).click()
+  getEmojiByIndex(index: number = 0): Locator {
+    return this.page.locator(ICON_SELECTOR.emojiItem(index))
   }
 
   async searchEmoji(emojiName: string): Promise<void> {
     await this.getEmojiSearchInput().fill(emojiName)
+    await this.page.waitForTimeout(300)
+  }
+
+  async addEmoji(name: string): Promise<void> {
+    await this.searchEmoji(name)
+    await this.waitForResponseWithAction('blockSyncBatch', this.getEmojiByIndex().click())
   }
 }

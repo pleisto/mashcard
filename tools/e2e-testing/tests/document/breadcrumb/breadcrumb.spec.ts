@@ -14,7 +14,7 @@ test.describe('Breadcrumb', () => {
     await api.removeAllPages()
   })
 
-  test('Verify the initial breadcrumbs count equal 1 and named Untitled', async ({ api }) => {
+  test.only('Verify the initial breadcrumbs count equal 1 and named Untitled', async ({ api }) => {
     await api.createPage(INITIAL_PAGE)
     await api.pageReload()
 

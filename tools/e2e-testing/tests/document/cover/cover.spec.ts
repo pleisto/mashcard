@@ -25,8 +25,8 @@ test.describe('Add Cover', () => {
   })
 
   test.describe('Cover popup', async () => {
-    test('Verify cover popup is in viewport', async ({ pageExtend }) => {
-      await expect(pageExtend.isInViewPort(COMMON_SELECTORS.tooltip)).toBeTruthy()
+    test('Verify cover popup is in viewport', ({ pageExtend }) => {
+      expect(pageExtend.isInViewPort(COMMON_SELECTORS.tooltip)).toBeTruthy()
     })
 
     test('Verify popup will be closed when click out of popup', async () => {
