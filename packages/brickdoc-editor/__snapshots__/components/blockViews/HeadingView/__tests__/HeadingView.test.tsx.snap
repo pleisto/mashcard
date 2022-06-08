@@ -4,7 +4,7 @@ exports[`HeadingView matches snapshot correctly 1`] = `
 <div>
   <div
     data-node-view-wrapper=""
-    style="pointer-events: none; white-space: normal;"
+    style="pointer-events: unset; white-space: normal;"
   >
     <h1
       as="h1"
@@ -19,7 +19,7 @@ exports[`HeadingView renders correspond heading according to level level 2 1`] =
 <div>
   <div
     data-node-view-wrapper=""
-    style="pointer-events: none; white-space: normal;"
+    style="pointer-events: unset; white-space: normal;"
   >
     <h2
       as="h2"
@@ -34,7 +34,7 @@ exports[`HeadingView renders correspond heading according to level level 3 1`] =
 <div>
   <div
     data-node-view-wrapper=""
-    style="pointer-events: none; white-space: normal;"
+    style="pointer-events: unset; white-space: normal;"
   >
     <h3
       as="h3"
@@ -49,7 +49,7 @@ exports[`HeadingView renders correspond heading according to level level 4 1`] =
 <div>
   <div
     data-node-view-wrapper=""
-    style="pointer-events: none; white-space: normal;"
+    style="pointer-events: unset; white-space: normal;"
   >
     <h4
       as="h4"
@@ -64,7 +64,7 @@ exports[`HeadingView renders correspond heading according to level level 5 1`] =
 <div>
   <div
     data-node-view-wrapper=""
-    style="pointer-events: none; white-space: normal;"
+    style="pointer-events: unset; white-space: normal;"
   >
     <h5
       as="h5"

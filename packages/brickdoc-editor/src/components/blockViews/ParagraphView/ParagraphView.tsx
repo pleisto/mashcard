@@ -35,6 +35,7 @@ export const ParagraphView: FC<ParagraphViewProps> = props => {
     <BlockContainer
       node={node}
       getPos={getPos}
+      editable="custom"
       deleteNode={deleteNode}
       style={{ position: 'relative' }}
       ref={blockContainerRef}

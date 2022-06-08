@@ -40,6 +40,7 @@ export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, getPos }) 
 
   return (
     <BlockContainer
+      editable="custom"
       node={node}
       actionOptions={['cut', 'copy', 'delete', 'transform']}
       actionButtonClassName={actionButtonClassName}

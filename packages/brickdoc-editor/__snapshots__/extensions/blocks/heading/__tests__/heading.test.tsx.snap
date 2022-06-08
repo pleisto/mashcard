@@ -14,7 +14,7 @@ exports[`Heading renders Heading correctly 1`] = `
       >
         <div
           data-node-view-wrapper=""
-          style="pointer-events: none; white-space: normal;"
+          style="pointer-events: unset; white-space: normal;"
         >
           <h1
             as="h1"
@@ -34,7 +34,7 @@ exports[`Heading renders Heading correctly 1`] = `
       >
         <div
           data-node-view-wrapper=""
-          style="pointer-events: none; white-space: normal;"
+          style="pointer-events: unset; white-space: normal;"
         >
           <h2
             as="h2"
@@ -54,7 +54,7 @@ exports[`Heading renders Heading correctly 1`] = `
       >
         <div
           data-node-view-wrapper=""
-          style="pointer-events: none; white-space: normal;"
+          style="pointer-events: unset; white-space: normal;"
         >
           <h3
             as="h3"
@@ -74,7 +74,7 @@ exports[`Heading renders Heading correctly 1`] = `
       >
         <div
           data-node-view-wrapper=""
-          style="pointer-events: none; white-space: normal;"
+          style="pointer-events: unset; white-space: normal;"
         >
           <h4
             as="h4"
@@ -94,7 +94,7 @@ exports[`Heading renders Heading correctly 1`] = `
       >
         <div
           data-node-view-wrapper=""
-          style="pointer-events: none; white-space: normal;"
+          style="pointer-events: unset; white-space: normal;"
         >
           <h5
             as="h5"

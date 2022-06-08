@@ -8,7 +8,7 @@ import { useBlockElement } from './useBlockElement'
 import { useDisableActionOptions } from './useDisableActionOptions'
 export interface BlockContainerProps {
   inline?: boolean
-  editable?: boolean
+  editable?: boolean | 'custom'
   deleteNode?: NodeViewProps['deleteNode']
   getPos?: NodeViewProps['getPos']
   className?: string
@@ -43,6 +43,7 @@ export const BlockContainer: FC<BlockContainerProps> = forwardRef<HTMLElement, B
     ref
   ) => {
     const { editor } = useEditorContext()
+    const [documentEditable] = useDocumentEditable(editable === 'custom' ? undefined : editable)
     const disableActionOptions = useDisableActionOptions(editor, getPos)
 
     const [blockDragging, setBlockDragging] = useState(false)
@@ -54,10 +55,9 @@ export const BlockContainer: FC<BlockContainerProps> = forwardRef<HTMLElement, B
       dragging: blockDragging,
       node
     })
-    const [documentEditable] = useDocumentEditable(editable)
     const [blockElement] = useBlockElement(children, actionOptions, {
       inline: inline ?? false,
-      disableActionOptions,
+      disableActionOptions: disableActionOptions || !documentEditable,
       blockActionClassName: actionButtonClassName
     })
     const asElement = as ?? (inline ? 'span' : undefined)
@@ -68,7 +68,7 @@ export const BlockContainer: FC<BlockContainerProps> = forwardRef<HTMLElement, B
         as={asElement}
         style={{
           ...style,
-          pointerEvents: documentEditable ? 'unset' : 'none',
+          pointerEvents: documentEditable || editable === 'custom' ? 'unset' : 'none',
           opacity: blockDragging ? '0.2' : 'unset'
         }}
         ref={(container: HTMLElement) => {

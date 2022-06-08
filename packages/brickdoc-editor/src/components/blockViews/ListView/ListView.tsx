@@ -19,6 +19,7 @@ export const ListView: FC<BlockViewProps<{}, {}>> = ({ deleteNode, node, getPos 
 
   return (
     <BlockContainer
+      editable="custom"
       node={node}
       className={className}
       actionOptions={['cut', 'copy', 'delete']}

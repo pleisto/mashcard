@@ -15,7 +15,7 @@ exports[`BulletList renders BulletList correctly 1`] = `
         <div
           class="brd-c-czDAcb"
           data-node-view-wrapper=""
-          style="pointer-events: none; white-space: normal;"
+          style="pointer-events: unset; white-space: normal;"
         >
           <ul
             as="ul"

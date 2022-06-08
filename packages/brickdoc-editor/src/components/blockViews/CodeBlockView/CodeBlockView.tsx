@@ -94,6 +94,7 @@ export const CodeBlockView: FC<CodeBlockViewProps> = ({ node, updateAttributes, 
 
   return (
     <BlockContainer
+      editable="custom"
       node={node}
       className={highlightStyle()}
       getPos={getPos}

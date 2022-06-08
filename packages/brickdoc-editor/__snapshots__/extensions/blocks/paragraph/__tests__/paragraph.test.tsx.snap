@@ -14,7 +14,7 @@ exports[`Paragraph renders Paragraph correctly 1`] = `
       >
         <div
           data-node-view-wrapper=""
-          style="position: relative; pointer-events: none; white-space: normal;"
+          style="position: relative; pointer-events: unset; white-space: normal;"
         >
           <p
             as="p"

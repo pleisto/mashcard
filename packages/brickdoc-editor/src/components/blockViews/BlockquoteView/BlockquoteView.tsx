@@ -5,7 +5,12 @@ import { BlockViewProps } from '../../../extensions/common'
 
 export const BlockquoteView: FC<BlockViewProps<{}, {}>> = ({ deleteNode, node, getPos }) => {
   return (
-    <BlockContainer node={node} actionOptions={['cut', 'copy', 'delete']} deleteNode={deleteNode} getPos={getPos}>
+    <BlockContainer
+      editable="custom"
+      node={node}
+      actionOptions={['cut', 'copy', 'delete']}
+      deleteNode={deleteNode}
+      getPos={getPos}>
       <NodeViewContent as="blockquote" />
     </BlockContainer>
   )
