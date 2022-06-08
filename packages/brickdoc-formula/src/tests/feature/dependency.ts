@@ -43,11 +43,10 @@ export const DependencyTestCase: TestCaseInterface = {
       {
         name: 'num0',
         namespaceId: parentPageNamespaceId,
+        type: 'Variable',
         testCases: [
           {
-            action: 'removeVariable',
-            formula: {},
-            result: 0,
+            action: { name: 'removeVariable' },
             expected: [
               { name: 'num3', namespaceId: parentPageNamespaceId, match: 'Unknown function num0' },
               { name: 'num4', namespaceId: parentPageNamespaceId, match: 'Unknown function num0' },
@@ -58,13 +57,25 @@ export const DependencyTestCase: TestCaseInterface = {
         ]
       },
       {
-        name: 'num0',
+        name: 'BLOCK',
         namespaceId: parentPageNamespaceId,
+        type: 'Block',
         testCases: [
           {
-            action: 'updateDefinition',
-            formula: { definition: '=10' },
-            result: 10,
+            action: { name: 'removeBlock' },
+            expected: [
+              { name: 'num0', namespaceId: subPageNamespaceId, match: 'Unknown function DependencyParentPage' }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'num0',
+        namespaceId: parentPageNamespaceId,
+        type: 'Variable',
+        testCases: [
+          {
+            action: { name: 'updateDefinition', formula: { definition: '=10' }, result: 10 },
             expected: [
               { name: 'num3', namespaceId: parentPageNamespaceId, match: 10 },
               { name: 'num4', namespaceId: parentPageNamespaceId, match: 10 },
@@ -73,9 +84,7 @@ export const DependencyTestCase: TestCaseInterface = {
             ]
           },
           {
-            action: 'updateDefinition',
-            formula: { definition: '=0' },
-            result: 0,
+            action: { name: 'updateDefinition', formula: { definition: '=0' }, result: 0 },
             expected: [
               { name: 'num3', namespaceId: parentPageNamespaceId, match: 0 },
               { name: 'num4', namespaceId: parentPageNamespaceId, match: 0 },
@@ -88,11 +97,10 @@ export const DependencyTestCase: TestCaseInterface = {
       {
         name: 'num1',
         namespaceId: parentPageNamespaceId,
+        type: 'Variable',
         testCases: [
           {
-            action: 'updateDefinition',
-            formula: { definition: '="123"' },
-            result: '123',
+            action: { name: 'updateDefinition', formula: { definition: '="123"' }, result: '123' },
             expected: [
               { name: 'num2', namespaceId: parentPageNamespaceId, match: '123' },
               { name: 'num3', namespaceId: parentPageNamespaceId, match: 'Expected number,Cell but got string' },
@@ -101,9 +109,7 @@ export const DependencyTestCase: TestCaseInterface = {
             ]
           },
           {
-            action: 'updateDefinition',
-            formula: { definition: '=0' },
-            result: 0,
+            action: { name: 'updateDefinition', formula: { definition: '=0' }, result: 0 },
             expected: [
               { name: 'num2', namespaceId: parentPageNamespaceId, match: 0 },
               { name: 'num3', namespaceId: parentPageNamespaceId, match: 0 },
@@ -116,11 +122,10 @@ export const DependencyTestCase: TestCaseInterface = {
       {
         name: 'num0',
         namespaceId: parentPageNamespaceId,
+        type: 'Variable',
         testCases: [
           {
-            action: 'updateDefinition',
-            formula: { definition: '=err' },
-            result: 'Unknown function err',
+            action: { name: 'updateDefinition', formula: { definition: '=err' }, result: 'Unknown function err' },
             expected: [
               { name: 'num3', namespaceId: parentPageNamespaceId, match: 'Unknown function err' },
               { name: 'num4', namespaceId: parentPageNamespaceId, match: 'Unknown function err' },
@@ -129,9 +134,7 @@ export const DependencyTestCase: TestCaseInterface = {
             ]
           },
           {
-            action: 'updateDefinition',
-            formula: { definition: '=0' },
-            result: 0,
+            action: { name: 'updateDefinition', formula: { definition: '=0' }, result: 0 },
             expected: [
               { name: 'num3', namespaceId: parentPageNamespaceId, match: 0 },
               { name: 'num4', namespaceId: parentPageNamespaceId, match: 0 },
@@ -145,37 +148,32 @@ export const DependencyTestCase: TestCaseInterface = {
         name: 'num0',
         label: 'rename: num0 -> var0',
         namespaceId: parentPageNamespaceId,
+        type: 'Variable',
         testCases: [
           {
-            action: 'updateDefinition',
-            formula: { definition: '=10', name: 'var0' },
-            result: 10,
+            action: { name: 'updateDefinition', formula: { definition: '=10', name: 'var0' }, result: 10 },
             expected: [
-              { name: 'num3', namespaceId: parentPageNamespaceId, match: 10 },
-              { name: 'num4', namespaceId: parentPageNamespaceId, match: 10 },
-              { name: 'num5', namespaceId: parentPageNamespaceId, match: 20 },
-              { name: 'num0', namespaceId: subPageNamespaceId, match: 10 },
-              { name: 'var2', namespaceId: parentPageNamespaceId, match: 10 },
-              { name: 'var1', namespaceId: subPageNamespaceId, match: 10 }
+              { name: 'num3', namespaceId: parentPageNamespaceId, match: 10, definition: '=num1+var0' },
+              { name: 'num4', namespaceId: parentPageNamespaceId, match: 10, definition: '=num3+num2' },
+              { name: 'num5', namespaceId: parentPageNamespaceId, match: 20, definition: '=num4+var0' },
+              { name: 'num0', namespaceId: subPageNamespaceId, match: 10, definition: '=DependencyParentPage.var0' },
+              { name: 'var2', namespaceId: parentPageNamespaceId, match: 10, definition: '=DependencySubPage.var1' },
+              { name: 'var1', namespaceId: subPageNamespaceId, match: 10, definition: '=DependencyParentPage.var0' }
             ]
           },
           {
-            action: 'updateDefinition',
-            formula: { definition: '=100', name: 'num0' },
-            result: 100,
+            action: { name: 'updateDefinition', formula: { definition: '=100', name: 'num0' }, result: 100 },
             expected: [
-              { name: 'num3', namespaceId: parentPageNamespaceId, match: 100 },
-              { name: 'num4', namespaceId: parentPageNamespaceId, match: 100 },
-              { name: 'num5', namespaceId: parentPageNamespaceId, match: 200 },
-              { name: 'num0', namespaceId: subPageNamespaceId, match: 100 },
-              { name: 'var2', namespaceId: parentPageNamespaceId, match: 100 },
-              { name: 'var1', namespaceId: subPageNamespaceId, match: 100 }
+              { name: 'num3', namespaceId: parentPageNamespaceId, match: 100, definition: '=num1+num0' },
+              { name: 'num4', namespaceId: parentPageNamespaceId, match: 100, definition: '=num3+num2' },
+              { name: 'num5', namespaceId: parentPageNamespaceId, match: 200, definition: '=num4+num0' },
+              { name: 'num0', namespaceId: subPageNamespaceId, match: 100, definition: '=DependencyParentPage.num0' },
+              { name: 'var2', namespaceId: parentPageNamespaceId, match: 100, definition: '=DependencySubPage.var1' },
+              { name: 'var1', namespaceId: subPageNamespaceId, match: 100, definition: '=DependencyParentPage.num0' }
             ]
           },
           {
-            action: 'removeVariable',
-            formula: {},
-            result: 100,
+            action: { name: 'removeVariable' },
             expected: [
               { name: 'num3', namespaceId: parentPageNamespaceId, match: 'Unknown function num0' },
               { name: 'num4', namespaceId: parentPageNamespaceId, match: 'Unknown function num0' },

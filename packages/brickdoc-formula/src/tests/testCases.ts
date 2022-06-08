@@ -15,7 +15,7 @@ const buildRequiredFields = (
 ): Required<Pick<BaseTestCase<{}>, 'groupOptions' | 'jestTitle'>> => {
   return {
     groupOptions: [{ name: curr.name }, ...(type.groupOptions ?? [])],
-    jestTitle: `${type.label ? `[${type.label}] ` : ''}${curr.name} "${prefix}" -> ${suffix}`
+    jestTitle: `${type.label ? `[${type.label}] ` : ''}${curr.name} "${prefix}"${suffix !== '' ? ` -> ${suffix}` : ''}`
   }
 }
 
@@ -39,8 +39,8 @@ const reduceTestCaseInput = (testCases: TestCaseInterface[]): TestCaseInput => {
           ...buildRequiredFields(
             curr,
             s,
-            `${s.name} ${s.testCases.map(s => `${s.action} ${JSON.stringify(s.formula)}`).join(',')}`,
-            s.testCases.map(s => String(s.result)).join(',')
+            `${s.name} ${s.testCases.map(s => `${JSON.stringify(s.action)}`).join(',')}`,
+            ''
           )
         }))
       ],

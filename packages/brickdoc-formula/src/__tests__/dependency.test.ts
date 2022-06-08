@@ -1,7 +1,9 @@
+/* eslint-disable jest/no-conditional-expect */
 import { makeContext } from '../tests/testHelper'
 import { buildTestCases, trackTodo } from '../tests'
-import { VariableValue } from '../types'
+import { VariableInterface, VariableValue } from '../types'
 import { uuid } from '@brickdoc/active-support'
+import { BlockType } from '../controls'
 
 const [testCases] = buildTestCases('dependency')
 
@@ -14,36 +16,57 @@ describe('dependency', () => {
   trackTodo(it, testCases.dependencyTestCases)
 
   it.each(testCases.dependencyTestCases)('$jestTitle', async args => {
-    const v = ctx.formulaContext.findVariableByName(ctx.fetchUUID(args.namespaceId), args.name)!
-    expect(v).not.toBeUndefined()
+    let v: VariableInterface, b: BlockType
 
-    for (const { formula, result, expected, action } of args.testCases) {
-      if (action === 'updateDefinition') {
-        await v.updateDefinition(formula)
-      } else if (action === 'removeVariable') {
-        await ctx.formulaContext.removeVariable(v.t.meta.namespaceId, v.t.meta.variableId)
+    if (args.type === 'Variable') {
+      v = ctx.formulaContext.findVariableByName(ctx.fetchUUID(args.namespaceId), args.name)!
+      expect(v).not.toBeUndefined()
+    } else if (args.type === 'Block') {
+      b = ctx.formulaContext.findBlockById(ctx.fetchUUID(args.namespaceId))!
+      expect(b).not.toBeUndefined()
+    }
+
+    for (const { expected, action } of args.testCases) {
+      if (args.type === 'Variable') {
+        switch (action.name) {
+          case 'removeVariable':
+            await ctx.formulaContext.removeVariable(v!.t.meta.namespaceId, v!.t.meta.variableId)
+            break
+          case 'updateDefinition':
+            await v!.updateDefinition(action.formula)
+            expect([action.formula, (v!.t.task.variableValue as VariableValue).result.result]).toStrictEqual([
+              action.formula,
+              action.result
+            ])
+            break
+        }
+      } else if (args.type === 'Block') {
+        switch (action.name) {
+          case 'removeBlock':
+            await ctx.formulaContext.removeBlock(b!.id)
+            break
+        }
       }
 
-      expect([formula, (v.t.task.variableValue as VariableValue).result.result]).toStrictEqual([formula, result])
-
-      for (const { namespaceId, name, match, matchType } of expected) {
+      for (const { namespaceId, name, match, matchType, definition } of expected) {
         const v2 = ctx.formulaContext.findVariableByName(ctx.fetchUUID(namespaceId), name)!
         expect(v2).not.toBeUndefined()
 
-        const matchData = [formula, { namespaceId, name }, (v2.t.task.variableValue as VariableValue).result.result]
+        if (definition) {
+          expect(v2.t.variableParseResult.definition).toStrictEqual(definition)
+        }
+
+        const matchData = [action, { namespaceId, name }, (v2.t.task.variableValue as VariableValue).result.result]
 
         switch (matchType) {
           case undefined:
           case 'toStrictEqual':
-            // eslint-disable-next-line jest/no-conditional-expect
-            expect(matchData).toStrictEqual([formula, { namespaceId, name }, match])
+            expect(matchData).toStrictEqual([action, { namespaceId, name }, match])
             break
           case 'toMatchObject':
-            // eslint-disable-next-line jest/no-conditional-expect
-            expect(matchData).toMatchObject([formula, { namespaceId, name }, match])
+            expect(matchData).toMatchObject([action, { namespaceId, name }, match])
             break
           case 'toMatchSnapshot':
-            // eslint-disable-next-line jest/no-conditional-expect
             expect(matchData).toMatchSnapshot()
             break
         }
