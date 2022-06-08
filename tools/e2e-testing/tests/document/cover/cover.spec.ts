@@ -1,12 +1,12 @@
 import { UPLOADER_DATA } from '@/tests/document/uploaderDashboard/uploaderDashboard.data'
 import { test, expect } from '@/fixtures'
-import { CoverPage } from '@/tests/document/cover/cover.page'
 import { DocumentTitlePage } from '@/tests/document/documentTitle/documentTitle.page'
 import { PageTreePage } from '@/tests/sidebar/pageTree/pageTree.page'
-import { CoverTab } from '@/tests/document/cover/cover.selector'
 import path from 'path'
 import { INITIAL_PAGE } from '@/tests/common/common.data'
 import { COMMON_SELECTORS } from '@/tests/common/common.selector'
+import { CoverPage } from './cover.page'
+import { CoverTab } from './cover.selector'
 
 test.describe('Add Cover', () => {
   let cover: CoverPage

@@ -1,9 +1,9 @@
-import { TrashPage } from '@/tests/sidebar/trash/trash.page'
 import { test, expect } from '@/fixtures'
-import { TRASH_PAGE_TREE, TRASH_SINGLE_PAGE } from '@/tests/sidebar/trash/trash.data'
 import { EditorPage } from '@/tests/document/editor/editor.page'
 import { DocumentTitlePage } from '@/tests/document/documentTitle/documentTitle.page'
 import { PageTreePage } from '@/tests/sidebar/pageTree/pageTree.page'
+import { TRASH_PAGE_TREE, TRASH_SINGLE_PAGE } from './trash.data'
+import { TrashPage } from './trash.page'
 
 test.describe('Trash', () => {
   let trash: TrashPage

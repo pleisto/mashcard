@@ -1,7 +1,7 @@
-import { PageTreePage } from '@/tests/sidebar/pageTree/pageTree.page'
 import { test, expect } from '@/fixtures'
 import { rem2Pixel } from '@/helpers/utils/rem2Pixel'
 import { INITIAL_PAGE, TWO_LAYER_PAGE_TREE } from '@/tests/common/common.data'
+import { PageTreePage } from './pageTree.page'
 
 test.describe('Page List', () => {
   let pageTree: PageTreePage

@@ -1,8 +1,8 @@
-import { FIVE_LAYER_PAGE_TREE, SUPER_LONG_TITLE_PAGE } from '@/tests/document/breadcrumb/breadcrumb.data'
 import { test, expect } from '@/fixtures'
 import { PageTreePage } from '@/tests/sidebar/pageTree/pageTree.page'
-import { BreadcrumbPage } from '@/tests/document/breadcrumb/breadcrumb.page'
 import { INITIAL_PAGE, TWO_LAYER_PAGE_TREE } from '@/tests/common/common.data'
+import { FIVE_LAYER_PAGE_TREE, SUPER_LONG_TITLE_PAGE } from './breadcrumb.data'
+import { BreadcrumbPage } from './breadcrumb.page'
 
 test.describe('Breadcrumb', () => {
   let pageTree: PageTreePage
@@ -14,7 +14,7 @@ test.describe('Breadcrumb', () => {
     await api.removeAllPages()
   })
 
-  test.only('Verify the initial breadcrumbs count equal 1 and named Untitled', async ({ api }) => {
+  test('Verify the initial breadcrumbs count equal 1 and named Untitled', async ({ api }) => {
     await api.createPage(INITIAL_PAGE)
     await api.pageReload()
 

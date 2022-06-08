@@ -1,11 +1,11 @@
 import { UPLOADER_DATA } from '@/tests/document/uploaderDashboard/uploaderDashboard.data'
 import { test, expect } from '@/fixtures'
 import { DocumentTitlePage } from '@/tests/document/documentTitle/documentTitle.page'
-import { IconPage } from '@/tests/document/icon/icon.page'
 import { PageTreePage } from '@/tests/sidebar/pageTree/pageTree.page'
 import path from 'path'
 import { INITIAL_PAGE } from '@/tests/common/common.data'
 import { COMMON_SELECTORS } from '@/tests/common/common.selector'
+import { IconPage } from './icon.page'
 import { IconTab } from './icon.selector'
 
 test.describe('Add Icon', () => {

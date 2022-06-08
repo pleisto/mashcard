@@ -1,8 +1,8 @@
 import { test, expect } from '@/fixtures'
 import { rem2Pixel } from '@/helpers/utils/rem2Pixel'
-import { DocumentTitlePage } from '@/tests/document/documentTitle/documentTitle.page'
 import { PageTreePage } from '@/tests/sidebar/pageTree/pageTree.page'
 import { INITIAL_PAGE } from '@/tests/common/common.data'
+import { DocumentTitlePage } from './documentTitle.page'
 
 test.describe('Document Title', () => {
   let documentTitle: DocumentTitlePage

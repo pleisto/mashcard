@@ -15,13 +15,15 @@
     "lint": "yarn lint:eslint && yarn lint:type",
     "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx .",
     "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx . --fix",
-    "lint:type": "run -T tsc"
+    "lint:type": "run -T tsc",
+    "generate": "ts-node ./helpers/generate"
   },
   "devDependencies": {
     "@playwright/test": "^1.22.2",
+    "@types/inquirer": "^8.2.1",
     "allure-commandline": "^2.17.2",
     "allure-playwright": "^2.0.0-beta.16",
-    "playwright": "^1.22.2",
-    "playwright-fluent": "^1.51.0"
+    "inquirer": "^8.2.4",
+    "ts-node": "^10.8.1"
   }
 }

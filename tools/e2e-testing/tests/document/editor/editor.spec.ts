@@ -1,7 +1,7 @@
 import { test, expect } from '@/fixtures'
-import { EditorPage } from '@/tests/document/editor/editor.page'
 import { PageTreePage } from '@/tests/sidebar/pageTree/pageTree.page'
 import { INITIAL_PAGE } from '@/tests/common/common.data'
+import { EditorPage } from './editor.page'
 
 test.describe('Editor', () => {
   let pageTree: PageTreePage
