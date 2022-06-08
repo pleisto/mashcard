@@ -1,7 +1,7 @@
 import { theme } from '@brickdoc/design-system'
 import { globalCss } from '@stitches/react'
 
-export const getNativeSidebarWdith = () => {
+export const getNativeSidebarWdith = (): number => {
   const wrapper = window.document.createElement('div')
   wrapper.style.visibility = 'hidden'
   wrapper.style.width = '100px'
@@ -32,7 +32,7 @@ const sidebarStyle = {
   }
 }
 
-export const initBrickdocSidebarStyle = () => {
+export const initBrickdocSidebarStyle = (): void => {
   try {
     if (getNativeSidebarWdith()) {
       globalCss(sidebarStyle)()

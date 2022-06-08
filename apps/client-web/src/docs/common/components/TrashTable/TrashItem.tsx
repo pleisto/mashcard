@@ -61,14 +61,14 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
         {block.pathArray.map(p => `${getEmoji(p)}${p.text || t('title.untitled')}`).join(' / ')}
       </div>
     )
-  const onDeleteConfrim = async () => {
+  const onDeleteConfrim = async (): Promise<void> => {
     setActionLoading(true)
     await onDelete(block.id)
     setActionLoading(false)
     setHardDeleteModalVisible(false)
   }
 
-  const onClickRestore = async () => {
+  const onClickRestore = async (): Promise<void> => {
     await onRestore(block.id)
   }
 

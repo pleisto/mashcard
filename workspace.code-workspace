@@ -79,8 +79,13 @@
     "search.exclude": {
       "**/build": true,
       "**/output": true,
+      "**/esm-bundle": true,
       "**/dist": true,
+      "**/*.chunk.js": true,
+      "**/*.min.js": true,
+      "**/*.js.map": true,
       "**/*.log": true,
+      "**/public/pdftron": true,
       "**/*.pid": true,
       "**/.git": true,
       "**/node_modules": true,

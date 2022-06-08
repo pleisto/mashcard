@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { intersection, fromPairs, differenceWith, toPairs, isEqual } from 'lodash'
 import {
   AnyTypeResult,
   CodeFragment,
@@ -39,8 +39,8 @@ export const shouldReceiveEvent = (listenedScope: EventScope, eventScope: EventS
   if (listenedRows.length > 0 && listenedColumns.length === 0 && eventRows.length === 0 && eventColumns.length > 0)
     return true
 
-  const rowMatched = _.intersection(listenedRows, eventRows).length > 0
-  const columnMatched = _.intersection(listenedColumns, eventColumns).length > 0
+  const rowMatched = intersection(listenedRows, eventRows).length > 0
+  const columnMatched = intersection(listenedColumns, eventColumns).length > 0
 
   if (!listenedRows.length && !listenedColumns.length) return true
 
@@ -128,7 +128,7 @@ const encodeString = (str: string): string => {
   return `"${str}"`
 }
 export const objectDiff = <T>(a: T[], b: T[]): Record<number, T> =>
-  _.fromPairs(_.differenceWith(_.toPairs(a), _.toPairs(b), _.isEqual))
+  fromPairs(differenceWith(toPairs(a), toPairs(b), isEqual))
 
 export const truncateString = (str: string, length: number = 20): string => {
   if (typeof str !== 'string') return str

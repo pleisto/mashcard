@@ -108,7 +108,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ children }) => {
     return debounce(loadOptions, debounceTimeout)
   }, [spaceSearch, domain])
 
-  const onChangeInviterPolicy = (key: string) => {
+  const onChangeInviterPolicy = (key: string): void => {
     setInviteUserPolicy(key as Policytype)
   }
 

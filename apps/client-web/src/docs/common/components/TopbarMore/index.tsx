@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useCallback } from 'react'
+import React, { useEffect, useContext, useCallback, FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { BrickdocEventBus, Undo } from '@brickdoc/schema'
 import {
@@ -27,8 +27,7 @@ export interface DiscussionMenuProps {
   className?: string
 }
 
-const PopMenu = (props: { menuToggle: (state: boolean) => void }) => {
-  const { menuToggle } = props
+const PopMenu: FC<{ menuToggle: (state: boolean) => void }> = ({ menuToggle }) => {
   const { id, pin, isMine, editable } = useDocMeta()
   const navigate = useNavigate()
   const { t } = useDocsI18n()
@@ -86,7 +85,7 @@ const PopMenu = (props: { menuToggle: (state: boolean) => void }) => {
 
   const onDel = useCallback(async (): Promise<void> => {
     const input = { id: id!, hardDelete: false }
-    const createNewAndJump = async () => {
+    const createNewAndJump = async (): Promise<void> => {
       const newPageInput = { title: '' }
       const { data } = await blockCreate({ variables: { input: newPageInput } })
       if (data?.blockCreate?.id) {
@@ -102,7 +101,7 @@ const PopMenu = (props: { menuToggle: (state: boolean) => void }) => {
     menuToggle(false)
     const matchBlock = pageBlocks.find((item: any) => item.id === id)
     if (!matchBlock) {
-      createNewAndJump()
+      await createNewAndJump()
       return
     }
     if (matchBlock.parentId && matchBlock.parentId !== id) {
@@ -117,7 +116,7 @@ const PopMenu = (props: { menuToggle: (state: boolean) => void }) => {
     }
     const tree = array2Tree(pageBlocks)
     if (tree.length < 2) {
-      createNewAndJump()
+      await createNewAndJump()
       return
     }
     const preIdx = tree.findIndex((item: any) => item.id === id) - 1
@@ -125,7 +124,7 @@ const PopMenu = (props: { menuToggle: (state: boolean) => void }) => {
     navigate(`/${loginDomain}/${nearItem.id}`)
   }, [blockCreate, navigate, menuToggle, blockSoftDelete, id, getPageBlocks, loginDomain])
 
-  const onUndo = () => {
+  const onUndo = (): void => {
     BrickdocEventBus.dispatch(Undo({}))
     menuToggle(false)
   }
@@ -133,11 +132,11 @@ const PopMenu = (props: { menuToggle: (state: boolean) => void }) => {
   useEffect(() => {
     const handleKey = (e: KeyboardEvent): void => {
       if (e.metaKey && e.key === 'd') {
-        onDuplicate()
+        void onDuplicate()
         e.preventDefault()
       }
       if (e.key === 'Delete') {
-        onDel()
+        void onDel()
         e.preventDefault()
       }
     }

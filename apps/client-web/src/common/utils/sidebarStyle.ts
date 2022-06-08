@@ -11,6 +11,6 @@ export const getSidebarStyle = (): React.CSSProperties => {
   return { width: 270 }
 }
 
-export const logSideBarWidth = (width: number) => {
+export const logSideBarWidth = (width: number): void => {
   localStorage.setItem('SIDEBAR_WIDTH', String(width))
 }

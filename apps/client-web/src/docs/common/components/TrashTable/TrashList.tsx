@@ -54,7 +54,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
   const { data, loading: listLoading, refetch } = useGetTrashBlocksQuery({ variables: input })
 
   useEffect(() => {
-    refetch()
+    void refetch()
   }, [key, refetch])
 
   const [actionLoading, setActionLoading] = useState(false)
@@ -86,7 +86,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
           toast.error(`${e.message})`)
         }
         console.error(e)
-        refetch()
+        void refetch()
       }
 
       setHardDeleteModalVisible(false)
@@ -119,7 +119,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
           toast.error(`${e.message})`)
         }
         console.error(e)
-        refetch()
+        void refetch()
       }
       setActionLoading(false)
     },

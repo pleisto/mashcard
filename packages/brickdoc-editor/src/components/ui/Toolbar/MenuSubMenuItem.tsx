@@ -51,7 +51,8 @@ const renderMenuInner = (option: ToolbarItemGroupOption, closeMenu: VoidFunction
       onAction={key => {
         item.onAction?.(key)
         if (item.closeOnAction) closeMenu()
-      }}>
+      }}
+    >
       {item.content}
     </Menu.Item>
   ))
@@ -80,7 +81,7 @@ const renderMenu = (
           )
         }
         if (menuItem.name === 'linkInput') {
-          return <LinkInputWrapper>{menuItem.content}</LinkInputWrapper>
+          return <LinkInputWrapper key={menuItem.name}>{menuItem.content}</LinkInputWrapper>
         }
         return (
           <Menu.Item
@@ -92,7 +93,8 @@ const renderMenu = (
             onAction={key => {
               menuItem.onAction?.(key)
               if (menuItem.closeOnAction) closeMenu()
-            }}>
+            }}
+          >
             {menuItem.content}
           </Menu.Item>
         )
@@ -120,7 +122,8 @@ export const ToolbarMenuSubMenuItem: FC<ToolbarMenuSubMenuItemProps> = ({ option
       compact={true}
       getPopupContainer={element => element}
       content={MenuContent}
-      destroyTooltipOnHide={true}>
+      destroyTooltipOnHide={true}
+    >
       {hasContent && <ToolbarMenuItem option={option} />}
       {!hasContent && (
         <SubMenuItem role="menuitem" aria-label={option.label ?? option.name} active={option.active} css={option.css}>

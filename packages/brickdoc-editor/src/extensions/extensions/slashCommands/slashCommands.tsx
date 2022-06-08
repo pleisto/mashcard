@@ -65,7 +65,7 @@ export const SlashCommands = createExtension<SlashCommandsOptions, SlashCommands
                 exit()
               })
 
-              reactRenderer = new ReactRenderer(SlashMenu as any, {
+              reactRenderer = new ReactRenderer(SlashMenu, {
                 props,
                 editor: props.editor as Editor
               })

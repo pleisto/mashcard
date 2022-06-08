@@ -1,7 +1,7 @@
 import { Icon, css } from '@brickdoc/design-system'
 import { Palettes } from '@brickdoc/design-system/src/themes/ceramic-light/colors/palettes'
 import { FormulaColorType } from '@brickdoc/formula'
-import _ from 'lodash'
+import { mapValues } from 'lodash'
 
 const primary = '#35313C' // palette/type/primary
 const thirdary = '#908B9C' // palette/type/thirdary
@@ -127,7 +127,7 @@ export const FORMULA_COLOR_METAS: Record<FormulaColorType, FormulaColorMeta> = {
   NoPersist: defaultColorMeta
 }
 
-export const FORMULA_STYLES = _.mapValues(FORMULA_COLOR_METAS, ({ colorMain, color1, color2, color3 }) => {
+export const FORMULA_STYLES = mapValues(FORMULA_COLOR_METAS, ({ colorMain, color1, color2, color3 }) => {
   return css({
     color: colorMain,
     fontFamily: 'Fira Code',
