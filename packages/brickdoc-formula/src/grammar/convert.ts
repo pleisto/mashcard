@@ -101,6 +101,7 @@ export const codeFragment2value = ({ display, code, attrs }: CodeFragment, pageI
 
 export const block2codeFragment = (block: BlockType, pageId: NamespaceId): CodeFragment => {
   return {
+    replacements: [`#${block.id}`],
     display: block.name(pageId),
     errors: [],
     code: 'Block',
@@ -178,7 +179,8 @@ export const spreadsheet2codeFragment = (spreadsheet: SpreadsheetType, pageId: N
   // const namespaceKey = currentBlockKey(spreadsheet.namespaceId, pageId)
   // const value: SpreadsheetKey = `${namespaceKey}.${spreadsheet.name()}`
   return {
-    display: spreadsheet.name(),
+    replacements: [spreadsheet.name(), encodeString(spreadsheet.name())],
+    display: maybeEncodeString(spreadsheet.name())[1],
     errors: [],
     code: 'Spreadsheet',
     type: 'Spreadsheet',

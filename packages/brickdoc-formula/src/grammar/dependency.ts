@@ -1,5 +1,5 @@
 import { EventType } from '@brickdoc/schema'
-import { BlockType, SpreadsheetType } from '../controls'
+import { BlockType, ColumnType, SpreadsheetType } from '../controls'
 import { SpreadsheetUpdateNameViaId } from '../events'
 import { EventDependency, VariableInterface } from '../types'
 import { CodeFragmentVisitor } from './codeFragment'
@@ -44,6 +44,10 @@ export const parseTrackSpreadsheet = (visitor: Visitor, spreadsheet: Spreadsheet
   }
 
   visitor.eventDependencies.push(spreadsheetNameEventDependency, spreadsheet.eventDependency({}))
+}
+
+export const parseTrackColumn = (visitor: Visitor, column: ColumnType): void => {
+  visitor.eventDependencies.push(column.eventDependency({}))
 }
 
 /**

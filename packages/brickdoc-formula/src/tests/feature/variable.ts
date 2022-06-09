@@ -46,8 +46,8 @@ export const VariableTestCase: TestCaseInterface = {
         result: 'num1'
       },
       {
-        definition: `=#${pageId}.num1`,
-        newAbbrevInput: '=Variable.num1',
+        definition: `=#${pageId}.num1  `,
+        newAbbrevInput: '=Variable.num1  ',
         result: 0,
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
@@ -56,8 +56,8 @@ export const VariableTestCase: TestCaseInterface = {
         ]
       },
       {
-        definition: '=Variable.NUM1',
-        newAbbrevInput: '=Variable.num1',
+        definition: '=  Variable.NUM1  ',
+        newAbbrevInput: '=  Variable.num1  ',
         result: 0,
         label: 'Case insensitive',
         expected: [

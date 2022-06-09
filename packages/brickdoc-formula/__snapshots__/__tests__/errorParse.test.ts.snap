@@ -26,6 +26,9 @@ Array [
       "code": "Block",
       "display": "#CurrentBlock",
       "errors": Array [],
+      "replacements": Array [
+        "#00000000-0000-0000-0000-000000000000",
+      ],
       "type": "Block",
     },
     Object {
@@ -77,6 +80,9 @@ Array [
       "code": "Block",
       "display": "Variable",
       "errors": Array [],
+      "replacements": Array [
+        "#22222222-2222-2222-2222-222222222222",
+      ],
       "type": "Block",
     },
     Object {

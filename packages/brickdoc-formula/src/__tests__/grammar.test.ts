@@ -268,11 +268,6 @@ const testCases: TestCase[] = [
     errorMessage: 'Not all input parsed: a1'
   },
   {
-    input: '=varvarabc中文var',
-    parseErrorType: 'syntax',
-    errorMessage: '"varvarabc中文var" not found'
-  },
-  {
     input: '= nottrue',
     label: 'not is a operator',
     parseErrorType: 'syntax',

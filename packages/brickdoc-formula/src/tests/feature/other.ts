@@ -23,7 +23,14 @@ export const OtherTestCase: TestCaseInterface = {
       { definition: '=<>', errorType: 'parse', errorMessage: 'Parse error: ""', valid: false },
       { definition: '=ABS(1 {a: 1}.a', errorType: 'type', errorMessage: 'Expected Cell but got number' },
       { definition: '=(1 {}.', errorType: 'syntax', errorMessage: 'Missing closing token' },
-      { definition: '==', errorType: 'parse', errorMessage: 'TODO mismatch token startExpression', valid: false }
+      {
+        definition: '== 1',
+        newAbbrevInput: '==1',
+        todo: 'fix space',
+        errorType: 'parse',
+        errorMessage: 'TODO mismatch token startExpression',
+        valid: false
+      }
     ]
   }
 }

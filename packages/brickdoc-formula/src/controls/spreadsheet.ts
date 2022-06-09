@@ -15,6 +15,7 @@ import {
   isKey,
   FormulaInterpreter
 } from '../grammar'
+import { parseTrackColumn } from '../grammar/dependency'
 import {
   AnyTypeResult,
   CodeFragment,
@@ -335,7 +336,7 @@ export class SpreadsheetClass implements SpreadsheetType {
         codeFragments
       }
     }
-    visitor.eventDependencies.push(column.eventDependency({}))
+    parseTrackColumn(visitor, column)
 
     const firstArgumentType = 'Column'
     let finalRhsCodeFragments = codeFragments

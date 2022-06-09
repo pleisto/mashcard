@@ -50,8 +50,8 @@ export const blockOperator: OperatorType = {
         ]
       },
       {
-        definition: `=#${pageId}`,
-        newAbbrevInput: '=Block',
+        definition: `=   #${pageId}  `,
+        newAbbrevInput: '=   Block  ',
         result: mockBlock('Block', pageId),
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
@@ -70,8 +70,8 @@ export const blockOperator: OperatorType = {
         ]
       },
       {
-        definition: `=#${page2Id}`,
-        newAbbrevInput: '=Block With Space',
+        definition: `=  #${page2Id}  `,
+        newAbbrevInput: '=  Block With Space  ',
         result: mockBlock('Block With Space', page2Id),
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },

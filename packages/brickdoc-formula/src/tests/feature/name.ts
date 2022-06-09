@@ -22,6 +22,13 @@ export const NameTestCase: TestCaseInterface = {
         name: 'bar'
       },
       {
+        definition: '="bar"',
+        errorType: 'name_unique',
+        errorMessage: 'Name exist in same namespace',
+        namespaceId,
+        name: 'NameCheck'
+      },
+      {
         definition: '="if"',
         errorType: 'name_check',
         errorMessage: 'Variable name is reserved',
