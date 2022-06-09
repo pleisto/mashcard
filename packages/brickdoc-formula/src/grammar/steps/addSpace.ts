@@ -1,49 +1,44 @@
 import { CodeFragment, CodeFragmentStep } from '../../types'
-import { codeFragment2value } from '../convert'
 
-export const addSpaceStep: CodeFragmentStep = ({
-  input: { codeFragments, positionFragment },
-  meta: { input, namespaceId }
-}) => {
+/**
+ * Add space to codeFragment
+ */
+export const addSpaceStep: CodeFragmentStep = ({ input: { codeFragments }, meta: { input } }) => {
   const finalCodeFragments: CodeFragment[] = []
   const spaceCodeFragment: CodeFragment = {
     code: 'Space',
-    hide: false,
     type: 'any',
-    display: ' ',
+    display: '!!!',
     errors: [],
     attrs: undefined
   }
 
   let restInput = input
   let error = false
-  let image = ''
-  codeFragments.forEach((codeFragment, idx) => {
-    let match = false
+  codeFragments.forEach(codeFragment => {
     if (error) return
-    image = codeFragment2value(codeFragment, namespaceId)
+    const replacements = codeFragment.replacements ?? [codeFragment.display]
 
-    if (restInput.startsWith(image)) {
+    const r = replacements.find(replacement => restInput.startsWith(replacement))
+    if (r) {
       finalCodeFragments.push(codeFragment)
-      restInput = restInput.substring(image.length)
-      match = true
+      restInput = restInput.substr(r.length)
+    } else {
+      error = true
     }
 
     const prefixSpaceCount = restInput.length - restInput.trimStart().length
     if (prefixSpaceCount > 0) {
-      const spaceValue = ' '.repeat(prefixSpaceCount)
+      const spaceValue = restInput.substring(0, prefixSpaceCount)
       finalCodeFragments.push({ ...spaceCodeFragment, display: spaceValue })
       restInput = restInput.substring(prefixSpaceCount)
-    }
-
-    if (!match) {
-      error = true
     }
   })
 
   if (error) {
-    return { codeFragments, positionFragment }
+    console.log('addSpaceStep error', input, codeFragments, restInput, finalCodeFragments)
+    return { codeFragments }
   }
 
-  return { codeFragments: finalCodeFragments, positionFragment }
+  return { codeFragments: finalCodeFragments }
 }

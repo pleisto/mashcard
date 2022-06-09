@@ -158,8 +158,7 @@ const normalTestCases = [
                 code: 'NumberLiteral',
                 errors: [],
                 type: 'number',
-                display: '12',
-                hide: false
+                display: '12'
               }
             }
           ]
@@ -211,8 +210,7 @@ const spreadsheetTestCases = [
                 code: 'Equal',
                 errors: [],
                 type: 'any',
-                display: '=',
-                hide: false
+                display: '='
               }
             }
           ]
@@ -228,8 +226,7 @@ const spreadsheetTestCases = [
                 code: 'NumberLiteral',
                 errors: [],
                 type: 'number',
-                display: '12',
-                hide: false
+                display: '12'
               }
             }
           ]

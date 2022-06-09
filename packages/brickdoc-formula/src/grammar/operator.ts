@@ -6,6 +6,7 @@ import { InterpretArgument, FormulaInterpreter } from './interpreter'
 import { intersectType, runtimeCheckType, shouldReturnEarly } from './util'
 
 export type OperatorName =
+  | 'name'
   | 'access'
   | 'addition'
   | 'arguments'
@@ -40,7 +41,7 @@ export interface OperatorType {
     lhsArgs: InterpretArgument,
     operators: IToken[],
     interpreter: FormulaInterpreter
-  ) => AnyTypeResult
+  ) => Promise<AnyTypeResult>
   readonly dynamicParseValidator?: (cstVisitor: CodeFragmentVisitor, result: CodeFragmentResult) => CodeFragmentResult
   readonly dynamicParseType?: (lhsType: FormulaCheckType) => FormulaCheckType
   readonly dynamicInterpretRhsType?: ({
@@ -121,7 +122,12 @@ export const interpretByOperator = async ({
   rhs: CstNode[] | undefined
 }): Promise<AnyTypeResult> => {
   if (!rhs) {
-    return dynamicInterpretLhs ? dynamicInterpretLhs(args, operators, interpreter) : await interpreter.visit(lhs!, args)
+    const result = dynamicInterpretLhs
+      ? await dynamicInterpretLhs(args, operators, interpreter)
+      : await interpreter.visit(lhs!, args)
+    const typeErrorBefore = runtimeCheckType(args, result.type, `${name} before`, interpreter.ctx)
+    if (shouldReturnEarly(typeErrorBefore)) return typeErrorBefore!
+    return result
   }
 
   const typeErrorBefore = runtimeCheckType(args, expressionType, `${name} before`, interpreter.ctx)
@@ -130,7 +136,7 @@ export const interpretByOperator = async ({
   const lhsArgs: InterpretArgument = { ...args, type: lhsType, finalTypes: [] }
   // eslint-disable-next-line no-nested-ternary
   let result: AnyTypeResult = dynamicInterpretLhs
-    ? dynamicInterpretLhs(lhsArgs, operators, interpreter)
+    ? await dynamicInterpretLhs(lhsArgs, operators, interpreter)
     : lhs
     ? await interpreter.visit(lhs, lhsArgs)
     : { type: 'null', result: null }

@@ -3,6 +3,7 @@ import { mockBlock } from '../../tests/testMock'
 import { OperatorType } from '../operator'
 
 const pageId = '11111111-1111-1111-1111-111111111111'
+const page2Id = '44444444-4444-aaaa-0000-111111111111'
 
 export const blockOperator: OperatorType = {
   name: 'block',
@@ -10,7 +11,7 @@ export const blockOperator: OperatorType = {
   dynamicParseType: lhsType => lhsType,
   lhsType: 'any',
   rhsType: 'any',
-  dynamicInterpretLhs: (args, operators, interpreter) => {
+  dynamicInterpretLhs: async (args, operators, interpreter) => {
     const op = operators?.[0]
     if (!op) throw new Error('unsupported expression')
     const namespaceId = op.tokenType.name === 'CurrentBlock' ? interpreter.ctx.meta.namespaceId : op.image
@@ -24,7 +25,10 @@ export const blockOperator: OperatorType = {
   },
   interpret: async ({ lhs }) => lhs,
   testCases: {
-    pages: [{ pageName: 'Block', pageId }],
+    pages: [
+      { pageName: 'Block', pageId },
+      { pageName: 'Block With Space', pageId: page2Id }
+    ],
     successTestCases: [
       {
         definition: '=Block',
@@ -44,13 +48,43 @@ export const blockOperator: OperatorType = {
           { key: 'nameDependencies', match: [] },
           { key: 'blockDependencies', match: [pageId] }
         ]
+      },
+      {
+        definition: `=#${pageId}`,
+        newAbbrevInput: '=Block',
+        result: mockBlock('Block', pageId),
+        expected: [
+          { key: 'codeFragments', matchType: 'toMatchSnapshot' },
+          { key: 'nameDependencies', match: [] },
+          { key: 'blockDependencies', match: [pageId] }
+        ]
+      },
+      {
+        definition: '=#CurrentBlock',
+        result: mockBlock('Block With Space', page2Id),
+        namespaceId: page2Id,
+        expected: [
+          { key: 'codeFragments', matchType: 'toMatchSnapshot' },
+          { key: 'nameDependencies', match: [] },
+          { key: 'blockDependencies', match: [page2Id] }
+        ]
+      },
+      {
+        definition: `=#${page2Id}`,
+        newAbbrevInput: '=Block With Space',
+        result: mockBlock('Block With Space', page2Id),
+        expected: [
+          { key: 'codeFragments', matchType: 'toMatchSnapshot' },
+          { key: 'nameDependencies', match: [] },
+          { key: 'blockDependencies', match: [page2Id] }
+        ]
       }
     ],
     errorTestCases: [
       {
         definition: '=UnknownBlock',
         errorType: 'syntax',
-        errorMessage: 'Unknown function UnknownBlock',
+        errorMessage: '"UnknownBlock" not found',
         expected: [
           { key: 'nameDependencies', match: [{ namespaceId: DEFAULT_FIRST_NAMESPACEID, name: 'UnknownBlock' }] }
         ]

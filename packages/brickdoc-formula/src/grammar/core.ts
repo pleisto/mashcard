@@ -1,6 +1,5 @@
-import { CstNode, ILexingResult, IRecognitionException, IToken } from 'chevrotain'
+import { CstNode, ILexingResult, IRecognitionException } from 'chevrotain'
 import {
-  CodeFragment,
   ErrorMessage,
   ContextInterface,
   VariableData,
@@ -11,9 +10,7 @@ import {
   AnyTypeResult,
   ParseErrorType,
   CodeFragmentResult,
-  NamespaceId,
   FunctionContext,
-  BlockKey,
   BaseFormula,
   ErrorResult,
   VariableTask,
@@ -27,10 +24,9 @@ import { FormulaParser } from './parser'
 import { complete } from './completer'
 import { FormulaInterpreter } from './interpreter'
 import { CodeFragmentVisitor } from './codeFragment'
-import { blockKey } from './convert'
-import { parseString, shouldReturnEarly } from './util'
+import { shouldReturnEarly } from './util'
 import { createVariableTask } from '../context'
-import { hideDotStep, addSpaceStep, applyThisRecordStep } from './steps'
+import { addSpaceStep } from './steps'
 
 export interface BaseParseResult {
   variableParseResult: VariableParseResult
@@ -75,200 +71,6 @@ export interface ErrorParseResult extends BaseParseResult {
 
 export type ParseResult = SuccessParseResult | ErrorParseResult | LiteralParseResult
 
-export interface PositionFragment {
-  readonly tokenIndex: number
-  readonly offset: number
-}
-
-const abbrev = ({
-  ctx: { formulaContext },
-  namespaceId,
-  position,
-  input
-}: {
-  namespaceId: NamespaceId
-  ctx: FunctionContext
-  input: string
-  position: number
-}): { lexResult: ILexingResult; newInput: string; positionFragment: PositionFragment } => {
-  const oldLexResult: ILexingResult = FormulaLexer.tokenize(input)
-  const tokens = oldLexResult.tokens
-  let modified = false
-  let restInput = input
-  let newInput = ''
-  const newTokens: IToken[] = []
-  let inputImage = ''
-  let positionMatched = false
-  let tokenIndex = 0
-  let offset = 0
-  let renderTokenNumberChange = 0
-
-  // eslint-disable-next-line complexity
-  tokens.forEach((token, index) => {
-    newTokens.push(token)
-
-    const prefixSpaceCount = restInput.length - restInput.trimStart().length
-    if (prefixSpaceCount > 0) {
-      const spaceValue = ' '.repeat(prefixSpaceCount)
-      newInput = newInput.concat(spaceValue)
-      restInput = restInput.substring(prefixSpaceCount)
-      inputImage = inputImage.concat(spaceValue)
-      if (!positionMatched && inputImage.length < position) {
-        renderTokenNumberChange += 1
-      }
-      if (!positionMatched && inputImage.length >= position) {
-        positionMatched = true
-        tokenIndex = index
-        offset = position - inputImage.length
-        // console.log('match space', { offset, tokenIndex, position, inputImage, renderTokenNumberChange, tokens })
-      }
-    }
-
-    if (restInput.startsWith(token.image)) {
-      restInput = restInput.substring(token.image.length)
-      inputImage = inputImage.concat(token.image)
-      if (!positionMatched && inputImage.length >= position) {
-        positionMatched = true
-        tokenIndex = index
-        offset = position - inputImage.length
-      }
-    }
-
-    const tokenTypeName = token.tokenType.name
-
-    if (tokenTypeName === 'UUID') {
-      if (token.image === namespaceId) {
-        newInput = newInput.concat('CurrentBlock')
-        newTokens.pop()
-        newTokens.push({ ...token, image: 'CurrentBlock', tokenType: { ...token.tokenType, name: 'CurrentBlock' } })
-        modified = true
-        return
-      } else {
-        newInput = newInput.concat(token.image)
-        return
-      }
-    }
-
-    if (!['FunctionName', 'StringLiteral', 'NumberLiteral'].includes(tokenTypeName)) {
-      newInput = newInput.concat(token.image)
-      return
-    }
-
-    const nextToken = tokens[index + 1]
-
-    // Foo(
-    // foo:
-    if (nextToken && ['LParen', 'Colon'].includes(nextToken.tokenType.name)) {
-      newInput = newInput.concat(token.image)
-      return
-    }
-
-    const newIndex = newTokens.length - 1
-    const prevToken = newTokens[newIndex - 1]
-
-    let variableNamespace = blockKey(namespaceId)
-    let namespaceIsExist = false
-
-    // foo.bar
-    if (prevToken && ['Dot'].includes(prevToken.tokenType.name)) {
-      const prev2Token = newTokens[newIndex - 2]
-
-      if (prev2Token && !['UUID', 'CurrentBlock'].includes(prev2Token.tokenType.name)) {
-        newInput = newInput.concat(token.image)
-        return
-      }
-
-      variableNamespace = prev2Token.image.startsWith('#') ? (prev2Token.image as BlockKey) : blockKey(prev2Token.image)
-      namespaceIsExist = true
-    }
-
-    if (variableNamespace === '#CurrentBlock') {
-      variableNamespace = blockKey(namespaceId)
-    }
-
-    const match = token.tokenType.name === 'StringLiteral' ? parseString(token.image) : token.image
-
-    const name = formulaContext.findNames(variableNamespace.slice(1), match)[0]
-
-    if (!name) {
-      newInput = newInput.concat(token.image)
-      return
-    }
-
-    const renderTokens = name.renderTokens(namespaceIsExist, namespaceId)
-
-    newTokens.pop()
-    const newRenderTokens = renderTokens.map(({ image, type }) => ({
-      ...token,
-      image,
-      tokenType: { ...token.tokenType, name: type }
-    }))
-    newTokens.push(...newRenderTokens)
-    renderTokenNumberChange += newRenderTokens.length - 1
-
-    const value = renderTokens.map(t => t.image).join('')
-    newInput = newInput.concat(value)
-    // newPosition += value.length - token.image.length
-    modified = true
-  })
-
-  // NOTE tail space
-  const prefixSpaceCount = restInput.length - restInput.trimStart().length
-  if (prefixSpaceCount > 0) {
-    const spaceValue = ' '.repeat(prefixSpaceCount)
-    newInput = newInput.concat(spaceValue)
-    restInput = restInput.substring(prefixSpaceCount)
-    inputImage = inputImage.concat(spaceValue)
-    if (!positionMatched && inputImage.length >= position) {
-      positionMatched = true
-      tokenIndex = tokens.length
-      offset = position - inputImage.length
-    }
-  }
-
-  if (restInput !== '') {
-    console.error('abbrev error', { restInput, input, tokens, newInput })
-  }
-
-  const positionFragment = { tokenIndex: tokenIndex + renderTokenNumberChange, offset }
-  // console.log('abbrev', { newInput, input, tokens, position, newTokens, positionFragment })
-
-  if (modified) {
-    return { lexResult: FormulaLexer.tokenize(newInput), newInput, positionFragment }
-  } else {
-    return { lexResult: oldLexResult, newInput: input, positionFragment }
-  }
-}
-
-const changePosition = (
-  codeFragments: CodeFragment[],
-  position: number,
-  input: string,
-  { offset, tokenIndex }: PositionFragment
-): number => {
-  let newPosition: number = 0
-  let specialCodeFragmentCount = 0
-
-  codeFragments.forEach((codeFragment, idx) => {
-    if (codeFragment.code === 'Block') {
-      specialCodeFragmentCount += 1
-    }
-
-    if (codeFragment.display === '') {
-      specialCodeFragmentCount -= 1
-    }
-    if (idx <= tokenIndex - specialCodeFragmentCount) {
-      newPosition += Number(codeFragment.display.length)
-    }
-  })
-
-  newPosition += offset
-
-  // console.log('change position', { codeFragments, input, position, offset, tokenIndex, newPosition })
-  return newPosition
-}
-
-// eslint-disable-next-line complexity
 export const parse = (ctx: FunctionContext): ParseResult => {
   const {
     formulaContext,
@@ -327,7 +129,6 @@ export const parse = (ctx: FunctionContext): ParseResult => {
           {
             code: 'literal',
             type: 'any',
-            hide: false,
             display: input,
             errors: [],
             attrs: undefined
@@ -342,12 +143,7 @@ export const parse = (ctx: FunctionContext): ParseResult => {
 
   const parser = new FormulaParser()
   const codeFragmentVisitor = new CodeFragmentVisitor({ ctx })
-
-  const {
-    lexResult: { tokens, errors: lexErrors },
-    newInput,
-    positionFragment
-  } = abbrev({ ctx, input, namespaceId, position })
+  const { tokens, errors: lexErrors }: ILexingResult = FormulaLexer.tokenize(input)
 
   parser.input = tokens
   const inputImage = tokens.map(t => t.image).join('')
@@ -413,7 +209,6 @@ export const parse = (ctx: FunctionContext): ParseResult => {
         codeFragments.push({
           code: 'parseErrorOther',
           type: 'any',
-          hide: false,
           display: restImages,
           errors: errorMessages,
           attrs: undefined
@@ -434,13 +229,12 @@ export const parse = (ctx: FunctionContext): ParseResult => {
 
   let parseCodeFragments = codeFragments
   if (parseError) {
-    const restImages = newInput.slice(1)
+    const restImages = input.slice(1)
     parseCodeFragments = [
       codeFragments[0],
       {
         code: 'parseErrorOther',
         type: 'any',
-        hide: false,
         display: restImages,
         errors: finalErrorMessages,
         attrs: undefined
@@ -448,16 +242,13 @@ export const parse = (ctx: FunctionContext): ParseResult => {
     ]
   }
 
-  const { codeFragments: finalCodeFragments, positionFragment: finalPositionFragment } = [
-    addSpaceStep,
-    hideDotStep,
-    applyThisRecordStep
-  ].reduce((prev, step) => step({ input: prev, meta: { ...ctx.meta, input: newInput } }), {
-    codeFragments: parseCodeFragments,
-    positionFragment
-  })
+  const newPosition = position
+  const { codeFragments: finalCodeFragments } = [addSpaceStep].reduce(
+    (prev, step) => step({ input: prev, meta: { ...ctx.meta, input } }),
+    { codeFragments: parseCodeFragments }
+  )
 
-  const newPosition = changePosition(finalCodeFragments, position, input, finalPositionFragment)
+  // const newPosition = changePosition(finalCodeFragments, position, input, finalPositionFragment)
 
   completions = complete({
     position: newPosition,

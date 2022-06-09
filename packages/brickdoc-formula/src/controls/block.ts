@@ -4,13 +4,11 @@ import {
   CodeFragment,
   ContextInterface,
   ErrorMessage,
-  EventDependency,
   FormulaType,
   NameDependencyWithKind,
   NamespaceId
 } from '../types'
 import {
-  codeFragments2definition,
   CodeFragmentVisitor,
   FormulaInterpreter,
   isKey,
@@ -18,12 +16,9 @@ import {
   variable2codeFragment
 } from '../grammar'
 import { fetchResult } from '../context/variable'
-import { BrickdocEventBus, EventSubscribed, EventType, DocSoftDeleted } from '@brickdoc/schema'
-import {
-  SpreadsheetUpdateNameViaId,
-  FormulaBlockNameChangedOrDeleted,
-  dispatchFormulaBlockNameChangeOrDelete
-} from '../events'
+import { BrickdocEventBus, EventSubscribed, DocSoftDeleted } from '@brickdoc/schema'
+import { FormulaBlockNameChangedOrDeleted, dispatchFormulaBlockNameChangeOrDelete } from '../events'
+import { parseTrackName, parseTrackSpreadsheet, parseTrackVariable } from '../grammar/dependency'
 
 export class BlockClass implements BlockType {
   _formulaContext: ContextInterface
@@ -121,8 +116,6 @@ export class BlockClass implements BlockType {
     firstArgumentType: FormulaType | undefined
     codeFragments: CodeFragment[]
   } {
-    visitor.nameDependencies.push({ namespaceId: this.id, name })
-
     const spreadsheet = this._formulaContext.findSpreadsheet({ namespaceId: this.id, value: name, type: 'name' })
     if (spreadsheet) {
       let finalCodeFragments = codeFragments
@@ -131,25 +124,7 @@ export class BlockClass implements BlockType {
         finalCodeFragments = [spreadsheet2codeFragment(spreadsheet, visitor.ctx.meta.namespaceId)]
       }
 
-      const spreadsheetNameEventDependency: EventDependency<
-        typeof SpreadsheetUpdateNameViaId extends EventType<infer X> ? X : never
-      > = {
-        eventId: `${spreadsheet.namespaceId},${spreadsheet.spreadsheetId}`,
-        event: SpreadsheetUpdateNameViaId,
-        kind: 'SpreadsheetName',
-        key: `SpreadsheetName#${spreadsheet.spreadsheetId}`,
-        scope: {},
-        definitionHandler: (deps, variable, payload) => {
-          const newCodeFragments = variable.t.variableParseResult.codeFragments.map(c => {
-            if (c.code !== 'Spreadsheet') return c
-            if (c.attrs.id !== payload.id) return c
-            return { ...c, attrs: { ...c.attrs, name: payload.meta } }
-          })
-          return codeFragments2definition(newCodeFragments, variable.t.meta.namespaceId)
-        }
-      }
-
-      visitor.eventDependencies.push(spreadsheetNameEventDependency, spreadsheet.eventDependency({}))
+      parseTrackSpreadsheet(visitor, spreadsheet)
 
       return {
         errors: [],
@@ -162,6 +137,7 @@ export class BlockClass implements BlockType {
     const errors: ErrorMessage[] = []
 
     if (!variable) {
+      parseTrackName(visitor, name, this.id)
       errors.push({ type: 'deps', message: `"${name}" not found` })
       return {
         errors,
@@ -172,30 +148,13 @@ export class BlockClass implements BlockType {
 
     const firstArgumentType = fetchResult(variable.t).type
 
-    if (variable.t.variableParseResult.async) {
-      visitor.async = true
-    }
-    if (variable.t.variableParseResult.effect) {
-      visitor.effect = true
-    }
-    if (variable.t.variableParseResult.persist) {
-      visitor.persist = true
-    }
-    if (!variable.t.variableParseResult.pure) {
-      visitor.pure = false
-    }
+    parseTrackVariable(visitor, variable, this.id)
 
     let finalCodeFragments = codeFragments
 
     if (isKey(codeFragments[0])) {
       finalCodeFragments = [variable2codeFragment(variable, visitor.ctx.meta.namespaceId)]
     }
-
-    visitor.variableDependencies.push({ namespaceId: this.id, variableId: variable.t.meta.variableId })
-    visitor.flattenVariableDependencies.push(...variable.t.variableParseResult.flattenVariableDependencies, {
-      namespaceId: this.id,
-      variableId: variable.t.meta.variableId
-    })
 
     return {
       errors,

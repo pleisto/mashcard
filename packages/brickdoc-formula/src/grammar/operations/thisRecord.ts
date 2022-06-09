@@ -25,7 +25,7 @@ export const thisRecordOperator: OperatorType = {
   dynamicParseType: lhsType => lhsType,
   lhsType: 'any',
   rhsType: 'any',
-  dynamicInterpretLhs: (args, operators, interpreter) => {
+  dynamicInterpretLhs: async (args, operators, interpreter) => {
     if (interpreter.ctx.meta.richType.type !== 'spreadsheet') {
       return { type: 'Error', result: unavailableMessage.message, errorKind: 'runtime' }
     }

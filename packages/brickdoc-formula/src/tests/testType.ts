@@ -67,24 +67,40 @@ export interface PageInput {
   variables?: VariableInput[]
   spreadsheets?: Array<SpreadsheetInput<any, any>>
 }
-type FeatureName = 'async' | 'functionCall' | 'nameCheck' | 'powerfx' | 'spreadsheet' | 'variable' | 'dependency'
+type FeatureName =
+  | 'async'
+  | 'functionCall'
+  | 'nameCheck'
+  | 'powerfx'
+  | 'spreadsheet'
+  | 'variable'
+  | 'dependency'
+  | 'other'
 type FeatureTestName = 'complete' | 'cst'
 export type TestCaseName = OperatorName | FeatureName | FeatureTestName
 
-interface GroupOption {
-  name: TestCaseName
-  options?: any
-}
+export type GroupOption =
+  | {
+      name: Exclude<TestCaseName, 'complete'>
+      options?: any
+    }
+  | {
+      name: 'complete'
+      options: object
+    }
 
 export interface BaseTestCase<T extends object> {
   definition?: string
+  newAbbrevInput?: string
   groupOptions?: GroupOption[]
+  currentGroupOption?: any
   label?: string
   expected?: [ExpectedType<T>, ...Array<ExpectedType<T>>]
   namespaceId?: MockedUUIDV4
   variableId?: MockedUUIDV4
   name?: VariableMetadata['name']
   richType?: VariableMetadata['richType']
+  position?: VariableMetadata['position']
   todo?: string
   jestTitle?: string
 }

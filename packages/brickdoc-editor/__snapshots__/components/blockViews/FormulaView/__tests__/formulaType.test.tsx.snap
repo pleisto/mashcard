@@ -64,13 +64,8 @@ exports[`formulaType "normal" - " " " & foo_bar " 1`] = `
           data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"id\\":\\"00000000-0000-0000-0000-000000000000\\",\\"name\\":\\"foo_bar\\",\\"findKey\\":{\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"type\\":\\"id\\",\\"value\\":\\"00000000-0000-0000-0000-000000000000\\"}}"
           data-code="Variable"
           data-display="foo_bar"
-          data-errors="Expected string but got number"
           data-type="number"
-          style="color: #d81b60;; 
-  text-decoration: underline;
-  text-decoration-style: wavy;
-  text-decoration-color: #cf1f28;
-"
+          style="color: #d81b60;"
         >
           foo_bar
         </mark>
@@ -249,11 +244,11 @@ exports[`formulaType "normal" - "#CurrentBlock" 1`] = `
           class="brickdoc-formula-mark"
           data-attrs="{\\"kind\\":\\"Block\\",\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"id\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"name\\":\\"formulaType\\",\\"findKey\\":{\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"type\\":\\"id\\",\\"value\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\"}}"
           data-code="Block"
-          data-display="formulaType"
+          data-display="#CurrentBlock"
           data-type="Block"
           style="color: #356cf9;"
         >
-          formulaType
+          #CurrentBlock
         </mark>
       </p>
     </div>
@@ -278,6 +273,24 @@ exports[`formulaType "normal" - "#CurrentBlock.foo_bar" 1`] = `
           data-type="any"
         >
           =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-attrs="{\\"kind\\":\\"Block\\",\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"id\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"name\\":\\"formulaType\\",\\"findKey\\":{\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"type\\":\\"id\\",\\"value\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\"}}"
+          data-code="Block"
+          data-display="#CurrentBlock"
+          data-type="Block"
+          style="color: #356cf9;"
+        >
+          #CurrentBlock
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Dot"
+          data-display="."
+          data-type="any"
+        >
+          .
         </mark>
         <mark
           class="brickdoc-formula-mark"
@@ -395,11 +408,11 @@ exports[`formulaType "normal" - "a+foo_bar" 1`] = `
         </mark>
         <mark
           class="brickdoc-formula-mark"
-          data-code="Function"
+          data-code="FunctionName"
           data-display="a"
-          data-errors="Unknown function a"
+          data-errors="\\"a\\" not found"
           data-type="any"
-          style="color: #356cf9;; 
+          style="color: #d81b60;; 
   text-decoration: underline;
   text-decoration-style: wavy;
   text-decoration-color: #cf1f28;
@@ -451,11 +464,11 @@ exports[`formulaType "normal" - "a123 1" 1`] = `
         </mark>
         <mark
           class="brickdoc-formula-mark"
-          data-code="Function"
+          data-code="FunctionName"
           data-display="a123"
-          data-errors="Function a123 not found"
+          data-errors="\\"a123\\" not found"
           data-type="any"
-          style="color: #356cf9;; 
+          style="color: #d81b60;; 
   text-decoration: underline;
   text-decoration-style: wavy;
   text-decoration-color: #cf1f28;
@@ -473,10 +486,15 @@ exports[`formulaType "normal" - "a123 1" 1`] = `
         </mark>
         <mark
           class="brickdoc-formula-mark"
-          data-code="NumberLiteral"
+          data-code="parseErrorOther"
           data-display="1"
-          data-type="number"
-          style="color: #39b3e8;"
+          data-errors="Not all input parsed: 1"
+          data-type="any"
+          style="
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
         >
           1
         </mark>
@@ -744,13 +762,8 @@ exports[`formulaType "spreadsheet" - "= " " & foo_bar " 1`] = `
           data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"id\\":\\"00000000-0000-0000-0000-000000000000\\",\\"name\\":\\"foo_bar\\",\\"findKey\\":{\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"type\\":\\"id\\",\\"value\\":\\"00000000-0000-0000-0000-000000000000\\"}}"
           data-code="Variable"
           data-display="foo_bar"
-          data-errors="Expected string but got number"
           data-type="number"
-          style="color: #d81b60;; 
-  text-decoration: underline;
-  text-decoration-style: wavy;
-  text-decoration-color: #cf1f28;
-"
+          style="color: #d81b60;"
         >
           foo_bar
         </mark>
@@ -930,11 +943,11 @@ exports[`formulaType "spreadsheet" - "=#CurrentBlock" 1`] = `
           class="brickdoc-formula-mark"
           data-attrs="{\\"kind\\":\\"Block\\",\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"id\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"name\\":\\"formulaType\\",\\"findKey\\":{\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"type\\":\\"id\\",\\"value\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\"}}"
           data-code="Block"
-          data-display="formulaType"
+          data-display="#CurrentBlock"
           data-type="Block"
           style="color: #356cf9;"
         >
-          formulaType
+          #CurrentBlock
         </mark>
       </p>
     </div>
@@ -959,6 +972,24 @@ exports[`formulaType "spreadsheet" - "=#CurrentBlock.foo_bar" 1`] = `
           data-type="any"
         >
           =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-attrs="{\\"kind\\":\\"Block\\",\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"id\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"name\\":\\"formulaType\\",\\"findKey\\":{\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"type\\":\\"id\\",\\"value\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\"}}"
+          data-code="Block"
+          data-display="#CurrentBlock"
+          data-type="Block"
+          style="color: #356cf9;"
+        >
+          #CurrentBlock
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Dot"
+          data-display="."
+          data-type="any"
+        >
+          .
         </mark>
         <mark
           class="brickdoc-formula-mark"
@@ -1076,11 +1107,11 @@ exports[`formulaType "spreadsheet" - "=a+foo_bar" 1`] = `
         </mark>
         <mark
           class="brickdoc-formula-mark"
-          data-code="Function"
+          data-code="FunctionName"
           data-display="a"
-          data-errors="Unknown function a"
+          data-errors="\\"a\\" not found"
           data-type="any"
-          style="color: #356cf9;; 
+          style="color: #d81b60;; 
   text-decoration: underline;
   text-decoration-style: wavy;
   text-decoration-color: #cf1f28;
@@ -1132,11 +1163,11 @@ exports[`formulaType "spreadsheet" - "=a123 1" 1`] = `
         </mark>
         <mark
           class="brickdoc-formula-mark"
-          data-code="Function"
+          data-code="FunctionName"
           data-display="a123"
-          data-errors="Function a123 not found"
+          data-errors="\\"a123\\" not found"
           data-type="any"
-          style="color: #356cf9;; 
+          style="color: #d81b60;; 
   text-decoration: underline;
   text-decoration-style: wavy;
   text-decoration-color: #cf1f28;
@@ -1154,10 +1185,15 @@ exports[`formulaType "spreadsheet" - "=a123 1" 1`] = `
         </mark>
         <mark
           class="brickdoc-formula-mark"
-          data-code="NumberLiteral"
+          data-code="parseErrorOther"
           data-display="1"
-          data-type="number"
-          style="color: #39b3e8;"
+          data-errors="Not all input parsed: 1"
+          data-type="any"
+          style="
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
         >
           1
         </mark>

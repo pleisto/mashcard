@@ -39,7 +39,14 @@ export const PowerFxTestCase: TestCaseInterface = {
     errorTestCases: [
       {
         label: 'CountIf ok',
+        definition: `=CountIf(${spreadsheetToken}, ${spreadsheetToken}.first >= 3)`,
+        errorMessage: 'Expected number but got Column',
+        errorType: 'type'
+      },
+      {
+        label: 'CountIf ok',
         definition: `=CountIf(${spreadsheetToken}, ${spreadsheetToken}."first" >= 3)`,
+        newAbbrevInput: `=CountIf(${spreadsheetToken}, ${spreadsheetToken}.first >= 3)`,
         errorMessage: 'Expected number but got Column',
         errorType: 'type'
       }

@@ -198,7 +198,8 @@ export class FormulaParser extends CstParser {
       { ALT: () => this.SUBRULE(this.recordExpression) },
       { ALT: () => this.SUBRULE(this.constantExpression) },
       { ALT: () => this.SUBRULE(this.lazyVariableExpression) },
-      { ALT: () => this.SUBRULE(this.FunctionCall) }
+      { ALT: () => this.SUBRULE(this.FunctionCall) },
+      { ALT: () => this.CONSUME(FunctionName) }
     ])
   })
 

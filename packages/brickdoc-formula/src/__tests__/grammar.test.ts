@@ -269,15 +269,14 @@ const testCases: TestCase[] = [
   },
   {
     input: '=varvarabc中文var',
-    label: 'TODO chinese2',
     parseErrorType: 'syntax',
-    errorMessage: 'Unknown function varvarabc'
+    errorMessage: '"varvarabc中文var" not found'
   },
   {
     input: '= nottrue',
     label: 'not is a operator',
     parseErrorType: 'syntax',
-    errorMessage: 'Unknown function nottrue'
+    errorMessage: '"nottrue" not found'
   }
 ]
 

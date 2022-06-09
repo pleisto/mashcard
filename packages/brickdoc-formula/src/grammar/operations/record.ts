@@ -7,7 +7,7 @@ export const recordOperator: OperatorType = {
   name: 'record',
   expressionType: 'Record',
   skipReturnEarlyCheck: true,
-  dynamicInterpretLhs: () => ({ type: 'Record', subType: 'void', result: {} }),
+  dynamicInterpretLhs: async () => ({ type: 'Record', subType: 'void', result: {} }),
   lhsType: 'any',
   rhsType: 'any',
   parseRhs: ({

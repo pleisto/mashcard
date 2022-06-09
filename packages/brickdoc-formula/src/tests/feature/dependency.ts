@@ -48,9 +48,9 @@ export const DependencyTestCase: TestCaseInterface = {
           {
             action: { name: 'removeVariable' },
             expected: [
-              { name: 'num3', namespaceId: parentPageNamespaceId, match: 'Unknown function num0' },
-              { name: 'num4', namespaceId: parentPageNamespaceId, match: 'Unknown function num0' },
-              { name: 'num5', namespaceId: parentPageNamespaceId, match: 'Unknown function num0' },
+              { name: 'num3', namespaceId: parentPageNamespaceId, match: '"num0" not found' },
+              { name: 'num4', namespaceId: parentPageNamespaceId, match: '"num0" not found' },
+              { name: 'num5', namespaceId: parentPageNamespaceId, match: '"num0" not found' },
               { name: 'num0', namespaceId: subPageNamespaceId, match: '"num0" not found' }
             ]
           }
@@ -63,9 +63,7 @@ export const DependencyTestCase: TestCaseInterface = {
         testCases: [
           {
             action: { name: 'removeBlock' },
-            expected: [
-              { name: 'num0', namespaceId: subPageNamespaceId, match: 'Unknown function DependencyParentPage' }
-            ]
+            expected: [{ name: 'num0', namespaceId: subPageNamespaceId, match: '"DependencyParentPage" not found' }]
           }
         ]
       },
@@ -125,12 +123,12 @@ export const DependencyTestCase: TestCaseInterface = {
         type: 'Variable',
         testCases: [
           {
-            action: { name: 'updateDefinition', formula: { definition: '=err' }, result: 'Unknown function err' },
+            action: { name: 'updateDefinition', formula: { definition: '=err' }, result: '"err" not found' },
             expected: [
-              { name: 'num3', namespaceId: parentPageNamespaceId, match: 'Unknown function err' },
-              { name: 'num4', namespaceId: parentPageNamespaceId, match: 'Unknown function err' },
-              { name: 'num5', namespaceId: parentPageNamespaceId, match: 'Unknown function err' },
-              { name: 'num0', namespaceId: subPageNamespaceId, match: 'Unknown function err' }
+              { name: 'num3', namespaceId: parentPageNamespaceId, match: '"err" not found' },
+              { name: 'num4', namespaceId: parentPageNamespaceId, match: '"err" not found' },
+              { name: 'num5', namespaceId: parentPageNamespaceId, match: '"err" not found' },
+              { name: 'num0', namespaceId: subPageNamespaceId, match: '"err" not found' }
             ]
           },
           {
@@ -175,9 +173,9 @@ export const DependencyTestCase: TestCaseInterface = {
           {
             action: { name: 'removeVariable' },
             expected: [
-              { name: 'num3', namespaceId: parentPageNamespaceId, match: 'Unknown function num0' },
-              { name: 'num4', namespaceId: parentPageNamespaceId, match: 'Unknown function num0' },
-              { name: 'num5', namespaceId: parentPageNamespaceId, match: 'Unknown function num0' },
+              { name: 'num3', namespaceId: parentPageNamespaceId, match: '"num0" not found' },
+              { name: 'num4', namespaceId: parentPageNamespaceId, match: '"num0" not found' },
+              { name: 'num5', namespaceId: parentPageNamespaceId, match: '"num0" not found' },
               { name: 'num0', namespaceId: subPageNamespaceId, match: '"num0" not found' },
               { name: 'var2', namespaceId: parentPageNamespaceId, match: '"num0" not found' },
               { name: 'var1', namespaceId: subPageNamespaceId, match: '"num0" not found' }

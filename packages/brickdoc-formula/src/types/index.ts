@@ -11,7 +11,6 @@ import {
   RangeType,
   CellType
 } from '../controls'
-import { PositionFragment } from '../grammar'
 
 const FORMULA_BASIC_TYPES = ['number', 'string', 'boolean', 'null'] as const
 const FORMULA_OBJECT_TYPES = ['Date', 'Block', 'Blank', 'Record', 'Array', 'Error'] as const
@@ -651,7 +650,7 @@ export type AnyFunctionClauseWithKeyAndExample = RequireField<AnyFunctionClause,
 export interface BaseCodeFragment {
   readonly code: CodeFragmentCodes
   readonly display: string
-  readonly hide: boolean
+  readonly replacements?: [string, ...string[]]
   readonly type: FormulaType
   readonly errors: ErrorMessage[]
 }
@@ -676,7 +675,6 @@ export type CodeFragment = SpecialCodeFragment | OtherCodeFragment
 
 export interface CodeFragmentStepInput {
   codeFragments: CodeFragment[]
-  positionFragment: PositionFragment
 }
 
 export type CodeFragmentStep = ({

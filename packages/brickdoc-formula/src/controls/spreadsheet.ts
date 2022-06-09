@@ -398,7 +398,7 @@ export class SpreadsheetClass implements SpreadsheetType {
       if (!column) return undefined
       return new ColumnClass(this, column, false, key)
     } else {
-      const column = this._columns.find(col => col.title === key.value)
+      const column = this._columns.find(col => col.title?.toUpperCase() === key.value.toUpperCase())
 
       if (column) return new ColumnClass(this, column, false, key)
 

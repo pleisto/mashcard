@@ -30,6 +30,7 @@ import {
   expressionOperator,
   inOperator,
   multiplicationOperator,
+  nameOperator,
   notOperator,
   parenthesisOperator,
   predicateOperator,
@@ -220,6 +221,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
       constantExpression: CstNode | CstNode[]
       FunctionCall: CstNode | CstNode[]
       lazyVariableExpression: CstNode | CstNode[]
+      FunctionName: IToken[]
     },
     args: InterpretArgument
   ): Promise<AnyTypeResult> {
@@ -235,6 +237,15 @@ export class FormulaInterpreter extends InterpretCstVisitor {
       return await this.visit(ctx.FunctionCall, args)
     } else if (ctx.lazyVariableExpression) {
       return await this.visit(ctx.lazyVariableExpression, args)
+    } else if (ctx.FunctionName) {
+      return await interpretByOperator({
+        interpreter: this,
+        operators: ctx.FunctionName,
+        args,
+        operator: nameOperator,
+        rhs: undefined,
+        lhs: undefined
+      })
     } else {
       // devLog({ ctx })
       throw new Error('unsupported expression')

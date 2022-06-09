@@ -12,6 +12,7 @@ import { equalCompareOperator } from './equalCompare'
 import { expressionOperator } from './expression'
 import { inOperator } from './in'
 import { multiplicationOperator } from './multiplication'
+import { nameOperator } from './name'
 import { notOperator } from './not'
 import { parenthesisOperator } from './parenthesis'
 import { predicateOperator } from './predicate'
@@ -42,6 +43,7 @@ export * from './arguments'
 export * from './block'
 export * from './thisRow'
 export * from './thisRecord'
+export * from './name'
 
 export const OPERATORS: OperatorType[] = [
   accessOperator,
@@ -64,5 +66,6 @@ export const OPERATORS: OperatorType[] = [
   recordFieldOperator,
   recordOperator,
   thisRecordOperator,
-  thisRowOperator
+  thisRowOperator,
+  nameOperator
 ]

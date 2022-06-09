@@ -140,7 +140,12 @@ export const inOperator: OperatorType = {
       // Spreadsheet
       { label: 'in spreadsheet true', definition: `=3 in ${spreadsheetToken}`, result: true },
       { label: 'in spreadsheet false', definition: `=4 in ${spreadsheetToken}`, result: false },
-      { label: 'in column true', definition: `=3 in ${spreadsheetToken}."second"`, result: false },
+      {
+        label: 'in column true',
+        definition: `=3 in ${spreadsheetToken}."second"`,
+        result: false,
+        newAbbrevInput: `=3 in ${spreadsheetToken}.second`
+      },
       { label: 'in column false', definition: `=4 in ${spreadsheetToken}.second`, result: true },
       { label: 'exactin column true', definition: `="foo" in ${spreadsheetToken}.third`, result: true }
     ],

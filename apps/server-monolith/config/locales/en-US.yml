@@ -172,7 +172,7 @@ en-US:
       less_than_or_equal_to: must be less than or equal to %{count}
       model_invalid: 'Validation failed: %{errors}'
       email_invalid: is not an email
-      domain_invalid: is not a vaild domain name
+      domain_invalid: is not a valid domain name
       uuid_invalid: is not an uuid
       mobile_phone_invalid: is not a valid mobile phone number
       domain_presence_invalid: is not presence

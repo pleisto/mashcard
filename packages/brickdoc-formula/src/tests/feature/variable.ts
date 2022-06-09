@@ -34,39 +34,36 @@ export const VariableTestCase: TestCaseInterface = {
         result: 0,
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
-          { key: 'blockDependencies', match: [pageId] },
+          { key: 'blockDependencies', match: [] },
           { key: 'variableDependencies', match: [{ namespaceId: pageId, variableId: num1Id }] },
           { key: 'flattenVariableDependencies', match: [{ namespaceId: pageId, variableId: num1Id }] },
-          { key: 'nameDependencies', match: [{ name: 'num1', namespaceId: pageId }] }
+          { key: 'nameDependencies', match: [] }
         ]
       },
       {
         definition: '="num1"',
         namespaceId: pageId,
-        result: 0,
-        expected: [
-          { key: 'codeFragments', matchType: 'toMatchSnapshot' },
-          { key: 'blockDependencies', match: [pageId] },
-          { key: 'nameDependencies', match: [{ name: 'num1', namespaceId: pageId }] }
-        ]
+        result: 'num1'
       },
       {
         definition: `=#${pageId}.num1`,
+        newAbbrevInput: '=Variable.num1',
         result: 0,
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'blockDependencies', match: [pageId] },
-          { key: 'nameDependencies', match: [{ name: 'num1', namespaceId: pageId }] }
+          { key: 'nameDependencies', match: [] }
         ]
       },
       {
         definition: '=Variable.NUM1',
+        newAbbrevInput: '=Variable.num1',
         result: 0,
         label: 'Case insensitive',
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'blockDependencies', match: [pageId] },
-          { key: 'nameDependencies', match: [{ name: 'num1', namespaceId: pageId }] }
+          { key: 'nameDependencies', match: [] }
         ]
       },
       {
@@ -76,7 +73,7 @@ export const VariableTestCase: TestCaseInterface = {
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'blockDependencies', match: [pageId] },
-          { key: 'nameDependencies', match: [{ name: 'num1', namespaceId: pageId }] }
+          { key: 'nameDependencies', match: [] }
         ]
       },
       {
@@ -85,7 +82,7 @@ export const VariableTestCase: TestCaseInterface = {
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'blockDependencies', match: [pageId] },
-          { key: 'nameDependencies', match: [{ name: 'num1', namespaceId: pageId }] }
+          { key: 'nameDependencies', match: [] }
         ]
       },
       {
@@ -93,13 +90,7 @@ export const VariableTestCase: TestCaseInterface = {
         result: 0,
         expected: [
           { key: 'blockDependencies', match: [pageId] },
-          {
-            key: 'nameDependencies',
-            match: [
-              { name: 'num1', namespaceId: pageId },
-              { name: 'num0', namespaceId: pageId }
-            ]
-          }
+          { key: 'nameDependencies', match: [] }
         ]
       },
       {
@@ -107,14 +98,8 @@ export const VariableTestCase: TestCaseInterface = {
         result: 0,
         namespaceId: pageId,
         expected: [
-          { key: 'blockDependencies', match: [pageId] },
-          {
-            key: 'nameDependencies',
-            match: [
-              { name: 'num1', namespaceId: pageId },
-              { name: 'num0', namespaceId: pageId }
-            ]
-          }
+          { key: 'blockDependencies', match: [] },
+          { key: 'nameDependencies', match: [] }
         ]
       },
       {
@@ -130,13 +115,7 @@ export const VariableTestCase: TestCaseInterface = {
               { namespaceId: pageId, variableId: num1Id }
             ]
           },
-          {
-            key: 'nameDependencies',
-            match: [
-              { name: 'num3', namespaceId: pageId },
-              { name: 'num1', namespaceId: pageId }
-            ]
-          }
+          { key: 'nameDependencies', match: [] }
         ]
       },
       {
@@ -179,7 +158,7 @@ export const VariableTestCase: TestCaseInterface = {
       {
         definition: `=baz`,
         errorType: 'syntax',
-        errorMessage: 'Unknown function baz',
+        errorMessage: '"baz" not found',
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'nameDependencies', match: [{ name: 'baz', namespaceId: DEFAULT_FIRST_NAMESPACEID }] },
@@ -191,7 +170,7 @@ export const VariableTestCase: TestCaseInterface = {
         namespaceId: pageId,
         groupOptions: [{ name: 'complete', options: { name: 'num0', kind: 'variable' } }],
         errorType: 'syntax',
-        errorMessage: 'Unknown function fo',
+        errorMessage: '"fo" not found',
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'blockDependencies', match: [] },

@@ -360,7 +360,9 @@ export class FormulaContext implements ContextInterface {
     if (type === 'id') {
       return this.spreadsheets[value]
     } else {
-      return Object.values(this.spreadsheets).find(s => s!.namespaceId === namespaceId && s!.name() === value)
+      return Object.values(this.spreadsheets).find(
+        s => s!.namespaceId === namespaceId && s!.name().toUpperCase() === value.toUpperCase()
+      )
     }
   }
 
@@ -408,7 +410,9 @@ export class FormulaContext implements ContextInterface {
   }
 
   public findVariableByName(namespaceId: NamespaceId, name: string): VariableInterface | undefined {
-    const v = Object.values(this.variables).find(v => v.t.meta.namespaceId === namespaceId && v.t.meta.name === name)
+    const v = Object.values(this.variables).find(
+      v => v.t.meta.namespaceId === namespaceId && v.t.meta.name.toUpperCase() === name.toUpperCase()
+    )
     return v
   }
 

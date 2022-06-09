@@ -7,7 +7,6 @@ Array [
     "code": "Equal",
     "display": "=",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -15,7 +14,6 @@ Array [
     "code": "Function",
     "display": "if",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -23,7 +21,6 @@ Array [
     "code": "LParen",
     "display": "(",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -31,7 +28,6 @@ Array [
     "code": "BooleanLiteral",
     "display": "true",
     "errors": Array [],
-    "hide": false,
     "type": "boolean",
   },
   Object {
@@ -39,7 +35,6 @@ Array [
     "code": "Comma",
     "display": ",",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -47,7 +42,6 @@ Array [
     "code": "Space",
     "display": " ",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -55,7 +49,6 @@ Array [
     "code": "NumberLiteral",
     "display": "1",
     "errors": Array [],
-    "hide": false,
     "type": "number",
   },
   Object {
@@ -63,7 +56,6 @@ Array [
     "code": "Plus",
     "display": "+",
     "errors": Array [],
-    "hide": false,
     "type": "number",
   },
   Object {
@@ -71,7 +63,6 @@ Array [
     "code": "NumberLiteral",
     "display": "2",
     "errors": Array [],
-    "hide": false,
     "type": "number",
   },
   Object {
@@ -79,7 +70,6 @@ Array [
     "code": "Comma",
     "display": ",",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -87,7 +77,6 @@ Array [
     "code": "Space",
     "display": " ",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -95,7 +84,6 @@ Array [
     "code": "StringLiteral",
     "display": "\\"2\\"",
     "errors": Array [],
-    "hide": false,
     "type": "string",
   },
   Object {
@@ -103,7 +91,6 @@ Array [
     "code": "RParen",
     "display": ")",
     "errors": Array [],
-    "hide": false,
     "type": Array [
       "number",
       "string",
@@ -142,7 +129,6 @@ Array [
     "code": "Equal",
     "display": "=",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -150,7 +136,6 @@ Array [
     "code": "Space",
     "display": " ",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -163,7 +148,6 @@ Array [
         "type": "parse",
       },
     ],
-    "hide": false,
     "type": "any",
   },
 ]
@@ -176,7 +160,6 @@ Array [
     "code": "Equal",
     "display": "=",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -184,7 +167,6 @@ Array [
     "code": "GreaterThanEqual",
     "display": ">=",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -197,7 +179,6 @@ Array [
         "type": "type",
       },
     ],
-    "hide": false,
     "type": "boolean",
   },
 ]
@@ -449,7 +430,6 @@ Array [
     "code": "Equal",
     "display": "=",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -457,7 +437,6 @@ Array [
     "code": "Space",
     "display": " ",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -470,7 +449,6 @@ Array [
         "type": "parse",
       },
     ],
-    "hide": false,
     "type": "any",
   },
 ]
@@ -483,7 +461,6 @@ Array [
     "code": "Equal",
     "display": "=",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -491,7 +468,6 @@ Array [
     "code": "Space",
     "display": " ",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -499,7 +475,6 @@ Array [
     "code": "NumberLiteral",
     "display": "1",
     "errors": Array [],
-    "hide": false,
     "type": "number",
   },
   Object {
@@ -512,7 +487,6 @@ Array [
         "type": "parse",
       },
     ],
-    "hide": false,
     "type": "any",
   },
 ]
@@ -525,7 +499,6 @@ Array [
     "code": "Equal",
     "display": "=",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -533,7 +506,6 @@ Array [
     "code": "Space",
     "display": " ",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -546,37 +518,6 @@ Array [
         "type": "parse",
       },
     ],
-    "hide": false,
-    "type": "any",
-  },
-]
-`;
-
-exports[`Simple test case TODO [TODO chinese2] =varvarabc中文var // => ✗ 1`] = `
-Array [
-  Object {
-    "attrs": undefined,
-    "code": "Equal",
-    "display": "=",
-    "errors": Array [],
-    "hide": false,
-    "type": "any",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "Function",
-    "display": "varvarabc中文var",
-    "errors": Array [
-      Object {
-        "message": "Unknown function varvarabc中文var",
-        "type": "syntax",
-      },
-      Object {
-        "message": "TODO mismatch token FunctionCall",
-        "type": "parse",
-      },
-    ],
-    "hide": false,
     "type": "any",
   },
 ]
@@ -589,7 +530,6 @@ Array [
     "code": "Equal",
     "display": "",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -597,7 +537,6 @@ Array [
     "code": "Equal2",
     "display": "==",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -605,7 +544,6 @@ Array [
     "code": "NumberLiteral",
     "display": "1",
     "errors": Array [],
-    "hide": false,
     "type": "number",
   },
 ]
@@ -618,7 +556,6 @@ Array [
     "code": "Equal",
     "display": "=",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -626,7 +563,6 @@ Array [
     "code": "Space",
     "display": " ",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -634,7 +570,6 @@ Array [
     "code": "NumberLiteral",
     "display": "-0.123",
     "errors": Array [],
-    "hide": false,
     "type": "number",
   },
   Object {
@@ -642,7 +577,6 @@ Array [
     "code": "Sign",
     "display": "%",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
 ]
@@ -655,7 +589,6 @@ Array [
     "code": "Equal",
     "display": "=",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -663,7 +596,6 @@ Array [
     "code": "NumberLiteral",
     "display": "123123123123123123123",
     "errors": Array [],
-    "hide": false,
     "type": "number",
   },
 ]
@@ -676,7 +608,6 @@ Array [
     "code": "Equal",
     "display": "=",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -684,7 +615,6 @@ Array [
     "code": "Space",
     "display": " ",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -692,7 +622,6 @@ Array [
     "code": "StringLiteral",
     "display": "\\"hel\\"",
     "errors": Array [],
-    "hide": false,
     "type": "string",
   },
   Object {
@@ -705,7 +634,6 @@ Array [
         "type": "parse",
       },
     ],
-    "hide": false,
     "type": "any",
   },
 ]
@@ -718,7 +646,6 @@ Array [
     "code": "Equal",
     "display": "=",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
@@ -726,24 +653,18 @@ Array [
     "code": "Space",
     "display": " ",
     "errors": Array [],
-    "hide": false,
     "type": "any",
   },
   Object {
     "attrs": undefined,
-    "code": "Function",
+    "code": "FunctionName",
     "display": "nottrue",
     "errors": Array [
       Object {
-        "message": "Unknown function nottrue",
+        "message": "\\"nottrue\\" not found",
         "type": "syntax",
       },
-      Object {
-        "message": "TODO mismatch token FunctionCall",
-        "type": "parse",
-      },
     ],
-    "hide": false,
     "type": "any",
   },
 ]

@@ -93,11 +93,13 @@ const fetchFormulaContent = (t: VariableData | undefined, formulaIsNormal: boole
 }
 
 const replaceRoot = ({
+  formulaIsNormal,
   content,
   rootId,
   input: { position, definition },
   formulaId
 }: {
+  formulaIsNormal: boolean
   content: FormulaContent
   input: FormulaInput
   rootId: string
@@ -106,7 +108,7 @@ const replaceRoot = ({
   // console.log('replace root', formulaId, editorContent)
   BrickdocEventBus.dispatch(
     FormulaEditorReplaceRootTrigger({
-      position,
+      position: formulaIsNormal ? position - 1 : position,
       content,
       input: definition,
       formulaId,
@@ -277,6 +279,7 @@ export const useFormula = ({
         contentRef.current = fetchFormulaContent(tempT, formulaIsNormal, namespaceId)
         // console.log('replace editorContent', editorContentRef.current, newVariable)
         replaceRoot({
+          formulaIsNormal,
           content: contentRef.current,
           rootId: namespaceId,
           formulaId: variableId,
@@ -320,7 +323,6 @@ export const useFormula = ({
               display: newText,
               code: 'unknown',
               type: 'any',
-              hide: false,
               errors: [],
               attrs: undefined
             })
@@ -335,7 +337,6 @@ export const useFormula = ({
             display: nextText,
             code: 'unknown',
             type: 'any',
-            hide: false,
             errors: [],
             attrs: undefined
           })
@@ -353,6 +354,7 @@ export const useFormula = ({
     contentRef.current = finalContent
     inputRef.current = { definition: finalInputAfterEqual, position: newPosition }
     replaceRoot({
+      formulaIsNormal,
       content: contentRef.current,
       rootId: namespaceId,
       formulaId: variableId,

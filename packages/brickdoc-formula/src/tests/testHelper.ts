@@ -228,7 +228,7 @@ export const makeContext = async (options: MakeContextOptions): Promise<MakeCont
       input: args.definition!,
       namespaceId: fetchUUIDSymbol(args.namespaceId, uuidState) ?? firstNamespaceId ?? uuid(),
       name: args.name ?? 'testInput',
-      position: 0,
+      position: args.position ?? 0,
       richType: args.richType ?? { type: 'normal' }
     }
   }

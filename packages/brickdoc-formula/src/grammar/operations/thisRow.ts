@@ -25,7 +25,7 @@ export const thisRowOperator: OperatorType = {
   dynamicParseType: lhsType => lhsType,
   lhsType: 'any',
   rhsType: 'any',
-  dynamicInterpretLhs: (args, operators, interpreter) => {
+  dynamicInterpretLhs: async (args, operators, interpreter) => {
     if (interpreter.ctx.meta.richType.type !== 'spreadsheet') {
       return { type: 'Error', result: unavailableMessage.message, errorKind: 'runtime' }
     }
@@ -96,12 +96,7 @@ export const thisRowOperator: OperatorType = {
       }
     ]
 
-    const errorMessages: ErrorMessage[] = []
-    return {
-      image,
-      codeFragments: finalCodeFragments.map(c => ({ ...c, errors: [...errorMessages, ...c.errors] })),
-      type
-    }
+    return { image, codeFragments: finalCodeFragments, type }
   },
   interpret: async ({ lhs }) => lhs,
   testCases: {

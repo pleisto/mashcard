@@ -9,7 +9,6 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
-      "hide": false,
       "type": "any",
     },
     Object {
@@ -25,9 +24,8 @@ Array [
         "namespaceId": "00000000-0000-0000-0000-000000000000",
       },
       "code": "Block",
-      "display": "Default",
+      "display": "#CurrentBlock",
       "errors": Array [],
-      "hide": true,
       "type": "Block",
     },
     Object {
@@ -35,7 +33,6 @@ Array [
       "code": "Dot",
       "display": ".",
       "errors": Array [],
-      "hide": false,
       "type": "any",
     },
     Object {
@@ -48,7 +45,6 @@ Array [
           "type": "deps",
         },
       ],
-      "hide": false,
       "type": "string",
     },
   ],
@@ -64,7 +60,6 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
-      "hide": false,
       "type": "any",
     },
     Object {
@@ -82,7 +77,6 @@ Array [
       "code": "Block",
       "display": "Variable",
       "errors": Array [],
-      "hide": false,
       "type": "Block",
     },
     Object {
@@ -90,7 +84,6 @@ Array [
       "code": "Dot",
       "display": ".",
       "errors": Array [],
-      "hide": false,
       "type": "any",
     },
     Object {
@@ -103,14 +96,13 @@ Array [
           "type": "deps",
         },
       ],
-      "hide": false,
       "type": "string",
     },
   ],
 ]
 `;
 
-exports[`errorParse variable "=baz" -> [syntax] "Unknown function baz" 1`] = `
+exports[`errorParse variable "=baz" -> [syntax] ""baz" not found" 1`] = `
 Array [
   "codeFragments",
   Array [
@@ -119,31 +111,25 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
-      "hide": false,
       "type": "any",
     },
     Object {
       "attrs": undefined,
-      "code": "Function",
+      "code": "FunctionName",
       "display": "baz",
       "errors": Array [
         Object {
-          "message": "Unknown function baz",
+          "message": "\\"baz\\" not found",
           "type": "syntax",
         },
-        Object {
-          "message": "TODO mismatch token FunctionCall",
-          "type": "parse",
-        },
       ],
-      "hide": false,
       "type": "any",
     },
   ],
 ]
 `;
 
-exports[`errorParse variable "=fo" -> [syntax] "Unknown function fo" 1`] = `
+exports[`errorParse variable "=fo" -> [syntax] ""fo" not found" 1`] = `
 Array [
   "codeFragments",
   Array [
@@ -152,24 +138,18 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
-      "hide": false,
       "type": "any",
     },
     Object {
       "attrs": undefined,
-      "code": "Function",
+      "code": "FunctionName",
       "display": "fo",
       "errors": Array [
         Object {
-          "message": "Unknown function fo",
+          "message": "\\"fo\\" not found",
           "type": "syntax",
         },
-        Object {
-          "message": "TODO mismatch token FunctionCall",
-          "type": "parse",
-        },
       ],
-      "hide": false,
       "type": "any",
     },
   ],

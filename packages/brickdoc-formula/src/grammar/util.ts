@@ -124,7 +124,7 @@ export const shouldReturnEarly = (result: AnyTypeResult | undefined, skipReturnE
   return false
 }
 
-const encodeString = (str: string): string => {
+export const encodeString = (str: string): string => {
   return `"${str}"`
 }
 export const objectDiff = <T>(a: T[], b: T[]): Record<number, T> =>

@@ -7,6 +7,7 @@ const spreadsheetId = '22222222-2222-4444-3333-222222222222'
 const firstColumnId = '66666666-6666-4444-6666-666666666666'
 const firstRowId = 'eeeeeeee-eeee-4444-aaaa-222222222222'
 const firstCellId = '33333333-3333-4444-3333-333333333333'
+const invalidColumnId = '11111111-1111-4444-dddd-111111111111'
 const spreadsheetToken = 'SpreadsheetPage.spreadsheet'
 
 export const SpreadsheetTestCase: TestCaseInterface = {
@@ -18,7 +19,7 @@ export const SpreadsheetTestCase: TestCaseInterface = {
         pageId: namespaceId,
         spreadsheets: [
           // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-          <SpreadsheetInput<3, 3>>{
+          <SpreadsheetInput<4, 3>>{
             name: 'spreadsheet',
             spreadsheetId,
             columns: [
@@ -37,6 +38,12 @@ export const SpreadsheetTestCase: TestCaseInterface = {
                 name: 'third',
                 displayIndex: 'C',
                 cells: [{ value: '3' }, { value: '' }, { value: 'Foo' }]
+              },
+              {
+                name: 'invalid name',
+                columnId: invalidColumnId,
+                displayIndex: 'D',
+                cells: [{ value: '4' }, { value: '6' }, { value: '8' }]
               }
             ],
             rows: [{ rowId: firstRowId }, {}, {}]
@@ -45,8 +52,12 @@ export const SpreadsheetTestCase: TestCaseInterface = {
       }
     ],
     successTestCases: [
-      { definition: `=${spreadsheetToken}."first"`, result: mockColumn('first', firstColumnId) },
-      { definition: `=${spreadsheetToken}."first"`, result: mockColumn('first', firstColumnId) },
+      {
+        definition: `=${spreadsheetToken}."first"`,
+        result: mockColumn('first', firstColumnId),
+        newAbbrevInput: `=${spreadsheetToken}.first`
+      },
+      { definition: `=${spreadsheetToken}."invalid name"`, result: mockColumn('invalid name', invalidColumnId) },
       { definition: `=${spreadsheetToken}["first"]`, result: mockColumn('first', firstColumnId) },
       { definition: `=${spreadsheetToken}.A`, result: mockColumn('A', firstColumnId) },
       { definition: `=${spreadsheetToken}.1`, result: mockRow('1') },
@@ -61,8 +72,16 @@ export const SpreadsheetTestCase: TestCaseInterface = {
       { definition: `=${spreadsheetToken}.1["A"]`, result: mockCell('1', firstCellId, 'A', '1') },
       { definition: `=${spreadsheetToken}[1]["A"]`, result: mockCell('1', firstCellId, 'A', '1') },
       { definition: `=${spreadsheetToken}.A.1`, result: mockCell('1', firstCellId, 'A', '1') },
-      { definition: `=${spreadsheetToken}."first".1`, result: mockCell('1', firstCellId, firstColumnId, '1') },
-      { definition: `=${spreadsheetToken}."first"[1]`, result: mockCell('1', firstCellId, firstColumnId, '1') },
+      {
+        definition: `=${spreadsheetToken}."first".1`,
+        result: mockCell('1', firstCellId, firstColumnId, '1'),
+        newAbbrevInput: `=${spreadsheetToken}.first.1`
+      },
+      {
+        definition: `=${spreadsheetToken}."first"[1]`,
+        result: mockCell('1', firstCellId, firstColumnId, '1'),
+        newAbbrevInput: `=${spreadsheetToken}.first[1]`
+      },
       { definition: `=${spreadsheetToken}["A"][1]`, result: mockCell('1', firstCellId, 'A', '1') },
       { definition: `=${spreadsheetToken}["first"][1]`, result: mockCell('1', firstCellId, firstColumnId, '1') },
       // { label: 'Range 1', definition: `=${spreadsheetToken}.first.1:${spreadsheetToken}.first.2`, result: RANGE_FLAG },
@@ -71,7 +90,7 @@ export const SpreadsheetTestCase: TestCaseInterface = {
       // { label: 'Spreadsheet', definition: `=Spreadsheet([]).toArray()`, result: SNAPSHOT_FLAG },
       // { label: 'Spreadsheet', definition: `=Spreadsheet([1,2,3]).toArray()`, result: SNAPSHOT_FLAG },
       // { label: 'Spreadsheet', definition: `=Spreadsheet([{a: 1}, {a: 2}]).toArray()`, result: SNAPSHOT_FLAG },
-      { label: 'COLUMN_COUNT', definition: `=${spreadsheetToken}.COLUMN_COUNT()`, result: 3 },
+      { label: 'COLUMN_COUNT', definition: `=${spreadsheetToken}.COLUMN_COUNT()`, result: 4 },
       { label: 'SUM', definition: `=${spreadsheetToken}.first.SUM()`, result: 1 + 3 + 5 },
       { label: 'MAX', definition: `=${spreadsheetToken}.first.MAX()`, result: 5 },
       { label: 'COUNTA', definition: `=${spreadsheetToken}.first.COUNTA()`, result: 3 },
@@ -125,8 +144,18 @@ export const SpreadsheetTestCase: TestCaseInterface = {
         errorMessage: 'Not all input parsed: .',
         valid: false
       },
-      { definition: `=${spreadsheetToken}."first".foobar`, errorType: 'syntax', errorMessage: 'Need a number: foobar' },
-      { definition: `=${spreadsheetToken}."first".100`, errorType: 'runtime', errorMessage: 'Cell out of range: 3' }
+      {
+        definition: `=${spreadsheetToken}."first".foobar`,
+        newAbbrevInput: `=${spreadsheetToken}.first.foobar`,
+        errorType: 'syntax',
+        errorMessage: 'Need a number: foobar'
+      },
+      {
+        definition: `=${spreadsheetToken}."first".100`,
+        newAbbrevInput: `=${spreadsheetToken}.first.100`,
+        errorType: 'runtime',
+        errorMessage: 'Cell out of range: 3'
+      }
     ]
   }
 }

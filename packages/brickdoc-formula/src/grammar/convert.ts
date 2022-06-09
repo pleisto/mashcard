@@ -20,7 +20,7 @@ import {
   AnyFunctionClause
 } from '../types'
 import { BlockType, ColumnType, RowType, SpreadsheetType } from '../controls'
-import { maybeEncodeString, parseString, reverseTraversalString } from './util'
+import { encodeString, maybeEncodeString, parseString, reverseTraversalString } from './util'
 import { fetchResult } from '../context'
 
 export const variableKey = (namespaceId: NamespaceId, variableId: VariableId): VariableKey =>
@@ -103,7 +103,6 @@ export const block2codeFragment = (block: BlockType, pageId: NamespaceId): CodeF
   return {
     display: block.name(pageId),
     errors: [],
-    hide: false,
     code: 'Block',
     type: 'Block',
     attrs: block2attrs(block, pageId)
@@ -113,11 +112,11 @@ export const block2codeFragment = (block: BlockType, pageId: NamespaceId): CodeF
 export const column2codeFragment = (column: ColumnType, pageId: NamespaceId): CodeFragment => {
   // const value = columnKey(column.namespaceId, column.columnId)
   return {
-    display: column.display(),
+    replacements: [column.display(), encodeString(column.display())],
+    display: maybeEncodeString(column.display())[1],
     errors: [],
     code: 'Column',
     type: 'Column',
-    hide: false,
     attrs: column2attrs(column)
   }
 }
@@ -128,7 +127,6 @@ export const row2codeFragment = (row: RowType, pageId: NamespaceId): CodeFragmen
     errors: [],
     code: 'Row',
     type: 'Row',
-    hide: false,
     attrs: row2attrs(row)
   }
 }
@@ -154,7 +152,6 @@ export const variable2codeFragment = (variable: VariableInterface, pageId: Names
     display: variable.t.meta.name,
     errors: [],
     code: 'Variable',
-    hide: false,
     type: fetchResult(variable.t).type,
     attrs: variable2attrs(variable)
   }
@@ -185,7 +182,6 @@ export const spreadsheet2codeFragment = (spreadsheet: SpreadsheetType, pageId: N
     errors: [],
     code: 'Spreadsheet',
     type: 'Spreadsheet',
-    hide: false,
     attrs: spreadsheet2attrs(spreadsheet)
   }
 }
@@ -246,7 +242,6 @@ export const function2completion = (functionClause: AnyFunctionClause, weight: n
         errors: [],
         code: 'Function',
         type: 'any',
-        hide: false,
         attrs: undefined
       }
     ]

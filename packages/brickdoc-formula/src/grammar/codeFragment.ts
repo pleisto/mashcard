@@ -26,6 +26,7 @@ import {
   expressionOperator,
   inOperator,
   multiplicationOperator,
+  nameOperator,
   notOperator,
   parenthesisOperator,
   rangeOperator,
@@ -35,12 +36,12 @@ import {
   thisRowOperator
 } from './operations'
 import { parseByOperator } from './operator'
+import { parseTrackBlock, parseTrackName } from './dependency'
 
 export const token2fragment = (token: IToken, type: FormulaType): CodeFragment => {
   return {
     code: token.tokenType.name as SimpleCodeFragmentType,
     errors: [],
-    hide: false,
     type,
     display: token.image,
     attrs: undefined
@@ -445,24 +446,35 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
       constantExpression: CstNode | CstNode[]
       FunctionCall: CstNode | CstNode[]
       lazyVariableExpression: CstNode | CstNode[]
+      FunctionName: IToken[]
     },
-    { type }: CstVisitorArgument
+    args: CstVisitorArgument
   ): CodeFragmentResult {
     if (ctx.parenthesisExpression) {
-      return this.visit(ctx.parenthesisExpression, { type })
+      return this.visit(ctx.parenthesisExpression, args)
     } else if (ctx.arrayExpression) {
-      return this.visit(ctx.arrayExpression, { type })
+      return this.visit(ctx.arrayExpression, args)
     } else if (ctx.recordExpression) {
-      return this.visit(ctx.recordExpression, { type })
+      return this.visit(ctx.recordExpression, args)
     } else if (ctx.constantExpression) {
-      return this.visit(ctx.constantExpression, { type })
+      return this.visit(ctx.constantExpression, args)
     } else if (ctx.FunctionCall) {
-      return this.visit(ctx.FunctionCall, { type })
+      return this.visit(ctx.FunctionCall, args)
     } else if (ctx.lazyVariableExpression) {
-      return this.visit(ctx.lazyVariableExpression, { type })
+      return this.visit(ctx.lazyVariableExpression, args)
+    } else if (ctx.FunctionName) {
+      return parseByOperator({
+        cstVisitor: this,
+        operators: [],
+        bodyToken: ctx.FunctionName,
+        args,
+        operator: nameOperator,
+        rhs: [],
+        lhs: undefined
+      })
     }
 
-    // devLog('debugAtomic', {ctx, type})
+    // console.log('debugAtomic', { ctx, args })
     return { codeFragments: [], type: 'any', image: '' }
   }
 
@@ -699,7 +711,6 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     codeFragments.push({
       code: 'NumberLiteral',
       errors,
-      hide: false,
       type: 'number',
       display: image,
       attrs: undefined
@@ -746,21 +757,18 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
       namespaceToken.tokenType.name === 'CurrentBlock' ? this.ctx.meta.namespaceId : namespaceToken.image
 
     this.kind = 'expression'
-    this.blockDependencies.push(namespaceId)
-
     const block = this.ctx.formulaContext.findBlockById(namespaceId)
 
     if (block) {
+      parseTrackBlock(this, block)
       const parentType: FormulaType = 'Block'
       const { errorMessages, newType } = intersectType(type, parentType, 'blockExpression', this.ctx)
-      const hide = namespaceId === this.ctx.meta.namespaceId
 
       return {
         codeFragments: [
           {
-            ...token2fragment(namespaceToken, 'any'),
             ...block2codeFragment(block, this.ctx.meta.namespaceId),
-            hide,
+            ...(namespaceToken.tokenType.name === 'CurrentBlock' ? { display: '#CurrentBlock' } : {}),
             errors: errorMessages
           }
         ],
@@ -853,7 +861,6 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
             {
               code: 'Function',
               errors: [],
-              hide: false,
               type: 'any',
               display: functionKey,
               attrs: undefined
@@ -863,7 +870,6 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
             {
               code: 'FunctionGroup',
               errors: [],
-              hide: false,
               type: 'any',
               display: group,
               attrs: undefined
@@ -871,7 +877,6 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
             {
               code: 'DoubleColon',
               errors: [],
-              hide: false,
               type: 'any',
               display: '::',
               attrs: undefined
@@ -879,7 +884,6 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
             {
               code: 'Function',
               errors: [],
-              hide: false,
               type: 'any',
               display: name,
               attrs: undefined
@@ -887,8 +891,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
           ]
 
     if (!ctx.LParen) {
-      // console.log('nameDependency', functionKey)
-      this.nameDependencies.push({ namespaceId: this.ctx.meta.namespaceId, name: functionKey })
+      parseTrackName(this, functionKey, this.ctx.meta.namespaceId)
 
       return {
         codeFragments: nameFragments.map(c => ({
