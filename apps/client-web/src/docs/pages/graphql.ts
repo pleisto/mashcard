@@ -314,3 +314,76 @@ export const SyncDocument = gql`
     }
   }
 `
+
+export const queryBlockNew = gql`
+  query BlockNew($id: String!, $historyId: String) {
+    blockNew(id: $id, historyId: $historyId) {
+      id
+      statesCount
+      stateId
+      blockType
+      states {
+        id
+        state
+      }
+    }
+  }
+`
+export const queryDocumentHistories = gql`
+  query documentHistories($id: String!) {
+    documentHistories(id: $id) {
+      users {
+        name
+      }
+      histories {
+        id
+        createdAt
+        username
+      }
+    }
+  }
+`
+
+export const BlockCommit = gql`
+  mutation BlockCommit($input: BlockCommitInput!) {
+    blockCommit(input: $input) {
+      errors
+      block {
+        id
+        statesCount
+        stateId
+        blockType
+      }
+      diffStates {
+        id
+        state
+        createdAt
+      }
+    }
+  }
+`
+
+export const Document = gql`
+  subscription Document($docId: UUID!) {
+    document(docId: $docId) {
+      operatorId
+      blocks {
+        id
+        statesCount
+        stateId
+        blockType
+      }
+      states {
+        id
+        state
+        createdAt
+        blockId
+      }
+      histories {
+        id
+        createdAt
+        username
+      }
+    }
+  }
+`

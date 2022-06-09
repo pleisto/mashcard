@@ -6,11 +6,11 @@ import { TopbarMore } from '@/docs/common/components/TopbarMore'
 import { useReactiveVar } from '@apollo/client'
 import { Button, Box } from '@brickdoc/design-system'
 import { useNavigate } from 'react-router-dom'
-// import { HistoryMenu } from '../../../common/components/HistoryMenu'
 import { ShareMenu } from '../../../common/components/ShareMenu'
 import { useDocsI18n } from '../../../common/hooks'
 import { isSavingVar } from '../../../reactiveVars'
 import { DiscussionMenu } from '@/docs/common/components/DiscussionMenu'
+import { HistoryMenu } from '../../../common/components/HistoryMenu'
 import { BrickdocContext } from '@/common/brickdocContext'
 import Logo from '@/common/assets/logo_brickdoc.svg'
 import Logo_Try from '@/common/assets/logo_brickdoc_try.svg'
@@ -46,7 +46,7 @@ export const DocumentTopBar: FC = () => {
       <Root.HiddenItem as={CollaboratorsMenu} />
       <ShareMenu />
       {features.experiment_discussion && !isAnonymous && <DiscussionMenu />}
-      {/* {features.page_history && <HistoryMenu />} */}
+      {features.experiment_history && <HistoryMenu />}
       {editable && <ExploreSlash />}
       <TopbarMore />
     </>

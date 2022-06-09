@@ -42,6 +42,7 @@ export const RootRoutes: FC = () => {
               </RequireLogin>
             }
           />
+          <Route path=":docid/histories/:historyId" element={<DocumentContentPage />} />
           <Route path=":docid/*" element={<DocumentContentPage />} />
           <Route
             path="*"

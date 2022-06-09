@@ -17,7 +17,16 @@ Rails/CreateTableWithTimestamps:
 Rails/SkipsModelValidations:
   Enabled: false
 
+Rails/BulkChangeTable:
+  Enabled: false
+
+Rails/NotNullColumn:
+  Enabled: false
+
 RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/DescribedClass:
   Enabled: false
 
 Style/OpenStructUse:

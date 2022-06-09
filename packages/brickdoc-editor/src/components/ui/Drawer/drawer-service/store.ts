@@ -2,12 +2,13 @@ import create from 'zustand'
 import {
   BrickdocEventBus,
   DiscussionListToggle,
+  HistoryListToggle,
   DiscussionMarkActive,
   EventSubscribed,
   ExplorerMenuTrigger
 } from '@brickdoc/schema'
 
-export type BuiltInDrawerView = 'explorerMenu' | 'discussionList'
+export type BuiltInDrawerView = 'explorerMenu' | 'discussionList' | 'historyList'
 export type DrawerView = BuiltInDrawerView | (string & {})
 export type DrawerState = 'closed' | DrawerView
 
@@ -52,6 +53,11 @@ export const useDrawerStore = create<DrawerStore>((set, get) => ({
         const { state: view, open, close } = get()
         const isDiscussionOpen = view === 'discussionList'
         payload.visible ?? !isDiscussionOpen ? open('discussionList') : close()
+      }),
+      BrickdocEventBus.subscribe(HistoryListToggle, ({ payload }) => {
+        const { state: view, open, close } = get()
+        const isHistoryOpen = view === 'historyList'
+        payload.visible ?? !isHistoryOpen ? open('historyList') : close()
       }),
       BrickdocEventBus.subscribe(DiscussionMarkActive, event => {
         const { open } = get()

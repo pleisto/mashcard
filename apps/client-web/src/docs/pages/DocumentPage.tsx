@@ -3,7 +3,7 @@ import { Spin, devLog } from '@brickdoc/design-system'
 import { EditorContent, useEditor, useEditorI18n } from '@brickdoc/editor'
 import { Block } from '@/BrickdocGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'
-import { useSyncProvider, useDocSyncProvider } from './hooks'
+import { useSyncProvider, useBlockSyncProvider, useDocHistoryProvider } from './hooks'
 import { blocksToJSONContents } from '../common/blocks'
 import { JSONContent } from '@tiptap/core'
 import { TrashPrompt } from '../common/components/TrashPrompt'
@@ -29,13 +29,18 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
   const docMeta = useDocMeta()
 
   const queryVariables = useMemo(
-    () => ({ rootId: docMeta.id as string, snapshotVersion: docMeta.snapshotVersion }),
-    [docMeta.id, docMeta.snapshotVersion]
+    () => ({ rootId: docMeta.id as string, historyId: docMeta.historyId }),
+    [docMeta.id, docMeta.historyId]
   )
 
   const { rootBlock, data, loading, onDocSave } = useSyncProvider(queryVariables)
 
-  const { ydoc, initBlocksToEditor } = useDocSyncProvider({ docId: docMeta.id as string })
+  useDocHistoryProvider(docMeta.id as string)
+
+  const { ydoc, initBlocksToEditor } = useBlockSyncProvider({
+    blockId: docMeta.id as string,
+    historyId: docMeta.historyId
+  })
 
   const freeze = mode === 'presentation'
   const currentRootBlock = rootBlock.current
@@ -52,7 +57,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
   const editor = useEditor({
     onSave: onDocSave,
     props: editorProps,
-    editable: documentEditable,
+    editable: documentEditable && !docMeta.historyId,
     ydoc: ydoc.current
   })
 

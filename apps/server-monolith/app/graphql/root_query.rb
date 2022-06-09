@@ -3,6 +3,7 @@
 class RootQuery < BrickGraphQL::BaseObject
   field :block, resolver: Docs::Queries::Block
   field :block_info, resolver: Docs::Queries::BlockInfo
+  field :block_new, resolver: Docs::Queries::BlockNew
   field :block_pins, resolver: Docs::Queries::BlockPins
   field :block_search, resolver: Docs::Queries::BlockSearch
   field :block_share_links, resolver: Docs::Queries::BlockShareLinks
@@ -10,6 +11,7 @@ class RootQuery < BrickGraphQL::BaseObject
   field :children_blocks, resolver: Docs::Queries::ChildrenBlocks
   field :conversation_comments, resolver: Docs::Queries::ConversationComments
   field :document, resolver: Docs::Queries::Document
+  field :document_histories, resolver: Docs::Queries::DocumentHistories
   field :domain_available, resolver: System::Queries::DomainAvailable
   field :email_available, resolver: System::Queries::EmailAvailable
   field :federated_identity_session, resolver: Accounts::Queries::FederatedIdentitySession

@@ -30,6 +30,7 @@ export interface DocMeta {
   shareable: boolean
   editable: boolean
   viewable: boolean
+  historyId?: string
 }
 
 export interface NonNullDocMeta extends DocMeta {

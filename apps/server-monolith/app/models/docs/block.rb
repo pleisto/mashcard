@@ -5,6 +5,7 @@
 # Table name: docs_blocks
 #
 #  id                       :uuid             not null, primary key
+#  block_type               :enum
 #  collaborators            :bigint           default([]), not null, is an Array
 #  content(node content)    :jsonb
 #  data(data props)         :jsonb            not null
@@ -22,6 +23,7 @@
 #  parent_id                :uuid
 #  root_id                  :uuid             not null
 #  space_id                 :bigint           not null
+#  state_id                 :uuid
 #
 # Indexes
 #
@@ -64,6 +66,7 @@ module Docs
     attribute :next_sort, :integer, default: 0
     attribute :first_child_sort, :integer, default: 0
     attribute :parent_path_array_value
+    attribute :cur_history_id, :string
 
     ## Distance for expansion
     SORT_GAP = 2**32
@@ -730,6 +733,29 @@ module Docs
 
     def children_version_meta
       descendants.pluck(:id, :history_version).to_h
+    end
+
+    def states
+      if cur_history_id
+        history_model = Docs::DocumentHistory.find(cur_history_id)
+        base_state = Docs::BlockState.where(history_id: history_model.id, block_id: id).order('created_at DESC').first
+        case base_state.state_type
+        when 'full'
+          [base_state]
+        else
+          Docs::BlockState.where(block_id: id).includes(:user)
+            .where('id = :state_id OR prev_state_id = :state_id', state_id: base_state.prev_state_id)
+            .where('created_at <= ?', base_state.created_at)
+        end
+      else
+        Docs::BlockState.where(block_id: id).includes(:user).where('id = :state_id OR prev_state_id = :state_id', state_id: state_id)
+      end
+    end
+
+    def states_sorted
+      states.to_a.sort_by do |state|
+        state.created_at.to_i * (state.state_type == 'full' ? -1 : 1)
+      end
     end
   end
 end

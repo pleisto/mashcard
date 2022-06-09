@@ -30,7 +30,7 @@ import { dispatchFormulaBlockNameChangeOrDelete } from '@brickdoc/formula'
 
 export type UpdateBlocks = (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
 
-export function useSyncProvider(queryVariables: { rootId: string; snapshotVersion: number }): {
+export function useSyncProvider(queryVariables: { rootId: string; historyId?: string }): {
   rootBlock: React.MutableRefObject<Block | undefined>
   data: any
   loading: boolean
@@ -43,7 +43,10 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
 
   const { data, loading, refetch } = useGetChildrenBlocksQuery({
     fetchPolicy: 'no-cache',
-    variables: queryVariables
+    variables: {
+      rootId: queryVariables.rootId,
+      snapshotVersion: 0
+    }
   })
 
   const client = useApolloClient()
@@ -161,6 +164,7 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
   }
 
   const onDocSave = async (doc: Node): Promise<void> => {
+    if (queryVariables.historyId) return
     if (!docBlocksMap.current.size) return
     isSavingVar(true)
     // NOTE: tempfix for root uuid

@@ -11,6 +11,9 @@
   "volta": {
     "extends": "../../package.json"
   },
+  "dependencies": {
+    "zustand": "^4.0.0-rc.1"
+  },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",
     "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",

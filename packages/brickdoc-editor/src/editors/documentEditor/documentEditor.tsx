@@ -9,7 +9,7 @@ import * as Y from 'yjs'
 import { theme } from '@brickdoc/design-system'
 import { useEditorI18n } from '../../hooks'
 import { EditorContext, EditorContextData } from '../../context/EditorContext'
-import { DiscussionList, ExplorerMenu } from '../../components/editorViews'
+import { DiscussionList, ExplorerMenu, HistoryList } from '../../components/editorViews'
 import { BubbleMenu } from '../../components/extensionViews'
 import {
   Blockquote,
@@ -57,6 +57,7 @@ export const EditorContent: FC<EditorContentProps> = ({ editor, ...props }) => {
       <BubbleMenu editor={editor} />
       <TiptapEditorContent className="brickdoc" editor={editor} />
       <DiscussionList />
+      <HistoryList docId={props.rootId} domain={props.domain} historyId={props.historyId} navigate={props.navigate} />
       <ExplorerMenu editor={editor} />
     </EditorContext.Provider>
   )

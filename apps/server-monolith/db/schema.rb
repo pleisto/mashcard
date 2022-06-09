@@ -16,6 +16,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_31_080007) do
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "block_state_type", ["full", "update"]
+  create_enum "block_type", ["document", "component"]
+
   create_table "accounts_federated_identities", force: :cascade do |t|
     t.bigint "accounts_user_id"
     t.string "provider", null: false
@@ -133,6 +138,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_31_080007) do
     t.index ["space_id", "alias"], name: "index_docs_aliases_on_space_id_and_alias", unique: true
   end
 
+  create_table "docs_block_states", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.enum "state_type", default: "full", null: false, enum_type: "block_state_type"
+    t.uuid "block_id", null: false
+    t.binary "state"
+    t.uuid "prev_state_id"
+    t.bigint "space_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.uuid "history_id", null: false
+    t.uuid "document_id", null: false
+  end
+
   create_table "docs_blocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "space_id", null: false
     t.string "type", limit: 32
@@ -151,6 +168,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_31_080007) do
     t.text "text", default: "", comment: "node text"
     t.boolean "page", default: false, null: false
     t.datetime "deleted_permanently_at"
+    t.uuid "state_id"
+    t.enum "block_type", enum_type: "block_type"
     t.index ["collaborators"], name: "index_docs_blocks_on_collaborators", using: :gin
     t.index ["parent_id"], name: "index_docs_blocks_on_parent_id"
     t.index ["space_id"], name: "index_docs_blocks_on_space_id"
@@ -182,6 +201,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_31_080007) do
     t.index ["creator_id"], name: "index_docs_conversations_on_creator_id"
     t.index ["doc_id"], name: "index_docs_conversations_on_doc_id"
     t.index ["space_id"], name: "index_docs_conversations_on_space_id"
+  end
+
+  create_table "docs_document_histories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "document_id", null: false
+    t.bigint "space_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
   end
 
   create_table "docs_documents", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

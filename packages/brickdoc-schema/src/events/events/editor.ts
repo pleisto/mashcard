@@ -36,4 +36,8 @@ export const DiscussionListToggle = event<{ visible?: boolean }>()('DiscussionLi
   return { visible }
 })
 
+export const HistoryListToggle = event<{ visible?: boolean }>()('HistoryListTrigger', ({ visible }) => {
+  return { visible }
+})
+
 export const Undo = event<{}>()('Undo')

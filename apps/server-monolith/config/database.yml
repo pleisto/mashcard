@@ -4,10 +4,10 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 64 } %>
-  host: <%= ENV['POSTGRES_HOST'] || '127.0.0.1' %>
-  port: <%= ENV['POSTGRES_PORT'] || '5432' %>
-  username: <%= ENV['POSTGRES_USER'] || 'postgres' %>
-  password: <%= ENV['POSTGRES_PASS'] %>
+  # host: <%= ENV['POSTGRES_HOST'] || '127.0.0.1' %>
+  # port: <%= ENV['POSTGRES_PORT'] || '5432' %>
+  # username: <%= ENV['POSTGRES_USER'] || 'postgres' %>
+  # password: <%= ENV['POSTGRES_PASS'] %>
 
 development:
   <<: *default

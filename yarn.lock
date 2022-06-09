@@ -2804,6 +2804,8 @@ __metadata:
 "@brickdoc/schema@workspace:^, @brickdoc/schema@workspace:packages/brickdoc-schema":
   version: 0.0.0-use.local
   resolution: "@brickdoc/schema@workspace:packages/brickdoc-schema"
+  dependencies:
+    zustand: ^4.0.0-rc.1
   languageName: unknown
   linkType: soft
 

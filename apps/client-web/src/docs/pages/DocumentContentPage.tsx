@@ -21,10 +21,10 @@ import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
 /* const Layout = styled('div', base) */
 
 export const DocumentContentPage: React.FC = () => {
-  const { domain, docid, snapshotVersion } = useParams() as unknown as {
+  const { domain, docid, historyId } = useParams() as unknown as {
     domain: string
     docid?: string
-    snapshotVersion?: string
+    historyId?: string
   }
   const { currentSpace, currentUser, host, lastDomain, lastBlockIds, featureFlags } = useContext(BrickdocContext)
   const { t } = useDocsI18n()
@@ -98,10 +98,11 @@ export const DocumentContentPage: React.FC = () => {
       icon,
       personalDomain,
       documentInfoLoading: loading,
-      snapshotVersion: Number(snapshotVersion ?? '0'),
-      isNotExist
+      snapshotVersion: 0,
+      isNotExist,
+      historyId
     }
-  }, [data, docid, host, isAnonymous, loading, personalDomain, loginDomain, snapshotVersion, state, t, domain])
+  }, [data, docid, historyId, host, isAnonymous, loading, personalDomain, loginDomain, state, t, domain])
 
   const { queryFormulas, commitFormula, generateFormulaFunctionClauses } = useFormulaActions()
 
