@@ -2,7 +2,14 @@ import { FixedLengthTuple, RequireField } from '@brickdoc/active-support'
 import { FormulaContextArgs } from '../context'
 import { Cell } from '../controls'
 import { OperatorName } from '../grammar'
-import { ErrorType, FormulaDefinition, FunctionContext, VariableMetadata, VariableParseResult } from '../types'
+import {
+  CompleteInput,
+  ErrorType,
+  FormulaDefinition,
+  FunctionContext,
+  VariableMetadata,
+  VariableParseResult
+} from '../types'
 
 export const DEFAULT_FIRST_NAMESPACEID = '00000000-0000-0000-0000-000000000000'
 const uuids = [...Array(999)].map((o, index) => `00000000-0000-${String(index).padStart(4, '0')}-0000-000000000000`)
@@ -86,7 +93,7 @@ export type GroupOption =
     }
   | {
       name: 'complete'
-      options: object
+      options: { completion: object; result: CompleteInput }
     }
 
 export interface BaseTestCase<T extends object> {

@@ -2,17 +2,11 @@ import { makeContext, VariableValue } from '@brickdoc/formula'
 import { BrickdocEventBus, FormulaEditorUpdateTrigger } from '@brickdoc/schema'
 import { renderHook, act } from '@testing-library/react-hooks'
 import { JSONContent } from '@tiptap/core'
-import {
-  buildJSONContentByArray,
-  buildJSONContentByDefinition,
-  contentArrayToInput,
-  fetchJSONContentArray
-} from '../../../../helpers'
+import { content2definition, definition2content, buildJSONContentByArray } from '../../../../helpers'
 import { useFormula, UseFormulaInput } from '../useFormula'
 
 const rootId = 'bbbbbbbb-bbbb-4444-8888-444444444444'
 const formulaId = '22222222-2222-eeee-aaaa-999999999999'
-const onUpdateFormula = (): void => {}
 
 const SNAPSHOT_FLAG = '<SNAPSHOT>'
 
@@ -252,7 +246,7 @@ const spreadsheetTestCases = [
   }
 ]
 
-const updateEditor = async (content: JSONContent, position: number): Promise<void> => {
+const updateEditor = async (content: JSONContent | undefined, position: number): Promise<void> => {
   const result = BrickdocEventBus.dispatch(FormulaEditorUpdateTrigger({ formulaId, rootId, content, position }))
 
   await Promise.all(result)
@@ -280,7 +274,6 @@ describe.skip('useFormula', () => {
       ]
     })
     useFormulaNormalInput = {
-      onUpdateFormula,
       formulaContext: ctx.formulaContext,
       meta: ctx.buildMeta({
         definition: '',
@@ -305,7 +298,6 @@ describe.skip('useFormula', () => {
     const { result } = renderHook(() => useFormula(useFormulaSpreadsheetInput))
 
     expect(result.current.temporaryVariableT).toBe(undefined)
-    expect(result.current.content).toEqual(undefined)
     expect(result.current.nameRef.current.name).toBe('')
     expect(result.current.nameRef.current.defaultName).toBe('var1')
   })
@@ -313,7 +305,6 @@ describe.skip('useFormula', () => {
     const { result } = renderHook(() => useFormula(useFormulaNormalInput))
 
     expect(result.current.temporaryVariableT).toBe(undefined)
-    expect(result.current.content).toEqual(undefined)
     expect(result.current.nameRef.current.name).toBe('')
     expect(result.current.nameRef.current.defaultName).toBe('var1')
   })
@@ -325,12 +316,7 @@ describe.skip('useFormula', () => {
       const { result } = renderHook(() => useFormula(useFormulaNormalInput))
 
       const editorPosition = position
-      const jsonContent = buildJSONContentByArray([
-        {
-          type: 'text',
-          text: input
-        }
-      ])
+      const jsonContent = definition2content(input, true)[0]
 
       await act(async () => {
         await updateEditor(jsonContent, editorPosition)
@@ -345,10 +331,10 @@ describe.skip('useFormula', () => {
         // eslint-disable-next-line jest/no-conditional-expect
         expect([
           'Position unmatched',
-          { content: result.current.content, input: newDefinition, position: newPosition }
+          { content: result.current.formulaEditor?.getJSON(), input: newDefinition, position: newPosition }
         ]).toMatchSnapshot()
       }
-      expect(contentArrayToInput(fetchJSONContentArray(result.current.content), rootId)).toEqual(newInput ?? input)
+      expect(content2definition(result.current.formulaEditor?.getJSON(), true)[0]).toEqual(newInput ?? input)
 
       const data = (result.current.temporaryVariableT!.task.variableValue as VariableValue).result.result
       if (typeof data === 'object') {
@@ -369,12 +355,7 @@ describe.skip('useFormula', () => {
       const { result } = renderHook(() => useFormula(useFormulaSpreadsheetInput))
 
       const editorPosition = position
-      const jsonContent = buildJSONContentByArray([
-        {
-          type: 'text',
-          text: input
-        }
-      ])
+      const jsonContent = definition2content(input, false)[0]
 
       await act(async () => {
         await updateEditor(jsonContent, editorPosition)
@@ -389,10 +370,10 @@ describe.skip('useFormula', () => {
         // eslint-disable-next-line jest/no-conditional-expect
         expect([
           'Position unmatched',
-          { content: result.current.content, input: newDefinition, position: newPosition }
+          { content: result.current.formulaEditor?.getJSON(), input: newDefinition, position: newPosition }
         ]).toMatchSnapshot()
       }
-      expect(contentArrayToInput(fetchJSONContentArray(result.current.content), rootId)).toEqual(
+      expect(content2definition(result.current.formulaEditor?.getJSON(), false)[0]).toEqual(
         // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
         newInput ?? input
       )
@@ -424,10 +405,10 @@ describe.skip('useFormula', () => {
     expect(result.current.temporaryVariableT!.variableParseResult.position).toEqual(output.position)
     if (output.content === SNAPSHOT_FLAG) {
       // eslint-disable-next-line jest/no-conditional-expect
-      expect(result.current.content).toMatchSnapshot()
+      expect(result.current.formulaEditor?.getJSON()).toMatchSnapshot()
     } else {
       // eslint-disable-next-line jest/no-conditional-expect
-      expect(result.current.content).toEqual(buildJSONContentByArray(output.content as JSONContent[]))
+      expect(result.current.formulaEditor?.getJSON()).toEqual(buildJSONContentByArray(output.content as JSONContent[]))
     }
     jest.clearAllTimers()
   })
@@ -447,10 +428,10 @@ describe.skip('useFormula', () => {
     expect(result.current.temporaryVariableT!.variableParseResult.position).toEqual(output.position)
     if (output.content === SNAPSHOT_FLAG) {
       // eslint-disable-next-line jest/no-conditional-expect
-      expect(result.current.content).toMatchSnapshot()
+      expect(result.current.formulaEditor?.getJSON()).toMatchSnapshot()
     } else {
       // eslint-disable-next-line jest/no-conditional-expect
-      expect(result.current.content).toEqual(buildJSONContentByArray(output.content as JSONContent[]))
+      expect(result.current.formulaEditor?.getJSON()).toEqual(buildJSONContentByArray(output.content as JSONContent[]))
     }
     jest.clearAllTimers()
   })
@@ -463,7 +444,7 @@ describe.skip('useFormula', () => {
     jest.useRealTimers()
     const { result } = renderHook(() => useFormula(useFormulaNormalInput))
 
-    const content = buildJSONContentByDefinition('SLEEP(111)')!
+    const content = definition2content('SLEEP(111)', true)[0]
 
     await act(async () => {
       await updateEditor(content, 0)

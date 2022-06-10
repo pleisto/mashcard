@@ -1,6 +1,7 @@
 import { parse } from '../grammar/core'
 import { makeContext } from '../tests/testHelper'
 import { buildTestCases, GroupOption } from '../tests'
+import { handleComplete } from '../grammar'
 
 const groupName = 'complete' as const
 const [testCases] = buildTestCases(groupName)
@@ -21,8 +22,13 @@ describe('completer', () => {
     }))
   )('$jestTitle => $option', async args => {
     const newCtx = { ...ctx, meta: ctx.buildMeta(args) }
-    const parseResult = parse(newCtx)
-    expect(parseResult.completions.length).not.toBe(0)
-    expect(parseResult.completions[0]).toMatchObject(args.option)
+    const {
+      completions,
+      variableParseResult: { definition, position }
+    } = parse(newCtx)
+    expect(completions.length).not.toBe(0)
+    const firstCompletion = completions[0]
+    expect(firstCompletion).toMatchObject(args.option.completion)
+    expect(handleComplete(firstCompletion, { definition, position })).toStrictEqual(args.option.result)
   })
 })

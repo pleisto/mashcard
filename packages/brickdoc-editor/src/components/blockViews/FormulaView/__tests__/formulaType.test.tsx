@@ -1,6 +1,6 @@
 import { makeContext } from '@brickdoc/formula'
 import { renderHook, act } from '@testing-library/react-hooks'
-import { buildJSONContentByArray, codeFragmentsToJSONContentTotal } from '../../../../helpers'
+import { codeFragments2content, definition2content } from '../../../../helpers'
 import { useFormula } from '../useFormula'
 
 import { render } from '@testing-library/react'
@@ -10,7 +10,6 @@ import { BrickdocEventBus, FormulaEditorUpdateTrigger } from '@brickdoc/schema'
 
 const rootId = 'eeeeeeee-eeee-4444-8888-444444444444'
 const formulaId = '22222222-2222-ffff-aaaa-999999999999'
-const onUpdateFormula = (): void => {}
 
 const simpleCommonTestCases = [
   '123',
@@ -58,7 +57,6 @@ describe('formulaType', () => {
   it.each([...simpleNormalTestCases, ...simpleSpreadsheetTestCases])('"$type" - "$input"', async ({ type, input }) => {
     const { result } = renderHook(() =>
       useFormula({
-        onUpdateFormula,
         formulaContext: ctx.formulaContext,
         meta: ctx.buildMeta({
           definition: '',
@@ -72,12 +70,7 @@ describe('formulaType', () => {
     )
 
     const editorPosition = 0
-    const jsonContent = buildJSONContentByArray([
-      {
-        type: 'text',
-        text: input
-      }
-    ])
+    const jsonContent = definition2content(input, type === 'normal')[0]
 
     await act(async () => {
       const result = BrickdocEventBus.dispatch(
@@ -87,9 +80,10 @@ describe('formulaType', () => {
       await Promise.all(result)
     })
 
-    const content = codeFragmentsToJSONContentTotal(
-      result.current.temporaryVariableT!.variableParseResult.codeFragments
-    )
+    const content = codeFragments2content(
+      result.current.temporaryVariableT!.variableParseResult.codeFragments,
+      type === 'normal'
+    )[0]
 
     const { container } = render(<TestEditorContent content={content} extensions={[FormulaType]} />)
 

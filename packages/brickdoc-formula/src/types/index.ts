@@ -377,6 +377,11 @@ export interface Argument<T extends UsedFormulaType = UsedFormulaType> {
   readonly spread?: boolean
 }
 
+export interface CompleteInput {
+  definition: string
+  position: number
+}
+
 export type CompletionKind = 'function' | 'variable' | 'spreadsheet' | 'column' | 'block'
 export type ComplexCodeFragmentType =
   | 'Spreadsheet'

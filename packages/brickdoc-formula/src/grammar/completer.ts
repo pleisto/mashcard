@@ -1,10 +1,10 @@
 import type { IToken } from 'chevrotain'
 import { fetchResult } from '../context'
 import { ColumnClass } from '../controls'
-import { CodeFragment, Completion, FormulaCheckType, FormulaType, FunctionContext } from '../types'
+import { CodeFragment, CompleteInput, Completion, FormulaCheckType, FormulaType, FunctionContext } from '../types'
 import { codeFragment2value, column2completion } from './convert'
 
-export interface CompleteInput {
+interface GetCompletionInput {
   readonly tokens: IToken[]
   readonly position: number
   readonly ctx: FunctionContext
@@ -24,7 +24,12 @@ const matchTypeWeight = (type1: FormulaType, type2: FormulaCheckType, weight: nu
   return weight
 }
 
-export const complete = ({
+export const handleComplete = (completion: Completion, { definition, position }: CompleteInput): CompleteInput => {
+  console.log('handleComplete', completion, definition, position)
+  return { definition, position }
+}
+
+export const getCompletion = ({
   tokens,
   position,
   ctx: {
@@ -33,7 +38,7 @@ export const complete = ({
   },
   codeFragments,
   cacheCompletions
-}: CompleteInput): Completion[] => {
+}: GetCompletionInput): Completion[] => {
   let completions = cacheCompletions ?? formulaContext.completions(namespaceId, variableId)
   let lastCodeFragment: CodeFragment | undefined = codeFragments[codeFragments.length - 1]
   const inputs: CodeFragment[] = []

@@ -12,14 +12,6 @@ exports[`formulaType "normal" - " " " & foo_bar " 1`] = `
       <p>
         <mark
           class="brickdoc-formula-mark"
-          data-code="Equal"
-          data-display="="
-          data-type="any"
-        >
-          =
-        </mark>
-        <mark
-          class="brickdoc-formula-mark"
           data-code="Space"
           data-display=" "
           data-type="any"
@@ -93,14 +85,6 @@ exports[`formulaType "normal" - " 1 + 1  +  1 " 1`] = `
       translate="no"
     >
       <p>
-        <mark
-          class="brickdoc-formula-mark"
-          data-code="Equal"
-          data-display="="
-          data-type="any"
-        >
-          =
-        </mark>
         <mark
           class="brickdoc-formula-mark"
           data-code="Space"
@@ -208,14 +192,9 @@ exports[`formulaType "normal" - "" 1`] = `
       translate="no"
     >
       <p>
-        <mark
-          class="brickdoc-formula-mark"
-          data-code="Equal"
-          data-display="="
-          data-type="any"
-        >
-          =
-        </mark>
+        <br
+          class="ProseMirror-trailingBreak"
+        />
       </p>
     </div>
   </div>
@@ -232,14 +211,6 @@ exports[`formulaType "normal" - "#CurrentBlock" 1`] = `
       translate="no"
     >
       <p>
-        <mark
-          class="brickdoc-formula-mark"
-          data-code="Equal"
-          data-display="="
-          data-type="any"
-        >
-          =
-        </mark>
         <mark
           class="brickdoc-formula-mark"
           data-attrs="{\\"kind\\":\\"Block\\",\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"id\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"name\\":\\"formulaType\\",\\"findKey\\":{\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"type\\":\\"id\\",\\"value\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\"}}"
@@ -266,14 +237,6 @@ exports[`formulaType "normal" - "#CurrentBlock.foo_bar" 1`] = `
       translate="no"
     >
       <p>
-        <mark
-          class="brickdoc-formula-mark"
-          data-code="Equal"
-          data-display="="
-          data-type="any"
-        >
-          =
-        </mark>
         <mark
           class="brickdoc-formula-mark"
           data-attrs="{\\"kind\\":\\"Block\\",\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"id\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"name\\":\\"formulaType\\",\\"findKey\\":{\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"type\\":\\"id\\",\\"value\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\"}}"
@@ -320,14 +283,6 @@ exports[`formulaType "normal" - "123" 1`] = `
       <p>
         <mark
           class="brickdoc-formula-mark"
-          data-code="Equal"
-          data-display="="
-          data-type="any"
-        >
-          =
-        </mark>
-        <mark
-          class="brickdoc-formula-mark"
           data-code="NumberLiteral"
           data-display="123"
           data-type="number"
@@ -351,14 +306,6 @@ exports[`formulaType "normal" - "123asdasd" 1`] = `
       translate="no"
     >
       <p>
-        <mark
-          class="brickdoc-formula-mark"
-          data-code="Equal"
-          data-display="="
-          data-type="any"
-        >
-          =
-        </mark>
         <mark
           class="brickdoc-formula-mark"
           data-code="NumberLiteral"
@@ -398,14 +345,6 @@ exports[`formulaType "normal" - "a+foo_bar" 1`] = `
       translate="no"
     >
       <p>
-        <mark
-          class="brickdoc-formula-mark"
-          data-code="Equal"
-          data-display="="
-          data-type="any"
-        >
-          =
-        </mark>
         <mark
           class="brickdoc-formula-mark"
           data-code="FunctionName"
@@ -454,14 +393,6 @@ exports[`formulaType "normal" - "a123 1" 1`] = `
       translate="no"
     >
       <p>
-        <mark
-          class="brickdoc-formula-mark"
-          data-code="Equal"
-          data-display="="
-          data-type="any"
-        >
-          =
-        </mark>
         <mark
           class="brickdoc-formula-mark"
           data-code="FunctionName"
@@ -514,14 +445,6 @@ exports[`formulaType "normal" - "custom::ADD(1)" 1`] = `
       translate="no"
     >
       <p>
-        <mark
-          class="brickdoc-formula-mark"
-          data-code="Equal"
-          data-display="="
-          data-type="any"
-        >
-          =
-        </mark>
         <mark
           class="brickdoc-formula-mark"
           data-code="FunctionGroup"
@@ -605,14 +528,6 @@ exports[`formulaType "normal" - "foo_bar" 1`] = `
       translate="no"
     >
       <p>
-        <mark
-          class="brickdoc-formula-mark"
-          data-code="Equal"
-          data-display="="
-          data-type="any"
-        >
-          =
-        </mark>
         <mark
           class="brickdoc-formula-mark"
           data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"id\\":\\"00000000-0000-0000-0000-000000000000\\",\\"name\\":\\"foo_bar\\",\\"findKey\\":{\\"namespaceId\\":\\"eeeeeeee-eeee-4444-8888-444444444444\\",\\"type\\":\\"id\\",\\"value\\":\\"00000000-0000-0000-0000-000000000000\\"}}"
