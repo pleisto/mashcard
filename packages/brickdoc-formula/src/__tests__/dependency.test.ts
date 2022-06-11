@@ -5,7 +5,7 @@ import { VariableInterface, VariableValue } from '../types'
 import { uuid } from '@brickdoc/active-support'
 import { BlockType } from '../controls'
 
-const [testCases] = buildTestCases('dependency')
+const [testCases] = buildTestCases(['dependency'])
 
 describe('dependency', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>

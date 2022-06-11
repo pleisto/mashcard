@@ -7,6 +7,7 @@ import { intersectType, runtimeCheckType, shouldReturnEarly } from './util'
 
 export type OperatorName =
   | 'name'
+  | 'string'
   | 'access'
   | 'addition'
   | 'arguments'

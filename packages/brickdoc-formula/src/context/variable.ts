@@ -267,7 +267,7 @@ export class VariableClass implements VariableInterface {
       return block.name(pageId)
     }
 
-    return 'Unknown'
+    return 'UnknownPage'
   }
 
   meta(): VariableMetadata {

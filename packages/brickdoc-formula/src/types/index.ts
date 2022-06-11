@@ -378,8 +378,8 @@ export interface Argument<T extends UsedFormulaType = UsedFormulaType> {
 }
 
 export interface CompleteInput {
-  definition: string
-  position: number
+  definitionWithCursor: string
+  match?: string
 }
 
 export type CompletionKind = 'function' | 'variable' | 'spreadsheet' | 'column' | 'block'
@@ -406,51 +406,65 @@ export type SimpleCodeFragmentType =
   | 'Dot'
   | 'Equal2'
   | 'Equal'
+  | 'GreaterThan'
 export type SpecialCodeFragmentType = 'unknown' | 'parseErrorOther' | 'Space' | 'literal'
 export type CodeFragmentCodes = ComplexCodeFragmentType | SimpleCodeFragmentType | SpecialCodeFragmentType
+
+interface CompletionReplacement {
+  readonly matcher: string
+  readonly value: string
+}
+
+export type CompletionFlag =
+  | 'compareTypeMatched'
+  | 'compareTypeNotMatched'
+  | 'chainTypeMatched'
+  | 'chainTypeNotMatched'
+  | 'contextNamespace'
+  | 'defaultNamespace'
+  | 'blockNamespace'
+  | 'chainNamespace'
+  | 'block'
+  | 'variable'
+  | 'spreadsheet'
+  | 'column'
+  | 'function'
+  | 'variable'
+  | 'name'
+  | 'nameEqual'
+  | 'nameIncludes'
+  | 'nameStartsWith'
 
 interface BaseCompletion {
   readonly kind: CompletionKind
   readonly weight: number
-  readonly replacements: string[]
-  readonly namespace: string
-  readonly positionChange: number
+  readonly flags: CompletionFlag[]
+  readonly replacements: CompletionReplacement[]
+  readonly fallbackValue: string
   readonly name: string
-  readonly value: any
   readonly preview: any
-  readonly codeFragments: CodeFragment[]
   readonly namespaceId?: NamespaceId
 }
 export interface FunctionCompletion extends BaseCompletion {
   readonly kind: 'function'
-  readonly namespace: FunctionGroup
-  readonly value: `${FunctionKey}()`
   readonly preview: AnyFunctionClause
 }
 
 export interface VariableCompletion extends BaseCompletion {
   readonly kind: 'variable'
-  readonly namespace: BlockName
-  readonly value: VariableKey
   readonly preview: VariableInterface
 }
 
 export interface ColumnCompletion extends BaseCompletion {
   readonly kind: 'column'
-  readonly namespace: SpreadsheetName
-  readonly value: ColumnKey
   readonly preview: ColumnType
 }
 export interface BlockCompletion extends BaseCompletion {
   readonly kind: 'block'
-  readonly namespace: BlockName
-  readonly value: BlockKey
   readonly preview: BlockType
 }
 export interface SpreadsheetCompletion extends BaseCompletion {
   readonly kind: 'spreadsheet'
-  readonly namespace: BlockName
-  readonly value: SpreadsheetKey
   readonly preview: SpreadsheetType
 }
 
@@ -656,6 +670,7 @@ export interface BaseCodeFragment {
   readonly code: CodeFragmentCodes
   readonly display: string
   readonly replacements?: [string, ...string[]]
+  readonly namespaceId?: string
   readonly type: FormulaType
   readonly errors: ErrorMessage[]
 }

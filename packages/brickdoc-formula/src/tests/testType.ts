@@ -3,7 +3,9 @@ import { FormulaContextArgs } from '../context'
 import { Cell } from '../controls'
 import { OperatorName } from '../grammar'
 import {
+  CodeFragment,
   CompleteInput,
+  Completion,
   ErrorType,
   FormulaDefinition,
   FunctionContext,
@@ -83,18 +85,17 @@ type FeatureName =
   | 'variable'
   | 'dependency'
   | 'other'
-type FeatureTestName = 'complete' | 'cst'
+  | 'variableComplete'
+  | 'spreadsheetComplete'
+  | 'functionComplete'
+  | 'blockComplete'
+type FeatureTestName = 'cst'
 export type TestCaseName = OperatorName | FeatureName | FeatureTestName
 
-export type GroupOption =
-  | {
-      name: Exclude<TestCaseName, 'complete'>
-      options?: any
-    }
-  | {
-      name: 'complete'
-      options: { completion: object; result: CompleteInput }
-    }
+interface GroupOption {
+  name: TestCaseName
+  options?: any
+}
 
 export interface BaseTestCase<T extends object> {
   definition?: string
@@ -121,6 +122,14 @@ export interface ErrorTestCaseType
   valid?: boolean
   errorType: ErrorType
   errorMessage: string
+}
+
+export interface CompleteCaseType extends BaseTestCase<{}> {
+  definitionWithCursor: string
+  firstCompletion: Partial<Completion>
+  firstNonSpaceCodeFragment?: Partial<CodeFragment>
+  secondNonSpaceCodeFragment?: Partial<CodeFragment>
+  completes: CompleteInput[]
 }
 
 type DependencyTypes = 'Variable' | 'Block'
@@ -178,6 +187,7 @@ export interface TestCaseType {
   pages?: PageInput[]
   successTestCases?: SuccessTestCaseType[]
   errorTestCases?: ErrorTestCaseType[]
+  completeTestCases?: CompleteCaseType[]
   dependencyTestCases?: AnyDependencyTestCaseType[]
 }
 
@@ -185,5 +195,6 @@ export interface TestCaseInput {
   options: RequireField<MakeContextOptions, 'initializeOptions' | 'pages'>
   successTestCases: Array<RequireField<SuccessTestCaseType, 'groupOptions' | 'jestTitle'>>
   errorTestCases: Array<RequireField<ErrorTestCaseType, 'groupOptions' | 'jestTitle'>>
+  completeTestCases: Array<RequireField<CompleteCaseType, 'groupOptions' | 'jestTitle'>>
   dependencyTestCases: Array<RequireField<AnyDependencyTestCaseType, 'groupOptions' | 'jestTitle'>>
 }

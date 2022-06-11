@@ -63,7 +63,7 @@ export const accessOperator: OperatorType = {
   },
   testCases: {
     successTestCases: [
-      { definition: '=[1,2,3][1]', result: 1 },
+      { definition: '=[1,2,3] [1]', result: 1 },
       { definition: '=[1,2,3][0]', result: 'Index 0 out of bounds' },
       { definition: '=[][1]', result: 'Index 1 out of bounds' },
       { definition: '={a: 1}["a" & ""]', result: 1 },

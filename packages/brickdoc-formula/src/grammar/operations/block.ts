@@ -40,6 +40,26 @@ export const blockOperator: OperatorType = {
         ]
       },
       {
+        definition: '="Block"',
+        todo: 'TODO: support block name',
+        result: 'Block',
+        expected: [
+          { key: 'codeFragments', matchType: 'toMatchSnapshot' },
+          { key: 'nameDependencies', match: [] },
+          { key: 'blockDependencies', match: [] }
+        ]
+      },
+      {
+        definition: '="Block With Space"',
+        todo: 'TODO: support block name',
+        result: 'Block With Space',
+        expected: [
+          { key: 'codeFragments', matchType: 'toMatchSnapshot' },
+          { key: 'nameDependencies', match: [] },
+          { key: 'blockDependencies', match: [] }
+        ]
+      },
+      {
         definition: '=#CurrentBlock',
         result: mockBlock('Block', pageId),
         namespaceId: pageId,
@@ -81,6 +101,7 @@ export const blockOperator: OperatorType = {
       }
     ],
     errorTestCases: [
+      { definition: `=#`, errorType: 'syntax', errorMessage: 'Miss expression' },
       {
         definition: '=UnknownBlock',
         errorType: 'syntax',

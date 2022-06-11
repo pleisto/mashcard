@@ -19,6 +19,7 @@ import { predicateOperator } from './predicate'
 import { rangeOperator } from './range'
 import { recordOperator } from './record'
 import { recordFieldOperator } from './recordField'
+import { stringOperator } from './string'
 import { thisRecordOperator } from './thisRecord'
 import { thisRowOperator } from './thisRow'
 
@@ -44,6 +45,7 @@ export * from './block'
 export * from './thisRow'
 export * from './thisRecord'
 export * from './name'
+export * from './string'
 
 export const OPERATORS: OperatorType[] = [
   accessOperator,
@@ -67,5 +69,6 @@ export const OPERATORS: OperatorType[] = [
   recordOperator,
   thisRecordOperator,
   thisRowOperator,
-  nameOperator
+  nameOperator,
+  stringOperator
 ]

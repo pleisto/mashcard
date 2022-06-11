@@ -1,10 +1,21 @@
 import { parse } from '../grammar/core'
 import { makeContext } from '../tests/testHelper'
-import { buildTestCases, GroupOption } from '../tests'
-import { handleComplete } from '../grammar'
+import { buildTestCases, trackTodo } from '../tests'
+import { getLastCodeFragment, handleComplete } from '../grammar'
 
-const groupName = 'complete' as const
-const [testCases] = buildTestCases(groupName)
+const [testCases] = buildTestCases(['variableComplete', 'blockComplete', 'spreadsheetComplete'])
+
+const splitDefinitionWithCursor = (
+  definitionWithCursor: string
+): { definitionAfterSplit: string; positionAfterSplit: number } => {
+  const splits = definitionWithCursor.split('$')
+  if (splits.length !== 2) throw new Error(`definitionWithCursor error ${definitionWithCursor}`)
+
+  return {
+    definitionAfterSplit: `${splits[0]}${splits[1]}`,
+    positionAfterSplit: splits[0].length
+  }
+}
 
 describe('completer', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
@@ -12,23 +23,49 @@ describe('completer', () => {
     ctx = await makeContext(testCases.options)
   })
 
-  it.each(
-    [...testCases.successTestCases, ...testCases.errorTestCases].map(t => ({
-      ...t,
-      option: t.groupOptions.find(g => g.name === groupName)!.options as Extract<
-        GroupOption,
-        { name: typeof groupName }
-      >['options']
-    }))
-  )('$jestTitle => $option', async args => {
-    const newCtx = { ...ctx, meta: ctx.buildMeta(args) }
+  trackTodo(it, testCases.completeTestCases)
+
+  it.each([...testCases.completeTestCases])('$jestTitle', async args => {
+    const { definitionAfterSplit, positionAfterSplit } = splitDefinitionWithCursor(args.definitionWithCursor)
+
+    const newCtx = {
+      ...ctx,
+      meta: ctx.buildMeta({ ...args, definition: definitionAfterSplit, position: positionAfterSplit })
+    }
     const {
       completions,
-      variableParseResult: { definition, position }
+      variableParseResult: { definition, position, codeFragments }
     } = parse(newCtx)
     expect(completions.length).not.toBe(0)
     const firstCompletion = completions[0]
-    expect(firstCompletion).toMatchObject(args.option.completion)
-    expect(handleComplete(firstCompletion, { definition, position })).toStrictEqual(args.option.result)
+    const [firstNonSpaceCodeFragment, secondNonSpaceCodeFragment] = getLastCodeFragment(codeFragments, position)
+
+    // console.log('completionTest', completions.slice(0, 4), {
+    //   firstCompletion,
+    //   replacements: firstCompletion.replacements,
+    //   args,
+    //   firstNonSpaceCodeFragment
+    // })
+
+    expect({ firstCompletion, firstNonSpaceCodeFragment, secondNonSpaceCodeFragment }).toMatchObject({
+      firstCompletion: args.firstCompletion,
+      firstNonSpaceCodeFragment: args.firstNonSpaceCodeFragment ?? {},
+      secondNonSpaceCodeFragment: args.secondNonSpaceCodeFragment ?? {}
+    })
+
+    for (const complete of args.completes) {
+      const completion = complete.match ? completions.find(c => c.name === complete.match)! : firstCompletion
+      expect(complete).not.toBe(undefined)
+      const completeResult = handleComplete(
+        { ...newCtx, meta: ctx.buildMeta({ ...args, definition, position }) },
+        completion
+      )
+
+      const { definitionAfterSplit, positionAfterSplit } = splitDefinitionWithCursor(complete.definitionWithCursor)
+      expect([complete, completeResult]).toStrictEqual([
+        complete,
+        { definition: definitionAfterSplit, position: positionAfterSplit }
+      ])
+    }
   })
 })

@@ -88,10 +88,16 @@ export const cleanupEventDependency = (
   return finalEventDependencies
 }
 
+/**
+ * Traversal and collect string from end to start.
+ *
+ * reverseTraversal("bar") => ["bar", "ba", "b"]
+ * reverseTraversal("bar", 2) => ["bar", "ba"]
+ */
 export const reverseTraversalString = (str: string, min = 1): string[] => {
   const result: string[] = []
 
-  for (let i = str.length - 1; i >= min; i--) {
+  for (let i = str.length; i >= min; i--) {
     result.push(str.slice(0, i))
   }
 

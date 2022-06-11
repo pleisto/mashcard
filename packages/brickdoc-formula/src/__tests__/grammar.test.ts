@@ -60,16 +60,6 @@ const testCases: TestCase[] = [
     value: { kind: 'self' }
   },
   {
-    input: `=#`,
-    parseErrorType: 'syntax',
-    errorMessage: 'Miss expression'
-  },
-  {
-    input: `=#CurrentBlock`,
-    value: 'SNAPSHOT',
-    display: 'Page1'
-  },
-  {
     input: `=&#${barNamespaceId}.bar`,
     // value: { kind: 'variable', namespaceId: barNamespaceId, variableId: barVariableId }
     parseErrorType: 'syntax',
@@ -140,33 +130,6 @@ const testCases: TestCase[] = [
   {
     input: '=false',
     value: false
-  },
-  // String Literal
-  {
-    input: '= "hello"',
-    value: 'hello'
-  },
-  {
-    input: '= "hel\'lo"',
-    value: "hel'lo"
-  },
-  {
-    input: '= "hel"lo"',
-    label: 'lex error when parse "hel"lo" => parseError',
-    parseErrorType: 'syntax',
-    errorMessage: 'Not all input parsed: lo'
-  },
-  {
-    input: "= 'hello'",
-    label: 'Single quote => parseError',
-    parseErrorType: 'syntax',
-    errorMessage: 'Parse error:'
-  },
-  {
-    input: '= "Hello',
-    label: 'ParseError without closing quote',
-    parseErrorType: 'syntax',
-    errorMessage: 'Parse error: "\\"Hello"'
   },
   // %
   {
@@ -253,25 +216,6 @@ const testCases: TestCase[] = [
   {
     input: '= <= (1+1)',
     value: { type: 'number', result: 2 }
-  },
-  // TODO List
-  {
-    input: '= 中文',
-    label: 'TODO chinese',
-    parseErrorType: 'syntax',
-    errorMessage: 'Parse error:'
-  },
-  {
-    input: '= 1a1',
-    label: 'TODO 1a1',
-    parseErrorType: 'syntax',
-    errorMessage: 'Not all input parsed: a1'
-  },
-  {
-    input: '= nottrue',
-    label: 'not is a operator',
-    parseErrorType: 'syntax',
-    errorMessage: '"nottrue" not found'
   }
 ]
 

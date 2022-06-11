@@ -233,6 +233,7 @@ export const useFormula = ({
   )
 
   const handleSelectActiveCompletion = React.useCallback(async (): Promise<void> => {
+    if (!formulaContext) return
     const currentCompletion = completion.activeCompletion
     if (!currentCompletion) return
 
@@ -243,14 +244,34 @@ export const useFormula = ({
         ? formulaEditor.state.selection.from
         : formulaEditor.state.selection.from - 1
       : definition.length
-    const newInput = handleComplete(currentCompletion, { definition, position })
+
+    const newVariableId = variableRef.current ? variableRef.current.t.meta.variableId : variableId
+    const meta: VariableMetadata = {
+      namespaceId,
+      variableId: newVariableId,
+      name: nameRef.current.name || nameRef.current.defaultName,
+      input: definition,
+      position,
+      richType
+    }
+    const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
+    const newInput = handleComplete(ctx, currentCompletion)
 
     inputRef.current = {
       position: formulaIsNormal ? newInput.position - 1 : newInput.position,
       content: definition2content(newInput.definition, formulaIsNormal)[0]
     }
     await doCalculate(false)
-  }, [completion.activeCompletion, doCalculate, formulaEditor, formulaIsNormal])
+  }, [
+    completion.activeCompletion,
+    doCalculate,
+    formulaContext,
+    formulaEditor,
+    formulaIsNormal,
+    namespaceId,
+    richType,
+    variableId
+  ])
 
   const isDisableSave = React.useCallback((): boolean => {
     if (!formulaContext) return true
