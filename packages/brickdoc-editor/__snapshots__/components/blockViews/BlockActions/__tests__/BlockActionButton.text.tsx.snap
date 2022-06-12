@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlockActionButton matches snapshot correctly 1`] = `
+<div>
+  <div
+    aria-haspopup="dialog"
+    contenteditable="false"
+    data-drag-handle="true"
+    data-testid="editor-block-action-button"
+    draggable="true"
+  >
+    <button
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-Zmjpo-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-klARUB-size-sm"
+      role="button"
+      type="button"
+    >
+      <span
+        aria-label="drag-secondary"
+        class="brd-icon brd-icon-drag-secondary"
+        role="img"
+      >
+        <svg
+          fill="none"
+          height="1em"
+          viewBox="0 0 24 24"
+          width="1em"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Zm11-9a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"
+            fill="#e0e0e0"
+            fill-rule="evenodd"
+          />
+          <path
+            clip-rule="evenodd"
+            d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
+            fill="#35313c"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`BlockActionButton triggers mouse enter/leave event normally 1`] = `
+<div>
+  <div
+    aria-haspopup="dialog"
+    contenteditable="false"
+    data-drag-handle="true"
+    data-testid="editor-block-action-button"
+    draggable="true"
+  >
+    <button
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-Zmjpo-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-klARUB-size-sm"
+      role="button"
+      type="button"
+    >
+      <span
+        aria-label="drag-secondary"
+        class="brd-icon brd-icon-drag-secondary"
+        role="img"
+      >
+        <svg
+          fill="none"
+          height="1em"
+          viewBox="0 0 24 24"
+          width="1em"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Zm11-9a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"
+            fill="#dee7fe"
+            fill-rule="evenodd"
+          />
+          <path
+            clip-rule="evenodd"
+            d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
+            fill="#356cf9"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`BlockActionButton triggers mouse enter/leave event normally 2`] = `
+<div>
+  <div
+    aria-haspopup="dialog"
+    contenteditable="false"
+    data-drag-handle="true"
+    data-testid="editor-block-action-button"
+    draggable="true"
+  >
+    <button
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-Zmjpo-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-klARUB-size-sm"
+      role="button"
+      type="button"
+    >
+      <span
+        aria-label="drag-secondary"
+        class="brd-icon brd-icon-drag-secondary"
+        role="img"
+      >
+        <svg
+          fill="none"
+          height="1em"
+          viewBox="0 0 24 24"
+          width="1em"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Zm11-9a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"
+            fill="#e0e0e0"
+            fill-rule="evenodd"
+          />
+          <path
+            clip-rule="evenodd"
+            d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
+            fill="#35313c"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+</div>
+`;

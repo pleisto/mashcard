@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Anchor renders Anchor correctly 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <span
+          data-anchor="true"
+        >
+          anchor
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+`;

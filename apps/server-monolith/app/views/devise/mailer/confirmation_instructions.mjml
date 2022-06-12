@@ -1,0 +1,11 @@
+<mj-section css-class="action-card">
+  <mj-column width="100%">
+    <mj-text>
+      Hello <%= @resource.name %>,
+    </mj-text>
+    <mj-text>
+      <%= t("devise.mailer.confirmation_instructions.you_can_confirm_your_account_email_through_the_link_below") %>
+    </mj-text>
+    <%= render 'link_button', name: t('devise.mailer.confirmation_instructions.subject') ,link: confirmation_url(@resource, confirmation_token: @token)  %>
+  </mj-column>
+</mj-section>

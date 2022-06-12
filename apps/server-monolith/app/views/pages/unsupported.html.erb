@@ -1,0 +1,48 @@
+<% @page_title = t('unsupported_browser.title') %>
+<style>body {margin: 0; overflow-y: auto;font-size:16px;font-family:sans-serif;}</style>
+<div style="box-sizing: border-box; width: 100%; min-width: 820px;height: 100vh; min-height: 600px; display: flex;align-items: center;justify-content: center;position: relative;min-height: 1024px;background: url(<%= vite_frontend_asset_path 'pages/unsupported/legacy-bg.jpg' %>) center center / cover no-repeat fixed border-box;">
+  <%= image_tag vite_frontend_asset_path('pages/unsupported/legacy-logo.png'), size: '204x80', alt: 'Brickdoc', style: 'position: absolute;left: 80px;top: 80px;'  %>
+    <div style="box-sizing: border-box;max-width: 820px;margin: 0;background: #f6f6f6;text-align:left;box-shadow: 2px 2px 0px rgba(255, 255, 255, 0.8), 0px 4px 12px rgba(211, 211, 211, 0.4), inset 2px 2px 0px rgba(255, 255, 255, 0.25);border-radius: 8px;padding: 124px 170px">
+      <h1 style="margin: 0;font-size: 24px;line-height: 36px;color: #35313C;display: flex;align-items: center;">
+        <i style="display: inline-block;
+          box-sizing: border-box;
+          height: 22px;
+          width: 22px;
+          line-height: 18px;
+          text-align: center;
+          border: 2px solid #73707E;
+          color: #73707E;
+          border-radius: 100%;
+          font-size: 16px;
+          margin-right: 9px;
+          font-style: normal;
+          ">i</i>
+        <span><%= t('unsupported_browser.title') %></h1></span>
+      <span style="margin: 16px 0 24px;font-size: 18px;line-height: 28px;color: #73707E;display: inline-block;vertical-align: middle;font-weight: 400;">
+        <%= t 'unsupported_browser.download_latest_browser_html'%>
+      </span>
+      <div style="margin-top:60px; width:100%;text-align: center;">
+        <% [{
+          name: 'Chrome',
+          url: 'https://www.google.com/chrome/',
+          icon: 'pages/unsupported/chrome.png'
+        },
+        {
+          name: 'Edge',
+          url: "https://www.microsoft.com/#{t('meta.lang')}/edge",
+          icon: 'pages/unsupported/edge.png'
+        },
+        {
+          name: 'Firefox',
+          url: "https://www.mozilla.org/#{t('meta.lang')}/firefox/new/",
+          icon: 'pages/unsupported/firefox.png'
+        }
+        ].each do |browser| %>
+          <a rel="noreferrer noopener" href="<%= browser[:url] %>" style="box-sizing: border-box;height: 100px;text-decoration: initial;margin: 0 90px 0 0;padding: 63px 0px 14px;text-align: center;background:url(<%= vite_frontend_asset_path browser[:icon] %>) no-repeat center 18px/40px 40px;">
+          <span style='font-weight: 500;font-size: 14px;line-height: 22px;color: #73707E;'><%= browser[:name] %></span>
+        </a>
+        <% end %>
+      </div>
+    </div>
+  </p>
+</div>

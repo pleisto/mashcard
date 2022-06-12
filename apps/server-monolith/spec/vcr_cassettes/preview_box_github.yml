@@ -1,0 +1,130 @@
+---
+http_interactions:
+  - request:
+      method: get
+      uri: https://iframe.ly/api/iframely?api_key=343dce40eb6be7b7ccf9cb&url=https://github.com/
+      body:
+        encoding: US-ASCII
+        string: ''
+      headers:
+        User-Agent:
+          - Faraday v1.8.0
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        Accept:
+          - '*/*'
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Server:
+          - nginx
+        Date:
+          - Thu, 13 Jan 2022 03:54:09 GMT
+        Content-Type:
+          - application/json; charset=utf-8
+        Transfer-Encoding:
+          - chunked
+        Connection:
+          - keep-alive
+        Vary:
+          - Accept-Encoding
+        X-Powered-By:
+          - iframe.ly
+        Access-Control-Allow-Origin:
+          - '*'
+        Cache-Control:
+          - public, max-age=3600
+        Expires:
+          - Thu, 13 Jan 2022 04:54:09 GMT
+        Etag:
+          - W/"9005d51eb02bdfd36ff35290e6971927"
+      body:
+        encoding: UTF-8
+        string: |-
+          {
+              "url": "https://github.com/",
+              "meta": {
+                  "description": "GitHub is where over 73 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories, review code like a pro, track bugs and feat...",
+                  "title": "GitHub: Where the world builds software",
+                  "theme-color": "#1e2327",
+                  "canonical": "https://github.com/",
+                  "site": "GitHub"
+              },
+              "links": {
+                  "thumbnail": [
+                      {
+                          "href": "https://github.githubassets.com/images/modules/site/social-cards/github-social.png",
+                          "type": "image/png",
+                          "rel": [
+                              "twitter",
+                              "thumbnail",
+                              "ssl",
+                              "og"
+                          ],
+                          "media": {
+                              "width": 1200,
+                              "height": 630
+                          },
+                          "content_length": 489651
+                      }
+                  ],
+                  "icon": [
+                      {
+                          "href": "https://github.com/fluidicon.png",
+                          "rel": [
+                              "fluid-icon",
+                              "icon",
+                              "ssl"
+                          ],
+                          "type": "image/png"
+                      },
+                      {
+                          "href": "https://github.githubassets.com/pinned-octocat.svg",
+                          "rel": [
+                              "mask-icon",
+                              "icon",
+                              "ssl"
+                          ],
+                          "type": "image/svg"
+                      },
+                      {
+                          "href": "https://github.githubassets.com/favicons/favicon.png",
+                          "rel": [
+                              "alternate",
+                              "icon",
+                              "ssl"
+                          ],
+                          "type": "image/png"
+                      },
+                      {
+                          "href": "https://github.githubassets.com/favicons/favicon.svg",
+                          "rel": [
+                              "icon",
+                              "ssl"
+                          ],
+                          "type": "image/svg+xml"
+                      }
+                  ]
+              },
+              "rel": [
+                  "summary",
+                  "card",
+                  "inline",
+                  "html5",
+                  "ssl",
+                  "hosted"
+              ],
+              "html": "<div class=\"iframely-embed\"><div class=\"iframely-responsive\" style=\"padding-bottom: 52.5%; padding-top: 120px;\"><a href=\"https://github.com/\" data-iframely-url=\"//cdn.iframe.ly/api/iframe?url=https%3A%2F%2Fgithub.com%2F&key=419a7ac4ffff6a18eeda9db90c2c78c5\"></a></div></div><script async src=\"//cdn.iframe.ly/embed.js\" charset=\"utf-8\"></script>",
+              "options": {
+                  "card": {
+                      "value": "",
+                      "values": {
+                          "small": "Make it a small card"
+                      }
+                  }
+              }
+          }
+    recorded_at: Thu, 13 Jan 2022 03:54:09 GMT
+recorded_with: VCR 6.0.0

@@ -1,0 +1,4 @@
+<%= javascript_tag do %>
+  window.brickdocContext = window.brickdocContext || {}
+  Object.assign(window.brickdocContext,<%= global_context.to_json.html_safe %>)
+<% end %>

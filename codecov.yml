@@ -1,0 +1,22 @@
+flag_management:
+  default_rules:
+    carryforward: true
+ignore:
+  - 'apps/server-monolith/config/**/*'
+  - 'apps/server-monolith/public/**/*'
+  - 'e2e-testing/**/*'
+  - 'tools/**/*'
+  - 'apps/client-web/src/BrickdocGraphQL.ts'
+  - 'packages/brickdoc-design-icons/**/*'
+  - 'packages/brickdoc-schema/**/*'
+  - 'packages/briockdoc-design-system/.storybook'
+  - 'packages/brickdoc-design-system/components/*/demos'
+  - 'plugins/**/*'
+  - '**/*.stories.*'
+  - '**/spec'
+  - '**/dist'
+  - '**/__tests__'
+  - '**/node_modules'
+  - '**/vendor'
+  - 'docs/**/*'
+  - '**/tmp'

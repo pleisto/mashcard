@@ -1,0 +1,34 @@
+# See https://git-scm.com/docs/gitattributes for more about git attribute files.
+# Auto detect
+##   Handle line endings automatically for files detected as
+##   text and leave all files detected as binary untouched.
+##   This will handle all files NOT defined below.
+*                  text=auto
+apps/server-monolith/db/schema.gql linguist-generated merge=ours
+apps/server-monolith/db/schema.rb linguist-generated merge=ours
+apps/server-monolith/db/graphql/* linguist-generated merge=ours
+apps/client-web/BrickdocGraphQL.ts linguist-generated merge=ours
+yarn.lock linguist-generated
+apps/server-monolith/Gemfile.lock linguist-generated
+*.mdx linguist-language=TypeScript
+packages/brickdoc-design-icons/**/*.tsx linguist-generated merge=ours
+# Fonts
+*.ttf             binary
+*.eot             binary
+*.otf             binary
+*.woff            binary
+*.woff2           binary
+*.svg             binary
+*.ico             binary
+*.gif             binary
+*.png             binary
+*.wbmp            binary
+*.webp            binary
+# This way Git won't bother showing massive diffs when each time we subsequently add or update yarn & plugins:
+/.yarn/releases/** binary linguist-vendored
+/.yarn/plugins/** binary linguist-vendored
+/.yarn/cache/* linguist-vendored
+**/docs/api/** linguist-vendored
+/.vscode/*.json linguist-language=JSON5
+/tools/**/*.js linguist-vendored
+**/.storybook/** linguist-vendored

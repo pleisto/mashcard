@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User renders User correctly 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <span
+          class="react-renderer node-userBlock"
+        >
+          <span
+            as="span"
+            data-node-view-wrapper=""
+            style="pointer-events: none; white-space: normal;"
+          >
+            <span
+              class="brd-c-bbClCh"
+              contenteditable="false"
+            >
+               
+            </span>
+            <span
+              class="brd-c-eTYwxC"
+            >
+              <span
+                class="brd-c-cdJFWN brd-c-cdJFWN-hECRKn-shape-circle brd-c-cdJFWN-kRzPmM-size-md brd-c-cdJFWN-euTbep-default-true brd-c-cdJFWN-iPJLV-css brd-c-kRnupi brd-c-kRnupi-cruuqr-size-sm"
+              >
+                <span
+                  aria-label="user"
+                  class="brd-icon brd-icon-user"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm9 12a9 9 0 1 0-18 0"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </span>
+              </span>
+              <span
+                class="brd-c-jmPTIj brd-c-jmPTIj-fgwLpe-size-md"
+              >
+                user_block.anonymous
+              </span>
+            </span>
+            <span
+              class="brd-c-bbClCh"
+              contenteditable="false"
+            >
+               
+            </span>
+          </span>
+        </span>
+        <br
+          class="ProseMirror-trailingBreak"
+        />
+      </p>
+    </div>
+  </div>
+</div>
+`;

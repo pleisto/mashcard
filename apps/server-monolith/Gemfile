@@ -1,0 +1,102 @@
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+require 'pathname'
+MONOREPO_ROOT = Pathname.new File.expand_path('../..', __dir__)
+
+ruby '3.1.2'
+
+if ENV['NIGHTLY'] == 'true'
+  gem 'rails', github: 'rails/rails'
+else
+  gem 'rails', '7.0.3'
+end
+
+gem 'pg', '~> 1.3.5'
+gem 'puma', '~> 5.6.4'
+gem 'puma_worker_killer', '~> 0.3.1'
+gem 'redis', '~> 4.5.1' # redis-objects 1.6 maxiumum supported redis version is 4.5
+gem 'redis-objects', '~>1.6'
+gem 'dotenv-rails'
+gem 'connection_pool', '~> 2.2', '>= 2.2.5'
+gem 'faraday', '~> 1.10'
+gem 'faraday_middleware', '~> 1.2'
+gem 'oj'
+gem 'fast_underscore', '>= 0.3.3', require: false
+gem 'second_level_cache', '~> 2.7.1'
+gem 'paranoia', '~> 2.5', '>= 2.5.2'
+gem 'easymon'
+gem 'unsplash'
+gem 'lockbox', '>= 0.6.8'
+gem 'lograge', '~> 0.12.0'
+gem 'logstop', '~> 0.2.8'
+gem 'accept_language', '>= 2.0.1'
+gem 'nokogiri', '>= 1.13.6'
+gem 'bootsnap', require: false
+gem 'tzinfo-data', '~> 1.2022' # Don't rely on Linux/macOS timezone data.
+gem 'rbnacl', '~> 7.1', '>= 7.1.1'
+gem 'dry-container', '~> 0.9.0'
+gem 'rails-i18n', '~> 7.0.0'
+gem 'default_value_for', github: 'brickdoc/default_value_for'
+
+# Feature toggles
+gem 'flipper', '~> 0.24.1'
+gem 'flipper-active_record', '~> 0.24.1'
+gem 'flipper-active_support_cache_store', '~> 0.24.1'
+
+gem 'google-cloud-storage', '~> 1.36', '>= 1.36.2'
+gem 'google-cloud-kms', '~> 2.3'
+
+# GraphQL
+gem 'graphql', '~> 2.0', '>= 2.0.9'
+gem 'graphql-fragment_cache', '~> 1.11'
+gem 'graphql-batch', '~> 0.5.1'
+
+# Frontend
+gem 'vite_rails', '~> 3.0.9'
+gem 'inertia_rails', github: 'brickdoc/inertia-rails'
+
+## IAM
+gem 'action_policy', '~> 0.6.1'
+gem 'action_policy-graphql', '~> 0.5.3'
+gem 'devise', '~> 4.8.1'
+gem 'devise-async', '~> 1.0.0'
+gem 'omniauth', '~> 2.1'
+gem 'omniauth-rails_csrf_protection', '~> 1.0', '>= 1.0.1'
+
+## Background Tasks
+gem 'sidekiq', '~> 6.5'
+gem 'sidekiq-scheduler', '~> 4.0'
+gem 'sidekiq-unique-jobs', '~> 7.1', '>= 7.1.24'
+
+group :development, :test do
+  gem 'brakeman'
+  gem 'ffaker'
+  gem 'rubocop-brickdoc', require: false, github: 'brickdoc/rubocop-brickdoc'
+  gem 'rubocop-graphql', '~> 0.14.3', require: false
+  gem 'rubocop-rails', '~> 2.14', '>= 2.14.2', require: false
+  gem 'factory_bot_rails', '>= 6.2'
+  gem 'rspec-rails', '>= 5.1.2'
+  gem 'rspec_junit_formatter', '>= 0.4'
+  gem 'benchmark-ips', '~> 2.10', require: false
+  gem 'debug', platforms: [:mri, :mingw, :x64_mingw]
+end
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'vcr', '~> 6.1'
+  gem 'webmock', '~> 3.14'
+end
+
+group :development do
+  gem 'web-console'
+  gem 'annotate'
+
+  # vscode lsp
+  gem 'solargraph', group: :development
+end
+
+# Plugin dependencies
+Dir.glob(MONOREPO_ROOT.join('plugins/*/Gemfile')).each { |p| eval_gemfile(p) }

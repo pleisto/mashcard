@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HorizontalRule renders HorizontalRule correctly 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <div
+        class="react-renderer node-horizontalRule"
+      >
+        <div
+          data-node-view-wrapper=""
+          style="pointer-events: none; white-space: normal;"
+        >
+          <hr />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

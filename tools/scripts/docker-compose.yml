@@ -1,0 +1,12 @@
+# Quickly spin up a local development environment with `docker-compose up`
+services:
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 123456
+  redis:
+    image: redis
+    ports:
+      - 6379:6379

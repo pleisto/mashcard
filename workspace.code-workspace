@@ -1,0 +1,281 @@
+{
+  "folders": [
+    {
+      "name": "/",
+      "path": "."
+    },
+    {
+      "name": "apps/client-web",
+      "path": "apps/client-web"
+    },
+    {
+      "name": "apps/server-monolith",
+      "path": "apps/server-monolith"
+    },
+    {
+      "name": "packages/active-support",
+      "path": "packages/active-support"
+    },
+    {
+      "name": "packages/brickdoc-design-icons",
+      "path": "packages/brickdoc-design-icons"
+    },
+    {
+      "name": "packages/brickdoc-design-system",
+      "path": "packages/brickdoc-design-system"
+    },
+    {
+      "name": "packages/brickdoc-editor",
+      "path": "packages/brickdoc-editor"
+    },
+    {
+      "name": "packages/brickdoc-formula",
+      "path": "packages/brickdoc-formula"
+    },
+    {
+      "name": "packages/brickdoc-schema",
+      "path": "packages/brickdoc-schema"
+    },
+    {
+      "name": "packages/brickdoc-test-helper",
+      "path": "packages/brickdoc-test-helper"
+    },
+    {
+      "name": "packages/brickdoc-uploader",
+      "path": "packages/brickdoc-uploader"
+    },
+    {
+      "name": "tools/e2e-testing",
+      "path": "tools/e2e-testing"
+    },
+    {
+      "name": "tools/schematics",
+      "path": "tools/schematics"
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modificationsIfAvailable",
+    "editor.formatOnPaste": true,
+    "editor.renderWhitespace": "all",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "editor.rulers": [120],
+    "files.watcherExclude": {
+      "**/.git": true,
+      "**/node_modules": true,
+      "**/tmp": true,
+      "**/dist": true,
+      "**/coverage": true,
+      "public": true
+    },
+    "files.associations": {
+      ".babelrc": "json",
+      ".eslintrc": "jsonc",
+      ".eslintrc*.json": "jsonc"
+    },
+    "search.useIgnoreFiles": true,
+    "search.exclude": {
+      "**/build": true,
+      "**/output": true,
+      "**/esm-bundle": true,
+      "**/dist": true,
+      "**/*.chunk.js": true,
+      "**/*.min.js": true,
+      "**/*.js.map": true,
+      "**/*.log": true,
+      "**/public/pdftron": true,
+      "**/*.pid": true,
+      "**/.git": true,
+      "**/node_modules": true,
+      "**/.eslintcache": true,
+      "**/coverage": true,
+      "**/tmp": true,
+      "**/*.snap": true,
+      "**/docs/api": true,
+      "/.yarn": true,
+      "/yarn.lock": true,
+      "**/storybook-static": true
+    },
+    "npm.packageManager": "yarn",
+    "typescript.tsc.autoDetect": "on",
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.validate.enable": true,
+    "eslint.workingDirectories": [
+      {
+        "mode": "auto"
+      }
+    ],
+    "eslint.enable": true,
+    "eslint.format.enable": true,
+    "eslint.alwaysShowStatus": true,
+    "eslint.codeActionsOnSave.mode": "problems",
+    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+    "eslint.lintTask.enable": true,
+    "eslint.packageManager": "yarn",
+    "eslint.useESLintClass": true,
+    "jest.jestCommandLine": "yarn run -T jest",
+    "jest.disabledWorkspaceFolders": [
+      "/",
+      "packages/brickdoc-design-icons",
+      "packages/brickdoc-test-helper",
+      "packages/dotenv",
+      "tools/e2e-testing",
+      "tools/schematics"
+    ],
+    "pgsql.debugServerPort": 13000,
+    "ruby.useBundler": false,
+    "ruby.useLanguageServer": false,
+    "solargraph.useBundler": false,
+    "solargraph.completion": true,
+    "solargraph.rename": true,
+    "solargraph.references": true,
+    "solargraph.autoformat": true,
+    "solargraph.formatting": true,
+    "byesig.fold": false,
+    "byesig.enabled": true,
+    "byesig.opacity": 0.70,
+    "byesig.showIcon": false,
+    "cSpell.diagnosticLevel": "Hint",
+    "cSpell.words": [
+      "affordance",
+      "ahooks",
+      "Autosize",
+      "bigserial",
+      "borderless",
+      "brickdoc",
+      "Brickdoc",
+      "Broooooklyn's",
+      "builtins",
+      "Cascadia",
+      "commitlint",
+      "Consolas",
+      "Debfuscate",
+      "Devkit",
+      "Dropshift",
+      "entrypoint",
+      "eqeqeq",
+      "esbuild",
+      "falsey",
+      "Fira",
+      "fkey",
+      "fontset",
+      "Gcloud",
+      "globby",
+      "hookform",
+      "IPFS",
+      "KEEPTTL",
+      "KUBE",
+      "Kubernetes",
+      "kysely",
+      "livez",
+      "magnus",
+      "memex",
+      "Menlo",
+      "Microservices",
+      "modulepreload",
+      "moize",
+      "monospace",
+      "Neue",
+      "neverthrow",
+      "npub",
+      "NPUBBYTES",
+      "omakase",
+      "OWASP",
+      "pgcrypto",
+      "pino",
+      "Plückthun",
+      "prebuild",
+      "primatives",
+      "protos",
+      "PWA's",
+      "PXAT",
+      "QLJSON",
+      "reakit",
+      "Schneier's",
+      "Segoe",
+      "STRBYTES",
+      "styleguide",
+      "Tahoma",
+      "testid",
+      "thirdary",
+      "tippyjs",
+      "ukey",
+      "uncountables",
+      "Untrigger",
+      "upsert",
+      "varchar",
+      "vite",
+      "vitejs",
+      "xxxl",
+      "yarnpkg"
+    ],
+    "[plaintext]": {
+      "files.insertFinalNewline": false
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[markdown]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[handlebars]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "editorconfig.editorconfig",
+      "esbenp.prettier-vscode",
+      "graphql.vscode-graphql",
+      "DavidAnson.vscode-markdownlint",
+      "ms-ossdata.vscode-postgresql",
+      "dtsvet.vscode-wasm",
+      "github.copilot",
+      "VisualStudioExptTeam.vscodeintellicode",
+      "VisualStudioExptTeam.intellicode-api-usage-examples",
+      "Orta.vscode-jest",
+      "drKnoxy.eslint-disable-snippets",
+      "streetsidesoftware.code-spell-checker",
+      "aaron-bond.better-comments",
+      "jock.svg",
+      "mikestead.dotenv",
+      "ms-azuretools.vscode-docker",
+      "ms-playwright.playwright",
+      "foxundermoon.shell-format",
+      "Gruntfuggly.todo-tree",
+      "rangav.vscode-thunder-client",
+      "bungcip.better-toml",
+      "rust-lang.rust-analyzer",
+      "dustypomerleau.rust-syntax",
+      "serayuzgur.crates",
+      "rebornix.ruby",
+      "koichisasada.vscode-rdbg",
+      "itarato.byesig",
+      "castwide.solargraph"
+    ]
+  }
+}

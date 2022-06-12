@@ -1,0 +1,99 @@
+name: Linting Code
+concurrency:
+  group: monolith-linting-${{ github.ref }}
+  cancel-in-progress: true
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - main
+env:
+  YARN_CHECKSUM_BEHAVIOR: update
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: brickdoc
+jobs:
+  es:
+    name: ECMAScript
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      # GitHub-hosted runner have 7 gb RAM.
+      # 5250mb === 7gb * 0.75
+      NODE_OPTIONS: '--max-old-space-size=5950'
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+      - name: Run yarn install
+        run: yarn install --immutable
+      - name: Run yarn lint
+        run: yarn lint
+  ruby:
+    name: Ruby
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2 # To retrieve the preceding commit.
+      - name: Get changed ruby files
+        id: changed-ruby-or-rust-files
+        uses: tj-actions/changed-files@v22.2
+        with:
+          files: |
+            .(rb|rs)$
+            Gemfile.lock
+      - name: Get changed rs files
+        id: changed-rs-files
+        uses: tj-actions/changed-files@v22.2
+        with:
+          files: |
+            .(rs|toml)$
+            Gemfile.lock
+            Cargo.lock
+      - name: Install Dependencies
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
+        run: sudo apt-get update && sudo apt-get install libsodium23
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
+        with:
+          toolchain: stable
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
+        with:
+          working-directory: 'apps/server-monolith'
+          ruby-version: 3.1.2
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Run native build
+        run: yarn server build
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+      - name: Run yarn install
+        run: yarn install --immutable
+      - name: Run Rubocop
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
+        run: |
+          echo "::add-matcher::.github/matchers/rubocop.json"
+          yarn lint:rubocop
+      - name: Run Brakeman
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
+        run: |
+          echo "::add-matcher::.github/matchers/brakeman.json"
+          yarn server lint:brakeman
+      - name: Run Clippy
+        if: steps.changed-rs-files.outputs.any_changed == 'true'
+        run: |
+          echo "::add-matcher::.github/matchers/rust.json"
+          yarn server lint:clippy

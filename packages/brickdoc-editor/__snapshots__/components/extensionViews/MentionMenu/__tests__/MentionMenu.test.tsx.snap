@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MentionMenu matches correct snapshot 1`] = `
+<div>
+  <ul
+    aria-orientation="vertical"
+    class="brd-c-bOsLjs brd-c-bOsLjs-lozdyt-theme-default brd-c-bOsLjs-iTKOFX-orientation-vertical brd-c-kWKsdj brd-c-kWKsdj-kWKsdj-size-md"
+    data-testid="editor-link-menu"
+    id="mention"
+    role="menubar"
+  >
+    <ul
+      class="brd-c-jpGEAj brd-c-PJLV"
+      label="[object Object]"
+      role="group"
+      title="mention.people.head"
+    >
+      <span
+        aria-label="mention.people.head"
+        class="brd-c-kubJPX"
+      >
+        <span
+          class="brd-c-emmNGU"
+        >
+          mention.people.head
+        </span>
+      </span>
+      <div
+        class="brd-c-llTUqV"
+      >
+        <li
+          class="brd-c-cpzHyL brd-c-cpzHyL-duyZwV-active-true brd-c-klLbby"
+          id="mention-1"
+          role="menuitem"
+          tabindex="0"
+          title=""
+        >
+          <span
+            class="brd-c-cdJFWN brd-c-cdJFWN-hECRKn-shape-circle brd-c-cdJFWN-kRzPmM-size-md brd-c-cdJFWN-iknjnNO-css"
+          >
+            <img
+              src="avatar"
+            />
+          </span>
+          <span
+            class="brd-c-jlNfug"
+          >
+            people name
+          </span>
+        </li>
+      </div>
+    </ul>
+    <ul
+      class="brd-c-jpGEAj"
+      label="[object Object]"
+      role="group"
+      title="mention.page_link.head"
+    >
+      <span
+        aria-label="mention.page_link.head"
+        class="brd-c-kubJPX"
+      >
+        <span
+          class="brd-c-emmNGU"
+        >
+          mention.page_link.head
+        </span>
+      </span>
+      <li
+        class="brd-c-cpzHyL"
+        id="mention-2"
+        label="page name"
+        role="menuitem"
+        tabindex="-1"
+        title="page name"
+      >
+        <div
+          class="brd-c-fcAYuy"
+        >
+          <span
+            class="brd-c-OVPdU"
+          >
+            <span
+              class="brd-c-frQDkN brd-c-sObfj"
+            >
+              <div
+                class="brd-c-fRlUEu brd-c-fRlUEu-iPJLV-css"
+              />
+              <div
+                class="brd-c-BfbNy"
+              />
+              <span
+                class="brd-c-jVLVTy"
+              >
+                icon
+              </span>
+            </span>
+          </span>
+          <div
+            class="brd-c-fNvXDc"
+          >
+            <span
+              aria-label="page name"
+              class="brd-c-PJLV"
+            >
+              <span>
+                page name
+              </span>
+            </span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </ul>
+</div>
+`;

@@ -1,0 +1,29 @@
+{
+  "name": "@brickdoc/e2e-testing",
+  "private": true,
+  "license": "Apache-2.0",
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "scripts": {
+    "install-deps": "playwright install --with-deps",
+    "start": "yarn cleanup && yarn run-playwright",
+    "run-playwright": "playwright test",
+    "cleanup": "rm -rf allure-report test-results allure-results",
+    "allure:generate": "allure generate ./allure-results --clean",
+    "allure:open": "allure open ./allure-report",
+    "lint": "yarn lint:eslint && yarn lint:type",
+    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx .",
+    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx . --fix",
+    "lint:type": "run -T tsc",
+    "generate": "ts-node ./helpers/generate"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.22.2",
+    "@types/inquirer": "^8.2.1",
+    "allure-commandline": "^2.17.2",
+    "allure-playwright": "^2.0.0-beta.16",
+    "inquirer": "^8.2.4",
+    "ts-node": "^10.8.1"
+  }
+}

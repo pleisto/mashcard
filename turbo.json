@@ -1,0 +1,35 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "baseBranch": "origin/master",
+  "globalDependencies": ["$CI"],
+  "pipeline": {
+    "lint:eslint": {
+      "outputs": [".eslintcache"],
+      "inputs": ["src/**/*.tsx", "src/**/*.ts"]
+    },
+    "lint:fix": {
+      "outputs": [".eslintcache", "tmp/cache/rubocop_cache/**"]
+    },
+    "lint:type": {
+      "outputs": ["dist/tsconfig.tsbuildinfo"]
+    },
+    "lint:rubocop": {
+      "outputs": ["tmp/cache/rubocop_cache/**"],
+      "inputs": ["**/*.rb", "Gemfile"]
+    },
+    "test:jest": {
+      "outputs": ["coverage/**", "junit-reports/jest.xml"],
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "package.json"]
+    },
+    "test:rspec": {
+      "inputs": ["**/*.rb", "Gemfile"]
+    },
+    "tsdoc": {
+      "outputs": ["docs/api/**"]
+    },
+    "build:rust": {
+      "dependsOn": ["$OSTYPE"],
+      "outputs": ["*.node", "index.d.ts", "index.js"]
+    }
+  }
+}

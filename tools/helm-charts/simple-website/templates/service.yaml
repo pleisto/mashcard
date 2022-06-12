@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "bae-simple-web.fullname" . }}
+  labels: {{- include "bae-simple-web.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ int .Values.containerPort }}
+      targetPort: {{ int .Values.containerPort }}
+      protocol: TCP
+      name: http
+  selector: {{- include "bae-simple-web.selectorLabels" . | nindent 4 }}

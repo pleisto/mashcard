@@ -1,0 +1,38 @@
+{
+  "name": "@brickdoc/active-support",
+  "version": "0.1.0",
+  "description": "A TypeScript utility library designed to optimize for programmer happiness.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brickdoc/brickdoc-ce.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brickdoc/brickdoc-ce/labels/active-support"
+  },
+  "license": "Apache-2.0",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "scripts": {
+    "lint": "yarn lint:eslint && yarn lint:type",
+    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
+    "lint:type": "run -T tsc",
+    "test:jest": "run -T jest",
+    "tsdoc": "run -T typedoc --options ../../tools/typedoc/config.json --out ./docs/api ./src/index.ts"
+  },
+  "dependencies": {
+    "@lukeed/uuid": "^2.0.0",
+    "lodash": "^4.17.21",
+    "moize": "^6.1.1",
+    "ms": "^3.0.0-canary.1",
+    "neverthrow": "^4.3.1",
+    "performant-array-to-tree": "^1.11.0"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@types/lodash": "^4.14.182"
+  }
+}

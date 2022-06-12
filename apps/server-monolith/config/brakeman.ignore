@@ -1,0 +1,66 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "5ea6dfd2b1dc1c2604737473af02f07b4697bdb53ab57d400dce90eeaec03231",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "lib/patches/active_record/postgresql_drop_database.rb",
+      "line": 12,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "connection.select_all(\"select pg_terminate_backend(pg_stat_activity.pid) from pg_stat_activity where datname='#{configuration_hash[:database]}' AND state='idle';\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Patches::ActiveRecord::PostgresqlDropDatabase",
+        "method": "drop"
+      },
+      "user_input": "configuration_hash[:database]",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "6da5a9cba445ed076882808ad96bf3e0dcc908583e7c728e766336d59a36ae02",
+      "check_name": "Execute",
+      "message": "Possible command injection",
+      "file": "gems/webpacker/lib/webpacker/compiler.rb",
+      "line": 82,
+      "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "Open3.capture3(webpack_env, \"#{optional_ruby_runner} ./bin/webpack\", :chdir => File.expand_path(config.root_path))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Webpacker::Compiler",
+        "method": "run_webpack"
+      },
+      "user_input": "optional_ruby_runner",
+      "confidence": "Medium",
+      "note": "webpacker is devtools"
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "d21f51ff4f398c08b3589bab7a1c89c4029017e57baab1e170ea4c08181656e5",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/models/docs/history.rb",
+      "line": 50,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "Docs::History.where(:deleted_at => nil).where(\"(block_id, history_version) IN (#{version_meta.size.times.collect do\n \"(?,?)\"\n end.join(\",\")})\", *version_meta.flatten)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Docs::History",
+        "method": "Docs::History.from_version_meta"
+      },
+      "user_input": "version_meta.size.times.collect do\n \"(?,?)\"\n end.join(\",\")",
+      "confidence": "Medium",
+      "note": ""
+    }
+  ],
+  "updated": "2021-09-24 14:40:25 +0800",
+  "brakeman_version": "5.1.1"
+}

@@ -1,0 +1,40 @@
+# Default values for brickdoc.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+envs: {}
+secrets: {}
+
+image:
+  name: 'ghcr.io/brickdoc/brickdoc:latest'
+imagePullSecrets:
+  - name: io-ghcr-brickdoc
+nameOverride: ''
+fullnameOverride: ''
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ''
+
+ingress:
+  host: ''
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+resources: {}
+# Preview ENV
+previewEnv: false
+postgresql:
+redis:
+  architecture: standalone
+  image:
+    tag: 7-alpine
+  auth:
+    enabled: false
