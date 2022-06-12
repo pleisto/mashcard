@@ -1,0 +1,12 @@
+{
+  "extends": "../typescript/tsconfig.shared.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["**/*"],
+  "exclude": ["dist/**/*"]
+}

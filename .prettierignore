@@ -1,0 +1,18 @@
+# Add files here to ignore them from prettier formatting
+
+dist/
+coverage/
+junit-reports/
+tmp/
+log/
+node_modules/
+/public/esm-bundle/
+apps/server-monolith/db/*
+
+CHANGELOG.*
+*.env
+tools/helm-charts/**/*.yaml
+*.datauri.ts
+.next
+*.tsbuildinfo
+BrickdocGraphQL.ts

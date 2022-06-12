@@ -1,0 +1,7 @@
+<mj-button padding-top="24px" font-size="18px" background-color="#356CF9" align="left" color="#ffffff" href="<%= local_assigns[:link] %>">
+  <%= local_assigns[:name] %>
+</mj-button>
+<mj-text color="#908b9c" font-size="12px">
+  <%= t('mailer.copy_this_url') %>
+  <%= link_to(local_assigns[:link],  local_assigns[:link], class: 'text-link') %>
+</mj-text>

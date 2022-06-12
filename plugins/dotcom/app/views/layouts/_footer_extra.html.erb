@@ -1,0 +1,11 @@
+  <% if Rails.env.production? %>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D93T65J3Z"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8D93T65J3Z'<%= ", {
+    'user_id': '#{h(Current.user&.hashed_id)}'
+    }".html_safe if current_user.present? %>);
+  </script>
+  <% end %>

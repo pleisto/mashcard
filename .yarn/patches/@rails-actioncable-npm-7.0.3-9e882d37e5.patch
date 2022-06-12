@@ -1,0 +1,53 @@
+diff --git a/app/assets/javascripts/action_cable.js b/app/assets/javascripts/action_cable.js
+index 22edeccf30ab51c0d77e19b6ce95a6b175f30066..5287d8c6b4eac1d82ef7402e75d4f54437f4f32b 100644
+--- a/app/assets/javascripts/action_cable.js
++++ b/app/assets/javascripts/action_cable.js
+@@ -108,7 +108,7 @@
+       }
+     }
+   }
+-  ConnectionMonitor.staleThreshold = 6;
++  ConnectionMonitor.staleThreshold = 60;
+   ConnectionMonitor.reconnectionBackoffRate = .15;
+   var INTERNAL = {
+     message_types: {
+diff --git a/app/assets/javascripts/actioncable.esm.js b/app/assets/javascripts/actioncable.esm.js
+index 2187eb90bf097ad8bd2fa1e9922ec0101d7f3cf3..b5b1b9f6906af3f8bad467805b25352726f38526 100644
+--- a/app/assets/javascripts/actioncable.esm.js
++++ b/app/assets/javascripts/actioncable.esm.js
+@@ -108,7 +108,7 @@ class ConnectionMonitor {
+   }
+ }
+ 
+-ConnectionMonitor.staleThreshold = 6;
++ConnectionMonitor.staleThreshold = 60;
+ 
+ ConnectionMonitor.reconnectionBackoffRate = .15;
+ 
+diff --git a/app/assets/javascripts/actioncable.js b/app/assets/javascripts/actioncable.js
+index b3cc4299dbc94da1edee2a699853d57a5117fbd1..45a245784337bfa95ec20208e16b640230ff598c 100644
+--- a/app/assets/javascripts/actioncable.js
++++ b/app/assets/javascripts/actioncable.js
+@@ -108,7 +108,8 @@
+       }
+     }
+   }
+-  ConnectionMonitor.staleThreshold = 6;
++  // Patched: Server:: Connections:: BEAT_INTERVAL * 2(missed two pings)
++  ConnectionMonitor.staleThreshold = 60;
+   ConnectionMonitor.reconnectionBackoffRate = .15;
+   var INTERNAL = {
+     message_types: {
+diff --git a/src/connection_monitor.js b/src/connection_monitor.js
+index 0d89f3c23780e47be55bb9556927bbdd9f27c0d1..b0bfed08c310d736c2435404880e58e1310c2c2d 100644
+--- a/src/connection_monitor.js
++++ b/src/connection_monitor.js
+@@ -119,7 +119,7 @@ class ConnectionMonitor {
+ 
+ }
+ 
+-ConnectionMonitor.staleThreshold = 6 // Server::Connections::BEAT_INTERVAL * 2 (missed two pings)
++ConnectionMonitor.staleThreshold = 60 // Server::Connections::BEAT_INTERVAL * 2 (missed two pings)
+ ConnectionMonitor.reconnectionBackoffRate = 0.15
+ 
+ export default ConnectionMonitor

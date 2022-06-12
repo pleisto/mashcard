@@ -1,0 +1,257 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button rendering Basic should match the snapshot 1`] = `
+<div>
+  <button
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-cAxcPy-size-md"
+    role="button"
+    type="button"
+  >
+    <span>
+      42 is the meaning of life
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button rendering IconOnly should match the snapshot 1`] = `
+<div>
+  <button
+    aria-label="Add Record"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eFvWIl-btnType-secondary brd-c-dsuUsp-iCyVCv-size-lg brd-c-dsuUsp-kaXTQH-circle-lg brd-c-dsuUsp-iDpwiq-hasIcon-true"
+    role="button"
+    type="button"
+  >
+    <i
+      data-testid="mock-icon-Add"
+    />
+  </button>
+</div>
+`;
+
+exports[`Button rendering Loading should match the snapshot 1`] = `
+<div>
+  <button
+    class="ButtonUnstyled-root Mui-disabled brd-c-dsuUsp brd-c-dsuUsp-eFvWIl-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-gvlAwB-loading-true brd-c-dsuUsp-iDpwiq-hasIcon-true"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <svg
+      class="brd-c-hsxsfB brd-c-hsxsfB-iixNcA-size-md brd-c-hsxsfB-jSsSsB-color-dark"
+      fill="none"
+      height="20"
+      style="opacity: 1;"
+      viewBox="0 0 20 20"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="10"
+        cy="10"
+        opacity="0.05"
+        r="9"
+        stroke="black"
+        stroke-linecap="round"
+        stroke-width="2"
+      />
+      <circle
+        cx="10"
+        cy="10"
+        opacity="0.1"
+        r="9"
+        stroke="black"
+        stroke-dasharray="1000"
+        stroke-linecap="round"
+        stroke-width="2"
+      />
+      <circle
+        cx="10"
+        cy="10"
+        opacity="0.2"
+        r="9"
+        stroke="black"
+        stroke-dasharray="1000"
+        stroke-linecap="round"
+        stroke-width="2"
+      />
+      <circle
+        cx="10"
+        cy="10"
+        opacity="1.0"
+        r="9"
+        stroke="black"
+        stroke-dasharray="1000"
+        stroke-linecap="round"
+        stroke-width="2"
+      />
+    </svg>
+    <span>
+      Loading...
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button rendering LoadingAfter5Seconds should match the snapshot 1`] = `
+<div>
+  <button
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eFvWIl-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md"
+    role="button"
+    type="button"
+  >
+    <span>
+      Loading after 5 seconds...
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button rendering WithEndIcon should match the snapshot 1`] = `
+<div>
+  <button
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-iDpwiq-hasIcon-true"
+    role="button"
+    type="button"
+  >
+    <span>
+      Get started
+    </span>
+    <i
+      data-testid="mock-icon-ArrowRight"
+    />
+  </button>
+</div>
+`;
+
+exports[`Button rendering WithStartIcon should match the snapshot 1`] = `
+<div>
+  <button
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-juMjLD-btnType-danger brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-iDpwiq-hasIcon-true"
+    role="button"
+    type="button"
+  >
+    <i
+      data-testid="mock-icon-Delete"
+    />
+    <span>
+      Confirm to 
+      <strong>
+        delete
+      </strong>
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button rendering should match the snapshot as a block button 1`] = `
+<div>
+  <button
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-iqjHSX-block-true"
+    role="button"
+    type="button"
+  >
+    <span>
+      42 is the meaning of life
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button rendering should match the snapshot by size "lg" 1`] = `
+<div>
+  <button
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-iCyVCv-size-lg"
+    role="button"
+    type="button"
+  >
+    <span>
+      42 is the meaning of life
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button rendering should match the snapshot by size "md" 1`] = `
+<div>
+  <button
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-cAxcPy-size-md"
+    role="button"
+    type="button"
+  >
+    <span>
+      42 is the meaning of life
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button rendering should match the snapshot by size "sm" 1`] = `
+<div>
+  <button
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-fXZnrp-size-sm"
+    role="button"
+    type="button"
+  >
+    <span>
+      42 is the meaning of life
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button rendering should match the snapshot by type "danger" 1`] = `
+<div>
+  <button
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-juMjLD-btnType-danger brd-c-dsuUsp-cAxcPy-size-md"
+    role="button"
+    type="button"
+  >
+    <span>
+      42 is the meaning of life
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button rendering should match the snapshot by type "primary" 1`] = `
+<div>
+  <button
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-cAxcPy-size-md"
+    role="button"
+    type="button"
+  >
+    <span>
+      42 is the meaning of life
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button rendering should match the snapshot by type "secondary" 1`] = `
+<div>
+  <button
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eFvWIl-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md"
+    role="button"
+    type="button"
+  >
+    <span>
+      42 is the meaning of life
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button rendering should match the snapshot by type "text" 1`] = `
+<div>
+  <button
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-Zmjpo-btnType-text brd-c-dsuUsp-cAxcPy-size-md"
+    role="button"
+    type="button"
+  >
+    <span>
+      42 is the meaning of life
+    </span>
+  </button>
+</div>
+`;

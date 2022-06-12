@@ -1,0 +1,16 @@
+{
+  "$schema": "../../apps/server-monolith/public/json-schema/plugin.draft-2205.json",
+  "name": "@brickdoc/dotcom",
+  "private": true,
+  "version": "0.1.0",
+  "sideEffects": false,
+  "engines": {
+    "brickdoc": ">=0.1.0"
+  },
+  "extensionPoints": [
+    "server"
+  ],
+  "scripts": {
+    "lint:rubocop": "BUNDLE_GEMFILE=../../apps/server-monolith/Gemfile bundle exec rubocop --parallel --config .rubocop.yml"
+  }
+}

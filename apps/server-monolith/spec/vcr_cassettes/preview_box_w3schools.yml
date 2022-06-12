@@ -1,0 +1,101 @@
+---
+http_interactions:
+  - request:
+      method: get
+      uri: https://iframe.ly/api/iframely?api_key=343dce40eb6be7b7ccf9cb&url=https://www.w3schools.com/
+      body:
+        encoding: US-ASCII
+        string: ''
+      headers:
+        User-Agent:
+          - Faraday v1.8.0
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        Accept:
+          - '*/*'
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Server:
+          - nginx
+        Date:
+          - Thu, 13 Jan 2022 03:54:08 GMT
+        Content-Type:
+          - application/json; charset=utf-8
+        Transfer-Encoding:
+          - chunked
+        Connection:
+          - keep-alive
+        Vary:
+          - Accept-Encoding
+        X-Powered-By:
+          - iframe.ly
+        Access-Control-Allow-Origin:
+          - '*'
+        Cache-Control:
+          - public, max-age=3600
+        Expires:
+          - Thu, 13 Jan 2022 04:54:08 GMT
+        Etag:
+          - W/"c8e2907a22821204513500a20cf61d1a"
+      body:
+        encoding: UTF-8
+        string: |-
+          {
+              "url": "https://www.w3schools.com/",
+              "meta": {
+                  "description": "W3Schools offers free online tutorials, references and exercises in all the major languages of the web. Covering popular subjects like HTML, CSS, JavaScript, Python, SQL, Java, and many, many more.",
+                  "title": "W3Schools Free Online Web Tutorials",
+                  "keywords": "HTML, Python, CSS, SQL, JavaScript, How to, PHP, Java, C++, jQuery, Bootstrap, C#, Colors, W3.CSS, XML, MySQL, Icons, NodeJS, React, Graphics, Angular, R, AI, Git, Data Science, Code Game, Tutorials, Programming, Web Development, Training, Learning, Quiz, Courses, Lessons, References, Examples, Source code, Demos, Tips",
+                  "canonical": "https://www.w3schools.com/"
+              },
+              "links": {
+                  "thumbnail": [
+                      {
+                          "href": "https://www.w3schools.com/images/w3schools_logo_436_2.png",
+                          "type": "image/png",
+                          "rel": [
+                              "thumbnail",
+                              "og",
+                              "ssl"
+                          ],
+                          "media": {
+                              "width": 436,
+                              "height": 228
+                          },
+                          "content_length": 6369
+                      }
+                  ],
+                  "icon": [
+                      {
+                          "href": "https://www.w3schools.com/favicon.ico",
+                          "rel": [
+                              "icon",
+                              "ssl"
+                          ],
+                          "type": "image/x-icon"
+                      }
+                  ]
+              },
+              "rel": [
+                  "summary",
+                  "card",
+                  "inline",
+                  "html5",
+                  "ssl",
+                  "hosted"
+              ],
+              "html": "<div class=\"iframely-embed\"><div class=\"iframely-responsive\" style=\"padding-bottom: 52.2936%; padding-top: 120px;\"><a href=\"https://www.w3schools.com/\" data-iframely-url=\"//cdn.iframe.ly/api/iframe?url=https%3A%2F%2Fwww.w3schools.com%2F&key=419a7ac4ffff6a18eeda9db90c2c78c5\"></a></div></div><script async src=\"//cdn.iframe.ly/embed.js\" charset=\"utf-8\"></script>",
+              "options": {
+                  "card": {
+                      "value": "",
+                      "values": {
+                          "small": "Make it a small card"
+                      }
+                  }
+              }
+          }
+    recorded_at: Thu, 13 Jan 2022 03:54:08 GMT
+recorded_with: VCR 6.0.0

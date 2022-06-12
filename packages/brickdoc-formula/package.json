@@ -1,0 +1,35 @@
+{
+  "name": "@brickdoc/formula",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "dependencies": {
+    "@brickdoc/design-system": "workspace:^",
+    "@brickdoc/schema": "workspace:^",
+    "axios": "^0.27.2",
+    "chevrotain": "^10.1.2",
+    "qrcode.react": "^3.0.2",
+    "react-vega": "^7.5.1",
+    "vega": "^5.22.1",
+    "vega-lite": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/qrcode.react": "^1.0.2"
+  },
+  "scripts": {
+    "lint": "yarn lint:eslint && yarn lint:type",
+    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
+    "lint:type": "run -T tsc",
+    "test:jest": "run -T jest",
+    "test:jest:fix": "run -T jest --silent -u"
+  }
+}

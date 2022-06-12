@@ -1,0 +1,29 @@
+test:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage/local") %>
+
+local_public:
+  service: Disk
+  public: true
+  root: <%= Rails.root.join("storage/public") %>
+
+local_private:
+  service: Disk
+  public: false
+  root: <%= Rails.root.join("storage/private") %>
+
+gcs_privtae:
+  service: GCS
+  cache_control: private, max-age=0
+  iam: true
+  bucket: <%= BrickdocConfig.gcs_config[:private_bucket] %>
+
+gcs_public:
+  service: GCS
+  cache_control: public, max-age=3600
+  iam: true
+  bucket: <%= BrickdocConfig.gcs_config[:public_bucket] %>

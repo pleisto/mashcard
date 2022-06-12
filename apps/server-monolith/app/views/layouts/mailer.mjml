@@ -1,0 +1,53 @@
+<mjml>
+  <mj-head>
+    <mj-title><%= message.subject %></mj-title>
+    <mj-attributes>
+      <mj-all font-family="system, -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif"></mj-all>
+      <mj-text font-weight="400" font-size="16px" color="#35313c" line-height="22px"></mj-text>
+    </mj-attributes>
+    <mj-style>
+      .text-link {
+      color: #5e6ebf
+      }
+      @media (min-width:599px) {
+        .body-section {
+          background-color: #ffffff;
+          box-shadow: 0px 2px 4px rgba(44, 91, 255, 0.02), 0px 4px 4px rgba(0, 0, 0, 0.04);
+          border-radius: 8px;
+        }
+        .action-card{
+          padding: 40px;
+        }
+        .logo {
+          padding-left: 0 !important;
+        }
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body background-color="#FCFCFA" width="600px">
+    <mj-section full-width="full-width" padding-bottom="40px">
+      <mj-column>
+        <mj-image css-class="logo" src="<%= vite_frontend_asset_path 'mailer/logo.png' %>"
+          alt="Brickdoc" align="left" width="80px" />
+      </mj-column>
+    </mj-section>
+    <mj-wrapper padding-top="0" padding-bottom="0" css-class="body-section">
+      <%= yield %>
+    </mj-wrapper>
+
+    <mj-wrapper full-width="full-width">
+      <mj-section>
+        <mj-column width="100%" padding="0">
+          <mj-text color="#908b9c" font-size="11px" align="center" line-height="16px">
+            <%= t('mailer.footer_message', host: BrickdocConfig.host) %>
+          </mj-text>
+
+          <mj-text color="#bfbcc6" font-size="11px" align="center">
+            Powered by Brickdoc
+          </mj-text>
+
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+  </mj-body>
+</mjml>

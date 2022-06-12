@@ -1,0 +1,37 @@
+overwrite: true
+schema:
+  - ../server-monolith/db/graphql/schema.json
+  - src/core/typePolicies/clientFileds.graphql
+documents: ['./src/**/*.graphql.ts', './src/**/graphql.ts']
+generates:
+  ./src/BrickdocGraphQL.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      useTypeImports: true
+      scalars:
+        BlockData: Block['data']
+        BlockMeta: Block['meta']
+        Email: string
+        AutoIncrementID: string
+        HttpUrl: string
+        UUID: string
+        Nil: null | undefined
+  ../../packages/brickdoc-schema/src/BrickdocModels.ts:
+    plugins:
+      - typescript
+    config:
+      useTypeImports: true
+      scalars:
+        BlockData: Block['data']
+        BlockMeta: Block['meta']
+        Email: string
+        AutoIncrementID: string
+        HttpUrl: string
+        UUID: string
+        Nil: null | undefined
+hooks:
+  afterAllFileWrite:
+    - prettier --write

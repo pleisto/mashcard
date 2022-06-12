@@ -1,0 +1,144 @@
+en-US:
+  meta:
+    lang: en-US
+    dir: ltr
+    noscript: We're sorry but Brickdoc doesn't work properly without JavaScript enabled. Please visit %{url} for more information.
+    noscript_url: https://www.wikihow.com/Enable-JavaScript
+  unsupported_browser:
+    title: 'Upgrade your browser'
+    download_latest_browser_html: Unfortunately, Brickdoc has updated features that can't run on this version of your browser.
+  activerecord:
+    errors:
+      models:
+        accounts/user:
+          attributes:
+            password:
+              too_short: too short
+  mailer:
+    footer_message: You're receiving this email because you have an account on %{host}.
+    copy_this_url: "Copy this url if the button above doesn't work:"
+  errors:
+    graphql:
+      argument_error:
+        invalid_pod: Token is invalid or expired.
+        pod_disable_invite: Pod is disabled for invites.
+        already_invited: You are already a member of this pod.
+      docs:
+        initialized_not_yet_completed: Initialized not yet completed
+        target_descendants_invalid: Invalid target
+    messages:
+      already_confirmed: was already confirmed, please try signing in
+      confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
+      expired: has expired, please request a new one
+      not_found: not found
+      not_locked: was not locked
+      not_saved:
+        one: '1 error prohibited this %{resource} from being saved:'
+        other: '%{count} errors prohibited this %{resource} from being saved:'
+      is_not_valid_domain: 'Pod domain "%{domain}" is not available'
+      is_not_valid_email: 'Email "%{email}" is not available'
+      send_interval: Sending interval is too short, please try again after 1 minute
+      model_invalid: 'Validation failed: %{errors}'
+      email_invalid: is not an email
+      domain_invalid: is not a valid domain name
+      uuid_invalid: is not an uuid
+      domain_presence_invalid: is not presence
+      InvalidImageUrl: Invalid image url
+    app_error:
+      not_found_title: Whoops! Lost in Brickdoc?
+      not_found_content: The page you're looking for couldn't be found.
+      server_error_title: Uh-Oh! Server Error.
+      server_error_content: Our servers are feeling a little down.
+      btn_back: Back to Home
+      btn_return: Return
+    template:
+      body: 'There were problems with the following fields:'
+      header:
+        one: 1 error prohibited this %{model} from being saved
+        other: '%{count} errors prohibited this %{model} from being saved'
+  devise:
+    confirmations:
+      confirmed: 'Your email address has been successfully confirmed.'
+      send_instructions: 'You will receive an email with instructions for how to confirm your email address in a few minutes.'
+      send_paranoid_instructions: 'If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes.'
+    failure:
+      already_authenticated: You are already signed in.
+      inactive: Your account is not activated yet.
+      invalid: Invalid %{authentication_keys} or password.
+      locked: Your account is locked.
+      last_attempt: You have one more attempt before your account is locked.
+      not_found_in_database: Invalid %{authentication_keys} or password.
+      timeout: Your session expired. Please sign in again to continue.
+      unauthenticated: You need to sign in or sign up before continuing.
+      unconfirmed: You have to confirm your email address before continuing.
+    omniauth_callbacks:
+      failure: Could not authenticate you from %{kind} because "%{reason}".
+      success: Successfully authenticated from %{kind} account.
+    passwords:
+      no_token: You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.
+      send_instructions: You will receive an email with instructions on how to reset your password in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.
+      updated: Your password has been changed successfully. You are now signed in.
+      updated_not_active: Your password has been changed successfully.
+    registrations:
+      destroyed: Bye! Your account has been successfully cancelled. We hope to see you again soon.
+      signed_up: You have signed up successfully.
+      signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
+      signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.
+      signed_up_but_unconfirmed: A verification link has been sent to your email address. Please click on the verification link in the confirmation email to complete the sign-up process.
+      update_needs_confirmation: You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirmation link to confirm your new email address.
+      updated: Your account has been updated successfully.
+    unlock_instructions:
+      send_instructions: 'You will receive an email with instructions for how to unlock your account in a few minutes.'
+      send_paranoid_instructions: 'If your account exists, you will receive an email with instructions for how to unlock it in a few minutes.'
+      unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
+    mailer:
+      confirmation_instructions:
+        you_can_confirm_your_account_email_through_the_link_below: 'Please confirm this email address for your Brickdoc account by clicking on the button below'
+        subject: 'Confirmation Email'
+      reset_password_instructions:
+        subject: 'Reset password instructions'
+      unlock_instructions:
+        subject: 'Unlock instructions'
+      email_changed:
+        subject: 'Email Changed'
+      password_change:
+        subject: 'Password Changed'
+    sessions:
+      signed_in: 'Signed in successfully.'
+      signed_out: 'Signed out successfully.'
+      already_signed_out: 'Signed out successfully.'
+  accounts:
+    app_title: Brickdoc Accounts
+    provider:
+      email_password: Email & Password
+    sessions:
+      sign_in: Sign In
+      sign_up: Sign Up
+      reset_password: Reset Password
+      sign_in_to_brickdoc: Sign into Brickdoc
+      more_login_options: More Login Options
+      login_via: 'Sign in with %{provider}'
+      email: Email
+      password: Password
+      remember_me: Remember me
+      sign_up_with_email: Sign Up
+      resend_confirmed_email: Resend Confirmation Link
+      confirmation_email_required_heading: Almost there!
+      forget_password: Forget Password
+      confirm_password: Confirm Password
+      sign_up_via: 'Sign Up with %{provider}'
+      name: 'Name'
+      domain: 'Domain Name'
+      domain_description: 'Only alphabet and numbers are allowed'
+      agree_to_agreement: 'Sign Up indicate you agree to our <0>User Agreement</0>.'
+      resend_after: 'Resendable after %{ms}'
+    common:
+      confirm_not_match: '%{field} and confirm %{field} do not match'
+    errors:
+      invalid_operation_type: 'Invalid operation type'
+      invalid_pod_domain: 'No access to the pod domain'
+      pod_has_already_switched: 'Pod has already switched'
+      pod_exist: 'Pod has already exist'
+      user_not_exist: "User doesn't exist"
+      pod_not_exist: "Pod doesn't exist"

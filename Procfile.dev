@@ -1,0 +1,3 @@
+
+vite: cd apps/server-monolith && vite dev
+web: cd apps/server-monolith && rails s

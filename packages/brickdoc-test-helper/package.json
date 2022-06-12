@@ -1,0 +1,20 @@
+{
+  "name": "@brickdoc/test-helper",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "scripts": {
+    "lint": "yarn lint:eslint && yarn lint:type",
+    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
+    "lint:type": "run -T tsc"
+  }
+}

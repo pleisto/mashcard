@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar AnonymousAvatar should match the snapshot 1`] = `
+<div>
+  <span
+    class="brd-c-cdJFWN brd-c-cdJFWN-hECRKn-shape-circle brd-c-cdJFWN-kRzPmM-size-md brd-c-cdJFWN-euTbep-default-true brd-c-cdJFWN-iPJLV-css"
+  >
+    <i
+      data-testid="mock-icon-User"
+    />
+  </span>
+</div>
+`;
+
+exports[`Avatar Basic should match the snapshot 1`] = `
+<div>
+  <span
+    class="brd-c-cdJFWN brd-c-cdJFWN-hECRKn-shape-circle brd-c-cdJFWN-kRzPmM-size-md brd-c-cdJFWN-ibCEZhf-css"
+  >
+    <span>
+      JS
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Avatar ImageAvatar should match the snapshot 1`] = `
+<div>
+  <span
+    class="brd-c-cdJFWN brd-c-cdJFWN-hECRKn-shape-circle brd-c-cdJFWN-kRzPmM-size-md brd-c-cdJFWN-iPJLV-css"
+  >
+    <img
+      alt="John Smith Avatar"
+      src="https://i.pravatar.cc/150?img=42"
+    />
+  </span>
+</div>
+`;
+
+exports[`Avatar SquareAvatar should match the snapshot 1`] = `
+<div>
+  <span
+    class="brd-c-cdJFWN brd-c-cdJFWN-liDPBl-shape-square brd-c-cdJFWN-bFVlRr-size-lg brd-c-cdJFWN-ibCEZhf-css"
+  >
+    <span>
+      JS
+    </span>
+  </span>
+</div>
+`;

@@ -1,0 +1,10 @@
+{
+  "extends": "../typescript/tsconfig.shared.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "strictPropertyInitialization": false,
+    "lib": ["es2021"]
+  },
+  "include": ["**/*"],
+  "exclude": ["dist/**/*"]
+}

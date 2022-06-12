@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "brickdoc.fullname" . }}
+  labels: {{- include "brickdoc.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+      name: http
+  selector: {{- include "brickdoc.selectorLabels" . | nindent 4 }}

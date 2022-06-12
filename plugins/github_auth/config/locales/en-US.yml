@@ -1,0 +1,4 @@
+en-US:
+  accounts:
+    provider:
+      github: 'Github'

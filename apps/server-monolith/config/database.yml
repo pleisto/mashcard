@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 64 } %>
+  host: <%= ENV['POSTGRES_HOST'] || '127.0.0.1' %>
+  port: <%= ENV['POSTGRES_PORT'] || '5432' %>
+  username: <%= ENV['POSTGRES_USER'] || 'postgres' %>
+  password: <%= ENV['POSTGRES_PASS'] %>
+
+development:
+  <<: *default
+  database: brickdoc_development
+
+test:
+  <<: *default
+  database: brickdoc_test
+
+cicd:
+  <<: *default
+  url: <%= ENV['BRICKDOC_DATABASE_URL'] %>
+
+production:
+  <<: *default
+  url: <%= ENV['BRICKDOC_DATABASE_URL'] %>

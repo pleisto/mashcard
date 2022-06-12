@@ -1,0 +1,12 @@
+{
+  "extends": "../../tools/typescript/tsconfig.shared.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["**/*", "../server-monolith/vite.config.ts"],
+  "exclude": ["dist/**/*"]
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://brickdoc.com/json-schema/plugin.draft-2205.json",
+  "title": "JSON Schema for Brickdoc Plugin",
+  "required": ["engines", "extensionPoints", "name", "version"],
+  "type": "object",
+  "additionalProperties": true,
+  "allOf": [
+    {
+      "$ref": "http://json.schemastore.org/package.json"
+    }
+  ],
+  "properties": {
+    "name": {
+      "description": "The name of the plugin. @scope is required.",
+      "type": "string",
+      "pattern": "^@[a-z\\d][\\w-.]+/[a-z\\d][\\w-.]*$"
+    },
+    "version": {
+      "description": "Version must be parseable by node-semver.",
+      "type": "string",
+      "pattern": "^(?:\\d{1,5}\\.){0,3}\\d{1,5}$"
+    },
+    "engines": {
+      "type": "object",
+      "properties": {
+        "brickdoc": {
+          "description": "The version of Brickdoc that this plugin is compatible with. e.g. \"^0.1.0\"",
+          "type": "string"
+        }
+      }
+    },
+    "extensionPoints": {
+      "type": "array",
+      "description": "The plugin will load the following extension points",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "oneOf": [
+          {
+            "const": "server",
+            "description": "It will be loaded on the server side. Any plugins containing this extension point will only be available in self-hosted instances."
+          },
+          {
+            "const": "js-bundle",
+            "description": "Injects any JS code into the PWA's JS bundle. Any plugins containing this extension point will only be available in self-hosted instances."
+          },
+          {
+            "const": "block",
+            "description": "(WIP) Defines a new block that can be used in the editor."
+          },
+          {
+            "const": "formula",
+            "description": "(WIP) Defines a new formula that can be used in the editor."
+          }
+        ]
+      }
+    }
+  }
+}

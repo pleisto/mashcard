@@ -1,0 +1,7 @@
+/storageState.json
+/storageState-*.json
+
+# report
+test-results/
+allure-report/
+allure-results/
