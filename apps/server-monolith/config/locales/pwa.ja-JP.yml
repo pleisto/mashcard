@@ -1,31 +1,31 @@
 ja-JP:
   settings:
-    app_title: Brickdoc Settings
-    personal_pod_desc: My Pod
-    group_pod_desc: Team Pod
+    app_title: Brickdoc設定
+    personal_pod_desc: 私のポッド
+    group_pod_desc: チームポッド
     errors:
       invalid_operation_type: Invalid operation type
     menu:
-      general: General
-      account: Account
+      general: 一般設定
+      account: アカウント
       team: Team Pod
-      logs: Security Logs
+      logs: セキュリティログ
     general:
-      user_profile: User Profile
-      group_profile: Group Profile
-      update_profile: Update Profile
+      user_profile: ユーザープロフィール
+      group_profile: グループプロファイル
+      update_profile: プロフィールの更新
       change_domain: Change Domain Name
-      change_domain_btn: Update
+      change_domain_btn: 更新
       change_domain_desc: Unless you really need it, we recommended that you do not change your pod domain. This will cause the rela..
-      change_domain_more: Learn More
-      avatar_uploaded_success: Avatar uploaded successfully.
-      avatar_uploaded_error: Avatar uploaded failed.
-      avatar_updated: Avatar updated successfully.
-      profile_updated: Profile updated successfully.
-      display: Display
-      timezone: Timezone
-      locale: Language
-      update_appearance: Save Appearance
+      change_domain_more: 詳細情報
+      avatar_uploaded_success: 画像のアップロードに成功しました。
+      avatar_uploaded_error: アバターの更新に失敗しました！
+      avatar_updated: アイコンを保存しました
+      profile_updated: プロフィールが正常に更新されました。
+      display: 表示
+      timezone: タイムゾーン
+      locale: 言語
+      update_appearance: 外観を保存
     account:
       joined_team_pods: Joined Team Pods
       leave_btn: Leave
@@ -33,21 +33,21 @@ ja-JP:
       owner_cant_leave_tips: You are the owner of this pod. You can not leave it.
       leave_pod_confirm: Are you sure you want to leave %{pod}?
       pod_leave_success: You have left %{pod} successfully.
-      delete_account: Delete account
+      delete_account: アカウントを削除
       delete_account_desc: Since you delete your account, there is no going back. Please be certain.
       delete_account_tip: You have left the %{pods} Pod
       delete_account_unavailable: |
         This account is a member/owner of the following team pods: <strong>%{pods}</strong>. To delete this account, please transfer ownership and leave or delete all your team pods.
-      delete_account_btn: Delete Your Account
-      delete_account_modal_title: Are you sure you want to delete your account?
+      delete_account_btn: アカウントを削除します。
+      delete_account_modal_title: アカウントを削除して本当によろしいですか？
       delete_account_modal_desc: |
         This is a non-reversible action that will permanently delete all your data and cannot be undone.<br/>
         You will no longer be billed, and your domain will be available for anyone to use. <br/>
-      delete_account_confirm: 'To verify, type your pod domain %{domain} below:'
-      delete_account_confirm_btn: Confirm Delete
-      delete_account_confirm_cancel: cancel
+      delete_account_confirm: '確認するには、ポッドドメイン %{domain} を以下に入力します。'
+      delete_account_confirm_btn: 本当に削除しますか？
+      delete_account_confirm_cancel: キャンセル
     team:
-      members: Members
+      members: メンバー
       leave_user_confirm: Are you sure remove %{user} from this pod?
       user_leave_success: User %{user} has left pod successfully.
       delete_pod: Delete This Pod
@@ -63,7 +63,7 @@ ja-JP:
       invite_label: Enable Invite link
       invite_desc: Manage the team pod's invite link.
       invite_enable_updated: Invite link Settings updated successfully.
-      invite_secret_reset: Reset
+      invite_secret_reset: リセット
       invite_secret_reset_confirm: Are you sure you want to reset the secret? This will invalidate the current invite link.
   editor:
     placeholder: Type '/' for commands
@@ -71,58 +71,58 @@ ja-JP:
     explorer_menu:
       title: Explore
       search:
-        placeholder: Search
+        placeholder: 検索
     discussion:
       title: Comments
       tabs:
-        all: All
-        resolved: Resolved
+        all: すべて
+        resolved: 解決済み
       delete_message: Are you sure you want to delete this comment?
       editor:
         placeholder: Comment...
         send: Send
-        cancel: Cancel
+        cancel: キャンセル
     history:
       title: History
     toolbar:
-      separator: Menu separator
+      separator: メニューセパレータ
     blocks:
       text:
-        label: Text
+        label: テキスト
       h1:
-        label: Heading 1
+        label: 見出し 1
       h2:
-        label: Heading 2
+        label: 見出し 2
       h3:
-        label: Heading 3
+        label: 見出し 3
       h4:
-        label: Heading 4
+        label: 見出し 4
       h5:
-        label: Heading 5
+        label: 見出し 5
       bulletedList:
         label: Bulleted List
       orderedList:
         label: Numbered List
       taskList:
-        label: Todo
+        label: タスク
       link:
-        label: Link
+        label: リンク
       embed:
-        label: Embed
+        label: 埋込
       upload:
-        label: Local File
+        label: ローカルファイル
       gallery:
         label: Gallery
       spreadsheet:
-        label: Spreadsheet
+        label: スプレッドシートツール
       formula:
         label: Formula
       divider:
         label: Divider
       toc:
-        label: Toc
+        label: 目次
         placeholder: Add headings/anchors to create a table of contents
-        untitled: Untitled
+        untitled: 無題
       subPageMenu:
         label: Subpage menu
       code:
@@ -132,109 +132,109 @@ ja-JP:
     block_actions:
       basic:
         cut: Cut
-        copy: Copy
-        move: Move
-        delete: Delete
-        transform: Turn into
+        copy: 複製
+        move: 移動
+        delete: 削除
+        transform: '次の値に変わります:'
       embed_block:
-        download: Download
-        full_screen: Full Screen
+        download: ダウンロード
+        full_screen: 全画面表示
         attachment_mode: Turn to text view
         preview_mode: Turn to preview
       add_block: Add block below
       blocks:
-        text: Text
-        h1: Heading 1
-        h2: Heading 2
-        h3: Heading 3
-        h4: Heading 4
-        h5: Heading 5
+        text: テキスト
+        h1: 見出し 1
+        h2: 見出し 2
+        h3: 見出し 3
+        h4: 見出し 4
+        h5: 見出し 5
         numbered_list: Numbered list
         bulleted_list: Bulleted list
         formula: Formula
         code: Code
-        spreadsheet: Spreadsheet
+        spreadsheet: スプレッドシートツール
         upload: Upload
         gallery: Gallery
     slash_menu:
-      title: Slash menu
+      title: スラッシュメニュー
       recent: Recently used
       type: Type
-      suggestion: Suggestions
-      no_suggestion: No result
+      suggestion: 予測
+      no_suggestion: 結果なし
       footer: Explore
       tooltip: Explore Slash Menu
       explorer_menu:
         group:
           data:
-            label: Data
+            label: データ
           embed:
             label: Embed
           text:
             label: Text
           others:
-            label: Others
+            label: その他
       items:
         explore:
           label: Explore
     bubble_menu:
       node:
-        section_title: Turns into
+        section_title: '次の値に変わります:'
         items:
-          paragraph: Text
-          heading1: Heading 1
-          heading2: Heading 2
-          heading3: Heading 3
-          heading4: Heading 4
-          heading5: Heading 5
+          paragraph: テキスト
+          heading1: 見出し 1
+          heading2: 見出し 2
+          heading3: 見出し 3
+          heading4: 見出し 4
+          heading5: 見出し 5
           bulletList: Bulleted list
           orderedList: Numbered list
           formula: Formula
       bold:
-        title: Bold
+        title: 太字
       italic:
-        title: Italic
+        title: イタリック
       underline:
-        title: Underline
+        title: 下線
       strike:
-        title: Strike
+        title: 取り消し線
       fontColor:
-        title: Font color
+        title: フォントの色
         text_color:
-          label: Text Color
+          label: テキストの色
         bg_color:
-          label: Background
+          label: 背景の色
         reset_button:
-          label: Reset
+          label: リセット
       comment:
-        title: Comment
+        title: コメント
       formula:
         title: Formula
       anchor:
         add: Mark as anchor
         remove: Remove anchor mark
       link:
-        title: Link
-        placeholder: Paste link
+        title: リンク
+        placeholder: リンクを貼り付け
         confirm: Link to web page
-        copy: Copy link
-        delete: Remove link
+        copy: リンクをコピー
+        delete: リンクを削除
     image_block:
-      hint: Add an image
+      hint: 画像を追加する
       deletion_confirm:
         title: Are you sure you want to delete this property?
-        ok: Delete
-        cancel: Cancel
+        ok: 削除
+        cancel: キャンセル
       menu:
-        copy: Copy link
-        delete: Remove
+        copy: リンクをコピー
+        delete: 削除
       import_sources:
         link:
           placeholder: Paste the image link...
           button_text: Embed image
-          button_hint: Works with any image from the web
+          button_hint: Webからの任意の画像で動作します
         upload:
-          button_text: Choose an image
+          button_text: 画像を選択
     formula:
       menu:
         delete_confirm:
@@ -251,10 +251,10 @@ ja-JP:
     action_panel:
       more:
         duplicate: Duplicate
-        copy: Copy link
+        copy: リンクをコピー
         delete: Delete
-        delete_confirm: Confirm
-        delete_cancel: Cancel
+        delete_confirm: 確認する
+        delete_cancel: キャンセル
     code_block:
       copy_code: Copy content
       default_language: plain text
@@ -262,9 +262,9 @@ ja-JP:
       deletion_confirm:
         title: Are you sure you want to delete this property?
         ok: Delete
-        cancel: Cancel
+        cancel: キャンセル
       languages:
-        'plain text': Plain text
+        'plain text': プレーンテキスト
         markdown: Markdown
         css: CSS
         javascript: JavaScript
@@ -315,32 +315,32 @@ ja-JP:
         properties: Properties
     embed_block:
       zoom_in:
-        tooltip: Zoom In
+        tooltip: 拡大
       zoom_out:
-        tooltip: Zoom Out
+        tooltip: ズームアウト
       align:
         left:
-          tooltip: Align Left
+          tooltip: 左揃え
         center:
-          tooltip: Align Center
+          tooltip: 中央揃え
         right:
-          tooltip: Align Right
+          tooltip: 右揃え
         full_width:
-          tooltip: Align Full Width
+          tooltip: 全幅に揃える
       full_screen:
-        tooltip: Full Screen
+        tooltip: 全画面表示
       edit:
-        tooltip: Edit
+        tooltip: 編集
       view_types:
         card:
-          name: card view
+          name: カードビュー
         preview:
           name: preview view
           unavailable:
             tip: Unable to preview content.
-            link_button: Open Link
+            link_button: リンクを開く
         text:
-          name: text view
+          name: テキストの表示
       embed_types:
         link:
           label: Add a link to web or file.
@@ -348,22 +348,22 @@ ja-JP:
           panel:
             link_validate: Please input valid link first.
             submit_error: Please make sure link is valid and then try again.
-            head: Embed
+            head: 埋込
             text:
               placeholder: Text to display
             link:
-              placeholder: Paste link
+              placeholder: リンクを貼り付け
         upload:
           label: You can upload anything locally.
           description: Upload image、PDF、Word、PPT、Excel and more.
       types:
         gallery:
           search:
-            placeholder: Search...
+            placeholder: 検索...
           label: Select a picture from Unsplash.
           description: Unsplash image.
     user_block:
-      anonymous: Anonymous
+      anonymous: 匿名です
     page_link_block:
       untitled: Untitled
     mention:
@@ -375,7 +375,7 @@ ja-JP:
         no_content: Page no result
     spreadsheet:
       delete: Delete
-      copy: Copy
+      copy: 複製
       row:
         actions: Actions
         add_above: Add row above
@@ -389,14 +389,14 @@ ja-JP:
     table:
       untitled: Untitled
       new_row:
-        text: New
+        text: 新着
       remove_row:
-        text: Delete
+        text: 削除
         title: Are you sure you want to delete this row?
-        ok: Delete
-        cancel: Cancel
+        ok: 削除
+        cancel: キャンセル
       remove_column:
-        text: Delete
+        text: 削除
         title: Are you sure you want to delete this property?
         ok: Delete
         cancel: Cancel
@@ -414,7 +414,7 @@ ja-JP:
         remove: Remove
         duplicate: Duplicate
         where: Where
-        add_a_filter: Add a filter
+        add_a_filter: フィルターを追加
         add_a_filter_group: Add a filter group
         add_a_filter_group_desc: A group to nest more filters
         hint: |
@@ -434,14 +434,14 @@ ja-JP:
           is_after: Is After
           is_on_or_before: Is on or before
           is_on_or_after: Is on or after
-          contains: Contains
-          does_not_contain: Does not contain
+          contains: 含有
+          does_not_contain: 含まない
           starts_with: Starts with
           ends_with: Ends with
           is_empty: Is empty
           is_not_empty: Is not empty
       sort:
-        text: Sort
+        text: ソート
         title: Sort for My All Data
         hint: |
           Use a sort to:
@@ -450,31 +450,31 @@ ja-JP:
           Show recently contacted customers.
   docs:
     app_title: Brickdoc
-    saving: Saving
+    saving: 保存中...
     user_setting:
-      text: User Setting
-      general: General
+      text: ユーザー設定
+      general: 一般設定
       member: Member
       account: Account
     pod_setting:
-      text: Pod Setting
+      text: ポッド設定
     anonymous:
       edit_button: Edit
     search:
-      text: Quick Find
-      placeholder: Search Pages
+      text: クイック検索
+      placeholder: ページの検索
     blocks:
       create_pages: Add Pages
       no_pages: No pages inside
       create_sub_pages: Add Subpage
-      delete: Delete
-      rename: Rename
+      delete: 削除
+      rename: 名前を変更する
       undo: Undo
       more: Delete, Duplicate, and more...
     copy_link:
       button: Copy link
-      copied: Copied
-      success_message: Link copied
+      copied: コピーしました
+      success_message: リンクをコピーしました
     duplicate:
       new_title: Copy of %{title}
       button: Duplicate
@@ -503,7 +503,7 @@ ja-JP:
       hard_delete_action: Delete Page
       selected: selected
     discussion:
-      menu: Comment
+      menu: コメント
       tooltip: show comments on current page
     history:
       menu: History
@@ -513,12 +513,12 @@ ja-JP:
     share:
       menu: Share
       invite: Invite
-      share_title: Share the page
+      share_title: このページをシェア
       share_to_web: Share to web
       share_to_web_description: Publish and share link with anyone
       allow_edit: Allow edit
       learn: Learn about sharing
-      copy_link_button: Copy link
+      copy_link_button: リンクをコピー
       copy_link_button_done: Copied
       invite_placeholder: Add people by username
       invite_button: Invite
@@ -527,13 +527,13 @@ ja-JP:
     invite:
       learn: Learn more about sharing
       type_hint: Type or paste in pod domain above, separated by commas.
-      search: Add people by username
+      search: ユーザー名で人を追加する
       no_result: no result
       button: Invite
       confirm_button: Confirm
-      edit_message: Can edit
-      edit_message_description: Can edit, but not share with others.
-      view_message: Can view
+      edit_message: 編集可能
+      edit_message_description: 編集はできますが、他の人と共有することはできません。
+      view_message: 閲覧可能
       view_message_description: Cannot edit or share with others.
       no_view_message: Can’t view
       no_view_message_description: Cannot view or share with others.
@@ -543,7 +543,7 @@ ja-JP:
       name: Snapshot
       restore: Restore version
       restoring: Restoring...
-      cancel: Cancel
+      cancel: キャンセル
       empty: Version history is empty
     pods:
       domain: Domain Name
@@ -553,26 +553,26 @@ ja-JP:
         placeholder: Tell others a little about yourself.
       upload_avatar: Upload Photo
       required:
-        domain: Domain is required
-        name: Name is required
+        domain: ドメイン必須
+        name: 名前は必須です
       create:
-        success: Create successfully.
+        success: 作成成功しました。
       update:
-        success: Update successfully.
+        success: 更新成功.
     menu:
-      create_new_pod: Create New pod
-      logout: Log out
+      create_new_pod: "ポッド作成\n"
+      logout: ログアウト
     title:
-      add_icon: Add icon
-      add_cover: Add cover
-      remove_cover: Remove
-      change_cover: Change cover
-      reposition: Reposition
-      untitled: Untitled
+      add_icon: アイコンを追加します。
+      add_cover: 表紙を選ぶ
+      remove_cover: 削除
+      change_cover: カバーを変更
+      reposition: 位置変更
+      untitled: 無題
     document_icon:
       import_sources:
         link:
-          placeholder: Paste the image link...
+          placeholder: 画像リンクを貼り付けます...
           button_text: Submit
           button_hint: Works with any image from the web
           type_label: Link
@@ -591,5 +591,5 @@ ja-JP:
           type_label: Link
         upload:
           button_hint: 'Recommended image size: wider than 1500 pixels'
-          button_text: Choose an image
-          type_label: Upload an Image
+          button_text: 画像を選択
+          type_label: 画像のアップロード
