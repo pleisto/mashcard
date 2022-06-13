@@ -7,7 +7,7 @@
     "extends": "../../package.json"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.8",
+    "@apollo/client": "^3.6.7",
     "@brickdoc/active-support": "workspace:^",
     "@brickdoc/design-icons": "workspace:^",
     "@brickdoc/design-system": "workspace:^",
