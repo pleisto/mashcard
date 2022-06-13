@@ -593,3 +593,9 @@ zh-CN:
           button_hint: '推荐图像尺寸：大于 1500 像素'
           button_text: 选择图片
           type_label: 上传图像
+  formats:
+    days:
+      today: Today
+      yesterday: Yesterday
+    date: '%m-%d-%Y'
+    time: 'HH:mm:ss'
