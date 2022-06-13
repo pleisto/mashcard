@@ -1,270 +1,270 @@
 zh-CN:
   settings:
-    app_title: Brickdoc Settings
-    personal_pod_desc: My Pod
-    group_pod_desc: Team Pod
+    app_title: Brickdoc 设置
+    personal_pod_desc: 我的 Pod
+    group_pod_desc: 团队 Pod
     errors:
-      invalid_operation_type: Invalid operation type
+      invalid_operation_type: 无效的操作类型
     menu:
-      general: General
-      account: Account
-      team: Team Pod
-      logs: Security Logs
+      general: 常规
+      account: 账户
+      team: 团队 Pod
+      logs: 安全日志
     general:
-      user_profile: User Profile
-      group_profile: Group Profile
-      update_profile: Update Profile
-      change_domain: Change Domain Name
-      change_domain_btn: Update
-      change_domain_desc: Unless you really need it, we recommended that you do not change your pod domain. This will cause the rela..
-      change_domain_more: Learn More
-      avatar_uploaded_success: Avatar uploaded successfully.
-      avatar_uploaded_error: Avatar uploaded failed.
-      avatar_updated: Avatar updated successfully.
-      profile_updated: Profile updated successfully.
-      display: Display
-      timezone: Timezone
-      locale: Language
-      update_appearance: Save Appearance
+      user_profile: 用户资料
+      group_profile: 群组资料
+      update_profile: 更新资料
+      change_domain: 更改域地址
+      change_domain_btn: 更新
+      change_domain_desc: 除非您真的需要它，否则我们建议您不要更改您的 pod 域。这将导致rela..
+      change_domain_more: 了解更多
+      avatar_uploaded_success: 头像上传成功。
+      avatar_uploaded_error: 头像上传失败。
+      avatar_updated: 头像更改成功。
+      profile_updated: 资料更新成功
+      display: 显示
+      timezone: 时区
+      locale: 语言
+      update_appearance: 保存外观设置
     account:
-      joined_team_pods: Joined Team Pods
-      leave_btn: Leave
-      remove_btn: Remove
-      owner_cant_leave_tips: You are the owner of this pod. You can not leave it.
-      leave_pod_confirm: Are you sure you want to leave %{pod}?
-      pod_leave_success: You have left %{pod} successfully.
-      delete_account: Delete account
-      delete_account_desc: Since you delete your account, there is no going back. Please be certain.
-      delete_account_tip: You have left the %{pods} Pod
+      joined_team_pods: 加入群组 Pod
+      leave_btn: 退出
+      remove_btn: 移除
+      owner_cant_leave_tips: 您是此 Pod 的所有者，因此您无法退出此 Pod。
+      leave_pod_confirm: 确定离开 %{pod} ？
+      pod_leave_success: 您已成功离开 %{pod}。
+      delete_account: 删除账号
+      delete_account_desc: 删除账号操作不可逆转，请三思而后行。
+      delete_account_tip: 您已离开 %{pods} Pod
       delete_account_unavailable: |
-        This account is a member/owner of the following team pods: <strong>%{pods}</strong>. To delete this account, please transfer ownership and leave or delete all your team pods.
-      delete_account_btn: Delete Your Account
-      delete_account_modal_title: Are you sure you want to delete your account?
+        此帐户是以下团队 pod 的成员/所有者： <strong>%{pods}</strong>。要删除此帐户，请转让所有权并离开或删除您的所有团队 pod。
+      delete_account_btn: 删除当前帐户
+      delete_account_modal_title: 确定要删除您的账号吗？
       delete_account_modal_desc: |
-        This is a non-reversible action that will permanently delete all your data and cannot be undone.<br/>
-        You will no longer be billed, and your domain will be available for anyone to use. <br/>
-      delete_account_confirm: 'To verify, type your pod domain %{domain} below:'
-      delete_account_confirm_btn: Confirm Delete
-      delete_account_confirm_cancel: cancel
+        这是一个不可逆的操作，将永久删除您的所有数据并且无法撤消。<br/>
+        您将不再需要付费，并且您的域可供任何人使用。 <br/>
+      delete_account_confirm: '要验证，请在下面键入您的 pod 域 %{domain}：'
+      delete_account_confirm_btn: 确认删除
+      delete_account_confirm_cancel: 取消
     team:
-      members: Members
-      leave_user_confirm: Are you sure remove %{user} from this pod?
-      user_leave_success: User %{user} has left pod successfully.
-      delete_pod: Delete This Pod
-      delete_pod_desc: Please be sure that once deleted.
-      delete_pod_btn: Delete This Team Pod
-      delete_pod_modal_title: Are you sure you want to delete this team pod?
+      members: 成员
+      leave_user_confirm: 您确定要从此项目中移除 %{user} 吗？
+      user_leave_success: 用户 %{user} 已成功离开 pod。
+      delete_pod: 删除此 Pod
+      delete_pod_desc: 请务必确认后是否删除。
+      delete_pod_btn: 删除此群组 Pod
+      delete_pod_modal_title: 确定要解散此团队吗？
       delete_pod_modal_desc: |
-        This is a non-reversible action that will permanently delete all your data and cannot be undone. Your team pod's username will be available for anyone to use.<br/>
-        Type out the name of the team pod you would like to delete below.
-      delete_pod_confirm: 'To verify, type your team pod domain %{domain} below:'
-      delete_pod_confirm_btn: Delete Pod
-      invite: Invite Member
-      invite_label: Enable Invite link
-      invite_desc: Manage the team pod's invite link.
-      invite_enable_updated: Invite link Settings updated successfully.
-      invite_secret_reset: Reset
-      invite_secret_reset_confirm: Are you sure you want to reset the secret? This will invalidate the current invite link.
+        这是一个不可逆的操作，将永久删除您的所有数据并且无法撤消。您的团队 pod 的用户名将可供任何人使用。<br/>
+        在下方输入您要删除的团队 pod 的名称。
+      delete_pod_confirm: '要验证，请在下面键入您的团队 pod 域 %{domain}：'
+      delete_pod_confirm_btn: 删除 Pod
+      invite: 邀请成员
+      invite_label: 启用邀请链接
+      invite_desc: 管理群组 pod 的邀请链接。
+      invite_enable_updated: 邀请链接设置更新成功。
+      invite_secret_reset: 重置
+      invite_secret_reset_confirm: 您确定要重置 Token 吗？这将使当前的邀请链接失效。
   editor:
-    placeholder: Type '/' for commands
-    copy_hint: Copied to clipboard.
+    placeholder: 键入“/”作为命令
+    copy_hint: 已复制到剪贴板
     explorer_menu:
-      title: Explore
+      title: 探索
       search:
-        placeholder: Search
+        placeholder: 搜索
     discussion:
-      title: Comments
+      title: 评论
       tabs:
-        all: All
-        resolved: Resolved
-      delete_message: Are you sure you want to delete this comment?
+        all: 全部
+        resolved: 已解决
+      delete_message: 您确定要删除此评论吗？
       editor:
-        placeholder: Comment...
-        send: Send
-        cancel: Cancel
+        placeholder: 评论...
+        send: 发送
+        cancel: 取消
     history:
-      title: History
+      title: 历史
     toolbar:
-      separator: Menu separator
+      separator: 菜单分隔符
     blocks:
       text:
-        label: Text
+        label: 文本
       h1:
-        label: Heading 1
+        label: 一级标题
       h2:
-        label: Heading 2
+        label: 二级标题
       h3:
-        label: Heading 3
+        label: 三级标题
       h4:
-        label: Heading 4
+        label: 四级标题
       h5:
-        label: Heading 5
+        label: 五级标题
       bulletedList:
-        label: Bulleted List
+        label: 无序列表
       orderedList:
-        label: Numbered List
+        label: 有序列表
       taskList:
-        label: Todo
+        label: 待办事项
       link:
-        label: Link
+        label: 链接
       embed:
-        label: Embed
+        label: 嵌入
       upload:
-        label: Local File
+        label: 本地文件
       gallery:
-        label: Gallery
+        label: 相册
       spreadsheet:
-        label: Spreadsheet
+        label: 电子表格
       formula:
-        label: Formula
+        label: 公式
       divider:
-        label: Divider
+        label: 分隔线
       toc:
-        label: Toc
-        placeholder: Add headings/anchors to create a table of contents
-        untitled: Untitled
+        label: 目录
+        placeholder: 添加标题/锚点以创建一个目录
+        untitled: 未命名
       subPageMenu:
-        label: Subpage menu
+        label: 子页面菜单
       code:
-        label: Code
+        label: 代码
       blockquote:
-        label: Quote
+        label: 引用
     block_actions:
       basic:
-        cut: Cut
-        copy: Copy
-        move: Move
-        delete: Delete
-        transform: Turn into
+        cut: 剪切
+        copy: 复制
+        move: 移动
+        delete: 刪除
+        transform: 切换为
       embed_block:
-        download: Download
-        full_screen: Full Screen
-        attachment_mode: Turn to text view
-        preview_mode: Turn to preview
-      add_block: Add block below
+        download: 下载
+        full_screen: 全屏
+        attachment_mode: 转为文本视图
+        preview_mode: 转为预览视图
+      add_block: 在下面添加 Block
       blocks:
-        text: Text
-        h1: Heading 1
-        h2: Heading 2
-        h3: Heading 3
-        h4: Heading 4
-        h5: Heading 5
-        numbered_list: Numbered list
-        bulleted_list: Bulleted list
-        formula: Formula
-        code: Code
-        spreadsheet: Spreadsheet
-        upload: Upload
-        gallery: Gallery
+        text: 文本
+        h1: 一级标题
+        h2: 二级标题
+        h3: 三级标题
+        h4: 四级标题
+        h5: 五级标题
+        numbered_list: 有序列表
+        bulleted_list: 无序列表
+        formula: 公式
+        code: 代码
+        spreadsheet: 电子表格
+        upload: 上传
+        gallery: 相册
     slash_menu:
-      title: Slash menu
-      recent: Recently used
-      type: Type
-      suggestion: Suggestions
-      no_suggestion: No result
-      footer: Explore
-      tooltip: Explore Slash Menu
+      title: 斜杠菜单
+      recent: 最近使用
+      type: 类型
+      suggestion: 建议
+      no_suggestion: 没有结果
+      footer: 探索
+      tooltip: 探索斜杠菜单
       explorer_menu:
         group:
           data:
-            label: Data
+            label: 数据
           embed:
-            label: Embed
+            label: 嵌入
           text:
-            label: Text
+            label: 文本
           others:
-            label: Others
+            label: 其它
       items:
         explore:
-          label: Explore
+          label: 探索
     bubble_menu:
       node:
-        section_title: Turns into
+        section_title: 切换为
         items:
-          paragraph: Text
-          heading1: Heading 1
-          heading2: Heading 2
-          heading3: Heading 3
-          heading4: Heading 4
-          heading5: Heading 5
-          bulletList: Bulleted list
-          orderedList: Numbered list
-          formula: Formula
+          paragraph: 文本
+          heading1: 一级标题
+          heading2: 二级标题
+          heading3: 三级标题
+          heading4: 四级标题
+          heading5: 五级标题
+          bulletList: 无序列表
+          orderedList: 有序列表
+          formula: 公式
       bold:
-        title: Bold
+        title: 粗体
       italic:
-        title: Italic
+        title: 斜体
       underline:
-        title: Underline
+        title: 下划线
       strike:
-        title: Strike
+        title: 删除线
       fontColor:
-        title: Font color
+        title: 字体颜色
         text_color:
-          label: Text Color
+          label: 文本颜色
         bg_color:
-          label: Background
+          label: 背景
         reset_button:
-          label: Reset
+          label: 重置
       comment:
-        title: Comment
+        title: 评论
       formula:
-        title: Formula
+        title: 公式
       anchor:
-        add: Mark as anchor
-        remove: Remove anchor mark
+        add: 标为锚点
+        remove: 删除锚点标记
       link:
-        title: Link
-        placeholder: Paste link
-        confirm: Link to web page
-        copy: Copy link
-        delete: Remove link
+        title: 链接
+        placeholder: 粘贴链接
+        confirm: 链接到网页
+        copy: 复制链接
+        delete: 移除链接
     image_block:
-      hint: Add an image
+      hint: 添加图片
       deletion_confirm:
-        title: Are you sure you want to delete this property?
-        ok: Delete
-        cancel: Cancel
+        title: 您确定要删除此属性吗？
+        ok: 刪除
+        cancel: 取消
       menu:
-        copy: Copy link
-        delete: Remove
+        copy: 复制链接
+        delete: 移除
       import_sources:
         link:
-          placeholder: Paste the image link...
-          button_text: Embed image
-          button_hint: Works with any image from the web
+          placeholder: 粘贴图片链接...
+          button_text: 嵌入图像
+          button_hint: 适用于任何来自网页的图像
         upload:
-          button_text: Choose an image
+          button_text: 选择图片
     formula:
       menu:
         delete_confirm:
-          title: Are you sure you want to delete this property?
-          ok: Delete
-          cancel: Cancel
-        header: Formula
-        name: Name
-        color: Color
+          title: 您确定要删除此属性吗？
+          ok: 刪除
+          cancel: 取消
+        header: 公式
+        name: 名称
+        color: 颜色
         result: '='
-        save: Save formula
-        delete: Delete
-        cancel: Cancel
+        save: 保存公式
+        delete: 刪除
+        cancel: 取消
     action_panel:
       more:
-        duplicate: Duplicate
-        copy: Copy link
-        delete: Delete
-        delete_confirm: Confirm
-        delete_cancel: Cancel
+        duplicate: 创建副本
+        copy: 复制链接
+        delete: 刪除
+        delete_confirm: 确定
+        delete_cancel: 取消
     code_block:
-      copy_code: Copy content
-      default_language: plain text
-      search_placeholder: Search
+      copy_code: 复制内容
+      default_language: 纯文本
+      search_placeholder: 搜索
       deletion_confirm:
-        title: Are you sure you want to delete this property?
-        ok: Delete
-        cancel: Cancel
+        title: 您确定要删除此属性吗？
+        ok: 刪除
+        cancel: 取消
       languages:
-        'plain text': Plain text
+        'plain text': 纯文本
         markdown: Markdown
         css: CSS
         javascript: JavaScript
@@ -309,287 +309,287 @@ zh-CN:
         tsx: TSX
         jsx: JSX
         protobuf: Protocol Buffer
-        ignore: .ignore files
-        regex: Regex
+        ignore: .ignore 文件
+        regex: 正则表达式
         ini: INI
         properties: Properties
     embed_block:
       zoom_in:
-        tooltip: Zoom In
+        tooltip: 放大
       zoom_out:
-        tooltip: Zoom Out
+        tooltip: 缩小
       align:
         left:
-          tooltip: Align Left
+          tooltip: 左对齐
         center:
-          tooltip: Align Center
+          tooltip: 居中对齐
         right:
-          tooltip: Align Right
+          tooltip: 右对齐
         full_width:
-          tooltip: Align Full Width
+          tooltip: 全宽对齐
       full_screen:
-        tooltip: Full Screen
+        tooltip: 全屏
       edit:
-        tooltip: Edit
+        tooltip: 编辑
       view_types:
         card:
-          name: card view
+          name: 卡片视图
         preview:
-          name: preview view
+          name: 预览视图
           unavailable:
-            tip: Unable to preview content.
-            link_button: Open Link
+            tip: 无法预览内容。
+            link_button: 打开链接
         text:
-          name: text view
+          name: 文本视图
       embed_types:
         link:
-          label: Add a link to web or file.
-          description: You can add a link to web or file.
+          label: 添加指向网站或文件的链接。
+          description: 您可以添加指向网站或文件的链接。
           panel:
-            link_validate: Please input valid link first.
-            submit_error: Please make sure link is valid and then try again.
-            head: Embed
+            link_validate: 请先输入有效链接。
+            submit_error: 请确认链接是有效的，然后重试。
+            head: 嵌入
             text:
-              placeholder: Text to display
+              placeholder: 要显示的文本
             link:
-              placeholder: Paste link
+              placeholder: 粘贴链接
         upload:
-          label: You can upload anything locally.
-          description: Upload image、PDF、Word、PPT、Excel and more.
+          label: 您可以在本地上传任何内容。
+          description: 上传图片、PDF、Word、PPT、Excel等。
       types:
         gallery:
           search:
-            placeholder: Search...
-          label: Select a picture from Unsplash.
-          description: Unsplash image.
+            placeholder: 搜索...
+          label: 从 Unsplash 中选择一张图片。
+          description: Unsplash 图片
     user_block:
-      anonymous: Anonymous
+      anonymous: 匿名
     page_link_block:
-      untitled: Untitled
+      untitled: 未命名
     mention:
       people:
-        head: People
-        no_content: People no result
+        head: 人员
+        no_content: 人无结果
       page_link:
-        head: Link to page
-        no_content: Page no result
+        head: 链接到页面
+        no_content: 页面没有结果
     spreadsheet:
-      delete: Delete
-      copy: Copy
+      delete: 刪除
+      copy: 复制
       row:
-        actions: Actions
-        add_above: Add row above
-        add_below: Add row below
-        delete: Delete
+        actions: 动作
+        add_above: 在顶部添加一行
+        add_below: 在底下添加一行
+        delete: 刪除
       column:
-        actions: Actions
-        add_left: Add column to the left
-        add_right: Add column to the right
-        delete: Delete
+        actions: 动作
+        add_left: 在左侧添加列
+        add_right: 在右侧添加列
+        delete: 刪除
     table:
-      untitled: Untitled
+      untitled: 未命名
       new_row:
-        text: New
+        text: 新建
       remove_row:
-        text: Delete
-        title: Are you sure you want to delete this row?
-        ok: Delete
-        cancel: Cancel
+        text: 刪除
+        title: 您确定要删除此行吗？
+        ok: 刪除
+        cancel: 取消
       remove_column:
-        text: Delete
-        title: Are you sure you want to delete this property?
-        ok: Delete
-        cancel: Cancel
-      column_default_name: Column
-      column_type: Property Type
+        text: 刪除
+        title: 您确定要删除此属性吗？
+        ok: 刪除
+        cancel: 取消
+      column_default_name: 列
+      column_type: 属性类型
       column_types:
-        basic: Basic
-        text: Text
-        select: Select
-        date: Date
-        date-range: Date Range
+        basic: 基本
+        text: 文本
+        select: 下拉列表
+        date: 日期
+        date-range: 日期范围
       filter:
-        text: Filter
-        title: Filter for My All Data
-        remove: Remove
-        duplicate: Duplicate
-        where: Where
-        add_a_filter: Add a filter
-        add_a_filter_group: Add a filter group
-        add_a_filter_group_desc: A group to nest more filters
+        text: 过滤
+        title: 筛选我的所有数据
+        remove: 删除
+        duplicate: 建立副本
+        where: 当
+        add_a_filter: 添加过滤器
+        add_a_filter_group: 添加过滤器组
+        add_a_filter_group_desc: 用于嵌套更多筛选器的组
         hint: |
-          Use a filter to:
-          Show tasks assigned to me.
-          Show only notes with a certain tag.
-          Hide completed tasks.
+          使用过滤器来：
+          显示分配给我的任务。
+          只显示带有特定标签的笔记。
+          隐藏已完成的任务。
         collection_types:
-          intersection: And
-          union: Or
+          intersection: 和
+          union: 或
         matches:
-          is: Is
-          is_not: Is not
-          is_on: Is
-          is_not_on: Is not
-          is_before: Is before
-          is_after: Is After
-          is_on_or_before: Is on or before
-          is_on_or_after: Is on or after
-          contains: Contains
-          does_not_contain: Does not contain
-          starts_with: Starts with
-          ends_with: Ends with
-          is_empty: Is empty
-          is_not_empty: Is not empty
+          is: 是
+          is_not: 不是
+          is_on: 是
+          is_not_on: 不是
+          is_before: 先于
+          is_after: 迟于
+          is_on_or_before: 早于（含）
+          is_on_or_after: 迟于（含）
+          contains: 包含
+          does_not_contain: 不包含
+          starts_with: 开头为
+          ends_with: 结尾为
+          is_empty: 是空的
+          is_not_empty: 不为空
       sort:
-        text: Sort
-        title: Sort for My All Data
+        text: 排序
+        title: 为我的所有数据排序
         hint: |
-          Use a sort to:
-          Order tasks by priority.
-          Show notes by creation date.
-          Show recently contacted customers.
+          使用排序：
+          按优先级排序任务。
+          按创建日期显示笔记。
+          显示最近联系的客户。
   docs:
     app_title: Brickdoc
-    saving: Saving
+    saving: 保存中
     user_setting:
-      text: User Setting
-      general: General
-      member: Member
-      account: Account
+      text: 用户设置
+      general: 一般
+      member: 成员
+      account: 账号
     pod_setting:
-      text: Pod Setting
+      text: Pod 设置
     anonymous:
-      edit_button: Edit
+      edit_button: 编辑
     search:
-      text: Quick Find
-      placeholder: Search Pages
+      text: 快速查找
+      placeholder: 搜索页面
     blocks:
-      create_pages: Add Pages
-      no_pages: No pages inside
-      create_sub_pages: Add Subpage
-      delete: Delete
-      rename: Rename
-      undo: Undo
-      more: Delete, Duplicate, and more...
+      create_pages: 新增页面
+      no_pages: 没有子页面
+      create_sub_pages: 添加子页面
+      delete: 刪除
+      rename: 重命名
+      undo: 撤销
+      more: 删除、复制和更多...
     copy_link:
-      button: Copy link
-      copied: Copied
-      success_message: Link copied
+      button: 复制链接
+      copied: 复制成功
+      success_message: 链接已复制
     duplicate:
-      new_title: Copy of %{title}
-      button: Duplicate
+      new_title: '%{title}的副本'
+      button: 建立副本
     pin:
-      name: Pin
-      add: Pin page
-      add_tooltip: Pin this page
-      remove: Unpin page
-      remove_tooltip: Unpin this page
+      name: 置顶
+      add: 置顶页面
+      add_tooltip: 置顶此页面
+      remove: 撤销置顶页面
+      remove_tooltip: 取消置顶此页面
     trash:
-      name: Trash
-      pages: Pages
-      owner: Owner
-      deleted_at: Deleted At
-      all_pages: All pages
-      current_page: In current page
-      search: Filter by page title...
-      not_found: No match found.
-      learn: Learn about deleting and restoring pages
-      delete_confirmation_body: Are you sure you want to delete this page permanently?
-      batch_delete_confirmation_body: Are you sure you want to delete these %{number} pages permanently?
-      delete_confirmation_ok: Delete Page
-      delete_confirmation_cancel: Cancel
-      in_trash_prompt: This page is in trash.
-      restore_action: Restore page
-      hard_delete_action: Delete Page
-      selected: selected
+      name: 回收站
+      pages: 页面
+      owner: 所有者
+      deleted_at: 删除于
+      all_pages: 所有页面
+      current_page: 当前页面
+      search: 按页面标题过滤...
+      not_found: 未找到匹配项
+      learn: 了解如何删除和恢复页面
+      delete_confirmation_body: 您确定要永久删除此页面吗？
+      batch_delete_confirmation_body: 您确定要永久删除这 %{number} 个页面吗？
+      delete_confirmation_ok: 删除页面
+      delete_confirmation_cancel: 取消
+      in_trash_prompt: 此页面已在回收站中。
+      restore_action: 还原页面
+      hard_delete_action: 删除页面
+      selected: 选中
     discussion:
-      menu: Comment
-      tooltip: show comments on current page
+      menu: 评论
+      tooltip: 在当前页面上显示评论
     history:
-      menu: History
-      tooltip: view all updates
+      menu: 历史
+      tooltip: 浏览全部更新
     more:
-      tooltip: more options
+      tooltip: 更多选项
     share:
-      menu: Share
-      invite: Invite
-      share_title: Share the page
-      share_to_web: Share to web
-      share_to_web_description: Publish and share link with anyone
-      allow_edit: Allow edit
-      learn: Learn about sharing
-      copy_link_button: Copy link
-      copy_link_button_done: Copied
-      invite_placeholder: Add people by username
-      invite_button: Invite
-      copy_hint: Share link copied
-      tooltip: share or publish to the web
+      menu: 分享
+      invite: 邀请
+      share_title: 分享此页面
+      share_to_web: 分享到网页
+      share_to_web_description: 发布并与任何人共享链接
+      allow_edit: 允许编辑
+      learn: 了解共享
+      copy_link_button: 复制链接
+      copy_link_button_done: 复制成功
+      invite_placeholder: 按用户名添加人员
+      invite_button: 邀请
+      copy_hint: 已复制分享链接。
+      tooltip: 共享或发布到网络
     invite:
-      learn: Learn more about sharing
-      type_hint: Type or paste in pod domain above, separated by commas.
-      search: Add people by username
-      no_result: no result
-      button: Invite
-      confirm_button: Confirm
-      edit_message: Can edit
-      edit_message_description: Can edit, but not share with others.
-      view_message: Can view
-      view_message_description: Cannot edit or share with others.
-      no_view_message: Can’t view
-      no_view_message_description: Cannot view or share with others.
-      remove_message: Remove
-      anyone_with_link: Anyone with the link
+      learn: 了解共享
+      type_hint: 在上方输入或粘贴Email 地址，以逗号分隔。
+      search: 按用户名添加人员
+      no_result: 没有结果
+      button: 邀请
+      confirm_button: 确定
+      edit_message: 允许编辑
+      edit_message_description: 可以编辑，但不能再次共享给其他人。
+      view_message: 允许查看
+      view_message_description: 无法编辑或与他人共享。
+      no_view_message: 无法查看
+      no_view_message_description: 无法查看或与他人共享。
+      remove_message: 移除
+      anyone_with_link: 拥有此链接的任何人
     snapshots:
-      name: Snapshot
-      restore: Restore version
-      restoring: Restoring...
-      cancel: Cancel
-      empty: Version history is empty
+      name: 快照
+      restore: 还原此版本
+      restoring: 正在恢复...
+      cancel: 取消
+      empty: 版本历史为空
     pods:
       domain: Domain Name
-      name: Name
+      name: 名称
       bio:
-        label: Bio
-        placeholder: Tell others a little about yourself.
-      upload_avatar: Upload Photo
+        label: 自我介绍
+        placeholder: 向大家介绍您自己
+      upload_avatar: 上传照片
       required:
-        domain: Domain is required
-        name: Name is required
+        domain: Domain 名称是必需的
+        name: 名称必填
       create:
-        success: Create successfully.
+        success: 创建成功。
       update:
-        success: Update successfully.
+        success: 更新成功。
     menu:
-      create_new_pod: Create New pod
-      logout: Log out
+      create_new_pod: 创建新 Pod
+      logout: 退出登录
     title:
-      add_icon: Add icon
-      add_cover: Add cover
-      remove_cover: Remove
-      change_cover: Change cover
-      reposition: Reposition
-      untitled: Untitled
+      add_icon: 添加图标
+      add_cover: 添加封面
+      remove_cover: 移除
+      change_cover: 更换封面
+      reposition: 更改位置
+      untitled: 未命名
     document_icon:
       import_sources:
         link:
-          placeholder: Paste the image link...
-          button_text: Submit
-          button_hint: Works with any image from the web
-          type_label: Link
-          invalidImageUrlMessage: Invalid image url
+          placeholder: 粘贴图片链接...
+          button_text: 提交
+          button_hint: 适用于任何来自网页的图像
+          type_label: 链接
+          invalidImageUrlMessage: 无效的图片链接。
         upload:
-          button_hint: Recommended size is 280x280 pixels
-          button_text: Choose an image
-          type_label: Upload an Image
+          button_hint: 推荐尺寸为 280x280 像素
+          button_text: 选择图片
+          type_label: 上传图像
     document_cover:
       import_sources:
         link:
-          placeholder: Paste the image link...
-          button_text: Submit
-          button_hint: Works with any image from the web
-          invalidImageUrlMessage: Invalid image url
-          type_label: Link
+          placeholder: 粘贴图片链接...
+          button_text: 提交
+          button_hint: 适用于任何来自网页的图像
+          invalidImageUrlMessage: 无效的图片链接。
+          type_label: 链接
         upload:
-          button_hint: 'Recommended image size: wider than 1500 pixels'
-          button_text: Choose an image
-          type_label: Upload an Image
+          button_hint: '推荐图像尺寸：大于 1500 像素'
+          button_text: 选择图片
+          type_label: 上传图像
