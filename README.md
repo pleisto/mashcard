@@ -2,6 +2,7 @@
 
 [![commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![crowdin](https://badges.crowdin.net/brickdoc/localized.svg)](https://crowdin.com/project/brickdoc)
+[![codecov](https://codecov.io/gh/brickdoc/brickdoc/branch/main/graph/badge.svg?token=x3u3HXQA0P)](https://codecov.io/gh/brickdoc/brickdoc)
 
 > :warning: **Note:** This software is currently under active development. Some features may be available in the future, and the API and interface may change.
 
@@ -19,7 +20,7 @@ but also a web3-ready [linked-data](https://www.w3.org/standards/semanticweb/dat
 
 ## Demo
 
-> Early access to Brickdoc.com will be available soon.
+> :warning: Early access to Brickdoc.com will be available soon. Please check back later.
 
 You can request a free trial on our SaaS platform [here](https://brickdoc.com/).
 
