@@ -593,3 +593,9 @@ zh-TW:
           button_hint: 'Recommended image size: wider than 1500 pixels'
           button_text: Choose an image
           type_label: Upload an Image
+  formats:
+    days:
+      today: Today
+      yesterday: Yesterday
+    date: '%m-%d-%Y'
+    time: 'HH:mm:ss'
