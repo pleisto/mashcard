@@ -26,9 +26,9 @@ files: [
   # Where translations will be placed
   # e.g. "/resources/%two_letters_code%/%original_file_name%"
   #
-  "translation" : "/config/locales/%original_file_name%.yml",
+  "translation" : "/config/locales/%file_name%%locale%.yml",
   "translation_replace": {
-    "en-US": "%locale%",
+    "en-US": "",
   },
   "append_commit_message": false,
   "commit_message": "chore: update %language% translations from crowdin",
