@@ -1,0 +1,595 @@
+ja-JP:
+  settings:
+    app_title: Brickdoc Settings
+    personal_pod_desc: My Pod
+    group_pod_desc: Team Pod
+    errors:
+      invalid_operation_type: Invalid operation type
+    menu:
+      general: General
+      account: Account
+      team: Team Pod
+      logs: Security Logs
+    general:
+      user_profile: User Profile
+      group_profile: Group Profile
+      update_profile: Update Profile
+      change_domain: Change Domain Name
+      change_domain_btn: Update
+      change_domain_desc: Unless you really need it, we recommended that you do not change your pod domain. This will cause the rela..
+      change_domain_more: Learn More
+      avatar_uploaded_success: Avatar uploaded successfully.
+      avatar_uploaded_error: Avatar uploaded failed.
+      avatar_updated: Avatar updated successfully.
+      profile_updated: Profile updated successfully.
+      display: Display
+      timezone: Timezone
+      locale: Language
+      update_appearance: Save Appearance
+    account:
+      joined_team_pods: Joined Team Pods
+      leave_btn: Leave
+      remove_btn: Remove
+      owner_cant_leave_tips: You are the owner of this pod. You can not leave it.
+      leave_pod_confirm: Are you sure you want to leave %{pod}?
+      pod_leave_success: You have left %{pod} successfully.
+      delete_account: Delete account
+      delete_account_desc: Since you delete your account, there is no going back. Please be certain.
+      delete_account_tip: You have left the %{pods} Pod
+      delete_account_unavailable: |
+        This account is a member/owner of the following team pods: <strong>%{pods}</strong>. To delete this account, please transfer ownership and leave or delete all your team pods.
+      delete_account_btn: Delete Your Account
+      delete_account_modal_title: Are you sure you want to delete your account?
+      delete_account_modal_desc: |
+        This is a non-reversible action that will permanently delete all your data and cannot be undone.<br/>
+        You will no longer be billed, and your domain will be available for anyone to use. <br/>
+      delete_account_confirm: 'To verify, type your pod domain %{domain} below:'
+      delete_account_confirm_btn: Confirm Delete
+      delete_account_confirm_cancel: cancel
+    team:
+      members: Members
+      leave_user_confirm: Are you sure remove %{user} from this pod?
+      user_leave_success: User %{user} has left pod successfully.
+      delete_pod: Delete This Pod
+      delete_pod_desc: Please be sure that once deleted.
+      delete_pod_btn: Delete This Team Pod
+      delete_pod_modal_title: Are you sure you want to delete this team pod?
+      delete_pod_modal_desc: |
+        This is a non-reversible action that will permanently delete all your data and cannot be undone. Your team pod's username will be available for anyone to use.<br/>
+        Type out the name of the team pod you would like to delete below.
+      delete_pod_confirm: 'To verify, type your team pod domain %{domain} below:'
+      delete_pod_confirm_btn: Delete Pod
+      invite: Invite Member
+      invite_label: Enable Invite link
+      invite_desc: Manage the team pod's invite link.
+      invite_enable_updated: Invite link Settings updated successfully.
+      invite_secret_reset: Reset
+      invite_secret_reset_confirm: Are you sure you want to reset the secret? This will invalidate the current invite link.
+  editor:
+    placeholder: Type '/' for commands
+    copy_hint: Copied to clipboard.
+    explorer_menu:
+      title: Explore
+      search:
+        placeholder: Search
+    discussion:
+      title: Comments
+      tabs:
+        all: All
+        resolved: Resolved
+      delete_message: Are you sure you want to delete this comment?
+      editor:
+        placeholder: Comment...
+        send: Send
+        cancel: Cancel
+    history:
+      title: History
+    toolbar:
+      separator: Menu separator
+    blocks:
+      text:
+        label: Text
+      h1:
+        label: Heading 1
+      h2:
+        label: Heading 2
+      h3:
+        label: Heading 3
+      h4:
+        label: Heading 4
+      h5:
+        label: Heading 5
+      bulletedList:
+        label: Bulleted List
+      orderedList:
+        label: Numbered List
+      taskList:
+        label: Todo
+      link:
+        label: Link
+      embed:
+        label: Embed
+      upload:
+        label: Local File
+      gallery:
+        label: Gallery
+      spreadsheet:
+        label: Spreadsheet
+      formula:
+        label: Formula
+      divider:
+        label: Divider
+      toc:
+        label: Toc
+        placeholder: Add headings/anchors to create a table of contents
+        untitled: Untitled
+      subPageMenu:
+        label: Subpage menu
+      code:
+        label: Code
+      blockquote:
+        label: Quote
+    block_actions:
+      basic:
+        cut: Cut
+        copy: Copy
+        move: Move
+        delete: Delete
+        transform: Turn into
+      embed_block:
+        download: Download
+        full_screen: Full Screen
+        attachment_mode: Turn to text view
+        preview_mode: Turn to preview
+      add_block: Add block below
+      blocks:
+        text: Text
+        h1: Heading 1
+        h2: Heading 2
+        h3: Heading 3
+        h4: Heading 4
+        h5: Heading 5
+        numbered_list: Numbered list
+        bulleted_list: Bulleted list
+        formula: Formula
+        code: Code
+        spreadsheet: Spreadsheet
+        upload: Upload
+        gallery: Gallery
+    slash_menu:
+      title: Slash menu
+      recent: Recently used
+      type: Type
+      suggestion: Suggestions
+      no_suggestion: No result
+      footer: Explore
+      tooltip: Explore Slash Menu
+      explorer_menu:
+        group:
+          data:
+            label: Data
+          embed:
+            label: Embed
+          text:
+            label: Text
+          others:
+            label: Others
+      items:
+        explore:
+          label: Explore
+    bubble_menu:
+      node:
+        section_title: Turns into
+        items:
+          paragraph: Text
+          heading1: Heading 1
+          heading2: Heading 2
+          heading3: Heading 3
+          heading4: Heading 4
+          heading5: Heading 5
+          bulletList: Bulleted list
+          orderedList: Numbered list
+          formula: Formula
+      bold:
+        title: Bold
+      italic:
+        title: Italic
+      underline:
+        title: Underline
+      strike:
+        title: Strike
+      fontColor:
+        title: Font color
+        text_color:
+          label: Text Color
+        bg_color:
+          label: Background
+        reset_button:
+          label: Reset
+      comment:
+        title: Comment
+      formula:
+        title: Formula
+      anchor:
+        add: Mark as anchor
+        remove: Remove anchor mark
+      link:
+        title: Link
+        placeholder: Paste link
+        confirm: Link to web page
+        copy: Copy link
+        delete: Remove link
+    image_block:
+      hint: Add an image
+      deletion_confirm:
+        title: Are you sure you want to delete this property?
+        ok: Delete
+        cancel: Cancel
+      menu:
+        copy: Copy link
+        delete: Remove
+      import_sources:
+        link:
+          placeholder: Paste the image link...
+          button_text: Embed image
+          button_hint: Works with any image from the web
+        upload:
+          button_text: Choose an image
+    formula:
+      menu:
+        delete_confirm:
+          title: Are you sure you want to delete this property?
+          ok: Delete
+          cancel: Cancel
+        header: Formula
+        name: Name
+        color: Color
+        result: '='
+        save: Save formula
+        delete: Delete
+        cancel: Cancel
+    action_panel:
+      more:
+        duplicate: Duplicate
+        copy: Copy link
+        delete: Delete
+        delete_confirm: Confirm
+        delete_cancel: Cancel
+    code_block:
+      copy_code: Copy content
+      default_language: plain text
+      search_placeholder: Search
+      deletion_confirm:
+        title: Are you sure you want to delete this property?
+        ok: Delete
+        cancel: Cancel
+      languages:
+        'plain text': Plain text
+        markdown: Markdown
+        css: CSS
+        javascript: JavaScript
+        typescript: TypeScript
+        bash: Bash
+        json: JSON
+        yaml: YAML
+        sql: SQL
+        cpp: C/C++
+        csharp: 'C#'
+        java: Java
+        python: Python
+        ruby: Ruby
+        objectivec: Objective-C
+        docker: Dockerfile
+        elixir: Elixir
+        rust: Rust
+        lisp: Lisp
+        haskell: Haskell
+        php: PHP
+        go: Go
+        kotlin: Kotlin
+        graphql: GraphQL
+        powershell: PowerShell
+        groovy: Groovy
+        solidity: Solidity
+        xml-doc: XML
+        lua: Lua
+        scala: Scala
+        matlab: Matlab
+        applescript: AppleScript
+        arduino: Arduino
+        basic: BASIC
+        diff: Diff
+        r: R
+        swift: Swift
+        toml: TOML
+        tcl: TCL
+        wasm: WASM
+        ebnf: EBNF
+        latex: LaTeX
+        tsx: TSX
+        jsx: JSX
+        protobuf: Protocol Buffer
+        ignore: .ignore files
+        regex: Regex
+        ini: INI
+        properties: Properties
+    embed_block:
+      zoom_in:
+        tooltip: Zoom In
+      zoom_out:
+        tooltip: Zoom Out
+      align:
+        left:
+          tooltip: Align Left
+        center:
+          tooltip: Align Center
+        right:
+          tooltip: Align Right
+        full_width:
+          tooltip: Align Full Width
+      full_screen:
+        tooltip: Full Screen
+      edit:
+        tooltip: Edit
+      view_types:
+        card:
+          name: card view
+        preview:
+          name: preview view
+          unavailable:
+            tip: Unable to preview content.
+            link_button: Open Link
+        text:
+          name: text view
+      embed_types:
+        link:
+          label: Add a link to web or file.
+          description: You can add a link to web or file.
+          panel:
+            link_validate: Please input valid link first.
+            submit_error: Please make sure link is valid and then try again.
+            head: Embed
+            text:
+              placeholder: Text to display
+            link:
+              placeholder: Paste link
+        upload:
+          label: You can upload anything locally.
+          description: Upload image、PDF、Word、PPT、Excel and more.
+      types:
+        gallery:
+          search:
+            placeholder: Search...
+          label: Select a picture from Unsplash.
+          description: Unsplash image.
+    user_block:
+      anonymous: Anonymous
+    page_link_block:
+      untitled: Untitled
+    mention:
+      people:
+        head: People
+        no_content: People no result
+      page_link:
+        head: Link to page
+        no_content: Page no result
+    spreadsheet:
+      delete: Delete
+      copy: Copy
+      row:
+        actions: Actions
+        add_above: Add row above
+        add_below: Add row below
+        delete: Delete
+      column:
+        actions: Actions
+        add_left: Add column to the left
+        add_right: Add column to the right
+        delete: Delete
+    table:
+      untitled: Untitled
+      new_row:
+        text: New
+      remove_row:
+        text: Delete
+        title: Are you sure you want to delete this row?
+        ok: Delete
+        cancel: Cancel
+      remove_column:
+        text: Delete
+        title: Are you sure you want to delete this property?
+        ok: Delete
+        cancel: Cancel
+      column_default_name: Column
+      column_type: Property Type
+      column_types:
+        basic: Basic
+        text: Text
+        select: Select
+        date: Date
+        date-range: Date Range
+      filter:
+        text: Filter
+        title: Filter for My All Data
+        remove: Remove
+        duplicate: Duplicate
+        where: Where
+        add_a_filter: Add a filter
+        add_a_filter_group: Add a filter group
+        add_a_filter_group_desc: A group to nest more filters
+        hint: |
+          Use a filter to:
+          Show tasks assigned to me.
+          Show only notes with a certain tag.
+          Hide completed tasks.
+        collection_types:
+          intersection: And
+          union: Or
+        matches:
+          is: Is
+          is_not: Is not
+          is_on: Is
+          is_not_on: Is not
+          is_before: Is before
+          is_after: Is After
+          is_on_or_before: Is on or before
+          is_on_or_after: Is on or after
+          contains: Contains
+          does_not_contain: Does not contain
+          starts_with: Starts with
+          ends_with: Ends with
+          is_empty: Is empty
+          is_not_empty: Is not empty
+      sort:
+        text: Sort
+        title: Sort for My All Data
+        hint: |
+          Use a sort to:
+          Order tasks by priority.
+          Show notes by creation date.
+          Show recently contacted customers.
+  docs:
+    app_title: Brickdoc
+    saving: Saving
+    user_setting:
+      text: User Setting
+      general: General
+      member: Member
+      account: Account
+    pod_setting:
+      text: Pod Setting
+    anonymous:
+      edit_button: Edit
+    search:
+      text: Quick Find
+      placeholder: Search Pages
+    blocks:
+      create_pages: Add Pages
+      no_pages: No pages inside
+      create_sub_pages: Add Subpage
+      delete: Delete
+      rename: Rename
+      undo: Undo
+      more: Delete, Duplicate, and more...
+    copy_link:
+      button: Copy link
+      copied: Copied
+      success_message: Link copied
+    duplicate:
+      new_title: Copy of %{title}
+      button: Duplicate
+    pin:
+      name: Pin
+      add: Pin page
+      add_tooltip: Pin this page
+      remove: Unpin page
+      remove_tooltip: Unpin this page
+    trash:
+      name: Trash
+      pages: Pages
+      owner: Owner
+      deleted_at: Deleted At
+      all_pages: All pages
+      current_page: In current page
+      search: Filter by page title...
+      not_found: No match found.
+      learn: Learn about deleting and restoring pages
+      delete_confirmation_body: Are you sure you want to delete this page permanently?
+      batch_delete_confirmation_body: Are you sure you want to delete these %{number} pages permanently?
+      delete_confirmation_ok: Delete Page
+      delete_confirmation_cancel: Cancel
+      in_trash_prompt: This page is in trash.
+      restore_action: Restore page
+      hard_delete_action: Delete Page
+      selected: selected
+    discussion:
+      menu: Comment
+      tooltip: show comments on current page
+    history:
+      menu: History
+      tooltip: view all updates
+    more:
+      tooltip: more options
+    share:
+      menu: Share
+      invite: Invite
+      share_title: Share the page
+      share_to_web: Share to web
+      share_to_web_description: Publish and share link with anyone
+      allow_edit: Allow edit
+      learn: Learn about sharing
+      copy_link_button: Copy link
+      copy_link_button_done: Copied
+      invite_placeholder: Add people by username
+      invite_button: Invite
+      copy_hint: Share link copied
+      tooltip: share or publish to the web
+    invite:
+      learn: Learn more about sharing
+      type_hint: Type or paste in pod domain above, separated by commas.
+      search: Add people by username
+      no_result: no result
+      button: Invite
+      confirm_button: Confirm
+      edit_message: Can edit
+      edit_message_description: Can edit, but not share with others.
+      view_message: Can view
+      view_message_description: Cannot edit or share with others.
+      no_view_message: Can’t view
+      no_view_message_description: Cannot view or share with others.
+      remove_message: Remove
+      anyone_with_link: Anyone with the link
+    snapshots:
+      name: Snapshot
+      restore: Restore version
+      restoring: Restoring...
+      cancel: Cancel
+      empty: Version history is empty
+    pods:
+      domain: Domain Name
+      name: Name
+      bio:
+        label: Bio
+        placeholder: Tell others a little about yourself.
+      upload_avatar: Upload Photo
+      required:
+        domain: Domain is required
+        name: Name is required
+      create:
+        success: Create successfully.
+      update:
+        success: Update successfully.
+    menu:
+      create_new_pod: Create New pod
+      logout: Log out
+    title:
+      add_icon: Add icon
+      add_cover: Add cover
+      remove_cover: Remove
+      change_cover: Change cover
+      reposition: Reposition
+      untitled: Untitled
+    document_icon:
+      import_sources:
+        link:
+          placeholder: Paste the image link...
+          button_text: Submit
+          button_hint: Works with any image from the web
+          type_label: Link
+          invalidImageUrlMessage: Invalid image url
+        upload:
+          button_hint: Recommended size is 280x280 pixels
+          button_text: Choose an image
+          type_label: Upload an Image
+    document_cover:
+      import_sources:
+        link:
+          placeholder: Paste the image link...
+          button_text: Submit
+          button_hint: Works with any image from the web
+          invalidImageUrlMessage: Invalid image url
+          type_label: Link
+        upload:
+          button_hint: 'Recommended image size: wider than 1500 pixels'
+          button_text: Choose an image
+          type_label: Upload an Image
