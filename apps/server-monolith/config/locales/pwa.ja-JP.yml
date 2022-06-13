@@ -593,3 +593,9 @@ ja-JP:
           button_hint: 'Recommended image size: wider than 1500 pixels'
           button_text: 画像を選択
           type_label: 画像のアップロード
+  formats:
+    days:
+      today: Today
+      yesterday: Yesterday
+    date: '%m-%d-%Y'
+    time: 'HH:mm:ss'
