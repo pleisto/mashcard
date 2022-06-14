@@ -1,6 +1,6 @@
 import { AnyFunctionClause } from '@brickdoc/formula'
-import { FormulaEditor } from '../../../../editors/formulaEditor'
-import { codeFragmentsToJSONContentTotal } from '../../../../helpers'
+import { ReadonlyFormulaEditor } from '../../../../editors/formulaEditor'
+import { codeFragments2content } from '../../../../helpers'
 
 export interface FunctionPreviewProps {
   functionClause: AnyFunctionClause
@@ -46,7 +46,7 @@ export const FunctionPreview: React.FC<FunctionPreviewProps> = ({ functionClause
           <div className="autocomplete-preview-section-head">Example</div>
           {functionClause.examples.map((example, index) => (
             <div key={index} className="autocomplete-preview-example">
-              <FormulaEditor content={codeFragmentsToJSONContentTotal(example.codeFragments)} editable={false} />
+              <ReadonlyFormulaEditor content={codeFragments2content(example.codeFragments, true)[0]} />
               <br />
               <span className="autocomplete-preview-example-result">={JSON.stringify(example?.output?.result)}</span>
             </div>

@@ -59,16 +59,24 @@ export const FunctionCallTestCase: TestCaseInterface = {
         definition: '=custom::PLUS(1, 1)',
         result: 2,
         expected: [
-          { key: 'functionDependencies', matchType: 'toMatchObject', match: [functionClauses[0]] },
+          { key: 'functionDependencies', matchType: 'toMatchObject', match: [{ name: functionClauses[0].name }] },
           { key: 'codeFragments', matchType: 'toMatchSnapshot' }
         ]
       },
-      { definition: '=custom::FORTY_TWO()', result: 42 },
+      {
+        definition: '=custom::FORTY_TWO()',
+        result: 42,
+        expected: [{ key: 'codeFragments', matchType: 'toMatchSnapshot' }]
+      },
       {
         definition: '=custom::FORTY_TWO()+ (custom::PLUS(1, 1))',
         result: 44,
         expected: [
-          { key: 'functionDependencies', matchType: 'toMatchObject', match: [functionClauses[1], functionClauses[0]] }
+          {
+            key: 'functionDependencies',
+            matchType: 'toMatchObject',
+            match: [{ name: functionClauses[1].name }, { name: functionClauses[0].name }]
+          }
         ]
       }
     ],

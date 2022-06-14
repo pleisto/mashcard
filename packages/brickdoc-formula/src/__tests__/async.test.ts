@@ -2,7 +2,7 @@ import { interpret, parse } from '../grammar/core'
 import { makeContext } from '../tests/testHelper'
 import { buildTestCases } from '../tests'
 
-const [finalTestCases] = buildTestCases('async')
+const [finalTestCases] = buildTestCases(['async'])
 const testCases = [
   ...finalTestCases.successTestCases.map(args => ({ ...args, async: true })),
   { definition: '=12', result: 12, async: false }

@@ -9,6 +9,8 @@ export const OtherTestCase: TestCaseInterface = {
     ],
     errorTestCases: [
       { definition: '=a', errorType: 'syntax', errorMessage: '"a" not found' },
+      { definition: '=nottrue', errorType: 'syntax', errorMessage: '"nottrue" not found' },
+      { definition: '=1a1', errorType: 'parse', errorMessage: 'Not all input parsed: a1', valid: false },
       { definition: '=-1.%', errorType: 'syntax', errorMessage: 'Missing expression' },
       { definition: '=hel"lo', errorType: 'syntax', errorMessage: '"hel" not found' },
       { definition: '=he中文"', errorType: 'syntax', errorMessage: '"he中文" not found' },

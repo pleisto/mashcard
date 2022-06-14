@@ -2,7 +2,7 @@
 import React from 'react'
 import { Icon, cx } from '@brickdoc/design-system'
 import { Completion, CompletionKind } from '@brickdoc/formula'
-import {FormulaAutocomplete} from './style'
+import { FormulaAutocomplete } from './style'
 import { CompletionType } from '../../../blockViews/FormulaView'
 import { BlockPreview, ColumnPreview, SpreadsheetPreview, FunctionPreview, VariablePreview } from '../Preview'
 import { BrickdocEventBus, FormulaKeyboardEventTrigger } from '@brickdoc/schema'
@@ -47,16 +47,18 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({ rootId, form
       break
   }
 
-  const onKeyDown: React.KeyboardEventHandler<HTMLDivElement> = event => {
-    BrickdocEventBus.dispatch(
+  const onKeyDown: React.KeyboardEventHandler<HTMLDivElement> = async event => {
+    const result = BrickdocEventBus.dispatch(
       FormulaKeyboardEventTrigger({ key: event.key, formulaId, rootId, isEditor: false, completionIndex: -1 })
     )
+    await Promise.all(result)
   }
 
-  const handleOnClick = (index: number): void => {
-    BrickdocEventBus.dispatch(
+  const handleOnClick = async (index: number): Promise<void> => {
+    const result = BrickdocEventBus.dispatch(
       FormulaKeyboardEventTrigger({ key: 'Click', formulaId, rootId, isEditor: false, completionIndex: index })
     )
+    await Promise.all(result)
   }
 
   return (
@@ -69,7 +71,7 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({ rootId, form
               <div
                 role="button"
                 tabIndex={-1}
-                onClick={() => handleOnClick(index)}
+                onClick={async () => await handleOnClick(index)}
                 key={index}
                 onKeyDown={onKeyDown}
                 className={cx('autocomplete-list-item', { active: index === completion.activeCompletionIndex })}

@@ -74,8 +74,8 @@ export const nameOperator: OperatorType = {
   dynamicParseType: lhsType => lhsType,
   lhsType: 'any',
   rhsType: 'any',
-  dynamicInterpretLhs: async (args, operators, interpreter) => {
-    const image = operators[0].image
+  dynamicInterpretLhs: async ({ operators, interpreter }) => {
+    const image = operators[0]!.image
     const result = findToken(interpreter.ctx, image)
     if (!result) return { type: 'Error', result: buildNotFoundMessage(image), errorKind: 'deps' }
 

@@ -13,7 +13,7 @@ export interface FormulaMenuProps {
   meta: UseFormulaInput['meta']
   temporaryVariableT: UseFormulaOutput['temporaryVariableT']
   nameRef: UseFormulaOutput['nameRef']
-  content: UseFormulaOutput['content']
+  formulaEditor: UseFormulaOutput['formulaEditor']
   defaultVisible: boolean
   onVisibleChange: (visible: boolean) => void
   handleDelete: (variable?: VariableData) => void
@@ -30,7 +30,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   meta: { namespaceId: rootId, variableId: formulaId },
   temporaryVariableT,
   handleDelete,
-  content,
+  formulaEditor,
   defaultVisible,
   onVisibleChange,
   isDisableSave,
@@ -46,14 +46,15 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     onVisibleChange?.(false)
   }, [onVisibleChange])
 
-  const triggerCalculate = (): void => {
-    BrickdocEventBus.dispatch(
+  const triggerCalculate = async (): Promise<void> => {
+    const result = BrickdocEventBus.dispatch(
       FormulaCalculateTrigger({
         skipExecute: true,
         formulaId,
         rootId
       })
     )
+    await Promise.all(result)
   }
 
   React.useEffect(() => {
@@ -70,21 +71,21 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     return () => listener.unsubscribe()
   }, [close, formulaId, rootId])
 
-  const onPopoverVisibleChange = (visible: boolean): void => {
+  const onPopoverVisibleChange = async (visible: boolean): Promise<void> => {
     if (!visible) {
       close()
       return
     }
-    triggerCalculate()
+    await triggerCalculate()
     onVisibleChange?.(visible)
     setVisible(visible)
   }
 
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
     const name = e.target.value
     nameRef.current.name = name
     // setInputName(name)
-    triggerCalculate()
+    await triggerCalculate()
   }
 
   const handleSave = async (): Promise<void> => {
@@ -123,7 +124,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       <div className="formula-menu-row">
         {/* <span className="formula-menu-result-label">=</span> */}
         <div className="formula-menu-item">
-          <FormulaEditor content={content} editable={true} formulaId={formulaId} rootId={rootId} />
+          <FormulaEditor formulaEditor={formulaEditor} />
         </div>
       </div>
       <Root.FormulaDivider />

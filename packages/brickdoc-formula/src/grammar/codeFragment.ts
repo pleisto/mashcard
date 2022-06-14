@@ -19,6 +19,7 @@ import { block2codeFragment } from './convert'
 import {
   additionOperator,
   arrayOperator,
+  booleanOperator,
   combineOperator,
   compareOperator,
   concatOperator,
@@ -28,10 +29,13 @@ import {
   multiplicationOperator,
   nameOperator,
   notOperator,
+  nullOperator,
+  numberOperator,
   parenthesisOperator,
   rangeOperator,
   recordFieldOperator,
   recordOperator,
+  stringOperator,
   thisRecordOperator,
   thisRowOperator
 } from './operations'
@@ -518,9 +522,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     if (ctx.lazyVariableExpression) {
       const { codeFragments: VariableCodeFragments, image }: CodeFragmentResult = this.visit(
         ctx.lazyVariableExpression,
-        {
-          type: 'any'
-        }
+        { type: 'any' }
       )
 
       codeFragments.push(...VariableCodeFragments)
@@ -562,9 +564,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     const parentType: FormulaType = 'Predicate'
     const { codeFragments: expressionCodeFragments, image }: CodeFragmentResult = this.visit(
       ctx.simpleAtomicExpression,
-      {
-        type: childrenType
-      }
+      { type: childrenType }
     )
 
     codeFragments.push(token2fragment(token, 'any'), ...expressionCodeFragments)
@@ -638,23 +638,24 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
       StringLiteral: IToken[]
       NullLiteral: IToken[]
     },
-    { type }: CstVisitorArgument
+    args: CstVisitorArgument
   ): CodeFragmentResult {
     if (ctx.NumberLiteralExpression) {
-      return this.visit(ctx.NumberLiteralExpression, { type })
+      return this.visit(ctx.NumberLiteralExpression, args)
     } else if (ctx.BooleanLiteralExpression) {
-      return this.visit(ctx.BooleanLiteralExpression, { type })
+      return this.visit(ctx.BooleanLiteralExpression, args)
     } else if (ctx.NullLiteral) {
-      const parentType = 'null'
-      const { errorMessages } = intersectType(type, parentType, 'constantExpression', this.ctx)
-
-      return {
-        codeFragments: [{ ...token2fragment(ctx.NullLiteral[0], 'null'), errors: errorMessages }],
-        type: 'null',
-        image: ctx.NullLiteral[0].image
-      }
+      return parseByOperator({
+        cstVisitor: this,
+        operators: [],
+        bodyToken: ctx.NullLiteral,
+        args,
+        operator: nullOperator,
+        rhs: [],
+        lhs: undefined
+      })
     } else if (ctx.StringLiteral) {
-      return this.StringLiteralExpression(ctx, { type })
+      return this.StringLiteralExpression(ctx, args)
     }
 
     // devLog('debugConstant', { ctx, type })
@@ -671,74 +672,43 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     }
   }
 
-  StringLiteralExpression(ctx: any, { type }: CstVisitorArgument): CodeFragmentResult {
-    const parentType = 'string'
-    const { errorMessages } = intersectType(type, parentType, 'StringLiteralExpression', this.ctx)
-    return {
-      codeFragments: [{ ...token2fragment(ctx.StringLiteral[0], parentType), errors: errorMessages }],
-      type: parentType,
-      image: ctx.StringLiteral[0].image
-    }
+  StringLiteralExpression(ctx: any, args: CstVisitorArgument): CodeFragmentResult {
+    return parseByOperator({
+      cstVisitor: this,
+      operators: [],
+      bodyToken: ctx.StringLiteral,
+      args,
+      operator: stringOperator,
+      rhs: [],
+      lhs: undefined
+    })
   }
 
   NumberLiteralExpression(
     ctx: { Minus: IToken[]; NumberLiteral: IToken[]; Sign: IToken[]; DecimalLiteral: IToken[] },
-    { type }: CstVisitorArgument
+    args: CstVisitorArgument
   ): CodeFragmentResult {
-    const parentType = 'number'
-
-    const codeFragments: CodeFragment[] = []
-    const images: string[] = []
-    const errors: ErrorMessage[] = []
-
-    if (ctx.Minus) {
-      const errorMessages: ErrorMessage[] =
-        ctx.NumberLiteral || ctx.DecimalLiteral ? [] : [{ message: 'Missing number', type: 'syntax' }]
-      errors.push(...errorMessages)
-      images.push(ctx.Minus[0].image)
-    }
-
-    const { errorMessages } = intersectType(type, parentType, 'NumberLiteralExpression', this.ctx)
-
-    if (ctx.DecimalLiteral) {
-      images.push(ctx.DecimalLiteral[0].image)
-    } else if (ctx.NumberLiteral) {
-      images.push(ctx.NumberLiteral[0].image)
-    }
-
-    const image = images.join('')
-
-    codeFragments.push({
-      code: 'NumberLiteral',
-      errors,
-      type: 'number',
-      display: image,
-      attrs: undefined
+    return parseByOperator({
+      cstVisitor: this,
+      operators: [],
+      bodyToken: [ctx.Minus?.[0], ctx.DecimalLiteral ? ctx.DecimalLiteral[0] : ctx.NumberLiteral?.[0], ctx.Sign?.[0]],
+      args,
+      operator: numberOperator,
+      rhs: [],
+      lhs: undefined
     })
-
-    if (ctx.Sign) {
-      codeFragments.push({ ...token2fragment(ctx.Sign[0], 'any') })
-      images.push(ctx.Sign[0].image)
-    }
-
-    return {
-      codeFragments: codeFragments.map(codeFragment => ({
-        ...codeFragment,
-        errors: [...errorMessages, ...codeFragment.errors]
-      })),
-      type: parentType,
-      image: images.join('')
-    }
   }
 
-  BooleanLiteralExpression(ctx: { BooleanLiteral: IToken[] }, { type }: CstVisitorArgument): CodeFragmentResult {
-    const parentType = 'boolean'
-    const { errorMessages } = intersectType(type, parentType, 'BooleanLiteralExpression', this.ctx)
-    return {
-      codeFragments: [{ ...token2fragment(ctx.BooleanLiteral[0], parentType), errors: errorMessages }],
-      type: parentType,
-      image: ctx.BooleanLiteral[0].image
-    }
+  BooleanLiteralExpression(ctx: { BooleanLiteral: IToken[] }, args: CstVisitorArgument): CodeFragmentResult {
+    return parseByOperator({
+      cstVisitor: this,
+      operators: [],
+      bodyToken: ctx.BooleanLiteral,
+      args,
+      operator: booleanOperator,
+      rhs: [],
+      lhs: undefined
+    })
   }
 
   blockExpression(ctx: any, { type }: CstVisitorArgument): CodeFragmentResult {
@@ -871,14 +841,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
               code: 'FunctionGroup',
               errors: [],
               type: 'any',
-              display: group,
-              attrs: undefined
-            },
-            {
-              code: 'DoubleColon',
-              errors: [],
-              type: 'any',
-              display: '::',
+              display: `${group}::`,
               attrs: undefined
             },
             {
