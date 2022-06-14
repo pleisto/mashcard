@@ -1,0 +1,56 @@
+name: Destroy PR Preview Env
+concurrency:
+  group: monolith-preview-destoryed-${{ github.ref }}
+on:
+  pull_request:
+    types: [closed]
+    paths-ignore:
+      - '.husky/**'
+      - 'bin/**'
+      - '**/*.md'
+      - 'packages/**/Dockerfile'
+      - '**/.git*'
+      - '**/crowdin.yml'
+      - '**/LICENSE'
+      - '**/NOTICE'
+      - '**/VERSION'
+permissions:
+  id-token: write
+  pull-requests: write
+  contents: read
+  deployments: write
+  packages: write
+  statuses: write
+  actions: write
+env:
+  GCP_PROJECT: brickdoc-testnet
+jobs:
+  clean:
+    name: 'Helm Remove'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: GCP Login
+        uses: google-github-actions/auth@v0
+        with:
+          workload_identity_provider: 'projects/992882677538/locations/global/workloadIdentityPools/cicd/providers/github-action'
+          service_account: 'cicd-bot@${{ env.GCP_PROJECT }}.iam.gserviceaccount.com'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+      - run: |-
+          gcloud --quiet auth configure-docker
+      - name: 'Get the GKE cluster Configuration'
+        uses: 'google-github-actions/get-gke-credentials@v0'
+        with:
+          cluster_name: 'kube-us-dev-clone-1'
+          location: 'us-central1'
+      - name: Uninstall History Release
+        run: |-
+          helm uninstall brickdoc-pr${{ github.event.pull_request.number }} --namespace=cicd
+      - name: 'Remove temp docker image on GitHub packages'
+        uses: bots-house/ghcr-delete-image-action@v1.0.1
+        with:
+          owner: brickdoc
+          name: brickdoc
+          token: ${{ secrets.PAT_FOR_PACAKGES }}
+          tag: pr.${{github.event.pull_request.number}}
