@@ -21,10 +21,6 @@ const bazVariableId = 'cccccccc-cccc-1111-bbbb-dddddddddddd'
 
 const testCases: TestCase[] = [
   {
-    input: '=null',
-    value: null
-  },
-  {
     input: '= -0.123%',
     label: 'caret and sign',
     value: -0.00123
@@ -121,15 +117,6 @@ const testCases: TestCase[] = [
   {
     input: '=-101',
     value: -101
-  },
-  // Boolean Literal
-  {
-    input: '=true',
-    value: true
-  },
-  {
-    input: '=false',
-    value: false
   },
   // %
   {

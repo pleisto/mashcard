@@ -16,10 +16,7 @@ export const blockOperator: OperatorType = {
     if (!op) throw new Error('unsupported expression')
     const namespaceId = op.tokenType.name === 'CurrentBlock' ? interpreter.ctx.meta.namespaceId : op.image
     const block = interpreter.ctx.formulaContext.findBlockById(namespaceId)
-
-    if (block) {
-      return { type: 'Block', result: block }
-    }
+    if (block) return { type: 'Block', result: block }
 
     return { type: 'Error', result: `Block ${namespaceId} not found`, errorKind: 'runtime' }
   },

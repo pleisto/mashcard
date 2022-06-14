@@ -40,10 +40,11 @@ export const stringOperator: OperatorType = {
   testCases: {
     successTestCases: [
       { definition: '=""', result: '' },
-      { definition: '= "hello"', result: 'hello' },
+      { definition: '= "hello"', result: 'hello', expected: [{ key: 'codeFragments', matchType: 'toMatchSnapshot' }] },
       { definition: '= "hel\'lo"', result: "hel'lo" }
     ],
     errorTestCases: [
+      { definition: '="123" + 1', errorType: 'type', errorMessage: 'Expected number,Cell but got string' },
       { definition: '="', errorType: 'parse', errorMessage: 'Parse error: "\\""', valid: false },
       { definition: '=foo"', errorType: 'syntax', errorMessage: '"foo" not found' },
       {

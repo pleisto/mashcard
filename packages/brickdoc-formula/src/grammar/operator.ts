@@ -8,6 +8,9 @@ import { intersectType, runtimeCheckType, shouldReturnEarly } from './util'
 export type OperatorName =
   | 'name'
   | 'string'
+  | 'null'
+  | 'boolean'
+  | 'number'
   | 'access'
   | 'addition'
   | 'arguments'
@@ -336,11 +339,10 @@ const innerParse = ({
 
   const finalType = dynamicParseType ? dynamicParseType(prevType) : expressionType
 
-  const { errorMessages, newType } = intersectType(args.type, finalType, name, cstVisitor.ctx)
   const result = {
     image: finalImages.join(''),
-    codeFragments: finalCodeFragments.map(c => ({ ...c, errors: [...errorMessages, ...c.errors] })),
-    type: newType
+    codeFragments: finalCodeFragments,
+    type: finalType
   }
 
   if (dynamicParseValidator) {
@@ -355,5 +357,11 @@ const innerParse = ({
 
     return finalResult
   }
-  return result
+
+  const { errorMessages, newType } = intersectType(args.type, result.type, name, cstVisitor.ctx)
+  return {
+    ...result,
+    codeFragments: result.codeFragments.map(c => ({ ...c, errors: [...errorMessages, ...c.errors] })),
+    type: newType
+  }
 }

@@ -19,6 +19,7 @@ import { block2codeFragment } from './convert'
 import {
   additionOperator,
   arrayOperator,
+  booleanOperator,
   combineOperator,
   compareOperator,
   concatOperator,
@@ -28,6 +29,7 @@ import {
   multiplicationOperator,
   nameOperator,
   notOperator,
+  nullOperator,
   parenthesisOperator,
   rangeOperator,
   recordFieldOperator,
@@ -639,23 +641,24 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
       StringLiteral: IToken[]
       NullLiteral: IToken[]
     },
-    { type }: CstVisitorArgument
+    args: CstVisitorArgument
   ): CodeFragmentResult {
     if (ctx.NumberLiteralExpression) {
-      return this.visit(ctx.NumberLiteralExpression, { type })
+      return this.visit(ctx.NumberLiteralExpression, args)
     } else if (ctx.BooleanLiteralExpression) {
-      return this.visit(ctx.BooleanLiteralExpression, { type })
+      return this.visit(ctx.BooleanLiteralExpression, args)
     } else if (ctx.NullLiteral) {
-      const parentType = 'null'
-      const { errorMessages } = intersectType(type, parentType, 'constantExpression', this.ctx)
-
-      return {
-        codeFragments: [{ ...token2fragment(ctx.NullLiteral[0], 'null'), errors: errorMessages }],
-        type: 'null',
-        image: ctx.NullLiteral[0].image
-      }
+      return parseByOperator({
+        cstVisitor: this,
+        operators: [],
+        bodyToken: ctx.NullLiteral,
+        args,
+        operator: nullOperator,
+        rhs: [],
+        lhs: undefined
+      })
     } else if (ctx.StringLiteral) {
-      return this.StringLiteralExpression(ctx, { type })
+      return this.StringLiteralExpression(ctx, args)
     }
 
     // devLog('debugConstant', { ctx, type })
@@ -734,14 +737,16 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     }
   }
 
-  BooleanLiteralExpression(ctx: { BooleanLiteral: IToken[] }, { type }: CstVisitorArgument): CodeFragmentResult {
-    const parentType = 'boolean'
-    const { errorMessages } = intersectType(type, parentType, 'BooleanLiteralExpression', this.ctx)
-    return {
-      codeFragments: [{ ...token2fragment(ctx.BooleanLiteral[0], parentType), errors: errorMessages }],
-      type: parentType,
-      image: ctx.BooleanLiteral[0].image
-    }
+  BooleanLiteralExpression(ctx: { BooleanLiteral: IToken[] }, args: CstVisitorArgument): CodeFragmentResult {
+    return parseByOperator({
+      cstVisitor: this,
+      operators: [],
+      bodyToken: ctx.BooleanLiteral,
+      args,
+      operator: booleanOperator,
+      rhs: [],
+      lhs: undefined
+    })
   }
 
   blockExpression(ctx: any, { type }: CstVisitorArgument): CodeFragmentResult {

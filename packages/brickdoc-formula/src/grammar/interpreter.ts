@@ -4,7 +4,6 @@ import { CstElement, CstNode, IToken } from 'chevrotain'
 import {
   AnyTypeResult,
   NumberResult,
-  BooleanResult,
   PredicateResult,
   ErrorResult,
   Argument,
@@ -22,6 +21,7 @@ import {
   argumentsOperator,
   arrayOperator,
   blockOperator,
+  booleanOperator,
   chainOperator,
   combineOperator,
   compareOperator,
@@ -32,6 +32,7 @@ import {
   multiplicationOperator,
   nameOperator,
   notOperator,
+  nullOperator,
   parenthesisOperator,
   predicateOperator,
   rangeOperator,
@@ -332,15 +333,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
     })
   }
 
-  async StringLiteralExpression(
-    ctx: {
-      NumberLiteralExpression?: CstNode | CstNode[]
-      BooleanLiteralExpression?: CstNode | CstNode[]
-      NullLiteral?: CstNode | CstNode[]
-      StringLiteral: any
-    },
-    args: InterpretArgument
-  ): Promise<AnyTypeResult> {
+  async StringLiteralExpression(ctx: { StringLiteral: any }, args: InterpretArgument): Promise<AnyTypeResult> {
     return await interpretByOperator({
       interpreter: this,
       operators: ctx.StringLiteral,
@@ -363,8 +356,8 @@ export class FormulaInterpreter extends InterpretCstVisitor {
     ctx: {
       NumberLiteralExpression: CstNode | CstNode[]
       BooleanLiteralExpression: CstNode | CstNode[]
-      NullLiteral: CstNode | CstNode[]
-      StringLiteral: Array<{ image: any }>
+      NullLiteral: IToken[]
+      StringLiteral: IToken[]
     },
     args: InterpretArgument
   ): Promise<AnyTypeResult> {
@@ -373,11 +366,14 @@ export class FormulaInterpreter extends InterpretCstVisitor {
     } else if (ctx.BooleanLiteralExpression) {
       return await this.visit(ctx.BooleanLiteralExpression, args)
     } else if (ctx.NullLiteral) {
-      const parentType: FormulaType = 'null'
-      const typeError = runtimeCheckType(args, parentType, 'constantExpression', this.ctx)
-      if (shouldReturnEarly(typeError)) return typeError!
-
-      return { type: 'null', result: null }
+      return await interpretByOperator({
+        interpreter: this,
+        operators: ctx.NullLiteral,
+        args,
+        operator: nullOperator,
+        rhs: [],
+        lhs: []
+      })
     } else if (ctx.StringLiteral) {
       return this.StringLiteralExpression(ctx, args)
     } else {
@@ -467,14 +463,15 @@ export class FormulaInterpreter extends InterpretCstVisitor {
     return { result: ctx.Minus ? numberAfterSign * -1 : numberAfterSign, type: 'number' }
   }
 
-  BooleanLiteralExpression(
-    ctx: { BooleanLiteral: Array<{ image: string }> },
-    args: InterpretArgument
-  ): BooleanResult | ErrorResult {
-    const parentType: FormulaType = 'boolean'
-    const typeError = runtimeCheckType(args, parentType, 'BooleanLiteralExpression', this.ctx)
-    if (shouldReturnEarly(typeError)) return typeError!
-    return { result: ['true'].includes(ctx.BooleanLiteral[0].image), type: 'boolean' }
+  async BooleanLiteralExpression(ctx: { BooleanLiteral: IToken[] }, args: InterpretArgument): Promise<AnyTypeResult> {
+    return await interpretByOperator({
+      interpreter: this,
+      operators: ctx.BooleanLiteral,
+      args,
+      operator: booleanOperator,
+      rhs: [],
+      lhs: []
+    })
   }
 
   // eslint-disable-next-line complexity

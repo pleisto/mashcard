@@ -355,6 +355,50 @@ Array [
 ]
 `;
 
+exports[`successExecute boolean "=false" -> false 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "BooleanLiteral",
+      "display": "false",
+      "errors": Array [],
+      "type": "boolean",
+    },
+  ],
+]
+`;
+
+exports[`successExecute boolean "=true" -> true 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "BooleanLiteral",
+      "display": "true",
+      "errors": Array [],
+      "type": "boolean",
+    },
+  ],
+]
+`;
+
 exports[`successExecute functionCall "=Abs(-1) + abs(1) + ABS(1) + core::ABS(-1)" -> 4 1`] = `
 Array [
   "codeFragments",
@@ -632,6 +676,57 @@ Array [
       "display": ")",
       "errors": Array [],
       "type": "number",
+    },
+  ],
+]
+`;
+
+exports[`successExecute null "=null" -> null 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "NullLiteral",
+      "display": "null",
+      "errors": Array [],
+      "type": "null",
+    },
+  ],
+]
+`;
+
+exports[`successExecute string "= "hello"" -> hello 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "Space",
+      "display": " ",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "StringLiteral",
+      "display": "\\"hello\\"",
+      "errors": Array [],
+      "type": "string",
     },
   ],
 ]
