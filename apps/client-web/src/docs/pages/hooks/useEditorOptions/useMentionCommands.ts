@@ -18,16 +18,25 @@ export function useMentionCommands(docMeta: DocMeta): MentionCommandsOptions {
     [data?.podMembers]
   )
 
-  const pages = useReactiveVar(pagesVar).map(item => ({
-    id: item.key,
-    icon: item.icon,
-    link: `/${docMeta.domain}/${item.key}`,
-    parentId: item.parentId,
-    title: item.title
-  }))
+  const documentPages = useReactiveVar(pagesVar)
 
-  return {
-    users,
-    pages
-  }
+  const pages = useMemo(
+    () =>
+      documentPages.map(item => ({
+        id: item.key,
+        icon: item.icon,
+        link: `/${docMeta.domain}/${item.key}`,
+        parentId: item.parentId,
+        title: item.title
+      })),
+    [docMeta.domain, documentPages]
+  )
+
+  return useMemo(
+    () => ({
+      users,
+      pages
+    }),
+    [pages, users]
+  )
 }
