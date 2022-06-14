@@ -35,13 +35,7 @@ import {
   FindKey,
   AnyFunctionClauseWithKeyAndExample
 } from '../types'
-import {
-  function2completion,
-  spreadsheet2completion,
-  variable2completion,
-  variableKey,
-  block2completion
-} from '../grammar/convert'
+import { variableKey } from '../grammar/convert'
 import { buildFunctionKey, BUILTIN_CLAUSES } from '../functions'
 import { CodeFragmentVisitor } from '../grammar/codeFragment'
 import { FormulaParser } from '../grammar/parser'
@@ -57,6 +51,12 @@ import {
   SpreadsheetReloadViaId,
   FormulaBlockNameChangedOrDeleted
 } from '../events'
+import {
+  function2completion,
+  block2completion,
+  variable2completion,
+  spreadsheet2completion
+} from '../grammar/completer'
 
 export interface FormulaContextArgs {
   domain: string
@@ -270,9 +270,7 @@ export class FormulaContext implements ContextInterface {
       return block2completion(this, b, namespaceId)
     })
 
-    return [...functions, ...variables, ...blocks, ...spreadsheets]
-      .map(c => ({ ...c, weight: c.namespaceId === namespaceId ? c.weight + 100 : c.weight }))
-      .sort((a, b) => b.weight - a.weight)
+    return [...functions, ...variables, ...blocks, ...spreadsheets].sort((a, b) => b.weight - a.weight)
   }
 
   public getDefaultVariableName(namespaceId: NamespaceId, type: FormulaType): DefaultVariableName {

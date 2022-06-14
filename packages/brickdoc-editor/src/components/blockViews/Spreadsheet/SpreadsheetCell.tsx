@@ -1,6 +1,12 @@
 import React from 'react'
 
-import { BrickdocEventBus, BlockInput, SpreadsheetUpdateCellValue, FormulaEditorSavedTrigger } from '@brickdoc/schema'
+import {
+  BrickdocEventBus,
+  BlockInput,
+  SpreadsheetUpdateCellValue,
+  FormulaEditorBlurTrigger,
+  FormulaEditorSavedTrigger
+} from '@brickdoc/schema'
 import { FormulaBlockRender, getFormulaContext, useFormula, UseFormulaInput } from '../FormulaView'
 import {
   columnDisplayIndex,
@@ -68,7 +74,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   )
 
   const onUpdateFormula = React.useCallback(
-    (variable: VariableInterface | undefined): void => {
+    async (variable: VariableInterface | undefined): Promise<void> => {
       if (!variable) return
       // TODO check no persist
       const value = displayValue(fetchResult(variable.t), rootId, true)
@@ -79,7 +85,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       setCurrentBlock(newBlock)
       saveBlock(newBlock)
 
-      BrickdocEventBus.dispatch(
+      const result = BrickdocEventBus.dispatch(
         SpreadsheetReloadViaId({
           id: tableId,
           scope: {
@@ -91,6 +97,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
           key: variable?.currentUUID ?? tableId
         })
       )
+      await Promise.all(result)
       // console.log('dispatch update cell', variable)
       // setEditing(false)
     },
@@ -111,7 +118,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     }
   }
 
-  const { temporaryVariableT, savedVariableT, content, onSaveFormula, commitFormula, completion } = useFormula({
+  const { temporaryVariableT, savedVariableT, formulaEditor, onSaveFormula, commitFormula, completion } = useFormula({
     meta,
     onUpdateFormula,
     formulaContext
@@ -145,24 +152,33 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       },
       {
         eventId: `${rootId},${formulaId}`,
-        subscribeId: `FormulaMenu#${rootId},${formulaId}`
+        subscribeId: `FormulaCell#${rootId},${formulaId}`
       }
     )
     return () => listener.unsubscribe()
   }, [formulaId, rootId, setEditing])
 
-  const handleSaveFormula = async (): Promise<void> => {
-    await onSaveFormula()
-    setEditing(false)
-  }
+  React.useEffect(() => {
+    const listener = BrickdocEventBus.subscribe(
+      FormulaEditorBlurTrigger,
+      async e => {
+        await onSaveFormula()
+        setEditing(false)
+      },
+      {
+        eventId: `${rootId},${formulaId}`,
+        subscribeId: `FormulaCell#${rootId},${formulaId}`
+      }
+    )
+    return () => listener.unsubscribe()
+  }, [formulaId, onSaveFormula, rootId, setEditing])
 
   if (editingCell || editing) {
     return (
       <FormulaBlockRender
-        onSaveFormula={handleSaveFormula}
+        formulaEditor={formulaEditor}
         meta={meta}
         temporaryVariableT={temporaryVariableT}
-        content={content}
         completion={completion}
         width={width}
         minHeight={minHeight}

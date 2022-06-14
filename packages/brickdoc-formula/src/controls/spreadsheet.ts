@@ -172,6 +172,15 @@ export class SpreadsheetClass implements SpreadsheetType {
     this.eventListeners.push(rowsSubcription)
   }
 
+  public namespaceName(pageId: NamespaceId): string {
+    const block = this._formulaContext.findBlockById(this.namespaceId)
+    if (block) {
+      return block.name(pageId)
+    }
+
+    return 'UnknownPage'
+  }
+
   public listColumns(): Column[] {
     return this._columns
   }

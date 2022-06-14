@@ -9,22 +9,19 @@ import * as Root from '../../ui/Formula/Formula.style'
 
 export interface FormulaBlockRenderProps {
   meta: UseFormulaInput['meta']
-  onSaveFormula: UseFormulaOutput['onSaveFormula']
-  content: UseFormulaOutput['content']
+  formulaEditor: UseFormulaOutput['formulaEditor']
   width?: number
   minHeight?: number
-
   temporaryVariableT: VariableData | undefined
   completion: CompletionType
 }
 
 export const FormulaBlockRender: FC<FormulaBlockRenderProps> = ({
   meta: { namespaceId: rootId, variableId: formulaId },
-  onSaveFormula,
   width,
   minHeight,
   temporaryVariableT,
-  content,
+  formulaEditor,
   completion
 }) => {
   const formulaResult = useMemo(
@@ -35,21 +32,6 @@ export const FormulaBlockRender: FC<FormulaBlockRenderProps> = ({
       </Root.BrickdocFormulaMenu>
     ),
     [completion, formulaId, rootId, temporaryVariableT]
-  )
-
-  const editor = useMemo(
-    () => (
-      <FormulaEditor
-        content={content}
-        editable={true}
-        onBlur={onSaveFormula}
-        formulaId={formulaId}
-        rootId={rootId}
-        width={width}
-        minHeight={minHeight}
-      />
-    ),
-    [content, formulaId, onSaveFormula, rootId, width, minHeight]
   )
 
   const visible = !!(temporaryVariableT && temporaryVariableT.variableParseResult.kind !== 'literal')
@@ -64,7 +46,7 @@ export const FormulaBlockRender: FC<FormulaBlockRenderProps> = ({
       placement="bottom"
       trigger={['click']}
     >
-      {editor}
+      <FormulaEditor formulaEditor={formulaEditor} width={width} minHeight={minHeight} />
     </Popover>
   )
 }

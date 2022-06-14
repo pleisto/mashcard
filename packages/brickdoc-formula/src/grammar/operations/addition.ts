@@ -65,7 +65,6 @@ export const additionOperator: OperatorType = {
       { definition: '= 1/0 + 1', result: 'Division by zero', label: 'runtime error' }
     ],
     errorTestCases: [
-      { definition: '=null + 1', errorType: 'type', errorMessage: 'Expected number,Cell but got null' },
       { definition: '=+', errorType: 'syntax', errorMessage: 'Missing expression' },
       { definition: '=-', errorType: 'syntax', errorMessage: 'Missing number' },
       { definition: '=+1', errorType: 'parse', errorMessage: 'Parse error: "+"', valid: false },

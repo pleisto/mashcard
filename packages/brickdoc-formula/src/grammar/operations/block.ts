@@ -11,15 +11,12 @@ export const blockOperator: OperatorType = {
   dynamicParseType: lhsType => lhsType,
   lhsType: 'any',
   rhsType: 'any',
-  dynamicInterpretLhs: async (args, operators, interpreter) => {
+  dynamicInterpretLhs: async ({ operators, interpreter }) => {
     const op = operators?.[0]
     if (!op) throw new Error('unsupported expression')
     const namespaceId = op.tokenType.name === 'CurrentBlock' ? interpreter.ctx.meta.namespaceId : op.image
     const block = interpreter.ctx.formulaContext.findBlockById(namespaceId)
-
-    if (block) {
-      return { type: 'Block', result: block }
-    }
+    if (block) return { type: 'Block', result: block }
 
     return { type: 'Error', result: `Block ${namespaceId} not found`, errorKind: 'runtime' }
   },
@@ -27,7 +24,7 @@ export const blockOperator: OperatorType = {
   testCases: {
     pages: [
       { pageName: 'Block', pageId },
-      { pageName: 'Block With Space', pageId: page2Id }
+      { pageName: '1 Block With Space', pageId: page2Id }
     ],
     successTestCases: [
       {
@@ -37,6 +34,25 @@ export const blockOperator: OperatorType = {
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'nameDependencies', match: [] },
           { key: 'blockDependencies', match: [pageId] }
+        ]
+      },
+      {
+        definition: '=  "Block" ',
+        newAbbrevInput: '=  Block ',
+        result: mockBlock('Block', pageId),
+        expected: [
+          { key: 'codeFragments', matchType: 'toMatchSnapshot' },
+          { key: 'nameDependencies', match: [] },
+          { key: 'blockDependencies', match: [pageId] }
+        ]
+      },
+      {
+        definition: '=  "1 Block With Space" ',
+        result: mockBlock('1 Block With Space', page2Id),
+        expected: [
+          { key: 'codeFragments', matchType: 'toMatchSnapshot' },
+          { key: 'nameDependencies', match: [] },
+          { key: 'blockDependencies', match: [page2Id] }
         ]
       },
       {
@@ -61,7 +77,7 @@ export const blockOperator: OperatorType = {
       },
       {
         definition: '=#CurrentBlock',
-        result: mockBlock('Block With Space', page2Id),
+        result: mockBlock('1 Block With Space', page2Id),
         namespaceId: page2Id,
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
@@ -71,8 +87,8 @@ export const blockOperator: OperatorType = {
       },
       {
         definition: `=  #${page2Id}  `,
-        newAbbrevInput: '=  Block With Space  ',
-        result: mockBlock('Block With Space', page2Id),
+        newAbbrevInput: '=  "1 Block With Space"  ',
+        result: mockBlock('1 Block With Space', page2Id),
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'nameDependencies', match: [] },
@@ -81,6 +97,7 @@ export const blockOperator: OperatorType = {
       }
     ],
     errorTestCases: [
+      { definition: `=#`, errorType: 'syntax', errorMessage: 'Miss expression' },
       {
         definition: '=UnknownBlock',
         errorType: 'syntax',

@@ -500,7 +500,11 @@ exports[`AutocompleteList Active Completion renders variable kind correctly 1`] 
                 contenteditable="false"
                 translate="no"
               >
-                =
+                <p>
+                  <br
+                    class="ProseMirror-trailingBreak"
+                  />
+                </p>
               </div>
             </div>
           </div>

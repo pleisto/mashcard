@@ -88,10 +88,16 @@ export const cleanupEventDependency = (
   return finalEventDependencies
 }
 
+/**
+ * Traversal and collect string from end to start.
+ *
+ * reverseTraversal("bar") => ["bar", "ba", "b"]
+ * reverseTraversal("bar", 2) => ["bar", "ba"]
+ */
 export const reverseTraversalString = (str: string, min = 1): string[] => {
   const result: string[] = []
 
-  for (let i = str.length - 1; i >= min; i--) {
+  for (let i = str.length; i >= min; i--) {
     result.push(str.slice(0, i))
   }
 
@@ -261,7 +267,7 @@ export const attrsToColorType = ({ code, display, attrs }: CodeFragment): Formul
     case 'StringLiteral':
       return 'string'
     case 'BooleanLiteral':
-      return display === 'true' ? 'TRUE' : 'FALSE'
+      return display.toUpperCase() === 'TRUE' ? 'TRUE' : 'FALSE'
     case 'Column':
     case 'Row':
       return attrs.kind as FormulaColorType
