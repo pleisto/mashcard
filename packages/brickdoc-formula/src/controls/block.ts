@@ -110,12 +110,13 @@ export class BlockClass implements BlockType {
   handleCodeFragments(
     visitor: CodeFragmentVisitor,
     name: string,
-    codeFragments: CodeFragment[]
+    oldCodeFragments: CodeFragment[]
   ): {
     errors: ErrorMessage[]
     firstArgumentType: FormulaType | undefined
     codeFragments: CodeFragment[]
   } {
+    const codeFragments: CodeFragment[] = oldCodeFragments.map(c => ({ ...c, namespaceId: this.id }))
     const spreadsheet = this._formulaContext.findSpreadsheet({ namespaceId: this.id, value: name, type: 'name' })
     if (spreadsheet) {
       let finalCodeFragments = codeFragments

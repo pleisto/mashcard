@@ -7,6 +7,10 @@ import { intersectType, runtimeCheckType, shouldReturnEarly } from './util'
 
 export type OperatorName =
   | 'name'
+  | 'string'
+  | 'null'
+  | 'boolean'
+  | 'number'
   | 'access'
   | 'addition'
   | 'arguments'
@@ -37,11 +41,11 @@ export interface OperatorType {
   readonly testCases?: TestCaseType
   readonly expressionType: FormulaType
   readonly lhsType: FormulaCheckType
-  readonly dynamicInterpretLhs?: (
-    lhsArgs: InterpretArgument,
-    operators: IToken[],
+  readonly dynamicInterpretLhs?: (args: {
+    args: InterpretArgument
+    operators: Array<IToken | undefined>
     interpreter: FormulaInterpreter
-  ) => Promise<AnyTypeResult>
+  }) => Promise<AnyTypeResult>
   readonly dynamicParseValidator?: (cstVisitor: CodeFragmentVisitor, result: CodeFragmentResult) => CodeFragmentResult
   readonly dynamicParseType?: (lhsType: FormulaCheckType) => FormulaCheckType
   readonly dynamicInterpretRhsType?: ({
@@ -116,14 +120,14 @@ export const interpretByOperator = async ({
 }: {
   interpreter: FormulaInterpreter
   operator: OperatorType
-  operators: IToken[]
+  operators: Array<IToken | undefined>
   args: InterpretArgument
   lhs: CstNode[] | undefined
   rhs: CstNode[] | undefined
 }): Promise<AnyTypeResult> => {
   if (!rhs) {
     const result = dynamicInterpretLhs
-      ? await dynamicInterpretLhs(args, operators, interpreter)
+      ? await dynamicInterpretLhs({ args, operators, interpreter })
       : await interpreter.visit(lhs!, args)
     const typeErrorBefore = runtimeCheckType(args, result.type, `${name} before`, interpreter.ctx)
     if (shouldReturnEarly(typeErrorBefore)) return typeErrorBefore!
@@ -136,7 +140,7 @@ export const interpretByOperator = async ({
   const lhsArgs: InterpretArgument = { ...args, type: lhsType, finalTypes: [] }
   // eslint-disable-next-line no-nested-ternary
   let result: AnyTypeResult = dynamicInterpretLhs
-    ? await dynamicInterpretLhs(lhsArgs, operators, interpreter)
+    ? await dynamicInterpretLhs({ args: lhsArgs, operators, interpreter })
     : lhs
     ? await interpreter.visit(lhs, lhsArgs)
     : { type: 'null', result: null }
@@ -252,10 +256,7 @@ const innerParse = ({
     image: lhsImage,
     type: lhsDataType
   }: CodeFragmentResult = lhs && lhs.length > 0
-    ? cstVisitor.visit(lhs, {
-        ...args,
-        type: lhsType
-      })
+    ? cstVisitor.visit(lhs, { ...args, type: lhsType })
     : { codeFragments: [], image: '', type: expressionType }
   let prevType = lhsDataType
 
@@ -321,10 +322,12 @@ const innerParse = ({
     }
   })
 
-  if (bodyToken?.[0]) {
-    bodyTokenCodeFragments.push(token2fragment(bodyToken[0], 'any'))
-    bodyTokenImages.push(bodyToken[0].image)
-  }
+  bodyToken?.forEach(token => {
+    if (token) {
+      bodyTokenCodeFragments.push(token2fragment(token, 'any'))
+      bodyTokenImages.push(token.image)
+    }
+  })
 
   const finalCodeFragments: CodeFragment[] = reverseLhsAndRhs
     ? [...rhsCodeFragments, ...bodyTokenCodeFragments, ...lhsCodeFragments]
@@ -335,15 +338,29 @@ const innerParse = ({
 
   const finalType = dynamicParseType ? dynamicParseType(prevType) : expressionType
 
-  const { errorMessages, newType } = intersectType(args.type, finalType, name, cstVisitor.ctx)
   const result = {
     image: finalImages.join(''),
-    codeFragments: finalCodeFragments.map(c => ({ ...c, errors: [...errorMessages, ...c.errors] })),
-    type: newType
+    codeFragments: finalCodeFragments,
+    type: finalType
   }
 
   if (dynamicParseValidator) {
-    return dynamicParseValidator(cstVisitor, result)
+    const { image, codeFragments, type } = dynamicParseValidator(cstVisitor, result)
+
+    const { errorMessages, newType } = intersectType(args.type, type, name, cstVisitor.ctx)
+    const finalResult = {
+      image,
+      codeFragments: codeFragments.map(c => ({ ...c, errors: [...errorMessages, ...c.errors] })),
+      type: newType
+    }
+
+    return finalResult
   }
-  return result
+
+  const { errorMessages, newType } = intersectType(args.type, result.type, name, cstVisitor.ctx)
+  return {
+    ...result,
+    codeFragments: result.codeFragments.map(c => ({ ...c, errors: [...errorMessages, ...c.errors] })),
+    type: newType
+  }
 }

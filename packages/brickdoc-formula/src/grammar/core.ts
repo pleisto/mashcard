@@ -21,7 +21,7 @@ import { VariableClass, castVariable } from '../context/variable'
 import { checkValidName, FormulaLexer } from './lexer'
 import { FORMULA_PARSER_VERSION } from '../version'
 import { FormulaParser } from './parser'
-import { complete } from './completer'
+import { getCompletion } from './completer'
 import { FormulaInterpreter } from './interpreter'
 import { CodeFragmentVisitor } from './codeFragment'
 import { shouldReturnEarly } from './util'
@@ -250,11 +250,10 @@ export const parse = (ctx: FunctionContext): ParseResult => {
 
   // const newPosition = changePosition(finalCodeFragments, position, input, finalPositionFragment)
 
-  completions = complete({
+  completions = getCompletion({
     position: newPosition,
-    cacheCompletions: baseCompletion,
+    completions,
     codeFragments: finalCodeFragments,
-    tokens,
     ctx
   })
 

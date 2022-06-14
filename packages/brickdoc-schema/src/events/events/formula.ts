@@ -1,12 +1,23 @@
 import { event } from '../event'
+import { JSONContent } from '@tiptap/core'
 
-export const FormulaKeyboardEventTrigger = event<{
-  key: string
-  formulaId: string
+interface FormulaEditorEventType {
+  content: JSONContent | undefined
+  position: number
   rootId: string
-  completionIndex: number
-  isEditor: boolean
-}>()('FormulaKeyboardEventTrigger', ({ formulaId, rootId }) => {
+  formulaId: string
+}
+
+export const FormulaKeyboardEventTrigger = event<
+  {
+    key: string
+    formulaId: string
+    rootId: string
+    completionIndex: number
+    isEditor: boolean
+  },
+  Promise<void>
+>()('FormulaKeyboardEventTrigger', ({ formulaId, rootId }) => {
   return { id: `${rootId},${formulaId}` }
 })
 
@@ -27,21 +38,21 @@ export const FormulaEditorSelectEventTrigger = event<{
   return { id: `${rootId},${formulaId}` }
 })
 
-export const FormulaEditorReplaceRootTrigger = event<{
-  content: any
-  position: number
-  input: string
-  rootId: string
-  formulaId: string
-}>()('FormulaEditorReplaceRootTrigger', ({ formulaId, rootId }) => {
-  return { id: `${rootId},${formulaId}` }
-})
+export const FormulaEditorReplaceRootTrigger = event<FormulaEditorEventType, Promise<void>>()(
+  'FormulaEditorReplaceRootTrigger',
+  ({ formulaId, rootId }) => {
+    return { id: `${rootId},${formulaId}` }
+  }
+)
 
-export const FormulaCalculateTrigger = event<{
-  rootId: string
-  formulaId: string
-  skipExecute: boolean
-}>()('FormulaCalculateTrigger', ({ formulaId, rootId }) => {
+export const FormulaCalculateTrigger = event<
+  {
+    rootId: string
+    formulaId: string
+    skipExecute: boolean
+  },
+  Promise<void>
+>()('FormulaCalculateTrigger', ({ formulaId, rootId }) => {
   return { id: `${rootId},${formulaId}` }
 })
 
@@ -52,14 +63,16 @@ export const FormulaEditorSavedTrigger = event<{ formulaId: string; rootId: stri
   }
 )
 
-export const FormulaEditorUpdateTrigger = event<
-  {
-    rootId: string
-    formulaId: string
-    content: any
-    position: number
-  },
-  Promise<void>
->()('FormulaEditorUpdateTrigger', ({ formulaId, rootId }) => {
-  return { id: `${rootId},${formulaId}` }
-})
+export const FormulaEditorUpdateTrigger = event<FormulaEditorEventType, Promise<void>>()(
+  'FormulaEditorUpdateTrigger',
+  ({ formulaId, rootId }) => {
+    return { id: `${rootId},${formulaId}` }
+  }
+)
+
+export const FormulaEditorBlurTrigger = event<FormulaEditorEventType, Promise<void>>()(
+  'FormulaEditorBlurTrigger',
+  ({ formulaId, rootId }) => {
+    return { id: `${rootId},${formulaId}` }
+  }
+)

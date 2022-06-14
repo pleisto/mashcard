@@ -1,16 +1,9 @@
-import { makeContext } from '@brickdoc/formula'
-import { renderHook, act } from '@testing-library/react-hooks'
-import { buildJSONContentByArray, codeFragmentsToJSONContentTotal } from '../../../../helpers'
-import { useFormula } from '../useFormula'
+import { makeContext, parse } from '@brickdoc/formula'
+import { codeFragments2content } from '../../../../helpers'
 
 import { render } from '@testing-library/react'
 import { TestEditorContent } from '../../../../test/testEditor'
 import { FormulaType } from '../../../../extensions/marks/formulaType'
-import { BrickdocEventBus, FormulaEditorUpdateTrigger } from '@brickdoc/schema'
-
-const rootId = 'eeeeeeee-eeee-4444-8888-444444444444'
-const formulaId = '22222222-2222-ffff-aaaa-999999999999'
-const onUpdateFormula = (): void => {}
 
 const simpleCommonTestCases = [
   '123',
@@ -48,7 +41,6 @@ describe('formulaType', () => {
       pages: [
         {
           pageName: 'formulaType',
-          pageId: rootId,
           variables: [{ definition: '=123123', variableName: 'foo_bar' }]
         }
       ]
@@ -56,43 +48,24 @@ describe('formulaType', () => {
     jest.clearAllTimers()
   })
   it.each([...simpleNormalTestCases, ...simpleSpreadsheetTestCases])('"$type" - "$input"', async ({ type, input }) => {
-    const { result } = renderHook(() =>
-      useFormula({
-        onUpdateFormula,
-        formulaContext: ctx.formulaContext,
-        meta: ctx.buildMeta({
-          definition: '',
-          variableId: formulaId,
-          namespaceId: rootId,
-          ...(type === 'normal'
-            ? {}
-            : { richType: { type: 'spreadsheet', meta: { spreadsheetId: '', columnId: '', rowId: '' } } })
-        })
+    const newCtx = {
+      ...ctx,
+      meta: ctx.buildMeta({
+        definition: input,
+        ...(type === 'normal'
+          ? {}
+          : {
+              richType: { type: 'spreadsheet', meta: { spreadsheetId: '', columnId: '', rowId: '' } }
+            })
       })
-    )
+    }
+    const {
+      variableParseResult: { codeFragments }
+    } = parse(newCtx)
 
-    const editorPosition = 0
-    const jsonContent = buildJSONContentByArray([
-      {
-        type: 'text',
-        text: input
-      }
-    ])
-
-    await act(async () => {
-      const result = BrickdocEventBus.dispatch(
-        FormulaEditorUpdateTrigger({ formulaId, rootId, content: jsonContent, position: editorPosition })
-      )
-
-      await Promise.all(result)
-    })
-
-    const content = codeFragmentsToJSONContentTotal(
-      result.current.temporaryVariableT!.variableParseResult.codeFragments
-    )
+    const content = codeFragments2content(codeFragments, type === 'normal')[0]
 
     const { container } = render(<TestEditorContent content={content} extensions={[FormulaType]} />)
-
     expect(container).toMatchSnapshot()
   })
 })
