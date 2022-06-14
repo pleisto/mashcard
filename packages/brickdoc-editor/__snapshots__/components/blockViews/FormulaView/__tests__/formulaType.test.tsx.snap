@@ -402,8 +402,13 @@ exports[`formulaType "spreadsheet" - "= " " & foo_bar " 1`] = `
           data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"00000000-0000-0000-0000-000000000000\\",\\"id\\":\\"00000000-0000-0001-0000-000000000000\\",\\"name\\":\\"foo_bar\\",\\"findKey\\":{\\"namespaceId\\":\\"00000000-0000-0000-0000-000000000000\\",\\"type\\":\\"id\\",\\"value\\":\\"00000000-0000-0001-0000-000000000000\\"}}"
           data-code="Variable"
           data-display="foo_bar"
+          data-errors="Expected string but got number"
           data-type="number"
-          style="color: #d81b60;"
+          style="color: #d81b60;; 
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
         >
           foo_bar
         </mark>
@@ -864,7 +869,7 @@ exports[`formulaType "spreadsheet" - "=custom::ADD(1)" 1`] = `
         <mark
           class="brickdoc-formula-mark"
           data-code="FunctionGroup"
-          data-display="custom"
+          data-display="custom::"
           data-errors="Function custom::ADD not found"
           data-type="any"
           style="
@@ -873,21 +878,7 @@ exports[`formulaType "spreadsheet" - "=custom::ADD(1)" 1`] = `
   text-decoration-color: #cf1f28;
 "
         >
-          custom
-        </mark>
-        <mark
-          class="brickdoc-formula-mark"
-          data-code="DoubleColon"
-          data-display="::"
-          data-errors="Function custom::ADD not found"
-          data-type="any"
-          style="
-  text-decoration: underline;
-  text-decoration-style: wavy;
-  text-decoration-color: #cf1f28;
-"
-        >
-          ::
+          custom::
         </mark>
         <mark
           class="brickdoc-formula-mark"
