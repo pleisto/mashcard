@@ -417,6 +417,8 @@ interface CompletionReplacement {
 }
 
 export type CompletionFlag =
+  | 'exact'
+  | 'dynamicColumn'
   | 'compareTypeMatched'
   | 'compareTypeNotMatched'
   | 'chainTypeMatched'

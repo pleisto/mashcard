@@ -92,7 +92,11 @@ export const VariableCompleteTestCase: TestCaseInterface = {
         definitionWithCursor: '=num0$',
         firstNonSpaceCodeFragment: { code: 'Variable', display: 'num0' },
         namespaceId,
-        firstCompletion: { name: 'num0', kind: 'variable' },
+        firstCompletion: {
+          name: 'num0',
+          kind: 'variable',
+          flags: ['exact', 'contextNamespace', 'defaultNamespace', 'variable']
+        },
         completes: [{ definitionWithCursor: '=num0$' }]
       },
       {

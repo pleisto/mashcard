@@ -34,8 +34,13 @@ interface CompleteResult {
   readonly definition: string
 }
 
+// eslint-disable-next-line complexity
 const getWeight = (flag: CompletionFlag): number => {
   switch (flag) {
+    case 'exact':
+      return 2000
+    case 'dynamicColumn':
+      return 200
     case 'functionNameEqual':
     case 'nameEqual':
       return 1000
@@ -61,11 +66,11 @@ const getWeight = (flag: CompletionFlag): number => {
       return 50
     case 'blockNamespace':
       return 80
+    case 'spreadsheet':
     case 'variable':
       return 10
     case 'block':
     case 'column':
-    case 'spreadsheet':
     case 'function':
       return 0
   }
@@ -161,19 +166,20 @@ const lastNonSpaceCodeFragment = (codeFragments: CodeFragment[]): [CodeFragment 
 export const getLastCodeFragment = (
   codeFragments: CodeFragment[],
   position: number
-): [CodeFragment | undefined, CodeFragment | undefined] => {
+): [CodeFragment | undefined, CodeFragment | undefined, CodeFragment | undefined] => {
   const prevCodeFragments = getPrevCodeFragments(codeFragments, position)
-  const [prev1, restCodeFragments] = lastNonSpaceCodeFragment(prevCodeFragments)
-  const [prev2] = lastNonSpaceCodeFragment(restCodeFragments)
+  const [prev1, rest1CodeFragments] = lastNonSpaceCodeFragment(prevCodeFragments)
+  const [prev2, rest2CodeFragments] = lastNonSpaceCodeFragment(rest1CodeFragments)
+  const [prev3] = lastNonSpaceCodeFragment(rest2CodeFragments)
 
-  return [prev1, prev2]
+  return [prev1, prev2, prev3]
 }
 
 interface CompleterInput {
   readonly completion: Completion
-  // readonly extraCompletions: Completion[]
   readonly codeFragment: CodeFragment
-  readonly prevCodeFragment: CodeFragment | undefined
+  readonly prev2CodeFragment: CodeFragment | undefined
+  readonly prev3CodeFragment: CodeFragment | undefined
   readonly ctx: FunctionContext
 }
 
@@ -206,32 +212,45 @@ const thisRecordExpandCompleter: ExpandCompleter = ({ ctx }) => {
   return generateColumnCompletions(ctx, spreadsheet)
 }
 
-const dotSpreadsheetExpandCompleter: ExpandCompleter = ({ codeFragment, prevCodeFragment, ctx }) => {
+const dotSpreadsheetExpand2Completer: ExpandCompleter = args => {
+  if (!args.prev2CodeFragment) return []
+  if (args.prev2CodeFragment.code !== 'Dot') return []
+  if (!args.prev3CodeFragment) return []
+  if (args.prev3CodeFragment.code !== 'Spreadsheet') return []
+
+  return dotSpreadsheetExpandCompleter({
+    ...args,
+    codeFragment: args.prev2CodeFragment,
+    prev2CodeFragment: args.prev3CodeFragment
+  })
+}
+
+const dotSpreadsheetExpandCompleter: ExpandCompleter = ({ codeFragment, prev2CodeFragment, ctx }) => {
   if (codeFragment.code !== 'Dot') return []
-  if (!prevCodeFragment) return []
-  if (prevCodeFragment.type !== 'Spreadsheet') return []
+  if (!prev2CodeFragment) return []
+  if (prev2CodeFragment.type !== 'Spreadsheet') return []
 
   const spreadsheet = ctx.formulaContext.findSpreadsheet({
-    namespaceId: prevCodeFragment.attrs!.namespaceId,
+    namespaceId: prev2CodeFragment.attrs!.namespaceId,
     type: 'id',
-    value: prevCodeFragment.attrs!.id
+    value: prev2CodeFragment.attrs!.id
   })
   if (!spreadsheet) return []
   return generateColumnCompletions(ctx, spreadsheet)
 }
 
-const dotCompleter: FlagCompleter = ({ codeFragment, completion, prevCodeFragment }) => {
+const dotCompleter: FlagCompleter = ({ codeFragment, completion, prev2CodeFragment }) => {
   if (codeFragment.code !== 'Dot') return []
-  if (!prevCodeFragment) return []
+  if (!prev2CodeFragment) return []
 
   if (completion.kind === 'function' && completion.preview.chain) {
-    const matchType = prevCodeFragment.type
+    const matchType = prev2CodeFragment.type
     const firstArgsType = completion.preview.args[0].type
     return matchTypeFlags(matchType, firstArgsType)
   }
 
-  if (prevCodeFragment.type === 'Block') {
-    const namespaceId = prevCodeFragment.namespaceId
+  if (prev2CodeFragment.type === 'Block') {
+    const namespaceId = prev2CodeFragment.namespaceId
     if (completion.namespaceId !== namespaceId) return []
     return ['chainNamespace']
   }
@@ -248,10 +267,10 @@ const greater1Completer: FlagCompleter = ({ completion, codeFragment }) => {
 }
 
 const greater2Completer: FlagCompleter = args => {
-  if (!args.prevCodeFragment) return []
+  if (!args.prev2CodeFragment) return []
   if (!['FunctionName', 'Function'].includes(args.codeFragment.code)) return []
 
-  return greater1Completer({ ...args, codeFragment: args.prevCodeFragment, prevCodeFragment: undefined })
+  return greater1Completer({ ...args, codeFragment: args.prev2CodeFragment, prev2CodeFragment: undefined })
 }
 
 const defaultNamespaceCompleter: FlagCompleter = ({ completion, ctx }) => {
@@ -268,12 +287,18 @@ const contextNamespaceCompleter: FlagCompleter = ({ codeFragment, completion }) 
   return ['contextNamespace']
 }
 
-const variableExactCompleter: FlagCompleter = ({ codeFragment, completion }) => {
-  if (codeFragment.code !== 'Variable') return []
-  if (completion.kind !== 'variable') return []
-  if (completion.preview.t.meta.variableId !== codeFragment.attrs.id) return []
+const exactCompleter: FlagCompleter = ({ codeFragment, completion }) => {
+  if (codeFragment.code === 'Variable' && completion.kind === 'variable') {
+    return completion.preview.t.meta.variableId === codeFragment.attrs.id ? ['exact'] : []
+  }
+  if (codeFragment.code === 'Spreadsheet' && completion.kind === 'spreadsheet') {
+    return completion.preview.spreadsheetId === codeFragment.attrs.id ? ['exact'] : []
+  }
+  if (codeFragment.code === 'Column' && completion.kind === 'column') {
+    return completion.preview.columnId === codeFragment.attrs.id ? ['exact'] : []
+  }
 
-  return ['variable']
+  return []
 }
 
 const blockCompleter: FlagCompleter = ({ codeFragment, completion }) => {
@@ -301,12 +326,12 @@ const functionNameCompleter: FlagCompleter = ({ codeFragment, completion, ctx })
   return []
 }
 
-const functionCompleter: FlagCompleter = ({ codeFragment, prevCodeFragment, completion }) => {
+const functionCompleter: FlagCompleter = ({ codeFragment, prev2CodeFragment, completion }) => {
   if (codeFragment.code !== 'Function') return []
   if (completion.kind !== 'function') return []
 
-  if (prevCodeFragment?.code === 'FunctionGroup') {
-    const group = prevCodeFragment.display
+  if (prev2CodeFragment?.code === 'FunctionGroup') {
+    const group = prev2CodeFragment.display
     if (!group.startsWith(completion.preview.group)) return []
   }
 
@@ -319,7 +344,11 @@ const functionCompleter: FlagCompleter = ({ codeFragment, prevCodeFragment, comp
   return []
 }
 
-const EXPAND_COMPLETERS: ExpandCompleter[] = [thisRecordExpandCompleter, dotSpreadsheetExpandCompleter]
+const EXPAND_COMPLETERS: ExpandCompleter[] = [
+  thisRecordExpandCompleter,
+  dotSpreadsheetExpandCompleter,
+  dotSpreadsheetExpand2Completer
+]
 
 const FLAG_COMPLETERS: FlagCompleter[] = [
   dotCompleter,
@@ -329,16 +358,24 @@ const FLAG_COMPLETERS: FlagCompleter[] = [
   functionCompleter,
   contextNamespaceCompleter,
   defaultNamespaceCompleter,
-  variableExactCompleter,
+  exactCompleter,
   blockCompleter,
   kindCompleter
 ]
 
 export const getCompletion = ({ position, ctx, codeFragments, completions }: GetCompletionInput): Completion[] => {
-  const [firstNonSpaceCodeFragment, secondNonSpaceCodeFragment] = getLastCodeFragment(codeFragments, position)
+  const [firstNonSpaceCodeFragment, secondNonSpaceCodeFragment, thirdNonSpaceCodeFragment] = getLastCodeFragment(
+    codeFragments,
+    position
+  )
   if (!firstNonSpaceCodeFragment) return completions
 
-  const args = { codeFragment: firstNonSpaceCodeFragment, prevCodeFragment: secondNonSpaceCodeFragment, ctx }
+  const args = {
+    codeFragment: firstNonSpaceCodeFragment,
+    prev2CodeFragment: secondNonSpaceCodeFragment,
+    prev3CodeFragment: thirdNonSpaceCodeFragment,
+    ctx
+  }
 
   return completions
     .flatMap(c => {
@@ -353,7 +390,7 @@ export const getCompletion = ({ position, ctx, codeFragments, completions }: Get
         (acc, completer) => ({ ...acc, extraFlags: [...acc.extraFlags, ...completer(acc)] }),
         { ...args, completion: c, extraFlags: [] }
       )
-      return { ...c, flags: extraFlags }
+      return { ...c, flags: [...c.flags, ...extraFlags] }
     })
     .map(c => ({
       ...c,
@@ -363,30 +400,61 @@ export const getCompletion = ({ position, ctx, codeFragments, completions }: Get
     .sort((a, b) => b.weight - a.weight)
 }
 
-export const spreadsheet2completion = (spreadsheet: SpreadsheetType, pageId: NamespaceId): SpreadsheetCompletion => {
-  const name = spreadsheet.name()
+const column2completion = (column: ColumnType, pageId: NamespaceId): ColumnCompletion => {
+  const display = column.display()
+  const name = maybeEncodeString(display)[1]
+  const replacements: Completion['replacements'] = [
+    ...reverseTraversalString(name).map(m => ({ matcher: m, value: name }))
+  ]
+
   return {
-    kind: 'spreadsheet',
-    flags: [],
-    replacements: [],
-    fallbackValue: '',
+    kind: 'column',
+    replacements,
+    flags: ['dynamicColumn'],
+    fallbackValue: name,
     weight: 0,
-    name,
-    preview: spreadsheet,
-    namespaceId: spreadsheet.namespaceId
+    name: display,
+    preview: column,
+    namespaceId: column.namespaceId
   }
 }
 
-const column2completion = (column: ColumnType, pageId: NamespaceId): ColumnCompletion => {
+export const spreadsheet2completion = (spreadsheet: SpreadsheetType, pageId: NamespaceId): SpreadsheetCompletion => {
+  const oldName = spreadsheet.name()
+  const name = maybeEncodeString(oldName)[1]
+
+  const namespaceName = spreadsheet.namespaceName(pageId)
+  const fullNameToComplete = `${namespaceName}.${oldName}`
+  const fallbackValue = pageId === spreadsheet.namespaceId ? name : `${namespaceName}.${name}`
+
+  const baseReplacements: Completion['replacements'] = [
+    ...reverseTraversalString(fullNameToComplete, namespaceName.length).map(m => ({
+      matcher: m,
+      value: fallbackValue
+    })),
+    ...reverseTraversalString(oldName).map(m => ({ matcher: m, value: fallbackValue }))
+  ]
+
+  const currentBlockFullNameToComplete = `#CurrentBlock.${oldName}`
+  const currentBlockFullName = `#CurrentBlock.${name}`
+  const currentBlockReplacements: Completion['replacements'] = reverseTraversalString(
+    currentBlockFullNameToComplete,
+    '#CurrentBlock'.length
+  ).map(m => ({ matcher: m, value: currentBlockFullName }))
+
+  // Support `CurrentBlock`
+  const replacements =
+    pageId === spreadsheet.namespaceId ? [...currentBlockReplacements, ...baseReplacements] : baseReplacements
+
   return {
-    kind: 'column',
-    replacements: [],
+    kind: 'spreadsheet',
     flags: [],
-    fallbackValue: '',
+    replacements,
+    fallbackValue,
     weight: 0,
-    name: column.name,
-    preview: column,
-    namespaceId: column.namespaceId
+    name: oldName,
+    preview: spreadsheet,
+    namespaceId: spreadsheet.namespaceId
   }
 }
 

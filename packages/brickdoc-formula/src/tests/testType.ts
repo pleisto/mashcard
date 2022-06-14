@@ -129,6 +129,7 @@ export interface CompleteCaseType extends BaseTestCase<{}> {
   firstCompletion: Partial<Completion>
   firstNonSpaceCodeFragment?: Partial<CodeFragment>
   secondNonSpaceCodeFragment?: Partial<CodeFragment>
+  thirdNonSpaceCodeFragment?: Partial<CodeFragment>
   completes: CompleteInput[]
 }
 
