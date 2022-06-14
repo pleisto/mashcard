@@ -16,6 +16,7 @@ import { multiplicationOperator } from './multiplication'
 import { nameOperator } from './name'
 import { notOperator } from './not'
 import { nullOperator } from './null'
+import { numberOperator } from './number'
 import { parenthesisOperator } from './parenthesis'
 import { predicateOperator } from './predicate'
 import { rangeOperator } from './range'
@@ -50,6 +51,7 @@ export * from './name'
 export * from './string'
 export * from './null'
 export * from './boolean'
+export * from './number'
 
 export const OPERATORS: OperatorType[] = [
   accessOperator,
@@ -76,5 +78,6 @@ export const OPERATORS: OperatorType[] = [
   nameOperator,
   stringOperator,
   nullOperator,
-  booleanOperator
+  booleanOperator,
+  numberOperator
 ]

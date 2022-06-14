@@ -8,8 +8,8 @@ export const booleanOperator: OperatorType = {
   lhsType: 'any',
   rhsType: 'any',
   interpret: async ({ lhs }) => lhs,
-  dynamicInterpretLhs: async (args, operators, interpreter) => {
-    return { type: 'boolean', result: operators[0].image.toUpperCase() === 'TRUE' }
+  dynamicInterpretLhs: async ({ operators }) => {
+    return { type: 'boolean', result: operators[0]!.image.toUpperCase() === 'TRUE' }
   },
   dynamicParseValidator: (cstVisitor, { image, codeFragments, type }) => {
     return { image, codeFragments: codeFragments.map(c => ({ ...c, type: 'boolean' })), type }

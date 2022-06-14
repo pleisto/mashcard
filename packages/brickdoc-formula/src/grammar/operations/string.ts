@@ -22,8 +22,8 @@ export const stringOperator: OperatorType = {
   lhsType: 'any',
   rhsType: 'any',
   interpret: async ({ lhs }) => lhs,
-  dynamicInterpretLhs: async (args, operators, interpreter) => {
-    const image = parseString(operators[0].image)
+  dynamicInterpretLhs: async ({ operators, interpreter }) => {
+    const image = parseString(operators[0]!.image)
     const block = findToken(interpreter.ctx, image)
     if (block) return { type: 'Block', result: block }
     return { type: 'string', result: image }

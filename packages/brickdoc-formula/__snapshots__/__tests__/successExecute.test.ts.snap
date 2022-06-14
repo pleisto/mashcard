@@ -703,6 +703,50 @@ Array [
 ]
 `;
 
+exports[`successExecute number "=-1.2%" -> -0.012 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "NumberLiteral",
+      "display": "-1.2%",
+      "errors": Array [],
+      "type": "number",
+    },
+  ],
+]
+`;
+
+exports[`successExecute number "=-123123%" -> -1231.23 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "NumberLiteral",
+      "display": "-123123%",
+      "errors": Array [],
+      "type": "number",
+    },
+  ],
+]
+`;
+
 exports[`successExecute string "= "hello"" -> hello 1`] = `
 Array [
   "codeFragments",

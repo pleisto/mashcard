@@ -8,7 +8,7 @@ export const nullOperator: OperatorType = {
   lhsType: 'any',
   rhsType: 'any',
   interpret: async ({ lhs }) => lhs,
-  dynamicInterpretLhs: async (args, operators, interpreter) => {
+  dynamicInterpretLhs: async () => {
     return { type: 'null', result: null }
   },
   dynamicParseValidator: (cstVisitor, { image, codeFragments, type }) => {

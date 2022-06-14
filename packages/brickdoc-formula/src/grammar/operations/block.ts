@@ -11,7 +11,7 @@ export const blockOperator: OperatorType = {
   dynamicParseType: lhsType => lhsType,
   lhsType: 'any',
   rhsType: 'any',
-  dynamicInterpretLhs: async (args, operators, interpreter) => {
+  dynamicInterpretLhs: async ({ operators, interpreter }) => {
     const op = operators?.[0]
     if (!op) throw new Error('unsupported expression')
     const namespaceId = op.tokenType.name === 'CurrentBlock' ? interpreter.ctx.meta.namespaceId : op.image

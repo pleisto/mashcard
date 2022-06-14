@@ -20,16 +20,7 @@ const barVariableId = '44444444-4444-7777-9999-cccccccccccc'
 const bazVariableId = 'cccccccc-cccc-1111-bbbb-dddddddddddd'
 
 const testCases: TestCase[] = [
-  {
-    input: '= -0.123%',
-    label: 'caret and sign',
-    value: -0.00123
-  },
-  {
-    input: '=123123123123123123123',
-    label: 'js precision',
-    value: 123123123123123130000
-  },
+
   // {
   //   input: '=[2, "foo", true, null].Map(1)',
   //   label: 'Array Map',
@@ -74,58 +65,6 @@ const testCases: TestCase[] = [
   {
     input: '=&Self."foo bar"',
     value: { kind: 'self', attribute: 'foo bar' }
-  },
-  // Number Literal
-  {
-    input: '=123123',
-    value: 123123
-  },
-  {
-    input: '=0',
-    value: 0
-  },
-  {
-    input: '=0.01',
-    value: 0.01
-  },
-  {
-    input: '=-1.',
-    parseErrorType: 'syntax',
-    errorMessage: 'Missing expression'
-  },
-  {
-    input: '=01',
-    value: 1
-  },
-  {
-    input: '=0001.0000',
-    value: 1
-  },
-  {
-    input: '=1.%',
-    parseErrorType: 'syntax',
-    errorMessage: 'Missing expression'
-  },
-  {
-    input: '=12.0',
-    value: 12
-  },
-  {
-    input: '=-0',
-    value: -0
-  },
-  {
-    input: '=-101',
-    value: -101
-  },
-  // %
-  {
-    input: '= 2%',
-    value: 0.02
-  },
-  {
-    input: '=5100%',
-    value: 51
   },
   // Combine
   {
