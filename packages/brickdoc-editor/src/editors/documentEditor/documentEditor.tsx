@@ -90,10 +90,9 @@ const typesWithUuid = [
 ]
 
 export function useEditor(options: EditorOptions, deps?: DependencyList): TiptapEditor | null {
-  const { editable, extensions, base, ...restOptions } = options
-
-  const editorOptions = useMemo<Partial<TiptapEditorOptions>>(
-    () => ({
+  const editorOptions = useMemo<Partial<TiptapEditorOptions>>(() => {
+    const { editable, extensions, base, ...restOptions } = options
+    return {
       extensions: [
         ...(extensions ?? []),
         Base.configure(
@@ -164,20 +163,15 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
       autofocus: true,
       editable,
       ...restOptions
-    }),
-    [base, editable, extensions, restOptions]
-  )
+    }
+  }, [options])
 
   const editor = useTiptapEditor(editorOptions, deps)
 
   useEffect(() => {
-    editor?.setOptions(editorOptions)
-  }, [editor, editorOptions])
-
-  useEffect(() => {
-    if (!editor || !base) return
-    updateBaseExtensionOptions(editor.extensionManager.extensions, base)
-  }, [base, editor, editor?.extensionManager.extensions])
+    if (!editor || !options.base) return
+    updateBaseExtensionOptions(editor.extensionManager.extensions, options.base)
+  }, [options.base, editor])
 
   return editor
 }

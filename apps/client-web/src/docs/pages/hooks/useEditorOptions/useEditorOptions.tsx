@@ -24,9 +24,9 @@ export function useEditorOptions({
   ydoc,
   onDocSave
 }: UseEditorOptions): EditorOptions {
-  const mentionCommands = useMentionCommands(docMeta)
   const embed = useEmbed(blocks, docMeta)
   const formulaContext = useReactiveVar(FormulaContextVar)
+  const mentionCommands = useMentionCommands(docMeta)
   const renderView = useCallback(() => <PageTree mode="subPage" />, [])
 
   return useMemo(

@@ -1,4 +1,5 @@
 import { useQuery, QueryHookOptions, OperationVariables, DocumentNode, QueryResult } from '@apollo/client'
+import { useCallback } from 'react'
 
 /**
  * Small wrapper around `useQuery` so that we can use it imperatively.
@@ -20,5 +21,5 @@ export function useImperativeQuery<TData = any, TVariables = OperationVariables>
     skip: true
   })
 
-  return async (queryVariables: TVariables) => await refetch(queryVariables)
+  return useCallback(async (queryVariables: TVariables) => await refetch(queryVariables), [refetch])
 }

@@ -5,6 +5,7 @@ import { useGetGalleryImages } from './useGetGalleryImages'
 import { useGetUrlData } from './useGetUrlData'
 import { useGetFileUrl } from './useGetFileUrl'
 import { usePrepareFileUpload } from './usePrepareFileUpload'
+import { useMemo } from 'react'
 
 export function useEmbed(blocks: Block[], docMeta: DocMeta): BaseOptions['embed'] {
   const getFileUrl = useGetFileUrl(blocks, docMeta)
@@ -12,10 +13,13 @@ export function useEmbed(blocks: Block[], docMeta: DocMeta): BaseOptions['embed'
   const getUrlData = useGetUrlData()
   const prepareFileUpload = usePrepareFileUpload(docMeta)
 
-  return {
-    getFileUrl,
-    getGalleryImages,
-    getUrlData,
-    prepareFileUpload
-  }
+  return useMemo(
+    () => ({
+      getFileUrl,
+      getGalleryImages,
+      getUrlData,
+      prepareFileUpload
+    }),
+    [getFileUrl, getGalleryImages, getUrlData, prepareFileUpload]
+  )
 }
