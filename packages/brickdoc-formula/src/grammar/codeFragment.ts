@@ -32,6 +32,7 @@ import {
   rangeOperator,
   recordFieldOperator,
   recordOperator,
+  stringOperator,
   thisRecordOperator,
   thisRowOperator
 } from './operations'
@@ -671,14 +672,16 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     }
   }
 
-  StringLiteralExpression(ctx: any, { type }: CstVisitorArgument): CodeFragmentResult {
-    const parentType = 'string'
-    const { errorMessages } = intersectType(type, parentType, 'StringLiteralExpression', this.ctx)
-    return {
-      codeFragments: [{ ...token2fragment(ctx.StringLiteral[0], parentType), errors: errorMessages }],
-      type: parentType,
-      image: ctx.StringLiteral[0].image
-    }
+  StringLiteralExpression(ctx: any, args: CstVisitorArgument): CodeFragmentResult {
+    return parseByOperator({
+      cstVisitor: this,
+      operators: [],
+      bodyToken: ctx.StringLiteral,
+      args,
+      operator: stringOperator,
+      rhs: [],
+      lhs: undefined
+    })
   }
 
   NumberLiteralExpression(

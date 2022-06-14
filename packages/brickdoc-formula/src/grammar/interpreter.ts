@@ -13,7 +13,7 @@ import {
   ExpressionType,
   VariableParseResult
 } from '../types'
-import { extractSubType, parseString, runtimeCheckType, shouldReturnEarly } from './util'
+import { extractSubType, runtimeCheckType, shouldReturnEarly } from './util'
 import { buildFunctionKey } from '../functions'
 import { ParserInstance } from './parser'
 import {
@@ -37,6 +37,7 @@ import {
   rangeOperator,
   recordFieldOperator,
   recordOperator,
+  stringOperator,
   thisRecordOperator,
   thisRowOperator
 } from './operations'
@@ -331,7 +332,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
     })
   }
 
-  StringLiteralExpression(
+  async StringLiteralExpression(
     ctx: {
       NumberLiteralExpression?: CstNode | CstNode[]
       BooleanLiteralExpression?: CstNode | CstNode[]
@@ -339,13 +340,15 @@ export class FormulaInterpreter extends InterpretCstVisitor {
       StringLiteral: any
     },
     args: InterpretArgument
-  ): AnyTypeResult {
-    const parentType: FormulaType = 'string'
-    const typeError = runtimeCheckType(args, parentType, 'StringLiteralExpression', this.ctx)
-    if (shouldReturnEarly(typeError)) return typeError!
-
-    const str = ctx.StringLiteral[0].image
-    return { result: parseString(str), type: 'string' }
+  ): Promise<AnyTypeResult> {
+    return await interpretByOperator({
+      interpreter: this,
+      operators: ctx.StringLiteral,
+      args,
+      operator: stringOperator,
+      rhs: [],
+      lhs: []
+    })
   }
 
   FunctionNameExpression(ctx: { FunctionName: Array<{ image: any }> }, args: InterpretArgument): AnyTypeResult {

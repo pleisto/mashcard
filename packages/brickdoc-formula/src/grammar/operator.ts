@@ -344,7 +344,16 @@ const innerParse = ({
   }
 
   if (dynamicParseValidator) {
-    return dynamicParseValidator(cstVisitor, result)
+    const { image, codeFragments, type } = dynamicParseValidator(cstVisitor, result)
+
+    const { errorMessages, newType } = intersectType(args.type, type, name, cstVisitor.ctx)
+    const finalResult = {
+      image,
+      codeFragments: codeFragments.map(c => ({ ...c, errors: [...errorMessages, ...c.errors] })),
+      type: newType
+    }
+
+    return finalResult
   }
   return result
 }

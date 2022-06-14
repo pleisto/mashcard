@@ -27,7 +27,7 @@ export const blockOperator: OperatorType = {
   testCases: {
     pages: [
       { pageName: 'Block', pageId },
-      { pageName: 'Block With Space', pageId: page2Id }
+      { pageName: '1 Block With Space', pageId: page2Id }
     ],
     successTestCases: [
       {
@@ -41,22 +41,21 @@ export const blockOperator: OperatorType = {
       },
       {
         definition: '="Block"',
-        todo: 'TODO: support block name',
-        result: 'Block',
+        newAbbrevInput: '=Block',
+        result: mockBlock('Block', pageId),
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'nameDependencies', match: [] },
-          { key: 'blockDependencies', match: [] }
+          { key: 'blockDependencies', match: [pageId] }
         ]
       },
       {
-        definition: '="Block With Space"',
-        todo: 'TODO: support block name',
-        result: 'Block With Space',
+        definition: '="1 Block With Space"',
+        result: mockBlock('1 Block With Space', page2Id),
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'nameDependencies', match: [] },
-          { key: 'blockDependencies', match: [] }
+          { key: 'blockDependencies', match: [page2Id] }
         ]
       },
       {
@@ -81,7 +80,7 @@ export const blockOperator: OperatorType = {
       },
       {
         definition: '=#CurrentBlock',
-        result: mockBlock('Block With Space', page2Id),
+        result: mockBlock('1 Block With Space', page2Id),
         namespaceId: page2Id,
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
@@ -91,8 +90,8 @@ export const blockOperator: OperatorType = {
       },
       {
         definition: `=  #${page2Id}  `,
-        newAbbrevInput: '=  Block With Space  ',
-        result: mockBlock('Block With Space', page2Id),
+        newAbbrevInput: '=  "1 Block With Space"  ',
+        result: mockBlock('1 Block With Space', page2Id),
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
           { key: 'nameDependencies', match: [] },

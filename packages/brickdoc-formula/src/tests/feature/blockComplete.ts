@@ -21,6 +21,9 @@ export const BlockCompleteTestCase: TestCaseInterface = {
           { variableName: 'num0', definition: '=0' },
           { variableName: 'num0123', definition: '=0' }
         ]
+      },
+      {
+        pageName: '1invalidBlockComplete Page 3'
       }
     ],
     completeTestCases: [
@@ -73,6 +76,13 @@ export const BlockCompleteTestCase: TestCaseInterface = {
           flags: ['name', 'nameStartsWith', 'block']
         },
         completes: [{ definitionWithCursor: '=1 + "BlockCompletePage2 with space"$ + 1' }]
+      },
+      {
+        definitionWithCursor: '=1invalidBlockComplete$',
+        todo: 'invalid page name complete support [parseErrorOther]',
+        firstNonSpaceCodeFragment: { code: 'parseErrorOther', display: 'invalidBlockComplete' },
+        firstCompletion: { name: 'Default', flags: ['defaultNamespace', 'block'] },
+        completes: [{ definitionWithCursor: '=1invalidBlockCompleteDefault$' }]
       },
       {
         definitionWithCursor: '=BlockCompletePage1$',

@@ -88,7 +88,7 @@ export const codeFragment2value = ({ display, code, attrs }: CodeFragment, pageI
 export const block2codeFragment = (block: BlockType, pageId: NamespaceId): CodeFragment => {
   return {
     replacements: [`#${block.id}`],
-    display: block.name(pageId),
+    display: maybeEncodeString(block.name(pageId))[1],
     errors: [],
     code: 'Block',
     type: 'Block',
