@@ -1,0 +1,142 @@
+zh-CN:
+  meta:
+    lang: zh-CN
+    dir: ltr
+    noscript: 抱歉 Brickdoc 需在开启浏览器的 Javascript 功能后方可正常工作，请访问 %{url} 以了解详情。
+    noscript_url: https://zh.wikihow.com/%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%8A%E5%90%AF%E7%94%A8-JavaScript
+  unsupported_browser:
+    title: '更新您的浏览器'
+    download_latest_browser_html: 真不巧，您的浏览器不支持一些运行 Brickdoc 所必须的功能。
+  activerecord:
+    errors:
+      models:
+        accounts/user:
+          attributes:
+            password:
+              too_short: 过短
+  mailer:
+    footer_message: 您收到这封电子邮件，是因为您在 %{host} 拥有帐户。
+    copy_this_url: "如果上面的按钮不起作用，请复制此网址："
+  errors:
+    graphql:
+      argument_error:
+        invalid_pod: Token 无效或已过期。
+        pod_disable_invite: Pod 已禁用邀请。
+        already_invited: 你已经是这个 Pod 的成员
+      docs:
+        initialized_not_yet_completed: 初始化尚未完成
+        target_descendants_invalid: 无效的目标
+    messages:
+      already_confirmed: 已经成功确认，请尝试登录
+      confirmation_period_expired: 需要在 %{period} 内确认, 请申请一个新的
+      expired: 已过期。请重新发起请求
+      not_found: 未找到
+      not_locked: 未被锁定
+      not_saved:
+        other: '发生了%{count}个错误，%{resource}无法被保存：'
+      is_not_valid_domain: 'Pod domain "%{domain}“ 不可用'
+      is_not_valid_email: '邮箱“%{email}”不可用'
+      send_interval: 发送间隔过短，请一分钟后再试
+      model_invalid: '验证失败: %{errors}'
+      email_invalid: 不是有效的电子邮件地址
+      domain_invalid: 不是有效的 domain 名称
+      uuid_invalid: 不是有效的 uuid
+      domain_presence_invalid: 不存在
+      InvalidImageUrl: 无效的图片链接。
+    app_error:
+      not_found_title: 哎呀！找不到连接了
+      not_found_content: 找不到您要查找的页面。
+      server_error_title: 糟糕！服务器错误。
+      server_error_content: 我们的服务器暂时出现了故障。
+      btn_back: 回到首页
+      btn_return: 返回
+    template:
+      body: '如下字段出现错误：'
+      header:
+        other: '发生了%{count}个错误，%{model}无法被保存：'
+  devise:
+    confirmations:
+      confirmed: '已成功确认您的电子邮箱地址。'
+      send_instructions: '稍后，您将收到帐号激活的电子邮件。'
+      send_paranoid_instructions: '如果你输入的 Email 地址在我们系统中，几分钟后你将会收到一份确认账号的邮件。'
+    failure:
+      already_authenticated: 您已登录。
+      inactive: 您还没有激活帐户。
+      invalid: 无效的 %{authentication_keys} 或密码不正确。
+      locked: 您的帐号已被锁定。
+      last_attempt: 你还有最后次尝试机会，如果依然不正确，账号将会暂时锁定。
+      not_found_in_database: 无效的 %{authentication_keys} 或密码不正确。
+      timeout: 你的会话已经过期，请重新登录以继续操作。
+      unauthenticated: 你需要登录或注册才能继续。
+      unconfirmed: 请先进入邮箱，点击确认链接激活您的帐号才可使用。
+    omniauth_callbacks:
+      failure: 因"%{reason}"，无法从%{kind}对您进行身份验证。
+      success: 成功通过 %{kind} 登录账号.
+    passwords:
+      no_token: 此页面必须通过找回密码链接打开，如果你是通过这种方式，请检查 URL 和邮件里面的 URL 是否一致。
+      send_instructions: 稍后，您将收到重置密码的电子邮件。
+      send_paranoid_instructions: 如果你输入的 Email 地址在我们系统中，几分钟后你将会收到一份恢复账号的邮件。
+      updated: 你的密码已成功修改，现在你已登录。
+      updated_not_active: 您的密码已成功更改.
+    registrations:
+      destroyed: 再见！你的账号已经成功注销。我们依然期待你再次回来使用。
+      signed_up: 欢迎！你的账号已经成功注册。
+      signed_up_but_inactive: 你已经成功注册账号。不过因为你的账号还未激活，所以暂时无法登录使用。
+      signed_up_but_locked: 您已成功注册，但是由于您的账户已被锁定，所以您尚无法登录。
+      signed_up_but_unconfirmed: 验证链接已发送到您的电子邮件地址。请单击确认电子邮件中的验证链接以完成注册过程。
+      update_needs_confirmation: 你的账号更新成功，不过你必须验证新的邮件地址。请打开你的邮箱，找到我们发送的确认邮件并点击确认链接来完成确认。
+      updated: 你的账号更新成功。
+    unlock_instructions:
+      send_instructions: '稍后，您将收到一封帐号解锁的邮件。'
+      send_paranoid_instructions: '如果你已有账号，你将会收到一封用于解锁的邮件。'
+      unlocked: '您的账户已成功解锁。请登录后再继续操作。'
+    mailer:
+      confirmation_instructions:
+        you_can_confirm_your_account_email_through_the_link_below: '请单击下面的按钮为您的 Brickdoc 帐户确认此电子邮件地址'
+        subject: '确认电子邮件'
+      reset_password_instructions:
+        subject: '重置密码信息'
+      unlock_instructions:
+        subject: '帐户解锁信息'
+      email_changed:
+        subject: '邮件地址已更改'
+      password_change:
+        subject: '密码已更改'
+    sessions:
+      signed_in: '登录成功。'
+      signed_out: '已成功退出。'
+      already_signed_out: '已成功登出。'
+  accounts:
+    app_title: Brickdoc 账号
+    provider:
+      email_password: Email和密码
+    sessions:
+      sign_in: 登录
+      sign_up: 注册
+      reset_password: 重置密码
+      sign_in_to_brickdoc: 登录到 Brickdoc
+      more_login_options: 更多登录方式
+      login_via: '使用 %{provider} 登录'
+      email: Email
+      password: 密码
+      remember_me: 记住我
+      sign_up_with_email: 注册
+      resend_confirmed_email: 重新发送验证邮件
+      confirmation_email_required_heading: 快好了！
+      forget_password: 忘记密码
+      confirm_password: 确认密码
+      sign_up_via: '使用 %{provider} 注册'
+      name: '名称'
+      domain: 'Domain 名称'
+      domain_description: '相当于您的用户名，仅允许包含英文字母和数字'
+      agree_to_agreement: '注册即表示您已阅读并同意我们的<0>《用户协议》</0>'
+      resend_after: '在 %{ms} 后可重新发送'
+    common:
+      confirm_not_match: '%{field}和确认%{field}不一致'
+    errors:
+      invalid_operation_type: '无效的操作类型'
+      invalid_pod_domain: '没有访问 Pod 的权限'
+      pod_has_already_switched: 'Pod 已切换'
+      pod_exist: 'Pod 已存在'
+      user_not_exist: "用户不存在"
+      pod_not_exist: "Pod 不存在"

@@ -1,0 +1,601 @@
+zh-CN:
+  settings:
+    app_title: Brickdoc 设置
+    personal_pod_desc: 我的 Pod
+    group_pod_desc: 团队 Pod
+    errors:
+      invalid_operation_type: 无效的操作类型
+    menu:
+      general: 常规
+      account: 账户
+      team: 团队 Pod
+      logs: 安全日志
+    general:
+      user_profile: 用户资料
+      group_profile: 群组资料
+      update_profile: 更新资料
+      change_domain: 更改域地址
+      change_domain_btn: 更新
+      change_domain_desc: 除非您真的需要它，否则我们建议您不要更改您的 pod 域。这将导致rela..
+      change_domain_more: 了解更多
+      avatar_uploaded_success: 头像上传成功。
+      avatar_uploaded_error: 头像上传失败。
+      avatar_updated: 头像更改成功。
+      profile_updated: 资料更新成功
+      display: 显示
+      timezone: 时区
+      locale: 语言
+      update_appearance: 保存外观设置
+    account:
+      joined_team_pods: 加入群组 Pod
+      leave_btn: 退出
+      remove_btn: 移除
+      owner_cant_leave_tips: 您是此 Pod 的所有者，因此您无法退出此 Pod。
+      leave_pod_confirm: 确定离开 %{pod} ？
+      pod_leave_success: 您已成功离开 %{pod}。
+      delete_account: 删除账号
+      delete_account_desc: 删除账号操作不可逆转，请三思而后行。
+      delete_account_tip: 您已离开 %{pods} Pod
+      delete_account_unavailable: |
+        此帐户是以下团队 pod 的成员/所有者： <strong>%{pods}</strong>。要删除此帐户，请转让所有权并离开或删除您的所有团队 pod。
+      delete_account_btn: 删除当前帐户
+      delete_account_modal_title: 确定要删除您的账号吗？
+      delete_account_modal_desc: |
+        这是一个不可逆的操作，将永久删除您的所有数据并且无法撤消。<br/>
+        您将不再需要付费，并且您的域可供任何人使用。 <br/>
+      delete_account_confirm: '要验证，请在下面键入您的 pod 域 %{domain}：'
+      delete_account_confirm_btn: 确认删除
+      delete_account_confirm_cancel: 取消
+    team:
+      members: 成员
+      leave_user_confirm: 您确定要从此项目中移除 %{user} 吗？
+      user_leave_success: 用户 %{user} 已成功离开 pod。
+      delete_pod: 删除此 Pod
+      delete_pod_desc: 请务必确认后是否删除。
+      delete_pod_btn: 删除此群组 Pod
+      delete_pod_modal_title: 确定要解散此团队吗？
+      delete_pod_modal_desc: |
+        这是一个不可逆的操作，将永久删除您的所有数据并且无法撤消。您的团队 pod 的用户名将可供任何人使用。<br/>
+        在下方输入您要删除的团队 pod 的名称。
+      delete_pod_confirm: '要验证，请在下面键入您的团队 pod 域 %{domain}：'
+      delete_pod_confirm_btn: 删除 Pod
+      invite: 邀请成员
+      invite_label: 启用邀请链接
+      invite_desc: 管理群组 pod 的邀请链接。
+      invite_enable_updated: 邀请链接设置更新成功。
+      invite_secret_reset: 重置
+      invite_secret_reset_confirm: 您确定要重置 Token 吗？这将使当前的邀请链接失效。
+  editor:
+    placeholder: 键入“/”作为命令
+    copy_hint: 已复制到剪贴板
+    explorer_menu:
+      title: 探索
+      search:
+        placeholder: 搜索
+    discussion:
+      title: 评论
+      tabs:
+        all: 全部
+        resolved: 已解决
+      delete_message: 您确定要删除此评论吗？
+      editor:
+        placeholder: 评论...
+        send: 发送
+        cancel: 取消
+    history:
+      title: 历史
+    toolbar:
+      separator: 菜单分隔符
+    blocks:
+      text:
+        label: 文本
+      h1:
+        label: 一级标题
+      h2:
+        label: 二级标题
+      h3:
+        label: 三级标题
+      h4:
+        label: 四级标题
+      h5:
+        label: 五级标题
+      bulletedList:
+        label: 无序列表
+      orderedList:
+        label: 有序列表
+      taskList:
+        label: 待办事项
+      link:
+        label: 链接
+      embed:
+        label: 嵌入
+      upload:
+        label: 本地文件
+      gallery:
+        label: 相册
+      spreadsheet:
+        label: 电子表格
+      formula:
+        label: 公式
+      divider:
+        label: 分隔线
+      toc:
+        label: 目录
+        placeholder: 添加标题/锚点以创建一个目录
+        untitled: 未命名
+      subPageMenu:
+        label: 子页面菜单
+      code:
+        label: 代码
+      blockquote:
+        label: 引用
+    block_actions:
+      basic:
+        cut: 剪切
+        copy: 复制
+        move: 移动
+        delete: 刪除
+        transform: 切换为
+      embed_block:
+        download: 下载
+        full_screen: 全屏
+        attachment_mode: 转为文本视图
+        preview_mode: 转为预览视图
+      add_block: 在下面添加 Block
+      blocks:
+        text: 文本
+        h1: 一级标题
+        h2: 二级标题
+        h3: 三级标题
+        h4: 四级标题
+        h5: 五级标题
+        numbered_list: 有序列表
+        bulleted_list: 无序列表
+        formula: 公式
+        code: 代码
+        spreadsheet: 电子表格
+        upload: 上传
+        gallery: 相册
+    slash_menu:
+      title: 斜杠菜单
+      recent: 最近使用
+      type: 类型
+      suggestion: 建议
+      no_suggestion: 没有结果
+      footer: 探索
+      tooltip: 探索斜杠菜单
+      explorer_menu:
+        group:
+          data:
+            label: 数据
+          embed:
+            label: 嵌入
+          text:
+            label: 文本
+          others:
+            label: 其它
+      items:
+        explore:
+          label: 探索
+    bubble_menu:
+      node:
+        section_title: 切换为
+        items:
+          paragraph: 文本
+          heading1: 一级标题
+          heading2: 二级标题
+          heading3: 三级标题
+          heading4: 四级标题
+          heading5: 五级标题
+          bulletList: 无序列表
+          orderedList: 有序列表
+          formula: 公式
+      bold:
+        title: 粗体
+      italic:
+        title: 斜体
+      underline:
+        title: 下划线
+      strike:
+        title: 删除线
+      fontColor:
+        title: 字体颜色
+        text_color:
+          label: 文本颜色
+        bg_color:
+          label: 背景
+        reset_button:
+          label: 重置
+      comment:
+        title: 评论
+      formula:
+        title: 公式
+      anchor:
+        add: 标为锚点
+        remove: 删除锚点标记
+      link:
+        title: 链接
+        placeholder: 粘贴链接
+        confirm: 链接到网页
+        copy: 复制链接
+        delete: 移除链接
+    image_block:
+      hint: 添加图片
+      deletion_confirm:
+        title: 您确定要删除此属性吗？
+        ok: 刪除
+        cancel: 取消
+      menu:
+        copy: 复制链接
+        delete: 移除
+      import_sources:
+        link:
+          placeholder: 粘贴图片链接...
+          button_text: 嵌入图像
+          button_hint: 适用于任何来自网页的图像
+        upload:
+          button_text: 选择图片
+    formula:
+      menu:
+        delete_confirm:
+          title: 您确定要删除此属性吗？
+          ok: 刪除
+          cancel: 取消
+        header: 公式
+        name: 名称
+        color: 颜色
+        result: '='
+        save: 保存公式
+        delete: 刪除
+        cancel: 取消
+    action_panel:
+      more:
+        duplicate: 创建副本
+        copy: 复制链接
+        delete: 刪除
+        delete_confirm: 确定
+        delete_cancel: 取消
+    code_block:
+      copy_code: 复制内容
+      default_language: 纯文本
+      search_placeholder: 搜索
+      deletion_confirm:
+        title: 您确定要删除此属性吗？
+        ok: 刪除
+        cancel: 取消
+      languages:
+        'plain text': 纯文本
+        markdown: Markdown
+        css: CSS
+        javascript: JavaScript
+        typescript: TypeScript
+        bash: Bash
+        json: JSON
+        yaml: YAML
+        sql: SQL
+        cpp: C/C++
+        csharp: 'C#'
+        java: Java
+        python: Python
+        ruby: Ruby
+        objectivec: Objective-C
+        docker: Dockerfile
+        elixir: Elixir
+        rust: Rust
+        lisp: Lisp
+        haskell: Haskell
+        php: PHP
+        go: Go
+        kotlin: Kotlin
+        graphql: GraphQL
+        powershell: PowerShell
+        groovy: Groovy
+        solidity: Solidity
+        xml-doc: XML
+        lua: Lua
+        scala: Scala
+        matlab: Matlab
+        applescript: AppleScript
+        arduino: Arduino
+        basic: BASIC
+        diff: Diff
+        r: R
+        swift: Swift
+        toml: TOML
+        tcl: TCL
+        wasm: WASM
+        ebnf: EBNF
+        latex: LaTeX
+        tsx: TSX
+        jsx: JSX
+        protobuf: Protocol Buffer
+        ignore: .ignore 文件
+        regex: 正则表达式
+        ini: INI
+        properties: Properties
+    embed_block:
+      zoom_in:
+        tooltip: 放大
+      zoom_out:
+        tooltip: 缩小
+      align:
+        left:
+          tooltip: 左对齐
+        center:
+          tooltip: 居中对齐
+        right:
+          tooltip: 右对齐
+        full_width:
+          tooltip: 全宽对齐
+      full_screen:
+        tooltip: 全屏
+      edit:
+        tooltip: 编辑
+      view_types:
+        card:
+          name: 卡片视图
+        preview:
+          name: 预览视图
+          unavailable:
+            tip: 无法预览内容。
+            link_button: 打开链接
+        text:
+          name: 文本视图
+      embed_types:
+        link:
+          label: 添加指向网站或文件的链接。
+          description: 您可以添加指向网站或文件的链接。
+          panel:
+            link_validate: 请先输入有效链接。
+            submit_error: 请确认链接是有效的，然后重试。
+            head: 嵌入
+            text:
+              placeholder: 要显示的文本
+            link:
+              placeholder: 粘贴链接
+        upload:
+          label: 您可以在本地上传任何内容。
+          description: 上传图片、PDF、Word、PPT、Excel等。
+      types:
+        gallery:
+          search:
+            placeholder: 搜索...
+          label: 从 Unsplash 中选择一张图片。
+          description: Unsplash 图片
+    user_block:
+      anonymous: 匿名
+    page_link_block:
+      untitled: 未命名
+    mention:
+      people:
+        head: 人员
+        no_content: 人无结果
+      page_link:
+        head: 链接到页面
+        no_content: 页面没有结果
+    spreadsheet:
+      delete: 刪除
+      copy: 复制
+      row:
+        actions: 动作
+        add_above: 在顶部添加一行
+        add_below: 在底下添加一行
+        delete: 刪除
+      column:
+        actions: 动作
+        add_left: 在左侧添加列
+        add_right: 在右侧添加列
+        delete: 刪除
+    table:
+      untitled: 未命名
+      new_row:
+        text: 新建
+      remove_row:
+        text: 刪除
+        title: 您确定要删除此行吗？
+        ok: 刪除
+        cancel: 取消
+      remove_column:
+        text: 刪除
+        title: 您确定要删除此属性吗？
+        ok: 刪除
+        cancel: 取消
+      column_default_name: 列
+      column_type: 属性类型
+      column_types:
+        basic: 基本
+        text: 文本
+        select: 下拉列表
+        date: 日期
+        date-range: 日期范围
+      filter:
+        text: 过滤
+        title: 筛选我的所有数据
+        remove: 删除
+        duplicate: 建立副本
+        where: 当
+        add_a_filter: 添加过滤器
+        add_a_filter_group: 添加过滤器组
+        add_a_filter_group_desc: 用于嵌套更多筛选器的组
+        hint: |
+          使用过滤器来：
+          显示分配给我的任务。
+          只显示带有特定标签的笔记。
+          隐藏已完成的任务。
+        collection_types:
+          intersection: 和
+          union: 或
+        matches:
+          is: 是
+          is_not: 不是
+          is_on: 是
+          is_not_on: 不是
+          is_before: 先于
+          is_after: 迟于
+          is_on_or_before: 早于（含）
+          is_on_or_after: 迟于（含）
+          contains: 包含
+          does_not_contain: 不包含
+          starts_with: 开头为
+          ends_with: 结尾为
+          is_empty: 是空的
+          is_not_empty: 不为空
+      sort:
+        text: 排序
+        title: 为我的所有数据排序
+        hint: |
+          使用排序：
+          按优先级排序任务。
+          按创建日期显示笔记。
+          显示最近联系的客户。
+  docs:
+    app_title: Brickdoc
+    saving: 保存中
+    user_setting:
+      text: 用户设置
+      general: 一般
+      member: 成员
+      account: 账号
+    pod_setting:
+      text: Pod 设置
+    anonymous:
+      edit_button: 编辑
+    search:
+      text: 快速查找
+      placeholder: 搜索页面
+    blocks:
+      create_pages: 新增页面
+      no_pages: 没有子页面
+      create_sub_pages: 添加子页面
+      delete: 刪除
+      rename: 重命名
+      undo: 撤销
+      more: 删除、复制和更多...
+    copy_link:
+      button: 复制链接
+      copied: 复制成功
+      success_message: 链接已复制
+    duplicate:
+      new_title: '%{title}的副本'
+      button: 建立副本
+    pin:
+      name: 置顶
+      add: 置顶页面
+      add_tooltip: 置顶此页面
+      remove: 撤销置顶页面
+      remove_tooltip: 取消置顶此页面
+    trash:
+      name: 回收站
+      pages: 页面
+      owner: 所有者
+      deleted_at: 删除于
+      all_pages: 所有页面
+      current_page: 当前页面
+      search: 按页面标题过滤...
+      not_found: 未找到匹配项
+      learn: 了解如何删除和恢复页面
+      delete_confirmation_body: 您确定要永久删除此页面吗？
+      batch_delete_confirmation_body: 您确定要永久删除这 %{number} 个页面吗？
+      delete_confirmation_ok: 删除页面
+      delete_confirmation_cancel: 取消
+      in_trash_prompt: 此页面已在回收站中。
+      restore_action: 还原页面
+      hard_delete_action: 删除页面
+      selected: 选中
+    discussion:
+      menu: 评论
+      tooltip: 在当前页面上显示评论
+    history:
+      menu: 历史
+      tooltip: 浏览全部更新
+    more:
+      tooltip: 更多选项
+    share:
+      menu: 分享
+      invite: 邀请
+      share_title: 分享此页面
+      share_to_web: 分享到网页
+      share_to_web_description: 发布并与任何人共享链接
+      allow_edit: 允许编辑
+      learn: 了解共享
+      copy_link_button: 复制链接
+      copy_link_button_done: 复制成功
+      invite_placeholder: 按用户名添加人员
+      invite_button: 邀请
+      copy_hint: 已复制分享链接。
+      tooltip: 共享或发布到网络
+    invite:
+      learn: 了解共享
+      type_hint: 在上方输入或粘贴Email 地址，以逗号分隔。
+      search: 按用户名添加人员
+      no_result: 没有结果
+      button: 邀请
+      confirm_button: 确定
+      edit_message: 允许编辑
+      edit_message_description: 可以编辑，但不能再次共享给其他人。
+      view_message: 允许查看
+      view_message_description: 无法编辑或与他人共享。
+      no_view_message: 无法查看
+      no_view_message_description: 无法查看或与他人共享。
+      remove_message: 移除
+      anyone_with_link: 拥有此链接的任何人
+    snapshots:
+      name: 快照
+      restore: 还原此版本
+      restoring: 正在恢复...
+      cancel: 取消
+      empty: 版本历史为空
+    pods:
+      domain: Domain Name
+      name: 名称
+      bio:
+        label: 自我介绍
+        placeholder: 向大家介绍您自己
+      upload_avatar: 上传照片
+      required:
+        domain: Domain 名称是必需的
+        name: 名称必填
+      create:
+        success: 创建成功。
+      update:
+        success: 更新成功。
+    menu:
+      create_new_pod: 创建新 Pod
+      logout: 退出登录
+    title:
+      add_icon: 添加图标
+      add_cover: 添加封面
+      remove_cover: 移除
+      change_cover: 更换封面
+      reposition: 更改位置
+      untitled: 未命名
+    document_icon:
+      import_sources:
+        link:
+          placeholder: 粘贴图片链接...
+          button_text: 提交
+          button_hint: 适用于任何来自网页的图像
+          type_label: 链接
+          invalidImageUrlMessage: 无效的图片链接。
+        upload:
+          button_hint: 推荐尺寸为 280x280 像素
+          button_text: 选择图片
+          type_label: 上传图像
+    document_cover:
+      import_sources:
+        link:
+          placeholder: 粘贴图片链接...
+          button_text: 提交
+          button_hint: 适用于任何来自网页的图像
+          invalidImageUrlMessage: 无效的图片链接。
+          type_label: 链接
+        upload:
+          button_hint: '推荐图像尺寸：大于 1500 像素'
+          button_text: 选择图片
+          type_label: 上传图像
+  formats:
+    days:
+      today: Today
+      yesterday: Yesterday
+    date: '%m-%d-%Y'
+    time: 'HH:mm:ss'
