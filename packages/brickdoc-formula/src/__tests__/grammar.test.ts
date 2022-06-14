@@ -20,7 +20,6 @@ const barVariableId = '44444444-4444-7777-9999-cccccccccccc'
 const bazVariableId = 'cccccccc-cccc-1111-bbbb-dddddddddddd'
 
 const testCases: TestCase[] = [
-
   // {
   //   input: '=[2, "foo", true, null].Map(1)',
   //   label: 'Array Map',
@@ -103,19 +102,7 @@ const testCases: TestCase[] = [
     value: new Date('2022-2-22'),
     display: new Date('2022-2-22').toISOString()
   },
-  // Case insensitive
-  {
-    input: '=if(true, 1+2, "2")',
-    label: 'Case insensitive',
-    value: 3
-  },
   // Predicate
-  {
-    input: '==1',
-    label: 'TODO predicate ==1',
-    parseErrorType: 'syntax',
-    errorMessage: 'TODO mismatch token startExpression'
-  },
   {
     input: '= =1',
     value: { type: 'number', result: 1 }

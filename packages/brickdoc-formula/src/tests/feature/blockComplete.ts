@@ -34,14 +34,14 @@ export const BlockCompleteTestCase: TestCaseInterface = {
         firstCompletion: {
           name: 'BlockCompletePage1',
           kind: 'block',
-          flags: ['name', 'nameStartsWith', 'defaultNamespace', 'block']
+          flags: ['nameStartsWith', 'defaultNamespace', 'block']
         },
         completes: [{ definitionWithCursor: '=BlockCompletePage1$' }]
       },
       {
         definitionWithCursor: '=BlockCompletE$',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'BlockCompletE' },
-        firstCompletion: { name: 'BlockCompletePage1', kind: 'block', flags: ['name', 'nameStartsWith', 'block'] },
+        firstCompletion: { name: 'BlockCompletePage1', kind: 'block', flags: ['nameStartsWith', 'block'] },
         completes: [
           { definitionWithCursor: '=BlockCompletePage1$' },
           { match: 'BlockCompletePage2 with space', definitionWithCursor: '="BlockCompletePage2 with space"$' }
@@ -53,7 +53,7 @@ export const BlockCompleteTestCase: TestCaseInterface = {
         firstCompletion: {
           name: 'BlockCompletePage2 with space',
           kind: 'block',
-          flags: ['name', 'nameStartsWith', 'block']
+          flags: ['nameStartsWith', 'block']
         },
         completes: [{ definitionWithCursor: '=1 + "BlockCompletePage2 with space"$ + 1' }]
       },
@@ -63,7 +63,7 @@ export const BlockCompleteTestCase: TestCaseInterface = {
         firstCompletion: {
           name: 'BlockCompletePage2 with space',
           kind: 'block',
-          flags: ['name', 'nameStartsWith', 'block']
+          flags: ['nameStartsWith', 'block']
         },
         completes: [{ definitionWithCursor: '=1 + "BlockCompletePage2 with space"$+ 1' }]
       },
@@ -73,7 +73,7 @@ export const BlockCompleteTestCase: TestCaseInterface = {
         firstCompletion: {
           name: 'BlockCompletePage2 with space',
           kind: 'block',
-          flags: ['name', 'nameStartsWith', 'block']
+          flags: ['nameStartsWith', 'block']
         },
         completes: [{ definitionWithCursor: '=1 + "BlockCompletePage2 with space"$ + 1' }]
       },
@@ -91,7 +91,7 @@ export const BlockCompleteTestCase: TestCaseInterface = {
         firstCompletion: {
           name: 'num0',
           kind: 'variable',
-          flags: ['contextNamespace', 'defaultNamespace', 'blockNamespace', 'variable']
+          flags: ['contextNamespace', 'blockNamespace', 'defaultNamespace', 'variable']
         },
         completes: [
           { definitionWithCursor: '=BlockCompletePage1.num0$' },

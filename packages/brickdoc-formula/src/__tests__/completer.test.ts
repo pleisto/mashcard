@@ -1,9 +1,9 @@
 import { parse } from '../grammar/core'
 import { makeContext } from '../tests/testHelper'
 import { buildTestCases, trackTodo } from '../tests'
-import { getLastCodeFragment, handleComplete } from '../grammar'
+import { getLastCodeFragment, applyCompletion } from '../grammar'
 
-const [testCases] = buildTestCases(['variableComplete', 'blockComplete', 'spreadsheetComplete'])
+const [testCases] = buildTestCases(['functionComplete', 'variableComplete', 'blockComplete', 'spreadsheetComplete'])
 
 const splitDefinitionWithCursor = (
   definitionWithCursor: string
@@ -56,7 +56,7 @@ describe('completer', () => {
     for (const complete of args.completes) {
       const completion = complete.match ? completions.find(c => c.name === complete.match)! : firstCompletion
       expect(complete).not.toBe(undefined)
-      const completeResult = handleComplete(
+      const completeResult = applyCompletion(
         { ...newCtx, meta: ctx.buildMeta({ ...args, definition, position }) },
         completion
       )

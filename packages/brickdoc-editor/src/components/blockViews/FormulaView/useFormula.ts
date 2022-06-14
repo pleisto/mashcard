@@ -13,7 +13,7 @@ import {
   VariableMetadata,
   FormulaUpdatedViaId,
   generateVariable,
-  handleComplete
+  applyCompletion
 } from '@brickdoc/formula'
 import {
   BrickdocEventBus,
@@ -255,7 +255,7 @@ export const useFormula = ({
       richType
     }
     const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
-    const newInput = handleComplete(ctx, currentCompletion)
+    const newInput = applyCompletion(ctx, currentCompletion)
 
     inputRef.current = {
       position: formulaIsNormal ? newInput.position - 1 : newInput.position,

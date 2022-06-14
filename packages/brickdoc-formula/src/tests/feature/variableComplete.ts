@@ -47,7 +47,7 @@ export const VariableCompleteTestCase: TestCaseInterface = {
         firstCompletion: {
           name: 'num1',
           kind: 'variable',
-          flags: ['compareTypeMatched', 'name', 'nameStartsWith', 'defaultNamespace', 'variable']
+          flags: ['nameStartsWith', 'compareTypeMatched', 'defaultNamespace', 'variable']
         },
         completes: [{ definitionWithCursor: '=3 > num1$' }]
       },
@@ -59,7 +59,7 @@ export const VariableCompleteTestCase: TestCaseInterface = {
         firstCompletion: {
           name: 'num1',
           kind: 'variable',
-          flags: ['compareTypeMatched', 'name', 'nameStartsWith', 'defaultNamespace', 'variable']
+          flags: ['nameStartsWith', 'compareTypeMatched', 'defaultNamespace', 'variable']
         },
         completes: [{ definitionWithCursor: '=3 > num1$' }]
       },
@@ -137,7 +137,7 @@ export const VariableCompleteTestCase: TestCaseInterface = {
         firstCompletion: {
           name: 'num0',
           kind: 'variable',
-          flags: ['contextNamespace', 'defaultNamespace', 'blockNamespace', 'variable']
+          flags: ['contextNamespace', 'blockNamespace', 'defaultNamespace', 'variable']
         },
         completes: [{ definitionWithCursor: '= 1 + #CurrentBlock.num0$ + 123' }]
       },

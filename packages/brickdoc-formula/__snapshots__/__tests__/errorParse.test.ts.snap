@@ -29,6 +29,8 @@ Array [
       "namespaceId": "00000000-0000-0000-0000-000000000000",
       "replacements": Array [
         "#00000000-0000-0000-0000-000000000000",
+        "Default",
+        "\\"Default\\"",
       ],
       "type": "Block",
     },
@@ -85,6 +87,8 @@ Array [
       "namespaceId": "22222222-2222-2222-2222-222222222222",
       "replacements": Array [
         "#22222222-2222-2222-2222-222222222222",
+        "Variable",
+        "\\"Variable\\"",
       ],
       "type": "Block",
     },

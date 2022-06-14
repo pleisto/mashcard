@@ -36,18 +36,21 @@ interface CompleteResult {
 
 const getWeight = (flag: CompletionFlag): number => {
   switch (flag) {
+    case 'functionNameEqual':
     case 'nameEqual':
       return 1000
+    case 'functionNameStartsWith':
     case 'nameStartsWith':
       return 500
+    case 'functionNameIncludes':
     case 'nameIncludes':
       return 200
     case 'compareTypeMatched':
-      return 50
+      return 80
     case 'compareTypeNotMatched':
       return -100
     case 'chainTypeMatched':
-      return 50
+      return 80
     case 'chainTypeNotMatched':
       return -100
     case 'contextNamespace':
@@ -57,14 +60,13 @@ const getWeight = (flag: CompletionFlag): number => {
     case 'defaultNamespace':
       return 50
     case 'blockNamespace':
-      return 20
+      return 80
     case 'variable':
       return 10
     case 'block':
     case 'column':
     case 'spreadsheet':
     case 'function':
-    case 'name':
       return 0
   }
 }
@@ -77,7 +79,7 @@ const matchTypeFlags = (type1: FormulaType, type2: FormulaCheckType): Completion
   return [type2.includes(type1) ? 'chainTypeMatched' : 'chainTypeNotMatched']
 }
 
-export const handleComplete = (ctx: FunctionContext, completion: Completion): CompleteResult => {
+export const applyCompletion = (ctx: FunctionContext, completion: Completion): CompleteResult => {
   const {
     meta: { input: definition, position: oldPosition }
   } = ctx
@@ -108,7 +110,7 @@ export const handleComplete = (ctx: FunctionContext, completion: Completion): Co
 
   return {
     definition: `${prev}${completion.fallbackValue}${next}`,
-    position: position1 + completion.fallbackValue.length
+    position: position1 + completion.fallbackValue.length + (completion.fallbackPositionOffset ?? 0)
   }
 }
 
@@ -124,7 +126,7 @@ const tryComplete = (completion: Completion, definition: string, position: numbe
     const value = replacement.value
     return {
       definition: `${newPrev}${value}${next}`,
-      position: newPrev.length + value.length
+      position: newPrev.length + value.length + (replacement.positionOffset ?? 0)
     }
   }
   return undefined
@@ -285,18 +287,36 @@ const kindCompleter: FlagCompleter = ({ completion }) => {
   return [completion.kind]
 }
 
-const nameCompleter: FlagCompleter = ({ codeFragment, completion, ctx }) => {
+const functionNameCompleter: FlagCompleter = ({ codeFragment, completion, ctx }) => {
   const namespaceId = ctx.meta.namespaceId
-  if (!['FunctionName', 'Function'].includes(codeFragment.code)) return []
+  if (codeFragment.code !== 'FunctionName') return []
 
   const value = codeFragment2value(codeFragment, namespaceId)
   const tokenLowerCase = value.toLowerCase()
 
   const completionNameLowerCase = completion.name.toLowerCase()
-  if (completionNameLowerCase === tokenLowerCase) return ['name', 'nameEqual']
-  if (completionNameLowerCase.startsWith(tokenLowerCase)) return ['name', 'nameStartsWith']
-  if (completionNameLowerCase.includes(tokenLowerCase)) return ['name', 'nameIncludes']
-  return ['name']
+  if (completionNameLowerCase === tokenLowerCase) return ['nameEqual']
+  if (completionNameLowerCase.startsWith(tokenLowerCase)) return ['nameStartsWith']
+  if (completionNameLowerCase.includes(tokenLowerCase)) return ['nameIncludes']
+  return []
+}
+
+const functionCompleter: FlagCompleter = ({ codeFragment, prevCodeFragment, completion }) => {
+  if (codeFragment.code !== 'Function') return []
+  if (completion.kind !== 'function') return []
+
+  if (prevCodeFragment?.code === 'FunctionGroup') {
+    const group = prevCodeFragment.display
+    if (!group.startsWith(completion.preview.group)) return []
+  }
+
+  const tokenLowerCase = codeFragment.display.toLowerCase()
+  const completionNameLowerCase = completion.name.toLowerCase()
+
+  if (completionNameLowerCase === tokenLowerCase) return ['functionNameEqual']
+  if (completionNameLowerCase.startsWith(tokenLowerCase)) return ['functionNameStartsWith']
+  if (completionNameLowerCase.includes(tokenLowerCase)) return ['functionNameIncludes']
+  return []
 }
 
 const EXPAND_COMPLETERS: ExpandCompleter[] = [thisRecordExpandCompleter, dotSpreadsheetExpandCompleter]
@@ -305,7 +325,8 @@ const FLAG_COMPLETERS: FlagCompleter[] = [
   dotCompleter,
   greater1Completer,
   greater2Completer,
-  nameCompleter,
+  functionNameCompleter,
+  functionCompleter,
   contextNamespaceCompleter,
   defaultNamespaceCompleter,
   variableExactCompleter,
@@ -334,7 +355,11 @@ export const getCompletion = ({ position, ctx, codeFragments, completions }: Get
       )
       return { ...c, flags: extraFlags }
     })
-    .map(c => ({ ...c, weight: c.flags.reduce((acc, flag) => acc + getWeight(flag), 0) }))
+    .map(c => ({
+      ...c,
+      weight: c.flags.reduce((acc, flag) => acc + getWeight(flag), 0),
+      flags: c.flags.sort((a, b) => getWeight(b) - getWeight(a))
+    }))
     .sort((a, b) => b.weight - a.weight)
 }
 
@@ -419,13 +444,30 @@ export const variable2completion = (variable: VariableInterface, pageId: Namespa
 }
 
 export const function2completion = (functionClause: AnyFunctionClause, weight: number): FunctionCompletion => {
-  // const value: `${FunctionKey}()` = `${functionClause.key}()`
+  const key = functionClause.group === 'core' ? functionClause.name : `${functionClause.group}::${functionClause.name}`
+  const value = `${key}()`
+  const prefix = `${functionClause.group}::`
+  const fullName = `${prefix}${functionClause.name}`
+  const baseReplacements: Completion['replacements'] = reverseTraversalString(fullName, prefix.length).map(m => ({
+    matcher: m,
+    value,
+    positionOffset: -1
+  }))
+
+  const replacements =
+    functionClause.group === 'core'
+      ? [
+          ...baseReplacements,
+          ...reverseTraversalString(functionClause.name).map(m => ({ matcher: m, value, positionOffset: -1 }))
+        ]
+      : baseReplacements
+
   return {
     kind: 'function',
-    // replacements: reverseTraversalString(value),
-    replacements: [],
+    replacements,
     flags: [],
-    fallbackValue: '',
+    fallbackPositionOffset: -1,
+    fallbackValue: value,
     weight,
     name: functionClause.name,
     preview: functionClause

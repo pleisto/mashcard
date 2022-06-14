@@ -413,6 +413,7 @@ export type CodeFragmentCodes = ComplexCodeFragmentType | SimpleCodeFragmentType
 interface CompletionReplacement {
   readonly matcher: string
   readonly value: string
+  readonly positionOffset?: number
 }
 
 export type CompletionFlag =
@@ -430,10 +431,12 @@ export type CompletionFlag =
   | 'column'
   | 'function'
   | 'variable'
-  | 'name'
   | 'nameEqual'
   | 'nameIncludes'
   | 'nameStartsWith'
+  | 'functionNameEqual'
+  | 'functionNameIncludes'
+  | 'functionNameStartsWith'
 
 interface BaseCompletion {
   readonly kind: CompletionKind
@@ -441,6 +444,7 @@ interface BaseCompletion {
   readonly flags: CompletionFlag[]
   readonly replacements: CompletionReplacement[]
   readonly fallbackValue: string
+  readonly fallbackPositionOffset?: number
   readonly name: string
   readonly preview: any
   readonly namespaceId?: NamespaceId

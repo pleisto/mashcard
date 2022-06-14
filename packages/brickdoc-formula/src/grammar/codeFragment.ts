@@ -841,14 +841,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
               code: 'FunctionGroup',
               errors: [],
               type: 'any',
-              display: group,
-              attrs: undefined
-            },
-            {
-              code: 'DoubleColon',
-              errors: [],
-              type: 'any',
-              display: '::',
+              display: `${group}::`,
               attrs: undefined
             },
             {
