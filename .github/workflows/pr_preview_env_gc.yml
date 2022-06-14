@@ -1,0 +1,51 @@
+---
+name: PR Preview Env GC
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 16 * * *'
+permissions:
+  id-token: write
+  pull-requests: write
+  contents: read
+  deployments: write
+  packages: write
+  statuses: write
+  actions: write
+env:
+  GCP_PROJECT: brickdoc-testnet
+jobs:
+  gc:
+    name: Garbage Collection of Unused Container
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: GCP Login
+        uses: google-github-actions/auth@v0
+        with:
+          workload_identity_provider: 'projects/992882677538/locations/global/workloadIdentityPools/cicd/providers/github-action'
+          service_account: 'cicd-bot@${{ env.GCP_PROJECT }}.iam.gserviceaccount.com'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+      - run: |-
+          gcloud --quiet auth configure-docker
+      - name: 'Get the GKE cluster Configuration'
+        uses: 'google-github-actions/get-gke-credentials@v0'
+        with:
+          cluster_name: 'kube-us-dev-clone-1'
+          location: 'us-central1'
+      - name: helm deployments gc
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          APPS_PREFIX: brickdoc-pr
+        run: |
+          OPENED_PR=$(gh pr list -s open --json number | jq 'map(.number)|join(",")')
+          echo "Opened PRs: $OPENED_PR"
+          OPENED_HELM=$(helm list -n cicd -f "$brickdoc-pr.+" -o json  | jq "map(.name|sub(\"$APPS_PREFIX\";\"\"))|join(\",\")")
+          echo "Opened Helm releases: $OPENED_HELM"
+          jq -n -r "{gh:$OPENED_PR|split(\",\"),helm:$OPENED_HELM|split(\",\")}|.helm-.gh|map(\"$APPS_PREFIX\(.)\") |.[]" | while read i; do
+            echo "uninstall $i...."
+            helm uninstall $i -n cicd  || true
+          done

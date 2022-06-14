@@ -11,8 +11,8 @@
 return if Rails.env.production?
 
 users = Array.new(5) do |n|
-  Accounts::User.create!(name: "ADMIN#{n}", password: "PASSWORD#{n}", email: "ADMIN#{n}@brickdoc.com",
-    domain: "ADMIN#{n}").tap(&:confirm)
+  Accounts::User.create!(name: "Test#{n}", password: 'test123', email: "test#{n}@example.com",
+    domain: "test#{n}").tap(&:confirm)
 end
 
 pods = users.map { |u| u.pods.first }

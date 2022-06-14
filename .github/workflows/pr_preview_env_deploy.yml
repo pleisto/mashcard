@@ -1,0 +1,126 @@
+name: Deploy PR Preview Env
+concurrency:
+  group: monolith-preview-env-${{ github.ref }}
+  cancel-in-progress: true
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths-ignore:
+      - '.husky/**'
+      - '**/*.md'
+      - 'packages/**/Dockerfile'
+      - '**/LICENSE'
+      - '**/NOTICE'
+      - '**/VERSION'
+permissions:
+  id-token: write
+  pull-requests: write
+  contents: read
+  deployments: write
+  packages: write
+  statuses: write
+  actions: write
+env:
+  YARN_CHECKSUM_BEHAVIOR: update
+  image: ghcr.io/brickdoc/brickdoc-snapshot:${{github.event.pull_request.number}}
+  domain: pr${{ github.event.pull_request.number }}.brickdoc.dev
+  GCP_PROJECT: brickdoc-testnet
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  SENTRY_ORG: brickdoc-inc
+  SENTRY_PROJECT: brickdoc-dev
+jobs:
+  build:
+    name: 'Build and Push Docker Image'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::0.1.${{github.event.pull_request.number}}-snapshot
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          build-args: |
+            RAILS_ENV=cicd
+            VERSION=${{ steps.get_version.outputs.VERSION }}
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
+            SENTRY_ORG=${{ env.SENTRY_ORG }}
+            SENTRY_PROJECT=${{ env.SENTRY_PROJECT }}
+          tags: ${{ env.image }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+  deploy:
+    name: 'Deployment to GKE'
+    environment:
+      name: pr_preview
+      url: https://${{ env.domain }}/
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: build
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+      - name: GCP Login
+        uses: google-github-actions/auth@v0
+        with:
+          workload_identity_provider: 'projects/992882677538/locations/global/workloadIdentityPools/cicd/providers/github-action'
+          service_account: 'cicd-bot@${{ env.GCP_PROJECT }}.iam.gserviceaccount.com'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+      - run: |-
+          gcloud --quiet auth configure-docker
+      - name: 'Get the GKE cluster Configuration'
+        uses: 'google-github-actions/get-gke-credentials@v0'
+        with:
+          cluster_name: 'kube-us-dev-clone-1'
+          location: 'us-central1'
+      - name: Uninstall History Release
+        run: |-
+          helm uninstall brickdoc-pr${{ github.event.pull_request.number }} --namespace=cicd || true
+      - name: Deployment to GKE
+        run: |-
+          helm upgrade brickdoc-pr${{ github.event.pull_request.number }} ${{ github.workspace }}/tools/helm-charts/brickdoc \
+           --install --atomic --timeout 15m --cleanup-on-fail --wait --namespace=cicd --set previewEnv=true \
+            --set-string image.name=${{ env.image }} \
+            --set-string ingress.host=${{ env.domain }} \
+            --set serviceAccount.create=false \
+            --set-string serviceAccount.name=trunk-or-pr-main \
+            --set-string resources.limits.cpu=0.5 \
+            --set-string resources.limits.memory=512Mi \
+            --set-string envs.SENTRY_DSN=https://4aa5075a3b484af6a251f3677a9f665e@o1150336.ingest.sentry.io/6257651 \
+            --set-string envs.HOST=${{ env.domain }} \
+            --set-string secrets.SECRET_KEY_SEED=${{ secrets.PR_SECRET_KEY_SEED }} \
+            --set-string secrets.UNSPLASH_API_ACCESS_KEY=${{ secrets.UNSPLASH_API_ACCESS_KEY }} \
+            --set-string secrets.UNSPLASH_API_SECRET=${{ secrets.UNSPLASH_API_SECRET }} \
+            --set-string secrets.IFRAMELY_API_ACCESS_KEY=${{ secrets.IFRAMELY_API_ACCESS_KEY }} \
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: This pull request has been built and is available
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            This pull request has been built and is available for preview at [${{ env.domain }}](https://${{ env.domain }}).
+            Default username/password is `test1@example.com` & `test123`.
+            ## Devtools
+            * [Mailer Mock](https://${{ env.domain }}/devtools/mailer)
+            * [Pod Logs (For internal use only)](https://console.cloud.google.com/logs/query?project=brickdoc-testnet)
+          edit-mode: replace

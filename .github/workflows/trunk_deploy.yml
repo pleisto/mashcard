@@ -1,0 +1,120 @@
+name: Deploy Trunk Env
+on:
+  push:
+    paths-ignore:
+      - '.husky/**'
+      - '**/*.md'
+      - '**/crowdin.yml'
+      - '**/LICENSE'
+      - '**/NOTICE'
+      - '**/VERSION'
+    branches:
+      - master
+      - main
+permissions:
+  id-token: write
+  pull-requests: write
+  contents: read
+  deployments: write
+  packages: write
+  statuses: write
+  actions: write
+env:
+  YARN_CHECKSUM_BEHAVIOR: update
+  image: ghcr.io/brickdoc/brickdoc-nightly:${{ github.run_id }}
+  domain: trunk.brickdoc.dev
+  GCP_PROJECT: brickdoc-testnet
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  SENTRY_ORG: brickdoc-inc
+  SENTRY_PROJECT: brickdoc-dev
+concurrency:
+  group: monolith-trunk-cd
+  cancel-in-progress: true
+jobs:
+  build:
+    name: 'Build and Push Docker Image'
+    runs-on: ubuntu-20.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::0.1.0-nightly.$(git rev-parse --short HEAD)
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          build-args: |
+            RAILS_ENV=production
+            VERSION=${{ steps.get_version.outputs.VERSION }}
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
+            SENTRY_ORG=${{ env.SENTRY_ORG }}
+            SENTRY_PROJECT=${{ env.SENTRY_PROJECT }}
+            COVERAGE=1
+          tags: ${{ env.image }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+  deploy:
+    name: 'Deployment to GKE'
+    environment:
+      name: trunk
+      url: https://${{ env.domain }}/
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: build
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+      - name: GCP Login
+        uses: google-github-actions/auth@v0
+        with:
+          workload_identity_provider: 'projects/992882677538/locations/global/workloadIdentityPools/cicd/providers/github-action'
+          service_account: 'cicd-bot@${{ env.GCP_PROJECT }}.iam.gserviceaccount.com'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+      - run: |-
+          gcloud --quiet auth configure-docker
+      - name: 'Get the GKE cluster Configuration'
+        uses: 'google-github-actions/get-gke-credentials@v0'
+        with:
+          cluster_name: 'kube-us-dev-clone-1'
+          location: 'us-central1'
+      - name: 'Deploy to GKE'
+        run: |-
+          helm upgrade brickdoc-trunk ${{ github.workspace }}/tools/helm-charts/brickdoc \
+           --install --atomic --timeout 15m --cleanup-on-fail --wait --namespace=cicd \
+            --set-string image.name=${{ env.image }} \
+            --set-string ingress.host=${{ env.domain }} \
+            --set serviceAccount.create=false \
+            --set-string serviceAccount.name=trunk-or-pr-main \
+            --set-string resources.requests.cpu=0.5 \
+            --set-string resources.requests.memory=512Mi \
+            --set-string envs.SMTP_FROM=brickdoc-ce-trunk@intl-email-service.brickdoc.app \
+            --set-string envs.SENTRY_DSN=https://4aa5075a3b484af6a251f3677a9f665e@o1150336.ingest.sentry.io/6257651 \
+            --set-string envs.HOST=${{ env.domain }} \
+            --set-string envs.GOOGLE_CLOUD_PROJECT=${{ env.GCP_PROJECT }} \
+            --set-string envs.GCP_KMS_FRN=projects/${{ env.GCP_PROJECT }}/locations/us-central1/keyRings/testnet/cryptoKeys/cicd \
+            --set-string envs.GCS_PRIVATE_BUCKET=trunk-pvt.testnet.brickdocusercontent.com \
+            --set-string envs.GCS_PUBLIC_BUCKET=trunk-pub.testnet.brickdocusercontent.com \
+            --set-string secrets.SECRET_KEY_SEED=${{ secrets.TRUNK_SECRET_KEY_SEED }} \
+            --set-string secrets.BRICKDOC_DATABASE_URL=${{ secrets.TRUNK_POSTGRE_URL }} \
+            --set-string secrets.REDIS_URL=${{ secrets.TRUNK_REDIS_URL }} \
+            --set-string secrets.UNSPLASH_API_ACCESS_KEY=${{ secrets.UNSPLASH_API_ACCESS_KEY }} \
+            --set-string secrets.UNSPLASH_API_SECRET=${{ secrets.UNSPLASH_API_SECRET }} \
+            --set-string secrets.IFRAMELY_API_ACCESS_KEY=${{ secrets.IFRAMELY_API_ACCESS_KEY }} \
+            --set-string secrets.SECURITY_REVERSIBLE_INT_INVERSE=${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_INVERSE }} \
+            --set-string secrets.SECURITY_REVERSIBLE_INT_RANDOM=${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_RANDOM }} \
+            --set-string secrets.SECURITY_REVERSIBLE_INT_PRIME=${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_PRIME }} \
+            --set-string secrets.SMTP_URL=${{ secrets.TRUNK_SMTP_URL }} \
+            --set-string secrets.GOOGLE_OAUTH2_ID=${{ secrets.TRUNK_GOOGLE_OAUTH2_ID }} \
+            --set-string secrets.GOOGLE_OAUTH2_SECRET=${{ secrets.TRUNK_GOOGLE_OAUTH2_SECRET }}
