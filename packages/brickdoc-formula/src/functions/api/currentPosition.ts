@@ -36,6 +36,9 @@ const CURRENT_POSITION = async (ctx: FunctionContext): Promise<RecordResult> => 
   }
 }
 
+/**
+ * @source
+ */
 export const apiCurrentPosition = createFunctionClause({
   name: 'CURRENT_POSITION',
   async: true,

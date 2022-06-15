@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const mathInt = createFunctionClause({
   name: 'INT',
   async: false,
@@ -12,7 +15,10 @@ export const mathInt = createFunctionClause({
   group: 'core',
   args: [{ name: 'number', type: 'number' }],
   returns: 'number',
-  testCases: [{ input: [1.5], output: { type: 'number', result: 1 } }],
+  testCases: [
+    { input: [NaN], output: { type: 'number', result: NaN } },
+    { input: [1.5], output: { type: 'number', result: 1 } }
+  ],
   examples: [{ input: '=INT(-1.5)', output: { type: 'number', result: -1 } }],
   chain: false,
   reference: (ctx, number) => ({

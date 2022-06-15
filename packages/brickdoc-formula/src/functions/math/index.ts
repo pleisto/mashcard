@@ -8,14 +8,4 @@ import { mathRand } from './rand'
 import { mathRound } from './round'
 import { mathTrunc } from './trunc'
 
-export const CORE_MATH_FUNCTION_CLAUSES = [
-  mathAbs,
-  mathInt,
-  mathLog10,
-  mathPi,
-  mathLn,
-  mathPower,
-  mathRand,
-  mathRound,
-  mathTrunc
-]
+export { mathAbs, mathInt, mathLog10, mathPi, mathLn, mathPower, mathRand, mathRound, mathTrunc }

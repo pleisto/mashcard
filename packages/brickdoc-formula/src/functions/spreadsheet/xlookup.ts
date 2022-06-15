@@ -52,6 +52,9 @@ StringResult | ErrorResult => {
   return result
 }
 
+/**
+ * @source
+ */
 export const spreadsheetXlookup = createFunctionClause({
   name: 'XLOOKUP',
   async: false,
@@ -61,7 +64,7 @@ export const spreadsheetXlookup = createFunctionClause({
   acceptError: false,
   effect: false,
   examples: [{ input: '=123', output: { type: 'string', result: 'foo' } }],
-  description: 'Returns the value of the column in the spreadsheet that matches the match value.',
+  description: 'returns the value of the cell in the return column that matches the lookup value in the lookup column',
   group: 'core',
   args: [
     { name: 'lookupValue', type: 'string' },

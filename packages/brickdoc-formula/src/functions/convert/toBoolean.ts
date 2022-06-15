@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const convertToBoolean = createFunctionClause({
   name: 'toBoolean',
   async: false,
@@ -18,7 +21,10 @@ export const convertToBoolean = createFunctionClause({
   returns: 'boolean',
   testCases: [
     { input: ['true'], output: { type: 'boolean', result: true } },
-    { input: ['false'], output: { type: 'boolean', result: false } }
+    { input: ['True'], output: { type: 'boolean', result: true } },
+    { input: ['false'], output: { type: 'boolean', result: false } },
+    { input: ['False'], output: { type: 'boolean', result: false } },
+    { input: ['other'], output: { type: 'boolean', result: false } }
   ],
   chain: true,
   reference: (ctx, string) => {

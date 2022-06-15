@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const stringToBar = createFunctionClause({
   name: 'toBar',
   async: false,

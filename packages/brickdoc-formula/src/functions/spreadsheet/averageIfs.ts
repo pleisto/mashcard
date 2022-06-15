@@ -39,6 +39,9 @@ const AVERAGEIFS = (
   return { type: 'number', result: sum / count }
 }
 
+/**
+ * @source
+ */
 export const spreadsheetAverageIfs = createFunctionClause({
   name: 'AVERAGEIFS',
   async: false,
@@ -48,7 +51,7 @@ export const spreadsheetAverageIfs = createFunctionClause({
   acceptError: false,
   effect: false,
   examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
-  description: 'Returns the average of the column in the spreadsheet.',
+  description: 'Returns the average of the values of the two columns that match the predicate',
   group: 'core',
   args: [
     { name: 'column1', type: 'Column' },

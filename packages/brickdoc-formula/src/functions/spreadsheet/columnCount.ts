@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const spreadsheetColumnCount = createFunctionClause({
   name: 'COLUMN_COUNT',
   async: false,

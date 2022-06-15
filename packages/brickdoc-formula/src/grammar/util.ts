@@ -91,8 +91,11 @@ export const cleanupEventDependency = (
 /**
  * Traversal and collect string from end to start.
  *
- * reverseTraversal("bar") => ["bar", "ba", "b"]
- * reverseTraversal("bar", 2) => ["bar", "ba"]
+ * @example
+ * ```typescript
+ * reverseTraversal("bar")     // => ["bar", "ba", "b"]
+ * reverseTraversal("bar", 2)  // => ["bar", "ba"]
+ * ```
  */
 export const reverseTraversalString = (str: string, min = 1): string[] => {
   const result: string[] = []
@@ -103,13 +106,34 @@ export const reverseTraversalString = (str: string, min = 1): string[] => {
 
   return result
 }
-
-// TODO: dirty hack to get the string literal value
+/**
+ *
+ * Parse string.
+ *
+ * @todo: dirty hack to get the string literal value
+ *
+ * @example
+ * ```typescript
+ * parseString("\"foo\"") // => "foo"
+ * ```
+ */
 export const parseString = (str: string): string => {
   if (!str.startsWith('"')) {
     return str
   }
   return str.substring(1, str.length - 1).replace(/""/g, '"')
+}
+
+/**
+ * Encode string.
+ *
+ * @example
+ * ```typescript
+ * encodeString("foo") // => "\"foo\""
+ * ```
+ */
+export const encodeString = (str: string): string => {
+  return `"${str}"`
 }
 
 export const maybeEncodeString = (str: string): [boolean, string] => {
@@ -130,9 +154,6 @@ export const shouldReturnEarly = (result: AnyTypeResult | undefined, skipReturnE
   return false
 }
 
-export const encodeString = (str: string): string => {
-  return `"${str}"`
-}
 export const objectDiff = <T>(a: T[], b: T[]): Record<number, T> =>
   fromPairs(differenceWith(toPairs(a), toPairs(b), isEqual))
 
@@ -306,6 +327,10 @@ export const castData = (data: any): AnyTypeResult => {
   if (Array.isArray(data)) {
     const result = data.map(e => castData(e))
     return { type: 'Array', subType: extractSubType(result), result }
+  }
+
+  if (data instanceof Object && data.type && data.result !== undefined) {
+    return data
   }
 
   const object: object = data

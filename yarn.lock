@@ -2826,6 +2826,7 @@ __metadata:
     ts-node: ^10.8.1
     turbo: ^1.2.16
     typedoc: ^0.22.17
+    typedoc-plugin-inline-sources: ^1.0.1
     typedoc-plugin-markdown: ^3.12.1
     typescript: ^4.7.3
   languageName: unknown
@@ -24415,6 +24416,15 @@ __metadata:
   version: 0.0.6
   resolution: "typedarray@npm:0.0.6"
   checksum: 33b39f3d0e8463985eeaeeacc3cb2e28bc3dfaf2a5ed219628c0b629d5d7b810b0eb2165f9f607c34871d5daa92ba1dc69f49051cf7d578b4cbd26c340b9d1b1
+  languageName: node
+  linkType: hard
+
+"typedoc-plugin-inline-sources@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "typedoc-plugin-inline-sources@npm:1.0.1"
+  peerDependencies:
+    typedoc: ">=0.22.0"
+  checksum: faf2d9a99cfff2d2f99980a2a0d63304626870bf79a9bc2812cfee3222157272f8aa15af14f30b563511cb57b979c46fac34d66c8b8aa56abe0adb8c337e5aa0
   languageName: node
   linkType: hard
 

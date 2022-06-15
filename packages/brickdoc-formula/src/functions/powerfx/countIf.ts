@@ -41,6 +41,9 @@ const CountIf = (
   return { result: sum, type: 'number' }
 }
 
+/**
+ * @source
+ */
 export const powerfxCountIf = createFunctionClause({
   name: 'CountIf',
   async: false,
@@ -50,7 +53,7 @@ export const powerfxCountIf = createFunctionClause({
   acceptError: false,
   effect: false,
   examples: [{ input: '=CountIf()', output: { type: 'number', result: 123 } }],
-  description: 'Returns the sum of the column in the spreadsheet.',
+  description: 'Counts the number of rows that match the predicate',
   group: 'core',
   args: [
     { name: 'spreadsheet', type: 'Spreadsheet' },
