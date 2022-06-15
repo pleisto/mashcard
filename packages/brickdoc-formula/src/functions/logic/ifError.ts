@@ -1,5 +1,8 @@
 import { createFunctionClause, FORMULA_USED_TYPES } from '../../types'
 
+/**
+ * @source
+ */
 export const logicIfError = createFunctionClause({
   name: 'IFERROR',
   async: false,
@@ -19,7 +22,7 @@ export const logicIfError = createFunctionClause({
     { name: 'expr1', type: [...FORMULA_USED_TYPES] },
     { name: 'expr2', type: [...FORMULA_USED_TYPES] }
   ],
-  testCases: [],
+  testCases: [{ input: [1, 2], output: { type: 'number', result: 1 } }],
   returns: FORMULA_USED_TYPES,
   reference: (ctx, expr1, expr2) => (expr1.type === 'Error' ? expr2 : expr1)
 })

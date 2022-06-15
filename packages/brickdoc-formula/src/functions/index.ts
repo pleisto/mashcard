@@ -1,19 +1,35 @@
 import { AnyFunctionClause, FunctionGroup, FunctionKey, FunctionNameType } from '../types'
-import { CORE_API_FUNCTION_CLAUSES } from './api'
-import { CORE_ARRAY_FUNCTION_CLAUSES } from './array'
-import { CORE_CONTROL_FUNCTION_CLAUSES } from './control'
-import { CORE_CONVERT_FUNCTION_CLAUSES } from './convert'
-import { CORE_CORE_FUNCTION_CLAUSES } from './core'
-import { CORE_DATE_FUNCTION_CLAUSES } from './date'
-import { CORE_ERROR_FUNCTION_CLAUSES } from './error'
-import { CORE_LOGIC_FUNCTION_CLAUSES } from './logic'
-import { CORE_MATH_FUNCTION_CLAUSES } from './math'
-import { CORE_OBJECT_FUNCTION_CLAUSES } from './object'
-import { CORE_POWERFX_FUNCTION_CLAUSES } from './powerfx'
-import { CORE_PROCESS_FUNCTION_CLAUSES } from './process'
-import { REQUEST_REQUEST_FUNCTION_CLAUSES } from './request'
-import { CORE_SPREADSHEET_FUNCTION_CLAUSES } from './spreadsheet'
-import { CORE_STRING_FUNCTION_CLAUSES } from './string'
+import * as ApiFunctions from './api'
+import * as ArrayFunctions from './array'
+import * as ControlFunctions from './control'
+import * as ConvertFunctions from './convert'
+import * as CoreFunctions from './core'
+import * as DateFunctions from './date'
+import * as ErrorFunctions from './error'
+import * as LogicFunctions from './logic'
+import * as MathFunctions from './math'
+import * as ObjectFunctions from './object'
+import * as PowerFxFunctions from './powerfx'
+import * as ProcessFunctions from './process'
+import * as RequestFunctions from './request'
+import * as SpreadsheetFunctions from './spreadsheet'
+import * as StringFunctions from './string'
+
+export * from './api'
+export * from './array'
+export * from './control'
+export * from './convert'
+export * from './core'
+export * from './date'
+export * from './error'
+export * from './logic'
+export * from './math'
+export * from './object'
+export * from './powerfx'
+export * from './process'
+export * from './request'
+export * from './spreadsheet'
+export * from './string'
 
 export const buildFunctionKey = (
   group: FunctionGroup,
@@ -27,20 +43,20 @@ export const buildFunctionKey = (
   return `${group}::${upcaseName}`
 }
 
-export const BUILTIN_CLAUSES: AnyFunctionClause[] = [
-  ...CORE_API_FUNCTION_CLAUSES,
-  ...CORE_ARRAY_FUNCTION_CLAUSES,
-  ...CORE_CONTROL_FUNCTION_CLAUSES,
-  ...CORE_CONVERT_FUNCTION_CLAUSES,
-  ...CORE_CORE_FUNCTION_CLAUSES,
-  ...CORE_DATE_FUNCTION_CLAUSES,
-  ...CORE_ERROR_FUNCTION_CLAUSES,
-  ...CORE_LOGIC_FUNCTION_CLAUSES,
-  ...CORE_MATH_FUNCTION_CLAUSES,
-  ...CORE_OBJECT_FUNCTION_CLAUSES,
-  ...CORE_POWERFX_FUNCTION_CLAUSES,
-  ...CORE_PROCESS_FUNCTION_CLAUSES,
-  ...REQUEST_REQUEST_FUNCTION_CLAUSES,
-  ...CORE_SPREADSHEET_FUNCTION_CLAUSES,
-  ...CORE_STRING_FUNCTION_CLAUSES
-]
+export const BUILTIN_CLAUSES: AnyFunctionClause[] = Object.values({
+  ...ApiFunctions,
+  ...ArrayFunctions,
+  ...ControlFunctions,
+  ...ConvertFunctions,
+  ...CoreFunctions,
+  ...DateFunctions,
+  ...ErrorFunctions,
+  ...LogicFunctions,
+  ...MathFunctions,
+  ...ObjectFunctions,
+  ...PowerFxFunctions,
+  ...ProcessFunctions,
+  ...RequestFunctions,
+  ...SpreadsheetFunctions,
+  ...StringFunctions
+})

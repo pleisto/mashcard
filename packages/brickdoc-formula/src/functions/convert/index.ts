@@ -4,10 +4,4 @@ import { convertToNumber } from './toNumber'
 import { convertToRecord } from './toRecord'
 import { convertToString } from './toString'
 
-export const CORE_CONVERT_FUNCTION_CLAUSES = [
-  convertToArray,
-  convertToRecord,
-  convertToString,
-  convertToNumber,
-  convertToBoolean
-]
+export { convertToArray, convertToBoolean, convertToNumber, convertToRecord, convertToString }

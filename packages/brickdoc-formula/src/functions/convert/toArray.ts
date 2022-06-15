@@ -1,5 +1,8 @@
-import { createFunctionClause } from '../../types'
+import { createFunctionClause, NumberResult, StringResult } from '../../types'
 
+/**
+ * @source
+ */
 export const convertToArray = createFunctionClause({
   name: 'toArray',
   async: false,
@@ -36,7 +39,7 @@ export const convertToArray = createFunctionClause({
         result: result.toArray().map((row: string[]) => ({
           type: 'Array',
           subType: 'string',
-          result: row.map(r => ({ type: 'string', result: r }))
+          result: row.map<StringResult>(r => ({ type: 'string', result: r }))
         }))
       }
 
@@ -46,7 +49,7 @@ export const convertToArray = createFunctionClause({
     return {
       type: 'Array',
       subType: 'number',
-      result: Array.from(Array(result).keys()).map(n => ({ type: 'number', result: n }))
+      result: Array.from(Array(result).keys()).map<NumberResult>(n => ({ type: 'number', result: n }))
     }
   }
 })

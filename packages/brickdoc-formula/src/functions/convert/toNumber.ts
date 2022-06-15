@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const convertToNumber = createFunctionClause({
   name: 'toNumber',
   async: false,

@@ -1,5 +1,8 @@
-import { createFunctionClause } from '../../types'
+import { createFunctionClause, StringResult } from '../../types'
 
+/**
+ * @source
+ */
 export const stringSplit = createFunctionClause({
   name: 'Split',
   async: false,
@@ -21,10 +24,24 @@ export const stringSplit = createFunctionClause({
     }
   ],
   returns: 'Array',
-  testCases: [],
+  testCases: [
+    { input: ['', ';;'], output: { type: 'Array', subType: 'string', result: [{ type: 'string', result: '' }] } },
+    { input: ['a;b', ';;'], output: { type: 'Array', subType: 'string', result: [{ type: 'string', result: 'a;b' }] } },
+    {
+      input: ['a;;b', ';;'],
+      output: {
+        type: 'Array',
+        subType: 'string',
+        result: [
+          { type: 'string', result: 'a' },
+          { type: 'string', result: 'b' }
+        ]
+      }
+    }
+  ],
   chain: true,
   reference: (ctx, string, separator) => ({
-    result: string.result.split(separator.result).map(s => ({ result: s, type: 'string' })),
+    result: string.result.split(separator.result).map<StringResult>(s => ({ result: s, type: 'string' })),
     subType: 'string',
     type: 'Array'
   })

@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const dateDate = createFunctionClause({
   name: 'DATE',
   async: false,

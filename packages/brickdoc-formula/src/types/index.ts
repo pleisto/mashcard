@@ -29,6 +29,9 @@ export const FORMULA_USED_TYPES = [
 ] as const
 const FORMULA_TYPES = [...FORMULA_USED_TYPES, 'any', 'void'] as const
 
+export const CORE_FUNCTION_GROUPS = ['core'] as const
+export type CoreFunctionGroup = typeof CORE_FUNCTION_GROUPS[number]
+
 type FormulaComplexType = typeof FORMULA_COMPLEX_TYPES[number]
 export type FormulaControlType = typeof FORMULA_CONTROL_TYPES[number]
 export type FormulaType = typeof FORMULA_TYPES[number]
@@ -80,7 +83,7 @@ export type SpecialDefaultVariableName =
   | 'waiting'
   | 'noPersist'
 
-export type FunctionGroup = 'core' | 'custom' | string
+export type FunctionGroup = CoreFunctionGroup | string
 
 export type FunctionNameType = string
 export type VariableName = string

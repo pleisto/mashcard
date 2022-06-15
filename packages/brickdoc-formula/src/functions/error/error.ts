@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const errorError = createFunctionClause({
   name: 'ERROR',
   async: false,
@@ -12,7 +15,7 @@ export const errorError = createFunctionClause({
   description: 'Returns an error with the given message.',
   group: 'core',
   args: [{ name: 'reason', type: 'string' }],
-  testCases: [],
+  testCases: [{ input: ['foo bar'], output: { type: 'Error', result: 'foo bar', errorKind: 'custom' } }],
   returns: 'Error',
   chain: true,
   reference: (ctx, reason) => ({
