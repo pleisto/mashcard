@@ -28,7 +28,7 @@ export interface DiscussionMenuProps {
 }
 
 const PopMenu: FC<{ menuToggle: (state: boolean) => void }> = ({ menuToggle }) => {
-  const { id, pin, isMine, editable } = useDocMeta()
+  const { id, pin, isMine, editable, domain } = useDocMeta()
   const navigate = useNavigate()
   const { t } = useDocsI18n()
   const client = useApolloClient()
@@ -41,9 +41,10 @@ const PopMenu: FC<{ menuToggle: (state: boolean) => void }> = ({ menuToggle }) =
   const [blockPinOrUnpin, { loading: blockPinOrUnpinLoading }] = useBlockPinOrUnpinMutation({
     refetchQueries: [queryBlockPins]
   })
-  const [blockSoftDelete] = useBlockSoftDelete(id as string, {
-    refetchQueries: [queryPageBlocks, GetTrashBlocksDocument]
-  })
+  const [blockSoftDelete] = useBlockSoftDelete(
+    { id: id as string, username: domain },
+    { refetchQueries: [queryPageBlocks, GetTrashBlocksDocument] }
+  )
   const [blockCreate] = useBlockCreateMutation({
     refetchQueries: [queryPageBlocks]
   })
