@@ -280,7 +280,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
         void dispatchFormulaBlockNameChange({ id: b.id, name: b.text, username: domain })
       }
     })
-  }, [pageBlocks])
+  }, [pageBlocks, domain])
 
   useEffect(() => {
     const flattedData = (dataPageBlocks ?? [])

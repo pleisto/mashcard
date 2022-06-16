@@ -161,7 +161,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
         void commitDirty()
       }, 500)
     }
-  }, [blockSyncBatch])
+  }, [blockSyncBatch, queryVariables.domain])
 
   const onDocSave = useCallback(
     async (doc: Node): Promise<void> => {
