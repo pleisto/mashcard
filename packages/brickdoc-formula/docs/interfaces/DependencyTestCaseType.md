@@ -44,7 +44,7 @@ RequireField.currentGroupOption
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:104](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L104)
+[packages/brickdoc-formula/src/tests/testType.ts:105](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L105)
 
 ___
 
@@ -58,7 +58,7 @@ RequireField.definition
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:101](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L101)
+[packages/brickdoc-formula/src/tests/testType.ts:102](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L102)
 
 ___
 
@@ -72,7 +72,7 @@ RequireField.expected
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:106](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L106)
+[packages/brickdoc-formula/src/tests/testType.ts:107](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L107)
 
 ___
 
@@ -86,7 +86,7 @@ RequireField.groupOptions
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:103](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L103)
+[packages/brickdoc-formula/src/tests/testType.ts:104](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L104)
 
 ___
 
@@ -100,7 +100,7 @@ RequireField.jestTitle
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:113](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L113)
+[packages/brickdoc-formula/src/tests/testType.ts:114](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L114)
 
 ___
 
@@ -114,7 +114,7 @@ RequireField.label
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:105](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L105)
+[packages/brickdoc-formula/src/tests/testType.ts:106](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L106)
 
 ___
 
@@ -128,7 +128,7 @@ RequireField.name
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:109](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L109)
+[packages/brickdoc-formula/src/tests/testType.ts:110](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L110)
 
 ___
 
@@ -142,7 +142,7 @@ RequireField.namespaceId
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:107](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L107)
+[packages/brickdoc-formula/src/tests/testType.ts:108](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L108)
 
 ___
 
@@ -156,7 +156,7 @@ RequireField.newAbbrevInput
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:102](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L102)
+[packages/brickdoc-formula/src/tests/testType.ts:103](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L103)
 
 ___
 
@@ -170,7 +170,7 @@ RequireField.position
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:111](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L111)
+[packages/brickdoc-formula/src/tests/testType.ts:112](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L112)
 
 ___
 
@@ -184,7 +184,7 @@ RequireField.richType
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:110](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L110)
+[packages/brickdoc-formula/src/tests/testType.ts:111](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L111)
 
 ___
 
@@ -194,7 +194,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:165](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L165)
+[packages/brickdoc-formula/src/tests/testType.ts:171](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L171)
 
 ___
 
@@ -208,7 +208,7 @@ RequireField.todo
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:112](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L112)
+[packages/brickdoc-formula/src/tests/testType.ts:113](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L113)
 
 ___
 
@@ -218,7 +218,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:164](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L164)
+[packages/brickdoc-formula/src/tests/testType.ts:170](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L170)
 
 ___
 
@@ -232,4 +232,4 @@ RequireField.variableId
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:108](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L108)
+[packages/brickdoc-formula/src/tests/testType.ts:109](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L109)

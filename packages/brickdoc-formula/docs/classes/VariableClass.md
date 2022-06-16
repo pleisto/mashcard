@@ -59,7 +59,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:108](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L108)
+[packages/brickdoc-formula/src/context/variable.ts:109](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L109)
 
 ## Properties
 
@@ -69,7 +69,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:105](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L105)
+[packages/brickdoc-formula/src/context/variable.ts:106](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L106)
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:104](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L104)
+[packages/brickdoc-formula/src/context/variable.ts:105](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L105)
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:106](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L106)
+[packages/brickdoc-formula/src/context/variable.ts:107](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L107)
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:103](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L103)
+[packages/brickdoc-formula/src/context/variable.ts:104](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L104)
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:99](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L99)
+[packages/brickdoc-formula/src/context/variable.ts:100](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L100)
 
 ___
 
@@ -131,7 +131,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:100](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L100)
+[packages/brickdoc-formula/src/context/variable.ts:101](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L101)
 
 ___
 
@@ -145,7 +145,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:97](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L97)
+[packages/brickdoc-formula/src/context/variable.ts:98](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L98)
 
 ___
 
@@ -159,7 +159,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:98](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L98)
+[packages/brickdoc-formula/src/context/variable.ts:99](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L99)
 
 ___
 
@@ -173,7 +173,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:96](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L96)
+[packages/brickdoc-formula/src/context/variable.ts:97](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L97)
 
 ___
 
@@ -183,7 +183,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:102](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L102)
+[packages/brickdoc-formula/src/context/variable.ts:103](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L103)
 
 ## Methods
 
@@ -207,7 +207,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:310](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L310)
+[packages/brickdoc-formula/src/context/variable.ts:311](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L311)
 
 ___
 
@@ -225,7 +225,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:211](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L211)
+[packages/brickdoc-formula/src/context/variable.ts:212](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L212)
 
 ___
 
@@ -246,7 +246,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:201](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L201)
+[packages/brickdoc-formula/src/context/variable.ts:202](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L202)
 
 ___
 
@@ -269,7 +269,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:328](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L328)
+[packages/brickdoc-formula/src/context/variable.ts:329](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L329)
 
 ___
 
@@ -287,7 +287,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:273](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L273)
+[packages/brickdoc-formula/src/context/variable.ts:274](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L274)
 
 ___
 
@@ -305,7 +305,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:284](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L284)
+[packages/brickdoc-formula/src/context/variable.ts:285](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L285)
 
 ___
 
@@ -329,7 +329,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:264](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L264)
+[packages/brickdoc-formula/src/context/variable.ts:265](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L265)
 
 ___
 
@@ -355,7 +355,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:151](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L151)
+[packages/brickdoc-formula/src/context/variable.ts:152](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L152)
 
 ___
 
@@ -373,7 +373,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:306](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L306)
+[packages/brickdoc-formula/src/context/variable.ts:307](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L307)
 
 ___
 
@@ -387,7 +387,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:385](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L385)
+[packages/brickdoc-formula/src/context/variable.ts:386](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L386)
 
 ___
 
@@ -408,7 +408,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:194](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L194)
+[packages/brickdoc-formula/src/context/variable.ts:195](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L195)
 
 ___
 
@@ -422,7 +422,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:509](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L509)
+[packages/brickdoc-formula/src/context/variable.ts:518](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L518)
 
 ___
 
@@ -442,7 +442,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:180](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L180)
+[packages/brickdoc-formula/src/context/variable.ts:181](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L181)
 
 ___
 
@@ -460,7 +460,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:235](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L235)
+[packages/brickdoc-formula/src/context/variable.ts:236](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L236)
 
 ___
 
@@ -478,7 +478,7 @@ VariableInterface.trackDirty
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:173](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L173)
+[packages/brickdoc-formula/src/context/variable.ts:174](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L174)
 
 ___
 
@@ -492,7 +492,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:543](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L543)
+[packages/brickdoc-formula/src/context/variable.ts:552](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L552)
 
 ___
 
@@ -516,4 +516,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:381](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L381)
+[packages/brickdoc-formula/src/context/variable.ts:382](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L382)

@@ -27,7 +27,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:734](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L734)
+[packages/brickdoc-formula/src/types/index.ts:735](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L735)
 
 ___
 
@@ -37,7 +37,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:735](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L735)
+[packages/brickdoc-formula/src/types/index.ts:736](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L736)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:730](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L730)
+[packages/brickdoc-formula/src/types/index.ts:731](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L731)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:729](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L729)
+[packages/brickdoc-formula/src/types/index.ts:730](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L730)
 
 ## Methods
 
@@ -86,4 +86,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:736](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L736)
+[packages/brickdoc-formula/src/types/index.ts:737](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L737)

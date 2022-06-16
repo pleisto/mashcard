@@ -25,4 +25,4 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:893](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L893)
+[packages/brickdoc-formula/src/types/index.ts:895](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L895)

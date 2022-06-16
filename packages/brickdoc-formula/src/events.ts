@@ -35,6 +35,9 @@ export const FormulaTaskCompleted = event<{ task: VariableTask; namespaceId: str
   }
 )
 
+/**
+ * Dispatch Block Delete Event.
+ */
 export const dispatchFormulaBlockSoftDelete = async ({
   id,
   username
@@ -74,6 +77,9 @@ export const FormulaBlockNameModifiedWithUsername = event<
   return { id: username }
 })
 
+/**
+ * Dispatch Block Rename Event.
+ */
 export const dispatchFormulaBlockNameChange = async ({
   id,
   name,

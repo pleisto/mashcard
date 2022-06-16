@@ -124,6 +124,10 @@ ___
 
 • **domain**: `string`
 
+#### Implementation of
+
+[ContextInterface](../interfaces/ContextInterface.md).[domain](../interfaces/ContextInterface.md#domain)
+
 #### Defined in
 
 [packages/brickdoc-formula/src/context/context.ts:114](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/context.ts#L114)
