@@ -38,7 +38,7 @@ export class BlockClass implements BlockType {
     const blockNameSubscription = MashcardEventBus.subscribe(
       FormulaBlockNameChangedTrigger,
       async e => {
-        this._name = e.payload.meta.name || 'Untitled'
+        this._name = e.payload.meta || 'Untitled'
         await this._formulaContext.setName(this.nameDependency())
       },
       { subscribeId: `Block#${this.id}`, eventId: `${this._formulaContext.domain}#${this.id}` }
@@ -86,8 +86,9 @@ export class BlockClass implements BlockType {
         id: this.id,
         namespaceId: this.id,
         key: this.id,
+        username: this._formulaContext.domain,
         scope: null,
-        meta: { name: this._name, username: this._formulaContext.domain }
+        meta: this._name
       })
     )
     await Promise.all(result)

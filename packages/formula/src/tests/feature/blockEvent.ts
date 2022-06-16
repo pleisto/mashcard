@@ -6,7 +6,7 @@ const page0Id = '44444444-5555-6666-7777-444444444444'
 const page1Id = '55555555-6666-7777-8888-999999999999'
 
 interface AllowEvents {
-  change: typeof dispatchFormulaBlockNameChange
+  changeName: typeof dispatchFormulaBlockNameChange
   delete: typeof dispatchFormulaBlockSoftDelete
 }
 

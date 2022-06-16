@@ -28,7 +28,7 @@ export const OtherTestCase: TestCaseInterface = {
       {
         definition: '== 1',
         newAbbrevInput: '==1',
-        todo: 'fix space',
+        todoMessage: 'fix == space',
         errorType: 'parse',
         errorMessage: 'TODO mismatch token startExpression',
         valid: false

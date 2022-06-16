@@ -21,7 +21,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:61](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L61)
+[packages/formula/src/tests/testType.ts:62](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L62)
 
 ___
 

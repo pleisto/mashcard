@@ -64,7 +64,7 @@ Omit.interpretContext
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:186](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L186)
+[packages/formula/src/tests/testType.ts:200](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L200)
 
 ___
 
@@ -84,4 +84,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:187](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L187)
+[packages/formula/src/tests/testType.ts:201](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L201)

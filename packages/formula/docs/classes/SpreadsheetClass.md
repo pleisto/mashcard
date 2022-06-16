@@ -64,7 +64,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:72](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L72)
+[packages/formula/src/controls/spreadsheet.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L73)
 
 ## Properties
 
@@ -74,7 +74,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:68](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L68)
+[packages/formula/src/controls/spreadsheet.ts:69](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L69)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:49](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L49)
+[packages/formula/src/controls/spreadsheet.ts:50](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L50)
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L54)
+[packages/formula/src/controls/spreadsheet.ts:55](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L55)
 
 ___
 
@@ -104,7 +104,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:69](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L69)
+[packages/formula/src/controls/spreadsheet.ts:70](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L70)
 
 ___
 
@@ -118,7 +118,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:52](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L52)
+[packages/formula/src/controls/spreadsheet.ts:53](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L53)
 
 ___
 
@@ -128,7 +128,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:70](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L70)
+[packages/formula/src/controls/spreadsheet.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L71)
 
 ___
 
@@ -156,7 +156,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:56](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L56)
+[packages/formula/src/controls/spreadsheet.ts:57](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L57)
 
 ___
 
@@ -178,7 +178,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:55](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L55)
+[packages/formula/src/controls/spreadsheet.ts:56](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L56)
 
 ___
 
@@ -192,7 +192,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:51](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L51)
+[packages/formula/src/controls/spreadsheet.ts:52](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L52)
 
 ___
 
@@ -206,7 +206,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:53](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L53)
+[packages/formula/src/controls/spreadsheet.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L54)
 
 ___
 
@@ -220,7 +220,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:50](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L50)
+[packages/formula/src/controls/spreadsheet.ts:51](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L51)
 
 ## Methods
 
@@ -238,7 +238,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:205](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L205)
+[packages/formula/src/controls/spreadsheet.ts:229](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L229)
 
 ___
 
@@ -256,13 +256,13 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:385](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L385)
+[packages/formula/src/controls/spreadsheet.ts:409](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L409)
 
 ___
 
 ### <a id="eventdependency" name="eventdependency"></a> eventDependency
 
-▸ **eventDependency**(`__namedParameters`): [`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNameViaIdPayload`](../README.md#spreadsheetupdatenameviaidpayload)\>
+▸ **eventDependency**(`__namedParameters`): [`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNamePayload`](../README.md#spreadsheetupdatenamepayload)\>
 
 #### Parameters
 
@@ -272,7 +272,7 @@ ___
 
 #### Returns
 
-[`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNameViaIdPayload`](../README.md#spreadsheetupdatenameviaidpayload)\>
+[`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNamePayload`](../README.md#spreadsheetupdatenamepayload)\>
 
 #### Implementation of
 
@@ -280,7 +280,7 @@ SpreadsheetType.eventDependency
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:250](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L250)
+[packages/formula/src/controls/spreadsheet.ts:274](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L274)
 
 ___
 
@@ -306,7 +306,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:431](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L431)
+[packages/formula/src/controls/spreadsheet.ts:455](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L455)
 
 ___
 
@@ -332,7 +332,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:422](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L422)
+[packages/formula/src/controls/spreadsheet.ts:446](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L446)
 
 ___
 
@@ -356,7 +356,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:405](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L405)
+[packages/formula/src/controls/spreadsheet.ts:429](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L429)
 
 ___
 
@@ -380,7 +380,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:393](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L393)
+[packages/formula/src/controls/spreadsheet.ts:417](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L417)
 
 ___
 
@@ -406,7 +406,7 @@ SpreadsheetType.handleCodeFragments
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:289](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L289)
+[packages/formula/src/controls/spreadsheet.ts:313](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L313)
 
 ___
 
@@ -428,7 +428,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:331](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L331)
+[packages/formula/src/controls/spreadsheet.ts:355](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L355)
 
 ___
 
@@ -450,7 +450,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:301](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L301)
+[packages/formula/src/controls/spreadsheet.ts:325](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L325)
 
 ___
 
@@ -475,7 +475,7 @@ SpreadsheetType.handleInterpret
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:234](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L234)
+[packages/formula/src/controls/spreadsheet.ts:258](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L258)
 
 ___
 
@@ -496,7 +496,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:242](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L242)
+[packages/formula/src/controls/spreadsheet.ts:266](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L266)
 
 ___
 
@@ -516,7 +516,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:280](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L280)
+[packages/formula/src/controls/spreadsheet.ts:304](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L304)
 
 ___
 
@@ -542,7 +542,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:192](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L192)
+[packages/formula/src/controls/spreadsheet.ts:216](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L216)
 
 ___
 
@@ -560,7 +560,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:184](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L184)
+[packages/formula/src/controls/spreadsheet.ts:208](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L208)
 
 ___
 
@@ -578,7 +578,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:188](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L188)
+[packages/formula/src/controls/spreadsheet.ts:212](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L212)
 
 ___
 
@@ -596,7 +596,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:212](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L212)
+[packages/formula/src/controls/spreadsheet.ts:236](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L236)
 
 ___
 
@@ -620,7 +620,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:175](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L175)
+[packages/formula/src/controls/spreadsheet.ts:199](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L199)
 
 ___
 
@@ -638,7 +638,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:375](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L375)
+[packages/formula/src/controls/spreadsheet.ts:399](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L399)
 
 ___
 
@@ -652,7 +652,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:364](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L364)
+[packages/formula/src/controls/spreadsheet.ts:388](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L388)
 
 ___
 
@@ -670,7 +670,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:389](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L389)
+[packages/formula/src/controls/spreadsheet.ts:413](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L413)
 
 ___
 
@@ -688,7 +688,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:440](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L440)
+[packages/formula/src/controls/spreadsheet.ts:464](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L464)
 
 ___
 
@@ -706,4 +706,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/controls/spreadsheet.ts:459](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L459)
+[packages/formula/src/controls/spreadsheet.ts:483](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L483)

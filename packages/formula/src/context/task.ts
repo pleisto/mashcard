@@ -2,7 +2,7 @@ import { FunctionContext, VariableTask, VariableValue } from '../types'
 import { uuid } from '@mashcard/active-support'
 import { MashcardEventBus } from '@mashcard/schema'
 import { ParseResult } from '../grammar'
-import { FormulaTaskCompleted, FormulaTaskStarted } from '../events'
+import { FormulaTaskCompleted } from '../events'
 
 type TaskInput = (
   | {
@@ -22,6 +22,7 @@ export const createVariableTask = ({
   async,
   variableValue,
   ctx: {
+    formulaContext,
     meta: { namespaceId, variableId }
   }
 }: TaskInput): VariableTask => {
@@ -44,12 +45,13 @@ export const createVariableTask = ({
     execEndTime: undefined
   }
 
-  setTimeout(() => {
-    MashcardEventBus.dispatch(FormulaTaskStarted({ task, namespaceId, variableId }))
-    void variableValue.then(value => {
-      const newTask: VariableTask = { ...task, variableValue: value, execEndTime: new Date(), async: false }
-      MashcardEventBus.dispatch(FormulaTaskCompleted({ task: newTask, namespaceId, variableId }))
-    })
+  void variableValue.then(async value => {
+    const newTask: VariableTask = { ...task, variableValue: value, execEndTime: new Date(), async: false }
+    const result = MashcardEventBus.dispatch(
+      FormulaTaskCompleted({ task: newTask, namespaceId, variableId, username: formulaContext.domain })
+    )
+    await Promise.all(result)
   })
+
   return task
 }

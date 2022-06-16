@@ -21,19 +21,12 @@ export const FormulaUpdatedViaId = event<FormulaEventPayload<VariableInterface>,
   }
 )
 
-export const FormulaTaskStarted = event<{ task: VariableTask; namespaceId: string; variableId: string }>()(
-  'FormulaTaskStarted',
-  v => {
-    return { id: `${v.namespaceId},${v.variableId}` }
-  }
-)
-
-export const FormulaTaskCompleted = event<{ task: VariableTask; namespaceId: string; variableId: string }>()(
-  'FormulaTaskCompleted',
-  v => {
-    return { id: `${v.namespaceId},${v.variableId}` }
-  }
-)
+export const FormulaTaskCompleted = event<
+  { task: VariableTask; namespaceId: string; variableId: string; username: string },
+  Promise<void>
+>()('FormulaTaskCompleted', v => {
+  return { id: `${v.username}#${v.namespaceId},${v.variableId}` }
+})
 
 /**
  * Dispatch Block Delete Event.
@@ -56,26 +49,26 @@ export const FormulaDocSoftDeleted = event<{ id: string; username: string }, Pro
   }
 )
 
-export const FormulaBlockNameChangedTrigger = event<
-  FormulaEventPayload<{ name: string; username: string }>,
-  Promise<void>
->()('FormulaBlockNameChangedTrigger', ({ id, meta: { username } }) => {
-  return { id: `${username}#${id}` }
-})
+export const FormulaBlockNameChangedTrigger = event<FormulaEventPayload<string>, Promise<void>>()(
+  'FormulaBlockNameChangedTrigger',
+  ({ id, username }) => {
+    return { id: `${username}#${id}` }
+  }
+)
 
-export const FormulaBlockNameDeletedTrigger = event<
-  FormulaEventPayload<{ name: string; username: string }>,
-  Promise<void>
->()('FormulaBlockNameDeletedTrigger', ({ id, meta: { username } }) => {
-  return { id: `${username}#${id}` }
-})
+export const FormulaBlockNameDeletedTrigger = event<FormulaEventPayload<string>, Promise<void>>()(
+  'FormulaBlockNameDeletedTrigger',
+  ({ id, username }) => {
+    return { id: `${username}#${id}` }
+  }
+)
 
-export const FormulaBlockNameModifiedWithUsername = event<
-  FormulaEventPayload<{ name: string; username: string }>,
-  Promise<void>
->()('FormulaBlockNameModifiedWithUsername', ({ id, meta: { username } }) => {
-  return { id: username }
-})
+export const FormulaBlockNameModifiedWithUsername = event<FormulaEventPayload<string>, Promise<void>>()(
+  'FormulaBlockNameModifiedWithUsername',
+  ({ id, username }) => {
+    return { id: username }
+  }
+)
 
 /**
  * Dispatch Block Rename Event.
@@ -90,62 +83,169 @@ export const dispatchFormulaBlockNameChange = async ({
   username: string
 }): Promise<void> => {
   const result1 = MashcardEventBus.dispatch(
-    FormulaBlockNameModifiedWithUsername({ id, namespaceId: id, key: id, scope: null, meta: { name, username } })
+    FormulaBlockNameModifiedWithUsername({
+      id,
+      namespaceId: id,
+      key: id,
+      scope: null,
+      username,
+      meta: name
+    })
   )
   await Promise.all(result1)
 
   const result2 = MashcardEventBus.dispatch(
-    FormulaBlockNameChangedTrigger({ id, namespaceId: id, key: id, scope: null, meta: { name, username } })
+    FormulaBlockNameChangedTrigger({ id, namespaceId: id, key: id, scope: null, username, meta: name })
   )
   await Promise.all(result2)
 }
 
-export type SpreadsheetUpdateNameViaIdPayload = FormulaEventPayload<null>
+export type SpreadsheetUpdateNamePayload = FormulaEventPayload<null>
 
-export const SpreadsheetReloadViaId = event<SpreadsheetUpdateNameViaIdPayload, Promise<void>>()(
+export const SpreadsheetReloadViaId = event<SpreadsheetUpdateNamePayload, Promise<void>>()(
   'SpreadsheetReloadViaId',
   ({ id, namespaceId }) => {
     return { id: `${namespaceId},${id}` }
   }
 )
 
+export const dispatchFormulaSpreadsheetNameChange = async ({
+  namespaceId,
+  username,
+  title,
+  spreadsheetId
+}: {
+  namespaceId: string
+  username: string | undefined
+  title: string
+  spreadsheetId: string
+}): Promise<void> => {
+  if (!username) return
+  const result = MashcardEventBus.dispatch(
+    SpreadsheetUpdateNameViaId({
+      username,
+      id: spreadsheetId,
+      meta: title,
+      scope: null,
+      key: spreadsheetId,
+      namespaceId
+    })
+  )
+  await Promise.all(result)
+}
+
+export const dispatchFormulaSpreadsheetRemove = async ({
+  id,
+  username
+}: {
+  id: string
+  username: string | undefined
+}): Promise<void> => {
+  if (!username) return
+  const result = MashcardEventBus.dispatch(FormulaSpreadsheetDeleted({ id, username }))
+  await Promise.all(result)
+}
+
+export const dispatchFormulaSpreadsheetRowChange = async ({
+  spreadsheetId,
+  username,
+  namespaceId,
+  rows
+}: {
+  spreadsheetId: string
+  username: string | undefined
+  namespaceId: string
+  rows: Row[]
+}): Promise<void> => {
+  if (!username) return
+  const result = MashcardEventBus.dispatch(
+    SpreadsheetUpdateRowsViaId({
+      spreadsheetId,
+      rows,
+      username,
+      key: spreadsheetId,
+      namespaceId
+    })
+  )
+  await Promise.all(result)
+}
+
+export const dispatchFormulaSpreadsheetColumnChange = async ({
+  spreadsheetId,
+  username,
+  namespaceId,
+  columns
+}: {
+  spreadsheetId: string
+  username: string | undefined
+  namespaceId: string
+  columns: Column[]
+}): Promise<void> => {
+  if (!username) return
+  const result = MashcardEventBus.dispatch(
+    SpreadsheetUpdateColumnsViaId({
+      spreadsheetId,
+      columns,
+      username,
+      key: spreadsheetId,
+      namespaceId
+    })
+  )
+  await Promise.all(result)
+}
+
+export const FormulaSpreadsheetDeleted = event<{ id: string; username: string }, Promise<void>>()(
+  'FormulaSpreadsheetDeleted',
+  ({ id, username }) => {
+    return { id: `${username}#${id}` }
+  }
+)
+
 export const SpreadsheetUpdateNameViaId = event<FormulaEventPayload<string>, Promise<void>>()(
   'SpreadsheetUpdateNameViaId',
-  ({ id, namespaceId }) => {
-    return { id: `${namespaceId},${id}` }
+  ({ username, id, namespaceId }) => {
+    return { id: `${username}#${namespaceId},${id}` }
   }
 )
 
 export const FormulaContextNameChanged = event<FormulaEventPayload<{ name: string; kind: string }>, Promise<void>>()(
   'FormulaContextNameChanged',
-  ({ namespaceId, meta: { name } }) => {
-    return { id: `${namespaceId}#${name}` }
+  ({ username, namespaceId, meta: { name } }) => {
+    return { id: `${username}#${namespaceId}#${name}` }
   }
 )
 
 export const FormulaContextNameRemove = event<FormulaEventPayload<{ name: string; kind: string }>, Promise<void>>()(
   'FormulaContextNameRemove',
-  ({ namespaceId, meta: { name } }) => {
-    return { id: `${namespaceId}#${name}` }
+  ({ username, namespaceId, meta: { name } }) => {
+    return { id: `${username}#${namespaceId}#${name}` }
   }
 )
 
-export const SpreadsheetUpdateRowsViaId = event<{
-  spreadsheetId: string
-  namespaceId: string
-  rows: Row[]
-  key: string
-}>()('SpreadsheetUpdateRowsViaId', ({ spreadsheetId, namespaceId }) => {
-  return { id: `${namespaceId},${spreadsheetId}` }
+export const SpreadsheetUpdateRowsViaId = event<
+  {
+    spreadsheetId: string
+    namespaceId: string
+    rows: Row[]
+    username: string
+    key: string
+  },
+  Promise<void>
+>()('SpreadsheetUpdateRowsViaId', ({ username, spreadsheetId, namespaceId }) => {
+  return { id: `${username}#${namespaceId},${spreadsheetId}` }
 })
 
-export const SpreadsheetUpdateColumnsViaId = event<{
-  spreadsheetId: string
-  namespaceId: string
-  columns: Column[]
-  key: string
-}>()('SpreadsheetUpdateColumnsViaId', ({ spreadsheetId, namespaceId }) => {
-  return { id: `${namespaceId},${spreadsheetId}` }
+export const SpreadsheetUpdateColumnsViaId = event<
+  {
+    spreadsheetId: string
+    namespaceId: string
+    columns: Column[]
+    username: string
+    key: string
+  },
+  Promise<void>
+>()('SpreadsheetUpdateColumnsViaId', ({ username, spreadsheetId, namespaceId }) => {
+  return { id: `${username}#${namespaceId},${spreadsheetId}` }
 })
 
 export const FormulaContextTickTrigger = event<{ domain: string; state: ContextState }, Promise<void>>()(

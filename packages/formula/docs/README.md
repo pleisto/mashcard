@@ -185,7 +185,7 @@
 - [SpreadsheetId](README.md#spreadsheetid)
 - [SpreadsheetKey](README.md#spreadsheetkey)
 - [SpreadsheetName](README.md#spreadsheetname)
-- [SpreadsheetUpdateNameViaIdPayload](README.md#spreadsheetupdatenameviaidpayload)
+- [SpreadsheetUpdateNamePayload](README.md#spreadsheetupdatenamepayload)
 - [TestCaseName](README.md#testcasename)
 - [TypedResult](README.md#typedresult)
 - [VariableId](README.md#variableid)
@@ -241,8 +241,8 @@
 - [FormulaContextTickTrigger](README.md#formulacontextticktrigger)
 - [FormulaDocSoftDeleted](README.md#formuladocsoftdeleted)
 - [FormulaLexer](README.md#formulalexer)
+- [FormulaSpreadsheetDeleted](README.md#formulaspreadsheetdeleted)
 - [FormulaTaskCompleted](README.md#formulataskcompleted)
-- [FormulaTaskStarted](README.md#formulataskstarted)
 - [FormulaTickViaId](README.md#formulatickviaid)
 - [FormulaTypeCastName](README.md#formulatypecastname)
 - [FormulaUpdatedViaId](README.md#formulaupdatedviaid)
@@ -402,6 +402,10 @@
 - [currentBlockKey](README.md#currentblockkey)
 - [dispatchFormulaBlockNameChange](README.md#dispatchformulablocknamechange)
 - [dispatchFormulaBlockSoftDelete](README.md#dispatchformulablocksoftdelete)
+- [dispatchFormulaSpreadsheetColumnChange](README.md#dispatchformulaspreadsheetcolumnchange)
+- [dispatchFormulaSpreadsheetNameChange](README.md#dispatchformulaspreadsheetnamechange)
+- [dispatchFormulaSpreadsheetRemove](README.md#dispatchformulaspreadsheetremove)
+- [dispatchFormulaSpreadsheetRowChange](README.md#dispatchformulaspreadsheetrowchange)
 - [displayValue](README.md#displayvalue)
 - [dumpDisplayResultForDisplay](README.md#dumpdisplayresultfordisplay)
 - [dumpValue](README.md#dumpvalue)
@@ -863,7 +867,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:45](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L45)
+[packages/formula/src/tests/testType.ts:46](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L46)
 
 ___
 
@@ -1031,9 +1035,9 @@ ___
 
 ___
 
-### <a id="spreadsheetupdatenameviaidpayload" name="spreadsheetupdatenameviaidpayload"></a> SpreadsheetUpdateNameViaIdPayload
+### <a id="spreadsheetupdatenamepayload" name="spreadsheetupdatenamepayload"></a> SpreadsheetUpdateNamePayload
 
-Ƭ **SpreadsheetUpdateNameViaIdPayload**: [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<``null``\>
+Ƭ **SpreadsheetUpdateNamePayload**: [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<``null``\>
 
 #### Defined in
 
@@ -1047,7 +1051,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:94](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L94)
+[packages/formula/src/tests/testType.ts:97](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L97)
 
 ___
 
@@ -1113,7 +1117,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:848](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L848)
+[packages/formula/src/types/index.ts:849](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L849)
 
 ___
 
@@ -1123,7 +1127,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:822](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L822)
+[packages/formula/src/types/index.ts:823](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L823)
 
 ___
 
@@ -1358,7 +1362,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L16)
+[packages/formula/src/tests/testType.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L17)
 
 ___
 
@@ -1504,7 +1508,17 @@ ___
 
 ### <a id="formulablocknamechangedtrigger" name="formulablocknamechangedtrigger"></a> FormulaBlockNameChangedTrigger
 
-• `Const` **FormulaBlockNameChangedTrigger**: `EventType`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `name`: `string` ; `username`: `string`  }\>, `Promise`<`void`\>\>
+• `Const` **FormulaBlockNameChangedTrigger**: `EventType`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
+
+#### Defined in
+
+[packages/formula/src/events.ts:52](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L52)
+
+___
+
+### <a id="formulablocknamedeletedtrigger" name="formulablocknamedeletedtrigger"></a> FormulaBlockNameDeletedTrigger
+
+• `Const` **FormulaBlockNameDeletedTrigger**: `EventType`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
 
 #### Defined in
 
@@ -1512,23 +1526,13 @@ ___
 
 ___
 
-### <a id="formulablocknamedeletedtrigger" name="formulablocknamedeletedtrigger"></a> FormulaBlockNameDeletedTrigger
+### <a id="formulablocknamemodifiedwithusername" name="formulablocknamemodifiedwithusername"></a> FormulaBlockNameModifiedWithUsername
 
-• `Const` **FormulaBlockNameDeletedTrigger**: `EventType`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `name`: `string` ; `username`: `string`  }\>, `Promise`<`void`\>\>
+• `Const` **FormulaBlockNameModifiedWithUsername**: `EventType`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
 
 #### Defined in
 
 [packages/formula/src/events.ts:66](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L66)
-
-___
-
-### <a id="formulablocknamemodifiedwithusername" name="formulablocknamemodifiedwithusername"></a> FormulaBlockNameModifiedWithUsername
-
-• `Const` **FormulaBlockNameModifiedWithUsername**: `EventType`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `name`: `string` ; `username`: `string`  }\>, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L73)
 
 ___
 
@@ -1538,7 +1542,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/events.ts:119](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L119)
+[packages/formula/src/events.ts:211](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L211)
 
 ___
 
@@ -1548,7 +1552,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/events.ts:126](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L126)
+[packages/formula/src/events.ts:218](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L218)
 
 ___
 
@@ -1558,7 +1562,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/events.ts:151](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L151)
+[packages/formula/src/events.ts:251](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L251)
 
 ___
 
@@ -1568,7 +1572,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/events.ts:52](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L52)
+[packages/formula/src/events.ts:45](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L45)
 
 ___
 
@@ -1582,19 +1586,19 @@ ___
 
 ___
 
-### <a id="formulataskcompleted" name="formulataskcompleted"></a> FormulaTaskCompleted
+### <a id="formulaspreadsheetdeleted" name="formulaspreadsheetdeleted"></a> FormulaSpreadsheetDeleted
 
-• `Const` **FormulaTaskCompleted**: `EventType`<{ `namespaceId`: `string` ; `task`: [`VariableTask`](README.md#variabletask) ; `variableId`: `string`  }, `void`\>
+• `Const` **FormulaSpreadsheetDeleted**: `EventType`<{ `id`: `string` ; `username`: `string`  }, `Promise`<`void`\>\>
 
 #### Defined in
 
-[packages/formula/src/events.ts:31](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L31)
+[packages/formula/src/events.ts:197](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L197)
 
 ___
 
-### <a id="formulataskstarted" name="formulataskstarted"></a> FormulaTaskStarted
+### <a id="formulataskcompleted" name="formulataskcompleted"></a> FormulaTaskCompleted
 
-• `Const` **FormulaTaskStarted**: `EventType`<{ `namespaceId`: `string` ; `task`: [`VariableTask`](README.md#variabletask) ; `variableId`: `string`  }, `void`\>
+• `Const` **FormulaTaskCompleted**: `EventType`<{ `namespaceId`: `string` ; `task`: [`VariableTask`](README.md#variabletask) ; `username`: `string` ; `variableId`: `string`  }, `Promise`<`void`\>\>
 
 #### Defined in
 
@@ -1974,7 +1978,7 @@ ___
 
 ### <a id="spreadsheetreloadviaid" name="spreadsheetreloadviaid"></a> SpreadsheetReloadViaId
 
-• `Const` **SpreadsheetReloadViaId**: `EventType`<[`SpreadsheetUpdateNameViaIdPayload`](README.md#spreadsheetupdatenameviaidpayload), `Promise`<`void`\>\>
+• `Const` **SpreadsheetReloadViaId**: `EventType`<[`SpreadsheetUpdateNamePayload`](README.md#spreadsheetupdatenamepayload), `Promise`<`void`\>\>
 
 #### Defined in
 
@@ -1984,11 +1988,11 @@ ___
 
 ### <a id="spreadsheetupdatecolumnsviaid" name="spreadsheetupdatecolumnsviaid"></a> SpreadsheetUpdateColumnsViaId
 
-• `Const` **SpreadsheetUpdateColumnsViaId**: `EventType`<{ `columns`: [`Column`](interfaces/Column.md)[] ; `key`: `string` ; `namespaceId`: `string` ; `spreadsheetId`: `string`  }, `void`\>
+• `Const` **SpreadsheetUpdateColumnsViaId**: `EventType`<{ `columns`: [`Column`](interfaces/Column.md)[] ; `key`: `string` ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `string`  }, `Promise`<`void`\>\>
 
 #### Defined in
 
-[packages/formula/src/events.ts:142](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L142)
+[packages/formula/src/events.ts:238](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L238)
 
 ___
 
@@ -1998,17 +2002,17 @@ ___
 
 #### Defined in
 
-[packages/formula/src/events.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L112)
+[packages/formula/src/events.ts:204](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L204)
 
 ___
 
 ### <a id="spreadsheetupdaterowsviaid" name="spreadsheetupdaterowsviaid"></a> SpreadsheetUpdateRowsViaId
 
-• `Const` **SpreadsheetUpdateRowsViaId**: `EventType`<{ `key`: `string` ; `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string`  }, `void`\>
+• `Const` **SpreadsheetUpdateRowsViaId**: `EventType`<{ `key`: `string` ; `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `string`  }, `Promise`<`void`\>\>
 
 #### Defined in
 
-[packages/formula/src/events.ts:133](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L133)
+[packages/formula/src/events.ts:225](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L225)
 
 ___
 
@@ -4449,7 +4453,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:18](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L18)
+[packages/formula/src/tests/testType.ts:19](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L19)
 
 ___
 
@@ -4742,7 +4746,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L65)
+[packages/formula/src/context/variable.ts:64](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L64)
 
 ___
 
@@ -5003,7 +5007,7 @@ Dispatch Block Rename Event.
 
 #### Defined in
 
-[packages/formula/src/events.ts:83](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L83)
+[packages/formula/src/events.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L76)
 
 ___
 
@@ -5027,7 +5031,101 @@ Dispatch Block Delete Event.
 
 #### Defined in
 
-[packages/formula/src/events.ts:41](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L41)
+[packages/formula/src/events.ts:34](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L34)
+
+___
+
+### <a id="dispatchformulaspreadsheetcolumnchange" name="dispatchformulaspreadsheetcolumnchange"></a> dispatchFormulaSpreadsheetColumnChange
+
+▸ **dispatchFormulaSpreadsheetColumnChange**(`__namedParameters`): `Promise`<`void`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+| `__namedParameters.columns` | [`Column`](interfaces/Column.md)[] |
+| `__namedParameters.namespaceId` | `string` |
+| `__namedParameters.spreadsheetId` | `string` |
+| `__namedParameters.username` | `undefined` \| `string` |
+
+#### Returns
+
+`Promise`<`void`\>
+
+#### Defined in
+
+[packages/formula/src/events.ts:173](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L173)
+
+___
+
+### <a id="dispatchformulaspreadsheetnamechange" name="dispatchformulaspreadsheetnamechange"></a> dispatchFormulaSpreadsheetNameChange
+
+▸ **dispatchFormulaSpreadsheetNameChange**(`__namedParameters`): `Promise`<`void`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+| `__namedParameters.namespaceId` | `string` |
+| `__namedParameters.spreadsheetId` | `string` |
+| `__namedParameters.title` | `string` |
+| `__namedParameters.username` | `undefined` \| `string` |
+
+#### Returns
+
+`Promise`<`void`\>
+
+#### Defined in
+
+[packages/formula/src/events.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L112)
+
+___
+
+### <a id="dispatchformulaspreadsheetremove" name="dispatchformulaspreadsheetremove"></a> dispatchFormulaSpreadsheetRemove
+
+▸ **dispatchFormulaSpreadsheetRemove**(`__namedParameters`): `Promise`<`void`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+| `__namedParameters.id` | `string` |
+| `__namedParameters.username` | `undefined` \| `string` |
+
+#### Returns
+
+`Promise`<`void`\>
+
+#### Defined in
+
+[packages/formula/src/events.ts:137](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L137)
+
+___
+
+### <a id="dispatchformulaspreadsheetrowchange" name="dispatchformulaspreadsheetrowchange"></a> dispatchFormulaSpreadsheetRowChange
+
+▸ **dispatchFormulaSpreadsheetRowChange**(`__namedParameters`): `Promise`<`void`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+| `__namedParameters.namespaceId` | `string` |
+| `__namedParameters.rows` | [`Row`](interfaces/Row.md)[] |
+| `__namedParameters.spreadsheetId` | `string` |
+| `__namedParameters.username` | `undefined` \| `string` |
+
+#### Returns
+
+`Promise`<`void`\>
+
+#### Defined in
+
+[packages/formula/src/events.ts:149](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events.ts#L149)
 
 ___
 
@@ -5137,7 +5235,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:36](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L36)
+[packages/formula/src/context/variable.ts:35](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L35)
 
 ___
 
@@ -5177,7 +5275,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:53](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L53)
+[packages/formula/src/context/variable.ts:52](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L52)
 
 ___
 

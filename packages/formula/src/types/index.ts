@@ -791,6 +791,7 @@ export interface EventScope {
 export interface FormulaEventPayload<T> {
   readonly key: string
   readonly level?: number
+  readonly username: string
   readonly scope: EventScope | null
   readonly id: string
   readonly namespaceId: string

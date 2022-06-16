@@ -4,11 +4,12 @@ import {
   SpreadsheetClass,
   Column,
   Row,
-  SpreadsheetUpdateNameViaId,
-  SpreadsheetUpdateRowsViaId,
-  SpreadsheetUpdateColumnsViaId
+  dispatchFormulaSpreadsheetNameChange,
+  dispatchFormulaSpreadsheetRemove,
+  dispatchFormulaSpreadsheetRowChange,
+  dispatchFormulaSpreadsheetColumnChange
 } from '@mashcard/formula'
-import { BlockInput, MashcardEventBus } from '@mashcard/schema'
+import { BlockInput } from '@mashcard/schema'
 import { SpreadsheetColumn } from './useSpreadsheet'
 import { columnDisplayIndex, columnDisplayTitle } from './helper'
 import { useEditorContext } from '../../../hooks'
@@ -59,38 +60,31 @@ export function useFormulaSpreadsheet({
   const columnsRef = React.useRef(columnData)
 
   React.useEffect(() => {
-    MashcardEventBus.dispatch(
-      SpreadsheetUpdateNameViaId({
-        id: spreadsheetId,
-        meta: title,
-        scope: null,
-        key: spreadsheetId,
-        namespaceId: rootId
-      })
-    )
-  }, [rootId, spreadsheetId, title])
+    void dispatchFormulaSpreadsheetNameChange({
+      spreadsheetId,
+      title,
+      namespaceId: rootId,
+      username: formulaContext?.domain
+    })
+  }, [formulaContext?.domain, rootId, spreadsheetId, title])
 
   React.useEffect(() => {
-    MashcardEventBus.dispatch(
-      SpreadsheetUpdateRowsViaId({
-        spreadsheetId,
-        rows: rowData,
-        key: spreadsheetId,
-        namespaceId: rootId
-      })
-    )
-  }, [rootId, spreadsheetId, rowData])
+    void dispatchFormulaSpreadsheetRowChange({
+      spreadsheetId,
+      namespaceId: rootId,
+      rows: rowData,
+      username: formulaContext?.domain
+    })
+  }, [rootId, spreadsheetId, rowData, formulaContext?.domain])
 
   React.useEffect(() => {
-    MashcardEventBus.dispatch(
-      SpreadsheetUpdateColumnsViaId({
-        spreadsheetId,
-        columns: columnData,
-        key: spreadsheetId,
-        namespaceId: rootId
-      })
-    )
-  }, [rootId, spreadsheetId, columnData])
+    void dispatchFormulaSpreadsheetColumnChange({
+      spreadsheetId,
+      namespaceId: rootId,
+      columns: columnData,
+      username: formulaContext?.domain
+    })
+  }, [rootId, spreadsheetId, columnData, formulaContext?.domain])
 
   React.useEffect(() => {
     if (!formulaContext) return
@@ -128,7 +122,7 @@ export function useFormulaSpreadsheet({
 
   return {
     deleteSpreadsheet: () => {
-      void formulaContext?.removeSpreadsheet(spreadsheetId)
+      void dispatchFormulaSpreadsheetRemove({ id: spreadsheetId, username: formulaContext?.domain })
     }
   }
 }

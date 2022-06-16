@@ -1,4 +1,4 @@
-import { SpreadsheetReloadViaId, SpreadsheetUpdateNameViaIdPayload } from '../../events'
+import { SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../../events'
 import { mockCell, mockRow } from '../../tests/testMock'
 import { SpreadsheetInput } from '../../tests/testType'
 import { CodeFragment, ErrorMessage, EventDependency } from '../../types'
@@ -62,7 +62,7 @@ export const thisRowOperator: OperatorType = {
     } = cstVisitor.ctx.meta
 
     // TODO same as row
-    const rowDependencyEvent: EventDependency<SpreadsheetUpdateNameViaIdPayload> = {
+    const rowDependencyEvent: EventDependency<SpreadsheetUpdateNamePayload> = {
       kind: 'Row',
       event: SpreadsheetReloadViaId,
       key: `Spreadsheet#Row#${spreadsheetId}#${rowId}`,

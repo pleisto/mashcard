@@ -1,4 +1,4 @@
-import { SpreadsheetReloadViaId, SpreadsheetUpdateNameViaIdPayload } from '../events'
+import { SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../events'
 import { ColumnId, EventDependency, NamespaceId, SpreadsheetId, uuid, VariableDisplayData } from '../types'
 import { CellType, SpreadsheetType, Cell } from './types'
 
@@ -16,7 +16,7 @@ export class CellClass implements CellType {
   spreadsheet: SpreadsheetType
   columnKey: string
   rowKey: string
-  cleanupEventDependency: EventDependency<SpreadsheetUpdateNameViaIdPayload>
+  cleanupEventDependency: EventDependency<SpreadsheetUpdateNamePayload>
 
   constructor(
     spreadsheet: SpreadsheetType,
@@ -25,7 +25,7 @@ export class CellClass implements CellType {
       columnKey,
       rowKey,
       cleanupEventDependency
-    }: { columnKey: string; rowKey: string; cleanupEventDependency: EventDependency<SpreadsheetUpdateNameViaIdPayload> }
+    }: { columnKey: string; rowKey: string; cleanupEventDependency: EventDependency<SpreadsheetUpdateNamePayload> }
   ) {
     this.namespaceId = namespaceId
     this.spreadsheetId = spreadsheetId
@@ -44,7 +44,7 @@ export class CellClass implements CellType {
     this.cleanupEventDependency = cleanupEventDependency
   }
 
-  eventDependency(): EventDependency<SpreadsheetUpdateNameViaIdPayload> {
+  eventDependency(): EventDependency<SpreadsheetUpdateNamePayload> {
     return {
       kind: 'Cell',
       event: SpreadsheetReloadViaId,

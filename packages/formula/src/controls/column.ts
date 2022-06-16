@@ -15,7 +15,7 @@ import {
 } from '../types'
 import { codeFragments2definition, CodeFragmentVisitor, FormulaInterpreter } from '../grammar'
 import { CellClass } from '.'
-import { SpreadsheetReloadViaId, SpreadsheetUpdateNameViaIdPayload } from '../events'
+import { SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../events'
 
 export class ColumnClass implements ColumnType {
   columnId: ColumnId
@@ -108,7 +108,7 @@ export class ColumnClass implements ColumnType {
     })
   }
 
-  eventDependency({ rowKey }: getEventDependencyInput): EventDependency<SpreadsheetUpdateNameViaIdPayload> {
+  eventDependency({ rowKey }: getEventDependencyInput): EventDependency<SpreadsheetUpdateNamePayload> {
     if (rowKey) {
       return {
         kind: 'Cell',
