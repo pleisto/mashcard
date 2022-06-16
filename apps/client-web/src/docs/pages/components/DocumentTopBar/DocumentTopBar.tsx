@@ -17,6 +17,7 @@ import Logo_Try from '@/common/assets/logo_brickdoc_try.svg'
 import * as Root from './DocumentTopBar.style'
 import loadingIcon from './loading.png'
 import { useDocMeta } from '@/docs/store/DocMeta'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export const DocumentTopBar: FC = () => {
   const { t } = useDocsI18n()
@@ -66,11 +67,12 @@ export const DocumentTopBar: FC = () => {
     <Root.TopBar
       width={{
         '@mdDown': 'md'
-      }}>
+      }}
+    >
       <Box>{headMenu}</Box>
       <Box style={{ flexShrink: 0 }}>
         <Root.Menu>
-          <Root.Loading isSaving={isSaving}>
+          <Root.Loading isSaving={isSaving} data-testid={TEST_ID_ENUM.page.topBar.saving.id}>
             <Root.LoadingIcon src={loadingIcon} alt="" />
             <span>{t('saving')}</span>
           </Root.Loading>

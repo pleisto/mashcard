@@ -121,4 +121,17 @@ test.describe('Breadcrumb', () => {
     await breadcrumb.redirectToPage(true)
     await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(2)
   })
+
+  test.describe('Virtual test @virtual', () => {
+    test('layer more than 4', async ({ api }) => {
+      await api.createPageTree(FIVE_LAYER_PAGE_TREE)
+      await api.pageReload()
+
+      await pageTree.expandSubPageOneByOne(4)
+      await pageTree.clickPage(4)
+      await breadcrumb.getBreadcrumbItemsByIndex(1).hover()
+
+      await breadcrumb.createScreenshot()
+    })
+  })
 })

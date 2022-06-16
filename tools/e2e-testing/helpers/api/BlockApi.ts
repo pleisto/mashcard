@@ -11,6 +11,7 @@ import {
   OptionsType,
   PageType
 } from '@/helpers/types/graphql.types'
+import { compareAttributeItem } from '../utils/sortByAttribute'
 
 export class BlockApi {
   private readonly page
@@ -58,9 +59,29 @@ export class BlockApi {
     )
   }
 
-  async removeAllPages(isHardDeleted: boolean = true): Promise<void> {
-    const domain = await this.page.evaluate(() => (window as any).brickdocContext.currentSpace.domain)
-    const pages = await this.getBlocks(domain)
+  async removeAllPages(options?: { isHardDeleted?: boolean; isSorted?: boolean }): Promise<void> {
+    const isHardDeleted = options?.isHardDeleted ?? true
+    const isSorted = options?.isSorted ?? false
+
+    const domain = await this.page.evaluate(() => (window as any).brickdocContext.currentPod.domain)
+    const pages = (await this.getBlocks(domain)).sort(compareAttributeItem)
+
+    isSorted
+      ? await this.orderRemoveAllPage(pages, isHardDeleted)
+      : await this.outOfOrderRemoveAllPage(pages, isHardDeleted)
+  }
+
+  async orderRemoveAllPage(pages: PageType[], isHardDeleted: boolean): Promise<void> {
+    for (let index = 0; index < pages.length; index++) {
+      const page = pages[index]
+
+      if (!page.parentId) {
+        await this.removePage({ input: { id: page.id, hardDelete: isHardDeleted } })
+      }
+    }
+  }
+
+  async outOfOrderRemoveAllPage(pages: PageType[], isHardDeleted: boolean): Promise<void> {
     await Promise.all(
       pages.map(page =>
         !page.parentId ? this.removePage({ input: { id: page.id, hardDelete: isHardDeleted } }) : undefined
@@ -109,7 +130,7 @@ export class BlockApi {
   }
 
   async removeAllTrashPages(): Promise<void> {
-    const domain = await this.page.evaluate(() => (window as any).brickdocContext.currentSpace.domain)
+    const domain = await this.page.evaluate(() => (window as any).brickdocContext.currentPod.domain)
     const pages = (await this.getTrashBlock(domain)).map(page => page.id)
 
     await this.request.post(
