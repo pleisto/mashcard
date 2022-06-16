@@ -15,7 +15,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:169](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L169)
+[packages/brickdoc-formula/src/tests/testType.ts:175](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L175)
 
 ___
 
@@ -25,4 +25,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:170](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L170)
+[packages/brickdoc-formula/src/tests/testType.ts:176](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L176)

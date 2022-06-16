@@ -89,6 +89,7 @@ type FeatureName =
   | 'spreadsheetComplete'
   | 'functionComplete'
   | 'blockComplete'
+  | 'blockEvent'
 type FeatureTestName = 'cst'
 export type TestCaseName = OperatorName | FeatureName | FeatureTestName
 
@@ -112,25 +113,30 @@ export interface BaseTestCase<T extends object> {
   todo?: string
   jestTitle?: string
 }
-export interface SuccessTestCaseType
-  extends RequireField<BaseTestCase<{ key: keyof VariableParseResult }>, 'definition'> {
+interface SuccessTestCaseType extends RequireField<BaseTestCase<{ key: keyof VariableParseResult }>, 'definition'> {
   result: any
 }
 
-export interface ErrorTestCaseType
-  extends RequireField<BaseTestCase<{ key: keyof VariableParseResult }>, 'definition'> {
+interface ErrorTestCaseType extends RequireField<BaseTestCase<{ key: keyof VariableParseResult }>, 'definition'> {
   valid?: boolean
   errorType: ErrorType
   errorMessage: string
 }
 
-export interface CompleteCaseType extends BaseTestCase<{}> {
+interface CompleteTestCaseType extends BaseTestCase<{}> {
   definitionWithCursor: string
   firstCompletion: Partial<Completion>
   firstNonSpaceCodeFragment?: Partial<CodeFragment>
   secondNonSpaceCodeFragment?: Partial<CodeFragment>
   thirdNonSpaceCodeFragment?: Partial<CodeFragment>
   completes: CompleteInput[]
+}
+
+interface EventTestCaseType extends RequireField<BaseTestCase<{}>, 'definition'> {
+  resultBefore: any
+  resultAfter: any
+  variableParseResultAfter?: Partial<VariableParseResult>
+  event: (ctx: FunctionContext) => Promise<void>
 }
 
 type DependencyTypes = 'Variable' | 'Block'
@@ -188,7 +194,8 @@ export interface TestCaseType {
   pages?: PageInput[]
   successTestCases?: SuccessTestCaseType[]
   errorTestCases?: ErrorTestCaseType[]
-  completeTestCases?: CompleteCaseType[]
+  completeTestCases?: CompleteTestCaseType[]
+  eventTestCases?: EventTestCaseType[]
   dependencyTestCases?: AnyDependencyTestCaseType[]
 }
 
@@ -196,6 +203,7 @@ export interface TestCaseInput {
   options: RequireField<MakeContextOptions, 'initializeOptions' | 'pages'>
   successTestCases: Array<RequireField<SuccessTestCaseType, 'groupOptions' | 'jestTitle'>>
   errorTestCases: Array<RequireField<ErrorTestCaseType, 'groupOptions' | 'jestTitle'>>
-  completeTestCases: Array<RequireField<CompleteCaseType, 'groupOptions' | 'jestTitle'>>
+  completeTestCases: Array<RequireField<CompleteTestCaseType, 'groupOptions' | 'jestTitle'>>
+  eventTestCases: Array<RequireField<EventTestCaseType, 'groupOptions' | 'jestTitle'>>
   dependencyTestCases: Array<RequireField<AnyDependencyTestCaseType, 'groupOptions' | 'jestTitle'>>
 }

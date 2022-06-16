@@ -30,7 +30,7 @@ import { queryBlockInfo } from '@/docs/pages/graphql'
 import { pagesVar } from '@/docs/reactiveVars'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { useDocMeta } from '@/docs/store/DocMeta'
-import { dispatchFormulaBlockNameChangeOrDelete } from '@brickdoc/formula'
+import { dispatchFormulaBlockNameChange } from '@brickdoc/formula'
 
 export interface PageTreeProps {
   mode?: 'default' | 'subPage'
@@ -277,10 +277,10 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
   useEffect(() => {
     pageBlocks.forEach(b => {
       if (!b.parentId || b.type === 'doc') {
-        void dispatchFormulaBlockNameChangeOrDelete({ id: b.id, name: b.text, deleted: false })
+        void dispatchFormulaBlockNameChange({ id: b.id, name: b.text, username: domain })
       }
     })
-  }, [pageBlocks])
+  }, [pageBlocks, domain])
 
   useEffect(() => {
     const flattedData = (dataPageBlocks ?? [])
@@ -344,8 +344,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
         {!hideHeading && (
           <PageTreeHeading
             style={{ top: showPin ? TREE_HEAD_HEIGHT : 0, bottom: FOOTER_HEIGHT }} // Consider also the two cases of sticking to the bottom and the top
-            data-testid={TEST_ID_ENUM.page.pageTree.heading.id}
-          >
+            data-testid={TEST_ID_ENUM.page.pageTree.heading.id}>
             Pages
           </PageTreeHeading>
         )}

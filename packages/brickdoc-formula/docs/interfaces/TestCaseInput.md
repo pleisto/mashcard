@@ -7,6 +7,7 @@
 - [completeTestCases](TestCaseInput.md#completetestcases)
 - [dependencyTestCases](TestCaseInput.md#dependencytestcases)
 - [errorTestCases](TestCaseInput.md#errortestcases)
+- [eventTestCases](TestCaseInput.md#eventtestcases)
 - [options](TestCaseInput.md#options)
 - [successTestCases](TestCaseInput.md#successtestcases)
 
@@ -14,11 +15,11 @@
 
 ### <a id="completetestcases" name="completetestcases"></a> completeTestCases
 
-• **completeTestCases**: `RequireField`<[`CompleteCaseType`](CompleteCaseType.md), ``"groupOptions"`` \| ``"jestTitle"``\>[]
+• **completeTestCases**: `RequireField`<`CompleteTestCaseType`, ``"groupOptions"`` \| ``"jestTitle"``\>[]
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:199](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L199)
+[packages/brickdoc-formula/src/tests/testType.ts:206](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L206)
 
 ___
 
@@ -28,17 +29,27 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:200](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L200)
+[packages/brickdoc-formula/src/tests/testType.ts:208](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L208)
 
 ___
 
 ### <a id="errortestcases" name="errortestcases"></a> errorTestCases
 
-• **errorTestCases**: `RequireField`<[`ErrorTestCaseType`](ErrorTestCaseType.md), ``"groupOptions"`` \| ``"jestTitle"``\>[]
+• **errorTestCases**: `RequireField`<`ErrorTestCaseType`, ``"groupOptions"`` \| ``"jestTitle"``\>[]
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:198](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L198)
+[packages/brickdoc-formula/src/tests/testType.ts:205](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L205)
+
+___
+
+### <a id="eventtestcases" name="eventtestcases"></a> eventTestCases
+
+• **eventTestCases**: `RequireField`<`EventTestCaseType`, ``"groupOptions"`` \| ``"jestTitle"``\>[]
+
+#### Defined in
+
+[packages/brickdoc-formula/src/tests/testType.ts:207](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L207)
 
 ___
 
@@ -48,14 +59,14 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:196](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L196)
+[packages/brickdoc-formula/src/tests/testType.ts:203](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L203)
 
 ___
 
 ### <a id="successtestcases" name="successtestcases"></a> successTestCases
 
-• **successTestCases**: `RequireField`<[`SuccessTestCaseType`](SuccessTestCaseType.md), ``"groupOptions"`` \| ``"jestTitle"``\>[]
+• **successTestCases**: `RequireField`<`SuccessTestCaseType`, ``"groupOptions"`` \| ``"jestTitle"``\>[]
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:197](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L197)
+[packages/brickdoc-formula/src/tests/testType.ts:204](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L204)

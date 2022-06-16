@@ -49,7 +49,7 @@ import {
   FormulaContextNameChanged,
   FormulaContextNameRemove,
   SpreadsheetReloadViaId,
-  FormulaBlockNameChangedOrDeleted
+  FormulaBlockNameModifiedWithUsername
 } from '../events'
 import {
   function2completion,
@@ -181,11 +181,11 @@ export class FormulaContext implements ContextInterface {
     }, {})
 
     const blockNameSubscription = BrickdocEventBus.subscribe(
-      FormulaBlockNameChangedOrDeleted,
+      FormulaBlockNameModifiedWithUsername,
       async e => {
-        if (!e.payload.meta.deleted) await this.setBlock(e.payload.id, e.payload.meta.name)
+        await this.setBlock(e.payload.id, e.payload.meta.name)
       },
-      { subscribeId: `Domain#${this.domain}` }
+      { subscribeId: `Domain#${this.domain}`, eventId: this.domain }
     )
 
     this.eventListeners.push(blockNameSubscription)

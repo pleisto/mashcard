@@ -1,8 +1,8 @@
-import { SpreadsheetReloadViaId, SpreadsheetUpdateNameViaIdPayload } from '../../events'
 import { mockCell, mockSpreadsheet } from '../../tests/testMock'
 import { SpreadsheetInput } from '../../tests/testType'
-import { CodeFragment, ErrorMessage, EventDependency } from '../../types'
+import { CodeFragment, ErrorMessage } from '../../types'
 import { spreadsheet2attrs, spreadsheet2codeFragment } from '../convert'
+import { parseTrackSpreadsheetLoad } from '../dependency'
 import { OperatorType } from '../operator'
 
 const namespaceId = '55555555-5555-bbbb-5555-555555555555'
@@ -61,16 +61,7 @@ export const thisRecordOperator: OperatorType = {
       namespaceId
     } = cstVisitor.ctx.meta
 
-    // TODO same as spreadsheet
-    const spreadsheetReloadEventDependency: EventDependency<SpreadsheetUpdateNameViaIdPayload> = {
-      eventId: `${namespaceId},${spreadsheetId}`,
-      event: SpreadsheetReloadViaId,
-      key: `Spreadsheet#${spreadsheetId}`,
-      scope: {},
-      kind: 'Spreadsheet'
-    }
-
-    cstVisitor.eventDependencies.push(spreadsheetReloadEventDependency)
+    parseTrackSpreadsheetLoad(cstVisitor, namespaceId, spreadsheetId)
 
     const spreadsheet = cstVisitor.ctx.formulaContext.findSpreadsheet({ namespaceId, type: 'id', value: spreadsheetId })
     if (!spreadsheet) {

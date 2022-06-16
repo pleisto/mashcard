@@ -11,6 +11,7 @@ import { VariableTestCase } from './variable'
 import { BlockCompleteTestCase } from './blockComplete'
 import { SpreadsheetCompleteTestCase } from './spreadsheetComplete'
 import { FunctionCompleteTestCase } from './functionComplete'
+import { BlockEventTestCase } from './blockEvent'
 
 export const FeatureTestCases: TestCaseInterface[] = [
   FunctionCallTestCase,
@@ -24,5 +25,6 @@ export const FeatureTestCases: TestCaseInterface[] = [
   BlockCompleteTestCase,
   SpreadsheetCompleteTestCase,
   FunctionCompleteTestCase,
+  BlockEventTestCase,
   OtherTestCase
 ]

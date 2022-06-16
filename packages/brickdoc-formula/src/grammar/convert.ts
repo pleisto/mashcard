@@ -75,7 +75,6 @@ export const codeFragments2definition = (codeFragments: CodeFragment[], pageId: 
 export const codeFragment2value = ({ display, code, attrs }: CodeFragment, pageId: string | undefined): string => {
   switch (code) {
     case 'Block':
-      return currentBlockKey(attrs.id, pageId)
     case 'Column':
     case 'Variable':
     case 'Spreadsheet':

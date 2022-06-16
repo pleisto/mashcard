@@ -30,7 +30,7 @@ Omit.formulaContext
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:540](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L540)
+[packages/brickdoc-formula/src/types/index.ts:541](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L541)
 
 ___
 
@@ -44,7 +44,7 @@ Omit.interpretContext
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:545](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L545)
+[packages/brickdoc-formula/src/types/index.ts:546](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L546)
 
 ## Methods
 
@@ -64,7 +64,7 @@ Omit.interpretContext
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:180](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L180)
+[packages/brickdoc-formula/src/tests/testType.ts:186](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L186)
 
 ___
 
@@ -84,4 +84,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:181](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L181)
+[packages/brickdoc-formula/src/tests/testType.ts:187](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L187)

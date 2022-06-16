@@ -1,5 +1,5 @@
 import { Cell, CellType, Column, ColumnType, Row, RowType, SpreadsheetClass, SpreadsheetType } from '../controls'
-import { dispatchFormulaBlockNameChangeOrDelete } from '../events'
+import { dispatchFormulaBlockNameChange } from '../events'
 import { PersistFormulaType, TypedResult, VariableMetadata } from '../types'
 import { FormulaContext } from '../context/context'
 import { dumpValue, loadValue } from '../context/persist'
@@ -153,7 +153,7 @@ const cells: Cell[] = [
 ]
 
 const formulaContext = new FormulaContext({ domain: 'test' })
-void dispatchFormulaBlockNameChangeOrDelete({ id: namespaceId, name: 'Page1', deleted: false })
+void dispatchFormulaBlockNameChange({ id: namespaceId, name: 'Page1', username: 'test' })
 
 const spreadsheet: SpreadsheetType = new SpreadsheetClass({
   name: 'MySpreadsheet',

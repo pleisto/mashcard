@@ -35,26 +35,69 @@ export const FormulaTaskCompleted = event<{ task: VariableTask; namespaceId: str
   }
 )
 
-export const FormulaBlockNameChangedOrDeleted = event<
-  FormulaEventPayload<{ name: string; deleted: boolean }>,
+/**
+ * Dispatch Block Delete Event.
+ */
+export const dispatchFormulaBlockSoftDelete = async ({
+  id,
+  username
+}: {
+  id: string
+  username: string
+}): Promise<void> => {
+  const result = BrickdocEventBus.dispatch(FormulaDocSoftDeleted({ id, username }))
+  await Promise.all(result)
+}
+
+export const FormulaDocSoftDeleted = event<{ id: string; username: string }, Promise<void>>()(
+  'FormulaDocSoftDeleted',
+  ({ id, username }) => {
+    return { id: `${username}#${id}` }
+  }
+)
+
+export const FormulaBlockNameChangedTrigger = event<
+  FormulaEventPayload<{ name: string; username: string }>,
   Promise<void>
->()('FormulaBlockNameChangedOrDeleted', ({ id }) => {
-  return { id }
+>()('FormulaBlockNameChangedTrigger', ({ id, meta: { username } }) => {
+  return { id: `${username}#${id}` }
 })
 
-export const dispatchFormulaBlockNameChangeOrDelete = async ({
+export const FormulaBlockNameDeletedTrigger = event<
+  FormulaEventPayload<{ name: string; username: string }>,
+  Promise<void>
+>()('FormulaBlockNameDeletedTrigger', ({ id, meta: { username } }) => {
+  return { id: `${username}#${id}` }
+})
+
+export const FormulaBlockNameModifiedWithUsername = event<
+  FormulaEventPayload<{ name: string; username: string }>,
+  Promise<void>
+>()('FormulaBlockNameModifiedWithUsername', ({ id, meta: { username } }) => {
+  return { id: username }
+})
+
+/**
+ * Dispatch Block Rename Event.
+ */
+export const dispatchFormulaBlockNameChange = async ({
   id,
   name,
-  deleted
+  username
 }: {
   id: string
   name: string
-  deleted: boolean
+  username: string
 }): Promise<void> => {
-  const result = BrickdocEventBus.dispatch(
-    FormulaBlockNameChangedOrDeleted({ id, namespaceId: id, key: id, scope: null, meta: { name, deleted } })
+  const result1 = BrickdocEventBus.dispatch(
+    FormulaBlockNameModifiedWithUsername({ id, namespaceId: id, key: id, scope: null, meta: { name, username } })
   )
-  await Promise.all(result)
+  await Promise.all(result1)
+
+  const result2 = BrickdocEventBus.dispatch(
+    FormulaBlockNameChangedTrigger({ id, namespaceId: id, key: id, scope: null, meta: { name, username } })
+  )
+  await Promise.all(result2)
 }
 
 export type SpreadsheetUpdateNameViaIdPayload = FormulaEventPayload<null>

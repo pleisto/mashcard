@@ -44,6 +44,18 @@ const reduceTestCaseInput = (testCases: TestCaseInterface[]): TestCaseInput => {
           )
         }))
       ],
+      eventTestCases: [
+        ...prev.eventTestCases,
+        ...(curr.testCases.eventTestCases ?? []).map((s, index) => ({
+          ...s,
+          ...buildRequiredFields(
+            curr,
+            s,
+            `[${index}] ${s.definition}`,
+            `${JSON.stringify(s.resultAfter)} ${s.event.toString()}`
+          )
+        }))
+      ],
       completeTestCases: [
         ...prev.completeTestCases,
         ...(curr.testCases.completeTestCases ?? []).map((s, index) => ({
@@ -86,6 +98,7 @@ const reduceTestCaseInput = (testCases: TestCaseInterface[]): TestCaseInput => {
       successTestCases: [],
       completeTestCases: [],
       errorTestCases: [],
+      eventTestCases: [],
       dependencyTestCases: []
     }
   )
@@ -122,7 +135,10 @@ export const buildTestCases = (name?: [TestCaseName, ...TestCaseName[]]): [TestC
     o =>
       name.includes(o.name) ||
       (o.testCases.successTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r))) ||
-      (o.testCases.errorTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r)))
+      (o.testCases.errorTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r))) ||
+      (o.testCases.completeTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r))) ||
+      (o.testCases.dependencyTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r))) ||
+      (o.testCases.eventTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r)))
   )
   const input = reduceTestCaseInput(interfaces)
 
@@ -130,7 +146,14 @@ export const buildTestCases = (name?: [TestCaseName, ...TestCaseName[]]): [TestC
     {
       ...input,
       successTestCases: input.successTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
-      errorTestCases: input.errorTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r)))
+      errorTestCases: input.errorTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
+      completeTestCases: input.completeTestCases.filter(v =>
+        v.groupOptions.map(g => g.name).some(r => name.includes(r))
+      ),
+      dependencyTestCases: input.dependencyTestCases.filter(v =>
+        v.groupOptions.map(g => g.name).some(r => name.includes(r))
+      ),
+      eventTestCases: input.eventTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r)))
     }
   ]
 }

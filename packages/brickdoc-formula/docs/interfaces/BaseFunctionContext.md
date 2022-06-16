@@ -21,7 +21,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:540](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L540)
+[packages/brickdoc-formula/src/types/index.ts:541](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L541)
 
 ___
 
@@ -31,4 +31,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:541](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L541)
+[packages/brickdoc-formula/src/types/index.ts:542](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L542)

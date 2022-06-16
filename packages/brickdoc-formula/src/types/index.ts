@@ -499,6 +499,7 @@ export interface FindKey {
 }
 
 export interface ContextInterface {
+  domain: string
   features: string[]
   dirtyFormulas: Record<VariableKey, DirtyFormulaInfo>
   reservedNames: string[]
@@ -807,7 +808,8 @@ export interface EventDependency<T extends FormulaEventPayload<any>> {
     | 'Variable'
     | 'NameChange'
     | 'NameRemove'
-    | 'BlockRenameOrDelete'
+    | 'BlockRename'
+    | 'BlockDelete'
   readonly event: EventType<T, Promise<void>>
   readonly eventId: string
   readonly scope: EventScope

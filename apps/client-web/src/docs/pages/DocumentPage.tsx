@@ -30,8 +30,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
   const navigate = useNavigate()
 
   const queryVariables = useMemo(
-    () => ({ rootId: docMeta.id as string, historyId: docMeta.historyId }),
-    [docMeta.id, docMeta.historyId]
+    () => ({ rootId: docMeta.id as string, historyId: docMeta.historyId, domain: docMeta.domain }),
+    [docMeta.id, docMeta.historyId, docMeta.domain]
   )
 
   const { rootBlock, data, loading: blocksLoading, onDocSave } = useSyncProvider(queryVariables)

@@ -38,7 +38,7 @@ describe('completer', () => {
     } = parse(newCtx)
     expect(completions.length).not.toBe(0)
     const firstCompletion = completions[0]
-    const [firstNonSpaceCodeFragment, secondNonSpaceCodeFragment] = getLastCodeFragment(codeFragments, position)
+    const [firstNonSpaceCodeFragment, secondNonSpaceCodeFragment, thirdNonSpaceCodeFragment] = getLastCodeFragment(codeFragments, position)
 
     // console.log('completionTest', completions.slice(0, 4), {
     //   firstCompletion,
@@ -47,10 +47,11 @@ describe('completer', () => {
     //   firstNonSpaceCodeFragment
     // })
 
-    expect({ firstCompletion, firstNonSpaceCodeFragment, secondNonSpaceCodeFragment }).toMatchObject({
+    expect({ firstCompletion, firstNonSpaceCodeFragment, secondNonSpaceCodeFragment, thirdNonSpaceCodeFragment }).toMatchObject({
       firstCompletion: args.firstCompletion,
       firstNonSpaceCodeFragment: args.firstNonSpaceCodeFragment ?? {},
-      secondNonSpaceCodeFragment: args.secondNonSpaceCodeFragment ?? {}
+      secondNonSpaceCodeFragment: args.secondNonSpaceCodeFragment ?? {},
+      thirdNonSpaceCodeFragment: args.thirdNonSpaceCodeFragment ?? {}
     })
 
     for (const complete of args.completes) {

@@ -9,6 +9,3 @@ export const UpdateDocMeta = event<{ id: string; meta: BlockMeta }>()('UpdateDoc
   return { id }
 })
 
-export const DocSoftDeleted = event<{ id: string }>()('DocSoftDeleted', ({ id }) => {
-  return { id }
-})
