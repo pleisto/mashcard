@@ -18,8 +18,8 @@ test.describe('Document Title', () => {
     await pageTree.clickPage()
   })
 
-  test('Verify the font-size is equal 2.25rem', async () => {
-    await expect(documentTitle.getDocumentTitle()).toHaveCSS('font-size', rem2Pixel('2.25rem'))
+  test('Verify the font-size is equal 2.5rem', async () => {
+    await expect(documentTitle.getDocumentTitle()).toHaveCSS('font-size', rem2Pixel('2.5rem'))
   })
 
   test('Verify the initial page value and placeholder are equal Untitled', async ({ page }) => {

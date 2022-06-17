@@ -31,6 +31,7 @@ export const GRAPHQL_GROUP: graphqlGroupType = {
       pageBlocks(domain: $domain) {
         id
         parentId
+        text
       }
     }
   `,
