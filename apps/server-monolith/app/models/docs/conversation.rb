@@ -98,6 +98,8 @@ module Docs
           content: content,
           creator_id: creator.id
         )
+
+        conversation
       end
     end
 

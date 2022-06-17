@@ -740,6 +740,7 @@ export type ConversationCommentAppendPayload = {
   __typename?: 'ConversationCommentAppendPayload'
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars['String']>
+  comment: Comment
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars['String']>
 }
@@ -760,6 +761,7 @@ export type ConversationCommentCreatePayload = {
   __typename?: 'ConversationCommentCreatePayload'
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars['String']>
+  conversation: Conversation
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars['String']>
 }
@@ -2340,7 +2342,35 @@ export type ConversationCommentCreateMutationVariables = Exact<{
 
 export type ConversationCommentCreateMutation = {
   __typename?: 'Mutation'
-  conversationCommentCreate?: { __typename?: 'ConversationCommentCreatePayload'; errors: Array<string> } | null
+  conversationCommentCreate?: {
+    __typename?: 'ConversationCommentCreatePayload'
+    errors: Array<string>
+    conversation: {
+      __typename?: 'Conversation'
+      id: string
+      docId: string
+      markIds: Array<string>
+      blockIds: Array<string>
+      latestReplyAt?: any | null
+      updatedAt: any
+      createdAt: any
+      status: ConversationStatus
+      comments: Array<{
+        __typename?: 'Comment'
+        id: string
+        content: any
+        status: CommentStatus
+        createdAt: any
+        updatedAt: any
+        creator: {
+          __typename?: 'ThinUser'
+          name: string
+          domain: string
+          avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
+        }
+      }>
+    }
+  } | null
 }
 
 export type ConversationCommentAppendMutationVariables = Exact<{
@@ -2349,7 +2379,24 @@ export type ConversationCommentAppendMutationVariables = Exact<{
 
 export type ConversationCommentAppendMutation = {
   __typename?: 'Mutation'
-  conversationCommentAppend?: { __typename?: 'ConversationCommentAppendPayload'; errors: Array<string> } | null
+  conversationCommentAppend?: {
+    __typename?: 'ConversationCommentAppendPayload'
+    errors: Array<string>
+    comment: {
+      __typename?: 'Comment'
+      id: string
+      content: any
+      status: CommentStatus
+      createdAt: any
+      updatedAt: any
+      creator: {
+        __typename?: 'ThinUser'
+        name: string
+        domain: string
+        avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
+      }
+    }
+  } | null
 }
 
 export type GetConversationCommentsQueryVariables = Exact<{
@@ -4546,6 +4593,32 @@ export type FormulaCommitMutationOptions = Apollo.BaseMutationOptions<
 export const ConversationCommentCreateDocument = gql`
   mutation conversationCommentCreate($input: ConversationCommentCreateInput!) {
     conversationCommentCreate(input: $input) {
+      conversation {
+        id
+        docId
+        markIds
+        blockIds
+        latestReplyAt
+        updatedAt
+        createdAt
+        status
+        comments {
+          id
+          content
+          status
+          createdAt
+          updatedAt
+          creator {
+            name
+            domain
+            avatarData {
+              url
+              downloadUrl
+              signedId
+            }
+          }
+        }
+      }
       errors
     }
   }
@@ -4594,6 +4667,22 @@ export const ConversationCommentAppendDocument = gql`
   mutation conversationCommentAppend($input: ConversationCommentAppendInput!) {
     conversationCommentAppend(input: $input) {
       errors
+      comment {
+        id
+        content
+        status
+        createdAt
+        updatedAt
+        creator {
+          name
+          domain
+          avatarData {
+            url
+            downloadUrl
+            signedId
+          }
+        }
+      }
     }
   }
 `
