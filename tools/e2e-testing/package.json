@@ -9,6 +9,8 @@
     "install-deps": "playwright install --with-deps",
     "start": "yarn cleanup && yarn run-playwright",
     "run-playwright": "playwright test",
+    "test:e2e": "yarn start --grep-invert @virtual",
+    "test:virtual": "yarn start --grep @virtual",
     "cleanup": "rm -rf allure-report test-results allure-results",
     "allure:generate": "allure generate ./allure-results --clean",
     "allure:open": "allure open ./allure-report",

@@ -20,6 +20,7 @@ export interface Block {
 export interface PageType {
   id: string
   parentId: string
+  text: string
 }
 
 export interface BlockSyncBatchInput {
