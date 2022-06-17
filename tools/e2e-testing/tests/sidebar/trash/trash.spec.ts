@@ -89,7 +89,7 @@ test.describe('Trash', () => {
     })
 
     test('Verify there has pages path as subtitle when remove subPage', async ({ api, page }) => {
-      const domain = await page.evaluate(() => (window as any).brickdocContext.currentSpace.domain)
+      const domain = await page.evaluate(() => (window as any).brickdocContext.currentPod.domain)
       const subPageId = (await api.getBlocks(domain)).filter(item => item.parentId)[0].id
       await api.removePage({ input: { id: subPageId, hardDelete: false } })
 
