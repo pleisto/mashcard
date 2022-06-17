@@ -3,6 +3,7 @@ declare global {
     internalApiEndpoint: string
     currentUser?: {
       domain: string
+      name: string
     }
     currentPod: {
       domain: string

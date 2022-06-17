@@ -597,5 +597,5 @@ en-US:
     days:
       today: Today
       yesterday: Yesterday
-    date: '%m-%d-%Y'
+    date: 'MM-DD-Y'
     time: 'HH:mm:ss'

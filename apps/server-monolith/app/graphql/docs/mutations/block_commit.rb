@@ -64,6 +64,7 @@ module Docs
             blocks: [block],
             states: [state_model],
             histories: [state_model.history],
+            users: [state_model.history.user],
           })
         else
           diff_states = block.states_sorted

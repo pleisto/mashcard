@@ -1,5 +1,5 @@
 import { Node } from 'prosemirror-model'
-import { EditorOptions, Y } from '@brickdoc/editor'
+import { EditorOptions } from '@brickdoc/editor'
 import { Block } from '@brickdoc/schema'
 import { DocMeta } from '@/docs/store/DocMeta'
 import { useMentionCommands } from './useMentionCommands'
@@ -8,12 +8,13 @@ import { useReactiveVar } from '@apollo/client'
 import { FormulaContextVar } from '@/docs/reactiveVars'
 import { useCallback, useMemo } from 'react'
 import { PageTree } from '@/docs/common/components/PageTree'
+import { blockProvider } from '../useBlockSyncProvider'
 
 export interface UseEditorOptions {
   docMeta: DocMeta
   blocks: Block[]
   documentEditable: boolean
-  ydoc: Y.Doc | undefined
+  provider: blockProvider | undefined
   onDocSave: (doc: Node) => Promise<void>
 }
 
@@ -21,7 +22,7 @@ export function useEditorOptions({
   docMeta,
   documentEditable,
   blocks,
-  ydoc,
+  provider,
   onDocSave
 }: UseEditorOptions): EditorOptions {
   const embed = useEmbed(blocks, docMeta)
@@ -32,9 +33,14 @@ export function useEditorOptions({
   return useMemo(
     () => ({
       base: {
-        collaboration: ydoc
+        collaboration: provider ? { document: provider.document } : false,
+        collaborationCursor: provider
           ? {
-              document: ydoc
+              provider,
+              user: {
+                name: globalThis.brickdocContext.currentUser?.name,
+                operatorId: globalThis.brickdocContext.uuid
+              }
             }
           : false,
         embed,
@@ -54,6 +60,6 @@ export function useEditorOptions({
       },
       editable: documentEditable
     }),
-    [documentEditable, embed, formulaContext, mentionCommands, onDocSave, renderView, ydoc]
+    [documentEditable, embed, formulaContext, mentionCommands, onDocSave, renderView, provider]
   )
 }

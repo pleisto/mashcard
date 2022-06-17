@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class RootMutation < BrickGraphQL::BaseObject
+  field :awareness_update, mutation: Docs::Mutations::AwarenessUpdate
   field :block_commit, mutation:  Docs::Mutations::BlockCommit
   field :block_create, mutation:  Docs::Mutations::BlockCreate
   field :block_create_share_link, mutation: Docs::Mutations::BlockCreateShareLink

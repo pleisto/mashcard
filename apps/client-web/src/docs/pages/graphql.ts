@@ -304,6 +304,12 @@ export const queryDocumentHistories = gql`
     documentHistories(id: $id) {
       users {
         name
+        domain
+        avatarData {
+          url
+          downloadUrl
+          signedId
+        }
       }
       histories {
         id
@@ -355,6 +361,32 @@ export const Document = gql`
         createdAt
         username
       }
+      users {
+        name
+        domain
+        avatarData {
+          url
+          downloadUrl
+          signedId
+        }
+      }
+    }
+  }
+`
+
+export const AwarenessUpdate = gql`
+  mutation AwarenessUpdate($input: AwarenessUpdateInput!) {
+    awarenessUpdate(input: $input) {
+      errors
+    }
+  }
+`
+
+export const Awareness = gql`
+  subscription Awareness($docId: UUID!) {
+    awareness(docId: $docId) {
+      operatorId
+      updates
     }
   }
 `

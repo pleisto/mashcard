@@ -38,7 +38,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
 
   useDocHistoryProvider(docMeta.id as string)
 
-  const { ydoc, initBlocksToEditor, loading } = useBlockSyncProvider({
+  const { provider, initBlocksToEditor, loading } = useBlockSyncProvider({
     blockId: docMeta.id as string,
     historyId: docMeta.historyId
   })
@@ -52,14 +52,14 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
 
   const editorOptions = useEditorOptions({
     docMeta,
-    ydoc,
+    provider,
     onDocSave,
     documentEditable,
     blocks: data?.childrenBlocks
   })
 
   // new ydoc requires new editor to load it
-  const editor = useEditor(editorOptions, [ydoc])
+  const editor = useEditor(editorOptions, [provider])
 
   // TODO: refactor editor reactive var
   useEffect(() => {
