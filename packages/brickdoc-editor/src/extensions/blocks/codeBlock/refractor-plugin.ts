@@ -142,7 +142,8 @@ export function RefractorPlugin({
 
     props: {
       decorations(state) {
-        return this.getState(state)
+        // this is a tiptap type issue
+        return (this as Plugin).getState(state)
       }
     }
   })
