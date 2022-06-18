@@ -11,7 +11,7 @@ export interface CommentedNode {
   position: number
 }
 
-const findDiscussionMark = (marks: Mark[]): Mark | undefined =>
+const findDiscussionMark = (marks: readonly Mark[]): Mark | undefined =>
   marks.find(mark => mark.type.name === discussionMeta.name)
 const isCommentedNodeExist = (nodes: CommentedNode[], markId: string): boolean =>
   nodes.some(node => node.markId === markId)

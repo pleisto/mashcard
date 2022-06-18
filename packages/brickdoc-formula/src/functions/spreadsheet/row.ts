@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const spreadsheetRow = createFunctionClause({
   name: 'Row',
   async: false,

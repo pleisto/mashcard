@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const arrayJoin = createFunctionClause({
   name: 'Join',
   async: false,
@@ -16,7 +19,29 @@ export const arrayJoin = createFunctionClause({
   ],
   examples: [{ input: '=Join([1,2,3])', output: { type: 'string', result: '1,2,3' } }],
   returns: 'string',
-  testCases: [],
+  testCases: [
+    { input: [[], ';;'], output: { type: 'string', result: '' } },
+    {
+      input: [
+        [
+          { type: 'string', result: 'a' },
+          { type: 'string', result: 'b' }
+        ],
+        ';;'
+      ],
+      output: { type: 'string', result: 'a;;b' }
+    },
+    {
+      input: [
+        [
+          { type: 'string', result: 'a' },
+          { type: 'number', result: 1 }
+        ],
+        ';;'
+      ],
+      output: { type: 'Error', result: 'Join expects an array of strings', errorKind: 'runtime' }
+    }
+  ],
   chain: true,
   reference: (ctx, { subType, result }, { result: separator }) => {
     if (!['string', 'number', 'void'].includes(subType)) {

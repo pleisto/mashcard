@@ -21,7 +21,8 @@ import { codeFragments2definition, variableKey } from '../grammar/convert'
 import { uuid } from '@brickdoc/active-support'
 import { cleanupEventDependency, maybeEncodeString, shouldReceiveEvent } from '../grammar'
 import {
-  FormulaBlockNameChangedOrDeleted,
+  FormulaBlockNameDeletedTrigger,
+  FormulaBlockNameChangedTrigger,
   FormulaContextNameChanged,
   FormulaContextNameRemove,
   FormulaTaskCompleted,
@@ -427,16 +428,15 @@ export class VariableClass implements VariableInterface {
 
     // Block rename or delete
     blockDependencies.forEach(blockId => {
-      const blockNameEventDependency: EventDependency<
-        typeof FormulaBlockNameChangedOrDeleted extends EventType<infer X> ? X : never
+      const blockNameChangedEventDependency: EventDependency<
+        typeof FormulaBlockNameChangedTrigger extends EventType<infer X> ? X : never
       > = {
-        kind: 'BlockRenameOrDelete',
-        event: FormulaBlockNameChangedOrDeleted,
-        eventId: blockId,
+        kind: 'BlockRename',
+        event: FormulaBlockNameChangedTrigger,
+        eventId: `${this.formulaContext.domain}#${blockId}`,
         scope: {},
-        key: `BlockRenameOrDelete#${blockId}`,
+        key: `BlockRename#${blockId}`,
         definitionHandler: (deps, variable, payload) => {
-          if (payload.meta.deleted) return undefined
           const newCodeFragments = this.t.variableParseResult.codeFragments.map(c => {
             if (c.code !== 'Block') return c
             if (c.attrs.id !== blockId) return c
@@ -445,7 +445,16 @@ export class VariableClass implements VariableInterface {
           return codeFragments2definition(newCodeFragments, this.t.meta.namespaceId)
         }
       }
-      this.eventDependencies.push(blockNameEventDependency)
+      const blockNameDeleteEventDependency: EventDependency<
+        typeof FormulaBlockNameDeletedTrigger extends EventType<infer X> ? X : never
+      > = {
+        kind: 'BlockDelete',
+        event: FormulaBlockNameDeletedTrigger,
+        eventId: `${this.formulaContext.domain}#${blockId}`,
+        scope: {},
+        key: `BlockDelete#${blockId}`
+      }
+      this.eventDependencies.push(blockNameChangedEventDependency, blockNameDeleteEventDependency)
     })
 
     nameDependencies.forEach(({ name, namespaceId }) => {

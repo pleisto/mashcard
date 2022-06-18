@@ -9,6 +9,7 @@ ignore:
   - 'apps/client-web/src/BrickdocGraphQL.ts'
   - 'packages/brickdoc-design-icons/**/*'
   - 'packages/brickdoc-schema/**/*'
+  - 'packages/**/doc/**/*'
   - 'packages/briockdoc-design-system/.storybook'
   - 'packages/brickdoc-design-system/components/*/demos'
   - 'plugins/**/*'

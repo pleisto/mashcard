@@ -1,6 +1,7 @@
 import { test, expect } from '@/fixtures'
 import { rem2Pixel } from '@/helpers/utils/rem2Pixel'
 import { INITIAL_PAGE, TWO_LAYER_PAGE_TREE } from '@/tests/common/common.data'
+import { NESTED_LAYER_PAGE_TREE, PAGE_LIST } from './page.data'
 import { PageTreePage } from './pageTree.page'
 
 test.describe('Page List', () => {
@@ -85,6 +86,24 @@ test.describe('Page List', () => {
       await pageTree.removePage()
 
       await expect(pageTree.getPages()).toHaveCount(1)
+    })
+  })
+
+  test.describe('Virtual test @virtual', () => {
+    test.afterEach(async () => {
+      await pageTree.createScreenshot()
+    })
+
+    test('Nested layer', async ({ api }) => {
+      await api.createPageTree(NESTED_LAYER_PAGE_TREE)
+      await api.pageReload()
+
+      await pageTree.expandSubPageOneByOne(6)
+    })
+
+    test('Page List', async ({ api }) => {
+      await api.createPageTree(PAGE_LIST())
+      await api.pageReload()
     })
   })
 })

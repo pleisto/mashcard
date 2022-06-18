@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const mathTrunc = createFunctionClause({
   name: 'TRUNC',
   async: false,
@@ -13,7 +16,7 @@ export const mathTrunc = createFunctionClause({
   args: [{ name: 'number', type: 'number' }],
   returns: 'number',
   examples: [{ input: '=TRUNC(1.5)', output: { type: 'number', result: 1 } }],
-  testCases: [],
+  testCases: [{ input: [NaN], output: { type: 'number', result: NaN } }],
   chain: false,
   reference: (ctx, number) => ({
     result: Math.trunc(number.result),

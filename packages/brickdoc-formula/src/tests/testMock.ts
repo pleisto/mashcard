@@ -1,5 +1,4 @@
-import { CellClass, ColumnClass, RowClass, SpreadsheetClass } from '../controls'
-import { BlockClass } from '../controls/block'
+import { AnyResult } from '../types'
 
 const BLOCK_SNAPSHOT_NAME = 'BLOCK_SNAPSHOT'
 const COLUMN_SNAPSHOT_NAME = 'COLUMN_SNAPSHOT'
@@ -23,12 +22,19 @@ export const mockCell = (value: string, cellId: string, columnKey: string, rowKe
   rowKey
 ]
 
-export const matchObject = (obj: any): any => {
-  if (obj instanceof BlockClass) return mockBlock(obj.name(''), obj.id)
-  if (obj instanceof SpreadsheetClass) return mockSpreadsheet(obj.name(), obj.spreadsheetId)
-  if (obj instanceof ColumnClass) return mockColumn(obj.display(), obj.columnId)
-  if (obj instanceof RowClass) return mockRow(obj.display())
-  if (obj instanceof CellClass) return mockCell(obj.value, obj.cellId, obj.columnKey, obj.rowKey)
+export const matchObject = ({ type, result }: AnyResult): any => {
+  switch (type) {
+    case 'Block':
+      return mockBlock(result.name(''), result.id)
+    case 'Spreadsheet':
+      return mockSpreadsheet(result.name(), result.spreadsheetId)
+    case 'Column':
+      return mockColumn(result.display(), result.columnId)
+    case 'Row':
+      return mockRow(result.display())
+    case 'Cell':
+      return mockCell(result.value, result.cellId, result.columnKey, result.rowKey)
+  }
 
-  return obj
+  return result
 }

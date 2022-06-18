@@ -26,11 +26,11 @@ import {
   loadSpreadsheetBlocks,
   SpreadsheetLoaded
 } from '@brickdoc/schema'
-import { dispatchFormulaBlockNameChangeOrDelete } from '@brickdoc/formula'
+import { dispatchFormulaBlockNameChange } from '@brickdoc/formula'
 
 export type UpdateBlocks = (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
 
-export function useSyncProvider(queryVariables: { rootId: string; historyId?: string }): {
+export function useSyncProvider(queryVariables: { rootId: string; historyId?: string; domain: string }): {
   rootBlock: MutableRefObject<Block | undefined>
   data: any
   loading: boolean
@@ -123,7 +123,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
       if (blocks.length > 0 || deletedIds.length > 0) {
         blocks.forEach(b => {
           if (b.type === 'doc') {
-            void dispatchFormulaBlockNameChangeOrDelete({ id: b.id, name: b.text, deleted: false })
+            void dispatchFormulaBlockNameChange({ id: b.id, name: b.text, username: queryVariables.domain })
           }
           BrickdocEventBus.dispatch(BlockUpdated(b as Block))
           dirtyBlocksMap.current.delete(b.id)
@@ -161,7 +161,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
         void commitDirty()
       }, 500)
     }
-  }, [blockSyncBatch])
+  }, [blockSyncBatch, queryVariables.domain])
 
   const onDocSave = useCallback(
     async (doc: Node): Promise<void> => {
@@ -169,6 +169,8 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
       if (!docBlocksMap.current.size) return
       isSavingVar(true)
       // NOTE: tempfix for root uuid
+      // TODO: need avoid modify read-only prop
+      // @ts-expect-error
       doc.attrs.uuid = rootId.current ?? doc.attrs.uuid
       const docBlocks = nodeToBlock(doc, 0)
       const deletedIds = new Set(docBlocksMap.current.keys())

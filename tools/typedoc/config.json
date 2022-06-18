@@ -1,9 +1,9 @@
 {
   "readme": "none",
   "githubPages": false,
-  "plugin": ["typedoc-plugin-markdown"],
+  "plugin": ["typedoc-plugin-markdown", "typedoc-plugin-inline-sources"],
   "categorizeByGroup": false,
   "hideBreadcrumbs": true,
   "namedAnchors": true,
-  "gitRevision": "master"
+  "gitRevision": "main"
 }

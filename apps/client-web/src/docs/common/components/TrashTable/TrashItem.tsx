@@ -99,7 +99,9 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
           {titleData}
         </PageTile>
       </Page>
-      <Time>{block.deletedAt && dayjs(block.deletedAt).format('YYYY-MM-DD HH:mm:ss')}</Time>
+      <Time data-testid={TEST_ID_ENUM.trash.pageItem.deletedAt.id}>
+        {block.deletedAt && dayjs(block.deletedAt).format('YYYY-MM-DD HH:mm:ss')}
+      </Time>
       <Action>
         {!block.checked && (
           <>

@@ -11,7 +11,7 @@
 return if Rails.env.production?
 
 users = Array.new(5) do |n|
-  Accounts::User.create!(name: "Test#{n}", password: 'test123', email: "test#{n}@example.com",
+  Accounts::User.create!(name: "Test#{n}", password: 'test1234', email: "test#{n}@example.com",
     domain: "test#{n}").tap(&:confirm)
 end
 

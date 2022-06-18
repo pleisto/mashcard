@@ -1,5 +1,8 @@
-import { createFunctionClause } from '../../types'
+import { createFunctionClause, RecordResult } from '../../types'
 
+/**
+ * @source
+ */
 export const spreadsheetToRecordArray = createFunctionClause({
   name: 'toRecordArray',
   async: false,
@@ -9,14 +12,9 @@ export const spreadsheetToRecordArray = createFunctionClause({
   acceptError: false,
   effect: false,
   examples: [{ input: '=123', output: { type: 'Array', result: [], subType: 'void' } }],
-  description: 'Converts the value to a record.',
+  description: 'Converts the spreadsheet to a record.',
   group: 'core',
-  args: [
-    {
-      name: 'spreadsheet',
-      type: 'Spreadsheet'
-    }
-  ],
+  args: [{ name: 'spreadsheet', type: 'Spreadsheet' }],
   returns: 'Array',
   testCases: [],
   chain: true,
@@ -24,7 +22,7 @@ export const spreadsheetToRecordArray = createFunctionClause({
     return {
       type: 'Array',
       subType: 'Record',
-      result: spreadsheet.toRecord().map(row => ({ type: 'Record', subType: 'string', result: row }))
+      result: spreadsheet.toRecord().map<RecordResult>(row => ({ type: 'Record', subType: 'string', result: row }))
     }
   }
 })

@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const coreSet = createFunctionClause({
   name: 'Set',
   async: false,

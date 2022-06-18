@@ -1,6 +1,6 @@
 import { EventType } from '@brickdoc/schema'
 import { BlockType, ColumnType, SpreadsheetType } from '../controls'
-import { SpreadsheetUpdateNameViaId } from '../events'
+import { SpreadsheetUpdateNameViaId, SpreadsheetReloadViaId, SpreadsheetUpdateNameViaIdPayload } from '../events'
 import { EventDependency, VariableInterface } from '../types'
 import { CodeFragmentVisitor } from './codeFragment'
 import { codeFragments2definition } from './convert'
@@ -12,6 +12,18 @@ type Visitor = CodeFragmentVisitor
  */
 export const parseTrackName = (visitor: Visitor, name: string, namespaceId: string): void => {
   visitor.nameDependencies.push({ namespaceId, name })
+}
+
+export const parseTrackSpreadsheetLoad = (visitor: Visitor, namespaceId: string, spreadsheetId: string): void => {
+  const spreadsheetReloadEventDependency: EventDependency<SpreadsheetUpdateNameViaIdPayload> = {
+    eventId: `${namespaceId},${spreadsheetId}`,
+    event: SpreadsheetReloadViaId,
+    key: `Spreadsheet#${spreadsheetId}`,
+    scope: {},
+    kind: 'Spreadsheet'
+  }
+
+  visitor.eventDependencies.push(spreadsheetReloadEventDependency)
 }
 
 /**

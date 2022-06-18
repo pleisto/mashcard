@@ -16,8 +16,8 @@ import {
   variable2codeFragment
 } from '../grammar'
 import { fetchResult } from '../context/variable'
-import { BrickdocEventBus, EventSubscribed, DocSoftDeleted } from '@brickdoc/schema'
-import { FormulaBlockNameChangedOrDeleted, dispatchFormulaBlockNameChangeOrDelete } from '../events'
+import { BrickdocEventBus, EventSubscribed } from '@brickdoc/schema'
+import { FormulaBlockNameChangedTrigger, FormulaBlockNameDeletedTrigger, FormulaDocSoftDeleted } from '../events'
 import { parseTrackName, parseTrackSpreadsheet, parseTrackVariable } from '../grammar/dependency'
 
 export class BlockClass implements BlockType {
@@ -36,25 +36,20 @@ export class BlockClass implements BlockType {
     }
 
     const blockNameSubscription = BrickdocEventBus.subscribe(
-      FormulaBlockNameChangedOrDeleted,
+      FormulaBlockNameChangedTrigger,
       async e => {
-        if (!e.payload.meta.deleted) {
-          this._name = e.payload.meta.name || 'Untitled'
-          await this._formulaContext.setName(this.nameDependency())
-        }
+        this._name = e.payload.meta.name || 'Untitled'
+        await this._formulaContext.setName(this.nameDependency())
       },
-      { subscribeId: `Block#${this.id}`, eventId: this.id }
+      { subscribeId: `Block#${this.id}`, eventId: `${this._formulaContext.domain}#${this.id}` }
     )
 
     const blockDeleteSubcription = BrickdocEventBus.subscribe(
-      DocSoftDeleted,
-      e => {
-        void this._formulaContext.removeBlock(this.id)
+      FormulaDocSoftDeleted,
+      async e => {
+        await this._formulaContext.removeBlock(this.id)
       },
-      {
-        subscribeId: `Block#${this.id}`,
-        eventId: this.id
-      }
+      { subscribeId: `Block#${this.id}`, eventId: `${this._formulaContext.domain}#${this.id}` }
     )
 
     this.eventListeners.push(blockNameSubscription, blockDeleteSubcription)
@@ -86,7 +81,16 @@ export class BlockClass implements BlockType {
     })
     this.eventListeners = []
     await this._formulaContext.removeName(this.id)
-    await dispatchFormulaBlockNameChangeOrDelete({ id: this.id, name: this._name, deleted: true })
+    const result = BrickdocEventBus.dispatch(
+      FormulaBlockNameDeletedTrigger({
+        id: this.id,
+        namespaceId: this.id,
+        key: this.id,
+        scope: null,
+        meta: { name: this._name, username: this._formulaContext.domain }
+      })
+    )
+    await Promise.all(result)
   }
 
   async handleInterpret(interpreter: FormulaInterpreter, name: string): Promise<AnyTypeResult> {

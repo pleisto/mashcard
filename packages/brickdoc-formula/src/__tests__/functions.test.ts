@@ -1,9 +1,10 @@
 import { makeContext } from '../tests/testHelper'
 import { BUILTIN_CLAUSES } from '../functions'
+import { castData } from '../grammar'
 
 const testCases = BUILTIN_CLAUSES.flatMap(c =>
   c.testCases.map((t, index) => ({
-    title: `${c.group}::${c.name} - [${index}]: ${t.input}`,
+    title: `${c.group}::${c.name} - [${index}]: ${JSON.stringify(t.input)}`,
     args: c.args,
     reference: c.reference,
     t
@@ -23,7 +24,7 @@ describe('functions', () => {
       newCtx,
       ...args.map((a, i) => {
         const input = t.input[i]
-        if (input !== undefined) return { type: a.type, result: input }
+        if (input !== undefined) return castData(input)
         if (a.default) return a.default
         throw new Error(`No input for ${title} [${a.name} - ${i}]`)
       })

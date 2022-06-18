@@ -2,6 +2,9 @@ import { FORMULA_FEATURE_CONTROL } from '../../context'
 import { SwitchClass } from '../../controls'
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const controlSwitch = createFunctionClause({
   name: 'Switch',
   async: false,

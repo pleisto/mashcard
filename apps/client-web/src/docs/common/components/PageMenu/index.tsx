@@ -69,9 +69,10 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   const [copied, setCopied] = React.useState<boolean>(false)
   const getPageBlocks = useImperativeQuery(queryPageBlocks)
 
-  const [blockSoftDelete, { loading: blockDeleteLoading }] = useBlockSoftDelete(pageId, {
-    refetchQueries: [queryPageBlocks, GetTrashBlocksDocument]
-  })
+  const [blockSoftDelete, { loading: blockDeleteLoading }] = useBlockSoftDelete(
+    { id: pageId, username: domain },
+    { refetchQueries: [queryPageBlocks, GetTrashBlocksDocument] }
+  )
 
   const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({
     refetchQueries: [queryPageBlocks]

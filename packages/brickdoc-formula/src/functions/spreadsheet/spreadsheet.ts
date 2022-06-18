@@ -95,6 +95,9 @@ const Spreadsheet = (ctx: FunctionContext, { result, subType }: ArrayResult): Sp
   return { type: 'Spreadsheet', result: spreadsheet }
 }
 
+/**
+ * @source
+ */
 export const spreadsheetSpreadsheet = createFunctionClause({
   name: 'Spreadsheet',
   async: false,
@@ -104,7 +107,7 @@ export const spreadsheetSpreadsheet = createFunctionClause({
   acceptError: false,
   effect: false,
   examples: [{ input: '=123', output: null }],
-  description: 'Returns the spreadsheet.',
+  description: 'Creates a spreadsheet',
   group: 'core',
   args: [{ name: 'array', type: 'Array' }],
   returns: 'Spreadsheet',

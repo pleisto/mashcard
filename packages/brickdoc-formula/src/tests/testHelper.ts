@@ -1,6 +1,6 @@
 import { generateVariable, interpret, parse } from '../grammar/core'
 import { FormulaContext, FormulaContextArgs } from '../context'
-import { dispatchFormulaBlockNameChangeOrDelete } from '../events'
+import { dispatchFormulaBlockNameChange } from '../events'
 import { ContextInterface, FunctionContext, InterpretContext } from '../types'
 import { Cell, Column, Row, SpreadsheetClass, SpreadsheetType } from '../controls'
 import { columnDisplayIndex } from '../grammar'
@@ -180,7 +180,7 @@ export const makeContext = async (options: MakeContextOptions): Promise<MakeCont
     const [namespaceId, state] = getUuid(pageId, uuidState)
     uuidState = state
     if (!firstNamespaceId) firstNamespaceId = namespaceId
-    await dispatchFormulaBlockNameChangeOrDelete({ id: namespaceId, name: pageName, deleted: false })
+    await dispatchFormulaBlockNameChange({ id: namespaceId, name: pageName, username: formulaContext.domain })
 
     for (const { variableName, result, variableId, definition, position, insertOptions } of variables ?? []) {
       const [finalVariableId, state] = getUuid(variableId, uuidState)

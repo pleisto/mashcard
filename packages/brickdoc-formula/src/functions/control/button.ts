@@ -2,6 +2,9 @@ import { FORMULA_FEATURE_CONTROL } from '../../context'
 import { ButtonClass } from '../../controls'
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const controlButton = createFunctionClause({
   name: 'Button',
   async: false,
