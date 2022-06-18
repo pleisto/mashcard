@@ -3,7 +3,7 @@
 root: true
 
 extends:
-  - plugin:@brickdoc/eslint-plugin/base
+  - plugin:@pleisto/eslint-plugin/base
 
 parserOptions:
   project:
