@@ -1,4 +1,4 @@
-import { Embedtype } from '@brickdoc/schema'
+import { EmbedType } from '@brickdoc/schema'
 import { Editor } from '@tiptap/core'
 
 export const dropImageHandler = (editor: Editor, event: DragEvent): boolean => {
@@ -11,7 +11,7 @@ export const dropImageHandler = (editor: Editor, event: DragEvent): boolean => {
 
     if (file?.type.includes('image')) {
       const position = editor.view.posAtCoords({ left: event.clientX, top: event.clientY })?.pos
-      editor.commands.setEmbedBlock(Embedtype.Upload, file, position)
+      editor.commands.setEmbedBlock(EmbedType.Upload, file, position)
     }
   }
 

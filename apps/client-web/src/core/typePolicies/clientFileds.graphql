@@ -1,3 +1,0 @@
-type RootQuery {
-  currentPodDomain: String!
-}

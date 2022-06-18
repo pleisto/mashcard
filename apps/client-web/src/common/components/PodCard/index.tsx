@@ -8,8 +8,8 @@ export interface PodType {
   domain: string
   email?: string | null | undefined
   avatarData?:
-    | { __typename?: 'avatar'; url: string }
-    | { __typename: 'avatarComp'; comp: React.ReactElement }
+    | { __typename?: 'Avatar'; url: string }
+    | { __typename: 'AvatarComp'; comp: React.ReactElement }
     | null
     | undefined
   personal?: boolean

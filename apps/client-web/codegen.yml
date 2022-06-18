@@ -1,7 +1,7 @@
 overwrite: true
 schema:
+  - ./src/core/typePolicies/clientFields.graphql
   - ../server-monolith/db/graphql/schema.json
-  - src/core/typePolicies/clientFileds.graphql
 documents: ['./src/**/*.graphql.ts', './src/**/graphql.ts']
 generates:
   ./src/BrickdocGraphQL.ts:

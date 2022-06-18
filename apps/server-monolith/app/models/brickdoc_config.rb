@@ -29,14 +29,6 @@ class BrickdocConfig < ApplicationRecord
     url: ENV['SMTP_URL'] || 'smtp://localhost:1025',
   }
 
-  # The reversible_int_hash algorithm can help us hide the real database primary key of the resource in GraphQL.
-  # Please Run `./bin/generate-reversible-int-hash-seed` and set the environment variables according to the result.
-  field :reversible_int_hash, type: :hash, symbolize_keys: true, read_only: true, default: {
-    prime: ENV['SECURITY_REVERSIBLE_INT_PRIME'],
-    inverse_integer: ENV['SECURITY_REVERSIBLE_INT_INVERSE'],
-    random_integer: ENV['SECURITY_REVERSIBLE_INT_RANDOM'],
-  }
-
   # Rails.application.config.active_storage.service
   field :active_storage_service, default: (
     if Rails.env.test?

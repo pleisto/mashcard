@@ -1,4 +1,4 @@
-import { Embedtype } from '@brickdoc/schema'
+import { EmbedType } from '@brickdoc/schema'
 import { Editor } from '@tiptap/core'
 
 export const pasteImageHandler = (editor: Editor, event: ClipboardEvent): boolean => {
@@ -10,7 +10,7 @@ export const pasteImageHandler = (editor: Editor, event: ClipboardEvent): boolea
     const file = files[i]
 
     if (file?.type.includes('image')) {
-      editor.commands.setEmbedBlock(Embedtype.Upload, file)
+      editor.commands.setEmbedBlock(EmbedType.Upload, file)
     }
   }
 

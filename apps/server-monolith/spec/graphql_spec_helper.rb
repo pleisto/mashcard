@@ -20,31 +20,16 @@ module GraphqlHelpers
     end
   end
 
-  def execute(statement, variables, context)
-    result = BrickdocSchema.execute(statement, variables: variables, context: context)
+  def graphql_execute(statement, variables = {})
+    result = BrickdocSchema.execute(statement, variables: variables, context: make_context)
       .to_h.with_indifferent_access
     self.response = Response.new(result[:data], result[:errors])
   end
 
-  def internal_graphql_execute(statement, variables = {})
-    execute(statement, variables, make_context(:internal))
-  end
-
-  def openapi_graphql_execute(statement, variables = {})
-    execute(statement, variables, make_context(:openapi))
-  end
-
-  # expect query unavailable on openapi entrypoint
-  def unavailable_on_openapi(statement, variables = {})
-    openapi_graphql_execute(statement, variables)
-    response.errors[0]['extensions']['code'] == 'undefinedField'
-  end
-
-  def make_context(entrypoint)
+  def make_context
     {
       protocol: 'http',
       real_ip: 'fe80:0000:0000::0042',
-      entrypoint: entrypoint,
       current_user: current_user,
       current_pod: current_pod,
       session: request.session,

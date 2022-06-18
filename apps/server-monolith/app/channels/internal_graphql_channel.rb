@@ -8,13 +8,12 @@ class InternalGraphQLChannel < ApplicationCable::Channel
 
   def execute(data)
     query = data['query']
-    variables = BrickGraphQL.ensure_hash(data['variables'])
+    variables = Brickdoc::GraphQL.ensure_hash(data['variables'])
     operation_name = data['operationName']
     request = ActionDispatch::Request.new(connection.env)
     context = {
       protocol: 'websocket',
       real_ip: request.remote_ip,
-      entrypoint: :internal,
       current_user: current_user,
       current_pod: current_pod,
       channel: self,

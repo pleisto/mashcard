@@ -162,7 +162,7 @@ module Accounts
     end
 
     def hashed_id
-      BrickGraphQL::ReversibleIntHash.encode(id)
+      Brickdoc::Crypto.int_id_obfuscate(id)
     end
 
     def destroy_user!
