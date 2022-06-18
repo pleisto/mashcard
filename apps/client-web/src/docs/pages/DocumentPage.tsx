@@ -13,6 +13,7 @@ import { useDocumentEditable } from './hooks/useDocumentEditable'
 import * as Root from './DocumentPage.style'
 import { useDocMeta } from '../store/DocMeta'
 import { useEditorOptions } from './hooks/useEditorOptions'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 interface DocumentPageProps {
   // default: user can edit/view document normally
@@ -80,7 +81,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
   if (loading || blocksLoading || !editor || editor.isDestroyed || docMeta.documentInfoLoading) {
     return (
       <Root.PageSpinWrapper>
-        <Spin size="lg" />
+        <Spin size="lg" data-testid={TEST_ID_ENUM.page.DocumentPage.loading.id} />
       </Root.PageSpinWrapper>
     )
   }

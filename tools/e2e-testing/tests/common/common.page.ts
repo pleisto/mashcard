@@ -1,5 +1,6 @@
 import { Locator, Page } from '@playwright/test'
 import { COMMON_SELECTORS } from './common.selector'
+import { expect } from '@/fixtures'
 
 export class CommonPage {
   constructor(readonly page: Page) {}
@@ -46,5 +47,17 @@ export class CommonPage {
 
   async waitForResponseWithAction(operationName: string, actionFn: Promise<void>): Promise<void> {
     await Promise.all([this.waitForResponse(operationName), actionFn])
+  }
+
+  async createScreenshot(mask?: Locator[]): Promise<void> {
+    await this.page.waitForTimeout(500)
+    const maskList = mask ?? []
+    await expect(this.page).toHaveScreenshot({
+      mask: [
+        this.page.locator('[data-testid=page-topBar-saving]'),
+        this.page.locator('[data-testid=page-document-page-loading]'),
+        ...maskList
+      ]
+    })
   }
 }

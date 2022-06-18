@@ -48,6 +48,14 @@ export const TEST_ID_ENUM = {
       },
       addPageButton: {
         id: 'page-document-page-add-page-button'
+      },
+      loading: {
+        id: 'page-document-page-loading'
+      }
+    },
+    topBar: {
+      saving: {
+        id: 'page-topBar-saving'
       }
     }
   },
@@ -255,6 +263,9 @@ export const TEST_ID_ENUM = {
       },
       icon: {
         id: 'trash-pageItem-icon'
+      },
+      deletedAt: {
+        id: 'trash-pageItem-deletedAt'
       },
       button: {
         checkbox: {

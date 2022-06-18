@@ -67,6 +67,16 @@ export class TrashPage extends CommonPage {
     return this.page.locator(TRASH_SELECTOR.trashSelectedRemove)
   }
 
+  async getDeletedAtList(): Promise<Locator[]> {
+    const deletedAt = this.page.locator(TRASH_SELECTOR.deletedAt)
+    const count = await deletedAt.count()
+    const deletedAtList = []
+    for (let i = 0; i < count; i++) {
+      deletedAtList.push(deletedAt.nth(i))
+    }
+    return deletedAtList
+  }
+
   async openTrashPage(): Promise<void> {
     await this.getTrashButton().click()
   }
@@ -94,5 +104,11 @@ export class TrashPage extends CommonPage {
   async selectedBarRemove(): Promise<void> {
     await this.getSelectedBarRemoveButton().click()
     await this.waitForResponseWithAction('blockHardDelete', this.getDialogDeleteButton().click())
+  }
+
+  /** Only used for at least two items */
+  async selectedAll(): Promise<void> {
+    await this.getItemCheckbox().click()
+    await this.getImmediateCheckbox().click()
   }
 }
