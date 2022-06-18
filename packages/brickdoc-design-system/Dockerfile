@@ -5,10 +5,10 @@ ENV NODE_OPTIONS=--max-old-space-size=5950
 ADD ./ /app
 RUN yarn install && yarn design-system build-storybook
 
-FROM ghcr.io/brickdoc/wrapdrive:latest
-LABEL org.opencontainers.iamge.authors="secure@brickdoc.com"
+FROM ghcr.io/mashcard/wrapdrive:latest
+LABEL org.opencontainers.iamge.authors="secure@pleisto.com"
 LABEL org.opencontainers.image.licenses = "Apache-2.0"
-LABEL org.opencontainers.image.source = "https://github.com/brickdoc/brickdoc"
-LABEL org.opencontainers.image.documentation = "https://github.com/brickdoc/brickdoc/blob/master/packages/brickdoc-design-system/README.md"
+LABEL org.opencontainers.image.source = "https://github.com/mashcard/mashcard"
+LABEL org.opencontainers.image.documentation = "https://github.com/mashcard/mashcard/blob/main/packages/design-system/README.md"
 COPY --from=build /app/packages/brickdoc-design-system/storybook-static /var/www/html
 CMD ["/wrapdrive"]

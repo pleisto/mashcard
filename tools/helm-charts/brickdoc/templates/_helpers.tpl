@@ -37,7 +37,7 @@ Create chart name and version as used by the chart label.
 Common labels
 */}}
 {{- define "brickdoc.labels" -}}
-brickdoc.com/app-engine-managed: "true"
+mashcard.io/app-engine-managed: "true"
 helm.sh/chart: {{ include "brickdoc.chart" . }}
 {{ include "brickdoc.selectorLabels" . }}
 {{- if .Chart.AppVersion }}

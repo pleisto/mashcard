@@ -25,7 +25,7 @@ describe Resolvers::EmailAvailable, type: :query do
       expect(response.data['emailAvailable']).to eq({ 'success' => false,
 'message' => I18n.t('errors.messages.taken'), })
 
-      graphql_execute(query, { email: 'legitimate@brickdoc.com' })
+      graphql_execute(query, { email: 'legitimate@mashcard.io' })
       expect(response.data['emailAvailable']).to eq({ 'success' => true, 'message' => 'ok' })
     end
   end

@@ -2547,7 +2547,7 @@ export type Cons<H, T extends readonly any[]> = ((h: H, ...t: T) => void) extend
 
 #### Defined in
 
-[packages/active-support/src/typescript.ts:29](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/typescript.ts#L29)
+[packages/active-support/src/typescript.ts:29](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L29)
 
 ---
 
@@ -2575,7 +2575,7 @@ export type DeepPartial<T> = T extends object
 
 #### Defined in
 
-[packages/active-support/src/typescript.ts:6](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/typescript.ts#L6)
+[packages/active-support/src/typescript.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L6)
 
 ---
 
@@ -2609,7 +2609,7 @@ export type FixedLengthTuple<T, N extends number, R extends readonly T[] = []> =
 
 #### Defined in
 
-[packages/active-support/src/typescript.ts:56](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/typescript.ts#L56)
+[packages/active-support/src/typescript.ts:56](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L56)
 
 ---
 
@@ -2657,7 +2657,7 @@ export type PrependParameter<Param, F extends (...args: any[]) => any> = (
 
 #### Defined in
 
-[packages/active-support/src/typescript.ts:42](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/typescript.ts#L42)
+[packages/active-support/src/typescript.ts:42](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L42)
 
 ---
 
@@ -2695,7 +2695,7 @@ export type Repeat<
 
 #### Defined in
 
-[packages/active-support/src/typescript.ts:77](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/typescript.ts#L77)
+[packages/active-support/src/typescript.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L77)
 
 ---
 
@@ -2720,7 +2720,7 @@ export type RequireField<T, K extends keyof T> = T & Required<Pick<T, K>>
 
 #### Defined in
 
-[packages/active-support/src/typescript.ts:65](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/typescript.ts#L65)
+[packages/active-support/src/typescript.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L65)
 
 ---
 
@@ -2746,7 +2746,7 @@ export type RequiredKeys<T> = {
 
 #### Defined in
 
-[packages/active-support/src/typescript.ts:17](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/typescript.ts#L17)
+[packages/active-support/src/typescript.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L17)
 
 ---
 
@@ -2877,7 +2877,7 @@ Converts an array of items with ids and parent ids to a nested tree in a perform
 
 #### Defined in
 
-[packages/active-support/src/index.ts:22](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/index.ts#L22)
+[packages/active-support/src/index.ts:22](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/index.ts#L22)
 
 ---
 
@@ -3023,7 +3023,7 @@ Returns the new array of chunks.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:118](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/modernLodash.ts#L118)
+[packages/active-support/src/modernLodash.ts:118](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L118)
 
 ---
 
@@ -3048,7 +3048,7 @@ Returns the cloned value.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:188](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/modernLodash.ts#L188)
+[packages/active-support/src/modernLodash.ts:188](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L188)
 
 ---
 
@@ -3176,7 +3176,7 @@ Returns the new array of filtered values.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:136](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/modernLodash.ts#L136)
+[packages/active-support/src/modernLodash.ts:136](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L136)
 
 ---
 
@@ -3613,7 +3613,7 @@ Returns the slice of array.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:145](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/modernLodash.ts#L145)
+[packages/active-support/src/modernLodash.ts:145](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L145)
 
 ---
 
@@ -3645,7 +3645,7 @@ The slice of array.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:154](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/modernLodash.ts#L154)
+[packages/active-support/src/modernLodash.ts:154](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L154)
 
 ---
 
@@ -4546,7 +4546,7 @@ Returns the slice of array.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:162](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/modernLodash.ts#L162)
+[packages/active-support/src/modernLodash.ts:162](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L162)
 
 ---
 
@@ -4700,7 +4700,7 @@ Checks if a given value is a empty like Ruby on Rails.
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:77](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/isType.ts#L77)
+[packages/active-support/src/isType.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L77)
 
 ---
 
@@ -4901,7 +4901,7 @@ value is T[]
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:65](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/isType.ts#L65)
+[packages/active-support/src/isType.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L65)
 
 ---
 
@@ -4929,7 +4929,7 @@ value is string
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:71](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/isType.ts#L71)
+[packages/active-support/src/isType.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L71)
 
 ---
 
@@ -4975,7 +4975,7 @@ value is undefined \| null
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:48](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/isType.ts#L48)
+[packages/active-support/src/isType.ts:48](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L48)
 
 ---
 
@@ -4998,7 +4998,7 @@ value is number
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:39](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/isType.ts#L39)
+[packages/active-support/src/isType.ts:39](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L39)
 
 ---
 
@@ -5122,7 +5122,7 @@ value is string
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:30](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/isType.ts#L30)
+[packages/active-support/src/isType.ts:30](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L30)
 
 ---
 
@@ -5150,7 +5150,7 @@ value is string
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:57](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/isType.ts#L57)
+[packages/active-support/src/isType.ts:57](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L57)
 
 ---
 
@@ -5175,7 +5175,7 @@ true if the value is a url, false otherwise.
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:86](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/isType.ts#L86)
+[packages/active-support/src/isType.ts:86](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L86)
 
 ---
 
@@ -5964,7 +5964,7 @@ the plural form of the word in the string
 
 #### Defined in
 
-[packages/active-support/src/inflections/index.ts:12](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/inflections/index.ts#L12)
+[packages/active-support/src/inflections/index.ts:12](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/inflections/index.ts#L12)
 
 ---
 
@@ -6161,7 +6161,7 @@ Returns the new filtered array.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:180](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/modernLodash.ts#L180)
+[packages/active-support/src/modernLodash.ts:180](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L180)
 
 ---
 
@@ -6217,7 +6217,7 @@ JSON Parser with result wrapper
 
 #### Defined in
 
-[packages/active-support/src/results.ts:6](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/results.ts#L6)
+[packages/active-support/src/results.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/results.ts#L6)
 
 ---
 
@@ -6467,7 +6467,7 @@ the singular form of the word in the string
 
 #### Defined in
 
-[packages/active-support/src/inflections/index.ts:24](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/inflections/index.ts#L24)
+[packages/active-support/src/inflections/index.ts:24](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/inflections/index.ts#L24)
 
 ---
 
@@ -7127,7 +7127,7 @@ Returns the new duplicate free array.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:171](https://github.com/brickdoc/brickdoc/blob/main/packages/active-support/src/modernLodash.ts#L171)
+[packages/active-support/src/modernLodash.ts:171](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L171)
 
 ---
 

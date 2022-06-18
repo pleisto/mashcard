@@ -34,7 +34,7 @@ Create chart name and version as used by the chart label.
 Common labels
 */}}
 {{- define "bae-simple-web.labels" -}}
-brickdoc.com/app-engine-managed: "true"
+mashcard.io/app-engine-managed: "true"
 helm.sh/chart: {{ include "bae-simple-web.chart" . }}
 {{ include "bae-simple-web.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
