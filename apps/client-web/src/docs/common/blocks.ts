@@ -125,6 +125,8 @@ export const nodeToBlock = (node: Node, level: number): BlockInput[] => {
   const children = childrenNodes
     .filter((n: Node) => n.attrs.uuid && (level === 0 || n.type.name !== 'paragraph' || n.content.size))
     .flatMap((n: Node, i: number) => {
+      // TODO: need avoid modify read-only prop
+      // @ts-expect-error
       n.attrs.sort = finalSorts[i]
       return nodeToBlock(n, level + 1).map((i: BlockInput) => ({ parentId: parent.id, ...i }))
     })

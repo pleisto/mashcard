@@ -169,6 +169,8 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
       if (!docBlocksMap.current.size) return
       isSavingVar(true)
       // NOTE: tempfix for root uuid
+      // TODO: need avoid modify read-only prop
+      // @ts-expect-error
       doc.attrs.uuid = rootId.current ?? doc.attrs.uuid
       const docBlocks = nodeToBlock(doc, 0)
       const deletedIds = new Set(docBlocksMap.current.keys())

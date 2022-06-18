@@ -81,10 +81,10 @@
     "@types/is-ci": "^3.0.0",
     "@types/jest": "^28.1.1",
     "@types/jest-axe": "^3.5.3",
-    "@types/node": "^17.0.42",
+    "@types/node": "^18.0.0",
     "@types/rails__actioncable": "^6.1.6",
     "@types/rails__activestorage": "^7.0.1",
-    "@types/react": "^18.0.12",
+    "@types/react": "^18.0.13",
     "@types/react-dom": "^18.0.5",
     "@types/supertest": "^2.0.12",
     "@types/uuid": "^8.3.4",
@@ -103,7 +103,7 @@
     "jest-environment-jsdom": "^28.1.1",
     "jest-junit": "^13.2.0",
     "lint-staged": "^13.0.1",
-    "prettier": "^2.6.2",
+    "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "turbo": "^1.2.16",
     "typedoc": "^0.22.17",
@@ -124,8 +124,8 @@
     "@rails/actioncable": "patch:@rails/actioncable@npm:7.0.3#.yarn/patches/@rails-actioncable-npm-7.0.3-9e882d37e5.patch"
   },
   "dependencies": {
-    "@swc/core": "^1.2.198",
-    "@swc/helpers": "^0.3.17",
+    "@swc/core": "^1.2.203",
+    "@swc/helpers": "^0.4.2",
     "dayjs": "^1.11.3",
     "ts-node": "^10.8.1"
   },
