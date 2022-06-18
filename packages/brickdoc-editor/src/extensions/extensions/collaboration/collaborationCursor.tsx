@@ -1,8 +1,8 @@
 import { Extension } from '@tiptap/core'
 import { yCursorPlugin } from 'y-prosemirror'
-import { CursorAvatar } from './styles'
 import { string2Color } from '@brickdoc/design-system/src/components/Avatar/initials'
 import * as ReactDOM from 'react-dom/client'
+import { CursorAvatar } from '../../../components/extensionViews/CollaborationCursorViews'
 
 interface CollaborationCursorUsers extends Array<{ clientId: number; [key: string]: any }> {}
 
