@@ -1,7 +1,7 @@
 root: true
 
 extends:
-  - plugin:@brickdoc/eslint-plugin/base
+  - plugin:@pleisto/eslint-plugin/base
 
 rules:
   jest/no-done-callback: off

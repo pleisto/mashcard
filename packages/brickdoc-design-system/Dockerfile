@@ -5,7 +5,7 @@ ENV NODE_OPTIONS=--max-old-space-size=5950
 ADD ./ /app
 RUN yarn install && yarn design-system build-storybook
 
-FROM ghcr.io/mashcard/wrapdrive:latest
+FROM  ghcr.io/pleisto/wrapdrive:latest
 LABEL org.opencontainers.iamge.authors="secure@pleisto.com"
 LABEL org.opencontainers.image.licenses = "Apache-2.0"
 LABEL org.opencontainers.image.source = "https://github.com/mashcard/mashcard"

@@ -1941,28 +1941,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@brickdoc/eslint-plugin@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@brickdoc/eslint-plugin@npm:1.0.2"
-  dependencies:
-    "@typescript-eslint/eslint-plugin": ^5.27.0
-    "@typescript-eslint/parser": ^5.27.0
-    eslint-config-prettier: ^8.5.0
-    eslint-config-standard-with-typescript: ^21.0.1
-    eslint-plugin-import: ^2.26.0
-    eslint-plugin-jest: ^26.5.3
-    eslint-plugin-jsx-a11y: ^6.5.1
-    eslint-plugin-node: ^11.1.0
-    eslint-plugin-promise: ^6.0.0
-    eslint-plugin-react: ^7.30.0
-    eslint-plugin-react-hooks: ^4.5.0
-    eslint-plugin-security-node: ^1.1.1
-  peerDependencies:
-    eslint: ^8.14.0
-  checksum: eec98f7149277187fec6b7fe762317b47c59406cef823ea9c08514f6f82760bc39a371b176604b0b178d4e839371aa4c300744279bf21d7ebb9519d8b6a93825
-  languageName: node
-  linkType: hard
-
 "@brickdoc/formula@workspace:^, @brickdoc/formula@workspace:packages/brickdoc-formula":
   version: 0.0.0-use.local
   resolution: "@brickdoc/formula@workspace:packages/brickdoc-formula"
@@ -3266,13 +3244,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@mashcard/monorepo@workspace:."
   dependencies:
-    "@brickdoc/eslint-plugin": ^1.0.2
     "@commitlint/cli": ^17.0.2
     "@commitlint/config-conventional": ^17.0.2
     "@graphql-codegen/cli": ^2.6.2
     "@graphql-codegen/typescript": ^2.5.1
     "@graphql-codegen/typescript-operations": ^2.4.2
     "@graphql-codegen/typescript-react-apollo": ^3.2.16
+    "@pleisto/eslint-plugin": ^1.0.3
     "@swc/cli": ^0.1.57
     "@swc/core": ^1.2.204
     "@swc/helpers": ^0.4.2
@@ -3503,6 +3481,28 @@ __metadata:
   bin:
     playwright: cli.js
   checksum: 55392a97d920b77374926415e16e649320a9d8243f4ddca09c61827580674ad6f50057c09d5d194212d4ce60abc2cdf5f939ddd87f3670e073e9dd6c418480d5
+  languageName: node
+  linkType: hard
+
+"@pleisto/eslint-plugin@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@pleisto/eslint-plugin@npm:1.0.3"
+  dependencies:
+    "@typescript-eslint/eslint-plugin": ^5.28.0
+    "@typescript-eslint/parser": ^5.28.0
+    eslint-config-prettier: ^8.5.0
+    eslint-config-standard-with-typescript: ^21.0.1
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-jest: ^26.5.3
+    eslint-plugin-jsx-a11y: ^6.5.1
+    eslint-plugin-node: ^11.1.0
+    eslint-plugin-promise: ^6.0.0
+    eslint-plugin-react: ^7.30.0
+    eslint-plugin-react-hooks: ^4.6.0
+    eslint-plugin-security-node: ^1.1.1
+  peerDependencies:
+    eslint: ^8.18.0
+  checksum: 4263dc769e1785f2267cf80afb95bd3a88d34d5a44b1fce04feb332eac33b3a94fb2fd13f1a265ce48df86cfddf12f75a239c4213747943ad9ec27486996b235
   languageName: node
   linkType: hard
 
@@ -6564,7 +6564,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^5.27.0":
+"@typescript-eslint/eslint-plugin@npm:^5.28.0":
   version: 5.28.0
   resolution: "@typescript-eslint/eslint-plugin@npm:5.28.0"
   dependencies:
@@ -6604,7 +6604,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^5.27.0":
+"@typescript-eslint/parser@npm:^5.28.0":
   version: 5.28.0
   resolution: "@typescript-eslint/parser@npm:5.28.0"
   dependencies:
@@ -11997,7 +11997,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-hooks@npm:^4.5.0":
+"eslint-plugin-react-hooks@npm:^4.6.0":
   version: 4.6.0
   resolution: "eslint-plugin-react-hooks@npm:4.6.0"
   peerDependencies:
