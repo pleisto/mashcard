@@ -44,7 +44,7 @@ export const DocumentTopBar: FC = () => {
 
   const editableMenu = id && !isDeleted && (
     <>
-      <Root.HiddenItem as={CollaboratorsMenu} />
+      <CollaboratorsMenu />
       <ShareMenu />
       {features.experiment_discussion && !isAnonymous && <DiscussionMenu />}
       {features.experiment_history && <HistoryMenu />}

@@ -9,6 +9,7 @@ import { FormulaContextVar } from '@/docs/reactiveVars'
 import { useCallback, useMemo } from 'react'
 import { PageTree } from '@/docs/common/components/PageTree'
 import { blockProvider } from '../useBlockSyncProvider'
+import { string2Color } from '@brickdoc/design-system/src/components/Avatar/initials'
 
 export interface UseEditorOptions {
   docMeta: DocMeta
@@ -39,7 +40,8 @@ export function useEditorOptions({
               provider,
               user: {
                 name: globalThis.brickdocContext.currentUser?.name,
-                operatorId: globalThis.brickdocContext.uuid
+                operatorId: globalThis.brickdocContext.uuid,
+                color: string2Color(globalThis.brickdocContext.uuid)
               }
             }
           : false,

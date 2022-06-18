@@ -156,6 +156,7 @@ export const Base = Extension.create<BaseOptions>({
       const collaborationCursorExtension = EXTENSION.CollaborationCursor.configure(collaborationCursorOptions)
       // FIX for tiptap extension deepMerge bug
       collaborationCursorExtension.options.provider = collaborationCursorOptions.provider
+      collaborationCursorExtension.options.user = collaborationCursorOptions.user ?? {}
       extensions.push(collaborationCursorExtension)
     }
 

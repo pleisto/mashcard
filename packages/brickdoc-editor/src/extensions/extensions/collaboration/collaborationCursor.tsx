@@ -1,6 +1,5 @@
 import { Extension } from '@tiptap/core'
 import { yCursorPlugin } from 'y-prosemirror'
-import { string2Color } from '@brickdoc/design-system/src/components/Avatar/initials'
 import * as ReactDOM from 'react-dom/client'
 import { CursorAvatar } from '../../../components/extensionViews/CollaborationCursorViews'
 
@@ -49,17 +48,15 @@ export const CollaborationCursor = Extension.create<CollaborationCursorOptions, 
         color: null
       },
       render: user => {
-        const color = string2Color(user.operatorId)
-
         const cursor = document.createElement('span')
 
         cursor.classList.add('collaboration-cursor__caret')
-        cursor.setAttribute('style', `border-color: ${color}`)
+        cursor.setAttribute('style', `border-color: ${user.color}`)
 
         const label = document.createElement('div')
 
         label.classList.add('collaboration-cursor__label')
-        label.setAttribute('style', `background-color: ${color}`)
+        label.setAttribute('style', `background-color: ${user.color}`)
 
         const avatarElm = document.createElement('span')
         const avatarRoot = ReactDOM.createRoot(avatarElm)

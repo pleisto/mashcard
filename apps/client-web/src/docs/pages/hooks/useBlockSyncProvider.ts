@@ -25,11 +25,21 @@ export interface blockProvider {
   document: Y.Doc
 }
 
+export interface awarenessInfoUser extends ThinUser {
+  color?: string
+  operatorId: string
+}
+
+export interface awarenessInfo {
+  user: awarenessInfoUser
+}
+
 export function useBlockSyncProvider(queryVariables: { blockId: string; historyId?: string }): {
   loading: boolean
   provider?: blockProvider
   initBlocksToEditor: React.MutableRefObject<boolean>
   blockCommitting: React.MutableRefObject<boolean>
+  awarenessInfos: awarenessInfo[]
 } {
   const {
     features: { experiment_collaboration: enableCollaboration }
@@ -41,6 +51,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
   const block = React.useRef<BlockNew>({ id: blockId })
   const [provider, setProvider] = React.useState<blockProvider>()
+  const [awarenessInfos, setAwarenessInfos] = React.useState<awarenessInfo[]>([])
+  const latestProvider = React.useRef<blockProvider>()
 
   const initBlocksToEditor = React.useRef<boolean>(false)
   const blockCommitting = React.useRef<boolean>(false)
@@ -50,6 +62,19 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
     fetchPolicy: 'no-cache',
     variables: { id: blockId, historyId }
   })
+
+  const awarenessChanged = React.useCallback(
+    (awareness: awarenessProtocol.Awareness) => {
+      const infos: awarenessInfo[] = Array.from(awareness.getStates().values()).map(i => {
+        return {
+          user: i.user
+        }
+      })
+      devLog('awarenessChanged', infos)
+      setAwarenessInfos(infos)
+    },
+    [setAwarenessInfos]
+  )
 
   useDocumentSubscription({
     onSubscriptionData: ({ subscriptionData: { data } }) => {
@@ -69,7 +94,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             })
           )
 
-          if (provider && operatorId && operatorId !== globalThis.brickdocContext.uuid) {
+          if (latestProvider.current && operatorId && operatorId !== globalThis.brickdocContext.uuid) {
             blocks.forEach(remoteBlock => {
               if (remoteBlock.id === blockId) {
                 block.current = remoteBlock
@@ -78,7 +103,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             const remoteState = Y.mergeUpdates(
               blockStates.filter(s => s.state).map(s => base64.parse(s.state as string))
             )
-            Y.applyUpdate(provider.document, remoteState)
+            Y.applyUpdate(latestProvider.current.document, remoteState)
           }
         }
       }
@@ -94,10 +119,15 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
         } = data
         if (updates) {
           devLog(`received awareness updates from ${operatorId}`)
-          if (provider && updates.length > 0) {
+          if (latestProvider.current && updates.length > 0) {
             try {
-              awarenessProtocol.applyAwarenessUpdate(provider.awareness, base64.parse(updates as string), '')
+              awarenessProtocol.applyAwarenessUpdate(
+                latestProvider.current.awareness,
+                base64.parse(updates as string),
+                ''
+              )
             } catch {}
+            awarenessChanged(latestProvider.current.awareness)
           }
         }
       }
@@ -215,6 +245,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
           })
 
           awareness.on('update', async ({ added, updated, removed }: any) => {
+            awarenessChanged(awareness)
             const changes = added.concat(updated).concat(removed)
             const updates = awarenessProtocol.encodeAwarenessUpdate(awareness, changes)
             const updatePromise = awarenessUpdate({
@@ -230,20 +261,20 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
           })
         }
 
-        setProvider({
-          document: newYdoc,
-          awareness
-        })
+        const provider = { document: newYdoc, awareness }
+        setProvider(provider)
+        latestProvider.current = provider
       }
     } else {
       initBlocksToEditor.current = true
     }
-  }, [blockId, historyId, enableCollaboration, data, loading, commitState, awarenessUpdate])
+  }, [blockId, historyId, enableCollaboration, data, loading, commitState, awarenessUpdate, awarenessChanged])
 
   return {
     loading,
     provider,
     initBlocksToEditor,
-    blockCommitting
+    blockCommitting,
+    awarenessInfos
   }
 }
