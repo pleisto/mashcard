@@ -1,4 +1,4 @@
-import { Embedtype } from '@brickdoc/schema'
+import { EmbedType } from '@brickdoc/schema'
 import { BlockViewProps, ExtensionMeta } from '../../common'
 
 export const meta: ExtensionMeta = {
@@ -55,7 +55,7 @@ export type EmbedViewMode = 'text' | 'preview' | 'card'
 export interface EmbedAttributes {
   embedMeta: {
     type: 'EmbedMeta'
-    embedType: Embedtype
+    embedType: EmbedType
   }
   defaultFile?: File | null
   link: {

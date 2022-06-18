@@ -142,7 +142,6 @@ jobs:
         with:
           files: |
             apps\/server-monolith\/app\/graphql
-            apps\/server-monolith\/lib\/brick_graphql
             graphql.ts$
       - name: Dump the graphql schema
         if: steps.changed-gql-typeds.outputs.any_changed == 'true'

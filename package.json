@@ -1,8 +1,8 @@
 {
-  "name": "@brickdoc/monorepo",
+  "name": "@mashcard/monorepo",
   "version": "0.0.0",
-  "author": "Brickdoc LTD",
-  "description": "Brickdoc Monorepo Root",
+  "author": "Brickdoc Inc",
+  "description": "MashCard Monorepo Root",
   "license": "Apache-2.0",
   "private": true,
   "workspaces": [
@@ -76,22 +76,22 @@
     "@swc/jest": "^0.2.21",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
-    "@testing-library/react-hooks": "^8.0.0",
-    "@testing-library/user-event": "^14.2.0",
+    "@testing-library/react-hooks": "^8.0.1",
+    "@testing-library/user-event": "^14.2.1",
     "@types/is-ci": "^3.0.0",
-    "@types/jest": "^28.1.1",
-    "@types/jest-axe": "^3.5.3",
+    "@types/jest": "^28.1.2",
+    "@types/jest-axe": "^3.5.4",
     "@types/node": "^18.0.0",
     "@types/rails__actioncable": "^6.1.6",
     "@types/rails__activestorage": "^7.0.1",
-    "@types/react": "^18.0.13",
+    "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "@types/supertest": "^2.0.12",
     "@types/uuid": "^8.3.4",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "depcheck": "^1.4.3",
-    "eslint": "^8.17.0",
+    "eslint": "^8.18.0",
     "fs-extra": "^10.1.0",
     "glob": "^8.0.3",
     "graphql-tag": "^2.12.6",
@@ -102,14 +102,14 @@
     "jest-axe": "^6.0.0",
     "jest-environment-jsdom": "^28.1.1",
     "jest-junit": "^13.2.0",
-    "lint-staged": "^13.0.1",
+    "lint-staged": "^13.0.2",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "turbo": "^1.2.16",
     "typedoc": "^0.22.17",
     "typedoc-plugin-inline-sources": "^1.0.1",
     "typedoc-plugin-markdown": "^3.12.1",
-    "typescript": "^4.7.3"
+    "typescript": "^4.7.4"
   },
   "packageManager": "yarn@3.2.1",
   "resolutions": {
@@ -124,13 +124,13 @@
     "@rails/actioncable": "patch:@rails/actioncable@npm:7.0.3#.yarn/patches/@rails-actioncable-npm-7.0.3-9e882d37e5.patch"
   },
   "dependencies": {
-    "@swc/core": "^1.2.203",
+    "@swc/core": "^1.2.204",
     "@swc/helpers": "^0.4.2",
     "dayjs": "^1.11.3",
     "ts-node": "^10.8.1"
   },
   "volta": {
-    "node": "18.2.0",
+    "node": "18.4.0",
     "yarn": "1.22.18"
   }
 }

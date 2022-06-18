@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
-import { BlockEmoji, Blocktype } from '@/BrickdocGraphQL'
+import { BlockEmoji, BlockType } from '@/BrickdocGraphQL'
 import dayjs from 'dayjs'
 import { BlockWithChecked } from './TrashList'
 import { Checkbox, Button, theme, ConfirmDialog } from '@brickdoc/design-system'
@@ -28,7 +28,7 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
   // TODO support image type
   const avatar = (
     <AvatarEmoji data-testid={TEST_ID_ENUM.trash.pageItem.icon.id}>
-      {block.meta.icon?.type === Blocktype.Emoji ? (
+      {block.meta.icon?.type === BlockType.Emoji ? (
         (block.meta.icon as BlockEmoji).emoji
       ) : (
         <FilePages size="1.25rem" color={theme.colors.typeThirdary.value} />
@@ -45,7 +45,7 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
   }
 
   const getEmoji = (path: NonNullDocMeta['pathArray'][0]): string | undefined => {
-    return path.icon && path.icon.type === Blocktype.Emoji ? (path.icon as BlockEmoji).emoji : ''
+    return path.icon && path.icon.type === BlockType.Emoji ? (path.icon as BlockEmoji).emoji : ''
   }
 
   const title = (
@@ -109,16 +109,14 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
               css={ActionButtonStyle}
               type="text"
               onClick={onClickRestore}
-              data-testid={TEST_ID_ENUM.trash.pageItem.button.restore.id}
-            >
+              data-testid={TEST_ID_ENUM.trash.pageItem.button.restore.id}>
               <Undo />
             </Button>
             <Button
               css={ActionButtonStyle}
               type="text"
               onClick={() => setHardDeleteModalVisible(true)}
-              data-testid={TEST_ID_ENUM.trash.pageItem.button.remove.id}
-            >
+              data-testid={TEST_ID_ENUM.trash.pageItem.button.remove.id}>
               <Delete />
             </Button>
           </>
@@ -133,8 +131,7 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
         cancelBtnText={t('trash.delete_confirmation_cancel')}
         onCancel={onCancelDelete}
         onConfirm={onDeleteConfrim}
-        open={hardDeleteModalVisible}
-      >
+        open={hardDeleteModalVisible}>
         {t('trash.delete_confirmation_body')}
       </ConfirmDialog>
     </>

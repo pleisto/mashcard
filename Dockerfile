@@ -1,4 +1,4 @@
-FROM ghcr.io/brickdoc/ruby-3:latest as builder
+FROM ghcr.io/mashcard/ruby-3:latest as builder
 
 # RUN with pipe recommendation: https://github.com/hadolint/hadolint/wiki/DL4006
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -37,12 +37,12 @@ RUN rm -rf node_modules .yarn apps/client-web dist apps/server-monolith/public/e
   && mkdir apps/server-monolith/tmp/pids
 
 
-FROM ghcr.io/brickdoc/ruby-3:latest
+FROM ghcr.io/mashcard/ruby-3:latest
 
 WORKDIR /app
 
-LABEL org.opencontainers.image.authors="secure@brickdoc.com"
-LABEL org.opencontainers.image.source="https://github.com/brickdoc/brickdoc"
+LABEL org.opencontainers.image.authors="secure@pleisto.com"
+LABEL org.opencontainers.image.source="https://github.com/mashcard/mashcard"
 
 ARG RAILS_ENV=production
 ENV RAILS_ENV=$RAILS_ENV

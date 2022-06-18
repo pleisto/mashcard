@@ -50,7 +50,6 @@ class Pod < ApplicationRecord
   has_one_attached :avatar
 
   def self.import_avatar(_url)
-    # TODO: refacotr in nodejs
     nil
     # io = URI.open(url)
     # filename = File.basename(URI.parse(url).path)
@@ -109,7 +108,7 @@ class Pod < ApplicationRecord
   end
 
   def hashed_id
-    BrickGraphQL::ReversibleIntHash.encode(id)
+    Brickdoc::Crypto.int_id_obfuscate(id)
   end
 
   def as_session_context

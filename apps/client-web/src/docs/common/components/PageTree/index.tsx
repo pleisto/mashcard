@@ -4,7 +4,7 @@ import {
   useBlockMoveMutation,
   BlockMoveInput,
   Block,
-  Blocktype,
+  BlockType,
   BlockEmoji,
   useGetBlockPinsQuery,
   GetPageBlocksQuery
@@ -104,7 +104,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
   })
 
   const getIcon = useMemoizedFn((block: BlockType): string | null => {
-    if (block.meta.icon?.type === Blocktype.Emoji) {
+    if (block.meta.icon?.type === BlockType.Emoji) {
       return (block.meta.icon as BlockEmoji).emoji
     }
 

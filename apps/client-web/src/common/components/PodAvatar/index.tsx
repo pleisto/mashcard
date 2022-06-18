@@ -5,7 +5,7 @@ interface PodAvatarProps extends AvatarProps {
   pod: PodType
 }
 export const PodAvatar: FC<PodAvatarProps> = ({ pod, ...avatarProps }) =>
-  pod.avatarData?.__typename === 'avatarComp' ? (
+  pod.avatarData?.__typename === 'AvatarComp' ? (
     pod.avatarData.comp
   ) : (
     <Avatar {...avatarProps} initials={pod.name ?? pod.domain} src={pod.avatarData ? pod.avatarData.url : undefined} />

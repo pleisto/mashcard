@@ -1,5 +1,5 @@
 import { FC, ReactElement, useCallback, useRef } from 'react'
-import { Embedtype } from '@brickdoc/schema'
+import { EmbedType } from '@brickdoc/schema'
 import { TextView, PreviewView, CardView } from './embedViews'
 import { getFileTypeByExtension, getFileTypeByContentType, sizeFormat } from '../../../helpers'
 import { GalleryTypeEmbedBlock, LinkTypeEmbedBlock, UploadTypeEmbedBlock } from './embedTypes'
@@ -231,7 +231,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
   }
 
   // link embed
-  if (node.attrs.embedMeta?.embedType === Embedtype.Link) {
+  if (node.attrs.embedMeta?.embedType === EmbedType.Link) {
     return (
       <LinkTypeEmbedBlock
         node={node}
@@ -244,7 +244,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
   }
 
   // gallery embed
-  if (node.attrs.embedMeta?.embedType === Embedtype.Gallery) {
+  if (node.attrs.embedMeta?.embedType === EmbedType.Gallery) {
     return (
       <GalleryTypeEmbedBlock
         node={node}

@@ -9,7 +9,7 @@ module Brickdoc
       PLUGINS_PATHS = Brickdoc.monorepo_root.join('plugins')
 
       # JSON Schema validator for plugin metadata
-      SCHEMA = Utils::JSONSchema.new(File.read(Rails.root.join('public/json-schema/plugin.draft-2205.json')))
+      SCHEMA = Utils::JSONSchema.new(File.read(Rails.public_path.join('json-schema/plugin.draft-2205.json')))
 
       # Load all plugins
       # - Find all plugins in the plugins directory
