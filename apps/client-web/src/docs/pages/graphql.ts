@@ -50,6 +50,14 @@ export const ConversationCommentCreate = gql`
   }
 `
 
+export const ConversationResolve = gql`
+  mutation conversationResolve($input: ConversationResolveInput!) {
+    conversationResolve(input: $input) {
+      errors
+    }
+  }
+`
+
 export const ConversationCommentAppend = gql`
   mutation conversationCommentAppend($input: ConversationCommentAppendInput!) {
     conversationCommentAppend(input: $input) {
