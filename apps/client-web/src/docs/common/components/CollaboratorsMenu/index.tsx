@@ -1,7 +1,6 @@
 import { FC } from 'react'
 
-import { Tooltip } from '@brickdoc/design-system'
-import { Avatar } from './index.style'
+import { Avatar, CollaboratorsConatainer } from './index.style'
 import { awarenessInfosVar } from '../../../reactiveVars'
 
 export const CollaboratorsMenu: FC = () => {
@@ -11,13 +10,18 @@ export const CollaboratorsMenu: FC = () => {
     return <></>
   }
 
-  const avatars = awarenessInfos.map((info, i) => {
+  const currentOperatorId = globalThis.brickdocContext.uuid
+  // pull current operator to first
+  const infos = awarenessInfos.sort((a, b) => (a.user.operatorId === currentOperatorId ? 1 : -1))
+
+  const avatars = infos.map((info, i) => {
+    const pod = { ...info.user, domain: info.user.name }
     return (
-      <Tooltip title={info.user.name} key={i}>
+      <CollaboratorsConatainer title={info.user.name} key={i}>
         <span>
-          <Avatar size={24} pod={info.user} style={{ outlineColor: info.user.color }} />
+          <Avatar size={24} pod={pod} style={{ outlineColor: info.user.color }} />
         </span>
-      </Tooltip>
+      </CollaboratorsConatainer>
     )
   })
 

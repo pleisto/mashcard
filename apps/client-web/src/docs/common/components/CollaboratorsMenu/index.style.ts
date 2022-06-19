@@ -1,4 +1,4 @@
-import { theme, styled } from '@brickdoc/design-system'
+import { theme, styled, Tooltip } from '@brickdoc/design-system'
 import { PodAvatar } from '@/common/components/PodAvatar'
 
 export const Avatar = styled(PodAvatar, {
@@ -13,4 +13,8 @@ export const Avatar = styled(PodAvatar, {
       }
     }
   }
+})
+
+export const CollaboratorsConatainer = styled(Tooltip, {
+  flexDirection: 'row-reverse'
 })
