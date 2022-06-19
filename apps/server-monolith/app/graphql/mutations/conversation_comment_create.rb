@@ -7,9 +7,11 @@ module Mutations
     argument :doc_id, Scalars::UUID, 'comment doc id', required: true
     argument :mark_ids, [Scalars::UUID], required: false
 
+    field :conversation, Types::Conversation, null: false
+
     def resolve(args)
       doc = Docs::Block.find(args[:doc_id])
-      Docs::Conversation.create_conversation_comment!(
+      result = Docs::Conversation.create_conversation_comment!(
         creator: current_user,
         doc: doc,
         content: args[:content],
@@ -17,7 +19,9 @@ module Mutations
         mark_ids: args[:mark_ids]
       )
 
-      nil
+      {
+        conversation: result,
+      }
     end
   end
 end

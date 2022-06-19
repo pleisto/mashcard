@@ -19,6 +19,32 @@ export const FormulaCommit = gql`
 export const ConversationCommentCreate = gql`
   mutation conversationCommentCreate($input: ConversationCommentCreateInput!) {
     conversationCommentCreate(input: $input) {
+      conversation {
+        id
+        docId
+        markIds
+        blockIds
+        latestReplyAt
+        updatedAt
+        createdAt
+        status
+        comments {
+          id
+          content
+          status
+          createdAt
+          updatedAt
+          creator {
+            name
+            domain
+            avatarData {
+              url
+              downloadUrl
+              signedId
+            }
+          }
+        }
+      }
       errors
     }
   }
@@ -28,6 +54,22 @@ export const ConversationCommentAppend = gql`
   mutation conversationCommentAppend($input: ConversationCommentAppendInput!) {
     conversationCommentAppend(input: $input) {
       errors
+      comment {
+        id
+        content
+        status
+        createdAt
+        updatedAt
+        creator {
+          name
+          domain
+          avatarData {
+            url
+            downloadUrl
+            signedId
+          }
+        }
+      }
     }
   }
 `

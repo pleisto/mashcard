@@ -10,6 +10,7 @@ import { useCallback, useMemo } from 'react'
 import { PageTree } from '@/docs/common/components/PageTree'
 import { blockProvider } from '../useBlockSyncProvider'
 import { string2Color } from '@brickdoc/design-system/src/components/Avatar/initials'
+import { useDiscussion } from './useDiscussion'
 
 export interface UseEditorOptions {
   docMeta: DocMeta
@@ -26,6 +27,7 @@ export function useEditorOptions({
   provider,
   onDocSave
 }: UseEditorOptions): EditorOptions {
+  const discussion = useDiscussion(docMeta)
   const embed = useEmbed(blocks, docMeta)
   const formulaContext = useReactiveVar(FormulaContextVar)
   const mentionCommands = useMentionCommands(docMeta)
@@ -45,6 +47,7 @@ export function useEditorOptions({
               }
             }
           : false,
+        discussion,
         embed,
         formula: {
           formulaContext
@@ -62,6 +65,6 @@ export function useEditorOptions({
       },
       editable: documentEditable
     }),
-    [documentEditable, embed, formulaContext, mentionCommands, onDocSave, renderView, provider]
+    [discussion, documentEditable, embed, formulaContext, mentionCommands, onDocSave, renderView, provider]
   )
 }

@@ -82,6 +82,12 @@ en-US:
         placeholder: Comment...
         send: Send
         cancel: Cancel
+      conversation:
+        create:
+          failed: Create conversation failed. Please try again later.
+      comment:
+        create:
+          failed: Create comment failed. Please try again later.
     history:
       title: History
     toolbar:

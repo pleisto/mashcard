@@ -765,6 +765,7 @@ export type ConversationCommentAppendPayload = {
   __typename?: 'ConversationCommentAppendPayload'
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars['String']>
+  comment: Comment
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars['String']>
 }
@@ -785,6 +786,7 @@ export type ConversationCommentCreatePayload = {
   __typename?: 'ConversationCommentCreatePayload'
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars['String']>
+  conversation: Conversation
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars['String']>
 }
