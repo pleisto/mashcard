@@ -15,9 +15,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:368](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L368)
+[packages/brickdoc-formula/src/types/index.ts:368](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L368)
 
-___
+---
 
 ### <a id="id" name="id"></a> id
 
@@ -25,4 +25,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:369](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L369)
+[packages/brickdoc-formula/src/types/index.ts:369](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L369)

@@ -33,7 +33,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:42](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L42)
+[packages/brickdoc-formula/src/grammar/operator.ts:42](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L42)
 
 ---
 
@@ -43,7 +43,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:43](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L43)
+[packages/brickdoc-formula/src/grammar/operator.ts:43](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L43)
 
 ---
 
@@ -53,7 +53,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:36](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L36)
+[packages/brickdoc-formula/src/grammar/operator.ts:36](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L36)
 
 ---
 
@@ -63,7 +63,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:40](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L40)
+[packages/brickdoc-formula/src/grammar/operator.ts:40](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L40)
 
 ---
 
@@ -73,7 +73,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:71](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L71)
+[packages/brickdoc-formula/src/grammar/operator.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L71)
 
 ---
 
@@ -83,7 +83,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:37](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L37)
+[packages/brickdoc-formula/src/grammar/operator.ts:37](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L37)
 
 ---
 
@@ -93,7 +93,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:38](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L38)
+[packages/brickdoc-formula/src/grammar/operator.ts:38](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L38)
 
 ---
 
@@ -103,7 +103,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:39](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L39)
+[packages/brickdoc-formula/src/grammar/operator.ts:39](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L39)
 
 ---
 
@@ -113,7 +113,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:41](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L41)
+[packages/brickdoc-formula/src/grammar/operator.ts:41](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L41)
 
 ## Methods
 
@@ -136,7 +136,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:44](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L44)
+[packages/brickdoc-formula/src/grammar/operator.ts:44](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L44)
 
 ---
 
@@ -161,7 +161,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:51](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L51)
+[packages/brickdoc-formula/src/grammar/operator.ts:51](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L51)
 
 ---
 
@@ -184,7 +184,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:65](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L65)
+[packages/brickdoc-formula/src/grammar/operator.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L65)
 
 ---
 
@@ -204,7 +204,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:50](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L50)
+[packages/brickdoc-formula/src/grammar/operator.ts:50](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L50)
 
 ---
 
@@ -225,7 +225,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:49](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L49)
+[packages/brickdoc-formula/src/grammar/operator.ts:49](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L49)
 
 ---
 
@@ -250,7 +250,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:87](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L87)
+[packages/brickdoc-formula/src/grammar/operator.ts:87](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L87)
 
 ---
 
@@ -270,7 +270,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:64](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L64)
+[packages/brickdoc-formula/src/grammar/operator.ts:64](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L64)
 
 ---
 
@@ -296,4 +296,4 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/operator.ts:72](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L72)
+[packages/brickdoc-formula/src/grammar/operator.ts:72](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L72)

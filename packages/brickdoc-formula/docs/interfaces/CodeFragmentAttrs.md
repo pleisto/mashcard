@@ -18,9 +18,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:701](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L701)
+[packages/brickdoc-formula/src/types/index.ts:701](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L701)
 
-___
+---
 
 ### <a id="id" name="id"></a> id
 
@@ -28,9 +28,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:699](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L699)
+[packages/brickdoc-formula/src/types/index.ts:699](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L699)
 
-___
+---
 
 ### <a id="kind" name="kind"></a> kind
 
@@ -38,9 +38,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:697](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L697)
+[packages/brickdoc-formula/src/types/index.ts:697](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L697)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -48,9 +48,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:700](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L700)
+[packages/brickdoc-formula/src/types/index.ts:700](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L700)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -58,4 +58,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:698](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L698)
+[packages/brickdoc-formula/src/types/index.ts:698](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L698)

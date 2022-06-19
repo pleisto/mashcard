@@ -15,9 +15,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:384](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L384)
+[packages/brickdoc-formula/src/types/index.ts:384](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L384)
 
-___
+---
 
 ### <a id="match" name="match"></a> match
 
@@ -25,4 +25,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:385](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L385)
+[packages/brickdoc-formula/src/types/index.ts:385](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L385)

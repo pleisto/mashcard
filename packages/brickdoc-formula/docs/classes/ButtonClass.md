@@ -32,14 +32,14 @@
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | [`FunctionContext`](../interfaces/FunctionContext.md) |
+| Name                | Type                                                      |
+| :------------------ | :-------------------------------------------------------- |
+| `ctx`               | [`FunctionContext`](../interfaces/FunctionContext.md)     |
 | `__namedParameters` | [`ButtonInitializer`](../interfaces/ButtonInitializer.md) |
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/button.ts:14](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/button.ts#L14)
+[packages/brickdoc-formula/src/controls/button.ts:14](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/button.ts#L14)
 
 ## Properties
 
@@ -49,13 +49,13 @@
 
 #### Implementation of
 
-[ButtonType](../interfaces/ButtonType.md).[_formulaContext](../interfaces/ButtonType.md#_formulacontext)
+[ButtonType](../interfaces/ButtonType.md).[\_formulaContext](../interfaces/ButtonType.md#_formulacontext)
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/button.ts:7](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/button.ts#L7)
+[packages/brickdoc-formula/src/controls/button.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/button.ts#L7)
 
-___
+---
 
 ### <a id="_meta" name="_meta"></a> \_meta
 
@@ -63,13 +63,13 @@ ___
 
 #### Implementation of
 
-[ButtonType](../interfaces/ButtonType.md).[_meta](../interfaces/ButtonType.md#_meta)
+[ButtonType](../interfaces/ButtonType.md).[\_meta](../interfaces/ButtonType.md#_meta)
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/button.ts:8](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/button.ts#L8)
+[packages/brickdoc-formula/src/controls/button.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/button.ts#L8)
 
-___
+---
 
 ### <a id="disabled" name="disabled"></a> disabled
 
@@ -81,9 +81,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/button.ts:11](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/button.ts#L11)
+[packages/brickdoc-formula/src/controls/button.ts:11](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/button.ts#L11)
 
-___
+---
 
 ### <a id="fn" name="fn"></a> fn
 
@@ -95,13 +95,13 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/button.ts:10](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/button.ts#L10)
+[packages/brickdoc-formula/src/controls/button.ts:10](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/button.ts#L10)
 
-___
+---
 
 ### <a id="kind" name="kind"></a> kind
 
-• **kind**: ``"Button"``
+• **kind**: `"Button"`
 
 #### Implementation of
 
@@ -109,9 +109,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/button.ts:9](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/button.ts#L9)
+[packages/brickdoc-formula/src/controls/button.ts:9](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/button.ts#L9)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -123,9 +123,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/button.ts:6](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/button.ts#L6)
+[packages/brickdoc-formula/src/controls/button.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/button.ts#L6)
 
-___
+---
 
 ### <a id="onclick" name="onclick"></a> onClick
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/button.ts:12](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/button.ts#L12)
+[packages/brickdoc-formula/src/controls/button.ts:12](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/button.ts#L12)
 
 ## Methods
 
@@ -155,4 +155,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/button.ts:23](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/button.ts#L23)
+[packages/brickdoc-formula/src/controls/button.ts:23](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/button.ts#L23)

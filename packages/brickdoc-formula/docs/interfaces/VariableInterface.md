@@ -36,9 +36,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:879](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L879)
+[packages/brickdoc-formula/src/types/index.ts:879](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L879)
 
-___
+---
 
 ### <a id="formulacontext" name="formulacontext"></a> formulaContext
 
@@ -46,9 +46,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:880](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L880)
+[packages/brickdoc-formula/src/types/index.ts:880](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L880)
 
-___
+---
 
 ### <a id="id" name="id"></a> id
 
@@ -56,9 +56,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:878](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L878)
+[packages/brickdoc-formula/src/types/index.ts:878](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L878)
 
-___
+---
 
 ### <a id="isnew" name="isnew"></a> isNew
 
@@ -66,9 +66,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:877](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L877)
+[packages/brickdoc-formula/src/types/index.ts:877](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L877)
 
-___
+---
 
 ### <a id="isreadyt" name="isreadyt"></a> isReadyT
 
@@ -76,9 +76,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:876](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L876)
+[packages/brickdoc-formula/src/types/index.ts:876](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L876)
 
-___
+---
 
 ### <a id="t" name="t"></a> t
 
@@ -86,9 +86,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:875](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L875)
+[packages/brickdoc-formula/src/types/index.ts:875](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L875)
 
-___
+---
 
 ### <a id="trackdirty" name="trackdirty"></a> trackDirty
 
@@ -96,7 +96,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:885](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L885)
+[packages/brickdoc-formula/src/types/index.ts:885](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L885)
 
 ## Methods
 
@@ -106,8 +106,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type                                        |
+| :------- | :------------------------------------------ |
 | `input?` | [`FormulaDefinition`](FormulaDefinition.md) |
 
 #### Returns
@@ -116,9 +116,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:882](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L882)
+[packages/brickdoc-formula/src/types/index.ts:882](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L882)
 
-___
+---
 
 ### <a id="cleanup" name="cleanup"></a> cleanup
 
@@ -130,9 +130,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:883](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L883)
+[packages/brickdoc-formula/src/types/index.ts:883](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L883)
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -144,9 +144,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:890](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L890)
+[packages/brickdoc-formula/src/types/index.ts:890](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L890)
 
-___
+---
 
 ### <a id="namedependency" name="namedependency"></a> nameDependency
 
@@ -158,9 +158,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:887](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L887)
+[packages/brickdoc-formula/src/types/index.ts:887](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L887)
 
-___
+---
 
 ### <a id="namespacename" name="namespacename"></a> namespaceName
 
@@ -168,8 +168,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type     |
+| :------- | :------- |
 | `pageId` | `string` |
 
 #### Returns
@@ -178,9 +178,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:888](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L888)
+[packages/brickdoc-formula/src/types/index.ts:888](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L888)
 
-___
+---
 
 ### <a id="onupdate" name="onupdate"></a> onUpdate
 
@@ -188,9 +188,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
+| Name                             | Type      |
+| :------------------------------- | :-------- |
+| `__namedParameters`              | `Object`  |
 | `__namedParameters.skipPersist?` | `boolean` |
 
 #### Returns
@@ -199,9 +199,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:891](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L891)
+[packages/brickdoc-formula/src/types/index.ts:891](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L891)
 
-___
+---
 
 ### <a id="save" name="save"></a> save
 
@@ -213,9 +213,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:886](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L886)
+[packages/brickdoc-formula/src/types/index.ts:886](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L886)
 
-___
+---
 
 ### <a id="trackdependency" name="trackdependency"></a> trackDependency
 
@@ -227,9 +227,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:884](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L884)
+[packages/brickdoc-formula/src/types/index.ts:884](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L884)
 
-___
+---
 
 ### <a id="updatedefinition" name="updatedefinition"></a> updateDefinition
 
@@ -237,8 +237,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type                                        |
+| :------ | :------------------------------------------ |
 | `input` | [`FormulaDefinition`](FormulaDefinition.md) |
 
 #### Returns
@@ -247,4 +247,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:889](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L889)
+[packages/brickdoc-formula/src/types/index.ts:889](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L889)

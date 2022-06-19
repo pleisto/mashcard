@@ -16,19 +16,19 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:496](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L496)
+[packages/brickdoc-formula/src/types/index.ts:496](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L496)
 
-___
+---
 
 ### <a id="type" name="type"></a> type
 
-• **type**: ``"id"`` \| ``"name"``
+• **type**: `"id"` \| `"name"`
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:497](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L497)
+[packages/brickdoc-formula/src/types/index.ts:497](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L497)
 
-___
+---
 
 ### <a id="value" name="value"></a> value
 
@@ -36,4 +36,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:498](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L498)
+[packages/brickdoc-formula/src/types/index.ts:498](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L498)

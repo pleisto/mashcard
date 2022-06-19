@@ -29,9 +29,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:27](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L27)
+[packages/brickdoc-formula/src/controls/types.ts:27](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L27)
 
-___
+---
 
 ### <a id="_meta" name="_meta"></a> \_meta
 
@@ -39,9 +39,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:28](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L28)
+[packages/brickdoc-formula/src/controls/types.ts:28](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L28)
 
-___
+---
 
 ### <a id="disabled" name="disabled"></a> disabled
 
@@ -49,17 +49,17 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:30](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L30)
+[packages/brickdoc-formula/src/controls/types.ts:30](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L30)
 
-___
+---
 
 ### <a id="kind" name="kind"></a> kind
 
-• **kind**: ``"Button"`` \| ``"Switch"``
+• **kind**: `"Button"` \| `"Switch"`
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:29](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L29)
+[packages/brickdoc-formula/src/controls/types.ts:29](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L29)
 
 ## Methods
 
@@ -73,4 +73,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:31](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L31)
+[packages/brickdoc-formula/src/controls/types.ts:31](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L31)

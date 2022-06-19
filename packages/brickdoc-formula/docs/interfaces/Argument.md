@@ -2,9 +2,9 @@
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `UsedFormulaType` = `UsedFormulaType` |
+| Name | Type                                          |
+| :--- | :-------------------------------------------- |
+| `T`  | extends `UsedFormulaType` = `UsedFormulaType` |
 
 ## Table of contents
 
@@ -23,9 +23,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:379](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L379)
+[packages/brickdoc-formula/src/types/index.ts:379](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L379)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -33,9 +33,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:377](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L377)
+[packages/brickdoc-formula/src/types/index.ts:377](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L377)
 
-___
+---
 
 ### <a id="spread" name="spread"></a> spread
 
@@ -43,9 +43,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:380](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L380)
+[packages/brickdoc-formula/src/types/index.ts:380](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L380)
 
-___
+---
 
 ### <a id="type" name="type"></a> type
 
@@ -53,4 +53,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:378](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L378)
+[packages/brickdoc-formula/src/types/index.ts:378](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L378)

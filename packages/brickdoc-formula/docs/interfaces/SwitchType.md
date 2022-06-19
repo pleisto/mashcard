@@ -34,13 +34,13 @@
 
 #### Inherited from
 
-[ControlType](ControlType.md).[_formulaContext](ControlType.md#_formulacontext)
+[ControlType](ControlType.md).[\_formulaContext](ControlType.md#_formulacontext)
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:27](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L27)
+[packages/brickdoc-formula/src/controls/types.ts:27](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L27)
 
-___
+---
 
 ### <a id="_meta" name="_meta"></a> \_meta
 
@@ -48,13 +48,13 @@ ___
 
 #### Inherited from
 
-[ControlType](ControlType.md).[_meta](ControlType.md#_meta)
+[ControlType](ControlType.md).[\_meta](ControlType.md#_meta)
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:28](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L28)
+[packages/brickdoc-formula/src/controls/types.ts:28](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L28)
 
-___
+---
 
 ### <a id="checked" name="checked"></a> checked
 
@@ -62,9 +62,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:222](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L222)
+[packages/brickdoc-formula/src/controls/types.ts:222](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L222)
 
-___
+---
 
 ### <a id="disabled" name="disabled"></a> disabled
 
@@ -76,9 +76,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:30](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L30)
+[packages/brickdoc-formula/src/controls/types.ts:30](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L30)
 
-___
+---
 
 ### <a id="fn" name="fn"></a> fn
 
@@ -86,13 +86,13 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:223](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L223)
+[packages/brickdoc-formula/src/controls/types.ts:223](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L223)
 
-___
+---
 
 ### <a id="kind" name="kind"></a> kind
 
-• **kind**: ``"Switch"``
+• **kind**: `"Switch"`
 
 #### Overrides
 
@@ -100,7 +100,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:221](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L221)
+[packages/brickdoc-formula/src/controls/types.ts:221](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L221)
 
 ## Methods
 
@@ -110,8 +110,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type      |
+| :----- | :-------- |
 | `bool` | `boolean` |
 
 #### Returns
@@ -120,9 +120,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:224](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L224)
+[packages/brickdoc-formula/src/controls/types.ts:224](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L224)
 
-___
+---
 
 ### <a id="persistence" name="persistence"></a> persistence
 
@@ -138,4 +138,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:31](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L31)
+[packages/brickdoc-formula/src/controls/types.ts:31](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L31)

@@ -34,13 +34,13 @@
 
 #### Inherited from
 
-[ControlType](ControlType.md).[_formulaContext](ControlType.md#_formulacontext)
+[ControlType](ControlType.md).[\_formulaContext](ControlType.md#_formulacontext)
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:27](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L27)
+[packages/brickdoc-formula/src/controls/types.ts:27](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L27)
 
-___
+---
 
 ### <a id="_meta" name="_meta"></a> \_meta
 
@@ -48,13 +48,13 @@ ___
 
 #### Inherited from
 
-[ControlType](ControlType.md).[_meta](ControlType.md#_meta)
+[ControlType](ControlType.md).[\_meta](ControlType.md#_meta)
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:28](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L28)
+[packages/brickdoc-formula/src/controls/types.ts:28](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L28)
 
-___
+---
 
 ### <a id="disabled" name="disabled"></a> disabled
 
@@ -66,9 +66,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:30](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L30)
+[packages/brickdoc-formula/src/controls/types.ts:30](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L30)
 
-___
+---
 
 ### <a id="fn" name="fn"></a> fn
 
@@ -76,13 +76,13 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:38](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L38)
+[packages/brickdoc-formula/src/controls/types.ts:38](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L38)
 
-___
+---
 
 ### <a id="kind" name="kind"></a> kind
 
-• **kind**: ``"Button"``
+• **kind**: `"Button"`
 
 #### Overrides
 
@@ -90,9 +90,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:36](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L36)
+[packages/brickdoc-formula/src/controls/types.ts:36](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L36)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -100,9 +100,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:37](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L37)
+[packages/brickdoc-formula/src/controls/types.ts:37](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L37)
 
-___
+---
 
 ### <a id="onclick" name="onclick"></a> onClick
 
@@ -110,7 +110,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:39](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L39)
+[packages/brickdoc-formula/src/controls/types.ts:39](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L39)
 
 ## Methods
 
@@ -128,4 +128,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:31](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L31)
+[packages/brickdoc-formula/src/controls/types.ts:31](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L31)

@@ -14,4 +14,4 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:492](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L492)
+[packages/brickdoc-formula/src/types/index.ts:492](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L492)

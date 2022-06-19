@@ -48,9 +48,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:79](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L79)
+[packages/brickdoc-formula/src/controls/types.ts:79](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L79)
 
-___
+---
 
 ### <a id="displayindex" name="displayindex"></a> displayIndex
 
@@ -62,9 +62,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:83](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L83)
+[packages/brickdoc-formula/src/controls/types.ts:83](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L83)
 
-___
+---
 
 ### <a id="eventdependency" name="eventdependency"></a> eventDependency
 
@@ -72,9 +72,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:97](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L97)
+[packages/brickdoc-formula/src/controls/types.ts:97](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L97)
 
-___
+---
 
 ### <a id="findkey" name="findkey"></a> findKey
 
@@ -82,9 +82,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:91](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L91)
+[packages/brickdoc-formula/src/controls/types.ts:91](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L91)
 
-___
+---
 
 ### <a id="handlecodefragments" name="handlecodefragments"></a> handleCodeFragments
 
@@ -92,9 +92,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:95](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L95)
+[packages/brickdoc-formula/src/controls/types.ts:95](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L95)
 
-___
+---
 
 ### <a id="handleinterpret" name="handleinterpret"></a> handleInterpret
 
@@ -102,9 +102,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:96](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L96)
+[packages/brickdoc-formula/src/controls/types.ts:96](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L96)
 
-___
+---
 
 ### <a id="index" name="index"></a> index
 
@@ -116,9 +116,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:84](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L84)
+[packages/brickdoc-formula/src/controls/types.ts:84](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L84)
 
-___
+---
 
 ### <a id="logic" name="logic"></a> logic
 
@@ -126,9 +126,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:92](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L92)
+[packages/brickdoc-formula/src/controls/types.ts:92](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L92)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -140,9 +140,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:81](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L81)
+[packages/brickdoc-formula/src/controls/types.ts:81](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L81)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -150,9 +150,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:90](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L90)
+[packages/brickdoc-formula/src/controls/types.ts:90](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L90)
 
-___
+---
 
 ### <a id="sort" name="sort"></a> sort
 
@@ -164,9 +164,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:85](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L85)
+[packages/brickdoc-formula/src/controls/types.ts:85](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L85)
 
-___
+---
 
 ### <a id="spreadsheet" name="spreadsheet"></a> spreadsheet
 
@@ -174,9 +174,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:89](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L89)
+[packages/brickdoc-formula/src/controls/types.ts:89](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L89)
 
-___
+---
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
 
@@ -188,9 +188,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:80](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L80)
+[packages/brickdoc-formula/src/controls/types.ts:80](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L80)
 
-___
+---
 
 ### <a id="title" name="title"></a> title
 
@@ -202,7 +202,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:82](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L82)
+[packages/brickdoc-formula/src/controls/types.ts:82](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L82)
 
 ## Methods
 
@@ -216,9 +216,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:99](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L99)
+[packages/brickdoc-formula/src/controls/types.ts:99](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L99)
 
-___
+---
 
 ### <a id="display" name="display"></a> display
 
@@ -230,9 +230,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:93](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L93)
+[packages/brickdoc-formula/src/controls/types.ts:93](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L93)
 
-___
+---
 
 ### <a id="key" name="key"></a> key
 
@@ -244,9 +244,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:94](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L94)
+[packages/brickdoc-formula/src/controls/types.ts:94](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L94)
 
-___
+---
 
 ### <a id="newcell" name="newcell"></a> newCell
 
@@ -254,10 +254,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `cell` | [`Cell`](Cell.md) |
-| `rowKey` | `string` |
+| Name     | Type              |
+| :------- | :---------------- |
+| `cell`   | [`Cell`](Cell.md) |
+| `rowKey` | `string`          |
 
 #### Returns
 
@@ -265,4 +265,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:98](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L98)
+[packages/brickdoc-formula/src/controls/types.ts:98](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L98)

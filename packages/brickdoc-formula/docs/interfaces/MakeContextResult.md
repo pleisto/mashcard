@@ -2,7 +2,7 @@
 
 ## Hierarchy
 
-- `Omit`<[`FunctionContext`](FunctionContext.md), ``"meta"``\>
+- `Omit`<[`FunctionContext`](FunctionContext.md), `"meta"`\>
 
   ↳ **`MakeContextResult`**
 
@@ -30,9 +30,9 @@ Omit.formulaContext
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:541](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L541)
+[packages/brickdoc-formula/src/types/index.ts:541](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L541)
 
-___
+---
 
 ### <a id="interpretcontext" name="interpretcontext"></a> interpretContext
 
@@ -44,7 +44,7 @@ Omit.interpretContext
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:546](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L546)
+[packages/brickdoc-formula/src/types/index.ts:546](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L546)
 
 ## Methods
 
@@ -54,8 +54,8 @@ Omit.interpretContext
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                   |
+| :----- | :------------------------------------- |
 | `args` | [`BaseTestCase`](BaseTestCase.md)<{}\> |
 
 #### Returns
@@ -64,9 +64,9 @@ Omit.interpretContext
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:186](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L186)
+[packages/brickdoc-formula/src/tests/testType.ts:186](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L186)
 
-___
+---
 
 ### <a id="fetchuuid" name="fetchuuid"></a> fetchUUID
 
@@ -74,8 +74,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                        |
+| :----- | :------------------------------------------ |
 | `uuid` | [`MockedUUIDV4`](../README.md#mockeduuidv4) |
 
 #### Returns
@@ -84,4 +84,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:187](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L187)
+[packages/brickdoc-formula/src/tests/testType.ts:187](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L187)

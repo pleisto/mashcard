@@ -62,9 +62,9 @@
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
+| Name                    | Type                                                  |
+| :---------------------- | :---------------------------------------------------- |
+| `__namedParameters`     | `Object`                                              |
 | `__namedParameters.ctx` | [`FunctionContext`](../interfaces/FunctionContext.md) |
 
 #### Overrides
@@ -73,7 +73,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:62](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L62)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:62](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L62)
 
 ## Properties
 
@@ -83,9 +83,9 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:58](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L58)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:58](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L58)
 
-___
+---
 
 ### <a id="lazy" name="lazy"></a> lazy
 
@@ -93,9 +93,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:59](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L59)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:59](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L59)
 
-___
+---
 
 ### <a id="runtimeeventdependencies" name="runtimeeventdependencies"></a> runtimeEventDependencies
 
@@ -103,7 +103,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:60](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L60)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:60](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L60)
 
 ## Methods
 
@@ -113,9 +113,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -124,9 +124,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:569](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L569)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:569](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L569)
 
-___
+---
 
 ### <a id="booleanliteralexpression" name="booleanliteralexpression"></a> BooleanLiteralExpression
 
@@ -134,11 +134,11 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `Object` |
-| `ctx.BooleanLiteral` | `IToken`[] |
-| `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
+| Name                 | Type                                                      |
+| :------------------- | :-------------------------------------------------------- |
+| `ctx`                | `Object`                                                  |
+| `ctx.BooleanLiteral` | `IToken`[]                                                |
+| `args`               | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
 
@@ -146,9 +146,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:463](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L463)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:463](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L463)
 
-___
+---
 
 ### <a id="functioncall" name="functioncall"></a> FunctionCall
 
@@ -156,12 +156,12 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `Object` |
-| `ctx.Arguments` | `CstNode`[] |
-| `ctx.FunctionName` | { `image`: `any`  }[] |
-| `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
+| Name               | Type                                                      |
+| :----------------- | :-------------------------------------------------------- |
+| `ctx`              | `Object`                                                  |
+| `ctx.Arguments`    | `CstNode`[]                                               |
+| `ctx.FunctionName` | { `image`: `any` }[]                                      |
+| `args`             | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
 
@@ -169,9 +169,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:475](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L475)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:475](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L475)
 
-___
+---
 
 ### <a id="functionnameexpression" name="functionnameexpression"></a> FunctionNameExpression
 
@@ -179,11 +179,11 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `Object` |
-| `ctx.FunctionName` | { `image`: `any`  }[] |
-| `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
+| Name               | Type                                                      |
+| :----------------- | :-------------------------------------------------------- |
+| `ctx`              | `Object`                                                  |
+| `ctx.FunctionName` | { `image`: `any` }[]                                      |
+| `args`             | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
 
@@ -191,9 +191,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:346](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L346)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:346](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L346)
 
-___
+---
 
 ### <a id="numberliteralexpression" name="numberliteralexpression"></a> NumberLiteralExpression
 
@@ -201,14 +201,14 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `Object` |
-| `ctx.DecimalLiteral?` | `IToken`[] |
-| `ctx.Minus?` | `IToken`[] |
-| `ctx.NumberLiteral?` | `IToken`[] |
-| `ctx.Sign?` | `IToken`[] |
-| `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
+| Name                  | Type                                                      |
+| :-------------------- | :-------------------------------------------------------- |
+| `ctx`                 | `Object`                                                  |
+| `ctx.DecimalLiteral?` | `IToken`[]                                                |
+| `ctx.Minus?`          | `IToken`[]                                                |
+| `ctx.NumberLiteral?`  | `IToken`[]                                                |
+| `ctx.Sign?`           | `IToken`[]                                                |
+| `args`                | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
 
@@ -216,9 +216,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:449](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L449)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:449](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L449)
 
-___
+---
 
 ### <a id="stringliteralexpression" name="stringliteralexpression"></a> StringLiteralExpression
 
@@ -226,11 +226,11 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `Object` |
-| `ctx.StringLiteral` | `any` |
-| `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
+| Name                | Type                                                      |
+| :------------------ | :-------------------------------------------------------- |
+| `ctx`               | `Object`                                                  |
+| `ctx.StringLiteral` | `any`                                                     |
+| `args`              | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
 
@@ -238,9 +238,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:335](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L335)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:335](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L335)
 
-___
+---
 
 ### <a id="accessexpression" name="accessexpression"></a> accessExpression
 
@@ -248,9 +248,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -259,9 +259,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:161](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L161)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:161](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L161)
 
-___
+---
 
 ### <a id="additionexpression" name="additionexpression"></a> additionExpression
 
@@ -269,9 +269,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -280,9 +280,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:139](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L139)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:139](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L139)
 
-___
+---
 
 ### <a id="arrayexpression" name="arrayexpression"></a> arrayExpression
 
@@ -290,9 +290,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -301,9 +301,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:291](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L291)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:291](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L291)
 
-___
+---
 
 ### <a id="atomicexpression" name="atomicexpression"></a> atomicExpression
 
@@ -311,14 +311,14 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `Object` |
-| `ctx.blockExpression` | `CstNode` \| `CstNode`[] |
-| `ctx.predicateExpression` | `CstNode` \| `CstNode`[] |
-| `ctx.referenceExpression` | `CstNode` \| `CstNode`[] |
-| `ctx.simpleAtomicExpression` | `CstNode` \| `CstNode`[] |
-| `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
+| Name                         | Type                                                      |
+| :--------------------------- | :-------------------------------------------------------- |
+| `ctx`                        | `Object`                                                  |
+| `ctx.blockExpression`        | `CstNode` \| `CstNode`[]                                  |
+| `ctx.predicateExpression`    | `CstNode` \| `CstNode`[]                                  |
+| `ctx.referenceExpression`    | `CstNode` \| `CstNode`[]                                  |
+| `ctx.simpleAtomicExpression` | `CstNode` \| `CstNode`[]                                  |
+| `args`                       | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
 
@@ -326,9 +326,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:256](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L256)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:256](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L256)
 
-___
+---
 
 ### <a id="blockexpression" name="blockexpression"></a> blockExpression
 
@@ -336,9 +336,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -347,9 +347,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:383](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L383)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:383](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L383)
 
-___
+---
 
 ### <a id="chainexpression" name="chainexpression"></a> chainExpression
 
@@ -357,9 +357,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -368,9 +368,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:194](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L194)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:194](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L194)
 
-___
+---
 
 ### <a id="combineexpression" name="combineexpression"></a> combineExpression
 
@@ -378,9 +378,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -389,9 +389,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:84](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L84)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:84](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L84)
 
-___
+---
 
 ### <a id="compareexpression" name="compareexpression"></a> compareExpression
 
@@ -399,9 +399,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -410,9 +410,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:106](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L106)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L106)
 
-___
+---
 
 ### <a id="concatexpression" name="concatexpression"></a> concatExpression
 
@@ -420,9 +420,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -431,9 +431,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:128](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L128)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:128](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L128)
 
-___
+---
 
 ### <a id="constantexpression" name="constantexpression"></a> constantExpression
 
@@ -441,14 +441,14 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `Object` |
-| `ctx.BooleanLiteralExpression` | `CstNode` \| `CstNode`[] |
-| `ctx.NullLiteral` | `IToken`[] |
-| `ctx.NumberLiteralExpression` | `CstNode` \| `CstNode`[] |
-| `ctx.StringLiteral` | `IToken`[] |
-| `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
+| Name                           | Type                                                      |
+| :----------------------------- | :-------------------------------------------------------- |
+| `ctx`                          | `Object`                                                  |
+| `ctx.BooleanLiteralExpression` | `CstNode` \| `CstNode`[]                                  |
+| `ctx.NullLiteral`              | `IToken`[]                                                |
+| `ctx.NumberLiteralExpression`  | `CstNode` \| `CstNode`[]                                  |
+| `ctx.StringLiteral`            | `IToken`[]                                                |
+| `args`                         | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
 
@@ -456,9 +456,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:354](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L354)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:354](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L354)
 
-___
+---
 
 ### <a id="equalcompareexpression" name="equalcompareexpression"></a> equalCompareExpression
 
@@ -466,9 +466,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -477,9 +477,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:95](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L95)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:95](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L95)
 
-___
+---
 
 ### <a id="expression" name="expression"></a> expression
 
@@ -487,9 +487,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -498,9 +498,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:73](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L73)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L73)
 
-___
+---
 
 ### <a id="inexpression" name="inexpression"></a> inExpression
 
@@ -508,9 +508,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -519,9 +519,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:117](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L117)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L117)
 
-___
+---
 
 ### <a id="keyexpression" name="keyexpression"></a> keyExpression
 
@@ -529,9 +529,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -540,9 +540,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:205](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L205)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:205](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L205)
 
-___
+---
 
 ### <a id="lazyvariableexpression" name="lazyvariableexpression"></a> lazyVariableExpression
 
@@ -550,9 +550,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -561,9 +561,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:402](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L402)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:402](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L402)
 
-___
+---
 
 ### <a id="multiplicationexpression" name="multiplicationexpression"></a> multiplicationExpression
 
@@ -571,9 +571,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -582,9 +582,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:150](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L150)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:150](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L150)
 
-___
+---
 
 ### <a id="notexpression" name="notexpression"></a> notExpression
 
@@ -592,9 +592,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -603,9 +603,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:172](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L172)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:172](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L172)
 
-___
+---
 
 ### <a id="parenthesisexpression" name="parenthesisexpression"></a> parenthesisExpression
 
@@ -613,9 +613,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -624,9 +624,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:324](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L324)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:324](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L324)
 
-___
+---
 
 ### <a id="predicateexpression" name="predicateexpression"></a> predicateExpression
 
@@ -634,9 +634,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -645,9 +645,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:279](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L279)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:279](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L279)
 
-___
+---
 
 ### <a id="rangeexpression" name="rangeexpression"></a> rangeExpression
 
@@ -655,9 +655,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -666,9 +666,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:183](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L183)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:183](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L183)
 
-___
+---
 
 ### <a id="recordexpression" name="recordexpression"></a> recordExpression
 
@@ -676,9 +676,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -687,9 +687,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:302](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L302)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:302](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L302)
 
-___
+---
 
 ### <a id="recordfield" name="recordfield"></a> recordField
 
@@ -697,9 +697,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `any` |
+| Name   | Type                                                      |
+| :----- | :-------------------------------------------------------- |
+| `ctx`  | `any`                                                     |
 | `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
@@ -708,9 +708,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:313](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L313)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:313](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L313)
 
-___
+---
 
 ### <a id="referenceexpression" name="referenceexpression"></a> referenceExpression
 
@@ -718,11 +718,11 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `Object` |
-| `ctx.lazyVariableExpression` | `CstNode` \| `CstNode`[] |
-| `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
+| Name                         | Type                                                      |
+| :--------------------------- | :-------------------------------------------------------- |
+| `ctx`                        | `Object`                                                  |
+| `ctx.lazyVariableExpression` | `CstNode` \| `CstNode`[]                                  |
+| `args`                       | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
 
@@ -730,9 +730,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:395](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L395)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:395](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L395)
 
-___
+---
 
 ### <a id="simpleatomicexpression" name="simpleatomicexpression"></a> simpleAtomicExpression
 
@@ -740,17 +740,17 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `Object` |
-| `ctx.FunctionCall` | `CstNode` \| `CstNode`[] |
-| `ctx.FunctionName` | `IToken`[] |
-| `ctx.arrayExpression` | `CstNode` \| `CstNode`[] |
-| `ctx.constantExpression` | `CstNode` \| `CstNode`[] |
-| `ctx.lazyVariableExpression` | `CstNode` \| `CstNode`[] |
-| `ctx.parenthesisExpression` | `CstNode` \| `CstNode`[] |
-| `ctx.recordExpression` | `CstNode` \| `CstNode`[] |
-| `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
+| Name                         | Type                                                      |
+| :--------------------------- | :-------------------------------------------------------- |
+| `ctx`                        | `Object`                                                  |
+| `ctx.FunctionCall`           | `CstNode` \| `CstNode`[]                                  |
+| `ctx.FunctionName`           | `IToken`[]                                                |
+| `ctx.arrayExpression`        | `CstNode` \| `CstNode`[]                                  |
+| `ctx.constantExpression`     | `CstNode` \| `CstNode`[]                                  |
+| `ctx.lazyVariableExpression` | `CstNode` \| `CstNode`[]                                  |
+| `ctx.parenthesisExpression`  | `CstNode` \| `CstNode`[]                                  |
+| `ctx.recordExpression`       | `CstNode` \| `CstNode`[]                                  |
+| `args`                       | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
 
@@ -758,9 +758,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:217](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L217)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:217](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L217)
 
-___
+---
 
 ### <a id="startexpression" name="startexpression"></a> startExpression
 
@@ -768,11 +768,11 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | `Object` |
-| `ctx.expression` | `CstNode` \| `CstNode`[] |
-| `args` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
+| Name             | Type                                                      |
+| :--------------- | :-------------------------------------------------------- |
+| `ctx`            | `Object`                                                  |
+| `ctx.expression` | `CstNode` \| `CstNode`[]                                  |
+| `args`           | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
 
@@ -780,9 +780,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/interpreter.ts:69](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L69)
+[packages/brickdoc-formula/src/grammar/interpreter.ts:69](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/interpreter.ts#L69)
 
-___
+---
 
 ### <a id="validatevisitor" name="validatevisitor"></a> validateVisitor
 
@@ -800,7 +800,7 @@ InterpretCstVisitor.validateVisitor
 
 node_modules/@chevrotain/types/api.d.ts:1897
 
-___
+---
 
 ### <a id="visit" name="visit"></a> visit
 
@@ -808,10 +808,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `cstNode` | `CstNode` \| `CstNode`[] |
-| `param?` | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
+| Name      | Type                                                      |
+| :-------- | :-------------------------------------------------------- |
+| `cstNode` | `CstNode` \| `CstNode`[]                                  |
+| `param?`  | [`InterpretArgument`](../interfaces/InterpretArgument.md) |
 
 #### Returns
 

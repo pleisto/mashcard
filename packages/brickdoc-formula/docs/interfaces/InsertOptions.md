@@ -11,18 +11,18 @@
 
 ### <a id="ignoreparseerror" name="ignoreparseerror"></a> ignoreParseError
 
-• `Optional` **ignoreParseError**: ``true``
+• `Optional` **ignoreParseError**: `true`
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:32](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L32)
+[packages/brickdoc-formula/src/tests/testType.ts:32](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L32)
 
-___
+---
 
 ### <a id="ignoresyntaxerror" name="ignoresyntaxerror"></a> ignoreSyntaxError
 
-• `Optional` **ignoreSyntaxError**: ``true``
+• `Optional` **ignoreSyntaxError**: `true`
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:33](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L33)
+[packages/brickdoc-formula/src/tests/testType.ts:33](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L33)

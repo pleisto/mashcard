@@ -2,7 +2,7 @@
 
 ## Hierarchy
 
-- `Pick`<[`Cell`](Cell.md), ``"value"``\>
+- `Pick`<[`Cell`](Cell.md), `"value"`\>
 
   ↳ **`CellInput`**
 
@@ -21,9 +21,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:61](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L61)
+[packages/brickdoc-formula/src/tests/testType.ts:61](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L61)
 
-___
+---
 
 ### <a id="value" name="value"></a> value
 
@@ -35,4 +35,4 @@ Pick.value
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:140](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L140)
+[packages/brickdoc-formula/src/controls/types.ts:140](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L140)

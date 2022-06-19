@@ -19,9 +19,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:868](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L868)
+[packages/brickdoc-formula/src/types/index.ts:868](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L868)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -29,9 +29,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:870](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L870)
+[packages/brickdoc-formula/src/types/index.ts:870](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L870)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -39,9 +39,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:866](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L866)
+[packages/brickdoc-formula/src/types/index.ts:866](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L866)
 
-___
+---
 
 ### <a id="position" name="position"></a> position
 
@@ -49,9 +49,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:869](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L869)
+[packages/brickdoc-formula/src/types/index.ts:869](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L869)
 
-___
+---
 
 ### <a id="richtype" name="richtype"></a> richType
 
@@ -59,9 +59,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:871](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L871)
+[packages/brickdoc-formula/src/types/index.ts:871](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L871)
 
-___
+---
 
 ### <a id="variableid" name="variableid"></a> variableId
 
@@ -69,4 +69,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:867](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L867)
+[packages/brickdoc-formula/src/types/index.ts:867](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L867)

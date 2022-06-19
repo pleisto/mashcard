@@ -12,13 +12,13 @@
 
 ### <a id="meta" name="meta"></a> meta
 
-• **meta**: `Pick`<[`VariableMetadata`](VariableMetadata.md), ``"name"`` \| ``"namespaceId"`` \| ``"variableId"`` \| ``"richType"``\>
+• **meta**: `Pick`<[`VariableMetadata`](VariableMetadata.md), `"name"` \| `"namespaceId"` \| `"variableId"` \| `"richType"`\>
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:843](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L843)
+[packages/brickdoc-formula/src/types/index.ts:843](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L843)
 
-___
+---
 
 ### <a id="task" name="task"></a> task
 
@@ -26,9 +26,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:845](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L845)
+[packages/brickdoc-formula/src/types/index.ts:845](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L845)
 
-___
+---
 
 ### <a id="variableparseresult" name="variableparseresult"></a> variableParseResult
 
@@ -36,4 +36,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:844](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L844)
+[packages/brickdoc-formula/src/types/index.ts:844](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L844)

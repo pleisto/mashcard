@@ -21,9 +21,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:731](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L731)
+[packages/brickdoc-formula/src/types/index.ts:731](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L731)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -31,4 +31,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:730](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L730)
+[packages/brickdoc-formula/src/types/index.ts:730](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L730)

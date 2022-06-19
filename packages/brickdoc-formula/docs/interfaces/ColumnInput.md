@@ -2,8 +2,8 @@
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name       | Type             |
+| :--------- | :--------------- |
 | `RowCount` | extends `number` |
 
 ## Table of contents
@@ -23,9 +23,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:57](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L57)
+[packages/brickdoc-formula/src/tests/testType.ts:57](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L57)
 
-___
+---
 
 ### <a id="columnid" name="columnid"></a> columnId
 
@@ -33,9 +33,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:54](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L54)
+[packages/brickdoc-formula/src/tests/testType.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L54)
 
-___
+---
 
 ### <a id="displayindex" name="displayindex"></a> displayIndex
 
@@ -43,9 +43,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:56](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L56)
+[packages/brickdoc-formula/src/tests/testType.ts:56](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L56)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -53,4 +53,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:55](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L55)
+[packages/brickdoc-formula/src/tests/testType.ts:55](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L55)

@@ -25,7 +25,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:252](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L252)
+[packages/brickdoc-formula/src/types/index.ts:252](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L252)
 
 ---
 
@@ -35,7 +35,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:253](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L253)
+[packages/brickdoc-formula/src/types/index.ts:253](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L253)
 
 ---
 
@@ -49,7 +49,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:251](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L251)
+[packages/brickdoc-formula/src/types/index.ts:251](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L251)
 
 ---
 
@@ -63,7 +63,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:160](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L160)
+[packages/brickdoc-formula/src/types/index.ts:160](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L160)
 
 ---
 
@@ -77,7 +77,7 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:250](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L250)
+[packages/brickdoc-formula/src/types/index.ts:250](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L250)
 
 ---
 
@@ -91,4 +91,4 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:158](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L158)
+[packages/brickdoc-formula/src/types/index.ts:158](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L158)
