@@ -29,6 +29,9 @@ export const FORMULA_USED_TYPES = [
 ] as const
 const FORMULA_TYPES = [...FORMULA_USED_TYPES, 'any', 'void'] as const
 
+export const CORE_FUNCTION_GROUPS = ['core'] as const
+export type CoreFunctionGroup = typeof CORE_FUNCTION_GROUPS[number]
+
 type FormulaComplexType = typeof FORMULA_COMPLEX_TYPES[number]
 export type FormulaControlType = typeof FORMULA_CONTROL_TYPES[number]
 export type FormulaType = typeof FORMULA_TYPES[number]
@@ -80,7 +83,7 @@ export type SpecialDefaultVariableName =
   | 'waiting'
   | 'noPersist'
 
-export type FunctionGroup = 'core' | 'custom' | string
+export type FunctionGroup = CoreFunctionGroup | string
 
 export type FunctionNameType = string
 export type VariableName = string
@@ -377,6 +380,11 @@ export interface Argument<T extends UsedFormulaType = UsedFormulaType> {
   readonly spread?: boolean
 }
 
+export interface CompleteInput {
+  definitionWithCursor: string
+  match?: string
+}
+
 export type CompletionKind = 'function' | 'variable' | 'spreadsheet' | 'column' | 'block'
 export type ComplexCodeFragmentType =
   | 'Spreadsheet'
@@ -401,51 +409,71 @@ export type SimpleCodeFragmentType =
   | 'Dot'
   | 'Equal2'
   | 'Equal'
+  | 'GreaterThan'
 export type SpecialCodeFragmentType = 'unknown' | 'parseErrorOther' | 'Space' | 'literal'
 export type CodeFragmentCodes = ComplexCodeFragmentType | SimpleCodeFragmentType | SpecialCodeFragmentType
+
+interface CompletionReplacement {
+  readonly matcher: string
+  readonly value: string
+  readonly positionOffset?: number
+}
+
+export type CompletionFlag =
+  | 'exact'
+  | 'dynamicColumn'
+  | 'compareTypeMatched'
+  | 'compareTypeNotMatched'
+  | 'chainTypeMatched'
+  | 'chainTypeNotMatched'
+  | 'contextNamespace'
+  | 'defaultNamespace'
+  | 'blockNamespace'
+  | 'chainNamespace'
+  | 'block'
+  | 'variable'
+  | 'spreadsheet'
+  | 'column'
+  | 'function'
+  | 'variable'
+  | 'nameEqual'
+  | 'nameIncludes'
+  | 'nameStartsWith'
+  | 'functionNameEqual'
+  | 'functionNameIncludes'
+  | 'functionNameStartsWith'
 
 interface BaseCompletion {
   readonly kind: CompletionKind
   readonly weight: number
-  readonly replacements: string[]
-  readonly namespace: string
-  readonly positionChange: number
+  readonly flags: CompletionFlag[]
+  readonly replacements: CompletionReplacement[]
+  readonly fallbackValue: string
+  readonly fallbackPositionOffset?: number
   readonly name: string
-  readonly value: any
   readonly preview: any
-  readonly codeFragments: CodeFragment[]
   readonly namespaceId?: NamespaceId
 }
 export interface FunctionCompletion extends BaseCompletion {
   readonly kind: 'function'
-  readonly namespace: FunctionGroup
-  readonly value: `${FunctionKey}()`
   readonly preview: AnyFunctionClause
 }
 
 export interface VariableCompletion extends BaseCompletion {
   readonly kind: 'variable'
-  readonly namespace: BlockName
-  readonly value: VariableKey
   readonly preview: VariableInterface
 }
 
 export interface ColumnCompletion extends BaseCompletion {
   readonly kind: 'column'
-  readonly namespace: SpreadsheetName
-  readonly value: ColumnKey
   readonly preview: ColumnType
 }
 export interface BlockCompletion extends BaseCompletion {
   readonly kind: 'block'
-  readonly namespace: BlockName
-  readonly value: BlockKey
   readonly preview: BlockType
 }
 export interface SpreadsheetCompletion extends BaseCompletion {
   readonly kind: 'spreadsheet'
-  readonly namespace: BlockName
-  readonly value: SpreadsheetKey
   readonly preview: SpreadsheetType
 }
 
@@ -471,6 +499,7 @@ export interface FindKey {
 }
 
 export interface ContextInterface {
+  domain: string
   features: string[]
   dirtyFormulas: Record<VariableKey, DirtyFormulaInfo>
   reservedNames: string[]
@@ -651,6 +680,7 @@ export interface BaseCodeFragment {
   readonly code: CodeFragmentCodes
   readonly display: string
   readonly replacements?: [string, ...string[]]
+  readonly namespaceId?: string
   readonly type: FormulaType
   readonly errors: ErrorMessage[]
 }
@@ -778,7 +808,8 @@ export interface EventDependency<T extends FormulaEventPayload<any>> {
     | 'Variable'
     | 'NameChange'
     | 'NameRemove'
-    | 'BlockRenameOrDelete'
+    | 'BlockRename'
+    | 'BlockDelete'
   readonly event: EventType<T, Promise<void>>
   readonly eventId: string
   readonly scope: EventScope

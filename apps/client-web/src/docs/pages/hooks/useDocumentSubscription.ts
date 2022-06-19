@@ -63,6 +63,8 @@ export function useDocumentSubscription({
 
             const updatedNode = targetNode.copy(newContent)
             const oldSort = targetNode.attrs?.sort
+            // TODO: need avoid modify read-only prop
+            // @ts-expect-error
             if (newNode.text) updatedNode.text = newNode.text
             Object.assign(updatedNode.attrs, newNode.attrs)
 

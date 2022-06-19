@@ -1,15 +1,14 @@
 import React from 'react'
 import { PodAvatar } from '../PodAvatar'
 import * as Root from './index.style'
-/* import styles from './index.module.less' */
 
 export interface PodType {
   name?: string | null | undefined
   domain: string
   email?: string | null | undefined
   avatarData?:
-    | { __typename?: 'avatar'; url: string }
-    | { __typename: 'avatarComp'; comp: React.ReactElement }
+    | { __typename?: 'Avatar'; url: string }
+    | { __typename: 'AvatarComp'; comp: React.ReactElement }
     | null
     | undefined
   personal?: boolean

@@ -57,6 +57,9 @@ StringResult | ErrorResult => {
   return result
 }
 
+/**
+ * @source
+ */
 export const spreadsheetVlookup = createFunctionClause({
   name: 'VLOOKUP',
   async: false,
@@ -66,7 +69,7 @@ export const spreadsheetVlookup = createFunctionClause({
   acceptError: false,
   effect: false,
   examples: [{ input: '=123', output: { type: 'string', result: 'foo' } }],
-  description: 'Returns the value of the column in the spreadsheet that matches the match value.',
+  description: 'Finds the value of the first row that matches the match value',
   group: 'core',
   args: [
     { name: 'match', type: 'string' },

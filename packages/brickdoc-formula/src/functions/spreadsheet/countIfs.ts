@@ -27,6 +27,9 @@ const COUNTIFS = (
   return { type: 'number', result: sum }
 }
 
+/**
+ * @source
+ */
 export const spreadsheetCountIfs = createFunctionClause({
   name: 'COUNTIFS',
   async: false,
@@ -36,7 +39,7 @@ export const spreadsheetCountIfs = createFunctionClause({
   acceptError: false,
   effect: false,
   examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
-  description: 'Returns the sum of the column in the spreadsheet.',
+  description: 'Counts the number of rows that match the predicate',
   group: 'core',
   args: [
     { name: 'column', type: 'Column' },

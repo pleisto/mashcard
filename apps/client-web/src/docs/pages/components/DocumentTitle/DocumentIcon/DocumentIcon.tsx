@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { Root, EmojiIcon, ImageIcon } from './DocumentIcon.style'
-import { BlockEmoji, BlockImage, Blocktype } from '@/BrickdocGraphQL'
+import { BlockEmoji, BlockImage, BlockType } from '@/BrickdocGraphQL'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 interface DocumentIconImage extends BlockImage {
-  type: Blocktype.Image
+  type: BlockType.Image
 }
 
 interface DocumentIconEmoji extends BlockEmoji {
-  type: Blocktype.Emoji
+  type: BlockType.Emoji
 }
 
 export type DocumentIconMeta = DocumentIconImage | DocumentIconEmoji
@@ -30,12 +30,11 @@ export const DocumentIcon: React.FC<DocumentIconProps> = ({ documentIconMeta, on
       width={{
         '@smDown': 'sm'
       }}
-      data-testid={TEST_ID_ENUM.page.DocumentPage.titleIcon.id}
-    >
-      {documentIconMeta.type === Blocktype.Emoji && (
+      data-testid={TEST_ID_ENUM.page.DocumentPage.titleIcon.id}>
+      {documentIconMeta.type === BlockType.Emoji && (
         <EmojiIcon aria-label={documentIconMeta.name}>{documentIconMeta.emoji}</EmojiIcon>
       )}
-      {documentIconMeta.type === Blocktype.Image && (
+      {documentIconMeta.type === BlockType.Image && (
         <ImageIcon
           css={{
             backgroundImage: `url("${getDocIconUrl() ?? localUrl ?? ''}")`

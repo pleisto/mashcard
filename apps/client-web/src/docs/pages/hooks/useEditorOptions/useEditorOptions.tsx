@@ -8,6 +8,7 @@ import { useReactiveVar } from '@apollo/client'
 import { FormulaContextVar } from '@/docs/reactiveVars'
 import { useCallback, useMemo } from 'react'
 import { PageTree } from '@/docs/common/components/PageTree'
+import { useDiscussion } from './useDiscussion'
 
 export interface UseEditorOptions {
   docMeta: DocMeta
@@ -24,9 +25,10 @@ export function useEditorOptions({
   ydoc,
   onDocSave
 }: UseEditorOptions): EditorOptions {
-  const mentionCommands = useMentionCommands(docMeta)
+  const discussion = useDiscussion(docMeta)
   const embed = useEmbed(blocks, docMeta)
   const formulaContext = useReactiveVar(FormulaContextVar)
+  const mentionCommands = useMentionCommands(docMeta)
   const renderView = useCallback(() => <PageTree mode="subPage" />, [])
 
   return useMemo(
@@ -37,6 +39,7 @@ export function useEditorOptions({
               document: ydoc
             }
           : false,
+        discussion,
         embed,
         formula: {
           formulaContext
@@ -54,6 +57,6 @@ export function useEditorOptions({
       },
       editable: documentEditable
     }),
-    [documentEditable, embed, formulaContext, mentionCommands, onDocSave, renderView, ydoc]
+    [discussion, documentEditable, embed, formulaContext, mentionCommands, onDocSave, renderView, ydoc]
   )
 }

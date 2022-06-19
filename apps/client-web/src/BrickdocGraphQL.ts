@@ -49,6 +49,61 @@ export type AuthorizationResult = {
   value: Scalars['Boolean']
 }
 
+export type Avatar = {
+  __typename?: 'Avatar'
+  /** download url */
+  downloadUrl: Scalars['String']
+  /** signed id */
+  signedId: Scalars['String']
+  /** url */
+  url: Scalars['String']
+}
+
+/** ActiveStorage blobs */
+export type Blob = {
+  __typename?: 'Blob'
+  /** Blob key */
+  blobKey: Scalars['String']
+  /** Blob url */
+  downloadUrl: Scalars['String']
+  /** Blob url */
+  url: Scalars['String']
+}
+
+/** Brickdoc Docs::Block */
+export type Block = {
+  __typename?: 'Block'
+  /** blobs */
+  blobs?: Maybe<Array<Blob>>
+  /** collaborators */
+  collaborators: Array<Scalars['BigInt']>
+  /** content */
+  content: Array<Scalars['JSON']>
+  data: Scalars['JSON']
+  /** deleted_at */
+  deletedAt?: Maybe<Scalars['ISO8601DateTime']>
+  /** block first child sort */
+  firstChildSort: Scalars['BigInt']
+  /** object unique id */
+  id: Scalars['UUID']
+  meta: BlockMeta
+  /** block next sort */
+  nextSort: Scalars['BigInt']
+  /** parent uuid */
+  parentId?: Maybe<Scalars['UUID']>
+  /** path */
+  pathArray: Array<BlockPath>
+  permissions: BlockBaseObjectPermissions
+  /** root uuid */
+  rootId: Scalars['UUID']
+  /** block sort */
+  sort: Scalars['BigInt']
+  /** text */
+  text: Scalars['String']
+  /** block type */
+  type: Scalars['String']
+}
+
 export type BlockAlias = {
   __typename?: 'BlockAlias'
   key: Scalars['String']
@@ -70,18 +125,13 @@ export type BlockAttachment = {
   /** size */
   size?: Maybe<Scalars['Int']>
   /** source */
-  source?: Maybe<Filesourcetype>
+  source?: Maybe<FileSource>
   /** type */
-  type: Blocktype
+  type: BlockType
   /** view url */
   viewUrl?: Maybe<Scalars['String']>
   /** width */
   width?: Maybe<Scalars['Int']>
-}
-
-export type BlockBaseObjectPermissions = {
-  __typename?: 'BlockBaseObjectPermissions'
-  canShow: AuthorizationResult
 }
 
 export type BlockColor = {
@@ -89,7 +139,7 @@ export type BlockColor = {
   /** string */
   color: Scalars['String']
   /** type */
-  type?: Maybe<Blocktype>
+  type?: Maybe<BlockType>
 }
 
 /** InputObject type of Class */
@@ -127,7 +177,6 @@ export type BlockCommitPayload = {
   requireFull?: Maybe<Scalars['Boolean']>
 }
 
-/** GraphQL */
 export type BlockCover = BlockColor | BlockImage
 
 /** InputObject type of Class */
@@ -193,7 +242,7 @@ export type BlockEmbedMeta = {
   /** display name */
   displayName?: Maybe<Scalars['String']>
   /** embedType */
-  embedType?: Maybe<Embedtype>
+  embedType?: Maybe<EmbedType>
   /** height */
   height?: Maybe<Scalars['Int']>
   /** url or blob key */
@@ -205,7 +254,7 @@ export type BlockEmbedMeta = {
   /** size */
   size?: Maybe<Scalars['Int']>
   /** source */
-  source?: Maybe<Filesourcetype>
+  source?: Maybe<FileSource>
   /** type */
   type?: Maybe<Scalars['String']>
   /** view url */
@@ -221,7 +270,7 @@ export type BlockEmoji = {
   /** name */
   name: Scalars['String']
   /** type */
-  type?: Maybe<Blocktype>
+  type?: Maybe<BlockType>
 }
 
 /** InputObject type of Class */
@@ -241,7 +290,6 @@ export type BlockHardDeletePayload = {
   errors: Array<Scalars['String']>
 }
 
-/** GraphQL */
 export type BlockIcon = BlockEmoji | BlockImage
 
 export type BlockImage = {
@@ -263,9 +311,9 @@ export type BlockImage = {
   /** size */
   size?: Maybe<Scalars['Int']>
   /** type */
-  source?: Maybe<Filesourcetype>
+  source?: Maybe<FileSource>
   /** type */
-  type?: Maybe<Blocktype>
+  type?: Maybe<BlockType>
   /** view url */
   viewUrl?: Maybe<Scalars['String']>
   /** width */
@@ -339,7 +387,7 @@ export type BlockLink = {
   /** size */
   size?: Maybe<Scalars['Int']>
   /** source */
-  source?: Maybe<Filesourcetype>
+  source?: Maybe<FileSource>
   /** title */
   title?: Maybe<Scalars['String']>
   /** type */
@@ -401,6 +449,20 @@ export type BlockMovePayload = {
   errors: Array<Scalars['String']>
 }
 
+/** Brickdoc Docs::Block New Scheme */
+export type BlockNew = {
+  __typename?: 'BlockNew'
+  /** Block Type */
+  blockType?: Maybe<Scalars['String']>
+  /** object unique id */
+  id: Scalars['UUID']
+  /** Latest State Id */
+  stateId?: Maybe<Scalars['String']>
+  /** Block States */
+  states?: Maybe<Array<BlockState>>
+  statesCount?: Maybe<Scalars['Int']>
+}
+
 export type BlockPage = {
   __typename?: 'BlockPage'
   /** display name */
@@ -420,11 +482,11 @@ export type BlockPage = {
   /** size */
   size?: Maybe<Scalars['Int']>
   /** source */
-  source?: Maybe<Filesourcetype>
+  source?: Maybe<FileSource>
   /** title */
   title?: Maybe<Scalars['String']>
   /** type */
-  type?: Maybe<Blocktype>
+  type?: Maybe<BlockType>
   /** view url */
   viewUrl?: Maybe<Scalars['String']>
   /** width */
@@ -460,9 +522,9 @@ export type BlockPeople = {
   /** size */
   size?: Maybe<Scalars['Int']>
   /** source */
-  source?: Maybe<Filesourcetype>
+  source?: Maybe<FileSource>
   /** type */
-  type?: Maybe<Blocktype>
+  type?: Maybe<BlockType>
   /** view url */
   viewUrl?: Maybe<Scalars['String']>
   /** width */
@@ -557,6 +619,20 @@ export type BlockSoftDeletePayload = {
   errors: Array<Scalars['String']>
 }
 
+/** Brickdoc Docs::BlockState */
+export type BlockState = {
+  __typename?: 'BlockState'
+  blockId?: Maybe<Scalars['UUID']>
+  /** Created at */
+  createdAt: Scalars['ISO8601DateTime']
+  /** object unique id */
+  id: Scalars['UUID']
+  prevStateId?: Maybe<Scalars['UUID']>
+  state?: Maybe<Scalars['String']>
+  /** State Type */
+  stateType?: Maybe<Statetype>
+}
+
 /** InputObject type of Class */
 export type BlockSyncBatchInput = {
   blocks: Array<BlockInput>
@@ -579,7 +655,7 @@ export type BlockSyncBatchPayload = {
   errors: Array<Scalars['String']>
 }
 
-export enum Blocktype {
+export enum BlockType {
   /** ATTACHMENT */
   Attachment = 'ATTACHMENT',
   /** COLOR */
@@ -617,6 +693,19 @@ export enum CommentStatus {
   Normal = 'normal'
 }
 
+/** Brickdoc Global Configuration */
+export type Config = {
+  __typename?: 'Config'
+  /** Enable email and password authentication */
+  accountsEmailPasswordAuth: Scalars['Boolean']
+  /** Enabled federated identity providers */
+  accountsFederatedProviders?: Maybe<Array<FederatedProvider>>
+  /** Preferred Authentication authentication */
+  accountsPreferredAuthMethod: AuthMethod
+  /** User agreement link */
+  userAgreementLink: Scalars['HttpUrl']
+}
+
 /** Brickdoc Docs::Conversation */
 export type Conversation = {
   __typename?: 'Conversation'
@@ -651,6 +740,7 @@ export type ConversationCommentAppendPayload = {
   __typename?: 'ConversationCommentAppendPayload'
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars['String']>
+  comment: Comment
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars['String']>
 }
@@ -669,6 +759,58 @@ export type ConversationCommentCreateInput = {
 /** Autogenerated return type of ConversationCommentCreate */
 export type ConversationCommentCreatePayload = {
   __typename?: 'ConversationCommentCreatePayload'
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>
+  conversation: Conversation
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars['String']>
+}
+
+/** InputObject type of Class */
+export type ConversationDeleteInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>
+  /** Conversation id */
+  conversationId: Scalars['String']
+}
+
+/** Autogenerated return type of ConversationDelete */
+export type ConversationDeletePayload = {
+  __typename?: 'ConversationDeletePayload'
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars['String']>
+}
+
+/** InputObject type of Class */
+export type ConversationOpenInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>
+  /** Conversation id */
+  conversationId: Scalars['String']
+}
+
+/** Autogenerated return type of ConversationOpen */
+export type ConversationOpenPayload = {
+  __typename?: 'ConversationOpenPayload'
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars['String']>
+}
+
+/** InputObject type of Class */
+export type ConversationResolveInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>
+  /** Conversation id */
+  conversationId: Scalars['String']
+}
+
+/** Autogenerated return type of ConversationResolve */
+export type ConversationResolvePayload = {
+  __typename?: 'ConversationResolvePayload'
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars['String']>
   /** Errors encountered during execution of the mutation. */
@@ -764,6 +906,24 @@ export type DirectUploadInput = {
   metadata?: InputMaybe<Scalars['JSON']>
 }
 
+export type DocumentHistories = {
+  __typename?: 'DocumentHistories'
+  /** History States */
+  histories?: Maybe<Array<DocumentHistory>>
+  /** History Users */
+  users?: Maybe<Array<ThinUser>>
+}
+
+export type DocumentHistory = {
+  __typename?: 'DocumentHistory'
+  /** Created at */
+  createdAt: Scalars['ISO8601DateTime']
+  /** object unique id */
+  id: Scalars['UUID']
+  /** Username */
+  username: Scalars['String']
+}
+
 /** Autogenerated return type of Document */
 export type DocumentPayload = {
   __typename?: 'DocumentPayload'
@@ -773,7 +933,7 @@ export type DocumentPayload = {
   states?: Maybe<Array<BlockState>>
 }
 
-export enum Embedtype {
+export enum EmbedType {
   /** GALLERY */
   Gallery = 'GALLERY',
   /** LINK */
@@ -790,7 +950,16 @@ export type FailureReasons = {
   fullMessages: Array<Scalars['String']>
 }
 
-export enum Filesourcetype {
+/** Accounts Federated Identity Provide Configuration */
+export type FederatedProvider = {
+  __typename?: 'FederatedProvider'
+  /** Provider Logo URI */
+  logo: Scalars['HttpUrl']
+  /** Provider Name */
+  name: Scalars['String']
+}
+
+export enum FileSource {
   /** EXTERNAL */
   External = 'EXTERNAL',
   /** ORIGIN */
@@ -897,12 +1066,200 @@ export enum MemberState {
   Enabled = 'enabled'
 }
 
+/** Represents information about the Brickdoc Server Instance. */
+export type Metadata = {
+  __typename?: 'Metadata'
+  /** Current available locales. */
+  availableLocales: Array<SelectOption>
+  availableTimezones: Array<Scalars['String']>
+  /** Brickdoc Global Config */
+  config: Config
+  /** object unique id */
+  id: Scalars['AutoIncrementID']
+}
+
+export type Mutation = {
+  __typename?: 'Mutation'
+  blockCommit?: Maybe<BlockCommitPayload>
+  blockCreate?: Maybe<BlockCreatePayload>
+  blockCreateShareLink?: Maybe<BlockCreateShareLinkPayload>
+  blockDuplicate?: Maybe<BlockDuplicatePayload>
+  blockHardDelete?: Maybe<BlockHardDeletePayload>
+  blockMove?: Maybe<BlockMovePayload>
+  blockPinOrUnpin?: Maybe<BlockPinOrUnpinPayload>
+  blockRename?: Maybe<BlockRenamePayload>
+  blockRestore?: Maybe<BlockRestorePayload>
+  blockSoftDelete?: Maybe<BlockSoftDeletePayload>
+  blockSyncBatch?: Maybe<BlockSyncBatchPayload>
+  conversationCommentAppend?: Maybe<ConversationCommentAppendPayload>
+  conversationCommentCreate?: Maybe<ConversationCommentCreatePayload>
+  conversationDelete?: Maybe<ConversationDeletePayload>
+  conversationOpen?: Maybe<ConversationOpenPayload>
+  conversationResolve?: Maybe<ConversationResolvePayload>
+  createDirectUpload?: Maybe<CreateDirectUploadPayload>
+  createOrUpdatePod?: Maybe<CreateOrUpdatePodPayload>
+  formulaCommit?: Maybe<FormulaCommitPayload>
+  joinPod?: Maybe<JoinPodPayload>
+  podDestroy?: Maybe<PodDestroyPayload>
+  podLeave?: Maybe<PodLeavePayload>
+  updateDomain?: Maybe<UpdateDomainPayload>
+  updateMember?: Maybe<UpdateMemberPayload>
+  userAppearanceUpdate?: Maybe<UserAppearanceUpdatePayload>
+  userConfirmationEmailResend?: Maybe<UserConfirmationEmailResendPayload>
+  userCreate?: Maybe<UserCreatePayload>
+  userDestroy?: Maybe<UserDestroyPayload>
+  userEmailPasswordSignIn?: Maybe<UserEmailPasswordSignInPayload>
+  userForgetPasswordMailSend?: Maybe<UserForgetPasswordMailSendPayload>
+  userPasswordReset?: Maybe<UserPasswordResetPayload>
+  userSignOut?: Maybe<UserSignOutPayload>
+}
+
+export type MutationBlockCommitArgs = {
+  input: BlockCommitInput
+}
+
+export type MutationBlockCreateArgs = {
+  input: BlockCreateInput
+}
+
+export type MutationBlockCreateShareLinkArgs = {
+  input: BlockCreateShareLinkInput
+}
+
+export type MutationBlockDuplicateArgs = {
+  input: BlockDuplicateInput
+}
+
+export type MutationBlockHardDeleteArgs = {
+  input: BlockHardDeleteInput
+}
+
+export type MutationBlockMoveArgs = {
+  input: BlockMoveInput
+}
+
+export type MutationBlockPinOrUnpinArgs = {
+  input: BlockPinOrUnpinInput
+}
+
+export type MutationBlockRenameArgs = {
+  input: BlockRenameInput
+}
+
+export type MutationBlockRestoreArgs = {
+  input: BlockRestoreInput
+}
+
+export type MutationBlockSoftDeleteArgs = {
+  input: BlockSoftDeleteInput
+}
+
+export type MutationBlockSyncBatchArgs = {
+  input: BlockSyncBatchInput
+}
+
+export type MutationConversationCommentAppendArgs = {
+  input: ConversationCommentAppendInput
+}
+
+export type MutationConversationCommentCreateArgs = {
+  input: ConversationCommentCreateInput
+}
+
+export type MutationConversationDeleteArgs = {
+  input: ConversationDeleteInput
+}
+
+export type MutationConversationOpenArgs = {
+  input: ConversationOpenInput
+}
+
+export type MutationConversationResolveArgs = {
+  input: ConversationResolveInput
+}
+
+export type MutationCreateDirectUploadArgs = {
+  input: CreateDirectUploadInput
+}
+
+export type MutationCreateOrUpdatePodArgs = {
+  input: CreateOrUpdatePodInput
+}
+
+export type MutationFormulaCommitArgs = {
+  input: FormulaCommitInput
+}
+
+export type MutationJoinPodArgs = {
+  input: JoinPodInput
+}
+
+export type MutationPodDestroyArgs = {
+  input: PodDestroyInput
+}
+
+export type MutationPodLeaveArgs = {
+  input: PodLeaveInput
+}
+
+export type MutationUpdateDomainArgs = {
+  input: UpdateDomainInput
+}
+
+export type MutationUpdateMemberArgs = {
+  input: UpdateMemberInput
+}
+
+export type MutationUserAppearanceUpdateArgs = {
+  input: UserAppearanceUpdateInput
+}
+
+export type MutationUserConfirmationEmailResendArgs = {
+  input: UserConfirmationEmailResendInput
+}
+
+export type MutationUserCreateArgs = {
+  input: UserCreateInput
+}
+
+export type MutationUserDestroyArgs = {
+  input: UserDestroyInput
+}
+
+export type MutationUserEmailPasswordSignInArgs = {
+  input: UserEmailPasswordSignInInput
+}
+
+export type MutationUserForgetPasswordMailSendArgs = {
+  input: UserForgetPasswordMailSendInput
+}
+
+export type MutationUserPasswordResetArgs = {
+  input: UserPasswordResetInput
+}
+
+export type MutationUserSignOutArgs = {
+  input: UserSignOutInput
+}
+
 /** Autogenerated return type of NewPatch */
 export type NewPatchPayload = {
   __typename?: 'NewPatchPayload'
   patches: Array<PatchBaseObject>
   seq: Scalars['Int']
   state: Patchstate
+}
+
+/** session[:omniauth] */
+export type OmniauthSession = {
+  __typename?: 'OmniauthSession'
+  /** Like a username, Unique within this instance of Brickdoc. */
+  domain?: Maybe<Scalars['String']>
+  hasSession: Scalars['Boolean']
+  /** Human-readable name of the user */
+  name?: Maybe<Scalars['String']>
+  /** Provider Name */
+  provider?: Maybe<Scalars['String']>
 }
 
 export type PatchBaseObject = {
@@ -930,6 +1287,41 @@ export enum Patchtype {
   Delete = 'DELETE',
   /** UPDATE */
   Update = 'UPDATE'
+}
+
+/** Brickdoc Docs::Pin */
+export type Pin = {
+  __typename?: 'Pin'
+  /** root uuid */
+  blockId: Scalars['UUID']
+  meta: BlockMeta
+  /** text */
+  text: Scalars['String']
+}
+
+/** Brickdoc Pod. */
+export type Pod = {
+  __typename?: 'Pod'
+  /** Pod Avatar */
+  avatarData?: Maybe<Avatar>
+  /** public profile bio */
+  bio?: Maybe<Scalars['String']>
+  /** Like a username, Unique within this instance of Brickdoc */
+  domain: Scalars['String']
+  /** owner email */
+  email?: Maybe<Scalars['String']>
+  /** object unique id */
+  id: Scalars['AutoIncrementID']
+  /** enable invite feature */
+  inviteEnable: Scalars['Boolean']
+  /** invite secret */
+  inviteSecret?: Maybe<Scalars['String']>
+  /** Pod Name */
+  name?: Maybe<Scalars['String']>
+  /** owner is current user */
+  owned: Scalars['Boolean']
+  /** personal */
+  personal: Scalars['Boolean']
 }
 
 /** InputObject type of Class */
@@ -968,6 +1360,24 @@ export type PodLeavePayload = {
   errors: Array<Scalars['String']>
 }
 
+export type PodMember = {
+  __typename?: 'PodMember'
+  /** Pod Avatar */
+  avatarData?: Maybe<Avatar>
+  /** Like a username, Unique within this instance of Brickdoc */
+  domain: Scalars['String']
+  /** owner email */
+  email?: Maybe<Scalars['String']>
+  /** object unique id */
+  id: Scalars['AutoIncrementID']
+  /** Pod Name */
+  name: Scalars['String']
+  /** role */
+  role: MemberRole
+  /** state */
+  state: MemberState
+}
+
 /** Pod operation types */
 export enum PodOperation {
   /** CREATE */
@@ -983,356 +1393,31 @@ export enum Policytype {
   View = 'view'
 }
 
-export type RootMutation = {
-  __typename?: 'RootMutation'
-  blockCommit?: Maybe<BlockCommitPayload>
-  blockCreate?: Maybe<BlockCreatePayload>
-  blockCreateShareLink?: Maybe<BlockCreateShareLinkPayload>
-  blockDuplicate?: Maybe<BlockDuplicatePayload>
-  blockHardDelete?: Maybe<BlockHardDeletePayload>
-  blockMove?: Maybe<BlockMovePayload>
-  blockPinOrUnpin?: Maybe<BlockPinOrUnpinPayload>
-  blockRename?: Maybe<BlockRenamePayload>
-  blockRestore?: Maybe<BlockRestorePayload>
-  blockSoftDelete?: Maybe<BlockSoftDeletePayload>
-  blockSyncBatch?: Maybe<BlockSyncBatchPayload>
-  conversationCommentAppend?: Maybe<ConversationCommentAppendPayload>
-  conversationCommentCreate?: Maybe<ConversationCommentCreatePayload>
-  createDirectUpload?: Maybe<CreateDirectUploadPayload>
-  createOrUpdatePod?: Maybe<CreateOrUpdatePodPayload>
-  formulaCommit?: Maybe<FormulaCommitPayload>
-  joinPod?: Maybe<JoinPodPayload>
-  podDestroy?: Maybe<PodDestroyPayload>
-  podLeave?: Maybe<PodLeavePayload>
-  updateDomain?: Maybe<UpdateDomainPayload>
-  updateMember?: Maybe<UpdateMemberPayload>
-  userAppearanceUpdate?: Maybe<UserAppearanceUpdatePayload>
-  /**
-   *
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   */
-  userConfirmationEmailResend?: Maybe<UserConfirmationEmailResendPayload>
-  /**
-   *
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   */
-  userCreate?: Maybe<UserCreatePayload>
-  /**
-   *
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   */
-  userDestroy?: Maybe<UserDestroyPayload>
-  /**
-   *
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   */
-  userEmailPasswordSignIn?: Maybe<UserEmailPasswordSignInPayload>
-  /**
-   *
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   */
-  userForgetPasswordMailSend?: Maybe<UserForgetPasswordMailSendPayload>
-  /**
-   *
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   */
-  userPasswordReset?: Maybe<UserPasswordResetPayload>
-  /**
-   *
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   */
-  userSignOut?: Maybe<UserSignOutPayload>
-}
-
-export type RootMutationBlockCommitArgs = {
-  input: BlockCommitInput
-}
-
-export type RootMutationBlockCreateArgs = {
-  input: BlockCreateInput
-}
-
-export type RootMutationBlockCreateShareLinkArgs = {
-  input: BlockCreateShareLinkInput
-}
-
-export type RootMutationBlockDuplicateArgs = {
-  input: BlockDuplicateInput
-}
-
-export type RootMutationBlockHardDeleteArgs = {
-  input: BlockHardDeleteInput
-}
-
-export type RootMutationBlockMoveArgs = {
-  input: BlockMoveInput
-}
-
-export type RootMutationBlockPinOrUnpinArgs = {
-  input: BlockPinOrUnpinInput
-}
-
-export type RootMutationBlockRenameArgs = {
-  input: BlockRenameInput
-}
-
-export type RootMutationBlockRestoreArgs = {
-  input: BlockRestoreInput
-}
-
-export type RootMutationBlockSoftDeleteArgs = {
-  input: BlockSoftDeleteInput
-}
-
-export type RootMutationBlockSyncBatchArgs = {
-  input: BlockSyncBatchInput
-}
-
-export type RootMutationConversationCommentAppendArgs = {
-  input: ConversationCommentAppendInput
-}
-
-export type RootMutationConversationCommentCreateArgs = {
-  input: ConversationCommentCreateInput
-}
-
-export type RootMutationCreateDirectUploadArgs = {
-  input: CreateDirectUploadInput
-}
-
-export type RootMutationCreateOrUpdatePodArgs = {
-  input: CreateOrUpdatePodInput
-}
-
-export type RootMutationFormulaCommitArgs = {
-  input: FormulaCommitInput
-}
-
-export type RootMutationJoinPodArgs = {
-  input: JoinPodInput
-}
-
-export type RootMutationPodDestroyArgs = {
-  input: PodDestroyInput
-}
-
-export type RootMutationPodLeaveArgs = {
-  input: PodLeaveInput
-}
-
-export type RootMutationUpdateDomainArgs = {
-  input: UpdateDomainInput
-}
-
-export type RootMutationUpdateMemberArgs = {
-  input: UpdateMemberInput
-}
-
-export type RootMutationUserAppearanceUpdateArgs = {
-  input: UserAppearanceUpdateInput
-}
-
-export type RootMutationUserConfirmationEmailResendArgs = {
-  input: UserConfirmationEmailResendInput
-}
-
-export type RootMutationUserCreateArgs = {
-  input: UserCreateInput
-}
-
-export type RootMutationUserDestroyArgs = {
-  input: UserDestroyInput
-}
-
-export type RootMutationUserEmailPasswordSignInArgs = {
-  input: UserEmailPasswordSignInInput
-}
-
-export type RootMutationUserForgetPasswordMailSendArgs = {
-  input: UserForgetPasswordMailSendInput
-}
-
-export type RootMutationUserPasswordResetArgs = {
-  input: UserPasswordResetInput
-}
-
-export type RootMutationUserSignOutArgs = {
-  input: UserSignOutInput
-}
-
-export type RootQuery = {
-  __typename?: 'RootQuery'
-  /** return single block by id. */
-  block?: Maybe<Block>
-  blockInfo?: Maybe<BlockInfo>
-  blockNew?: Maybe<BlockNew>
-  /** return all pins */
-  blockPins?: Maybe<Array<Pin>>
-  blockSearch?: Maybe<Array<Block>>
-  /** return share links by block id. */
-  blockShareLinks: Array<ShareLink>
-  /** return snapshots by block id. */
-  blockSnapshots?: Maybe<Array<BlockSnapshot>>
-  childrenBlocks?: Maybe<Array<Block>>
-  conversationComments?: Maybe<Array<Conversation>>
-  currentPodDomain: Scalars['String']
-  documentHistories?: Maybe<DocumentHistories>
-  /**
-   * Check domain available.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   */
-  domainAvailable: Validate_Result
-  /**
-   * Check email available.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   */
-  emailAvailable: Validate_Result
-  /**
-   * provides a federated identity session data
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   */
-  federatedIdentitySession: OmniauthSession
-  formulas?: Maybe<Array<Formula>>
-  /** Return information about current Brickdoc server instance. */
-  metadata: Metadata
-  pageBlocks?: Maybe<Array<Block>>
-  /**
-   * Check password available.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   */
-  passwordAvailable: Validate_Result
-  /** return current pod for user. */
-  pod: Pod
-  /** return all pod users */
-  podMembers?: Maybe<Array<Pod_Member>>
-  /** search pods */
-  podSearch: Array<Pod>
-  /** return all pods for user. */
-  pods: Array<Pod>
-  /** return preview box data of url */
-  previewBox: Preview_Box
-  spreadsheetChildren?: Maybe<SpreadsheetChildren>
-  trashBlocks?: Maybe<Array<Block>>
-  /** return images from unsplash by search */
-  unsplashImage?: Maybe<Array<Unsplash_Image>>
-}
-
-export type RootQueryBlockArgs = {
-  id: Scalars['String']
-}
-
-export type RootQueryBlockInfoArgs = {
-  domain: Scalars['String']
-  id: Scalars['String']
-}
-
-export type RootQueryBlockNewArgs = {
-  historyId?: InputMaybe<Scalars['String']>
-  id: Scalars['String']
-}
-
-export type RootQueryBlockSearchArgs = {
-  domain: Scalars['String']
-  input: Scalars['String']
-}
-
-export type RootQueryBlockShareLinksArgs = {
-  id: Scalars['String']
-}
-
-export type RootQueryBlockSnapshotsArgs = {
-  id: Scalars['String']
-}
-
-export type RootQueryChildrenBlocksArgs = {
-  rootId: Scalars['String']
-  snapshotVersion: Scalars['Int']
-}
-
-export type RootQueryConversationCommentsArgs = {
-  pageIds: Array<Scalars['UUID']>
-}
-
-export type RootQueryDocumentHistoriesArgs = {
-  id: Scalars['String']
-}
-
-export type RootQueryDomainAvailableArgs = {
-  domain: Scalars['String']
-}
-
-export type RootQueryEmailAvailableArgs = {
-  email: Scalars['String']
-}
-
-export type RootQueryFormulasArgs = {
-  domain: Scalars['String']
-  ids?: InputMaybe<Scalars['String']>
-}
-
-export type RootQueryPageBlocksArgs = {
-  domain: Scalars['String']
-}
-
-export type RootQueryPasswordAvailableArgs = {
-  password: Scalars['String']
-}
-
-export type RootQueryPodArgs = {
-  domain: Scalars['String']
-}
-
-export type RootQueryPodSearchArgs = {
-  input: Scalars['String']
-}
-
-export type RootQueryPreviewBoxArgs = {
+export type PreviewBox = {
+  __typename?: 'PreviewBox'
+  /** preview cover */
+  cover?: Maybe<Scalars['String']>
+  /** preview description */
+  description?: Maybe<Scalars['String']>
+  /** preview icon */
+  icon?: Maybe<Scalars['String']>
+  /** preview conetent size */
+  size?: Maybe<Scalars['String']>
+  /** preview title */
+  title: Scalars['String']
+  /** preview conetent type */
+  type?: Maybe<Scalars['String']>
+  /** preview url */
   url: Scalars['String']
 }
 
-export type RootQuerySpreadsheetChildrenArgs = {
-  parentId: Scalars['String']
-}
-
-export type RootQueryTrashBlocksArgs = {
-  blockId?: InputMaybe<Scalars['UUID']>
-  domain: Scalars['String']
-  search?: InputMaybe<Scalars['String']>
-}
-
-export type RootQueryUnsplashImageArgs = {
-  page?: InputMaybe<Scalars['Int']>
-  perPage?: InputMaybe<Scalars['Int']>
-  query?: InputMaybe<Scalars['String']>
-}
-
-export type RootSubscription = {
-  __typename?: 'RootSubscription'
-  document: DocumentPayload
-  newPatch: NewPatchPayload
-}
-
-export type RootSubscriptionDocumentArgs = {
-  docId: Scalars['UUID']
-}
-
-export type RootSubscriptionNewPatchArgs = {
-  docId: Scalars['UUID']
+/** Option Object for BrickDesign Select Component. */
+export type SelectOption = {
+  __typename?: 'SelectOption'
+  /** option label */
+  label: Scalars['String']
+  /** option value */
+  value: Scalars['String']
 }
 
 export type ShareLink = {
@@ -1384,6 +1469,25 @@ export type ThinUser = {
   email?: Maybe<Scalars['String']>
   /** Pod Name */
   name: Scalars['String']
+}
+
+/** Unspash image. */
+export type UnsplashImage = {
+  __typename?: 'UnsplashImage'
+  /** Blur hash for this image (see https://blurha.sh/) */
+  blurHash?: Maybe<Scalars['String']>
+  /** url for full size image */
+  fullUrl: Scalars['String']
+  /** Image height */
+  height?: Maybe<Scalars['Int']>
+  /** Unsplash image id */
+  id: Scalars['String']
+  /** url for small size image */
+  smallUrl: Scalars['String']
+  /** username */
+  username?: Maybe<Scalars['String']>
+  /** Image width */
+  width?: Maybe<Scalars['Int']>
 }
 
 /** InputObject type of Class */
@@ -1591,258 +1695,165 @@ export type UserSignOutPayload = {
   errors: Array<Scalars['String']>
 }
 
-export type Avatar = {
-  __typename?: 'avatar'
-  /** download url */
-  downloadUrl: Scalars['String']
-  /** signed id */
-  signedId: Scalars['String']
-  /** url */
-  url: Scalars['String']
-}
-
-/** ActiveStorage blobs */
-export type Blob = {
-  __typename?: 'blob'
-  /** Blob key */
-  blobKey: Scalars['String']
-  /** Blob url */
-  downloadUrl: Scalars['String']
-  /** Blob url */
-  url: Scalars['String']
-}
-
-/** Brickdoc Docs::Block */
-export type Block = {
-  __typename?: 'block'
-  /** blobs */
-  blobs?: Maybe<Array<Blob>>
-  /** collaborators */
-  collaborators: Array<Scalars['BigInt']>
-  /** content */
-  content: Array<Scalars['JSON']>
-  data: Scalars['JSON']
-  /** deleted_at */
-  deletedAt?: Maybe<Scalars['ISO8601DateTime']>
-  /** block first child sort */
-  firstChildSort: Scalars['BigInt']
-  /** object unique id */
-  id: Scalars['UUID']
-  meta: BlockMeta
-  /** block next sort */
-  nextSort: Scalars['BigInt']
-  /** parent uuid */
-  parentId?: Maybe<Scalars['UUID']>
-  /** path */
-  pathArray: Array<BlockPath>
-  permissions: BlockBaseObjectPermissions
-  /** root uuid */
-  rootId: Scalars['UUID']
-  /** block sort */
-  sort: Scalars['BigInt']
-  /** text */
-  text: Scalars['String']
-  /** block type */
-  type: Scalars['String']
-}
-
-/** Brickdoc Docs::Block New Scheme */
-export type BlockNew = {
-  __typename?: 'blockNew'
-  /** Block Type */
-  blockType?: Maybe<Scalars['String']>
-  /** object unique id */
-  id: Scalars['UUID']
-  /** Latest State Id */
-  stateId?: Maybe<Scalars['String']>
-  /** Block States */
-  states?: Maybe<Array<BlockState>>
-  statesCount?: Maybe<Scalars['Int']>
-}
-
-/** Brickdoc Docs::BlockState */
-export type BlockState = {
-  __typename?: 'blockState'
-  blockId?: Maybe<Scalars['UUID']>
-  /** Created at */
-  createdAt: Scalars['ISO8601DateTime']
-  /** object unique id */
-  id: Scalars['UUID']
-  prevStateId?: Maybe<Scalars['UUID']>
-  state?: Maybe<Scalars['String']>
-  /** State Type */
-  stateType?: Maybe<Statetype>
-}
-
-/** Brickdoc Global Configuration */
-export type Config = {
-  __typename?: 'config'
-  /** Enable email and password authentication */
-  accountsEmailPasswordAuth: Scalars['Boolean']
-  /** Enabled federated identity providers */
-  accountsFederatedProviders?: Maybe<Array<FederatedProvider>>
-  /** Preferred Authentication authentication */
-  accountsPreferredAuthMethod: AuthMethod
-  /** User agreement link */
-  userAgreementLink: Scalars['HttpUrl']
-}
-
-export type DocumentHistories = {
-  __typename?: 'documentHistories'
-  /** History States */
-  histories?: Maybe<Array<DocumentHistory>>
-  /** History Users */
-  users?: Maybe<Array<ThinUser>>
-}
-
-export type DocumentHistory = {
-  __typename?: 'documentHistory'
-  /** Created at */
-  createdAt: Scalars['ISO8601DateTime']
-  /** object unique id */
-  id: Scalars['UUID']
-  /** Username */
-  username: Scalars['String']
-}
-
-/** Accounts Federated Identity Provide Configuration */
-export type FederatedProvider = {
-  __typename?: 'federatedProvider'
-  /** Provider Logo URI */
-  logo: Scalars['HttpUrl']
-  /** Provider Name */
-  name: Scalars['String']
-}
-
-/** Represents information about the Brickdoc Server Instance. */
-export type Metadata = {
-  __typename?: 'metadata'
-  /** Current available locales. */
-  availableLocales: Array<Select_Option>
-  availableTimezones: Array<Scalars['String']>
-  /** Brickdoc Global Config */
-  config: Config
-  /** object unique id */
-  id: Scalars['AutoIncrementID']
-}
-
-/** session[:omniauth] */
-export type OmniauthSession = {
-  __typename?: 'omniauthSession'
-  /** Like a username, Unique within this instance of Brickdoc. */
-  domain?: Maybe<Scalars['String']>
-  hasSession: Scalars['Boolean']
-  /** Human-readable name of the user */
-  name?: Maybe<Scalars['String']>
-  /** Provider Name */
-  provider?: Maybe<Scalars['String']>
-}
-
-/** Brickdoc Docs::Pin */
-export type Pin = {
-  __typename?: 'pin'
-  /** root uuid */
-  blockId: Scalars['UUID']
-  meta: BlockMeta
-  /** text */
-  text: Scalars['String']
-}
-
-/** Brickdoc Pod. */
-export type Pod = {
-  __typename?: 'pod'
-  /** Pod Avatar */
-  avatarData?: Maybe<Avatar>
-  /** public profile bio */
-  bio?: Maybe<Scalars['String']>
-  /** Like a username, Unique within this instance of Brickdoc */
-  domain: Scalars['String']
-  /** owner email */
-  email?: Maybe<Scalars['String']>
-  /** object unique id */
-  id: Scalars['AutoIncrementID']
-  /** enable invite feature */
-  inviteEnable: Scalars['Boolean']
-  /** invite secret */
-  inviteSecret?: Maybe<Scalars['String']>
-  /** Pod Name */
-  name?: Maybe<Scalars['String']>
-  /** owner is current user */
-  owned: Scalars['Boolean']
-  /** personal */
-  personal: Scalars['Boolean']
-}
-
-export type Pod_Member = {
-  __typename?: 'pod_member'
-  /** Pod Avatar */
-  avatarData?: Maybe<Avatar>
-  /** Like a username, Unique within this instance of Brickdoc */
-  domain: Scalars['String']
-  /** owner email */
-  email?: Maybe<Scalars['String']>
-  /** object unique id */
-  id: Scalars['AutoIncrementID']
-  /** Pod Name */
-  name: Scalars['String']
-  /** role */
-  role: MemberRole
-  /** state */
-  state: MemberState
-}
-
-export type Preview_Box = {
-  __typename?: 'preview_box'
-  /** preview cover */
-  cover?: Maybe<Scalars['String']>
-  /** preview description */
-  description?: Maybe<Scalars['String']>
-  /** preview icon */
-  icon?: Maybe<Scalars['String']>
-  /** preview conetent size */
-  size?: Maybe<Scalars['String']>
-  /** preview title */
-  title: Scalars['String']
-  /** preview conetent type */
-  type?: Maybe<Scalars['String']>
-  /** preview url */
-  url: Scalars['String']
-}
-
-/** Option Object for BrickDesign Select Component. */
-export type Select_Option = {
-  __typename?: 'select_option'
-  /** option label */
-  label: Scalars['String']
-  /** option value */
-  value: Scalars['String']
-}
-
-/** Unspash image. */
-export type Unsplash_Image = {
-  __typename?: 'unsplash_image'
-  /** Blur hash for this image (see https://blurha.sh/) */
-  blurHash?: Maybe<Scalars['String']>
-  /** url for full size image */
-  fullUrl: Scalars['String']
-  /** Image height */
-  height?: Maybe<Scalars['Int']>
-  /** Unsplash image id */
-  id: Scalars['String']
-  /** url for small size image */
-  smallUrl: Scalars['String']
-  /** username */
-  username?: Maybe<Scalars['String']>
-  /** Image width */
-  width?: Maybe<Scalars['Int']>
-}
-
-export type Validate_Result = {
-  __typename?: 'validate_result'
+export type ValidateResult = {
+  __typename?: 'ValidateResult'
   /** error message */
   message: Scalars['String']
   /** Validate success */
   success: Scalars['Boolean']
+}
+
+export type BlockBaseObjectPermissions = {
+  __typename?: 'blockBaseObjectPermissions'
+  canShow: AuthorizationResult
+}
+
+export type Query = {
+  __typename?: 'query'
+  /** return single block by id. */
+  block?: Maybe<Block>
+  blockInfo?: Maybe<BlockInfo>
+  blockNew?: Maybe<BlockNew>
+  /** return all pins */
+  blockPins?: Maybe<Array<Pin>>
+  blockSearch?: Maybe<Array<Block>>
+  /** return share links by block id. */
+  blockShareLinks: Array<ShareLink>
+  /** return snapshots by block id. */
+  blockSnapshots?: Maybe<Array<BlockSnapshot>>
+  childrenBlocks?: Maybe<Array<Block>>
+  conversationComments?: Maybe<Array<Conversation>>
+  currentPodDomain: Scalars['String']
+  documentHistories?: Maybe<DocumentHistories>
+  /** Check domain available. */
+  domainAvailable: ValidateResult
+  /** Check email available. */
+  emailAvailable: ValidateResult
+  /** provides a federated identity session data */
+  federatedIdentitySession: OmniauthSession
+  formulas?: Maybe<Array<Formula>>
+  /** Return information about current Brickdoc server instance. */
+  metadata: Metadata
+  pageBlocks?: Maybe<Array<Block>>
+  /** Check password available. */
+  passwordAvailable: ValidateResult
+  /** return current pod for user. */
+  pod: Pod
+  /** return all pod users */
+  podMembers?: Maybe<Array<PodMember>>
+  /** search pods */
+  podSearch: Array<Pod>
+  /** return all pods for user. */
+  pods: Array<Pod>
+  /** return preview box data of url */
+  previewBox: PreviewBox
+  spreadsheetChildren?: Maybe<SpreadsheetChildren>
+  trashBlocks?: Maybe<Array<Block>>
+  /** return images from unsplash by search */
+  unsplashImage?: Maybe<Array<UnsplashImage>>
+}
+
+export type QueryBlockArgs = {
+  id: Scalars['String']
+}
+
+export type QueryBlockInfoArgs = {
+  domain: Scalars['String']
+  id: Scalars['String']
+}
+
+export type QueryBlockNewArgs = {
+  historyId?: InputMaybe<Scalars['String']>
+  id: Scalars['String']
+}
+
+export type QueryBlockSearchArgs = {
+  domain: Scalars['String']
+  input: Scalars['String']
+}
+
+export type QueryBlockShareLinksArgs = {
+  id: Scalars['String']
+}
+
+export type QueryBlockSnapshotsArgs = {
+  id: Scalars['String']
+}
+
+export type QueryChildrenBlocksArgs = {
+  rootId: Scalars['String']
+  snapshotVersion: Scalars['Int']
+}
+
+export type QueryConversationCommentsArgs = {
+  pageIds: Array<Scalars['UUID']>
+}
+
+export type QueryDocumentHistoriesArgs = {
+  id: Scalars['String']
+}
+
+export type QueryDomainAvailableArgs = {
+  domain: Scalars['String']
+}
+
+export type QueryEmailAvailableArgs = {
+  email: Scalars['String']
+}
+
+export type QueryFormulasArgs = {
+  domain: Scalars['String']
+  ids?: InputMaybe<Scalars['String']>
+}
+
+export type QueryPageBlocksArgs = {
+  domain: Scalars['String']
+}
+
+export type QueryPasswordAvailableArgs = {
+  password: Scalars['String']
+}
+
+export type QueryPodArgs = {
+  domain: Scalars['String']
+}
+
+export type QueryPodSearchArgs = {
+  input: Scalars['String']
+}
+
+export type QueryPreviewBoxArgs = {
+  url: Scalars['String']
+}
+
+export type QuerySpreadsheetChildrenArgs = {
+  parentId: Scalars['String']
+}
+
+export type QueryTrashBlocksArgs = {
+  blockId?: InputMaybe<Scalars['UUID']>
+  domain: Scalars['String']
+  search?: InputMaybe<Scalars['String']>
+}
+
+export type QueryUnsplashImageArgs = {
+  page?: InputMaybe<Scalars['Int']>
+  perPage?: InputMaybe<Scalars['Int']>
+  query?: InputMaybe<Scalars['String']>
+}
+
+export type Subscription = {
+  __typename?: 'subscription'
+  document: DocumentPayload
+  newPatch: NewPatchPayload
+}
+
+export type SubscriptionDocumentArgs = {
+  docId: Scalars['UUID']
+}
+
+export type SubscriptionNewPatchArgs = {
+  docId: Scalars['UUID']
 }
 
 export type QueryEmailAvailableFromWsQueryVariables = Exact<{
@@ -1850,8 +1861,8 @@ export type QueryEmailAvailableFromWsQueryVariables = Exact<{
 }>
 
 export type QueryEmailAvailableFromWsQuery = {
-  __typename?: 'RootQuery'
-  emailAvailable: { __typename?: 'validate_result'; success: boolean; message: string }
+  __typename?: 'query'
+  emailAvailable: { __typename?: 'ValidateResult'; success: boolean; message: string }
 }
 
 export type QueryPasswordAvailableFromWsQueryVariables = Exact<{
@@ -1859,8 +1870,8 @@ export type QueryPasswordAvailableFromWsQueryVariables = Exact<{
 }>
 
 export type QueryPasswordAvailableFromWsQuery = {
-  __typename?: 'RootQuery'
-  passwordAvailable: { __typename?: 'validate_result'; success: boolean; message: string }
+  __typename?: 'query'
+  passwordAvailable: { __typename?: 'ValidateResult'; success: boolean; message: string }
 }
 
 export type UserSignOutMutationVariables = Exact<{
@@ -1868,23 +1879,23 @@ export type UserSignOutMutationVariables = Exact<{
 }>
 
 export type UserSignOutMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   userSignOut?: { __typename?: 'UserSignOutPayload'; errors: Array<string> } | null
 }
 
 export type GetAccountsConfigFromWsQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetAccountsConfigFromWsQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   metadata: {
-    __typename?: 'metadata'
+    __typename?: 'Metadata'
     id: string
     config: {
-      __typename?: 'config'
+      __typename?: 'Config'
       userAgreementLink: string
       accountsPreferredAuthMethod: AuthMethod
       accountsEmailPasswordAuth: boolean
-      accountsFederatedProviders?: Array<{ __typename?: 'federatedProvider'; name: string; logo: string }> | null
+      accountsFederatedProviders?: Array<{ __typename?: 'FederatedProvider'; name: string; logo: string }> | null
     }
   }
 }
@@ -1894,7 +1905,7 @@ export type UserForgetPasswordMailSendMutationVariables = Exact<{
 }>
 
 export type UserForgetPasswordMailSendMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   userForgetPasswordMailSend?: { __typename?: 'UserForgetPasswordMailSendPayload'; errors: Array<string> } | null
 }
 
@@ -1903,7 +1914,7 @@ export type UserPasswordResetMutationVariables = Exact<{
 }>
 
 export type UserPasswordResetMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   userPasswordReset?: { __typename?: 'UserPasswordResetPayload'; errors: Array<string> } | null
 }
 
@@ -1912,7 +1923,7 @@ export type UserEmailPasswordSignInMutationVariables = Exact<{
 }>
 
 export type UserEmailPasswordSignInMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   userEmailPasswordSignIn?: {
     __typename?: 'UserEmailPasswordSignInPayload'
     errors: Array<string>
@@ -1923,9 +1934,9 @@ export type UserEmailPasswordSignInMutation = {
 export type GetFederatedIdentitySessionQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetFederatedIdentitySessionQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   federatedIdentitySession: {
-    __typename?: 'omniauthSession'
+    __typename?: 'OmniauthSession'
     hasSession: boolean
     domain?: string | null
     name?: string | null
@@ -1938,7 +1949,7 @@ export type UserCreateMutationVariables = Exact<{
 }>
 
 export type UserCreateMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   userCreate?: {
     __typename?: 'UserCreatePayload'
     errors: Array<string>
@@ -1952,7 +1963,7 @@ export type UserConfirmationEmailResendMutationVariables = Exact<{
 }>
 
 export type UserConfirmationEmailResendMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   userConfirmationEmailResend?: { __typename?: 'UserConfirmationEmailResendPayload'; errors: Array<string> } | null
 }
 
@@ -1961,19 +1972,19 @@ export type QueryDomainAvailableFromWsQueryVariables = Exact<{
 }>
 
 export type QueryDomainAvailableFromWsQuery = {
-  __typename?: 'RootQuery'
-  domainAvailable: { __typename?: 'validate_result'; success: boolean; message: string }
+  __typename?: 'query'
+  domainAvailable: { __typename?: 'ValidateResult'; success: boolean; message: string }
 }
 
 export type GetMetadataFromWsQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetMetadataFromWsQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   metadata: {
-    __typename?: 'metadata'
+    __typename?: 'Metadata'
     id: string
     availableTimezones: Array<string>
-    availableLocales: Array<{ __typename?: 'select_option'; label: string; value: string }>
+    availableLocales: Array<{ __typename?: 'SelectOption'; label: string; value: string }>
   }
 }
 
@@ -1982,7 +1993,7 @@ export type CreateDirectUploadMutationVariables = Exact<{
 }>
 
 export type CreateDirectUploadMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   createDirectUpload?: {
     __typename?: 'CreateDirectUploadPayload'
     directUpload: {
@@ -2000,9 +2011,9 @@ export type CreateDirectUploadMutation = {
 export type GetPodsQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetPodsQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   pods: Array<{
-    __typename?: 'pod'
+    __typename?: 'Pod'
     id: string
     domain: string
     name?: string | null
@@ -2011,7 +2022,7 @@ export type GetPodsQuery = {
     inviteEnable: boolean
     owned: boolean
     bio?: string | null
-    avatarData?: { __typename?: 'avatar'; url: string; downloadUrl: string; signedId: string } | null
+    avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
   }>
 }
 
@@ -2020,9 +2031,9 @@ export type GetPodQueryVariables = Exact<{
 }>
 
 export type GetPodQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   pod: {
-    __typename?: 'pod'
+    __typename?: 'Pod'
     id: string
     domain: string
     name?: string | null
@@ -2030,7 +2041,7 @@ export type GetPodQuery = {
     inviteEnable: boolean
     inviteSecret?: string | null
     bio?: string | null
-    avatarData?: { __typename?: 'avatar'; url: string; downloadUrl: string; signedId: string } | null
+    avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
   }
 }
 
@@ -2039,10 +2050,10 @@ export type GetCurrentPodQueryVariables = Exact<{
 }>
 
 export type GetCurrentPodQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   currentPodDomain: string
   pod: {
-    __typename?: 'pod'
+    __typename?: 'Pod'
     id: string
     domain: string
     name?: string | null
@@ -2051,38 +2062,38 @@ export type GetCurrentPodQuery = {
     inviteEnable: boolean
     inviteSecret?: string | null
     bio?: string | null
-    avatarData?: { __typename?: 'avatar'; url: string; downloadUrl: string; signedId: string } | null
+    avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
   }
 }
 
 export type GetPodMembersQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetPodMembersQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   podMembers?: Array<{
-    __typename?: 'pod_member'
+    __typename?: 'PodMember'
     domain: string
     email?: string | null
     name: string
     role: MemberRole
     state: MemberState
-    avatarData?: { __typename?: 'avatar'; url: string; downloadUrl: string; signedId: string } | null
+    avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
   }> | null
 }
 
 export type GetBlockPinsQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetBlockPinsQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   blockPins?: Array<{
-    __typename?: 'pin'
+    __typename?: 'Pin'
     blockId: string
     text: string
     meta: {
       __typename?: 'BlockMeta'
       icon?:
-        | { __typename?: 'BlockEmoji'; type?: Blocktype | null; name: string; emoji: string }
-        | { __typename?: 'BlockImage'; type?: Blocktype | null; source?: Filesourcetype | null; key?: string | null }
+        | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
+        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
         | null
     }
   }> | null
@@ -2095,9 +2106,9 @@ export type QueryUnsplashImageQueryVariables = Exact<{
 }>
 
 export type QueryUnsplashImageQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   unsplashImage?: Array<{
-    __typename?: 'unsplash_image'
+    __typename?: 'UnsplashImage'
     id: string
     width?: number | null
     height?: number | null
@@ -2113,9 +2124,9 @@ export type QueryPreviewBoxQueryVariables = Exact<{
 }>
 
 export type QueryPreviewBoxQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   previewBox: {
-    __typename?: 'preview_box'
+    __typename?: 'PreviewBox'
     url: string
     title: string
     description?: string | null
@@ -2131,13 +2142,13 @@ export type QueryPodSearchQueryVariables = Exact<{
 }>
 
 export type QueryPodSearchQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   podSearch: Array<{
-    __typename?: 'pod'
+    __typename?: 'Pod'
     domain: string
     email?: string | null
     name?: string | null
-    avatarData?: { __typename?: 'avatar'; url: string } | null
+    avatarData?: { __typename?: 'Avatar'; url: string } | null
   }>
 }
 
@@ -2146,12 +2157,12 @@ export type CreateOrUpdatePodMutationVariables = Exact<{
 }>
 
 export type CreateOrUpdatePodMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   createOrUpdatePod?: {
     __typename?: 'CreateOrUpdatePodPayload'
     errors: Array<string>
     pod?: {
-      __typename?: 'pod'
+      __typename?: 'Pod'
       domain: string
       name?: string | null
       inviteEnable: boolean
@@ -2165,7 +2176,7 @@ export type JoinPodMutationVariables = Exact<{
 }>
 
 export type JoinPodMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   joinPod?: { __typename?: 'JoinPodPayload'; errors: Array<string> } | null
 }
 
@@ -2174,7 +2185,7 @@ export type UpdateMemberMutationVariables = Exact<{
 }>
 
 export type UpdateMemberMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   updateMember?: { __typename?: 'UpdateMemberPayload'; errors: Array<string> } | null
 }
 
@@ -2184,8 +2195,8 @@ export type GetBlockSearchQueryVariables = Exact<{
 }>
 
 export type GetBlockSearchQuery = {
-  __typename?: 'RootQuery'
-  blockSearch?: Array<{ __typename?: 'block'; id: string; type: string; text: string; rootId: string }> | null
+  __typename?: 'query'
+  blockSearch?: Array<{ __typename?: 'Block'; id: string; type: string; text: string; rootId: string }> | null
 }
 
 export type GetPageBlocksQueryVariables = Exact<{
@@ -2193,9 +2204,9 @@ export type GetPageBlocksQueryVariables = Exact<{
 }>
 
 export type GetPageBlocksQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   pageBlocks?: Array<{
-    __typename?: 'block'
+    __typename?: 'Block'
     id: string
     sort: any
     nextSort: any
@@ -2209,12 +2220,12 @@ export type GetPageBlocksQuery = {
     meta: {
       __typename?: 'BlockMeta'
       cover?:
-        | { __typename?: 'BlockColor'; type?: Blocktype | null; color: string }
-        | { __typename?: 'BlockImage'; type?: Blocktype | null; source?: Filesourcetype | null; key?: string | null }
+        | { __typename?: 'BlockColor'; type?: BlockType | null; color: string }
+        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
         | null
       icon?:
-        | { __typename?: 'BlockEmoji'; type?: Blocktype | null; name: string; emoji: string }
-        | { __typename?: 'BlockImage'; type?: Blocktype | null; source?: Filesourcetype | null; key?: string | null }
+        | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
+        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
         | null
     }
   }> | null
@@ -2227,9 +2238,9 @@ export type GetTrashBlocksQueryVariables = Exact<{
 }>
 
 export type GetTrashBlocksQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   trashBlocks?: Array<{
-    __typename?: 'block'
+    __typename?: 'Block'
     id: string
     deletedAt?: any | null
     rootId: string
@@ -2241,26 +2252,26 @@ export type GetTrashBlocksQuery = {
       id: string
       text: string
       icon?:
-        | { __typename?: 'BlockEmoji'; type?: Blocktype | null; name: string; emoji: string }
-        | { __typename?: 'BlockImage'; type?: Blocktype | null; source?: Filesourcetype | null; key?: string | null }
+        | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
+        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
         | null
     }>
     meta: {
       __typename?: 'BlockMeta'
       people?: {
         __typename?: 'BlockPeople'
-        type?: Blocktype | null
+        type?: BlockType | null
         domain: string
         name?: string | null
         avatarUrl?: string | null
       } | null
       cover?:
-        | { __typename?: 'BlockColor'; type?: Blocktype | null; color: string }
-        | { __typename?: 'BlockImage'; type?: Blocktype | null; source?: Filesourcetype | null; key?: string | null }
+        | { __typename?: 'BlockColor'; type?: BlockType | null; color: string }
+        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
         | null
       icon?:
-        | { __typename?: 'BlockEmoji'; type?: Blocktype | null; name: string; emoji: string }
-        | { __typename?: 'BlockImage'; type?: Blocktype | null; source?: Filesourcetype | null; key?: string | null }
+        | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
+        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
         | null
     }
   }> | null
@@ -2271,18 +2282,18 @@ export type GetBlockShareLinksQueryVariables = Exact<{
 }>
 
 export type GetBlockShareLinksQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   blockShareLinks: Array<{
     __typename?: 'ShareLink'
     key: string
     policy: Policytype
     state: ShareLinkState
     sharePodData: {
-      __typename?: 'pod'
+      __typename?: 'Pod'
       name?: string | null
       domain: string
       email?: string | null
-      avatarData?: { __typename?: 'avatar'; url: string } | null
+      avatarData?: { __typename?: 'Avatar'; url: string } | null
     }
   }>
 }
@@ -2292,7 +2303,7 @@ export type BlockDuplicateMutationVariables = Exact<{
 }>
 
 export type BlockDuplicateMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   blockDuplicate?: {
     __typename?: 'BlockDuplicatePayload'
     id: string
@@ -2306,7 +2317,7 @@ export type BlockSoftDeleteMutationVariables = Exact<{
 }>
 
 export type BlockSoftDeleteMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   blockSoftDelete?: { __typename?: 'BlockSoftDeletePayload'; errors: Array<string> } | null
 }
 
@@ -2315,7 +2326,7 @@ export type BlockHardDeleteMutationVariables = Exact<{
 }>
 
 export type BlockHardDeleteMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   blockHardDelete?: { __typename?: 'BlockHardDeletePayload'; errors: Array<string> } | null
 }
 
@@ -2324,7 +2335,7 @@ export type BlockRestoreMutationVariables = Exact<{
 }>
 
 export type BlockRestoreMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   blockRestore?: { __typename?: 'BlockRestorePayload'; errors: Array<string> } | null
 }
 
@@ -2333,7 +2344,7 @@ export type BlockPinOrUnpinMutationVariables = Exact<{
 }>
 
 export type BlockPinOrUnpinMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   blockPinOrUnpin?: { __typename?: 'BlockPinOrUnpinPayload'; errors: Array<string> } | null
 }
 
@@ -2342,7 +2353,7 @@ export type BlockCreateMutationVariables = Exact<{
 }>
 
 export type BlockCreateMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   blockCreate?: { __typename?: 'BlockCreatePayload'; id: string; errors: Array<string> } | null
 }
 
@@ -2351,7 +2362,7 @@ export type BlockCreateShareLinkMutationVariables = Exact<{
 }>
 
 export type BlockCreateShareLinkMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   blockCreateShareLink?: { __typename?: 'BlockCreateShareLinkPayload'; errors: Array<string> } | null
 }
 
@@ -2360,7 +2371,7 @@ export type BlockMoveMutationVariables = Exact<{
 }>
 
 export type BlockMoveMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   blockMove?: { __typename?: 'BlockMovePayload'; errors: Array<string> } | null
 }
 
@@ -2369,7 +2380,7 @@ export type BlockRenameMutationVariables = Exact<{
 }>
 
 export type BlockRenameMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   blockRename?: { __typename?: 'BlockRenamePayload'; errors: Array<string> } | null
 }
 
@@ -2378,7 +2389,7 @@ export type BlockSyncBatchMutationVariables = Exact<{
 }>
 
 export type BlockSyncBatchMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   blockSyncBatch?: { __typename?: 'BlockSyncBatchPayload'; errors: Array<string> } | null
 }
 
@@ -2387,7 +2398,7 @@ export type FormulaCommitMutationVariables = Exact<{
 }>
 
 export type FormulaCommitMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   formulaCommit?: { __typename?: 'FormulaCommitPayload'; errors: Array<string> } | null
 }
 
@@ -2396,8 +2407,63 @@ export type ConversationCommentCreateMutationVariables = Exact<{
 }>
 
 export type ConversationCommentCreateMutation = {
-  __typename?: 'RootMutation'
-  conversationCommentCreate?: { __typename?: 'ConversationCommentCreatePayload'; errors: Array<string> } | null
+  __typename?: 'Mutation'
+  conversationCommentCreate?: {
+    __typename?: 'ConversationCommentCreatePayload'
+    errors: Array<string>
+    conversation: {
+      __typename?: 'Conversation'
+      id: string
+      docId: string
+      markIds: Array<string>
+      blockIds: Array<string>
+      latestReplyAt?: any | null
+      updatedAt: any
+      createdAt: any
+      status: ConversationStatus
+      comments: Array<{
+        __typename?: 'Comment'
+        id: string
+        content: any
+        status: CommentStatus
+        createdAt: any
+        updatedAt: any
+        creator: {
+          __typename?: 'ThinUser'
+          name: string
+          domain: string
+          avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
+        }
+      }>
+    }
+  } | null
+}
+
+export type ConversationResolveMutationVariables = Exact<{
+  input: ConversationResolveInput
+}>
+
+export type ConversationResolveMutation = {
+  __typename?: 'Mutation'
+  conversationResolve?: { __typename?: 'ConversationResolvePayload'; errors: Array<string> } | null
+}
+
+export type ConversationOpenMutationVariables = Exact<{
+  input: ConversationOpenInput
+}>
+
+export type ConversationOpenMutation = {
+  __typename?: 'Mutation'
+  conversationOpen?: { __typename?: 'ConversationOpenPayload'; errors: Array<string> } | null
+}
+
+export type ConversationDeleteMutationVariables = Exact<{
+  input: ConversationDeleteInput
+}>
+
+export type ConversationDeleteMutation = {
+  __typename?: 'Mutation'
+  conversationDelete?: { __typename?: 'ConversationDeletePayload'; errors: Array<string> } | null
 }
 
 export type ConversationCommentAppendMutationVariables = Exact<{
@@ -2405,8 +2471,25 @@ export type ConversationCommentAppendMutationVariables = Exact<{
 }>
 
 export type ConversationCommentAppendMutation = {
-  __typename?: 'RootMutation'
-  conversationCommentAppend?: { __typename?: 'ConversationCommentAppendPayload'; errors: Array<string> } | null
+  __typename?: 'Mutation'
+  conversationCommentAppend?: {
+    __typename?: 'ConversationCommentAppendPayload'
+    errors: Array<string>
+    comment: {
+      __typename?: 'Comment'
+      id: string
+      content: any
+      status: CommentStatus
+      createdAt: any
+      updatedAt: any
+      creator: {
+        __typename?: 'ThinUser'
+        name: string
+        domain: string
+        avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
+      }
+    }
+  } | null
 }
 
 export type GetConversationCommentsQueryVariables = Exact<{
@@ -2414,7 +2497,7 @@ export type GetConversationCommentsQueryVariables = Exact<{
 }>
 
 export type GetConversationCommentsQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   conversationComments?: Array<{
     __typename?: 'Conversation'
     id: string
@@ -2436,7 +2519,7 @@ export type GetConversationCommentsQuery = {
         __typename?: 'ThinUser'
         name: string
         domain: string
-        avatarData?: { __typename?: 'avatar'; url: string; downloadUrl: string; signedId: string } | null
+        avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
       }
     }>
   }> | null
@@ -2448,7 +2531,7 @@ export type GetFormulasQueryVariables = Exact<{
 }>
 
 export type GetFormulasQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   formulas?: Array<{
     __typename?: 'Formula'
     id: string
@@ -2469,7 +2552,7 @@ export type NewPatchSubscriptionVariables = Exact<{
 }>
 
 export type NewPatchSubscription = {
-  __typename?: 'RootSubscription'
+  __typename?: 'subscription'
   newPatch: {
     __typename?: 'NewPatchPayload'
     state: Patchstate
@@ -2491,7 +2574,7 @@ export type GetBlockInfoQueryVariables = Exact<{
 }>
 
 export type GetBlockInfoQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   blockInfo?: {
     __typename?: 'BlockInfo'
     title: string
@@ -2501,11 +2584,11 @@ export type GetBlockInfoQuery = {
     pin: boolean
     enabledAlias?: { __typename?: 'BlockAlias'; key: string; payload: any } | null
     icon?:
-      | { __typename?: 'BlockEmoji'; type?: Blocktype | null; name: string; emoji: string }
+      | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
       | {
           __typename?: 'BlockImage'
-          type?: Blocktype | null
-          source?: Filesourcetype | null
+          type?: BlockType | null
+          source?: FileSource | null
           key?: string | null
           height?: number | null
           width?: number | null
@@ -2516,11 +2599,11 @@ export type GetBlockInfoQuery = {
       id: string
       text: string
       icon?:
-        | { __typename?: 'BlockEmoji'; type?: Blocktype | null; name: string; emoji: string }
+        | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
         | {
             __typename?: 'BlockImage'
-            type?: Blocktype | null
-            source?: Filesourcetype | null
+            type?: BlockType | null
+            source?: FileSource | null
             key?: string | null
             height?: number | null
             width?: number | null
@@ -2529,11 +2612,11 @@ export type GetBlockInfoQuery = {
     }>
     permission?: { __typename?: 'ShareLink'; key: string; policy: Policytype; state: ShareLinkState } | null
     collaborators: Array<{
-      __typename?: 'pod'
+      __typename?: 'Pod'
       name?: string | null
       domain: string
       email?: string | null
-      avatarData?: { __typename?: 'avatar'; url: string } | null
+      avatarData?: { __typename?: 'Avatar'; url: string } | null
     }>
   } | null
 }
@@ -2544,9 +2627,9 @@ export type GetChildrenBlocksQueryVariables = Exact<{
 }>
 
 export type GetChildrenBlocksQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   childrenBlocks?: Array<{
-    __typename?: 'block'
+    __typename?: 'Block'
     id: string
     sort: any
     parentId?: string | null
@@ -2556,7 +2639,7 @@ export type GetChildrenBlocksQuery = {
     text: string
     content: Array<any>
     data: any
-    blobs?: Array<{ __typename?: 'blob'; blobKey: string; downloadUrl: string; url: string }> | null
+    blobs?: Array<{ __typename?: 'Blob'; blobKey: string; downloadUrl: string; url: string }> | null
     meta: {
       __typename?: 'BlockMeta'
       title?: string | null
@@ -2566,8 +2649,8 @@ export type GetChildrenBlocksQuery = {
       start?: string | null
       image?: {
         __typename?: 'BlockImage'
-        type?: Blocktype | null
-        source?: Filesourcetype | null
+        type?: BlockType | null
+        source?: FileSource | null
         key?: string | null
         viewUrl?: string | null
         displayName?: string | null
@@ -2581,7 +2664,7 @@ export type GetChildrenBlocksQuery = {
       } | null
       page?: {
         __typename?: 'BlockPage'
-        type?: Blocktype | null
+        type?: BlockType | null
         key: string
         title?: string | null
         icon?: string | null
@@ -2589,16 +2672,16 @@ export type GetChildrenBlocksQuery = {
       } | null
       people?: {
         __typename?: 'BlockPeople'
-        type?: Blocktype | null
+        type?: BlockType | null
         domain: string
         name?: string | null
         avatarUrl?: string | null
       } | null
-      embedMeta?: { __typename?: 'BlockEmbedMeta'; type?: string | null; embedType?: Embedtype | null } | null
+      embedMeta?: { __typename?: 'BlockEmbedMeta'; type?: string | null; embedType?: EmbedType | null } | null
       attachment?: {
         __typename?: 'BlockAttachment'
-        type: Blocktype
-        source?: Filesourcetype | null
+        type: BlockType
+        source?: FileSource | null
         key?: string | null
         viewUrl?: string | null
         height?: number | null
@@ -2609,22 +2692,22 @@ export type GetChildrenBlocksQuery = {
         mode?: string | null
       } | null
       cover?:
-        | { __typename?: 'BlockColor'; type?: Blocktype | null; color: string }
+        | { __typename?: 'BlockColor'; type?: BlockType | null; color: string }
         | {
             __typename?: 'BlockImage'
-            type?: Blocktype | null
-            source?: Filesourcetype | null
+            type?: BlockType | null
+            source?: FileSource | null
             key?: string | null
             height?: number | null
             width?: number | null
           }
         | null
       icon?:
-        | { __typename?: 'BlockEmoji'; type?: Blocktype | null; name: string; emoji: string }
+        | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
         | {
             __typename?: 'BlockImage'
-            type?: Blocktype | null
-            source?: Filesourcetype | null
+            type?: BlockType | null
+            source?: FileSource | null
             key?: string | null
             height?: number | null
             width?: number | null
@@ -2634,7 +2717,7 @@ export type GetChildrenBlocksQuery = {
         __typename?: 'BlockLink'
         key?: string | null
         type: string
-        source?: Filesourcetype | null
+        source?: FileSource | null
         cover?: string | null
         description?: string | null
         title?: string | null
@@ -2651,11 +2734,11 @@ export type GetSpreadsheetChildrenQueryVariables = Exact<{
 }>
 
 export type GetSpreadsheetChildrenQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   spreadsheetChildren?: {
     __typename?: 'SpreadsheetChildren'
     blocks?: Array<{
-      __typename?: 'block'
+      __typename?: 'Block'
       id: string
       sort: any
       parentId?: string | null
@@ -2673,14 +2756,14 @@ export type BlockNewQueryVariables = Exact<{
 }>
 
 export type BlockNewQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   blockNew?: {
-    __typename?: 'blockNew'
+    __typename?: 'BlockNew'
     id: string
     statesCount?: number | null
     stateId?: string | null
     blockType?: string | null
-    states?: Array<{ __typename?: 'blockState'; id: string; state?: string | null }> | null
+    states?: Array<{ __typename?: 'BlockState'; id: string; state?: string | null }> | null
   } | null
 }
 
@@ -2689,11 +2772,11 @@ export type DocumentHistoriesQueryVariables = Exact<{
 }>
 
 export type DocumentHistoriesQuery = {
-  __typename?: 'RootQuery'
+  __typename?: 'query'
   documentHistories?: {
-    __typename?: 'documentHistories'
+    __typename?: 'DocumentHistories'
     users?: Array<{ __typename?: 'ThinUser'; name: string }> | null
-    histories?: Array<{ __typename?: 'documentHistory'; id: string; createdAt: any; username: string }> | null
+    histories?: Array<{ __typename?: 'DocumentHistory'; id: string; createdAt: any; username: string }> | null
   } | null
 }
 
@@ -2702,19 +2785,19 @@ export type BlockCommitMutationVariables = Exact<{
 }>
 
 export type BlockCommitMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   blockCommit?: {
     __typename?: 'BlockCommitPayload'
     errors: Array<string>
     requireFull?: boolean | null
     block?: {
-      __typename?: 'blockNew'
+      __typename?: 'BlockNew'
       id: string
       statesCount?: number | null
       stateId?: string | null
       blockType?: string | null
     } | null
-    diffStates?: Array<{ __typename?: 'blockState'; id: string; state?: string | null; createdAt: any }> | null
+    diffStates?: Array<{ __typename?: 'BlockState'; id: string; state?: string | null; createdAt: any }> | null
   } | null
 }
 
@@ -2723,25 +2806,25 @@ export type DocumentSubscriptionVariables = Exact<{
 }>
 
 export type DocumentSubscription = {
-  __typename?: 'RootSubscription'
+  __typename?: 'subscription'
   document: {
     __typename?: 'DocumentPayload'
     operatorId?: string | null
     blocks?: Array<{
-      __typename?: 'blockNew'
+      __typename?: 'BlockNew'
       id: string
       statesCount?: number | null
       stateId?: string | null
       blockType?: string | null
     }> | null
     states?: Array<{
-      __typename?: 'blockState'
+      __typename?: 'BlockState'
       id: string
       state?: string | null
       createdAt: any
       blockId?: string | null
     }> | null
-    histories?: Array<{ __typename?: 'documentHistory'; id: string; createdAt: any; username: string }> | null
+    histories?: Array<{ __typename?: 'DocumentHistory'; id: string; createdAt: any; username: string }> | null
   }
 }
 
@@ -2750,7 +2833,7 @@ export type UpdateDomainMutationVariables = Exact<{
 }>
 
 export type UpdateDomainMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   updateDomain?: { __typename?: 'UpdateDomainPayload'; errors: Array<string> } | null
 }
 
@@ -2759,7 +2842,7 @@ export type UserAppearanceUpdateMutationVariables = Exact<{
 }>
 
 export type UserAppearanceUpdateMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   userAppearanceUpdate?: { __typename?: 'UserAppearanceUpdatePayload'; errors: Array<string> } | null
 }
 
@@ -2768,7 +2851,7 @@ export type UserDestroyMutationVariables = Exact<{
 }>
 
 export type UserDestroyMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   userDestroy?: { __typename?: 'UserDestroyPayload'; errors: Array<string> } | null
 }
 
@@ -2777,7 +2860,7 @@ export type PodDestroyMutationVariables = Exact<{
 }>
 
 export type PodDestroyMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   podDestroy?: { __typename?: 'PodDestroyPayload'; errors: Array<string> } | null
 }
 
@@ -2786,7 +2869,7 @@ export type PodLeaveMutationVariables = Exact<{
 }>
 
 export type PodLeaveMutation = {
-  __typename?: 'RootMutation'
+  __typename?: 'Mutation'
   podLeave?: { __typename?: 'PodLeavePayload'; errors: Array<string> } | null
 }
 
@@ -4603,6 +4686,32 @@ export type FormulaCommitMutationOptions = Apollo.BaseMutationOptions<
 export const ConversationCommentCreateDocument = gql`
   mutation conversationCommentCreate($input: ConversationCommentCreateInput!) {
     conversationCommentCreate(input: $input) {
+      conversation {
+        id
+        docId
+        markIds
+        blockIds
+        latestReplyAt
+        updatedAt
+        createdAt
+        status
+        comments {
+          id
+          content
+          status
+          createdAt
+          updatedAt
+          creator {
+            name
+            domain
+            avatarData {
+              url
+              downloadUrl
+              signedId
+            }
+          }
+        }
+      }
       errors
     }
   }
@@ -4647,10 +4756,158 @@ export type ConversationCommentCreateMutationOptions = Apollo.BaseMutationOption
   ConversationCommentCreateMutation,
   ConversationCommentCreateMutationVariables
 >
+export const ConversationResolveDocument = gql`
+  mutation conversationResolve($input: ConversationResolveInput!) {
+    conversationResolve(input: $input) {
+      errors
+    }
+  }
+`
+export type ConversationResolveMutationFn = Apollo.MutationFunction<
+  ConversationResolveMutation,
+  ConversationResolveMutationVariables
+>
+
+/**
+ * __useConversationResolveMutation__
+ *
+ * To run a mutation, you first call `useConversationResolveMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useConversationResolveMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [conversationResolveMutation, { data, loading, error }] = useConversationResolveMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useConversationResolveMutation(
+  baseOptions?: Apollo.MutationHookOptions<ConversationResolveMutation, ConversationResolveMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<ConversationResolveMutation, ConversationResolveMutationVariables>(
+    ConversationResolveDocument,
+    options
+  )
+}
+export type ConversationResolveMutationHookResult = ReturnType<typeof useConversationResolveMutation>
+export type ConversationResolveMutationResult = Apollo.MutationResult<ConversationResolveMutation>
+export type ConversationResolveMutationOptions = Apollo.BaseMutationOptions<
+  ConversationResolveMutation,
+  ConversationResolveMutationVariables
+>
+export const ConversationOpenDocument = gql`
+  mutation conversationOpen($input: ConversationOpenInput!) {
+    conversationOpen(input: $input) {
+      errors
+    }
+  }
+`
+export type ConversationOpenMutationFn = Apollo.MutationFunction<
+  ConversationOpenMutation,
+  ConversationOpenMutationVariables
+>
+
+/**
+ * __useConversationOpenMutation__
+ *
+ * To run a mutation, you first call `useConversationOpenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useConversationOpenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [conversationOpenMutation, { data, loading, error }] = useConversationOpenMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useConversationOpenMutation(
+  baseOptions?: Apollo.MutationHookOptions<ConversationOpenMutation, ConversationOpenMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<ConversationOpenMutation, ConversationOpenMutationVariables>(
+    ConversationOpenDocument,
+    options
+  )
+}
+export type ConversationOpenMutationHookResult = ReturnType<typeof useConversationOpenMutation>
+export type ConversationOpenMutationResult = Apollo.MutationResult<ConversationOpenMutation>
+export type ConversationOpenMutationOptions = Apollo.BaseMutationOptions<
+  ConversationOpenMutation,
+  ConversationOpenMutationVariables
+>
+export const ConversationDeleteDocument = gql`
+  mutation conversationDelete($input: ConversationDeleteInput!) {
+    conversationDelete(input: $input) {
+      errors
+    }
+  }
+`
+export type ConversationDeleteMutationFn = Apollo.MutationFunction<
+  ConversationDeleteMutation,
+  ConversationDeleteMutationVariables
+>
+
+/**
+ * __useConversationDeleteMutation__
+ *
+ * To run a mutation, you first call `useConversationDeleteMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useConversationDeleteMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [conversationDeleteMutation, { data, loading, error }] = useConversationDeleteMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useConversationDeleteMutation(
+  baseOptions?: Apollo.MutationHookOptions<ConversationDeleteMutation, ConversationDeleteMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<ConversationDeleteMutation, ConversationDeleteMutationVariables>(
+    ConversationDeleteDocument,
+    options
+  )
+}
+export type ConversationDeleteMutationHookResult = ReturnType<typeof useConversationDeleteMutation>
+export type ConversationDeleteMutationResult = Apollo.MutationResult<ConversationDeleteMutation>
+export type ConversationDeleteMutationOptions = Apollo.BaseMutationOptions<
+  ConversationDeleteMutation,
+  ConversationDeleteMutationVariables
+>
 export const ConversationCommentAppendDocument = gql`
   mutation conversationCommentAppend($input: ConversationCommentAppendInput!) {
     conversationCommentAppend(input: $input) {
       errors
+      comment {
+        id
+        content
+        status
+        createdAt
+        updatedAt
+        creator {
+          name
+          domain
+          avatarData {
+            url
+            downloadUrl
+            signedId
+          }
+        }
+      }
     }
   }
 `

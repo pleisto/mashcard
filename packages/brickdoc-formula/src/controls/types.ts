@@ -189,6 +189,7 @@ export interface SpreadsheetAllPersistence {
 export interface SpreadsheetType {
   spreadsheetId: SpreadsheetId
   namespaceId: NamespaceId
+  namespaceName: (pageId: NamespaceId) => string
   dynamic: boolean
   cleanup: () => void
   persistence?: SpreadsheetDynamicPersistence

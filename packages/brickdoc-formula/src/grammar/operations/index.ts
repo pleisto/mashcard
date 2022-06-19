@@ -4,6 +4,7 @@ import { additionOperator } from './addition'
 import { argumentsOperator } from './arguments'
 import { arrayOperator } from './array'
 import { blockOperator } from './block'
+import { booleanOperator } from './boolean'
 import { chainOperator } from './chain'
 import { combineOperator } from './combine'
 import { compareOperator } from './compare'
@@ -14,11 +15,14 @@ import { inOperator } from './in'
 import { multiplicationOperator } from './multiplication'
 import { nameOperator } from './name'
 import { notOperator } from './not'
+import { nullOperator } from './null'
+import { numberOperator } from './number'
 import { parenthesisOperator } from './parenthesis'
 import { predicateOperator } from './predicate'
 import { rangeOperator } from './range'
 import { recordOperator } from './record'
 import { recordFieldOperator } from './recordField'
+import { stringOperator } from './string'
 import { thisRecordOperator } from './thisRecord'
 import { thisRowOperator } from './thisRow'
 
@@ -44,6 +48,10 @@ export * from './block'
 export * from './thisRow'
 export * from './thisRecord'
 export * from './name'
+export * from './string'
+export * from './null'
+export * from './boolean'
+export * from './number'
 
 export const OPERATORS: OperatorType[] = [
   accessOperator,
@@ -67,5 +75,9 @@ export const OPERATORS: OperatorType[] = [
   recordOperator,
   thisRecordOperator,
   thisRowOperator,
-  nameOperator
+  nameOperator,
+  stringOperator,
+  nullOperator,
+  booleanOperator,
+  numberOperator
 ]

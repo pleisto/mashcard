@@ -2,6 +2,9 @@ import axios from 'axios'
 import { castData } from '../../grammar'
 import { createFunctionClause, RecordResult } from '../../types'
 
+/**
+ * @source
+ */
 export const apiExchange = createFunctionClause({
   name: 'EXCHANGE',
   async: true,
@@ -11,7 +14,7 @@ export const apiExchange = createFunctionClause({
   acceptError: false,
   effect: true,
   examples: [{ input: '=EXCHANGE(10)', output: { type: 'Record', result: {}, subType: 'void' } }],
-  description: 'EXCHANGE',
+  description: 'Get exchange data',
   group: 'core',
   args: [{ type: 'string', name: 'url' }],
   testCases: [],

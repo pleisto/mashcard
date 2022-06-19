@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const convertToRecord = createFunctionClause({
   name: 'toRecord',
   async: false,

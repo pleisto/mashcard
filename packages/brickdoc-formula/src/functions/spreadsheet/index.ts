@@ -13,7 +13,7 @@ import { spreadsheetToRecordArray } from './toRecordArray'
 import { spreadsheetVlookup } from './vlookup'
 import { spreadsheetXlookup } from './xlookup'
 
-export const CORE_SPREADSHEET_FUNCTION_CLAUSES = [
+export {
   spreadsheetSpreadsheet,
   spreadsheetToRecordArray,
   spreadsheetSum,
@@ -28,4 +28,4 @@ export const CORE_SPREADSHEET_FUNCTION_CLAUSES = [
   spreadsheetCountIfs,
   spreadsheetSumProduct,
   spreadsheetCountA
-]
+}

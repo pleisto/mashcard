@@ -1,5 +1,5 @@
 import { escape } from '@brickdoc/active-support'
-import { Embedtype } from '@brickdoc/schema'
+import { EmbedType } from '@brickdoc/schema'
 import { render } from '@testing-library/react'
 import { renderHook } from '@testing-library/react-hooks'
 import { TestEditorContent, useTestEditor } from '../../../../test/testEditor'
@@ -30,7 +30,7 @@ describe('Embed', () => {
     const editor = result.current
     const position = 0
 
-    editor?.commands.setEmbedBlock(Embedtype.Upload, undefined, position)
+    editor?.commands.setEmbedBlock(EmbedType.Upload, undefined, position)
 
     expect(editor?.state.doc.nodeAt(position)?.type.name).toBe(Embed.name)
   })

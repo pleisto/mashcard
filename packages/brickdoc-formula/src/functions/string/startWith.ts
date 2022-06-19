@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const stringStartWith = createFunctionClause({
   name: 'START_WITH',
   async: false,

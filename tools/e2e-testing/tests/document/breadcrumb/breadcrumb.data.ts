@@ -10,12 +10,14 @@ export const FIVE_LAYER_PAGE_TREE: PageBlock[] = [
     children: [
       {
         title: 'page 1-1',
+        icon: { name: 'face with tongue', emoji: '😛' },
         children: [
           {
             title: 'page 1-1-1',
             children: [
               {
                 title: 'page 1-1-1-1',
+                icon: { name: 'face with tongue', emoji: '😛' },
                 children: [{ title: 'page 1-1-1-1-1' }]
               }
             ]

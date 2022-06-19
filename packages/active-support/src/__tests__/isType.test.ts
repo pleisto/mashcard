@@ -71,9 +71,9 @@ describe('.isNonEmptyString', () => {
 
 describe('.isUrl', () => {
   it('should work', () => {
-    expect(isUrl('brickdoc://example?pageId=233')).toBe(true)
+    expect(isUrl('mashcard://example?pageId=233')).toBe(true)
     expect(isUrl('https://test.com', 'https')).toBe(true)
-    expect(isUrl('www.brickdoc.com')).toBe(false)
-    expect(isUrl('sftp://www.brickdoc.com', 'https')).toBe(false)
+    expect(isUrl('mashcard.io')).toBe(false)
+    expect(isUrl('sftp://foss.mashcard.io', 'https')).toBe(false)
   })
 })

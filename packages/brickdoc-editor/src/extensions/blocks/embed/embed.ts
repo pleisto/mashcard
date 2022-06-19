@@ -1,7 +1,7 @@
 import { mergeAttributes, Content } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { Plugin, PluginKey } from 'prosemirror-state'
-import { BlockJustCreated, BrickdocEventBus, Embedtype } from '@brickdoc/schema'
+import { BlockJustCreated, BrickdocEventBus, EmbedType } from '@brickdoc/schema'
 import { EmbedView } from '../../../components/blockViews'
 import { createBlock, createJSONAttributeHtmlParser, createJSONAttributeHtmlRender } from '../../common'
 import { EmbedAttributes, EmbedOptions, meta } from './meta'
@@ -15,7 +15,7 @@ declare module '@tiptap/core' {
       /**
        * Set an embedBlock
        */
-      setEmbedBlock: (embedType: Embedtype, defaultFile?: File, postion?: number) => ReturnType
+      setEmbedBlock: (embedType: EmbedType, defaultFile?: File, postion?: number) => ReturnType
     }
   }
 }

@@ -1,5 +1,8 @@
 import { createFunctionClause, FORMULA_USED_TYPES } from '../../types'
 
+/**
+ * @source
+ */
 export const logicIf = createFunctionClause({
   name: 'IF',
   async: false,
@@ -18,6 +21,10 @@ export const logicIf = createFunctionClause({
   ],
   examples: [{ input: '=IF(true, "123", "456")', output: { type: 'string', result: '123' } }],
   returns: FORMULA_USED_TYPES,
-  testCases: [{ input: [true, 1, 2], output: { type: 'number', result: 1 } }],
+  testCases: [
+    { input: [true, 1, 2], output: { type: 'number', result: 1 } },
+    { input: [true, '2', 2], output: { type: 'string', result: '2' } },
+    { input: [false, '1', false], output: { type: 'boolean', result: false } }
+  ],
   reference: (ctx, condition, ifTrue, ifFalse) => (condition.result ? ifTrue : ifFalse)
 })

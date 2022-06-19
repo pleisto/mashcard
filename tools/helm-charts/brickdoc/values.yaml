@@ -5,7 +5,7 @@ envs: {}
 secrets: {}
 
 image:
-  name: 'ghcr.io/brickdoc/brickdoc:latest'
+  name: 'ghcr.io/mashcard/mashcard:latest'
 imagePullSecrets:
   - name: io-ghcr-brickdoc
 nameOverride: ''

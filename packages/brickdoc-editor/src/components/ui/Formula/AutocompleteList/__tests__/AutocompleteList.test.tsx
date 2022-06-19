@@ -22,8 +22,6 @@ describe('AutocompleteList', () => {
     }
     const activeCompletion: Partial<Completion> = {
       kind: 'block',
-      namespace: 'namespace',
-      value: '#value',
       preview: preview as BlockType
     }
     const completion: CompletionType = {
@@ -59,8 +57,6 @@ describe('AutocompleteList', () => {
     }
     const activeCompletion: Partial<Completion> = {
       kind: 'block',
-      namespace: 'namespace',
-      value: '#value',
       preview: preview as BlockType
     }
     const completion: CompletionType = {
@@ -84,8 +80,6 @@ describe('AutocompleteList', () => {
     }
     const activeCompletion: Partial<Completion> = {
       kind: 'block',
-      namespace: 'namespace',
-      value: '#value',
       preview: preview as BlockType
     }
     const completion: CompletionType = {
@@ -110,8 +104,6 @@ describe('AutocompleteList', () => {
       }
       const activeCompletion: Partial<Completion> = {
         kind: 'block',
-        namespace: 'namespace',
-        value: '#value',
         preview: preview as BlockType
       }
       const completion: CompletionType = {
@@ -140,8 +132,6 @@ describe('AutocompleteList', () => {
       }
       const activeCompletion: Partial<Completion> = {
         kind: 'column',
-        namespace: 'namespace',
-        value: '#column.field',
         preview: preview as ColumnType
       }
       const completion: CompletionType = {
@@ -167,8 +157,6 @@ describe('AutocompleteList', () => {
       }
       const activeCompletion: Partial<Completion> = {
         kind: 'spreadsheet',
-        namespace: 'namespace',
-        value: '#column.field',
         preview: preview as SpreadsheetType
       }
       const completion: CompletionType = {
@@ -204,8 +192,6 @@ describe('AutocompleteList', () => {
       }
       const activeCompletion: Partial<Completion> = {
         kind: 'function',
-        namespace: 'namespace',
-        value: 'function()',
         preview: preview as AnyFunctionClause
       }
       const completion: CompletionType = {
@@ -245,8 +231,6 @@ describe('AutocompleteList', () => {
 
       const activeCompletion: Partial<Completion> = {
         kind: 'variable',
-        namespace: 'namespace',
-        value: '#var.prop',
         preview: variable
       }
       const completion: CompletionType = {

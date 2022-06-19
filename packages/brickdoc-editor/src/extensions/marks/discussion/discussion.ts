@@ -2,8 +2,8 @@ import { mergeAttributes } from '@tiptap/core'
 import { Plugin, PluginKey } from 'prosemirror-state'
 import { uuid } from '@brickdoc/active-support'
 import { BrickdocEventBus, DiscussionListToggle, DiscussionMarkActive } from '@brickdoc/schema'
-import { MARK_CLASS_NAME, MARK_ID_ATTR_NAME, focusDiscussionMark } from '../../../helpers/discussion'
-import { meta } from './meta'
+import { MARK_CLASS_NAME, MARK_ID_ATTR_NAME } from '../../../helpers/discussion'
+import { DiscussionAttributes, DiscussionOptions, meta } from './meta'
 import { createMark } from '../../common'
 
 declare module '@tiptap/core' {
@@ -13,11 +13,6 @@ declare module '@tiptap/core' {
       removeDiscussion: (from: number, to: number) => ReturnType
     }
   }
-}
-
-export interface DiscussionOptions {}
-export interface DiscussionAttributes {
-  markId: string
 }
 
 const openDiscussionList = (markId: string | null): void => {
@@ -31,12 +26,6 @@ const openDiscussionList = (markId: string | null): void => {
 
 export const Discussion = createMark<DiscussionOptions, DiscussionAttributes>({
   name: meta.name,
-
-  // check for focused discussion mark
-  onSelectionUpdate() {
-    const node = this.editor.view.domAtPos(this.editor.state.selection.anchor).node
-    focusDiscussionMark(node)
-  },
 
   addAttributes() {
     return {

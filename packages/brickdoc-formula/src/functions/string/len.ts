@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const stringLen = createFunctionClause({
   name: 'LEN',
   async: false,
@@ -12,7 +15,10 @@ export const stringLen = createFunctionClause({
   group: 'core',
   args: [{ name: 'str', type: 'string' }],
   returns: 'number',
-  testCases: [{ input: ['abc'], output: { type: 'number', result: 3 } }],
+  testCases: [
+    { input: [''], output: { type: 'number', result: 0 } },
+    { input: ['abc'], output: { type: 'number', result: 3 } }
+  ],
   examples: [{ input: '=LEN("foo")', output: { type: 'number', result: 3 } }],
   chain: false,
   reference: (ctx, str) => ({

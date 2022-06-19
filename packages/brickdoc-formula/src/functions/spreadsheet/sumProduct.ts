@@ -20,6 +20,9 @@ const SUMPRODUCT = (
   return { type: 'number', result: sum }
 }
 
+/**
+ * @source
+ */
 export const spreadsheetSumProduct = createFunctionClause({
   name: 'SUMPRODUCT',
   async: false,
@@ -29,7 +32,7 @@ export const spreadsheetSumProduct = createFunctionClause({
   acceptError: false,
   effect: false,
   examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
-  description: 'Returns the sum of the column in the spreadsheet.',
+  description: 'Returns the product sum of the values of the two columns',
   group: 'core',
   args: [
     { name: 'column1', type: 'Column' },

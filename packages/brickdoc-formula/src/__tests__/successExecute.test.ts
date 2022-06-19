@@ -26,7 +26,7 @@ describe('successExecute', () => {
 
     const tempT = await interpret({ ctx: newCtx, parseResult })
     const value = await tempT.task.variableValue
-    expect(matchObject(value.result.result)).toStrictEqual(args.result)
+    expect(matchObject(value.result)).toStrictEqual(args.result)
 
     for (const { key, match, matchType } of args.expected ?? []) {
       const matchData = [key, parseResult.variableParseResult[key]]

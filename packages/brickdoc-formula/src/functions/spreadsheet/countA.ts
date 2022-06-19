@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const spreadsheetCountA = createFunctionClause({
   name: 'COUNTA',
   async: false,
@@ -9,7 +12,7 @@ export const spreadsheetCountA = createFunctionClause({
   acceptError: false,
   effect: false,
   examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
-  description: 'Returns the count of the column in the spreadsheet.',
+  description: 'Counts the number of rows that exists in the spreadsheet',
   group: 'core',
   args: [
     {

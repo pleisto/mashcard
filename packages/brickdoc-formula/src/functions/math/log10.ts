@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const mathLog10 = createFunctionClause({
   name: 'LOG10',
   async: false,
@@ -12,7 +15,10 @@ export const mathLog10 = createFunctionClause({
   group: 'core',
   args: [{ name: 'number', type: 'number' }],
   returns: 'number',
-  testCases: [{ input: [100], output: { type: 'number', result: 2 } }],
+  testCases: [
+    { input: [NaN], output: { type: 'number', result: NaN } },
+    { input: [100], output: { type: 'number', result: 2 } }
+  ],
   examples: [{ input: '=LOG10(100)', output: { type: 'number', result: 2 } }],
   chain: false,
   reference: (ctx, number) => ({ result: Math.log10(number.result), type: 'number' })

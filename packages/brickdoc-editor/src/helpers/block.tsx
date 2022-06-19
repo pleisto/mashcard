@@ -5,7 +5,7 @@ import BulletList from '@tiptap/extension-bullet-list'
 import OrderedList from '@tiptap/extension-ordered-list'
 import CodeBlock from '@tiptap/extension-code-block'
 import HorizontalRule from '@tiptap/extension-horizontal-rule'
-import { Embedtype } from '@brickdoc/schema'
+import { EmbedType } from '@brickdoc/schema'
 import {
   Code,
   Divider,
@@ -106,9 +106,9 @@ export const UPLOAD: BlockCommandItem = {
   alias: ['up', 'local', 'file', 'pdf', 'excel', 'ppt', 'image', 'img'],
   squareIcon: <Upload square={true} />,
   icon: <Upload />,
-  setBlock: chain => chain.setEmbedBlock(Embedtype.Upload),
-  toggleBlock: chain => chain.setEmbedBlock(Embedtype.Upload),
-  insertBlockAt: (chain, position) => chain.setEmbedBlock(Embedtype.Upload, undefined, position)
+  setBlock: chain => chain.setEmbedBlock(EmbedType.Upload),
+  toggleBlock: chain => chain.setEmbedBlock(EmbedType.Upload),
+  insertBlockAt: (chain, position) => chain.setEmbedBlock(EmbedType.Upload, undefined, position)
 }
 
 export const GALLERY: BlockCommandItem = {
@@ -117,9 +117,9 @@ export const GALLERY: BlockCommandItem = {
   alias: ['gal'],
   squareIcon: <Unsplash square={true} />,
   icon: <Unsplash />,
-  setBlock: chain => chain.setEmbedBlock(Embedtype.Gallery),
-  toggleBlock: chain => chain.setEmbedBlock(Embedtype.Gallery),
-  insertBlockAt: (chain, position) => chain.setEmbedBlock(Embedtype.Gallery, undefined, position)
+  setBlock: chain => chain.setEmbedBlock(EmbedType.Gallery),
+  toggleBlock: chain => chain.setEmbedBlock(EmbedType.Gallery),
+  insertBlockAt: (chain, position) => chain.setEmbedBlock(EmbedType.Gallery, undefined, position)
 }
 
 export const LINK: BlockCommandItem = {
@@ -128,9 +128,9 @@ export const LINK: BlockCommandItem = {
   alias: ['link'],
   squareIcon: <Link square={true} />,
   icon: <Link />,
-  setBlock: chain => chain.setEmbedBlock(Embedtype.Link),
-  toggleBlock: chain => chain.setEmbedBlock(Embedtype.Link),
-  insertBlockAt: (chain, position) => chain.setEmbedBlock(Embedtype.Link, undefined, position)
+  setBlock: chain => chain.setEmbedBlock(EmbedType.Link),
+  toggleBlock: chain => chain.setEmbedBlock(EmbedType.Link),
+  insertBlockAt: (chain, position) => chain.setEmbedBlock(EmbedType.Link, undefined, position)
 }
 
 export const EMBED: BlockCommandItem = {

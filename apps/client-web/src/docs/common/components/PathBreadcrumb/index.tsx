@@ -1,5 +1,5 @@
 import React from 'react'
-import { BlockEmoji, Blocktype } from '@/BrickdocGraphQL'
+import { BlockEmoji, BlockType } from '@/BrickdocGraphQL'
 import { Tooltip, Popover, Menu } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import * as Root from './index.style'
@@ -17,7 +17,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ className }) => 
 
   const renderPath = (path: Path, idx: number, showSplit: boolean, fullwidth: Boolean = false): React.ReactNode => {
     const link = isMine ? `/${domain}/${path.id}` : '#'
-    const hasEmoji = path.icon && path.icon.type === Blocktype.Emoji
+    const hasEmoji = path.icon && path.icon.type === BlockType.Emoji
     const emoji = hasEmoji ? (path.icon as BlockEmoji).emoji : ''
     return (
       <Tooltip
@@ -26,8 +26,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ className }) => 
           <Root.Tip>
             {emoji} {path.text || t('title.untitled')}
           </Root.Tip>
-        }
-      >
+        }>
         <Root.Warp fullWidth={!!fullwidth} to={link} data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.id}>
           <Root.Emoji show={Boolean(hasEmoji)} data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.emoji.id}>
             {emoji}
@@ -58,8 +57,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ className }) => 
             title={null}
             placement="bottomStart"
             overlayInnerStyle={{ padding: 0, minHeight: 'fit-content' }}
-            trigger={['click', 'hover']}
-          >
+            trigger={['click', 'hover']}>
             <div style={{ display: 'flex' }} data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.id}>
               <Root.Path>...</Root.Path>
               <Root.Split show>/</Root.Split>

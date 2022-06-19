@@ -1,5 +1,8 @@
 import { createFunctionClause } from '../../types'
 
+/**
+ * @source
+ */
 export const spreadsheetSum = createFunctionClause({
   name: 'SUM',
   async: false,

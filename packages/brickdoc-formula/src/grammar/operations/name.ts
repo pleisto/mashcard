@@ -8,10 +8,12 @@ import {
   parseTrackColumn,
   parseTrackName,
   parseTrackSpreadsheet,
+  parseTrackSpreadsheetLoad,
   parseTrackVariable
 } from '../dependency'
 import { mockBlock, mockColumn, mockSpreadsheet } from '../../tests/testMock'
 import { SpreadsheetInput } from '../../tests/testType'
+import { CodeFragmentVisitor } from '../codeFragment'
 
 const namespaceId = 'cccccccc-5555-bbbb-6666-777777777777'
 const spreadsheet1Id = 'cccccccc-5555-bbbb-6666-888888888888'
@@ -27,23 +29,23 @@ const findToken = (
   ctx: FunctionContext,
   name: string
 ):
-  | undefined
-  | { kind: 'Block'; data: BlockType }
-  | { kind: 'Variable'; data: VariableInterface }
-  | { kind: 'Column'; data: ColumnType }
-  | { kind: 'Spreadsheet'; data: SpreadsheetType } => {
+  | [undefined, undefined | ((visitor: CodeFragmentVisitor) => void)]
+  | ['Block', BlockType]
+  | ['Variable', VariableInterface]
+  | ['Column', ColumnType]
+  | ['Spreadsheet', SpreadsheetType] => {
   const obj = ctx.formulaContext.findNames(ctx.meta.namespaceId, name)[0]
   if (obj) {
     switch (obj.kind) {
       case 'Block':
-        return { kind: obj.kind, data: ctx.formulaContext.findBlockById(obj.id)! }
+        return [obj.kind, ctx.formulaContext.findBlockById(obj.id)!]
       case 'Variable':
-        return { kind: obj.kind, data: ctx.formulaContext.findVariableById(ctx.meta.namespaceId, obj.id)! }
+        return [obj.kind, ctx.formulaContext.findVariableById(ctx.meta.namespaceId, obj.id)!]
       case 'Spreadsheet':
-        return {
-          kind: obj.kind,
-          data: ctx.formulaContext.findSpreadsheet({ namespaceId: ctx.meta.namespaceId, type: 'id', value: obj.id })!
-        }
+        return [
+          obj.kind,
+          ctx.formulaContext.findSpreadsheet({ namespaceId: ctx.meta.namespaceId, type: 'id', value: obj.id })!
+        ]
     }
   }
 
@@ -55,15 +57,15 @@ const findToken = (
       }
     } = ctx.meta
     const spreadsheet = ctx.formulaContext.findSpreadsheet({ namespaceId, type: 'id', value: spreadsheetId })
-    if (!spreadsheet) return undefined
+    if (!spreadsheet) return [undefined, visitor => parseTrackSpreadsheetLoad(visitor, namespaceId, spreadsheetId)]
 
     const column = spreadsheet.findColumn({ type: 'name', value: name, namespaceId })
-    if (!column) return undefined
+    if (!column) return [undefined, undefined]
 
-    return { kind: 'Column', data: column }
+    return ['Column', column]
   }
 
-  return undefined
+  return [undefined, undefined]
 }
 
 const buildNotFoundMessage = (name: string): string => `"${name}" not found`
@@ -74,25 +76,26 @@ export const nameOperator: OperatorType = {
   dynamicParseType: lhsType => lhsType,
   lhsType: 'any',
   rhsType: 'any',
-  dynamicInterpretLhs: async (args, operators, interpreter) => {
-    const image = operators[0].image
-    const result = findToken(interpreter.ctx, image)
-    if (!result) return { type: 'Error', result: buildNotFoundMessage(image), errorKind: 'deps' }
+  dynamicInterpretLhs: async ({ operators, interpreter }) => {
+    const image = operators[0]!.image
+    const [kind, result] = findToken(interpreter.ctx, image)
+    if (!kind) return { type: 'Error', result: buildNotFoundMessage(image), errorKind: 'deps' }
 
-    switch (result.kind) {
+    switch (kind) {
       case 'Block':
-        return { type: 'Block', result: result.data }
+        return { type: 'Block', result }
       case 'Spreadsheet':
-        return { type: 'Spreadsheet', result: result.data }
+        return { type: 'Spreadsheet', result }
       case 'Column':
-        return { type: 'Column', result: result.data }
+        return { type: 'Column', result }
       case 'Variable':
-        return (await result.data.t.task.variableValue).result
+        return (await result.t.task.variableValue).result
     }
   },
   dynamicParseValidator: (cstVisitor, { image, codeFragments, type }) => {
-    const result = findToken(cstVisitor.ctx, image)
-    if (!result) {
+    const [kind, result] = findToken(cstVisitor.ctx, image)
+    if (!kind) {
+      result?.(cstVisitor)
       parseTrackName(cstVisitor, image, cstVisitor.ctx.meta.namespaceId)
       return {
         image,
@@ -103,34 +106,34 @@ export const nameOperator: OperatorType = {
         type
       }
     }
-    switch (result.kind) {
+    switch (kind) {
       case 'Block':
-        parseTrackBlock(cstVisitor, result.data)
+        parseTrackBlock(cstVisitor, result)
         return {
-          codeFragments: [block2codeFragment(result.data, cstVisitor.ctx.meta.namespaceId)],
+          codeFragments: [block2codeFragment(result, cstVisitor.ctx.meta.namespaceId)],
           image,
           type: 'Block'
         }
       case 'Spreadsheet':
-        parseTrackSpreadsheet(cstVisitor, result.data)
+        parseTrackSpreadsheet(cstVisitor, result)
         return {
-          codeFragments: [spreadsheet2codeFragment(result.data, cstVisitor.ctx.meta.namespaceId)],
+          codeFragments: [spreadsheet2codeFragment(result, cstVisitor.ctx.meta.namespaceId)],
           image,
           type: 'Spreadsheet'
         }
       case 'Column':
-        parseTrackColumn(cstVisitor, result.data)
+        parseTrackColumn(cstVisitor, result)
         return {
-          codeFragments: [column2codeFragment(result.data, cstVisitor.ctx.meta.namespaceId)],
+          codeFragments: [column2codeFragment(result, cstVisitor.ctx.meta.namespaceId)],
           image,
           type: 'Column'
         }
       case 'Variable':
-        parseTrackVariable(cstVisitor, result.data, cstVisitor.ctx.meta.namespaceId)
+        parseTrackVariable(cstVisitor, result, cstVisitor.ctx.meta.namespaceId)
         return {
-          codeFragments: [variable2codeFragment(result.data, cstVisitor.ctx.meta.namespaceId)],
+          codeFragments: [variable2codeFragment(result, cstVisitor.ctx.meta.namespaceId)],
           image,
-          type: fetchResult(result.data.t).type
+          type: fetchResult(result.t).type
         }
     }
   },

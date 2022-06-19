@@ -1,4 +1,4 @@
-import { Blocktype, Filesourcetype } from '@/BrickdocGraphQL'
+import { BlockType, FileSource } from '@/BrickdocGraphQL'
 import { useDocsI18n } from '@/docs/common/hooks'
 import { PopoverProps } from '@brickdoc/design-system'
 import { Dashboard, DashboardProps, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
@@ -67,15 +67,15 @@ export function useDocumentCoverUploader(
     if (url) {
       documentCoverMeta = {
         __typename: 'BlockImage',
-        type: Blocktype.Image,
+        type: BlockType.Image,
         // TODO: align types
-        source: meta?.source === 'external' ? Filesourcetype.External : Filesourcetype.Origin,
+        source: meta?.source === 'external' ? FileSource.External : FileSource.Origin,
         key: url
       }
     } else if (color) {
       documentCoverMeta = {
         __typename: 'BlockColor',
-        type: Blocktype.Color,
+        type: BlockType.Color,
         color
       }
     } else {

@@ -16,5 +16,6 @@ export const TRASH_SELECTOR = {
   trashIndeterminate: 'main.content div[data-testid=trash-selectedBar-button-checkbox] span.brd-icon-minus',
   trashSelectedAll: 'main.content div[data-testid=trash-selectedBar-button-checkbox] span.brd-icon-check-box',
   trashSelectedRestore: 'main.content button[data-testid=trash-selectedBar-button-restore]',
-  trashSelectedRemove: 'main.content button[data-testid=trash-selectedBar-button-remove]'
+  trashSelectedRemove: 'main.content button[data-testid=trash-selectedBar-button-remove]',
+  deletedAt: '[data-testid=trash-pageItem-deletedAt]'
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import { MutableRefObject, useCallback, useEffect, useRef } from 'react'
 import { Node } from 'prosemirror-model'
 import { useApolloClient } from '@apollo/client'
 import {
@@ -26,12 +26,12 @@ import {
   loadSpreadsheetBlocks,
   SpreadsheetLoaded
 } from '@brickdoc/schema'
-import { dispatchFormulaBlockNameChangeOrDelete } from '@brickdoc/formula'
+import { dispatchFormulaBlockNameChange } from '@brickdoc/formula'
 
 export type UpdateBlocks = (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
 
-export function useSyncProvider(queryVariables: { rootId: string; historyId?: string }): {
-  rootBlock: React.MutableRefObject<Block | undefined>
+export function useSyncProvider(queryVariables: { rootId: string; historyId?: string; domain: string }): {
+  rootBlock: MutableRefObject<Block | undefined>
   data: any
   loading: boolean
   refetch: any
@@ -39,7 +39,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
   updateBlocks: UpdateBlocks
   // updateCachedDocBlock: (block: Block, toDelete: boolean) => void
 } {
-  const rootId = React.useRef<string>(queryVariables.rootId)
+  const rootId = useRef<string>(queryVariables.rootId)
 
   const { data, loading, refetch } = useGetChildrenBlocksQuery({
     fetchPolicy: 'no-cache',
@@ -52,16 +52,16 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
   const client = useApolloClient()
   const [blockSyncBatch] = useBlockSyncBatchMutation()
 
-  const committing = React.useRef(false)
+  const committing = useRef(false)
 
-  const cachedBlocksMap = React.useRef(new Map<string, Block>())
-  const docBlocksMap = React.useRef(new Map<string, Block>())
-  const rootBlock = React.useRef<Block | undefined>()
+  const cachedBlocksMap = useRef(new Map<string, Block>())
+  const docBlocksMap = useRef(new Map<string, Block>())
+  const rootBlock = useRef<Block | undefined>()
 
-  const dirtyBlocksMap = React.useRef(new Map<string, BlockInput>())
-  const dirtyToDeleteIds = React.useRef(new Set<string>())
+  const dirtyBlocksMap = useRef(new Map<string, BlockInput>())
+  const dirtyToDeleteIds = useRef(new Set<string>())
 
-  React.useEffect(() => {
+  useEffect(() => {
     rootId.current = queryVariables.rootId
     cachedBlocksMap.current = new Map<string, Block>()
     docBlocksMap.current = new Map<string, Block>()
@@ -79,7 +79,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
     }
   }, [queryVariables, data?.childrenBlocks])
 
-  const commitDirty = async (): Promise<void> => {
+  const commitDirty = useCallback(async (): Promise<void> => {
     if (!dirtyBlocksMap.current.size && !dirtyToDeleteIds.current.size) return
     if (committing.current) return
 
@@ -123,7 +123,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
       if (blocks.length > 0 || deletedIds.length > 0) {
         blocks.forEach(b => {
           if (b.type === 'doc') {
-            void dispatchFormulaBlockNameChangeOrDelete({ id: b.id, name: b.text, deleted: false })
+            void dispatchFormulaBlockNameChange({ id: b.id, name: b.text, username: queryVariables.domain })
           }
           BrickdocEventBus.dispatch(BlockUpdated(b as Block))
           dirtyBlocksMap.current.delete(b.id)
@@ -161,37 +161,42 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
         void commitDirty()
       }, 500)
     }
-  }
+  }, [blockSyncBatch, queryVariables.domain])
 
-  const onDocSave = async (doc: Node): Promise<void> => {
-    if (queryVariables.historyId) return
-    if (!docBlocksMap.current.size) return
-    isSavingVar(true)
-    // NOTE: tempfix for root uuid
-    doc.attrs.uuid = rootId.current ?? doc.attrs.uuid
-    const docBlocks = nodeToBlock(doc, 0)
-    const deletedIds = new Set(docBlocksMap.current.keys())
-    deletedIds.delete(rootId.current)
+  const onDocSave = useCallback(
+    async (doc: Node): Promise<void> => {
+      if (queryVariables.historyId) return
+      if (!docBlocksMap.current.size) return
+      isSavingVar(true)
+      // NOTE: tempfix for root uuid
+      // TODO: need avoid modify read-only prop
+      // @ts-expect-error
+      doc.attrs.uuid = rootId.current ?? doc.attrs.uuid
+      const docBlocks = nodeToBlock(doc, 0)
+      const deletedIds = new Set(docBlocksMap.current.keys())
+      deletedIds.delete(rootId.current)
 
-    // Document Blocks dirty check and maintian
-    docBlocks.forEach(newBlock => {
-      newBlock.sort = `${newBlock.sort}`
-      const oldBlock = docBlocksMap.current.get(newBlock.id)
-      // TODO: Improve dirty check
-      if (!oldBlock || !isEqual(oldBlock, newBlock)) {
-        dirtyBlocksMap.current.set(newBlock.id, newBlock)
-        docBlocksMap.current.set(newBlock.id, newBlock as Block)
-      }
-      deletedIds.delete(newBlock.id)
-    })
+      // Document Blocks dirty check and maintian
+      docBlocks.forEach(newBlock => {
+        newBlock.sort = `${newBlock.sort}`
+        const oldBlock = docBlocksMap.current.get(newBlock.id)
+        // TODO: Improve dirty check
+        if (!oldBlock || !isEqual(oldBlock, newBlock)) {
+          dirtyBlocksMap.current.set(newBlock.id, newBlock)
+          docBlocksMap.current.set(newBlock.id, newBlock as Block)
+        }
+        deletedIds.delete(newBlock.id)
+      })
 
-    deletedIds.forEach(id => {
-      dirtyToDeleteIds.current.add(id)
-      docBlocksMap.current.delete(id)
-    })
+      deletedIds.forEach(id => {
+        dirtyToDeleteIds.current.add(id)
+        docBlocksMap.current.delete(id)
+      })
 
-    await commitDirty()
-  }
+      await commitDirty()
+    },
+    [commitDirty, queryVariables.historyId]
+  )
 
   BrickdocEventBus.subscribe(
     BlockUpdated,

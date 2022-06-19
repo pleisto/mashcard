@@ -1,5 +1,8 @@
 import { createFunctionClause, FORMULA_USED_TYPES } from '../../types'
 
+/**
+ * @source
+ */
 export const objectType = createFunctionClause({
   name: 'TYPE',
   async: false,

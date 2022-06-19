@@ -17,6 +17,7 @@ export class SetDocAttrStep extends Step {
 
   override apply(doc: ProsemirrorNode): StepResult {
     this.prevAttrs = doc.attrs
+    // @ts-expect-error
     doc.attrs = this.newAttrs
     return StepResult.ok(doc)
   }

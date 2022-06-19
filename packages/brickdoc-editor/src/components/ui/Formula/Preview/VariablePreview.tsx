@@ -1,6 +1,6 @@
 import { displayValue, dumpDisplayResultForDisplay, fetchResult, VariableInterface } from '@brickdoc/formula'
-import { FormulaEditor } from '../../../../editors/formulaEditor'
-import { codeFragmentsToJSONContentTotal } from '../../../../helpers'
+import { ReadonlyFormulaEditor } from '../../../../editors/formulaEditor'
+import { codeFragments2content, definition2content } from '../../../../helpers'
 import { FormulaValue } from '../FormulaValue'
 
 export interface VariablePreviewProps {
@@ -10,8 +10,8 @@ export interface VariablePreviewProps {
 
 export const VariablePreview: React.FC<VariablePreviewProps> = ({ variable, rootId }) => {
   const content = variable.t.variableParseResult.valid
-    ? codeFragmentsToJSONContentTotal(variable.t.variableParseResult.codeFragments)
-    : { type: 'doc', content: [{ type: 'text', text: variable.t.variableParseResult.definition }] }
+    ? codeFragments2content(variable.t.variableParseResult.codeFragments, true)[0]
+    : definition2content(variable.t.variableParseResult.definition, true)[0]
 
   return (
     <div className="formula-autocomplete-preview-variable">
@@ -19,7 +19,7 @@ export const VariablePreview: React.FC<VariablePreviewProps> = ({ variable, root
       <div className="autocomplete-preview-section">
         <div className="autocomplete-preview-section-head">Definition</div>
         <div className="autocomplete-preview-definition">
-          <FormulaEditor content={content} editable={false} />
+          <ReadonlyFormulaEditor content={content} />
         </div>
       </div>
       <div className="autocomplete-preview-section">

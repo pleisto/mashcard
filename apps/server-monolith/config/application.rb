@@ -16,7 +16,6 @@ require 'action_cable/engine'
 
 # eager load some dependencies
 require_relative '../lib/brickdoc'
-require_relative '../lib/brick_graphql'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

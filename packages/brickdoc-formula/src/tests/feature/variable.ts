@@ -30,7 +30,6 @@ export const VariableTestCase: TestCaseInterface = {
       {
         definition: '=num1',
         namespaceId: pageId,
-        groupOptions: [{ name: 'complete', options: { name: 'num0', kind: 'variable' } }],
         result: 0,
         expected: [
           { key: 'codeFragments', matchType: 'toMatchSnapshot' },
@@ -168,7 +167,6 @@ export const VariableTestCase: TestCaseInterface = {
       {
         definition: '=fo',
         namespaceId: pageId,
-        groupOptions: [{ name: 'complete', options: { name: 'num0', kind: 'variable' } }],
         errorType: 'syntax',
         errorMessage: '"fo" not found',
         expected: [

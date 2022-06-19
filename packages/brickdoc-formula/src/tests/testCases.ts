@@ -34,13 +34,37 @@ const reduceTestCaseInput = (testCases: TestCaseInterface[]): TestCaseInput => {
       },
       dependencyTestCases: [
         ...prev.dependencyTestCases,
-        ...(curr.testCases.dependencyTestCases ?? []).map(s => ({
+        ...(curr.testCases.dependencyTestCases ?? []).map((s, index) => ({
           ...s,
           ...buildRequiredFields(
             curr,
             s,
-            `${s.name} ${s.testCases.map(s => `${JSON.stringify(s.action)}`).join(',')}`,
+            `[${index}] ${s.name} ${s.testCases.map(s => `${JSON.stringify(s.action)}`).join(',')}`,
             ''
+          )
+        }))
+      ],
+      eventTestCases: [
+        ...prev.eventTestCases,
+        ...(curr.testCases.eventTestCases ?? []).map((s, index) => ({
+          ...s,
+          ...buildRequiredFields(
+            curr,
+            s,
+            `[${index}] ${s.definition}`,
+            `${JSON.stringify(s.resultAfter)} ${s.event.toString()}`
+          )
+        }))
+      ],
+      completeTestCases: [
+        ...prev.completeTestCases,
+        ...(curr.testCases.completeTestCases ?? []).map((s, index) => ({
+          ...s,
+          ...buildRequiredFields(
+            curr,
+            s,
+            `${index} ${s.definitionWithCursor}`,
+            `${JSON.stringify(s.firstCompletion)} ; ${JSON.stringify(s.completes)}`
           )
         }))
       ],
@@ -72,7 +96,9 @@ const reduceTestCaseInput = (testCases: TestCaseInterface[]): TestCaseInput => {
     {
       options: { pages: [{ pageName: 'Default' }], initializeOptions: { domain: 'test' } },
       successTestCases: [],
+      completeTestCases: [],
       errorTestCases: [],
+      eventTestCases: [],
       dependencyTestCases: []
     }
   )
@@ -102,22 +128,32 @@ if (allUUIDs.length !== new Set(allUUIDs).size) {
   throw new Error('Duplicate UUIDs')
 }
 
-export const buildTestCases = (name?: TestCaseName): [TestCaseInput] => {
+export const buildTestCases = (name?: [TestCaseName, ...TestCaseName[]]): [TestCaseInput] => {
   if (!name) return [ALL_TEST_CASE]
 
   const interfaces = OPERATION_TEST_INTERFACES.filter(
     o =>
-      o.name === name ||
-      (o.testCases.successTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).includes(name)) ||
-      (o.testCases.errorTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).includes(name))
+      name.includes(o.name) ||
+      (o.testCases.successTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r))) ||
+      (o.testCases.errorTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r))) ||
+      (o.testCases.completeTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r))) ||
+      (o.testCases.dependencyTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r))) ||
+      (o.testCases.eventTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r)))
   )
   const input = reduceTestCaseInput(interfaces)
 
   return [
     {
       ...input,
-      successTestCases: input.successTestCases.filter(v => v.groupOptions.map(g => g.name).includes(name)),
-      errorTestCases: input.errorTestCases.filter(v => v.groupOptions.map(g => g.name).includes(name))
+      successTestCases: input.successTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
+      errorTestCases: input.errorTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
+      completeTestCases: input.completeTestCases.filter(v =>
+        v.groupOptions.map(g => g.name).some(r => name.includes(r))
+      ),
+      dependencyTestCases: input.dependencyTestCases.filter(v =>
+        v.groupOptions.map(g => g.name).some(r => name.includes(r))
+      ),
+      eventTestCases: input.eventTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r)))
     }
   ]
 }

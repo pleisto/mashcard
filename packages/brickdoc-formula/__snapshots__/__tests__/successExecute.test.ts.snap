@@ -33,8 +33,11 @@ Array [
       "code": "Block",
       "display": "Variable",
       "errors": Array [],
+      "namespaceId": "22222222-2222-2222-2222-222222222222",
       "replacements": Array [
         "#22222222-2222-2222-2222-222222222222",
+        "Variable",
+        "\\"Variable\\"",
       ],
       "type": "Block",
     },
@@ -60,6 +63,7 @@ Array [
       "code": "Variable",
       "display": "num1",
       "errors": Array [],
+      "namespaceId": "22222222-2222-2222-2222-222222222222",
       "type": "number",
     },
     Object {
@@ -106,8 +110,11 @@ Array [
       "code": "Block",
       "display": "Block",
       "errors": Array [],
+      "namespaceId": "11111111-1111-1111-1111-111111111111",
       "replacements": Array [
         "#11111111-1111-1111-1111-111111111111",
+        "Block",
+        "\\"Block\\"",
       ],
       "type": "Block",
     },
@@ -122,7 +129,7 @@ Array [
 ]
 `;
 
-exports[`successExecute block "=  #44444444-4444-aaaa-0000-111111111111  " -> BLOCK_SNAPSHOT,Block With Space,44444444-4444-aaaa-0000-111111111111 1`] = `
+exports[`successExecute block "=  "1 Block With Space" " -> BLOCK_SNAPSHOT,1 Block With Space,44444444-4444-aaaa-0000-111111111111 1`] = `
 Array [
   "codeFragments",
   Array [
@@ -149,14 +156,121 @@ Array [
         },
         "id": "44444444-4444-aaaa-0000-111111111111",
         "kind": "Block",
-        "name": "Block With Space",
+        "name": "1 Block With Space",
         "namespaceId": "44444444-4444-aaaa-0000-111111111111",
       },
       "code": "Block",
-      "display": "Block With Space",
+      "display": "\\"1 Block With Space\\"",
       "errors": Array [],
+      "namespaceId": "44444444-4444-aaaa-0000-111111111111",
       "replacements": Array [
         "#44444444-4444-aaaa-0000-111111111111",
+        "1 Block With Space",
+        "\\"1 Block With Space\\"",
+      ],
+      "type": "Block",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "Space",
+      "display": " ",
+      "errors": Array [],
+      "type": "any",
+    },
+  ],
+]
+`;
+
+exports[`successExecute block "=  "Block" " -> BLOCK_SNAPSHOT,Block,11111111-1111-1111-1111-111111111111 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "Space",
+      "display": "  ",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": Object {
+        "findKey": Object {
+          "namespaceId": "11111111-1111-1111-1111-111111111111",
+          "type": "id",
+          "value": "11111111-1111-1111-1111-111111111111",
+        },
+        "id": "11111111-1111-1111-1111-111111111111",
+        "kind": "Block",
+        "name": "Block",
+        "namespaceId": "11111111-1111-1111-1111-111111111111",
+      },
+      "code": "Block",
+      "display": "Block",
+      "errors": Array [],
+      "namespaceId": "11111111-1111-1111-1111-111111111111",
+      "replacements": Array [
+        "#11111111-1111-1111-1111-111111111111",
+        "Block",
+        "\\"Block\\"",
+      ],
+      "type": "Block",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "Space",
+      "display": " ",
+      "errors": Array [],
+      "type": "any",
+    },
+  ],
+]
+`;
+
+exports[`successExecute block "=  #44444444-4444-aaaa-0000-111111111111  " -> BLOCK_SNAPSHOT,1 Block With Space,44444444-4444-aaaa-0000-111111111111 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "Space",
+      "display": "  ",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": Object {
+        "findKey": Object {
+          "namespaceId": "44444444-4444-aaaa-0000-111111111111",
+          "type": "id",
+          "value": "44444444-4444-aaaa-0000-111111111111",
+        },
+        "id": "44444444-4444-aaaa-0000-111111111111",
+        "kind": "Block",
+        "name": "1 Block With Space",
+        "namespaceId": "44444444-4444-aaaa-0000-111111111111",
+      },
+      "code": "Block",
+      "display": "\\"1 Block With Space\\"",
+      "errors": Array [],
+      "namespaceId": "44444444-4444-aaaa-0000-111111111111",
+      "replacements": Array [
+        "#44444444-4444-aaaa-0000-111111111111",
+        "1 Block With Space",
+        "\\"1 Block With Space\\"",
       ],
       "type": "Block",
     },
@@ -171,7 +285,7 @@ Array [
 ]
 `;
 
-exports[`successExecute block "=#CurrentBlock" -> BLOCK_SNAPSHOT,Block With Space,44444444-4444-aaaa-0000-111111111111 1`] = `
+exports[`successExecute block "=#CurrentBlock" -> BLOCK_SNAPSHOT,1 Block With Space,44444444-4444-aaaa-0000-111111111111 1`] = `
 Array [
   "codeFragments",
   Array [
@@ -191,14 +305,17 @@ Array [
         },
         "id": "44444444-4444-aaaa-0000-111111111111",
         "kind": "Block",
-        "name": "Block With Space",
+        "name": "1 Block With Space",
         "namespaceId": "44444444-4444-aaaa-0000-111111111111",
       },
       "code": "Block",
       "display": "#CurrentBlock",
       "errors": Array [],
+      "namespaceId": "44444444-4444-aaaa-0000-111111111111",
       "replacements": Array [
         "#44444444-4444-aaaa-0000-111111111111",
+        "1 Block With Space",
+        "\\"1 Block With Space\\"",
       ],
       "type": "Block",
     },
@@ -232,8 +349,11 @@ Array [
       "code": "Block",
       "display": "#CurrentBlock",
       "errors": Array [],
+      "namespaceId": "11111111-1111-1111-1111-111111111111",
       "replacements": Array [
         "#11111111-1111-1111-1111-111111111111",
+        "Block",
+        "\\"Block\\"",
       ],
       "type": "Block",
     },
@@ -267,10 +387,57 @@ Array [
       "code": "Block",
       "display": "Block",
       "errors": Array [],
+      "namespaceId": "11111111-1111-1111-1111-111111111111",
       "replacements": Array [
         "#11111111-1111-1111-1111-111111111111",
+        "Block",
+        "\\"Block\\"",
       ],
       "type": "Block",
+    },
+  ],
+]
+`;
+
+exports[`successExecute boolean "=false" -> false 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "BooleanLiteral",
+      "display": "false",
+      "errors": Array [],
+      "type": "boolean",
+    },
+  ],
+]
+`;
+
+exports[`successExecute boolean "=true" -> true 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "BooleanLiteral",
+      "display": "true",
+      "errors": Array [],
+      "type": "boolean",
     },
   ],
 ]
@@ -437,14 +604,7 @@ Array [
     Object {
       "attrs": undefined,
       "code": "FunctionGroup",
-      "display": "core",
-      "errors": Array [],
-      "type": "any",
-    },
-    Object {
-      "attrs": undefined,
-      "code": "DoubleColon",
-      "display": "::",
+      "display": "core::",
       "errors": Array [],
       "type": "any",
     },
@@ -480,6 +640,49 @@ Array [
 ]
 `;
 
+exports[`successExecute functionCall "=custom::FORTY_TWO()" -> 42 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "FunctionGroup",
+      "display": "custom::",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "Function",
+      "display": "FORTY_TWO",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "LParen",
+      "display": "(",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "RParen",
+      "display": ")",
+      "errors": Array [],
+      "type": "number",
+    },
+  ],
+]
+`;
+
 exports[`successExecute functionCall "=custom::PLUS(1, 1)" -> 2 1`] = `
 Array [
   "codeFragments",
@@ -494,14 +697,7 @@ Array [
     Object {
       "attrs": undefined,
       "code": "FunctionGroup",
-      "display": "custom",
-      "errors": Array [],
-      "type": "any",
-    },
-    Object {
-      "attrs": undefined,
-      "code": "DoubleColon",
-      "display": "::",
+      "display": "custom::",
       "errors": Array [],
       "type": "any",
     },
@@ -558,6 +754,101 @@ Array [
 ]
 `;
 
+exports[`successExecute null "=null" -> null 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "NullLiteral",
+      "display": "null",
+      "errors": Array [],
+      "type": "null",
+    },
+  ],
+]
+`;
+
+exports[`successExecute number "=-1.2%" -> -0.012 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "NumberLiteral",
+      "display": "-1.2%",
+      "errors": Array [],
+      "type": "number",
+    },
+  ],
+]
+`;
+
+exports[`successExecute number "=-123123%" -> -1231.23 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "NumberLiteral",
+      "display": "-123123%",
+      "errors": Array [],
+      "type": "number",
+    },
+  ],
+]
+`;
+
+exports[`successExecute string "= "hello"" -> hello 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "Space",
+      "display": " ",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "StringLiteral",
+      "display": "\\"hello\\"",
+      "errors": Array [],
+      "type": "string",
+    },
+  ],
+]
+`;
+
 exports[`successExecute variable "=#22222222-2222-2222-2222-222222222222.num1  " -> 0 1`] = `
 Array [
   "codeFragments",
@@ -584,8 +875,11 @@ Array [
       "code": "Block",
       "display": "Variable",
       "errors": Array [],
+      "namespaceId": "22222222-2222-2222-2222-222222222222",
       "replacements": Array [
         "#22222222-2222-2222-2222-222222222222",
+        "Variable",
+        "\\"Variable\\"",
       ],
       "type": "Block",
     },
@@ -611,6 +905,7 @@ Array [
       "code": "Variable",
       "display": "num1",
       "errors": Array [],
+      "namespaceId": "22222222-2222-2222-2222-222222222222",
       "type": "number",
     },
     Object {
@@ -650,8 +945,11 @@ Array [
       "code": "Block",
       "display": "#CurrentBlock",
       "errors": Array [],
+      "namespaceId": "22222222-2222-2222-2222-222222222222",
       "replacements": Array [
         "#22222222-2222-2222-2222-222222222222",
+        "Variable",
+        "\\"Variable\\"",
       ],
       "type": "Block",
     },
@@ -677,6 +975,7 @@ Array [
       "code": "Variable",
       "display": "num1",
       "errors": Array [],
+      "namespaceId": "22222222-2222-2222-2222-222222222222",
       "type": "number",
     },
   ],
@@ -709,8 +1008,11 @@ Array [
       "code": "Block",
       "display": "Variable",
       "errors": Array [],
+      "namespaceId": "22222222-2222-2222-2222-222222222222",
       "replacements": Array [
         "#22222222-2222-2222-2222-222222222222",
+        "Variable",
+        "\\"Variable\\"",
       ],
       "type": "Block",
     },
@@ -736,6 +1038,7 @@ Array [
       "code": "Variable",
       "display": "num1",
       "errors": Array [],
+      "namespaceId": "22222222-2222-2222-2222-222222222222",
       "type": "number",
     },
   ],
@@ -768,6 +1071,7 @@ Array [
       "code": "Variable",
       "display": "num1",
       "errors": Array [],
+      "namespaceId": "22222222-2222-2222-2222-222222222222",
       "type": "number",
     },
   ],
