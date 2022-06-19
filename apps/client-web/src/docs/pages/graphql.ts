@@ -66,6 +66,14 @@ export const ConversationOpen = gql`
   }
 `
 
+export const ConversationDelete = gql`
+  mutation conversationDelete($input: ConversationDeleteInput!) {
+    conversationDelete(input: $input) {
+      errors
+    }
+  }
+`
+
 export const ConversationCommentAppend = gql`
   mutation conversationCommentAppend($input: ConversationCommentAppendInput!) {
     conversationCommentAppend(input: $input) {

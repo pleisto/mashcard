@@ -17,6 +17,7 @@ module Types
     field :conversation_comment_create, mutation: Mutations::ConversationCommentCreate
     field :conversation_resolve, mutation: Mutations::ConversationResolve
     field :conversation_open, mutation: Mutations::ConversationOpen
+    field :conversation_delete, mutation: Mutations::ConversationDelete
     field :create_direct_upload, mutation: Mutations::CreateDirectUpload
     field :create_or_update_pod, mutation: Mutations::Pods::CreateOrUpdate
     field :formula_commit, mutation: Mutations::FormulaCommit
