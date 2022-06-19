@@ -19,13 +19,6 @@ interface DiscussionData {
   conversations: PageConversationData[]
 }
 
-const open = (conversation: PageConversationData): PageConversationData => {
-  return {
-    ...conversation,
-    status: 'opened'
-  }
-}
-
 export interface PageDiscussionContextValue {
   discussion: DiscussionData
   addConversation?: (conversation: Omit<PageConversationData, 'id'>, content: JSONContent) => Promise<void>
@@ -45,14 +38,10 @@ export function usePageDiscussionContextValue(commentedNodes: CommentedNode[]): 
   const { editor } = useEditorContext()
   const [t] = useEditorI18n()
   const extension = getDiscussionExtension(editor)
-  const getConversations = extension?.options.getConversations
-  const createConversation = extension?.options.createConversation
-  const resolveTheConversation = extension?.options.resolveConversation
-  const createComment = extension?.options.createComment
 
   const [discussion, setDiscussion] = useState<DiscussionData>({ conversations: [] })
   useEffect(() => {
-    void getConversations?.().then(response => {
+    void extension?.options.getConversations?.().then(response => {
       if (!response.success) {
         toast.error(t('discussion.conversation.fetch.failed'))
         return
@@ -65,16 +54,14 @@ export function usePageDiscussionContextValue(commentedNodes: CommentedNode[]): 
         }))
       })
     })
-  }, [commentedNodes, getConversations])
+  }, [commentedNodes, extension?.options, t])
 
   const addComment = useCallback<NonNullable<PageDiscussionContextValue['addComment']>>(
     async (conversationId, content) => {
-      if (!createComment) return
+      const response = await extension?.options.createComment?.(conversationId, content)
+      const commentData = response?.data.comment
 
-      const { success, data } = await createComment(conversationId, content)
-      const commentData = data.comment
-
-      if (!success || !commentData) {
+      if (!response?.success || !commentData) {
         toast.error(t('discussion.comment.create.failed'))
         return
       }
@@ -90,17 +77,15 @@ export function usePageDiscussionContextValue(commentedNodes: CommentedNode[]): 
         })
       }))
     },
-    [createComment, t]
+    [extension?.options, t]
   )
 
   const addConversation = useCallback<NonNullable<PageDiscussionContextValue['addConversation']>>(
     async (conversation, content) => {
-      if (!createConversation) return
+      const response = await extension?.options.createConversation?.(conversation.markId, content)
+      const conversationData = response?.data.conversation
 
-      const { success, data } = await createConversation(conversation.markId, content)
-      const conversationData = data.conversation
-
-      if (!success || !conversationData) {
+      if (!response?.success || !conversationData) {
         toast.error(t('discussion.conversation.create.failed'))
         return
       }
@@ -116,16 +101,14 @@ export function usePageDiscussionContextValue(commentedNodes: CommentedNode[]): 
         ]
       }))
     },
-    [createConversation, t]
+    [extension?.options, t]
   )
 
   const resolveConversation = useCallback<NonNullable<PageDiscussionContextValue['resolveConversation']>>(
     async conversationId => {
-      if (!resolveTheConversation) return
+      const response = await extension?.options.resolveConversation?.(conversationId)
 
-      const response = await resolveTheConversation(conversationId)
-
-      if (!response.success) {
+      if (!response?.success) {
         toast.error(t('discussion.conversation.resolve.failed'))
         return
       }
@@ -141,7 +124,7 @@ export function usePageDiscussionContextValue(commentedNodes: CommentedNode[]): 
         })
       }))
     },
-    [resolveTheConversation]
+    [extension?.options, t]
   )
 
   const removeConversation = useCallback<NonNullable<PageDiscussionContextValue['removeConversation']>>(
@@ -156,15 +139,25 @@ export function usePageDiscussionContextValue(commentedNodes: CommentedNode[]): 
 
   const openConversation = useCallback<NonNullable<PageDiscussionContextValue['openConversation']>>(
     async conversationId => {
+      const response = await extension?.options.openConversation?.(conversationId)
+
+      if (!response?.success) {
+        toast.error(t('discussion.conversation.open.failed'))
+        return
+      }
+
       setDiscussion(prevDiscussion => ({
         ...prevDiscussion,
         conversations: prevDiscussion?.conversations.map(conversation => {
           if (conversation.id !== conversationId) return conversation
-          return open(conversation)
+          return {
+            ...conversation,
+            status: 'opened'
+          }
         })
       }))
     },
-    []
+    [extension?.options, t]
   )
 
   const contextValue = useMemo<PageDiscussionContextValue>(
