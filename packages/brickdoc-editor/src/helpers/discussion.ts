@@ -31,6 +31,7 @@ export const focusDiscussionMark = (node: Node | null): void => {
 
     // lose focus on discussion mark
   } else {
+    console.log('lose')
     BrickdocEventBus.dispatch(DiscussionMarkInactive({}))
   }
 

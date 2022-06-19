@@ -60,6 +60,15 @@ describe('PageDiscussionContext', () => {
                     }
                   }
                 }
+              }),
+              resolveConversation: async (conversationId: string): Promise<{ success: boolean }> => ({
+                success: true
+              }),
+              openConversation: async (conversationId: string): Promise<{ success: boolean }> => ({
+                success: true
+              }),
+              deleteConversation: async (conversationId: string): Promise<{ success: boolean }> => ({
+                success: true
               })
             }
           }
@@ -114,10 +123,9 @@ describe('PageDiscussionContext', () => {
       }))
 
       jest.useRealTimers()
-
       const commentedNodes: CommentedNode[] = [{} as any]
 
-      await act(async () => {
+      void act(async () => {
         // eslint-disable-next-line max-nested-callbacks
         const { result } = renderHook(() => usePageDiscussionContextValue(commentedNodes))
 

@@ -15,7 +15,7 @@ import {
   GalleryImageUsername,
   LoadMorePlaceholder,
   SearchInput
-} from './styles'
+} from './Gallery.style'
 import { useEditorI18n } from '../../../../../hooks'
 import { useUnsplashImages } from './useUnsplashImages'
 

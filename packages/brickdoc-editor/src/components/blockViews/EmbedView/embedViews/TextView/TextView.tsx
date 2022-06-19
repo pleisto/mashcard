@@ -15,7 +15,7 @@ import {
   TextViewIcon,
   TextViewContent,
   Name
-} from './styles'
+} from './TextView.style'
 
 export interface TextViewProps {
   blockType: EmbedBlockType

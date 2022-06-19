@@ -2,7 +2,7 @@ import { css, theme } from '@brickdoc/design-system'
 import { ResizableProps, ResizeCallback } from 're-resizable'
 import { useCallback, useMemo } from 'react'
 import { UpdateEmbedBlockAttributes } from '../../EmbedView'
-import { maxWidth, minWidth } from './styles'
+import { maxWidth, minWidth } from './ImageView.style'
 
 const handleStyle = {
   background: theme.colors.overlayPrimary,

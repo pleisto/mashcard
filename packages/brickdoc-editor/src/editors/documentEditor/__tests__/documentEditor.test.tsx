@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react'
 import { renderHook } from '@testing-library/react-hooks'
+import * as Y from 'yjs'
 import { EditorContent, useEditor } from '../documentEditor'
 
 jest.mock('react-router-dom', () => ({
@@ -14,6 +15,9 @@ describe('documentEditor', () => {
         base: {
           sync: {
             onSave
+          },
+          collaboration: {
+            document: new Y.Doc()
           }
         }
       })
