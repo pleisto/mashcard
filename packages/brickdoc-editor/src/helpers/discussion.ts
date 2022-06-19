@@ -7,8 +7,13 @@ export const MARK_ID_ATTR_NAME = 'mark-id'
 
 let latestActiveNode: Element | null = null
 
-const getActualNode = (node: Node | null): Node | null =>
-  node?.nodeType === Node.TEXT_NODE ? node.parentElement : node
+const getMarkNode = (node: Node | null): Node | null => {
+  if (node?.nodeType === Node.TEXT_NODE) return node.parentElement
+  if ((node as Element)?.classList.contains(MARK_CLASS_NAME)) return node
+  if ((node?.firstChild as Element)?.classList?.contains(MARK_CLASS_NAME)) return node?.firstChild as Node
+
+  return null
+}
 
 export const selectDiscussionMark = (node: Node | null): void => {
   let element: Element | null = null
@@ -22,16 +27,13 @@ export const selectDiscussionMark = (node: Node | null): void => {
 }
 
 export const focusDiscussionMark = (node: Node | null): void => {
-  const markNode = getActualNode(node)
+  const markNode = getMarkNode(node)
 
-  if (!markNode) return
-
-  if ((markNode as Element).classList.contains(MARK_CLASS_NAME)) {
+  if (markNode) {
     ;(markNode as Element).classList.add(ACTIVE_CLASS_NAME)
 
     // lose focus on discussion mark
   } else {
-    console.log('lose')
     BrickdocEventBus.dispatch(DiscussionMarkInactive({}))
   }
 
@@ -47,18 +49,16 @@ export const focusDiscussionMark = (node: Node | null): void => {
 }
 
 export const hoverDiscussionMark = (node: Node | null): void => {
-  const markNode = getActualNode(node)
+  const markNode = getMarkNode(node)
 
-  if ((markNode as Element).classList.contains(MARK_CLASS_NAME)) {
-    ;(markNode as Element).classList.add(ACTIVE_CLASS_NAME)
-  }
+  ;(markNode as Element)?.classList.add(ACTIVE_CLASS_NAME)
 }
 
 export const leaveDiscussionMark = (node: Node | null): void => {
-  const markNode = getActualNode(node)
+  const markNode = getMarkNode(node)
   // TODO: without setTimeout, modify dom will cause dom node be replaced
   // figure out why
   setTimeout(() => {
-    ;(markNode as Element).classList.remove(ACTIVE_CLASS_NAME)
+    ;(markNode as Element)?.classList.remove(ACTIVE_CLASS_NAME)
   })
 }

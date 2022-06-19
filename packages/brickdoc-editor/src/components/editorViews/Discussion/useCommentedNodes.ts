@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import { Node as ProsemirrorNode, Mark } from 'prosemirror-model'
-import { debounce } from '@brickdoc/active-support'
 import { meta as discussionMeta } from '../../../extensions/marks/discussion/meta'
 import { useEditorContext } from '../../../hooks'
 
@@ -32,7 +31,7 @@ export function useCommentedNodes(): [CommentedNode[]] {
   const markIds = useRef<string[]>(commentedNodes.map(node => node.markId))
 
   useEffect(() => {
-    const getCommentedNodes = debounce(() => {
+    const getCommentedNodes = () => {
       const newCommentedNodes: CommentedNode[] = []
       editor?.state.doc.descendants((node, position) => {
         const discussionMark = findDiscussionMark(node.marks)
@@ -57,7 +56,7 @@ export function useCommentedNodes(): [CommentedNode[]] {
         setCommentedNodes(newCommentedNodes)
         markIds.current = newMarkIds
       }
-    }, 300)
+    }
 
     // get nodes when document created
     // TODO: setTimeout for waiting for document created, find a better solution

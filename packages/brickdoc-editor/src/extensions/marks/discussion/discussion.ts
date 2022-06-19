@@ -2,7 +2,7 @@ import { mergeAttributes } from '@tiptap/core'
 import { Plugin, PluginKey } from 'prosemirror-state'
 import { uuid } from '@brickdoc/active-support'
 import { BrickdocEventBus, DiscussionListToggle, DiscussionMarkActive } from '@brickdoc/schema'
-import { MARK_CLASS_NAME, MARK_ID_ATTR_NAME } from '../../../helpers/discussion'
+import { focusDiscussionMark, MARK_CLASS_NAME, MARK_ID_ATTR_NAME } from '../../../helpers/discussion'
 import { DiscussionAttributes, DiscussionOptions, meta } from './meta'
 import { createMark } from '../../common'
 
@@ -24,8 +24,19 @@ const openDiscussionList = (markId: string | null): void => {
   }, 300)
 }
 
+let discussionCheckTimer: NodeJS.Timeout
+
 export const Discussion = createMark<DiscussionOptions, DiscussionAttributes>({
   name: meta.name,
+
+  // check for focused discussion mark
+  onSelectionUpdate() {
+    clearTimeout(discussionCheckTimer)
+    discussionCheckTimer = setTimeout(() => {
+      const node = this.editor.view.domAtPos(this.editor.state.selection.anchor).node
+      focusDiscussionMark(node)
+    }, 200)
+  },
 
   addAttributes() {
     return {
