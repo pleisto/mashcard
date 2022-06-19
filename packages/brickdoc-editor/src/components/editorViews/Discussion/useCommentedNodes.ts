@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Node as ProsemirrorNode, Mark } from 'prosemirror-model'
 import { debounce } from '@brickdoc/active-support'
 import { meta as discussionMeta } from '../../../extensions/marks/discussion/meta'
@@ -16,9 +16,20 @@ const findDiscussionMark = (marks: readonly Mark[]): Mark | undefined =>
 const isCommentedNodeExist = (nodes: CommentedNode[], markId: string): boolean =>
   nodes.some(node => node.markId === markId)
 
+const isCommentedNodeUpdated = (newMarkIds: string[], originMarkIds: string[]): boolean => {
+  if (newMarkIds.length !== originMarkIds.length) return true
+
+  for (const id of newMarkIds) {
+    if (!originMarkIds.includes(id)) return true
+  }
+
+  return false
+}
+
 export function useCommentedNodes(): [CommentedNode[]] {
   const { editor } = useEditorContext()
   const [commentedNodes, setCommentedNodes] = useState<CommentedNode[]>([])
+  const markIds = useRef<string[]>(commentedNodes.map(node => node.markId))
 
   useEffect(() => {
     const getCommentedNodes = debounce(() => {
@@ -39,8 +50,14 @@ export function useCommentedNodes(): [CommentedNode[]] {
           position
         })
       })
-      setCommentedNodes(newCommentedNodes)
-    }, 200)
+
+      const newMarkIds = newCommentedNodes.map(node => node.markId)
+
+      if (isCommentedNodeUpdated(newMarkIds, markIds.current)) {
+        setCommentedNodes(newCommentedNodes)
+        markIds.current = newMarkIds
+      }
+    }, 300)
 
     // get nodes when document created
     // TODO: setTimeout for waiting for document created, find a better solution
