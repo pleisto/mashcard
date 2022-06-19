@@ -1,2 +1,2 @@
 inherit_gem:
-  rubocop-brickdoc: rubocop.yml
+  rubocop-pleisto: rubocop.yml

@@ -1,4 +1,4 @@
-import { Embedtype } from '@brickdoc/schema'
+import { EmbedType } from '@brickdoc/schema'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { EmbedAttributes, EmbedOptions } from '../../../../extensions'
@@ -151,7 +151,7 @@ describe('EmbedView', () => {
           },
           embedMeta: {
             type: 'EmbedMeta',
-            embedType: Embedtype.Link
+            embedType: EmbedType.Link
           }
         }
       }
@@ -176,7 +176,7 @@ describe('EmbedView', () => {
             },
             embedMeta: {
               type: 'EmbedMeta',
-              embedType: Embedtype.Gallery
+              embedType: EmbedType.Gallery
             }
           }
         }
@@ -201,7 +201,7 @@ describe('EmbedView', () => {
           },
           embedMeta: {
             type: 'EmbedMeta',
-            embedType: Embedtype.Upload
+            embedType: EmbedType.Upload
           }
         }
       }

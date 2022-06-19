@@ -1,16 +1,16 @@
 import * as React from 'react'
 import { Button, Popover, PopoverProps, ImageWithSpin } from '@brickdoc/design-system'
-import { BlockColor, BlockImage, Blocktype } from '@/BrickdocGraphQL'
+import { BlockColor, BlockImage, BlockType } from '@/BrickdocGraphQL'
 import { useDocsI18n } from '@/docs/common/hooks'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import * as Root from './DocumentCover.style'
 
 interface DocumentCoverImage extends BlockImage {
-  type: Blocktype.Image
+  type: BlockType.Image
 }
 
 interface DocumentCoverColor extends BlockColor {
-  type: Blocktype.Color
+  type: BlockType.Color
 }
 
 export type DocumentCoverMeta = DocumentCoverImage | DocumentCoverColor
@@ -35,10 +35,10 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
 }) => {
   const [value, setValue] = React.useState('unset')
   const { t } = useDocsI18n()
-  if (documentCoverMeta?.type === Blocktype.Color && value !== documentCoverMeta.color) {
+  if (documentCoverMeta?.type === BlockType.Color && value !== documentCoverMeta.color) {
     setValue(documentCoverMeta.color)
   }
-  if (documentCoverMeta?.type === Blocktype.Image) {
+  if (documentCoverMeta?.type === BlockType.Image) {
     const url = getDocCoverUrl() ?? localUrl ?? ''
     if (url && value !== url) {
       setValue(url)
@@ -46,7 +46,7 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
   }
 
   const style = {
-    backgroundColor: documentCoverMeta?.type === Blocktype.Color ? value : 'unset'
+    backgroundColor: documentCoverMeta?.type === BlockType.Color ? value : 'unset'
   }
 
   return (
@@ -56,7 +56,7 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
       className={className}
       css={style}
     >
-      {documentCoverMeta?.type === Blocktype.Image && <ImageWithSpin src={value} />}
+      {documentCoverMeta?.type === BlockType.Image && <ImageWithSpin src={value} />}
       <Root.Actions>
         {editable && (
           <>

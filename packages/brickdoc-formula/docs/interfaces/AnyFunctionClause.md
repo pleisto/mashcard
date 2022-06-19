@@ -2,9 +2,9 @@
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `UsedFormulaType` = `any` |
+| Name | Type                              |
+| :--- | :-------------------------------- |
+| `T`  | extends `UsedFormulaType` = `any` |
 
 ## Table of contents
 
@@ -41,17 +41,17 @@
 
 [packages/brickdoc-formula/src/types/index.ts:624](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L624)
 
-___
+---
 
 ### <a id="args" name="args"></a> args
 
-• `Readonly` **args**: [`Argument`](Argument.md)<``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Date"`` \| ``"Block"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"``\>[]
+• `Readonly` **args**: [`Argument`](Argument.md)<`"string"` \| `"number"` \| `"boolean"` \| `"Block"` \| `"null"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`\>[]
 
 #### Defined in
 
 [packages/brickdoc-formula/src/types/index.ts:629](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L629)
 
-___
+---
 
 ### <a id="async" name="async"></a> async
 
@@ -61,7 +61,7 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:617](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L617)
 
-___
+---
 
 ### <a id="chain" name="chain"></a> chain
 
@@ -71,7 +71,7 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:618](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L618)
 
-___
+---
 
 ### <a id="description" name="description"></a> description
 
@@ -81,7 +81,7 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:625](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L625)
 
-___
+---
 
 ### <a id="effect" name="effect"></a> effect
 
@@ -91,7 +91,7 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:620](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L620)
 
-___
+---
 
 ### <a id="examples" name="examples"></a> examples
 
@@ -101,7 +101,7 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:627](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L627)
 
-___
+---
 
 ### <a id="feature" name="feature"></a> feature
 
@@ -111,7 +111,7 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:622](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L622)
 
-___
+---
 
 ### <a id="group" name="group"></a> group
 
@@ -121,7 +121,7 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:626](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L626)
 
-___
+---
 
 ### <a id="key" name="key"></a> key
 
@@ -131,7 +131,7 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:616](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L616)
 
-___
+---
 
 ### <a id="lazy" name="lazy"></a> lazy
 
@@ -141,7 +141,7 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:623](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L623)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -151,7 +151,7 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:615](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L615)
 
-___
+---
 
 ### <a id="persist" name="persist"></a> persist
 
@@ -161,7 +161,7 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:621](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L621)
 
-___
+---
 
 ### <a id="pure" name="pure"></a> pure
 
@@ -171,7 +171,7 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:619](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L619)
 
-___
+---
 
 ### <a id="returns" name="returns"></a> returns
 
@@ -181,11 +181,11 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:628](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L628)
 
-___
+---
 
 ### <a id="testcases" name="testcases"></a> testCases
 
-• `Readonly` **testCases**: { `input`: (``null`` \| `string` \| `number` \| `boolean` \| [`NumberResult`](NumberResult.md) \| [`StringResult`](StringResult.md) \| [`AnyResult`](../README.md#anyresult)[] \| [`RecordType`](RecordType.md) \| `Date` \| [`ColumnType`](ColumnType.md) \| [`RowType`](RowType.md) \| [`CellType`](CellType.md) \| [`RangeType`](RangeType.md) \| [`SpreadsheetType`](SpreadsheetType.md) \| [`BlockType`](BlockType.md) \| [`FormulaFunction`, ...FormulaFunction[]] \| `CstNode` \| [`Reference`](../README.md#reference) \| [`ButtonType`](ButtonType.md) \| [`SwitchType`](SwitchType.md))[] ; `output`: [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>  }[]
+• `Readonly` **testCases**: { `input`: (`null` \| `string` \| `number` \| `boolean` \| [`NumberResult`](NumberResult.md) \| [`StringResult`](StringResult.md) \| [`AnyResult`](../README.md#anyresult)[] \| [`RecordType`](RecordType.md) \| `Date` \| [`ColumnType`](ColumnType.md) \| [`RowType`](RowType.md) \| [`CellType`](CellType.md) \| [`RangeType`](RangeType.md) \| [`SpreadsheetType`](SpreadsheetType.md) \| [`BlockType`](BlockType.md) \| [`FormulaFunction`, ...FormulaFunction[]] \| `CstNode` \| [`Reference`](../README.md#reference) \| [`ButtonType`](ButtonType.md) \| [`SwitchType`](SwitchType.md))[] ; `output`: [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\> }[]
 
 #### Defined in
 
@@ -199,10 +199,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | [`FunctionContext`](FunctionContext.md) |
-| `...args` | `any`[] |
+| Name      | Type                                    |
+| :-------- | :-------------------------------------- |
+| `ctx`     | [`FunctionContext`](FunctionContext.md) |
+| `...args` | `any`[]                                 |
 
 #### Returns
 

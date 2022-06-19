@@ -1,26 +1,16 @@
 GIT
-  remote: https://github.com/brickdoc/default_value_for.git
+  remote: https://github.com/mashcard/default_value_for.git
   revision: fe7ab1bd4a433c20ddfff2618e01a73b586e86cc
   specs:
     default_value_for (3.4.0)
       activerecord (>= 3.2.0, < 8.0)
 
 GIT
-  remote: https://github.com/brickdoc/inertia-rails.git
+  remote: https://github.com/mashcard/inertia-rails.git
   revision: 7b62df0923ba7c92ce3a90009e75cd39328422d2
   specs:
     inertia_rails (1.12.1)
       rails (>= 5)
-
-GIT
-  remote: https://github.com/brickdoc/rubocop-brickdoc.git
-  revision: 9e665ba77f0a15e428ccede932d230024c5a8711
-  specs:
-    rubocop-brickdoc (1.0.0)
-      rubocop (>= 1.29)
-      rubocop-performance (>= 1.13)
-      rubocop-rspec (>= 2.11)
-      rubocop-shopify (>= 2.6)
 
 GEM
   remote: https://rubygems.org/
@@ -219,10 +209,10 @@ GEM
       retriable (>= 2.0, < 4.a)
       rexml
       webrick
-    google-apis-iamcredentials_v1 (0.10.0)
-      google-apis-core (>= 0.4, < 2.a)
-    google-apis-storage_v1 (0.14.0)
-      google-apis-core (>= 0.4, < 2.a)
+    google-apis-iamcredentials_v1 (0.11.0)
+      google-apis-core (>= 0.5, < 2.a)
+    google-apis-storage_v1 (0.15.0)
+      google-apis-core (>= 0.5, < 2.a)
     google-cloud-core (1.6.0)
       google-cloud-env (~> 1.0)
       google-cloud-errors (~> 1.0)
@@ -317,7 +307,7 @@ GEM
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.15.0)
+    minitest (5.16.0)
     msgpack (1.5.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -482,7 +472,12 @@ GEM
     rubocop-performance (1.14.2)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.14.2)
+    rubocop-pleisto (1.0.0)
+      rubocop (>= 1.30)
+      rubocop-performance (>= 1.14)
+      rubocop-rspec (>= 2.11)
+      rubocop-shopify (>= 2.7)
+    rubocop-rails (2.15.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
@@ -523,7 +518,7 @@ GEM
       rufus-scheduler (~> 3.2)
       sidekiq (>= 4)
       tilt (>= 1.4.0)
-    sidekiq-unique-jobs (7.1.24)
+    sidekiq-unique-jobs (7.1.25)
       brpoplpush-redis_script (> 0.1.1, <= 2.0.0)
       concurrent-ruby (~> 1.0, >= 1.0.5)
       sidekiq (>= 5.0, < 8.0)
@@ -590,7 +585,7 @@ GEM
     websocket-extensions (0.1.5)
     yard (0.9.28)
       webrick (~> 1.7.0)
-    zeitwerk (2.5.4)
+    zeitwerk (2.6.0)
 
 PLATFORMS
   arm64-darwin-21
@@ -648,8 +643,8 @@ DEPENDENCIES
   redis-objects (~> 1.6)
   rspec-rails (>= 5.1.2)
   rspec_junit_formatter (>= 0.4)
-  rubocop-brickdoc!
   rubocop-graphql (~> 0.14.3)
+  rubocop-pleisto (~> 1.0)
   rubocop-rails (~> 2.14, >= 2.14.2)
   second_level_cache (~> 2.7.1)
   sentry-rails (~> 5.3.1)

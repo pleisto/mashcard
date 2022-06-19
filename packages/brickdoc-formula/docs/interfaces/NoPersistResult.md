@@ -19,7 +19,7 @@
 
 ### <a id="result" name="result"></a> result
 
-• **result**: ``null``
+• **result**: `null`
 
 #### Overrides
 
@@ -29,11 +29,11 @@
 
 [packages/brickdoc-formula/src/types/index.ts:296](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L296)
 
-___
+---
 
 ### <a id="subtype" name="subtype"></a> subType
 
-• `Optional` **subType**: ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Date"`` \| ``"Block"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"``
+• `Optional` **subType**: `"string"` \| `"number"` \| `"boolean"` \| `"Block"` \| `"null"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"`
 
 #### Inherited from
 
@@ -43,11 +43,11 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:160](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L160)
 
-___
+---
 
 ### <a id="type" name="type"></a> type
 
-• **type**: ``"NoPersist"``
+• **type**: `"NoPersist"`
 
 #### Overrides
 
@@ -57,7 +57,7 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:297](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L297)
 
-___
+---
 
 ### <a id="view" name="view"></a> view
 

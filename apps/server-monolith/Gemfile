@@ -39,7 +39,7 @@ gem 'tzinfo-data', '~> 1.2022' # Don't rely on Linux/macOS timezone data.
 gem 'rbnacl', '~> 7.1', '>= 7.1.1'
 gem 'dry-container', '~> 0.9.0'
 gem 'rails-i18n', '~> 7.0.0'
-gem 'default_value_for', github: 'brickdoc/default_value_for'
+gem 'default_value_for', github: 'mashcard/default_value_for'
 
 # Feature toggles
 gem 'flipper', '~> 0.24.1'
@@ -56,7 +56,7 @@ gem 'graphql-batch', '~> 0.5.1'
 
 # Frontend
 gem 'vite_rails', '~> 3.0.9'
-gem 'inertia_rails', github: 'brickdoc/inertia-rails'
+gem 'inertia_rails', github: 'mashcard/inertia-rails'
 
 ## IAM
 gem 'action_policy', '~> 0.6.1'
@@ -74,7 +74,7 @@ gem 'sidekiq-unique-jobs', '~> 7.1', '>= 7.1.24'
 group :development, :test do
   gem 'brakeman'
   gem 'ffaker'
-  gem 'rubocop-brickdoc', require: false, github: 'brickdoc/rubocop-brickdoc'
+  gem 'rubocop-pleisto', '~> 1.0', require: false
   gem 'rubocop-graphql', '~> 0.14.3', require: false
   gem 'rubocop-rails', '~> 2.14', '>= 2.14.2', require: false
   gem 'factory_bot_rails', '>= 6.2'

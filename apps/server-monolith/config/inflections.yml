@@ -4,6 +4,5 @@ id: ID
 saas: SaaS
 dsl: DSL
 dsl_parser: DSLParser
-brick_graphql: BrickGraphQL
 uuid_validator: UUIDValidator
 auto_increment_id: AutoIncrementID

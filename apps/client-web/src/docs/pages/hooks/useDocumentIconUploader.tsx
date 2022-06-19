@@ -1,4 +1,4 @@
-import { Blocktype, Filesourcetype } from '@/BrickdocGraphQL'
+import { BlockType, FileSource } from '@/BrickdocGraphQL'
 import { useDocsI18n } from '@/docs/common/hooks'
 import { PopoverProps } from '@brickdoc/design-system'
 import { Dashboard, DashboardProps, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
@@ -68,14 +68,14 @@ export function useDocumentIconUploader(
     if (url) {
       documentIconMeta = {
         __typename: 'BlockImage',
-        type: Blocktype.Image,
-        source: meta?.source === 'external' ? Filesourcetype.External : Filesourcetype.Origin,
+        type: BlockType.Image,
+        source: meta?.source === 'external' ? FileSource.External : FileSource.Origin,
         key: url
       }
     } else if (emoji) {
       documentIconMeta = {
         __typename: 'BlockEmoji',
-        type: Blocktype.Emoji,
+        type: BlockType.Emoji,
         name: emoji.name,
         emoji: emoji.emoji
       }

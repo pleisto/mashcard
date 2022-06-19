@@ -1,5 +1,5 @@
 import React from 'react'
-import { BlockEmoji, Blocktype } from '@/BrickdocGraphQL'
+import { BlockEmoji, BlockType } from '@/BrickdocGraphQL'
 import { Tooltip, Popover, Menu } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import * as Root from './index.style'
@@ -17,7 +17,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ className }) => 
 
   const renderPath = (path: Path, idx: number, showSplit: boolean, fullwidth: Boolean = false): React.ReactNode => {
     const link = isMine ? `/${domain}/${path.id}` : '#'
-    const hasEmoji = path.icon && path.icon.type === Blocktype.Emoji
+    const hasEmoji = path.icon && path.icon.type === BlockType.Emoji
     const emoji = hasEmoji ? (path.icon as BlockEmoji).emoji : ''
     return (
       <Tooltip

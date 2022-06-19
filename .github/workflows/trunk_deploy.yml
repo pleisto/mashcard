@@ -21,7 +21,7 @@ permissions:
   actions: write
 env:
   YARN_CHECKSUM_BEHAVIOR: update
-  image: ghcr.io/brickdoc/brickdoc-nightly:${{ github.run_id }}
+  image: ghcr.io/mashcard/mashcard-nightly:${{ github.run_id }}
   domain: trunk.brickdoc.dev
   GCP_PROJECT: brickdoc-testnet
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -112,9 +112,6 @@ jobs:
             --set-string secrets.UNSPLASH_API_ACCESS_KEY=${{ secrets.UNSPLASH_API_ACCESS_KEY }} \
             --set-string secrets.UNSPLASH_API_SECRET=${{ secrets.UNSPLASH_API_SECRET }} \
             --set-string secrets.IFRAMELY_API_ACCESS_KEY=${{ secrets.IFRAMELY_API_ACCESS_KEY }} \
-            --set-string secrets.SECURITY_REVERSIBLE_INT_INVERSE=${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_INVERSE }} \
-            --set-string secrets.SECURITY_REVERSIBLE_INT_RANDOM=${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_RANDOM }} \
-            --set-string secrets.SECURITY_REVERSIBLE_INT_PRIME=${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_PRIME }} \
             --set-string secrets.SMTP_URL=${{ secrets.TRUNK_SMTP_URL }} \
             --set-string secrets.GOOGLE_OAUTH2_ID=${{ secrets.TRUNK_GOOGLE_OAUTH2_ID }} \
             --set-string secrets.GOOGLE_OAUTH2_SECRET=${{ secrets.TRUNK_GOOGLE_OAUTH2_SECRET }}

@@ -27,7 +27,7 @@
 
 [packages/brickdoc-formula/src/types/index.ts:252](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L252)
 
-___
+---
 
 ### <a id="operator" name="operator"></a> operator
 
@@ -37,7 +37,7 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:253](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L253)
 
-___
+---
 
 ### <a id="result" name="result"></a> result
 
@@ -51,11 +51,11 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:251](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L251)
 
-___
+---
 
 ### <a id="subtype" name="subtype"></a> subType
 
-• `Optional` **subType**: ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Date"`` \| ``"Block"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"``
+• `Optional` **subType**: `"string"` \| `"number"` \| `"boolean"` \| `"Block"` \| `"null"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"`
 
 #### Inherited from
 
@@ -65,11 +65,11 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:160](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L160)
 
-___
+---
 
 ### <a id="type" name="type"></a> type
 
-• **type**: ``"Predicate"``
+• **type**: `"Predicate"`
 
 #### Overrides
 
@@ -79,7 +79,7 @@ ___
 
 [packages/brickdoc-formula/src/types/index.ts:250](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L250)
 
-___
+---
 
 ### <a id="view" name="view"></a> view
 

@@ -29,13 +29,13 @@
 
 ### <a id="expressiontype" name="expressiontype"></a> expressionType
 
-• `Readonly` **expressionType**: ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Date"`` \| ``"Block"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"``
+• `Readonly` **expressionType**: `"string"` \| `"number"` \| `"boolean"` \| `"Block"` \| `"null"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"`
 
 #### Defined in
 
 [packages/brickdoc-formula/src/grammar/operator.ts:42](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L42)
 
-___
+---
 
 ### <a id="lhstype" name="lhstype"></a> lhsType
 
@@ -45,7 +45,7 @@ ___
 
 [packages/brickdoc-formula/src/grammar/operator.ts:43](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L43)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -55,7 +55,7 @@ ___
 
 [packages/brickdoc-formula/src/grammar/operator.ts:36](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L36)
 
-___
+---
 
 ### <a id="reverselhsandrhs" name="reverselhsandrhs"></a> reverseLhsAndRhs
 
@@ -65,7 +65,7 @@ ___
 
 [packages/brickdoc-formula/src/grammar/operator.ts:40](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L40)
 
-___
+---
 
 ### <a id="rhstype" name="rhstype"></a> rhsType
 
@@ -75,7 +75,7 @@ ___
 
 [packages/brickdoc-formula/src/grammar/operator.ts:71](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L71)
 
-___
+---
 
 ### <a id="skipreturnearlycheck" name="skipreturnearlycheck"></a> skipReturnEarlyCheck
 
@@ -85,7 +85,7 @@ ___
 
 [packages/brickdoc-formula/src/grammar/operator.ts:37](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L37)
 
-___
+---
 
 ### <a id="skipreturnfinalcheck" name="skipreturnfinalcheck"></a> skipReturnFinalCheck
 
@@ -95,7 +95,7 @@ ___
 
 [packages/brickdoc-formula/src/grammar/operator.ts:38](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L38)
 
-___
+---
 
 ### <a id="skiprhscstparse" name="skiprhscstparse"></a> skipRhsCstParse
 
@@ -105,7 +105,7 @@ ___
 
 [packages/brickdoc-formula/src/grammar/operator.ts:39](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L39)
 
-___
+---
 
 ### <a id="testcases" name="testcases"></a> testCases
 
@@ -123,12 +123,12 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `args` | `Object` |
-| `args.args` | [`InterpretArgument`](InterpretArgument.md) |
+| Name               | Type                                                     |
+| :----------------- | :------------------------------------------------------- |
+| `args`             | `Object`                                                 |
+| `args.args`        | [`InterpretArgument`](InterpretArgument.md)              |
 | `args.interpreter` | [`FormulaInterpreter`](../classes/FormulaInterpreter.md) |
-| `args.operators` | (`undefined` \| `IToken`)[] |
+| `args.operators`   | (`undefined` \| `IToken`)[]                              |
 
 #### Returns
 
@@ -138,7 +138,7 @@ ___
 
 [packages/brickdoc-formula/src/grammar/operator.ts:44](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L44)
 
-___
+---
 
 ### <a id="dynamicinterpretrhstype" name="dynamicinterpretrhstype"></a> dynamicInterpretRhsType
 
@@ -146,14 +146,14 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-| `__namedParameters.args` | [`InterpretArgument`](InterpretArgument.md) |
-| `__namedParameters.cst` | `CstNode` |
-| `__namedParameters.index` | `number` |
-| `__namedParameters.operator` | `undefined` \| `IToken` |
-| `__namedParameters.result` | [`AnyResult`](../README.md#anyresult) |
+| Name                         | Type                                        |
+| :--------------------------- | :------------------------------------------ |
+| `__namedParameters`          | `Object`                                    |
+| `__namedParameters.args`     | [`InterpretArgument`](InterpretArgument.md) |
+| `__namedParameters.cst`      | `CstNode`                                   |
+| `__namedParameters.index`    | `number`                                    |
+| `__namedParameters.operator` | `undefined` \| `IToken`                     |
+| `__namedParameters.result`   | [`AnyResult`](../README.md#anyresult)       |
 
 #### Returns
 
@@ -163,7 +163,7 @@ ___
 
 [packages/brickdoc-formula/src/grammar/operator.ts:51](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L51)
 
-___
+---
 
 ### <a id="dynamicparserhstype" name="dynamicparserhstype"></a> dynamicParseRhsType
 
@@ -171,12 +171,12 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `cst` | `CstNode` |
+| Name       | Type                                                |
+| :--------- | :-------------------------------------------------- |
+| `cst`      | `CstNode`                                           |
 | `prevType` | [`FormulaCheckType`](../README.md#formulachecktype) |
-| `args` | [`CstVisitorArgument`](CstVisitorArgument.md) |
-| `index` | `number` |
+| `args`     | [`CstVisitorArgument`](CstVisitorArgument.md)       |
+| `index`    | `number`                                            |
 
 #### Returns
 
@@ -186,7 +186,7 @@ ___
 
 [packages/brickdoc-formula/src/grammar/operator.ts:65](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L65)
 
-___
+---
 
 ### <a id="dynamicparsetype" name="dynamicparsetype"></a> dynamicParseType
 
@@ -194,8 +194,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type                                                |
+| :-------- | :-------------------------------------------------- |
 | `lhsType` | [`FormulaCheckType`](../README.md#formulachecktype) |
 
 #### Returns
@@ -206,7 +206,7 @@ ___
 
 [packages/brickdoc-formula/src/grammar/operator.ts:50](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L50)
 
-___
+---
 
 ### <a id="dynamicparsevalidator" name="dynamicparsevalidator"></a> dynamicParseValidator
 
@@ -214,10 +214,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name         | Type                                                       |
+| :----------- | :--------------------------------------------------------- |
 | `cstVisitor` | [`CodeFragmentVisitor`](../classes/CodeFragmentVisitor.md) |
-| `result` | [`CodeFragmentResult`](CodeFragmentResult.md) |
+| `result`     | [`CodeFragmentResult`](CodeFragmentResult.md)              |
 
 #### Returns
 
@@ -227,7 +227,7 @@ ___
 
 [packages/brickdoc-formula/src/grammar/operator.ts:49](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L49)
 
-___
+---
 
 ### <a id="interpret" name="interpret"></a> interpret
 
@@ -235,14 +235,14 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-| `__namedParameters.cst` | `CstNode` |
+| Name                            | Type                                                     |
+| :------------------------------ | :------------------------------------------------------- |
+| `__namedParameters`             | `Object`                                                 |
+| `__namedParameters.cst`         | `CstNode`                                                |
 | `__namedParameters.interpreter` | [`FormulaInterpreter`](../classes/FormulaInterpreter.md) |
-| `__namedParameters.lhs` | [`AnyResult`](../README.md#anyresult) |
-| `__namedParameters.operator` | `IToken` |
-| `__namedParameters.rhs` | `undefined` \| [`AnyResult`](../README.md#anyresult) |
+| `__namedParameters.lhs`         | [`AnyResult`](../README.md#anyresult)                    |
+| `__namedParameters.operator`    | `IToken`                                                 |
+| `__namedParameters.rhs`         | `undefined` \| [`AnyResult`](../README.md#anyresult)     |
 
 #### Returns
 
@@ -252,7 +252,7 @@ ___
 
 [packages/brickdoc-formula/src/grammar/operator.ts:87](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L87)
 
-___
+---
 
 ### <a id="packageinterpretresult" name="packageinterpretresult"></a> packageInterpretResult
 
@@ -260,8 +260,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type                                  |
+| :------- | :------------------------------------ |
 | `result` | [`AnyResult`](../README.md#anyresult) |
 
 #### Returns
@@ -272,7 +272,7 @@ ___
 
 [packages/brickdoc-formula/src/grammar/operator.ts:64](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/operator.ts#L64)
 
-___
+---
 
 ### <a id="parserhs" name="parserhs"></a> parseRhs
 
@@ -280,15 +280,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
+| Name                                           | Type                                          |
+| :--------------------------------------------- | :-------------------------------------------- |
+| `__namedParameters`                            | `Object`                                      |
 | `__namedParameters.operatorTokenCodeFragments` | [`CodeFragment`](../README.md#codefragment)[] |
-| `__namedParameters.operatorTokenImage` | `string` |
-| `__namedParameters.rhsCodeFragments` | [`CodeFragment`](../README.md#codefragment)[] |
-| `__namedParameters.rhsImages` | `string`[] |
-| `__namedParameters.rhsTokenCodeFragments` | [`CodeFragment`](../README.md#codefragment)[] |
-| `__namedParameters.rhsTokenImage` | `string` |
+| `__namedParameters.operatorTokenImage`         | `string`                                      |
+| `__namedParameters.rhsCodeFragments`           | [`CodeFragment`](../README.md#codefragment)[] |
+| `__namedParameters.rhsImages`                  | `string`[]                                    |
+| `__namedParameters.rhsTokenCodeFragments`      | [`CodeFragment`](../README.md#codefragment)[] |
+| `__namedParameters.rhsTokenImage`              | `string`                                      |
 
 #### Returns
 

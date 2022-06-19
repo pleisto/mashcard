@@ -17,9 +17,8 @@ class InternalApisController < ActionController::API
     render json: Oj.dump(@translations)
   end
 
-  # internal graphql api entrypoint
   def graphql
-    variables = BrickGraphQL.ensure_hash params[:variables]
+    variables = Brickdoc::GraphQL.ensure_hash params[:variables]
     resp = BrickdocSchema.execute(params[:query], variables: variables,
       context: context, operation_name: params[:operationName])
     render json: Oj.dump(resp)
@@ -34,7 +33,6 @@ class InternalApisController < ActionController::API
     {
       protocol: 'http',
       real_ip: request.remote_ip,
-      entrypoint: :internal,
       current_user: user,
       current_pod: pod,
       session: session,
