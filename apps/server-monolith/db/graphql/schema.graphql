@@ -1420,6 +1420,7 @@ type ConversationCommentAppendPayload {
   A unique identifier for the client performing the mutation.
   """
   clientMutationId: String
+  comment: Comment!
 
   """
   Errors encountered during execution of the mutation.
@@ -1454,6 +1455,7 @@ type ConversationCommentCreatePayload {
   A unique identifier for the client performing the mutation.
   """
   clientMutationId: String
+  conversation: Conversation!
 
   """
   Errors encountered during execution of the mutation.

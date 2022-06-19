@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DiscussionList > DiscussionPanel matches correct snapshot 1`] = `
+<div>
+  <div
+    class="brd-c-fpXoAG"
+  >
+    <div
+      class="brd-c-PJLV"
+    >
+      <div
+        class="brd-c-PJLV"
+      >
+        <div
+          class="brd-c-gSaPtB"
+        >
+          <div
+            class="brd-c-khuij"
+          >
+            <blockquote
+              class="brd-c-iRTshO"
+            />
+            <button
+              aria-haspopup="dialog"
+              class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-Zmjpo-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-iDpwiq-hasIcon-true brd-c-PJLV brd-c-PJLV-intFQh-size-sm"
+              role="button"
+              type="button"
+            >
+              <span
+                aria-label="more"
+                class="brd-icon brd-icon-more"
+                role="img"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 7 12zm7 0c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 14 12zm7 0c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 21 12z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-Zmjpo-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-iDpwiq-hasIcon-true brd-c-PJLV brd-c-PJLV-intFQh-size-sm"
+              role="button"
+              type="button"
+            >
+              <span
+                class="brd-c-eNMBnz brd-c-eNMBnz-ibPCDO-status-opened"
+              >
+                <span
+                  aria-label="check"
+                  class="brd-icon brd-icon-check"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M18.223 6.754c.5.4.58 1.128.181 1.627l-6.947 8.684a1.158 1.158 0 0 1-1.723.096L5.68 13.108a1.158 1.158 0 0 1 1.638-1.637l3.138 3.138 6.139-7.674c.4-.5 1.128-.58 1.627-.181Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

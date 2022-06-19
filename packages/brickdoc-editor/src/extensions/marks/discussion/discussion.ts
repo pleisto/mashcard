@@ -3,7 +3,7 @@ import { Plugin, PluginKey } from 'prosemirror-state'
 import { uuid } from '@brickdoc/active-support'
 import { BrickdocEventBus, DiscussionListToggle, DiscussionMarkActive } from '@brickdoc/schema'
 import { MARK_CLASS_NAME, MARK_ID_ATTR_NAME, focusDiscussionMark } from '../../../helpers/discussion'
-import { meta } from './meta'
+import { DiscussionAttributes, DiscussionOptions, meta } from './meta'
 import { createMark } from '../../common'
 
 declare module '@tiptap/core' {
@@ -13,11 +13,6 @@ declare module '@tiptap/core' {
       removeDiscussion: (from: number, to: number) => ReturnType
     }
   }
-}
-
-export interface DiscussionOptions {}
-export interface DiscussionAttributes {
-  markId: string
 }
 
 const openDiscussionList = (markId: string | null): void => {
