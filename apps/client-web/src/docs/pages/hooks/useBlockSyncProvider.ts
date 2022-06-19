@@ -70,7 +70,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
           user: i.user
         }
       })
-      devLog('awarenessChanged', infos)
+      // devLog('awarenessChanged', infos)
       setAwarenessInfos(infos)
     },
     [setAwarenessInfos]

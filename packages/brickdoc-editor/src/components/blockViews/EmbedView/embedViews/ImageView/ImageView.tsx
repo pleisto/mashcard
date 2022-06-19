@@ -8,7 +8,7 @@ import { BlockContainer } from '../../../BlockContainer'
 import { UpdateEmbedBlockAttributes } from '../../EmbedView'
 import { EmbedToolbar } from '../EmbedToolbar'
 import { Resizable } from 're-resizable'
-import { minWidth } from './styles'
+import { minWidth } from './ImageView.style'
 import { useImageState } from './useImageState'
 
 export interface ImageViewProps {
@@ -146,11 +146,13 @@ export const ImageView: FC<ImageViewProps> = props => {
       contentForCopy={url}
       getPos={getPos}
       deleteNode={deleteNode}
-      actionOptions={actionOptions}>
+      actionOptions={actionOptions}
+    >
       <ImageViewLayout align={align ?? 'center'}>
         {!loaded && (
           <SpinnerWrapper
-            css={{ width: width ?? '100%', height: (imageWidth ?? 0) / (node.attrs.image.ratio ?? 1) || '100px' }}>
+            css={{ width: width ?? '100%', height: (imageWidth ?? 0) / (node.attrs.image.ratio ?? 1) || '100px' }}
+          >
             <Spin size="lg" />
           </SpinnerWrapper>
         )}
@@ -160,7 +162,8 @@ export const ImageView: FC<ImageViewProps> = props => {
               wrapStyle={{ pointerEvents: 'none', width: '100%' }}
               overlayBgColorEnd="rgba(153, 153, 153, 0.4)"
               isZoomed={showPreview}
-              onZoomChange={setShowPreview}>
+              onZoomChange={setShowPreview}
+            >
               <Img
                 data-testid={TEST_ID_ENUM.editor.imageBlock.image.id}
                 role="img"

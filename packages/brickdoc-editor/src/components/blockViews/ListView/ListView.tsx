@@ -3,7 +3,7 @@ import { NodeViewContent } from '@tiptap/react'
 import { BlockContainer } from '../BlockContainer'
 import { BlockViewProps } from '../../../extensions/common'
 import { BulletList, OrderedList, TaskList } from '../../../extensions'
-import { orderedListStyles, bulletListStyles, taskListStyles } from './styles'
+import { orderedListStyles, bulletListStyles, taskListStyles } from './ListView.style'
 
 export const ListView: FC<BlockViewProps<{}, {}>> = ({ deleteNode, node, getPos }) => {
   const as = node.type.name === OrderedList.name ? 'ol' : 'ul'
@@ -24,7 +24,8 @@ export const ListView: FC<BlockViewProps<{}, {}>> = ({ deleteNode, node, getPos 
       className={className}
       actionOptions={['cut', 'copy', 'delete']}
       deleteNode={deleteNode}
-      getPos={getPos}>
+      getPos={getPos}
+    >
       <NodeViewContent as={as} data-task-list={TaskList.name === node.type.name ? '' : undefined} />
     </BlockContainer>
   )

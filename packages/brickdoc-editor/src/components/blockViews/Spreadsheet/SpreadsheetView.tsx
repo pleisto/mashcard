@@ -4,7 +4,7 @@ import { Dropdown, Menu, Button, Icon } from '@brickdoc/design-system'
 
 import { useEditorI18n } from '../../../hooks'
 
-import { MenuIcon } from '../../extensionViews/SlashMenu/styles'
+import { MenuIcon } from '../../extensionViews/SlashMenu/SlashMenu.style'
 
 import { SpreadsheetContext, SpreadsheetSelectionCellId } from './SpreadsheetContext'
 import { SpreadsheetColumn } from './useSpreadsheet'

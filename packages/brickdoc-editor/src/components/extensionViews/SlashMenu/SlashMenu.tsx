@@ -13,7 +13,7 @@ import {
   Footer,
   recentItemIconStyle,
   menuIconStyle
-} from './styles'
+} from './SlashMenu.style'
 import { useActiveStatus } from './useActiveStatus'
 import { useShowExplorerMenu } from './useShowExplorerMenu'
 import { useEditorI18n } from '../../../hooks'

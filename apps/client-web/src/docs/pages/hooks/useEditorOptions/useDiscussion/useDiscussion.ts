@@ -4,7 +4,10 @@ import { Conversation, Comment } from '@brickdoc/schema'
 import { useMemo } from 'react'
 import { useCreateComment } from './useCreateComment'
 import { useCreateConversation } from './useCreateConversation'
+import { useDeleteConversation } from './useDeleteConversation'
 import { useGetConversations } from './useGetConversations'
+import { useOpenConversation } from './useOpenConversation'
+import { useResolveConversation } from './useResolveConversation'
 
 export function commentToData(comment?: Comment): CommentData | null {
   if (!comment) return null
@@ -38,13 +41,19 @@ export function useDiscussion(docMeta: DocMeta): BaseOptions['discussion'] {
   const getConversations = useGetConversations(docMeta)
   const createConversation = useCreateConversation(docMeta)
   const createComment = useCreateComment()
+  const resolveConversation = useResolveConversation()
+  const openConversation = useOpenConversation()
+  const deleteConversation = useDeleteConversation()
 
   return useMemo(
     () => ({
       getConversations,
       createConversation,
-      createComment
+      createComment,
+      resolveConversation,
+      openConversation,
+      deleteConversation
     }),
-    [createComment, createConversation, getConversations]
+    [createComment, createConversation, deleteConversation, getConversations, openConversation, resolveConversation]
   )
 }

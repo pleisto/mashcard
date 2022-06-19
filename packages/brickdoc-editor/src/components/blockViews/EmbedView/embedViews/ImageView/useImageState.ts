@@ -3,7 +3,7 @@ import { useState, useCallback, SyntheticEvent, Dispatch, SetStateAction } from 
 import { BlockActionOptions } from '../../../BlockActions'
 import { useActionOptions } from '../useActionOptions'
 import { ImageViewProps } from './ImageView'
-import { maxWidth, minWidth } from './styles'
+import { maxWidth, minWidth } from './ImageView.style'
 import { useResizable } from './useResizable'
 
 export function useImageState({ url, node, updateEmbedBlockAttributes, width }: ImageViewProps): {

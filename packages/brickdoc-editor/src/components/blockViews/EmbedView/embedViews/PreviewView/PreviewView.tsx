@@ -8,7 +8,7 @@ import { PdftronDocument } from './PdftronDocument/PdftronDocument'
 import { WebsiteDocument } from './WebsiteDocument'
 import { styled } from '@brickdoc/design-system'
 import { EmbedToolbarContainer } from './DocumentFooter'
-import { maxWidth } from '../../styles'
+import { maxWidth } from '../../EmbedView.style'
 
 export interface PreviewViewProps {
   blockType: EmbedBlockType
@@ -55,7 +55,8 @@ export const PreviewView: FC<PreviewViewProps> = ({
       contentForCopy={fileUrl}
       deleteNode={deleteNode}
       getPos={getPos}
-      actionOptions={actionOptions}>
+      actionOptions={actionOptions}
+    >
       <DocumentContainer>
         {isWebsite ? (
           <WebsiteDocument

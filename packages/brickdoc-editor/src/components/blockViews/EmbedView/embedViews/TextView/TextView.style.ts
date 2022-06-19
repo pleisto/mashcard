@@ -1,5 +1,5 @@
 import { styled, theme } from '@brickdoc/design-system'
-import { maxWidth } from '../../styles'
+import { maxWidth } from '../../EmbedView.style'
 
 export const EmbedToolbarContainer = styled('div', {
   left: '5rem',

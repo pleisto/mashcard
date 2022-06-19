@@ -15,7 +15,7 @@ import {
   TextViewIcon,
   TextViewContent,
   Name
-} from './styles'
+} from './TextView.style'
 
 export interface TextViewProps {
   blockType: EmbedBlockType
@@ -56,7 +56,8 @@ export const TextView: FC<TextViewProps> = ({
       contentForCopy={url}
       deleteNode={deleteNode}
       getPos={getPos}
-      actionOptions={actionOptions}>
+      actionOptions={actionOptions}
+    >
       <TextViewLayout>
         <EmbedToolbarContainer onClick={handleEmbedToolbarClick}>
           <EmbedToolbarContainerInner>
