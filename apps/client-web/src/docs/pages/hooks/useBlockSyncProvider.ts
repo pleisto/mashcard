@@ -133,7 +133,6 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   const commitState = React.useCallback(
     async (ydoc: Y.Doc, update?: Uint8Array, forceFull: boolean = false): Promise<void> => {
       if (historyId) return
-      if (!ydoc) return
       devLog(`try commit state, committing:`, blockCommitting.current)
       if (update) updatesToCommit.current.add(update)
       if (blockCommitting.current) return
