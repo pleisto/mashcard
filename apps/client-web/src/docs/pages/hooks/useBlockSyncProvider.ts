@@ -52,7 +52,6 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   const block = React.useRef<BlockNew>({ id: blockId })
   const [provider, setProvider] = React.useState<blockProvider>()
   const [awarenessInfos, setAwarenessInfos] = React.useState<awarenessInfo[]>([])
-  const latestProvider = React.useRef<blockProvider>()
 
   const initBlocksToEditor = React.useRef<boolean>(false)
   const blockCommitting = React.useRef<boolean>(false)
@@ -94,7 +93,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             })
           )
 
-          if (latestProvider.current && operatorId && operatorId !== globalThis.brickdocContext.uuid) {
+          if (provider && operatorId && operatorId !== globalThis.brickdocContext.uuid) {
             blocks.forEach(remoteBlock => {
               if (remoteBlock.id === blockId) {
                 block.current = remoteBlock
@@ -103,7 +102,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             const remoteState = Y.mergeUpdates(
               blockStates.filter(s => s.state).map(s => base64.parse(s.state as string))
             )
-            Y.applyUpdate(latestProvider.current.document, remoteState)
+            Y.applyUpdate(provider.document, remoteState)
           }
         }
       }
@@ -119,15 +118,11 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
         } = data
         if (updates) {
           devLog(`received awareness updates from ${operatorId}`)
-          if (latestProvider.current && updates.length > 0) {
+          if (provider && updates.length > 0) {
             try {
-              awarenessProtocol.applyAwarenessUpdate(
-                latestProvider.current.awareness,
-                base64.parse(updates as string),
-                ''
-              )
+              awarenessProtocol.applyAwarenessUpdate(provider.awareness, base64.parse(updates as string), '')
             } catch {}
-            awarenessChanged(latestProvider.current.awareness)
+            awarenessChanged(provider.awareness)
           }
         }
       }
@@ -216,6 +211,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
     if (enableCollaboration) {
       if (data && !loading) {
         const newYdoc = new Y.Doc()
+        const awareness = new awarenessProtocol.Awareness(newYdoc)
         devLog('Ydoc initialized')
 
         if (data.blockNew) {
@@ -237,7 +233,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
           }
         }
 
-        const awareness = new awarenessProtocol.Awareness(newYdoc)
+        const provider = { document: newYdoc, awareness }
+        setProvider(provider)
 
         if (!historyId) {
           newYdoc.on('update', async (update: Uint8Array, origin: any, ydoc: Y.Doc) => {
@@ -260,10 +257,6 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             await updatePromise
           })
         }
-
-        const provider = { document: newYdoc, awareness }
-        setProvider(provider)
-        latestProvider.current = provider
       }
     } else {
       initBlocksToEditor.current = true
