@@ -1,7 +1,6 @@
 import React from 'react'
 import { PodAvatar } from '../PodAvatar'
 import * as Root from './index.style'
-/* import styles from './index.module.less' */
 
 export interface PodType {
   name?: string | null | undefined

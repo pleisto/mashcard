@@ -31,7 +31,7 @@ import {
 import { Base, BaseOptions, updateExtensionOptions as updateBaseExtensionOptions } from '../../extensions/base'
 import { useDrawerService } from '../../components/ui/Drawer'
 import { useDropBlock, useUndo } from '../../helpers'
-import { documentEditorStyles } from './styles'
+import { documentEditorStyles } from './documentEditor.style'
 import { merge } from 'lodash'
 import { To, NavigateOptions } from 'react-router-dom'
 

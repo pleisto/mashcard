@@ -4,7 +4,7 @@ import { Input, Icon } from '@brickdoc/design-system'
 import { useEditorI18n, useDocumentEditable } from '../../../hooks'
 import { BlockContainer, BlockContainerProps } from '../BlockContainer'
 import { SpreadsheetViewProps } from '../../../extensions/blocks/spreadsheet/meta'
-import { MenuIcon } from '../../extensionViews/SlashMenu/styles'
+import { MenuIcon } from '../../extensionViews/SlashMenu/SlashMenu.style'
 
 import { useSpreadsheet } from './useSpreadsheet'
 import { columnDisplayTitle } from './helper'

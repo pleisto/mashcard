@@ -2,7 +2,7 @@ import React from 'react'
 // import { Icon, Menu } from '@brickdoc/design-system'
 // import { Editor } from '@tiptap/core'
 // import { BlockState } from '@brickdoc/schema'
-import { InnerMenuContainer, InnerMenu, MenuItem, HistoryTime, Username, HistoryAvatar } from './styles'
+import { InnerMenuContainer, InnerMenu, MenuItem, HistoryTime, Username, HistoryAvatar } from './HistoryList.style'
 import { To, NavigateOptions } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import moment from 'moment'
@@ -58,8 +58,7 @@ export const HistoryListMenu: React.FC<HistoryListMenuProps> = ({
               active={historyId ? historyId === history.id : i === 0}
               onClick={() =>
                 i === 0 ? navigate(`/${domain}/${docId}`) : navigate(`/${domain}/${docId}/histories/${history.id}`)
-              }
-            >
+              }>
               <div>
                 <HistoryTime>{`${dateStr}, ${createdAt.format(formatT('time'))}`}</HistoryTime>
                 <Username>
