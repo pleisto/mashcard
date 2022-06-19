@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import { Upload, useCreateDirectUploadMutation } from '@/BrickdocGraphQL'
 import { EmbedOptions } from '@brickdoc/editor'
-import { checksum } from '../usePrepareFileUpload'
+import { checksum } from '../../usePrepareFileUpload'
 import { DocMeta } from '@/docs/store/DocMeta'
 import { CreateDirectUploadInput } from '@brickdoc/schema'
 

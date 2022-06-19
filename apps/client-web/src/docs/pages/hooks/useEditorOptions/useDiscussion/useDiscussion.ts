@@ -5,6 +5,7 @@ import { useMemo } from 'react'
 import { useCreateComment } from './useCreateComment'
 import { useCreateConversation } from './useCreateConversation'
 import { useGetConversations } from './useGetConversations'
+import { useResolveConversation } from './useResolveConversation'
 
 export function commentToData(comment?: Comment): CommentData | null {
   if (!comment) return null
@@ -38,13 +39,15 @@ export function useDiscussion(docMeta: DocMeta): BaseOptions['discussion'] {
   const getConversations = useGetConversations(docMeta)
   const createConversation = useCreateConversation(docMeta)
   const createComment = useCreateComment()
+  const resolveConversation = useResolveConversation()
 
   return useMemo(
     () => ({
       getConversations,
       createConversation,
-      createComment
+      createComment,
+      resolveConversation
     }),
-    [createComment, createConversation, getConversations]
+    [createComment, createConversation, getConversations, resolveConversation]
   )
 }

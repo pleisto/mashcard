@@ -19,13 +19,6 @@ interface DiscussionData {
   conversations: PageConversationData[]
 }
 
-const resolve = (conversation: PageConversationData): PageConversationData => {
-  return {
-    ...conversation,
-    status: 'resolved'
-  }
-}
-
 const open = (conversation: PageConversationData): PageConversationData => {
   return {
     ...conversation,
@@ -54,12 +47,17 @@ export function usePageDiscussionContextValue(commentedNodes: CommentedNode[]): 
   const extension = getDiscussionExtension(editor)
   const getConversations = extension?.options.getConversations
   const createConversation = extension?.options.createConversation
+  const resolveTheConversation = extension?.options.resolveConversation
   const createComment = extension?.options.createComment
 
   const [discussion, setDiscussion] = useState<DiscussionData>({ conversations: [] })
   useEffect(() => {
     void getConversations?.().then(response => {
-      if (!response.success) return
+      if (!response.success) {
+        toast.error(t('discussion.conversation.fetch.failed'))
+        return
+      }
+
       setDiscussion({
         conversations: response.data.map(item => ({
           ...item,
@@ -123,15 +121,27 @@ export function usePageDiscussionContextValue(commentedNodes: CommentedNode[]): 
 
   const resolveConversation = useCallback<NonNullable<PageDiscussionContextValue['resolveConversation']>>(
     async conversationId => {
+      if (!resolveTheConversation) return
+
+      const response = await resolveTheConversation(conversationId)
+
+      if (!response.success) {
+        toast.error(t('discussion.conversation.resolve.failed'))
+        return
+      }
+
       setDiscussion(prevDiscussion => ({
         ...prevDiscussion,
         conversations: prevDiscussion?.conversations.map(conversation => {
           if (conversation.id !== conversationId) return conversation
-          return resolve(conversation)
+          return {
+            ...conversation,
+            status: 'resolved'
+          }
         })
       }))
     },
-    []
+    [resolveTheConversation]
   )
 
   const removeConversation = useCallback<NonNullable<PageDiscussionContextValue['removeConversation']>>(

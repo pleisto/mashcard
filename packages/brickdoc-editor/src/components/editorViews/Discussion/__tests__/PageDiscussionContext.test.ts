@@ -60,6 +60,9 @@ describe('PageDiscussionContext', () => {
                     }
                   }
                 }
+              }),
+              resolveConversation: async (conversationId: string): Promise<{ success: boolean }> => ({
+                success: true
               })
             }
           }
