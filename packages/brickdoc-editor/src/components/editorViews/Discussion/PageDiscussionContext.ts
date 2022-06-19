@@ -129,12 +129,19 @@ export function usePageDiscussionContextValue(commentedNodes: CommentedNode[]): 
 
   const removeConversation = useCallback<NonNullable<PageDiscussionContextValue['removeConversation']>>(
     async conversationId => {
+      const response = await extension?.options.deleteConversation?.(conversationId)
+
+      if (!response?.success) {
+        toast.error(t('discussion.conversation.delete.failed'))
+        return
+      }
+
       setDiscussion(prevDiscussion => ({
         ...prevDiscussion,
         conversations: prevDiscussion?.conversations.filter(conversation => conversation.id !== conversationId)
       }))
     },
-    []
+    [extension?.options, t]
   )
 
   const openConversation = useCallback<NonNullable<PageDiscussionContextValue['openConversation']>>(

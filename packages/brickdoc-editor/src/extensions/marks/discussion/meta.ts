@@ -51,6 +51,7 @@ export interface DiscussionOptions {
   }>
   resolveConversation?: (conversationId: string) => Promise<{ success: boolean }>
   openConversation?: (conversationId: string) => Promise<{ success: boolean }>
+  deleteConversation?: (conversationId: string) => Promise<{ success: boolean }>
 }
 export interface DiscussionAttributes {
   markId: string

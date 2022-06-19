@@ -66,6 +66,9 @@ describe('PageDiscussionContext', () => {
               }),
               openConversation: async (conversationId: string): Promise<{ success: boolean }> => ({
                 success: true
+              }),
+              deleteConversation: async (conversationId: string): Promise<{ success: boolean }> => ({
+                success: true
               })
             }
           }
