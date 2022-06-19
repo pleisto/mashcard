@@ -83,8 +83,16 @@ en-US:
         send: Send
         cancel: Cancel
       conversation:
+        fetch:
+          failed: Load conversations failed. Please try again later.
+        resolve:
+          failed: Resolve conversation failed. Please try again later.
+        open:
+          failed: Open conversation failed. Please try again later.
         create:
           failed: Create conversation failed. Please try again later.
+        delete:
+          failed: Delete conversation failed. Please try again later.
       comment:
         create:
           failed: Create comment failed. Please try again later.
