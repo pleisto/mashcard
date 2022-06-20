@@ -2,7 +2,7 @@
 
 module Mashcard
   module Validators
-    class DomainValidator < ActiveModel::EachValidator
+    class UsernameValidator < ActiveModel::EachValidator
       # domain limited to alphanumerics and hyphens, and must start and end with an alphanumeric.
       REGEXP = /\A[a-z0-9]+(-[a-z0-9]+)*\z/i
 

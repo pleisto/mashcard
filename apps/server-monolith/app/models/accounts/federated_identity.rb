@@ -19,7 +19,7 @@
 
 module Accounts
   class FederatedIdentity < ApplicationRecord
-    belongs_to :user, class_name: 'Accounts::User', foreign_key: :accounts_user_id, inverse_of: :federated_identities
+    belongs_to :user, class_name: 'User', foreign_key: :accounts_user_id, inverse_of: :federated_identities
 
     second_level_cache expires_in: 1.week
 

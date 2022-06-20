@@ -22,7 +22,7 @@ module Mutations
       new_input = input.to_h.merge(service_name: service)
 
       block_id = args[:block_id] || 'global'
-      key = "#{current_pod.fetch('id_hash')}/#{block_id}/#{ActiveStorage::Blob.generate_unique_secure_token}_#{input[:filename]}"
+      key = "#{current_pod.fetch('id')}/#{block_id}/#{ActiveStorage::Blob.generate_unique_secure_token}_#{input[:filename]}"
       todo = new_input.merge(
         key: key,
         operation_type: type,

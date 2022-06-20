@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Mashcard::Validators::DomainValidator do
+describe Mashcard::Validators::UsernameValidator do
   subject do
     Class.new do
       include ActiveModel::Model
@@ -10,7 +10,7 @@ describe Mashcard::Validators::DomainValidator do
       include Mashcard::Validators
       attr_accessor :name
 
-      validates :name, domain: true
+      validates :name, username: true
     end.new
   end
 

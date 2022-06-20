@@ -7044,6 +7044,12 @@
           "interfaces": null,
           "enumValues": [
             {
+              "name": "owner",
+              "description": "OWNER",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "admin",
               "description": "ADMIN",
               "isDeprecated": false,

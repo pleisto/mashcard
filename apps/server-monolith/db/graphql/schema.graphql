@@ -2068,6 +2068,11 @@ enum MemberRole {
   MEMBER
   """
   member
+
+  """
+  OWNER
+  """
+  owner
 }
 
 enum MemberState {

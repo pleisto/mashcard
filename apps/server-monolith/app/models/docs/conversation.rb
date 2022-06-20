@@ -27,7 +27,7 @@ module Docs
   class Conversation < ApplicationRecord
     belongs_to :doc, class_name: 'Docs::Block'
     belongs_to :pod, optional: true
-    belongs_to :creator, class_name: 'Accounts::User'
+    belongs_to :creator, class_name: 'User'
     has_many :comments, dependent: :restrict_with_exception
     has_many :notifications, class_name: 'Accounts::Notification', as: :source, dependent: :restrict_with_exception
 
@@ -98,8 +98,6 @@ module Docs
           content: content,
           creator_id: creator.id
         )
-
-        conversation
       end
     end
 

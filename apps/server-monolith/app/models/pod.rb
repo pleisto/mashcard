@@ -4,72 +4,53 @@
 #
 # Table name: pods
 #
-#  id                                          :bigint           not null, primary key
-#  bio("Bio" means Biography in social media.) :string(140)
-#  deleted_at                                  :datetime
-#  domain                                      :string           not null
-#  invite_enable                               :boolean          default(FALSE), not null
-#  invite_secret                               :string
-#  name                                        :string           not null
-#  personal                                    :boolean          default(FALSE), not null
-#  created_at                                  :datetime         not null
-#  updated_at                                  :datetime         not null
-#  owner_id                                    :bigint           not null
+#  id                                                                         :bigint           not null, primary key
+#  bio("Bio" means Biography in social media.)                                :string(140)
+#  deleted_at                                                                 :datetime
+#  display_name                                                               :string           not null
+#  external_avatar_url                                                        :string
+#  last_block_ids                                                             :json             not null
+#  last_pod_username                                                          :string
+#  suspended_at(the date when the user was suspended)                         :datetime
+#  suspended_reason(enumeration value for the reason for the user suspension) :integer          default(0)
+#  type                                                                       :enum             not null
+#  username                                                                   :string           not null
+#  created_at                                                                 :datetime         not null
+#  updated_at                                                                 :datetime         not null
 #
 # Indexes
 #
-#  index_pods_on_deleted_at         (deleted_at)
-#  index_pods_on_invite_secret      (invite_secret) UNIQUE
-#  index_pods_on_lower_domain_text  (lower((domain)::text)) UNIQUE
-#  index_pods_on_owner_id           (owner_id)
+#  index_pods_on_deleted_at           (deleted_at)
+#  index_pods_on_lower_username_text  (lower((username)::text)) UNIQUE
+#  index_pods_on_type                 (type)
 #
 class Pod < ApplicationRecord
   acts_as_paranoid
-  belongs_to :owner, class_name: 'Accounts::User'
-  validates :domain, presence: true, domain: true, uniqueness: { case_sensitive: false, conditions: -> {
-                                                                                                      with_deleted
-                                                                                                    }, }
-  validates :name, presence: true
-  validates :name, presence: true
-  validates :owner_id, uniqueness: { scope: :personal, if: proc { personal? } }
+
+  include Hashedidable
+  include Inviteable
+
+  def config
+    MashcardConfig.at(user_id: id)
+  end
+
+  validates :username, presence: true, username: true, uniqueness: { case_sensitive: false, conditions: -> {
+                                                                                                          with_deleted
+                                                                                                        }, }
+  validates :display_name, presence: true
   has_many :blocks, class_name: 'Docs::Block', dependent: :destroy
   has_many :share_links, dependent: :restrict_with_exception, class_name: 'Docs::ShareLink'
-  has_many :members, -> { enabled }, class_name: 'Accounts::Member', dependent: :destroy, inverse_of: :pod
-  has_many :all_members, class_name: 'Accounts::Member', dependent: :destroy
-  has_many :users, class_name: 'Accounts::User', through: :members
-
-  before_save :set_invite_secret
-  after_create :ensure_owner_member!
 
   ANYONE_DOMAIN = 'anyone'
   ANONYMOUS_DOMAIN = 'anonymous'
 
-  delegate :email, to: :owner
-  default_value_for :personal, false
+  # delegate :email, to: :owner
 
   has_one_attached :avatar
 
-  def self.import_avatar(_url)
-    nil
-    # io = URI.open(url)
-    # filename = File.basename(URI.parse(url).path)
-    # key = "global/#{ActiveStorage::Blob.generate_unique_secure_token}_#{filename}"
-    # blob = ActiveStorage::Blob.create_and_upload!(key: key, io: io, service_name: service_name, filename: filename)
-    # blob.signed_id
-  end
-
-  def pod_attributes
-    attributes.merge('avatar_data' => avatar_data)
-  end
-
-  ## NOTE persist pod_id and user_id
-  def fix_avatar!
-    blob = avatar.blob
-    return if blob.nil?
-    return if blob.pod_id && blob.user_id
-
-    blob.update_columns(pod_id: id, user_id: owner_id)
-  end
+  # TODO: remove this
+  alias_attribute :name, :display_name
+  alias_attribute :domain, :username
 
   def avatar_data
     return nil if avatar.blob.nil?
@@ -81,13 +62,35 @@ class Pod < ApplicationRecord
     }
   end
 
-  def self.domain_available?(domain)
+  def pod_as_json
+    {
+      id: id,
+      avatar_data: avatar_data,
+      bio: bio,
+      domain: username,
+      email: owner.email,
+      name: display_name,
+    }
+  end
+
+  def pod_as_json_by_user(user)
+    owned = owner.id === user.id
+    personal = id === user.id
+    pod_as_json.merge(
+      owned: owned,
+      personal: personal,
+      invite_enable: owned ? invite_enable : nil,
+      invite_secret: owned ? invite_secret : nil,
+    )
+  end
+
+  def self.domain_available?(username)
     instance = new
-    instance.domain = domain
+    instance.username = username
 
     return { success: true, message: 'ok' } if instance.valid?
 
-    errors = instance.errors[:domain]
+    errors = instance.errors[:username]
 
     if errors.blank?
       { success: true, message: 'ok' }
@@ -97,7 +100,7 @@ class Pod < ApplicationRecord
   end
 
   ANONYMOUS_CONTEXT = {
-    'domain' => ANONYMOUS_DOMAIN,
+    'username' => ANONYMOUS_DOMAIN,
     'id' => nil,
   }
 
@@ -107,25 +110,8 @@ class Pod < ApplicationRecord
     end
   end
 
-  def hashed_id
-    Mashcard::Crypto.int_id_obfuscate(id)
-  end
-
   def as_session_context
-    attributes.slice('id', 'domain', 'owner_id').merge('id_hash' => hashed_id)
-  end
-
-  def generate_invite_secret
-    secret = Digest::SHA256.hexdigest("#{id}-#{Time.now.to_i}-#{Mashcard::Crypto.derive_key(:hash_salt)}")
-    "#{secret[0...16]}#{hashed_id}#{secret[60..64]}"
-  end
-
-  def set_invite_secret
-    if invite_enable
-      self.invite_secret = generate_invite_secret if invite_secret.blank?
-    else
-      self.invite_secret = nil
-    end
+    { 'id' => id, 'username' => username, 'id_hash' => hashed_id }
   end
 
   def destroy_pod!

@@ -23,7 +23,7 @@ describe Mutations::Pods::UpdateMember, type: :mutation do
     it 'invalid user' do
       user = create(:accounts_user)
       domain = 'invalid-user-spec'
-      pod = user.own_pods.create!(domain: domain, name: domain)
+      pod = user.create_own_group!(username: domain, display_name: domain)
 
       self.current_user = user
       self.current_pod = pod.as_session_context
@@ -37,13 +37,13 @@ describe Mutations::Pods::UpdateMember, type: :mutation do
     it 'invalid member' do
       user = create(:accounts_user)
       domain = 'invalid-member-spec'
-      pod = user.own_pods.create!(domain: domain, name: domain)
+      pod = user.create_own_group!(username: domain, display_name: domain)
 
       self.current_user = user
       self.current_pod = pod.as_session_context
 
       user2 = create(:accounts_user)
-      input = { input: { domain: user2.domain, role: 'admin', state: 'enabled' } }
+      input = { input: { domain: user2.username, role: 'admin', state: 'enabled' } }
       graphql_execute(mutation, input)
       expect(response.success?).to be false
       expect(response.errors[0]['message']).to eq(I18n.t('errors.graphql.argument_error.invalid_member'))
@@ -52,7 +52,7 @@ describe Mutations::Pods::UpdateMember, type: :mutation do
     it 'work' do
       user = create(:accounts_user)
       domain = 'work-spec'
-      pod = user.own_pods.create!(domain: domain, name: domain)
+      pod = user.create_own_group!(username: domain, display_name: domain)
 
       self.current_user = user
       self.current_pod = pod.as_session_context
@@ -61,7 +61,7 @@ describe Mutations::Pods::UpdateMember, type: :mutation do
 
       member = pod.members.create!(user_id: user2.id, role: 'admin')
 
-      input = { input: { domain: user2.domain, role: 'member', state: 'enabled' } }
+      input = { input: { domain: user2.username, role: 'member', state: 'enabled' } }
       graphql_execute(mutation, input)
       expect(response.success?).to be true
       expect(response.errors).to eq({})

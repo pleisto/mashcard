@@ -119,7 +119,7 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             This pull request has been built and is available for preview at [${{ env.domain }}](https://${{ env.domain }}).
-            Default username/password is `test1@example.com` & `test123`.
+            Default username/password is `test1@example.com` & `test1234`.
             ## Devtools
             * [Mailer Mock](https://${{ env.domain }}/devtools/mailer)
             * [Pod Logs (For internal use only)](https://console.cloud.google.com/logs/query?project=brickdoc-testnet)

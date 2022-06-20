@@ -20,7 +20,7 @@
 module Docs
   class Comment < ApplicationRecord
     belongs_to :conversation, class_name: 'Docs::Conversation'
-    belongs_to :creator, class_name: 'Accounts::User'
+    belongs_to :creator, class_name: 'User'
     has_many :notifications, class_name: 'Accounts::Notification', as: :source, dependent: :restrict_with_exception
 
     before_create do

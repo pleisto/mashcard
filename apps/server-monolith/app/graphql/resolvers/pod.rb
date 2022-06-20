@@ -9,12 +9,10 @@ module Resolvers
     authenticate_user!
 
     def resolve(domain:)
-      pod = current_user.pods.find_by(domain: domain)
-      is_owner = pod.owner_id == current_user.id
-      pod.as_json.merge({
-        owned: is_owner,
-        invite_secret: is_owner ? pod.invite_secret : nil,
-      })
+      pod = current_user.pods([:owner]).find { |p| p.username == domain }
+      raise Mashcard::GraphQL::Errors::ArgumentError, :invalid_pod if pod.nil?
+
+      pod.pod_as_json_by_user(current_user)
     end
   end
 end

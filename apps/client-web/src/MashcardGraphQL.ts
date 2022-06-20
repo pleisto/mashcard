@@ -1085,7 +1085,9 @@ export enum MemberRole {
   /** ADMIN */
   Admin = 'admin',
   /** MEMBER */
-  Member = 'member'
+  Member = 'member',
+  /** OWNER */
+  Owner = 'owner'
 }
 
 export enum MemberState {

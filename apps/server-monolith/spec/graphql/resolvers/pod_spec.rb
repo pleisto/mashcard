@@ -23,11 +23,25 @@ describe Resolvers::Pod, type: :query do
       }
     GRAPHQL
 
-    it 'works' do
+    it 'unauthenticated user' do
       graphql_execute(query, { domain: 'foo-bar' })
+      expect(response.success?).to be false
+    end
+
+    it 'invalid' do
+      user = create(:accounts_user)
+      self.current_user = user
+      self.current_pod = user.personal_pod.as_session_context
+      graphql_execute(query, { domain: 'invalid domain' })
 
       expect(response.success?).to be false
+      expect(response.errors[0]['message']).to eq(I18n.t('errors.graphql.argument_error.invalid_pod'))
 
+      self.current_user = nil
+      self.current_pod = nil
+    end
+
+    it 'works' do
       user = create(:accounts_user)
       self.current_user = user
       self.current_pod = user.personal_pod.as_session_context

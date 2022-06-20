@@ -7,12 +7,8 @@ module Resolvers
     authenticate_user!
 
     def resolve
-      pods = current_user.pods.with_attached_avatar.to_a
-      pods.map do |pod|
-        is_owner = pod.owner_id == current_user.id
-        pod.pod_attributes.merge(email: current_user.email, owned: is_owner,
-          invite_secret: is_owner ? pod.invite_secret : nil)
-      end
+      pods = current_user.pods([:owner, :avatar_attachment]).to_a
+      pods.map { |pod| pod.pod_as_json_by_user(current_user) }
     end
   end
 end

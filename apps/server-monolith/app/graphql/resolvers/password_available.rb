@@ -8,7 +8,7 @@ module Resolvers
     argument :password, GraphQL::Types::String, required: true
 
     def resolve(password:)
-      Accounts::User.password_available? password
+      ::Users::Authentication.password_available? password
     end
   end
 end

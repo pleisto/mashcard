@@ -20,12 +20,12 @@ module Mutations
         # session is lazy load, so wo require keys method to warn.
         context[:session].keys
 
-        user = Accounts::User.new
-        user.domain = args[:domain]
-        user.name = args[:name]
-        omniauth = false
+        user = User.new
+        user.username = args[:domain]
+        user.display_name = args[:name]
+        # omniauth = false
         if context[:session][:omniauth].present? && args[:password].blank?
-          omniauth = true
+          # omniauth = true
           federated_identity_sign_up(user)
         else
           email_password_sign_up(user, args[:email], args[:password])
@@ -33,11 +33,10 @@ module Mutations
         user.save
         user.config.set(:locale, args[:locale])
         user.config.set(:timezone, args[:timezone])
-        user.personal_pod.fix_avatar! if omniauth
 
         return { errors: errors_on_object(user) } unless user.valid?
 
-        if user.active_for_authentication?
+        if user.authentication.active_for_authentication?
           sign_in(user)
           context[:session].delete(:omniauth)
           { redirect_path: redirect_path, is_user_active: true }
@@ -56,13 +55,13 @@ module Mutations
         user.email = email
         user.password = password
         # password_confirmation has been validated on the client-side
-        user.password_confirmation = password
+        # user.password_confirmation = password
       end
 
       def federated_identity_sign_up(user)
         omniauth = context[:session][:omniauth].with_indifferent_access
         user.email = omniauth[:info][:email]
-        user.avatar = Pod.import_avatar omniauth[:info][:avatar]
+        user.external_avatar_url = omniauth[:info][:avatar]
         user.omniauth_provider = omniauth[:provider]
         user.omniauth_uid = omniauth[:uid]
       end

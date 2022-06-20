@@ -21,6 +21,10 @@ class MashcardConfig < ApplicationRecord
 
   field :locale, default: 'en-US', belongs_to: :user
   field :timezone, default: 'UTC', belongs_to: :user
+
+  # Enable invite feature
+  field :invite_enable, default: false, belongs_to: :pod
+
   field :host, default: (Rails.env.development? ? 'localhost' : Mashcard::Runtime.hostname)
 
   # ActionMailer

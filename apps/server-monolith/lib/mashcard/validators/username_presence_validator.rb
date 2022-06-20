@@ -2,12 +2,12 @@
 
 module Mashcard
   module Validators
-    class DomainPresenceValidator < ActiveModel::Validator
+    class UsernamePresenceValidator < ActiveModel::Validator
       def validate(record)
         field = options[:field]
-        domain = record.send(field)
+        username = record.send(field)
 
-        exists = Pod.exists?(domain: domain)
+        exists = Pod.exists?(username: username)
 
         record.errors.add field, ::I18n.t('errors.messages.domain_presence_invalid') unless exists
       end

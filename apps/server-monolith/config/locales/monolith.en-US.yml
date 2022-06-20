@@ -7,13 +7,6 @@ en-US:
   unsupported_browser:
     title: 'Upgrade your browser'
     download_latest_browser_html: Unfortunately, MashCard has updated features that can't run on this version of your browser.
-  activerecord:
-    errors:
-      models:
-        accounts/user:
-          attributes:
-            password:
-              too_short: too short
   mailer:
     footer_message: You're receiving this email because you have an account on %{host}.
     copy_this_url: "Copy this url if the button above doesn't work:"
@@ -44,6 +37,12 @@ en-US:
       uuid_invalid: is not an uuid
       domain_presence_invalid: is not presence
       InvalidImageUrl: Invalid image url
+      too_short:
+        one: is too short (minimum is 1 character)
+        other: is too short (minimum is %{count} characters)
+      too_long:
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
     app_error:
       not_found_title: Whoops! Lost in MashCard?
       not_found_content: The page you're looking for couldn't be found.

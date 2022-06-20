@@ -17,7 +17,7 @@
 #
 class Docs::BlockState < ApplicationRecord # rubocop:disable Style/ClassAndModuleChildren
   belongs_to :pod
-  belongs_to :user, class_name: 'Accounts::User'
+  belongs_to :user, class_name: 'User'
   belongs_to :history, class_name: 'Docs::DocumentHistory'
 
   before_validation do
