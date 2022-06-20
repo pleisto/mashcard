@@ -22,7 +22,7 @@ permissions:
 env:
   YARN_CHECKSUM_BEHAVIOR: update
   image: ghcr.io/mashcard/mashcard-nightly:${{ github.run_id }}
-  domain: trunk.brickdoc.dev
+  domain: trunk.mashcard.dev
   GCP_PROJECT: brickdoc-testnet
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
   SENTRY_ORG: brickdoc-inc
