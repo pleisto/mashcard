@@ -109,14 +109,16 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
               css={ActionButtonStyle}
               type="text"
               onClick={onClickRestore}
-              data-testid={TEST_ID_ENUM.trash.pageItem.button.restore.id}>
+              data-testid={TEST_ID_ENUM.trash.pageItem.button.restore.id}
+            >
               <Undo />
             </Button>
             <Button
               css={ActionButtonStyle}
               type="text"
               onClick={() => setHardDeleteModalVisible(true)}
-              data-testid={TEST_ID_ENUM.trash.pageItem.button.remove.id}>
+              data-testid={TEST_ID_ENUM.trash.pageItem.button.remove.id}
+            >
               <Delete />
             </Button>
           </>
@@ -131,7 +133,8 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
         cancelBtnText={t('trash.delete_confirmation_cancel')}
         onCancel={onCancelDelete}
         onConfirm={onDeleteConfrim}
-        open={hardDeleteModalVisible}>
+        open={hardDeleteModalVisible}
+      >
         {t('trash.delete_confirmation_body')}
       </ConfirmDialog>
     </>

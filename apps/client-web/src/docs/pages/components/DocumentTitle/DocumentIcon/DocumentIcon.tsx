@@ -30,7 +30,8 @@ export const DocumentIcon: React.FC<DocumentIconProps> = ({ documentIconMeta, on
       width={{
         '@smDown': 'sm'
       }}
-      data-testid={TEST_ID_ENUM.page.DocumentPage.titleIcon.id}>
+      data-testid={TEST_ID_ENUM.page.DocumentPage.titleIcon.id}
+    >
       {documentIconMeta.type === BlockType.Emoji && (
         <EmojiIcon aria-label={documentIconMeta.name}>{documentIconMeta.emoji}</EmojiIcon>
       )}

@@ -40,9 +40,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:119](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L119)
+[packages/brickdoc-formula/src/controls/types.ts:119](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L119)
 
-___
+---
 
 ### <a id="findkey" name="findkey"></a> findKey
 
@@ -50,9 +50,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:111](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L111)
+[packages/brickdoc-formula/src/controls/types.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L111)
 
-___
+---
 
 ### <a id="handlecodefragments" name="handlecodefragments"></a> handleCodeFragments
 
@@ -60,9 +60,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:117](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L117)
+[packages/brickdoc-formula/src/controls/types.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L117)
 
-___
+---
 
 ### <a id="handleinterpret" name="handleinterpret"></a> handleInterpret
 
@@ -70,9 +70,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:118](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L118)
+[packages/brickdoc-formula/src/controls/types.ts:118](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L118)
 
-___
+---
 
 ### <a id="logic" name="logic"></a> logic
 
@@ -80,9 +80,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:113](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L113)
+[packages/brickdoc-formula/src/controls/types.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L113)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -90,9 +90,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:110](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L110)
+[packages/brickdoc-formula/src/controls/types.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L110)
 
-___
+---
 
 ### <a id="rowid" name="rowid"></a> rowId
 
@@ -104,9 +104,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:104](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L104)
+[packages/brickdoc-formula/src/controls/types.ts:104](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L104)
 
-___
+---
 
 ### <a id="rowindex" name="rowindex"></a> rowIndex
 
@@ -118,9 +118,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:105](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L105)
+[packages/brickdoc-formula/src/controls/types.ts:105](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L105)
 
-___
+---
 
 ### <a id="spreadsheet" name="spreadsheet"></a> spreadsheet
 
@@ -128,9 +128,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:109](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L109)
+[packages/brickdoc-formula/src/controls/types.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L109)
 
-___
+---
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
 
@@ -142,7 +142,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:103](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L103)
+[packages/brickdoc-formula/src/controls/types.ts:103](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L103)
 
 ## Methods
 
@@ -156,9 +156,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:114](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L114)
+[packages/brickdoc-formula/src/controls/types.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L114)
 
-___
+---
 
 ### <a id="key" name="key"></a> key
 
@@ -170,9 +170,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:115](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L115)
+[packages/brickdoc-formula/src/controls/types.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L115)
 
-___
+---
 
 ### <a id="listcells" name="listcells"></a> listCells
 
@@ -184,9 +184,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:112](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L112)
+[packages/brickdoc-formula/src/controls/types.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L112)
 
-___
+---
 
 ### <a id="newcell" name="newcell"></a> newCell
 
@@ -194,10 +194,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `cell` | [`Cell`](Cell.md) |
-| `columnKey` | `string` |
+| Name        | Type              |
+| :---------- | :---------------- |
+| `cell`      | [`Cell`](Cell.md) |
+| `columnKey` | `string`          |
 
 #### Returns
 
@@ -205,4 +205,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:116](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L116)
+[packages/brickdoc-formula/src/controls/types.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L116)

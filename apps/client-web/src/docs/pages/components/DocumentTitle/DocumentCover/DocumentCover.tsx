@@ -54,7 +54,8 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
       data-testid={TEST_ID_ENUM.page.DocumentPage.cover.id}
       uncover={!documentCoverMeta}
       className={className}
-      css={style}>
+      css={style}
+    >
       {documentCoverMeta?.type === BlockType.Image && <ImageWithSpin src={value} />}
       <Root.Actions>
         {editable && (
@@ -64,7 +65,8 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
                 <Button
                   data-testid={TEST_ID_ENUM.page.DocumentPage.changeCoverButton.id}
                   type="secondary"
-                  disabled={!editable}>
+                  disabled={!editable}
+                >
                   {t('title.change_cover')}
                 </Button>
               </Popover>

@@ -24,9 +24,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:157](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L157)
+[packages/brickdoc-formula/src/controls/types.ts:157](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L157)
 
-___
+---
 
 ### <a id="ctx" name="ctx"></a> ctx
 
@@ -34,9 +34,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:154](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L154)
+[packages/brickdoc-formula/src/controls/types.ts:154](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L154)
 
-___
+---
 
 ### <a id="dynamic" name="dynamic"></a> dynamic
 
@@ -44,9 +44,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:155](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L155)
+[packages/brickdoc-formula/src/controls/types.ts:155](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L155)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -54,9 +54,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:156](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L156)
+[packages/brickdoc-formula/src/controls/types.ts:156](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L156)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -64,9 +64,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:153](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L153)
+[packages/brickdoc-formula/src/controls/types.ts:153](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L153)
 
-___
+---
 
 ### <a id="rows" name="rows"></a> rows
 
@@ -74,9 +74,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:158](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L158)
+[packages/brickdoc-formula/src/controls/types.ts:158](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L158)
 
-___
+---
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
 
@@ -84,7 +84,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:152](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L152)
+[packages/brickdoc-formula/src/controls/types.ts:152](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L152)
 
 ## Methods
 
@@ -94,13 +94,13 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-| `__namedParameters.columnId` | `string` |
+| Name                            | Type     |
+| :------------------------------ | :------- |
+| `__namedParameters`             | `Object` |
+| `__namedParameters.columnId`    | `string` |
 | `__namedParameters.columnIndex` | `number` |
-| `__namedParameters.rowId` | `string` |
-| `__namedParameters.rowIndex` | `number` |
+| `__namedParameters.rowId`       | `string` |
+| `__namedParameters.rowIndex`    | `number` |
 
 #### Returns
 
@@ -108,4 +108,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:159](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L159)
+[packages/brickdoc-formula/src/controls/types.ts:159](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L159)

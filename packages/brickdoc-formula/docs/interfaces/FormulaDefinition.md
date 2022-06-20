@@ -16,9 +16,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:355](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L355)
+[packages/brickdoc-formula/src/types/index.ts:355](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L355)
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -26,9 +26,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:356](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L356)
+[packages/brickdoc-formula/src/types/index.ts:356](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L356)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -36,4 +36,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:357](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L357)
+[packages/brickdoc-formula/src/types/index.ts:357](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L357)

@@ -21,9 +21,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:228](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L228)
+[packages/brickdoc-formula/src/controls/types.ts:228](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L228)
 
-___
+---
 
 ### <a id="fn" name="fn"></a> fn
 
@@ -31,4 +31,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/types.ts:229](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/types.ts#L229)
+[packages/brickdoc-formula/src/controls/types.ts:229](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/types.ts#L229)

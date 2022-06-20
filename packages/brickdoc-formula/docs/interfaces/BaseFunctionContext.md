@@ -21,9 +21,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:541](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L541)
+[packages/brickdoc-formula/src/types/index.ts:541](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L541)
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -31,4 +31,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:542](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L542)
+[packages/brickdoc-formula/src/types/index.ts:542](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L542)

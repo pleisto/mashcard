@@ -27,19 +27,19 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:735](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L735)
+[packages/brickdoc-formula/src/types/index.ts:735](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L735)
 
-___
+---
 
 ### <a id="kind" name="kind"></a> kind
 
-• `Readonly` **kind**: ``"Block"`` \| ``"Spreadsheet"`` \| ``"Variable"``
+• `Readonly` **kind**: `"Block"` \| `"Spreadsheet"` \| `"Variable"`
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:736](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L736)
+[packages/brickdoc-formula/src/types/index.ts:736](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L736)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -51,9 +51,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:731](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L731)
+[packages/brickdoc-formula/src/types/index.ts:731](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L731)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:730](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L730)
+[packages/brickdoc-formula/src/types/index.ts:730](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L730)
 
 ## Methods
 
@@ -75,10 +75,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name               | Type      |
+| :----------------- | :-------- |
 | `namespaceIsExist` | `boolean` |
-| `namespaceId` | `string` |
+| `namespaceId`      | `string`  |
 
 #### Returns
 
@@ -86,4 +86,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:737](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L737)
+[packages/brickdoc-formula/src/types/index.ts:737](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L737)

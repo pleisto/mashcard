@@ -18,9 +18,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:759](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L759)
+[packages/brickdoc-formula/src/types/index.ts:759](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L759)
 
-___
+---
 
 ### <a id="display" name="display"></a> display
 
@@ -28,9 +28,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:763](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L763)
+[packages/brickdoc-formula/src/types/index.ts:763](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L763)
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -38,9 +38,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:762](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L762)
+[packages/brickdoc-formula/src/types/index.ts:762](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L762)
 
-___
+---
 
 ### <a id="result" name="result"></a> result
 
@@ -48,9 +48,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:760](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L760)
+[packages/brickdoc-formula/src/types/index.ts:760](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L760)
 
-___
+---
 
 ### <a id="version" name="version"></a> version
 
@@ -58,4 +58,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:761](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L761)
+[packages/brickdoc-formula/src/types/index.ts:761](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L761)

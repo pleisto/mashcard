@@ -24,9 +24,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:246](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L246)
+[packages/brickdoc-formula/src/types/index.ts:246](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L246)
 
-___
+---
 
 ### <a id="result" name="result"></a> result
 
@@ -38,13 +38,13 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:244](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L244)
+[packages/brickdoc-formula/src/types/index.ts:244](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L244)
 
-___
+---
 
 ### <a id="subtype" name="subtype"></a> subType
 
-• `Optional` **subType**: ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Date"`` \| ``"Block"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"``
+• `Optional` **subType**: `"string"` \| `"number"` \| `"boolean"` \| `"Block"` \| `"null"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"`
 
 #### Inherited from
 
@@ -52,13 +52,13 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:160](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L160)
+[packages/brickdoc-formula/src/types/index.ts:160](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L160)
 
-___
+---
 
 ### <a id="type" name="type"></a> type
 
-• **type**: ``"Error"``
+• **type**: `"Error"`
 
 #### Overrides
 
@@ -66,9 +66,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:245](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L245)
+[packages/brickdoc-formula/src/types/index.ts:245](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L245)
 
-___
+---
 
 ### <a id="view" name="view"></a> view
 
@@ -80,4 +80,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:158](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L158)
+[packages/brickdoc-formula/src/types/index.ts:158](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L158)

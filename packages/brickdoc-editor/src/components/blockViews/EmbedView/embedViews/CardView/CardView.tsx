@@ -79,12 +79,14 @@ export const CardView: FC<CardViewProps> = ({
       contentForCopy={linkUrl}
       deleteNode={deleteNode}
       getPos={getPos}
-      actionOptions={actionOptions}>
+      actionOptions={actionOptions}
+    >
       <CardContainer
         contentType={type}
         data-testid={TEST_ID_ENUM.editor.embedBlock.link.id}
         size="md"
-        onClick={onClick}>
+        onClick={onClick}
+      >
         <CardCover blockType={blockType} cover={cover} icon={icon} />
         <Content type={type}>
           {displayName && <Title type={type}>{displayName}</Title>}

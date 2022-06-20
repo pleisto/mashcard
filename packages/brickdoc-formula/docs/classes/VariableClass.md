@@ -51,15 +51,15 @@
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
+| Name                               | Type                                                    |
+| :--------------------------------- | :------------------------------------------------------ |
+| `__namedParameters`                | `Object`                                                |
 | `__namedParameters.formulaContext` | [`ContextInterface`](../interfaces/ContextInterface.md) |
-| `__namedParameters.t` | [`VariableData`](../interfaces/VariableData.md) |
+| `__namedParameters.t`              | [`VariableData`](../interfaces/VariableData.md)         |
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:109](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L109)
+[packages/brickdoc-formula/src/context/variable.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L109)
 
 ## Properties
 
@@ -69,9 +69,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:106](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L106)
+[packages/brickdoc-formula/src/context/variable.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L106)
 
-___
+---
 
 ### <a id="currentuuid" name="currentuuid"></a> currentUUID
 
@@ -83,9 +83,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:105](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L105)
+[packages/brickdoc-formula/src/context/variable.ts:105](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L105)
 
-___
+---
 
 ### <a id="eventdependencies" name="eventdependencies"></a> eventDependencies
 
@@ -93,9 +93,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:107](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L107)
+[packages/brickdoc-formula/src/context/variable.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L107)
 
-___
+---
 
 ### <a id="eventlisteners" name="eventlisteners"></a> eventListeners
 
@@ -103,9 +103,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:104](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L104)
+[packages/brickdoc-formula/src/context/variable.ts:104](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L104)
 
-___
+---
 
 ### <a id="formulacontext" name="formulacontext"></a> formulaContext
 
@@ -117,9 +117,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:100](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L100)
+[packages/brickdoc-formula/src/context/variable.ts:100](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L100)
 
-___
+---
 
 ### <a id="id" name="id"></a> id
 
@@ -131,9 +131,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:101](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L101)
+[packages/brickdoc-formula/src/context/variable.ts:101](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L101)
 
-___
+---
 
 ### <a id="isnew" name="isnew"></a> isNew
 
@@ -145,9 +145,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:98](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L98)
+[packages/brickdoc-formula/src/context/variable.ts:98](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L98)
 
-___
+---
 
 ### <a id="isreadyt" name="isreadyt"></a> isReadyT
 
@@ -159,9 +159,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:99](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L99)
+[packages/brickdoc-formula/src/context/variable.ts:99](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L99)
 
-___
+---
 
 ### <a id="t" name="t"></a> t
 
@@ -173,9 +173,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:97](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L97)
+[packages/brickdoc-formula/src/context/variable.ts:97](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L97)
 
-___
+---
 
 ### <a id="ticktimeout" name="ticktimeout"></a> tickTimeout
 
@@ -183,7 +183,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:103](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L103)
+[packages/brickdoc-formula/src/context/variable.ts:103](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L103)
 
 ## Methods
 
@@ -193,8 +193,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type                                                      |
+| :------- | :-------------------------------------------------------- |
 | `input?` | [`FormulaDefinition`](../interfaces/FormulaDefinition.md) |
 
 #### Returns
@@ -207,9 +207,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:311](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L311)
+[packages/brickdoc-formula/src/context/variable.ts:311](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L311)
 
-___
+---
 
 ### <a id="cleanup" name="cleanup"></a> cleanup
 
@@ -225,9 +225,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:212](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L212)
+[packages/brickdoc-formula/src/context/variable.ts:212](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L212)
 
-___
+---
 
 ### <a id="completetask" name="completetask"></a> completeTask
 
@@ -235,9 +235,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
+| Name                     | Type                                        |
+| :----------------------- | :------------------------------------------ |
+| `__namedParameters`      | `Object`                                    |
 | `__namedParameters.task` | [`VariableTask`](../README.md#variabletask) |
 
 #### Returns
@@ -246,9 +246,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:202](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L202)
+[packages/brickdoc-formula/src/context/variable.ts:202](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L202)
 
-___
+---
 
 ### <a id="maybereparseandpersist" name="maybereparseandpersist"></a> maybeReparseAndPersist
 
@@ -256,12 +256,12 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `source` | `string` |
-| `sourceUuid` | `string` |
-| `level` | `number` |
-| `input?` | [`FormulaDefinition`](../interfaces/FormulaDefinition.md) |
+| Name         | Type                                                      |
+| :----------- | :-------------------------------------------------------- |
+| `source`     | `string`                                                  |
+| `sourceUuid` | `string`                                                  |
+| `level`      | `number`                                                  |
+| `input?`     | [`FormulaDefinition`](../interfaces/FormulaDefinition.md) |
 
 #### Returns
 
@@ -269,9 +269,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:329](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L329)
+[packages/brickdoc-formula/src/context/variable.ts:329](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L329)
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -287,9 +287,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:274](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L274)
+[packages/brickdoc-formula/src/context/variable.ts:274](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L274)
 
-___
+---
 
 ### <a id="namedependency" name="namedependency"></a> nameDependency
 
@@ -305,9 +305,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:285](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L285)
+[packages/brickdoc-formula/src/context/variable.ts:285](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L285)
 
-___
+---
 
 ### <a id="namespacename" name="namespacename"></a> namespaceName
 
@@ -315,8 +315,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type     |
+| :------- | :------- |
 | `pageId` | `string` |
 
 #### Returns
@@ -329,9 +329,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:265](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L265)
+[packages/brickdoc-formula/src/context/variable.ts:265](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L265)
 
-___
+---
 
 ### <a id="onupdate" name="onupdate"></a> onUpdate
 
@@ -339,10 +339,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-| `__namedParameters.level?` | `number` |
+| Name                             | Type      |
+| :------------------------------- | :-------- |
+| `__namedParameters`              | `Object`  |
+| `__namedParameters.level?`       | `number`  |
 | `__namedParameters.skipPersist?` | `boolean` |
 
 #### Returns
@@ -355,9 +355,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:152](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L152)
+[packages/brickdoc-formula/src/context/variable.ts:152](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L152)
 
-___
+---
 
 ### <a id="save" name="save"></a> save
 
@@ -373,9 +373,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:307](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L307)
+[packages/brickdoc-formula/src/context/variable.ts:307](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L307)
 
-___
+---
 
 ### <a id="setupeventdependencies" name="setupeventdependencies"></a> setupEventDependencies
 
@@ -387,9 +387,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:386](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L386)
+[packages/brickdoc-formula/src/context/variable.ts:386](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L386)
 
-___
+---
 
 ### <a id="starttask" name="starttask"></a> startTask
 
@@ -397,9 +397,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
+| Name                     | Type                                        |
+| :----------------------- | :------------------------------------------ |
+| `__namedParameters`      | `Object`                                    |
 | `__namedParameters.task` | [`VariableTask`](../README.md#variabletask) |
 
 #### Returns
@@ -408,9 +408,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:195](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L195)
+[packages/brickdoc-formula/src/context/variable.ts:195](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L195)
 
-___
+---
 
 ### <a id="subscribedependencies" name="subscribedependencies"></a> subscribeDependencies
 
@@ -422,9 +422,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:518](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L518)
+[packages/brickdoc-formula/src/context/variable.ts:518](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L518)
 
-___
+---
 
 ### <a id="tick" name="tick"></a> tick
 
@@ -432,8 +432,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type     |
+| :----- | :------- |
 | `uuid` | `string` |
 
 #### Returns
@@ -442,9 +442,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:181](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L181)
+[packages/brickdoc-formula/src/context/variable.ts:181](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L181)
 
-___
+---
 
 ### <a id="trackdependency" name="trackdependency"></a> trackDependency
 
@@ -460,9 +460,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:236](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L236)
+[packages/brickdoc-formula/src/context/variable.ts:236](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L236)
 
-___
+---
 
 ### <a id="trackdirty" name="trackdirty"></a> trackDirty
 
@@ -478,9 +478,9 @@ VariableInterface.trackDirty
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:174](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L174)
+[packages/brickdoc-formula/src/context/variable.ts:174](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L174)
 
-___
+---
 
 ### <a id="unsubscripeevents" name="unsubscripeevents"></a> unsubscripeEvents
 
@@ -492,9 +492,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:552](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L552)
+[packages/brickdoc-formula/src/context/variable.ts:552](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L552)
 
-___
+---
 
 ### <a id="updatedefinition" name="updatedefinition"></a> updateDefinition
 
@@ -502,8 +502,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type                                                      |
+| :------ | :-------------------------------------------------------- |
 | `input` | [`FormulaDefinition`](../interfaces/FormulaDefinition.md) |
 
 #### Returns
@@ -516,4 +516,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/context/variable.ts:382](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/context/variable.ts#L382)
+[packages/brickdoc-formula/src/context/variable.ts:382](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/context/variable.ts#L382)

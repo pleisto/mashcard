@@ -19,9 +19,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:50](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L50)
+[packages/brickdoc-formula/src/tests/testType.ts:50](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L50)
 
-___
+---
 
 ### <a id="counter" name="counter"></a> counter
 
@@ -29,7 +29,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:49](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L49)
+[packages/brickdoc-formula/src/tests/testType.ts:49](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L49)
 
 ## Methods
 
@@ -39,8 +39,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type     |
+| :------- | :------- |
 | `number` | `number` |
 
 #### Returns
@@ -49,4 +49,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:48](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L48)
+[packages/brickdoc-formula/src/tests/testType.ts:48](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L48)

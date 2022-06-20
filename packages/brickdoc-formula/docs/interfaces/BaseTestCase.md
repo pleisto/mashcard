@@ -2,9 +2,9 @@
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 ## Table of contents
 
@@ -32,9 +32,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:105](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L105)
+[packages/brickdoc-formula/src/tests/testType.ts:105](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L105)
 
-___
+---
 
 ### <a id="definition" name="definition"></a> definition
 
@@ -42,9 +42,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:102](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L102)
+[packages/brickdoc-formula/src/tests/testType.ts:102](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L102)
 
-___
+---
 
 ### <a id="expected" name="expected"></a> expected
 
@@ -52,9 +52,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:107](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L107)
+[packages/brickdoc-formula/src/tests/testType.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L107)
 
-___
+---
 
 ### <a id="groupoptions" name="groupoptions"></a> groupOptions
 
@@ -62,9 +62,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:104](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L104)
+[packages/brickdoc-formula/src/tests/testType.ts:104](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L104)
 
-___
+---
 
 ### <a id="jesttitle" name="jesttitle"></a> jestTitle
 
@@ -72,9 +72,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:114](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L114)
+[packages/brickdoc-formula/src/tests/testType.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L114)
 
-___
+---
 
 ### <a id="label" name="label"></a> label
 
@@ -82,9 +82,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:106](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L106)
+[packages/brickdoc-formula/src/tests/testType.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L106)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -92,9 +92,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:110](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L110)
+[packages/brickdoc-formula/src/tests/testType.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L110)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -102,9 +102,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:108](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L108)
+[packages/brickdoc-formula/src/tests/testType.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L108)
 
-___
+---
 
 ### <a id="newabbrevinput" name="newabbrevinput"></a> newAbbrevInput
 
@@ -112,9 +112,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:103](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L103)
+[packages/brickdoc-formula/src/tests/testType.ts:103](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L103)
 
-___
+---
 
 ### <a id="position" name="position"></a> position
 
@@ -122,9 +122,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:112](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L112)
+[packages/brickdoc-formula/src/tests/testType.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L112)
 
-___
+---
 
 ### <a id="richtype" name="richtype"></a> richType
 
@@ -132,9 +132,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:111](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L111)
+[packages/brickdoc-formula/src/tests/testType.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L111)
 
-___
+---
 
 ### <a id="todo" name="todo"></a> todo
 
@@ -142,9 +142,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:113](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L113)
+[packages/brickdoc-formula/src/tests/testType.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L113)
 
-___
+---
 
 ### <a id="variableid" name="variableid"></a> variableId
 
@@ -152,4 +152,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:109](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L109)
+[packages/brickdoc-formula/src/tests/testType.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L109)

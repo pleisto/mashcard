@@ -15,7 +15,7 @@ module Mutations
       )
 
       {
-        comment: result
+        comment: result,
       }
     end
   end

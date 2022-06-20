@@ -26,7 +26,8 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ className }) => 
           <Root.Tip>
             {emoji} {path.text || t('title.untitled')}
           </Root.Tip>
-        }>
+        }
+      >
         <Root.Warp fullWidth={!!fullwidth} to={link} data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.id}>
           <Root.Emoji show={Boolean(hasEmoji)} data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.emoji.id}>
             {emoji}
@@ -57,7 +58,8 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ className }) => 
             title={null}
             placement="bottomStart"
             overlayInnerStyle={{ padding: 0, minHeight: 'fit-content' }}
-            trigger={['click', 'hover']}>
+            trigger={['click', 'hover']}
+          >
             <div style={{ display: 'flex' }} data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.id}>
               <Root.Path>...</Root.Path>
               <Root.Split show>/</Root.Split>

@@ -17,9 +17,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:74](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L74)
+[packages/brickdoc-formula/src/tests/testType.ts:74](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L74)
 
-___
+---
 
 ### <a id="pagename" name="pagename"></a> pageName
 
@@ -27,9 +27,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:75](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L75)
+[packages/brickdoc-formula/src/tests/testType.ts:75](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L75)
 
-___
+---
 
 ### <a id="spreadsheets" name="spreadsheets"></a> spreadsheets
 
@@ -37,9 +37,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:77](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L77)
+[packages/brickdoc-formula/src/tests/testType.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L77)
 
-___
+---
 
 ### <a id="variables" name="variables"></a> variables
 
@@ -47,4 +47,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:76](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L76)
+[packages/brickdoc-formula/src/tests/testType.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L76)

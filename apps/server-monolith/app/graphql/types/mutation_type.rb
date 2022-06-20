@@ -2,6 +2,7 @@
 
 module Types
   class MutationType < Types::BaseObject
+    field :awareness_update, subscription: Mutations::Blocks::AwarenessUpdate
     field :block_commit, mutation:  Mutations::Blocks::Commit
     field :block_create, mutation:  Mutations::Blocks::Create
     field :block_create_share_link, mutation: Mutations::Blocks::CreateShareLink
@@ -15,9 +16,9 @@ module Types
     field :block_sync_batch, mutation:  Mutations::Blocks::SyncBatch
     field :conversation_comment_append, mutation: Mutations::ConversationCommentAppend
     field :conversation_comment_create, mutation: Mutations::ConversationCommentCreate
-    field :conversation_resolve, mutation: Mutations::ConversationResolve
-    field :conversation_open, mutation: Mutations::ConversationOpen
     field :conversation_delete, mutation: Mutations::ConversationDelete
+    field :conversation_open, mutation: Mutations::ConversationOpen
+    field :conversation_resolve, mutation: Mutations::ConversationResolve
     field :create_direct_upload, mutation: Mutations::CreateDirectUpload
     field :create_or_update_pod, mutation: Mutations::Pods::CreateOrUpdate
     field :formula_commit, mutation: Mutations::FormulaCommit

@@ -66,7 +66,8 @@ export const SlashMenu: FC<SlashMenuProps> = ({ items, command }) => {
         {!query && recent.length > 0 && (
           <Menu.Group
             title={t('slash_menu.recent')}
-            label={<SlashMenuGroupLabel>{t('slash_menu.recent')}</SlashMenuGroupLabel>}>
+            label={<SlashMenuGroupLabel>{t('slash_menu.recent')}</SlashMenuGroupLabel>}
+          >
             <RecentGroup>
               {recent.map((item, index) => (
                 <RecentItem
@@ -75,7 +76,8 @@ export const SlashMenu: FC<SlashMenuProps> = ({ items, command }) => {
                   onAction={() => command(item)}
                   key={item.key}
                   itemKey={item.key}
-                  active={index === activeIndex}>
+                  active={index === activeIndex}
+                >
                   {cloneElement(item.icon, { className: recentItemIconStyle() })}
                 </RecentItem>
               ))}
@@ -94,7 +96,8 @@ export const SlashMenu: FC<SlashMenuProps> = ({ items, command }) => {
                 itemKey={item.key}
                 icon={cloneElement(item.icon, { className: menuIconStyle() })}
                 label={t(`blocks.${item.key}.label`)}
-                tip={item.alias?.[0] && <Shortcut>{item.alias[0]}</Shortcut>}>
+                tip={item.alias?.[0] && <Shortcut>{item.alias[0]}</Shortcut>}
+              >
                 {item.key === EXPLORE_KEY && (
                   <ExploreItem>
                     <span aria-label={t(`slash_menu.items.${item.key}.label`)}>
@@ -110,7 +113,8 @@ export const SlashMenu: FC<SlashMenuProps> = ({ items, command }) => {
         {!query && (
           <Menu.Group
             title={t('slash_menu.type')}
-            label={<SlashMenuGroupLabel>{t('slash_menu.type')}</SlashMenuGroupLabel>}>
+            label={<SlashMenuGroupLabel>{t('slash_menu.type')}</SlashMenuGroupLabel>}
+          >
             {type.map((item, index) => (
               <Menu.Item
                 data-testid={TEST_ID_ENUM.editor.slashCommands.item.id}

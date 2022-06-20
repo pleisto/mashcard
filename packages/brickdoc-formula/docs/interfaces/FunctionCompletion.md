@@ -32,9 +32,9 @@ BaseCompletion.fallbackPositionOffset
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:452](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L452)
+[packages/brickdoc-formula/src/types/index.ts:452](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L452)
 
-___
+---
 
 ### <a id="fallbackvalue" name="fallbackvalue"></a> fallbackValue
 
@@ -46,9 +46,9 @@ BaseCompletion.fallbackValue
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:451](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L451)
+[packages/brickdoc-formula/src/types/index.ts:451](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L451)
 
-___
+---
 
 ### <a id="flags" name="flags"></a> flags
 
@@ -60,13 +60,13 @@ BaseCompletion.flags
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:449](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L449)
+[packages/brickdoc-formula/src/types/index.ts:449](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L449)
 
-___
+---
 
 ### <a id="kind" name="kind"></a> kind
 
-• `Readonly` **kind**: ``"function"``
+• `Readonly` **kind**: `"function"`
 
 #### Overrides
 
@@ -74,9 +74,9 @@ BaseCompletion.kind
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:458](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L458)
+[packages/brickdoc-formula/src/types/index.ts:458](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L458)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -88,9 +88,9 @@ BaseCompletion.name
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:453](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L453)
+[packages/brickdoc-formula/src/types/index.ts:453](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L453)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -102,9 +102,9 @@ BaseCompletion.namespaceId
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:455](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L455)
+[packages/brickdoc-formula/src/types/index.ts:455](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L455)
 
-___
+---
 
 ### <a id="preview" name="preview"></a> preview
 
@@ -116,9 +116,9 @@ BaseCompletion.preview
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:459](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L459)
+[packages/brickdoc-formula/src/types/index.ts:459](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L459)
 
-___
+---
 
 ### <a id="replacements" name="replacements"></a> replacements
 
@@ -130,9 +130,9 @@ BaseCompletion.replacements
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:450](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L450)
+[packages/brickdoc-formula/src/types/index.ts:450](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L450)
 
-___
+---
 
 ### <a id="weight" name="weight"></a> weight
 
@@ -144,4 +144,4 @@ BaseCompletion.weight
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:448](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L448)
+[packages/brickdoc-formula/src/types/index.ts:448](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L448)

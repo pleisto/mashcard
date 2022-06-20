@@ -55,7 +55,8 @@ export const PreviewView: FC<PreviewViewProps> = ({
       contentForCopy={fileUrl}
       deleteNode={deleteNode}
       getPos={getPos}
-      actionOptions={actionOptions}>
+      actionOptions={actionOptions}
+    >
       <DocumentContainer>
         {isWebsite ? (
           <WebsiteDocument

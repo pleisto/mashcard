@@ -24,7 +24,8 @@ export const ListView: FC<BlockViewProps<{}, {}>> = ({ deleteNode, node, getPos 
       className={className}
       actionOptions={['cut', 'copy', 'delete']}
       deleteNode={deleteNode}
-      getPos={getPos}>
+      getPos={getPos}
+    >
       <NodeViewContent as={as} data-task-list={TaskList.name === node.type.name ? '' : undefined} />
     </BlockContainer>
   )

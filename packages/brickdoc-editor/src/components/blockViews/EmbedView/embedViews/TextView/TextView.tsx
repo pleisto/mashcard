@@ -56,7 +56,8 @@ export const TextView: FC<TextViewProps> = ({
       contentForCopy={url}
       deleteNode={deleteNode}
       getPos={getPos}
-      actionOptions={actionOptions}>
+      actionOptions={actionOptions}
+    >
       <TextViewLayout>
         <EmbedToolbarContainer onClick={handleEmbedToolbarClick}>
           <EmbedToolbarContainerInner>

@@ -1,53 +1,37 @@
 import { FC } from 'react'
 
-import { useDocMeta } from '@/docs/store/DocMeta'
-import { Dropdown, Tooltip, Menu } from '@brickdoc/design-system'
-import { Avatar } from './index.style'
-
-const limit = 5
+import { Avatar, CollaboratorsConatainer } from './index.style'
+import { awarenessInfosVar } from '../../../reactiveVars'
 
 export const CollaboratorsMenu: FC = () => {
-  const { collaborators } = useDocMeta()
-  if (!collaborators.length) {
+  const awarenessInfos = awarenessInfosVar()
+
+  if (!awarenessInfos.length) {
     return <></>
   }
 
-  const hasMore = collaborators.length > limit
+  const currentOperatorId = globalThis.brickdocContext.uuid
+  const userNames: string[] = []
+  // pull current operator to first and unique users
+  const infos = awarenessInfos
+    .sort((a, b) => (a.user.operatorId === currentOperatorId ? 1 : -1))
+    .filter(i => {
+      if (userNames.includes(i.user.name)) return false
+      userNames.push(i.user.name)
+      return true
+    })
 
-  const avatars = collaborators.slice(0, hasMore ? limit - 1 : limit).map((pod, i) => (
-    <Tooltip title={pod.domain} key={i}>
-      <span>
-        <Avatar size={24} pod={pod} />
-      </span>
-    </Tooltip>
-  ))
+  const avatars = infos.map((info, i) => {
+    const pod = { ...info.user, domain: info.user.name }
+    return (
+      <CollaboratorsConatainer title={info.user.name} key={i}>
+        <span>
+          <Avatar size={24} pod={pod} />
+        </span>
+      </CollaboratorsConatainer>
+    )
+  })
+  // style={{ outlineColor: info.user.color }}
 
-  const menu = (
-    <Menu>
-      {collaborators.slice(limit - 1).map(pod => (
-        <Menu.Item icon={<Avatar size={24} pod={pod} />} key={pod.domain} itemKey={pod.domain} label={pod.domain} />
-      ))}
-    </Menu>
-  )
-
-  const moreAvatars = hasMore ? (
-    <Dropdown placement="bottomStart" overlay={menu} trigger="hover" key="extra">
-      <span>
-        <Avatar
-          isMore
-          size={24}
-          pod={{
-            domain: String(collaborators.length - limit + 1)
-          }}
-        />
-      </span>
-    </Dropdown>
-  ) : null
-
-  return (
-    <>
-      {avatars}
-      {moreAvatars}
-    </>
-  )
+  return <>{avatars}</>
 }

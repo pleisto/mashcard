@@ -39,16 +39,16 @@
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `spreadsheet` | [`SpreadsheetType`](../interfaces/SpreadsheetType.md) |
-| `__namedParameters` | [`Row`](../interfaces/Row.md) |
-| `logic` | `boolean` |
-| `findKey` | [`FindKey`](../interfaces/FindKey.md) |
+| Name                | Type                                                  |
+| :------------------ | :---------------------------------------------------- |
+| `spreadsheet`       | [`SpreadsheetType`](../interfaces/SpreadsheetType.md) |
+| `__namedParameters` | [`Row`](../interfaces/Row.md)                         |
+| `logic`             | `boolean`                                             |
+| `findKey`           | [`FindKey`](../interfaces/FindKey.md)                 |
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:26](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L26)
+[packages/brickdoc-formula/src/controls/row.ts:26](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L26)
 
 ## Properties
 
@@ -62,9 +62,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:22](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L22)
+[packages/brickdoc-formula/src/controls/row.ts:22](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L22)
 
-___
+---
 
 ### <a id="listcells" name="listcells"></a> listCells
 
@@ -84,9 +84,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:45](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L45)
+[packages/brickdoc-formula/src/controls/row.ts:45](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L45)
 
-___
+---
 
 ### <a id="logic" name="logic"></a> logic
 
@@ -98,9 +98,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:24](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L24)
+[packages/brickdoc-formula/src/controls/row.ts:24](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L24)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -112,9 +112,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:19](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L19)
+[packages/brickdoc-formula/src/controls/row.ts:19](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L19)
 
-___
+---
 
 ### <a id="rowid" name="rowid"></a> rowId
 
@@ -126,9 +126,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:20](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L20)
+[packages/brickdoc-formula/src/controls/row.ts:20](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L20)
 
-___
+---
 
 ### <a id="rowindex" name="rowindex"></a> rowIndex
 
@@ -140,9 +140,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:21](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L21)
+[packages/brickdoc-formula/src/controls/row.ts:21](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L21)
 
-___
+---
 
 ### <a id="spreadsheet" name="spreadsheet"></a> spreadsheet
 
@@ -154,9 +154,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:23](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L23)
+[packages/brickdoc-formula/src/controls/row.ts:23](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L23)
 
-___
+---
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
 
@@ -168,7 +168,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:18](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L18)
+[packages/brickdoc-formula/src/controls/row.ts:18](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L18)
 
 ## Methods
 
@@ -186,9 +186,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:37](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L37)
+[packages/brickdoc-formula/src/controls/row.ts:37](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L37)
 
-___
+---
 
 ### <a id="eventdependency" name="eventdependency"></a> eventDependency
 
@@ -196,8 +196,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name                | Type                                                              |
+| :------------------ | :---------------------------------------------------------------- |
 | `__namedParameters` | [`getEventDependencyInput`](../README.md#geteventdependencyinput) |
 
 #### Returns
@@ -210,9 +210,9 @@ RowType.eventDependency
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:58](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L58)
+[packages/brickdoc-formula/src/controls/row.ts:58](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L58)
 
-___
+---
 
 ### <a id="handlecodefragments" name="handlecodefragments"></a> handleCodeFragments
 
@@ -220,21 +220,21 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `visitor` | [`CodeFragmentVisitor`](CodeFragmentVisitor.md) |
-| `name` | `string` |
-| `codeFragments` | [`CodeFragment`](../README.md#codefragment)[] |
+| Name            | Type                                            |
+| :-------------- | :---------------------------------------------- |
+| `visitor`       | [`CodeFragmentVisitor`](CodeFragmentVisitor.md) |
+| `name`          | `string`                                        |
+| `codeFragments` | [`CodeFragment`](../README.md#codefragment)[]   |
 
 #### Returns
 
 `Object`
 
-| Name | Type |
-| :------ | :------ |
-| `codeFragments` | [`CodeFragment`](../README.md#codefragment)[] |
-| `errors` | [`ErrorMessage`](../interfaces/ErrorMessage.md)[] |
-| `firstArgumentType` | `undefined` \| ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Date"`` \| ``"Block"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"`` |
+| Name                | Type                                                                                                                                                                                                                                                                                                                                                                                                |
+| :------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `codeFragments`     | [`CodeFragment`](../README.md#codefragment)[]                                                                                                                                                                                                                                                                                                                                                       |
+| `errors`            | [`ErrorMessage`](../interfaces/ErrorMessage.md)[]                                                                                                                                                                                                                                                                                                                                                   |
+| `firstArgumentType` | `undefined` \| `"string"` \| `"number"` \| `"boolean"` \| `"Block"` \| `"null"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"` |
 
 #### Implementation of
 
@@ -242,9 +242,9 @@ RowType.handleCodeFragments
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:114](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L114)
+[packages/brickdoc-formula/src/controls/row.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L114)
 
-___
+---
 
 ### <a id="handleinterpret" name="handleinterpret"></a> handleInterpret
 
@@ -252,10 +252,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name          | Type                                          |
+| :------------ | :-------------------------------------------- |
 | `interpreter` | [`FormulaInterpreter`](FormulaInterpreter.md) |
-| `name` | `string` |
+| `name`        | `string`                                      |
 
 #### Returns
 
@@ -267,9 +267,9 @@ RowType.handleInterpret
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:73](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L73)
+[packages/brickdoc-formula/src/controls/row.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L73)
 
-___
+---
 
 ### <a id="key" name="key"></a> key
 
@@ -285,9 +285,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:41](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L41)
+[packages/brickdoc-formula/src/controls/row.ts:41](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L41)
 
-___
+---
 
 ### <a id="newcell" name="newcell"></a> newCell
 
@@ -295,10 +295,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `cell` | [`Cell`](../interfaces/Cell.md) |
-| `columnKey` | `string` |
+| Name        | Type                            |
+| :---------- | :------------------------------ |
+| `cell`      | [`Cell`](../interfaces/Cell.md) |
+| `columnKey` | `string`                        |
 
 #### Returns
 
@@ -310,18 +310,18 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:106](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L106)
+[packages/brickdoc-formula/src/controls/row.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L106)
 
-___
+---
 
 ### <a id="persistence" name="persistence"></a> persistence
 
-▸ **persistence**(): [`Row`](../interfaces/Row.md) & { `findKey`: [`FindKey`](../interfaces/FindKey.md)  }
+▸ **persistence**(): [`Row`](../interfaces/Row.md) & { `findKey`: [`FindKey`](../interfaces/FindKey.md) }
 
 #### Returns
 
-[`Row`](../interfaces/Row.md) & { `findKey`: [`FindKey`](../interfaces/FindKey.md)  }
+[`Row`](../interfaces/Row.md) & { `findKey`: [`FindKey`](../interfaces/FindKey.md) }
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/row.ts:49](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/row.ts#L49)
+[packages/brickdoc-formula/src/controls/row.ts:49](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/row.ts#L49)

@@ -8,7 +8,7 @@ import { blocksToJSONContents } from '../common/blocks'
 import { JSONContent } from '@tiptap/core'
 import { TrashPrompt } from '../common/components/TrashPrompt'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { editorVar } from '../reactiveVars'
+import { editorVar, awarenessInfosVar } from '../reactiveVars'
 import { useDocumentEditable } from './hooks/useDocumentEditable'
 import * as Root from './DocumentPage.style'
 import { useDocMeta } from '../store/DocMeta'
@@ -39,10 +39,14 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
 
   useDocHistoryProvider(docMeta.id as string)
 
-  const { ydoc, initBlocksToEditor, loading } = useBlockSyncProvider({
+  const { provider, initBlocksToEditor, loading, awarenessInfos } = useBlockSyncProvider({
     blockId: docMeta.id as string,
     historyId: docMeta.historyId
   })
+
+  useEffect(() => {
+    awarenessInfosVar(awarenessInfos)
+  }, [awarenessInfos])
 
   const freeze = mode === 'presentation'
   const currentRootBlock = rootBlock.current
@@ -53,14 +57,14 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
 
   const editorOptions = useEditorOptions({
     docMeta,
-    ydoc,
+    provider,
     onDocSave,
     documentEditable,
     blocks: data?.childrenBlocks
   })
 
   // new ydoc requires new editor to load it
-  const editor = useEditor(editorOptions, [ydoc])
+  const editor = useEditor(editorOptions, [provider])
 
   // TODO: refactor editor reactive var
   useEffect(() => {

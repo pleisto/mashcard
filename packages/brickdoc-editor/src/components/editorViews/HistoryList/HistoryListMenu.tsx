@@ -5,7 +5,7 @@ import React from 'react'
 import { InnerMenuContainer, InnerMenu, MenuItem, HistoryTime, Username, HistoryAvatar } from './HistoryList.style'
 import { To, NavigateOptions } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 import { DocumentHistory, ThinUser } from '@brickdoc/schema'
@@ -33,15 +33,15 @@ export const HistoryListMenu: React.FC<HistoryListMenuProps> = ({
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   })
 
-  const today = moment()
-  const yesterday = moment().subtract(1, 'days')
+  const today = dayjs()
+  const yesterday = dayjs().subtract(1, 'days')
 
   return (
     <InnerMenuContainer>
       <InnerMenu type="ghost">
         {historiesSorted.map((history, i) => {
           const user = users[history.username]
-          const createdAt = moment.utc(history.createdAt).local()
+          const createdAt = dayjs(history.createdAt)
           let dateStr: String
           if (createdAt.isSame(today, 'day')) {
             dateStr = formatT('days.today')
@@ -58,7 +58,8 @@ export const HistoryListMenu: React.FC<HistoryListMenuProps> = ({
               active={historyId ? historyId === history.id : i === 0}
               onClick={() =>
                 i === 0 ? navigate(`/${domain}/${docId}`) : navigate(`/${domain}/${docId}/histories/${history.id}`)
-              }>
+              }
+            >
               <div>
                 <HistoryTime>{`${dateStr}, ${createdAt.format(formatT('time'))}`}</HistoryTime>
                 <Username>

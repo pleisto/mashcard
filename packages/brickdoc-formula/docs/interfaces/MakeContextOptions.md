@@ -16,9 +16,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:180](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L180)
+[packages/brickdoc-formula/src/tests/testType.ts:180](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L180)
 
-___
+---
 
 ### <a id="pages" name="pages"></a> pages
 
@@ -26,9 +26,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:182](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L182)
+[packages/brickdoc-formula/src/tests/testType.ts:182](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L182)
 
-___
+---
 
 ### <a id="uuidfunction" name="uuidfunction"></a> uuidFunction
 
@@ -40,8 +40,8 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type     |
+| :------- | :------- |
 | `number` | `number` |
 
 ##### Returns
@@ -50,4 +50,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:181](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L181)
+[packages/brickdoc-formula/src/tests/testType.ts:181](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L181)

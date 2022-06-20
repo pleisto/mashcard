@@ -31,9 +31,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/core.ts:39](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L39)
+[packages/brickdoc-formula/src/grammar/core.ts:39](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L39)
 
-___
+---
 
 ### <a id="errormessages" name="errormessages"></a> errorMessages
 
@@ -45,9 +45,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/core.ts:54](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L54)
+[packages/brickdoc-formula/src/grammar/core.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L54)
 
-___
+---
 
 ### <a id="errortype" name="errortype"></a> errorType
 
@@ -59,9 +59,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/core.ts:37](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L37)
+[packages/brickdoc-formula/src/grammar/core.ts:37](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L37)
 
-___
+---
 
 ### <a id="expressiontype" name="expressiontype"></a> expressionType
 
@@ -73,9 +73,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/core.ts:36](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L36)
+[packages/brickdoc-formula/src/grammar/core.ts:36](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L36)
 
-___
+---
 
 ### <a id="inputimage" name="inputimage"></a> inputImage
 
@@ -87,9 +87,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/core.ts:34](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L34)
+[packages/brickdoc-formula/src/grammar/core.ts:34](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L34)
 
-___
+---
 
 ### <a id="parseimage" name="parseimage"></a> parseImage
 
@@ -101,13 +101,13 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/core.ts:35](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L35)
+[packages/brickdoc-formula/src/grammar/core.ts:35](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L35)
 
-___
+---
 
 ### <a id="success" name="success"></a> success
 
-• **success**: ``true``
+• **success**: `true`
 
 #### Overrides
 
@@ -115,13 +115,13 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/core.ts:53](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L53)
+[packages/brickdoc-formula/src/grammar/core.ts:53](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L53)
 
-___
+---
 
 ### <a id="variableparseresult" name="variableparseresult"></a> variableParseResult
 
-• **variableParseResult**: [`VariableParseResult`](VariableParseResult.md) & { `cst`: `undefined` ; `kind`: ``"literal"`` ; `valid`: ``true``  }
+• **variableParseResult**: [`VariableParseResult`](VariableParseResult.md) & { `cst`: `undefined` ; `kind`: `"literal"` ; `valid`: `true` }
 
 #### Overrides
 
@@ -129,4 +129,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/grammar/core.ts:55](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L55)
+[packages/brickdoc-formula/src/grammar/core.ts:55](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/grammar/core.ts#L55)

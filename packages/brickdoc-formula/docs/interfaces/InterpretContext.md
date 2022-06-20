@@ -15,9 +15,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:551](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L551)
+[packages/brickdoc-formula/src/types/index.ts:551](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L551)
 
-___
+---
 
 ### <a id="ctx" name="ctx"></a> ctx
 
@@ -25,4 +25,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:550](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L550)
+[packages/brickdoc-formula/src/types/index.ts:550](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L550)

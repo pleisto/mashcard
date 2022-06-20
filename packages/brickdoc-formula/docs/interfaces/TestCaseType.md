@@ -20,9 +20,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:197](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L197)
+[packages/brickdoc-formula/src/tests/testType.ts:197](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L197)
 
-___
+---
 
 ### <a id="dependencytestcases" name="dependencytestcases"></a> dependencyTestCases
 
@@ -30,9 +30,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:199](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L199)
+[packages/brickdoc-formula/src/tests/testType.ts:199](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L199)
 
-___
+---
 
 ### <a id="errortestcases" name="errortestcases"></a> errorTestCases
 
@@ -40,9 +40,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:196](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L196)
+[packages/brickdoc-formula/src/tests/testType.ts:196](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L196)
 
-___
+---
 
 ### <a id="eventtestcases" name="eventtestcases"></a> eventTestCases
 
@@ -50,9 +50,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:198](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L198)
+[packages/brickdoc-formula/src/tests/testType.ts:198](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L198)
 
-___
+---
 
 ### <a id="functionclauses" name="functionclauses"></a> functionClauses
 
@@ -60,9 +60,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:193](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L193)
+[packages/brickdoc-formula/src/tests/testType.ts:193](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L193)
 
-___
+---
 
 ### <a id="pages" name="pages"></a> pages
 
@@ -70,9 +70,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:194](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L194)
+[packages/brickdoc-formula/src/tests/testType.ts:194](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L194)
 
-___
+---
 
 ### <a id="successtestcases" name="successtestcases"></a> successTestCases
 
@@ -80,4 +80,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:195](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L195)
+[packages/brickdoc-formula/src/tests/testType.ts:195](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L195)

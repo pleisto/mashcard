@@ -3,8 +3,8 @@
 ## Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 ## Table of contents
 
@@ -25,9 +25,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:795](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L795)
+[packages/brickdoc-formula/src/types/index.ts:795](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L795)
 
-___
+---
 
 ### <a id="key" name="key"></a> key
 
@@ -35,9 +35,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:792](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L792)
+[packages/brickdoc-formula/src/types/index.ts:792](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L792)
 
-___
+---
 
 ### <a id="level" name="level"></a> level
 
@@ -45,9 +45,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:793](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L793)
+[packages/brickdoc-formula/src/types/index.ts:793](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L793)
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -55,9 +55,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:797](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L797)
+[packages/brickdoc-formula/src/types/index.ts:797](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L797)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -65,14 +65,14 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:796](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L796)
+[packages/brickdoc-formula/src/types/index.ts:796](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L796)
 
-___
+---
 
 ### <a id="scope" name="scope"></a> scope
 
-• `Readonly` **scope**: ``null`` \| [`EventScope`](EventScope.md)
+• `Readonly` **scope**: `null` \| [`EventScope`](EventScope.md)
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:794](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L794)
+[packages/brickdoc-formula/src/types/index.ts:794](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L794)

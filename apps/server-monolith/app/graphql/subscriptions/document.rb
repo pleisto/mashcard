@@ -7,6 +7,7 @@ module Subscriptions
     field :histories, [Types::DocumentHistory], null: true
     field :operator_id, Scalars::UUID
     field :states, [Types::Blocks::State], null: true
+    field :users, [Types::Users::Thin], null: true
     # https://graphql-ruby.org/subscriptions/triggers.html
     # https://graphql-ruby.org/subscriptions/subscription_classes
     # https://graphql-ruby.org/subscriptions/broadcast.html

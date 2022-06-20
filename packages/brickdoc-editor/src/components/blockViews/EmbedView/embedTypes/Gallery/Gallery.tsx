@@ -79,7 +79,8 @@ export const GalleryTypeEmbedBlock: FC<GalleryTypeEmbedBlockProps> = ({
         getPopupContainer={c => c}
         compact={true}
         onVisibleChange={handlePopoverVisibleChange}
-        content={<GalleryContent extension={extension} updateEmbedBlockAttributes={updateEmbedBlockAttributes} />}>
+        content={<GalleryContent extension={extension} updateEmbedBlockAttributes={updateEmbedBlockAttributes} />}
+      >
         <EmbedBlockPlaceholder
           data-testid={TEST_ID_ENUM.editor.embedBlock.addButton.id}
           icon={<Icon.Unsplash />}

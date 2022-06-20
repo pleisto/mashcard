@@ -50,6 +50,7 @@ export interface BaseOptions {
   uniqueID: Partial<EXTENSION.UniqueIDOptions> | boolean
   user: Partial<EXTENSION.UserOptions> | boolean
   collaboration: Partial<EXTENSION.CollaborationOptions> | boolean
+  collaborationCursor: Partial<EXTENSION.CollaborationCursorOptions> | boolean
   dropBlock: boolean
 }
 
@@ -148,7 +149,15 @@ export const Base = Extension.create<BaseOptions>({
 
     if (this.options.collaboration) {
       extensions.push(EXTENSION.Collaboration.configure(getConfigure(this.options?.collaboration)))
-      // extensions.push(EXTENSION.CollaborationCursor.configure({}))
+    }
+
+    if (this.options.collaborationCursor) {
+      const collaborationCursorOptions = getConfigure(this.options?.collaborationCursor)
+      const collaborationCursorExtension = EXTENSION.CollaborationCursor.configure(collaborationCursorOptions)
+      // FIX for tiptap extension deepMerge bug
+      collaborationCursorExtension.options.provider = collaborationCursorOptions.provider
+      collaborationCursorExtension.options.user = collaborationCursorOptions.user ?? {}
+      extensions.push(collaborationCursorExtension)
     }
 
     if (!this.options.collaboration && this.options.history)

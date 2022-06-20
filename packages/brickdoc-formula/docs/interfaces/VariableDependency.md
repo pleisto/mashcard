@@ -15,9 +15,9 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:726](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L726)
+[packages/brickdoc-formula/src/types/index.ts:726](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L726)
 
-___
+---
 
 ### <a id="variableid" name="variableid"></a> variableId
 
@@ -25,4 +25,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/types/index.ts:725](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/types/index.ts#L725)
+[packages/brickdoc-formula/src/types/index.ts:725](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/types/index.ts#L725)

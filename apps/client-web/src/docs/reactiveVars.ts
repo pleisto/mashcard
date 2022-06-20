@@ -1,9 +1,11 @@
 import { makeVar } from '@apollo/client'
 import { EditorContentProps } from '@brickdoc/editor'
 import { ContextInterface } from '@brickdoc/formula'
+import { awarenessInfo } from './pages/hooks/useBlockSyncProvider'
 
 export const editorVar = makeVar<EditorContentProps['editor']>(null)
 export const isSavingVar = makeVar(false)
+export const awarenessInfosVar = makeVar<awarenessInfo[]>([])
 
 export const pagesVar = makeVar<
   Array<{

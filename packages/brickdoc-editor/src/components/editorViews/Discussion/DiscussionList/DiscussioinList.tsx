@@ -36,7 +36,8 @@ export const DiscussionList: FC<DiscussionListProps> = () => {
       container={document.getElementById('aside') as HTMLElement}
       visible={visible}
       onClose={() => setVisible(false)}
-      title={t('discussion.title')}>
+      title={t('discussion.title')}
+    >
       <PageDiscussionContext.Provider value={pageDiscussion}>
         <DiscussionListContainer>
           <FilterTabs activeKey={activeTab} onTabClick={handleTabClick}>

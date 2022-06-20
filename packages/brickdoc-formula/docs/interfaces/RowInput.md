@@ -14,4 +14,4 @@
 
 #### Defined in
 
-[packages/brickdoc-formula/src/tests/testType.ts:65](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L65)
+[packages/brickdoc-formula/src/tests/testType.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/tests/testType.ts#L65)

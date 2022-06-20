@@ -1,37 +1,57 @@
 import React from 'react'
 import { Y } from '@brickdoc/editor'
+import * as awarenessProtocol from 'y-protocols/awareness'
 import { base64 } from 'rfc4648'
 import { uuid } from '@brickdoc/active-support'
 
 import {
   BlockNew,
   DocumentHistory,
+  ThinUser,
   Statetype,
   useBlockNewQuery,
   useBlockCommitMutation,
-  useDocumentSubscription
+  useDocumentSubscription,
+  useAwarenessUpdateMutation,
+  useAwarenessSubscription
 } from '@/BrickdocGraphQL'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { devLog } from '@brickdoc/design-system'
 
 import { BrickdocEventBus, docHistoryReceived } from '@brickdoc/schema'
 
+export interface blockProvider {
+  awareness: awarenessProtocol.Awareness
+  document: Y.Doc
+}
+
+export interface awarenessInfoUser extends ThinUser {
+  color?: string
+  operatorId: string
+}
+
+export interface awarenessInfo {
+  user: awarenessInfoUser
+}
+
 export function useBlockSyncProvider(queryVariables: { blockId: string; historyId?: string }): {
   loading: boolean
-  ydoc?: Y.Doc
+  provider?: blockProvider
   initBlocksToEditor: React.MutableRefObject<boolean>
   blockCommitting: React.MutableRefObject<boolean>
+  awarenessInfos: awarenessInfo[]
 } {
   const {
     features: { experiment_collaboration: enableCollaboration }
   } = React.useContext(BrickdocContext)
   const [blockCommit] = useBlockCommitMutation()
+  const [awarenessUpdate] = useAwarenessUpdateMutation()
 
   const { blockId, historyId } = queryVariables
 
   const block = React.useRef<BlockNew>({ id: blockId })
-  // const ydoc = React.useRef<Y.Doc | undefined>()
-  const [ydoc, setYdoc] = React.useState<Y.Doc>()
+  const [provider, setProvider] = React.useState<blockProvider>()
+  const [awarenessInfos, setAwarenessInfos] = React.useState<awarenessInfo[]>([])
 
   const initBlocksToEditor = React.useRef<boolean>(false)
   const blockCommitting = React.useRef<boolean>(false)
@@ -42,26 +62,38 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
     variables: { id: blockId, historyId }
   })
 
+  const awarenessChanged = React.useCallback(
+    (awareness: awarenessProtocol.Awareness) => {
+      const infos: awarenessInfo[] = Array.from(awareness.getStates().values()).map(i => {
+        return {
+          user: i.user
+        }
+      })
+      // devLog('awarenessChanged', infos)
+      setAwarenessInfos(infos)
+    },
+    [setAwarenessInfos]
+  )
+
   useDocumentSubscription({
     onSubscriptionData: ({ subscriptionData: { data } }) => {
       if (data) {
         const {
-          document: { operatorId, blocks, states, histories }
+          document: { operatorId, blocks, states, histories, users }
         } = data
         if (blocks && states) {
           devLog('received update', states, blocks)
           const blockStates = states.filter(s => s.blockId === blockId)
 
-          // TODO: users
           BrickdocEventBus.dispatch(
             docHistoryReceived({
               docId: blockId,
               histories: Object.fromEntries((histories as DocumentHistory[]).map(h => [h.id, h])),
-              users: {}
+              users: Object.fromEntries((users as ThinUser[]).map(u => [u.name, u]))
             })
           )
 
-          if (ydoc && operatorId && operatorId !== globalThis.brickdocContext.uuid) {
+          if (provider && operatorId && operatorId !== globalThis.brickdocContext.uuid) {
             blocks.forEach(remoteBlock => {
               if (remoteBlock.id === blockId) {
                 block.current = remoteBlock
@@ -70,7 +102,27 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             const remoteState = Y.mergeUpdates(
               blockStates.filter(s => s.state).map(s => base64.parse(s.state as string))
             )
-            Y.applyUpdate(ydoc, remoteState)
+            Y.applyUpdate(provider.document, remoteState)
+          }
+        }
+      }
+    },
+    variables: { docId: blockId }
+  })
+
+  useAwarenessSubscription({
+    onSubscriptionData: ({ subscriptionData: { data } }) => {
+      if (data) {
+        const {
+          awareness: { operatorId, updates }
+        } = data
+        if (updates) {
+          devLog(`received awareness updates from ${operatorId}`)
+          if (provider && updates.length > 0) {
+            try {
+              awarenessProtocol.applyAwarenessUpdate(provider.awareness, base64.parse(updates as string), '')
+            } catch {}
+            awarenessChanged(provider.awareness)
           }
         }
       }
@@ -81,7 +133,6 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   const commitState = React.useCallback(
     async (ydoc: Y.Doc, update?: Uint8Array, forceFull: boolean = false): Promise<void> => {
       if (historyId) return
-      if (!ydoc) return
       devLog(`try commit state, committing:`, blockCommitting.current)
       if (update) updatesToCommit.current.add(update)
       if (blockCommitting.current) return
@@ -159,6 +210,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
     if (enableCollaboration) {
       if (data && !loading) {
         const newYdoc = new Y.Doc()
+        const awareness = new awarenessProtocol.Awareness(newYdoc)
         devLog('Ydoc initialized')
 
         if (data.blockNew) {
@@ -180,23 +232,41 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
           }
         }
 
+        const provider = { document: newYdoc, awareness }
+        setProvider(provider)
+
         if (!historyId) {
           newYdoc.on('update', async (update: Uint8Array, origin: any, ydoc: Y.Doc) => {
             void commitState(ydoc, update)
           })
-        }
 
-        setYdoc(newYdoc)
+          awareness.on('update', async ({ added, updated, removed }: any) => {
+            awarenessChanged(awareness)
+            const changes = added.concat(updated).concat(removed)
+            const updates = awarenessProtocol.encodeAwarenessUpdate(awareness, changes)
+            const updatePromise = awarenessUpdate({
+              variables: {
+                input: {
+                  docId: blockId,
+                  operatorId: globalThis.brickdocContext.uuid,
+                  updates: base64.stringify(updates)
+                }
+              }
+            })
+            await updatePromise
+          })
+        }
       }
     } else {
       initBlocksToEditor.current = true
     }
-  }, [blockId, historyId, enableCollaboration, data, loading, commitState])
+  }, [blockId, historyId, enableCollaboration, data, loading, commitState, awarenessUpdate, awarenessChanged])
 
   return {
     loading,
-    ydoc,
+    provider,
     initBlocksToEditor,
-    blockCommitting
+    blockCommitting,
+    awarenessInfos
   }
 }

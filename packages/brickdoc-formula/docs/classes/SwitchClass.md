@@ -32,14 +32,14 @@
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctx` | [`FunctionContext`](../interfaces/FunctionContext.md) |
+| Name                | Type                                                      |
+| :------------------ | :-------------------------------------------------------- |
+| `ctx`               | [`FunctionContext`](../interfaces/FunctionContext.md)     |
 | `__namedParameters` | [`SwitchInitializer`](../interfaces/SwitchInitializer.md) |
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/switch.ts:14](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L14)
+[packages/brickdoc-formula/src/controls/switch.ts:14](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L14)
 
 ## Properties
 
@@ -49,13 +49,13 @@
 
 #### Implementation of
 
-[SwitchType](../interfaces/SwitchType.md).[_formulaContext](../interfaces/SwitchType.md#_formulacontext)
+[SwitchType](../interfaces/SwitchType.md).[\_formulaContext](../interfaces/SwitchType.md#_formulacontext)
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/switch.ts:7](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L7)
+[packages/brickdoc-formula/src/controls/switch.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L7)
 
-___
+---
 
 ### <a id="_meta" name="_meta"></a> \_meta
 
@@ -63,13 +63,13 @@ ___
 
 #### Implementation of
 
-[SwitchType](../interfaces/SwitchType.md).[_meta](../interfaces/SwitchType.md#_meta)
+[SwitchType](../interfaces/SwitchType.md).[\_meta](../interfaces/SwitchType.md#_meta)
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/switch.ts:8](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L8)
+[packages/brickdoc-formula/src/controls/switch.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L8)
 
-___
+---
 
 ### <a id="checked" name="checked"></a> checked
 
@@ -81,9 +81,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/switch.ts:6](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L6)
+[packages/brickdoc-formula/src/controls/switch.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L6)
 
-___
+---
 
 ### <a id="disabled" name="disabled"></a> disabled
 
@@ -95,9 +95,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/switch.ts:11](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L11)
+[packages/brickdoc-formula/src/controls/switch.ts:11](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L11)
 
-___
+---
 
 ### <a id="fn" name="fn"></a> fn
 
@@ -109,13 +109,13 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/switch.ts:10](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L10)
+[packages/brickdoc-formula/src/controls/switch.ts:10](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L10)
 
-___
+---
 
 ### <a id="kind" name="kind"></a> kind
 
-• **kind**: ``"Switch"``
+• **kind**: `"Switch"`
 
 #### Implementation of
 
@@ -123,9 +123,9 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/switch.ts:9](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L9)
+[packages/brickdoc-formula/src/controls/switch.ts:9](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L9)
 
-___
+---
 
 ### <a id="onchange" name="onchange"></a> onChange
 
@@ -137,8 +137,8 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type      |
+| :----- | :-------- |
 | `bool` | `boolean` |
 
 ##### Returns
@@ -151,7 +151,7 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/switch.ts:12](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L12)
+[packages/brickdoc-formula/src/controls/switch.ts:12](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L12)
 
 ## Methods
 
@@ -169,4 +169,4 @@ ___
 
 #### Defined in
 
-[packages/brickdoc-formula/src/controls/switch.ts:33](https://github.com/brickdoc/brickdoc/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L33)
+[packages/brickdoc-formula/src/controls/switch.ts:33](https://github.com/mashcard/mashcard/blob/main/packages/brickdoc-formula/src/controls/switch.ts#L33)
