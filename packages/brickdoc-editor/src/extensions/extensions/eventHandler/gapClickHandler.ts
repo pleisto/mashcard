@@ -1,7 +1,10 @@
 import { Editor } from '@tiptap/core'
 import Paragraph from '@tiptap/extension-paragraph'
 import { EditorView } from 'prosemirror-view'
-import { paragraphLikeBlockType } from '../../../helpers/block'
+import { meta as paragraphMeta } from '../../blocks/paragraph/meta'
+import { meta as headingMeta } from '../../blocks/heading/meta'
+
+const paragraphLikeBlockType = [paragraphMeta.name, headingMeta.name]
 
 const insertNewLine = (editor: Editor, position: number): void => {
   editor.chain().insertContentAt(position, { type: Paragraph.name }).run()

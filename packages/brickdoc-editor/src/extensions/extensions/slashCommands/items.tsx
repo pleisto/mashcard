@@ -1,7 +1,21 @@
 import Paragraph from '@tiptap/extension-paragraph'
 import { SlashMenuItem } from '../../../components/extensionViews'
-import { BlockCommandItem, BLOCK, ORDER_NEW_BLOCK, sortBlock, unselectableBlockType } from '../../../helpers/block'
+import { BlockCommandItem } from '../../../helpers/block'
+import * as BLOCK from '../../../helpers/block'
 import { getRecentItemKey } from './recentItemsManager'
+import { meta as spreadsheetMeta } from '../../blocks/spreadsheet/meta'
+import { meta as embedMeta } from '../../blocks/embed/meta'
+import { meta as subPageMenuMeta } from '../../blocks/subPageMenu/meta'
+import { meta as tocMeta } from '../../blocks/toc/meta'
+import { meta as horizontalRuleMeta } from '../../blocks/horizontalRule/meta'
+
+const unselectableBlockType = [
+  embedMeta.name,
+  horizontalRuleMeta.name,
+  tocMeta.name,
+  subPageMenuMeta.name,
+  spreadsheetMeta.name
+]
 
 function createSlashMenuItem(blockItem: BlockCommandItem): SlashMenuItem {
   return {
@@ -93,9 +107,7 @@ const slashMenuItems = [
   SUB_PAGE_MENU
 ]
 
-export const TYPE_ITEMS: SlashMenuItem[] = slashMenuItems.sort(
-  sortBlock(ORDER_NEW_BLOCK, (item: SlashMenuItem) => item.key)
-)
+export const TYPE_ITEMS: SlashMenuItem[] = slashMenuItems
 
 const RECENT_COUNT = 6
 
