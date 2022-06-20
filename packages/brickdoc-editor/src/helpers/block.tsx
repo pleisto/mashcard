@@ -19,7 +19,8 @@ import {
   RteH5,
   TextStyle,
   Quote,
-  CheckboxSquare
+  CheckboxSquare,
+  Bulb
 } from '../components/ui'
 import { meta as formulaMeta } from '../extensions/blocks/formula/meta'
 import { meta as spreadsheetMeta } from '../extensions/blocks/spreadsheet/meta'
@@ -34,6 +35,7 @@ import { meta as headingMeta } from '../extensions/blocks/heading/meta'
 import { meta as horizontalRuleMeta } from '../extensions/blocks/horizontalRule/meta'
 import { meta as orderedListMeta } from '../extensions/blocks/orderedList/meta'
 import { meta as paragraphMeta } from '../extensions/blocks/paragraph/meta'
+import { meta as calloutMeta } from '../extensions/blocks/callout/meta'
 
 export type BlockItemKey =
   | 'text'
@@ -56,6 +58,7 @@ export type BlockItemKey =
   | 'divider'
   | 'blockquote'
   | 'taskList'
+  | 'callout'
 
 export interface BlockCommandItem {
   key: BlockItemKey
@@ -238,7 +241,7 @@ export const BLOCKQUOTE: BlockCommandItem = {
   icon: <Quote />,
   setBlock: chain => chain.setBlockquote(),
   toggleBlock: chain => chain.toggleBlockquote(),
-  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: blockquoteMeta.name }, position)
+  insertBlockAt: (chain, position) => PARAGRAPH.insertBlockAt(chain, position).setBlockquote()
 }
 
 export const CODE: BlockCommandItem = {
@@ -283,4 +286,15 @@ export const SUB_PAGE_MENU: BlockCommandItem = {
   setBlock: chain => chain.setSubPageMenuBlock(),
   toggleBlock: chain => chain.setSubPageMenuBlock(),
   insertBlockAt: (chain, position) => chain.setSubPageMenuBlock(position)
+}
+
+export const CALLOUT: BlockCommandItem = {
+  key: 'callout',
+  blockType: calloutMeta.name,
+  alias: ['call'],
+  squareIcon: <Bulb square={true} />,
+  icon: <Bulb />,
+  setBlock: chain => chain.setCallout(),
+  toggleBlock: chain => chain.toggleCallout(),
+  insertBlockAt: (chain, position) => PARAGRAPH.insertBlockAt(chain, position).setCallout()
 }

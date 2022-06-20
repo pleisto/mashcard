@@ -26,7 +26,8 @@ const transformBlocks = [
   BLOCK.TASK_LIST,
   BLOCK.FORMULA,
   BLOCK.CODE,
-  BLOCK.BLOCKQUOTE
+  BLOCK.BLOCKQUOTE,
+  BLOCK.CALLOUT
 ]
 
 export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionGroupOption | null {

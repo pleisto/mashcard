@@ -13,6 +13,9 @@ describe('ParagraphView > usePlaceholder', () => {
         state: {
           selection: {
             anchor: 1,
+            $anchor: {
+              depth: 0
+            },
             $from: {
               depth: 0
             }
@@ -29,10 +32,10 @@ describe('ParagraphView > usePlaceholder', () => {
 
     renderHook(() => {
       const ref = useRef<HTMLDivElement>(dom)
-      return usePlaceholder(editor, extension, node, ref, getPos)
+      return usePlaceholder({ editor, extension, node, blockContainerRef: ref, getPos } as any)
     })
 
-    expect(p.getAttribute('data-placeholder')).toEqual('placeholder')
+    expect(p.getAttribute('data-placeholder')).toEqual('placeholder.default')
   })
 
   it('hides placeholder when content is not empty', () => {
@@ -52,7 +55,7 @@ describe('ParagraphView > usePlaceholder', () => {
 
     renderHook(() => {
       const ref = useRef<HTMLDivElement>(dom)
-      return usePlaceholder(editor, extension, node, ref, getPos)
+      return usePlaceholder({ editor, extension, node, blockContainerRef: ref, getPos } as any)
     })
 
     expect(p.getAttribute('data-placeholder') ?? '').toEqual('')
@@ -75,7 +78,7 @@ describe('ParagraphView > usePlaceholder', () => {
 
     renderHook(() => {
       const ref = useRef<HTMLDivElement>(dom)
-      return usePlaceholder(editor, extension, node, ref, getPos)
+      return usePlaceholder({ editor, extension, node, blockContainerRef: ref, getPos } as any)
     })
 
     expect(p.getAttribute('data-placeholder') ?? '').toEqual('')

@@ -1,4 +1,4 @@
-import { ReactRenderer, Editor, findParentNode } from '@tiptap/react'
+import { ReactRenderer, Editor } from '@tiptap/react'
 import { PluginKey } from 'prosemirror-state'
 import Suggestion from '@tiptap/suggestion'
 import { createPopup, PopupInstance } from '../../../helpers/popup'
@@ -6,10 +6,9 @@ import { SlashMenu } from '../../../components/extensionViews'
 import { getSuggestionItems, TYPE_ITEMS, getRecentItems } from './items'
 import { BrickdocEventBus, EventSubscribed, SlashMenuHide, SlashMenuKeyboardEventTrigger } from '@brickdoc/schema'
 import { addItemKey } from './recentItemsManager'
-import BulletList from '@tiptap/extension-bullet-list'
-import OrderedList from '@tiptap/extension-ordered-list'
 import { meta } from './meta'
 import { createExtension } from '../../common'
+import { findWrapper } from '../../../components/blockViews/ParagraphView/wrapper'
 
 const TRIGGER_CHAR = '/'
 
@@ -55,11 +54,9 @@ export const SlashCommands = createExtension<SlashCommandsOptions, SlashCommands
             onStart: props => {
               if (!this.editor.isEditable) return
 
-              // disable slash menu if it is inside list currently.
-              const insideList = !!findParentNode(
-                node => node.type.name === BulletList.name || node.type.name === OrderedList.name
-              )(this.editor.state.selection)?.node
-              if (insideList) return
+              // disable slash menu if it is inside a wrapper currently.
+              const disabled = !!findWrapper(this.editor.state.selection.$anchor)
+              if (disabled) return
 
               hideListener = BrickdocEventBus.subscribe(SlashMenuHide, () => {
                 exit()

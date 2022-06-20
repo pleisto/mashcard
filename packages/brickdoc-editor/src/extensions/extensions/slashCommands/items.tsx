@@ -52,6 +52,7 @@ const ORDERED_LIST = createSlashMenuItem(BLOCK.ORDERED_LIST)
 const TASK_LIST = createSlashMenuItem(BLOCK.TASK_LIST)
 const CODE = createSlashMenuItem(BLOCK.CODE)
 const BLOCKQUOTE = createSlashMenuItem(BLOCK.BLOCKQUOTE)
+const CALLOUT = createSlashMenuItem(BLOCK.CALLOUT)
 const DIVIDER = createSlashMenuItem(BLOCK.DIVIDER)
 const TOC = createSlashMenuItem(BLOCK.TOC)
 const SUB_PAGE_MENU = createSlashMenuItem(BLOCK.SUB_PAGE_MENU)
@@ -77,7 +78,8 @@ export const slashMenuGroup = [
       ORDERED_LIST,
       TASK_LIST,
       CODE,
-      BLOCKQUOTE
+      BLOCKQUOTE,
+      CALLOUT
     ]
   },
   {
@@ -102,6 +104,7 @@ const slashMenuItems = [
   TASK_LIST,
   CODE,
   BLOCKQUOTE,
+  CALLOUT,
   DIVIDER,
   TOC,
   SUB_PAGE_MENU

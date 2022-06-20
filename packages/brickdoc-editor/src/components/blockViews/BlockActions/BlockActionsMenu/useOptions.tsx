@@ -72,6 +72,7 @@ export function useOptions(
           BLOCK.TASK_LIST,
           BLOCK.CODE,
           BLOCK.BLOCKQUOTE,
+          BLOCK.CALLOUT,
           BLOCK.DIVIDER,
           BLOCK.TOC,
           BLOCK.SUB_PAGE_MENU

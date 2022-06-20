@@ -20,7 +20,8 @@ const blockItems: BlockCommandItem[] = [
   BLOCK.TASK_LIST,
   BLOCK.FORMULA,
   BLOCK.CODE,
-  BLOCK.BLOCKQUOTE
+  BLOCK.BLOCKQUOTE,
+  BLOCK.CALLOUT
 ]
 
 export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {

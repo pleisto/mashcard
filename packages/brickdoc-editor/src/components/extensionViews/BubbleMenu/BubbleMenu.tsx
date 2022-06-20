@@ -6,16 +6,36 @@ import { Toolbar } from '../../ui/Toolbar'
 import { useBubbleMenuItems } from './useBubbleMenuItems'
 import { findNodesInSelection } from '../../../helpers'
 import { Button } from '@brickdoc/design-system'
+import { meta as paragraphMeta } from '../../../extensions/blocks/paragraph/meta'
+import { meta as headingMeta } from '../../../extensions/blocks/heading/meta'
+import { meta as listItemMeta } from '../../../extensions/blocks/listItem/meta'
+import { meta as orderedListMeta } from '../../../extensions/blocks/orderedList/meta'
+import { meta as bulletListMeta } from '../../../extensions/blocks/bulletList/meta'
+import { meta as taskItemMeta } from '../../../extensions/blocks/taskItem/meta'
+import { meta as taskListMeta } from '../../../extensions/blocks/taskList/meta'
+import { meta as calloutMeta } from '../../../extensions/blocks/callout/meta'
+import { meta as blockquoteMeta } from '../../../extensions/blocks/blockquote/meta'
 
 interface BubbleMenuProps {
   editor: Editor | null
 }
 
+const allowedNodeTypes = [
+  paragraphMeta.name,
+  headingMeta.name,
+  listItemMeta.name,
+  orderedListMeta.name,
+  bulletListMeta.name,
+  taskItemMeta.name,
+  taskListMeta.name,
+  calloutMeta.name,
+  blockquoteMeta.name
+]
+
 export const shouldShow: BubbleMenuViewProps['shouldShow'] = ({ editor, from, to }) => {
   if (!editor.isEditable || editor.isDestroyed) return false
   if (from === to) return false
 
-  const allowedNodeTypes = ['paragraph', 'heading', 'listItem', 'orderedList', 'bulletList']
   let show = false
 
   const nodes = findNodesInSelection(editor, from, to)
@@ -58,8 +78,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
     <TiptapBubbleMenu
       tippyOptions={{ placement: 'top-start', maxWidth: '500px', delay: [1000, 0] }}
       shouldShow={shouldShow}
-      editor={editor}
-    >
+      editor={editor}>
       {visible && (
         // Puts toolbar inside a button to prevent toolbar from blink.
         // ref: https://tiptap.dev/api/extensions/bubble-menu

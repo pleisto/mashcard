@@ -96,16 +96,17 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
       extensions: [
         ...(extensions ?? []),
         Base.configure(
-          merge(
+          merge<Partial<BaseOptions>, Partial<BaseOptions> | undefined>(
             {
               anchor: true,
               blockquote: true,
               bold: true,
               brickList: true,
               bulletList: true,
-              commandHelper: true,
+              callout: true,
               code: true,
               codeBlock: true,
+              commandHelper: true,
               document: true,
               discussion: true,
               dropcursor: {
@@ -123,7 +124,6 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
               history: true,
               horizontalRule: true,
               indent: true,
-              image: true,
               italic: true,
               keyboardShortcut: true,
               link: {
