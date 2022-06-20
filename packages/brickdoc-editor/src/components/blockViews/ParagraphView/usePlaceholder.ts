@@ -1,19 +1,18 @@
-import { findParentNode } from '@tiptap/react'
 import { RefObject, useEffect, useRef } from 'react'
-import { BulletList, OrderedList } from '../../../extensions'
 import { ParagraphViewProps } from '../../../extensions/blocks/paragraph/meta'
 import { useDocumentEditable, useEditorI18n } from '../../../hooks'
+import { findWrapper } from './wrapper'
 
-// eslint-disable-next-line max-params
-export function usePlaceholder(
-  editor: ParagraphViewProps['editor'],
-  extension: ParagraphViewProps['extension'],
-  node: ParagraphViewProps['node'],
-  blockContainerRef: RefObject<HTMLDivElement>,
-  getPos: ParagraphViewProps['getPos']
-): void {
+export function usePlaceholder({
+  editor,
+  extension,
+  node,
+  blockContainerRef,
+  getPos
+}: ParagraphViewProps & {
+  blockContainerRef: RefObject<HTMLDivElement>
+}): void {
   const [t] = useEditorI18n()
-  const placeholderText = extension?.options?.placeholder ?? t('placeholder') ?? ''
   const [documentEditable] = useDocumentEditable(undefined)
   const dataRef = useRef({ node, documentEditable })
 
@@ -41,12 +40,19 @@ export function usePlaceholder(
       const anchor = editor.state.selection.anchor
       const hasAnchor = anchor >= position && anchor <= position + node.nodeSize
 
-      const insideList = !!findParentNode(
-        node => node.type.name === BulletList.name || node.type.name === OrderedList.name
-      )(editor.state.selection)?.node
+      const needPlaceholder = hasAnchor && isEmpty && documentEditable
 
-      const needPlaceholder = hasAnchor && isEmpty && documentEditable && !insideList
-      paragraphElement?.setAttribute('data-placeholder', needPlaceholder ? placeholderText : '')
+      if (needPlaceholder) {
+        const wrapper = findWrapper(editor.state.selection.$anchor)
+
+        const placeholderText = wrapper
+          ? t(`placeholder.${wrapper?.type.name ?? 'default'}`)
+          : extension?.options?.placeholder ?? t('placeholder.default') ?? ''
+
+        paragraphElement?.setAttribute('data-placeholder', needPlaceholder ? placeholderText : '')
+      } else {
+        paragraphElement?.setAttribute('data-placeholder', '')
+      }
     }
 
     listener()
@@ -55,5 +61,5 @@ export function usePlaceholder(
     return () => {
       editor.off('selectionUpdate', listener).off('update', listener).off('focus', listener)
     }
-  }, [blockContainerRef, editor, getPos, placeholderText, t])
+  }, [blockContainerRef, editor, extension?.options?.placeholder, getPos, t])
 }

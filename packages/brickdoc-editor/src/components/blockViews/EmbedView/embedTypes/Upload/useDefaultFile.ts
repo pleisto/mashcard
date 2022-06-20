@@ -21,7 +21,7 @@ export function useDefaultFile({
     const fileType = getFileTypeByExtension(file.name)
 
     void imperativeUpload(file, {
-      prepareFileUpload: extension.options.prepareFileUpload,
+      prepareFileUpload: async (blockId, type, file) => await extension.options.prepareFileUpload!(type, file),
       blockId: undefined,
       fileType,
       onUploaded,

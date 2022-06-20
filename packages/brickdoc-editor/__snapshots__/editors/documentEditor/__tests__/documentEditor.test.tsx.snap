@@ -25,7 +25,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                 as="p"
                 class="brd-c-hMGRDP brd-c-qcqS"
                 data-node-view-content=""
-                data-placeholder="placeholder"
+                data-placeholder="placeholder.default"
                 draggable="false"
                 style="white-space: pre-wrap;"
               >

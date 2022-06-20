@@ -9,9 +9,10 @@ export interface BaseOptions {
   bold: Partial<EXTENSION.BoldOptions> | boolean
   brickList: Partial<EXTENSION.BrickListOptions> | boolean
   bulletList: Partial<EXTENSION.BulletListOptions> | boolean
-  commandHelper: boolean
+  callout: Partial<EXTENSION.CalloutOptions> | boolean
   code: Partial<EXTENSION.CodeOptions> | boolean
   codeBlock: Partial<EXTENSION.CodeBlockOptions> | boolean
+  commandHelper: boolean
   document: boolean
   discussion: Partial<EXTENSION.DiscussionOptions> | boolean
   dropcursor: Partial<EXTENSION.DropcursorOptions> | boolean
@@ -91,9 +92,10 @@ export const Base = Extension.create<BaseOptions>({
     if (this.options.bold) extensions.push(EXTENSION.Bold.configure(getConfigure(this.options?.bold)))
     if (this.options.brickList) extensions.push(EXTENSION.BrickList.configure(getConfigure(this.options?.brickList)))
     if (this.options.bulletList) extensions.push(EXTENSION.BulletList.configure(getConfigure(this.options?.bulletList)))
-    if (this.options.commandHelper) extensions.push(EXTENSION.CommandHelper)
+    if (this.options.callout) extensions.push(EXTENSION.Callout.configure(getConfigure(this.options?.callout)))
     if (this.options.code) extensions.push(EXTENSION.Code.configure(getConfigure(this.options?.code)))
     if (this.options.codeBlock) extensions.push(EXTENSION.CodeBlock.configure(getConfigure(this.options.codeBlock)))
+    if (this.options.commandHelper) extensions.push(EXTENSION.CommandHelper)
     if (this.options.document) extensions.push(EXTENSION.Document)
     if (this.options.discussion) extensions.push(EXTENSION.Discussion.configure(getConfigure(this.options?.discussion)))
     if (this.options.dropcursor) extensions.push(EXTENSION.Dropcursor.configure(getConfigure(this.options?.dropcursor)))

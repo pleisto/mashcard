@@ -9,7 +9,7 @@ export function usePrepareFileUpload(docMeta: DocMeta): EmbedOptions['prepareFil
   const [directUpload] = useCreateDirectUploadMutation()
 
   return useCallback<NonNullable<EmbedOptions['prepareFileUpload']>>(
-    async (blockId, type, file) => {
+    async (type, file) => {
       let inputType: Upload
 
       switch (type) {

@@ -25,9 +25,9 @@ const paragraphStyles = css({
 })
 
 export const ParagraphView: FC<ParagraphViewProps> = props => {
-  const { node, getPos, deleteNode, editor, extension } = props
+  const { node, getPos, deleteNode } = props
   const blockContainerRef = useRef<HTMLDivElement>(null)
-  usePlaceholder(editor, extension, node, blockContainerRef, getPos)
+  usePlaceholder({ ...props, blockContainerRef })
   const placeholderClassName = placeholderStyle()
   const paragraphClassName = paragraphStyles()
 

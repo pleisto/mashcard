@@ -38,7 +38,6 @@ export interface EmbedOptions {
     data: UrlData
   }>
   prepareFileUpload?: (
-    blockId: string,
     type: string,
     file: File
   ) => Promise<{

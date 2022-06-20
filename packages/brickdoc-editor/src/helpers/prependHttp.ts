@@ -1,3 +1,4 @@
+// move this method to @active-support
 export function prependHttp(url: string): string {
   const link = url.trim()
 

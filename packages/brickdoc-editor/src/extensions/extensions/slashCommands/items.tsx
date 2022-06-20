@@ -1,7 +1,21 @@
 import Paragraph from '@tiptap/extension-paragraph'
 import { SlashMenuItem } from '../../../components/extensionViews'
-import { BlockCommandItem, BLOCK, ORDER_NEW_BLOCK, sortBlock, unselectableBlockType } from '../../../helpers/block'
+import { BlockCommandItem } from '../../../helpers/block'
+import * as BLOCK from '../../../helpers/block'
 import { getRecentItemKey } from './recentItemsManager'
+import { meta as spreadsheetMeta } from '../../blocks/spreadsheet/meta'
+import { meta as embedMeta } from '../../blocks/embed/meta'
+import { meta as subPageMenuMeta } from '../../blocks/subPageMenu/meta'
+import { meta as tocMeta } from '../../blocks/toc/meta'
+import { meta as horizontalRuleMeta } from '../../blocks/horizontalRule/meta'
+
+const unselectableBlockType = [
+  embedMeta.name,
+  horizontalRuleMeta.name,
+  tocMeta.name,
+  subPageMenuMeta.name,
+  spreadsheetMeta.name
+]
 
 function createSlashMenuItem(blockItem: BlockCommandItem): SlashMenuItem {
   return {
@@ -38,6 +52,7 @@ const ORDERED_LIST = createSlashMenuItem(BLOCK.ORDERED_LIST)
 const TASK_LIST = createSlashMenuItem(BLOCK.TASK_LIST)
 const CODE = createSlashMenuItem(BLOCK.CODE)
 const BLOCKQUOTE = createSlashMenuItem(BLOCK.BLOCKQUOTE)
+const CALLOUT = createSlashMenuItem(BLOCK.CALLOUT)
 const DIVIDER = createSlashMenuItem(BLOCK.DIVIDER)
 const TOC = createSlashMenuItem(BLOCK.TOC)
 const SUB_PAGE_MENU = createSlashMenuItem(BLOCK.SUB_PAGE_MENU)
@@ -63,7 +78,8 @@ export const slashMenuGroup = [
       ORDERED_LIST,
       TASK_LIST,
       CODE,
-      BLOCKQUOTE
+      BLOCKQUOTE,
+      CALLOUT
     ]
   },
   {
@@ -88,14 +104,13 @@ const slashMenuItems = [
   TASK_LIST,
   CODE,
   BLOCKQUOTE,
+  CALLOUT,
   DIVIDER,
   TOC,
   SUB_PAGE_MENU
 ]
 
-export const TYPE_ITEMS: SlashMenuItem[] = slashMenuItems.sort(
-  sortBlock(ORDER_NEW_BLOCK, (item: SlashMenuItem) => item.key)
-)
+export const TYPE_ITEMS: SlashMenuItem[] = slashMenuItems
 
 const RECENT_COUNT = 6
 

@@ -2,14 +2,27 @@ import { cloneElement, useMemo } from 'react'
 import { theme } from '@brickdoc/design-system'
 import { ToolbarOption, ToolbarGroupOption } from '../../../ui'
 import { findFirstSelectedNodes } from '../../../../helpers/selection'
-import { BLOCK, BlockCommandItem, ORDER_TOGGLE_BLOCK } from '../../../../helpers/block'
+import { BlockCommandItem } from '../../../../helpers/block'
+import * as BLOCK from '../../../../helpers/block'
 import { isBubbleMenuVisible } from '../BubbleMenu'
 import { NodeIcon } from './useBubbleMenuItems'
 import { useEditorContext, useEditorI18n } from '../../../../hooks'
 
-const blockItems: BlockCommandItem[] = ORDER_TOGGLE_BLOCK.map(
-  key => Object.values(BLOCK).find(block => block.key === key)!
-)
+const blockItems: BlockCommandItem[] = [
+  BLOCK.PARAGRAPH,
+  BLOCK.HEADING_1,
+  BLOCK.HEADING_2,
+  BLOCK.HEADING_3,
+  BLOCK.HEADING_4,
+  BLOCK.HEADING_5,
+  BLOCK.ORDERED_LIST,
+  BLOCK.BULLETED_LIST,
+  BLOCK.TASK_LIST,
+  BLOCK.FORMULA,
+  BLOCK.CODE,
+  BLOCK.BLOCKQUOTE,
+  BLOCK.CALLOUT
+]
 
 export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {
   const { editor } = useEditorContext()
