@@ -1,11 +1,46 @@
 import { FC, useMemo } from 'react'
 import { NodeViewContent } from '@tiptap/react'
-import { css } from '@brickdoc/design-system'
+import { css, theme } from '@brickdoc/design-system'
 import { BlockContainer } from '../BlockContainer'
 import { HeadingViewProps } from '../../../extensions/blocks/heading/meta'
 
-const h1ActionButtonStyle = css({
-  marginTop: '.5rem'
+const actionButtonStyle = css({
+  include: ['flexCenter'],
+  display: 'flex',
+  variants: {
+    level: {
+      1: {
+        lineHeight: theme.lineHeights.title1,
+        height: theme.lineHeights.title1,
+        marginTop: theme.titleOffset.title1
+      },
+      2: {
+        lineHeight: theme.lineHeights.title2,
+        height: theme.lineHeights.title2,
+        marginTop: theme.titleOffset.title2
+      },
+      3: {
+        lineHeight: theme.lineHeights.title3,
+        height: theme.lineHeights.title3,
+        marginTop: theme.titleOffset.title3
+      },
+      4: {
+        lineHeight: theme.lineHeights.title4,
+        height: theme.lineHeights.title4,
+        marginTop: theme.titleOffset.title4
+      },
+      5: {
+        lineHeight: theme.lineHeights.title5,
+        height: theme.lineHeights.title5,
+        marginTop: theme.titleOffset.title5
+      },
+      6: {
+        lineHeight: theme.lineHeights.title5,
+        height: theme.lineHeights.title5,
+        marginTop: theme.titleOffset.title5
+      }
+    }
+  }
 })
 
 export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, getPos }) => {
@@ -25,18 +60,7 @@ export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, getPos }) 
     }
   }, [node.attrs.level])
 
-  const actionButtonClassName = useMemo(() => {
-    switch (Number(node.attrs.level)) {
-      case 2:
-      case 3:
-      case 4:
-      case 5:
-        return ''
-      case 1:
-      default:
-        return h1ActionButtonStyle()
-    }
-  }, [node.attrs.level])
+  const actionButtonClassName = actionButtonStyle({ level: node.attrs.level })
 
   return (
     <BlockContainer
