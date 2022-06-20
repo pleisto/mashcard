@@ -133,7 +133,7 @@ zh-TW:
       basic:
         cut: 剪下
         copy: 複製
-        move: 移動 
+        move: 移動
         delete: 刪除
         transform: 變成
       embed_block:
@@ -227,7 +227,7 @@ zh-TW:
         cancel: 取消
       menu:
         copy: 複製鏈接
-        delete: 刪除 
+        delete: 刪除
       import_sources:
         link:
           placeholder: 粘貼圖片鏈接...
@@ -464,7 +464,7 @@ zh-TW:
       text: 快速搜尋
       placeholder: 搜尋頁面
     blocks:
-      create_pages: 新增頁面 
+      create_pages: 新增頁面
       no_pages: No pages inside
       create_sub_pages: Add Subpage
       delete: Delete
@@ -597,5 +597,5 @@ zh-TW:
     days:
       today: Today
       yesterday: Yesterday
-    date: '%m-%d-%Y'
+    date: 'YYYY-MM-DD'
     time: 'HH:mm:ss'
