@@ -611,5 +611,5 @@ zh-CN:
     days:
       today: Today
       yesterday: Yesterday
-    date: 'YYYY-MM-DD'
+    date: 'DD/MM/YYYY'
     time: 'HH:mm:ss'
