@@ -82,7 +82,8 @@ export const Drawer: FC<DrawerProps> = ({ visible, className, title, renderBody,
         visible={visible}
         className={className}
         animate={drawerAnimation(visible)}
-        transition={drawerTransition(visible)}>
+        transition={drawerTransition(visible)}
+      >
         {visible && (
           <>
             <CloseButton onClick={onClose} type="unstyled" size="md" icon={<Close />} />
