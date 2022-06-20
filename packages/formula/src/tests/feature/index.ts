@@ -9,6 +9,7 @@ import { SpreadsheetTestCase } from './spreadsheet'
 import { VariableTestCase } from './variable'
 import { EventTestCases } from './event'
 import { CompleteTestCase } from './complete'
+import { FormatTestCase } from './format'
 
 export const FeatureTestCases: TestCaseInterface[] = [
   FunctionCallTestCase,
@@ -17,6 +18,7 @@ export const FeatureTestCases: TestCaseInterface[] = [
   SpreadsheetTestCase,
   NameTestCase,
   AsyncTestCase,
+  FormatTestCase,
   DependencyTestCase,
   OtherTestCase,
   ...EventTestCases,

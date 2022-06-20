@@ -1,22 +1,10 @@
 import { parse } from '../grammar/core'
-import { makeContext } from '../tests/testHelper'
+import { makeContext, splitDefinition$ } from '../tests/testHelper'
 import { buildTestCases, trackTodo } from '../tests'
 import { getLastCodeFragment, applyCompletion } from '../grammar'
 import { CompleteNames } from '../tests/feature/complete'
 
 const [testCases] = buildTestCases(CompleteNames)
-
-const splitDefinitionWithCursor = (
-  definitionWithCursor: string
-): { definitionAfterSplit: string; positionAfterSplit: number } => {
-  const splits = definitionWithCursor.split('$')
-  if (splits.length !== 2) throw new Error(`definitionWithCursor error ${definitionWithCursor}`)
-
-  return {
-    definitionAfterSplit: `${splits[0]}${splits[1]}`,
-    positionAfterSplit: splits[0].length
-  }
-}
 
 describe('completer', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
@@ -26,8 +14,8 @@ describe('completer', () => {
 
   trackTodo(it, testCases.completeTestCases)
 
-  it.each([...testCases.completeTestCases])('$jestTitle', async args => {
-    const { definitionAfterSplit, positionAfterSplit } = splitDefinitionWithCursor(args.definitionWithCursor)
+  it.each(testCases.completeTestCases)('$jestTitle', async args => {
+    const [definitionAfterSplit, positionAfterSplit] = splitDefinition$(args.definition$)
 
     const newCtx = {
       ...ctx,
@@ -66,16 +54,10 @@ describe('completer', () => {
     for (const complete of args.completes) {
       const completion = complete.match ? completions.find(c => c.name === complete.match)! : firstCompletion
       expect(complete).not.toBe(undefined)
-      const completeResult = applyCompletion(
-        { ...newCtx, meta: ctx.buildMeta({ ...args, definition, position }) },
-        completion
-      )
+      const result = applyCompletion({ ...newCtx, meta: ctx.buildMeta({ ...args, definition, position }) }, completion)
 
-      const { definitionAfterSplit, positionAfterSplit } = splitDefinitionWithCursor(complete.definitionWithCursor)
-      expect([complete, completeResult]).toStrictEqual([
-        complete,
-        { definition: definitionAfterSplit, position: positionAfterSplit }
-      ])
+      const [newDefinition, newPosition] = splitDefinition$(complete.definition$)
+      expect([complete, result]).toStrictEqual([complete, { definition: newDefinition, position: newPosition }])
     }
   })
 })

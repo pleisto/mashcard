@@ -19,6 +19,7 @@ export interface FormulaMenuProps {
   nameRef: UseFormulaOutput['nameRef']
   formulaEditor: UseFormulaOutput['formulaEditor']
   references: UseFormulaOutput['references']
+  formulaFormat: UseFormulaOutput['formulaFormat']
   defaultVisible: boolean
   onVisibleChange: (visible: boolean) => void
   handleDelete: (variable?: VariableData) => void
@@ -39,6 +40,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   onVisibleChange,
   isDisableSave,
   onSaveFormula,
+  formulaFormat,
   nameRef,
   completion
 }) => {

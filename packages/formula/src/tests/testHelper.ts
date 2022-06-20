@@ -260,3 +260,10 @@ export const buildEvent = <Args extends DistributeEvents[]>(input: Args): ((ctx:
     }
   }
 }
+
+export const splitDefinition$ = (definition$: string): [definition: string, position: number] => {
+  const splits = definition$.split('$')
+  if (splits.length !== 2) throw new Error(`definitionWithCursor error ${definition$}`)
+
+  return [`${splits[0]}${splits[1]}`, splits[0].length]
+}

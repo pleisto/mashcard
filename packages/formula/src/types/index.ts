@@ -380,11 +380,6 @@ export interface Argument<T extends UsedFormulaType = UsedFormulaType> {
   readonly spread?: boolean
 }
 
-export interface CompleteInput {
-  definitionWithCursor: string
-  match?: string
-}
-
 export type CompletionKind = 'function' | 'variable' | 'spreadsheet' | 'column' | 'block'
 export type ComplexCodeFragmentType =
   | 'Spreadsheet'
@@ -397,7 +392,30 @@ export type ComplexCodeFragmentType =
   | 'LogicRow'
   | 'ThisRow'
   | 'ThisRecord'
+
+export const OPERATOR_TYPES = [
+  'Plus',
+  'Minus',
+  'Multi',
+  'Div',
+  'Ampersand',
+  'Caret',
+  'Equal2',
+  'Equal',
+  'NotEqual2',
+  'NotEqual',
+  'And',
+  'Or',
+  'GreaterThan',
+  'LessThanEqual',
+  'GreaterThanEqual',
+  'LessThan',
+  'ExactIn',
+  'In'
+] as const
+
 export type SimpleCodeFragmentType =
+  | typeof OPERATOR_TYPES[number]
   | 'FunctionName'
   | 'Function'
   | 'FunctionGroup'
@@ -407,9 +425,15 @@ export type SimpleCodeFragmentType =
   | 'BooleanLiteral'
   | 'NullLiteral'
   | 'Dot'
-  | 'Equal2'
-  | 'Equal'
-  | 'GreaterThan'
+  | 'LParen'
+  | 'RParen'
+  | 'LBracket'
+  | 'RBracket'
+  | 'LBrace'
+  | 'RBrace'
+  | 'Not'
+  | 'Comma'
+  | 'Semicolon'
 export type SpecialCodeFragmentType = 'unknown' | 'parseErrorOther' | 'Space' | 'literal'
 export type CodeFragmentCodes = ComplexCodeFragmentType | SimpleCodeFragmentType | SpecialCodeFragmentType
 

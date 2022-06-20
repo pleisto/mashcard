@@ -30,7 +30,7 @@ export const FunctionCompleteTestCase: TestCaseInterface = {
     functionClauses,
     completeTestCases: [
       {
-        definitionWithCursor: '=ab$',
+        definition$: '=ab$',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'ab' },
         firstCompletion: {
           name: 'ABS',
@@ -46,28 +46,28 @@ export const FunctionCompleteTestCase: TestCaseInterface = {
           ],
           flags: ['nameStartsWith', 'function']
         },
-        completes: [{ definitionWithCursor: '=ABS($)' }]
+        completes: [{ definition$: '=ABS($)' }]
       },
       {
-        definitionWithCursor: '=1 + AB$ ',
+        definition$: '=1 + AB$ ',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'AB' },
         firstCompletion: { name: 'ABS', flags: ['nameStartsWith', 'function'] },
-        completes: [{ definitionWithCursor: '=1 + ABS($) ' }]
+        completes: [{ definition$: '=1 + ABS($) ' }]
       },
       {
-        definitionWithCursor: '=1 + abs$ ',
+        definition$: '=1 + abs$ ',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'abs' },
         firstCompletion: { name: 'ABS', flags: ['nameEqual', 'function'] },
-        completes: [{ definitionWithCursor: '=1 + ABS($) ' }]
+        completes: [{ definition$: '=1 + ABS($) ' }]
       },
       {
-        definitionWithCursor: '=1 + ABS$ ',
+        definition$: '=1 + ABS$ ',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'ABS' },
         firstCompletion: { name: 'ABS', flags: ['nameEqual', 'function'] },
-        completes: [{ definitionWithCursor: '=1 + ABS($) ' }]
+        completes: [{ definition$: '=1 + ABS($) ' }]
       },
       {
-        definitionWithCursor: '=1 + core::ab$ + 1',
+        definition$: '=1 + core::ab$ + 1',
         firstNonSpaceCodeFragment: { code: 'Function', display: 'ab' },
         secondNonSpaceCodeFragment: { code: 'FunctionGroup', display: 'core::' },
         firstCompletion: {
@@ -75,10 +75,10 @@ export const FunctionCompleteTestCase: TestCaseInterface = {
           kind: 'function',
           flags: ['functionNameStartsWith', 'function']
         },
-        completes: [{ definitionWithCursor: '=1 + ABS($) + 1' }]
+        completes: [{ definition$: '=1 + ABS($) + 1' }]
       },
       {
-        definitionWithCursor: '=1 + core:: ab$ + 1',
+        definition$: '=1 + core:: ab$ + 1',
         firstNonSpaceCodeFragment: { code: 'Function', display: 'ab' },
         secondNonSpaceCodeFragment: { code: 'FunctionGroup', display: 'core:: ' },
         firstCompletion: {
@@ -86,20 +86,20 @@ export const FunctionCompleteTestCase: TestCaseInterface = {
           kind: 'function',
           flags: ['functionNameStartsWith', 'function']
         },
-        completes: [{ definitionWithCursor: '=1 + core:: ABS($) + 1' }]
+        completes: [{ definition$: '=1 + core:: ABS($) + 1' }]
       },
       {
-        definitionWithCursor: '=1 + core::abs$ + 1',
+        definition$: '=1 + core::abs$ + 1',
         firstNonSpaceCodeFragment: { code: 'Function', display: 'abs' },
         firstCompletion: {
           name: 'ABS',
           kind: 'function',
           flags: ['functionNameEqual', 'function']
         },
-        completes: [{ definitionWithCursor: '=1 + ABS($) + 1' }]
+        completes: [{ definition$: '=1 + ABS($) + 1' }]
       },
       {
-        definitionWithCursor: '=1 + custom::P$ + 1',
+        definition$: '=1 + custom::P$ + 1',
         firstNonSpaceCodeFragment: { code: 'Function', display: 'P' },
         secondNonSpaceCodeFragment: { code: 'FunctionGroup', display: 'custom::' },
         firstCompletion: {
@@ -114,20 +114,20 @@ export const FunctionCompleteTestCase: TestCaseInterface = {
           ],
           flags: ['functionNameStartsWith', 'function']
         },
-        completes: [{ definitionWithCursor: '=1 + custom::PLUS($) + 1' }]
+        completes: [{ definition$: '=1 + custom::PLUS($) + 1' }]
       },
       {
-        definitionWithCursor: '=1 + custom::PLUS$ + 1',
+        definition$: '=1 + custom::PLUS$ + 1',
         firstNonSpaceCodeFragment: { code: 'Function', display: 'PLUS' },
         secondNonSpaceCodeFragment: { code: 'FunctionGroup', display: 'custom::' },
         firstCompletion: {
           name: 'PLUS',
           flags: ['functionNameEqual', 'function']
         },
-        completes: [{ definitionWithCursor: '=1 + custom::PLUS($) + 1' }]
+        completes: [{ definition$: '=1 + custom::PLUS($) + 1' }]
       },
       {
-        definitionWithCursor: '=1 + custom:: PLUS$ + 1',
+        definition$: '=1 + custom:: PLUS$ + 1',
         todoMessage: 'fix space in function group',
         firstNonSpaceCodeFragment: { code: 'Function', display: 'PLUS' },
         secondNonSpaceCodeFragment: { code: 'FunctionGroup', display: 'custom:: ' },
@@ -135,27 +135,27 @@ export const FunctionCompleteTestCase: TestCaseInterface = {
           name: 'PLUS',
           flags: ['functionNameEqual', 'function']
         },
-        completes: [{ definitionWithCursor: '=1 + custom:: PLUScustom::PLUS($) + 1' }]
+        completes: [{ definition$: '=1 + custom:: PLUScustom::PLUS($) + 1' }]
       },
       {
-        definitionWithCursor: '= 1.$ ',
+        definition$: '= 1.$ ',
         firstNonSpaceCodeFragment: { code: 'Dot' },
         secondNonSpaceCodeFragment: { code: 'NumberLiteral' },
         firstCompletion: {
           name: 'toArray',
           flags: ['chainTypeMatched', 'function']
         },
-        completes: [{ definitionWithCursor: '= 1.toArray($) ' }]
+        completes: [{ definition$: '= 1.toArray($) ' }]
       },
       {
-        definitionWithCursor: '= 1.2.$ ',
+        definition$: '= 1.2.$ ',
         firstNonSpaceCodeFragment: { code: 'Dot' },
         secondNonSpaceCodeFragment: { code: 'NumberLiteral' },
         firstCompletion: {
           name: 'toArray',
           flags: ['chainTypeMatched', 'function']
         },
-        completes: [{ definitionWithCursor: '= 1.2.toArray($) ' }]
+        completes: [{ definition$: '= 1.2.toArray($) ' }]
       }
     ]
   }

@@ -33,14 +33,14 @@ export const VariableCompleteTestCase: TestCaseInterface = {
     ],
     completeTestCases: [
       {
-        definitionWithCursor: '=num$',
+        definition$: '=num$',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'num' },
         namespaceId,
         firstCompletion: { name: 'num0', kind: 'variable' },
-        completes: [{ definitionWithCursor: '=num0$' }]
+        completes: [{ definition$: '=num0$' }]
       },
       {
-        definitionWithCursor: '=3 > num$',
+        definition$: '=3 > num$',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'num' },
         secondNonSpaceCodeFragment: { code: 'GreaterThan' },
         namespaceId,
@@ -49,10 +49,10 @@ export const VariableCompleteTestCase: TestCaseInterface = {
           kind: 'variable',
           flags: ['nameStartsWith', 'compareTypeMatched', 'defaultNamespace', 'variable']
         },
-        completes: [{ definitionWithCursor: '=3 > num1$' }]
+        completes: [{ definition$: '=3 > num1$' }]
       },
       {
-        definitionWithCursor: '=3 > num$',
+        definition$: '=3 > num$',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'num' },
         secondNonSpaceCodeFragment: { code: 'GreaterThan', display: '> ' },
         namespaceId,
@@ -61,10 +61,10 @@ export const VariableCompleteTestCase: TestCaseInterface = {
           kind: 'variable',
           flags: ['nameStartsWith', 'compareTypeMatched', 'defaultNamespace', 'variable']
         },
-        completes: [{ definitionWithCursor: '=3 > num1$' }]
+        completes: [{ definition$: '=3 > num1$' }]
       },
       {
-        definitionWithCursor: '=3 > $',
+        definition$: '=3 > $',
         firstNonSpaceCodeFragment: { code: 'GreaterThan', display: '> ' },
         namespaceId,
         firstCompletion: {
@@ -72,24 +72,24 @@ export const VariableCompleteTestCase: TestCaseInterface = {
           kind: 'variable',
           flags: ['compareTypeMatched', 'defaultNamespace', 'variable']
         },
-        completes: [{ definitionWithCursor: '=3 > num1$' }]
+        completes: [{ definition$: '=3 > num1$' }]
       },
       {
-        definitionWithCursor: '=NUM$',
+        definition$: '=NUM$',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'NUM' },
         namespaceId,
         firstCompletion: { name: 'num0', kind: 'variable' },
-        completes: [{ definitionWithCursor: '=num0$' }]
+        completes: [{ definition$: '=num0$' }]
       },
       {
-        definitionWithCursor: '=num $',
+        definition$: '=num $',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'num ' },
         namespaceId,
         firstCompletion: { name: 'num0', kind: 'variable' },
-        completes: [{ definitionWithCursor: '=num0 $' }]
+        completes: [{ definition$: '=num0 $' }]
       },
       {
-        definitionWithCursor: '=num0$',
+        definition$: '=num0$',
         firstNonSpaceCodeFragment: { code: 'Variable', display: 'num0' },
         namespaceId,
         firstCompletion: {
@@ -97,45 +97,45 @@ export const VariableCompleteTestCase: TestCaseInterface = {
           kind: 'variable',
           flags: ['exact', 'contextNamespace', 'defaultNamespace', 'variable']
         },
-        completes: [{ definitionWithCursor: '=num0$' }]
+        completes: [{ definition$: '=num0$' }]
       },
       {
-        definitionWithCursor: '=num$0',
+        definition$: '=num$0',
         firstNonSpaceCodeFragment: { code: 'Variable', display: 'num0' },
         namespaceId,
         firstCompletion: { name: 'num0', kind: 'variable' },
-        completes: [{ definitionWithCursor: '=num0$' }]
+        completes: [{ definition$: '=num0$' }]
       },
       {
-        definitionWithCursor: '= 1 + num$ + 123',
+        definition$: '= 1 + num$ + 123',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'num' },
         namespaceId,
         firstCompletion: { name: 'num0', kind: 'variable' },
-        completes: [{ definitionWithCursor: '= 1 + num0$ + 123' }]
+        completes: [{ definition$: '= 1 + num0$ + 123' }]
       },
       {
-        definitionWithCursor: '= 1 + num0$ + 123',
+        definition$: '= 1 + num0$ + 123',
         firstNonSpaceCodeFragment: { code: 'Variable', display: 'num0' },
         namespaceId,
         firstCompletion: { name: 'num0', kind: 'variable' },
-        completes: [{ definitionWithCursor: '= 1 + num0$ + 123' }]
+        completes: [{ definition$: '= 1 + num0$ + 123' }]
       },
       {
-        definitionWithCursor: '= 1 + #CurrentBlock.num$ + 123',
+        definition$: '= 1 + #CurrentBlock.num$ + 123',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'num' },
         namespaceId,
         firstCompletion: { name: 'num0', kind: 'variable' },
-        completes: [{ definitionWithCursor: '= 1 + #CurrentBlock.num0$ + 123' }]
+        completes: [{ definition$: '= 1 + #CurrentBlock.num0$ + 123' }]
       },
       {
-        definitionWithCursor: '= 1 + #CurrentBlock.num0$ + 123',
+        definition$: '= 1 + #CurrentBlock.num0$ + 123',
         firstNonSpaceCodeFragment: { code: 'Variable', display: 'num0' },
         namespaceId,
         firstCompletion: { name: 'num0', kind: 'variable' },
-        completes: [{ definitionWithCursor: '= 1 + #CurrentBlock.num0$ + 123' }]
+        completes: [{ definition$: '= 1 + #CurrentBlock.num0$ + 123' }]
       },
       {
-        definitionWithCursor: '= 1 + #CurrentBlock$ + 123',
+        definition$: '= 1 + #CurrentBlock$ + 123',
         firstNonSpaceCodeFragment: { code: 'Block', display: '#CurrentBlock' },
         namespaceId,
         firstCompletion: {
@@ -143,51 +143,51 @@ export const VariableCompleteTestCase: TestCaseInterface = {
           kind: 'variable',
           flags: ['contextNamespace', 'blockNamespace', 'defaultNamespace', 'variable']
         },
-        completes: [{ definitionWithCursor: '= 1 + #CurrentBlock.num0$ + 123' }]
+        completes: [{ definition$: '= 1 + #CurrentBlock.num0$ + 123' }]
       },
       {
-        definitionWithCursor: '= 1 + #CurrentBlock.$ + 123',
+        definition$: '= 1 + #CurrentBlock.$ + 123',
         firstNonSpaceCodeFragment: { code: 'Dot' },
         secondNonSpaceCodeFragment: { code: 'Block', display: '#CurrentBlock' },
         namespaceId,
         firstCompletion: { name: 'num0', kind: 'variable', flags: ['chainNamespace', 'defaultNamespace', 'variable'] },
-        completes: [{ definitionWithCursor: '= 1 + #CurrentBlock.num0$ + 123' }]
+        completes: [{ definition$: '= 1 + #CurrentBlock.num0$ + 123' }]
       },
       {
-        definitionWithCursor: '= 1 + VariableCompletePage1.num$ + 123',
+        definition$: '= 1 + VariableCompletePage1.num$ + 123',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'num' },
         namespaceId,
         firstCompletion: { name: 'num0', kind: 'variable' },
-        completes: [{ definitionWithCursor: '= 1 + VariableCompletePage1.num0$ + 123' }]
+        completes: [{ definition$: '= 1 + VariableCompletePage1.num0$ + 123' }]
       },
       {
-        definitionWithCursor: '= 1 + VariableCompletePage1.num0$ + 123',
+        definition$: '= 1 + VariableCompletePage1.num0$ + 123',
         firstNonSpaceCodeFragment: { code: 'Variable', display: 'num0' },
         namespaceId,
         firstCompletion: { name: 'num0', kind: 'variable' },
-        completes: [{ definitionWithCursor: '= 1 + VariableCompletePage1.num0$ + 123' }]
+        completes: [{ definition$: '= 1 + VariableCompletePage1.num0$ + 123' }]
       },
       {
-        definitionWithCursor: '= 1 + VariableCompletePage2.num01$ + 123',
+        definition$: '= 1 + VariableCompletePage2.num01$ + 123',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'num01', namespaceId: namespaceId2 },
         firstCompletion: { name: 'num0123', kind: 'variable', fallbackValue: 'VariableCompletePage2.num0123' },
-        completes: [{ definitionWithCursor: '= 1 + VariableCompletePage2.num0123$ + 123' }]
+        completes: [{ definition$: '= 1 + VariableCompletePage2.num0123$ + 123' }]
       },
       {
-        definitionWithCursor: '= 1 + VariableCompletePage2.num0123$ + 123',
+        definition$: '= 1 + VariableCompletePage2.num0123$ + 123',
         firstNonSpaceCodeFragment: { code: 'Variable', display: 'num0123', namespaceId: namespaceId2 },
         firstCompletion: { name: 'num0123', kind: 'variable', fallbackValue: 'VariableCompletePage2.num0123' },
-        completes: [{ definitionWithCursor: '= 1 + VariableCompletePage2.num0123$ + 123' }]
+        completes: [{ definition$: '= 1 + VariableCompletePage2.num0123$ + 123' }]
       },
       {
-        definitionWithCursor: '= 1 + VariableCompletePage1$ + 123',
+        definition$: '= 1 + VariableCompletePage1$ + 123',
         firstNonSpaceCodeFragment: { code: 'Block', display: 'VariableCompletePage1' },
         namespaceId,
         firstCompletion: { name: 'num0', kind: 'variable' },
-        completes: [{ definitionWithCursor: '= 1 + VariableCompletePage1.num0$ + 123' }]
+        completes: [{ definition$: '= 1 + VariableCompletePage1.num0$ + 123' }]
       },
       {
-        definitionWithCursor: '= 1 + VariableCompletePage1.$ + 123',
+        definition$: '= 1 + VariableCompletePage1.$ + 123',
         firstNonSpaceCodeFragment: { code: 'Dot', display: '.' },
         secondNonSpaceCodeFragment: { code: 'Block' },
         firstCompletion: {
@@ -195,7 +195,7 @@ export const VariableCompleteTestCase: TestCaseInterface = {
           kind: 'variable',
           flags: ['chainNamespace', 'variable']
         },
-        completes: [{ definitionWithCursor: '= 1 + VariableCompletePage1.num0$ + 123' }]
+        completes: [{ definition$: '= 1 + VariableCompletePage1.num0$ + 123' }]
       }
     ]
   }

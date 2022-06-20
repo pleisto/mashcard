@@ -5,7 +5,6 @@ import { Cell } from '../controls'
 import { OperatorName } from '../grammar'
 import {
   CodeFragment,
-  CompleteInput,
   Completion,
   ErrorType,
   FormulaDefinition,
@@ -80,6 +79,7 @@ export interface PageInput {
 }
 type FeatureName =
   | 'async'
+  | 'format'
   | 'functionCall'
   | 'nameCheck'
   | 'powerfx'
@@ -129,13 +129,24 @@ interface ErrorTestCaseType extends RequireField<BaseTestCase<{ key: keyof Varia
   errorMessage: string
 }
 
+interface CompleteInput {
+  definition$: string
+  match?: string
+}
+
 interface CompleteTestCaseType extends BaseTestCase<{}> {
-  definitionWithCursor: string
+  definition$: string
   firstCompletion: Partial<Completion>
   firstNonSpaceCodeFragment?: Partial<CodeFragment>
   secondNonSpaceCodeFragment?: Partial<CodeFragment>
   thirdNonSpaceCodeFragment?: Partial<CodeFragment>
   completes: CompleteInput[]
+}
+
+interface FormatTestCaseType extends BaseTestCase<{}> {
+  definition$: string
+  formatResult$?: string
+  minifyResult$?: string
 }
 
 interface TriggerEvent {
@@ -213,6 +224,7 @@ export interface TestCaseType {
   successTestCases?: SuccessTestCaseType[]
   errorTestCases?: ErrorTestCaseType[]
   completeTestCases?: CompleteTestCaseType[]
+  formatTestCases?: FormatTestCaseType[]
   eventTestCases?: EventTestCaseType[]
   dependencyTestCases?: AnyDependencyTestCaseType[]
 }
@@ -222,6 +234,7 @@ export interface TestCaseInput {
   successTestCases: Array<RequireField<SuccessTestCaseType, 'groupOptions' | 'jestTitle'>>
   errorTestCases: Array<RequireField<ErrorTestCaseType, 'groupOptions' | 'jestTitle'>>
   completeTestCases: Array<RequireField<CompleteTestCaseType, 'groupOptions' | 'jestTitle'>>
+  formatTestCases: Array<RequireField<FormatTestCaseType, 'groupOptions' | 'jestTitle'>>
   eventTestCases: Array<RequireField<EventTestCaseType, 'groupOptions' | 'jestTitle'>>
   dependencyTestCases: Array<RequireField<AnyDependencyTestCaseType, 'groupOptions' | 'jestTitle'>>
 }

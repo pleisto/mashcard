@@ -44,7 +44,7 @@ export const SpreadsheetCompleteTestCase: TestCaseInterface = {
     ],
     completeTestCases: [
       {
-        definitionWithCursor: '= spreadsheet1F$ ',
+        definition$: '= spreadsheet1F$ ',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'spreadsheet1F' },
         namespaceId,
         firstCompletion: {
@@ -52,10 +52,10 @@ export const SpreadsheetCompleteTestCase: TestCaseInterface = {
           kind: 'spreadsheet',
           flags: ['nameStartsWith', 'defaultNamespace', 'spreadsheet']
         },
-        completes: [{ definitionWithCursor: '= spreadsheet1foobar$ ' }]
+        completes: [{ definition$: '= spreadsheet1foobar$ ' }]
       },
       {
-        definitionWithCursor: '= spreadsheet1foobar$ ',
+        definition$: '= spreadsheet1foobar$ ',
         firstNonSpaceCodeFragment: { code: 'Spreadsheet', display: 'spreadsheet1foobar' },
         namespaceId,
         firstCompletion: {
@@ -63,30 +63,30 @@ export const SpreadsheetCompleteTestCase: TestCaseInterface = {
           kind: 'spreadsheet',
           flags: ['exact', 'contextNamespace', 'defaultNamespace', 'spreadsheet']
         },
-        completes: [{ definitionWithCursor: '= spreadsheet1foobar$ ' }]
+        completes: [{ definition$: '= spreadsheet1foobar$ ' }]
       },
       {
-        definitionWithCursor: '= SpreadsheetCompletePage1.spreadsheet1F$ ',
+        definition$: '= SpreadsheetCompletePage1.spreadsheet1F$ ',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'spreadsheet1F' },
         firstCompletion: {
           name: 'spreadsheet1foobar',
           kind: 'spreadsheet',
           flags: ['nameStartsWith', 'contextNamespace', 'spreadsheet']
         },
-        completes: [{ definitionWithCursor: '= SpreadsheetCompletePage1.spreadsheet1foobar$ ' }]
+        completes: [{ definition$: '= SpreadsheetCompletePage1.spreadsheet1foobar$ ' }]
       },
       {
-        definitionWithCursor: '= SpreadsheetCompletePage1.spreadsheet1foobar$ ',
+        definition$: '= SpreadsheetCompletePage1.spreadsheet1foobar$ ',
         firstNonSpaceCodeFragment: { code: 'Spreadsheet', display: 'spreadsheet1foobar' },
         firstCompletion: {
           name: 'spreadsheet1foobar',
           kind: 'spreadsheet',
           flags: ['exact', 'contextNamespace', 'spreadsheet']
         },
-        completes: [{ definitionWithCursor: '= SpreadsheetCompletePage1.spreadsheet1foobar$ ' }]
+        completes: [{ definition$: '= SpreadsheetCompletePage1.spreadsheet1foobar$ ' }]
       },
       {
-        definitionWithCursor: '= Spreadsheet2$ ',
+        definition$: '= Spreadsheet2$ ',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'Spreadsheet2' },
         namespaceId,
         firstCompletion: {
@@ -94,11 +94,11 @@ export const SpreadsheetCompleteTestCase: TestCaseInterface = {
           kind: 'spreadsheet',
           flags: ['nameStartsWith', 'defaultNamespace', 'spreadsheet']
         },
-        completes: [{ definitionWithCursor: '= "Spreadsheet2 2"$ ' }]
+        completes: [{ definition$: '= "Spreadsheet2 2"$ ' }]
       },
       {
         label: 'Dot dynamic column',
-        definitionWithCursor: '= spreadsheet1foobar.$ ',
+        definition$: '= spreadsheet1foobar.$ ',
         firstNonSpaceCodeFragment: { code: 'Dot' },
         secondNonSpaceCodeFragment: { code: 'Spreadsheet', display: 'spreadsheet1foobar' },
         namespaceId,
@@ -107,11 +107,11 @@ export const SpreadsheetCompleteTestCase: TestCaseInterface = {
           kind: 'column',
           flags: ['dynamicColumn', 'defaultNamespace', 'column']
         },
-        completes: [{ definitionWithCursor: '= spreadsheet1foobar.first$ ' }]
+        completes: [{ definition$: '= spreadsheet1foobar.first$ ' }]
       },
       {
         label: 'Dot dynamic column 2',
-        definitionWithCursor: '= spreadsheet1foobar.fi$ ',
+        definition$: '= spreadsheet1foobar.fi$ ',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'fi' },
         secondNonSpaceCodeFragment: { code: 'Dot' },
         thirdNonSpaceCodeFragment: { code: 'Spreadsheet', display: 'spreadsheet1foobar' },
@@ -121,11 +121,11 @@ export const SpreadsheetCompleteTestCase: TestCaseInterface = {
           kind: 'column',
           flags: ['nameStartsWith', 'dynamicColumn', 'defaultNamespace', 'column']
         },
-        completes: [{ definitionWithCursor: '= spreadsheet1foobar.first$ ' }]
+        completes: [{ definition$: '= spreadsheet1foobar.first$ ' }]
       },
       {
         label: 'richType dynamic column',
-        definitionWithCursor: '= fi$ ',
+        definition$: '= fi$ ',
         firstNonSpaceCodeFragment: { code: 'FunctionName', display: 'fi' },
         namespaceId,
         richType: { type: 'spreadsheet', meta: { spreadsheetId, rowId: '', columnId: '' } },
@@ -134,7 +134,7 @@ export const SpreadsheetCompleteTestCase: TestCaseInterface = {
           kind: 'column',
           flags: ['nameStartsWith', 'dynamicColumn', 'defaultNamespace', 'column']
         },
-        completes: [{ definitionWithCursor: '= first$ ' }]
+        completes: [{ definition$: '= first$ ' }]
       }
     ]
   }

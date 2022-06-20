@@ -1,5 +1,6 @@
 import { CodeFragment } from '@mashcard/formula'
 import { JSONContent } from '@tiptap/core'
+import { FormulaInput } from '../components/blockViews'
 
 const maybeRemoveDefinitionEqual = (definition: string | undefined, formulaIsNormal: boolean): string => {
   if (!definition) return ''
@@ -50,6 +51,16 @@ export const definition2content = (definition: string, formulaIsNormal: boolean)
   if (!newDefinition) return [undefined, newDefinition]
 
   return [buildJSONContentByArray([{ type: 'text', text: newDefinition }]), newDefinition]
+}
+
+export const input2content = (
+  { definition, position }: { position: number; definition: string },
+  formulaIsNormal: boolean
+): FormulaInput => {
+  return {
+    position: formulaIsNormal ? position - 1 : position,
+    content: definition2content(definition, formulaIsNormal)[0]
+  }
 }
 
 export const codeFragments2content = (

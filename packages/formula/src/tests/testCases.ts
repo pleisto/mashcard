@@ -63,8 +63,20 @@ const reduceTestCaseInput = (testCases: TestCaseInterface[]): TestCaseInput => {
           ...buildRequiredFields(
             curr,
             s,
-            `${index} ${s.definitionWithCursor}`,
+            `${index} ${s.definition$}`,
             `${JSON.stringify(s.firstCompletion)} ; ${JSON.stringify(s.completes)}`
+          )
+        }))
+      ],
+      formatTestCases: [
+        ...prev.formatTestCases,
+        ...(curr.testCases.formatTestCases ?? []).map((s, index) => ({
+          ...s,
+          ...buildRequiredFields(
+            curr,
+            s,
+            `${index} ${s.definition$}`,
+            `${JSON.stringify(s.minifyResult$)} ; ${JSON.stringify(s.formatResult$)}`
           )
         }))
       ],
@@ -97,6 +109,7 @@ const reduceTestCaseInput = (testCases: TestCaseInterface[]): TestCaseInput => {
       options: { pages: [{ pageName: 'Default' }], initializeOptions: { domain: 'test' } },
       successTestCases: [],
       completeTestCases: [],
+      formatTestCases: [],
       errorTestCases: [],
       eventTestCases: [],
       dependencyTestCases: []
