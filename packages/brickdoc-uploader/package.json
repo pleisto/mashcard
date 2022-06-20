@@ -19,7 +19,7 @@
     "@uppy/dashboard": "^2.3.0",
     "@uppy/react": "^2.2.2",
     "@uppy/xhr-upload": "^2.1.2",
-    "react-virtuoso": "^2.13.2"
+    "react-virtuoso": "^2.13.3"
   },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",
