@@ -611,5 +611,5 @@ en-US:
     days:
       today: Today
       yesterday: Yesterday
-    date: 'DD/MM/YYYY'
+    date: 'MM-DD-Y'
     time: 'HH:mm:ss'
