@@ -63,6 +63,7 @@ module Accounts
       {
         domain: domain,
         name: name,
+        avatar_data: avatar_data,
       }
     end
 

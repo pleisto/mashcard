@@ -2,7 +2,7 @@ import { theme, styled, Tooltip } from '@brickdoc/design-system'
 import { PodAvatar } from '@/common/components/PodAvatar'
 
 export const Avatar = styled(PodAvatar, {
-  // outlineColor: theme.colors.white,
+  outlineColor: theme.colors.white,
   outlineWidth: '0.125rem',
   outlineStyle: 'solid',
   variants: {

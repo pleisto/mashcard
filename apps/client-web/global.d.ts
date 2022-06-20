@@ -4,6 +4,7 @@ declare global {
     currentUser?: {
       domain: string
       name: string
+      avatarData?: { url: string; downloadUrl: string; signedId: string }
     }
     currentPod: {
       domain: string

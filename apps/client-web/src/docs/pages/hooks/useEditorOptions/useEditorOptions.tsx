@@ -32,21 +32,24 @@ export function useEditorOptions({
   const formulaContext = useReactiveVar(FormulaContextVar)
   const mentionCommands = useMentionCommands(docMeta)
   const renderView = useCallback(() => <PageTree mode="subPage" />, [])
+  const { currentUser } = globalThis.brickdocContext
 
   return useMemo(
     () => ({
       base: {
         collaboration: provider ? { document: provider.document } : false,
-        collaborationCursor: provider
-          ? {
-              provider,
-              user: {
-                name: globalThis.brickdocContext.currentUser?.name,
-                operatorId: globalThis.brickdocContext.uuid,
-                color: string2Color(globalThis.brickdocContext.uuid)
+        collaborationCursor:
+          provider && currentUser
+            ? {
+                provider,
+                user: {
+                  id: currentUser.name,
+                  name: currentUser.name,
+                  operatorId: globalThis.brickdocContext.uuid,
+                  color: string2Color(globalThis.brickdocContext.uuid)
+                }
               }
-            }
-          : false,
+            : false,
         discussion,
         embed,
         formula: {
@@ -65,6 +68,6 @@ export function useEditorOptions({
       },
       editable: documentEditable
     }),
-    [discussion, documentEditable, embed, formulaContext, mentionCommands, onDocSave, renderView, provider]
+    [discussion, documentEditable, embed, formulaContext, mentionCommands, onDocSave, renderView, provider, currentUser]
   )
 }
