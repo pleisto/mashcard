@@ -14,7 +14,7 @@ env:
   TURBO_TEAM: brickdoc
   REDIS_URL: redis://localhost:6379
   MASHCARD_DATABASE_URL: postgres://postgres:just4testing@localhost:5432
-  MASHCARD_DOTCOM_LICENSE: 'I hereby swear that I have obtained written permission from the Brickdoc Inc of this plugin to use it.'
+  MASHCARD_DOTCOM_LICENSE: 'I hereby swear that I have obtained written permission from the Pleisto Inc of this plugin to use it.'
 jobs:
   jest:
     name: Jest
