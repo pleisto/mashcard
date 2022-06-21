@@ -26,12 +26,11 @@ export const CollaboratorsMenu: FC = () => {
     return (
       <CollaboratorsConatainer title={info.user.name} key={i}>
         <span>
-          <Avatar size={24} pod={pod} />
+          <Avatar size={24} pod={pod} style={{ outlineColor: info.user.color }} />
         </span>
       </CollaboratorsConatainer>
     )
   })
-  // style={{ outlineColor: info.user.color }}
 
   return <>{avatars}</>
 }

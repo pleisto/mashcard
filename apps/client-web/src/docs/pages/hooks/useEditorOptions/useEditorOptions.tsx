@@ -49,7 +49,7 @@ export function useEditorOptions({
                   id: currentUser.name,
                   name: currentUser.name,
                   operatorId: globalThis.brickdocContext.uuid,
-                  color: string2Color(globalThis.brickdocContext.uuid)
+                  color: string2Color(`c:${currentUser.name}`)
                 }
               }
             : false,
