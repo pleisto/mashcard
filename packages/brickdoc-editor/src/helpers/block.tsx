@@ -1,10 +1,4 @@
 import { ChainedCommands } from '@tiptap/core'
-import Heading from '@tiptap/extension-heading'
-import Paragraph from '@tiptap/extension-paragraph'
-import BulletList from '@tiptap/extension-bullet-list'
-import OrderedList from '@tiptap/extension-ordered-list'
-import CodeBlock from '@tiptap/extension-code-block'
-import HorizontalRule from '@tiptap/extension-horizontal-rule'
 import { EmbedType } from '@brickdoc/schema'
 import {
   Code,
@@ -25,7 +19,8 @@ import {
   RteH5,
   TextStyle,
   Quote,
-  CheckboxSquare
+  CheckboxSquare,
+  Bulb
 } from '../components/ui'
 import { meta as formulaMeta } from '../extensions/blocks/formula/meta'
 import { meta as spreadsheetMeta } from '../extensions/blocks/spreadsheet/meta'
@@ -34,6 +29,13 @@ import { meta as subPageMenuMeta } from '../extensions/blocks/subPageMenu/meta'
 import { meta as tocMeta } from '../extensions/blocks/toc/meta'
 import { meta as blockquoteMeta } from '../extensions/blocks/blockquote/meta'
 import { meta as taskListMeta } from '../extensions/blocks/taskList/meta'
+import { meta as bulletListMeta } from '../extensions/blocks/bulletList/meta'
+import { meta as codeBlockMeta } from '../extensions/blocks/codeBlock/meta'
+import { meta as headingMeta } from '../extensions/blocks/heading/meta'
+import { meta as horizontalRuleMeta } from '../extensions/blocks/horizontalRule/meta'
+import { meta as orderedListMeta } from '../extensions/blocks/orderedList/meta'
+import { meta as paragraphMeta } from '../extensions/blocks/paragraph/meta'
+import { meta as calloutMeta } from '../extensions/blocks/callout/meta'
 
 export type BlockItemKey =
   | 'text'
@@ -56,6 +58,7 @@ export type BlockItemKey =
   | 'divider'
   | 'blockquote'
   | 'taskList'
+  | 'callout'
 
 export interface BlockCommandItem {
   key: BlockItemKey
@@ -70,12 +73,12 @@ export interface BlockCommandItem {
 
 export const PARAGRAPH: BlockCommandItem = {
   key: 'text',
-  blockType: Paragraph.name,
+  blockType: paragraphMeta.name,
   squareIcon: <TextStyle square={true} />,
   icon: <TextStyle />,
   setBlock: chain => chain.setParagraph().liftBrickList(),
   toggleBlock: chain => chain.setParagraph().liftBrickList(),
-  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: Paragraph.name }, position)
+  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: paragraphMeta.name }, position)
 }
 
 export const FORMULA: BlockCommandItem = {
@@ -141,81 +144,81 @@ export const EMBED: BlockCommandItem = {
 
 export const HEADING_1: BlockCommandItem = {
   key: 'h1',
-  blockType: Heading.name,
+  blockType: headingMeta.name,
   alias: ['h1', 'heading 1'],
   squareIcon: <RteH1 square={true} />,
   icon: <RteH1 />,
   setBlock: chain => chain.setHeading({ level: 1 }),
   toggleBlock: chain => chain.toggleHeading({ level: 1 }),
-  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: Heading.name, attrs: { level: 1 } }, position)
+  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: headingMeta.name, attrs: { level: 1 } }, position)
 }
 
 export const HEADING_2: BlockCommandItem = {
   key: 'h2',
-  blockType: Heading.name,
+  blockType: headingMeta.name,
   alias: ['h2', 'heading 2'],
   squareIcon: <RteH2 square={true} />,
   icon: <RteH2 />,
   setBlock: chain => chain.setHeading({ level: 2 }),
   toggleBlock: chain => chain.toggleHeading({ level: 2 }),
-  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: Heading.name, attrs: { level: 2 } }, position)
+  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: headingMeta.name, attrs: { level: 2 } }, position)
 }
 
 export const HEADING_3: BlockCommandItem = {
   key: 'h3',
-  blockType: Heading.name,
+  blockType: headingMeta.name,
   alias: ['h3', 'heading 3'],
   squareIcon: <RteH3 square={true} />,
   icon: <RteH3 />,
   setBlock: chain => chain.setHeading({ level: 3 }),
   toggleBlock: chain => chain.toggleHeading({ level: 3 }),
-  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: Heading.name, attrs: { level: 3 } }, position)
+  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: headingMeta.name, attrs: { level: 3 } }, position)
 }
 
 export const HEADING_4: BlockCommandItem = {
   key: 'h4',
-  blockType: Heading.name,
+  blockType: headingMeta.name,
   alias: ['h4', 'heading 4'],
   squareIcon: <RteH4 square={true} />,
   icon: <RteH4 />,
   setBlock: chain => chain.setHeading({ level: 4 }),
   toggleBlock: chain => chain.toggleHeading({ level: 4 }),
-  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: Heading.name, attrs: { level: 4 } }, position)
+  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: headingMeta.name, attrs: { level: 4 } }, position)
 }
 
 export const HEADING_5: BlockCommandItem = {
   key: 'h5',
-  blockType: Heading.name,
+  blockType: headingMeta.name,
   alias: ['h5', 'heading 5'],
   squareIcon: <RteH5 square={true} />,
   icon: <RteH5 />,
   setBlock: chain => chain.setHeading({ level: 5 }),
   toggleBlock: chain => chain.toggleHeading({ level: 5 }),
-  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: Heading.name, attrs: { level: 5 } }, position)
+  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: headingMeta.name, attrs: { level: 5 } }, position)
 }
 
 export const BULLETED_LIST: BlockCommandItem = {
   key: 'bulletedList',
-  blockType: BulletList.name,
+  blockType: bulletListMeta.name,
   alias: ['bul'],
   squareIcon: <ListUnordered square={true} />,
   icon: <ListUnordered />,
-  setBlock: chain => chain.setToBrickList(BulletList.name),
-  toggleBlock: chain => chain.toggleBrickList(BulletList.name),
+  setBlock: chain => chain.setToBrickList(bulletListMeta.name),
+  toggleBlock: chain => chain.toggleBrickList(bulletListMeta.name),
   insertBlockAt: (chain, position) =>
-    chain.insertBlockAt({ type: Paragraph.name }, position).wrapInBrickList(BulletList.name)
+    chain.insertBlockAt({ type: paragraphMeta.name }, position).wrapInBrickList(bulletListMeta.name)
 }
 
 export const ORDERED_LIST: BlockCommandItem = {
   key: 'orderedList',
-  blockType: OrderedList.name,
+  blockType: orderedListMeta.name,
   alias: ['num', 'numberedList'],
   squareIcon: <ListOrdered square={true} />,
   icon: <ListOrdered />,
-  setBlock: chain => chain.setToBrickList(OrderedList.name),
-  toggleBlock: chain => chain.toggleBrickList(OrderedList.name),
+  setBlock: chain => chain.setToBrickList(orderedListMeta.name),
+  toggleBlock: chain => chain.toggleBrickList(orderedListMeta.name),
   insertBlockAt: (chain, position) =>
-    chain.insertBlockAt({ type: Paragraph.name }, position).wrapInBrickList(OrderedList.name)
+    chain.insertBlockAt({ type: paragraphMeta.name }, position).wrapInBrickList(orderedListMeta.name)
 }
 
 export const TASK_LIST: BlockCommandItem = {
@@ -227,7 +230,7 @@ export const TASK_LIST: BlockCommandItem = {
   setBlock: chain => chain.setToBrickList(taskListMeta.name),
   toggleBlock: chain => chain.toggleBrickList(taskListMeta.name),
   insertBlockAt: (chain, position) =>
-    chain.insertBlockAt({ type: Paragraph.name }, position).wrapInBrickList(taskListMeta.name)
+    chain.insertBlockAt({ type: paragraphMeta.name }, position).wrapInBrickList(taskListMeta.name)
 }
 
 export const BLOCKQUOTE: BlockCommandItem = {
@@ -238,29 +241,29 @@ export const BLOCKQUOTE: BlockCommandItem = {
   icon: <Quote />,
   setBlock: chain => chain.setBlockquote(),
   toggleBlock: chain => chain.toggleBlockquote(),
-  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: blockquoteMeta.name }, position)
+  insertBlockAt: (chain, position) => PARAGRAPH.insertBlockAt(chain, position).setBlockquote()
 }
 
 export const CODE: BlockCommandItem = {
   key: 'code',
-  blockType: CodeBlock.name,
+  blockType: codeBlockMeta.name,
   alias: ['co'],
   squareIcon: <Code square={true} />,
   icon: <Code />,
   setBlock: chain => chain.setCodeBlock(),
   toggleBlock: chain => chain.toggleCodeBlock(),
-  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: CodeBlock.name }, position)
+  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: codeBlockMeta.name }, position)
 }
 
 export const DIVIDER: BlockCommandItem = {
   key: 'divider',
-  blockType: HorizontalRule.name,
+  blockType: horizontalRuleMeta.name,
   alias: ['div', 'hr'],
   squareIcon: <Divider square={true} />,
   icon: <Divider />,
   setBlock: chain => chain.setHorizontalRule(),
   toggleBlock: chain => chain.setHorizontalRule(),
-  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: HorizontalRule.name }, position)
+  insertBlockAt: (chain, position) => chain.insertBlockAt({ type: horizontalRuleMeta.name }, position)
 }
 
 export const TOC: BlockCommandItem = {
@@ -285,107 +288,13 @@ export const SUB_PAGE_MENU: BlockCommandItem = {
   insertBlockAt: (chain, position) => chain.setSubPageMenuBlock(position)
 }
 
-export const BLOCK = {
-  PARAGRAPH,
-  FORMULA,
-  SPREADSHEET,
-  UPLOAD,
-  GALLERY,
-  LINK,
-  EMBED,
-  HEADING_1,
-  HEADING_2,
-  HEADING_3,
-  HEADING_4,
-  HEADING_5,
-  BULLETED_LIST,
-  ORDERED_LIST,
-  TASK_LIST,
-  CODE,
-  BLOCKQUOTE,
-  DIVIDER,
-  TOC,
-  SUB_PAGE_MENU
+export const CALLOUT: BlockCommandItem = {
+  key: 'callout',
+  blockType: calloutMeta.name,
+  alias: ['call'],
+  squareIcon: <Bulb square={true} />,
+  icon: <Bulb />,
+  setBlock: chain => chain.setCallout(),
+  toggleBlock: chain => chain.toggleCallout(),
+  insertBlockAt: (chain, position) => PARAGRAPH.insertBlockAt(chain, position).setCallout()
 }
-
-export const ORDER_NEW_BLOCK: BlockItemKey[] = [
-  PARAGRAPH.key,
-  FORMULA.key,
-  SPREADSHEET.key,
-  UPLOAD.key,
-  GALLERY.key,
-  LINK.key,
-  HEADING_1.key,
-  HEADING_2.key,
-  HEADING_3.key,
-  HEADING_4.key,
-  HEADING_5.key,
-  BULLETED_LIST.key,
-  ORDERED_LIST.key,
-  TASK_LIST.key,
-  CODE.key,
-  BLOCKQUOTE.key,
-  DIVIDER.key,
-  TOC.key,
-  SUB_PAGE_MENU.key
-]
-
-export const BLOCK_MAP = Object.fromEntries(
-  [
-    PARAGRAPH,
-    FORMULA,
-    SPREADSHEET,
-    UPLOAD,
-    GALLERY,
-    LINK,
-    EMBED,
-    HEADING_1,
-    HEADING_2,
-    HEADING_3,
-    HEADING_4,
-    HEADING_5,
-    BULLETED_LIST,
-    ORDERED_LIST,
-    TASK_LIST,
-    CODE,
-    BLOCKQUOTE,
-    DIVIDER,
-    TOC,
-    SUB_PAGE_MENU
-  ].map(item => [item.key, item])
-)
-
-export const ORDER_TOGGLE_BLOCK: BlockItemKey[] = [
-  PARAGRAPH.key,
-  HEADING_1.key,
-  HEADING_2.key,
-  HEADING_3.key,
-  HEADING_4.key,
-  HEADING_5.key,
-  ORDERED_LIST.key,
-  BULLETED_LIST.key,
-  TASK_LIST.key,
-  FORMULA.key,
-  CODE.key,
-  BLOCKQUOTE.key
-]
-
-export const sortBlock =
-  (ORDER: BlockItemKey[], keyGetter: (item: any) => string) =>
-  (a: unknown, b: unknown): 1 | -1 | 0 => {
-    const indexA = ORDER.findIndex(i => i === keyGetter(a))
-    const indexB = ORDER.findIndex(i => i === keyGetter(b))
-
-    if (indexA > indexB) return 1
-    if (indexA === indexB) return 0
-    return -1
-  }
-
-export const unselectableBlockType = [
-  embedMeta.name,
-  HorizontalRule.name,
-  tocMeta.name,
-  subPageMenuMeta.name,
-  spreadsheetMeta.name
-]
-export const paragraphLikeBlockType = [Paragraph.name, Heading.name]

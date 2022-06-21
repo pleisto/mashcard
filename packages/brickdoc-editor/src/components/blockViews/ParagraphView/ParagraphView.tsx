@@ -1,8 +1,7 @@
-import { FC, useRef } from 'react'
+import { FC } from 'react'
 import { NodeViewContent } from '@tiptap/react'
 import { css, cx, theme } from '@brickdoc/design-system'
 import { BlockContainer } from '../BlockContainer'
-import { usePlaceholder } from './usePlaceholder'
 import { ParagraphViewProps } from '../../../extensions/blocks/paragraph/meta'
 
 const placeholderStyle = css({
@@ -25,9 +24,7 @@ const paragraphStyles = css({
 })
 
 export const ParagraphView: FC<ParagraphViewProps> = props => {
-  const { node, getPos, deleteNode, editor, extension } = props
-  const blockContainerRef = useRef<HTMLDivElement>(null)
-  usePlaceholder(editor, extension, node, blockContainerRef, getPos)
+  const { node, getPos, deleteNode } = props
   const placeholderClassName = placeholderStyle()
   const paragraphClassName = paragraphStyles()
 
@@ -38,7 +35,6 @@ export const ParagraphView: FC<ParagraphViewProps> = props => {
       editable="custom"
       deleteNode={deleteNode}
       style={{ position: 'relative' }}
-      ref={blockContainerRef}
       actionOptions={['cut', 'copy', 'delete', 'transform']}>
       <NodeViewContent
         draggable={false}

@@ -1,5 +1,6 @@
 export * from './blockquote'
 export * from './bulletList'
+export * from './callout'
 export * from './codeBlock'
 export * from './document'
 export * from './embed'

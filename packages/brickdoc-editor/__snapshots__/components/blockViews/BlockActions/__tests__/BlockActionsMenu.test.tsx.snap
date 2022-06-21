@@ -1138,6 +1138,68 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         <li
           class="brd-c-cpzHyL brd-c-hcJSiJ"
           id="menu-add-block-15"
+          label="blocks.taskList.label"
+          role="menuitem"
+          tabindex="-1"
+          title="blocks.taskList.label"
+        >
+          <div
+            class="brd-c-fcAYuy"
+          >
+            <span
+              class="brd-c-OVPdU"
+            >
+              <span
+                class="brd-c-frQDkN brd-c-jguVTD"
+              >
+                <div
+                  class="brd-c-fRlUEu brd-c-fRlUEu-ibOHShY-css"
+                />
+                <div
+                  class="brd-c-BfbNy"
+                />
+                <span
+                  class="brd-c-jVLVTy"
+                >
+                  <span
+                    aria-label="checkbox-square"
+                    class="brd-icon brd-icon-checkbox-square"
+                    role="img"
+                  >
+                    <svg
+                      fill="none"
+                      height="1em"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M6 5H18C18.5523 5 19 5.44772 19 6V18C19 18.5523 18.5523 19 18 19H6C5.44772 19 5 18.5523 5 18V6C5 5.44772 5.44772 5 6 5ZM3 6C3 4.34315 4.34315 3 6 3H18C19.6569 3 21 4.34315 21 6V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V6ZM17.4425 9.82111C17.896 9.30059 17.8416 8.511 17.3211 8.05752C16.8006 7.60403 16.011 7.65837 15.5575 8.1789L11.1724 13.2123L8.84466 11.0786C8.33576 10.6121 7.54505 10.6464 7.07856 11.1553C6.61207 11.6642 6.64645 12.455 7.15534 12.9214L10.4281 15.9214C10.6765 16.1492 11.0063 16.2669 11.3428 16.248C11.6793 16.2291 11.9938 16.0752 12.2152 15.8211L17.4425 9.82111Z"
+                        fill="#9578d0"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </span>
+            </span>
+            <div
+              class="brd-c-fNvXDc"
+            >
+              <span
+                aria-label="blocks.taskList.label"
+                class="brd-c-PJLV"
+              >
+                <span>
+                  blocks.taskList.label
+                </span>
+              </span>
+            </div>
+          </div>
+        </li>
+        <li
+          class="brd-c-cpzHyL brd-c-hcJSiJ"
+          id="menu-add-block-16"
           label="blocks.code.label"
           role="menuitem"
           tabindex="-1"
@@ -1199,7 +1261,129 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </li>
         <li
           class="brd-c-cpzHyL brd-c-hcJSiJ"
-          id="menu-add-block-16"
+          id="menu-add-block-17"
+          label="blocks.blockquote.label"
+          role="menuitem"
+          tabindex="-1"
+          title="blocks.blockquote.label"
+        >
+          <div
+            class="brd-c-fcAYuy"
+          >
+            <span
+              class="brd-c-OVPdU"
+            >
+              <span
+                class="brd-c-frQDkN brd-c-jguVTD"
+              >
+                <div
+                  class="brd-c-fRlUEu brd-c-fRlUEu-iimHIdk-css"
+                />
+                <div
+                  class="brd-c-BfbNy"
+                />
+                <span
+                  class="brd-c-jVLVTy"
+                >
+                  <span
+                    aria-label="quote"
+                    class="brd-icon brd-icon-quote"
+                    role="img"
+                  >
+                    <svg
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M9.427 4.558C5.66 6.976 3.57 9.791 3.15 13.001 2.5 18 6.97 20.447 9.234 18.248c2.265-2.198.907-4.988-.733-5.75-1.64-.764-2.643-.498-2.468-1.517.175-1.02 2.509-3.845 4.558-5.161a.374.374 0 0 0 .057-.51l-.507-.66c-.22-.286-.43-.275-.715-.092zm9.913 0c-3.766 2.418-5.858 5.233-6.276 8.443-.651 4.999 3.82 7.446 6.084 5.247 2.265-2.198.907-4.988-.733-5.75-1.64-.764-2.643-.498-2.468-1.517.175-1.02 2.508-3.845 4.558-5.161a.374.374 0 0 0 .057-.51l-.507-.66c-.22-.286-.43-.275-.715-.092z"
+                        fill="#85d1f1"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </span>
+            </span>
+            <div
+              class="brd-c-fNvXDc"
+            >
+              <span
+                aria-label="blocks.blockquote.label"
+                class="brd-c-PJLV"
+              >
+                <span>
+                  blocks.blockquote.label
+                </span>
+              </span>
+            </div>
+          </div>
+        </li>
+        <li
+          class="brd-c-cpzHyL brd-c-hcJSiJ"
+          id="menu-add-block-18"
+          label="blocks.callout.label"
+          role="menuitem"
+          tabindex="-1"
+          title="blocks.callout.label"
+        >
+          <div
+            class="brd-c-fcAYuy"
+          >
+            <span
+              class="brd-c-OVPdU"
+            >
+              <span
+                class="brd-c-frQDkN brd-c-jguVTD"
+              >
+                <div
+                  class="brd-c-fRlUEu brd-c-fRlUEu-iexuFlu-css"
+                />
+                <div
+                  class="brd-c-BfbNy"
+                />
+                <span
+                  class="brd-c-jVLVTy"
+                >
+                  <span
+                    aria-label="bulb"
+                    class="brd-icon brd-icon-bulb"
+                    role="img"
+                  >
+                    <svg
+                      fill="none"
+                      height="1em"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M12 3.0625C8.75087 3.0625 6.5 5.38625 6.5 8.21875C6.5 9.57175 7.083 10.4531 7.853 11.3868L8.14725 11.7346C8.45388 12.0976 8.7935 12.4991 9.07262 12.9006C9.46312 13.4657 9.811 14.1326 9.9265 14.9494C9.95403 15.2147 9.87768 15.4804 9.71348 15.6906C9.54928 15.9008 9.31001 16.0392 9.04592 16.0768C8.78183 16.1143 8.51346 16.0481 8.29718 15.892C8.08089 15.7358 7.93352 15.502 7.886 15.2395C7.831 14.8518 7.66188 14.4874 7.37725 14.0749C7.14458 13.751 6.89586 13.4389 6.632 13.1399C6.5165 13.0024 6.39413 12.858 6.2635 12.6999C5.40138 11.6562 4.4375 10.3033 4.4375 8.21875C4.4375 4.17625 7.68663 1 12 1C16.3134 1 19.5625 4.17625 19.5625 8.21875C19.5625 10.3033 18.5986 11.6562 17.7365 12.6999C17.6059 12.858 17.4835 13.0024 17.368 13.1385C17.0834 13.4754 16.8414 13.7614 16.6241 14.0749C16.3381 14.4874 16.1704 14.8518 16.1154 15.2395C16.0962 15.3736 16.0509 15.5026 15.9819 15.6191C15.9129 15.7356 15.8216 15.8375 15.7133 15.9187C15.605 16 15.4817 16.0591 15.3505 16.0927C15.2193 16.1264 15.0828 16.1338 14.9487 16.1147C14.8146 16.0955 14.6856 16.0502 14.5691 15.9812C14.4525 15.9122 14.3507 15.8209 14.2695 15.7126C14.1882 15.6043 14.1291 15.481 14.0954 15.3498C14.0618 15.2186 14.0544 15.0821 14.0735 14.948C14.189 14.1326 14.5369 13.4657 14.9274 12.9006C15.2065 12.4991 15.5461 12.0976 15.8527 11.7346C15.9559 11.6136 16.0549 11.4967 16.1456 11.3868C16.917 10.4531 17.5 9.57175 17.5 8.21875C17.5 5.38625 15.2491 3.0625 12 3.0625ZM9.25 21.9688C9.25 21.6952 9.35865 21.4329 9.55205 21.2395C9.74544 21.0462 10.0077 20.9375 10.2812 20.9375H13.7188C13.9923 20.9375 14.2546 21.0462 14.448 21.2395C14.6413 21.4329 14.75 21.6952 14.75 21.9688C14.75 22.2423 14.6413 22.5046 14.448 22.698C14.2546 22.8913 13.9923 23 13.7188 23H10.2812C10.0077 23 9.74544 22.8913 9.55205 22.698C9.35865 22.5046 9.25 22.2423 9.25 21.9688ZM8.90625 17.5C8.63275 17.5 8.37044 17.6087 8.17705 17.802C7.98365 17.9954 7.875 18.2577 7.875 18.5312C7.875 18.8048 7.98365 19.0671 8.17705 19.2605C8.37044 19.4538 8.63275 19.5625 8.90625 19.5625H15.0938C15.3673 19.5625 15.6296 19.4538 15.823 19.2605C16.0163 19.0671 16.125 18.8048 16.125 18.5312C16.125 18.2577 16.0163 17.9954 15.823 17.802C15.6296 17.6087 15.3673 17.5 15.0938 17.5H8.90625Z"
+                        fill="#908b9c"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </span>
+            </span>
+            <div
+              class="brd-c-fNvXDc"
+            >
+              <span
+                aria-label="blocks.callout.label"
+                class="brd-c-PJLV"
+              >
+                <span>
+                  blocks.callout.label
+                </span>
+              </span>
+            </div>
+          </div>
+        </li>
+        <li
+          class="brd-c-cpzHyL brd-c-hcJSiJ"
+          id="menu-add-block-19"
           label="blocks.divider.label"
           role="menuitem"
           tabindex="-1"
@@ -1267,7 +1451,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </li>
         <li
           class="brd-c-cpzHyL brd-c-hcJSiJ"
-          id="menu-add-block-17"
+          id="menu-add-block-20"
           label="blocks.toc.label"
           role="menuitem"
           tabindex="-1"
@@ -1335,7 +1519,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </li>
         <li
           class="brd-c-cpzHyL brd-c-hcJSiJ"
-          id="menu-add-block-18"
+          id="menu-add-block-21"
           label="blocks.subPageMenu.label"
           role="menuitem"
           tabindex="-1"

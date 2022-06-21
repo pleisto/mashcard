@@ -9,9 +9,10 @@ export interface BaseOptions {
   bold: Partial<EXTENSION.BoldOptions> | boolean
   brickList: Partial<EXTENSION.BrickListOptions> | boolean
   bulletList: Partial<EXTENSION.BulletListOptions> | boolean
-  commandHelper: boolean
+  callout: Partial<EXTENSION.CalloutOptions> | boolean
   code: Partial<EXTENSION.CodeOptions> | boolean
   codeBlock: Partial<EXTENSION.CodeBlockOptions> | boolean
+  commandHelper: boolean
   document: boolean
   discussion: Partial<EXTENSION.DiscussionOptions> | boolean
   dropcursor: Partial<EXTENSION.DropcursorOptions> | boolean
@@ -36,6 +37,7 @@ export interface BaseOptions {
   orderedList: Partial<EXTENSION.OrderedListOptions> | boolean
   pageLink: Partial<EXTENSION.PageLinkOptions> | boolean
   paragraph: Partial<EXTENSION.ParagraphOptions> | boolean
+  placeholder: Partial<EXTENSION.PlaceholderOptions> | boolean
   slashCommands: Partial<EXTENSION.SlashCommandsOptions> | boolean
   spreadsheet: Partial<EXTENSION.SpreadsheetOptions> | boolean
   strike: Partial<EXTENSION.StrikeOptions> | boolean
@@ -91,11 +93,26 @@ export const Base = Extension.create<BaseOptions>({
     if (this.options.bold) extensions.push(EXTENSION.Bold.configure(getConfigure(this.options?.bold)))
     if (this.options.brickList) extensions.push(EXTENSION.BrickList.configure(getConfigure(this.options?.brickList)))
     if (this.options.bulletList) extensions.push(EXTENSION.BulletList.configure(getConfigure(this.options?.bulletList)))
-    if (this.options.commandHelper) extensions.push(EXTENSION.CommandHelper)
+    if (this.options.callout) extensions.push(EXTENSION.Callout.configure(getConfigure(this.options?.callout)))
     if (this.options.code) extensions.push(EXTENSION.Code.configure(getConfigure(this.options?.code)))
     if (this.options.codeBlock) extensions.push(EXTENSION.CodeBlock.configure(getConfigure(this.options.codeBlock)))
+    if (this.options.collaboration) {
+      extensions.push(EXTENSION.Collaboration.configure(getConfigure(this.options?.collaboration)))
+    }
+    if (this.options.collaborationCursor) {
+      const collaborationCursorOptions = getConfigure(this.options?.collaborationCursor)
+      const collaborationCursorExtension = EXTENSION.CollaborationCursor.configure(collaborationCursorOptions)
+      // FIX for tiptap extension deepMerge bug
+      collaborationCursorExtension.options.provider = collaborationCursorOptions.provider
+      collaborationCursorExtension.options.user = collaborationCursorOptions.user ?? {}
+      extensions.push(collaborationCursorExtension)
+    }
+    if (!this.options.collaboration && this.options.history)
+      extensions.push(EXTENSION.History.configure(getConfigure(this.options?.history)))
+    if (this.options.commandHelper) extensions.push(EXTENSION.CommandHelper)
     if (this.options.document) extensions.push(EXTENSION.Document)
     if (this.options.discussion) extensions.push(EXTENSION.Discussion.configure(getConfigure(this.options?.discussion)))
+    if (this.options.dropBlock) extensions.push(EXTENSION.DropBlock.configure())
     if (this.options.dropcursor) extensions.push(EXTENSION.Dropcursor.configure(getConfigure(this.options?.dropcursor)))
     if (this.options.embed) extensions.push(EXTENSION.Embed.configure(getConfigure(this.options?.embed)))
     if (this.options.eventHandler)
@@ -130,6 +147,9 @@ export const Base = Extension.create<BaseOptions>({
         extensions.push(EXTENSION.Paragraph.configure(getConfigure(this.options?.paragraph)))
       }
     }
+    if (this.options.placeholder) {
+      extensions.push(EXTENSION.Placeholder.configure(getConfigure(this.options?.placeholder)))
+    }
     if (this.options.slashCommands)
       extensions.push(EXTENSION.SlashCommands.configure(getConfigure(this.options?.slashCommands)))
     if (this.options.spreadsheet)
@@ -146,24 +166,6 @@ export const Base = Extension.create<BaseOptions>({
     if (this.options.underline) extensions.push(EXTENSION.Underline.configure(getConfigure(this.options?.underline)))
     if (this.options.uniqueID) extensions.push(EXTENSION.UniqueID.configure(getConfigure(this.options?.uniqueID)))
     if (this.options.user) extensions.push(EXTENSION.User.configure(getConfigure(this.options?.user)))
-
-    if (this.options.collaboration) {
-      extensions.push(EXTENSION.Collaboration.configure(getConfigure(this.options?.collaboration)))
-    }
-
-    if (this.options.collaborationCursor) {
-      const collaborationCursorOptions = getConfigure(this.options?.collaborationCursor)
-      const collaborationCursorExtension = EXTENSION.CollaborationCursor.configure(collaborationCursorOptions)
-      // FIX for tiptap extension deepMerge bug
-      collaborationCursorExtension.options.provider = collaborationCursorOptions.provider
-      collaborationCursorExtension.options.user = collaborationCursorOptions.user ?? {}
-      extensions.push(collaborationCursorExtension)
-    }
-
-    if (!this.options.collaboration && this.options.history)
-      extensions.push(EXTENSION.History.configure(getConfigure(this.options?.history)))
-
-    if (this.options.dropBlock) extensions.push(EXTENSION.DropBlock.configure())
 
     return extensions
   }

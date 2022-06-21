@@ -31,7 +31,7 @@ export function useCommentedNodes(): [CommentedNode[]] {
   const markIds = useRef<string[]>(commentedNodes.map(node => node.markId))
 
   useEffect(() => {
-    const getCommentedNodes = () => {
+    const getCommentedNodes = (): void => {
       const newCommentedNodes: CommentedNode[] = []
       editor?.state.doc.descendants((node, position) => {
         const discussionMark = findDiscussionMark(node.marks)

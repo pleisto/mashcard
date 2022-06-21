@@ -2,7 +2,8 @@ import { useCallback, useMemo } from 'react'
 import { __serializeForClipboard } from 'prosemirror-view'
 import { NodeSelection } from 'prosemirror-state'
 import { Cutting, Link, Delete, CornerDownRight } from '@brickdoc/design-icons'
-import { BLOCK, BlockCommandItem, ORDER_TOGGLE_BLOCK } from '../../../helpers/block'
+import { BlockCommandItem } from '../../../helpers/block'
+import * as BLOCK from '../../../helpers/block'
 import { useDocumentEditable, useEditorContext, useEditorI18n } from '../../../hooks'
 import { ActionGroupOption, ActionItemOption } from './BlockActions'
 import { useBlockContext } from '../../../hooks/useBlockContext'
@@ -13,7 +14,21 @@ export interface UseActionOptionsProps {
   types: BasicActionOptionType[]
 }
 
-const transformBlocks = ORDER_TOGGLE_BLOCK.map(key => Object.values(BLOCK).find(block => block.key === key))
+const transformBlocks = [
+  BLOCK.PARAGRAPH,
+  BLOCK.HEADING_1,
+  BLOCK.HEADING_2,
+  BLOCK.HEADING_3,
+  BLOCK.HEADING_4,
+  BLOCK.HEADING_5,
+  BLOCK.ORDERED_LIST,
+  BLOCK.BULLETED_LIST,
+  BLOCK.TASK_LIST,
+  BLOCK.FORMULA,
+  BLOCK.CODE,
+  BLOCK.BLOCKQUOTE,
+  BLOCK.CALLOUT
+]
 
 export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionGroupOption | null {
   const { deleteBlock, getPosition, contentForCopy, node } = useBlockContext()

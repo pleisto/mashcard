@@ -2,7 +2,8 @@ import { cloneElement, useCallback, useMemo } from 'react'
 import { ToolbarItemOption, ToolbarOptionGroup } from '../../../ui'
 import { BlockActionsMenuProps, blockIconStyle } from './BlockActionsMenu'
 import { BlockContextData } from '../../../../context/BlockContext'
-import { BlockCommandItem, BLOCK, ORDER_NEW_BLOCK, sortBlock } from '../../../../helpers/block'
+import { BlockCommandItem } from '../../../../helpers/block'
+import * as BLOCK from '../../../../helpers/block'
 import { Editor } from '@tiptap/core'
 import { useBlockContext, useEditorContext, useEditorI18n } from '../../../../hooks'
 
@@ -68,13 +69,14 @@ export function useOptions(
           BLOCK.HEADING_5,
           BLOCK.BULLETED_LIST,
           BLOCK.ORDERED_LIST,
+          BLOCK.TASK_LIST,
           BLOCK.CODE,
+          BLOCK.BLOCKQUOTE,
+          BLOCK.CALLOUT,
           BLOCK.DIVIDER,
           BLOCK.TOC,
           BLOCK.SUB_PAGE_MENU
-        ]
-          .sort(sortBlock(ORDER_NEW_BLOCK, item => item.key))
-          .map(createToolbarItem)
+        ].map(createToolbarItem)
       }
     ],
     [createToolbarItem]

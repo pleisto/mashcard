@@ -87,6 +87,33 @@ const dividerStyles: CSS = {
   }
 }
 
+const collaborationStyles: CSS = {
+  '.collaboration-cursor__caret': {
+    borderLeft: '1px solid #0d0d0d',
+    borderRight: '0.5px solid #0d0d0d',
+    marginLeft: '-1px',
+    marginRight: '-1px',
+    pointerEvents: 'none',
+    position: 'relative',
+    wordBreak: 'normal'
+  },
+
+  '.collaboration-cursor__label': {
+    color: '#fff',
+    fontSize: '0.7rem',
+    fontStyle: 'normal',
+    fontWeight: 600,
+    left: '-1px',
+    lineHeight: '1.1rem',
+    padding: '0.15rem 0.3rem 0.15rem 0.15rem',
+    position: 'absolute',
+    top: '-1.3rem',
+    userSelect: 'none',
+    whiteSpace: 'nowrap',
+    borderRadius: '0.65rem'
+  }
+}
+
 export const documentEditorStyles = globalCss({
   '.brickdoc': {
     display: 'flex',
@@ -122,30 +149,7 @@ export const documentEditorStyles = globalCss({
         marginBottom: 0
       },
 
-      '.collaboration-cursor__caret': {
-        borderLeft: '1px solid #0d0d0d',
-        borderRight: '0.5px solid #0d0d0d',
-        marginLeft: '-1px',
-        marginRight: '-1px',
-        pointerEvents: 'none',
-        position: 'relative',
-        wordBreak: 'normal'
-      },
-
-      '.collaboration-cursor__label': {
-        color: '#fff',
-        fontSize: '0.7rem',
-        fontStyle: 'normal',
-        fontWeight: 600,
-        left: '-1px',
-        lineHeight: '1.1rem',
-        padding: '0.15rem 0.3rem 0.15rem 0.15rem',
-        position: 'absolute',
-        top: '-1.3rem',
-        userSelect: 'none',
-        whiteSpace: 'nowrap',
-        borderRadius: '0.65rem'
-      },
+      ...collaborationStyles,
 
       ...anchorMarkStyles,
 

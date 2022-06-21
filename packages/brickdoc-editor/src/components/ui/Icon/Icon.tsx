@@ -1,4 +1,4 @@
-import React from 'react'
+import { cloneElement, FC, ReactElement } from 'react'
 import { Icon, IconProps, theme, rgba } from '@brickdoc/design-system'
 import { IconBackground } from './IconBackground'
 
@@ -9,18 +9,18 @@ export interface EditorIconProps extends IconProps {
 }
 
 const createEditorIcon =
-  (Icon: React.ReactElement, bgColor: string): React.FC<EditorIconProps> =>
+  (Icon: ReactElement, bgColor: string): FC<EditorIconProps> =>
   ({ square, color, ...props }) => {
     if (square) {
       const iconProps: IconProps = { color }
       if (props.fill) iconProps.fill = props.fill
       return (
         <IconBackground color={bgColor} {...props}>
-          {React.cloneElement(Icon, iconProps)}
+          {cloneElement(Icon, iconProps)}
         </IconBackground>
       )
     }
-    return React.cloneElement(Icon, props)
+    return cloneElement(Icon, props)
   }
 
 export const TextMessage = createEditorIcon(<Icon.TextMessage />, 'unset')
@@ -83,4 +83,9 @@ export const Unsplash = createEditorIcon(
 export const DragSecondary = createEditorIcon(
   <Icon.DragSecondary theme="multi-color" fill={[theme.colors.primaryDefault.value, theme.colors.blue2.value]} />,
   theme.colors.primaryDefault.value
+)
+
+export const Bulb = createEditorIcon(
+  <Icon.Bulb fill={theme.colors.deepPurple4.value} />,
+  theme.colors.deepPurple4.value
 )

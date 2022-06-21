@@ -1,4 +1,3 @@
-export * from './color'
 export * from './file'
 export * from './formula'
 export * from './popup'

@@ -66,7 +66,11 @@ zh-CN:
       invite_secret_reset: 重置
       invite_secret_reset_confirm: 您确定要重置 Token 吗？这将使当前的邀请链接失效。
   editor:
-    placeholder: 键入“/”作为命令
+    placeholder:
+      blockquote: Type something...
+      callout: Type something...
+      listItem: Type something...
+      default: Type '/' for commands
     copy_hint: 已复制到剪贴板
     explorer_menu:
       title: 探索
@@ -143,6 +147,14 @@ zh-CN:
         label: 代码
       blockquote:
         label: 引用
+      callout:
+        label: Callout
+        icon:
+          import_sources:
+            upload:
+              type_label: Local Picture
+              button_hint: Recommended size is 24x24 pixels
+              button_text: Choose an image
     block_actions:
       basic:
         cut: 剪切
@@ -203,6 +215,9 @@ zh-CN:
           heading5: 五级标题
           bulletList: 无序列表
           orderedList: 有序列表
+          taskList: Todo
+          callout: Callout
+          blockquote: Quote
           formula: 公式
       bold:
         title: 粗体
@@ -611,5 +626,5 @@ zh-CN:
     days:
       today: Today
       yesterday: Yesterday
-    date: 'MM-DD-Y'
+    date: 'YYYY-MM-DD'
     time: 'HH:mm:ss'

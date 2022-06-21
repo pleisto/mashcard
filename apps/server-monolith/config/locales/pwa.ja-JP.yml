@@ -66,7 +66,11 @@ ja-JP:
       invite_secret_reset: リセット
       invite_secret_reset_confirm: Are you sure you want to reset the secret? This will invalidate the current invite link.
   editor:
-    placeholder: Type '/' for commands
+    placeholder:
+      blockquote: Type something...
+      callout: Type something...
+      listItem: Type something...
+      default: Type '/' for commands
     copy_hint: Copied to clipboard.
     explorer_menu:
       title: Explore
@@ -143,6 +147,14 @@ ja-JP:
         label: Code
       blockquote:
         label: Quote
+      callout:
+        label: Callout
+        icon:
+          import_sources:
+            upload:
+              type_label: Local Picture
+              button_hint: Recommended size is 24x24 pixels
+              button_text: Choose an image
     block_actions:
       basic:
         cut: Cut
@@ -203,6 +215,9 @@ ja-JP:
           heading5: 見出し 5
           bulletList: Bulleted list
           orderedList: Numbered list
+          taskList: Todo
+          callout: Callout
+          blockquote: Quote
           formula: Formula
       bold:
         title: 太字
@@ -611,5 +626,5 @@ ja-JP:
     days:
       today: Today
       yesterday: Yesterday
-    date: 'MM-DD-Y'
+    date: 'YYYY-MM-DD'
     time: 'HH:mm:ss'

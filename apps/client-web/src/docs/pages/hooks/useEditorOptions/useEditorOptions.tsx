@@ -34,9 +34,12 @@ export function useEditorOptions({
   const renderView = useCallback(() => <PageTree mode="subPage" />, [])
   const { currentUser } = globalThis.brickdocContext
 
-  return useMemo(
+  return useMemo<EditorOptions>(
     () => ({
       base: {
+        callout: {
+          prepareFileUpload: embed.prepareFileUpload
+        },
         collaboration: provider ? { document: provider.document } : false,
         collaborationCursor:
           provider && currentUser
