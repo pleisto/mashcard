@@ -1,5 +1,15 @@
 import { css, Menu, styled, theme, Avatar } from '@brickdoc/design-system'
 
+const headerHeight = '3.5rem'
+
+export const drawerStyles = css({
+  maxHeight: `calc(100vh - ${headerHeight})`,
+  position: 'sticky',
+  top: 0,
+  left: 0,
+  overflow: 'scroll'
+})
+
 export const InnerMenuContainer = styled('div', {
   padding: '0 .25rem'
 })

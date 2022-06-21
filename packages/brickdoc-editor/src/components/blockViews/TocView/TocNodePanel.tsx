@@ -116,8 +116,7 @@ const TocStyledContainer = styled('div', {
   border: `1px solid ${theme.colors.borderPrimary}`,
   borderRadius: '8px',
   display: 'inline-block',
-  maxWidth: '100%',
-  minWidth: '23.375rem',
+  maxWidth: '45rem',
   padding: `${containerVerticalPadding}px 0`
 })
 
@@ -183,8 +182,7 @@ export const TocNodePanel: FC<TocNodePanelProps> = ({ tocNode }) => {
       <TocItemTitle
         level={tocNode.item.level}
         onClick={onItemClick}
-        data-testid={TEST_ID_ENUM.editor.tocBlock.item.title.id}
-      >
+        data-testid={TEST_ID_ENUM.editor.tocBlock.item.title.id}>
         {tocNode.children.length > 0 && (
           <ToggleIcon
             data-testid={TEST_ID_ENUM.editor.tocBlock.item.toggleIcon.id}

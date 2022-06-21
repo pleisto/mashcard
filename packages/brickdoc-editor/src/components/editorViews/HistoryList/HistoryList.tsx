@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 
 import { useDocHistoryStore } from '@brickdoc/schema'
 
+import { drawerStyles } from './HistoryList.style'
 import { HistoryListMenu } from './HistoryListMenu'
 
 export interface HistoryListProps {
@@ -21,6 +22,7 @@ export const HistoryList: React.FC<HistoryListProps> = ({ domain, docId, history
   useTranslation<string[]>(['formats'])
   const { visible, setVisible } = useDrawer('historyList')
   const latestVisiable = React.useRef<boolean>(visible)
+  const drawerContainerStyles = drawerStyles()
 
   const { store, refetch } = useDocHistoryStore(docId)
 
@@ -35,6 +37,7 @@ export const HistoryList: React.FC<HistoryListProps> = ({ domain, docId, history
   return (
     <Drawer
       container={document.getElementById('aside') as HTMLElement}
+      className={drawerContainerStyles}
       visible={visible}
       onClose={() => setVisible(false)}
       title={editorT('history.title')}
