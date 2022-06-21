@@ -7,13 +7,13 @@ import {
   useGetChildrenBlocksQuery,
   useBlockSyncBatchMutation,
   GetSpreadsheetChildrenDocument
-} from '@/BrickdocGraphQL'
-import { isEqual } from '@brickdoc/active-support'
-import { devLog } from '@brickdoc/design-system'
+} from '@/MashcardGraphQL'
+import { isEqual } from '@mashcard/active-support'
+import { devLog } from '@mashcard/design-system'
 // import { isSavingVar } from '../../reactiveVars'
 import { nodeToBlock } from '../../common/blocks'
 import {
-  BrickdocEventBus,
+  MashcardEventBus,
   Event,
   BlockUpdated,
   BlockDeleted,
@@ -25,8 +25,8 @@ import {
   CommitBlocks,
   loadSpreadsheetBlocks,
   SpreadsheetLoaded
-} from '@brickdoc/schema'
-import { dispatchFormulaBlockNameChange } from '@brickdoc/formula'
+} from '@mashcard/schema'
+import { dispatchFormulaBlockNameChange } from '@mashcard/formula'
 
 export type UpdateBlocks = (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
 
@@ -75,7 +75,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
     rootBlock.current = docBlocksMap.current.get(rootId.current)
     if (rootBlock.current) {
       const { id, meta } = rootBlock.current
-      BrickdocEventBus.dispatch(DocMetaLoaded({ id, meta }))
+      MashcardEventBus.dispatch(DocMetaLoaded({ id, meta }))
     }
   }, [queryVariables, data?.childrenBlocks])
 
@@ -125,12 +125,12 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
           if (b.type === 'doc') {
             void dispatchFormulaBlockNameChange({ id: b.id, name: b.text, username: queryVariables.domain })
           }
-          BrickdocEventBus.dispatch(BlockUpdated(b as Block))
+          MashcardEventBus.dispatch(BlockUpdated(b as Block))
           dirtyBlocksMap.current.delete(b.id)
         })
         deletedIds.forEach(id => {
           const block = { id }
-          BrickdocEventBus.dispatch(BlockDeleted(block as Block))
+          MashcardEventBus.dispatch(BlockDeleted(block as Block))
           dirtyToDeleteIds.current.delete(id)
         })
 
@@ -140,13 +140,13 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
               blocks,
               deletedIds,
               rootId: rootId.current,
-              operatorId: globalThis.brickdocContext.uuid
+              operatorId: globalThis.mashcardContext.uuid
             }
           }
         })
         await syncPromise
         blocks.forEach(b => {
-          BrickdocEventBus.dispatch(BlockSynced(b as Block))
+          MashcardEventBus.dispatch(BlockSynced(b as Block))
         })
       }
     } catch (e) {
@@ -198,7 +198,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
     [commitDirty, queryVariables.historyId]
   )
 
-  BrickdocEventBus.subscribe(
+  MashcardEventBus.subscribe(
     BlockUpdated,
     e => {
       const block = e.payload
@@ -246,7 +246,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
     { subscribeId: 'SyncProvider' }
   )
 
-  BrickdocEventBus.subscribe(
+  MashcardEventBus.subscribe(
     BlockDeleted,
     e => {
       const block = e.payload
@@ -255,7 +255,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
     { subscribeId: 'SyncProvider' }
   )
 
-  BrickdocEventBus.subscribe(
+  MashcardEventBus.subscribe(
     UpdateBlock,
     e => {
       // isSavingVar(true)
@@ -268,7 +268,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
     { subscribeId: 'SyncProvider' }
   )
 
-  BrickdocEventBus.subscribe(
+  MashcardEventBus.subscribe(
     DeleteBlock,
     e => {
       // isSavingVar(true)
@@ -281,7 +281,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
     { subscribeId: 'SyncProvider' }
   )
 
-  BrickdocEventBus.subscribe(
+  MashcardEventBus.subscribe(
     UpdateDocMeta,
     e => {
       const { id, meta } = e.payload
@@ -295,7 +295,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
     { subscribeId: 'SyncProvider' }
   )
 
-  BrickdocEventBus.subscribe(
+  MashcardEventBus.subscribe(
     CommitBlocks,
     (e: Event) => {
       // isSavingVar(true)
@@ -304,7 +304,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
     { subscribeId: 'SyncProvider' }
   )
 
-  BrickdocEventBus.subscribe(
+  MashcardEventBus.subscribe(
     loadSpreadsheetBlocks,
     e => {
       const parentId = e.payload
@@ -321,7 +321,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
         blocks.forEach((block: Block) => {
           cachedBlocksMap.current.set(block.id, block)
         })
-        BrickdocEventBus.dispatch(
+        MashcardEventBus.dispatch(
           SpreadsheetLoaded({
             parentId,
             blocks

@@ -15,7 +15,7 @@ module Subscriptions
       block = Docs::Block.non_deleted.find_by(id: doc_id)
 
       if block.nil?
-        raise Brickdoc::GraphQL::Errors::BaseError, I18n.t('errors.graphql.docs.initialized_not_yet_completed')
+        raise Mashcard::GraphQL::Errors::BaseError, I18n.t('errors.graphql.docs.initialized_not_yet_completed')
       end
 
       block.prepare_descendants

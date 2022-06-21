@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Callout renders Callout correctly 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <div
+        class="react-renderer node-callout"
+      >
+        <div
+          data-node-view-wrapper=""
+          style="pointer-events: unset; white-space: normal;"
+        >
+          <div
+            class="mc-c-PhqtK"
+          >
+            <div
+              class="mc-c-lnEYSH"
+            >
+              <button
+                aria-haspopup="dialog"
+                class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-TfyyP-btnType-secondary mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-hKMQnl-type-text"
+                role="button"
+                type="button"
+              >
+                <div
+                  class="mc-c-iruydC"
+                  style="background-image: url(viewUrl);"
+                />
+              </button>
+            </div>
+            <span
+              as="span"
+              data-node-view-content=""
+              style="white-space: pre-wrap;"
+            >
+              <div
+                style="white-space: inherit;"
+              >
+                <p>
+                  <br
+                    class="ProseMirror-trailingBreak"
+                  />
+                </p>
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { Button, toast, useCountDown, Box, theme, prefix } from '@brickdoc/design-system'
-import { Success } from '@brickdoc/design-icons'
+import { Button, toast, useCountDown, Box, theme, prefix } from '@mashcard/design-system'
+import { Success } from '@mashcard/design-icons'
 import { mutationResultHandler } from '@/common/utils'
-import { ms } from '@brickdoc/active-support'
-import { useUserConfirmationEmailResendMutation } from '@/BrickdocGraphQL'
+import { ms } from '@mashcard/active-support'
+import { useUserConfirmationEmailResendMutation } from '@/MashcardGraphQL'
 import dayjs from 'dayjs'
 
 export const ConfirmationEmailTips: React.FC<{ email: string }> = ({ email }) => {

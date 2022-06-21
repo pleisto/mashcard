@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar AnonymousAvatar should match the snapshot 1`] = `
+<div>
+  <span
+    class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-kRzPmM-size-md mc-c-gYWVfz-koJJPr-default-true mc-c-gYWVfz-iPJLV-css"
+  >
+    <i
+      data-testid="mock-icon-User"
+    />
+  </span>
+</div>
+`;
+
+exports[`Avatar Basic should match the snapshot 1`] = `
+<div>
+  <span
+    class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-kRzPmM-size-md mc-c-gYWVfz-iilQgtF-css"
+  >
+    <span>
+      JS
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Avatar ImageAvatar should match the snapshot 1`] = `
+<div>
+  <span
+    class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-kRzPmM-size-md mc-c-gYWVfz-iPJLV-css"
+  >
+    <img
+      alt="John Smith Avatar"
+      src="https://i.pravatar.cc/150?img=42"
+    />
+  </span>
+</div>
+`;
+
+exports[`Avatar SquareAvatar should match the snapshot 1`] = `
+<div>
+  <span
+    class="mc-c-gYWVfz mc-c-gYWVfz-liDPBl-shape-square mc-c-gYWVfz-bFVlRr-size-lg mc-c-gYWVfz-iilQgtF-css"
+  >
+    <span>
+      JS
+    </span>
+  </span>
+</div>
+`;

@@ -4,9 +4,9 @@ module Mutations
   class BaseMutation < ::GraphQL::Schema::RelayClassicMutation
     field_class Types::BaseField
     input_object_class Types::BaseInputObject
-    include Brickdoc::GraphQL::PolicyBehaviour
-    include Brickdoc::GraphQL::CopyFieldDescription
-    include Brickdoc::GraphQL::HasPrimaryKey
+    include Mashcard::GraphQL::PolicyBehaviour
+    include Mashcard::GraphQL::CopyFieldDescription
+    include Mashcard::GraphQL::HasPrimaryKey
 
     field :errors, [String],
       null: false,

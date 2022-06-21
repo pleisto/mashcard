@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { Button, ConfirmDialog } from '@brickdoc/design-system'
+import { Button, ConfirmDialog } from '@mashcard/design-system'
 import { useDocsI18n } from '../../hooks'
 import {
   BlockHardDeleteInput,
@@ -8,7 +8,7 @@ import {
   useBlockRestoreMutation,
   useBlockCreateMutation,
   useGetPageBlocksQuery
-} from '@/BrickdocGraphQL'
+} from '@/MashcardGraphQL'
 import { useNavigate } from 'react-router-dom'
 import { queryPageBlocks } from '../../graphql'
 import { useApolloClient } from '@apollo/client'

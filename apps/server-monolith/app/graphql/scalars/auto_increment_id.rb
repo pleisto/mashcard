@@ -9,11 +9,11 @@ module Scalars
         raise GraphQL::CoercionError,
           "#{input_value.inspect} is not a valid encrypted auto increment ID"
       end
-      Brickdoc::Crypto.int_id_deobfuscate(input_value)
+      Mashcard::Crypto.int_id_deobfuscate(input_value)
     end
 
     def self.coerce_result(ruby_value, _context)
-      Brickdoc::Crypto.int_id_obfuscate(ruby_value)
+      Mashcard::Crypto.int_id_obfuscate(ruby_value)
     end
   end
 end

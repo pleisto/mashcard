@@ -13,8 +13,8 @@ env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: brickdoc
   REDIS_URL: redis://localhost:6379
-  DATABASE_URL_BASE: postgres://postgres:just4testing@localhost:5432
-  BRICKDOC_DOTCOM_LICENSE: 'I hereby swear that I have obtained written permission from the Brickdoc Inc of this plugin to use it.'
+  POSTGRES_PASS: just4testing
+  MASHCARD_DOTCOM_LICENSE: 'I hereby swear that I have obtained written permission from the Pleisto Inc. of this plugin to use it.'
 jobs:
   jest:
     name: Jest
@@ -49,11 +49,11 @@ jobs:
     name: Rspec
     runs-on: ubuntu-latest
     services:
-      # image version suggestion same as tools/helm-charts/brickdoc
+      # image version suggestion same as tools/helm-charts/mashcard
       postgres:
         image: postgres:14-alpine
         env:
-          POSTGRES_DB: 'brickdoc_next_test'
+          POSTGRES_DB: 'mashcard_test'
           POSTGRES_USER: 'postgres'
           POSTGRES_PASSWORD: 'just4testing'
         ports:

@@ -1,4 +1,4 @@
-import { isEqual } from '@brickdoc/active-support'
+import { isEqual } from '@mashcard/active-support'
 import { FC, useRef, useMemo, useContext, ReactNode } from 'react'
 import { DocMeta, DocMetaContext } from './types'
 

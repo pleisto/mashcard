@@ -1,4 +1,4 @@
-import { Alert, styled } from '@brickdoc/design-system'
+import { Alert, styled } from '@mashcard/design-system'
 
 export const TrashAlert = styled(Alert, {
   width: '100%',

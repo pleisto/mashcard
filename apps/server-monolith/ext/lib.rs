@@ -7,7 +7,7 @@ mod utils;
 /// @see https://docs.rs/magnus/latest/magnus/attr.init.html
 #[magnus::init]
 fn init() -> Result<(), Error> {
-    let module = define_module("Brickdoc")?;
+    let module = define_module("Mashcard")?;
     utils::init(module)?;
     // core_ext does not need to be inherited from parent
     core_ext::init()?;

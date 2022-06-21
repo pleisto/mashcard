@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useBlockElement disables action options normally 1`] = `
+<div>
+  <span>
+    element
+  </span>
+</div>
+`;
+
+exports[`useBlockElement renders inline block correctly 1`] = `
+<div>
+  <span
+    class="mc-c-bbClCh"
+    contenteditable="false"
+  >
+     
+  </span>
+  <span>
+    element
+  </span>
+  <span
+    class="mc-c-bbClCh"
+    contenteditable="false"
+  >
+     
+  </span>
+</div>
+`;

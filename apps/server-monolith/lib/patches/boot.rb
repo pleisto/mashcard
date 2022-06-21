@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../brickdoc_ext'
+require_relative '../mashcard_ext'
 require 'fast_underscore'
 require_relative 'array'
 require_relative 'string'

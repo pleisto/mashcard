@@ -1,8 +1,8 @@
-import { BrickdocEventBus, ExplorerMenuTrigger } from '@brickdoc/schema'
+import { MashcardEventBus, ExplorerMenuTrigger } from '@mashcard/schema'
 import { useTranslation } from 'react-i18next'
 import { itemStyle } from '@/docs/pages/components/DocumentTopBar/DocumentTopBar.style'
 
-import { Button, Tooltip, Icon } from '@brickdoc/design-system'
+import { Button, Tooltip, Icon } from '@mashcard/design-system'
 import { useCallback } from 'react'
 
 export interface DiscussionMenuProps {
@@ -12,7 +12,7 @@ export const ExploreSlash: React.FC<DiscussionMenuProps> = ({ className }) => {
   const { t } = useTranslation('editor')
 
   const onClick = useCallback(() => {
-    BrickdocEventBus.dispatch(ExplorerMenuTrigger({}))
+    MashcardEventBus.dispatch(ExplorerMenuTrigger({}))
   }, [])
 
   return (

@@ -29,11 +29,11 @@ class Docs::BlockState < ApplicationRecord # rubocop:disable Style/ClassAndModul
         user_id:  user_id
       ).where(
         'created_at >= ?',
-        (created_at || Time.zone.now) - BrickdocConfig.history_gap_threshold.minutes
+        (created_at || Time.zone.now) - MashcardConfig.history_gap_threshold.minutes
       ).first_or_initialize
       unless history.new_record?
-        if (history.states.count >= BrickdocConfig.history_max_states) ||
-            (history.states.order('created_at DESC').first.created_at < BrickdocConfig.history_min_interval.minutes.ago)
+        if (history.states.count >= MashcardConfig.history_max_states) ||
+            (history.states.order('created_at DESC').first.created_at < MashcardConfig.history_min_interval.minutes.ago)
           self.history = Docs::DocumentHistory.new(
             document_id: document_id,
             pod_id: pod_id,

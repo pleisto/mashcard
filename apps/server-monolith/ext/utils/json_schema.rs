@@ -2,7 +2,7 @@ use crate::utils::ffi::str_to_json_value;
 use jsonschema::{Draft, JSONSchema};
 use magnus::{exception, function, method, module::RModule, Error, Module, Object};
 
-#[magnus::wrap(class = "Brickdoc::Utils::JSONSchema")]
+#[magnus::wrap(class = "Mashcard::Utils::JSONSchema")]
 struct RubyJSONSchema {
     schema: JSONSchema,
 }

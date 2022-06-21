@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert Basic should match the snapshot 1`] = `
+<div>
+  <div
+    aria-labelledby="alert-basic-should-match-the-snapshot-0"
+    aria-live="polite"
+    class="mc-c-fXOvIo mc-c-fXOvIo-kYLUGc-size-lg mc-c-fXOvIo-fFEasr-variant-info"
+    role="status"
+  >
+    <div
+      class="mc-c-bZNrxE"
+    >
+      <div
+        class="mc-c-deZXRM"
+      >
+        <div
+          class="mc-c-iXBdGp"
+          role="presentation"
+        >
+          <i
+            data-testid="mock-icon-Info"
+          />
+        </div>
+        <div
+          class="mc-c-fNvXDc"
+          id="alert-basic-should-match-the-snapshot-0"
+        >
+          <div
+            class="mc-c-bBzuXe"
+          >
+            OpenDoc
+          </div>
+          <div
+            class="mc-c-gEUVJx"
+          >
+            A Possibility in the Computing World Suppressed by Steve Jobs.
+          </div>
+        </div>
+        <button
+          aria-label="Dismiss Button"
+          class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV"
+          role="button"
+          type="button"
+        >
+          <i
+            data-testid="mock-icon-Close"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Alert MessageOnly should match the snapshot 1`] = `
+<div>
+  <div
+    aria-labelledby="alert-messageonly-should-match-the-snapshot-0"
+    aria-live="assertive"
+    class="mc-c-fXOvIo mc-c-fXOvIo-kcCYGG-size-sm mc-c-fXOvIo-cTpWRe-variant-error"
+    role="alert"
+  >
+    <div
+      class="mc-c-bZNrxE"
+    >
+      <div
+        class="mc-c-deZXRM"
+      >
+        <div
+          class="mc-c-iXBdGp"
+          role="presentation"
+        >
+          <i
+            data-testid="mock-icon-CloseOne"
+          />
+        </div>
+        <div
+          class="mc-c-fNvXDc"
+        >
+          <div
+            class="mc-c-gEUVJx"
+            id="alert-messageonly-should-match-the-snapshot-0"
+          >
+            Oops! Something went wrong.
+          </div>
+        </div>
+        <button
+          aria-label="Dismiss Button"
+          class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV"
+          role="button"
+          type="button"
+        >
+          <i
+            data-testid="mock-icon-Close"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Alert WithAction should match the snapshot 1`] = `
+<div>
+  <div
+    aria-labelledby="alert-withaction-should-match-the-snapshot-0"
+    aria-live="assertive"
+    class="mc-c-fXOvIo mc-c-fXOvIo-kYLUGc-size-lg mc-c-fXOvIo-lgwBVE-variant-warning"
+    role="alert"
+  >
+    <div
+      class="mc-c-bZNrxE"
+    >
+      <div
+        class="mc-c-deZXRM"
+      >
+        <div
+          class="mc-c-iXBdGp"
+          role="presentation"
+        >
+          <i
+            data-testid="mock-icon-Caution"
+          />
+        </div>
+        <div
+          class="mc-c-fNvXDc"
+          id="alert-withaction-should-match-the-snapshot-0"
+        >
+          <div
+            class="mc-c-bBzuXe"
+          >
+            Complete your profile
+          </div>
+          <div
+            class="mc-c-gEUVJx"
+          >
+            Please complete your profile to allow us recommending personalized content to you.
+          </div>
+        </div>
+        <div
+          class="mc-c-jesGki"
+        >
+          <button
+            class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-cVBYSe-btnType-primary mc-c-iiEeHJ-fcHofs-size-md"
+            role="button"
+            type="button"
+          >
+            <span>
+              View details
+            </span>
+          </button>
+        </div>
+        <button
+          aria-label="Dismiss Button"
+          class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV"
+          role="button"
+          type="button"
+        >
+          <i
+            data-testid="mock-icon-Close"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

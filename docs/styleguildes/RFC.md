@@ -2,14 +2,14 @@
 
 ## Problem
 
-Our Brickdoc team is composed of full-time members @ Ningbo and some full/part-time remote members located around the world. It's not always easy to efficiently discuss our product/tech designing ideas across our members.
+The MashCard team is composed of full-time members @ Ningbo and some full/part-time remote members located around the world. It's not always easy to efficiently discuss our product/tech designing ideas across our members.
 
-The Brickdoc is planned to be open-sourced later this year. But our internal docs hosted @ Feishu cannot be easily shared outside considering permission difficulties. Besides, they are written only in Chinese which violates our ambitions to reach the world. We need to find a better way to communicate our designing ideas with the OSS community.
+MashCard is planned to be open-sourced later this year. But our internal docs hosted @ Feishu cannot be easily shared outside considering permission difficulties. Besides, they are written only in Chinese which violates our ambitions to reach the world. We need to find a better way to communicate our designing ideas with the OSS community.
 
 ## Goals
 
 - Build a better async communication mechanism that fits better with our "onsite/remote mixed" organization.
-- Expose our designing ideas as sharable documents, from the early stage of our Brickdoc product. These documents can be shared with the OSS community later without worrying about permission issues.
+- Expose our designing ideas as sharable documents, from the early stage of the MashCard product. These documents can be shared with the OSS community later without worrying about permission issues.
 - Write all our important future documents in English.
 
 ## Solution
@@ -18,9 +18,9 @@ Inspired by [how IETF uses RFC to communicate with the world](https://en.wikiped
 
 ### RFC-document based workflow
 
-When developers start a new feature, they must create a GitHub discussion thread under [brickdoc/rfcs](https://github.com/brickdoc/rfcs/discussions) following [the RFC template](https://raw.githubusercontent.com/brickdoc/rfcs/master/0000-template.md). Other team members may later leave feedbacks & suggestions in the discussion thread. The author must pick a 4-digit sequence number as the RFC number, which must not conflict with other existing RFCs.
+When developers start a new feature, they must create a GitHub discussion thread under [mashcard/rfcs](https://github.com/mashcard/rfcs/discussions) following [the RFC template](https://raw.githubusercontent.com/mashcard/rfcs/master/0000-template.md). Other team members may later leave feedbacks & suggestions in the discussion thread. The author must pick a 4-digit sequence number as the RFC number, which must not conflict with other existing RFCs.
 
-Once the designing ideas are finalized, we must mark the corresponding RFC as `Finalized` and lock the discussion conversation. The finalized RFC must be submitted into the [brickdoc/rfcs](https://github.com/brickdoc/rfcs) repo via a pull request.
+Once the designing ideas are finalized, we must mark the corresponding RFC as `Finalized` and lock the discussion conversation. The finalized RFC must be submitted into the [mashcard/rfcs](https://github.com/mashcard/rfcs) repo via a pull request.
 
 Finalized RFCs don't accept new edits anymore (but minor changes like typo/link fixes are allowed). If we later want to improve an existing finalized RFC, we should create another RFC instead of modifying the original one.
 

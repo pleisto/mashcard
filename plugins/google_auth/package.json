@@ -1,11 +1,11 @@
 {
   "$schema": "../../apps/server-monolith/public/json-schema/plugin.draft-2205.json",
-  "name": "@brickdoc/google-auth",
+  "name": "@mashcard/google-auth",
   "license": "Apache-2.0",
   "version": "0.1.0",
   "sideEffects": false,
   "engines": {
-    "brickdoc": ">=0.1.0"
+    "mashcard": ">=0.1.0"
   },
   "extensionPoints": [
     "server"

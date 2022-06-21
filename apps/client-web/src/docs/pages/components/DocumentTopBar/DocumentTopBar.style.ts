@@ -1,4 +1,4 @@
-import { theme, styled, keyframes } from '@brickdoc/design-system'
+import { theme, styled, keyframes } from '@mashcard/design-system'
 
 export const LogoIcon = styled('img', {
   height: '22px',
@@ -20,7 +20,7 @@ export const Menu = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
   fontSize: theme.fontSizes.subHeadline,
-  ':global(.brd-tooltip-disabled-compatible-wrapper)': {
+  ':global(.mc-tooltip-disabled-compatible-wrapper)': {
     padding: 0
   }
 })

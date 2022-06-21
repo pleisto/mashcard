@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
-import { useConversationResolveMutation } from '@/BrickdocGraphQL'
-import { DiscussionOptions } from '@brickdoc/editor'
+import { useConversationResolveMutation } from '@/MashcardGraphQL'
+import { DiscussionOptions } from '@mashcard/editor'
 
 export function useResolveConversation(): DiscussionOptions['resolveConversation'] {
   const [resolveConversation] = useConversationResolveMutation()

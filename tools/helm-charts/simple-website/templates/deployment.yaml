@@ -37,7 +37,7 @@ spec:
           {{- else }}
           envFrom:
           - secretRef:
-              name: {{ include "brickdoc.fullname" . }}
+              name: {{ include "mashcard.fullname" . }}
           {{- end }}
           env:
             {{- range $key, $value := .Values.envs }}
@@ -48,7 +48,7 @@ spec:
             - name: http
               containerPort: {{ int .Values.containerPort }}
               protocol: TCP
-          {{- if .Values.ingress.enabled }}    
+          {{- if .Values.ingress.enabled }}
           livenessProbe:
             httpGet:
               path: /
@@ -57,7 +57,7 @@ spec:
             httpGet:
               path: /
               port: http
-          {{- end }}    
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

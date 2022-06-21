@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react'
-import { Spin, devLog } from '@brickdoc/design-system'
-import { EditorContent, useEditor, useEditorI18n } from '@brickdoc/editor'
-import { Block } from '@/BrickdocGraphQL'
+import { Spin, devLog } from '@mashcard/design-system'
+import { EditorContent, useEditor, useEditorI18n } from '@mashcard/editor'
+import { Block } from '@/MashcardGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'
 import { useSyncProvider, useBlockSyncProvider, useDocHistoryProvider } from './hooks'
 import { blocksToJSONContents } from '../common/blocks'
@@ -13,7 +13,7 @@ import { useDocumentEditable } from './hooks/useDocumentEditable'
 import * as Root from './DocumentPage.style'
 import { useDocMeta } from '../store/DocMeta'
 import { useEditorOptions } from './hooks/useEditorOptions'
-import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 interface DocumentPageProps {
   // default: user can edit/view document normally

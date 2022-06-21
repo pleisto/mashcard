@@ -1,8 +1,8 @@
-import { useBlockPinOrUnpinMutation } from '@/BrickdocGraphQL'
+import { useBlockPinOrUnpinMutation } from '@/MashcardGraphQL'
 import { hiddenItemStyle } from '@/docs/pages/components/DocumentTopBar/DocumentTopBar.style'
 import { useNonNullDocMeta } from '@/docs/store/DocMeta'
 import { useApolloClient } from '@apollo/client'
-import { Button, Tooltip, Icon } from '@brickdoc/design-system'
+import { Button, Tooltip, Icon } from '@mashcard/design-system'
 import React from 'react'
 import { queryBlockPins } from '../../graphql'
 import { useDocsI18n } from '../../hooks'
@@ -42,8 +42,7 @@ export const PinMenu: React.FC<PinMenuProps> = ({ className }) => {
           aria-label={t('pin.name')}
           onClick={onClick}
           disabled={blockPinOrUnpinLoading}
-          css={hiddenItemStyle}
-        >
+          css={hiddenItemStyle}>
           {blockPinOrUnpinLoading ? <></> : iconRender}
         </Button>
       </Tooltip>

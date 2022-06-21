@@ -19,7 +19,7 @@ describe Resolvers::Metadata, type: :query do
       graphql_execute(query)
       expect(response.success?).to be true
       expect(response.data['metadata']['availableLocales']
-               .map { |l| l['label'] }).to eq(Brickdoc::I18n::AVAILABLE_LANGUAGES.values)
+               .map { |l| l['label'] }).to eq(Mashcard::I18n::AVAILABLE_LANGUAGES.values)
     end
   end
 end

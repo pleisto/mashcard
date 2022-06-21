@@ -9,7 +9,7 @@ module Mutations
       argument :updates, String, 'updates', required: true
 
       def resolve(doc_id:, operator_id:, updates:)
-        BrickdocSchema.subscriptions.trigger(:awareness, { doc_id: doc_id }, {
+        MashcardSchema.subscriptions.trigger(:awareness, { doc_id: doc_id }, {
           operator_id: operator_id,
           updates: updates,
         })

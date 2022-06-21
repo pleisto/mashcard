@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { styled, theme, prefix } from '@brickdoc/design-system'
+import { styled, theme, prefix } from '@mashcard/design-system'
 
 export const SidebarWrapper = styled('section', {
   display: 'flex',
@@ -10,7 +10,7 @@ export const SidebarWrapper = styled('section', {
   justifyContent: 'space-between',
   '.actions': {
     header: {
-      [`.brk-logo`]: {
+      [`.mc-logo`]: {
         height: '24px',
         margin: '1rem 18px'
       }

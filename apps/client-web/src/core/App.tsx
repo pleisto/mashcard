@@ -1,10 +1,10 @@
 import { Suspense, FC, useContext } from 'react'
-import { BrickdocContext } from '@/common/brickdocContext'
+import { MashcardContext } from '@/common/mashcardContext'
 import { useErrorNotification } from '@/common/hooks'
 import { ApolloProvider, useReactiveVar } from '@apollo/client'
-import { Loading, globalStyle, Provider } from '@brickdoc/design-system'
+import { Loading, globalStyle, Provider } from '@mashcard/design-system'
 import { HelmetProvider } from 'react-helmet-async'
-import { initBrickdocSidebarStyle } from '@/settings/common/sidebar'
+import { initSidebarStyle } from '@/settings/common/sidebar'
 import { apolloClient } from './apollo'
 import { RootRoutes } from './RootRoutes'
 import { withProfiler, ErrorBoundary } from '@sentry/react'
@@ -13,9 +13,9 @@ import { isLoadingVar } from '@/common/reactiveVars'
 export const App: FC = () => {
   // Inject global styles
   globalStyle()
-  initBrickdocSidebarStyle()
+  initSidebarStyle()
 
-  const context = useContext(BrickdocContext)
+  const context = useContext(MashcardContext)
   const isLoading = useReactiveVar(isLoadingVar)
 
   useErrorNotification(context.serverMessage)
@@ -23,7 +23,7 @@ export const App: FC = () => {
   return (
     <ErrorBoundary showDialog dialogOptions={{ user: { name: context.currentUser?.domain } }}>
       <Suspense fallback={<Loading />}>
-        <BrickdocContext.Provider value={context}>
+        <MashcardContext.Provider value={context}>
           <Provider>
             <ApolloProvider client={apolloClient}>
               <HelmetProvider>
@@ -32,12 +32,12 @@ export const App: FC = () => {
               </HelmetProvider>
             </ApolloProvider>
           </Provider>
-        </BrickdocContext.Provider>
+        </MashcardContext.Provider>
       </Suspense>
     </ErrorBoundary>
   )
 }
 
-export const BrickdocPWA = withProfiler(App, {
-  name: 'BrickdocPWA'
+export const MashcardPWA = withProfiler(App, {
+  name: 'MashcardPWA'
 })

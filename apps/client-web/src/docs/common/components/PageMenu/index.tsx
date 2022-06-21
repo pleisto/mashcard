@@ -10,7 +10,7 @@ import {
   Popover,
   Tooltip,
   devWarning
-} from '@brickdoc/design-system'
+} from '@mashcard/design-system'
 import { useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import { useImperativeQuery } from '@/common/hooks'
@@ -21,12 +21,12 @@ import {
   useBlockPinOrUnpinMutation,
   useBlockDuplicateMutation,
   GetTrashBlocksDocument
-} from '@/BrickdocGraphQL'
+} from '@/MashcardGraphQL'
 import { queryBlockPins, queryPageBlocks } from '../../graphql'
 import * as Root from './index.style'
 import { useApolloClient, useReactiveVar } from '@apollo/client'
 import { editorVar, FormulaContextVar } from '@/docs/reactiveVars'
-import { appendFormulas } from '@brickdoc/formula'
+import { appendFormulas } from '@mashcard/formula'
 import { useFormulaActions } from '@/docs/pages/hooks/useFormulaActions'
 import { sleep } from '@/common/utils'
 import { useDocMeta } from '@/docs/store/DocMeta'

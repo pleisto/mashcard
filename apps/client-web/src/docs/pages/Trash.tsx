@@ -1,10 +1,10 @@
 import React, { useContext, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import Split from '@uiw/react-split'
-import { BrickdocContext } from '@/common/brickdocContext'
+import { MashcardContext } from '@/common/mashcardContext'
 import { Helmet } from 'react-helmet-async'
 import { ContentSidebar } from './components/ContentSidebar'
-import { useGetPodsQuery } from '@/BrickdocGraphQL'
+import { useGetPodsQuery } from '@/MashcardGraphQL'
 import { useDocsI18n } from '../common/hooks'
 import { TrashTable } from '@/docs/common/components/TrashTable'
 import { AppError404 } from '@/core/app-error'
@@ -16,7 +16,7 @@ export const Trash: React.FC = () => {
   const { t } = useDocsI18n()
   const preStyle = useMemo<React.CSSProperties>(getSidebarStyle, [])
   const { loading: podDataloding, data: podData } = useGetPodsQuery()
-  const { currentPod, currentUser, host } = useContext(BrickdocContext)
+  const { currentPod, currentUser, host } = useContext(MashcardContext)
 
   const loginDomain = currentPod.domain
   const isAnonymous = !currentUser
@@ -41,15 +41,13 @@ export const Trash: React.FC = () => {
         domain,
         isAnonymous: false,
         isMine: true
-      }}
-    >
+      }}>
       <Helmet titleTemplate={`${t('trash.name')} - %s`} title={domain} />
       <Root.Layout
         width={{
           '@mdOnly': 'md',
           '@smDown': 'sm'
-        }}
-      >
+        }}>
         <Split onDragEnd={logSideBarWidth}>
           {siderBar && <Root.Section style={preStyle}>{siderBar}</Root.Section>}
           <main className="content">

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 require 'securerandom'
-describe Brickdoc::Utils::Crypto do
+describe Mashcard::Utils::Crypto do
   it 'argon2id should work' do
     pwd = FFaker::Internet.password
     hashed = described_class::Argon2id.hash_password(pwd)

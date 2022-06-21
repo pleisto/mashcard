@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DiscussionList > Comment renders UserBlock content normally 1`] = `
+<div>
+  <div
+    class="mc-c-knJJIL"
+  >
+    <span
+      class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-lhlSdI-size-sm mc-c-gYWVfz-ibPjhUn-css"
+    >
+      <span>
+        N
+      </span>
+    </span>
+    <div
+      class="mc-c-IzVos"
+    >
+      <div>
+        <span
+          class="mc-c-bHgAqc"
+        >
+          name
+        </span>
+        <span
+          class="mc-c-BZuio"
+        >
+          2022-06-17 16:50
+        </span>
+      </div>
+      <div
+        class="mc-c-lbvXeI"
+      >
+        <span
+          class="mc-c-eTYwxC"
+        >
+          <span
+            class="mc-c-lRKiB mc-c-lRKiB-iJVNBC-size-sm"
+          >
+            @
+            name
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DiscussionList > Comment renders paragraph content normally 1`] = `
+<div>
+  <div
+    class="mc-c-knJJIL"
+  >
+    <span
+      class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-lhlSdI-size-sm mc-c-gYWVfz-ibPjhUn-css"
+    >
+      <span>
+        N
+      </span>
+    </span>
+    <div
+      class="mc-c-IzVos"
+    >
+      <div>
+        <span
+          class="mc-c-bHgAqc"
+        >
+          name
+        </span>
+        <span
+          class="mc-c-BZuio"
+        >
+          2022-06-17 16:50
+        </span>
+      </div>
+      <div
+        class="mc-c-lbvXeI"
+      >
+        <p>
+          <span>
+            text
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DiscussionList > Comment renders text content normally 1`] = `
+<div>
+  <div
+    class="mc-c-knJJIL"
+  >
+    <span
+      class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-lhlSdI-size-sm mc-c-gYWVfz-ibPjhUn-css"
+    >
+      <span>
+        N
+      </span>
+    </span>
+    <div
+      class="mc-c-IzVos"
+    >
+      <div>
+        <span
+          class="mc-c-bHgAqc"
+        >
+          name
+        </span>
+        <span
+          class="mc-c-BZuio"
+        >
+          2022-06-17 16:50
+        </span>
+      </div>
+      <div
+        class="mc-c-lbvXeI"
+      >
+        <span>
+          text
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

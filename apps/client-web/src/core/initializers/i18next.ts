@@ -7,7 +7,7 @@ export const i18nextInit = (): void => {
     .use(HttpApi)
     .use(initReactI18next)
     .init({
-      lng: globalThis.brickdocContext?.locale,
+      lng: globalThis.mashcardContext?.locale,
       ns: 'meta',
       fallbackLng: 'en-US',
       load: 'currentOnly',
@@ -20,7 +20,7 @@ export const i18nextInit = (): void => {
       backend: {
         loadPath: '/.internal-apis/locales/%{ns}.%{lng}.json',
         queryStringParams: {
-          ver: globalThis.brickdocContext?.version
+          ver: globalThis.mashcardContext?.version
         }
       }
     })

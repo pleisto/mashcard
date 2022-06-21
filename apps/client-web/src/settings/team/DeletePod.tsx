@@ -1,9 +1,9 @@
 import { FC, useState } from 'react'
 import { SettingsContextProps } from '@/settings/SettingContext'
-import { Input, Button, Modal, useBoolean, FormControl, toast } from '@brickdoc/design-system'
+import { Input, Button, Modal, useBoolean, FormControl, toast } from '@mashcard/design-system'
 import { useSettingsI18n } from '@/settings/common/hooks'
 import { Panel } from '@/settings/common/components/Panel'
-import { usePodDestroyMutation } from '@/BrickdocGraphQL'
+import { usePodDestroyMutation } from '@/MashcardGraphQL'
 import { Trans } from 'react-i18next'
 import * as Root from './styles/DeletePod.style'
 

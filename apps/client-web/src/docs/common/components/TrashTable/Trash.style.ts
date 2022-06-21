@@ -1,4 +1,4 @@
-import { theme, utils, styled } from '@brickdoc/design-system'
+import { theme, utils, styled } from '@mashcard/design-system'
 
 export const PageContainer = styled('div', {
   height: '100vh',

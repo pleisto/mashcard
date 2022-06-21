@@ -127,7 +127,7 @@ test.describe('Add Icon', () => {
     })
   })
 
-  // CORS issue, blocked by: https://github.com/brickdoc/brickdoc/issues/1637
+  // CORS issue, blocked by: https://github.com/pleisto/corp/issues/1637
   test.skip('Upload an Image', async () => {
     test('Verify icon will be added when upload an image', async () => {
       await icon.switchTab(IconTab.UploadImage)

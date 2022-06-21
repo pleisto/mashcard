@@ -1,9 +1,9 @@
 import { FC, useContext } from 'react'
 import { SettingsContext } from '@/settings/SettingContext'
 import { PodCard } from '@/common/components/PodCard'
-import { Change } from '@brickdoc/design-icons'
-import { useGetPodsQuery } from '@/BrickdocGraphQL'
-import { styled, prefix, theme, Dropdown, Menu } from '@brickdoc/design-system'
+import { Change } from '@mashcard/design-icons'
+import { useGetPodsQuery } from '@/MashcardGraphQL'
+import { styled, prefix, theme, Dropdown, Menu } from '@mashcard/design-system'
 import { useSettingsI18n } from '../../hooks'
 
 const PodSwitcher = styled('div', {

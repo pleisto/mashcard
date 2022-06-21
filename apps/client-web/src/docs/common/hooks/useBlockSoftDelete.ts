@@ -1,6 +1,6 @@
-import { useBlockSoftDeleteMutation } from '@/BrickdocGraphQL'
-import { PrependParameter } from '@brickdoc/active-support'
-import { dispatchFormulaBlockSoftDelete } from '@brickdoc/formula'
+import { useBlockSoftDeleteMutation } from '@/MashcardGraphQL'
+import { PrependParameter } from '@mashcard/active-support'
+import { dispatchFormulaBlockSoftDelete } from '@mashcard/formula'
 
 export const useBlockSoftDelete: PrependParameter<
   { id: string; username: string },

@@ -1,5 +1,5 @@
 import { createContext, ReactElement } from 'react'
-import { GetCurrentPodQuery } from '@/BrickdocGraphQL'
+import { GetCurrentPodQuery } from '@/MashcardGraphQL'
 
 export interface SettingAction {
   key: string

@@ -1,4 +1,4 @@
-import { theme, styled } from '@brickdoc/design-system'
+import { theme, styled } from '@mashcard/design-system'
 
 export const Content = styled('div', {
   display: 'flex',

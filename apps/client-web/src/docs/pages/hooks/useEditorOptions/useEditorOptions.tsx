@@ -1,6 +1,6 @@
 import { Node } from 'prosemirror-model'
-import { EditorOptions } from '@brickdoc/editor'
-import { Block } from '@brickdoc/schema'
+import { EditorOptions } from '@mashcard/editor'
+import { Block } from '@mashcard/schema'
 import { DocMeta } from '@/docs/store/DocMeta'
 import { useMentionCommands } from './useMentionCommands'
 import { useEmbed } from './useEmbed'
@@ -9,7 +9,7 @@ import { FormulaContextVar } from '@/docs/reactiveVars'
 import { useCallback, useMemo } from 'react'
 import { PageTree } from '@/docs/common/components/PageTree'
 import { blockProvider } from '../useBlockSyncProvider'
-import { string2Color } from '@brickdoc/design-system/src/components/Avatar/initials'
+import { string2Color } from '@mashcard/design-system/src/components/Avatar/initials'
 import { useDiscussion } from './useDiscussion'
 
 export interface UseEditorOptions {
@@ -32,7 +32,7 @@ export function useEditorOptions({
   const formulaContext = useReactiveVar(FormulaContextVar)
   const mentionCommands = useMentionCommands(docMeta)
   const renderView = useCallback(() => <PageTree mode="subPage" />, [])
-  const { currentUser } = globalThis.brickdocContext
+  const { currentUser } = globalThis.mashcardContext
 
   return useMemo<EditorOptions>(
     () => ({
@@ -48,7 +48,7 @@ export function useEditorOptions({
                 user: {
                   id: currentUser.name,
                   name: currentUser.name,
-                  operatorId: globalThis.brickdocContext.uuid,
+                  operatorId: globalThis.mashcardContext.uuid,
                   color: string2Color(`c:${currentUser.name}`)
                 }
               }

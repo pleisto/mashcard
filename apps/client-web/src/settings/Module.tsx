@@ -1,12 +1,12 @@
 import { FC, useMemo } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Loading } from '@brickdoc/design-system'
-import { Setting, People, Me } from '@brickdoc/design-icons'
+import { Loading } from '@mashcard/design-system'
+import { Setting, People, Me } from '@mashcard/design-icons'
 import { SettingsLayout } from './common/layout'
 import { GeneralPage } from './general/GeneralPage'
 import { AccountPage } from './account/AccountPage'
 import { TeamPage } from './team/TeamPage'
-import { useGetCurrentPodQuery, GetCurrentPodQuery } from '@/BrickdocGraphQL'
+import { useGetCurrentPodQuery, GetCurrentPodQuery } from '@/MashcardGraphQL'
 import { SettingsContext } from './SettingContext'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type

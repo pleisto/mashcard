@@ -4,14 +4,14 @@ require 'benchmark/ips'
 
 require 'base64'
 require 'ffaker'
-require_relative '../../lib/brickdoc_ext'
-require_relative '../../lib/brickdoc/native_extension_helper'
+require_relative '../../lib/mashcard_ext'
+require_relative '../../lib/mashcard/native_extension_helper'
 
 small_bytes = Random.new.bytes(32)
 medium_bytes = Random.new.bytes(2048)
 large_bytes = Random.new.bytes(1024 * 1024 * 2) # 2MB
 string = FFaker::Lorem.paragraph
-B64 = Brickdoc::Utils::Encoding::Base64
+B64 = Mashcard::Utils::Encoding::Base64
 
 #
 # Result in M1==>

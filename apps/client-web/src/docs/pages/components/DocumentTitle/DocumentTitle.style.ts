@@ -1,11 +1,11 @@
-import { css, theme, styled, Input as input } from '@brickdoc/design-system'
+import { css, theme, styled, Input as input } from '@mashcard/design-system'
 
 export const MaxWidth = styled('div', {
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',
-  maxWidth: 'var(--brd-editor-max-width)'
+  maxWidth: 'var(--mc-editor-max-width)'
 })
 
 export const Actions = styled('div', {
@@ -50,10 +50,10 @@ export const TitleRow = styled('div', {
 })
 
 export const popover = css({
-  ':global(.brd-popover-arrow)': {
+  ':global(.mc-popover-arrow)': {
     display: 'none'
   },
-  ':global(.brd-popover-inner-content)': {
+  ':global(.mc-popover-inner-content)': {
     padding: 0,
     color: 'unset'
   }
@@ -116,10 +116,10 @@ export const TitleWrapper = styled('div', {
 })
 
 export const Popover = css({
-  ':global(.brd-popover-arrow)': {
+  ':global(.mc-popover-arrow)': {
     display: 'none'
   },
-  ':global(.brd-popover-inner-content)': {
+  ':global(.mc-popover-inner-content)': {
     padding: 0,
     color: 'unset'
   }

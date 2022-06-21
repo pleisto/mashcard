@@ -2,4 +2,4 @@
 
 # https://github.com/nateware/redis-objects
 
-Redis::Objects.redis = Brickdoc::Redis.pool(:object)
+Redis::Objects.redis = Mashcard::Redis.pool(:object)

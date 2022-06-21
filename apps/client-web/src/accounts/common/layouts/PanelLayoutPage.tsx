@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react'
 import Logo from '@/common/assets/logo_brickdoc.svg'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { styled, theme } from '@brickdoc/design-system'
+import { styled, theme } from '@mashcard/design-system'
 import ceramicBackground from '@/common/assets/ceramicBg.webp'
 import { Helmet } from 'react-helmet-async'
 
@@ -70,11 +70,10 @@ export const PanelLayoutPage: FC<{ children?: ReactNode }> = ({ children }) => {
         theme={{
           '@smDown': 'fluid',
           '@smUp': 'ceramic'
-        }}
-      >
+        }}>
         <header>
           <a href="/">
-            <img src={Logo} alt="Brickdoc" />
+            <img src={Logo} alt="MashCard" />
           </a>
         </header>
         <main>{children}</main>

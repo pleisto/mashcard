@@ -4,26 +4,26 @@ import { PathBreadcrumb } from '@/docs/common/components/PathBreadcrumb'
 import { ExploreSlash } from '@/docs/common/components/ExploreSlash'
 import { TopbarMore } from '@/docs/common/components/TopbarMore'
 import { useReactiveVar } from '@apollo/client'
-import { Button, Box } from '@brickdoc/design-system'
+import { Button, Box } from '@mashcard/design-system'
 import { useNavigate } from 'react-router-dom'
 import { ShareMenu } from '../../../common/components/ShareMenu'
 import { useDocsI18n } from '../../../common/hooks'
 import { isSavingVar } from '../../../reactiveVars'
 import { DiscussionMenu } from '@/docs/common/components/DiscussionMenu'
 import { HistoryMenu } from '../../../common/components/HistoryMenu'
-import { BrickdocContext } from '@/common/brickdocContext'
+import { MashcardContext } from '@/common/mashcardContext'
 import Logo from '@/common/assets/logo_brickdoc.svg'
 import Logo_Try from '@/common/assets/logo_brickdoc_try.svg'
 import * as Root from './DocumentTopBar.style'
 import loadingIcon from './loading.png'
 import { useDocMeta } from '@/docs/store/DocMeta'
-import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 export const DocumentTopBar: FC = () => {
   const { t } = useDocsI18n()
   const navigate = useNavigate()
   const isSaving = useReactiveVar(isSavingVar)
-  const { features } = useContext(BrickdocContext)
+  const { features } = useContext(MashcardContext)
 
   const { id, viewable, editable, isAnonymous, isDeleted } = useDocMeta()
 
@@ -35,9 +35,9 @@ export const DocumentTopBar: FC = () => {
     <>
       {!isAnonymous && <Root.Menu as={PathBreadcrumb as any} />}
       {isAnonymous ? (
-        <Root.LogoIconTry role="button" onClick={() => navigate('/')} src={Logo_Try} alt="Try Brickdoc" />
+        <Root.LogoIconTry role="button" onClick={() => navigate('/')} src={Logo_Try} alt="Try MashCard" />
       ) : (
-        <Root.LogoIcon src={Logo} alt="Brickdoc" />
+        <Root.LogoIcon src={Logo} alt="MashCard" />
       )}
     </>
   )
@@ -67,8 +67,7 @@ export const DocumentTopBar: FC = () => {
     <Root.TopBar
       width={{
         '@mdDown': 'md'
-      }}
-    >
+      }}>
       <Box>{headMenu}</Box>
       <Box style={{ flexShrink: 0 }}>
         <Root.Menu>

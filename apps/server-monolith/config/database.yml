@@ -11,16 +11,16 @@ default: &default
 
 development:
   <<: *default
-  database: brickdoc_development
+  database: mashcard_development
 
 test:
   <<: *default
-  database: brickdoc_test
+  database: mashcard_test
 
 cicd:
   <<: *default
-  url: <%= ENV['BRICKDOC_DATABASE_URL'] %>
+  url: <%= ENV['MASHCARD_DATABASE_URL'] %>
 
 production:
   <<: *default
-  url: <%= ENV['BRICKDOC_DATABASE_URL'] %>
+  url: <%= ENV['MASHCARD_DATABASE_URL'] %>

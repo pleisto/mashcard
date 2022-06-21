@@ -1,24 +1,24 @@
 import React, { useEffect, useContext, useCallback, FC } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { BrickdocEventBus, Undo } from '@brickdoc/schema'
+import { MashcardEventBus, Undo } from '@mashcard/schema'
 import {
   useBlockPinOrUnpinMutation,
   GetTrashBlocksDocument,
   useBlockCreateMutation,
   useBlockDuplicateMutation
-} from '@/BrickdocGraphQL'
+} from '@/MashcardGraphQL'
 import { queryBlockPins, queryPageBlocks } from '@/docs/common/graphql'
 import { useApolloClient, useReactiveVar } from '@apollo/client'
 import { itemStyle } from '@/docs/pages/components/DocumentTopBar/DocumentTopBar.style'
-import { Button, Icon, Popover, Menu } from '@brickdoc/design-system'
+import { Button, Icon, Popover, Menu } from '@mashcard/design-system'
 import { useDocsI18n } from '../../hooks'
 import { useImperativeQuery } from '@/common/hooks'
-import { BrickdocContext } from '@/common/brickdocContext'
-import { array2Tree } from '@brickdoc/active-support'
+import { MashcardContext } from '@/common/mashcardContext'
+import { array2Tree } from '@mashcard/active-support'
 import { sleep } from '@/common/utils'
 import { FormulaContextVar } from '@/docs/reactiveVars'
 import { useFormulaActions } from '@/docs/pages/hooks/useFormulaActions'
-import { appendFormulas } from '@brickdoc/formula'
+import { appendFormulas } from '@mashcard/formula'
 import { IconWrapper, KeyBindTip } from './index.style'
 import { useDocMeta } from '@/docs/store/DocMeta'
 import { useBlockSoftDelete } from '../../hooks/useBlockSoftDelete'
@@ -34,7 +34,7 @@ const PopMenu: FC<{ menuToggle: (state: boolean) => void }> = ({ menuToggle }) =
   const client = useApolloClient()
   const formulaContext = useReactiveVar(FormulaContextVar)
   const { queryFormulas } = useFormulaActions()
-  const { currentPod } = useContext(BrickdocContext)
+  const { currentPod } = useContext(MashcardContext)
   const { domain: loginDomain } = currentPod
 
   const getPageBlocks = useImperativeQuery(queryPageBlocks)
@@ -126,7 +126,7 @@ const PopMenu: FC<{ menuToggle: (state: boolean) => void }> = ({ menuToggle }) =
   }, [blockCreate, navigate, menuToggle, blockSoftDelete, id, getPageBlocks, loginDomain])
 
   const onUndo = (): void => {
-    BrickdocEventBus.dispatch(Undo({}))
+    MashcardEventBus.dispatch(Undo({}))
     menuToggle(false)
   }
 

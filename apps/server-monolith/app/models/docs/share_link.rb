@@ -42,7 +42,7 @@ module Docs
 
     before_create do
       self.pod_id ||= block.pod_id
-      self.key = Brickdoc::Utils::Encoding::UUID.gen_v4
+      self.key = Mashcard::Utils::Encoding::UUID.gen_v4
     end
 
     def underway?

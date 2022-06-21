@@ -5,14 +5,14 @@ import {
   useGetFederatedIdentitySessionQuery,
   useUserCreateMutation,
   UserCreateInput
-} from '@/BrickdocGraphQL'
+} from '@/MashcardGraphQL'
 import { object, string, ref } from 'yup'
 import { useSignUpInitialValues } from './hooks/useSignUpInitialValues'
 import { useDomainAvailableValidator } from '@/common/hooks'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { omit, omitBy, pick, isNil } from '@brickdoc/active-support'
+import { omit, omitBy, pick, isNil } from '@mashcard/active-support'
 import { mutationResultHandler } from '@/common/utils'
-import { Form, Input, Button, toast, useBoolean } from '@brickdoc/design-system'
+import { Form, Input, Button, toast, useBoolean } from '@mashcard/design-system'
 import { Trans } from 'react-i18next'
 import { ConfirmationEmailTips } from './components/ConfirmationEmailTips'
 import { useEmailAvailableValidator } from '@/common/hooks/useEmailAvailableValidator'

@@ -15,4 +15,4 @@ tools/helm-charts/**/*.yaml
 *.datauri.ts
 .next
 *.tsbuildinfo
-BrickdocGraphQL.ts
+MashcardGraphQL.ts

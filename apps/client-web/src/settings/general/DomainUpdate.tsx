@@ -3,15 +3,15 @@ import { useSettingsI18n } from '@/settings/common/hooks'
 import { Panel } from '@/settings/common/components/Panel'
 import { SettingsContextProps } from '@/settings/SettingContext'
 import { useDomainAvailableValidator } from '@/common/hooks'
-import { Form, Input, Button, toast } from '@brickdoc/design-system'
+import { Form, Input, Button, toast } from '@mashcard/design-system'
 import { object, string, lazy } from 'yup'
-import { BrickdocContext } from '@/common/brickdocContext'
-import { useUpdateDomainMutation } from '@/BrickdocGraphQL'
+import { MashcardContext } from '@/common/mashcardContext'
+import { useUpdateDomainMutation } from '@/MashcardGraphQL'
 import * as Root from './styles/DomainUpdate.style'
 
 export const DomainUpdate: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
   const { t } = useSettingsI18n(['docs'])
-  const { settings } = useContext(BrickdocContext)
+  const { settings } = useContext(MashcardContext)
   const domainAvailableValidator = useDomainAvailableValidator()
   const [updateDomain, { loading }] = useUpdateDomainMutation()
   const domainValidation = object({

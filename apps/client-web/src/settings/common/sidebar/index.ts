@@ -1,4 +1,4 @@
-import { theme } from '@brickdoc/design-system'
+import { theme } from '@mashcard/design-system'
 import { globalCss } from '@stitches/react'
 
 export const getNativeSidebarWdith = (): number => {
@@ -32,7 +32,7 @@ const sidebarStyle = {
   }
 }
 
-export const initBrickdocSidebarStyle = (): void => {
+export const initSidebarStyle = (): void => {
   try {
     if (getNativeSidebarWdith()) {
       globalCss(sidebarStyle)()

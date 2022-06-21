@@ -1,5 +1,5 @@
 {
-  "name": "@brickdoc/e2e-testing",
+  "name": "@mashcard/e2e-testing",
   "private": true,
   "license": "Apache-2.0",
   "volta": {

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationMailer < ActionMailer::Base
-  default from: BrickdocConfig.mailer[:from]
+  default from: MashcardConfig.mailer[:from]
   layout 'mailer'
   helper :application
 end
