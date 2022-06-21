@@ -4,19 +4,19 @@ import { JoinPodPage } from '@/docs/invite/JoinPodPage'
 import { DocumentContentPage } from '@/docs/pages/DocumentContentPage'
 import { Trash } from '@/docs/pages/Trash'
 import { AppError404, AppError403, AppError500 } from './app-error'
-import { BrickdocContext } from '@/common/brickdocContext'
+import { MashcardContext } from '@/common/mashcardContext'
 import { rootPath } from '@/common/utils'
 
 const AccountsModule = lazy(async () => await import('@/accounts/Module'))
 const SettingsModule = lazy(async () => await import('@/settings/Module'))
 
 const RequireLogin: FC<{ children?: ReactNode }> = ({ children }) => {
-  const context = useContext(BrickdocContext)
+  const context = useContext(MashcardContext)
   return context.currentUser ? <>{children}</> : <Navigate replace={true} to="/accounts/sign_in" />
 }
 
 export const RootRoutes: FC = () => {
-  const context = useContext(BrickdocContext)
+  const context = useContext(MashcardContext)
   return (
     <Router>
       <Routes>

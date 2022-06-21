@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { BrickdocContext } from '@/common/brickdocContext'
+import { MashcardContext } from '@/common/mashcardContext'
 
 interface FilledInitialValues {
   domain?: string
@@ -11,7 +11,7 @@ export function useSignUpInitialValues(): {
   setFill: React.Dispatch<React.SetStateAction<FilledInitialValues>>
 } {
   const [fill, setFill] = useState<FilledInitialValues>({})
-  const { locale, timezone } = useContext(BrickdocContext)
+  const { locale, timezone } = useContext(MashcardContext)
 
   return {
     initialValues: {

@@ -29,7 +29,7 @@ RUN sed -i "s/[\"]version[\"]: [\"]0.0.0[\"]/\"version\": \"$VERSION\"/g" packag
 RUN yarn install --immutable \
   && yarn server bundle install --retry 2 --jobs 4 && yarn server build
 RUN cd apps/server-monolith && chmod a+x bin/* && COVERAGE=$COVERAGE NODE_ENV=$RAILS_ENV bin/vite build
-RUN if [ "$VERSION" != "0.0.0" ] && [ "$SENTRY_AUTH_TOKEN" ]; then sentry-cli releases files brickdoc@$VERSION upload-sourcemaps ./public/esm-bundle --url-prefix '~/globalcdn/brickdoc-saas-prod/esm-bundle'; fi
+RUN if [ "$VERSION" != "0.0.0" ] && [ "$SENTRY_AUTH_TOKEN" ]; then sentry-cli releases files mashcard@$VERSION upload-sourcemaps ./public/esm-bundle --url-prefix '~/esm-bundle'; fi
 
 RUN rm -rf node_modules .yarn apps/client-web dist apps/server-monolith/public/esm-bundle/stats.json yarn.lock \
   && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + \

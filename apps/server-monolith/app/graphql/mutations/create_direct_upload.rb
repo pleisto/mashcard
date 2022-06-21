@@ -43,7 +43,7 @@ module Mutations
       )
 
       if type == 'DOC'
-        raise Brickdoc::GraphQL::Errors::ArgumentError, 'Need a block_id' if args[:block_id].nil?
+        raise Mashcard::GraphQL::Errors::ArgumentError, 'Need a block_id' if args[:block_id].nil?
 
         block = Docs::Block.find_by(id: args[:block_id])
 
@@ -53,7 +53,7 @@ module Mutations
         if block
           block.attach_blob!(blob.id)
         else
-          Brickdoc::Redis.with(:cache) do |redis|
+          Mashcard::Redis.with(:cache) do |redis|
             key = "blob_#{args[:block_id]}"
             redis.sadd(key, blob.id)
             redis.expire(key, 1.hour)

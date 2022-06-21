@@ -1,11 +1,11 @@
 import { FC, useContext, useState } from 'react'
-import { BrickdocContext } from '@/common/brickdocContext'
-import { Button, Box, ConfirmDialog, useBoolean, toast } from '@brickdoc/design-system'
+import { MashcardContext } from '@/common/mashcardContext'
+import { Button, Box, ConfirmDialog, useBoolean, toast } from '@mashcard/design-system'
 import { useSettingsI18n } from '@/settings/common/hooks'
 import { SettingsContextProps } from '@/settings/SettingContext'
 import { PodCard } from '@/common/components/PodCard'
 import { Panel } from '@/settings/common/components/Panel'
-import { useGetPodMembersQuery, GetPodMembersQuery, usePodLeaveMutation } from '@/BrickdocGraphQL'
+import { useGetPodMembersQuery, GetPodMembersQuery, usePodLeaveMutation } from '@/MashcardGraphQL'
 import { Trans } from 'react-i18next'
 
 export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
@@ -13,7 +13,7 @@ export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
   const [selectedUser, setSelectedUser] = useState<NonNullable<GetPodMembersQuery['podMembers']>[0]>()
   const [podLeave, { loading: leaveing }] = usePodLeaveMutation()
   const { t } = useSettingsI18n()
-  const context = useContext(BrickdocContext)
+  const context = useContext(MashcardContext)
   const currentUserDomain = context.currentUser!.domain
   const { loading, data, refetch } = useGetPodMembersQuery()
   if (loading) return <></>
@@ -61,8 +61,7 @@ export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
               }
             }
           }}
-          as="ul"
-        >
+          as="ul">
           {members?.map(user => (
             <li key={user.domain}>
               <PodCard pod={user} key={user.domain} label={user.email ?? user.domain} />
@@ -71,8 +70,7 @@ export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
                 onClick={() => {
                   setSelectedUser(user)
                   setOpen()
-                }}
-              >
+                }}>
                 {t(user.domain === currentUserDomain ? 'account.leave_btn' : 'account.remove_btn')}
               </Button>
             </li>
@@ -88,8 +86,7 @@ export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
         onCancel={setClose}
         onConfirm={async () => {
           await handleLeave(selectedUser!.domain)
-        }}
-      >
+        }}>
         <Trans
           t={t}
           i18nKey="team.leave_user_confirm"

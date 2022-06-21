@@ -13,7 +13,7 @@ module Mutations
         block = Docs::Block.find(id)
         block.duplicate!
       rescue => e
-        raise Brickdoc::GraphQL::Errors::ArgumentError, e.message
+        raise Mashcard::GraphQL::Errors::ArgumentError, e.message
       end
     end
   end

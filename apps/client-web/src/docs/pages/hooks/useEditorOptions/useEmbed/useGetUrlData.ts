@@ -1,6 +1,6 @@
-import { QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables, QueryPreviewBoxDocument } from '@/BrickdocGraphQL'
+import { QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables, QueryPreviewBoxDocument } from '@/MashcardGraphQL'
 import { useImperativeQuery } from '@/common/hooks'
-import { EmbedOptions } from '@brickdoc/editor'
+import { EmbedOptions } from '@mashcard/editor'
 import { useCallback } from 'react'
 
 export function useGetUrlData(): EmbedOptions['getUrlData'] {

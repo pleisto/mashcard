@@ -2,8 +2,8 @@ import { FC, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SettingsContext } from '@/settings/SettingContext'
 import { SwitchSettingPod } from '../SwitchSettingPod'
-import { Button } from '@brickdoc/design-system'
-import { ArrowLeft } from '@brickdoc/design-icons'
+import { Button } from '@mashcard/design-system'
+import { ArrowLeft } from '@mashcard/design-icons'
 import { SidebarWrapper, MenuItem } from './index.styles'
 import Logo from '@/common/assets/logo_brickdoc_without_name.svg'
 import { useSettingsI18n } from '../../hooks'
@@ -17,7 +17,7 @@ export const Sidebar: FC = () => {
     <SidebarWrapper>
       <div className="actions">
         <header>
-          <img className="brk-logo" src={Logo} alt="Brickdoc" />
+          <img className="mc-logo" src={Logo} alt="MashCard" />
           <SwitchSettingPod />
         </header>
         <nav>

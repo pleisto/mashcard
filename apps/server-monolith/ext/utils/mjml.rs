@@ -4,7 +4,7 @@ use mrml::{mjml::MJML, parse, prelude::render::Options};
 /// MJML is a markup language designed to reduce the pain of coding a responsive email.
 /// mrml is a Rust implementation of MJML.
 /// See: https://github.com/jdrouet/mrml
-#[magnus::wrap(class = "Brickdoc::Utils::MJML")]
+#[magnus::wrap(class = "Mashcard::Utils::MJML")]
 struct RubyMJML {
     mjml: MJML,
 }

@@ -5,14 +5,14 @@ import Split from '@uiw/react-split'
 import { DocumentTopBar } from './components/DocumentTopBar'
 import { ContentSidebar } from './components/ContentSidebar'
 import { DocumentPage } from './DocumentPage'
-import { BrickdocContext } from '@/common/brickdocContext'
+import { MashcardContext } from '@/common/mashcardContext'
 import { Helmet } from 'react-helmet-async'
-import { Policytype, useBlockCreateMutation, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
+import { Policytype, useBlockCreateMutation, useGetBlockInfoQuery } from '@/MashcardGraphQL'
 import { useDocsI18n } from '../common/hooks'
 import { queryPageBlocks } from '../common/graphql'
 import { FormulaContextVar } from '../reactiveVars'
-import { isUUID } from '@brickdoc/active-support'
-import { appendFormulas, FormulaContext } from '@brickdoc/formula'
+import { isUUID } from '@mashcard/active-support'
+import { appendFormulas, FormulaContext } from '@mashcard/formula'
 import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
 import { AppError404 } from '@/core/app-error'
@@ -26,7 +26,7 @@ export const DocumentContentPage: React.FC = () => {
     docid?: string
     historyId?: string
   }
-  const { currentPod, currentUser, host, lastDomain, lastBlockIds, featureFlags } = useContext(BrickdocContext)
+  const { currentPod, currentUser, host, lastDomain, lastBlockIds, featureFlags } = useContext(MashcardContext)
   const { t } = useDocsI18n()
   const navigate = useNavigate()
   const preSidebarStyle = useMemo(getSidebarStyle, [])
@@ -47,7 +47,7 @@ export const DocumentContentPage: React.FC = () => {
   const { state, pathname } = useLocation()
 
   React.useEffect(() => {
-    // https://github.com/brickdoc/brickdoc/issues/1261
+    // https://github.com/pleisto/corp/issues/1261
     // The cache is not updated in time during the switchover
     void refetch()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -162,8 +162,7 @@ export const DocumentContentPage: React.FC = () => {
         width={{
           '@mdOnly': 'md',
           '@smDown': 'sm'
-        }}
-      >
+        }}>
         <Split visiable={!docMeta.isAnonymous} onDragEnd={logSideBarWidth}>
           {!isAnonymous && <Root.Section style={preSidebarStyle}>{siderBar}</Root.Section>}
           <main className="content">
@@ -179,8 +178,7 @@ export const DocumentContentPage: React.FC = () => {
                     inherit
                     docMeta={{
                       editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted
-                    }}
-                  >
+                    }}>
                     <DocumentPage mode={!docMeta.editable || isAnonymous ? 'presentation' : 'default'} />
                   </DocMetaProvider>
                 )}

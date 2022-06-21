@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { Button, Popover, PopoverProps, ImageWithSpin } from '@brickdoc/design-system'
-import { BlockColor, BlockImage, BlockType } from '@/BrickdocGraphQL'
+import { Button, Popover, PopoverProps, ImageWithSpin } from '@mashcard/design-system'
+import { BlockColor, BlockImage, BlockType } from '@/MashcardGraphQL'
 import { useDocsI18n } from '@/docs/common/hooks'
-import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import * as Root from './DocumentCover.style'
 
 interface DocumentCoverImage extends BlockImage {

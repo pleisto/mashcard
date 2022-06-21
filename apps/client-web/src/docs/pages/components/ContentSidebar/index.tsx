@@ -12,7 +12,7 @@ export const ContentSidebar: FC = () => {
   return (
     <>
       <header>
-        <img className="brk-logo" src={Logo} alt="Brickdoc" />
+        <img className="mc-logo" src={Logo} alt="MashCard" />
         <PodSelect />
       </header>
       {isMine && (

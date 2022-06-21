@@ -1,8 +1,8 @@
-import { useGetPodMembersQuery } from '@/BrickdocGraphQL'
+import { useGetPodMembersQuery } from '@/MashcardGraphQL'
 import { pagesVar } from '@/docs/reactiveVars'
 import { DocMeta } from '@/docs/store/DocMeta'
 import { useReactiveVar } from '@apollo/client'
-import { MentionCommandsOptions } from '@brickdoc/editor'
+import { MentionCommandsOptions } from '@mashcard/editor'
 import { useMemo } from 'react'
 
 export function useMentionCommands(docMeta: DocMeta): MentionCommandsOptions {

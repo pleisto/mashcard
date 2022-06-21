@@ -1,6 +1,6 @@
 import { makeVar } from '@apollo/client'
-import { EditorContentProps } from '@brickdoc/editor'
-import { ContextInterface } from '@brickdoc/formula'
+import { EditorContentProps } from '@mashcard/editor'
+import { ContextInterface } from '@mashcard/formula'
 import { awarenessInfo } from './pages/hooks/useBlockSyncProvider'
 
 export const editorVar = makeVar<EditorContentProps['editor']>(null)

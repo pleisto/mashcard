@@ -1,5 +1,5 @@
 declare global {
-  interface BrickdocServerContext {
+  interface MashcardServerContext {
     internalApiEndpoint: string
     currentUser?: {
       domain: string
@@ -29,14 +29,14 @@ declare global {
     serverMessage: string
     sentryDsn: string
   }
-  interface BrickdocClientContext {
+  interface MashcardClientContext {
     wsCable: ActionCable.Consumer
     uuid: string
   }
-  type BrickdocContext = BrickdocServerContext & BrickdocClientContext
+  type MashcardContext = MashcardServerContext & MashcardClientContext
 
   // eslint-disable-next-line no-inner-declarations, no-var
-  var brickdocContext: BrickdocContext
+  var mashcardContext: MashcardContext
 }
 
 export {}

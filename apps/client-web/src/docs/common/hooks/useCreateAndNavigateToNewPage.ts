@@ -1,11 +1,11 @@
 import { useContext } from 'react'
-import { useBlockCreateMutation } from '@/BrickdocGraphQL'
+import { useBlockCreateMutation } from '@/MashcardGraphQL'
 import { queryPageBlocks } from '@/docs/common/graphql'
 import { useNavigate } from 'react-router-dom'
-import { BrickdocContext } from '@/common/brickdocContext'
+import { MashcardContext } from '@/common/mashcardContext'
 
 export function useCreateAndNavigateToNewPage(): void {
-  const context = useContext(BrickdocContext)
+  const context = useContext(MashcardContext)
   const navigate = useNavigate()
   const domain = context.currentPod.domain
   const [blockCreate] = useBlockCreateMutation({

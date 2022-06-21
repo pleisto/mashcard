@@ -67,7 +67,7 @@ module Sortable
     def do_rebalance(domain, parent_id, blocks, new_sorts)
       throttle_key = "rebalance:#{domain}:#{parent_id}"
 
-      Brickdoc::Redis.with(:state) do |redis|
+      Mashcard::Redis.with(:state) do |redis|
         bol = redis.get(throttle_key)
         return blocks if bol
 
@@ -81,11 +81,11 @@ module Sortable
         block
       end
 
-      Brickdoc::Redis.with(:state) { |redis| redis.del(throttle_key) }
+      Mashcard::Redis.with(:state) { |redis| redis.del(throttle_key) }
       blocks
     rescue => _e
       ## TODO handle error
-      Brickdoc::Redis.with(:state) { |redis| redis.del(throttle_key) }
+      Mashcard::Redis.with(:state) { |redis| redis.del(throttle_key) }
       blocks
     end
 

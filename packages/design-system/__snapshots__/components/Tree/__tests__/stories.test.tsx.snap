@@ -1,0 +1,1790 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tree Basic should match the snapshot 1`] = `
+<div>
+  <div>
+    <div
+      class="rc-virtual-list"
+      data-testid="virtual-list"
+      style="position: relative;"
+    >
+      <div
+        class="rc-virtual-list-holder"
+        style="height: 300px; overflow-y: auto;"
+      >
+        <div>
+          <div
+            class="rc-virtual-list-holder-inner"
+            style="display: flex; flex-direction: column;"
+          >
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iksdqzH-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-ijwxnRu-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <a
+                      class="mc-c-jyNUxZ"
+                      data-testid="content-icon"
+                    >
+                      🔆
+                    </a>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Sun
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Mercury
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Venus
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Earth
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Mars
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
+<div>
+  <div>
+    <div
+      class="rc-virtual-list"
+      data-testid="virtual-list"
+      style="position: relative;"
+    >
+      <div
+        class="rc-virtual-list-holder"
+        style="height: 300px; overflow-y: auto;"
+      >
+        <div>
+          <div
+            class="rc-virtual-list-holder-inner"
+            style="display: flex; flex-direction: column;"
+          >
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iksdqzH-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-ijwxnRu-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <a
+                      class="mc-c-jyNUxZ"
+                      data-testid="content-icon"
+                    >
+                      🔆
+                    </a>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Sun
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Mercury
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Venus
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Earth
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-icibkft-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-igoAIMk-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        The Moon
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Mars
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-icibkft-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-igoAIMk-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Deimos
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-icibkft-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-igoAIMk-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Phobos
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
+<div>
+  <div>
+    <div
+      class="rc-virtual-list"
+      data-testid="virtual-list"
+      style="position: relative;"
+    >
+      <div
+        class="rc-virtual-list-holder"
+        style="height: 300px; overflow-y: auto;"
+      >
+        <div>
+          <div
+            class="rc-virtual-list-holder-inner"
+            style="display: flex; flex-direction: column;"
+          >
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iksdqzH-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-ijwxnRu-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <a
+                      class="mc-c-jyNUxZ"
+                      data-testid="content-icon"
+                    >
+                      🔆
+                    </a>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Sun
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Mercury
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Venus
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Earth
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-icibkft-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-igoAIMk-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        The Moon
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Mars
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
+<div>
+  <div>
+    <div
+      class="rc-virtual-list"
+      data-testid="virtual-list"
+      style="position: relative;"
+    >
+      <div
+        class="rc-virtual-list-holder"
+        style="height: 300px; overflow-y: auto;"
+      >
+        <div>
+          <div
+            class="rc-virtual-list-holder-inner"
+            style="display: flex; flex-direction: column;"
+          >
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iksdqzH-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-ijwxnRu-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <a
+                      class="mc-c-jyNUxZ"
+                      data-testid="content-icon"
+                    >
+                      🔆
+                    </a>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Sun
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Mercury
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Venus
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Earth
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Mars
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tree RenderCustomNode should match the snapshot 1`] = `
+<div>
+  <div>
+    <div
+      class="rc-virtual-list"
+      data-testid="virtual-list"
+      style="position: relative;"
+    >
+      <div
+        class="rc-virtual-list-holder"
+        style="height: 300px; overflow-y: auto;"
+      >
+        <div>
+          <div
+            class="rc-virtual-list-holder-inner"
+            style="display: flex; flex-direction: column;"
+          >
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iksdqzH-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-ijwxnRu-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <a
+                      class="mc-c-jyNUxZ"
+                      data-testid="content-icon"
+                    >
+                      🔆
+                    </a>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div
+                        class="mc-c-hbkHRg"
+                      >
+                        Sun
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div
+                        class="mc-c-hbkHRg"
+                      >
+                        Mercury
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div
+                        class="mc-c-hbkHRg"
+                      >
+                        Venus
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div
+                        class="mc-c-hbkHRg"
+                      >
+                        Earth
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div
+                        class="mc-c-hbkHRg"
+                      >
+                        Mars
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tree SortByDragging should match the snapshot 1`] = `
+<div>
+  <p>
+    Check the console to see the drop data.
+  </p>
+  <div>
+    <div
+      class="rc-virtual-list"
+      data-testid="virtual-list"
+      style="position: relative;"
+    >
+      <div
+        class="rc-virtual-list-holder"
+      >
+        <div>
+          <div
+            class="rc-virtual-list-holder-inner"
+            style="display: flex; flex-direction: column;"
+          >
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iksdqzH-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-ijwxnRu-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <a
+                      class="mc-c-jyNUxZ"
+                      data-testid="content-icon"
+                    >
+                      🔆
+                    </a>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Sun
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Mercury
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Venus
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Earth
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-icibkft-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-igoAIMk-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        The Moon
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Mars
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-icibkft-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-igoAIMk-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Deimos
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
+              data-handler-id="mock-id"
+              data-testid="McTree"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="mc-c-hakyQ mc-c-hakyQ-icibkft-css"
+                data-testid="indent"
+              />
+              <div
+                class="mc-c-gMErbG mc-c-gMErbG-igoAIMk-css"
+                data-testid="page-item"
+              >
+                <div
+                  class="mc-c-kYuycX"
+                  data-testid="item-content"
+                >
+                  <div
+                    class="mc-c-TfkwO"
+                    data-testid="content"
+                  >
+                    <div
+                      class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
+                      data-testid="content-arrow"
+                    >
+                      <i
+                        data-testid="mock-icon-Right"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-dZmqpY"
+                      data-testid="content-action"
+                    >
+                      <div>
+                        Phobos
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

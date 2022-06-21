@@ -52,7 +52,7 @@ module Mutations
         now = Time.current
 
         blocks.each do |args|
-          raise Brickdoc::GraphQL::Errors::ArgumentError, :parent_id_cause_endless_loop if args.id == args.parent_id
+          raise Mashcard::GraphQL::Errors::ArgumentError, :parent_id_cause_endless_loop if args.id == args.parent_id
 
           block = preloads[args.id]
 

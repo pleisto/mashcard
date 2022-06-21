@@ -2,13 +2,13 @@ import { FC, useContext } from 'react'
 import { useSettingsI18n } from '@/settings/common/hooks'
 import { Panel } from '@/settings/common/components/Panel'
 import { SettingsContextProps } from '@/settings/SettingContext'
-import { Form, FormControl, Button, toast, Select } from '@brickdoc/design-system'
-import { BrickdocContext } from '@/common/brickdocContext'
+import { Form, FormControl, Button, toast, Select } from '@mashcard/design-system'
+import { MashcardContext } from '@/common/mashcardContext'
 import {
   useUserAppearanceUpdateMutation,
   UserAppearanceUpdateInput,
   useGetMetadataFromWsQuery
-} from '@/BrickdocGraphQL'
+} from '@/MashcardGraphQL'
 import * as Root from './styles/Display.style'
 
 const AppearanceSelect: FC<{
@@ -28,7 +28,7 @@ const AppearanceSelect: FC<{
 
 export const Display: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
   const { t } = useSettingsI18n()
-  const { timezone, locale } = useContext(BrickdocContext)
+  const { timezone, locale } = useContext(MashcardContext)
   const { data, loading: getMetadataLoading } = useGetMetadataFromWsQuery()
   const [updatePod, { loading }] = useUserAppearanceUpdateMutation()
   const form = Form.useForm({

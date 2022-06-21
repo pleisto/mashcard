@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useGetPodsQuery, useJoinPodMutation } from '@/BrickdocGraphQL'
-import { Loading, Alert, Box } from '@brickdoc/design-system'
+import { useGetPodsQuery, useJoinPodMutation } from '@/MashcardGraphQL'
+import { Loading, Alert, Box } from '@mashcard/design-system'
 
 export const JoinPodPage: FC = () => {
   const navigate = useNavigate()

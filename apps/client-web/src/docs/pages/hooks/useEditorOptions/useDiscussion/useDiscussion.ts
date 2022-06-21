@@ -1,6 +1,6 @@
 import { DocMeta } from '@/docs/store/DocMeta'
-import { BaseOptions, CommentData, ConversationData } from '@brickdoc/editor'
-import { Conversation, Comment } from '@brickdoc/schema'
+import { BaseOptions, CommentData, ConversationData } from '@mashcard/editor'
+import { Conversation, Comment } from '@mashcard/schema'
 import { useMemo } from 'react'
 import { useCreateComment } from './useCreateComment'
 import { useCreateConversation } from './useCreateConversation'

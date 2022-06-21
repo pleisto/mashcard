@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
-import { useConversationOpenMutation } from '@/BrickdocGraphQL'
-import { DiscussionOptions } from '@brickdoc/editor'
+import { useConversationOpenMutation } from '@/MashcardGraphQL'
+import { DiscussionOptions } from '@mashcard/editor'
 
 export function useOpenConversation(): DiscussionOptions['openConversation'] {
   const [openConversation] = useConversationOpenMutation()

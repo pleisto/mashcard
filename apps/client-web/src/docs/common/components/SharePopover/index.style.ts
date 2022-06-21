@@ -1,4 +1,4 @@
-import { styled, theme } from '@brickdoc/design-system'
+import { styled, theme } from '@mashcard/design-system'
 
 export const Wrapper = styled('div', {
   width: 396,

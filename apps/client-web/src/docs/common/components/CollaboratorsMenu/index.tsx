@@ -10,7 +10,7 @@ export const CollaboratorsMenu: FC = () => {
     return <></>
   }
 
-  const currentOperatorId = globalThis.brickdocContext.uuid
+  const currentOperatorId = globalThis.mashcardContext.uuid
   const userNames: string[] = []
   // pull current operator to first and unique users
   const infos = awarenessInfos

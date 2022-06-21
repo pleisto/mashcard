@@ -1,4 +1,4 @@
-# Brickdoc Rust native extension
+# MashCard Rust native extension
 
 We use Rust FFI as a backend for the backend, to provide some features to the server.
 
@@ -6,7 +6,7 @@ We use Rust FFI as a backend for the backend, to provide some features to the se
 
 ### `/ext/core_ext`
 
-Core extension it's the Brickdoc Server component responsible for providing Ruby language extensions, like `ActiveSupport::CoreExt`.
+Core extension it's the MashCard Server component responsible for providing Ruby language extensions, like `ActiveSupport::CoreExt`.
 
 #### String
 
@@ -20,7 +20,7 @@ Core extension it's the Brickdoc Server component responsible for providing Ruby
 #### Encoding
 
 ```ruby
-Encoding = Brickdoc::Utils::Encoding
+Encoding = Mashcard::Utils::Encoding
 
 # Bitcoin Style Base58 Encoder
 Encoding::Base58.encode("UTF-8 or Binary String") # or `Base58.decode("")`
@@ -44,7 +44,7 @@ Encoding::UUID.expand("XLTy1sbhMFGQCKjPzpftsz") #=> "f5a9e8e0-c8e0-4b1e-b9c6-a8d
 ##### Low-level API
 
 ```ruby
-Crypto = Brickdoc::Utils::Crypto
+Crypto = Mashcard::Utils::Crypto
 
 # Present block cipher for integer encryption
 # see http://www.lightweightcrypto.org/present/present_ches2007.pdf
@@ -66,21 +66,21 @@ Crypto::Blake3.derive_key('32-bytes-root-key', 1, 'context') #=> Derive a 32-byt
 
 ```ruby
 # Obfuscating sequential IDs based on application secret
-Brickdoc::Crypto.int_id_obfuscate(1) #=> "BuyBBTuhp2u"
-Brickdoc::Crypto.int_id_deobfuscate("BuyBBTuhp2u") #=> 1
+Mashcard::Crypto.int_id_obfuscate(1) #=> "BuyBBTuhp2u"
+Mashcard::Crypto.int_id_deobfuscate("BuyBBTuhp2u") #=> 1
 
 # Generic hashing
-Brickdoc::Crypto.generic_hash('data') #=> ....
-Brickdoc::Crypto.generic_hash('data', 'any-length-salt') #=> ....
-Brickdoc::Crypto.derive_key(:hash_salt) #=> Derive a 32-bytes key from a root key
-Brickdoc::Crypto.derive_key(:hash_salt, 'userId=1') #=> Derive a 32-bytes key from a root key with context
-Brickdoc::Crypto.data_masking('some data') #=> Data masked with hash
+Mashcard::Crypto.generic_hash('data') #=> ....
+Mashcard::Crypto.generic_hash('data', 'any-length-salt') #=> ....
+Mashcard::Crypto.derive_key(:hash_salt) #=> Derive a 32-bytes key from a root key
+Mashcard::Crypto.derive_key(:hash_salt, 'userId=1') #=> Derive a 32-bytes key from a root key with context
+Mashcard::Crypto.data_masking('some data') #=> Data masked with hash
 ```
 
 #### UserAgent
 
 ```ruby
-Brickdoc::Utils::UserAgent.parser('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36') #=> {name: foo, category: bar, version: 1.0, ...}
+Mashcard::Utils::UserAgent.parser('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36') #=> {name: foo, category: bar, version: 1.0, ...}
 ```
 
 #### JSONSchema
@@ -88,8 +88,8 @@ Brickdoc::Utils::UserAgent.parser('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_
 JSONSchema Draft 7 validator. It also supports fetch schema from a Internet.
 
 ```ruby
-Brickdoc::Utils::JSONSchema.new(...schema).validate!(...json_str) #=> throws an exception if invalid
-Brickdoc::Utils::JSONSchema.new(...schema).valid?(...json_str) #=> Boolean
+Mashcard::Utils::JSONSchema.new(...schema).validate!(...json_str) #=> throws an exception if invalid
+Mashcard::Utils::JSONSchema.new(...schema).valid?(...json_str) #=> Boolean
 ```
 
 #### MJML
@@ -99,7 +99,7 @@ See [MJML Guides](https://documentation.mjml.io/) for more details.
 
 ```ruby
 template = '<mjml><mj-body>foo</mj-body></mjml>'
-result = Brickdoc::Utils::MJML.new template
+result = Mashcard::Utils::MJML.new template
 result.title
 result.preview
 result.html
@@ -112,5 +112,5 @@ result.html
 Generate a username from a given display name. Returns a array of `[preferred_username, alternative_username, unique_username]`. When creating a new user could try in sequence until a first available username is found.
 
 ```ruby
-Brickdoc::Utils::Pod.to_username "Öpik Oort" # => ["opikoort", "opikoort-558um2", "3dy7jij6z0fvgh3m1anlw26qw"]
+Mashcard::Utils::Pod.to_username "Öpik Oort" # => ["opikoort", "opikoort-558um2", "3dy7jij6z0fvgh3m1anlw26qw"]
 ```

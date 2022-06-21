@@ -1,6 +1,6 @@
 import React from 'react'
 import { Node } from 'prosemirror-model'
-import { FileSource, GetChildrenBlocksQuery } from '@/BrickdocGraphQL'
+import { FileSource, GetChildrenBlocksQuery } from '@/MashcardGraphQL'
 
 export const useBlobGetter = (
   field: string,

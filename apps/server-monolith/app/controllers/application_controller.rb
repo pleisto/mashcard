@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
   # memoize extended edition view path
   def self.extended_edition_view_parh
     @extended_edition_path ||= begin
-      return nil unless Brickdoc::Plugins::ServerPlugin.extended_edition_path
+      return nil unless Mashcard::Plugins::ServerPlugin.extended_edition_path
 
-      File.join(Brickdoc::Plugins::ServerPlugin.extended_edition_path, 'app/views')
+      File.join(Mashcard::Plugins::ServerPlugin.extended_edition_path, 'app/views')
     end
   end
 
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_current_config
-    BrickdocConfig.current = BrickdocConfig.at(user_id: current_user&.id, pod_id: current_pod[:id])
+    MashcardConfig.current = MashcardConfig.at(user_id: current_user&.id, pod_id: current_pod[:id])
   end
 
   # Load view path for a plugin that declares themselves as an extended edition

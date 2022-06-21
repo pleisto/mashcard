@@ -11,15 +11,15 @@ class InternalApisController < ActionController::API
   def show_locales
     @locale = params[:locale]&.to_sym
     @ns = params[:ns]&.to_sym
-    raise ActionController::RoutingError, 'Not Found' unless Brickdoc::I18n.available_locales.include? @locale
+    raise ActionController::RoutingError, 'Not Found' unless Mashcard::I18n.available_locales.include? @locale
 
     @translations = ::I18n.t(@ns, locale: @locale, default: {})
     render json: Oj.dump(@translations)
   end
 
   def graphql
-    variables = Brickdoc::GraphQL.ensure_hash params[:variables]
-    resp = BrickdocSchema.execute(params[:query], variables: variables,
+    variables = Mashcard::GraphQL.ensure_hash params[:variables]
+    resp = MashcardSchema.execute(params[:query], variables: variables,
       context: context, operation_name: params[:operationName])
     render json: Oj.dump(resp)
   end

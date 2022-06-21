@@ -2,11 +2,11 @@ en-US:
   meta:
     lang: en-US
     dir: ltr
-    noscript: We're sorry but Brickdoc doesn't work properly without JavaScript enabled. Please visit %{url} for more information.
+    noscript: We're sorry but MashCard doesn't work properly without JavaScript enabled. Please visit %{url} for more information.
     noscript_url: https://www.wikihow.com/Enable-JavaScript
   unsupported_browser:
     title: 'Upgrade your browser'
-    download_latest_browser_html: Unfortunately, Brickdoc has updated features that can't run on this version of your browser.
+    download_latest_browser_html: Unfortunately, MashCard has updated features that can't run on this version of your browser.
   activerecord:
     errors:
       models:
@@ -45,7 +45,7 @@ en-US:
       domain_presence_invalid: is not presence
       InvalidImageUrl: Invalid image url
     app_error:
-      not_found_title: Whoops! Lost in Brickdoc?
+      not_found_title: Whoops! Lost in MashCard?
       not_found_content: The page you're looking for couldn't be found.
       server_error_title: Uh-Oh! Server Error.
       server_error_content: Our servers are feeling a little down.
@@ -94,7 +94,7 @@ en-US:
       unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
     mailer:
       confirmation_instructions:
-        you_can_confirm_your_account_email_through_the_link_below: 'Please confirm this email address for your Brickdoc account by clicking on the button below'
+        you_can_confirm_your_account_email_through_the_link_below: 'Please confirm this email address for your MashCard account by clicking on the button below'
         subject: 'Confirmation Email'
       reset_password_instructions:
         subject: 'Reset password instructions'
@@ -109,14 +109,14 @@ en-US:
       signed_out: 'Signed out successfully.'
       already_signed_out: 'Signed out successfully.'
   accounts:
-    app_title: Brickdoc Accounts
+    app_title: MashCard Accounts
     provider:
       email_password: Email & Password
     sessions:
       sign_in: Sign In
       sign_up: Sign Up
       reset_password: Reset Password
-      sign_in_to_brickdoc: Sign into Brickdoc
+      sign_in_to_mashcard: Sign into MashCard
       more_login_options: More Login Options
       login_via: 'Sign in with %{provider}'
       email: Email

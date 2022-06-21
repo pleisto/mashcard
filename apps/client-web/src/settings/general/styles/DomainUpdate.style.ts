@@ -1,4 +1,4 @@
-import { styled, theme } from '@brickdoc/design-system'
+import { styled, theme } from '@mashcard/design-system'
 
 export const Warp = styled('div', {
   '& label': {

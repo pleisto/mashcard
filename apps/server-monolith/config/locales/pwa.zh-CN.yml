@@ -1,6 +1,6 @@
 zh-CN:
   settings:
-    app_title: Brickdoc 设置
+    app_title: MashCard 设置
     personal_pod_desc: 我的 Pod
     group_pod_desc: 团队 Pod
     errors:
@@ -479,7 +479,7 @@ zh-CN:
           按创建日期显示笔记。
           显示最近联系的客户。
   docs:
-    app_title: Brickdoc
+    app_title: MashCard
     saving: 保存中
     user_setting:
       text: 用户设置

@@ -1,10 +1,10 @@
-import { isEmpty } from '@brickdoc/active-support'
+import { isEmpty } from '@mashcard/active-support'
 import { useImperativeQuery } from '@/common/hooks/index'
 import {
   QueryDomainAvailableFromWsDocument,
   QueryDomainAvailableFromWsQuery as Query,
   QueryDomainAvailableFromWsQueryVariables as Variables
-} from '@/BrickdocGraphQL'
+} from '@/MashcardGraphQL'
 import { TestConfig } from 'yup'
 
 export const useDomainAvailableValidator = (): TestConfig => {

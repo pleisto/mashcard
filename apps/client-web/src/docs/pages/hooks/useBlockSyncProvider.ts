@@ -1,8 +1,8 @@
 import React from 'react'
-import { Y } from '@brickdoc/editor'
+import { Y } from '@mashcard/editor'
 import * as awarenessProtocol from 'y-protocols/awareness'
 import { base64 } from 'rfc4648'
-import { uuid } from '@brickdoc/active-support'
+import { uuid } from '@mashcard/active-support'
 
 import {
   BlockNew,
@@ -14,11 +14,11 @@ import {
   useDocumentSubscription,
   useAwarenessUpdateMutation,
   useAwarenessSubscription
-} from '@/BrickdocGraphQL'
-import { BrickdocContext } from '@/common/brickdocContext'
-import { devLog } from '@brickdoc/design-system'
+} from '@/MashcardGraphQL'
+import { MashcardContext } from '@/common/mashcardContext'
+import { devLog } from '@mashcard/design-system'
 
-import { BrickdocEventBus, docHistoryReceived } from '@brickdoc/schema'
+import { MashcardEventBus, docHistoryReceived } from '@mashcard/schema'
 
 export interface blockProvider {
   awareness: awarenessProtocol.Awareness
@@ -43,7 +43,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 } {
   const {
     features: { experiment_collaboration: enableCollaboration }
-  } = React.useContext(BrickdocContext)
+  } = React.useContext(MashcardContext)
   const [blockCommit] = useBlockCommitMutation()
   const [awarenessUpdate] = useAwarenessUpdateMutation()
 
@@ -85,7 +85,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
           devLog('received update', states, blocks)
           const blockStates = states.filter(s => s.blockId === blockId)
 
-          BrickdocEventBus.dispatch(
+          MashcardEventBus.dispatch(
             docHistoryReceived({
               docId: blockId,
               histories: Object.fromEntries((histories as DocumentHistory[]).map(h => [h.id, h])),
@@ -93,7 +93,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             })
           )
 
-          if (provider && operatorId && operatorId !== globalThis.brickdocContext.uuid) {
+          if (provider && operatorId && operatorId !== globalThis.mashcardContext.uuid) {
             blocks.forEach(remoteBlock => {
               if (remoteBlock.id === blockId) {
                 block.current = remoteBlock
@@ -152,7 +152,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
           input: {
             documentId: blockId,
             blockId,
-            operatorId: globalThis.brickdocContext.uuid,
+            operatorId: globalThis.mashcardContext.uuid,
             stateType,
             state: base64.stringify(mergedUpdates),
             stateId: stateIdToCommit,
@@ -248,7 +248,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
               variables: {
                 input: {
                   docId: blockId,
-                  operatorId: globalThis.brickdocContext.uuid,
+                  operatorId: globalThis.mashcardContext.uuid,
                   updates: base64.stringify(updates)
                 }
               }

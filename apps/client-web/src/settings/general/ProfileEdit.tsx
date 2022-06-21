@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { useSettingsI18n } from '@/settings/common/hooks'
 import { Panel } from '@/settings/common/components/Panel'
 import { SettingsContextProps } from '@/settings/SettingContext'
-import { Form, Input, TextArea, Button, toast } from '@brickdoc/design-system'
+import { Form, Input, TextArea, Button, toast } from '@mashcard/design-system'
 import { AvatarEditor } from './components/AvatarEditor'
 import { object, string } from 'yup'
 import {
@@ -10,7 +10,7 @@ import {
   PodOperation,
   useCreateOrUpdatePodMutation,
   CreateOrUpdatePodInput
-} from '@/BrickdocGraphQL'
+} from '@/MashcardGraphQL'
 import * as Root from './styles/ProfileEdit.style'
 
 const profileValidation = object({

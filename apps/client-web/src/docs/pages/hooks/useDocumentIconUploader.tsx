@@ -1,7 +1,7 @@
-import { BlockType, FileSource } from '@/BrickdocGraphQL'
+import { BlockType, FileSource } from '@/MashcardGraphQL'
 import { useDocsI18n } from '@/docs/common/hooks'
-import { PopoverProps } from '@brickdoc/design-system'
-import { Dashboard, DashboardProps, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
+import { PopoverProps } from '@mashcard/design-system'
+import { Dashboard, DashboardProps, ImportSourceOption, UploadResultData } from '@mashcard/uploader'
 import React from 'react'
 import { DocumentIconMeta } from '../components/DocumentTitle/DocumentIcon'
 

@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Avatar, AvatarProps } from '@brickdoc/design-system'
+import { Avatar, AvatarProps } from '@mashcard/design-system'
 import { PodType } from '../PodCard'
 interface PodAvatarProps extends AvatarProps {
   pod: PodType

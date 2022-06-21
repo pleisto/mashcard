@@ -1,10 +1,10 @@
 import { FC, useContext, useState } from 'react'
-import { BrickdocContext } from '@/common/brickdocContext'
-import { Button, ConfirmDialog, useBoolean, toast } from '@brickdoc/design-system'
+import { MashcardContext } from '@/common/mashcardContext'
+import { Button, ConfirmDialog, useBoolean, toast } from '@mashcard/design-system'
 import { useSettingsI18n } from '@/settings/common/hooks'
 import { PodCard } from '@/common/components/PodCard'
 import { Panel } from '@/settings/common/components/Panel'
-import { useGetPodsQuery, GetPodsQuery, usePodLeaveMutation } from '@/BrickdocGraphQL'
+import { useGetPodsQuery, GetPodsQuery, usePodLeaveMutation } from '@/MashcardGraphQL'
 import { Trans } from 'react-i18next'
 import * as Root from './styles/LeavePods.style'
 
@@ -13,7 +13,7 @@ export const LeavePods: FC = () => {
   const [selectedPod, setSelectedPod] = useState<GetPodsQuery['pods'][0]>()
   const [podLeave, { loading: leaveing }] = usePodLeaveMutation()
   const { t } = useSettingsI18n()
-  const context = useContext(BrickdocContext)
+  const context = useContext(MashcardContext)
   const userDomain = context.currentUser!.domain
   const { loading, data, refetch } = useGetPodsQuery()
   if (loading) return <></>
@@ -55,8 +55,7 @@ export const LeavePods: FC = () => {
                 onClick={() => {
                   setSelectedPod(pod)
                   setOpen()
-                }}
-              >
+                }}>
                 {t('account.leave_btn')}
               </Button>
             </li>
@@ -72,8 +71,7 @@ export const LeavePods: FC = () => {
         onCancel={setClose}
         onConfirm={async () => {
           await handleLeave(selectedPod!.domain)
-        }}
-      >
+        }}>
         <Trans
           t={t}
           i18nKey="account.leave_pod_confirm"

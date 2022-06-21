@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { Block } from '@/BrickdocGraphQL'
+import { Block } from '@/MashcardGraphQL'
 import { editorVar } from '@/docs/reactiveVars'
 import { useReactiveVar } from '@apollo/client'
 import { useDocMeta } from '@/docs/store/DocMeta'

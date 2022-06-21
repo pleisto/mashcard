@@ -6,7 +6,7 @@ module Types
       graphql_name 'AuthMethod'
       description 'Available authentication authentication.'
 
-      if ::BrickdocConfig.accounts_email_password_auth?
+      if ::MashcardConfig.accounts_email_password_auth?
         value :email_password, 'Email and Password Authentication'
       end
 

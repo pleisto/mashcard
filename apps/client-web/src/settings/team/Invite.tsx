@@ -2,8 +2,8 @@ import { FC, ChangeEventHandler, useState } from 'react'
 import { useSettingsI18n } from '@/settings/common/hooks'
 import { Panel } from '@/settings/common/components/Panel'
 import { SettingsContextProps } from '@/settings/SettingContext'
-import { Switch, useId, toast, useBoolean, Input, Button, ConfirmDialog } from '@brickdoc/design-system'
-import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput } from '@/BrickdocGraphQL'
+import { Switch, useId, toast, useBoolean, Input, Button, ConfirmDialog } from '@mashcard/design-system'
+import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput } from '@/MashcardGraphQL'
 import * as Root from './styles/Invite.style'
 
 export const Invite: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {

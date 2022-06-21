@@ -1,7 +1,7 @@
 {
-  "name": "@brickdoc/schematics",
+  "name": "@mashcard/schematics",
   "private": true,
-  "description": "Schematics for Brickdoc",
+  "description": "Schematics for MashCard",
   "sideEffects": false,
   "license": "Apache-2.0",
   "main": "src/index.ts",

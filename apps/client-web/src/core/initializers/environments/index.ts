@@ -1,7 +1,7 @@
 import { productinEnvInit } from './production'
 
 export const enviromentsInit = (): void => {
-  switch (globalThis.brickdocContext.env) {
+  switch (globalThis.mashcardContext.env) {
     case 'production':
       productinEnvInit()
       break

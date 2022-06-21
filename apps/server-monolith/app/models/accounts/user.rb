@@ -106,7 +106,7 @@ module Accounts
     end
 
     def config
-      BrickdocConfig.at(user_id: id)
+      MashcardConfig.at(user_id: id)
     end
 
     delegate :timezone, to: :config
@@ -163,7 +163,7 @@ module Accounts
     end
 
     def hashed_id
-      Brickdoc::Crypto.int_id_obfuscate(id)
+      Mashcard::Crypto.int_id_obfuscate(id)
     end
 
     def destroy_user!

@@ -1,5 +1,5 @@
 import bg from '@/common/assets/ceramicBg.webp'
-import { theme, styled } from '@brickdoc/design-system'
+import { theme, styled } from '@mashcard/design-system'
 import { getNativeSidebarWdith } from '@/settings/common/sidebar'
 
 const hideScrollStyle = getNativeSidebarWdith()
@@ -80,7 +80,7 @@ export const Layout = styled('div', {
     }
   },
   [`${Section}`]: {
-    'header > .brk-logo': {
+    'header > .mc-logo': {
       height: '24px',
       margin: '1rem 18px'
     },
@@ -111,7 +111,7 @@ export const Layout = styled('div', {
         include: ['ceramicSecondary'],
         display: 'flex',
         minHeight: '0',
-        '--brd-editor-max-width': '960px',
+        '--mc-editor-max-width': '960px',
         minWidth: '8rem',
         borderRadius: '2px'
       },
@@ -185,5 +185,5 @@ export const sidebarButtonStyles = {
 export const sidebarTrashLinkstyles = {
   width: '100%',
   paddingTop: '1rem',
-  paddingLeft: '1.25rem',
+  paddingLeft: '1.25rem'
 }

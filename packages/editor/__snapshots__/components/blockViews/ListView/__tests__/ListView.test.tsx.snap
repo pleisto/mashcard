@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListView renders as bullet list 1`] = `
+<div>
+  <div
+    class="mc-c-czDAcb"
+    data-node-view-wrapper=""
+    style="pointer-events: unset; white-space: normal;"
+  >
+    <ul
+      as="ul"
+      data-node-view-content=""
+      style="white-space: pre-wrap;"
+    />
+  </div>
+</div>
+`;
+
+exports[`ListView renders as ordered list 1`] = `
+<div>
+  <div
+    class="mc-c-dliBAz"
+    data-node-view-wrapper=""
+    style="pointer-events: unset; white-space: normal;"
+  >
+    <ol
+      as="ol"
+      data-node-view-content=""
+      style="white-space: pre-wrap;"
+    />
+  </div>
+</div>
+`;
+
+exports[`ListView renders as task list 1`] = `
+<div>
+  <div
+    class="mc-c-kpJlxb"
+    data-node-view-wrapper=""
+    style="pointer-events: unset; white-space: normal;"
+  >
+    <ul
+      as="ul"
+      data-node-view-content=""
+      data-task-list=""
+      style="white-space: pre-wrap;"
+    />
+  </div>
+</div>
+`;

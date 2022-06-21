@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Embed renders Embed correctly 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <div
+        class="react-renderer node-embedBlock"
+        draggable="true"
+      >
+        <div
+          data-node-view-wrapper=""
+          style="pointer-events: none; white-space: normal;"
+        >
+          <div
+            class="mc-c-fpKXtm"
+            data-testid="editor-embed-block-add-button"
+            role="button"
+          >
+            <span
+              class="mc-c-TJqJI"
+            >
+              <span
+                aria-label="upload"
+                class="mc-icon mc-icon-upload"
+                role="img"
+              >
+                <svg
+                  fill="none"
+                  height="1em"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                >
+                  <path
+                    d="m12.004 20.5-.004-9m8.259 5.658A4.605 4.605 0 0 0 22 12c-.607-1.915-2.465-2.964-4.474-2.963h-1.16A7.369 7.369 0 1 0 3.71 15.752"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M15.182 13.818 12 10.636l-3.182 3.182"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  />
+                </svg>
+              </span>
+            </span>
+            <div
+              class="mc-c-fixGjY"
+            >
+              <span
+                class="mc-c-goNtdK"
+              >
+                embed_block.embed_types.upload.label
+              </span>
+              <span
+                class="mc-c-kMnWvg"
+              >
+                embed_block.embed_types.upload.description
+              </span>
+            </div>
+            <div
+              class="mc-c-fJCuub mc-c-fJCuub-ikwCcSA-css"
+            />
+          </div>
+          <input
+            class="mc-c-kBYYkb"
+            type="file"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

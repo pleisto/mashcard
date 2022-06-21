@@ -4,13 +4,13 @@ module ActionView
   class Template
     module Handlers
       # Intergration MRML into ActionView
-      # based Brickdoc::Utils::MJML
+      # based Mashcard::Utils::MJML
       class MJML
         def call(template, source)
           # erb compiled template
           compiled_template = template_handler.call(template, source)
           if /<mjml.*?>/i.match?(compiled_template)
-            "Brickdoc::Utils::MJML.new(begin;#{compiled_template};end).to_html.html_safe"
+            "Mashcard::Utils::MJML.new(begin;#{compiled_template};end).to_html.html_safe"
           else
             compiled_template
           end

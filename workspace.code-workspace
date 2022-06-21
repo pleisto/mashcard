@@ -17,32 +17,44 @@
       "path": "packages/active-support"
     },
     {
-      "name": "packages/brickdoc-design-icons",
-      "path": "packages/brickdoc-design-icons"
+      "name": "packages/design-icons",
+      "path": "packages/design-icons"
     },
     {
-      "name": "packages/brickdoc-design-system",
-      "path": "packages/brickdoc-design-system"
+      "name": "packages/design-system",
+      "path": "packages/design-system"
     },
     {
-      "name": "packages/brickdoc-editor",
-      "path": "packages/brickdoc-editor"
+      "name": "packages/editor",
+      "path": "packages/editor"
     },
     {
-      "name": "packages/brickdoc-formula",
-      "path": "packages/brickdoc-formula"
+      "name": "packages/formula",
+      "path": "packages/formula"
     },
     {
-      "name": "packages/brickdoc-schema",
-      "path": "packages/brickdoc-schema"
+      "name": "packages/schema",
+      "path": "packages/schema"
     },
     {
-      "name": "packages/brickdoc-test-helper",
-      "path": "packages/brickdoc-test-helper"
+      "name": "packages/test-helper",
+      "path": "packages/test-helper"
     },
     {
-      "name": "packages/brickdoc-uploader",
-      "path": "packages/brickdoc-uploader"
+      "name": "packages/uploader",
+      "path": "packages/uploader"
+    },
+    {
+      "name": "plugins/dotcom",
+      "path": "plugins/dotcom"
+    },
+    {
+      "name": "plugins/github_auth",
+      "path": "plugins/github_auth"
+    },
+    {
+      "name": "plugins/google_auth",
+      "path": "plugins/google_auth"
     },
     {
       "name": "tools/e2e-testing",
@@ -96,7 +108,8 @@
       "**/docs/api": true,
       "/.yarn": true,
       "/yarn.lock": true,
-      "**/storybook-static": true
+      "**/storybook-static": true,
+      "**/target": true
     },
     "npm.packageManager": "yarn",
     "typescript.tsc.autoDetect": "on",
@@ -118,9 +131,12 @@
     "jest.jestCommandLine": "yarn run -T jest",
     "jest.disabledWorkspaceFolders": [
       "/",
-      "packages/brickdoc-design-icons",
-      "packages/brickdoc-test-helper",
-      "packages/dotenv",
+      "apps/server-monolith",
+      "packages/design-icons",
+      "packages/test-helper",
+      "plugins/dotcom",
+      "plugins/github_auth",
+      "plugins/google_auth",
       "tools/e2e-testing",
       "tools/schematics"
     ],
@@ -135,7 +151,7 @@
     "solargraph.formatting": true,
     "byesig.fold": false,
     "byesig.enabled": true,
-    "byesig.opacity": 0.70,
+    "byesig.opacity": 0.7,
     "byesig.showIcon": false,
     "cSpell.diagnosticLevel": "Hint",
     "cSpell.words": [
@@ -144,8 +160,6 @@
       "Autosize",
       "bigserial",
       "borderless",
-      "brickdoc",
-      "Brickdoc",
       "Broooooklyn's",
       "builtins",
       "Cascadia",
@@ -160,6 +174,7 @@
       "falsey",
       "Fira",
       "fkey",
+      "Fomula",
       "fontset",
       "Gcloud",
       "globby",
@@ -171,6 +186,7 @@
       "kysely",
       "livez",
       "magnus",
+      "mashcard",
       "memex",
       "Menlo",
       "Microservices",
@@ -185,6 +201,7 @@
       "OWASP",
       "pgcrypto",
       "pino",
+      "Pleisto",
       "Plückthun",
       "prebuild",
       "primatives",
@@ -256,7 +273,6 @@
       "dtsvet.vscode-wasm",
       "github.copilot",
       "VisualStudioExptTeam.vscodeintellicode",
-      "VisualStudioExptTeam.intellicode-api-usage-examples",
       "Orta.vscode-jest",
       "drKnoxy.eslint-disable-snippets",
       "streetsidesoftware.code-spell-checker",

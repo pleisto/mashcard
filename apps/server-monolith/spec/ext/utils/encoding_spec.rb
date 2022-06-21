@@ -3,9 +3,9 @@
 require 'rails_helper'
 require 'base64'
 
-describe Brickdoc::Utils::Encoding do
+describe Mashcard::Utils::Encoding do
   describe 'should base58 work' do
-    Base58 = Brickdoc::Utils::Encoding::Base58
+    Base58 = Mashcard::Utils::Encoding::Base58
     it 'base58 could encode' do
       plain = 'Life, Liberty and the pursuit of Happiness'
       expect(Base58.encode(plain)).to eq('2Gy1vRdFjrFi6PLggkXF8dnRB4VmzHTm8XdtRiWPWEg9qKKUWA5jQkusb8')
@@ -25,7 +25,7 @@ describe Brickdoc::Utils::Encoding do
   end
 
   describe 'should base64 work' do
-    B64 = Brickdoc::Utils::Encoding::Base64
+    B64 = Mashcard::Utils::Encoding::Base64
     binary = Random.new.bytes(131)
     pararaph = FFaker::Lorem.paragraph
 
@@ -52,7 +52,7 @@ describe Brickdoc::Utils::Encoding do
   end
 
   it 'z85 work' do
-    Z85 = Brickdoc::Utils::Encoding::Z85
+    Z85 = Mashcard::Utils::Encoding::Z85
     plain = 'Life, Liberty and the pursuit of Happiness'
     expect(Z85.encode(plain)).to eq('oLF9IefES2vR6O4C{3Kkwft#cwGU@mA=VwqBrCHlav]{WAa%i3##47Y')
     binary = Random.new.bytes(64)
@@ -60,7 +60,7 @@ describe Brickdoc::Utils::Encoding do
   end
 
   it 'uuid work' do
-    UUID = Brickdoc::Utils::Encoding::UUID
+    UUID = Mashcard::Utils::Encoding::UUID
     expect(UUID.gen_v4).to match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/)
     expect(UUID.gen_short).not_to be_empty
     assert = UUID.gen_v4

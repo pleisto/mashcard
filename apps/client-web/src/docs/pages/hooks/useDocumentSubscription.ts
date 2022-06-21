@@ -1,10 +1,10 @@
-import { useNewPatchSubscription, PatchBaseObject, Patchtype, Patchstate, Block } from '@/BrickdocGraphQL'
+import { useNewPatchSubscription, PatchBaseObject, Patchtype, Patchstate, Block } from '@/MashcardGraphQL'
 import { Fragment } from 'prosemirror-model'
-import { devLog, devWarning } from '@brickdoc/design-system'
+import { devLog, devWarning } from '@mashcard/design-system'
 import { Editor, ChainedCommands } from '@tiptap/core'
-import { EditorContentProps } from '@brickdoc/editor'
+import { EditorContentProps } from '@mashcard/editor'
 import { blockToNode } from '../../common/blocks'
-import { BrickdocEventBus, BlockUpdated, BlockDeleted } from '@brickdoc/schema'
+import { MashcardEventBus, BlockUpdated, BlockDeleted } from '@mashcard/schema'
 
 export function useDocumentSubscription({
   docid,
@@ -106,9 +106,9 @@ export function useDocumentSubscription({
     })
 
     if (patch.patchType === Patchtype.Delete) {
-      BrickdocEventBus.dispatch(BlockDeleted(block))
+      MashcardEventBus.dispatch(BlockDeleted(block))
     } else {
-      BrickdocEventBus.dispatch(BlockUpdated(block))
+      MashcardEventBus.dispatch(BlockUpdated(block))
     }
   }
   useNewPatchSubscription({
@@ -126,7 +126,7 @@ export function useDocumentSubscription({
         return
       }
 
-      const patches = newPatch.patches.filter(p => p.operatorId !== globalThis.brickdocContext.uuid)
+      const patches = newPatch.patches.filter(p => p.operatorId !== globalThis.mashcardContext.uuid)
 
       if (patches.length === 0) return
 
@@ -135,7 +135,7 @@ export function useDocumentSubscription({
         const chainedCommands = editor.chain().setMeta('preventUpdate', true)
         patches.forEach(patch => applyPatch(editor, chainedCommands, patch))
         chainedCommands.setDocAttrs({ ...editor.state.doc.attrs, seq: newPatch.seq }).run()
-        devLog('Patch applied', { uuid: globalThis.brickdocContext.uuid, patches, newPatch })
+        devLog('Patch applied', { uuid: globalThis.mashcardContext.uuid, patches, newPatch })
       } catch (e) {
         console.error(e)
         setDocumentEditable(false)

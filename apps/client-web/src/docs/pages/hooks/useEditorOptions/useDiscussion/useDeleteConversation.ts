@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
-import { useConversationDeleteMutation } from '@/BrickdocGraphQL'
-import { DiscussionOptions } from '@brickdoc/editor'
+import { useConversationDeleteMutation } from '@/MashcardGraphQL'
+import { DiscussionOptions } from '@mashcard/editor'
 
 export function useDeleteConversation(): DiscussionOptions['deleteConversation'] {
   const [deleteConversation] = useConversationDeleteMutation()

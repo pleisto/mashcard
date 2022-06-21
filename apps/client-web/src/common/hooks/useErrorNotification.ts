@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { toast } from '@brickdoc/design-system'
+import { toast } from '@mashcard/design-system'
 
 export const useErrorNotification = (message: string): void => {
   useEffect(() => {

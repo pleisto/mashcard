@@ -1,7 +1,7 @@
 import React from 'react'
 import { authMethod } from '../../hooks/useAccountsAuthMethods'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { Button, Tooltip, styled, theme } from '@brickdoc/design-system'
+import { Button, Tooltip, styled, theme } from '@mashcard/design-system'
 
 interface MoreAuthMethodsProps {
   methods: authMethod[]

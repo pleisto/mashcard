@@ -138,7 +138,7 @@ type Blob {
 }
 
 """
-Brickdoc Docs::Block
+MashCard Docs::Block
 """
 type Block {
   """
@@ -907,7 +907,7 @@ type BlockMovePayload {
 }
 
 """
-Brickdoc Docs::Block New Scheme
+MashCard Docs::Block New Scheme
 """
 type BlockNew {
   """
@@ -1241,7 +1241,7 @@ type BlockSoftDeletePayload {
 }
 
 """
-Brickdoc Docs::BlockState
+MashCard Docs::BlockState
 """
 type BlockState {
   blockId: UUID
@@ -1339,7 +1339,7 @@ enum BlockType {
 }
 
 """
-Brickdoc Docs::Comment
+MashCard Docs::Comment
 """
 type Comment {
   """
@@ -1382,7 +1382,7 @@ enum CommentStatus {
 }
 
 """
-Brickdoc Global Configuration
+MashCard Global Configuration
 """
 type Config {
   """
@@ -1407,7 +1407,7 @@ type Config {
 }
 
 """
-Brickdoc Docs::Conversation
+MashCard Docs::Conversation
 """
 type Conversation {
   """
@@ -2083,7 +2083,7 @@ enum MemberState {
 }
 
 """
-Represents information about the Brickdoc Server Instance.
+Represents information about the MashCard Server Instance.
 """
 type Metadata {
   """
@@ -2093,7 +2093,7 @@ type Metadata {
   availableTimezones: [String!]!
 
   """
-  Brickdoc Global Config
+  MashCard Global Config
   """
   config: Config!
 
@@ -2318,7 +2318,7 @@ session[:omniauth]
 """
 type OmniauthSession {
   """
-  Like a username, Unique within this instance of Brickdoc.
+  Like a username, Unique within this instance of MashCard.
   """
   domain: String
   hasSession: Boolean!
@@ -2377,7 +2377,7 @@ enum Patchtype {
 }
 
 """
-Brickdoc Docs::Pin
+MashCard Docs::Pin
 """
 type Pin {
   """
@@ -2393,7 +2393,7 @@ type Pin {
 }
 
 """
-Brickdoc Pod.
+MashCard Pod.
 """
 type Pod {
   """
@@ -2407,7 +2407,7 @@ type Pod {
   bio: String
 
   """
-  Like a username, Unique within this instance of Brickdoc
+  Like a username, Unique within this instance of MashCard
   """
   domain: String!
 
@@ -2519,7 +2519,7 @@ type PodMember {
   avatarData: Avatar
 
   """
-  Like a username, Unique within this instance of Brickdoc
+  Like a username, Unique within this instance of MashCard
   """
   domain: String!
 
@@ -2696,7 +2696,7 @@ type ThinUser {
   avatarData: Avatar
 
   """
-  Like a username, Unique within this instance of Brickdoc
+  Like a username, Unique within this instance of MashCard
   """
   domain: String!
 
@@ -2926,7 +2926,7 @@ input UserCreateInput {
   clientMutationId: String
 
   """
-  Like a username, Unique within this instance of Brickdoc.
+  Like a username, Unique within this instance of MashCard.
   """
   domain: String!
 
@@ -3248,7 +3248,7 @@ type query {
   ): [Formula!]
 
   """
-  Return information about current Brickdoc server instance.
+  Return information about current MashCard server instance.
   """
   metadata: Metadata!
   pageBlocks(

@@ -1,22 +1,22 @@
-# Contribute to Brickdoc
+# Contribute to MashCard
 
-Welcome and thank you for your interest in contributing to Brickdoc Community Edition. Brickdoc is developed in the open and continually improved by our users, contributors, and maintainers. It is because of you that we can bring great software to the community.
+Welcome and thank you for your interest in contributing to MashCard Community Edition. MashCard is developed in the open and continually improved by our users, contributors, and maintainers. It is because of you that we can bring great software to the community.
 
 This guide provides information on filing issues and guidelines for open source contributors. Please leave comments/suggestions if you find something is missing or incorrect.
 
 ## Did you find a bug?
 
-- **Do not open up a GitHub issue if the bug is a security vulnerability in Brickdoc**, and instead to refer to our [security policy](SECURITY.md).
+- **Do not open up a GitHub issue if the bug is a security vulnerability in MashCard**, and instead to refer to our [security policy](SECURITY.md).
 
-- **Ensure the bug was not already reported** by searching on GitHub under [Issues](https://github.com/brickdoc/brickdoc/issues).
+- **Ensure the bug was not already reported** by searching on GitHub under [Issues](https://github.com/mashcard/mashcard/issues).
 
-- If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/brickdoc/brickdoc/issues/new). Be sure to include a **title and clear description**, as much relevant information as possible, and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
+- If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/mashcard/mashcard/issues/new). Be sure to include a **title and clear description**, as much relevant information as possible, and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
 
 > _P.S._ In addition to Open Source Development, there are also Documentation, Translation, and UX Design tracks. Documentation, Translation, and UX Design are all just as important as code.
 
 ## Set up your development environment
 
-This [guide](<(./docs/SETUP_DEV_ENV.md)>) will help you set up your development environment for Brickdoc.
+This [guide](<(./docs/SETUP_DEV_ENV.md)>) will help you set up your development environment for MashCard.
 
 ## Submission Guidelines
 

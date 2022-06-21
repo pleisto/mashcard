@@ -3,9 +3,9 @@ import {
   QueryUnsplashImageQuery as Query,
   QueryUnsplashImageQueryVariables as Variables,
   QueryUnsplashImageDocument
-} from '@/BrickdocGraphQL'
+} from '@/MashcardGraphQL'
 import { useImperativeQuery } from '@/common/hooks'
-import { UnsplashImage, DashboardPluginOptions } from '@brickdoc/uploader'
+import { UnsplashImage, DashboardPluginOptions } from '@mashcard/uploader'
 
 export function useFetchUnsplashImages(): Exclude<DashboardPluginOptions['fetchUnsplashImages'], undefined> {
   const queryUnsplashImages = useImperativeQuery<Query, Variables>(QueryUnsplashImageDocument)

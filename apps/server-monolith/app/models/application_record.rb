@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationRecord < ActiveRecord::Base
-  include Brickdoc::Validators
+  include Mashcard::Validators
   primary_abstract_class
 end

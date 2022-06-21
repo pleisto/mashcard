@@ -1,14 +1,7 @@
 {
-  "name": "@brickdoc/active-support",
+  "name": "@mashcard/active-support",
   "version": "0.1.0",
   "description": "A TypeScript utility library designed to optimize for programmer happiness.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/brickdoc/brickdoc-ce.git"
-  },
-  "bugs": {
-    "url": "https://github.com/brickdoc/brickdoc-ce/labels/active-support"
-  },
   "license": "Apache-2.0",
   "main": "./src/index.ts",
   "module": "./src/index.ts",

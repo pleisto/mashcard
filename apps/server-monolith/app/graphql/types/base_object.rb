@@ -4,8 +4,8 @@ module Types
   class BaseObject < ::GraphQL::Schema::Object
     field_class Types::BaseField
     include GraphQL::FragmentCache::Object
-    include Brickdoc::GraphQL::PolicyBehaviour
-    include Brickdoc::GraphQL::CopyFieldDescription
-    include Brickdoc::GraphQL::HasPrimaryKey
+    include Mashcard::GraphQL::PolicyBehaviour
+    include Mashcard::GraphQL::CopyFieldDescription
+    include Mashcard::GraphQL::HasPrimaryKey
   end
 end

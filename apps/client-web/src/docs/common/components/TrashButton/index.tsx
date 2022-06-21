@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { Delete } from '@brickdoc/design-icons'
+import { Delete } from '@mashcard/design-icons'
 import { useDocsI18n } from '../../hooks'
 import { sidebarButtonStyles, sidebarTrashLinkstyles } from '@/docs/pages/DocumentContentPage.style'
-import { Button } from '@brickdoc/design-system'
-import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { Button } from '@mashcard/design-system'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { useDocMeta } from '@/docs/store/DocMeta'
 
 export const TrashButton: FC = () => {
