@@ -5,6 +5,7 @@ import { initialTocTree, TocNode } from './tocTree'
 import { TocContainer, TocNodePanel } from './TocNodePanel'
 import { TocViewProps } from '../../../extensions/blocks/toc/meta'
 import { useEditorI18n } from '../../../hooks'
+import { debounce } from '@brickdoc/active-support'
 
 export interface TocItem {
   level: 'root' | 1 | 2 | 3 | 4 | 5 | 'text'
@@ -36,9 +37,10 @@ export const TocView: FC<TocViewProps> = ({ editor, node, deleteNode, getPos }) 
   }, [updateItems])
 
   useEffect(() => {
-    editor.on('update', updateItems)
+    const onUpdate = debounce(updateItems, 100)
+    editor.on('update', onUpdate)
     return () => {
-      editor.off('update', updateItems)
+      editor.off('update', onUpdate)
     }
   }, [editor, updateItems])
 

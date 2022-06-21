@@ -11,7 +11,8 @@ const CalloutContainer = styled('div', {
   borderRadius: '4px',
   display: 'flex',
   flexDirection: 'row',
-  padding: '1.25rem 1.5rem'
+  padding: '1.25rem 1.5rem',
+  maxWidth: '45rem'
 })
 
 const IconContainer = styled('div', {
