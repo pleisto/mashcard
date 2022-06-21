@@ -28,7 +28,7 @@ module CurrentPod
         end
       end
 
-    remote_pod || current_user.user.fetch_current_pod_cache.as_session_context
+    remote_pod || current_user.fetch_current_pod_cache.as_session_context
   end
 
   def fetch_pod_via_params
@@ -36,7 +36,7 @@ module CurrentPod
     domain = request.params['path'].to_s.split('/')[0]
     return nil if domain.blank?
 
-    pod = current_user.user.pods.find { |p| p.username === domain }
+    pod = current_user.pods.find { |p| p.username === domain }
 
     return pod.as_session_context if pod
 

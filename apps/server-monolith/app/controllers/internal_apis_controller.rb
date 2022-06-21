@@ -2,6 +2,7 @@
 
 class InternalApisController < ActionController::API
   include Apiable
+  include CurrentUser
   include CurrentPod
   include I18nable
   include ActionController::Cookies
@@ -28,7 +29,7 @@ class InternalApisController < ActionController::API
 
   def context
     pod = current_pod
-    user = current_user&.user
+    user = current_user
     user&.current_pod_id = current_pod&.fetch('id')
     {
       protocol: 'http',
