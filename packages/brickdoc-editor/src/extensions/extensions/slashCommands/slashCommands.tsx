@@ -8,7 +8,7 @@ import { BrickdocEventBus, EventSubscribed, SlashMenuHide, SlashMenuKeyboardEven
 import { addItemKey } from './recentItemsManager'
 import { meta } from './meta'
 import { createExtension } from '../../common'
-import { findWrapper } from '../../../components/blockViews/ParagraphView/wrapper'
+import { findParagraphWrapper } from '../placeholder/findParagraphWrapper'
 
 const TRIGGER_CHAR = '/'
 
@@ -55,7 +55,7 @@ export const SlashCommands = createExtension<SlashCommandsOptions, SlashCommands
               if (!this.editor.isEditable) return
 
               // disable slash menu if it is inside a wrapper currently.
-              const disabled = !!findWrapper(this.editor.state.selection.$anchor)
+              const disabled = !!findParagraphWrapper(this.editor.state.selection.$anchor)
               if (disabled) return
 
               hideListener = BrickdocEventBus.subscribe(SlashMenuHide, () => {

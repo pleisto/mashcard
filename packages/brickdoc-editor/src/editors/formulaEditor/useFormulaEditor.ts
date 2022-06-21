@@ -33,8 +33,7 @@ export function useFormulaEditor({
         document: true,
         text: true,
         paragraph: {
-          native: true,
-          placeholder: ''
+          native: true
         },
         formulaType: true,
         formulaKeyDown: {
