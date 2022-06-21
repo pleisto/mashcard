@@ -3,32 +3,17 @@ import { __serializeForClipboard } from 'prosemirror-view'
 import { NodeSelection } from 'prosemirror-state'
 import { Cutting, Link, Delete, CornerDownRight } from '@mashcard/design-icons'
 import { BlockCommandItem } from '../../../helpers/block'
-import * as BLOCK from '../../../helpers/block'
+import { TRANS_TYPE_LIST } from '../../../helpers/blockConstant'
 import { useDocumentEditable, useEditorContext, useEditorI18n } from '../../../hooks'
 import { ActionGroupOption, ActionItemOption } from './BlockActions'
 import { useBlockContext } from '../../../hooks/useBlockContext'
+import { NodeIcon } from '../../../components/extensionViews/BubbleMenu/useBubbleMenuItems/useBubbleMenuItems'
 
 export type BasicActionOptionType = 'delete' | 'cut' | 'copy' | 'transform'
 
 export interface UseActionOptionsProps {
   types: BasicActionOptionType[]
 }
-
-const transformBlocks = [
-  BLOCK.PARAGRAPH,
-  BLOCK.HEADING_1,
-  BLOCK.HEADING_2,
-  BLOCK.HEADING_3,
-  BLOCK.HEADING_4,
-  BLOCK.HEADING_5,
-  BLOCK.ORDERED_LIST,
-  BLOCK.BULLETED_LIST,
-  BLOCK.TASK_LIST,
-  BLOCK.FORMULA,
-  BLOCK.CODE,
-  BLOCK.BLOCKQUOTE,
-  BLOCK.CALLOUT
-]
 
 export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionGroupOption | null {
   const { deleteBlock, getPosition, contentForCopy, node } = useBlockContext()
@@ -52,7 +37,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionG
       type: 'item',
       name: blockItem.key,
       label: t(`blocks.${blockItem.key}.label`),
-      icon: blockItem.squareIcon,
+      icon: <NodeIcon>{blockItem.icon}</NodeIcon>,
       onAction: () => {
         if (!setNodeSelection()) return
         blockItem.setBlock(editor!.chain()).run()
@@ -125,7 +110,12 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionG
         name: 'transform',
         type: 'subMenu',
         icon: <CornerDownRight />,
-        items: transformBlocks.filter(i => !!i).map(item => createActionOption(item!))
+        items: TRANS_TYPE_LIST.map(types => {
+          return {
+            type: 'group',
+            items: types.items.map(item => createActionOption(item!))
+          }
+        })
       })
     }
 
