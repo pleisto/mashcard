@@ -1,6 +1,6 @@
 ja-JP:
   settings:
-    app_title: Brickdoc設定
+    app_title: MashCard Settings
     personal_pod_desc: 私のポッド
     group_pod_desc: チームポッド
     errors:
@@ -479,7 +479,7 @@ ja-JP:
           Show notes by creation date.
           Show recently contacted customers.
   docs:
-    app_title: Brickdoc
+    app_title: MashCard
     saving: 保存中...
     user_setting:
       text: ユーザー設定
