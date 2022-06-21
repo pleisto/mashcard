@@ -13,6 +13,7 @@ import { BubbleMenu } from '../../components/extensionViews'
 import {
   Blockquote,
   BulletList,
+  Callout,
   CodeBlock,
   Embed,
   Formula,
@@ -90,6 +91,7 @@ const typesWithUuid = [
 ]
 
 export function useEditor(options: EditorOptions, deps?: DependencyList): TiptapEditor | null {
+  const [t] = useEditorI18n()
   const editorOptions = useMemo<Partial<TiptapEditorOptions>>(() => {
     const { editable, extensions, base, ...restOptions } = options
     return {
@@ -134,6 +136,22 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
               orderedList: true,
               pageLink: true,
               paragraph: true,
+              placeholder: {
+                placeholder: ({ wrapperNode }) => {
+                  switch (wrapperNode?.type.name) {
+                    case Blockquote.name:
+                      return t(`placeholder.blockquote`)
+                    case ListItem.name:
+                      return t(`placeholder.listItem`)
+                    case TaskItem.name:
+                      return t(`placeholder.taskItem`)
+                    case Callout.name:
+                      return t(`placeholder.callout`)
+                    default:
+                      return t(`placeholder.default`)
+                  }
+                }
+              },
               slashCommands: true,
               spreadsheet: true,
               strike: true,
@@ -164,7 +182,7 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
       editable,
       ...restOptions
     }
-  }, [options])
+  }, [options, t])
 
   const editor = useTiptapEditor(editorOptions, deps)
 

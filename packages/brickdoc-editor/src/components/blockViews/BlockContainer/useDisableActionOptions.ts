@@ -1,7 +1,7 @@
 import { Editor } from '@tiptap/react'
 import { useMemo } from 'react'
 import { BlockContainerProps } from './BlockContainer'
-import { findWrapper } from '../ParagraphView/wrapper'
+import { findParagraphWrapper } from '../../../extensions/extensions/placeholder/findParagraphWrapper'
 
 export function useDisableActionOptions(
   editor: Editor | null | undefined,
@@ -9,6 +9,6 @@ export function useDisableActionOptions(
 ): boolean {
   return useMemo(() => {
     const blockResolvedPosition = editor?.state.doc.resolve(getPos?.() ?? 0)
-    return !blockResolvedPosition ? true : !!findWrapper(blockResolvedPosition)
+    return !blockResolvedPosition ? true : !!findParagraphWrapper(blockResolvedPosition)
   }, [editor, getPos])
 }

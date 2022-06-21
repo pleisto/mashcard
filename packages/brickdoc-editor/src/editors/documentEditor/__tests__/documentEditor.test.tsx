@@ -16,6 +16,7 @@ describe('documentEditor', () => {
     const provider = { awareness }
     const { result } = renderHook(() =>
       useEditor({
+        autofocus: true,
         base: {
           sync: {
             onSave
