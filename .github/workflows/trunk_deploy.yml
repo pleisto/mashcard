@@ -104,8 +104,8 @@ jobs:
             --set-string envs.HOST=${{ env.domain }} \
             --set-string envs.GOOGLE_CLOUD_PROJECT=${{ env.GCP_PROJECT }} \
             --set-string envs.GCP_KMS_FRN=projects/${{ env.GCP_PROJECT }}/locations/us-central1/keyRings/testnet/cryptoKeys/cicd \
-            --set-string envs.GCS_PRIVATE_BUCKET=trunk-pvt.testnet.brickdocusercontent.com \
-            --set-string envs.GCS_PUBLIC_BUCKET=trunk-pub.testnet.brickdocusercontent.com \
+            --set-string envs.GCS_PRIVATE_BUCKET=trunk-pvt.testnet.user-owns-data.net \
+            --set-string envs.GCS_PUBLIC_BUCKET=trunk-pub.testnet.user-owns-data.net \
             --set-string secrets.SECRET_KEY_SEED=${{ secrets.TRUNK_SECRET_KEY_SEED }} \
             --set-string secrets.BRICKDOC_DATABASE_URL=${{ secrets.TRUNK_POSTGRE_URL }} \
             --set-string secrets.REDIS_URL=${{ secrets.TRUNK_REDIS_URL }} \
