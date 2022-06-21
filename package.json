@@ -21,7 +21,7 @@
       "prettier --write"
     ],
     "packages/design-icons/assets/**/*.svg": [
-      "yarn design-icons generator"
+      "yarn design-icons generate"
     ],
     "apps/server-monolith/*.rs": [
       "cargo fmt --manifest-path=apps/server-monolith/Cargo.toml && :"
