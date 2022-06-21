@@ -45,7 +45,6 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
   })
 
   isSavingVar(blockCommitting.current)
-
   useEffect(() => {
     awarenessInfosVar(awarenessInfos)
   }, [awarenessInfos])
