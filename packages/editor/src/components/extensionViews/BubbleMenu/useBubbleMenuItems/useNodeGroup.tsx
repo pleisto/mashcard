@@ -1,5 +1,4 @@
-import { cloneElement, useMemo } from 'react'
-import { theme } from '@mashcard/design-system'
+import { useMemo } from 'react'
 import { ToolbarOption, ToolbarGroupOption } from '../../../ui'
 import { findFirstSelectedNodes } from '../../../../helpers/selection'
 
