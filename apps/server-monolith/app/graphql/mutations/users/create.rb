@@ -37,7 +37,7 @@ module Mutations
         return { errors: errors_on_object(user) } unless user.valid?
 
         if user.authentication.active_for_authentication?
-          sign_in(user)
+          sign_in(user.authentication)
           context[:session].delete(:omniauth)
           { redirect_path: redirect_path, is_user_active: true }
         else

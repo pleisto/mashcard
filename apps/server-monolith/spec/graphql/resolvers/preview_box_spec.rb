@@ -21,7 +21,7 @@ describe Resolvers::PreviewBox, type: :query do
       # expect(response.data['previewBox']['title']).to include('Seagate 1TB')
       # expect(response.data['previewBox']['description']).to include('FREE')
 
-      VCR.use_cassette('preview_box_graphql_query_github', :record => :new_episodes) do
+      VCR.use_cassette('preview_box_graphql_query_github', record: :new_episodes) do
         graphql_execute(query, { url: 'https://github.com' })
       end
 

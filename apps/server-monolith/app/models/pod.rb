@@ -111,7 +111,7 @@ class Pod < ApplicationRecord
   end
 
   def as_session_context
-    { 'id' => id, 'username' => username, 'id_hash' => hashed_id }
+    { 'id' => id, 'username' => username, 'domain' => username, 'id_hash' => hashed_id }
   end
 
   def destroy_pod!

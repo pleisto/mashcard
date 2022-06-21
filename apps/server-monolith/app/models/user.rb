@@ -46,7 +46,7 @@ class User < Pod
   attr_accessor :email, :password, :confirmed_at
   attr_accessor :omniauth_provider, :omniauth_uid
 
-  attr_accessor :current_pod_id
+  attr_accessor :current_pod_id, :current_pod_cache
 
   after_create :bind_authentication!
   after_save :bind_federation_identity
@@ -81,6 +81,19 @@ class User < Pod
 
   private def bind_authentication!
     dirty_authentication.save!
+  end
+
+  def fetch_current_pod_cache
+    return current_pod_cache if current_pod_cache
+
+    current_pod_cache = guess_pod
+    current_pod_cache
+  end
+
+  def guess_pod
+    return personal_pod if last_pod_username.nil?
+
+    pods.find { |p| p.username === last_pod_username } || personal_pod
   end
 
   def save_last_position!(last_username, block_id)

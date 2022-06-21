@@ -14,7 +14,7 @@ class InternalGraphQLChannel < ApplicationCable::Channel
     context = {
       protocol: 'websocket',
       real_ip: request.remote_ip,
-      current_user: current_user,
+      current_user: current_user&.user,
       current_pod: current_pod,
       channel: self,
       request_id: request.uuid,

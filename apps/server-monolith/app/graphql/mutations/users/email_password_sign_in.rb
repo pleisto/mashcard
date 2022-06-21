@@ -17,7 +17,7 @@ module Mutations
           user_authentication.after_database_authentication
           user_authentication.remember_me if remember
           user_authentication.resend_confirmation_instructions unless user_authentication.confirmed? # resend confirmation mail
-          sign_in(user_authentication.user)
+          sign_in(user_authentication)
           errors = []
         else
           errors = [I18n.t("devise.failure.#{user_authentication.blank? ? 'invalid' : user_authentication.unauthenticated_message}",

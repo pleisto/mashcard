@@ -24,7 +24,7 @@ export const PodSelect: FC = () => {
   const pod = data?.pods.find(p => p.domain === loginDomain)
 
   if (!pod) {
-    console.error('Domain does not match the current user')
+    console.error('Domain does not match the current user', loginDomain, data)
     return <></>
   }
 

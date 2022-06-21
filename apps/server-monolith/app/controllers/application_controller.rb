@@ -18,12 +18,12 @@ class ApplicationController < ActionController::Base
   protected
 
   def set_current_model
-    Current.user = current_user
+    Current.user = current_user&.user
     Current.pod = current_pod
   end
 
   def set_current_config
-    MashcardConfig.current = MashcardConfig.at(user_id: current_user&.id, pod_id: current_pod[:id])
+    MashcardConfig.current = MashcardConfig.at(user_id: current_user&.user_id, pod_id: current_pod['id'])
   end
 
   # Load view path for a plugin that declares themselves as an extended edition
