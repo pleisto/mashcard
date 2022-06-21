@@ -8,7 +8,7 @@ import { blocksToJSONContents } from '../common/blocks'
 import { JSONContent } from '@tiptap/core'
 import { TrashPrompt } from '../common/components/TrashPrompt'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { editorVar, awarenessInfosVar } from '../reactiveVars'
+import { editorVar, awarenessInfosVar, isSavingVar } from '../reactiveVars'
 import { useDocumentEditable } from './hooks/useDocumentEditable'
 import * as Root from './DocumentPage.style'
 import { useDocMeta } from '../store/DocMeta'
@@ -39,10 +39,12 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
 
   useDocHistoryProvider(docMeta.id as string)
 
-  const { provider, initBlocksToEditor, loading, awarenessInfos } = useBlockSyncProvider({
+  const { provider, initBlocksToEditor, loading, blockCommitting, awarenessInfos } = useBlockSyncProvider({
     blockId: docMeta.id as string,
     historyId: docMeta.historyId
   })
+
+  isSavingVar(blockCommitting.current)
 
   useEffect(() => {
     awarenessInfosVar(awarenessInfos)

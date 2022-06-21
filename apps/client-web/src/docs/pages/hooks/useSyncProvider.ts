@@ -10,7 +10,7 @@ import {
 } from '@/BrickdocGraphQL'
 import { isEqual } from '@brickdoc/active-support'
 import { devLog } from '@brickdoc/design-system'
-import { isSavingVar } from '../../reactiveVars'
+// import { isSavingVar } from '../../reactiveVars'
 import { nodeToBlock } from '../../common/blocks'
 import {
   BrickdocEventBus,
@@ -155,7 +155,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
       committing.current = false
     }
     if (dirtyBlocksMap.current.size === 0 && dirtyToDeleteIds.current.size === 0) {
-      isSavingVar(false)
+      // isSavingVar(false)
     } else {
       setTimeout(() => {
         void commitDirty()
@@ -167,7 +167,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
     async (doc: Node): Promise<void> => {
       if (queryVariables.historyId) return
       if (!docBlocksMap.current.size) return
-      isSavingVar(true)
+      // isSavingVar(true)
       // NOTE: tempfix for root uuid
       // TODO: need avoid modify read-only prop
       // @ts-expect-error
@@ -298,7 +298,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
   BrickdocEventBus.subscribe(
     CommitBlocks,
     (e: Event) => {
-      isSavingVar(true)
+      // isSavingVar(true)
       void commitDirty()
     },
     { subscribeId: 'SyncProvider' }
@@ -333,7 +333,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
   )
 
   const updateBlocks = async (blocks: BlockInput[], toDeleteIds: string[]): Promise<void> => {
-    isSavingVar(true)
+    // isSavingVar(true)
     blocks.forEach(block => dirtyBlocksMap.current.set(block.id, block))
     toDeleteIds.forEach(id => dirtyToDeleteIds.current.add(id))
 
