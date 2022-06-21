@@ -1,0 +1,28 @@
+{
+  "name": "@mashcard/design-icons",
+  "version": "0.1.1",
+  "license": "Apache-2.0",
+  "packageManager": "yarn@3.0.0",
+  "sideEffects": false,
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "scripts": {
+    "lint": "yarn lint:eslint && yarn lint:type",
+    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
+    "lint:type": "run -T tsc",
+    "generator": "bin/icons-react-component-generator && yarn lint"
+  },
+  "peerDependencies": {
+    "react": ">= 17.0.2",
+    "react-dom": ">= 17.0.2"
+  },
+  "devDependencies": {
+    "@icon-park/compiler": "^1.0.7",
+    "glob": "^8.0.3",
+    "mkdirp": "^1.0.4"
+  }
+}

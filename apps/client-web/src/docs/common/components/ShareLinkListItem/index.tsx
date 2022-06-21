@@ -4,11 +4,11 @@ import {
   ShareLinkInput,
   ShareLinkState,
   useBlockCreateShareLinkMutation
-} from '@/BrickdocGraphQL'
-import { Dropdown, Menu, MenuProps } from '@brickdoc/design-system'
+} from '@/MashcardGraphQL'
+import { Dropdown, Menu, MenuProps } from '@mashcard/design-system'
 import React from 'react'
 import { useDocsI18n } from '../../hooks'
-import { LineDown, Anyone, Check } from '@brickdoc/design-icons'
+import { LineDown, Anyone, Check } from '@mashcard/design-icons'
 import { queryBlockShareLinks } from '../../graphql'
 import * as Root from './index.style'
 import { PodCard, PodType } from '@/common/components/PodCard'

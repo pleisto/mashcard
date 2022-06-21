@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
-import { Upload, useCreateDirectUploadMutation } from '@/BrickdocGraphQL'
+import { Upload, useCreateDirectUploadMutation } from '@/MashcardGraphQL'
 import { FileChecksum } from '@rails/activestorage/src/file_checksum'
-import { DashboardPluginOptions } from '@brickdoc/uploader'
+import { DashboardPluginOptions } from '@mashcard/uploader'
 
 export const checksum = async (file: File): Promise<string> =>
   await new Promise((resolve, reject) => {

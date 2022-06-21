@@ -4,7 +4,7 @@ module Types
   module Blocks
     class New < Types::BaseObject
       graphql_name 'BlockNew'
-      description 'Brickdoc Docs::Block New Scheme'
+      description 'MashCard Docs::Block New Scheme'
 
       has_primary_key uuid: true
 

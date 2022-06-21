@@ -1,8 +1,8 @@
 import React from 'react'
 import { useApolloClient } from '@apollo/client'
-import { BrickdocEventBus, loadDocHistory, docHistoryReceived, EventSubscribed } from '@brickdoc/schema'
-import { DocumentHistoriesDocument, DocumentHistory, ThinUser } from '@/BrickdocGraphQL'
-import { devLog } from '@brickdoc/design-system'
+import { MashcardEventBus, loadDocHistory, docHistoryReceived, EventSubscribed } from '@mashcard/schema'
+import { DocumentHistoriesDocument, DocumentHistory, ThinUser } from '@/MashcardGraphQL'
+import { devLog } from '@mashcard/design-system'
 
 export function useDocHistoryProvider(docId: string): void {
   const client = useApolloClient()
@@ -18,7 +18,7 @@ export function useDocHistoryProvider(docId: string): void {
     // TODO: users
     const { histories, users } = data.documentHistories
 
-    BrickdocEventBus.dispatch(
+    MashcardEventBus.dispatch(
       docHistoryReceived({
         docId,
         histories: Object.fromEntries((histories as DocumentHistory[]).map(h => [h.id, h])),
@@ -29,7 +29,7 @@ export function useDocHistoryProvider(docId: string): void {
 
   React.useEffect(() => {
     const subscriptions: EventSubscribed[] = [
-      BrickdocEventBus.subscribe(
+      MashcardEventBus.subscribe(
         loadDocHistory,
         ({ payload }) => {
           devLog(`loading doc history ${docId}`)

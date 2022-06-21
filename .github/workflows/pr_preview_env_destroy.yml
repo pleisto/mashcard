@@ -46,11 +46,11 @@ jobs:
           location: 'us-central1'
       - name: Uninstall History Release
         run: |-
-          helm uninstall brickdoc-pr${{ github.event.pull_request.number }} --namespace=cicd
+          helm uninstall mashcard-pr${{ github.event.pull_request.number }} --namespace=cicd
       - name: 'Remove temp docker image on GitHub packages'
         uses: bots-house/ghcr-delete-image-action@v1.0.1
         with:
-          owner: brickdoc
-          name: brickdoc
+          owner: mashcard
+          name: mashcard-snapshot
           token: ${{ secrets.PAT_FOR_PACAKGES }}
-          tag: pr.${{github.event.pull_request.number}}
+          tag: ${{github.event.pull_request.number}}

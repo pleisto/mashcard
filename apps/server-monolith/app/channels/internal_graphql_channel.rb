@@ -8,7 +8,7 @@ class InternalGraphQLChannel < ApplicationCable::Channel
 
   def execute(data)
     query = data['query']
-    variables = Brickdoc::GraphQL.ensure_hash(data['variables'])
+    variables = Mashcard::GraphQL.ensure_hash(data['variables'])
     operation_name = data['operationName']
     request = ActionDispatch::Request.new(connection.env)
     context = {
@@ -20,7 +20,7 @@ class InternalGraphQLChannel < ApplicationCable::Channel
       request_id: request.uuid,
     }
 
-    result = BrickdocSchema.execute(query, context: context,
+    result = MashcardSchema.execute(query, context: context,
       variables: variables, operation_name: operation_name)
     payload = { result: result.to_h, more: result.subscription? }
 
@@ -35,7 +35,7 @@ class InternalGraphQLChannel < ApplicationCable::Channel
 
   def unsubscribed
     @subscription_ids.each do |sid|
-      BrickdocSchema.subscriptions.delete_subscription(sid)
+      MashcardSchema.subscriptions.delete_subscription(sid)
     end
   end
 end

@@ -20,7 +20,7 @@ module Mutations
             data: {},
             content: [],
             text: args[:title],
-            id: Brickdoc::Utils::Encoding::UUID.gen_v4,
+            id: Mashcard::Utils::Encoding::UUID.gen_v4,
             parent_id: nil,
             page: true,
             sort: max_sort + Docs::Block::SORT_GAP,

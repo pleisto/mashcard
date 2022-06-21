@@ -50,7 +50,7 @@ module Mutations
 
       def email_password_sign_up(user, email, password)
         if email.blank? || password.blank?
-          raise Brickdoc::GraphQL::Errors::ArgumentError, 'Expected email and password to not be null'
+          raise Mashcard::GraphQL::Errors::ArgumentError, 'Expected email and password to not be null'
         end
 
         user.email = email

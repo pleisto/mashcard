@@ -1,4 +1,4 @@
-import { prefix, theme, styled } from '@brickdoc/design-system'
+import { prefix, theme, styled } from '@mashcard/design-system'
 import { motion } from 'framer-motion'
 
 export const ActionsGroup = styled('div', {

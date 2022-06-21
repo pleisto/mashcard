@@ -7,7 +7,7 @@
 #
 # Choose a feature flag type that matches the expected usage:
 # `dev` feature flags are short-lived feature flags, used so that unfinished code can be deployed in production.
-# `business` feature flags are long-lived feature flags that control operational aspects of Brickdoc product behavior.
+# `business` feature flags are long-lived feature flags that control operational aspects of MashCard product behavior.
 
 - name: stafftools
   type: dev

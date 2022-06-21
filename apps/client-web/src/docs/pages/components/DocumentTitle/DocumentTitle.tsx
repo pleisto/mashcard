@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import { Button, Popover, Icon } from '@brickdoc/design-system'
+import { Button, Popover, Icon } from '@mashcard/design-system'
 import * as Root from './DocumentTitle.style'
-import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { DocumentIcon } from './DocumentIcon'
 import { DocumentCover } from './DocumentCover'
 import { useDocsI18n } from '../../../common/hooks'
-import { BrickdocEventBus, DocMetaLoaded, UpdateDocMeta } from '@brickdoc/schema'
+import { MashcardEventBus, DocMetaLoaded, UpdateDocMeta } from '@mashcard/schema'
 import {
   useDocumentIconUploader,
   useDocumentCoverUploader,
@@ -15,8 +15,8 @@ import {
 import { useReactiveVar } from '@apollo/client'
 import { editorVar } from '@/docs/reactiveVars'
 import { useBlobGetter } from '../../hooks/useBlobGetter'
-import { GetChildrenBlocksQuery } from '@/BrickdocGraphQL'
-// import { EditorContentProps } from '@brickdoc/editor'
+import { GetChildrenBlocksQuery } from '@/MashcardGraphQL'
+// import { EditorContentProps } from '@mashcard/editor'
 export interface DocumentTitleProps {
   docId?: string
   blocks: GetChildrenBlocksQuery['childrenBlocks']
@@ -57,7 +57,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
     setMeta(meta => ({ ...meta, title: _title }))
   }, [_title])
 
-  BrickdocEventBus.subscribe(
+  MashcardEventBus.subscribe(
     DocMetaLoaded,
     e => {
       const { id, meta } = e.payload
@@ -72,7 +72,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
     (newMeta: { [key: string]: any }) => {
       setMeta(newMeta)
       if (docId) {
-        BrickdocEventBus.dispatch(UpdateDocMeta({ id: docId, meta: newMeta }))
+        MashcardEventBus.dispatch(UpdateDocMeta({ id: docId, meta: newMeta }))
         if (editor && !editor.isDestroyed) {
           editor.commands.setDocAttrs({
             ...editor.state.doc.attrs,
@@ -143,8 +143,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
       <Root.TitleWrapper
         width={{
           '@smDown': 'sm'
-        }}
-      >
+        }}>
         <Root.MaxWidth>
           {editable && (
             <Root.Actions data-testid={TEST_ID_ENUM.page.DocumentPage.actionButtons.id}>
@@ -162,8 +161,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
                     as={Button}
                     data-testid={TEST_ID_ENUM.page.DocumentPage.coverButton.id}
                     type="text"
-                    disabled={!editable}
-                  >
+                    disabled={!editable}>
                     <Root.Icon as={Icon.Image} />
                     <Root.Name>{t('title.add_cover')}</Root.Name>
                   </Root.Item>

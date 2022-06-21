@@ -75,7 +75,7 @@ RSpec.configure do |config|
 
   config.before do
     # Mock Vite
-    allow(Brickdoc::Plugins::Vite).to receive(:get_path).and_return('mock-path')
+    allow(Mashcard::Plugins::Vite).to receive(:get_path).and_return('mock-path')
   end
 end
 

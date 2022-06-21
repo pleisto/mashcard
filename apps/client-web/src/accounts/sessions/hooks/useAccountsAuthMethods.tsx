@@ -1,8 +1,8 @@
-import { AuthMethod, useGetAccountsConfigFromWsQuery } from '@/BrickdocGraphQL'
-import { ImageIcon } from '@brickdoc/design-icons'
+import { AuthMethod, useGetAccountsConfigFromWsQuery } from '@/MashcardGraphQL'
+import { ImageIcon } from '@mashcard/design-icons'
 import Email from '../assets/email-auth-icon.svg'
-import { sortBy } from '@brickdoc/active-support'
-import { BrickdocContext } from '@/common/brickdocContext'
+import { sortBy } from '@mashcard/active-support'
+import { MashcardContext } from '@/common/mashcardContext'
 import { useContext } from 'react'
 
 export interface authMethod {
@@ -35,7 +35,7 @@ function redirectToOAuthProvider(provider: string, csrfToken: string): void {
 export const useAccountsAuthMethods = (
   emailPwdBtnOnClick: () => void
 ): { authMethods: authMethod[]; loading: boolean } => {
-  const { csrfToken } = useContext(BrickdocContext)
+  const { csrfToken } = useContext(MashcardContext)
   const { loading, data } = useGetAccountsConfigFromWsQuery()
   if (loading) {
     return { loading, authMethods: [] }

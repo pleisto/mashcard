@@ -4,7 +4,7 @@ module Resolvers
   class BaseResolver < ::GraphQL::Schema::Resolver
     include GraphQL::FragmentCache::ObjectHelpers
     include AuthenticateUser
-    include Brickdoc::GraphQL::PolicyBehaviour
+    include Mashcard::GraphQL::PolicyBehaviour
 
     # override graphql-ruby
     # When the `resolve` method does not exist, the `field` is returned directly

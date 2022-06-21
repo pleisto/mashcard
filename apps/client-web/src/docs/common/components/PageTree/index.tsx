@@ -8,7 +8,7 @@ import {
   BlockEmoji,
   useGetBlockPinsQuery,
   GetPageBlocksQuery
-} from '@/BrickdocGraphQL'
+} from '@/MashcardGraphQL'
 import {
   Tree,
   type TreeProps,
@@ -20,17 +20,17 @@ import {
   toast,
   useMemoizedFn,
   theme
-} from '@brickdoc/design-system'
-import { array2Tree } from '@brickdoc/active-support'
+} from '@mashcard/design-system'
+import { array2Tree } from '@mashcard/active-support'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'
 import { queryPageBlocks } from '../../graphql'
 import { useDocsI18n } from '../../hooks'
 import { queryBlockInfo } from '@/docs/pages/graphql'
 import { pagesVar } from '@/docs/reactiveVars'
-import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { useDocMeta } from '@/docs/store/DocMeta'
-import { dispatchFormulaBlockNameChange } from '@brickdoc/formula'
+import { dispatchFormulaBlockNameChange } from '@mashcard/formula'
 
 export interface PageTreeProps {
   mode?: 'default' | 'subPage'

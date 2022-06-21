@@ -6,9 +6,9 @@
 /config @aligo @Darmody @clszzyh
 /gems @aligo @Darmody @clszzyh
 /apps/client-web/ @melchior-voidwolf @Darmody
-/packages/brickdoc-design-system/ @melchior-voidwolf @wizcas
-/packages/brickdoc-editor/ @Darmody @clszzyh
-/packages/brickdoc-formula/ @clszzyh @aligo
-/packages/brickdoc-uploader/ @Darmody @aligo
-/packages/brickdoc-schema/ @aligo @clszzyh
+/packages/design-system/ @melchior-voidwolf @wizcas
+/packages/editor/ @Darmody @clszzyh
+/packages/formula/ @clszzyh @aligo
+/packages/uploader/ @Darmody @aligo
+/packages/schema/ @aligo @clszzyh
 /tools/e2e-testing/ @jizhekai @june2525

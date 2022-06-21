@@ -1,9 +1,9 @@
 import { useCallback } from 'react'
-import { Upload, useCreateDirectUploadMutation } from '@/BrickdocGraphQL'
-import { EmbedOptions } from '@brickdoc/editor'
+import { Upload, useCreateDirectUploadMutation } from '@/MashcardGraphQL'
+import { EmbedOptions } from '@mashcard/editor'
 import { checksum } from '../../usePrepareFileUpload'
 import { DocMeta } from '@/docs/store/DocMeta'
-import { CreateDirectUploadInput } from '@brickdoc/schema'
+import { CreateDirectUploadInput } from '@mashcard/schema'
 
 export function usePrepareFileUpload(docMeta: DocMeta): EmbedOptions['prepareFileUpload'] {
   const [directUpload] = useCreateDirectUploadMutation()

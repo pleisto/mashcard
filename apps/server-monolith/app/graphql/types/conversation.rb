@@ -2,7 +2,7 @@
 
 module Types
   class Conversation < Types::BaseObject
-    description 'Brickdoc Docs::Conversation'
+    description 'MashCard Docs::Conversation'
     field :block_ids, [Scalars::UUID], 'blockIds', null: false
     field :comments, [Types::Comment], null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, 'created at', null: false

@@ -21,7 +21,7 @@ module GraphqlHelpers
   end
 
   def graphql_execute(statement, variables = {})
-    result = BrickdocSchema.execute(statement, variables: variables, context: make_context)
+    result = MashcardSchema.execute(statement, variables: variables, context: make_context)
       .to_h.with_indifferent_access
     self.response = Response.new(result[:data], result[:errors])
   end

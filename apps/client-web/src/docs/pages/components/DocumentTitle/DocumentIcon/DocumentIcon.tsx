@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Root, EmojiIcon, ImageIcon } from './DocumentIcon.style'
-import { BlockEmoji, BlockImage, BlockType } from '@/BrickdocGraphQL'
-import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { BlockEmoji, BlockImage, BlockType } from '@/MashcardGraphQL'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 interface DocumentIconImage extends BlockImage {
   type: BlockType.Image

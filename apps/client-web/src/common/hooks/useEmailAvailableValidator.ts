@@ -1,10 +1,10 @@
-import { isEmpty } from '@brickdoc/active-support'
+import { isEmpty } from '@mashcard/active-support'
 import { useImperativeQuery } from '@/common/hooks/index'
 import {
   QueryEmailAvailableFromWsDocument,
   QueryEmailAvailableFromWsQuery as Query,
   QueryEmailAvailableFromWsQueryVariables as Variables
-} from '@/BrickdocGraphQL'
+} from '@/MashcardGraphQL'
 import { TestConfig } from 'yup'
 
 // TODO: merge with useDomainAvailableValidator --> useAvailableValidator

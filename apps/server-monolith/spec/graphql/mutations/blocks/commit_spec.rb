@@ -32,15 +32,15 @@ describe Mutations::Blocks::Commit, type: :mutation do
       self.current_pod = user.personal_pod.as_session_context
 
       state = Random.bytes(50)
-      state_id = Brickdoc::Utils::Encoding::UUID.gen_v4
+      state_id = Mashcard::Utils::Encoding::UUID.gen_v4
 
       input = {
         input: {
           documentId: block.id,
           blockId: block.id,
-          operatorId: Brickdoc::Utils::Encoding::UUID.gen_v4,
+          operatorId: Mashcard::Utils::Encoding::UUID.gen_v4,
           stateType: 'full',
-          state: Brickdoc::Utils::Encoding::Base64.strict_encode64(state),
+          state: Mashcard::Utils::Encoding::Base64.strict_encode64(state),
           stateId: state_id,
           statesCount: 0,
         },
@@ -68,7 +68,7 @@ describe Mutations::Blocks::Commit, type: :mutation do
       self.current_user = user
       self.current_pod = user.personal_pod.as_session_context
 
-      block.state_id = Brickdoc::Utils::Encoding::UUID.gen_v4
+      block.state_id = Mashcard::Utils::Encoding::UUID.gen_v4
       block.save
 
       Docs::BlockState.create!(
@@ -78,15 +78,15 @@ describe Mutations::Blocks::Commit, type: :mutation do
       )
 
       state = Random.bytes(50)
-      state_id = Brickdoc::Utils::Encoding::UUID.gen_v4
+      state_id = Mashcard::Utils::Encoding::UUID.gen_v4
 
       input = {
         input: {
           documentId: block.id,
           blockId: block.id,
-          operatorId: Brickdoc::Utils::Encoding::UUID.gen_v4,
+          operatorId: Mashcard::Utils::Encoding::UUID.gen_v4,
           stateType: 'full',
-          state: Brickdoc::Utils::Encoding::Base64.strict_encode64(state),
+          state: Mashcard::Utils::Encoding::Base64.strict_encode64(state),
           prevStateId: block.state_id,
           stateId: state_id,
           statesCount: 1,
@@ -115,7 +115,7 @@ describe Mutations::Blocks::Commit, type: :mutation do
       self.current_user = user
       self.current_pod = user.personal_pod.as_session_context
 
-      block.state_id = Brickdoc::Utils::Encoding::UUID.gen_v4
+      block.state_id = Mashcard::Utils::Encoding::UUID.gen_v4
       block.save
 
       Docs::BlockState.create!(
@@ -125,15 +125,15 @@ describe Mutations::Blocks::Commit, type: :mutation do
       )
 
       state = Random.bytes(50)
-      state_id = Brickdoc::Utils::Encoding::UUID.gen_v4
+      state_id = Mashcard::Utils::Encoding::UUID.gen_v4
 
       input = {
         input: {
           documentId: block.id,
           blockId: block.id,
-          operatorId: Brickdoc::Utils::Encoding::UUID.gen_v4,
+          operatorId: Mashcard::Utils::Encoding::UUID.gen_v4,
           stateType: 'update',
-          state: Brickdoc::Utils::Encoding::Base64.strict_encode64(state),
+          state: Mashcard::Utils::Encoding::Base64.strict_encode64(state),
           prevStateId: block.state_id,
           stateId: state_id,
           statesCount: 1,
@@ -161,7 +161,7 @@ describe Mutations::Blocks::Commit, type: :mutation do
       self.current_user = user
       self.current_pod = user.personal_pod.as_session_context
 
-      block.state_id = Brickdoc::Utils::Encoding::UUID.gen_v4
+      block.state_id = Mashcard::Utils::Encoding::UUID.gen_v4
       block.save
 
       full_state = Docs::BlockState.create!(
@@ -171,28 +171,28 @@ describe Mutations::Blocks::Commit, type: :mutation do
       )
 
       update_state2 = Docs::BlockState.create!(
-        id: Brickdoc::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
+        id: Mashcard::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
         document_id: block.id, block_id: block.id,
         state: Random.bytes(50), state_type: 'update', prev_state_id: full_state.id
       )
 
       update_state1 = Docs::BlockState.create!(
-        id: Brickdoc::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
+        id: Mashcard::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
         document_id: block.id, block_id: block.id,
         state: Random.bytes(50), state_type: 'update', prev_state_id: full_state.id, created_at: Time.zone.now - 3
       )
 
       state = Random.bytes(50)
-      state_id = Brickdoc::Utils::Encoding::UUID.gen_v4
+      state_id = Mashcard::Utils::Encoding::UUID.gen_v4
 
       input = {
         input: {
           documentId: block.id,
           blockId: block.id,
-          operatorId: Brickdoc::Utils::Encoding::UUID.gen_v4,
+          operatorId: Mashcard::Utils::Encoding::UUID.gen_v4,
           stateType: 'update',
-          state: Brickdoc::Utils::Encoding::Base64.strict_encode64(state),
-          prevStateId: Brickdoc::Utils::Encoding::UUID.gen_v4,
+          state: Mashcard::Utils::Encoding::Base64.strict_encode64(state),
+          prevStateId: Mashcard::Utils::Encoding::UUID.gen_v4,
           stateId: state_id,
           statesCount: 3,
         },
@@ -212,10 +212,10 @@ describe Mutations::Blocks::Commit, type: :mutation do
         input: {
           documentId: block.id,
           blockId: block.id,
-          operatorId: Brickdoc::Utils::Encoding::UUID.gen_v4,
+          operatorId: Mashcard::Utils::Encoding::UUID.gen_v4,
           stateType: 'full',
-          state: Brickdoc::Utils::Encoding::Base64.strict_encode64(state),
-          prevStateId: Brickdoc::Utils::Encoding::UUID.gen_v4,
+          state: Mashcard::Utils::Encoding::Base64.strict_encode64(state),
+          prevStateId: Mashcard::Utils::Encoding::UUID.gen_v4,
           stateId: state_id,
           statesCount: 3,
         },
@@ -228,7 +228,7 @@ describe Mutations::Blocks::Commit, type: :mutation do
       expect(response.data['blockCommit']['diffStates'].length).to eq(3)
       expect(response.data['blockCommit']['diffStates'][0]['id']).to eq(full_state.id)
       expect(response.data['blockCommit']['diffStates'][0]['state']).to eq(
-        Brickdoc::Utils::Encoding::Base64.strict_encode64(full_state.state)
+        Mashcard::Utils::Encoding::Base64.strict_encode64(full_state.state)
       )
       expect(response.data['blockCommit']['diffStates'][1]['id']).to eq(update_state1.id)
       expect(response.data['blockCommit']['diffStates'][2]['id']).to eq(update_state2.id)
@@ -248,7 +248,7 @@ describe Mutations::Blocks::Commit, type: :mutation do
       self.current_user = user
       self.current_pod = user.personal_pod.as_session_context
 
-      block.state_id = Brickdoc::Utils::Encoding::UUID.gen_v4
+      block.state_id = Mashcard::Utils::Encoding::UUID.gen_v4
       block.save
 
       prev_state = Docs::BlockState.create!(
@@ -257,9 +257,9 @@ describe Mutations::Blocks::Commit, type: :mutation do
         state: Random.bytes(50)
       )
 
-      BrickdocConfig.state_max_updates.times do
+      MashcardConfig.state_max_updates.times do
         Docs::BlockState.create!(
-          id: Brickdoc::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
+          id: Mashcard::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
           document_id: block.id, block_id: block.id,
           prev_state_id: prev_state.id, state_type: 'update',
           state: Random.bytes(50)
@@ -267,15 +267,15 @@ describe Mutations::Blocks::Commit, type: :mutation do
       end
 
       state = Random.bytes(50)
-      state_id = Brickdoc::Utils::Encoding::UUID.gen_v4
+      state_id = Mashcard::Utils::Encoding::UUID.gen_v4
 
       input = {
         input: {
           documentId: block.id,
           blockId: block.id,
-          operatorId: Brickdoc::Utils::Encoding::UUID.gen_v4,
+          operatorId: Mashcard::Utils::Encoding::UUID.gen_v4,
           stateType: 'update',
-          state: Brickdoc::Utils::Encoding::Base64.strict_encode64(state),
+          state: Mashcard::Utils::Encoding::Base64.strict_encode64(state),
           prevStateId: block.state_id,
           stateId: state_id,
           statesCount: 1,

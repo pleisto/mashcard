@@ -24,13 +24,13 @@ test.describe('Document Title', () => {
 
   test('Verify the initial page value and placeholder are equal Untitled', async ({ page }) => {
     await expect(documentTitle.getDocumentTitle()).toHaveAttribute('placeholder', 'Untitled')
-    await expect(page).toHaveTitle('Untitled - Brickdoc')
+    await expect(page).toHaveTitle('Untitled - MashCard')
   })
 
   test('Verify title can be filled', async ({ page }) => {
     await documentTitle.fillTitle('Document title')
 
-    await expect(page).toHaveTitle('Document title - Brickdoc')
+    await expect(page).toHaveTitle('Document title - MashCard')
   })
 
   test('Verify Add icon & Add cover are shown when hover', async () => {

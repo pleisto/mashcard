@@ -1,4 +1,4 @@
-import { theme, styled, Tooltip } from '@brickdoc/design-system'
+import { theme, styled, Tooltip } from '@mashcard/design-system'
 import { PodAvatar } from '@/common/components/PodAvatar'
 
 export const Avatar = styled(PodAvatar, {

@@ -2,7 +2,7 @@
 
 module Types
   class Comment < Types::BaseObject
-    description 'Brickdoc Docs::Comment'
+    description 'MashCard Docs::Comment'
     field :content, GraphQL::Types::JSON, 'content', null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, 'created at', null: false
     field :creator, Types::Users::Thin, 'creator', null: false

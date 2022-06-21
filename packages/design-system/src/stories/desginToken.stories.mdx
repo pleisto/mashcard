@@ -1,0 +1,59 @@
+import { Meta } from '@storybook/addon-docs'
+// import { Figma } from 'storybook-addon-designs/blocks'
+import ReactJson from 'react-json-view'
+import { ceramicLightTheme } from '../themes/ceramic-light'
+import { utils } from '../themes'
+
+<Meta title="Docs/Design Token" />
+
+# Design Token
+
+Design tokens are all the values needed to construct and maintain a design system — spacing, color, typography, object styles, animation, etc. — represented as data. These can represent anything defined by design: a color as a RGB value, an opacity as a number, an animation ease as Bezier coordinates. They’re used in place of hard-coded values in order to ensure flexibility and unity across all product experiences.
+
+Design tokens are directly integrated into our component libraries and UI kits. They cover the various options of platform scales, color themes, component states, and more.
+
+## All Tokens
+
+<ReactJson
+  name="CeramicLightTheme"
+  indentWidth={2}
+  collapsed={1}
+  onDelete={false}
+  displayDataTypes={false}
+  src={ceramicLightTheme}
+/>
+
+## All Utils
+
+<ReactJson name="Utils" indentWidth={2} collapsed={true} onDelete={false} displayDataTypes={false} src={utils} />
+
+## Colors
+
+MashCard colors are designed to be clear and accessible.
+They are used for text, backgrounds, borders, and more.
+
+<Figma url="https://www.figma.com/file/iESKwh7T5e40p9drS2MZRZ/?node-id=12311%3A0" />
+
+## Font
+
+Typography is a core part of the design system. They are used for text, titles, and more.
+
+<Figma url="https://www.figma.com/file/iESKwh7T5e40p9drS2MZRZ/?node-id=12314%3A239" />
+
+## Grids & Spacing
+
+Grids & spacing are used to create consistent layouts across the product.
+
+<iframe
+  style={{ border: 'none' }}
+  width="100%"
+   src="https://www.figma.com/file/iESKwh7T5e40p9drS2MZRZ/?node-id=12373%3A35" />
+
+## Shadow
+
+Shadow is a visual element that helps to convey depth and hierarchy.
+
+<iframe
+  style={{ border: 'none' }}
+  width="100%"
+   src="https://www.figma.com/file/iESKwh7T5e40p9drS2MZRZ/?node-id=12359%3A0" />

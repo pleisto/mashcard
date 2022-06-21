@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserView matches correct snapshot 1`] = `
+<div>
+  <span
+    as="span"
+    data-node-view-wrapper=""
+    style="pointer-events: none; white-space: normal;"
+  >
+    <span
+      class="mc-c-bbClCh"
+      contenteditable="false"
+    >
+       
+    </span>
+    <span
+      class="mc-c-eTYwxC"
+    >
+      <span
+        class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-kRzPmM-size-md mc-c-gYWVfz-ibPjhUn-css mc-c-kRnupi mc-c-kRnupi-cruuqr-size-sm"
+      >
+        <img
+          src="avatarUrl"
+        />
+      </span>
+      <span
+        class="mc-c-lRKiB mc-c-lRKiB-dHzspo-size-md"
+      >
+        name
+      </span>
+    </span>
+    <span
+      class="mc-c-bbClCh"
+      contenteditable="false"
+    >
+       
+    </span>
+  </span>
+</div>
+`;

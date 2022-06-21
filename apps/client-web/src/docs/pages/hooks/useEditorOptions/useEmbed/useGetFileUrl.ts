@@ -1,6 +1,6 @@
 import { DocMeta } from '@/docs/store/DocMeta'
-import { EmbedOptions } from '@brickdoc/editor'
-import { Block } from '@brickdoc/schema'
+import { EmbedOptions } from '@mashcard/editor'
+import { Block } from '@mashcard/schema'
 import { useCallback, useRef, useEffect } from 'react'
 
 export function useGetFileUrl(blocks: Block[], docMeta: DocMeta): EmbedOptions['getFileUrl'] {

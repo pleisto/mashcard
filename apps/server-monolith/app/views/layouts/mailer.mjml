@@ -28,7 +28,7 @@
     <mj-section full-width="full-width" padding-bottom="40px">
       <mj-column>
         <mj-image css-class="logo" src="<%= vite_frontend_asset_path 'mailer/logo.png' %>"
-          alt="Brickdoc" align="left" width="80px" />
+          alt="MashCard" align="left" width="80px" />
       </mj-column>
     </mj-section>
     <mj-wrapper padding-top="0" padding-bottom="0" css-class="body-section">
@@ -39,11 +39,11 @@
       <mj-section>
         <mj-column width="100%" padding="0">
           <mj-text color="#908b9c" font-size="11px" align="center" line-height="16px">
-            <%= t('mailer.footer_message', host: BrickdocConfig.host) %>
+            <%= t('mailer.footer_message', host: MashcardConfig.host) %>
           </mj-text>
 
           <mj-text color="#bfbcc6" font-size="11px" align="center">
-            Powered by Brickdoc
+            Powered by MashCard
           </mj-text>
 
         </mj-column>

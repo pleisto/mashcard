@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MentionMenu matches correct snapshot 1`] = `
+<div>
+  <ul
+    aria-orientation="vertical"
+    class="mc-c-bOsLjs mc-c-bOsLjs-lozdyt-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical mc-c-kWKsdj mc-c-kWKsdj-kWKsdj-size-md"
+    data-testid="editor-link-menu"
+    id="mention"
+    role="menubar"
+  >
+    <ul
+      class="mc-c-jpGEAj mc-c-PJLV"
+      label="[object Object]"
+      role="group"
+      title="mention.people.head"
+    >
+      <span
+        aria-label="mention.people.head"
+        class="mc-c-dEBlHr"
+      >
+        <span
+          class="mc-c-fbvDaU"
+        >
+          mention.people.head
+        </span>
+      </span>
+      <div
+        class="mc-c-llTUqV"
+      >
+        <li
+          class="mc-c-bDiYvX mc-c-bDiYvX-cOuhSn-active-true mc-c-klLbby"
+          id="mention-1"
+          role="menuitem"
+          tabindex="0"
+          title=""
+        >
+          <span
+            class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-kRzPmM-size-md mc-c-gYWVfz-ihPXSzQ-css"
+          >
+            <img
+              src="avatar"
+            />
+          </span>
+          <span
+            class="mc-c-hFBCKm"
+          >
+            people name
+          </span>
+        </li>
+      </div>
+    </ul>
+    <ul
+      class="mc-c-jpGEAj"
+      label="[object Object]"
+      role="group"
+      title="mention.page_link.head"
+    >
+      <span
+        aria-label="mention.page_link.head"
+        class="mc-c-dEBlHr"
+      >
+        <span
+          class="mc-c-fbvDaU"
+        >
+          mention.page_link.head
+        </span>
+      </span>
+      <li
+        class="mc-c-bDiYvX"
+        id="mention-2"
+        label="page name"
+        role="menuitem"
+        tabindex="-1"
+        title="page name"
+      >
+        <div
+          class="mc-c-fcAYuy"
+        >
+          <span
+            class="mc-c-OVPdU"
+          >
+            <span
+              class="mc-c-frQDkN mc-c-iJjxbJ"
+            >
+              <div
+                class="mc-c-yaLQE mc-c-yaLQE-iPJLV-css"
+              />
+              <div
+                class="mc-c-BfbNy"
+              />
+              <span
+                class="mc-c-jVLVTy"
+              >
+                icon
+              </span>
+            </span>
+          </span>
+          <div
+            class="mc-c-fNvXDc"
+          >
+            <span
+              aria-label="page name"
+              class="mc-c-PJLV"
+            >
+              <span>
+                page name
+              </span>
+            </span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </ul>
+</div>
+`;

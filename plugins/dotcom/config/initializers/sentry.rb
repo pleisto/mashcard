@@ -2,7 +2,7 @@
 
 if !Rails.env.development? && !Rails.env.test?
   Sentry.init do |config|
-    config.dsn = BrickdocConfig.namespace('plugin.brickdoc.dotcom').sentry_dsn
+    config.dsn = MashcardConfig.namespace('plugin.mashcard.dotcom').sentry_dsn
     config.breadcrumbs_logger = [:active_support_logger, :http_logger]
 
     # Set tracesSampleRate to 1.0 to capture 100%

@@ -32,7 +32,7 @@ parent.id => parent.history_version, })
     end
 
     it 'create' do
-      params = attrs.merge({ page: true, pod: pod, id: Brickdoc::Utils::Encoding::UUID.gen_v4, collaborators: [pod.owner.id] })
+      params = attrs.merge({ page: true, pod: pod, id: Mashcard::Utils::Encoding::UUID.gen_v4, collaborators: [pod.owner.id] })
       block = described_class.create!(params)
       expect(block.id).to eq(params[:id])
     end

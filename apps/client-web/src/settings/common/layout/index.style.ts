@@ -1,5 +1,5 @@
 import bg from '@/common/assets/ceramicBg.webp'
-import { theme } from '@brickdoc/design-system'
+import { theme } from '@mashcard/design-system'
 
 export const layoutStyle = {
   display: 'flex',

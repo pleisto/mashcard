@@ -34,7 +34,7 @@ Create chart name and version as used by the chart label.
 Common labels
 */}}
 {{- define "bae-simple-web.labels" -}}
-mashcard.io/app-engine-managed: "true"
+mashcard.cloud/app-engine-managed: "true"
 helm.sh/chart: {{ include "bae-simple-web.chart" . }}
 {{ include "bae-simple-web.selectorLabels" . }}
 {{- if .Chart.AppVersion }}

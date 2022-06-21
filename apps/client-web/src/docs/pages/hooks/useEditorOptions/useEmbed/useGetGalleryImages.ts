@@ -3,9 +3,9 @@ import {
   QueryUnsplashImageQuery as Query,
   QueryUnsplashImageQueryVariables as Variables,
   QueryUnsplashImageDocument
-} from '@/BrickdocGraphQL'
+} from '@/MashcardGraphQL'
 import { useImperativeQuery } from '@/common/hooks'
-import { EmbedOptions, GalleryImage } from '@brickdoc/editor'
+import { EmbedOptions, GalleryImage } from '@mashcard/editor'
 
 export function useGetGalleryImages(): EmbedOptions['getGalleryImages'] {
   const queryUnsplashImages = useImperativeQuery<Query, Variables>(QueryUnsplashImageDocument)

@@ -4,7 +4,7 @@ module Types
   module Blocks
     class State < Types::BaseObject
       graphql_name 'BlockState'
-      description 'Brickdoc Docs::BlockState'
+      description 'MashCard Docs::BlockState'
 
       has_primary_key uuid: true
       field :block_id, Scalars::UUID, null: true
@@ -14,7 +14,7 @@ module Types
       field :state_type, Types::Statetype, 'State Type'
 
       def state
-        object.respond_to?(:state) ? Brickdoc::Utils::Encoding::Base64.strict_encode64(object.state) : nil
+        object.respond_to?(:state) ? Mashcard::Utils::Encoding::Base64.strict_encode64(object.state) : nil
       end
     end
   end

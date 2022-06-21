@@ -3,7 +3,7 @@
 module Types
   class Block < Blocks::BaseObject
     graphql_name 'Block'
-    description 'Brickdoc Docs::Block'
+    description 'MashCard Docs::Block'
 
     field :content, [GraphQL::Types::JSON], 'content', null: false
     field :data, GraphQL::Types::JSON, null: false

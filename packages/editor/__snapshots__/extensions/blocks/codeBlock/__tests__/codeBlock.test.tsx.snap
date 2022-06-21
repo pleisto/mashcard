@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CodeBlock renders CodeBlock correctly 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <div
+        class="react-renderer node-codeBlock"
+      >
+        <div
+          class="mc-c-eUWdaU"
+          data-node-view-wrapper=""
+          style="pointer-events: unset; white-space: normal;"
+        >
+          <div
+            class="mc-c-iuVkcQ"
+          >
+            <div
+              class="mc-c-ezcVMp"
+            >
+              <div
+                aria-haspopup="dialog"
+                role="tab"
+                tabindex="0"
+              >
+                code_block.languages.typescript
+                 
+                <span
+                  aria-label="line-down"
+                  class="mc-icon mc-icon-line-down"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="m18.5 9-6 6-6-6"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="mc-c-jmjdYN"
+              >
+                <span
+                  class="label"
+                >
+                  Auto Wrap
+                </span>
+                <label
+                  class="mc-c-kHLHuS"
+                >
+                  <div
+                    class="mc-c-dYMIXn mc-c-dYMIXn-blnpOb-checked-true mc-c-dYMIXn-epWpGu-size-sm mc-c-dYMIXn-gsmDXe-disabled-false"
+                  >
+                    <div
+                      class="mc-c-dENxiO"
+                    >
+                      <input
+                        checked=""
+                        type="checkbox"
+                      />
+                    </div>
+                    <div
+                      class="mc-c-RJek"
+                    />
+                  </div>
+                </label>
+              </div>
+            </div>
+            <pre
+              class="line-numbers language-typescript"
+              spellcheck="false"
+            >
+              <code
+                as="code"
+                class="undefined language-typescript"
+                data-node-view-content=""
+                style="white-space: pre-wrap;"
+              >
+                <div
+                  style="white-space: inherit;"
+                >
+                  <div
+                    class="line-numbers-rows ProseMirror-widget"
+                  />
+                        
+
+                  <div
+                    class="line-numbers-rows ProseMirror-widget"
+                  />
+                          code content
+
+                  <div
+                    class="line-numbers-rows ProseMirror-widget"
+                  />
+                        
+
+                  <div
+                    class="line-numbers-rows ProseMirror-widget"
+                  />
+                      
+                </div>
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

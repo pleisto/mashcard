@@ -1,13 +1,13 @@
 import { FC, useContext, lazy } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { BrickdocContext } from '@/common/brickdocContext'
+import { MashcardContext } from '@/common/mashcardContext'
 import { PanelLayoutPage } from './common/layouts/PanelLayoutPage'
 import { SignInPage } from './sessions/SignInPage'
 import { SignUpPage } from './sessions/SignUpPage'
 import { rootPath } from '@/common/utils'
 
 const AccountsModule: FC = () => {
-  const context = useContext(BrickdocContext)
+  const context = useContext(MashcardContext)
 
   // Lazy loading of less visited pages
   const ForgetPasswordPage = lazy(async () => await import('./passwords/ForgetPasswordPage'))

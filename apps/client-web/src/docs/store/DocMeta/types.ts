@@ -1,4 +1,4 @@
-import { GetBlockInfoQuery } from '@/BrickdocGraphQL'
+import { GetBlockInfoQuery } from '@/MashcardGraphQL'
 import { createContext } from 'react'
 
 type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]

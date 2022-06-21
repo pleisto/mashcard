@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageLinkView matches correct snapshot 1`] = `
+<div>
+  <span
+    as="span"
+    data-node-view-wrapper=""
+    style="pointer-events: none; white-space: normal;"
+  >
+    <span
+      class="mc-c-bbClCh"
+      contenteditable="false"
+    >
+       
+    </span>
+    <a
+      class="mc-c-dUzGcW"
+      href="/link"
+    >
+      <span>
+        <span
+          aria-label=""
+          class="mc-c-fzlvyF mc-c-fzlvyF-evGSaO-size-md"
+          role="img"
+        >
+          icon
+          <span
+            aria-label="arrow-shortcut"
+            class="mc-icon mc-icon-arrow-shortcut mc-c-kgfpOE"
+            role="img"
+          >
+            <svg
+              fill="none"
+              height="1em"
+              viewBox="0 0 24 24"
+              width="1em"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M7 6a1 1 0 0 0 0 2h7.594l-9.301 9.301a1 1 0 1 0 1.414 1.414L16 9.422V17a1 1 0 1 0 2 0V7a1 1 0 0 0-1-1H7Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </span>
+        </span>
+        <span
+          class="mc-c-kINzic"
+        >
+          title
+        </span>
+      </span>
+    </a>
+    <span
+      class="mc-c-bbClCh"
+      contenteditable="false"
+    >
+       
+    </span>
+  </span>
+</div>
+`;

@@ -22,7 +22,7 @@ end
 class RakeCargoHelper
   attr_reader :gemname
 
-  def initialize(gemname = 'brickdoc_ext')
+  def initialize(gemname = 'mashcard_ext')
     @gemname = gemname
   end
 

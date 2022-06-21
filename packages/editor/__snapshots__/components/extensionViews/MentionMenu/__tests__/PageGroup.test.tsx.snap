@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MentionMenuPageGroup matches correct snapshot 1`] = `
+<div>
+  <ul
+    aria-orientation="vertical"
+    class="mc-c-bOsLjs mc-c-bOsLjs-lozdyt-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical"
+    id="page-group"
+    role="menubar"
+  >
+    <ul
+      class="mc-c-jpGEAj"
+      label="[object Object]"
+      role="group"
+      title="mention.page_link.head"
+    >
+      <span
+        aria-label="mention.page_link.head"
+        class="mc-c-dEBlHr"
+      >
+        <span
+          class="mc-c-fbvDaU"
+        >
+          mention.page_link.head
+        </span>
+      </span>
+      <li
+        class="mc-c-bDiYvX"
+        id="page-group-1"
+        label="page name 0"
+        role="menuitem"
+        tabindex="0"
+        title="page name 0"
+      >
+        <div
+          class="mc-c-fcAYuy"
+        >
+          <span
+            class="mc-c-OVPdU"
+          >
+            <span
+              class="mc-c-frQDkN mc-c-iJjxbJ"
+            >
+              <div
+                class="mc-c-yaLQE mc-c-yaLQE-iPJLV-css"
+              />
+              <div
+                class="mc-c-BfbNy"
+              />
+              <span
+                class="mc-c-jVLVTy"
+              >
+                icon 0
+              </span>
+            </span>
+          </span>
+          <div
+            class="mc-c-fNvXDc"
+          >
+            <span
+              aria-label="page name 0"
+              class="mc-c-PJLV"
+            >
+              <span>
+                page name 0
+              </span>
+            </span>
+          </div>
+        </div>
+      </li>
+      <li
+        class="mc-c-bDiYvX"
+        id="page-group-2"
+        label="page name 1"
+        role="menuitem"
+        tabindex="-1"
+        title="page name 1"
+      >
+        <div
+          class="mc-c-fcAYuy"
+        >
+          <span
+            class="mc-c-OVPdU"
+          >
+            <span
+              class="mc-c-frQDkN mc-c-iJjxbJ"
+            >
+              <div
+                class="mc-c-yaLQE mc-c-yaLQE-iPJLV-css"
+              />
+              <div
+                class="mc-c-BfbNy"
+              />
+              <span
+                class="mc-c-jVLVTy"
+              >
+                icon 1
+              </span>
+            </span>
+          </span>
+          <div
+            class="mc-c-fNvXDc"
+          >
+            <span
+              aria-label="page name 1"
+              class="mc-c-PJLV"
+            >
+              <span>
+                page name 1
+              </span>
+            </span>
+          </div>
+        </div>
+      </li>
+      <li
+        class="mc-c-bDiYvX"
+        id="page-group-3"
+        label="page name 2"
+        role="menuitem"
+        tabindex="-1"
+        title="page name 2"
+      >
+        <div
+          class="mc-c-fcAYuy"
+        >
+          <span
+            class="mc-c-OVPdU"
+          >
+            <span
+              class="mc-c-frQDkN mc-c-iJjxbJ"
+            >
+              <div
+                class="mc-c-yaLQE mc-c-yaLQE-iPJLV-css"
+              />
+              <div
+                class="mc-c-BfbNy"
+              />
+              <span
+                class="mc-c-jVLVTy"
+              >
+                <span
+                  aria-label="file-pages"
+                  class="mc-icon mc-icon-file-pages"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M3 3a2 2 0 0 1 2-2h10a1 1 0 0 1 .707.293l5 5A1 1 0 0 1 21 7v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3Zm11.586 0H5v18h14V7.414L14.586 3Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    />
+                    <path
+                      clip-rule="evenodd"
+                      d="M7 12a1 1 0 0 1 1-1h5a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1ZM7 16a1 1 0 0 1 1-1h7a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1ZM7 8a1 1 0 0 1 1-1h7a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </span>
+          </span>
+          <div
+            class="mc-c-fNvXDc"
+          >
+            <span
+              aria-label="page name 2"
+              class="mc-c-PJLV"
+            >
+              <span>
+                page name 2
+              </span>
+            </span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </ul>
+</div>
+`;

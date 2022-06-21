@@ -133,7 +133,7 @@ describe Mutations::Blocks::Move, type: :mutation do
 
       root = block1
 
-      id = Brickdoc::Utils::Encoding::UUID.gen_v4
+      id = Mashcard::Utils::Encoding::UUID.gen_v4
       child = create(:docs_block, pod: user.personal_pod, id: id, root_id: id, parent: root)
 
       input = { input: { id: root.id, targetParentId: child.id, sort: 300 } }

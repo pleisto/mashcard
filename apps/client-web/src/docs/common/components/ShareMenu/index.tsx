@@ -1,4 +1,4 @@
-import { Button, Tooltip, Icon } from '@brickdoc/design-system'
+import { Button, Tooltip, Icon } from '@mashcard/design-system'
 import { itemStyle } from '@/docs/pages/components/DocumentTopBar/DocumentTopBar.style'
 import React from 'react'
 import { useDocsI18n } from '../../hooks'

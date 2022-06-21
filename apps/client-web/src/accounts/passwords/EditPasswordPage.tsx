@@ -2,14 +2,14 @@ import React from 'react'
 import { Navigate } from 'react-router'
 import { Helmet } from 'react-helmet-async'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { Form, Button, Input, toast, useBoolean } from '@brickdoc/design-system'
-import { omit } from '@brickdoc/active-support'
+import { Form, Button, Input, toast, useBoolean } from '@mashcard/design-system'
+import { omit } from '@mashcard/active-support'
 import {
   useUserPasswordResetMutation,
   UserPasswordResetInput,
   useUserSignOutMutation,
   UserSignOutInput
-} from '@/BrickdocGraphQL'
+} from '@/MashcardGraphQL'
 import { mutationResultHandler } from '@/common/utils'
 import { object, string, ref } from 'yup'
 

@@ -14,7 +14,7 @@ image:
   pullPolicy: Always
 
 imagePullSecrets:
-  - name: io-ghcr-brickdoc
+  - name: io-ghcr-mashcard
 nameOverride: ""
 fullnameOverride: ""
 

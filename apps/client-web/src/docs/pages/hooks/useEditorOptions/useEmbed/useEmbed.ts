@@ -1,6 +1,6 @@
 import { DocMeta } from '@/docs/store/DocMeta'
-import { Block } from '@brickdoc/schema'
-import { EmbedOptions } from '@brickdoc/editor'
+import { Block } from '@mashcard/schema'
+import { EmbedOptions } from '@mashcard/editor'
 import { useGetGalleryImages } from './useGetGalleryImages'
 import { useGetUrlData } from './useGetUrlData'
 import { useGetFileUrl } from './useGetFileUrl'

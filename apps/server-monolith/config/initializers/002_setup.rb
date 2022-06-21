@@ -4,10 +4,10 @@ Rails.application.reloader.to_prepare do
   # I18n
   require 'i18n/backend/fallbacks'
   I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
-  I18n.available_locales = Brickdoc::I18n.available_locales
-  I18n.default_locale = BrickdocConfig.locale
+  I18n.available_locales = Mashcard::I18n.available_locales
+  I18n.default_locale = MashcardConfig.locale
   ## Fallbacks
-  I18n.fallbacks.map(Brickdoc::I18n.fallbacks)
+  I18n.fallbacks.map(Mashcard::I18n.fallbacks)
 
   # Nokogiri is significantly faster and use less memory than REXML
   ActiveSupport::XmlMini.backend = 'Nokogiri'
@@ -20,18 +20,18 @@ Rails.application.reloader.to_prepare do
 
   # Cache
   Rails.application.config.cache_store = [:redis_cache_store, {
-    redis: Brickdoc::Redis.pool(:cache),
+    redis: Mashcard::Redis.pool(:cache),
     compress: 1,
     expires_in: 20.days,
   },]
 
   Rails.application.default_url_options = {
-    host: BrickdocConfig.host,
+    host: MashcardConfig.host,
     port: Rails.env.development? ? 3000 : nil,
   }
 
   ## ActiveStorage
-  Rails.application.config.active_storage.service = BrickdocConfig.active_storage_service.to_sym
+  Rails.application.config.active_storage.service = MashcardConfig.active_storage_service.to_sym
   Rails.application.config.active_storage.draw_routes = false
   ActiveStorage.draw_routes = false
 
@@ -41,12 +41,12 @@ Rails.application.reloader.to_prepare do
   end
 
   # Mailer
-  smtp_settings = URI(BrickdocConfig.mailer[:url])
+  smtp_settings = URI(MashcardConfig.mailer[:url])
   Rails.application.configure do
     config.action_mailer.default_url_options = Rails.application.default_url_options
     config.action_mailer.delivery_method = Rails.env.production? ? :smtp : :test
     config.action_mailer.default_options = {
-      from: BrickdocConfig.mailer[:from],
+      from: MashcardConfig.mailer[:from],
     }
     config.action_mailer.smtp_settings = {
       address: smtp_settings.hostname,

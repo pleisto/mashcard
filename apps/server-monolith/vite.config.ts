@@ -23,7 +23,7 @@ export default defineConfig({
     VitePWA({
       injectRegister: 'script',
       manifest: {
-        name: 'Brickdoc',
+        name: 'MashCard',
         theme_color: '#ffffff',
         icons: [
           {
@@ -45,7 +45,7 @@ export default defineConfig({
             urlPattern: /^https:\/\/s3\.brickdoc\.com\/npmjs\/.*/i,
             handler: 'CacheFirst',
             options: {
-              cacheName: 'brickdoc-npmjs-cache',
+              cacheName: 'mashcard-npmjs-cache',
               expiration: {
                 maxEntries: 100,
                 maxAgeSeconds: 60 * 60 * 24 * 365
@@ -56,7 +56,7 @@ export default defineConfig({
             urlPattern: /^https:\/\/s3\.brickdoc\.com\/webfonts\/.*/i,
             handler: 'CacheFirst',
             options: {
-              cacheName: 'brickdoc-webfonts-cache',
+              cacheName: 'mashcard-webfonts-cache',
               expiration: {
                 maxEntries: 30,
                 maxAgeSeconds: 60 * 60 * 24 * 365
@@ -89,15 +89,15 @@ export default defineConfig({
           vendor6: ['react-vega'],
           telemetry: ['@sentry/react', '@sentry/tracing', '@sentry/integrations'],
           common: [
-            '@brickdoc/active-support',
-            '@brickdoc/design-system',
-            '@brickdoc/design-icons',
-            '@brickdoc/schema',
-            '@brickdoc/test-helper'
+            '@mashcard/active-support',
+            '@mashcard/design-system',
+            '@mashcard/design-icons',
+            '@mashcard/schema',
+            '@mashcard/test-helper'
           ],
-          editor: ['@brickdoc/editor'],
-          formula: ['@brickdoc/formula'],
-          uploader: ['@brickdoc/uploader']
+          editor: ['@mashcard/editor'],
+          formula: ['@mashcard/formula'],
+          uploader: ['@mashcard/uploader']
         }
       }
     }

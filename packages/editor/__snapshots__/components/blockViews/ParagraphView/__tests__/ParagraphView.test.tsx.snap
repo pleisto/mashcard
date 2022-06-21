@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ParagraphView matches snapshot correctly 1`] = `
+<div>
+  <div
+    data-node-view-wrapper=""
+    style="position: relative; pointer-events: unset; white-space: normal;"
+  >
+    <p
+      as="p"
+      class="mc-c-jIptkL mc-c-qcqS"
+      data-node-view-content=""
+      data-placeholder=""
+      draggable="false"
+      style="white-space: pre-wrap;"
+    />
+  </div>
+</div>
+`;

@@ -1,10 +1,10 @@
 import { useState, useContext, FC } from 'react'
-import { BrickdocContext } from '@/common/brickdocContext'
-import { useGetPodsQuery, useUserSignOutMutation, UserSignOutInput, PodOperation } from '@/BrickdocGraphQL'
-import { Box, Dropdown, Menu, MenuProps, Tooltip, Button, ButtonProps, devWarning, css } from '@brickdoc/design-system'
+import { MashcardContext } from '@/common/mashcardContext'
+import { useGetPodsQuery, useUserSignOutMutation, UserSignOutInput, PodOperation } from '@/MashcardGraphQL'
+import { Box, Dropdown, Menu, MenuProps, Tooltip, Button, ButtonProps, devWarning, css } from '@mashcard/design-system'
 import { selectStyle, logoutStyle, actionStyle, MenuLabel, ActionsGroup, MenuItem } from './index.styles'
 import { PodCard } from '@/common/components/PodCard'
-import { Setting, Change, Check } from '@brickdoc/design-icons'
+import { Setting, Change, Check } from '@mashcard/design-icons'
 import { useDocsI18n } from '../../hooks'
 import { ProfileModal } from '../ProfileModal'
 import { useDocMeta } from '@/docs/store/DocMeta'
@@ -15,7 +15,7 @@ export const PodSelect: FC = () => {
   const { loading, data } = useGetPodsQuery()
   const [userSignOut, { loading: signOutLoading }] = useUserSignOutMutation()
   const [modalCreateVisible, setModalCreateVisible] = useState<boolean>(false)
-  const { currentUser } = useContext(BrickdocContext)
+  const { currentUser } = useContext(MashcardContext)
 
   if (loading || signOutLoading) {
     return <></>

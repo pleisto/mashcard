@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
-import { useConversationCommentAppendMutation } from '@/BrickdocGraphQL'
-import { DiscussionOptions } from '@brickdoc/editor'
+import { useConversationCommentAppendMutation } from '@/MashcardGraphQL'
+import { DiscussionOptions } from '@mashcard/editor'
 import { commentToData } from './useDiscussion'
 
 export function useCreateComment(): DiscussionOptions['createComment'] {

@@ -3,6 +3,6 @@
 module Types
   class BaseInputObject < ::GraphQL::Schema::InputObject
     description "InputObject type of #{self.class.name.demodulize}"
-    prepend Brickdoc::GraphQL::CopyFieldDescription
+    prepend Mashcard::GraphQL::CopyFieldDescription
   end
 end

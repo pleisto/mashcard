@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_12_190617) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_21_070648) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
   enable_extension "pgcrypto"
@@ -115,13 +115,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_12_190617) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-  end
-
-  create_table "brickdoc_configs", force: :cascade do |t|
-    t.ltree "key", null: false, comment: "setting key with namespace"
-    t.ltree "scope", default: "R", null: false, comment: "scope for recursive search. e.g. R.user_1.pod_2 or R.pod_1"
-    t.jsonb "value"
-    t.index ["key", "scope"], name: "index_brickdoc_configs_on_key_and_scope", unique: true
   end
 
   create_table "docs_aliases", force: :cascade do |t|
@@ -260,6 +253,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_12_190617) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["feature_key", "key", "value"], name: "index_flipper_gates_on_feature_key_and_key_and_value", unique: true
+  end
+
+  create_table "mashcard_configs", force: :cascade do |t|
+    t.ltree "key", null: false, comment: "setting key with namespace"
+    t.ltree "scope", default: "R", null: false, comment: "scope for recursive search. e.g. R.user_1.pod_2 or R.pod_1"
+    t.jsonb "value"
+    t.index ["key", "scope"], name: "index_mashcard_configs_on_key_and_scope", unique: true
   end
 
   create_table "pods", force: :cascade do |t|

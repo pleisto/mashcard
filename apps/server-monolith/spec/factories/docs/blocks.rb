@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :docs_block, class: 'Docs::Block' do
-    id { Brickdoc::Utils::Encoding::UUID.gen_v4 }
+    id { Mashcard::Utils::Encoding::UUID.gen_v4 }
     pod
     page { true }
     sort { 0 }
@@ -16,7 +16,7 @@ FactoryBot.define do
 
   factory :docs_block_child, class: 'Docs::Block' do
     parent { association :docs_block }
-    id { Brickdoc::Utils::Encoding::UUID.gen_v4 }
+    id { Mashcard::Utils::Encoding::UUID.gen_v4 }
     root_id { parent_id }
     pod
     page { true }
