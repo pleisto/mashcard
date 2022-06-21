@@ -1,6 +1,6 @@
 import { css, theme } from '@brickdoc/design-system'
 
-export const BrickdocFomulaEditor = css({
+export const FomulaEditorStyle = css({
   '.ProseMirror': {
     position: 'relative',
     display: 'inline-block',
@@ -20,9 +20,9 @@ export const BrickdocFomulaEditor = css({
     marginBottom: 0,
 
     mark: {
-      "color": "unset",
-      "backgroundColor": "unset",
-      "fontFamily": "Fira Code",
+      color: 'unset',
+      backgroundColor: 'unset',
+      fontFamily: 'Fira Code',
 
       '&:hover': {
         backgroundColor: theme.colors.secondaryHover

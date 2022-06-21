@@ -1,6 +1,6 @@
 import React from 'react'
 import { EditorContent, Editor, JSONContent } from '@tiptap/react'
-import { BrickdocFomulaEditor } from './style'
+import { FomulaEditorStyle } from './style'
 import { useFormulaEditor } from './useFormulaEditor'
 
 interface FormulaEditorProps {
@@ -23,7 +23,7 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({ formulaEditor, wid
           ...(width ? { width: `${width}px` } : {}),
           ...(minHeight ? { minHeight: `${minHeight}px` } : {})
         }}
-        className={BrickdocFomulaEditor}
+        className={`formula-editor ${FomulaEditorStyle}`}
         editor={formulaEditor}
       />
     </>
