@@ -2,11 +2,11 @@ ja-JP:
   meta:
     lang: ja-JP
     dir: ltr
-    noscript: 申し訳ありませんが、JavaScriptが有効になっていないとMashCardは正常に動作しません。詳細については、 %{url} をご覧ください。
+    noscript: We're sorry but MashCard doesn't work properly without JavaScript enabled. Please visit %{url} for more information.
     noscript_url: https://www.enable-javascript.com/ja/
   unsupported_browser:
     title: 'ブラウザを更新'
-    download_latest_browser_html: 残念ながら、MashCardは、このバージョンのブラウザでは実行できない機能を更新しました。
+    download_latest_browser_html: Unfortunately, MashCard has updated features that can't run on this version of your browser.
   activerecord:
     errors:
       models:
