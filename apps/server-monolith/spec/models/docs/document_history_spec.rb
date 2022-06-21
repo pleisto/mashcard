@@ -10,7 +10,7 @@ RSpec.describe Docs::DocumentHistory, type: :model do
     it 'can be created when state saved' do
       expect do
         state1 = Docs::BlockState.create!(
-          id: Brickdoc::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
+          id: Mashcard::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
           document_id: block.id, block_id: block.id,
           state: Random.bytes(50), state_type: 'full', prev_state_id: nil
         )
@@ -24,7 +24,7 @@ RSpec.describe Docs::DocumentHistory, type: :model do
       created_at = Time.zone.now
       expect do
         Docs::BlockState.create!(
-          id: Brickdoc::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
+          id: Mashcard::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
           document_id: block.id, block_id: block.id,
           state: Random.bytes(50), state_type: 'full', prev_state_id: nil, created_at: created_at
         )
@@ -34,7 +34,7 @@ RSpec.describe Docs::DocumentHistory, type: :model do
 
       expect do
         Docs::BlockState.create!(
-          id: Brickdoc::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
+          id: Mashcard::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
           document_id: block.id, block_id: block.id,
           state: Random.bytes(50), state_type: 'full', prev_state_id: nil, created_at: created_at + 1
         )
@@ -44,10 +44,10 @@ RSpec.describe Docs::DocumentHistory, type: :model do
 
       expect do
         Docs::BlockState.create!(
-          id: Brickdoc::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
+          id: Mashcard::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
           document_id: block.id, block_id: block.id,
           state: Random.bytes(50), state_type: 'full', prev_state_id: nil,
-          created_at: created_at + 1 + BrickdocConfig.history_gap_threshold.minutes
+          created_at: created_at + 1 + MashcardConfig.history_gap_threshold.minutes
         )
       end.to change {
         Docs::DocumentHistory.where(document_id: block.id).count
@@ -57,7 +57,7 @@ RSpec.describe Docs::DocumentHistory, type: :model do
     it 'can be created when previous have too many states' do
       expect do
         Docs::BlockState.create!(
-          id: Brickdoc::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
+          id: Mashcard::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
           document_id: block.id, block_id: block.id,
           state: Random.bytes(50), state_type: 'full', prev_state_id: nil
         )
@@ -66,9 +66,9 @@ RSpec.describe Docs::DocumentHistory, type: :model do
       }.by(1)
 
       expect do
-        (BrickdocConfig.history_max_states - 1).times do
+        (MashcardConfig.history_max_states - 1).times do
           Docs::BlockState.create!(
-            id: Brickdoc::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
+            id: Mashcard::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
             document_id: block.id, block_id: block.id,
             state: Random.bytes(50), state_type: 'full', prev_state_id: nil
           )
@@ -79,7 +79,7 @@ RSpec.describe Docs::DocumentHistory, type: :model do
 
       expect do
         Docs::BlockState.create!(
-          id: Brickdoc::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
+          id: Mashcard::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
           document_id: block.id, block_id: block.id,
           state: Random.bytes(50), state_type: 'full', prev_state_id: nil
         )
@@ -89,10 +89,10 @@ RSpec.describe Docs::DocumentHistory, type: :model do
     end
 
     it 'can be created when over interval from last state' do
-      created_at = BrickdocConfig.history_min_interval.minutes.ago
+      created_at = MashcardConfig.history_min_interval.minutes.ago
       expect do
         Docs::BlockState.create!(
-          id: Brickdoc::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
+          id: Mashcard::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
           document_id: block.id, block_id: block.id,
           state: Random.bytes(50), state_type: 'full', prev_state_id: nil, created_at: created_at
         )
@@ -102,7 +102,7 @@ RSpec.describe Docs::DocumentHistory, type: :model do
 
       expect do
         Docs::BlockState.create!(
-          id: Brickdoc::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
+          id: Mashcard::Utils::Encoding::UUID.gen_v4, user_id: user.id, pod_id: user.personal_pod.id,
           document_id: block.id, block_id: block.id,
           state: Random.bytes(50), state_type: 'full', prev_state_id: nil
         )

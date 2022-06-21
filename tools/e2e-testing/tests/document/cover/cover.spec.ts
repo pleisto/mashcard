@@ -85,7 +85,7 @@ test.describe('Add Cover', () => {
     })
   })
 
-  // CORS issue, blocked by: https://github.com/brickdoc/brickdoc/issues/1637
+  // CORS issue, blocked by: https://github.com/pleisto/corp/issues/1637
   test.skip('Upload an Image', async () => {
     test('Verify cover will be added when upload an image', async () => {
       await cover.switchTab(CoverTab.Upload)

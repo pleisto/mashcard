@@ -1,4 +1,4 @@
-import { theme, css } from '@brickdoc/design-system'
+import { theme, css } from '@mashcard/design-system'
 
 const selector = '&-selector'
 

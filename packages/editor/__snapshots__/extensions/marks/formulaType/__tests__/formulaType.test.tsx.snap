@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormulaType renders FormulaType correctly 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+        >
+          formula
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;

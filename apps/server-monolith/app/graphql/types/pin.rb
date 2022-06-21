@@ -3,7 +3,7 @@
 module Types
   class Pin < Types::BaseObject
     graphql_name 'Pin'
-    description 'Brickdoc Docs::Pin'
+    description 'MashCard Docs::Pin'
 
     field :block_id, Scalars::UUID, 'root uuid', null: false
     field :meta, Blocks::Meta, null: false

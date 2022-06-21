@@ -1,9 +1,9 @@
 import React from 'react'
-import { Form, Input, toast, Modal, Button } from '@brickdoc/design-system'
+import { Form, Input, toast, Modal, Button } from '@mashcard/design-system'
 import { object, string } from 'yup'
 import { useDomainAvailableValidator } from '@/common/hooks'
 import { useDocsI18n } from '../../hooks'
-import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput, Pod } from '@/BrickdocGraphQL'
+import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput, Pod } from '@/MashcardGraphQL'
 
 interface ProfileModalProps {
   pod: Pod

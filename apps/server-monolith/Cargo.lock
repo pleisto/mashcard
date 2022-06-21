@@ -183,30 +183,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "brickdoc_ext"
-version = "0.1.0"
-dependencies = [
- "any_ascii",
- "argon2",
- "base64-simd",
- "blake3",
- "bs58",
- "hex",
- "jsonschema",
- "magnus",
- "mrml",
- "radix_fmt",
- "rand",
- "rand_chacha",
- "regex",
- "serde",
- "serde_json",
- "uuid 1.0.0",
- "woothee",
- "z85",
-]
-
-[[package]]
 name = "bs58"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -789,6 +765,30 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
+]
+
+[[package]]
+name = "mashcard_ext"
+version = "0.1.0"
+dependencies = [
+ "any_ascii",
+ "argon2",
+ "base64-simd",
+ "blake3",
+ "bs58",
+ "hex",
+ "jsonschema",
+ "magnus",
+ "mrml",
+ "radix_fmt",
+ "rand",
+ "rand_chacha",
+ "regex",
+ "serde",
+ "serde_json",
+ "uuid 1.0.0",
+ "woothee",
+ "z85",
 ]
 
 [[package]]

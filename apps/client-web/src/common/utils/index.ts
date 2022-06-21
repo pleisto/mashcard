@@ -1,5 +1,5 @@
-import { toast } from '@brickdoc/design-system'
-import { isEmpty } from '@brickdoc/active-support'
+import { toast } from '@mashcard/design-system'
+import { isEmpty } from '@mashcard/active-support'
 
 export function triggerErrorMessages(errors: string[]): void {
   errors.map(error => toast.error(error))

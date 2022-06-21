@@ -1,4 +1,4 @@
-import { Button, styled, theme } from '@brickdoc/design-system'
+import { Button, styled, theme } from '@mashcard/design-system'
 
 const size = '50px'
 const smSize = '34px'

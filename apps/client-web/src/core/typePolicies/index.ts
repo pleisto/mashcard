@@ -1,5 +1,5 @@
 import { TypePolicies, TypePolicy } from '@apollo/client'
-import { currentPodDomain } from './brickdocContext'
+import { currentPodDomain } from './mashcardContext'
 
 export const typePolicies: TypePolicies = {
   ...[

@@ -13,13 +13,13 @@ describe Mutations::Blocks::SyncBatch, type: :mutation do
     GRAPHQL
 
     let(:user) { create(:accounts_user) }
-    let(:operator_id) { Brickdoc::Utils::Encoding::UUID.gen_v4 }
+    let(:operator_id) { Mashcard::Utils::Encoding::UUID.gen_v4 }
 
     it 'empty' do
       self.current_user = user
       self.current_pod = user.personal_pod.as_session_context
 
-      root_id = Brickdoc::Utils::Encoding::UUID.gen_v4
+      root_id = Mashcard::Utils::Encoding::UUID.gen_v4
 
       input = { input: { operatorId: operator_id, rootId: root_id, deletedIds: [], blocks: [{
         id: root_id,
@@ -51,7 +51,7 @@ describe Mutations::Blocks::SyncBatch, type: :mutation do
       expect(user.last_pod_domain).to be_nil
       expect(user.last_block_ids).to eq({})
 
-      root_id = Brickdoc::Utils::Encoding::UUID.gen_v4
+      root_id = Mashcard::Utils::Encoding::UUID.gen_v4
       input = { input: { operatorId: operator_id, rootId: root_id, deletedIds: [], blocks: [{
         id: root_id,
         type: 'doc',
@@ -73,10 +73,10 @@ describe Mutations::Blocks::SyncBatch, type: :mutation do
       self.current_user = user
       self.current_pod = user.personal_pod.as_session_context
 
-      root_id = Brickdoc::Utils::Encoding::UUID.gen_v4
+      root_id = Mashcard::Utils::Encoding::UUID.gen_v4
 
       blocks = [{
-        id: Brickdoc::Utils::Encoding::UUID.gen_v4,
+        id: Mashcard::Utils::Encoding::UUID.gen_v4,
         type: 'doc',
         parentId: root_id,
         meta: {},
@@ -125,8 +125,8 @@ describe Mutations::Blocks::SyncBatch, type: :mutation do
       self.current_user = user
       self.current_pod = user.personal_pod.as_session_context
 
-      root_id = Brickdoc::Utils::Encoding::UUID.gen_v4
-      block_id = Brickdoc::Utils::Encoding::UUID.gen_v4
+      root_id = Mashcard::Utils::Encoding::UUID.gen_v4
+      block_id = Mashcard::Utils::Encoding::UUID.gen_v4
 
       blocks = [{
         id: block_id,

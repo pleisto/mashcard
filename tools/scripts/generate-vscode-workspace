@@ -9,7 +9,7 @@ const out = spawnSync('yarn', ['workspaces', 'list'])
 const matches = out.stdout.toString().matchAll(/YN0000: (.+\/.+)/gm)
 
 const workspaceFile = 'workspace.code-workspace'
-let result = existsSync(workspaceFile) ? JSON.parse(readFileSync(workspaceFile, 'utf8')) : {}
+const result = existsSync(workspaceFile) ? JSON.parse(readFileSync(workspaceFile, 'utf8')) : {}
 result.folders = [
   { name: '/', path: '.' },
   ...Array.from(matches).map(match => ({

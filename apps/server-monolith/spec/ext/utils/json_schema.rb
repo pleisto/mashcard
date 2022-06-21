@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Brickdoc::Utils::JSONSchema do
+describe Mashcard::Utils::JSONSchema do
   describe 'should work' do
     test_schema = <<~JSON
       {

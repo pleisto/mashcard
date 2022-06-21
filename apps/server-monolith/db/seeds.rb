@@ -47,7 +47,7 @@ def create_block(pod, id, parent_id, pods)
 end
 
 parent_map = BLOCK_SEEDS.reduce([{}, []]) do |(result, prev), seed|
-  uuids = seed.to_a.sample.times.to_a.map { Brickdoc::Utils::Encoding::UUID.gen_v4 }
+  uuids = seed.to_a.sample.times.to_a.map { Mashcard::Utils::Encoding::UUID.gen_v4 }
   uuids.each { |uuid| result[uuid] = prev.sample }
   [result, uuids]
 end.first

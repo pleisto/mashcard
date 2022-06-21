@@ -1,7 +1,7 @@
-import { css, theme } from '@brickdoc/design-system'
+import { css, theme } from '@mashcard/design-system'
 
 export const modal = css({
-  ':global(.brd-modal-body)': {
+  ':global(.mc-modal-body)': {
     padding: 0
   }
 })()
@@ -15,7 +15,7 @@ export const selectDropdown = css({
   borderRadius: 0,
   boxShadow: 'none',
 
-  ':global(.brd-select-item-empty)': {
+  ':global(.mc-select-item-empty)': {
     minHeight: 340,
     display: 'flex',
     alignItems: 'center',
@@ -23,7 +23,7 @@ export const selectDropdown = css({
     fontSize: 14
   },
 
-  ':global(.brd-select-item-option)': {
+  ':global(.mc-select-item-option)': {
     alignItems: 'center'
   }
 })()
@@ -38,7 +38,7 @@ export const header = css({
   '.select': {
     flex: 1,
 
-    ':global(.brd-select-selector)': {
+    ':global(.mc-select-selector)': {
       backgroundColor: 'transparent',
       height: 32,
       flexWrap: 'unset',
@@ -47,7 +47,7 @@ export const header = css({
       transition: 'none'
     },
 
-    ':global(.brd-select-selection-search)': {
+    ':global(.mc-select-selection-search)': {
       marginTop: 0,
       marginBottom: 0
     }
@@ -75,7 +75,7 @@ export const header = css({
 
     '&.filled': {
       '.select': {
-        ':global(.brd-select-selector)': {
+        ':global(.mc-select-selector)': {
           backgroundColor: '#fff',
           border: `1px solid ${theme.colors.grey3}`,
           borderTopRightRadius: 0,

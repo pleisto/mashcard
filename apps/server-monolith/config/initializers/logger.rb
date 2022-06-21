@@ -8,7 +8,7 @@ Rails.application.configure do
   config.colorize_logging = Rails.env.development?
   config.lograge.base_controller_class = ['ActionController::API', 'ActionController::Base']
   config.lograge.keep_original_rails_log = false
-  config.lograge.formatter = Brickdoc::Logger::LogrageJsonFormatter
+  config.lograge.formatter = Mashcard::Logger::LogrageJsonFormatter
   # Add request parameters to log output
-  config.lograge.custom_options = Brickdoc::Logger::LogrageCustomOptions
+  config.lograge.custom_options = Mashcard::Logger::LogrageCustomOptions
 end

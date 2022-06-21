@@ -5,7 +5,7 @@ module Scalars
     description 'UUID V4'
 
     def self.coerce_input(input_value, _context)
-      unless Brickdoc::Validators::UUIDValidator::REGEXP.match?(input_value)
+      unless Mashcard::Validators::UUIDValidator::REGEXP.match?(input_value)
         raise GraphQL::CoercionError,
           "#{input_value.inspect} is not a valid uuid"
       end

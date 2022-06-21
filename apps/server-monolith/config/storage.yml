@@ -20,10 +20,10 @@ gcs_privtae:
   service: GCS
   cache_control: private, max-age=0
   iam: true
-  bucket: <%= BrickdocConfig.gcs_config[:private_bucket] %>
+  bucket: <%= MashcardConfig.gcs_config[:private_bucket] %>
 
 gcs_public:
   service: GCS
   cache_control: public, max-age=3600
   iam: true
-  bucket: <%= BrickdocConfig.gcs_config[:public_bucket] %>
+  bucket: <%= MashcardConfig.gcs_config[:public_bucket] %>

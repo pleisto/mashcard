@@ -1,8 +1,8 @@
 [package]
-name = "brickdoc_ext"
+name = "mashcard_ext"
 version = "0.1.0"
 edition = "2021"
-description = "Rust native extension for BrickDoc Server"
+description = "Rust native extension for MashCard Server"
 license = "Apache-2.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

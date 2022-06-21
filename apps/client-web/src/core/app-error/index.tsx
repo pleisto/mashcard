@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { styled, theme, Button, ButtonProps } from '@brickdoc/design-system'
+import { styled, theme, Button, ButtonProps } from '@mashcard/design-system'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import ceramicBackground from '@/common/assets/ceramicBg.webp'
 import logo from '@/common/assets/logo_brickdoc_2.svg'
@@ -55,15 +55,14 @@ export const AppError: React.FC<AppErrorType> = ({
   const jumpToIndex: () => void = () => navigate('/')
   return (
     <ErrorLayout>
-      <img className="logo" src={logo} alt="Brickdoc" />
+      <img className="logo" src={logo} alt="MashCard" />
       <div
         style={{
           height: 568,
           width: 982,
           display: 'flex',
           boxSizing: 'border-box'
-        }}
-      >
+        }}>
         {mediaContent}
         <div
           style={{
@@ -73,15 +72,13 @@ export const AppError: React.FC<AppErrorType> = ({
             padding: 24,
             width: 358,
             boxSizing: 'border-box'
-          }}
-        >
+          }}>
           <h1
             style={{
               fontSize: 24,
               lineHeight: 1.5,
               marginBottom: 4
-            }}
-          >
+            }}>
             {title}
           </h1>
           <p
@@ -89,8 +86,7 @@ export const AppError: React.FC<AppErrorType> = ({
               fontSize: 18,
               lineHeight: 1.555,
               color: theme.colors.typeThirdary.value
-            }}
-          >
+            }}>
             {content}
           </p>
           <Button type="primary" onClick={btnCallback ?? jumpToIndex} {...btnProps}>

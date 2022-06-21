@@ -3,8 +3,8 @@
 require 'benchmark/ips'
 require 'securerandom'
 
-require_relative '../../lib/brickdoc_ext'
-require_relative '../../lib/brickdoc/native_extension_helper'
+require_relative '../../lib/mashcard_ext'
+require_relative '../../lib/mashcard/native_extension_helper'
 
 #
 # Result in M1==>
@@ -17,7 +17,7 @@ require_relative '../../lib/brickdoc/native_extension_helper'
 #   rust extesion uuid      3.673M (± 0.6%) i/s -     37.009M in  10.077170s
 #
 
-FUUID = Brickdoc::Utils::Encoding::UUID
+FUUID = Mashcard::Utils::Encoding::UUID
 
 Benchmark.ips do |x|
   x.config(time: 10, warmup: 2)

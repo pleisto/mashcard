@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlockContainer changes block pointer event when editor editable state change 1`] = `
+<div>
+  <div
+    data-node-view-wrapper=""
+    style="pointer-events: none; white-space: normal;"
+  />
+</div>
+`;
+
+exports[`BlockContainer changes block pointer event when editor editable state change 2`] = `
+<div>
+  <div
+    data-node-view-wrapper=""
+    style="pointer-events: unset; white-space: normal;"
+  />
+</div>
+`;
+
+exports[`BlockContainer hide action options when node without uuid 1`] = `
+<div>
+  <div
+    data-node-view-wrapper=""
+    style="pointer-events: none; white-space: normal;"
+  >
+    block
+  </div>
+</div>
+`;
+
+exports[`BlockContainer inline 1`] = `
+<div>
+  <span
+    as="span"
+    data-node-view-wrapper=""
+    style="pointer-events: unset; white-space: normal;"
+  >
+    <span
+      class="mc-c-bbClCh"
+      contenteditable="false"
+    >
+       
+    </span>
+    block
+    <span
+      class="mc-c-bbClCh"
+      contenteditable="false"
+    >
+       
+    </span>
+  </span>
+</div>
+`;
+
+exports[`BlockContainer with actionOptions 1`] = `
+<div>
+  <div
+    data-node-view-wrapper=""
+    style="pointer-events: unset; white-space: normal;"
+  >
+    block
+  </div>
+</div>
+`;

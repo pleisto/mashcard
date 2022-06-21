@@ -4,19 +4,19 @@ import {
   useGetTrashBlocksQuery,
   useBlockRestoreMutation,
   useBlockHardDeleteMutation
-} from '@/BrickdocGraphQL'
-import { Spin, useList, Checkbox, Button, theme, ConfirmDialog, toast } from '@brickdoc/design-system'
+} from '@/MashcardGraphQL'
+import { Spin, useList, Checkbox, Button, theme, ConfirmDialog, toast } from '@mashcard/design-system'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import { TrashItem } from './TrashItem'
-import { Card, Delete, Undo } from '@brickdoc/design-icons'
-import { debounce } from '@brickdoc/active-support'
+import { Card, Delete, Undo } from '@mashcard/design-icons'
+import { debounce } from '@mashcard/active-support'
 
 import { queryPageBlocks, queryTrashBlocks } from '../../graphql'
 import { useApolloClient } from '@apollo/client'
 import { List, Item, NotFound, Page, Time, Action, SelectBlock, SelectedBar } from './Trash.style'
-import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 interface PageTrashProps {
   domain: string

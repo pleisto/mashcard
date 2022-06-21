@@ -1,10 +1,10 @@
 import { useContext, FC, useState } from 'react'
-import { Avatar, Button, styled, Popover, toast } from '@brickdoc/design-system'
-import { Edit } from '@brickdoc/design-icons'
+import { Avatar, Button, styled, Popover, toast } from '@mashcard/design-system'
+import { Edit } from '@mashcard/design-icons'
 import { SettingsContext } from '@/settings/SettingContext'
 import { usePrepareFileUpload } from '@/docs/pages/hooks'
-import { Dashboard, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
-import { PodOperation, useCreateOrUpdatePodMutation } from '@/BrickdocGraphQL'
+import { Dashboard, ImportSourceOption, UploadResultData } from '@mashcard/uploader'
+import { PodOperation, useCreateOrUpdatePodMutation } from '@/MashcardGraphQL'
 import { useSettingsI18n } from '@/settings/common/hooks'
 
 const Wrapper = styled(Popover, {

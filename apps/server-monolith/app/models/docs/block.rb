@@ -82,7 +82,7 @@ module Docs
 
       return [nil, nil] if pod_id.nil?
 
-      if Brickdoc::Validators::UUIDValidator::REGEXP.match?(id)
+      if Mashcard::Validators::UUIDValidator::REGEXP.match?(id)
         o = find_by(pod_id: pod_id, id: id)
         [o, nil]
       else
@@ -135,7 +135,7 @@ module Docs
       persist_values = Hash[*data.flat_map do |b|
                               ["snapshot_#{b.id}", b.snapshot_version.to_s, "history_#{b.id}", b.history_version.to_s]
                             end ]
-      Brickdoc::Redis.with(:cache) do |redis|
+      Mashcard::Redis.with(:cache) do |redis|
         exist_values = redis.mapped_mget(*keys)
         rest_keys = exist_values.select { |_, v| v.nil? }.keys
         rest_hash = persist_values.slice(*rest_keys)
@@ -185,7 +185,7 @@ module Docs
       meta = COUNTER_META.fetch(type)
       key = meta.fetch(:key_f).call(id)
 
-      Brickdoc::Redis.with(:cache) do |redis|
+      Mashcard::Redis.with(:cache) do |redis|
         counter = Current.redis_values.to_h[key] || redis.get(key)
         return counter.to_i if counter
 
@@ -204,7 +204,7 @@ module Docs
       meta = COUNTER_META.fetch(type)
       key = meta.fetch(:key_f).call(id)
 
-      Brickdoc::Redis.with(:cache) do |redis|
+      Mashcard::Redis.with(:cache) do |redis|
         return redis.incr(key)
       end
     end
@@ -283,7 +283,7 @@ module Docs
     after_create :maybe_attach_attachments!
 
     def maybe_attach_attachments!
-      Brickdoc::Redis.with(:cache) do |redis|
+      Mashcard::Redis.with(:cache) do |redis|
         key = "blob_#{id}"
         redis.smembers(key).each do |blob_id|
           attach_blob!(blob_id)
@@ -306,7 +306,7 @@ module Docs
 
     def update_meta_link
       if meta['link'].present? && meta['link']['title'].blank?
-        data = Brickdoc::PreviewBox.preview(meta['link']['key'])
+        data = Mashcard::PreviewBox.preview(meta['link']['key'])
         meta['link'].merge!(
           'title' => data[:title],
           'description' => data[:description],
@@ -316,7 +316,7 @@ module Docs
     end
 
     def self.broadcast(id, payload)
-      BrickdocSchema.subscriptions.trigger(:newPatch, { doc_id: id }, payload)
+      MashcardSchema.subscriptions.trigger(:newPatch, { doc_id: id }, payload)
     end
 
     def duplicate!
@@ -324,7 +324,7 @@ module Docs
         preload_descendants = descendants_raw.to_a
         now = Time.current
         descendants_ids_map = preload_descendants.map(&:id).index_with do |_old_id|
-          Brickdoc::Utils::Encoding::UUID.gen_v4
+          Mashcard::Utils::Encoding::UUID.gen_v4
         end
         descendants_ids_map[parent_id] = parent_id
         new_root_id = descendants_ids_map.fetch(id)
@@ -378,7 +378,7 @@ module Docs
                 hash[row.id] = descendants_ids_map.fetch(row.id)
               end
               new_columns = columns.map do |c|
-                new_column_id = Brickdoc::Utils::Encoding::UUID.gen_v4
+                new_column_id = Mashcard::Utils::Encoding::UUID.gen_v4
                 column_map[c.fetch('uuid')] = new_column_id
                 c.merge('uuid' => new_column_id)
               end
@@ -412,7 +412,7 @@ module Docs
           end
           preload_spreadsheet_formulas = Docs::Formula.where(id: formula_ids).index_by(&:id)
           new_formula_id_conversions = preload_spreadsheet_formulas.keys.index_with do |_old_id|
-            Brickdoc::Utils::Encoding::UUID.gen_v4
+            Mashcard::Utils::Encoding::UUID.gen_v4
           end
           row_map.values.each do |new_row_id|
             insert_data.values.filter do |b|
@@ -494,7 +494,7 @@ module Docs
     def create_sub_block!(title)
       max_sort = descendants_raw.where(parent_id: id).maximum(:sort) || 0
       Docs::Block.create!(
-        id: Brickdoc::Utils::Encoding::UUID.gen_v4,
+        id: Mashcard::Utils::Encoding::UUID.gen_v4,
         parent_id: id,
         page: true,
         type: 'doc',
@@ -700,7 +700,7 @@ module Docs
 
     def maybe_save_snapshot!
       throttle_key = "save_snapshot:#{id}"
-      Brickdoc::Redis.with(:state) do |redis|
+      Mashcard::Redis.with(:state) do |redis|
         bol = redis.get(throttle_key)
         return false if bol
 

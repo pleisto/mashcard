@@ -11,7 +11,7 @@ module Mutations
       SEND_INTERVAL = 50.seconds
 
       def resolve(email:)
-        Brickdoc::Redis.with(:state) do |redis|
+        Mashcard::Redis.with(:state) do |redis|
           key = "graphql:mutation:userForgetPasswordMailSend/#{email.to_data_masking}"
           return { errors: [I18n.t('errors.messages.send_interval')] } if redis.exists?(key)
 

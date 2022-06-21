@@ -16,13 +16,13 @@ module Mutations
 
         current_domain = current_pod.fetch('domain')
         pod = Pod.find_by(domain: current_domain)
-        raise Brickdoc::GraphQL::Errors::ArgumentError, :invalid_pod if pod.nil? || pod.owner != current_user
+        raise Mashcard::GraphQL::Errors::ArgumentError, :invalid_pod if pod.nil? || pod.owner != current_user
 
         user = Pod.find_by(domain: domain)&.owner
-        raise Brickdoc::GraphQL::Errors::ArgumentError, :invalid_user if user.nil?
+        raise Mashcard::GraphQL::Errors::ArgumentError, :invalid_user if user.nil?
 
         member = pod.members.find_by(user_id: user.id)
-        raise Brickdoc::GraphQL::Errors::ArgumentError, :invalid_member if member.nil?
+        raise Mashcard::GraphQL::Errors::ArgumentError, :invalid_member if member.nil?
 
         member.update!(role: role, state: state)
 

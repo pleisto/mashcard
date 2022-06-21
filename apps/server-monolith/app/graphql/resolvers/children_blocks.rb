@@ -13,7 +13,7 @@ module Resolvers
       return [] if root_id.blank?
 
       root = Docs::Block.unscoped.find_by(id: root_id)
-      raise Brickdoc::GraphQL::Errors::ArgumentError, :already_hard_deleted if root&.deleted_permanently_at
+      raise Mashcard::GraphQL::Errors::ArgumentError, :already_hard_deleted if root&.deleted_permanently_at
 
       if root.nil?
         params = {

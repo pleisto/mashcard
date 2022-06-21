@@ -23,7 +23,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = ::BrickdocConfig.mailer[:from]
+  config.mailer_sender = ::MashcardConfig.mailer[:from]
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -179,7 +179,7 @@ Devise.setup do |config|
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  config.email_regexp = Brickdoc::Validators::EmailValidator::REGEXP
+  config.email_regexp = Mashcard::Validators::EmailValidator::REGEXP
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
@@ -270,14 +270,14 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   # Inject OmniAuth providers from plugin
-  Brickdoc::Plugins::ServerPlugin::Hooks.oauth_provider(config)
+  Mashcard::Plugins::ServerPlugin::Hooks.oauth_provider(config)
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
   #
   config.warden do |manager|
-    manager.failure_app = Brickdoc::DeviseFailureApp
+    manager.failure_app = Mashcard::DeviseFailureApp
     #   manager.intercept_401 = false
     #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   end

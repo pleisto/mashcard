@@ -63,7 +63,7 @@ export class BlockApi {
     const isHardDeleted = options?.isHardDeleted ?? true
     const isSorted = options?.isSorted ?? false
 
-    const domain = await this.page.evaluate(() => (window as any).brickdocContext.currentPod.domain)
+    const domain = await this.page.evaluate(() => (window as any).mashcardContext.currentPod.domain)
     const pages = (await this.getBlocks(domain)).sort(compareAttributeItem)
 
     isSorted
@@ -130,7 +130,7 @@ export class BlockApi {
   }
 
   async removeAllTrashPages(): Promise<void> {
-    const domain = await this.page.evaluate(() => (window as any).brickdocContext.currentPod.domain)
+    const domain = await this.page.evaluate(() => (window as any).mashcardContext.currentPod.domain)
     const pages = (await this.getTrashBlock(domain)).map(page => page.id)
 
     await this.request.post(

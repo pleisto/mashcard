@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { AuthMethod } from '@/BrickdocGraphQL'
+import { AuthMethod } from '@/MashcardGraphQL'
 import { Helmet } from 'react-helmet-async'
 import { useAccountsAuthMethods } from './hooks/useAccountsAuthMethods'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { Button, useBoolean, Box } from '@brickdoc/design-system'
+import { Button, useBoolean, Box } from '@mashcard/design-system'
 import { MoreAuthMethods } from './components/MoreAuthMethods'
 import { EmailPasswordSignIn } from './components/EmailPasswordSignIn'
 import { isLoadingVar } from '@/common/reactiveVars'
@@ -32,7 +32,7 @@ export const SignInPage: React.FC = () => {
       <Helmet>
         <title>{t('sessions.sign_in')}</title>
       </Helmet>
-      <h1>{t('sessions.sign_in_to_brickdoc')}</h1>
+      <h1>{t('sessions.sign_in_to_mashcard')}</h1>
       <Box css={{ marginTop: '48px' }}>
         {
           // Primary Area
@@ -45,8 +45,7 @@ export const SignInPage: React.FC = () => {
               id={`auth-btn-${preferredAuthMethod.name}`}
               style={{ marginTop: '2rem' }}
               onClick={preferredAuthMethod.action}
-              block
-            >
+              block>
               {t('sessions.login_via', { provider: t(`provider.${preferredAuthMethod.name}`) })}
             </Button>
           )

@@ -3,8 +3,8 @@ import {
   GetFormulasDocument,
   GetFormulasQueryVariables as Variables,
   GetFormulasQuery as Query
-} from '@/BrickdocGraphQL'
-import { AnyFunctionClause, BackendActions, createFunctionClause } from '@brickdoc/formula'
+} from '@/MashcardGraphQL'
+import { AnyFunctionClause, BackendActions, createFunctionClause } from '@mashcard/formula'
 import { useImperativeQuery } from '@/common/hooks'
 import { type DocMeta } from '@/docs/store/DocMeta'
 

@@ -14,7 +14,7 @@ module Mutations
         block.update!(text: title, meta: block.meta.merge('title' => title))
         nil
       rescue => e
-        raise Brickdoc::GraphQL::Errors::ArgumentError, e.message
+        raise Mashcard::GraphQL::Errors::ArgumentError, e.message
       end
     end
   end

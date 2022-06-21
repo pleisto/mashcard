@@ -1,5 +1,5 @@
-import { theme, styled } from '@brickdoc/design-system'
-import { IconBackgroundOverlay } from '@brickdoc/editor/src/components/ui/Icon/IconBackground'
+import { theme, styled } from '@mashcard/design-system'
+import { IconBackgroundOverlay } from '@mashcard/editor/src/components/ui/Icon/IconBackground'
 
 export const KeyBindTip = styled('span', {
   lineHeight: theme.lineHeights.callout,

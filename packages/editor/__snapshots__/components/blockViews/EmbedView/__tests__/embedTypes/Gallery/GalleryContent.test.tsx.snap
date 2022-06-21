@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GalleryContent renders GalleryContent correctly 1`] = `
+<div>
+  <div
+    class="mc-c-kCBlgu"
+  >
+    <div
+      class="MuiInput-root mc-c-faqTV mc-c-faqTV-cROdoV-size-md mc-c-faqTV-kUUElh-bordered-true mc-c-faqTV-dQAfkO-borderType-outline mc-c-faqTV-gjYJKs-cv mc-c-jybpWZ"
+    >
+      <input
+        class="MuiInput-input"
+        placeholder="embed_block.types.gallery.search.placeholder"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="mc-c-dwDJdY"
+    >
+      <div
+        class="mc-c-gqWhFo"
+      >
+        <div
+          class="mc-c-icOKAJ"
+        >
+          <img
+            class="mc-c-bUHPNh mc-c-bUHPNh-bbPWAj-spining-true mc-c-bUHPNh-rTblN-hidePic-true"
+            src="smallUrl"
+          />
+          <svg
+            class="mc-c-hsxsfB mc-c-hsxsfB-eNLjdr-size-lg mc-c-hsxsfB-llIIr-color-dark cover-spin"
+            fill="none"
+            height="20"
+            style="opacity: 1;"
+            viewBox="0 0 20 20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="10"
+              cy="10"
+              opacity="0.05"
+              r="9"
+              stroke="black"
+              stroke-linecap="round"
+              stroke-width="2"
+            />
+            <circle
+              cx="10"
+              cy="10"
+              opacity="0.1"
+              r="9"
+              stroke="black"
+              stroke-dasharray="1000"
+              stroke-linecap="round"
+              stroke-width="2"
+            />
+            <circle
+              cx="10"
+              cy="10"
+              opacity="0.2"
+              r="9"
+              stroke="black"
+              stroke-dasharray="1000"
+              stroke-linecap="round"
+              stroke-width="2"
+            />
+            <circle
+              cx="10"
+              cy="10"
+              opacity="1.0"
+              r="9"
+              stroke="black"
+              stroke-dasharray="1000"
+              stroke-linecap="round"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
+          class="mc-c-LqZZY"
+        >
+          <span
+            class="mc-c-sdYln"
+          >
+            username
+          </span>
+        </div>
+      </div>
+      <svg
+        class="mc-c-hsxsfB mc-c-hsxsfB-iixNcA-size-md mc-c-hsxsfB-llIIr-color-dark"
+        fill="none"
+        height="20"
+        style="opacity: 1;"
+        viewBox="0 0 20 20"
+        width="20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="10"
+          cy="10"
+          opacity="0.05"
+          r="9"
+          stroke="black"
+          stroke-linecap="round"
+          stroke-width="2"
+        />
+        <circle
+          cx="10"
+          cy="10"
+          opacity="0.1"
+          r="9"
+          stroke="black"
+          stroke-dasharray="1000"
+          stroke-linecap="round"
+          stroke-width="2"
+        />
+        <circle
+          cx="10"
+          cy="10"
+          opacity="0.2"
+          r="9"
+          stroke="black"
+          stroke-dasharray="1000"
+          stroke-linecap="round"
+          stroke-width="2"
+        />
+        <circle
+          cx="10"
+          cy="10"
+          opacity="1.0"
+          r="9"
+          stroke="black"
+          stroke-dasharray="1000"
+          stroke-linecap="round"
+          stroke-width="2"
+        />
+      </svg>
+      <div
+        class="mc-c-PJLV"
+      />
+    </div>
+  </div>
+</div>
+`;

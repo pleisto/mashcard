@@ -3,9 +3,9 @@ import {
   GetConversationCommentsQuery as Query,
   GetConversationCommentsQueryVariables as Variables,
   GetConversationCommentsDocument
-} from '@/BrickdocGraphQL'
+} from '@/MashcardGraphQL'
 import { useImperativeQuery } from '@/common/hooks'
-import { DiscussionOptions } from '@brickdoc/editor'
+import { DiscussionOptions } from '@mashcard/editor'
 import { DocMeta } from '@/docs/store/DocMeta'
 import { conversationToData } from './useDiscussion'
 

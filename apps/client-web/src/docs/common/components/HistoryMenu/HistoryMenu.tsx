@@ -1,6 +1,6 @@
-import { BrickdocEventBus, HistoryListToggle } from '@brickdoc/schema'
+import { MashcardEventBus, HistoryListToggle } from '@mashcard/schema'
 import { itemStyle } from '@/docs/pages/components/DocumentTopBar/DocumentTopBar.style'
-import { Button, Tooltip, Icon } from '@brickdoc/design-system'
+import { Button, Tooltip, Icon } from '@mashcard/design-system'
 import { useCallback } from 'react'
 import { useDocsI18n } from '../../hooks'
 
@@ -12,7 +12,7 @@ export const HistoryMenu: React.FC<HistoryMenuProps> = ({ className }) => {
   const { t } = useDocsI18n()
 
   const onClick = useCallback(() => {
-    BrickdocEventBus.dispatch(HistoryListToggle({}))
+    MashcardEventBus.dispatch(HistoryListToggle({}))
   }, [])
 
   return (

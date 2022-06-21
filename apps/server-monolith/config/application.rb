@@ -15,18 +15,18 @@ require 'action_cable/engine'
 # require "rails/test_unit/railtie"
 
 # eager load some dependencies
-require_relative '../lib/brickdoc'
+require_relative '../lib/mashcard'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 Dotenv::Railtie.load
 
-module Brickdoc
+module Mashcard
   class Application < Rails::Application
     # Make sure global configuration is loaded early
     require_relative '../app/models/application_record'
-    require_relative '../app/models/brickdoc_config'
+    require_relative '../app/models/mashcard_config'
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
@@ -38,22 +38,22 @@ module Brickdoc
     config.logger = ::Logger.new($stdout)
 
     initializer :load_plugins, before: :load_config_initializers do
-      Brickdoc::Plugins.load_all!
+      Mashcard::Plugins.load_all!
       ## Enabled Global Plugin defaults
       default_plugins = [
-        '@brickdoc/github-auth',
-        '@brickdoc/google-auth',
+        '@mashcard/github-auth',
+        '@mashcard/google-auth',
       ]
-      default_plugins.push '@brickdoc/dotcom' if ENV['BRICKDOC_DOTCOM_LICENSE'].present?
+      default_plugins.push '@mashcard/dotcom' if ENV['MASHCARD_DOTCOM_LICENSE'].present?
       default_plugins.each do |name|
-        plugin = Brickdoc::Plugins.find(name)
+        plugin = Mashcard::Plugins.find(name)
         raise "Plugin #{name} not found, but it should be enabled by default" if plugin.nil?
 
         plugin.default_enabled!
       end
 
       # Add extened edition plugin's initializer directory to load path if it is exist
-      path = Brickdoc::Plugins::ServerPlugin.extended_edition_path
+      path = Mashcard::Plugins::ServerPlugin.extended_edition_path
       Dir["#{path}/config/initializers/*.rb"].sort.each { |file| load_config_initializer(file) } if path.present?
     end
   end

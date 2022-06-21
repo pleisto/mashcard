@@ -108,7 +108,7 @@ class Pod < ApplicationRecord
   end
 
   def hashed_id
-    Brickdoc::Crypto.int_id_obfuscate(id)
+    Mashcard::Crypto.int_id_obfuscate(id)
   end
 
   def as_session_context
@@ -116,7 +116,7 @@ class Pod < ApplicationRecord
   end
 
   def generate_invite_secret
-    secret = Digest::SHA256.hexdigest("#{id}-#{Time.now.to_i}-#{Brickdoc::Crypto.derive_key(:hash_salt)}")
+    secret = Digest::SHA256.hexdigest("#{id}-#{Time.now.to_i}-#{Mashcard::Crypto.derive_key(:hash_salt)}")
     "#{secret[0...16]}#{hashed_id}#{secret[60..64]}"
   end
 

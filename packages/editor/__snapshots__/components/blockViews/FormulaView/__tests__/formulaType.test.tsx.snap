@@ -1,0 +1,960 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`formulaType "normal" - " " " & foo_bar " 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="literal"
+          data-display=" \\" \\" & foo_bar "
+          data-type="any"
+          style="color: #908B9C;"
+        >
+           " " & foo_bar 
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - " 1 + 1  +  1 " 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="literal"
+          data-display=" 1 + 1  +  1 "
+          data-type="any"
+          style="color: #908B9C;"
+        >
+           1 + 1  +  1 
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <br
+          class="ProseMirror-trailingBreak"
+        />
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "#CurrentBlock" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="literal"
+          data-display="#CurrentBlock"
+          data-type="any"
+          style="color: #908B9C;"
+        >
+          #CurrentBlock
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "#CurrentBlock.foo_bar" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="literal"
+          data-display="#CurrentBlock.foo_bar"
+          data-type="any"
+          style="color: #908B9C;"
+        >
+          #CurrentBlock.foo_bar
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "123" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="literal"
+          data-display="123"
+          data-type="any"
+          style="color: #908B9C;"
+        >
+          123
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "123asdasd" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="literal"
+          data-display="123asdasd"
+          data-type="any"
+          style="color: #908B9C;"
+        >
+          123asdasd
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "a+foo_bar" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="literal"
+          data-display="a+foo_bar"
+          data-type="any"
+          style="color: #908B9C;"
+        >
+          a+foo_bar
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "a123 1" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="literal"
+          data-display="a123 1"
+          data-type="any"
+          style="color: #908B9C;"
+        >
+          a123 1
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "custom::ADD(1)" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="literal"
+          data-display="custom::ADD(1)"
+          data-type="any"
+          style="color: #908B9C;"
+        >
+          custom::ADD(1)
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "foo_bar" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="literal"
+          data-display="foo_bar"
+          data-type="any"
+          style="color: #908B9C;"
+        >
+          foo_bar
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "   " 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="literal"
+          data-display="   "
+          data-type="any"
+          style="color: #908B9C;"
+        >
+             
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - " foo baz " 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="literal"
+          data-display=" foo baz "
+          data-type="any"
+          style="color: #908B9C;"
+        >
+           foo baz 
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <br
+          class="ProseMirror-trailingBreak"
+        />
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "= " " & foo_bar " 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="StringLiteral"
+          data-display="\\" \\""
+          data-type="string"
+          style="color: #d81b60;"
+        >
+          " "
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Ampersand"
+          data-display="&"
+          data-type="string"
+        >
+          &
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"00000000-0000-0000-0000-000000000000\\",\\"id\\":\\"00000000-0000-0001-0000-000000000000\\",\\"name\\":\\"foo_bar\\",\\"findKey\\":{\\"namespaceId\\":\\"00000000-0000-0000-0000-000000000000\\",\\"type\\":\\"id\\",\\"value\\":\\"00000000-0000-0001-0000-000000000000\\"}}"
+          data-code="Variable"
+          data-display="foo_bar"
+          data-errors="Expected string but got number"
+          data-type="number"
+          style="color: #d81b60;; 
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          foo_bar
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "= 1 + 1  +  1 " 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="NumberLiteral"
+          data-display="1"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          1
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Plus"
+          data-display="+"
+          data-type="number"
+        >
+          +
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="NumberLiteral"
+          data-display="1"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          1
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Space"
+          data-display="  "
+          data-type="any"
+        >
+            
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Plus"
+          data-display="+"
+          data-type="number"
+        >
+          +
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Space"
+          data-display="  "
+          data-type="any"
+        >
+            
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="NumberLiteral"
+          data-display="1"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          1
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="literal"
+          data-display="="
+          data-type="any"
+          style="color: #908B9C;"
+        >
+          =
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=#CurrentBlock" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-attrs="{\\"kind\\":\\"Block\\",\\"namespaceId\\":\\"00000000-0000-0000-0000-000000000000\\",\\"id\\":\\"00000000-0000-0000-0000-000000000000\\",\\"name\\":\\"formulaType\\",\\"findKey\\":{\\"namespaceId\\":\\"00000000-0000-0000-0000-000000000000\\",\\"type\\":\\"id\\",\\"value\\":\\"00000000-0000-0000-0000-000000000000\\"}}"
+          data-code="Block"
+          data-display="#CurrentBlock"
+          data-type="Block"
+          style="color: #356cf9;"
+        >
+          #CurrentBlock
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=#CurrentBlock.foo_bar" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-attrs="{\\"kind\\":\\"Block\\",\\"namespaceId\\":\\"00000000-0000-0000-0000-000000000000\\",\\"id\\":\\"00000000-0000-0000-0000-000000000000\\",\\"name\\":\\"formulaType\\",\\"findKey\\":{\\"namespaceId\\":\\"00000000-0000-0000-0000-000000000000\\",\\"type\\":\\"id\\",\\"value\\":\\"00000000-0000-0000-0000-000000000000\\"}}"
+          data-code="Block"
+          data-display="#CurrentBlock"
+          data-type="Block"
+          style="color: #356cf9;"
+        >
+          #CurrentBlock
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Dot"
+          data-display="."
+          data-type="any"
+        >
+          .
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"00000000-0000-0000-0000-000000000000\\",\\"id\\":\\"00000000-0000-0001-0000-000000000000\\",\\"name\\":\\"foo_bar\\",\\"findKey\\":{\\"namespaceId\\":\\"00000000-0000-0000-0000-000000000000\\",\\"type\\":\\"id\\",\\"value\\":\\"00000000-0000-0001-0000-000000000000\\"}}"
+          data-code="Variable"
+          data-display="foo_bar"
+          data-type="number"
+          style="color: #d81b60;"
+        >
+          foo_bar
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=123" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="NumberLiteral"
+          data-display="123"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          123
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=123asdasd" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="NumberLiteral"
+          data-display="123"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          123
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="parseErrorOther"
+          data-display="asdasd"
+          data-errors="Not all input parsed: asdasd"
+          data-type="any"
+          style="
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          asdasd
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=a+foo_bar" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="FunctionName"
+          data-display="a"
+          data-errors="\\"a\\" not found"
+          data-type="any"
+          style="color: #d81b60;; 
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          a
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Plus"
+          data-display="+"
+          data-type="number"
+        >
+          +
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"00000000-0000-0000-0000-000000000000\\",\\"id\\":\\"00000000-0000-0001-0000-000000000000\\",\\"name\\":\\"foo_bar\\",\\"findKey\\":{\\"namespaceId\\":\\"00000000-0000-0000-0000-000000000000\\",\\"type\\":\\"id\\",\\"value\\":\\"00000000-0000-0001-0000-000000000000\\"}}"
+          data-code="Variable"
+          data-display="foo_bar"
+          data-type="number"
+          style="color: #d81b60;"
+        >
+          foo_bar
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=a123 1" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="FunctionName"
+          data-display="a123"
+          data-errors="\\"a123\\" not found"
+          data-type="any"
+          style="color: #d81b60;; 
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          a123
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="parseErrorOther"
+          data-display="1"
+          data-errors="Not all input parsed: 1"
+          data-type="any"
+          style="
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          1
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=custom::ADD(1)" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="FunctionGroup"
+          data-display="custom::"
+          data-errors="Function custom::ADD not found"
+          data-type="any"
+          style="
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          custom::
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Function"
+          data-display="ADD"
+          data-errors="Function custom::ADD not found"
+          data-type="any"
+          style="color: #356cf9;; 
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          ADD
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="LParen"
+          data-display="("
+          data-type="any"
+        >
+          (
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="NumberLiteral"
+          data-display="1"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          1
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="RParen"
+          data-display=")"
+          data-type="any"
+        >
+          )
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=foo_bar" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="mashcard-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="mashcard-formula-mark"
+          data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"00000000-0000-0000-0000-000000000000\\",\\"id\\":\\"00000000-0000-0001-0000-000000000000\\",\\"name\\":\\"foo_bar\\",\\"findKey\\":{\\"namespaceId\\":\\"00000000-0000-0000-0000-000000000000\\",\\"type\\":\\"id\\",\\"value\\":\\"00000000-0000-0001-0000-000000000000\\"}}"
+          data-code="Variable"
+          data-display="foo_bar"
+          data-type="number"
+          style="color: #d81b60;"
+        >
+          foo_bar
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;

@@ -7,7 +7,7 @@ class Current < ActiveSupport::CurrentAttributes
   attribute :paths
 
   # Implementing time zone conversion in PWA, uses UTC time in server-side
-  # resets { Time.zone = BrickdocConfig.default_timezone }
+  # resets { Time.zone = MashcardConfig.default_timezone }
 
   def user=(user)
     super

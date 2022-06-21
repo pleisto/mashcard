@@ -1,9 +1,9 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
-import { useUserForgetPasswordMailSendMutation, UserForgetPasswordMailSendInput } from '@/BrickdocGraphQL'
+import { useUserForgetPasswordMailSendMutation, UserForgetPasswordMailSendInput } from '@/MashcardGraphQL'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { mutationResultHandler } from '@/common/utils'
-import { Form, Input, Button, toast, useBoolean } from '@brickdoc/design-system'
+import { Form, Input, Button, toast, useBoolean } from '@mashcard/design-system'
 import { object, string } from 'yup'
 import { PasswordChangeEmailNotice } from './components/PasswordChangeEmailNotice'
 

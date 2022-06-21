@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useCallback, useState } from 'react'
-import { Button, Icon, Popover, toast, Spin, Select, Menu, Dropdown, theme } from '@brickdoc/design-system'
-import { debounce } from '@brickdoc/active-support'
+import { Button, Icon, Popover, toast, Spin, Select, Menu, Dropdown, theme } from '@mashcard/design-system'
+import { debounce } from '@mashcard/active-support'
 import { useDocsI18n } from '../../hooks'
 import {
   useBlockCreateShareLinkMutation,
@@ -12,8 +12,8 @@ import {
   QueryPodSearchQuery as Query,
   QueryPodSearchQueryVariables as Variables,
   BlockCreateShareLinkInput
-} from '@/BrickdocGraphQL'
-import { LineDown, Check } from '@brickdoc/design-icons'
+} from '@/MashcardGraphQL'
+import { LineDown, Check } from '@mashcard/design-icons'
 import { useImperativeQuery } from '@/common/hooks'
 import { ShareLinkListItem } from '../ShareLinkListItem'
 import { PodCard, PodType } from '@/common/components/PodCard'

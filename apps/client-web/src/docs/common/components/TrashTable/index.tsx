@@ -1,4 +1,4 @@
-import { Input, theme } from '@brickdoc/design-system'
+import { Input, theme } from '@mashcard/design-system'
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { useDocsI18n } from '../../hooks'
 import { PageTrash } from './TrashList'

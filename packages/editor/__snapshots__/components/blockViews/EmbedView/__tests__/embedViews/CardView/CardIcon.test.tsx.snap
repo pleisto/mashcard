@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardIcon renders normally if icon is string type 1`] = `
+<div>
+  <img
+    alt="icon"
+    class="mc-c-fHCTpr"
+    src="icon"
+  />
+</div>
+`;

@@ -1,12 +1,12 @@
 import { FC } from 'react'
-import { Add } from '@brickdoc/design-icons'
+import { Add } from '@mashcard/design-icons'
 import { useDocsI18n } from '../../../common/hooks'
-import { Button } from '@brickdoc/design-system'
+import { Button } from '@mashcard/design-system'
 import { useNavigate } from 'react-router-dom'
-import { useBlockCreateMutation } from '@/BrickdocGraphQL'
+import { useBlockCreateMutation } from '@/MashcardGraphQL'
 import { queryPageBlocks } from '../../../common/graphql'
 
-import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { sidebarButtonStyles } from '../../DocumentContentPage.style'
 import { useDocMeta } from '@/docs/store/DocMeta'
 

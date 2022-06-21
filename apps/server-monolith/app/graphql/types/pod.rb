@@ -3,12 +3,12 @@
 module Types
   class Pod < Types::BaseObject
     graphql_name 'Pod'
-    description 'Brickdoc Pod.'
+    description 'MashCard Pod.'
     has_primary_key
 
     field :avatar_data, Pods::Avatar, 'Pod Avatar', null: true
     field :bio, String, 'public profile bio', null: true
-    field :domain, String, 'Like a username, Unique within this instance of Brickdoc', null: false
+    field :domain, String, 'Like a username, Unique within this instance of MashCard', null: false
     field :email, String, 'owner email', null: true
     field :invite_enable, Boolean, 'enable invite feature', null: false
     field :invite_secret, String, 'invite secret', null: true

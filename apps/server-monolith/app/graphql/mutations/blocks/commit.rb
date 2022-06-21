@@ -28,7 +28,7 @@ module Mutations
             states_count = Docs::BlockState.where(block_id: block.id).where(
               'id = :state_id OR prev_state_id = :state_id', state_id: block.state_id
             ).count
-            if states_count > BrickdocConfig.state_max_updates
+            if states_count > MashcardConfig.state_max_updates
               return {
                 block: block,
                 diff_states: diff_states,
@@ -38,7 +38,7 @@ module Mutations
           end
 
           state_model = Docs::BlockState.where(id: args[:state_id]).first_or_initialize
-          state_model.state = Brickdoc::Utils::Encoding::Base64.strict_decode64(args[:state])
+          state_model.state = Mashcard::Utils::Encoding::Base64.strict_decode64(args[:state])
           state_model.state_type = args[:state_type]
           state_model.prev_state_id = args[:prev_state_id]
           state_model.document_id = args[:document_id]
@@ -60,7 +60,7 @@ module Mutations
           end
 
           # TODO: if block is not document, get its doc id for subscription
-          BrickdocSchema.subscriptions.trigger(:document, { doc_id: block.id }, {
+          MashcardSchema.subscriptions.trigger(:document, { doc_id: block.id }, {
             operator_id: args[:operator_id],
             blocks: [block],
             states: [state_model],

@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { styled } from '@brickdoc/design-system'
+import { styled } from '@mashcard/design-system'
 import { layoutStyle } from './index.style'
 import { Sidebar } from '../components/Sidebar'
 import { useSettingsI18n } from '../hooks'

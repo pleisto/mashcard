@@ -39,11 +39,11 @@ jobs:
       - name: helm deployments gc
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          APPS_PREFIX: brickdoc-pr
+          APPS_PREFIX: mashcard-pr
         run: |
           OPENED_PR=$(gh pr list -s open --json number | jq 'map(.number)|join(",")')
           echo "Opened PRs: $OPENED_PR"
-          OPENED_HELM=$(helm list -n cicd -f "$brickdoc-pr.+" -o json  | jq "map(.name|sub(\"$APPS_PREFIX\";\"\"))|join(\",\")")
+          OPENED_HELM=$(helm list -n cicd -f "$mashcard-pr.+" -o json  | jq "map(.name|sub(\"$APPS_PREFIX\";\"\"))|join(\",\")")
           echo "Opened Helm releases: $OPENED_HELM"
           jq -n -r "{gh:$OPENED_PR|split(\",\"),helm:$OPENED_HELM|split(\",\")}|.helm-.gh|map(\"$APPS_PREFIX\(.)\") |.[]" | while read i; do
             echo "uninstall $i...."

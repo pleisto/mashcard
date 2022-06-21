@@ -1,5 +1,5 @@
 import React from 'react'
-import { cx, Button, Dropdown, Menu, MenuProps, Modal, Icon, Spin, Tag, Select } from '@brickdoc/design-system'
+import { cx, Button, Dropdown, Menu, MenuProps, Modal, Icon, Spin, Tag, Select } from '@mashcard/design-system'
 import { useDocsI18n } from '../../hooks'
 import {
   BlockCreateShareLinkInput,
@@ -9,9 +9,9 @@ import {
   QueryPodSearchQueryVariables as Variables,
   ShareLinkState,
   useBlockCreateShareLinkMutation
-} from '@/BrickdocGraphQL'
+} from '@/MashcardGraphQL'
 import { queryBlockShareLinks } from '../../graphql'
-import { debounce } from '@brickdoc/active-support'
+import { debounce } from '@mashcard/active-support'
 import * as styles from './index.styles'
 import { useImperativeQuery } from '@/common/hooks'
 import { PodCard, PodType } from '@/common/components/PodCard'

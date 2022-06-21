@@ -25,8 +25,8 @@ env:
   domain: trunk.mashcard.dev
   GCP_PROJECT: brickdoc-testnet
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-  SENTRY_ORG: brickdoc-inc
-  SENTRY_PROJECT: brickdoc-dev
+  SENTRY_ORG: pleisto
+  SENTRY_PROJECT: mashcard-dev
 concurrency:
   group: monolith-trunk-cd
   cancel-in-progress: true
@@ -91,7 +91,7 @@ jobs:
           location: 'us-central1'
       - name: 'Deploy to GKE'
         run: |-
-          helm upgrade brickdoc-trunk ${{ github.workspace }}/tools/helm-charts/brickdoc \
+          helm upgrade mashcard-trunk ${{ github.workspace }}/tools/helm-charts/mashcard \
            --install --atomic --timeout 15m --cleanup-on-fail --wait --namespace=cicd \
             --set-string image.name=${{ env.image }} \
             --set-string ingress.host=${{ env.domain }} \
@@ -99,15 +99,15 @@ jobs:
             --set-string serviceAccount.name=trunk-or-pr-main \
             --set-string resources.requests.cpu=0.5 \
             --set-string resources.requests.memory=512Mi \
-            --set-string envs.SMTP_FROM=brickdoc-ce-trunk@intl-email-service.brickdoc.app \
+            --set-string envs.SMTP_FROM=mashcard-ce-trunk@intl-email-service.mashcard.app \
             --set-string envs.SENTRY_DSN=https://4aa5075a3b484af6a251f3677a9f665e@o1150336.ingest.sentry.io/6257651 \
             --set-string envs.HOST=${{ env.domain }} \
             --set-string envs.GOOGLE_CLOUD_PROJECT=${{ env.GCP_PROJECT }} \
             --set-string envs.GCP_KMS_FRN=projects/${{ env.GCP_PROJECT }}/locations/us-central1/keyRings/testnet/cryptoKeys/cicd \
-            --set-string envs.GCS_PRIVATE_BUCKET=trunk-pvt.testnet.brickdocusercontent.com \
-            --set-string envs.GCS_PUBLIC_BUCKET=trunk-pub.testnet.brickdocusercontent.com \
+            --set-string envs.GCS_PRIVATE_BUCKET=trunk-pvt.testnet.user-owns-data.net \
+            --set-string envs.GCS_PUBLIC_BUCKET=trunk-pub.testnet.user-owns-data.net \
             --set-string secrets.SECRET_KEY_SEED=${{ secrets.TRUNK_SECRET_KEY_SEED }} \
-            --set-string secrets.BRICKDOC_DATABASE_URL=${{ secrets.TRUNK_POSTGRE_URL }} \
+            --set-string secrets.MASHCARD_DATABASE_URL=${{ secrets.TRUNK_POSTGRE_URL }} \
             --set-string secrets.REDIS_URL=${{ secrets.TRUNK_REDIS_URL }} \
             --set-string secrets.UNSPLASH_API_ACCESS_KEY=${{ secrets.UNSPLASH_API_ACCESS_KEY }} \
             --set-string secrets.UNSPLASH_API_SECRET=${{ secrets.UNSPLASH_API_SECRET }} \

@@ -3,7 +3,7 @@ import { Integrations } from '@sentry/tracing'
 import { Offline as OfflineIntegration } from '@sentry/integrations'
 
 export const sentryInit = (): void => {
-  const ctx = globalThis.brickdocContext
+  const ctx = globalThis.mashcardContext
   SentryInit({
     dsn: ctx.sentryDsn,
     environment: ctx.env,
@@ -15,7 +15,7 @@ export const sentryInit = (): void => {
     // We recommend adjusting this value in production
     tracesSampleRate: 1.0,
     maxValueLength: 2048,
-    release: `brickdoc@${ctx.version}`
+    release: `mashcard@${ctx.version}`
   })
   const userDomain = ctx?.currentUser?.domain
   userDomain &&

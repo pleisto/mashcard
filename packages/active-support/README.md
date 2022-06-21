@@ -1,4 +1,4 @@
-# @brickdoc/active-support
+# @mashcard/active-support
 
 A TypeScript utility library designed to optimize for programmer happiness.
 
@@ -9,13 +9,13 @@ A TypeScript utility library designed to optimize for programmer happiness.
 
 ### Alternative to `lodash`
 
-You could directly use `@brickdoc/active-support` instead of `lodash` and `lodash-es`.
+You could directly use `@mashcard/active-support` instead of `lodash` and `lodash-es`.
 
 ```ts
-import { differenceBy, zip, isString } from '@brickdoc/active-support'
+import { differenceBy, zip, isString } from '@mashcard/active-support'
 ```
 
-If some of the methods in lodash do not exist in `@brickdoc/active-support`, it is because
+If some of the methods in lodash do not exist in `@mashcard/active-support`, it is because
 the are natively supported in modern ECMAScript. see [YOU MIGHT NOT NEED LODASH](https://youmightnotneed.com/lodash/) for more information.
 
 ### Unit Converter
@@ -23,7 +23,7 @@ the are natively supported in modern ECMAScript. see [YOU MIGHT NOT NEED LODASH]
 #### Millisecond conversion
 
 ```ts
-import { ms } from '@brickdoc/active-support';
+import { ms } from '@mashcard/active-support';
 ms('2 days') // 172800000
 ms('2.5 h') // 9000000
 ms('-3 days) // -259200000
@@ -39,7 +39,7 @@ see [vercel/ms](https://github.com/vercel/ms#readme) for more information.
 #### ByteSize conversion
 
 ```ts
-import { byteSize } from '@brickdoc/active-support'
+import { byteSize } from '@mashcard/active-support'
 byteSize('3 mb') // 24_000_000
 byteSize('2 Gigabytes') // 16_000_000_000
 byteSize(32_000_000) // '4 MB'
@@ -62,7 +62,7 @@ In addition we support methods such as `isUUID` nad `isBlack`. See `src/isType.t
 ### Inflections
 
 ```ts
-import { pluralize, singularize } from '@brickdoc/active-support'
+import { pluralize, singularize } from '@mashcard/active-support'
 
 pluralize('word') // 'words'
 pluralize('datum') // 'data'
@@ -74,7 +74,7 @@ singularize('are') // 'is'
 ### Rust style error handling
 
 ```ts
-import { ok, err } from '@brickdoc/active-support'
+import { ok, err } from '@mashcard/active-support'
 
 // something awesome happend
 

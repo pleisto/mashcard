@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toolbar matches snapshot correctly 1`] = `
+<div>
+  <ul
+    class="mc-c-gRhnPc mc-c-gRhnPc-fIIeSn-type-default"
+    role="menu"
+  >
+    <ul
+      class="mc-c-gYAvyC"
+      role="presentation"
+    >
+      <li
+        aria-describedby=""
+        aria-haspopup="false"
+        aria-label="item1"
+        class="mc-c-eBQxoE"
+        role="menuitem"
+      >
+        <span>
+          item1
+        </span>
+      </li>
+      <li
+        aria-describedby=""
+        aria-haspopup="false"
+        aria-label="item2"
+        class="mc-c-eBQxoE"
+        role="menuitem"
+      >
+        <span>
+          item2
+        </span>
+      </li>
+      <li
+        aria-describedby=""
+        aria-haspopup="false"
+        aria-label="item3"
+        class="mc-c-eBQxoE"
+        role="menuitem"
+      >
+        <span>
+          item3
+        </span>
+      </li>
+      <span
+        aria-haspopup="dialog"
+      >
+        <li
+          aria-label="subMenu renderItems"
+          class="mc-c-fUQkwR"
+          role="menuitem"
+        >
+          subMenu renderItems
+          <span
+            aria-label="arrow-down"
+            class="mc-icon mc-icon-arrow-down mc-c-cmbSaq"
+            role="img"
+          >
+            <svg
+              fill="none"
+              height="1em"
+              viewBox="0 0 24 24"
+              width="1em"
+            >
+              <path
+                d="m19 9-7 6-7-6"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              />
+            </svg>
+          </span>
+        </li>
+      </span>
+      <span
+        aria-haspopup="dialog"
+      >
+        <li
+          aria-label="subMenu"
+          class="mc-c-fUQkwR"
+          role="menuitem"
+        >
+          subMenu
+          <span
+            aria-label="arrow-down"
+            class="mc-icon mc-icon-arrow-down mc-c-cmbSaq"
+            role="img"
+          >
+            <svg
+              fill="none"
+              height="1em"
+              viewBox="0 0 24 24"
+              width="1em"
+            >
+              <path
+                d="m19 9-7 6-7-6"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              />
+            </svg>
+          </span>
+        </li>
+      </span>
+      <li
+        aria-label="toolbar.separator"
+        class="mc-c-jWEVxl"
+      />
+    </ul>
+    <li
+      aria-describedby=""
+      aria-label="item2"
+      class="mc-c-eBQxoE"
+      role="menuitem"
+    >
+      <span>
+        item2
+      </span>
+    </li>
+  </ul>
+</div>
+`;

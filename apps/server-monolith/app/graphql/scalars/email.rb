@@ -5,7 +5,7 @@ module Scalars
     description 'Email Address'
 
     def self.coerce_input(input_value, _context)
-      unless Brickdoc::Validators::EmailValidator::REGEXP.match?(input_value)
+      unless Mashcard::Validators::EmailValidator::REGEXP.match?(input_value)
         raise GraphQL::CoercionError,
           "#{input_value.inspect} is not a valid email address"
       end

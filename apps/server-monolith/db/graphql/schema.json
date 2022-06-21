@@ -425,7 +425,7 @@
         {
           "kind": "OBJECT",
           "name": "Block",
-          "description": "Brickdoc Docs::Block",
+          "description": "MashCard Docs::Block",
           "fields": [
             {
               "name": "blobs",
@@ -3050,7 +3050,7 @@
         {
           "kind": "OBJECT",
           "name": "BlockNew",
-          "description": "Brickdoc Docs::Block New Scheme",
+          "description": "MashCard Docs::Block New Scheme",
           "fields": [
             {
               "name": "blockType",
@@ -4123,7 +4123,7 @@
         {
           "kind": "OBJECT",
           "name": "BlockState",
-          "description": "Brickdoc Docs::BlockState",
+          "description": "MashCard Docs::BlockState",
           "fields": [
             {
               "name": "blockId",
@@ -4441,7 +4441,7 @@
         {
           "kind": "OBJECT",
           "name": "Comment",
-          "description": "Brickdoc Docs::Comment",
+          "description": "MashCard Docs::Comment",
           "fields": [
             {
               "name": "content",
@@ -4585,7 +4585,7 @@
         {
           "kind": "OBJECT",
           "name": "Config",
-          "description": "Brickdoc Global Configuration",
+          "description": "MashCard Global Configuration",
           "fields": [
             {
               "name": "accountsEmailPasswordAuth",
@@ -4674,7 +4674,7 @@
         {
           "kind": "OBJECT",
           "name": "Conversation",
-          "description": "Brickdoc Docs::Conversation",
+          "description": "MashCard Docs::Conversation",
           "fields": [
             {
               "name": "blockIds",
@@ -7084,7 +7084,7 @@
         {
           "kind": "OBJECT",
           "name": "Metadata",
-          "description": "Represents information about the Brickdoc Server Instance.",
+          "description": "Represents information about the MashCard Server Instance.",
           "fields": [
             {
               "name": "availableLocales",
@@ -7140,7 +7140,7 @@
             },
             {
               "name": "config",
-              "description": "Brickdoc Global Config",
+              "description": "MashCard Global Config",
               "args": [
 
               ],
@@ -8234,7 +8234,7 @@
           "fields": [
             {
               "name": "domain",
-              "description": "Like a username, Unique within this instance of Brickdoc.",
+              "description": "Like a username, Unique within this instance of MashCard.",
               "args": [
 
               ],
@@ -8472,7 +8472,7 @@
         {
           "kind": "OBJECT",
           "name": "Pin",
-          "description": "Brickdoc Docs::Pin",
+          "description": "MashCard Docs::Pin",
           "fields": [
             {
               "name": "blockId",
@@ -8539,7 +8539,7 @@
         {
           "kind": "OBJECT",
           "name": "Pod",
-          "description": "Brickdoc Pod.",
+          "description": "MashCard Pod.",
           "fields": [
             {
               "name": "avatarData",
@@ -8571,7 +8571,7 @@
             },
             {
               "name": "domain",
-              "description": "Like a username, Unique within this instance of Brickdoc",
+              "description": "Like a username, Unique within this instance of MashCard",
               "args": [
 
               ],
@@ -8930,7 +8930,7 @@
             },
             {
               "name": "domain",
-              "description": "Like a username, Unique within this instance of Brickdoc",
+              "description": "Like a username, Unique within this instance of MashCard",
               "args": [
 
               ],
@@ -9510,7 +9510,7 @@
             },
             {
               "name": "domain",
-              "description": "Like a username, Unique within this instance of Brickdoc",
+              "description": "Like a username, Unique within this instance of MashCard",
               "args": [
 
               ],
@@ -10172,7 +10172,7 @@
             },
             {
               "name": "domain",
-              "description": "Like a username, Unique within this instance of Brickdoc.",
+              "description": "Like a username, Unique within this instance of MashCard.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -12482,7 +12482,7 @@
             },
             {
               "name": "metadata",
-              "description": "Return information about current Brickdoc server instance.",
+              "description": "Return information about current MashCard server instance.",
               "args": [
 
               ],

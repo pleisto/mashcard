@@ -1,9 +1,9 @@
 import React from 'react'
-import { BlockEmoji, BlockType } from '@/BrickdocGraphQL'
-import { Tooltip, Popover, Menu } from '@brickdoc/design-system'
+import { BlockEmoji, BlockType } from '@/MashcardGraphQL'
+import { Tooltip, Popover, Menu } from '@mashcard/design-system'
 import { useDocsI18n } from '../../hooks'
 import * as Root from './index.style'
-import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { useNonNullDocMeta, type Path } from '@/docs/store/DocMeta'
 
 interface PathBreadcrumbProps {

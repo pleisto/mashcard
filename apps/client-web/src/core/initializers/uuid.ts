@@ -1,5 +1,5 @@
-import { uuid } from '@brickdoc/active-support'
+import { uuid } from '@mashcard/active-support'
 
 export const uuidInit = (): void => {
-  globalThis.brickdocContext.uuid = uuid()
+  globalThis.mashcardContext.uuid = uuid()
 }

@@ -4,7 +4,7 @@ schema:
   - ../server-monolith/db/graphql/schema.json
 documents: ['./src/**/*.graphql.ts', './src/**/graphql.ts']
 generates:
-  ./src/BrickdocGraphQL.ts:
+  ./src/MashcardGraphQL.ts:
     plugins:
       - typescript
       - typescript-operations
@@ -19,7 +19,7 @@ generates:
         HttpUrl: string
         UUID: string
         Nil: null | undefined
-  ../../packages/brickdoc-schema/src/BrickdocModels.ts:
+  ../../packages/schema/src/MashcardModels.ts:
     plugins:
       - typescript
     config:

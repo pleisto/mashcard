@@ -14,7 +14,7 @@ Rails.application.reloader.to_prepare do
 
   ActiveStorage::Blob.class_eval do
     def real_url(params = {})
-      Brickdoc::Storage.real_url(self, params)
+      Mashcard::Storage.real_url(self, params)
     end
   end
 

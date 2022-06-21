@@ -1,7 +1,7 @@
 {
   "name": "@mashcard/monorepo",
   "version": "0.0.0",
-  "author": "Brickdoc Inc",
+  "author": "Pleisto Inc.",
   "description": "MashCard Monorepo Root",
   "license": "Apache-2.0",
   "private": true,
@@ -20,8 +20,8 @@
     "*.{json,yml,yaml,md,graphql,gql,css,js,jsx,ts,tsx}": [
       "prettier --write"
     ],
-    "packages/brickdoc-design-icons/assets/**/*.svg": [
-      "yarn design-icons generator"
+    "packages/design-icons/assets/**/*.svg": [
+      "yarn design-icons generate"
     ],
     "apps/server-monolith/*.rs": [
       "cargo fmt --manifest-path=apps/server-monolith/Cargo.toml && :"
@@ -50,19 +50,19 @@
     "commit": "git add . && cz",
     "graphql": "yarn server bundle exec rails graphql:schema:dump && yarn web run -T graphql-codegen --config codegen.yml",
     "cleanup": "rimraf node_modules/.cache public/esm-bundle '{packages,tools,apps}/*/{dist,junit-reports,coverage,.turbo,.nyc_output,.eslintcache,.next}' 'tools/e2e-testing/{allure-report,allure-results,test-results,storageState-*.json}'",
-    "schema": "yarn workspace @brickdoc/schema",
-    "design-system": "yarn workspace @brickdoc/design-system",
-    "design-icons": "yarn workspace @brickdoc/design-icons",
-    "editor": "yarn workspace @brickdoc/editor",
-    "formula": "yarn workspace @brickdoc/formula",
-    "uploader": "yarn workspace @brickdoc/uploader",
-    "web": "yarn workspace @brickdoc/client-web",
-    "e2e-testing": "yarn workspace @brickdoc/e2e-testing",
-    "active-support": "yarn workspace @brickdoc/active-support",
-    "server": "yarn workspace @brickdoc/server-monolith",
-    "github-auth": "yarn workspace @brickdoc/github-auth",
-    "google-auth": "yarn workspace @brickdoc/google-auth",
-    "dotcom": "yarn workspace @brickdoc/dotcom"
+    "schema": "yarn workspace @mashcard/schema",
+    "design-system": "yarn workspace @mashcard/design-system",
+    "design-icons": "yarn workspace @mashcard/design-icons",
+    "editor": "yarn workspace @mashcard/editor",
+    "formula": "yarn workspace @mashcard/formula",
+    "uploader": "yarn workspace @mashcard/uploader",
+    "web": "yarn workspace @mashcard/client-web",
+    "e2e-testing": "yarn workspace @mashcard/e2e-testing",
+    "active-support": "yarn workspace @mashcard/active-support",
+    "server": "yarn workspace @mashcard/server-monolith",
+    "github-auth": "yarn workspace @mashcard/github-auth",
+    "google-auth": "yarn workspace @mashcard/google-auth",
+    "dotcom": "yarn workspace @mashcard/dotcom"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
@@ -117,7 +117,7 @@
     "cached-path-relative": ">=1.1.0",
     "trim": ">= 1.0.1",
     "dayjs": ">=1.11.1",
-    "cpy": "npm:@brickdoc/cpy@>=8.1.2-patch.1",
+    "cpy": "npm:@pleisto/cpy@>=8.1.2-patch.1",
     "@jest/transform": "npm:@jest/transform@>=27",
     "prosemirror-view": "patch:prosemirror-view@npm:1.23.7#.yarn/patches/prosemirror-view-npm-1.23.7-5085f0bf9b",
     "minimist": ">= 1.2.6",

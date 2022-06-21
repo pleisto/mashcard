@@ -1,4 +1,4 @@
-import { styled } from '@brickdoc/design-system'
+import { styled } from '@mashcard/design-system'
 
 export const List = styled('ul', {
   display: 'flex',

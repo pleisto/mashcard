@@ -26,8 +26,8 @@ env:
   domain: pr${{ github.event.pull_request.number }}.mashcard.dev
   GCP_PROJECT: brickdoc-testnet
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-  SENTRY_ORG: brickdoc-inc
-  SENTRY_PROJECT: brickdoc-dev
+  SENTRY_ORG: pleisto
+  SENTRY_PROJECT: mashcard-dev
 jobs:
   build:
     name: 'Build and Push Docker Image'
@@ -88,10 +88,10 @@ jobs:
           location: 'us-central1'
       - name: Uninstall History Release
         run: |-
-          helm uninstall brickdoc-pr${{ github.event.pull_request.number }} --namespace=cicd || true
+          helm uninstall mashcard-pr${{ github.event.pull_request.number }} --namespace=cicd || true
       - name: Deployment to GKE
         run: |-
-          helm upgrade brickdoc-pr${{ github.event.pull_request.number }} ${{ github.workspace }}/tools/helm-charts/brickdoc \
+          helm upgrade mashcard-pr${{ github.event.pull_request.number }} ${{ github.workspace }}/tools/helm-charts/mashcard \
            --install --atomic --timeout 15m --cleanup-on-fail --wait --namespace=cicd --set previewEnv=true \
             --set-string image.name=${{ env.image }} \
             --set-string ingress.host=${{ env.domain }} \

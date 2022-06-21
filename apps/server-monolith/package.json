@@ -1,5 +1,5 @@
 {
-  "name": "@brickdoc/server-monolith",
+  "name": "@mashcard/server-monolith",
   "private": true,
   "description": "It's a stub package for make turborepo could be work with rails",
   "license": "Apache-2.0",

@@ -1,6 +1,6 @@
-# Brickdoc Security Policy
+# Pleisto Security Policy
 
-Brickdoc takes the security of our software products and services seriously. If you believe you have found a security vulnerability in any Brickdoc-owned repository, please report it to us as described below.
+Pleisto takes the security of our software products and services seriously. If you believe you have found a security vulnerability in any Pleisto-owned repository, please report it to us as described below.
 
 ## Supported Versions
 
@@ -14,11 +14,11 @@ Use this section to tell people about which versions of your project are current
 
 If your vulnerability report affects our product or service, you may receive a bounty award according to the program descriptions.
 
-Bounties generally range from **50-1,000 USD** depending on the severity of the bug. Due to the complexity of cross-border payments, if Brickdoc LTD does not have a bank account in the country or region where you live, we may use an Amazon Gift Card or other stored-value cards instead of a cash reward.
+Bounties generally range from **50-1,000 USD** depending on the severity of the bug. Due to the complexity of cross-border payments, if Pleisto Inc. does not have a bank account in the country or region where you live, we may use an Amazon Gift Card or other stored-value cards instead of a cash reward.
 
 ### How severity is determined
 
-Brickdoc reserves the right to make a final decision regarding the severity of a reported finding. Upon receipt of the finding, we will conduct an internal investigation and determine the severity of the finding by considering multiple factors including but not limited to:
+Pleisto reserves the right to make a final decision regarding the severity of a reported finding. Upon receipt of the finding, we will conduct an internal investigation and determine the severity of the finding by considering multiple factors including but not limited to:
 
 - Common Vulnerability Scoring System
 - The quantity of affected users and data

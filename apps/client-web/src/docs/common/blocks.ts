@@ -1,7 +1,7 @@
 import { Node } from 'prosemirror-model'
 import { JSONContent } from '@tiptap/core'
-import { BlockInput, Block } from '@/BrickdocGraphQL'
-import { isNil } from '@brickdoc/active-support'
+import { BlockInput, Block } from '@/MashcardGraphQL'
+import { isNil } from '@mashcard/active-support'
 
 export const nodeChildren = (node: Node): Node[] => (node.content as any)?.content ?? []
 

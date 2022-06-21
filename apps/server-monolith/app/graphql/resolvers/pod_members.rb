@@ -9,7 +9,7 @@ module Resolvers
     def resolve
       domain = current_pod.fetch('domain')
       pod = ::Pod.find_by(domain: domain)
-      raise Brickdoc::GraphQL::Errors::ArgumentError, :invalid_pod if pod.nil?
+      raise Mashcard::GraphQL::Errors::ArgumentError, :invalid_pod if pod.nil?
 
       pod.members.includes(user: [personal_pod: :avatar_attachment])
     end

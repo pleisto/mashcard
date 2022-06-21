@@ -73,7 +73,7 @@ describe('.isUrl', () => {
   it('should work', () => {
     expect(isUrl('mashcard://example?pageId=233')).toBe(true)
     expect(isUrl('https://test.com', 'https')).toBe(true)
-    expect(isUrl('mashcard.io')).toBe(false)
-    expect(isUrl('sftp://foss.mashcard.io', 'https')).toBe(false)
+    expect(isUrl('mashcard.cloud')).toBe(false)
+    expect(isUrl('sftp://foss.mashcard.cloud', 'https')).toBe(false)
   })
 })

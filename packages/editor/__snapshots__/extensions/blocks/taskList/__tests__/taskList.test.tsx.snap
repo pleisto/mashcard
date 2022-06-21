@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TaskList renders TaskList correctly 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <div
+        class="react-renderer node-taskList"
+      >
+        <div
+          class="mc-c-kpJlxb"
+          data-node-view-wrapper=""
+          style="pointer-events: unset; white-space: normal;"
+        >
+          <ul
+            as="ul"
+            data-node-view-content=""
+            data-task-list=""
+            style="white-space: pre-wrap;"
+          >
+            <div
+              style="white-space: inherit;"
+            >
+              <li
+                data-checked="true"
+              >
+                <label>
+                  <input
+                    checked="checked"
+                    type="checkbox"
+                  />
+                  <span />
+                </label>
+                <div>
+                  <p>
+                    A list item
+                  </p>
+                </div>
+              </li>
+              <li
+                data-checked="false"
+              >
+                <label>
+                  <input
+                    type="checkbox"
+                  />
+                  <span />
+                </label>
+                <div>
+                  <p>
+                    And another one
+                  </p>
+                </div>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
