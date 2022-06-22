@@ -216,7 +216,6 @@ export const queryBlockInfo = gql`
       collaborators {
         name
         domain
-        email
         avatarData {
           url
         }

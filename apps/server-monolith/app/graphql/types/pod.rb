@@ -9,7 +9,6 @@ module Types
     field :avatar_data, Pods::Avatar, 'Pod Avatar', null: true
     field :bio, String, 'public profile bio', null: true
     field :domain, String, 'Like a username, Unique within this instance of MashCard', null: false
-    field :email, String, 'owner email', null: true
     field :invite_enable, Boolean, 'enable invite feature', null: false
     field :invite_secret, String, 'invite secret', null: true
     field :name, String, 'Pod Name', null: true

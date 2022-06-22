@@ -39,7 +39,6 @@ module Groups
       {
         domain: user.domain,
         name: user.name,
-        email: user.email,
         role: role,
         state: state,
         avatar_data: user.avatar_data,

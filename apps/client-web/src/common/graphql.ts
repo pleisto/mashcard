@@ -41,7 +41,6 @@ export const queryPods = gql`
       id
       domain
       name
-      email
       personal
       inviteEnable
       owned
@@ -99,7 +98,6 @@ export const queryPodMembers = gql`
   query GetPodMembers {
     podMembers {
       domain
-      email
       name
       role
       state

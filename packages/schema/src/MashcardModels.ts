@@ -1341,8 +1341,6 @@ export type Pod = {
   bio?: Maybe<Scalars['String']>
   /** Like a username, Unique within this instance of MashCard */
   domain: Scalars['String']
-  /** owner email */
-  email?: Maybe<Scalars['String']>
   /** object unique id */
   id: Scalars['AutoIncrementID']
   /** enable invite feature */
@@ -1399,8 +1397,6 @@ export type PodMember = {
   avatarData?: Maybe<Avatar>
   /** Like a username, Unique within this instance of MashCard */
   domain: Scalars['String']
-  /** owner email */
-  email?: Maybe<Scalars['String']>
   /** object unique id */
   id: Scalars['AutoIncrementID']
   /** Pod Name */

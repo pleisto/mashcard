@@ -2417,11 +2417,6 @@ type Pod {
   domain: String!
 
   """
-  owner email
-  """
-  email: String
-
-  """
   object unique id
   """
   id: AutoIncrementID!
@@ -2527,11 +2522,6 @@ type PodMember {
   Like a username, Unique within this instance of MashCard
   """
   domain: String!
-
-  """
-  owner email
-  """
-  email: String
 
   """
   object unique id

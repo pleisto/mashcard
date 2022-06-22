@@ -58,7 +58,6 @@ describe Resolvers::BlockInfo, type: :query do
           collaborators {
             name
             domain
-            email
             avatarData {
               url
             }

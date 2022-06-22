@@ -8,7 +8,6 @@ describe Resolvers::PodMembers, type: :query do
       query GetPodUsers {
         podMembers {
           domain
-          email
           name
           role
           state

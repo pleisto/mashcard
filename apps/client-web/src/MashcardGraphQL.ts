@@ -1344,8 +1344,6 @@ export type Pod = {
   bio?: Maybe<Scalars['String']>
   /** Like a username, Unique within this instance of MashCard */
   domain: Scalars['String']
-  /** owner email */
-  email?: Maybe<Scalars['String']>
   /** object unique id */
   id: Scalars['AutoIncrementID']
   /** enable invite feature */
@@ -1402,8 +1400,6 @@ export type PodMember = {
   avatarData?: Maybe<Avatar>
   /** Like a username, Unique within this instance of MashCard */
   domain: Scalars['String']
-  /** owner email */
-  email?: Maybe<Scalars['String']>
   /** object unique id */
   id: Scalars['AutoIncrementID']
   /** Pod Name */
@@ -2058,7 +2054,6 @@ export type GetPodsQuery = {
     id: string
     domain: string
     name?: string | null
-    email?: string | null
     personal: boolean
     inviteEnable: boolean
     owned: boolean
@@ -2114,7 +2109,6 @@ export type GetPodMembersQuery = {
   podMembers?: Array<{
     __typename?: 'PodMember'
     domain: string
-    email?: string | null
     name: string
     role: MemberRole
     state: MemberState
@@ -2187,7 +2181,6 @@ export type QueryPodSearchQuery = {
   podSearch: Array<{
     __typename?: 'Pod'
     domain: string
-    email?: string | null
     name?: string | null
     avatarData?: { __typename?: 'Avatar'; url: string } | null
   }>
@@ -2333,7 +2326,6 @@ export type GetBlockShareLinksQuery = {
       __typename?: 'Pod'
       name?: string | null
       domain: string
-      email?: string | null
       avatarData?: { __typename?: 'Avatar'; url: string } | null
     }
   }>
@@ -2656,7 +2648,6 @@ export type GetBlockInfoQuery = {
       __typename?: 'Pod'
       name?: string | null
       domain: string
-      email?: string | null
       avatarData?: { __typename?: 'Avatar'; url: string } | null
     }>
   } | null
@@ -3559,7 +3550,6 @@ export const GetPodsDocument = gql`
       id
       domain
       name
-      email
       personal
       inviteEnable
       owned
@@ -3701,7 +3691,6 @@ export const GetPodMembersDocument = gql`
   query GetPodMembers {
     podMembers {
       domain
-      email
       name
       role
       state
@@ -3899,7 +3888,6 @@ export const QueryPodSearchDocument = gql`
   query QueryPodSearch($input: String!) {
     podSearch(input: $input) {
       domain
-      email
       name
       avatarData {
         url
@@ -4280,7 +4268,6 @@ export const GetBlockShareLinksDocument = gql`
       sharePodData {
         name
         domain
-        email
         avatarData {
           url
         }
@@ -5231,7 +5218,6 @@ export const GetBlockInfoDocument = gql`
       collaborators {
         name
         domain
-        email
         avatarData {
           url
         }

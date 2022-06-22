@@ -64,7 +64,6 @@ class Pod < ApplicationRecord
       avatar_data: avatar_data,
       bio: bio,
       domain: username,
-      email: owner.email,
       name: display_name,
     }
   end

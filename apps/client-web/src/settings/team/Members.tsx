@@ -64,7 +64,7 @@ export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
           as="ul">
           {members?.map(user => (
             <li key={user.domain}>
-              <PodCard pod={user} key={user.domain} label={user.email ?? user.domain} />
+              <PodCard pod={user} key={user.domain} label={user.domain} />
               <Button
                 disabled={user.domain === currentUserDomain}
                 onClick={() => {
