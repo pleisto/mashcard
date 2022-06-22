@@ -17,7 +17,6 @@ const emptyDocMeta: DocMeta = {
   isRedirect: false,
   pin: false,
   title: '',
-  host: '',
   path: '',
   collaborators: [],
   pathArray: [],
