@@ -135,7 +135,7 @@ class User < Pod
 
   def destroy_user!
     if has_group_pods?
-      errors.add(:base, 'You cannot delete a user with team pods')
+      errors.add(:base, ::I18n.t('errors.messages.delete_disabled_because_group_pods'))
       return false
     end
 

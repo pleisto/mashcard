@@ -167,5 +167,6 @@ jobs:
           HUSKY: 0
         with:
           default_author: github_actions
+          push: origin HEAD:${{ github.head_ref }}
           message: 'chore: bump schemas and dists'
-          add: 'apps packages'
+          add: 'apps/server-monolith/db packages'
