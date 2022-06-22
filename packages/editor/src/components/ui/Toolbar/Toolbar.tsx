@@ -84,6 +84,14 @@ const ToolbarMenu = styled('ul', {
     marginLeft: 4
   },
 
+  'li + span': {
+    marginLeft: 4
+  },
+
+  'li + ul': {
+    marginLeft: 4
+  },
+
   variants: {
     type: {
       default: {
@@ -121,6 +129,20 @@ const ToolbarSeparator = styled('li', {
   width: '1px'
 })
 
+const TooltipTitle = styled('div', {
+  color: theme.colors.white,
+  fontWeight: '600',
+  fontSize: '12px',
+  lineHeight: '18px'
+})
+
+const TooltipDescription = styled('div', {
+  color: theme.colors.grey5,
+  fontWeight: '450',
+  fontSize: '12px',
+  lineHeight: '18px'
+})
+
 const ToolbarMenuOptionInner: FC<{ option: ToolbarOption }> = ({ option, ...props }) => {
   if (option.type === 'item') {
     return <ToolbarMenuItem option={option} {...props} />
@@ -150,8 +172,8 @@ const ToolbarMenuOption: FC<{ option: ToolbarOption }> = ({ option }) => {
     <Tooltip
       title={
         <>
-          <div>{tooltipTitle}</div>
-          <div>{tooltipDescription}</div>
+          <TooltipTitle>{tooltipTitle}</TooltipTitle>
+          <TooltipDescription>{tooltipDescription}</TooltipDescription>
         </>
       }
       placement="top"
