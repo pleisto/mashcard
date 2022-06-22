@@ -6,7 +6,7 @@ module Accounts
       raise ActionController::RoutingError, 'Not Found' unless Devise.omniauth_configs.key?(name.to_sym)
       redirect_to(new_user_session_path) && return if omniauth_auth.blank?
 
-      @identity = Accounts::FederatedIdentity.find_by(provider: omniauth_auth[:provider], uid: omniauth_auth[:uid])
+      @identity = Users::AuthenticationFederatedIdentity.find_by(provider: omniauth_auth[:provider], uid: omniauth_auth[:uid])
       if @identity.present?
         sign_in_and_redirect @identity.user, event: :authentication
       else

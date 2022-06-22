@@ -43,49 +43,7 @@ class User < Pod
     # don't destroy the user if it is owner of a group
     through: :owned_group_members, source: :group, dependent: :restrict_with_exception
 
-  ## FederatedIdentity
-  has_many :federated_identities, class_name: 'Accounts::FederatedIdentity',
-    foreign_key: :accounts_user_id, inverse_of: :user, dependent: :destroy
-
-  attr_accessor :email, :password, :confirmed_at
-  attr_accessor :omniauth_provider, :omniauth_uid
-
   attr_accessor :current_pod_id, :current_pod_cache
-
-  after_create :bind_authentication!
-  after_save :bind_federation_identity
-
-  private def bind_federation_identity
-    return unless omniauth_provider.present? && omniauth_uid.present?
-
-    Accounts::FederatedIdentity.find_or_create_by!(provider: omniauth_provider, uid: omniauth_uid, accounts_user_id: id)
-  end
-
-  private def dirty_authentication
-    Users::Authentication.new({
-      user_id: id,
-      password: password,
-      email: email,
-      password_confirmation: password,
-      confirmed_at: confirmed_at,
-      omniauth_uid: omniauth_uid,
-      omniauth_provider: omniauth_provider,
-    }.compact)
-  end
-
-  validate :validate_authentication, on: :create
-
-  # Copy Authentication's error to user's error
-  private def validate_authentication
-    o = dirty_authentication
-    return if o.valid?
-
-    errors.copy!(o.errors)
-  end
-
-  private def bind_authentication!
-    dirty_authentication.save!
-  end
 
   def fetch_current_pod_cache
     return current_pod_cache if current_pod_cache

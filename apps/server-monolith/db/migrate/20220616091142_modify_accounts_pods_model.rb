@@ -66,6 +66,18 @@ class ModifyAccountsPodsModel < ActiveRecord::Migration[7.0]
       t.index ['group_id'], name: 'index_accounts_members_on_group_id'
       t.index ['user_id'], name: 'index_accounts_members_on_user_id'
     end
+
+    drop_table :accounts_federated_identities
+
+    create_table 'users_authentication_federated_identities', force: :cascade do |t|
+      t.bigint 'users_authentication_id'
+      t.string 'provider', null: false
+      t.string 'uid', null: false, comment: 'unique identifier'
+      t.datetime 'created_at', null: false
+      t.datetime 'updated_at', null: false
+      t.index ['users_authentication_id'], name: 'index_federated_identities_on_users_authentication_id' ## NOTE: index name too long
+      t.index ['provider', 'uid'], name: 'index_federated_identities_on_provider_and_uid', unique: true  ## NOTE: index name too long
+    end
   end
 
   def down
@@ -134,5 +146,17 @@ class ModifyAccountsPodsModel < ActiveRecord::Migration[7.0]
     end
 
     drop_table :users_authentications
+
+    create_table 'accounts_federated_identities', force: :cascade do |t|
+      t.bigint 'accounts_user_id'
+      t.string 'provider', null: false
+      t.string 'uid', null: false, comment: 'unique identifier'
+      t.datetime 'created_at', null: false
+      t.datetime 'updated_at', null: false
+      t.index ['accounts_user_id'], name: 'index_accounts_federated_identities_on_accounts_user_id'
+      t.index ['provider', 'uid'], name: 'index_accounts_federated_identities_on_provider_and_uid', unique: true
+    end
+
+    drop_table :users_authentication_federated_identities
   end
 end

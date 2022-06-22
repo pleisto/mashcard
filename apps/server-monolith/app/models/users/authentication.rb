@@ -48,10 +48,34 @@ module Users
     devise :database_authenticatable, :registerable, :lockable, :async,
       :recoverable, :rememberable, :confirmable, :trackable, :omniauthable, :validatable
 
-    attr_accessor :omniauth_provider, :omniauth_uid
+    has_many :federated_identities, class_name: 'Users::AuthenticationFederatedIdentity',
+      foreign_key: :users_authentication_id, inverse_of: :authentication, dependent: :destroy
 
-    delegate :display_name, to: :user
-    alias_attribute :name, :display_name
+    validates :username, presence: true, on: :create
+    validates :display_name, presence: true, on: :create
+
+    def name
+      user&.display_name || email
+    end
+
+    # Extra props when create
+    attr_accessor :omniauth_provider, :omniauth_uid
+    attr_accessor :username, :display_name, :external_avatar_url
+
+    before_create :bind_or_create_user!
+    after_save :bind_federation_identity!
+
+    # Setup user_id before create
+    def bind_or_create_user!
+      self.user_id = User.find_or_create_by!({ username: username, display_name: display_name,
+                                               external_avatar_url: external_avatar_url, }.compact).id
+    end
+
+    def bind_federation_identity!
+      return unless omniauth_provider.present? && omniauth_uid.present?
+
+      federated_identities.find_or_create_by!(provider: omniauth_provider, uid: omniauth_uid)
+    end
 
     # When federated identity is not available, the password field is required
     def email_required?
@@ -59,7 +83,7 @@ module Users
       return false if omniauth_provider.present?
 
       # 2. federated_identities exists
-      return false if user_id && user.federated_identities.present?
+      return false if federated_identities.present?
 
       true
     end

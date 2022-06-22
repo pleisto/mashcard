@@ -20,8 +20,8 @@ describe Resolvers::EmailAvailable, type: :query do
     end
 
     it 'expect email uniqueness' do
-      stub = create(:accounts_user)
-      graphql_execute(query, { email: stub.email })
+      stub = create(:accounts_user_authentication).user
+      graphql_execute(query, { email: stub.authentication.email })
       expect(response.data['emailAvailable']).to eq({ 'success' => false,
 'message' => I18n.t('errors.messages.taken'), })
 

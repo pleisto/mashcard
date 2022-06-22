@@ -12,7 +12,7 @@ describe Mutations::Users::PasswordReset, type: :mutation do
       }
     GRAPHQL
 
-    let(:user) { create(:accounts_user) }
+    let(:user) { create(:accounts_user_authentication).user }
 
     it 'checks token exists' do
       graphql_execute(mutation, { input: { token: FFaker::Guid.guid, password: FFaker::Internet.password } })

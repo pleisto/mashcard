@@ -22,16 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_21_070648) do
   create_enum "block_type", ["document", "component"]
   create_enum "pod_type", ["User", "Group"]
 
-  create_table "accounts_federated_identities", force: :cascade do |t|
-    t.bigint "accounts_user_id"
-    t.string "provider", null: false
-    t.string "uid", null: false, comment: "unique identifier"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["accounts_user_id"], name: "index_accounts_federated_identities_on_accounts_user_id"
-    t.index ["provider", "uid"], name: "index_accounts_federated_identities_on_provider_and_uid", unique: true
-  end
-
   create_table "accounts_notifications", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "notification_type", null: false
@@ -249,6 +239,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_21_070648) do
     t.index "lower((username)::text)", name: "index_pods_on_lower_username_text", unique: true
     t.index ["deleted_at"], name: "index_pods_on_deleted_at"
     t.index ["type"], name: "index_pods_on_type"
+  end
+
+  create_table "users_authentication_federated_identities", force: :cascade do |t|
+    t.bigint "users_authentication_id"
+    t.string "provider", null: false
+    t.string "uid", null: false, comment: "unique identifier"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider", "uid"], name: "index_federated_identities_on_provider_and_uid", unique: true
+    t.index ["users_authentication_id"], name: "index_federated_identities_on_users_authentication_id"
   end
 
   create_table "users_authentications", force: :cascade do |t|
