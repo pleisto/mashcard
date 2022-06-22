@@ -7,8 +7,8 @@ module Types
       possible_types Image, Color
 
       def self.resolve_type(object, _ctx)
-        type_name = "block_#{object['type'].downcase}".classify
-        "Types::#{type_name}".safe_constantize
+        type_class_name = object['type'].downcase.classify
+        "Types::Blocks::#{type_class_name}".safe_constantize
       end
     end
   end

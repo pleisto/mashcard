@@ -248,6 +248,10 @@ export const MashcardUploaderDashboard = styled('div', {
       },
 
       '&:hover, &:active, &:focus': {
+        '.unsplash-image::after': {
+          opacity: 1
+        },
+
         '.unsplash-image-username': {
           opacity: 1
         }
@@ -258,7 +262,19 @@ export const MashcardUploaderDashboard = styled('div', {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
-      borderRadius: 2
+      borderRadius: 2,
+
+      '&::after': {
+        content: ' ',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        background: theme.colors.overlayPrimary,
+        opacity: 0,
+        transition: `opacity 200ms ${theme.transitions.easeIn}`
+      }
     },
 
     '.unsplash-image-username': {
