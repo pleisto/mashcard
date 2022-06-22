@@ -9,7 +9,7 @@ module Types
       def self.resolve_type(object, _ctx)
         # object['type] == 'EMOJI'
         # type_class_name = 'Emoji'
-        type_class_name = object['type'].downcase.classify.classify
+        type_class_name = object['type'].downcase.classify
         "Types::Blocks::#{type_class_name}".safe_constantize
       end
     end
