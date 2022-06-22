@@ -32,11 +32,17 @@ class Group < Pod
 
   validates :owner_id, presence: true, on: :create
 
+  def config
+    MashcardConfig.at(pod_id: id)
+  end
+
   attr_accessor :owner_id
 
   after_create :maybe_persist_owner!
 
-  private def maybe_persist_owner!
+  private
+
+  def maybe_persist_owner!
     Groups::Member.find_or_create_by!(user_id: owner_id, group_id: id, role: :owner)
   end
 end

@@ -25,6 +25,10 @@
 #  index_pods_on_type                 (type)
 #
 class User < Pod
+  def config
+    MashcardConfig.at(user_id: id)
+  end
+
   delegate :timezone, to: :config
   delegate :locale, to: :config
 

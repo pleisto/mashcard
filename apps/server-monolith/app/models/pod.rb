@@ -28,11 +28,7 @@ class Pod < ApplicationRecord
   acts_as_paranoid
 
   include Hashedidable
-  include Inviteable
-
-  def config
-    MashcardConfig.at(user_id: id)
-  end
+  include GroupInviteable
 
   validates :username, presence: true, username: true, uniqueness: { case_sensitive: false, conditions: -> {
                                                                                                           with_deleted
@@ -102,6 +98,7 @@ class Pod < ApplicationRecord
   ANONYMOUS_CONTEXT = {
     'username' => ANONYMOUS_DOMAIN,
     'id' => nil,
+    'hashed_id' => '',
   }
 
   def ensure_owner_member!
@@ -111,7 +108,7 @@ class Pod < ApplicationRecord
   end
 
   def as_session_context
-    { 'id' => id, 'username' => username, 'domain' => username, 'id_hash' => hashed_id }
+    { 'id' => id, 'username' => username, 'domain' => username, 'hashed_id' => hashed_id }
   end
 
   def destroy_pod!

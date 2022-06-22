@@ -23,7 +23,7 @@ class MashcardConfig < ApplicationRecord
   field :timezone, default: 'UTC', belongs_to: :user
 
   # Enable invite feature
-  field :invite_enable, default: false, belongs_to: :pod
+  field :group_invite_enable, default: false, belongs_to: :pod
 
   field :host, default: (Rails.env.development? ? 'localhost' : Mashcard::Runtime.hostname)
 
