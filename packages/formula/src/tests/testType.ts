@@ -1,4 +1,5 @@
 import { FixedLengthTuple, RequireField } from '@mashcard/active-support'
+import { EventType } from '@mashcard/schema'
 import { FormulaContextArgs } from '../context'
 import { Cell } from '../controls'
 import { OperatorName } from '../grammar'
@@ -90,6 +91,8 @@ type FeatureName =
   | 'functionComplete'
   | 'blockComplete'
   | 'blockEvent'
+  | 'variableEvent'
+  | 'spreadsheetEvent'
 type FeatureTestName = 'cst'
 export type TestCaseName = OperatorName | FeatureName | FeatureTestName
 
@@ -110,7 +113,7 @@ export interface BaseTestCase<T extends object> {
   name?: VariableMetadata['name']
   richType?: VariableMetadata['richType']
   position?: VariableMetadata['position']
-  todo?: string
+  todoMessage?: string
   jestTitle?: string
 }
 interface SuccessTestCaseType extends RequireField<BaseTestCase<{ key: keyof VariableParseResult }>, 'definition'> {
@@ -132,11 +135,22 @@ interface CompleteTestCaseType extends BaseTestCase<{}> {
   completes: CompleteInput[]
 }
 
+interface TriggerEvent {
+  event: EventType<any, any>
+  eventId: string
+  callLength?: number
+  payload?: object
+}
+
+type ExtendedCtx = MakeContextResult & { meta: VariableMetadata }
+
 interface EventTestCaseType extends RequireField<BaseTestCase<{}>, 'definition'> {
   resultBefore: any
   resultAfter: any
+  resultAfterAsync?: true
   variableParseResultAfter?: Partial<VariableParseResult>
-  event: (ctx: FunctionContext) => Promise<void>
+  triggerEvents?: (ctx: ExtendedCtx) => [TriggerEvent, ...TriggerEvent[]]
+  event: (ctx: ExtendedCtx) => Promise<void>
 }
 
 type DependencyTypes = 'Variable' | 'Block'

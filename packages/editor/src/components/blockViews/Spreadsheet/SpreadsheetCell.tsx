@@ -85,6 +85,8 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       setCurrentBlock(newBlock)
       saveBlock(newBlock)
 
+      if (!formulaContext) return
+
       const result = MashcardEventBus.dispatch(
         SpreadsheetReloadViaId({
           id: tableId,
@@ -94,6 +96,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
           },
           meta: null,
           namespaceId: rootId,
+          username: formulaContext.domain,
           key: variable?.currentUUID ?? tableId
         })
       )
@@ -101,7 +104,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       // console.log('dispatch update cell', variable)
       // setEditing(false)
     },
-    [tableId, rowIdx, rowId, block, columnSort, rootId, cellId, saveBlock, columnTitle]
+    [rootId, block, cellId, saveBlock, tableId, rowIdx, rowId, columnSort, columnTitle, formulaContext]
   )
 
   const meta: UseFormulaInput['meta'] = {

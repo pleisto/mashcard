@@ -338,7 +338,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:486](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L486)
+[packages/formula/src/context/context.ts:489](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L489)
 
 ___
 
@@ -363,7 +363,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:421](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L421)
+[packages/formula/src/context/context.ts:424](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L424)
 
 ___
 
@@ -437,7 +437,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:367](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L367)
+[packages/formula/src/context/context.ts:369](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L369)
 
 ___
 
@@ -462,7 +462,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:464](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L464)
+[packages/formula/src/context/context.ts:467](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L467)
 
 ___
 
@@ -512,7 +512,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:373](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L373)
+[packages/formula/src/context/context.ts:375](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L375)
 
 ___
 
@@ -536,7 +536,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:357](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L357)
+[packages/formula/src/context/context.ts:359](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L359)
 
 ___
 
@@ -561,7 +561,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:405](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L405)
+[packages/formula/src/context/context.ts:408](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L408)
 
 ___
 
@@ -586,7 +586,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:410](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L410)
+[packages/formula/src/context/context.ts:413](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L413)
 
 ___
 
@@ -685,7 +685,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:417](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L417)
+[packages/formula/src/context/context.ts:420](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L420)
 
 ___
 
@@ -705,7 +705,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:515](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L515)
+[packages/formula/src/context/context.ts:518](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L518)
 
 ___
 
@@ -753,7 +753,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:336](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L336)
+[packages/formula/src/context/context.ts:337](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L337)
 
 ___
 
@@ -777,7 +777,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:397](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L397)
+[packages/formula/src/context/context.ts:400](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L400)
 
 ___
 
@@ -802,7 +802,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:453](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L453)
+[packages/formula/src/context/context.ts:456](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L456)
 
 ___
 
@@ -820,7 +820,7 @@ ContextInterface.resetFormula
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:471](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L471)
+[packages/formula/src/context/context.ts:474](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L474)
 
 ___
 
@@ -889,7 +889,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:379](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L379)
+[packages/formula/src/context/context.ts:381](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L381)
 
 ___
 
@@ -909,7 +909,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:479](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L479)
+[packages/formula/src/context/context.ts:482](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L482)
 
 ___
 
@@ -947,4 +947,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:539](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L539)
+[packages/formula/src/context/context.ts:542](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L542)

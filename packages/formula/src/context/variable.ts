@@ -26,7 +26,6 @@ import {
   FormulaContextNameChanged,
   FormulaContextNameRemove,
   FormulaTaskCompleted,
-  FormulaTaskStarted,
   FormulaTickViaId,
   FormulaUpdatedViaId
 } from '../events'
@@ -124,25 +123,13 @@ export class VariableClass implements VariableInterface {
     )
     this.builtinEventListeners.push(tickSubscription)
 
-    const taskStartSubscription = MashcardEventBus.subscribe(
-      FormulaTaskStarted,
-      e => {
-        this.startTask(e.payload)
-      },
-      {
-        eventId: `${t.meta.namespaceId},${t.meta.variableId}`,
-        subscribeId: `Task#${t.meta.namespaceId},${t.meta.variableId}`
-      }
-    )
-    this.builtinEventListeners.push(taskStartSubscription)
-
     const taskCompleteSubscription = MashcardEventBus.subscribe(
       FormulaTaskCompleted,
-      e => {
-        this.completeTask(e.payload)
+      async e => {
+        await this.completeTask(e.payload)
       },
       {
-        eventId: `${t.meta.namespaceId},${t.meta.variableId}`,
+        eventId: `${formulaContext.domain}#${t.meta.namespaceId},${t.meta.variableId}`,
         subscribeId: `Task#${t.meta.namespaceId},${t.meta.variableId}`
       }
     )
@@ -155,6 +142,7 @@ export class VariableClass implements VariableInterface {
         meta: this,
         scope: null,
         key: this.id,
+        username: this.formulaContext.domain,
         level,
         namespaceId: this.t.meta.namespaceId,
         id: this.t.meta.variableId
@@ -179,9 +167,7 @@ export class VariableClass implements VariableInterface {
   }
 
   private async tick(uuid: string): Promise<void> {
-    const tMatched = uuid === this.t.task.uuid
-
-    if (!tMatched) return
+    if (uuid !== this.t.task.uuid) return
     const async = this.t.task.async
     if (!async) return
 
@@ -192,21 +178,12 @@ export class VariableClass implements VariableInterface {
     )
   }
 
-  private startTask({ task }: { task: VariableTask }): void {
-    const tMatched = task.uuid === this.t.task.uuid
-    if (!tMatched) return
-
-    void this.tick(task.uuid)
-  }
-
-  private completeTask({ task }: { task: VariableTask }): void {
-    const tMatched = task.uuid === this.t.task.uuid
-    if (!tMatched) return
+  private async completeTask({ task }: { task: VariableTask }): Promise<void> {
+    if (task.uuid !== this.t.task.uuid) return
 
     this.t.task = task
-
     this.subscribeDependencies()
-    void this.onUpdate({})
+    await this.onUpdate({})
   }
 
   public cleanup(): void {
@@ -440,7 +417,7 @@ export class VariableClass implements VariableInterface {
           const newCodeFragments = this.t.variableParseResult.codeFragments.map(c => {
             if (c.code !== 'Block') return c
             if (c.attrs.id !== blockId) return c
-            return { ...c, attrs: { ...c.attrs, name: payload.meta.name } }
+            return { ...c, attrs: { ...c.attrs, name: payload.meta } }
           })
           return codeFragments2definition(newCodeFragments, this.t.meta.namespaceId)
         }
@@ -464,7 +441,7 @@ export class VariableClass implements VariableInterface {
       > = {
         kind: 'NameChange',
         event: FormulaContextNameChanged,
-        eventId: `${namespaceId}#${name}`,
+        eventId: `${this.formulaContext.domain}#${namespaceId}#${name}`,
         scope: {},
         key: `OtherNameChange#${namespaceId}#${name}`,
         skipIf: (variable, payload) => variable.isReadyT
@@ -476,7 +453,7 @@ export class VariableClass implements VariableInterface {
       > = {
         kind: 'NameChange',
         event: FormulaContextNameChanged,
-        eventId: `$Block#${name}`,
+        eventId: `${this.formulaContext.domain}#$Block#${name}`,
         scope: {},
         key: `BlockNameChange#${namespaceId}#${name}`,
         skipIf: (variable, payload) => variable.isReadyT
@@ -489,7 +466,7 @@ export class VariableClass implements VariableInterface {
       > = {
         kind: 'NameRemove',
         event: FormulaContextNameRemove,
-        eventId: `${namespaceId}#${name}`,
+        eventId: `${this.formulaContext.domain}#${namespaceId}#${name}`,
         scope: {},
         key: `OtherNameRemove#${namespaceId}#${name}`,
         skipIf: (variable, payload) => !variable.isReadyT
@@ -523,7 +500,7 @@ export class VariableClass implements VariableInterface {
       const eventSubscription = MashcardEventBus.subscribe(
         dependency.event,
         async e => {
-          // console.log('event', dependency.event.eventType, this.formulaContext, this, this.currentUUID, {
+          // console.log('event', dependency.event.eventType, this.currentUUID, {
           //   type: e.type,
           //   payload: e.payload,
           //   dependency
@@ -535,9 +512,7 @@ export class VariableClass implements VariableInterface {
             `${dependency.event.eventType}_${dependency.eventId}`,
             e.payload.key,
             e.payload.level ?? 0,
-            {
-              definition
-            }
+            { definition }
           )
         },
         {

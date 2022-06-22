@@ -21,7 +21,7 @@
 - [newAbbrevInput](BaseTestCase.md#newabbrevinput)
 - [position](BaseTestCase.md#position)
 - [richType](BaseTestCase.md#richtype)
-- [todo](BaseTestCase.md#todo)
+- [todoMessage](BaseTestCase.md#todomessage)
 - [variableId](BaseTestCase.md#variableid)
 
 ## Properties
@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:105](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L105)
+[packages/formula/src/tests/testType.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L108)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:102](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L102)
+[packages/formula/src/tests/testType.ts:105](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L105)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L107)
+[packages/formula/src/tests/testType.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L110)
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:104](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L104)
+[packages/formula/src/tests/testType.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L107)
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L114)
+[packages/formula/src/tests/testType.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L117)
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L106)
+[packages/formula/src/tests/testType.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L109)
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L110)
+[packages/formula/src/tests/testType.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L113)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L108)
+[packages/formula/src/tests/testType.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L111)
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:103](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L103)
+[packages/formula/src/tests/testType.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L106)
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L112)
+[packages/formula/src/tests/testType.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L115)
 
 ___
 
@@ -132,17 +132,17 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L111)
+[packages/formula/src/tests/testType.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L114)
 
 ___
 
-### <a id="todo" name="todo"></a> todo
+### <a id="todomessage" name="todomessage"></a> todoMessage
 
-• `Optional` **todo**: `string`
+• `Optional` **todoMessage**: `string`
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L113)
+[packages/formula/src/tests/testType.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L116)
 
 ___
 
@@ -152,4 +152,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L109)
+[packages/formula/src/tests/testType.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L112)

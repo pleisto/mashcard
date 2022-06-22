@@ -128,7 +128,7 @@ export const FunctionCompleteTestCase: TestCaseInterface = {
       },
       {
         definitionWithCursor: '=1 + custom:: PLUS$ + 1',
-        todo: 'fix space in function group',
+        todoMessage: 'fix space in function group',
         firstNonSpaceCodeFragment: { code: 'Function', display: 'PLUS' },
         secondNonSpaceCodeFragment: { code: 'FunctionGroup', display: 'custom:: ' },
         firstCompletion: {

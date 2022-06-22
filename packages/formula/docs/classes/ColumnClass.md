@@ -249,7 +249,7 @@ ___
 
 ### <a id="eventdependency" name="eventdependency"></a> eventDependency
 
-▸ **eventDependency**(`__namedParameters`): [`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNameViaIdPayload`](../README.md#spreadsheetupdatenameviaidpayload)\>
+▸ **eventDependency**(`__namedParameters`): [`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNamePayload`](../README.md#spreadsheetupdatenamepayload)\>
 
 #### Parameters
 
@@ -259,7 +259,7 @@ ___
 
 #### Returns
 
-[`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNameViaIdPayload`](../README.md#spreadsheetupdatenameviaidpayload)\>
+[`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNamePayload`](../README.md#spreadsheetupdatenamepayload)\>
 
 #### Implementation of
 

@@ -183,7 +183,7 @@ export class FormulaContext implements ContextInterface {
     const blockNameSubscription = MashcardEventBus.subscribe(
       FormulaBlockNameModifiedWithUsername,
       async e => {
-        await this.setBlock(e.payload.id, e.payload.meta.name)
+        await this.setBlock(e.payload.id, e.payload.meta)
       },
       { subscribeId: `Domain#${this.domain}`, eventId: this.domain }
     )
@@ -323,6 +323,7 @@ export class FormulaContext implements ContextInterface {
         id: nameDependency.id,
         namespaceId: nameDependency.namespaceId,
         key: nameDependency.id,
+        username: this.domain,
         scope: null,
         meta: {
           name: nameDependency.name,
@@ -344,6 +345,7 @@ export class FormulaContext implements ContextInterface {
         id: oldName.id,
         namespaceId: oldName.namespaceId,
         key: oldName.id,
+        username: this.domain,
         scope: null,
         meta: {
           name: oldName.name,
@@ -386,6 +388,7 @@ export class FormulaContext implements ContextInterface {
       SpreadsheetReloadViaId({
         id: spreadsheet.spreadsheetId,
         namespaceId: spreadsheet.namespaceId,
+        username: this.domain,
         scope: null,
         meta: null,
         key: spreadsheet.spreadsheetId
@@ -397,9 +400,9 @@ export class FormulaContext implements ContextInterface {
   public async removeSpreadsheet(spreadsheetId: SpreadsheetId): Promise<void> {
     if (!this.spreadsheets[spreadsheetId]) return
     this.spreadsheets[spreadsheetId].cleanup()
-    await this.removeName(spreadsheetId)
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete this.spreadsheets[spreadsheetId]
+    await this.removeName(spreadsheetId)
   }
 
   public findVariableById(namespaceId: NamespaceId, variableId: VariableId): VariableInterface | undefined {

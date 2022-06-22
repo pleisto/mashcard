@@ -1,6 +1,6 @@
 import { EventType } from '@mashcard/schema'
 import { BlockType, ColumnType, SpreadsheetType } from '../controls'
-import { SpreadsheetUpdateNameViaId, SpreadsheetReloadViaId, SpreadsheetUpdateNameViaIdPayload } from '../events'
+import { SpreadsheetUpdateNameViaId, SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../events'
 import { EventDependency, VariableInterface } from '../types'
 import { CodeFragmentVisitor } from './codeFragment'
 import { codeFragments2definition } from './convert'
@@ -15,7 +15,7 @@ export const parseTrackName = (visitor: Visitor, name: string, namespaceId: stri
 }
 
 export const parseTrackSpreadsheetLoad = (visitor: Visitor, namespaceId: string, spreadsheetId: string): void => {
-  const spreadsheetReloadEventDependency: EventDependency<SpreadsheetUpdateNameViaIdPayload> = {
+  const spreadsheetReloadEventDependency: EventDependency<SpreadsheetUpdateNamePayload> = {
     eventId: `${namespaceId},${spreadsheetId}`,
     event: SpreadsheetReloadViaId,
     key: `Spreadsheet#${spreadsheetId}`,
@@ -37,10 +37,12 @@ export const parseTrackBlock = (visitor: Visitor, block: BlockType): void => {
  * Track eventDependencies when parse spreadsheet
  */
 export const parseTrackSpreadsheet = (visitor: Visitor, spreadsheet: SpreadsheetType): void => {
+  parseTrackName(visitor, spreadsheet.name(), spreadsheet.namespaceId)
+
   const spreadsheetNameEventDependency: EventDependency<
     typeof SpreadsheetUpdateNameViaId extends EventType<infer X> ? X : never
   > = {
-    eventId: `${spreadsheet.namespaceId},${spreadsheet.spreadsheetId}`,
+    eventId: `${visitor.ctx.formulaContext.domain}#${spreadsheet.namespaceId},${spreadsheet.spreadsheetId}`,
     event: SpreadsheetUpdateNameViaId,
     kind: 'SpreadsheetName',
     key: `SpreadsheetName#${spreadsheet.spreadsheetId}`,

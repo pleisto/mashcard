@@ -43,7 +43,7 @@
 | `spreadsheet` | [`SpreadsheetType`](../interfaces/SpreadsheetType.md) |
 | `__namedParameters` | [`Cell`](../interfaces/Cell.md) |
 | `__namedParameters` | `Object` |
-| `__namedParameters.cleanupEventDependency` | [`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNameViaIdPayload`](../README.md#spreadsheetupdatenameviaidpayload)\> |
+| `__namedParameters.cleanupEventDependency` | [`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNamePayload`](../README.md#spreadsheetupdatenamepayload)\> |
 | `__namedParameters.columnKey` | `string` |
 | `__namedParameters.rowKey` | `string` |
 
@@ -69,7 +69,7 @@ ___
 
 ### <a id="cleanupeventdependency" name="cleanupeventdependency"></a> cleanupEventDependency
 
-• **cleanupEventDependency**: [`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNameViaIdPayload`](../README.md#spreadsheetupdatenameviaidpayload)\>
+• **cleanupEventDependency**: [`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNamePayload`](../README.md#spreadsheetupdatenamepayload)\>
 
 #### Defined in
 
@@ -233,11 +233,11 @@ ___
 
 ### <a id="eventdependency" name="eventdependency"></a> eventDependency
 
-▸ **eventDependency**(): [`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNameViaIdPayload`](../README.md#spreadsheetupdatenameviaidpayload)\>
+▸ **eventDependency**(): [`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNamePayload`](../README.md#spreadsheetupdatenamepayload)\>
 
 #### Returns
 
-[`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNameViaIdPayload`](../README.md#spreadsheetupdatenameviaidpayload)\>
+[`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNamePayload`](../README.md#spreadsheetupdatenamepayload)\>
 
 #### Implementation of
 

@@ -3,8 +3,9 @@ import {
   SpreadsheetReloadViaId,
   SpreadsheetUpdateColumnsViaId,
   SpreadsheetUpdateNameViaId,
-  SpreadsheetUpdateNameViaIdPayload,
-  SpreadsheetUpdateRowsViaId
+  SpreadsheetUpdateNamePayload,
+  SpreadsheetUpdateRowsViaId,
+  FormulaSpreadsheetDeleted
 } from '../events'
 import {
   CodeFragmentVisitor,
@@ -109,13 +110,26 @@ export class SpreadsheetClass implements SpreadsheetType {
         this._name = e.payload.meta
         await this._formulaContext.setName(this.nameDependency())
       },
-      { eventId: `${namespaceId},${spreadsheetId}`, subscribeId: `Spreadsheet#${spreadsheetId}` }
+      {
+        eventId: `${this._formulaContext.domain}#${namespaceId},${spreadsheetId}`,
+        subscribeId: `Spreadsheet#${spreadsheetId}`
+      }
     )
     this.eventListeners.push(nameSubscription)
 
+    const spreadsheetDeleteSubcription = MashcardEventBus.subscribe(
+      FormulaSpreadsheetDeleted,
+      async e => {
+        await this._formulaContext.removeSpreadsheet(spreadsheetId)
+      },
+      { eventId: `${this._formulaContext.domain}#${spreadsheetId}`, subscribeId: `Spreadsheet#${spreadsheetId}` }
+    )
+
+    this.eventListeners.push(spreadsheetDeleteSubcription)
+
     const columnsSubcription = MashcardEventBus.subscribe(
       SpreadsheetUpdateColumnsViaId,
-      e => {
+      async e => {
         const oldColumns = this._columns
         const newColumns = e.payload.columns
         this._columns = newColumns
@@ -127,23 +141,28 @@ export class SpreadsheetClass implements SpreadsheetType {
         ]
         if (!changedColumnIds.length) return
 
-        MashcardEventBus.dispatch(
+        const result = MashcardEventBus.dispatch(
           SpreadsheetReloadViaId({
             id: this.spreadsheetId,
+            username: this._formulaContext.domain,
             scope: { columns: changedColumnIds },
             namespaceId: this.namespaceId,
             key: this.spreadsheetId,
             meta: null
           })
         )
+        await Promise.all(result)
       },
-      { eventId: `${namespaceId},${spreadsheetId}`, subscribeId: `Spreadsheet#${spreadsheetId}` }
+      {
+        eventId: `${this._formulaContext.domain}#${namespaceId},${spreadsheetId}`,
+        subscribeId: `Spreadsheet#${spreadsheetId}`
+      }
     )
     this.eventListeners.push(columnsSubcription)
 
     const rowsSubcription = MashcardEventBus.subscribe(
       SpreadsheetUpdateRowsViaId,
-      e => {
+      async e => {
         const oldRows = this._rows
         const newRows = e.payload.rows
         this._rows = newRows
@@ -157,17 +176,22 @@ export class SpreadsheetClass implements SpreadsheetType {
         ]
         if (!changedRowIds.length) return
 
-        MashcardEventBus.dispatch(
+        const result = MashcardEventBus.dispatch(
           SpreadsheetReloadViaId({
             id: this.spreadsheetId,
+            username: this._formulaContext.domain,
             scope: { rows: changedRowIds },
             namespaceId: this.namespaceId,
             key: this.spreadsheetId,
             meta: null
           })
         )
+        await Promise.all(result)
       },
-      { eventId: `${namespaceId},${spreadsheetId}`, subscribeId: `Spreadsheet#${spreadsheetId}` }
+      {
+        eventId: `${this._formulaContext.domain}#${namespaceId},${spreadsheetId}`,
+        subscribeId: `Spreadsheet#${spreadsheetId}`
+      }
     )
     this.eventListeners.push(rowsSubcription)
   }
@@ -247,7 +271,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     return { type: 'Column', result: column }
   }
 
-  eventDependency({ rowKey, columnKey }: getEventDependencyInput): EventDependency<SpreadsheetUpdateNameViaIdPayload> {
+  eventDependency({ rowKey, columnKey }: getEventDependencyInput): EventDependency<SpreadsheetUpdateNamePayload> {
     if (rowKey) {
       return {
         kind: 'Row',

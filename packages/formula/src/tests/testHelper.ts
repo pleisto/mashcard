@@ -222,7 +222,7 @@ export const makeContext = async (options: MakeContextOptions): Promise<MakeCont
     if (v2.t.meta.variableId !== v.t.meta.variableId) throw new Error(`variable ${name} id mismatch`)
   }
 
-  const meta: MakeContextResult['buildMeta'] = args => {
+  const buildMeta: MakeContextResult['buildMeta'] = args => {
     return {
       variableId: fetchUUIDSymbol(args.variableId, uuidState) ?? uuid(),
       input: args.definition!,
@@ -237,13 +237,13 @@ export const makeContext = async (options: MakeContextOptions): Promise<MakeCont
     return fetchUUIDSymbol(uuid, uuidState)!
   }
 
-  return { formulaContext, interpretContext, buildMeta: meta, fetchUUID }
+  return { formulaContext, interpretContext, buildMeta, fetchUUID }
 }
 
 export const trackTodo = (it: jest.It, testCases: Array<BaseTestCase<{}>>): void => {
   testCases
-    .filter(t => t.todo)
+    .filter(t => t.todoMessage)
     .forEach(t => {
-      it.todo(`${t.jestTitle} -> ${t.todo!}`)
+      it.todo(`${t.jestTitle} -> ${t.todoMessage!}`)
     })
 }
