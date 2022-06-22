@@ -35,10 +35,10 @@ export interface awarenessInfo {
 }
 
 export function useBlockSyncProvider(queryVariables: { blockId: string; historyId?: string }): {
+  committing: boolean
   loading: boolean
   provider?: blockProvider
   initBlocksToEditor: React.MutableRefObject<boolean>
-  blockCommitting: React.MutableRefObject<boolean>
   awarenessInfos: awarenessInfo[]
 } {
   const {
@@ -55,6 +55,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
   const initBlocksToEditor = React.useRef<boolean>(false)
   const blockCommitting = React.useRef<boolean>(false)
+  const [committing, setCommitting] = React.useState<boolean>(false)
   const updatesToCommit = React.useRef(new Set<Uint8Array>())
 
   const { data, loading } = useBlockNewQuery({
@@ -136,7 +137,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
       devLog(`try commit state, committing:`, blockCommitting.current)
       if (update) updatesToCommit.current.add(update)
       if (blockCommitting.current) return
-      blockCommitting.current = true // only one commiting once
+      blockCommitting.current = true
+      setCommitting(true) // only one commiting once
 
       const stateIdToCommit = uuid()
       const updatesToSync = [...updatesToCommit.current.values()]
@@ -193,17 +195,18 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             void commitState(ydoc, localState, true)
           } else {
             devLog('committed, left updates: ', updatesToCommit.current.size)
-            blockCommitting.current = false
-            if (updatesToCommit.current.size !== 0) {
+            if (updatesToCommit.current.size === 0) {
+              setCommitting(false)
+            } else {
               void commitState(ydoc)
             }
           }
         }
       } catch (e) {
-        blockCommitting.current = false
+        setCommitting(false)
       }
     },
-    [blockCommit, blockId, historyId]
+    [blockCommit, blockId, historyId, setCommitting]
   )
 
   React.useEffect(() => {
@@ -263,10 +266,10 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   }, [blockId, historyId, enableCollaboration, data, loading, commitState, awarenessUpdate, awarenessChanged])
 
   return {
+    committing,
     loading,
     provider,
     initBlocksToEditor,
-    blockCommitting,
     awarenessInfos
   }
 }
