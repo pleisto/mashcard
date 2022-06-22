@@ -22,7 +22,7 @@ exports[`DiscussionList > DiscussionPanel matches correct snapshot 1`] = `
             />
             <button
               aria-haspopup="dialog"
-              class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-iiEeHJ-eqqWRo-hasIcon-true mc-c-PJLV mc-c-PJLV-jTsETH-size-sm"
+              class="mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-iiEeHJ-eqqWRo-hasIcon-true mc-c-PJLV mc-c-PJLV-jTsETH-size-sm ButtonUnstyled-root"
               role="button"
               type="button"
             >
@@ -42,7 +42,7 @@ exports[`DiscussionList > DiscussionPanel matches correct snapshot 1`] = `
               </span>
             </button>
             <button
-              class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-iiEeHJ-eqqWRo-hasIcon-true mc-c-PJLV mc-c-PJLV-jTsETH-size-sm"
+              class="mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-iiEeHJ-eqqWRo-hasIcon-true mc-c-PJLV mc-c-PJLV-jTsETH-size-sm ButtonUnstyled-root"
               role="button"
               type="button"
             >

@@ -46,7 +46,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                 draggable="true"
               >
                 <button
-                  class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm"
+                  class="mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
                   role="button"
                   type="button"
                 >
