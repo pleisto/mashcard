@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { Button, CSS, css, styled, theme } from '@mashcard/design-system'
 import { ToolbarOption, ToolbarGroupOption } from '../../../ui'
 import { BubbleItemMeta } from './useBubbleMenuItems'
@@ -148,6 +148,9 @@ export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null]
   const fontColorGroupStyles = FontColorGroupStyles()
   const resetItemStyles = ResetItemStyles()
 
+  const [prevColor, setColor] = useState('')
+  const [prevBgColor, setBgColor] = useState(theme.colors.yellow4.value)
+
   const fontColorItems: BubbleItemMeta[] = useMemo(
     () =>
       TEXT_COLORS.map(colorMeta => ({
@@ -157,7 +160,10 @@ export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null]
             <FontSize style={{ color: colorMeta.color }} />
           </FontColorIcon>
         ),
-        onAction: () => editor?.chain().focus().setFontColor(colorMeta.color).run()
+        onAction: () => {
+          editor?.chain().focus().setFontColor(colorMeta.color).run()
+          setColor(colorMeta.color)
+        }
       })),
     [editor]
   )
@@ -171,7 +177,10 @@ export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null]
             <FontSize />
           </FontBgColorIcon>
         ),
-        onAction: () => editor?.chain().focus().setFontBgColor(colorMeta.color).run()
+        onAction: () => {
+          editor?.chain().focus().setFontBgColor(colorMeta.color).run()
+          setBgColor(colorMeta.color)
+        }
       })),
     [editor]
   )
@@ -180,11 +189,17 @@ export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null]
     editor?.chain().focus().unsetFontColor().unsetFontBgColor().run()
   }, [editor])
 
+  const setPrevColorConfig = () => {
+    if (prevColor) {
+      editor?.chain().focus().setFontColor(prevColor).run()
+    }
+    if (prevBgColor) {
+      editor?.chain().focus().setFontBgColor(prevBgColor).run()
+    }
+  }
+
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
-
-    const activeColor = TEXT_COLORS.find(color => editor?.isActive('textStyle', { fontColor: color.color }))
-    const activeBgColor = BG_COLORS.find(color => editor?.isActive('textStyle', { fontBgColor: color.color }))
 
     const fontColorGroup: ToolbarGroupOption = {
       type: 'group',
@@ -194,11 +209,11 @@ export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null]
           name: 'fontColor',
           trigger: 'hover',
           css: {
-            color: activeColor ? activeColor.color : 'unset',
-            backgroundColor: activeBgColor ? activeBgColor.color : 'unset'
+            color: prevColor ? `${prevColor}!important` : prevColor,
+            backgroundColor: prevBgColor ? `${prevBgColor}!important` : prevBgColor
           },
           content: (
-            <MenuIcon>
+            <MenuIcon onClick={setPrevColorConfig}>
               <FontSize />
             </MenuIcon>
           ),
