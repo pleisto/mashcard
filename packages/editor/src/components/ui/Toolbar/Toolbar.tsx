@@ -81,7 +81,7 @@ const ToolbarMenu = styled('ul', {
   margin: 0,
   padding: '.375rem .5rem',
   'li + li': {
-    marginLeft: '2px'
+    marginLeft: 4
   },
 
   variants: {
@@ -148,14 +148,14 @@ const ToolbarMenuOption: FC<{ option: ToolbarOption }> = ({ option }) => {
 
   return (
     <Tooltip
-      getPopupContainer={element => element}
       title={
         <>
           <div>{tooltipTitle}</div>
           <div>{tooltipDescription}</div>
         </>
       }
-      placement="top">
+      placement="top"
+    >
       <ToolbarMenuOptionInner option={option} />
     </Tooltip>
   )
@@ -176,7 +176,8 @@ export const Toolbar: FC<ToolbarProps> = ({ type, options }) => {
               role="presentation"
               title={option.title}
               className={option.className}
-              key={option.title ?? `section-${index}`}>
+              key={option.title ?? `section-${index}`}
+            >
               {option.items.map((option, optionIndex) => (
                 <ToolbarMenuOption key={`${index}-${optionIndex}`} option={option} />
               ))}
