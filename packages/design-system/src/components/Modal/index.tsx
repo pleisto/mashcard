@@ -46,7 +46,13 @@ const ModalDialog = styled('div', {
 const Modal: ForwardRefRenderFunction<any, ModalProps> = (props, ref) => {
   const { title, children, dialogCss, width = '380px', ...otherProps } = props
   return (
-    <StyledModal {...otherProps} BackdropComponent={Backdrop} ref={ref}>
+    <StyledModal
+      {...otherProps}
+      components={{
+        Backdrop
+      }}
+      ref={ref}
+    >
       <ModalDialog
         css={{
           width,
