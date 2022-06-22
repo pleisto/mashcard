@@ -3,11 +3,20 @@ import { __serializeForClipboard } from 'prosemirror-view'
 import { NodeSelection } from 'prosemirror-state'
 import { Cutting, Link, Delete, CornerDownRight } from '@mashcard/design-icons'
 import { BlockCommandItem } from '../../../helpers/block'
-import { TRANS_TYPE_LIST } from '../../../helpers/blockConstant'
+import * as BLOCK from '../../../helpers/block'
 import { useDocumentEditable, useEditorContext, useEditorI18n } from '../../../hooks'
 import { ActionGroupOption, ActionItemOption } from './BlockActions'
 import { useBlockContext } from '../../../hooks/useBlockContext'
 import { NodeIcon } from '../../../components/extensionViews/BubbleMenu/useBubbleMenuItems/useBubbleMenuItems'
+
+const TRANS_TYPE_LIST = [
+  { type: 'normal', items: [BLOCK.PARAGRAPH] },
+  { type: 'heading', items: [BLOCK.HEADING_1, BLOCK.HEADING_2, BLOCK.HEADING_3, BLOCK.HEADING_4, BLOCK.HEADING_5] },
+  {
+    type: 'block',
+    items: [BLOCK.ORDERED_LIST, BLOCK.BULLETED_LIST, BLOCK.TASK_LIST, BLOCK.FORMULA, BLOCK.CODE, BLOCK.BLOCKQUOTE]
+  }
+]
 
 export type BasicActionOptionType = 'delete' | 'cut' | 'copy' | 'transform'
 

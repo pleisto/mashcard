@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo } from 'react'
 import { Button, CSS, css, styled, theme } from '@mashcard/design-system'
 import { ToolbarOption, ToolbarGroupOption } from '../../../ui'
 import { BubbleItemMeta } from './useBubbleMenuItems'
@@ -141,6 +141,9 @@ const BG_COLORS = [
   }
 ]
 
+const PREV_COLOR_KEY = 'PREV_COLOR'
+const PREV_BG_COLOR_KEY = 'PREV_BG_COLOR'
+
 export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null] {
   const { editor } = useEditorContext()
   const [t] = useEditorI18n()
@@ -148,8 +151,10 @@ export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null]
   const fontColorGroupStyles = FontColorGroupStyles()
   const resetItemStyles = ResetItemStyles()
 
-  const [prevColor, setColor] = useState('')
-  const [prevBgColor, setBgColor] = useState(theme.colors.yellow4.value)
+  const prevColor = localStorage.getItem(PREV_COLOR_KEY)
+  const prevBgColor = localStorage.getItem(PREV_BG_COLOR_KEY) ?? theme.colors.yellow4.value
+  const setColor = (color: string) => localStorage.setItem(PREV_COLOR_KEY, color)
+  const setBgColor = (color: string) => localStorage.setItem(PREV_BG_COLOR_KEY, color)
 
   const fontColorItems: BubbleItemMeta[] = useMemo(
     () =>
@@ -209,8 +214,8 @@ export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null]
           name: 'fontColor',
           trigger: 'hover',
           css: {
-            color: prevColor ? `${prevColor}!important` : prevColor,
-            backgroundColor: prevBgColor ? `${prevBgColor}!important` : prevBgColor
+            color: prevColor ? `${prevColor}!important` : undefined,
+            backgroundColor: `${prevBgColor}!important`
           },
           content: (
             <MenuIcon onClick={setPrevColorConfig}>

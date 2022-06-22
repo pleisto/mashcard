@@ -2,10 +2,19 @@ import { useMemo } from 'react'
 import { ToolbarOption, ToolbarGroupOption } from '../../../ui'
 import { findFirstSelectedNodes } from '../../../../helpers/selection'
 
-import { TRANS_TYPE_LIST } from '../../../../helpers/blockConstant'
+import * as BLOCK from '../../../../helpers/block'
 import { isBubbleMenuVisible } from '../BubbleMenu'
 import { NodeIcon } from './useBubbleMenuItems'
 import { useEditorContext, useEditorI18n } from '../../../../hooks'
+
+const TRANS_TYPE_LIST = [
+  { type: 'normal', items: [BLOCK.PARAGRAPH] },
+  { type: 'heading', items: [BLOCK.HEADING_1, BLOCK.HEADING_2, BLOCK.HEADING_3, BLOCK.HEADING_4, BLOCK.HEADING_5] },
+  {
+    type: 'block',
+    items: [BLOCK.ORDERED_LIST, BLOCK.BULLETED_LIST, BLOCK.TASK_LIST, BLOCK.FORMULA, BLOCK.CODE, BLOCK.BLOCKQUOTE]
+  }
+]
 
 export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {
   const { editor } = useEditorContext()

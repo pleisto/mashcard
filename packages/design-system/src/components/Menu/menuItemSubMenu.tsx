@@ -26,6 +26,10 @@ const SubMenuRightArrow = styled(ArrowRight, {
   color: theme.colors.typeThirdary
 })
 
+const SubMenuItemWrapper = styled('div', {
+  display: 'inline-block'
+})
+
 interface SubMenuItemContextValue {
   baseId?: MenuItemSubMenuProps['baseId']
   type?: MenuItemSubMenuProps['type']
@@ -45,8 +49,7 @@ const SubMenuItem = React.forwardRef<HTMLLIElement, MenuItemSubMenuProps>((props
   const divRef = useRef<HTMLDivElement>(null)
   return (
     <MenuContext.Provider value={menuProps}>
-      <div
-        style={{ display: 'inline-block' }}
+      <SubMenuItemWrapper
         onMouseEnter={menuProps.show}
         onMouseLeave={() => {
           menuProps.hide()
@@ -58,7 +61,7 @@ const SubMenuItem = React.forwardRef<HTMLLIElement, MenuItemSubMenuProps>((props
         <ReakitMenu {...menuProps} as="ul" aria-label={title} className={className}>
           {children}
         </ReakitMenu>
-      </div>
+      </SubMenuItemWrapper>
     </MenuContext.Provider>
   )
 })
