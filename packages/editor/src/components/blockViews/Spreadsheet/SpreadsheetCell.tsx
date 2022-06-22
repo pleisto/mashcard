@@ -60,6 +60,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
 
   const editing = context?.editingCellId === formulaName
   const [editingCell, setEditingCell] = React.useState(editing)
+  const latestEditing = React.useRef<boolean>(editing)
   const { setEditingCellId } = context
   const setEditing = React.useCallback(
     (newEditing: boolean) => {
@@ -177,6 +178,11 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   }, [formulaId, onSaveFormula, rootId, setEditing])
 
   if (editingCell || editing) {
+    if (!latestEditing.current && formulaEditor) {
+      formulaEditor.commands.focus('end')
+      latestEditing.current = true
+    }
+
     return (
       <FormulaBlockRender
         formulaEditor={formulaEditor}
@@ -187,6 +193,8 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
         minHeight={minHeight}
       />
     )
+  } else {
+    latestEditing.current = false
   }
 
   const display = savedVariableT ? displayValue(fetchResult(savedVariableT), rootId) : currentBlock.text

@@ -293,7 +293,7 @@ exports[`AutocompleteList Active Completion renders function kind correctly 1`] 
             class="autocomplete-preview-example"
           >
             <div
-              class="mc-c-yMKXD"
+              class="mashcard-formula-editor mc-c-yMKXD"
             >
               <div
                 class="ProseMirror"
@@ -493,7 +493,7 @@ exports[`AutocompleteList Active Completion renders variable kind correctly 1`] 
             class="autocomplete-preview-definition"
           >
             <div
-              class="mc-c-yMKXD"
+              class="mashcard-formula-editor mc-c-yMKXD"
             >
               <div
                 class="ProseMirror"

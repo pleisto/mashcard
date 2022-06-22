@@ -23,7 +23,7 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({ formulaEditor, wid
           ...(width ? { width: `${width}px` } : {}),
           ...(minHeight ? { minHeight: `${minHeight}px` } : {})
         }}
-        className={MashcardFomulaEditor}
+        className={`mashcard-formula-editor ${MashcardFomulaEditor}`}
         editor={formulaEditor}
       />
     </>

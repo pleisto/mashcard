@@ -263,17 +263,13 @@ export const spreadsheetStyles: CSS = {
             fontSize: 14,
             lineHeight: '22px',
             minHeight: 24,
-            outline: '2px solid transparent',
+            outline: `2px solid ${tableActionHoverColor}`,
             transition: 'none'
           },
 
           p: {
             lineHeight: '22px',
             fontSize: 14
-          },
-
-          '&:focus': {
-            outline: `2px solid ${tableActionHoverColor}`
           }
         }
       },
