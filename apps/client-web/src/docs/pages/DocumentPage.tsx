@@ -35,16 +35,24 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
     [docMeta.id, docMeta.historyId, docMeta.domain]
   )
 
-  const { rootBlock, data, loading: blocksLoading, onDocSave } = useSyncProvider(queryVariables)
+  const {
+    rootBlock,
+    data,
+    loading: blocksLoading,
+    committing: blocksCommitting,
+    onDocSave
+  } = useSyncProvider(queryVariables)
 
   useDocHistoryProvider(docMeta.id as string)
 
-  const { provider, initBlocksToEditor, loading, blockCommitting, awarenessInfos } = useBlockSyncProvider({
+  const { provider, initBlocksToEditor, loading, committing, awarenessInfos } = useBlockSyncProvider({
     blockId: docMeta.id as string,
     historyId: docMeta.historyId
   })
 
-  isSavingVar(blockCommitting.current)
+  useEffect(() => {
+    isSavingVar(blocksCommitting || committing)
+  }, [blocksCommitting, committing])
   useEffect(() => {
     awarenessInfosVar(awarenessInfos)
   }, [awarenessInfos])

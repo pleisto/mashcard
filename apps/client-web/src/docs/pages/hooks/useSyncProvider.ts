@@ -1,4 +1,4 @@
-import { MutableRefObject, useCallback, useEffect, useRef } from 'react'
+import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react'
 import { Node } from 'prosemirror-model'
 import { useApolloClient } from '@apollo/client'
 import {
@@ -33,6 +33,7 @@ export type UpdateBlocks = (blocks: BlockInput[], toDeleteIds: string[]) => Prom
 export function useSyncProvider(queryVariables: { rootId: string; historyId?: string; domain: string }): {
   rootBlock: MutableRefObject<Block | undefined>
   data: any
+  committing: boolean
   loading: boolean
   refetch: any
   onDocSave: (doc: Node) => Promise<void>
@@ -52,7 +53,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
   const client = useApolloClient()
   const [blockSyncBatch] = useBlockSyncBatchMutation()
 
-  const committing = useRef(false)
+  const [committing, setCommitting] = useState<boolean>(false)
 
   const cachedBlocksMap = useRef(new Map<string, Block>())
   const docBlocksMap = useRef(new Map<string, Block>())
@@ -81,9 +82,9 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
 
   const commitDirty = useCallback(async (): Promise<void> => {
     if (!dirtyBlocksMap.current.size && !dirtyToDeleteIds.current.size) return
-    if (committing.current) return
+    if (committing) return
 
-    committing.current = true
+    setCommitting(true)
 
     try {
       const blocks: BlockInput[] = Array.from(dirtyBlocksMap.current.values())
@@ -152,7 +153,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
     } catch (e) {
       console.error(e)
     } finally {
-      committing.current = false
+      setCommitting(false)
     }
     if (dirtyBlocksMap.current.size === 0 && dirtyToDeleteIds.current.size === 0) {
       // isSavingVar(false)
@@ -161,7 +162,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
         void commitDirty()
       }, 500)
     }
-  }, [blockSyncBatch, queryVariables.domain])
+  }, [blockSyncBatch, queryVariables.domain, committing, setCommitting])
 
   const onDocSave = useCallback(
     async (doc: Node): Promise<void> => {
@@ -343,6 +344,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
   return {
     rootBlock,
     data,
+    committing,
     loading,
     refetch,
     onDocSave,
