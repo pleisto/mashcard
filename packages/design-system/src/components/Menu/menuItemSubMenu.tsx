@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import {
   Menu as ReakitMenu,
   MenuButton as ReakitMenuButton,
@@ -42,12 +42,23 @@ const SubMenuItem = React.forwardRef<HTMLLIElement, MenuItemSubMenuProps>((props
     () => cx(menubarStyles({ orientation: 'vertical', theme: type ?? 'default' }), subMenuStyles()),
     [type]
   )
+  const divRef = useRef<HTMLDivElement>(null)
   return (
     <MenuContext.Provider value={menuProps}>
-      <ReakitMenuButton {...menuProps} {...restProps} ref={ref} tip={<SubMenuRightArrow />} as={MenuItem} />
-      <ReakitMenu {...menuProps} as="ul" aria-label={title} className={className}>
-        {children}
-      </ReakitMenu>
+      <div
+        style={{ display: 'inline-block' }}
+        onMouseEnter={menuProps.show}
+        onMouseLeave={() => {
+          menuProps.hide()
+          divRef?.current?.focus()
+        }}
+        ref={divRef}
+      >
+        <ReakitMenuButton {...menuProps} {...restProps} ref={ref} tip={<SubMenuRightArrow />} as={MenuItem} />
+        <ReakitMenu {...menuProps} as="ul" aria-label={title} className={className}>
+          {children}
+        </ReakitMenu>
+      </div>
     </MenuContext.Provider>
   )
 })
