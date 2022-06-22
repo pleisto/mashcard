@@ -42,7 +42,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
           class="mc-c-fpWMiR"
         >
           <ul
-            class="mc-c-gRhnPc"
+            class="mc-c-bXXHAL"
             role="menu"
           >
             <ul
@@ -53,7 +53,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
                 aria-describedby=""
                 aria-haspopup="false"
                 aria-label="embed_block.view_types.preview.name"
-                class="mc-c-eBQxoE"
+                class="mc-c-ewLfqI"
                 role="menuitem"
               >
                 <span
@@ -85,7 +85,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
                 aria-describedby=""
                 aria-haspopup="false"
                 aria-label="embed_block.view_types.card.name"
-                class="mc-c-eBQxoE mc-c-eBQxoE-gPOEbt-active-true"
+                class="mc-c-ewLfqI mc-c-ewLfqI-gPOEbt-active-true"
                 role="menuitem"
               >
                 <span
@@ -116,7 +116,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
                 aria-describedby=""
                 aria-haspopup="false"
                 aria-label="embed_block.view_types.text.name"
-                class="mc-c-eBQxoE"
+                class="mc-c-ewLfqI"
                 role="menuitem"
               >
                 <span
@@ -157,7 +157,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
                 aria-describedby=""
                 aria-haspopup="false"
                 aria-label="edit"
-                class="mc-c-eBQxoE"
+                class="mc-c-ewLfqI"
                 role="menuitem"
               >
                 <span
