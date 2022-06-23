@@ -128,8 +128,8 @@ if (allUUIDs.length !== new Set(allUUIDs).size) {
   throw new Error('Duplicate UUIDs')
 }
 
-export const buildTestCases = (name?: [TestCaseName, ...TestCaseName[]]): [TestCaseInput] => {
-  if (!name) return [ALL_TEST_CASE]
+export const buildTestCases = (name?: TestCaseName[]): [TestCaseInput] => {
+  if (!name || !name.length) return [ALL_TEST_CASE]
 
   const interfaces = OPERATION_TEST_INTERFACES.filter(
     o =>

@@ -4,8 +4,9 @@ import { buildTestCases, matchObject, trackTodo } from '../tests'
 import { uuid } from '@mashcard/active-support'
 import { MashcardEventBus } from '@mashcard/schema'
 import { fetchResult } from '../context'
+import { EventNames } from '../tests/feature/event'
 
-const [testCases] = buildTestCases(['blockEvent', 'variableEvent', 'spreadsheetEvent'])
+const [testCases] = buildTestCases(EventNames)
 
 describe('event', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>

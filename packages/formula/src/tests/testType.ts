@@ -2,6 +2,13 @@ import { FixedLengthTuple, RequireField } from '@mashcard/active-support'
 import { EventType } from '@mashcard/schema'
 import { FormulaContextArgs } from '../context'
 import { Cell } from '../controls'
+import {
+  dispatchFormulaBlockNameChange,
+  dispatchFormulaBlockSoftDelete,
+  dispatchFormulaSpreadsheetColumnChange,
+  dispatchFormulaSpreadsheetNameChange,
+  dispatchFormulaSpreadsheetRemove
+} from '../events'
 import { OperatorName } from '../grammar'
 import {
   CodeFragment,
@@ -93,6 +100,7 @@ type FeatureName =
   | 'blockEvent'
   | 'variableEvent'
   | 'spreadsheetEvent'
+  | 'columnEvent'
 type FeatureTestName = 'cst'
 export type TestCaseName = OperatorName | FeatureName | FeatureTestName
 
@@ -221,3 +229,18 @@ export interface TestCaseInput {
   eventTestCases: Array<RequireField<EventTestCaseType, 'groupOptions' | 'jestTitle'>>
   dependencyTestCases: Array<RequireField<AnyDependencyTestCaseType, 'groupOptions' | 'jestTitle'>>
 }
+
+export const AllowEvents = {
+  blockChangeName: dispatchFormulaBlockNameChange,
+  blockDelete: dispatchFormulaBlockSoftDelete,
+  spreadsheetChangeName: dispatchFormulaSpreadsheetNameChange,
+  spreadsheetDelete: dispatchFormulaSpreadsheetRemove,
+  columnChange: dispatchFormulaSpreadsheetColumnChange
+} as const
+
+type AllowEventsType = {
+  [k in keyof typeof AllowEvents]: Omit<Parameters<typeof AllowEvents[k]>[0], 'username'>
+}
+
+export type DistributeEvents<Event extends keyof AllowEventsType = keyof AllowEventsType> =
+  Event extends keyof AllowEventsType ? [Event, AllowEventsType[Event]] : never

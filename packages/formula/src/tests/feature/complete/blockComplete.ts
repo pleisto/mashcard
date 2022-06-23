@@ -1,4 +1,4 @@
-import { TestCaseInterface } from '../testType'
+import { TestCaseInterface } from '../../testType'
 
 const namespaceId = Symbol('BlockComplete')
 
