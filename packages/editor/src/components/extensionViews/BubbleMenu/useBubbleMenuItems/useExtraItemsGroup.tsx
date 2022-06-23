@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { Message, RemoveAnchorMark, AnchorMark, More } from '@mashcard/design-icons'
-import { ToolbarSubMenuOption, ToolbarOption, ToolbarGroupOption } from '../../../ui/Toolbar'
+import { ToolbarSubMenuOption, ToolbarGroupOption } from '../../../ui/Toolbar'
 import { isBubbleMenuVisible } from '../BubbleMenu'
 import { useEditorContext, useEditorI18n } from '../../../../hooks'
 import { Editor } from '@tiptap/core'
@@ -10,11 +10,11 @@ const isCommentActive = (editor: Editor | null | undefined): boolean => {
   return !!editor?.extensionManager.extensions.find(extension => extension.name === Discussion.name)
 }
 
-export function useExtraItemsGroup(): [ToolbarOption | ToolbarGroupOption | null] {
+export function useExtraItemsGroup(): [ToolbarGroupOption | null] {
   const { editor } = useEditorContext()
   const [t] = useEditorI18n()
 
-  const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
+  const option = useMemo<ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
     const extraItemsGroup: ToolbarGroupOption = {
@@ -31,38 +31,6 @@ export function useExtraItemsGroup(): [ToolbarOption | ToolbarGroupOption | null
         onAction: () => {
           editor.chain().focus().setDiscussion().run()
         }
-      })
-    }
-
-    const moreItems: ToolbarSubMenuOption['items'] = []
-
-    if (!editor.isActive('heading')) {
-      if (editor.isActive('anchor')) {
-        moreItems.push({
-          type: 'item',
-          name: 'removeAnchor',
-          icon: <RemoveAnchorMark />,
-          label: t('bubble_menu.anchor.remove'),
-          onAction: () => editor.chain().focus().unsetAnchor().run()
-        })
-      } else {
-        moreItems.push({
-          type: 'item',
-          name: 'anchor',
-          icon: <AnchorMark />,
-          label: t('bubble_menu.anchor.add'),
-          onAction: () => editor.chain().focus().setAnchor().run()
-        })
-      }
-    }
-
-    if (moreItems.length !== 0) {
-      extraItemsGroup.items.push({
-        type: 'subMenu',
-        trigger: 'hover',
-        name: 'more',
-        content: <More />,
-        items: moreItems
       })
     }
 

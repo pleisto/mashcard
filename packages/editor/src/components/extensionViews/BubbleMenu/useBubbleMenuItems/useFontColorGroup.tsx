@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react'
 import { Button, CSS, css, styled, theme } from '@mashcard/design-system'
-import { ToolbarOption, ToolbarGroupOption } from '../../../ui'
+import { ToolbarOption } from '../../../ui'
 import { BubbleItemMeta } from './useBubbleMenuItems'
 import { isBubbleMenuVisible } from '../BubbleMenu'
 import { useEditorContext, useEditorI18n } from '../../../../hooks'
@@ -144,7 +144,7 @@ const BG_COLORS = [
 const PREV_COLOR_KEY = 'PREV_COLOR'
 const PREV_BG_COLOR_KEY = 'PREV_BG_COLOR'
 
-export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null] {
+export function useFontColorGroup(): (ToolbarOption | null) {
   const { editor } = useEditorContext()
   const [t] = useEditorI18n()
   const fontColorMenuItemStyles = FontColorMenuItemStyles()
@@ -203,66 +203,61 @@ export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null]
     }
   }
 
-  const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
+  const option = useMemo<ToolbarOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
-    const fontColorGroup: ToolbarGroupOption = {
-      type: 'group',
+    const fontColorGroup: ToolbarOption = {
+      type: 'subMenu',
+      name: 'fontColor',
+      trigger: 'hover',
+      css: {
+        color: prevColor ? `${prevColor}!important` : undefined,
+        backgroundColor: `${prevBgColor}!important`
+      },
+      content: (
+        <MenuIcon onClick={setPrevColorConfig}>
+          <FontSize />
+        </MenuIcon>
+      ),
+      tooltip: t('bubble_menu.fontColor.title') as string,
       items: [
         {
-          type: 'subMenu',
-          name: 'fontColor',
-          trigger: 'hover',
-          css: {
-            color: prevColor ? `${prevColor}!important` : undefined,
-            backgroundColor: `${prevBgColor}!important`
-          },
-          content: (
-            <MenuIcon onClick={setPrevColorConfig}>
-              <FontSize />
-            </MenuIcon>
-          ),
-          tooltip: t('bubble_menu.fontColor.title') as string,
-          items: [
-            {
-              type: 'group',
-              className: fontColorGroupStyles.className,
-              orientation: 'horizontal',
-              label: t('bubble_menu.fontColor.text_color.label'),
-              disableSeparator: true,
-              items: fontColorItems.map(item => ({
-                type: 'item',
-                className: fontColorMenuItemStyles.className,
-                name: item.name,
-                onAction: item.onAction,
-                closeOnAction: true,
-                content: item.icon
-              }))
-            },
-            {
-              type: 'group',
-              className: fontColorGroupStyles.className,
-              orientation: 'horizontal',
-              label: t('bubble_menu.fontColor.bg_color.label'),
-              disableSeparator: true,
-              items: bgColorItems.map(item => ({
-                type: 'item',
-                className: fontColorMenuItemStyles,
-                name: item.name,
-                onAction: item.onAction,
-                closeOnAction: true,
-                content: item.icon
-              }))
-            },
-            {
-              type: 'item',
-              name: 'reset',
-              className: resetItemStyles.className,
-              closeOnAction: true,
-              onAction: resetFontColor,
-              content: <ResetButton size="md">{t('bubble_menu.fontColor.reset_button.label')}</ResetButton>
-            }
-          ]
+          type: 'group',
+          className: fontColorGroupStyles.className,
+          orientation: 'horizontal',
+          label: t('bubble_menu.fontColor.text_color.label'),
+          disableSeparator: true,
+          items: fontColorItems.map(item => ({
+            type: 'item',
+            className: fontColorMenuItemStyles.className,
+            name: item.name,
+            onAction: item.onAction,
+            closeOnAction: true,
+            content: item.icon
+          }))
+        },
+        {
+          type: 'group',
+          className: fontColorGroupStyles.className,
+          orientation: 'horizontal',
+          label: t('bubble_menu.fontColor.bg_color.label'),
+          disableSeparator: true,
+          items: bgColorItems.map(item => ({
+            type: 'item',
+            className: fontColorMenuItemStyles,
+            name: item.name,
+            onAction: item.onAction,
+            closeOnAction: true,
+            content: item.icon
+          }))
+        },
+        {
+          type: 'item',
+          name: 'reset',
+          className: resetItemStyles.className,
+          closeOnAction: true,
+          onAction: resetFontColor,
+          content: <ResetButton size="md">{t('bubble_menu.fontColor.reset_button.label')}</ResetButton>
         }
       ]
     }
@@ -271,5 +266,5 @@ export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null]
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor?.state.selection])
 
-  return [option]
+  return option
 }

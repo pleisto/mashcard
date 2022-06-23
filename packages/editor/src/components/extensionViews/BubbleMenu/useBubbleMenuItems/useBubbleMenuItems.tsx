@@ -3,10 +3,10 @@ import { styled, theme } from '@mashcard/design-system'
 import { ToolbarOptionBase, ToolbarOptionGroup } from '../../../ui'
 import { useNodeGroup } from './useNodeGroup'
 import { useTextStyleGroup } from './useTextStyleGroup'
-import { useFontColorGroup } from './useFontColorGroup'
 import { useLinkGroup } from './useLinkGroup'
 import { useFormulaItem } from './useFormulaItem'
 import { useExtraItemsGroup } from './useExtraItemsGroup'
+import { useMoreItemsGroup } from './useMoreItemsGroup'
 
 export const NodeIcon = styled('span', {
   include: ['flexCenter'],
@@ -31,22 +31,25 @@ export interface BubbleItemMeta {
 export function useBubbleMenuItems(): [ToolbarOptionGroup] {
   const [nodeGroup] = useNodeGroup()
   const [textStyleGroup] = useTextStyleGroup()
-  const [fontColorGroup] = useFontColorGroup()
+  
   const [linkGroup] = useLinkGroup()
   const [formulaItem] = useFormulaItem()
   const [extraItemsGroup] = useExtraItemsGroup()
+  const [moreItemsGroup] = useMoreItemsGroup()
 
   const options = useMemo<ToolbarOptionGroup>(() => {
     const options: ToolbarOptionGroup = []
     if (nodeGroup) options.push(nodeGroup)
+
     if (textStyleGroup) options.push(textStyleGroup)
-    if (fontColorGroup) options.push(fontColorGroup)
+
     if (linkGroup) options.push(linkGroup)
     if (formulaItem) options.push(formulaItem)
     if (extraItemsGroup) options.push(extraItemsGroup)
+    if (moreItemsGroup) options.push(moreItemsGroup)
 
     return options
-  }, [extraItemsGroup, fontColorGroup, formulaItem, linkGroup, nodeGroup, textStyleGroup])
+  }, [extraItemsGroup, formulaItem, linkGroup, nodeGroup, textStyleGroup])
 
   return [options]
 }
