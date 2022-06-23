@@ -97,7 +97,6 @@ class Pod < ApplicationRecord
   ANONYMOUS_CONTEXT = {
     'username' => ANONYMOUS_DOMAIN,
     'id' => nil,
-    'hashed_id' => '',
   }
 
   def ensure_owner_member!
@@ -107,7 +106,7 @@ class Pod < ApplicationRecord
   end
 
   def as_session_context
-    { 'id' => id, 'username' => username, 'domain' => username, 'hashed_id' => hashed_id }
+    { 'id' => id, 'username' => username, 'domain' => username }
   end
 
   def destroy_pod!
