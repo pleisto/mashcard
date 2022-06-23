@@ -26,7 +26,7 @@ export const DocumentContentPage: React.FC = () => {
     docid?: string
     historyId?: string
   }
-  const { currentPod, currentUser, host, lastDomain, lastBlockIds, featureFlags } = useContext(MashcardContext)
+  const { currentPod, currentUser, lastDomain, lastBlockIds, featureFlags } = useContext(MashcardContext)
   const { t } = useDocsI18n()
   const navigate = useNavigate()
   const preSidebarStyle = useMemo(getSidebarStyle, [])
@@ -84,7 +84,6 @@ export const DocumentContentPage: React.FC = () => {
       payload,
       isDeleted,
       pin,
-      host,
       path,
       isAnonymous,
       isMine,
@@ -102,7 +101,7 @@ export const DocumentContentPage: React.FC = () => {
       isNotExist,
       historyId
     }
-  }, [data, docid, historyId, host, isAnonymous, loading, personalDomain, loginDomain, state, t, domain])
+  }, [data, docid, historyId, isAnonymous, loading, personalDomain, loginDomain, state, t, domain])
 
   const { queryFormulas, commitFormula, generateFormulaFunctionClauses } = useFormulaActions()
 
@@ -162,7 +161,8 @@ export const DocumentContentPage: React.FC = () => {
         width={{
           '@mdOnly': 'md',
           '@smDown': 'sm'
-        }}>
+        }}
+      >
         <Split visiable={!docMeta.isAnonymous} onDragEnd={logSideBarWidth}>
           {!isAnonymous && <Root.Section style={preSidebarStyle}>{siderBar}</Root.Section>}
           <main className="content">
@@ -178,7 +178,8 @@ export const DocumentContentPage: React.FC = () => {
                     inherit
                     docMeta={{
                       editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted
-                    }}>
+                    }}
+                  >
                     <DocumentPage mode={!docMeta.editable || isAnonymous ? 'presentation' : 'default'} />
                   </DocMetaProvider>
                 )}
