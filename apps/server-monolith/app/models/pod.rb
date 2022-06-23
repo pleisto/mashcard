@@ -39,8 +39,6 @@ class Pod < ApplicationRecord
   ANYONE_DOMAIN = 'anyone'
   ANONYMOUS_DOMAIN = 'anonymous'
 
-  # delegate :email, to: :owner
-
   has_one_attached :avatar
 
   # TODO: remove this

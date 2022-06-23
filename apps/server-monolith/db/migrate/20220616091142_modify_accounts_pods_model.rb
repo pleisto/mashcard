@@ -78,6 +78,21 @@ class ModifyAccountsPodsModel < ActiveRecord::Migration[7.0]
       t.index ['users_authentication_id'], name: 'index_federated_identities_on_users_authentication_id' ## NOTE: index name too long
       t.index ['provider', 'uid'], name: 'index_federated_identities_on_provider_and_uid', unique: true  ## NOTE: index name too long
     end
+
+    drop_table :accounts_notifications
+
+    create_table 'notifications', force: :cascade do |t|
+      t.bigint 'user_id', null: false
+      t.integer 'notification_type', null: false
+      t.json 'data', default: {}, null: false, comment: 'Notification data'
+      t.integer 'status', null: false, comment: 'Unread / read / deleted'
+      t.string 'source_id'
+      t.string 'source_type'
+      t.datetime 'created_at', null: false
+      t.datetime 'updated_at', null: false
+      t.index ['source_type', 'source_id'], name: 'index_notifications_on_source_type_and_source_id'
+      t.index ['user_id'], name: 'index_notifications_on_user_id'
+    end
   end
 
   def down
@@ -158,5 +173,20 @@ class ModifyAccountsPodsModel < ActiveRecord::Migration[7.0]
     end
 
     drop_table :users_authentication_federated_identities
+
+    create_table 'accounts_notifications', force: :cascade do |t|
+      t.bigint 'user_id', null: false
+      t.integer 'notification_type', null: false
+      t.json 'data', default: {}, null: false, comment: 'Notification data'
+      t.integer 'status', null: false, comment: 'Unread / read / deleted'
+      t.string 'source_id'
+      t.string 'source_type'
+      t.datetime 'created_at', null: false
+      t.datetime 'updated_at', null: false
+      t.index ['source_type', 'source_id'], name: 'index_accounts_notifications_on_source_type_and_source_id'
+      t.index ['user_id'], name: 'index_accounts_notifications_on_user_id'
+    end
+
+    drop_table :notifications
   end
 end

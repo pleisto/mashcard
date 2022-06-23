@@ -22,19 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_21_070648) do
   create_enum "block_type", ["document", "component"]
   create_enum "pod_type", ["User", "Group"]
 
-  create_table "accounts_notifications", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.integer "notification_type", null: false
-    t.json "data", default: {}, null: false, comment: "Notification data"
-    t.integer "status", null: false, comment: "Unread / read / deleted"
-    t.string "source_id"
-    t.string "source_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["source_type", "source_id"], name: "index_accounts_notifications_on_source_type_and_source_id"
-    t.index ["user_id"], name: "index_accounts_notifications_on_user_id"
-  end
-
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_id", null: false
@@ -221,6 +208,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_21_070648) do
     t.ltree "scope", default: "R", null: false, comment: "scope for recursive search. e.g. R.user_1.pod_2 or R.pod_1"
     t.jsonb "value"
     t.index ["key", "scope"], name: "index_mashcard_configs_on_key_and_scope", unique: true
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "notification_type", null: false
+    t.json "data", default: {}, null: false, comment: "Notification data"
+    t.integer "status", null: false, comment: "Unread / read / deleted"
+    t.string "source_id"
+    t.string "source_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["source_type", "source_id"], name: "index_notifications_on_source_type_and_source_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "pods", force: :cascade do |t|

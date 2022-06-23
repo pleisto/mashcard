@@ -55,7 +55,7 @@ module Mutations
         authentication.email = email
         authentication.password = password
         # password_confirmation has been validated on the client-side
-        authentication.password_confirmation = password
+        # authentication.password_confirmation = password
       end
 
       def federated_identity_sign_up(authentication)

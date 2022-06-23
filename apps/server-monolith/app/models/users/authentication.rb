@@ -126,6 +126,7 @@ module Users
     end
 
     def destroy_authentication!
+      federated_identities.destroy_all
       # split personal data to make compliance with GDPR
       masking_data = {
         current_sign_in_ip: '',

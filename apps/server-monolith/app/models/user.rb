@@ -98,7 +98,6 @@ class User < Pod
     end
 
     ActiveRecord::Base.transaction do
-      federated_identities.destroy_all
       authentication&.destroy_authentication!
       destroy!
       true
