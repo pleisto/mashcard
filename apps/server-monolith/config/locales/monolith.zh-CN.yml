@@ -7,13 +7,6 @@ zh-CN:
   unsupported_browser:
     title: '更新您的浏览器'
     download_latest_browser_html: Unfortunately, MashCard has updated features that can't run on this version of your browser.
-  activerecord:
-    errors:
-      models:
-        accounts/user:
-          attributes:
-            password:
-              too_short: 过短
   mailer:
     footer_message: 您收到这封电子邮件，是因为您在 %{host} 拥有帐户。
     copy_this_url: "如果上面的按钮不起作用，请复制此网址："
@@ -42,7 +35,12 @@ zh-CN:
       domain_invalid: 不是有效的 domain 名称
       uuid_invalid: 不是有效的 uuid
       domain_presence_invalid: 不存在
+      delete_disabled_because_group_pods: You cannot delete a user with group pods
       InvalidImageUrl: 无效的图片链接。
+      too_short:
+        other: is too short (minimum is %{count} characters)
+      too_long:
+        other: is too long (maximum is %{count} characters)
     app_error:
       not_found_title: Whoops! Lost in MashCard?
       not_found_content: 找不到您要查找的页面。
