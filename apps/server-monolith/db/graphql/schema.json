@@ -8272,7 +8272,7 @@
             },
             {
               "name": "name",
-              "description": "Human-readable name of the user",
+              "description": "Human-readable name",
               "args": [
 
               ],
@@ -10194,7 +10194,7 @@
             },
             {
               "name": "name",
-              "description": "Human-readable name of the user",
+              "description": "Human-readable name",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,

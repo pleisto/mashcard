@@ -1292,7 +1292,7 @@ export type OmniauthSession = {
   /** Like a username, Unique within this instance of MashCard. */
   domain?: Maybe<Scalars['String']>
   hasSession: Scalars['Boolean']
-  /** Human-readable name of the user */
+  /** Human-readable name */
   name?: Maybe<Scalars['String']>
   /** Provider Name */
   provider?: Maybe<Scalars['String']>
@@ -1618,7 +1618,7 @@ export type UserCreateInput = {
   email?: InputMaybe<Scalars['Email']>
   /** User's preferred language */
   locale: Scalars['String']
-  /** Human-readable name of the user */
+  /** Human-readable name */
   name: Scalars['String']
   /** user password */
   password?: InputMaybe<Scalars['String']>

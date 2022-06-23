@@ -2329,7 +2329,7 @@ type OmniauthSession {
   hasSession: Boolean!
 
   """
-  Human-readable name of the user
+  Human-readable name
   """
   name: String
 
@@ -2936,7 +2936,7 @@ input UserCreateInput {
   locale: String!
 
   """
-  Human-readable name of the user
+  Human-readable name
   """
   name: String!
 
