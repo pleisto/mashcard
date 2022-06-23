@@ -13,7 +13,7 @@ module Resolvers
 
       return [] if pod.type === 'User'
 
-      pod.members.includes(user: [:authentication, :avatar_attachment]).map(&:member_as_json)
+      pod.members.includes(user: [:authentication, :avatar_attachment])
     end
   end
 end

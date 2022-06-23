@@ -7,14 +7,16 @@ describe Resolvers::PodMembers, type: :query do
     query = <<-'GRAPHQL'
       query GetPodUsers {
         podMembers {
-          domain
-          name
           role
           state
-          avatarData {
-            url
-            signedId
-            downloadUrl
+          user {
+            domain
+            name
+            avatarData {
+              url
+              signedId
+              downloadUrl
+            }
           }
         }
       }
@@ -48,8 +50,8 @@ describe Resolvers::PodMembers, type: :query do
 
       graphql_execute(query)
       expect(response.success?).to be true
-      expect(response.data['podMembers'][0]['domain']).to eq(user.domain)
-      expect(response.data['podMembers'][0]['name']).to eq(user.name)
+      expect(response.data['podMembers'][0]['user']['domain']).to eq(user.domain)
+      expect(response.data['podMembers'][0]['user']['name']).to eq(user.name)
       expect(response.data['podMembers'][0]['role']).to eq('owner')
 
       user2 = create(:accounts_user)

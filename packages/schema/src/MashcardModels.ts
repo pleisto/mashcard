@@ -1419,18 +1419,14 @@ export type PodLeavePayload = {
 
 export type PodMember = {
   __typename?: 'PodMember'
-  /** Pod Avatar */
-  avatarData?: Maybe<Avatar>
-  /** Like a username, Unique within this instance of MashCard */
-  domain: Scalars['String']
   /** object unique id */
   id: Scalars['AutoIncrementID']
-  /** Pod Name */
-  name: Scalars['String']
   /** role */
   role: MemberRole
   /** state */
   state: MemberState
+  /** member */
+  user: User
 }
 
 /** Pod operation types */

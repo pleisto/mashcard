@@ -1422,18 +1422,14 @@ export type PodLeavePayload = {
 
 export type PodMember = {
   __typename?: 'PodMember'
-  /** Pod Avatar */
-  avatarData?: Maybe<Avatar>
-  /** Like a username, Unique within this instance of MashCard */
-  domain: Scalars['String']
   /** object unique id */
   id: Scalars['AutoIncrementID']
-  /** Pod Name */
-  name: Scalars['String']
   /** role */
   role: MemberRole
   /** state */
   state: MemberState
+  /** member */
+  user: User
 }
 
 /** Pod operation types */
@@ -2207,11 +2203,14 @@ export type GetPodMembersQuery = {
   __typename?: 'query'
   podMembers?: Array<{
     __typename?: 'PodMember'
-    domain: string
-    name: string
     role: MemberRole
     state: MemberState
-    avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
+    user: {
+      __typename?: 'User'
+      domain: string
+      name: string
+      avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
+    }
   }> | null
 }
 
@@ -3838,14 +3837,16 @@ export type GetCurrentPodQueryResult = Apollo.QueryResult<GetCurrentPodQuery, Ge
 export const GetPodMembersDocument = gql`
   query GetPodMembers {
     podMembers {
-      domain
-      name
       role
       state
-      avatarData {
-        url
-        downloadUrl
-        signedId
+      user {
+        domain
+        name
+        avatarData {
+          url
+          downloadUrl
+          signedId
+        }
       }
     }
   }

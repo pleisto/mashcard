@@ -9099,38 +9099,6 @@
           "description": null,
           "fields": [
             {
-              "name": "avatarData",
-              "description": "Pod Avatar",
-              "args": [
-
-              ],
-              "type": {
-                "kind": "OBJECT",
-                "name": "Avatar",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "domain",
-              "description": "Like a username, Unique within this instance of MashCard",
-              "args": [
-
-              ],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "id",
               "description": "object unique id",
               "args": [
@@ -9142,24 +9110,6 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "AutoIncrementID",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "name",
-              "description": "Pod Name",
-              "args": [
-
-              ],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
                   "ofType": null
                 }
               },
@@ -9196,6 +9146,24 @@
                 "ofType": {
                   "kind": "ENUM",
                   "name": "MemberState",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "user",
+              "description": "member",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "User",
                   "ofType": null
                 }
               },

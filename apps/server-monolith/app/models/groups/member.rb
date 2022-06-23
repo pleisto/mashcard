@@ -34,15 +34,5 @@ module Groups
       enabled: 0,
       disabled: 10,
     }
-
-    def member_as_json
-      {
-        domain: user.domain,
-        name: user.name,
-        role: role,
-        state: state,
-        avatar_data: user.avatar_data,
-      }
-    end
   end
 end

@@ -6,9 +6,7 @@ module Types
       graphql_name 'PodMember'
       has_primary_key
 
-      field :avatar_data, Avatar, 'Pod Avatar', null: true
-      field :domain, String, 'Like a username, Unique within this instance of MashCard', null: false
-      field :name, String, 'Pod Name', null: false
+      field :user, User, 'member', null: false
 
       field :role, MemberRole, 'role', null: false
       field :state, MemberState, 'state', null: false

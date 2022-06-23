@@ -149,14 +149,16 @@ export const queryCurrentPod = gql`
 export const queryPodMembers = gql`
   query GetPodMembers {
     podMembers {
-      domain
-      name
       role
       state
-      avatarData {
-        url
-        downloadUrl
-        signedId
+      user {
+        domain
+        name
+        avatarData {
+          url
+          downloadUrl
+          signedId
+        }
       }
     }
   }

@@ -2569,24 +2569,9 @@ type PodLeavePayload {
 
 type PodMember {
   """
-  Pod Avatar
-  """
-  avatarData: Avatar
-
-  """
-  Like a username, Unique within this instance of MashCard
-  """
-  domain: String!
-
-  """
   object unique id
   """
   id: AutoIncrementID!
-
-  """
-  Pod Name
-  """
-  name: String!
 
   """
   role
@@ -2597,6 +2582,11 @@ type PodMember {
   state
   """
   state: MemberState!
+
+  """
+  member
+  """
+  user: User!
 }
 
 """
