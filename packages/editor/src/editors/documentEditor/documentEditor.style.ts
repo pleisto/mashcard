@@ -1,4 +1,4 @@
-import { CSS, globalCss, theme } from '@mashcard/design-system'
+import { css, CSS, theme } from '@mashcard/design-system'
 import { spreadsheetStyles } from '../../components/blockViews/Spreadsheet/Spreadsheet.style'
 import { defaultSelectionStyles } from '../../styles/index.style'
 import { DEFAULT_SELECTION_CLASS } from '../../extensions'
@@ -122,62 +122,69 @@ export const selectionStyles: CSS = {
   }
 }
 
-export const documentEditorStyles = globalCss({
-  '::selection': {
-    background: 'unset',
-    color: 'unset'
+export const documentEditorStyles = css({
+  variants: {
+    enableSelection: {
+      true: {
+        ...defaultSelectionStyles
+      },
+      false: {
+        '::selection': {
+          background: 'unset',
+          color: 'unset'
+        }
+      }
+    }
   },
 
-  '.mashcard': {
-    display: 'flex',
-    flex: '1',
-    justifyContent: 'center',
-    maxWidth: 'var(--mc-editor-max-width)',
+  display: 'flex',
+  flex: '1',
+  justifyContent: 'center',
+  maxWidth: 'var(--mc-editor-max-width)',
+  width: '100%',
+
+  '.ProseMirror': {
+    color: theme.colors.typePrimary,
+    outline: 'none',
+    paddingBottom: '5rem',
+    tabSize: '6',
     width: '100%',
 
-    '.ProseMirror': {
-      color: theme.colors.typePrimary,
-      outline: 'none',
-      paddingBottom: '5rem',
-      tabSize: '6',
-      width: '100%',
+    '&:focus-visible': {
+      outline: 'none'
+    },
 
-      '&:focus-visible': {
-        outline: 'none'
-      },
+    '> *': {
+      maxWidth: 'var(--mc-editor-max-width)'
+    },
 
-      '> *': {
-        maxWidth: 'var(--mc-editor-max-width)'
-      },
+    '> * + *': {
+      marginTop: '.75rem',
+      marginBottom: 0
+    },
 
-      '> * + *': {
-        marginTop: '.75rem',
-        marginBottom: 0
-      },
+    ...selectionStyles,
 
-      ...selectionStyles,
+    ...collaborationStyles,
 
-      ...collaborationStyles,
+    ...anchorMarkStyles,
 
-      ...anchorMarkStyles,
+    ...strikeStyles,
 
-      ...strikeStyles,
+    ...codeStyles,
 
-      ...codeStyles,
+    ...discussionMarkStyles,
 
-      ...discussionMarkStyles,
+    ...linkStyles,
 
-      ...linkStyles,
+    ...imageStyles,
 
-      ...imageStyles,
+    ...blockquoteStyles,
 
-      ...blockquoteStyles,
+    ...formulaMarkStyles,
 
-      ...formulaMarkStyles,
+    ...dividerStyles,
 
-      ...dividerStyles,
-
-      ...spreadsheetStyles
-    }
+    ...spreadsheetStyles
   }
 })

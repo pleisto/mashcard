@@ -4,7 +4,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
 <div>
   <div>
     <div
-      class="mashcard"
+      class="mc-c-kTveCk mc-c-kTveCk-gHONcO-enableSelection-false"
     >
       <div
         class="ProseMirror"
