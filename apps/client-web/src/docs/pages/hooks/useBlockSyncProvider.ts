@@ -107,6 +107,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
               blockStates.filter(s => s.state).map(s => base64.parse(s.state as string))
             )
             Y.applyUpdate(provider.document, remoteState)
+            setBlockMeta(Object.fromEntries(provider.document.getMap('meta').entries()))
           }
         }
       }

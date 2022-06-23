@@ -34,10 +34,10 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
   // const inputRef = React.useRef<any>(null)
   // const inputComposing = React.useRef(false)
 
-  const docBlock = blocks?.find(b => b.id === docId)
+  // const docBlock = blocks?.find(b => b.id === docId)
 
-  const icon = meta.icon ?? docBlock?.meta?.icon
-  const cover = meta.cover ?? docBlock?.meta?.cover
+  const icon = meta.icon
+  const cover = meta.cover
   const title = meta.title
 
   // MashcardEventBus.subscribe(
@@ -56,15 +56,9 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
       setMeta(newMeta)
       if (docId) {
         MashcardEventBus.dispatch(UpdateDocMeta({ id: docId, meta: newMeta }))
-        if (editor && !editor.isDestroyed) {
-          editor.commands.setDocAttrs({
-            ...editor.state.doc.attrs,
-            ...newMeta
-          })
-        }
       }
     },
-    [docId, editor, setMeta]
+    [docId, setMeta]
   )
 
   const createDocAttrsUpdater = React.useCallback(
