@@ -45,7 +45,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
 
   useDocHistoryProvider(docMeta.id as string)
 
-  const { provider, initBlocksToEditor, loading, committing, awarenessInfos } = useBlockSyncProvider({
+  const { provider, initBlocksToEditor, loading, committing, awarenessInfos, meta, setMeta } = useBlockSyncProvider({
     blockId: docMeta.id as string,
     historyId: docMeta.historyId
   })
@@ -120,10 +120,11 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
         }}
       >
         <DocumentTitle
-          title={docMeta.title}
           docId={docMeta.id}
           blocks={data?.childrenBlocks}
           editable={documentEditable}
+          meta={meta}
+          setMeta={setMeta}
         />
         <Root.PageContent>
           <EditorContent

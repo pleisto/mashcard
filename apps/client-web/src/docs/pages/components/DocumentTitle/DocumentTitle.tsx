@@ -1,17 +1,18 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Button, Popover, Icon } from '@mashcard/design-system'
 import * as Root from './DocumentTitle.style'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { DocumentIcon } from './DocumentIcon'
 import { DocumentCover } from './DocumentCover'
 import { useDocsI18n } from '../../../common/hooks'
-import { MashcardEventBus, DocMetaLoaded, UpdateDocMeta } from '@mashcard/schema'
+import { MashcardEventBus, UpdateDocMeta } from '@mashcard/schema'
 import {
   useDocumentIconUploader,
   useDocumentCoverUploader,
   usePrepareFileUpload,
   useFetchUnsplashImages
 } from '../../hooks'
+import { blockMeta } from '../../hooks/useBlockSyncProvider'
 import { useReactiveVar } from '@apollo/client'
 import { editorVar } from '@/docs/reactiveVars'
 import { useBlobGetter } from '../../hooks/useBlobGetter'
@@ -21,7 +22,8 @@ export interface DocumentTitleProps {
   docId?: string
   blocks: GetChildrenBlocksQuery['childrenBlocks']
   editable: boolean
-  title: string
+  meta: blockMeta
+  setMeta: (meta: blockMeta) => void
 }
 
 // const createDocAttrsUpdater =
@@ -34,7 +36,7 @@ export interface DocumentTitleProps {
 //     })
 //   }
 
-export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, blocks, title: _title }) => {
+export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, blocks, meta, setMeta }) => {
   const { t } = useDocsI18n()
   const editor = useReactiveVar(editorVar)
   const blockId = editor?.state.doc.attrs.uuid
@@ -45,28 +47,24 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
   // const inputRef = React.useRef<any>(null)
   // const inputComposing = React.useRef(false)
 
-  const [meta, setMeta] = React.useState<{ [key: string]: any }>({})
+  // const [meta, setMeta] = React.useState<{ [key: string]: any }>({})
 
   const docBlock = blocks?.find(b => b.id === docId)
 
   const icon = meta.icon ?? docBlock?.meta?.icon
   const cover = meta.cover ?? docBlock?.meta?.cover
-  const title = meta.title ?? _title
+  const title = meta.title
 
-  useEffect(() => {
-    setMeta(meta => ({ ...meta, title: _title }))
-  }, [_title])
-
-  MashcardEventBus.subscribe(
-    DocMetaLoaded,
-    e => {
-      const { id, meta } = e.payload
-      if (id === docId) {
-        setMeta(meta)
-      }
-    },
-    { subscribeId: 'DocumentTitle' }
-  )
+  // MashcardEventBus.subscribe(
+  //   DocMetaLoaded,
+  //   e => {
+  //     const { id, meta } = e.payload
+  //     if (id === docId) {
+  //       setMeta(meta)
+  //     }
+  //   },
+  //   { subscribeId: 'DocumentTitle' }
+  // )
 
   const changeDocMeta = React.useCallback(
     (newMeta: { [key: string]: any }) => {
@@ -81,7 +79,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
         }
       }
     },
-    [docId, editor]
+    [docId, editor, setMeta]
   )
 
   const createDocAttrsUpdater = React.useCallback(
@@ -143,7 +141,8 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
       <Root.TitleWrapper
         width={{
           '@smDown': 'sm'
-        }}>
+        }}
+      >
         <Root.MaxWidth>
           {editable && (
             <Root.Actions data-testid={TEST_ID_ENUM.page.DocumentPage.actionButtons.id}>
@@ -161,7 +160,8 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
                     as={Button}
                     data-testid={TEST_ID_ENUM.page.DocumentPage.coverButton.id}
                     type="text"
-                    disabled={!editable}>
+                    disabled={!editable}
+                  >
                     <Root.Icon as={Icon.Image} />
                     <Root.Name>{t('title.add_cover')}</Root.Name>
                   </Root.Item>

@@ -20,6 +20,10 @@ import { devLog } from '@mashcard/design-system'
 
 import { MashcardEventBus, docHistoryReceived } from '@mashcard/schema'
 
+export interface blockMeta {
+  [key: string]: any
+}
+
 export interface blockProvider {
   awareness: awarenessProtocol.Awareness
   document: Y.Doc
@@ -40,6 +44,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   provider?: blockProvider
   initBlocksToEditor: React.MutableRefObject<boolean>
   awarenessInfos: awarenessInfo[]
+  meta: blockMeta
+  setMeta: (meta: blockMeta) => void
 } {
   const {
     features: { experiment_collaboration: enableCollaboration }
@@ -50,6 +56,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   const { blockId, historyId } = queryVariables
 
   const block = React.useRef<BlockNew>({ id: blockId })
+  const [blockMeta, setBlockMeta] = React.useState<blockMeta>({})
   const [provider, setProvider] = React.useState<blockProvider>()
   const [awarenessInfos, setAwarenessInfos] = React.useState<awarenessInfo[]>([])
 
@@ -209,6 +216,25 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
     [blockCommit, blockId, historyId, setCommitting]
   )
 
+  const setMeta = React.useCallback(
+    (newMeta: blockMeta) => {
+      if (provider) {
+        const metaYmap = provider?.document.getMap('meta')
+        Object.keys(newMeta).forEach((k: string) => {
+          if (newMeta[k]) {
+            if (newMeta[k] !== metaYmap.get(k)) {
+              metaYmap.set(k, newMeta[k])
+            }
+          } else {
+            metaYmap.delete(k)
+          }
+        })
+        setBlockMeta({ ...blockMeta, ...newMeta })
+      }
+    },
+    [provider, blockMeta, setBlockMeta]
+  )
+
   React.useEffect(() => {
     if (enableCollaboration) {
       if (data && !loading) {
@@ -237,6 +263,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
         const provider = { document: newYdoc, awareness }
         setProvider(provider)
+        setBlockMeta(Object.fromEntries(newYdoc.getMap('meta').entries()))
 
         if (!historyId) {
           newYdoc.on('update', async (update: Uint8Array, origin: any, ydoc: Y.Doc) => {
@@ -270,6 +297,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
     loading,
     provider,
     initBlocksToEditor,
-    awarenessInfos
+    awarenessInfos,
+    meta: blockMeta,
+    setMeta
   }
 }
