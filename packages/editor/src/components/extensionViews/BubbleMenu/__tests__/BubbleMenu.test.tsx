@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { mockEditor } from '../../../../test/editor'
 import { BubbleMenu, shouldShow } from '../BubbleMenu'
 import * as helpers from '../../../../helpers/selection'
+import { Base } from '../../../../extensions/base'
 
 describe('BubbleMenu', () => {
   const byRoleOptions = { hidden: true }
@@ -44,7 +45,10 @@ describe('BubbleMenu', () => {
     it('should not show when editor is not editable', () => {
       const editor = mockEditor({
         isEditable: false,
-        isDestroyed: true
+        isDestroyed: true,
+        extensionManager: {
+          extensions: [{ name: Base.name, options: { bubbleMenu: true } }]
+        }
       })
       const result = shouldShow?.({ editor, from: 1, to: 2, view: editor.view, state: editor.state })
 
@@ -54,7 +58,23 @@ describe('BubbleMenu', () => {
     it('should not show when selection is anchor', () => {
       const editor = mockEditor({
         isEditable: true,
-        isDestroyed: false
+        isDestroyed: false,
+        extensionManager: {
+          extensions: [{ name: Base.name, options: { bubbleMenu: true } }]
+        }
+      })
+      const result = shouldShow?.({ editor, from: 1, to: 1, view: editor.view, state: editor.state })
+
+      expect(result).toBeFalsy()
+    })
+
+    it('should not show when bubbleMenu is not active', () => {
+      const editor = mockEditor({
+        isEditable: true,
+        isDestroyed: false,
+        extensionManager: {
+          extensions: [{ name: Base.name, options: { bubbleMenu: false } }]
+        }
       })
       const result = shouldShow?.({ editor, from: 1, to: 1, view: editor.view, state: editor.state })
 
@@ -99,7 +119,10 @@ describe('BubbleMenu', () => {
 
       const editor = mockEditor({
         isEditable: true,
-        isDestroyed: false
+        isDestroyed: false,
+        extensionManager: {
+          extensions: [{ name: Base.name, options: { bubbleMenu: true } }]
+        }
       })
       const result = shouldShow?.({ editor, from: 1, to: 2, view: editor.view, state: editor.state })
 
@@ -144,14 +167,17 @@ describe('BubbleMenu', () => {
 
       const editor = mockEditor({
         isEditable: true,
-        isDestroyed: false
+        isDestroyed: false,
+        extensionManager: {
+          extensions: [{ name: Base.name, options: { bubbleMenu: true } }]
+        }
       })
       const result = shouldShow?.({ editor, from: 1, to: 2, view: editor.view, state: editor.state })
 
       expect(result).toBeFalsy()
     })
 
-    it('should not show when selection contains empty node', () => {
+    it('should not show when selection text content is empty', () => {
       /* eslint-disable max-nested-callbacks */
       jest.spyOn(helpers, 'findNodesInSelection').mockImplementation(() => [
         {
@@ -184,7 +210,10 @@ describe('BubbleMenu', () => {
 
       const editor = mockEditor({
         isEditable: true,
-        isDestroyed: false
+        isDestroyed: false,
+        extensionManager: {
+          extensions: [{ name: Base.name, options: { bubbleMenu: true } }]
+        }
       })
       const result = shouldShow?.({ editor, from: 1, to: 2, view: editor.view, state: editor.state })
 

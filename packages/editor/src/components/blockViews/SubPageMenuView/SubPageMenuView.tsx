@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { styled, theme } from '@mashcard/design-system'
 import { BlockContainer } from '../BlockContainer'
 import { SubPageMenuViewProps } from '../../../extensions/blocks/subPageMenu/meta'
+import { defaultSelectionStyles } from '../../../styles/index.style'
 
 const SubPageMenu = styled('div', {
   background: theme.colors.backgroundPrimary,
@@ -10,7 +11,8 @@ const SubPageMenu = styled('div', {
   display: 'inline-block',
   minWidth: '23.375rem',
   maxWidth: '100%',
-  padding: '1rem .25rem'
+  padding: '1rem .25rem',
+  ...defaultSelectionStyles
 })
 
 export const SubPageMenuView: FC<SubPageMenuViewProps> = ({ node, deleteNode, extension, getPos }) => {

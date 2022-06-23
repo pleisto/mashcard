@@ -4,56 +4,24 @@ import { BubbleMenuViewProps } from '@tiptap/extension-bubble-menu'
 import { Editor } from '@tiptap/core'
 import { Toolbar } from '../../ui/Toolbar'
 import { useBubbleMenuItems } from './useBubbleMenuItems'
-import { findNodesInSelection } from '../../../helpers'
 import { Button } from '@mashcard/design-system'
-import { meta as paragraphMeta } from '../../../extensions/blocks/paragraph/meta'
-import { meta as headingMeta } from '../../../extensions/blocks/heading/meta'
-import { meta as listItemMeta } from '../../../extensions/blocks/listItem/meta'
-import { meta as orderedListMeta } from '../../../extensions/blocks/orderedList/meta'
-import { meta as bulletListMeta } from '../../../extensions/blocks/bulletList/meta'
-import { meta as taskItemMeta } from '../../../extensions/blocks/taskItem/meta'
-import { meta as taskListMeta } from '../../../extensions/blocks/taskList/meta'
-import { meta as calloutMeta } from '../../../extensions/blocks/callout/meta'
-import { meta as blockquoteMeta } from '../../../extensions/blocks/blockquote/meta'
+import { isTextContentSelected } from '../../../extensions/extensions/selection'
+import { Base } from '../../../extensions/base'
 
 interface BubbleMenuProps {
   editor: Editor | null
 }
 
-const allowedNodeTypes = [
-  paragraphMeta.name,
-  headingMeta.name,
-  listItemMeta.name,
-  orderedListMeta.name,
-  bulletListMeta.name,
-  taskItemMeta.name,
-  taskListMeta.name,
-  calloutMeta.name,
-  blockquoteMeta.name
-]
-
 export const shouldShow: BubbleMenuViewProps['shouldShow'] = ({ editor, from, to }) => {
-  if (!editor.isEditable || editor.isDestroyed) return false
-  if (from === to) return false
+  const baseExtension = editor.extensionManager.extensions.find(
+    extension => extension.name === Base.name
+  ) as typeof Base
 
-  let show = false
-
-  const nodes = findNodesInSelection(editor, from, to)
-
-  for (const { node } of nodes) {
-    if (node) {
-      // Text node
-      if (node.type.name === 'text' && node.text?.length) {
-        show = true
-      } else if (allowedNodeTypes.includes(node.type.name) && node.textContent.length) {
-        show = true
-      } else {
-        return false
-      }
-    }
+  if (baseExtension?.options.bubbleMenu) {
+    return isTextContentSelected({ editor, from, to })
   }
 
-  return show
+  return false
 }
 
 export const isBubbleMenuVisible = (editor: Editor | null | undefined): editor is Editor => {

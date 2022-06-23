@@ -104,6 +104,7 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
               blockquote: true,
               bold: true,
               brickList: true,
+              bubbleMenu: true,
               bulletList: true,
               callout: true,
               code: true,
@@ -152,6 +153,7 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
                   }
                 }
               },
+              selection: true,
               slashCommands: true,
               spreadsheet: true,
               strike: true,
