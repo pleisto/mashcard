@@ -13,6 +13,11 @@ export const TEST_ID_ENUM = {
           }
         }
       }
+    },
+    sidebar: {
+      podSelect: {
+        id: 'layout-sidebar-pod-select'
+      }
     }
   },
   page: {

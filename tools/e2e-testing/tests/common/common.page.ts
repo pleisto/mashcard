@@ -56,6 +56,7 @@ export class CommonPage {
       mask: [
         this.page.locator('[data-testid=page-topBar-saving]'),
         this.page.locator('[data-testid=page-document-page-loading]'),
+        this.page.locator('[data-testid=layout-sidebar-pod-select]'),
         ...maskList
       ]
     })
