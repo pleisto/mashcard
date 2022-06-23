@@ -1061,6 +1061,31 @@ export type FormulaModifyInput = {
   version: Scalars['Int']
 }
 
+/** MashCard Group. */
+export type Group = {
+  __typename?: 'Group'
+  /** Pod Avatar */
+  avatarData?: Maybe<Avatar>
+  /** public profile bio */
+  bio?: Maybe<Scalars['String']>
+  /** Like a username, Unique within this instance of MashCard. */
+  domain: Scalars['String']
+  /** object unique id */
+  id: Scalars['AutoIncrementID']
+  /** enable invite feature */
+  inviteEnable: Scalars['Boolean']
+  /** invite secret */
+  inviteSecret?: Maybe<Scalars['String']>
+  /** Human-readable name */
+  name: Scalars['String']
+  /** owner is current user */
+  owned: Scalars['Boolean']
+  /** personal */
+  personal: Scalars['Boolean']
+  /** Pod enum type */
+  type: PodTypeEnum
+}
+
 /** InputObject type of Class */
 export type JoinPodInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -1305,7 +1330,7 @@ export type OldPod = {
   /** personal */
   personal: Scalars['Boolean']
   /** Pod enum type */
-  type: Pod
+  type: PodTypeEnum
 }
 
 /** session[:omniauth] */
@@ -1357,12 +1382,8 @@ export type Pin = {
   text: Scalars['String']
 }
 
-export enum Pod {
-  /** GROUP */
-  Group = 'Group',
-  /** USER */
-  User = 'User'
-}
+/** MashCard Pod. */
+export type Pod = Group | User
 
 /** InputObject type of Class */
 export type PodDestroyInput = {
@@ -1422,6 +1443,13 @@ export enum PodOperation {
   Create = 'CREATE',
   /** UPDATE */
   Update = 'UPDATE'
+}
+
+export enum PodTypeEnum {
+  /** GROUP */
+  Group = 'Group',
+  /** USER */
+  User = 'User'
 }
 
 export enum Policytype {
@@ -1576,6 +1604,31 @@ export enum Upload {
   Doc = 'DOC',
   /** Third */
   Third = 'THIRD'
+}
+
+/** A user is an individual's accounts on MashCard can make new content. */
+export type User = {
+  __typename?: 'User'
+  /** Pod Avatar */
+  avatarData?: Maybe<Avatar>
+  /** public profile bio */
+  bio?: Maybe<Scalars['String']>
+  /** Like a username, Unique within this instance of MashCard. */
+  domain: Scalars['String']
+  /** object unique id */
+  id: Scalars['AutoIncrementID']
+  /** User's preferred language */
+  locale: Scalars['String']
+  /** Human-readable name */
+  name: Scalars['String']
+  /** owner is current user */
+  owned: Scalars['Boolean']
+  /** personal */
+  personal: Scalars['Boolean']
+  /** User's preferred timezone */
+  timezone: Scalars['String']
+  /** Pod enum type */
+  type: PodTypeEnum
 }
 
 /** InputObject type of Class */
@@ -1782,7 +1835,7 @@ export type Query = {
   /** search pods */
   podSearch: Array<OldPod>
   /** return all pods for user. */
-  pods: Array<OldPod>
+  pods: Array<Pod>
   /** return preview box data of url */
   previewBox: PreviewBox
   spreadsheetChildren?: Maybe<SpreadsheetChildren>

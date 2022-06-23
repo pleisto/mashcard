@@ -3,7 +3,7 @@
 module Resolvers
   class Pods < BaseResolver
     description 'return all pods for user.'
-    type [Types::OldPod], null: false
+    type [Types::Pod], null: false
     authenticate_user!
 
     def resolve

@@ -38,18 +38,35 @@ export const CreateDirectUpload = gql`
 export const queryPods = gql`
   query GetPods {
     pods {
-      id
-      domain
-      name
-      personal
-      inviteEnable
-      owned
-      avatarData {
-        url
-        downloadUrl
-        signedId
+      ... on User {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        bio
       }
-      bio
+      ... on Group {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        inviteEnable
+        bio
+      }
     }
   }
 `

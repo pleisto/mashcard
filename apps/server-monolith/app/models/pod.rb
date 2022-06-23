@@ -72,7 +72,7 @@ class Pod < ApplicationRecord
       personal: personal,
       invite_enable: owned ? invite_enable : nil,
       invite_secret: owned ? invite_secret : nil,
-    }
+    }.with_indifferent_access
   end
 
   def self.domain_available?(username)

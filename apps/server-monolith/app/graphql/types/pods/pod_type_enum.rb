@@ -2,7 +2,7 @@
 
 module Types
   module Pods
-    class PodType < BaseEnum
+    class PodTypeEnum < BaseEnum
       value 'User', 'USER'
       value 'Group', 'GROUP'
     end

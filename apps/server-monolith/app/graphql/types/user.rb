@@ -4,7 +4,7 @@ module Types
   class User < Types::BasePod
     has_primary_key
 
-    graphql_name 'AccountsUser'
+    graphql_name 'User'
     description 'A user is an individual\'s accounts on MashCard can make new content.'
 
     field :locale, String, 'User\'s preferred language', null: false

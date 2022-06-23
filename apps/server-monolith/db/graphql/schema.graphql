@@ -2014,6 +2014,61 @@ input FormulaModifyInput {
 }
 
 """
+MashCard Group.
+"""
+type Group {
+  """
+  Pod Avatar
+  """
+  avatarData: Avatar
+
+  """
+  public profile bio
+  """
+  bio: String
+
+  """
+  Like a username, Unique within this instance of MashCard.
+  """
+  domain: String!
+
+  """
+  object unique id
+  """
+  id: AutoIncrementID!
+
+  """
+  enable invite feature
+  """
+  inviteEnable: Boolean!
+
+  """
+  invite secret
+  """
+  inviteSecret: String
+
+  """
+  Human-readable name
+  """
+  name: String!
+
+  """
+  owner is current user
+  """
+  owned: Boolean!
+
+  """
+  personal
+  """
+  personal: Boolean!
+
+  """
+  Pod enum type
+  """
+  type: PodTypeEnum!
+}
+
+"""
 A valid http/https url or image uri
 """
 scalar HttpUrl
@@ -2370,7 +2425,7 @@ type OldPod {
   """
   Pod enum type
   """
-  type: Pod!
+  type: PodTypeEnum!
 }
 
 """
@@ -2452,17 +2507,10 @@ type Pin {
   text: String!
 }
 
-enum Pod {
-  """
-  GROUP
-  """
-  Group
-
-  """
-  USER
-  """
-  User
-}
+"""
+MashCard Pod.
+"""
+union Pod = Group | User
 
 """
 InputObject type of Class
@@ -2574,6 +2622,18 @@ enum PodOperation {
   UPDATE
   """
   UPDATE
+}
+
+enum PodTypeEnum {
+  """
+  GROUP
+  """
+  Group
+
+  """
+  USER
+  """
+  User
 }
 
 enum Policytype {
@@ -2861,6 +2921,61 @@ enum Upload {
   Third
   """
   THIRD
+}
+
+"""
+A user is an individual's accounts on MashCard can make new content.
+"""
+type User {
+  """
+  Pod Avatar
+  """
+  avatarData: Avatar
+
+  """
+  public profile bio
+  """
+  bio: String
+
+  """
+  Like a username, Unique within this instance of MashCard.
+  """
+  domain: String!
+
+  """
+  object unique id
+  """
+  id: AutoIncrementID!
+
+  """
+  User's preferred language
+  """
+  locale: String!
+
+  """
+  Human-readable name
+  """
+  name: String!
+
+  """
+  owner is current user
+  """
+  owned: Boolean!
+
+  """
+  personal
+  """
+  personal: Boolean!
+
+  """
+  User's preferred timezone
+  """
+  timezone: String!
+
+  """
+  Pod enum type
+  """
+  type: PodTypeEnum!
 }
 
 """
@@ -3293,7 +3408,7 @@ type query {
   """
   return all pods for user.
   """
-  pods: [OldPod!]!
+  pods: [Pod!]!
 
   """
   return preview box data of url
