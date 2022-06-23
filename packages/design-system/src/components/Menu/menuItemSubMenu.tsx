@@ -30,6 +30,20 @@ const SubMenuItemWrapper = styled('div', {
   display: 'inline-block'
 })
 
+// chrome does not render the nested backfilter properly, use this container's pseudo-element to solve this problem
+const SubMenuItemContentWrapper = styled('div', {
+  position: 'relative',
+  '&::before': {
+    content: '',
+    display: 'block',
+    height: '100%',
+    width: '100%',
+    position: 'absolute',
+    backdropFilter: 'blur(20px)',
+    zIndex: '-1'
+  }
+})
+
 interface SubMenuItemContextValue {
   baseId?: MenuItemSubMenuProps['baseId']
   type?: MenuItemSubMenuProps['type']
@@ -59,7 +73,7 @@ const SubMenuItem = React.forwardRef<HTMLLIElement, MenuItemSubMenuProps>((props
       >
         <ReakitMenuButton {...menuProps} {...restProps} ref={ref} tip={<SubMenuRightArrow />} as={MenuItem} />
         <ReakitMenu {...menuProps} as="ul" aria-label={title} className={className}>
-          {children}
+          <SubMenuItemContentWrapper>{children}</SubMenuItemContentWrapper>
         </ReakitMenu>
       </SubMenuItemWrapper>
     </MenuContext.Provider>
