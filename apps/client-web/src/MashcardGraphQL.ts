@@ -921,7 +921,7 @@ export type CreateOrUpdatePodPayload = {
   clientMutationId?: Maybe<Scalars['String']>
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars['String']>
-  pod?: Maybe<Group>
+  pod?: Maybe<Pod>
 }
 
 /** Represents direct upload credentials */
@@ -1828,7 +1828,7 @@ export type Query = {
   /** Check password available. */
   passwordAvailable: ValidateResult
   /** return current pod for user. */
-  pod: Group
+  pod: Pod
   /** return all pod users */
   podMembers?: Maybe<Array<PodMember>>
   /** search pods */
@@ -2140,17 +2140,31 @@ export type GetPodQueryVariables = Exact<{
 
 export type GetPodQuery = {
   __typename?: 'query'
-  pod: {
-    __typename?: 'Group'
-    id: string
-    domain: string
-    name: string
-    personal: boolean
-    inviteEnable: boolean
-    inviteSecret?: string | null
-    bio?: string | null
-    avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
-  }
+  pod:
+    | {
+        __typename?: 'Group'
+        id: string
+        domain: string
+        owned: boolean
+        name: string
+        type: PodTypeEnum
+        personal: boolean
+        inviteEnable: boolean
+        inviteSecret?: string | null
+        bio?: string | null
+        avatarData?: { __typename?: 'Avatar'; url: string; signedId: string; downloadUrl: string } | null
+      }
+    | {
+        __typename?: 'User'
+        id: string
+        domain: string
+        owned: boolean
+        name: string
+        type: PodTypeEnum
+        personal: boolean
+        bio?: string | null
+        avatarData?: { __typename?: 'Avatar'; url: string; signedId: string; downloadUrl: string } | null
+      }
 }
 
 export type GetCurrentPodQueryVariables = Exact<{
@@ -2160,18 +2174,31 @@ export type GetCurrentPodQueryVariables = Exact<{
 export type GetCurrentPodQuery = {
   __typename?: 'query'
   currentPodDomain: string
-  pod: {
-    __typename?: 'Group'
-    id: string
-    domain: string
-    name: string
-    personal: boolean
-    owned: boolean
-    inviteEnable: boolean
-    inviteSecret?: string | null
-    bio?: string | null
-    avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
-  }
+  pod:
+    | {
+        __typename?: 'Group'
+        id: string
+        domain: string
+        owned: boolean
+        name: string
+        type: PodTypeEnum
+        personal: boolean
+        inviteEnable: boolean
+        inviteSecret?: string | null
+        bio?: string | null
+        avatarData?: { __typename?: 'Avatar'; url: string; signedId: string; downloadUrl: string } | null
+      }
+    | {
+        __typename?: 'User'
+        id: string
+        domain: string
+        owned: boolean
+        name: string
+        type: PodTypeEnum
+        personal: boolean
+        bio?: string | null
+        avatarData?: { __typename?: 'Avatar'; url: string; signedId: string; downloadUrl: string } | null
+      }
 }
 
 export type GetPodMembersQueryVariables = Exact<{ [key: string]: never }>
@@ -2267,13 +2294,10 @@ export type CreateOrUpdatePodMutation = {
   createOrUpdatePod?: {
     __typename?: 'CreateOrUpdatePodPayload'
     errors: Array<string>
-    pod?: {
-      __typename?: 'Group'
-      domain: string
-      name: string
-      inviteEnable: boolean
-      inviteSecret?: string | null
-    } | null
+    pod?:
+      | { __typename?: 'Group'; domain: string; name: string; inviteEnable: boolean; inviteSecret?: string | null }
+      | { __typename?: 'User'; domain: string; name: string }
+      | null
   } | null
 }
 
@@ -3681,18 +3705,36 @@ export type GetPodsQueryResult = Apollo.QueryResult<GetPodsQuery, GetPodsQueryVa
 export const GetPodDocument = gql`
   query GetPod($domain: String!) {
     pod(domain: $domain) {
-      id
-      domain
-      name
-      personal
-      inviteEnable
-      inviteSecret
-      avatarData {
-        url
-        downloadUrl
-        signedId
+      ... on User {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        bio
       }
-      bio
+      ... on Group {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        inviteEnable
+        inviteSecret
+        bio
+      }
     }
   }
 `
@@ -3728,19 +3770,36 @@ export const GetCurrentPodDocument = gql`
   query GetCurrentPod($domain: String!) {
     currentPodDomain @client @export(as: "domain")
     pod(domain: $domain) {
-      id
-      domain
-      name
-      personal
-      owned
-      inviteEnable
-      inviteSecret
-      avatarData {
-        url
-        downloadUrl
-        signedId
+      ... on User {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        bio
       }
-      bio
+      ... on Group {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        inviteEnable
+        inviteSecret
+        bio
+      }
     }
   }
 `
@@ -4021,10 +4080,16 @@ export const CreateOrUpdatePodDocument = gql`
     createOrUpdatePod(input: $input) {
       errors
       pod {
-        domain
-        name
-        inviteEnable
-        inviteSecret
+        ... on User {
+          domain
+          name
+        }
+        ... on Group {
+          domain
+          name
+          inviteEnable
+          inviteSecret
+        }
       }
     }
   }

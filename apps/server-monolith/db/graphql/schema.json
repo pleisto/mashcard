@@ -5917,8 +5917,8 @@
 
               ],
               "type": {
-                "kind": "OBJECT",
-                "name": "Group",
+                "kind": "UNION",
+                "name": "Pod",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -12971,8 +12971,8 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Group",
+                  "kind": "UNION",
+                  "name": "Pod",
                   "ofType": null
                 }
               },

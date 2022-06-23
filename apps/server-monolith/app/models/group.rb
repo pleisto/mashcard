@@ -25,6 +25,8 @@
 #  index_pods_on_type                 (type)
 #
 class Group < Pod
+  include GroupInviteable
+
   has_many :members, -> { enabled }, class_name: 'Groups::Member', inverse_of: :group, dependent: :destroy
   has_one :owner_member, -> { where(role: :owner).enabled }, class_name: 'Groups::Member', inverse_of: :group, dependent: :destroy
   has_many :users, through: :members

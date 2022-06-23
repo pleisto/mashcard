@@ -69,10 +69,16 @@ export const CreateOrUpdatePod = gql`
     createOrUpdatePod(input: $input) {
       errors
       pod {
-        domain
-        name
-        inviteEnable
-        inviteSecret
+        ... on User {
+          domain
+          name
+        }
+        ... on Group {
+          domain
+          name
+          inviteEnable
+          inviteSecret
+        }
       }
     }
   }

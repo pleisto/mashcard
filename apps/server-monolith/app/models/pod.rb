@@ -28,7 +28,6 @@ class Pod < ApplicationRecord
   acts_as_paranoid
 
   include Hashedidable
-  include GroupInviteable
 
   validates :username, presence: true, username: true, uniqueness: { case_sensitive: false, conditions: -> {
                                                                                                           with_deleted
@@ -58,29 +57,14 @@ class Pod < ApplicationRecord
     }
   end
 
+  # Check if current pod is current user's personal pod
   def personal
     id === Current.user&.id
   end
 
+  # Check if current pod is current user's owned pod
   def owned
     owner.id === Current.user&.id
-  end
-
-  def pod_as_json_by_user(user)
-    owned = owner.id === user.id
-    personal = id === user.id
-    {
-      id: id,
-      avatar_data: avatar_data,
-      bio: bio,
-      type: type,
-      domain: username,
-      name: display_name,
-      owned: owned,
-      personal: personal,
-      invite_enable: owned ? invite_enable : nil,
-      invite_secret: owned ? invite_secret : nil,
-    }.with_indifferent_access
   end
 
   def self.domain_available?(username)

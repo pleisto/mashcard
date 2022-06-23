@@ -9,9 +9,15 @@ describe Mutations::Pods::CreateOrUpdate, type: :mutation do
         createOrUpdatePod(input: $input) {
           errors
           pod {
-            domain
-            name
-            inviteEnable
+            ... on User {
+              domain
+              name
+            }
+            ... on Group {
+              domain
+              name
+              inviteEnable
+            }
           }
         }
       }
@@ -32,7 +38,9 @@ describe Mutations::Pods::CreateOrUpdate, type: :mutation do
       expect(response.data[:createOrUpdatePod][:errors]).to eq([])
       expect(response.data[:createOrUpdatePod][:pod][:name]).to eq(new_name)
 
-      input = { input: { type: 'UPDATE', domain: user.personal_pod.domain, inviteEnable: true } }
+      user.create_own_group!(username: 'createOrUpdatePod', display_name: 'createOrUpdatePod')
+
+      input = { input: { type: 'UPDATE', domain: 'createOrUpdatePod', inviteEnable: true } }
       graphql_execute(mutation, input)
 
       expect(response.errors).to eq({})

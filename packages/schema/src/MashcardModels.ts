@@ -918,7 +918,7 @@ export type CreateOrUpdatePodPayload = {
   clientMutationId?: Maybe<Scalars['String']>
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars['String']>
-  pod?: Maybe<Group>
+  pod?: Maybe<Pod>
 }
 
 /** Represents direct upload credentials */
@@ -1825,7 +1825,7 @@ export type Query = {
   /** Check password available. */
   passwordAvailable: ValidateResult
   /** return current pod for user. */
-  pod: Group
+  pod: Pod
   /** return all pod users */
   podMembers?: Maybe<Array<PodMember>>
   /** search pods */

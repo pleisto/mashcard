@@ -1750,7 +1750,7 @@ type CreateOrUpdatePodPayload {
   Errors encountered during execution of the mutation.
   """
   errors: [String!]!
-  pod: Group
+  pod: Pod
 }
 
 """
@@ -3383,7 +3383,7 @@ type query {
   """
   return current pod for user.
   """
-  pod(domain: String!): Group!
+  pod(domain: String!): Pod!
 
   """
   return all pod users

@@ -7,19 +7,35 @@ describe Resolvers::Pod, type: :query do
     query = <<-'GRAPHQL'
       query GetPod($domain: String!) {
         pod(domain: $domain) {
-          id
-          domain
-          type
-          name
-          personal
-          inviteEnable
-          inviteSecret
-          avatarData {
-            url
-            signedId
-            downloadUrl
+          ... on User {
+            id
+            domain
+            name
+            type
+            owned
+            personal
+            avatarData {
+              url
+              signedId
+              downloadUrl
+            }
+            bio
           }
-          bio
+          ... on Group {
+            id
+            domain
+            name
+            type
+            owned
+            personal
+            avatarData {
+              url
+              signedId
+              downloadUrl
+            }
+            inviteEnable
+            bio
+          }
         }
       }
     GRAPHQL
