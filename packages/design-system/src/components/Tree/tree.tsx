@@ -19,6 +19,7 @@ import { useMemoizedFn } from '../../hooks'
 import { useDeepMemo } from '../../hooks/useDeepMemo'
 import { flattenNodes, joinNodeIdsByPath } from './helpers'
 import { useUpdate } from 'ahooks'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 export interface TreeProps {
   height?: number
@@ -170,7 +171,7 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
             data={nodeList}
             height={height}
             virtual={virtual}
-            data-testid="virtual-list"
+            data-testid={TEST_ID_ENUM.page.pageTree.virtualList.id}
             itemHeight={NODE_HEIGHT}
             itemKey="id"
             ref={ref ?? listRef}

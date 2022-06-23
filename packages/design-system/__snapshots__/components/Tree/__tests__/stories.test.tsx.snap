@@ -5,7 +5,7 @@ exports[`Tree Basic should match the snapshot 1`] = `
   <div>
     <div
       class="rc-virtual-list"
-      data-testid="virtual-list"
+      data-testid="page-tree-virtual-list"
       style="position: relative;"
     >
       <div
@@ -20,29 +20,28 @@ exports[`Tree Basic should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iksdqzH-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-ijwxnRu-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -50,13 +49,13 @@ exports[`Tree Basic should match the snapshot 1`] = `
                     </div>
                     <a
                       class="mc-c-jyNUxZ"
-                      data-testid="content-icon"
+                      data-testid="page-tree-virtual-list-node-item-content-icon"
                     >
                       🔆
                     </a>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Sun
@@ -69,29 +68,28 @@ exports[`Tree Basic should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -99,7 +97,7 @@ exports[`Tree Basic should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Mercury
@@ -112,29 +110,28 @@ exports[`Tree Basic should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -142,7 +139,7 @@ exports[`Tree Basic should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Venus
@@ -155,29 +152,28 @@ exports[`Tree Basic should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -185,7 +181,7 @@ exports[`Tree Basic should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Earth
@@ -198,29 +194,28 @@ exports[`Tree Basic should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -228,7 +223,7 @@ exports[`Tree Basic should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Mars
@@ -251,7 +246,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
   <div>
     <div
       class="rc-virtual-list"
-      data-testid="virtual-list"
+      data-testid="page-tree-virtual-list"
       style="position: relative;"
     >
       <div
@@ -266,29 +261,28 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iksdqzH-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-ijwxnRu-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -296,13 +290,13 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                     </div>
                     <a
                       class="mc-c-jyNUxZ"
-                      data-testid="content-icon"
+                      data-testid="page-tree-virtual-list-node-item-content-icon"
                     >
                       🔆
                     </a>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Sun
@@ -315,29 +309,28 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -345,7 +338,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Mercury
@@ -358,29 +351,28 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -388,7 +380,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Venus
@@ -401,29 +393,28 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -431,7 +422,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Earth
@@ -444,29 +435,28 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-icibkft-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-igoAIMk-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -474,7 +464,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         The Moon
@@ -487,29 +477,28 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -517,7 +506,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Mars
@@ -530,29 +519,28 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-icibkft-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-igoAIMk-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -560,7 +548,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Deimos
@@ -573,29 +561,28 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-icibkft-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-igoAIMk-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -603,7 +590,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Phobos
@@ -626,7 +613,7 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
   <div>
     <div
       class="rc-virtual-list"
-      data-testid="virtual-list"
+      data-testid="page-tree-virtual-list"
       style="position: relative;"
     >
       <div
@@ -641,29 +628,28 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iksdqzH-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-ijwxnRu-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -671,13 +657,13 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                     </div>
                     <a
                       class="mc-c-jyNUxZ"
-                      data-testid="content-icon"
+                      data-testid="page-tree-virtual-list-node-item-content-icon"
                     >
                       🔆
                     </a>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Sun
@@ -690,29 +676,28 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -720,7 +705,7 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Mercury
@@ -733,29 +718,28 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -763,7 +747,7 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Venus
@@ -776,29 +760,28 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -806,7 +789,7 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Earth
@@ -819,29 +802,28 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-icibkft-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-igoAIMk-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -849,7 +831,7 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         The Moon
@@ -862,29 +844,28 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -892,7 +873,7 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Mars
@@ -915,7 +896,7 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
   <div>
     <div
       class="rc-virtual-list"
-      data-testid="virtual-list"
+      data-testid="page-tree-virtual-list"
       style="position: relative;"
     >
       <div
@@ -930,29 +911,28 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iksdqzH-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-ijwxnRu-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -960,13 +940,13 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
                     </div>
                     <a
                       class="mc-c-jyNUxZ"
-                      data-testid="content-icon"
+                      data-testid="page-tree-virtual-list-node-item-content-icon"
                     >
                       🔆
                     </a>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Sun
@@ -979,29 +959,28 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1009,7 +988,7 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Mercury
@@ -1022,29 +1001,28 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1052,7 +1030,7 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Venus
@@ -1065,29 +1043,28 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1095,7 +1072,7 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Earth
@@ -1108,29 +1085,28 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1138,7 +1114,7 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Mars
@@ -1161,7 +1137,7 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
   <div>
     <div
       class="rc-virtual-list"
-      data-testid="virtual-list"
+      data-testid="page-tree-virtual-list"
       style="position: relative;"
     >
       <div
@@ -1176,29 +1152,28 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iksdqzH-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-ijwxnRu-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1206,13 +1181,13 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
                     </div>
                     <a
                       class="mc-c-jyNUxZ"
-                      data-testid="content-icon"
+                      data-testid="page-tree-virtual-list-node-item-content-icon"
                     >
                       🔆
                     </a>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div
                         class="mc-c-hbkHRg"
@@ -1227,29 +1202,28 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1257,7 +1231,7 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div
                         class="mc-c-hbkHRg"
@@ -1272,29 +1246,28 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1302,7 +1275,7 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div
                         class="mc-c-hbkHRg"
@@ -1317,29 +1290,28 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1347,7 +1319,7 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div
                         class="mc-c-hbkHRg"
@@ -1362,29 +1334,28 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1392,7 +1363,7 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div
                         class="mc-c-hbkHRg"
@@ -1420,7 +1391,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
   <div>
     <div
       class="rc-virtual-list"
-      data-testid="virtual-list"
+      data-testid="page-tree-virtual-list"
       style="position: relative;"
     >
       <div
@@ -1434,29 +1405,28 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iksdqzH-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-ijwxnRu-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1464,13 +1434,13 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                     </div>
                     <a
                       class="mc-c-jyNUxZ"
-                      data-testid="content-icon"
+                      data-testid="page-tree-virtual-list-node-item-content-icon"
                     >
                       🔆
                     </a>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Sun
@@ -1483,29 +1453,28 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1513,7 +1482,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Mercury
@@ -1526,29 +1495,28 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1556,7 +1524,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Venus
@@ -1569,29 +1537,28 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1599,7 +1566,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Earth
@@ -1612,29 +1579,28 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-icibkft-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-igoAIMk-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1642,7 +1608,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         The Moon
@@ -1655,29 +1621,28 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-iiPsehi-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-iiLFaJf-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1685,7 +1650,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Mars
@@ -1698,29 +1663,28 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-icibkft-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-igoAIMk-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1728,7 +1692,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Deimos
@@ -1741,29 +1705,28 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
             <div
               class="mc-c-ldYMmm mc-c-ldYMmm-iPJLV-css"
               data-handler-id="mock-id"
-              data-testid="McTree"
+              data-testid="page-tree-virtual-list-node"
               role="button"
               tabindex="0"
             >
               <div
                 class="mc-c-hakyQ mc-c-hakyQ-icibkft-css"
-                data-testid="indent"
+                data-testid="page-tree-virtual-list-node-indent"
               />
               <div
                 class="mc-c-gMErbG mc-c-gMErbG-igoAIMk-css"
-                data-testid="page-item"
+                data-testid="page-tree-virtual-list-node-item"
               >
                 <div
                   class="mc-c-kYuycX"
-                  data-testid="item-content"
                 >
                   <div
                     class="mc-c-TfkwO"
-                    data-testid="content"
+                    data-testid="page-tree-virtual-list-node-item-content"
                   >
                     <div
                       class="mc-c-jOylHN mc-c-jOylHN-ckBCvq-isExpanded-true"
-                      data-testid="content-arrow"
+                      data-testid="page-tree-virtual-list-node-item-content-arrow"
                     >
                       <i
                         data-testid="mock-icon-Right"
@@ -1771,7 +1734,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                     </div>
                     <div
                       class="mc-c-dZmqpY"
-                      data-testid="content-action"
+                      data-testid="page-tree-virtual-list-node-item-content-action"
                     >
                       <div>
                         Phobos

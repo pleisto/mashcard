@@ -14,7 +14,7 @@ test.describe('Breadcrumb', () => {
     await api.removeAllPages()
   })
 
-  test.only('Verify the initial breadcrumbs count equal 1 and named Untitled', async ({ api }) => {
+  test('Verify the initial breadcrumbs count equal 1 and named Untitled', async ({ api }) => {
     await api.createPage(INITIAL_PAGE)
     await api.pageReload()
 
@@ -23,7 +23,7 @@ test.describe('Breadcrumb', () => {
     await expect(breadcrumb.getBreadcrumbTextByIndex()).toHaveText('Untitled')
   })
 
-  test.only('Verify breadcrumbs count equal 2 when add a sub page', async ({ api }) => {
+  test('Verify breadcrumbs count equal 2 when add a sub page', async ({ api }) => {
     await api.createPageTree(TWO_LAYER_PAGE_TREE)
     await api.pageReload()
 
@@ -33,7 +33,7 @@ test.describe('Breadcrumb', () => {
     await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(2)
   })
 
-  test.only('Verify breadcrumb width is less than 400px', async ({ api }) => {
+  test('Verify breadcrumb width is less than 400px', async ({ api }) => {
     await api.createPage(INITIAL_PAGE)
     await api.pageReload()
 
