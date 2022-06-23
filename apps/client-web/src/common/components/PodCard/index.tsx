@@ -1,3 +1,4 @@
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import React from 'react'
 import { PodAvatar } from '../PodAvatar'
 import * as Root from './index.style'
@@ -23,7 +24,7 @@ interface PodCardProps {
 export const PodCard: React.FC<PodCardProps> = ({ pod, label, aliasName, size = 'md' }) => {
   const extra = label !== false && (label ?? pod.domain)
   return (
-    <Root.Card size={size}>
+    <Root.Card size={size} data-testid={TEST_ID_ENUM.layout.sidebar.podSelect.id}>
       <Root.AvatarWrapper>
         <PodAvatar className="avatar" pod={pod} size={size} />
       </Root.AvatarWrapper>

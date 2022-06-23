@@ -29,7 +29,7 @@ export const TRASH_PAGE_TREE: PageBlock[] = [
   }
 ]
 
-export const TRASH_PAGE_TREE_FOR_VIRTUAL: PageBlock[] = [
+export const TRASH_PAGE_TREE_FOR_VISUAL: PageBlock[] = [
   {
     title: 'page 1 - This is a very long title used to test the omission of long titles without icon'
   },

@@ -89,7 +89,7 @@ test.describe('Page List', () => {
     })
   })
 
-  test.describe('Virtual test @virtual', () => {
+  test.describe('Visual test @visual', () => {
     test.afterEach(async () => {
       await pageTree.createScreenshot()
     })

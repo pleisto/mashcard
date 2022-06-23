@@ -1,3 +1,5 @@
+import { TEST_ID_ENUM } from '@/../../packages/test-helper/src'
+
 export enum CoverTab {
   Unsplash = 'Unsplash',
   Upload = 'Upload',
@@ -5,6 +7,6 @@ export enum CoverTab {
 }
 
 export const COVER_SELECTOR = {
-  searchInput: 'div[data-testid=uploader-dashboard-tabs-unsplash-search] input',
+  searchInput: `div[data-testid=${TEST_ID_ENUM.uploader.Dashboard.tabs.Unsplash.search.id}] input`,
   unsplashImage: (index: number) => `.dashboard-unsplash-image-list button >> nth=${index}`
 }

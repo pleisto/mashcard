@@ -13,12 +13,44 @@ export const TEST_ID_ENUM = {
           }
         }
       }
+    },
+    sidebar: {
+      podSelect: {
+        id: 'layout-sidebar-pod-select'
+      }
     }
   },
   page: {
     pageTree: {
       heading: {
         id: 'page-tree-heading'
+      },
+      virtualList: {
+        id: 'page-tree-virtual-list',
+        node: {
+          id: 'page-tree-virtual-list-node',
+          indent: {
+            id: 'page-tree-virtual-list-node-indent'
+          },
+          item: {
+            id: 'page-tree-virtual-list-node-item',
+            content: {
+              id: 'page-tree-virtual-list-node-item-content',
+              arrow: {
+                id: 'page-tree-virtual-list-node-item-content-arrow'
+              },
+              leftDot: {
+                id: 'page-tree-virtual-list-node-item-content-left-dot'
+              },
+              icon: {
+                id: 'page-tree-virtual-list-node-item-content-icon'
+              },
+              action: {
+                id: 'page-tree-virtual-list-node-item-content-action'
+              }
+            }
+          }
+        }
       }
     },
     DocumentPage: {
