@@ -67,6 +67,10 @@ export const Upload = createEditorIcon(
   <Icon.Upload fill={theme.colors.deepPurple4.value} />,
   theme.colors.deepPurple4.value
 )
+export const Compass = createEditorIcon(
+  <Icon.Compass fill={theme.colors.deepPurple4.value} />,
+  theme.colors.deepPurple4.value
+)
 export const Link = createEditorIcon(
   <Icon.Link fill={theme.colors.deepPurple4.value} />,
   theme.colors.deepPurple4.value

@@ -2,6 +2,7 @@ import { ChainedCommands } from '@tiptap/core'
 import { EmbedType } from '@mashcard/schema'
 import {
   Code,
+  Compass,
   Divider,
   Formula,
   Link,
@@ -139,7 +140,9 @@ export const LINK: BlockCommandItem = {
 export const EMBED: BlockCommandItem = {
   ...LINK,
   key: 'embed',
-  alias: ['em']
+  alias: ['em'],
+  squareIcon: <Compass square={true} />,
+  icon: <Compass />
 }
 
 export const HEADING_1: BlockCommandItem = {
