@@ -1,7 +1,6 @@
 import { DocMeta } from '@/docs/store/DocMeta'
-import { ConversationCommentAppendMutation } from '@/MashcardGraphQL'
+import { ConversationCommentAppendMutation, ConversationCommentCreateMutation } from '@/MashcardGraphQL'
 import { BaseOptions, CommentData, ConversationData } from '@mashcard/editor'
-import { Conversation } from '@mashcard/schema'
 import { useMemo } from 'react'
 import { useCreateComment } from './useCreateComment'
 import { useCreateConversation } from './useCreateConversation'
@@ -27,7 +26,9 @@ export function commentToData(
   }
 }
 
-export function conversationToData(conversation?: Conversation): ConversationData | null {
+export function conversationToData(
+  conversation?: NonNullable<ConversationCommentCreateMutation['conversationCommentCreate']>['conversation']
+): ConversationData | null {
   if (!conversation) return null
 
   return {

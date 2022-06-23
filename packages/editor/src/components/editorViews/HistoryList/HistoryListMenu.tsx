@@ -16,7 +16,7 @@ export interface HistoryListMenuProps {
   historyId?: string
   navigate: (to: To, options?: NavigateOptions) => void
   histories: { [key: string]: DocumentHistory }
-  users: { [key: string]: User }
+  users: { [key: string]: Pick<User, 'name' | 'domain' | 'avatarData'> }
 }
 
 export const HistoryListMenu: React.FC<HistoryListMenuProps> = ({
