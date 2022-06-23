@@ -58,6 +58,14 @@ class Pod < ApplicationRecord
     }
   end
 
+  def personal
+    id === Current.user&.id
+  end
+
+  def owned
+    owner.id === Current.user&.id
+  end
+
   def pod_as_json_by_user(user)
     owned = owner.id === user.id
     personal = id === user.id

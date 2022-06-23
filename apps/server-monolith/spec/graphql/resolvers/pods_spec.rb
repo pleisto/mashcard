@@ -59,10 +59,12 @@ describe Resolvers::Pods, type: :query do
       expect(response.data['pods'][0]['domain']).to eq(user.domain)
       expect(response.data['pods'][0]['type']).to eq('User')
       expect(response.data['pods'][0]['inviteEnable']).to be_nil
+      expect(response.data['pods'][0]['personal']).to be(true)
 
       expect(response.data['pods'][1]['domain']).to eq('podsSpec')
       expect(response.data['pods'][1]['type']).to eq('Group')
       expect(response.data['pods'][1]['inviteEnable']).to be(false)
+      expect(response.data['pods'][1]['personal']).to be(false)
 
       self.current_user = nil
       self.current_pod = nil

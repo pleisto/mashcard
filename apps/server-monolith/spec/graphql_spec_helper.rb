@@ -21,6 +21,11 @@ module GraphqlHelpers
   end
 
   def graphql_execute(statement, variables = {})
+    ### Set current_user and current config before graphql execute
+    Current.user = current_user
+    Current.pod = current_pod
+    MashcardConfig.current = MashcardConfig.at(user_id: Current.user&.id, pod_id: current_pod&.fetch('id'))
+
     result = MashcardSchema.execute(statement, variables: variables, context: make_context)
       .to_h.with_indifferent_access
     self.response = Response.new(result[:data], result[:errors])

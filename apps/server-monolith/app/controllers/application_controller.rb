@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   include I18nable
   include CurrentUser
   include CurrentPod
-  before_action :set_current_model, :set_current_config, :set_prepend_view_path
+  include CurrentModel
+  before_action :set_prepend_view_path
   around_action :switch_locale
 
   # memoize extended edition view path
@@ -17,15 +18,6 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-
-  def set_current_model
-    Current.user = current_user
-    Current.pod = current_pod
-  end
-
-  def set_current_config
-    MashcardConfig.current = MashcardConfig.at(user_id: Current.user&.id, pod_id: current_pod['id'])
-  end
 
   # Load view path for a plugin that declares themselves as an extended edition
   def set_prepend_view_path
