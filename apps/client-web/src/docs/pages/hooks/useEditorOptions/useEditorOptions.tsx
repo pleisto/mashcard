@@ -48,6 +48,7 @@ export function useEditorOptions({
                 user: {
                   id: currentUser.name,
                   name: currentUser.name,
+                  avatarData: currentUser.avatarData,
                   operatorId: globalThis.mashcardContext.uuid,
                   color: string2Color(`c:${currentUser.name}`)
                 }
