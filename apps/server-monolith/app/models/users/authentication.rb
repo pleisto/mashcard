@@ -54,12 +54,15 @@ module Users
     validates :username, presence: true, on: :create
     validates :display_name, presence: true, on: :create
 
+    # Make devise happy
     def name
       user&.display_name || email
     end
 
-    # Extra props when create
+    # Extra props on create
     attr_accessor :omniauth_provider, :omniauth_uid
+
+    # Pass to user
     attr_accessor :username, :display_name, :external_avatar_url
 
     before_create :bind_or_create_user!
@@ -71,6 +74,7 @@ module Users
                                                external_avatar_url: external_avatar_url, }.compact).id
     end
 
+    # Maybe setup federated identity after save
     def bind_federation_identity!
       return unless omniauth_provider.present? && omniauth_uid.present?
 

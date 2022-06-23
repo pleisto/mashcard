@@ -45,6 +45,7 @@ class Pod < ApplicationRecord
   alias_attribute :name, :display_name
   alias_attribute :domain, :username
 
+  # Usage: current_user.pods([:avatar_attachment])
   def avatar_data
     return nil if avatar.blob.nil?
 
@@ -84,12 +85,6 @@ class Pod < ApplicationRecord
     'username' => ANONYMOUS_DOMAIN,
     'id' => nil,
   }
-
-  def ensure_owner_member!
-    members.find_or_create_by!(user_id: owner_id) do |member|
-      member.role = :admin
-    end
-  end
 
   def as_session_context
     { 'id' => id, 'username' => username, 'domain' => username }
