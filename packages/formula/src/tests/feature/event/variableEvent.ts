@@ -17,13 +17,11 @@ export const VariableEventTestCase: TestCaseInterface = {
       {
         definition: '=VariableEventPage1.num0',
         resultBefore: 0,
-        resultAfter: 0,
         event: async () => {}
       },
       {
         definition: '=VariableEventPage1.unknownVariable',
         resultBefore: '"unknownVariable" not found',
-        resultAfter: '"unknownVariable" not found',
         event: async () => {}
       },
       {

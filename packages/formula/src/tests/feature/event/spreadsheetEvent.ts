@@ -55,19 +55,16 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
       {
         definition: '=SpreadsheetEventPage1.spreadsheet1foobar',
         resultBefore: mockSpreadsheet('spreadsheet1foobar', spreadsheet1Id),
-        resultAfter: mockSpreadsheet('spreadsheet1foobar', spreadsheet1Id),
         event: buildEvent([])
       },
       {
         definition: '=SpreadsheetEventPage1."Spreadsheet2 2"',
         resultBefore: mockSpreadsheet('Spreadsheet2 2', spreadsheet2Id),
-        resultAfter: mockSpreadsheet('Spreadsheet2 2', spreadsheet2Id),
         event: buildEvent([])
       },
       {
         definition: '=SpreadsheetEventPage1.unknownVariable',
         resultBefore: '"unknownVariable" not found',
-        resultAfter: '"unknownVariable" not found',
         event: buildEvent([])
       },
       {
@@ -99,7 +96,6 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
         definition: '=spreadsheet1foobar.first',
         namespaceId: page0Id,
         resultBefore: mockColumn('first', column1Id),
-        resultAfter: mockColumn('first', column1Id),
         variableParseResultAfter: { definition: '=spreadsheet2foobar.first' },
         event: buildEvent([
           [
@@ -112,7 +108,6 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
         definition: '=spreadsheet1foobar.1',
         namespaceId: page0Id,
         resultBefore: mockRow('1'),
-        resultAfter: mockRow('1'),
         variableParseResultAfter: { definition: '=spreadsheet2foobar.1' },
         event: buildEvent([
           [
@@ -125,7 +120,6 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
         definition: '=spreadsheet1foobar.first[1]',
         namespaceId: page0Id,
         resultBefore: mockCell('1', cell1Id, column1Id, '1'),
-        resultAfter: mockCell('1', cell1Id, column1Id, '1'),
         variableParseResultAfter: { definition: '=spreadsheet2foobar.first[1]' },
         event: buildEvent([
           [

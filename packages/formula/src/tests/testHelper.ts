@@ -251,7 +251,7 @@ export const trackTodo = (it: jest.It, testCases: Array<BaseTestCase<{}>>): void
     })
 }
 
-export const generateUUIDs = (): string[] => [...Array(99)].map(() => uuid())
+export const generateUUIDs = (): string[] => [...Array(10)].map(() => uuid())
 
 export const buildEvent = <Args extends DistributeEvents[]>(
   input: Args

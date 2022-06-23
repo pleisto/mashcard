@@ -60,7 +60,7 @@ describe('event', () => {
     expect(variable.t.task.async).toBe(args.resultAfterAsync ?? false)
     const resultAfter = fetchResult(variable.t)
 
-    expect(matchObject(resultAfter)).toStrictEqual(args.resultAfter)
+    expect(matchObject(resultAfter)).toStrictEqual(args.resultAfter ?? args.resultBefore)
     expect(variable.t.variableParseResult).toMatchObject(args.variableParseResultAfter ?? {})
 
     eventListeners.forEach(listener => listener.unsubscribe())

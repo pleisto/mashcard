@@ -18,7 +18,6 @@ export const BlockEventTestCase: TestCaseInterface = {
       {
         definition: '=UnknownToken',
         resultBefore: '"UnknownToken" not found',
-        resultAfter: '"UnknownToken" not found',
         event: buildEvent([])
       },
       {
@@ -56,7 +55,6 @@ export const BlockEventTestCase: TestCaseInterface = {
       {
         definition: '=BlockEventPage1',
         resultBefore: mockBlock('BlockEventPage1', page0Id),
-        resultAfter: mockBlock('BlockEventPage1', page0Id),
         variableParseResultAfter: { definition: '=BlockEventPage1' },
         event: buildEvent([['blockChangeName', { id: page0Id, name: 'BlockEventPage1' }]])
       },
@@ -87,14 +85,12 @@ export const BlockEventTestCase: TestCaseInterface = {
       {
         definition: '=BlockEventPage1.unknownVariable',
         resultBefore: '"unknownVariable" not found',
-        resultAfter: '"unknownVariable" not found',
         variableParseResultAfter: { definition: '=BlockEventPage1.unknownVariable' },
         event: buildEvent([['blockChangeName', { id: page0Id, name: 'BlockEventPage1' }]])
       },
       {
         definition: '=BlockEventPage1.unknownVariable',
         resultBefore: '"unknownVariable" not found',
-        resultAfter: '"unknownVariable" not found',
         variableParseResultAfter: { definition: '="BlockEventPage222 new".unknownVariable' },
         event: buildEvent([
           ['blockChangeName', { id: page0Id, name: 'BlockEventPage222' }],
@@ -118,7 +114,6 @@ export const BlockEventTestCase: TestCaseInterface = {
       {
         definition: '=BlockEventPage1',
         resultBefore: mockBlock('BlockEventPage1', page0Id),
-        resultAfter: mockBlock('BlockEventPage1', page0Id),
         variableParseResultAfter: { definition: '=BlockEventPage1' },
         event: buildEvent([
           ['blockDelete', { id: page0Id }],
@@ -138,7 +133,6 @@ export const BlockEventTestCase: TestCaseInterface = {
       {
         definition: '=BlockEventPage1.num0',
         resultBefore: 0,
-        resultAfter: 0,
         variableParseResultAfter: { definition: '=BlockEventPage1new.num0' },
         event: buildEvent([
           ['blockDelete', { id: page0Id }],

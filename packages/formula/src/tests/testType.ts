@@ -154,7 +154,7 @@ type ExtendedCtx = MakeContextResult & { meta: VariableMetadata }
 
 interface EventTestCaseType extends RequireField<BaseTestCase<{}>, 'definition'> {
   resultBefore: any
-  resultAfter: any
+  resultAfter?: any
   resultAfterAsync?: true
   variableParseResultAfter?: Partial<VariableParseResult>
   triggerEvents?: (ctx: ExtendedCtx) => [TriggerEvent, ...TriggerEvent[]]

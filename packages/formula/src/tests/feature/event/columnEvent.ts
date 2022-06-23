@@ -1,8 +1,30 @@
+import { Column } from '../../../controls'
 import { buildEvent, generateUUIDs } from '../../testHelper'
 import { mockColumn } from '../../testMock'
 import { SpreadsheetInput, TestCaseInterface } from '../../testType'
 
-const [page0Id, column1Id] = generateUUIDs()
+const [namespaceId, spreadsheetId, column1Id, column2Id] = generateUUIDs()
+
+const [column1, column2]: Column[] = [
+  {
+    spreadsheetId,
+    name: 'first',
+    columnId: column1Id,
+    title: 'first',
+    displayIndex: 'A',
+    index: 0,
+    sort: 0
+  },
+  {
+    spreadsheetId,
+    name: 'second',
+    columnId: column2Id,
+    title: 'second',
+    displayIndex: 'B',
+    index: 1,
+    sort: 1
+  }
+]
 
 export const ColumnEventTestCase: TestCaseInterface = {
   name: 'columnEvent',
@@ -10,28 +32,15 @@ export const ColumnEventTestCase: TestCaseInterface = {
     pages: [
       {
         pageName: 'ColumnEventPage1',
-        pageId: page0Id,
+        pageId: namespaceId,
         spreadsheets: [
           // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-          <SpreadsheetInput<3, 3>>{
+          <SpreadsheetInput<2, 3>>{
             name: 'spreadsheet1',
+            spreadsheetId,
             columns: [
-              {
-                name: 'first',
-                columnId: column1Id,
-                displayIndex: 'A',
-                cells: [{ value: '1' }, { value: '3' }, { value: '5' }]
-              },
-              {
-                name: 'second',
-                displayIndex: 'B',
-                cells: [{ value: '2' }, { value: '4' }, { value: '6' }]
-              },
-              {
-                name: 'third',
-                displayIndex: 'C',
-                cells: [{ value: '3' }, { value: '' }, { value: 'Foo' }]
-              }
+              { ...column1, cells: [{ value: '1' }, { value: '3' }, { value: '5' }] },
+              { ...column2, cells: [{ value: '2' }, { value: '4' }, { value: '6' }] }
             ]
           }
         ]
@@ -40,18 +49,42 @@ export const ColumnEventTestCase: TestCaseInterface = {
     eventTestCases: [
       {
         definition: '=spreadsheet1.first',
-        namespaceId: page0Id,
+        namespaceId,
         resultBefore: mockColumn('first', column1Id),
-        resultAfter: mockColumn('first', column1Id),
         event: buildEvent([])
-      }
-      // {
-      //   definition: '=spreadsheet1.first',
-      //   namespaceId: page0Id,
-      //   resultBefore: mockColumn('first', column1Id),
-      //   resultAfter: mockColumn('first222', column1Id),
-      //   event: buildEvent([['columnChange', { spreadsheetId: '', namespaceId: '', columns: [] }]])
-      // }
+      },
+      {
+        definition: '=spreadsheet1.first',
+        namespaceId,
+        resultBefore: mockColumn('first', column1Id),
+        resultAfter: 'Column "first" not found',
+        event: buildEvent([['columnChange', { spreadsheetId, namespaceId, columns: [] }]])
+      },
+      ...[
+        {
+          definition: '=spreadsheet1.first',
+          resultBefore: mockColumn('first', column1Id),
+          resultAfter: mockColumn('first222', column1Id)
+        },
+        {
+          definition: '=spreadsheet1.second',
+          label: 'same',
+          resultBefore: mockColumn('second', column2Id)
+        }
+      ].map(a => ({
+        ...a,
+        namespaceId,
+        event: buildEvent([
+          [
+            'columnChange',
+            {
+              spreadsheetId,
+              namespaceId,
+              columns: [{ ...column1, name: 'first222', title: 'first222' }, column2]
+            }
+          ]
+        ])
+      }))
     ]
   }
 }
