@@ -53,7 +53,7 @@ const basicStyle = {
     backgroundClip: 'padding-box',
     color: theme.colors.typePrimary,
     padding: '10px 12px',
-    minHeight: '3rem',
+    minHeight: '2rem',
     borderRadius: '4px',
     minWidth: '10rem',
     border: `0.2px solid ${theme.colors.white}`

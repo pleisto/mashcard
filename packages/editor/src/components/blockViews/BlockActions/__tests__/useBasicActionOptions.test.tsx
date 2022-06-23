@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks'
 import { NodeSelection } from 'prosemirror-state'
 import * as prosemirrorView from 'prosemirror-view'
 import { mockEditor } from '../../../../test'
-import { ToolbarItemOption, ToolbarSubMenuOption } from '../../../ui'
+import { ToolbarItemOption, ToolbarSubMenuOption, ToolbarItemGroupOption } from '../../../ui'
 import * as editorHooks from '../../../../hooks/useEditorContext'
 import * as blockHooks from '../../../../hooks/useBlockContext'
 import { UseActionOptionsProps, useBasicActionOptions } from '../useBasicActionOptions'
@@ -145,7 +145,7 @@ describe('useBasicActionOptions', () => {
     const { result } = renderHook(() => useBasicActionOptions({ types }))
 
     expect(() =>
-      ((result.current?.items[0] as ToolbarSubMenuOption).items as ToolbarItemOption[])[0].onAction!('')
+      ((result.current?.items[0] as ToolbarSubMenuOption).items as ToolbarItemGroupOption[])[0].items[0].onAction!('')
     ).not.toThrow()
   })
 
@@ -159,7 +159,7 @@ describe('useBasicActionOptions', () => {
     const { result } = renderHook(() => useBasicActionOptions({ types }))
 
     expect(() =>
-      ((result.current?.items[0] as ToolbarSubMenuOption).items as ToolbarItemOption[])[0].onAction!('')
+      ((result.current?.items[0] as ToolbarSubMenuOption).items as ToolbarItemGroupOption[])[0].items[0].onAction!('')
     ).not.toThrow()
   })
 })

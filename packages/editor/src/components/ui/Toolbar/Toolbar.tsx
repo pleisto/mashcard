@@ -81,7 +81,15 @@ const ToolbarMenu = styled('ul', {
   margin: 0,
   padding: '.375rem .5rem',
   'li + li': {
-    marginLeft: '2px'
+    marginLeft: 4
+  },
+
+  'li + span': {
+    marginLeft: 4
+  },
+
+  'li + ul': {
+    marginLeft: 4
   },
 
   variants: {
@@ -121,6 +129,20 @@ const ToolbarSeparator = styled('li', {
   width: '1px'
 })
 
+const TooltipTitle = styled('div', {
+  color: theme.colors.white,
+  fontWeight: '600',
+  fontSize: '12px',
+  lineHeight: '18px'
+})
+
+const TooltipDescription = styled('div', {
+  color: theme.colors.grey5,
+  fontWeight: '450',
+  fontSize: '12px',
+  lineHeight: '18px'
+})
+
 const ToolbarMenuOptionInner: FC<{ option: ToolbarOption }> = ({ option, ...props }) => {
   if (option.type === 'item') {
     return <ToolbarMenuItem option={option} {...props} />
@@ -148,14 +170,14 @@ const ToolbarMenuOption: FC<{ option: ToolbarOption }> = ({ option }) => {
 
   return (
     <Tooltip
-      getPopupContainer={element => element}
       title={
         <>
-          <div>{tooltipTitle}</div>
-          <div>{tooltipDescription}</div>
+          <TooltipTitle>{tooltipTitle}</TooltipTitle>
+          <TooltipDescription>{tooltipDescription}</TooltipDescription>
         </>
       }
-      placement="top">
+      placement="top"
+    >
       <ToolbarMenuOptionInner option={option} />
     </Tooltip>
   )
@@ -176,7 +198,8 @@ export const Toolbar: FC<ToolbarProps> = ({ type, options }) => {
               role="presentation"
               title={option.title}
               className={option.className}
-              key={option.title ?? `section-${index}`}>
+              key={option.title ?? `section-${index}`}
+            >
               {option.items.map((option, optionIndex) => (
                 <ToolbarMenuOption key={`${index}-${optionIndex}`} option={option} />
               ))}

@@ -3,7 +3,7 @@
 exports[`Toolbar matches snapshot correctly 1`] = `
 <div>
   <ul
-    class="mc-c-gRhnPc mc-c-gRhnPc-fIIeSn-type-default"
+    class="mc-c-bXXHAL mc-c-bXXHAL-fIIeSn-type-default"
     role="menu"
   >
     <ul
@@ -14,7 +14,7 @@ exports[`Toolbar matches snapshot correctly 1`] = `
         aria-describedby=""
         aria-haspopup="false"
         aria-label="item1"
-        class="mc-c-eBQxoE"
+        class="mc-c-ewLfqI"
         role="menuitem"
       >
         <span>
@@ -25,7 +25,7 @@ exports[`Toolbar matches snapshot correctly 1`] = `
         aria-describedby=""
         aria-haspopup="false"
         aria-label="item2"
-        class="mc-c-eBQxoE"
+        class="mc-c-ewLfqI"
         role="menuitem"
       >
         <span>
@@ -36,7 +36,7 @@ exports[`Toolbar matches snapshot correctly 1`] = `
         aria-describedby=""
         aria-haspopup="false"
         aria-label="item3"
-        class="mc-c-eBQxoE"
+        class="mc-c-ewLfqI"
         role="menuitem"
       >
         <span>
@@ -113,7 +113,7 @@ exports[`Toolbar matches snapshot correctly 1`] = `
     <li
       aria-describedby=""
       aria-label="item2"
-      class="mc-c-eBQxoE"
+      class="mc-c-ewLfqI"
       role="menuitem"
     >
       <span>
