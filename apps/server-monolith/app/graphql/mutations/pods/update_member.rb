@@ -14,14 +14,14 @@ module Mutations
         role = attrs.fetch(:role)
         state = attrs.fetch(:state)
 
-        current_domain = current_pod.fetch('domain')
-        pod = Pod.find_by(domain: current_domain)
-        raise Mashcard::GraphQL::Errors::ArgumentError, :invalid_pod if pod.nil? || pod.owner != current_user
+        current_domain = current_pod.fetch('username')
+        group = Pod.find_by(username: current_domain)
+        raise Mashcard::GraphQL::Errors::ArgumentError, :invalid_pod if group.nil? || group.owner != current_user
 
-        user = Pod.find_by(domain: domain)&.owner
+        user = User.find_by(username: domain)
         raise Mashcard::GraphQL::Errors::ArgumentError, :invalid_user if user.nil?
 
-        member = pod.members.find_by(user_id: user.id)
+        member = group.members.find_by(user_id: user.id)
         raise Mashcard::GraphQL::Errors::ArgumentError, :invalid_member if member.nil?
 
         member.update!(role: role, state: state)

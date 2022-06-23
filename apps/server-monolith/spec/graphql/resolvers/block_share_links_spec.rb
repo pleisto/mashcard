@@ -13,7 +13,6 @@ describe Resolvers::BlockShareLinks, type: :query do
           sharePodData {
             domain
             name
-            email
             avatarData {
               url
               signedId

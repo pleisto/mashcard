@@ -2,32 +2,32 @@
 
 # == Schema Information
 #
-# Table name: accounts_members
+# Table name: groups_members
 #
 #  id         :bigint           not null, primary key
 #  role       :integer          not null
 #  state      :integer          default("enabled"), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  pod_id     :bigint           not null
+#  group_id   :bigint           not null
 #  user_id    :bigint           not null
 #
 # Indexes
 #
-#  index_accounts_members_on_pod_id   (pod_id)
-#  index_accounts_members_on_user_id  (user_id)
+#  index_accounts_members_on_group_id  (group_id)
+#  index_accounts_members_on_user_id   (user_id)
 #
-
-module Accounts
+module Groups
   class Member < ApplicationRecord
-    belongs_to :user
-    belongs_to :pod
+    belongs_to :group, class_name: 'Group', inverse_of: :members
+    belongs_to :user, class_name: 'User', inverse_of: :group_members
 
-    delegate :domain, :name, :email, :avatar_data, to: :user
+    # delegate :domain, :name, :email, :avatar_data, to: :user
 
     enum role: {
-      admin: 0,
-      member: 10,
+      owner: 0,
+      admin: 1,
+      member: 5,
     }
 
     enum state: {

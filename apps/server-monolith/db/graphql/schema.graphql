@@ -629,7 +629,7 @@ type BlockInfo {
   """
   pod
   """
-  collaborators: [Pod!]!
+  collaborators: [PodBase!]!
 
   """
   alias
@@ -2014,6 +2014,61 @@ input FormulaModifyInput {
 }
 
 """
+MashCard Group.
+"""
+type Group {
+  """
+  Pod Avatar
+  """
+  avatarData: Avatar
+
+  """
+  public profile bio
+  """
+  bio: String
+
+  """
+  Like a username, Unique within this instance of MashCard.
+  """
+  domain: String!
+
+  """
+  object unique id
+  """
+  id: AutoIncrementID!
+
+  """
+  enable invite feature
+  """
+  inviteEnable: Boolean!
+
+  """
+  invite secret
+  """
+  inviteSecret: String
+
+  """
+  Human-readable name
+  """
+  name: String!
+
+  """
+  owner is current user
+  """
+  owned: Boolean!
+
+  """
+  personal
+  """
+  personal: Boolean!
+
+  """
+  Pod enum type
+  """
+  type: PodTypeEnum!
+}
+
+"""
 A valid http/https url or image uri
 """
 scalar HttpUrl
@@ -2068,6 +2123,11 @@ enum MemberRole {
   MEMBER
   """
   member
+
+  """
+  OWNER
+  """
+  owner
 }
 
 enum MemberState {
@@ -2324,7 +2384,7 @@ type OmniauthSession {
   hasSession: Boolean!
 
   """
-  Human-readable name of the user
+  Human-readable name
   """
   name: String
 
@@ -2395,7 +2455,12 @@ type Pin {
 """
 MashCard Pod.
 """
-type Pod {
+union Pod = Group | User
+
+"""
+MashCard Base Pod.
+"""
+type PodBase {
   """
   Pod Avatar
   """
@@ -2407,14 +2472,9 @@ type Pod {
   bio: String
 
   """
-  Like a username, Unique within this instance of MashCard
+  Like a username, Unique within this instance of MashCard.
   """
   domain: String!
-
-  """
-  owner email
-  """
-  email: String
 
   """
   object unique id
@@ -2422,19 +2482,9 @@ type Pod {
   id: AutoIncrementID!
 
   """
-  enable invite feature
+  Human-readable name
   """
-  inviteEnable: Boolean!
-
-  """
-  invite secret
-  """
-  inviteSecret: String
-
-  """
-  Pod Name
-  """
-  name: String
+  name: String!
 
   """
   owner is current user
@@ -2445,6 +2495,11 @@ type Pod {
   personal
   """
   personal: Boolean!
+
+  """
+  Pod enum type
+  """
+  type: PodTypeEnum!
 }
 
 """
@@ -2514,29 +2569,9 @@ type PodLeavePayload {
 
 type PodMember {
   """
-  Pod Avatar
-  """
-  avatarData: Avatar
-
-  """
-  Like a username, Unique within this instance of MashCard
-  """
-  domain: String!
-
-  """
-  owner email
-  """
-  email: String
-
-  """
   object unique id
   """
   id: AutoIncrementID!
-
-  """
-  Pod Name
-  """
-  name: String!
 
   """
   role
@@ -2547,6 +2582,11 @@ type PodMember {
   state
   """
   state: MemberState!
+
+  """
+  member
+  """
+  user: User!
 }
 
 """
@@ -2562,6 +2602,18 @@ enum PodOperation {
   UPDATE
   """
   UPDATE
+}
+
+enum PodTypeEnum {
+  """
+  GROUP
+  """
+  Group
+
+  """
+  USER
+  """
+  User
 }
 
 enum Policytype {
@@ -2631,7 +2683,7 @@ type SelectOption {
 type ShareLink {
   key: String!
   policy: Policytype!
-  sharePodData: Pod!
+  sharePodData: PodBase!
   state: ShareLinkState!
 }
 
@@ -2852,6 +2904,61 @@ enum Upload {
 }
 
 """
+A user is an individual's accounts on MashCard can make new content.
+"""
+type User {
+  """
+  Pod Avatar
+  """
+  avatarData: Avatar
+
+  """
+  public profile bio
+  """
+  bio: String
+
+  """
+  Like a username, Unique within this instance of MashCard.
+  """
+  domain: String!
+
+  """
+  object unique id
+  """
+  id: AutoIncrementID!
+
+  """
+  User's preferred language
+  """
+  locale: String!
+
+  """
+  Human-readable name
+  """
+  name: String!
+
+  """
+  owner is current user
+  """
+  owned: Boolean!
+
+  """
+  personal
+  """
+  personal: Boolean!
+
+  """
+  User's preferred timezone
+  """
+  timezone: String!
+
+  """
+  Pod enum type
+  """
+  type: PodTypeEnum!
+}
+
+"""
 InputObject type of Class
 """
 input UserAppearanceUpdateInput {
@@ -2941,7 +3048,7 @@ input UserCreateInput {
   locale: String!
 
   """
-  Human-readable name of the user
+  Human-readable name
   """
   name: String!
 
@@ -3276,7 +3383,7 @@ type query {
   """
   search pods
   """
-  podSearch(input: String!): [Pod!]!
+  podSearch(input: String!): [PodBase!]!
 
   """
   return all pods for user.

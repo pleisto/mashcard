@@ -20,8 +20,8 @@
 module Docs
   class Comment < ApplicationRecord
     belongs_to :conversation, class_name: 'Docs::Conversation'
-    belongs_to :creator, class_name: 'Accounts::User'
-    has_many :notifications, class_name: 'Accounts::Notification', as: :source, dependent: :restrict_with_exception
+    belongs_to :creator, class_name: 'User'
+    has_many :notifications, class_name: 'Notification', as: :source, dependent: :restrict_with_exception
 
     before_create do
       self.status ||= :normal
@@ -42,7 +42,7 @@ module Docs
     end
 
     def notify_conversation_collaborator_by_user_id!(user_id)
-      Accounts::Notification.create!(
+      Notification.create!(
         user_id: user_id,
         source_type: 'Docs::Comment',
         source_id: id,

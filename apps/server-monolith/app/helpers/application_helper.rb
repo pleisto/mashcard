@@ -6,7 +6,7 @@ module ApplicationHelper
       version: Mashcard::Runtime.version,
       internalApiEndpoint: internal_graphql_api_path,
       currentUser: Current.user&.as_global_context,
-      lastDomain: Mashcard::Runtime.cypress? ? nil : Current.user&.last_pod_domain,
+      lastDomain: Mashcard::Runtime.cypress? ? nil : Current.user&.last_pod_username,
       lastBlockIds: Mashcard::Runtime.cypress? ? nil : Current.user&.last_block_ids,
       currentPod: Current.pod,
       env: Rails.env,

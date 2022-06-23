@@ -61,17 +61,19 @@ export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
               }
             }
           }}
-          as="ul">
+          as="ul"
+        >
           {members?.map(user => (
-            <li key={user.domain}>
-              <PodCard pod={user} key={user.domain} label={user.email ?? user.domain} />
+            <li key={user.user.domain}>
+              <PodCard pod={user.user} key={user.user.domain} label={user.user.domain} />
               <Button
-                disabled={user.domain === currentUserDomain}
+                disabled={user.user.domain === currentUserDomain}
                 onClick={() => {
                   setSelectedUser(user)
                   setOpen()
-                }}>
-                {t(user.domain === currentUserDomain ? 'account.leave_btn' : 'account.remove_btn')}
+                }}
+              >
+                {t(user.user.domain === currentUserDomain ? 'account.leave_btn' : 'account.remove_btn')}
               </Button>
             </li>
           ))}
@@ -85,13 +87,14 @@ export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
         open={isOpen}
         onCancel={setClose}
         onConfirm={async () => {
-          await handleLeave(selectedUser!.domain)
-        }}>
+          await handleLeave(selectedUser!.user.domain)
+        }}
+      >
         <Trans
           t={t}
           i18nKey="team.leave_user_confirm"
           values={{
-            user: `${selectedUser?.name} (@${selectedUser?.domain})`
+            user: `${selectedUser?.user.name} (@${selectedUser?.user.domain})`
           }}
         />
       </ConfirmDialog>

@@ -38,19 +38,35 @@ export const CreateDirectUpload = gql`
 export const queryPods = gql`
   query GetPods {
     pods {
-      id
-      domain
-      name
-      email
-      personal
-      inviteEnable
-      owned
-      avatarData {
-        url
-        downloadUrl
-        signedId
+      ... on User {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        bio
       }
-      bio
+      ... on Group {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        inviteEnable
+        bio
+      }
     }
   }
 `
@@ -58,18 +74,36 @@ export const queryPods = gql`
 export const queryPod = gql`
   query GetPod($domain: String!) {
     pod(domain: $domain) {
-      id
-      domain
-      name
-      personal
-      inviteEnable
-      inviteSecret
-      avatarData {
-        url
-        downloadUrl
-        signedId
+      ... on User {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        bio
       }
-      bio
+      ... on Group {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        inviteEnable
+        inviteSecret
+        bio
+      }
     }
   }
 `
@@ -78,19 +112,36 @@ export const queryCurrentPod = gql`
   query GetCurrentPod($domain: String!) {
     currentPodDomain @client @export(as: "domain")
     pod(domain: $domain) {
-      id
-      domain
-      name
-      personal
-      owned
-      inviteEnable
-      inviteSecret
-      avatarData {
-        url
-        downloadUrl
-        signedId
+      ... on User {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        bio
       }
-      bio
+      ... on Group {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        inviteEnable
+        inviteSecret
+        bio
+      }
     }
   }
 `
@@ -98,15 +149,16 @@ export const queryCurrentPod = gql`
 export const queryPodMembers = gql`
   query GetPodMembers {
     podMembers {
-      domain
-      email
-      name
       role
       state
-      avatarData {
-        url
-        downloadUrl
-        signedId
+      user {
+        domain
+        name
+        avatarData {
+          url
+          downloadUrl
+          signedId
+        }
       }
     }
   }

@@ -2,8 +2,10 @@
 
 class InternalApisController < ActionController::API
   include Apiable
-  include CurrentPod
   include I18nable
+  include CurrentUser
+  include CurrentPod
+  include CurrentContextSetter
   include ActionController::Cookies
   around_action :switch_locale
 

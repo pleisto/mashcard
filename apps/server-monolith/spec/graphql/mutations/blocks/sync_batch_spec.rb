@@ -48,7 +48,7 @@ describe Mutations::Blocks::SyncBatch, type: :mutation do
       pod = user.personal_pod
       self.current_pod = pod.as_session_context
 
-      expect(user.last_pod_domain).to be_nil
+      expect(user.last_pod_username).to be_nil
       expect(user.last_block_ids).to eq({})
 
       root_id = Mashcard::Utils::Encoding::UUID.gen_v4
@@ -65,7 +65,7 @@ describe Mutations::Blocks::SyncBatch, type: :mutation do
 
       user.reload
 
-      expect(user.last_pod_domain).to eq(user.domain)
+      expect(user.last_pod_username).to eq(user.domain)
       expect(user.last_block_ids).to eq({ user.domain => root_id })
     end
 

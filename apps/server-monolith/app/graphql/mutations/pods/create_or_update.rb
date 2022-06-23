@@ -19,16 +19,23 @@ module Mutations
         domain = attrs.fetch(:domain)
         type = attrs.fetch(:type)
         # TODO: permission check
-        pod = current_user.own_pods.find { |p| p.domain == domain }
+        pod = current_user.own_pods.find { |p| p.username == domain }
 
-        extra = { avatar: attrs[:avatar_signed_id] }.merge(attrs.slice(:bio, :name, :invite_secret,
-          :invite_enable)).compact
+        extra = {
+          avatar: attrs[:avatar_signed_id],
+          bio: attrs[:bio],
+          display_name: attrs[:name],
+          invite_secret: attrs[:invite_secret],
+          invite_enable: attrs[:invite_enable],
+        }.compact
 
         case type
         when 'CREATE'
           return { errors: [I18n.t('accounts.errors.pod_exist')] } if pod
 
-          pod = current_user.own_pods.create!(extra.merge(domain: domain))
+          pod = current_user.create_own_group!(
+            extra.merge(username: domain)
+          )
         when 'UPDATE'
           return { errors: [I18n.t('accounts.errors.pod_not_exist')] } if pod.nil?
 

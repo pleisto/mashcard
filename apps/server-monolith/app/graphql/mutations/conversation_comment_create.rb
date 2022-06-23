@@ -20,7 +20,7 @@ module Mutations
       )
 
       {
-        conversation: result,
+        conversation: result.conversation,
       }
     end
   end

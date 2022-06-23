@@ -19,7 +19,9 @@ describe Resolvers::DomainAvailable, type: :query do
 
       graphql_execute(query, { domain: 'legitimate-name-example' })
       expect(response.data['domainAvailable']).to eq({ 'success' => true, 'message' => 'ok' })
+    end
 
+    it 'invalid' do
       graphql_execute(query, { domain: 'legitimate@name-example' })
       expect(response.data['domainAvailable']).to eq({ 'success' => false,
 'message' => I18n.t('errors.messages.domain_invalid'), })

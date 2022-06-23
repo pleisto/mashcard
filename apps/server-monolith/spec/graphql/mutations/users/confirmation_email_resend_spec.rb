@@ -18,10 +18,10 @@ describe Mutations::Users::ConfirmationEmailResend, type: :mutation do
     end
 
     it 'work' do
-      user = create(:accounts_user_not_confirmed)
-      graphql_execute(mutation, { input: { email: user.email } })
+      authentication = create(:accounts_user_not_confirmed_authentication)
+      graphql_execute(mutation, { input: { email: authentication.email } })
       expect(response.data[:userConfirmationEmailResend][:errors]).to eq([])
-      graphql_execute(mutation, { input: { email: user.email } })
+      graphql_execute(mutation, { input: { email: authentication.email } })
       expect(response.data[:userConfirmationEmailResend][:errors]).to eq([I18n.t('errors.messages.send_interval')])
     end
   end

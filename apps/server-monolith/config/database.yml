@@ -15,6 +15,7 @@ development:
 
 test:
   <<: *default
+  url: <%= ENV['MASHCARD_DATABASE_URL'] %>
   database: mashcard_test
 
 cicd:

@@ -58,7 +58,6 @@ describe Resolvers::BlockInfo, type: :query do
           collaborators {
             name
             domain
-            email
             avatarData {
               url
             }
@@ -100,7 +99,7 @@ describe Resolvers::BlockInfo, type: :query do
       pod = user.personal_pod
       self.current_pod = pod.as_session_context
 
-      expect(user.last_pod_domain).to be_nil
+      expect(user.last_pod_username).to be_nil
       expect(user.last_block_ids).to eq({})
 
       block = create(:docs_block, pod: pod, collaborators: [user.id])
@@ -109,7 +108,7 @@ describe Resolvers::BlockInfo, type: :query do
 
       user.reload
 
-      expect(user.last_pod_domain).to eq(user.domain)
+      expect(user.last_pod_username).to eq(user.domain)
       expect(user.last_block_ids).to eq({ user.domain => block.id })
     end
 

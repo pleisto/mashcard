@@ -7,15 +7,16 @@ describe Resolvers::PodMembers, type: :query do
     query = <<-'GRAPHQL'
       query GetPodUsers {
         podMembers {
-          domain
-          email
-          name
           role
           state
-          avatarData {
-            url
-            signedId
-            downloadUrl
+          user {
+            domain
+            name
+            avatarData {
+              url
+              signedId
+              downloadUrl
+            }
           }
         }
       }
@@ -36,23 +37,22 @@ describe Resolvers::PodMembers, type: :query do
 
       graphql_execute(query)
       expect(response.success?).to be true
-      expect(response.data['podMembers'][0]['domain']).to eq(user.domain)
-      expect(response.data['podMembers'][0]['role']).to eq('admin')
+      expect(response.data['podMembers'].length).to eq(0)
     end
 
     it 'group' do
       user = create(:accounts_user)
       domain = 'group-spec'
-      pod = user.own_pods.create!(domain: domain, name: domain)
+      pod = user.create_own_group!(username: domain, display_name: domain)
 
       self.current_user = user
       self.current_pod = pod.as_session_context
 
       graphql_execute(query)
       expect(response.success?).to be true
-      expect(response.data['podMembers'][0]['domain']).to eq(user.domain)
-      expect(response.data['podMembers'][0]['name']).to eq(user.name)
-      expect(response.data['podMembers'][0]['role']).to eq('admin')
+      expect(response.data['podMembers'][0]['user']['domain']).to eq(user.domain)
+      expect(response.data['podMembers'][0]['user']['name']).to eq(user.name)
+      expect(response.data['podMembers'][0]['role']).to eq('owner')
 
       user2 = create(:accounts_user)
       member = pod.members.create!(user_id: user2.id, role: :admin)

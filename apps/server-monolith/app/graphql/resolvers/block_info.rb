@@ -40,7 +40,7 @@ module Resolvers
     end
 
     def fetch_pin(block)
-      return false if current_pod.fetch('domain') == ::Pod::ANONYMOUS_DOMAIN
+      return false if current_pod.fetch('username') == ::Pod::ANONYMOUS_DOMAIN
 
       pin = Docs::Pin.find_by(user_id: current_user.id, pod_id: current_pod.fetch('id'), block_id: block.id)
 
@@ -52,13 +52,13 @@ module Resolvers
     def master?(block)
       return false if current_user.nil?
 
-      block.pod_id.in?(current_user.pods.ids)
+      block.pod_id.in?(current_user.pods.map(&:id))
     end
 
     def get_permission(block)
       base_query = block.share_links
 
-      if current_pod.fetch('domain') == ::Pod::ANONYMOUS_DOMAIN
+      if current_pod.fetch('username') == ::Pod::ANONYMOUS_DOMAIN
         base_query.find_by(share_pod_id: nil)
       else
         share_links = base_query.where(share_pod_id: [current_pod.fetch('id'), nil]).all
@@ -72,7 +72,7 @@ module Resolvers
     def collaborators(block)
       return [] if block.collaborators.length <= 1
 
-      Accounts::User.where(id: block.collaborators).includes(personal_pod: :avatar_attachment)
+      User.where(id: block.collaborators).includes(personal_pod: :avatar_attachment)
     end
   end
 end

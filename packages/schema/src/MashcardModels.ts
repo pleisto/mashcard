@@ -348,7 +348,7 @@ export type BlockImage = {
 export type BlockInfo = {
   __typename?: 'BlockInfo'
   /** pod */
-  collaborators: Array<Pod>
+  collaborators: Array<PodBase>
   /** alias */
   enabledAlias?: Maybe<BlockAlias>
   /** icon */
@@ -1061,6 +1061,31 @@ export type FormulaModifyInput = {
   version: Scalars['Int']
 }
 
+/** MashCard Group. */
+export type Group = {
+  __typename?: 'Group'
+  /** Pod Avatar */
+  avatarData?: Maybe<Avatar>
+  /** public profile bio */
+  bio?: Maybe<Scalars['String']>
+  /** Like a username, Unique within this instance of MashCard. */
+  domain: Scalars['String']
+  /** object unique id */
+  id: Scalars['AutoIncrementID']
+  /** enable invite feature */
+  inviteEnable: Scalars['Boolean']
+  /** invite secret */
+  inviteSecret?: Maybe<Scalars['String']>
+  /** Human-readable name */
+  name: Scalars['String']
+  /** owner is current user */
+  owned: Scalars['Boolean']
+  /** personal */
+  personal: Scalars['Boolean']
+  /** Pod enum type */
+  type: PodTypeEnum
+}
+
 /** InputObject type of Class */
 export type JoinPodInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -1082,7 +1107,9 @@ export enum MemberRole {
   /** ADMIN */
   Admin = 'admin',
   /** MEMBER */
-  Member = 'member'
+  Member = 'member',
+  /** OWNER */
+  Owner = 'owner'
 }
 
 export enum MemberState {
@@ -1287,7 +1314,7 @@ export type OmniauthSession = {
   /** Like a username, Unique within this instance of MashCard. */
   domain?: Maybe<Scalars['String']>
   hasSession: Scalars['Boolean']
-  /** Human-readable name of the user */
+  /** Human-readable name */
   name?: Maybe<Scalars['String']>
   /** Provider Name */
   provider?: Maybe<Scalars['String']>
@@ -1331,28 +1358,27 @@ export type Pin = {
 }
 
 /** MashCard Pod. */
-export type Pod = {
-  __typename?: 'Pod'
+export type Pod = Group | User
+
+/** MashCard Base Pod. */
+export type PodBase = {
+  __typename?: 'PodBase'
   /** Pod Avatar */
   avatarData?: Maybe<Avatar>
   /** public profile bio */
   bio?: Maybe<Scalars['String']>
-  /** Like a username, Unique within this instance of MashCard */
+  /** Like a username, Unique within this instance of MashCard. */
   domain: Scalars['String']
-  /** owner email */
-  email?: Maybe<Scalars['String']>
   /** object unique id */
   id: Scalars['AutoIncrementID']
-  /** enable invite feature */
-  inviteEnable: Scalars['Boolean']
-  /** invite secret */
-  inviteSecret?: Maybe<Scalars['String']>
-  /** Pod Name */
-  name?: Maybe<Scalars['String']>
+  /** Human-readable name */
+  name: Scalars['String']
   /** owner is current user */
   owned: Scalars['Boolean']
   /** personal */
   personal: Scalars['Boolean']
+  /** Pod enum type */
+  type: PodTypeEnum
 }
 
 /** InputObject type of Class */
@@ -1393,20 +1419,14 @@ export type PodLeavePayload = {
 
 export type PodMember = {
   __typename?: 'PodMember'
-  /** Pod Avatar */
-  avatarData?: Maybe<Avatar>
-  /** Like a username, Unique within this instance of MashCard */
-  domain: Scalars['String']
-  /** owner email */
-  email?: Maybe<Scalars['String']>
   /** object unique id */
   id: Scalars['AutoIncrementID']
-  /** Pod Name */
-  name: Scalars['String']
   /** role */
   role: MemberRole
   /** state */
   state: MemberState
+  /** member */
+  user: User
 }
 
 /** Pod operation types */
@@ -1415,6 +1435,13 @@ export enum PodOperation {
   Create = 'CREATE',
   /** UPDATE */
   Update = 'UPDATE'
+}
+
+export enum PodTypeEnum {
+  /** GROUP */
+  Group = 'Group',
+  /** USER */
+  User = 'User'
 }
 
 export enum Policytype {
@@ -1455,7 +1482,7 @@ export type ShareLink = {
   __typename?: 'ShareLink'
   key: Scalars['String']
   policy: Policytype
-  sharePodData: Pod
+  sharePodData: PodBase
   state: ShareLinkState
 }
 
@@ -1571,6 +1598,31 @@ export enum Upload {
   Third = 'THIRD'
 }
 
+/** A user is an individual's accounts on MashCard can make new content. */
+export type User = {
+  __typename?: 'User'
+  /** Pod Avatar */
+  avatarData?: Maybe<Avatar>
+  /** public profile bio */
+  bio?: Maybe<Scalars['String']>
+  /** Like a username, Unique within this instance of MashCard. */
+  domain: Scalars['String']
+  /** object unique id */
+  id: Scalars['AutoIncrementID']
+  /** User's preferred language */
+  locale: Scalars['String']
+  /** Human-readable name */
+  name: Scalars['String']
+  /** owner is current user */
+  owned: Scalars['Boolean']
+  /** personal */
+  personal: Scalars['Boolean']
+  /** User's preferred timezone */
+  timezone: Scalars['String']
+  /** Pod enum type */
+  type: PodTypeEnum
+}
+
 /** InputObject type of Class */
 export type UserAppearanceUpdateInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -1617,7 +1669,7 @@ export type UserCreateInput = {
   email?: InputMaybe<Scalars['Email']>
   /** User's preferred language */
   locale: Scalars['String']
-  /** Human-readable name of the user */
+  /** Human-readable name */
   name: Scalars['String']
   /** user password */
   password?: InputMaybe<Scalars['String']>
@@ -1773,7 +1825,7 @@ export type Query = {
   /** return all pod users */
   podMembers?: Maybe<Array<PodMember>>
   /** search pods */
-  podSearch: Array<Pod>
+  podSearch: Array<PodBase>
   /** return all pods for user. */
   pods: Array<Pod>
   /** return preview box data of url */

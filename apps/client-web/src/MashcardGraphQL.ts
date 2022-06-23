@@ -351,7 +351,7 @@ export type BlockImage = {
 export type BlockInfo = {
   __typename?: 'BlockInfo'
   /** pod */
-  collaborators: Array<Pod>
+  collaborators: Array<PodBase>
   /** alias */
   enabledAlias?: Maybe<BlockAlias>
   /** icon */
@@ -1064,6 +1064,31 @@ export type FormulaModifyInput = {
   version: Scalars['Int']
 }
 
+/** MashCard Group. */
+export type Group = {
+  __typename?: 'Group'
+  /** Pod Avatar */
+  avatarData?: Maybe<Avatar>
+  /** public profile bio */
+  bio?: Maybe<Scalars['String']>
+  /** Like a username, Unique within this instance of MashCard. */
+  domain: Scalars['String']
+  /** object unique id */
+  id: Scalars['AutoIncrementID']
+  /** enable invite feature */
+  inviteEnable: Scalars['Boolean']
+  /** invite secret */
+  inviteSecret?: Maybe<Scalars['String']>
+  /** Human-readable name */
+  name: Scalars['String']
+  /** owner is current user */
+  owned: Scalars['Boolean']
+  /** personal */
+  personal: Scalars['Boolean']
+  /** Pod enum type */
+  type: PodTypeEnum
+}
+
 /** InputObject type of Class */
 export type JoinPodInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -1085,7 +1110,9 @@ export enum MemberRole {
   /** ADMIN */
   Admin = 'admin',
   /** MEMBER */
-  Member = 'member'
+  Member = 'member',
+  /** OWNER */
+  Owner = 'owner'
 }
 
 export enum MemberState {
@@ -1290,7 +1317,7 @@ export type OmniauthSession = {
   /** Like a username, Unique within this instance of MashCard. */
   domain?: Maybe<Scalars['String']>
   hasSession: Scalars['Boolean']
-  /** Human-readable name of the user */
+  /** Human-readable name */
   name?: Maybe<Scalars['String']>
   /** Provider Name */
   provider?: Maybe<Scalars['String']>
@@ -1334,28 +1361,27 @@ export type Pin = {
 }
 
 /** MashCard Pod. */
-export type Pod = {
-  __typename?: 'Pod'
+export type Pod = Group | User
+
+/** MashCard Base Pod. */
+export type PodBase = {
+  __typename?: 'PodBase'
   /** Pod Avatar */
   avatarData?: Maybe<Avatar>
   /** public profile bio */
   bio?: Maybe<Scalars['String']>
-  /** Like a username, Unique within this instance of MashCard */
+  /** Like a username, Unique within this instance of MashCard. */
   domain: Scalars['String']
-  /** owner email */
-  email?: Maybe<Scalars['String']>
   /** object unique id */
   id: Scalars['AutoIncrementID']
-  /** enable invite feature */
-  inviteEnable: Scalars['Boolean']
-  /** invite secret */
-  inviteSecret?: Maybe<Scalars['String']>
-  /** Pod Name */
-  name?: Maybe<Scalars['String']>
+  /** Human-readable name */
+  name: Scalars['String']
   /** owner is current user */
   owned: Scalars['Boolean']
   /** personal */
   personal: Scalars['Boolean']
+  /** Pod enum type */
+  type: PodTypeEnum
 }
 
 /** InputObject type of Class */
@@ -1396,20 +1422,14 @@ export type PodLeavePayload = {
 
 export type PodMember = {
   __typename?: 'PodMember'
-  /** Pod Avatar */
-  avatarData?: Maybe<Avatar>
-  /** Like a username, Unique within this instance of MashCard */
-  domain: Scalars['String']
-  /** owner email */
-  email?: Maybe<Scalars['String']>
   /** object unique id */
   id: Scalars['AutoIncrementID']
-  /** Pod Name */
-  name: Scalars['String']
   /** role */
   role: MemberRole
   /** state */
   state: MemberState
+  /** member */
+  user: User
 }
 
 /** Pod operation types */
@@ -1418,6 +1438,13 @@ export enum PodOperation {
   Create = 'CREATE',
   /** UPDATE */
   Update = 'UPDATE'
+}
+
+export enum PodTypeEnum {
+  /** GROUP */
+  Group = 'Group',
+  /** USER */
+  User = 'User'
 }
 
 export enum Policytype {
@@ -1458,7 +1485,7 @@ export type ShareLink = {
   __typename?: 'ShareLink'
   key: Scalars['String']
   policy: Policytype
-  sharePodData: Pod
+  sharePodData: PodBase
   state: ShareLinkState
 }
 
@@ -1574,6 +1601,31 @@ export enum Upload {
   Third = 'THIRD'
 }
 
+/** A user is an individual's accounts on MashCard can make new content. */
+export type User = {
+  __typename?: 'User'
+  /** Pod Avatar */
+  avatarData?: Maybe<Avatar>
+  /** public profile bio */
+  bio?: Maybe<Scalars['String']>
+  /** Like a username, Unique within this instance of MashCard. */
+  domain: Scalars['String']
+  /** object unique id */
+  id: Scalars['AutoIncrementID']
+  /** User's preferred language */
+  locale: Scalars['String']
+  /** Human-readable name */
+  name: Scalars['String']
+  /** owner is current user */
+  owned: Scalars['Boolean']
+  /** personal */
+  personal: Scalars['Boolean']
+  /** User's preferred timezone */
+  timezone: Scalars['String']
+  /** Pod enum type */
+  type: PodTypeEnum
+}
+
 /** InputObject type of Class */
 export type UserAppearanceUpdateInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -1620,7 +1672,7 @@ export type UserCreateInput = {
   email?: InputMaybe<Scalars['Email']>
   /** User's preferred language */
   locale: Scalars['String']
-  /** Human-readable name of the user */
+  /** Human-readable name */
   name: Scalars['String']
   /** user password */
   password?: InputMaybe<Scalars['String']>
@@ -1776,7 +1828,7 @@ export type Query = {
   /** return all pod users */
   podMembers?: Maybe<Array<PodMember>>
   /** search pods */
-  podSearch: Array<Pod>
+  podSearch: Array<PodBase>
   /** return all pods for user. */
   pods: Array<Pod>
   /** return preview box data of url */
@@ -2051,18 +2103,31 @@ export type GetPodsQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetPodsQuery = {
   __typename?: 'query'
-  pods: Array<{
-    __typename?: 'Pod'
-    id: string
-    domain: string
-    name?: string | null
-    email?: string | null
-    personal: boolean
-    inviteEnable: boolean
-    owned: boolean
-    bio?: string | null
-    avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
-  }>
+  pods: Array<
+    | {
+        __typename?: 'Group'
+        id: string
+        domain: string
+        owned: boolean
+        name: string
+        type: PodTypeEnum
+        personal: boolean
+        inviteEnable: boolean
+        bio?: string | null
+        avatarData?: { __typename?: 'Avatar'; url: string; signedId: string; downloadUrl: string } | null
+      }
+    | {
+        __typename?: 'User'
+        id: string
+        domain: string
+        owned: boolean
+        name: string
+        type: PodTypeEnum
+        personal: boolean
+        bio?: string | null
+        avatarData?: { __typename?: 'Avatar'; url: string; signedId: string; downloadUrl: string } | null
+      }
+  >
 }
 
 export type GetPodQueryVariables = Exact<{
@@ -2071,17 +2136,31 @@ export type GetPodQueryVariables = Exact<{
 
 export type GetPodQuery = {
   __typename?: 'query'
-  pod: {
-    __typename?: 'Pod'
-    id: string
-    domain: string
-    name?: string | null
-    personal: boolean
-    inviteEnable: boolean
-    inviteSecret?: string | null
-    bio?: string | null
-    avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
-  }
+  pod:
+    | {
+        __typename?: 'Group'
+        id: string
+        domain: string
+        owned: boolean
+        name: string
+        type: PodTypeEnum
+        personal: boolean
+        inviteEnable: boolean
+        inviteSecret?: string | null
+        bio?: string | null
+        avatarData?: { __typename?: 'Avatar'; url: string; signedId: string; downloadUrl: string } | null
+      }
+    | {
+        __typename?: 'User'
+        id: string
+        domain: string
+        owned: boolean
+        name: string
+        type: PodTypeEnum
+        personal: boolean
+        bio?: string | null
+        avatarData?: { __typename?: 'Avatar'; url: string; signedId: string; downloadUrl: string } | null
+      }
 }
 
 export type GetCurrentPodQueryVariables = Exact<{
@@ -2091,18 +2170,31 @@ export type GetCurrentPodQueryVariables = Exact<{
 export type GetCurrentPodQuery = {
   __typename?: 'query'
   currentPodDomain: string
-  pod: {
-    __typename?: 'Pod'
-    id: string
-    domain: string
-    name?: string | null
-    personal: boolean
-    owned: boolean
-    inviteEnable: boolean
-    inviteSecret?: string | null
-    bio?: string | null
-    avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
-  }
+  pod:
+    | {
+        __typename?: 'Group'
+        id: string
+        domain: string
+        owned: boolean
+        name: string
+        type: PodTypeEnum
+        personal: boolean
+        inviteEnable: boolean
+        inviteSecret?: string | null
+        bio?: string | null
+        avatarData?: { __typename?: 'Avatar'; url: string; signedId: string; downloadUrl: string } | null
+      }
+    | {
+        __typename?: 'User'
+        id: string
+        domain: string
+        owned: boolean
+        name: string
+        type: PodTypeEnum
+        personal: boolean
+        bio?: string | null
+        avatarData?: { __typename?: 'Avatar'; url: string; signedId: string; downloadUrl: string } | null
+      }
 }
 
 export type GetPodMembersQueryVariables = Exact<{ [key: string]: never }>
@@ -2111,12 +2203,14 @@ export type GetPodMembersQuery = {
   __typename?: 'query'
   podMembers?: Array<{
     __typename?: 'PodMember'
-    domain: string
-    email?: string | null
-    name: string
     role: MemberRole
     state: MemberState
-    avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
+    user: {
+      __typename?: 'User'
+      domain: string
+      name: string
+      avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
+    }
   }> | null
 }
 
@@ -2183,10 +2277,9 @@ export type QueryPodSearchQueryVariables = Exact<{
 export type QueryPodSearchQuery = {
   __typename?: 'query'
   podSearch: Array<{
-    __typename?: 'Pod'
+    __typename?: 'PodBase'
     domain: string
-    email?: string | null
-    name?: string | null
+    name: string
     avatarData?: { __typename?: 'Avatar'; url: string } | null
   }>
 }
@@ -2200,13 +2293,10 @@ export type CreateOrUpdatePodMutation = {
   createOrUpdatePod?: {
     __typename?: 'CreateOrUpdatePodPayload'
     errors: Array<string>
-    pod?: {
-      __typename?: 'Pod'
-      domain: string
-      name?: string | null
-      inviteEnable: boolean
-      inviteSecret?: string | null
-    } | null
+    pod?:
+      | { __typename?: 'Group'; domain: string; name: string; inviteEnable: boolean; inviteSecret?: string | null }
+      | { __typename?: 'User'; domain: string; name: string }
+      | null
   } | null
 }
 
@@ -2328,10 +2418,9 @@ export type GetBlockShareLinksQuery = {
     policy: Policytype
     state: ShareLinkState
     sharePodData: {
-      __typename?: 'Pod'
-      name?: string | null
+      __typename?: 'PodBase'
+      name: string
       domain: string
-      email?: string | null
       avatarData?: { __typename?: 'Avatar'; url: string } | null
     }
   }>
@@ -2651,10 +2740,9 @@ export type GetBlockInfoQuery = {
     }>
     permission?: { __typename?: 'ShareLink'; key: string; policy: Policytype; state: ShareLinkState } | null
     collaborators: Array<{
-      __typename?: 'Pod'
-      name?: string | null
+      __typename?: 'PodBase'
+      name: string
       domain: string
-      email?: string | null
       avatarData?: { __typename?: 'Avatar'; url: string } | null
     }>
   } | null
@@ -3554,19 +3642,35 @@ export type CreateDirectUploadMutationOptions = Apollo.BaseMutationOptions<
 export const GetPodsDocument = gql`
   query GetPods {
     pods {
-      id
-      domain
-      name
-      email
-      personal
-      inviteEnable
-      owned
-      avatarData {
-        url
-        downloadUrl
-        signedId
+      ... on User {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        bio
       }
-      bio
+      ... on Group {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        inviteEnable
+        bio
+      }
     }
   }
 `
@@ -3600,18 +3704,36 @@ export type GetPodsQueryResult = Apollo.QueryResult<GetPodsQuery, GetPodsQueryVa
 export const GetPodDocument = gql`
   query GetPod($domain: String!) {
     pod(domain: $domain) {
-      id
-      domain
-      name
-      personal
-      inviteEnable
-      inviteSecret
-      avatarData {
-        url
-        downloadUrl
-        signedId
+      ... on User {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        bio
       }
-      bio
+      ... on Group {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        inviteEnable
+        inviteSecret
+        bio
+      }
     }
   }
 `
@@ -3647,19 +3769,36 @@ export const GetCurrentPodDocument = gql`
   query GetCurrentPod($domain: String!) {
     currentPodDomain @client @export(as: "domain")
     pod(domain: $domain) {
-      id
-      domain
-      name
-      personal
-      owned
-      inviteEnable
-      inviteSecret
-      avatarData {
-        url
-        downloadUrl
-        signedId
+      ... on User {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        bio
       }
-      bio
+      ... on Group {
+        id
+        domain
+        owned
+        name
+        type
+        personal
+        avatarData {
+          url
+          signedId
+          downloadUrl
+        }
+        inviteEnable
+        inviteSecret
+        bio
+      }
     }
   }
 `
@@ -3698,15 +3837,16 @@ export type GetCurrentPodQueryResult = Apollo.QueryResult<GetCurrentPodQuery, Ge
 export const GetPodMembersDocument = gql`
   query GetPodMembers {
     podMembers {
-      domain
-      email
-      name
       role
       state
-      avatarData {
-        url
-        downloadUrl
-        signedId
+      user {
+        domain
+        name
+        avatarData {
+          url
+          downloadUrl
+          signedId
+        }
       }
     }
   }
@@ -3897,7 +4037,6 @@ export const QueryPodSearchDocument = gql`
   query QueryPodSearch($input: String!) {
     podSearch(input: $input) {
       domain
-      email
       name
       avatarData {
         url
@@ -3942,10 +4081,16 @@ export const CreateOrUpdatePodDocument = gql`
     createOrUpdatePod(input: $input) {
       errors
       pod {
-        domain
-        name
-        inviteEnable
-        inviteSecret
+        ... on User {
+          domain
+          name
+        }
+        ... on Group {
+          domain
+          name
+          inviteEnable
+          inviteSecret
+        }
       }
     }
   }
@@ -4278,7 +4423,6 @@ export const GetBlockShareLinksDocument = gql`
       sharePodData {
         name
         domain
-        email
         avatarData {
           url
         }
@@ -5229,7 +5373,6 @@ export const GetBlockInfoDocument = gql`
       collaborators {
         name
         domain
-        email
         avatarData {
           url
         }

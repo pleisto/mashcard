@@ -24,7 +24,7 @@
     "db:rollback": "rails db:rollback",
     "console": "rails c",
     "lint:brakeman": "bundle exec brakeman  --no-pager --exit-on-warn",
-    "lint:fix": "bundle exec rubocop --config .rubocop.yml -a",
+    "lint:fix": "bundle exec rubocop --config .rubocop.yml -A",
     "vite:start": "./bin/vite dev",
     "vite:build": "./bin/vite build",
     "build": "rake rust:build",

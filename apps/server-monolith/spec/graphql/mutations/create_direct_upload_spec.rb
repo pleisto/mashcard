@@ -16,8 +16,7 @@ describe Mutations::CreateDirectUpload, type: :mutation do
       }
     GRAPHQL
 
-    let(:password) { FFaker::Internet.password }
-    let(:user) { create(:accounts_user, password: password) }
+    let(:user) { create(:accounts_user) }
 
     it 'avatar' do
       self.current_user = user

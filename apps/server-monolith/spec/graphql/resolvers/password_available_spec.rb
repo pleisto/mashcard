@@ -20,7 +20,7 @@ describe Resolvers::PasswordAvailable, type: :query do
       graphql_execute(query, { password: 'short' })
       expect(response.data['passwordAvailable']).to eq({
         'success' => false,
-        'message' => I18n.t('activerecord.errors.models.accounts/user.attributes.password.too_short'),
+        'message' => I18n.t('errors.messages.too_short', count: 8),
       })
 
       graphql_execute(query, { password: '0' * 200 })

@@ -3,7 +3,7 @@
 module Resolvers
   class PodSearch < BaseResolver
     description 'search pods'
-    type [Types::Pod], null: false
+    type [Types::PodBase], null: false
     authenticate_user!
 
     argument :input, GraphQL::Types::String, required: true
@@ -11,7 +11,7 @@ module Resolvers
     def resolve(input:)
       return [] if input.blank?
 
-      ::Pod.where('LOWER(domain) = LOWER(?)', input)
+      ::Pod.where('LOWER(username) = LOWER(?)', input)
     end
   end
 end

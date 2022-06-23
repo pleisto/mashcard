@@ -1,13 +1,29 @@
 {
   "ignored_warnings": [
     {
+      "warning_type": "Information Disclosure",
+      "warning_code": 61,
+      "fingerprint": "081f5d87a244b41d3cf1d5994cb792d2cec639cd70e4e306ffe1eb8abf0f32f7",
+      "check_name": "DetailedExceptions",
+      "message": "Detailed exceptions are enabled in production",
+      "file": "config/environments/production.rb",
+      "line": null,
+      "link": "https://brakemanscanner.org/docs/warning_types/information_disclosure/",
+      "code": null,
+      "render_path": null,
+      "location": null,
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    },
+    {
       "warning_type": "SQL Injection",
       "warning_code": 0,
       "fingerprint": "5ea6dfd2b1dc1c2604737473af02f07b4697bdb53ab57d400dce90eeaec03231",
       "check_name": "SQL",
       "message": "Possible SQL injection",
       "file": "lib/patches/active_record/postgresql_drop_database.rb",
-      "line": 12,
+      "line": 14,
       "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
       "code": "connection.select_all(\"select pg_terminate_backend(pg_stat_activity.pid) from pg_stat_activity where datname='#{configuration_hash[:database]}' AND state='idle';\")",
       "render_path": null,
@@ -61,6 +77,6 @@
       "note": ""
     }
   ],
-  "updated": "2021-09-24 14:40:25 +0800",
-  "brakeman_version": "5.1.1"
+  "updated": "2022-06-21 16:59:59 +0800",
+  "brakeman_version": "5.2.3"
 }

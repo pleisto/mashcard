@@ -14,16 +14,16 @@ describe Mutations::Users::EmailPasswordSignIn, type: :mutation do
     GRAPHQL
 
     let(:password) { FFaker::Internet.password }
-    let(:user) { create(:accounts_user, password: password) }
+    let(:user) { create(:accounts_user_authentication, password: password).user }
 
     it 'works' do
-      input = { input: { email: user.email, password: password, remember: false } }
+      input = { input: { email: user.authentication.email, password: password, remember: false } }
       graphql_execute(mutation, input)
       expect(response.data[:userEmailPasswordSignIn][:redirectPath]).not_to be_blank
     end
 
     it 'returnses invalid password message' do
-      input = { input: { email: user.email, password: 'wrong-pwd', remember: false } }
+      input = { input: { email: user.authentication.email, password: 'wrong-pwd', remember: false } }
       graphql_execute(mutation, input)
       error_message = I18n.t('devise.failure.invalid', authentication_keys: 'email')
       expect(response.data[:userEmailPasswordSignIn][:errors][0]).to eq(error_message)
