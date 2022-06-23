@@ -4,7 +4,7 @@ module Types
   class ShareLink < Types::BaseObject
     field :key, String, null: false
     field :policy, Types::Policytype, null: false
-    field :share_pod_data, Types::OldPod, null: false
+    field :share_pod_data, Types::BasePod, null: false
     field :state, Types::ShareLinkStateType, null: false
   end
 end

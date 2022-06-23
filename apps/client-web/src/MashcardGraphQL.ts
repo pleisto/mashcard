@@ -87,6 +87,27 @@ export type AwarenessUpdatePayload = {
   errors: Array<Scalars['String']>
 }
 
+/** MashCard Base Pod. */
+export type BasePod = {
+  __typename?: 'BasePod'
+  /** Pod Avatar */
+  avatarData?: Maybe<Avatar>
+  /** public profile bio */
+  bio?: Maybe<Scalars['String']>
+  /** Like a username, Unique within this instance of MashCard. */
+  domain: Scalars['String']
+  /** object unique id */
+  id: Scalars['AutoIncrementID']
+  /** Human-readable name */
+  name: Scalars['String']
+  /** owner is current user */
+  owned: Scalars['Boolean']
+  /** personal */
+  personal: Scalars['Boolean']
+  /** Pod enum type */
+  type: PodTypeEnum
+}
+
 /** ActiveStorage blobs */
 export type Blob = {
   __typename?: 'Blob'
@@ -351,7 +372,7 @@ export type BlockImage = {
 export type BlockInfo = {
   __typename?: 'BlockInfo'
   /** pod */
-  collaborators: Array<OldPod>
+  collaborators: Array<BasePod>
   /** alias */
   enabledAlias?: Maybe<BlockAlias>
   /** icon */
@@ -900,7 +921,7 @@ export type CreateOrUpdatePodPayload = {
   clientMutationId?: Maybe<Scalars['String']>
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars['String']>
-  pod?: Maybe<OldPod>
+  pod?: Maybe<Group>
 }
 
 /** Represents direct upload credentials */
@@ -1311,31 +1332,6 @@ export type NewPatchPayload = {
   state: Patchstate
 }
 
-/** MashCard Old Pod. */
-export type OldPod = {
-  __typename?: 'OldPod'
-  /** Pod Avatar */
-  avatarData?: Maybe<Avatar>
-  /** public profile bio */
-  bio?: Maybe<Scalars['String']>
-  /** Like a username, Unique within this instance of MashCard */
-  domain: Scalars['String']
-  /** object unique id */
-  id: Scalars['AutoIncrementID']
-  /** enable invite feature */
-  inviteEnable: Scalars['Boolean']
-  /** invite secret */
-  inviteSecret?: Maybe<Scalars['String']>
-  /** Pod Name */
-  name?: Maybe<Scalars['String']>
-  /** owner is current user */
-  owned: Scalars['Boolean']
-  /** personal */
-  personal: Scalars['Boolean']
-  /** Pod enum type */
-  type: PodTypeEnum
-}
-
 /** session[:omniauth] */
 export type OmniauthSession = {
   __typename?: 'OmniauthSession'
@@ -1493,7 +1489,7 @@ export type ShareLink = {
   __typename?: 'ShareLink'
   key: Scalars['String']
   policy: Policytype
-  sharePodData: OldPod
+  sharePodData: BasePod
   state: ShareLinkState
 }
 
@@ -1832,11 +1828,11 @@ export type Query = {
   /** Check password available. */
   passwordAvailable: ValidateResult
   /** return current pod for user. */
-  pod: OldPod
+  pod: Group
   /** return all pod users */
   podMembers?: Maybe<Array<PodMember>>
   /** search pods */
-  podSearch: Array<OldPod>
+  podSearch: Array<BasePod>
   /** return all pods for user. */
   pods: Array<Pod>
   /** return preview box data of url */
@@ -2145,10 +2141,10 @@ export type GetPodQueryVariables = Exact<{
 export type GetPodQuery = {
   __typename?: 'query'
   pod: {
-    __typename?: 'OldPod'
+    __typename?: 'Group'
     id: string
     domain: string
-    name?: string | null
+    name: string
     personal: boolean
     inviteEnable: boolean
     inviteSecret?: string | null
@@ -2165,10 +2161,10 @@ export type GetCurrentPodQuery = {
   __typename?: 'query'
   currentPodDomain: string
   pod: {
-    __typename?: 'OldPod'
+    __typename?: 'Group'
     id: string
     domain: string
-    name?: string | null
+    name: string
     personal: boolean
     owned: boolean
     inviteEnable: boolean
@@ -2255,9 +2251,9 @@ export type QueryPodSearchQueryVariables = Exact<{
 export type QueryPodSearchQuery = {
   __typename?: 'query'
   podSearch: Array<{
-    __typename?: 'OldPod'
+    __typename?: 'BasePod'
     domain: string
-    name?: string | null
+    name: string
     avatarData?: { __typename?: 'Avatar'; url: string } | null
   }>
 }
@@ -2272,9 +2268,9 @@ export type CreateOrUpdatePodMutation = {
     __typename?: 'CreateOrUpdatePodPayload'
     errors: Array<string>
     pod?: {
-      __typename?: 'OldPod'
+      __typename?: 'Group'
       domain: string
-      name?: string | null
+      name: string
       inviteEnable: boolean
       inviteSecret?: string | null
     } | null
@@ -2399,8 +2395,8 @@ export type GetBlockShareLinksQuery = {
     policy: Policytype
     state: ShareLinkState
     sharePodData: {
-      __typename?: 'OldPod'
-      name?: string | null
+      __typename?: 'BasePod'
+      name: string
       domain: string
       avatarData?: { __typename?: 'Avatar'; url: string } | null
     }
@@ -2721,8 +2717,8 @@ export type GetBlockInfoQuery = {
     }>
     permission?: { __typename?: 'ShareLink'; key: string; policy: Policytype; state: ShareLinkState } | null
     collaborators: Array<{
-      __typename?: 'OldPod'
-      name?: string | null
+      __typename?: 'BasePod'
+      name: string
       domain: string
       avatarData?: { __typename?: 'Avatar'; url: string } | null
     }>

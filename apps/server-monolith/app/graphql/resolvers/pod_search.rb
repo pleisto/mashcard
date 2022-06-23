@@ -3,7 +3,7 @@
 module Resolvers
   class PodSearch < BaseResolver
     description 'search pods'
-    type [Types::OldPod], null: false
+    type [Types::BasePod], null: false
     authenticate_user!
 
     argument :input, GraphQL::Types::String, required: true
