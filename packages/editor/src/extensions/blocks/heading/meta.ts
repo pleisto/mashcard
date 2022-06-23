@@ -1,4 +1,4 @@
-import Heading, { HeadingOptions } from '@tiptap/extension-heading'
+import Heading, { Level } from '@tiptap/extension-heading'
 import { BlockViewProps, ExtensionMeta } from '../../common'
 
 export const meta: ExtensionMeta = {
@@ -6,7 +6,10 @@ export const meta: ExtensionMeta = {
   extensionType: 'block'
 }
 
-export type { HeadingOptions } from '@tiptap/extension-heading'
+export interface HeadingOptions {
+  levels: Level[]
+  HTMLAttributes?: Record<string, any> | ((attrs: HeadingAttributes) => Record<string, any>)
+}
 export interface HeadingAttributes {
   level: 1 | 2 | 3 | 4 | 5 | 6
 }

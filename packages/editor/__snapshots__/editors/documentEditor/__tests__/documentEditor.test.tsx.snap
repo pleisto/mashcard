@@ -4,7 +4,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
 <div>
   <div>
     <div
-      class="mc-c-kTveCk mc-c-kTveCk-gHONcO-enableSelection-false"
+      class="mc-c-bUsdRF mc-c-bUsdRF-gHONcO-enableSelection-false"
     >
       <div
         class="ProseMirror"
@@ -12,34 +12,285 @@ exports[`documentEditor renders document editor correctly 1`] = `
         translate="no"
       >
         <div
-          class="react-renderer node-paragraph"
+          class="react-renderer node-heading"
         >
           <div
             data-node-view-wrapper=""
-            style="position: relative; pointer-events: unset; white-space: normal;"
+            style="pointer-events: unset; white-space: normal;"
           >
             <div
               class="mc-c-gNeIVG"
             >
-              <p
-                as="p"
-                class="mc-c-jIptkL mc-c-qcqS"
+              <h1
+                as="h1"
                 data-node-view-content=""
-                data-placeholder=""
-                draggable="false"
-                style="white-space: pre-wrap;"
+                style="--selection-padding: calc((2.875rem - 1.875rem) / 2); --bgColor-padding: calc((2.875rem - 1.875rem) / 2); white-space: pre-wrap;"
               >
                 <div
                   style="white-space: inherit;"
                 >
-                  <br
-                    class="ProseMirror-trailingBreak"
-                  />
+                  heading1
                 </div>
-              </p>
+              </h1>
               <div
                 aria-haspopup="dialog"
-                class="mc-c-iAZzvg"
+                class="mc-c-iAZzvg mc-c-hjKsOe mc-c-hjKsOe-egdRHa-level-1"
+                contenteditable="false"
+                data-drag-handle="true"
+                data-testid="editor-block-action-button"
+                draggable="true"
+              >
+                <button
+                  class="mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
+                  role="button"
+                  type="button"
+                >
+                  <span
+                    aria-label="drag-secondary"
+                    class="mc-icon mc-icon-drag-secondary"
+                    role="img"
+                  >
+                    <svg
+                      fill="none"
+                      height="1em"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Zm11-9a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"
+                        fill="#e0e0e0"
+                        fill-rule="evenodd"
+                      />
+                      <path
+                        clip-rule="evenodd"
+                        d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
+                        fill="#35313c"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="react-renderer node-heading"
+        >
+          <div
+            data-node-view-wrapper=""
+            style="pointer-events: unset; white-space: normal;"
+          >
+            <div
+              class="mc-c-gNeIVG"
+            >
+              <h2
+                as="h2"
+                data-node-view-content=""
+                style="--selection-padding: calc((2rem - 1.625rem) / 2); --bgColor-padding: calc((2rem - 1.625rem) / 2); white-space: pre-wrap;"
+              >
+                <div
+                  style="white-space: inherit;"
+                >
+                  heading2
+                </div>
+              </h2>
+              <div
+                aria-haspopup="dialog"
+                class="mc-c-iAZzvg mc-c-hjKsOe mc-c-hjKsOe-iyJHSq-level-2"
+                contenteditable="false"
+                data-drag-handle="true"
+                data-testid="editor-block-action-button"
+                draggable="true"
+              >
+                <button
+                  class="mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
+                  role="button"
+                  type="button"
+                >
+                  <span
+                    aria-label="drag-secondary"
+                    class="mc-icon mc-icon-drag-secondary"
+                    role="img"
+                  >
+                    <svg
+                      fill="none"
+                      height="1em"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Zm11-9a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"
+                        fill="#e0e0e0"
+                        fill-rule="evenodd"
+                      />
+                      <path
+                        clip-rule="evenodd"
+                        d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
+                        fill="#35313c"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="react-renderer node-heading"
+        >
+          <div
+            data-node-view-wrapper=""
+            style="pointer-events: unset; white-space: normal;"
+          >
+            <div
+              class="mc-c-gNeIVG"
+            >
+              <h3
+                as="h3"
+                data-node-view-content=""
+                style="--selection-padding: calc((1.875rem - 1.375rem) / 2); --bgColor-padding: calc((1.875rem - 1.375rem) / 2); white-space: pre-wrap;"
+              >
+                <div
+                  style="white-space: inherit;"
+                >
+                  heading3
+                </div>
+              </h3>
+              <div
+                aria-haspopup="dialog"
+                class="mc-c-iAZzvg mc-c-hjKsOe mc-c-hjKsOe-hhWJgB-level-3"
+                contenteditable="false"
+                data-drag-handle="true"
+                data-testid="editor-block-action-button"
+                draggable="true"
+              >
+                <button
+                  class="mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
+                  role="button"
+                  type="button"
+                >
+                  <span
+                    aria-label="drag-secondary"
+                    class="mc-icon mc-icon-drag-secondary"
+                    role="img"
+                  >
+                    <svg
+                      fill="none"
+                      height="1em"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Zm11-9a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"
+                        fill="#e0e0e0"
+                        fill-rule="evenodd"
+                      />
+                      <path
+                        clip-rule="evenodd"
+                        d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
+                        fill="#35313c"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="react-renderer node-heading"
+        >
+          <div
+            data-node-view-wrapper=""
+            style="pointer-events: unset; white-space: normal;"
+          >
+            <div
+              class="mc-c-gNeIVG"
+            >
+              <h4
+                as="h4"
+                data-node-view-content=""
+                style="--selection-padding: calc((1.875rem - 1.25rem) / 2); --bgColor-padding: calc((1.875rem - 1.25rem) / 2); white-space: pre-wrap;"
+              >
+                <div
+                  style="white-space: inherit;"
+                >
+                  heading4
+                </div>
+              </h4>
+              <div
+                aria-haspopup="dialog"
+                class="mc-c-iAZzvg mc-c-hjKsOe mc-c-hjKsOe-grfFzG-level-4"
+                contenteditable="false"
+                data-drag-handle="true"
+                data-testid="editor-block-action-button"
+                draggable="true"
+              >
+                <button
+                  class="mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
+                  role="button"
+                  type="button"
+                >
+                  <span
+                    aria-label="drag-secondary"
+                    class="mc-icon mc-icon-drag-secondary"
+                    role="img"
+                  >
+                    <svg
+                      fill="none"
+                      height="1em"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Zm11-9a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"
+                        fill="#e0e0e0"
+                        fill-rule="evenodd"
+                      />
+                      <path
+                        clip-rule="evenodd"
+                        d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
+                        fill="#35313c"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="react-renderer node-heading"
+        >
+          <div
+            data-node-view-wrapper=""
+            style="pointer-events: unset; white-space: normal;"
+          >
+            <div
+              class="mc-c-gNeIVG"
+            >
+              <h5
+                as="h5"
+                data-node-view-content=""
+                style="--selection-padding: calc((1.5rem - 1rem) / 2); --bgColor-padding: calc((1.5rem - 1rem) / 2); white-space: pre-wrap;"
+              >
+                <div
+                  style="white-space: inherit;"
+                >
+                  heading5
+                </div>
+              </h5>
+              <div
+                aria-haspopup="dialog"
+                class="mc-c-iAZzvg mc-c-hjKsOe mc-c-hjKsOe-dFWSDb-level-5"
                 contenteditable="false"
                 data-drag-handle="true"
                 data-testid="editor-block-action-button"

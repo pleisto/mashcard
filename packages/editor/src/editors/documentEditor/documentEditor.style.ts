@@ -4,6 +4,66 @@ import { defaultSelectionStyles } from '../../styles/index.style'
 import { DEFAULT_SELECTION_CLASS } from '../../extensions'
 import anchorLine from './assets/anchor-line.png'
 
+export const h1FontSize = theme.fontSizes.title1
+export const h2FontSize = theme.fontSizes.title2
+export const h3FontSize = theme.fontSizes.title3
+export const h4FontSize = theme.fontSizes.title4
+export const h5FontSize = theme.fontSizes.title5
+
+export const h1LienHeight = theme.lineHeights.title1
+export const h2LienHeight = theme.lineHeights.title2
+export const h3LienHeight = theme.lineHeights.title3
+export const h4LienHeight = theme.lineHeights.title4
+export const h5LienHeight = theme.lineHeights.title5
+
+export const paragraphFontSize = theme.fontSizes.body
+export const paragraphLineHeight = theme.lineHeights.body
+
+const headingStyles: CSS = {
+  'h1, h2, h3, h4, h5, h6': {
+    marginTop: 0,
+    marginBottom: 0,
+    fontWeight: '600',
+    color: theme.colors.typePrimary,
+    wordBreak: 'break-word'
+  },
+  h1: {
+    fontSize: h1FontSize,
+    lineHeight: h1LienHeight,
+    paddingTop: theme.titleOffset.title1
+  },
+  h2: {
+    fontSize: h2FontSize,
+    lineHeight: h2LienHeight,
+    paddingTop: theme.titleOffset.title2
+  },
+  h3: {
+    fontSize: h3FontSize,
+    lineHeight: h3LienHeight,
+    paddingTop: theme.titleOffset.title3
+  },
+  h4: {
+    fontSize: h4FontSize,
+    lineHeight: h4LienHeight,
+    paddingTop: theme.titleOffset.title4
+  },
+  h5: {
+    fontSize: h5FontSize,
+    lineHeight: h5LienHeight,
+    paddingTop: theme.titleOffset.title5
+  }
+}
+
+const paragraphStyles: CSS = {
+  p: {
+    marginTop: 0,
+    marginBottom: 0,
+    fontSize: theme.fontSizes.body,
+    lineHeight: theme.lineHeights.body,
+    wordBreak: 'break-word'
+  }
+}
+
 const anchorMarkStyles = {
   'span[data-anchor]': {
     position: 'relative'
@@ -162,6 +222,10 @@ export const documentEditorStyles = css({
       marginTop: '.75rem',
       marginBottom: 0
     },
+
+    ...headingStyles,
+
+    ...paragraphStyles,
 
     ...selectionStyles,
 

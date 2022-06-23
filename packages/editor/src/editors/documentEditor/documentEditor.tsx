@@ -33,7 +33,21 @@ import {
 import { Base, BaseOptions, updateExtensionOptions as updateBaseExtensionOptions } from '../../extensions/base'
 import { useDrawerService } from '../../components/ui/Drawer'
 import { useDropBlock, useUndo } from '../../helpers'
-import { documentEditorStyles } from './documentEditor.style'
+import {
+  documentEditorStyles,
+  h1FontSize,
+  h1LienHeight,
+  h2FontSize,
+  h2LienHeight,
+  h3FontSize,
+  h3LienHeight,
+  h4FontSize,
+  h4LienHeight,
+  h5FontSize,
+  h5LienHeight,
+  paragraphFontSize,
+  paragraphLineHeight
+} from './documentEditor.style'
 import { merge } from 'lodash'
 import { To, NavigateOptions } from 'react-router-dom'
 
@@ -97,6 +111,9 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
   const [t] = useEditorI18n()
   const editorOptions = useMemo<Partial<TiptapEditorOptions>>(() => {
     const { editable, extensions, base, ...restOptions } = options
+    const selectionPaddingVar = '--selection-padding'
+    const backgroundColorPaddingVar = '--bgColor-padding'
+
     return {
       extensions: [
         ...(extensions ?? []),
@@ -122,11 +139,61 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
               embed: true,
               eventHandler: true,
               fontColor: true,
-              fontBgColor: true,
+              fontBgColor: {
+                HTMLAttributes: {
+                  // make bgColor mark as high as parent element
+                  style: `padding: var(${backgroundColorPaddingVar}) 0;`
+                }
+              },
               formula: true,
               gapcursor: false,
               hardBreak: true,
-              heading: true,
+              heading: {
+                HTMLAttributes: attrs => {
+                  // 1. make selection as high as heading
+                  // 2. make bgColor mark as high as heading
+                  switch (attrs.level) {
+                    case 1:
+                      return {
+                        style: {
+                          [selectionPaddingVar]: `calc((${h1LienHeight.value} - ${h1FontSize.value}) / 2)`,
+                          [backgroundColorPaddingVar]: `calc((${h1LienHeight.value} - ${h1FontSize.value}) / 2)`
+                        }
+                      }
+                    case 2:
+                      return {
+                        style: {
+                          [selectionPaddingVar]: `calc((${h2LienHeight.value} - ${h2FontSize.value}) / 2)`,
+                          [backgroundColorPaddingVar]: `calc((${h2LienHeight.value} - ${h2FontSize.value}) / 2)`
+                        }
+                      }
+                    case 3:
+                      return {
+                        style: {
+                          [selectionPaddingVar]: `calc((${h3LienHeight.value} - ${h3FontSize.value}) / 2)`,
+                          [backgroundColorPaddingVar]: `calc((${h3LienHeight.value} - ${h3FontSize.value}) / 2)`
+                        }
+                      }
+                    case 4:
+                      return {
+                        style: {
+                          [selectionPaddingVar]: `calc((${h4LienHeight.value} - ${h4FontSize.value}) / 2)`,
+                          [backgroundColorPaddingVar]: `calc((${h4LienHeight.value} - ${h4FontSize.value}) / 2)`
+                        }
+                      }
+                    case 5:
+                    case 6:
+                      return {
+                        style: {
+                          [selectionPaddingVar]: `calc((${h5LienHeight.value} - ${h5FontSize.value}) / 2)`,
+                          [backgroundColorPaddingVar]: `calc((${h5LienHeight.value} - ${h5FontSize.value}) / 2)`
+                        }
+                      }
+                    default:
+                      return {}
+                  }
+                }
+              },
               history: true,
               horizontalRule: true,
               indent: true,
@@ -139,7 +206,16 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
               mentionCommands: true,
               orderedList: true,
               pageLink: true,
-              paragraph: true,
+              paragraph: {
+                HTMLAttributes: {
+                  style: {
+                    // make selection as high as paragraph
+                    [selectionPaddingVar]: `calc((${paragraphLineHeight} - ${paragraphFontSize}) / 2)`,
+                    // make bgColor mark as high as paragraph
+                    [backgroundColorPaddingVar]: `calc((${paragraphLineHeight} - ${paragraphFontSize}) / 2)`
+                  }
+                }
+              },
               placeholder: {
                 placeholder: ({ wrapperNode }) => {
                   switch (wrapperNode?.type.name) {
@@ -156,7 +232,12 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
                   }
                 }
               },
-              selection: true,
+              selection: {
+                HTMLAttributes: {
+                  // make selection as high as parent element
+                  style: `padding: var(${selectionPaddingVar}) 0`
+                }
+              },
               slashCommands: true,
               spreadsheet: true,
               strike: true,

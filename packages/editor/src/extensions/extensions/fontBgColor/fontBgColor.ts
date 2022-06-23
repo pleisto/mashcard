@@ -4,7 +4,9 @@ import { createExtension } from '../../common'
 import { meta } from './meta'
 
 export interface FontBgColorOptions {
-  types: string[]
+  types?: string[]
+  // TODO: make HTMLAttributes type clear
+  HTMLAttributes?: Record<string, any>
 }
 export interface FontBgColorAttributes {}
 
@@ -45,7 +47,8 @@ export const FontBgColor = createExtension<FontBgColorOptions, FontBgColorAttrib
               }
 
               return {
-                style: `background-color: ${attributes.fontBgColor};`
+                ...this.options.HTMLAttributes,
+                style: `background-color: ${attributes.fontBgColor};${this.options.HTMLAttributes?.style ?? ''}`
               }
             },
             parseHTML: element => {
