@@ -24,23 +24,10 @@ export interface DocumentTitleProps {
   title: string
 }
 
-// const createDocAttrsUpdater =
-//   (editor: EditorContentProps['editor'], field: string) =>
-//   (value: any): void => {
-//     if (!editor || editor.isDestroyed) return
-//     editor.commands.setDocAttrs({
-//       ...editor.state.doc.attrs,
-//       [field]: value
-//     })
-//   }
-
 export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, blocks, title: _title }) => {
   const { t } = useDocsI18n()
   const editor = useReactiveVar(editorVar)
   const blockId = editor?.state.doc.attrs.uuid
-  // const icon = editor?.state.doc.attrs.icon
-  // const cover = editor?.state.doc.attrs.cover
-  // const title = editor?.state.doc.attrs.title
 
   // const inputRef = React.useRef<any>(null)
   // const inputComposing = React.useRef(false)
@@ -143,7 +130,8 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
       <Root.TitleWrapper
         width={{
           '@smDown': 'sm'
-        }}>
+        }}
+      >
         <Root.MaxWidth>
           {editable && (
             <Root.Actions data-testid={TEST_ID_ENUM.page.DocumentPage.actionButtons.id}>
@@ -161,7 +149,8 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
                     as={Button}
                     data-testid={TEST_ID_ENUM.page.DocumentPage.coverButton.id}
                     type="text"
-                    disabled={!editable}>
+                    disabled={!editable}
+                  >
                     <Root.Icon as={Icon.Image} />
                     <Root.Name>{t('title.add_cover')}</Root.Name>
                   </Root.Item>

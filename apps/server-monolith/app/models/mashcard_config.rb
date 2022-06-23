@@ -70,7 +70,5 @@ class MashcardConfig < ApplicationRecord
 
   namespace :features do
     field :experiment_discussion, type: :boolean, default: (Rails.env.development? ? true : false), frontend: true
-    field :experiment_collaboration, type: :boolean, default: true, frontend: true
-    field :experiment_history, type: :boolean, default: true, frontend: true
   end
 end
