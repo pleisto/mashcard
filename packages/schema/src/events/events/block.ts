@@ -1,5 +1,5 @@
 import { event } from '../event'
-import { Block } from '../../MashcardModels'
+import { Block, BlockMeta } from '../../MashcardModels'
 
 export const BlockUpdated = event<Block>()('BlockUpdated', (block: Block) => {
   return { id: block.id }
@@ -28,4 +28,8 @@ export const BlockJustCreated = event<{ id: string }>({ sticky: true })('BlockJu
 
 export const BlockDropAdd = event<{ key: string; pos: number }>()('BlockDropAdd', ({ key, pos }) => {
   return { key, pos }
+})
+
+export const BlockMetaUpdated = event<{ id: string; meta: BlockMeta }>()('BlockMetaUpdated', ({ id }) => {
+  return { id }
 })

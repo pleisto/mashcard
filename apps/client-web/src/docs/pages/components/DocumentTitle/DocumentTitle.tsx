@@ -5,7 +5,6 @@ import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { DocumentIcon } from './DocumentIcon'
 import { DocumentCover } from './DocumentCover'
 import { useDocsI18n } from '../../../common/hooks'
-import { MashcardEventBus, UpdateDocMeta } from '@mashcard/schema'
 import {
   useDocumentIconUploader,
   useDocumentCoverUploader,
@@ -40,34 +39,13 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
   const cover = meta.cover
   const title = meta.title
 
-  // MashcardEventBus.subscribe(
-  //   DocMetaLoaded,
-  //   e => {
-  //     const { id, meta } = e.payload
-  //     if (id === docId) {
-  //       setMeta(meta)
-  //     }
-  //   },
-  //   { subscribeId: 'DocumentTitle' }
-  // )
-
-  const changeDocMeta = React.useCallback(
-    (newMeta: { [key: string]: any }) => {
-      setMeta(newMeta)
-      if (docId) {
-        MashcardEventBus.dispatch(UpdateDocMeta({ id: docId, meta: newMeta }))
-      }
-    },
-    [docId, setMeta]
-  )
-
   const createDocAttrsUpdater = React.useCallback(
     (field: string) => {
       return (value: any): void => {
-        changeDocMeta({ ...meta, [field]: value })
+        setMeta({ ...meta, [field]: value })
       }
     },
-    [changeDocMeta, meta]
+    [setMeta, meta]
   )
 
   const docIconGetter = useBlobGetter('icon', blocks)

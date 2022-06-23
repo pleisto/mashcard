@@ -17,7 +17,7 @@ import {
 } from '@/MashcardGraphQL'
 import { devLog } from '@mashcard/design-system'
 
-import { MashcardEventBus, docHistoryReceived } from '@mashcard/schema'
+import { MashcardEventBus, docHistoryReceived, BlockMetaUpdated } from '@mashcard/schema'
 
 export interface blockMeta {
   [key: string]: any
@@ -107,7 +107,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
               blockStates.filter(s => s.state).map(s => base64.parse(s.state as string))
             )
             Y.applyUpdate(provider.document, remoteState)
-            setBlockMeta(Object.fromEntries(provider.document.getMap('meta').entries()))
+            setBlockMetaUpdated(Object.fromEntries(provider.document.getMap('meta').entries()))
           }
         }
       }
@@ -134,6 +134,19 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
     },
     variables: { docId: blockId }
   })
+
+  const setBlockMetaUpdated = React.useCallback(
+    (meta: blockMeta) => {
+      setBlockMeta(meta)
+      MashcardEventBus.dispatch(
+        BlockMetaUpdated({
+          id: blockId,
+          meta
+        })
+      )
+    },
+    [blockId, setBlockMeta]
+  )
 
   const commitState = React.useCallback(
     async (ydoc: Y.Doc, update?: Uint8Array, forceFull: boolean = false): Promise<void> => {
@@ -227,10 +240,10 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             metaYmap.delete(k)
           }
         })
-        setBlockMeta({ ...blockMeta, ...newMeta })
+        setBlockMetaUpdated(newMeta)
       }
     },
-    [provider, blockMeta, setBlockMeta]
+    [provider, setBlockMetaUpdated]
   )
 
   React.useEffect(() => {
@@ -260,7 +273,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
       const provider = { document: newYdoc, awareness }
       setProvider(provider)
-      setBlockMeta(Object.fromEntries(newYdoc.getMap('meta').entries()))
+      setBlockMetaUpdated(Object.fromEntries(newYdoc.getMap('meta').entries()))
 
       if (!historyId) {
         newYdoc.on('update', async (update: Uint8Array, origin: any, ydoc: Y.Doc) => {
@@ -284,7 +297,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
         })
       }
     }
-  }, [blockId, historyId, data, loading, commitState, awarenessUpdate, awarenessChanged])
+  }, [blockId, historyId, data, loading, commitState, awarenessUpdate, awarenessChanged, setBlockMetaUpdated])
 
   return {
     committing,
