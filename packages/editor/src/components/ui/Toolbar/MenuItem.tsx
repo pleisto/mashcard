@@ -9,10 +9,11 @@ const MenuItem = styled('li', {
   color: theme.colors.iconPrimary,
   cursor: 'pointer',
   display: 'flex',
-  fontSize: '.75rem',
+  fontSize: '1rem',
   fontWeight: 500,
   height: itemHeight,
   ...itemCommon,
+  padding: '0 2px',
   variants
 })
 
@@ -37,7 +38,8 @@ export const ToolbarMenuItem: FC<ToolbarMenuItemProps> = ({ option, ...props }) 
       aria-describedby=""
       onClick={handleClick}
       active={option.active}
-      css={option.css}>
+      css={option.css}
+    >
       {option.content ?? option.icon ?? option.label}
     </MenuItem>
   )

@@ -10,8 +10,10 @@ import { useExtraItemsGroup } from './useExtraItemsGroup'
 
 export const NodeIcon = styled('span', {
   include: ['flexCenter'],
-  background: theme.colors.white,
-  border: `1px solid ${theme.colors.typeDisabled}`,
+  background: 'linear-gradient(0deg, rgba(248, 251, 255, 0.36), rgba(248, 251, 255, 0.36)), rgba(255, 255, 255, 0.74)',
+  boxShadow:
+    '1px 1px 0px rgba(255, 255, 255, 0.8), 0px 2px 4px rgba(167, 167, 167, 0.3), inset 1px 1px 0px rgba(255, 255, 255, 0.25)',
+  backdropFilter: 'blur(16px)',
   borderRadius: '2px',
   color: theme.colors.typeSecondary,
   display: 'flex',

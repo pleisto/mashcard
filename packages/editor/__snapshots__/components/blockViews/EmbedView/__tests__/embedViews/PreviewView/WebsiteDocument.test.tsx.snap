@@ -31,7 +31,7 @@ exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
         class="mc-c-drZPNu"
       >
         <ul
-          class="mc-c-gRhnPc"
+          class="mc-c-bXXHAL"
           role="menu"
         >
           <ul
@@ -42,7 +42,7 @@ exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
               aria-describedby=""
               aria-haspopup="false"
               aria-label="embed_block.view_types.preview.name"
-              class="mc-c-eBQxoE mc-c-eBQxoE-gPOEbt-active-true"
+              class="mc-c-ewLfqI mc-c-ewLfqI-gPOEbt-active-true"
               role="menuitem"
             >
               <span
@@ -74,7 +74,7 @@ exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
               aria-describedby=""
               aria-haspopup="false"
               aria-label="embed_block.view_types.card.name"
-              class="mc-c-eBQxoE"
+              class="mc-c-ewLfqI"
               role="menuitem"
             >
               <span
@@ -105,7 +105,7 @@ exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
               aria-describedby=""
               aria-haspopup="false"
               aria-label="embed_block.view_types.text.name"
-              class="mc-c-eBQxoE"
+              class="mc-c-ewLfqI"
               role="menuitem"
             >
               <span
@@ -146,7 +146,7 @@ exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
               aria-describedby=""
               aria-haspopup="false"
               aria-label="edit"
-              class="mc-c-eBQxoE"
+              class="mc-c-ewLfqI"
               role="menuitem"
             >
               <span
