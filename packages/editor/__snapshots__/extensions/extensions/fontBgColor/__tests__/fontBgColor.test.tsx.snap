@@ -11,7 +11,7 @@ exports[`FontBgColor renders FontBgColor correctly 1`] = `
     >
       <p>
         <span
-          style="background-color: [object Object]; display: inline-block"
+          style="background-color: [object Object];"
         >
           red
         </span>
