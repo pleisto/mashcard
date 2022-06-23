@@ -1355,7 +1355,7 @@ type Comment {
   """
   creator
   """
-  creator: ThinUser!
+  creator: User!
   id: String!
 
   """
@@ -1782,7 +1782,7 @@ type DocumentHistories {
   """
   History Users
   """
-  users: [ThinUser!]
+  users: [User!]
 }
 
 type DocumentHistory {
@@ -1810,7 +1810,7 @@ type DocumentPayload {
   histories: [DocumentHistory!]
   operatorId: UUID
   states: [BlockState!]
-  users: [ThinUser!]
+  users: [User!]
 }
 
 """
@@ -2736,31 +2736,6 @@ enum Statetype {
   update
   """
   update
-}
-
-"""
-Like podMember but thin
-"""
-type ThinUser {
-  """
-  Pod Avatar
-  """
-  avatarData: Avatar
-
-  """
-  Like a username, Unique within this instance of MashCard
-  """
-  domain: String!
-
-  """
-  owner email
-  """
-  email: String
-
-  """
-  Pod Name
-  """
-  name: String!
 }
 
 """

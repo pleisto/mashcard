@@ -4490,7 +4490,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "ThinUser",
+                  "name": "User",
                   "ofType": null
                 }
               },
@@ -6032,7 +6032,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "OBJECT",
-                    "name": "ThinUser",
+                    "name": "User",
                     "ofType": null
                   }
                 }
@@ -6214,7 +6214,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "OBJECT",
-                    "name": "ThinUser",
+                    "name": "User",
                     "ofType": null
                   }
                 }
@@ -9647,83 +9647,6 @@
           "fields": null,
           "inputFields": null,
           "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "ThinUser",
-          "description": "Like podMember but thin",
-          "fields": [
-            {
-              "name": "avatarData",
-              "description": "Pod Avatar",
-              "args": [
-
-              ],
-              "type": {
-                "kind": "OBJECT",
-                "name": "Avatar",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "domain",
-              "description": "Like a username, Unique within this instance of MashCard",
-              "args": [
-
-              ],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "email",
-              "description": "owner email",
-              "args": [
-
-              ],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "name",
-              "description": "Pod Name",
-              "args": [
-
-              ],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-
-          ],
           "enumValues": null,
           "possibleTypes": null
         },

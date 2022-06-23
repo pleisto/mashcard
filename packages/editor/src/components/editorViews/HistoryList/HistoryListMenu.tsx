@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 import dayjs from 'dayjs'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
-import { DocumentHistory, ThinUser } from '@mashcard/schema'
+import { DocumentHistory, User } from '@mashcard/schema'
 
 export interface HistoryListMenuProps {
   domain: string
@@ -16,7 +16,7 @@ export interface HistoryListMenuProps {
   historyId?: string
   navigate: (to: To, options?: NavigateOptions) => void
   histories: { [key: string]: DocumentHistory }
-  users: { [key: string]: ThinUser }
+  users: { [key: string]: User }
 }
 
 export const HistoryListMenu: React.FC<HistoryListMenuProps> = ({

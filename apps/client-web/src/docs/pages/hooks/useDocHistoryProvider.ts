@@ -1,7 +1,7 @@
 import React from 'react'
 import { useApolloClient } from '@apollo/client'
 import { MashcardEventBus, loadDocHistory, docHistoryReceived, EventSubscribed } from '@mashcard/schema'
-import { DocumentHistoriesDocument, DocumentHistory, ThinUser } from '@/MashcardGraphQL'
+import { DocumentHistoriesDocument, DocumentHistory, User } from '@/MashcardGraphQL'
 import { devLog } from '@mashcard/design-system'
 
 export function useDocHistoryProvider(docId: string): void {
@@ -22,7 +22,7 @@ export function useDocHistoryProvider(docId: string): void {
       docHistoryReceived({
         docId,
         histories: Object.fromEntries((histories as DocumentHistory[]).map(h => [h.id, h])),
-        users: Object.fromEntries((users as ThinUser[]).map(u => [u.name, u]))
+        users: Object.fromEntries((users as User[]).map(u => [u.name, u]))
       })
     )
   }, [docId, client])
