@@ -8,7 +8,7 @@ module Accounts
 
       @identity = Users::AuthenticationFederatedIdentity.find_by(provider: omniauth_auth[:provider], uid: omniauth_auth[:uid])
       if @identity.present?
-        sign_in_and_redirect @identity.user, event: :authentication
+        sign_in_and_redirect @identity.authentication, event: :authentication
       else
         session[:omniauth] = omniauth_auth
         redirect_to new_user_registration_path
