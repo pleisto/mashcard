@@ -7,7 +7,7 @@ import { uuid } from '@mashcard/active-support'
 import {
   BlockNew,
   DocumentHistory,
-  ThinUser,
+  User,
   Statetype,
   useBlockNewQuery,
   useBlockCommitMutation,
@@ -28,7 +28,7 @@ export interface blockProvider {
   document: Y.Doc
 }
 
-export interface awarenessInfoUser extends ThinUser {
+export interface awarenessInfoUser extends User {
   color?: string
   operatorId: string
 }
@@ -93,7 +93,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             docHistoryReceived({
               docId: blockId,
               histories: Object.fromEntries((histories as DocumentHistory[]).map(h => [h.id, h])),
-              users: Object.fromEntries((users as ThinUser[]).map(u => [u.name, u]))
+              users: Object.fromEntries((users as User[]).map(u => [u.name, u]))
             })
           )
 

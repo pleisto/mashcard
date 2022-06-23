@@ -5,6 +5,6 @@ module Types
     graphql_name 'DocumentHistories'
 
     field :histories, [DocumentHistory], 'History States', null: true
-    field :users, [Types::Users::Thin], 'History Users', null: true
+    field :users, [Types::User], 'History Users', null: true
   end
 end

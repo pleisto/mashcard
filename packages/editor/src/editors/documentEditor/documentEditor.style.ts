@@ -1,8 +1,68 @@
-import { CSS, globalCss, theme } from '@mashcard/design-system'
+import { css, CSS, theme } from '@mashcard/design-system'
 import { spreadsheetStyles } from '../../components/blockViews/Spreadsheet/Spreadsheet.style'
 import { defaultSelectionStyles } from '../../styles/index.style'
 import { DEFAULT_SELECTION_CLASS } from '../../extensions'
 import anchorLine from './assets/anchor-line.png'
+
+export const h1FontSize = theme.fontSizes.title1
+export const h2FontSize = theme.fontSizes.title2
+export const h3FontSize = theme.fontSizes.title3
+export const h4FontSize = theme.fontSizes.title4
+export const h5FontSize = theme.fontSizes.title5
+
+export const h1LienHeight = theme.lineHeights.title1
+export const h2LienHeight = theme.lineHeights.title2
+export const h3LienHeight = theme.lineHeights.title3
+export const h4LienHeight = theme.lineHeights.title4
+export const h5LienHeight = theme.lineHeights.title5
+
+export const paragraphFontSize = theme.fontSizes.body
+export const paragraphLineHeight = theme.lineHeights.body
+
+const headingStyles: CSS = {
+  'h1, h2, h3, h4, h5, h6': {
+    marginTop: 0,
+    marginBottom: 0,
+    fontWeight: '600',
+    color: theme.colors.typePrimary,
+    wordBreak: 'break-word'
+  },
+  h1: {
+    fontSize: h1FontSize,
+    lineHeight: h1LienHeight,
+    paddingTop: theme.titleOffset.title1
+  },
+  h2: {
+    fontSize: h2FontSize,
+    lineHeight: h2LienHeight,
+    paddingTop: theme.titleOffset.title2
+  },
+  h3: {
+    fontSize: h3FontSize,
+    lineHeight: h3LienHeight,
+    paddingTop: theme.titleOffset.title3
+  },
+  h4: {
+    fontSize: h4FontSize,
+    lineHeight: h4LienHeight,
+    paddingTop: theme.titleOffset.title4
+  },
+  h5: {
+    fontSize: h5FontSize,
+    lineHeight: h5LienHeight,
+    paddingTop: theme.titleOffset.title5
+  }
+}
+
+const paragraphStyles: CSS = {
+  p: {
+    marginTop: 0,
+    marginBottom: 0,
+    fontSize: theme.fontSizes.body,
+    lineHeight: theme.lineHeights.body,
+    wordBreak: 'break-word'
+  }
+}
 
 const anchorMarkStyles = {
   'span[data-anchor]': {
@@ -122,62 +182,73 @@ export const selectionStyles: CSS = {
   }
 }
 
-export const documentEditorStyles = globalCss({
-  '::selection': {
-    background: 'unset',
-    color: 'unset'
+export const documentEditorStyles = css({
+  variants: {
+    enableSelection: {
+      true: {
+        ...defaultSelectionStyles
+      },
+      false: {
+        '::selection': {
+          background: 'unset',
+          color: 'unset'
+        }
+      }
+    }
   },
 
-  '.mashcard': {
-    display: 'flex',
-    flex: '1',
-    justifyContent: 'center',
-    maxWidth: 'var(--mc-editor-max-width)',
+  display: 'flex',
+  flex: '1',
+  justifyContent: 'center',
+  maxWidth: 'var(--mc-editor-max-width)',
+  width: '100%',
+
+  '.ProseMirror': {
+    color: theme.colors.typePrimary,
+    outline: 'none',
+    paddingBottom: '5rem',
+    tabSize: '6',
     width: '100%',
 
-    '.ProseMirror': {
-      color: theme.colors.typePrimary,
-      outline: 'none',
-      paddingBottom: '5rem',
-      tabSize: '6',
-      width: '100%',
+    '&:focus-visible': {
+      outline: 'none'
+    },
 
-      '&:focus-visible': {
-        outline: 'none'
-      },
+    '> *': {
+      maxWidth: 'var(--mc-editor-max-width)'
+    },
 
-      '> *': {
-        maxWidth: 'var(--mc-editor-max-width)'
-      },
+    '> * + *': {
+      marginTop: '.75rem',
+      marginBottom: 0
+    },
 
-      '> * + *': {
-        marginTop: '.75rem',
-        marginBottom: 0
-      },
+    ...headingStyles,
 
-      ...selectionStyles,
+    ...paragraphStyles,
 
-      ...collaborationStyles,
+    ...selectionStyles,
 
-      ...anchorMarkStyles,
+    ...collaborationStyles,
 
-      ...strikeStyles,
+    ...anchorMarkStyles,
 
-      ...codeStyles,
+    ...strikeStyles,
 
-      ...discussionMarkStyles,
+    ...codeStyles,
 
-      ...linkStyles,
+    ...discussionMarkStyles,
 
-      ...imageStyles,
+    ...linkStyles,
 
-      ...blockquoteStyles,
+    ...imageStyles,
 
-      ...formulaMarkStyles,
+    ...blockquoteStyles,
 
-      ...dividerStyles,
+    ...formulaMarkStyles,
 
-      ...spreadsheetStyles
-    }
+    ...dividerStyles,
+
+    ...spreadsheetStyles
   }
 })

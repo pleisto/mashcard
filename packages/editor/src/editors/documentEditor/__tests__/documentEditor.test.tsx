@@ -27,7 +27,14 @@ describe('documentEditor', () => {
           collaborationCursor: {
             provider
           }
-        }
+        },
+        content: `
+        <h1>heading1</h1>
+        <h2>heading2</h2>
+        <h3>heading3</h3>
+        <h4>heading4</h4>
+        <h5>heading5</h5>
+        `
       })
     )
     const editor = result.current

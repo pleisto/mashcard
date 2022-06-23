@@ -71,7 +71,8 @@ class User < Pod
   end
 
   def as_global_context
-    { username: username, display_name: display_name }
+    # TODO: refactor this to graphql interface
+    { domain: username, name: display_name, avatarData: avatar_data }
   end
 
   def has_group_pods?
