@@ -47,7 +47,7 @@ export const DocumentTopBar: FC = () => {
       <CollaboratorsMenu />
       <ShareMenu />
       {features.experiment_discussion && !isAnonymous && <DiscussionMenu />}
-      {features.experiment_history && <HistoryMenu />}
+      <HistoryMenu />
       {editable && <ExploreSlash />}
       <TopbarMore />
     </>
@@ -67,7 +67,8 @@ export const DocumentTopBar: FC = () => {
     <Root.TopBar
       width={{
         '@mdDown': 'md'
-      }}>
+      }}
+    >
       <Box>{headMenu}</Box>
       <Box style={{ flexShrink: 0 }}>
         <Root.Menu>
