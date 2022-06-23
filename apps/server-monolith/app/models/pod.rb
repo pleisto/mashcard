@@ -58,25 +58,20 @@ class Pod < ApplicationRecord
     }
   end
 
-  def pod_as_json
+  def pod_as_json_by_user(user)
+    owned = owner.id === user.id
+    personal = id === user.id
     {
       id: id,
       avatar_data: avatar_data,
       bio: bio,
       domain: username,
       name: display_name,
-    }
-  end
-
-  def pod_as_json_by_user(user)
-    owned = owner.id === user.id
-    personal = id === user.id
-    pod_as_json.merge(
       owned: owned,
       personal: personal,
       invite_enable: owned ? invite_enable : nil,
       invite_secret: owned ? invite_secret : nil,
-    )
+    }
   end
 
   def self.domain_available?(username)

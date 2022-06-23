@@ -4,7 +4,7 @@ module Mutations
   module Users
     class ConfirmationEmailResend < ::Mutations::BaseMutation
       graphql_name 'UserConfirmationEmailResend'
-      argument :email, Scalars::Email, description_same(Types::User, :email), required: true
+      argument :email, Scalars::Email, "User's email address", required: true
 
       SEND_INTERVAL = 50.seconds
 

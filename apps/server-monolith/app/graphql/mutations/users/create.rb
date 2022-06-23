@@ -7,7 +7,7 @@ module Mutations
       include DeviseGraphQLHelper
 
       argument :domain, String, description_same(Types::User, :domain), required: true
-      argument :email, Scalars::Email, description_same(Types::User, :email), required: false
+      argument :email, Scalars::Email, "User's email address", required: false
       argument :locale, String, description_same(Types::User, :locale), required: true
       argument :name, String, description_same(Types::User, :name), required: true
       argument :password, String, 'user password', required: false

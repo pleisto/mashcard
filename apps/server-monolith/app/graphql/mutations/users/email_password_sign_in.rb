@@ -5,7 +5,7 @@ module Mutations
     class EmailPasswordSignIn < ::Mutations::BaseMutation
       graphql_name 'UserEmailPasswordSignIn'
       include DeviseGraphQLHelper
-      argument :email, Scalars::Email, description_same(Types::User, :email), required: true
+      argument :email, Scalars::Email, "User's email address", required: true
       argument :password, String, 'user password', required: true
       argument :remember, Boolean, 'remember authentication session', required: true
 
