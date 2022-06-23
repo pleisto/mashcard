@@ -65,6 +65,7 @@ class Pod < ApplicationRecord
       id: id,
       avatar_data: avatar_data,
       bio: bio,
+      type: type,
       domain: username,
       name: display_name,
       owned: owned,

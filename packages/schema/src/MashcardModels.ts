@@ -348,7 +348,7 @@ export type BlockImage = {
 export type BlockInfo = {
   __typename?: 'BlockInfo'
   /** pod */
-  collaborators: Array<Pod>
+  collaborators: Array<OldPod>
   /** alias */
   enabledAlias?: Maybe<BlockAlias>
   /** icon */
@@ -897,7 +897,7 @@ export type CreateOrUpdatePodPayload = {
   clientMutationId?: Maybe<Scalars['String']>
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars['String']>
-  pod?: Maybe<Pod>
+  pod?: Maybe<OldPod>
 }
 
 /** Represents direct upload credentials */
@@ -1283,6 +1283,31 @@ export type NewPatchPayload = {
   state: Patchstate
 }
 
+/** MashCard Old Pod. */
+export type OldPod = {
+  __typename?: 'OldPod'
+  /** Pod Avatar */
+  avatarData?: Maybe<Avatar>
+  /** public profile bio */
+  bio?: Maybe<Scalars['String']>
+  /** Like a username, Unique within this instance of MashCard */
+  domain: Scalars['String']
+  /** object unique id */
+  id: Scalars['AutoIncrementID']
+  /** enable invite feature */
+  inviteEnable: Scalars['Boolean']
+  /** invite secret */
+  inviteSecret?: Maybe<Scalars['String']>
+  /** Pod Name */
+  name?: Maybe<Scalars['String']>
+  /** owner is current user */
+  owned: Scalars['Boolean']
+  /** personal */
+  personal: Scalars['Boolean']
+  /** Pod enum type */
+  type: Pod
+}
+
 /** session[:omniauth] */
 export type OmniauthSession = {
   __typename?: 'OmniauthSession'
@@ -1332,27 +1357,11 @@ export type Pin = {
   text: Scalars['String']
 }
 
-/** MashCard Pod. */
-export type Pod = {
-  __typename?: 'Pod'
-  /** Pod Avatar */
-  avatarData?: Maybe<Avatar>
-  /** public profile bio */
-  bio?: Maybe<Scalars['String']>
-  /** Like a username, Unique within this instance of MashCard */
-  domain: Scalars['String']
-  /** object unique id */
-  id: Scalars['AutoIncrementID']
-  /** enable invite feature */
-  inviteEnable: Scalars['Boolean']
-  /** invite secret */
-  inviteSecret?: Maybe<Scalars['String']>
-  /** Pod Name */
-  name?: Maybe<Scalars['String']>
-  /** owner is current user */
-  owned: Scalars['Boolean']
-  /** personal */
-  personal: Scalars['Boolean']
+export enum Pod {
+  /** GROUP */
+  Group = 'Group',
+  /** USER */
+  User = 'User'
 }
 
 /** InputObject type of Class */
@@ -1453,7 +1462,7 @@ export type ShareLink = {
   __typename?: 'ShareLink'
   key: Scalars['String']
   policy: Policytype
-  sharePodData: Pod
+  sharePodData: OldPod
   state: ShareLinkState
 }
 
@@ -1767,13 +1776,13 @@ export type Query = {
   /** Check password available. */
   passwordAvailable: ValidateResult
   /** return current pod for user. */
-  pod: Pod
+  pod: OldPod
   /** return all pod users */
   podMembers?: Maybe<Array<PodMember>>
   /** search pods */
-  podSearch: Array<Pod>
+  podSearch: Array<OldPod>
   /** return all pods for user. */
-  pods: Array<Pod>
+  pods: Array<OldPod>
   /** return preview box data of url */
   previewBox: PreviewBox
   spreadsheetChildren?: Maybe<SpreadsheetChildren>

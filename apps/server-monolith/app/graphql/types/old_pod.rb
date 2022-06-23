@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Types
-  class Pod < Types::BaseObject
-    graphql_name 'Pod'
-    description 'MashCard Pod.'
+  class OldPod < Types::BaseObject
+    graphql_name 'OldPod'
+    description 'MashCard Old Pod.'
     has_primary_key
 
     field :avatar_data, Pods::Avatar, 'Pod Avatar', null: true
@@ -14,5 +14,6 @@ module Types
     field :name, String, 'Pod Name', null: true
     field :owned, Boolean, 'owner is current user', null: false
     field :personal, Boolean, 'personal', null: false
+    field :type, Pods::PodType, 'Pod enum type', null: false
   end
 end

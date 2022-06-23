@@ -5,7 +5,7 @@ module Resolvers
     description 'return current pod for user.'
 
     argument :domain, GraphQL::Types::String, required: true
-    type Types::Pod, null: false
+    type Types::OldPod, null: false
     authenticate_user!
 
     def resolve(domain:)

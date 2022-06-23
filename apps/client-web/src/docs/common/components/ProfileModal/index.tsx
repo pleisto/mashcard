@@ -3,10 +3,9 @@ import { Form, Input, toast, Modal, Button } from '@mashcard/design-system'
 import { object, string } from 'yup'
 import { useDomainAvailableValidator } from '@/common/hooks'
 import { useDocsI18n } from '../../hooks'
-import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput, Pod } from '@/MashcardGraphQL'
+import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput } from '@/MashcardGraphQL'
 
 interface ProfileModalProps {
-  pod: Pod
   visible: boolean
   title: string
   type: PodOperation
@@ -21,7 +20,7 @@ const DialogCss = {
   }
 }
 
-export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title, type, setVisible }) => {
+export const ProfileModal: React.FC<ProfileModalProps> = ({ visible, title, type, setVisible }) => {
   const { t } = useDocsI18n()
   const [confirmLoading, setConfirmLoading] = React.useState(false)
   const domainAvailableValidator = useDomainAvailableValidator()

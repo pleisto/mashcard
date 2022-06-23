@@ -12,7 +12,7 @@ module Mutations
       argument :invite_secret, String, 'invite secret', required: false
       argument :name, String, 'pod name', required: false
       argument :type, Types::Pods::OperationType, required: true
-      field :pod, Types::Pod, null: true
+      field :pod, Types::OldPod, null: true
 
       # TODO：split create and update to different mutation
       def resolve(attrs)

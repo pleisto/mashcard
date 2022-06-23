@@ -9,6 +9,7 @@ describe Resolvers::PodSearch, type: :query do
         podSearch(input: $input) {
           domain
           name
+          type
           avatarData {
             url
           }

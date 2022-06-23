@@ -12,5 +12,6 @@ module Types
     field :name, String, 'Human-readable name', null: false
     field :owned, Boolean, 'owner is current user', null: false
     field :personal, Boolean, 'personal', null: false
+    field :type, Pods::PodType, 'Pod enum type', null: false
   end
 end

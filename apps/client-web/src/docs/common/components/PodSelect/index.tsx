@@ -104,7 +104,6 @@ export const PodSelect: FC = () => {
       </Dropdown>
       <ProfileModal
         title={t('menu.create_new_pod')}
-        pod={pod}
         type={PodOperation.Create}
         visible={modalCreateVisible}
         setVisible={setModalCreateVisible}

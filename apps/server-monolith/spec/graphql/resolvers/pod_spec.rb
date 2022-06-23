@@ -9,6 +9,7 @@ describe Resolvers::Pod, type: :query do
         pod(domain: $domain) {
           id
           domain
+          type
           name
           personal
           inviteEnable

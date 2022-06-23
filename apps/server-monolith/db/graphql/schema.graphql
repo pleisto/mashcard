@@ -629,7 +629,7 @@ type BlockInfo {
   """
   pod
   """
-  collaborators: [Pod!]!
+  collaborators: [OldPod!]!
 
   """
   alias
@@ -1705,7 +1705,7 @@ type CreateOrUpdatePodPayload {
   Errors encountered during execution of the mutation.
   """
   errors: [String!]!
-  pod: Pod
+  pod: OldPod
 }
 
 """
@@ -2319,6 +2319,61 @@ type NewPatchPayload {
 }
 
 """
+MashCard Old Pod.
+"""
+type OldPod {
+  """
+  Pod Avatar
+  """
+  avatarData: Avatar
+
+  """
+  public profile bio
+  """
+  bio: String
+
+  """
+  Like a username, Unique within this instance of MashCard
+  """
+  domain: String!
+
+  """
+  object unique id
+  """
+  id: AutoIncrementID!
+
+  """
+  enable invite feature
+  """
+  inviteEnable: Boolean!
+
+  """
+  invite secret
+  """
+  inviteSecret: String
+
+  """
+  Pod Name
+  """
+  name: String
+
+  """
+  owner is current user
+  """
+  owned: Boolean!
+
+  """
+  personal
+  """
+  personal: Boolean!
+
+  """
+  Pod enum type
+  """
+  type: Pod!
+}
+
+"""
 session[:omniauth]
 """
 type OmniauthSession {
@@ -2397,54 +2452,16 @@ type Pin {
   text: String!
 }
 
-"""
-MashCard Pod.
-"""
-type Pod {
+enum Pod {
   """
-  Pod Avatar
+  GROUP
   """
-  avatarData: Avatar
+  Group
 
   """
-  public profile bio
+  USER
   """
-  bio: String
-
-  """
-  Like a username, Unique within this instance of MashCard
-  """
-  domain: String!
-
-  """
-  object unique id
-  """
-  id: AutoIncrementID!
-
-  """
-  enable invite feature
-  """
-  inviteEnable: Boolean!
-
-  """
-  invite secret
-  """
-  inviteSecret: String
-
-  """
-  Pod Name
-  """
-  name: String
-
-  """
-  owner is current user
-  """
-  owned: Boolean!
-
-  """
-  personal
-  """
-  personal: Boolean!
+  User
 }
 
 """
@@ -2626,7 +2643,7 @@ type SelectOption {
 type ShareLink {
   key: String!
   policy: Policytype!
-  sharePodData: Pod!
+  sharePodData: OldPod!
   state: ShareLinkState!
 }
 
@@ -3261,7 +3278,7 @@ type query {
   """
   return current pod for user.
   """
-  pod(domain: String!): Pod!
+  pod(domain: String!): OldPod!
 
   """
   return all pod users
@@ -3271,12 +3288,12 @@ type query {
   """
   search pods
   """
-  podSearch(input: String!): [Pod!]!
+  podSearch(input: String!): [OldPod!]!
 
   """
   return all pods for user.
   """
-  pods: [Pod!]!
+  pods: [OldPod!]!
 
   """
   return preview box data of url

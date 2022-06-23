@@ -10,6 +10,7 @@ describe Resolvers::Pods, type: :query do
           id
           domain
           name
+          type
           personal
           avatarData {
             url
