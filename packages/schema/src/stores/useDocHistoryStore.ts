@@ -1,9 +1,9 @@
 import React from 'react'
-import { DocumentHistory, ThinUser, loadDocHistory, docHistoryReceived, MashcardEventBus } from '../'
+import { DocumentHistory, User, loadDocHistory, docHistoryReceived, MashcardEventBus } from '../'
 
 interface docHistoryStore {
   histories: { [key: string]: DocumentHistory }
-  users: { [key: string]: ThinUser }
+  users: { [key: string]: User }
   loaded: boolean
 }
 

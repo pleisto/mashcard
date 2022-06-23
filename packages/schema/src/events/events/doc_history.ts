@@ -1,4 +1,4 @@
-import { DocumentHistory, ThinUser } from '../../MashcardModels'
+import { DocumentHistory, User } from '../../MashcardModels'
 import { event } from '../event'
 
 export const loadDocHistory = event<string>()('loadDocHistory', (docId: string) => {
@@ -8,7 +8,7 @@ export const loadDocHistory = event<string>()('loadDocHistory', (docId: string) 
 export const docHistoryReceived = event<{
   docId: string
   histories: { [key: string]: DocumentHistory }
-  users: { [key: string]: ThinUser }
+  users: { [key: string]: User }
 }>()('docHistoryReceived', ({ docId }) => {
   return { id: docId }
 })
