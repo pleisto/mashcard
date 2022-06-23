@@ -5,6 +5,7 @@ import { isEmpty } from '@mashcard/active-support'
 import { TocNode } from './tocTree'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { useEditorContext, useEditorI18n } from '../../../hooks'
+import { defaultSelectionStyles } from '../../../styles/index.style'
 
 export interface TocNodePanelProps {
   tocNode: TocNode
@@ -117,7 +118,8 @@ const TocStyledContainer = styled('div', {
   borderRadius: '8px',
   display: 'inline-block',
   maxWidth: '45rem',
-  padding: `${containerVerticalPadding}px 0`
+  padding: `${containerVerticalPadding}px 0`,
+  ...defaultSelectionStyles
 })
 
 const TocStyledContainerInner = styled('div', {

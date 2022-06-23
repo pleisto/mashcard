@@ -4,6 +4,7 @@ import { styled, theme } from '@mashcard/design-system'
 import { useMemo } from 'react'
 import { PageLinkOptions, PageLinkAttributes } from '../../../extensions/blocks/pageLink/meta'
 import { useEditorI18n } from '../../../hooks'
+import { defaultSelectionStyles } from '../../../styles/index.style'
 
 export interface PageLinkProps {
   options?: PageLinkOptions
@@ -51,6 +52,10 @@ const PageName = styled('span', {
   }
 })
 
+const PageLinkContainer = styled('span', {
+  ...defaultSelectionStyles
+})
+
 export const PageLink: React.FC<PageLinkProps> = ({ attributes, options }) => {
   const [t] = useEditorI18n()
   const size = options?.size ?? 'md'
@@ -61,13 +66,13 @@ export const PageLink: React.FC<PageLinkProps> = ({ attributes, options }) => {
   const title = page?.title ?? attributes?.page?.title
 
   return (
-    <span>
+    <PageLinkContainer>
       <IconWrapper size={size} role="img" aria-label="">
         {/* eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing */}
         {icon || <FilePages />}
         {icon && size !== 'sm' && <IconArrowShortcut />}
       </IconWrapper>
       <PageName>{isEmpty(title) ? t('page_link_block.untitled') : title}</PageName>
-    </span>
+    </PageLinkContainer>
   )
 }

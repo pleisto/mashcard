@@ -8,6 +8,7 @@ export interface BaseOptions {
   blockquote: Partial<EXTENSION.BlockquoteOptions> | boolean
   bold: Partial<EXTENSION.BoldOptions> | boolean
   brickList: Partial<EXTENSION.BrickListOptions> | boolean
+  bubbleMenu: boolean
   bulletList: Partial<EXTENSION.BulletListOptions> | boolean
   callout: Partial<EXTENSION.CalloutOptions> | boolean
   code: Partial<EXTENSION.CodeOptions> | boolean
@@ -38,6 +39,7 @@ export interface BaseOptions {
   pageLink: Partial<EXTENSION.PageLinkOptions> | boolean
   paragraph: Partial<EXTENSION.ParagraphOptions> | boolean
   placeholder: Partial<EXTENSION.PlaceholderOptions> | boolean
+  selection: Partial<EXTENSION.SelectionOptions> | boolean
   slashCommands: Partial<EXTENSION.SlashCommandsOptions> | boolean
   spreadsheet: Partial<EXTENSION.SpreadsheetOptions> | boolean
   strike: Partial<EXTENSION.StrikeOptions> | boolean
@@ -150,6 +152,7 @@ export const Base = Extension.create<BaseOptions>({
     if (this.options.placeholder) {
       extensions.push(EXTENSION.Placeholder.configure(getConfigure(this.options?.placeholder)))
     }
+    if (this.options.selection) extensions.push(EXTENSION.Selection.configure(getConfigure(this.options?.selection)))
     if (this.options.slashCommands)
       extensions.push(EXTENSION.SlashCommands.configure(getConfigure(this.options?.slashCommands)))
     if (this.options.spreadsheet)

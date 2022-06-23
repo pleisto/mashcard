@@ -1,4 +1,5 @@
 import { css, styled, theme } from '@mashcard/design-system'
+import { defaultSelectionStyles } from '../../../../styles/index.style'
 
 export const ViewModeBar = styled('div', {
   height: 47,
@@ -17,7 +18,8 @@ export const CodeContainer = styled('div', {
   borderRadius: 4,
   background: theme.colors.backgroundPrimary,
   border: '1px solid',
-  borderColor: theme.colors.grey3
+  borderColor: theme.colors.grey3,
+  ...defaultSelectionStyles
 })
 
 export const CodeScroll = css({
