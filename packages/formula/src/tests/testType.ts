@@ -7,7 +7,8 @@ import {
   dispatchFormulaBlockSoftDelete,
   dispatchFormulaSpreadsheetColumnChange,
   dispatchFormulaSpreadsheetNameChange,
-  dispatchFormulaSpreadsheetRemove
+  dispatchFormulaSpreadsheetRemove,
+  dispatchFormulaSpreadsheetRowChange
 } from '../events'
 import { OperatorName } from '../grammar'
 import {
@@ -101,6 +102,7 @@ type FeatureName =
   | 'variableEvent'
   | 'spreadsheetEvent'
   | 'columnEvent'
+  | 'rowEvent'
 type FeatureTestName = 'cst'
 export type TestCaseName = OperatorName | FeatureName | FeatureTestName
 
@@ -235,7 +237,8 @@ export const AllowEvents = {
   blockDelete: dispatchFormulaBlockSoftDelete,
   spreadsheetChangeName: dispatchFormulaSpreadsheetNameChange,
   spreadsheetDelete: dispatchFormulaSpreadsheetRemove,
-  columnChange: dispatchFormulaSpreadsheetColumnChange
+  columnChange: dispatchFormulaSpreadsheetColumnChange,
+  rowChange: dispatchFormulaSpreadsheetRowChange
 } as const
 
 type AllowEventsType = {
