@@ -16,5 +16,6 @@ export const Avatar = styled(PodAvatar, {
 })
 
 export const CollaboratorsConatainer = styled(Tooltip, {
-  flexDirection: 'row-reverse'
+  flexDirection: 'row-reverse',
+  marginRight: '0.875rem'
 })

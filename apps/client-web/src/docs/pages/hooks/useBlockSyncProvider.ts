@@ -15,7 +15,6 @@ import {
   useAwarenessUpdateMutation,
   useAwarenessSubscription
 } from '@/MashcardGraphQL'
-import { MashcardContext } from '@/common/mashcardContext'
 import { devLog } from '@mashcard/design-system'
 
 import { MashcardEventBus, docHistoryReceived } from '@mashcard/schema'
@@ -47,9 +46,6 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   meta: blockMeta
   setMeta: (meta: blockMeta) => void
 } {
-  const {
-    features: { experiment_collaboration: enableCollaboration }
-  } = React.useContext(MashcardContext)
   const [blockCommit] = useBlockCommitMutation()
   const [awarenessUpdate] = useAwarenessUpdateMutation()
 
@@ -202,6 +198,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             void commitState(ydoc, localState, true)
           } else {
             devLog('committed, left updates: ', updatesToCommit.current.size)
+            blockCommitting.current = false
             if (updatesToCommit.current.size === 0) {
               setCommitting(false)
             } else {
@@ -236,61 +233,57 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   )
 
   React.useEffect(() => {
-    if (enableCollaboration) {
-      if (data && !loading) {
-        const newYdoc = new Y.Doc()
-        const awareness = new awarenessProtocol.Awareness(newYdoc)
-        devLog('Ydoc initialized')
+    if (data && !loading) {
+      const newYdoc = new Y.Doc()
+      const awareness = new awarenessProtocol.Awareness(newYdoc)
+      devLog('Ydoc initialized')
 
-        if (data.blockNew) {
-          block.current = {
-            id: blockId,
-            stateId: data.blockNew.stateId,
-            statesCount: data.blockNew.statesCount
-          }
-          if (block.current.stateId && data.blockNew.states) {
-            devLog(`init from state ${block.current.stateId} (${data.blockNew.states.length})`)
-            initBlocksToEditor.current = false
-            const remoteState = Y.mergeUpdates(
-              data.blockNew.states.filter(s => s.state).map(s => base64.parse(s.state as string))
-            )
-            Y.applyUpdate(newYdoc, remoteState)
-          } else {
-            devLog('need to commit init state')
-            initBlocksToEditor.current = !historyId
-          }
+      if (data.blockNew) {
+        block.current = {
+          id: blockId,
+          stateId: data.blockNew.stateId,
+          statesCount: data.blockNew.statesCount
         }
-
-        const provider = { document: newYdoc, awareness }
-        setProvider(provider)
-        setBlockMeta(Object.fromEntries(newYdoc.getMap('meta').entries()))
-
-        if (!historyId) {
-          newYdoc.on('update', async (update: Uint8Array, origin: any, ydoc: Y.Doc) => {
-            void commitState(ydoc, update)
-          })
-
-          awareness.on('update', async ({ added, updated, removed }: any) => {
-            awarenessChanged(awareness)
-            const changes = added.concat(updated).concat(removed)
-            const updates = awarenessProtocol.encodeAwarenessUpdate(awareness, changes)
-            const updatePromise = awarenessUpdate({
-              variables: {
-                input: {
-                  docId: blockId,
-                  operatorId: globalThis.mashcardContext.uuid,
-                  updates: base64.stringify(updates)
-                }
-              }
-            })
-            await updatePromise
-          })
+        if (block.current.stateId && data.blockNew.states) {
+          devLog(`init from state ${block.current.stateId} (${data.blockNew.states.length})`)
+          initBlocksToEditor.current = false
+          const remoteState = Y.mergeUpdates(
+            data.blockNew.states.filter(s => s.state).map(s => base64.parse(s.state as string))
+          )
+          Y.applyUpdate(newYdoc, remoteState)
+        } else {
+          devLog('need to commit init state')
+          initBlocksToEditor.current = !historyId
         }
       }
-    } else {
-      initBlocksToEditor.current = true
+
+      const provider = { document: newYdoc, awareness }
+      setProvider(provider)
+      setBlockMeta(Object.fromEntries(newYdoc.getMap('meta').entries()))
+
+      if (!historyId) {
+        newYdoc.on('update', async (update: Uint8Array, origin: any, ydoc: Y.Doc) => {
+          void commitState(ydoc, update)
+        })
+
+        awareness.on('update', async ({ added, updated, removed }: any) => {
+          awarenessChanged(awareness)
+          const changes = added.concat(updated).concat(removed)
+          const updates = awarenessProtocol.encodeAwarenessUpdate(awareness, changes)
+          const updatePromise = awarenessUpdate({
+            variables: {
+              input: {
+                docId: blockId,
+                operatorId: globalThis.mashcardContext.uuid,
+                updates: base64.stringify(updates)
+              }
+            }
+          })
+          await updatePromise
+        })
+      }
     }
-  }, [blockId, historyId, enableCollaboration, data, loading, commitState, awarenessUpdate, awarenessChanged])
+  }, [blockId, historyId, data, loading, commitState, awarenessUpdate, awarenessChanged])
 
   return {
     committing,

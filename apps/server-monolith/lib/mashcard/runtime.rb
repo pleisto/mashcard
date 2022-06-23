@@ -7,7 +7,7 @@ module Mashcard
   module Runtime
     class << self
       def hostname
-        @hostname ||= ENV['HOSTNAME'] || Socket.gethostname
+        @hostname ||= ENV['HOST'] || Socket.gethostname
       end
 
       def web_server?
@@ -21,12 +21,6 @@ module Mashcard
 
       def cypress?
         ENV['CYPRESS'].present? && ENV['CYPRESS'] != 'false'
-      end
-
-      def host
-        host = Rails.application.default_url_options.fetch(:host)
-        port = Rails.application.default_url_options.fetch(:port)
-        "http://#{host}#{port ? ':' + port.to_s : ''}"
       end
 
       def test_suite?

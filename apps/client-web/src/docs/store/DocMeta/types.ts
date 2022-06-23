@@ -22,7 +22,6 @@ export interface DocMeta {
   pin: boolean
   title: string
   icon?: Icon
-  host: string
   path: string
   collaborators: Collaborator[]
   pathArray: Path[]

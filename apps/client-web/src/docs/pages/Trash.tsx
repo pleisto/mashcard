@@ -16,7 +16,7 @@ export const Trash: React.FC = () => {
   const { t } = useDocsI18n()
   const preStyle = useMemo<React.CSSProperties>(getSidebarStyle, [])
   const { loading: podDataloding, data: podData } = useGetPodsQuery()
-  const { currentPod, currentUser, host } = useContext(MashcardContext)
+  const { currentPod, currentUser } = useContext(MashcardContext)
 
   const loginDomain = currentPod.domain
   const isAnonymous = !currentUser
@@ -37,17 +37,18 @@ export const Trash: React.FC = () => {
     <DocMetaProvider
       docMeta={{
         loginDomain,
-        host,
         domain,
         isAnonymous: false,
         isMine: true
-      }}>
+      }}
+    >
       <Helmet titleTemplate={`${t('trash.name')} - %s`} title={domain} />
       <Root.Layout
         width={{
           '@mdOnly': 'md',
           '@smDown': 'sm'
-        }}>
+        }}
+      >
         <Split onDragEnd={logSideBarWidth}>
           {siderBar && <Root.Section style={preStyle}>{siderBar}</Root.Section>}
           <main className="content">

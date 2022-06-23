@@ -14,7 +14,6 @@ module ApplicationHelper
       rtl: t('meta.dir') == 'rtl',
       timezone: Current.timezone,
       defaultTimezone: MashcardConfig.default_timezone,
-      host: Mashcard::Runtime.host,
       csrfToken: form_authenticity_token,
       isDesktopApp: false,
       featureFlags: Flipper.features.map(&:name),

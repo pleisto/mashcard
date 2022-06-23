@@ -21,7 +21,6 @@ declare global {
     features: { [key: string]: any }
     timezone: string
     defaultTimezone: string
-    host: string
     selfHost: boolean
     csrfToken: string
     isDesktopApp: boolean
