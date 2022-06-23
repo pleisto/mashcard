@@ -118,9 +118,7 @@ const collaborationStyles: CSS = {
 
 export const selectionStyles: CSS = {
   [`.${DEFAULT_SELECTION_CLASS}`]: {
-    ...defaultSelectionStyles['::selection'],
-    display: 'inline-block',
-    lineHeight: 'inherit'
+    ...defaultSelectionStyles['::selection']
   }
 }
 
