@@ -1,5 +1,7 @@
-import { CSS, globalCss, theme, rgba } from '@mashcard/design-system'
+import { CSS, globalCss, theme } from '@mashcard/design-system'
 import { spreadsheetStyles } from '../../components/blockViews/Spreadsheet/Spreadsheet.style'
+import { defaultSelectionStyles } from '../../styles/index.style'
+import { DEFAULT_SELECTION_CLASS } from '../../extensions'
 import anchorLine from './assets/anchor-line.png'
 
 const anchorMarkStyles = {
@@ -114,7 +116,18 @@ const collaborationStyles: CSS = {
   }
 }
 
+export const selectionStyles: CSS = {
+  [`.${DEFAULT_SELECTION_CLASS}`]: {
+    ...defaultSelectionStyles['::selection']
+  }
+}
+
 export const documentEditorStyles = globalCss({
+  '::selection': {
+    background: 'unset',
+    color: 'unset'
+  },
+
   '.mashcard': {
     display: 'flex',
     flex: '1',
@@ -129,13 +142,6 @@ export const documentEditorStyles = globalCss({
       tabSize: '6',
       width: '100%',
 
-      '::selection': {
-        color: 'unset',
-        // selection background color overrides line-through style
-        // we need set alpha to make line-through style visible
-        background: rgba(theme.colors.secondarySelected.value, 0.18)
-      },
-
       '&:focus-visible': {
         outline: 'none'
       },
@@ -148,6 +154,8 @@ export const documentEditorStyles = globalCss({
         marginTop: '.75rem',
         marginBottom: 0
       },
+
+      ...selectionStyles,
 
       ...collaborationStyles,
 

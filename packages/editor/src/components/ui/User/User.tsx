@@ -1,5 +1,6 @@
 import { isEmpty } from '@mashcard/active-support'
 import { styled, Avatar, theme } from '@mashcard/design-system'
+import { defaultSelectionStyles } from '../../../styles/index.style'
 import { UserAttributes, UserOptions } from '../../../extensions/blocks/user/meta'
 import { useEditorI18n } from '../../../hooks'
 
@@ -41,7 +42,8 @@ const UserName = styled('span', {
 const UserBlockContainer = styled('span', {
   alignItems: 'center',
   display: 'inline-flex',
-  flexDirection: 'row'
+  flexDirection: 'row',
+  ...defaultSelectionStyles
 })
 
 export const User: React.FC<UserProps> = ({ attributes, options }) => {

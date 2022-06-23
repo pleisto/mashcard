@@ -28,7 +28,9 @@ exports[`PageLink renders PageLink correctly 1`] = `
               class="mc-c-dUzGcW"
               to="/"
             >
-              <span>
+              <span
+                class="mc-c-eCwHXr"
+              >
                 <span
                   aria-label=""
                   class="mc-c-fzlvyF mc-c-fzlvyF-evGSaO-size-md"

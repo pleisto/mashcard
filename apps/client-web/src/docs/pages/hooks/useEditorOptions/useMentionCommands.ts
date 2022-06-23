@@ -11,9 +11,9 @@ export function useMentionCommands(docMeta: DocMeta): MentionCommandsOptions {
   const users = useMemo(
     () =>
       data?.podMembers?.map(member => ({
-        id: member.domain,
-        name: member.name,
-        avatar: member.avatarData?.url ?? ''
+        id: member.user.domain,
+        name: member.user.name,
+        avatar: member.user.avatarData?.url ?? ''
       })) ?? [],
     [data?.podMembers]
   )

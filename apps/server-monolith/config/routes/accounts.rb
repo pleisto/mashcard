@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 devise_for :users,
-  class_name: 'Accounts::User',
+  class_name: 'Users::Authentication',
   path: 'accounts',
   controllers: {
     sessions: 'accounts/sessions',

@@ -26,6 +26,7 @@
     "@hookform/resolvers": "^2.9.1",
     "@mashcard/active-support": "workspace:^",
     "@mashcard/design-icons": "workspace:^",
+    "@mashcard/test-helper": "workspace:^",
     "@mui/base": "^5.0.0-alpha.86",
     "@stitches/core": "^1.2.8",
     "@stitches/react": "^1.2.8",

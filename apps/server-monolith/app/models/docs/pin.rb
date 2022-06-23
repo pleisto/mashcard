@@ -20,7 +20,7 @@
 module Docs
   class Pin < ApplicationRecord
     belongs_to :pod
-    belongs_to :user, class_name: 'Accounts::User'
+    belongs_to :user, class_name: 'User'
     belongs_to :block, class_name: 'Docs::Block'
 
     delegate :text, :meta, to: :block

@@ -24,16 +24,17 @@ describe Mutations::Users::ForgetPasswordMailSend, type: :mutation do
     end
 
     it 'work' do
-      user = create(:accounts_user)
-      graphql_execute(mutation, { input: { email: user.email } })
+      user = create(:accounts_user_authentication).user
+      expect(user.authentication.reset_password_token).to be_nil
+
+      graphql_execute(mutation, { input: { email: user.authentication.email } })
       expect(response.data[:userForgetPasswordMailSend][:errors]).to eq([])
 
-      expect(user.reset_password_token).to be_nil
-      user.reload
-      expect(user.reset_password_token).not_to be_nil
-      expect(user.reset_password_sent_at).not_to be_nil
+      user.authentication.reload
+      expect(user.authentication.reset_password_token).not_to be_nil
+      expect(user.authentication.reset_password_sent_at).not_to be_nil
 
-      graphql_execute(mutation, { input: { email: user.email } })
+      graphql_execute(mutation, { input: { email: user.authentication.email } })
       expect(response.data[:userForgetPasswordMailSend][:errors]).to eq([I18n.t('errors.messages.send_interval')])
     end
   end

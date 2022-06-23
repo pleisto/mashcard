@@ -56,7 +56,6 @@ export const queryPodSearch = gql`
   query QueryPodSearch($input: String!) {
     podSearch(input: $input) {
       domain
-      email
       name
       avatarData {
         url
@@ -70,10 +69,16 @@ export const CreateOrUpdatePod = gql`
     createOrUpdatePod(input: $input) {
       errors
       pod {
-        domain
-        name
-        inviteEnable
-        inviteSecret
+        ... on User {
+          domain
+          name
+        }
+        ... on Group {
+          domain
+          name
+          inviteEnable
+          inviteSecret
+        }
       }
     }
   }
@@ -218,7 +223,6 @@ export const queryBlockShareLinks = gql`
       sharePodData {
         name
         domain
-        email
         avatarData {
           url
         }

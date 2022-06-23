@@ -7,7 +7,7 @@ module Mutations
       include DeviseGraphQLHelper
 
       argument :domain, String, description_same(Types::User, :domain), required: true
-      argument :email, Scalars::Email, description_same(Types::User, :email), required: false
+      argument :email, Scalars::Email, "User's email address", required: false
       argument :locale, String, description_same(Types::User, :locale), required: true
       argument :name, String, description_same(Types::User, :name), required: true
       argument :password, String, 'user password', required: false
@@ -20,25 +20,24 @@ module Mutations
         # session is lazy load, so wo require keys method to warn.
         context[:session].keys
 
-        user = Accounts::User.new
-        user.domain = args[:domain]
-        user.name = args[:name]
-        omniauth = false
+        authentication = ::Users::Authentication.new
+        authentication.username = args[:domain]
+        authentication.display_name = args[:name]
+        # omniauth = false
         if context[:session][:omniauth].present? && args[:password].blank?
-          omniauth = true
-          federated_identity_sign_up(user)
+          # omniauth = true
+          federated_identity_sign_up(authentication)
         else
-          email_password_sign_up(user, args[:email], args[:password])
+          email_password_sign_up(authentication, args[:email], args[:password])
         end
-        user.save
-        user.config.set(:locale, args[:locale])
-        user.config.set(:timezone, args[:timezone])
-        user.personal_pod.fix_avatar! if omniauth
+        authentication.save
+        return { errors: errors_on_object(authentication) } unless authentication.valid?
 
-        return { errors: errors_on_object(user) } unless user.valid?
+        authentication.user.config.set(:locale, args[:locale])
+        authentication.user.config.set(:timezone, args[:timezone])
 
-        if user.active_for_authentication?
-          sign_in(user)
+        if authentication.active_for_authentication?
+          sign_in(authentication)
           context[:session].delete(:omniauth)
           { redirect_path: redirect_path, is_user_active: true }
         else
@@ -48,23 +47,23 @@ module Mutations
 
       private
 
-      def email_password_sign_up(user, email, password)
+      def email_password_sign_up(authentication, email, password)
         if email.blank? || password.blank?
           raise Mashcard::GraphQL::Errors::ArgumentError, 'Expected email and password to not be null'
         end
 
-        user.email = email
-        user.password = password
+        authentication.email = email
+        authentication.password = password
         # password_confirmation has been validated on the client-side
-        user.password_confirmation = password
+        # authentication.password_confirmation = password
       end
 
-      def federated_identity_sign_up(user)
+      def federated_identity_sign_up(authentication)
         omniauth = context[:session][:omniauth].with_indifferent_access
-        user.email = omniauth[:info][:email]
-        user.avatar = Pod.import_avatar omniauth[:info][:avatar]
-        user.omniauth_provider = omniauth[:provider]
-        user.omniauth_uid = omniauth[:uid]
+        authentication.email = omniauth[:info][:email]
+        authentication.external_avatar_url = omniauth[:info][:avatar]
+        authentication.omniauth_provider = omniauth[:provider]
+        authentication.omniauth_uid = omniauth[:uid]
       end
     end
   end

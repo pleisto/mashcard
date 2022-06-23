@@ -17,7 +17,9 @@ exports[`PageLinkView matches correct snapshot 1`] = `
       class="mc-c-dUzGcW"
       href="/link"
     >
-      <span>
+      <span
+        class="mc-c-eCwHXr"
+      >
         <span
           aria-label=""
           class="mc-c-fzlvyF mc-c-fzlvyF-evGSaO-size-md"

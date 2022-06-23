@@ -8,8 +8,10 @@ export const MARK_ID_ATTR_NAME = 'mark-id'
 let latestActiveNode: Element | null = null
 
 const getMarkNode = (node: Node | null): Node | null => {
-  if (node?.nodeType === Node.TEXT_NODE) return node.parentElement
-  if ((node as Element)?.classList.contains(MARK_CLASS_NAME)) return node
+  if (node?.nodeType === Node.TEXT_NODE) {
+    if (node.parentElement?.classList?.contains(MARK_CLASS_NAME)) return node
+  }
+  if ((node as Element)?.classList?.contains(MARK_CLASS_NAME)) return node
   if ((node?.firstChild as Element)?.classList?.contains(MARK_CLASS_NAME)) return node?.firstChild as Node
 
   return null

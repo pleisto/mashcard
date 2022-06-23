@@ -7,27 +7,58 @@ describe Resolvers::Pod, type: :query do
     query = <<-'GRAPHQL'
       query GetPod($domain: String!) {
         pod(domain: $domain) {
-          id
-          domain
-          name
-          personal
-          inviteEnable
-          inviteSecret
-          avatarData {
-            url
-            signedId
-            downloadUrl
+          ... on User {
+            id
+            domain
+            name
+            type
+            owned
+            personal
+            avatarData {
+              url
+              signedId
+              downloadUrl
+            }
+            bio
           }
-          bio
+          ... on Group {
+            id
+            domain
+            name
+            type
+            owned
+            personal
+            avatarData {
+              url
+              signedId
+              downloadUrl
+            }
+            inviteEnable
+            bio
+          }
         }
       }
     GRAPHQL
 
-    it 'works' do
+    it 'unauthenticated user' do
       graphql_execute(query, { domain: 'foo-bar' })
+      expect(response.success?).to be false
+    end
+
+    it 'invalid' do
+      user = create(:accounts_user)
+      self.current_user = user
+      self.current_pod = user.personal_pod.as_session_context
+      graphql_execute(query, { domain: 'invalid domain' })
 
       expect(response.success?).to be false
+      expect(response.errors[0]['message']).to eq(I18n.t('errors.graphql.argument_error.invalid_pod'))
 
+      self.current_user = nil
+      self.current_pod = nil
+    end
+
+    it 'works' do
       user = create(:accounts_user)
       self.current_user = user
       self.current_pod = user.personal_pod.as_session_context

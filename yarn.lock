@@ -3031,6 +3031,7 @@ __metadata:
     "@hookform/resolvers": ^2.9.1
     "@mashcard/active-support": "workspace:^"
     "@mashcard/design-icons": "workspace:^"
+    "@mashcard/test-helper": "workspace:^"
     "@mui/base": ^5.0.0-alpha.86
     "@stitches/core": ^1.2.8
     "@stitches/react": ^1.2.8
@@ -3094,6 +3095,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@mashcard/e2e-testing@workspace:tools/e2e-testing"
   dependencies:
+    "@mashcard/test-helper": "workspace:^"
     "@playwright/test": ^1.22.2
     "@types/inquirer": ^8.2.1
     allure-commandline: ^2.17.2

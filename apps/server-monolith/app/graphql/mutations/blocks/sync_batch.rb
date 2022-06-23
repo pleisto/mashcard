@@ -44,7 +44,7 @@ module Mutations
         end
 
         pod_id = current_pod.fetch('id')
-        current_user.save_last_position!(current_pod.fetch('domain'), root_id)
+        current_user.save_last_position!(current_pod.fetch('username'), root_id)
 
         insert_data = []
         upsert_data = []
@@ -71,7 +71,7 @@ module Mutations
           block.root_id ||= root_id
           block.deleted_at = nil
           # TODO: fix this in collab (Readonly mode)
-          block.collaborators = (block.collaborators + [current_user.id]).uniq if current_pod.fetch('owner_id') == current_user.id
+          block.collaborators = (block.collaborators + [current_user.id]).uniq if current_pod.fetch('id') == current_user.id
 
           if args.attachments
             # block.attachments = args.attachments

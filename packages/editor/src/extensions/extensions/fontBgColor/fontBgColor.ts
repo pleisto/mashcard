@@ -45,7 +45,7 @@ export const FontBgColor = createExtension<FontBgColorOptions, FontBgColorAttrib
               }
 
               return {
-                style: `background-color: ${attributes.fontBgColor}; display: inline-block`
+                style: `background-color: ${attributes.fontBgColor};`
               }
             },
             parseHTML: element => {

@@ -7,11 +7,14 @@
   },
   "scripts": {
     "install-deps": "playwright install --with-deps",
-    "start": "yarn cleanup && yarn run-playwright",
-    "run-playwright": "playwright test",
-    "test:e2e": "yarn start --grep-invert @virtual",
-    "test:virtual": "yarn start --grep @virtual",
+    "start": "yarn cleanup && yarn run-playwright:chromium & yarn run-playwright:firefox",
+    "run-playwright:chromium": "TEST_BROWSER=chromium playwright test --project=chromium",
+    "run-playwright:firefox": "TEST_BROWSER=firefox playwright test --project=firefox",
+    "test:e2e": "yarn start --grep-invert @visual",
+    "test:visual": "yarn start --grep @visual",
     "cleanup": "rm -rf allure-report test-results allure-results",
+    "clean-snapshots": "find tests -name '*-snapshots' -delete",
+    "update-snapshots": "yarn clean-snapshots && yarn test:visual",
     "allure:generate": "allure generate ./allure-results --clean",
     "allure:open": "allure open ./allure-report",
     "lint": "yarn lint:eslint && yarn lint:type",
@@ -21,6 +24,7 @@
     "generate": "ts-node ./helpers/generate"
   },
   "devDependencies": {
+    "@mashcard/test-helper": "workspace:^",
     "@playwright/test": "^1.22.2",
     "@types/inquirer": "^8.2.1",
     "allure-commandline": "^2.17.2",

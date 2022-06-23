@@ -7,13 +7,6 @@ ja-JP:
   unsupported_browser:
     title: 'ブラウザを更新'
     download_latest_browser_html: Unfortunately, MashCard has updated features that can't run on this version of your browser.
-  activerecord:
-    errors:
-      models:
-        accounts/user:
-          attributes:
-            password:
-              too_short: 短すぎます
   mailer:
     footer_message: このメールは %{host} のアカウント宛に送信されました。
     copy_this_url: "上のボタンが機能しない場合は、このURLをコピーしてください。"
@@ -42,7 +35,12 @@ ja-JP:
       domain_invalid: is not a valid domain name
       uuid_invalid: UUIDではありません
       domain_presence_invalid: 存在しない
+      delete_disabled_because_group_pods: You cannot delete a user with group pods
       InvalidImageUrl: 無効な画像のURL
+      too_short:
+        other: is too short (minimum is %{count} characters)
+      too_long:
+        other: is too long (maximum is %{count} characters)
     app_error:
       not_found_title: Whoops! Lost in MashCard?
       not_found_content: お探しのページは見つかりませんでした。

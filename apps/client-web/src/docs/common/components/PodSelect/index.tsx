@@ -24,7 +24,7 @@ export const PodSelect: FC = () => {
   const pod = data?.pods.find(p => p.domain === loginDomain)
 
   if (!pod) {
-    console.error('Domain does not match the current user')
+    devWarning(true, 'Domain does not match the current user', loginDomain, data)
     return <></>
   }
 
@@ -104,7 +104,6 @@ export const PodSelect: FC = () => {
       </Dropdown>
       <ProfileModal
         title={t('menu.create_new_pod')}
-        pod={pod}
         type={PodOperation.Create}
         visible={modalCreateVisible}
         setVisible={setModalCreateVisible}

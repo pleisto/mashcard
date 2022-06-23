@@ -12,7 +12,7 @@
 #
 class Docs::DocumentHistory < ApplicationRecord # rubocop:disable Style/ClassAndModuleChildren
   belongs_to :pod
-  belongs_to :user, class_name: 'Accounts::User'
+  belongs_to :user, class_name: 'User'
   has_many :states, class_name: 'Docs::BlockState', dependent: :restrict_with_exception, foreign_key: :history_id,
     inverse_of: :history
 end

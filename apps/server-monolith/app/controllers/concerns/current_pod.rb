@@ -36,7 +36,7 @@ module CurrentPod
     domain = request.params['path'].to_s.split('/')[0]
     return nil if domain.blank?
 
-    pod = current_user.pods.find_by(domain: domain)
+    pod = current_user.pods.find { |p| p.username === domain }
 
     return pod.as_session_context if pod
 

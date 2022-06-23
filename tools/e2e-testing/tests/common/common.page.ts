@@ -1,6 +1,7 @@
 import { Locator, Page } from '@playwright/test'
 import { COMMON_SELECTORS } from './common.selector'
 import { expect } from '@/fixtures'
+import { TEST_ID_ENUM } from '@/../../packages/test-helper/src'
 
 export class CommonPage {
   constructor(readonly page: Page) {}
@@ -54,8 +55,9 @@ export class CommonPage {
     const maskList = mask ?? []
     await expect(this.page).toHaveScreenshot({
       mask: [
-        this.page.locator('[data-testid=page-topBar-saving]'),
-        this.page.locator('[data-testid=page-document-page-loading]'),
+        this.page.locator(`[data-testid=${TEST_ID_ENUM.page.topBar.saving.id}]`),
+        this.page.locator(`[data-testid=${TEST_ID_ENUM.page.DocumentPage.loading.id}]`),
+        this.page.locator(`[data-testid=${TEST_ID_ENUM.layout.sidebar.podSelect.id}]`),
         ...maskList
       ]
     })

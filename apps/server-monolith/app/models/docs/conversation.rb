@@ -27,9 +27,9 @@ module Docs
   class Conversation < ApplicationRecord
     belongs_to :doc, class_name: 'Docs::Block'
     belongs_to :pod, optional: true
-    belongs_to :creator, class_name: 'Accounts::User'
+    belongs_to :creator, class_name: 'User'
     has_many :comments, dependent: :restrict_with_exception
-    has_many :notifications, class_name: 'Accounts::Notification', as: :source, dependent: :restrict_with_exception
+    has_many :notifications, class_name: 'Notification', as: :source, dependent: :restrict_with_exception
 
     before_create do
       self.status ||= :opened
@@ -58,7 +58,7 @@ module Docs
     end
 
     def notify_doc_collaborators_by_user_id!(user_id)
-      Accounts::Notification.create!(
+      Notification.create!(
         user_id: user_id,
         source_type: 'Docs::Conversation',
         source_id: id,
@@ -98,8 +98,6 @@ module Docs
           content: content,
           creator_id: creator.id
         )
-
-        conversation
       end
     end
 

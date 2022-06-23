@@ -676,7 +676,7 @@ module Docs
         return true if pod_id == user.current_pod_id
       end
 
-      preload_pods = user.pods.to_a
+      preload_pods = user.own_pods
 
       ## Owner
       return true if pod_id.in?(preload_pods.map(&:id))

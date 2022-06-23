@@ -2,7 +2,7 @@ import { test, expect } from '@/fixtures'
 import { EditorPage } from '@/tests/document/editor/editor.page'
 import { DocumentTitlePage } from '@/tests/document/documentTitle/documentTitle.page'
 import { PageTreePage } from '@/tests/sidebar/pageTree/pageTree.page'
-import { TRASH_PAGE_TREE, TRASH_PAGE_TREE_FOR_VIRTUAL, TRASH_SINGLE_PAGE } from './trash.data'
+import { TRASH_PAGE_TREE, TRASH_PAGE_TREE_FOR_VISUAL, TRASH_SINGLE_PAGE } from './trash.data'
 import { TrashPage } from './trash.page'
 
 test.describe('Trash', () => {
@@ -158,12 +158,12 @@ test.describe('Trash', () => {
     })
   })
 
-  test.describe('Virtual test @virtual', () => {
+  test.describe('Visual test @visual', () => {
     test.beforeEach(async ({ api, page }) => {
       await api.removeAllPages()
       await api.removeAllTrashPages()
 
-      await api.createPageTree(TRASH_PAGE_TREE_FOR_VIRTUAL)
+      await api.createPageTree(TRASH_PAGE_TREE_FOR_VISUAL)
       await api.removeAllPages({
         isHardDeleted: false,
         isSorted: true

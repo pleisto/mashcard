@@ -4,7 +4,7 @@ module Mutations
   module Users
     class ConfirmationEmailResend < ::Mutations::BaseMutation
       graphql_name 'UserConfirmationEmailResend'
-      argument :email, Scalars::Email, description_same(Types::User, :email), required: true
+      argument :email, Scalars::Email, "User's email address", required: true
 
       SEND_INTERVAL = 50.seconds
 
@@ -13,10 +13,10 @@ module Mutations
           key = "graphql:mutation:userConfirmationEmailResend/#{email.to_data_masking}"
           return { errors: [I18n.t('errors.messages.send_interval')] } if redis.exists?(key)
 
-          user = Accounts::User.find_by(email: email, confirmed_at: nil)
-          if user.nil?
+          user_authentication = ::Users::Authentication.find_by(email: email, confirmed_at: nil)
+          if user_authentication.nil?
             { errors: ["Email #{I18n.t('errors.messages.not_found')}"] }
-          elsif user.resend_confirmation_instructions
+          elsif user_authentication.resend_confirmation_instructions
             redis.setex(key, SEND_INTERVAL, '1')
             {}
           end

@@ -3,15 +3,15 @@ import { useSettingsI18n } from '@/settings/common/hooks'
 import { Panel } from '@/settings/common/components/Panel'
 import { SettingsContextProps } from '@/settings/SettingContext'
 import { Switch, useId, toast, useBoolean, Input, Button, ConfirmDialog } from '@mashcard/design-system'
-import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput } from '@/MashcardGraphQL'
+import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput, Group } from '@/MashcardGraphQL'
 import * as Root from './styles/Invite.style'
 
 export const Invite: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
   const { t } = useSettingsI18n(['docs'])
   const [updatePod, { loading }] = useCreateOrUpdatePodMutation()
   const [open, { setTrue: setOpen, setFalse: setClose }] = useBoolean(false)
-  const [inviteEnabled, { set: setEnable }] = useBoolean(pod!.inviteEnable)
-  const [inviteSecret, setInviteSecret] = useState(pod!.inviteSecret)
+  const [inviteEnabled, { set: setEnable }] = useBoolean((pod! as Group).inviteEnable ?? false)
+  const [inviteSecret, setInviteSecret] = useState((pod! as Group).inviteSecret)
   const switchLabelId = useId()
   const inviteUrl = `${window.location.protocol}//${window.location.host}/${pod!.domain}/join/${inviteSecret}`
 
@@ -33,7 +33,7 @@ export const Invite: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
     if (errors && errors?.length > 0) {
       toast.error(errors.join('\n'))
     } else {
-      setInviteSecret(result.data?.createOrUpdatePod?.pod?.inviteSecret)
+      setInviteSecret((result.data?.createOrUpdatePod?.pod as Group | undefined)?.inviteSecret)
       onSuccess()
     }
   }

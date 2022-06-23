@@ -53,7 +53,7 @@ describe Mutations::Users::Create, type: :mutation do
 
       graphql_execute(mutation, variables)
       expect(response.data[:userCreate][:isUserActive]).to be true
-      expect(Accounts::User.find_by(email: email).domain).to eq(domain)
+      expect(Users::Authentication.find_by(email: email).user.username).to eq(domain)
     end
 
     it 'email&password sign up requires password' do

@@ -9,6 +9,7 @@ import { useForwardedRef } from '../../hooks/useForwardedRef'
 import { NodeMovement, NodeRelativeSpot, InternalTreeNode, TreeNodeRenderer, TreeNode } from './constants'
 import { TreeRoot } from './style'
 import { calculateRelativeSpot } from './helpers'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 export interface NodeProps {
   data: InternalTreeNode
@@ -152,7 +153,7 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
         selected={selected}
         role="button"
         tabIndex={0}
-        data-testid="McTree"
+        data-testid={TEST_ID_ENUM.page.pageTree.virtualList.node.id}
         className={className}
         css={renderBorder}
       >
@@ -160,28 +161,41 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
           css={{
             width: rem(`${16 * indent}px`)
           }}
-          data-testid="indent"
+          data-testid={TEST_ID_ENUM.page.pageTree.virtualList.node.indent.id}
         />
         <TreeRoot.PageItem
-          data-testid="page-item"
+          data-testid={TEST_ID_ENUM.page.pageTree.virtualList.node.item.id}
           css={{
             width: `calc(100% - ${rem(`${16 * indent}px`)})`
           }}
         >
-          <TreeRoot.ItemContent data-testid="item-content" onClick={handleSelect}>
-            <TreeRoot.Content data-testid="content">
+          <TreeRoot.ItemContent onClick={handleSelect}>
+            <TreeRoot.Content data-testid={TEST_ID_ENUM.page.pageTree.virtualList.node.item.content.id}>
               {canExpand ? (
-                <TreeRoot.ContentArrow isExpanded={isExpanded} data-testid="content-arrow" onClick={handleToggleExpand}>
-                  <Right data-testid="content-icon" />
+                <TreeRoot.ContentArrow
+                  isExpanded={isExpanded}
+                  data-testid={TEST_ID_ENUM.page.pageTree.virtualList.node.item.content.arrow.id}
+                  onClick={handleToggleExpand}
+                >
+                  <Right data-testid={TEST_ID_ENUM.page.pageTree.virtualList.node.item.content.icon.id} />
                 </TreeRoot.ContentArrow>
               ) : (
-                <TreeRoot.ContentArrow data-testid="content-arrow" onClick={handleToggleExpand}>
-                  <TreeRoot.LeafDot data-testid="leaf-dot" />
+                <TreeRoot.ContentArrow
+                  data-testid={TEST_ID_ENUM.page.pageTree.virtualList.node.item.content.arrow.id}
+                  onClick={handleToggleExpand}
+                >
+                  <TreeRoot.LeafDot data-testid={TEST_ID_ENUM.page.pageTree.virtualList.node.item.content.leftDot.id} />
                 </TreeRoot.ContentArrow>
               )}
-              {icon ? <TreeRoot.ContentIcon data-testid="content-icon">{icon}</TreeRoot.ContentIcon> : <></>}
+              {icon ? (
+                <TreeRoot.ContentIcon data-testid={TEST_ID_ENUM.page.pageTree.virtualList.node.item.content.icon.id}>
+                  {icon}
+                </TreeRoot.ContentIcon>
+              ) : (
+                <></>
+              )}
               {/* Todo: fixed TS2769: No overload matches this call. pressProps.css */}
-              <TreeRoot.ContentAction data-testid="content-action">
+              <TreeRoot.ContentAction data-testid={TEST_ID_ENUM.page.pageTree.virtualList.node.item.content.action.id}>
                 {(nodeRenderer ?? defaultNodeRenderer)(data)}
               </TreeRoot.ContentAction>
             </TreeRoot.Content>

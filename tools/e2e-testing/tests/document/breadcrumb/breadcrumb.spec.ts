@@ -18,6 +18,7 @@ test.describe('Breadcrumb', () => {
     await api.createPage(INITIAL_PAGE)
     await api.pageReload()
 
+    await pageTree.clickPage()
     await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(1)
     await expect(breadcrumb.getBreadcrumbTextByIndex()).toHaveText('Untitled')
   })
@@ -122,7 +123,7 @@ test.describe('Breadcrumb', () => {
     await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(2)
   })
 
-  test.describe('Virtual test @virtual', () => {
+  test.describe('Visual test @visual', () => {
     test('layer more than 4', async ({ api }) => {
       await api.createPageTree(FIVE_LAYER_PAGE_TREE)
       await api.pageReload()
