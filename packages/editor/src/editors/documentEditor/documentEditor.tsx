@@ -23,6 +23,7 @@ import {
   ListItem,
   OrderedList,
   Paragraph,
+  Selection,
   Spreadsheet,
   SubPageMenu,
   TaskItem,
@@ -47,18 +48,20 @@ export interface EditorContentProps {
 }
 
 export const EditorContent: FC<EditorContentProps> = ({ editor, editable, ...props }) => {
-  documentEditorStyles()
-
   const editorContext = useMemo<EditorContextData>(() => ({ editor, documentEditable: editable }), [editable, editor])
   useEditorI18n()
   useDrawerService()
   useDropBlock(editor)
   useUndo(editor)
 
+  const enableSelection =
+    !editable || !editor?.extensionManager.extensions.find(extension => extension.name === Selection.name)
+  const documentEditorClassName = documentEditorStyles({ enableSelection })
+
   return (
     <EditorContext.Provider value={editorContext}>
       <BubbleMenu editor={editor} />
-      <TiptapEditorContent className="mashcard" editor={editor} />
+      <TiptapEditorContent className={documentEditorClassName} editor={editor} />
       <DiscussionList />
       <HistoryList docId={props.rootId!} domain={props.domain!} historyId={props.historyId} navigate={props.navigate} />
       <ExplorerMenu editor={editor} />
