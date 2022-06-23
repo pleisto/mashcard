@@ -1,4 +1,4 @@
-import Paragraph, { ParagraphOptions as TiptapParagraphOptions } from '@tiptap/extension-paragraph'
+import { Paragraph, ParagraphOptions as TiptapParagraphOptions } from '@tiptap/extension-paragraph'
 import { BlockViewProps, ExtensionMeta } from '../../common'
 
 export const meta: ExtensionMeta = {

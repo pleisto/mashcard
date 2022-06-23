@@ -59,12 +59,6 @@ export const DEFAULT_SELECTION_CLASS = 'editor-selection'
 export const Selection = createExtension<SelectionOptions, SelectAttributes>({
   name: meta.name,
 
-  addOptions() {
-    return {
-      className: DEFAULT_SELECTION_CLASS
-    }
-  },
-
   addProseMirrorPlugins() {
     return [
       new Plugin({
@@ -76,7 +70,8 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
             if (!isTextContentSelected({ editor, from, to })) return
 
             const decoration = Decoration.inline(from, to, {
-              class: this.options.className
+              class: this.options.HTMLAttributes?.class ?? DEFAULT_SELECTION_CLASS,
+              style: this.options.HTMLAttributes?.style
             })
 
             decorations.push(decoration)
