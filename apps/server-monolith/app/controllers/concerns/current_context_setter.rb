@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ## Set current_user and current config before action
-module CurrentModel
+module CurrentContextSetter
   extend ActiveSupport::Concern
 
   included do

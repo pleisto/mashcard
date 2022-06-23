@@ -112,51 +112,6 @@ type AwarenessUpdatePayload {
 }
 
 """
-MashCard Base Pod.
-"""
-type BasePod {
-  """
-  Pod Avatar
-  """
-  avatarData: Avatar
-
-  """
-  public profile bio
-  """
-  bio: String
-
-  """
-  Like a username, Unique within this instance of MashCard.
-  """
-  domain: String!
-
-  """
-  object unique id
-  """
-  id: AutoIncrementID!
-
-  """
-  Human-readable name
-  """
-  name: String!
-
-  """
-  owner is current user
-  """
-  owned: Boolean!
-
-  """
-  personal
-  """
-  personal: Boolean!
-
-  """
-  Pod enum type
-  """
-  type: PodTypeEnum!
-}
-
-"""
 Represents non-fractional signed whole numeric values. Since the value may
 exceed the size of a 32-bit integer, it's encoded as a string.
 """
@@ -674,7 +629,7 @@ type BlockInfo {
   """
   pod
   """
-  collaborators: [BasePod!]!
+  collaborators: [PodBase!]!
 
   """
   alias
@@ -2503,6 +2458,51 @@ MashCard Pod.
 union Pod = Group | User
 
 """
+MashCard Base Pod.
+"""
+type PodBase {
+  """
+  Pod Avatar
+  """
+  avatarData: Avatar
+
+  """
+  public profile bio
+  """
+  bio: String
+
+  """
+  Like a username, Unique within this instance of MashCard.
+  """
+  domain: String!
+
+  """
+  object unique id
+  """
+  id: AutoIncrementID!
+
+  """
+  Human-readable name
+  """
+  name: String!
+
+  """
+  owner is current user
+  """
+  owned: Boolean!
+
+  """
+  personal
+  """
+  personal: Boolean!
+
+  """
+  Pod enum type
+  """
+  type: PodTypeEnum!
+}
+
+"""
 InputObject type of Class
 """
 input PodDestroyInput {
@@ -2683,7 +2683,7 @@ type SelectOption {
 type ShareLink {
   key: String!
   policy: Policytype!
-  sharePodData: BasePod!
+  sharePodData: PodBase!
   state: ShareLinkState!
 }
 
@@ -3383,7 +3383,7 @@ type query {
   """
   search pods
   """
-  podSearch(input: String!): [BasePod!]!
+  podSearch(input: String!): [PodBase!]!
 
   """
   return all pods for user.

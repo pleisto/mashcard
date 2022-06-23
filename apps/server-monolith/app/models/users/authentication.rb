@@ -65,13 +65,13 @@ module Users
     # Pass to user
     attr_accessor :username, :display_name, :external_avatar_url
 
-    before_create :bind_or_create_user!
+    before_create :create_user!
     after_save :bind_federation_identity!
 
     # Setup user_id before create
-    def bind_or_create_user!
-      self.user_id = User.find_or_create_by!({ username: username, display_name: display_name,
-                                               external_avatar_url: external_avatar_url, }.compact).id
+    def create_user!
+      self.user_id = User.create!({ username: username, display_name: display_name,
+                                    external_avatar_url: external_avatar_url, }.compact).id
     end
 
     # Maybe setup federated identity after save

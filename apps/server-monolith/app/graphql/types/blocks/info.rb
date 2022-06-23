@@ -5,7 +5,7 @@ module Types
   module Blocks
     class Info < Types::BaseObject
       graphql_name 'BlockInfo'
-      field :collaborators, [Types::BasePod], 'pod', null: false
+      field :collaborators, [Types::PodBase], 'pod', null: false
       field :enabled_alias, Alias, 'alias', null: true
       field :icon, Icon, 'icon', null: true
       field :id, Scalars::UUID, 'id', null: false

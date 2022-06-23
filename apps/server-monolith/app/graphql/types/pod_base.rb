@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Types
-  class BasePod < Types::BaseObject
-    graphql_name 'BasePod'
+  class PodBase < Types::BaseObject
+    graphql_name 'PodBase'
     description 'MashCard Base Pod.'
     has_primary_key
 

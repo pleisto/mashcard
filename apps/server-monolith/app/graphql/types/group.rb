@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Types
-  class Group < Types::BasePod
+  class Group < Types::PodBase
     has_primary_key
 
     graphql_name 'Group'

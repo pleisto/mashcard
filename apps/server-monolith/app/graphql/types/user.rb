@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Types
-  class User < Types::BasePod
+  class User < Types::PodBase
     has_primary_key
 
     graphql_name 'User'

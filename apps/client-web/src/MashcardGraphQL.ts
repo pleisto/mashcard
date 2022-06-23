@@ -87,27 +87,6 @@ export type AwarenessUpdatePayload = {
   errors: Array<Scalars['String']>
 }
 
-/** MashCard Base Pod. */
-export type BasePod = {
-  __typename?: 'BasePod'
-  /** Pod Avatar */
-  avatarData?: Maybe<Avatar>
-  /** public profile bio */
-  bio?: Maybe<Scalars['String']>
-  /** Like a username, Unique within this instance of MashCard. */
-  domain: Scalars['String']
-  /** object unique id */
-  id: Scalars['AutoIncrementID']
-  /** Human-readable name */
-  name: Scalars['String']
-  /** owner is current user */
-  owned: Scalars['Boolean']
-  /** personal */
-  personal: Scalars['Boolean']
-  /** Pod enum type */
-  type: PodTypeEnum
-}
-
 /** ActiveStorage blobs */
 export type Blob = {
   __typename?: 'Blob'
@@ -372,7 +351,7 @@ export type BlockImage = {
 export type BlockInfo = {
   __typename?: 'BlockInfo'
   /** pod */
-  collaborators: Array<BasePod>
+  collaborators: Array<PodBase>
   /** alias */
   enabledAlias?: Maybe<BlockAlias>
   /** icon */
@@ -1384,6 +1363,27 @@ export type Pin = {
 /** MashCard Pod. */
 export type Pod = Group | User
 
+/** MashCard Base Pod. */
+export type PodBase = {
+  __typename?: 'PodBase'
+  /** Pod Avatar */
+  avatarData?: Maybe<Avatar>
+  /** public profile bio */
+  bio?: Maybe<Scalars['String']>
+  /** Like a username, Unique within this instance of MashCard. */
+  domain: Scalars['String']
+  /** object unique id */
+  id: Scalars['AutoIncrementID']
+  /** Human-readable name */
+  name: Scalars['String']
+  /** owner is current user */
+  owned: Scalars['Boolean']
+  /** personal */
+  personal: Scalars['Boolean']
+  /** Pod enum type */
+  type: PodTypeEnum
+}
+
 /** InputObject type of Class */
 export type PodDestroyInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -1485,7 +1485,7 @@ export type ShareLink = {
   __typename?: 'ShareLink'
   key: Scalars['String']
   policy: Policytype
-  sharePodData: BasePod
+  sharePodData: PodBase
   state: ShareLinkState
 }
 
@@ -1828,7 +1828,7 @@ export type Query = {
   /** return all pod users */
   podMembers?: Maybe<Array<PodMember>>
   /** search pods */
-  podSearch: Array<BasePod>
+  podSearch: Array<PodBase>
   /** return all pods for user. */
   pods: Array<Pod>
   /** return preview box data of url */
@@ -2277,7 +2277,7 @@ export type QueryPodSearchQueryVariables = Exact<{
 export type QueryPodSearchQuery = {
   __typename?: 'query'
   podSearch: Array<{
-    __typename?: 'BasePod'
+    __typename?: 'PodBase'
     domain: string
     name: string
     avatarData?: { __typename?: 'Avatar'; url: string } | null
@@ -2418,7 +2418,7 @@ export type GetBlockShareLinksQuery = {
     policy: Policytype
     state: ShareLinkState
     sharePodData: {
-      __typename?: 'BasePod'
+      __typename?: 'PodBase'
       name: string
       domain: string
       avatarData?: { __typename?: 'Avatar'; url: string } | null
@@ -2740,7 +2740,7 @@ export type GetBlockInfoQuery = {
     }>
     permission?: { __typename?: 'ShareLink'; key: string; policy: Policytype; state: ShareLinkState } | null
     collaborators: Array<{
-      __typename?: 'BasePod'
+      __typename?: 'PodBase'
       name: string
       domain: string
       avatarData?: { __typename?: 'Avatar'; url: string } | null

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include I18nable
   include CurrentUser
   include CurrentPod
-  include CurrentModel
+  include CurrentContextSetter
   before_action :set_prepend_view_path
   around_action :switch_locale
 
