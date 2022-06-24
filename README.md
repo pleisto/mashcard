@@ -11,7 +11,7 @@
 MashCard is an all-in-one workspace and low-code platform with Compound Document at its core. It's not only an open source alternative to Coda and Notion,
 but also a web3-ready [linked-data](https://www.w3.org/standards/semanticweb/data) storage for improving the productivity of your life and work.
 
-![MashCard Screenshot](https://pub.us-edge.user-owns-data.net/corp/github-growthing/screenshot.png)
+![MashCard Screenshot](https://pub.user-owns-data.net/corp/github-growthing/screenshot.png)
 
 ## Highlights
 
