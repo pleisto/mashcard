@@ -20,7 +20,7 @@ import {
 import { SpreadsheetContext } from './SpreadsheetContext'
 import { devLog } from '@mashcard/design-system'
 import { FormulaDisplay } from '../../ui/Formula'
-import { useEditorContext } from '../../../hooks'
+import { useEditorContext, useDocumentContext } from '../../../hooks'
 
 export interface SpreadsheetCellProps {
   context: SpreadsheetContext
@@ -46,7 +46,8 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   height
 }) => {
   const { editor } = useEditorContext()
-  const rootId = editor?.state.doc.attrs.uuid
+  const { docId } = useDocumentContext()
+  const rootId = docId!
   const formulaContext = getFormulaContext(editor)
   const minHeight = height ? height - 3 : undefined
 
