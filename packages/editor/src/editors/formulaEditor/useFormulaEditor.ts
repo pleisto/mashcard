@@ -26,7 +26,7 @@ export function useFormulaEditor({ editable, content, rootId, formulaId }: UseFo
         document: true,
         text: true,
         paragraph: { native: true },
-        placeholder: { placeholder: () => 'Add Formula' },
+        placeholder: { placeholder: 'Add Formula' },
         formulaType: true,
         formulaKeyDown: { formulaId, rootId }
       })

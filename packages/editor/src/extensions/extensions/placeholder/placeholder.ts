@@ -5,17 +5,14 @@ import { createExtension } from '../../common'
 import { findParagraphWrapper } from './findParagraphWrapper'
 import { meta, PlaceholderAttributes, PlaceholderOptions } from './meta'
 
-const findParagraphDom = (node: Node): HTMLElement | null => {
+const findParagraphDom = (node: HTMLElement): HTMLElement | null => {
+  if (node.tagName === 'P') return node
+
   const parent = node.parentElement
-  if (parent) {
-    if (parent.tagName === 'P' && parent.hasAttribute('data-node-view-content')) {
-      return parent
-    }
 
-    return findParagraphDom(parent)
-  }
+  if (!parent) return null
 
-  return null
+  return findParagraphDom(parent)
 }
 
 const getPlaceholderText = (
@@ -38,7 +35,7 @@ export const updatePlaceholder = (editor: Editor, options: PlaceholderOptions, s
 
   if (node.type.name === Paragraph.name) {
     const { node: dom } = editor.view.domAtPos(anchor)
-    const paragraphElement = findParagraphDom(dom)
+    const paragraphElement = findParagraphDom(dom as HTMLElement)
 
     // store the latest focused element
     // so we can clear placeholder when anchor changed next time
