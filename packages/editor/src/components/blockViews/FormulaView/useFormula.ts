@@ -96,9 +96,19 @@ export const useFormula = ({
 }: UseFormulaInput): UseFormulaOutput => {
   const formulaIsNormal = richType.type === 'normal'
 
-  const defaultVariable = formulaContext?.findVariableById(namespaceId, variableId)
-  const contextDefaultName = formulaContext?.getDefaultVariableName(namespaceId, 'any') ?? ''
-  const contextCompletions = formulaContext?.completions(namespaceId, variableId) ?? []
+  const defaultVariable = React.useMemo(
+    () => formulaContext?.findVariableById(namespaceId, variableId),
+    [formulaContext, namespaceId, variableId]
+  )
+  // const defaultVariable = formulaContext?.findVariableById(namespaceId, variableId)
+  const contextDefaultName = React.useMemo(
+    () => formulaContext?.getDefaultVariableName(namespaceId, 'any') ?? '',
+    [formulaContext, namespaceId]
+  )
+  const contextCompletions = React.useMemo(
+    () => formulaContext?.completions(namespaceId, variableId) ?? [],
+    [formulaContext, namespaceId, variableId]
+  )
 
   const variableRef = React.useRef(defaultVariable)
   const inputRef = React.useRef<FormulaInput>(fetchFormulaInput(defaultVariable?.t, formulaIsNormal))

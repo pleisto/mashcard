@@ -12,18 +12,11 @@ import { buildJSONContentByArray } from '../../helpers'
 export interface UseFormulaEditorProps {
   content: JSONContent | undefined
   editable: boolean
-  onBlur?: () => void
   rootId?: string
   formulaId?: string
 }
 
-export function useFormulaEditor({
-  editable,
-  content,
-  onBlur,
-  rootId,
-  formulaId
-}: UseFormulaEditorProps): Editor | null {
+export function useFormulaEditor({ editable, content, rootId, formulaId }: UseFormulaEditorProps): Editor | null {
   const editor = useEditor({
     editable,
     autofocus: 'end',
@@ -32,14 +25,10 @@ export function useFormulaEditor({
       Base.configure({
         document: true,
         text: true,
-        paragraph: {
-          native: true
-        },
+        paragraph: { native: true },
+        placeholder: { placeholder: () => 'Add Formula' },
         formulaType: true,
-        formulaKeyDown: {
-          formulaId,
-          rootId
-        }
+        formulaKeyDown: { formulaId, rootId }
       })
     ],
     onFocus: (props: EditorEvents['focus']) => {
@@ -75,10 +64,7 @@ export function useFormulaEditor({
 
           // if (editable) console.log('after replace root', { content, position })
         },
-        {
-          eventId: `${rootId},${formulaId}`,
-          subscribeId: `FormulaEditor#${rootId},${formulaId}`
-        }
+        { eventId: `${rootId},${formulaId}`, subscribeId: `FormulaEditor#${rootId},${formulaId}` }
       )
       return () => listener.unsubscribe()
     }

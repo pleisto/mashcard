@@ -1,4 +1,4 @@
-import { css, styled, keyframes } from '@mashcard/design-system'
+import { css, styled, keyframes, theme } from '@mashcard/design-system'
 
 const rotation = keyframes({
   '0%': { transform: 'rotate(0deg)' },
@@ -45,9 +45,9 @@ export const FormulaResult = styled('div', {
 
 export const MashcardFormulaMenu = styled('div', {
   minWidth: 600,
-  width: 720,
+  width: 656,
   maxWidth: '100%',
-  padding: '4px 0px 16px 0px',
+  padding: '4px 0px 8px 0px',
 
   '.formula-menu-row': {
     display: 'flex',
@@ -60,7 +60,13 @@ export const MashcardFormulaMenu = styled('div', {
 
       '.formula-menu-field': {
         flex: 1,
-        padding: 1
+        padding: 1,
+        lineHeight: '1.8',
+        fontFamily: 'Fira Code',
+
+        '&::placeholder': {
+          color: theme.colors.typeThirdary
+        }
       }
     },
 
@@ -73,24 +79,6 @@ export const MashcardFormulaMenu = styled('div', {
       flexDirection: 'row',
       alignItems: 'center',
       fontWeight: 500
-    }
-  },
-
-  '.formula-menu-footer': {
-    position: 'relative',
-    padding: '2rem 0 6px',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-
-    '.formula-menu-button': {
-      height: 22,
-      lineHeight: '16px',
-      fontSize: 12
-    },
-
-    '.formula-menu-button + .formula-menu-button': {
-      marginLeft: 12
     }
   }
 })
