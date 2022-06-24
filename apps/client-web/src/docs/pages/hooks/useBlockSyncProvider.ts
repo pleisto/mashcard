@@ -140,7 +140,6 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
   const setBlockMetaUpdated = React.useCallback(
     (meta: blockMeta) => {
-      console.log(meta)
       // TODO: refactor to remove BlockInfo
       client.cache.modify({
         id: client.cache.identify({ __typename: 'BlockInfo', id: blockId }),
