@@ -49,6 +49,8 @@ const Modal: ForwardRefRenderFunction<any, ModalProps> = (props, ref) => {
     <StyledModal
       {...otherProps}
       components={{
+        // eslint-disable-next-line
+        // @ts-ignore
         Backdrop
       }}
       ref={ref}

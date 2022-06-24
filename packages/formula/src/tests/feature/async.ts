@@ -1,6 +1,7 @@
+import { generateUUIDs } from '../testHelper'
 import { TestCaseInterface } from '../testType'
 
-const namespaceId = Symbol('async')
+const [namespaceId] = generateUUIDs()
 
 export const AsyncTestCase: TestCaseInterface = {
   name: 'async',

@@ -75,17 +75,12 @@ export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
       })
     }
 
-    const linkGroup: ToolbarGroupOption = {
-      type: 'group',
-      items: [
-        {
-          type: 'subMenu',
-          name: 'link',
-          icon: <Icon.Link />,
-          items: menuItems,
-          tooltip: t('bubble_menu.link.title') as string
-        }
-      ]
+    const linkGroup: ToolbarOption = {
+      type: 'subMenu',
+      name: 'link',
+      icon: <Icon.Link />,
+      items: menuItems,
+      tooltip: t('bubble_menu.link.title') as string
     }
 
     return linkGroup

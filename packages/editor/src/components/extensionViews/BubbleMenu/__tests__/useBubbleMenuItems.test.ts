@@ -3,11 +3,17 @@ import * as editorContextHook from '../../../../hooks/useEditorContext'
 import * as selectionHelpers from '../../../../helpers/selection'
 import { useNodeGroup } from '../useBubbleMenuItems/useNodeGroup'
 import { mockEditor } from '../../../../test/editor'
-import { ToolbarGroupOption, ToolbarItemGroupOption, ToolbarItemOption, ToolbarSubMenuOption } from '../../../ui'
+import {
+  ToolbarGroupOption,
+  ToolbarItemGroupOption,
+  ToolbarItemOption,
+  ToolbarSubMenuOption
+} from '../../../ui'
 import { useTextStyleGroup } from '../useBubbleMenuItems/useTextStyleGroup'
 import { useLinkGroup } from '../useBubbleMenuItems/useLinkGroup'
 import { useFontColorGroup } from '../useBubbleMenuItems/useFontColorGroup'
 import { useFormulaItem } from '../useBubbleMenuItems/useFormulaItem'
+import { useCommentItemGroup } from '../useBubbleMenuItems/useCommentItemGroup'
 import { useExtraItemsGroup } from '../useBubbleMenuItems/useExtraItemsGroup'
 import { useBubbleMenuItems } from '../useBubbleMenuItems'
 import { Discussion } from '../../../../extensions'
@@ -92,9 +98,10 @@ describe('useBubbleMenuItems', () => {
         documentEditable: true
       }))
       const { result } = renderHook(() => useFontColorGroup())
+
       const items = (
         (
-          ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption).items as any
+          (result.current as ToolbarSubMenuOption).items as Array<ToolbarItemGroupOption | ToolbarItemOption>
         )[0] as ToolbarItemGroupOption
       ).items
 
@@ -124,7 +131,7 @@ describe('useBubbleMenuItems', () => {
       const { result } = renderHook(() => useFontColorGroup())
       const items = (
         (
-          ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption).items as any
+          (result.current as ToolbarSubMenuOption).items as Array<ToolbarItemGroupOption | ToolbarItemOption>
         )[1] as ToolbarItemGroupOption
       ).items
 
@@ -153,7 +160,7 @@ describe('useBubbleMenuItems', () => {
       }))
       const { result } = renderHook(() => useFontColorGroup())
       const item = (
-        ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption).items as any
+        (result.current as ToolbarSubMenuOption).items as Array<ToolbarItemGroupOption | ToolbarItemOption>
       )[2] as ToolbarItemOption
 
       item.onAction?.('')
@@ -251,11 +258,11 @@ describe('useBubbleMenuItems', () => {
         documentEditable: true
       }))
       const { result } = renderHook(() => useLinkGroup())
-      const items = ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption)
-        .items as ToolbarItemOption[]
+
+      const items = (result.current[0] as ToolbarSubMenuOption).items as ToolbarItemOption[]
 
       // confirm
-      items[1].onAction?.('')
+      items[1]!.onAction?.('')
 
       expect(mockSetLink).toBeCalledWith({ href: link })
     })
@@ -281,8 +288,7 @@ describe('useBubbleMenuItems', () => {
         documentEditable: true
       }))
       const { result } = renderHook(() => useLinkGroup())
-      const items = ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption)
-        .items as ToolbarItemOption[]
+      const items = (result.current[0] as ToolbarSubMenuOption).items as ToolbarItemOption[]
 
       // copy
       items[2].onAction?.('')
@@ -313,8 +319,7 @@ describe('useBubbleMenuItems', () => {
         documentEditable: true
       }))
       const { result } = renderHook(() => useLinkGroup())
-      const items = ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption)
-        .items as ToolbarItemOption[]
+      const items = (result.current[0] as ToolbarSubMenuOption).items as ToolbarItemOption[]
 
       // delete
       items[3].onAction?.('')
@@ -344,7 +349,8 @@ describe('useBubbleMenuItems', () => {
         editor,
         documentEditable: true
       }))
-      const { result } = renderHook(() => useExtraItemsGroup())
+
+      const { result } = renderHook(() => useCommentItemGroup())
       const items = (result.current[0] as ToolbarGroupOption).items
 
       items[0].onAction?.('')
@@ -374,7 +380,7 @@ describe('useBubbleMenuItems', () => {
         documentEditable: true
       }))
       const { result } = renderHook(() => useExtraItemsGroup())
-      const items = ((result.current[0] as ToolbarGroupOption).items[1] as ToolbarSubMenuOption)
+      const items = ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption)
         .items as ToolbarItemOption[]
 
       items[0].onAction?.('')
@@ -404,7 +410,7 @@ describe('useBubbleMenuItems', () => {
         documentEditable: true
       }))
       const { result } = renderHook(() => useExtraItemsGroup())
-      const items = ((result.current[0] as ToolbarGroupOption).items[1] as ToolbarSubMenuOption)
+      const items = ((result.current[0] as ToolbarGroupOption).items[0] as ToolbarSubMenuOption)
         .items as ToolbarItemOption[]
 
       items[0].onAction?.('')
