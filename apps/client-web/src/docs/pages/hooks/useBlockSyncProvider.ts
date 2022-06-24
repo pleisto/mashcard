@@ -16,6 +16,7 @@ import {
   useAwarenessSubscription
 } from '@/MashcardGraphQL'
 import { devLog } from '@mashcard/design-system'
+import { useApolloClient } from '@apollo/client'
 
 import { MashcardEventBus, docHistoryReceived, BlockMetaUpdated } from '@mashcard/schema'
 
@@ -46,6 +47,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   meta: blockMeta
   setMeta: (meta: blockMeta) => void
 } {
+  const client = useApolloClient()
+
   const [blockCommit] = useBlockCommitMutation()
   const [awarenessUpdate] = useAwarenessUpdateMutation()
 
@@ -137,6 +140,19 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
   const setBlockMetaUpdated = React.useCallback(
     (meta: blockMeta) => {
+      console.log(meta)
+      // TODO: refactor to remove BlockInfo
+      client.cache.modify({
+        id: client.cache.identify({ __typename: 'BlockInfo', id: blockId }),
+        fields: {
+          title() {
+            return meta.title
+          },
+          icon() {
+            return meta.icon
+          }
+        }
+      })
       setBlockMeta(meta)
       MashcardEventBus.dispatch(
         BlockMetaUpdated({
@@ -145,7 +161,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
         })
       )
     },
-    [blockId, setBlockMeta]
+    [blockId, setBlockMeta, client]
   )
 
   const commitState = React.useCallback(
@@ -201,6 +217,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             const localVector = Y.encodeStateVector(ydoc)
             const diff = Y.diffUpdate(remoteState, localVector)
             Y.applyUpdate(ydoc, diff)
+            setBlockMetaUpdated(Object.fromEntries(ydoc.getMap('meta').entries()))
             const localState = Y.encodeStateAsUpdate(ydoc)
             // const nextUpdate = Y.diffUpdate(localState, remoteYector)
             blockCommitting.current = false
@@ -224,7 +241,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
         setCommitting(false)
       }
     },
-    [blockCommit, blockId, historyId, setCommitting]
+    [blockCommit, blockId, historyId, setCommitting, setBlockMetaUpdated]
   )
 
   const setMeta = React.useCallback(

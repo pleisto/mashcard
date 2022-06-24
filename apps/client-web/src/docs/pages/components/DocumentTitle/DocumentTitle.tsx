@@ -12,13 +12,9 @@ import {
   useFetchUnsplashImages
 } from '../../hooks'
 import { blockMeta } from '../../hooks/useBlockSyncProvider'
-import { useReactiveVar } from '@apollo/client'
-import { editorVar } from '@/docs/reactiveVars'
-import { useBlobGetter } from '../../hooks/useBlobGetter'
-import { GetChildrenBlocksQuery } from '@/MashcardGraphQL'
-// import { EditorContentProps } from '@mashcard/editor'
+import { GetChildrenBlocksQuery, FileSource } from '@/MashcardGraphQL'
 export interface DocumentTitleProps {
-  docId?: string
+  docId: string
   blocks: GetChildrenBlocksQuery['childrenBlocks']
   editable: boolean
   meta: blockMeta
@@ -27,13 +23,8 @@ export interface DocumentTitleProps {
 
 export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, blocks, meta, setMeta }) => {
   const { t } = useDocsI18n()
-  const editor = useReactiveVar(editorVar)
-  const blockId = editor?.state.doc.attrs.uuid
 
-  // const inputRef = React.useRef<any>(null)
-  // const inputComposing = React.useRef(false)
-
-  // const docBlock = blocks?.find(b => b.id === docId)
+  const docBlock = blocks?.find(b => b.id === docId)
 
   const icon = meta.icon
   const cover = meta.cover
@@ -48,28 +39,34 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
     [setMeta, meta]
   )
 
-  const docIconGetter = useBlobGetter('icon', blocks)
-  const docCoverGetter = useBlobGetter('cover', blocks)
+  const createDocBlobGetter = React.useCallback(
+    (field: string) => {
+      return (): string | undefined => {
+        if (meta[field]?.source === FileSource.External) {
+          return meta[field].key
+        }
+        if (meta[field]?.source === FileSource.Origin) {
+          const blob = docBlock?.blobs?.find(blob => blob.blobKey === meta[field].key)
+          return blob?.url
+        }
+      }
+    },
+    [meta, docBlock]
+  )
+
+  const docIconGetter = createDocBlobGetter('icon')
+  const docCoverGetter = createDocBlobGetter('cover')
 
   const setTitle = createDocAttrsUpdater('title')
   const setIcon = createDocAttrsUpdater('icon')
   const setCover = createDocAttrsUpdater('cover')
-
-  const getDocIconUrl = (): string | undefined => {
-    if (!editor || editor.isDestroyed) return undefined
-    return docIconGetter(editor.state.doc)
-  }
-  const getDocCoverUrl = (): string | undefined => {
-    if (!editor || editor.isDestroyed) return undefined
-    return docCoverGetter(editor.state.doc)
-  }
 
   const prepareFileUpload = usePrepareFileUpload()
   const fetchUnsplashImages = useFetchUnsplashImages()
   const [localIcon, setLocalIcon] = React.useState('')
   const [localCover, setLocalCover] = React.useState('')
   const [documentIconMeta, iconPopoverProps] = useDocumentIconUploader(icon, {
-    blockId,
+    blockId: docId,
     prepareFileUpload,
     fetchUnsplashImages,
     overlayClassName: Root.Popover,
@@ -77,7 +74,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
     onFileLoaded: setLocalIcon
   })
   const [documentCoverMeta, coverPopoverProps] = useDocumentCoverUploader(cover, {
-    blockId,
+    blockId: docId,
     prepareFileUpload,
     fetchUnsplashImages,
     overlayClassName: Root.Popover,
@@ -90,7 +87,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
       <DocumentCover
         editable={editable}
         localUrl={localCover}
-        getDocCoverUrl={getDocCoverUrl}
+        getDocCoverUrl={docCoverGetter}
         documentCoverMeta={documentCoverMeta}
         popoverProps={coverPopoverProps}
       />
@@ -129,36 +126,15 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, editable, b
           <Root.TitleRow>
             {documentIconMeta && (
               <Popover {...iconPopoverProps} visible={!editable ? false : undefined}>
-                <DocumentIcon getDocIconUrl={getDocIconUrl} localUrl={localIcon} documentIconMeta={documentIconMeta} />
+                <DocumentIcon getDocIconUrl={docIconGetter} localUrl={localIcon} documentIconMeta={documentIconMeta} />
               </Popover>
             )}
             <Root.Input
               type="text"
               bordered={false}
-              // ref={(container: HTMLInputElement) => {
-              //   if (container) {
-              //     inputRef.current = container
-              //     // TODO: fix this hack
-              //     container.value = title
-              //   }
-              // }}
-              value={title}
+              value={title || ''}
               data-testid={TEST_ID_ENUM.page.DocumentPage.titleInput.id}
-              // onCompositionStart={() => {
-              //   inputComposing.current = true
-              // }}
-              // onCompositionUpdate={() => {
-              //   inputComposing.current = true
-              // }}
-              // onCompositionEnd={(e: any) => {
-              //   inputComposing.current = false
-              //   setTitle((e.target as any).value)
-              // }}
               onChange={(e: any) => {
-                // if (inputComposing.current) {
-                //   inputComposing.current = false
-                //   return
-                // }
                 setTitle(e.target.value)
               }}
               placeholder={t('title.untitled')}
