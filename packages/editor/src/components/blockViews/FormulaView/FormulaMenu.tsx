@@ -1,7 +1,6 @@
 import React from 'react'
-import { Button, Icon, Input, Popover } from '@mashcard/design-system'
+import { Input, Popover } from '@mashcard/design-system'
 import { VariableData } from '@mashcard/formula'
-import { useEditorI18n } from '../../../hooks'
 import { FormulaEditor } from '../../../editors/formulaEditor'
 import { FormulaResult, AutocompleteList } from '../../ui/Formula'
 import { CompletionType, UseFormulaInput, UseFormulaOutput } from './useFormula'
@@ -23,8 +22,6 @@ export interface FormulaMenuProps {
   children?: React.ReactNode
 }
 
-const i18nKey = 'formula.menu'
-
 export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   children,
   meta: { namespaceId: rootId, variableId: formulaId },
@@ -38,7 +35,6 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   nameRef,
   completion
 }) => {
-  const [t] = useEditorI18n()
   const [visible, setVisible] = React.useState(defaultVisible)
 
   const close = React.useCallback((): void => {
@@ -88,16 +84,6 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     await triggerCalculate()
   }
 
-  const handleSave = async (): Promise<void> => {
-    if (isDisableSave()) return
-    await onSaveFormula()
-    close()
-  }
-
-  const handleCancel = (): void => {
-    close()
-  }
-
   const namePlaceholder =
     ['=', undefined].includes(temporaryVariableT?.variableParseResult.definition.trim()) || !nameRef.current.defaultName
       ? 'Add Name'
@@ -111,8 +97,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           <label className="formula-menu-label">
             {/* <span className="formula-menu-label-text">{t(`${i18nKey}.name`)}</span> */}
             <Input
-              prefix={<Icon.Edit />}
-              size="sm"
+              size="lg"
+              borderType="underline"
               className="formula-menu-field"
               placeholder={namePlaceholder}
               value={nameRef.current.name}
@@ -130,27 +116,6 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       <Root.FormulaDivider />
       <FormulaResult variableT={temporaryVariableT} pageId={rootId} />
       <AutocompleteList rootId={rootId} formulaId={formulaId} completion={completion} />
-      <div className="formula-menu-footer">
-        <Button className="formula-menu-button" size="sm" type="text" onClick={handleCancel}>
-          {t(`${i18nKey}.cancel`)}
-        </Button>
-        <Button
-          className="formula-menu-button"
-          size="sm"
-          type="primary"
-          onClick={handleSave}
-          disabled={isDisableSave()}>
-          {t(`${i18nKey}.save`)}
-        </Button>
-        <Button
-          className="formula-menu-button"
-          size="sm"
-          type="text"
-          danger={true}
-          onClick={() => handleDelete(temporaryVariableT!)}>
-          {t(`${i18nKey}.delete`)}
-        </Button>
-      </div>
     </Root.MashcardFormulaMenu>
   )
 
@@ -162,7 +127,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       className={Root.MashcardFormulaMenuPopover}
       destroyTooltipOnHide={true}
       content={menu}
-      placement="bottom"
+      placement="bottomStart"
       trigger={['click']}>
       {children}
     </Popover>

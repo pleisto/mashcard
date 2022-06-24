@@ -1,5 +1,6 @@
 import React from 'react'
 import { useEditor, JSONContent, EditorEvents, Editor } from '@tiptap/react'
+import { Placeholder } from '@tiptap/extension-placeholder'
 import {
   MashcardEventBus,
   FormulaEditorBlurTrigger,
@@ -12,17 +13,17 @@ import { buildJSONContentByArray } from '../../helpers'
 export interface UseFormulaEditorProps {
   content: JSONContent | undefined
   editable: boolean
-  onBlur?: () => void
   rootId?: string
   formulaId?: string
+  placeholder?: string
 }
 
 export function useFormulaEditor({
   editable,
   content,
-  onBlur,
   rootId,
-  formulaId
+  formulaId,
+  placeholder
 }: UseFormulaEditorProps): Editor | null {
   const editor = useEditor({
     editable,
@@ -32,15 +33,11 @@ export function useFormulaEditor({
       Base.configure({
         document: true,
         text: true,
-        paragraph: {
-          native: true
-        },
+        paragraph: { native: true },
         formulaType: true,
-        formulaKeyDown: {
-          formulaId,
-          rootId
-        }
-      })
+        formulaKeyDown: { formulaId, rootId }
+      }),
+      ...(placeholder ? [Placeholder.configure({ placeholder })] : [])
     ],
     onFocus: (props: EditorEvents['focus']) => {
       // console.debug('FormulaEditor:onFocus', props)
@@ -75,10 +72,7 @@ export function useFormulaEditor({
 
           // if (editable) console.log('after replace root', { content, position })
         },
-        {
-          eventId: `${rootId},${formulaId}`,
-          subscribeId: `FormulaEditor#${rootId},${formulaId}`
-        }
+        { eventId: `${rootId},${formulaId}`, subscribeId: `FormulaEditor#${rootId},${formulaId}` }
       )
       return () => listener.unsubscribe()
     }

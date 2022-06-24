@@ -41,6 +41,10 @@ export const FormulaAutocomplete = styled('div', {
       width: '100%',
       padding: '4px 12px',
 
+      '&.active, &:active, &:focus, &:hover': {
+        background: '#0000000d'
+      },
+
       '.autocomplete-list-item-icon': {
         fontSize: 14,
         lineHeight: '20px',
@@ -63,10 +67,6 @@ export const FormulaAutocomplete = styled('div', {
         lineHeight: '16px',
         color: '#847e8e'
       }
-    },
-
-    '&.active, &:active, &:focus, &:hover': {
-      background: '#0000000d'
     }
   },
 

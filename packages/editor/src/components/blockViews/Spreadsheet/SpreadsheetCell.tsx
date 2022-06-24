@@ -81,12 +81,12 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       const value = displayValue(fetchResult(variable.t), rootId, true)
       const oldValue = block.text
       if (value === oldValue) return
-      devLog('Spreadsheet cell formula updated', { cellId, value })
+      devLog('Spreadsheet cell formula updated', { cellId, value, rootId })
       const newBlock = { ...block, text: value }
       setCurrentBlock(newBlock)
       saveBlock(newBlock)
 
-      if (!formulaContext) return
+      if (!formulaContext || !rootId) return
 
       const result = MashcardEventBus.dispatch(
         SpreadsheetReloadViaId({
@@ -154,10 +154,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       e => {
         setEditing(false)
       },
-      {
-        eventId: `${rootId},${formulaId}`,
-        subscribeId: `FormulaCell#${rootId},${formulaId}`
-      }
+      { eventId: `${rootId},${formulaId}`, subscribeId: `FormulaCell#${rootId},${formulaId}` }
     )
     return () => listener.unsubscribe()
   }, [formulaId, rootId, setEditing])
@@ -169,10 +166,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
         await onSaveFormula()
         setEditing(false)
       },
-      {
-        eventId: `${rootId},${formulaId}`,
-        subscribeId: `FormulaCell#${rootId},${formulaId}`
-      }
+      { eventId: `${rootId},${formulaId}`, subscribeId: `FormulaCell#${rootId},${formulaId}` }
     )
     return () => listener.unsubscribe()
   }, [formulaId, onSaveFormula, rootId, setEditing])

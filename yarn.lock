@@ -3137,6 +3137,7 @@ __metadata:
     "@tiptap/extension-list-item": ^2.0.0-beta.20
     "@tiptap/extension-ordered-list": ^2.0.0-beta.27
     "@tiptap/extension-paragraph": ^2.0.0-beta.23
+    "@tiptap/extension-placeholder": ^2.0.0-beta.52
     "@tiptap/extension-strike": ^2.0.0-beta.27
     "@tiptap/extension-task-item": ^2.0.0-beta.32
     "@tiptap/extension-task-list": ^2.0.0-beta.26
@@ -5621,6 +5622,19 @@ __metadata:
   peerDependencies:
     "@tiptap/core": ^2.0.0-beta.1
   checksum: 1b917a66d41324bbc8d488fc80b044fa286bd5469f418ad6676535fe33fd102a17b7d1235584ca55f0e42851d5cc5f45743a2ab9d123b98065f20b4eed63dfc9
+  languageName: node
+  linkType: hard
+
+"@tiptap/extension-placeholder@npm:^2.0.0-beta.52":
+  version: 2.0.0-beta.52
+  resolution: "@tiptap/extension-placeholder@npm:2.0.0-beta.52"
+  dependencies:
+    prosemirror-model: ^1.17.0
+    prosemirror-state: ^1.4.0
+    prosemirror-view: ^1.25.0
+  peerDependencies:
+    "@tiptap/core": ^2.0.0-beta.1
+  checksum: 20add518dbdf32e4f7613cb7c94a1337a1dd35f86e8436e2908e7b81a224fdd2bb9efd10f7d01fcdc7218d22b161199fb93a0f3b12c98edc2dcadcfa7dcbc6d7
   languageName: node
   linkType: hard
 
@@ -19485,7 +19499,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prosemirror-model@npm:^1.0.0, prosemirror-model@npm:^1.15.0, prosemirror-model@npm:^1.16.0, prosemirror-model@npm:^1.16.1":
+"prosemirror-model@npm:^1.0.0, prosemirror-model@npm:^1.15.0, prosemirror-model@npm:^1.16.0, prosemirror-model@npm:^1.16.1, prosemirror-model@npm:^1.17.0":
   version: 1.18.1
   resolution: "prosemirror-model@npm:1.18.1"
   dependencies:

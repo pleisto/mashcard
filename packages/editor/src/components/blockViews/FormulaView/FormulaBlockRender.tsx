@@ -43,7 +43,7 @@ export const FormulaBlockRender: FC<FormulaBlockRenderProps> = ({
       className={Root.MashcardFormulaMenuPopover}
       destroyTooltipOnHide={true}
       content={formulaResult}
-      placement="bottom"
+      placement="top"
       trigger={['click']}>
       <FormulaEditor formulaEditor={formulaEditor} width={width} minHeight={minHeight} />
     </Popover>
