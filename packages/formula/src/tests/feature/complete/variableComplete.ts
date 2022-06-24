@@ -1,7 +1,7 @@
-import { TestCaseInterface } from '../testType'
+import { generateUUIDs } from '../../testHelper'
+import { TestCaseInterface } from '../../testType'
 
-const namespaceId = '33333333-3333-4444-5555-333333333333'
-const namespaceId2 = '33333333-3333-5555-5555-333333333333'
+const [namespaceId, namespaceId2] = generateUUIDs()
 
 export const VariableCompleteTestCase: TestCaseInterface = {
   name: 'variableComplete',

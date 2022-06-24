@@ -1,7 +1,7 @@
+import { generateUUIDs } from '../testHelper'
 import { TestCaseInterface } from '../testType'
 
-const parentPageNamespaceId = Symbol('parentPageNamespaceId')
-const subPageNamespaceId = Symbol('subPageNamespaceId')
+const [parentPageNamespaceId, subPageNamespaceId] = generateUUIDs()
 
 export const DependencyTestCase: TestCaseInterface = {
   name: 'dependency',
