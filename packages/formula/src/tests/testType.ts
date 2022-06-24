@@ -2,14 +2,6 @@ import { FixedLengthTuple, RequireField } from '@mashcard/active-support'
 import { EventType } from '@mashcard/schema'
 import { FormulaContextArgs } from '../context'
 import { Cell } from '../controls'
-import {
-  dispatchFormulaBlockNameChange,
-  dispatchFormulaBlockSoftDelete,
-  dispatchFormulaSpreadsheetColumnChange,
-  dispatchFormulaSpreadsheetNameChange,
-  dispatchFormulaSpreadsheetRemove,
-  dispatchFormulaSpreadsheetRowChange
-} from '../events'
 import { OperatorName } from '../grammar'
 import {
   CodeFragment,
@@ -21,6 +13,7 @@ import {
   VariableMetadata,
   VariableParseResult
 } from '../types'
+import { AllowEvents } from './testEvent'
 
 export const DEFAULT_FIRST_NAMESPACEID = '00000000-0000-0000-0000-000000000000'
 const uuids = [...Array(999)].map((o, index) => `00000000-0000-${String(index).padStart(4, '0')}-0000-000000000000`)
@@ -152,7 +145,7 @@ interface TriggerEvent {
   payload?: object
 }
 
-type ExtendedCtx = MakeContextResult & { meta: VariableMetadata }
+export type ExtendedCtx = MakeContextResult & { meta: VariableMetadata }
 
 interface EventTestCaseType extends RequireField<BaseTestCase<{}>, 'definition'> {
   resultBefore: any
@@ -160,7 +153,7 @@ interface EventTestCaseType extends RequireField<BaseTestCase<{}>, 'definition'>
   resultAfterAsync?: true
   variableParseResultAfter?: Partial<VariableParseResult>
   triggerEvents?: (ctx: ExtendedCtx) => [TriggerEvent, ...TriggerEvent[]]
-  event: (ctx: ExtendedCtx) => Promise<void>
+  events: DistributeEvents[]
 }
 
 type DependencyTypes = 'Variable' | 'Block'
@@ -232,17 +225,8 @@ export interface TestCaseInput {
   dependencyTestCases: Array<RequireField<AnyDependencyTestCaseType, 'groupOptions' | 'jestTitle'>>
 }
 
-export const AllowEvents = {
-  blockChangeName: dispatchFormulaBlockNameChange,
-  blockDelete: dispatchFormulaBlockSoftDelete,
-  spreadsheetChangeName: dispatchFormulaSpreadsheetNameChange,
-  spreadsheetDelete: dispatchFormulaSpreadsheetRemove,
-  columnChange: dispatchFormulaSpreadsheetColumnChange,
-  rowChange: dispatchFormulaSpreadsheetRowChange
-} as const
-
 type AllowEventsType = {
-  [k in keyof typeof AllowEvents]: Omit<Parameters<typeof AllowEvents[k]>[0], 'username'>
+  [k in keyof typeof AllowEvents]: Parameters<typeof AllowEvents[k]>[1]
 }
 
 export type DistributeEvents<Event extends keyof AllowEventsType = keyof AllowEventsType> =

@@ -4,7 +4,7 @@ import {
   FormulaSpreadsheetDeleted,
   FormulaUpdatedViaId
 } from '../../../events'
-import { buildEvent, generateUUIDs } from '../../testHelper'
+import { generateUUIDs } from '../../testHelper'
 import { mockCell, mockColumn, mockRow, mockSpreadsheet } from '../../testMock'
 import { SpreadsheetInput, TestCaseInterface } from '../../testType'
 
@@ -55,29 +55,29 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
       {
         definition: '=SpreadsheetEventPage1.spreadsheet1foobar',
         resultBefore: mockSpreadsheet('spreadsheet1foobar', spreadsheet1Id),
-        event: buildEvent([])
+        events: []
       },
       {
         definition: '=SpreadsheetEventPage1."Spreadsheet2 2"',
         resultBefore: mockSpreadsheet('Spreadsheet2 2', spreadsheet2Id),
-        event: buildEvent([])
+        events: []
       },
       {
         definition: '=SpreadsheetEventPage1.unknownVariable',
         resultBefore: '"unknownVariable" not found',
-        event: buildEvent([])
+        events: []
       },
       {
         definition: '=SpreadsheetEventPage1.spreadsheet1foobar',
         resultBefore: mockSpreadsheet('spreadsheet1foobar', spreadsheet1Id),
         resultAfter: mockSpreadsheet('spreadsheet2foobar', spreadsheet1Id),
         variableParseResultAfter: { definition: '=SpreadsheetEventPage1.spreadsheet2foobar' },
-        event: buildEvent([
+        events: [
           [
             'spreadsheetChangeName',
             { spreadsheetId: spreadsheet1Id, title: 'spreadsheet2foobar', namespaceId: page0Id }
           ]
-        ])
+        ]
       },
       {
         definition: '=spreadsheet1foobar',
@@ -85,58 +85,58 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
         resultBefore: mockSpreadsheet('spreadsheet1foobar', spreadsheet1Id),
         resultAfter: mockSpreadsheet('spreadsheet2foobar', spreadsheet1Id),
         variableParseResultAfter: { definition: '=spreadsheet2foobar' },
-        event: buildEvent([
+        events: [
           [
             'spreadsheetChangeName',
             { spreadsheetId: spreadsheet1Id, title: 'spreadsheet2foobar', namespaceId: page0Id }
           ]
-        ])
+        ]
       },
       {
         definition: '=spreadsheet1foobar.first',
         namespaceId: page0Id,
         resultBefore: mockColumn('first', column1Id),
         variableParseResultAfter: { definition: '=spreadsheet2foobar.first' },
-        event: buildEvent([
+        events: [
           [
             'spreadsheetChangeName',
             { spreadsheetId: spreadsheet1Id, title: 'spreadsheet2foobar', namespaceId: page0Id }
           ]
-        ])
+        ]
       },
       {
         definition: '=spreadsheet1foobar.1',
         namespaceId: page0Id,
         resultBefore: mockRow('1'),
         variableParseResultAfter: { definition: '=spreadsheet2foobar.1' },
-        event: buildEvent([
+        events: [
           [
             'spreadsheetChangeName',
             { spreadsheetId: spreadsheet1Id, title: 'spreadsheet2foobar', namespaceId: page0Id }
           ]
-        ])
+        ]
       },
       {
         definition: '=spreadsheet1foobar.first[1]',
         namespaceId: page0Id,
         resultBefore: mockCell('1', cell1Id, column1Id, '1'),
         variableParseResultAfter: { definition: '=spreadsheet2foobar.first[1]' },
-        event: buildEvent([
+        events: [
           [
             'spreadsheetChangeName',
             { spreadsheetId: spreadsheet1Id, title: 'spreadsheet2foobar', namespaceId: page0Id }
           ]
-        ])
+        ]
       },
       {
         definition: '=SpreadsheetEventPage1.unknownVariable',
         resultBefore: '"unknownVariable" not found',
         resultAfter: mockSpreadsheet('foo bar zzz', spreadsheet1Id),
         variableParseResultAfter: { definition: '=SpreadsheetEventPage1."foo bar zzz"' },
-        event: buildEvent([
+        events: [
           ['spreadsheetChangeName', { spreadsheetId: spreadsheet1Id, title: 'unknownVariable', namespaceId: page0Id }],
           ['spreadsheetChangeName', { spreadsheetId: spreadsheet1Id, title: 'foo bar zzz', namespaceId: page0Id }]
-        ])
+        ]
       },
       {
         definition: '=SpreadsheetEventPage1.spreadsheet1foobar',
@@ -162,7 +162,7 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
             callLength: 0
           }
         ],
-        event: buildEvent([['spreadsheetDelete', { id: spreadsheet1Id }]])
+        events: [['spreadsheetDelete', { id: spreadsheet1Id }]]
       },
       {
         definition: '=SpreadsheetEventPage1.spreadsheet1foobar',
@@ -188,13 +188,13 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
             callLength: 0
           }
         ],
-        event: buildEvent([
+        events: [
           ['spreadsheetDelete', { id: spreadsheet1Id }],
           [
             'spreadsheetChangeName',
             { spreadsheetId: spreadsheet1Id, title: 'spreadsheet2foobar', namespaceId: page0Id }
           ]
-        ])
+        ]
       }
     ]
   }

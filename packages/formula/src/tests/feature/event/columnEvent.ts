@@ -1,7 +1,7 @@
 import { Column } from '../../../controls'
-import { buildEvent, generateUUIDs } from '../../testHelper'
+import { generateUUIDs } from '../../testHelper'
 import { mockColumn } from '../../testMock'
-import { SpreadsheetInput, TestCaseInterface } from '../../testType'
+import { DistributeEvents, SpreadsheetInput, TestCaseInterface } from '../../testType'
 
 const [namespaceId, spreadsheetId, column1Id, column2Id] = generateUUIDs()
 
@@ -51,14 +51,14 @@ export const ColumnEventTestCase: TestCaseInterface = {
         definition: '=spreadsheet1.first',
         namespaceId,
         resultBefore: mockColumn('first', column1Id),
-        event: buildEvent([])
+        events: []
       },
       {
         definition: '=spreadsheet1.first',
         namespaceId,
         resultBefore: mockColumn('first', column1Id),
         resultAfter: 'Column "first" not found',
-        event: buildEvent([['columnChange', { spreadsheetId, namespaceId, columns: [] }]])
+        events: [['columnChange', { spreadsheetId, namespaceId, columns: [] }]]
       },
       ...[
         {
@@ -74,7 +74,7 @@ export const ColumnEventTestCase: TestCaseInterface = {
       ].map(a => ({
         ...a,
         namespaceId,
-        event: buildEvent([
+        events: [
           [
             'columnChange',
             {
@@ -82,8 +82,8 @@ export const ColumnEventTestCase: TestCaseInterface = {
               namespaceId,
               columns: [{ ...column1, name: 'first222', title: 'first222' }, column2]
             }
-          ]
-        ])
+          ] as DistributeEvents
+        ]
       }))
     ]
   }

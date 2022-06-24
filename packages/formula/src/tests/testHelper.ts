@@ -1,26 +1,26 @@
 import { generateVariable, interpret, parse } from '../grammar/core'
 import { FormulaContext, FormulaContextArgs } from '../context'
 import { dispatchFormulaBlockNameChange } from '../events'
-import { ContextInterface, FunctionContext, InterpretContext, VariableInterface } from '../types'
+import { ContextInterface, FunctionContext, InterpretContext } from '../types'
 import { Cell, Column, Row, SpreadsheetClass, SpreadsheetType } from '../controls'
 import { columnDisplayIndex } from '../grammar'
 import {
-  AllowEvents,
   BaseTestCase,
   CellInput,
   ColumnInput,
   DEFAULT_UUID_FUNCTION,
   DistributeEvents,
+  ExtendedCtx,
   InsertOptions,
   MakeContextOptions,
   MakeContextResult,
   MockedUUIDV4,
   RowInput,
   SpreadsheetInput,
-  TestCaseInterface,
   UUIDState
 } from './testType'
 import { uuid } from '@mashcard/active-support'
+import { AllowEvents } from './testEvent'
 
 const quickInsert = async (
   ctx: FunctionContext,
@@ -253,40 +253,10 @@ export const trackTodo = (it: jest.It, testCases: Array<BaseTestCase<{}>>): void
 
 export const generateUUIDs = (): string[] => [...Array(10)].map(() => uuid())
 
-export const buildEvent = <Args extends DistributeEvents[]>(
-  input: Args
-): NonNullable<TestCaseInterface['testCases']['eventTestCases']>[0]['event'] => {
+export const buildEvent = <Args extends DistributeEvents[]>(input: Args): ((ctx: ExtendedCtx) => Promise<void>) => {
   return async ctx => {
-    for (const [f, args] of [...input]) {
-      await AllowEvents[f]({ ...args, username: ctx.formulaContext.domain } as any)
+    for (const [f, args] of input) {
+      await AllowEvents[f](ctx, { ...args, username: ctx.formulaContext.domain } as any)
     }
-  }
-}
-
-const interpretVariable = async (ctx: FunctionContext): Promise<VariableInterface> => {
-  const parseResult = parse(ctx)
-  const tempT = await interpret({ ctx, parseResult })
-  const variable = generateVariable({ formulaContext: ctx.formulaContext, t: tempT })
-  return variable
-}
-
-export const buildInsertEvent: (
-  args: BaseTestCase<{}>
-) => NonNullable<TestCaseInterface['testCases']['eventTestCases']>[0]['event'] = args => {
-  return async ctx => {
-    const newCtx = { ...ctx, meta: ctx.buildMeta(args) }
-    const variable = await interpretVariable(newCtx)
-    await variable.save()
-  }
-}
-
-export const buildInsertAndAwaitEvent: (
-  args: BaseTestCase<{}>
-) => NonNullable<TestCaseInterface['testCases']['eventTestCases']>[0]['event'] = args => {
-  return async ctx => {
-    const newCtx = { ...ctx, meta: ctx.buildMeta(args) }
-    const variable = await interpretVariable(newCtx)
-    await variable.t.task.variableValue
-    await variable.save()
   }
 }

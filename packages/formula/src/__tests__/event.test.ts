@@ -1,5 +1,5 @@
 import { interpret, parse, generateVariable } from '../grammar'
-import { makeContext } from '../tests/testHelper'
+import { buildEvent, makeContext } from '../tests/testHelper'
 import { buildTestCases, matchObject, trackTodo } from '../tests'
 import { uuid } from '@mashcard/active-support'
 import { MashcardEventBus } from '@mashcard/schema'
@@ -46,7 +46,7 @@ describe('event', () => {
       }
     }
 
-    await args.event(newCtx)
+    await buildEvent(args.events)(newCtx)
 
     for (const { f, event } of triggerTest) {
       const callLength = event.callLength ?? 1

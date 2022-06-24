@@ -52,7 +52,7 @@ const reduceTestCaseInput = (testCases: TestCaseInterface[]): TestCaseInput => {
             curr,
             s,
             `[${index}] ${s.definition}`,
-            `${JSON.stringify(s.resultAfter)} ${s.event.toString()}`
+            `${JSON.stringify(s.resultAfter)} ${JSON.stringify(s.events)}`
           )
         }))
       ],

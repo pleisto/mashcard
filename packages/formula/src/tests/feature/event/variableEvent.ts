@@ -1,4 +1,4 @@
-import { buildInsertAndAwaitEvent, buildInsertEvent, generateUUIDs } from '../../testHelper'
+import { generateUUIDs } from '../../testHelper'
 import { TestCaseInterface } from '../../testType'
 
 const [page0Id] = generateUUIDs()
@@ -17,19 +17,19 @@ export const VariableEventTestCase: TestCaseInterface = {
       {
         definition: '=VariableEventPage1.num0',
         resultBefore: 0,
-        event: async () => {}
+        events: []
       },
       {
         definition: '=VariableEventPage1.unknownVariable',
         resultBefore: '"unknownVariable" not found',
-        event: async () => {}
+        events: []
       },
       {
         definition: '=num2+1',
         resultBefore: '"num2" not found',
         namespaceId: page0Id,
         resultAfter: 124,
-        event: buildInsertEvent({ definition: '=123', name: 'num2', namespaceId: page0Id })
+        events: [['variableInsertOnly', { definition: '=123', name: 'num2', namespaceId: page0Id }]]
       },
       {
         definition: '=num2+1',
@@ -37,7 +37,7 @@ export const VariableEventTestCase: TestCaseInterface = {
         namespaceId: page0Id,
         resultAfter: 'Loading...',
         resultAfterAsync: true,
-        event: buildInsertEvent({ definition: '=SLEEP(123)', name: 'num2', namespaceId: page0Id })
+        events: [['variableInsertOnly', { definition: '=SLEEP(123)', name: 'num2', namespaceId: page0Id }]]
       },
       {
         definition: '=num2+1',
@@ -46,7 +46,7 @@ export const VariableEventTestCase: TestCaseInterface = {
         namespaceId: page0Id,
         resultAfter: 'Loading...',
         resultAfterAsync: true,
-        event: buildInsertAndAwaitEvent({ definition: '=SLEEP(123)', name: 'num2', namespaceId: page0Id })
+        events: [['variableInsertAndAwait', { definition: '=SLEEP(123)', name: 'num2', namespaceId: page0Id }]]
       }
     ]
   }

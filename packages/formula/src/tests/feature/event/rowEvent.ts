@@ -1,8 +1,27 @@
-import { buildEvent, generateUUIDs } from '../../testHelper'
+import { Row } from '../../../controls'
+import { generateUUIDs } from '../../testHelper'
 import { mockRow } from '../../testMock'
-import { SpreadsheetInput, TestCaseInterface } from '../../testType'
+import { DistributeEvents, SpreadsheetInput, TestCaseInterface } from '../../testType'
 
-const [namespaceId, spreadsheetId, column1Id, row1Id, cell1Id] = generateUUIDs()
+const [namespaceId, spreadsheetId, column1Id, row1Id, row2Id, row3Id, cell1Id] = generateUUIDs()
+
+const [row1, row2, row3]: Row[] = [
+  {
+    spreadsheetId,
+    rowId: row1Id,
+    rowIndex: 0
+  },
+  {
+    spreadsheetId,
+    rowId: row2Id,
+    rowIndex: 1
+  },
+  {
+    spreadsheetId,
+    rowId: row3Id,
+    rowIndex: 2
+  }
+]
 
 export const RowEventTestCase: TestCaseInterface = {
   name: 'rowEvent',
@@ -34,17 +53,42 @@ export const RowEventTestCase: TestCaseInterface = {
                 cells: [{ value: '3' }, { value: '' }, { value: 'Foo' }]
               }
             ],
-            rows: [{ rowId: row1Id }, {}, {}]
+            rows: [row1, row2, row3]
           }
         ]
       }
     ],
     eventTestCases: [
+      ...[
+        {
+          definition: '=spreadsheet1.1',
+          resultBefore: mockRow('1')
+        },
+        {
+          definition: '=spreadsheet1.2.second.toString()',
+          resultBefore: '4'
+        }
+      ].flatMap(a => [
+        {
+          ...a,
+          label: 'empty event',
+          namespaceId,
+          events: []
+        },
+        {
+          ...a,
+          label: 'same',
+          namespaceId,
+          events: [['rowChange', { spreadsheetId, namespaceId, rows: [row1, row2, row3] }] as DistributeEvents]
+        }
+      ]),
       {
-        definition: '=spreadsheet1.1',
+        definition: '=spreadsheet1.3.third.toString()',
+        label: 'empty rows',
         namespaceId,
-        resultBefore: mockRow('1'),
-        event: buildEvent([])
+        resultBefore: 'Foo',
+        resultAfter: 'Row "3" not found',
+        events: [['rowChange', { spreadsheetId, namespaceId, rows: [] }]]
       }
     ]
   }
