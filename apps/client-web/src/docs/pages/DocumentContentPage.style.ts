@@ -1,4 +1,5 @@
 import bg from '@/common/assets/ceramicBg.webp'
+import { Link } from 'react-router-dom'
 import { theme, styled } from '@mashcard/design-system'
 import { getNativeSidebarWdith } from '@/settings/common/sidebar'
 
@@ -182,8 +183,24 @@ export const sidebarButtonStyles = {
   padding: '0.75rem'
 }
 
-export const sidebarTrashLinkstyles = {
+export const SidebarLink = styled(Link, {
   width: '100%',
-  paddingTop: '1rem',
-  paddingLeft: '1.25rem'
-}
+  height: 34,
+  marginTop: 34,
+  '&:hover, &:focus-visible, &:active': {
+    textDecoration: 'none'
+  },
+  button: {
+    paddingLeft: 29,
+    width: '100%',
+    justifyContent: 'flex-start',
+    span: {
+      fontSize: 14,
+      fontWeight: 500,
+      color: theme.colors.typeSecondary
+    },
+    '.mc-icon': {
+      fontSize: 18
+    }
+  }
+})

@@ -4,11 +4,12 @@ import { ToolbarOption, ToolbarGroupOption } from '../../../ui'
 import { BubbleItemMeta } from './useBubbleMenuItems'
 import { isBubbleMenuVisible } from '../BubbleMenu'
 import { useEditorContext, useEditorI18n } from '../../../../hooks'
+import { useFontColorGroup } from './useFontColorGroup'
 
 export function useTextStyleGroup(): [ToolbarOption | ToolbarGroupOption | null] {
   const { editor } = useEditorContext()
   const [t] = useEditorI18n()
-
+  const fontColorGroup = useFontColorGroup()
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
@@ -60,7 +61,9 @@ export function useTextStyleGroup(): [ToolbarOption | ToolbarGroupOption | null]
         tooltip: item.tooltip
       }))
     }
-
+    if (fontColorGroup) {
+      textStyleGroup.items.push(fontColorGroup)
+    }
     return textStyleGroup
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor?.state.selection])
