@@ -13,6 +13,7 @@ import {
   VariableMetadata,
   VariableParseResult
 } from '../types'
+import { AllowEvents } from './testEvent'
 
 export const DEFAULT_FIRST_NAMESPACEID = '00000000-0000-0000-0000-000000000000'
 const uuids = [...Array(999)].map((o, index) => `00000000-0000-${String(index).padStart(4, '0')}-0000-000000000000`)
@@ -93,6 +94,8 @@ type FeatureName =
   | 'blockEvent'
   | 'variableEvent'
   | 'spreadsheetEvent'
+  | 'columnEvent'
+  | 'rowEvent'
 type FeatureTestName = 'cst'
 export type TestCaseName = OperatorName | FeatureName | FeatureTestName
 
@@ -142,15 +145,15 @@ interface TriggerEvent {
   payload?: object
 }
 
-type ExtendedCtx = MakeContextResult & { meta: VariableMetadata }
+export type ExtendedCtx = MakeContextResult & { meta: VariableMetadata }
 
 interface EventTestCaseType extends RequireField<BaseTestCase<{}>, 'definition'> {
   resultBefore: any
-  resultAfter: any
+  resultAfter?: any
   resultAfterAsync?: true
   variableParseResultAfter?: Partial<VariableParseResult>
   triggerEvents?: (ctx: ExtendedCtx) => [TriggerEvent, ...TriggerEvent[]]
-  event: (ctx: ExtendedCtx) => Promise<void>
+  events: DistributeEvents[]
 }
 
 type DependencyTypes = 'Variable' | 'Block'
@@ -221,3 +224,10 @@ export interface TestCaseInput {
   eventTestCases: Array<RequireField<EventTestCaseType, 'groupOptions' | 'jestTitle'>>
   dependencyTestCases: Array<RequireField<AnyDependencyTestCaseType, 'groupOptions' | 'jestTitle'>>
 }
+
+type AllowEventsType = {
+  [k in keyof typeof AllowEvents]: Parameters<typeof AllowEvents[k]>[1]
+}
+
+export type DistributeEvents<Event extends keyof AllowEventsType = keyof AllowEventsType> =
+  Event extends keyof AllowEventsType ? [Event, AllowEventsType[Event]] : never

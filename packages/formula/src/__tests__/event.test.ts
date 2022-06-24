@@ -1,11 +1,12 @@
 import { interpret, parse, generateVariable } from '../grammar'
-import { makeContext } from '../tests/testHelper'
+import { buildEvent, makeContext } from '../tests/testHelper'
 import { buildTestCases, matchObject, trackTodo } from '../tests'
 import { uuid } from '@mashcard/active-support'
 import { MashcardEventBus } from '@mashcard/schema'
 import { fetchResult } from '../context'
+import { EventNames } from '../tests/feature/event'
 
-const [testCases] = buildTestCases(['blockEvent', 'variableEvent', 'spreadsheetEvent'])
+const [testCases] = buildTestCases(EventNames)
 
 describe('event', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
@@ -45,7 +46,7 @@ describe('event', () => {
       }
     }
 
-    await args.event(newCtx)
+    await buildEvent(args.events)(newCtx)
 
     for (const { f, event } of triggerTest) {
       const callLength = event.callLength ?? 1
@@ -59,7 +60,7 @@ describe('event', () => {
     expect(variable.t.task.async).toBe(args.resultAfterAsync ?? false)
     const resultAfter = fetchResult(variable.t)
 
-    expect(matchObject(resultAfter)).toStrictEqual(args.resultAfter)
+    expect(matchObject(resultAfter)).toStrictEqual(args.resultAfter ?? args.resultBefore)
     expect(variable.t.variableParseResult).toMatchObject(args.variableParseResultAfter ?? {})
 
     eventListeners.forEach(listener => listener.unsubscribe())
