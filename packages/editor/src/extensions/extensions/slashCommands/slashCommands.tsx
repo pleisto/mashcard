@@ -1,6 +1,6 @@
 import { ReactRenderer, Editor } from '@tiptap/react'
-import { PluginKey } from 'prosemirror-state'
-import Suggestion from '@tiptap/suggestion'
+import { PluginKey, Plugin } from 'prosemirror-state'
+import { Suggestion } from '@tiptap/suggestion'
 import { createPopup, PopupInstance } from '../../../helpers/popup'
 import { SlashMenu } from '../../../components/extensionViews'
 import { getSuggestionItems, TYPE_ITEMS, getRecentItems } from './items'
@@ -10,7 +10,10 @@ import { meta } from './meta'
 import { createExtension } from '../../common'
 import { findParagraphWrapper } from '../placeholder/findParagraphWrapper'
 
-const TRIGGER_CHAR = '/'
+export const TRIGGER_CHAR = '/'
+const ALLOW_SPACES = false
+const PREFIX_SPACE = true
+const START_OF_LINE = true
 
 export interface SlashCommandsOptions {}
 export interface SlashCommandsAttributes {}
@@ -20,12 +23,37 @@ const pluginKey = new PluginKey('slashMenu')
 export const SlashCommands = createExtension<SlashCommandsOptions, SlashCommandsAttributes>({
   name: meta.name,
 
+  addStorage() {
+    return {
+      triggered: false
+    }
+  },
+
   addProseMirrorPlugins() {
     return [
+      new Plugin({
+        props: {
+          handleKeyDown: (view, event) => {
+            const key = event.key
+
+            if (key === TRIGGER_CHAR) {
+              const $position = this.editor.state.selection.$from
+              const text = $position.nodeBefore?.isText && $position.nodeBefore.text
+
+              if (!text) this.storage.triggered = true
+            }
+
+            return false
+          }
+        }
+      }),
       Suggestion({
         pluginKey,
         char: TRIGGER_CHAR,
-        startOfLine: true,
+        startOfLine: START_OF_LINE,
+        allowSpaces: ALLOW_SPACES,
+        prefixSpace: PREFIX_SPACE,
+        allow: ({ editor }) => editor.isEditable && this.storage.triggered,
         command: ({ editor, range, props }) => {
           props.command({ editor, range })
           addItemKey(props.key)
@@ -45,6 +73,7 @@ export const SlashCommands = createExtension<SlashCommandsOptions, SlashCommands
 
           const exit = (): void => {
             if (!this.editor.isEditable) return
+            this.storage.triggered = false
             popup?.destroy()
             reactRenderer?.destroy()
             hideListener?.unsubscribe()
@@ -53,6 +82,8 @@ export const SlashCommands = createExtension<SlashCommandsOptions, SlashCommands
           return {
             onStart: props => {
               if (!this.editor.isEditable) return
+
+              if (!this.storage.triggered) return
 
               // disable slash menu if it is inside a wrapper currently.
               const disabled = !!findParagraphWrapper(this.editor.state.selection.$anchor)

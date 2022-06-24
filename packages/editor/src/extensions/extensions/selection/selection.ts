@@ -1,5 +1,5 @@
 import { Editor } from '@tiptap/core'
-import { Plugin, EditorState } from 'prosemirror-state'
+import { Plugin, PluginKey, EditorState, TextSelection } from 'prosemirror-state'
 import { Decoration, DecorationSet } from 'prosemirror-view'
 import { findNodesInSelection } from '../../../helpers'
 import { createExtension } from '../../common'
@@ -56,27 +56,46 @@ export const isTextContentSelected = ({ editor, from, to }: { editor: Editor; fr
 
 export const DEFAULT_SELECTION_CLASS = 'editor-selection'
 
+interface SelectionState {}
+
+export const SelectionPluginKey = new PluginKey(meta.name)
+
 export const Selection = createExtension<SelectionOptions, SelectAttributes>({
   name: meta.name,
 
   addProseMirrorPlugins() {
     return [
-      new Plugin({
+      new Plugin<SelectionState>({
+        key: SelectionPluginKey,
         props: {
           decorations: (state: EditorState) => {
-            const editor = this.editor
             const { from, to } = state.selection
             const decorations: Decoration[] = []
-            if (!isTextContentSelected({ editor, from, to })) return
 
-            const decoration = Decoration.inline(from, to, {
+            if (!this.editor.isEditable || from === to) return
+
+            const inlineDecoration = Decoration.inline(from, to, {
               class: this.options.HTMLAttributes?.class ?? DEFAULT_SELECTION_CLASS,
               style: this.options.HTMLAttributes?.style
             })
+            decorations.push(inlineDecoration)
 
-            decorations.push(decoration)
+            return DecorationSet.create(this.editor.state.doc, decorations)
+          },
+          createSelectionBetween: (view, $anchor, $head) => {
+            if (!this.editor.isEditable || $anchor.pos === $head.pos) return
 
-            return DecorationSet.create(editor.state.doc, decorations)
+            // remove non-text node and empty text node selection by check: to - from > 1
+            // because we don't want non-text nodes at the end of Text Selection
+            // due to window.getSelection() will automatically select the nearest text if end of the selection is not a text node
+            const nodeRanges = findNodesInSelection(this.editor, $anchor.pos, $head.pos).filter(
+              range => range.to - range.from > 1
+            )
+
+            if (nodeRanges.length > 0) {
+              const to = nodeRanges[nodeRanges.length - 1].to
+              return TextSelection.create(this.editor.state.doc, $anchor.pos, to)
+            }
           }
         }
       })
