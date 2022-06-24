@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 18 * * *'
+
 env:
   YARN_CHECKSUM_BEHAVIOR: update
 
@@ -12,6 +13,9 @@ jobs:
     name: Playwright
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    strategy:
+      matrix:
+        browser: ['chromium', 'firefox']
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3
@@ -46,10 +50,10 @@ jobs:
           echo ::set-output name=firefox-email::${{ secrets.TRUNK_E2E_LOGIN_EMAIL_2 }}
           echo ::set-output name=firefox-password::${{ secrets.TRUNK_E2E_LOGIN_PASSWORD_2 }}
       - name: Run Playwright tests
-        run: yarn e2e-testing start
+        run: yarn e2e-testing run-playwright:${{ matrix.browser }}
         env:
           NODE_OPTIONS: '--max-old-space-size=5950'
-          PLAYWRIGHT_BASE_URL: https://trunk.brickdoc.dev
+          PLAYWRIGHT_BASE_URL: https://trunk.mashcard.dev
           E2E_CHROMIUM_LOGIN_EMAIL: ${{ steps.e2e-account.outputs.chromium-email }}
           E2E_CHROMIUM_LOGIN_PASSWORD: ${{ steps.e2e-account.outputs.chromium-password }}
           E2E_FIREFOX_LOGIN_EMAIL: ${{ steps.e2e-account.outputs.firefox-email }}
