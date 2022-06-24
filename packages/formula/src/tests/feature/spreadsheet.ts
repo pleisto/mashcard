@@ -1,13 +1,8 @@
+import { generateUUIDs } from '../testHelper'
 import { mockCell, mockColumn, mockRow } from '../testMock'
 import { SpreadsheetInput, TestCaseInterface } from '../testType'
 
-const namespaceId = '55555555-5555-4444-5555-555555555555'
-const spreadsheetId = '22222222-2222-4444-3333-222222222222'
-
-const firstColumnId = '66666666-6666-4444-6666-666666666666'
-const firstRowId = 'eeeeeeee-eeee-4444-aaaa-222222222222'
-const firstCellId = '33333333-3333-4444-3333-333333333333'
-const invalidColumnId = '11111111-1111-4444-dddd-111111111111'
+const [namespaceId, spreadsheetId, firstColumnId, firstRowId, firstCellId, invalidColumnId] = generateUUIDs()
 const spreadsheetToken = 'SpreadsheetPage.spreadsheet'
 
 export const SpreadsheetTestCase: TestCaseInterface = {

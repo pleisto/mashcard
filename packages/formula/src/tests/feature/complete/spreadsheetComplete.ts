@@ -1,7 +1,7 @@
-import { SpreadsheetInput, TestCaseInterface } from '../testType'
+import { generateUUIDs } from '../../testHelper'
+import { SpreadsheetInput, TestCaseInterface } from '../../testType'
 
-const namespaceId = Symbol('SpreadsheetComplete')
-const spreadsheetId = '44444444-aaaa-3333-3333-444444444444'
+const [namespaceId, spreadsheetId] = generateUUIDs()
 
 export const SpreadsheetCompleteTestCase: TestCaseInterface = {
   name: 'spreadsheetComplete',

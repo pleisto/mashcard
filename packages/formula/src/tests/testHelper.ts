@@ -9,6 +9,8 @@ import {
   CellInput,
   ColumnInput,
   DEFAULT_UUID_FUNCTION,
+  DistributeEvents,
+  ExtendedCtx,
   InsertOptions,
   MakeContextOptions,
   MakeContextResult,
@@ -18,6 +20,7 @@ import {
   UUIDState
 } from './testType'
 import { uuid } from '@mashcard/active-support'
+import { AllowEvents } from './testEvent'
 
 const quickInsert = async (
   ctx: FunctionContext,
@@ -246,4 +249,14 @@ export const trackTodo = (it: jest.It, testCases: Array<BaseTestCase<{}>>): void
     .forEach(t => {
       it.todo(`${t.jestTitle} -> ${t.todoMessage!}`)
     })
+}
+
+export const generateUUIDs = (): string[] => [...Array(10)].map(() => uuid())
+
+export const buildEvent = <Args extends DistributeEvents[]>(input: Args): ((ctx: ExtendedCtx) => Promise<void>) => {
+  return async ctx => {
+    for (const [f, args] of input) {
+      await AllowEvents[f](ctx, { ...args, username: ctx.formulaContext.domain } as any)
+    }
+  }
 }

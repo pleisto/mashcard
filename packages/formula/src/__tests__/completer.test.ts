@@ -2,8 +2,9 @@ import { parse } from '../grammar/core'
 import { makeContext } from '../tests/testHelper'
 import { buildTestCases, trackTodo } from '../tests'
 import { getLastCodeFragment, applyCompletion } from '../grammar'
+import { CompleteNames } from '../tests/feature/complete'
 
-const [testCases] = buildTestCases(['functionComplete', 'variableComplete', 'blockComplete', 'spreadsheetComplete'])
+const [testCases] = buildTestCases(CompleteNames)
 
 const splitDefinitionWithCursor = (
   definitionWithCursor: string
@@ -38,7 +39,10 @@ describe('completer', () => {
     } = parse(newCtx)
     expect(completions.length).not.toBe(0)
     const firstCompletion = completions[0]
-    const [firstNonSpaceCodeFragment, secondNonSpaceCodeFragment, thirdNonSpaceCodeFragment] = getLastCodeFragment(codeFragments, position)
+    const [firstNonSpaceCodeFragment, secondNonSpaceCodeFragment, thirdNonSpaceCodeFragment] = getLastCodeFragment(
+      codeFragments,
+      position
+    )
 
     // console.log('completionTest', completions.slice(0, 4), {
     //   firstCompletion,
@@ -47,7 +51,12 @@ describe('completer', () => {
     //   firstNonSpaceCodeFragment
     // })
 
-    expect({ firstCompletion, firstNonSpaceCodeFragment, secondNonSpaceCodeFragment, thirdNonSpaceCodeFragment }).toMatchObject({
+    expect({
+      firstCompletion,
+      firstNonSpaceCodeFragment,
+      secondNonSpaceCodeFragment,
+      thirdNonSpaceCodeFragment
+    }).toMatchObject({
       firstCompletion: args.firstCompletion,
       firstNonSpaceCodeFragment: args.firstNonSpaceCodeFragment ?? {},
       secondNonSpaceCodeFragment: args.secondNonSpaceCodeFragment ?? {},
