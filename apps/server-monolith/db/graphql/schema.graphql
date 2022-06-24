@@ -299,6 +299,11 @@ input BlockCommitInput {
   documentId: UUID!
 
   """
+  meta
+  """
+  meta: MetaJson
+
+  """
   operator id
   """
   operatorId: String!
@@ -2141,6 +2146,11 @@ enum MemberState {
   """
   enabled
 }
+
+"""
+Meta Json
+"""
+scalar MetaJson
 
 """
 Represents information about the MashCard Server Instance.

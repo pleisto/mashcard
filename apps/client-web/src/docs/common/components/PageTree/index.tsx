@@ -31,6 +31,7 @@ import { pagesVar } from '@/docs/reactiveVars'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { useDocMeta } from '@/docs/store/DocMeta'
 import { dispatchFormulaBlockNameChange } from '@mashcard/formula'
+import { MashcardEventBus, BlockMetaUpdated } from '@mashcard/schema'
 
 export interface PageTreeProps {
   mode?: 'default' | 'subPage'
@@ -86,6 +87,27 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
       })) ?? []
     )
   }, [data?.pageBlocks])
+
+  // NOTE: temp fix for no updating page tree when apollo cache has been changed
+  // TODO: refactor PageTree
+  React.useEffect(() => {
+    const subscription = MashcardEventBus.subscribe(BlockMetaUpdated, e => {
+      setDataPageBlocks(
+        dataPageBlocks.map(block => {
+          if (block.id === e.payload.id) {
+            return {
+              ...block,
+              text: e.payload.meta.title ?? block.text,
+              meta: { ...block.meta, ...e.payload.meta }
+            }
+          } else {
+            return { ...block }
+          }
+        }) ?? []
+      )
+    })
+    return () => subscription.unsubscribe()
+  }, [dataPageBlocks])
 
   const [blockMove, { client: blockMoveClient }] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
   const [draggable, setDraggable] = useState<boolean>(true)

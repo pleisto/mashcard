@@ -7,7 +7,7 @@ import {
 import { EditorOptions as TiptapEditorOptions } from '@tiptap/core'
 import { theme } from '@mashcard/design-system'
 import { useEditorI18n } from '../../hooks'
-import { EditorContext, EditorContextData } from '../../context/EditorContext'
+import { EditorContext, EditorContextData, DocumentContext, DocumentContextData } from '../../context'
 import { DiscussionList, ExplorerMenu, HistoryList } from '../../components/editorViews'
 import { BubbleMenu } from '../../components/extensionViews'
 import {
@@ -61,8 +61,9 @@ export interface EditorContentProps {
   navigate: (to: To, options?: NavigateOptions) => void
 }
 
-export const EditorContent: FC<EditorContentProps> = ({ editor, editable, ...props }) => {
+export const EditorContent: FC<EditorContentProps> = ({ editor, editable, rootId, ...props }) => {
   const editorContext = useMemo<EditorContextData>(() => ({ editor, documentEditable: editable }), [editable, editor])
+  const documentContext = useMemo<DocumentContextData>(() => ({ docId: rootId }), [rootId])
   useEditorI18n()
   useDrawerService()
   useDropBlock(editor)
@@ -73,13 +74,15 @@ export const EditorContent: FC<EditorContentProps> = ({ editor, editable, ...pro
   const documentEditorClassName = documentEditorStyles({ enableSelection })
 
   return (
-    <EditorContext.Provider value={editorContext}>
-      <BubbleMenu editor={editor} />
-      <TiptapEditorContent className={documentEditorClassName} editor={editor} />
-      <DiscussionList />
-      <HistoryList docId={props.rootId!} domain={props.domain!} historyId={props.historyId} navigate={props.navigate} />
-      <ExplorerMenu editor={editor} />
-    </EditorContext.Provider>
+    <DocumentContext.Provider value={documentContext}>
+      <EditorContext.Provider value={editorContext}>
+        <BubbleMenu editor={editor} />
+        <TiptapEditorContent className={documentEditorClassName} editor={editor} />
+        <DiscussionList />
+        <HistoryList docId={rootId!} domain={props.domain!} historyId={props.historyId} navigate={props.navigate} />
+        <ExplorerMenu editor={editor} />
+      </EditorContext.Provider>
+    </DocumentContext.Provider>
   )
 }
 

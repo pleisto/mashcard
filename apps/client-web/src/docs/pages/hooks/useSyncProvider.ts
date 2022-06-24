@@ -17,8 +17,6 @@ import {
   Event,
   BlockUpdated,
   BlockDeleted,
-  DocMetaLoaded,
-  UpdateDocMeta,
   BlockSynced,
   UpdateBlock,
   DeleteBlock,
@@ -74,10 +72,9 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
       docBlocksMap.current.set(block.id, block)
     })
     rootBlock.current = docBlocksMap.current.get(rootId.current)
-    if (rootBlock.current) {
-      const { id, meta } = rootBlock.current
-      MashcardEventBus.dispatch(DocMetaLoaded({ id, meta }))
-    }
+    // if (rootBlock.current) {
+    //   const { id, meta } = rootBlock.current
+    // }
   }, [queryVariables, data?.childrenBlocks])
 
   const commitDirty = useCallback(async (): Promise<void> => {
@@ -276,20 +273,6 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
       const { blockId, commit } = e.payload
       dirtyToDeleteIds.current.add(blockId)
       if (commit) {
-        void commitDirty()
-      }
-    },
-    { subscribeId: 'SyncProvider' }
-  )
-
-  MashcardEventBus.subscribe(
-    UpdateDocMeta,
-    e => {
-      const { id, meta } = e.payload
-      if (id === rootBlock.current?.id) {
-        const newBlock = { ...rootBlock.current, meta: { ...rootBlock.current.meta, ...meta } }
-        newBlock.text = newBlock.meta.title ?? ''
-        dirtyBlocksMap.current.set(id, newBlock)
         void commitDirty()
       }
     },

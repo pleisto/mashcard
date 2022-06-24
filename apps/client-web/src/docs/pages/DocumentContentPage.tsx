@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { getSidebarStyle, logSideBarWidth } from '@/common/utils/sidebarStyle'
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import Split from '@uiw/react-split'
@@ -17,6 +17,7 @@ import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
 import { AppError404 } from '@/core/app-error'
 import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
+import { MashcardEventBus, BlockMetaUpdated } from '@mashcard/schema'
 
 /* const Layout = styled('div', base) */
 
@@ -30,6 +31,19 @@ export const DocumentContentPage: React.FC = () => {
   const { t } = useDocsI18n()
   const navigate = useNavigate()
   const preSidebarStyle = useMemo(getSidebarStyle, [])
+
+  // NOTE: temp fix for no updating DocMeta when apollo cache has been changed
+  const [_tick, setTick] = useState(0)
+  React.useEffect(() => {
+    const subscription = MashcardEventBus.subscribe(
+      BlockMetaUpdated,
+      e => {
+        setTick(tick => tick + 1)
+      },
+      { subscribeId: docid }
+    )
+    return () => subscription.unsubscribe()
+  }, [_tick, setTick, docid])
 
   const loginDomain = currentPod.domain
 
@@ -53,6 +67,7 @@ export const DocumentContentPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
 
+  // TODO: refactor DocMeta, separate frontend state and model data
   const docMeta: DocMeta = useMemo(() => {
     const policy = data?.blockInfo?.permission?.policy
     const isMine = loginDomain === domain || !!data?.blockInfo?.isMaster

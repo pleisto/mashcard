@@ -45,7 +45,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
 
   useDocHistoryProvider(docMeta.id as string)
 
-  const { provider, initBlocksToEditor, loading, committing, awarenessInfos } = useBlockSyncProvider({
+  const { provider, initBlocksToEditor, loading, committing, awarenessInfos, meta, setMeta } = useBlockSyncProvider({
     blockId: docMeta.id as string,
     historyId: docMeta.historyId
   })
@@ -91,7 +91,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
     }
   }, [editor, data, data?.childrenBlocks, initBlocksToEditor])
 
-  if (loading || blocksLoading || !editor || editor.isDestroyed || docMeta.documentInfoLoading) {
+  if (loading || blocksLoading || !editor || editor.isDestroyed || !currentRootBlock || docMeta.documentInfoLoading) {
     return (
       <Root.PageSpinWrapper>
         <Spin size="lg" data-testid={TEST_ID_ENUM.page.DocumentPage.loading.id} />
@@ -119,12 +119,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
           '@smDown': 'sm'
         }}
       >
-        <DocumentTitle
-          title={docMeta.title}
-          docId={docMeta.id}
-          blocks={data?.childrenBlocks}
-          editable={documentEditable}
-        />
+        <DocumentTitle docBlock={currentRootBlock} editable={documentEditable} meta={meta} setMeta={setMeta} />
         <Root.PageContent>
           <EditorContent
             editor={editor}

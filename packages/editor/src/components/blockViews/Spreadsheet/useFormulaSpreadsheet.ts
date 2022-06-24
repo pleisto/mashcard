@@ -12,7 +12,7 @@ import {
 import { BlockInput } from '@mashcard/schema'
 import { SpreadsheetColumn } from './useSpreadsheet'
 import { columnDisplayIndex, columnDisplayTitle } from './helper'
-import { useEditorContext } from '../../../hooks'
+import { useEditorContext, useDocumentContext } from '../../../hooks'
 import { getFormulaContext } from '../FormulaView'
 
 interface useFormulaSpreadsheetProps {
@@ -34,7 +34,8 @@ export function useFormulaSpreadsheet({
 } {
   const title = originalTitle || 'Untitled Spreadsheet'
   const { editor } = useEditorContext()
-  const rootId = editor?.state.doc.attrs.uuid
+  const { docId } = useDocumentContext()
+  const rootId = docId!
   const formulaContext = getFormulaContext(editor)
   const titleRef = React.useRef(title)
 

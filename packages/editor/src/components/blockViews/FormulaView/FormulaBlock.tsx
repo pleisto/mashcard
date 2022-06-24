@@ -10,7 +10,7 @@ import {
 import { BlockContainer } from '../BlockContainer'
 import { FormulaDisplay } from '../../ui/Formula'
 import { FormulaMenuProps, useFormula, FormulaMenu, UseFormulaInput } from '.'
-import { useEditorContext } from '../../../hooks'
+import { useEditorContext, useDocumentContext } from '../../../hooks'
 import { Formula } from '../../../extensions'
 
 export interface FormulaBlockProps extends NodeViewProps {}
@@ -36,7 +36,8 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
   const defaultVisible = isNew
   const formulaId = uuid
   const { editor } = useEditorContext()
-  const rootId = editor?.state.doc.attrs.uuid
+  const { docId } = useDocumentContext()
+  const rootId = docId!
   const formulaContext = getFormulaContext(editor)
   const formulaType = 'normal'
   const formulaName = ''
@@ -85,7 +86,8 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
       onSaveFormula={onSaveFormula}
       nameRef={nameRef}
       completion={completion}
-      handleDelete={handleDelete}>
+      handleDelete={handleDelete}
+    >
       {renderData}
     </FormulaMenu>
   )

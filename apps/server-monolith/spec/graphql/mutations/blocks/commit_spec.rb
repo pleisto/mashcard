@@ -293,5 +293,54 @@ describe Mutations::Blocks::Commit, type: :mutation do
       self.current_user = nil
       self.current_pod = nil
     end
+
+    it 'can save block meta' do
+      self.current_user = user
+      self.current_pod = user.personal_pod.as_session_context
+
+      state = Random.bytes(50)
+      state_id = Mashcard::Utils::Encoding::UUID.gen_v4
+
+      input = {
+        input: {
+          documentId: block.id,
+          blockId: block.id,
+          operatorId: Mashcard::Utils::Encoding::UUID.gen_v4,
+          stateType: 'full',
+          state: Mashcard::Utils::Encoding::Base64.strict_encode64(state),
+          stateId: state_id,
+          statesCount: 0,
+          meta: {
+            'title' => 'test',
+            'icon' => {
+              '__typename': 'BlockEmoji',
+              'emoji': '😀',
+              'name': 'grinning face',
+              'type': 'EMOJI',
+            },
+          },
+        },
+      }
+      graphql_execute(mutation, input)
+
+      expect(response.success?).to be(true)
+      expect(response.data['blockCommit']['block']['statesCount']).to eq(1)
+      expect(response.data['blockCommit']['block']['stateId']).to eq(state_id)
+      expect(response.data['blockCommit']['diffStates'].length).to eq(0)
+
+      block_model = Docs::Block.find(block.id)
+      state_model = Docs::BlockState.find(input[:input][:stateId])
+
+      expect(block_model.state_id).to eq(state_model.id)
+      expect(block_model.text).to eq('test')
+      expect(block_model.meta['icon']['__typename']).to be_nil
+      expect(block_model.meta['icon']['emoji']).to eq('😀')
+
+      expect(state_model.user_id).to eq(current_user.id)
+      expect(state_model.pod_id).to eq(current_pod['id'])
+
+      self.current_user = nil
+      self.current_pod = nil
+    end
   end
 end

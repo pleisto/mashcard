@@ -16,8 +16,13 @@ import {
   useAwarenessSubscription
 } from '@/MashcardGraphQL'
 import { devLog } from '@mashcard/design-system'
+import { useApolloClient } from '@apollo/client'
 
-import { MashcardEventBus, docHistoryReceived } from '@mashcard/schema'
+import { MashcardEventBus, docHistoryReceived, BlockMetaUpdated } from '@mashcard/schema'
+
+export interface blockMeta {
+  [key: string]: any
+}
 
 export interface blockProvider {
   awareness: awarenessProtocol.Awareness
@@ -39,18 +44,25 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   provider?: blockProvider
   initBlocksToEditor: React.MutableRefObject<boolean>
   awarenessInfos: awarenessInfo[]
+  meta: blockMeta
+  setMeta: (meta: blockMeta) => void
 } {
+  const client = useApolloClient()
+
   const [blockCommit] = useBlockCommitMutation()
   const [awarenessUpdate] = useAwarenessUpdateMutation()
 
   const { blockId, historyId } = queryVariables
 
   const block = React.useRef<BlockNew>({ id: blockId })
+  const [blockMeta, setBlockMeta] = React.useState<blockMeta>({})
+  const latestMeta = React.useRef<blockMeta>({})
   const [provider, setProvider] = React.useState<blockProvider>()
   const [awarenessInfos, setAwarenessInfos] = React.useState<awarenessInfo[]>([])
 
   const initBlocksToEditor = React.useRef<boolean>(false)
   const blockCommitting = React.useRef<boolean>(false)
+  const blockMetaChanged = React.useRef<boolean>(false)
   const [committing, setCommitting] = React.useState<boolean>(false)
   const updatesToCommit = React.useRef(new Set<Uint8Array>())
 
@@ -100,6 +112,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
               blockStates.filter(s => s.state).map(s => base64.parse(s.state as string))
             )
             Y.applyUpdate(provider.document, remoteState)
+            setBlockMetaUpdated(Object.fromEntries(provider.document.getMap('meta').entries()))
           }
         }
       }
@@ -127,6 +140,32 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
     variables: { docId: blockId }
   })
 
+  const setBlockMetaUpdated = React.useCallback(
+    (meta: blockMeta) => {
+      // TODO: refactor to remove BlockInfo
+      client.cache.modify({
+        id: client.cache.identify({ __typename: 'BlockInfo', id: blockId }),
+        fields: {
+          title() {
+            return meta.title
+          },
+          icon() {
+            return meta.icon
+          }
+        }
+      })
+      setBlockMeta(meta)
+      latestMeta.current = meta
+      MashcardEventBus.dispatch(
+        BlockMetaUpdated({
+          id: blockId,
+          meta
+        })
+      )
+    },
+    [blockId, setBlockMeta, client]
+  )
+
   const commitState = React.useCallback(
     async (ydoc: Y.Doc, update?: Uint8Array, forceFull: boolean = false): Promise<void> => {
       if (historyId) return
@@ -145,6 +184,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
       const statesCount = block.current.statesCount ?? 0
       const stateType = forceFull || statesCount === 0 ? Statetype.Full : Statetype.Update
 
+      const meta = blockMetaChanged.current || stateType === Statetype.Full ? { ...latestMeta.current } : undefined
+
       const commitPromise = blockCommit({
         variables: {
           input: {
@@ -155,7 +196,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             state: base64.stringify(mergedUpdates),
             stateId: stateIdToCommit,
             prevStateId: block.current.stateId ? block.current.stateId : undefined,
-            statesCount
+            statesCount,
+            meta
           }
         }
       })
@@ -180,6 +222,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             const localVector = Y.encodeStateVector(ydoc)
             const diff = Y.diffUpdate(remoteState, localVector)
             Y.applyUpdate(ydoc, diff)
+            setBlockMetaUpdated(Object.fromEntries(ydoc.getMap('meta').entries()))
             const localState = Y.encodeStateAsUpdate(ydoc)
             // const nextUpdate = Y.diffUpdate(localState, remoteYector)
             blockCommitting.current = false
@@ -193,6 +236,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             devLog('committed, left updates: ', updatesToCommit.current.size)
             blockCommitting.current = false
             if (updatesToCommit.current.size === 0) {
+              blockMetaChanged.current = false
               setCommitting(false)
             } else {
               void commitState(ydoc)
@@ -203,7 +247,27 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
         setCommitting(false)
       }
     },
-    [blockCommit, blockId, historyId, setCommitting]
+    [blockCommit, blockId, historyId, setCommitting, setBlockMetaUpdated]
+  )
+
+  const setMeta = React.useCallback(
+    (newMeta: blockMeta) => {
+      blockMetaChanged.current = true
+      if (provider) {
+        setBlockMetaUpdated(newMeta)
+        const metaYmap = provider?.document.getMap('meta')
+        Object.keys(newMeta).forEach((k: string) => {
+          if (newMeta[k]) {
+            if (newMeta[k] !== metaYmap.get(k)) {
+              metaYmap.set(k, newMeta[k])
+            }
+          } else {
+            metaYmap.delete(k)
+          }
+        })
+      }
+    },
+    [provider, setBlockMetaUpdated]
   )
 
   React.useEffect(() => {
@@ -233,6 +297,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
       const provider = { document: newYdoc, awareness }
       setProvider(provider)
+      setBlockMetaUpdated(Object.fromEntries(newYdoc.getMap('meta').entries()))
 
       if (!historyId) {
         newYdoc.on('update', async (update: Uint8Array, origin: any, ydoc: Y.Doc) => {
@@ -256,13 +321,15 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
         })
       }
     }
-  }, [blockId, historyId, data, loading, commitState, awarenessUpdate, awarenessChanged])
+  }, [blockId, historyId, data, loading, commitState, awarenessUpdate, awarenessChanged, setBlockMetaUpdated])
 
   return {
     committing,
     loading,
     provider,
     initBlocksToEditor,
-    awarenessInfos
+    awarenessInfos,
+    meta: blockMeta,
+    setMeta
   }
 }
