@@ -91,7 +91,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
     }
   }, [editor, data, data?.childrenBlocks, initBlocksToEditor])
 
-  if (loading || blocksLoading || !editor || editor.isDestroyed || !docMeta.id || docMeta.documentInfoLoading) {
+  if (loading || blocksLoading || !editor || editor.isDestroyed || !currentRootBlock || docMeta.documentInfoLoading) {
     return (
       <Root.PageSpinWrapper>
         <Spin size="lg" data-testid={TEST_ID_ENUM.page.DocumentPage.loading.id} />
@@ -119,13 +119,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
           '@smDown': 'sm'
         }}
       >
-        <DocumentTitle
-          docId={docMeta.id}
-          blocks={data?.childrenBlocks}
-          editable={documentEditable}
-          meta={meta}
-          setMeta={setMeta}
-        />
+        <DocumentTitle docBlock={currentRootBlock} editable={documentEditable} meta={meta} setMeta={setMeta} />
         <Root.PageContent>
           <EditorContent
             editor={editor}
