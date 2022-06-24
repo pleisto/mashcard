@@ -2,11 +2,11 @@ zh-CN:
   meta:
     lang: zh-CN
     dir: ltr
-    noscript: We're sorry but MashCard doesn't work properly without JavaScript enabled. Please visit %{url} for more information.
+    noscript: 抱歉 MashCard 需在开启浏览器的 Javascript 功能后方可正常工作，请访问 %{url} 以了解详情。
     noscript_url: https://zh.wikihow.com/%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%8A%E5%90%AF%E7%94%A8-JavaScript
   unsupported_browser:
     title: '更新您的浏览器'
-    download_latest_browser_html: Unfortunately, MashCard has updated features that can't run on this version of your browser.
+    download_latest_browser_html: 真不巧，您的浏览器不支持一些运行 MashCard 所必须的功能。
   mailer:
     footer_message: 您收到这封电子邮件，是因为您在 %{host} 拥有帐户。
     copy_this_url: "如果上面的按钮不起作用，请复制此网址："
@@ -35,14 +35,14 @@ zh-CN:
       domain_invalid: 不是有效的 domain 名称
       uuid_invalid: 不是有效的 uuid
       domain_presence_invalid: 不存在
-      delete_disabled_because_group_pods: You cannot delete a user with group pods
+      delete_disabled_because_group_pods: 您不能删除具有 Group pod 的用户
       InvalidImageUrl: 无效的图片链接。
       too_short:
-        other: is too short (minimum is %{count} characters)
+        other: 太短（最少为 %{count} 个字符）
       too_long:
-        other: is too long (maximum is %{count} characters)
+        other: 太长（最多 %{count} 个字符）
     app_error:
-      not_found_title: Whoops! Lost in MashCard?
+      not_found_title: 哎呀！迷失在 MashCard 中？
       not_found_content: 找不到您要查找的页面。
       server_error_title: 糟糕！服务器错误。
       server_error_content: 我们的服务器暂时出现了故障。
@@ -90,7 +90,7 @@ zh-CN:
       unlocked: '您的账户已成功解锁。请登录后再继续操作。'
     mailer:
       confirmation_instructions:
-        you_can_confirm_your_account_email_through_the_link_below: 'Please confirm this email address for your MashCard account by clicking on the button below'
+        you_can_confirm_your_account_email_through_the_link_below: '请单击下面的按钮为您的 MashCard 帐户确认此电子邮件地址'
         subject: '确认电子邮件'
       reset_password_instructions:
         subject: '重置密码信息'
@@ -105,14 +105,14 @@ zh-CN:
       signed_out: '已成功退出。'
       already_signed_out: '已成功登出。'
   accounts:
-    app_title: MashCard Accounts
+    app_title: MashCard 账户
     provider:
       email_password: Email和密码
     sessions:
       sign_in: 登录
       sign_up: 注册
       reset_password: 重置密码
-      sign_in_to_mashcard: Sign into MashCard
+      sign_in_to_mashcard: 登录到MashCard
       more_login_options: 更多登录方式
       login_via: '使用 %{provider} 登录'
       email: Email
