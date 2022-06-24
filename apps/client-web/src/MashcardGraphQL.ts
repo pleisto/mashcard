@@ -706,7 +706,7 @@ export type Comment = {
   /** created at */
   createdAt: Scalars['ISO8601DateTime']
   /** creator */
-  creator: ThinUser
+  creator: User
   id: Scalars['String']
   /** status */
   status: CommentStatus
@@ -939,7 +939,7 @@ export type DocumentHistories = {
   /** History States */
   histories?: Maybe<Array<DocumentHistory>>
   /** History Users */
-  users?: Maybe<Array<ThinUser>>
+  users?: Maybe<Array<User>>
 }
 
 export type DocumentHistory = {
@@ -959,7 +959,7 @@ export type DocumentPayload = {
   histories?: Maybe<Array<DocumentHistory>>
   operatorId?: Maybe<Scalars['UUID']>
   states?: Maybe<Array<BlockState>>
-  users?: Maybe<Array<ThinUser>>
+  users?: Maybe<Array<User>>
 }
 
 export enum EmbedType {
@@ -1517,19 +1517,6 @@ export enum Statetype {
   Full = 'full',
   /** update */
   Update = 'update'
-}
-
-/** Like podMember but thin */
-export type ThinUser = {
-  __typename?: 'ThinUser'
-  /** Pod Avatar */
-  avatarData?: Maybe<Avatar>
-  /** Like a username, Unique within this instance of MashCard */
-  domain: Scalars['String']
-  /** owner email */
-  email?: Maybe<Scalars['String']>
-  /** Pod Name */
-  name: Scalars['String']
 }
 
 /** Unspash image. */
@@ -2557,7 +2544,7 @@ export type ConversationCommentCreateMutation = {
         createdAt: any
         updatedAt: any
         creator: {
-          __typename?: 'ThinUser'
+          __typename?: 'User'
           name: string
           domain: string
           avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
@@ -2611,7 +2598,7 @@ export type ConversationCommentAppendMutation = {
       createdAt: any
       updatedAt: any
       creator: {
-        __typename?: 'ThinUser'
+        __typename?: 'User'
         name: string
         domain: string
         avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
@@ -2644,7 +2631,7 @@ export type GetConversationCommentsQuery = {
       createdAt: any
       updatedAt: any
       creator: {
-        __typename?: 'ThinUser'
+        __typename?: 'User'
         name: string
         domain: string
         avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
@@ -2903,7 +2890,7 @@ export type DocumentHistoriesQuery = {
   documentHistories?: {
     __typename?: 'DocumentHistories'
     users?: Array<{
-      __typename?: 'ThinUser'
+      __typename?: 'User'
       name: string
       domain: string
       avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null
@@ -2958,7 +2945,7 @@ export type DocumentSubscription = {
     }> | null
     histories?: Array<{ __typename?: 'DocumentHistory'; id: string; createdAt: any; username: string }> | null
     users?: Array<{
-      __typename?: 'ThinUser'
+      __typename?: 'User'
       name: string
       domain: string
       avatarData?: { __typename?: 'Avatar'; url: string; downloadUrl: string; signedId: string } | null

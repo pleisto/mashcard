@@ -24,7 +24,7 @@ const paragraphStyles = css({
 })
 
 export const ParagraphView: FC<ParagraphViewProps> = props => {
-  const { node, getPos, deleteNode } = props
+  const { node, getPos, deleteNode, extension } = props
   const placeholderClassName = placeholderStyle()
   const paragraphClassName = paragraphStyles()
 
@@ -37,6 +37,7 @@ export const ParagraphView: FC<ParagraphViewProps> = props => {
       style={{ position: 'relative' }}
       actionOptions={['cut', 'copy', 'delete', 'transform']}>
       <NodeViewContent
+        {...extension.options.HTMLAttributes}
         draggable={false}
         data-placeholder=""
         as="p"

@@ -43,7 +43,7 @@ const actionButtonStyle = css({
   }
 })
 
-export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, getPos }) => {
+export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, extension, getPos }) => {
   const as = useMemo(() => {
     switch (Number(node.attrs.level)) {
       case 2:
@@ -53,6 +53,7 @@ export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, getPos }) 
       case 4:
         return 'h4'
       case 5:
+      case 6:
         return 'h5'
       case 1:
       default:
@@ -61,6 +62,11 @@ export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, getPos }) 
   }, [node.attrs.level])
 
   const actionButtonClassName = actionButtonStyle({ level: node.attrs.level })
+
+  const HTMLAttributes =
+    (typeof extension.options?.HTMLAttributes === 'function'
+      ? extension.options.HTMLAttributes(node.attrs)
+      : extension.options.HTMLAttributes) ?? {}
 
   return (
     <BlockContainer
@@ -71,7 +77,7 @@ export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, getPos }) 
       getPos={getPos}
       deleteNode={deleteNode}
       contentForCopy={node.textContent}>
-      <NodeViewContent as={as} />
+      <NodeViewContent {...HTMLAttributes} as={as} />
     </BlockContainer>
   )
 }

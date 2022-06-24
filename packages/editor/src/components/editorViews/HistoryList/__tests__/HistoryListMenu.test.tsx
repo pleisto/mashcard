@@ -37,7 +37,8 @@ describe('HistoryListMenu', () => {
     const users = {
       test: {
         name: 'test',
-        domain: 'test'
+        domain: 'test',
+        avatarData: null
       }
     }
 
