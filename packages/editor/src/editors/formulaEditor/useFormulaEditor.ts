@@ -15,9 +15,16 @@ export interface UseFormulaEditorProps {
   editable: boolean
   rootId?: string
   formulaId?: string
+  placeholder?: string
 }
 
-export function useFormulaEditor({ editable, content, rootId, formulaId }: UseFormulaEditorProps): Editor | null {
+export function useFormulaEditor({
+  editable,
+  content,
+  rootId,
+  formulaId,
+  placeholder
+}: UseFormulaEditorProps): Editor | null {
   const editor = useEditor({
     editable,
     autofocus: 'end',
@@ -30,9 +37,7 @@ export function useFormulaEditor({ editable, content, rootId, formulaId }: UseFo
         formulaType: true,
         formulaKeyDown: { formulaId, rootId }
       }),
-      Placeholder.configure({
-        placeholder: 'Add Formula'
-      })
+      ...(placeholder ? [Placeholder.configure({ placeholder })] : [])
     ],
     onFocus: (props: EditorEvents['focus']) => {
       // console.debug('FormulaEditor:onFocus', props)

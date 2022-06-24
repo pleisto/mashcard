@@ -123,6 +123,7 @@ export const useFormula = ({
     editable: true,
     rootId: namespaceId,
     formulaId: variableId,
+    placeholder: formulaIsNormal ? 'Add Formula' : undefined,
     content: inputRef.current.content
   })
 
