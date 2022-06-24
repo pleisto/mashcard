@@ -56,11 +56,13 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
   const block = React.useRef<BlockNew>({ id: blockId })
   const [blockMeta, setBlockMeta] = React.useState<blockMeta>({})
+  const latestMeta = React.useRef<blockMeta>({})
   const [provider, setProvider] = React.useState<blockProvider>()
   const [awarenessInfos, setAwarenessInfos] = React.useState<awarenessInfo[]>([])
 
   const initBlocksToEditor = React.useRef<boolean>(false)
   const blockCommitting = React.useRef<boolean>(false)
+  const blockMetaChanged = React.useRef<boolean>(false)
   const [committing, setCommitting] = React.useState<boolean>(false)
   const updatesToCommit = React.useRef(new Set<Uint8Array>())
 
@@ -153,6 +155,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
         }
       })
       setBlockMeta(meta)
+      latestMeta.current = meta
       MashcardEventBus.dispatch(
         BlockMetaUpdated({
           id: blockId,
@@ -181,6 +184,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
       const statesCount = block.current.statesCount ?? 0
       const stateType = forceFull || statesCount === 0 ? Statetype.Full : Statetype.Update
 
+      const meta = blockMetaChanged.current || stateType === Statetype.Full ? { ...latestMeta.current } : undefined
+
       const commitPromise = blockCommit({
         variables: {
           input: {
@@ -191,7 +196,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             state: base64.stringify(mergedUpdates),
             stateId: stateIdToCommit,
             prevStateId: block.current.stateId ? block.current.stateId : undefined,
-            statesCount
+            statesCount,
+            meta
           }
         }
       })
@@ -230,6 +236,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             devLog('committed, left updates: ', updatesToCommit.current.size)
             blockCommitting.current = false
             if (updatesToCommit.current.size === 0) {
+              blockMetaChanged.current = false
               setCommitting(false)
             } else {
               void commitState(ydoc)
@@ -245,7 +252,9 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
   const setMeta = React.useCallback(
     (newMeta: blockMeta) => {
+      blockMetaChanged.current = true
       if (provider) {
+        setBlockMetaUpdated(newMeta)
         const metaYmap = provider?.document.getMap('meta')
         Object.keys(newMeta).forEach((k: string) => {
           if (newMeta[k]) {
@@ -256,7 +265,6 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             metaYmap.delete(k)
           }
         })
-        setBlockMetaUpdated(newMeta)
       }
     },
     [provider, setBlockMetaUpdated]

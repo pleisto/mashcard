@@ -12,6 +12,8 @@ module Mutations
       argument :state_id, Scalars::UUID, 'state id', required: true
       argument :state_type, Types::Statetype, 'state type', required: true
       argument :states_count, Integer, 'states count', required: true
+      # block data input below
+      argument :meta, Scalars::MetaJson, 'meta', required: false
 
       field :block, Types::Blocks::New, null: true
       field :diff_states, [Types::Blocks::State], 'Differ Block States with current state', null: true
@@ -47,6 +49,12 @@ module Mutations
           state_model.user_id = current_user.id
           Docs::Block.transaction do
             state_model.save!
+
+            if args[:meta]
+              block.meta = args[:meta]
+              block.text = block.meta['title']
+              block.save
+            end
 
             # set block state id when have full state
             if state_model.state_type == 'full'

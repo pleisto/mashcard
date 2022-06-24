@@ -25,6 +25,8 @@ export type Scalars = {
   ISO8601DateTime: any
   /** Represents untyped JSON */
   JSON: any
+  /** Meta Json */
+  MetaJson: any
   /** UUID V4 */
   UUID: string
 }
@@ -178,6 +180,8 @@ export type BlockCommitInput = {
   clientMutationId?: InputMaybe<Scalars['String']>
   /** document id */
   documentId: Scalars['UUID']
+  /** meta */
+  meta?: InputMaybe<Scalars['MetaJson']>
   /** operator id */
   operatorId: Scalars['String']
   /** previous state id */
