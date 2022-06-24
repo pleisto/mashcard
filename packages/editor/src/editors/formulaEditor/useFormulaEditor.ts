@@ -1,5 +1,6 @@
 import React from 'react'
 import { useEditor, JSONContent, EditorEvents, Editor } from '@tiptap/react'
+import { Placeholder } from '@tiptap/extension-placeholder'
 import {
   MashcardEventBus,
   FormulaEditorBlurTrigger,
@@ -26,9 +27,11 @@ export function useFormulaEditor({ editable, content, rootId, formulaId }: UseFo
         document: true,
         text: true,
         paragraph: { native: true },
-        placeholder: { placeholder: 'Add Formula' },
         formulaType: true,
         formulaKeyDown: { formulaId, rootId }
+      }),
+      Placeholder.configure({
+        placeholder: 'Add Formula'
       })
     ],
     onFocus: (props: EditorEvents['focus']) => {
