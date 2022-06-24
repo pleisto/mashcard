@@ -39,7 +39,7 @@ The content of the commit message body should contain:
 
 > Apologies in advance for the extra work required here - this is necessary to comply with the Pleisto's strict open source IP policy.
 
-Before we can use your code, you must sign the [Pleisto Open Source Contributor License Agreement (CLA)](https://cla-assistant.io/brickdoc/brickdoc), which you can do online.
+Before we can use your code, you must sign the [Pleisto Open Source Contributor License Agreement (CLA)](https://cla-assistant.io/mashcard/mashcard), which you can do online.
 The CLA is necessary mainly because you own the copyright to your changes, even after your contribution becomes part of our codebase, so we need your permission to use and distribute your code.
 
 It can be signed now, or right after raising a Pull Request (Credits to CLA-Assistant for their cool, automated CLA form, integrated into the pull request)

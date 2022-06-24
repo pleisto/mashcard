@@ -1,24 +1,22 @@
-# MashCard
+# MashCard - A bicycle of the mind to Internet OS
 
 [![commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![crowdin](https://badges.crowdin.net/mashcard/localized.svg)](https://crowdin.com/project/mashcard)
-[![codecov](https://codecov.io/gh/mashcard/mashcard/branch/main/graph/badge.svg?token=x3u3HXQA0P)](https://codecov.io/gh/mashcard/mashcard)
+[![Crowdin](https://badges.crowdin.net/mashcard/localized.svg)](https://crowdin.com/project/mashcard)[![codecov](https://codecov.io/gh/mashcard/mashcard/branch/main/graph/badge.svg?token=x3u3HXQA0P)](https://codecov.io/gh/mashcard/mashcard)
 [![Linting Code](https://github.com/mashcard/mashcard/actions/workflows/linting.yml/badge.svg)](https://github.com/mashcard/mashcard/mashcard/workflows/linting.yml)
 [![Unit Test](https://github.com/mashcard/mashcard/actions/workflows/unit_test.yml/badge.svg)](https://github.com/mashcard/mashcard/actions/workflows/unit_test.yml)
 
 > :warning: **Note:** This software is currently under active development. Some features may be available in the future, and the API and interface may change.
 
-MashCard is an all-in-one workspace and low-code platform with Compound Document at its core. It's not only an open source alternative to Coda and Notion,
-but also a web3-ready [linked-data](https://www.w3.org/standards/semanticweb/data) storage for improving the productivity of your life and work.
+MashCard is an all-in-one workspace and low-code platform with Compound Document at its core. It's not only an open source alternative to Coda and Notion but also an Internet OS of an age when SaaS is eating the world.
 
-![MashCard Screenshot](https://pub.us-edge.user-owns-data.net/corp/github-growthing/screenshot.png)
+![MashCard Screenshot](https://pub.user-owns-data.net/corp/github-growthing/mashcard-1.0-demo.webp)
 
 ## Highlights
 
-- **Renaissance of the [mashup](<https://en.wikipedia.org/wiki/Mashup_(web_application_hybrid)>)** - MashCard can connect data from multiple sources; it provides not only human-and-human collaboration, but also human-and-machine collaboration.
-- **Use web3 in the present, not wait for the future** - MashCard progressively embraces the web3 ecosystem. You can import any web2.0 data that supports open API into MashCard and then provide it to DApp for use.
-- **First-class formula and spreadsheet support** - Most similar software is built on an airtable-like database metaphor. Still, MashCard thinks a spreadsheet is a choice that best fits the citizen developer's mental model.
-- **Plugin architecture** - MashCard is built on a plugin architecture like WordPress, and it provides a way to extend MashCard's functionality freely.
+- **All your data is under your control** - MashCard is free and open-source software that can be hosted on your own server or from a cloud provider. As a [Solid](https://solidproject.org/) inspired decentralized data store, any access to the structured data and regular files stored can be granted or revoked as needed to any extent.
+- **Meet Human-machine collaboration** - Create applications in the MashCard as if they were documents and apply AI to aid in actions like using excel-like formulas to import live data in apps or calling in external APIs. Enhancing synergy in modern productivity tools is a movement that will give rise to a platform shift where humans and machines complement each other.
+- **Renaissance of the [mashup](<https://en.wikipedia.org/wiki/Mashup_(web_application_hybrid)>)** - Integrate everything into one place, and ensure interoperability between them as easily as copy & paste.
+- **Plugin architecture** - MashCard is an Internet OS with micro-kernel architecture that provides a WordPress-like plugin system to build, customize and express on top of it for an enhanced experience.
 
 ## Demo
 
@@ -42,9 +40,9 @@ MashCard is an open source project and we are very happy to accept community con
 
 ## Copyright/License
 
-Copyright © 2022, Pleisto Inc. - Released under the Apache 2.0 License
+Copyright © 2022, Brickdoc Inc. - Released under the Apache 2.0 License
 
 - All content residing under the "docs/" directory of this repository is licensed under "Creative Commons: CC BY-SA 4.0 license".
 - All third party components incorporated into the MashCard Software are licensed under the original license provided by the owner of the applicable component.
-- All content that resides under the "packages/_", "gems/_" or "plugins/\*" directory of this repository, if that directory exists, is licensed under the license defined in "/LICENSE" in the corresponding directory.
+- All content that resides under the "packages/_", "apps/_" or "plugins/\*" directory of this repository, if that directory exists, is licensed under the license defined in "/LICENSE" in the corresponding directory.
 - Content outside of the above mentioned directories or restrictions above is available under the "Apache 2.0" license as defined below.
