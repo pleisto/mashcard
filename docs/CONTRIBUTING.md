@@ -1,6 +1,6 @@
 # Contribute to MashCard
 
-Welcome and thank you for your interest in contributing to MashCard Community Edition. MashCard is developed in the open and continually improved by our users, contributors, and maintainers. It is because of you that we can bring great software to the community.
+Welcome and thank you for your interest in contributing to MashCard FOSS Edition. MashCard is developed in the open and continually improved by our users, contributors, and maintainers. It is because of you that we can bring great software to the community.
 
 This guide provides information on filing issues and guidelines for open source contributors. Please leave comments/suggestions if you find something is missing or incorrect.
 
