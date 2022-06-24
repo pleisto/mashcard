@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react'
 import { Button, CSS, css, styled, theme } from '@mashcard/design-system'
-import { ToolbarOption } from '../../../ui'
+import { ToolbarSubMenuOption } from '../../../ui'
 import { BubbleItemMeta } from './useBubbleMenuItems'
 import { isBubbleMenuVisible } from '../BubbleMenu'
 import { useEditorContext, useEditorI18n } from '../../../../hooks'
@@ -144,7 +144,7 @@ const BG_COLORS = [
 const PREV_COLOR_KEY = 'PREV_COLOR'
 const PREV_BG_COLOR_KEY = 'PREV_BG_COLOR'
 
-export function useFontColorGroup(): (ToolbarOption | null) {
+export function useFontColorGroup(): ToolbarSubMenuOption | null {
   const { editor } = useEditorContext()
   const [t] = useEditorI18n()
   const fontColorMenuItemStyles = FontColorMenuItemStyles()
@@ -203,10 +203,10 @@ export function useFontColorGroup(): (ToolbarOption | null) {
     }
   }
 
-  const option = useMemo<ToolbarOption | null>(() => {
+  const option = useMemo<ToolbarSubMenuOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
-    const fontColorGroup: ToolbarOption = {
+    const fontColorGroup: ToolbarSubMenuOption = {
       type: 'subMenu',
       name: 'fontColor',
       trigger: 'hover',

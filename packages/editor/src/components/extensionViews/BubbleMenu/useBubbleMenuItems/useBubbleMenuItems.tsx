@@ -5,8 +5,8 @@ import { useNodeGroup } from './useNodeGroup'
 import { useTextStyleGroup } from './useTextStyleGroup'
 import { useLinkGroup } from './useLinkGroup'
 import { useFormulaItem } from './useFormulaItem'
+import { useCommentItemGroup } from './useCommentItemGroup'
 import { useExtraItemsGroup } from './useExtraItemsGroup'
-import { useMoreItemsGroup } from './useMoreItemsGroup'
 
 export const NodeIcon = styled('span', {
   include: ['flexCenter'],
@@ -31,11 +31,10 @@ export interface BubbleItemMeta {
 export function useBubbleMenuItems(): [ToolbarOptionGroup] {
   const [nodeGroup] = useNodeGroup()
   const [textStyleGroup] = useTextStyleGroup()
-  
   const [linkGroup] = useLinkGroup()
   const [formulaItem] = useFormulaItem()
+  const [commentItemGroup] = useCommentItemGroup()
   const [extraItemsGroup] = useExtraItemsGroup()
-  const [moreItemsGroup] = useMoreItemsGroup()
 
   const options = useMemo<ToolbarOptionGroup>(() => {
     const options: ToolbarOptionGroup = []
@@ -45,11 +44,11 @@ export function useBubbleMenuItems(): [ToolbarOptionGroup] {
 
     if (linkGroup) options.push(linkGroup)
     if (formulaItem) options.push(formulaItem)
+    if (commentItemGroup) options.push(commentItemGroup)
     if (extraItemsGroup) options.push(extraItemsGroup)
-    if (moreItemsGroup) options.push(moreItemsGroup)
 
     return options
-  }, [extraItemsGroup, formulaItem, linkGroup, nodeGroup, textStyleGroup])
+  }, [commentItemGroup, formulaItem, linkGroup, nodeGroup, textStyleGroup, extraItemsGroup])
 
   return [options]
 }
