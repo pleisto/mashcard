@@ -29,11 +29,11 @@
 
 [packages/formula/src/types/index.ts:203](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L203)
 
-___
+---
 
 ### <a id="subtype" name="subtype"></a> subType
 
-• **subType**: ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"Block"`` \| ``"null"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"``
+• **subType**: `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"`
 
 #### Overrides
 
@@ -43,11 +43,11 @@ ___
 
 [packages/formula/src/types/index.ts:204](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L204)
 
-___
+---
 
 ### <a id="type" name="type"></a> type
 
-• **type**: ``"Record"``
+• **type**: `"Record"`
 
 #### Overrides
 
@@ -57,7 +57,7 @@ ___
 
 [packages/formula/src/types/index.ts:205](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L205)
 
-___
+---
 
 ### <a id="view" name="view"></a> view
 

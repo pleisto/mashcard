@@ -72,8 +72,8 @@
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name                | Type                                                        |
+| :------------------ | :---------------------------------------------------------- |
 | `__namedParameters` | [`FormulaContextArgs`](../interfaces/FormulaContextArgs.md) |
 
 #### Defined in
@@ -94,7 +94,7 @@
 
 [packages/formula/src/context/context.ts:159](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L159)
 
-___
+---
 
 ### <a id="blocks" name="blocks"></a> blocks
 
@@ -104,7 +104,7 @@ ___
 
 [packages/formula/src/context/context.ts:125](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L125)
 
-___
+---
 
 ### <a id="dirtyformulas" name="dirtyformulas"></a> dirtyFormulas
 
@@ -118,7 +118,7 @@ ___
 
 [packages/formula/src/context/context.ts:118](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L118)
 
-___
+---
 
 ### <a id="domain" name="domain"></a> domain
 
@@ -132,7 +132,7 @@ ___
 
 [packages/formula/src/context/context.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L114)
 
-___
+---
 
 ### <a id="eventlisteners" name="eventlisteners"></a> eventListeners
 
@@ -142,7 +142,7 @@ ___
 
 [packages/formula/src/context/context.ts:161](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L161)
 
-___
+---
 
 ### <a id="features" name="features"></a> features
 
@@ -156,7 +156,7 @@ ___
 
 [packages/formula/src/context/context.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L117)
 
-___
+---
 
 ### <a id="functionclausesmap" name="functionclausesmap"></a> functionClausesMap
 
@@ -166,7 +166,7 @@ ___
 
 [packages/formula/src/context/context.ts:158](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L158)
 
-___
+---
 
 ### <a id="functionweights" name="functionweights"></a> functionWeights
 
@@ -176,7 +176,7 @@ ___
 
 [packages/formula/src/context/context.ts:121](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L121)
 
-___
+---
 
 ### <a id="names" name="names"></a> names
 
@@ -186,7 +186,7 @@ ___
 
 [packages/formula/src/context/context.ts:124](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L124)
 
-___
+---
 
 ### <a id="reservednames" name="reservednames"></a> reservedNames
 
@@ -200,7 +200,7 @@ ___
 
 [packages/formula/src/context/context.ts:160](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L160)
 
-___
+---
 
 ### <a id="reversefunctiondependencies" name="reversefunctiondependencies"></a> reverseFunctionDependencies
 
@@ -214,7 +214,7 @@ ___
 
 [packages/formula/src/context/context.ts:157](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L157)
 
-___
+---
 
 ### <a id="reversevariabledependencies" name="reversevariabledependencies"></a> reverseVariableDependencies
 
@@ -228,7 +228,7 @@ ___
 
 [packages/formula/src/context/context.ts:156](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L156)
 
-___
+---
 
 ### <a id="spreadsheets" name="spreadsheets"></a> spreadsheets
 
@@ -238,7 +238,7 @@ ___
 
 [packages/formula/src/context/context.ts:123](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L123)
 
-___
+---
 
 ### <a id="tickkey" name="tickkey"></a> tickKey
 
@@ -248,7 +248,7 @@ ___
 
 [packages/formula/src/context/context.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L115)
 
-___
+---
 
 ### <a id="ticktimeout" name="ticktimeout"></a> tickTimeout
 
@@ -258,17 +258,17 @@ ___
 
 [packages/formula/src/context/context.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L116)
 
-___
+---
 
 ### <a id="variablenamecounter" name="variablenamecounter"></a> variableNameCounter
 
-• **variableNameCounter**: `Record`<``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"Block"`` \| ``"null"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"``, `Record`<`string`, `number`\>\>
+• **variableNameCounter**: `Record`<`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"`, `Record`<`string`, `number`\>\>
 
 #### Defined in
 
 [packages/formula/src/context/context.ts:126](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L126)
 
-___
+---
 
 ### <a id="variableweights" name="variableweights"></a> variableWeights
 
@@ -278,7 +278,7 @@ ___
 
 [packages/formula/src/context/context.ts:122](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L122)
 
-___
+---
 
 ### <a id="variables" name="variables"></a> variables
 
@@ -288,7 +288,7 @@ ___
 
 [packages/formula/src/context/context.ts:119](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L119)
 
-___
+---
 
 ### <a id="viewrenders" name="viewrenders"></a> viewRenders
 
@@ -298,7 +298,7 @@ ___
 
 [packages/formula/src/context/context.ts:120](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L120)
 
-___
+---
 
 ### <a id="instance" name="instance"></a> instance
 
@@ -326,7 +326,7 @@ ContextInterface.cleanup
 
 [packages/formula/src/context/context.ts:238](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L238)
 
-___
+---
 
 ### <a id="commitdirty" name="commitdirty"></a> commitDirty
 
@@ -340,7 +340,7 @@ ___
 
 [packages/formula/src/context/context.ts:489](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L489)
 
-___
+---
 
 ### <a id="commitvariable" name="commitvariable"></a> commitVariable
 
@@ -348,9 +348,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
+| Name                         | Type                                                      |
+| :--------------------------- | :-------------------------------------------------------- |
+| `__namedParameters`          | `Object`                                                  |
 | `__namedParameters.variable` | [`VariableInterface`](../interfaces/VariableInterface.md) |
 
 #### Returns
@@ -365,7 +365,7 @@ ___
 
 [packages/formula/src/context/context.ts:424](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L424)
 
-___
+---
 
 ### <a id="completions" name="completions"></a> completions
 
@@ -373,10 +373,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `namespaceId` | `string` |
-| `variableId` | `undefined` \| `string` |
+| Name          | Type                    |
+| :------------ | :---------------------- |
+| `namespaceId` | `string`                |
+| `variableId`  | `undefined` \| `string` |
 
 #### Returns
 
@@ -390,7 +390,7 @@ ___
 
 [packages/formula/src/context/context.ts:254](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L254)
 
-___
+---
 
 ### <a id="findblockbyid" name="findblockbyid"></a> findBlockById
 
@@ -398,8 +398,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `blockId` | `string` |
 
 #### Returns
@@ -414,7 +414,7 @@ ___
 
 [packages/formula/src/context/context.ts:289](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L289)
 
-___
+---
 
 ### <a id="findcolumn" name="findcolumn"></a> findColumn
 
@@ -422,10 +422,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `spreadsheetId` | `string` |
-| `key` | [`FindKey`](../interfaces/FindKey.md) |
+| Name            | Type                                  |
+| :-------------- | :------------------------------------ |
+| `spreadsheetId` | `string`                              |
+| `key`           | [`FindKey`](../interfaces/FindKey.md) |
 
 #### Returns
 
@@ -439,7 +439,7 @@ ___
 
 [packages/formula/src/context/context.ts:369](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L369)
 
-___
+---
 
 ### <a id="findfunctionclause" name="findfunctionclause"></a> findFunctionClause
 
@@ -447,10 +447,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type     |
+| :------ | :------- |
 | `group` | `string` |
-| `name` | `string` |
+| `name`  | `string` |
 
 #### Returns
 
@@ -464,7 +464,7 @@ ___
 
 [packages/formula/src/context/context.ts:467](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L467)
 
-___
+---
 
 ### <a id="findnames" name="findnames"></a> findNames
 
@@ -472,10 +472,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name          | Type     |
+| :------------ | :------- |
 | `namespaceId` | `string` |
-| `name` | `string` |
+| `name`        | `string` |
 
 #### Returns
 
@@ -489,7 +489,7 @@ ___
 
 [packages/formula/src/context/context.ts:309](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L309)
 
-___
+---
 
 ### <a id="findrow" name="findrow"></a> findRow
 
@@ -497,10 +497,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `spreadsheetId` | `string` |
-| `key` | [`FindKey`](../interfaces/FindKey.md) |
+| Name            | Type                                  |
+| :-------------- | :------------------------------------ |
+| `spreadsheetId` | `string`                              |
+| `key`           | [`FindKey`](../interfaces/FindKey.md) |
 
 #### Returns
 
@@ -514,7 +514,7 @@ ___
 
 [packages/formula/src/context/context.ts:375](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L375)
 
-___
+---
 
 ### <a id="findspreadsheet" name="findspreadsheet"></a> findSpreadsheet
 
@@ -522,8 +522,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name                | Type                                  |
+| :------------------ | :------------------------------------ |
 | `__namedParameters` | [`FindKey`](../interfaces/FindKey.md) |
 
 #### Returns
@@ -538,7 +538,7 @@ ___
 
 [packages/formula/src/context/context.ts:359](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L359)
 
-___
+---
 
 ### <a id="findvariablebyid" name="findvariablebyid"></a> findVariableById
 
@@ -546,10 +546,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name          | Type     |
+| :------------ | :------- |
 | `namespaceId` | `string` |
-| `variableId` | `string` |
+| `variableId`  | `string` |
 
 #### Returns
 
@@ -563,7 +563,7 @@ ___
 
 [packages/formula/src/context/context.ts:408](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L408)
 
-___
+---
 
 ### <a id="findvariablebyname" name="findvariablebyname"></a> findVariableByName
 
@@ -571,10 +571,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name          | Type     |
+| :------------ | :------- |
 | `namespaceId` | `string` |
-| `name` | `string` |
+| `name`        | `string` |
 
 #### Returns
 
@@ -588,7 +588,7 @@ ___
 
 [packages/formula/src/context/context.ts:413](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L413)
 
-___
+---
 
 ### <a id="findviewrender" name="findviewrender"></a> findViewRender
 
@@ -596,8 +596,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name       | Type     |
+| :--------- | :------- |
 | `viewType` | `string` |
 
 #### Returns
@@ -612,22 +612,22 @@ ___
 
 [packages/formula/src/context/context.ts:285](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L285)
 
-___
+---
 
 ### <a id="getdefaultvariablename" name="getdefaultvariablename"></a> getDefaultVariableName
 
-▸ **getDefaultVariableName**(`namespaceId`, `type`): \`function${number}\` \| \`block${number}\` \| \`null${number}\` \| \`void${number}\` \| \`str${number}\` \| \`num${number}\` \| \`bool${number}\` \| \`cst${number}\` \| \`record${number}\` \| \`array${number}\` \| \`date${number}\` \| \`blank${number}\` \| \`column${number}\` \| \`row${number}\` \| \`cell${number}\` \| \`range${number}\` \| \`var${number}\` \| \`error${number}\` \| \`predicate${number}\` \| \`spreadsheet${number}\` \| \`reference${number}\` \| \`button${number}\` \| \`switch${number}\` \| \`select${number}\` \| \`input${number}\` \| \`radio${number}\` \| \`rate${number}\` \| \`slider${number}\` \| \`pending${number}\` \| \`waiting${number}\` \| \`noPersist${number}\`
+▸ **getDefaultVariableName**(`namespaceId`, `type`): \`function${number}\` \| \`null${number}\` \| \`block${number}\` \| \`void${number}\` \| \`array${number}\` \| \`spreadsheet${number}\` \| \`input${number}\` \| \`column${number}\` \| \`cst${number}\` \| \`predicate${number}\` \| \`range${number}\` \| \`record${number}\` \| \`str${number}\` \| \`num${number}\` \| \`bool${number}\` \| \`date${number}\` \| \`blank${number}\` \| \`row${number}\` \| \`cell${number}\` \| \`var${number}\` \| \`error${number}\` \| \`reference${number}\` \| \`button${number}\` \| \`switch${number}\` \| \`select${number}\` \| \`radio${number}\` \| \`rate${number}\` \| \`slider${number}\` \| \`pending${number}\` \| \`waiting${number}\` \| \`noPersist${number}\`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `namespaceId` | `string` |
-| `type` | ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"Block"`` \| ``"null"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"`` |
+| Name          | Type                                                                                                                                                                                                                                                                                                                                                                                 |
+| :------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `namespaceId` | `string`                                                                                                                                                                                                                                                                                                                                                                             |
+| `type`        | `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"` |
 
 #### Returns
 
-\`function${number}\` \| \`block${number}\` \| \`null${number}\` \| \`void${number}\` \| \`str${number}\` \| \`num${number}\` \| \`bool${number}\` \| \`cst${number}\` \| \`record${number}\` \| \`array${number}\` \| \`date${number}\` \| \`blank${number}\` \| \`column${number}\` \| \`row${number}\` \| \`cell${number}\` \| \`range${number}\` \| \`var${number}\` \| \`error${number}\` \| \`predicate${number}\` \| \`spreadsheet${number}\` \| \`reference${number}\` \| \`button${number}\` \| \`switch${number}\` \| \`select${number}\` \| \`input${number}\` \| \`radio${number}\` \| \`rate${number}\` \| \`slider${number}\` \| \`pending${number}\` \| \`waiting${number}\` \| \`noPersist${number}\`
+\`function${number}\` \| \`null${number}\` \| \`block${number}\` \| \`void${number}\` \| \`array${number}\` \| \`spreadsheet${number}\` \| \`input${number}\` \| \`column${number}\` \| \`cst${number}\` \| \`predicate${number}\` \| \`range${number}\` \| \`record${number}\` \| \`str${number}\` \| \`num${number}\` \| \`bool${number}\` \| \`date${number}\` \| \`blank${number}\` \| \`row${number}\` \| \`cell${number}\` \| \`var${number}\` \| \`error${number}\` \| \`reference${number}\` \| \`button${number}\` \| \`switch${number}\` \| \`select${number}\` \| \`radio${number}\` \| \`rate${number}\` \| \`slider${number}\` \| \`pending${number}\` \| \`waiting${number}\` \| \`noPersist${number}\`
 
 #### Implementation of
 
@@ -637,7 +637,7 @@ ___
 
 [packages/formula/src/context/context.ts:276](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L276)
 
-___
+---
 
 ### <a id="invoke" name="invoke"></a> invoke
 
@@ -645,11 +645,11 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `name` | `string` |
-| `ctx` | [`FunctionContext`](../interfaces/FunctionContext.md) |
-| `...args` | `any`[] |
+| Name      | Type                                                  |
+| :-------- | :---------------------------------------------------- |
+| `name`    | `string`                                              |
+| `ctx`     | [`FunctionContext`](../interfaces/FunctionContext.md) |
+| `...args` | `any`[]                                               |
 
 #### Returns
 
@@ -663,7 +663,7 @@ ___
 
 [packages/formula/src/context/context.ts:245](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L245)
 
-___
+---
 
 ### <a id="listvariables" name="listvariables"></a> listVariables
 
@@ -671,8 +671,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name          | Type     |
+| :------------ | :------- |
 | `namespaceId` | `string` |
 
 #### Returns
@@ -687,7 +687,7 @@ ___
 
 [packages/formula/src/context/context.ts:420](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L420)
 
-___
+---
 
 ### <a id="parsecodefragments" name="parsecodefragments"></a> parseCodeFragments
 
@@ -695,8 +695,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type     |
+| :------ | :------- |
 | `input` | `string` |
 
 #### Returns
@@ -707,7 +707,7 @@ ___
 
 [packages/formula/src/context/context.ts:518](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L518)
 
-___
+---
 
 ### <a id="removeblock" name="removeblock"></a> removeBlock
 
@@ -715,8 +715,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `blockId` | `string` |
 
 #### Returns
@@ -731,7 +731,7 @@ ___
 
 [packages/formula/src/context/context.ts:300](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L300)
 
-___
+---
 
 ### <a id="removename" name="removename"></a> removeName
 
@@ -739,8 +739,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name | Type     |
+| :--- | :------- |
 | `id` | `string` |
 
 #### Returns
@@ -755,7 +755,7 @@ ___
 
 [packages/formula/src/context/context.ts:337](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L337)
 
-___
+---
 
 ### <a id="removespreadsheet" name="removespreadsheet"></a> removeSpreadsheet
 
@@ -763,8 +763,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name            | Type     |
+| :-------------- | :------- |
 | `spreadsheetId` | `string` |
 
 #### Returns
@@ -779,7 +779,7 @@ ___
 
 [packages/formula/src/context/context.ts:400](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L400)
 
-___
+---
 
 ### <a id="removevariable" name="removevariable"></a> removeVariable
 
@@ -787,10 +787,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name          | Type     |
+| :------------ | :------- |
 | `namespaceId` | `string` |
-| `variableId` | `string` |
+| `variableId`  | `string` |
 
 #### Returns
 
@@ -804,7 +804,7 @@ ___
 
 [packages/formula/src/context/context.ts:456](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L456)
 
-___
+---
 
 ### <a id="resetformula" name="resetformula"></a> resetFormula
 
@@ -822,7 +822,7 @@ ContextInterface.resetFormula
 
 [packages/formula/src/context/context.ts:474](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L474)
 
-___
+---
 
 ### <a id="setblock" name="setblock"></a> setBlock
 
@@ -830,10 +830,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `blockId` | `string` |
-| `name` | `string` |
+| `name`    | `string` |
 
 #### Returns
 
@@ -843,7 +843,7 @@ ___
 
 [packages/formula/src/context/context.ts:293](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L293)
 
-___
+---
 
 ### <a id="setname" name="setname"></a> setName
 
@@ -851,8 +851,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name             | Type                                                                |
+| :--------------- | :------------------------------------------------------------------ |
 | `nameDependency` | [`NameDependencyWithKind`](../interfaces/NameDependencyWithKind.md) |
 
 #### Returns
@@ -867,7 +867,7 @@ ___
 
 [packages/formula/src/context/context.ts:316](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L316)
 
-___
+---
 
 ### <a id="setspreadsheet" name="setspreadsheet"></a> setSpreadsheet
 
@@ -875,8 +875,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name          | Type                                                  |
+| :------------ | :---------------------------------------------------- |
 | `spreadsheet` | [`SpreadsheetType`](../interfaces/SpreadsheetType.md) |
 
 #### Returns
@@ -891,7 +891,7 @@ ___
 
 [packages/formula/src/context/context.ts:381](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L381)
 
-___
+---
 
 ### <a id="tick" name="tick"></a> tick
 
@@ -899,8 +899,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type  |
+| :------ | :---- |
 | `state` | `any` |
 
 #### Returns
@@ -911,7 +911,7 @@ ___
 
 [packages/formula/src/context/context.ts:482](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L482)
 
-___
+---
 
 ### <a id="variablecount" name="variablecount"></a> variableCount
 
@@ -929,7 +929,7 @@ ___
 
 [packages/formula/src/context/context.ts:281](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L281)
 
-___
+---
 
 ### <a id="getinstance" name="getinstance"></a> getInstance
 
@@ -937,8 +937,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                                        |
+| :----- | :---------------------------------------------------------- |
 | `args` | [`FormulaContextArgs`](../interfaces/FormulaContextArgs.md) |
 
 #### Returns

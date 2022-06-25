@@ -2,7 +2,7 @@
 
 ## Hierarchy
 
-- `Omit`<[`FunctionContext`](FunctionContext.md), ``"meta"``\>
+- `Omit`<[`FunctionContext`](FunctionContext.md), `"meta"`\>
 
   ↳ **`MakeContextResult`**
 
@@ -32,7 +32,7 @@ Omit.formulaContext
 
 [packages/formula/src/types/index.ts:541](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L541)
 
-___
+---
 
 ### <a id="interpretcontext" name="interpretcontext"></a> interpretContext
 
@@ -54,8 +54,8 @@ Omit.interpretContext
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                   |
+| :----- | :------------------------------------- |
 | `args` | [`BaseTestCase`](BaseTestCase.md)<{}\> |
 
 #### Returns
@@ -64,9 +64,9 @@ Omit.interpretContext
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:200](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L200)
+[packages/formula/src/tests/testType.ts:203](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L203)
 
-___
+---
 
 ### <a id="fetchuuid" name="fetchuuid"></a> fetchUUID
 
@@ -74,8 +74,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                        |
+| :----- | :------------------------------------------ |
 | `uuid` | [`MockedUUIDV4`](../README.md#mockeduuidv4) |
 
 #### Returns
@@ -84,4 +84,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:201](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L201)
+[packages/formula/src/tests/testType.ts:204](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L204)

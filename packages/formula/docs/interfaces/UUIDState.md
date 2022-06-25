@@ -19,9 +19,9 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:51](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L51)
+[packages/formula/src/tests/testType.ts:52](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L52)
 
-___
+---
 
 ### <a id="counter" name="counter"></a> counter
 
@@ -29,7 +29,7 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:50](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L50)
+[packages/formula/src/tests/testType.ts:51](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L51)
 
 ## Methods
 
@@ -39,8 +39,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type     |
+| :------- | :------- |
 | `number` | `number` |
 
 #### Returns
@@ -49,4 +49,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:49](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L49)
+[packages/formula/src/tests/testType.ts:50](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L50)

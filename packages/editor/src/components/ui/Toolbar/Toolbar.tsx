@@ -79,7 +79,7 @@ const ToolbarMenu = styled('ul', {
   flexDirection: 'row',
   listStyle: 'none',
   margin: 0,
-  padding: '.375rem .5rem',
+  padding: '.5rem .5rem',
   'li + li': {
     marginLeft: 4
   },
