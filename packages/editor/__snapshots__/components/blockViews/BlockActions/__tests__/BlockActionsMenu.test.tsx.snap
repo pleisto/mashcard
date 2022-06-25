@@ -41,7 +41,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
       </div>
     </li>
     <div
-      class="mc-c-AsWAM"
+      class="mc-c-fXLRbW"
     >
       <li
         aria-controls="subMenu"
@@ -194,7 +194,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
       </li>
     </ul>
     <div
-      class="mc-c-AsWAM"
+      class="mc-c-fXLRbW"
     >
       <li
         aria-controls="menu-add-block"

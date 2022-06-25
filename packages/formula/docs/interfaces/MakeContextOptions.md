@@ -16,9 +16,9 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:194](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L194)
+[packages/formula/src/tests/testType.ts:197](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L197)
 
-___
+---
 
 ### <a id="pages" name="pages"></a> pages
 
@@ -26,9 +26,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:196](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L196)
+[packages/formula/src/tests/testType.ts:199](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L199)
 
-___
+---
 
 ### <a id="uuidfunction" name="uuidfunction"></a> uuidFunction
 
@@ -40,8 +40,8 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type     |
+| :------- | :------- |
 | `number` | `number` |
 
 ##### Returns
@@ -50,4 +50,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:195](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L195)
+[packages/formula/src/tests/testType.ts:198](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L198)

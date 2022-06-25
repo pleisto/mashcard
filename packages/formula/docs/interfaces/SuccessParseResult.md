@@ -33,7 +33,7 @@
 
 [packages/formula/src/grammar/core.ts:39](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L39)
 
-___
+---
 
 ### <a id="errormessages" name="errormessages"></a> errorMessages
 
@@ -47,7 +47,7 @@ ___
 
 [packages/formula/src/grammar/core.ts:44](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L44)
 
-___
+---
 
 ### <a id="errortype" name="errortype"></a> errorType
 
@@ -61,7 +61,7 @@ ___
 
 [packages/formula/src/grammar/core.ts:37](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L37)
 
-___
+---
 
 ### <a id="expressiontype" name="expressiontype"></a> expressionType
 
@@ -75,7 +75,7 @@ ___
 
 [packages/formula/src/grammar/core.ts:36](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L36)
 
-___
+---
 
 ### <a id="inputimage" name="inputimage"></a> inputImage
 
@@ -89,7 +89,7 @@ ___
 
 [packages/formula/src/grammar/core.ts:34](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L34)
 
-___
+---
 
 ### <a id="parseimage" name="parseimage"></a> parseImage
 
@@ -103,11 +103,11 @@ ___
 
 [packages/formula/src/grammar/core.ts:35](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L35)
 
-___
+---
 
 ### <a id="success" name="success"></a> success
 
-• **success**: ``true``
+• **success**: `true`
 
 #### Overrides
 
@@ -117,11 +117,11 @@ ___
 
 [packages/formula/src/grammar/core.ts:43](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L43)
 
-___
+---
 
 ### <a id="variableparseresult" name="variableparseresult"></a> variableParseResult
 
-• **variableParseResult**: [`VariableParseResult`](VariableParseResult.md) & { `cst`: `CstNode` ; `kind`: ``"constant"`` \| ``"expression"`` \| ``"unknown"`` ; `valid`: ``true``  }
+• **variableParseResult**: [`VariableParseResult`](VariableParseResult.md) & { `cst`: `CstNode` ; `kind`: `"unknown"` \| `"expression"` \| `"constant"` ; `valid`: `true` }
 
 #### Overrides
 

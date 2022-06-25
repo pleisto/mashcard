@@ -18,7 +18,7 @@
 
 [packages/formula/src/controls/types.ts:60](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L60)
 
-___
+---
 
 ### <a id="errors" name="errors"></a> errors
 
@@ -28,11 +28,11 @@ ___
 
 [packages/formula/src/controls/types.ts:58](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L58)
 
-___
+---
 
 ### <a id="firstargumenttype" name="firstargumenttype"></a> firstArgumentType
 
-• **firstArgumentType**: `undefined` \| ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"Block"`` \| ``"null"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"``
+• **firstArgumentType**: `undefined` \| `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"`
 
 #### Defined in
 

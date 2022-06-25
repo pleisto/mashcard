@@ -3,7 +3,7 @@
 exports[`Toolbar matches snapshot correctly 1`] = `
 <div>
   <ul
-    class="mc-c-bXXHAL mc-c-bXXHAL-fIIeSn-type-default"
+    class="mc-c-gSJguP mc-c-gSJguP-fIIeSn-type-default"
     role="menu"
   >
     <ul

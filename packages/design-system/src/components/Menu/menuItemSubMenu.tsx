@@ -27,7 +27,18 @@ const SubMenuRightArrow = styled(ArrowRight, {
 })
 
 const SubMenuItemWrapper = styled('div', {
-  display: 'inline-block'
+  display: 'inline-block',
+  position: 'relative',
+  '&::after': {
+    content: '',
+    display: 'block',
+    height: '100%',
+    width: '10px',
+    position: 'absolute',
+    right: -10,
+    top: 0,
+    zIndex: '-1'
+  }
 })
 
 // chrome does not render the nested backfilter properly, use this container's pseudo-element to solve this problem

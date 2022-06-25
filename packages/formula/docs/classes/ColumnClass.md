@@ -44,12 +44,12 @@
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `spreadsheet` | [`SpreadsheetType`](../interfaces/SpreadsheetType.md) |
-| `__namedParameters` | [`Column`](../interfaces/Column.md) |
-| `logic` | `boolean` |
-| `findKey` | [`FindKey`](../interfaces/FindKey.md) |
+| Name                | Type                                                  |
+| :------------------ | :---------------------------------------------------- |
+| `spreadsheet`       | [`SpreadsheetType`](../interfaces/SpreadsheetType.md) |
+| `__namedParameters` | [`Column`](../interfaces/Column.md)                   |
+| `logic`             | `boolean`                                             |
+| `findKey`           | [`FindKey`](../interfaces/FindKey.md)                 |
 
 #### Defined in
 
@@ -69,7 +69,7 @@
 
 [packages/formula/src/controls/column.ts:21](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L21)
 
-___
+---
 
 ### <a id="displayindex" name="displayindex"></a> displayIndex
 
@@ -83,7 +83,7 @@ ___
 
 [packages/formula/src/controls/column.ts:29](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L29)
 
-___
+---
 
 ### <a id="findkey" name="findkey"></a> findKey
 
@@ -97,7 +97,7 @@ ___
 
 [packages/formula/src/controls/column.ts:25](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L25)
 
-___
+---
 
 ### <a id="index" name="index"></a> index
 
@@ -111,7 +111,7 @@ ___
 
 [packages/formula/src/controls/column.ts:26](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L26)
 
-___
+---
 
 ### <a id="logic" name="logic"></a> logic
 
@@ -125,7 +125,7 @@ ___
 
 [packages/formula/src/controls/column.ts:31](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L31)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -139,7 +139,7 @@ ___
 
 [packages/formula/src/controls/column.ts:22](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L22)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -153,7 +153,7 @@ ___
 
 [packages/formula/src/controls/column.ts:23](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L23)
 
-___
+---
 
 ### <a id="sort" name="sort"></a> sort
 
@@ -167,7 +167,7 @@ ___
 
 [packages/formula/src/controls/column.ts:27](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L27)
 
-___
+---
 
 ### <a id="spreadsheet" name="spreadsheet"></a> spreadsheet
 
@@ -181,7 +181,7 @@ ___
 
 [packages/formula/src/controls/column.ts:30](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L30)
 
-___
+---
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
 
@@ -195,7 +195,7 @@ ___
 
 [packages/formula/src/controls/column.ts:24](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L24)
 
-___
+---
 
 ### <a id="title" name="title"></a> title
 
@@ -227,7 +227,7 @@ ___
 
 [packages/formula/src/controls/column.ts:60](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L60)
 
-___
+---
 
 ### <a id="display" name="display"></a> display
 
@@ -245,7 +245,7 @@ ___
 
 [packages/formula/src/controls/column.ts:52](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L52)
 
-___
+---
 
 ### <a id="eventdependency" name="eventdependency"></a> eventDependency
 
@@ -253,8 +253,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name                | Type                                                              |
+| :------------------ | :---------------------------------------------------------------- |
 | `__namedParameters` | [`getEventDependencyInput`](../README.md#geteventdependencyinput) |
 
 #### Returns
@@ -269,7 +269,7 @@ ColumnType.eventDependency
 
 [packages/formula/src/controls/column.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L111)
 
-___
+---
 
 ### <a id="findcellbynumber" name="findcellbynumber"></a> findCellByNumber
 
@@ -277,10 +277,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                                    |
+| :----- | :------------------------------------------------------ |
 | `meta` | [`VariableMetadata`](../interfaces/VariableMetadata.md) |
-| `name` | `string` |
+| `name` | `string`                                                |
 
 #### Returns
 
@@ -290,7 +290,7 @@ ___
 
 [packages/formula/src/controls/column.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L77)
 
-___
+---
 
 ### <a id="handlecodefragments" name="handlecodefragments"></a> handleCodeFragments
 
@@ -298,21 +298,21 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `visitor` | [`CodeFragmentVisitor`](CodeFragmentVisitor.md) |
-| `name` | `string` |
-| `codeFragments` | [`CodeFragment`](../README.md#codefragment)[] |
+| Name            | Type                                            |
+| :-------------- | :---------------------------------------------- |
+| `visitor`       | [`CodeFragmentVisitor`](CodeFragmentVisitor.md) |
+| `name`          | `string`                                        |
+| `codeFragments` | [`CodeFragment`](../README.md#codefragment)[]   |
 
 #### Returns
 
 `Object`
 
-| Name | Type |
-| :------ | :------ |
-| `codeFragments` | [`CodeFragment`](../README.md#codefragment)[] |
-| `errors` | [`ErrorMessage`](../interfaces/ErrorMessage.md)[] |
-| `firstArgumentType` | `undefined` \| ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"Block"`` \| ``"null"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"`` |
+| Name                | Type                                                                                                                                                                                                                                                                                                                                                                                                |
+| :------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `codeFragments`     | [`CodeFragment`](../README.md#codefragment)[]                                                                                                                                                                                                                                                                                                                                                       |
+| `errors`            | [`ErrorMessage`](../interfaces/ErrorMessage.md)[]                                                                                                                                                                                                                                                                                                                                                   |
+| `firstArgumentType` | `undefined` \| `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"` |
 
 #### Implementation of
 
@@ -322,7 +322,7 @@ ColumnType.handleCodeFragments
 
 [packages/formula/src/controls/column.ts:142](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L142)
 
-___
+---
 
 ### <a id="handleinterpret" name="handleinterpret"></a> handleInterpret
 
@@ -330,10 +330,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name          | Type                                          |
+| :------------ | :-------------------------------------------- |
 | `interpreter` | [`FormulaInterpreter`](FormulaInterpreter.md) |
-| `name` | `string` |
+| `name`        | `string`                                      |
 
 #### Returns
 
@@ -347,7 +347,7 @@ ColumnType.handleInterpret
 
 [packages/formula/src/controls/column.ts:138](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L138)
 
-___
+---
 
 ### <a id="key" name="key"></a> key
 
@@ -365,7 +365,7 @@ ___
 
 [packages/formula/src/controls/column.ts:56](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L56)
 
-___
+---
 
 ### <a id="newcell" name="newcell"></a> newCell
 
@@ -373,10 +373,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `cell` | [`Cell`](../interfaces/Cell.md) |
-| `rowKey` | `string` |
+| Name     | Type                            |
+| :------- | :------------------------------ |
+| `cell`   | [`Cell`](../interfaces/Cell.md) |
+| `rowKey` | `string`                        |
 
 #### Returns
 
@@ -390,15 +390,15 @@ ___
 
 [packages/formula/src/controls/column.ts:103](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L103)
 
-___
+---
 
 ### <a id="persistence" name="persistence"></a> persistence
 
-▸ **persistence**(): [`Column`](../interfaces/Column.md) & { `findKey`: [`FindKey`](../interfaces/FindKey.md)  }
+▸ **persistence**(): [`Column`](../interfaces/Column.md) & { `findKey`: [`FindKey`](../interfaces/FindKey.md) }
 
 #### Returns
 
-[`Column`](../interfaces/Column.md) & { `findKey`: [`FindKey`](../interfaces/FindKey.md)  }
+[`Column`](../interfaces/Column.md) & { `findKey`: [`FindKey`](../interfaces/FindKey.md) }
 
 #### Defined in
 

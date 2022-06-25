@@ -3,6 +3,7 @@ import { RemoveAnchorMark, AnchorMark, More } from '@mashcard/design-icons'
 import { ToolbarSubMenuOption, ToolbarGroupOption } from '../../../ui/Toolbar'
 import { isBubbleMenuVisible } from '../BubbleMenu'
 import { useEditorContext, useEditorI18n } from '../../../../hooks'
+import { NodeIcon } from './useBubbleMenuItems'
 
 export function useExtraItemsGroup(): [ToolbarGroupOption | null] {
   const { editor } = useEditorContext()
@@ -23,7 +24,11 @@ export function useExtraItemsGroup(): [ToolbarGroupOption | null] {
         moreItems.push({
           type: 'item',
           name: 'removeAnchor',
-          icon: <RemoveAnchorMark />,
+          icon: (
+            <NodeIcon>
+              <RemoveAnchorMark />
+            </NodeIcon>
+          ),
           label: t('bubble_menu.anchor.remove'),
           onAction: () => editor.chain().focus().unsetAnchor().run()
         })
@@ -31,7 +36,11 @@ export function useExtraItemsGroup(): [ToolbarGroupOption | null] {
         moreItems.push({
           type: 'item',
           name: 'anchor',
-          icon: <AnchorMark />,
+          icon: (
+            <NodeIcon>
+              <AnchorMark />
+            </NodeIcon>
+          ),
           label: t('bubble_menu.anchor.add'),
           onAction: () => editor.chain().focus().setAnchor().run()
         })

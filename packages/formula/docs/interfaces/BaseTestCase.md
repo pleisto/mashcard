@@ -2,9 +2,9 @@
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 ## Table of contents
 
@@ -32,9 +32,9 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L108)
+[packages/formula/src/tests/testType.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L111)
 
-___
+---
 
 ### <a id="definition" name="definition"></a> definition
 
@@ -42,9 +42,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:105](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L105)
+[packages/formula/src/tests/testType.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L108)
 
-___
+---
 
 ### <a id="expected" name="expected"></a> expected
 
@@ -52,9 +52,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L110)
+[packages/formula/src/tests/testType.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L113)
 
-___
+---
 
 ### <a id="groupoptions" name="groupoptions"></a> groupOptions
 
@@ -62,9 +62,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L107)
+[packages/formula/src/tests/testType.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L110)
 
-___
+---
 
 ### <a id="jesttitle" name="jesttitle"></a> jestTitle
 
@@ -72,9 +72,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L117)
+[packages/formula/src/tests/testType.ts:120](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L120)
 
-___
+---
 
 ### <a id="label" name="label"></a> label
 
@@ -82,9 +82,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L109)
+[packages/formula/src/tests/testType.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L112)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -92,9 +92,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L113)
+[packages/formula/src/tests/testType.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L116)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -102,9 +102,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L111)
+[packages/formula/src/tests/testType.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L114)
 
-___
+---
 
 ### <a id="newabbrevinput" name="newabbrevinput"></a> newAbbrevInput
 
@@ -112,9 +112,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L106)
+[packages/formula/src/tests/testType.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L109)
 
-___
+---
 
 ### <a id="position" name="position"></a> position
 
@@ -122,9 +122,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L115)
+[packages/formula/src/tests/testType.ts:118](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L118)
 
-___
+---
 
 ### <a id="richtype" name="richtype"></a> richType
 
@@ -132,9 +132,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L114)
+[packages/formula/src/tests/testType.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L117)
 
-___
+---
 
 ### <a id="todomessage" name="todomessage"></a> todoMessage
 
@@ -142,9 +142,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L116)
+[packages/formula/src/tests/testType.ts:119](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L119)
 
-___
+---
 
 ### <a id="variableid" name="variableid"></a> variableId
 
@@ -152,4 +152,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L112)
+[packages/formula/src/tests/testType.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L115)

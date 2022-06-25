@@ -15,9 +15,9 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:189](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L189)
+[packages/formula/src/tests/testType.ts:192](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L192)
 
-___
+---
 
 ### <a id="testcases" name="testcases"></a> testCases
 
@@ -25,4 +25,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:190](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L190)
+[packages/formula/src/tests/testType.ts:193](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L193)
