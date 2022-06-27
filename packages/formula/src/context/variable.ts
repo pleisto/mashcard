@@ -27,7 +27,8 @@ import {
   FormulaContextNameRemove,
   FormulaTaskCompleted,
   FormulaTickViaId,
-  FormulaUpdatedViaId
+  FormulaUpdatedViaId,
+  FormulaVariableDependencyUpdated
 } from '../events'
 
 const MAX_LEVEL = 20
@@ -213,28 +214,53 @@ export class VariableClass implements VariableInterface {
   public async trackDependency(): Promise<void> {
     this.subscribeDependencies()
 
-    this.t.variableParseResult.variableDependencies.forEach(dependency => {
+    for (const dependency of this.t.variableParseResult.variableDependencies) {
       const dependencyKey = variableKey(dependency.namespaceId, dependency.variableId)
-      this.formulaContext.reverseVariableDependencies[dependencyKey] ||= []
-      this.formulaContext.reverseVariableDependencies[dependencyKey] = [
-        ...this.formulaContext.reverseVariableDependencies[dependencyKey].filter(
-          ({ namespaceId, variableId }) =>
-            !(namespaceId === this.t.meta.namespaceId && variableId === this.t.meta.variableId)
-        ),
+      if (
+        this.formulaContext.reverseVariableDependencies[dependencyKey]?.some(
+          x => x.namespaceId === this.t.meta.namespaceId && x.variableId === this.t.meta.variableId
+        )
+      ) {
+        return
+      }
+
+      const newVariableDependencies = [
+        ...(this.formulaContext.reverseVariableDependencies[dependencyKey] ?? []),
         { namespaceId: this.t.meta.namespaceId, variableId: this.t.meta.variableId }
       ]
-    })
+
+      this.formulaContext.reverseVariableDependencies[dependencyKey] = newVariableDependencies
+
+      const result = MashcardEventBus.dispatch(
+        FormulaVariableDependencyUpdated({
+          meta: newVariableDependencies,
+          scope: null,
+          key: this.id,
+          username: this.formulaContext.domain,
+          level: 0,
+          namespaceId: dependency.namespaceId,
+          id: dependency.variableId
+        })
+      )
+      await Promise.all(result)
+    }
 
     this.t.variableParseResult.functionDependencies.forEach(dependency => {
       const dependencyKey = dependency.key!
-      this.formulaContext.reverseFunctionDependencies[dependencyKey] ||= []
-      this.formulaContext.reverseFunctionDependencies[dependencyKey] = [
-        ...this.formulaContext.reverseFunctionDependencies[dependencyKey].filter(
-          ({ namespaceId, variableId }) =>
-            !(namespaceId === this.t.meta.namespaceId && variableId === this.t.meta.variableId)
-        ),
+      if (
+        this.formulaContext.reverseFunctionDependencies[dependencyKey]?.some(
+          x => x.namespaceId === this.t.meta.namespaceId && x.variableId === this.t.meta.variableId
+        )
+      ) {
+        return
+      }
+
+      const newFunctionDependencies = [
+        ...(this.formulaContext.reverseFunctionDependencies[dependencyKey] ?? []),
         { namespaceId: this.t.meta.namespaceId, variableId: this.t.meta.variableId }
       ]
+
+      this.formulaContext.reverseFunctionDependencies[dependencyKey] = newFunctionDependencies
     })
     await this.formulaContext.setName(this.nameDependency())
   }
@@ -346,9 +372,9 @@ export class VariableClass implements VariableInterface {
 
     const parseResult = parse(ctx)
     const tempT = await interpret({ variable: this, ctx, parseResult })
+    this.cleanup()
     this.t = tempT
 
-    this.cleanup()
     await this.trackDependency()
     this.currentUUID = uuid()
     if (!this.t.task.async) {

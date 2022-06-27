@@ -290,6 +290,11 @@ export class FormulaContext implements ContextInterface {
     return this.blocks[blockId]
   }
 
+  public findReference(namespaceId: NamespaceId, variableId: VariableId): VariableDependency[] {
+    const dependencyKey = variableKey(namespaceId, variableId)
+    return this.reverseVariableDependencies[dependencyKey] ?? []
+  }
+
   private async setBlock(blockId: NamespaceId, name: string): Promise<void> {
     if (this.blocks[blockId]) return
     const block = new BlockClass(this, { id: blockId, name })

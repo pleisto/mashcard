@@ -152,6 +152,7 @@ interface EventTestCaseType extends RequireField<BaseTestCase<{}>, 'definition'>
   resultAfter?: any
   resultAfterAsync?: true
   variableParseResultAfter?: Partial<VariableParseResult>
+  saveEvents?: (ctx: ExtendedCtx) => [TriggerEvent, ...TriggerEvent[]]
   triggerEvents?: (ctx: ExtendedCtx) => [TriggerEvent, ...TriggerEvent[]]
   events: DistributeEvents[]
 }

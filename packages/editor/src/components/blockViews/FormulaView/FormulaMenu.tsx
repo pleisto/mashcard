@@ -18,6 +18,7 @@ export interface FormulaMenuProps {
   temporaryVariableT: UseFormulaOutput['temporaryVariableT']
   nameRef: UseFormulaOutput['nameRef']
   formulaEditor: UseFormulaOutput['formulaEditor']
+  references: UseFormulaOutput['references']
   defaultVisible: boolean
   onVisibleChange: (visible: boolean) => void
   handleDelete: (variable?: VariableData) => void
@@ -32,6 +33,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   meta: { namespaceId: rootId, variableId: formulaId },
   temporaryVariableT,
   handleDelete,
+  references,
   formulaEditor,
   defaultVisible,
   onVisibleChange,
@@ -97,7 +99,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       ? 'Add Name'
       : nameRef.current.defaultName
 
-  const referencedCount = 0
+  const referencedCount = references.length
 
   const menu = (
     <Root.MashcardFormulaMenu data-testid={TEST_ID_ENUM.editor.formulaBlock.menu.id}>
@@ -139,7 +141,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottomStart"
-      trigger={['click']}>
+      trigger={['click']}
+    >
       {children}
     </Popover>
   )
