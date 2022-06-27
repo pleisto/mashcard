@@ -120,6 +120,11 @@ describe('BubbleMenu', () => {
       const editor = mockEditor({
         isEditable: true,
         isDestroyed: false,
+        state: {
+          doc: {
+            textBetween: () => 'text'
+          }
+        },
         extensionManager: {
           extensions: [{ name: Base.name, options: { bubbleMenu: true } }]
         }
@@ -170,6 +175,11 @@ describe('BubbleMenu', () => {
         isDestroyed: false,
         extensionManager: {
           extensions: [{ name: Base.name, options: { bubbleMenu: true } }]
+        },
+        state: {
+          doc: {
+            textBetween: () => 'text'
+          }
         }
       })
       const result = shouldShow?.({ editor, from: 1, to: 2, view: editor.view, state: editor.state })
@@ -213,6 +223,11 @@ describe('BubbleMenu', () => {
         isDestroyed: false,
         extensionManager: {
           extensions: [{ name: Base.name, options: { bubbleMenu: true } }]
+        },
+        state: {
+          doc: {
+            textBetween: () => ''
+          }
         }
       })
       const result = shouldShow?.({ editor, from: 1, to: 2, view: editor.view, state: editor.state })

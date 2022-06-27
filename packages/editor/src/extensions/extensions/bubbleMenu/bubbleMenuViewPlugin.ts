@@ -1,5 +1,5 @@
 // https://github.com/ueberdosis/tiptap/tree/main/packages/extension-bubble-menu
-import { Editor, isNodeSelection, isTextSelection, posToDOMRect } from '@tiptap/core'
+import { Editor, isNodeSelection, posToDOMRect } from '@tiptap/core'
 import { EditorState, Plugin, PluginKey } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import tippy, { Instance, Props } from 'tippy.js'
@@ -34,25 +34,15 @@ export class BubbleMenuView {
 
   public preventHide = false
 
+  public maybeSelecting = false
+
+  public active = false
+
   public tippy: Instance | undefined
 
   public tippyOptions?: Partial<Props>
 
-  public shouldShow: Exclude<BubbleMenuViewPluginProps['shouldShow'], null> = ({ view, state, from, to }) => {
-    const { doc, selection } = state
-    const { empty } = selection
-
-    // Sometime check for `empty` is not enough.
-    // Doubleclick an empty paragraph returns a node size of 2.
-    // So we check also for an empty text size.
-    const isEmptyTextBlock = !doc.textBetween(from, to).length && isTextSelection(state.selection)
-
-    if (!view.hasFocus() || empty || isEmptyTextBlock) {
-      return false
-    }
-
-    return true
-  }
+  public shouldShow: Exclude<BubbleMenuViewPluginProps['shouldShow'], null>
 
   constructor({ editor, element, view, tippyOptions = {}, shouldShow }: BubbleMenuViewProps) {
     this.editor = editor
@@ -63,7 +53,9 @@ export class BubbleMenuView {
       this.shouldShow = shouldShow
     }
 
-    this.element.addEventListener('mousedown', this.mousedownHandler, { capture: true })
+    this.element.addEventListener('mousedown', this.elementMousedownHandler, { capture: true })
+    window.addEventListener('mousedown', this.mousedownHandler)
+    window.addEventListener('mouseup', this.mouseupHandler)
     this.view.dom.addEventListener('dragstart', this.dragstartHandler)
     this.editor.on('focus', this.focusHandler)
     this.editor.on('blur', this.blurHandler)
@@ -73,8 +65,18 @@ export class BubbleMenuView {
     this.element.style.visibility = 'visible'
   }
 
-  mousedownHandler = () => {
+  elementMousedownHandler = () => {
     this.preventHide = true
+  }
+
+  mousedownHandler = () => {
+    this.active = false
+    this.maybeSelecting = true
+  }
+
+  mouseupHandler = () => {
+    this.maybeSelecting = false
+    if (this.active) this.show()
   }
 
   dragstartHandler = () => {
@@ -152,7 +154,9 @@ export class BubbleMenuView {
       to
     })
 
-    if (!shouldShow) {
+    this.active = !!shouldShow
+
+    if (!shouldShow || this.maybeSelecting) {
       this.hide()
 
       return
@@ -187,7 +191,9 @@ export class BubbleMenuView {
 
   destroy(): void {
     this.tippy?.destroy()
-    this.element.removeEventListener('mousedown', this.mousedownHandler, { capture: true })
+    this.element.removeEventListener('mousedown', this.elementMousedownHandler, { capture: true })
+    window.removeEventListener('mousedown', this.mouseupHandler)
+    window.removeEventListener('mouseup', this.mouseupHandler)
     this.view.dom.removeEventListener('dragstart', this.dragstartHandler)
     this.editor.off('focus', this.focusHandler)
     this.editor.off('blur', this.blurHandler)
