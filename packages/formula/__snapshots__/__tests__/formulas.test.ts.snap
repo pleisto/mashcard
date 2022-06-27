@@ -35,6 +35,7 @@ Array [
           "code": "Equal",
           "display": "=",
           "errors": Array [],
+          "meta": undefined,
           "type": "any",
         },
         Object {
@@ -277,6 +278,7 @@ Array [
           "code": "Equal",
           "display": "=",
           "errors": Array [],
+          "meta": undefined,
           "type": "any",
         },
         Object {
@@ -314,6 +316,7 @@ Array [
               "type": "parse",
             },
           ],
+          "meta": undefined,
           "type": "number",
         },
       ],

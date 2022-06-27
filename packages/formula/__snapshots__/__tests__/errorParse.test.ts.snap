@@ -9,6 +9,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -39,6 +40,7 @@ Array [
       "code": "Dot",
       "display": ".",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -51,6 +53,7 @@ Array [
           "type": "deps",
         },
       ],
+      "meta": undefined,
       "namespaceId": "00000000-0000-0000-0000-000000000000",
       "type": "string",
     },
@@ -67,6 +70,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -97,6 +101,7 @@ Array [
       "code": "Dot",
       "display": ".",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -109,6 +114,7 @@ Array [
           "type": "deps",
         },
       ],
+      "meta": undefined,
       "namespaceId": "22222222-2222-2222-2222-222222222222",
       "type": "string",
     },
@@ -125,6 +131,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -137,6 +144,7 @@ Array [
           "type": "syntax",
         },
       ],
+      "meta": undefined,
       "type": "any",
     },
   ],
@@ -152,6 +160,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -164,6 +173,7 @@ Array [
           "type": "syntax",
         },
       ],
+      "meta": undefined,
       "type": "any",
     },
   ],

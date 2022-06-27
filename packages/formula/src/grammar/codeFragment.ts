@@ -42,13 +42,14 @@ import {
 import { parseByOperator } from './operator'
 import { parseTrackBlock, parseTrackName } from './dependency'
 
-export const token2fragment = (token: IToken, type: FormulaType): CodeFragment => {
+export const token2fragment = (token: IToken, type: FormulaType, meta?: CodeFragment['meta']): CodeFragment => {
   return {
     code: token.tokenType.name as SimpleCodeFragmentType,
     errors: [],
     type,
     display: token.image,
-    attrs: undefined
+    attrs: undefined,
+    meta
   }
 }
 
@@ -56,6 +57,7 @@ export interface CstVisitorArgument {
   readonly type: ExpressionType
   readonly firstArgumentType?: ExpressionType
   readonly clauseArguments?: Argument[]
+  readonly meta?: CodeFragment['meta']
 }
 
 const CodeFragmentCstVisitor = ParserInstance.getBaseCstVisitorConstructor<CstVisitorArgument, CodeFragmentResult>()
@@ -822,6 +824,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     }
 
     const clause = this.ctx.formulaContext.findFunctionClause(group, name)
+    const meta = clause ? { args: clause.args, endCode: 'RParen' } : {}
 
     const functionKey = buildFunctionKey(group, name, true)
 
@@ -869,7 +872,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     const rParenErrorMessages: ErrorMessage[] = ctx.RParen
       ? []
       : [{ message: 'Missing closing parenthesis', type: 'syntax' }]
-    const rparenCodeFragments = ctx.RParen ? [token2fragment(ctx.RParen[0], clause ? clause.returns : 'any')] : []
+    const rparenCodeFragments = ctx.RParen ? [token2fragment(ctx.RParen[0], clause ? clause.returns : 'any', meta)] : []
 
     const clauseErrorMessages: ErrorMessage[] = []
     if (!clause) {
@@ -912,7 +915,12 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
         clauseArgs = clause.args.slice(1)
       }
       const { codeFragments: argsCodeFragments, image } = ctx.Arguments
-        ? (this.visit(ctx.Arguments, { type, firstArgumentType, clauseArguments: clauseArgs }) as CodeFragmentResult)
+        ? (this.visit(ctx.Arguments, {
+            type,
+            firstArgumentType,
+            clauseArguments: clauseArgs,
+            meta
+          }) as CodeFragmentResult)
         : { codeFragments: [], image: '' }
       const argsErrorMessages: ErrorMessage[] =
         clauseArgs.filter(a => !a.default).length > 0 && argsCodeFragments.length === 0
@@ -928,7 +936,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
             ...c,
             errors: [...chainError, ...errorMessages, ...argsErrorMessages, ...c.errors]
           })),
-          { ...token2fragment(ctx.LParen[0], 'any'), errors: rParenErrorMessages },
+          { ...token2fragment(ctx.LParen[0], 'any', meta), errors: rParenErrorMessages },
           ...argsCodeFragments,
           ...rparenCodeFragments
         ],
@@ -937,14 +945,19 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
       }
     } else {
       const { codeFragments: argsCodeFragments, image } = ctx.Arguments
-        ? (this.visit(ctx.Arguments, { type, firstArgumentType, clauseArguments: undefined }) as CodeFragmentResult)
+        ? (this.visit(ctx.Arguments, {
+            type,
+            firstArgumentType,
+            clauseArguments: undefined,
+            meta
+          }) as CodeFragmentResult)
         : { codeFragments: [], image: '' }
       images.push(ctx.LParen[0].image, image, ctx.RParen ? ctx.RParen[0].image : '')
 
       return {
         codeFragments: [
           ...nameFragments.map(c => ({ ...c, errors: [...clauseErrorMessages, ...c.errors] })),
-          { ...token2fragment(ctx.LParen[0], 'any'), errors: rParenErrorMessages },
+          { ...token2fragment(ctx.LParen[0], 'any', meta), errors: rParenErrorMessages },
           ...argsCodeFragments,
           ...rparenCodeFragments
         ],
@@ -956,7 +969,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 
   Arguments(
     ctx: { expression: any[]; Comma: IToken[] },
-    { clauseArguments: args }: CstVisitorArgument
+    { clauseArguments: args, meta }: CstVisitorArgument
   ): CodeFragmentResult {
     const firstArgs = args?.[0]
     const argumentTypes = firstArgs?.spread
@@ -984,7 +997,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
       images.push(image)
 
       if (ctx.Comma?.[commaIndex]) {
-        codeFragments.push(token2fragment(ctx.Comma[commaIndex], 'any'))
+        codeFragments.push(token2fragment(ctx.Comma[commaIndex], 'any', meta))
         images.push(ctx.Comma[commaIndex].image)
         commaIndex += 1
       }

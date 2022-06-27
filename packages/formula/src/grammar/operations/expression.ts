@@ -23,7 +23,18 @@ export const expressionOperator: OperatorType = {
       { definition: '= \n1\n+\n2\n', result: 3 },
       { definition: '=1; 2; (1+3)', result: 4 },
       { definition: '=ABS(1; 2; (1+3))', result: 4 },
-      { definition: '=1; 2; 1/0; (1+3)', result: 4 }
+      { definition: '=1; 2; 1/0; (1+3)', result: 4 },
+      {
+        definition: '= \n 1',
+        result: 1,
+        expected: [
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [{ code: 'Equal' }, { code: 'Space', display: ' \n ' }, { code: 'NumberLiteral' }]
+          }
+        ]
+      }
     ],
     errorTestCases: [
       { definition: '= 1;', errorType: 'syntax', errorMessage: 'Missing expression' },

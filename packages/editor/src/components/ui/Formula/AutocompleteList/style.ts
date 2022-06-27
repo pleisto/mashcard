@@ -46,6 +46,7 @@ export const FormulaAutocomplete = styled('div', {
       },
 
       '.autocomplete-list-item-icon': {
+        color: theme.colors.typeThirdary,
         fontSize: 14,
         lineHeight: '20px',
         marginTop: 4,
@@ -53,6 +54,7 @@ export const FormulaAutocomplete = styled('div', {
       },
 
       '.autocomplete-list-item-content': {
+        color: theme.colors.typeSecondary,
         display: 'flex',
         flexDirection: 'column'
       },

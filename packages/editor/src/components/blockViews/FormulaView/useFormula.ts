@@ -15,7 +15,9 @@ import {
   generateVariable,
   applyCompletion,
   VariableDependency,
-  FormulaVariableDependencyUpdated
+  FormulaVariableDependencyUpdated,
+  FunctionContext,
+  applyFormat
 } from '@mashcard/formula'
 import {
   MashcardEventBus,
@@ -30,7 +32,7 @@ import {
 import { JSONContent } from '@tiptap/core'
 import { devLog } from '@mashcard/design-system'
 import React from 'react'
-import { codeFragments2content, content2definition, definition2content } from '../../../helpers'
+import { codeFragments2content, content2definition, definition2content, input2content } from '../../../helpers'
 import { useFormulaEditor } from '../../../editors/formulaEditor/useFormulaEditor'
 import { Editor } from '@tiptap/react'
 
@@ -42,7 +44,7 @@ export interface UseFormulaInput {
 
 type FormulaContent = JSONContent | undefined
 
-interface FormulaInput {
+export interface FormulaInput {
   position: number
   content: FormulaContent
 }
@@ -62,6 +64,7 @@ export interface UseFormulaOutput {
   isDisableSave: () => boolean
   onSaveFormula: () => Promise<void>
   commitFormula: (definition: string) => Promise<void>
+  formulaFormat: () => Promise<void>
   completion: CompletionType
   references: VariableDependency[]
 }
@@ -250,11 +253,8 @@ export const useFormula = ({
     [doUnselectedFormula, formulaContext, variableId, formulaIsNormal, richType, namespaceId, updateDefaultName]
   )
 
-  const handleSelectActiveCompletion = React.useCallback(async (): Promise<void> => {
-    if (!formulaContext) return
-    const currentCompletion = completion.activeCompletion
-    if (!currentCompletion) return
-
+  const currentCtx = React.useCallback((): FunctionContext | null => {
+    if (!formulaContext) return null
     const definition = content2definition(inputRef.current.content, formulaIsNormal)[0]
     // eslint-disable-next-line no-nested-ternary
     const position = formulaEditor
@@ -272,24 +272,29 @@ export const useFormula = ({
       position,
       richType
     }
-    const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
+    return { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
+  }, [formulaContext, formulaEditor, formulaIsNormal, namespaceId, richType, variableId])
+
+  const handleFormat = React.useCallback(async (): Promise<void> => {
+    const ctx = currentCtx()
+    if (!ctx) return
+    const { format } = applyFormat(ctx)
+
+    inputRef.current = input2content(format, formulaIsNormal)
+    await doCalculate(false)
+  }, [currentCtx, doCalculate, formulaIsNormal])
+
+  const handleSelectActiveCompletion = React.useCallback(async (): Promise<void> => {
+    const currentCompletion = completion.activeCompletion
+    if (!currentCompletion) return
+
+    const ctx = currentCtx()
+    if (!ctx) return
     const newInput = applyCompletion(ctx, currentCompletion)
 
-    inputRef.current = {
-      position: formulaIsNormal ? newInput.position - 1 : newInput.position,
-      content: definition2content(newInput.definition, formulaIsNormal)[0]
-    }
+    inputRef.current = input2content(newInput, formulaIsNormal)
     await doCalculate(false)
-  }, [
-    completion.activeCompletion,
-    doCalculate,
-    formulaContext,
-    formulaEditor,
-    formulaIsNormal,
-    namespaceId,
-    richType,
-    variableId
-  ])
+  }, [completion.activeCompletion, currentCtx, doCalculate, formulaIsNormal])
 
   const isDisableSave = React.useCallback((): boolean => {
     if (!formulaContext) return true
@@ -510,6 +515,7 @@ export const useFormula = ({
   return {
     formulaEditor,
     references,
+    formulaFormat: handleFormat,
     temporaryVariableT: temporaryVariableTRef.current,
     savedVariableT,
     selected,

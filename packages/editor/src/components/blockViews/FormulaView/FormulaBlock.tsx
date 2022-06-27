@@ -56,7 +56,8 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
     nameRef,
     onSaveFormula,
     formulaEditor,
-    completion
+    completion,
+    formulaFormat
   } = useFormula({ meta, formulaContext })
 
   const hasMenu = handleDefaultPopoverVisibleChange && handleDelete
@@ -79,6 +80,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
   return (
     <FormulaMenu
       meta={meta}
+      formulaFormat={formulaFormat}
       references={references}
       temporaryVariableT={temporaryVariableT}
       formulaEditor={formulaEditor}

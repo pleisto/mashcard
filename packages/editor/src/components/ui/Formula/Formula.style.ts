@@ -32,6 +32,7 @@ export const FormulaResult = styled('div', {
       marginRight: 12
     },
     '.formula-result-ok-icon': {
+      color: theme.colors.typeThirdary,
       float: 'right'
     }
   }
@@ -67,10 +68,15 @@ export const MashcardFormulaMenu = styled('div', {
           }
         },
         '.formula-menu-item-reference-count': {
-          paddingRight: 1,
+          color: theme.colors.typeThirdary,
+          paddingLeft: 2,
+          paddingRight: 2,
           float: 'right'
         },
         '.formula-menu-item-reference-icon': {
+          color: theme.colors.typeThirdary,
+          paddingLeft: 2,
+          paddingRight: 2,
           float: 'right'
         }
       }
