@@ -13,7 +13,9 @@ const MemoizedFormField = memo(
   (props: FormFieldProps & Pick<FromContextValue, 'register' | 'formState'>) => {
     const { name, options = {}, children, label, layout, formState, register, ...controlProps } = props
     const error = name && formState?.errors?.[name]
-    const errorMessage = (error as FieldError)?.message
+
+    const errorMessage =
+      typeof error === 'object' ? (typeof error.message === 'string' ? error.message : undefined) : ''
     devWarning(
       !!register && !isValidElement(children),
       '`props.children` must be a valid `ReactElement` when `register` is provided.',
