@@ -708,6 +708,7 @@ export interface BaseCodeFragment {
   readonly namespaceId?: string
   readonly type: FormulaType
   readonly errors: ErrorMessage[]
+  readonly meta?: any
 }
 export interface SpecialCodeFragment extends BaseCodeFragment {
   readonly code: ComplexCodeFragmentType

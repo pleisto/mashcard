@@ -9,6 +9,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -46,6 +47,7 @@ Array [
       "code": "Dot",
       "display": ".",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -86,6 +88,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -138,6 +141,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -190,6 +194,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -242,6 +247,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -294,6 +300,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -332,6 +339,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -370,6 +378,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -408,6 +417,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -415,6 +425,7 @@ Array [
       "code": "BooleanLiteral",
       "display": "false",
       "errors": Array [],
+      "meta": undefined,
       "type": "boolean",
     },
   ],
@@ -430,6 +441,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -437,6 +449,7 @@ Array [
       "code": "BooleanLiteral",
       "display": "true",
       "errors": Array [],
+      "meta": undefined,
       "type": "boolean",
     },
   ],
@@ -452,6 +465,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -466,6 +480,15 @@ Array [
       "code": "LParen",
       "display": "(",
       "errors": Array [],
+      "meta": Object {
+        "args": Array [
+          Object {
+            "name": "number",
+            "type": "number",
+          },
+        ],
+        "endCode": "RParen",
+      },
       "type": "any",
     },
     Object {
@@ -480,6 +503,15 @@ Array [
       "code": "RParen",
       "display": ")",
       "errors": Array [],
+      "meta": Object {
+        "args": Array [
+          Object {
+            "name": "number",
+            "type": "number",
+          },
+        ],
+        "endCode": "RParen",
+      },
       "type": "number",
     },
     Object {
@@ -494,6 +526,7 @@ Array [
       "code": "Plus",
       "display": "+",
       "errors": Array [],
+      "meta": undefined,
       "type": "number",
     },
     Object {
@@ -515,6 +548,15 @@ Array [
       "code": "LParen",
       "display": "(",
       "errors": Array [],
+      "meta": Object {
+        "args": Array [
+          Object {
+            "name": "number",
+            "type": "number",
+          },
+        ],
+        "endCode": "RParen",
+      },
       "type": "any",
     },
     Object {
@@ -529,6 +571,15 @@ Array [
       "code": "RParen",
       "display": ")",
       "errors": Array [],
+      "meta": Object {
+        "args": Array [
+          Object {
+            "name": "number",
+            "type": "number",
+          },
+        ],
+        "endCode": "RParen",
+      },
       "type": "number",
     },
     Object {
@@ -543,6 +594,7 @@ Array [
       "code": "Plus",
       "display": "+",
       "errors": Array [],
+      "meta": undefined,
       "type": "number",
     },
     Object {
@@ -564,6 +616,15 @@ Array [
       "code": "LParen",
       "display": "(",
       "errors": Array [],
+      "meta": Object {
+        "args": Array [
+          Object {
+            "name": "number",
+            "type": "number",
+          },
+        ],
+        "endCode": "RParen",
+      },
       "type": "any",
     },
     Object {
@@ -578,6 +639,15 @@ Array [
       "code": "RParen",
       "display": ")",
       "errors": Array [],
+      "meta": Object {
+        "args": Array [
+          Object {
+            "name": "number",
+            "type": "number",
+          },
+        ],
+        "endCode": "RParen",
+      },
       "type": "number",
     },
     Object {
@@ -592,6 +662,7 @@ Array [
       "code": "Plus",
       "display": "+",
       "errors": Array [],
+      "meta": undefined,
       "type": "number",
     },
     Object {
@@ -620,6 +691,15 @@ Array [
       "code": "LParen",
       "display": "(",
       "errors": Array [],
+      "meta": Object {
+        "args": Array [
+          Object {
+            "name": "number",
+            "type": "number",
+          },
+        ],
+        "endCode": "RParen",
+      },
       "type": "any",
     },
     Object {
@@ -634,6 +714,15 @@ Array [
       "code": "RParen",
       "display": ")",
       "errors": Array [],
+      "meta": Object {
+        "args": Array [
+          Object {
+            "name": "number",
+            "type": "number",
+          },
+        ],
+        "endCode": "RParen",
+      },
       "type": "number",
     },
   ],
@@ -649,6 +738,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -670,6 +760,10 @@ Array [
       "code": "LParen",
       "display": "(",
       "errors": Array [],
+      "meta": Object {
+        "args": Array [],
+        "endCode": "RParen",
+      },
       "type": "any",
     },
     Object {
@@ -677,6 +771,10 @@ Array [
       "code": "RParen",
       "display": ")",
       "errors": Array [],
+      "meta": Object {
+        "args": Array [],
+        "endCode": "RParen",
+      },
       "type": "number",
     },
   ],
@@ -692,6 +790,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -713,6 +812,19 @@ Array [
       "code": "LParen",
       "display": "(",
       "errors": Array [],
+      "meta": Object {
+        "args": Array [
+          Object {
+            "name": "a",
+            "type": "number",
+          },
+          Object {
+            "name": "b",
+            "type": "number",
+          },
+        ],
+        "endCode": "RParen",
+      },
       "type": "any",
     },
     Object {
@@ -727,6 +839,19 @@ Array [
       "code": "Comma",
       "display": ",",
       "errors": Array [],
+      "meta": Object {
+        "args": Array [
+          Object {
+            "name": "a",
+            "type": "number",
+          },
+          Object {
+            "name": "b",
+            "type": "number",
+          },
+        ],
+        "endCode": "RParen",
+      },
       "type": "any",
     },
     Object {
@@ -748,6 +873,19 @@ Array [
       "code": "RParen",
       "display": ")",
       "errors": Array [],
+      "meta": Object {
+        "args": Array [
+          Object {
+            "name": "a",
+            "type": "number",
+          },
+          Object {
+            "name": "b",
+            "type": "number",
+          },
+        ],
+        "endCode": "RParen",
+      },
       "type": "number",
     },
   ],
@@ -763,6 +901,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -770,6 +909,7 @@ Array [
       "code": "NullLiteral",
       "display": "null",
       "errors": Array [],
+      "meta": undefined,
       "type": "null",
     },
   ],
@@ -785,6 +925,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -807,6 +948,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -829,6 +971,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -843,6 +986,7 @@ Array [
       "code": "StringLiteral",
       "display": "\\"hello\\"",
       "errors": Array [],
+      "meta": undefined,
       "type": "string",
     },
   ],
@@ -858,6 +1002,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -888,6 +1033,7 @@ Array [
       "code": "Dot",
       "display": ".",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -928,6 +1074,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -958,6 +1105,7 @@ Array [
       "code": "Dot",
       "display": ".",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -991,6 +1139,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -1021,6 +1170,7 @@ Array [
       "code": "Dot",
       "display": ".",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {
@@ -1054,6 +1204,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "meta": undefined,
       "type": "any",
     },
     Object {

@@ -1,5 +1,17 @@
 import { TestCaseInterface } from '../testType'
 
+const MULTILINE_TESTCASE = `=$"START";
+POWER(
+  1 * 2,
+  2 + ( 1 + 1 )
+) + POWER(
+  1,
+  2 + 3 + ABS(
+  1
+)
+)
+"END"`
+
 export const FormatTestCase: TestCaseInterface = {
   name: 'format',
   testCases: {
@@ -15,7 +27,6 @@ export const FormatTestCase: TestCaseInterface = {
       { definition$: '=[1$]', formatResult$: '=[ 1 $]' },
       { definition$: '={a$: 1}', minifyResult$: '={a$:1}', formatResult$: '={ a$:1 }' },
       { definition$: '=-1$2.123%' },
-      { definition$: '=ABS(1,num0$,3)', formatResult$: '=ABS( 1, num0$, 3 )' },
       { definition$: '= 1\n + 3$', minifyResult$: '=1+3$', formatResult$: '=1 + 3$' },
       { definition$: '= 1\n + $3', minifyResult$: '=1+$3', formatResult$: '=1 + $3' },
       { definition$: '= 1\n + 3$3', minifyResult$: '=1+3$3', formatResult$: '=1 + 3$3' },
@@ -47,8 +58,21 @@ export const FormatTestCase: TestCaseInterface = {
       { definition$: '=123;$123', formatResult$: '=123;\n$123' },
       { definition$: '=1+$', formatResult$: '=1 +$' },
       { definition$: '=[1,$2', formatResult$: '=[ 1, $2' },
+      { definition$: '=[$', formatResult$: '=[$' },
+      { definition$: '=($', formatResult$: '=($' },
+      { definition$: '={$', formatResult$: '={$' },
       { definition$: '=,,$,', todoMessage: 'comma parse' },
-      { definition$: '=;;$;', formatResult$: '=;;$;' }
+      { definition$: '=;;$;', formatResult$: '=;\n;\n$;' },
+      { definition$: '=ABS(-$1)', formatResult$: '=ABS(\n  -$1\n)' },
+      { definition$: '=ABS()$' },
+      { definition$: '=ABS($' },
+      { definition$: '=ABS(-1$', formatResult$: '=ABS(\n  -1$' },
+      { definition$: '=Power(1,num0$,3)', formatResult$: '=Power(\n  1,\n  num0$,\n  3\n)' },
+      { definition$: '=Power(1,$', formatResult$: '=Power(\n  1,$' },
+      { definition$: '=Power(1,2$', formatResult$: '=Power(\n  1,\n  2$' },
+      { definition$: '=Power(1,$)', formatResult$: '=Power(\n  1,\n$)' },
+      { definition$: '=1+Power(1,num0$,3)+1', formatResult$: '=1 + Power(\n  1,\n  num0$,\n  3\n) + 1' },
+      { definition$: MULTILINE_TESTCASE, minifyResult$: '<SKIP>' }
     ]
   }
 }

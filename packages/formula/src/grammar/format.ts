@@ -9,27 +9,52 @@ interface FormatResult {
 const PREV_NEED_SPACE_CODES: Array<CodeFragment['code']> = [...OPERATOR_TYPES, 'LParen', 'LBracket', 'LBrace']
 const NEXT_NEED_SPACE_CODES: Array<CodeFragment['code']> = [...OPERATOR_TYPES, 'RParen', 'RBracket', 'RBrace']
 
-const maybeAddSpaceOrNewline = (
-  { code: currCode, display: currDisplay }: CodeFragment,
-  { code: nextCode }: CodeFragment
-): string | undefined => {
-  if (currCode === 'LParen' && nextCode === 'RParen') return undefined
-  if (currCode === 'LBracket' && nextCode === 'RBracket') return undefined
-  if (currCode === 'LBrace' && nextCode === 'RBrace') return undefined
+const maybeInnerAddSpaceOrNewline = (
+  curr: CodeFragment,
+  next: CodeFragment
+): [undefined, undefined] | [string, CodeFragment] => {
+  const { code: currCode, display: currDisplay } = curr
+  const { code: nextCode } = next
+  if (currCode === 'LParen' && nextCode === 'RParen') return [undefined, undefined]
+  if (currCode === 'LBracket' && nextCode === 'RBracket') return [undefined, undefined]
+  if (currCode === 'LBrace' && nextCode === 'RBrace') return [undefined, undefined]
 
-  if (PREV_NEED_SPACE_CODES.includes(currCode)) return ' '
-  if (NEXT_NEED_SPACE_CODES.includes(nextCode)) return ' '
+  if (PREV_NEED_SPACE_CODES.includes(currCode)) return [' ', curr]
+  if (NEXT_NEED_SPACE_CODES.includes(nextCode)) return [' ', next]
 
   // `Not 1` vs `!1`
-  if (currCode === 'Not' && currDisplay.toUpperCase() === 'NOT') return ' '
+  if (currCode === 'Not' && currDisplay.toUpperCase() === 'NOT') return [' ', curr]
 
   // Comma
-  if (currCode === 'Comma') return ' '
+  if (currCode === 'Comma') {
+    return [' ', curr]
+  }
 
   // Semicolon
-  if (currCode === 'Semicolon') return '\n'
+  if (currCode === 'Semicolon') return ['\n', curr]
 
-  return undefined
+  return [undefined, undefined]
+}
+
+const maybeAddSpaceOrNewline = (
+  curr: CodeFragment,
+  index: number,
+  codeFragments: CodeFragment[]
+): string | undefined => {
+  // Skip first equal
+  if (index === 0 && curr.code === 'Equal') return
+
+  const next = codeFragments[index + 1]
+  if (!next) return undefined
+
+  const [str, codeFragment] = maybeInnerAddSpaceOrNewline(curr, next)
+  if (!str) return undefined
+
+  if (codeFragment.meta?.args) {
+    return codeFragment.meta?.endCode === codeFragment.code ? '\n' : '\n  '
+  }
+
+  return str
 }
 
 const removeSpaceOrNewline = (codeFragments: CodeFragment[], position: number): [CodeFragment[], number] => {
@@ -69,13 +94,7 @@ const insertSpaceOrNewline = (codeFragments: CodeFragment[], position: number): 
     prevCodeFragments.push(codeFragment)
     newCodeFragments.push(codeFragment)
 
-    // Skip first equal
-    if (index === 0 && codeFragment.code === 'Equal') return
-
-    const next = codeFragments[index + 1]
-    if (!next) return
-
-    const spaceString = maybeAddSpaceOrNewline(codeFragment, next)
+    const spaceString = maybeAddSpaceOrNewline(codeFragment, index, codeFragments)
     if (!spaceString) return
 
     const prevLength = prevCodeFragments.map(i => i.display).join('').length

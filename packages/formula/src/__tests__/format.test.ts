@@ -4,6 +4,8 @@ import { applyFormat } from '../grammar/format'
 
 const [testCases] = buildTestCases(['format'])
 
+const SKIP_FLAG = '<SKIP>'
+
 describe('format', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
@@ -17,10 +19,17 @@ describe('format', () => {
     const newCtx = { ...ctx, meta: ctx.buildMeta({ ...args, definition, position }) }
 
     const { minify, format } = applyFormat(newCtx)
-    const [minifyDefinition, minifyPosition] = splitDefinition$(args.minifyResult$ ?? args.definition$)
-    const [formatDefinition, formatPosition] = splitDefinition$(args.formatResult$ ?? args.definition$)
 
-    expect(['minify', minify]).toEqual(['minify', { definition: minifyDefinition, position: minifyPosition }])
-    expect(['format', format]).toEqual(['format', { definition: formatDefinition, position: formatPosition }])
+    if (args.minifyResult$ !== SKIP_FLAG) {
+      const [minifyDefinition, minifyPosition] = splitDefinition$(args.minifyResult$ ?? args.definition$)
+      // eslint-disable-next-line jest/no-conditional-expect
+      expect(['minify', minify]).toEqual(['minify', { definition: minifyDefinition, position: minifyPosition }])
+    }
+
+    if (args.formatResult$ !== SKIP_FLAG) {
+      const [formatDefinition, formatPosition] = splitDefinition$(args.formatResult$ ?? args.definition$)
+      // eslint-disable-next-line jest/no-conditional-expect
+      expect(['format', format]).toEqual(['format', { definition: formatDefinition, position: formatPosition }])
+    }
   })
 })
