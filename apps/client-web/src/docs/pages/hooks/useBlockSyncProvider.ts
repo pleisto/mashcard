@@ -38,7 +38,7 @@ export interface awarenessInfo {
   user: awarenessInfoUser
 }
 
-export function useBlockSyncProvider(queryVariables: { blockId: string; historyId?: string }): {
+export function useBlockSyncProvider(queryVariables: { blockId: string; historyId?: string; editable: boolean }): {
   committing: boolean
   loading: boolean
   provider?: blockProvider
@@ -52,7 +52,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   const [blockCommit] = useBlockCommitMutation()
   const [awarenessUpdate] = useAwarenessUpdateMutation()
 
-  const { blockId, historyId } = queryVariables
+  const { blockId, historyId, editable } = queryVariables
 
   const block = React.useRef<BlockNew>({ id: blockId })
   const [blockMeta, setBlockMeta] = React.useState<blockMeta>({})
@@ -168,6 +168,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
   const commitState = React.useCallback(
     async (ydoc: Y.Doc, update?: Uint8Array, forceFull: boolean = false): Promise<void> => {
+      if (!editable) return
       if (historyId) return
       devLog(`try commit state, committing:`, blockCommitting.current)
       if (update) updatesToCommit.current.add(update)
@@ -222,7 +223,6 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             const localVector = Y.encodeStateVector(ydoc)
             const diff = Y.diffUpdate(remoteState, localVector)
             Y.applyUpdate(ydoc, diff)
-            setBlockMetaUpdated(Object.fromEntries(ydoc.getMap('meta').entries()))
             const localState = Y.encodeStateAsUpdate(ydoc)
             // const nextUpdate = Y.diffUpdate(localState, remoteYector)
             blockCommitting.current = false
@@ -242,16 +242,18 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
               void commitState(ydoc)
             }
           }
+          setBlockMetaUpdated(Object.fromEntries(ydoc.getMap('meta').entries()))
         }
       } catch (e) {
         setCommitting(false)
       }
     },
-    [blockCommit, blockId, historyId, setCommitting, setBlockMetaUpdated]
+    [blockCommit, blockId, historyId, setCommitting, setBlockMetaUpdated, editable]
   )
 
   const setMeta = React.useCallback(
     (newMeta: blockMeta) => {
+      if (!editable) return
       blockMetaChanged.current = true
       if (provider) {
         setBlockMetaUpdated(newMeta)
@@ -267,7 +269,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
         })
       }
     },
-    [provider, setBlockMetaUpdated]
+    [provider, setBlockMetaUpdated, editable]
   )
 
   React.useEffect(() => {
@@ -299,7 +301,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
       setProvider(provider)
       setBlockMetaUpdated(Object.fromEntries(newYdoc.getMap('meta').entries()))
 
-      if (!historyId) {
+      if (!historyId && editable) {
         newYdoc.on('update', async (update: Uint8Array, origin: any, ydoc: Y.Doc) => {
           void commitState(ydoc, update)
         })
@@ -321,7 +323,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
         })
       }
     }
-  }, [blockId, historyId, data, loading, commitState, awarenessUpdate, awarenessChanged, setBlockMetaUpdated])
+  }, [blockId, historyId, data, loading, commitState, awarenessUpdate, awarenessChanged, setBlockMetaUpdated, editable])
 
   return {
     committing,

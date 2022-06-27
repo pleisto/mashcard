@@ -43,12 +43,17 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
     onDocSave
   } = useSyncProvider(queryVariables)
 
-  useDocHistoryProvider(docMeta.id as string)
+  const freeze = mode === 'presentation'
+  const currentRootBlock = rootBlock.current
+  const [documentEditable] = useDocumentEditable(freeze ?? !docMeta.historyId, currentRootBlock)
 
   const { provider, initBlocksToEditor, loading, committing, awarenessInfos, meta, setMeta } = useBlockSyncProvider({
     blockId: docMeta.id as string,
-    historyId: docMeta.historyId
+    historyId: docMeta.historyId,
+    editable: documentEditable
   })
+
+  useDocHistoryProvider(docMeta.id as string)
 
   useEffect(() => {
     isSavingVar(blocksCommitting || committing)
@@ -56,10 +61,6 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
   useEffect(() => {
     awarenessInfosVar(awarenessInfos)
   }, [awarenessInfos])
-
-  const freeze = mode === 'presentation'
-  const currentRootBlock = rootBlock.current
-  const [documentEditable] = useDocumentEditable(freeze ?? !docMeta.historyId, currentRootBlock)
 
   // TODO: refactor editor and editable reactive var
   // const documentEditable = !freeze

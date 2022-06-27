@@ -52,7 +52,7 @@ module Mutations
 
             if args[:meta]
               block.meta = args[:meta]
-              block.text = block.meta['title']
+              block.text = block.meta['title'].to_s
               block.save
             end
 
