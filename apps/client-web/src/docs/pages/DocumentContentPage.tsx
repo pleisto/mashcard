@@ -52,6 +52,7 @@ export const DocumentContentPage: React.FC = () => {
     loading: getBlockInfoLoading,
     refetch
   } = useGetBlockInfoQuery({ variables: { id: docid as string, domain } })
+
   const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({
     refetchQueries: [queryPageBlocks]
   })
