@@ -30,20 +30,20 @@ export const isTextContentSelected = ({ editor, from, to }: { editor: Editor; fr
   if (!editor.isEditable || editor.isDestroyed) return false
   if (from === to) return false
 
+  const isEmpty = editor.state.doc.textBetween(from, to).length === 0
+
+  if (isEmpty) return false
+
   let show = false
 
   const nodes = findNodesInSelection(editor, from, to)
-
-  let length = 0
 
   for (const { node } of nodes) {
     if (node) {
       // Text node
       if (node.type.name === 'text') {
-        length += node.text?.length ?? 0
         show = true
       } else if (allowedNodeTypes.includes(node.type.name)) {
-        length += node.textContent?.length ?? 0
         show = true
       } else {
         return false
@@ -51,7 +51,7 @@ export const isTextContentSelected = ({ editor, from, to }: { editor: Editor; fr
     }
   }
 
-  return show && length > 0
+  return show
 }
 
 export const DEFAULT_SELECTION_CLASS = 'editor-selection'

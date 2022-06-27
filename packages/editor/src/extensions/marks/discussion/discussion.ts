@@ -33,7 +33,7 @@ export const Discussion = createMark<DiscussionOptions, DiscussionAttributes>({
   onSelectionUpdate() {
     clearTimeout(discussionCheckTimer)
     discussionCheckTimer = setTimeout(() => {
-      const node = this.editor.view.domAtPos(this.editor.state.selection.anchor).node
+      const node = this.editor.view?.domAtPos(this.editor.state.selection.anchor).node
       focusDiscussionMark(node)
     }, 200)
   },

@@ -8,7 +8,7 @@ export interface BaseOptions {
   blockquote: Partial<EXTENSION.BlockquoteOptions> | boolean
   bold: Partial<EXTENSION.BoldOptions> | boolean
   brickList: Partial<EXTENSION.BrickListOptions> | boolean
-  bubbleMenu: boolean
+  bubbleMenu: Partial<EXTENSION.BubbleMenuOptions> | boolean
   bulletList: Partial<EXTENSION.BulletListOptions> | boolean
   callout: Partial<EXTENSION.CalloutOptions> | boolean
   code: Partial<EXTENSION.CodeOptions> | boolean
@@ -95,6 +95,8 @@ export const Base = Extension.create<BaseOptions>({
     if (this.options.bold) extensions.push(EXTENSION.Bold.configure(getConfigure(this.options?.bold)))
     if (this.options.brickList) extensions.push(EXTENSION.BrickList.configure(getConfigure(this.options?.brickList)))
     if (this.options.bulletList) extensions.push(EXTENSION.BulletList.configure(getConfigure(this.options?.bulletList)))
+    if (this.options.bubbleMenu && typeof this.options.bubbleMenu !== 'boolean')
+      extensions.push(EXTENSION.BubbleMenu.configure(getConfigure(this.options?.bubbleMenu)))
     if (this.options.callout) extensions.push(EXTENSION.Callout.configure(getConfigure(this.options?.callout)))
     if (this.options.code) extensions.push(EXTENSION.Code.configure(getConfigure(this.options?.code)))
     if (this.options.codeBlock) extensions.push(EXTENSION.CodeBlock.configure(getConfigure(this.options.codeBlock)))
