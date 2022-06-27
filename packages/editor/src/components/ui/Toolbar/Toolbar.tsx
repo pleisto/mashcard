@@ -56,6 +56,7 @@ export interface ToolbarSubMenuOption extends ToolbarOptionBase {
   orientation?: MenuProps['orientation']
   trigger?: PopoverProps['trigger']
   items: Array<ToolbarItemGroupOption | ToolbarItemOption> | ToolbarSubMenuItemsRender
+  hasArrow?: boolean
 }
 
 export type ToolbarOption = ToolbarItemOption | ToolbarSubMenuOption
@@ -85,6 +86,10 @@ const ToolbarMenu = styled('ul', {
   },
 
   'li + span': {
+    marginLeft: 4
+  },
+
+  'span + li': {
     marginLeft: 4
   },
 

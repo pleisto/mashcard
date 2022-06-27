@@ -1,6 +1,6 @@
 import { FC, cloneElement, isValidElement, memo } from 'react'
 import { FormControlProps, FormControl } from './FormControl'
-import { RegisterOptions, FieldError } from 'react-hook-form'
+import { RegisterOptions } from 'react-hook-form'
 import { useFormContext, FromContextValue } from './context'
 import { devWarning } from '../../utilities'
 
@@ -14,8 +14,16 @@ const MemoizedFormField = memo(
     const { name, options = {}, children, label, layout, formState, register, ...controlProps } = props
     const error = name && formState?.errors?.[name]
 
-    const errorMessage =
-      typeof error === 'object' ? (typeof error.message === 'string' ? error.message : undefined) : ''
+    const getErrorMessage = () => {
+      if (typeof error !== 'object') {
+        return undefined
+      }
+      if (typeof error.message !== 'string') {
+        return undefined
+      }
+      return error.message
+    }
+
     devWarning(
       !!register && !isValidElement(children),
       '`props.children` must be a valid `ReactElement` when `register` is provided.',
@@ -27,7 +35,7 @@ const MemoizedFormField = memo(
         {...controlProps}
         // TODO: Add i18n support when using name as the default label
         label={label ?? name}
-        invalidMessage={errorMessage}
+        invalidMessage={getErrorMessage()}
       >
         {name && !!register && isValidElement(children)
           ? cloneElement(children, {
