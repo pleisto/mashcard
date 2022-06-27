@@ -49,15 +49,6 @@ export const MashcardFormulaMenu = styled('div', {
     alignItems: 'center',
     marginBottom: 8,
 
-    // '.formula-result-ok': {
-    //   '.formula-result-ok-equal': {
-    //     marginRight: 12
-    //   },
-    //   '.formula-result-ok-icon': {
-    //     float: 'right'
-    //   }
-    // },
-
     '.formula-menu-item': {
       flex: 1,
 

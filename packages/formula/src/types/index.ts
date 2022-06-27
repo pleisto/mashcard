@@ -882,7 +882,7 @@ export interface VariableInterface {
   formulaContext: ContextInterface
 
   buildFormula: (input?: FormulaDefinition) => Formula
-  cleanup: () => void
+  cleanup: () => Promise<void>
   trackDependency: () => Promise<void>
   trackDirty: VoidFunction
   save: () => Promise<void>

@@ -348,8 +348,7 @@ export const useFormula = ({
       t: {
         ...temporaryVariableTRef.current!,
         meta: { ...temporaryVariableTRef.current!.meta, name: nameRef.current.name }
-      },
-      variable: variableRef.current
+      }
     })
     temporaryVariableTRef.current = variableRef.current.t
     setSavedVariableT(variableRef.current.t)

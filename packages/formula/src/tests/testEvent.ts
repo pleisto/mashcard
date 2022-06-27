@@ -7,7 +7,7 @@ import {
   dispatchFormulaSpreadsheetRowChange
 } from '../events'
 import { generateVariable, interpret, parse } from '../grammar/core'
-import { FunctionContext, VariableInterface } from '../types'
+import { FormulaDefinition, FunctionContext, VariableInterface } from '../types'
 import { BaseTestCase, ExtendedCtx } from './testType'
 
 const interpretVariable = async (ctx: FunctionContext): Promise<VariableInterface> => {
@@ -50,5 +50,11 @@ export const AllowEvents = {
   variableInsertOnly: async (ctx: ExtendedCtx, args: Parameters<typeof variableInsertOnlyEvent>[1]) =>
     await variableInsertOnlyEvent(ctx, args),
   variableInsertAndAwait: async (ctx: ExtendedCtx, args: Parameters<typeof variableInsertAndAwaitEvent>[1]) =>
-    await variableInsertAndAwaitEvent(ctx, args)
+    await variableInsertAndAwaitEvent(ctx, args),
+  variableDelete: async (ctx: ExtendedCtx, args: {}) =>
+    await ctx.formulaContext.removeVariable(ctx.meta.namespaceId, ctx.meta.variableId),
+  variableUpdateDefinition: async (ctx: ExtendedCtx, args: FormulaDefinition) => {
+    const variable = ctx.formulaContext.findVariableById(ctx.meta.namespaceId, ctx.meta.variableId)!
+    await variable.updateDefinition(args)
+  }
 } as const

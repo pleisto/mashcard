@@ -86,7 +86,6 @@ export const castVariable = async (
   const tempT = await interpret({ variable: oldVariable, ctx, parseResult })
   const variable = generateVariable({
     formulaContext,
-    variable: oldVariable,
     t: tempT,
     isLoad: true
   })
@@ -187,32 +186,68 @@ export class VariableClass implements VariableInterface {
     await this.onUpdate({})
   }
 
-  public cleanup(): void {
+  public async cleanup(): Promise<void> {
     this.unsubscripeEvents()
 
-    this.t.variableParseResult.variableDependencies.forEach(dependency => {
-      const dependencyKey = variableKey(dependency.namespaceId, dependency.variableId)
-      const variableDependencies = this.formulaContext.reverseVariableDependencies[dependencyKey]
-        ? this.formulaContext.reverseVariableDependencies[dependencyKey].filter(
-            x => !(x.namespaceId === this.t.meta.namespaceId && x.variableId === this.t.meta.variableId)
-          )
-        : []
-      this.formulaContext.reverseVariableDependencies[dependencyKey] = [...variableDependencies]
-    })
+    const promises = []
 
-    this.t.variableParseResult.functionDependencies.forEach(dependency => {
+    for (const dependency of this.t.variableParseResult.variableDependencies) {
+      const dependencyKey = variableKey(dependency.namespaceId, dependency.variableId)
+      if (
+        !this.formulaContext.reverseVariableDependencies[dependencyKey]?.some(
+          x => x.namespaceId === this.t.meta.namespaceId && x.variableId === this.t.meta.variableId
+        )
+      ) {
+        return
+      }
+
+      const newVariableDependencies = this.formulaContext.reverseVariableDependencies[dependencyKey].filter(
+        x => !(x.namespaceId === this.t.meta.namespaceId && x.variableId === this.t.meta.variableId)
+      )
+
+      this.formulaContext.reverseVariableDependencies[dependencyKey] = newVariableDependencies
+
+      const result = MashcardEventBus.dispatch(
+        FormulaVariableDependencyUpdated({
+          meta: newVariableDependencies,
+          scope: null,
+          key: this.id,
+          username: this.formulaContext.domain,
+          level: 0,
+          namespaceId: dependency.namespaceId,
+          id: dependency.variableId
+        })
+      )
+
+      promises.push(...result)
+    }
+
+    for (const dependency of this.t.variableParseResult.functionDependencies) {
       const dependencyKey = dependency.key
       const functionDependencies = this.formulaContext.reverseFunctionDependencies[dependencyKey]
-        ? this.formulaContext.reverseFunctionDependencies[dependencyKey].filter(
-            x => !(x.namespaceId === this.t.meta.namespaceId && x.variableId === this.t.meta.variableId)
-          )
-        : []
-      this.formulaContext.reverseFunctionDependencies[dependencyKey] = [...functionDependencies]
-    })
+
+      if (
+        !functionDependencies?.some(
+          x => x.namespaceId === this.t.meta.namespaceId && x.variableId === this.t.meta.variableId
+        )
+      ) {
+        return
+      }
+
+      const newFunctionDependencies = functionDependencies.filter(
+        x => !(x.namespaceId === this.t.meta.namespaceId && x.variableId === this.t.meta.variableId)
+      )
+
+      this.formulaContext.reverseFunctionDependencies[dependencyKey] = newFunctionDependencies
+    }
+
+    await Promise.all(promises)
   }
 
   public async trackDependency(): Promise<void> {
     this.subscribeDependencies()
+
+    const promises = []
 
     for (const dependency of this.t.variableParseResult.variableDependencies) {
       const dependencyKey = variableKey(dependency.namespaceId, dependency.variableId)
@@ -242,7 +277,8 @@ export class VariableClass implements VariableInterface {
           id: dependency.variableId
         })
       )
-      await Promise.all(result)
+
+      promises.push(...result)
     }
 
     this.t.variableParseResult.functionDependencies.forEach(dependency => {
@@ -262,6 +298,8 @@ export class VariableClass implements VariableInterface {
 
       this.formulaContext.reverseFunctionDependencies[dependencyKey] = newFunctionDependencies
     })
+
+    await Promise.all(promises)
     await this.formulaContext.setName(this.nameDependency())
   }
 
@@ -372,7 +410,7 @@ export class VariableClass implements VariableInterface {
 
     const parseResult = parse(ctx)
     const tempT = await interpret({ variable: this, ctx, parseResult })
-    this.cleanup()
+    await this.cleanup()
     this.t = tempT
 
     await this.trackDependency()
