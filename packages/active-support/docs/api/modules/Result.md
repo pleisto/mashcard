@@ -14,16 +14,16 @@
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name | Type                                           |
+| :--- | :--------------------------------------------- |
 | `Fn` | extends (...`args`: readonly `any`[]) => `any` |
-| `E` | `E` |
+| `E`  | `E`                                            |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `fn` | `Fn` |
+| Name       | Type                    |
+| :--------- | :---------------------- |
+| `fn`       | `Fn`                    |
 | `errorFn?` | (`e`: `unknown`) => `E` |
 
 #### Returns
@@ -34,8 +34,8 @@
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type                |
+| :-------- | :------------------ |
 | `...args` | `Parameters`<`Fn`\> |
 
 ##### Returns

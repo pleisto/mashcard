@@ -193,16 +193,16 @@
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | ``null`` \| `List`<`T1`\> |
-| `values` | `List`<`T2`\> |
+| Name        | Type                           |
+| :---------- | :----------------------------- |
+| `array`     | `null` \| `List`<`T1`\>        |
+| `values`    | `List`<`T2`\>                  |
 | `iteratee?` | `ValueIteratee`<`T1` \| `T2`\> |
 
 #### Returns
@@ -214,18 +214,18 @@
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
+| Name       | Type                                   |
+| :--------- | :------------------------------------- |
+| `array`    | `null` \| `List`<`T1`\>                |
+| `values1`  | `List`<`T2`\>                          |
+| `values2`  | `List`<`T3`\>                          |
 | `iteratee` | `ValueIteratee`<`T1` \| `T2` \| `T3`\> |
 
 #### Returns
@@ -237,7 +237,7 @@
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -245,11 +245,11 @@
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
+| Name        | Type                                                                |
+| :---------- | :------------------------------------------------------------------ |
+| `array`     | `undefined` \| `null` \| `List`<`T1`\>                              |
+| `values1`   | `List`<`T2`\>                                                       |
+| `values2`   | `List`<`T3`\>                                                       |
 | `...values` | (`List`<`T4`\> \| `ValueIteratee`<`T1` \| `T2` \| `T3` \| `T4`\>)[] |
 
 #### Returns
@@ -261,15 +261,15 @@
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array?` | ``null`` \| `List`<`T`\> |
-| `...values` | `List`<`T`\>[] |
+| Name        | Type                   |
+| :---------- | :--------------------- |
+| `array?`    | `null` \| `List`<`T`\> |
+| `...values` | `List`<`T`\>[]         |
 
 #### Returns
 
@@ -280,20 +280,20 @@
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name        | Type                                      |
+| :---------- | :---------------------------------------- |
 | `...values` | (`List`<`T`\> \| `ValueIteratee`<`T`\>)[] |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="intersectionwith" name="intersectionwith"></a> intersectionWith
 
@@ -302,17 +302,17 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values?` | `List`<`T2`\> |
-| `comparator?` | `Comparator2`<`T1`, `T2`\> |
+| Name          | Type                                   |
+| :------------ | :------------------------------------- |
+| `array`       | `undefined` \| `null` \| `List`<`T1`\> |
+| `values?`     | `List`<`T2`\>                          |
+| `comparator?` | `Comparator2`<`T1`, `T2`\>             |
 
 #### Returns
 
@@ -323,19 +323,19 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
-| `comparator` | `Comparator2`<`T1`, `T2` \| `T3`\> |
+| Name         | Type                                   |
+| :----------- | :------------------------------------- |
+| `array`      | `undefined` \| `null` \| `List`<`T1`\> |
+| `values1`    | `List`<`T2`\>                          |
+| `values2`    | `List`<`T3`\>                          |
+| `comparator` | `Comparator2`<`T1`, `T2` \| `T3`\>     |
 
 #### Returns
 
@@ -346,7 +346,7 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -354,11 +354,11 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
+| Name        | Type                                                            |
+| :---------- | :-------------------------------------------------------------- |
+| `array`     | `undefined` \| `null` \| `List`<`T1`\>                          |
+| `values1`   | `List`<`T2`\>                                                   |
+| `values2`   | `List`<`T3`\>                                                   |
 | `...values` | (`List`<`T4`\> \| `Comparator2`<`T1`, `T2` \| `T3` \| `T4`\>)[] |
 
 #### Returns
@@ -370,21 +370,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array?` | ``null`` \| `List`<`T`\> |
+| Name        | Type                                             |
+| :---------- | :----------------------------------------------- |
+| `array?`    | `null` \| `List`<`T`\>                           |
 | `...values` | (`List`<`T`\> \| `Comparator2`<`T`, `never`\>)[] |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="pullall" name="pullall"></a> pullAll
 
@@ -393,14 +393,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `T`[] |
+| Name      | Type         |
+| :-------- | :----------- |
+| `array`   | `T`[]        |
 | `values?` | `List`<`T`\> |
 
 #### Returns
@@ -412,21 +412,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `List`<`T`\> |
+| Name      | Type         |
+| :-------- | :----------- |
+| `array`   | `List`<`T`\> |
 | `values?` | `List`<`T`\> |
 
 #### Returns
 
 `List`<`T`\>
 
-___
+---
 
 ### <a id="pullallby" name="pullallby"></a> pullAllBy
 
@@ -435,15 +435,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `T`[] |
-| `values?` | `List`<`T`\> |
+| Name        | Type                  |
+| :---------- | :-------------------- |
+| `array`     | `T`[]                 |
+| `values?`   | `List`<`T`\>          |
 | `iteratee?` | `ValueIteratee`<`T`\> |
 
 #### Returns
@@ -455,15 +455,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `List`<`T`\> |
-| `values?` | `List`<`T`\> |
+| Name        | Type                  |
+| :---------- | :-------------------- |
+| `array`     | `List`<`T`\>          |
+| `values?`   | `List`<`T`\>          |
 | `iteratee?` | `ValueIteratee`<`T`\> |
 
 #### Returns
@@ -475,16 +475,16 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `T1`[] |
-| `values` | `List`<`T2`\> |
+| Name       | Type                           |
+| :--------- | :----------------------------- |
+| `array`    | `T1`[]                         |
+| `values`   | `List`<`T2`\>                  |
 | `iteratee` | `ValueIteratee`<`T1` \| `T2`\> |
 
 #### Returns
@@ -496,23 +496,23 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `List`<`T1`\> |
-| `values` | `List`<`T2`\> |
+| Name       | Type                           |
+| :--------- | :----------------------------- |
+| `array`    | `List`<`T1`\>                  |
+| `values`   | `List`<`T2`\>                  |
 | `iteratee` | `ValueIteratee`<`T1` \| `T2`\> |
 
 #### Returns
 
 `List`<`T1`\>
 
-___
+---
 
 ### <a id="pullallwith" name="pullallwith"></a> pullAllWith
 
@@ -521,15 +521,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `T`[] |
-| `values?` | `List`<`T`\> |
+| Name          | Type               |
+| :------------ | :----------------- |
+| `array`       | `T`[]              |
+| `values?`     | `List`<`T`\>       |
 | `comparator?` | `Comparator`<`T`\> |
 
 #### Returns
@@ -541,15 +541,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `List`<`T`\> |
-| `values?` | `List`<`T`\> |
+| Name          | Type               |
+| :------------ | :----------------- |
+| `array`       | `List`<`T`\>       |
+| `values?`     | `List`<`T`\>       |
 | `comparator?` | `Comparator`<`T`\> |
 
 #### Returns
@@ -561,16 +561,16 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `T1`[] |
-| `values` | `List`<`T2`\> |
+| Name         | Type                       |
+| :----------- | :------------------------- |
+| `array`      | `T1`[]                     |
+| `values`     | `List`<`T2`\>              |
 | `comparator` | `Comparator2`<`T1`, `T2`\> |
 
 #### Returns
@@ -582,23 +582,23 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `List`<`T1`\> |
-| `values` | `List`<`T2`\> |
+| Name         | Type                       |
+| :----------- | :------------------------- |
+| `array`      | `List`<`T1`\>              |
+| `values`     | `List`<`T2`\>              |
 | `comparator` | `Comparator2`<`T1`, `T2`\> |
 
 #### Returns
 
 `List`<`T1`\>
 
-___
+---
 
 ### <a id="sortedindex" name="sortedindex"></a> sortedIndex
 
@@ -607,15 +607,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `value` | `T` |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
+| `array` | `undefined` \| `null` \| `List`<`T`\> |
+| `value` | `T`                                   |
 
 #### Returns
 
@@ -626,21 +626,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `value` | `T` |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
+| `array` | `undefined` \| `null` \| `List`<`T`\> |
+| `value` | `T`                                   |
 
 #### Returns
 
 `number`
 
-___
+---
 
 ### <a id="sortedindexby" name="sortedindexby"></a> sortedIndexBy
 
@@ -649,22 +649,22 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `value` | `T` |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `array`     | `undefined` \| `null` \| `List`<`T`\> |
+| `value`     | `T`                                   |
+| `iteratee?` | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
 `number`
 
-___
+---
 
 ### <a id="sortedindexof" name="sortedindexof"></a> sortedIndexOf
 
@@ -673,21 +673,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `value` | `T` |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
+| `array` | `undefined` \| `null` \| `List`<`T`\> |
+| `value` | `T`                                   |
 
 #### Returns
 
 `number`
 
-___
+---
 
 ### <a id="sortedlastindex" name="sortedlastindex"></a> sortedLastIndex
 
@@ -696,21 +696,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `value` | `T` |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
+| `array` | `undefined` \| `null` \| `List`<`T`\> |
+| `value` | `T`                                   |
 
 #### Returns
 
 `number`
 
-___
+---
 
 ### <a id="sortedlastindexby" name="sortedlastindexby"></a> sortedLastIndexBy
 
@@ -719,22 +719,22 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `value` | `T` |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `array`     | `undefined` \| `null` \| `List`<`T`\> |
+| `value`     | `T`                                   |
+| `iteratee?` | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
 `number`
 
-___
+---
 
 ### <a id="sortedlastindexof" name="sortedlastindexof"></a> sortedLastIndexOf
 
@@ -743,21 +743,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `value` | `T` |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
+| `array` | `undefined` \| `null` \| `List`<`T`\> |
+| `value` | `T`                                   |
 
 #### Returns
 
 `number`
 
-___
+---
 
 ### <a id="sorteduniq" name="sorteduniq"></a> sortedUniq
 
@@ -766,20 +766,20 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
+| `array` | `undefined` \| `null` \| `List`<`T`\> |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="sorteduniqby" name="sorteduniqby"></a> sortedUniqBy
 
@@ -788,21 +788,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `array`     | `undefined` \| `null` \| `List`<`T`\> |
+| `iteratee?` | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="unionwith" name="unionwith"></a> unionWith
 
@@ -811,15 +811,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays?` | ``null`` \| `List`<`T`\> |
-| `comparator?` | `Comparator`<`T`\> |
+| Name          | Type                   |
+| :------------ | :--------------------- |
+| `arrays?`     | `null` \| `List`<`T`\> |
+| `comparator?` | `Comparator`<`T`\>     |
 
 #### Returns
 
@@ -830,16 +830,16 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `comparator?` | `Comparator`<`T`\> |
+| Name          | Type                                  |
+| :------------ | :------------------------------------ |
+| `arrays`      | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays2`     | `undefined` \| `null` \| `List`<`T`\> |
+| `comparator?` | `Comparator`<`T`\>                    |
 
 #### Returns
 
@@ -850,23 +850,23 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays3` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `...comparator` | (`undefined` \| ``null`` \| `List`<`T`\> \| `Comparator`<`T`\>)[] |
+| Name            | Type                                                            |
+| :-------------- | :-------------------------------------------------------------- |
+| `arrays`        | `undefined` \| `null` \| `List`<`T`\>                           |
+| `arrays2`       | `undefined` \| `null` \| `List`<`T`\>                           |
+| `arrays3`       | `undefined` \| `null` \| `List`<`T`\>                           |
+| `...comparator` | (`undefined` \| `null` \| `List`<`T`\> \| `Comparator`<`T`\>)[] |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="uniqby" name="uniqby"></a> uniqBy
 
@@ -875,21 +875,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `array`     | `undefined` \| `null` \| `List`<`T`\> |
+| `iteratee?` | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="uniqwith" name="uniqwith"></a> uniqWith
 
@@ -898,21 +898,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `comparator?` | `Comparator`<`T`\> |
+| Name          | Type                                  |
+| :------------ | :------------------------------------ |
+| `array`       | `undefined` \| `null` \| `List`<`T`\> |
+| `comparator?` | `Comparator`<`T`\>                    |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="xorby" name="xorby"></a> xorBy
 
@@ -921,15 +921,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays?` | ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name        | Type                   |
+| :---------- | :--------------------- |
+| `arrays?`   | `null` \| `List`<`T`\> |
+| `iteratee?` | `ValueIteratee`<`T`\>  |
 
 #### Returns
 
@@ -940,16 +940,16 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `arrays`    | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays2`   | `undefined` \| `null` \| `List`<`T`\> |
+| `iteratee?` | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
@@ -960,23 +960,23 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays3` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `...iteratee` | (`undefined` \| ``null`` \| `List`<`T`\> \| `ValueIteratee`<`T`\>)[] |
+| Name          | Type                                                               |
+| :------------ | :----------------------------------------------------------------- |
+| `arrays`      | `undefined` \| `null` \| `List`<`T`\>                              |
+| `arrays2`     | `undefined` \| `null` \| `List`<`T`\>                              |
+| `arrays3`     | `undefined` \| `null` \| `List`<`T`\>                              |
+| `...iteratee` | (`undefined` \| `null` \| `List`<`T`\> \| `ValueIteratee`<`T`\>)[] |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="xorwith" name="xorwith"></a> xorWith
 
@@ -985,15 +985,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays?` | ``null`` \| `List`<`T`\> |
-| `comparator?` | `Comparator`<`T`\> |
+| Name          | Type                   |
+| :------------ | :--------------------- |
+| `arrays?`     | `null` \| `List`<`T`\> |
+| `comparator?` | `Comparator`<`T`\>     |
 
 #### Returns
 
@@ -1004,16 +1004,16 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `comparator?` | `Comparator`<`T`\> |
+| Name          | Type                                  |
+| :------------ | :------------------------------------ |
+| `arrays`      | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays2`     | `undefined` \| `null` \| `List`<`T`\> |
+| `comparator?` | `Comparator`<`T`\>                    |
 
 #### Returns
 
@@ -1024,17 +1024,17 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays3` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `...comparator` | (`undefined` \| ``null`` \| `List`<`T`\> \| `Comparator`<`T`\>)[] |
+| Name            | Type                                                            |
+| :-------------- | :-------------------------------------------------------------- |
+| `arrays`        | `undefined` \| `null` \| `List`<`T`\>                           |
+| `arrays2`       | `undefined` \| `null` \| `List`<`T`\>                           |
+| `arrays3`       | `undefined` \| `null` \| `List`<`T`\>                           |
+| `...comparator` | (`undefined` \| `null` \| `List`<`T`\> \| `Comparator`<`T`\>)[] |
 
 #### Returns
 
@@ -1049,14 +1049,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `Dictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> \| `NumericDictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> |
+| Name         | Type                                                                                                                                                       |
+| :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `Dictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> \| `NumericDictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> |
 
 #### Returns
 
@@ -1066,17 +1066,17 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee` | `ListIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
+| Name         | Type                                                                           |
+| :----------- | :----------------------------------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\>                                          |
+| `iteratee`   | `ListIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
 
 #### Returns
 
@@ -1086,17 +1086,17 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `TResult` | `TResult` |
+| Name      | Type             |
+| :-------- | :--------------- |
+| `T`       | extends `object` |
+| `TResult` | `TResult`        |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratee` | `ObjectIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
+| Name         | Type                                                                             |
+| :----------- | :------------------------------------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`                                                     |
+| `iteratee`   | `ObjectIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
 
 #### Returns
 
@@ -1106,10 +1106,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
-| `iteratee` | `string` |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
+| `iteratee`   | `string`                          |
 
 #### Returns
 
@@ -1119,16 +1119,16 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
-| `iteratee` | `object` |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
+| `iteratee`   | `object`                          |
 
 #### Returns
 
 `boolean`[]
 
-___
+---
 
 ### <a id="flatmapdepth" name="flatmapdepth"></a> flatMapDepth
 
@@ -1137,14 +1137,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `Dictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> \| `NumericDictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> |
+| Name         | Type                                                                                                                                                       |
+| :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `Dictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> \| `NumericDictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> |
 
 #### Returns
 
@@ -1154,18 +1154,18 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee` | `ListIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
-| `depth?` | `number` |
+| Name         | Type                                                                           |
+| :----------- | :----------------------------------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\>                                          |
+| `iteratee`   | `ListIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
+| `depth?`     | `number`                                                                       |
 
 #### Returns
 
@@ -1175,18 +1175,18 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `TResult` | `TResult` |
+| Name      | Type             |
+| :-------- | :--------------- |
+| `T`       | extends `object` |
+| `TResult` | `TResult`        |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratee` | `ObjectIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
-| `depth?` | `number` |
+| Name         | Type                                                                             |
+| :----------- | :------------------------------------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`                                                     |
+| `iteratee`   | `ObjectIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
+| `depth?`     | `number`                                                                         |
 
 #### Returns
 
@@ -1196,11 +1196,11 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
-| `iteratee` | `string` |
-| `depth?` | `number` |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
+| `iteratee`   | `string`                          |
+| `depth?`     | `number`                          |
 
 #### Returns
 
@@ -1210,17 +1210,17 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
-| `iteratee` | `object` |
-| `depth?` | `number` |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
+| `iteratee`   | `object`                          |
+| `depth?`     | `number`                          |
 
 #### Returns
 
 `boolean`[]
 
-___
+---
 
 ### <a id="orderby" name="orderby"></a> orderBy
 
@@ -1229,16 +1229,16 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratees?` | `Many`<`ListIterator`<`T`, `unknown`\>\> |
-| `orders?` | `Many`<`boolean` \| ``"asc"`` \| ``"desc"``\> |
+| Name         | Type                                      |
+| :----------- | :---------------------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\>     |
+| `iteratees?` | `Many`<`ListIterator`<`T`, `unknown`\>\>  |
+| `orders?`    | `Many`<`boolean` \| `"asc"` \| `"desc"`\> |
 
 #### Returns
 
@@ -1249,16 +1249,16 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratees?` | `Many`<`ListIteratee`<`T`\>\> |
-| `orders?` | `Many`<`boolean` \| ``"asc"`` \| ``"desc"``\> |
+| Name         | Type                                      |
+| :----------- | :---------------------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\>     |
+| `iteratees?` | `Many`<`ListIteratee`<`T`\>\>             |
+| `orders?`    | `Many`<`boolean` \| `"asc"` \| `"desc"`\> |
 
 #### Returns
 
@@ -1268,17 +1268,17 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
+| Name         | Type                                       |
+| :----------- | :----------------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`               |
 | `iteratees?` | `Many`<`ObjectIterator`<`T`, `unknown`\>\> |
-| `orders?` | `Many`<`boolean` \| ``"asc"`` \| ``"desc"``\> |
+| `orders?`    | `Many`<`boolean` \| `"asc"` \| `"desc"`\>  |
 
 #### Returns
 
@@ -1288,23 +1288,23 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratees?` | `Many`<`ObjectIteratee`<`T`\>\> |
-| `orders?` | `Many`<`boolean` \| ``"asc"`` \| ``"desc"``\> |
+| Name         | Type                                      |
+| :----------- | :---------------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`              |
+| `iteratees?` | `Many`<`ObjectIteratee`<`T`\>\>           |
+| `orders?`    | `Many`<`boolean` \| `"asc"` \| `"desc"`\> |
 
 #### Returns
 
 `T`[keyof `T`][]
 
-___
+---
 
 ### <a id="sortby" name="sortby"></a> sortBy
 
@@ -1313,15 +1313,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `...iteratees?` | `Many`<`ListIteratee`<`T`\>\>[] |
+| Name            | Type                                  |
+| :-------------- | :------------------------------------ |
+| `collection`    | `undefined` \| `null` \| `List`<`T`\> |
+| `...iteratees?` | `Many`<`ListIteratee`<`T`\>\>[]       |
 
 #### Returns
 
@@ -1331,15 +1331,15 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
+| Name           | Type                              |
+| :------------- | :-------------------------------- |
+| `collection`   | `undefined` \| `null` \| `T`      |
 | `...iteratees` | `Many`<`ObjectIteratee`<`T`\>\>[] |
 
 #### Returns
@@ -1354,15 +1354,15 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                           |
+| :----- | :--------------------------------------------- |
 | `func` | (`arg1`: `T`, ...`args`: `any`[]) => `TResult` |
 
 #### Returns
@@ -1373,9 +1373,9 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arg1` | `T` |
+| Name   | Type |
+| :----- | :--- |
+| `arg1` | `T`  |
 
 ##### Returns
 
@@ -1389,8 +1389,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type  |
+| :------ | :---- |
 | `value` | `any` |
 | `other` | `any` |
 
@@ -1398,7 +1398,7 @@ ___
 
 `boolean`
 
-___
+---
 
 ### <a id="isinteger" name="isinteger"></a> isInteger
 
@@ -1406,15 +1406,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `value?` | `any` |
 
 #### Returns
 
 `boolean`
 
-___
+---
 
 ### <a id="ismatch" name="ismatch"></a> isMatch
 
@@ -1422,8 +1422,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type     |
+| :------- | :------- |
 | `object` | `object` |
 | `source` | `object` |
 
@@ -1431,7 +1431,7 @@ ___
 
 `boolean`
 
-___
+---
 
 ### <a id="isnil" name="isnil"></a> isNil
 
@@ -1439,15 +1439,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type  |
+| :------ | :---- |
 | `value` | `any` |
 
 #### Returns
 
 value is undefined \| null
 
-___
+---
 
 ### <a id="issymbol" name="issymbol"></a> isSymbol
 
@@ -1455,8 +1455,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type  |
+| :------ | :---- |
 | `value` | `any` |
 
 #### Returns
@@ -1471,11 +1471,11 @@ value is symbol
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type     |
+| :------- | :------- |
 | `number` | `number` |
 | `lower?` | `number` |
-| `upper` | `number` |
+| `upper`  | `number` |
 
 #### Returns
 
@@ -1485,10 +1485,10 @@ value is symbol
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type     |
+| :------- | :------- |
 | `number` | `number` |
-| `upper` | `number` |
+| `upper`  | `number` |
 
 #### Returns
 
@@ -1502,17 +1502,17 @@ value is symbol
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `K` | extends `PropertyName`[] |
+| Name | Type                     |
+| :--- | :----------------------- |
+| `T`  | extends `object`         |
+| `K`  | extends `PropertyName`[] |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `T` |
-| `...paths?` | `K` |
+| Name        | Type                         |
+| :---------- | :--------------------------- |
+| `object`    | `undefined` \| `null` \| `T` |
+| `...paths?` | `K`                          |
 
 #### Returns
 
@@ -1522,17 +1522,17 @@ value is symbol
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `K` | extends `string` \| `number` \| `symbol` |
+| Name | Type                                     |
+| :--- | :--------------------------------------- |
+| `T`  | extends `object`                         |
+| `K`  | extends `string` \| `number` \| `symbol` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `T` |
-| `...paths` | `Many`<`K`\>[] |
+| Name       | Type                         |
+| :--------- | :--------------------------- |
+| `object`   | `undefined` \| `null` \| `T` |
+| `...paths` | `Many`<`K`\>[]               |
 
 #### Returns
 
@@ -1542,22 +1542,22 @@ value is symbol
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `T` |
-| `...paths` | `Many`<`PropertyName`\>[] |
+| Name       | Type                         |
+| :--------- | :--------------------------- |
+| `object`   | `undefined` \| `null` \| `T` |
+| `...paths` | `Many`<`PropertyName`\>[]    |
 
 #### Returns
 
 `Partial`<`T`\>
 
-___
+---
 
 ### <a id="omitby" name="omitby"></a> omitBy
 
@@ -1566,15 +1566,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `Dictionary`<`T`\> |
-| `predicate?` | `ValueKeyIteratee`<`T`\> |
+| Name         | Type                                        |
+| :----------- | :------------------------------------------ |
+| `object`     | `undefined` \| `null` \| `Dictionary`<`T`\> |
+| `predicate?` | `ValueKeyIteratee`<`T`\>                    |
 
 #### Returns
 
@@ -1585,15 +1585,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `NumericDictionary`<`T`\> |
-| `predicate?` | `ValueKeyIteratee`<`T`\> |
+| Name         | Type                                               |
+| :----------- | :------------------------------------------------- |
+| `object`     | `undefined` \| `null` \| `NumericDictionary`<`T`\> |
+| `predicate?` | `ValueKeyIteratee`<`T`\>                           |
 
 #### Returns
 
@@ -1603,22 +1603,22 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `T` |
+| Name        | Type                                |
+| :---------- | :---------------------------------- |
+| `object`    | `undefined` \| `null` \| `T`        |
 | `predicate` | `ValueKeyIteratee`<`T`[keyof `T`]\> |
 
 #### Returns
 
 `Partial`<`T`\>
 
-___
+---
 
 ### <a id="pick" name="pick"></a> pick
 
@@ -1626,16 +1626,16 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `U` | extends `string` \| `number` \| `symbol` |
+| Name | Type                                     |
+| :--- | :--------------------------------------- |
+| `T`  | extends `object`                         |
+| `U`  | extends `string` \| `number` \| `symbol` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `T` |
+| Name        | Type           |
+| :---------- | :------------- |
+| `object`    | `T`            |
 | `...props?` | `Many`<`U`\>[] |
 
 #### Returns
@@ -1647,15 +1647,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `T` |
-| `...props` | `PropertyPath`[] |
+| Name       | Type                         |
+| :--------- | :--------------------------- |
+| `object`   | `undefined` \| `null` \| `T` |
+| `...props` | `PropertyPath`[]             |
 
 #### Returns
 
@@ -1669,16 +1669,16 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `H` | `H` |
-| `T` | extends readonly `any`[] |
+| Name | Type                     |
+| :--- | :----------------------- |
+| `H`  | `H`                      |
+| `T`  | extends readonly `any`[] |
 
 #### Defined in
 
 [packages/active-support/src/typescript.ts:29](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L29)
 
-___
+---
 
 ### <a id="deeppartial" name="deeppartial"></a> DeepPartial
 
@@ -1687,14 +1687,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Defined in
 
 [packages/active-support/src/typescript.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L6)
 
-___
+---
 
 ### <a id="fixedlengthtuple" name="fixedlengthtuple"></a> FixedLengthTuple
 
@@ -1702,17 +1702,17 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `N` | extends `number` |
-| `R` | extends readonly `T`[] = [] |
+| Name | Type                        |
+| :--- | :-------------------------- |
+| `T`  | `T`                         |
+| `N`  | extends `number`            |
+| `R`  | extends readonly `T`[] = [] |
 
 #### Defined in
 
 [packages/active-support/src/typescript.ts:56](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L56)
 
-___
+---
 
 ### <a id="prependparameter" name="prependparameter"></a> PrependParameter
 
@@ -1720,10 +1720,10 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `Param` | `Param` |
-| `F` | extends (...`args`: `any`[]) => `any` |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
+| `Param` | `Param`                               |
+| `F`     | extends (...`args`: `any`[]) => `any` |
 
 #### Type declaration
 
@@ -1731,8 +1731,8 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type                                                                                 |
+| :-------- | :----------------------------------------------------------------------------------- |
 | `...args` | `Extract`<[`Cons`](README.md#cons)<`Param`, `Parameters`<`F`\>\>, readonly `any`[]\> |
 
 ##### Returns
@@ -1743,7 +1743,7 @@ ___
 
 [packages/active-support/src/typescript.ts:42](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L42)
 
-___
+---
 
 ### <a id="repeat" name="repeat"></a> Repeat
 
@@ -1751,18 +1751,18 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `Char` | extends `string` |
-| `Count` | extends `number` |
-| `Joined` | extends `string` = ``""`` |
-| `Acc` | extends ``0``[] = [] |
+| Name     | Type                    |
+| :------- | :---------------------- |
+| `Char`   | extends `string`        |
+| `Count`  | extends `number`        |
+| `Joined` | extends `string` = `""` |
+| `Acc`    | extends `0`[] = []      |
 
 #### Defined in
 
 [packages/active-support/src/typescript.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L77)
 
-___
+---
 
 ### <a id="requirefield" name="requirefield"></a> RequireField
 
@@ -1770,16 +1770,16 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `K` | extends keyof `T` |
+| Name | Type              |
+| :--- | :---------------- |
+| `T`  | `T`               |
+| `K`  | extends keyof `T` |
 
 #### Defined in
 
 [packages/active-support/src/typescript.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L65)
 
-___
+---
 
 ### <a id="requiredkeys" name="requiredkeys"></a> RequiredKeys
 
@@ -1788,14 +1788,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Defined in
 
 [packages/active-support/src/typescript.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L17)
 
-___
+---
 
 ### <a id="result" name="result"></a> Result
 
@@ -1804,9 +1804,9 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
-| `E` |
+| :--- |
+| `T`  |
+| `E`  |
 
 #### Defined in
 
@@ -1814,7 +1814,7 @@ node_modules/neverthrow/dist/index.d.ts:48
 
 node_modules/neverthrow/dist/index.d.ts:58
 
-___
+---
 
 ### <a id="partial" name="partial"></a> partial
 
@@ -1824,7 +1824,7 @@ ___
 
 node_modules/@types/lodash/common/function.d.ts:640
 
-___
+---
 
 ### <a id="partialright" name="partialright"></a> partialRight
 
@@ -1834,7 +1834,7 @@ ___
 
 node_modules/@types/lodash/common/function.d.ts:913
 
-___
+---
 
 ### <a id="memoize" name="memoize"></a> memoize
 
@@ -1844,7 +1844,7 @@ ___
 
 node_modules/moize/index.d.ts:248
 
-___
+---
 
 ### <a id="after" name="after"></a> after
 
@@ -1852,45 +1852,45 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
 | `TFunc` | extends (...`args`: `any`[]) => `any` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `n` | `number` |
-| `func` | `TFunc` |
+| Name   | Type     |
+| :----- | :------- |
+| `n`    | `number` |
+| `func` | `TFunc`  |
 
 #### Returns
 
 `TFunc`
 
-___
+---
 
 ### <a id="array2tree" name="array2tree"></a> array2Tree
 
-▸ **array2Tree**<`TItem`\>(`items`, `config?`): `TItem` & { `children`: `TItem`[]  }[]
+▸ **array2Tree**<`TItem`\>(`items`, `config?`): `TItem` & { `children`: `TItem`[] }[]
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type           |
+| :------ | :------------- |
 | `TItem` | extends `Item` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `items` | `TItem`[] |
+| Name     | Type                 |
+| :------- | :------------------- |
+| `items`  | `TItem`[]            |
 | `config` | `Partial`<`Config`\> |
 
 #### Returns
 
-`TItem` & { `children`: `TItem`[]  }[]
+`TItem` & { `children`: `TItem`[] }[]
 
-___
+---
 
 ### <a id="attempt" name="attempt"></a> attempt
 
@@ -1898,22 +1898,22 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
+| Name      |
+| :-------- |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `func` | (...`args`: `any`[]) => `TResult` |
-| `...args` | `any`[] |
+| Name      | Type                              |
+| :-------- | :-------------------------------- |
+| `func`    | (...`args`: `any`[]) => `TResult` |
+| `...args` | `any`[]                           |
 
 #### Returns
 
 `Error` \| `TResult`
 
-___
+---
 
 ### <a id="before" name="before"></a> before
 
@@ -1921,22 +1921,22 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
 | `TFunc` | extends (...`args`: `any`[]) => `any` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `n` | `number` |
-| `func` | `TFunc` |
+| Name   | Type     |
+| :----- | :------- |
+| `n`    | `number` |
+| `func` | `TFunc`  |
 
 #### Returns
 
 `TFunc`
 
-___
+---
 
 ### <a id="camelcase" name="camelcase"></a> camelCase
 
@@ -1944,15 +1944,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `string?` | `string` |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="capitalize" name="capitalize"></a> capitalize
 
@@ -1960,15 +1960,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `string?` | `string` |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="chunk" name="chunk"></a> chunk
 
@@ -1977,21 +1977,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `arr` | `T`[] | `undefined` |
-| `size` | `number` | `1` |
+| Name   | Type     | Default value |
+| :----- | :------- | :------------ |
+| `arr`  | `T`[]    | `undefined`   |
+| `size` | `number` | `1`           |
 
 #### Returns
 
 `T`[][]
 
-___
+---
 
 ### <a id="clonedeep" name="clonedeep"></a> cloneDeep
 
@@ -1999,15 +1999,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type  |
+| :------ | :---- |
 | `value` | `any` |
 
 #### Returns
 
 `any`
 
-___
+---
 
 ### <a id="combine" name="combine"></a> combine
 
@@ -2015,15 +2015,15 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends readonly [`Result`](README.md#result)<`unknown`, `unknown`\>[] |
+| Name | Type                                                                   |
+| :--- | :--------------------------------------------------------------------- |
+| `T`  | extends readonly [`Result`](README.md#result)<`unknown`, `unknown`\>[] |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `resultList` | `T` |
+| Name         | Type |
+| :----------- | :--- |
+| `resultList` | `T`  |
 
 #### Returns
 
@@ -2033,21 +2033,21 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends readonly [`ResultAsync`](classes/ResultAsync.md)<`unknown`, `unknown`\>[] |
+| Name | Type                                                                              |
+| :--- | :-------------------------------------------------------------------------------- |
+| `T`  | extends readonly [`ResultAsync`](classes/ResultAsync.md)<`unknown`, `unknown`\>[] |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `asyncResultList` | `T` |
+| Name              | Type |
+| :---------------- | :--- |
+| `asyncResultList` | `T`  |
 
 #### Returns
 
 [`ResultAsync`](classes/ResultAsync.md)<`ExtractOkAsyncTypes`<`T`\>, `ExtractErrAsyncTypes`<`T`\>[`number`]\>
 
-___
+---
 
 ### <a id="combinewithallerrors" name="combinewithallerrors"></a> combineWithAllErrors
 
@@ -2055,15 +2055,15 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends readonly [`Result`](README.md#result)<`unknown`, `unknown`\>[] |
+| Name | Type                                                                   |
+| :--- | :--------------------------------------------------------------------- |
+| `T`  | extends readonly [`Result`](README.md#result)<`unknown`, `unknown`\>[] |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `resultList` | `T` |
+| Name         | Type |
+| :----------- | :--- |
+| `resultList` | `T`  |
 
 #### Returns
 
@@ -2073,21 +2073,21 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends readonly [`ResultAsync`](classes/ResultAsync.md)<`unknown`, `unknown`\>[] |
+| Name | Type                                                                              |
+| :--- | :-------------------------------------------------------------------------------- |
+| `T`  | extends readonly [`ResultAsync`](classes/ResultAsync.md)<`unknown`, `unknown`\>[] |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `asyncResultList` | `T` |
+| Name              | Type |
+| :---------------- | :--- |
+| `asyncResultList` | `T`  |
 
 #### Returns
 
 [`ResultAsync`](classes/ResultAsync.md)<`ExtractOkAsyncTypes`<`T`\>, `ExtractErrAsyncTypes`<`T`\>[`number`][]\>
 
-___
+---
 
 ### <a id="compact" name="compact"></a> compact
 
@@ -2096,20 +2096,20 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name  | Type  |
+| :---- | :---- |
 | `arr` | `T`[] |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="countby" name="countby"></a> countBy
 
@@ -2118,15 +2118,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name         | Type                                  |
+| :----------- | :------------------------------------ |
+| `collection` | `undefined` \| `null` \| `List`<`T`\> |
+| `iteratee?`  | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
@@ -2136,22 +2136,22 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratee?` | `ValueIteratee`<`T`[keyof `T`]\> |
+| Name         | Type                             |
+| :----------- | :------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`     |
+| `iteratee?`  | `ValueIteratee`<`T`[keyof `T`]\> |
 
 #### Returns
 
 `Dictionary`<`number`\>
 
-___
+---
 
 ### <a id="debounce" name="debounce"></a> debounce
 
@@ -2159,16 +2159,16 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends (...`args`: `any`) => `any` |
+| Name | Type                                |
+| :--- | :---------------------------------- |
+| `T`  | extends (...`args`: `any`) => `any` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `func` | `T` |
-| `wait` | `undefined` \| `number` |
+| Name      | Type                      |
+| :-------- | :------------------------ |
+| `func`    | `T`                       |
+| `wait`    | `undefined` \| `number`   |
 | `options` | `DebounceSettingsLeading` |
 
 #### Returns
@@ -2179,23 +2179,23 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends (...`args`: `any`) => `any` |
+| Name | Type                                |
+| :--- | :---------------------------------- |
+| `T`  | extends (...`args`: `any`) => `any` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `func` | `T` |
-| `wait?` | `number` |
+| Name       | Type               |
+| :--------- | :----------------- |
+| `func`     | `T`                |
+| `wait?`    | `number`           |
 | `options?` | `DebounceSettings` |
 
 #### Returns
 
 `DebouncedFunc`<`T`\>
 
-___
+---
 
 ### <a id="defer" name="defer"></a> defer
 
@@ -2203,16 +2203,16 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `func` | (...`args`: `any`[]) => `any` |
-| `...args` | `any`[] |
+| Name      | Type                          |
+| :-------- | :---------------------------- |
+| `func`    | (...`args`: `any`[]) => `any` |
+| `...args` | `any`[]                       |
 
 #### Returns
 
 `number`
 
-___
+---
 
 ### <a id="difference" name="difference"></a> difference
 
@@ -2221,21 +2221,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `...values` | `List`<`T`\>[] |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `array`     | `undefined` \| `null` \| `List`<`T`\> |
+| `...values` | `List`<`T`\>[]                        |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="differenceby" name="differenceby"></a> differenceBy
 
@@ -2244,17 +2244,17 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values` | `List`<`T2`\> |
-| `iteratee` | `ValueIteratee`<`T1` \| `T2`\> |
+| Name       | Type                                   |
+| :--------- | :------------------------------------- |
+| `array`    | `undefined` \| `null` \| `List`<`T1`\> |
+| `values`   | `List`<`T2`\>                          |
+| `iteratee` | `ValueIteratee`<`T1` \| `T2`\>         |
 
 #### Returns
 
@@ -2265,18 +2265,18 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
+| Name       | Type                                   |
+| :--------- | :------------------------------------- |
+| `array`    | `undefined` \| `null` \| `List`<`T1`\> |
+| `values1`  | `List`<`T2`\>                          |
+| `values2`  | `List`<`T3`\>                          |
 | `iteratee` | `ValueIteratee`<`T1` \| `T2` \| `T3`\> |
 
 #### Returns
@@ -2288,7 +2288,7 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -2296,12 +2296,12 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
-| `values3` | `List`<`T4`\> |
+| Name       | Type                                           |
+| :--------- | :--------------------------------------------- |
+| `array`    | `undefined` \| `null` \| `List`<`T1`\>         |
+| `values1`  | `List`<`T2`\>                                  |
+| `values2`  | `List`<`T3`\>                                  |
+| `values3`  | `List`<`T4`\>                                  |
 | `iteratee` | `ValueIteratee`<`T1` \| `T2` \| `T3` \| `T4`\> |
 
 #### Returns
@@ -2313,7 +2313,7 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -2322,13 +2322,13 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
-| `values3` | `List`<`T4`\> |
-| `values4` | `List`<`T5`\> |
+| Name       | Type                                                   |
+| :--------- | :----------------------------------------------------- |
+| `array`    | `undefined` \| `null` \| `List`<`T1`\>                 |
+| `values1`  | `List`<`T2`\>                                          |
+| `values2`  | `List`<`T3`\>                                          |
+| `values3`  | `List`<`T4`\>                                          |
+| `values4`  | `List`<`T5`\>                                          |
 | `iteratee` | `ValueIteratee`<`T1` \| `T2` \| `T3` \| `T4` \| `T5`\> |
 
 #### Returns
@@ -2340,7 +2340,7 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -2350,14 +2350,14 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
-| `values3` | `List`<`T4`\> |
-| `values4` | `List`<`T5`\> |
-| `values5` | `List`<`T6`\> |
+| Name       | Type                                                           |
+| :--------- | :------------------------------------------------------------- |
+| `array`    | `undefined` \| `null` \| `List`<`T1`\>                         |
+| `values1`  | `List`<`T2`\>                                                  |
+| `values2`  | `List`<`T3`\>                                                  |
+| `values3`  | `List`<`T4`\>                                                  |
+| `values4`  | `List`<`T5`\>                                                  |
+| `values5`  | `List`<`T6`\>                                                  |
 | `iteratee` | `ValueIteratee`<`T1` \| `T2` \| `T3` \| `T4` \| `T5` \| `T6`\> |
 
 #### Returns
@@ -2369,7 +2369,7 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -2380,14 +2380,14 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
-| `values3` | `List`<`T4`\> |
-| `values4` | `List`<`T5`\> |
-| `values5` | `List`<`T6`\> |
+| Name        | Type                                                                                        |
+| :---------- | :------------------------------------------------------------------------------------------ |
+| `array`     | `undefined` \| `null` \| `List`<`T1`\>                                                      |
+| `values1`   | `List`<`T2`\>                                                                               |
+| `values2`   | `List`<`T3`\>                                                                               |
+| `values3`   | `List`<`T4`\>                                                                               |
+| `values4`   | `List`<`T5`\>                                                                               |
+| `values5`   | `List`<`T6`\>                                                                               |
 | `...values` | (`List`<`T7`\> \| `ValueIteratee`<`T1` \| `T2` \| `T3` \| `T4` \| `T5` \| `T6` \| `T7`\>)[] |
 
 #### Returns
@@ -2399,21 +2399,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `...values` | `List`<`T`\>[] |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `array`     | `undefined` \| `null` \| `List`<`T`\> |
+| `...values` | `List`<`T`\>[]                        |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="drop" name="drop"></a> drop
 
@@ -2422,21 +2422,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `arr` | `T`[] | `undefined` |
-| `n` | `number` | `1` |
+| Name  | Type     | Default value |
+| :---- | :------- | :------------ |
+| `arr` | `T`[]    | `undefined`   |
+| `n`   | `number` | `1`           |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="dropright" name="dropright"></a> dropRight
 
@@ -2445,21 +2445,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `arr` | `T`[] | `undefined` |
-| `n` | `number` | `1` |
+| Name  | Type     | Default value |
+| :---- | :------- | :------------ |
+| `arr` | `T`[]    | `undefined`   |
+| `n`   | `number` | `1`           |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="droprightwhile" name="droprightwhile"></a> dropRightWhile
 
@@ -2468,21 +2468,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `predicate?` | `ListIteratee`<`T`\> |
+| Name         | Type                                  |
+| :----------- | :------------------------------------ |
+| `array`      | `undefined` \| `null` \| `List`<`T`\> |
+| `predicate?` | `ListIteratee`<`T`\>                  |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="dropwhile" name="dropwhile"></a> dropWhile
 
@@ -2491,21 +2491,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `predicate?` | `ListIteratee`<`T`\> |
+| Name         | Type                                  |
+| :----------- | :------------------------------------ |
+| `array`      | `undefined` \| `null` \| `List`<`T`\> |
+| `predicate?` | `ListIteratee`<`T`\>                  |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="err" name="err"></a> err
 
@@ -2513,22 +2513,22 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `never` |
-| `E` | `unknown` |
+| Name | Type      |
+| :--- | :-------- |
+| `T`  | `never`   |
+| `E`  | `unknown` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `err` | `E` |
+| Name  | Type |
+| :---- | :--- |
+| `err` | `E`  |
 
 #### Returns
 
 [`Err`](classes/Err.md)<`T`, `E`\>
 
-___
+---
 
 ### <a id="errasync" name="errasync"></a> errAsync
 
@@ -2536,22 +2536,22 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `never` |
-| `E` | `unknown` |
+| Name | Type      |
+| :--- | :-------- |
+| `T`  | `never`   |
+| `E`  | `unknown` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `err` | `E` |
+| Name  | Type |
+| :---- | :--- |
+| `err` | `E`  |
 
 #### Returns
 
 [`ResultAsync`](classes/ResultAsync.md)<`T`, `E`\>
 
-___
+---
 
 ### <a id="escape" name="escape"></a> escape
 
@@ -2559,15 +2559,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `string?` | `string` |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="findkey" name="findkey"></a> findKey
 
@@ -2576,21 +2576,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `T` |
-| `predicate?` | `ObjectIteratee`<`T`\> |
+| Name         | Type                         |
+| :----------- | :--------------------------- |
+| `object`     | `undefined` \| `null` \| `T` |
+| `predicate?` | `ObjectIteratee`<`T`\>       |
 
 #### Returns
 
 `undefined` \| `string`
 
-___
+---
 
 ### <a id="findlast" name="findlast"></a> findLast
 
@@ -2599,17 +2599,17 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
-| `S` |
+| :--- |
+| `T`  |
+| `S`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `predicate` | `ListIteratorTypeGuard`<`T`, `S`\> |
-| `fromIndex?` | `number` |
+| Name         | Type                                  |
+| :----------- | :------------------------------------ |
+| `collection` | `undefined` \| `null` \| `List`<`T`\> |
+| `predicate`  | `ListIteratorTypeGuard`<`T`, `S`\>    |
+| `fromIndex?` | `number`                              |
 
 #### Returns
 
@@ -2620,16 +2620,16 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
+| Name         | Type                                  |
+| :----------- | :------------------------------------ |
+| `collection` | `undefined` \| `null` \| `List`<`T`\> |
 | `predicate?` | `ListIterateeCustom`<`T`, `boolean`\> |
-| `fromIndex?` | `number` |
+| `fromIndex?` | `number`                              |
 
 #### Returns
 
@@ -2639,18 +2639,18 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `S` | `S` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
+| `S`  | `S`              |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `predicate` | `ObjectIteratorTypeGuard`<`T`, `S`\> |
-| `fromIndex?` | `number` |
+| Name         | Type                                 |
+| :----------- | :----------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`         |
+| `predicate`  | `ObjectIteratorTypeGuard`<`T`, `S`\> |
+| `fromIndex?` | `number`                             |
 
 #### Returns
 
@@ -2660,23 +2660,23 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
+| Name         | Type                                    |
+| :----------- | :-------------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`            |
 | `predicate?` | `ObjectIterateeCustom`<`T`, `boolean`\> |
-| `fromIndex?` | `number` |
+| `fromIndex?` | `number`                                |
 
 #### Returns
 
 `undefined` \| `T`[keyof `T`]
 
-___
+---
 
 ### <a id="findlastindex" name="findlastindex"></a> findLastIndex
 
@@ -2685,22 +2685,22 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
+| Name         | Type                                  |
+| :----------- | :------------------------------------ |
+| `array`      | `undefined` \| `null` \| `List`<`T`\> |
 | `predicate?` | `ListIterateeCustom`<`T`, `boolean`\> |
-| `fromIndex?` | `number` |
+| `fromIndex?` | `number`                              |
 
 #### Returns
 
 `number`
 
-___
+---
 
 ### <a id="flatmap" name="flatmap"></a> flatMap
 
@@ -2709,14 +2709,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `Dictionary`<`Many`<`T`\>\> \| `NumericDictionary`<`Many`<`T`\>\> |
+| Name         | Type                                                                                       |
+| :----------- | :----------------------------------------------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `Dictionary`<`Many`<`T`\>\> \| `NumericDictionary`<`Many`<`T`\>\> |
 
 #### Returns
 
@@ -2726,9 +2726,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
 
 #### Returns
 
@@ -2738,17 +2738,17 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee` | `ListIterator`<`T`, `Many`<`TResult`\>\> |
+| Name         | Type                                     |
+| :----------- | :--------------------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\>    |
+| `iteratee`   | `ListIterator`<`T`, `Many`<`TResult`\>\> |
 
 #### Returns
 
@@ -2758,17 +2758,17 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `TResult` | `TResult` |
+| Name      | Type             |
+| :-------- | :--------------- |
+| `T`       | extends `object` |
+| `TResult` | `TResult`        |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratee` | `ObjectIterator`<`T`, `Many`<`TResult`\>\> |
+| Name         | Type                                       |
+| :----------- | :----------------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`               |
+| `iteratee`   | `ObjectIterator`<`T`, `Many`<`TResult`\>\> |
 
 #### Returns
 
@@ -2778,10 +2778,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
-| `iteratee` | `string` |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
+| `iteratee`   | `string`                          |
 
 #### Returns
 
@@ -2791,16 +2791,16 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
-| `iteratee` | `object` |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
+| `iteratee`   | `object`                          |
 
 #### Returns
 
 `boolean`[]
 
-___
+---
 
 ### <a id="foreachright" name="foreachright"></a> forEachRight
 
@@ -2809,15 +2809,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `T`[] |
-| `iteratee?` | `ArrayIterator`<`T`, `any`\> |
+| Name         | Type                         |
+| :----------- | :--------------------------- |
+| `collection` | `T`[]                        |
+| `iteratee?`  | `ArrayIterator`<`T`, `any`\> |
 
 #### Returns
 
@@ -2827,10 +2827,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `string` |
-| `iteratee?` | `StringIterator`<`any`\> |
+| Name         | Type                     |
+| :----------- | :----------------------- |
+| `collection` | `string`                 |
+| `iteratee?`  | `StringIterator`<`any`\> |
 
 #### Returns
 
@@ -2841,15 +2841,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `List`<`T`\> |
-| `iteratee?` | `ListIterator`<`T`, `any`\> |
+| Name         | Type                        |
+| :----------- | :-------------------------- |
+| `collection` | `List`<`T`\>                |
+| `iteratee?`  | `ListIterator`<`T`, `any`\> |
 
 #### Returns
 
@@ -2859,16 +2859,16 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `T` |
-| `iteratee?` | `ObjectIterator`<`T`, `any`\> |
+| Name         | Type                          |
+| :----------- | :---------------------------- |
+| `collection` | `T`                           |
+| `iteratee?`  | `ObjectIterator`<`T`, `any`\> |
 
 #### Returns
 
@@ -2878,17 +2878,17 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `TArray` | extends `undefined` \| ``null`` \| `T`[] |
+| Name     | Type                                   |
+| :------- | :------------------------------------- |
+| `T`      | `T`                                    |
+| `TArray` | extends `undefined` \| `null` \| `T`[] |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `TArray` & `undefined` & `TArray` & ``null`` & `TArray` & `T`[] |
-| `iteratee?` | `ArrayIterator`<`T`, `any`\> |
+| Name         | Type                                                          |
+| :----------- | :------------------------------------------------------------ |
+| `collection` | `TArray` & `undefined` & `TArray` & `null` & `TArray` & `T`[] |
+| `iteratee?`  | `ArrayIterator`<`T`, `any`\>                                  |
 
 #### Returns
 
@@ -2898,16 +2898,16 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `TString` | extends `undefined` \| ``null`` \| `string` |
+| Name      | Type                                      |
+| :-------- | :---------------------------------------- |
+| `TString` | extends `undefined` \| `null` \| `string` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `TString` |
-| `iteratee?` | `StringIterator`<`any`\> |
+| Name         | Type                     |
+| :----------- | :----------------------- |
+| `collection` | `TString`                |
+| `iteratee?`  | `StringIterator`<`any`\> |
 
 #### Returns
 
@@ -2917,42 +2917,42 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `TList` | extends `undefined` \| ``null`` \| `List`<`T`\> |
+| Name    | Type                                          |
+| :------ | :-------------------------------------------- |
+| `T`     | `T`                                           |
+| `TList` | extends `undefined` \| `null` \| `List`<`T`\> |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `TList` & `undefined` & `TList` & ``null`` & `TList` & `List`<`T`\> |
-| `iteratee?` | `ListIterator`<`T`, `any`\> |
+| Name         | Type                                                              |
+| :----------- | :---------------------------------------------------------------- |
+| `collection` | `TList` & `undefined` & `TList` & `null` & `TList` & `List`<`T`\> |
+| `iteratee?`  | `ListIterator`<`T`, `any`\>                                       |
 
 #### Returns
 
 `TList`
 
-▸ **forEachRight**<`T`\>(`collection`, `iteratee?`): `undefined` \| ``null`` \| `T`
+▸ **forEachRight**<`T`\>(`collection`, `iteratee?`): `undefined` \| `null` \| `T`
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratee?` | `ObjectIterator`<`T`, `any`\> |
+| Name         | Type                          |
+| :----------- | :---------------------------- |
+| `collection` | `undefined` \| `null` \| `T`  |
+| `iteratee?`  | `ObjectIterator`<`T`, `any`\> |
 
 #### Returns
 
-`undefined` \| ``null`` \| `T`
+`undefined` \| `null` \| `T`
 
-___
+---
 
 ### <a id="frompromise" name="frompromise"></a> fromPromise
 
@@ -2961,22 +2961,22 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
-| `E` |
+| :--- |
+| `T`  |
+| `E`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `promise` | `Promise`<`T`\> |
+| Name      | Type                    |
+| :-------- | :---------------------- |
+| `promise` | `Promise`<`T`\>         |
 | `errorFn` | (`e`: `unknown`) => `E` |
 
 #### Returns
 
 [`ResultAsync`](classes/ResultAsync.md)<`T`, `E`\>
 
-___
+---
 
 ### <a id="fromsafepromise" name="fromsafepromise"></a> fromSafePromise
 
@@ -2985,21 +2985,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
-| `E` |
+| :--- |
+| `T`  |
+| `E`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type            |
+| :-------- | :-------------- |
 | `promise` | `Promise`<`T`\> |
 
 #### Returns
 
 [`ResultAsync`](classes/ResultAsync.md)<`T`, `E`\>
 
-___
+---
 
 ### <a id="fromthrowable" name="fromthrowable"></a> fromThrowable
 
@@ -3007,16 +3007,16 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name | Type                                           |
+| :--- | :--------------------------------------------- |
 | `Fn` | extends (...`args`: readonly `any`[]) => `any` |
-| `E` | `E` |
+| `E`  | `E`                                            |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `fn` | `Fn` |
+| Name       | Type                    |
+| :--------- | :---------------------- |
+| `fn`       | `Fn`                    |
 | `errorFn?` | (`e`: `unknown`) => `E` |
 
 #### Returns
@@ -3027,15 +3027,15 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type                |
+| :-------- | :------------------ |
 | `...args` | `Parameters`<`Fn`\> |
 
 ##### Returns
 
 [`Result`](README.md#result)<`ReturnType`<`Fn`\>, `E`\>
 
-___
+---
 
 ### <a id="groupby" name="groupby"></a> groupBy
 
@@ -3044,15 +3044,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name         | Type                                  |
+| :----------- | :------------------------------------ |
+| `collection` | `undefined` \| `null` \| `List`<`T`\> |
+| `iteratee?`  | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
@@ -3062,22 +3062,22 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratee?` | `ValueIteratee`<`T`[keyof `T`]\> |
+| Name         | Type                             |
+| :----------- | :------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`     |
+| `iteratee?`  | `ValueIteratee`<`T`[keyof `T`]\> |
 
 #### Returns
 
 `Dictionary`<`T`[keyof `T`][]\>
 
-___
+---
 
 ### <a id="identity" name="identity"></a> identity
 
@@ -3086,14 +3086,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `T` |
+| Name    | Type |
+| :------ | :--- |
+| `value` | `T`  |
 
 #### Returns
 
@@ -3105,7 +3105,7 @@ ___
 
 `undefined`
 
-___
+---
 
 ### <a id="initial" name="initial"></a> initial
 
@@ -3114,20 +3114,20 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name  | Type  |
+| :---- | :---- |
 | `arr` | `T`[] |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="intersection" name="intersection"></a> intersection
 
@@ -3136,20 +3136,20 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `...arrays` | (`undefined` \| ``null`` \| `List`<`T`\>)[] |
+| Name        | Type                                      |
+| :---------- | :---------------------------------------- |
+| `...arrays` | (`undefined` \| `null` \| `List`<`T`\>)[] |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="invokemap" name="invokemap"></a> invokeMap
 
@@ -3157,11 +3157,11 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
-| `methodName` | `string` |
-| `...args` | `any`[] |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
+| `methodName` | `string`                          |
+| `...args`    | `any`[]                           |
 
 #### Returns
 
@@ -3171,23 +3171,23 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
+| Name      |
+| :-------- |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
-| `method` | (...`args`: `any`[]) => `TResult` |
-| `...args` | `any`[] |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
+| `method`     | (...`args`: `any`[]) => `TResult` |
+| `...args`    | `any`[]                           |
 
 #### Returns
 
 `TResult`[]
 
-___
+---
 
 ### <a id="isarray" name="isarray"></a> isArray
 
@@ -3195,8 +3195,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `value?` | `any` |
 
 #### Returns
@@ -3208,20 +3208,20 @@ value is any[]
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `value?` | `any` |
 
 #### Returns
 
 value is any[]
 
-___
+---
 
 ### <a id="isblank" name="isblank"></a> isBlank
 
@@ -3229,15 +3229,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type      |
+| :------ | :-------- |
 | `value` | `unknown` |
 
 #### Returns
 
 `boolean`
 
-___
+---
 
 ### <a id="isboolean" name="isboolean"></a> isBoolean
 
@@ -3245,15 +3245,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `value?` | `any` |
 
 #### Returns
 
 value is boolean
 
-___
+---
 
 ### <a id="isbuffer" name="isbuffer"></a> isBuffer
 
@@ -3261,15 +3261,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `value?` | `any` |
 
 #### Returns
 
 `boolean`
 
-___
+---
 
 ### <a id="isdate" name="isdate"></a> isDate
 
@@ -3277,15 +3277,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `value?` | `any` |
 
 #### Returns
 
 value is Date
 
-___
+---
 
 ### <a id="isempty" name="isempty"></a> isEmpty
 
@@ -3293,15 +3293,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `value?` | `any` |
 
 #### Returns
 
 `boolean`
 
-___
+---
 
 ### <a id="iserror" name="iserror"></a> isError
 
@@ -3309,15 +3309,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type  |
+| :------ | :---- |
 | `value` | `any` |
 
 #### Returns
 
 value is Error
 
-___
+---
 
 ### <a id="isfunction" name="isfunction"></a> isFunction
 
@@ -3325,15 +3325,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type  |
+| :------ | :---- |
 | `value` | `any` |
 
 #### Returns
 
 value is Function
 
-___
+---
 
 ### <a id="isnan" name="isnan"></a> isNaN
 
@@ -3341,15 +3341,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `value?` | `any` |
 
 #### Returns
 
 `boolean`
 
-___
+---
 
 ### <a id="isnonemptyarray" name="isnonemptyarray"></a> isNonEmptyArray
 
@@ -3358,21 +3358,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
-| `U` |
+| :--- |
+| `T`  |
+| `U`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type         |
+| :------ | :----------- |
 | `value` | `U` \| `T`[] |
 
 #### Returns
 
 value is T[]
 
-___
+---
 
 ### <a id="isnonemptystring" name="isnonemptystring"></a> isNonEmptyString
 
@@ -3381,20 +3381,20 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `U` |
+| :--- |
+| `U`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type            |
+| :------ | :-------------- |
 | `value` | `string` \| `U` |
 
 #### Returns
 
 value is string
 
-___
+---
 
 ### <a id="isnull" name="isnull"></a> isNull
 
@@ -3402,15 +3402,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type  |
+| :------ | :---- |
 | `value` | `any` |
 
 #### Returns
 
 value is null
 
-___
+---
 
 ### <a id="isnullorundefined" name="isnullorundefined"></a> isNullOrUndefined
 
@@ -3418,15 +3418,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type      |
+| :------ | :-------- |
 | `value` | `unknown` |
 
 #### Returns
 
 value is undefined \| null
 
-___
+---
 
 ### <a id="isnumber" name="isnumber"></a> isNumber
 
@@ -3434,16 +3434,16 @@ ___
 
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `value` | `unknown` | `undefined` |
-| `finiteness` | `boolean` | `false` |
+| Name         | Type      | Default value |
+| :----------- | :-------- | :------------ |
+| `value`      | `unknown` | `undefined`   |
+| `finiteness` | `boolean` | `false`       |
 
 #### Returns
 
 value is number
 
-___
+---
 
 ### <a id="isobject" name="isobject"></a> isObject
 
@@ -3451,15 +3451,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `value?` | `any` |
 
 #### Returns
 
 value is object
 
-___
+---
 
 ### <a id="isplainobject" name="isplainobject"></a> isPlainObject
 
@@ -3467,15 +3467,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `value?` | `any` |
 
 #### Returns
 
 `boolean`
 
-___
+---
 
 ### <a id="isregexp" name="isregexp"></a> isRegExp
 
@@ -3483,15 +3483,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `value?` | `any` |
 
 #### Returns
 
 value is RegExp
 
-___
+---
 
 ### <a id="isset" name="isset"></a> isSet
 
@@ -3499,15 +3499,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `value?` | `any` |
 
 #### Returns
 
 value is Set<any\>
 
-___
+---
 
 ### <a id="isstring" name="isstring"></a> isString
 
@@ -3515,15 +3515,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type      |
+| :------ | :-------- |
 | `value` | `unknown` |
 
 #### Returns
 
 value is string
 
-___
+---
 
 ### <a id="isuuid" name="isuuid"></a> isUUID
 
@@ -3532,20 +3532,20 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `U` |
+| :--- |
+| `U`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type            |
+| :------ | :-------------- |
 | `value` | `string` \| `U` |
 
 #### Returns
 
 value is string
 
-___
+---
 
 ### <a id="isurl" name="isurl"></a> isUrl
 
@@ -3553,16 +3553,16 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `string` |
+| Name      | Type     |
+| :-------- | :------- |
+| `value`   | `string` |
 | `schema?` | `string` |
 
 #### Returns
 
 `boolean`
 
-___
+---
 
 ### <a id="isweakmap" name="isweakmap"></a> isWeakMap
 
@@ -3570,15 +3570,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `value?` | `any` |
 
 #### Returns
 
 value is WeakMap<object, any\>
 
-___
+---
 
 ### <a id="isweakset" name="isweakset"></a> isWeakSet
 
@@ -3586,15 +3586,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `value?` | `any` |
 
 #### Returns
 
 value is WeakSet<object\>
 
-___
+---
 
 ### <a id="kebabcase" name="kebabcase"></a> kebabCase
 
@@ -3602,15 +3602,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `string?` | `string` |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="keyby" name="keyby"></a> keyBy
 
@@ -3619,15 +3619,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIterateeCustom`<`T`, `PropertyName`\> |
+| Name         | Type                                        |
+| :----------- | :------------------------------------------ |
+| `collection` | `undefined` \| `null` \| `List`<`T`\>       |
+| `iteratee?`  | `ValueIterateeCustom`<`T`, `PropertyName`\> |
 
 #### Returns
 
@@ -3637,22 +3637,22 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratee?` | `ValueIterateeCustom`<`T`[keyof `T`], `PropertyName`\> |
+| Name         | Type                                                   |
+| :----------- | :----------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`                           |
+| `iteratee?`  | `ValueIterateeCustom`<`T`[keyof `T`], `PropertyName`\> |
 
 #### Returns
 
 `Dictionary`<`T`[keyof `T`]\>
 
-___
+---
 
 ### <a id="last" name="last"></a> last
 
@@ -3661,20 +3661,20 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
+| `array` | `undefined` \| `null` \| `List`<`T`\> |
 
 #### Returns
 
 `undefined` \| `T`
 
-___
+---
 
 ### <a id="ms" name="ms"></a> ms
 
@@ -3682,10 +3682,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `StringValue` |
-| `options?` | `Options` |
+| Name       | Type          |
+| :--------- | :------------ |
+| `value`    | `StringValue` |
+| `options?` | `Options`     |
 
 #### Returns
 
@@ -3695,16 +3695,16 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `number` |
+| Name       | Type      |
+| :--------- | :-------- |
+| `value`    | `number`  |
 | `options?` | `Options` |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="noop" name="noop"></a> noop
 
@@ -3712,15 +3712,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type    |
+| :-------- | :------ |
 | `...args` | `any`[] |
 
 #### Returns
 
 `void`
 
-___
+---
 
 ### <a id="nth" name="nth"></a> nth
 
@@ -3729,21 +3729,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `n?` | `number` |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
+| `array` | `undefined` \| `null` \| `List`<`T`\> |
+| `n?`    | `number`                              |
 
 #### Returns
 
 `undefined` \| `T`
 
-___
+---
 
 ### <a id="ok" name="ok"></a> ok
 
@@ -3751,22 +3751,22 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `E` | `never` |
+| Name | Type    |
+| :--- | :------ |
+| `T`  | `T`     |
+| `E`  | `never` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `T` |
+| Name    | Type |
+| :------ | :--- |
+| `value` | `T`  |
 
 #### Returns
 
 [`Ok`](classes/Ok.md)<`T`, `E`\>
 
-___
+---
 
 ### <a id="okasync" name="okasync"></a> okAsync
 
@@ -3774,22 +3774,22 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `E` | `never` |
+| Name | Type    |
+| :--- | :------ |
+| `T`  | `T`     |
+| `E`  | `never` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `T` |
+| Name    | Type |
+| :------ | :--- |
+| `value` | `T`  |
 
 #### Returns
 
 [`ResultAsync`](classes/ResultAsync.md)<`T`, `E`\>
 
-___
+---
 
 ### <a id="once" name="once"></a> once
 
@@ -3797,21 +3797,21 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends (...`args`: `any`) => `any` |
+| Name | Type                                |
+| :--- | :---------------------------------- |
+| `T`  | extends (...`args`: `any`) => `any` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `func` | `T` |
+| Name   | Type |
+| :----- | :--- |
+| `func` | `T`  |
 
 #### Returns
 
 `T`
 
-___
+---
 
 ### <a id="over" name="over"></a> over
 
@@ -3819,14 +3819,14 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
+| Name      |
+| :-------- |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name           | Type                                         |
+| :------------- | :------------------------------------------- |
 | `...iteratees` | `Many`<(...`args`: `any`[]) => `TResult`\>[] |
 
 #### Returns
@@ -3837,15 +3837,15 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type    |
+| :-------- | :------ |
 | `...args` | `any`[] |
 
 ##### Returns
 
 `TResult`[]
 
-___
+---
 
 ### <a id="overargs" name="overargs"></a> overArgs
 
@@ -3853,9 +3853,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `func` | (...`args`: `any`[]) => `any` |
+| Name            | Type                                     |
+| :-------------- | :--------------------------------------- |
+| `func`          | (...`args`: `any`[]) => `any`            |
 | `...transforms` | `Many`<(...`args`: `any`[]) => `any`\>[] |
 
 #### Returns
@@ -3866,15 +3866,15 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type    |
+| :-------- | :------ |
 | `...args` | `any`[] |
 
 ##### Returns
 
 `any`
 
-___
+---
 
 ### <a id="overevery" name="overevery"></a> overEvery
 
@@ -3882,16 +3882,16 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `Result1` |
 | `Result2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name            | Type                                                             |
+| :-------------- | :--------------------------------------------------------------- |
 | `...predicates` | [(`arg`: `T`) => arg is Result1, (`arg`: `T`) => arg is Result2] |
 
 #### Returns
@@ -3902,9 +3902,9 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arg` | `T` |
+| Name  | Type |
+| :---- | :--- |
+| `arg` | `T`  |
 
 ##### Returns
 
@@ -3915,13 +3915,13 @@ arg is Result1 & Result2
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name            | Type                                       |
+| :-------------- | :----------------------------------------- |
 | `...predicates` | `Many`<(...`args`: `T`[]) => `boolean`\>[] |
 
 #### Returns
@@ -3932,15 +3932,15 @@ arg is Result1 & Result2
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type  |
+| :-------- | :---- |
 | `...args` | `T`[] |
 
 ##### Returns
 
 `boolean`
 
-___
+---
 
 ### <a id="oversome" name="oversome"></a> overSome
 
@@ -3948,16 +3948,16 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `Result1` |
 | `Result2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name            | Type                                                             |
+| :-------------- | :--------------------------------------------------------------- |
 | `...predicates` | [(`arg`: `T`) => arg is Result1, (`arg`: `T`) => arg is Result2] |
 
 #### Returns
@@ -3968,9 +3968,9 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arg` | `T` |
+| Name  | Type |
+| :---- | :--- |
+| `arg` | `T`  |
 
 ##### Returns
 
@@ -3981,13 +3981,13 @@ arg is Result1 \| Result2
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name            | Type                                       |
+| :-------------- | :----------------------------------------- |
 | `...predicates` | `Many`<(...`args`: `T`[]) => `boolean`\>[] |
 
 #### Returns
@@ -3998,15 +3998,15 @@ arg is Result1 \| Result2
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type  |
+| :-------- | :---- |
 | `...args` | `T`[] |
 
 ##### Returns
 
 `boolean`
 
-___
+---
 
 ### <a id="pad" name="pad"></a> pad
 
@@ -4014,17 +4014,17 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `string?` | `string` |
 | `length?` | `number` |
-| `chars?` | `string` |
+| `chars?`  | `string` |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="padend" name="padend"></a> padEnd
 
@@ -4032,17 +4032,17 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `string?` | `string` |
 | `length?` | `number` |
-| `chars?` | `string` |
+| `chars?`  | `string` |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="padstart" name="padstart"></a> padStart
 
@@ -4050,17 +4050,17 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `string?` | `string` |
 | `length?` | `number` |
-| `chars?` | `string` |
+| `chars?`  | `string` |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="partition" name="partition"></a> partition
 
@@ -4069,16 +4069,16 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
-| `U` |
+| :--- |
+| `T`  |
+| `U`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `callback` | `ValueIteratorTypeGuard`<`T`, `U`\> |
+| Name         | Type                                  |
+| :----------- | :------------------------------------ |
+| `collection` | `undefined` \| `null` \| `List`<`T`\> |
+| `callback`   | `ValueIteratorTypeGuard`<`T`, `U`\>   |
 
 #### Returns
 
@@ -4089,15 +4089,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `callback` | `ValueIteratee`<`T`\> |
+| Name         | Type                                  |
+| :----------- | :------------------------------------ |
+| `collection` | `undefined` \| `null` \| `List`<`T`\> |
+| `callback`   | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
@@ -4107,22 +4107,22 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `callback` | `ValueIteratee`<`T`[keyof `T`]\> |
+| Name         | Type                             |
+| :----------- | :------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`     |
+| `callback`   | `ValueIteratee`<`T`[keyof `T`]\> |
 
 #### Returns
 
 [`T`[keyof `T`][], `T`[keyof `T`][]]
 
-___
+---
 
 ### <a id="pluralize" name="pluralize"></a> pluralize
 
@@ -4130,16 +4130,16 @@ ___
 
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `word` | `string` | `undefined` |
-| `isKnownToBePlural` | `boolean` | `true` |
+| Name                | Type      | Default value |
+| :------------------ | :-------- | :------------ |
+| `word`              | `string`  | `undefined`   |
+| `isKnownToBePlural` | `boolean` | `true`        |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="pull" name="pull"></a> pull
 
@@ -4148,14 +4148,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `T`[] |
+| Name        | Type  |
+| :---------- | :---- |
+| `array`     | `T`[] |
 | `...values` | `T`[] |
 
 #### Returns
@@ -4167,21 +4167,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `List`<`T`\> |
-| `...values` | `T`[] |
+| Name        | Type         |
+| :---------- | :----------- |
+| `array`     | `List`<`T`\> |
+| `...values` | `T`[]        |
 
 #### Returns
 
 `List`<`T`\>
 
-___
+---
 
 ### <a id="pullat" name="pullat"></a> pullAt
 
@@ -4190,14 +4190,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `T`[] |
+| Name         | Type                |
+| :----------- | :------------------ |
+| `array`      | `T`[]               |
 | `...indexes` | `Many`<`number`\>[] |
 
 #### Returns
@@ -4209,21 +4209,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `List`<`T`\> |
+| Name         | Type                |
+| :----------- | :------------------ |
+| `array`      | `List`<`T`\>        |
 | `...indexes` | `Many`<`number`\>[] |
 
 #### Returns
 
 `List`<`T`\>
 
-___
+---
 
 ### <a id="range" name="range"></a> range
 
@@ -4231,10 +4231,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type     |
+| :------ | :------- |
 | `start` | `number` |
-| `end?` | `number` |
+| `end?`  | `number` |
 | `step?` | `number` |
 
 #### Returns
@@ -4245,17 +4245,17 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `end` | `number` |
+| Name    | Type                 |
+| :------ | :------------------- |
+| `end`   | `number`             |
 | `index` | `string` \| `number` |
-| `guard` | `object` |
+| `guard` | `object`             |
 
 #### Returns
 
 `number`[]
 
-___
+---
 
 ### <a id="reject" name="reject"></a> reject
 
@@ -4264,21 +4264,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arr` | `T`[] |
+| Name        | Type                                                           |
+| :---------- | :------------------------------------------------------------- |
+| `arr`       | `T`[]                                                          |
 | `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `boolean` |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="remove" name="remove"></a> remove
 
@@ -4287,21 +4287,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `List`<`T`\> |
+| Name         | Type                 |
+| :----------- | :------------------- |
+| `array`      | `List`<`T`\>         |
 | `predicate?` | `ListIteratee`<`T`\> |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="safejsonparse" name="safejsonparse"></a> safeJsonParse
 
@@ -4309,15 +4309,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type                               |
+| :-------- | :--------------------------------- |
 | `...args` | [text: string, reviver?: Function] |
 
 #### Returns
 
 [`Result`](README.md#result)<`any`, `unknown`\>
 
-___
+---
 
 ### <a id="sample" name="sample"></a> sample
 
@@ -4326,14 +4326,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `Dictionary`<`T`\> \| `NumericDictionary`<`T`\> |
+| Name         | Type                                                                     |
+| :----------- | :----------------------------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `Dictionary`<`T`\> \| `NumericDictionary`<`T`\> |
 
 #### Returns
 
@@ -4343,21 +4343,21 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
+| Name         | Type                         |
+| :----------- | :--------------------------- |
+| `collection` | `undefined` \| `null` \| `T` |
 
 #### Returns
 
 `undefined` \| `T`[keyof `T`]
 
-___
+---
 
 ### <a id="samplesize" name="samplesize"></a> sampleSize
 
@@ -4366,15 +4366,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `Dictionary`<`T`\> \| `NumericDictionary`<`T`\> |
-| `n?` | `number` |
+| Name         | Type                                                                     |
+| :----------- | :----------------------------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `Dictionary`<`T`\> \| `NumericDictionary`<`T`\> |
+| `n?`         | `number`                                                                 |
 
 #### Returns
 
@@ -4384,22 +4384,22 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `n?` | `number` |
+| Name         | Type                         |
+| :----------- | :--------------------------- |
+| `collection` | `undefined` \| `null` \| `T` |
+| `n?`         | `number`                     |
 
 #### Returns
 
 `T`[keyof `T`][]
 
-___
+---
 
 ### <a id="set" name="set"></a> set
 
@@ -4407,17 +4407,17 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `T` |
-| `path` | `PropertyPath` |
-| `value` | `any` |
+| Name     | Type           |
+| :------- | :------------- |
+| `object` | `T`            |
+| `path`   | `PropertyPath` |
+| `value`  | `any`          |
 
 #### Returns
 
@@ -4427,23 +4427,23 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
+| Name      |
+| :-------- |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `object` |
-| `path` | `PropertyPath` |
-| `value` | `any` |
+| Name     | Type           |
+| :------- | :------------- |
+| `object` | `object`       |
+| `path`   | `PropertyPath` |
+| `value`  | `any`          |
 
 #### Returns
 
 `TResult`
 
-___
+---
 
 ### <a id="shuffle" name="shuffle"></a> shuffle
 
@@ -4452,14 +4452,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
+| Name         | Type                                  |
+| :----------- | :------------------------------------ |
+| `collection` | `undefined` \| `null` \| `List`<`T`\> |
 
 #### Returns
 
@@ -4469,21 +4469,21 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
+| Name         | Type                         |
+| :----------- | :--------------------------- |
+| `collection` | `undefined` \| `null` \| `T` |
 
 #### Returns
 
 `T`[keyof `T`][]
 
-___
+---
 
 ### <a id="singularize" name="singularize"></a> singularize
 
@@ -4491,17 +4491,17 @@ ___
 
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `word` | `string` | `undefined` |
-| `isKnownToBePlural` | `boolean` | `true` |
-| `skipSimpleWords` | `boolean` | `false` |
+| Name                | Type      | Default value |
+| :------------------ | :-------- | :------------ |
+| `word`              | `string`  | `undefined`   |
+| `isKnownToBePlural` | `boolean` | `true`        |
+| `skipSimpleWords`   | `boolean` | `false`       |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="size" name="size"></a> size
 
@@ -4509,15 +4509,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `string` \| `object` |
+| Name         | Type                                          |
+| :----------- | :-------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `string` \| `object` |
 
 #### Returns
 
 `number`
 
-___
+---
 
 ### <a id="slice" name="slice"></a> slice
 
@@ -4526,22 +4526,22 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `start?` | `number` |
-| `end?` | `number` |
+| Name     | Type                                  |
+| :------- | :------------------------------------ |
+| `array`  | `undefined` \| `null` \| `List`<`T`\> |
+| `start?` | `number`                              |
+| `end?`   | `number`                              |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="snakecase" name="snakecase"></a> snakeCase
 
@@ -4549,15 +4549,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `string?` | `string` |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="startcase" name="startcase"></a> startCase
 
@@ -4565,15 +4565,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `string?` | `string` |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="take" name="take"></a> take
 
@@ -4582,21 +4582,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `n?` | `number` |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
+| `array` | `undefined` \| `null` \| `List`<`T`\> |
+| `n?`    | `number`                              |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="takeright" name="takeright"></a> takeRight
 
@@ -4605,21 +4605,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `n?` | `number` |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
+| `array` | `undefined` \| `null` \| `List`<`T`\> |
+| `n?`    | `number`                              |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="takerightwhile" name="takerightwhile"></a> takeRightWhile
 
@@ -4628,21 +4628,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `predicate?` | `ListIteratee`<`T`\> |
+| Name         | Type                                  |
+| :----------- | :------------------------------------ |
+| `array`      | `undefined` \| `null` \| `List`<`T`\> |
+| `predicate?` | `ListIteratee`<`T`\>                  |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="takewhile" name="takewhile"></a> takeWhile
 
@@ -4651,21 +4651,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `predicate?` | `ListIteratee`<`T`\> |
+| Name         | Type                                  |
+| :----------- | :------------------------------------ |
+| `array`      | `undefined` \| `null` \| `List`<`T`\> |
+| `predicate?` | `ListIteratee`<`T`\>                  |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="throttle" name="throttle"></a> throttle
 
@@ -4673,23 +4673,23 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends (...`args`: `any`) => `any` |
+| Name | Type                                |
+| :--- | :---------------------------------- |
+| `T`  | extends (...`args`: `any`) => `any` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `func` | `T` |
-| `wait?` | `number` |
+| Name       | Type               |
+| :--------- | :----------------- |
+| `func`     | `T`                |
+| `wait?`    | `number`           |
 | `options?` | `ThrottleSettings` |
 
 #### Returns
 
 `DebouncedFunc`<`T`\>
 
-___
+---
 
 ### <a id="times" name="times"></a> times
 
@@ -4697,15 +4697,15 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
+| Name      |
+| :-------- |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `n` | `number` |
+| Name       | Type                           |
+| :--------- | :----------------------------- |
+| `n`        | `number`                       |
 | `iteratee` | (`num`: `number`) => `TResult` |
 
 #### Returns
@@ -4716,15 +4716,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `n` | `number` |
+| Name | Type     |
+| :--- | :------- |
+| `n`  | `number` |
 
 #### Returns
 
 `number`[]
 
-___
+---
 
 ### <a id="trim" name="trim"></a> trim
 
@@ -4732,10 +4732,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `string?` | `string` |
-| `chars?` | `string` |
+| `chars?`  | `string` |
 
 #### Returns
 
@@ -4745,17 +4745,17 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `string` | `string` |
-| `index` | `string` \| `number` |
-| `guard` | `object` |
+| Name     | Type                 |
+| :------- | :------------------- |
+| `string` | `string`             |
+| `index`  | `string` \| `number` |
+| `guard`  | `object`             |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="trimend" name="trimend"></a> trimEnd
 
@@ -4763,10 +4763,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `string?` | `string` |
-| `chars?` | `string` |
+| `chars?`  | `string` |
 
 #### Returns
 
@@ -4776,17 +4776,17 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `string` | `string` |
-| `index` | `string` \| `number` |
-| `guard` | `object` |
+| Name     | Type                 |
+| :------- | :------------------- |
+| `string` | `string`             |
+| `index`  | `string` \| `number` |
+| `guard`  | `object`             |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="trimstart" name="trimstart"></a> trimStart
 
@@ -4794,10 +4794,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `string?` | `string` |
-| `chars?` | `string` |
+| `chars?`  | `string` |
 
 #### Returns
 
@@ -4807,17 +4807,17 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `string` | `string` |
-| `index` | `string` \| `number` |
-| `guard` | `object` |
+| Name     | Type                 |
+| :------- | :------------------- |
+| `string` | `string`             |
+| `index`  | `string` \| `number` |
+| `guard`  | `object`             |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="union" name="union"></a> union
 
@@ -4826,20 +4826,20 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `...arrays` | (`undefined` \| ``null`` \| `List`<`T`\>)[] |
+| Name        | Type                                      |
+| :---------- | :---------------------------------------- |
+| `...arrays` | (`undefined` \| `null` \| `List`<`T`\>)[] |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="unionby" name="unionby"></a> unionBy
 
@@ -4848,15 +4848,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `arrays`    | `undefined` \| `null` \| `List`<`T`\> |
+| `iteratee?` | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
@@ -4867,16 +4867,16 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `arrays1`   | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays2`   | `undefined` \| `null` \| `List`<`T`\> |
+| `iteratee?` | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
@@ -4887,17 +4887,17 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays3` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `arrays1`   | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays2`   | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays3`   | `undefined` \| `null` \| `List`<`T`\> |
+| `iteratee?` | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
@@ -4908,18 +4908,18 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays3` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays4` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `arrays1`   | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays2`   | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays3`   | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays4`   | `undefined` \| `null` \| `List`<`T`\> |
+| `iteratee?` | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
@@ -4930,25 +4930,25 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays3` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays4` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays5` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `...iteratee` | (`undefined` \| ``null`` \| `List`<`T`\> \| `ValueIteratee`<`T`\>)[] |
+| Name          | Type                                                               |
+| :------------ | :----------------------------------------------------------------- |
+| `arrays1`     | `undefined` \| `null` \| `List`<`T`\>                              |
+| `arrays2`     | `undefined` \| `null` \| `List`<`T`\>                              |
+| `arrays3`     | `undefined` \| `null` \| `List`<`T`\>                              |
+| `arrays4`     | `undefined` \| `null` \| `List`<`T`\>                              |
+| `arrays5`     | `undefined` \| `null` \| `List`<`T`\>                              |
+| `...iteratee` | (`undefined` \| `null` \| `List`<`T`\> \| `ValueIteratee`<`T`\>)[] |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="uniq" name="uniq"></a> uniq
 
@@ -4957,20 +4957,20 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name  | Type  |
+| :---- | :---- |
 | `arr` | `T`[] |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="unset" name="unset"></a> unset
 
@@ -4978,16 +4978,16 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `any` |
-| `path` | `PropertyPath` |
+| Name     | Type           |
+| :------- | :------------- |
+| `object` | `any`          |
+| `path`   | `PropertyPath` |
 
 #### Returns
 
 `boolean`
 
-___
+---
 
 ### <a id="unzip" name="unzip"></a> unzip
 
@@ -4996,20 +4996,20 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `T`[][] \| `List`<`List`<`T`\>\> |
+| Name    | Type                                                      |
+| :------ | :-------------------------------------------------------- |
+| `array` | `undefined` \| `null` \| `T`[][] \| `List`<`List`<`T`\>\> |
 
 #### Returns
 
 `T`[][]
 
-___
+---
 
 ### <a id="unzipwith" name="unzipwith"></a> unzipWith
 
@@ -5017,17 +5017,17 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`List`<`T`\>\> |
-| `iteratee` | (...`values`: `T`[]) => `TResult` |
+| Name       | Type                                           |
+| :--------- | :--------------------------------------------- |
+| `array`    | `undefined` \| `null` \| `List`<`List`<`T`\>\> |
+| `iteratee` | (...`values`: `T`[]) => `TResult`              |
 
 #### Returns
 
@@ -5038,20 +5038,20 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`List`<`T`\>\> |
+| Name    | Type                                           |
+| :------ | :--------------------------------------------- |
+| `array` | `undefined` \| `null` \| `List`<`List`<`T`\>\> |
 
 #### Returns
 
 `T`[][]
 
-___
+---
 
 ### <a id="upperfirst" name="upperfirst"></a> upperFirst
 
@@ -5059,15 +5059,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `string?` | `string` |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### <a id="uuid" name="uuid"></a> uuid
 
@@ -5077,7 +5077,7 @@ ___
 
 `string`
 
-___
+---
 
 ### <a id="without" name="without"></a> without
 
@@ -5086,21 +5086,21 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `...values` | `T`[] |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `array`     | `undefined` \| `null` \| `List`<`T`\> |
+| `...values` | `T`[]                                 |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="wrap" name="wrap"></a> wrap
 
@@ -5108,17 +5108,17 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
-| `TArgs` |
+| Name      |
+| :-------- |
+| `T`       |
+| `TArgs`   |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `T` |
+| Name      | Type                                              |
+| :-------- | :------------------------------------------------ |
+| `value`   | `T`                                               |
 | `wrapper` | (`value`: `T`, ...`args`: `TArgs`[]) => `TResult` |
 
 #### Returns
@@ -5129,15 +5129,15 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type      |
+| :-------- | :-------- |
 | `...args` | `TArgs`[] |
 
 ##### Returns
 
 `TResult`
 
-___
+---
 
 ### <a id="xor" name="xor"></a> xor
 
@@ -5146,20 +5146,20 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `...arrays` | (`undefined` \| ``null`` \| `List`<`T`\>)[] |
+| Name        | Type                                      |
+| :---------- | :---------------------------------------- |
+| `...arrays` | (`undefined` \| `null` \| `List`<`T`\>)[] |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="zip" name="zip"></a> zip
 
@@ -5168,14 +5168,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type          |
+| :-------- | :------------ |
 | `arrays1` | `List`<`T1`\> |
 | `arrays2` | `List`<`T2`\> |
 
@@ -5188,15 +5188,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type          |
+| :-------- | :------------ |
 | `arrays1` | `List`<`T1`\> |
 | `arrays2` | `List`<`T2`\> |
 | `arrays3` | `List`<`T3`\> |
@@ -5210,7 +5210,7 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -5218,8 +5218,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type          |
+| :-------- | :------------ |
 | `arrays1` | `List`<`T1`\> |
 | `arrays2` | `List`<`T2`\> |
 | `arrays3` | `List`<`T3`\> |
@@ -5234,7 +5234,7 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -5243,8 +5243,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type          |
+| :-------- | :------------ |
 | `arrays1` | `List`<`T1`\> |
 | `arrays2` | `List`<`T2`\> |
 | `arrays3` | `List`<`T3`\> |
@@ -5260,20 +5260,20 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `...arrays` | (`undefined` \| ``null`` \| `List`<`T`\>)[] |
+| Name        | Type                                      |
+| :---------- | :---------------------------------------- |
+| `...arrays` | (`undefined` \| `null` \| `List`<`T`\>)[] |
 
 #### Returns
 
 (`undefined` \| `T`)[][]
 
-___
+---
 
 ### <a id="zipobject" name="zipobject"></a> zipObject
 
@@ -5282,15 +5282,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `props` | `List`<`PropertyName`\> |
-| `values` | `List`<`T`\> |
+| Name     | Type                    |
+| :------- | :---------------------- |
+| `props`  | `List`<`PropertyName`\> |
+| `values` | `List`<`T`\>            |
 
 #### Returns
 
@@ -5300,15 +5300,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type                    |
+| :------- | :---------------------- |
 | `props?` | `List`<`PropertyName`\> |
 
 #### Returns
 
 `Dictionary`<`undefined`\>
 
-___
+---
 
 ### <a id="zipobjectdeep" name="zipobjectdeep"></a> zipObjectDeep
 
@@ -5316,16 +5316,16 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `paths?` | `List`<`PropertyPath`\> |
-| `values?` | `List`<`any`\> |
+| Name      | Type                    |
+| :-------- | :---------------------- |
+| `paths?`  | `List`<`PropertyPath`\> |
+| `values?` | `List`<`any`\>          |
 
 #### Returns
 
 `object`
 
-___
+---
 
 ### <a id="zipwith" name="zipwith"></a> zipWith
 
@@ -5333,16 +5333,16 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `List`<`T`\> |
+| Name       | Type                         |
+| :--------- | :--------------------------- |
+| `arrays`   | `List`<`T`\>                 |
 | `iteratee` | (`value1`: `T`) => `TResult` |
 
 #### Returns
@@ -5353,18 +5353,18 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T1` |
-| `T2` |
+| Name      |
+| :-------- |
+| `T1`      |
+| `T2`      |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `List`<`T1`\> |
-| `arrays2` | `List`<`T2`\> |
+| Name       | Type                                          |
+| :--------- | :-------------------------------------------- |
+| `arrays1`  | `List`<`T1`\>                                 |
+| `arrays2`  | `List`<`T2`\>                                 |
 | `iteratee` | (`value1`: `T1`, `value2`: `T2`) => `TResult` |
 
 #### Returns
@@ -5375,20 +5375,20 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T1` |
-| `T2` |
-| `T3` |
+| Name      |
+| :-------- |
+| `T1`      |
+| `T2`      |
+| `T3`      |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `List`<`T1`\> |
-| `arrays2` | `List`<`T2`\> |
-| `arrays3` | `List`<`T3`\> |
+| Name       | Type                                                          |
+| :--------- | :------------------------------------------------------------ |
+| `arrays1`  | `List`<`T1`\>                                                 |
+| `arrays2`  | `List`<`T2`\>                                                 |
+| `arrays3`  | `List`<`T3`\>                                                 |
 | `iteratee` | (`value1`: `T1`, `value2`: `T2`, `value3`: `T3`) => `TResult` |
 
 #### Returns
@@ -5399,22 +5399,22 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T1` |
-| `T2` |
-| `T3` |
-| `T4` |
+| Name      |
+| :-------- |
+| `T1`      |
+| `T2`      |
+| `T3`      |
+| `T4`      |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `List`<`T1`\> |
-| `arrays2` | `List`<`T2`\> |
-| `arrays3` | `List`<`T3`\> |
-| `arrays4` | `List`<`T4`\> |
+| Name       | Type                                                                          |
+| :--------- | :---------------------------------------------------------------------------- |
+| `arrays1`  | `List`<`T1`\>                                                                 |
+| `arrays2`  | `List`<`T2`\>                                                                 |
+| `arrays3`  | `List`<`T3`\>                                                                 |
+| `arrays4`  | `List`<`T4`\>                                                                 |
 | `iteratee` | (`value1`: `T1`, `value2`: `T2`, `value3`: `T3`, `value4`: `T4`) => `TResult` |
 
 #### Returns
@@ -5425,24 +5425,24 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T1` |
-| `T2` |
-| `T3` |
-| `T4` |
-| `T5` |
+| Name      |
+| :-------- |
+| `T1`      |
+| `T2`      |
+| `T3`      |
+| `T4`      |
+| `T5`      |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `List`<`T1`\> |
-| `arrays2` | `List`<`T2`\> |
-| `arrays3` | `List`<`T3`\> |
-| `arrays4` | `List`<`T4`\> |
-| `arrays5` | `List`<`T5`\> |
+| Name       | Type                                                                                          |
+| :--------- | :-------------------------------------------------------------------------------------------- |
+| `arrays1`  | `List`<`T1`\>                                                                                 |
+| `arrays2`  | `List`<`T2`\>                                                                                 |
+| `arrays3`  | `List`<`T3`\>                                                                                 |
+| `arrays4`  | `List`<`T4`\>                                                                                 |
+| `arrays5`  | `List`<`T5`\>                                                                                 |
 | `iteratee` | (`value1`: `T1`, `value2`: `T2`, `value3`: `T3`, `value4`: `T4`, `value5`: `T5`) => `TResult` |
 
 #### Returns
@@ -5453,16 +5453,16 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `...iteratee` | (`undefined` \| ``null`` \| (...`group`: `T`[]) => `TResult` \| `List`<`T`\>)[] |
+| Name          | Type                                                                          |
+| :------------ | :---------------------------------------------------------------------------- |
+| `...iteratee` | (`undefined` \| `null` \| (...`group`: `T`[]) => `TResult` \| `List`<`T`\>)[] |
 
 #### Returns
 
@@ -5476,10 +5476,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type     |
+| :------ | :------- |
 | `start` | `number` |
-| `end?` | `number` |
+| `end?`  | `number` |
 | `step?` | `number` |
 
 #### Returns
@@ -5490,11 +5490,11 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `end` | `number` |
+| Name    | Type                 |
+| :------ | :------------------- |
+| `end`   | `number`             |
 | `index` | `string` \| `number` |
-| `guard` | `object` |
+| `guard` | `object`             |
 
 #### Returns
 
