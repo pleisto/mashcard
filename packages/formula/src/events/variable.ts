@@ -1,9 +1,16 @@
 import { event } from '@mashcard/schema'
-import { FormulaEventPayload, VariableInterface } from '../types'
+import { FormulaEventPayload, VariableDependency, VariableInterface } from '../types'
 
 export const FormulaUpdatedViaId = event<FormulaEventPayload<VariableInterface>, Promise<void>>()(
   'FormulaUpdatedViaId',
   v => {
     return { id: `${v.namespaceId},${v.id}` }
+  }
+)
+
+export const FormulaVariableDependencyUpdated = event<FormulaEventPayload<VariableDependency[]>, Promise<void>>()(
+  'FormulaVariableDependencyUpdated',
+  ({ id, namespaceId, username }) => {
+    return { id: `${username}#${namespaceId},${id}` }
   }
 )

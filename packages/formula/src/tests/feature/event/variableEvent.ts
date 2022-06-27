@@ -1,7 +1,8 @@
+import { FormulaVariableDependencyUpdated } from '../../../events'
 import { generateUUIDs } from '../../testHelper'
-import { TestCaseInterface } from '../../testType'
+import { DistributeEvents, EventTestCaseType, TestCaseInterface } from '../../testType'
 
-const [page0Id] = generateUUIDs()
+const [page0Id, variableId, dependencyVariableId] = generateUUIDs()
 
 export const VariableEventTestCase: TestCaseInterface = {
   name: 'variableEvent',
@@ -10,7 +11,7 @@ export const VariableEventTestCase: TestCaseInterface = {
       {
         pageName: 'VariableEventPage1',
         pageId: page0Id,
-        variables: [{ variableName: 'num0', definition: '=0' }]
+        variables: [{ variableName: 'num0', variableId, definition: '=0' }]
       }
     ],
     eventTestCases: [
@@ -24,6 +25,31 @@ export const VariableEventTestCase: TestCaseInterface = {
         resultBefore: '"unknownVariable" not found',
         events: []
       },
+      ...[
+        { events: [['variableDelete', {}]] as DistributeEvents[] },
+        { events: [['variableUpdateDefinition', { definition: '=1' }]] as DistributeEvents[] }
+      ].map<EventTestCaseType>(a => ({
+        ...a,
+        definition: '=num0+1',
+        label: 'variable dependency',
+        namespaceId: page0Id,
+        variableId: dependencyVariableId,
+        resultBefore: 1,
+        saveEvents: ctx => [
+          {
+            event: FormulaVariableDependencyUpdated,
+            eventId: `${ctx.formulaContext.domain}#${page0Id},${variableId}`,
+            payload: { meta: [{ namespaceId: page0Id, variableId: dependencyVariableId }], id: variableId }
+          }
+        ],
+        triggerEvents: ctx => [
+          {
+            event: FormulaVariableDependencyUpdated,
+            eventId: `${ctx.formulaContext.domain}#${page0Id},${variableId}`,
+            payload: { meta: [], id: variableId }
+          }
+        ]
+      })),
       {
         definition: '=num2+1',
         resultBefore: '"num2" not found',

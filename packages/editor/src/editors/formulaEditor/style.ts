@@ -21,7 +21,7 @@ export const MashcardFomulaEditor = css({
     backgroundColor: theme.colors.white,
     backgroundImage: 'none',
     border: `1px solid ${theme.colors.grey3}`,
-    borderRadius: '4px',
+    borderRadius: '0px',
     transition: 'all .3s',
 
     ...onlyBottomBorder,

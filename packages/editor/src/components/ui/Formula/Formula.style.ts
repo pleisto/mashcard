@@ -9,12 +9,6 @@ export const MashcardFormulaMenuPopover = css({
   display: 'inline'
 })()
 
-export const FormulaDivider = styled('div', {
-  padding: '0 12px',
-  background: '#f6f6f6',
-  height: 1
-})
-
 export const FormulaResult = styled('div', {
   color: '@basic-color',
   margin: '12px 0',
@@ -47,7 +41,7 @@ export const MashcardFormulaMenu = styled('div', {
   minWidth: 600,
   width: 656,
   maxWidth: '100%',
-  padding: '4px 0px 8px 0px',
+  padding: '0px',
 
   '.formula-menu-row': {
     display: 'flex',
@@ -58,27 +52,32 @@ export const MashcardFormulaMenu = styled('div', {
     '.formula-menu-item': {
       flex: 1,
 
-      '.formula-menu-field': {
+      '.formula-menu-item-name': {
+        display: 'flex',
         flex: 1,
-        padding: 1,
-        lineHeight: '1.8',
-        fontFamily: 'Fira Code',
 
-        '&::placeholder': {
-          color: theme.colors.typeThirdary
+        '.formula-menu-item-name-field': {
+          marginRight: 12,
+          padding: 1,
+          lineHeight: '1.8',
+          fontFamily: 'Fira Code',
+
+          '&::placeholder': {
+            color: theme.colors.typeThirdary
+          }
+        },
+        '.formula-menu-item-reference-count': {
+          paddingRight: 1,
+          float: 'right'
+        },
+        '.formula-menu-item-reference-icon': {
+          float: 'right'
         }
       }
     },
 
     '.formula-menu-item + .formula-menu-item': {
       marginLeft: 24
-    },
-
-    '.formula-menu-label': {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      fontWeight: 500
     }
   }
 })

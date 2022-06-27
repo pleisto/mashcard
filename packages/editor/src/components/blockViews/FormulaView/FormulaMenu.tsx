@@ -1,10 +1,15 @@
 import React from 'react'
-import { Input, Popover } from '@mashcard/design-system'
+import { Input, Popover, Icon } from '@mashcard/design-system'
 import { VariableData } from '@mashcard/formula'
 import { FormulaEditor } from '../../../editors/formulaEditor'
 import { FormulaResult, AutocompleteList } from '../../ui/Formula'
 import { CompletionType, UseFormulaInput, UseFormulaOutput } from './useFormula'
-import { MashcardEventBus, FormulaCalculateTrigger, FormulaEditorSavedTrigger } from '@mashcard/schema'
+import {
+  MashcardEventBus,
+  FormulaCalculateTrigger,
+  FormulaEditorSavedTrigger,
+  FormulaKeyboardEventTrigger
+} from '@mashcard/schema'
 import * as Root from '../../ui/Formula/Formula.style'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
@@ -13,6 +18,7 @@ export interface FormulaMenuProps {
   temporaryVariableT: UseFormulaOutput['temporaryVariableT']
   nameRef: UseFormulaOutput['nameRef']
   formulaEditor: UseFormulaOutput['formulaEditor']
+  references: UseFormulaOutput['references']
   defaultVisible: boolean
   onVisibleChange: (visible: boolean) => void
   handleDelete: (variable?: VariableData) => void
@@ -27,6 +33,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   meta: { namespaceId: rootId, variableId: formulaId },
   temporaryVariableT,
   handleDelete,
+  references,
   formulaEditor,
   defaultVisible,
   onVisibleChange,
@@ -43,13 +50,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   }, [onVisibleChange])
 
   const triggerCalculate = async (): Promise<void> => {
-    const result = MashcardEventBus.dispatch(
-      FormulaCalculateTrigger({
-        skipExecute: true,
-        formulaId,
-        rootId
-      })
-    )
+    const result = MashcardEventBus.dispatch(FormulaCalculateTrigger({ skipExecute: true, formulaId, rootId }))
     await Promise.all(result)
   }
 
@@ -73,6 +74,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       return
     }
     await triggerCalculate()
+    formulaEditor?.commands.focus()
     onVisibleChange?.(visible)
     setVisible(visible)
   }
@@ -80,8 +82,16 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
     const name = e.target.value
     nameRef.current.name = name
-    // setInputName(name)
     await triggerCalculate()
+  }
+
+  const handleNameKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>): Promise<void> => {
+    if (e.key === 'Enter') {
+      const result = MashcardEventBus.dispatch(
+        FormulaKeyboardEventTrigger({ key: e.key, formulaId, rootId, isEditor: true, completionIndex: -1 })
+      )
+      await Promise.all(result)
+    }
   }
 
   const namePlaceholder =
@@ -89,31 +99,34 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       ? 'Add Name'
       : nameRef.current.defaultName
 
+  const referencedCount = references.length
+
   const menu = (
     <Root.MashcardFormulaMenu data-testid={TEST_ID_ENUM.editor.formulaBlock.menu.id}>
-      {/* <div className="formula-menu-header">{t(`${i18nKey}.header`)}</div> */}
       <div className="formula-menu-row">
         <div className="formula-menu-item">
-          <label className="formula-menu-label">
-            {/* <span className="formula-menu-label-text">{t(`${i18nKey}.name`)}</span> */}
+          <div className="formula-menu-item-name">
             <Input
               size="lg"
               borderType="underline"
-              className="formula-menu-field"
+              className="formula-menu-item-name-field"
+              onKeyDown={handleNameKeyDown}
               placeholder={namePlaceholder}
               value={nameRef.current.name}
               onChange={handleNameChange}
             />
-          </label>
+            <span className="formula-menu-item-reference-count">{referencedCount}</span>
+            <span className="formula-menu-item-reference-icon">
+              <Icon.Referenced />
+            </span>
+          </div>
         </div>
       </div>
       <div className="formula-menu-row">
-        {/* <span className="formula-menu-result-label">=</span> */}
         <div className="formula-menu-item">
           <FormulaEditor formulaEditor={formulaEditor} />
         </div>
       </div>
-      <Root.FormulaDivider />
       <FormulaResult variableT={temporaryVariableT} pageId={rootId} />
       <AutocompleteList rootId={rootId} formulaId={formulaId} completion={completion} />
     </Root.MashcardFormulaMenu>
@@ -128,7 +141,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottomStart"
-      trigger={['click']}>
+      trigger={['click']}
+    >
       {children}
     </Popover>
   )

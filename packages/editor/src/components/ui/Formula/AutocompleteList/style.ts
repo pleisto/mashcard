@@ -15,7 +15,7 @@ export const FormulaAutocomplete = styled('div', {
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  background: '#fcfcfa',
+  background: theme.colors.backgroundOverlayThirdary,
   border: `1px solid ${theme.colors.grey3}`,
   borderRadius: 4,
   height: 280,
@@ -59,13 +59,14 @@ export const FormulaAutocomplete = styled('div', {
 
       '.autocomplete-list-item-name': {
         fontSize: 14,
+        color: theme.colors.typeSecondary,
         lineHeight: '20px',
         fontWeight: '500'
       },
       '.autocomplete-list-item-desc': {
         fontSize: 12,
         lineHeight: '16px',
-        color: '#847e8e'
+        color: theme.colors.typeSecondary
       }
     }
   },
@@ -73,7 +74,6 @@ export const FormulaAutocomplete = styled('div', {
   '.formula-autocomplete-preview': {
     flex: 1,
     height: '100%',
-    background: '#f6f6f6',
     overflow: 'hidden',
     overflowY: 'scroll',
 
@@ -98,6 +98,7 @@ export const FormulaAutocomplete = styled('div', {
 
   '.autocomplete-preview-name': {
     fontSize: 16,
+    color: theme.colors.typeSecondary,
     lineHeight: 1.5,
     fontWeight: 600
   },

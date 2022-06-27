@@ -13,7 +13,9 @@ import {
   VariableMetadata,
   FormulaUpdatedViaId,
   generateVariable,
-  applyCompletion
+  applyCompletion,
+  VariableDependency,
+  FormulaVariableDependencyUpdated
 } from '@mashcard/formula'
 import {
   MashcardEventBus,
@@ -61,6 +63,7 @@ export interface UseFormulaOutput {
   onSaveFormula: () => Promise<void>
   commitFormula: (definition: string) => Promise<void>
   completion: CompletionType
+  references: VariableDependency[]
 }
 
 const fetchFormulaInput = (t: VariableData | undefined, formulaIsNormal: boolean): FormulaInput => {
@@ -100,13 +103,16 @@ export const useFormula = ({
     () => formulaContext?.findVariableById(namespaceId, variableId),
     [formulaContext, namespaceId, variableId]
   )
-  // const defaultVariable = formulaContext?.findVariableById(namespaceId, variableId)
   const contextDefaultName = React.useMemo(
     () => formulaContext?.getDefaultVariableName(namespaceId, 'any') ?? '',
     [formulaContext, namespaceId]
   )
   const contextCompletions = React.useMemo(
     () => formulaContext?.completions(namespaceId, variableId) ?? [],
+    [formulaContext, namespaceId, variableId]
+  )
+  const defaultReferences = React.useMemo(
+    () => formulaContext?.findReference(namespaceId, variableId) ?? [],
     [formulaContext, namespaceId, variableId]
   )
 
@@ -119,14 +125,6 @@ export const useFormula = ({
     defaultName: contextDefaultName
   })
 
-  const formulaEditor = useFormulaEditor({
-    editable: true,
-    rootId: namespaceId,
-    formulaId: variableId,
-    placeholder: formulaIsNormal ? 'Add Formula' : undefined,
-    content: inputRef.current.content
-  })
-
   // States
   const [selected, setSelected] = React.useState<SelectedType>()
   const [savedVariableT, setSavedVariableT] = React.useState(defaultVariable?.t)
@@ -137,6 +135,15 @@ export const useFormula = ({
     input: defaultVariable?.t.variableParseResult.definition ?? '',
     activeCompletion: contextCompletions[0],
     activeCompletionIndex: 0
+  })
+  const [references, setReferences] = React.useState(defaultReferences)
+
+  const formulaEditor = useFormulaEditor({
+    editable: true,
+    rootId: namespaceId,
+    formulaId: variableId,
+    placeholder: formulaIsNormal ? 'Add Formula' : undefined,
+    content: inputRef.current.content
   })
 
   // Callbacks
@@ -341,8 +348,7 @@ export const useFormula = ({
       t: {
         ...temporaryVariableTRef.current!,
         meta: { ...temporaryVariableTRef.current!.meta, name: nameRef.current.name }
-      },
-      variable: variableRef.current
+      }
     })
     temporaryVariableTRef.current = variableRef.current.t
     setSavedVariableT(variableRef.current.t)
@@ -478,6 +484,20 @@ export const useFormula = ({
 
   React.useEffect(() => {
     const listener = MashcardEventBus.subscribe(
+      FormulaVariableDependencyUpdated,
+      async e => {
+        setReferences(e.payload.meta)
+      },
+      {
+        eventId: `${formulaContext?.domain}#${namespaceId},${variableId}`,
+        subscribeId: `UseFormula#${namespaceId},${variableId}`
+      }
+    )
+    return () => listener.unsubscribe()
+  }, [formulaContext?.domain, namespaceId, variableId])
+
+  React.useEffect(() => {
+    const listener = MashcardEventBus.subscribe(
       FormulaUpdatedViaId,
       async e => {
         await innerUpdateVariable(e.payload.meta)
@@ -489,6 +509,7 @@ export const useFormula = ({
 
   return {
     formulaEditor,
+    references,
     temporaryVariableT: temporaryVariableTRef.current,
     savedVariableT,
     selected,

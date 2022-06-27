@@ -519,6 +519,7 @@ export interface ContextInterface {
   findSpreadsheet: (key: FindKey) => SpreadsheetType | undefined
   findColumn: (spreadsheetId: SpreadsheetId, key: FindKey) => ColumnType | undefined
   findRow: (spreadsheetId: SpreadsheetId, key: FindKey) => RowType | undefined
+  findReference: (namespaceId: NamespaceId, variableId: VariableId) => VariableDependency[]
   setSpreadsheet: (spreadsheet: SpreadsheetType) => Promise<void>
   removeSpreadsheet: (spreadsheetId: SpreadsheetId) => Promise<void>
   listVariables: (namespaceId: NamespaceId) => VariableInterface[]
@@ -881,7 +882,7 @@ export interface VariableInterface {
   formulaContext: ContextInterface
 
   buildFormula: (input?: FormulaDefinition) => Formula
-  cleanup: () => void
+  cleanup: () => Promise<void>
   trackDependency: () => Promise<void>
   trackDirty: VoidFunction
   save: () => Promise<void>

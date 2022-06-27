@@ -290,6 +290,11 @@ export class FormulaContext implements ContextInterface {
     return this.blocks[blockId]
   }
 
+  public findReference(namespaceId: NamespaceId, variableId: VariableId): VariableDependency[] {
+    const dependencyKey = variableKey(namespaceId, variableId)
+    return this.reverseVariableDependencies[dependencyKey] ?? []
+  }
+
   private async setBlock(blockId: NamespaceId, name: string): Promise<void> {
     if (this.blocks[blockId]) return
     const block = new BlockClass(this, { id: blockId, name })
@@ -406,8 +411,7 @@ export class FormulaContext implements ContextInterface {
   }
 
   public findVariableById(namespaceId: NamespaceId, variableId: VariableId): VariableInterface | undefined {
-    const v = this.variables[variableKey(namespaceId, variableId)]
-    return v
+    return this.variables[variableKey(namespaceId, variableId)]
   }
 
   public findVariableByName(namespaceId: NamespaceId, name: string): VariableInterface | undefined {
@@ -427,7 +431,7 @@ export class FormulaContext implements ContextInterface {
 
     // 1. clear old dependencies
     if (oldVariable) {
-      oldVariable.cleanup()
+      await oldVariable.cleanup()
     }
 
     variable.isNew = false
@@ -460,7 +464,7 @@ export class FormulaContext implements ContextInterface {
     const variable = this.variables[key]
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete this.variables[key]
-    variable.cleanup()
+    await variable.cleanup()
     await variable.onUpdate({})
   }
 

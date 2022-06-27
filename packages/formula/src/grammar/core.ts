@@ -486,23 +486,15 @@ export const interpret = async ({
 export const generateVariable = ({
   formulaContext,
   t,
-  variable,
   isLoad,
   skipExecute
 }: {
   formulaContext: ContextInterface
   t: VariableData
-  variable?: VariableInterface
   isLoad?: boolean
   skipExecute?: boolean
 }): VariableInterface => {
-  let newVariable: VariableInterface
-  if (variable) {
-    newVariable = variable
-    newVariable.t = t
-  } else {
-    newVariable = new VariableClass({ t, formulaContext })
-  }
+  const newVariable = new VariableClass({ t, formulaContext })
 
   if (!skipExecute) {
     newVariable.isNew = !isLoad

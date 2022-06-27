@@ -52,6 +52,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
     savedVariableT,
     temporaryVariableT,
     isDisableSave,
+    references,
     nameRef,
     onSaveFormula,
     formulaEditor,
@@ -78,6 +79,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
   return (
     <FormulaMenu
       meta={meta}
+      references={references}
       temporaryVariableT={temporaryVariableT}
       formulaEditor={formulaEditor}
       defaultVisible={defaultVisible}
