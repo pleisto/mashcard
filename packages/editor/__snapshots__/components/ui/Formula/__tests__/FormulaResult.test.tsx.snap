@@ -20,9 +20,6 @@ exports[`FormulaResult renders formula error result correctly 1`] = `
       </span>
     </span>
   </div>
-  <div
-    class="mc-c-epsxnm"
-  />
 </div>
 `;
 
@@ -76,9 +73,6 @@ exports[`FormulaResult renders formula result correctly 1`] = `
       </span>
     </span>
   </div>
-  <div
-    class="mc-c-epsxnm"
-  />
 </div>
 `;
 
