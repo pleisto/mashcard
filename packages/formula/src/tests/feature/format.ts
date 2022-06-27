@@ -37,12 +37,7 @@ export const FormatTestCase: TestCaseInterface = {
       { definition$: '= 1 != 2$', minifyResult$: '=1!=2$', formatResult$: '=1 != 2$' },
       { definition$: '= 1 && 2$', minifyResult$: '=1&&2$', formatResult$: '=1 && 2$' },
       { definition$: '= 1 || 2$', minifyResult$: '=1||2$', formatResult$: '=1 || 2$' },
-      {
-        definition$: '= 1  and 2$',
-        minifyResult$: '=1and2$',
-        formatResult$: '=1 and 2$',
-        todoMessage: 'fix 1and2 parse'
-      },
+      { definition$: '=1 and 2$', minifyResult$: '=1and2$', todoMessage: 'fix 1and2 parse' },
       { definition$: '= 1  or 2$', minifyResult$: '=1or2$', formatResult$: '=1 or 2$' },
       { definition$: '=  !  2$', minifyResult$: '=!2$', formatResult$: '=!2$' },
       { definition$: '=  not  2$', minifyResult$: '=not2$', formatResult$: '=not 2$' },

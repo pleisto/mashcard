@@ -285,7 +285,6 @@ export const useFormula = ({
   }, [currentCtx, doCalculate, formulaIsNormal])
 
   const handleSelectActiveCompletion = React.useCallback(async (): Promise<void> => {
-    if (!formulaContext) return
     const currentCompletion = completion.activeCompletion
     if (!currentCompletion) return
 
@@ -295,7 +294,7 @@ export const useFormula = ({
 
     inputRef.current = input2content(newInput, formulaIsNormal)
     await doCalculate(false)
-  }, [completion.activeCompletion, currentCtx, doCalculate, formulaContext, formulaIsNormal])
+  }, [completion.activeCompletion, currentCtx, doCalculate, formulaIsNormal])
 
   const isDisableSave = React.useCallback((): boolean => {
     if (!formulaContext) return true
