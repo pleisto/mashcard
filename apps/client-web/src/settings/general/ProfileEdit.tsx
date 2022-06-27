@@ -32,7 +32,12 @@ export const ProfileEdit: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) =
     yup: profileValidation
   })
 
-  const onProfileSubmit = async (values: Omit<CreateOrUpdatePodInput, 'domain' | 'type'>): Promise<void> => {
+  const onProfileSubmit = async (
+    values: Omit<CreateOrUpdatePodInput, 'domain' | 'type' | 'bio' | 'name'> & {
+      bio: string | undefined | null
+      name: string | undefined
+    }
+  ): Promise<void> => {
     const result = await updatePod({
       variables: {
         input: {
