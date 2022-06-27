@@ -27,7 +27,7 @@ jobs:
       - name: Run yarn install
         run: yarn install --immutable
       - name: Install Playwright
-        run: yarn e2e-testing install-deps
+        run: yarn e2e-testing install-deps ${{ matrix.browser }}
       - name: Run Playwright tests
         run: yarn e2e-testing run-playwright:${{ matrix.browser }}
         env:

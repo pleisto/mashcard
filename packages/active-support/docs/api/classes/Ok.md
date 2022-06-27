@@ -55,10 +55,6 @@
 | :------ | :------ |
 | `value` | `T` |
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:175
-
 ## Properties
 
 ### <a id="value" name="value"></a> value
@@ -89,10 +85,6 @@ node_modules/neverthrow/dist/index.d.ts:174
 
 IResult.\_unsafeUnwrap
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:188
-
 ___
 
 ### <a id="_unsafeunwraperr" name="_unsafeunwraperr"></a> \_unsafeUnwrapErr
@@ -112,10 +104,6 @@ ___
 #### Implementation of
 
 IResult.\_unsafeUnwrapErr
-
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:189
 
 ___
 
@@ -143,10 +131,6 @@ ___
 
 IResult.andThen
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:180
-
 ▸ **andThen**<`U`, `F`\>(`f`): [`Result`](../README.md#result)<`U`, `E` \| `F`\>
 
 #### Type parameters
@@ -169,10 +153,6 @@ node_modules/neverthrow/dist/index.d.ts:180
 #### Implementation of
 
 IResult.andThen
-
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:181
 
 ___
 
@@ -201,10 +181,6 @@ ___
 
 IResult.asyncAndThen
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:184
-
 ___
 
 ### <a id="asyncmap" name="asyncmap"></a> asyncMap
@@ -231,10 +207,6 @@ ___
 
 IResult.asyncMap
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:185
-
 ___
 
 ### <a id="iserr" name="iserr"></a> isErr
@@ -249,10 +221,6 @@ this is Err<T, E\>
 
 IResult.isErr
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:177
-
 ___
 
 ### <a id="isok" name="isok"></a> isOk
@@ -266,10 +234,6 @@ this is Ok<T, E\>
 #### Implementation of
 
 IResult.isOk
-
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:176
 
 ___
 
@@ -297,10 +261,6 @@ ___
 
 IResult.map
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:178
-
 ___
 
 ### <a id="maperr" name="maperr"></a> mapErr
@@ -326,10 +286,6 @@ ___
 #### Implementation of
 
 IResult.mapErr
-
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:179
 
 ___
 
@@ -358,10 +314,6 @@ ___
 
 IResult.match
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:187
-
 ___
 
 ### <a id="orelse" name="orelse"></a> orElse
@@ -388,10 +340,6 @@ ___
 
 IResult.orElse
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:182
-
 ▸ **orElse**<`A`\>(`_f`): [`Result`](../README.md#result)<`T`, `A`\>
 
 #### Type parameters
@@ -413,10 +361,6 @@ node_modules/neverthrow/dist/index.d.ts:182
 #### Implementation of
 
 IResult.orElse
-
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:183
 
 ___
 
@@ -443,7 +387,3 @@ ___
 #### Implementation of
 
 IResult.unwrapOr
-
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:186
