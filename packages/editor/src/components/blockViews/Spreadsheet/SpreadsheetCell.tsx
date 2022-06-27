@@ -198,7 +198,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
         definition: display,
         display,
         version: 0,
-        meta: { ...meta, input: display, position: 0 },
+        meta: { ...meta, input: display, position: display.length },
         result: { type: 'literal', result: display }
       }
     : undefined

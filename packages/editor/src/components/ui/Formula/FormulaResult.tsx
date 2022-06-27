@@ -57,7 +57,6 @@ export const FormulaResult: FC<FormulaResultProps> = ({ variableT, pageId }) => 
   return (
     <>
       <Root.FormulaResult>{formulaResult}</Root.FormulaResult>
-      <Root.FormulaDivider />
     </>
   )
 }

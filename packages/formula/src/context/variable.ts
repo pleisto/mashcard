@@ -71,7 +71,7 @@ export const castVariable = async (
     variableId: id,
     name,
     input: definition,
-    position: 0
+    position: definition.length
   }
   const richType = { type: unknownType, meta: unknownMeta ?? {} } as unknown as VariableRichType
 
@@ -334,7 +334,7 @@ export class VariableClass implements VariableInterface {
       variableId: formula.id,
       name: formula.name,
       input: formula.definition,
-      position: 0,
+      position: formula.definition.length,
       richType: this.t.meta.richType
     }
 
