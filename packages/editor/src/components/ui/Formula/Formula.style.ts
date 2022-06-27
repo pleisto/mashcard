@@ -49,17 +49,38 @@ export const MashcardFormulaMenu = styled('div', {
     alignItems: 'center',
     marginBottom: 8,
 
+    // '.formula-result-ok': {
+    //   '.formula-result-ok-equal': {
+    //     marginRight: 12
+    //   },
+    //   '.formula-result-ok-icon': {
+    //     float: 'right'
+    //   }
+    // },
+
     '.formula-menu-item': {
       flex: 1,
 
-      '.formula-menu-name-field': {
+      '.formula-menu-item-name': {
+        display: 'flex',
         flex: 1,
-        padding: 1,
-        lineHeight: '1.8',
-        fontFamily: 'Fira Code',
 
-        '&::placeholder': {
-          color: theme.colors.typeThirdary
+        '.formula-menu-item-name-field': {
+          marginRight: 12,
+          padding: 1,
+          lineHeight: '1.8',
+          fontFamily: 'Fira Code',
+
+          '&::placeholder': {
+            color: theme.colors.typeThirdary
+          }
+        },
+        '.formula-menu-item-reference-count': {
+          paddingRight: 1,
+          float: 'right'
+        },
+        '.formula-menu-item-reference-icon': {
+          float: 'right'
         }
       }
     },

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Popover } from '@mashcard/design-system'
+import { Input, Popover, Icon } from '@mashcard/design-system'
 import { VariableData } from '@mashcard/formula'
 import { FormulaEditor } from '../../../editors/formulaEditor'
 import { FormulaResult, AutocompleteList } from '../../ui/Formula'
@@ -97,19 +97,27 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       ? 'Add Name'
       : nameRef.current.defaultName
 
+  const referencedCount = 0
+
   const menu = (
     <Root.MashcardFormulaMenu data-testid={TEST_ID_ENUM.editor.formulaBlock.menu.id}>
       <div className="formula-menu-row">
         <div className="formula-menu-item">
-          <Input
-            size="lg"
-            borderType="underline"
-            className="formula-menu-name-field"
-            onKeyDown={handleNameKeyDown}
-            placeholder={namePlaceholder}
-            value={nameRef.current.name}
-            onChange={handleNameChange}
-          />
+          <div className="formula-menu-item-name">
+            <Input
+              size="lg"
+              borderType="underline"
+              className="formula-menu-item-name-field"
+              onKeyDown={handleNameKeyDown}
+              placeholder={namePlaceholder}
+              value={nameRef.current.name}
+              onChange={handleNameChange}
+            />
+            <span className="formula-menu-item-reference-count">{referencedCount}</span>
+            <span className="formula-menu-item-reference-icon">
+              <Icon.Referenced />
+            </span>
+          </div>
         </div>
       </div>
       <div className="formula-menu-row">
@@ -131,8 +139,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottomStart"
-      trigger={['click']}
-    >
+      trigger={['click']}>
       {children}
     </Popover>
   )
