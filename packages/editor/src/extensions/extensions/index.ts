@@ -1,4 +1,5 @@
 export * from './brickList'
+export * from './bubbleMenu'
 export * from './commandHelper'
 export * from './dropBlock'
 export * from './dropcursor'

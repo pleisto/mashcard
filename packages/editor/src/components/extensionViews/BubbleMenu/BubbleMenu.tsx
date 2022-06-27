@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react'
-import { BubbleMenu as TiptapBubbleMenu } from '@tiptap/react'
-import { BubbleMenuViewProps } from '@tiptap/extension-bubble-menu'
 import { Editor } from '@tiptap/core'
 import { Toolbar } from '../../ui/Toolbar'
 import { useBubbleMenuItems } from './useBubbleMenuItems'
 import { Button } from '@mashcard/design-system'
 import { isTextContentSelected } from '../../../extensions/extensions/selection'
 import { Base } from '../../../extensions/base'
+import { BubbleMenuPlugin, BubbleMenuPluginProps } from './BubbleMenuPlugin'
 
 interface BubbleMenuProps {
   editor: Editor | null
 }
 
-export const shouldShow: BubbleMenuViewProps['shouldShow'] = ({ editor, from, to }) => {
+export const shouldShow: BubbleMenuPluginProps['shouldShow'] = ({ editor, from, to }) => {
   const baseExtension = editor.extensionManager.extensions.find(
     extension => extension.name === Base.name
   ) as typeof Base
@@ -43,7 +42,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
   if (!editor) return null
 
   return (
-    <TiptapBubbleMenu
+    <BubbleMenuPlugin
       tippyOptions={{ placement: 'top-start', maxWidth: '500px', delay: [1000, 0] }}
       shouldShow={shouldShow}
       editor={editor}>
@@ -55,6 +54,6 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
           <Toolbar options={options} />
         </Button>
       )}
-    </TiptapBubbleMenu>
+    </BubbleMenuPlugin>
   )
 }
