@@ -137,16 +137,16 @@ exports[`AutocompleteList Active Completion renders column kind correctly 1`] = 
       class="formula-autocomplete-preview"
     >
       <div
-        class="mashcard"
+        class="autocomplete-preview-column"
       >
         <div
-          class="ProseMirror"
+          class="mc-c-gCTflp"
         >
           <div
-            class="autocomplete-preview-column"
+            class="node-spreadsheetBlock"
           >
             <span
-              class="mashcard-formula-spreadsheet hover"
+              class=" hover"
             >
               <table
                 class="spreadsheet-row-actions "
@@ -378,16 +378,16 @@ exports[`AutocompleteList Active Completion renders spreadsheet kind correctly 1
       class="formula-autocomplete-preview"
     >
       <div
-        class="mashcard"
+        class="autocomplete-preview-spreadsheet"
       >
         <div
-          class="ProseMirror"
+          class="mc-c-gCTflp"
         >
           <div
-            class="autocomplete-preview-spreadsheet"
+            class="node-spreadsheetBlock"
           >
             <span
-              class="mashcard-formula-spreadsheet "
+              class=" "
             >
               <table
                 class="spreadsheet-row-actions "

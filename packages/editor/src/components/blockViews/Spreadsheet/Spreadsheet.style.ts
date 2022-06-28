@@ -31,7 +31,7 @@ export const spreadsheetStyles: CSS = {
     }
   },
 
-  '.node-spreadsheetBlock, .mashcard-formula-spreadsheet': {
+  '.node-spreadsheetBlock': {
     position: 'relative',
 
     '.spreadsheet-title': {
