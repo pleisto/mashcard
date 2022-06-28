@@ -56,7 +56,9 @@ const basicStyle = {
     minHeight: '2rem',
     borderRadius: '4px',
     minWidth: '10rem',
-    border: `0.2px solid ${theme.colors.white}`
+    // The outline here should appear internally
+    outline: `0.2px solid ${theme.colors.white}`,
+    outlineOffset: '-0.2px'
   },
   '&-title': {
     textAlign: 'left',
