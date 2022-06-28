@@ -16,6 +16,28 @@ const triangleCompensationSvg =
 <path d="M3.01928 2.47619L1.33984 2L3.35 4L3.01928 2.47619Z" fill="#fff"/>
 </svg>`)
 
+const cornerFix = {
+  '&::after': {
+    content: '',
+    width: 5,
+    height: 5,
+    background: `url(data:image/svg+xml;base64,${triangleCompensationSvg})`,
+    position: 'absolute',
+    left: 0,
+    bottom: -2
+  },
+  '&::before': {
+    content: '',
+    width: 5,
+    height: 5,
+    background: `url(data:image/svg+xml;base64,${triangleCompensationSvg})`,
+    position: 'absolute',
+    right: -2,
+    top: 0,
+    transform: 'rotate(180deg)'
+  }
+}
+
 export const CeramicsMixins = {
   ceramicPrimary: {
     background: Ceramics.ceramicPrimary,
@@ -25,32 +47,14 @@ export const CeramicsMixins = {
     inset 0px 0px 0px 0.2px ${Palettes.white}`,
     filter: `drop-shadow(0px 4px 12px ${Atomics.grey4_40p})`,
     backdropFilter: 'blur(20px)',
-    '&::after': {
-      content: '',
-      width: 5,
-      height: 5,
-      background: `url(data:image/svg+xml;base64,${triangleCompensationSvg})`,
-      position: 'absolute',
-      left: 0,
-      bottom: -2
-    },
-    '&::before': {
-      content: '',
-      width: 5,
-      height: 5,
-      background: `url(data:image/svg+xml;base64,${triangleCompensationSvg})`,
-      position: 'absolute',
-      right: -2,
-      top: 0,
-      transform: 'rotate(180deg)'
-    }
+    ...cornerFix
   },
   ceramicSecondary: {
     background: Ceramics.ceramicSecondary,
     boxShadow: `
     2px 2px 0px ${Atomics.black_3p},
     inset 2px 2px 0px ${Atomics.white_25p},
-    inset 0px 0px 0px 0.2px red`,
+    inset 0px 0px 0px 0.2px ${Palettes.white}`,
     filter: `drop-shadow(0px 4px 12px ${Atomics.grey6_2p})`
   }
 }
