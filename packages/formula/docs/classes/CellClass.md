@@ -38,14 +38,14 @@
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `spreadsheet` | [`SpreadsheetType`](../interfaces/SpreadsheetType.md) |
-| `__namedParameters` | [`Cell`](../interfaces/Cell.md) |
-| `__namedParameters` | `Object` |
+| Name                                       | Type                                                                                                                                |
+| :----------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------- |
+| `spreadsheet`                              | [`SpreadsheetType`](../interfaces/SpreadsheetType.md)                                                                               |
+| `__namedParameters`                        | [`Cell`](../interfaces/Cell.md)                                                                                                     |
+| `__namedParameters`                        | `Object`                                                                                                                            |
 | `__namedParameters.cleanupEventDependency` | [`EventDependency`](../interfaces/EventDependency.md)<[`SpreadsheetUpdateNamePayload`](../README.md#spreadsheetupdatenamepayload)\> |
-| `__namedParameters.columnKey` | `string` |
-| `__namedParameters.rowKey` | `string` |
+| `__namedParameters.columnKey`              | `string`                                                                                                                            |
+| `__namedParameters.rowKey`                 | `string`                                                                                                                            |
 
 #### Defined in
 
@@ -65,7 +65,7 @@
 
 [packages/formula/src/controls/cell.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L8)
 
-___
+---
 
 ### <a id="cleanupeventdependency" name="cleanupeventdependency"></a> cleanupEventDependency
 
@@ -75,7 +75,7 @@ ___
 
 [packages/formula/src/controls/cell.ts:19](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L19)
 
-___
+---
 
 ### <a id="columnid" name="columnid"></a> columnId
 
@@ -89,7 +89,7 @@ ___
 
 [packages/formula/src/controls/cell.ts:9](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L9)
 
-___
+---
 
 ### <a id="columnindex" name="columnindex"></a> columnIndex
 
@@ -103,7 +103,7 @@ ___
 
 [packages/formula/src/controls/cell.ts:11](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L11)
 
-___
+---
 
 ### <a id="columnkey" name="columnkey"></a> columnKey
 
@@ -117,7 +117,7 @@ ___
 
 [packages/formula/src/controls/cell.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L17)
 
-___
+---
 
 ### <a id="displaydata" name="displaydata"></a> displayData
 
@@ -131,7 +131,7 @@ ___
 
 [packages/formula/src/controls/cell.ts:14](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L14)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -145,7 +145,7 @@ ___
 
 [packages/formula/src/controls/cell.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L6)
 
-___
+---
 
 ### <a id="rowid" name="rowid"></a> rowId
 
@@ -159,7 +159,7 @@ ___
 
 [packages/formula/src/controls/cell.ts:10](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L10)
 
-___
+---
 
 ### <a id="rowindex" name="rowindex"></a> rowIndex
 
@@ -173,7 +173,7 @@ ___
 
 [packages/formula/src/controls/cell.ts:12](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L12)
 
-___
+---
 
 ### <a id="rowkey" name="rowkey"></a> rowKey
 
@@ -187,7 +187,7 @@ ___
 
 [packages/formula/src/controls/cell.ts:18](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L18)
 
-___
+---
 
 ### <a id="spreadsheet" name="spreadsheet"></a> spreadsheet
 
@@ -201,7 +201,7 @@ ___
 
 [packages/formula/src/controls/cell.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L16)
 
-___
+---
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
 
@@ -215,7 +215,7 @@ ___
 
 [packages/formula/src/controls/cell.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L7)
 
-___
+---
 
 ### <a id="value" name="value"></a> value
 

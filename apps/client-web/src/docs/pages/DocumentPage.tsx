@@ -62,9 +62,6 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
     awarenessInfosVar(awarenessInfos)
   }, [awarenessInfos])
 
-  // TODO: refactor editor and editable reactive var
-  // const documentEditable = !freeze
-
   const editorOptions = useEditorOptions({
     docMeta,
     provider,

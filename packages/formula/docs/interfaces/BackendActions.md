@@ -10,18 +10,18 @@
 
 ### <a id="commit" name="commit"></a> commit
 
-▸ **commit**(`commitFormulas`, `deleteFormulas`): `Promise`<{ `success`: `boolean`  }\>
+▸ **commit**(`commitFormulas`, `deleteFormulas`): `Promise`<{ `success`: `boolean` }\>
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `commitFormulas` | [`Formula`](../README.md#formula)[] |
+| Name             | Type                                  |
+| :--------------- | :------------------------------------ |
+| `commitFormulas` | [`Formula`](../README.md#formula)[]   |
 | `deleteFormulas` | [`DeleteFormula`](DeleteFormula.md)[] |
 
 #### Returns
 
-`Promise`<{ `success`: `boolean`  }\>
+`Promise`<{ `success`: `boolean` }\>
 
 #### Defined in
 

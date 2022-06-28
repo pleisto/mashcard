@@ -17,7 +17,7 @@
 
 [packages/formula/src/types/index.ts:384](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L384)
 
-___
+---
 
 ### <a id="match" name="match"></a> match
 

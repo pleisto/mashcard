@@ -136,6 +136,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, docBlock
               }}
               placeholder={t('title.untitled')}
               disabled={!editable}
+              disabledVariant={!editable}
             />
           </Root.TitleRow>
         </Root.MaxWidth>

@@ -34,7 +34,7 @@ BaseCompletion.fallbackPositionOffset
 
 [packages/formula/src/types/index.ts:452](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L452)
 
-___
+---
 
 ### <a id="fallbackvalue" name="fallbackvalue"></a> fallbackValue
 
@@ -48,7 +48,7 @@ BaseCompletion.fallbackValue
 
 [packages/formula/src/types/index.ts:451](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L451)
 
-___
+---
 
 ### <a id="flags" name="flags"></a> flags
 
@@ -62,11 +62,11 @@ BaseCompletion.flags
 
 [packages/formula/src/types/index.ts:449](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L449)
 
-___
+---
 
 ### <a id="kind" name="kind"></a> kind
 
-• `Readonly` **kind**: ``"spreadsheet"``
+• `Readonly` **kind**: `"spreadsheet"`
 
 #### Overrides
 
@@ -76,7 +76,7 @@ BaseCompletion.kind
 
 [packages/formula/src/types/index.ts:476](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L476)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -90,7 +90,7 @@ BaseCompletion.name
 
 [packages/formula/src/types/index.ts:453](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L453)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -104,7 +104,7 @@ BaseCompletion.namespaceId
 
 [packages/formula/src/types/index.ts:455](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L455)
 
-___
+---
 
 ### <a id="preview" name="preview"></a> preview
 
@@ -118,7 +118,7 @@ BaseCompletion.preview
 
 [packages/formula/src/types/index.ts:477](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L477)
 
-___
+---
 
 ### <a id="replacements" name="replacements"></a> replacements
 
@@ -132,7 +132,7 @@ BaseCompletion.replacements
 
 [packages/formula/src/types/index.ts:450](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L450)
 
-___
+---
 
 ### <a id="weight" name="weight"></a> weight
 

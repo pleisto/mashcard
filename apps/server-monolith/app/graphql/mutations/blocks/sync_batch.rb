@@ -17,6 +17,9 @@ module Mutations
       end
 
       def do_resolve(blocks:, root_id:, operator_id:, deleted_ids:)
+        # temp fix before it has permission checking
+        return unless current_user
+
         Rails.logger.info("resolve #{root_id} #{operator_id} #{deleted_ids} #{blocks}")
         root = Docs::Block.find_by(id: root_id)
 

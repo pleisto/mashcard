@@ -2,9 +2,9 @@
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends [`FormulaEventPayload`](FormulaEventPayload.md)<`any`\> |
+| Name | Type                                                            |
+| :--- | :-------------------------------------------------------------- |
+| `T`  | extends [`FormulaEventPayload`](FormulaEventPayload.md)<`any`\> |
 
 ## Table of contents
 
@@ -32,7 +32,7 @@
 
 [packages/formula/src/types/index.ts:820](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L820)
 
-___
+---
 
 ### <a id="event" name="event"></a> event
 
@@ -42,7 +42,7 @@ ___
 
 [packages/formula/src/types/index.ts:814](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L814)
 
-___
+---
 
 ### <a id="eventid" name="eventid"></a> eventId
 
@@ -52,7 +52,7 @@ ___
 
 [packages/formula/src/types/index.ts:815](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L815)
 
-___
+---
 
 ### <a id="key" name="key"></a> key
 
@@ -62,17 +62,17 @@ ___
 
 [packages/formula/src/types/index.ts:817](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L817)
 
-___
+---
 
 ### <a id="kind" name="kind"></a> kind
 
-• `Readonly` **kind**: ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Variable"`` \| ``"SpreadsheetName"`` \| ``"ColumnName"`` \| ``"NameChange"`` \| ``"NameRemove"`` \| ``"BlockRename"`` \| ``"BlockDelete"``
+• `Readonly` **kind**: `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Variable"` \| `"SpreadsheetName"` \| `"ColumnName"` \| `"NameChange"` \| `"NameRemove"` \| `"BlockRename"` \| `"BlockDelete"`
 
 #### Defined in
 
 [packages/formula/src/types/index.ts:802](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L802)
 
-___
+---
 
 ### <a id="scope" name="scope"></a> scope
 
@@ -90,11 +90,11 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `deps` | [`EventDependency`](EventDependency.md)<`T`\> |
-| `variable` | [`VariableInterface`](VariableInterface.md) |
-| `payload` | `T` |
+| Name       | Type                                          |
+| :--------- | :-------------------------------------------- |
+| `deps`     | [`EventDependency`](EventDependency.md)<`T`\> |
+| `variable` | [`VariableInterface`](VariableInterface.md)   |
+| `payload`  | `T`                                           |
 
 #### Returns
 
@@ -104,7 +104,7 @@ ___
 
 [packages/formula/src/types/index.ts:819](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L819)
 
-___
+---
 
 ### <a id="skipif" name="skipif"></a> skipIf
 
@@ -112,10 +112,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name       | Type                                        |
+| :--------- | :------------------------------------------ |
 | `variable` | [`VariableInterface`](VariableInterface.md) |
-| `payload` | `T` |
+| `payload`  | `T`                                         |
 
 #### Returns
 

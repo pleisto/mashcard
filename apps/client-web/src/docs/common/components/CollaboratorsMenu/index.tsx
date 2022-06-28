@@ -16,7 +16,7 @@ export const CollaboratorsMenu: FC = () => {
   const infos = awarenessInfos
     .sort((a, b) => (a.user.operatorId === currentOperatorId ? 1 : -1))
     .filter(i => {
-      if (userNames.includes(i.user.name)) return false
+      if (!i.user || userNames.includes(i.user.name)) return false
       userNames.push(i.user.name)
       return true
     })

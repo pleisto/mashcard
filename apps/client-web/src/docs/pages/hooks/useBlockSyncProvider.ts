@@ -73,11 +73,13 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
   const awarenessChanged = React.useCallback(
     (awareness: awarenessProtocol.Awareness) => {
-      const infos: awarenessInfo[] = Array.from(awareness.getStates().values()).map(i => {
-        return {
-          user: i.user
-        }
-      })
+      const infos: awarenessInfo[] = Array.from(awareness.getStates().values())
+        .map(i => {
+          return {
+            user: i.user
+          }
+        })
+        .filter(i => i.user)
       // devLog('awarenessChanged', infos)
       setAwarenessInfos(infos)
     },

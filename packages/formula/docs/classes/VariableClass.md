@@ -50,11 +50,11 @@
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
+| Name                               | Type                                                    |
+| :--------------------------------- | :------------------------------------------------------ |
+| `__namedParameters`                | `Object`                                                |
 | `__namedParameters.formulaContext` | [`ContextInterface`](../interfaces/ContextInterface.md) |
-| `__namedParameters.t` | [`VariableData`](../interfaces/VariableData.md) |
+| `__namedParameters.t`              | [`VariableData`](../interfaces/VariableData.md)         |
 
 #### Defined in
 
@@ -70,7 +70,7 @@
 
 [packages/formula/src/context/variable.ts:105](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L105)
 
-___
+---
 
 ### <a id="currentuuid" name="currentuuid"></a> currentUUID
 
@@ -84,7 +84,7 @@ ___
 
 [packages/formula/src/context/variable.ts:104](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L104)
 
-___
+---
 
 ### <a id="eventdependencies" name="eventdependencies"></a> eventDependencies
 
@@ -94,7 +94,7 @@ ___
 
 [packages/formula/src/context/variable.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L106)
 
-___
+---
 
 ### <a id="eventlisteners" name="eventlisteners"></a> eventListeners
 
@@ -104,7 +104,7 @@ ___
 
 [packages/formula/src/context/variable.ts:103](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L103)
 
-___
+---
 
 ### <a id="formulacontext" name="formulacontext"></a> formulaContext
 
@@ -118,7 +118,7 @@ ___
 
 [packages/formula/src/context/variable.ts:99](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L99)
 
-___
+---
 
 ### <a id="id" name="id"></a> id
 
@@ -132,7 +132,7 @@ ___
 
 [packages/formula/src/context/variable.ts:100](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L100)
 
-___
+---
 
 ### <a id="isnew" name="isnew"></a> isNew
 
@@ -146,7 +146,7 @@ ___
 
 [packages/formula/src/context/variable.ts:97](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L97)
 
-___
+---
 
 ### <a id="isreadyt" name="isreadyt"></a> isReadyT
 
@@ -160,7 +160,7 @@ ___
 
 [packages/formula/src/context/variable.ts:98](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L98)
 
-___
+---
 
 ### <a id="t" name="t"></a> t
 
@@ -174,7 +174,7 @@ ___
 
 [packages/formula/src/context/variable.ts:96](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L96)
 
-___
+---
 
 ### <a id="ticktimeout" name="ticktimeout"></a> tickTimeout
 
@@ -192,8 +192,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type                                                      |
+| :------- | :-------------------------------------------------------- |
 | `input?` | [`FormulaDefinition`](../interfaces/FormulaDefinition.md) |
 
 #### Returns
@@ -208,7 +208,7 @@ ___
 
 [packages/formula/src/context/variable.ts:288](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L288)
 
-___
+---
 
 ### <a id="cleanup" name="cleanup"></a> cleanup
 
@@ -226,7 +226,7 @@ ___
 
 [packages/formula/src/context/variable.ts:189](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L189)
 
-___
+---
 
 ### <a id="completetask" name="completetask"></a> completeTask
 
@@ -234,9 +234,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
+| Name                     | Type                                        |
+| :----------------------- | :------------------------------------------ |
+| `__namedParameters`      | `Object`                                    |
 | `__namedParameters.task` | [`VariableTask`](../README.md#variabletask) |
 
 #### Returns
@@ -247,7 +247,7 @@ ___
 
 [packages/formula/src/context/variable.ts:181](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L181)
 
-___
+---
 
 ### <a id="maybereparseandpersist" name="maybereparseandpersist"></a> maybeReparseAndPersist
 
@@ -255,12 +255,12 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `source` | `string` |
-| `sourceUuid` | `string` |
-| `level` | `number` |
-| `input?` | [`FormulaDefinition`](../interfaces/FormulaDefinition.md) |
+| Name         | Type                                                      |
+| :----------- | :-------------------------------------------------------- |
+| `source`     | `string`                                                  |
+| `sourceUuid` | `string`                                                  |
+| `level`      | `number`                                                  |
+| `input?`     | [`FormulaDefinition`](../interfaces/FormulaDefinition.md) |
 
 #### Returns
 
@@ -270,7 +270,7 @@ ___
 
 [packages/formula/src/context/variable.ts:306](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L306)
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -288,7 +288,7 @@ ___
 
 [packages/formula/src/context/variable.ts:251](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L251)
 
-___
+---
 
 ### <a id="namedependency" name="namedependency"></a> nameDependency
 
@@ -306,7 +306,7 @@ ___
 
 [packages/formula/src/context/variable.ts:262](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L262)
 
-___
+---
 
 ### <a id="namespacename" name="namespacename"></a> namespaceName
 
@@ -314,8 +314,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type     |
+| :------- | :------- |
 | `pageId` | `string` |
 
 #### Returns
@@ -330,7 +330,7 @@ ___
 
 [packages/formula/src/context/variable.ts:242](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L242)
 
-___
+---
 
 ### <a id="onupdate" name="onupdate"></a> onUpdate
 
@@ -338,10 +338,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-| `__namedParameters.level?` | `number` |
+| Name                             | Type      |
+| :------------------------------- | :-------- |
+| `__namedParameters`              | `Object`  |
+| `__namedParameters.level?`       | `number`  |
 | `__namedParameters.skipPersist?` | `boolean` |
 
 #### Returns
@@ -356,7 +356,7 @@ ___
 
 [packages/formula/src/context/variable.ts:139](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L139)
 
-___
+---
 
 ### <a id="save" name="save"></a> save
 
@@ -374,7 +374,7 @@ ___
 
 [packages/formula/src/context/variable.ts:284](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L284)
 
-___
+---
 
 ### <a id="setupeventdependencies" name="setupeventdependencies"></a> setupEventDependencies
 
@@ -388,7 +388,7 @@ ___
 
 [packages/formula/src/context/variable.ts:363](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L363)
 
-___
+---
 
 ### <a id="subscribedependencies" name="subscribedependencies"></a> subscribeDependencies
 
@@ -402,7 +402,7 @@ ___
 
 [packages/formula/src/context/variable.ts:495](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L495)
 
-___
+---
 
 ### <a id="tick" name="tick"></a> tick
 
@@ -410,8 +410,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type     |
+| :----- | :------- |
 | `uuid` | `string` |
 
 #### Returns
@@ -422,7 +422,7 @@ ___
 
 [packages/formula/src/context/variable.ts:169](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L169)
 
-___
+---
 
 ### <a id="trackdependency" name="trackdependency"></a> trackDependency
 
@@ -440,7 +440,7 @@ ___
 
 [packages/formula/src/context/variable.ts:213](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L213)
 
-___
+---
 
 ### <a id="trackdirty" name="trackdirty"></a> trackDirty
 
@@ -458,7 +458,7 @@ VariableInterface.trackDirty
 
 [packages/formula/src/context/variable.ts:162](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L162)
 
-___
+---
 
 ### <a id="unsubscripeevents" name="unsubscripeevents"></a> unsubscripeEvents
 
@@ -472,7 +472,7 @@ ___
 
 [packages/formula/src/context/variable.ts:527](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L527)
 
-___
+---
 
 ### <a id="updatedefinition" name="updatedefinition"></a> updateDefinition
 
@@ -480,8 +480,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type                                                      |
+| :------ | :-------------------------------------------------------- |
 | `input` | [`FormulaDefinition`](../interfaces/FormulaDefinition.md) |
 
 #### Returns

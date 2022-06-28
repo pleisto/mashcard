@@ -17,7 +17,7 @@
 
 [packages/formula/src/types/index.ts:900](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L900)
 
-___
+---
 
 ### <a id="type" name="type"></a> type
 
