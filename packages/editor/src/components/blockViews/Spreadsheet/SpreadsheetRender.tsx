@@ -62,7 +62,7 @@ export const SpreadsheetRender: React.FC<SpreadsheetRenderProps> = ({
   }, [defaultSelection, spreadsheetContext])
 
   return (
-    <SpreadsheetContainer context={spreadsheetContext} className="mashcard-formula-spreadsheet">
+    <SpreadsheetContainer context={spreadsheetContext}>
       {/* <div className="spreadsheet-title">{title}</div> */}
       <SpreadsheetPanel context={spreadsheetContext}>
         {rows.map(({ rowId }, rowIdx) => {

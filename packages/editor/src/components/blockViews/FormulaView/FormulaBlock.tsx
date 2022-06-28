@@ -60,11 +60,12 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
     formulaFormat
   } = useFormula({ meta, formulaContext })
 
-  const hasMenu = handleDefaultPopoverVisibleChange && handleDelete
+  const noMenu = !(handleDefaultPopoverVisibleChange && handleDelete)
+  const [visible, setVisible] = React.useState(defaultVisible)
 
   const renderData = (
     <FormulaDisplay
-      disablePopover={!hasMenu}
+      disablePopover={noMenu || visible}
       selected={selected}
       name={savedVariableT?.meta.name}
       display={savedVariableT ? displayValue(fetchResult(savedVariableT), rootId) : undefined}
@@ -73,7 +74,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
     />
   )
 
-  if (!hasMenu) {
+  if (noMenu) {
     return renderData
   }
 
@@ -85,6 +86,8 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
       temporaryVariableT={temporaryVariableT}
       formulaEditor={formulaEditor}
       defaultVisible={defaultVisible}
+      visible={visible}
+      setVisible={setVisible}
       onVisibleChange={handleDefaultPopoverVisibleChange}
       isDisableSave={isDisableSave}
       onSaveFormula={onSaveFormula}

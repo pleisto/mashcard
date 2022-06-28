@@ -10,7 +10,7 @@ export const SpreadsheetPreview: React.FC<SpreadsheetPreviewProps> = ({ spreadsh
   return (
     <div className="mashcard">
       <div className="ProseMirror">
-        <div className="autocomplete-preview-spreadsheet">
+        <div className="node-spreadsheetBlock">
           <FormulaSpreadsheet spreadsheet={spreadsheet} />
         </div>
       </div>

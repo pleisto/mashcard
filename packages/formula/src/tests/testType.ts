@@ -244,4 +244,4 @@ type AllowEventsType = {
 }
 
 export type DistributeEvents<Event extends keyof AllowEventsType = keyof AllowEventsType> =
-  Event extends keyof AllowEventsType ? [Event, AllowEventsType[Event]] : never
+  Event extends keyof AllowEventsType ? readonly [Event, AllowEventsType[Event]] : never

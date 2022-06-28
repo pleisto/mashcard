@@ -1,7 +1,7 @@
 import { Row } from '../../../controls'
 import { generateUUIDs } from '../../testHelper'
 import { mockRow } from '../../testMock'
-import { DistributeEvents, SpreadsheetInput, TestCaseInterface } from '../../testType'
+import { EventTestCaseType, SpreadsheetInput, TestCaseInterface } from '../../testType'
 
 const [namespaceId, spreadsheetId, column1Id, row1Id, row2Id, row3Id, cell1Id] = generateUUIDs()
 
@@ -68,7 +68,7 @@ export const RowEventTestCase: TestCaseInterface = {
           definition: '=spreadsheet1.2.second.toString()',
           resultBefore: '4'
         }
-      ].flatMap(a => [
+      ].flatMap<EventTestCaseType>(a => [
         {
           ...a,
           label: 'empty event',
@@ -79,7 +79,7 @@ export const RowEventTestCase: TestCaseInterface = {
           ...a,
           label: 'same',
           namespaceId,
-          events: [['rowChange', { spreadsheetId, namespaceId, rows: [row1, row2, row3] }] as DistributeEvents]
+          events: [['rowChange', { spreadsheetId, namespaceId, rows: [row1, row2, row3] }]]
         }
       ]),
       {
