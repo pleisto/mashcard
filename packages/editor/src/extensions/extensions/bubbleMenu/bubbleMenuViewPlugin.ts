@@ -1,6 +1,6 @@
 // https://github.com/ueberdosis/tiptap/tree/main/packages/extension-bubble-menu
-import { Editor, isNodeSelection, posToDOMRect } from '@tiptap/core'
-import { EditorState, Plugin, PluginKey } from 'prosemirror-state'
+import { Editor, posToDOMRect } from '@tiptap/core'
+import { EditorState, Plugin, PluginKey, Selection } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import tippy, { Instance, Props } from 'tippy.js'
 
@@ -9,16 +9,7 @@ export interface BubbleMenuViewPluginProps {
   editor: Editor
   element: HTMLElement
   tippyOptions?: Partial<Props>
-  shouldShow?:
-    | ((props: {
-        editor: Editor
-        view: EditorView
-        state: EditorState
-        oldState?: EditorState
-        from: number
-        to: number
-      }) => boolean)
-    | null
+  shouldShow?: ((props: { editor: Editor; from: number; to: number }) => boolean) | null
 }
 
 export type BubbleMenuViewProps = BubbleMenuViewPluginProps & {
@@ -35,8 +26,6 @@ export class BubbleMenuView {
   public preventHide = false
 
   public maybeSelecting = false
-
-  public active = false
 
   public tippy: Instance | undefined
 
@@ -70,13 +59,12 @@ export class BubbleMenuView {
   }
 
   mousedownHandler = () => {
-    this.active = false
     this.maybeSelecting = true
   }
 
   mouseupHandler = () => {
     this.maybeSelecting = false
-    if (this.active) this.show()
+    this.createBubbleMenuPopover(this.editor.view, this.editor.state.selection)
   }
 
   dragstartHandler = () => {
@@ -129,15 +117,7 @@ export class BubbleMenuView {
     }
   }
 
-  update(view: EditorView, oldState?: EditorState): void {
-    const { state, composing } = view
-    const { doc, selection } = state as EditorState
-    const isSame = oldState?.doc.eq(doc) && oldState.selection.eq(selection)
-
-    if (composing || isSame) {
-      return
-    }
-
+  createBubbleMenuPopover(view: EditorView, selection: Selection): void {
     this.createTooltip()
 
     // support for CellSelections
@@ -147,14 +127,9 @@ export class BubbleMenuView {
 
     const shouldShow = this.shouldShow?.({
       editor: this.editor,
-      view,
-      state,
-      oldState,
       from,
       to
     })
-
-    this.active = !!shouldShow
 
     if (!shouldShow || this.maybeSelecting) {
       this.hide()
@@ -166,19 +141,23 @@ export class BubbleMenuView {
       getReferenceClientRect:
         this.tippyOptions?.getReferenceClientRect ??
         (() => {
-          if (isNodeSelection(state.selection)) {
-            const node = view.nodeDOM(from) as HTMLElement
-
-            if (node) {
-              return node.getBoundingClientRect()
-            }
-          }
-
           return posToDOMRect(view, from, to)
         })
     })
 
     this.show()
+  }
+
+  update(view: EditorView, oldState?: EditorState): void {
+    const { state, composing } = view
+    const { doc, selection } = state as EditorState
+    const isSame = oldState?.doc.eq(doc) && oldState.selection.eq(selection)
+
+    if (composing || isSame) {
+      return
+    }
+
+    this.createBubbleMenuPopover(view, selection)
   }
 
   show(): void {
