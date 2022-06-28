@@ -33,7 +33,8 @@ import {
   SpreadsheetId,
   NameDependencyWithKind,
   FindKey,
-  AnyFunctionClauseWithKeyAndExample
+  AnyFunctionClauseWithKeyAndExample,
+  VariableDisplayData
 } from '../types'
 import { variableKey } from '../grammar/convert'
 import { buildFunctionKey, BUILTIN_CLAUSES } from '../functions'
@@ -57,6 +58,7 @@ import {
   variable2completion,
   spreadsheet2completion
 } from '../grammar/completer'
+import { dumpDisplayResultForDisplay } from './persist'
 
 export interface FormulaContextArgs {
   domain: string
@@ -412,6 +414,15 @@ export class FormulaContext implements ContextInterface {
 
   public findVariableById(namespaceId: NamespaceId, variableId: VariableId): VariableInterface | undefined {
     return this.variables[variableKey(namespaceId, variableId)]
+  }
+
+  public findVariableDisplayDataById(
+    namespaceId: NamespaceId,
+    variableId: VariableId
+  ): VariableDisplayData | undefined {
+    const variable = this.findVariableById(namespaceId, variableId)
+    if (!variable) return undefined
+    return dumpDisplayResultForDisplay(variable.t)
   }
 
   public findVariableByName(namespaceId: NamespaceId, name: string): VariableInterface | undefined {

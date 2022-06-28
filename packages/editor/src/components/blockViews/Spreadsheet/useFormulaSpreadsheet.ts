@@ -100,6 +100,7 @@ export function useFormulaSpreadsheet({
       rows: rowsRef.current,
       getCell: ({ rowId, columnId, rowIndex, columnIndex }) => {
         const cellBlock = getCellBlock(rowId, columnId)
+        const formulaId = cellBlock.data.formulaId
 
         return {
           namespaceId: rootId,
@@ -110,7 +111,7 @@ export function useFormulaSpreadsheet({
           rowId,
           cellId: cellBlock.id,
           value: cellBlock.text,
-          displayData: cellBlock.data.displayData
+          displayData: formulaContext.findVariableDisplayDataById(rootId, formulaId)
         }
       }
     })
