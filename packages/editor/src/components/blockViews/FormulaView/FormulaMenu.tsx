@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
-import { Input, Popover, Icon } from '@mashcard/design-system'
+import { Input, Popover, Icon, Button } from '@mashcard/design-system'
 import { VariableData } from '@mashcard/formula'
 import { FormulaEditor } from '../../../editors/formulaEditor'
 import { FormulaResult, AutocompleteList } from '../../ui/Formula'
@@ -14,6 +14,7 @@ import {
 } from '@mashcard/schema'
 import * as Root from '../../ui/Formula/Formula.style'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
+import { useEditorI18n } from '../../../hooks'
 
 export interface FormulaMenuProps {
   meta: UseFormulaInput['meta']
@@ -50,9 +51,12 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   nameRef,
   completion
 }) => {
+  const i18nKey = 'formula.menu'
+  const [t] = useEditorI18n()
   const [maxScreen, setMaxScreen] = React.useState(false)
   const close = React.useCallback((): void => {
     setVisible(false)
+    setMaxScreen(false)
     onVisibleChange?.(false)
   }, [onVisibleChange, setVisible])
 
@@ -93,6 +97,16 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const onClickAutoFormat = async (): Promise<void> => {
     await formulaFormat()
     formulaEditor?.commands.focus()
+  }
+
+  const handleSave = async (): Promise<void> => {
+    if (isDisableSave()) return
+    await onSaveFormula()
+    close()
+  }
+
+  const handleCancel = (): void => {
+    close()
   }
 
   const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
@@ -158,6 +172,23 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       </div>
       <FormulaResult variableT={temporaryVariableT} pageId={rootId} />
       <AutocompleteList rootId={rootId} formulaId={formulaId} completion={completion} />
+      {maxScreen ? (
+        <div className="formula-menu-footer">
+          <Button className="formula-menu-button" size="sm" type="text" onClick={handleCancel}>
+            {t(`${i18nKey}.cancel`)}
+          </Button>
+          <Button
+            className="formula-menu-button"
+            size="sm"
+            type="primary"
+            onClick={handleSave}
+            disabled={isDisableSave()}>
+            {t(`${i18nKey}.save`)}
+          </Button>
+        </div>
+      ) : (
+        <></>
+      )}
     </Root.MashcardFormulaMenu>
   )
 
