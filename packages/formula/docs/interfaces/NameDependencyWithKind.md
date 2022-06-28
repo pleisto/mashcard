@@ -29,17 +29,17 @@
 
 [packages/formula/src/types/index.ts:735](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L735)
 
----
+___
 
 ### <a id="kind" name="kind"></a> kind
 
-• `Readonly` **kind**: `"Block"` \| `"Spreadsheet"` \| `"Variable"`
+• `Readonly` **kind**: ``"Block"`` \| ``"Spreadsheet"`` \| ``"Variable"``
 
 #### Defined in
 
 [packages/formula/src/types/index.ts:736](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L736)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -53,7 +53,7 @@
 
 [packages/formula/src/types/index.ts:731](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L731)
 
----
+___
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -75,10 +75,10 @@
 
 #### Parameters
 
-| Name               | Type      |
-| :----------------- | :-------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceIsExist` | `boolean` |
-| `namespaceId`      | `string`  |
+| `namespaceId` | `string` |
 
 #### Returns
 

@@ -17,7 +17,7 @@
 
 [packages/formula/src/types/index.ts:488](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L488)
 
----
+___
 
 ### <a id="type" name="type"></a> type
 

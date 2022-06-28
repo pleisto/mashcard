@@ -2,13 +2,13 @@
 
 ## Type parameters
 
-| Name          | Type                                                                        |
-| :------------ | :-------------------------------------------------------------------------- |
-| `T`           | extends `UsedFormulaType`                                                   |
-| `Async`       | extends `boolean`                                                           |
-| `Chain`       | extends `boolean`                                                           |
-| `AcceptError` | extends `boolean`                                                           |
-| `Arguments`   | extends `FormulaArgumentsType`<`Chain`\> = `FormulaArgumentsType`<`Chain`\> |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `UsedFormulaType` |
+| `Async` | extends `boolean` |
+| `Chain` | extends `boolean` |
+| `AcceptError` | extends `boolean` |
+| `Arguments` | extends `FormulaArgumentsType`<`Chain`\> = `FormulaArgumentsType`<`Chain`\> |
 
 ## Table of contents
 
@@ -45,7 +45,7 @@
 
 [packages/formula/src/types/index.ts:653](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L653)
 
----
+___
 
 ### <a id="args" name="args"></a> args
 
@@ -55,7 +55,7 @@
 
 [packages/formula/src/types/index.ts:658](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L658)
 
----
+___
 
 ### <a id="async" name="async"></a> async
 
@@ -65,7 +65,7 @@
 
 [packages/formula/src/types/index.ts:646](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L646)
 
----
+___
 
 ### <a id="chain" name="chain"></a> chain
 
@@ -75,7 +75,7 @@
 
 [packages/formula/src/types/index.ts:647](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L647)
 
----
+___
 
 ### <a id="description" name="description"></a> description
 
@@ -85,7 +85,7 @@
 
 [packages/formula/src/types/index.ts:654](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L654)
 
----
+___
 
 ### <a id="effect" name="effect"></a> effect
 
@@ -95,7 +95,7 @@
 
 [packages/formula/src/types/index.ts:649](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L649)
 
----
+___
 
 ### <a id="examples" name="examples"></a> examples
 
@@ -105,7 +105,7 @@
 
 [packages/formula/src/types/index.ts:656](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L656)
 
----
+___
 
 ### <a id="feature" name="feature"></a> feature
 
@@ -115,7 +115,7 @@
 
 [packages/formula/src/types/index.ts:651](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L651)
 
----
+___
 
 ### <a id="group" name="group"></a> group
 
@@ -125,7 +125,7 @@
 
 [packages/formula/src/types/index.ts:655](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L655)
 
----
+___
 
 ### <a id="key" name="key"></a> key
 
@@ -135,7 +135,7 @@
 
 [packages/formula/src/types/index.ts:645](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L645)
 
----
+___
 
 ### <a id="lazy" name="lazy"></a> lazy
 
@@ -145,7 +145,7 @@
 
 [packages/formula/src/types/index.ts:652](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L652)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -155,7 +155,7 @@
 
 [packages/formula/src/types/index.ts:644](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L644)
 
----
+___
 
 ### <a id="persist" name="persist"></a> persist
 
@@ -165,7 +165,7 @@
 
 [packages/formula/src/types/index.ts:650](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L650)
 
----
+___
 
 ### <a id="pure" name="pure"></a> pure
 
@@ -175,7 +175,7 @@
 
 [packages/formula/src/types/index.ts:648](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L648)
 
----
+___
 
 ### <a id="returns" name="returns"></a> returns
 
@@ -185,7 +185,7 @@
 
 [packages/formula/src/types/index.ts:657](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L657)
 
----
+___
 
 ### <a id="testcases" name="testcases"></a> testCases
 
@@ -199,18 +199,18 @@
 
 ### <a id="reference" name="reference"></a> reference
 
-▸ `Readonly` **reference**(`ctx`, ...`args`): `Async` extends `true` ? `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\> : [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>
+▸ `Readonly` **reference**(`ctx`, ...`args`): `Async` extends ``true`` ? `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\> : [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>
 
 #### Parameters
 
-| Name      | Type                                                              |
-| :-------- | :---------------------------------------------------------------- |
-| `ctx`     | [`FunctionContext`](FunctionContext.md)                           |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | [`FunctionContext`](FunctionContext.md) |
 | `...args` | `ArgumentArrayToResultTypeArray`<`Arguments`, `AcceptError`, []\> |
 
 #### Returns
 
-`Async` extends `true` ? `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\> : [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>
+`Async` extends ``true`` ? `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\> : [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>
 
 #### Defined in
 

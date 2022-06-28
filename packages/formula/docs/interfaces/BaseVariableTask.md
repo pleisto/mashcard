@@ -28,7 +28,7 @@
 
 [packages/formula/src/types/index.ts:767](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L767)
 
----
+___
 
 ### <a id="execendtime" name="execendtime"></a> execEndTime
 
@@ -38,7 +38,7 @@
 
 [packages/formula/src/types/index.ts:770](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L770)
 
----
+___
 
 ### <a id="execstarttime" name="execstarttime"></a> execStartTime
 
@@ -48,7 +48,7 @@
 
 [packages/formula/src/types/index.ts:769](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L769)
 
----
+___
 
 ### <a id="uuid" name="uuid"></a> uuid
 
@@ -58,7 +58,7 @@
 
 [packages/formula/src/types/index.ts:768](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L768)
 
----
+___
 
 ### <a id="variablevalue" name="variablevalue"></a> variableValue
 

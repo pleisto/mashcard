@@ -20,7 +20,7 @@
 
 [packages/formula/src/context/context.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L65)
 
----
+___
 
 ### <a id="domain" name="domain"></a> domain
 
@@ -30,7 +30,7 @@
 
 [packages/formula/src/context/context.ts:62](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L62)
 
----
+___
 
 ### <a id="features" name="features"></a> features
 
@@ -40,7 +40,7 @@
 
 [packages/formula/src/context/context.ts:66](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L66)
 
----
+___
 
 ### <a id="functionclauses" name="functionclauses"></a> functionClauses
 
@@ -50,7 +50,7 @@
 
 [packages/formula/src/context/context.ts:64](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L64)
 
----
+___
 
 ### <a id="ticktimeout" name="ticktimeout"></a> tickTimeout
 

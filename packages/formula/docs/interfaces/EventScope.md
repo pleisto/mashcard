@@ -17,7 +17,7 @@
 
 [packages/formula/src/types/index.ts:788](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L788)
 
----
+___
 
 ### <a id="rows" name="rows"></a> rows
 
