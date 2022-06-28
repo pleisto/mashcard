@@ -5,6 +5,11 @@ import { getNativeSidebarWdith } from '@/settings/common/sidebar'
 
 const hideScrollStyle = getNativeSidebarWdith()
   ? {
+      '&::-webkit-scrollbar': {
+        width: 0,
+        height: 0,
+        background: 'transparent'
+      },
       '&::-webkit-scrollbar-thumb': {
         background: 'transparent'
       },
@@ -18,12 +23,15 @@ export const Section = styled('section', {
   display: 'flex',
   flexDirection: 'column',
   height: '100vh',
-  padding: '0.1px 0 0 0.5rem',
+  padding: '0.1px 0 0',
   marginTop: '-0.1px',
   justifyContent: 'space-between',
   minWidth: 270,
   maxWidth: 496,
   flexShrink: 0,
+  header: {
+    paddingLeft: 8
+  },
   '.mainActions': {
     position: 'sticky',
     flex: 1,
@@ -31,15 +39,7 @@ export const Section = styled('section', {
     flexFlow: 'column nowrap',
     overflow: 'hidden auto',
     ...hideScrollStyle,
-    header: {
-      position: 'sticky',
-      top: 0,
-      left: 0,
-      width: '100%',
-      fontSize: 0,
-      zIndex: 2,
-      backdropFilter: 'blur(10px)'
-    },
+    transform: 'translateX(8px)',
     nav: {
       flex: 1
     }
@@ -68,7 +68,7 @@ export const Layout = styled('div', {
   },
   '.w-split-horizontal': {
     '.w-split-bar': {
-      width: '0.5rem',
+      width: '0.25rem',
       background: 'transparent',
       boxShadow: 'none',
       flexShrink: 0,
