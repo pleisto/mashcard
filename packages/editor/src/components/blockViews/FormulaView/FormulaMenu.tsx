@@ -21,6 +21,8 @@ export interface FormulaMenuProps {
   references: UseFormulaOutput['references']
   formulaFormat: UseFormulaOutput['formulaFormat']
   defaultVisible: boolean
+  visible: boolean
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>
   onVisibleChange: (visible: boolean) => void
   handleDelete: (variable?: VariableData) => void
   isDisableSave: () => boolean
@@ -38,18 +40,18 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   formulaEditor,
   defaultVisible,
   onVisibleChange,
+  visible,
+  setVisible,
   isDisableSave,
   onSaveFormula,
   formulaFormat,
   nameRef,
   completion
 }) => {
-  const [visible, setVisible] = React.useState(defaultVisible)
-
   const close = React.useCallback((): void => {
     setVisible(false)
     onVisibleChange?.(false)
-  }, [onVisibleChange])
+  }, [onVisibleChange, setVisible])
 
   const triggerCalculate = async (): Promise<void> => {
     const result = MashcardEventBus.dispatch(FormulaCalculateTrigger({ skipExecute: true, formulaId, rootId }))
@@ -70,15 +72,15 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     return () => listener.unsubscribe()
   }, [close, formulaId, rootId])
 
-  const onPopoverVisibleChange = async (visible: boolean): Promise<void> => {
-    if (!visible) {
+  const onPopoverVisibleChange = async (value: boolean): Promise<void> => {
+    if (!value) {
       close()
       return
     }
     await triggerCalculate()
     formulaEditor?.commands.focus()
-    onVisibleChange?.(visible)
-    setVisible(visible)
+    onVisibleChange?.(value)
+    setVisible(value)
   }
 
   const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {

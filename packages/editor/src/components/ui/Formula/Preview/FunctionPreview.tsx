@@ -28,7 +28,7 @@ export const FunctionPreview: React.FC<FunctionPreviewProps> = ({ functionClause
         {functionClause.args.length > 0
           ? functionClause.args.map(arg => (
               <div key={arg.name} className="autocomplete-preview-inputs-arg">
-                <span className="autocomplete-preview-input-tag">{arg.name}</span> : {arg.type}
+                <span className="autocomplete-preview-input-tag">{arg.name}</span> : {[arg.type].flat().join(', ')}
               </div>
             ))
           : 'None.'}
@@ -36,7 +36,7 @@ export const FunctionPreview: React.FC<FunctionPreviewProps> = ({ functionClause
       <div className="autocomplete-preview-section">
         <div className="autocomplete-preview-section-head">Outputs</div>
         {functionClause.returns ? (
-          <span className="autocomplete-preview-output-tag">{functionClause.returns}</span>
+          <span className="autocomplete-preview-output-tag">{[functionClause.returns].flat().join(', ')}</span>
         ) : (
           'None.'
         )}

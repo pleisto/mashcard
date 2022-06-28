@@ -137,7 +137,8 @@ const buildSpreadsheet = (
   const cells: Cell[] = columns.flatMap(({ cells }: ColumnInput<number>, columnIndex: number) => {
     return cells.map((cell: CellInput, rowIndex: number) => {
       const [cellId, state] = getUuid(cell.cellId, uuidState)
-      uuidState = state
+      const [variableId, state2] = getUuid(cell.variableId, state)
+      uuidState = state2
       return {
         namespaceId,
         rowId: rowResult[rowIndex].rowId,
@@ -146,7 +147,7 @@ const buildSpreadsheet = (
         columnIndex,
         columnId: columnResult[columnIndex].columnId,
         value: cell.value,
-        displayData: undefined,
+        variableId,
         cellId
       }
     })
@@ -251,7 +252,7 @@ export const trackTodo = (it: jest.It, testCases: Array<BaseTestCase<{}>>): void
     })
 }
 
-export const generateUUIDs = (): string[] => [...Array(10)].map(() => uuid())
+export const generateUUIDs = (): string[] => [...Array(20)].map(() => uuid())
 
 export const buildEvent = <Args extends DistributeEvents[]>(input: Args): ((ctx: ExtendedCtx) => Promise<void>) => {
   return async ctx => {

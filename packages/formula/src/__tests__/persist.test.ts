@@ -3,17 +3,28 @@ import { dispatchFormulaBlockNameChange } from '../events'
 import { PersistFormulaType, TypedResult, VariableMetadata } from '../types'
 import { FormulaContext } from '../context/context'
 import { dumpValue, loadValue } from '../context/persist'
+import { generateUUIDs } from '../tests'
 
-const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
-const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
-const spreadsheetId = '28e28190-63bd-4f70-aeca-26e72574c01a'
-
-const firstColumnId = '62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6'
-const secondColumnId = '4e6f9adb-6f33-454e-9f9e-635dc98e3f28'
-const thirdColumnId = '2723b7d9-22ce-4d93-b2ef-7cce1b122d64'
-const firstRowId = 'ec4fdfe8-4a12-4a76-aeae-2dea0229e734'
-const secondRowId = '5d1e4a83-383a-4991-a33c-52a9b3169549'
-const thirdRowId = '05f5ae67-b982-406e-a92f-e559c10a7ba6'
+const [
+  namespaceId,
+  variableId,
+  spreadsheetId,
+  firstColumnId,
+  secondColumnId,
+  thirdColumnId,
+  firstRowId,
+  secondRowId,
+  thirdRowId,
+  cell1VariableId,
+  cell2VariableId,
+  cell3VariableId,
+  cell4VariableId,
+  cell5VariableId,
+  cell6VariableId,
+  cell7VariableId,
+  cell8VariableId,
+  cell9VariableId
+] = generateUUIDs()
 
 const rows: Row[] = [
   { rowId: firstRowId, rowIndex: 0, spreadsheetId },
@@ -59,7 +70,7 @@ const cells: Cell[] = [
     columnIndex: 0,
     columnId: firstColumnId,
     value: '1',
-    displayData: undefined,
+    variableId: cell1VariableId,
     cellId: ''
   },
   {
@@ -70,7 +81,7 @@ const cells: Cell[] = [
     columnIndex: 1,
     columnId: secondColumnId,
     value: '2',
-    displayData: undefined,
+    variableId: cell2VariableId,
     cellId: ''
   },
   {
@@ -81,7 +92,7 @@ const cells: Cell[] = [
     columnIndex: 2,
     columnId: thirdColumnId,
     value: '3',
-    displayData: undefined,
+    variableId: cell3VariableId,
     cellId: ''
   },
   {
@@ -92,7 +103,7 @@ const cells: Cell[] = [
     columnIndex: 0,
     columnId: firstColumnId,
     value: '3',
-    displayData: undefined,
+    variableId: cell4VariableId,
     cellId: ''
   },
   {
@@ -103,7 +114,7 @@ const cells: Cell[] = [
     columnIndex: 1,
     columnId: secondColumnId,
     value: '4',
-    displayData: undefined,
+    variableId: cell5VariableId,
     cellId: ''
   },
   {
@@ -114,7 +125,7 @@ const cells: Cell[] = [
     columnIndex: 2,
     columnId: thirdColumnId,
     value: '',
-    displayData: undefined,
+    variableId: cell6VariableId,
     cellId: ''
   },
   {
@@ -125,7 +136,7 @@ const cells: Cell[] = [
     columnIndex: 0,
     columnId: firstColumnId,
     value: '5',
-    displayData: undefined,
+    variableId: cell7VariableId,
     cellId: ''
   },
   {
@@ -136,7 +147,7 @@ const cells: Cell[] = [
     columnIndex: 1,
     columnId: secondColumnId,
     value: '6',
-    displayData: undefined,
+    variableId: cell8VariableId,
     cellId: ''
   },
   {
@@ -147,7 +158,7 @@ const cells: Cell[] = [
     columnIndex: 2,
     columnId: thirdColumnId,
     value: 'Foo',
-    displayData: undefined,
+    variableId: cell9VariableId,
     cellId: ''
   }
 ]

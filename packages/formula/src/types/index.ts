@@ -548,6 +548,7 @@ export interface ContextInterface {
   removeSpreadsheet: (spreadsheetId: SpreadsheetId) => Promise<void>
   listVariables: (namespaceId: NamespaceId) => VariableInterface[]
   findVariableById: (namespaceId: NamespaceId, variableId: VariableId) => VariableInterface | undefined
+  findVariableDisplayDataById: (namespaceId: NamespaceId, variableId: VariableId) => VariableDisplayData | undefined
   findVariableByName: (namespaceId: NamespaceId, name: string) => VariableInterface | undefined
   commitVariable: ({ variable }: { variable: VariableInterface }) => Promise<void>
   removeVariable: (namespaceId: NamespaceId, variableId: VariableId) => Promise<void>

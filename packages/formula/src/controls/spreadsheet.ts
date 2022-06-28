@@ -449,7 +449,7 @@ export class SpreadsheetClass implements SpreadsheetType {
       return undefined
     }
 
-    return cell.displayData?.display ?? cell.value
+    return this._formulaContext.findVariableDisplayDataById(this.namespaceId, cell.variableId)?.display ?? cell.value
   }
 
   findCellDisplayData({ rowId, columnId }: { rowId: uuid; columnId: uuid }): VariableDisplayData | undefined {
@@ -458,7 +458,7 @@ export class SpreadsheetClass implements SpreadsheetType {
       return undefined
     }
 
-    return cell.displayData
+    return this._formulaContext.findVariableDisplayDataById(this.namespaceId, cell.variableId)
   }
 
   toArray(): string[][] {

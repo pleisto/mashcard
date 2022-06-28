@@ -204,7 +204,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     : undefined
   const displayData: VariableDisplayData | undefined = savedVariableT
     ? dumpDisplayResultForDisplay(savedVariableT)
-    : currentBlock.data.displayData ?? fallbackDisplayData
+    : formulaContext?.findVariableDisplayDataById(rootId, formulaId) ?? fallbackDisplayData
 
   return (
     <div className="cell" style={{ ...(width ? { width: `${width}px` } : {}) }} onDoubleClick={handleEnterEdit}>

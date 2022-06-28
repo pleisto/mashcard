@@ -109,16 +109,13 @@ export function useFormulaSpreadsheet({
           columnIndex,
           rowId,
           cellId: cellBlock.id,
-          value: cellBlock.text,
-          displayData: cellBlock.data.displayData
+          variableId: cellBlock.data.formulaId,
+          value: cellBlock.text
         }
       }
     })
 
     void formulaContext.setSpreadsheet(spreadsheet)
-    return () => {
-      // formulaContext.removeSpreadsheet(spreadsheetId)
-    }
   }, [rootId, spreadsheetId, formulaContext, getCellBlock])
 
   return {

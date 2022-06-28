@@ -60,6 +60,7 @@ export interface ColumnInput<RowCount extends number> {
 
 export interface CellInput extends Pick<Cell, 'value'> {
   cellId?: MockedUUIDV4
+  variableId?: MockedUUIDV4
 }
 
 export interface RowInput {
@@ -244,4 +245,4 @@ type AllowEventsType = {
 }
 
 export type DistributeEvents<Event extends keyof AllowEventsType = keyof AllowEventsType> =
-  Event extends keyof AllowEventsType ? [Event, AllowEventsType[Event]] : never
+  Event extends keyof AllowEventsType ? readonly [Event, AllowEventsType[Event]] : never
