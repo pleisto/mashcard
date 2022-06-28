@@ -50,7 +50,7 @@ describe('BubbleMenu', () => {
           extensions: [{ name: Base.name, options: { bubbleMenu: true } }]
         }
       })
-      const result = shouldShow?.({ editor, from: 1, to: 2, view: editor.view, state: editor.state })
+      const result = shouldShow?.({ editor, from: 1, to: 2 })
 
       expect(result).toBeFalsy()
     })
@@ -63,7 +63,7 @@ describe('BubbleMenu', () => {
           extensions: [{ name: Base.name, options: { bubbleMenu: true } }]
         }
       })
-      const result = shouldShow?.({ editor, from: 1, to: 1, view: editor.view, state: editor.state })
+      const result = shouldShow?.({ editor, from: 1, to: 1 })
 
       expect(result).toBeFalsy()
     })
@@ -76,7 +76,7 @@ describe('BubbleMenu', () => {
           extensions: [{ name: Base.name, options: { bubbleMenu: false } }]
         }
       })
-      const result = shouldShow?.({ editor, from: 1, to: 1, view: editor.view, state: editor.state })
+      const result = shouldShow?.({ editor, from: 1, to: 1 })
 
       expect(result).toBeFalsy()
     })
@@ -129,7 +129,7 @@ describe('BubbleMenu', () => {
           extensions: [{ name: Base.name, options: { bubbleMenu: true } }]
         }
       })
-      const result = shouldShow?.({ editor, from: 1, to: 2, view: editor.view, state: editor.state })
+      const result = shouldShow?.({ editor, from: 1, to: 2 })
 
       expect(result).toBeTruthy()
     })
@@ -182,7 +182,7 @@ describe('BubbleMenu', () => {
           }
         }
       })
-      const result = shouldShow?.({ editor, from: 1, to: 2, view: editor.view, state: editor.state })
+      const result = shouldShow?.({ editor, from: 1, to: 2 })
 
       expect(result).toBeFalsy()
     })
@@ -230,7 +230,7 @@ describe('BubbleMenu', () => {
           }
         }
       })
-      const result = shouldShow?.({ editor, from: 1, to: 2, view: editor.view, state: editor.state })
+      const result = shouldShow?.({ editor, from: 1, to: 2 })
 
       expect(result).toBeFalsy()
     })
