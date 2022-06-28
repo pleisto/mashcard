@@ -135,10 +135,10 @@ export interface Cell {
   cellId: uuid
   columnId: ColumnId
   rowId: uuid
+  variableId: uuid
   columnIndex: number
   rowIndex: number
   value: string
-  displayData: VariableDisplayData | undefined
 }
 
 export interface CellType extends Cell {

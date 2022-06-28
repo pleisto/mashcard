@@ -68,8 +68,8 @@ const Spreadsheet = (ctx: FunctionContext, { result, subType }: ArrayResult): Sp
           rowIndex,
           columnIndex,
           cellId: uuid(),
-          value: String(row[name]?.result ?? ''),
-          displayData: undefined
+          variableId: uuid(),
+          value: String(row[name]?.result ?? '')
         }
         cells.push(cell)
       })

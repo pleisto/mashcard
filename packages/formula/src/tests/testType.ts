@@ -60,6 +60,7 @@ export interface ColumnInput<RowCount extends number> {
 
 export interface CellInput extends Pick<Cell, 'value'> {
   cellId?: MockedUUIDV4
+  variableId?: MockedUUIDV4
 }
 
 export interface RowInput {

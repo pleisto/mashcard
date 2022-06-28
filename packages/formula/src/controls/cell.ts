@@ -1,5 +1,5 @@
 import { SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../events'
-import { ColumnId, EventDependency, NamespaceId, SpreadsheetId, uuid, VariableDisplayData } from '../types'
+import { ColumnId, EventDependency, NamespaceId, SpreadsheetId, uuid } from '../types'
 import { CellType, SpreadsheetType, Cell } from './types'
 
 export class CellClass implements CellType {
@@ -8,11 +8,10 @@ export class CellClass implements CellType {
   cellId: uuid
   columnId: ColumnId
   rowId: uuid
+  variableId: uuid
   columnIndex: number
   rowIndex: number
   value: string
-  displayData: VariableDisplayData | undefined
-
   spreadsheet: SpreadsheetType
   columnKey: string
   rowKey: string
@@ -20,7 +19,7 @@ export class CellClass implements CellType {
 
   constructor(
     spreadsheet: SpreadsheetType,
-    { namespaceId, spreadsheetId, cellId, columnId, rowId, columnIndex, rowIndex, value, displayData }: Cell,
+    { namespaceId, spreadsheetId, cellId, columnId, rowId, columnIndex, rowIndex, value, variableId }: Cell,
     {
       columnKey,
       rowKey,
@@ -29,14 +28,13 @@ export class CellClass implements CellType {
   ) {
     this.namespaceId = namespaceId
     this.spreadsheetId = spreadsheetId
+    this.variableId = variableId
     this.rowId = rowId
     this.rowIndex = rowIndex
     this.cellId = cellId
     this.value = value
     this.columnId = columnId
     this.columnIndex = columnIndex
-    this.displayData = displayData
-
     this.spreadsheet = spreadsheet
 
     this.columnKey = columnKey
