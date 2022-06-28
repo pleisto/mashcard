@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
 import { Input, Popover, Icon } from '@mashcard/design-system'
 import { VariableData } from '@mashcard/formula'
@@ -48,6 +50,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   nameRef,
   completion
 }) => {
+  const [maxScreen, setMaxScreen] = React.useState(false)
   const close = React.useCallback((): void => {
     setVisible(false)
     onVisibleChange?.(false)
@@ -81,6 +84,10 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     formulaEditor?.commands.focus()
     onVisibleChange?.(value)
     setVisible(value)
+  }
+
+  const onClickToggleMaxScreen = (): void => {
+    setMaxScreen(!maxScreen)
   }
 
   const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
@@ -119,9 +126,22 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
               value={nameRef.current.name}
               onChange={handleNameChange}
             />
-            <span className="formula-menu-item-reference-count">{referencedCount}</span>
-            <span className="formula-menu-item-reference-icon">
-              <Icon.Referenced />
+            {maxScreen ? (
+              <>
+                <span className="formula-menu-item-auto-format-icon">
+                  <Icon.AutoFormat />
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="formula-menu-item-reference-count">{referencedCount}</span>
+                <span className="formula-menu-item-reference-icon">
+                  <Icon.Referenced />
+                </span>
+              </>
+            )}
+            <span className="formula-menu-item-screen-icon" onClick={onClickToggleMaxScreen}>
+              {maxScreen ? <Icon.ScreenOff /> : <Icon.ScreenFull />}
             </span>
           </div>
         </div>
@@ -145,8 +165,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottomStart"
-      trigger={['click']}
-    >
+      trigger={['click']}>
       {children}
     </Popover>
   )

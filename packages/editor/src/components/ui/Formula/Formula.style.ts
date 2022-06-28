@@ -78,6 +78,18 @@ export const MashcardFormulaMenu = styled('div', {
           paddingLeft: 2,
           paddingRight: 2,
           float: 'right'
+        },
+        '.formula-menu-item-auto-format-icon': {
+          color: theme.colors.typeThirdary,
+          paddingLeft: 2,
+          paddingRight: 2,
+          float: 'right'
+        },
+        '.formula-menu-item-screen-icon': {
+          color: theme.colors.typeThirdary,
+          paddingLeft: 16,
+          paddingRight: 2,
+          float: 'right'
         }
       }
     },
