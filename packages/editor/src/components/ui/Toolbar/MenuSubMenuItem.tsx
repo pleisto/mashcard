@@ -32,8 +32,7 @@ const HorizontalGroup = styled(Menu.Group, {
 
 const ArrowDown = styled(Icon.ArrowDown, {
   color: theme.colors.iconThirdary,
-  fontSize: '.5rem',
-  marginLeft: '4px'
+  marginLeft: '2px'
 })
 
 export interface ToolbarMenuSubMenuItemProps {
@@ -107,6 +106,7 @@ export const ToolbarMenuSubMenuItem: FC<ToolbarMenuSubMenuItemProps> = ({ option
   const [visible, setVisible] = useState(false)
   const handleVisibleChange = (visible: boolean): void => setVisible(visible)
   const hasContent = !!option.content
+  const { hasArrow = true } = option
 
   const MenuContent = Array.isArray(option.items)
     ? renderMenu(option, option.items, () => setVisible(false))
@@ -127,7 +127,7 @@ export const ToolbarMenuSubMenuItem: FC<ToolbarMenuSubMenuItemProps> = ({ option
       {!hasContent && (
         <SubMenuItem role="menuitem" aria-label={option.label ?? option.name} active={option.active} css={option.css}>
           {option.icon ?? option.label}
-          <ArrowDown />
+          {hasArrow && <ArrowDown />}
         </SubMenuItem>
       )}
     </Popover>

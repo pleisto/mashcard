@@ -3,7 +3,7 @@
 exports[`Toolbar matches snapshot correctly 1`] = `
 <div>
   <ul
-    class="mc-c-gSJguP mc-c-gSJguP-fIIeSn-type-default"
+    class="mc-c-clKdcO mc-c-clKdcO-fIIeSn-type-default"
     role="menu"
   >
     <ul
@@ -54,7 +54,7 @@ exports[`Toolbar matches snapshot correctly 1`] = `
           subMenu renderItems
           <span
             aria-label="arrow-down"
-            class="mc-icon mc-icon-arrow-down mc-c-cmbSaq"
+            class="mc-icon mc-icon-arrow-down mc-c-kvUFMp"
             role="img"
           >
             <svg
@@ -85,7 +85,7 @@ exports[`Toolbar matches snapshot correctly 1`] = `
           subMenu
           <span
             aria-label="arrow-down"
-            class="mc-icon mc-icon-arrow-down mc-c-cmbSaq"
+            class="mc-icon mc-icon-arrow-down mc-c-kvUFMp"
             role="img"
           >
             <svg

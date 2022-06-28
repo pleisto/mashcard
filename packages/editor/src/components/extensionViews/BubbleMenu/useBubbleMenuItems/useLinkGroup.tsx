@@ -77,6 +77,7 @@ export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
 
     const linkGroup: ToolbarOption = {
       type: 'subMenu',
+      hasArrow: false,
       name: 'link',
       icon: <Icon.Link />,
       items: menuItems,
