@@ -69,7 +69,17 @@ export const Input = styled(input, {
     border: 'none',
     padding: 0
   },
-  background: 'none'
+  background: 'none',
+  variants: {
+    disabledVariant: {
+      false: {},
+      true: {
+        cursor: 'not-allowed',
+        color: theme.colors.typePrimary,
+        background: 'none'
+      }
+    }
+  }
 })
 
 export const TitleWrapper = styled('div', {
