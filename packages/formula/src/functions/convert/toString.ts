@@ -9,7 +9,7 @@ const globalToString = (ctx: FunctionContext, obj: AnyTypeResult): StringResult 
   }
 
   if (obj.type === 'Cell') {
-    return { type: 'string', result: obj.result.value }
+    return { type: 'string', result: obj.result.getValue() }
   }
 
   return {

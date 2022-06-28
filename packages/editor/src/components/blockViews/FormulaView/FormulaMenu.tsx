@@ -90,6 +90,11 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     setMaxScreen(!maxScreen)
   }
 
+  const onClickAutoFormat = async (): Promise<void> => {
+    await formulaFormat()
+    formulaEditor?.commands.focus()
+  }
+
   const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
     const name = e.target.value
     nameRef.current.name = name
@@ -128,7 +133,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
             />
             {maxScreen ? (
               <>
-                <span className="formula-menu-item-auto-format-icon">
+                <span className="formula-menu-item-auto-format-icon" onClick={onClickAutoFormat}>
                   <Icon.AutoFormat />
                 </span>
               </>

@@ -33,7 +33,7 @@ export const matchObject = ({ type, result }: AnyResult): any => {
     case 'Row':
       return mockRow(result.display())
     case 'Cell':
-      return mockCell(result.value, result.cellId, result.columnKey, result.rowKey)
+      return mockCell(result.getValue(), result.cellId, result.columnKey, result.rowKey)
   }
 
   return result

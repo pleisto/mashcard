@@ -55,7 +55,7 @@ const innerDisplayValue = (v: AnyTypeResult, pageId: NamespaceId, disableTruncat
     case 'Range':
       return `${v.result.columnSize}*${v.result.rowSize}`
     case 'Cell':
-      return `${v.result.value}`
+      return `${v.result.getValue()}`
     case 'Predicate':
       return `[${v.operator}] ${displayValue(v.result, pageId)}`
     case 'Record':

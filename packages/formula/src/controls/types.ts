@@ -146,6 +146,7 @@ export interface CellType extends Cell {
   columnKey: string
   rowKey: string
   eventDependency: getEventDependency
+  getValue: () => string
 }
 
 export interface SpreadsheetInitializer {
@@ -187,6 +188,7 @@ export interface SpreadsheetAllPersistence {
 }
 
 export interface SpreadsheetType {
+  _formulaContext: ContextInterface
   spreadsheetId: SpreadsheetId
   namespaceId: NamespaceId
   namespaceName: (pageId: NamespaceId) => string
