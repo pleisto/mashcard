@@ -43,7 +43,7 @@ export class CellClass implements CellType {
   }
 
   getValue(): string {
-    const displayData = this.spreadsheet._formulaContext.findVariableDisplayDataById(this.namespaceId, this.variableId)
+    const displayData = this.spreadsheet.findCellDisplayData({ rowId: this.rowId, columnId: this.columnId })
     if (displayData) {
       return displayData.display
     }
