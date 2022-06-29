@@ -62,7 +62,8 @@
     "server": "yarn workspace @mashcard/server-monolith",
     "github-auth": "yarn workspace @mashcard/github-auth",
     "google-auth": "yarn workspace @mashcard/google-auth",
-    "dotcom": "yarn workspace @mashcard/dotcom"
+    "dotcom": "yarn workspace @mashcard/dotcom",
+    "i": "yarn install && yarn server i"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
