@@ -13,8 +13,15 @@ module Types
       field :states, [State], 'Block States', null: true, method: :states_sorted
       field :states_count, Integer, null: true
 
+      field :document_info, DocumentInfo, null: true
+
       def states_count
         object.states.count
+      end
+
+      def document_info
+        # TODO: only if is document
+        object
       end
     end
   end

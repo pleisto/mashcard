@@ -361,6 +361,62 @@ export const queryBlockNew = gql`
         id
         state
       }
+      documentInfo {
+        title
+        enabledAlias {
+          key
+          payload
+        }
+        icon {
+          ... on BlockImage {
+            type
+            source
+            key
+            height
+            width
+          }
+
+          ... on BlockEmoji {
+            type
+            name
+            emoji
+          }
+        }
+        isDeleted
+        isMaster
+        pin
+        pathArray {
+          id
+          text
+          icon {
+            ... on BlockImage {
+              type
+              source
+              key
+              height
+              width
+            }
+
+            ... on BlockEmoji {
+              type
+              name
+              emoji
+            }
+          }
+        }
+        permission {
+          key
+          policy
+          state
+        }
+        collaborators {
+          name
+          domain
+          avatarData {
+            url
+          }
+        }
+      }
     }
   }
 `

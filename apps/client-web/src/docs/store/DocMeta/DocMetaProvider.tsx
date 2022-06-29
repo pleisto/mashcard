@@ -9,8 +9,6 @@ const emptyDocMeta: DocMeta = {
   loginDomain: '',
   isAlias: false,
   alias: undefined,
-  payload: {},
-  snapshotVersion: 0,
   isAnonymous: false,
   isDeleted: false,
   isMine: false,
@@ -20,7 +18,6 @@ const emptyDocMeta: DocMeta = {
   path: '',
   collaborators: [],
   pathArray: [],
-  documentInfoLoading: false,
   shareable: false,
   editable: false,
   viewable: false

@@ -3,10 +3,12 @@ import { Y } from '@mashcard/editor'
 import * as awarenessProtocol from 'y-protocols/awareness'
 import { base64 } from 'rfc4648'
 import { uuid } from '@mashcard/active-support'
+import { yDocToProsemirrorJSON } from 'y-prosemirror'
 
 import {
   BlockNew,
   DocumentHistory,
+  DocumentInfo,
   User,
   Statetype,
   useBlockNewQuery,
@@ -45,6 +47,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   initBlocksToEditor: React.MutableRefObject<boolean>
   awarenessInfos: awarenessInfo[]
   meta: blockMeta
+  documentInfo?: DocumentInfo
   setMeta: (meta: blockMeta) => void
 } {
   const client = useApolloClient()
@@ -56,6 +59,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
   const block = React.useRef<BlockNew>({ id: blockId })
   const [blockMeta, setBlockMeta] = React.useState<blockMeta>({})
+  const [documentInfo, setDocumentInfo] = React.useState<DocumentInfo>()
   const latestMeta = React.useRef<blockMeta>({})
   const [provider, setProvider] = React.useState<blockProvider>()
   const [awarenessInfos, setAwarenessInfos] = React.useState<awarenessInfo[]>([])
@@ -188,6 +192,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
       const stateType = forceFull || statesCount === 0 ? Statetype.Full : Statetype.Update
 
       const meta = blockMetaChanged.current || stateType === Statetype.Full ? { ...latestMeta.current } : undefined
+      // const content = stateType === Statetype.Full ? yDocToProsemirrorJSON(ydoc, 'default') : undefined
+      const content = yDocToProsemirrorJSON(ydoc, 'default')
 
       const commitPromise = blockCommit({
         variables: {
@@ -200,7 +206,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             stateId: stateIdToCommit,
             prevStateId: block.current.stateId ? block.current.stateId : undefined,
             statesCount,
-            meta
+            meta,
+            content
           }
         }
       })
@@ -247,7 +254,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
           setBlockMetaUpdated(Object.fromEntries(ydoc.getMap('meta').entries()))
         }
       } catch (e) {
-        setCommitting(false)
+        blockCommitting.current = false
       }
     },
     [blockCommit, blockId, historyId, setCommitting, setBlockMetaUpdated, editable]
@@ -297,6 +304,10 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
           devLog('need to commit init state')
           initBlocksToEditor.current = !historyId
         }
+        if (data.blockNew.documentInfo) {
+          // TODO: fix PodBase type
+          setDocumentInfo(data.blockNew.documentInfo as DocumentInfo)
+        }
       }
 
       const provider = { document: newYdoc, awareness }
@@ -334,6 +345,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
     initBlocksToEditor,
     awarenessInfos,
     meta: blockMeta,
+    documentInfo,
     setMeta
   }
 }

@@ -294,6 +294,11 @@ input BlockCommitInput {
   clientMutationId: String
 
   """
+  content
+  """
+  content: JSON
+
+  """
   document id
   """
   documentId: UUID!
@@ -919,6 +924,7 @@ type BlockNew {
   Block Type
   """
   blockType: String
+  documentInfo: DocumentInfo
 
   """
   object unique id
@@ -1805,6 +1811,56 @@ type DocumentHistory {
   Username
   """
   username: String!
+}
+
+"""
+MashCard DocumentInfo Scheme
+"""
+type DocumentInfo {
+  """
+  pod
+  """
+  collaborators: [PodBase!]!
+
+  """
+  alias
+  """
+  enabledAlias: BlockAlias
+
+  """
+  icon
+  """
+  icon: BlockIcon
+
+  """
+  is deleted
+  """
+  isDeleted: Boolean!
+
+  """
+  is master
+  """
+  isMaster: Boolean!
+
+  """
+  path
+  """
+  pathArray: [BlockPath!]!
+
+  """
+  permission
+  """
+  permission: ShareLink
+
+  """
+  pin
+  """
+  pin: Boolean!
+
+  """
+  title
+  """
+  title: String!
 }
 
 """

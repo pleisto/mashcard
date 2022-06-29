@@ -81,7 +81,7 @@ export const DocumentContentPage: React.FC = () => {
     const isDeleted = data?.blockInfo?.isDeleted !== false
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     const title: string = data?.blockInfo?.title || t('title.untitled')
-    const payload = data?.blockInfo?.enabledAlias?.payload ?? {}
+    // const payload = data?.blockInfo?.enabledAlias?.payload ?? {}
     const collaborators = data?.blockInfo?.collaborators ?? []
     const pathArray = data?.blockInfo?.pathArray ?? []
     const path = `/${domain}/${docid}`
@@ -97,7 +97,6 @@ export const DocumentContentPage: React.FC = () => {
       isAlias,
       domain,
       title,
-      payload,
       isDeleted,
       pin,
       path,
@@ -112,8 +111,6 @@ export const DocumentContentPage: React.FC = () => {
       pathArray,
       icon,
       personalDomain,
-      documentInfoLoading: loading,
-      snapshotVersion: 0,
       isNotExist,
       historyId
     }

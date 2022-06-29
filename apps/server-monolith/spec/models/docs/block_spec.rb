@@ -98,4 +98,42 @@ parent.id => parent.history_version, })
       expect(child.history_version).to eq(old_version + 1)
     end
   end
+
+  describe 'class methods' do
+    it 'can extract text from node' do
+      text = Docs::Block.get_text_from_node({
+        'content' => [
+          {
+            'type' => 'paragraph',
+            'content' => [
+              {
+                'text' => '1',
+              },
+              {
+                'text' => '2',
+              },
+              {
+                'text' => '3',
+              },
+            ],
+          },
+          {
+            'type' => 'paragraph',
+            'content' => [
+              {
+                'text' => '4',
+              },
+              {
+                'text' => '5',
+              },
+              {
+                'text' => '6',
+              },
+            ],
+          },
+        ],
+      })
+      expect(text).to eq("123\n456\n")
+    end
+  end
 end

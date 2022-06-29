@@ -7,5 +7,13 @@ module Types
     include Mashcard::GraphQL::PolicyBehaviour
     include Mashcard::GraphQL::CopyFieldDescription
     include Mashcard::GraphQL::HasPrimaryKey
+
+    def current_user
+      context[:current_user]
+    end
+
+    def current_pod
+      context[:current_pod]
+    end
   end
 end

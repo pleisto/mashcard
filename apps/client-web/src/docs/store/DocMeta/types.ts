@@ -1,4 +1,4 @@
-import { GetBlockInfoQuery } from '@/MashcardGraphQL'
+import { GetBlockInfoQuery, DocumentInfo } from '@/MashcardGraphQL'
 import { createContext } from 'react'
 
 type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
@@ -12,8 +12,6 @@ export interface DocMeta {
   loginDomain: string
   isAlias: boolean
   alias: string | undefined
-  payload: object
-  snapshotVersion: number
   isAnonymous: boolean
   isDeleted: boolean
   isMine: boolean
@@ -25,11 +23,11 @@ export interface DocMeta {
   path: string
   collaborators: Collaborator[]
   pathArray: Path[]
-  documentInfoLoading: boolean
   shareable: boolean
   editable: boolean
   viewable: boolean
   historyId?: string
+  documentInfo?: DocumentInfo
 }
 
 export interface NonNullDocMeta extends DocMeta {
