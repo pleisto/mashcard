@@ -3,9 +3,9 @@
 ## Type parameters
 
 | Name |
-| :------ |
-| `T` |
-| `E` |
+| :--- |
+| `T`  |
+| `E`  |
 
 ## Implements
 
@@ -45,19 +45,15 @@
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
-| `E` |
+| :--- |
+| `T`  |
+| `E`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `T` |
-
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:175
+| Name    | Type |
+| :------ | :--- |
+| `value` | `T`  |
 
 ## Properties
 
@@ -73,12 +69,12 @@ node_modules/neverthrow/dist/index.d.ts:174
 
 ### <a id="_unsafeunwrap" name="_unsafeunwrap"></a> \_unsafeUnwrap
 
-▸ **_unsafeUnwrap**(`_?`): `T`
+▸ **\_unsafeUnwrap**(`_?`): `T`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name | Type          |
+| :--- | :------------ |
 | `_?` | `ErrorConfig` |
 
 #### Returns
@@ -89,20 +85,16 @@ node_modules/neverthrow/dist/index.d.ts:174
 
 IResult.\_unsafeUnwrap
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:188
-
-___
+---
 
 ### <a id="_unsafeunwraperr" name="_unsafeunwraperr"></a> \_unsafeUnwrapErr
 
-▸ **_unsafeUnwrapErr**(`config?`): `E`
+▸ **\_unsafeUnwrapErr**(`config?`): `E`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type          |
+| :-------- | :------------ |
 | `config?` | `ErrorConfig` |
 
 #### Returns
@@ -113,11 +105,7 @@ ___
 
 IResult.\_unsafeUnwrapErr
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:189
-
-___
+---
 
 ### <a id="andthen" name="andthen"></a> andThen
 
@@ -125,15 +113,15 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `R` | extends [`Result`](../README.md#result)<`unknown`, `unknown`\> |
+| Name | Type                                                           |
+| :--- | :------------------------------------------------------------- |
+| `R`  | extends [`Result`](../README.md#result)<`unknown`, `unknown`\> |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `f` | (`t`: `T`) => `R` |
+| Name | Type              |
+| :--- | :---------------- |
+| `f`  | (`t`: `T`) => `R` |
 
 #### Returns
 
@@ -143,24 +131,20 @@ ___
 
 IResult.andThen
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:180
-
 ▸ **andThen**<`U`, `F`\>(`f`): [`Result`](../README.md#result)<`U`, `E` \| `F`\>
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `U` |
-| `F` |
+| :--- |
+| `U`  |
+| `F`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `f` | (`t`: `T`) => [`Result`](../README.md#result)<`U`, `F`\> |
+| Name | Type                                                     |
+| :--- | :------------------------------------------------------- |
+| `f`  | (`t`: `T`) => [`Result`](../README.md#result)<`U`, `F`\> |
 
 #### Returns
 
@@ -170,11 +154,7 @@ node_modules/neverthrow/dist/index.d.ts:180
 
 IResult.andThen
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:181
-
-___
+---
 
 ### <a id="asyncandthen" name="asyncandthen"></a> asyncAndThen
 
@@ -183,15 +163,15 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `U` |
-| `F` |
+| :--- |
+| `U`  |
+| `F`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `f` | (`t`: `T`) => [`ResultAsync`](ResultAsync.md)<`U`, `F`\> |
+| Name | Type                                                     |
+| :--- | :------------------------------------------------------- |
+| `f`  | (`t`: `T`) => [`ResultAsync`](ResultAsync.md)<`U`, `F`\> |
 
 #### Returns
 
@@ -201,11 +181,7 @@ ___
 
 IResult.asyncAndThen
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:184
-
-___
+---
 
 ### <a id="asyncmap" name="asyncmap"></a> asyncMap
 
@@ -214,14 +190,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `U` |
+| :--- |
+| `U`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `f` | (`t`: `T`) => `Promise`<`U`\> |
+| Name | Type                          |
+| :--- | :---------------------------- |
+| `f`  | (`t`: `T`) => `Promise`<`U`\> |
 
 #### Returns
 
@@ -231,11 +207,7 @@ ___
 
 IResult.asyncMap
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:185
-
-___
+---
 
 ### <a id="iserr" name="iserr"></a> isErr
 
@@ -249,11 +221,7 @@ this is Err<T, E\>
 
 IResult.isErr
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:177
-
-___
+---
 
 ### <a id="isok" name="isok"></a> isOk
 
@@ -267,11 +235,7 @@ this is Ok<T, E\>
 
 IResult.isOk
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:176
-
-___
+---
 
 ### <a id="map" name="map"></a> map
 
@@ -280,14 +244,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `A` |
+| :--- |
+| `A`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `f` | (`t`: `T`) => `A` |
+| Name | Type              |
+| :--- | :---------------- |
+| `f`  | (`t`: `T`) => `A` |
 
 #### Returns
 
@@ -297,11 +261,7 @@ ___
 
 IResult.map
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:178
-
-___
+---
 
 ### <a id="maperr" name="maperr"></a> mapErr
 
@@ -310,13 +270,13 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `U` |
+| :--- |
+| `U`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name | Type              |
+| :--- | :---------------- |
 | `_f` | (`e`: `E`) => `U` |
 
 #### Returns
@@ -327,11 +287,7 @@ ___
 
 IResult.mapErr
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:179
-
-___
+---
 
 ### <a id="match" name="match"></a> match
 
@@ -340,14 +296,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `A` |
+| :--- |
+| `A`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ok` | (`t`: `T`) => `A` |
+| Name   | Type              |
+| :----- | :---------------- |
+| `ok`   | (`t`: `T`) => `A` |
 | `_err` | (`e`: `E`) => `A` |
 
 #### Returns
@@ -358,11 +314,7 @@ ___
 
 IResult.match
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:187
-
-___
+---
 
 ### <a id="orelse" name="orelse"></a> orElse
 
@@ -370,14 +322,14 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `R` | extends [`Result`](../README.md#result)<`unknown`, `unknown`\> |
+| Name | Type                                                           |
+| :--- | :------------------------------------------------------------- |
+| `R`  | extends [`Result`](../README.md#result)<`unknown`, `unknown`\> |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name | Type              |
+| :--- | :---------------- |
 | `_f` | (`e`: `E`) => `R` |
 
 #### Returns
@@ -388,22 +340,18 @@ ___
 
 IResult.orElse
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:182
-
 ▸ **orElse**<`A`\>(`_f`): [`Result`](../README.md#result)<`T`, `A`\>
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `A` |
+| :--- |
+| `A`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name | Type                                                     |
+| :--- | :------------------------------------------------------- |
 | `_f` | (`e`: `E`) => [`Result`](../README.md#result)<`T`, `A`\> |
 
 #### Returns
@@ -414,11 +362,7 @@ node_modules/neverthrow/dist/index.d.ts:182
 
 IResult.orElse
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:183
-
-___
+---
 
 ### <a id="unwrapor" name="unwrapor"></a> unwrapOr
 
@@ -427,14 +371,14 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `A` |
+| :--- |
+| `A`  |
 
 #### Parameters
 
 | Name | Type |
-| :------ | :------ |
-| `_v` | `A` |
+| :--- | :--- |
+| `_v` | `A`  |
 
 #### Returns
 
@@ -443,7 +387,3 @@ ___
 #### Implementation of
 
 IResult.unwrapOr
-
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:186

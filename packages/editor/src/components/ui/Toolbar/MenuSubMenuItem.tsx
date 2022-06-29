@@ -15,7 +15,7 @@ const SubMenuItem = styled('li', {
   height: itemHeight,
   lineHeight: itemHeight,
   ...itemCommon,
-  variants
+  variants: { ...variants }
 })
 
 const HorizontalGroup = styled(Menu.Group, {

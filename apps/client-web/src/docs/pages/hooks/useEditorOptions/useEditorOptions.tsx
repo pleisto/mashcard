@@ -9,7 +9,7 @@ import { FormulaContextVar } from '@/docs/reactiveVars'
 import { useCallback, useMemo } from 'react'
 import { PageTree } from '@/docs/common/components/PageTree'
 import { blockProvider } from '../useBlockSyncProvider'
-import { string2Color } from '@mashcard/design-system/src/components/Avatar/initials'
+import { getCursorColor } from '@/docs/utils/cursorColor'
 import { useDiscussion } from './useDiscussion'
 
 export interface UseEditorOptions {
@@ -50,7 +50,7 @@ export function useEditorOptions({
                   name: currentUser.name,
                   avatarData: currentUser.avatarData,
                   operatorId: globalThis.mashcardContext.uuid,
-                  color: string2Color(`c:${currentUser.name}`)
+                  color: getCursorColor(`c:${currentUser.name}`)
                 }
               }
             : false,

@@ -4,6 +4,8 @@ import { EmbedAttributes, EmbedOptions } from '../../../../../../extensions/bloc
 import { mockBlockViewProps } from '../../../../../../test'
 import { useDefaultFile } from '../../../embedTypes/Upload/useDefaultFile'
 
+jest.mock('@mashcard/uploader/src/imperativeUpload')
+
 describe('EmbedView > useDefaultFile', () => {
   it('uploads file when defaultFile exists', () => {
     const mockImperativeUpload = jest.fn()

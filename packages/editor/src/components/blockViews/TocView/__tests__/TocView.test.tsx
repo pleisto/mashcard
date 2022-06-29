@@ -5,6 +5,11 @@ import { TocAttributes, TocOptions } from '../../../../extensions'
 import { mockBlockViewProps } from '../../../../test'
 import { TocView } from '../TocView'
 
+jest.mock('../../../../hooks/useEditorContext', () => {
+  const { useEditorContext } = jest.requireActual('../../../../hooks/useEditorContext')
+  return { useEditorContext: jest.fn().mockImplementation(useEditorContext) }
+})
+
 const buildDoc = (nodes: any[]): any => {
   return {
     descendants: (predicate: Function) => {

@@ -188,35 +188,33 @@
 
 ### <a id="intersectionby" name="intersectionby"></a> intersectionBy
 
-▸ **intersectionBy**<`T1`, `T2`\>(`array`, `values`, `iteratee`): `T1`[]
+▸ **intersectionBy**<`T1`, `T2`\>(`array`, `values`, `iteratee?`): `T1`[]
 
 This method is like `_.intersection` except that it accepts `iteratee`
 which is invoked for each element of each `arrays` to generate the criterion
 by which uniqueness is computed. The iteratee is invoked with one argument: (value).
 
-**`example`**
-
-_.intersectionBy([2.1, 1.2], [4.3, 2.4], Math.floor);
+**`example`** \_.intersectionBy([2.1, 1.2], [4.3, 2.4], Math.floor);
 // => [2.1]
 
 // using the `_.property` iteratee shorthand
-_.intersectionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
+\_.intersectionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
 // => [{ 'x': 1 }]
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | ``null`` \| `List`<`T1`\> |
-| `values` | `List`<`T2`\> |
-| `iteratee` | `ValueIteratee`<`T1` \| `T2`\> |
+| Name        | Type                           | Description                       |
+| :---------- | :----------------------------- | :-------------------------------- |
+| `array`     | `null` \| `List`<`T1`\>        | -                                 |
+| `values`    | `List`<`T2`\>                  | -                                 |
+| `iteratee?` | `ValueIteratee`<`T1` \| `T2`\> | The iteratee invoked per element. |
 
 #### Returns
 
@@ -224,47 +222,39 @@ _.intersectionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
 
 Returns the new array of shared values.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:705
-
 ▸ **intersectionBy**<`T1`, `T2`, `T3`\>(`array`, `values1`, `values2`, `iteratee`): `T1`[]
 
-**`see`** _.intersectionBy
+**`see`** \_.intersectionBy
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
+| Name       | Type                                   |
+| :--------- | :------------------------------------- |
+| `array`    | `null` \| `List`<`T1`\>                |
+| `values1`  | `List`<`T2`\>                          |
+| `values2`  | `List`<`T3`\>                          |
 | `iteratee` | `ValueIteratee`<`T1` \| `T2` \| `T3`\> |
 
 #### Returns
 
 `T1`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:709
-
 ▸ **intersectionBy**<`T1`, `T2`, `T3`, `T4`\>(`array`, `values1`, `values2`, ...`values`): `T1`[]
 
-**`see`** _.intersectionBy
+**`see`** \_.intersectionBy
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -272,87 +262,76 @@ node_modules/@types/lodash/common/array.d.ts:709
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
+| Name        | Type                                                                |
+| :---------- | :------------------------------------------------------------------ |
+| `array`     | `undefined` \| `null` \| `List`<`T1`\>                              |
+| `values1`   | `List`<`T2`\>                                                       |
+| `values2`   | `List`<`T3`\>                                                       |
 | `...values` | (`List`<`T4`\> \| `ValueIteratee`<`T1` \| `T2` \| `T3` \| `T4`\>)[] |
 
 #### Returns
 
 `T1`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:713
-
 ▸ **intersectionBy**<`T`\>(`array?`, ...`values`): `T`[]
 
-**`see`** _.intersectionBy
+**`see`** \_.intersectionBy
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array?` | ``null`` \| `List`<`T`\> |
-| `...values` | `List`<`T`\>[] |
+| Name        | Type                   |
+| :---------- | :--------------------- |
+| `array?`    | `null` \| `List`<`T`\> |
+| `...values` | `List`<`T`\>[]         |
 
 #### Returns
 
 `T`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:717
-
 ▸ **intersectionBy**<`T`\>(...`values`): `T`[]
 
-**`see`** _.intersectionBy
+**`see`** \_.intersectionBy
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name        | Type                                      |
+| :---------- | :---------------------------------------- |
 | `...values` | (`List`<`T`\> \| `ValueIteratee`<`T`\>)[] |
 
 #### Returns
 
 `T`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:721
-
-___
+---
 
 ### <a id="intersectionwith" name="intersectionwith"></a> intersectionWith
 
-▸ **intersectionWith**<`T1`, `T2`\>(`array`, `values`, `comparator`): `T1`[]
+▸ **intersectionWith**<`T1`, `T2`\>(`array`, `values?`, `comparator?`): `T1`[]
 
 Creates an array of unique `array` values not included in the other
 provided arrays using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
 for equality comparisons.
 
-**`example`**
-
+**`example`** ```ts
 var objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
 var others = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
 
 _.intersectionWith(objects, others, _.isEqual);
 // => [{ 'x': 1, 'y': 2 }]
+
+````
 
 #### Type parameters
 
@@ -363,21 +342,17 @@ _.intersectionWith(objects, others, _.isEqual);
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values` | `List`<`T2`\> |
-| `comparator` | `Comparator2`<`T1`, `T2`\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `array` | `undefined` \| ``null`` \| `List`<`T1`\> | - |
+| `values?` | `List`<`T2`\> | The arrays to inspect. |
+| `comparator?` | `Comparator2`<`T1`, `T2`\> | The comparator invoked per element. |
 
 #### Returns
 
 `T1`[]
 
 Returns the new array of filtered values.
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:761
 
 ▸ **intersectionWith**<`T1`, `T2`, `T3`\>(`array`, `values1`, `values2`, `comparator`): `T1`[]
 
@@ -403,10 +378,6 @@ node_modules/@types/lodash/common/array.d.ts:761
 #### Returns
 
 `T1`[]
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:765
 
 ▸ **intersectionWith**<`T1`, `T2`, `T3`, `T4`\>(`array`, `values1`, `values2`, ...`values`): `T1`[]
 
@@ -434,10 +405,6 @@ node_modules/@types/lodash/common/array.d.ts:765
 
 `T1`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:769
-
 ▸ **intersectionWith**<`T`\>(`array?`, ...`values`): `T`[]
 
 **`see`** _.intersectionWith
@@ -459,10 +426,6 @@ node_modules/@types/lodash/common/array.d.ts:769
 
 `T`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:773
-
 ___
 
 ### <a id="pullall" name="pullall"></a> pullAll
@@ -473,25 +436,25 @@ This method is like `_.pull` except that it accepts an array of values to remove
 
 **Note:** Unlike `_.difference`, this method mutates `array`.
 
-**`example`**
-
+**`example`** ```ts
 var array = [1, 2, 3, 1, 2, 3];
 
 _.pull(array, [2, 3]);
 console.log(array);
 // => [1, 1]
+````
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `T`[] | The array to modify. |
+| Name      | Type         | Description           |
+| :-------- | :----------- | :-------------------- |
+| `array`   | `T`[]        | The array to modify.  |
 | `values?` | `List`<`T`\> | The values to remove. |
 
 #### Returns
@@ -500,36 +463,28 @@ console.log(array);
 
 Returns `array`.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:965
-
 ▸ **pullAll**<`T`\>(`array`, `values?`): `List`<`T`\>
 
-**`see`** _.pullAll
+**`see`** \_.pullAll
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `List`<`T`\> |
+| Name      | Type         |
+| :-------- | :----------- |
+| `array`   | `List`<`T`\> |
 | `values?` | `List`<`T`\> |
 
 #### Returns
 
 `List`<`T`\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:969
-
-___
+---
 
 ### <a id="pullallby" name="pullallby"></a> pullAllBy
 
@@ -541,13 +496,14 @@ by which uniqueness is computed. The iteratee is invoked with one argument: (val
 
 **Note:** Unlike `_.differenceBy`, this method mutates `array`.
 
-**`example`**
-
+**`example`** ```ts
 var array = [{ 'x': 1 }, { 'x': 2 }, { 'x': 3 }, { 'x': 1 }];
 
-_.pullAllBy(array, [{ 'x': 1 }, { 'x': 3 }], 'x');
+\_.pullAllBy(array, [{ 'x': 1 }, { 'x': 3 }], 'x');
 console.log(array);
 // => [{ 'x': 2 }]
+
+````
 
 #### Type parameters
 
@@ -561,17 +517,13 @@ console.log(array);
 | :------ | :------ | :------ |
 | `array` | `T`[] | The array to modify. |
 | `values?` | `List`<`T`\> | The values to remove. |
-| `iteratee?` | `ValueIteratee`<`T`\> | - |
+| `iteratee?` | `ValueIteratee`<`T`\> | The iteratee invoked per element. |
 
 #### Returns
 
 `T`[]
 
 Returns `array`.
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1004
 
 ▸ **pullAllBy**<`T`\>(`array`, `values?`, `iteratee?`): `List`<`T`\>
 
@@ -594,10 +546,6 @@ node_modules/@types/lodash/common/array.d.ts:1004
 #### Returns
 
 `List`<`T`\>
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1008
 
 ▸ **pullAllBy**<`T1`, `T2`\>(`array`, `values`, `iteratee`): `T1`[]
 
@@ -622,10 +570,6 @@ node_modules/@types/lodash/common/array.d.ts:1008
 
 `T1`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1012
-
 ▸ **pullAllBy**<`T1`, `T2`\>(`array`, `values`, `iteratee`): `List`<`T1`\>
 
 **`see`** _.pullAllBy
@@ -649,10 +593,6 @@ node_modules/@types/lodash/common/array.d.ts:1012
 
 `List`<`T1`\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1016
-
 ___
 
 ### <a id="pullallwith" name="pullallwith"></a> pullAllWith
@@ -665,27 +605,27 @@ two arguments: (arrVal, othVal).
 
 **Note:** Unlike `_.differenceWith`, this method mutates `array`.
 
-**`example`**
-
+**`example`** ```ts
 var array = [{ 'x': 1, 'y': 2 }, { 'x': 3, 'y': 4 }, { 'x': 5, 'y': 6 }];
 
 _.pullAllWith(array, [{ 'x': 3, 'y': 4 }], _.isEqual);
 console.log(array);
 // => [{ 'x': 1, 'y': 2 }, { 'x': 5, 'y': 6 }]
+````
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `T`[] | The array to modify. |
-| `values?` | `List`<`T`\> | The values to remove. |
-| `comparator?` | `Comparator`<`T`\> | - |
+| Name          | Type               | Description           |
+| :------------ | :----------------- | :-------------------- |
+| `array`       | `T`[]              | The array to modify.  |
+| `values?`     | `List`<`T`\>       | The values to remove. |
+| `comparator?` | `Comparator`<`T`\> | -                     |
 
 #### Returns
 
@@ -693,91 +633,75 @@ console.log(array);
 
 Returns `array`.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1051
-
 ▸ **pullAllWith**<`T`\>(`array`, `values?`, `comparator?`): `List`<`T`\>
 
-**`see`** _.pullAllWith
+**`see`** \_.pullAllWith
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `List`<`T`\> |
-| `values?` | `List`<`T`\> |
+| Name          | Type               |
+| :------------ | :----------------- |
+| `array`       | `List`<`T`\>       |
+| `values?`     | `List`<`T`\>       |
 | `comparator?` | `Comparator`<`T`\> |
 
 #### Returns
 
 `List`<`T`\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1055
-
 ▸ **pullAllWith**<`T1`, `T2`\>(`array`, `values`, `comparator`): `T1`[]
 
-**`see`** _.pullAllWith
+**`see`** \_.pullAllWith
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `T1`[] |
-| `values` | `List`<`T2`\> |
+| Name         | Type                       |
+| :----------- | :------------------------- |
+| `array`      | `T1`[]                     |
+| `values`     | `List`<`T2`\>              |
 | `comparator` | `Comparator2`<`T1`, `T2`\> |
 
 #### Returns
 
 `T1`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1059
-
 ▸ **pullAllWith**<`T1`, `T2`\>(`array`, `values`, `comparator`): `List`<`T1`\>
 
-**`see`** _.pullAllWith
+**`see`** \_.pullAllWith
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `List`<`T1`\> |
-| `values` | `List`<`T2`\> |
+| Name         | Type                       |
+| :----------- | :------------------------- |
+| `array`      | `List`<`T1`\>              |
+| `values`     | `List`<`T2`\>              |
 | `comparator` | `Comparator2`<`T1`, `T2`\> |
 
 #### Returns
 
 `List`<`T1`\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1063
-
-___
+---
 
 ### <a id="sortedindex" name="sortedindex"></a> sortedIndex
 
@@ -786,13 +710,14 @@ ___
 Uses a binary search to determine the lowest index at which `value` should
 be inserted into `array` in order to maintain its sort order.
 
-**`example`**
-
-_.sortedIndex([30, 50], 40);
+**`example`** ```ts
+\_.sortedIndex([30, 50], 40);
 // => 1
 
-_.sortedIndex([4, 5], 4);
+\_.sortedIndex([4, 5], 4);
 // => 0
+
+````
 
 #### Type parameters
 
@@ -812,36 +737,32 @@ _.sortedIndex([4, 5], 4);
 `number`
 
 Returns the index at which `value` should be inserted into `array`.
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1193
 
 ▸ **sortedIndex**<`T`\>(`array`, `value`): `number`
 
 Uses a binary search to determine the lowest index at which `value` should
 be inserted into `array` in order to maintain its sort order.
 
-**`example`**
-
+**`example`** ```ts
 _.sortedIndex([30, 50], 40);
 // => 1
 
 _.sortedIndex([4, 5], 4);
 // => 0
+````
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The sorted array to inspect. |
-| `value` | `T` | The value to evaluate. |
+| Name    | Type                                  | Description                  |
+| :------ | :------------------------------------ | :--------------------------- |
+| `array` | `undefined` \| `null` \| `List`<`T`\> | The sorted array to inspect. |
+| `value` | `T`                                   | The value to evaluate.       |
 
 #### Returns
 
@@ -849,11 +770,7 @@ _.sortedIndex([4, 5], 4);
 
 Returns the index at which `value` should be inserted into `array`.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1224
-
-___
+---
 
 ### <a id="sortedindexby" name="sortedindexby"></a> sortedIndexBy
 
@@ -863,30 +780,28 @@ This method is like `_.sortedIndex` except that it accepts `iteratee`
 which is invoked for `value` and each element of `array` to compute their
 sort ranking. The iteratee is invoked with one argument: (value).
 
-**`example`**
-
-var dict = { 'thirty': 30, 'forty': 40, 'fifty': 50 };
+**`example`** var dict = { 'thirty': 30, 'forty': 40, 'fifty': 50 };
 
 _.sortedIndexBy(['thirty', 'fifty'], 'forty', _.propertyOf(dict));
 // => 1
 
 // using the `_.property` iteratee shorthand
-_.sortedIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, 'x');
+\_.sortedIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, 'x');
 // => 0
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The sorted array to inspect. |
-| `value` | `T` | The value to evaluate. |
-| `iteratee?` | `ValueIteratee`<`T`\> | - |
+| Name        | Type                                  | Description                       |
+| :---------- | :------------------------------------ | :-------------------------------- |
+| `array`     | `undefined` \| `null` \| `List`<`T`\> | The sorted array to inspect.      |
+| `value`     | `T`                                   | The value to evaluate.            |
+| `iteratee?` | `ValueIteratee`<`T`\>                 | The iteratee invoked per element. |
 
 #### Returns
 
@@ -894,11 +809,7 @@ _.sortedIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, 'x');
 
 Returns the index at which `value` should be inserted into `array`.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1260
-
-___
+---
 
 ### <a id="sortedindexof" name="sortedindexof"></a> sortedIndexOf
 
@@ -907,10 +818,11 @@ ___
 This method is like `_.indexOf` except that it performs a binary
 search on a sorted `array`.
 
-**`example`**
-
-_.sortedIndexOf([1, 1, 2, 2], 2);
+**`example`** ```ts
+\_.sortedIndexOf([1, 1, 2, 2], 2);
 // => 2
+
+````
 
 #### Type parameters
 
@@ -930,10 +842,6 @@ _.sortedIndexOf([1, 1, 2, 2], 2);
 `number`
 
 Returns the index of the matched value, else `-1`.
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1288
 
 ___
 
@@ -945,23 +853,23 @@ This method is like `_.sortedIndex` except that it returns the highest
 index at which `value` should be inserted into `array` in order to
 maintain its sort order.
 
-**`example`**
-
+**`example`** ```ts
 _.sortedLastIndex([4, 5], 4);
 // => 1
+````
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The sorted array to inspect. |
-| `value` | `T` | The value to evaluate. |
+| Name    | Type                                  | Description                  |
+| :------ | :------------------------------------ | :--------------------------- |
+| `array` | `undefined` \| `null` \| `List`<`T`\> | The sorted array to inspect. |
+| `value` | `T`                                   | The value to evaluate.       |
 
 #### Returns
 
@@ -969,39 +877,33 @@ _.sortedLastIndex([4, 5], 4);
 
 Returns the index at which `value` should be inserted into `array`.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1317
-
-___
+---
 
 ### <a id="sortedlastindexby" name="sortedlastindexby"></a> sortedLastIndexBy
 
-▸ **sortedLastIndexBy**<`T`\>(`array`, `value`, `iteratee`): `number`
+▸ **sortedLastIndexBy**<`T`\>(`array`, `value`, `iteratee?`): `number`
 
 This method is like `_.sortedLastIndex` except that it accepts `iteratee`
 which is invoked for `value` and each element of `array` to compute their
 sort ranking. The iteratee is invoked with one argument: (value).
 
-**`example`**
-
-// using the `_.property` iteratee shorthand
-_.sortedLastIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, 'x');
+**`example`** // using the `_.property` iteratee shorthand
+\_.sortedLastIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, 'x');
 // => 1
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The sorted array to inspect. |
-| `value` | `T` | The value to evaluate. |
-| `iteratee` | `ValueIteratee`<`T`\> | - |
+| Name        | Type                                  | Description                       |
+| :---------- | :------------------------------------ | :-------------------------------- |
+| `array`     | `undefined` \| `null` \| `List`<`T`\> | The sorted array to inspect.      |
+| `value`     | `T`                                   | The value to evaluate.            |
+| `iteratee?` | `ValueIteratee`<`T`\>                 | The iteratee invoked per element. |
 
 #### Returns
 
@@ -1009,11 +911,7 @@ _.sortedLastIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, 'x');
 
 Returns the index at which `value` should be inserted into `array`.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1348
-
-___
+---
 
 ### <a id="sortedlastindexof" name="sortedlastindexof"></a> sortedLastIndexOf
 
@@ -1022,10 +920,11 @@ ___
 This method is like `_.lastIndexOf` except that it performs a binary
 search on a sorted `array`.
 
-**`example`**
-
-_.sortedLastIndexOf([1, 1, 2, 2], 2);
+**`example`** ```ts
+\_.sortedLastIndexOf([1, 1, 2, 2], 2);
 // => 3
+
+````
 
 #### Type parameters
 
@@ -1046,10 +945,6 @@ _.sortedLastIndexOf([1, 1, 2, 2], 2);
 
 Returns the index of the matched value, else `-1`.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1376
-
 ___
 
 ### <a id="sorteduniq" name="sorteduniq"></a> sortedUniq
@@ -1059,22 +954,22 @@ ___
 This method is like `_.uniq` except that it's designed and optimized
 for sorted arrays.
 
-**`example`**
-
+**`example`** ```ts
 _.sortedUniq([1, 1, 2]);
 // => [1, 2]
+````
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to inspect. |
+| Name    | Type                                  | Description           |
+| :------ | :------------------------------------ | :-------------------- |
+| `array` | `undefined` \| `null` \| `List`<`T`\> | The array to inspect. |
 
 #### Returns
 
@@ -1082,23 +977,20 @@ _.sortedUniq([1, 1, 2]);
 
 Returns the new duplicate free array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1403
-
-___
+---
 
 ### <a id="sorteduniqby" name="sorteduniqby"></a> sortedUniqBy
 
-▸ **sortedUniqBy**<`T`\>(`array`, `iteratee`): `T`[]
+▸ **sortedUniqBy**<`T`\>(`array`, `iteratee?`): `T`[]
 
 This method is like `_.uniqBy` except that it's designed and optimized
 for sorted arrays.
 
-**`example`**
-
-_.sortedUniqBy([1.1, 1.2, 2.3, 2.4], Math.floor);
+**`example`** ```ts
+\_.sortedUniqBy([1.1, 1.2, 2.3, 2.4], Math.floor);
 // => [1.1, 2.3]
+
+````
 
 #### Type parameters
 
@@ -1111,48 +1003,44 @@ _.sortedUniqBy([1.1, 1.2, 2.3, 2.4], Math.floor);
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to inspect. |
-| `iteratee` | `ValueIteratee`<`T`\> | - |
+| `iteratee?` | `ValueIteratee`<`T`\> | The iteratee invoked per element. |
 
 #### Returns
 
 `T`[]
 
 Returns the new duplicate free array.
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1431
 
 ___
 
 ### <a id="unionwith" name="unionwith"></a> unionWith
 
-▸ **unionWith**<`T`\>(`arrays`, `comparator?`): `T`[]
+▸ **unionWith**<`T`\>(`arrays?`, `comparator?`): `T`[]
 
 This method is like `_.union` except that it accepts `comparator` which
 is invoked to compare elements of `arrays`. The comparator is invoked
 with two arguments: (arrVal, othVal).
 
-**`example`**
-
+**`example`** ```ts
 var objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
 var others = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
 
 _.unionWith(objects, others, _.isEqual);
 // => [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }, { 'x': 1, 'y': 1 }]
+````
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `comparator?` | `Comparator`<`T`\> |
+| Name          | Type                   | Description                         |
+| :------------ | :--------------------- | :---------------------------------- |
+| `arrays?`     | `null` \| `List`<`T`\> | The arrays to inspect.              |
+| `comparator?` | `Comparator`<`T`\>     | The comparator invoked per element. |
 
 #### Returns
 
@@ -1160,94 +1048,80 @@ _.unionWith(objects, others, _.isEqual);
 
 Returns the new array of combined values.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1644
-
 ▸ **unionWith**<`T`\>(`arrays`, `arrays2`, `comparator?`): `T`[]
 
-**`see`** _.unionWith
+**`see`** \_.unionWith
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `comparator?` | `Comparator`<`T`\> |
+| Name          | Type                                  |
+| :------------ | :------------------------------------ |
+| `arrays`      | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays2`     | `undefined` \| `null` \| `List`<`T`\> |
+| `comparator?` | `Comparator`<`T`\>                    |
 
 #### Returns
 
 `T`[]
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1648
 
 ▸ **unionWith**<`T`\>(`arrays`, `arrays2`, `arrays3`, ...`comparator`): `T`[]
 
-**`see`** _.unionWith
+**`see`** \_.unionWith
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays3` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `...comparator` | (`undefined` \| ``null`` \| `List`<`T`\> \| `Comparator`<`T`\>)[] |
+| Name            | Type                                                            |
+| :-------------- | :-------------------------------------------------------------- |
+| `arrays`        | `undefined` \| `null` \| `List`<`T`\>                           |
+| `arrays2`       | `undefined` \| `null` \| `List`<`T`\>                           |
+| `arrays3`       | `undefined` \| `null` \| `List`<`T`\>                           |
+| `...comparator` | (`undefined` \| `null` \| `List`<`T`\> \| `Comparator`<`T`\>)[] |
 
 #### Returns
 
 `T`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1652
-
-___
+---
 
 ### <a id="uniqby" name="uniqby"></a> uniqBy
 
-▸ **uniqBy**<`T`\>(`array`, `iteratee`): `T`[]
+▸ **uniqBy**<`T`\>(`array`, `iteratee?`): `T`[]
 
 This method is like `_.uniq` except that it accepts `iteratee` which is
 invoked for each element in `array` to generate the criterion by which
 uniqueness is computed. The iteratee is invoked with one argument: (value).
 
-**`example`**
-
-_.uniqBy([2.1, 1.2, 2.3], Math.floor);
+**`example`** \_.uniqBy([2.1, 1.2, 2.3], Math.floor);
 // => [2.1, 1.2]
 
 // using the `_.property` iteratee shorthand
-_.uniqBy([{ 'x': 1 }, { 'x': 2 }, { 'x': 1 }], 'x');
+\_.uniqBy([{ 'x': 1 }, { 'x': 2 }, { 'x': 1 }], 'x');
 // => [{ 'x': 1 }, { 'x': 2 }]
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to inspect. |
-| `iteratee` | `ValueIteratee`<`T`\> | - |
+| Name        | Type                                  | Description                       |
+| :---------- | :------------------------------------ | :-------------------------------- |
+| `array`     | `undefined` \| `null` \| `List`<`T`\> | The array to inspect.             |
+| `iteratee?` | `ValueIteratee`<`T`\>                 | The iteratee invoked per element. |
 
 #### Returns
 
@@ -1255,11 +1129,7 @@ _.uniqBy([{ 'x': 1 }, { 'x': 2 }, { 'x': 1 }], 'x');
 
 Returns the new duplicate free array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1722
-
-___
+---
 
 ### <a id="uniqwith" name="uniqwith"></a> uniqWith
 
@@ -1269,12 +1139,13 @@ This method is like `_.uniq` except that it accepts `comparator` which
 is invoked to compare elements of `array`. The comparator is invoked with
 two arguments: (arrVal, othVal).
 
-**`example`**
-
-var objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 },  { 'x': 1, 'y': 2 }];
+**`example`** ```ts
+var objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }, { 'x': 1, 'y': 2 }];
 
 _.uniqWith(objects, _.isEqual);
 // => [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }]
+
+````
 
 #### Type parameters
 
@@ -1287,7 +1158,7 @@ _.uniqWith(objects, _.isEqual);
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to inspect. |
-| `comparator?` | `Comparator`<`T`\> | - |
+| `comparator?` | `Comparator`<`T`\> | The comparator invoked per element. |
 
 #### Returns
 
@@ -1295,23 +1166,17 @@ _.uniqWith(objects, _.isEqual);
 
 Returns the new duplicate free array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1753
-
 ___
 
 ### <a id="xorby" name="xorby"></a> xorBy
 
-▸ **xorBy**<`T`\>(`arrays`, `iteratee?`): `T`[]
+▸ **xorBy**<`T`\>(`arrays?`, `iteratee?`): `T`[]
 
 This method is like `_.xor` except that it accepts `iteratee` which is
 invoked for each element of each `arrays` to generate the criterion by which
 uniqueness is computed. The iteratee is invoked with one argument: (value).
 
-**`example`**
-
-_.xorBy([2.1, 1.2], [4.3, 2.4], Math.floor);
+**`example`** _.xorBy([2.1, 1.2], [4.3, 2.4], Math.floor);
 // => [1.2, 4.3]
 
 // using the `_.property` iteratee shorthand
@@ -1326,20 +1191,16 @@ _.xorBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `arrays?` | ``null`` \| `List`<`T`\> | The arrays to inspect. |
+| `iteratee?` | `ValueIteratee`<`T`\> | The iteratee invoked per element. |
 
 #### Returns
 
 `T`[]
 
 Returns the new array of values.
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1886
 
 ▸ **xorBy**<`T`\>(`arrays`, `arrays2`, `iteratee?`): `T`[]
 
@@ -1362,10 +1223,6 @@ node_modules/@types/lodash/common/array.d.ts:1886
 #### Returns
 
 `T`[]
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1890
 
 ▸ **xorBy**<`T`\>(`arrays`, `arrays2`, `arrays3`, ...`iteratee`): `T`[]
 
@@ -1390,40 +1247,36 @@ node_modules/@types/lodash/common/array.d.ts:1890
 
 `T`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1894
-
 ___
 
 ### <a id="xorwith" name="xorwith"></a> xorWith
 
-▸ **xorWith**<`T`\>(`arrays`, `comparator?`): `T`[]
+▸ **xorWith**<`T`\>(`arrays?`, `comparator?`): `T`[]
 
 This method is like `_.xor` except that it accepts `comparator` which is
 invoked to compare elements of `arrays`. The comparator is invoked with
 two arguments: (arrVal, othVal).
 
-**`example`**
-
+**`example`** ```ts
 var objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
 var others = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
 
 _.xorWith(objects, others, _.isEqual);
 // => [{ 'x': 2, 'y': 1 }, { 'x': 1, 'y': 1 }]
+````
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `comparator?` | `Comparator`<`T`\> |
+| Name          | Type                   | Description                         |
+| :------------ | :--------------------- | :---------------------------------- |
+| `arrays?`     | `null` \| `List`<`T`\> | The arrays to inspect.              |
+| `comparator?` | `Comparator`<`T`\>     | The comparator invoked per element. |
 
 #### Returns
 
@@ -1431,62 +1284,50 @@ _.xorWith(objects, others, _.isEqual);
 
 Returns the new array of values.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1934
-
 ▸ **xorWith**<`T`\>(`arrays`, `arrays2`, `comparator?`): `T`[]
 
-**`see`** _.xorWith
+**`see`** \_.xorWith
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `comparator?` | `Comparator`<`T`\> |
+| Name          | Type                                  |
+| :------------ | :------------------------------------ |
+| `arrays`      | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays2`     | `undefined` \| `null` \| `List`<`T`\> |
+| `comparator?` | `Comparator`<`T`\>                    |
 
 #### Returns
 
 `T`[]
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1938
 
 ▸ **xorWith**<`T`\>(`arrays`, `arrays2`, `arrays3`, ...`comparator`): `T`[]
 
-**`see`** _.xorWith
+**`see`** \_.xorWith
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays3` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `...comparator` | (`undefined` \| ``null`` \| `List`<`T`\> \| `Comparator`<`T`\>)[] |
+| Name            | Type                                                            |
+| :-------------- | :-------------------------------------------------------------- |
+| `arrays`        | `undefined` \| `null` \| `List`<`T`\>                           |
+| `arrays2`       | `undefined` \| `null` \| `List`<`T`\>                           |
+| `arrays3`       | `undefined` \| `null` \| `List`<`T`\>                           |
+| `...comparator` | (`undefined` \| `null` \| `List`<`T`\> \| `Comparator`<`T`\>)[] |
 
 #### Returns
 
 `T`[]
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1942
 
 ## Collection
 
@@ -1499,14 +1340,15 @@ mapped results.
 
 **`since`** 4.7.0
 
-**`example`**
-
+**`example`** ```ts
 function duplicate(n) {
-  return [[[n, n]]];
+return [[[n, n]]];
 }
 
-_.flatMapDeep([1, 2], duplicate);
+\_.flatMapDeep([1, 2], duplicate);
 // => [1, 1, 2, 2]
+
+````
 
 #### Type parameters
 
@@ -1525,10 +1367,6 @@ _.flatMapDeep([1, 2], duplicate);
 `T`[]
 
 Returns the new flattened array.
-
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:545
 
 ▸ **flatMapDeep**<`T`, `TResult`\>(`collection`, `iteratee`): `TResult`[]
 
@@ -1552,10 +1390,6 @@ node_modules/@types/lodash/common/collection.d.ts:545
 
 `TResult`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:549
-
 ▸ **flatMapDeep**<`T`, `TResult`\>(`collection`, `iteratee`): `TResult`[]
 
 **`see`** _.flatMapDeep
@@ -1577,10 +1411,6 @@ node_modules/@types/lodash/common/collection.d.ts:549
 #### Returns
 
 `TResult`[]
-
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:553
 
 ▸ **flatMapDeep**(`collection`, `iteratee`): `any`[]
 
@@ -1597,10 +1427,6 @@ node_modules/@types/lodash/common/collection.d.ts:553
 
 `any`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:557
-
 ▸ **flatMapDeep**(`collection`, `iteratee`): `boolean`[]
 
 **`see`** _.flatMapDeep
@@ -1616,10 +1442,6 @@ node_modules/@types/lodash/common/collection.d.ts:557
 
 `boolean`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:561
-
 ___
 
 ### <a id="flatmapdepth" name="flatmapdepth"></a> flatMapDepth
@@ -1631,26 +1453,26 @@ mapped results up to `depth` times.
 
 **`since`** 4.7.0
 
-**`example`**
-
+**`example`** ```ts
 function duplicate(n) {
   return [[[n, n]]];
 }
 
 _.flatMapDepth([1, 2], duplicate, 2);
 // => [[1, 1], [2, 2]]
+````
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `Dictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> \| `NumericDictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> | The collection to iterate over. |
+| Name         | Type                                                                                                                                                       | Description                     |
+| :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------ |
+| `collection` | `undefined` \| `null` \| `Dictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> \| `NumericDictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> | The collection to iterate over. |
 
 #### Returns
 
@@ -1658,105 +1480,85 @@ _.flatMapDepth([1, 2], duplicate, 2);
 
 Returns the new flattened array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:669
-
 ▸ **flatMapDepth**<`T`, `TResult`\>(`collection`, `iteratee`, `depth?`): `TResult`[]
 
-**`see`** _.flatMapDepth
+**`see`** \_.flatMapDepth
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee` | `ListIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
-| `depth?` | `number` |
+| Name         | Type                                                                           |
+| :----------- | :----------------------------------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\>                                          |
+| `iteratee`   | `ListIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
+| `depth?`     | `number`                                                                       |
 
 #### Returns
 
 `TResult`[]
-
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:673
 
 ▸ **flatMapDepth**<`T`, `TResult`\>(`collection`, `iteratee`, `depth?`): `TResult`[]
 
-**`see`** _.flatMapDepth
+**`see`** \_.flatMapDepth
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `TResult` | `TResult` |
+| Name      | Type             |
+| :-------- | :--------------- |
+| `T`       | extends `object` |
+| `TResult` | `TResult`        |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratee` | `ObjectIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
-| `depth?` | `number` |
+| Name         | Type                                                                             |
+| :----------- | :------------------------------------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`                                                     |
+| `iteratee`   | `ObjectIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
+| `depth?`     | `number`                                                                         |
 
 #### Returns
 
 `TResult`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:677
-
 ▸ **flatMapDepth**(`collection`, `iteratee`, `depth?`): `any`[]
 
-**`see`** _.flatMapDepth
+**`see`** \_.flatMapDepth
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
-| `iteratee` | `string` |
-| `depth?` | `number` |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
+| `iteratee`   | `string`                          |
+| `depth?`     | `number`                          |
 
 #### Returns
 
 `any`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:681
-
 ▸ **flatMapDepth**(`collection`, `iteratee`, `depth?`): `boolean`[]
 
-**`see`** _.flatMapDepth
+**`see`** \_.flatMapDepth
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
-| `iteratee` | `object` |
-| `depth?` | `number` |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
+| `iteratee`   | `object`                          |
+| `depth?`     | `number`                          |
 
 #### Returns
 
 `boolean`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:685
-
-___
+---
 
 ### <a id="orderby" name="orderby"></a> orderBy
 
@@ -1767,34 +1569,30 @@ orders of the iteratees to sort by. If `orders` is unspecified, all values
 are sorted in ascending order. Otherwise, specify an order of "desc" for
 descending or "asc" for ascending sort order of corresponding values.
 
-**`param-`** {Object} [guard] Enables use as an iteratee for functions like `_.reduce`.
-
-**`example`**
-
-var users = [
-  { 'user': 'fred',   'age': 48 },
-  { 'user': 'barney', 'age': 34 },
-  { 'user': 'fred',   'age': 42 },
-  { 'user': 'barney', 'age': 36 }
+**`example`** var users = [
+{ 'user': 'fred', 'age': 48 },
+{ 'user': 'barney', 'age': 34 },
+{ 'user': 'fred', 'age': 42 },
+{ 'user': 'barney', 'age': 36 }
 ];
 
 // sort by `user` in ascending order and by `age` in descending order
-_.orderBy(users, ['user', 'age'], ['asc', 'desc']);
+\_.orderBy(users, ['user', 'age'], ['asc', 'desc']);
 // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 42]]
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> | The collection to iterate over. |
-| `iteratees?` | `Many`<`ListIterator`<`T`, `unknown`\>\> | - |
-| `orders?` | `Many`<`boolean` \| ``"asc"`` \| ``"desc"``\> | - |
+| Name         | Type                                      | Description                     |
+| :----------- | :---------------------------------------- | :------------------------------ |
+| `collection` | `undefined` \| `null` \| `List`<`T`\>     | The collection to iterate over. |
+| `iteratees?` | `Many`<`ListIterator`<`T`, `unknown`\>\>  | The iteratees to sort by.       |
+| `orders?`    | `Many`<`boolean` \| `"asc"` \| `"desc"`\> | The sort orders of `iteratees`. |
 
 #### Returns
 
@@ -1802,118 +1600,103 @@ _.orderBy(users, ['user', 'age'], ['asc', 'desc']);
 
 Returns the new sorted array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1327
-
 ▸ **orderBy**<`T`\>(`collection`, `iteratees?`, `orders?`): `T`[]
 
-**`see`** _.orderBy
+**`see`** \_.orderBy
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratees?` | `Many`<`ListIteratee`<`T`\>\> |
-| `orders?` | `Many`<`boolean` \| ``"asc"`` \| ``"desc"``\> |
+| Name         | Type                                      |
+| :----------- | :---------------------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\>     |
+| `iteratees?` | `Many`<`ListIteratee`<`T`\>\>             |
+| `orders?`    | `Many`<`boolean` \| `"asc"` \| `"desc"`\> |
 
 #### Returns
 
 `T`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1331
-
 ▸ **orderBy**<`T`\>(`collection`, `iteratees?`, `orders?`): `T`[keyof `T`][]
 
-**`see`** _.orderBy
+**`see`** \_.orderBy
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
+| Name         | Type                                       |
+| :----------- | :----------------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`               |
 | `iteratees?` | `Many`<`ObjectIterator`<`T`, `unknown`\>\> |
-| `orders?` | `Many`<`boolean` \| ``"asc"`` \| ``"desc"``\> |
+| `orders?`    | `Many`<`boolean` \| `"asc"` \| `"desc"`\>  |
 
 #### Returns
 
 `T`[keyof `T`][]
-
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1335
 
 ▸ **orderBy**<`T`\>(`collection`, `iteratees?`, `orders?`): `T`[keyof `T`][]
 
-**`see`** _.orderBy
+**`see`** \_.orderBy
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratees?` | `Many`<`ObjectIteratee`<`T`\>\> |
-| `orders?` | `Many`<`boolean` \| ``"asc"`` \| ``"desc"``\> |
+| Name         | Type                                      |
+| :----------- | :---------------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`              |
+| `iteratees?` | `Many`<`ObjectIteratee`<`T`\>\>           |
+| `orders?`    | `Many`<`boolean` \| `"asc"` \| `"desc"`\> |
 
 #### Returns
 
 `T`[keyof `T`][]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1339
-
-___
+---
 
 ### <a id="sortby" name="sortby"></a> sortBy
 
-▸ **sortBy**<`T`\>(`collection`, ...`iteratees`): `T`[]
+▸ **sortBy**<`T`\>(`collection`, ...`iteratees?`): `T`[]
 
 Creates an array of elements, sorted in ascending order by the results of
 running each element in a collection through each iteratee. This method
 performs a stable sort, that is, it preserves the original sort order of
 equal elements. The iteratees are invoked with one argument: (value).
 
-**`example`**
-
+**`example`** ```ts
 var users = [
-  { 'user': 'fred',   'age': 48 },
-  { 'user': 'barney', 'age': 36 },
-  { 'user': 'fred',   'age': 42 },
-  { 'user': 'barney', 'age': 34 }
+{ 'user': 'fred', 'age': 48 },
+{ 'user': 'barney', 'age': 36 },
+{ 'user': 'fred', 'age': 42 },
+{ 'user': 'barney', 'age': 34 }
 ];
 
-_.sortBy(users, function(o) { return o.user; });
+\_.sortBy(users, function(o) { return o.user; });
 // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 42]]
 
-_.sortBy(users, ['user', 'age']);
+\_.sortBy(users, ['user', 'age']);
 // => objects for [['barney', 34], ['barney', 36], ['fred', 42], ['fred', 48]]
 
-_.sortBy(users, 'user', function(o) {
-  return Math.floor(o.age / 10);
+\_.sortBy(users, 'user', function(o) {
+return Math.floor(o.age / 10);
 });
 // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 42]]
+
+````
 
 #### Type parameters
 
@@ -1926,17 +1709,13 @@ _.sortBy(users, 'user', function(o) {
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `collection` | `undefined` \| ``null`` \| `List`<`T`\> | The collection to iterate over. |
-| `...iteratees` | `Many`<`ListIteratee`<`T`\>\>[] | - |
+| `...iteratees?` | `Many`<`ListIteratee`<`T`\>\>[] | The iteratees to sort by, specified individually or in arrays. |
 
 #### Returns
 
 `T`[]
 
 Returns the new sorted array.
-
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1900
 
 ▸ **sortBy**<`T`\>(`collection`, ...`iteratees`): `T`[keyof `T`][]
 
@@ -1959,10 +1738,6 @@ node_modules/@types/lodash/common/collection.d.ts:1900
 
 `T`[keyof `T`][]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1904
-
 ## Function
 
 ### <a id="unary" name="unary"></a> unary
@@ -1972,22 +1747,22 @@ node_modules/@types/lodash/common/collection.d.ts:1904
 Creates a function that accepts up to one argument, ignoring any
 additional arguments.
 
-**`example`**
-
+**`example`** ```ts
 _.map(['6', '8', '10'], _.unary(parseInt));
 // => [6, 8, 10]
+````
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name   | Type                                           | Description                        |
+| :----- | :--------------------------------------------- | :--------------------------------- |
 | `func` | (`arg1`: `T`, ...`args`: `any`[]) => `TResult` | The function to cap arguments for. |
 
 #### Returns
@@ -2003,10 +1778,11 @@ additional arguments.
 
 **`category`** Function
 
-**`example`**
-
+**`example`** ```ts
 _.map(['6', '8', '10'], _.unary(parseInt));
 // => [6, 8, 10]
+
+````
 
 ##### Parameters
 
@@ -2019,10 +1795,6 @@ _.map(['6', '8', '10'], _.unary(parseInt));
 `TResult`
 
 Returns the new function.
-
-#### Defined in
-
-node_modules/@types/lodash/common/function.d.ts:1408
 
 ## Lang
 
@@ -2039,8 +1811,7 @@ sets, strings, symbols, and typed arrays. `Object` objects are compared
 by their own, not inherited, enumerable properties. Functions and DOM
 nodes are **not** supported.
 
-**`example`**
-
+**`example`** ```ts
 var object = { 'user': 'fred' };
 var other = { 'user': 'fred' };
 
@@ -2049,12 +1820,13 @@ _.isEqual(object, other);
 
 object === other;
 // => false
+````
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `any` | The value to compare. |
+| Name    | Type  | Description                 |
+| :------ | :---- | :-------------------------- |
+| `value` | `any` | The value to compare.       |
 | `other` | `any` | The other value to compare. |
 
 #### Returns
@@ -2063,11 +1835,7 @@ object === other;
 
 Returns `true` if the values are equivalent, else `false`.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:613
-
-___
+---
 
 ### <a id="isinteger" name="isinteger"></a> isInteger
 
@@ -2077,19 +1845,20 @@ Checks if `value` is an integer.
 
 **Note:** This method is based on [`Number.isInteger`](https://mdn.io/Number/isInteger).
 
-**`example`**
-
-_.isInteger(3);
+**`example`** ```ts
+\_.isInteger(3);
 // => true
 
-_.isInteger(Number.MIN_VALUE);
+\_.isInteger(Number.MIN_VALUE);
 // => false
 
-_.isInteger(Infinity);
+\_.isInteger(Infinity);
 // => false
 
-_.isInteger('3');
+\_.isInteger('3');
 // => false
+
+````
 
 #### Parameters
 
@@ -2103,10 +1872,6 @@ _.isInteger('3');
 
 Returns `true` if `value` is an integer, else `false`.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:766
-
 ___
 
 ### <a id="ismatch" name="ismatch"></a> isMatch
@@ -2118,8 +1883,7 @@ Performs a deep comparison between `object` and `source` to determine if
 
 **Note:** This method supports comparing the same values as `_.isEqual`.
 
-**`example`**
-
+**`example`** ```ts
 var object = { 'user': 'fred', 'age': 40 };
 
 _.isMatch(object, { 'age': 40 });
@@ -2127,12 +1891,13 @@ _.isMatch(object, { 'age': 40 });
 
 _.isMatch(object, { 'age': 36 });
 // => false
+````
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `object` | `object` | The object to inspect. |
+| Name     | Type     | Description                             |
+| :------- | :------- | :-------------------------------------- |
+| `object` | `object` | The object to inspect.                  |
 | `source` | `object` | The object of property values to match. |
 
 #### Returns
@@ -2141,11 +1906,7 @@ _.isMatch(object, { 'age': 36 });
 
 Returns `true` if `object` is a match, else `false`.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:862
-
-___
+---
 
 ### <a id="isnil" name="isnil"></a> isNil
 
@@ -2153,16 +1914,17 @@ ___
 
 Checks if `value` is `null` or `undefined`.
 
-**`example`**
-
-_.isNil(null);
+**`example`** ```ts
+\_.isNil(null);
 // => true
 
-_.isNil(void 0);
+\_.isNil(void 0);
 // => true
 
-_.isNil(NaN);
+\_.isNil(NaN);
 // => false
+
+````
 
 #### Parameters
 
@@ -2176,10 +1938,6 @@ value is undefined \| null
 
 Returns `true` if `value` is nullish, else `false`.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:987
-
 ___
 
 ### <a id="issymbol" name="issymbol"></a> isSymbol
@@ -2188,18 +1946,18 @@ ___
 
 Checks if `value` is classified as a `Symbol` primitive or object.
 
-**`example`**
-
+**`example`** ```ts
 _.isSymbol(Symbol.iterator);
 // => true
 
 _.isSymbol('abc');
 // => false
+````
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name    | Type  | Description         |
+| :------ | :---- | :------------------ |
 | `value` | `any` | The value to check. |
 
 #### Returns
@@ -2208,40 +1966,35 @@ value is symbol
 
 Returns `true` if `value` is correctly classified, else `false`.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:1253
-
 ## Number
 
 ### <a id="clamp" name="clamp"></a> clamp
 
-▸ **clamp**(`number`, `lower`, `upper`): `number`
+▸ **clamp**(`number`, `lower?`, `upper`): `number`
 
 Clamps `number` within the inclusive `lower` and `upper` bounds.
 
-**`example`**
-
-_.clamp(-10, -5, 5);
+**`example`** \_.clamp(-10, -5, 5);
 // => -5
 
-_.clamp(10, -5, 5);
+\_.clamp(10, -5, 5);
 // => 5
 Clamps `number` within the inclusive `lower` and `upper` bounds.
 
-**`example`**
-
-_.clamp(-10, -5, 5);
+**`example`** ```ts
+\_.clamp(-10, -5, 5);
 // => -5
 
-_.clamp(10, -5, 5);
+\_.clamp(10, -5, 5);
+
+````
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `number` | `number` | The number to clamp. |
-| `lower` | `number` | - |
+| `lower?` | `number` | The lower bound. |
 | `upper` | `number` | The upper bound. |
 
 #### Returns
@@ -2250,9 +2003,7 @@ _.clamp(10, -5, 5);
 
 Returns the clamped number.
 
-#### Defined in
-
-node_modules/@types/lodash/common/number.d.ts:34
+Returns the clamped number.
 
 ▸ **clamp**(`number`, `upper`): `number`
 
@@ -2269,39 +2020,35 @@ node_modules/@types/lodash/common/number.d.ts:34
 
 `number`
 
-#### Defined in
-
-node_modules/@types/lodash/common/number.d.ts:38
-
 ## Object
 
 ### <a id="omit" name="omit"></a> omit
 
-▸ **omit**<`T`, `K`\>(`object`, ...`paths`): `Pick`<`T`, `Exclude`<keyof `T`, `K`[`number`]\>\>
+▸ **omit**<`T`, `K`\>(`object`, ...`paths?`): `Pick`<`T`, `Exclude`<keyof `T`, `K`[`number`]\>\>
 
 The opposite of `_.pick`; this method creates an object composed of the
 own and inherited enumerable properties of `object` that are not omitted.
 
-**`example`**
-
+**`example`** ```ts
 var object = { 'a': 1, 'b': '2', 'c': 3 };
 
 _.omit(object, ['a', 'c']);
 // => { 'b': '2' }
+````
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `K` | extends `PropertyName`[] |
+| Name | Type                     |
+| :--- | :----------------------- |
+| `T`  | extends `object`         |
+| `K`  | extends `PropertyName`[] |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `T` | The source object. |
-| `...paths` | `K` | - |
+| Name        | Type                         | Description                                                       |
+| :---------- | :--------------------------- | :---------------------------------------------------------------- |
+| `object`    | `undefined` \| `null` \| `T` | The source object.                                                |
+| `...paths?` | `K`                          | The property names to omit, specified individually or in arrays.. |
 
 #### Returns
 
@@ -2309,62 +2056,50 @@ _.omit(object, ['a', 'c']);
 
 Returns the new object.
 
-#### Defined in
-
-node_modules/@types/lodash/common/object.d.ts:1892
-
 ▸ **omit**<`T`, `K`\>(`object`, ...`paths`): `Omit`<`T`, `K`\>
 
-**`see`** _.omit
+**`see`** \_.omit
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `K` | extends `string` \| `number` \| `symbol` |
+| Name | Type                                     |
+| :--- | :--------------------------------------- |
+| `T`  | extends `object`                         |
+| `K`  | extends `string` \| `number` \| `symbol` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `T` |
-| `...paths` | `Many`<`K`\>[] |
+| Name       | Type                         |
+| :--------- | :--------------------------- |
+| `object`   | `undefined` \| `null` \| `T` |
+| `...paths` | `Many`<`K`\>[]               |
 
 #### Returns
 
 `Omit`<`T`, `K`\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/object.d.ts:1899
-
 ▸ **omit**<`T`\>(`object`, ...`paths`): `Partial`<`T`\>
 
-**`see`** _.omit
+**`see`** \_.omit
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `T` |
-| `...paths` | `Many`<`PropertyName`\>[] |
+| Name       | Type                         |
+| :--------- | :--------------------------- |
+| `object`   | `undefined` \| `null` \| `T` |
+| `...paths` | `Many`<`PropertyName`\>[]    |
 
 #### Returns
 
 `Partial`<`T`\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/object.d.ts:1903
-
-___
+---
 
 ### <a id="omitby" name="omitby"></a> omitBy
 
@@ -2374,12 +2109,13 @@ The opposite of `_.pickBy`; this method creates an object composed of the
 own and inherited enumerable properties of `object` that `predicate`
 doesn't return truthy for.
 
-**`example`**
-
+**`example`** ```ts
 var object = { 'a': 1, 'b': '2', 'c': 3 };
 
 _.omitBy(object, _.isNumber);
 // => { 'b': '2' }
+
+````
 
 #### Type parameters
 
@@ -2392,17 +2128,13 @@ _.omitBy(object, _.isNumber);
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `object` | `undefined` \| ``null`` \| `Dictionary`<`T`\> | The source object. |
-| `predicate?` | `ValueKeyIteratee`<`T`\> | - |
+| `predicate?` | `ValueKeyIteratee`<`T`\> | The function invoked per property. |
 
 #### Returns
 
 `Dictionary`<`T`\>
 
 Returns the new object.
-
-#### Defined in
-
-node_modules/@types/lodash/common/object.d.ts:1954
 
 ▸ **omitBy**<`T`\>(`object`, `predicate?`): `NumericDictionary`<`T`\>
 
@@ -2425,10 +2157,6 @@ node_modules/@types/lodash/common/object.d.ts:1954
 
 `NumericDictionary`<`T`\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/object.d.ts:1958
-
 ▸ **omitBy**<`T`\>(`object`, `predicate`): `Partial`<`T`\>
 
 **`see`** _.omitBy
@@ -2450,38 +2178,34 @@ node_modules/@types/lodash/common/object.d.ts:1958
 
 `Partial`<`T`\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/object.d.ts:1962
-
 ___
 
 ### <a id="pick" name="pick"></a> pick
 
-▸ **pick**<`T`, `U`\>(`object`, ...`props`): `Pick`<`T`, `U`\>
+▸ **pick**<`T`, `U`\>(`object`, ...`props?`): `Pick`<`T`, `U`\>
 
 Creates an object composed of the picked `object` properties.
 
-**`example`**
-
+**`example`** ```ts
 var object = { 'a': 1, 'b': '2', 'c': 3 };
 
 _.pick(object, ['a', 'c']);
 // => { 'a': 1, 'c': 3 }
+````
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `U` | extends `string` \| `number` \| `symbol` |
+| Name | Type                                     |
+| :--- | :--------------------------------------- |
+| `T`  | extends `object`                         |
+| `U`  | extends `string` \| `number` \| `symbol` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `object` | `T` | The source object. |
-| `...props` | `Many`<`U`\>[] | - |
+| Name        | Type           | Description                                                      |
+| :---------- | :------------- | :--------------------------------------------------------------- |
+| `object`    | `T`            | The source object.                                               |
+| `...props?` | `Many`<`U`\>[] | The property names to pick, specified individually or in arrays. |
 
 #### Returns
 
@@ -2489,34 +2213,26 @@ _.pick(object, ['a', 'c']);
 
 Returns the new object.
 
-#### Defined in
-
-node_modules/@types/lodash/common/object.d.ts:2004
-
 ▸ **pick**<`T`\>(`object`, ...`props`): `Partial`<`T`\>
 
-**`see`** _.pick
+**`see`** \_.pick
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `T` |
-| `...props` | `PropertyPath`[] |
+| Name       | Type                         |
+| :--------- | :--------------------------- |
+| `object`   | `undefined` \| `null` \| `T` |
+| `...props` | `PropertyPath`[]             |
 
 #### Returns
 
 `Partial`<`T`\>
-
-#### Defined in
-
-node_modules/@types/lodash/common/object.d.ts:2008
 
 ## Other
 
@@ -2526,16 +2242,12 @@ node_modules/@types/lodash/common/object.d.ts:2008
 
 Prepend tuple.
 
-**`example`**
-```typescript
+**`example`** ```typescript
 const const: Cons<1, [2, 3, 4]> = [1, 2, 3, 4]
-```
+
+````
 
 **`source`**
-
-```typescript
-export type Cons<H, T extends readonly any[]> = ((h: H, ...t: T) => void) extends (...r: infer R) => void ? R : never;
-```
 
 #### Type parameters
 
@@ -2558,12 +2270,6 @@ make all properties optional recursively.
 
 **`source`**
 
-```typescript
-export type DeepPartial<T> = T extends object ? {
-    [P in keyof T]?: DeepPartial<T[P]>;
-} : T;
-```
-
 #### Type parameters
 
 | Name |
@@ -2582,34 +2288,25 @@ ___
 
 Fixed length tuple.
 
-**`example`**
-```typescript
+**`example`** ```typescript
 const x: FixedLengthTuple<number, 3> = [1, 2, 3]
-```
+````
 
 **`source`**
 
-```typescript
-export type FixedLengthTuple<T, N extends number, R extends readonly T[] = [
-]> = R['length'] extends N ? R : FixedLengthTuple<T, N, readonly [
-    T,
-    ...R
-]>;
-```
-
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `N` | extends `number` |
-| `R` | extends readonly `T`[] = [] |
+| Name | Type                        |
+| :--- | :-------------------------- |
+| `T`  | `T`                         |
+| `N`  | extends `number`            |
+| `R`  | extends readonly `T`[] = [] |
 
 #### Defined in
 
 [packages/active-support/src/typescript.ts:56](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L56)
 
-___
+---
 
 ### <a id="prependparameter" name="prependparameter"></a> PrependParameter
 
@@ -2617,10 +2314,10 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `Param` | `Param` |
-| `F` | extends (...`args`: `any`[]) => `any` |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
+| `Param` | `Param`                               |
+| `F`     | extends (...`args`: `any`[]) => `any` |
 
 #### Type declaration
 
@@ -2628,17 +2325,13 @@ ___
 
 Prepend Parameter.
 
-**`example`**
-```typescript
+**`example`** ```typescript
 type F = (x: number) => boolean
 type F2 = PrependParameter<string, F> // type F2 = (s: string, x: number) => boolean
-```
+
+````
 
 **`source`**
-
-```typescript
-export type PrependParameter<Param, F extends (...args: any[]) => any> = (...args: Extract<Cons<Param, Parameters<F>>, readonly any[]>) => ReturnType<F>;
-```
 
 ##### Parameters
 
@@ -2662,35 +2355,26 @@ ___
 
 Repeat string
 
-**`example`**
-```typescript
+**`example`** ```typescript
 const x: Repeat<'1' | '2', 4> = '1122'
-```
+````
 
 **`source`**
 
-```typescript
-export type Repeat<Char extends string, Count extends number, Joined extends string = ``, Acc extends Array<0> = [
-]> = Acc['length'] extends Count ? Joined : Repeat<Char, Count, `${Joined}${Char}`, [
-    0,
-    ...Acc
-]>;
-```
-
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `Char` | extends `string` |
-| `Count` | extends `number` |
-| `Joined` | extends `string` = ``""`` |
-| `Acc` | extends ``0``[] = [] |
+| Name     | Type                    |
+| :------- | :---------------------- |
+| `Char`   | extends `string`        |
+| `Count`  | extends `number`        |
+| `Joined` | extends `string` = `""` |
+| `Acc`    | extends `0`[] = []      |
 
 #### Defined in
 
 [packages/active-support/src/typescript.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L77)
 
-___
+---
 
 ### <a id="requirefield" name="requirefield"></a> RequireField
 
@@ -2700,22 +2384,18 @@ Make some field required
 
 **`source`**
 
-```typescript
-export type RequireField<T, K extends keyof T> = T & Required<Pick<T, K>>;
-```
-
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `K` | extends keyof `T` |
+| Name | Type              |
+| :--- | :---------------- |
+| `T`  | `T`               |
+| `K`  | extends keyof `T` |
 
 #### Defined in
 
 [packages/active-support/src/typescript.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L65)
 
-___
+---
 
 ### <a id="requiredkeys" name="requiredkeys"></a> RequiredKeys
 
@@ -2725,23 +2405,17 @@ pick all required properties from an object.
 
 **`source`**
 
-```typescript
-export type RequiredKeys<T> = {
-    [K in keyof T]-?: {} extends Pick<T, K> ? never : K;
-}[keyof T];
-```
-
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Defined in
 
 [packages/active-support/src/typescript.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L17)
 
-___
+---
 
 ### <a id="result" name="result"></a> Result
 
@@ -2750,88 +2424,81 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
-| `E` |
+| :--- |
+| `T`  |
+| `E`  |
 
 #### Defined in
 
+node_modules/neverthrow/dist/index.d.ts:48
+
 node_modules/neverthrow/dist/index.d.ts:58
 
-___
+---
 
 ### <a id="partial" name="partial"></a> partial
 
 • **partial**: `Partial`
 
 Creates a function that, when called, invokes func with any additional partial arguments
-prepended to those provided to the new function. This method is similar to _.bind except
+prepended to those provided to the new function. This method is similar to \_.bind except
 it does not alter the this binding.
 
 **`param`** The function to partially apply arguments to.
 
 **`param`** Arguments to be partially applied.
 
-**`returns`** The new partially applied function.
-
 #### Defined in
 
 node_modules/@types/lodash/common/function.d.ts:640
 
-___
+---
 
 ### <a id="partialright" name="partialright"></a> partialRight
 
 • **partialRight**: `PartialRight`
 
-This method is like _.partial except that partial arguments are appended to those provided
+This method is like \_.partial except that partial arguments are appended to those provided
 to the new function.
 
 **`param`** The function to partially apply arguments to.
 
 **`param`** Arguments to be partially applied.
 
-**`returns`** The new partially applied function.
-
 #### Defined in
 
 node_modules/@types/lodash/common/function.d.ts:913
 
-___
+---
 
 ### <a id="memoize" name="memoize"></a> memoize
 
 • `Const` **memoize**: `Moize`
 
-NOTICE: All methods not exported from `lodash` are deprecated.
-you can replace with ES6
-
-**`see`** https://youmightnotneed.com/lodash/
-
 #### Defined in
 
 node_modules/moize/index.d.ts:248
 
-___
+---
 
 ### <a id="after" name="after"></a> after
 
 ▸ **after**<`TFunc`\>(`n`, `func`): `TFunc`
 
-The opposite of _.before; this method creates a function that invokes func once it’s called n or more times.
+The opposite of \_.before; this method creates a function that invokes func once it’s called n or more times.
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
 | `TFunc` | extends (...`args`: `any`[]) => `any` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `n` | `number` | The number of calls before func is invoked. |
-| `func` | `TFunc` | The function to restrict. |
+| Name   | Type     | Description                                 |
+| :----- | :------- | :------------------------------------------ |
+| `n`    | `number` | The number of calls before func is invoked. |
+| `func` | `TFunc`  | The function to restrict.                   |
 
 #### Returns
 
@@ -2839,40 +2506,32 @@ The opposite of _.before; this method creates a function that invokes func once 
 
 Returns the new restricted function.
 
-#### Defined in
-
-node_modules/@types/lodash/common/function.d.ts:11
-
-___
+---
 
 ### <a id="array2tree" name="array2tree"></a> array2Tree
 
-▸ **array2Tree**<`TItem`\>(`items`, `config?`): `TItem` & { `children`: `TItem`[]  }[]
+▸ **array2Tree**<`TItem`\>(`items`, `config?`): `TItem` & { `children`: `TItem`[] }[]
 
 Converts an array of items with ids and parent ids to a nested tree in a performant way (time complexity `O(n)`).
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type           |
+| :------ | :------------- |
 | `TItem` | extends `Item` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `items` | `TItem`[] | array of items |
+| Name     | Type                 | Description                           |
+| :------- | :------------------- | :------------------------------------ |
+| `items`  | `TItem`[]            | array of items                        |
 | `config` | `Partial`<`Config`\> | please see `performant-array-to-tree` |
 
 #### Returns
 
-`TItem` & { `children`: `TItem`[]  }[]
+`TItem` & { `children`: `TItem`[] }[]
 
-#### Defined in
-
-[packages/active-support/src/index.ts:22](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/index.ts#L22)
-
-___
+---
 
 ### <a id="attempt" name="attempt"></a> attempt
 
@@ -2883,16 +2542,16 @@ are provided to func when it’s invoked.
 
 #### Type parameters
 
-| Name |
-| :------ |
+| Name      |
+| :-------- |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `func` | (...`args`: `any`[]) => `TResult` | The function to attempt. |
-| `...args` | `any`[] | - |
+| Name      | Type                              | Description              |
+| :-------- | :-------------------------------- | :----------------------- |
+| `func`    | (...`args`: `any`[]) => `TResult` | The function to attempt. |
+| `...args` | `any`[]                           | -                        |
 
 #### Returns
 
@@ -2900,11 +2559,7 @@ are provided to func when it’s invoked.
 
 Returns the func result or error object.
 
-#### Defined in
-
-node_modules/@types/lodash/common/util.d.ts:11
-
-___
+---
 
 ### <a id="before" name="before"></a> before
 
@@ -2916,16 +2571,16 @@ invocation.
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type                                  |
+| :------ | :------------------------------------ |
 | `TFunc` | extends (...`args`: `any`[]) => `any` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `n` | `number` | The number of calls at which func is no longer invoked. |
-| `func` | `TFunc` | The function to restrict. |
+| Name   | Type     | Description                                             |
+| :----- | :------- | :------------------------------------------------------ |
+| `n`    | `number` | The number of calls at which func is no longer invoked. |
+| `func` | `TFunc`  | The function to restrict.                               |
 
 #### Returns
 
@@ -2933,11 +2588,7 @@ invocation.
 
 Returns the new restricted function.
 
-#### Defined in
-
-node_modules/@types/lodash/common/function.d.ts:57
-
-___
+---
 
 ### <a id="camelcase" name="camelcase"></a> camelCase
 
@@ -2947,8 +2598,8 @@ Converts string to camel case.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name      | Type     | Description            |
+| :-------- | :------- | :--------------------- |
 | `string?` | `string` | The string to convert. |
 
 #### Returns
@@ -2957,11 +2608,7 @@ Converts string to camel case.
 
 Returns the camel cased string.
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:10
-
-___
+---
 
 ### <a id="capitalize" name="capitalize"></a> capitalize
 
@@ -2971,8 +2618,8 @@ Converts the first character of string to upper case and the remaining to lower 
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name      | Type     | Description               |
+| :-------- | :------- | :------------------------ |
 | `string?` | `string` | The string to capitalize. |
 
 #### Returns
@@ -2981,69 +2628,46 @@ Converts the first character of string to upper case and the remaining to lower 
 
 Returns the capitalized string.
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:32
-
-___
+---
 
 ### <a id="chunk" name="chunk"></a> chunk
 
 ▸ **chunk**<`T`\>(`arr`, `size?`): `T`[][]
 
-ES Version of `lodash.chunk`
-Creates an array of elements split into groups the length of size.
-If array can’t be split evenly, the final chunk will be the remaining elements.
-
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `arr` | `T`[] | `undefined` | The array to process. |
-| `size` | `number` | `1` | The length of each chunk. |
+| Name   | Type     | Default value |
+| :----- | :------- | :------------ |
+| `arr`  | `T`[]    | `undefined`   |
+| `size` | `number` | `1`           |
 
 #### Returns
 
 `T`[][]
 
-Returns the new array of chunks.
-
-#### Defined in
-
-[packages/active-support/src/modernLodash.ts:118](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L118)
-
-___
+---
 
 ### <a id="clonedeep" name="clonedeep"></a> cloneDeep
 
 ▸ **cloneDeep**(`value`): `any`
 
-ES Version of `lodash.cloneDeep`
-Creates a shallow clone of `value`. Assumes that the values of the object are primitive types.
-
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `any` | The value to clone. |
+| Name    | Type  |
+| :------ | :---- |
+| `value` | `any` |
 
 #### Returns
 
 `any`
 
-Returns the cloned value.
-
-#### Defined in
-
-[packages/active-support/src/modernLodash.ts:188](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L188)
-
-___
+---
 
 ### <a id="combine" name="combine"></a> combine
 
@@ -3051,47 +2675,39 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends readonly [`Result`](README.md#result)<`unknown`, `unknown`\>[] |
+| Name | Type                                                                   |
+| :--- | :--------------------------------------------------------------------- |
+| `T`  | extends readonly [`Result`](README.md#result)<`unknown`, `unknown`\>[] |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `resultList` | `T` |
+| Name         | Type |
+| :----------- | :--- |
+| `resultList` | `T`  |
 
 #### Returns
 
 [`Result`](README.md#result)<`ExtractOkTypes`<`T`\>, `ExtractErrTypes`<`T`\>[`number`]\>
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:39
-
 ▸ **combine**<`T`\>(`asyncResultList`): [`ResultAsync`](classes/ResultAsync.md)<`ExtractOkAsyncTypes`<`T`\>, `ExtractErrAsyncTypes`<`T`\>[`number`]\>
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends readonly [`ResultAsync`](classes/ResultAsync.md)<`unknown`, `unknown`\>[] |
+| Name | Type                                                                              |
+| :--- | :-------------------------------------------------------------------------------- |
+| `T`  | extends readonly [`ResultAsync`](classes/ResultAsync.md)<`unknown`, `unknown`\>[] |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `asyncResultList` | `T` |
+| Name              | Type |
+| :---------------- | :--- |
+| `asyncResultList` | `T`  |
 
 #### Returns
 
 [`ResultAsync`](classes/ResultAsync.md)<`ExtractOkAsyncTypes`<`T`\>, `ExtractErrAsyncTypes`<`T`\>[`number`]\>
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:40
-
-___
+---
 
 ### <a id="combinewithallerrors" name="combinewithallerrors"></a> combineWithAllErrors
 
@@ -3099,79 +2715,61 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends readonly [`Result`](README.md#result)<`unknown`, `unknown`\>[] |
+| Name | Type                                                                   |
+| :--- | :--------------------------------------------------------------------- |
+| `T`  | extends readonly [`Result`](README.md#result)<`unknown`, `unknown`\>[] |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `resultList` | `T` |
+| Name         | Type |
+| :----------- | :--- |
+| `resultList` | `T`  |
 
 #### Returns
 
 [`Result`](README.md#result)<`ExtractOkTypes`<`T`\>, `ExtractErrTypes`<`T`\>[`number`][]\>
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:41
-
 ▸ **combineWithAllErrors**<`T`\>(`asyncResultList`): [`ResultAsync`](classes/ResultAsync.md)<`ExtractOkAsyncTypes`<`T`\>, `ExtractErrAsyncTypes`<`T`\>[`number`][]\>
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends readonly [`ResultAsync`](classes/ResultAsync.md)<`unknown`, `unknown`\>[] |
+| Name | Type                                                                              |
+| :--- | :-------------------------------------------------------------------------------- |
+| `T`  | extends readonly [`ResultAsync`](classes/ResultAsync.md)<`unknown`, `unknown`\>[] |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `asyncResultList` | `T` |
+| Name              | Type |
+| :---------------- | :--- |
+| `asyncResultList` | `T`  |
 
 #### Returns
 
 [`ResultAsync`](classes/ResultAsync.md)<`ExtractOkAsyncTypes`<`T`\>, `ExtractErrAsyncTypes`<`T`\>[`number`][]\>
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:42
-
-___
+---
 
 ### <a id="compact" name="compact"></a> compact
 
 ▸ **compact**<`T`\>(`arr`): `T`[]
 
-ES Version of `lodash.compact`
-Creates an array with all falsey values removed.
-The values false, null, 0, "", undefined, and NaN are falsey.
-
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `arr` | `T`[] | The array to compact. |
+| Name  | Type  |
+| :---- | :---- |
+| `arr` | `T`[] |
 
 #### Returns
 
 `T`[]
 
-Returns the new array of filtered values.
-
-#### Defined in
-
-[packages/active-support/src/modernLodash.ts:136](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L136)
-
-___
+---
 
 ### <a id="countby" name="countby"></a> countBy
 
@@ -3184,15 +2782,15 @@ iteratee is invoked with one argument: (value).
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> | The collection to iterate over. |
-| `iteratee?` | `ValueIteratee`<`T`\> | The function invoked per iteration. |
+| Name         | Type                                  | Description                         |
+| :----------- | :------------------------------------ | :---------------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\> | The collection to iterate over.     |
+| `iteratee?`  | `ValueIteratee`<`T`\>                 | The function invoked per iteration. |
 
 #### Returns
 
@@ -3200,36 +2798,28 @@ iteratee is invoked with one argument: (value).
 
 Returns the composed aggregate object.
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:13
-
 ▸ **countBy**<`T`\>(`collection`, `iteratee?`): `Dictionary`<`number`\>
 
-**`see`** _.countBy
+**`see`** \_.countBy
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratee?` | `ValueIteratee`<`T`[keyof `T`]\> |
+| Name         | Type                             |
+| :----------- | :------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`     |
+| `iteratee?`  | `ValueIteratee`<`T`[keyof `T`]\> |
 
 #### Returns
 
 `Dictionary`<`number`\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:17
-
-___
+---
 
 ### <a id="debounce" name="debounce"></a> debounce
 
@@ -3248,17 +2838,17 @@ See David Corbacho’s article for details over the differences between _.deboun
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends (...`args`: `any`) => `any` |
+| Name | Type                                |
+| :--- | :---------------------------------- |
+| `T`  | extends (...`args`: `any`) => `any` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `func` | `T` | The function to debounce. |
-| `wait` | `undefined` \| `number` | The number of milliseconds to delay. |
-| `options` | `DebounceSettingsLeading` | The options object. |
+| Name      | Type                      | Description                          |
+| :-------- | :------------------------ | :----------------------------------- |
+| `func`    | `T`                       | The function to debounce.            |
+| `wait`    | `undefined` \| `number`   | The number of milliseconds to delay. |
+| `options` | `DebounceSettingsLeading` | The options object.                  |
 
 #### Returns
 
@@ -3266,35 +2856,27 @@ See David Corbacho’s article for details over the differences between _.deboun
 
 Returns the new debounced function.
 
-#### Defined in
-
-node_modules/@types/lodash/common/function.d.ts:425
-
 ▸ **debounce**<`T`\>(`func`, `wait?`, `options?`): `DebouncedFunc`<`T`\>
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends (...`args`: `any`) => `any` |
+| Name | Type                                |
+| :--- | :---------------------------------- |
+| `T`  | extends (...`args`: `any`) => `any` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `func` | `T` |
-| `wait?` | `number` |
+| Name       | Type               |
+| :--------- | :----------------- |
+| `func`     | `T`                |
+| `wait?`    | `number`           |
 | `options?` | `DebounceSettings` |
 
 #### Returns
 
 `DebouncedFunc`<`T`\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/function.d.ts:426
-
-___
+---
 
 ### <a id="defer" name="defer"></a> defer
 
@@ -3305,10 +2887,10 @@ func when it’s invoked.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `func` | (...`args`: `any`[]) => `any` | The function to defer. |
-| `...args` | `any`[] | The arguments to invoke the function with. |
+| Name      | Type                          | Description                                |
+| :-------- | :---------------------------- | :----------------------------------------- |
+| `func`    | (...`args`: `any`[]) => `any` | The function to defer.                     |
+| `...args` | `any`[]                       | The arguments to invoke the function with. |
 
 #### Returns
 
@@ -3316,11 +2898,7 @@ func when it’s invoked.
 
 Returns the timer id.
 
-#### Defined in
-
-node_modules/@types/lodash/common/function.d.ts:463
-
-___
+---
 
 ### <a id="difference" name="difference"></a> difference
 
@@ -3332,15 +2910,15 @@ equality comparisons. The order and references of result values are determined b
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to inspect. |
-| `...values` | `List`<`T`\>[] | The arrays of values to exclude. |
+| Name        | Type                                  | Description                      |
+| :---------- | :------------------------------------ | :------------------------------- |
+| `array`     | `undefined` \| `null` \| `List`<`T`\> | The array to inspect.            |
+| `...values` | `List`<`T`\>[]                        | The arrays of values to exclude. |
 
 #### Returns
 
@@ -3348,34 +2926,30 @@ equality comparisons. The order and references of result values are determined b
 
 Returns the new array of filtered values.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:116
-
-___
+---
 
 ### <a id="differenceby" name="differenceby"></a> differenceBy
 
 ▸ **differenceBy**<`T1`, `T2`\>(`array`, `values`, `iteratee`): `T1`[]
 
-This method is like _.difference except that it accepts iteratee which is invoked for each element
+This method is like \_.difference except that it accepts iteratee which is invoked for each element
 of array and values to generate the criterion by which they're compared. The order and references
 of result values are determined by the first array. The iteratee is invoked with one argument: (value).
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> | The array to inspect. |
-| `values` | `List`<`T2`\> | The values to exclude. |
-| `iteratee` | `ValueIteratee`<`T1` \| `T2`\> | The iteratee invoked per element. |
+| Name       | Type                                   | Description                       |
+| :--------- | :------------------------------------- | :-------------------------------- |
+| `array`    | `undefined` \| `null` \| `List`<`T1`\> | The array to inspect.             |
+| `values`   | `List`<`T2`\>                          | The values to exclude.            |
+| `iteratee` | `ValueIteratee`<`T1` \| `T2`\>         | The iteratee invoked per element. |
 
 #### Returns
 
@@ -3383,47 +2957,39 @@ of result values are determined by the first array. The iteratee is invoked with
 
 Returns the new array of filtered values.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:141
-
 ▸ **differenceBy**<`T1`, `T2`, `T3`\>(`array`, `values1`, `values2`, `iteratee`): `T1`[]
 
-**`see`** _.differenceBy
+**`see`** \_.differenceBy
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
+| Name       | Type                                   |
+| :--------- | :------------------------------------- |
+| `array`    | `undefined` \| `null` \| `List`<`T1`\> |
+| `values1`  | `List`<`T2`\>                          |
+| `values2`  | `List`<`T3`\>                          |
 | `iteratee` | `ValueIteratee`<`T1` \| `T2` \| `T3`\> |
 
 #### Returns
 
 `T1`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:145
-
 ▸ **differenceBy**<`T1`, `T2`, `T3`, `T4`\>(`array`, `values1`, `values2`, `values3`, `iteratee`): `T1`[]
 
-**`see`** _.differenceBy
+**`see`** \_.differenceBy
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -3431,30 +2997,26 @@ node_modules/@types/lodash/common/array.d.ts:145
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
-| `values3` | `List`<`T4`\> |
+| Name       | Type                                           |
+| :--------- | :--------------------------------------------- |
+| `array`    | `undefined` \| `null` \| `List`<`T1`\>         |
+| `values1`  | `List`<`T2`\>                                  |
+| `values2`  | `List`<`T3`\>                                  |
+| `values3`  | `List`<`T4`\>                                  |
 | `iteratee` | `ValueIteratee`<`T1` \| `T2` \| `T3` \| `T4`\> |
 
 #### Returns
 
 `T1`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:149
-
 ▸ **differenceBy**<`T1`, `T2`, `T3`, `T4`, `T5`\>(`array`, `values1`, `values2`, `values3`, `values4`, `iteratee`): `T1`[]
 
-**`see`** _.differenceBy
+**`see`** \_.differenceBy
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -3463,31 +3025,27 @@ node_modules/@types/lodash/common/array.d.ts:149
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
-| `values3` | `List`<`T4`\> |
-| `values4` | `List`<`T5`\> |
+| Name       | Type                                                   |
+| :--------- | :----------------------------------------------------- |
+| `array`    | `undefined` \| `null` \| `List`<`T1`\>                 |
+| `values1`  | `List`<`T2`\>                                          |
+| `values2`  | `List`<`T3`\>                                          |
+| `values3`  | `List`<`T4`\>                                          |
+| `values4`  | `List`<`T5`\>                                          |
 | `iteratee` | `ValueIteratee`<`T1` \| `T2` \| `T3` \| `T4` \| `T5`\> |
 
 #### Returns
 
 `T1`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:153
-
 ▸ **differenceBy**<`T1`, `T2`, `T3`, `T4`, `T5`, `T6`\>(`array`, `values1`, `values2`, `values3`, `values4`, `values5`, `iteratee`): `T1`[]
 
-**`see`** _.differenceBy
+**`see`** \_.differenceBy
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -3497,32 +3055,28 @@ node_modules/@types/lodash/common/array.d.ts:153
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
-| `values3` | `List`<`T4`\> |
-| `values4` | `List`<`T5`\> |
-| `values5` | `List`<`T6`\> |
+| Name       | Type                                                           |
+| :--------- | :------------------------------------------------------------- |
+| `array`    | `undefined` \| `null` \| `List`<`T1`\>                         |
+| `values1`  | `List`<`T2`\>                                                  |
+| `values2`  | `List`<`T3`\>                                                  |
+| `values3`  | `List`<`T4`\>                                                  |
+| `values4`  | `List`<`T5`\>                                                  |
+| `values5`  | `List`<`T6`\>                                                  |
 | `iteratee` | `ValueIteratee`<`T1` \| `T2` \| `T3` \| `T4` \| `T5` \| `T6`\> |
 
 #### Returns
 
 `T1`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:157
-
 ▸ **differenceBy**<`T1`, `T2`, `T3`, `T4`, `T5`, `T6`, `T7`\>(`array`, `values1`, `values2`, `values3`, `values4`, `values5`, ...`values`): `T1`[]
 
-**`see`** _.differenceBy
+**`see`** \_.differenceBy
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -3533,114 +3087,88 @@ node_modules/@types/lodash/common/array.d.ts:157
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
-| `values3` | `List`<`T4`\> |
-| `values4` | `List`<`T5`\> |
-| `values5` | `List`<`T6`\> |
+| Name        | Type                                                                                        |
+| :---------- | :------------------------------------------------------------------------------------------ |
+| `array`     | `undefined` \| `null` \| `List`<`T1`\>                                                      |
+| `values1`   | `List`<`T2`\>                                                                               |
+| `values2`   | `List`<`T3`\>                                                                               |
+| `values3`   | `List`<`T4`\>                                                                               |
+| `values4`   | `List`<`T5`\>                                                                               |
+| `values5`   | `List`<`T6`\>                                                                               |
 | `...values` | (`List`<`T7`\> \| `ValueIteratee`<`T1` \| `T2` \| `T3` \| `T4` \| `T5` \| `T6` \| `T7`\>)[] |
 
 #### Returns
 
 `T1`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:161
-
 ▸ **differenceBy**<`T`\>(`array`, ...`values`): `T`[]
 
-**`see`** _.differenceBy
+**`see`** \_.differenceBy
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `...values` | `List`<`T`\>[] |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `array`     | `undefined` \| `null` \| `List`<`T`\> |
+| `...values` | `List`<`T`\>[]                        |
 
 #### Returns
 
 `T`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:165
-
-___
+---
 
 ### <a id="drop" name="drop"></a> drop
 
 ▸ **drop**<`T`\>(`arr`, `n?`): `T`[]
 
-ES Version of `lodash.drop`
-Creates a slice of array with n elements dropped from the beginning.
-
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `arr` | `T`[] | `undefined` | The array to query. |
-| `n` | `number` | `1` | The number of elements to drop. |
+| Name  | Type     | Default value |
+| :---- | :------- | :------------ |
+| `arr` | `T`[]    | `undefined`   |
+| `n`   | `number` | `1`           |
 
 #### Returns
 
 `T`[]
 
-Returns the slice of array.
-
-#### Defined in
-
-[packages/active-support/src/modernLodash.ts:145](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L145)
-
-___
+---
 
 ### <a id="dropright" name="dropright"></a> dropRight
 
 ▸ **dropRight**<`T`\>(`arr`, `n?`): `T`[]
 
-ES Version of `lodash.dropRight`
-Creates a slice of array with n elements dropped from the end.
-
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `arr` | `T`[] | `undefined` | The array to query. |
-| `n` | `number` | `1` | The number of elements to drop. |
+| Name  | Type     | Default value |
+| :---- | :------- | :------------ |
+| `arr` | `T`[]    | `undefined`   |
+| `n`   | `number` | `1`           |
 
 #### Returns
 
 `T`[]
 
-The slice of array.
-
-#### Defined in
-
-[packages/active-support/src/modernLodash.ts:154](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L154)
-
-___
+---
 
 ### <a id="droprightwhile" name="droprightwhile"></a> dropRightWhile
 
@@ -3652,15 +3180,15 @@ returns falsey. The predicate is invoked with three arguments: (value, index, ar
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to query. |
-| `predicate?` | `ListIteratee`<`T`\> | The function invoked per iteration. |
+| Name         | Type                                  | Description                         |
+| :----------- | :------------------------------------ | :---------------------------------- |
+| `array`      | `undefined` \| `null` \| `List`<`T`\> | The array to query.                 |
+| `predicate?` | `ListIteratee`<`T`\>                  | The function invoked per iteration. |
 
 #### Returns
 
@@ -3668,11 +3196,7 @@ returns falsey. The predicate is invoked with three arguments: (value, index, ar
 
 Returns the slice of array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:291
-
-___
+---
 
 ### <a id="dropwhile" name="dropwhile"></a> dropWhile
 
@@ -3684,15 +3208,15 @@ returns falsey. The predicate is invoked with three arguments: (value, index, ar
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to query. |
-| `predicate?` | `ListIteratee`<`T`\> | The function invoked per iteration. |
+| Name         | Type                                  | Description                         |
+| :----------- | :------------------------------------ | :---------------------------------- |
+| `array`      | `undefined` \| `null` \| `List`<`T`\> | The array to query.                 |
+| `predicate?` | `ListIteratee`<`T`\>                  | The function invoked per iteration. |
 
 #### Returns
 
@@ -3700,11 +3224,7 @@ returns falsey. The predicate is invoked with three arguments: (value, index, ar
 
 Returns the slice of array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:314
-
-___
+---
 
 ### <a id="err" name="err"></a> err
 
@@ -3712,26 +3232,22 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `never` |
-| `E` | `unknown` |
+| Name | Type      |
+| :--- | :-------- |
+| `T`  | `never`   |
+| `E`  | `unknown` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `err` | `E` |
+| Name  | Type |
+| :---- | :--- |
+| `err` | `E`  |
 
 #### Returns
 
 [`Err`](classes/Err.md)<`T`, `E`\>
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:60
-
-___
+---
 
 ### <a id="errasync" name="errasync"></a> errAsync
 
@@ -3739,26 +3255,22 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `never` |
-| `E` | `unknown` |
+| Name | Type      |
+| :--- | :-------- |
+| `T`  | `never`   |
+| `E`  | `unknown` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `err` | `E` |
+| Name  | Type |
+| :---- | :--- |
+| `err` | `E`  |
 
 #### Returns
 
 [`ResultAsync`](classes/ResultAsync.md)<`T`, `E`\>
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:19
-
-___
+---
 
 ### <a id="escape" name="escape"></a> escape
 
@@ -3779,8 +3291,8 @@ When working with HTML you should always quote attribute values to reduce XSS ve
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name      | Type     | Description           |
+| :-------- | :------- | :-------------------- |
 | `string?` | `string` | The string to escape. |
 
 #### Returns
@@ -3789,31 +3301,27 @@ When working with HTML you should always quote attribute values to reduce XSS ve
 
 Returns the escaped string.
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:112
-
-___
+---
 
 ### <a id="findkey" name="findkey"></a> findKey
 
 ▸ **findKey**<`T`\>(`object`, `predicate?`): `undefined` \| `string`
 
-This method is like _.find except that it returns the key of the first element predicate returns truthy for
+This method is like \_.find except that it returns the key of the first element predicate returns truthy for
 instead of the element itself.
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `T` | The object to search. |
-| `predicate?` | `ObjectIteratee`<`T`\> | The function invoked per iteration. |
+| Name         | Type                         | Description                         |
+| :----------- | :--------------------------- | :---------------------------------- |
+| `object`     | `undefined` \| `null` \| `T` | The object to search.               |
+| `predicate?` | `ObjectIteratee`<`T`\>       | The function invoked per iteration. |
 
 #### Returns
 
@@ -3821,33 +3329,29 @@ instead of the element itself.
 
 Returns the key of the matched element, else undefined.
 
-#### Defined in
-
-node_modules/@types/lodash/common/object.d.ts:810
-
-___
+---
 
 ### <a id="findlast" name="findlast"></a> findLast
 
 ▸ **findLast**<`T`, `S`\>(`collection`, `predicate`, `fromIndex?`): `undefined` \| `S`
 
-This method is like _.find except that it iterates over elements of a collection from
+This method is like \_.find except that it iterates over elements of a collection from
 right to left.
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
-| `S` |
+| :--- |
+| `T`  |
+| `S`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> | Searches for a value in this list. |
-| `predicate` | `ListIteratorTypeGuard`<`T`, `S`\> | The function called per iteration. |
-| `fromIndex?` | `number` | The index to search from. |
+| Name         | Type                                  | Description                        |
+| :----------- | :------------------------------------ | :--------------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\> | Searches for a value in this list. |
+| `predicate`  | `ListIteratorTypeGuard`<`T`, `S`\>    | The function called per iteration. |
+| `fromIndex?` | `number`                              | The index to search from.          |
 
 #### Returns
 
@@ -3855,110 +3359,94 @@ right to left.
 
 The found element, else undefined.
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:354
-
 ▸ **findLast**<`T`\>(`collection`, `predicate?`, `fromIndex?`): `undefined` \| `T`
 
-**`see`** _.findLast
+**`see`** \_.findLast
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
+| Name         | Type                                  |
+| :----------- | :------------------------------------ |
+| `collection` | `undefined` \| `null` \| `List`<`T`\> |
 | `predicate?` | `ListIterateeCustom`<`T`, `boolean`\> |
-| `fromIndex?` | `number` |
+| `fromIndex?` | `number`                              |
 
 #### Returns
 
 `undefined` \| `T`
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:358
-
 ▸ **findLast**<`T`, `S`\>(`collection`, `predicate`, `fromIndex?`): `undefined` \| `S`
 
-**`see`** _.findLast
+**`see`** \_.findLast
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `S` | `S` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
+| `S`  | `S`              |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `predicate` | `ObjectIteratorTypeGuard`<`T`, `S`\> |
-| `fromIndex?` | `number` |
+| Name         | Type                                 |
+| :----------- | :----------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`         |
+| `predicate`  | `ObjectIteratorTypeGuard`<`T`, `S`\> |
+| `fromIndex?` | `number`                             |
 
 #### Returns
 
 `undefined` \| `S`
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:362
-
 ▸ **findLast**<`T`\>(`collection`, `predicate?`, `fromIndex?`): `undefined` \| `T`[keyof `T`]
 
-**`see`** _.findLast
+**`see`** \_.findLast
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
+| Name         | Type                                    |
+| :----------- | :-------------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`            |
 | `predicate?` | `ObjectIterateeCustom`<`T`, `boolean`\> |
-| `fromIndex?` | `number` |
+| `fromIndex?` | `number`                                |
 
 #### Returns
 
 `undefined` \| `T`[keyof `T`]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:366
-
-___
+---
 
 ### <a id="findlastindex" name="findlastindex"></a> findLastIndex
 
 ▸ **findLastIndex**<`T`\>(`array`, `predicate?`, `fromIndex?`): `number`
 
-This method is like _.findIndex except that it iterates over elements of collection from right to left.
+This method is like \_.findIndex except that it iterates over elements of collection from right to left.
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to search. |
+| Name         | Type                                  | Description                         |
+| :----------- | :------------------------------------ | :---------------------------------- |
+| `array`      | `undefined` \| `null` \| `List`<`T`\> | The array to search.                |
 | `predicate?` | `ListIterateeCustom`<`T`, `boolean`\> | The function invoked per iteration. |
-| `fromIndex?` | `number` | The index to search from. |
+| `fromIndex?` | `number`                              | The index to search from.           |
 
 #### Returns
 
@@ -3966,11 +3454,7 @@ This method is like _.findIndex except that it iterates over elements of collect
 
 Returns the index of the found element, else -1.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:399
-
-___
+---
 
 ### <a id="flatmap" name="flatmap"></a> flatMap
 
@@ -3983,14 +3467,14 @@ and concating its result to the other mapped values. The iteratee is invoked wit
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `Dictionary`<`Many`<`T`\>\> \| `NumericDictionary`<`Many`<`T`\>\> | The collection to iterate over. |
+| Name         | Type                                                                                       | Description                     |
+| :----------- | :----------------------------------------------------------------------------------------- | :------------------------------ |
+| `collection` | `undefined` \| `null` \| `Dictionary`<`Many`<`T`\>\> \| `NumericDictionary`<`Many`<`T`\>\> | The collection to iterate over. |
 
 #### Returns
 
@@ -3998,321 +3482,265 @@ and concating its result to the other mapped values. The iteratee is invoked wit
 
 Returns the new flattened array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:418
-
 ▸ **flatMap**(`collection`): `any`[]
 
-**`see`** _.flatMap
+**`see`** \_.flatMap
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
 
 #### Returns
 
 `any`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:422
-
 ▸ **flatMap**<`T`, `TResult`\>(`collection`, `iteratee`): `TResult`[]
 
-**`see`** _.flatMap
+**`see`** \_.flatMap
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee` | `ListIterator`<`T`, `Many`<`TResult`\>\> |
+| Name         | Type                                     |
+| :----------- | :--------------------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\>    |
+| `iteratee`   | `ListIterator`<`T`, `Many`<`TResult`\>\> |
 
 #### Returns
 
 `TResult`[]
-
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:426
 
 ▸ **flatMap**<`T`, `TResult`\>(`collection`, `iteratee`): `TResult`[]
 
-**`see`** _.flatMap
+**`see`** \_.flatMap
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `TResult` | `TResult` |
+| Name      | Type             |
+| :-------- | :--------------- |
+| `T`       | extends `object` |
+| `TResult` | `TResult`        |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratee` | `ObjectIterator`<`T`, `Many`<`TResult`\>\> |
+| Name         | Type                                       |
+| :----------- | :----------------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`               |
+| `iteratee`   | `ObjectIterator`<`T`, `Many`<`TResult`\>\> |
 
 #### Returns
 
 `TResult`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:430
-
 ▸ **flatMap**(`collection`, `iteratee`): `any`[]
 
-**`see`** _.flatMap
+**`see`** \_.flatMap
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
-| `iteratee` | `string` |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
+| `iteratee`   | `string`                          |
 
 #### Returns
 
 `any`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:434
-
 ▸ **flatMap**(`collection`, `iteratee`): `boolean`[]
 
-**`see`** _.flatMap
+**`see`** \_.flatMap
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
-| `iteratee` | `object` |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
+| `iteratee`   | `object`                          |
 
 #### Returns
 
 `boolean`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:438
-
-___
+---
 
 ### <a id="foreachright" name="foreachright"></a> forEachRight
 
 ▸ **forEachRight**<`T`\>(`collection`, `iteratee?`): `T`[]
 
-This method is like _.forEach except that it iterates over elements of collection from right to left.
+This method is like \_.forEach except that it iterates over elements of collection from right to left.
 
-**`alias`** _.eachRight
+**`alias`** \_.eachRight
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `T`[] | The collection to iterate over. |
-| `iteratee?` | `ArrayIterator`<`T`, `any`\> | The function called per iteration. |
+| Name         | Type                         | Description                        |
+| :----------- | :--------------------------- | :--------------------------------- |
+| `collection` | `T`[]                        | The collection to iterate over.    |
+| `iteratee?`  | `ArrayIterator`<`T`, `any`\> | The function called per iteration. |
 
 #### Returns
 
 `T`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:867
-
 ▸ **forEachRight**(`collection`, `iteratee?`): `string`
 
-**`see`** _.forEachRight
+**`see`** \_.forEachRight
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `string` |
-| `iteratee?` | `StringIterator`<`any`\> |
+| Name         | Type                     |
+| :----------- | :----------------------- |
+| `collection` | `string`                 |
+| `iteratee?`  | `StringIterator`<`any`\> |
 
 #### Returns
 
 `string`
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:871
-
 ▸ **forEachRight**<`T`\>(`collection`, `iteratee?`): `List`<`T`\>
 
-**`see`** _.forEachRight
+**`see`** \_.forEachRight
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `List`<`T`\> |
-| `iteratee?` | `ListIterator`<`T`, `any`\> |
+| Name         | Type                        |
+| :----------- | :-------------------------- |
+| `collection` | `List`<`T`\>                |
+| `iteratee?`  | `ListIterator`<`T`, `any`\> |
 
 #### Returns
 
 `List`<`T`\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:875
-
 ▸ **forEachRight**<`T`\>(`collection`, `iteratee?`): `T`
 
-**`see`** _.forEachRight
+**`see`** \_.forEachRight
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `T` |
-| `iteratee?` | `ObjectIterator`<`T`, `any`\> |
+| Name         | Type                          |
+| :----------- | :---------------------------- |
+| `collection` | `T`                           |
+| `iteratee?`  | `ObjectIterator`<`T`, `any`\> |
 
 #### Returns
 
 `T`
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:879
-
 ▸ **forEachRight**<`T`, `TArray`\>(`collection`, `iteratee?`): `TArray`
 
-**`see`** _.forEachRight
+**`see`** \_.forEachRight
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `TArray` | extends `undefined` \| ``null`` \| `T`[] |
+| Name     | Type                                   |
+| :------- | :------------------------------------- |
+| `T`      | `T`                                    |
+| `TArray` | extends `undefined` \| `null` \| `T`[] |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `TArray` & `undefined` & `TArray` & ``null`` & `TArray` & `T`[] |
-| `iteratee?` | `ArrayIterator`<`T`, `any`\> |
+| Name         | Type                                                          |
+| :----------- | :------------------------------------------------------------ |
+| `collection` | `TArray` & `undefined` & `TArray` & `null` & `TArray` & `T`[] |
+| `iteratee?`  | `ArrayIterator`<`T`, `any`\>                                  |
 
 #### Returns
 
 `TArray`
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:883
-
 ▸ **forEachRight**<`TString`\>(`collection`, `iteratee?`): `TString`
 
-**`see`** _.forEachRight
+**`see`** \_.forEachRight
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `TString` | extends `undefined` \| ``null`` \| `string` |
+| Name      | Type                                      |
+| :-------- | :---------------------------------------- |
+| `TString` | extends `undefined` \| `null` \| `string` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `TString` |
-| `iteratee?` | `StringIterator`<`any`\> |
+| Name         | Type                     |
+| :----------- | :----------------------- |
+| `collection` | `TString`                |
+| `iteratee?`  | `StringIterator`<`any`\> |
 
 #### Returns
 
 `TString`
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:887
-
 ▸ **forEachRight**<`T`, `TList`\>(`collection`, `iteratee?`): `TList`
 
-**`see`** _.forEachRight
+**`see`** \_.forEachRight
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `TList` | extends `undefined` \| ``null`` \| `List`<`T`\> |
+| Name    | Type                                          |
+| :------ | :-------------------------------------------- |
+| `T`     | `T`                                           |
+| `TList` | extends `undefined` \| `null` \| `List`<`T`\> |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `TList` & `undefined` & `TList` & ``null`` & `TList` & `List`<`T`\> |
-| `iteratee?` | `ListIterator`<`T`, `any`\> |
+| Name         | Type                                                              |
+| :----------- | :---------------------------------------------------------------- |
+| `collection` | `TList` & `undefined` & `TList` & `null` & `TList` & `List`<`T`\> |
+| `iteratee?`  | `ListIterator`<`T`, `any`\>                                       |
 
 #### Returns
 
 `TList`
 
-#### Defined in
+▸ **forEachRight**<`T`\>(`collection`, `iteratee?`): `undefined` \| `null` \| `T`
 
-node_modules/@types/lodash/common/collection.d.ts:891
-
-▸ **forEachRight**<`T`\>(`collection`, `iteratee?`): `undefined` \| ``null`` \| `T`
-
-**`see`** _.forEachRight
+**`see`** \_.forEachRight
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratee?` | `ObjectIterator`<`T`, `any`\> |
+| Name         | Type                          |
+| :----------- | :---------------------------- |
+| `collection` | `undefined` \| `null` \| `T`  |
+| `iteratee?`  | `ObjectIterator`<`T`, `any`\> |
 
 #### Returns
 
-`undefined` \| ``null`` \| `T`
+`undefined` \| `null` \| `T`
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:895
-
-___
+---
 
 ### <a id="frompromise" name="frompromise"></a> fromPromise
 
@@ -4321,26 +3749,22 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
-| `E` |
+| :--- |
+| `T`  |
+| `E`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `promise` | `Promise`<`T`\> |
+| Name      | Type                    |
+| :-------- | :---------------------- |
+| `promise` | `Promise`<`T`\>         |
 | `errorFn` | (`e`: `unknown`) => `E` |
 
 #### Returns
 
 [`ResultAsync`](classes/ResultAsync.md)<`T`, `E`\>
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:20
-
-___
+---
 
 ### <a id="fromsafepromise" name="fromsafepromise"></a> fromSafePromise
 
@@ -4349,43 +3773,42 @@ ___
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
-| `E` |
+| :--- |
+| `T`  |
+| `E`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type            |
+| :-------- | :-------------- |
 | `promise` | `Promise`<`T`\> |
 
 #### Returns
 
 [`ResultAsync`](classes/ResultAsync.md)<`T`, `E`\>
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:21
-
-___
+---
 
 ### <a id="fromthrowable" name="fromthrowable"></a> fromThrowable
 
 ▸ **fromThrowable**<`Fn`, `E`\>(`fn`, `errorFn?`): (...`args`: `Parameters`<`Fn`\>) => [`Result`](README.md#result)<`ReturnType`<`Fn`\>, `E`\>
 
+Wraps a function with a try catch, creating a new function with the same
+arguments but returning `Ok` if successful, `Err` if the function throws
+
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name | Type                                           |
+| :--- | :--------------------------------------------- |
 | `Fn` | extends (...`args`: readonly `any`[]) => `any` |
-| `E` | `E` |
+| `E`  | `E`                                            |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `fn` | `Fn` |
-| `errorFn?` | (`e`: `unknown`) => `E` |
+| Name       | Type                    | Description                                                          |
+| :--------- | :---------------------- | :------------------------------------------------------------------- |
+| `fn`       | `Fn`                    | function to wrap with ok on success or err on failure                |
+| `errorFn?` | (`e`: `unknown`) => `E` | when an error is thrown, this will wrap the error result if provided |
 
 #### Returns
 
@@ -4393,24 +3816,17 @@ ___
 
 ▸ (...`args`): [`Result`](README.md#result)<`ReturnType`<`Fn`\>, `E`\>
 
-Wraps a function with a try catch, creating a new function with the same
-arguments but returning `Ok` if successful, `Err` if the function throws
-
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type                |
+| :-------- | :------------------ |
 | `...args` | `Parameters`<`Fn`\> |
 
 ##### Returns
 
 [`Result`](README.md#result)<`ReturnType`<`Fn`\>, `E`\>
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:209
-
-___
+---
 
 ### <a id="groupby" name="groupby"></a> groupBy
 
@@ -4423,15 +3839,15 @@ key. The iteratee is invoked with one argument: (value).
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> | The collection to iterate over. |
-| `iteratee?` | `ValueIteratee`<`T`\> | The function invoked per iteration. |
+| Name         | Type                                  | Description                         |
+| :----------- | :------------------------------------ | :---------------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\> | The collection to iterate over.     |
+| `iteratee?`  | `ValueIteratee`<`T`\>                 | The function invoked per iteration. |
 
 #### Returns
 
@@ -4439,36 +3855,28 @@ key. The iteratee is invoked with one argument: (value).
 
 Returns the composed aggregate object.
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:949
-
 ▸ **groupBy**<`T`\>(`collection`, `iteratee?`): `Dictionary`<`T`[keyof `T`][]\>
 
-**`see`** _.groupBy
+**`see`** \_.groupBy
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratee?` | `ValueIteratee`<`T`[keyof `T`]\> |
+| Name         | Type                             |
+| :----------- | :------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`     |
+| `iteratee?`  | `ValueIteratee`<`T`[keyof `T`]\> |
 
 #### Returns
 
 `Dictionary`<`T`[keyof `T`][]\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:953
-
-___
+---
 
 ### <a id="identity" name="identity"></a> identity
 
@@ -4479,14 +3887,14 @@ This method returns the first argument provided to it.
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `T` | Any value. |
+| Name    | Type | Description |
+| :------ | :--- | :---------- |
+| `value` | `T`  | Any value.  |
 
 #### Returns
 
@@ -4494,54 +3902,37 @@ This method returns the first argument provided to it.
 
 Returns value.
 
-#### Defined in
-
-node_modules/@types/lodash/common/util.d.ts:377
-
 ▸ **identity**(): `undefined`
 
-**`see`** _.identity
+**`see`** \_.identity
 
 #### Returns
 
 `undefined`
 
-#### Defined in
-
-node_modules/@types/lodash/common/util.d.ts:381
-
-___
+---
 
 ### <a id="initial" name="initial"></a> initial
 
 ▸ **initial**<`T`\>(`arr`): `T`[]
 
-ES Version of `lodash.initial`
-Gets all but the last element of array.
-
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `arr` | `T`[] | The array to query. |
+| Name  | Type  |
+| :---- | :---- |
+| `arr` | `T`[] |
 
 #### Returns
 
 `T`[]
 
-Returns the slice of array.
-
-#### Defined in
-
-[packages/active-support/src/modernLodash.ts:162](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L162)
-
-___
+---
 
 ### <a id="intersection" name="intersection"></a> intersection
 
@@ -4553,14 +3944,14 @@ equality comparisons.
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `...arrays` | (`undefined` \| ``null`` \| `List`<`T`\>)[] | The arrays to inspect. |
+| Name        | Type                                      | Description            |
+| :---------- | :---------------------------------------- | :--------------------- |
+| `...arrays` | (`undefined` \| `null` \| `List`<`T`\>)[] | The arrays to inspect. |
 
 #### Returns
 
@@ -4568,11 +3959,7 @@ equality comparisons.
 
 Returns the new array of shared values.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:672
-
-___
+---
 
 ### <a id="invokemap" name="invokemap"></a> invokeMap
 
@@ -4585,47 +3972,39 @@ bound to, each element in the collection.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` | The collection to iterate over. |
-| `methodName` | `string` | The name of the method to invoke. |
-| `...args` | `any`[] | Arguments to invoke the method with. |
+| Name         | Type                              | Description                          |
+| :----------- | :-------------------------------- | :----------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` | The collection to iterate over.      |
+| `methodName` | `string`                          | The name of the method to invoke.    |
+| `...args`    | `any`[]                           | Arguments to invoke the method with. |
 
 #### Returns
 
 `any`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1055
-
 ▸ **invokeMap**<`TResult`\>(`collection`, `method`, ...`args`): `TResult`[]
 
-**`see`** _.invokeMap
+**`see`** \_.invokeMap
 
 #### Type parameters
 
-| Name |
-| :------ |
+| Name      |
+| :-------- |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
-| `method` | (...`args`: `any`[]) => `TResult` |
-| `...args` | `any`[] |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
+| `method`     | (...`args`: `any`[]) => `TResult` |
+| `...args`    | `any`[]                           |
 
 #### Returns
 
 `TResult`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1059
-
-___
+---
 
 ### <a id="isarray" name="isarray"></a> isArray
 
@@ -4635,8 +4014,8 @@ Checks if value is classified as an Array object.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name     | Type  | Description         |
+| :------- | :---- | :------------------ |
 | `value?` | `any` | The value to check. |
 
 #### Returns
@@ -4645,57 +4024,43 @@ value is any[]
 
 Returns true if value is correctly classified, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:344
-
 ▸ **isArray**<`T`\>(`value?`): value is any[]
 
-**`see`** _.isArray
+**`see`** \_.isArray
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `value?` | `any` |
 
 #### Returns
 
 value is any[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:348
-
-___
+---
 
 ### <a id="isblank" name="isblank"></a> isBlank
 
 ▸ **isBlank**(`value`): `boolean`
 
-Checks if a given value is a empty like Ruby on Rails.
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type      |
+| :------ | :-------- |
 | `value` | `unknown` |
 
 #### Returns
 
 `boolean`
 
-#### Defined in
-
-[packages/active-support/src/isType.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L77)
-
-___
+---
 
 ### <a id="isboolean" name="isboolean"></a> isBoolean
 
@@ -4705,8 +4070,8 @@ Checks if value is classified as a boolean primitive or object.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name     | Type  | Description         |
+| :------- | :---- | :------------------ |
 | `value?` | `any` | The value to check. |
 
 #### Returns
@@ -4715,11 +4080,7 @@ value is boolean
 
 Returns true if value is correctly classified, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:483
-
-___
+---
 
 ### <a id="isbuffer" name="isbuffer"></a> isBuffer
 
@@ -4729,8 +4090,8 @@ Checks if value is a buffer.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name     | Type  | Description         |
+| :------- | :---- | :------------------ |
 | `value?` | `any` | The value to check. |
 
 #### Returns
@@ -4739,11 +4100,7 @@ Checks if value is a buffer.
 
 Returns true if value is a buffer, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:505
-
-___
+---
 
 ### <a id="isdate" name="isdate"></a> isDate
 
@@ -4753,8 +4110,8 @@ Checks if value is classified as a Date object.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name     | Type  | Description         |
+| :------- | :---- | :------------------ |
 | `value?` | `any` | The value to check. |
 
 #### Returns
@@ -4763,11 +4120,7 @@ value is Date
 
 Returns true if value is correctly classified, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:527
-
-___
+---
 
 ### <a id="isempty" name="isempty"></a> isEmpty
 
@@ -4778,8 +4131,8 @@ jQuery-like collection with a length greater than 0 or an object with own enumer
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name     | Type  | Description           |
+| :------- | :---- | :-------------------- |
 | `value?` | `any` | The value to inspect. |
 
 #### Returns
@@ -4788,11 +4141,7 @@ jQuery-like collection with a length greater than 0 or an object with own enumer
 
 Returns true if value is empty, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:572
-
-___
+---
 
 ### <a id="iserror" name="iserror"></a> isError
 
@@ -4803,8 +4152,8 @@ object.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name    | Type  | Description         |
+| :------ | :---- | :------------------ |
 | `value` | `any` | The value to check. |
 
 #### Returns
@@ -4813,11 +4162,7 @@ value is Error
 
 Returns true if value is an error object, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:682
-
-___
+---
 
 ### <a id="isfunction" name="isfunction"></a> isFunction
 
@@ -4827,8 +4172,8 @@ Checks if value is a callable function.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name    | Type  | Description         |
+| :------ | :---- | :------------------ |
 | `value` | `any` | The value to check. |
 
 #### Returns
@@ -4837,11 +4182,7 @@ value is Function
 
 Returns true if value is correctly classified, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:728
-
-___
+---
 
 ### <a id="isnan" name="isnan"></a> isNaN
 
@@ -4853,8 +4194,8 @@ Note: This method is not the same as isNaN which returns true for undefined and 
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name     | Type  | Description         |
+| :------- | :---- | :------------------ |
 | `value?` | `any` | The value to check. |
 
 #### Returns
@@ -4863,68 +4204,52 @@ Note: This method is not the same as isNaN which returns true for undefined and 
 
 Returns true if value is NaN, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:932
-
-___
+---
 
 ### <a id="isnonemptyarray" name="isnonemptyarray"></a> isNonEmptyArray
 
 ▸ **isNonEmptyArray**<`T`, `U`\>(`value`): value is T[]
 
-Checks if a given value is non empty array.
-
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
-| `U` |
+| :--- |
+| `T`  |
+| `U`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type         |
+| :------ | :----------- |
 | `value` | `U` \| `T`[] |
 
 #### Returns
 
 value is T[]
 
-#### Defined in
-
-[packages/active-support/src/isType.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L65)
-
-___
+---
 
 ### <a id="isnonemptystring" name="isnonemptystring"></a> isNonEmptyString
 
 ▸ **isNonEmptyString**<`U`\>(`value`): value is string
 
-Checks if a given value is a non empty string.
-
 #### Type parameters
 
 | Name |
-| :------ |
-| `U` |
+| :--- |
+| `U`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type            |
+| :------ | :-------------- |
 | `value` | `string` \| `U` |
 
 #### Returns
 
 value is string
 
-#### Defined in
-
-[packages/active-support/src/isType.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L71)
-
-___
+---
 
 ### <a id="isnull" name="isnull"></a> isNull
 
@@ -4934,8 +4259,8 @@ Checks if value is null.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name    | Type  | Description         |
+| :------ | :---- | :------------------ |
 | `value` | `any` | The value to check. |
 
 #### Returns
@@ -4944,11 +4269,7 @@ value is null
 
 Returns true if value is null, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:1009
-
-___
+---
 
 ### <a id="isnullorundefined" name="isnullorundefined"></a> isNullOrUndefined
 
@@ -4958,19 +4279,15 @@ Checks if a given value is a null or undefined.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type      |
+| :------ | :-------- |
 | `value` | `unknown` |
 
 #### Returns
 
 value is undefined \| null
 
-#### Defined in
-
-[packages/active-support/src/isType.ts:48](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L48)
-
-___
+---
 
 ### <a id="isnumber" name="isnumber"></a> isNumber
 
@@ -4980,20 +4297,16 @@ Checks if a given value is a number.
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `value` | `unknown` | `undefined` |  |
-| `finiteness` | `boolean` | `false` | if true, checks if the value is a finite number. |
+| Name         | Type      | Default value | Description                                      |
+| :----------- | :-------- | :------------ | :----------------------------------------------- |
+| `value`      | `unknown` | `undefined`   |                                                  |
+| `finiteness` | `boolean` | `false`       | if true, checks if the value is a finite number. |
 
 #### Returns
 
 value is number
 
-#### Defined in
-
-[packages/active-support/src/isType.ts:39](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L39)
-
-___
+---
 
 ### <a id="isobject" name="isobject"></a> isObject
 
@@ -5004,8 +4317,8 @@ and new String(''))
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name     | Type  | Description         |
+| :------- | :---- | :------------------ |
 | `value?` | `any` | The value to check. |
 
 #### Returns
@@ -5014,25 +4327,21 @@ value is object
 
 Returns true if value is an object, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:1056
-
-___
+---
 
 ### <a id="isplainobject" name="isplainobject"></a> isPlainObject
 
 ▸ **isPlainObject**(`value?`): `boolean`
 
 Checks if value is a plain object, that is, an object created by the Object constructor or one with a
-[[Prototype]] of null.
+Prototype of null.
 
 Note: This method assumes objects created by the Object constructor have no inherited enumerable properties.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name     | Type  | Description         |
+| :------- | :---- | :------------------ |
 | `value?` | `any` | The value to check. |
 
 #### Returns
@@ -5041,11 +4350,7 @@ Note: This method assumes objects created by the Object constructor have no inhe
 
 Returns true if value is a plain object, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:1118
-
-___
+---
 
 ### <a id="isregexp" name="isregexp"></a> isRegExp
 
@@ -5055,8 +4360,8 @@ Checks if value is classified as a RegExp object.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name     | Type  | Description         |
+| :------- | :---- | :------------------ |
 | `value?` | `any` | The value to check. |
 
 #### Returns
@@ -5065,11 +4370,7 @@ value is RegExp
 
 Returns true if value is correctly classified, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:1140
-
-___
+---
 
 ### <a id="isset" name="isset"></a> isSet
 
@@ -5079,8 +4380,8 @@ Checks if value is classified as a Set object.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name     | Type  | Description         |
+| :------- | :---- | :------------------ |
 | `value?` | `any` | The value to check. |
 
 #### Returns
@@ -5089,11 +4390,7 @@ value is Set<any\>
 
 Returns true if value is correctly classified, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:1201
-
-___
+---
 
 ### <a id="isstring" name="isstring"></a> isString
 
@@ -5105,72 +4402,54 @@ Checks if a given value is a string.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type      |
+| :------ | :-------- |
 | `value` | `unknown` |
 
 #### Returns
 
 value is string
 
-#### Defined in
-
-[packages/active-support/src/isType.ts:30](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L30)
-
-___
+---
 
 ### <a id="isuuid" name="isuuid"></a> isUUID
 
 ▸ **isUUID**<`U`\>(`value`): value is string
 
-Checks if a given value is a uuid.
-
 #### Type parameters
 
 | Name |
-| :------ |
-| `U` |
+| :--- |
+| `U`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type            |
+| :------ | :-------------- |
 | `value` | `string` \| `U` |
 
 #### Returns
 
 value is string
 
-#### Defined in
-
-[packages/active-support/src/isType.ts:57](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L57)
-
-___
+---
 
 ### <a id="isurl" name="isurl"></a> isUrl
 
 ▸ **isUrl**(`value`, `schema?`): `boolean`
 
-Checks if a given value is a url.
-
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `string` |  |
-| `schema?` | `string` | if not null, checks if the uri is valid with the given schema. |
+| Name      | Type     |
+| :-------- | :------- |
+| `value`   | `string` |
+| `schema?` | `string` |
 
 #### Returns
 
 `boolean`
 
-true if the value is a url, false otherwise.
-
-#### Defined in
-
-[packages/active-support/src/isType.ts:86](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/isType.ts#L86)
-
-___
+---
 
 ### <a id="isweakmap" name="isweakmap"></a> isWeakMap
 
@@ -5180,8 +4459,8 @@ Checks if value is classified as a WeakMap object.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name     | Type  | Description         |
+| :------- | :---- | :------------------ |
 | `value?` | `any` | The value to check. |
 
 #### Returns
@@ -5190,11 +4469,7 @@ value is WeakMap<object, any\>
 
 Returns true if value is correctly classified, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:1319
-
-___
+---
 
 ### <a id="isweakset" name="isweakset"></a> isWeakSet
 
@@ -5204,8 +4479,8 @@ Checks if value is classified as a WeakSet object.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name     | Type  | Description         |
+| :------- | :---- | :------------------ |
 | `value?` | `any` | The value to check. |
 
 #### Returns
@@ -5214,11 +4489,7 @@ value is WeakSet<object\>
 
 Returns true if value is correctly classified, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/lang.d.ts:1341
-
-___
+---
 
 ### <a id="kebabcase" name="kebabcase"></a> kebabCase
 
@@ -5228,8 +4499,8 @@ Converts string to kebab case.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name      | Type     | Description            |
+| :-------- | :------- | :--------------------- |
 | `string?` | `string` | The string to convert. |
 
 #### Returns
@@ -5238,11 +4509,7 @@ Converts string to kebab case.
 
 Returns the kebab cased string.
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:157
-
-___
+---
 
 ### <a id="keyby" name="keyby"></a> keyBy
 
@@ -5255,15 +4522,15 @@ iteratee function is invoked with one argument: (value).
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> | The collection to iterate over. |
-| `iteratee?` | `ValueIterateeCustom`<`T`, `PropertyName`\> | The function invoked per iteration. |
+| Name         | Type                                        | Description                         |
+| :----------- | :------------------------------------------ | :---------------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\>       | The collection to iterate over.     |
+| `iteratee?`  | `ValueIterateeCustom`<`T`, `PropertyName`\> | The function invoked per iteration. |
 
 #### Returns
 
@@ -5271,36 +4538,28 @@ iteratee function is invoked with one argument: (value).
 
 Returns the composed aggregate object.
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1091
-
 ▸ **keyBy**<`T`\>(`collection`, `iteratee?`): `Dictionary`<`T`[keyof `T`]\>
 
-**`see`** _.keyBy
+**`see`** \_.keyBy
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratee?` | `ValueIterateeCustom`<`T`[keyof `T`], `PropertyName`\> |
+| Name         | Type                                                   |
+| :----------- | :----------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`                           |
+| `iteratee?`  | `ValueIterateeCustom`<`T`[keyof `T`], `PropertyName`\> |
 
 #### Returns
 
 `Dictionary`<`T`[keyof `T`]\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1095
-
-___
+---
 
 ### <a id="last" name="last"></a> last
 
@@ -5311,14 +4570,14 @@ Gets the last element of array.
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to query. |
+| Name    | Type                                  | Description         |
+| :------ | :------------------------------------ | :------------------ |
+| `array` | `undefined` \| `null` \| `List`<`T`\> | The array to query. |
 
 #### Returns
 
@@ -5326,11 +4585,7 @@ Gets the last element of array.
 
 Returns the last element of array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:842
-
-___
+---
 
 ### <a id="ms" name="ms"></a> ms
 
@@ -5342,37 +4597,29 @@ Parse or format the given `val`.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `StringValue` | The string or number to convert |
-| `options?` | `Options` | Options for the conversion |
+| Name       | Type          | Description                     |
+| :--------- | :------------ | :------------------------------ |
+| `value`    | `StringValue` | The string or number to convert |
+| `options?` | `Options`     | Options for the conversion      |
 
 #### Returns
 
 `number`
 
-#### Defined in
-
-node_modules/ms/dist/index.d.ts:17
-
 ▸ **ms**(`value`, `options?`): `string`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `number` |
+| Name       | Type      |
+| :--------- | :-------- |
+| `value`    | `number`  |
 | `options?` | `Options` |
 
 #### Returns
 
 `string`
 
-#### Defined in
-
-node_modules/ms/dist/index.d.ts:18
-
-___
+---
 
 ### <a id="noop" name="noop"></a> noop
 
@@ -5382,8 +4629,8 @@ A no-operation function that returns undefined regardless of the arguments it re
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type    |
+| :-------- | :------ |
 | `...args` | `any`[] |
 
 #### Returns
@@ -5392,11 +4639,7 @@ A no-operation function that returns undefined regardless of the arguments it re
 
 undefined
 
-#### Defined in
-
-node_modules/@types/lodash/common/util.d.ts:676
-
-___
+---
 
 ### <a id="nth" name="nth"></a> nth
 
@@ -5407,15 +4650,15 @@ Gets the element at index `n` of `array`. If `n` is negative, the nth element fr
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | array The array to query. |
-| `n?` | `number` | - |
+| Name    | Type                                  | Description               |
+| :------ | :------------------------------------ | :------------------------ |
+| `array` | `undefined` \| `null` \| `List`<`T`\> | array The array to query. |
+| `n?`    | `number`                              | -                         |
 
 #### Returns
 
@@ -5423,11 +4666,7 @@ Gets the element at index `n` of `array`. If `n` is negative, the nth element fr
 
 Returns the nth element of `array`.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:905
-
-___
+---
 
 ### <a id="ok" name="ok"></a> ok
 
@@ -5435,26 +4674,22 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `E` | `never` |
+| Name | Type    |
+| :--- | :------ |
+| `T`  | `T`     |
+| `E`  | `never` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `T` |
+| Name    | Type |
+| :------ | :--- |
+| `value` | `T`  |
 
 #### Returns
 
 [`Ok`](classes/Ok.md)<`T`, `E`\>
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:59
-
-___
+---
 
 ### <a id="okasync" name="okasync"></a> okAsync
 
@@ -5462,26 +4697,22 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `E` | `never` |
+| Name | Type    |
+| :--- | :------ |
+| `T`  | `T`     |
+| `E`  | `never` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `T` |
+| Name    | Type |
+| :------ | :--- |
+| `value` | `T`  |
 
 #### Returns
 
 [`ResultAsync`](classes/ResultAsync.md)<`T`, `E`\>
 
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:18
-
-___
+---
 
 ### <a id="once" name="once"></a> once
 
@@ -5492,15 +4723,15 @@ of the first call. The func is invoked with the this binding and arguments of th
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends (...`args`: `any`) => `any` |
+| Name | Type                                |
+| :--- | :---------------------------------- |
+| `T`  | extends (...`args`: `any`) => `any` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `func` | `T` | The function to restrict. |
+| Name   | Type | Description               |
+| :----- | :--- | :------------------------ |
+| `func` | `T`  | The function to restrict. |
 
 #### Returns
 
@@ -5508,11 +4739,7 @@ of the first call. The func is invoked with the this binding and arguments of th
 
 Returns the new restricted function.
 
-#### Defined in
-
-node_modules/@types/lodash/common/function.d.ts:594
-
-___
+---
 
 ### <a id="over" name="over"></a> over
 
@@ -5523,14 +4750,14 @@ their results.
 
 #### Type parameters
 
-| Name |
-| :------ |
+| Name      |
+| :-------- |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name           | Type                                         | Description              |
+| :------------- | :------------------------------------------- | :----------------------- |
 | `...iteratees` | `Many`<(...`args`: `any`[]) => `TResult`\>[] | The iteratees to invoke. |
 
 #### Returns
@@ -5546,8 +4773,8 @@ their results.
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type    |
+| :-------- | :------ |
 | `...args` | `any`[] |
 
 ##### Returns
@@ -5556,11 +4783,7 @@ their results.
 
 Returns the new function.
 
-#### Defined in
-
-node_modules/@types/lodash/common/util.d.ts:721
-
-___
+---
 
 ### <a id="overargs" name="overargs"></a> overArgs
 
@@ -5570,9 +4793,9 @@ Creates a function that runs each argument through a corresponding transform fun
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `func` | (...`args`: `any`[]) => `any` | The function to wrap. |
+| Name            | Type                                     | Description                                                                                     |
+| :-------------- | :--------------------------------------- | :---------------------------------------------------------------------------------------------- |
+| `func`          | (...`args`: `any`[]) => `any`            | The function to wrap.                                                                           |
 | `...transforms` | `Many`<(...`args`: `any`[]) => `any`\>[] | The functions to transform arguments, specified as individual functions or arrays of functions. |
 
 #### Returns
@@ -5587,8 +4810,8 @@ Creates a function that runs each argument through a corresponding transform fun
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type    |
+| :-------- | :------ |
 | `...args` | `any`[] |
 
 ##### Returns
@@ -5597,11 +4820,7 @@ Creates a function that runs each argument through a corresponding transform fun
 
 Returns the new function.
 
-#### Defined in
-
-node_modules/@types/lodash/common/function.d.ts:617
-
-___
+---
 
 ### <a id="overevery" name="overevery"></a> overEvery
 
@@ -5612,16 +4831,16 @@ provided to the created function.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `Result1` |
 | `Result2` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name            | Type                                                             | Description              |
+| :-------------- | :--------------------------------------------------------------- | :----------------------- |
 | `...predicates` | [(`arg`: `T`) => arg is Result1, (`arg`: `T`) => arg is Result2] | The predicates to check. |
 
 #### Returns
@@ -5637,9 +4856,9 @@ provided to the created function.
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arg` | `T` |
+| Name  | Type |
+| :---- | :--- |
+| `arg` | `T`  |
 
 ##### Returns
 
@@ -5647,22 +4866,18 @@ arg is Result1 & Result2
 
 Returns the new function.
 
-#### Defined in
-
-node_modules/@types/lodash/common/util.d.ts:756
-
 ▸ **overEvery**<`T`\>(...`predicates`): (...`args`: `T`[]) => `boolean`
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name            | Type                                       |
+| :-------------- | :----------------------------------------- |
 | `...predicates` | `Many`<(...`args`: `T`[]) => `boolean`\>[] |
 
 #### Returns
@@ -5673,19 +4888,15 @@ node_modules/@types/lodash/common/util.d.ts:756
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type  |
+| :-------- | :---- |
 | `...args` | `T`[] |
 
 ##### Returns
 
 `boolean`
 
-#### Defined in
-
-node_modules/@types/lodash/common/util.d.ts:760
-
-___
+---
 
 ### <a id="oversome" name="oversome"></a> overSome
 
@@ -5696,16 +4907,16 @@ provided to the created function.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `Result1` |
 | `Result2` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name            | Type                                                             | Description              |
+| :-------------- | :--------------------------------------------------------------- | :----------------------- |
 | `...predicates` | [(`arg`: `T`) => arg is Result1, (`arg`: `T`) => arg is Result2] | The predicates to check. |
 
 #### Returns
@@ -5721,9 +4932,9 @@ provided to the created function.
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arg` | `T` |
+| Name  | Type |
+| :---- | :--- |
+| `arg` | `T`  |
 
 ##### Returns
 
@@ -5731,22 +4942,18 @@ arg is Result1 \| Result2
 
 Returns the new function.
 
-#### Defined in
-
-node_modules/@types/lodash/common/util.d.ts:795
-
 ▸ **overSome**<`T`\>(...`predicates`): (...`args`: `T`[]) => `boolean`
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name            | Type                                       |
+| :-------------- | :----------------------------------------- |
 | `...predicates` | `Many`<(...`args`: `T`[]) => `boolean`\>[] |
 
 #### Returns
@@ -5757,19 +4964,15 @@ node_modules/@types/lodash/common/util.d.ts:795
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type  |
+| :-------- | :---- |
 | `...args` | `T`[] |
 
 ##### Returns
 
 `boolean`
 
-#### Defined in
-
-node_modules/@types/lodash/common/util.d.ts:799
-
-___
+---
 
 ### <a id="pad" name="pad"></a> pad
 
@@ -5780,11 +4983,11 @@ they can’t be evenly divided by length.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `string?` | `string` | The string to pad. |
-| `length?` | `number` | The padding length. |
-| `chars?` | `string` | The string used as padding. |
+| Name      | Type     | Description                 |
+| :-------- | :------- | :-------------------------- |
+| `string?` | `string` | The string to pad.          |
+| `length?` | `number` | The padding length.         |
+| `chars?`  | `string` | The string used as padding. |
 
 #### Returns
 
@@ -5792,11 +4995,7 @@ they can’t be evenly divided by length.
 
 Returns the padded string.
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:226
-
-___
+---
 
 ### <a id="padend" name="padend"></a> padEnd
 
@@ -5807,11 +5006,11 @@ length.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `string?` | `string` | The string to pad. |
-| `length?` | `number` | The padding length. |
-| `chars?` | `string` | The string used as padding. |
+| Name      | Type     | Description                 |
+| :-------- | :------- | :-------------------------- |
+| `string?` | `string` | The string to pad.          |
+| `length?` | `number` | The padding length.         |
+| `chars?`  | `string` | The string used as padding. |
 
 #### Returns
 
@@ -5819,11 +5018,7 @@ length.
 
 Returns the padded string.
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:251
-
-___
+---
 
 ### <a id="padstart" name="padstart"></a> padStart
 
@@ -5834,11 +5029,11 @@ length.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `string?` | `string` | The string to pad. |
-| `length?` | `number` | The padding length. |
-| `chars?` | `string` | The string used as padding. |
+| Name      | Type     | Description                 |
+| :-------- | :------- | :-------------------------- |
+| `string?` | `string` | The string to pad.          |
+| `length?` | `number` | The padding length.         |
+| `chars?`  | `string` | The string used as padding. |
 
 #### Returns
 
@@ -5846,11 +5041,7 @@ length.
 
 Returns the padded string.
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:276
-
-___
+---
 
 ### <a id="partition" name="partition"></a> partition
 
@@ -5863,16 +5054,16 @@ The predicate is invoked with three arguments: (value, index|key, collection).
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
-| `U` |
+| :--- |
+| `T`  |
+| `U`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> | The collection to iterate over. |
-| `callback` | `ValueIteratorTypeGuard`<`T`, `U`\> | The function called per iteration. |
+| Name         | Type                                  | Description                        |
+| :----------- | :------------------------------------ | :--------------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\> | The collection to iterate over.    |
+| `callback`   | `ValueIteratorTypeGuard`<`T`, `U`\>   | The function called per iteration. |
 
 #### Returns
 
@@ -5880,61 +5071,49 @@ The predicate is invoked with three arguments: (value, index|key, collection).
 
 Returns the array of grouped elements.
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1375
-
 ▸ **partition**<`T`\>(`collection`, `callback`): [`T`[], `T`[]]
 
-**`see`** _.partition
+**`see`** \_.partition
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `callback` | `ValueIteratee`<`T`\> |
+| Name         | Type                                  |
+| :----------- | :------------------------------------ |
+| `collection` | `undefined` \| `null` \| `List`<`T`\> |
+| `callback`   | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
 [`T`[], `T`[]]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1379
-
 ▸ **partition**<`T`\>(`collection`, `callback`): [`T`[keyof `T`][], `T`[keyof `T`][]]
 
-**`see`** _.partition
+**`see`** \_.partition
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `callback` | `ValueIteratee`<`T`[keyof `T`]\> |
+| Name         | Type                             |
+| :----------- | :------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`     |
+| `callback`   | `ValueIteratee`<`T`[keyof `T`]\> |
 
 #### Returns
 
 [`T`[keyof `T`][], `T`[keyof `T`][]]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1383
-
-___
+---
 
 ### <a id="pluralize" name="pluralize"></a> pluralize
 
@@ -5944,10 +5123,10 @@ Pluralizes the provided input considering irregular words
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `word` | `string` | `undefined` |  |
-| `isKnownToBePlural` | `boolean` | `true` | Normally you call Pluralize on singular words; but if you're unsure call it with false |
+| Name                | Type      | Default value | Description                                                                            |
+| :------------------ | :-------- | :------------ | :------------------------------------------------------------------------------------- |
+| `word`              | `string`  | `undefined`   |                                                                                        |
+| `isKnownToBePlural` | `boolean` | `true`        | Normally you call Pluralize on singular words; but if you're unsure call it with false |
 
 #### Returns
 
@@ -5955,11 +5134,7 @@ Pluralizes the provided input considering irregular words
 
 the plural form of the word in the string
 
-#### Defined in
-
-[packages/active-support/src/inflections/index.ts:12](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/inflections/index.ts#L12)
-
-___
+---
 
 ### <a id="pull" name="pull"></a> pull
 
@@ -5967,19 +5142,19 @@ ___
 
 Removes all provided values from array using SameValueZero for equality comparisons.
 
-Note: Unlike _.without, this method mutates array.
+Note: Unlike \_.without, this method mutates array.
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `T`[] | The array to modify. |
+| Name        | Type  | Description           |
+| :---------- | :---- | :-------------------- |
+| `array`     | `T`[] | The array to modify.  |
 | `...values` | `T`[] | The values to remove. |
 
 #### Returns
@@ -5988,36 +5163,28 @@ Note: Unlike _.without, this method mutates array.
 
 Returns array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:929
-
 ▸ **pull**<`T`\>(`array`, ...`values`): `List`<`T`\>
 
-**`see`** _.pull
+**`see`** \_.pull
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `List`<`T`\> |
-| `...values` | `T`[] |
+| Name        | Type         |
+| :---------- | :----------- |
+| `array`     | `List`<`T`\> |
+| `...values` | `T`[]        |
 
 #### Returns
 
 `List`<`T`\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:933
-
-___
+---
 
 ### <a id="pullat" name="pullat"></a> pullAt
 
@@ -6026,19 +5193,19 @@ ___
 Removes elements from array corresponding to the given indexes and returns an array of the removed elements.
 Indexes may be specified as an array of indexes or as individual arguments.
 
-Note: Unlike _.at, this method mutates array.
+Note: Unlike \_.at, this method mutates array.
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `T`[] | The array to modify. |
+| Name         | Type                | Description                                                                              |
+| :----------- | :------------------ | :--------------------------------------------------------------------------------------- |
+| `array`      | `T`[]               | The array to modify.                                                                     |
 | `...indexes` | `Many`<`number`\>[] | The indexes of elements to remove, specified as individual indexes or arrays of indexes. |
 
 #### Returns
@@ -6047,36 +5214,28 @@ Note: Unlike _.at, this method mutates array.
 
 Returns the new array of removed elements.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1088
-
 ▸ **pullAt**<`T`\>(`array`, ...`indexes`): `List`<`T`\>
 
-**`see`** _.pullAt
+**`see`** \_.pullAt
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `List`<`T`\> |
+| Name         | Type                |
+| :----------- | :------------------ |
+| `array`      | `List`<`T`\>        |
 | `...indexes` | `Many`<`number`\>[] |
 
 #### Returns
 
 `List`<`T`\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1092
-
-___
+---
 
 ### <a id="range" name="range"></a> range
 
@@ -6088,10 +5247,10 @@ range is created unless a negative step is specified.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `start` | `number` | The start of the range. |
-| `end?` | `number` | The end of the range. |
+| Name    | Type     | Description                             |
+| :------ | :------- | :-------------------------------------- |
+| `start` | `number` | The start of the range.                 |
+| `end?`  | `number` | The end of the range.                   |
 | `step?` | `number` | The value to increment or decrement by. |
 
 #### Returns
@@ -6100,63 +5259,46 @@ range is created unless a negative step is specified.
 
 Returns a new range array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/util.d.ts:882
-
 ▸ **range**(`end`, `index`, `guard`): `number`[]
 
-**`see`** _.range
+**`see`** \_.range
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `end` | `number` |
+| Name    | Type                 |
+| :------ | :------------------- |
+| `end`   | `number`             |
 | `index` | `string` \| `number` |
-| `guard` | `object` |
+| `guard` | `object`             |
 
 #### Returns
 
 `number`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/util.d.ts:886
-
-___
+---
 
 ### <a id="reject" name="reject"></a> reject
 
 ▸ **reject**<`T`\>(`arr`, `predicate`): `T`[]
 
-ES Version of `lodash.reject`
-The opposite of `filter`; this method returns the elements of collection that predicate does not return truthy for.
-
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `arr` | `T`[] | The array to iterate over. |
-| `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `boolean` | The function invoked per iteration. |
+| Name        | Type                                                           |
+| :---------- | :------------------------------------------------------------- |
+| `arr`       | `T`[]                                                          |
+| `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `boolean` |
 
 #### Returns
 
 `T`[]
 
-Returns the new filtered array.
-
-#### Defined in
-
-[packages/active-support/src/modernLodash.ts:180](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L180)
-
-___
+---
 
 ### <a id="remove" name="remove"></a> remove
 
@@ -6165,19 +5307,19 @@ ___
 Removes all elements from array that predicate returns truthy for and returns an array of the removed
 elements. The predicate is invoked with three arguments: (value, index, array).
 
-Note: Unlike _.filter, this method mutates array.
+Note: Unlike \_.filter, this method mutates array.
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `List`<`T`\> | The array to modify. |
+| Name         | Type                 | Description                         |
+| :----------- | :------------------- | :---------------------------------- |
+| `array`      | `List`<`T`\>         | The array to modify.                |
 | `predicate?` | `ListIteratee`<`T`\> | The function invoked per iteration. |
 
 #### Returns
@@ -6186,33 +5328,26 @@ Note: Unlike _.filter, this method mutates array.
 
 Returns the new array of removed elements.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1117
-
-___
+---
 
 ### <a id="safejsonparse" name="safejsonparse"></a> safeJsonParse
 
 ▸ **safeJsonParse**(...`args`): [`Result`](README.md#result)<`any`, `unknown`\>
 
-JSON Parser with result wrapper
+Wraps a function with a try catch, creating a new function with the same
+arguments but returning `Ok` if successful, `Err` if the function throws
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type                               |
+| :-------- | :--------------------------------- |
 | `...args` | [text: string, reviver?: Function] |
 
 #### Returns
 
 [`Result`](README.md#result)<`any`, `unknown`\>
 
-#### Defined in
-
-[packages/active-support/src/results.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/results.ts#L6)
-
-___
+---
 
 ### <a id="sample" name="sample"></a> sample
 
@@ -6223,14 +5358,14 @@ Gets a random element from collection.
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `Dictionary`<`T`\> \| `NumericDictionary`<`T`\> | The collection to sample. |
+| Name         | Type                                                                     | Description               |
+| :----------- | :----------------------------------------------------------------------- | :------------------------ |
+| `collection` | `undefined` \| `null` \| `Dictionary`<`T`\> \| `NumericDictionary`<`T`\> | The collection to sample. |
 
 #### Returns
 
@@ -6238,35 +5373,27 @@ Gets a random element from collection.
 
 Returns the random element.
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1648
-
 ▸ **sample**<`T`\>(`collection`): `undefined` \| `T`[keyof `T`]
 
-**`see`** _.sample
+**`see`** \_.sample
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
+| Name         | Type                         |
+| :----------- | :--------------------------- |
+| `collection` | `undefined` \| `null` \| `T` |
 
 #### Returns
 
 `undefined` \| `T`[keyof `T`]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1652
-
-___
+---
 
 ### <a id="samplesize" name="samplesize"></a> sampleSize
 
@@ -6277,15 +5404,15 @@ Gets n random elements at unique keys from collection up to the size of collecti
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `Dictionary`<`T`\> \| `NumericDictionary`<`T`\> | The collection to sample. |
-| `n?` | `number` | The number of elements to sample. |
+| Name         | Type                                                                     | Description                       |
+| :----------- | :----------------------------------------------------------------------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `Dictionary`<`T`\> \| `NumericDictionary`<`T`\> | The collection to sample.         |
+| `n?`         | `number`                                                                 | The number of elements to sample. |
 
 #### Returns
 
@@ -6293,58 +5420,50 @@ Gets n random elements at unique keys from collection up to the size of collecti
 
 Returns the random elements.
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1704
-
 ▸ **sampleSize**<`T`\>(`collection`, `n?`): `T`[keyof `T`][]
 
-**`see`** _.sampleSize
+**`see`** \_.sampleSize
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `n?` | `number` |
+| Name         | Type                         |
+| :----------- | :--------------------------- |
+| `collection` | `undefined` \| `null` \| `T` |
+| `n?`         | `number`                     |
 
 #### Returns
 
 `T`[keyof `T`][]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1708
-
-___
+---
 
 ### <a id="set" name="set"></a> set
 
 ▸ **set**<`T`\>(`object`, `path`, `value`): `T`
 
 Sets the value at path of object. If a portion of path doesn’t exist it’s created. Arrays are created for
-missing index properties while objects are created for all other missing properties. Use _.setWith to
+missing index properties while objects are created for all other missing properties. Use \_.setWith to
 customize path creation.
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `object` | `T` | The object to modify. |
-| `path` | `PropertyPath` | The path of the property to set. |
-| `value` | `any` | The value to set. |
+| Name     | Type           | Description                      |
+| :------- | :------------- | :------------------------------- |
+| `object` | `T`            | The object to modify.            |
+| `path`   | `PropertyPath` | The path of the property to set. |
+| `value`  | `any`          | The value to set.                |
 
 #### Returns
 
@@ -6352,37 +5471,29 @@ customize path creation.
 
 Returns object.
 
-#### Defined in
-
-node_modules/@types/lodash/common/object.d.ts:2139
-
 ▸ **set**<`TResult`\>(`object`, `path`, `value`): `TResult`
 
-**`see`** _.set
+**`see`** \_.set
 
 #### Type parameters
 
-| Name |
-| :------ |
+| Name      |
+| :-------- |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `object` |
-| `path` | `PropertyPath` |
-| `value` | `any` |
+| Name     | Type           |
+| :------- | :------------- |
+| `object` | `object`       |
+| `path`   | `PropertyPath` |
+| `value`  | `any`          |
 
 #### Returns
 
 `TResult`
 
-#### Defined in
-
-node_modules/@types/lodash/common/object.d.ts:2143
-
-___
+---
 
 ### <a id="shuffle" name="shuffle"></a> shuffle
 
@@ -6393,14 +5504,14 @@ Creates an array of shuffled values, using a version of the Fisher-Yates shuffle
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> | The collection to shuffle. |
+| Name         | Type                                  | Description                |
+| :----------- | :------------------------------------ | :------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\> | The collection to shuffle. |
 
 #### Returns
 
@@ -6408,35 +5519,27 @@ Creates an array of shuffled values, using a version of the Fisher-Yates shuffle
 
 Returns the new shuffled array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1759
-
 ▸ **shuffle**<`T`\>(`collection`): `T`[keyof `T`][]
 
-**`see`** _.shuffle
+**`see`** \_.shuffle
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
+| Name         | Type                         |
+| :----------- | :--------------------------- |
+| `collection` | `undefined` \| `null` \| `T` |
 
 #### Returns
 
 `T`[keyof `T`][]
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1763
-
-___
+---
 
 ### <a id="singularize" name="singularize"></a> singularize
 
@@ -6446,11 +5549,11 @@ Singularizes the provided input considering irregular words
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `word` | `string` | `undefined` |  |
-| `isKnownToBePlural` | `boolean` | `true` | - |
-| `skipSimpleWords` | `boolean` | `false` | Skip singularizing single words that have an 's' on the end |
+| Name                | Type      | Default value | Description                                                 |
+| :------------------ | :-------- | :------------ | :---------------------------------------------------------- |
+| `word`              | `string`  | `undefined`   |                                                             |
+| `isKnownToBePlural` | `boolean` | `true`        | -                                                           |
+| `skipSimpleWords`   | `boolean` | `false`       | Skip singularizing single words that have an 's' on the end |
 
 #### Returns
 
@@ -6458,11 +5561,7 @@ Singularizes the provided input considering irregular words
 
 the singular form of the word in the string
 
-#### Defined in
-
-[packages/active-support/src/inflections/index.ts:24](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/inflections/index.ts#L24)
-
-___
+---
 
 ### <a id="size" name="size"></a> size
 
@@ -6473,9 +5572,9 @@ properties for objects.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `string` \| `object` | The collection to inspect. |
+| Name         | Type                                          | Description                |
+| :----------- | :-------------------------------------------- | :------------------------- |
+| `collection` | `undefined` \| `null` \| `string` \| `object` | The collection to inspect. |
 
 #### Returns
 
@@ -6483,11 +5582,7 @@ properties for objects.
 
 Returns the size of collection.
 
-#### Defined in
-
-node_modules/@types/lodash/common/collection.d.ts:1815
-
-___
+---
 
 ### <a id="slice" name="slice"></a> slice
 
@@ -6498,16 +5593,16 @@ Creates a slice of array from start up to, but not including, end.
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to slice. |
-| `start?` | `number` | The start position. |
-| `end?` | `number` | The end position. |
+| Name     | Type                                  | Description         |
+| :------- | :------------------------------------ | :------------------ |
+| `array`  | `undefined` \| `null` \| `List`<`T`\> | The array to slice. |
+| `start?` | `number`                              | The start position. |
+| `end?`   | `number`                              | The end position.   |
 
 #### Returns
 
@@ -6515,11 +5610,7 @@ Creates a slice of array from start up to, but not including, end.
 
 Returns the slice of array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1162
-
-___
+---
 
 ### <a id="snakecase" name="snakecase"></a> snakeCase
 
@@ -6529,8 +5620,8 @@ Converts string to snake case.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name      | Type     | Description            |
+| :-------- | :------- | :--------------------- |
 | `string?` | `string` | The string to convert. |
 
 #### Returns
@@ -6539,11 +5630,7 @@ Converts string to snake case.
 
 Returns the snake cased string.
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:383
-
-___
+---
 
 ### <a id="startcase" name="startcase"></a> startCase
 
@@ -6553,8 +5640,8 @@ Converts string to start case.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name      | Type     | Description            |
+| :-------- | :------- | :--------------------- |
 | `string?` | `string` | The string to convert. |
 
 #### Returns
@@ -6563,11 +5650,7 @@ Converts string to start case.
 
 Returns the start cased string.
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:435
-
-___
+---
 
 ### <a id="take" name="take"></a> take
 
@@ -6578,15 +5661,15 @@ Creates a slice of array with n elements taken from the beginning.
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to query. |
-| `n?` | `number` | The number of elements to take. |
+| Name    | Type                                  | Description                     |
+| :------ | :------------------------------------ | :------------------------------ |
+| `array` | `undefined` \| `null` \| `List`<`T`\> | The array to query.             |
+| `n?`    | `number`                              | The number of elements to take. |
 
 #### Returns
 
@@ -6594,11 +5677,7 @@ Creates a slice of array with n elements taken from the beginning.
 
 Returns the slice of array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1474
-
-___
+---
 
 ### <a id="takeright" name="takeright"></a> takeRight
 
@@ -6609,15 +5688,15 @@ Creates a slice of array with n elements taken from the end.
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to query. |
-| `n?` | `number` | The number of elements to take. |
+| Name    | Type                                  | Description                     |
+| :------ | :------------------------------------ | :------------------------------ |
+| `array` | `undefined` \| `null` \| `List`<`T`\> | The array to query.             |
+| `n?`    | `number`                              | The number of elements to take. |
 
 #### Returns
 
@@ -6625,11 +5704,7 @@ Creates a slice of array with n elements taken from the end.
 
 Returns the slice of array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1496
-
-___
+---
 
 ### <a id="takerightwhile" name="takerightwhile"></a> takeRightWhile
 
@@ -6641,15 +5716,15 @@ falsey. The predicate is invoked with three arguments: (value, index, array).
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to query. |
-| `predicate?` | `ListIteratee`<`T`\> | The function invoked per iteration. |
+| Name         | Type                                  | Description                         |
+| :----------- | :------------------------------------ | :---------------------------------- |
+| `array`      | `undefined` \| `null` \| `List`<`T`\> | The array to query.                 |
+| `predicate?` | `ListIteratee`<`T`\>                  | The function invoked per iteration. |
 
 #### Returns
 
@@ -6657,11 +5732,7 @@ falsey. The predicate is invoked with three arguments: (value, index, array).
 
 Returns the slice of array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1519
-
-___
+---
 
 ### <a id="takewhile" name="takewhile"></a> takeWhile
 
@@ -6673,15 +5744,15 @@ falsey. The predicate is invoked with three arguments: (value, index, array).
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to query. |
-| `predicate?` | `ListIteratee`<`T`\> | The function invoked per iteration. |
+| Name         | Type                                  | Description                         |
+| :----------- | :------------------------------------ | :---------------------------------- |
+| `array`      | `undefined` \| `null` \| `List`<`T`\> | The array to query.                 |
+| `predicate?` | `ListIteratee`<`T`\>                  | The function invoked per iteration. |
 
 #### Returns
 
@@ -6689,11 +5760,7 @@ falsey. The predicate is invoked with three arguments: (value, index, array).
 
 Returns the slice of array.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1542
-
-___
+---
 
 ### <a id="throttle" name="throttle"></a> throttle
 
@@ -6709,17 +5776,17 @@ the the throttled function is invoked more than once during the wait timeout.
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends (...`args`: `any`) => `any` |
+| Name | Type                                |
+| :--- | :---------------------------------- |
+| `T`  | extends (...`args`: `any`) => `any` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `func` | `T` | The function to throttle. |
-| `wait?` | `number` | The number of milliseconds to throttle invocations to. |
-| `options?` | `ThrottleSettings` | The options object. |
+| Name       | Type               | Description                                            |
+| :--------- | :----------------- | :----------------------------------------------------- |
+| `func`     | `T`                | The function to throttle.                              |
+| `wait?`    | `number`           | The number of milliseconds to throttle invocations to. |
+| `options?` | `ThrottleSettings` | The options object.                                    |
 
 #### Returns
 
@@ -6727,11 +5794,7 @@ the the throttled function is invoked more than once during the wait timeout.
 
 Returns the new throttled function.
 
-#### Defined in
-
-node_modules/@types/lodash/common/function.d.ts:1375
-
-___
+---
 
 ### <a id="times" name="times"></a> times
 
@@ -6742,16 +5805,16 @@ is invoked with one argument; (index).
 
 #### Type parameters
 
-| Name |
-| :------ |
+| Name      |
+| :-------- |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `n` | `number` | The number of times to invoke iteratee. |
-| `iteratee` | (`num`: `number`) => `TResult` | The function invoked per iteration. |
+| Name       | Type                           | Description                             |
+| :--------- | :----------------------------- | :-------------------------------------- |
+| `n`        | `number`                       | The number of times to invoke iteratee. |
+| `iteratee` | (`num`: `number`) => `TResult` | The function invoked per iteration.     |
 
 #### Returns
 
@@ -6759,29 +5822,21 @@ is invoked with one argument; (index).
 
 Returns the array of results.
 
-#### Defined in
-
-node_modules/@types/lodash/common/util.d.ts:1083
-
 ▸ **times**(`n`): `number`[]
 
-**`see`** _.times
+**`see`** \_.times
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `n` | `number` |
+| Name | Type     |
+| :--- | :------- |
+| `n`  | `number` |
 
 #### Returns
 
 `number`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/util.d.ts:1087
-
-___
+---
 
 ### <a id="trim" name="trim"></a> trim
 
@@ -6791,10 +5846,10 @@ Removes leading and trailing whitespace or specified characters from string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `string?` | `string` | The string to trim. |
-| `chars?` | `string` | The characters to trim. |
+| Name      | Type     | Description             |
+| :-------- | :------- | :---------------------- |
+| `string?` | `string` | The string to trim.     |
+| `chars?`  | `string` | The characters to trim. |
 
 #### Returns
 
@@ -6802,31 +5857,23 @@ Removes leading and trailing whitespace or specified characters from string.
 
 Returns the trimmed string.
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:581
-
 ▸ **trim**(`string`, `index`, `guard`): `string`
 
-**`see`** _.trim
+**`see`** \_.trim
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `string` | `string` |
-| `index` | `string` \| `number` |
-| `guard` | `object` |
+| Name     | Type                 |
+| :------- | :------------------- |
+| `string` | `string`             |
+| `index`  | `string` \| `number` |
+| `guard`  | `object`             |
 
 #### Returns
 
 `string`
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:585
-
-___
+---
 
 ### <a id="trimend" name="trimend"></a> trimEnd
 
@@ -6836,10 +5883,10 @@ Removes trailing whitespace or specified characters from string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `string?` | `string` | The string to trim. |
-| `chars?` | `string` | The characters to trim. |
+| Name      | Type     | Description             |
+| :-------- | :------- | :---------------------- |
+| `string?` | `string` | The string to trim.     |
+| `chars?`  | `string` | The characters to trim. |
 
 #### Returns
 
@@ -6847,31 +5894,23 @@ Removes trailing whitespace or specified characters from string.
 
 Returns the trimmed string.
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:608
-
 ▸ **trimEnd**(`string`, `index`, `guard`): `string`
 
-**`see`** _.trimEnd
+**`see`** \_.trimEnd
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `string` | `string` |
-| `index` | `string` \| `number` |
-| `guard` | `object` |
+| Name     | Type                 |
+| :------- | :------------------- |
+| `string` | `string`             |
+| `index`  | `string` \| `number` |
+| `guard`  | `object`             |
 
 #### Returns
 
 `string`
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:612
-
-___
+---
 
 ### <a id="trimstart" name="trimstart"></a> trimStart
 
@@ -6881,10 +5920,10 @@ Removes leading whitespace or specified characters from string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `string?` | `string` | The string to trim. |
-| `chars?` | `string` | The characters to trim. |
+| Name      | Type     | Description             |
+| :-------- | :------- | :---------------------- |
+| `string?` | `string` | The string to trim.     |
+| `chars?`  | `string` | The characters to trim. |
 
 #### Returns
 
@@ -6892,31 +5931,23 @@ Removes leading whitespace or specified characters from string.
 
 Returns the trimmed string.
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:635
-
 ▸ **trimStart**(`string`, `index`, `guard`): `string`
 
-**`see`** _.trimStart
+**`see`** \_.trimStart
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `string` | `string` |
-| `index` | `string` \| `number` |
-| `guard` | `object` |
+| Name     | Type                 |
+| :------- | :------------------- |
+| `string` | `string`             |
+| `index`  | `string` \| `number` |
+| `guard`  | `object`             |
 
 #### Returns
 
 `string`
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:639
-
-___
+---
 
 ### <a id="union" name="union"></a> union
 
@@ -6928,14 +5959,14 @@ equality comparisons.
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `...arrays` | (`undefined` \| ``null`` \| `List`<`T`\>)[] | The arrays to inspect. |
+| Name        | Type                                      | Description            |
+| :---------- | :---------------------------------------- | :--------------------- |
+| `...arrays` | (`undefined` \| `null` \| `List`<`T`\>)[] | The arrays to inspect. |
 
 #### Returns
 
@@ -6943,11 +5974,7 @@ equality comparisons.
 
 Returns the new array of combined values.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1564
-
-___
+---
 
 ### <a id="unionby" name="unionby"></a> unionBy
 
@@ -6960,15 +5987,15 @@ uniqueness is computed. The iteratee is invoked with one argument: (value).
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> | The arrays to inspect. |
-| `iteratee?` | `ValueIteratee`<`T`\> | The iteratee invoked per element. |
+| Name        | Type                                  | Description                       |
+| :---------- | :------------------------------------ | :-------------------------------- |
+| `arrays`    | `undefined` \| `null` \| `List`<`T`\> | The arrays to inspect.            |
+| `iteratee?` | `ValueIteratee`<`T`\>                 | The iteratee invoked per element. |
 
 #### Returns
 
@@ -6976,153 +6003,123 @@ uniqueness is computed. The iteratee is invoked with one argument: (value).
 
 Returns the new array of combined values.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1588
-
 ▸ **unionBy**<`T`\>(`arrays1`, `arrays2`, `iteratee?`): `T`[]
 
-**`see`** _.unionBy
+**`see`** \_.unionBy
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `arrays1`   | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays2`   | `undefined` \| `null` \| `List`<`T`\> |
+| `iteratee?` | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
 `T`[]
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1592
 
 ▸ **unionBy**<`T`\>(`arrays1`, `arrays2`, `arrays3`, `iteratee?`): `T`[]
 
-**`see`** _.unionBy
+**`see`** \_.unionBy
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays3` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `arrays1`   | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays2`   | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays3`   | `undefined` \| `null` \| `List`<`T`\> |
+| `iteratee?` | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
 `T`[]
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1596
 
 ▸ **unionBy**<`T`\>(`arrays1`, `arrays2`, `arrays3`, `arrays4`, `iteratee?`): `T`[]
 
-**`see`** _.unionBy
+**`see`** \_.unionBy
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays3` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays4` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `arrays1`   | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays2`   | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays3`   | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays4`   | `undefined` \| `null` \| `List`<`T`\> |
+| `iteratee?` | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
 `T`[]
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1600
 
 ▸ **unionBy**<`T`\>(`arrays1`, `arrays2`, `arrays3`, `arrays4`, `arrays5`, ...`iteratee`): `T`[]
 
-**`see`** _.unionBy
+**`see`** \_.unionBy
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays3` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays4` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays5` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `...iteratee` | (`undefined` \| ``null`` \| `List`<`T`\> \| `ValueIteratee`<`T`\>)[] |
+| Name          | Type                                                               |
+| :------------ | :----------------------------------------------------------------- |
+| `arrays1`     | `undefined` \| `null` \| `List`<`T`\>                              |
+| `arrays2`     | `undefined` \| `null` \| `List`<`T`\>                              |
+| `arrays3`     | `undefined` \| `null` \| `List`<`T`\>                              |
+| `arrays4`     | `undefined` \| `null` \| `List`<`T`\>                              |
+| `arrays5`     | `undefined` \| `null` \| `List`<`T`\>                              |
+| `...iteratee` | (`undefined` \| `null` \| `List`<`T`\> \| `ValueIteratee`<`T`\>)[] |
 
 #### Returns
 
 `T`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1604
-
-___
+---
 
 ### <a id="uniq" name="uniq"></a> uniq
 
 ▸ **uniq**<`T`\>(`arr`): `T`[]
 
-ES Version of `lodash.uniq`
-Creates a duplicate-free version of an array, in which only the first occurrence of each element is kept.
-The order of result values is determined by the order they occur in the array.
-
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `arr` | `T`[] | The array to inspect. |
+| Name  | Type  |
+| :---- | :---- |
+| `arr` | `T`[] |
 
 #### Returns
 
 `T`[]
 
-Returns the new duplicate free array.
-
-#### Defined in
-
-[packages/active-support/src/modernLodash.ts:171](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L171)
-
-___
+---
 
 ### <a id="unset" name="unset"></a> unset
 
@@ -7134,10 +6131,10 @@ Note: This method mutates object.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `object` | `any` | The object to modify. |
-| `path` | `PropertyPath` | The path of the property to unset. |
+| Name     | Type           | Description                        |
+| :------- | :------------- | :--------------------------------- |
+| `object` | `any`          | The object to modify.              |
+| `path`   | `PropertyPath` | The path of the property to unset. |
 
 #### Returns
 
@@ -7145,30 +6142,26 @@ Note: This method mutates object.
 
 Returns true if the property is deleted, else false.
 
-#### Defined in
-
-node_modules/@types/lodash/common/object.d.ts:2342
-
-___
+---
 
 ### <a id="unzip" name="unzip"></a> unzip
 
 ▸ **unzip**<`T`\>(`array`): `T`[][]
 
-This method is like _.zip except that it accepts an array of grouped elements and creates an array
+This method is like \_.zip except that it accepts an array of grouped elements and creates an array
 regrouping the elements to their pre-zip configuration.
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `T`[][] \| `List`<`List`<`T`\>\> | The array of grouped elements to process. |
+| Name    | Type                                                      | Description                               |
+| :------ | :-------------------------------------------------------- | :---------------------------------------- |
+| `array` | `undefined` \| `null` \| `T`[][] \| `List`<`List`<`T`\>\> | The array of grouped elements to process. |
 
 #### Returns
 
@@ -7176,32 +6169,28 @@ regrouping the elements to their pre-zip configuration.
 
 Returns the new array of regrouped elements.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1775
-
-___
+---
 
 ### <a id="unzipwith" name="unzipwith"></a> unzipWith
 
 ▸ **unzipWith**<`T`, `TResult`\>(`array`, `iteratee`): `TResult`[]
 
-This method is like _.unzip except that it accepts an iteratee to specify how regrouped values should be
+This method is like \_.unzip except that it accepts an iteratee to specify how regrouped values should be
 combined. The iteratee is invoked with four arguments: (accumulator, value, index, group).
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`List`<`T`\>\> | The array of grouped elements to process. |
-| `iteratee` | (...`values`: `T`[]) => `TResult` | The function to combine regrouped values. |
+| Name       | Type                                           | Description                               |
+| :--------- | :--------------------------------------------- | :---------------------------------------- |
+| `array`    | `undefined` \| `null` \| `List`<`List`<`T`\>\> | The array of grouped elements to process. |
+| `iteratee` | (...`values`: `T`[]) => `TResult`              | The function to combine regrouped values. |
 
 #### Returns
 
@@ -7209,35 +6198,27 @@ combined. The iteratee is invoked with four arguments: (accumulator, value, inde
 
 Returns the new array of regrouped elements.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1798
-
 ▸ **unzipWith**<`T`\>(`array`): `T`[][]
 
-**`see`** _.unzipWith
+**`see`** \_.unzipWith
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`List`<`T`\>\> |
+| Name    | Type                                           |
+| :------ | :--------------------------------------------- |
+| `array` | `undefined` \| `null` \| `List`<`List`<`T`\>\> |
 
 #### Returns
 
 `T`[][]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1802
-
-___
+---
 
 ### <a id="upperfirst" name="upperfirst"></a> upperFirst
 
@@ -7247,8 +6228,8 @@ Converts the first character of `string` to upper case.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name      | Type     | Description            |
+| :-------- | :------- | :--------------------- |
 | `string?` | `string` | The string to convert. |
 
 #### Returns
@@ -7257,11 +6238,7 @@ Converts the first character of `string` to upper case.
 
 Returns the converted string.
 
-#### Defined in
-
-node_modules/@types/lodash/common/string.d.ts:747
-
-___
+---
 
 ### <a id="uuid" name="uuid"></a> uuid
 
@@ -7271,11 +6248,7 @@ ___
 
 `string`
 
-#### Defined in
-
-node_modules/@lukeed/uuid/index.d.ts:1
-
-___
+---
 
 ### <a id="without" name="without"></a> without
 
@@ -7286,15 +6259,15 @@ Creates an array excluding all provided values using SameValueZero for equality 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to filter. |
-| `...values` | `T`[] | The values to exclude. |
+| Name        | Type                                  | Description            |
+| :---------- | :------------------------------------ | :--------------------- |
+| `array`     | `undefined` \| `null` \| `List`<`T`\> | The array to filter.   |
+| `...values` | `T`[]                                 | The values to exclude. |
 
 #### Returns
 
@@ -7302,11 +6275,7 @@ Creates an array excluding all provided values using SameValueZero for equality 
 
 Returns the new array of filtered values.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1832
-
-___
+---
 
 ### <a id="wrap" name="wrap"></a> wrap
 
@@ -7318,17 +6287,17 @@ invoked with the this binding of the created function.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
-| `TArgs` |
+| Name      |
+| :-------- |
+| `T`       |
+| `TArgs`   |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `T` | The value to wrap. |
+| Name      | Type                                              | Description           |
+| :-------- | :------------------------------------------------ | :-------------------- |
+| `value`   | `T`                                               | The value to wrap.    |
 | `wrapper` | (`value`: `T`, ...`args`: `TArgs`[]) => `TResult` | The wrapper function. |
 
 #### Returns
@@ -7345,8 +6314,8 @@ invoked with the this binding of the created function.
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type      |
+| :-------- | :-------- |
 | `...args` | `TArgs`[] |
 
 ##### Returns
@@ -7355,11 +6324,7 @@ invoked with the this binding of the created function.
 
 Returns the new function.
 
-#### Defined in
-
-node_modules/@types/lodash/common/function.d.ts:1432
-
-___
+---
 
 ### <a id="xor" name="xor"></a> xor
 
@@ -7370,14 +6335,14 @@ Creates an array of unique values that is the symmetric difference of the provid
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `...arrays` | (`undefined` \| ``null`` \| `List`<`T`\>)[] | The arrays to inspect. |
+| Name        | Type                                      | Description            |
+| :---------- | :---------------------------------------- | :--------------------- |
+| `...arrays` | (`undefined` \| `null` \| `List`<`T`\>)[] | The arrays to inspect. |
 
 #### Returns
 
@@ -7385,11 +6350,7 @@ Creates an array of unique values that is the symmetric difference of the provid
 
 Returns the new array of values.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1853
-
-___
+---
 
 ### <a id="zip" name="zip"></a> zip
 
@@ -7401,14 +6362,14 @@ the second of which contains the second elements of the given arrays, and so on.
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type          |
+| :-------- | :------------ |
 | `arrays1` | `List`<`T1`\> |
 | `arrays2` | `List`<`T2`\> |
 
@@ -7418,26 +6379,22 @@ the second of which contains the second elements of the given arrays, and so on.
 
 Returns the new array of grouped elements.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1972
-
 ▸ **zip**<`T1`, `T2`, `T3`\>(`arrays1`, `arrays2`, `arrays3`): [`undefined` \| `T1`, `undefined` \| `T2`, `undefined` \| `T3`][]
 
-**`see`** _.zip
+**`see`** \_.zip
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type          |
+| :-------- | :------------ |
 | `arrays1` | `List`<`T1`\> |
 | `arrays2` | `List`<`T2`\> |
 | `arrays3` | `List`<`T3`\> |
@@ -7446,18 +6403,14 @@ node_modules/@types/lodash/common/array.d.ts:1972
 
 [`undefined` \| `T1`, `undefined` \| `T2`, `undefined` \| `T3`][]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1976
-
 ▸ **zip**<`T1`, `T2`, `T3`, `T4`\>(`arrays1`, `arrays2`, `arrays3`, `arrays4`): [`undefined` \| `T1`, `undefined` \| `T2`, `undefined` \| `T3`, `undefined` \| `T4`][]
 
-**`see`** _.zip
+**`see`** \_.zip
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -7465,8 +6418,8 @@ node_modules/@types/lodash/common/array.d.ts:1976
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type          |
+| :-------- | :------------ |
 | `arrays1` | `List`<`T1`\> |
 | `arrays2` | `List`<`T2`\> |
 | `arrays3` | `List`<`T3`\> |
@@ -7476,18 +6429,14 @@ node_modules/@types/lodash/common/array.d.ts:1976
 
 [`undefined` \| `T1`, `undefined` \| `T2`, `undefined` \| `T3`, `undefined` \| `T4`][]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1980
-
 ▸ **zip**<`T1`, `T2`, `T3`, `T4`, `T5`\>(`arrays1`, `arrays2`, `arrays3`, `arrays4`, `arrays5`): [`undefined` \| `T1`, `undefined` \| `T2`, `undefined` \| `T3`, `undefined` \| `T4`, `undefined` \| `T5`][]
 
-**`see`** _.zip
+**`see`** \_.zip
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -7496,8 +6445,8 @@ node_modules/@types/lodash/common/array.d.ts:1980
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type          |
+| :-------- | :------------ |
 | `arrays1` | `List`<`T1`\> |
 | `arrays2` | `List`<`T2`\> |
 | `arrays3` | `List`<`T3`\> |
@@ -7508,55 +6457,47 @@ node_modules/@types/lodash/common/array.d.ts:1980
 
 [`undefined` \| `T1`, `undefined` \| `T2`, `undefined` \| `T3`, `undefined` \| `T4`, `undefined` \| `T5`][]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1984
-
 ▸ **zip**<`T`\>(...`arrays`): (`undefined` \| `T`)[][]
 
-**`see`** _.zip
+**`see`** \_.zip
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `...arrays` | (`undefined` \| ``null`` \| `List`<`T`\>)[] |
+| Name        | Type                                      |
+| :---------- | :---------------------------------------- |
+| `...arrays` | (`undefined` \| `null` \| `List`<`T`\>)[] |
 
 #### Returns
 
 (`undefined` \| `T`)[][]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:1988
-
-___
+---
 
 ### <a id="zipobject" name="zipobject"></a> zipObject
 
 ▸ **zipObject**<`T`\>(`props`, `values`): `Dictionary`<`T`\>
 
-This method is like _.fromPairs except that it accepts two arrays, one of property
+This method is like \_.fromPairs except that it accepts two arrays, one of property
 identifiers and one of corresponding values.
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `props` | `List`<`PropertyName`\> | The property names. |
-| `values` | `List`<`T`\> | The property values. |
+| Name     | Type                    | Description          |
+| :------- | :---------------------- | :------------------- |
+| `props`  | `List`<`PropertyName`\> | The property names.  |
+| `values` | `List`<`T`\>            | The property values. |
 
 #### Returns
 
@@ -7564,42 +6505,34 @@ identifiers and one of corresponding values.
 
 Returns the new object.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:2019
-
 ▸ **zipObject**(`props?`): `Dictionary`<`undefined`\>
 
-**`see`** _.zipObject
+**`see`** \_.zipObject
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type                    |
+| :------- | :---------------------- |
 | `props?` | `List`<`PropertyName`\> |
 
 #### Returns
 
 `Dictionary`<`undefined`\>
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:2023
-
-___
+---
 
 ### <a id="zipobjectdeep" name="zipobjectdeep"></a> zipObjectDeep
 
 ▸ **zipObjectDeep**(`paths?`, `values?`): `object`
 
-This method is like _.zipObject except that it supports property paths.
+This method is like \_.zipObject except that it supports property paths.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `paths?` | `List`<`PropertyPath`\> | The property names. |
-| `values?` | `List`<`any`\> | The property values. |
+| Name      | Type                    | Description          |
+| :-------- | :---------------------- | :------------------- |
+| `paths?`  | `List`<`PropertyPath`\> | The property names.  |
+| `values?` | `List`<`any`\>          | The property values. |
 
 #### Returns
 
@@ -7607,32 +6540,28 @@ This method is like _.zipObject except that it supports property paths.
 
 Returns the new object.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:2053
-
-___
+---
 
 ### <a id="zipwith" name="zipwith"></a> zipWith
 
 ▸ **zipWith**<`T`, `TResult`\>(`arrays`, `iteratee`): `TResult`[]
 
-This method is like _.zip except that it accepts an iteratee to specify how grouped values should be
+This method is like \_.zip except that it accepts an iteratee to specify how grouped values should be
 combined. The iteratee is invoked with four arguments: (accumulator, value, index,
 group).
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `arrays` | `List`<`T`\> | The arrays to process. |
+| Name       | Type                         | Description                             |
+| :--------- | :--------------------------- | :-------------------------------------- |
+| `arrays`   | `List`<`T`\>                 | The arrays to process.                  |
 | `iteratee` | (`value1`: `T`) => `TResult` | The function to combine grouped values. |
 
 #### Returns
@@ -7641,158 +6570,134 @@ group).
 
 Returns the new array of grouped elements.
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:2076
-
 ▸ **zipWith**<`T1`, `T2`, `TResult`\>(`arrays1`, `arrays2`, `iteratee`): `TResult`[]
 
-**`see`** _.zipWith
+**`see`** \_.zipWith
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T1` |
-| `T2` |
+| Name      |
+| :-------- |
+| `T1`      |
+| `T2`      |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `List`<`T1`\> |
-| `arrays2` | `List`<`T2`\> |
+| Name       | Type                                          |
+| :--------- | :-------------------------------------------- |
+| `arrays1`  | `List`<`T1`\>                                 |
+| `arrays2`  | `List`<`T2`\>                                 |
 | `iteratee` | (`value1`: `T1`, `value2`: `T2`) => `TResult` |
 
 #### Returns
 
 `TResult`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:2080
-
 ▸ **zipWith**<`T1`, `T2`, `T3`, `TResult`\>(`arrays1`, `arrays2`, `arrays3`, `iteratee`): `TResult`[]
 
-**`see`** _.zipWith
+**`see`** \_.zipWith
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T1` |
-| `T2` |
-| `T3` |
+| Name      |
+| :-------- |
+| `T1`      |
+| `T2`      |
+| `T3`      |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `List`<`T1`\> |
-| `arrays2` | `List`<`T2`\> |
-| `arrays3` | `List`<`T3`\> |
+| Name       | Type                                                          |
+| :--------- | :------------------------------------------------------------ |
+| `arrays1`  | `List`<`T1`\>                                                 |
+| `arrays2`  | `List`<`T2`\>                                                 |
+| `arrays3`  | `List`<`T3`\>                                                 |
 | `iteratee` | (`value1`: `T1`, `value2`: `T2`, `value3`: `T3`) => `TResult` |
 
 #### Returns
 
 `TResult`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:2084
-
 ▸ **zipWith**<`T1`, `T2`, `T3`, `T4`, `TResult`\>(`arrays1`, `arrays2`, `arrays3`, `arrays4`, `iteratee`): `TResult`[]
 
-**`see`** _.zipWith
+**`see`** \_.zipWith
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T1` |
-| `T2` |
-| `T3` |
-| `T4` |
+| Name      |
+| :-------- |
+| `T1`      |
+| `T2`      |
+| `T3`      |
+| `T4`      |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `List`<`T1`\> |
-| `arrays2` | `List`<`T2`\> |
-| `arrays3` | `List`<`T3`\> |
-| `arrays4` | `List`<`T4`\> |
+| Name       | Type                                                                          |
+| :--------- | :---------------------------------------------------------------------------- |
+| `arrays1`  | `List`<`T1`\>                                                                 |
+| `arrays2`  | `List`<`T2`\>                                                                 |
+| `arrays3`  | `List`<`T3`\>                                                                 |
+| `arrays4`  | `List`<`T4`\>                                                                 |
 | `iteratee` | (`value1`: `T1`, `value2`: `T2`, `value3`: `T3`, `value4`: `T4`) => `TResult` |
 
 #### Returns
 
 `TResult`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:2088
-
 ▸ **zipWith**<`T1`, `T2`, `T3`, `T4`, `T5`, `TResult`\>(`arrays1`, `arrays2`, `arrays3`, `arrays4`, `arrays5`, `iteratee`): `TResult`[]
 
-**`see`** _.zipWith
+**`see`** \_.zipWith
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T1` |
-| `T2` |
-| `T3` |
-| `T4` |
-| `T5` |
+| Name      |
+| :-------- |
+| `T1`      |
+| `T2`      |
+| `T3`      |
+| `T4`      |
+| `T5`      |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays1` | `List`<`T1`\> |
-| `arrays2` | `List`<`T2`\> |
-| `arrays3` | `List`<`T3`\> |
-| `arrays4` | `List`<`T4`\> |
-| `arrays5` | `List`<`T5`\> |
+| Name       | Type                                                                                          |
+| :--------- | :-------------------------------------------------------------------------------------------- |
+| `arrays1`  | `List`<`T1`\>                                                                                 |
+| `arrays2`  | `List`<`T2`\>                                                                                 |
+| `arrays3`  | `List`<`T3`\>                                                                                 |
+| `arrays4`  | `List`<`T4`\>                                                                                 |
+| `arrays5`  | `List`<`T5`\>                                                                                 |
 | `iteratee` | (`value1`: `T1`, `value2`: `T2`, `value3`: `T3`, `value4`: `T4`, `value5`: `T5`) => `TResult` |
 
 #### Returns
 
 `TResult`[]
 
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:2092
-
 ▸ **zipWith**<`T`, `TResult`\>(...`iteratee`): `TResult`[]
 
-**`see`** _.zipWith
+**`see`** \_.zipWith
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `...iteratee` | (`undefined` \| ``null`` \| (...`group`: `T`[]) => `TResult` \| `List`<`T`\>)[] |
+| Name          | Type                                                                          |
+| :------------ | :---------------------------------------------------------------------------- |
+| `...iteratee` | (`undefined` \| `null` \| (...`group`: `T`[]) => `TResult` \| `List`<`T`\>)[] |
 
 #### Returns
 
 `TResult`[]
-
-#### Defined in
-
-node_modules/@types/lodash/common/array.d.ts:2096
 
 ## Util
 
@@ -7803,28 +6708,29 @@ node_modules/@types/lodash/common/array.d.ts:2096
 This method is like `_.range` except that it populates values in
 descending order.
 
-**`example`**
-
-_.rangeRight(4);
+**`example`** ```ts
+\_.rangeRight(4);
 // => [3, 2, 1, 0]
 
-_.rangeRight(-4);
+\_.rangeRight(-4);
 // => [-3, -2, -1, 0]
 
-_.rangeRight(1, 5);
+\_.rangeRight(1, 5);
 // => [4, 3, 2, 1]
 
-_.rangeRight(0, 20, 5);
+\_.rangeRight(0, 20, 5);
 // => [15, 10, 5, 0]
 
-_.rangeRight(0, -4, -1);
+\_.rangeRight(0, -4, -1);
 // => [-3, -2, -1, 0]
 
-_.rangeRight(1, 4, 0);
+\_.rangeRight(1, 4, 0);
 // => [1, 1, 1]
 
-_.rangeRight(0);
+\_.rangeRight(0);
 // => []
+
+```
 
 #### Parameters
 
@@ -7839,10 +6745,6 @@ _.rangeRight(0);
 `number`[]
 
 Returns the new array of numbers.
-
-#### Defined in
-
-node_modules/@types/lodash/common/util.d.ts:934
 
 ▸ **rangeRight**(`end`, `index`, `guard`): `number`[]
 
@@ -7859,7 +6761,4 @@ node_modules/@types/lodash/common/util.d.ts:934
 #### Returns
 
 `number`[]
-
-#### Defined in
-
-node_modules/@types/lodash/common/util.d.ts:938
+```

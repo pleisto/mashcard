@@ -14,7 +14,7 @@ const MenuItem = styled('li', {
   height: itemHeight,
   ...itemCommon,
   padding: '0 2px',
-  variants
+  variants: { ...variants }
 })
 
 export interface ToolbarMenuItemProps {

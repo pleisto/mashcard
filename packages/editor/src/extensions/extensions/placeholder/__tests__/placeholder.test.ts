@@ -3,6 +3,8 @@ import { mockEditor } from '../../../../test'
 import { Embed, Paragraph } from '../../../blocks'
 import * as helpers from '../findParagraphWrapper'
 
+jest.mock('../findParagraphWrapper')
+
 describe('Placeholder', () => {
   it('does not update placeholder if editor is not editable', () => {
     jest.spyOn(helpers, 'findParagraphWrapper').mockImplementation(() => undefined)

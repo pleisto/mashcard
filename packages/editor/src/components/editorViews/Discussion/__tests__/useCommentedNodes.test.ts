@@ -5,6 +5,11 @@ import { useCommentedNodes } from '../useCommentedNodes'
 import { meta as discussionMeta } from '../../../../extensions/marks/discussion/meta'
 import { act } from 'react-dom/test-utils'
 
+jest.mock('../../../../hooks/useEditorContext', () => {
+  const { useEditorContext } = jest.requireActual('../../../../hooks/useEditorContext')
+  return { useEditorContext: jest.fn().mockImplementation(useEditorContext) }
+})
+
 jest.useFakeTimers()
 
 describe('useCommentedNodes', () => {
