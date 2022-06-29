@@ -4,6 +4,8 @@ import { CommentedNode } from '../../useCommentedNodes'
 import * as PageDiscussionContext from '../../PageDiscussionContext'
 import { mockEditor } from '../../../../../test'
 
+jest.mock('../../PageDiscussionContext')
+
 describe('useConversationEffects', () => {
   it('sends nothing if comment has no content', () => {
     const addComment = jest.fn()

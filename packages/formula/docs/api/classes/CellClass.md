@@ -17,7 +17,6 @@
 - [columnId](CellClass.md#columnid)
 - [columnIndex](CellClass.md#columnindex)
 - [columnKey](CellClass.md#columnkey)
-- [displayData](CellClass.md#displaydata)
 - [namespaceId](CellClass.md#namespaceid)
 - [rowId](CellClass.md#rowid)
 - [rowIndex](CellClass.md#rowindex)
@@ -25,6 +24,7 @@
 - [spreadsheet](CellClass.md#spreadsheet)
 - [spreadsheetId](CellClass.md#spreadsheetid)
 - [value](CellClass.md#value)
+- [variableId](CellClass.md#variableid)
 
 ### Methods
 
@@ -69,7 +69,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/cell.ts:19](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L19)
+[packages/formula/src/controls/cell.ts:18](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L18)
 
 ---
 
@@ -97,7 +97,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/cell.ts:11](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L11)
+[packages/formula/src/controls/cell.ts:12](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L12)
 
 ---
 
@@ -111,21 +111,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/cell.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L17)
-
----
-
-### <a id="displaydata" name="displaydata"></a> displayData
-
-• **displayData**: `undefined` \| [`VariableDisplayData`](../interfaces/VariableDisplayData.md)
-
-#### Implementation of
-
-[CellType](../interfaces/CellType.md).[displayData](../interfaces/CellType.md#displaydata)
-
-#### Defined in
-
-[packages/formula/src/controls/cell.ts:14](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L14)
+[packages/formula/src/controls/cell.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L16)
 
 ---
 
@@ -167,7 +153,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/cell.ts:12](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L12)
+[packages/formula/src/controls/cell.ts:13](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L13)
 
 ---
 
@@ -181,7 +167,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/cell.ts:18](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L18)
+[packages/formula/src/controls/cell.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L17)
 
 ---
 
@@ -195,7 +181,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/cell.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L16)
+[packages/formula/src/controls/cell.ts:15](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L15)
 
 ---
 
@@ -223,7 +209,21 @@
 
 #### Defined in
 
-[packages/formula/src/controls/cell.ts:13](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L13)
+[packages/formula/src/controls/cell.ts:14](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L14)
+
+---
+
+### <a id="variableid" name="variableid"></a> variableId
+
+• **variableId**: `string`
+
+#### Implementation of
+
+[CellType](../interfaces/CellType.md).[variableId](../interfaces/CellType.md#variableid)
+
+#### Defined in
+
+[packages/formula/src/controls/cell.ts:11](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L11)
 
 ## Methods
 

@@ -472,7 +472,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:702](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L702)
+[packages/formula/src/types/index.ts:703](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L703)
 
 ---
 
@@ -538,7 +538,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:730](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L730)
+[packages/formula/src/types/index.ts:731](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L731)
 
 ---
 
@@ -575,7 +575,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:736](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L736)
+[packages/formula/src/types/index.ts:737](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L737)
 
 ---
 
@@ -655,7 +655,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:69](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L69)
+[packages/formula/src/context/context.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L71)
 
 ---
 
@@ -691,7 +691,7 @@
 
 ### <a id="distributeevents" name="distributeevents"></a> DistributeEvents
 
-Ƭ **DistributeEvents**<`Event`\>: `Event` extends keyof `AllowEventsType` ? [`Event`, `AllowEventsType`[`Event`]] : `never`
+Ƭ **DistributeEvents**<`Event`\>: `Event` extends keyof `AllowEventsType` ? readonly [`Event`, `AllowEventsType`[`Event`]] : `never`
 
 #### Type parameters
 
@@ -701,7 +701,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:246](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L246)
+[packages/formula/src/tests/testType.ts:247](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L247)
 
 ---
 
@@ -731,7 +731,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:159](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L159)
+[packages/formula/src/tests/testType.ts:160](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L160)
 
 ---
 
@@ -1071,7 +1071,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:100](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L100)
+[packages/formula/src/tests/testType.ts:101](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L101)
 
 ---
 
@@ -1137,7 +1137,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:875](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L875)
+[packages/formula/src/types/index.ts:876](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L876)
 
 ---
 
@@ -1147,7 +1147,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:849](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L849)
+[packages/formula/src/types/index.ts:850](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L850)
 
 ---
 
@@ -1157,7 +1157,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:783](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L783)
+[packages/formula/src/types/index.ts:784](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L784)
 
 ---
 
@@ -1642,7 +1642,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:74](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L74)
+[packages/formula/src/context/context.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L76)
 
 ---
 
@@ -2150,6 +2150,8 @@
 
 • `Const` **apiCurrentPosition**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Record"`, `true`, `false`, `false`, []\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/api/currentPosition.ts:42](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/api/currentPosition.ts#L42)
@@ -2159,6 +2161,8 @@
 ### <a id="apiexchange" name="apiexchange"></a> apiExchange
 
 • `Const` **apiExchange**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Record"` \| `"Error"`, `true`, `false`, `false`, [{ `name`: `string` = 'url'; `type`: ``"string"`` = 'string' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2180,6 +2184,8 @@
 
 • `Const` **arrayAverage**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/array/average.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/array/average.ts#L6)
@@ -2189,6 +2195,8 @@
 ### <a id="arrayjoin" name="arrayjoin"></a> arrayJoin
 
 • `Const` **arrayJoin**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"Error"`, `false`, `true`, `false`, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }, { `default`: { `result`: `string` = ','; `type`: ``"string"`` = 'string' } ; `name`: `string` = 'separator'; `type`: ``"string"`` = 'string' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2209,6 +2217,8 @@
 ### <a id="arraysum" name="arraysum"></a> arraySum
 
 • `Const` **arraySum**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2280,6 +2290,8 @@
 
 • `Const` **controlButton**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Button"`, `false`, `false`, `false`, [{ `name`: `string` = 'name'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'onClick'; `type`: ``"Function"`` = 'Function' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/control/button.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/control/button.ts#L8)
@@ -2289,6 +2301,8 @@
 ### <a id="controlswitch" name="controlswitch"></a> controlSwitch
 
 • `Const` **controlSwitch**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Switch"`, `false`, `false`, `false`, [{ `name`: `string` = 'name'; `type`: ``"boolean"`` = 'boolean' }, { `name`: `string` = 'onChange'; `type`: ``"Function"`` = 'Function' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2300,6 +2314,8 @@
 
 • `Const` **convertToArray**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Array"` \| `"Error"`, `false`, `true`, `false`, [{ `name`: `string` = 'input'; `type`: [``"number"``, ``"Spreadsheet"``] }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/convert/toArray.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/convert/toArray.ts#L6)
@@ -2309,6 +2325,8 @@
 ### <a id="converttoboolean" name="converttoboolean"></a> convertToBoolean
 
 • `Const` **convertToBoolean**: [`FunctionClause`](interfaces/FunctionClause.md)<`"boolean"`, `false`, `true`, `false`, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2320,6 +2338,8 @@
 
 • `Const` **convertToNumber**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"` \| `"Error"`, `false`, `true`, `false`, [{ `name`: `string` = 'string'; `type`: [``"string"``, ``"Cell"``] }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/convert/toNumber.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/convert/toNumber.ts#L6)
@@ -2329,6 +2349,8 @@
 ### <a id="converttorecord" name="converttorecord"></a> convertToRecord
 
 • `Const` **convertToRecord**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Record"`, `false`, `true`, `false`, [{ `name`: `string` = 'input'; `type`: ``"Date"`` = 'Date' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2340,6 +2362,8 @@
 
 • `Const` **convertToString**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'input'; `type`: [``"number"``, ``"Array"``, ``"Cell"``, ``"boolean"``, ``"null"``] }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/convert/toString.ts:24](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/convert/toString.ts#L24)
@@ -2349,6 +2373,8 @@
 ### <a id="coreset" name="coreset"></a> coreSet
 
 • `Const` **coreSet**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Error"` \| `"Function"`, `false`, `false`, `false`, [{ `name`: `string` = 'name'; `type`: ``"Reference"`` = 'Reference' }, { `name`: `string` = 'body'; `type`: ``"Cst"`` = 'Cst' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2360,6 +2386,8 @@
 
 • `Const` **dateDate**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Date"`, `false`, `false`, `false`, [{ `name`: `string` = 'input'; `type`: ``"string"`` = 'string' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/date/date.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/date/date.ts#L6)
@@ -2369,6 +2397,8 @@
 ### <a id="datenow" name="datenow"></a> dateNow
 
 • `Const` **dateNow**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Date"`, `false`, `false`, `false`, []\>
+
+**`source`**
 
 #### Defined in
 
@@ -2389,6 +2419,8 @@
 ### <a id="errorerror" name="errorerror"></a> errorError
 
 • `Const` **errorError**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"Error"`, `false`, `true`, `false`, [{ `name`: `string` = 'reason'; `type`: ``"string"`` = 'string' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2420,6 +2452,8 @@
 
 • `Const` **logicIf**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`, `false`, `false`, `false`, [{ `name`: `string` = 'condition'; `type`: `"boolean"` = 'boolean' }, { `name`: `string` = 'ifTrue'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }, { `name`: `string` = 'ifFalse'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/logic/if.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/logic/if.ts#L6)
@@ -2429,6 +2463,8 @@
 ### <a id="logiciferror" name="logiciferror"></a> logicIfError
 
 • `Const` **logicIfError**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`, `false`, `true`, `true`, [{ `name`: `string` = 'expr1'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }, { `name`: `string` = 'expr2'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2440,6 +2476,8 @@
 
 • `Const` **mathAbs**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/math/abs.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/abs.ts#L6)
@@ -2449,6 +2487,8 @@
 ### <a id="mathfloor" name="mathfloor"></a> mathFloor
 
 • `Const` **mathFloor**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2460,6 +2500,8 @@
 
 • `Const` **mathInt**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/math/int.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/int.ts#L6)
@@ -2469,6 +2511,8 @@
 ### <a id="mathln" name="mathln"></a> mathLn
 
 • `Const` **mathLn**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2480,6 +2524,8 @@
 
 • `Const` **mathLog10**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/math/log10.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/log10.ts#L6)
@@ -2489,6 +2535,8 @@
 ### <a id="mathpi" name="mathpi"></a> mathPi
 
 • `Const` **mathPi**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, []\>
+
+**`source`**
 
 #### Defined in
 
@@ -2500,6 +2548,8 @@
 
 • `Const` **mathPower**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }, { `name`: `string` = 'power'; `type`: ``"number"`` = 'number' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/math/power.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/power.ts#L6)
@@ -2509,6 +2559,8 @@
 ### <a id="mathrand" name="mathrand"></a> mathRand
 
 • `Const` **mathRand**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, []\>
+
+**`source`**
 
 #### Defined in
 
@@ -2520,6 +2572,8 @@
 
 • `Const` **mathRound**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/math/round.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/round.ts#L6)
@@ -2529,6 +2583,8 @@
 ### <a id="mathtrunc" name="mathtrunc"></a> mathTrunc
 
 • `Const` **mathTrunc**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2590,6 +2646,8 @@
 
 • `Const` **objectT**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`, `false`, `true`, `true`, [{ `name`: `string` = 'obj'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/object/t.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/object/t.ts#L6)
@@ -2599,6 +2657,8 @@
 ### <a id="objecttype" name="objecttype"></a> objectType
 
 • `Const` **objectType**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `true`, [{ `name`: `string` = 'obj'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2620,6 +2680,8 @@
 
 • `Const` **powerfxCountIf**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }, { `name`: `string` = 'predicate'; `type`: ``"Predicate"`` = 'Predicate' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/powerfx/countIf.ts:47](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/powerfx/countIf.ts#L47)
@@ -2639,6 +2701,8 @@
 ### <a id="processsleep" name="processsleep"></a> processSleep
 
 • `Const` **processSleep**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `true`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2680,6 +2744,8 @@
 
 • `Const` **requestGet**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`, `true`, `false`, `false`, [{ `name`: `string` = 'url'; `type`: ``"string"`` = 'string' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/request/get.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/request/get.ts#L8)
@@ -2689,6 +2755,8 @@
 ### <a id="spreadsheetaverageifs" name="spreadsheetaverageifs"></a> spreadsheetAverageIfs
 
 • `Const` **spreadsheetAverageIfs**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'column1'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'column2'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'condition'; `type`: ``"Predicate"`` = 'Predicate' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2700,6 +2768,8 @@
 
 • `Const` **spreadsheetColumnCount**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/spreadsheet/columnCount.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/columnCount.ts#L6)
@@ -2709,6 +2779,8 @@
 ### <a id="spreadsheetcounta" name="spreadsheetcounta"></a> spreadsheetCountA
 
 • `Const` **spreadsheetCountA**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2720,6 +2792,8 @@
 
 • `Const` **spreadsheetCountIfs**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'condition'; `type`: ``"Predicate"`` = 'Predicate' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/spreadsheet/countIfs.ts:33](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/countIfs.ts#L33)
@@ -2729,6 +2803,8 @@
 ### <a id="spreadsheetmax" name="spreadsheetmax"></a> spreadsheetMax
 
 • `Const` **spreadsheetMax**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2740,6 +2816,8 @@
 
 • `Const` **spreadsheetRow**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'input'; `type`: [``"Cell"``, ``"Row"``] }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/spreadsheet/row.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/row.ts#L6)
@@ -2749,6 +2827,8 @@
 ### <a id="spreadsheetrowcount" name="spreadsheetrowcount"></a> spreadsheetRowCount
 
 • `Const` **spreadsheetRowCount**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2760,6 +2840,8 @@
 
 • `Const` **spreadsheetSpreadsheet**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Spreadsheet"`, `false`, `true`, `false`, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/spreadsheet/spreadsheet.ts:101](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/spreadsheet.ts#L101)
@@ -2769,6 +2851,8 @@
 ### <a id="spreadsheetsum" name="spreadsheetsum"></a> spreadsheetSum
 
 • `Const` **spreadsheetSum**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2780,6 +2864,8 @@
 
 • `Const` **spreadsheetSumIfs**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'column1'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'column2'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'condition'; `type`: ``"Predicate"`` = 'Predicate' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/spreadsheet/sumIfs.ts:39](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/sumIfs.ts#L39)
@@ -2789,6 +2875,8 @@
 ### <a id="spreadsheetsumproduct" name="spreadsheetsumproduct"></a> spreadsheetSumProduct
 
 • `Const` **spreadsheetSumProduct**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'column1'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'column2'; `type`: ``"Column"`` = 'Column' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2800,6 +2888,8 @@
 
 • `Const` **spreadsheetToRecordArray**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Array"`, `false`, `true`, `false`, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/spreadsheet/toRecordArray.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/toRecordArray.ts#L6)
@@ -2809,6 +2899,8 @@
 ### <a id="spreadsheetvlookup" name="spreadsheetvlookup"></a> spreadsheetVlookup
 
 • `Const` **spreadsheetVlookup**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'match'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }, { `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }, { `default`: { `result`: ``true`` = true; `type`: ``"boolean"`` = 'boolean' } ; `name`: `string` = 'range'; `type`: ``"boolean"`` = 'boolean' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2820,6 +2912,8 @@
 
 • `Const` **spreadsheetXlookup**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'lookupValue'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'lookupColumn'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'returnColumn'; `type`: ``"Column"`` = 'Column' }, { `default`: { `result`: `string` = ''; `type`: ``"string"`` = 'string' } ; `name`: `string` = 'notFoundValue'; `type`: ``"string"`` = 'string' }, { `default`: { `result`: `number` = 0; `type`: ``"number"`` = 'number' } ; `name`: `string` = 'matchMode'; `type`: ``"number"`` = 'number' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/spreadsheet/xlookup.ts:58](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/xlookup.ts#L58)
@@ -2829,6 +2923,8 @@
 ### <a id="stringlen" name="stringlen"></a> stringLen
 
 • `Const` **stringLen**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'str'; `type`: ``"string"`` = 'string' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2850,6 +2946,8 @@
 
 • `Const` **stringSplit**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Array"`, `false`, `true`, `false`, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }, { `default`: { `result`: `string` = ''; `type`: ``"string"`` = 'string' } ; `name`: `string` = 'separator'; `type`: ``"string"`` = 'string' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/string/split.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/string/split.ts#L6)
@@ -2859,6 +2957,8 @@
 ### <a id="stringstartwith" name="stringstartwith"></a> stringStartWith
 
 • `Const` **stringStartWith**: [`FunctionClause`](interfaces/FunctionClause.md)<`"boolean"`, `false`, `true`, `false`, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'prefix'; `type`: ``"string"`` = 'string' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -2870,6 +2970,8 @@
 
 • `Const` **stringToBar**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Record"`, `false`, `true`, `false`, [{ `name`: `string` = 'record'; `type`: ``"Record"`` = 'Record' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/string/toBar.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/string/toBar.ts#L6)
@@ -2880,6 +2982,8 @@
 
 • `Const` **stringToQrcode**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }]\>
 
+**`source`**
+
 #### Defined in
 
 [packages/formula/src/functions/string/toQrcode.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/string/toQrcode.ts#L6)
@@ -2889,6 +2993,8 @@
 ### <a id="stringtrim" name="stringtrim"></a> stringTrim
 
 • `Const` **stringTrim**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'str'; `type`: ``"string"`` = 'string' }]\>
+
+**`source`**
 
 #### Defined in
 
@@ -3106,9 +3212,9 @@
 
 #### Type parameters
 
-| Name   | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Args` | extends ([``"empty_sync"``, `any`] \| [``"empty_async"``, `any`] \| [``"blockChangeName"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `name`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| [``"blockDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| [``"spreadsheetChangeName"``, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `spreadsheetId`: `string` ; `title`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| [``"spreadsheetDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| [`"columnChange"`, `OmitUsername`<(`__namedParameters`: { `columns`: [`Column`](interfaces/Column.md)[] ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| [`"rowChange"`, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| [`"variableInsertOnly"`, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| [`"variableInsertAndAwait"`, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| [``"variableDelete"``, {}] \| [`"variableUpdateDefinition"`, [`FormulaDefinition`](interfaces/FormulaDefinition.md)])[] |
+| Name   | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Args` | extends (readonly [``"empty_sync"``, `any`] \| readonly [``"empty_async"``, `any`] \| readonly [``"blockChangeName"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `name`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| readonly [``"blockDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetChangeName"``, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `spreadsheetId`: `string` ; `title`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"columnChange"`, `OmitUsername`<(`__namedParameters`: { `columns`: [`Column`](interfaces/Column.md)[] ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"rowChange"`, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"variableInsertOnly"`, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| readonly [`"variableInsertAndAwait"`, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| readonly [``"variableDelete"``, {}] \| readonly [`"variableUpdateDefinition"`, [`FormulaDefinition`](interfaces/FormulaDefinition.md)])[] |
 
 #### Parameters
 

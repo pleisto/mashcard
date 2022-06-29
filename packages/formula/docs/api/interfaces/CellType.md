@@ -18,7 +18,6 @@
 - [columnId](CellType.md#columnid)
 - [columnIndex](CellType.md#columnindex)
 - [columnKey](CellType.md#columnkey)
-- [displayData](CellType.md#displaydata)
 - [eventDependency](CellType.md#eventdependency)
 - [namespaceId](CellType.md#namespaceid)
 - [rowId](CellType.md#rowid)
@@ -27,6 +26,7 @@
 - [spreadsheet](CellType.md#spreadsheet)
 - [spreadsheetId](CellType.md#spreadsheetid)
 - [value](CellType.md#value)
+- [variableId](CellType.md#variableid)
 
 ## Properties
 
@@ -68,7 +68,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:138](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L138)
+[packages/formula/src/controls/types.ts:139](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L139)
 
 ---
 
@@ -79,20 +79,6 @@
 #### Defined in
 
 [packages/formula/src/controls/types.ts:146](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L146)
-
----
-
-### <a id="displaydata" name="displaydata"></a> displayData
-
-• **displayData**: `undefined` \| [`VariableDisplayData`](VariableDisplayData.md)
-
-#### Inherited from
-
-[Cell](Cell.md).[displayData](Cell.md#displaydata)
-
-#### Defined in
-
-[packages/formula/src/controls/types.ts:141](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L141)
 
 ---
 
@@ -144,7 +130,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:139](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L139)
+[packages/formula/src/controls/types.ts:140](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L140)
 
 ---
 
@@ -192,4 +178,18 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:140](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L140)
+[packages/formula/src/controls/types.ts:141](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L141)
+
+---
+
+### <a id="variableid" name="variableid"></a> variableId
+
+• **variableId**: `string`
+
+#### Inherited from
+
+[Cell](Cell.md).[variableId](Cell.md#variableid)
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:138](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L138)

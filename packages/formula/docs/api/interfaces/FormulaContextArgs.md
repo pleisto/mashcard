@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L65)
+[packages/formula/src/context/context.ts:67](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L67)
 
 ---
 
@@ -28,7 +28,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:62](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L62)
+[packages/formula/src/context/context.ts:64](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L64)
 
 ---
 
@@ -38,7 +38,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:66](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L66)
+[packages/formula/src/context/context.ts:68](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L68)
 
 ---
 
@@ -48,7 +48,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:64](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L64)
+[packages/formula/src/context/context.ts:66](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L66)
 
 ---
 
@@ -58,4 +58,4 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L63)
+[packages/formula/src/context/context.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L65)

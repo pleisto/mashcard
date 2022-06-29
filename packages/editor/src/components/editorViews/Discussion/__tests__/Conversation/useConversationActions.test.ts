@@ -3,6 +3,11 @@ import { useConversationActions } from '../../Conversation/useConversationAction
 import * as PageDiscussionContext from '../../PageDiscussionContext'
 import { CommentedNode } from '../../useCommentedNodes'
 
+jest.mock('../../PageDiscussionContext', () => {
+  const { usePageDiscussionContext } = jest.requireActual('../../PageDiscussionContext')
+  return { usePageDiscussionContext: jest.fn().mockImplementation(usePageDiscussionContext) }
+})
+
 describe('useConversationActions', () => {
   it('triggers onCopyUrl correctly', () => {
     const mockCopy = jest.fn()

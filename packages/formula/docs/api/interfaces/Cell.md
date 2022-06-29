@@ -13,12 +13,12 @@
 - [cellId](Cell.md#cellid)
 - [columnId](Cell.md#columnid)
 - [columnIndex](Cell.md#columnindex)
-- [displayData](Cell.md#displaydata)
 - [namespaceId](Cell.md#namespaceid)
 - [rowId](Cell.md#rowid)
 - [rowIndex](Cell.md#rowindex)
 - [spreadsheetId](Cell.md#spreadsheetid)
 - [value](Cell.md#value)
+- [variableId](Cell.md#variableid)
 
 ## Properties
 
@@ -48,17 +48,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:138](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L138)
-
----
-
-### <a id="displaydata" name="displaydata"></a> displayData
-
-• **displayData**: `undefined` \| [`VariableDisplayData`](VariableDisplayData.md)
-
-#### Defined in
-
-[packages/formula/src/controls/types.ts:141](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L141)
+[packages/formula/src/controls/types.ts:139](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L139)
 
 ---
 
@@ -88,7 +78,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:139](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L139)
+[packages/formula/src/controls/types.ts:140](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L140)
 
 ---
 
@@ -108,4 +98,14 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:140](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L140)
+[packages/formula/src/controls/types.ts:141](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L141)
+
+---
+
+### <a id="variableid" name="variableid"></a> variableId
+
+• **variableId**: `string`
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:138](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L138)

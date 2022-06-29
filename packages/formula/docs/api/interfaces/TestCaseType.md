@@ -21,7 +21,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:226](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L226)
+[packages/formula/src/tests/testType.ts:227](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L227)
 
 ---
 
@@ -31,7 +31,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:229](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L229)
+[packages/formula/src/tests/testType.ts:230](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L230)
 
 ---
 
@@ -41,7 +41,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:225](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L225)
+[packages/formula/src/tests/testType.ts:226](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L226)
 
 ---
 
@@ -51,7 +51,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:228](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L228)
+[packages/formula/src/tests/testType.ts:229](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L229)
 
 ---
 
@@ -61,7 +61,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:227](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L227)
+[packages/formula/src/tests/testType.ts:228](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L228)
 
 ---
 
@@ -71,7 +71,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:222](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L222)
+[packages/formula/src/tests/testType.ts:223](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L223)
 
 ---
 
@@ -81,7 +81,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:223](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L223)
+[packages/formula/src/tests/testType.ts:224](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L224)
 
 ---
 
@@ -91,4 +91,4 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:224](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L224)
+[packages/formula/src/tests/testType.ts:225](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L225)

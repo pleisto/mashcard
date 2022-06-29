@@ -3,6 +3,11 @@ import { useDiscussionVisible } from '../../DiscussionList/useDiscussionVisible'
 import { CommentedNode } from '../../useCommentedNodes'
 import * as DrawerService from '../../../../ui/Drawer/drawer-service/useDrawer'
 
+jest.mock('../../../../ui/Drawer/drawer-service/useDrawer', () => {
+  const { useDrawer } = jest.requireActual('../../../../ui/Drawer/drawer-service/useDrawer')
+  return { useDrawer: jest.fn().mockImplementation(useDrawer) }
+})
+
 describe('useDiscussionVisible', () => {
   it('not visible if not matched mark id in page query', () => {
     const commentedNode: CommentedNode[] = [

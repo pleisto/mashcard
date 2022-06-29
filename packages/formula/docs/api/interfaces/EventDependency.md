@@ -30,7 +30,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:846](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L846)
+[packages/formula/src/types/index.ts:847](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L847)
 
 ---
 
@@ -40,7 +40,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:840](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L840)
+[packages/formula/src/types/index.ts:841](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L841)
 
 ---
 
@@ -50,7 +50,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:841](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L841)
+[packages/formula/src/types/index.ts:842](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L842)
 
 ---
 
@@ -60,7 +60,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:843](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L843)
+[packages/formula/src/types/index.ts:844](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L844)
 
 ---
 
@@ -70,7 +70,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:828](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L828)
+[packages/formula/src/types/index.ts:829](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L829)
 
 ---
 
@@ -80,7 +80,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:842](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L842)
+[packages/formula/src/types/index.ts:843](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L843)
 
 ## Methods
 

@@ -31,6 +31,7 @@
 - [findSpreadsheet](ContextInterface.md#findspreadsheet)
 - [findVariableById](ContextInterface.md#findvariablebyid)
 - [findVariableByName](ContextInterface.md#findvariablebyname)
+- [findVariableDisplayDataById](ContextInterface.md#findvariabledisplaydatabyid)
 - [findViewRender](ContextInterface.md#findviewrender)
 - [getDefaultVariableName](ContextInterface.md#getdefaultvariablename)
 - [invoke](ContextInterface.md#invoke)
@@ -61,7 +62,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:556](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L556)
+[packages/formula/src/types/index.ts:557](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L557)
 
 ---
 
@@ -111,7 +112,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:555](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L555)
+[packages/formula/src/types/index.ts:556](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L556)
 
 ---
 
@@ -317,6 +318,23 @@
 #### Returns
 
 `undefined` \| [`VariableInterface`](VariableInterface.md)
+
+---
+
+### <a id="findvariabledisplaydatabyid" name="findvariabledisplaydatabyid"></a> findVariableDisplayDataById
+
+▸ **findVariableDisplayDataById**(`namespaceId`, `variableId`): `undefined` \| [`VariableDisplayData`](VariableDisplayData.md)
+
+#### Parameters
+
+| Name          | Type     |
+| :------------ | :------- |
+| `namespaceId` | `string` |
+| `variableId`  | `string` |
+
+#### Returns
+
+`undefined` \| [`VariableDisplayData`](VariableDisplayData.md)
 
 ---
 

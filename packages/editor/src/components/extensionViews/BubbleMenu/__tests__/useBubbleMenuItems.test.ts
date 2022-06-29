@@ -3,12 +3,7 @@ import * as editorContextHook from '../../../../hooks/useEditorContext'
 import * as selectionHelpers from '../../../../helpers/selection'
 import { useNodeGroup } from '../useBubbleMenuItems/useNodeGroup'
 import { mockEditor } from '../../../../test/editor'
-import {
-  ToolbarGroupOption,
-  ToolbarItemGroupOption,
-  ToolbarItemOption,
-  ToolbarSubMenuOption
-} from '../../../ui'
+import { ToolbarGroupOption, ToolbarItemGroupOption, ToolbarItemOption, ToolbarSubMenuOption } from '../../../ui'
 import { useTextStyleGroup } from '../useBubbleMenuItems/useTextStyleGroup'
 import { useLinkGroup } from '../useBubbleMenuItems/useLinkGroup'
 import { useFontColorGroup } from '../useBubbleMenuItems/useFontColorGroup'
@@ -17,6 +12,9 @@ import { useCommentItemGroup } from '../useBubbleMenuItems/useCommentItemGroup'
 import { useExtraItemsGroup } from '../useBubbleMenuItems/useExtraItemsGroup'
 import { useBubbleMenuItems } from '../useBubbleMenuItems'
 import { Discussion } from '../../../../extensions'
+
+jest.mock('../../../../helpers/selection')
+jest.mock('../../../../hooks/useEditorContext')
 
 describe('useBubbleMenuItems', () => {
   it('gets menu items correctly', () => {

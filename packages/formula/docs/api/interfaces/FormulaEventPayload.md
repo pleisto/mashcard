@@ -26,7 +26,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:822](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L822)
+[packages/formula/src/types/index.ts:823](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L823)
 
 ---
 
@@ -36,7 +36,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:818](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L818)
+[packages/formula/src/types/index.ts:819](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L819)
 
 ---
 
@@ -46,7 +46,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:819](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L819)
+[packages/formula/src/types/index.ts:820](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L820)
 
 ---
 
@@ -56,7 +56,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:824](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L824)
+[packages/formula/src/types/index.ts:825](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L825)
 
 ---
 
@@ -66,7 +66,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:823](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L823)
+[packages/formula/src/types/index.ts:824](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L824)
 
 ---
 
@@ -76,7 +76,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:821](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L821)
+[packages/formula/src/types/index.ts:822](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L822)
 
 ---
 
@@ -86,4 +86,4 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:820](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L820)
+[packages/formula/src/types/index.ts:821](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L821)

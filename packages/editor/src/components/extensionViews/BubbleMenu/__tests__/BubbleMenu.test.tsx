@@ -4,6 +4,8 @@ import { BubbleMenu, shouldShow } from '../BubbleMenu'
 import * as helpers from '../../../../helpers/selection'
 import { Base } from '../../../../extensions/base'
 
+jest.mock('../../../../helpers/selection')
+
 describe('BubbleMenu', () => {
   const byRoleOptions = { hidden: true }
   it('renders nothing if `editor` is not ready', () => {

@@ -12,6 +12,7 @@
 
 - [cellId](CellInput.md#cellid)
 - [value](CellInput.md#value)
+- [variableId](CellInput.md#variableid)
 
 ## Properties
 
@@ -35,4 +36,14 @@ Pick.value
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:140](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L140)
+[packages/formula/src/controls/types.ts:141](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L141)
+
+---
+
+### <a id="variableid" name="variableid"></a> variableId
+
+• `Optional` **variableId**: [`MockedUUIDV4`](../README.md#mockeduuidv4)
+
+#### Defined in
+
+[packages/formula/src/tests/testType.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L63)

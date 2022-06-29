@@ -46,7 +46,7 @@ RequireField.currentGroupOption
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L111)
+[packages/formula/src/tests/testType.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L112)
 
 ---
 
@@ -60,19 +60,19 @@ RequireField.definition
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L108)
+[packages/formula/src/tests/testType.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L109)
 
-[packages/formula/src/tests/testType.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L108)
+[packages/formula/src/tests/testType.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L109)
 
 ---
 
 ### <a id="events" name="events"></a> events
 
-• **events**: ([``"empty_sync"``, `any`] \| [``"empty_async"``, `any`] \| [``"blockChangeName"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `name`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| [``"blockDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| [``"spreadsheetChangeName"``, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `spreadsheetId`: `string` ; `title`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| [``"spreadsheetDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| [`"columnChange"`, `OmitUsername`<(`__namedParameters`: { `columns`: [`Column`](Column.md)[] ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| [`"rowChange"`, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `rows`: [`Row`](Row.md)[] ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| [`"variableInsertOnly"`, [`BaseTestCase`](BaseTestCase.md)<{}\>] \| [`"variableInsertAndAwait"`, [`BaseTestCase`](BaseTestCase.md)<{}\>] \| [``"variableDelete"``, {}] \| [`"variableUpdateDefinition"`, [`FormulaDefinition`](FormulaDefinition.md)])[]
+• **events**: (readonly [``"empty_sync"``, `any`] \| readonly [``"empty_async"``, `any`] \| readonly [``"blockChangeName"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `name`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| readonly [``"blockDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetChangeName"``, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `spreadsheetId`: `string` ; `title`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"columnChange"`, `OmitUsername`<(`__namedParameters`: { `columns`: [`Column`](Column.md)[] ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"rowChange"`, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `rows`: [`Row`](Row.md)[] ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"variableInsertOnly"`, [`BaseTestCase`](BaseTestCase.md)<{}\>] \| readonly [`"variableInsertAndAwait"`, [`BaseTestCase`](BaseTestCase.md)<{}\>] \| readonly [``"variableDelete"``, {}] \| readonly [`"variableUpdateDefinition"`, [`FormulaDefinition`](FormulaDefinition.md)])[]
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:168](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L168)
+[packages/formula/src/tests/testType.ts:169](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L169)
 
 ---
 
@@ -86,7 +86,7 @@ RequireField.expected
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L113)
+[packages/formula/src/tests/testType.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L114)
 
 ---
 
@@ -100,7 +100,7 @@ RequireField.groupOptions
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L110)
+[packages/formula/src/tests/testType.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L111)
 
 ---
 
@@ -114,7 +114,7 @@ RequireField.jestTitle
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:120](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L120)
+[packages/formula/src/tests/testType.ts:121](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L121)
 
 ---
 
@@ -128,7 +128,7 @@ RequireField.label
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L112)
+[packages/formula/src/tests/testType.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L113)
 
 ---
 
@@ -142,7 +142,7 @@ RequireField.name
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L116)
+[packages/formula/src/tests/testType.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L117)
 
 ---
 
@@ -156,7 +156,7 @@ RequireField.namespaceId
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L114)
+[packages/formula/src/tests/testType.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L115)
 
 ---
 
@@ -170,7 +170,7 @@ RequireField.newAbbrevInput
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L109)
+[packages/formula/src/tests/testType.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L110)
 
 ---
 
@@ -184,7 +184,7 @@ RequireField.position
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:118](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L118)
+[packages/formula/src/tests/testType.ts:119](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L119)
 
 ---
 
@@ -194,7 +194,7 @@ RequireField.position
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:163](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L163)
+[packages/formula/src/tests/testType.ts:164](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L164)
 
 ---
 
@@ -204,7 +204,7 @@ RequireField.position
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:164](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L164)
+[packages/formula/src/tests/testType.ts:165](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L165)
 
 ---
 
@@ -214,7 +214,7 @@ RequireField.position
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:162](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L162)
+[packages/formula/src/tests/testType.ts:163](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L163)
 
 ---
 
@@ -228,7 +228,7 @@ RequireField.richType
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L117)
+[packages/formula/src/tests/testType.ts:118](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L118)
 
 ---
 
@@ -242,7 +242,7 @@ RequireField.todoMessage
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:119](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L119)
+[packages/formula/src/tests/testType.ts:120](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L120)
 
 ---
 
@@ -256,7 +256,7 @@ RequireField.variableId
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L115)
+[packages/formula/src/tests/testType.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L116)
 
 ---
 
@@ -266,7 +266,7 @@ RequireField.variableId
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:165](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L165)
+[packages/formula/src/tests/testType.ts:166](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L166)
 
 ## Methods
 
