@@ -147,6 +147,7 @@ export const useFormula = ({
     editable: true,
     rootId: namespaceId,
     formulaId: variableId,
+    maxScreen,
     placeholder: formulaIsNormal ? 'Add Formula' : undefined,
     content: inputRef.current.content
   })

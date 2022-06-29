@@ -6,6 +6,7 @@ import { globalCss, theme } from '@mashcard/design-system'
 
 interface FormulaEditorProps {
   formulaEditor: Editor | null
+  maxScreen?: boolean
   width?: number
   minHeight?: number
 }
@@ -33,8 +34,9 @@ const formulaEditorStyles = globalCss({
   }
 })
 
-export const FormulaEditor: React.FC<FormulaEditorProps> = ({ formulaEditor, width, minHeight }) => {
+export const FormulaEditor: React.FC<FormulaEditorProps> = ({ formulaEditor, width, minHeight, maxScreen }) => {
   formulaEditorStyles()
+  const style = MashcardFomulaEditor({ maxScreen })
   return (
     <>
       <EditorContent
@@ -42,7 +44,7 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({ formulaEditor, wid
           ...(width ? { width: `${width}px` } : {}),
           ...(minHeight ? { minHeight: `${minHeight}px` } : {})
         }}
-        className={`mashcard-formula-editor ${MashcardFomulaEditor}`}
+        className={`mashcard-formula-editor ${style}`}
         editor={formulaEditor}
       />
     </>

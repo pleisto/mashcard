@@ -7,7 +7,7 @@ import {
   FormulaEditorReplaceRootTrigger,
   FormulaEditorUpdateTrigger
 } from '@mashcard/schema'
-import { Base } from '../../extensions/base'
+import { Base, updateExtensionOptions } from '../../extensions/base'
 import { buildJSONContentByArray } from '../../helpers'
 
 export interface UseFormulaEditorProps {
@@ -16,6 +16,7 @@ export interface UseFormulaEditorProps {
   rootId?: string
   formulaId?: string
   placeholder?: string
+  maxScreen?: boolean
 }
 
 export function useFormulaEditor({
@@ -23,6 +24,7 @@ export function useFormulaEditor({
   content,
   rootId,
   formulaId,
+  maxScreen,
   placeholder
 }: UseFormulaEditorProps): Editor | null {
   const editor = useEditor({
@@ -35,7 +37,7 @@ export function useFormulaEditor({
         text: true,
         paragraph: { native: true },
         formulaType: true,
-        formulaKeyDown: { formulaId, rootId, maxScreen: false }
+        formulaKeyDown: { formulaId, rootId, maxScreen }
       }),
       ...(placeholder ? [Placeholder.configure({ placeholder })] : [])
     ],
@@ -57,6 +59,11 @@ export function useFormulaEditor({
       }
     }
   })
+
+  React.useEffect(() => {
+    if (!editor) return
+    updateExtensionOptions(editor.extensionManager.extensions, { formulaKeyDown: { formulaId, rootId, maxScreen } })
+  }, [editor, formulaId, rootId, maxScreen])
 
   React.useEffect(() => {
     if (editor && !editor.isDestroyed && editable && rootId && formulaId) {

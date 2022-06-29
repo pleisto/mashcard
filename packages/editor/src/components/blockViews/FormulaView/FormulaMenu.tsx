@@ -164,7 +164,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       </div>
       <div className="formula-menu-row">
         <div className="formula-menu-item">
-          <FormulaEditor formulaEditor={formulaEditor} />
+          <FormulaEditor formulaEditor={formulaEditor} maxScreen={maxScreen} />
         </div>
       </div>
       <FormulaResult variableT={temporaryVariableT} pageId={rootId} />
@@ -195,7 +195,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       defaultVisible={defaultVisible}
       visible={visible}
       className={Root.MashcardFormulaMenuPopover}
-      destroyTooltipOnHide={true}
+      destroyTooltipOnHide
       content={menu}
       placement="bottomStart"
       trigger={['click']}>

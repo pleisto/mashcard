@@ -8,6 +8,16 @@ const onlyBottomBorder = {
 }
 
 export const MashcardFomulaEditor = css({
+  variants: {
+    maxScreen: {
+      true: {
+        '.ProseMirror': {}
+      },
+      false: {
+        '.ProseMirror': {}
+      }
+    }
+  },
   '.ProseMirror': {
     position: 'relative',
     display: 'inline-block',
@@ -53,4 +63,4 @@ export const MashcardFomulaEditor = css({
       }
     }
   }
-})()
+})
