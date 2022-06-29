@@ -125,7 +125,7 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ item, isAn
       ? {
           domain: ANYONE_DOMAIN,
           avatarData: {
-            __typename: 'avatarComp',
+            __typename: 'AvatarComp',
             comp: (
               <div className="anyone-icon">
                 <Anyone />
