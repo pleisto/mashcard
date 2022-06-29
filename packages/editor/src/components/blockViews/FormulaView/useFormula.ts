@@ -27,7 +27,7 @@ import {
   FormulaEditorHoverEventTrigger,
   FormulaEditorSelectEventTrigger,
   FormulaEditorUpdateTrigger,
-  FormulaEditorSavedTrigger
+  FormulaEditorCloseTrigger
 } from '@mashcard/schema'
 import { JSONContent } from '@tiptap/core'
 import { devLog } from '@mashcard/design-system'
@@ -366,7 +366,7 @@ export const useFormula = ({
   const onSaveFormula = React.useCallback(async (): Promise<void> => {
     if (isDisableSave()) return
     await saveFormula()
-    MashcardEventBus.dispatch(FormulaEditorSavedTrigger({ formulaId: variableId, rootId: namespaceId }))
+    MashcardEventBus.dispatch(FormulaEditorCloseTrigger({ formulaId: variableId, rootId: namespaceId }))
   }, [isDisableSave, namespaceId, saveFormula, variableId])
 
   const commitFormula = React.useCallback(
@@ -386,10 +386,18 @@ export const useFormula = ({
   React.useEffect(() => {
     const listener = MashcardEventBus.subscribe(
       FormulaKeyboardEventTrigger,
-      async event => {
-        const { isEditor, key, completionIndex } = event.payload
+      async e => {
+        const { type, event, completionIndex } = e.payload
+        if (!event) {
+          if (completionIndex === completion.activeCompletionIndex) {
+            await handleSelectActiveCompletion()
+          } else {
+            setCompletionByIndex(completionIndex)
+          }
+          return
+        }
         let newIndex: number
-        switch (key) {
+        switch (event.key) {
           case 'ArrowUp':
             newIndex =
               completion.activeCompletionIndex - 1 < 0
@@ -408,18 +416,14 @@ export const useFormula = ({
             await handleSelectActiveCompletion()
             break
           case 'Enter':
-            if (isEditor) {
-              await onSaveFormula()
-            } else {
+            if (type === 'autoComplete') {
               await handleSelectActiveCompletion()
+            } else {
+              await onSaveFormula()
             }
             break
-          case 'Click':
-            if (completionIndex === completion.activeCompletionIndex) {
-              await handleSelectActiveCompletion()
-            } else {
-              setCompletionByIndex(completionIndex)
-            }
+          case 'Escape':
+            MashcardEventBus.dispatch(FormulaEditorCloseTrigger({ formulaId: variableId, rootId: namespaceId }))
             break
         }
       },

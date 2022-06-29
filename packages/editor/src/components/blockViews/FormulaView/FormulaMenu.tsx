@@ -9,7 +9,7 @@ import { CompletionType, UseFormulaInput, UseFormulaOutput } from './useFormula'
 import {
   MashcardEventBus,
   FormulaCalculateTrigger,
-  FormulaEditorSavedTrigger,
+  FormulaEditorCloseTrigger,
   FormulaKeyboardEventTrigger
 } from '@mashcard/schema'
 import * as Root from '../../ui/Formula/Formula.style'
@@ -67,14 +67,11 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
 
   React.useEffect(() => {
     const listener = MashcardEventBus.subscribe(
-      FormulaEditorSavedTrigger,
+      FormulaEditorCloseTrigger,
       e => {
         close()
       },
-      {
-        eventId: `${rootId},${formulaId}`,
-        subscribeId: `FormulaMenu#${rootId},${formulaId}`
-      }
+      { eventId: `${rootId},${formulaId}`, subscribeId: `FormulaMenu#${rootId},${formulaId}` }
     )
     return () => listener.unsubscribe()
   }, [close, formulaId, rootId])
@@ -118,7 +115,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const handleNameKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>): Promise<void> => {
     if (e.key === 'Enter') {
       const result = MashcardEventBus.dispatch(
-        FormulaKeyboardEventTrigger({ key: e.key, formulaId, rootId, isEditor: true, completionIndex: -1 })
+        FormulaKeyboardEventTrigger({ event: e, formulaId, rootId, type: 'name', completionIndex: -1 })
       )
       await Promise.all(result)
     }

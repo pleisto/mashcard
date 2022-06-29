@@ -10,11 +10,11 @@ interface FormulaEditorEventType {
 
 export const FormulaKeyboardEventTrigger = event<
   {
-    key: string
+    event: Pick<KeyboardEvent, 'key' | 'metaKey' | 'ctrlKey'> | null
     formulaId: string
     rootId: string
     completionIndex: number
-    isEditor: boolean
+    type: 'editor' | 'name' | 'autoComplete'
   },
   Promise<void>
 >()('FormulaKeyboardEventTrigger', ({ formulaId, rootId }) => {
@@ -56,8 +56,8 @@ export const FormulaCalculateTrigger = event<
   return { id: `${rootId},${formulaId}` }
 })
 
-export const FormulaEditorSavedTrigger = event<{ formulaId: string; rootId: string }>()(
-  'FormulaEditorSavedTrigger',
+export const FormulaEditorCloseTrigger = event<{ formulaId: string; rootId: string }>()(
+  'FormulaEditorCloseTrigger',
   ({ formulaId, rootId }) => {
     return { id: `${rootId},${formulaId}`, formulaId, rootId }
   }

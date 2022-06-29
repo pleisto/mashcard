@@ -18,10 +18,10 @@ const formulaHandleKeyDown: ({
   return (view, event) => {
     const key = event.key
 
-    if (['Enter', 'Tab', 'ArrowUp', 'ArrowDown'].includes(key)) {
+    if (['Enter', 'Tab', 'ArrowUp', 'ArrowDown', 'Escape'].includes(key)) {
       if (rootId && formulaId) {
         MashcardEventBus.dispatch(
-          FormulaKeyboardEventTrigger({ key, formulaId, rootId, isEditor: true, completionIndex: -1 })
+          FormulaKeyboardEventTrigger({ event, formulaId, rootId, type: 'editor', completionIndex: -1 })
         )
       }
       return true

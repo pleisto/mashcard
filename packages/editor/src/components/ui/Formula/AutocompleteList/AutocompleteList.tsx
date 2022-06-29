@@ -49,14 +49,14 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({ rootId, form
 
   const onKeyDown: React.KeyboardEventHandler<HTMLDivElement> = async event => {
     const result = MashcardEventBus.dispatch(
-      FormulaKeyboardEventTrigger({ key: event.key, formulaId, rootId, isEditor: false, completionIndex: -1 })
+      FormulaKeyboardEventTrigger({ event, formulaId, rootId, type: 'autoComplete', completionIndex: -1 })
     )
     await Promise.all(result)
   }
 
   const handleOnClick = async (index: number): Promise<void> => {
     const result = MashcardEventBus.dispatch(
-      FormulaKeyboardEventTrigger({ key: 'Click', formulaId, rootId, isEditor: false, completionIndex: index })
+      FormulaKeyboardEventTrigger({ event: null, formulaId, rootId, type: 'autoComplete', completionIndex: index })
     )
     await Promise.all(result)
   }
