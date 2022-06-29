@@ -9,6 +9,7 @@ import {
 } from '@mashcard/schema'
 import { Base, updateExtensionOptions } from '../../extensions/base'
 import { buildJSONContentByArray } from '../../helpers'
+import Paragraph from '@tiptap/extension-paragraph'
 
 export interface UseFormulaEditorProps {
   content: JSONContent | undefined
@@ -35,10 +36,10 @@ export function useFormulaEditor({
       Base.configure({
         document: true,
         text: true,
-        paragraph: { native: true },
         formulaType: true,
         formulaKeyDown: { formulaId, rootId, maxScreen }
       }),
+      Paragraph.extend({ defining: true, code: true }),
       ...(placeholder ? [Placeholder.configure({ placeholder })] : [])
     ],
     onFocus: (props: EditorEvents['focus']) => {

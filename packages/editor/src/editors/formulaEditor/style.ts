@@ -11,10 +11,25 @@ export const MashcardFomulaEditor = css({
   variants: {
     maxScreen: {
       true: {
-        '.ProseMirror': {}
-      },
-      false: {
-        '.ProseMirror': {}
+        '.ProseMirror': {
+          height: 300,
+          overflow: 'hidden',
+          overflowY: 'scroll',
+          '&::-webkit-scrollbar': {
+            appearance: 'none'
+          },
+          'p::before': {
+            transform: 'none',
+            top: '0%'
+          },
+          borderBottomColor: theme.colors.dividerPrimary,
+          '&:hover': {
+            borderBottomColor: theme.colors.dividerPrimary
+          },
+          '&:focus-within': {
+            borderBottomColor: theme.colors.dividerPrimary
+          }
+        }
       }
     }
   },
@@ -27,9 +42,8 @@ export const MashcardFomulaEditor = css({
     fontFamily: 'Fira Code',
     color: theme.colors.typePrimary,
     fontSize: '1em',
-    lineHeight: '1.8',
-    backgroundColor: theme.colors.white,
     backgroundImage: 'none',
+    lineHeight: '1.8',
     border: `1px solid ${theme.colors.grey3}`,
     borderRadius: '0px',
     transition: 'all .3s',
@@ -40,6 +54,7 @@ export const MashcardFomulaEditor = css({
     paddingRight: '0!important',
     boxShadow: 'none',
     '&::placeholder': {
+      position: 'unset',
       color: theme.colors.typeThirdary
     },
     '&:hover': {

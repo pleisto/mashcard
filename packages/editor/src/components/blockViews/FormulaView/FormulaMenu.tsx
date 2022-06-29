@@ -89,6 +89,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
 
   const onClickToggleMaxScreen = (): void => {
     setMaxScreen(!maxScreen)
+    formulaEditor?.commands.focus()
   }
 
   const onClickAutoFormat = async (): Promise<void> => {

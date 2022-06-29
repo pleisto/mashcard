@@ -30,7 +30,6 @@ export const FormulaAutocomplete = styled('div', {
     overflowY: 'scroll',
 
     '&::-webkit-scrollbar': {
-      width: 0,
       appearance: 'none'
     },
 
@@ -42,7 +41,7 @@ export const FormulaAutocomplete = styled('div', {
       padding: '4px 12px',
 
       '&.active, &:active, &:focus, &:hover': {
-        background: '#0000000d'
+        background: theme.colors.secondaryHover
       },
 
       '.autocomplete-list-item-icon': {
@@ -128,6 +127,7 @@ export const FormulaAutocomplete = styled('div', {
     '.autocomplete-preview-section-head': {
       color: '#847e8e',
       lineHeight: '20px',
+      paddingBottom: '4px',
       fontSize: 14,
       fontWeight: 600,
       marginBottom: 4
