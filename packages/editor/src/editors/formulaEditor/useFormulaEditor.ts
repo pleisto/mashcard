@@ -35,7 +35,7 @@ export function useFormulaEditor({
         text: true,
         paragraph: { native: true },
         formulaType: true,
-        formulaKeyDown: { formulaId, rootId }
+        formulaKeyDown: { formulaId, rootId, maxScreen: false }
       }),
       ...(placeholder ? [Placeholder.configure({ placeholder })] : [])
     ],

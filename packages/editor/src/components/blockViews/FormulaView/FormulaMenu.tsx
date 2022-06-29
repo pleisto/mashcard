@@ -23,9 +23,9 @@ export interface FormulaMenuProps {
   formulaEditor: UseFormulaOutput['formulaEditor']
   references: UseFormulaOutput['references']
   formulaFormat: UseFormulaOutput['formulaFormat']
+  maxScreenState: UseFormulaOutput['maxScreenState']
   defaultVisible: boolean
-  visible: boolean
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>
+  visibleState: [boolean, React.Dispatch<React.SetStateAction<boolean>>]
   onVisibleChange: (visible: boolean) => void
   handleDelete: (variable?: VariableData) => void
   isDisableSave: () => boolean
@@ -43,8 +43,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   formulaEditor,
   defaultVisible,
   onVisibleChange,
-  visible,
-  setVisible,
+  visibleState: [visible, setVisible],
+  maxScreenState: [maxScreen, setMaxScreen],
   isDisableSave,
   onSaveFormula,
   formulaFormat,
@@ -53,12 +53,12 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
 }) => {
   const i18nKey = 'formula.menu'
   const [t] = useEditorI18n()
-  const [maxScreen, setMaxScreen] = React.useState(false)
+
   const close = React.useCallback((): void => {
     setVisible(false)
     setMaxScreen(false)
     onVisibleChange?.(false)
-  }, [onVisibleChange, setVisible])
+  }, [onVisibleChange, setMaxScreen, setVisible])
 
   const triggerCalculate = async (): Promise<void> => {
     const result = MashcardEventBus.dispatch(FormulaCalculateTrigger({ skipExecute: true, formulaId, rootId }))

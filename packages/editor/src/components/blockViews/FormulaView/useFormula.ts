@@ -59,6 +59,7 @@ export interface UseFormulaOutput {
   selected: SelectedType | undefined
   temporaryVariableT: VariableData | undefined
   nameRef: React.MutableRefObject<FormulaNameType>
+  maxScreenState: [boolean, React.Dispatch<React.SetStateAction<boolean>>]
   formulaIsNormal: boolean
   formulaEditor: Editor | null
   isDisableSave: () => boolean
@@ -140,6 +141,7 @@ export const useFormula = ({
     activeCompletionIndex: 0
   })
   const [references, setReferences] = React.useState(defaultReferences)
+  const [maxScreen, setMaxScreen] = React.useState(false)
 
   const formulaEditor = useFormulaEditor({
     editable: true,
@@ -521,6 +523,7 @@ export const useFormula = ({
     references,
     formulaFormat: handleFormat,
     temporaryVariableT: temporaryVariableTRef.current,
+    maxScreenState: [maxScreen, setMaxScreen],
     savedVariableT,
     selected,
     nameRef,
