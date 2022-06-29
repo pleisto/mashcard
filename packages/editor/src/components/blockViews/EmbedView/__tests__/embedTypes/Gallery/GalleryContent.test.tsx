@@ -3,6 +3,8 @@ import { GalleryImage } from '../../../../../../extensions'
 import { GalleryContent } from '../../../embedTypes'
 import * as hooks from '../../../embedTypes/Gallery/useUnsplashImages'
 
+jest.mock('../../../embedTypes/Gallery/useUnsplashImages')
+
 describe('GalleryContent', () => {
   it('renders GalleryContent correctly', () => {
     const extension: any = { options: {} }

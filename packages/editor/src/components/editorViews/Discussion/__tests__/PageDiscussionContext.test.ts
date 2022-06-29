@@ -9,6 +9,11 @@ import { CommentData, ConversationData, Discussion } from '../../../../extension
 import { JSONContent } from '@tiptap/core'
 import { Editor } from '@tiptap/react'
 
+jest.mock('../../../../hooks/useEditorContext', () => {
+  const { useEditorContext } = jest.requireActual('../../../../hooks/useEditorContext')
+  return { useEditorContext: jest.fn().mockImplementation(useEditorContext) }
+})
+
 describe('PageDiscussionContext', () => {
   const mockEditorForDiscussion = (): Editor => {
     return mockEditor({

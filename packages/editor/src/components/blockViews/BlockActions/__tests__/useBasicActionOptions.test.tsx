@@ -7,9 +7,17 @@ import * as editorHooks from '../../../../hooks/useEditorContext'
 import * as blockHooks from '../../../../hooks/useBlockContext'
 import { UseActionOptionsProps, useBasicActionOptions } from '../useBasicActionOptions'
 
-jest.mock('../../../../hooks/useDocumentEditable.ts', () => ({
+jest.mock('../../../../hooks/useDocumentEditable', () => ({
   useDocumentEditable: () => [true]
 }))
+jest.mock('../../../../hooks/useEditorContext', () => {
+  const { useEditorContext } = jest.requireActual('../../../../hooks/useEditorContext')
+  return { useEditorContext: jest.fn().mockImplementation(useEditorContext) }
+})
+jest.mock('../../../../hooks/useBlockContext', () => {
+  const { useBlockContext } = jest.requireActual('../../../../hooks/useBlockContext')
+  return { useBlockContext: jest.fn().mockImplementation(useBlockContext) }
+})
 
 describe('useBasicActionOptions', () => {
   it('returns null when no types specified', () => {

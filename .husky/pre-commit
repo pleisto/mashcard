@@ -9,4 +9,6 @@ yarn turbo run lint:rubocop
 
 yarn turbo run tsdoc
 git ls-files --deleted | grep 'docs\/api\/' | xargs -I{} sh -c 'git rm {}'
-{ git ls-files --modified && git ls-files -o --exclude-standard; } | grep 'docs\/api\/' | xargs -I{} sh -c 'chmod -x {} && git add {}'
+MODIFIED_DOC_FILES=$({ git ls-files --modified && git ls-files -o --exclude-standard; } | grep 'docs\/api\/')
+yarn prettier --write $(echo $MODIFIED_DOC_FILES | tr '\n' ' ')
+echo $MODIFIED_DOC_FILES | xargs -I{} sh -c 'chmod -x {} && git add {}'

@@ -31,6 +31,6 @@
     "lint:type": "run -T tsc",
     "test:jest": "run -T jest",
     "test:jest:fix": "run -T jest --silent -u",
-    "tsdoc": "run -T typedoc --options ../../tools/typedoc/config.json --externalPattern './src/functions/**/*.ts' --out ./docs --entryPoints ./src/index.ts"
+    "tsdoc": "run -T typedoc --options ../../tools/typedoc/config.json --externalPattern './src/functions/**/*.ts' --out ./docs/api --entryPoints ./src/index.ts"
   }
 }

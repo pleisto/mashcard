@@ -2,6 +2,8 @@ import { render } from '@testing-library/react'
 import { BlockContainer } from '../'
 import * as editorHooks from '../../../../hooks/useEditorContext'
 
+jest.mock('../../../../hooks/useEditorContext')
+
 describe('BlockContainer', () => {
   it(`changes block pointer event when editor editable state change`, () => {
     const node: any = { attrs: { uuid: 1 } }
@@ -42,7 +44,8 @@ describe('BlockContainer', () => {
             type: 'item',
             name: 'item'
           }
-        ]}>
+        ]}
+      >
         block
       </BlockContainer>
     )
