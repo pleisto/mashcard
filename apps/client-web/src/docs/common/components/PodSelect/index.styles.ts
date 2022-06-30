@@ -17,7 +17,7 @@ export const selectStyle = {
   width: '100%',
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: '.75rem .75rem',
+  padding: '.75rem 1rem',
   [`& .${prefix}-icon-change`]: {
     fontSize: '1.25rem',
     color: theme.colors.iconThirdary

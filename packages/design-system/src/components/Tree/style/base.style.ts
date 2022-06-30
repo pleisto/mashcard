@@ -1,5 +1,5 @@
 import { styled, theme } from '../../../themes'
-import { rgba, rem } from 'polished'
+import { rem } from 'polished'
 
 export const PageBlock = styled('div', {})
 
@@ -36,7 +36,7 @@ export const ContentArrow = styled('div', {
   position: 'relative',
   width: theme.space.lg,
   height: theme.space.xxxl,
-  borderRadius: '3px',
+  borderRadius: `${theme.space.xxs} 0 0 ${theme.space.xxs}`,
   color: theme.colors.typeSecondary,
   fontSize: theme.fontSizes.body,
   paddingRight: theme.space.xxs,
@@ -132,7 +132,6 @@ export const Base = styled('div', {
   borderBottom: `${theme.space.xxxs} solid #00000000`,
   outline: 'none',
   '&:hover': {
-    include: ['treeDefault'],
     background: theme.colors.secondaryHover,
     backdropFilter: 'blur(40px)'
   },
@@ -150,14 +149,10 @@ export const Base = styled('div', {
     },
     selected: {
       true: {
-        background: theme.colors.secondaryDrag,
-        borderColor: rgba(44, 91, 255, 0.04),
+        background: theme.colors.secondarySelected,
         outline: 'none',
-        include: ['treeSelected'],
         '&:hover': {
-          include: ['treeSelected'],
-          background: theme.colors.secondaryDrag,
-          borderColor: rgba(44, 91, 255, 0.04)
+          background: theme.colors.secondarySelected
         }
       }
     },
