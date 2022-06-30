@@ -1,4 +1,4 @@
-import { Editor } from '@tiptap/core'
+import { Editor, SingleCommands } from '@tiptap/core'
 import { Plugin, PluginKey, EditorState, TextSelection } from 'prosemirror-state'
 import { Decoration, DecorationSet, EditorView } from 'prosemirror-view'
 import { findNodesInSelection } from '../../../helpers'
@@ -22,6 +22,10 @@ declare module '@tiptap/core' {
        * Set a multiple node selection
        */
       setMultipleNodeSelection: (anchor: number, head: number) => ReturnType
+      /**
+       * start select nodes
+       */
+      startMultipleNodeSelection: (event: MouseEvent) => ReturnType
     }
   }
 }
@@ -108,22 +112,51 @@ function resolveCoordinates(
   }
 }
 
+function startSelection(view: EditorView, event: MouseEvent, commands: SingleCommands): void {
+  const result = view.posAtCoords({ left: event.x, top: event.y })
+
+  // if click happens outside the doc nodes, assume a Multiple Node Selection will happen.
+  // so call blur to avoid Text Selection happen.
+  // case: result = null
+  // click outside the document
+  // case: result.inside === -1
+  // click on the doc node
+  if (!result || result.inside === -1) {
+    view.dispatch(
+      view.state.tr.setMeta('multipleNodeSelectingStart', {
+        x: event.x,
+        y: event.y
+      })
+    )
+    commands.blur()
+  }
+}
+
 function resolveSelection(editor: Editor, view: EditorView, pluginState: SelectionState, event: MouseEvent): void {
   if (!pluginState.multiNodeSelecting) return
 
   const { x, y } = pluginState.multiNodeSelecting
   const rect = view.dom.getBoundingClientRect()
 
+  const setTextSelection = (): void => {
+    const anchor = view.posAtCoords({ left: x, top: y })
+    editor.commands.setTextSelection(anchor?.pos ?? 0)
+  }
+
   const coordinates = resolveCoordinates({ x, y }, { x: event.x, y: event.y }, rect)
 
-  if (!coordinates) return
+  if (!coordinates) {
+    setTextSelection()
+    return
+  }
 
   const anchor = view.posAtCoords({ left: coordinates.anchor.x, top: coordinates.anchor.y })
   const head = view.posAtCoords({ left: coordinates.head.x, top: coordinates.head.y })
 
-  if (!anchor || !head) return
-
-  if (anchor.pos === head.pos) return
+  if (!anchor || !head || anchor.pos === head.pos) {
+    setTextSelection()
+    return
+  }
 
   editor.commands.setMultipleNodeSelection(anchor.pos, head.pos)
 }
@@ -155,7 +188,6 @@ class SelectionView {
     if (pluginState?.multiNodeSelecting) {
       resolveSelection(this.editor, this.view, pluginState, event)
       this.view.dispatch(this.view.state.tr.setMeta('multipleNodeSelectingEnd', true))
-      this.editor.commands.focus()
     }
   }
 
@@ -184,6 +216,12 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
             tr.setSelection(selection)
           }
 
+          return true
+        },
+      startMultipleNodeSelection:
+        event =>
+        ({ view, commands }) => {
+          startSelection(view, event, commands)
           return true
         }
     }
@@ -216,19 +254,7 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
         props: {
           handleDOMEvents: {
             mousedown: (view, event) => {
-              const result = view.posAtCoords({ left: event.x, top: event.y })
-
-              // if click happens outside the doc nodes, assume a Multiple Node Selection will happen.
-              // so call blur to avoid Text Selection happen.
-              if (result?.inside === -1) {
-                view.dispatch(
-                  view.state.tr.setMeta('multipleNodeSelectingStart', {
-                    x: event.x,
-                    y: event.y
-                  })
-                )
-                this.editor.commands.blur()
-              }
+              startSelection(view, event, this.editor.commands)
               return false
             },
             mousemove: (view, event) => {

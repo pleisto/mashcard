@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import { FC, MouseEventHandler, useCallback, useEffect, useMemo, useState } from 'react'
 import { Spin } from '@mashcard/design-system'
 import { EditorContent, useEditor } from '@mashcard/editor'
 import { DocumentTitle } from './components/DocumentTitle'
@@ -18,7 +18,7 @@ interface DocumentPageProps {
   mode?: 'default' | 'presentation'
 }
 
-export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
+export const DocumentPage: FC<DocumentPageProps> = ({ mode }) => {
   const docMeta = useDocMeta()
   const navigate = useNavigate()
   const [latestLoading, setLatestLoading] = useState(true)
@@ -65,8 +65,16 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
   }, [editor, freeze])
 
   useEffect(() => {
-  if (!loading) setLatestLoading(false)
-} , [loading, setLatestLoading])
+    if (!loading) setLatestLoading(false)
+  }, [loading, setLatestLoading])
+
+  // setup this mouse down handler to start node selection when click outside the document area
+  const handleMouseDown = useCallback<MouseEventHandler<HTMLDivElement>>(
+    event => {
+      editor?.commands.startMultipleNodeSelection(event.nativeEvent)
+    },
+    [editor?.commands]
+  )
 
   if (latestLoading || !currentRootBlock) {
     return (
@@ -84,7 +92,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
           '@mdOnly': 'md',
           '@smDown': 'sm'
         }}
-      >
+        onMouseDown={handleMouseDown}>
         <DocumentTitle docBlock={currentRootBlock} editable={documentEditable} meta={meta} setMeta={setMeta} />
         <Root.PageContent>
           <EditorContent
