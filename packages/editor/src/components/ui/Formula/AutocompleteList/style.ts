@@ -18,6 +18,7 @@ export const FormulaAutocomplete = styled('div', {
   background: theme.colors.backgroundOverlayThirdary,
   border: `1px solid ${theme.colors.grey3}`,
   borderRadius: 4,
+  margin: '12px 0 0 0',
   height: 280,
 
   '.formula-autocomplete-list': {
@@ -27,18 +28,19 @@ export const FormulaAutocomplete = styled('div', {
     width: 174,
     height: '100%',
     borderRight: '1px solid #0000000d',
+    overflow: 'hidden',
     overflowY: 'scroll',
 
-    '&::-webkit-scrollbar': {
-      appearance: 'none'
-    },
+    // '&::-webkit-scrollbar': {
+    //   appearance: 'none'
+    // },
 
     '.autocomplete-list-item': {
       cursor: 'pointer',
       display: 'flex',
       flexDirection: 'row',
       width: '100%',
-      padding: '4px 12px',
+      padding: '4px 4px 4px 12px',
 
       '&.active, &:active, &:focus, &:hover': {
         background: theme.colors.secondaryHover
@@ -78,9 +80,9 @@ export const FormulaAutocomplete = styled('div', {
     overflow: 'hidden',
     overflowY: 'scroll',
 
-    '&::-webkit-scrollbar': {
-      appearance: 'none'
-    },
+    // '&::-webkit-scrollbar': {
+    //   appearance: 'none'
+    // },
 
     '.autocomplete-preview-block': {
       marginTop: 16,

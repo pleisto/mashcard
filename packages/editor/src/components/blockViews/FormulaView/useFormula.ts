@@ -287,17 +287,20 @@ export const useFormula = ({
     await doCalculate(false)
   }, [currentCtx, doCalculate, formulaIsNormal])
 
-  const handleSelectActiveCompletion = React.useCallback(async (): Promise<void> => {
-    const currentCompletion = completion.activeCompletion
-    if (!currentCompletion) return
+  const handleSelectActiveCompletion = React.useCallback(
+    async (activeCompletion?: Completion): Promise<void> => {
+      const currentCompletion = activeCompletion ?? completion.activeCompletion
+      if (!currentCompletion) return
 
-    const ctx = currentCtx()
-    if (!ctx) return
-    const newInput = applyCompletion(ctx, currentCompletion)
+      const ctx = currentCtx()
+      if (!ctx) return
+      const newInput = applyCompletion(ctx, currentCompletion)
 
-    inputRef.current = input2content(newInput, formulaIsNormal)
-    await doCalculate(false)
-  }, [completion.activeCompletion, currentCtx, doCalculate, formulaIsNormal])
+      inputRef.current = input2content(newInput, formulaIsNormal)
+      await doCalculate(false)
+    },
+    [completion.activeCompletion, currentCtx, doCalculate, formulaIsNormal]
+  )
 
   const isDisableSave = React.useCallback((): boolean => {
     if (!formulaContext) return true
@@ -392,11 +395,8 @@ export const useFormula = ({
       async e => {
         const { type, event, completionIndex } = e.payload
         if (!event) {
-          if (completionIndex === completion.activeCompletionIndex) {
-            await handleSelectActiveCompletion()
-          } else {
-            setCompletionByIndex(completionIndex)
-          }
+          await handleSelectActiveCompletion(completion.completions[completionIndex])
+          setCompletionByIndex(completionIndex)
           return
         }
         let newIndex: number

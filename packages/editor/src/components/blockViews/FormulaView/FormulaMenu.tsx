@@ -196,8 +196,10 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       defaultVisible={defaultVisible}
       visible={visible}
       className={Root.MashcardFormulaMenuPopover}
+      overlayInnerStyle={{ padding: '8px 16px 16px 16px' }}
       destroyTooltipOnHide
       content={menu}
+      // autoAdjustOverflow={false}
       placement="bottomStart"
       trigger={['click']}>
       {children}

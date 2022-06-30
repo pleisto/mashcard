@@ -10,6 +10,7 @@ import {
   Completion,
   CompletionFlag,
   ContextInterface,
+  ErrorMessage,
   FormulaCheckType,
   FormulaType,
   FunctionCompletion,
@@ -26,6 +27,7 @@ import { maybeEncodeString, reverseTraversalString } from './util'
 interface GetCompletionInput {
   readonly position: number
   readonly ctx: FunctionContext
+  readonly errorMessages: ErrorMessage[]
   readonly codeFragments: CodeFragment[]
   readonly completions: Completion[]
 }
@@ -364,7 +366,14 @@ const FLAG_COMPLETERS: FlagCompleter[] = [
   kindCompleter
 ]
 
-export const getCompletion = ({ position, ctx, codeFragments, completions }: GetCompletionInput): Completion[] => {
+export const getCompletion = ({
+  position,
+  ctx,
+  codeFragments,
+  completions,
+  errorMessages
+}: GetCompletionInput): Completion[] => {
+  if (errorMessages.length === 0) return []
   const [firstNonSpaceCodeFragment, secondNonSpaceCodeFragment, thirdNonSpaceCodeFragment] = getLastCodeFragment(
     codeFragments,
     position
