@@ -198,7 +198,7 @@ RequireField.richType
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:201](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L201)
+[packages/formula/src/tests/testType.ts:208](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L208)
 
 ---
 
@@ -222,7 +222,7 @@ RequireField.todoMessage
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:200](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L200)
+[packages/formula/src/tests/testType.ts:207](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L207)
 
 ---
 
