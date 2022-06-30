@@ -14,14 +14,14 @@ export const Name = styled('span', {
   fontSize: theme.fontSizes.subHeadline,
   lineHeight: theme.lineHeights.subHeadline,
   color: theme.colors.typePrimary,
-  fontWeight: 400
+  fontWeight: 450
 })
 
 export const Email = styled('span', {
   fontSize: theme.fontSizes.callout,
   lineHeight: theme.lineHeights.callout,
   color: theme.colors.typeSecondary,
-  fontWeight: 400
+  fontWeight: 450
 })
 
 export const Card = styled('div', {
@@ -55,7 +55,7 @@ export const Card = styled('div', {
       },
       md: {
         [`${Name}`]: {
-          fontWeight: 500
+          fontWeight: 450
         }
       }
     }
