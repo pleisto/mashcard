@@ -171,19 +171,12 @@ describe('Simple test case TODO', () => {
       const parseResult = parse({ ...ctx, meta: newMeta })
       const {
         success,
-        variableParseResult: { cst, kind, codeFragments, definition: newInput },
+        variableParseResult: { cst, codeFragments, definition: newInput },
         errorType,
         errorMessages,
-        completions,
         inputImage,
         parseImage
       } = parseResult
-
-      if (kind === 'literal') {
-        expect(completions.length).toEqual(0)
-      } else {
-        expect(completions.length).not.toEqual(0)
-      }
 
       if (label) {
         expect(codeFragments).toMatchSnapshot()
