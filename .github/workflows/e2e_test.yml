@@ -38,6 +38,7 @@ jobs:
           E2E_FIREFOX_LOGIN_EMAIL: ${{ secrets.TRUNK_E2E_USER_FIREFOX_EMAIL }}
           E2E_FIREFOX_LOGIN_PASSWORD: ${{ secrets.TRUNK_E2E_USER_FIREFOX_PASSWORD }}
   report:
+    needs: playwright
     name: Send report
     runs-on: ubuntu-latest
     steps:
