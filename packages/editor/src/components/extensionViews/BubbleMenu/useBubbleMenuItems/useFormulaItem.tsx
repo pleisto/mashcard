@@ -5,8 +5,8 @@ import { isBubbleMenuVisible } from '../BubbleMenu'
 import { useEditorContext, useEditorI18n } from '../../../../hooks'
 
 export function useFormulaItem(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { editor } = useEditorContext()
   const [t] = useEditorI18n()
+  const { editor } = useEditorContext()
 
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null

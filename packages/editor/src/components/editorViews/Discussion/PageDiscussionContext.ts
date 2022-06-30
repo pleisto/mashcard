@@ -35,8 +35,8 @@ function getDiscussionExtension(editor: Editor | null | undefined): typeof Discu
 }
 
 export function usePageDiscussionContextValue(commentedNodes: CommentedNode[]): PageDiscussionContextValue {
-  const { editor } = useEditorContext()
   const [t] = useEditorI18n()
+  const { editor } = useEditorContext()
   const extension = getDiscussionExtension(editor)
 
   const [discussion, setDiscussion] = useState<DiscussionData>({ conversations: [] })

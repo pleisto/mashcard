@@ -11,8 +11,8 @@ const isCommentActive = (editor: Editor | null | undefined): boolean => {
 }
 
 export function useCommentItemGroup(): [ToolbarGroupOption | null] {
-  const { editor } = useEditorContext()
   const [t] = useEditorI18n()
+  const { editor } = useEditorContext()
 
   const option = useMemo<ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null

@@ -145,8 +145,8 @@ const PREV_COLOR_KEY = 'PREV_COLOR'
 const PREV_BG_COLOR_KEY = 'PREV_BG_COLOR'
 
 export function useFontColorGroup(): ToolbarSubMenuOption | null {
-  const { editor } = useEditorContext()
   const [t] = useEditorI18n()
+  const { editor } = useEditorContext()
   const fontColorMenuItemStyles = FontColorMenuItemStyles()
   const fontColorGroupStyles = FontColorGroupStyles()
   const resetItemStyles = ResetItemStyles()

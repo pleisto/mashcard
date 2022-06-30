@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react'
+import { FC, useContext, useEffect, useMemo, useState, Suspense } from 'react'
 import { getSidebarStyle, logSideBarWidth } from '@/common/utils/sidebarStyle'
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import Split from '@uiw/react-split'
@@ -21,20 +21,20 @@ import { MashcardEventBus, BlockMetaUpdated } from '@mashcard/schema'
 
 /* const Layout = styled('div', base) */
 
-export const DocumentContentPage: React.FC = () => {
+export const DocumentContentPage: FC = () => {
+  const { t } = useDocsI18n()
   const { domain, docid, historyId } = useParams() as unknown as {
     domain: string
     docid?: string
     historyId?: string
   }
   const { currentPod, currentUser, lastDomain, lastBlockIds, featureFlags } = useContext(MashcardContext)
-  const { t } = useDocsI18n()
   const navigate = useNavigate()
   const preSidebarStyle = useMemo(getSidebarStyle, [])
 
   // NOTE: temp fix for no updating DocMeta when apollo cache has been changed
   const [_tick, setTick] = useState(0)
-  React.useEffect(() => {
+  useEffect(() => {
     const subscription = MashcardEventBus.subscribe(
       BlockMetaUpdated,
       e => {
@@ -61,7 +61,7 @@ export const DocumentContentPage: React.FC = () => {
   const personalDomain = currentUser?.domain ?? loginDomain
   const { state, pathname } = useLocation()
 
-  React.useEffect(() => {
+  useEffect(() => {
     // https://github.com/pleisto/corp/issues/1261
     // The cache is not updated in time during the switchover
     void refetch()
@@ -121,7 +121,7 @@ export const DocumentContentPage: React.FC = () => {
 
   const { queryFormulas, commitFormula, generateFormulaFunctionClauses } = useFormulaActions()
 
-  React.useEffect(() => {
+  useEffect(() => {
     const functionClauses = generateFormulaFunctionClauses(docMeta)
     const formulaContext = FormulaContext.getInstance({
       domain: loginDomain,
@@ -180,25 +180,33 @@ export const DocumentContentPage: React.FC = () => {
         }}
       >
         <Split visiable={!docMeta.isAnonymous} onDragEnd={logSideBarWidth}>
-          {!isAnonymous && <Root.Section style={preSidebarStyle}>{siderBar}</Root.Section>}
+          {!isAnonymous && (
+            <Root.Section style={preSidebarStyle}>
+              <Suspense>{siderBar}</Suspense>
+            </Root.Section>
+          )}
           <main className="content">
             {(!loading || docMeta.isMine) && (
               <header style={docMeta.isAnonymous ? { paddingRight: 0 } : undefined}>
-                <DocumentTopBar />
+                <Suspense>
+                  <DocumentTopBar />
+                </Suspense>
               </header>
             )}
             <section>
               <article id="article">
-                {docMeta.id && (
-                  <DocMetaProvider
-                    inherit
-                    docMeta={{
-                      editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted
-                    }}
-                  >
-                    <DocumentPage mode={!docMeta.editable || isAnonymous ? 'presentation' : 'default'} />
-                  </DocMetaProvider>
-                )}
+                <Suspense>
+                  {docMeta.id && (
+                    <DocMetaProvider
+                      inherit
+                      docMeta={{
+                        editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted
+                      }}
+                    >
+                      <DocumentPage mode={!docMeta.editable || isAnonymous ? 'presentation' : 'default'} />
+                    </DocMetaProvider>
+                  )}
+                </Suspense>
               </article>
               {!isAnonymous && <aside id="aside" />}
             </section>

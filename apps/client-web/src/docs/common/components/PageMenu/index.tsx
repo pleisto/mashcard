@@ -57,6 +57,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   nearNodeId,
   icon
 }) => {
+  const { t } = useDocsI18n()
   const navigate = useNavigate()
   const client = useApolloClient()
   const editor = useReactiveVar(editorVar)
@@ -126,7 +127,6 @@ export const PageMenu: React.FC<PageMenuProps> = ({
     }
   }
 
-  const { t } = useDocsI18n()
   const linkPath = `/${domain}/${pageId}`
   const link = `${window.location.origin}${linkPath}`
 

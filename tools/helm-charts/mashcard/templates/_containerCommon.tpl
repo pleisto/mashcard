@@ -18,7 +18,7 @@
               value: {{ .Values.license | quote }}
             {{- if .Values.previewEnv }}
             - name: PREVIEW_ENV
-              value: "I hereby swear that I have obtained written permission from the Pleisto Inc. of this plugin to use it."
+              value: "true"
             - name: REDIS_URL
               value: redis://{{ include "mashcard.devDependenciesService" . }}:6379
             - name: MASHCARD_DATABASE_URL

@@ -59,3 +59,6 @@ export const Trash: React.FC = () => {
     </DocMetaProvider>
   )
 }
+
+// eslint-disable-next-line import/no-default-export
+export default Trash

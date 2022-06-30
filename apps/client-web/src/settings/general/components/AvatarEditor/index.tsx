@@ -24,11 +24,11 @@ const IMPORT_SOURCES: ImportSourceOption[] = [
 ]
 
 export const AvatarEditor: FC = () => {
+  const { t } = useSettingsI18n()
   const { pod } = useContext(SettingsContext)!
   const prepareFileUpload = usePrepareFileUpload()
   const [updatePod] = useCreateOrUpdatePodMutation()
   const [avatarUrl, setAvatarUrl] = useState<string | undefined>(pod?.avatarData?.url)
-  const { t } = useSettingsI18n()
   const onUploaded = async (attrs: UploadResultData): Promise<void> => {
     const result = await updatePod({
       variables: {

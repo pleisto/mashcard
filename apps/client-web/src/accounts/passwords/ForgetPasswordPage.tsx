@@ -12,11 +12,11 @@ const validation = object({
 })
 
 export const ForgetPasswordPage: React.FC = () => {
+  const { t } = useAccountsI18n()
   const [didShowPasswordChangeEmailTips, { setTrue: showPasswordChangeEmailTips }] = useBoolean(false)
 
   // Set Form initial values
   const form = Form.useForm<UserForgetPasswordMailSendInput>({ yup: validation })
-  const { t } = useAccountsI18n()
 
   // On Form Submit
   const [userForgetPasswordMailSend, { loading: userForgetPasswordMailSendLoading }] =

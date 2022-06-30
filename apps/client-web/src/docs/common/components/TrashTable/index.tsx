@@ -12,8 +12,8 @@ interface TrashTableProps {
 }
 
 export const TrashTable: React.FC<TrashTableProps> = ({ docMeta }) => {
-  const [keyword, setSearchKeyword] = useState<string>('')
   const { t } = useDocsI18n()
+  const [keyword, setSearchKeyword] = useState<string>('')
   const ref = useRef<HTMLInputElement>(null)
   useEffect(() => {
     const handleMetaK = (e: KeyboardEvent): void => {

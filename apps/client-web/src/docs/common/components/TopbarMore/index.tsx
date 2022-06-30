@@ -28,9 +28,9 @@ export interface DiscussionMenuProps {
 }
 
 const PopMenu: FC<{ menuToggle: (state: boolean) => void }> = ({ menuToggle }) => {
+  const { t } = useDocsI18n()
   const { id, pin, isMine, editable, domain } = useDocMeta()
   const navigate = useNavigate()
-  const { t } = useDocsI18n()
   const client = useApolloClient()
   const formulaContext = useReactiveVar(FormulaContextVar)
   const { queryFormulas } = useFormulaActions()

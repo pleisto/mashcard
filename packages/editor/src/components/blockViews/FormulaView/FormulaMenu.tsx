@@ -51,7 +51,6 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   nameRef,
   completion
 }) => {
-  const i18nKey = 'formula.menu'
   const [t] = useEditorI18n()
 
   const close = React.useCallback((): void => {
@@ -173,15 +172,16 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       {maxScreen ? (
         <div className="formula-menu-footer">
           <Button className="formula-menu-button" size="sm" type="text" onClick={handleCancel}>
-            {t(`${i18nKey}.cancel`)}
+            {t(`formula.menu.cancel`)}
           </Button>
           <Button
             className="formula-menu-button"
             size="sm"
             type="primary"
             onClick={handleSave}
-            disabled={isDisableSave()}>
-            {t(`${i18nKey}.save`)}
+            disabled={isDisableSave()}
+          >
+            {t(`formula.menu.save`)}
           </Button>
         </div>
       ) : (
@@ -199,7 +199,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide
       content={menu}
       placement="bottomStart"
-      trigger={['click']}>
+      trigger={['click']}
+    >
       {children}
     </Popover>
   )

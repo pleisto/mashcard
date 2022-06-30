@@ -8,8 +8,8 @@ import { Trans } from 'react-i18next'
 import * as Root from './styles/DeletePod.style'
 
 export const DeletePod: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
-  const [isOpen, { setTrue: setOpen, setFalse: setClose }] = useBoolean(false)
   const { t } = useSettingsI18n()
+  const [isOpen, { setTrue: setOpen, setFalse: setClose }] = useBoolean(false)
   const [deletePod, { loading: deleting }] = usePodDestroyMutation()
   const [inputVal, setInputVal] = useState('')
 

@@ -8,8 +8,8 @@ import { Trans } from 'react-i18next'
 import * as Root from './styles/DeleteAccount.style'
 
 export const DeleteAccount: FC = () => {
-  const [isOpen, { setTrue: setOpen, setFalse: setClose }] = useBoolean(false)
   const { t } = useSettingsI18n()
+  const [isOpen, { setTrue: setOpen, setFalse: setClose }] = useBoolean(false)
   const [deleteAccount, { loading: deleting }] = useUserDestroyMutation()
   const context = useContext(MashcardContext)
   const [inputVal, setInputVal] = useState('')
@@ -60,13 +60,15 @@ export const DeleteAccount: FC = () => {
                   pods: teamPods!.map(p => p.name).join(', ')
                 }}
               />
-            }>
+            }
+          >
             <Button
               type="danger"
               disabled={hasTeamPods}
               onClick={() => {
                 setOpen()
-              }}>
+              }}
+            >
               {t('account.delete_account_btn')}
             </Button>
           </Tooltip>
@@ -94,7 +96,8 @@ export const DeleteAccount: FC = () => {
                 }}
               />
             </Root.ModalDesc>
-          }>
+          }
+        >
           <Input type="text" onChange={e => setInputVal(e.target.value)} />
         </FormControl>
         <Root.ModalBtnGroup>
@@ -104,7 +107,8 @@ export const DeleteAccount: FC = () => {
             }}
             type="secondary"
             block
-            size="lg">
+            size="lg"
+          >
             {t('account.delete_account_confirm_cancel')}
           </Button>
           <Button
@@ -113,7 +117,8 @@ export const DeleteAccount: FC = () => {
             loading={deleting}
             disabled={inputVal !== userDomain}
             block
-            size="lg">
+            size="lg"
+          >
             {t('account.delete_account_confirm_btn')}
           </Button>
         </Root.ModalBtnGroup>

@@ -58,3 +58,5 @@ export const JoinPodPage: FC = () => {
     </>
   )
 }
+
+export default JoinPodPage

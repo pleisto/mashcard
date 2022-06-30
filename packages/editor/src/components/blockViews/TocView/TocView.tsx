@@ -22,9 +22,9 @@ const TocPlaceholder = styled('span', {
 })
 
 export const TocView: FC<TocViewProps> = ({ editor, node, deleteNode, getPos }) => {
+  const [t] = useEditorI18n()
   const [tocRoot, setTocRoot] = useState<TocNode>()
   const [tocItemCount, setTocItemCount] = useState<number>(0)
-  const [t] = useEditorI18n()
 
   const updateItems = useCallback(() => {
     const [tocRoot, count] = initialTocTree(editor.state.doc)
