@@ -590,7 +590,7 @@ en-US:
       update:
         success: Update successfully.
     menu:
-      create_new_pod: Create New pod
+      create_new_pod: Create New Pod
       logout: Log out
     title:
       add_icon: Add icon

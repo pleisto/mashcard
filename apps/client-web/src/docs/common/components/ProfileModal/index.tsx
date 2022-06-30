@@ -14,7 +14,7 @@ interface ProfileModalProps {
 
 const DialogCss = {
   width: 480,
-  padding: '54px 80px 30px 54px',
+  padding: '54px 80px',
   '&>h1.dialogTitle': {
     marginBottom: '3rem'
   }
@@ -67,7 +67,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ visible, title, type
         }}
       >
         <Form.Field name="name" label={t('pods.name')}>
-          <Input />
+          <Input borderType="underline" autoFocus />
         </Form.Field>
         <Form.Field inlineWrapper>
           <Button onClick={handleCancel} size="lg" block>
