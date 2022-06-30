@@ -4,7 +4,7 @@ exports[`FormulaDisplay renders constant kind correctly 1`] = `
 <div>
   <span>
     <span
-      class="mc-c-ijlRdH mc-c-ijlRdH-zQVcS-selected-false mc-c-kkMlKx"
+      class="mc-c-iirzmp mc-c-iirzmp-zQVcS-selected-false mc-c-kkMlKx"
     >
       <span
         class="mashcard-formula-normal-icon"

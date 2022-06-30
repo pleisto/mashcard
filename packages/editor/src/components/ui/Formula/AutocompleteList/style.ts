@@ -29,7 +29,7 @@ export const FormulaAutocomplete = styled('div', {
     height: '100%',
     borderRight: '1px solid #0000000d',
     overflow: 'hidden',
-    overflowY: 'scroll',
+    overflowY: 'auto',
 
     // '&::-webkit-scrollbar': {
     //   appearance: 'none'
@@ -78,7 +78,7 @@ export const FormulaAutocomplete = styled('div', {
     flex: 1,
     height: '100%',
     overflow: 'hidden',
-    overflowY: 'scroll',
+    overflowY: 'auto',
 
     // '&::-webkit-scrollbar': {
     //   appearance: 'none'

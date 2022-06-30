@@ -14,7 +14,7 @@ export const MashcardFomulaEditor = css({
         '.ProseMirror': {
           height: 300,
           overflow: 'hidden',
-          overflowY: 'scroll',
+          overflowY: 'auto',
           // '&::-webkit-scrollbar': {
           //   appearance: 'none'
           // },
