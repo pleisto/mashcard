@@ -56,7 +56,9 @@ export const isTextContentSelected = ({ editor, from, to }: { editor: Editor; fr
 
 export const DEFAULT_SELECTION_CLASS = 'editor-selection'
 
-interface SelectionState {}
+interface SelectionState {
+  multiNodeSelecting: boolean
+}
 
 export const SelectionPluginKey = new PluginKey(meta.name)
 
@@ -67,7 +69,34 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
     return [
       new Plugin<SelectionState>({
         key: SelectionPluginKey,
+        state: {
+          init() {
+            return {
+              multiNodeSelecting: false
+            }
+          },
+          apply(tr, value, oldState, newState) {
+            return { ...value }
+          }
+        },
         props: {
+          handleDOMEvents: {
+            mousedown: (view, event) => {
+              const result = view.posAtCoords({ left: event.x, top: event.y })
+
+              // if click happens outside the doc nodes, assume a Multiple Node Selection will happen.
+              // so call blur to avoid Text Selection happen.
+              if (result?.inside === -1) {
+                this.editor.commands.blur()
+              }
+              return false
+            },
+            mouseup: () => {
+              this.editor.commands.focus()
+
+              return false
+            }
+          },
           decorations: (state: EditorState) => {
             const { from, to } = state.selection
             const decorations: Decoration[] = []
