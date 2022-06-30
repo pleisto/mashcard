@@ -11,9 +11,11 @@ interface PathBreadcrumbProps {
 }
 
 export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ className }) => {
-  const { id, title, domain, documentInfo } = useNonNullDocMeta()
-  const paths: Path[] = documentInfo ? documentInfo.pathArray.concat([{ id, text: title, icon: documentInfo.icon }]) : []
   const { t } = useDocsI18n()
+  const { id, title, domain, documentInfo } = useNonNullDocMeta()
+  const paths: Path[] = documentInfo
+    ? documentInfo.pathArray.concat([{ id, text: title, icon: documentInfo.icon }])
+    : []
 
   const renderPath = (path: Path, idx: number, showSplit: boolean, fullwidth: Boolean = false): React.ReactNode => {
     const link = `/${domain}/${path.id}`

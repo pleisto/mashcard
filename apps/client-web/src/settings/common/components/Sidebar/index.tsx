@@ -9,8 +9,8 @@ import Logo from '@/common/assets/logo_brickdoc_without_name.svg'
 import { useSettingsI18n } from '../../hooks'
 
 export const Sidebar: FC = () => {
-  const navigate = useNavigate()
   const { t } = useSettingsI18n()
+  const navigate = useNavigate()
   const { pod, actions } = useContext(SettingsContext)!
 
   return (

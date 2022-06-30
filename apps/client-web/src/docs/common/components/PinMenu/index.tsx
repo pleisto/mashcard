@@ -11,13 +11,13 @@ interface PinMenuProps {
 }
 
 export const PinMenu: React.FC<PinMenuProps> = ({ className }) => {
+  const { t } = useDocsI18n()
   const { id, documentInfo } = useNonNullDocMeta()
   const pin = documentInfo?.pin
   const client = useApolloClient()
   const [blockPinOrUnpin, { loading: blockPinOrUnpinLoading }] = useBlockPinOrUnpinMutation({
     refetchQueries: [queryBlockPins]
   })
-  const { t } = useDocsI18n()
 
   const onClick = async (): Promise<void> => {
     const input = { blockId: id, pin: !pin }
@@ -43,7 +43,8 @@ export const PinMenu: React.FC<PinMenuProps> = ({ className }) => {
           aria-label={t('pin.name')}
           onClick={onClick}
           disabled={blockPinOrUnpinLoading}
-          css={hiddenItemStyle}>
+          css={hiddenItemStyle}
+        >
           {blockPinOrUnpinLoading ? <></> : iconRender}
         </Button>
       </Tooltip>

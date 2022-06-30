@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import { FC, ReactNode, Suspense } from 'react'
 import { createPortal } from 'react-dom'
 import { motion, Transition } from 'framer-motion'
 import { Button, styled, theme } from '@mashcard/design-system'
@@ -77,12 +77,13 @@ export const Drawer: FC<DrawerProps> = ({ visible, className, title, renderBody,
   const element = container ?? document.body
 
   return createPortal(
-    <>
+    <Suspense>
       <DrawerContainer
         visible={visible}
         className={className}
         animate={drawerAnimation(visible)}
-        transition={drawerTransition(visible)}>
+        transition={drawerTransition(visible)}
+      >
         {visible && (
           <>
             <CloseButton onClick={onClose} type="unstyled" size="md" icon={<Close />} />
@@ -92,7 +93,7 @@ export const Drawer: FC<DrawerProps> = ({ visible, className, title, renderBody,
           </>
         )}
       </DrawerContainer>
-    </>,
+    </Suspense>,
     element
   )
 }

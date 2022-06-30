@@ -9,10 +9,10 @@ import { useGetPodMembersQuery, GetPodMembersQuery, usePodLeaveMutation } from '
 import { Trans } from 'react-i18next'
 
 export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
+  const { t } = useSettingsI18n()
   const [isOpen, { setTrue: setOpen, setFalse: setClose }] = useBoolean(false)
   const [selectedUser, setSelectedUser] = useState<NonNullable<GetPodMembersQuery['podMembers']>[0]>()
   const [podLeave, { loading: leaveing }] = usePodLeaveMutation()
-  const { t } = useSettingsI18n()
   const context = useContext(MashcardContext)
   const currentUserDomain = context.currentUser!.domain
   const { loading, data, refetch } = useGetPodMembersQuery()

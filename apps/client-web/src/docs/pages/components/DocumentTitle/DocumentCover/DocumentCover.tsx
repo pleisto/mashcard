@@ -33,8 +33,8 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
   localUrl,
   className
 }) => {
-  const [value, setValue] = React.useState('unset')
   const { t } = useDocsI18n()
+  const [value, setValue] = React.useState('unset')
   if (documentCoverMeta?.type === BlockType.Color && value !== documentCoverMeta.color) {
     setValue(documentCoverMeta.color)
   }

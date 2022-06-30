@@ -19,8 +19,8 @@ const profileValidation = object({
 })
 
 export const ProfileEdit: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
-  const { refetch } = useGetCurrentPodQuery({})
   const { t } = useSettingsI18n(['docs'])
+  const { refetch } = useGetCurrentPodQuery({})
   const [updatePod, { loading: profileSubmitting }] = useCreateOrUpdatePodMutation()
   const profileForm = Form.useForm({
     mode: 'onBlur',

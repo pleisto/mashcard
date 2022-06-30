@@ -27,7 +27,7 @@ export const HistoryListMenu: React.FC<HistoryListMenuProps> = ({
   histories,
   users
 }) => {
-  const [formatT] = useTranslation<string[]>(['formats'])
+  const [formatT] = useTranslation('formats')
 
   const historiesSorted = Object.values(histories).sort((a, b) => {
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
@@ -58,7 +58,8 @@ export const HistoryListMenu: React.FC<HistoryListMenuProps> = ({
               active={historyId ? historyId === history.id : i === 0}
               onClick={() =>
                 i === 0 ? navigate(`/${domain}/${docId}`) : navigate(`/${domain}/${docId}/histories/${history.id}`)
-              }>
+              }
+            >
               <div>
                 <HistoryTime>{`${dateStr}, ${createdAt.format(formatT('time'))}`}</HistoryTime>
                 <Username>

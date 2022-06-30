@@ -144,8 +144,8 @@ export const TocContainer: FC<TocContainerProps> = ({ tocItemCount, children }) 
 }
 
 export const TocNodePanel: FC<TocNodePanelProps> = ({ tocNode }) => {
-  const { editor } = useEditorContext()
   const [t] = useEditorI18n()
+  const { editor } = useEditorContext()
   const contentRef = useRef<HTMLDivElement>(null)
   const [collapse, setCollapse] = useState(false)
   const toggleCollapse = useCallback(
@@ -184,7 +184,8 @@ export const TocNodePanel: FC<TocNodePanelProps> = ({ tocNode }) => {
       <TocItemTitle
         level={tocNode.item.level}
         onClick={onItemClick}
-        data-testid={TEST_ID_ENUM.editor.tocBlock.item.title.id}>
+        data-testid={TEST_ID_ENUM.editor.tocBlock.item.title.id}
+      >
         {tocNode.children.length > 0 && (
           <ToggleIcon
             data-testid={TEST_ID_ENUM.editor.tocBlock.item.toggleIcon.id}

@@ -9,10 +9,10 @@ import { Trans } from 'react-i18next'
 import * as Root from './styles/LeavePods.style'
 
 export const LeavePods: FC = () => {
+  const { t } = useSettingsI18n()
   const [isOpen, { setTrue: setOpen, setFalse: setClose }] = useBoolean(false)
   const [selectedPod, setSelectedPod] = useState<GetPodsQuery['pods'][0]>()
   const [podLeave, { loading: leaveing }] = usePodLeaveMutation()
-  const { t } = useSettingsI18n()
   const context = useContext(MashcardContext)
   const userDomain = context.currentUser!.domain
   const { loading, data, refetch } = useGetPodsQuery()
@@ -55,7 +55,8 @@ export const LeavePods: FC = () => {
                 onClick={() => {
                   setSelectedPod(pod)
                   setOpen()
-                }}>
+                }}
+              >
                 {t('account.leave_btn')}
               </Button>
             </li>
@@ -71,7 +72,8 @@ export const LeavePods: FC = () => {
         onCancel={setClose}
         onConfirm={async () => {
           await handleLeave(selectedPod!.domain)
-        }}>
+        }}
+      >
         <Trans
           t={t}
           i18nKey="account.leave_pod_confirm"

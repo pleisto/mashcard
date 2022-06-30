@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from 'react'
 import { Spin, devLog } from '@mashcard/design-system'
-import { EditorContent, useEditor, useEditorI18n } from '@mashcard/editor'
+import { EditorContent, useEditor } from '@mashcard/editor'
 import { Block } from '@/MashcardGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'
 import { useSyncProvider, useBlockSyncProvider, useDocHistoryProvider } from './hooks'
@@ -22,11 +22,6 @@ interface DocumentPageProps {
 }
 
 export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
-  // apollo doesn't work well with React Suspense. We must place this suspense-related hook above
-  // apollo useQuery API to avoid issues like sending request twice.
-  // useEditorI18n() is called inside useEditor(), which is below useGetChildrenBlocksQuery(). So we
-  // promote this call to the beginning of this render fn.
-  useEditorI18n()
   const docMeta = useDocMeta()
   const navigate = useNavigate()
 

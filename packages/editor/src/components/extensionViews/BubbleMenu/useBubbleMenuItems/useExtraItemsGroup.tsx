@@ -6,8 +6,8 @@ import { useEditorContext, useEditorI18n } from '../../../../hooks'
 import { NodeIcon } from './useBubbleMenuItems'
 
 export function useExtraItemsGroup(): [ToolbarGroupOption | null] {
-  const { editor } = useEditorContext()
   const [t] = useEditorI18n()
+  const { editor } = useEditorContext()
 
   const option = useMemo<ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null

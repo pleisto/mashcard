@@ -42,5 +42,4 @@ module CurrentPod
 
     nil
   end
-  
 end

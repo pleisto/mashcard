@@ -5,8 +5,8 @@ import { isBubbleMenuVisible } from '../BubbleMenu'
 import { useEditorContext, useEditorI18n } from '../../../../hooks'
 
 export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { editor } = useEditorContext()
   const [t] = useEditorI18n()
+  const { editor } = useEditorContext()
   const href = editor?.getAttributes('link').href
   const [inputLink, setInputLink] = useState(href)
 

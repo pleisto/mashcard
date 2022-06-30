@@ -13,9 +13,9 @@ export function useLinkValue(
   extension?: Node<EmbedOptions>,
   defaultUrl?: string
 ): [string, ChangeEventHandler<HTMLInputElement>, () => void, () => void, UploadProgress] {
+  const [t] = useEditorI18n()
   const [url, setUrl] = useState(defaultUrl ?? '')
   const [progress, resetProgress, progressing] = useWebsiteMetaProgress()
-  const [t] = useEditorI18n()
 
   const handleSubmit = useCallback(async (): Promise<void> => {
     if (!url) {

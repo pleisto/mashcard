@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo } from 'react'
+import React, { FC, useContext, useEffect, useMemo, Suspense } from 'react'
 import { getSidebarStyle, logSideBarWidth } from '@/common/utils/sidebarStyle'
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import Split from '@uiw/react-split'
@@ -20,19 +20,23 @@ import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
 
 /* const Layout = styled('div', base) */
 
-export const DocumentContentPage: React.FC = () => {
+export const DocumentContentPage: FC = () => {
+  const { t } = useDocsI18n()
   const { domain, docid, historyId } = useParams() as unknown as {
     domain: string
     docid?: string
     historyId?: string
   }
   const { currentUser, lastDomain, lastBlockIds, featureFlags } = useContext(MashcardContext)
-  const { t } = useDocsI18n()
   const navigate = useNavigate()
   const preSidebarStyle = useMemo(getSidebarStyle, [])
 
-  const { data, loading: blockLoading, refetch } = useBlockNewQuery({
-    variables: { id: docid as string, historyId },
+  const {
+    data,
+    loading: blockLoading,
+    refetch
+  } = useBlockNewQuery({
+    variables: { id: docid as string, historyId }
   })
 
   const documentInfo = data?.blockNew?.documentInfo ? (data?.blockNew?.documentInfo as DocumentInfo) : undefined
@@ -44,7 +48,7 @@ export const DocumentContentPage: React.FC = () => {
   const isAnonymous = !currentUser
   const { state, pathname } = useLocation()
 
-  React.useEffect(() => {
+  useEffect(() => {
     // https://github.com/pleisto/corp/issues/1261
     // The cache is not updated in time during the switchover
     void refetch()
@@ -91,7 +95,7 @@ export const DocumentContentPage: React.FC = () => {
 
   const { queryFormulas, commitFormula, generateFormulaFunctionClauses } = useFormulaActions()
 
-  React.useEffect(() => {
+  useEffect(() => {
     const functionClauses = generateFormulaFunctionClauses()
     const formulaContext = FormulaContext.getInstance({
       domain,
@@ -150,25 +154,33 @@ export const DocumentContentPage: React.FC = () => {
         }}
       >
         <Split visiable={!isAnonymous} onDragEnd={logSideBarWidth}>
-          {!isAnonymous && <Root.Section style={preSidebarStyle}>{siderBar}</Root.Section>}
+          {!isAnonymous && (
+            <Root.Section style={preSidebarStyle}>
+              <Suspense>{siderBar}</Suspense>
+            </Root.Section>
+          )}
           <main className="content">
             {(!loading || docMeta.isMine) && (
               <header style={isAnonymous ? { paddingRight: 0 } : undefined}>
-                <DocumentTopBar />
+                <Suspense>
+                  <DocumentTopBar />
+                </Suspense>
               </header>
             )}
             <section>
               <article id="article">
-                {docMeta.id && (
-                  <DocMetaProvider
-                    inherit
-                    docMeta={{
-                      editable: docMeta.editable && !isAnonymous && !documentInfo?.isDeleted
-                    }}
-                  >
-                    <DocumentPage mode={!docMeta.editable || isAnonymous ? 'presentation' : 'default'} />
-                  </DocMetaProvider>
-                )}
+                <Suspense>
+                  {docMeta.id && (
+                    <DocMetaProvider
+                      inherit
+                      docMeta={{
+                        editable: docMeta.editable && !isAnonymous && !documentInfo?.isDeleted
+                      }}
+                    >
+                      <DocumentPage mode={!docMeta.editable || isAnonymous ? 'presentation' : 'default'} />
+                    </DocMetaProvider>
+                  )}
+                </Suspense>
               </article>
               {!isAnonymous && <aside id="aside" />}
             </section>

@@ -33,9 +33,9 @@ export interface UseActionOptionsProps {
 }
 
 export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionGroupOption | null {
+  const [t] = useEditorI18n()
   const { deleteBlock, getPosition, contentForCopy, node } = useBlockContext()
   const { editor } = useEditorContext()
-  const [t] = useEditorI18n()
   const [documentEditable] = useDocumentEditable(undefined)
 
   const setNodeSelection = useCallback(() => {

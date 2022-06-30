@@ -10,8 +10,8 @@ import { ProfileModal } from '../ProfileModal'
 import { useDocMeta } from '@/docs/store/DocMeta'
 
 export const PodSelect: FC = () => {
-  const { domain } = useDocMeta()
   const { t } = useDocsI18n()
+  const { domain } = useDocMeta()
   const { loading, data } = useGetPodsQuery()
   const [userSignOut, { loading: signOutLoading }] = useUserSignOutMutation()
   const [modalCreateVisible, setModalCreateVisible] = useState<boolean>(false)
