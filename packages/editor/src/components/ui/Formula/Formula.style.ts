@@ -7,7 +7,6 @@ const rotation = keyframes({
 
 export const MashcardFormulaMenuPopover = css({
   display: 'inline'
-  // padding: '8px 16px 16px 16px'
 })()
 
 export const FormulaResult = styled('div', {
@@ -15,7 +14,6 @@ export const FormulaResult = styled('div', {
   margin: '12px 0 0 0',
   fontSize: '14px',
   lineHeight: '22px',
-  // fontFamily: 'Fira Code',
 
   '.formula-result-error': {
     flexDirection: 'column',
@@ -135,7 +133,6 @@ export const MashcardFormulaNormal = css({
 
 export const MashcardFormulaBorderless = css({
   cursor: 'pointer'
-  // fontFamily: 'Fira Code'
 })()
 
 export const MashcardFormulaEmpty = css({

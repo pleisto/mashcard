@@ -130,7 +130,6 @@ export const FORMULA_COLOR_METAS: Record<FormulaColorType, FormulaColorMeta> = {
 export const FORMULA_STYLES = mapValues(FORMULA_COLOR_METAS, ({ colorMain, color1, color2, color3 }) => {
   return css({
     color: colorMain,
-    // fontFamily: 'Fira Code',
     backgroundColor: color1,
     border: '1px solid',
     '&:hover': {

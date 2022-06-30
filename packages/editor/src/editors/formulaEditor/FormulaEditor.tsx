@@ -24,7 +24,6 @@ const formulaEditorStyles = globalCss({
       content: 'attr(data-placeholder)',
       fontSize: theme.fontSizes.subHeadline,
       fontFamily: 'unset',
-      // fontWeight: 400,
       left: 0,
       pointerEvents: 'none',
       position: 'absolute',

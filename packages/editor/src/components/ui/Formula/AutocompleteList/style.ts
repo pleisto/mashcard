@@ -31,10 +31,6 @@ export const FormulaAutocomplete = styled('div', {
     overflow: 'hidden',
     overflowY: 'auto',
 
-    // '&::-webkit-scrollbar': {
-    //   appearance: 'none'
-    // },
-
     '.autocomplete-list-item': {
       cursor: 'pointer',
       display: 'flex',
@@ -79,10 +75,6 @@ export const FormulaAutocomplete = styled('div', {
     height: '100%',
     overflow: 'hidden',
     overflowY: 'auto',
-
-    // '&::-webkit-scrollbar': {
-    //   appearance: 'none'
-    // },
 
     '.autocomplete-preview-block': {
       marginTop: 16,

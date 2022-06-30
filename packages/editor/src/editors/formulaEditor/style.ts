@@ -15,9 +15,6 @@ export const MashcardFomulaEditor = css({
           height: 300,
           overflow: 'hidden',
           overflowY: 'auto',
-          // '&::-webkit-scrollbar': {
-          //   appearance: 'none'
-          // },
           'p::before': {
             transform: 'none',
             top: '0%'
