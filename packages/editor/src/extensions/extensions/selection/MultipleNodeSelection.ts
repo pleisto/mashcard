@@ -32,8 +32,11 @@ export class MultipleNodeSelection extends Selection {
     const doc = $anchorPos.node(0)
     const ranges: SelectionRange[] = []
 
-    doc.nodesBetween($anchorPos.pos, $headPos.pos, (node, pos) => {
-      ranges.push(new SelectionRange(doc.resolve(pos + 1), doc.resolve(pos + node.nodeSize)))
+    const from = Math.min($anchorPos.pos, $headPos.pos)
+    const to = Math.max($anchorPos.pos, $headPos.pos)
+
+    doc.nodesBetween(from, to, (node, pos) => {
+      ranges.push(new SelectionRange(doc.resolve(pos), doc.resolve(pos + node.nodeSize)))
       return false
     })
 
@@ -150,6 +153,7 @@ export class MultipleNodeSelection extends Selection {
    * @returns
    */
   static create(doc: Node, anchor: number, head: number = anchor): MultipleNodeSelection {
+    console.log(anchor, head)
     return new MultipleNodeSelection(doc.resolve(anchor), doc.resolve(head))
   }
 }
