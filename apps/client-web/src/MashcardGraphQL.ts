@@ -1315,6 +1315,27 @@ export type NewPatchPayload = {
   state: Patchstate
 }
 
+/** MashCard Notification */
+export type Notification = {
+  __typename?: 'Notification'
+  /** Comment */
+  comment?: Maybe<Comment>
+  /** Conversation */
+  conversation?: Maybe<Conversation>
+  /** created at */
+  createdAt: Scalars['ISO8601DateTime']
+  /** data */
+  data: Scalars['JSON']
+  /** notification type */
+  notificationType: Scalars['String']
+  /** status */
+  status: Scalars['String']
+  /** Source type */
+  type: Scalars['String']
+  /** updated at */
+  updatedAt: Scalars['ISO8601DateTime']
+}
+
 /** session[:omniauth] */
 export type OmniauthSession = {
   __typename?: 'OmniauthSession'
@@ -1811,6 +1832,7 @@ export type Query = {
   formulas?: Maybe<Array<Formula>>
   /** Return information about current MashCard server instance. */
   metadata: Metadata
+  notifications?: Maybe<Array<Notification>>
   pageBlocks?: Maybe<Array<Block>>
   /** Check password available. */
   passwordAvailable: ValidateResult
@@ -2609,6 +2631,23 @@ export type ConversationCommentAppendMutation = {
       }
     }
   } | null
+}
+
+export type GetNotificationsQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetNotificationsQuery = {
+  __typename?: 'query'
+  notifications?: Array<{
+    __typename?: 'Notification'
+    createdAt: any
+    updatedAt: any
+    notificationType: string
+    status: string
+    type: string
+    data: any
+    conversation?: { __typename?: 'Conversation'; id: string } | null
+    comment?: { __typename?: 'Comment'; id: string } | null
+  }> | null
 }
 
 export type GetConversationCommentsQueryVariables = Exact<{
@@ -5154,6 +5193,55 @@ export type ConversationCommentAppendMutationOptions = Apollo.BaseMutationOption
   ConversationCommentAppendMutation,
   ConversationCommentAppendMutationVariables
 >
+export const GetNotificationsDocument = gql`
+  query getNotifications {
+    notifications {
+      createdAt
+      updatedAt
+      notificationType
+      status
+      type
+      data
+      conversation {
+        id
+      }
+      comment {
+        id
+      }
+    }
+  }
+`
+
+/**
+ * __useGetNotificationsQuery__
+ *
+ * To run a query within a React component, call `useGetNotificationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetNotificationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetNotificationsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetNotificationsQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetNotificationsQuery, GetNotificationsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetNotificationsQuery, GetNotificationsQueryVariables>(GetNotificationsDocument, options)
+}
+export function useGetNotificationsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetNotificationsQuery, GetNotificationsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetNotificationsQuery, GetNotificationsQueryVariables>(GetNotificationsDocument, options)
+}
+export type GetNotificationsQueryHookResult = ReturnType<typeof useGetNotificationsQuery>
+export type GetNotificationsLazyQueryHookResult = ReturnType<typeof useGetNotificationsLazyQuery>
+export type GetNotificationsQueryResult = Apollo.QueryResult<GetNotificationsQuery, GetNotificationsQueryVariables>
 export const GetConversationCommentsDocument = gql`
   query GetConversationComments($pageIds: [UUID!]!) {
     conversationComments(pageIds: $pageIds) {

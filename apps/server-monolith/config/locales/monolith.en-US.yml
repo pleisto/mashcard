@@ -37,6 +37,7 @@ en-US:
       uuid_invalid: is not an uuid
       domain_presence_invalid: is not presence
       delete_disabled_because_group_pods: You cannot delete a user with group pods
+      docs_conversations_invalid_status_transition: Invalid status transition
       InvalidImageUrl: Invalid image url
       too_short:
         one: is too short (minimum is 1 character)

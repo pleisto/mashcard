@@ -2384,6 +2384,51 @@ type NewPatchPayload {
 }
 
 """
+MashCard Notification
+"""
+type Notification {
+  """
+  Comment
+  """
+  comment: Comment
+
+  """
+  Conversation
+  """
+  conversation: Conversation
+
+  """
+  created at
+  """
+  createdAt: ISO8601DateTime!
+
+  """
+  data
+  """
+  data: JSON!
+
+  """
+  notification type
+  """
+  notificationType: String!
+
+  """
+  status
+  """
+  status: String!
+
+  """
+  Source type
+  """
+  type: String!
+
+  """
+  updated at
+  """
+  updatedAt: ISO8601DateTime!
+}
+
+"""
 session[:omniauth]
 """
 type OmniauthSession {
@@ -3343,6 +3388,7 @@ type query {
   Return information about current MashCard server instance.
   """
   metadata: Metadata!
+  notifications: [Notification!]
   pageBlocks(
     """
     List all pages for pod domain

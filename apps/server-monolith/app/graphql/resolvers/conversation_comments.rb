@@ -12,7 +12,7 @@ module Resolvers
 
       Docs::Conversation.where(doc_id: args[:page_ids]).includes([
         comments: [creator: [personal_pod: :avatar_attachment]],
-      ]).map(&:to_graphql)
+      ]).to_a
     end
   end
 end

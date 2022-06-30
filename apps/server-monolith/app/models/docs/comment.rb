@@ -37,10 +37,6 @@ module Docs
       conversation.update_latest_comment!(self)
     end
 
-    def to_graphql
-      attributes.merge(creator: creator)
-    end
-
     def notify_conversation_collaborator_by_user_id!(user_id)
       Notification.create!(
         user_id: user_id,

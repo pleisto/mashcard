@@ -19,6 +19,7 @@ module Types
     field :federated_identity_session, resolver: Resolvers::FederatedIdentitySession
     field :formulas, resolver: Resolvers::Formulas
     field :metadata, resolver: Resolvers::Metadata
+    field :notifications, resolver: Resolvers::Notifications
     field :page_blocks, resolver: Resolvers::PageBlocks
     field :password_available, resolver: Resolvers::PasswordAvailable
     field :pod, resolver: Resolvers::Pod

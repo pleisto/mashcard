@@ -40,15 +40,26 @@ module Docs
       notify_doc_collaborators!
     end
 
+    ALLOW_STATUS_TRANSITIONS = {
+      opened: ['resolved', 'deleted'],
+      resolved: ['deleted'],
+      deleted: []
+    }.with_indifferent_access
+
+    after_save do
+      if status_previously_changed? && !status_previously_was.nil?
+        transitions = ALLOW_STATUS_TRANSITIONS.fetch(status_previously_was)
+        raise ::I18n.t('errors.messages.docs_conversations_invalid_status_transition') unless transitions.include?(status)
+
+        trigger_callback_for_status_transition!(status_previously_was, status)
+      end
+    end
+
     enum status: {
       opened: 0,
       resolved: 1,
       deleted: 10,
     }
-
-    def to_graphql
-      attributes.merge(comments: comments.map(&:to_graphql))
-    end
 
     # NOTE: exclude conversation creator
     def notify_doc_collaborators!
@@ -108,6 +119,11 @@ module Docs
           creator_id: creator.id
         )
       end
+    end
+
+    private
+
+    def trigger_callback_for_status_transition!(prev, curr)
     end
   end
 end

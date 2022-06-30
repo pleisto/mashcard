@@ -34,6 +34,29 @@ class Notification < ApplicationRecord
     deleted: 10,
   }
 
+  SOURCE_TYPE_MAPS = {
+    'Docs::Conversation' => 'Conversation',
+    'Docs::Comment' => 'Comment',
+  }
+
+  def type
+    SOURCE_TYPE_MAPS.fetch(source_type)
+  end
+
+  # Graphql conversion
+  def conversation
+    return nil unless source_type == 'Docs::Conversation'
+
+    source
+  end
+
+  # Graphql conversion
+  def comment
+    return nil unless source_type == 'Docs::Comment'
+
+    source
+  end
+
   before_create do
     self.status ||= :unread
   end

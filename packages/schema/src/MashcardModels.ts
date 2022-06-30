@@ -1312,6 +1312,27 @@ export type NewPatchPayload = {
   state: Patchstate
 }
 
+/** MashCard Notification */
+export type Notification = {
+  __typename?: 'Notification'
+  /** Comment */
+  comment?: Maybe<Comment>
+  /** Conversation */
+  conversation?: Maybe<Conversation>
+  /** created at */
+  createdAt: Scalars['ISO8601DateTime']
+  /** data */
+  data: Scalars['JSON']
+  /** notification type */
+  notificationType: Scalars['String']
+  /** status */
+  status: Scalars['String']
+  /** Source type */
+  type: Scalars['String']
+  /** updated at */
+  updatedAt: Scalars['ISO8601DateTime']
+}
+
 /** session[:omniauth] */
 export type OmniauthSession = {
   __typename?: 'OmniauthSession'
@@ -1808,6 +1829,7 @@ export type Query = {
   formulas?: Maybe<Array<Formula>>
   /** Return information about current MashCard server instance. */
   metadata: Metadata
+  notifications?: Maybe<Array<Notification>>
   pageBlocks?: Maybe<Array<Block>>
   /** Check password available. */
   passwordAvailable: ValidateResult

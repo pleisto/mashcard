@@ -46,6 +46,9 @@ describe Resolvers::ConversationComments, type: :query do
       expect(response.errors).to be {}
       expect(response.success?).to be true
       expect(response.data['conversationComments']).to eq([])
+
+      self.current_user = nil
+      self.current_pod = nil
     end
 
     it 'conversation' do
@@ -88,6 +91,9 @@ describe Resolvers::ConversationComments, type: :query do
         'name' => user.name,
         'avatarData' => user.avatar_data,
       }, }])
+
+      self.current_user = nil
+      self.current_pod = nil
     end
   end
 end

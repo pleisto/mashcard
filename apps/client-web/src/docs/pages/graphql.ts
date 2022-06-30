@@ -98,6 +98,25 @@ export const ConversationCommentAppend = gql`
   }
 `
 
+export const queryNotifications = gql`
+  query getNotifications {
+    notifications {
+      createdAt
+      updatedAt
+      notificationType
+      status
+      type
+      data
+      conversation {
+        id
+      }
+      comment {
+        id
+      }
+    }
+  }
+`
+
 export const queryConversationComments = gql`
   query GetConversationComments($pageIds: [UUID!]!) {
     conversationComments(pageIds: $pageIds) {
