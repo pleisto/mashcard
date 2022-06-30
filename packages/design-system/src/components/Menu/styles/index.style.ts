@@ -1,7 +1,7 @@
 import { theme, css } from '../../../themes'
 
 export const itemSpacing = '1.25rem'
-export const itemMinHeight = '2.5rem'
+export const itemMinHeight = '2.25rem'
 const itemLineHeight = '1.375rem'
 
 const danger = {
