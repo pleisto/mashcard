@@ -80,16 +80,7 @@ export class MultipleNodeSelection extends Selection {
    * returns a slice of selected nodes
    */
   override content(): Slice {
-    return new Slice(
-      Fragment.from(
-        this.ranges.map(range => {
-          const node = range.$from.node()
-          return node.type.create(node.attrs, node.content)
-        })
-      ),
-      1,
-      1
-    )
+    return new Slice(Fragment.from(this.ranges.map(range => range.$from.nodeAfter!).filter(node => !!node)), 1, 1)
   }
 
   /**
@@ -153,7 +144,6 @@ export class MultipleNodeSelection extends Selection {
    * @returns
    */
   static create(doc: Node, anchor: number, head: number = anchor): MultipleNodeSelection {
-    console.log(anchor, head)
     return new MultipleNodeSelection(doc.resolve(anchor), doc.resolve(head))
   }
 }

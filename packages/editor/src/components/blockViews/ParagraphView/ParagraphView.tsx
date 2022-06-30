@@ -28,8 +28,6 @@ export const ParagraphView: FC<ParagraphViewProps> = props => {
   const placeholderClassName = placeholderStyle()
   const paragraphClassName = paragraphStyles()
 
-  console.log(props)
-
   return (
     <BlockContainer
       node={node}
