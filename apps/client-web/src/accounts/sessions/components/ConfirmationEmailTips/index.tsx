@@ -8,9 +8,9 @@ import { useUserConfirmationEmailResendMutation } from '@/MashcardGraphQL'
 import dayjs from 'dayjs'
 
 export const ConfirmationEmailTips: React.FC<{ email: string }> = ({ email }) => {
+  const { t } = useAccountsI18n()
   const [targetDate, setTargetDate] = useState<number>()
   const [countdown] = useCountDown({ targetDate })
-  const { t } = useAccountsI18n()
   const [resendEmail, { loading }] = useUserConfirmationEmailResendMutation()
 
   const onClick = async (): Promise<void> => {

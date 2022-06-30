@@ -8,9 +8,9 @@ import { useUserForgetPasswordMailSendMutation } from '@/MashcardGraphQL'
 import dayjs from 'dayjs'
 
 export const PasswordChangeEmailNotice: React.FC<{ email: string; pending?: boolean }> = ({ email, pending }) => {
+  const { t } = useAccountsI18n()
   const [targetDate, setTargetDate] = useState<number>(pending ? dayjs().add(1, 'minute').unix() : 0)
   const [countdown] = useCountDown({ targetDate })
-  const { t } = useAccountsI18n()
   const [resendEmail, { loading }] = useUserForgetPasswordMailSendMutation()
 
   const onClick = async (): Promise<void> => {

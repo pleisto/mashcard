@@ -47,9 +47,9 @@ const UserBlockContainer = styled('span', {
 })
 
 export const User: React.FC<UserProps> = ({ attributes, options }) => {
+  const [t] = useEditorI18n()
   const { name, domain, avatarUrl } = attributes?.people ?? {}
   const size = options?.size ?? 'md'
-  const [t] = useEditorI18n()
   const showAvatar = size !== 'sm'
 
   return (

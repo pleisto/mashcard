@@ -1,9 +1,8 @@
-import React from 'react'
+import { FC, useRef, useEffect } from 'react'
 import { Drawer } from '../../ui'
 import { useDrawer } from '../../ui/Drawer'
 import { useEditorI18n } from '../../../hooks'
 import { To, NavigateOptions } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
 
 import { useDocHistoryStore } from '@mashcard/schema'
 
@@ -17,16 +16,15 @@ export interface HistoryListProps {
   navigate: (to: To, options?: NavigateOptions) => void
 }
 
-export const HistoryList: React.FC<HistoryListProps> = ({ domain, docId, historyId, navigate }) => {
+export const HistoryList: FC<HistoryListProps> = ({ domain, docId, historyId, navigate }) => {
   const [editorT] = useEditorI18n()
-  useTranslation<string[]>(['formats'])
   const { visible, setVisible } = useDrawer('historyList')
-  const latestVisiable = React.useRef<boolean>(visible)
+  const latestVisiable = useRef<boolean>(visible)
   const drawerContainerStyles = drawerStyles()
 
   const { store, refetch } = useDocHistoryStore(docId)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (visible && (!latestVisiable.current || !store.loaded)) {
       // refetch on list reopen`
       refetch()
@@ -42,16 +40,14 @@ export const HistoryList: React.FC<HistoryListProps> = ({ domain, docId, history
       onClose={() => setVisible(false)}
       title={editorT('history.title')}
       renderBody={() => (
-        <>
-          <HistoryListMenu
-            domain={domain}
-            docId={docId}
-            historyId={historyId}
-            navigate={navigate}
-            histories={store.histories}
-            users={store.users}
-          />
-        </>
+        <HistoryListMenu
+          domain={domain}
+          docId={docId}
+          historyId={historyId}
+          navigate={navigate}
+          histories={store.histories}
+          users={store.users}
+        />
       )}
     />
   )

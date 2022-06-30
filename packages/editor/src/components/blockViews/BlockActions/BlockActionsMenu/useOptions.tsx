@@ -22,8 +22,8 @@ export function useOptions(
   extraOptions: BlockActionsMenuProps['extraOptions'],
   basicOptions: BlockActionsMenuProps['basicOptions']
 ): [ToolbarOptionGroup, ToolbarOptionGroup] {
-  const { editor } = useEditorContext()
   const [t] = useEditorI18n()
+  const { editor } = useEditorContext()
   const { getPosition } = useBlockContext()
 
   const options = useMemo<ToolbarOptionGroup>(() => {

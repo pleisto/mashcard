@@ -25,8 +25,8 @@ const TRANS_TYPE_LIST = [
 ]
 
 export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { editor } = useEditorContext()
   const [t] = useEditorI18n()
+  const { editor } = useEditorContext()
 
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null

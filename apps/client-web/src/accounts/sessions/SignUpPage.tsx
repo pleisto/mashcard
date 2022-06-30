@@ -19,6 +19,7 @@ import { useEmailAvailableValidator } from '@/common/hooks/useEmailAvailableVali
 import { isLoadingVar } from '@/common/reactiveVars'
 
 export const SignUpPage: React.FC = () => {
+  const { t } = useAccountsI18n()
   const [didShowConfirmationEmailTips, { setTrue: showConfirmationEmailTips }] = useBoolean(false)
   const { loading: configLoading, data: configData } = useGetAccountsConfigFromWsQuery()
 
@@ -38,7 +39,6 @@ export const SignUpPage: React.FC = () => {
   }, [sessionLoading, sessionData])
   const hasFederatedIdentity = sessionData?.federatedIdentitySession?.hasSession
   const providerName = sessionData?.federatedIdentitySession?.provider
-  const { t } = useAccountsI18n()
 
   // Set Validator
   const domainAvailableValidator = useDomainAvailableValidator()

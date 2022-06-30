@@ -64,7 +64,6 @@ export interface EditorContentProps {
 export const EditorContent: FC<EditorContentProps> = ({ editor, editable, rootId, ...props }) => {
   const editorContext = useMemo<EditorContextData>(() => ({ editor, documentEditable: editable }), [editable, editor])
   const documentContext = useMemo<DocumentContextData>(() => ({ docId: rootId }), [rootId])
-  useEditorI18n()
   useDrawerService()
   useDropBlock(editor)
   useUndo(editor)

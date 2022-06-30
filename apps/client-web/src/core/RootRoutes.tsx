@@ -1,14 +1,14 @@
 import { FC, lazy, useContext, ReactNode } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { JoinPodPage } from '@/docs/invite/JoinPodPage'
-import { DocumentContentPage } from '@/docs/pages/DocumentContentPage'
-import { Trash } from '@/docs/pages/Trash'
 import { AppError404, AppError403, AppError500 } from './app-error'
 import { MashcardContext } from '@/common/mashcardContext'
 import { rootPath } from '@/common/utils'
 
+const Trash = lazy(async () => await import('@/docs/pages/Trash'))
 const AccountsModule = lazy(async () => await import('@/accounts/Module'))
 const SettingsModule = lazy(async () => await import('@/settings/Module'))
+const DocumentContentPage = lazy(async () => await import('@/docs/pages/DocumentContentPage'))
+const JoinPodPage = lazy(async () => await import('@/docs/invite/JoinPodPage'))
 
 const RequireLogin: FC<{ children?: ReactNode }> = ({ children }) => {
   const context = useContext(MashcardContext)

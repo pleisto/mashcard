@@ -67,6 +67,7 @@ const TREE_HEAD_HEIGHT = 32
 const FOOTER_HEIGHT = 46
 
 export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
+  const { t } = useDocsI18n()
   type BlockType = Exclude<Exclude<GetPageBlocksQuery['pageBlocks'], undefined>, null>[0]
   const mutable = mode !== 'subPage'
   const hideHeading = mode === 'subPage'
@@ -111,8 +112,6 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
 
   const [blockMove, { client: blockMoveClient }] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
   const [draggable, setDraggable] = useState<boolean>(true)
-
-  const { t } = useDocsI18n()
 
   const { data: pinData } = useGetBlockPinsQuery()
   const pinIds = pinData?.blockPins?.map(pin => pin.blockId) ?? []

@@ -25,12 +25,12 @@ export interface ConversationProps {
 }
 
 export const Conversation: FC<ConversationProps> = ({ active, commentedNode }) => {
+  const [t] = useEditorI18n()
   const { editor } = useEditorContext()
   const mentionCommandsOptions = useMemo(
     () => editor?.extensionManager.extensions.find(extension => extension.name === MentionCommands.name)?.options ?? {},
     [editor?.extensionManager.extensions]
   )
-  const [t] = useEditorI18n()
   const conversationItem = useConversationItem(commentedNode)
   const {
     onCopyUrl,
@@ -74,7 +74,8 @@ export const Conversation: FC<ConversationProps> = ({ active, commentedNode }) =
           trigger="click"
           // stick it to aside panel
           // avoid popover locate at wrong place when discussion list be scrolled
-          getPopupContainer={() => document.getElementById('aside') ?? document.body}>
+          getPopupContainer={() => document.getElementById('aside') ?? document.body}
+        >
           <ActionButton type="text" size="sm" icon={<More />} />
         </Popover>
         <ActionButton
@@ -107,7 +108,8 @@ export const Conversation: FC<ConversationProps> = ({ active, commentedNode }) =
         cancelBtnText={t('action_panel.more.delete_cancel')}
         onCancel={onRemoveCancel}
         onConfirm={onRemoveConfirm}
-        open={removeConfirmVisible}>
+        open={removeConfirmVisible}
+      >
         {t('discussion.delete_message')}
       </ConfirmDialog>
     </ConversationCard>

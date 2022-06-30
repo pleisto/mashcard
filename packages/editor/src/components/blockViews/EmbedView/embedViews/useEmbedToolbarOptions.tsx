@@ -122,11 +122,11 @@ export function useEmbedToolbarOptions({
   zoomInImage,
   zoomOutImage
 }: EmbedToolbarProps): [ToolbarOptionGroup] {
+  const [t] = useEditorI18n()
   const isPreview = mode === 'preview'
   const isCard = mode === 'card'
   const isText = mode === 'text'
 
-  const [t] = useEditorI18n()
   const setToPreviewView = useCallback((): void => {
     updateEmbedBlockAttributes({ mode: 'preview' }, blockType)
   }, [blockType, updateEmbedBlockAttributes])
@@ -283,7 +283,8 @@ export function useEmbedToolbarOptions({
                   displayName={displayName}
                   link={url}
                 />
-              }>
+              }
+            >
               <Edit />
             </Popover>
           )

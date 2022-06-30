@@ -17,8 +17,8 @@ export function useConversationActions(
     onCancel: VoidFunction
   }
 } {
-  const { editor } = useEditorContext()
   const [t] = useEditorI18n()
+  const { editor } = useEditorContext()
 
   const { removeConversation, resolveConversation, openConversation } = usePageDiscussionContext()
 
