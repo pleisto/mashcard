@@ -199,7 +199,6 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       overlayInnerStyle={{ padding: '8px 16px 16px 16px' }}
       destroyTooltipOnHide
       content={menu}
-      // autoAdjustOverflow={false}
       placement="bottomStart"
       trigger={['click']}>
       {children}
