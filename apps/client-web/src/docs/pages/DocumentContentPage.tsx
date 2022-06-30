@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect, useMemo, Suspense } from 'react'
+import { FC, useContext, useEffect, useMemo, Suspense } from 'react'
 import { getSidebarStyle, logSideBarWidth } from '@/common/utils/sidebarStyle'
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import Split from '@uiw/react-split'
