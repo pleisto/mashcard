@@ -20,7 +20,7 @@ module CurrentPod
 
     ## TODO graphql
     remote_pod =
-      if pages?
+      if request.params['controller'] == 'pages'
         warden.session['current_pod'] = fetch_pod_via_params
       else
         warden.session['current_pod']
@@ -42,12 +42,5 @@ module CurrentPod
 
     nil
   end
-
-  # def graphql?
-  #   internal_graphql_api_path == request.path
-  # end
-
-  def pages?
-    request.params['controller'] == 'pages'
-  end
+  
 end

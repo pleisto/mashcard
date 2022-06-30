@@ -24,8 +24,8 @@ export const convertToNumber = createFunctionClause({
     { input: ['123'], output: { type: 'number', result: 123 } },
     { input: ['foo'], output: { type: 'Error', result: 'Not a number', errorKind: 'runtime' } }
   ],
-  reference: (ctx, { result, type }) => {
-    const number = Number(type === 'Cell' ? result.value : result)
+  reference: (ctx, obj) => {
+    const number = Number(obj.type === 'Cell' ? obj.result.getValue() : obj.result)
 
     if (isNaN(number)) {
       return { type: 'Error', result: 'Not a number', errorKind: 'runtime' }

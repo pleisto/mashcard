@@ -11,10 +11,9 @@ export const MashcardFormulaMenuPopover = css({
 
 export const FormulaResult = styled('div', {
   color: '@basic-color',
-  margin: '12px 0',
+  margin: '12px 0 0 0',
   fontSize: '14px',
-  lineHeight: '20px',
-  fontFamily: "'Fira Code'",
+  lineHeight: '22px',
 
   '.formula-result-error': {
     flexDirection: 'column',
@@ -56,16 +55,18 @@ export const MashcardFormulaMenu = styled('div', {
       '.formula-menu-item-name': {
         display: 'flex',
         flex: 1,
+        lineHeight: '22px',
+        fontSize: '14px',
+
+        '::-webkit-input-placeholder': {
+          color: theme.colors.typeThirdary,
+          fontSize: '14px'
+        },
 
         '.formula-menu-item-name-field': {
           marginRight: 12,
-          padding: 1,
-          lineHeight: '1.8',
-          fontFamily: 'Fira Code',
-
-          '&::placeholder': {
-            color: theme.colors.typeThirdary
-          }
+          padding: 0,
+          fontSize: '14px'
         },
         '.formula-menu-item-reference-count': {
           color: theme.colors.typeThirdary,
@@ -78,12 +79,42 @@ export const MashcardFormulaMenu = styled('div', {
           paddingLeft: 2,
           paddingRight: 2,
           float: 'right'
+        },
+        '.formula-menu-item-auto-format-icon': {
+          color: theme.colors.typeThirdary,
+          paddingLeft: 2,
+          paddingRight: 2,
+          float: 'right'
+        },
+        '.formula-menu-item-screen-icon': {
+          color: theme.colors.typeThirdary,
+          paddingLeft: 16,
+          paddingRight: 2,
+          float: 'right'
         }
       }
     },
 
     '.formula-menu-item + .formula-menu-item': {
       marginLeft: 24
+    }
+  },
+
+  '.formula-menu-footer': {
+    position: 'relative',
+    padding: '1rem 0 0px',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+
+    '.formula-menu-button': {
+      height: 22,
+      lineHeight: '16px',
+      fontSize: 12
+    },
+
+    '.formula-menu-button + .formula-menu-button': {
+      marginLeft: 12
     }
   }
 })
@@ -101,8 +132,7 @@ export const MashcardFormulaNormal = css({
 })()
 
 export const MashcardFormulaBorderless = css({
-  cursor: 'pointer',
-  fontFamily: "'Fira Code'"
+  cursor: 'pointer'
 })()
 
 export const MashcardFormulaEmpty = css({

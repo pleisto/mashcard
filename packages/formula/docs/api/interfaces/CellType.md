@@ -28,6 +28,10 @@
 - [value](CellType.md#value)
 - [variableId](CellType.md#variableid)
 
+### Methods
+
+- [getValue](CellType.md#getvalue)
+
 ## Properties
 
 ### <a id="cellid" name="cellid"></a> cellId
@@ -193,3 +197,13 @@
 #### Defined in
 
 [packages/formula/src/controls/types.ts:138](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L138)
+
+## Methods
+
+### <a id="getvalue" name="getvalue"></a> getValue
+
+▸ **getValue**(): `string`
+
+#### Returns
+
+`string`

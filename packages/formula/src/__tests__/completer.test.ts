@@ -25,7 +25,6 @@ describe('completer', () => {
       completions,
       variableParseResult: { definition, position, codeFragments }
     } = parse(newCtx)
-    expect(completions.length).not.toBe(0)
     const firstCompletion = completions[0]
     const [firstNonSpaceCodeFragment, secondNonSpaceCodeFragment, thirdNonSpaceCodeFragment] = getLastCodeFragment(
       codeFragments,

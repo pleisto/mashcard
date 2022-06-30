@@ -5,7 +5,7 @@ import {
   BlockInput,
   SpreadsheetUpdateCellValue,
   FormulaEditorBlurTrigger,
-  FormulaEditorSavedTrigger
+  FormulaEditorCloseTrigger
 } from '@mashcard/schema'
 import { FormulaBlockRender, getFormulaContext, useFormula, UseFormulaInput } from '../FormulaView'
 import {
@@ -151,7 +151,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
 
   React.useEffect(() => {
     const listener = MashcardEventBus.subscribe(
-      FormulaEditorSavedTrigger,
+      FormulaEditorCloseTrigger,
       e => {
         setEditing(false)
       },

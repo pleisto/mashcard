@@ -42,10 +42,12 @@ test.describe('Document Title', () => {
   })
 
   test('Verify Add icon & Add cover are changed background when hover', async () => {
+    await documentTitle.getDocumentTitle().hover()
     await documentTitle.getAddIconButton().hover()
 
     await expect(documentTitle.getAddIconButton()).toHaveCSS('background-color', 'rgba(53, 108, 249, 0.1)')
 
+    await documentTitle.getDocumentTitle().hover()
     await documentTitle.getAddCoverButton().hover()
 
     await expect(documentTitle.getAddCoverButton()).toHaveCSS('background-color', 'rgba(53, 108, 249, 0.1)')

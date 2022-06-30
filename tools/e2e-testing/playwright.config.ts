@@ -14,8 +14,8 @@ const config: PlaywrightTestConfig = {
   use: {
     baseURL: process.env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:3000/',
     trace: 'retain-on-failure',
-    video: 'retain-on-failure',
-    screenshot: 'only-on-failure',
+    video: 'off',
+    screenshot: 'off',
     navigationTimeout: 10000
   },
   globalSetup: './global-setup',

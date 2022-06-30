@@ -301,7 +301,7 @@ export const castNumber = (data: AnyTypeResult | undefined): number => {
   if (!data) return NaN
   if (data.type === 'number') return data.result
   if (data.type === 'Cell') {
-    return Number(data.result.value)
+    return Number(data.result.getValue())
   }
 
   return NaN

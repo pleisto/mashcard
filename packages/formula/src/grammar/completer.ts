@@ -1,3 +1,4 @@
+import { uniqBy } from '@mashcard/active-support'
 import { fetchResult } from '../context'
 import { BlockType, ColumnClass, ColumnType, SpreadsheetType } from '../controls'
 import {
@@ -9,6 +10,7 @@ import {
   Completion,
   CompletionFlag,
   ContextInterface,
+  ErrorMessage,
   FormulaCheckType,
   FormulaType,
   FunctionCompletion,
@@ -25,6 +27,7 @@ import { maybeEncodeString, reverseTraversalString } from './util'
 interface GetCompletionInput {
   readonly position: number
   readonly ctx: FunctionContext
+  readonly errorMessages: ErrorMessage[]
   readonly codeFragments: CodeFragment[]
   readonly completions: Completion[]
 }
@@ -363,7 +366,14 @@ const FLAG_COMPLETERS: FlagCompleter[] = [
   kindCompleter
 ]
 
-export const getCompletion = ({ position, ctx, codeFragments, completions }: GetCompletionInput): Completion[] => {
+export const getCompletion = ({
+  position,
+  ctx,
+  codeFragments,
+  completions,
+  errorMessages
+}: GetCompletionInput): Completion[] => {
+  if (errorMessages.length === 0) return []
   const [firstNonSpaceCodeFragment, secondNonSpaceCodeFragment, thirdNonSpaceCodeFragment] = getLastCodeFragment(
     codeFragments,
     position
@@ -377,14 +387,15 @@ export const getCompletion = ({ position, ctx, codeFragments, completions }: Get
     ctx
   }
 
-  return completions
-    .flatMap(c => {
-      const { extraCompletions } = EXPAND_COMPLETERS.reduce<CompleterInput & { extraCompletions: Completion[] }>(
-        (acc, completer) => ({ ...acc, extraCompletions: [...acc.extraCompletions, ...completer(acc)] }),
-        { ...args, completion: c, extraCompletions: [] }
-      )
-      return [...extraCompletions, c]
-    })
+  const expendedCompletions = completions.flatMap(c => {
+    const { extraCompletions } = EXPAND_COMPLETERS.reduce<CompleterInput & { extraCompletions: Completion[] }>(
+      (acc, completer) => ({ ...acc, extraCompletions: [...acc.extraCompletions, ...completer(acc)] }),
+      { ...args, completion: c, extraCompletions: [] }
+    )
+    return [...extraCompletions, c]
+  })
+
+  return uniqBy(expendedCompletions, c => `${c.kind}#${c.name}#${c.namespaceId}`)
     .map(c => {
       const { extraFlags } = FLAG_COMPLETERS.reduce<CompleterInput & { extraFlags: CompletionFlag[] }>(
         (acc, completer) => ({ ...acc, extraFlags: [...acc.extraFlags, ...completer(acc)] }),

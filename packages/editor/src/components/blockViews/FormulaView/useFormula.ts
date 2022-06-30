@@ -27,7 +27,7 @@ import {
   FormulaEditorHoverEventTrigger,
   FormulaEditorSelectEventTrigger,
   FormulaEditorUpdateTrigger,
-  FormulaEditorSavedTrigger
+  FormulaEditorCloseTrigger
 } from '@mashcard/schema'
 import { JSONContent } from '@tiptap/core'
 import { devLog } from '@mashcard/design-system'
@@ -59,6 +59,7 @@ export interface UseFormulaOutput {
   selected: SelectedType | undefined
   temporaryVariableT: VariableData | undefined
   nameRef: React.MutableRefObject<FormulaNameType>
+  maxScreenState: [boolean, React.Dispatch<React.SetStateAction<boolean>>]
   formulaIsNormal: boolean
   formulaEditor: Editor | null
   isDisableSave: () => boolean
@@ -140,11 +141,13 @@ export const useFormula = ({
     activeCompletionIndex: 0
   })
   const [references, setReferences] = React.useState(defaultReferences)
+  const [maxScreen, setMaxScreen] = React.useState(false)
 
   const formulaEditor = useFormulaEditor({
     editable: true,
     rootId: namespaceId,
     formulaId: variableId,
+    maxScreen,
     placeholder: formulaIsNormal ? 'Add Formula' : undefined,
     content: inputRef.current.content
   })
@@ -284,17 +287,20 @@ export const useFormula = ({
     await doCalculate(false)
   }, [currentCtx, doCalculate, formulaIsNormal])
 
-  const handleSelectActiveCompletion = React.useCallback(async (): Promise<void> => {
-    const currentCompletion = completion.activeCompletion
-    if (!currentCompletion) return
+  const handleSelectActiveCompletion = React.useCallback(
+    async (activeCompletion?: Completion): Promise<void> => {
+      const currentCompletion = activeCompletion ?? completion.activeCompletion
+      if (!currentCompletion) return
 
-    const ctx = currentCtx()
-    if (!ctx) return
-    const newInput = applyCompletion(ctx, currentCompletion)
+      const ctx = currentCtx()
+      if (!ctx) return
+      const newInput = applyCompletion(ctx, currentCompletion)
 
-    inputRef.current = input2content(newInput, formulaIsNormal)
-    await doCalculate(false)
-  }, [completion.activeCompletion, currentCtx, doCalculate, formulaIsNormal])
+      inputRef.current = input2content(newInput, formulaIsNormal)
+      await doCalculate(false)
+    },
+    [completion.activeCompletion, currentCtx, doCalculate, formulaIsNormal]
+  )
 
   const isDisableSave = React.useCallback((): boolean => {
     if (!formulaContext) return true
@@ -366,7 +372,7 @@ export const useFormula = ({
   const onSaveFormula = React.useCallback(async (): Promise<void> => {
     if (isDisableSave()) return
     await saveFormula()
-    MashcardEventBus.dispatch(FormulaEditorSavedTrigger({ formulaId: variableId, rootId: namespaceId }))
+    MashcardEventBus.dispatch(FormulaEditorCloseTrigger({ formulaId: variableId, rootId: namespaceId }))
   }, [isDisableSave, namespaceId, saveFormula, variableId])
 
   const commitFormula = React.useCallback(
@@ -386,10 +392,15 @@ export const useFormula = ({
   React.useEffect(() => {
     const listener = MashcardEventBus.subscribe(
       FormulaKeyboardEventTrigger,
-      async event => {
-        const { isEditor, key, completionIndex } = event.payload
+      async e => {
+        const { type, event, completionIndex } = e.payload
+        if (!event) {
+          await handleSelectActiveCompletion(completion.completions[completionIndex])
+          setCompletionByIndex(completionIndex)
+          return
+        }
         let newIndex: number
-        switch (key) {
+        switch (event.key) {
           case 'ArrowUp':
             newIndex =
               completion.activeCompletionIndex - 1 < 0
@@ -408,18 +419,14 @@ export const useFormula = ({
             await handleSelectActiveCompletion()
             break
           case 'Enter':
-            if (isEditor) {
-              await onSaveFormula()
-            } else {
+            if (type === 'autoComplete') {
               await handleSelectActiveCompletion()
+            } else {
+              await onSaveFormula()
             }
             break
-          case 'Click':
-            if (completionIndex === completion.activeCompletionIndex) {
-              await handleSelectActiveCompletion()
-            } else {
-              setCompletionByIndex(completionIndex)
-            }
+          case 'Escape':
+            MashcardEventBus.dispatch(FormulaEditorCloseTrigger({ formulaId: variableId, rootId: namespaceId }))
             break
         }
       },
@@ -517,6 +524,7 @@ export const useFormula = ({
     references,
     formulaFormat: handleFormat,
     temporaryVariableT: temporaryVariableTRef.current,
+    maxScreenState: [maxScreen, setMaxScreen],
     savedVariableT,
     selected,
     nameRef,

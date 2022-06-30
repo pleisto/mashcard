@@ -42,6 +42,14 @@ export class CellClass implements CellType {
     this.cleanupEventDependency = cleanupEventDependency
   }
 
+  getValue(): string {
+    const displayData = this.spreadsheet.findCellDisplayData({ rowId: this.rowId, columnId: this.columnId })
+    if (displayData) {
+      return displayData.display
+    }
+    return this.value
+  }
+
   eventDependency(): EventDependency<SpreadsheetUpdateNamePayload> {
     return {
       kind: 'Cell',

@@ -275,7 +275,7 @@ en-US:
         name: Name
         color: Color
         result: =
-        save: Save formula
+        save: Done
         delete: Delete
         cancel: Cancel
     action_panel:

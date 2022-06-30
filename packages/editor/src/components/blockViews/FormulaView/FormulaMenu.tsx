@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
-import { Input, Popover, Icon } from '@mashcard/design-system'
+import { Input, Popover, Icon, Button } from '@mashcard/design-system'
 import { VariableData } from '@mashcard/formula'
 import { FormulaEditor } from '../../../editors/formulaEditor'
 import { FormulaResult, AutocompleteList } from '../../ui/Formula'
@@ -7,11 +9,12 @@ import { CompletionType, UseFormulaInput, UseFormulaOutput } from './useFormula'
 import {
   MashcardEventBus,
   FormulaCalculateTrigger,
-  FormulaEditorSavedTrigger,
+  FormulaEditorCloseTrigger,
   FormulaKeyboardEventTrigger
 } from '@mashcard/schema'
 import * as Root from '../../ui/Formula/Formula.style'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
+import { useEditorI18n } from '../../../hooks'
 
 export interface FormulaMenuProps {
   meta: UseFormulaInput['meta']
@@ -20,9 +23,9 @@ export interface FormulaMenuProps {
   formulaEditor: UseFormulaOutput['formulaEditor']
   references: UseFormulaOutput['references']
   formulaFormat: UseFormulaOutput['formulaFormat']
+  maxScreenState: UseFormulaOutput['maxScreenState']
   defaultVisible: boolean
-  visible: boolean
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>
+  visibleState: [boolean, React.Dispatch<React.SetStateAction<boolean>>]
   onVisibleChange: (visible: boolean) => void
   handleDelete: (variable?: VariableData) => void
   isDisableSave: () => boolean
@@ -40,18 +43,22 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   formulaEditor,
   defaultVisible,
   onVisibleChange,
-  visible,
-  setVisible,
+  visibleState: [visible, setVisible],
+  maxScreenState: [maxScreen, setMaxScreen],
   isDisableSave,
   onSaveFormula,
   formulaFormat,
   nameRef,
   completion
 }) => {
+  const i18nKey = 'formula.menu'
+  const [t] = useEditorI18n()
+
   const close = React.useCallback((): void => {
     setVisible(false)
+    setMaxScreen(false)
     onVisibleChange?.(false)
-  }, [onVisibleChange, setVisible])
+  }, [onVisibleChange, setMaxScreen, setVisible])
 
   const triggerCalculate = async (): Promise<void> => {
     const result = MashcardEventBus.dispatch(FormulaCalculateTrigger({ skipExecute: true, formulaId, rootId }))
@@ -60,14 +67,11 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
 
   React.useEffect(() => {
     const listener = MashcardEventBus.subscribe(
-      FormulaEditorSavedTrigger,
+      FormulaEditorCloseTrigger,
       e => {
         close()
       },
-      {
-        eventId: `${rootId},${formulaId}`,
-        subscribeId: `FormulaMenu#${rootId},${formulaId}`
-      }
+      { eventId: `${rootId},${formulaId}`, subscribeId: `FormulaMenu#${rootId},${formulaId}` }
     )
     return () => listener.unsubscribe()
   }, [close, formulaId, rootId])
@@ -83,6 +87,26 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     setVisible(value)
   }
 
+  const onClickToggleMaxScreen = (): void => {
+    setMaxScreen(!maxScreen)
+    formulaEditor?.commands.focus()
+  }
+
+  const onClickAutoFormat = async (): Promise<void> => {
+    await formulaFormat()
+    formulaEditor?.commands.focus()
+  }
+
+  const handleSave = async (): Promise<void> => {
+    if (isDisableSave()) return
+    await onSaveFormula()
+    close()
+  }
+
+  const handleCancel = (): void => {
+    close()
+  }
+
   const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
     const name = e.target.value
     nameRef.current.name = name
@@ -92,7 +116,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const handleNameKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>): Promise<void> => {
     if (e.key === 'Enter') {
       const result = MashcardEventBus.dispatch(
-        FormulaKeyboardEventTrigger({ key: e.key, formulaId, rootId, isEditor: true, completionIndex: -1 })
+        FormulaKeyboardEventTrigger({ event: e, formulaId, rootId, type: 'name', completionIndex: -1 })
       )
       await Promise.all(result)
     }
@@ -119,20 +143,50 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
               value={nameRef.current.name}
               onChange={handleNameChange}
             />
-            <span className="formula-menu-item-reference-count">{referencedCount}</span>
-            <span className="formula-menu-item-reference-icon">
-              <Icon.Referenced />
+            {maxScreen ? (
+              <>
+                <span className="formula-menu-item-auto-format-icon" onClick={onClickAutoFormat}>
+                  <Icon.AutoFormat />
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="formula-menu-item-reference-count">{referencedCount}</span>
+                <span className="formula-menu-item-reference-icon">
+                  <Icon.Referenced />
+                </span>
+              </>
+            )}
+            <span className="formula-menu-item-screen-icon" onClick={onClickToggleMaxScreen}>
+              {maxScreen ? <Icon.ScreenOff /> : <Icon.ScreenFull />}
             </span>
           </div>
         </div>
       </div>
       <div className="formula-menu-row">
         <div className="formula-menu-item">
-          <FormulaEditor formulaEditor={formulaEditor} />
+          <FormulaEditor formulaEditor={formulaEditor} maxScreen={maxScreen} />
         </div>
       </div>
       <FormulaResult variableT={temporaryVariableT} pageId={rootId} />
       <AutocompleteList rootId={rootId} formulaId={formulaId} completion={completion} />
+      {maxScreen ? (
+        <div className="formula-menu-footer">
+          <Button className="formula-menu-button" size="sm" type="text" onClick={handleCancel}>
+            {t(`${i18nKey}.cancel`)}
+          </Button>
+          <Button
+            className="formula-menu-button"
+            size="sm"
+            type="primary"
+            onClick={handleSave}
+            disabled={isDisableSave()}>
+            {t(`${i18nKey}.save`)}
+          </Button>
+        </div>
+      ) : (
+        <></>
+      )}
     </Root.MashcardFormulaMenu>
   )
 
@@ -142,11 +196,11 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       defaultVisible={defaultVisible}
       visible={visible}
       className={Root.MashcardFormulaMenuPopover}
-      destroyTooltipOnHide={true}
+      overlayInnerStyle={{ padding: '8px 16px 16px 16px' }}
+      destroyTooltipOnHide
       content={menu}
       placement="bottomStart"
-      trigger={['click']}
-    >
+      trigger={['click']}>
       {children}
     </Popover>
   )

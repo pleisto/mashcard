@@ -56,6 +56,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
     nameRef,
     onSaveFormula,
     formulaEditor,
+    maxScreenState,
     completion,
     formulaFormat
   } = useFormula({ meta, formulaContext })
@@ -86,15 +87,14 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
       temporaryVariableT={temporaryVariableT}
       formulaEditor={formulaEditor}
       defaultVisible={defaultVisible}
-      visible={visible}
-      setVisible={setVisible}
+      visibleState={[visible, setVisible]}
+      maxScreenState={maxScreenState}
       onVisibleChange={handleDefaultPopoverVisibleChange}
       isDisableSave={isDisableSave}
       onSaveFormula={onSaveFormula}
       nameRef={nameRef}
       completion={completion}
-      handleDelete={handleDelete}
-    >
+      handleDelete={handleDelete}>
       {renderData}
     </FormulaMenu>
   )

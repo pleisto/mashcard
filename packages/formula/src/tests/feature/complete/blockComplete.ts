@@ -88,15 +88,8 @@ export const BlockCompleteTestCase: TestCaseInterface = {
         definition$: '=BlockCompletePage1$',
         firstNonSpaceCodeFragment: { code: 'Block', display: 'BlockCompletePage1' },
         namespaceId,
-        firstCompletion: {
-          name: 'num0',
-          kind: 'variable',
-          flags: ['contextNamespace', 'blockNamespace', 'defaultNamespace', 'variable']
-        },
-        completes: [
-          { definition$: '=BlockCompletePage1.num0$' },
-          { match: 'BlockCompletePage1', definition$: '=BlockCompletePage1$' }
-        ]
+        firstCompletion: undefined,
+        completes: []
       },
       {
         definition$: '=BlockCompletePage1.$',

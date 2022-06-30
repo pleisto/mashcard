@@ -58,12 +58,8 @@ export const SpreadsheetCompleteTestCase: TestCaseInterface = {
         definition$: '= spreadsheet1foobar$ ',
         firstNonSpaceCodeFragment: { code: 'Spreadsheet', display: 'spreadsheet1foobar' },
         namespaceId,
-        firstCompletion: {
-          name: 'spreadsheet1foobar',
-          kind: 'spreadsheet',
-          flags: ['exact', 'contextNamespace', 'defaultNamespace', 'spreadsheet']
-        },
-        completes: [{ definition$: '= spreadsheet1foobar$ ' }]
+        firstCompletion: undefined,
+        completes: []
       },
       {
         definition$: '= SpreadsheetCompletePage1.spreadsheet1F$ ',
@@ -78,12 +74,8 @@ export const SpreadsheetCompleteTestCase: TestCaseInterface = {
       {
         definition$: '= SpreadsheetCompletePage1.spreadsheet1foobar$ ',
         firstNonSpaceCodeFragment: { code: 'Spreadsheet', display: 'spreadsheet1foobar' },
-        firstCompletion: {
-          name: 'spreadsheet1foobar',
-          kind: 'spreadsheet',
-          flags: ['exact', 'contextNamespace', 'spreadsheet']
-        },
-        completes: [{ definition$: '= SpreadsheetCompletePage1.spreadsheet1foobar$ ' }]
+        firstCompletion: undefined,
+        completes: []
       },
       {
         definition$: '= Spreadsheet2$ ',
