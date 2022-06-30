@@ -6,6 +6,9 @@ export interface SelectionOptions {
     style?: string
   }
   nodeSelection: {
+    mouseArea?: {
+      className?: string
+    }
     className?: string
     style?: string
   }

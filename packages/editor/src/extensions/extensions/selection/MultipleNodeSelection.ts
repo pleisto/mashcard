@@ -35,6 +35,14 @@ export class MultipleNodeSelection extends Selection {
     const from = Math.min($anchorPos.pos, $headPos.pos)
     const to = Math.max($anchorPos.pos, $headPos.pos)
 
+    if (from === to) {
+      const node = doc.nodeAt(from)
+
+      if (node) {
+        ranges.push(new SelectionRange(doc.resolve(from), doc.resolve(from + node.nodeSize)))
+      }
+    }
+
     doc.nodesBetween(from, to, (node, pos) => {
       ranges.push(new SelectionRange(doc.resolve(pos), doc.resolve(pos + node.nodeSize)))
       return false

@@ -35,6 +35,7 @@ import { useDrawerService } from '../../components/ui/Drawer'
 import { useUndo } from '../../helpers'
 import {
   documentEditorStyles,
+  globalStyles,
   h1FontSize,
   h1LienHeight,
   h2FontSize,
@@ -46,6 +47,7 @@ import {
   h5FontSize,
   h5LienHeight,
   nodeSelectionClassName,
+  nodeSelectionMouseAreaClassName,
   paragraphFontSize,
   paragraphLineHeight,
   textSelectionClassName
@@ -64,6 +66,7 @@ export interface EditorContentProps {
 }
 
 export const EditorContent: FC<EditorContentProps> = ({ editor, editable, rootId, ...props }) => {
+  globalStyles()
   const editorContext = useMemo<EditorContextData>(() => ({ editor, documentEditable: editable }), [editable, editor])
   const documentContext = useMemo<DocumentContextData>(() => ({ docId: rootId }), [rootId])
   useDrawerService()
@@ -237,6 +240,9 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
               },
               selection: {
                 nodeSelection: {
+                  mouseArea: {
+                    className: nodeSelectionMouseAreaClassName
+                  },
                   className: nodeSelectionClassName
                 },
                 textSelection: {

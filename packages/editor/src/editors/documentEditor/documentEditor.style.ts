@@ -1,4 +1,4 @@
-import { css, CSS, theme } from '@mashcard/design-system'
+import { css, CSS, globalCss, theme } from '@mashcard/design-system'
 import { spreadsheetStyles } from '../../components/blockViews/Spreadsheet/Spreadsheet.style'
 import { defaultSelectionStyles } from '../../styles/index.style'
 import anchorLine from './assets/anchor-line.png'
@@ -177,6 +177,7 @@ const collaborationStyles: CSS = {
 
 export const textSelectionClassName = 'text-selection-highlight'
 export const nodeSelectionClassName = 'node-selection-highlight'
+export const nodeSelectionMouseAreaClassName = 'node-selection-mouse-area-highlight'
 
 export const selectionStyles: CSS = {
   [`.${nodeSelectionClassName}`]: {
@@ -186,6 +187,12 @@ export const selectionStyles: CSS = {
     ...defaultSelectionStyles['::selection']
   }
 }
+
+export const globalStyles = globalCss({
+  [`.${nodeSelectionMouseAreaClassName}`]: {
+    ...defaultSelectionStyles['::selection']
+  }
+})
 
 export const documentEditorStyles = css({
   variants: {
