@@ -12,6 +12,7 @@ jobs:
   playwright:
     name: Playwright
     runs-on: ubuntu-latest
+    continue-on-error: true
     timeout-minutes: 60
     strategy:
       matrix:
