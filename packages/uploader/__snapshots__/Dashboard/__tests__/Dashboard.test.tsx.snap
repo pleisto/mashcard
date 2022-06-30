@@ -3,7 +3,7 @@
 exports[`Dashboard Emoji matches correct snapshot 1`] = `
 <div>
   <div
-    class="mc-c-iYIZgz"
+    class="mc-c-hpbLkb"
     role="dialog"
   >
     <div
@@ -70,10 +70,16 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
     <div
       class="uploader-dashboard-emoji-panel"
     >
-      <input
-        class="dashboard-emoji-search-input"
-        placeholder="Search for Emoji..."
-      />
+      <div
+        class="MuiInput-root mc-c-faqTV mc-c-faqTV-cROdoV-size-md mc-c-faqTV-kUUElh-bordered-true mc-c-faqTV-dQAfkO-borderType-outline mc-c-faqTV-gjYJKs-cv dashboard-emoji-search-input"
+      >
+        <input
+          class="MuiInput-input"
+          placeholder="Search for Emoji..."
+          type="text"
+          value=""
+        />
+      </div>
       <div
         class="dashboard-emoji-section"
       >
@@ -18954,7 +18960,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
 
 exports[`Dashboard Gallery matches correct snapshot 1`] = `
 <div
-  class="mc-c-iYIZgz"
+  class="mc-c-hpbLkb"
   role="dialog"
 >
   <div
@@ -19096,7 +19102,7 @@ exports[`Dashboard Gallery matches correct snapshot 1`] = `
 
 exports[`Dashboard Link matches correct snapshot 1`] = `
 <div
-  class="mc-c-iYIZgz"
+  class="mc-c-hpbLkb"
   role="dialog"
 >
   <div
@@ -19150,7 +19156,7 @@ exports[`Dashboard Link matches correct snapshot 1`] = `
 
 exports[`Dashboard Upload matches correct snapshot 1`] = `
 <div
-  class="mc-c-iYIZgz"
+  class="mc-c-hpbLkb"
   role="dialog"
 >
   <div

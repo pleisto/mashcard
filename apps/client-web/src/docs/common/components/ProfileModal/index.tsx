@@ -67,6 +67,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ visible, title, type
         }}
       >
         <Form.Field name="name" label={t('pods.name')}>
+          {/* eslint-disable-next-line */}
           <Input borderType="underline" autoFocus />
         </Form.Field>
         <Form.Field inlineWrapper>
