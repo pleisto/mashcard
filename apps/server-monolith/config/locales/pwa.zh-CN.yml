@@ -275,7 +275,7 @@ zh-CN:
         name: 名称
         color: 颜色
         result: '='
-        save: 保存公式
+        save: Done
         delete: 刪除
         cancel: 取消
     action_panel:
