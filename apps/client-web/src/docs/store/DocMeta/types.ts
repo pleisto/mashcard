@@ -8,8 +8,6 @@ type Icon = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['i
 export interface DocMeta {
   id: string | undefined
   domain: string
-  personalDomain: string
-  loginDomain: string
   isAlias: boolean
   alias: string | undefined
   isAnonymous: boolean

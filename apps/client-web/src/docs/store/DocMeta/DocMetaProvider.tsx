@@ -5,8 +5,6 @@ import { DocMeta, DocMetaContext } from './types'
 const emptyDocMeta: DocMeta = {
   id: undefined,
   domain: '',
-  personalDomain: '',
-  loginDomain: '',
   isAlias: false,
   alias: undefined,
   isAnonymous: false,

@@ -6,7 +6,6 @@ import {
 } from '@/MashcardGraphQL'
 import { AnyFunctionClause, BackendActions, createFunctionClause } from '@mashcard/formula'
 import { useImperativeQuery } from '@/common/hooks'
-import { type DocMeta } from '@/docs/store/DocMeta'
 
 interface useFormulaActionsResult {
   commitFormula: BackendActions['commit']
@@ -17,7 +16,7 @@ interface useFormulaActionsResult {
     success: boolean
     data: Query['formulas']
   }>
-  generateFormulaFunctionClauses: (docMeta: DocMeta) => AnyFunctionClause[]
+  generateFormulaFunctionClauses: () => AnyFunctionClause[]
 }
 
 export function useFormulaActions(): useFormulaActionsResult {
@@ -42,7 +41,7 @@ export function useFormulaActions(): useFormulaActionsResult {
       return { success: !error, data: data.formulas }
     },
 
-    generateFormulaFunctionClauses: docMeta => {
+    generateFormulaFunctionClauses: () => {
       return [
         createFunctionClause({
           name: 'User',
@@ -59,7 +58,7 @@ export function useFormulaActions(): useFormulaActionsResult {
           testCases: [],
           returns: 'string',
           chain: false,
-          reference: ctx => ({ result: docMeta.personalDomain, type: 'string' })
+          reference: ctx => ({ result: globalThis.mashcardContext?.currentUser?.name ?? '', type: 'string' })
         })
       ]
     }

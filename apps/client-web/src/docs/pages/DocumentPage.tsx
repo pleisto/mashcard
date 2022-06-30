@@ -97,16 +97,10 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
     )
   }
 
-  const redirectPersonalPodPath = `/${docMeta.personalDomain}`
-
-  if (data === undefined) {
-    return null
-  }
-
-  if (!docMeta.viewable || (docMeta.isAnonymous && !data?.childrenBlocks?.length)) {
-    return <Navigate to={redirectPersonalPodPath} />
-    // return <Alert message="TODO Page not found" type="error" />
-  }
+  // if (!docMeta.viewable || (docMeta.isAnonymous)) {
+  //   return <Navigate to={'/'} />
+  //   // return <Alert message="TODO Page not found" type="error" />
+  // }
 
   const PageElement = (
     <>
@@ -132,13 +126,5 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
     </>
   )
 
-  if (!docMeta.id) {
-    return PageElement
-  }
-
-  if (data?.childrenBlocks?.length) {
-    return PageElement
-  } else {
-    return <Navigate to={redirectPersonalPodPath} />
-  }
+  return PageElement
 }

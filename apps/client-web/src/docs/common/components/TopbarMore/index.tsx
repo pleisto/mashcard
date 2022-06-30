@@ -34,8 +34,6 @@ const PopMenu: FC<{ menuToggle: (state: boolean) => void }> = ({ menuToggle }) =
   const client = useApolloClient()
   const formulaContext = useReactiveVar(FormulaContextVar)
   const { queryFormulas } = useFormulaActions()
-  const { currentPod } = useContext(MashcardContext)
-  const { domain: loginDomain } = currentPod
 
   const getPageBlocks = useImperativeQuery(queryPageBlocks)
   const [blockPinOrUnpin, { loading: blockPinOrUnpinLoading }] = useBlockPinOrUnpinMutation({
@@ -75,14 +73,14 @@ const PopMenu: FC<{ menuToggle: (state: boolean) => void }> = ({ menuToggle }) =
     const formulaIds = data?.blockDuplicate?.formulaIds ?? []
 
     if (formulaContext && formulaIds.length) {
-      void queryFormulas(loginDomain, formulaIds.join(',')).then(({ data, success }) => {
+      void queryFormulas(domain, formulaIds.join(',')).then(({ data, success }) => {
         if (!success) return
         void appendFormulas(formulaContext, data ?? [])
       })
     }
 
     menuToggle(false)
-  }, [blockDuplicate, id, queryFormulas, menuToggle, formulaContext, loginDomain])
+  }, [blockDuplicate, id, queryFormulas, menuToggle, formulaContext, domain])
 
   const onDel = useCallback(async (): Promise<void> => {
     const input = { id: id!, hardDelete: false }
@@ -91,12 +89,12 @@ const PopMenu: FC<{ menuToggle: (state: boolean) => void }> = ({ menuToggle }) =
       const { data } = await blockCreate({ variables: { input: newPageInput } })
       if (data?.blockCreate?.id) {
         await sleep(100)
-        navigate(`/${loginDomain}/${data?.blockCreate?.id}`)
+        navigate(`/${domain}/${data?.blockCreate?.id}`)
       }
     }
     let {
       data: { pageBlocks }
-    } = await getPageBlocks({ domain: loginDomain })
+    } = await getPageBlocks({ domain: domain })
     pageBlocks = [...pageBlocks].sort((a: any, b: any) => Number(a.sort) - Number(b.sort))
     await blockSoftDelete({ variables: { input } })
     menuToggle(false)
@@ -108,11 +106,11 @@ const PopMenu: FC<{ menuToggle: (state: boolean) => void }> = ({ menuToggle }) =
     if (matchBlock.parentId && matchBlock.parentId !== id) {
       const sameLevelItems = pageBlocks.filter((item: any) => item.parentId === matchBlock.parentId)
       if (sameLevelItems.length < 2) {
-        navigate(`/${loginDomain}/${matchBlock.parentId}`)
+        navigate(`/${domain}/${matchBlock.parentId}`)
       }
       const preIdx = sameLevelItems.findIndex((item: any) => item.id === id) - 1
       const nearItem = sameLevelItems[preIdx < 0 ? 1 : preIdx]
-      navigate(`/${loginDomain}/${nearItem.id}`)
+      navigate(`/${domain}/${nearItem.id}`)
       return
     }
     const tree = array2Tree(pageBlocks)
@@ -122,8 +120,8 @@ const PopMenu: FC<{ menuToggle: (state: boolean) => void }> = ({ menuToggle }) =
     }
     const preIdx = tree.findIndex((item: any) => item.id === id) - 1
     const nearItem = tree[preIdx < 0 ? 1 : preIdx]
-    navigate(`/${loginDomain}/${nearItem.id}`)
-  }, [blockCreate, navigate, menuToggle, blockSoftDelete, id, getPageBlocks, loginDomain])
+    navigate(`/${domain}/${nearItem.id}`)
+  }, [blockCreate, navigate, menuToggle, blockSoftDelete, id, getPageBlocks, domain])
 
   const onUndo = (): void => {
     MashcardEventBus.dispatch(Undo({}))

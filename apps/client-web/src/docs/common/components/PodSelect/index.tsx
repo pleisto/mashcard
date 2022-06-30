@@ -10,7 +10,7 @@ import { ProfileModal } from '../ProfileModal'
 import { useDocMeta } from '@/docs/store/DocMeta'
 
 export const PodSelect: FC = () => {
-  const { loginDomain } = useDocMeta()
+  const { domain } = useDocMeta()
   const { t } = useDocsI18n()
   const { loading, data } = useGetPodsQuery()
   const [userSignOut, { loading: signOutLoading }] = useUserSignOutMutation()
@@ -21,10 +21,10 @@ export const PodSelect: FC = () => {
     return <></>
   }
 
-  const pod = data?.pods.find(p => p.domain === loginDomain)
+  const pod = data?.pods.find(p => p.domain === domain)
 
   if (!pod) {
-    devWarning(true, 'Domain does not match the current user', loginDomain, data)
+    devWarning(true, 'Domain does not match the current user', domain, data)
     return <></>
   }
 

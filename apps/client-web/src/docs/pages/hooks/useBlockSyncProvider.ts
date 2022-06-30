@@ -71,7 +71,6 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   const updatesToCommit = React.useRef(new Set<Uint8Array>())
 
   const { data, loading } = useBlockNewQuery({
-    fetchPolicy: 'no-cache',
     variables: { id: blockId, historyId }
   })
 

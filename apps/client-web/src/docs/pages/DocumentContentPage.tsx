@@ -45,20 +45,21 @@ export const DocumentContentPage: React.FC = () => {
     return () => subscription.unsubscribe()
   }, [_tick, setTick, docid])
 
-  const loginDomain = currentPod.domain
-
   const {
     data,
     loading: getBlockInfoLoading,
     refetch
   } = useGetBlockInfoQuery({ variables: { id: docid as string, domain } })
 
+  // const { data: blockData, loading: blockLoading } = useBlockNewQuery({
+  //   variables: { id: docid as string, historyId }
+  // })
+
   const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({
     refetchQueries: [queryPageBlocks]
   })
   const loading = !data || getBlockInfoLoading || createBlockLoading
   const isAnonymous = !currentUser
-  const personalDomain = currentUser?.domain ?? loginDomain
   const { state, pathname } = useLocation()
 
   React.useEffect(() => {
@@ -71,7 +72,7 @@ export const DocumentContentPage: React.FC = () => {
   // TODO: refactor DocMeta, separate frontend state and model data
   const docMeta: DocMeta = useMemo(() => {
     const policy = data?.blockInfo?.permission?.policy
-    const isMine = loginDomain === domain || !!data?.blockInfo?.isMaster
+    const isMine = !!data?.blockInfo?.isMaster
     const pin = !!data?.blockInfo?.pin
     const icon = data?.blockInfo?.icon
     const isAlias = docid ? !isUUID(docid) : false
@@ -103,25 +104,23 @@ export const DocumentContentPage: React.FC = () => {
       isAnonymous,
       isMine,
       isRedirect,
-      loginDomain,
       shareable,
       editable,
       viewable,
       collaborators,
       pathArray,
       icon,
-      personalDomain,
       isNotExist,
       historyId
     }
-  }, [data, docid, historyId, isAnonymous, loading, personalDomain, loginDomain, state, t, domain])
+  }, [data, docid, historyId, isAnonymous, loading, state, t, domain])
 
   const { queryFormulas, commitFormula, generateFormulaFunctionClauses } = useFormulaActions()
 
   React.useEffect(() => {
-    const functionClauses = generateFormulaFunctionClauses(docMeta)
+    const functionClauses = generateFormulaFunctionClauses()
     const formulaContext = FormulaContext.getInstance({
-      domain: loginDomain,
+      domain,
       backendActions: { commit: commitFormula },
       functionClauses,
       features: featureFlags
