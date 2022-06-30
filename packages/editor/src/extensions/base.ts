@@ -77,7 +77,6 @@ export const updateExtensionOptions = (extensions: Extensions, options: Partial<
     const extension = extensions.find(
       extension => optionNameToExtensionName(name as keyof BaseOptions) === extension.name
     )
-
     if (!extension) return
 
     extension.options = merge(extension.options, value)

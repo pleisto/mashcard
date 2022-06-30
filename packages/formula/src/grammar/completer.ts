@@ -1,3 +1,4 @@
+import { uniqBy } from '@mashcard/active-support'
 import { fetchResult } from '../context'
 import { BlockType, ColumnClass, ColumnType, SpreadsheetType } from '../controls'
 import {
@@ -377,14 +378,15 @@ export const getCompletion = ({ position, ctx, codeFragments, completions }: Get
     ctx
   }
 
-  return completions
-    .flatMap(c => {
-      const { extraCompletions } = EXPAND_COMPLETERS.reduce<CompleterInput & { extraCompletions: Completion[] }>(
-        (acc, completer) => ({ ...acc, extraCompletions: [...acc.extraCompletions, ...completer(acc)] }),
-        { ...args, completion: c, extraCompletions: [] }
-      )
-      return [...extraCompletions, c]
-    })
+  const expendedCompletions = completions.flatMap(c => {
+    const { extraCompletions } = EXPAND_COMPLETERS.reduce<CompleterInput & { extraCompletions: Completion[] }>(
+      (acc, completer) => ({ ...acc, extraCompletions: [...acc.extraCompletions, ...completer(acc)] }),
+      { ...args, completion: c, extraCompletions: [] }
+    )
+    return [...extraCompletions, c]
+  })
+
+  return uniqBy(expendedCompletions, c => `${c.kind}#${c.name}#${c.namespaceId}`)
     .map(c => {
       const { extraFlags } = FLAG_COMPLETERS.reduce<CompleterInput & { extraFlags: CompletionFlag[] }>(
         (acc, completer) => ({ ...acc, extraFlags: [...acc.extraFlags, ...completer(acc)] }),

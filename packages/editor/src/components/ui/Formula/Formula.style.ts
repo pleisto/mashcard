@@ -78,12 +78,42 @@ export const MashcardFormulaMenu = styled('div', {
           paddingLeft: 2,
           paddingRight: 2,
           float: 'right'
+        },
+        '.formula-menu-item-auto-format-icon': {
+          color: theme.colors.typeThirdary,
+          paddingLeft: 2,
+          paddingRight: 2,
+          float: 'right'
+        },
+        '.formula-menu-item-screen-icon': {
+          color: theme.colors.typeThirdary,
+          paddingLeft: 16,
+          paddingRight: 2,
+          float: 'right'
         }
       }
     },
 
     '.formula-menu-item + .formula-menu-item': {
       marginLeft: 24
+    }
+  },
+
+  '.formula-menu-footer': {
+    position: 'relative',
+    padding: '1rem 0 0px',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+
+    '.formula-menu-button': {
+      height: 22,
+      lineHeight: '16px',
+      fontSize: 12
+    },
+
+    '.formula-menu-button + .formula-menu-button': {
+      marginLeft: 12
     }
   }
 })

@@ -146,6 +146,7 @@ export interface CellType extends Cell {
   columnKey: string
   rowKey: string
   eventDependency: getEventDependency
+  getValue: () => string
 }
 
 export interface SpreadsheetInitializer {

@@ -7,8 +7,9 @@ import {
   FormulaEditorReplaceRootTrigger,
   FormulaEditorUpdateTrigger
 } from '@mashcard/schema'
-import { Base } from '../../extensions/base'
+import { Base, updateExtensionOptions } from '../../extensions/base'
 import { buildJSONContentByArray } from '../../helpers'
+import Paragraph from '@tiptap/extension-paragraph'
 
 export interface UseFormulaEditorProps {
   content: JSONContent | undefined
@@ -16,6 +17,7 @@ export interface UseFormulaEditorProps {
   rootId?: string
   formulaId?: string
   placeholder?: string
+  maxScreen?: boolean
 }
 
 export function useFormulaEditor({
@@ -23,6 +25,7 @@ export function useFormulaEditor({
   content,
   rootId,
   formulaId,
+  maxScreen,
   placeholder
 }: UseFormulaEditorProps): Editor | null {
   const editor = useEditor({
@@ -33,10 +36,10 @@ export function useFormulaEditor({
       Base.configure({
         document: true,
         text: true,
-        paragraph: { native: true },
         formulaType: true,
-        formulaKeyDown: { formulaId, rootId }
+        formulaKeyDown: { formulaId, rootId, maxScreen }
       }),
+      Paragraph.extend({ defining: true, code: true }),
       ...(placeholder ? [Placeholder.configure({ placeholder })] : [])
     ],
     onFocus: (props: EditorEvents['focus']) => {
@@ -57,6 +60,11 @@ export function useFormulaEditor({
       }
     }
   })
+
+  React.useEffect(() => {
+    if (!editor) return
+    updateExtensionOptions(editor.extensionManager.extensions, { formulaKeyDown: { formulaId, rootId, maxScreen } })
+  }, [editor, formulaId, rootId, maxScreen])
 
   React.useEffect(() => {
     if (editor && !editor.isDestroyed && editable && rootId && formulaId) {

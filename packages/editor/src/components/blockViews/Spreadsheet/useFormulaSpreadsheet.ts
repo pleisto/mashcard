@@ -70,6 +70,7 @@ export function useFormulaSpreadsheet({
   }, [formulaContext?.domain, rootId, spreadsheetId, title])
 
   React.useEffect(() => {
+    // TODO: remove this when switch pages
     void dispatchFormulaSpreadsheetRowChange({
       spreadsheetId,
       namespaceId: rootId,
@@ -89,6 +90,8 @@ export function useFormulaSpreadsheet({
 
   React.useEffect(() => {
     if (!formulaContext) return
+
+    if (formulaContext.findSpreadsheet({ type: 'id', namespaceId: rootId, value: spreadsheetId })) return
 
     const spreadsheet: SpreadsheetType = new SpreadsheetClass({
       ctx: { formulaContext },

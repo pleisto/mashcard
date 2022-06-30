@@ -8,29 +8,6 @@ import { createExtension } from '../../common'
 
 export type KeyDownHandlerType = (view: EditorView<any>, event: KeyboardEvent) => boolean
 
-const formulaHandleKeyDown: ({
-  formulaId,
-  rootId
-}: {
-  formulaId: string | undefined
-  rootId: string | undefined
-}) => KeyDownHandlerType = ({ formulaId, rootId }) => {
-  return (view, event) => {
-    const key = event.key
-
-    if (['Enter', 'Tab', 'ArrowUp', 'ArrowDown'].includes(key)) {
-      if (rootId && formulaId) {
-        MashcardEventBus.dispatch(
-          FormulaKeyboardEventTrigger({ key, formulaId, rootId, isEditor: true, completionIndex: -1 })
-        )
-      }
-      return true
-    }
-
-    return false
-  }
-}
-
 const gapHoverHandler = ({
   view,
   position,
@@ -74,6 +51,7 @@ const gapHoverHandler = ({
 export interface FormulaHandleKeyDownOptions {
   formulaId: string | undefined
   rootId: string | undefined
+  maxScreen: boolean | undefined
 }
 export interface FormulaHandleKeyDownAttributes {}
 
@@ -81,29 +59,53 @@ export const FormulaHandleKeyDown = createExtension<FormulaHandleKeyDownOptions,
   name: meta.name,
 
   addProseMirrorPlugins() {
-    const {
-      options: { formulaId, rootId },
-      editor
-    } = this
-
     return [
       new Plugin({
         key: new PluginKey(meta.name),
         props: {
-          handleKeyDown: formulaHandleKeyDown({ formulaId, rootId }),
-          handleClick(view, position, event) {
+          handleKeyDown: (view, event) => {
+            const { key, altKey, ctrlKey, metaKey } = event
+            const {
+              options: { formulaId, rootId, maxScreen }
+            } = this
+
+            if (!['Enter', 'Tab', 'ArrowUp', 'ArrowDown', 'Escape'].includes(key)) return false
+
+            if (key === 'Enter' && !altKey && !ctrlKey && !metaKey && maxScreen) {
+              return false
+            }
+
+            if (rootId && formulaId) {
+              MashcardEventBus.dispatch(
+                FormulaKeyboardEventTrigger({ event, formulaId, rootId, type: 'editor', completionIndex: -1 })
+              )
+            }
+            return true
+          },
+          handleClick: (view, position, event) => {
+            const {
+              options: { formulaId, rootId },
+              editor
+            } = this
             gapHoverHandler({ editor, view, position, event, formulaId, rootId })
             return false
           },
           handleDOMEvents: {
-            mouseover(view, event) {
+            mouseover: (view, event) => {
+              const {
+                options: { formulaId, rootId },
+                editor
+              } = this
               const position = view.posAtDOM(event.target as Node, 0)
               // console.log({ view, event, position })
               // TODO num1 + 1 bug
               gapHoverHandler({ editor, view, position, event, formulaId, rootId })
               return false
             },
-            mouseleave(view, event) {
+            mouseleave: (view, event) => {
+              const {
+                options: { formulaId, rootId }
+              } = this
               if (formulaId && rootId) {
                 MashcardEventBus.dispatch(FormulaEditorHoverEventTrigger({ attrs: undefined, formulaId, rootId }))
               }

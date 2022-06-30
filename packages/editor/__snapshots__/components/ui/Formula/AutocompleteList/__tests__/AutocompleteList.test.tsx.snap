@@ -3,7 +3,7 @@
 exports[`AutocompleteList Active Completion renders block kind correctly 1`] = `
 <div>
   <div
-    class="mc-c-gFSjsh"
+    class="mc-c-hzXVqw"
   >
     <div
       class="formula-autocomplete-list"
@@ -66,7 +66,7 @@ exports[`AutocompleteList Active Completion renders block kind correctly 1`] = `
 exports[`AutocompleteList Active Completion renders column kind correctly 1`] = `
 <div>
   <div
-    class="mc-c-gFSjsh"
+    class="mc-c-hzXVqw"
   >
     <div
       class="formula-autocomplete-list"
@@ -187,7 +187,7 @@ exports[`AutocompleteList Active Completion renders column kind correctly 1`] = 
 exports[`AutocompleteList Active Completion renders function kind correctly 1`] = `
 <div>
   <div
-    class="mc-c-gFSjsh"
+    class="mc-c-hzXVqw"
   >
     <div
       class="formula-autocomplete-list"
@@ -293,7 +293,7 @@ exports[`AutocompleteList Active Completion renders function kind correctly 1`] 
             class="autocomplete-preview-example"
           >
             <div
-              class="mashcard-formula-editor mc-c-lmnCoI"
+              class="mashcard-formula-editor mc-c-dxfVD"
             >
               <div
                 class="ProseMirror"
@@ -324,7 +324,7 @@ exports[`AutocompleteList Active Completion renders function kind correctly 1`] 
 exports[`AutocompleteList Active Completion renders spreadsheet kind correctly 1`] = `
 <div>
   <div
-    class="mc-c-gFSjsh"
+    class="mc-c-hzXVqw"
   >
     <div
       class="formula-autocomplete-list"
@@ -428,7 +428,7 @@ exports[`AutocompleteList Active Completion renders spreadsheet kind correctly 1
 exports[`AutocompleteList Active Completion renders variable kind correctly 1`] = `
 <div>
   <div
-    class="mc-c-gFSjsh"
+    class="mc-c-hzXVqw"
   >
     <div
       class="formula-autocomplete-list"
@@ -493,7 +493,7 @@ exports[`AutocompleteList Active Completion renders variable kind correctly 1`] 
             class="autocomplete-preview-definition"
           >
             <div
-              class="mashcard-formula-editor mc-c-lmnCoI"
+              class="mashcard-formula-editor mc-c-dxfVD"
             >
               <div
                 class="ProseMirror"
