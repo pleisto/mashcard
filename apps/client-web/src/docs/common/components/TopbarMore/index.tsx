@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useCallback, FC } from 'react'
+import React, { useEffect, useCallback, FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MashcardEventBus, Undo } from '@mashcard/schema'
 import {
@@ -13,7 +13,6 @@ import { itemStyle } from '@/docs/pages/components/DocumentTopBar/DocumentTopBar
 import { Button, Icon, Popover, Menu } from '@mashcard/design-system'
 import { useDocsI18n } from '../../hooks'
 import { useImperativeQuery } from '@/common/hooks'
-import { MashcardContext } from '@/common/mashcardContext'
 import { array2Tree } from '@mashcard/active-support'
 import { sleep } from '@/common/utils'
 import { FormulaContextVar } from '@/docs/reactiveVars'
@@ -28,7 +27,8 @@ export interface DiscussionMenuProps {
 }
 
 const PopMenu: FC<{ menuToggle: (state: boolean) => void }> = ({ menuToggle }) => {
-  const { id, pin, isMine, editable, domain } = useDocMeta()
+  const { id, isMine, editable, domain, documentInfo } = useDocMeta()
+  const pin = documentInfo?.pin
   const navigate = useNavigate()
   const { t } = useDocsI18n()
   const client = useApolloClient()
@@ -94,7 +94,7 @@ const PopMenu: FC<{ menuToggle: (state: boolean) => void }> = ({ menuToggle }) =
     }
     let {
       data: { pageBlocks }
-    } = await getPageBlocks({ domain: domain })
+    } = await getPageBlocks({ domain })
     pageBlocks = [...pageBlocks].sort((a: any, b: any) => Number(a.sort) - Number(b.sort))
     await blockSoftDelete({ variables: { input } })
     menuToggle(false)

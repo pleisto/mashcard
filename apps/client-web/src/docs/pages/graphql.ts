@@ -362,6 +362,7 @@ export const queryBlockNew = gql`
         state
       }
       documentInfo {
+        id
         title
         enabledAlias {
           key

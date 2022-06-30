@@ -968,6 +968,8 @@ export type DocumentInfo = {
   enabledAlias?: Maybe<BlockAlias>
   /** icon */
   icon?: Maybe<BlockIcon>
+  /** id */
+  id: Scalars['UUID']
   /** is deleted */
   isDeleted: Scalars['Boolean']
   /** is master */
@@ -2910,6 +2912,7 @@ export type BlockNewQuery = {
     states?: Array<{ __typename?: 'BlockState'; id: string; state?: string | null }> | null
     documentInfo?: {
       __typename?: 'DocumentInfo'
+      id: string
       title: string
       isDeleted: boolean
       isMaster: boolean
@@ -5684,6 +5687,7 @@ export const BlockNewDocument = gql`
         state
       }
       documentInfo {
+        id
         title
         enabledAlias {
           key

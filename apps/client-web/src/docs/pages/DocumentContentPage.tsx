@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react'
+import React, { useContext, useEffect, useMemo } from 'react'
 import { getSidebarStyle, logSideBarWidth } from '@/common/utils/sidebarStyle'
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import Split from '@uiw/react-split'
@@ -7,7 +7,7 @@ import { ContentSidebar } from './components/ContentSidebar'
 import { DocumentPage } from './DocumentPage'
 import { MashcardContext } from '@/common/mashcardContext'
 import { Helmet } from 'react-helmet-async'
-import { Policytype, useBlockCreateMutation, useGetBlockInfoQuery } from '@/MashcardGraphQL'
+import { Policytype, useBlockCreateMutation, useBlockNewQuery, DocumentInfo } from '@/MashcardGraphQL'
 import { useDocsI18n } from '../common/hooks'
 import { queryPageBlocks } from '../common/graphql'
 import { FormulaContextVar } from '../reactiveVars'
@@ -17,7 +17,6 @@ import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
 import { AppError404 } from '@/core/app-error'
 import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
-import { MashcardEventBus, BlockMetaUpdated } from '@mashcard/schema'
 
 /* const Layout = styled('div', base) */
 
@@ -27,38 +26,21 @@ export const DocumentContentPage: React.FC = () => {
     docid?: string
     historyId?: string
   }
-  const { currentPod, currentUser, lastDomain, lastBlockIds, featureFlags } = useContext(MashcardContext)
+  const { currentUser, lastDomain, lastBlockIds, featureFlags } = useContext(MashcardContext)
   const { t } = useDocsI18n()
   const navigate = useNavigate()
   const preSidebarStyle = useMemo(getSidebarStyle, [])
 
-  // NOTE: temp fix for no updating DocMeta when apollo cache has been changed
-  const [_tick, setTick] = useState(0)
-  React.useEffect(() => {
-    const subscription = MashcardEventBus.subscribe(
-      BlockMetaUpdated,
-      e => {
-        setTick(tick => tick + 1)
-      },
-      { subscribeId: docid }
-    )
-    return () => subscription.unsubscribe()
-  }, [_tick, setTick, docid])
+  const { data, loading: blockLoading, refetch } = useBlockNewQuery({
+    variables: { id: docid as string, historyId },
+  })
 
-  const {
-    data,
-    loading: getBlockInfoLoading,
-    refetch
-  } = useGetBlockInfoQuery({ variables: { id: docid as string, domain } })
-
-  // const { data: blockData, loading: blockLoading } = useBlockNewQuery({
-  //   variables: { id: docid as string, historyId }
-  // })
+  const documentInfo = data?.blockNew?.documentInfo ? (data?.blockNew?.documentInfo as DocumentInfo) : undefined
 
   const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({
     refetchQueries: [queryPageBlocks]
   })
-  const loading = !data || getBlockInfoLoading || createBlockLoading
+  const loading = !data || blockLoading || createBlockLoading
   const isAnonymous = !currentUser
   const { state, pathname } = useLocation()
 
@@ -71,24 +53,19 @@ export const DocumentContentPage: React.FC = () => {
 
   // TODO: refactor DocMeta, separate frontend state and model data
   const docMeta: DocMeta = useMemo(() => {
-    const policy = data?.blockInfo?.permission?.policy
-    const isMine = !!data?.blockInfo?.isMaster
-    const pin = !!data?.blockInfo?.pin
-    const icon = data?.blockInfo?.icon
+    const policy = documentInfo?.permission?.policy
+    const isMine = !!documentInfo?.isMaster
     const isAlias = docid ? !isUUID(docid) : false
     const shareable = isMine
     const editable = isMine || policy === Policytype.Edit
     const viewable = isMine || (!!policy && [Policytype.View, Policytype.Edit].includes(policy))
-    const isDeleted = data?.blockInfo?.isDeleted !== false
+    const isDeleted = documentInfo?.isDeleted !== false
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-    const title: string = data?.blockInfo?.title || t('title.untitled')
-    // const payload = data?.blockInfo?.enabledAlias?.payload ?? {}
-    const collaborators = data?.blockInfo?.collaborators ?? []
-    const pathArray = data?.blockInfo?.pathArray ?? []
+    const title: string = documentInfo?.title || t('title.untitled')
     const path = `/${domain}/${docid}`
 
-    const id = isAlias ? data?.blockInfo?.id : docid
-    const alias = isAlias ? docid : data?.blockInfo?.enabledAlias?.key
+    const id = isAlias ? documentInfo?.id : docid
+    const alias = isAlias ? docid : documentInfo?.enabledAlias?.key
     const isRedirect = !!(state as any)?.redirect
     const isNotExist = !loading && !id
 
@@ -99,7 +76,6 @@ export const DocumentContentPage: React.FC = () => {
       domain,
       title,
       isDeleted,
-      pin,
       path,
       isAnonymous,
       isMine,
@@ -107,13 +83,11 @@ export const DocumentContentPage: React.FC = () => {
       shareable,
       editable,
       viewable,
-      collaborators,
-      pathArray,
-      icon,
       isNotExist,
-      historyId
+      historyId,
+      documentInfo
     }
-  }, [data, docid, historyId, isAnonymous, loading, state, t, domain])
+  }, [documentInfo, docid, historyId, isAnonymous, loading, state, t, domain])
 
   const { queryFormulas, commitFormula, generateFormulaFunctionClauses } = useFormulaActions()
 
@@ -175,11 +149,11 @@ export const DocumentContentPage: React.FC = () => {
           '@smDown': 'sm'
         }}
       >
-        <Split visiable={!docMeta.isAnonymous} onDragEnd={logSideBarWidth}>
+        <Split visiable={!isAnonymous} onDragEnd={logSideBarWidth}>
           {!isAnonymous && <Root.Section style={preSidebarStyle}>{siderBar}</Root.Section>}
           <main className="content">
             {(!loading || docMeta.isMine) && (
-              <header style={docMeta.isAnonymous ? { paddingRight: 0 } : undefined}>
+              <header style={isAnonymous ? { paddingRight: 0 } : undefined}>
                 <DocumentTopBar />
               </header>
             )}
@@ -189,7 +163,7 @@ export const DocumentContentPage: React.FC = () => {
                   <DocMetaProvider
                     inherit
                     docMeta={{
-                      editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted
+                      editable: docMeta.editable && !isAnonymous && !documentInfo?.isDeleted
                     }}
                   >
                     <DocumentPage mode={!docMeta.editable || isAnonymous ? 'presentation' : 'default'} />

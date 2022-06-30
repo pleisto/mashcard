@@ -1137,11 +1137,11 @@
               "deprecationReason": null
             },
             {
-              "name": "meta",
-              "description": "meta",
+              "name": "content",
+              "description": "content",
               "type": {
                 "kind": "SCALAR",
-                "name": "MetaJson",
+                "name": "JSON",
                 "ofType": null
               },
               "defaultValue": null,
@@ -1149,11 +1149,11 @@
               "deprecationReason": null
             },
             {
-              "name": "content",
-              "description": "content",
+              "name": "meta",
+              "description": "meta",
               "type": {
                 "kind": "SCALAR",
-                "name": "JSON",
+                "name": "MetaJson",
                 "ofType": null
               },
               "defaultValue": null,
@@ -6208,6 +6208,24 @@
                 "kind": "UNION",
                 "name": "BlockIcon",
                 "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "id",
+              "description": "id",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "UUID",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null

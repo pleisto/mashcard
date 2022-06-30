@@ -17,7 +17,8 @@ import { useNonNullDocMeta } from '@/docs/store/DocMeta'
 
 export const TrashPrompt: FC = () => {
   const { t } = useDocsI18n()
-  const { id, domain, pathArray } = useNonNullDocMeta()
+  const { id, domain, documentInfo } = useNonNullDocMeta()
+  const pathArray = documentInfo?.pathArray
   const client = useApolloClient()
   const [hardDeleteModalVisible, setHardDeleteModalVisible] = useState<boolean>(false)
   const [hardDeleteConfirmLoading, setHardDeleteConfirmLoading] = React.useState<boolean>(false)

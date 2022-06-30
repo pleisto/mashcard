@@ -25,7 +25,7 @@ export const DocumentTopBar: FC = () => {
   const isSaving = useReactiveVar(isSavingVar)
   const { features } = useContext(MashcardContext)
 
-  const { id, viewable, editable, isAnonymous, isDeleted } = useDocMeta()
+  const { id, viewable, editable, isAnonymous, documentInfo } = useDocMeta()
 
   if (!viewable) {
     return <></>
@@ -42,7 +42,7 @@ export const DocumentTopBar: FC = () => {
     </>
   )
 
-  const editableMenu = id && !isDeleted && (
+  const editableMenu = id && !documentInfo?.isDeleted && (
     <>
       <CollaboratorsMenu />
       <ShareMenu />

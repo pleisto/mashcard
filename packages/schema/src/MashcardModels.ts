@@ -965,6 +965,8 @@ export type DocumentInfo = {
   enabledAlias?: Maybe<BlockAlias>
   /** icon */
   icon?: Maybe<BlockIcon>
+  /** id */
+  id: Scalars['UUID']
   /** is deleted */
   isDeleted: Scalars['Boolean']
   /** is master */

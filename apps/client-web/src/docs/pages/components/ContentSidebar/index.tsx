@@ -7,8 +7,7 @@ import Logo from '@/common/assets/logo_brickdoc_without_name.svg'
 import { useDocMeta } from '@/docs/store/DocMeta'
 
 export const ContentSidebar: FC = () => {
-  const { isMine, isAnonymous } = useDocMeta()
-  if (isAnonymous) return null
+  const { isMine } = useDocMeta()
   return (
     <>
       <header>

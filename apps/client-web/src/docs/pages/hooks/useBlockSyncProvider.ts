@@ -71,7 +71,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   const updatesToCommit = React.useRef(new Set<Uint8Array>())
 
   const { data, loading } = useBlockNewQuery({
-    variables: { id: blockId, historyId }
+    variables: { id: blockId, historyId },
+    fetchPolicy: 'no-cache'
   })
 
   const awarenessChanged = React.useCallback(
@@ -150,6 +151,17 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
       // TODO: refactor to remove BlockInfo
       client.cache.modify({
         id: client.cache.identify({ __typename: 'BlockInfo', id: blockId }),
+        fields: {
+          title() {
+            return meta.title
+          },
+          icon() {
+            return meta.icon
+          }
+        }
+      })
+      client.cache.modify({
+        id: client.cache.identify({ __typename: 'DocumentInfo', id: blockId }),
         fields: {
           title() {
             return meta.title

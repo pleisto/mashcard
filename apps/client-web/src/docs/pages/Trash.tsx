@@ -16,7 +16,7 @@ export const Trash: React.FC = () => {
   const { t } = useDocsI18n()
   const preStyle = useMemo<React.CSSProperties>(getSidebarStyle, [])
   const { loading: podDataloding, data: podData } = useGetPodsQuery()
-  const { currentPod, currentUser } = useContext(MashcardContext)
+  const { currentUser } = useContext(MashcardContext)
 
   const isAnonymous = !currentUser
 
