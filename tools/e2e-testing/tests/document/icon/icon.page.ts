@@ -18,6 +18,6 @@ export class IconPage extends UploaderDashboardPage {
 
   async addEmoji(name: string): Promise<void> {
     await this.searchEmoji(name)
-    await this.waitForResponseWithAction('blockSyncBatch', this.getEmojiByIndex().click())
+    await this.waitForResponseWithAction('BlockCommit', this.getEmojiByIndex().click())
   }
 }

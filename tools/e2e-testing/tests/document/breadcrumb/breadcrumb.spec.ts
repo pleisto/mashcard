@@ -20,7 +20,7 @@ test.describe('Breadcrumb', () => {
 
     await pageTree.clickPage()
     await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(1)
-    await expect(breadcrumb.getBreadcrumbTextByIndex()).toHaveText('Untitled')
+    await expect(breadcrumb.getBreadcrumbTextByIndex()).toHaveText(INITIAL_PAGE.title)
   })
 
   test('Verify breadcrumbs count equal 2 when add a sub page', async ({ api }) => {
