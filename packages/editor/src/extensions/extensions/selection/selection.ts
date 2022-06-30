@@ -66,7 +66,8 @@ export const isTextContentSelected = ({ editor, from, to }: { editor: Editor; fr
   return show
 }
 
-export const DEFAULT_SELECTION_CLASS = 'editor-selection'
+const DEFAULT_TEXT_SELECTION_CLASS = 'text-selection-highlight'
+const DEFAULT_NODE_SELECTION_CLASS = 'node-selection-highlight'
 
 function resolveCoordinates(
   anchor: { x: number; y: number },
@@ -248,8 +249,8 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
 
             if (state.selection instanceof TextSelection) {
               const inlineDecoration = Decoration.inline(from, to, {
-                class: this.options.HTMLAttributes?.class ?? DEFAULT_SELECTION_CLASS,
-                style: this.options.HTMLAttributes?.style
+                class: this.options.textSelection?.className ?? DEFAULT_TEXT_SELECTION_CLASS,
+                style: this.options.textSelection?.style
               })
               decorations.push(inlineDecoration)
 
@@ -259,8 +260,8 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
             if (state.selection instanceof MultipleNodeSelection) {
               state.selection.ranges.forEach(range => {
                 const nodeDecoration = Decoration.node(range.$from.pos, range.$to.pos, {
-                  class: this.options.HTMLAttributes?.class ?? DEFAULT_SELECTION_CLASS,
-                  style: this.options.HTMLAttributes?.style
+                  class: this.options.nodeSelection?.className ?? DEFAULT_NODE_SELECTION_CLASS,
+                  style: this.options.nodeSelection?.style
                 })
                 decorations.push(nodeDecoration)
               })

@@ -1,7 +1,6 @@
 import { css, CSS, theme } from '@mashcard/design-system'
 import { spreadsheetStyles } from '../../components/blockViews/Spreadsheet/Spreadsheet.style'
 import { defaultSelectionStyles } from '../../styles/index.style'
-import { DEFAULT_SELECTION_CLASS } from '../../extensions'
 import anchorLine from './assets/anchor-line.png'
 
 export const h1FontSize = theme.fontSizes.title1
@@ -176,8 +175,14 @@ const collaborationStyles: CSS = {
   }
 }
 
+export const textSelectionClassName = 'text-selection-highlight'
+export const nodeSelectionClassName = 'node-selection-highlight'
+
 export const selectionStyles: CSS = {
-  [`.${DEFAULT_SELECTION_CLASS}`]: {
+  [`.${nodeSelectionClassName}`]: {
+    ...defaultSelectionStyles['::selection']
+  },
+  [`.${textSelectionClassName}`]: {
     ...defaultSelectionStyles['::selection']
   }
 }

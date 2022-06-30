@@ -1,7 +1,14 @@
 import { ExtensionMeta } from '../../common'
 
 export interface SelectionOptions {
-  HTMLAttributes?: Record<string, string>
+  textSelection: {
+    className?: string
+    style?: string
+  }
+  nodeSelection: {
+    className?: string
+    style?: string
+  }
 }
 
 export interface SelectAttributes {}

@@ -45,8 +45,10 @@ import {
   h4LienHeight,
   h5FontSize,
   h5LienHeight,
+  nodeSelectionClassName,
   paragraphFontSize,
-  paragraphLineHeight
+  paragraphLineHeight,
+  textSelectionClassName
 } from './documentEditor.style'
 import { merge } from 'lodash'
 import { To, NavigateOptions } from 'react-router-dom'
@@ -234,7 +236,11 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
                 }
               },
               selection: {
-                HTMLAttributes: {
+                nodeSelection: {
+                  className: nodeSelectionClassName
+                },
+                textSelection: {
+                  className: textSelectionClassName,
                   // make selection as high as parent element
                   style: `padding: var(${selectionPaddingVar}) 0`
                 }
