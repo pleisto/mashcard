@@ -281,8 +281,7 @@ export const spreadsheetStyles: CSS = {
           width: 'auto',
           height: '100%',
           wordWrap: 'break-word',
-          whiteSpace: 'normal',
-          fontFamily: "'Fira Code'"
+          whiteSpace: 'normal'
         }
       }
     }

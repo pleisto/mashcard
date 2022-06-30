@@ -135,14 +135,21 @@ interface CompleteInput {
   match?: string
 }
 
-interface CompleteTestCaseType extends BaseTestCase<{}> {
+type CompleteTestCaseType = BaseTestCase<{}> & {
   definition$: string
-  firstCompletion: Partial<Completion>
   firstNonSpaceCodeFragment?: Partial<CodeFragment>
   secondNonSpaceCodeFragment?: Partial<CodeFragment>
   thirdNonSpaceCodeFragment?: Partial<CodeFragment>
-  completes: CompleteInput[]
-}
+} & (
+    | {
+        firstCompletion: Partial<Completion>
+        completes: [CompleteInput, ...CompleteInput[]]
+      }
+    | {
+        firstCompletion: undefined
+        completes: []
+      }
+  )
 
 interface FormatTestCaseType extends BaseTestCase<{}> {
   definition$: string

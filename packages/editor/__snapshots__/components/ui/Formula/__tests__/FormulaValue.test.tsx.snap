@@ -3,7 +3,7 @@
 exports[`FormulaValue renders Error type correctly 1`] = `
 <div>
   <span
-    class="mc-c-jcawdb mc-c-jcawdb-dRQWqj-selected-false mc-c-eszAuu"
+    class="mc-c-fjgWBd mc-c-fjgWBd-dRQWqj-selected-false mc-c-eszAuu"
   >
     <span
       aria-label="formula"
@@ -30,7 +30,7 @@ exports[`FormulaValue renders Error type correctly 1`] = `
 exports[`FormulaValue renders Number type correctly 1`] = `
 <div>
   <span
-    class="mc-c-dBJqpz mc-c-dBJqpz-hjvNAz-selected-false mc-c-kkMlKx"
+    class="mc-c-hLAbsV mc-c-hLAbsV-hjvNAz-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -73,7 +73,7 @@ exports[`FormulaValue renders Number type correctly 1`] = `
 exports[`FormulaValue renders Waiting/Pending type correctly 1`] = `
 <div>
   <span
-    class="mc-c-eWfcdK mc-c-eWfcdK-dMVoQm-selected-false mc-c-iKUZQK"
+    class="mc-c-kEPOnE mc-c-kEPOnE-dMVoQm-selected-false mc-c-iKUZQK"
   >
     <span
       aria-label="formula"

@@ -253,6 +253,7 @@ export const parse = (ctx: FunctionContext): ParseResult => {
   completions = getCompletion({
     position: newPosition,
     completions,
+    errorMessages: finalErrorMessages,
     codeFragments: finalCodeFragments,
     ctx
   })

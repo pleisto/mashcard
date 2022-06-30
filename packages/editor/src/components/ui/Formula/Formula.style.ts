@@ -11,10 +11,9 @@ export const MashcardFormulaMenuPopover = css({
 
 export const FormulaResult = styled('div', {
   color: '@basic-color',
-  margin: '12px 0',
+  margin: '12px 0 0 0',
   fontSize: '14px',
-  lineHeight: '20px',
-  fontFamily: "'Fira Code'",
+  lineHeight: '22px',
 
   '.formula-result-error': {
     flexDirection: 'column',
@@ -56,16 +55,18 @@ export const MashcardFormulaMenu = styled('div', {
       '.formula-menu-item-name': {
         display: 'flex',
         flex: 1,
+        lineHeight: '22px',
+        fontSize: '14px',
+
+        '::-webkit-input-placeholder': {
+          color: theme.colors.typeThirdary,
+          fontSize: '14px'
+        },
 
         '.formula-menu-item-name-field': {
           marginRight: 12,
-          padding: 1,
-          lineHeight: '1.8',
-          fontFamily: 'Fira Code',
-
-          '&::placeholder': {
-            color: theme.colors.typeThirdary
-          }
+          padding: 0,
+          fontSize: '14px'
         },
         '.formula-menu-item-reference-count': {
           color: theme.colors.typeThirdary,
@@ -131,8 +132,7 @@ export const MashcardFormulaNormal = css({
 })()
 
 export const MashcardFormulaBorderless = css({
-  cursor: 'pointer',
-  fontFamily: "'Fira Code'"
+  cursor: 'pointer'
 })()
 
 export const MashcardFormulaEmpty = css({

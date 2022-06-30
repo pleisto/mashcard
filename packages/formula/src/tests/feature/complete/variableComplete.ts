@@ -92,19 +92,15 @@ export const VariableCompleteTestCase: TestCaseInterface = {
         definition$: '=num0$',
         firstNonSpaceCodeFragment: { code: 'Variable', display: 'num0' },
         namespaceId,
-        firstCompletion: {
-          name: 'num0',
-          kind: 'variable',
-          flags: ['exact', 'contextNamespace', 'defaultNamespace', 'variable']
-        },
-        completes: [{ definition$: '=num0$' }]
+        firstCompletion: undefined,
+        completes: []
       },
       {
         definition$: '=num$0',
         firstNonSpaceCodeFragment: { code: 'Variable', display: 'num0' },
         namespaceId,
-        firstCompletion: { name: 'num0', kind: 'variable' },
-        completes: [{ definition$: '=num0$' }]
+        firstCompletion: undefined,
+        completes: []
       },
       {
         definition$: '= 1 + num$ + 123',
@@ -176,8 +172,8 @@ export const VariableCompleteTestCase: TestCaseInterface = {
       {
         definition$: '= 1 + VariableCompletePage2.num0123$ + 123',
         firstNonSpaceCodeFragment: { code: 'Variable', display: 'num0123', namespaceId: namespaceId2 },
-        firstCompletion: { name: 'num0123', kind: 'variable', fallbackValue: 'VariableCompletePage2.num0123' },
-        completes: [{ definition$: '= 1 + VariableCompletePage2.num0123$ + 123' }]
+        firstCompletion: undefined,
+        completes: []
       },
       {
         definition$: '= 1 + VariableCompletePage1$ + 123',
