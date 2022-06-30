@@ -20,12 +20,10 @@ module CurrentPod
 
     ## TODO graphql
     remote_pod =
-      if graphql?
-        warden.session['current_pod']
+      if request.params['controller'] == 'pages'
+        warden.session['current_pod'] = fetch_pod_via_params
       else
-        fetch_pod_via_params.tap do |pod|
-          warden.session['current_pod'] = pod
-        end
+        warden.session['current_pod']
       end
 
     remote_pod || current_user.fetch_current_pod_cache.as_session_context
@@ -43,9 +41,5 @@ module CurrentPod
     Rails.logger.error("Can't find pod: #{current_user.id} #{domain}")
 
     nil
-  end
-
-  def graphql?
-    internal_graphql_api_path == request.path
   end
 end
