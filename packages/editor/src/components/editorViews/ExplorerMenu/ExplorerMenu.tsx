@@ -1,5 +1,5 @@
 import { useCallback, useState, useMemo, ChangeEventHandler, cloneElement, useEffect } from 'react'
-import { Icon, Menu } from '@mashcard/design-system'
+import { Icon, Menu, theme } from '@mashcard/design-system'
 import { Editor } from '@tiptap/core'
 import { MashcardEventBus, ExplorerMenuGroup, ExplorerMenuItem, ExplorerMenuTrigger } from '@mashcard/schema'
 import {
@@ -93,7 +93,7 @@ export const ExplorerMenu: React.FC<ExplorerMenuProps> = () => {
         <>
           <SearchInputContainer>
             <SearchInput
-              prefix={<Icon.Search />}
+              prefix={<Icon.Search fill={theme.colors.iconDisable.value} />}
               placeholder={t('explorer_menu.search.placeholder')}
               onChange={handleSearchChange}
               value={search}

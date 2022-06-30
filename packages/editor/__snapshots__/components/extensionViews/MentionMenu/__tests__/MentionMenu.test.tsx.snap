@@ -29,7 +29,7 @@ exports[`MentionMenu matches correct snapshot 1`] = `
         class="mc-c-llTUqV"
       >
         <li
-          class="mc-c-bDiYvX mc-c-bDiYvX-cOuhSn-active-true mc-c-klLbby"
+          class="mc-c-bDiYvX mc-c-klLbby"
           id="mention-1"
           role="menuitem"
           tabindex="0"

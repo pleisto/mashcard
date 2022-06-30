@@ -31,7 +31,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         title=""
       >
         <li
-          class="mc-c-bDiYvX mc-c-bDiYvX-cOuhSn-active-true mc-c-jIhtkb"
+          class="mc-c-bDiYvX mc-c-jIhtkb"
           data-testid="editor-slash-commands-item"
           id="slash-menu-1"
           role="menuitem"
