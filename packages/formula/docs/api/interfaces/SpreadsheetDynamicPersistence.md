@@ -19,7 +19,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:179](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L179)
+[packages/formula/src/controls/types.ts:178](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L178)
 
 ---
 
@@ -29,7 +29,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:177](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L177)
+[packages/formula/src/controls/types.ts:176](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L176)
 
 ---
 
@@ -39,7 +39,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:175](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L175)
+[packages/formula/src/controls/types.ts:174](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L174)
 
 ---
 
@@ -49,7 +49,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:178](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L178)
+[packages/formula/src/controls/types.ts:177](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L177)
 
 ---
 
@@ -59,7 +59,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:174](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L174)
+[packages/formula/src/controls/types.ts:173](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L173)
 
 ---
 
@@ -69,4 +69,4 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:176](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L176)
+[packages/formula/src/controls/types.ts:175](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L175)

@@ -17,6 +17,7 @@ import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
 import { AppError404 } from '@/core/app-error'
 import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
+import { useTranslation } from 'react-i18next'
 
 /* const Layout = styled('div', base) */
 
@@ -136,10 +137,10 @@ export const DocumentContentPage: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blockCreate, docid, history, domain, docMeta, lastDomain, lastBlockIds])
 
-  const siderBar = <ContentSidebar />
   if (docMeta.isNotExist) {
     return <AppError404 btnCallback={() => navigate('/')} />
   }
+
   return (
     <DocMetaProvider docMeta={docMeta}>
       <Helmet
@@ -156,7 +157,9 @@ export const DocumentContentPage: FC = () => {
         <Split visiable={!isAnonymous} onDragEnd={logSideBarWidth}>
           {!isAnonymous && (
             <Root.Section style={preSidebarStyle}>
-              <Suspense>{siderBar}</Suspense>
+              <Suspense>
+                <ContentSidebar />
+              </Suspense>
             </Root.Section>
           )}
           <main className="content">

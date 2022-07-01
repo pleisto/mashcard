@@ -31,6 +31,7 @@ import { useFormulaActions } from '@/docs/pages/hooks/useFormulaActions'
 import { sleep } from '@/common/utils'
 import { useDocMeta } from '@/docs/store/DocMeta'
 import { useBlockSoftDelete } from '../../hooks/useBlockSoftDelete'
+import { MashcardEventBus, UpdateBlockMeta } from '@mashcard/schema'
 
 type UUID = Scalars['UUID']
 
@@ -135,18 +136,16 @@ export const PageMenu: React.FC<PageMenuProps> = ({
     const input = { id: pageId, title }
     await blockRename({ variables: { input } })
     if (pageId === id) {
-      if (editor && !editor.isDestroyed) {
-        editor.commands.setDocAttrs({ ...editor.state.doc.attrs, title })
-      }
+      // if (editor && !editor.isDestroyed) {
+      //   editor.commands.setDocAttrs({ ...editor.state.doc.attrs, title })
+      // }
 
-      client.cache.modify({
-        id: client.cache.identify({ __typename: 'BlockInfo', id }),
-        fields: {
-          title() {
-            return title
-          }
-        }
-      })
+      MashcardEventBus.dispatch(
+        UpdateBlockMeta({
+          id,
+          meta: { title }
+        })
+      )
     }
     setPopoverVisible(false)
   }

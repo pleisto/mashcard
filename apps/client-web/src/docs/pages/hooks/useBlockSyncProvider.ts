@@ -20,7 +20,7 @@ import {
 import { devLog } from '@mashcard/design-system'
 import { useApolloClient } from '@apollo/client'
 
-import { MashcardEventBus, docHistoryReceived, BlockMetaUpdated } from '@mashcard/schema'
+import { MashcardEventBus, docHistoryReceived, BlockMetaUpdated, UpdateBlockMeta } from '@mashcard/schema'
 
 export interface blockMeta {
   [key: string]: any
@@ -323,7 +323,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
       const provider = { document: newYdoc, awareness }
       setProvider(provider)
-      setBlockMetaUpdated(Object.fromEntries(newYdoc.getMap('meta').entries()))
+      const loadedMeta = Object.fromEntries(newYdoc.getMap('meta').entries())
+      setBlockMetaUpdated(loadedMeta)
 
       if (!historyId && editable) {
         newYdoc.on('update', async (update: Uint8Array, origin: any, ydoc: Y.Doc) => {
@@ -345,9 +346,30 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
           })
           await updatePromise
         })
+
+        if (data.blockNew?.documentInfo) {
+          if (data.blockNew.documentInfo.title != loadedMeta['title']) {
+            newYdoc.getMap('meta').set('title', data.blockNew.documentInfo.title)
+          }
+        }
       }
     }
   }, [blockId, historyId, data, loading, commitState, awarenessUpdate, awarenessChanged, setBlockMetaUpdated, editable])
+
+  React.useEffect(() => {
+    const subscriptions = [
+      MashcardEventBus.subscribe(
+        UpdateBlockMeta,
+        ({ payload }) => {
+          setMeta({ ...blockMeta, ...payload.meta })
+        },
+        { subscribeId: blockId }
+      )
+    ]
+    return () => {
+      subscriptions.forEach(sub => sub.unsubscribe())
+    }
+  }, [setMeta, blockMeta])
 
   return {
     committing,

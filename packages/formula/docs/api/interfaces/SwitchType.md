@@ -62,7 +62,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:223](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L223)
+[packages/formula/src/controls/types.ts:222](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L222)
 
 ---
 
@@ -86,7 +86,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:224](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L224)
+[packages/formula/src/controls/types.ts:223](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L223)
 
 ---
 
@@ -100,7 +100,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:222](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L222)
+[packages/formula/src/controls/types.ts:221](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L221)
 
 ## Methods
 

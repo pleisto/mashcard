@@ -33,3 +33,7 @@ export const BlockDropAdd = event<{ key: string; pos: number }>()('BlockDropAdd'
 export const BlockMetaUpdated = event<{ id: string; meta: BlockMeta }>()('BlockMetaUpdated', ({ id }) => {
   return { id }
 })
+
+export const UpdateBlockMeta = event<{ id: string; meta: BlockMeta }>()('UpdateBlockMeta', ({ id }) => {
+  return { id }
+})

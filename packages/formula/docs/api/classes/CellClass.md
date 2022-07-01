@@ -29,7 +29,6 @@
 ### Methods
 
 - [eventDependency](CellClass.md#eventdependency)
-- [getValue](CellClass.md#getvalue)
 
 ## Constructors
 
@@ -239,17 +238,3 @@
 #### Implementation of
 
 CellType.eventDependency
-
----
-
-### <a id="getvalue" name="getvalue"></a> getValue
-
-▸ **getValue**(): `string`
-
-#### Returns
-
-`string`
-
-#### Implementation of
-
-[CellType](../interfaces/CellType.md).[getValue](../interfaces/CellType.md#getvalue)

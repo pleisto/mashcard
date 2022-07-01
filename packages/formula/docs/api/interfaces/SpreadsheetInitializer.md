@@ -24,7 +24,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:158](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L158)
+[packages/formula/src/controls/types.ts:157](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L157)
 
 ---
 
@@ -34,7 +34,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:155](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L155)
+[packages/formula/src/controls/types.ts:154](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L154)
 
 ---
 
@@ -44,7 +44,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:156](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L156)
+[packages/formula/src/controls/types.ts:155](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L155)
 
 ---
 
@@ -54,7 +54,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:157](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L157)
+[packages/formula/src/controls/types.ts:156](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L156)
 
 ---
 
@@ -64,7 +64,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:154](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L154)
+[packages/formula/src/controls/types.ts:153](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L153)
 
 ---
 
@@ -74,7 +74,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:159](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L159)
+[packages/formula/src/controls/types.ts:158](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L158)
 
 ---
 
@@ -84,7 +84,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:153](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L153)
+[packages/formula/src/controls/types.ts:152](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L152)
 
 ## Methods
 
