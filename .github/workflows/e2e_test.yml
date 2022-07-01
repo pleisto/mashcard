@@ -38,12 +38,25 @@ jobs:
           E2E_CHROMIUM_LOGIN_PASSWORD: ${{ secrets.TRUNK_E2E_USER_CHROMIUM_PASSWORD }}
           E2E_FIREFOX_LOGIN_EMAIL: ${{ secrets.TRUNK_E2E_USER_FIREFOX_EMAIL }}
           E2E_FIREFOX_LOGIN_PASSWORD: ${{ secrets.TRUNK_E2E_USER_FIREFOX_PASSWORD }}
+      - name: Upload allure reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-reports
+          path: tools/e2e-testing/allure-results
+          retention-days: 3
   report:
     if: ${{ always() }}
     needs: playwright
     name: Send report
     runs-on: ubuntu-latest
     steps:
+      - run: mkdir -p tools/e2e-testing/allure-results
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        id: download
+        with:
+          name: allure-reports
+          path: tools/e2e-testing/allure-results
       - name: Send reports to the allure server
         uses: Xotabu4/send-to-allure-server-action@1
         id: allure
