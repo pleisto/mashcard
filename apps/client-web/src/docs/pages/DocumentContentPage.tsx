@@ -17,7 +17,6 @@ import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
 import { AppError404 } from '@/core/app-error'
 import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
-import { useTranslation } from 'react-i18next'
 
 /* const Layout = styled('div', base) */
 

@@ -348,7 +348,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
         })
 
         if (data.blockNew?.documentInfo) {
-          if (data.blockNew.documentInfo.title != loadedMeta['title']) {
+          if (data.blockNew.documentInfo.title !== loadedMeta["title"]) {
             newYdoc.getMap('meta').set('title', data.blockNew.documentInfo.title)
           }
         }
@@ -369,7 +369,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
     return () => {
       subscriptions.forEach(sub => sub.unsubscribe())
     }
-  }, [setMeta, blockMeta])
+  }, [setMeta, blockMeta, blockId])
 
   return {
     committing,

@@ -25,7 +25,7 @@ import {
 import { queryBlockPins, queryPageBlocks } from '../../graphql'
 import * as Root from './index.style'
 import { useApolloClient, useReactiveVar } from '@apollo/client'
-import { editorVar, FormulaContextVar } from '@/docs/reactiveVars'
+import { FormulaContextVar } from '@/docs/reactiveVars'
 import { appendFormulas } from '@mashcard/formula'
 import { useFormulaActions } from '@/docs/pages/hooks/useFormulaActions'
 import { sleep } from '@/common/utils'
@@ -61,7 +61,6 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   const { t } = useDocsI18n()
   const navigate = useNavigate()
   const client = useApolloClient()
-  const editor = useReactiveVar(editorVar)
   const formulaContext = useReactiveVar(FormulaContextVar)
 
   const { id, domain } = useDocMeta()
