@@ -41,7 +41,16 @@ const BlockActionButtonContainer = styled(BlockActionButton, {
   position: 'absolute',
   transform: 'translateX(calc(-100% - 0.6875rem))',
   transition: 'opacity 200ms ease-in-out',
-  top: 0
+  top: 0,
+  '&::before': {
+    content: '',
+    position: 'absolute',
+    height: '100%',
+    width: 20,
+    top: 0,
+    left: -20,
+    display: 'block',
+  }
 })
 
 const BlockActionsContainer = styled('div', {

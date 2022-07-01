@@ -4,7 +4,7 @@ import { GroupedVirtuoso } from 'react-virtuoso'
 import { ImportSourceOption } from './Dashboard'
 import { DashboardPluginOptions, UploadResultData } from './plugin'
 import { NotFound } from './index.style'
-import { Button } from '@mashcard/design-system'
+import { Button, Input } from '@mashcard/design-system'
 
 export interface EmojiPanelProps {
   // eslint-disable-next-line react/no-unused-prop-types
@@ -96,7 +96,8 @@ export const EmojiPanel: FC<EmojiPanelProps> = ({ emojiData, recentEmojis, onSel
                 key={item.name}
                 type="text"
                 // eslint-disable-next-line max-nested-callbacks
-                onClick={() => onSelectEmoji(item, 'add')}>
+                onClick={() => onSelectEmoji(item, 'add')}
+              >
                 {item.emoji}
               </Button>
             )
@@ -114,7 +115,7 @@ export const EmojiPanel: FC<EmojiPanelProps> = ({ emojiData, recentEmojis, onSel
 
   return (
     <div className="uploader-dashboard-emoji-panel">
-      <input className="dashboard-emoji-search-input" placeholder="Search for Emoji..." onChange={handleSearchEmoji} />
+      <Input className="dashboard-emoji-search-input" placeholder="Search for Emoji..." onChange={handleSearchEmoji} />
       <div className="dashboard-emoji-section">
         <GroupedVirtuoso
           className="dashboard-emoji-list"

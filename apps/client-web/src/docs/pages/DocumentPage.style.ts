@@ -11,13 +11,13 @@ export const PageContent = styled('div', {
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center'
+  alignItems: 'center',
+  padding: '0 40px'
 })
 
 export const Page = styled('div', {
   flex: 1,
   borderRadius: '2px',
-  padding: '0 40px',
   variants: {
     width: {
       md: {},

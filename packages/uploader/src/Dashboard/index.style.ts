@@ -1,7 +1,7 @@
 import { theme, styled } from '@mashcard/design-system'
 
 export const MashcardUploaderDashboard = styled('div', {
-  minWidth: 635,
+  minWidth: 620,
   boxSize: 'border-box',
   display: 'flex',
   flexDirection: 'column',
@@ -56,6 +56,7 @@ export const MashcardUploaderDashboard = styled('div', {
       height: '100%',
       position: 'relative',
       padding: '0 12px',
+      color: theme.colors.typeThirdary,
 
       '&.active, &.focus, &.hover': {
         color: theme.colors.primaryDefault
@@ -157,7 +158,6 @@ export const MashcardUploaderDashboard = styled('div', {
       width: '100%',
       height: 32,
       background: '#f7f7f7',
-      border: 'none',
       borderRadius: 4,
       outline: 'none',
       color: '#3e3e3e',
@@ -170,7 +170,7 @@ export const MashcardUploaderDashboard = styled('div', {
     },
 
     '.dashboard-emoji-section': {
-      width: 611,
+      minWidth: 589,
       display: 'flex',
       flexDirection: 'column',
 
@@ -197,6 +197,7 @@ export const MashcardUploaderDashboard = styled('div', {
         flexWrap: 'wrap',
         alignItems: 'center',
         marginTop: 3,
+        width: 589,
 
         '.dashboard-emoji-item': {
           fontFamily: theme.fonts.emoji,
@@ -227,7 +228,7 @@ export const MashcardUploaderDashboard = styled('div', {
     justifyContent: 'center',
 
     '.dashboard-unsplash-image-list': {
-      width: 611,
+      width: 589,
       marginTop: 16,
       overflowX: 'hidden'
     },
@@ -263,6 +264,8 @@ export const MashcardUploaderDashboard = styled('div', {
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       borderRadius: 2,
+      width: 140,
+      height: 105,
 
       '&::after': {
         content: ' ',

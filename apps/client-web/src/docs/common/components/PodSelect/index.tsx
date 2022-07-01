@@ -2,7 +2,15 @@ import { useState, useContext, FC } from 'react'
 import { MashcardContext } from '@/common/mashcardContext'
 import { useGetPodsQuery, useUserSignOutMutation, UserSignOutInput, PodOperation } from '@/MashcardGraphQL'
 import { Box, Dropdown, Menu, MenuProps, Tooltip, Button, ButtonProps, devWarning, css } from '@mashcard/design-system'
-import { selectStyle, logoutStyle, actionStyle, MenuLabel, ActionsGroup, MenuItem } from './index.styles'
+import {
+  selectStyle,
+  logoutStyle,
+  actionStyle,
+  MenuLabel,
+  ActionsGroup,
+  MenuItem,
+  SettingWrapper
+} from './index.styles'
 import { PodCard } from '@/common/components/PodCard'
 import { Setting, Change, Check } from '@mashcard/design-icons'
 import { useDocsI18n } from '../../hooks'
@@ -71,7 +79,11 @@ export const PodSelect: FC = () => {
                 <Button
                   className="action-setting"
                   type="unstyled"
-                  icon={<Setting />}
+                  icon={
+                    <SettingWrapper>
+                      <Setting />
+                    </SettingWrapper>
+                  }
                   onClick={onClickPodSetting(p.domain)}
                 />
               </Tooltip>

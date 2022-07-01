@@ -7,7 +7,8 @@ export const ActionsGroup = styled('div', {
   button: {
     position: 'absolute',
     right: 0,
-    top: 8
+    top: '50%',
+    transform: 'translateY(-50%)'
   }
 })
 
@@ -28,29 +29,39 @@ export const selectStyle = {
   }
 }
 
+export const SettingWrapper = styled('div', {
+  height: '1.5rem',
+  width: '1.5rem',
+  textAlign: 'center',
+  lineHeight: '1.5rem',
+  borderRadius: 2,
+  '&:hover': {
+    background: theme.colors.thirdaryHover
+  }
+})
+
 export const MenuItem = styled(motion.li, {
   justifyContent: 'space-between',
   alignItems: 'center !important',
   minHeight: '3rem !important',
   minWidth: '316px !important',
-  padding: '8px 16px !important',
+  padding: '10px 16px !important',
 
-  [`& .${prefix}-icon`]: {
+  [`& ${SettingWrapper.toString()}`]: {
     transition: `all .2s ${theme.transitions.easeOut}`,
     color: theme.colors.iconThirdary,
-    opacity: 0
+    display: 'none'
   },
   [`& .${prefix}-icon-check`]: {
-    marginLeft: 13,
-    color: theme.colors.iconPrimary,
-    opacity: 1
+    padding: 3,
+    color: theme.colors.primaryDefault
   },
   '&:hover': {
-    [`& .${prefix}-icon`]: {
-      opacity: 1
+    [`& ${SettingWrapper.toString()}`]: {
+      display: 'unset'
     },
     [`&  .action-check`]: {
-      opacity: 0
+      display: 'none'
     }
   },
   '&:last-child': {
@@ -60,12 +71,11 @@ export const MenuItem = styled(motion.li, {
 
 export const actionStyle = {
   fontWeight: '500 !important',
-  margin: '9px 0'
+  height: '3.25rem'
 }
 
 export const logoutStyle = {
-  ...actionStyle,
-  marginBottom: 13
+  ...actionStyle
 }
 
 export const MenuLabel = styled(motion.small, {
@@ -73,7 +83,6 @@ export const MenuLabel = styled(motion.small, {
   lineHeight: theme.lineHeights.subHeadline,
   color: theme.colors.typeSecondary,
   fontWeight: 600,
-  marginBottom: 8,
   marginTop: 4,
-  padding: '8px 16px'
+  padding: '9px 16px'
 })

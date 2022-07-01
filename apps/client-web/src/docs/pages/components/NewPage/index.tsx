@@ -1,13 +1,13 @@
 import { FC } from 'react'
 import { Add } from '@mashcard/design-icons'
 import { useDocsI18n } from '../../../common/hooks'
-import { Button } from '@mashcard/design-system'
+import { Button, Spin } from '@mashcard/design-system'
 import { useNavigate } from 'react-router-dom'
 import { useBlockCreateMutation } from '@/MashcardGraphQL'
 import { queryPageBlocks } from '../../../common/graphql'
 
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
-import { sidebarButtonStyles } from '../../DocumentContentPage.style'
+import { sidebarButtonStyles, loadingIconCls } from '../../DocumentContentPage.style'
 import { useDocMeta } from '@/docs/store/DocMeta'
 
 export const NewPage: FC = () => {
@@ -20,6 +20,9 @@ export const NewPage: FC = () => {
   const navigate = useNavigate()
 
   const onClick = async (): Promise<void> => {
+    if (createBlockLoading) {
+      return
+    }
     const input = { title: '' }
     const { data } = await blockCreate({ variables: { input } })
     if (data?.blockCreate?.id) {
@@ -33,10 +36,7 @@ export const NewPage: FC = () => {
       type="text"
       css={sidebarButtonStyles}
       onClick={onClick}
-      loading={createBlockLoading}
-      icon={<Add size={18}/>}
-      disabled={createBlockLoading}
-    >
+      icon={createBlockLoading ? <Spin className={loadingIconCls}/> : <Add size={18} />}>
       {t('blocks.create_pages')}
     </Button>
   )

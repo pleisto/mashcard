@@ -9,7 +9,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
     role="menubar"
   >
     <li
-      class="mc-c-bDiYvX mc-c-hcJSiJ"
+      class="mc-c-bcnCdR mc-c-hcJSiJ"
       id="menu-1"
       label="item"
       role="menuitem"
@@ -47,7 +47,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         aria-controls="subMenu"
         aria-expanded="false"
         aria-haspopup="menu"
-        class="mc-c-bDiYvX"
+        class="mc-c-bcnCdR"
         id="subMenu-2"
         label="subMenu"
         role="menuitem"
@@ -105,7 +105,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
           class="mc-c-fBMrzW"
         >
           <li
-            class="mc-c-bDiYvX mc-c-hcJSiJ"
+            class="mc-c-bcnCdR mc-c-hcJSiJ"
             id="subMenu-2"
             label="menuItem"
             role="menuitem"
@@ -145,7 +145,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
       title=""
     >
       <li
-        class="mc-c-bDiYvX mc-c-hcJSiJ"
+        class="mc-c-bcnCdR mc-c-hcJSiJ"
         id="menu-3"
         label="delete"
         role="menuitem"
@@ -200,7 +200,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         aria-controls="menu-add-block"
         aria-expanded="false"
         aria-haspopup="menu"
-        class="mc-c-bDiYvX"
+        class="mc-c-bcnCdR"
         id="menu-add-block-4"
         label="block_actions.add_block"
         role="menuitem"
@@ -298,7 +298,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
             title=""
           >
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-2"
               label="blocks.text.label"
               role="menuitem"
@@ -374,7 +374,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-3"
               label="blocks.formula.label"
               role="menuitem"
@@ -435,7 +435,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-4"
               label="blocks.spreadsheet.label"
               role="menuitem"
@@ -504,7 +504,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-5"
               label="blocks.upload.label"
               role="menuitem"
@@ -574,7 +574,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-6"
               label="blocks.gallery.label"
               role="menuitem"
@@ -636,7 +636,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-7"
               label="blocks.link.label"
               role="menuitem"
@@ -696,7 +696,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-8"
               label="blocks.h1.label"
               role="menuitem"
@@ -762,7 +762,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-9"
               label="blocks.h2.label"
               role="menuitem"
@@ -828,7 +828,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-10"
               label="blocks.h3.label"
               role="menuitem"
@@ -894,7 +894,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-11"
               label="blocks.h4.label"
               role="menuitem"
@@ -960,7 +960,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-12"
               label="blocks.h5.label"
               role="menuitem"
@@ -1026,7 +1026,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-13"
               label="blocks.bulletedList.label"
               role="menuitem"
@@ -1088,7 +1088,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-14"
               label="blocks.orderedList.label"
               role="menuitem"
@@ -1150,7 +1150,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-15"
               label="blocks.taskList.label"
               role="menuitem"
@@ -1212,7 +1212,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-16"
               label="blocks.code.label"
               role="menuitem"
@@ -1274,7 +1274,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-17"
               label="blocks.blockquote.label"
               role="menuitem"
@@ -1334,7 +1334,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-18"
               label="blocks.callout.label"
               role="menuitem"
@@ -1396,7 +1396,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-19"
               label="blocks.divider.label"
               role="menuitem"
@@ -1464,7 +1464,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-20"
               label="blocks.toc.label"
               role="menuitem"
@@ -1532,7 +1532,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               </div>
             </li>
             <li
-              class="mc-c-bDiYvX mc-c-hcJSiJ"
+              class="mc-c-bcnCdR mc-c-hcJSiJ"
               id="menu-add-block-21"
               label="blocks.subPageMenu.label"
               role="menuitem"

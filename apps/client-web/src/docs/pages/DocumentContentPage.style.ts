@@ -1,6 +1,6 @@
 import bg from '@/common/assets/ceramicBg.webp'
 import { Link } from 'react-router-dom'
-import { theme, styled } from '@mashcard/design-system'
+import { theme, styled, css } from '@mashcard/design-system'
 import { getNativeSidebarWdith } from '@/settings/common/sidebar'
 
 const hideScrollStyle = getNativeSidebarWdith()
@@ -182,6 +182,12 @@ export const sidebarButtonStyles = {
   flex: 1,
   padding: '0.75rem'
 }
+
+export const loadingIconCls = css({
+  width: 14,
+  height: 14,
+  marginRight: 6,
+})()
 
 export const SidebarLink = styled(Link, {
   width: '100%',
