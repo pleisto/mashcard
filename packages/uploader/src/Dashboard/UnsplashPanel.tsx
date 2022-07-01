@@ -119,7 +119,6 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
                 src={image.smallUrl}
                 className="unsplash-image"
                 blurHash={image.blurHash}
-                style={{ width: 145, height: 105 }}
               />
               <div className="unsplash-image-username">by {image.username}</div>
             </Button>
