@@ -39,11 +39,12 @@ jobs:
           E2E_FIREFOX_LOGIN_EMAIL: ${{ secrets.TRUNK_E2E_USER_FIREFOX_EMAIL }}
           E2E_FIREFOX_LOGIN_PASSWORD: ${{ secrets.TRUNK_E2E_USER_FIREFOX_PASSWORD }}
       - name: Upload allure reports
+        if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
           name: allure-reports
           path: tools/e2e-testing/allure-results
-          retention-days: 3
+          retention-days: 1
   report:
     if: ${{ always() }}
     needs: playwright
