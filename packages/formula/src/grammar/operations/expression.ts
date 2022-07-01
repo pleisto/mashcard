@@ -39,6 +39,10 @@ export const expressionOperator: OperatorType = {
     errorTestCases: [
       { definition: '= 1;', errorType: 'syntax', errorMessage: 'Missing expression' },
       { definition: '= 1\n2', errorType: 'parse', errorMessage: 'Not all input parsed: 2', valid: false },
+      { definition: '=1\n1\n1', errorType: 'parse', errorMessage: 'Not all input parsed: 1', valid: false },
+      { definition: '= 1\n1\n1', errorType: 'parse', errorMessage: 'Not all input parsed: 1', valid: false },
+      { definition: '=1asd\n123a', errorType: 'parse', errorMessage: 'Not all input parsed: asd', valid: false },
+      { definition: '= 1asd\n123a', errorType: 'parse', errorMessage: 'Not all input parsed: asd', valid: false },
       { definition: '=1; 2;', errorType: 'syntax', errorMessage: 'Missing expression' },
       { definition: '=;', errorType: 'syntax', errorMessage: 'Missing expression' },
       { definition: '=;123', errorType: 'parse', errorMessage: 'Parse error: ";"', valid: false }

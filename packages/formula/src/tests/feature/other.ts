@@ -19,7 +19,6 @@ export const OtherTestCase: TestCaseInterface = {
       { definition: '=1:1', errorType: 'type', errorMessage: 'Expected Cell but got number' },
       { definition: '=1.%', errorType: 'syntax', errorMessage: 'Missing expression' },
       { definition: '="123":1', errorType: 'type', errorMessage: 'Expected Cell but got string' },
-      { definition: '=1\n1\n1', errorType: 'parse', errorMessage: 'Not all input parsed: 1', valid: false },
       { definition: '=)=', errorType: 'syntax', errorMessage: 'Missing expression' },
       { definition: '=>=', errorType: 'parse', errorMessage: 'Parse error: ""', valid: false },
       { definition: '=<', errorType: 'parse', errorMessage: 'Parse error: ""', valid: false },
@@ -28,7 +27,6 @@ export const OtherTestCase: TestCaseInterface = {
       { definition: '=(1 {}.', errorType: 'syntax', errorMessage: 'Missing closing token' },
       {
         definition: '== 1',
-        newAbbrevInput: '==1',
         todoMessage: 'fix == space',
         errorType: 'parse',
         errorMessage: 'TODO mismatch token startExpression',
