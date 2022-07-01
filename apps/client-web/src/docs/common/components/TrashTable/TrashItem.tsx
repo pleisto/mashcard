@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
-import { BlockEmoji, BlockType } from '@/MashcardGraphQL'
+import { BlockEmoji, BlockType, DocumentInfo } from '@/MashcardGraphQL'
 import dayjs from 'dayjs'
 import { BlockWithChecked } from './TrashList'
 import { Checkbox, Button, theme, ConfirmDialog } from '@mashcard/design-system'
@@ -9,7 +9,6 @@ import React, { useState } from 'react'
 import { FilePages, Delete, Undo } from '@mashcard/design-icons'
 import { useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
-import { type NonNullDocMeta } from '@/docs/store/DocMeta'
 import { Page, Time, Action, ActionButtonStyle, AvatarEmoji, SelectBlock, PageTile } from './Trash.style'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
@@ -44,7 +43,7 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
     navigate(link)
   }
 
-  const getEmoji = (path: NonNullDocMeta['pathArray'][0]): string | undefined => {
+  const getEmoji = (path: DocumentInfo['pathArray'][0]): string | undefined => {
     return path.icon && path.icon.type === BlockType.Emoji ? (path.icon as BlockEmoji).emoji : ''
   }
 

@@ -13,6 +13,7 @@ module Mutations
       argument :state_type, Types::Statetype, 'state type', required: true
       argument :states_count, Integer, 'states count', required: true
       # block data input below
+      argument :content, GraphQL::Types::JSON, 'content', required: false
       argument :meta, Scalars::MetaJson, 'meta', required: false
 
       field :block, Types::Blocks::New, null: true
@@ -54,6 +55,11 @@ module Mutations
               block.meta = args[:meta]
               block.text = block.meta['title'].to_s
               block.save
+            end
+
+            if args[:content]
+              # TODO: store the text from content for search
+              # Docs::Block.get_text_from_node(args[:content].to_unsafe_h)
             end
 
             # set block state id when have full state

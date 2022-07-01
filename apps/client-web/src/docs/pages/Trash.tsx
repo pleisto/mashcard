@@ -16,9 +16,8 @@ export const Trash: React.FC = () => {
   const { t } = useDocsI18n()
   const preStyle = useMemo<React.CSSProperties>(getSidebarStyle, [])
   const { loading: podDataloding, data: podData } = useGetPodsQuery()
-  const { currentPod, currentUser } = useContext(MashcardContext)
+  const { currentUser } = useContext(MashcardContext)
 
-  const loginDomain = currentPod.domain
   const isAnonymous = !currentUser
 
   const { domain } = useParams() as unknown as { domain: string }
@@ -36,7 +35,6 @@ export const Trash: React.FC = () => {
   return (
     <DocMetaProvider
       docMeta={{
-        loginDomain,
         domain,
         isAnonymous: false,
         isMine: true

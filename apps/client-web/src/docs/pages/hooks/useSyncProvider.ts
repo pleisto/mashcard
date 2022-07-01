@@ -8,10 +8,9 @@ import {
   useBlockSyncBatchMutation,
   GetSpreadsheetChildrenDocument
 } from '@/MashcardGraphQL'
-import { isEqual } from '@mashcard/active-support'
 import { devLog } from '@mashcard/design-system'
 // import { isSavingVar } from '../../reactiveVars'
-import { nodeToBlock } from '../../common/blocks'
+// import { nodeToBlock } from '../../common/blocks'
 import {
   MashcardEventBus,
   Event,
@@ -163,37 +162,37 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
 
   const onDocSave = useCallback(
     async (doc: Node): Promise<void> => {
-      if (queryVariables.historyId) return
-      if (!docBlocksMap.current.size) return
-      // isSavingVar(true)
-      // NOTE: tempfix for root uuid
-      // TODO: need avoid modify read-only prop
-      // @ts-expect-error
-      doc.attrs.uuid = rootId.current ?? doc.attrs.uuid
-      const docBlocks = nodeToBlock(doc, 0)
-      const deletedIds = new Set(docBlocksMap.current.keys())
-      deletedIds.delete(rootId.current)
+      // if (queryVariables.historyId) return
+      // if (!docBlocksMap.current.size) return
+      // // isSavingVar(true)
+      // // NOTE: tempfix for root uuid
+      // // TODO: need avoid modify read-only prop
+      // // @ts-expect-error
+      // doc.attrs.uuid = rootId.current ?? doc.attrs.uuid
+      // const docBlocks = nodeToBlock(doc, 0)
+      // const deletedIds = new Set(docBlocksMap.current.keys())
+      // deletedIds.delete(rootId.current)
 
-      // Document Blocks dirty check and maintian
-      docBlocks.forEach(newBlock => {
-        newBlock.sort = `${newBlock.sort}`
-        const oldBlock = docBlocksMap.current.get(newBlock.id)
-        // TODO: Improve dirty check
-        if (!oldBlock || !isEqual(oldBlock, newBlock)) {
-          dirtyBlocksMap.current.set(newBlock.id, newBlock)
-          docBlocksMap.current.set(newBlock.id, newBlock as Block)
-        }
-        deletedIds.delete(newBlock.id)
-      })
+      // // Document Blocks dirty check and maintian
+      // docBlocks.forEach(newBlock => {
+      //   newBlock.sort = `${newBlock.sort}`
+      //   const oldBlock = docBlocksMap.current.get(newBlock.id)
+      //   // TODO: Improve dirty check
+      //   if (!oldBlock || !isEqual(oldBlock, newBlock)) {
+      //     dirtyBlocksMap.current.set(newBlock.id, newBlock)
+      //     docBlocksMap.current.set(newBlock.id, newBlock as Block)
+      //   }
+      //   deletedIds.delete(newBlock.id)
+      // })
 
-      deletedIds.forEach(id => {
-        dirtyToDeleteIds.current.add(id)
-        docBlocksMap.current.delete(id)
-      })
+      // deletedIds.forEach(id => {
+      //   dirtyToDeleteIds.current.add(id)
+      //   docBlocksMap.current.delete(id)
+      // })
 
-      await commitDirty()
+      // await commitDirty()
     },
-    [commitDirty, queryVariables.historyId]
+    []
   )
 
   MashcardEventBus.subscribe(

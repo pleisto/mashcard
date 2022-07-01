@@ -7,7 +7,7 @@ import { useSyncProvider, useBlockSyncProvider, useDocHistoryProvider } from './
 import { blocksToJSONContents } from '../common/blocks'
 import { JSONContent } from '@tiptap/core'
 import { TrashPrompt } from '../common/components/TrashPrompt'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { editorVar, awarenessInfosVar, isSavingVar } from '../reactiveVars'
 import { useDocumentEditable } from './hooks/useDocumentEditable'
 import * as Root from './DocumentPage.style'
@@ -84,7 +84,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
     }
   }, [editor, data, data?.childrenBlocks, initBlocksToEditor])
 
-  if (loading || blocksLoading || !editor || editor.isDestroyed || !currentRootBlock || docMeta.documentInfoLoading) {
+  if (loading || blocksLoading || !editor || editor.isDestroyed || !currentRootBlock) {
     return (
       <Root.PageSpinWrapper>
         <Spin size="lg" data-testid={TEST_ID_ENUM.page.DocumentPage.loading.id} />
@@ -92,20 +92,9 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
     )
   }
 
-  const redirectPersonalPodPath = `/${docMeta.personalDomain}`
-
-  if (data === undefined) {
-    return null
-  }
-
-  if (!docMeta.viewable || (docMeta.isAnonymous && !data?.childrenBlocks?.length)) {
-    return <Navigate to={redirectPersonalPodPath} />
-    // return <Alert message="TODO Page not found" type="error" />
-  }
-
   const PageElement = (
     <>
-      {docMeta.id && docMeta.isDeleted && <TrashPrompt />}
+      {docMeta.id && docMeta.documentInfo?.isDeleted && <TrashPrompt />}
       <Root.Page
         width={{
           '@mdOnly': 'md',
@@ -127,13 +116,5 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
     </>
   )
 
-  if (!docMeta.id) {
-    return PageElement
-  }
-
-  if (data?.childrenBlocks?.length) {
-    return PageElement
-  } else {
-    return <Navigate to={redirectPersonalPodPath} />
-  }
+  return PageElement
 }

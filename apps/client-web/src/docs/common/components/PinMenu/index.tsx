@@ -12,7 +12,8 @@ interface PinMenuProps {
 
 export const PinMenu: React.FC<PinMenuProps> = ({ className }) => {
   const { t } = useDocsI18n()
-  const { id, pin } = useNonNullDocMeta()
+  const { id, documentInfo } = useNonNullDocMeta()
+  const pin = documentInfo?.pin
   const client = useApolloClient()
   const [blockPinOrUnpin, { loading: blockPinOrUnpinLoading }] = useBlockPinOrUnpinMutation({
     refetchQueries: [queryBlockPins]

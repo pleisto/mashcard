@@ -3,10 +3,12 @@ import { Y } from '@mashcard/editor'
 import * as awarenessProtocol from 'y-protocols/awareness'
 import { base64 } from 'rfc4648'
 import { uuid } from '@mashcard/active-support'
+import { yDocToProsemirrorJSON } from 'y-prosemirror'
 
 import {
   BlockNew,
   DocumentHistory,
+  DocumentInfo,
   User,
   Statetype,
   useBlockNewQuery,
@@ -18,7 +20,7 @@ import {
 import { devLog } from '@mashcard/design-system'
 import { useApolloClient } from '@apollo/client'
 
-import { MashcardEventBus, docHistoryReceived, BlockMetaUpdated } from '@mashcard/schema'
+import { MashcardEventBus, docHistoryReceived, BlockMetaUpdated, UpdateBlockMeta } from '@mashcard/schema'
 
 export interface blockMeta {
   [key: string]: any
@@ -45,6 +47,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   initBlocksToEditor: React.MutableRefObject<boolean>
   awarenessInfos: awarenessInfo[]
   meta: blockMeta
+  documentInfo?: DocumentInfo
   setMeta: (meta: blockMeta) => void
 } {
   const client = useApolloClient()
@@ -56,6 +59,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
   const block = React.useRef<BlockNew>({ id: blockId })
   const [blockMeta, setBlockMeta] = React.useState<blockMeta>({})
+  const [documentInfo, setDocumentInfo] = React.useState<DocumentInfo>()
   const latestMeta = React.useRef<blockMeta>({})
   const [provider, setProvider] = React.useState<blockProvider>()
   const [awarenessInfos, setAwarenessInfos] = React.useState<awarenessInfo[]>([])
@@ -67,8 +71,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   const updatesToCommit = React.useRef(new Set<Uint8Array>())
 
   const { data, loading } = useBlockNewQuery({
-    fetchPolicy: 'no-cache',
-    variables: { id: blockId, historyId }
+    variables: { id: blockId, historyId },
+    fetchPolicy: 'no-cache'
   })
 
   const awarenessChanged = React.useCallback(
@@ -156,6 +160,17 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
           }
         }
       })
+      client.cache.modify({
+        id: client.cache.identify({ __typename: 'DocumentInfo', id: blockId }),
+        fields: {
+          title() {
+            return meta.title
+          },
+          icon() {
+            return meta.icon
+          }
+        }
+      })
       setBlockMeta(meta)
       latestMeta.current = meta
       MashcardEventBus.dispatch(
@@ -188,6 +203,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
       const stateType = forceFull || statesCount === 0 ? Statetype.Full : Statetype.Update
 
       const meta = blockMetaChanged.current || stateType === Statetype.Full ? { ...latestMeta.current } : undefined
+      // const content = stateType === Statetype.Full ? yDocToProsemirrorJSON(ydoc, 'default') : undefined
+      const content = yDocToProsemirrorJSON(ydoc, 'default')
 
       const commitPromise = blockCommit({
         variables: {
@@ -200,7 +217,8 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
             stateId: stateIdToCommit,
             prevStateId: block.current.stateId ? block.current.stateId : undefined,
             statesCount,
-            meta
+            meta,
+            content
           }
         }
       })
@@ -247,7 +265,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
           setBlockMetaUpdated(Object.fromEntries(ydoc.getMap('meta').entries()))
         }
       } catch (e) {
-        setCommitting(false)
+        blockCommitting.current = false
       }
     },
     [blockCommit, blockId, historyId, setCommitting, setBlockMetaUpdated, editable]
@@ -297,11 +315,16 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
           devLog('need to commit init state')
           initBlocksToEditor.current = !historyId
         }
+        if (data.blockNew.documentInfo) {
+          // TODO: fix PodBase type
+          setDocumentInfo(data.blockNew.documentInfo as DocumentInfo)
+        }
       }
 
       const provider = { document: newYdoc, awareness }
       setProvider(provider)
-      setBlockMetaUpdated(Object.fromEntries(newYdoc.getMap('meta').entries()))
+      const loadedMeta = Object.fromEntries(newYdoc.getMap('meta').entries())
+      setBlockMetaUpdated(loadedMeta)
 
       if (!historyId && editable) {
         newYdoc.on('update', async (update: Uint8Array, origin: any, ydoc: Y.Doc) => {
@@ -323,9 +346,30 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
           })
           await updatePromise
         })
+
+        if (data.blockNew?.documentInfo) {
+          if (data.blockNew.documentInfo.title !== loadedMeta.title) {
+            newYdoc.getMap('meta').set('title', data.blockNew.documentInfo.title)
+          }
+        }
       }
     }
   }, [blockId, historyId, data, loading, commitState, awarenessUpdate, awarenessChanged, setBlockMetaUpdated, editable])
+
+  React.useEffect(() => {
+    const subscriptions = [
+      MashcardEventBus.subscribe(
+        UpdateBlockMeta,
+        ({ payload }) => {
+          setMeta({ ...blockMeta, ...payload.meta })
+        },
+        { subscribeId: blockId }
+      )
+    ]
+    return () => {
+      subscriptions.forEach(sub => sub.unsubscribe())
+    }
+  }, [setMeta, blockMeta, blockId])
 
   return {
     committing,
@@ -334,6 +378,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
     initBlocksToEditor,
     awarenessInfos,
     meta: blockMeta,
+    documentInfo,
     setMeta
   }
 }

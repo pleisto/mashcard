@@ -19,7 +19,7 @@ import { useDocMeta } from '@/docs/store/DocMeta'
 
 export const PodSelect: FC = () => {
   const { t } = useDocsI18n()
-  const { loginDomain } = useDocMeta()
+  const { domain } = useDocMeta()
   const { loading, data } = useGetPodsQuery()
   const [userSignOut, { loading: signOutLoading }] = useUserSignOutMutation()
   const [modalCreateVisible, setModalCreateVisible] = useState<boolean>(false)
@@ -29,10 +29,10 @@ export const PodSelect: FC = () => {
     return <></>
   }
 
-  const pod = data?.pods.find(p => p.domain === loginDomain)
+  const pod = data?.pods.find(p => p.domain === domain)
 
   if (!pod) {
-    devWarning(true, 'Domain does not match the current user', loginDomain, data)
+    devWarning(true, 'Domain does not match the current user', domain, data)
     return <></>
   }
 

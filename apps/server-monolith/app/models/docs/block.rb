@@ -746,5 +746,11 @@ module Docs
         state.created_at.to_i * (state.state_type == 'full' ? -1 : 1)
       end
     end
+
+    def self.get_text_from_node(node)
+      "#{node['text']}" \
+        "#{node['content']&.map { |n| get_text_from_node(n) }&.join}" \
+        "#{node['type'] == 'paragraph' ? "\n" : ''}"
+    end
   end
 end
