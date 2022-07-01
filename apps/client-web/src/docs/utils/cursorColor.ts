@@ -1,30 +1,32 @@
+import { theme } from '@mashcard/design-system'
+
 const cursorColors = [
-  'red9',
-  'orange9',
-  'yellow9',
-  'green9',
-  'cyan9',
-  'blue8',
-  'purple8',
-  'pink9',
-  'black',
-  'red7',
-  'orange8',
-  'yellow9',
-  'green8',
-  'cyan6',
-  'blue6',
-  'purple5',
-  'pink6',
-  'grey9',
-  'red7',
-  'orange7',
-  'green6',
-  'blue4',
-  'purple4',
-  'grey8',
-  'grey7',
-  'grey6'
+  theme.colors.red9.value,
+  theme.colors.orange9.value,
+  theme.colors.yellow9.value,
+  theme.colors.green9.value,
+  theme.colors.cyan9.value,
+  theme.colors.blue8.value,
+  theme.colors.purple8.value,
+  theme.colors.pink9.value,
+  theme.colors.black.value,
+  theme.colors.red7.value,
+  theme.colors.orange8.value,
+  theme.colors.yellow9.value,
+  theme.colors.green8.value,
+  theme.colors.cyan6.value,
+  theme.colors.blue6.value,
+  theme.colors.purple5.value,
+  theme.colors.pink6.value,
+  theme.colors.grey9.value,
+  theme.colors.red7.value,
+  theme.colors.orange7.value,
+  theme.colors.green6.value,
+  theme.colors.blue4.value,
+  theme.colors.purple4.value,
+  theme.colors.grey8.value,
+  theme.colors.grey7.value,
+  theme.colors.grey6.value
 ]
 
 export function getCursorColor(str = 'User'): string {
@@ -37,5 +39,5 @@ export function getCursorColor(str = 'User'): string {
     hash = (str!.codePointAt(i) ?? 1) + hash * multiplier
   }
 
-  return `var(--mc-colors-${cursorColors[hash % cursorColors.length]})`
+  return cursorColors[hash % cursorColors.length]
 }
