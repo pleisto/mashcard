@@ -590,7 +590,7 @@ zh-CN:
       update:
         success: 更新成功。
     menu:
-      create_new_pod: 创建新 Pod
+      create_new_pod: Create New Pod
       logout: 退出登录
     title:
       add_icon: 添加图标
