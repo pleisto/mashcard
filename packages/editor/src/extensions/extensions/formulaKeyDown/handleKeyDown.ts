@@ -71,7 +71,7 @@ export const FormulaHandleKeyDown = createExtension<FormulaHandleKeyDownOptions,
 
             if (!['Enter', 'Tab', 'ArrowUp', 'ArrowDown', 'Escape'].includes(key)) return false
 
-            if (key === 'Enter' && !altKey && !ctrlKey && !metaKey && maxScreen) {
+            if (!altKey && !ctrlKey && !metaKey && maxScreen) {
               return false
             }
 

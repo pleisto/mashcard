@@ -77,7 +77,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
 
   const onPopoverVisibleChange = async (value: boolean): Promise<void> => {
     if (!value) {
-      close()
+      await handleSave()
       return
     }
     await triggerCalculate()
@@ -99,7 +99,6 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const handleSave = async (): Promise<void> => {
     if (isDisableSave()) return
     await onSaveFormula()
-    close()
   }
 
   const handleCancel = (): void => {
