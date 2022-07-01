@@ -5,7 +5,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
   <ul
     aria-label="slash_menu.title"
     aria-orientation="vertical"
-    class="mc-c-bOsLjs mc-c-bOsLjs-lozdyt-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical mc-c-dLLhok mc-c-dLLhok-iAMRjR-withFooter-true"
+    class="mc-c-bOsLjs mc-c-bOsLjs-lozdyt-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical mc-c-dstnVi mc-c-dstnVi-iAMRjR-withFooter-true"
     id="slash-menu"
     role="menubar"
   >
@@ -13,25 +13,26 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       class="mc-c-jpGEAj"
       label="[object Object]"
       role="group"
+      style="padding-top: 4px;"
       title="slash_menu.recent"
     >
       <span
         aria-label="slash_menu.recent"
-        class="mc-c-dEBlHr"
+        class="mc-c-iSZMdl"
       >
         <span
-          class="mc-c-fbvDaU"
+          class="mc-c-fNUFJE"
         >
           slash_menu.recent
         </span>
       </span>
       <ul
-        class="mc-c-jpGEAj mc-c-biZrHj"
+        class="mc-c-jpGEAj mc-c-cKnOhD"
         role="group"
         title=""
       >
         <li
-          class="mc-c-bDiYvX mc-c-bDiYvX-cOuhSn-active-true mc-c-jIhtkb"
+          class="mc-c-bcnCdR mc-c-jIhtkb"
           data-testid="editor-slash-commands-item"
           id="slash-menu-1"
           role="menuitem"
@@ -45,7 +46,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
           </div>
         </li>
         <li
-          class="mc-c-bDiYvX mc-c-jIhtkb"
+          class="mc-c-bcnCdR mc-c-jIhtkb"
           data-testid="editor-slash-commands-item"
           id="slash-menu-2"
           role="menuitem"
@@ -59,7 +60,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
           </div>
         </li>
         <li
-          class="mc-c-bDiYvX mc-c-jIhtkb"
+          class="mc-c-bcnCdR mc-c-jIhtkb"
           data-testid="editor-slash-commands-item"
           id="slash-menu-3"
           role="menuitem"
@@ -82,20 +83,21 @@ exports[`SlashMenu matches correct snapshot 1`] = `
     >
       <span
         aria-label="slash_menu.type"
-        class="mc-c-dEBlHr"
+        class="mc-c-iSZMdl"
       >
         <span
-          class="mc-c-fbvDaU"
+          class="mc-c-fNUFJE"
         >
           slash_menu.type
         </span>
       </span>
       <li
-        class="mc-c-bDiYvX"
+        class="mc-c-bcnCdR"
         data-testid="editor-slash-commands-item"
         id="slash-menu-4"
         label="blocks.h1.label"
         role="menuitem"
+        style="height: 40px;"
         tabindex="-1"
         title="blocks.h1.label"
       >
@@ -126,11 +128,12 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bDiYvX"
+        class="mc-c-bcnCdR"
         data-testid="editor-slash-commands-item"
         id="slash-menu-5"
         label="blocks.h2.label"
         role="menuitem"
+        style="height: 40px;"
         tabindex="-1"
         title="blocks.h2.label"
       >
@@ -161,11 +164,12 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bDiYvX"
+        class="mc-c-bcnCdR"
         data-testid="editor-slash-commands-item"
         id="slash-menu-6"
         label="blocks.h3.label"
         role="menuitem"
+        style="height: 40px;"
         tabindex="-1"
         title="blocks.h3.label"
       >

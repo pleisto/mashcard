@@ -90,6 +90,7 @@ export const TitleWrapper = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  padding: '0 40px',
 
   '&:hover': {
     [`${Actions}`]: {

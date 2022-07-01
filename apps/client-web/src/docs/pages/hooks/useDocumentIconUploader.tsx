@@ -93,7 +93,7 @@ export function useDocumentIconUploader(
     destroyTooltipOnHide: true,
     overlayStyle: {
       maxWidth: '100vw',
-      overflow: 'auto'
+      overflow: 'hidden'
     },
     content: (
       <Dashboard

@@ -86,7 +86,12 @@ export const Drawer: FC<DrawerProps> = ({ visible, className, title, renderBody,
       >
         {visible && (
           <>
-            <CloseButton onClick={onClose} type="unstyled" size="md" icon={<Close />} />
+            <CloseButton
+              onClick={onClose}
+              type="unstyled"
+              size="md"
+              icon={<Close fill={theme.colors.iconThirdary.value} />}
+            />
             <Title>{title}</Title>
             {renderBody?.()}
             <Body>{children}</Body>

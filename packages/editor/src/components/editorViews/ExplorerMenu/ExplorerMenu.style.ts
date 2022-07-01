@@ -13,7 +13,9 @@ export const drawerStyles = css({
 })
 
 export const SearchInputContainer = styled('div', {
-  padding: `0 ${drawHorizontalPadding} .625rem`
+  margin: `0 ${drawHorizontalPadding} .625rem`,
+  background: theme.colors.ceramicQuaternary,
+  borderRadius: '4px'
 })
 
 export const SearchInput = styled(Input, {

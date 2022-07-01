@@ -560,7 +560,7 @@ zh-TW:
       update:
         success: Update successfully.
     menu:
-      create_new_pod: Create New pod
+      create_new_pod: Create New Pod
       logout: 登出
     title:
       add_icon: 新增圖示

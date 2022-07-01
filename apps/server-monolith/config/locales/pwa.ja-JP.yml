@@ -590,7 +590,7 @@ ja-JP:
       update:
         success: 更新成功.
     menu:
-      create_new_pod: "ポッド作成\n"
+      create_new_pod: Create New Pod
       logout: ログアウト
     title:
       add_icon: アイコンを追加します。

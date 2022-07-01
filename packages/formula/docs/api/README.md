@@ -701,7 +701,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:247](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L247)
+[packages/formula/src/tests/testType.ts:254](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L254)
 
 ---
 
@@ -731,7 +731,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:160](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L160)
+[packages/formula/src/tests/testType.ts:167](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L167)
 
 ---
 

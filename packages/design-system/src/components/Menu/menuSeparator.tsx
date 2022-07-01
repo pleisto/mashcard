@@ -6,7 +6,7 @@ import { itemSpacing } from './styles/index.style'
 import { MenuContext } from './context'
 
 const menuSeparatorStyles = css({
-  margin: `${theme.space.xxs} ${itemSpacing}`,
+  margin: `${theme.space.xxxs} ${itemSpacing}`,
   borderTop: `1px solid ${theme.colors.dividerOverlayPrimary}`,
   height: 1
 })

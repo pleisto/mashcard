@@ -8,6 +8,7 @@ export const StyledSlashMenu = styled(Menu as FC<MenuProps>, {
   maxHeight: 'inherit',
   overflow: 'auto',
   paddingBottom: footerHeight,
+  width: '16.5rem',
   variants: {
     withFooter: {
       true: {
@@ -22,7 +23,8 @@ export const StyledSlashMenu = styled(Menu as FC<MenuProps>, {
 
 export const SlashMenuGroupLabel = styled('span', {
   color: theme.colors.typeThirdary,
-  fontSize: theme.fontSizes.callout
+  fontSize: theme.fontSizes.callout,
+  fontWeight: 450
 })
 
 export const MenuIcon = styled(IconBackground, {
@@ -57,7 +59,7 @@ export const RecentGroup = styled(Menu.Group, {
   alignItems: 'center',
   display: 'flex',
   flexDirection: 'row',
-  margin: '.625rem 0',
+  margin: '.5rem 0',
   padding: `0 ${menuItemSpacing}`,
   [`${RecentItem} + ${RecentItem}`]: {
     marginLeft: '.9rem'
@@ -70,19 +72,8 @@ export const Shortcut = styled('kbd', {
   lineHeight: '1em',
   padding: '.25rem',
   position: 'relative',
-  '&::before': {
-    borderRadius: 8,
-    content: '',
-    position: 'absolute',
-    top: '-50%',
-    bottom: '-50%',
-    left: '-50%',
-    right: '-50%',
-    transform: 'scale(0.5)',
-    border: 'solid 1px',
-    borderColor: theme.colors.grey5,
-    boxSizing: 'border-box'
-  }
+  outline: `solid .5px ${theme.colors.grey5}`,
+  borderRadius: 4
 })
 
 export const Footer = styled('div', {

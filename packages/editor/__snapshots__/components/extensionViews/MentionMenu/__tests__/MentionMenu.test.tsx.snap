@@ -17,7 +17,7 @@ exports[`MentionMenu matches correct snapshot 1`] = `
     >
       <span
         aria-label="mention.people.head"
-        class="mc-c-dEBlHr"
+        class="mc-c-iSZMdl"
       >
         <span
           class="mc-c-fbvDaU"
@@ -29,7 +29,7 @@ exports[`MentionMenu matches correct snapshot 1`] = `
         class="mc-c-llTUqV"
       >
         <li
-          class="mc-c-bDiYvX mc-c-bDiYvX-cOuhSn-active-true mc-c-klLbby"
+          class="mc-c-bcnCdR mc-c-klLbby"
           id="mention-1"
           role="menuitem"
           tabindex="0"
@@ -58,7 +58,7 @@ exports[`MentionMenu matches correct snapshot 1`] = `
     >
       <span
         aria-label="mention.page_link.head"
-        class="mc-c-dEBlHr"
+        class="mc-c-iSZMdl"
       >
         <span
           class="mc-c-fbvDaU"
@@ -67,7 +67,7 @@ exports[`MentionMenu matches correct snapshot 1`] = `
         </span>
       </span>
       <li
-        class="mc-c-bDiYvX"
+        class="mc-c-bcnCdR"
         id="mention-2"
         label="page name"
         role="menuitem"

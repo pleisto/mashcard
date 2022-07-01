@@ -72,7 +72,7 @@
     "react": "^18.2.0",
     "react-colorful": "^5.5.1",
     "react-dom": "^18.2.0",
-    "react-i18next": "^11.17.3",
+    "react-i18next": "^11.17.4",
     "react-json-view": "^1.21.3",
     "storybook-addon-designs": "^6.3.1"
   },

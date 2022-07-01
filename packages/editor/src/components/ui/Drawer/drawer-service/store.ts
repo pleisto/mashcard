@@ -67,6 +67,7 @@ export const useDrawerStore = create<DrawerStore>((set, get) => ({
     set({ isAttached: true })
     return () => {
       subscriptions.forEach(sub => sub.unsubscribe())
+      get().close()
       set({ isAttached: false })
     }
   },
