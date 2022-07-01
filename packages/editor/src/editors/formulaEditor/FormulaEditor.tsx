@@ -22,8 +22,8 @@ const formulaEditorStyles = globalCss({
     '&:before': {
       color: theme.colors.typeThirdary,
       content: 'attr(data-placeholder)',
-      fontSize: theme.fontSizes.subHeadline,
-      fontFamily: undefined,
+      fontSize: '14px',
+      fontFamily: '$fonts$defaultSans',
       left: 0,
       pointerEvents: 'none',
       position: 'absolute',
