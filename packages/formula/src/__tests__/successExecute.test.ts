@@ -24,6 +24,11 @@ describe('successExecute', () => {
       []
     ])
 
+    if (args.expressionType) {
+      // eslint-disable-next-line jest/no-conditional-expect
+      expect(parseResult.expressionType).toStrictEqual(args.expressionType)
+    }
+
     const tempT = await interpret({ ctx: newCtx, parseResult })
     const value = await tempT.task.variableValue
     expect(matchObject(value.result)).toStrictEqual(args.result)

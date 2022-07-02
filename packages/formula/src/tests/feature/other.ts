@@ -27,7 +27,6 @@ export const OtherTestCase: TestCaseInterface = {
       { definition: '=(1 {}.', errorType: 'syntax', errorMessage: 'Missing closing token' },
       {
         definition: '== 1',
-        newAbbrevInput: '==1',
         todoMessage: 'fix == space',
         errorType: 'parse',
         errorMessage: 'TODO mismatch token startExpression',

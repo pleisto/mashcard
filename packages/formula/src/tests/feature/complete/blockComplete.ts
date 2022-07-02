@@ -79,8 +79,8 @@ export const BlockCompleteTestCase: TestCaseInterface = {
       },
       {
         definition$: '=1invalidBlockComplete$',
-        todoMessage: 'invalid page name complete support [parseErrorOther]',
-        firstNonSpaceCodeFragment: { code: 'parseErrorOther', display: 'invalidBlockComplete' },
+        todoMessage: 'invalid page name complete support [parseErrorOther1]',
+        firstNonSpaceCodeFragment: { code: 'parseErrorOther1', display: 'invalidBlockComplete' },
         firstCompletion: { name: 'Default', flags: ['defaultNamespace', 'block'] },
         completes: [{ definition$: '=1invalidBlockCompleteDefault$' }]
       },
