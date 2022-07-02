@@ -105,21 +105,23 @@ function resolveCoordinates(
   // the head as right bottom of the selecting area
   const y1 = Math.max(Math.min(docRect.bottom, anchor.y), docRect.top)
   const y2 = Math.max(Math.min(docRect.bottom, head.y), docRect.top)
+  const x1 = Math.max(Math.min(docRect.left, anchor.x), docRect.right)
+  const x2 = Math.max(Math.min(docRect.left, head.x), docRect.right)
 
   return {
     anchor: {
-      x: docRect.left,
+      x: Math.min(x1, x2),
       y: Math.min(y1, y2)
     },
     head: {
-      x: docRect.right,
+      x: Math.min(x1, x2),
       y: Math.max(y1, y2)
     }
   }
 }
 
 function startSelection(view: EditorView, event: MouseEvent, commands: SingleCommands): void {
-  const result = view.posAtCoords({ left: event.pageX, top: event.pageY })
+  const result = view.posAtCoords({ left: event.clientX, top: event.clientY })
 
   // if click happens outside the doc nodes, assume a Multiple Node Selection will happen.
   // so call blur to avoid Text Selection happen.
@@ -129,30 +131,41 @@ function startSelection(view: EditorView, event: MouseEvent, commands: SingleCom
   // click on the doc node
   if (!result || result.inside === -1) {
     view.dispatch(
-      view.state.tr.setMeta('multipleNodeSelectingStart', {
-        x: event.pageX,
-        y: event.pageY
+      view.state.tr.setMeta('updateSelectionAnchor', {
+        x: event.clientX,
+        y: event.clientY
       })
     )
-    commands.blur()
   }
 }
 
-function cleanupSelection(editor: Editor, view: EditorView, x: number, y: number): void {
-  const anchor = view.posAtCoords({ left: x, top: y })
-  editor.commands.setTextSelection(anchor?.pos ?? 0)
-}
-
-function resolveSelection(editor: Editor, view: EditorView, pluginState: SelectionState, event: MouseEvent): void {
+function resolveSelection(
+  editor: Editor,
+  view: EditorView,
+  pluginState: SelectionState,
+  headCoords: { x: number; y: number },
+  offset: { top: number; left: number }
+): void {
   if (!pluginState.multiNodeSelecting) return
 
-  const { x, y } = pluginState.multiNodeSelecting
+  const data = pluginState.multiNodeSelecting
+
   const rect = view.dom.getBoundingClientRect()
 
-  const coordinates = resolveCoordinates({ x, y }, { x: event.pageX, y: event.pageY }, rect)
+  const coordinates = resolveCoordinates(
+    {
+      x: data.anchor.x - offset.left,
+      y: data.anchor.y - offset.top
+    },
+    {
+      x: headCoords.x,
+      y: headCoords.y
+    },
+    rect
+  )
 
   if (!coordinates) {
-    cleanupSelection(editor, view, x, y)
+    editor.commands.setTextSelection(0)
     return
   }
 
@@ -160,11 +173,21 @@ function resolveSelection(editor: Editor, view: EditorView, pluginState: Selecti
   const head = view.posAtCoords({ left: coordinates.head.x, top: coordinates.head.y })
 
   if (!anchor || !head) {
-    cleanupSelection(editor, view, x, y)
+    editor.commands.setTextSelection(0)
     return
   }
 
-  editor.commands.setMultipleNodeSelection(anchor.pos, head.pos)
+  if (anchor.inside === -1 && head.inside === -1 && Math.abs(anchor.pos - head.pos) <= 1) {
+    editor.commands.setTextSelection(0)
+    return
+  }
+
+  let anchorPos = Math.min(anchor.pos, anchor.inside)
+  anchorPos = anchorPos === -1 ? anchor.pos - 1 : anchorPos
+  let headPos = Math.min(head.pos, head.inside)
+  headPos = headPos === -1 ? head.pos - 1 : headPos
+
+  editor.commands.setMultipleNodeSelection(anchorPos, headPos)
 }
 
 interface SelectionState {
@@ -172,8 +195,15 @@ interface SelectionState {
     | false
     | {
         selecting: boolean
-        x: number
-        y: number
+        anchor: {
+          x: number
+          y: number
+          position: number
+        }
+        head?: {
+          x: number
+          y: number
+        }
       }
 }
 
@@ -184,34 +214,56 @@ class SelectionView {
   editor: Editor
   options: SelectionOptions
 
+  public containerTop: number | undefined
+
+  public offset: {
+    top: number
+    left: number
+  }
+
   constructor(editor: Editor, view: EditorView, options: SelectionOptions) {
     this.editor = editor
     this.view = view
     this.options = options
 
+    this.offset = {
+      top: 0,
+      left: 0
+    }
+
     window.addEventListener('mouseup', this.mouseup)
     window.addEventListener('mousemove', this.mousemove)
+    window.addEventListener('dragstart', this.dragstart)
   }
 
   drawMouseArea = (anchor: { x: number; y: number }, head: { x: number; y: number }) => {
     let area = document.getElementById('selection-mouse-area')
-
     if (!area) {
       area = document.createElement('div')
       area.id = 'selection-mouse-area'
       document.body.append(area)
     }
 
+    const container = this.view.dom.parentElement!
+    const containerRect = container.getBoundingClientRect()
+
+    if (!this.containerTop) {
+      this.containerTop = containerRect.top
+    }
+
+    this.offset.top = this.containerTop - containerRect.top
+
     area.classList.add(this.options.nodeSelection.mouseArea?.className ?? '')
     area.style.position = 'absolute'
     area.style.left = `${Math.min(anchor.x, head.x)}px`
+    area.style.top = `${Math.min(anchor.y - this.offset.top, head.y)}px`
     area.style.width = `${Math.abs(anchor.x - head.x)}px`
-    area.style.top = `${Math.min(anchor.y, head.y)}px`
-    area.style.height = `${Math.abs(anchor.y - head.y)}px`
+    area.style.height = `${Math.abs(anchor.y - this.offset.top - head.y)}px`
   }
 
   clearMouseArea = () => {
     const area = document.getElementById('selection-mouse-area')
+    // const container = this.view.dom.parentElement!
     if (area) document.body.removeChild(area)
   }
 
@@ -221,25 +273,24 @@ class SelectionView {
       if (!pluginState.multiNodeSelecting.selecting) {
         this.view.dispatch(this.view.state.tr.setMeta('multipleNodeSelecting', true))
       }
-      this.drawMouseArea(pluginState.multiNodeSelecting, event)
-      resolveSelection(this.editor, this.view, pluginState, event)
+      const head = { x: event.clientX, y: event.clientY }
+      this.view.dispatch(this.view.state.tr.setMeta('updateSelectionHead', head))
+      this.drawMouseArea(pluginState.multiNodeSelecting.anchor, head)
+      resolveSelection(this.editor, this.view, pluginState, head, this.offset)
     }
   }
 
   mouseup = (event: MouseEvent) => {
     this.clearMouseArea()
-    const pluginState = SelectionPluginKey.getState(this.view.state)
-    if (pluginState?.multiNodeSelecting) {
+    this.containerTop = undefined
+    this.offset = { left: 0, top: 0 }
+    setTimeout(() => {
       this.view.dispatch(this.view.state.tr.setMeta('multipleNodeSelectingEnd', true))
-      if (!pluginState.multiNodeSelecting.selecting) {
-        const { x, y } = pluginState.multiNodeSelecting
-        cleanupSelection(this.editor, this.view, x, y)
-      }
+    })
+  }
 
-      if (this.editor.state.selection instanceof MultipleNodeSelection) {
-        this.editor.commands.focus()
-      }
-    }
+  dragstart = (event: DragEvent) => {
+    this.view.dispatch(this.view.state.tr.setMeta('multipleNodeSelectingEnd', true))
   }
 
   destroy(): void {
@@ -290,12 +341,18 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
             }
           },
           apply(tr, value, oldState, newState) {
-            const coordinates = tr.getMeta('multipleNodeSelectingStart')
-            if (coordinates) {
-              return { ...value, multiNodeSelecting: coordinates }
+            const anchor = tr.getMeta('updateSelectionAnchor')
+            if (anchor) {
+              return { ...value, multiNodeSelecting: { anchor, selecting: false } }
             }
 
-            if (tr.getMeta('multipleNodeSelecting')) {
+            const head = tr.getMeta('updateSelectionHead')
+
+            if (head && value.multiNodeSelecting) {
+              return { ...value, multiNodeSelecting: { ...value.multiNodeSelecting, head } }
+            }
+
+            if (tr.getMeta('multipleNodeSelecting') && value.multiNodeSelecting) {
               return { ...value, multiNodeSelecting: { ...value.multiNodeSelecting, selecting: true } }
             }
 
@@ -345,8 +402,13 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
           },
           createSelectionBetween: (view, $anchor, $head) => {
             if (!this.editor.isEditable) return
+
+            const pluginState = SelectionPluginKey.getState(view.state)
+
+            if (pluginState?.multiNodeSelecting && pluginState.multiNodeSelecting.selecting) return view.state.selection
+
             if ($anchor.pos === $head.pos) return
-            if (!(this.editor.state.selection instanceof TextSelection)) return
+            if (!(view.state.selection instanceof TextSelection)) return
 
             // remove non-text node and empty text node selection by check: to - from > 1
             // because we don't want non-text nodes at the end of Text Selection
@@ -357,7 +419,7 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
 
             if (nodeRanges.length > 0) {
               const to = nodeRanges[nodeRanges.length - 1].to
-              return TextSelection.create(this.editor.state.doc, $anchor.pos, to)
+              return TextSelection.create(view.state.doc, $anchor.pos, to)
             }
           }
         }

@@ -43,12 +43,12 @@ export class MultipleNodeSelection extends Selection {
       }
     }
 
-    doc.nodesBetween(from, to, (node, pos) => {
+    doc.nodesBetween(from, to + 1, (node, pos) => {
       ranges.push(new SelectionRange(doc.resolve(pos), doc.resolve(pos + node.nodeSize)))
       return false
     })
 
-    super(ranges[0].$from, ranges[0].$to, ranges)
+    super(ranges[0]?.$from ?? $anchorPos, ranges[0]?.$to ?? $headPos, ranges)
 
     this.$anchorPos = $anchorPos
     this.$headPos = $headPos
