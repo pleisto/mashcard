@@ -548,6 +548,7 @@ zh-TW:
     pods:
       domain: Domain Name
       name: Name
+      pod_input_placeholder: Input Pod Name
       bio:
         label: Bio
         placeholder: Tell others a little about yourself.

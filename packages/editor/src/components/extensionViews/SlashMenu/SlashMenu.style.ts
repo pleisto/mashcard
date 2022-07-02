@@ -47,7 +47,7 @@ export const RecentItem = styled(Menu.Item, {
   display: 'flex',
   minHeight: 'unset',
   minWidth: 'unset',
-  padding: '5px'
+  padding: '3.2px'
 })
 
 export const recentItemIconStyle = css({
@@ -62,7 +62,7 @@ export const RecentGroup = styled(Menu.Group, {
   margin: '.5rem 0',
   padding: `0 ${menuItemSpacing}`,
   [`${RecentItem} + ${RecentItem}`]: {
-    marginLeft: '.9rem'
+    marginLeft: '.5rem'
   }
 })
 
