@@ -26,10 +26,6 @@ export const BlockJustCreated = event<{ id: string }>({ sticky: true })('BlockJu
   return { id }
 })
 
-export const BlockDropAdd = event<{ key: string; pos: number }>()('BlockDropAdd', ({ key, pos }) => {
-  return { key, pos }
-})
-
 export const BlockMetaUpdated = event<{ id: string; meta: BlockMeta }>()('BlockMetaUpdated', ({ id }) => {
   return { id }
 })
