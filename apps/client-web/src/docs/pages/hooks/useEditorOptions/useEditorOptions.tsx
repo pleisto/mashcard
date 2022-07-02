@@ -17,16 +17,9 @@ export interface UseEditorOptions {
   blocks: Block[]
   documentEditable: boolean
   provider: blockProvider | undefined
-  onDocSave: (doc: Node) => Promise<void>
 }
 
-export function useEditorOptions({
-  docMeta,
-  documentEditable,
-  blocks,
-  provider,
-  onDocSave
-}: UseEditorOptions): EditorOptions {
+export function useEditorOptions({ docMeta, documentEditable, blocks, provider }: UseEditorOptions): EditorOptions {
   const discussion = useDiscussion(docMeta)
   const embed = useEmbed(blocks, docMeta)
   const formulaContext = useReactiveVar(FormulaContextVar)
@@ -65,13 +58,10 @@ export function useEditorOptions({
         },
         subPageMenu: {
           renderView
-        },
-        sync: {
-          onSave: onDocSave
         }
       },
       editable: documentEditable
     }),
-    [discussion, documentEditable, embed, formulaContext, mentionCommands, onDocSave, renderView, provider, currentUser]
+    [discussion, documentEditable, embed, formulaContext, mentionCommands, renderView, provider, currentUser]
   )
 }

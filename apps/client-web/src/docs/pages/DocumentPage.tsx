@@ -30,13 +30,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
     [docMeta.id, docMeta.historyId, docMeta.domain]
   )
 
-  const {
-    rootBlock,
-    data,
-    loading: blocksLoading,
-    committing: blocksCommitting,
-    onDocSave
-  } = useSyncProvider(queryVariables)
+  const { rootBlock, data, loading: blocksLoading, committing: blocksCommitting } = useSyncProvider(queryVariables)
 
   const freeze = mode === 'presentation'
   const currentRootBlock = rootBlock.current
@@ -60,7 +54,6 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
   const editorOptions = useEditorOptions({
     docMeta,
     provider,
-    onDocSave,
     documentEditable,
     blocks: data?.childrenBlocks
   })
@@ -72,17 +65,6 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
   useEffect(() => {
     editorVar(freeze ? null : editor)
   }, [editor, freeze])
-
-  useEffect(() => {
-    if (editor && !editor.isDestroyed && data?.childrenBlocks && initBlocksToEditor.current) {
-      devLog('init blocks to editor')
-      const content: JSONContent[] = blocksToJSONContents(data?.childrenBlocks as Block[])
-
-      if (content.length) {
-        editor.chain().setMeta('preventUpdate', true).replaceRoot(content[0]).run()
-      }
-    }
-  }, [editor, data, data?.childrenBlocks, initBlocksToEditor])
 
   if (loading || blocksLoading || !editor || editor.isDestroyed || !currentRootBlock) {
     return (

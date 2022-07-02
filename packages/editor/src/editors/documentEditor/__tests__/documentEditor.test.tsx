@@ -21,9 +21,6 @@ describe('documentEditor', () => {
           bubbleMenu: {
             element: document.createElement('div')
           },
-          sync: {
-            onSave
-          },
           collaboration: {
             document: yDoc
           },

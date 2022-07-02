@@ -33,7 +33,6 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
   committing: boolean
   loading: boolean
   refetch: any
-  onDocSave: (doc: Node) => Promise<void>
   updateBlocks: UpdateBlocks
   // updateCachedDocBlock: (block: Block, toDelete: boolean) => void
 } {
@@ -159,41 +158,6 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
       }, 500)
     }
   }, [blockSyncBatch, queryVariables.domain, committing, setCommitting])
-
-  const onDocSave = useCallback(
-    async (doc: Node): Promise<void> => {
-      // if (queryVariables.historyId) return
-      // if (!docBlocksMap.current.size) return
-      // // isSavingVar(true)
-      // // NOTE: tempfix for root uuid
-      // // TODO: need avoid modify read-only prop
-      // // @ts-expect-error
-      // doc.attrs.uuid = rootId.current ?? doc.attrs.uuid
-      // const docBlocks = nodeToBlock(doc, 0)
-      // const deletedIds = new Set(docBlocksMap.current.keys())
-      // deletedIds.delete(rootId.current)
-
-      // // Document Blocks dirty check and maintian
-      // docBlocks.forEach(newBlock => {
-      //   newBlock.sort = `${newBlock.sort}`
-      //   const oldBlock = docBlocksMap.current.get(newBlock.id)
-      //   // TODO: Improve dirty check
-      //   if (!oldBlock || !isEqual(oldBlock, newBlock)) {
-      //     dirtyBlocksMap.current.set(newBlock.id, newBlock)
-      //     docBlocksMap.current.set(newBlock.id, newBlock as Block)
-      //   }
-      //   deletedIds.delete(newBlock.id)
-      // })
-
-      // deletedIds.forEach(id => {
-      //   dirtyToDeleteIds.current.add(id)
-      //   docBlocksMap.current.delete(id)
-      // })
-
-      // await commitDirty()
-    },
-    []
-  )
 
   MashcardEventBus.subscribe(
     BlockUpdated,
@@ -329,7 +293,6 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
     committing,
     loading,
     refetch,
-    onDocSave,
     updateBlocks
   }
 }
