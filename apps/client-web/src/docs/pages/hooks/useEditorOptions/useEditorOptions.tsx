@@ -1,4 +1,3 @@
-import { Node } from 'prosemirror-model'
 import { EditorOptions } from '@mashcard/editor'
 import { Block } from '@mashcard/schema'
 import { DocMeta } from '@/docs/store/DocMeta'

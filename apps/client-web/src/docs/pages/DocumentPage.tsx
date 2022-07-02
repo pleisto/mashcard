@@ -1,11 +1,8 @@
 import React, { useEffect, useMemo } from 'react'
-import { Spin, devLog } from '@mashcard/design-system'
+import { Spin } from '@mashcard/design-system'
 import { EditorContent, useEditor } from '@mashcard/editor'
-import { Block } from '@/MashcardGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'
 import { useSyncProvider, useBlockSyncProvider, useDocHistoryProvider } from './hooks'
-import { blocksToJSONContents } from '../common/blocks'
-import { JSONContent } from '@tiptap/core'
 import { TrashPrompt } from '../common/components/TrashPrompt'
 import { useNavigate } from 'react-router-dom'
 import { editorVar, awarenessInfosVar, isSavingVar } from '../reactiveVars'
@@ -36,7 +33,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
   const currentRootBlock = rootBlock.current
   const [documentEditable] = useDocumentEditable(freeze ?? !docMeta.historyId, currentRootBlock)
 
-  const { provider, initBlocksToEditor, loading, committing, awarenessInfos, meta, setMeta } = useBlockSyncProvider({
+  const { provider, loading, committing, awarenessInfos, meta, setMeta } = useBlockSyncProvider({
     blockId: docMeta.id as string,
     historyId: docMeta.historyId,
     editable: documentEditable

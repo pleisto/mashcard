@@ -1,5 +1,4 @@
 import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react'
-import { Node } from 'prosemirror-model'
 import { useApolloClient } from '@apollo/client'
 import {
   BlockInput,
