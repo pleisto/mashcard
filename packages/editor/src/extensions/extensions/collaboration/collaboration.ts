@@ -17,6 +17,7 @@ export const Collaboration = TiptapCollaboration.extend({
 
     const yUndoPluginInst = yUndoPlugin()
 
+    // Patch undoPlugin view function
     yUndoPluginInst.spec.view = (view: EditorView) => {
       const ystate = ySyncPluginKey.getState(view.state)
       const undoManager = yUndoPluginKey.getState(view.state).undoManager
@@ -33,6 +34,9 @@ export const Collaboration = TiptapCollaboration.extend({
         }
       })
       return {
+        // NOTES:
+        // This `destroy` will be called to refresh plugins views when a new plugin is added to prosemirror, 
+        // Therefore, undoManager.destroy should not be called here
         destroy: () => {}
       }
     }
