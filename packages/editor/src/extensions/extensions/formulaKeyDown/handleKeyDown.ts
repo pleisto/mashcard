@@ -69,17 +69,17 @@ export const FormulaHandleKeyDown = createExtension<FormulaHandleKeyDownOptions,
               options: { formulaId, rootId, maxScreen }
             } = this
 
+            if (!rootId || !formulaId) return false
+
             if (!['Enter', 'Tab', 'ArrowUp', 'ArrowDown', 'Escape'].includes(key)) return false
 
-            if (key === 'Enter' && !altKey && !ctrlKey && !metaKey && maxScreen) {
+            if (!altKey && !ctrlKey && !metaKey && maxScreen) {
               return false
             }
 
-            if (rootId && formulaId) {
-              MashcardEventBus.dispatch(
-                FormulaKeyboardEventTrigger({ event, formulaId, rootId, type: 'editor', completionIndex: -1 })
-              )
-            }
+            MashcardEventBus.dispatch(
+              FormulaKeyboardEventTrigger({ event, formulaId, rootId, type: 'editor', completionIndex: -1 })
+            )
             return true
           },
           handleClick: (view, position, event) => {

@@ -44,7 +44,6 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   committing: boolean
   loading: boolean
   provider?: blockProvider
-  initBlocksToEditor: React.MutableRefObject<boolean>
   awarenessInfos: awarenessInfo[]
   meta: blockMeta
   documentInfo?: DocumentInfo
@@ -64,7 +63,6 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   const [provider, setProvider] = React.useState<blockProvider>()
   const [awarenessInfos, setAwarenessInfos] = React.useState<awarenessInfo[]>([])
 
-  const initBlocksToEditor = React.useRef<boolean>(false)
   const blockCommitting = React.useRef<boolean>(false)
   const blockMetaChanged = React.useRef<boolean>(false)
   const [committing, setCommitting] = React.useState<boolean>(false)
@@ -306,14 +304,12 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
         }
         if (block.current.stateId && data.blockNew.states) {
           devLog(`init from state ${block.current.stateId} (${data.blockNew.states.length})`)
-          initBlocksToEditor.current = false
           const remoteState = Y.mergeUpdates(
             data.blockNew.states.filter(s => s.state).map(s => base64.parse(s.state as string))
           )
           Y.applyUpdate(newYdoc, remoteState)
         } else {
           devLog('need to commit init state')
-          initBlocksToEditor.current = !historyId
         }
         if (data.blockNew.documentInfo) {
           // TODO: fix PodBase type
@@ -375,7 +371,6 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
     committing,
     loading,
     provider,
-    initBlocksToEditor,
     awarenessInfos,
     meta: blockMeta,
     documentInfo,

@@ -3,6 +3,7 @@ import { OperatorType } from '../operator'
 export const expressionOperator: OperatorType = {
   name: 'expression',
   expressionType: 'any',
+  dynamicParseType: lhsType => lhsType,
   skipReturnEarlyCheck: true,
   lhsType: 'any',
   rhsType: 'any',
@@ -15,14 +16,14 @@ export const expressionOperator: OperatorType = {
   },
   testCases: {
     successTestCases: [
-      { definition: '= 1; 2', result: 2 },
-      { definition: '= (1; 2+1)', result: 3 },
+      { definition: '= 1; 2', result: 2, expressionType: 'number' },
+      { definition: '= (1; 2+1)', result: 3, expressionType: 'number' },
       { definition: '= 1;\n2', result: 2 },
       { definition: '= 1\n;2', result: 2 },
       { definition: '= \n1;2\n', result: 2 },
       { definition: '= \n1\n+\n2\n', result: 3 },
       { definition: '=1; 2; (1+3)', result: 4 },
-      { definition: '=ABS(1; 2; (1+3))', result: 4 },
+      { definition: '=ABS(1; 2; (1+3))', result: 4, expressionType: 'number' },
       { definition: '=1; 2; 1/0; (1+3)', result: 4 },
       {
         definition: '= \n 1',
@@ -37,8 +38,12 @@ export const expressionOperator: OperatorType = {
       }
     ],
     errorTestCases: [
-      { definition: '= 1;', errorType: 'syntax', errorMessage: 'Missing expression' },
+      { definition: '= 1;', errorType: 'syntax', errorMessage: 'Missing expression', expressionType: 'any' },
       { definition: '= 1\n2', errorType: 'parse', errorMessage: 'Not all input parsed: 2', valid: false },
+      { definition: '=1\n1\n1', errorType: 'parse', errorMessage: 'Not all input parsed: 1', valid: false },
+      { definition: '= 1\n1\n1', errorType: 'parse', errorMessage: 'Not all input parsed: 1', valid: false },
+      { definition: '=1asd\n123a', errorType: 'parse', errorMessage: 'Not all input parsed: asd', valid: false },
+      { definition: '= 1asd\n123a', errorType: 'parse', errorMessage: 'Not all input parsed: asd', valid: false },
       { definition: '=1; 2;', errorType: 'syntax', errorMessage: 'Missing expression' },
       { definition: '=;', errorType: 'syntax', errorMessage: 'Missing expression' },
       { definition: '=;123', errorType: 'parse', errorMessage: 'Parse error: ";"', valid: false }
