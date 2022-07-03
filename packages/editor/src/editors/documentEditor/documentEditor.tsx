@@ -244,9 +244,6 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
               spreadsheet: true,
               strike: true,
               subPageMenu: true,
-              sync: {
-                types: typesWithUuid
-              },
               taskItem: {
                 nested: true
               },

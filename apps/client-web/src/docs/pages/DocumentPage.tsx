@@ -1,11 +1,8 @@
 import React, { useEffect, useMemo } from 'react'
-import { Spin, devLog } from '@mashcard/design-system'
+import { Spin } from '@mashcard/design-system'
 import { EditorContent, useEditor } from '@mashcard/editor'
-import { Block } from '@/MashcardGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'
 import { useSyncProvider, useBlockSyncProvider, useDocHistoryProvider } from './hooks'
-import { blocksToJSONContents } from '../common/blocks'
-import { JSONContent } from '@tiptap/core'
 import { TrashPrompt } from '../common/components/TrashPrompt'
 import { useNavigate } from 'react-router-dom'
 import { editorVar, awarenessInfosVar, isSavingVar } from '../reactiveVars'
@@ -30,19 +27,13 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
     [docMeta.id, docMeta.historyId, docMeta.domain]
   )
 
-  const {
-    rootBlock,
-    data,
-    loading: blocksLoading,
-    committing: blocksCommitting,
-    onDocSave
-  } = useSyncProvider(queryVariables)
+  const { rootBlock, data, loading: blocksLoading, committing: blocksCommitting } = useSyncProvider(queryVariables)
 
   const freeze = mode === 'presentation'
   const currentRootBlock = rootBlock.current
   const [documentEditable] = useDocumentEditable(freeze ?? !docMeta.historyId, currentRootBlock)
 
-  const { provider, initBlocksToEditor, loading, committing, awarenessInfos, meta, setMeta } = useBlockSyncProvider({
+  const { provider, loading, committing, awarenessInfos, meta, setMeta } = useBlockSyncProvider({
     blockId: docMeta.id as string,
     historyId: docMeta.historyId,
     editable: documentEditable
@@ -60,7 +51,6 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
   const editorOptions = useEditorOptions({
     docMeta,
     provider,
-    onDocSave,
     documentEditable,
     blocks: data?.childrenBlocks
   })
@@ -72,17 +62,6 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
   useEffect(() => {
     editorVar(freeze ? null : editor)
   }, [editor, freeze])
-
-  useEffect(() => {
-    if (editor && !editor.isDestroyed && data?.childrenBlocks && initBlocksToEditor.current) {
-      devLog('init blocks to editor')
-      const content: JSONContent[] = blocksToJSONContents(data?.childrenBlocks as Block[])
-
-      if (content.length) {
-        editor.chain().setMeta('preventUpdate', true).replaceRoot(content[0]).run()
-      }
-    }
-  }, [editor, data, data?.childrenBlocks, initBlocksToEditor])
 
   if (loading || blocksLoading || !editor || editor.isDestroyed || !currentRootBlock) {
     return (
