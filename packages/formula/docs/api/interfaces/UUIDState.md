@@ -6,9 +6,6 @@
 
 - [cache](UUIDState.md#cache)
 - [counter](UUIDState.md#counter)
-
-### Methods
-
 - [uuidFunction](UUIDState.md#uuidfunction)
 
 ## Properties
@@ -19,7 +16,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:51](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L51)
+[packages/formula/src/tests/testType.ts:52](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L52)
 
 ---
 
@@ -29,20 +26,28 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:50](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L50)
+[packages/formula/src/tests/testType.ts:51](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L51)
 
-## Methods
+---
 
 ### <a id="uuidfunction" name="uuidfunction"></a> uuidFunction
 
-▸ **uuidFunction**(`number`): `string`
+• **uuidFunction**: (`number`: `number`) => `string`
 
-#### Parameters
+#### Type declaration
+
+▸ (`number`): `string`
+
+##### Parameters
 
 | Name     | Type     |
 | :------- | :------- |
 | `number` | `number` |
 
-#### Returns
+##### Returns
 
 `string`
+
+#### Defined in
+
+[packages/formula/src/tests/testType.ts:50](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L50)

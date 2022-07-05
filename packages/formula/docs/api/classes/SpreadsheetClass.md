@@ -230,7 +230,7 @@
 
 #### Implementation of
 
-[SpreadsheetType](../interfaces/SpreadsheetType.md).[cleanup](../interfaces/SpreadsheetType.md#cleanup)
+SpreadsheetType.cleanup
 
 ---
 
@@ -244,7 +244,7 @@
 
 #### Implementation of
 
-[SpreadsheetType](../interfaces/SpreadsheetType.md).[columnCount](../interfaces/SpreadsheetType.md#columncount)
+SpreadsheetType.columnCount
 
 ---
 
@@ -286,7 +286,7 @@ SpreadsheetType.eventDependency
 
 #### Implementation of
 
-[SpreadsheetType](../interfaces/SpreadsheetType.md).[findCellDisplayData](../interfaces/SpreadsheetType.md#findcelldisplaydata)
+SpreadsheetType.findCellDisplayData
 
 ---
 
@@ -308,7 +308,7 @@ SpreadsheetType.eventDependency
 
 #### Implementation of
 
-[SpreadsheetType](../interfaces/SpreadsheetType.md).[findCellValue](../interfaces/SpreadsheetType.md#findcellvalue)
+SpreadsheetType.findCellValue
 
 ---
 
@@ -328,7 +328,7 @@ SpreadsheetType.eventDependency
 
 #### Implementation of
 
-[SpreadsheetType](../interfaces/SpreadsheetType.md).[findColumn](../interfaces/SpreadsheetType.md#findcolumn)
+SpreadsheetType.findColumn
 
 ---
 
@@ -348,7 +348,7 @@ SpreadsheetType.eventDependency
 
 #### Implementation of
 
-[SpreadsheetType](../interfaces/SpreadsheetType.md).[findRow](../interfaces/SpreadsheetType.md#findrow)
+SpreadsheetType.findRow
 
 ---
 
@@ -482,7 +482,7 @@ SpreadsheetType.handleInterpret
 
 #### Implementation of
 
-[SpreadsheetType](../interfaces/SpreadsheetType.md).[listCells](../interfaces/SpreadsheetType.md#listcells)
+SpreadsheetType.listCells
 
 ---
 
@@ -496,7 +496,7 @@ SpreadsheetType.handleInterpret
 
 #### Implementation of
 
-[SpreadsheetType](../interfaces/SpreadsheetType.md).[listColumns](../interfaces/SpreadsheetType.md#listcolumns)
+SpreadsheetType.listColumns
 
 ---
 
@@ -510,7 +510,7 @@ SpreadsheetType.handleInterpret
 
 #### Implementation of
 
-[SpreadsheetType](../interfaces/SpreadsheetType.md).[listRows](../interfaces/SpreadsheetType.md#listrows)
+SpreadsheetType.listRows
 
 ---
 
@@ -524,7 +524,7 @@ SpreadsheetType.handleInterpret
 
 #### Implementation of
 
-[SpreadsheetType](../interfaces/SpreadsheetType.md).[nameDependency](../interfaces/SpreadsheetType.md#namedependency)
+SpreadsheetType.nameDependency
 
 ---
 
@@ -544,7 +544,7 @@ SpreadsheetType.handleInterpret
 
 #### Implementation of
 
-[SpreadsheetType](../interfaces/SpreadsheetType.md).[namespaceName](../interfaces/SpreadsheetType.md#namespacename)
+SpreadsheetType.namespaceName
 
 ---
 
@@ -558,7 +558,7 @@ SpreadsheetType.handleInterpret
 
 #### Implementation of
 
-[SpreadsheetType](../interfaces/SpreadsheetType.md).[persistAll](../interfaces/SpreadsheetType.md#persistall)
+SpreadsheetType.persistAll
 
 ---
 
@@ -582,7 +582,7 @@ SpreadsheetType.handleInterpret
 
 #### Implementation of
 
-[SpreadsheetType](../interfaces/SpreadsheetType.md).[rowCount](../interfaces/SpreadsheetType.md#rowcount)
+SpreadsheetType.rowCount
 
 ---
 
@@ -596,7 +596,7 @@ SpreadsheetType.handleInterpret
 
 #### Implementation of
 
-[SpreadsheetType](../interfaces/SpreadsheetType.md).[toArray](../interfaces/SpreadsheetType.md#toarray)
+SpreadsheetType.toArray
 
 ---
 
@@ -610,4 +610,4 @@ SpreadsheetType.handleInterpret
 
 #### Implementation of
 
-[SpreadsheetType](../interfaces/SpreadsheetType.md).[toRecord](../interfaces/SpreadsheetType.md#torecord)
+SpreadsheetType.toRecord

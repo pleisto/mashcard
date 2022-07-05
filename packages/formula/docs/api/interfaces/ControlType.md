@@ -16,9 +16,6 @@
 - [\_meta](ControlType.md#_meta)
 - [disabled](ControlType.md#disabled)
 - [kind](ControlType.md#kind)
-
-### Methods
-
 - [persistence](ControlType.md#persistence)
 
 ## Properties
@@ -61,12 +58,20 @@
 
 [packages/formula/src/controls/types.ts:29](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L29)
 
-## Methods
+---
 
 ### <a id="persistence" name="persistence"></a> persistence
 
-▸ **persistence**(): [`ControlInitializer`](ControlInitializer.md)
+• **persistence**: () => [`ControlInitializer`](ControlInitializer.md)
 
-#### Returns
+#### Type declaration
+
+▸ (): [`ControlInitializer`](ControlInitializer.md)
+
+##### Returns
 
 [`ControlInitializer`](ControlInitializer.md)
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:31](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L31)

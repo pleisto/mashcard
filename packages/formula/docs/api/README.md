@@ -235,20 +235,8 @@
 - [FORMULA_PARSER_VERSION](README.md#formula_parser_version)
 - [FORMULA_USED_TYPES](README.md#formula_used_types)
 - [FUNCTION_NAME_REGEX](README.md#function_name_regex)
-- [FormulaBlockNameChangedTrigger](README.md#formulablocknamechangedtrigger)
-- [FormulaBlockNameDeletedTrigger](README.md#formulablocknamedeletedtrigger)
-- [FormulaBlockNameModifiedWithUsername](README.md#formulablocknamemodifiedwithusername)
-- [FormulaContextNameChanged](README.md#formulacontextnamechanged)
-- [FormulaContextNameRemove](README.md#formulacontextnameremove)
-- [FormulaContextTickTrigger](README.md#formulacontextticktrigger)
-- [FormulaDocSoftDeleted](README.md#formuladocsoftdeleted)
 - [FormulaLexer](README.md#formulalexer)
-- [FormulaSpreadsheetDeleted](README.md#formulaspreadsheetdeleted)
-- [FormulaTaskCompleted](README.md#formulataskcompleted)
-- [FormulaTickViaId](README.md#formulatickviaid)
 - [FormulaTypeCastName](README.md#formulatypecastname)
-- [FormulaUpdatedViaId](README.md#formulaupdatedviaid)
-- [FormulaVariableDependencyUpdated](README.md#formulavariabledependencyupdated)
 - [FunctionName](README.md#functionname)
 - [GreaterThan](README.md#greaterthan)
 - [GreaterThanEqual](README.md#greaterthanequal)
@@ -284,10 +272,6 @@
 - [Semicolon](README.md#semicolon)
 - [Sharp](README.md#sharp)
 - [Sign](README.md#sign)
-- [SpreadsheetReloadViaId](README.md#spreadsheetreloadviaid)
-- [SpreadsheetUpdateColumnsViaId](README.md#spreadsheetupdatecolumnsviaid)
-- [SpreadsheetUpdateNameViaId](README.md#spreadsheetupdatenameviaid)
-- [SpreadsheetUpdateRowsViaId](README.md#spreadsheetupdaterowsviaid)
 - [StringLiteral](README.md#stringliteral)
 - [TOKEN_SUFFIX_PATTERN](README.md#token_suffix_pattern)
 - [ThisRecord](README.md#thisrecord)
@@ -379,6 +363,22 @@
 ### Functions
 
 - [DEFAULT_UUID_FUNCTION](README.md#default_uuid_function)
+- [FormulaBlockNameChangedTrigger](README.md#formulablocknamechangedtrigger)
+- [FormulaBlockNameDeletedTrigger](README.md#formulablocknamedeletedtrigger)
+- [FormulaBlockNameModifiedWithUsername](README.md#formulablocknamemodifiedwithusername)
+- [FormulaContextNameChanged](README.md#formulacontextnamechanged)
+- [FormulaContextNameRemove](README.md#formulacontextnameremove)
+- [FormulaContextTickTrigger](README.md#formulacontextticktrigger)
+- [FormulaDocSoftDeleted](README.md#formuladocsoftdeleted)
+- [FormulaSpreadsheetDeleted](README.md#formulaspreadsheetdeleted)
+- [FormulaTaskCompleted](README.md#formulataskcompleted)
+- [FormulaTickViaId](README.md#formulatickviaid)
+- [FormulaUpdatedViaId](README.md#formulaupdatedviaid)
+- [FormulaVariableDependencyUpdated](README.md#formulavariabledependencyupdated)
+- [SpreadsheetReloadViaId](README.md#spreadsheetreloadviaid)
+- [SpreadsheetUpdateColumnsViaId](README.md#spreadsheetupdatecolumnsviaid)
+- [SpreadsheetUpdateNameViaId](README.md#spreadsheetupdatenameviaid)
+- [SpreadsheetUpdateRowsViaId](README.md#spreadsheetupdaterowsviaid)
 - [accessAttribute](README.md#accessattribute)
 - [appendFormulas](README.md#appendformulas)
 - [applyCompletion](README.md#applycompletion)
@@ -701,7 +701,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:254](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L254)
+[packages/formula/src/tests/testType.ts:256](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L256)
 
 ---
 
@@ -731,7 +731,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:167](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L167)
+[packages/formula/src/tests/testType.ts:169](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L169)
 
 ---
 
@@ -887,7 +887,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:46](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L46)
+[packages/formula/src/tests/testType.ts:47](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L47)
 
 ---
 
@@ -1007,7 +1007,7 @@
 
 ### <a id="specialcodefragmenttype" name="specialcodefragmenttype"></a> SpecialCodeFragmentType
 
-Ƭ **SpecialCodeFragmentType**: `"unknown"` \| `"parseErrorOther"` \| `"Space"` \| `"literal"`
+Ƭ **SpecialCodeFragmentType**: `"unknown"` \| `"parseErrorOther1"` \| `"parseErrorOther2"` \| `"parseErrorOther3"` \| `"Space"` \| `"literal"`
 
 #### Defined in
 
@@ -1071,7 +1071,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:101](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L101)
+[packages/formula/src/tests/testType.ts:102](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L102)
 
 ---
 
@@ -1382,7 +1382,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L17)
+[packages/formula/src/tests/testType.ts:18](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L18)
 
 ---
 
@@ -1526,76 +1526,6 @@
 
 ---
 
-### <a id="formulablocknamechangedtrigger" name="formulablocknamechangedtrigger"></a> FormulaBlockNameChangedTrigger
-
-• `Const` **FormulaBlockNameChangedTrigger**: `EventType`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/block.ts:32](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/block.ts#L32)
-
----
-
-### <a id="formulablocknamedeletedtrigger" name="formulablocknamedeletedtrigger"></a> FormulaBlockNameDeletedTrigger
-
-• `Const` **FormulaBlockNameDeletedTrigger**: `EventType`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/inner.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/inner.ts#L5)
-
----
-
-### <a id="formulablocknamemodifiedwithusername" name="formulablocknamemodifiedwithusername"></a> FormulaBlockNameModifiedWithUsername
-
-• `Const` **FormulaBlockNameModifiedWithUsername**: `EventType`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/block.ts:25](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/block.ts#L25)
-
----
-
-### <a id="formulacontextnamechanged" name="formulacontextnamechanged"></a> FormulaContextNameChanged
-
-• `Const` **FormulaContextNameChanged**: `EventType`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\>, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/inner.ts:12](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/inner.ts#L12)
-
----
-
-### <a id="formulacontextnameremove" name="formulacontextnameremove"></a> FormulaContextNameRemove
-
-• `Const` **FormulaContextNameRemove**: `EventType`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\>, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/inner.ts:19](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/inner.ts#L19)
-
----
-
-### <a id="formulacontextticktrigger" name="formulacontextticktrigger"></a> FormulaContextTickTrigger
-
-• `Const` **FormulaContextTickTrigger**: `EventType`<{ `domain`: `string` ; `state`: `any` }, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/inner.ts:26](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/inner.ts#L26)
-
----
-
-### <a id="formuladocsoftdeleted" name="formuladocsoftdeleted"></a> FormulaDocSoftDeleted
-
-• `Const` **FormulaDocSoftDeleted**: `EventType`<{ `id`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/block.ts:18](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/block.ts#L18)
-
----
-
 ### <a id="formulalexer" name="formulalexer"></a> FormulaLexer
 
 • `Const` **FormulaLexer**: `Lexer`
@@ -1606,36 +1536,6 @@
 
 ---
 
-### <a id="formulaspreadsheetdeleted" name="formulaspreadsheetdeleted"></a> FormulaSpreadsheetDeleted
-
-• `Const` **FormulaSpreadsheetDeleted**: `EventType`<{ `id`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/spreadsheet.ts:13](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/spreadsheet.ts#L13)
-
----
-
-### <a id="formulataskcompleted" name="formulataskcompleted"></a> FormulaTaskCompleted
-
-• `Const` **FormulaTaskCompleted**: `EventType`<{ `namespaceId`: `string` ; `task`: [`VariableTask`](README.md#variabletask) ; `username`: `string` ; `variableId`: `string` }, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/inner.ts:44](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/inner.ts#L44)
-
----
-
-### <a id="formulatickviaid" name="formulatickviaid"></a> FormulaTickViaId
-
-• `Const` **FormulaTickViaId**: `EventType`<{ `namespaceId`: `string` ; `uuid`: `string` ; `variableId`: `string` }, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/inner.ts:33](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/inner.ts#L33)
-
----
-
 ### <a id="formulatypecastname" name="formulatypecastname"></a> FormulaTypeCastName
 
 • `Const` **FormulaTypeCastName**: `Record`<[`FormulaType`](README.md#formulatype), [`SpecialDefaultVariableName`](README.md#specialdefaultvariablename)\>
@@ -1643,26 +1543,6 @@
 #### Defined in
 
 [packages/formula/src/context/context.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L76)
-
----
-
-### <a id="formulaupdatedviaid" name="formulaupdatedviaid"></a> FormulaUpdatedViaId
-
-• `Const` **FormulaUpdatedViaId**: `EventType`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<[`VariableInterface`](interfaces/VariableInterface.md)\>, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/variable.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/variable.ts#L4)
-
----
-
-### <a id="formulavariabledependencyupdated" name="formulavariabledependencyupdated"></a> FormulaVariableDependencyUpdated
-
-• `Const` **FormulaVariableDependencyUpdated**: `EventType`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<[`VariableDependency`](interfaces/VariableDependency.md)[]\>, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/variable.ts:11](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/variable.ts#L11)
 
 ---
 
@@ -2016,46 +1896,6 @@
 
 ---
 
-### <a id="spreadsheetreloadviaid" name="spreadsheetreloadviaid"></a> SpreadsheetReloadViaId
-
-• `Const` **SpreadsheetReloadViaId**: `EventType`<[`SpreadsheetUpdateNamePayload`](README.md#spreadsheetupdatenamepayload), `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/spreadsheet.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/spreadsheet.ts#L6)
-
----
-
-### <a id="spreadsheetupdatecolumnsviaid" name="spreadsheetupdatecolumnsviaid"></a> SpreadsheetUpdateColumnsViaId
-
-• `Const` **SpreadsheetUpdateColumnsViaId**: `EventType`<{ `columns`: [`Column`](interfaces/Column.md)[] ; `key`: `string` ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/column.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/column.ts#L4)
-
----
-
-### <a id="spreadsheetupdatenameviaid" name="spreadsheetupdatenameviaid"></a> SpreadsheetUpdateNameViaId
-
-• `Const` **SpreadsheetUpdateNameViaId**: `EventType`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/spreadsheet.ts:20](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/spreadsheet.ts#L20)
-
----
-
-### <a id="spreadsheetupdaterowsviaid" name="spreadsheetupdaterowsviaid"></a> SpreadsheetUpdateRowsViaId
-
-• `Const` **SpreadsheetUpdateRowsViaId**: `EventType`<{ `key`: `string` ; `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
-
-#### Defined in
-
-[packages/formula/src/events/row.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/row.ts#L4)
-
----
-
 ### <a id="stringliteral" name="stringliteral"></a> StringLiteral
 
 • `Const` **StringLiteral**: `TokenType`
@@ -2150,7 +1990,7 @@
 
 • `Const` **apiCurrentPosition**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Record"`, `true`, `false`, `false`, []\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2162,7 +2002,7 @@
 
 • `Const` **apiExchange**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Record"` \| `"Error"`, `true`, `false`, `false`, [{ `name`: `string` = 'url'; `type`: ``"string"`` = 'string' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2184,7 +2024,7 @@
 
 • `Const` **arrayAverage**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2196,7 +2036,7 @@
 
 • `Const` **arrayJoin**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"Error"`, `false`, `true`, `false`, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }, { `default`: { `result`: `string` = ','; `type`: ``"string"`` = 'string' } ; `name`: `string` = 'separator'; `type`: ``"string"`` = 'string' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2218,7 +2058,7 @@
 
 • `Const` **arraySum**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2290,7 +2130,7 @@
 
 • `Const` **controlButton**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Button"`, `false`, `false`, `false`, [{ `name`: `string` = 'name'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'onClick'; `type`: ``"Function"`` = 'Function' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2302,7 +2142,7 @@
 
 • `Const` **controlSwitch**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Switch"`, `false`, `false`, `false`, [{ `name`: `string` = 'name'; `type`: ``"boolean"`` = 'boolean' }, { `name`: `string` = 'onChange'; `type`: ``"Function"`` = 'Function' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2314,7 +2154,7 @@
 
 • `Const` **convertToArray**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Array"` \| `"Error"`, `false`, `true`, `false`, [{ `name`: `string` = 'input'; `type`: [``"number"``, ``"Spreadsheet"``] }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2326,7 +2166,7 @@
 
 • `Const` **convertToBoolean**: [`FunctionClause`](interfaces/FunctionClause.md)<`"boolean"`, `false`, `true`, `false`, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2338,7 +2178,7 @@
 
 • `Const` **convertToNumber**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"` \| `"Error"`, `false`, `true`, `false`, [{ `name`: `string` = 'string'; `type`: [``"string"``, ``"Cell"``] }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2350,7 +2190,7 @@
 
 • `Const` **convertToRecord**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Record"`, `false`, `true`, `false`, [{ `name`: `string` = 'input'; `type`: ``"Date"`` = 'Date' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2362,7 +2202,7 @@
 
 • `Const` **convertToString**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'input'; `type`: [``"number"``, ``"Array"``, ``"Cell"``, ``"boolean"``, ``"null"``] }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2374,7 +2214,7 @@
 
 • `Const` **coreSet**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Error"` \| `"Function"`, `false`, `false`, `false`, [{ `name`: `string` = 'name'; `type`: ``"Reference"`` = 'Reference' }, { `name`: `string` = 'body'; `type`: ``"Cst"`` = 'Cst' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2386,7 +2226,7 @@
 
 • `Const` **dateDate**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Date"`, `false`, `false`, `false`, [{ `name`: `string` = 'input'; `type`: ``"string"`` = 'string' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2398,7 +2238,7 @@
 
 • `Const` **dateNow**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Date"`, `false`, `false`, `false`, []\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2420,7 +2260,7 @@
 
 • `Const` **errorError**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"Error"`, `false`, `true`, `false`, [{ `name`: `string` = 'reason'; `type`: ``"string"`` = 'string' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2452,7 +2292,7 @@
 
 • `Const` **logicIf**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`, `false`, `false`, `false`, [{ `name`: `string` = 'condition'; `type`: `"boolean"` = 'boolean' }, { `name`: `string` = 'ifTrue'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }, { `name`: `string` = 'ifFalse'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2464,7 +2304,7 @@
 
 • `Const` **logicIfError**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`, `false`, `true`, `true`, [{ `name`: `string` = 'expr1'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }, { `name`: `string` = 'expr2'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2476,7 +2316,7 @@
 
 • `Const` **mathAbs**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2488,7 +2328,7 @@
 
 • `Const` **mathFloor**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2500,7 +2340,7 @@
 
 • `Const` **mathInt**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2512,7 +2352,7 @@
 
 • `Const` **mathLn**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2524,7 +2364,7 @@
 
 • `Const` **mathLog10**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2536,7 +2376,7 @@
 
 • `Const` **mathPi**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, []\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2548,7 +2388,7 @@
 
 • `Const` **mathPower**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }, { `name`: `string` = 'power'; `type`: ``"number"`` = 'number' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2560,7 +2400,7 @@
 
 • `Const` **mathRand**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, []\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2572,7 +2412,7 @@
 
 • `Const` **mathRound**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2584,7 +2424,7 @@
 
 • `Const` **mathTrunc**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2646,7 +2486,7 @@
 
 • `Const` **objectT**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`, `false`, `true`, `true`, [{ `name`: `string` = 'obj'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2658,7 +2498,7 @@
 
 • `Const` **objectType**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `true`, [{ `name`: `string` = 'obj'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2680,7 +2520,7 @@
 
 • `Const` **powerfxCountIf**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }, { `name`: `string` = 'predicate'; `type`: ``"Predicate"`` = 'Predicate' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2702,7 +2542,7 @@
 
 • `Const` **processSleep**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `true`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2744,7 +2584,7 @@
 
 • `Const` **requestGet**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`, `true`, `false`, `false`, [{ `name`: `string` = 'url'; `type`: ``"string"`` = 'string' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2756,7 +2596,7 @@
 
 • `Const` **spreadsheetAverageIfs**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'column1'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'column2'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'condition'; `type`: ``"Predicate"`` = 'Predicate' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2768,7 +2608,7 @@
 
 • `Const` **spreadsheetColumnCount**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2780,7 +2620,7 @@
 
 • `Const` **spreadsheetCountA**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2792,7 +2632,7 @@
 
 • `Const` **spreadsheetCountIfs**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'condition'; `type`: ``"Predicate"`` = 'Predicate' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2804,7 +2644,7 @@
 
 • `Const` **spreadsheetMax**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2816,7 +2656,7 @@
 
 • `Const` **spreadsheetRow**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'input'; `type`: [``"Cell"``, ``"Row"``] }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2828,7 +2668,7 @@
 
 • `Const` **spreadsheetRowCount**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2840,7 +2680,7 @@
 
 • `Const` **spreadsheetSpreadsheet**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Spreadsheet"`, `false`, `true`, `false`, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2852,7 +2692,7 @@
 
 • `Const` **spreadsheetSum**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2864,7 +2704,7 @@
 
 • `Const` **spreadsheetSumIfs**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'column1'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'column2'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'condition'; `type`: ``"Predicate"`` = 'Predicate' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2876,7 +2716,7 @@
 
 • `Const` **spreadsheetSumProduct**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'column1'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'column2'; `type`: ``"Column"`` = 'Column' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2888,7 +2728,7 @@
 
 • `Const` **spreadsheetToRecordArray**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Array"`, `false`, `true`, `false`, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2900,7 +2740,7 @@
 
 • `Const` **spreadsheetVlookup**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'match'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }, { `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }, { `default`: { `result`: ``true`` = true; `type`: ``"boolean"`` = 'boolean' } ; `name`: `string` = 'range'; `type`: ``"boolean"`` = 'boolean' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2912,7 +2752,7 @@
 
 • `Const` **spreadsheetXlookup**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'lookupValue'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'lookupColumn'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'returnColumn'; `type`: ``"Column"`` = 'Column' }, { `default`: { `result`: `string` = ''; `type`: ``"string"`` = 'string' } ; `name`: `string` = 'notFoundValue'; `type`: ``"string"`` = 'string' }, { `default`: { `result`: `number` = 0; `type`: ``"number"`` = 'number' } ; `name`: `string` = 'matchMode'; `type`: ``"number"`` = 'number' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2924,7 +2764,7 @@
 
 • `Const` **stringLen**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'str'; `type`: ``"string"`` = 'string' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2946,7 +2786,7 @@
 
 • `Const` **stringSplit**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Array"`, `false`, `true`, `false`, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }, { `default`: { `result`: `string` = ''; `type`: ``"string"`` = 'string' } ; `name`: `string` = 'separator'; `type`: ``"string"`` = 'string' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2958,7 +2798,7 @@
 
 • `Const` **stringStartWith**: [`FunctionClause`](interfaces/FunctionClause.md)<`"boolean"`, `false`, `true`, `false`, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'prefix'; `type`: ``"string"`` = 'string' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2970,7 +2810,7 @@
 
 • `Const` **stringToBar**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Record"`, `false`, `true`, `false`, [{ `name`: `string` = 'record'; `type`: ``"Record"`` = 'Record' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2982,7 +2822,7 @@
 
 • `Const` **stringToQrcode**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -2994,7 +2834,7 @@
 
 • `Const` **stringTrim**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'str'; `type`: ``"string"`` = 'string' }]\>
 
-**`source`**
+**`Source`**
 
 #### Defined in
 
@@ -3045,6 +2885,285 @@
 #### Returns
 
 `string`
+
+---
+
+### <a id="formulablocknamechangedtrigger" name="formulablocknamechangedtrigger"></a> FormulaBlockNameChangedTrigger
+
+▸ **FormulaBlockNameChangedTrigger**(`args`): `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name   | Type                                                                  |
+| :----- | :-------------------------------------------------------------------- |
+| `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\> |
+
+#### Returns
+
+`Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
+
+---
+
+### <a id="formulablocknamedeletedtrigger" name="formulablocknamedeletedtrigger"></a> FormulaBlockNameDeletedTrigger
+
+▸ **FormulaBlockNameDeletedTrigger**(`args`): `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name   | Type                                                                  |
+| :----- | :-------------------------------------------------------------------- |
+| `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\> |
+
+#### Returns
+
+`Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
+
+---
+
+### <a id="formulablocknamemodifiedwithusername" name="formulablocknamemodifiedwithusername"></a> FormulaBlockNameModifiedWithUsername
+
+▸ **FormulaBlockNameModifiedWithUsername**(`args`): `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name   | Type                                                                  |
+| :----- | :-------------------------------------------------------------------- |
+| `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\> |
+
+#### Returns
+
+`Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
+
+---
+
+### <a id="formulacontextnamechanged" name="formulacontextnamechanged"></a> FormulaContextNameChanged
+
+▸ **FormulaContextNameChanged**(`args`): `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\>, `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name   | Type                                                                                                 |
+| :----- | :--------------------------------------------------------------------------------------------------- |
+| `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\> |
+
+#### Returns
+
+`Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\>, `Promise`<`void`\>\>
+
+---
+
+### <a id="formulacontextnameremove" name="formulacontextnameremove"></a> FormulaContextNameRemove
+
+▸ **FormulaContextNameRemove**(`args`): `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\>, `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name   | Type                                                                                                 |
+| :----- | :--------------------------------------------------------------------------------------------------- |
+| `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\> |
+
+#### Returns
+
+`Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\>, `Promise`<`void`\>\>
+
+---
+
+### <a id="formulacontextticktrigger" name="formulacontextticktrigger"></a> FormulaContextTickTrigger
+
+▸ **FormulaContextTickTrigger**(`args`): `Event`<{ `domain`: `string` ; `state`: `any` }, `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name          | Type     |
+| :------------ | :------- |
+| `args`        | `Object` |
+| `args.domain` | `string` |
+| `args.state`  | `any`    |
+
+#### Returns
+
+`Event`<{ `domain`: `string` ; `state`: `any` }, `Promise`<`void`\>\>
+
+---
+
+### <a id="formuladocsoftdeleted" name="formuladocsoftdeleted"></a> FormulaDocSoftDeleted
+
+▸ **FormulaDocSoftDeleted**(`args`): `Event`<{ `id`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name            | Type     |
+| :-------------- | :------- |
+| `args`          | `Object` |
+| `args.id`       | `string` |
+| `args.username` | `string` |
+
+#### Returns
+
+`Event`<{ `id`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+
+---
+
+### <a id="formulaspreadsheetdeleted" name="formulaspreadsheetdeleted"></a> FormulaSpreadsheetDeleted
+
+▸ **FormulaSpreadsheetDeleted**(`args`): `Event`<{ `id`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name            | Type     |
+| :-------------- | :------- |
+| `args`          | `Object` |
+| `args.id`       | `string` |
+| `args.username` | `string` |
+
+#### Returns
+
+`Event`<{ `id`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+
+---
+
+### <a id="formulataskcompleted" name="formulataskcompleted"></a> FormulaTaskCompleted
+
+▸ **FormulaTaskCompleted**(`args`): `Event`<{ `namespaceId`: `string` ; `task`: [`VariableTask`](README.md#variabletask) ; `username`: `string` ; `variableId`: `string` }, `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name               | Type                                     |
+| :----------------- | :--------------------------------------- |
+| `args`             | `Object`                                 |
+| `args.namespaceId` | `string`                                 |
+| `args.task`        | [`VariableTask`](README.md#variabletask) |
+| `args.username`    | `string`                                 |
+| `args.variableId`  | `string`                                 |
+
+#### Returns
+
+`Event`<{ `namespaceId`: `string` ; `task`: [`VariableTask`](README.md#variabletask) ; `username`: `string` ; `variableId`: `string` }, `Promise`<`void`\>\>
+
+---
+
+### <a id="formulatickviaid" name="formulatickviaid"></a> FormulaTickViaId
+
+▸ **FormulaTickViaId**(`args`): `Event`<{ `namespaceId`: `string` ; `uuid`: `string` ; `variableId`: `string` }, `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name               | Type     |
+| :----------------- | :------- |
+| `args`             | `Object` |
+| `args.namespaceId` | `string` |
+| `args.uuid`        | `string` |
+| `args.variableId`  | `string` |
+
+#### Returns
+
+`Event`<{ `namespaceId`: `string` ; `uuid`: `string` ; `variableId`: `string` }, `Promise`<`void`\>\>
+
+---
+
+### <a id="formulaupdatedviaid" name="formulaupdatedviaid"></a> FormulaUpdatedViaId
+
+▸ **FormulaUpdatedViaId**(`args`): `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<[`VariableInterface`](interfaces/VariableInterface.md)\>, `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name   | Type                                                                                                                |
+| :----- | :------------------------------------------------------------------------------------------------------------------ |
+| `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<[`VariableInterface`](interfaces/VariableInterface.md)\> |
+
+#### Returns
+
+`Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<[`VariableInterface`](interfaces/VariableInterface.md)\>, `Promise`<`void`\>\>
+
+---
+
+### <a id="formulavariabledependencyupdated" name="formulavariabledependencyupdated"></a> FormulaVariableDependencyUpdated
+
+▸ **FormulaVariableDependencyUpdated**(`args`): `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<[`VariableDependency`](interfaces/VariableDependency.md)[]\>, `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name   | Type                                                                                                                    |
+| :----- | :---------------------------------------------------------------------------------------------------------------------- |
+| `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<[`VariableDependency`](interfaces/VariableDependency.md)[]\> |
+
+#### Returns
+
+`Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<[`VariableDependency`](interfaces/VariableDependency.md)[]\>, `Promise`<`void`\>\>
+
+---
+
+### <a id="spreadsheetreloadviaid" name="spreadsheetreloadviaid"></a> SpreadsheetReloadViaId
+
+▸ **SpreadsheetReloadViaId**(`args`): `Event`<[`SpreadsheetUpdateNamePayload`](README.md#spreadsheetupdatenamepayload), `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name   | Type                                                                     |
+| :----- | :----------------------------------------------------------------------- |
+| `args` | [`SpreadsheetUpdateNamePayload`](README.md#spreadsheetupdatenamepayload) |
+
+#### Returns
+
+`Event`<[`SpreadsheetUpdateNamePayload`](README.md#spreadsheetupdatenamepayload), `Promise`<`void`\>\>
+
+---
+
+### <a id="spreadsheetupdatecolumnsviaid" name="spreadsheetupdatecolumnsviaid"></a> SpreadsheetUpdateColumnsViaId
+
+▸ **SpreadsheetUpdateColumnsViaId**(`args`): `Event`<{ `columns`: [`Column`](interfaces/Column.md)[] ; `key`: `string` ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name                 | Type                               |
+| :------------------- | :--------------------------------- |
+| `args`               | `Object`                           |
+| `args.columns`       | [`Column`](interfaces/Column.md)[] |
+| `args.key`           | `string`                           |
+| `args.namespaceId`   | `string`                           |
+| `args.spreadsheetId` | `string`                           |
+| `args.username`      | `string`                           |
+
+#### Returns
+
+`Event`<{ `columns`: [`Column`](interfaces/Column.md)[] ; `key`: `string` ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+
+---
+
+### <a id="spreadsheetupdatenameviaid" name="spreadsheetupdatenameviaid"></a> SpreadsheetUpdateNameViaId
+
+▸ **SpreadsheetUpdateNameViaId**(`args`): `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name   | Type                                                                  |
+| :----- | :-------------------------------------------------------------------- |
+| `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\> |
+
+#### Returns
+
+`Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
+
+---
+
+### <a id="spreadsheetupdaterowsviaid" name="spreadsheetupdaterowsviaid"></a> SpreadsheetUpdateRowsViaId
+
+▸ **SpreadsheetUpdateRowsViaId**(`args`): `Event`<{ `key`: `string` ; `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+
+#### Parameters
+
+| Name                 | Type                         |
+| :------------------- | :--------------------------- |
+| `args`               | `Object`                     |
+| `args.key`           | `string`                     |
+| `args.namespaceId`   | `string`                     |
+| `args.rows`          | [`Row`](interfaces/Row.md)[] |
+| `args.spreadsheetId` | `string`                     |
+| `args.username`      | `string`                     |
+
+#### Returns
+
+`Event`<{ `key`: `string` ; `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
 
 ---
 
@@ -3103,6 +3222,8 @@
 ### <a id="applyformat" name="applyformat"></a> applyFormat
 
 ▸ **applyFormat**(`ctx`): `Object`
+
+Apply format to the formula.
 
 #### Parameters
 
@@ -3536,6 +3657,8 @@
 
 ▸ **dispatchFormulaBlockNameChange**(`__namedParameters`): `Promise`<`void`\>
 
+Dispatch Block Rename Event.
+
 #### Parameters
 
 | Name                         | Type     |
@@ -3554,6 +3677,8 @@
 ### <a id="dispatchformulablocksoftdelete" name="dispatchformulablocksoftdelete"></a> dispatchFormulaBlockSoftDelete
 
 ▸ **dispatchFormulaBlockSoftDelete**(`__namedParameters`): `Promise`<`void`\>
+
+Dispatch Block Delete Event.
 
 #### Parameters
 
@@ -3701,6 +3826,14 @@
 ### <a id="encodestring" name="encodestring"></a> encodeString
 
 ▸ **encodeString**(`str`): `string`
+
+Encode string.
+
+**`Example`**
+
+```typescript
+encodeString('foo') // => "\"foo\""
+```
 
 #### Parameters
 
@@ -4195,6 +4328,18 @@
 
 ▸ **parseString**(`str`): `string`
 
+Parse string.
+
+**`Todo`**
+
+: dirty hack to get the string literal value
+
+**`Example`**
+
+```typescript
+parseString('"foo"') // => "foo"
+```
+
 #### Parameters
 
 | Name  | Type     |
@@ -4226,6 +4371,15 @@
 ### <a id="reversetraversalstring" name="reversetraversalstring"></a> reverseTraversalString
 
 ▸ **reverseTraversalString**(`str`, `min?`): `string`[]
+
+Traversal and collect string from end to start.
+
+**`Example`**
+
+```typescript
+reverseTraversal('bar') // => ["bar", "ba", "b"]
+reverseTraversal('bar', 2) // => ["bar", "ba"]
+```
 
 #### Parameters
 

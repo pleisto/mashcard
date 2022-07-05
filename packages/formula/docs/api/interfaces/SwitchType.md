@@ -20,9 +20,6 @@
 - [disabled](SwitchType.md#disabled)
 - [fn](SwitchType.md#fn)
 - [kind](SwitchType.md#kind)
-
-### Methods
-
 - [onChange](SwitchType.md#onchange)
 - [persistence](SwitchType.md#persistence)
 
@@ -62,7 +59,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:222](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L222)
+[packages/formula/src/controls/types.ts:223](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L223)
 
 ---
 
@@ -86,7 +83,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:223](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L223)
+[packages/formula/src/controls/types.ts:224](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L224)
 
 ---
 
@@ -100,34 +97,50 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:221](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L221)
+[packages/formula/src/controls/types.ts:222](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L222)
 
-## Methods
+---
 
 ### <a id="onchange" name="onchange"></a> onChange
 
-▸ `Optional` **onChange**(`bool`): `void`
+• `Optional` **onChange**: (`bool`: `boolean`) => `void`
 
-#### Parameters
+#### Type declaration
+
+▸ (`bool`): `void`
+
+##### Parameters
 
 | Name   | Type      |
 | :----- | :-------- |
 | `bool` | `boolean` |
 
-#### Returns
+##### Returns
 
 `void`
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:225](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L225)
 
 ---
 
 ### <a id="persistence" name="persistence"></a> persistence
 
-▸ **persistence**(): [`ControlInitializer`](ControlInitializer.md)
+• **persistence**: () => [`ControlInitializer`](ControlInitializer.md)
 
-#### Returns
+#### Type declaration
+
+▸ (): [`ControlInitializer`](ControlInitializer.md)
+
+##### Returns
 
 [`ControlInitializer`](ControlInitializer.md)
 
 #### Inherited from
 
 [ControlType](ControlType.md).[persistence](ControlType.md#persistence)
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:31](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L31)

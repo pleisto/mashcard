@@ -11,15 +11,12 @@
 ### Properties
 
 - [cleanup](EventDependency.md#cleanup)
+- [definitionHandler](EventDependency.md#definitionhandler)
 - [event](EventDependency.md#event)
 - [eventId](EventDependency.md#eventid)
 - [key](EventDependency.md#key)
 - [kind](EventDependency.md#kind)
 - [scope](EventDependency.md#scope)
-
-### Methods
-
-- [definitionHandler](EventDependency.md#definitionhandler)
 - [skipIf](EventDependency.md#skipif)
 
 ## Properties
@@ -31,6 +28,32 @@
 #### Defined in
 
 [packages/formula/src/types/index.ts:847](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L847)
+
+---
+
+### <a id="definitionhandler" name="definitionhandler"></a> definitionHandler
+
+• `Optional` `Readonly` **definitionHandler**: (`deps`: [`EventDependency`](EventDependency.md)<`T`\>, `variable`: [`VariableInterface`](VariableInterface.md), `payload`: `T`) => `undefined` \| `string`
+
+#### Type declaration
+
+▸ (`deps`, `variable`, `payload`): `undefined` \| `string`
+
+##### Parameters
+
+| Name       | Type                                          |
+| :--------- | :-------------------------------------------- |
+| `deps`     | [`EventDependency`](EventDependency.md)<`T`\> |
+| `variable` | [`VariableInterface`](VariableInterface.md)   |
+| `payload`  | `T`                                           |
+
+##### Returns
+
+`undefined` \| `string`
+
+#### Defined in
+
+[packages/formula/src/types/index.ts:846](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L846)
 
 ---
 
@@ -82,37 +105,27 @@
 
 [packages/formula/src/types/index.ts:843](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L843)
 
-## Methods
-
-### <a id="definitionhandler" name="definitionhandler"></a> definitionHandler
-
-▸ `Optional` `Readonly` **definitionHandler**(`deps`, `variable`, `payload`): `undefined` \| `string`
-
-#### Parameters
-
-| Name       | Type                                          |
-| :--------- | :-------------------------------------------- |
-| `deps`     | [`EventDependency`](EventDependency.md)<`T`\> |
-| `variable` | [`VariableInterface`](VariableInterface.md)   |
-| `payload`  | `T`                                           |
-
-#### Returns
-
-`undefined` \| `string`
-
 ---
 
 ### <a id="skipif" name="skipif"></a> skipIf
 
-▸ `Optional` `Readonly` **skipIf**(`variable`, `payload`): `boolean`
+• `Optional` `Readonly` **skipIf**: (`variable`: [`VariableInterface`](VariableInterface.md), `payload`: `T`) => `boolean`
 
-#### Parameters
+#### Type declaration
+
+▸ (`variable`, `payload`): `boolean`
+
+##### Parameters
 
 | Name       | Type                                        |
 | :--------- | :------------------------------------------ |
 | `variable` | [`VariableInterface`](VariableInterface.md) |
 | `payload`  | `T`                                         |
 
-#### Returns
+##### Returns
 
 `boolean`
+
+#### Defined in
+
+[packages/formula/src/types/index.ts:845](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L845)

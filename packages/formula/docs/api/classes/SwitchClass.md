@@ -161,4 +161,4 @@
 
 #### Implementation of
 
-[SwitchType](../interfaces/SwitchType.md).[persistence](../interfaces/SwitchType.md#persistence)
+SwitchType.persistence

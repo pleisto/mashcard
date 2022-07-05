@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:62](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L62)
+[packages/formula/src/tests/testType.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L63)
 
 ---
 
@@ -46,4 +46,4 @@ Pick.value
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L63)
+[packages/formula/src/tests/testType.ts:64](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L64)

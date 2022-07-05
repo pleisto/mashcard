@@ -2,23 +2,31 @@
 
 ## Table of contents
 
-### Methods
+### Properties
 
 - [commit](BackendActions.md#commit)
 
-## Methods
+## Properties
 
 ### <a id="commit" name="commit"></a> commit
 
-▸ **commit**(`commitFormulas`, `deleteFormulas`): `Promise`<{ `success`: `boolean` }\>
+• **commit**: (`commitFormulas`: [`Formula`](../README.md#formula)[], `deleteFormulas`: [`DeleteFormula`](DeleteFormula.md)[]) => `Promise`<{ `success`: `boolean` }\>
 
-#### Parameters
+#### Type declaration
+
+▸ (`commitFormulas`, `deleteFormulas`): `Promise`<{ `success`: `boolean` }\>
+
+##### Parameters
 
 | Name             | Type                                  |
 | :--------------- | :------------------------------------ |
 | `commitFormulas` | [`Formula`](../README.md#formula)[]   |
 | `deleteFormulas` | [`DeleteFormula`](DeleteFormula.md)[] |
 
-#### Returns
+##### Returns
 
 `Promise`<{ `success`: `boolean` }\>
+
+#### Defined in
+
+[packages/formula/src/types/index.ts:923](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L923)

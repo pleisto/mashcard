@@ -24,12 +24,9 @@
 - [name](AnyFunctionClause.md#name)
 - [persist](AnyFunctionClause.md#persist)
 - [pure](AnyFunctionClause.md#pure)
+- [reference](AnyFunctionClause.md#reference)
 - [returns](AnyFunctionClause.md#returns)
 - [testCases](AnyFunctionClause.md#testcases)
-
-### Methods
-
-- [reference](AnyFunctionClause.md#reference)
 
 ## Properties
 
@@ -173,6 +170,31 @@
 
 ---
 
+### <a id="reference" name="reference"></a> reference
+
+• `Readonly` **reference**: (`ctx`: [`FunctionContext`](FunctionContext.md), ...`args`: `any`[]) => [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\> \| `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\>
+
+#### Type declaration
+
+▸ (`ctx`, ...`args`): [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\> \| `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\>
+
+##### Parameters
+
+| Name      | Type                                    |
+| :-------- | :-------------------------------------- |
+| `ctx`     | [`FunctionContext`](FunctionContext.md) |
+| `...args` | `any`[]                                 |
+
+##### Returns
+
+[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\> \| `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\>
+
+#### Defined in
+
+[packages/formula/src/types/index.ts:660](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L660)
+
+---
+
 ### <a id="returns" name="returns"></a> returns
 
 • `Readonly` **returns**: `T` \| readonly [`T`, `T`]
@@ -190,20 +212,3 @@
 #### Defined in
 
 [packages/formula/src/types/index.ts:656](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L656)
-
-## Methods
-
-### <a id="reference" name="reference"></a> reference
-
-▸ `Readonly` **reference**(`ctx`, ...`args`): [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\> \| `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\>
-
-#### Parameters
-
-| Name      | Type                                    |
-| :-------- | :-------------------------------------- |
-| `ctx`     | [`FunctionContext`](FunctionContext.md) |
-| `...args` | `any`[]                                 |
-
-#### Returns
-
-[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\> \| `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\>

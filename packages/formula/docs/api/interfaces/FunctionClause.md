@@ -28,12 +28,9 @@
 - [name](FunctionClause.md#name)
 - [persist](FunctionClause.md#persist)
 - [pure](FunctionClause.md#pure)
+- [reference](FunctionClause.md#reference)
 - [returns](FunctionClause.md#returns)
 - [testCases](FunctionClause.md#testcases)
-
-### Methods
-
-- [reference](FunctionClause.md#reference)
 
 ## Properties
 
@@ -177,6 +174,31 @@
 
 ---
 
+### <a id="reference" name="reference"></a> reference
+
+• `Readonly` **reference**: (`ctx`: [`FunctionContext`](FunctionContext.md), ...`args`: `ArgumentArrayToResultTypeArray`<`Arguments`, `AcceptError`, []\>) => `Async` extends `true` ? `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\> : [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>
+
+#### Type declaration
+
+▸ (`ctx`, ...`args`): `Async` extends `true` ? `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\> : [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>
+
+##### Parameters
+
+| Name      | Type                                                              |
+| :-------- | :---------------------------------------------------------------- |
+| `ctx`     | [`FunctionContext`](FunctionContext.md)                           |
+| `...args` | `ArgumentArrayToResultTypeArray`<`Arguments`, `AcceptError`, []\> |
+
+##### Returns
+
+`Async` extends `true` ? `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\> : [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>
+
+#### Defined in
+
+[packages/formula/src/types/index.ts:686](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L686)
+
+---
+
 ### <a id="returns" name="returns"></a> returns
 
 • `Readonly` **returns**: `T` \| readonly [`T`, `T`]
@@ -194,20 +216,3 @@
 #### Defined in
 
 [packages/formula/src/types/index.ts:685](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L685)
-
-## Methods
-
-### <a id="reference" name="reference"></a> reference
-
-▸ `Readonly` **reference**(`ctx`, ...`args`): `Async` extends `true` ? `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\> : [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>
-
-#### Parameters
-
-| Name      | Type                                                              |
-| :-------- | :---------------------------------------------------------------- |
-| `ctx`     | [`FunctionContext`](FunctionContext.md)                           |
-| `...args` | `ArgumentArrayToResultTypeArray`<`Arguments`, `AcceptError`, []\> |
-
-#### Returns
-
-`Async` extends `true` ? `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\> : [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>
