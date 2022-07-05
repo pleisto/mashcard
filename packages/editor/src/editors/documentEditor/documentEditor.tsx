@@ -32,7 +32,7 @@ import {
 } from '../../extensions'
 import { Base, BaseOptions, updateExtensionOptions as updateBaseExtensionOptions } from '../../extensions/base'
 import { useDrawerService } from '../../components/ui/Drawer'
-import { useDropBlock, useUndo } from '../../helpers'
+import { useUndo } from '../../helpers'
 import {
   documentEditorStyles,
   h1FontSize,
@@ -65,7 +65,6 @@ export const EditorContent: FC<EditorContentProps> = ({ editor, editable, rootId
   const editorContext = useMemo<EditorContextData>(() => ({ editor, documentEditable: editable }), [editable, editor])
   const documentContext = useMemo<DocumentContextData>(() => ({ docId: rootId }), [rootId])
   useDrawerService()
-  useDropBlock(editor)
   useUndo(editor)
 
   const enableSelection =
