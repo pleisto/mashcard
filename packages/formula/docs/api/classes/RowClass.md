@@ -178,7 +178,7 @@
 
 #### Implementation of
 
-[RowType](../interfaces/RowType.md).[display](../interfaces/RowType.md#display)
+RowType.display
 
 ---
 
@@ -261,7 +261,7 @@ RowType.handleInterpret
 
 #### Implementation of
 
-[RowType](../interfaces/RowType.md).[key](../interfaces/RowType.md#key)
+RowType.key
 
 ---
 
@@ -282,7 +282,7 @@ RowType.handleInterpret
 
 #### Implementation of
 
-[RowType](../interfaces/RowType.md).[newCell](../interfaces/RowType.md#newcell)
+RowType.newCell
 
 ---
 

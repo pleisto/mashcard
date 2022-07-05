@@ -21,9 +21,6 @@
 - [kind](ButtonType.md#kind)
 - [name](ButtonType.md#name)
 - [onClick](ButtonType.md#onclick)
-
-### Methods
-
 - [persistence](ButtonType.md#persistence)
 
 ## Properties
@@ -112,16 +109,24 @@
 
 [packages/formula/src/controls/types.ts:39](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L39)
 
-## Methods
+---
 
 ### <a id="persistence" name="persistence"></a> persistence
 
-▸ **persistence**(): [`ControlInitializer`](ControlInitializer.md)
+• **persistence**: () => [`ControlInitializer`](ControlInitializer.md)
 
-#### Returns
+#### Type declaration
+
+▸ (): [`ControlInitializer`](ControlInitializer.md)
+
+##### Returns
 
 [`ControlInitializer`](ControlInitializer.md)
 
 #### Inherited from
 
 [ControlType](ControlType.md).[persistence](ControlType.md#persistence)
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:31](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L31)

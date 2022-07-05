@@ -349,7 +349,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[commitVariable](../interfaces/ContextInterface.md#commitvariable)
+ContextInterface.commitVariable
 
 ---
 
@@ -370,7 +370,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[completions](../interfaces/ContextInterface.md#completions)
+ContextInterface.completions
 
 ---
 
@@ -390,7 +390,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[findBlockById](../interfaces/ContextInterface.md#findblockbyid)
+ContextInterface.findBlockById
 
 ---
 
@@ -411,7 +411,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[findColumn](../interfaces/ContextInterface.md#findcolumn)
+ContextInterface.findColumn
 
 ---
 
@@ -432,7 +432,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[findFunctionClause](../interfaces/ContextInterface.md#findfunctionclause)
+ContextInterface.findFunctionClause
 
 ---
 
@@ -453,7 +453,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[findNames](../interfaces/ContextInterface.md#findnames)
+ContextInterface.findNames
 
 ---
 
@@ -474,7 +474,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[findReference](../interfaces/ContextInterface.md#findreference)
+ContextInterface.findReference
 
 ---
 
@@ -495,7 +495,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[findRow](../interfaces/ContextInterface.md#findrow)
+ContextInterface.findRow
 
 ---
 
@@ -515,7 +515,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[findSpreadsheet](../interfaces/ContextInterface.md#findspreadsheet)
+ContextInterface.findSpreadsheet
 
 ---
 
@@ -536,7 +536,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[findVariableById](../interfaces/ContextInterface.md#findvariablebyid)
+ContextInterface.findVariableById
 
 ---
 
@@ -557,7 +557,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[findVariableByName](../interfaces/ContextInterface.md#findvariablebyname)
+ContextInterface.findVariableByName
 
 ---
 
@@ -578,7 +578,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[findVariableDisplayDataById](../interfaces/ContextInterface.md#findvariabledisplaydatabyid)
+ContextInterface.findVariableDisplayDataById
 
 ---
 
@@ -598,7 +598,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[findViewRender](../interfaces/ContextInterface.md#findviewrender)
+ContextInterface.findViewRender
 
 ---
 
@@ -619,7 +619,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[getDefaultVariableName](../interfaces/ContextInterface.md#getdefaultvariablename)
+ContextInterface.getDefaultVariableName
 
 ---
 
@@ -641,7 +641,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[invoke](../interfaces/ContextInterface.md#invoke)
+ContextInterface.invoke
 
 ---
 
@@ -661,7 +661,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[listVariables](../interfaces/ContextInterface.md#listvariables)
+ContextInterface.listVariables
 
 ---
 
@@ -697,7 +697,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[removeBlock](../interfaces/ContextInterface.md#removeblock)
+ContextInterface.removeBlock
 
 ---
 
@@ -717,7 +717,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[removeName](../interfaces/ContextInterface.md#removename)
+ContextInterface.removeName
 
 ---
 
@@ -737,7 +737,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[removeSpreadsheet](../interfaces/ContextInterface.md#removespreadsheet)
+ContextInterface.removeSpreadsheet
 
 ---
 
@@ -758,7 +758,7 @@ ContextInterface.cleanup
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[removeVariable](../interfaces/ContextInterface.md#removevariable)
+ContextInterface.removeVariable
 
 ---
 
@@ -809,7 +809,7 @@ ContextInterface.resetFormula
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[setName](../interfaces/ContextInterface.md#setname)
+ContextInterface.setName
 
 ---
 
@@ -829,7 +829,7 @@ ContextInterface.resetFormula
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[setSpreadsheet](../interfaces/ContextInterface.md#setspreadsheet)
+ContextInterface.setSpreadsheet
 
 ---
 
@@ -859,7 +859,7 @@ ContextInterface.resetFormula
 
 #### Implementation of
 
-[ContextInterface](../interfaces/ContextInterface.md).[variableCount](../interfaces/ContextInterface.md#variablecount)
+ContextInterface.variableCount
 
 ---
 

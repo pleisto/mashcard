@@ -217,7 +217,7 @@
 
 #### Implementation of
 
-[ColumnType](../interfaces/ColumnType.md).[cells](../interfaces/ColumnType.md#cells)
+ColumnType.cells
 
 ---
 
@@ -231,7 +231,7 @@
 
 #### Implementation of
 
-[ColumnType](../interfaces/ColumnType.md).[display](../interfaces/ColumnType.md#display)
+ColumnType.display
 
 ---
 
@@ -331,7 +331,7 @@ ColumnType.handleInterpret
 
 #### Implementation of
 
-[ColumnType](../interfaces/ColumnType.md).[key](../interfaces/ColumnType.md#key)
+ColumnType.key
 
 ---
 
@@ -352,7 +352,7 @@ ColumnType.handleInterpret
 
 #### Implementation of
 
-[ColumnType](../interfaces/ColumnType.md).[newCell](../interfaces/ColumnType.md#newcell)
+ColumnType.newCell
 
 ---
 

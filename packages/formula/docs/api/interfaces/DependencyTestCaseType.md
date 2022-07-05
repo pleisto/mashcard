@@ -19,6 +19,7 @@
 - [currentGroupOption](DependencyTestCaseType.md#currentgroupoption)
 - [definition](DependencyTestCaseType.md#definition)
 - [expected](DependencyTestCaseType.md#expected)
+- [expressionType](DependencyTestCaseType.md#expressiontype)
 - [groupOptions](DependencyTestCaseType.md#groupoptions)
 - [jestTitle](DependencyTestCaseType.md#jesttitle)
 - [label](DependencyTestCaseType.md#label)
@@ -44,7 +45,7 @@ RequireField.currentGroupOption
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L112)
+[packages/formula/src/tests/testType.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L114)
 
 ---
 
@@ -58,7 +59,7 @@ RequireField.definition
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L109)
+[packages/formula/src/tests/testType.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L110)
 
 ---
 
@@ -72,7 +73,21 @@ RequireField.expected
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L114)
+[packages/formula/src/tests/testType.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L116)
+
+---
+
+### <a id="expressiontype" name="expressiontype"></a> expressionType
+
+• `Optional` **expressionType**: [`ExpressionType`](../README.md#expressiontype)
+
+#### Inherited from
+
+RequireField.expressionType
+
+#### Defined in
+
+[packages/formula/src/tests/testType.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L113)
 
 ---
 
@@ -86,7 +101,7 @@ RequireField.groupOptions
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L111)
+[packages/formula/src/tests/testType.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L112)
 
 ---
 
@@ -100,7 +115,7 @@ RequireField.jestTitle
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:121](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L121)
+[packages/formula/src/tests/testType.ts:123](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L123)
 
 ---
 
@@ -114,7 +129,7 @@ RequireField.label
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L113)
+[packages/formula/src/tests/testType.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L115)
 
 ---
 
@@ -128,9 +143,9 @@ RequireField.name
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L117)
+[packages/formula/src/tests/testType.ts:119](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L119)
 
-[packages/formula/src/tests/testType.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L117)
+[packages/formula/src/tests/testType.ts:119](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L119)
 
 ---
 
@@ -144,9 +159,9 @@ RequireField.namespaceId
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L115)
+[packages/formula/src/tests/testType.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L117)
 
-[packages/formula/src/tests/testType.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L115)
+[packages/formula/src/tests/testType.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L117)
 
 ---
 
@@ -160,7 +175,7 @@ RequireField.newAbbrevInput
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L110)
+[packages/formula/src/tests/testType.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L111)
 
 ---
 
@@ -174,7 +189,7 @@ RequireField.position
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:119](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L119)
+[packages/formula/src/tests/testType.ts:121](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L121)
 
 ---
 
@@ -188,7 +203,7 @@ RequireField.richType
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:118](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L118)
+[packages/formula/src/tests/testType.ts:120](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L120)
 
 ---
 
@@ -198,7 +213,7 @@ RequireField.richType
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:208](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L208)
+[packages/formula/src/tests/testType.ts:210](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L210)
 
 ---
 
@@ -212,7 +227,7 @@ RequireField.todoMessage
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:120](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L120)
+[packages/formula/src/tests/testType.ts:122](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L122)
 
 ---
 
@@ -222,7 +237,7 @@ RequireField.todoMessage
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:207](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L207)
+[packages/formula/src/tests/testType.ts:209](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L209)
 
 ---
 
@@ -236,4 +251,4 @@ RequireField.variableId
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L116)
+[packages/formula/src/tests/testType.ts:118](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L118)

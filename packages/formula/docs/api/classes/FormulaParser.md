@@ -486,7 +486,9 @@ Convenience method, same as MANY but the repetition is of one or more.
 failing to match at least one repetition will result in a parsing error and
 cause a parsing error.
 
-**`see`** MANY
+**`See`**
+
+MANY
 
 #### Parameters
 
@@ -514,7 +516,9 @@ cause the parser to attempt error recovery.
 
 Note that an additional optional property ERR_MSG can be used to provide custom error messages.
 
-**`see`** MANY_SEP
+**`See`**
+
+MANY_SEP
 
 #### Parameters
 
@@ -1214,7 +1218,9 @@ atLeastOne(1, X) === AT_LEAST_ONE1(X)
 atLeastOne(2, X) === AT_LEAST_ONE2(X)
 ...
 
-**`see`** AT_LEAST_ONE
+**`See`**
+
+AT_LEAST_ONE
 
 #### Parameters
 
@@ -1313,7 +1319,9 @@ consume(1, X) === CONSUME1(X)
 consume(2, X) === CONSUME2(X)
 ...
 
-**`see`** CONSUME
+**`See`**
+
+CONSUME
 
 #### Parameters
 
@@ -1409,7 +1417,9 @@ CstParser.getGAstProductions
 
 ▸ `Protected` **getNextPossibleTokenTypes**(`grammarPath`): `TokenType`[]
 
-**`deprecated`** - will be removed in the future
+**`Deprecated`**
+
+- will be removed in the future
 
 #### Parameters
 
@@ -1475,7 +1485,9 @@ many(1, X) === MANY1(X)
 many(2, X) === MANY2(X)
 ...
 
-**`see`** MANY
+**`See`**
+
+MANY
 
 #### Parameters
 
@@ -1504,7 +1516,9 @@ option(1, X) === OPTION1(X)
 option(2, X) === OPTION2(X)
 ...
 
-**`see`** OPTION
+**`See`**
+
+OPTION
 
 #### Type parameters
 
@@ -1539,7 +1553,9 @@ or(1, X) === OR1(X)
 or(2, X) === OR2(X)
 ...
 
-**`see`** OR
+**`See`**
+
+OR
 
 #### Parameters
 
@@ -1625,7 +1641,9 @@ subrule(1, X) === SUBRULE1(X)
 subrule(2, X) === SUBRULE2(X)
 ...
 
-**`see`** SUBRULE
+**`See`**
+
+SUBRULE
 
 #### Type parameters
 

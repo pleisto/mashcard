@@ -7,14 +7,11 @@
 - [columns](SpreadsheetInitializer.md#columns)
 - [ctx](SpreadsheetInitializer.md#ctx)
 - [dynamic](SpreadsheetInitializer.md#dynamic)
+- [getCell](SpreadsheetInitializer.md#getcell)
 - [name](SpreadsheetInitializer.md#name)
 - [namespaceId](SpreadsheetInitializer.md#namespaceid)
 - [rows](SpreadsheetInitializer.md#rows)
 - [spreadsheetId](SpreadsheetInitializer.md#spreadsheetid)
-
-### Methods
-
-- [getCell](SpreadsheetInitializer.md#getcell)
 
 ## Properties
 
@@ -24,7 +21,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:157](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L157)
+[packages/formula/src/controls/types.ts:158](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L158)
 
 ---
 
@@ -34,7 +31,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:154](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L154)
+[packages/formula/src/controls/types.ts:155](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L155)
 
 ---
 
@@ -44,55 +41,19 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:155](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L155)
-
----
-
-### <a id="name" name="name"></a> name
-
-• **name**: `string`
-
-#### Defined in
-
 [packages/formula/src/controls/types.ts:156](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L156)
 
 ---
 
-### <a id="namespaceid" name="namespaceid"></a> namespaceId
-
-• **namespaceId**: `string`
-
-#### Defined in
-
-[packages/formula/src/controls/types.ts:153](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L153)
-
----
-
-### <a id="rows" name="rows"></a> rows
-
-• **rows**: [`Row`](Row.md)[]
-
-#### Defined in
-
-[packages/formula/src/controls/types.ts:158](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L158)
-
----
-
-### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
-
-• **spreadsheetId**: `string`
-
-#### Defined in
-
-[packages/formula/src/controls/types.ts:152](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L152)
-
-## Methods
-
 ### <a id="getcell" name="getcell"></a> getCell
 
-▸ **getCell**(`__namedParameters`): [`Cell`](Cell.md)
+• **getCell**: (`__namedParameters`: { `columnId`: `string` ; `columnIndex`: `number` ; `rowId`: `string` ; `rowIndex`: `number` }) => [`Cell`](Cell.md)
 
-#### Parameters
+#### Type declaration
+
+▸ (`__namedParameters`): [`Cell`](Cell.md)
+
+##### Parameters
 
 | Name                            | Type     |
 | :------------------------------ | :------- |
@@ -102,6 +63,50 @@
 | `__namedParameters.rowId`       | `string` |
 | `__namedParameters.rowIndex`    | `number` |
 
-#### Returns
+##### Returns
 
 [`Cell`](Cell.md)
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:160](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L160)
+
+---
+
+### <a id="name" name="name"></a> name
+
+• **name**: `string`
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:157](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L157)
+
+---
+
+### <a id="namespaceid" name="namespaceid"></a> namespaceId
+
+• **namespaceId**: `string`
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:154](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L154)
+
+---
+
+### <a id="rows" name="rows"></a> rows
+
+• **rows**: [`Row`](Row.md)[]
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:159](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L159)
+
+---
+
+### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
+
+• **spreadsheetId**: `string`
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:153](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L153)
