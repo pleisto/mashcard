@@ -5,8 +5,7 @@ import { DocumentTitle } from './components/DocumentTitle'
 import { useSyncProvider, useBlockSyncProvider, useDocHistoryProvider } from './hooks'
 import { TrashPrompt } from '../common/components/TrashPrompt'
 import { useNavigate } from 'react-router-dom'
-import { editorVar, awarenessInfosVar, isSavingVar } from '../reactiveVars'
-import { useDocumentEditable } from './hooks/useDocumentEditable'
+import { awarenessInfosVar, isSavingVar } from '../reactiveVars'
 import * as Root from './DocumentPage.style'
 import { useDocMeta } from '../store/DocMeta'
 import { useEditorOptions } from './hooks/useEditorOptions'
@@ -30,9 +29,9 @@ export const DocumentPage: FC<DocumentPageProps> = ({ mode }) => {
 
   const { rootBlock, data, committing: blocksCommitting } = useSyncProvider(queryVariables)
 
-  const freeze = mode === 'presentation'
   const currentRootBlock = rootBlock.current
-  const [documentEditable] = useDocumentEditable(freeze ?? !docMeta.historyId, currentRootBlock)
+
+  const documentEditable = mode !== 'presentation' && !docMeta.historyId
 
   const { provider, loading, committing, awarenessInfos, meta, setMeta } = useBlockSyncProvider({
     blockId: docMeta.id as string,
@@ -56,13 +55,7 @@ export const DocumentPage: FC<DocumentPageProps> = ({ mode }) => {
     blocks: data?.childrenBlocks
   })
 
-  // new ydoc requires new editor to load it
   const editor = useEditor(editorOptions, [provider])
-
-  // TODO: refactor editor reactive var
-  useEffect(() => {
-    editorVar(freeze ? null : editor)
-  }, [editor, freeze])
 
   useEffect(() => {
     if (!loading) setLatestLoading(false)

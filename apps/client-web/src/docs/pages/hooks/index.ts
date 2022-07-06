@@ -1,4 +1,3 @@
-export { useDocumentSubscription } from './useDocumentSubscription'
 export { useFetchUnsplashImages } from './useFetchUnsplashImages'
 export { usePrepareFileUpload } from './usePrepareFileUpload'
 export { useSyncProvider } from './useSyncProvider'

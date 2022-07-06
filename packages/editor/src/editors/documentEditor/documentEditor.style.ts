@@ -166,12 +166,12 @@ const collaborationStyles: CSS = {
     fontWeight: 600,
     left: '-1px',
     lineHeight: '1.1rem',
-    padding: '0.15rem 0.3rem 0.15rem 0.15rem',
+    padding: '0.15rem 0.5rem 0.15rem 0.15rem',
     position: 'absolute',
-    top: '-1.3rem',
+    top: '-1.5rem',
     userSelect: 'none',
     whiteSpace: 'nowrap',
-    borderRadius: '0.65rem'
+    borderRadius: '0.7rem'
   }
 }
 
