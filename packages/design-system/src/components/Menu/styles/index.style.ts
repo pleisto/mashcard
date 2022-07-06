@@ -29,7 +29,7 @@ export const menuStyle = css({
     minHeight: itemMinHeight,
     minWidth: '15rem',
     outline: 'none',
-    padding: `0 ${itemSpacing}`,
+    padding: `0 0 0 .5rem`,
     '&:hover, &:focus, &:active': {
       background: theme.colors.secondaryHover
     },

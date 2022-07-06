@@ -27,12 +27,12 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         </span>
       </span>
       <ul
-        class="mc-c-jpGEAj mc-c-cKnOhD"
+        class="mc-c-jpGEAj mc-c-oDElj"
         role="group"
         title=""
       >
         <li
-          class="mc-c-bcnCdR mc-c-bcnCdR-cOuhSn-active-true mc-c-jIhtkb"
+          class="mc-c-bcnCdR mc-c-bcnCdR-cOuhSn-active-true mc-c-hUvGWJ"
           data-testid="editor-slash-commands-item"
           id="slash-menu-1"
           role="menuitem"
@@ -46,7 +46,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
           </div>
         </li>
         <li
-          class="mc-c-bcnCdR mc-c-jIhtkb"
+          class="mc-c-bcnCdR mc-c-hUvGWJ"
           data-testid="editor-slash-commands-item"
           id="slash-menu-2"
           role="menuitem"
@@ -60,7 +60,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
           </div>
         </li>
         <li
-          class="mc-c-bcnCdR mc-c-jIhtkb"
+          class="mc-c-bcnCdR mc-c-hUvGWJ"
           data-testid="editor-slash-commands-item"
           id="slash-menu-3"
           role="menuitem"

@@ -578,6 +578,7 @@ zh-CN:
     pods:
       domain: Domain Name
       name: 名称
+      pod_input_placeholder: Input Pod Name
       bio:
         label: 自我介绍
         placeholder: 向大家介绍您自己
