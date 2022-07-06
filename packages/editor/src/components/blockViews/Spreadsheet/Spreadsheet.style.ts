@@ -256,7 +256,7 @@ export const spreadsheetStyles: CSS = {
           display: 'flex',
           alignItems: 'stretch',
 
-          '.ProseMirror': {
+          '> .ProseMirror': {
             padding: '7px 10px 7px',
             border: 0,
             borderRadius: 0,

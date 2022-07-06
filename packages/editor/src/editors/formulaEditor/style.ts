@@ -1,10 +1,10 @@
 import { css, theme } from '@mashcard/design-system'
 
 const onlyBottomBorder = {
-  borderTopColor: 'transparent!important',
-  borderLeftColor: 'transparent!important',
-  borderRightColor: 'transparent!important',
-  outline: 'none!important'
+  borderTopColor: 'transparent',
+  borderLeftColor: 'transparent',
+  borderRightColor: 'transparent',
+  outline: 'none'
 }
 
 export const MashcardFomulaEditor = css({
@@ -47,8 +47,8 @@ export const MashcardFomulaEditor = css({
 
     ...onlyBottomBorder,
     borderBottomColor: 'transparent',
-    paddingLeft: '0!important',
-    paddingRight: '0!important',
+    paddingLeft: '0',
+    paddingRight: '0',
     boxShadow: 'none',
     '&::placeholder': {
       position: 'unset',
