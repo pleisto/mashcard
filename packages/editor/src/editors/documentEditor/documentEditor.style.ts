@@ -177,7 +177,7 @@ const collaborationStyles: CSS = {
 
 export const textSelectionClassName = 'text-selection-highlight'
 export const nodeSelectionClassName = 'node-selection-highlight'
-export const nodeSelectionMouseAreaClassName = 'node-selection-mouse-area-highlight'
+export const nodeSelectionMouseSelectionClassName = 'node-selection-mouse-selection-highlight'
 
 export const selectionStyles: CSS = {
   [`.${nodeSelectionClassName}`]: {
@@ -189,7 +189,7 @@ export const selectionStyles: CSS = {
 }
 
 export const globalStyles = globalCss({
-  [`.${nodeSelectionMouseAreaClassName}`]: {
+  [`.${nodeSelectionMouseSelectionClassName}`]: {
     ...defaultSelectionStyles['::selection']
   }
 })

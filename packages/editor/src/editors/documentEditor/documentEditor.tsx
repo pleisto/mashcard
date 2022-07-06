@@ -47,7 +47,7 @@ import {
   h5FontSize,
   h5LienHeight,
   nodeSelectionClassName,
-  nodeSelectionMouseAreaClassName,
+  nodeSelectionMouseSelectionClassName,
   paragraphFontSize,
   paragraphLineHeight,
   textSelectionClassName
@@ -240,8 +240,8 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
               },
               selection: {
                 nodeSelection: {
-                  mouseArea: {
-                    className: nodeSelectionMouseAreaClassName
+                  mouseSelection: {
+                    className: nodeSelectionMouseSelectionClassName
                   },
                   className: nodeSelectionClassName
                 },

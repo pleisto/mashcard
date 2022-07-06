@@ -3,12 +3,61 @@ import { Editor } from '@tiptap/core'
 import { Toolbar } from '../../ui/Toolbar'
 import { useBubbleMenuItems } from './useBubbleMenuItems'
 import { Button } from '@mashcard/design-system'
-import { isTextContentSelected } from '../../../extensions/extensions/selection'
 import { Base } from '../../../extensions/base'
 import { BubbleMenuPlugin, BubbleMenuPluginProps } from './BubbleMenuPlugin'
+import { findNodesInSelection } from '../../../helpers'
+import { meta as paragraphMeta } from '../../../extensions/blocks/paragraph/meta'
+import { meta as headingMeta } from '../../../extensions/blocks/heading/meta'
+import { meta as listItemMeta } from '../../../extensions/blocks/listItem/meta'
+import { meta as orderedListMeta } from '../../../extensions/blocks/orderedList/meta'
+import { meta as bulletListMeta } from '../../../extensions/blocks/bulletList/meta'
+import { meta as taskItemMeta } from '../../../extensions/blocks/taskItem/meta'
+import { meta as taskListMeta } from '../../../extensions/blocks/taskList/meta'
+import { meta as calloutMeta } from '../../../extensions/blocks/callout/meta'
+import { meta as blockquoteMeta } from '../../../extensions/blocks/blockquote/meta'
 
 interface BubbleMenuProps {
   editor: Editor | null
+}
+
+const isTextContentSelected = ({ editor, from, to }: { editor: Editor; from: number; to: number }): boolean => {
+  const allowedNodeTypes = [
+    paragraphMeta.name,
+    headingMeta.name,
+    listItemMeta.name,
+    orderedListMeta.name,
+    bulletListMeta.name,
+    taskItemMeta.name,
+    taskListMeta.name,
+    calloutMeta.name,
+    blockquoteMeta.name
+  ]
+
+  if (!editor.isEditable || editor.isDestroyed) return false
+  if (from === to) return false
+
+  const isEmpty = editor.state.doc.textBetween(from, to).length === 0
+
+  if (isEmpty) return false
+
+  let show = false
+
+  const nodes = findNodesInSelection(editor, from, to)
+
+  for (const { node } of nodes) {
+    if (node) {
+      // Text node
+      if (node.type.name === 'text') {
+        show = true
+      } else if (allowedNodeTypes.includes(node.type.name)) {
+        show = true
+      } else {
+        return false
+      }
+    }
+  }
+
+  return show
 }
 
 export const shouldShow: BubbleMenuPluginProps['shouldShow'] = ({ editor, from, to }) => {
