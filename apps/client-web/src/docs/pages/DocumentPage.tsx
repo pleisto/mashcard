@@ -32,7 +32,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
 
   const freeze = mode === 'presentation'
   const currentRootBlock = rootBlock.current
-  const [documentEditable] = useDocumentEditable(freeze ?? !docMeta.historyId, currentRootBlock)
+  const [documentEditable] = useDocumentEditable(freeze ?? !docMeta.historyId)
 
   const { provider, loading, committing, awarenessInfos, meta, setMeta } = useBlockSyncProvider({
     blockId: docMeta.id as string,

@@ -5,8 +5,7 @@ import { useReactiveVar } from '@apollo/client'
 import { useDocMeta } from '@/docs/store/DocMeta'
 
 export function useDocumentEditable(
-  freeze: boolean,
-  currentRootBlock: Block | undefined
+  freeze: boolean
 ): [boolean, Dispatch<SetStateAction<boolean>>] {
   const { id, editable } = useDocMeta()
   // if there is no doc id, document will not have deleted status
@@ -15,17 +14,15 @@ export function useDocumentEditable(
 
   useEffect(() => {
     if (freeze) return
-    if (currentRootBlock) {
-      if (editor && !editor.isDestroyed) {
-        const nextEditable = editable
-        if (editor.options.editable !== nextEditable) {
-          editor.options.editable = nextEditable
-          editor.view.update(editor.view.props)
-          setDocumentEditable(nextEditable)
-        }
+    if (editor && !editor.isDestroyed) {
+      const nextEditable = editable
+      if (editor.options.editable !== nextEditable) {
+        editor.options.editable = nextEditable
+        editor.view.update(editor.view.props)
+        setDocumentEditable(nextEditable)
       }
     }
-  }, [currentRootBlock, editor, editable, freeze])
+  }, [editor, editable, freeze])
 
   return [documentEditable, setDocumentEditable]
 }
