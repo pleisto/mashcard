@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react'
 import Logo from '@/common/assets/logo_brickdoc.svg'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { styled, theme } from '@mashcard/design-system'
-import ceramicBackground from '@/common/assets/ceramicBg.webp'
+import ceramicBackground from '@/common/assets/ceramic-bg.webp'
 import { Helmet } from 'react-helmet-async'
 
 const PanelLayout = styled('div', {
