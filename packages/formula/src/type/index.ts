@@ -153,151 +153,61 @@ export interface ViewData<T extends ViewType> {
   type: T
   attrs: ViewAttrs
 }
-export type BaseResult<Dump extends any = string, Meta extends any = never> = {
-  result: any
+export type BaseResult<
+  Type extends UsedFormulaType,
+  Result extends any,
+  Dump extends any = string,
+  Meta extends any = never
+> = {
+  result: Result
   view?: ViewData<ViewType>
   dump?: Dump
-  type: Exclude<FormulaType, 'void'>
+  type: Type
 } & ([Meta] extends [never]
   ? {}
   : {
       meta: Meta
     })
 
-export interface NumberResult extends BaseResult<number> {
-  result: number
-  type: 'number'
-}
-
-export interface BooleanResult extends BaseResult<boolean> {
-  result: boolean
-  type: 'boolean'
-}
-
-export interface StringResult extends BaseResult {
-  result: string
-  type: 'string'
-}
-
-export interface LiteralResult extends BaseResult {
-  result: string
-  type: 'literal'
-}
-
-export interface NullResult extends BaseResult<null> {
-  result: null
-  type: 'null'
-}
-
-export interface BlankResult extends BaseResult<never> {
-  result: never
-  type: 'Blank'
-}
-
-export interface ErrorResult extends BaseResult<string, ErrorType> {
-  result: string
-  type: 'Error'
-}
-
-export interface ArrayResult extends BaseResult<string, FormulaType> {
-  result: AnyTypeResult[]
-  type: 'Array'
-}
+export type NumberResult = BaseResult<'number', number, number>
+export type BooleanResult = BaseResult<'boolean', boolean, boolean>
+export type StringResult = BaseResult<'string', string>
+export type LiteralResult = BaseResult<'literal', string>
+export type NullResult = BaseResult<'null', null, null>
+export type BlankResult = BaseResult<'Blank', never, never>
+export type ErrorResult = BaseResult<'Error', string, string, ErrorType>
+export type ArrayResult = BaseResult<'Array', AnyTypeResult[], string, FormulaType>
 
 export interface RecordType {
   [key: string]: AnyTypeResult
 }
-
-export interface RecordResult extends BaseResult<string, FormulaType> {
-  result: RecordType
-  type: 'Record'
-}
-
-export interface DateResult extends BaseResult {
-  result: Date
-  type: 'Date'
-}
-
-export interface ColumnResult extends BaseResult {
-  result: ColumnType
-  type: 'Column'
-}
-
-export interface RowResult extends BaseResult {
-  result: RowType
-  type: 'Row'
-}
-
-export interface CellResult extends BaseResult {
-  result: CellType
-  type: 'Cell'
-}
-
-export interface RangeResult extends BaseResult {
-  result: RangeType
-  type: 'Range'
-}
-
-export interface SpreadsheetResult extends BaseResult {
-  result: SpreadsheetType
-  type: 'Spreadsheet'
-}
-
-export interface BlockResult extends BaseResult {
-  result: BlockType
-  type: 'Block'
-}
-
-export interface PredicateResult extends BaseResult {
-  type: 'Predicate'
-  result: NumberResult | StringResult
-  column?: ColumnType
-  operator: PredicateOperator
-}
+export type RecordResult = BaseResult<'Record', RecordType, string, FormulaType>
+export type DateResult = BaseResult<'Date', Date>
+export type ColumnResult = BaseResult<'Column', ColumnType>
+export type RowResult = BaseResult<'Row', RowType>
+export type CellResult = BaseResult<'Cell', CellType>
+export type RangeResult = BaseResult<'Range', RangeType>
+export type SpreadsheetResult = BaseResult<'Spreadsheet', SpreadsheetType>
+export type BlockResult = BaseResult<'Block', BlockType>
+export type PredicateResult = BaseResult<
+  'Predicate',
+  NumberResult | StringResult,
+  string,
+  { column?: ColumnType; operator: PredicateOperator }
+>
 interface FormulaFunction {
   name: FormulaFunctionKind
   args: Array<ReferenceResult | CstResult>
 }
 
-export interface FunctionResult extends BaseResult {
-  type: 'Function'
-  result: [FormulaFunction, ...FormulaFunction[]]
-}
-
-export interface CstResult extends BaseResult {
-  type: 'Cst'
-  result: CstNode
-}
-
-export interface ReferenceResult extends BaseResult {
-  type: 'Reference'
-  result: Reference
-}
-
-export interface ButtonResult extends BaseResult {
-  type: 'Button'
-  result: ButtonType
-}
-
-export interface SwitchResult extends BaseResult {
-  type: 'Switch'
-  result: SwitchType
-}
-
-export interface PendingResult extends BaseResult {
-  result: string
-  type: 'Pending'
-}
-
-export interface WaitingResult extends BaseResult {
-  result: string
-  type: 'Waiting'
-}
-
-export interface NoPersistResult extends BaseResult {
-  result: null
-  type: 'NoPersist'
-}
+export type FunctionResult = BaseResult<'Function', [FormulaFunction, ...FormulaFunction[]]>
+export type CstResult = BaseResult<'Cst', CstNode>
+export type ReferenceResult = BaseResult<'Reference', Reference>
+export type ButtonResult = BaseResult<'Button', ButtonType>
+export type SwitchResult = BaseResult<'Switch', SwitchType>
+export type PendingResult = BaseResult<'Pending', string>
+export type WaitingResult = BaseResult<'Waiting', string>
+export type NoPersistResult = BaseResult<'NoPersist', null>
 
 export type Reference = VariableReference | SelfReference
 

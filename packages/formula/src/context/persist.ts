@@ -54,7 +54,7 @@ const innerDisplayValue = (v: AnyTypeResult, pageId: NamespaceId, disableTruncat
     case 'Cell':
       return `${v.result.getValue()}`
     case 'Predicate':
-      return `[${v.operator}] ${displayValue(v.result, pageId)}`
+      return `[${v.meta.operator}] ${displayValue(v.result, pageId)}`
     case 'Record':
       // eslint-disable-next-line no-case-declarations
       const recordArray = Object.entries(v.result).map(

@@ -556,7 +556,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
         }
 
         if (argType.type === 'Predicate' && ['number', 'string'].includes(v.type)) {
-          return { type: 'Predicate', result: v as PredicateResult['result'], operator: 'equal' }
+          return { type: 'Predicate', result: v as PredicateResult['result'], meta: {operator: 'equal'} }
         } else {
           return v
         }

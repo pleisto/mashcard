@@ -14,7 +14,7 @@ const CountIf = (
   { result: spreadsheet }: SpreadsheetResult,
   predicate: PredicateResult
 ): NumberResult | ErrorResult => {
-  const column = predicate.column
+  const column = predicate.meta.column
   if (!column) {
     return { type: 'Error', result: 'Column is missing', meta: 'runtime' }
   }

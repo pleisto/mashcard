@@ -48,7 +48,7 @@ export const functionResult2lambda = <T extends ControlType>(
   }
 }
 
-export const buildPredicate = ({ result: { result }, operator }: PredicateResult): PredicateFunction => {
+export const buildPredicate = ({ result: { result }, meta: { operator } }: PredicateResult): PredicateFunction => {
   switch (operator) {
     case 'equal':
       return input => input === result
