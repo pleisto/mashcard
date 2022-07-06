@@ -42,11 +42,11 @@ export const DocumentTopBar: FC = () => {
     </>
   )
 
-  const editableMenu = id && !documentInfo?.isDeleted && (
+  const editableMenu = id && !documentInfo?.isDeleted && !isAnonymous && (
     <>
       <CollaboratorsMenu />
       <ShareMenu />
-      {features.experiment_discussion && !isAnonymous && <DiscussionMenu />}
+      {features.experiment_discussion && <DiscussionMenu />}
       <HistoryMenu />
       {editable && <ExploreSlash />}
       <TopbarMore />
