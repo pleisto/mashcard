@@ -40,7 +40,7 @@ module.exports = {
     moduleNameMapper: hasDom
       ? {
           '\\.(css|less|scss|sass|mp4)$': 'identity-obj-proxy',
-          '\\.(png|webp|gif)$': `${monoRoot}/tools/jest/image-mock.js`
+          '\\.(png|webp|gif|svg)$': `${monoRoot}/tools/jest/image-mock.js`
         }
       : {},
     setupFilesAfterEnv: hasDom ? [`${monoRoot}/tools/jest/dom.js`] : [],

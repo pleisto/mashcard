@@ -5,7 +5,7 @@ import { SwitchSettingPod } from '../SwitchSettingPod'
 import { Button } from '@mashcard/design-system'
 import { ArrowLeft } from '@mashcard/design-icons'
 import { SidebarWrapper, MenuItem } from './index.styles'
-import Logo from '@/common/assets/logo_brickdoc_without_name.svg'
+import Logo from '@/common/assets/logo-brickdoc-without-name.svg'
 import { useSettingsI18n } from '../../hooks'
 
 export const Sidebar: FC = () => {
