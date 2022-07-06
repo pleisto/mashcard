@@ -1,4 +1,4 @@
-import { ArrayResult } from '../../types'
+import { ArrayResult } from '../../type'
 import { OperatorType } from '../operator'
 import { extractSubType } from '../util'
 

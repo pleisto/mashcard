@@ -21,7 +21,7 @@ import {
   EventDependency,
   FindKey,
   FormulaEventPayload
-} from '../types'
+} from '../type'
 
 export interface ControlType {
   _formulaContext: ContextInterface

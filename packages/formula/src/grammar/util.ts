@@ -11,7 +11,7 @@ import {
   FormulaColorType,
   FormulaType,
   FunctionContext
-} from '../types'
+} from '../type'
 import { InterpretArgument } from './interpreter'
 import { checkValidName } from './lexer'
 

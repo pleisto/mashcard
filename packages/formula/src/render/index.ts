@@ -1,4 +1,4 @@
-import { View } from '../types'
+import { View } from '../type'
 import { qrcodeView } from './FormulaQrcode'
 import { vegaBarView } from './FormulaVega'
 

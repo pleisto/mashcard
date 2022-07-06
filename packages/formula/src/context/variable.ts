@@ -14,7 +14,7 @@ import {
   EventDependency,
   VariableParseResult,
   FormulaDefinition
-} from '../types'
+} from '../type'
 import { parse, interpret, generateVariable } from '../grammar/core'
 import { dumpValue } from './persist'
 import { codeFragments2definition, variableKey } from '../grammar/convert'

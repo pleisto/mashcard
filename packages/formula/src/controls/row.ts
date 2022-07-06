@@ -10,7 +10,7 @@ import {
   NamespaceId,
   SpreadsheetId,
   uuid
-} from '../types'
+} from '../type'
 import { CellClass } from './cell'
 import { Cell, CellType, getEventDependencyInput, Row, RowType, SpreadsheetType } from './types'
 

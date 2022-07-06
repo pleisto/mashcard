@@ -1,4 +1,4 @@
-import { AnyTypeResult } from '../../types'
+import { AnyTypeResult } from '../../type'
 import { FormulaInterpreter } from '../interpreter'
 import { OperatorType } from '../operator'
 

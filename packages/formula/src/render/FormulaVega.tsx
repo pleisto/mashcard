@@ -1,4 +1,4 @@
-import { FormulaSourceType, RecordResult, View } from '../types'
+import { FormulaSourceType, RecordResult, View } from '../type'
 import { VegaLite, VisualizationSpec } from 'react-vega'
 
 interface FormulaVegaProps {

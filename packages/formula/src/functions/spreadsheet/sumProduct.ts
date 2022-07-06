@@ -1,4 +1,4 @@
-import { ColumnResult, createFunctionClause, ErrorResult, FunctionContext, NumberResult } from '../../types'
+import { ColumnResult, createFunctionClause, ErrorResult, FunctionContext, NumberResult } from '../../type'
 
 const SUMPRODUCT = (
   ctx: FunctionContext,

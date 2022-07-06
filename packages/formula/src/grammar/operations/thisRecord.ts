@@ -1,6 +1,6 @@
 import { mockCell, mockSpreadsheet } from '../../tests/testMock'
 import { SpreadsheetInput } from '../../tests/testType'
-import { CodeFragment, ErrorMessage } from '../../types'
+import { CodeFragment, ErrorMessage } from '../../type'
 import { spreadsheet2attrs, spreadsheet2codeFragment } from '../convert'
 import { parseTrackSpreadsheetLoad } from '../dependency'
 import { OperatorType } from '../operator'

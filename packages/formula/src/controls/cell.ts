@@ -1,5 +1,5 @@
 import { SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../events'
-import { ColumnId, EventDependency, NamespaceId, SpreadsheetId, uuid } from '../types'
+import { ColumnId, EventDependency, NamespaceId, SpreadsheetId, uuid } from '../type'
 import { CellType, SpreadsheetType, Cell } from './types'
 
 export class CellClass implements CellType {

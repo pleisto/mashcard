@@ -12,7 +12,7 @@ import {
   FunctionContext,
   VariableMetadata,
   VariableParseResult
-} from '../types'
+} from '../type'
 import { AllowEvents } from './testEvent'
 
 export const DEFAULT_FIRST_NAMESPACEID = '00000000-0000-0000-0000-000000000000'

@@ -1,4 +1,4 @@
-import { EventScope } from '../types'
+import { EventScope } from '../type'
 import { shouldReceiveEvent } from '../grammar/util'
 
 const testCases: Array<{

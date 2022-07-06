@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { castData } from '../../grammar'
-import { createFunctionClause, RecordResult } from '../../types'
+import { createFunctionClause, RecordResult } from '../../type'
 
 /**
  * @source

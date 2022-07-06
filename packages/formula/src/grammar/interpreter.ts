@@ -9,7 +9,7 @@ import {
   FormulaType,
   ExpressionType,
   VariableParseResult
-} from '../types'
+} from '../type'
 import { extractSubType, runtimeCheckType, shouldReturnEarly } from './util'
 import { buildFunctionKey } from '../functions'
 import { ParserInstance } from './parser'

@@ -8,7 +8,7 @@ import {
   ErrorResult,
   RecordResult,
   createFunctionClause
-} from '../../types'
+} from '../../type'
 
 const Spreadsheet = (ctx: FunctionContext, { result, meta }: ArrayResult): SpreadsheetResult | ErrorResult => {
   const defaultData: RecordResult[] = [

@@ -7,7 +7,7 @@ import {
   FormulaType,
   NameDependencyWithKind,
   NamespaceId
-} from '../types'
+} from '../type'
 import {
   CodeFragmentVisitor,
   FormulaInterpreter,

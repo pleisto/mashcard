@@ -1,4 +1,4 @@
-import { FormulaSourceType, StringResult, View } from '../types'
+import { FormulaSourceType, StringResult, View } from '../type'
 import QRCode from 'qrcode.react'
 
 interface FormulaQrcodeProps {

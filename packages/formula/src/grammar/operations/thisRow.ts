@@ -1,7 +1,7 @@
 import { SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../../events'
 import { mockCell, mockRow } from '../../tests/testMock'
 import { SpreadsheetInput } from '../../tests/testType'
-import { CodeFragment, ErrorMessage, EventDependency } from '../../types'
+import { CodeFragment, ErrorMessage, EventDependency } from '../../type'
 import { row2attrs, row2codeFragment } from '../convert'
 import { OperatorType } from '../operator'
 

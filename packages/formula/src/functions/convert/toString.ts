@@ -1,4 +1,4 @@
-import { AnyTypeResult, createFunctionClause, FunctionContext, StringResult } from '../../types'
+import { AnyTypeResult, createFunctionClause, FunctionContext, StringResult } from '../../type'
 
 const globalToString = (ctx: FunctionContext, obj: AnyTypeResult): StringResult => {
   if (obj.type === 'Array') {

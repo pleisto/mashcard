@@ -1,5 +1,5 @@
 import { SwitchInitializer, SwitchType } from './types'
-import { ContextInterface, FunctionContext, FunctionResult, VariableMetadata } from '../types'
+import { ContextInterface, FunctionContext, FunctionResult, VariableMetadata } from '../type'
 import { functionResult2lambda } from '../grammar/lambda'
 
 export class SwitchClass implements SwitchType {

@@ -1,4 +1,4 @@
-import { createFunctionClause, FunctionContext, RecordResult } from '../../types'
+import { createFunctionClause, FunctionContext, RecordResult } from '../../type'
 
 const CURRENT_POSITION = async (ctx: FunctionContext): Promise<RecordResult> => {
   if (!navigator.geolocation) {

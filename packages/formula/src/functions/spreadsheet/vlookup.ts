@@ -6,7 +6,7 @@ import {
   FunctionContext,
   SpreadsheetResult,
   StringResult
-} from '../../types'
+} from '../../type'
 
 const VLOOKUP = (
   ctx: FunctionContext,

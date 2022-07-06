@@ -6,7 +6,7 @@ import {
   VariableKey,
   CodeFragmentAttrs,
   CodeFragment
-} from '../types'
+} from '../type'
 import { BlockType, ColumnType, RowType, SpreadsheetType } from '../controls'
 import { encodeString, maybeEncodeString, parseString } from './util'
 import { fetchResult } from '../context'

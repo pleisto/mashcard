@@ -1,5 +1,5 @@
 import { SpreadsheetInput } from '../../tests'
-import { ExpressionType } from '../../types'
+import { ExpressionType } from '../../type'
 import { OperatorType } from '../operator'
 
 const spreadsheetToken = 'InOperator.spreadsheet'

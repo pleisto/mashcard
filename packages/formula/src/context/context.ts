@@ -35,7 +35,7 @@ import {
   FindKey,
   AnyFunctionClauseWithKeyAndExample,
   VariableDisplayData
-} from '../types'
+} from '../type'
 import { variableKey } from '../grammar/convert'
 import { buildFunctionKey, BUILTIN_CLAUSES } from '../functions'
 import { CodeFragmentVisitor } from '../grammar/codeFragment'

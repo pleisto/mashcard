@@ -7,7 +7,7 @@ import {
   ErrorResult,
   PredicateFunction,
   createFunctionClause
-} from '../../types'
+} from '../../type'
 
 const CountIf = (
   ctx: FunctionContext,

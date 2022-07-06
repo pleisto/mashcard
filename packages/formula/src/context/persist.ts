@@ -1,4 +1,4 @@
-import { AnyTypeResult, BaseResult, FunctionContext, NamespaceId, VariableData, VariableDisplayData } from '../types'
+import { AnyTypeResult, BaseResult, FunctionContext, NamespaceId, VariableData, VariableDisplayData } from '../type'
 import { SwitchClass, ButtonClass, ColumnClass, SpreadsheetClass, SpreadsheetDynamicPersistence } from '../controls'
 import { BlockClass } from '../controls/block'
 import { fetchResult } from './variable'

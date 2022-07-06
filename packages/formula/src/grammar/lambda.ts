@@ -1,4 +1,4 @@
-import { FunctionContext, FunctionResult, PredicateFunction, PredicateResult } from '../types'
+import { FunctionContext, FunctionResult, PredicateFunction, PredicateResult } from '../type'
 import { ControlType } from '../controls'
 import { devLog } from '@mashcard/design-system'
 export type Lambda = VoidFunction

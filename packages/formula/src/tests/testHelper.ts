@@ -1,7 +1,7 @@
 import { generateVariable, interpret, parse } from '../grammar/core'
 import { FormulaContext, FormulaContextArgs } from '../context'
 import { dispatchFormulaBlockNameChange } from '../events'
-import { ContextInterface, FunctionContext, InterpretContext } from '../types'
+import { ContextInterface, FunctionContext, InterpretContext } from '../type'
 import { Cell, Column, Row, SpreadsheetClass, SpreadsheetType } from '../controls'
 import { columnDisplayIndex } from '../grammar'
 import {

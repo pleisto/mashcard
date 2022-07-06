@@ -7,7 +7,7 @@ import {
   NumberResult,
   PredicateFunction,
   PredicateResult
-} from '../../types'
+} from '../../type'
 
 const SUMIFS = (
   ctx: FunctionContext,

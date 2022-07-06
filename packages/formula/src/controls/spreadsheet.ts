@@ -29,7 +29,7 @@ import {
   StringResult,
   uuid,
   VariableDisplayData
-} from '../types'
+} from '../type'
 import { ColumnClass } from './column'
 import { RowClass } from './row'
 import {

@@ -1,6 +1,6 @@
 import { event } from '@mashcard/schema'
 import { ContextState } from '../context'
-import { FormulaEventPayload, VariableTask } from '../types'
+import { FormulaEventPayload, VariableTask } from '../type'
 
 export const FormulaBlockNameDeletedTrigger = event<FormulaEventPayload<string>, Promise<void>>()(
   'FormulaBlockNameDeletedTrigger',

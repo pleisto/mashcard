@@ -1,6 +1,6 @@
 /* eslint-disable jest/no-conditional-expect */
 import { parse, innerInterpret } from '../grammar/core'
-import { ParseErrorType } from '../types'
+import { ParseErrorType } from '../type'
 import { displayValue } from '../context/persist'
 import { makeContext } from '../tests/testHelper'
 

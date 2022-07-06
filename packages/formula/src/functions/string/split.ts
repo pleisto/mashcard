@@ -1,4 +1,4 @@
-import { createFunctionClause, StringResult } from '../../types'
+import { createFunctionClause, StringResult } from '../../type'
 
 /**
  * @source

@@ -1,4 +1,4 @@
-import { AnyTypeResult } from '../types'
+import { AnyTypeResult } from '../type'
 
 const BLOCK_SNAPSHOT_NAME = 'BLOCK_SNAPSHOT'
 const COLUMN_SNAPSHOT_NAME = 'COLUMN_SNAPSHOT'

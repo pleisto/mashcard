@@ -1,6 +1,6 @@
 import { Cell, CellType, Column, ColumnType, Row, RowType, SpreadsheetClass, SpreadsheetType } from '../controls'
 import { dispatchFormulaBlockNameChange } from '../events'
-import { PersistFormulaType, TypedResult, VariableMetadata } from '../types'
+import { PersistFormulaType, TypedResult, VariableMetadata } from '../type'
 import { FormulaContext } from '../context/context'
 import { dumpValue, loadValue } from '../context/persist'
 import { generateUUIDs } from '../tests'

@@ -19,7 +19,7 @@ import {
   SpreadsheetCompletion,
   VariableCompletion,
   VariableInterface
-} from '../types'
+} from '../type'
 import { codeFragment2value } from './convert'
 import { parse } from './core'
 import { maybeEncodeString, reverseTraversalString } from './util'

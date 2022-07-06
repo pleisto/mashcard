@@ -1,4 +1,4 @@
-import { CodeFragment, ErrorMessage, RecordResult } from '../../types'
+import { CodeFragment, ErrorMessage, RecordResult } from '../../type'
 import { codeFragment2string } from '../convert'
 import { OperatorType } from '../operator'
 import { extractSubType } from '../util'

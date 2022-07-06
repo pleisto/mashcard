@@ -1,7 +1,7 @@
 import { EventType } from '@mashcard/schema'
 import { BlockType, ColumnType, SpreadsheetType } from '../controls'
 import { SpreadsheetUpdateNameViaId, SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../events'
-import { EventDependency, VariableInterface } from '../types'
+import { EventDependency, VariableInterface } from '../type'
 import { CodeFragmentVisitor } from './codeFragment'
 import { codeFragments2definition } from './convert'
 

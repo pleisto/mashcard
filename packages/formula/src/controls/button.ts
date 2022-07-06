@@ -1,5 +1,5 @@
 import { ButtonInitializer, ButtonType } from './types'
-import { ContextInterface, FunctionContext, FunctionResult, VariableMetadata } from '../types'
+import { ContextInterface, FunctionContext, FunctionResult, VariableMetadata } from '../type'
 import { functionResult2lambda } from '../grammar/lambda'
 
 export class ButtonClass implements ButtonType {

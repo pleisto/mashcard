@@ -1,4 +1,4 @@
-import { AnyTypeResult } from '../../types'
+import { AnyTypeResult } from '../../type'
 import { OperatorType } from '../operator'
 import { extractSubType } from '../util'
 

@@ -16,7 +16,7 @@ import {
   VariableTask,
   VariableParseResult,
   FormulaCheckType
-} from '../types'
+} from '../type'
 import { VariableClass, castVariable } from '../context/variable'
 import { checkValidName, FormulaLexer } from './lexer'
 import { FORMULA_PARSER_VERSION } from '../version'

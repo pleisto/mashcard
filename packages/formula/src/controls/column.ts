@@ -12,7 +12,7 @@ import {
   FormulaType,
   NamespaceId,
   VariableMetadata
-} from '../types'
+} from '../type'
 import { codeFragments2definition, CodeFragmentVisitor, FormulaInterpreter } from '../grammar'
 import { CellClass } from '.'
 import { SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../events'

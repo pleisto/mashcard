@@ -1,4 +1,4 @@
-import { ErrorMessage } from '../../types'
+import { ErrorMessage } from '../../type'
 import { OperatorType } from '../operator'
 
 export const numberOperator: OperatorType = {

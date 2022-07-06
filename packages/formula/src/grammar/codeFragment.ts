@@ -11,7 +11,7 @@ import {
   CodeFragmentAttrs,
   VariableParseResult,
   FormulaCheckType
-} from '../types'
+} from '../type'
 import { buildFunctionKey } from '../functions'
 import { ParserInstance } from './parser'
 import { intersectType, parseString } from './util'

@@ -5,7 +5,7 @@ import {
   FunctionContext,
   NumberResult,
   StringResult
-} from '../../types'
+} from '../../type'
 
 const XLOOKUP = (
   ctx: FunctionContext,
