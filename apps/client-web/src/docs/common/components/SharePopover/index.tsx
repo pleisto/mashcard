@@ -33,11 +33,11 @@ const debounceTimeout = 800
 
 type PodValue = string
 
-export const SharePopover: React.FC<SharePopoverProps> = ({ children }) => {
+const SharePopoverContent: React.FC = () => {
   const { t } = useDocsI18n()
   const { id, path, domain } = useNonNullDocMeta()
   const [inviteLoading, setInviteLoading] = React.useState<boolean>(false)
-  const [copied, setCopied] = React.useState<boolean>(false)
+
   const [blockCreateShareLink] = useBlockCreateShareLinkMutation({ refetchQueries: [queryBlockShareLinks] })
   const { data } = useGetBlockShareLinksQuery({ fetchPolicy: 'no-cache', variables: { id } })
   const [fetching, setFetching] = React.useState(false)
@@ -45,6 +45,12 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ children }) => {
   const podSearch = useImperativeQuery<Query, Variables>(QueryPodSearchDocument)
   const [options, setOptions] = React.useState<PodType[]>([])
   const [inviteUserPolicy, setInviteUserPolicy] = useState<Policytype>(Policytype.View)
+  const [copied, setCopied] = React.useState<boolean>(false)
+  const handleCopy = async (): Promise<void> => {
+    await navigator.clipboard.writeText(link)
+    void toast.success(t('share.copy_hint'))
+    setCopied(true)
+  }
 
   const inviteUsers = useCallback(async () => {
     setInviteLoading(true)
@@ -63,11 +69,6 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ children }) => {
   }, [podValue, inviteUserPolicy, blockCreateShareLink, id, setOptions])
 
   const link = `${window.location.origin}${path}`
-  const handleCopy = async (): Promise<void> => {
-    await navigator.clipboard.writeText(link)
-    void toast.success(t('share.copy_hint'))
-    setCopied(true)
-  }
 
   const anyoneItem = data?.blockShareLinks.find(item => item.sharePodData.name === 'anyone') ?? {
     policy: Policytype.View,
@@ -137,8 +138,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ children }) => {
         position: 'absolute',
         right: 86,
         top: 8
-      }}
-    >
+      }}>
       <Dropdown trigger="click" overlay={menu}>
         <div>
           {policyMessage} <LineDown />
@@ -147,7 +147,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ children }) => {
     </Action>
   )
 
-  const shareContent = (
+  return (
     <Wrapper>
       <SharePopTitle>{t('share.share_title')}</SharePopTitle>
       <InviteBar>
@@ -170,8 +170,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ children }) => {
           value={podValue}
           onChange={newValue => {
             setPodValue(newValue)
-          }}
-        >
+          }}>
           {options.map(pod => (
             <Select.Option key={pod.domain} value={pod.domain}>
               <PodCard size="xs" pod={pod} />
@@ -183,8 +182,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ children }) => {
           type="primary"
           onClick={inviteUsers}
           disabled={inviteLoading || !podValue.length}
-          className="invite-btn"
-        >
+          className="invite-btn">
           {t('share.invite_button')}
         </Button>
       </InviteBar>
@@ -197,7 +195,9 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ children }) => {
       </CopyLinkWrapper>
     </Wrapper>
   )
+}
 
+export const SharePopover: React.FC<SharePopoverProps> = ({ children }) => {
   return (
     <>
       <Popover
@@ -206,8 +206,8 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ children }) => {
         placement="bottom"
         overlayStyle={{ zIndex: 1 }}
         overlayInnerStyle={{ marginRight: 48, marginTop: -5 }}
-        content={shareContent}
-      >
+        content={<SharePopoverContent />}
+        destroyTooltipOnHide>
         {children}
       </Popover>
     </>
