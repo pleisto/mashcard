@@ -7,7 +7,6 @@ import * as Root from './Formula.style'
 
 export interface FormulaValueProps {
   displayData: VariableDisplayData
-  display: string
   border?: boolean
   name?: string
   disablePopover?: boolean
@@ -18,10 +17,10 @@ export const FormulaValue: FC<FormulaValueProps> = ({
   name,
   border,
   selected,
-  display,
   disablePopover,
   displayData: {
     result,
+    display,
     meta: {
       richType: { type }
     }

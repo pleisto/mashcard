@@ -17,7 +17,7 @@ declare module '@tiptap/core' {
 export const FORMULA_CLASS_NAME = 'mashcard-formula-mark'
 
 export interface FormulaTypeOptions {}
-export type FormulaTypeAttributes = Omit<CodeFragment, 'hide'>
+export type FormulaTypeAttributes = CodeFragment
 
 export const FormulaType = createMark<FormulaTypeOptions, FormulaTypeAttributes>({
   name: meta.name,

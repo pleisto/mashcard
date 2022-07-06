@@ -434,7 +434,13 @@ export type SimpleCodeFragmentType =
   | 'Not'
   | 'Comma'
   | 'Semicolon'
-export type SpecialCodeFragmentType = 'unknown' | 'parseErrorOther1' | 'parseErrorOther2' | 'parseErrorOther3' | 'Space' | 'literal'
+export type SpecialCodeFragmentType =
+  | 'unknown'
+  | 'parseErrorOther1'
+  | 'parseErrorOther2'
+  | 'parseErrorOther3'
+  | 'Space'
+  | 'literal'
 export type CodeFragmentCodes = ComplexCodeFragmentType | SimpleCodeFragmentType | SpecialCodeFragmentType
 
 interface CompletionReplacement {
@@ -785,7 +791,6 @@ export type VariableValue = SuccessVariableValue | ErrorVariableValue
 export interface VariableDisplayData {
   definition: Definition
   result: AnyTypeResult
-  version: number
   meta: VariableMetadata
   display: string
 }

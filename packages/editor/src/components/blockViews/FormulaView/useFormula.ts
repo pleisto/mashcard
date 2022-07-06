@@ -37,7 +37,7 @@ import { useFormulaEditor } from '../../../editors/formulaEditor/useFormulaEdito
 import { Editor } from '@tiptap/react'
 
 export interface UseFormulaInput {
-  meta: VariableData['meta']
+  meta: VariableMetadata
   onUpdateFormula?: (variable: VariableInterface | undefined) => Promise<void>
   formulaContext: ContextInterface | undefined | null
 }
@@ -97,7 +97,7 @@ export interface SelectType {
 }
 
 export const useFormula = ({
-  meta: { richType, variableId, namespaceId, name: formulaName },
+  meta: { richType, variableId, namespaceId, name: formulaName, input, position },
   onUpdateFormula,
   formulaContext
 }: UseFormulaInput): UseFormulaOutput => {
@@ -121,7 +121,11 @@ export const useFormula = ({
   )
 
   const variableRef = React.useRef(defaultVariable)
-  const inputRef = React.useRef<FormulaInput>(fetchFormulaInput(defaultVariable?.t, formulaIsNormal))
+  const inputRef = React.useRef<FormulaInput>(
+    defaultVariable
+      ? fetchFormulaInput(defaultVariable?.t, formulaIsNormal)
+      : { content: definition2content(input, formulaIsNormal)[0], position }
+  )
   const selectFormula = React.useRef<SelectType>()
   const temporaryVariableTRef = React.useRef<VariableData | undefined>(defaultVariable?.t)
   const nameRef = React.useRef<FormulaNameType>({

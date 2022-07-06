@@ -112,6 +112,8 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   const meta: UseFormulaInput['meta'] = {
     namespaceId: rootId,
     variableId: formulaId,
+    input: '',
+    position: 0,
     name: formulaName,
     richType: {
       type: 'spreadsheet',
@@ -197,7 +199,6 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     ? {
         definition: display,
         display,
-        version: 0,
         meta: { ...meta, input: display, position: display.length },
         result: { type: 'literal', result: display }
       }
@@ -208,7 +209,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
 
   return (
     <div className="cell" style={{ ...(width ? { width: `${width}px` } : {}) }} onDoubleClick={handleEnterEdit}>
-      <FormulaDisplay display={display} displayData={displayData} formulaType="spreadsheet" />
+      <FormulaDisplay displayData={displayData} formulaType="spreadsheet" />
     </div>
   )
 }

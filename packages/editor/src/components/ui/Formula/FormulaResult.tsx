@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import {
-  displayValue,
   dumpDisplayResultForDisplay,
   errorIsFatal,
   ErrorMessage,
@@ -46,10 +45,7 @@ export const FormulaResult: FC<FormulaResultProps> = ({ variableT, pageId }) => 
   ) : (
     <span className="formula-result-ok">
       <span className="formula-result-ok-equal">=</span>
-      <FormulaValue
-        displayData={dumpDisplayResultForDisplay(variableT)}
-        display={displayValue(fetchResult(variableT), pageId)}
-      />
+      <FormulaValue displayData={dumpDisplayResultForDisplay(variableT)} />
       <span className="formula-result-ok-icon">{icon}</span>
     </span>
   )
