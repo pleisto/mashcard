@@ -17,6 +17,9 @@ const DialogCss = {
   padding: '54px 80px',
   '&>h1.dialogTitle': {
     marginBottom: '3rem'
+  },
+  label: {
+    display: 'none'
   }
 }
 
@@ -64,11 +67,10 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ visible, title, type
         onError={() => {
           // onError
           setConfirmLoading(false)
-        }}
-      >
-        <Form.Field name="name" label={t('pods.name')}>
+        }}>
+        <Form.Field name="name">
           {/* eslint-disable-next-line */}
-          <Input borderType="underline" autoFocus />
+          <Input borderType="underline" autoFocus placeholder={t('pods.pod_input_placeholder')} />
         </Form.Field>
         <Form.Field inlineWrapper>
           <Button onClick={handleCancel} size="lg" block>

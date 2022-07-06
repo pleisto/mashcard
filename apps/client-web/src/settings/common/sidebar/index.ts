@@ -30,7 +30,7 @@ const sidebarStyle = {
     background: theme.colors.overlayPrimary,
     '-webkit-border-radius': '4px',
     transform: 'transfromX(-4px)'
-  }
+  },
 }
 
 export const initSidebarStyle = (): void => {

@@ -46,10 +46,11 @@ const BlockActionButtonContainer = styled(BlockActionButton, {
     content: '',
     position: 'absolute',
     height: '100%',
-    width: 20,
+    width: 55,
     top: 0,
     left: -20,
     display: 'block',
+    zIndex: -1
   }
 })
 
