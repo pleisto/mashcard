@@ -35,6 +35,7 @@ import { useDrawerService } from '../../components/ui/Drawer'
 import { useUndo } from '../../helpers'
 import {
   documentEditorStyles,
+  globalStyles,
   h1FontSize,
   h1LienHeight,
   h2FontSize,
@@ -45,8 +46,11 @@ import {
   h4LienHeight,
   h5FontSize,
   h5LienHeight,
+  nodeSelectionClassName,
+  nodeSelectionMouseSelectionClassName,
   paragraphFontSize,
-  paragraphLineHeight
+  paragraphLineHeight,
+  textSelectionClassName
 } from './documentEditor.style'
 import { merge } from 'lodash'
 import { To, NavigateOptions } from 'react-router-dom'
@@ -62,6 +66,7 @@ export interface EditorContentProps {
 }
 
 export const EditorContent: FC<EditorContentProps> = ({ editor, editable, rootId, ...props }) => {
+  globalStyles()
   const editorContext = useMemo<EditorContextData>(() => ({ editor, documentEditable: editable }), [editable, editor])
   const documentContext = useMemo<DocumentContextData>(() => ({ docId: rootId }), [rootId])
   useDrawerService()
@@ -234,7 +239,14 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
                 }
               },
               selection: {
-                HTMLAttributes: {
+                nodeSelection: {
+                  mouseSelection: {
+                    className: nodeSelectionMouseSelectionClassName
+                  },
+                  className: nodeSelectionClassName
+                },
+                textSelection: {
+                  className: textSelectionClassName,
                   // make selection as high as parent element
                   style: `padding: var(${selectionPaddingVar}) 0`
                 }

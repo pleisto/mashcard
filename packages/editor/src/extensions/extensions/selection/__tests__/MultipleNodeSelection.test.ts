@@ -6,6 +6,27 @@ import { MultipleNodeSelection } from '../MultipleNodeSelection'
 import { MultipleNodeBookmark } from '../MultipleNodeBookmark'
 
 describe('MultipleNodeSelection', () => {
+  it('creates MultipleNodeSelection includes one node correctly', () => {
+    const anchor = 1
+    const head = 1
+    const text1 = '1'
+    const { result } = renderHook(() =>
+      useTestEditor({
+        content: `
+          <p>${text1}</p>
+        `
+      })
+    )
+
+    const editor = result.current!
+
+    const selection = MultipleNodeSelection.create(editor.state.doc, anchor, head)
+
+    expect(selection.$anchorPos.pos).toEqual(anchor)
+    expect(selection.$headPos.pos).toEqual(head)
+    expect(selection.ranges.length).toBe(1)
+    expect(selection.$anchorPos.node().textContent).toEqual(text1)
+  })
   it('creates MultipleNodeSelection includes multiple nodes correctly', () => {
     const anchor = 1
     const head = 4
@@ -174,7 +195,7 @@ describe('MultipleNodeSelection', () => {
     const editor = result.current!
 
     const selection = MultipleNodeSelection.create(editor.state.doc, anchor, head)
-    const node = selection.ranges[0].$from.node()
+    const node = editor.state.doc.nodeAt(selection.ranges[0].$from.pos)!
     editor.commands.command(({ tr }) => {
       selection.replaceWith(tr, node)
       return true

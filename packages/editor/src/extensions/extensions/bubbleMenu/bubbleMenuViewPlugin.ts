@@ -1,6 +1,6 @@
 // https://github.com/ueberdosis/tiptap/tree/main/packages/extension-bubble-menu
 import { Editor, posToDOMRect } from '@tiptap/core'
-import { EditorState, Plugin, PluginKey, Selection } from 'prosemirror-state'
+import { EditorState, Plugin, PluginKey, Selection, TextSelection } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import tippy, { Instance, Props } from 'tippy.js'
 
@@ -118,6 +118,7 @@ export class BubbleMenuView {
   }
 
   createBubbleMenuPopover(view: EditorView, selection: Selection): void {
+    if (!(selection instanceof TextSelection)) return
     this.createTooltip()
 
     // support for CellSelections
