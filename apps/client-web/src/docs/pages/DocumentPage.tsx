@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Spin } from '@mashcard/design-system'
 import { EditorContent, useEditor } from '@mashcard/editor'
 import { DocumentTitle } from './components/DocumentTitle'
@@ -21,7 +21,7 @@ interface DocumentPageProps {
 export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
   const docMeta = useDocMeta()
   const navigate = useNavigate()
-  const latestLoading = useRef(true)
+  const [latestLoading, setLatestLoading] = useState(true)
 
   const queryVariables = useMemo(
     () => ({ rootId: docMeta.id as string, historyId: docMeta.historyId, domain: docMeta.domain }),
@@ -65,12 +65,10 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ mode }) => {
   }, [editor, freeze])
 
   useEffect(() => {
-    if (!loading) {
-      latestLoading.current = false
-    }
-  }, [loading])
+  if (!loading) setLatestLoading(false)
+} , [loading, setLatestLoading])
 
-  if (latestLoading.current || !currentRootBlock) {
+  if (latestLoading || !currentRootBlock) {
     return (
       <Root.PageSpinWrapper>
         <Spin size="lg" data-testid={TEST_ID_ENUM.page.DocumentPage.loading.id} />
