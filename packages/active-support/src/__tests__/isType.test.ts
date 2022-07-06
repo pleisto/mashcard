@@ -6,7 +6,8 @@ import {
   isUUID,
   isNonEmptyArray,
   isNonEmptyString,
-  isUrl
+  isUrl,
+  isEmail
 } from '../isType'
 
 describe('.isString', () => {
@@ -75,5 +76,11 @@ describe('.isUrl', () => {
     expect(isUrl('https://test.com', 'https')).toBe(true)
     expect(isUrl('mashcard.cloud')).toBe(false)
     expect(isUrl('sftp://foss.mashcard.cloud', 'https')).toBe(false)
+  })
+})
+
+describe('.isEmail', () => {
+  it('should work', () => {
+    expect(isEmail('people@mashcard.cloud')).toBe(true)
   })
 })
