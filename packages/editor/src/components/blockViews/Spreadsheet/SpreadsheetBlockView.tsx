@@ -20,7 +20,8 @@ import {
   SpreadsheetRow,
   SpreadsheetRowAction,
   SpreadsheetCellContainer,
-  SpreadsheetColumnEditable
+  SpreadsheetColumnEditable,
+  SpreadsheetActionItem
 } from './SpreadsheetView'
 
 import { useSpreadsheetContext } from './SpreadsheetContext'
@@ -95,9 +96,14 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const newTitle = event.target.value
-    if (newTitle !== title && newTitle.length > 0) {
-      updateAttributes({ title: newTitle, isDefaultTitle: false })
-      setTitle(newTitle)
+    if (newTitle !== title) {
+      if (newTitle.length > 0) {
+        updateAttributes({ title: newTitle, isDefaultTitle: false })
+        setTitle(newTitle)
+      } else {
+        updateAttributes({ title, isDefaultTitle: true })
+        setTitle(title)
+      }
     }
   }
 
@@ -257,35 +263,36 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                 const onResize = (width: number): void => {
                   updateColumn({ ...column, width })
                 }
+
+                const columnActions: SpreadsheetActionItem[] = []
+                if (documentEditable) {
+                  columnActions.push({
+                    name: 'addColumnLeft',
+                    title: t('spreadsheet.column.add_left'),
+                    icon: <Icon.ArrowLeft />,
+                    onAction: () => addColumn(i)
+                  })
+                  columnActions.push({
+                    name: 'addColumnRight',
+                    title: t('spreadsheet.column.add_right'),
+                    icon: <Icon.ArrowRight />,
+                    onAction: () => addColumn(i + 1)
+                  })
+                  if (columns.length > 1) {
+                    columnActions.push({
+                      name: 'deleteColumn',
+                      title: t('spreadsheet.column.delete'),
+                      icon: <Icon.Delete />,
+                      onAction: () => removeColumn(column)
+                    })
+                  }
+                }
                 return (
                   <SpreadsheetHeaderColumn
                     key={column.uuid}
                     context={spreadsheetContext}
                     columnId={column.uuid}
-                    columnActions={
-                      documentEditable
-                        ? [
-                            {
-                              name: 'addColumnLeft',
-                              title: t('spreadsheet.column.add_left'),
-                              icon: <Icon.ArrowLeft />,
-                              onAction: () => addColumn(i)
-                            },
-                            {
-                              name: 'addColumnRight',
-                              title: t('spreadsheet.column.add_right'),
-                              icon: <Icon.ArrowRight />,
-                              onAction: () => addColumn(i + 1)
-                            },
-                            {
-                              name: 'deleteColumn',
-                              title: t('spreadsheet.column.delete'),
-                              icon: <Icon.Delete />,
-                              onAction: () => removeColumn(column)
-                            }
-                          ]
-                        : []
-                    }
+                    columnActions={columnActions}
                     draggable={documentEditable}
                     onResize={onResize}
                     width={finalColumnWidths[column.uuid]}

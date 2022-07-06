@@ -140,7 +140,7 @@ exports[`AutocompleteList Active Completion renders column kind correctly 1`] = 
         class="autocomplete-preview-column"
       >
         <div
-          class="mc-c-cAUDlT"
+          class="mc-c-bnvVVR"
         >
           <div
             class="node-spreadsheetBlock"
@@ -293,7 +293,7 @@ exports[`AutocompleteList Active Completion renders function kind correctly 1`] 
             class="autocomplete-preview-example"
           >
             <div
-              class="mashcard-formula-editor mc-c-cOZHHW"
+              class="mashcard-formula-editor mc-c-gzPEfq"
             >
               <div
                 class="ProseMirror"
@@ -381,7 +381,7 @@ exports[`AutocompleteList Active Completion renders spreadsheet kind correctly 1
         class="autocomplete-preview-spreadsheet"
       >
         <div
-          class="mc-c-cAUDlT"
+          class="mc-c-bnvVVR"
         >
           <div
             class="node-spreadsheetBlock"
@@ -493,7 +493,7 @@ exports[`AutocompleteList Active Completion renders variable kind correctly 1`] 
             class="autocomplete-preview-definition"
           >
             <div
-              class="mashcard-formula-editor mc-c-cOZHHW"
+              class="mashcard-formula-editor mc-c-gzPEfq"
             >
               <div
                 class="ProseMirror"

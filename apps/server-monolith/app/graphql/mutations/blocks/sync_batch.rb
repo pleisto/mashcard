@@ -59,8 +59,8 @@ module Mutations
 
           block = preloads[args.id]
 
-          exist = block.present?
-          block ||= Docs::Block.new(id: args.id)
+          block ||= Docs::Block.where(id: args.id).first_or_initialize
+          exist = !block.new_record?
 
           block.page = true if block.id == root_id
           block.text = args.text
@@ -117,7 +117,6 @@ module Mutations
           insert_histories_2 = upsert_blocks.map do |block|
             block.history_attributes.merge('created_at' => now, 'updated_at' => now)
           end
-
           Docs::Block.upsert_all(upsert_blocks.map(&:block_attributes))
           # rubocop:disable Lint/UselessAssignment
           insert_histories += insert_histories_2
