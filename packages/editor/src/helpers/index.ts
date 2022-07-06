@@ -1,6 +1,5 @@
 export * from './file'
 export * from './formula'
 export * from './popup'
-export * from './prependHttp'
 export * from './selection'
 export * from './useUndo'

@@ -92,3 +92,10 @@ export const isUrl = (value: string, schema?: string): boolean => {
     return false
   }
 }
+
+/**
+ * Checks if a given value is a email
+ * @param value
+ * @returns true if the value is a email, false otherwise.
+ */
+export const isEmail = (value: string): boolean => /^[\w-\\.]+@([\w-]+\.)+[\w-]{1,}$/.test(value)

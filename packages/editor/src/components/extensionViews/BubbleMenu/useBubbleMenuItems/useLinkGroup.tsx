@@ -3,22 +3,27 @@ import { Icon, Input, toast } from '@mashcard/design-system'
 import { ToolbarSubMenuOption, ToolbarOption, ToolbarGroupOption } from '../../../ui'
 import { isBubbleMenuVisible } from '../BubbleMenu'
 import { useEditorContext, useEditorI18n } from '../../../../hooks'
+import { prependUrlScheme } from '@mashcard/active-support'
 
 export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
   const [t] = useEditorI18n()
   const { editor } = useEditorContext()
   const href = editor?.getAttributes('link').href
-  const [inputLink, setInputLink] = useState(href)
+  const [inputLink, setInputLink] = useState(href ?? '')
 
   useEffect(() => {
-    setInputLink(href)
+    setInputLink(href ?? '')
   }, [href])
 
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
     const handleConfirm = (): void => {
-      editor.chain().focus().setLink({ href: inputLink }).run()
+      editor
+        .chain()
+        .focus()
+        .setLink({ href: prependUrlScheme(inputLink) })
+        .run()
     }
 
     const menuItems: ToolbarSubMenuOption['items'] = [
