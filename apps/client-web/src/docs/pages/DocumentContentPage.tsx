@@ -163,7 +163,9 @@ export const DocumentContentPage: FC = () => {
           )}
           <main className="content">
             <header style={isAnonymous ? { paddingRight: 0 } : undefined}>
-              <DocumentTopBar />
+              <Suspense>
+                <DocumentTopBar />
+              </Suspense>
             </header>
             <section>
               <article id="article">
