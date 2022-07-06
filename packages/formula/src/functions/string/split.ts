@@ -1,4 +1,4 @@
-import { createFunctionClause, StringResult } from '../../type'
+import { AnyTypeResult, createFunctionClause } from '../../type'
 
 /**
  * @source
@@ -41,7 +41,7 @@ export const stringSplit = createFunctionClause({
   ],
   chain: true,
   reference: (ctx, string, separator) => ({
-    result: string.result.split(separator.result).map<StringResult>(s => ({ result: s, type: 'string' })),
+    result: string.result.split(separator.result).map<AnyTypeResult<'string'>>(s => ({ result: s, type: 'string' })),
     meta: 'string',
     type: 'Array'
   })

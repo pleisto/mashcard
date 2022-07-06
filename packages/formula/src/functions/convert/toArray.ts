@@ -1,4 +1,4 @@
-import { ArrayResult, createFunctionClause, NumberResult, StringResult } from '../../type'
+import { AnyTypeResult, createFunctionClause } from '../../type'
 
 /**
  * @source
@@ -36,10 +36,10 @@ export const convertToArray = createFunctionClause({
       return {
         type: 'Array',
         meta: 'Array',
-        result: result.toArray().map<ArrayResult>((row: string[]) => ({
+        result: result.toArray().map<AnyTypeResult<'Array'>>((row: string[]) => ({
           type: 'Array',
           meta: 'string',
-          result: row.map<StringResult>(r => ({ type: 'string', result: r }))
+          result: row.map<AnyTypeResult<'string'>>(r => ({ type: 'string', result: r }))
         }))
       }
 
@@ -49,7 +49,7 @@ export const convertToArray = createFunctionClause({
     return {
       type: 'Array',
       meta: 'number',
-      result: Array.from(Array(result).keys()).map<NumberResult>(n => ({ type: 'number', result: n }))
+      result: Array.from(Array(result).keys()).map<AnyTypeResult<'number'>>(n => ({ type: 'number', result: n }))
     }
   }
 })

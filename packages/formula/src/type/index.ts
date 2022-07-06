@@ -169,9 +169,9 @@ export type BaseResult<
       meta: Meta
     })
 
-export type NumberResult = BaseResult<'number', number, number>
-export type BooleanResult = BaseResult<'boolean', boolean, boolean>
-export type StringResult = BaseResult<'string', string>
+type NumberResult = BaseResult<'number', number, number>
+type BooleanResult = BaseResult<'boolean', boolean, boolean>
+type StringResult = BaseResult<'string', string>
 export type LiteralResult = BaseResult<'literal', string>
 export type NullResult = BaseResult<'null', null, null>
 export type BlankResult = BaseResult<'Blank', never, never>

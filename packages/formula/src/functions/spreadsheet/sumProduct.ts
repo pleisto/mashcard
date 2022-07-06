@@ -1,10 +1,10 @@
-import { ColumnResult, createFunctionClause, ErrorResult, FunctionContext, NumberResult } from '../../type'
+import { AnyTypeResult, createFunctionClause, FunctionContext } from '../../type'
 
 const SUMPRODUCT = (
   ctx: FunctionContext,
-  { result: column1 }: ColumnResult,
-  { result: column2 }: ColumnResult
-): NumberResult | ErrorResult => {
+  { result: column1 }: AnyTypeResult<'Column'>,
+  { result: column2 }: AnyTypeResult<'Column'>
+): AnyTypeResult<'number' | 'Error'> => {
   if (column1.spreadsheetId !== column2.spreadsheetId) {
     return { type: 'Error', result: 'Columns must be in the same namespace', meta: 'runtime' }
   }

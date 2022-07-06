@@ -1,5 +1,5 @@
 import { tokenMatcher } from 'chevrotain'
-import { NumberResult, PredicateOperator, StringResult } from '../../type'
+import { PredicateOperator, AnyTypeResult } from '../../type'
 import { Equal, Equal2, NotEqual, NotEqual2, LessThan, GreaterThan, LessThanEqual, GreaterThanEqual } from '../lexer'
 import { OperatorType } from '../operator'
 
@@ -9,7 +9,7 @@ export const predicateOperator: OperatorType = {
   lhsType: ['number', 'string'],
   rhsType: 'any',
   interpret: async ({ lhs, operator }) => {
-    const result = lhs as NumberResult | StringResult
+    const result = lhs as AnyTypeResult<'number' | 'string'>
     let image: PredicateOperator
     if (tokenMatcher(operator, Equal) || tokenMatcher(operator, Equal2)) {
       image = 'equal'

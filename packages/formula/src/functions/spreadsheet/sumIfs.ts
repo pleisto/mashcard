@@ -1,20 +1,12 @@
 import { buildPredicate } from '../../grammar'
-import {
-  ColumnResult,
-  createFunctionClause,
-  ErrorResult,
-  FunctionContext,
-  NumberResult,
-  PredicateFunction,
-  PredicateResult
-} from '../../type'
+import { AnyTypeResult, createFunctionClause, FunctionContext, PredicateFunction } from '../../type'
 
 const SUMIFS = (
   ctx: FunctionContext,
-  { result: column1 }: ColumnResult,
-  { result: column2 }: ColumnResult,
-  predicate: PredicateResult
-): NumberResult | ErrorResult => {
+  { result: column1 }: AnyTypeResult<'Column'>,
+  { result: column2 }: AnyTypeResult<'Column'>,
+  predicate: AnyTypeResult<'Predicate'>
+): AnyTypeResult<'number' | 'Error'> => {
   if (column1.spreadsheetId !== column2.spreadsheetId) {
     return { type: 'Error', result: 'Columns must be in the same namespace', meta: 'runtime' }
   }

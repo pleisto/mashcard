@@ -7,7 +7,6 @@ import {
   BaseFunctionContext,
   FunctionResult,
   NamespaceId,
-  StringResult,
   uuid,
   VariableMetadata,
   ContextInterface,
@@ -209,7 +208,7 @@ export interface SpreadsheetType {
   findRow: (key: FindKey) => RowType | undefined
   findColumn: (key: FindKey) => ColumnType | undefined
   toArray: () => string[][]
-  toRecord: () => Array<Record<string, StringResult>>
+  toRecord: () => Array<Record<string, AnyTypeResult<'string'>>>
   persistAll: () => SpreadsheetAllPersistence
 }
 

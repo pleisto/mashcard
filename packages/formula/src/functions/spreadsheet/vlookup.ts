@@ -1,21 +1,13 @@
-import {
-  BooleanResult,
-  ColumnResult,
-  createFunctionClause,
-  ErrorResult,
-  FunctionContext,
-  SpreadsheetResult,
-  StringResult
-} from '../../type'
+import { AnyTypeResult, createFunctionClause, FunctionContext } from '../../type'
 
 const VLOOKUP = (
   ctx: FunctionContext,
-  { result: match }: StringResult,
-  { result: spreadsheet }: SpreadsheetResult,
-  { result: column }: ColumnResult,
-  { result: range }: BooleanResult
+  { result: match }: AnyTypeResult<'string'>,
+  { result: spreadsheet }: AnyTypeResult<'Spreadsheet'>,
+  { result: column }: AnyTypeResult<'Column'>,
+  { result: range }: AnyTypeResult<'boolean'>
 ): // eslint-disable-next-line max-params
-StringResult | ErrorResult => {
+AnyTypeResult<'string' | 'Error'> => {
   if (spreadsheet.spreadsheetId !== column.spreadsheetId) {
     return { type: 'Error', result: 'Column must be in the same namespace', meta: 'runtime' }
   }
@@ -35,7 +27,7 @@ StringResult | ErrorResult => {
     return { type: 'Error', result: 'Column not found', meta: 'runtime' }
   }
 
-  let result: StringResult | ErrorResult = { type: 'Error', result: 'Not found', meta: 'runtime' }
+  let result: AnyTypeResult<'Error' | 'string'> = { type: 'Error', result: 'Not found', meta: 'runtime' }
 
   const matchData = String(match)
 

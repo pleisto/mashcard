@@ -1,19 +1,11 @@
 import { buildPredicate } from '../../grammar'
-import {
-  ColumnResult,
-  createFunctionClause,
-  ErrorResult,
-  FunctionContext,
-  NumberResult,
-  PredicateFunction,
-  PredicateResult
-} from '../../type'
+import { AnyTypeResult, createFunctionClause, FunctionContext, PredicateFunction } from '../../type'
 
 const COUNTIFS = (
   ctx: FunctionContext,
-  { result: column }: ColumnResult,
-  predicate: PredicateResult
-): NumberResult | ErrorResult => {
+  { result: column }: AnyTypeResult<'Column'>,
+  predicate: AnyTypeResult<'Predicate'>
+): AnyTypeResult<'number' | 'Error'> => {
   const predicateFunction: PredicateFunction = buildPredicate(predicate)
   let sum: number = 0
 

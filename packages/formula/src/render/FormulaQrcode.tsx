@@ -1,8 +1,8 @@
-import { FormulaSourceType, StringResult, View } from '../type'
+import { AnyTypeResult, FormulaSourceType, View } from '../type'
 import QRCode from 'qrcode.react'
 
 interface FormulaQrcodeProps {
-  result: StringResult
+  result: AnyTypeResult<'string'>
   formulaType: FormulaSourceType
 }
 
@@ -16,5 +16,7 @@ const FormulaQrcode: React.FC<FormulaQrcodeProps> = ({ result }) => {
 
 export const qrcodeView: View = {
   type: 'qrcode',
-  render: (attrs, data) => <FormulaQrcode result={data.result as StringResult} formulaType={data.meta.richType.type} />
+  render: (attrs, data) => (
+    <FormulaQrcode result={data.result as AnyTypeResult<'string'>} formulaType={data.meta.richType.type} />
+  )
 }

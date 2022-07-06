@@ -1,19 +1,11 @@
 import { buildPredicate } from '../../grammar'
-import {
-  FunctionContext,
-  SpreadsheetResult,
-  PredicateResult,
-  NumberResult,
-  ErrorResult,
-  PredicateFunction,
-  createFunctionClause
-} from '../../type'
+import { FunctionContext, PredicateFunction, createFunctionClause, AnyTypeResult } from '../../type'
 
 const CountIf = (
   ctx: FunctionContext,
-  { result: spreadsheet }: SpreadsheetResult,
-  predicate: PredicateResult
-): NumberResult | ErrorResult => {
+  { result: spreadsheet }: AnyTypeResult<'Spreadsheet'>,
+  predicate: AnyTypeResult<'Predicate'>
+): AnyTypeResult<'number' | 'Error'> => {
   const column = predicate.meta.column
   if (!column) {
     return { type: 'Error', result: 'Column is missing', meta: 'runtime' }

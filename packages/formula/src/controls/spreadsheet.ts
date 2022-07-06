@@ -26,7 +26,6 @@ import {
   FindKey,
   NameDependencyWithKind,
   NamespaceId,
-  StringResult,
   uuid,
   VariableDisplayData
 } from '../type'
@@ -483,14 +482,14 @@ export class SpreadsheetClass implements SpreadsheetType {
     return result
   }
 
-  toRecord(): Array<Record<string, StringResult>> {
+  toRecord(): Array<Record<string, AnyTypeResult<'string'>>> {
     const columns: Column[] = this.listColumns()
     const rows: Row[] = this.listRows()
 
-    const result: Array<Record<string, StringResult>> = []
+    const result: Array<Record<string, AnyTypeResult<'string'>>> = []
 
     rows.forEach(row => {
-      const rowData: Record<string, StringResult> = {}
+      const rowData: Record<string, AnyTypeResult<'string'>> = {}
       columns.forEach(column => {
         const cells = this.listCells({ rowId: row.rowId, columnId: column.columnId })
         rowData[column.name] = { type: 'string', result: cells[0]?.value ?? '' }
