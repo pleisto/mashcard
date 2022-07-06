@@ -162,13 +162,11 @@ export const DocumentContentPage: FC = () => {
             </Root.Section>
           )}
           <main className="content">
-            {(!loading || docMeta.isMine) && (
-              <header style={isAnonymous ? { paddingRight: 0 } : undefined}>
-                <Suspense>
-                  <DocumentTopBar />
-                </Suspense>
-              </header>
-            )}
+            <header style={isAnonymous ? { paddingRight: 0 } : undefined}>
+              <Suspense>
+                <DocumentTopBar />
+              </Suspense>
+            </header>
             <section>
               <article id="article">
                 <Suspense>

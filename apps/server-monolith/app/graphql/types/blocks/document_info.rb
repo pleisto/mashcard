@@ -31,7 +31,7 @@ module Types
       end
 
       def is_master
-        @is_master ||= current_user && object.pod_id.in?(current_user.pods.map(&:id))
+        @is_master ||= !!(current_user && object.pod_id.in?(current_user.pods.map(&:id)))
       end
 
       def is_deleted
@@ -57,6 +57,8 @@ module Types
       def pin
         if current_pod&.fetch('username') != ::Pod::ANONYMOUS_DOMAIN
           Docs::Pin.exists?(user_id: current_user.id, pod_id: current_pod.fetch('id'), block_id: object.id, deleted_at: nil)
+        else
+          false
         end
       end
     end
