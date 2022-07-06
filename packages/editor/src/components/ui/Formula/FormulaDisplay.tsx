@@ -9,7 +9,6 @@ import { getFormulaContext } from '../../blockViews/FormulaView'
 
 export interface FormulaDisplayProps {
   displayData?: VariableDisplayData
-  display?: string
   formulaType: FormulaSourceType
   name?: string
   disablePopover?: boolean
@@ -18,7 +17,6 @@ export interface FormulaDisplayProps {
 
 export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({
   displayData,
-  display,
   formulaType,
   name,
   selected,
@@ -70,7 +68,6 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({
         name={name}
         selected={selected}
         disablePopover={disablePopover}
-        display={display ?? newDisplayData.display}
         border={true}
       />
       {preview ?? <></>}

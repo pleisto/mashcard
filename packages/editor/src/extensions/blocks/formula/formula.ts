@@ -1,6 +1,6 @@
 import { mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { createBlock } from '../../common'
+import { createBlock, createJSONAttributeHtmlParser, createJSONAttributeHtmlRender } from '../../common'
 import { FormulaBlock } from '../../../components/blockViews'
 import { FormulaAttributes, FormulaOptions, meta } from './meta'
 
@@ -34,7 +34,9 @@ export const Formula = createBlock<FormulaOptions, FormulaAttributes>({
       formula: {
         default: {
           type: 'FORMULA'
-        }
+        },
+        parseHTML: createJSONAttributeHtmlParser('data-formula'),
+        renderHTML: createJSONAttributeHtmlRender('formula', 'data-formula')
       }
     }
   },
