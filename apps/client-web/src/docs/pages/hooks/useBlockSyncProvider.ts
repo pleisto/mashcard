@@ -159,6 +159,17 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
         }
       })
       client.cache.modify({
+        id: client.cache.identify({ __typename: 'Block', id: blockId }),
+        fields: {
+          text() {
+            return meta.title
+          },
+          meta() {
+            return meta
+          }
+        }
+      })
+      client.cache.modify({
         id: client.cache.identify({ __typename: 'DocumentInfo', id: blockId }),
         fields: {
           title() {
