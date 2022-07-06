@@ -58,15 +58,6 @@ export const DocumentPage: FC<DocumentPageProps> = ({ mode }) => {
   const editor = useEditor(editorOptions, [provider])
 
   useEffect(() => {
-    if (editor && !editor.isDestroyed) {
-      if (editor.options.editable !== documentEditable) {
-        editor.options.editable = documentEditable
-        editor.view.update(editor.view.props)
-      }
-    }
-  }, [editor, documentEditable])
-
-  useEffect(() => {
     if (!loading) setLatestLoading(false)
   }, [loading, setLatestLoading])
 
