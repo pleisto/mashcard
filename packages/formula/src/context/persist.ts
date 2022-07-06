@@ -94,7 +94,7 @@ export const loadDisplayResult = (ctx: FunctionContext, displayResult: VariableD
   return { ...displayResult, result: loadValue(ctx, displayResult.result) as any }
 }
 
-export const dumpValue = (result: BaseResult, t?: VariableData): BaseResult => {
+export const dumpValue = (result: AnyTypeResult, t?: VariableData): BaseResult => {
   if (t && !t.variableParseResult.persist) {
     return { type: 'NoPersist', result: null }
   }
@@ -120,7 +120,7 @@ export const dumpValue = (result: BaseResult, t?: VariableData): BaseResult => {
 }
 
 // eslint-disable-next-line complexity
-export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResult => {
+export const loadValue = (ctx: FunctionContext, result: AnyTypeResult): AnyTypeResult => {
   if (result.type === 'Date' && !(result.result instanceof Date)) {
     return {
       type: 'Date',

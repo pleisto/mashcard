@@ -35,7 +35,7 @@ export type CoreFunctionGroup = typeof CORE_FUNCTION_GROUPS[number]
 type FormulaComplexType = typeof FORMULA_COMPLEX_TYPES[number]
 export type FormulaControlType = typeof FORMULA_CONTROL_TYPES[number]
 export type FormulaType = typeof FORMULA_TYPES[number]
-type UsedFormulaType = typeof FORMULA_USED_TYPES[number]
+export type UsedFormulaType = typeof FORMULA_USED_TYPES[number]
 
 export type PersistFormulaType = Exclude<
   FormulaType,
@@ -153,18 +153,23 @@ export interface ViewData<T extends ViewType> {
   type: T
   attrs: ViewAttrs
 }
-export interface BaseResult {
+export type BaseResult<Dump extends any = string, Meta extends any = never> = {
   result: any
   view?: ViewData<ViewType>
+  dump?: Dump
   type: Exclude<FormulaType, 'void'>
-  meta?: any
-}
-export interface NumberResult extends BaseResult {
+} & ([Meta] extends [never]
+  ? {}
+  : {
+      meta: Meta
+    })
+
+export interface NumberResult extends BaseResult<number> {
   result: number
   type: 'number'
 }
 
-export interface BooleanResult extends BaseResult {
+export interface BooleanResult extends BaseResult<boolean> {
   result: boolean
   type: 'boolean'
 }
@@ -179,29 +184,32 @@ export interface LiteralResult extends BaseResult {
   type: 'literal'
 }
 
-export interface NullResult extends BaseResult {
+export interface NullResult extends BaseResult<null> {
   result: null
   type: 'null'
 }
 
-export interface BlankResult extends BaseResult {
+export interface BlankResult extends BaseResult<never> {
   result: never
   type: 'Blank'
 }
 
-export interface ArrayResult extends BaseResult {
+export interface ErrorResult extends BaseResult<string, ErrorType> {
+  result: string
+  type: 'Error'
+}
+
+export interface ArrayResult extends BaseResult<string, FormulaType> {
   result: AnyTypeResult[]
   type: 'Array'
-  meta: FormulaType
 }
 
 export interface RecordType {
   [key: string]: AnyTypeResult
 }
 
-export interface RecordResult extends BaseResult {
+export interface RecordResult extends BaseResult<string, FormulaType> {
   result: RecordType
-  meta: FormulaType
   type: 'Record'
 }
 
@@ -238,12 +246,6 @@ export interface SpreadsheetResult extends BaseResult {
 export interface BlockResult extends BaseResult {
   result: BlockType
   type: 'Block'
-}
-
-export interface ErrorResult extends BaseResult {
-  result: string
-  type: 'Error'
-  meta: ErrorType
 }
 
 export interface PredicateResult extends BaseResult {
@@ -342,13 +344,25 @@ type AnyResult =
   | NoPersistResult
 
 // Ensure that the result type is valid
-export type AnyTypeResult = UsedFormulaType extends AnyResult['type'] ? AnyResult : never
+type EnsureTypeIsOk = UsedFormulaType extends AnyResult['type']
+  ? AnyResult['type'] extends UsedFormulaType
+    ? AnyResult
+    : never
+  : never
 
-export type TypedResult<T extends FormulaType> = Extract<AnyTypeResult, { type: T }>
+export type TypedResult<T extends FormulaType> = Extract<EnsureTypeIsOk, { type: T }>
 
-export type AnyFunctionResult<T extends FormulaType> = TypedResult<T> | ErrorResult
+export type AnyTypeDump<T extends FormulaType = UsedFormulaType> = T extends UsedFormulaType
+  ? TypedResult<T>['dump']
+  : never
 
-export type FormulaResult<T extends FormulaType> = TypedResult<T>['result']
+export type AnyTypeResult<T extends FormulaType = UsedFormulaType> = T extends UsedFormulaType
+  ? Omit<TypedResult<T>, 'dump'>
+  : never
+
+type AnyFunctionResult<T extends FormulaType> = AnyTypeResult<T | 'Error'>
+
+type FormulaResult<T extends FormulaType> = TypedResult<T>['result']
 
 export type FormulaSourceType = 'normal' | 'spreadsheet'
 
@@ -360,7 +374,7 @@ export interface FormulaDefinition {
 export interface BaseFormula extends Required<FormulaDefinition> {
   blockId: uuid
   id: uuid
-  cacheValue: BaseResult
+  cacheValue: AnyTypeResult
   version: number
   type: string
 }
