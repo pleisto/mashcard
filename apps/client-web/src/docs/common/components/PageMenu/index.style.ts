@@ -15,6 +15,7 @@ export const Menu = styled('div', {
   whiteSpace: 'nowrap',
   width: '100%',
   alignItems: 'center',
+  paddingRight: 3,
   a: {
     color: '#292333',
     fontWeight: '500',
@@ -24,7 +25,7 @@ export const Menu = styled('div', {
     textDecoration: 'none'
   },
   '.btnBase, .addBtn, .moreBtn': {
-    opacity: '0%',
+    display: 'none',
     height: 'auto',
     fontSize: 'inherit',
     lineHeight: '16px',
@@ -45,10 +46,10 @@ export const Menu = styled('div', {
   },
   '&:hover': {
     '.moreBtn': {
-      opacity: '100%'
+      display: 'unset',
     },
     '.addBtn': {
-      opacity: '100%'
+      display: 'unset',
     }
   }
 })

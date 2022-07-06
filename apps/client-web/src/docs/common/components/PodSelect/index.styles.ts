@@ -19,13 +19,14 @@ export const selectStyle = {
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: '.75rem 1rem',
+  borderRadius: '4px 0 0 4px',
   [`& .${prefix}-icon-change`]: {
     fontSize: '1.25rem',
     color: theme.colors.iconThirdary
   },
   '&:hover': {
     cursor: 'pointer',
-    background: theme.colors.black_3p
+    background: theme.colors.secondaryHover
   }
 }
 

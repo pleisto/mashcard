@@ -30,7 +30,7 @@ export const Section = styled('section', {
   maxWidth: 496,
   flexShrink: 0,
   header: {
-    paddingLeft: 8
+    transform: 'translateX(8px)'
   },
   '.mainActions': {
     position: 'sticky',
