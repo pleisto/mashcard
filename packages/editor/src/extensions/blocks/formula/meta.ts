@@ -1,4 +1,4 @@
-import { ContextInterface } from '@mashcard/formula'
+import { ContextInterface, VariableMetadata } from '@mashcard/formula'
 import { ExtensionMeta } from '../../common'
 
 export const meta: ExtensionMeta = {
@@ -10,5 +10,10 @@ export interface FormulaOptions {
   formulaContext?: ContextInterface | null
 }
 export interface FormulaAttributes {
-  // TODO: add attributes types
+  isNew: boolean
+  formula: {
+    type: 'FORMULA'
+    // TODO refactor me
+    attrs?: Pick<VariableMetadata, 'name' | 'input' | 'position'> & { display: string }
+  }
 }

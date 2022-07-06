@@ -11,12 +11,11 @@ describe('FormulaValue', () => {
         result: 'error'
       },
       definition: '',
-      version: 1,
       meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 },
       display: 'display'
     }
 
-    const { container } = render(<FormulaValue border={false} display="display" displayData={data} />)
+    const { container } = render(<FormulaValue border={false} displayData={data} />)
 
     expect(container).toMatchSnapshot()
   })
@@ -28,12 +27,11 @@ describe('FormulaValue', () => {
         result: 'waiting'
       },
       definition: '',
-      version: 1,
       meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 },
       display: 'display'
     }
 
-    const { container } = render(<FormulaValue border={true} display="display" displayData={data} />)
+    const { container } = render(<FormulaValue border={true} displayData={data} />)
 
     expect(container).toMatchSnapshot()
   })
@@ -46,12 +44,11 @@ describe('FormulaValue', () => {
         result: 'error'
       },
       definition: '',
-      version: 1,
       meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 },
       display: 'display'
     }
 
-    const { container } = render(<FormulaValue border={true} display="display" displayData={data} />)
+    const { container } = render(<FormulaValue border={true} displayData={data} />)
 
     expect(container).toMatchSnapshot()
   })
@@ -63,12 +60,11 @@ describe('FormulaValue', () => {
         result: 1
       },
       definition: '',
-      version: 1,
       meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 },
       display: 'display'
     }
 
-    const { container } = render(<FormulaValue border={true} display="display" displayData={data} />)
+    const { container } = render(<FormulaValue border={true} displayData={data} />)
 
     expect(container).toMatchSnapshot()
   })

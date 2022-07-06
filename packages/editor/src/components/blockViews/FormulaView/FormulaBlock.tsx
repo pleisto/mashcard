@@ -5,20 +5,25 @@ import {
   displayValue,
   dumpDisplayResultForDisplay,
   fetchResult,
-  VariableData
+  VariableData,
+  VariableDisplayData,
+  VariableInterface
 } from '@mashcard/formula'
 import { BlockContainer } from '../BlockContainer'
 import { FormulaDisplay } from '../../ui/Formula'
 import { FormulaMenuProps, useFormula, FormulaMenu, UseFormulaInput } from '.'
 import { useEditorContext, useDocumentContext } from '../../../hooks'
-import { Formula } from '../../../extensions'
+import { Formula, FormulaAttributes } from '../../../extensions'
 
 export interface FormulaBlockProps extends NodeViewProps {}
 
+type FormulaBlockAttributes = FormulaAttributes & { uuid: string }
+
 export interface FormulaRenderProps {
-  attributes: { isNew: boolean; uuid: string }
+  attributes: FormulaBlockAttributes
   handleDefaultPopoverVisibleChange?: FormulaMenuProps['onVisibleChange']
   handleDelete?: FormulaMenuProps['handleDelete']
+  onUpdateFormula?: UseFormulaInput['onUpdateFormula']
 }
 
 export function getFormulaContext(editor: Editor | undefined | null): ContextInterface | null | undefined {
@@ -29,10 +34,12 @@ export function getFormulaContext(editor: Editor | undefined | null): ContextInt
 }
 
 export const FormulaRender: React.FC<FormulaRenderProps> = ({
-  attributes: { isNew, uuid },
+  attributes: { isNew, uuid, formula },
   handleDefaultPopoverVisibleChange,
-  handleDelete
+  handleDelete,
+  onUpdateFormula
 }) => {
+  const { attrs } = formula ?? {}
   const defaultVisible = isNew
   const formulaId = uuid
   const { editor } = useEditorContext()
@@ -43,10 +50,23 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
   const formulaName = ''
   const meta: UseFormulaInput['meta'] = {
     namespaceId: rootId,
+    input: attrs?.display ?? '=',
+    position: attrs?.position ?? 0,
     variableId: formulaId,
     richType: { type: formulaType },
     name: formulaName
   }
+
+  const fallbackDisplayData: VariableDisplayData | undefined = attrs
+    ? {
+        definition: attrs.input,
+        display: attrs.display,
+        result: { type: 'string', result: attrs.display },
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+        meta: { richType: { type: 'normal' } } as VariableDisplayData['meta']
+      }
+    : undefined
+
   const {
     selected,
     savedVariableT,
@@ -59,7 +79,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
     maxScreenState,
     completion,
     formulaFormat
-  } = useFormula({ meta, formulaContext })
+  } = useFormula({ meta, formulaContext, onUpdateFormula })
 
   const noMenu = !(handleDefaultPopoverVisibleChange && handleDelete)
   const [visible, setVisible] = React.useState(defaultVisible)
@@ -68,9 +88,8 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
     <FormulaDisplay
       disablePopover={noMenu || visible}
       selected={selected}
-      name={savedVariableT?.meta.name}
-      display={savedVariableT ? displayValue(fetchResult(savedVariableT), rootId) : undefined}
-      displayData={savedVariableT ? dumpDisplayResultForDisplay(savedVariableT) : undefined}
+      name={savedVariableT?.meta.name ?? formulaName}
+      displayData={savedVariableT ? dumpDisplayResultForDisplay(savedVariableT) : fallbackDisplayData}
       formulaType={formulaType}
     />
   )
@@ -101,7 +120,9 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
 }
 
 export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, updateAttributes, getPos }) => {
-  const defaultVisible = node.attrs.isNew
+  const attrs: FormulaBlockAttributes = node.attrs as any
+
+  const defaultVisible = attrs.isNew
   const formulaContext = getFormulaContext(editor)
 
   const handleDelete = React.useCallback(
@@ -116,6 +137,23 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
 
   const handleTurnOffVisible = React.useCallback(() => updateAttributes({ isNew: false }), [updateAttributes])
 
+  const onUpdateFormula: UseFormulaInput['onUpdateFormula'] = React.useCallback(
+    async (v: VariableInterface | undefined) => {
+      if (!v) return updateAttributes({ formula: { type: 'FORMULA' } })
+
+      const { name, input, position } = v.meta()
+      const attrs: FormulaAttributes['formula']['attrs'] = {
+        name,
+        input,
+        position,
+        display: displayValue(fetchResult(v.t), '')
+      }
+
+      updateAttributes({ formula: { type: 'FORMULA', attrs } })
+    },
+    [updateAttributes]
+  )
+
   const handleDefaultPopoverVisibleChange = React.useCallback(
     (visible: boolean): void => {
       if (!visible && defaultVisible) {
@@ -128,9 +166,10 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
   return (
     <BlockContainer node={node} inline={true}>
       <FormulaRender
-        attributes={node.attrs as any}
+        attributes={attrs}
         handleDefaultPopoverVisibleChange={handleDefaultPopoverVisibleChange}
         handleDelete={handleDelete}
+        onUpdateFormula={onUpdateFormula}
       />
     </BlockContainer>
   )

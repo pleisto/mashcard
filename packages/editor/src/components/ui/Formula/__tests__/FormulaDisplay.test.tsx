@@ -23,7 +23,6 @@ describe('FormulaDisplay', () => {
         result: 'string'
       },
       meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 },
-      version: 1,
       display: 'string'
     }
     const { container } = render(<FormulaDisplay formulaType="normal" displayData={displayData} />)
@@ -39,7 +38,6 @@ describe('FormulaDisplay', () => {
         result: 'string'
       },
       meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 },
-      version: 1,
       display: 'string'
     }
     const { container } = render(<FormulaDisplay formulaType="normal" displayData={displayData} />)

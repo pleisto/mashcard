@@ -5,13 +5,10 @@ import { fetchResult } from './variable'
 import { truncateArray, truncateString } from '../grammar'
 import { RowClass } from '../controls/row'
 
-const VARIABLE_VERSION = 0
-
 export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayData => {
   return {
     definition: t.variableParseResult.definition,
     result: fetchResult(t),
-    version: VARIABLE_VERSION,
     display: displayValue(fetchResult(t), ''),
     meta: {
       namespaceId: t.meta.namespaceId,

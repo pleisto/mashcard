@@ -38,7 +38,15 @@ export const FormulaAutocomplete = styled('div', {
       width: '100%',
       padding: '4px 4px 4px 12px',
 
-      '&.active, &:active, &:focus, &:hover': {
+      '&.active, &:active, &:focus': {
+        background: theme.colors.secondarySelected
+      },
+
+      '&:pressed': {
+        background: theme.colors.secondaryPressed
+      },
+
+      '&:hover': {
         background: theme.colors.secondaryHover
       },
 
