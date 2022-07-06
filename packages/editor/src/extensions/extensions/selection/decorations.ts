@@ -17,7 +17,7 @@ export function textSelectionDecoration(
   if (!(state.selection instanceof TextSelection)) return null
 
   const { from, to } = state.selection
-  if (from === to) return null
+  if (state.selection.empty) return null
 
   const decorations: Decoration[] = []
 

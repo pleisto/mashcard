@@ -45,7 +45,7 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
 
   addCommands() {
     const domEvents = new MultipleNodeSelectionDomEvents(this.editor, {
-      mouseSelectionClassName: this.options.nodeSelection.mouseSelection?.className
+      mouseSelectionClassName: this.options.nodeSelection?.mouseSelection?.className
     })
 
     return {
@@ -77,7 +77,7 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
 
   addProseMirrorPlugins() {
     const domEvents = new MultipleNodeSelectionDomEvents(this.editor, {
-      mouseSelectionClassName: this.options.nodeSelection.mouseSelection?.className
+      mouseSelectionClassName: this.options.nodeSelection?.mouseSelection?.className
     })
     return [
       new Plugin<SelectionState>({

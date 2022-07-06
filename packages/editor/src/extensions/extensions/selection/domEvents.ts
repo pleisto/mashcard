@@ -121,7 +121,7 @@ export class MultipleNodeSelectionDomEvents {
     return false
   }
 
-  private resolveCoordinates(
+  public resolveCoordinates(
     anchor: { x: number; y: number },
     head: {
       x: number
@@ -160,13 +160,13 @@ export class MultipleNodeSelectionDomEvents {
         y: Math.min(y1, y2)
       },
       head: {
-        x: Math.min(x1, x2),
+        x: Math.max(x1, x2),
         y: Math.max(y1, y2)
       }
     }
   }
 
-  private resolvePosition(position: number, inside: number, type: 'anchor' | 'head'): number {
+  public resolvePosition(position: number, inside: number, type: 'anchor' | 'head'): number {
     // if inside = -1, means position is not focus on any nodes
     // we need move position to above one
     if (inside === -1) return type === 'anchor' ? position : position - 1
@@ -176,7 +176,7 @@ export class MultipleNodeSelectionDomEvents {
     return Math.min(position, inside)
   }
 
-  private resolveSelection(
+  public resolveSelection(
     view: EditorView,
     pluginState: SelectionState,
     headCoords: { x: number; y: number },
@@ -217,15 +217,13 @@ export class MultipleNodeSelectionDomEvents {
       return
     }
 
-    // console.log(anchor, head)
-
     this.editor.commands.setMultipleNodeSelection(
       this.resolvePosition(anchor.pos, anchor.inside, 'anchor'),
       this.resolvePosition(head.pos, head.inside, 'head')
     )
   }
 
-  private renderMouseSelection(
+  public renderMouseSelection(
     view: EditorView,
     anchor: { x: number; y: number },
     head: { x: number; y: number }

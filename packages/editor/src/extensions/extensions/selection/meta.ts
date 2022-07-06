@@ -1,11 +1,11 @@
 import { ExtensionMeta } from '../../common'
 
 export interface SelectionOptions {
-  textSelection: {
+  textSelection?: {
     className?: string
     style?: string
   }
-  nodeSelection: {
+  nodeSelection?: {
     mouseSelection?: {
       className?: string
     }
