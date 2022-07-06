@@ -96,9 +96,14 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const newTitle = event.target.value
-    if (newTitle !== title && newTitle.length > 0) {
-      updateAttributes({ title: newTitle, isDefaultTitle: false })
-      setTitle(newTitle)
+    if (newTitle !== title) {
+      if (newTitle.length > 0) {
+        updateAttributes({ title: newTitle, isDefaultTitle: false })
+        setTitle(newTitle)
+      } else {
+        updateAttributes({ title, isDefaultTitle: true })
+        setTitle(title)
+      }
     }
   }
 
