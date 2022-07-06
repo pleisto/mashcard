@@ -111,6 +111,7 @@ export class MultipleNodeSelectionDomEvents {
 
     setTimeout(() => {
       view.dispatch(view.state.tr.setMeta('multipleNodeSelectingEnd', true))
+      this.editor.commands.focus()
     })
 
     return false
