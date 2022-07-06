@@ -10,7 +10,6 @@ jest.mock('react-router-dom', () => ({
 
 describe('documentEditor', () => {
   it('renders document editor correctly', () => {
-    const onSave = jest.fn()
     const yDoc = new Y.Doc()
     const awareness = new awarenessProtocol.Awareness(yDoc)
     const provider = { awareness }
@@ -20,9 +19,6 @@ describe('documentEditor', () => {
         base: {
           bubbleMenu: {
             element: document.createElement('div')
-          },
-          sync: {
-            onSave
           },
           collaboration: {
             document: yDoc

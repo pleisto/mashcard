@@ -18,7 +18,7 @@ export const FormulaAutocomplete = styled('div', {
   background: theme.colors.backgroundOverlayThirdary,
   border: `1px solid ${theme.colors.grey3}`,
   borderRadius: 4,
-  margin: '12px 0 0 0',
+  margin: '12px 0 8px 0',
   height: 280,
 
   '.formula-autocomplete-list': {

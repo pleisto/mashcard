@@ -207,7 +207,7 @@ export const parse = (ctx: FunctionContext): ParseResult => {
       const restImages = inputImage.slice(image.length)
       if (restImages.length > 0) {
         codeFragments.push({
-          code: 'parseErrorOther',
+          code: 'parseErrorOther1',
           type: 'any',
           display: restImages,
           errors: errorMessages,
@@ -216,14 +216,6 @@ export const parse = (ctx: FunctionContext): ParseResult => {
       }
     } else {
       parseError = true
-      // devWarning(true, 'Parse Error', {
-      //   input,
-      //   tokens,
-      //   codeFragments,
-      //   newInput,
-      //   inputImagesWithoutSpace: inputImage,
-      //   codeFragmentImage: image
-      // })
     }
   }
 
@@ -233,7 +225,7 @@ export const parse = (ctx: FunctionContext): ParseResult => {
     parseCodeFragments = [
       codeFragments[0],
       {
-        code: 'parseErrorOther',
+        code: 'parseErrorOther2',
         type: 'any',
         display: restImages,
         errors: finalErrorMessages,

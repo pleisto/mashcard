@@ -1,4 +1,3 @@
-import { BlockDropAdd, MashcardEventBus } from '@mashcard/schema'
 import { renderHook } from '@testing-library/react-hooks'
 import { useTestEditor } from '../../../../test/testEditor'
 import { DropBlock, DropBlockView } from '../dropBlock'
@@ -13,18 +12,18 @@ describe('DropBlock', () => {
 
     const editor = result.current
 
-    let subscribed = false
-
-    MashcardEventBus.subscribe(BlockDropAdd, () => {
-      subscribed = true
-    })
-
     editor!.view.posAtCoords = () => ({ pos: 1, inside: 1 })
+    const setEmbedBlock = jest.fn()
+    editor!.chain = () =>
+      ({
+        setEmbedBlock,
+        run: jest.fn()
+      } as any)
 
-    const view = new DropBlockView(editor!.view)
+    const view = new DropBlockView(editor!, editor!.view)
     const event: any = {
       dataTransfer: {
-        getData: () => 'key',
+        getData: () => 'embed',
         clientX: 1,
         clientY: 1
       },
@@ -33,7 +32,7 @@ describe('DropBlock', () => {
 
     view.drop(event)
 
-    expect(subscribed).toBeTruthy()
+    expect(setEmbedBlock).toBeCalled()
   })
 
   it('triggers dragover correctly', () => {
@@ -45,7 +44,7 @@ describe('DropBlock', () => {
 
     const editor = result.current
 
-    const view = new DropBlockView(editor!.view)
+    const view = new DropBlockView(editor!, editor!.view)
     const event: any = {
       preventDefault: jest.fn()
     }
@@ -66,7 +65,7 @@ describe('DropBlock', () => {
 
     editor!.view.dom.removeEventListener = jest.fn()
 
-    const view = new DropBlockView(editor!.view)
+    const view = new DropBlockView(editor!, editor!.view)
 
     view.destroy()
 

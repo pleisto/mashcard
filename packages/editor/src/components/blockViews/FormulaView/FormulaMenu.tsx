@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
-import { Input, Popover, Icon, Button } from '@mashcard/design-system'
+import { Input, Popover, Icon } from '@mashcard/design-system'
 import { VariableData } from '@mashcard/formula'
 import { FormulaEditor } from '../../../editors/formulaEditor'
 import { FormulaResult, AutocompleteList } from '../../ui/Formula'
@@ -14,7 +14,6 @@ import {
 } from '@mashcard/schema'
 import * as Root from '../../ui/Formula/Formula.style'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
-import { useEditorI18n } from '../../../hooks'
 
 export interface FormulaMenuProps {
   meta: UseFormulaInput['meta']
@@ -51,8 +50,6 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   nameRef,
   completion
 }) => {
-  const [t] = useEditorI18n()
-
   const close = React.useCallback((): void => {
     setVisible(false)
     setMaxScreen(false)
@@ -77,7 +74,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
 
   const onPopoverVisibleChange = async (value: boolean): Promise<void> => {
     if (!value) {
-      close()
+      await handleSave()
       return
     }
     await triggerCalculate()
@@ -99,11 +96,6 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const handleSave = async (): Promise<void> => {
     if (isDisableSave()) return
     await onSaveFormula()
-    close()
-  }
-
-  const handleCancel = (): void => {
-    close()
   }
 
   const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
@@ -169,24 +161,6 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       </div>
       <FormulaResult variableT={temporaryVariableT} pageId={rootId} />
       <AutocompleteList rootId={rootId} formulaId={formulaId} completion={completion} />
-      {maxScreen ? (
-        <div className="formula-menu-footer">
-          <Button className="formula-menu-button" size="sm" type="text" onClick={handleCancel}>
-            {t(`formula.menu.cancel`)}
-          </Button>
-          <Button
-            className="formula-menu-button"
-            size="sm"
-            type="primary"
-            onClick={handleSave}
-            disabled={isDisableSave()}
-          >
-            {t(`formula.menu.save`)}
-          </Button>
-        </div>
-      ) : (
-        <></>
-      )}
     </Root.MashcardFormulaMenu>
   )
 
@@ -196,12 +170,11 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       defaultVisible={defaultVisible}
       visible={visible}
       className={Root.MashcardFormulaMenuPopover}
-      overlayInnerStyle={{ padding: '8px 16px 16px 16px' }}
+      overlayInnerStyle={{ padding: '8px 16px' }}
       destroyTooltipOnHide
       content={menu}
       placement="bottomStart"
-      trigger={['click']}
-    >
+      trigger={['click']}>
       {children}
     </Popover>
   )

@@ -14,29 +14,44 @@
 
 ### Properties
 
+- [cells](ColumnType.md#cells)
 - [columnId](ColumnType.md#columnid)
+- [display](ColumnType.md#display)
 - [displayIndex](ColumnType.md#displayindex)
 - [eventDependency](ColumnType.md#eventdependency)
 - [findKey](ColumnType.md#findkey)
 - [handleCodeFragments](ColumnType.md#handlecodefragments)
 - [handleInterpret](ColumnType.md#handleinterpret)
 - [index](ColumnType.md#index)
+- [key](ColumnType.md#key)
 - [logic](ColumnType.md#logic)
 - [name](ColumnType.md#name)
 - [namespaceId](ColumnType.md#namespaceid)
+- [newCell](ColumnType.md#newcell)
 - [sort](ColumnType.md#sort)
 - [spreadsheet](ColumnType.md#spreadsheet)
 - [spreadsheetId](ColumnType.md#spreadsheetid)
 - [title](ColumnType.md#title)
 
-### Methods
-
-- [cells](ColumnType.md#cells)
-- [display](ColumnType.md#display)
-- [key](ColumnType.md#key)
-- [newCell](ColumnType.md#newcell)
-
 ## Properties
+
+### <a id="cells" name="cells"></a> cells
+
+• **cells**: () => [`Cell`](Cell.md)[]
+
+#### Type declaration
+
+▸ (): [`Cell`](Cell.md)[]
+
+##### Returns
+
+[`Cell`](Cell.md)[]
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:99](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L99)
+
+---
 
 ### <a id="columnid" name="columnid"></a> columnId
 
@@ -49,6 +64,24 @@
 #### Defined in
 
 [packages/formula/src/controls/types.ts:79](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L79)
+
+---
+
+### <a id="display" name="display"></a> display
+
+• **display**: () => `string`
+
+#### Type declaration
+
+▸ (): `string`
+
+##### Returns
+
+`string`
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:93](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L93)
 
 ---
 
@@ -120,6 +153,24 @@
 
 ---
 
+### <a id="key" name="key"></a> key
+
+• **key**: () => `string`
+
+#### Type declaration
+
+▸ (): `string`
+
+##### Returns
+
+`string`
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:94](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L94)
+
+---
+
 ### <a id="logic" name="logic"></a> logic
 
 • **logic**: `boolean`
@@ -151,6 +202,31 @@
 #### Defined in
 
 [packages/formula/src/controls/types.ts:90](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L90)
+
+---
+
+### <a id="newcell" name="newcell"></a> newCell
+
+• **newCell**: (`cell`: [`Cell`](Cell.md), `rowKey`: `string`) => [`CellType`](CellType.md)
+
+#### Type declaration
+
+▸ (`cell`, `rowKey`): [`CellType`](CellType.md)
+
+##### Parameters
+
+| Name     | Type              |
+| :------- | :---------------- |
+| `cell`   | [`Cell`](Cell.md) |
+| `rowKey` | `string`          |
+
+##### Returns
+
+[`CellType`](CellType.md)
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:98](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L98)
 
 ---
 
@@ -203,50 +279,3 @@
 #### Defined in
 
 [packages/formula/src/controls/types.ts:82](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L82)
-
-## Methods
-
-### <a id="cells" name="cells"></a> cells
-
-▸ **cells**(): [`Cell`](Cell.md)[]
-
-#### Returns
-
-[`Cell`](Cell.md)[]
-
----
-
-### <a id="display" name="display"></a> display
-
-▸ **display**(): `string`
-
-#### Returns
-
-`string`
-
----
-
-### <a id="key" name="key"></a> key
-
-▸ **key**(): `string`
-
-#### Returns
-
-`string`
-
----
-
-### <a id="newcell" name="newcell"></a> newCell
-
-▸ **newCell**(`cell`, `rowKey`): [`CellType`](CellType.md)
-
-#### Parameters
-
-| Name     | Type              |
-| :------- | :---------------- |
-| `cell`   | [`Cell`](Cell.md) |
-| `rowKey` | `string`          |
-
-#### Returns
-
-[`CellType`](CellType.md)

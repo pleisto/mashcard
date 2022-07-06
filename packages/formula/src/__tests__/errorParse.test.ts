@@ -21,6 +21,11 @@ describe('errorParse', () => {
       args.valid ?? true
     ])
 
+    if (args.expressionType) {
+      // eslint-disable-next-line jest/no-conditional-expect
+      expect(parseResult.expressionType).toStrictEqual(args.expressionType)
+    }
+
     for (const { key, match, matchType } of args.expected ?? []) {
       const matchData = [key, parseResult.variableParseResult[key]]
 

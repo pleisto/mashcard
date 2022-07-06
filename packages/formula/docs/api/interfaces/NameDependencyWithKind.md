@@ -14,9 +14,6 @@
 - [kind](NameDependencyWithKind.md#kind)
 - [name](NameDependencyWithKind.md#name)
 - [namespaceId](NameDependencyWithKind.md#namespaceid)
-
-### Methods
-
 - [renderTokens](NameDependencyWithKind.md#rendertokens)
 
 ## Properties
@@ -67,19 +64,27 @@
 
 [packages/formula/src/types/index.ts:757](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L757)
 
-## Methods
+---
 
 ### <a id="rendertokens" name="rendertokens"></a> renderTokens
 
-▸ `Readonly` **renderTokens**(`namespaceIsExist`, `namespaceId`): [`FormulaNameToken`](FormulaNameToken.md)[]
+• `Readonly` **renderTokens**: (`namespaceIsExist`: `boolean`, `namespaceId`: `string`) => [`FormulaNameToken`](FormulaNameToken.md)[]
 
-#### Parameters
+#### Type declaration
+
+▸ (`namespaceIsExist`, `namespaceId`): [`FormulaNameToken`](FormulaNameToken.md)[]
+
+##### Parameters
 
 | Name               | Type      |
 | :----------------- | :-------- |
 | `namespaceIsExist` | `boolean` |
 | `namespaceId`      | `string`  |
 
-#### Returns
+##### Returns
 
 [`FormulaNameToken`](FormulaNameToken.md)[]
+
+#### Defined in
+
+[packages/formula/src/types/index.ts:764](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L764)

@@ -19,6 +19,7 @@
 - [columnIndex](CellType.md#columnindex)
 - [columnKey](CellType.md#columnkey)
 - [eventDependency](CellType.md#eventdependency)
+- [getValue](CellType.md#getvalue)
 - [namespaceId](CellType.md#namespaceid)
 - [rowId](CellType.md#rowid)
 - [rowIndex](CellType.md#rowindex)
@@ -89,6 +90,24 @@
 #### Defined in
 
 [packages/formula/src/controls/types.ts:148](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L148)
+
+---
+
+### <a id="getvalue" name="getvalue"></a> getValue
+
+• **getValue**: () => `string`
+
+#### Type declaration
+
+▸ (): `string`
+
+##### Returns
+
+`string`
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:149](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L149)
 
 ---
 

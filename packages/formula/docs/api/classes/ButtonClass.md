@@ -147,4 +147,4 @@
 
 #### Implementation of
 
-[ButtonType](../interfaces/ButtonType.md).[persistence](../interfaces/ButtonType.md#persistence)
+ButtonType.persistence

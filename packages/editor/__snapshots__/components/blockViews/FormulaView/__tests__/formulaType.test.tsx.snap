@@ -714,7 +714,7 @@ exports[`formulaType "spreadsheet" - "=123asdasd" 1`] = `
         </mark>
         <mark
           class="mashcard-formula-mark"
-          data-code="parseErrorOther"
+          data-code="parseErrorOther1"
           data-display="asdasd"
           data-errors="Not all input parsed: asdasd"
           data-type="any"
@@ -830,7 +830,7 @@ exports[`formulaType "spreadsheet" - "=a123 1" 1`] = `
         </mark>
         <mark
           class="mashcard-formula-mark"
-          data-code="parseErrorOther"
+          data-code="parseErrorOther1"
           data-display="1"
           data-errors="Not all input parsed: 1"
           data-type="any"

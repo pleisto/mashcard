@@ -14,17 +14,25 @@ export const addSpaceStep: CodeFragmentStep = ({ input: { codeFragments }, meta:
   }
 
   let restInput = input
-  let error = false
-  codeFragments.forEach(codeFragment => {
+  let error: any
+  codeFragments.forEach((codeFragment, index) => {
     if (error) return
     const replacements = [...(codeFragment.replacements ?? []), codeFragment.display]
 
     const r = replacements.find(replacement => restInput.toUpperCase().startsWith(replacement.toUpperCase()))
     if (r) {
       finalCodeFragments.push(codeFragment)
-      restInput = restInput.substr(r.length)
+      restInput = restInput.substring(r.length)
     } else {
-      error = true
+      finalCodeFragments.push({
+        code: 'parseErrorOther3',
+        type: 'any',
+        display: restInput,
+        errors: codeFragments.slice(index + 1).flatMap(c => c.errors),
+        attrs: undefined
+      })
+      error = codeFragment
+      return
     }
 
     const prefixSpaceCount = restInput.length - restInput.trimStart().length
@@ -34,11 +42,6 @@ export const addSpaceStep: CodeFragmentStep = ({ input: { codeFragments }, meta:
       restInput = restInput.substring(prefixSpaceCount)
     }
   })
-
-  if (error) {
-    console.debug('addSpaceStep error', input, codeFragments, restInput, finalCodeFragments)
-    return { codeFragments }
-  }
 
   return { codeFragments: finalCodeFragments }
 }

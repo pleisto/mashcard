@@ -7,6 +7,7 @@ import {
   CodeFragment,
   Completion,
   ErrorType,
+  ExpressionType,
   FormulaDefinition,
   FunctionContext,
   VariableMetadata,
@@ -109,6 +110,7 @@ export interface BaseTestCase<T extends object> {
   definition?: string
   newAbbrevInput?: string
   groupOptions?: GroupOption[]
+  expressionType?: ExpressionType
   currentGroupOption?: any
   label?: string
   expected?: [ExpectedType<T>, ...Array<ExpectedType<T>>]

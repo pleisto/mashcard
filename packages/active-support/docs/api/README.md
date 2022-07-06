@@ -28,10 +28,6 @@
 - [partial](README.md#partial)
 - [partialRight](README.md#partialright)
 
-### Variables
-
-- [memoize](README.md#memoize)
-
 ### Functions
 
 - [after](README.md#after)
@@ -106,6 +102,7 @@
 - [kebabCase](README.md#kebabcase)
 - [keyBy](README.md#keyby)
 - [last](README.md#last)
+- [memoize](README.md#memoize)
 - [ms](README.md#ms)
 - [noop](README.md#noop)
 - [nth](README.md#nth)
@@ -194,7 +191,9 @@ This method is like `_.intersection` except that it accepts `iteratee`
 which is invoked for each element of each `arrays` to generate the criterion
 by which uniqueness is computed. The iteratee is invoked with one argument: (value).
 
-**`example`** \_.intersectionBy([2.1, 1.2], [4.3, 2.4], Math.floor);
+**`Example`**
+
+\_.intersectionBy([2.1, 1.2], [4.3, 2.4], Math.floor);
 // => [2.1]
 
 // using the `_.property` iteratee shorthand
@@ -224,7 +223,9 @@ Returns the new array of shared values.
 
 ▸ **intersectionBy**<`T1`, `T2`, `T3`\>(`array`, `values1`, `values2`, `iteratee`): `T1`[]
 
-**`see`** \_.intersectionBy
+**`See`**
+
+\_.intersectionBy
 
 #### Type parameters
 
@@ -249,7 +250,9 @@ Returns the new array of shared values.
 
 ▸ **intersectionBy**<`T1`, `T2`, `T3`, `T4`\>(`array`, `values1`, `values2`, ...`values`): `T1`[]
 
-**`see`** \_.intersectionBy
+**`See`**
+
+\_.intersectionBy
 
 #### Type parameters
 
@@ -275,7 +278,9 @@ Returns the new array of shared values.
 
 ▸ **intersectionBy**<`T`\>(`array?`, ...`values`): `T`[]
 
-**`see`** \_.intersectionBy
+**`See`**
+
+\_.intersectionBy
 
 #### Type parameters
 
@@ -296,7 +301,9 @@ Returns the new array of shared values.
 
 ▸ **intersectionBy**<`T`\>(...`values`): `T`[]
 
-**`see`** \_.intersectionBy
+**`See`**
+
+\_.intersectionBy
 
 #### Type parameters
 
@@ -324,29 +331,36 @@ Creates an array of unique `array` values not included in the other
 provided arrays using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
 for equality comparisons.
 
-**`example`** ```ts
-var objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
-var others = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
+**`Example`**
 
-_.intersectionWith(objects, others, _.isEqual);
+```ts
+var objects = [
+  { x: 1, y: 2 },
+  { x: 2, y: 1 }
+]
+var others = [
+  { x: 1, y: 1 },
+  { x: 1, y: 2 }
+]
+
+_.intersectionWith(objects, others, _.isEqual)
 // => [{ 'x': 1, 'y': 2 }]
-
-````
+```
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> | - |
-| `values?` | `List`<`T2`\> | The arrays to inspect. |
-| `comparator?` | `Comparator2`<`T1`, `T2`\> | The comparator invoked per element. |
+| Name          | Type                                   | Description                         |
+| :------------ | :------------------------------------- | :---------------------------------- |
+| `array`       | `undefined` \| `null` \| `List`<`T1`\> | -                                   |
+| `values?`     | `List`<`T2`\>                          | The arrays to inspect.              |
+| `comparator?` | `Comparator2`<`T1`, `T2`\>             | The comparator invoked per element. |
 
 #### Returns
 
@@ -356,24 +370,26 @@ Returns the new array of filtered values.
 
 ▸ **intersectionWith**<`T1`, `T2`, `T3`\>(`array`, `values1`, `values2`, `comparator`): `T1`[]
 
-**`see`** _.intersectionWith
+**`See`**
+
+\_.intersectionWith
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
-| `comparator` | `Comparator2`<`T1`, `T2` \| `T3`\> |
+| Name         | Type                                   |
+| :----------- | :------------------------------------- |
+| `array`      | `undefined` \| `null` \| `List`<`T1`\> |
+| `values1`    | `List`<`T2`\>                          |
+| `values2`    | `List`<`T3`\>                          |
+| `comparator` | `Comparator2`<`T1`, `T2` \| `T3`\>     |
 
 #### Returns
 
@@ -381,12 +397,14 @@ Returns the new array of filtered values.
 
 ▸ **intersectionWith**<`T1`, `T2`, `T3`, `T4`\>(`array`, `values1`, `values2`, ...`values`): `T1`[]
 
-**`see`** _.intersectionWith
+**`See`**
+
+\_.intersectionWith
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 | `T3` |
@@ -394,11 +412,11 @@ Returns the new array of filtered values.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T1`\> |
-| `values1` | `List`<`T2`\> |
-| `values2` | `List`<`T3`\> |
+| Name        | Type                                                            |
+| :---------- | :-------------------------------------------------------------- |
+| `array`     | `undefined` \| `null` \| `List`<`T1`\>                          |
+| `values1`   | `List`<`T2`\>                                                   |
+| `values2`   | `List`<`T3`\>                                                   |
 | `...values` | (`List`<`T4`\> \| `Comparator2`<`T1`, `T2` \| `T3` \| `T4`\>)[] |
 
 #### Returns
@@ -407,26 +425,28 @@ Returns the new array of filtered values.
 
 ▸ **intersectionWith**<`T`\>(`array?`, ...`values`): `T`[]
 
-**`see`** _.intersectionWith
+**`See`**
+
+\_.intersectionWith
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array?` | ``null`` \| `List`<`T`\> |
+| Name        | Type                                             |
+| :---------- | :----------------------------------------------- |
+| `array?`    | `null` \| `List`<`T`\>                           |
 | `...values` | (`List`<`T`\> \| `Comparator2`<`T`, `never`\>)[] |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="pullall" name="pullall"></a> pullAll
 
@@ -436,13 +456,15 @@ This method is like `_.pull` except that it accepts an array of values to remove
 
 **Note:** Unlike `_.difference`, this method mutates `array`.
 
-**`example`** ```ts
-var array = [1, 2, 3, 1, 2, 3];
+**`Example`**
 
-_.pull(array, [2, 3]);
-console.log(array);
+```ts
+var array = [1, 2, 3, 1, 2, 3]
+
+_.pull(array, [2, 3])
+console.log(array)
 // => [1, 1]
-````
+```
 
 #### Type parameters
 
@@ -465,7 +487,9 @@ Returns `array`.
 
 ▸ **pullAll**<`T`\>(`array`, `values?`): `List`<`T`\>
 
-**`see`** \_.pullAll
+**`See`**
+
+\_.pullAll
 
 #### Type parameters
 
@@ -496,27 +520,28 @@ by which uniqueness is computed. The iteratee is invoked with one argument: (val
 
 **Note:** Unlike `_.differenceBy`, this method mutates `array`.
 
-**`example`** ```ts
-var array = [{ 'x': 1 }, { 'x': 2 }, { 'x': 3 }, { 'x': 1 }];
+**`Example`**
 
-\_.pullAllBy(array, [{ 'x': 1 }, { 'x': 3 }], 'x');
-console.log(array);
+```ts
+var array = [{ x: 1 }, { x: 2 }, { x: 3 }, { x: 1 }]
+
+_.pullAllBy(array, [{ x: 1 }, { x: 3 }], 'x')
+console.log(array)
 // => [{ 'x': 2 }]
-
-````
+```
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `T`[] | The array to modify. |
-| `values?` | `List`<`T`\> | The values to remove. |
+| Name        | Type                  | Description                       |
+| :---------- | :-------------------- | :-------------------------------- |
+| `array`     | `T`[]                 | The array to modify.              |
+| `values?`   | `List`<`T`\>          | The values to remove.             |
 | `iteratee?` | `ValueIteratee`<`T`\> | The iteratee invoked per element. |
 
 #### Returns
@@ -527,20 +552,22 @@ Returns `array`.
 
 ▸ **pullAllBy**<`T`\>(`array`, `values?`, `iteratee?`): `List`<`T`\>
 
-**`see`** _.pullAllBy
+**`See`**
+
+\_.pullAllBy
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `List`<`T`\> |
-| `values?` | `List`<`T`\> |
+| Name        | Type                  |
+| :---------- | :-------------------- |
+| `array`     | `List`<`T`\>          |
+| `values?`   | `List`<`T`\>          |
 | `iteratee?` | `ValueIteratee`<`T`\> |
 
 #### Returns
@@ -549,21 +576,23 @@ Returns `array`.
 
 ▸ **pullAllBy**<`T1`, `T2`\>(`array`, `values`, `iteratee`): `T1`[]
 
-**`see`** _.pullAllBy
+**`See`**
+
+\_.pullAllBy
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `T1`[] |
-| `values` | `List`<`T2`\> |
+| Name       | Type                           |
+| :--------- | :----------------------------- |
+| `array`    | `T1`[]                         |
+| `values`   | `List`<`T2`\>                  |
 | `iteratee` | `ValueIteratee`<`T1` \| `T2`\> |
 
 #### Returns
@@ -572,28 +601,30 @@ Returns `array`.
 
 ▸ **pullAllBy**<`T1`, `T2`\>(`array`, `values`, `iteratee`): `List`<`T1`\>
 
-**`see`** _.pullAllBy
+**`See`**
+
+\_.pullAllBy
 
 #### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T1` |
 | `T2` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `List`<`T1`\> |
-| `values` | `List`<`T2`\> |
+| Name       | Type                           |
+| :--------- | :----------------------------- |
+| `array`    | `List`<`T1`\>                  |
+| `values`   | `List`<`T2`\>                  |
 | `iteratee` | `ValueIteratee`<`T1` \| `T2`\> |
 
 #### Returns
 
 `List`<`T1`\>
 
-___
+---
 
 ### <a id="pullallwith" name="pullallwith"></a> pullAllWith
 
@@ -605,13 +636,19 @@ two arguments: (arrVal, othVal).
 
 **Note:** Unlike `_.differenceWith`, this method mutates `array`.
 
-**`example`** ```ts
-var array = [{ 'x': 1, 'y': 2 }, { 'x': 3, 'y': 4 }, { 'x': 5, 'y': 6 }];
+**`Example`**
 
-_.pullAllWith(array, [{ 'x': 3, 'y': 4 }], _.isEqual);
-console.log(array);
+```ts
+var array = [
+  { x: 1, y: 2 },
+  { x: 3, y: 4 },
+  { x: 5, y: 6 }
+]
+
+_.pullAllWith(array, [{ x: 3, y: 4 }], _.isEqual)
+console.log(array)
 // => [{ 'x': 1, 'y': 2 }, { 'x': 5, 'y': 6 }]
-````
+```
 
 #### Type parameters
 
@@ -635,7 +672,9 @@ Returns `array`.
 
 ▸ **pullAllWith**<`T`\>(`array`, `values?`, `comparator?`): `List`<`T`\>
 
-**`see`** \_.pullAllWith
+**`See`**
+
+\_.pullAllWith
 
 #### Type parameters
 
@@ -657,7 +696,9 @@ Returns `array`.
 
 ▸ **pullAllWith**<`T1`, `T2`\>(`array`, `values`, `comparator`): `T1`[]
 
-**`see`** \_.pullAllWith
+**`See`**
+
+\_.pullAllWith
 
 #### Type parameters
 
@@ -680,7 +721,9 @@ Returns `array`.
 
 ▸ **pullAllWith**<`T1`, `T2`\>(`array`, `values`, `comparator`): `List`<`T1`\>
 
-**`see`** \_.pullAllWith
+**`See`**
+
+\_.pullAllWith
 
 #### Type parameters
 
@@ -710,27 +753,28 @@ Returns `array`.
 Uses a binary search to determine the lowest index at which `value` should
 be inserted into `array` in order to maintain its sort order.
 
-**`example`** ```ts
-\_.sortedIndex([30, 50], 40);
+**`Example`**
+
+```ts
+_.sortedIndex([30, 50], 40)
 // => 1
 
-\_.sortedIndex([4, 5], 4);
+_.sortedIndex([4, 5], 4)
 // => 0
-
-````
+```
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The sorted array to inspect. |
-| `value` | `T` | The value to evaluate. |
+| Name    | Type                                  | Description                  |
+| :------ | :------------------------------------ | :--------------------------- |
+| `array` | `undefined` \| `null` \| `List`<`T`\> | The sorted array to inspect. |
+| `value` | `T`                                   | The value to evaluate.       |
 
 #### Returns
 
@@ -743,13 +787,15 @@ Returns the index at which `value` should be inserted into `array`.
 Uses a binary search to determine the lowest index at which `value` should
 be inserted into `array` in order to maintain its sort order.
 
-**`example`** ```ts
-_.sortedIndex([30, 50], 40);
+**`Example`**
+
+```ts
+_.sortedIndex([30, 50], 40)
 // => 1
 
-_.sortedIndex([4, 5], 4);
+_.sortedIndex([4, 5], 4)
 // => 0
-````
+```
 
 #### Type parameters
 
@@ -780,7 +826,9 @@ This method is like `_.sortedIndex` except that it accepts `iteratee`
 which is invoked for `value` and each element of `array` to compute their
 sort ranking. The iteratee is invoked with one argument: (value).
 
-**`example`** var dict = { 'thirty': 30, 'forty': 40, 'fifty': 50 };
+**`Example`**
+
+var dict = { 'thirty': 30, 'forty': 40, 'fifty': 50 };
 
 _.sortedIndexBy(['thirty', 'fifty'], 'forty', _.propertyOf(dict));
 // => 1
@@ -818,24 +866,25 @@ Returns the index at which `value` should be inserted into `array`.
 This method is like `_.indexOf` except that it performs a binary
 search on a sorted `array`.
 
-**`example`** ```ts
-\_.sortedIndexOf([1, 1, 2, 2], 2);
-// => 2
+**`Example`**
 
-````
+```ts
+_.sortedIndexOf([1, 1, 2, 2], 2)
+// => 2
+```
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to search. |
-| `value` | `T` | The value to search for. |
+| Name    | Type                                  | Description              |
+| :------ | :------------------------------------ | :----------------------- |
+| `array` | `undefined` \| `null` \| `List`<`T`\> | The array to search.     |
+| `value` | `T`                                   | The value to search for. |
 
 #### Returns
 
@@ -843,7 +892,7 @@ search on a sorted `array`.
 
 Returns the index of the matched value, else `-1`.
 
-___
+---
 
 ### <a id="sortedlastindex" name="sortedlastindex"></a> sortedLastIndex
 
@@ -853,10 +902,12 @@ This method is like `_.sortedIndex` except that it returns the highest
 index at which `value` should be inserted into `array` in order to
 maintain its sort order.
 
-**`example`** ```ts
-_.sortedLastIndex([4, 5], 4);
+**`Example`**
+
+```ts
+_.sortedLastIndex([4, 5], 4)
 // => 1
-````
+```
 
 #### Type parameters
 
@@ -887,7 +938,9 @@ This method is like `_.sortedLastIndex` except that it accepts `iteratee`
 which is invoked for `value` and each element of `array` to compute their
 sort ranking. The iteratee is invoked with one argument: (value).
 
-**`example`** // using the `_.property` iteratee shorthand
+**`Example`**
+
+// using the `_.property` iteratee shorthand
 \_.sortedLastIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, 'x');
 // => 1
 
@@ -920,24 +973,25 @@ Returns the index at which `value` should be inserted into `array`.
 This method is like `_.lastIndexOf` except that it performs a binary
 search on a sorted `array`.
 
-**`example`** ```ts
-\_.sortedLastIndexOf([1, 1, 2, 2], 2);
-// => 3
+**`Example`**
 
-````
+```ts
+_.sortedLastIndexOf([1, 1, 2, 2], 2)
+// => 3
+```
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to search. |
-| `value` | `T` | The value to search for. |
+| Name    | Type                                  | Description              |
+| :------ | :------------------------------------ | :----------------------- |
+| `array` | `undefined` \| `null` \| `List`<`T`\> | The array to search.     |
+| `value` | `T`                                   | The value to search for. |
 
 #### Returns
 
@@ -945,7 +999,7 @@ search on a sorted `array`.
 
 Returns the index of the matched value, else `-1`.
 
-___
+---
 
 ### <a id="sorteduniq" name="sorteduniq"></a> sortedUniq
 
@@ -954,10 +1008,12 @@ ___
 This method is like `_.uniq` except that it's designed and optimized
 for sorted arrays.
 
-**`example`** ```ts
-_.sortedUniq([1, 1, 2]);
+**`Example`**
+
+```ts
+_.sortedUniq([1, 1, 2])
 // => [1, 2]
-````
+```
 
 #### Type parameters
 
@@ -986,24 +1042,25 @@ Returns the new duplicate free array.
 This method is like `_.uniqBy` except that it's designed and optimized
 for sorted arrays.
 
-**`example`** ```ts
-\_.sortedUniqBy([1.1, 1.2, 2.3, 2.4], Math.floor);
-// => [1.1, 2.3]
+**`Example`**
 
-````
+```ts
+_.sortedUniqBy([1.1, 1.2, 2.3, 2.4], Math.floor)
+// => [1.1, 2.3]
+```
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to inspect. |
-| `iteratee?` | `ValueIteratee`<`T`\> | The iteratee invoked per element. |
+| Name        | Type                                  | Description                       |
+| :---------- | :------------------------------------ | :-------------------------------- |
+| `array`     | `undefined` \| `null` \| `List`<`T`\> | The array to inspect.             |
+| `iteratee?` | `ValueIteratee`<`T`\>                 | The iteratee invoked per element. |
 
 #### Returns
 
@@ -1011,7 +1068,7 @@ for sorted arrays.
 
 Returns the new duplicate free array.
 
-___
+---
 
 ### <a id="unionwith" name="unionwith"></a> unionWith
 
@@ -1021,13 +1078,21 @@ This method is like `_.union` except that it accepts `comparator` which
 is invoked to compare elements of `arrays`. The comparator is invoked
 with two arguments: (arrVal, othVal).
 
-**`example`** ```ts
-var objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
-var others = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
+**`Example`**
 
-_.unionWith(objects, others, _.isEqual);
+```ts
+var objects = [
+  { x: 1, y: 2 },
+  { x: 2, y: 1 }
+]
+var others = [
+  { x: 1, y: 1 },
+  { x: 1, y: 2 }
+]
+
+_.unionWith(objects, others, _.isEqual)
 // => [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }, { 'x': 1, 'y': 1 }]
-````
+```
 
 #### Type parameters
 
@@ -1050,7 +1115,9 @@ Returns the new array of combined values.
 
 ▸ **unionWith**<`T`\>(`arrays`, `arrays2`, `comparator?`): `T`[]
 
-**`see`** \_.unionWith
+**`See`**
+
+\_.unionWith
 
 #### Type parameters
 
@@ -1072,7 +1139,9 @@ Returns the new array of combined values.
 
 ▸ **unionWith**<`T`\>(`arrays`, `arrays2`, `arrays3`, ...`comparator`): `T`[]
 
-**`see`** \_.unionWith
+**`See`**
+
+\_.unionWith
 
 #### Type parameters
 
@@ -1103,7 +1172,9 @@ This method is like `_.uniq` except that it accepts `iteratee` which is
 invoked for each element in `array` to generate the criterion by which
 uniqueness is computed. The iteratee is invoked with one argument: (value).
 
-**`example`** \_.uniqBy([2.1, 1.2, 2.3], Math.floor);
+**`Example`**
+
+\_.uniqBy([2.1, 1.2, 2.3], Math.floor);
 // => [2.1, 1.2]
 
 // using the `_.property` iteratee shorthand
@@ -1139,26 +1210,31 @@ This method is like `_.uniq` except that it accepts `comparator` which
 is invoked to compare elements of `array`. The comparator is invoked with
 two arguments: (arrVal, othVal).
 
-**`example`** ```ts
-var objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }, { 'x': 1, 'y': 2 }];
+**`Example`**
 
-_.uniqWith(objects, _.isEqual);
+```ts
+var objects = [
+  { x: 1, y: 2 },
+  { x: 2, y: 1 },
+  { x: 1, y: 2 }
+]
+
+_.uniqWith(objects, _.isEqual)
 // => [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }]
-
-````
+```
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `undefined` \| ``null`` \| `List`<`T`\> | The array to inspect. |
-| `comparator?` | `Comparator`<`T`\> | The comparator invoked per element. |
+| Name          | Type                                  | Description                         |
+| :------------ | :------------------------------------ | :---------------------------------- |
+| `array`       | `undefined` \| `null` \| `List`<`T`\> | The array to inspect.               |
+| `comparator?` | `Comparator`<`T`\>                    | The comparator invoked per element. |
 
 #### Returns
 
@@ -1166,7 +1242,7 @@ _.uniqWith(objects, _.isEqual);
 
 Returns the new duplicate free array.
 
-___
+---
 
 ### <a id="xorby" name="xorby"></a> xorBy
 
@@ -1176,25 +1252,27 @@ This method is like `_.xor` except that it accepts `iteratee` which is
 invoked for each element of each `arrays` to generate the criterion by which
 uniqueness is computed. The iteratee is invoked with one argument: (value).
 
-**`example`** _.xorBy([2.1, 1.2], [4.3, 2.4], Math.floor);
+**`Example`**
+
+\_.xorBy([2.1, 1.2], [4.3, 2.4], Math.floor);
 // => [1.2, 4.3]
 
 // using the `_.property` iteratee shorthand
-_.xorBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
+\_.xorBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
 // => [{ 'x': 2 }]
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `arrays?` | ``null`` \| `List`<`T`\> | The arrays to inspect. |
-| `iteratee?` | `ValueIteratee`<`T`\> | The iteratee invoked per element. |
+| Name        | Type                   | Description                       |
+| :---------- | :--------------------- | :-------------------------------- |
+| `arrays?`   | `null` \| `List`<`T`\> | The arrays to inspect.            |
+| `iteratee?` | `ValueIteratee`<`T`\>  | The iteratee invoked per element. |
 
 #### Returns
 
@@ -1204,21 +1282,23 @@ Returns the new array of values.
 
 ▸ **xorBy**<`T`\>(`arrays`, `arrays2`, `iteratee?`): `T`[]
 
-**`see`** _.xorBy
+**`See`**
+
+\_.xorBy
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee?` | `ValueIteratee`<`T`\> |
+| Name        | Type                                  |
+| :---------- | :------------------------------------ |
+| `arrays`    | `undefined` \| `null` \| `List`<`T`\> |
+| `arrays2`   | `undefined` \| `null` \| `List`<`T`\> |
+| `iteratee?` | `ValueIteratee`<`T`\>                 |
 
 #### Returns
 
@@ -1226,28 +1306,30 @@ Returns the new array of values.
 
 ▸ **xorBy**<`T`\>(`arrays`, `arrays2`, `arrays3`, ...`iteratee`): `T`[]
 
-**`see`** _.xorBy
+**`See`**
+
+\_.xorBy
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arrays` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays2` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `arrays3` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `...iteratee` | (`undefined` \| ``null`` \| `List`<`T`\> \| `ValueIteratee`<`T`\>)[] |
+| Name          | Type                                                               |
+| :------------ | :----------------------------------------------------------------- |
+| `arrays`      | `undefined` \| `null` \| `List`<`T`\>                              |
+| `arrays2`     | `undefined` \| `null` \| `List`<`T`\>                              |
+| `arrays3`     | `undefined` \| `null` \| `List`<`T`\>                              |
+| `...iteratee` | (`undefined` \| `null` \| `List`<`T`\> \| `ValueIteratee`<`T`\>)[] |
 
 #### Returns
 
 `T`[]
 
-___
+---
 
 ### <a id="xorwith" name="xorwith"></a> xorWith
 
@@ -1257,13 +1339,21 @@ This method is like `_.xor` except that it accepts `comparator` which is
 invoked to compare elements of `arrays`. The comparator is invoked with
 two arguments: (arrVal, othVal).
 
-**`example`** ```ts
-var objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
-var others = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
+**`Example`**
 
-_.xorWith(objects, others, _.isEqual);
+```ts
+var objects = [
+  { x: 1, y: 2 },
+  { x: 2, y: 1 }
+]
+var others = [
+  { x: 1, y: 1 },
+  { x: 1, y: 2 }
+]
+
+_.xorWith(objects, others, _.isEqual)
 // => [{ 'x': 2, 'y': 1 }, { 'x': 1, 'y': 1 }]
-````
+```
 
 #### Type parameters
 
@@ -1286,7 +1376,9 @@ Returns the new array of values.
 
 ▸ **xorWith**<`T`\>(`arrays`, `arrays2`, `comparator?`): `T`[]
 
-**`see`** \_.xorWith
+**`See`**
+
+\_.xorWith
 
 #### Type parameters
 
@@ -1308,7 +1400,9 @@ Returns the new array of values.
 
 ▸ **xorWith**<`T`\>(`arrays`, `arrays2`, `arrays3`, ...`comparator`): `T`[]
 
-**`see`** \_.xorWith
+**`See`**
+
+\_.xorWith
 
 #### Type parameters
 
@@ -1338,29 +1432,32 @@ Returns the new array of values.
 This method is like `_.flatMap` except that it recursively flattens the
 mapped results.
 
-**`since`** 4.7.0
+**`Since`**
 
-**`example`** ```ts
+4.7.0
+
+**`Example`**
+
+```ts
 function duplicate(n) {
-return [[[n, n]]];
+  return [[[n, n]]]
 }
 
-\_.flatMapDeep([1, 2], duplicate);
+_.flatMapDeep([1, 2], duplicate)
 // => [1, 1, 2, 2]
-
-````
+```
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `Dictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> \| `NumericDictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> | The collection to iterate over. |
+| Name         | Type                                                                                                                                                       | Description                     |
+| :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------ |
+| `collection` | `undefined` \| `null` \| `Dictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> \| `NumericDictionary`<`T` \| `ListOfRecursiveArraysOrValues`<`T`\>\> | The collection to iterate over. |
 
 #### Returns
 
@@ -1370,21 +1467,23 @@ Returns the new flattened array.
 
 ▸ **flatMapDeep**<`T`, `TResult`\>(`collection`, `iteratee`): `TResult`[]
 
-**`see`** _.flatMapDeep
+**`See`**
+
+\_.flatMapDeep
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name      |
+| :-------- |
+| `T`       |
 | `TResult` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> |
-| `iteratee` | `ListIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
+| Name         | Type                                                                           |
+| :----------- | :----------------------------------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\>                                          |
+| `iteratee`   | `ListIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
 
 #### Returns
 
@@ -1392,21 +1491,23 @@ Returns the new flattened array.
 
 ▸ **flatMapDeep**<`T`, `TResult`\>(`collection`, `iteratee`): `TResult`[]
 
-**`see`** _.flatMapDeep
+**`See`**
+
+\_.flatMapDeep
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-| `TResult` | `TResult` |
+| Name      | Type             |
+| :-------- | :--------------- |
+| `T`       | extends `object` |
+| `TResult` | `TResult`        |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
-| `iteratee` | `ObjectIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
+| Name         | Type                                                                             |
+| :----------- | :------------------------------------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `T`                                                     |
+| `iteratee`   | `ObjectIterator`<`T`, `TResult` \| `ListOfRecursiveArraysOrValues`<`TResult`\>\> |
 
 #### Returns
 
@@ -1414,14 +1515,16 @@ Returns the new flattened array.
 
 ▸ **flatMapDeep**(`collection`, `iteratee`): `any`[]
 
-**`see`** _.flatMapDeep
+**`See`**
+
+\_.flatMapDeep
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
-| `iteratee` | `string` |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
+| `iteratee`   | `string`                          |
 
 #### Returns
 
@@ -1429,20 +1532,22 @@ Returns the new flattened array.
 
 ▸ **flatMapDeep**(`collection`, `iteratee`): `boolean`[]
 
-**`see`** _.flatMapDeep
+**`See`**
+
+\_.flatMapDeep
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `object` |
-| `iteratee` | `object` |
+| Name         | Type                              |
+| :----------- | :-------------------------------- |
+| `collection` | `undefined` \| `null` \| `object` |
+| `iteratee`   | `object`                          |
 
 #### Returns
 
 `boolean`[]
 
-___
+---
 
 ### <a id="flatmapdepth" name="flatmapdepth"></a> flatMapDepth
 
@@ -1451,16 +1556,20 @@ ___
 This method is like `_.flatMap` except that it recursively flattens the
 mapped results up to `depth` times.
 
-**`since`** 4.7.0
+**`Since`**
 
-**`example`** ```ts
+4.7.0
+
+**`Example`**
+
+```ts
 function duplicate(n) {
-  return [[[n, n]]];
+  return [[[n, n]]]
 }
 
-_.flatMapDepth([1, 2], duplicate, 2);
+_.flatMapDepth([1, 2], duplicate, 2)
 // => [[1, 1], [2, 2]]
-````
+```
 
 #### Type parameters
 
@@ -1482,7 +1591,9 @@ Returns the new flattened array.
 
 ▸ **flatMapDepth**<`T`, `TResult`\>(`collection`, `iteratee`, `depth?`): `TResult`[]
 
-**`see`** \_.flatMapDepth
+**`See`**
+
+\_.flatMapDepth
 
 #### Type parameters
 
@@ -1505,7 +1616,9 @@ Returns the new flattened array.
 
 ▸ **flatMapDepth**<`T`, `TResult`\>(`collection`, `iteratee`, `depth?`): `TResult`[]
 
-**`see`** \_.flatMapDepth
+**`See`**
+
+\_.flatMapDepth
 
 #### Type parameters
 
@@ -1528,7 +1641,9 @@ Returns the new flattened array.
 
 ▸ **flatMapDepth**(`collection`, `iteratee`, `depth?`): `any`[]
 
-**`see`** \_.flatMapDepth
+**`See`**
+
+\_.flatMapDepth
 
 #### Parameters
 
@@ -1544,7 +1659,9 @@ Returns the new flattened array.
 
 ▸ **flatMapDepth**(`collection`, `iteratee`, `depth?`): `boolean`[]
 
-**`see`** \_.flatMapDepth
+**`See`**
+
+\_.flatMapDepth
 
 #### Parameters
 
@@ -1569,7 +1686,9 @@ orders of the iteratees to sort by. If `orders` is unspecified, all values
 are sorted in ascending order. Otherwise, specify an order of "desc" for
 descending or "asc" for ascending sort order of corresponding values.
 
-**`example`** var users = [
+**`Example`**
+
+var users = [
 { 'user': 'fred', 'age': 48 },
 { 'user': 'barney', 'age': 34 },
 { 'user': 'fred', 'age': 42 },
@@ -1602,7 +1721,9 @@ Returns the new sorted array.
 
 ▸ **orderBy**<`T`\>(`collection`, `iteratees?`, `orders?`): `T`[]
 
-**`see`** \_.orderBy
+**`See`**
+
+\_.orderBy
 
 #### Type parameters
 
@@ -1624,7 +1745,9 @@ Returns the new sorted array.
 
 ▸ **orderBy**<`T`\>(`collection`, `iteratees?`, `orders?`): `T`[keyof `T`][]
 
-**`see`** \_.orderBy
+**`See`**
+
+\_.orderBy
 
 #### Type parameters
 
@@ -1646,7 +1769,9 @@ Returns the new sorted array.
 
 ▸ **orderBy**<`T`\>(`collection`, `iteratees?`, `orders?`): `T`[keyof `T`][]
 
-**`see`** \_.orderBy
+**`See`**
+
+\_.orderBy
 
 #### Type parameters
 
@@ -1677,39 +1802,42 @@ running each element in a collection through each iteratee. This method
 performs a stable sort, that is, it preserves the original sort order of
 equal elements. The iteratees are invoked with one argument: (value).
 
-**`example`** ```ts
-var users = [
-{ 'user': 'fred', 'age': 48 },
-{ 'user': 'barney', 'age': 36 },
-{ 'user': 'fred', 'age': 42 },
-{ 'user': 'barney', 'age': 34 }
-];
+**`Example`**
 
-\_.sortBy(users, function(o) { return o.user; });
+```ts
+var users = [
+  { user: 'fred', age: 48 },
+  { user: 'barney', age: 36 },
+  { user: 'fred', age: 42 },
+  { user: 'barney', age: 34 }
+]
+
+_.sortBy(users, function (o) {
+  return o.user
+})
 // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 42]]
 
-\_.sortBy(users, ['user', 'age']);
+_.sortBy(users, ['user', 'age'])
 // => objects for [['barney', 34], ['barney', 36], ['fred', 42], ['fred', 48]]
 
-\_.sortBy(users, 'user', function(o) {
-return Math.floor(o.age / 10);
-});
+_.sortBy(users, 'user', function (o) {
+  return Math.floor(o.age / 10)
+})
 // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 42]]
-
-````
+```
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `List`<`T`\> | The collection to iterate over. |
-| `...iteratees?` | `Many`<`ListIteratee`<`T`\>\>[] | The iteratees to sort by, specified individually or in arrays. |
+| Name            | Type                                  | Description                                                    |
+| :-------------- | :------------------------------------ | :------------------------------------------------------------- |
+| `collection`    | `undefined` \| `null` \| `List`<`T`\> | The collection to iterate over.                                |
+| `...iteratees?` | `Many`<`ListIteratee`<`T`\>\>[]       | The iteratees to sort by, specified individually or in arrays. |
 
 #### Returns
 
@@ -1719,19 +1847,21 @@ Returns the new sorted array.
 
 ▸ **sortBy**<`T`\>(`collection`, ...`iteratees`): `T`[keyof `T`][]
 
-**`see`** _.sortBy
+**`See`**
+
+\_.sortBy
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `collection` | `undefined` \| ``null`` \| `T` |
+| Name           | Type                              |
+| :------------- | :-------------------------------- |
+| `collection`   | `undefined` \| `null` \| `T`      |
 | `...iteratees` | `Many`<`ObjectIteratee`<`T`\>\>[] |
 
 #### Returns
@@ -1747,10 +1877,12 @@ Returns the new sorted array.
 Creates a function that accepts up to one argument, ignoring any
 additional arguments.
 
-**`example`** ```ts
-_.map(['6', '8', '10'], _.unary(parseInt));
+**`Example`**
+
+```ts
+_.map(['6', '8', '10'], _.unary(parseInt))
 // => [6, 8, 10]
-````
+```
 
 #### Type parameters
 
@@ -1776,19 +1908,22 @@ Returns the new function.
 Creates a function that accepts up to one argument, ignoring any
 additional arguments.
 
-**`category`** Function
+**`Category`**
 
-**`example`** ```ts
-_.map(['6', '8', '10'], _.unary(parseInt));
+Function
+
+**`Example`**
+
+```ts
+_.map(['6', '8', '10'], _.unary(parseInt))
 // => [6, 8, 10]
-
-````
+```
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arg1` | `T` |
+| Name   | Type |
+| :----- | :--- |
+| `arg1` | `T`  |
 
 ##### Returns
 
@@ -1811,16 +1946,18 @@ sets, strings, symbols, and typed arrays. `Object` objects are compared
 by their own, not inherited, enumerable properties. Functions and DOM
 nodes are **not** supported.
 
-**`example`** ```ts
-var object = { 'user': 'fred' };
-var other = { 'user': 'fred' };
+**`Example`**
 
-_.isEqual(object, other);
+```ts
+var object = { user: 'fred' }
+var other = { user: 'fred' }
+
+_.isEqual(object, other)
 // => true
 
-object === other;
+object === other
 // => false
-````
+```
 
 #### Parameters
 
@@ -1845,25 +1982,26 @@ Checks if `value` is an integer.
 
 **Note:** This method is based on [`Number.isInteger`](https://mdn.io/Number/isInteger).
 
-**`example`** ```ts
-\_.isInteger(3);
+**`Example`**
+
+```ts
+_.isInteger(3)
 // => true
 
-\_.isInteger(Number.MIN_VALUE);
+_.isInteger(Number.MIN_VALUE)
 // => false
 
-\_.isInteger(Infinity);
+_.isInteger(Infinity)
 // => false
 
-\_.isInteger('3');
+_.isInteger('3')
 // => false
-
-````
+```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name     | Type  | Description         |
+| :------- | :---- | :------------------ |
 | `value?` | `any` | The value to check. |
 
 #### Returns
@@ -1872,7 +2010,7 @@ Checks if `value` is an integer.
 
 Returns `true` if `value` is an integer, else `false`.
 
-___
+---
 
 ### <a id="ismatch" name="ismatch"></a> isMatch
 
@@ -1883,15 +2021,17 @@ Performs a deep comparison between `object` and `source` to determine if
 
 **Note:** This method supports comparing the same values as `_.isEqual`.
 
-**`example`** ```ts
-var object = { 'user': 'fred', 'age': 40 };
+**`Example`**
 
-_.isMatch(object, { 'age': 40 });
+```ts
+var object = { user: 'fred', age: 40 }
+
+_.isMatch(object, { age: 40 })
 // => true
 
-_.isMatch(object, { 'age': 36 });
+_.isMatch(object, { age: 36 })
 // => false
-````
+```
 
 #### Parameters
 
@@ -1914,22 +2054,23 @@ Returns `true` if `object` is a match, else `false`.
 
 Checks if `value` is `null` or `undefined`.
 
-**`example`** ```ts
-\_.isNil(null);
+**`Example`**
+
+```ts
+_.isNil(null)
 // => true
 
-\_.isNil(void 0);
+_.isNil(void 0)
 // => true
 
-\_.isNil(NaN);
+_.isNil(NaN)
 // => false
-
-````
+```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name    | Type  | Description         |
+| :------ | :---- | :------------------ |
 | `value` | `any` | The value to check. |
 
 #### Returns
@@ -1938,7 +2079,7 @@ value is undefined \| null
 
 Returns `true` if `value` is nullish, else `false`.
 
-___
+---
 
 ### <a id="issymbol" name="issymbol"></a> isSymbol
 
@@ -1946,13 +2087,15 @@ ___
 
 Checks if `value` is classified as a `Symbol` primitive or object.
 
-**`example`** ```ts
-_.isSymbol(Symbol.iterator);
+**`Example`**
+
+```ts
+_.isSymbol(Symbol.iterator)
 // => true
 
-_.isSymbol('abc');
+_.isSymbol('abc')
 // => false
-````
+```
 
 #### Parameters
 
@@ -1974,28 +2117,31 @@ Returns `true` if `value` is correctly classified, else `false`.
 
 Clamps `number` within the inclusive `lower` and `upper` bounds.
 
-**`example`** \_.clamp(-10, -5, 5);
+**`Example`**
+
+\_.clamp(-10, -5, 5);
 // => -5
 
 \_.clamp(10, -5, 5);
 // => 5
 Clamps `number` within the inclusive `lower` and `upper` bounds.
 
-**`example`** ```ts
-\_.clamp(-10, -5, 5);
+**`Example`**
+
+```ts
+_.clamp(-10, -5, 5)
 // => -5
 
-\_.clamp(10, -5, 5);
-
-````
+_.clamp(10, -5, 5)
+```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name     | Type     | Description          |
+| :------- | :------- | :------------------- |
 | `number` | `number` | The number to clamp. |
-| `lower?` | `number` | The lower bound. |
-| `upper` | `number` | The upper bound. |
+| `lower?` | `number` | The lower bound.     |
+| `upper`  | `number` | The upper bound.     |
 
 #### Returns
 
@@ -2007,14 +2153,16 @@ Returns the clamped number.
 
 ▸ **clamp**(`number`, `upper`): `number`
 
-**`see`** _.clamp
+**`See`**
+
+\_.clamp
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type     |
+| :------- | :------- |
 | `number` | `number` |
-| `upper` | `number` |
+| `upper`  | `number` |
 
 #### Returns
 
@@ -2029,12 +2177,14 @@ Returns the clamped number.
 The opposite of `_.pick`; this method creates an object composed of the
 own and inherited enumerable properties of `object` that are not omitted.
 
-**`example`** ```ts
-var object = { 'a': 1, 'b': '2', 'c': 3 };
+**`Example`**
 
-_.omit(object, ['a', 'c']);
+```ts
+var object = { a: 1, b: '2', c: 3 }
+
+_.omit(object, ['a', 'c'])
 // => { 'b': '2' }
-````
+```
 
 #### Type parameters
 
@@ -2058,7 +2208,9 @@ Returns the new object.
 
 ▸ **omit**<`T`, `K`\>(`object`, ...`paths`): `Omit`<`T`, `K`\>
 
-**`see`** \_.omit
+**`See`**
+
+\_.omit
 
 #### Type parameters
 
@@ -2080,7 +2232,9 @@ Returns the new object.
 
 ▸ **omit**<`T`\>(`object`, ...`paths`): `Partial`<`T`\>
 
-**`see`** \_.omit
+**`See`**
+
+\_.omit
 
 #### Type parameters
 
@@ -2109,26 +2263,27 @@ The opposite of `_.pickBy`; this method creates an object composed of the
 own and inherited enumerable properties of `object` that `predicate`
 doesn't return truthy for.
 
-**`example`** ```ts
-var object = { 'a': 1, 'b': '2', 'c': 3 };
+**`Example`**
 
-_.omitBy(object, _.isNumber);
+```ts
+var object = { a: 1, b: '2', c: 3 }
+
+_.omitBy(object, _.isNumber)
 // => { 'b': '2' }
-
-````
+```
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `Dictionary`<`T`\> | The source object. |
-| `predicate?` | `ValueKeyIteratee`<`T`\> | The function invoked per property. |
+| Name         | Type                                        | Description                        |
+| :----------- | :------------------------------------------ | :--------------------------------- |
+| `object`     | `undefined` \| `null` \| `Dictionary`<`T`\> | The source object.                 |
+| `predicate?` | `ValueKeyIteratee`<`T`\>                    | The function invoked per property. |
 
 #### Returns
 
@@ -2138,20 +2293,22 @@ Returns the new object.
 
 ▸ **omitBy**<`T`\>(`object`, `predicate?`): `NumericDictionary`<`T`\>
 
-**`see`** _.omitBy
+**`See`**
+
+\_.omitBy
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `NumericDictionary`<`T`\> |
-| `predicate?` | `ValueKeyIteratee`<`T`\> |
+| Name         | Type                                               |
+| :----------- | :------------------------------------------------- |
+| `object`     | `undefined` \| `null` \| `NumericDictionary`<`T`\> |
+| `predicate?` | `ValueKeyIteratee`<`T`\>                           |
 
 #### Returns
 
@@ -2159,26 +2316,28 @@ Returns the new object.
 
 ▸ **omitBy**<`T`\>(`object`, `predicate`): `Partial`<`T`\>
 
-**`see`** _.omitBy
+**`See`**
+
+\_.omitBy
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type             |
+| :--- | :--------------- |
+| `T`  | extends `object` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `undefined` \| ``null`` \| `T` |
+| Name        | Type                                |
+| :---------- | :---------------------------------- |
+| `object`    | `undefined` \| `null` \| `T`        |
 | `predicate` | `ValueKeyIteratee`<`T`[keyof `T`]\> |
 
 #### Returns
 
 `Partial`<`T`\>
 
-___
+---
 
 ### <a id="pick" name="pick"></a> pick
 
@@ -2186,12 +2345,14 @@ ___
 
 Creates an object composed of the picked `object` properties.
 
-**`example`** ```ts
-var object = { 'a': 1, 'b': '2', 'c': 3 };
+**`Example`**
 
-_.pick(object, ['a', 'c']);
+```ts
+var object = { a: 1, b: '2', c: 3 }
+
+_.pick(object, ['a', 'c'])
 // => { 'a': 1, 'c': 3 }
-````
+```
 
 #### Type parameters
 
@@ -2215,7 +2376,9 @@ Returns the new object.
 
 ▸ **pick**<`T`\>(`object`, ...`props`): `Partial`<`T`\>
 
-**`see`** \_.pick
+**`See`**
+
+\_.pick
 
 #### Type parameters
 
@@ -2242,25 +2405,26 @@ Returns the new object.
 
 Prepend tuple.
 
-**`example`** ```typescript
+**`Example`**
+
+```typescript
 const const: Cons<1, [2, 3, 4]> = [1, 2, 3, 4]
+```
 
-````
-
-**`source`**
+**`Source`**
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `H` | `H` |
-| `T` | extends readonly `any`[] |
+| Name | Type                     |
+| :--- | :----------------------- |
+| `H`  | `H`                      |
+| `T`  | extends readonly `any`[] |
 
 #### Defined in
 
 [packages/active-support/src/typescript.ts:29](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L29)
 
-___
+---
 
 ### <a id="deeppartial" name="deeppartial"></a> DeepPartial
 
@@ -2268,19 +2432,19 @@ ___
 
 make all properties optional recursively.
 
-**`source`**
+**`Source`**
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Defined in
 
 [packages/active-support/src/typescript.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L6)
 
-___
+---
 
 ### <a id="fixedlengthtuple" name="fixedlengthtuple"></a> FixedLengthTuple
 
@@ -2288,11 +2452,13 @@ ___
 
 Fixed length tuple.
 
-**`example`** ```typescript
-const x: FixedLengthTuple<number, 3> = [1, 2, 3]
-````
+**`Example`**
 
-**`source`**
+```typescript
+const x: FixedLengthTuple<number, 3> = [1, 2, 3]
+```
+
+**`Source`**
 
 #### Type parameters
 
@@ -2325,18 +2491,19 @@ const x: FixedLengthTuple<number, 3> = [1, 2, 3]
 
 Prepend Parameter.
 
-**`example`** ```typescript
+**`Example`**
+
+```typescript
 type F = (x: number) => boolean
 type F2 = PrependParameter<string, F> // type F2 = (s: string, x: number) => boolean
+```
 
-````
-
-**`source`**
+**`Source`**
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type                                                                                 |
+| :-------- | :----------------------------------------------------------------------------------- |
 | `...args` | `Extract`<[`Cons`](README.md#cons)<`Param`, `Parameters`<`F`\>\>, readonly `any`[]\> |
 
 ##### Returns
@@ -2347,7 +2514,7 @@ type F2 = PrependParameter<string, F> // type F2 = (s: string, x: number) => boo
 
 [packages/active-support/src/typescript.ts:42](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/typescript.ts#L42)
 
-___
+---
 
 ### <a id="repeat" name="repeat"></a> Repeat
 
@@ -2355,11 +2522,13 @@ ___
 
 Repeat string
 
-**`example`** ```typescript
-const x: Repeat<'1' | '2', 4> = '1122'
-````
+**`Example`**
 
-**`source`**
+```typescript
+const x: Repeat<'1' | '2', 4> = '1122'
+```
+
+**`Source`**
 
 #### Type parameters
 
@@ -2382,7 +2551,7 @@ const x: Repeat<'1' | '2', 4> = '1122'
 
 Make some field required
 
-**`source`**
+**`Source`**
 
 #### Type parameters
 
@@ -2403,7 +2572,7 @@ Make some field required
 
 pick all required properties from an object.
 
-**`source`**
+**`Source`**
 
 #### Type parameters
 
@@ -2444,9 +2613,13 @@ Creates a function that, when called, invokes func with any additional partial a
 prepended to those provided to the new function. This method is similar to \_.bind except
 it does not alter the this binding.
 
-**`param`** The function to partially apply arguments to.
+**`Param`**
 
-**`param`** Arguments to be partially applied.
+The function to partially apply arguments to.
+
+**`Param`**
+
+Arguments to be partially applied.
 
 #### Defined in
 
@@ -2461,23 +2634,17 @@ node_modules/@types/lodash/common/function.d.ts:640
 This method is like \_.partial except that partial arguments are appended to those provided
 to the new function.
 
-**`param`** The function to partially apply arguments to.
+**`Param`**
 
-**`param`** Arguments to be partially applied.
+The function to partially apply arguments to.
+
+**`Param`**
+
+Arguments to be partially applied.
 
 #### Defined in
 
 node_modules/@types/lodash/common/function.d.ts:913
-
----
-
-### <a id="memoize" name="memoize"></a> memoize
-
-• `Const` **memoize**: `Moize`
-
-#### Defined in
-
-node_modules/moize/index.d.ts:248
 
 ---
 
@@ -2634,6 +2801,10 @@ Returns the capitalized string.
 
 ▸ **chunk**<`T`\>(`arr`, `size?`): `T`[][]
 
+ES Version of `lodash.chunk`
+Creates an array of elements split into groups the length of size.
+If array can’t be split evenly, the final chunk will be the remaining elements.
+
 #### Type parameters
 
 | Name |
@@ -2642,14 +2813,16 @@ Returns the capitalized string.
 
 #### Parameters
 
-| Name   | Type     | Default value |
-| :----- | :------- | :------------ |
-| `arr`  | `T`[]    | `undefined`   |
-| `size` | `number` | `1`           |
+| Name   | Type     | Default value | Description               |
+| :----- | :------- | :------------ | :------------------------ |
+| `arr`  | `T`[]    | `undefined`   | The array to process.     |
+| `size` | `number` | `1`           | The length of each chunk. |
 
 #### Returns
 
 `T`[][]
+
+Returns the new array of chunks.
 
 ---
 
@@ -2657,15 +2830,20 @@ Returns the capitalized string.
 
 ▸ **cloneDeep**(`value`): `any`
 
+ES Version of `lodash.cloneDeep`
+Creates a shallow clone of `value`. Assumes that the values of the object are primitive types.
+
 #### Parameters
 
-| Name    | Type  |
-| :------ | :---- |
-| `value` | `any` |
+| Name    | Type  | Description         |
+| :------ | :---- | :------------------ |
+| `value` | `any` | The value to clone. |
 
 #### Returns
 
 `any`
+
+Returns the cloned value.
 
 ---
 
@@ -2753,6 +2931,10 @@ Returns the capitalized string.
 
 ▸ **compact**<`T`\>(`arr`): `T`[]
 
+ES Version of `lodash.compact`
+Creates an array with all falsey values removed.
+The values false, null, 0, "", undefined, and NaN are falsey.
+
 #### Type parameters
 
 | Name |
@@ -2761,13 +2943,15 @@ Returns the capitalized string.
 
 #### Parameters
 
-| Name  | Type  |
-| :---- | :---- |
-| `arr` | `T`[] |
+| Name  | Type  | Description           |
+| :---- | :---- | :-------------------- |
+| `arr` | `T`[] | The array to compact. |
 
 #### Returns
 
 `T`[]
+
+Returns the new array of filtered values.
 
 ---
 
@@ -2800,7 +2984,9 @@ Returns the composed aggregate object.
 
 ▸ **countBy**<`T`\>(`collection`, `iteratee?`): `Dictionary`<`number`\>
 
-**`see`** \_.countBy
+**`See`**
+
+\_.countBy
 
 #### Type parameters
 
@@ -2959,7 +3145,9 @@ Returns the new array of filtered values.
 
 ▸ **differenceBy**<`T1`, `T2`, `T3`\>(`array`, `values1`, `values2`, `iteratee`): `T1`[]
 
-**`see`** \_.differenceBy
+**`See`**
+
+\_.differenceBy
 
 #### Type parameters
 
@@ -2984,7 +3172,9 @@ Returns the new array of filtered values.
 
 ▸ **differenceBy**<`T1`, `T2`, `T3`, `T4`\>(`array`, `values1`, `values2`, `values3`, `iteratee`): `T1`[]
 
-**`see`** \_.differenceBy
+**`See`**
+
+\_.differenceBy
 
 #### Type parameters
 
@@ -3011,7 +3201,9 @@ Returns the new array of filtered values.
 
 ▸ **differenceBy**<`T1`, `T2`, `T3`, `T4`, `T5`\>(`array`, `values1`, `values2`, `values3`, `values4`, `iteratee`): `T1`[]
 
-**`see`** \_.differenceBy
+**`See`**
+
+\_.differenceBy
 
 #### Type parameters
 
@@ -3040,7 +3232,9 @@ Returns the new array of filtered values.
 
 ▸ **differenceBy**<`T1`, `T2`, `T3`, `T4`, `T5`, `T6`\>(`array`, `values1`, `values2`, `values3`, `values4`, `values5`, `iteratee`): `T1`[]
 
-**`see`** \_.differenceBy
+**`See`**
+
+\_.differenceBy
 
 #### Type parameters
 
@@ -3071,7 +3265,9 @@ Returns the new array of filtered values.
 
 ▸ **differenceBy**<`T1`, `T2`, `T3`, `T4`, `T5`, `T6`, `T7`\>(`array`, `values1`, `values2`, `values3`, `values4`, `values5`, ...`values`): `T1`[]
 
-**`see`** \_.differenceBy
+**`See`**
+
+\_.differenceBy
 
 #### Type parameters
 
@@ -3103,7 +3299,9 @@ Returns the new array of filtered values.
 
 ▸ **differenceBy**<`T`\>(`array`, ...`values`): `T`[]
 
-**`see`** \_.differenceBy
+**`See`**
+
+\_.differenceBy
 
 #### Type parameters
 
@@ -3128,6 +3326,9 @@ Returns the new array of filtered values.
 
 ▸ **drop**<`T`\>(`arr`, `n?`): `T`[]
 
+ES Version of `lodash.drop`
+Creates a slice of array with n elements dropped from the beginning.
+
 #### Type parameters
 
 | Name |
@@ -3136,14 +3337,16 @@ Returns the new array of filtered values.
 
 #### Parameters
 
-| Name  | Type     | Default value |
-| :---- | :------- | :------------ |
-| `arr` | `T`[]    | `undefined`   |
-| `n`   | `number` | `1`           |
+| Name  | Type     | Default value | Description                     |
+| :---- | :------- | :------------ | :------------------------------ |
+| `arr` | `T`[]    | `undefined`   | The array to query.             |
+| `n`   | `number` | `1`           | The number of elements to drop. |
 
 #### Returns
 
 `T`[]
+
+Returns the slice of array.
 
 ---
 
@@ -3151,6 +3354,9 @@ Returns the new array of filtered values.
 
 ▸ **dropRight**<`T`\>(`arr`, `n?`): `T`[]
 
+ES Version of `lodash.dropRight`
+Creates a slice of array with n elements dropped from the end.
+
 #### Type parameters
 
 | Name |
@@ -3159,14 +3365,16 @@ Returns the new array of filtered values.
 
 #### Parameters
 
-| Name  | Type     | Default value |
-| :---- | :------- | :------------ |
-| `arr` | `T`[]    | `undefined`   |
-| `n`   | `number` | `1`           |
+| Name  | Type     | Default value | Description                     |
+| :---- | :------- | :------------ | :------------------------------ |
+| `arr` | `T`[]    | `undefined`   | The array to query.             |
+| `n`   | `number` | `1`           | The number of elements to drop. |
 
 #### Returns
 
 `T`[]
+
+The slice of array.
 
 ---
 
@@ -3361,7 +3569,9 @@ The found element, else undefined.
 
 ▸ **findLast**<`T`\>(`collection`, `predicate?`, `fromIndex?`): `undefined` \| `T`
 
-**`see`** \_.findLast
+**`See`**
+
+\_.findLast
 
 #### Type parameters
 
@@ -3383,7 +3593,9 @@ The found element, else undefined.
 
 ▸ **findLast**<`T`, `S`\>(`collection`, `predicate`, `fromIndex?`): `undefined` \| `S`
 
-**`see`** \_.findLast
+**`See`**
+
+\_.findLast
 
 #### Type parameters
 
@@ -3406,7 +3618,9 @@ The found element, else undefined.
 
 ▸ **findLast**<`T`\>(`collection`, `predicate?`, `fromIndex?`): `undefined` \| `T`[keyof `T`]
 
-**`see`** \_.findLast
+**`See`**
+
+\_.findLast
 
 #### Type parameters
 
@@ -3484,7 +3698,9 @@ Returns the new flattened array.
 
 ▸ **flatMap**(`collection`): `any`[]
 
-**`see`** \_.flatMap
+**`See`**
+
+\_.flatMap
 
 #### Parameters
 
@@ -3498,7 +3714,9 @@ Returns the new flattened array.
 
 ▸ **flatMap**<`T`, `TResult`\>(`collection`, `iteratee`): `TResult`[]
 
-**`see`** \_.flatMap
+**`See`**
+
+\_.flatMap
 
 #### Type parameters
 
@@ -3520,7 +3738,9 @@ Returns the new flattened array.
 
 ▸ **flatMap**<`T`, `TResult`\>(`collection`, `iteratee`): `TResult`[]
 
-**`see`** \_.flatMap
+**`See`**
+
+\_.flatMap
 
 #### Type parameters
 
@@ -3542,7 +3762,9 @@ Returns the new flattened array.
 
 ▸ **flatMap**(`collection`, `iteratee`): `any`[]
 
-**`see`** \_.flatMap
+**`See`**
+
+\_.flatMap
 
 #### Parameters
 
@@ -3557,7 +3779,9 @@ Returns the new flattened array.
 
 ▸ **flatMap**(`collection`, `iteratee`): `boolean`[]
 
-**`see`** \_.flatMap
+**`See`**
+
+\_.flatMap
 
 #### Parameters
 
@@ -3578,7 +3802,9 @@ Returns the new flattened array.
 
 This method is like \_.forEach except that it iterates over elements of collection from right to left.
 
-**`alias`** \_.eachRight
+**`Alias`**
+
+\_.eachRight
 
 #### Type parameters
 
@@ -3599,7 +3825,9 @@ This method is like \_.forEach except that it iterates over elements of collecti
 
 ▸ **forEachRight**(`collection`, `iteratee?`): `string`
 
-**`see`** \_.forEachRight
+**`See`**
+
+\_.forEachRight
 
 #### Parameters
 
@@ -3614,7 +3842,9 @@ This method is like \_.forEach except that it iterates over elements of collecti
 
 ▸ **forEachRight**<`T`\>(`collection`, `iteratee?`): `List`<`T`\>
 
-**`see`** \_.forEachRight
+**`See`**
+
+\_.forEachRight
 
 #### Type parameters
 
@@ -3635,7 +3865,9 @@ This method is like \_.forEach except that it iterates over elements of collecti
 
 ▸ **forEachRight**<`T`\>(`collection`, `iteratee?`): `T`
 
-**`see`** \_.forEachRight
+**`See`**
+
+\_.forEachRight
 
 #### Type parameters
 
@@ -3656,7 +3888,9 @@ This method is like \_.forEach except that it iterates over elements of collecti
 
 ▸ **forEachRight**<`T`, `TArray`\>(`collection`, `iteratee?`): `TArray`
 
-**`see`** \_.forEachRight
+**`See`**
+
+\_.forEachRight
 
 #### Type parameters
 
@@ -3678,7 +3912,9 @@ This method is like \_.forEach except that it iterates over elements of collecti
 
 ▸ **forEachRight**<`TString`\>(`collection`, `iteratee?`): `TString`
 
-**`see`** \_.forEachRight
+**`See`**
+
+\_.forEachRight
 
 #### Type parameters
 
@@ -3699,7 +3935,9 @@ This method is like \_.forEach except that it iterates over elements of collecti
 
 ▸ **forEachRight**<`T`, `TList`\>(`collection`, `iteratee?`): `TList`
 
-**`see`** \_.forEachRight
+**`See`**
+
+\_.forEachRight
 
 #### Type parameters
 
@@ -3721,7 +3959,9 @@ This method is like \_.forEach except that it iterates over elements of collecti
 
 ▸ **forEachRight**<`T`\>(`collection`, `iteratee?`): `undefined` \| `null` \| `T`
 
-**`see`** \_.forEachRight
+**`See`**
+
+\_.forEachRight
 
 #### Type parameters
 
@@ -3857,7 +4097,9 @@ Returns the composed aggregate object.
 
 ▸ **groupBy**<`T`\>(`collection`, `iteratee?`): `Dictionary`<`T`[keyof `T`][]\>
 
-**`see`** \_.groupBy
+**`See`**
+
+\_.groupBy
 
 #### Type parameters
 
@@ -3904,7 +4146,9 @@ Returns value.
 
 ▸ **identity**(): `undefined`
 
-**`see`** \_.identity
+**`See`**
+
+\_.identity
 
 #### Returns
 
@@ -3916,6 +4160,9 @@ Returns value.
 
 ▸ **initial**<`T`\>(`arr`): `T`[]
 
+ES Version of `lodash.initial`
+Gets all but the last element of array.
+
 #### Type parameters
 
 | Name |
@@ -3924,13 +4171,15 @@ Returns value.
 
 #### Parameters
 
-| Name  | Type  |
-| :---- | :---- |
-| `arr` | `T`[] |
+| Name  | Type  | Description         |
+| :---- | :---- | :------------------ |
+| `arr` | `T`[] | The array to query. |
 
 #### Returns
 
 `T`[]
+
+Returns the slice of array.
 
 ---
 
@@ -3984,7 +4233,9 @@ bound to, each element in the collection.
 
 ▸ **invokeMap**<`TResult`\>(`collection`, `method`, ...`args`): `TResult`[]
 
-**`see`** \_.invokeMap
+**`See`**
+
+\_.invokeMap
 
 #### Type parameters
 
@@ -4026,7 +4277,9 @@ Returns true if value is correctly classified, else false.
 
 ▸ **isArray**<`T`\>(`value?`): value is any[]
 
-**`see`** \_.isArray
+**`See`**
+
+\_.isArray
 
 #### Type parameters
 
@@ -4049,6 +4302,8 @@ value is any[]
 ### <a id="isblank" name="isblank"></a> isBlank
 
 ▸ **isBlank**(`value`): `boolean`
+
+Checks if a given value is a empty like Ruby on Rails.
 
 #### Parameters
 
@@ -4210,6 +4465,8 @@ Returns true if value is NaN, else false.
 
 ▸ **isNonEmptyArray**<`T`, `U`\>(`value`): value is T[]
 
+Checks if a given value is non empty array.
+
 #### Type parameters
 
 | Name |
@@ -4232,6 +4489,8 @@ value is T[]
 ### <a id="isnonemptystring" name="isnonemptystring"></a> isNonEmptyString
 
 ▸ **isNonEmptyString**<`U`\>(`value`): value is string
+
+Checks if a given value is a non empty string.
 
 #### Type parameters
 
@@ -4398,7 +4657,9 @@ Returns true if value is correctly classified, else false.
 
 Checks if a given value is a string.
 
-**`see`** [https://bambielli.com/til/2017-06-18-typeof-vs-instanceof/](https://bambielli.com/til/2017-06-18-typeof-vs-instanceof/)
+**`See`**
+
+[https://bambielli.com/til/2017-06-18-typeof-vs-instanceof/](https://bambielli.com/til/2017-06-18-typeof-vs-instanceof/)
 
 #### Parameters
 
@@ -4415,6 +4676,8 @@ value is string
 ### <a id="isuuid" name="isuuid"></a> isUUID
 
 ▸ **isUUID**<`U`\>(`value`): value is string
+
+Checks if a given value is a uuid.
 
 #### Type parameters
 
@@ -4438,16 +4701,20 @@ value is string
 
 ▸ **isUrl**(`value`, `schema?`): `boolean`
 
+Checks if a given value is a url.
+
 #### Parameters
 
-| Name      | Type     |
-| :-------- | :------- |
-| `value`   | `string` |
-| `schema?` | `string` |
+| Name      | Type     | Description                                                    |
+| :-------- | :------- | :------------------------------------------------------------- |
+| `value`   | `string` |                                                                |
+| `schema?` | `string` | if not null, checks if the uri is valid with the given schema. |
 
 #### Returns
 
 `boolean`
+
+true if the value is a url, false otherwise.
 
 ---
 
@@ -4540,7 +4807,9 @@ Returns the composed aggregate object.
 
 ▸ **keyBy**<`T`\>(`collection`, `iteratee?`): `Dictionary`<`T`[keyof `T`]\>
 
-**`see`** \_.keyBy
+**`See`**
+
+\_.keyBy
 
 #### Type parameters
 
@@ -4587,13 +4856,113 @@ Returns the last element of array.
 
 ---
 
+### <a id="memoize" name="memoize"></a> memoize
+
+▸ **memoize**<`Fn`\>(`fn`): `Moized`<`Fn`, `Partial`<{ `isDeepEqual`: `boolean` ; `isPromise`: `boolean` ; `isReact`: `boolean` ; `isSerialized`: `boolean` ; `isShallowEqual`: `boolean` ; `matchesArg`: `IsEqual` ; `matchesKey`: `IsMatchingKey` ; `maxAge`: `number` ; `maxArgs`: `number` ; `maxSize`: `number` ; `onCacheAdd`: `OnCacheOperation` ; `onCacheChange`: `OnCacheOperation` ; `onCacheHit`: `OnCacheOperation` ; `onExpire`: `OnExpire` ; `profileName`: `string` ; `serializer`: `Serialize` ; `transformArgs`: `TransformKey` ; `updateCacheForKey`: `UpdateCacheForKey` ; `updateExpire`: `boolean` }\>\>
+
+#### Type parameters
+
+| Name | Type                |
+| :--- | :------------------ |
+| `Fn` | extends `Moizeable` |
+
+#### Parameters
+
+| Name | Type |
+| :--- | :--- |
+| `fn` | `Fn` |
+
+#### Returns
+
+`Moized`<`Fn`, `Partial`<{ `isDeepEqual`: `boolean` ; `isPromise`: `boolean` ; `isReact`: `boolean` ; `isSerialized`: `boolean` ; `isShallowEqual`: `boolean` ; `matchesArg`: `IsEqual` ; `matchesKey`: `IsMatchingKey` ; `maxAge`: `number` ; `maxArgs`: `number` ; `maxSize`: `number` ; `onCacheAdd`: `OnCacheOperation` ; `onCacheChange`: `OnCacheOperation` ; `onCacheHit`: `OnCacheOperation` ; `onExpire`: `OnExpire` ; `profileName`: `string` ; `serializer`: `Serialize` ; `transformArgs`: `TransformKey` ; `updateCacheForKey`: `UpdateCacheForKey` ; `updateExpire`: `boolean` }\>\>
+
+▸ **memoize**<`Fn`, `PassedOptions`\>(`fn`, `options`): `Moized`<`Fn`, `Partial`<{ `isDeepEqual`: `boolean` ; `isPromise`: `boolean` ; `isReact`: `boolean` ; `isSerialized`: `boolean` ; `isShallowEqual`: `boolean` ; `matchesArg`: `IsEqual` ; `matchesKey`: `IsMatchingKey` ; `maxAge`: `number` ; `maxArgs`: `number` ; `maxSize`: `number` ; `onCacheAdd`: `OnCacheOperation` ; `onCacheChange`: `OnCacheOperation` ; `onCacheHit`: `OnCacheOperation` ; `onExpire`: `OnExpire` ; `profileName`: `string` ; `serializer`: `Serialize` ; `transformArgs`: `TransformKey` ; `updateCacheForKey`: `UpdateCacheForKey` ; `updateExpire`: `boolean` }\> & `PassedOptions`\>
+
+#### Type parameters
+
+| Name            | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| :-------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Fn`            | extends `Moizeable`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `PassedOptions` | extends `Partial`<{ `isDeepEqual`: `boolean` ; `isPromise`: `boolean` ; `isReact`: `boolean` ; `isSerialized`: `boolean` ; `isShallowEqual`: `boolean` ; `matchesArg`: `IsEqual` ; `matchesKey`: `IsMatchingKey` ; `maxAge`: `number` ; `maxArgs`: `number` ; `maxSize`: `number` ; `onCacheAdd`: `OnCacheOperation` ; `onCacheChange`: `OnCacheOperation` ; `onCacheHit`: `OnCacheOperation` ; `onExpire`: `OnExpire` ; `profileName`: `string` ; `serializer`: `Serialize` ; `transformArgs`: `TransformKey` ; `updateCacheForKey`: `UpdateCacheForKey` ; `updateExpire`: `boolean` }\> |
+
+#### Parameters
+
+| Name      | Type            |
+| :-------- | :-------------- |
+| `fn`      | `Fn`            |
+| `options` | `PassedOptions` |
+
+#### Returns
+
+`Moized`<`Fn`, `Partial`<{ `isDeepEqual`: `boolean` ; `isPromise`: `boolean` ; `isReact`: `boolean` ; `isSerialized`: `boolean` ; `isShallowEqual`: `boolean` ; `matchesArg`: `IsEqual` ; `matchesKey`: `IsMatchingKey` ; `maxAge`: `number` ; `maxArgs`: `number` ; `maxSize`: `number` ; `onCacheAdd`: `OnCacheOperation` ; `onCacheChange`: `OnCacheOperation` ; `onCacheHit`: `OnCacheOperation` ; `onExpire`: `OnExpire` ; `profileName`: `string` ; `serializer`: `Serialize` ; `transformArgs`: `TransformKey` ; `updateCacheForKey`: `UpdateCacheForKey` ; `updateExpire`: `boolean` }\> & `PassedOptions`\>
+
+▸ **memoize**<`Fn`\>(`fn`): `Moized`<`Fn`[``"fn"``], `Partial`<{ `isDeepEqual`: `boolean` ; `isPromise`: `boolean` ; `isReact`: `boolean` ; `isSerialized`: `boolean` ; `isShallowEqual`: `boolean` ; `matchesArg`: `IsEqual` ; `matchesKey`: `IsMatchingKey` ; `maxAge`: `number` ; `maxArgs`: `number` ; `maxSize`: `number` ; `onCacheAdd`: `OnCacheOperation` ; `onCacheChange`: `OnCacheOperation` ; `onCacheHit`: `OnCacheOperation` ; `onExpire`: `OnExpire` ; `profileName`: `string` ; `serializer`: `Serialize` ; `transformArgs`: `TransformKey` ; `updateCacheForKey`: `UpdateCacheForKey` ; `updateExpire`: `boolean` }\>\>
+
+#### Type parameters
+
+| Name | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| :--- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Fn` | extends `Moized`<`Moizeable`, `Partial`<{ `isDeepEqual`: `boolean` ; `isPromise`: `boolean` ; `isReact`: `boolean` ; `isSerialized`: `boolean` ; `isShallowEqual`: `boolean` ; `matchesArg`: `IsEqual` ; `matchesKey`: `IsMatchingKey` ; `maxAge`: `number` ; `maxArgs`: `number` ; `maxSize`: `number` ; `onCacheAdd`: `OnCacheOperation` ; `onCacheChange`: `OnCacheOperation` ; `onCacheHit`: `OnCacheOperation` ; `onExpire`: `OnExpire` ; `profileName`: `string` ; `serializer`: `Serialize` ; `transformArgs`: `TransformKey` ; `updateCacheForKey`: `UpdateCacheForKey` ; `updateExpire`: `boolean` }\>\> |
+
+#### Parameters
+
+| Name | Type |
+| :--- | :--- |
+| `fn` | `Fn` |
+
+#### Returns
+
+`Moized`<`Fn`[``"fn"``], `Partial`<{ `isDeepEqual`: `boolean` ; `isPromise`: `boolean` ; `isReact`: `boolean` ; `isSerialized`: `boolean` ; `isShallowEqual`: `boolean` ; `matchesArg`: `IsEqual` ; `matchesKey`: `IsMatchingKey` ; `maxAge`: `number` ; `maxArgs`: `number` ; `maxSize`: `number` ; `onCacheAdd`: `OnCacheOperation` ; `onCacheChange`: `OnCacheOperation` ; `onCacheHit`: `OnCacheOperation` ; `onExpire`: `OnExpire` ; `profileName`: `string` ; `serializer`: `Serialize` ; `transformArgs`: `TransformKey` ; `updateCacheForKey`: `UpdateCacheForKey` ; `updateExpire`: `boolean` }\>\>
+
+▸ **memoize**<`Fn`, `PassedOptions`\>(`fn`, `options`): `Moized`<`Fn`[``"fn"``], `Partial`<{ `isDeepEqual`: `boolean` ; `isPromise`: `boolean` ; `isReact`: `boolean` ; `isSerialized`: `boolean` ; `isShallowEqual`: `boolean` ; `matchesArg`: `IsEqual` ; `matchesKey`: `IsMatchingKey` ; `maxAge`: `number` ; `maxArgs`: `number` ; `maxSize`: `number` ; `onCacheAdd`: `OnCacheOperation` ; `onCacheChange`: `OnCacheOperation` ; `onCacheHit`: `OnCacheOperation` ; `onExpire`: `OnExpire` ; `profileName`: `string` ; `serializer`: `Serialize` ; `transformArgs`: `TransformKey` ; `updateCacheForKey`: `UpdateCacheForKey` ; `updateExpire`: `boolean` }\> & `PassedOptions`\>
+
+#### Type parameters
+
+| Name            | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| :-------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Fn`            | extends `Moized`<`Moizeable`, `Partial`<{ `isDeepEqual`: `boolean` ; `isPromise`: `boolean` ; `isReact`: `boolean` ; `isSerialized`: `boolean` ; `isShallowEqual`: `boolean` ; `matchesArg`: `IsEqual` ; `matchesKey`: `IsMatchingKey` ; `maxAge`: `number` ; `maxArgs`: `number` ; `maxSize`: `number` ; `onCacheAdd`: `OnCacheOperation` ; `onCacheChange`: `OnCacheOperation` ; `onCacheHit`: `OnCacheOperation` ; `onExpire`: `OnExpire` ; `profileName`: `string` ; `serializer`: `Serialize` ; `transformArgs`: `TransformKey` ; `updateCacheForKey`: `UpdateCacheForKey` ; `updateExpire`: `boolean` }\>\> |
+| `PassedOptions` | extends `Partial`<{ `isDeepEqual`: `boolean` ; `isPromise`: `boolean` ; `isReact`: `boolean` ; `isSerialized`: `boolean` ; `isShallowEqual`: `boolean` ; `matchesArg`: `IsEqual` ; `matchesKey`: `IsMatchingKey` ; `maxAge`: `number` ; `maxArgs`: `number` ; `maxSize`: `number` ; `onCacheAdd`: `OnCacheOperation` ; `onCacheChange`: `OnCacheOperation` ; `onCacheHit`: `OnCacheOperation` ; `onExpire`: `OnExpire` ; `profileName`: `string` ; `serializer`: `Serialize` ; `transformArgs`: `TransformKey` ; `updateCacheForKey`: `UpdateCacheForKey` ; `updateExpire`: `boolean` }\>                         |
+
+#### Parameters
+
+| Name      | Type            |
+| :-------- | :-------------- |
+| `fn`      | `Fn`            |
+| `options` | `PassedOptions` |
+
+#### Returns
+
+`Moized`<`Fn`[``"fn"``], `Partial`<{ `isDeepEqual`: `boolean` ; `isPromise`: `boolean` ; `isReact`: `boolean` ; `isSerialized`: `boolean` ; `isShallowEqual`: `boolean` ; `matchesArg`: `IsEqual` ; `matchesKey`: `IsMatchingKey` ; `maxAge`: `number` ; `maxArgs`: `number` ; `maxSize`: `number` ; `onCacheAdd`: `OnCacheOperation` ; `onCacheChange`: `OnCacheOperation` ; `onCacheHit`: `OnCacheOperation` ; `onExpire`: `OnExpire` ; `profileName`: `string` ; `serializer`: `Serialize` ; `transformArgs`: `TransformKey` ; `updateCacheForKey`: `UpdateCacheForKey` ; `updateExpire`: `boolean` }\> & `PassedOptions`\>
+
+▸ **memoize**<`PassedOptions`\>(`options`): `Moize`<`PassedOptions`\>
+
+#### Type parameters
+
+| Name            | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| :-------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PassedOptions` | extends `Partial`<{ `isDeepEqual`: `boolean` ; `isPromise`: `boolean` ; `isReact`: `boolean` ; `isSerialized`: `boolean` ; `isShallowEqual`: `boolean` ; `matchesArg`: `IsEqual` ; `matchesKey`: `IsMatchingKey` ; `maxAge`: `number` ; `maxArgs`: `number` ; `maxSize`: `number` ; `onCacheAdd`: `OnCacheOperation` ; `onCacheChange`: `OnCacheOperation` ; `onCacheHit`: `OnCacheOperation` ; `onExpire`: `OnExpire` ; `profileName`: `string` ; `serializer`: `Serialize` ; `transformArgs`: `TransformKey` ; `updateCacheForKey`: `UpdateCacheForKey` ; `updateExpire`: `boolean` }\> |
+
+#### Parameters
+
+| Name      | Type            |
+| :-------- | :-------------- |
+| `options` | `PassedOptions` |
+
+#### Returns
+
+`Moize`<`PassedOptions`\>
+
+---
+
 ### <a id="ms" name="ms"></a> ms
 
 ▸ **ms**(`value`, `options?`): `number`
 
 Parse or format the given `val`.
 
-**`throws`** Error if `value` is not a non-empty string or a number
+**`Throws`**
+
+Error if `value` is not a non-empty string or a number
 
 #### Parameters
 
@@ -5073,7 +5442,9 @@ Returns the array of grouped elements.
 
 ▸ **partition**<`T`\>(`collection`, `callback`): [`T`[], `T`[]]
 
-**`see`** \_.partition
+**`See`**
+
+\_.partition
 
 #### Type parameters
 
@@ -5094,7 +5465,9 @@ Returns the array of grouped elements.
 
 ▸ **partition**<`T`\>(`collection`, `callback`): [`T`[keyof `T`][], `T`[keyof `T`][]]
 
-**`see`** \_.partition
+**`See`**
+
+\_.partition
 
 #### Type parameters
 
@@ -5165,7 +5538,9 @@ Returns array.
 
 ▸ **pull**<`T`\>(`array`, ...`values`): `List`<`T`\>
 
-**`see`** \_.pull
+**`See`**
+
+\_.pull
 
 #### Type parameters
 
@@ -5216,7 +5591,9 @@ Returns the new array of removed elements.
 
 ▸ **pullAt**<`T`\>(`array`, ...`indexes`): `List`<`T`\>
 
-**`see`** \_.pullAt
+**`See`**
+
+\_.pullAt
 
 #### Type parameters
 
@@ -5261,7 +5638,9 @@ Returns a new range array.
 
 ▸ **range**(`end`, `index`, `guard`): `number`[]
 
-**`see`** \_.range
+**`See`**
+
+\_.range
 
 #### Parameters
 
@@ -5281,6 +5660,9 @@ Returns a new range array.
 
 ▸ **reject**<`T`\>(`arr`, `predicate`): `T`[]
 
+ES Version of `lodash.reject`
+The opposite of `filter`; this method returns the elements of collection that predicate does not return truthy for.
+
 #### Type parameters
 
 | Name |
@@ -5289,14 +5671,16 @@ Returns a new range array.
 
 #### Parameters
 
-| Name        | Type                                                           |
-| :---------- | :------------------------------------------------------------- |
-| `arr`       | `T`[]                                                          |
-| `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `boolean` |
+| Name        | Type                                                           | Description                         |
+| :---------- | :------------------------------------------------------------- | :---------------------------------- |
+| `arr`       | `T`[]                                                          | The array to iterate over.          |
+| `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `boolean` | The function invoked per iteration. |
 
 #### Returns
 
 `T`[]
+
+Returns the new filtered array.
 
 ---
 
@@ -5375,7 +5759,9 @@ Returns the random element.
 
 ▸ **sample**<`T`\>(`collection`): `undefined` \| `T`[keyof `T`]
 
-**`see`** \_.sample
+**`See`**
+
+\_.sample
 
 #### Type parameters
 
@@ -5422,7 +5808,9 @@ Returns the random elements.
 
 ▸ **sampleSize**<`T`\>(`collection`, `n?`): `T`[keyof `T`][]
 
-**`see`** \_.sampleSize
+**`See`**
+
+\_.sampleSize
 
 #### Type parameters
 
@@ -5473,7 +5861,9 @@ Returns object.
 
 ▸ **set**<`TResult`\>(`object`, `path`, `value`): `TResult`
 
-**`see`** \_.set
+**`See`**
+
+\_.set
 
 #### Type parameters
 
@@ -5521,7 +5911,9 @@ Returns the new shuffled array.
 
 ▸ **shuffle**<`T`\>(`collection`): `T`[keyof `T`][]
 
-**`see`** \_.shuffle
+**`See`**
+
+\_.shuffle
 
 #### Type parameters
 
@@ -5824,7 +6216,9 @@ Returns the array of results.
 
 ▸ **times**(`n`): `number`[]
 
-**`see`** \_.times
+**`See`**
+
+\_.times
 
 #### Parameters
 
@@ -5859,7 +6253,9 @@ Returns the trimmed string.
 
 ▸ **trim**(`string`, `index`, `guard`): `string`
 
-**`see`** \_.trim
+**`See`**
+
+\_.trim
 
 #### Parameters
 
@@ -5896,7 +6292,9 @@ Returns the trimmed string.
 
 ▸ **trimEnd**(`string`, `index`, `guard`): `string`
 
-**`see`** \_.trimEnd
+**`See`**
+
+\_.trimEnd
 
 #### Parameters
 
@@ -5933,7 +6331,9 @@ Returns the trimmed string.
 
 ▸ **trimStart**(`string`, `index`, `guard`): `string`
 
-**`see`** \_.trimStart
+**`See`**
+
+\_.trimStart
 
 #### Parameters
 
@@ -6005,7 +6405,9 @@ Returns the new array of combined values.
 
 ▸ **unionBy**<`T`\>(`arrays1`, `arrays2`, `iteratee?`): `T`[]
 
-**`see`** \_.unionBy
+**`See`**
+
+\_.unionBy
 
 #### Type parameters
 
@@ -6027,7 +6429,9 @@ Returns the new array of combined values.
 
 ▸ **unionBy**<`T`\>(`arrays1`, `arrays2`, `arrays3`, `iteratee?`): `T`[]
 
-**`see`** \_.unionBy
+**`See`**
+
+\_.unionBy
 
 #### Type parameters
 
@@ -6050,7 +6454,9 @@ Returns the new array of combined values.
 
 ▸ **unionBy**<`T`\>(`arrays1`, `arrays2`, `arrays3`, `arrays4`, `iteratee?`): `T`[]
 
-**`see`** \_.unionBy
+**`See`**
+
+\_.unionBy
 
 #### Type parameters
 
@@ -6074,7 +6480,9 @@ Returns the new array of combined values.
 
 ▸ **unionBy**<`T`\>(`arrays1`, `arrays2`, `arrays3`, `arrays4`, `arrays5`, ...`iteratee`): `T`[]
 
-**`see`** \_.unionBy
+**`See`**
+
+\_.unionBy
 
 #### Type parameters
 
@@ -6103,6 +6511,10 @@ Returns the new array of combined values.
 
 ▸ **uniq**<`T`\>(`arr`): `T`[]
 
+ES Version of `lodash.uniq`
+Creates a duplicate-free version of an array, in which only the first occurrence of each element is kept.
+The order of result values is determined by the order they occur in the array.
+
 #### Type parameters
 
 | Name |
@@ -6111,13 +6523,15 @@ Returns the new array of combined values.
 
 #### Parameters
 
-| Name  | Type  |
-| :---- | :---- |
-| `arr` | `T`[] |
+| Name  | Type  | Description           |
+| :---- | :---- | :-------------------- |
+| `arr` | `T`[] | The array to inspect. |
 
 #### Returns
 
 `T`[]
+
+Returns the new duplicate free array.
 
 ---
 
@@ -6200,7 +6614,9 @@ Returns the new array of regrouped elements.
 
 ▸ **unzipWith**<`T`\>(`array`): `T`[][]
 
-**`see`** \_.unzipWith
+**`See`**
+
+\_.unzipWith
 
 #### Type parameters
 
@@ -6381,7 +6797,9 @@ Returns the new array of grouped elements.
 
 ▸ **zip**<`T1`, `T2`, `T3`\>(`arrays1`, `arrays2`, `arrays3`): [`undefined` \| `T1`, `undefined` \| `T2`, `undefined` \| `T3`][]
 
-**`see`** \_.zip
+**`See`**
+
+\_.zip
 
 #### Type parameters
 
@@ -6405,7 +6823,9 @@ Returns the new array of grouped elements.
 
 ▸ **zip**<`T1`, `T2`, `T3`, `T4`\>(`arrays1`, `arrays2`, `arrays3`, `arrays4`): [`undefined` \| `T1`, `undefined` \| `T2`, `undefined` \| `T3`, `undefined` \| `T4`][]
 
-**`see`** \_.zip
+**`See`**
+
+\_.zip
 
 #### Type parameters
 
@@ -6431,7 +6851,9 @@ Returns the new array of grouped elements.
 
 ▸ **zip**<`T1`, `T2`, `T3`, `T4`, `T5`\>(`arrays1`, `arrays2`, `arrays3`, `arrays4`, `arrays5`): [`undefined` \| `T1`, `undefined` \| `T2`, `undefined` \| `T3`, `undefined` \| `T4`, `undefined` \| `T5`][]
 
-**`see`** \_.zip
+**`See`**
+
+\_.zip
 
 #### Type parameters
 
@@ -6459,7 +6881,9 @@ Returns the new array of grouped elements.
 
 ▸ **zip**<`T`\>(...`arrays`): (`undefined` \| `T`)[][]
 
-**`see`** \_.zip
+**`See`**
+
+\_.zip
 
 #### Type parameters
 
@@ -6507,7 +6931,9 @@ Returns the new object.
 
 ▸ **zipObject**(`props?`): `Dictionary`<`undefined`\>
 
-**`see`** \_.zipObject
+**`See`**
+
+\_.zipObject
 
 #### Parameters
 
@@ -6572,7 +6998,9 @@ Returns the new array of grouped elements.
 
 ▸ **zipWith**<`T1`, `T2`, `TResult`\>(`arrays1`, `arrays2`, `iteratee`): `TResult`[]
 
-**`see`** \_.zipWith
+**`See`**
+
+\_.zipWith
 
 #### Type parameters
 
@@ -6596,7 +7024,9 @@ Returns the new array of grouped elements.
 
 ▸ **zipWith**<`T1`, `T2`, `T3`, `TResult`\>(`arrays1`, `arrays2`, `arrays3`, `iteratee`): `TResult`[]
 
-**`see`** \_.zipWith
+**`See`**
+
+\_.zipWith
 
 #### Type parameters
 
@@ -6622,7 +7052,9 @@ Returns the new array of grouped elements.
 
 ▸ **zipWith**<`T1`, `T2`, `T3`, `T4`, `TResult`\>(`arrays1`, `arrays2`, `arrays3`, `arrays4`, `iteratee`): `TResult`[]
 
-**`see`** \_.zipWith
+**`See`**
+
+\_.zipWith
 
 #### Type parameters
 
@@ -6650,7 +7082,9 @@ Returns the new array of grouped elements.
 
 ▸ **zipWith**<`T1`, `T2`, `T3`, `T4`, `T5`, `TResult`\>(`arrays1`, `arrays2`, `arrays3`, `arrays4`, `arrays5`, `iteratee`): `TResult`[]
 
-**`see`** \_.zipWith
+**`See`**
+
+\_.zipWith
 
 #### Type parameters
 
@@ -6680,7 +7114,9 @@ Returns the new array of grouped elements.
 
 ▸ **zipWith**<`T`, `TResult`\>(...`iteratee`): `TResult`[]
 
-**`see`** \_.zipWith
+**`See`**
+
+\_.zipWith
 
 #### Type parameters
 
@@ -6708,36 +7144,37 @@ Returns the new array of grouped elements.
 This method is like `_.range` except that it populates values in
 descending order.
 
-**`example`** ```ts
-\_.rangeRight(4);
+**`Example`**
+
+```ts
+_.rangeRight(4)
 // => [3, 2, 1, 0]
 
-\_.rangeRight(-4);
+_.rangeRight(-4)
 // => [-3, -2, -1, 0]
 
-\_.rangeRight(1, 5);
+_.rangeRight(1, 5)
 // => [4, 3, 2, 1]
 
-\_.rangeRight(0, 20, 5);
+_.rangeRight(0, 20, 5)
 // => [15, 10, 5, 0]
 
-\_.rangeRight(0, -4, -1);
+_.rangeRight(0, -4, -1)
 // => [-3, -2, -1, 0]
 
-\_.rangeRight(1, 4, 0);
+_.rangeRight(1, 4, 0)
 // => [1, 1, 1]
 
-\_.rangeRight(0);
+_.rangeRight(0)
 // => []
-
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `start` | `number` | The start of the range. |
-| `end?` | `number` | The end of the range. |
+| Name    | Type     | Description                             |
+| :------ | :------- | :-------------------------------------- |
+| `start` | `number` | The start of the range.                 |
+| `end?`  | `number` | The end of the range.                   |
 | `step?` | `number` | The value to increment or decrement by. |
 
 #### Returns
@@ -6748,17 +7185,18 @@ Returns the new array of numbers.
 
 ▸ **rangeRight**(`end`, `index`, `guard`): `number`[]
 
-**`see`** _.rangeRight
+**`See`**
+
+\_.rangeRight
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `end` | `number` |
+| Name    | Type                 |
+| :------ | :------------------- |
+| `end`   | `number`             |
 | `index` | `string` \| `number` |
-| `guard` | `object` |
+| `guard` | `object`             |
 
 #### Returns
 
 `number`[]
-```

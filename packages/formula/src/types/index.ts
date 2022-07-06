@@ -434,7 +434,7 @@ export type SimpleCodeFragmentType =
   | 'Not'
   | 'Comma'
   | 'Semicolon'
-export type SpecialCodeFragmentType = 'unknown' | 'parseErrorOther' | 'Space' | 'literal'
+export type SpecialCodeFragmentType = 'unknown' | 'parseErrorOther1' | 'parseErrorOther2' | 'parseErrorOther3' | 'Space' | 'literal'
 export type CodeFragmentCodes = ComplexCodeFragmentType | SimpleCodeFragmentType | SpecialCodeFragmentType
 
 interface CompletionReplacement {

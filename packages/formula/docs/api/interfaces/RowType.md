@@ -14,25 +14,40 @@
 
 ### Properties
 
+- [display](RowType.md#display)
 - [eventDependency](RowType.md#eventdependency)
 - [findKey](RowType.md#findkey)
 - [handleCodeFragments](RowType.md#handlecodefragments)
 - [handleInterpret](RowType.md#handleinterpret)
+- [key](RowType.md#key)
+- [listCells](RowType.md#listcells)
 - [logic](RowType.md#logic)
 - [namespaceId](RowType.md#namespaceid)
+- [newCell](RowType.md#newcell)
 - [rowId](RowType.md#rowid)
 - [rowIndex](RowType.md#rowindex)
 - [spreadsheet](RowType.md#spreadsheet)
 - [spreadsheetId](RowType.md#spreadsheetid)
 
-### Methods
-
-- [display](RowType.md#display)
-- [key](RowType.md#key)
-- [listCells](RowType.md#listcells)
-- [newCell](RowType.md#newcell)
-
 ## Properties
+
+### <a id="display" name="display"></a> display
+
+• **display**: () => `string`
+
+#### Type declaration
+
+▸ (): `string`
+
+##### Returns
+
+`string`
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L114)
+
+---
 
 ### <a id="eventdependency" name="eventdependency"></a> eventDependency
 
@@ -74,6 +89,42 @@
 
 ---
 
+### <a id="key" name="key"></a> key
+
+• **key**: () => `string`
+
+#### Type declaration
+
+▸ (): `string`
+
+##### Returns
+
+`string`
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L115)
+
+---
+
+### <a id="listcells" name="listcells"></a> listCells
+
+• **listCells**: () => [`Cell`](Cell.md)[]
+
+#### Type declaration
+
+▸ (): [`Cell`](Cell.md)[]
+
+##### Returns
+
+[`Cell`](Cell.md)[]
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L112)
+
+---
+
 ### <a id="logic" name="logic"></a> logic
 
 • **logic**: `boolean`
@@ -91,6 +142,31 @@
 #### Defined in
 
 [packages/formula/src/controls/types.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L110)
+
+---
+
+### <a id="newcell" name="newcell"></a> newCell
+
+• **newCell**: (`cell`: [`Cell`](Cell.md), `columnKey`: `string`) => [`CellType`](CellType.md)
+
+#### Type declaration
+
+▸ (`cell`, `columnKey`): [`CellType`](CellType.md)
+
+##### Parameters
+
+| Name        | Type              |
+| :---------- | :---------------- |
+| `cell`      | [`Cell`](Cell.md) |
+| `columnKey` | `string`          |
+
+##### Returns
+
+[`CellType`](CellType.md)
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L116)
 
 ---
 
@@ -143,50 +219,3 @@
 #### Defined in
 
 [packages/formula/src/controls/types.ts:103](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L103)
-
-## Methods
-
-### <a id="display" name="display"></a> display
-
-▸ **display**(): `string`
-
-#### Returns
-
-`string`
-
----
-
-### <a id="key" name="key"></a> key
-
-▸ **key**(): `string`
-
-#### Returns
-
-`string`
-
----
-
-### <a id="listcells" name="listcells"></a> listCells
-
-▸ **listCells**(): [`Cell`](Cell.md)[]
-
-#### Returns
-
-[`Cell`](Cell.md)[]
-
----
-
-### <a id="newcell" name="newcell"></a> newCell
-
-▸ **newCell**(`cell`, `columnKey`): [`CellType`](CellType.md)
-
-#### Parameters
-
-| Name        | Type              |
-| :---------- | :---------------- |
-| `cell`      | [`Cell`](Cell.md) |
-| `columnKey` | `string`          |
-
-#### Returns
-
-[`CellType`](CellType.md)

@@ -5,13 +5,10 @@
 ### Properties
 
 - [\_formulaContext](BlockType.md#_formulacontext)
+- [cleanup](BlockType.md#cleanup)
 - [handleCodeFragments](BlockType.md#handlecodefragments)
 - [handleInterpret](BlockType.md#handleinterpret)
 - [id](BlockType.md#id)
-
-### Methods
-
-- [cleanup](BlockType.md#cleanup)
 - [name](BlockType.md#name)
 - [nameDependency](BlockType.md#namedependency)
 - [persistence](BlockType.md#persistence)
@@ -25,6 +22,24 @@
 #### Defined in
 
 [packages/formula/src/controls/types.ts:69](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L69)
+
+---
+
+### <a id="cleanup" name="cleanup"></a> cleanup
+
+• **cleanup**: () => `Promise`<`void`\>
+
+#### Type declaration
+
+▸ (): `Promise`<`void`\>
+
+##### Returns
+
+`Promise`<`void`\>
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:72](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L72)
 
 ---
 
@@ -56,48 +71,62 @@
 
 [packages/formula/src/controls/types.ts:68](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L68)
 
-## Methods
-
-### <a id="cleanup" name="cleanup"></a> cleanup
-
-▸ **cleanup**(): `Promise`<`void`\>
-
-#### Returns
-
-`Promise`<`void`\>
-
 ---
 
 ### <a id="name" name="name"></a> name
 
-▸ **name**(`pageId`): `string`
+• **name**: (`pageId`: `string`) => `string`
 
-#### Parameters
+#### Type declaration
+
+▸ (`pageId`): `string`
+
+##### Parameters
 
 | Name     | Type     |
 | :------- | :------- |
 | `pageId` | `string` |
 
-#### Returns
+##### Returns
 
 `string`
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:70](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L70)
 
 ---
 
 ### <a id="namedependency" name="namedependency"></a> nameDependency
 
-▸ **nameDependency**(): [`NameDependencyWithKind`](NameDependencyWithKind.md)
+• **nameDependency**: () => [`NameDependencyWithKind`](NameDependencyWithKind.md)
 
-#### Returns
+#### Type declaration
+
+▸ (): [`NameDependencyWithKind`](NameDependencyWithKind.md)
+
+##### Returns
 
 [`NameDependencyWithKind`](NameDependencyWithKind.md)
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L71)
 
 ---
 
 ### <a id="persistence" name="persistence"></a> persistence
 
-▸ **persistence**(): [`BlockInitializer`](BlockInitializer.md)
+• **persistence**: () => [`BlockInitializer`](BlockInitializer.md)
 
-#### Returns
+#### Type declaration
+
+▸ (): [`BlockInitializer`](BlockInitializer.md)
+
+##### Returns
 
 [`BlockInitializer`](BlockInitializer.md)
+
+#### Defined in
+
+[packages/formula/src/controls/types.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L73)
