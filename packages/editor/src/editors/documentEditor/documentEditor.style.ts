@@ -203,7 +203,7 @@ export const documentEditorStyles = css({
   maxWidth: 'var(--mc-editor-max-width)',
   width: '100%',
 
-  '.ProseMirror': {
+  '> .ProseMirror': {
     color: theme.colors.typePrimary,
     outline: 'none',
     paddingBottom: '5rem',

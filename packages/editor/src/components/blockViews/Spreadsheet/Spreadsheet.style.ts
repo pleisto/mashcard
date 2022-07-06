@@ -256,14 +256,14 @@ export const spreadsheetStyles: CSS = {
           display: 'flex',
           alignItems: 'stretch',
 
-          '.ProseMirror': {
-            padding: '7px 10px 7px',
+          '> .ProseMirror': {
+            padding: '7px 10px 7px !important',
             border: 0,
             borderRadius: 0,
             fontSize: 14,
             lineHeight: '22px',
             minHeight: 24,
-            outline: `2px solid ${tableActionHoverColor}`,
+            outline: `2px solid ${tableActionHoverColor} !important`,
             transition: 'none'
           },
 
