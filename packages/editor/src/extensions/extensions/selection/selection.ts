@@ -1,101 +1,129 @@
-import { Editor } from '@tiptap/core'
-import { Plugin, PluginKey, EditorState, TextSelection } from 'prosemirror-state'
-import { Decoration, DecorationSet } from 'prosemirror-view'
-import { findNodesInSelection } from '../../../helpers'
+import { Plugin, PluginKey, EditorState } from 'prosemirror-state'
 import { createExtension } from '../../common'
 import { meta, SelectAttributes, SelectionOptions } from './meta'
-import { meta as paragraphMeta } from '../../blocks/paragraph/meta'
-import { meta as headingMeta } from '../../blocks/heading/meta'
-import { meta as listItemMeta } from '../../blocks/listItem/meta'
-import { meta as orderedListMeta } from '../../blocks/orderedList/meta'
-import { meta as bulletListMeta } from '../../blocks/bulletList/meta'
-import { meta as taskItemMeta } from '../../blocks/taskItem/meta'
-import { meta as taskListMeta } from '../../blocks/taskList/meta'
-import { meta as calloutMeta } from '../../blocks/callout/meta'
-import { meta as blockquoteMeta } from '../../blocks/blockquote/meta'
+import { MultipleNodeSelection } from './MultipleNodeSelection'
+import { nodeSelectionDecoration, textSelectionDecoration } from './decorations'
+import { normalizeSelection } from './normalizeSelection'
+import { MultipleNodeSelectionDomEvents } from './domEvents'
 
-const allowedNodeTypes = [
-  paragraphMeta.name,
-  headingMeta.name,
-  listItemMeta.name,
-  orderedListMeta.name,
-  bulletListMeta.name,
-  taskItemMeta.name,
-  taskListMeta.name,
-  calloutMeta.name,
-  blockquoteMeta.name
-]
-
-export const isTextContentSelected = ({ editor, from, to }: { editor: Editor; from: number; to: number }): boolean => {
-  if (!editor.isEditable || editor.isDestroyed) return false
-  if (from === to) return false
-
-  const isEmpty = editor.state.doc.textBetween(from, to).length === 0
-
-  if (isEmpty) return false
-
-  let show = false
-
-  const nodes = findNodesInSelection(editor, from, to)
-
-  for (const { node } of nodes) {
-    if (node) {
-      // Text node
-      if (node.type.name === 'text') {
-        show = true
-      } else if (allowedNodeTypes.includes(node.type.name)) {
-        show = true
-      } else {
-        return false
-      }
+declare module '@tiptap/core' {
+  interface Commands<ReturnType> {
+    multipleNodeSelection: {
+      /**
+       * Set a multiple node selection
+       */
+      setMultipleNodeSelection: (anchor: number, head: number) => ReturnType
+      /**
+       * start select nodes
+       */
+      startMultipleNodeSelection: (event: MouseEvent) => ReturnType
     }
   }
-
-  return show
 }
 
-export const DEFAULT_SELECTION_CLASS = 'editor-selection'
+export interface SelectionState {
+  multiNodeSelecting:
+    | false
+    | {
+        selecting: boolean
+        anchor: {
+          x: number
+          y: number
+          position: number
+        }
+        head?: {
+          x: number
+          y: number
+        }
+      }
+}
 
-interface SelectionState {}
-
-export const SelectionPluginKey = new PluginKey(meta.name)
+export const SelectionPluginKey = new PluginKey<SelectionState>(meta.name)
 
 export const Selection = createExtension<SelectionOptions, SelectAttributes>({
   name: meta.name,
 
+  addCommands() {
+    const domEvents = new MultipleNodeSelectionDomEvents(this.editor, {
+      mouseSelectionClassName: this.options.nodeSelection?.mouseSelection?.className
+    })
+
+    return {
+      setMultipleNodeSelection:
+        (anchor, head) =>
+        ({ dispatch, tr }) => {
+          if (dispatch) {
+            const { doc } = tr
+            const minPos = 0
+            const maxPos = MultipleNodeSelection.atEnd(doc).to
+
+            const resolvedAnchor = Math.max(Math.min(anchor, maxPos), minPos)
+            const resolvedHead = Math.max(Math.min(head, maxPos), minPos)
+            const selection = MultipleNodeSelection.create(doc, resolvedAnchor, resolvedHead)
+
+            tr.setSelection(selection)
+          }
+
+          return true
+        },
+      startMultipleNodeSelection:
+        event =>
+        ({ view }) => {
+          domEvents.mousedown(view, event)
+          return true
+        }
+    }
+  },
+
   addProseMirrorPlugins() {
+    const domEvents = new MultipleNodeSelectionDomEvents(this.editor, {
+      mouseSelectionClassName: this.options.nodeSelection?.mouseSelection?.className
+    })
     return [
       new Plugin<SelectionState>({
         key: SelectionPluginKey,
+        state: {
+          init() {
+            return {
+              multiNodeSelecting: false
+            }
+          },
+          apply(tr, value, oldState, newState) {
+            const anchor = tr.getMeta('updateSelectionAnchor')
+            if (anchor) {
+              return { ...value, multiNodeSelecting: { anchor, selecting: false } }
+            }
+
+            const head = tr.getMeta('updateSelectionHead')
+
+            if (head && value.multiNodeSelecting) {
+              return { ...value, multiNodeSelecting: { ...value.multiNodeSelecting, head } }
+            }
+
+            if (tr.getMeta('multipleNodeSelecting') && value.multiNodeSelecting) {
+              return { ...value, multiNodeSelecting: { ...value.multiNodeSelecting, selecting: true } }
+            }
+
+            if (tr.getMeta('multipleNodeSelectingEnd')) {
+              return { ...value, multiNodeSelecting: false }
+            }
+
+            return { ...value }
+          }
+        },
         props: {
+          handleDOMEvents: {
+            mousedown: (view, event) => domEvents.mousedown(view, event)
+          },
           decorations: (state: EditorState) => {
-            const { from, to } = state.selection
-            const decorations: Decoration[] = []
+            const textDecorationSet = textSelectionDecoration(this.editor, this.options, state)
 
-            if (!this.editor.isEditable || from === to) return
+            if (textDecorationSet) return textDecorationSet
 
-            const inlineDecoration = Decoration.inline(from, to, {
-              class: this.options.HTMLAttributes?.class ?? DEFAULT_SELECTION_CLASS,
-              style: this.options.HTMLAttributes?.style
-            })
-            decorations.push(inlineDecoration)
-
-            return DecorationSet.create(this.editor.state.doc, decorations)
+            return nodeSelectionDecoration(this.editor, this.options, state)
           },
           createSelectionBetween: (view, $anchor, $head) => {
-            if (!this.editor.isEditable || $anchor.pos === $head.pos) return
-
-            // remove non-text node and empty text node selection by check: to - from > 1
-            // because we don't want non-text nodes at the end of Text Selection
-            // due to window.getSelection() will automatically select the nearest text if end of the selection is not a text node
-            const nodeRanges = findNodesInSelection(this.editor, $anchor.pos, $head.pos).filter(
-              range => range.to - range.from > 1
-            )
-
-            if (nodeRanges.length > 0) {
-              const to = nodeRanges[nodeRanges.length - 1].to
-              return TextSelection.create(this.editor.state.doc, $anchor.pos, to)
-            }
+            return normalizeSelection(this.editor, view, $anchor, $head)
           }
         }
       })

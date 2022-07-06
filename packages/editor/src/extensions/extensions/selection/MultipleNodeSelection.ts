@@ -32,12 +32,23 @@ export class MultipleNodeSelection extends Selection {
     const doc = $anchorPos.node(0)
     const ranges: SelectionRange[] = []
 
-    doc.nodesBetween($anchorPos.pos, $headPos.pos, (node, pos) => {
-      ranges.push(new SelectionRange(doc.resolve(pos + 1), doc.resolve(pos + node.nodeSize)))
-      return false
-    })
+    const from = Math.min($anchorPos.pos, $headPos.pos)
+    const to = Math.max($anchorPos.pos, $headPos.pos)
 
-    super(ranges[0].$from, ranges[0].$to, ranges)
+    if (from === to) {
+      const node = doc.nodeAt(from)
+
+      if (node) {
+        ranges.push(new SelectionRange(doc.resolve(from), doc.resolve(from + node.nodeSize)))
+      }
+    } else {
+      doc.nodesBetween(from, to + 1, (node, pos) => {
+        ranges.push(new SelectionRange(doc.resolve(pos), doc.resolve(pos + node.nodeSize)))
+        return false
+      })
+    }
+
+    super(ranges[0]?.$from ?? $anchorPos, ranges[0]?.$to ?? $headPos, ranges)
 
     this.$anchorPos = $anchorPos
     this.$headPos = $headPos
@@ -77,16 +88,7 @@ export class MultipleNodeSelection extends Selection {
    * returns a slice of selected nodes
    */
   override content(): Slice {
-    return new Slice(
-      Fragment.from(
-        this.ranges.map(range => {
-          const node = range.$from.node()
-          return node.type.create(node.attrs, node.content)
-        })
-      ),
-      1,
-      1
-    )
+    return new Slice(Fragment.from(this.ranges.map(range => range.$from.nodeAfter!).filter(node => !!node)), 1, 1)
   }
 
   /**

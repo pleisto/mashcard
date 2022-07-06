@@ -15,9 +15,8 @@ export const gapClickHandler = (editor: Editor, view: EditorView, position: numb
     return
   }
 
-  if (position - 1 < 0) return
-
   // when clicked at the end of document, the latest two position will be null
+  if (position - 2 < 0) return
   const node = view.state.doc.nodeAt(position - 2)
   const nextNode = view.state.doc.nodeAt(position)
 
