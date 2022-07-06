@@ -12,7 +12,9 @@ module Resolvers
       if history_id.present?
         block.cur_history_id = history_id
       end
-      block
+      if block.show_policy?(current_user)
+        block
+      end
     end
   end
 end
