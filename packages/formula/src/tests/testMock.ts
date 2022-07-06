@@ -1,4 +1,4 @@
-import { AnyResult } from '../types'
+import { AnyTypeResult } from '../types'
 
 const BLOCK_SNAPSHOT_NAME = 'BLOCK_SNAPSHOT'
 const COLUMN_SNAPSHOT_NAME = 'COLUMN_SNAPSHOT'
@@ -22,7 +22,7 @@ export const mockCell = (value: string, cellId: string, columnKey: string, rowKe
   rowKey
 ]
 
-export const matchObject = ({ type, result }: AnyResult): any => {
+export const matchObject = ({ type, result }: AnyTypeResult): any => {
   switch (type) {
     case 'Block':
       return mockBlock(result.name(''), result.id)

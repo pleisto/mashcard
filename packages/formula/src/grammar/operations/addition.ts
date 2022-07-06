@@ -23,7 +23,7 @@ export const additionOperator: OperatorType = {
     }
 
     if (isNaN(result)) {
-      return { type: 'Error', result: `NaN`, errorKind: 'runtime' }
+      return { type: 'Error', result: `NaN`, meta: 'runtime' }
     }
 
     return { result, type: 'number' }

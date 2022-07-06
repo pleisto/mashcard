@@ -156,7 +156,7 @@ export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResu
       if (spreadsheet) {
         return { type: 'Spreadsheet', result: spreadsheet }
       } else {
-        return { type: 'Error', result: `Spreadsheet not found`, errorKind: 'deps' }
+        return { type: 'Error', result: `Spreadsheet not found`, meta: 'deps' }
       }
     }
   }
@@ -175,7 +175,7 @@ export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResu
     if (column) {
       return { type: 'Column', result: column }
     } else {
-      return { type: 'Error', result: `Column not found`, errorKind: 'deps' }
+      return { type: 'Error', result: `Column not found`, meta: 'deps' }
     }
   }
 
@@ -184,7 +184,7 @@ export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResu
     if (row) {
       return { type: 'Row', result: row }
     } else {
-      return { type: 'Error', result: `Row not found`, errorKind: 'deps' }
+      return { type: 'Error', result: `Row not found`, meta: 'deps' }
     }
   }
 
@@ -193,7 +193,7 @@ export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResu
     if (block) {
       return { type: 'Block', result: block }
     } else {
-      return { type: 'Error', result: `Block ${result.result.id} not found`, errorKind: 'deps' }
+      return { type: 'Error', result: `Block ${result.result.id} not found`, meta: 'deps' }
     }
   }
 

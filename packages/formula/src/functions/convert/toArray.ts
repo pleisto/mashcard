@@ -11,7 +11,7 @@ export const convertToArray = createFunctionClause({
   persist: false,
   acceptError: false,
   effect: false,
-  examples: [{ input: '=123', output: { type: 'Array', subType: 'void', result: [] } }],
+  examples: [{ input: '=123', output: { type: 'Array', meta: 'void', result: [] } }],
   description: 'Converts the value to an array.',
   group: 'core',
   args: [{ name: 'input', type: ['number', 'Spreadsheet'] }],
@@ -21,7 +21,7 @@ export const convertToArray = createFunctionClause({
       input: [3],
       output: {
         type: 'Array',
-        subType: 'number',
+        meta: 'number',
         result: [
           { type: 'number', result: 0 },
           { type: 'number', result: 1 },
@@ -35,20 +35,20 @@ export const convertToArray = createFunctionClause({
     if (type === 'Spreadsheet')
       return {
         type: 'Array',
-        subType: 'Array',
+        meta: 'Array',
         result: result.toArray().map<ArrayResult>((row: string[]) => ({
           type: 'Array',
-          subType: 'string',
+          meta: 'string',
           result: row.map<StringResult>(r => ({ type: 'string', result: r }))
         }))
       }
 
     if (result < 0) {
-      return { type: 'Error', result: 'Number should be positive', errorKind: 'runtime' }
+      return { type: 'Error', result: 'Number should be positive', meta: 'runtime' }
     }
     return {
       type: 'Array',
-      subType: 'number',
+      meta: 'number',
       result: Array.from(Array(result).keys()).map<NumberResult>(n => ({ type: 'number', result: n }))
     }
   }

@@ -77,13 +77,13 @@ export class ColumnClass implements ColumnType {
   private findCellByNumber(meta: VariableMetadata, name: string): CellResult | ErrorResult {
     const number = Number(name)
     if (isNaN(number)) {
-      return { type: 'Error', result: `Need a number: ${name}`, errorKind: 'syntax' }
+      return { type: 'Error', result: `Need a number: ${name}`, meta: 'syntax' }
     }
     const cells = this.cells()
     const cell = cells[number - 1]
 
     if (!cell) {
-      return { type: 'Error', result: `Cell out of range: ${cells.length}`, errorKind: 'runtime' }
+      return { type: 'Error', result: `Cell out of range: ${cells.length}`, meta: 'runtime' }
     }
 
     if (meta.richType.type === 'spreadsheet') {
@@ -92,7 +92,7 @@ export class ColumnClass implements ColumnType {
         return {
           result: 'Circular dependency found',
           type: 'Error',
-          errorKind: 'circular_dependency'
+          meta: 'circular_dependency'
         }
       }
     }
@@ -150,7 +150,7 @@ export class ColumnClass implements ColumnType {
     const errors: ErrorMessage[] = []
 
     if (result.type === 'Error') {
-      errors.push({ type: result.errorKind, message: result.result })
+      errors.push({ type: result.meta, message: result.result })
       return {
         errors,
         firstArgumentType: undefined,

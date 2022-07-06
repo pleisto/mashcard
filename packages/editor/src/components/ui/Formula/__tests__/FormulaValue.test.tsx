@@ -7,7 +7,7 @@ describe('FormulaValue', () => {
     const data: VariableDisplayData = {
       result: {
         type: 'Error',
-        errorKind: 'fatal',
+        meta: 'fatal',
         result: 'error'
       },
       definition: '',
@@ -40,7 +40,7 @@ describe('FormulaValue', () => {
     const data: VariableDisplayData = {
       result: {
         type: 'Error',
-        errorKind: 'fatal',
+        meta: 'fatal',
         result: 'error'
       },
       definition: '',

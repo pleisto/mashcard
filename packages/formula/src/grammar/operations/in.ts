@@ -25,7 +25,7 @@ export const inOperator: OperatorType = {
 
       const firstColumn = columns[0]
       if (!firstColumn) {
-        return { type: 'Error', result: 'Spreadsheet is empty', errorKind: 'runtime' }
+        return { type: 'Error', result: 'Spreadsheet is empty', meta: 'runtime' }
       }
 
       const row = spreadsheet.listRows().find(row => {
@@ -53,7 +53,7 @@ export const inOperator: OperatorType = {
         value: column.spreadsheetId
       })
       if (!spreadsheet) {
-        return { type: 'Error', result: 'Spreadsheet not found', errorKind: 'runtime' }
+        return { type: 'Error', result: 'Spreadsheet not found', meta: 'runtime' }
       }
 
       const row = spreadsheet.listRows().find(row => {

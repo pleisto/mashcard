@@ -8,7 +8,7 @@ const CURRENT_POSITION = async (ctx: FunctionContext): Promise<RecordResult> => 
         long: { result: 0, type: 'number' },
         lat: { result: 0, type: 'number' }
       },
-      subType: 'number'
+      meta: 'number'
     }
   }
 
@@ -22,7 +22,7 @@ const CURRENT_POSITION = async (ctx: FunctionContext): Promise<RecordResult> => 
         long: { result: position.coords.longitude, type: 'number' },
         lat: { result: position.coords.latitude, type: 'number' }
       },
-      subType: 'number'
+      meta: 'number'
     }
   } catch (e) {
     return {
@@ -31,7 +31,7 @@ const CURRENT_POSITION = async (ctx: FunctionContext): Promise<RecordResult> => 
         long: { result: 0, type: 'number' },
         lat: { result: 0, type: 'number' }
       },
-      subType: 'number'
+      meta: 'number'
     }
   }
 }
@@ -57,7 +57,7 @@ export const apiCurrentPosition = createFunctionClause({
       input: '=CURRENT_POSITION()',
       output: {
         type: 'Record',
-        subType: 'number',
+        meta: 'number',
         result: {
           long: { result: 0, type: 'number' },
           lat: { result: 0, type: 'number' }

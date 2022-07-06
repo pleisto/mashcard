@@ -237,17 +237,17 @@ const testCases: {
       { type: 'Date', result: new Date('foo bar') }
     ]
   },
-  Error: { cases: [{ type: 'Error', result: 'bang!', errorKind: 'runtime' }] },
+  Error: { cases: [{ type: 'Error', result: 'bang!', meta: 'runtime' }] },
   Array: {
     cases: [
-      { type: 'Array', result: [{ type: 'number', result: 1 }], subType: 'number' },
-      { type: 'Array', result: [], subType: 'void' }
+      { type: 'Array', result: [{ type: 'number', result: 1 }], meta: 'number' },
+      { type: 'Array', result: [], meta: 'void' }
     ]
   },
   Record: {
     cases: [
-      { type: 'Record', result: { foo: { type: 'number', result: 1 } }, subType: 'number' },
-      { type: 'Record', result: {}, subType: 'void' }
+      { type: 'Record', result: { foo: { type: 'number', result: 1 } }, meta: 'number' },
+      { type: 'Record', result: {}, meta: 'void' }
     ]
   },
   Spreadsheet: { cases: [{ type: 'Spreadsheet', result: spreadsheet }] },

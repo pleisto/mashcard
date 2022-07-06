@@ -262,7 +262,7 @@ Array [
       "uuid": null,
       "variableValue": Object {
         "result": Object {
-          "errorKind": "syntax",
+          "meta": "syntax",
           "result": "Missing expression",
           "type": "Error",
         },

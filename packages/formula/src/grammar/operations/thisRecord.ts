@@ -27,7 +27,7 @@ export const thisRecordOperator: OperatorType = {
   rhsType: 'any',
   dynamicInterpretLhs: async ({ args, operators, interpreter }) => {
     if (interpreter.ctx.meta.richType.type !== 'spreadsheet') {
-      return { type: 'Error', result: unavailableMessage.message, errorKind: 'runtime' }
+      return { type: 'Error', result: unavailableMessage.message, meta: 'runtime' }
     }
 
     const {
@@ -42,7 +42,7 @@ export const thisRecordOperator: OperatorType = {
       value: spreadsheetId,
       type: 'id'
     })
-    if (!spreadsheet) return { type: 'Error', result: `Spreadsheet ${spreadsheet} not found`, errorKind: 'runtime' }
+    if (!spreadsheet) return { type: 'Error', result: `Spreadsheet ${spreadsheet} not found`, meta: 'runtime' }
 
     return { type: 'Spreadsheet', result: spreadsheet }
   },

@@ -14,7 +14,7 @@ export const stringToBar = createFunctionClause({
   description: 'Converts a record to a bar',
   group: 'core',
   args: [{ name: 'record', type: 'Record' }],
-  examples: [{ input: '=toBar({})', output: { type: 'Record', subType: 'void', result: {} } }],
+  examples: [{ input: '=toBar({})', output: { type: 'Record', meta: 'void', result: {} } }],
   returns: 'Record',
   testCases: [],
   chain: true,

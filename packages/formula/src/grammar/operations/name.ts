@@ -79,7 +79,7 @@ export const nameOperator: OperatorType = {
   dynamicInterpretLhs: async ({ operators, interpreter }) => {
     const image = operators[0]!.image
     const [kind, result] = findToken(interpreter.ctx, image)
-    if (!kind) return { type: 'Error', result: buildNotFoundMessage(image), errorKind: 'deps' }
+    if (!kind) return { type: 'Error', result: buildNotFoundMessage(image), meta: 'deps' }
 
     switch (kind) {
       case 'Block':

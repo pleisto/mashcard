@@ -42,7 +42,7 @@ export const errorIsFatal = ({ task }: VariableData): boolean => {
   if (
     !success &&
     result.type === 'Error' &&
-    ['name_unique', 'name_check', 'name_invalid', 'fatal'].includes(result.errorKind)
+    ['name_unique', 'name_check', 'name_invalid', 'fatal'].includes(result.meta)
   ) {
     return true
   }

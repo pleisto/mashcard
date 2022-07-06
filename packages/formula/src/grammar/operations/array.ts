@@ -10,9 +10,9 @@ export const arrayOperator: OperatorType = {
   rhsType: 'any',
   interpret: async ({ lhs }) => lhs,
   packageInterpretResult: result => {
-    if (!result || result.type === 'null') return { type: 'Array', subType: 'void', result: [] }
+    if (!result || result.type === 'null') return { type: 'Array', meta: 'void', result: [] }
     const arrayArgs = result.result as unknown as AnyTypeResult[]
-    return { type: 'Array', subType: extractSubType(arrayArgs), result: arrayArgs }
+    return { type: 'Array', meta: extractSubType(arrayArgs), result: arrayArgs }
   },
   testCases: {
     pages: [{ pageName: 'Array', variables: [{ variableName: 'bar', definition: '=123' }] }],
@@ -25,8 +25,8 @@ export const arrayOperator: OperatorType = {
           { type: 'number', result: 2 },
           { type: 'string', result: 'foo' },
           { type: 'boolean', result: true },
-          { type: 'Array', subType: 'void', result: [] },
-          { type: 'Record', subType: 'void', result: {} },
+          { type: 'Array', meta: 'void', result: [] },
+          { type: 'Record', meta: 'void', result: {} },
           { type: 'number', result: 123 },
           { type: 'null', result: null }
         ]

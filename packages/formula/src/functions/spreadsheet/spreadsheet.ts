@@ -10,24 +10,24 @@ import {
   createFunctionClause
 } from '../../types'
 
-const Spreadsheet = (ctx: FunctionContext, { result, subType }: ArrayResult): SpreadsheetResult | ErrorResult => {
+const Spreadsheet = (ctx: FunctionContext, { result, meta }: ArrayResult): SpreadsheetResult | ErrorResult => {
   const defaultData: RecordResult[] = [
     {
       type: 'Record',
-      subType: 'string',
+      meta: 'string',
       result: { Column1: { type: 'string', result: '1' }, Column2: { type: 'string', result: '2' } }
     },
     {
       type: 'Record',
-      subType: 'string',
+      meta: 'string',
       result: { Column1: { type: 'string', result: '3' }, Column2: { type: 'string', result: '4' } }
     }
   ]
 
   const recordData: RecordResult[] = result.length ? (result as RecordResult[]) : defaultData
 
-  if (!['void', 'Record'].includes(subType)) {
-    return { type: 'Error', result: `Spreadsheet type unmatched: ${subType}`, errorKind: 'runtime' }
+  if (!['void', 'Record'].includes(meta)) {
+    return { type: 'Error', result: `Spreadsheet type unmatched: ${meta}`, meta: 'runtime' }
   }
 
   const spreadsheetId = uuid()

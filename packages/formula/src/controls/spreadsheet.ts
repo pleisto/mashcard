@@ -266,7 +266,7 @@ export class SpreadsheetClass implements SpreadsheetType {
   private handleInterpretColumn(interpreter: FormulaInterpreter, name: string): AnyTypeResult {
     const column = this.findColumn({ namespaceId: this.namespaceId, type: 'name', value: name })
 
-    if (!column) return { type: 'Error', result: `Column ${name} not found`, errorKind: 'runtime' }
+    if (!column) return { type: 'Error', result: `Column ${name} not found`, meta: 'runtime' }
 
     return { type: 'Column', result: column }
   }
@@ -304,7 +304,7 @@ export class SpreadsheetClass implements SpreadsheetType {
   private handleInterpretRow(number: number): AnyTypeResult {
     const row = this.findRow({ namespaceId: this.namespaceId, type: 'name', value: String(number) })
     if (!row) {
-      return { type: 'Error', result: `Row ${number} not found`, errorKind: 'runtime' }
+      return { type: 'Error', result: `Row ${number} not found`, meta: 'runtime' }
     }
 
     return { type: 'Row', result: row }

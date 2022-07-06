@@ -36,7 +36,7 @@ const quickInsert = async (
 
   const result = await variable.t.task.variableValue
   if (!ignoreSyntaxError) {
-    if (result.result.type === 'Error' && !['runtime'].includes(result.result.errorKind)) {
+    if (result.result.type === 'Error' && !['runtime'].includes(result.result.meta)) {
       throw new Error(result.result.result)
     }
   }

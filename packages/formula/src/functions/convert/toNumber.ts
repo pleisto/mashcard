@@ -18,17 +18,17 @@ export const convertToNumber = createFunctionClause({
   args: [{ name: 'string', type: ['string', 'Cell'] }],
   examples: [
     { input: '=toNumber("123")', output: { type: 'number', result: 123 } },
-    { input: '=toNumber("foo")', output: { type: 'Error', result: 'Not a number', errorKind: 'runtime' } }
+    { input: '=toNumber("foo")', output: { type: 'Error', result: 'Not a number', meta: 'runtime' } }
   ],
   testCases: [
     { input: ['123'], output: { type: 'number', result: 123 } },
-    { input: ['foo'], output: { type: 'Error', result: 'Not a number', errorKind: 'runtime' } }
+    { input: ['foo'], output: { type: 'Error', result: 'Not a number', meta: 'runtime' } }
   ],
   reference: (ctx, obj) => {
     const number = Number(obj.type === 'Cell' ? obj.result.getValue() : obj.result)
 
     if (isNaN(number)) {
-      return { type: 'Error', result: 'Not a number', errorKind: 'runtime' }
+      return { type: 'Error', result: 'Not a number', meta: 'runtime' }
     }
 
     return { type: 'number', result: number }

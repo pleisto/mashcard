@@ -17,7 +17,7 @@ const XLOOKUP = (
 ): // eslint-disable-next-line max-params
 StringResult | ErrorResult => {
   if (lookupColumn.spreadsheetId !== returnColumn.spreadsheetId) {
-    return { type: 'Error', result: 'Columns must be in the same namespace', errorKind: 'runtime' }
+    return { type: 'Error', result: 'Columns must be in the same namespace', meta: 'runtime' }
   }
 
   let result: StringResult = notFoundValue

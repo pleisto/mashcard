@@ -27,7 +27,7 @@ export const thisRowOperator: OperatorType = {
   rhsType: 'any',
   dynamicInterpretLhs: async ({ interpreter }) => {
     if (interpreter.ctx.meta.richType.type !== 'spreadsheet') {
-      return { type: 'Error', result: unavailableMessage.message, errorKind: 'runtime' }
+      return { type: 'Error', result: unavailableMessage.message, meta: 'runtime' }
     }
 
     const {
@@ -42,7 +42,7 @@ export const thisRowOperator: OperatorType = {
       type: 'id',
       value: rowId
     })
-    if (!row) return { type: 'Error', result: `Row ${rowId} not found`, errorKind: 'runtime' }
+    if (!row) return { type: 'Error', result: `Row ${rowId} not found`, meta: 'runtime' }
 
     return { type: 'Row', result: row }
   },

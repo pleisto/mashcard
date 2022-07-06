@@ -256,7 +256,7 @@ export const runtimeCheckType = (
   if (errorMessages.length > 0) {
     const { type, message } = errorMessages[0]
     // console.error('runtimeCheckType', { label, expectedArgumentType, contextResultType, errorMessages })
-    return { type: 'Error', result: message, errorKind: type }
+    return { type: 'Error', result: message, meta: type }
   }
 
   return undefined
@@ -326,7 +326,7 @@ export const castData = (data: any): AnyTypeResult => {
 
   if (Array.isArray(data)) {
     const result = data.map(e => castData(e))
-    return { type: 'Array', subType: extractSubType(result), result }
+    return { type: 'Array', meta: extractSubType(result), result }
   }
 
   if (data instanceof Object && data.type && data.result !== undefined) {
@@ -339,5 +339,5 @@ export const castData = (data: any): AnyTypeResult => {
     newObject[k] = castData(v)
   })
 
-  return { type: 'Record', result: newObject, subType: extractSubType(Object.values(newObject)) }
+  return { type: 'Record', result: newObject, meta: extractSubType(Object.values(newObject)) }
 }

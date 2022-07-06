@@ -76,7 +76,7 @@ export class RowClass implements RowType {
       return {
         type: 'Error',
         result: `Column "${name}" not found`,
-        errorKind: 'runtime'
+        meta: 'runtime'
       }
     }
 
@@ -86,7 +86,7 @@ export class RowClass implements RowType {
         return {
           result: 'Circular dependency found',
           type: 'Error',
-          errorKind: 'circular_dependency'
+          meta: 'circular_dependency'
         }
       }
     }
@@ -96,7 +96,7 @@ export class RowClass implements RowType {
       return {
         type: 'Error',
         result: `Cell "${name}" not found`,
-        errorKind: 'runtime'
+        meta: 'runtime'
       }
     }
 

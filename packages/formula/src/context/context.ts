@@ -247,7 +247,7 @@ export class FormulaContext implements ContextInterface {
   public async invoke(name: string, ctx: FunctionContext, ...args: any[]): Promise<AnyTypeResult> {
     const clause = this.functionClausesMap[name]
     if (!clause) {
-      return { type: 'Error', result: `Function ${name} not found`, errorKind: 'fatal' }
+      return { type: 'Error', result: `Function ${name} not found`, meta: 'fatal' }
     }
 
     return await (clause.reference as (ctx: FunctionContext, ...args: any[]) => Promise<any>)(ctx, ...args)

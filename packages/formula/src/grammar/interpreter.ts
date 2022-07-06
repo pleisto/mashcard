@@ -429,7 +429,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
       if (result) {
         return result
       }
-      return { type: 'Error', result: `Argument ${number} not found`, errorKind: 'runtime' }
+      return { type: 'Error', result: `Argument ${number} not found`, meta: 'runtime' }
     } else if (ctx.Input) {
       const parentType: FormulaType = 'Record'
       const typeError = runtimeCheckType(args, parentType, 'lazyVariableExpression', this.ctx)
@@ -437,7 +437,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
 
       return {
         type: 'Record',
-        subType: extractSubType(Object.values(this.ctx.interpretContext.ctx)),
+        meta: extractSubType(Object.values(this.ctx.interpretContext.ctx)),
         result: this.ctx.interpretContext.ctx
       }
     } else {
@@ -513,7 +513,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
       const argsTypes = clause.args.map(arg => arg.type)
 
       if (!ctx.Arguments || !ctx.Arguments[0].children?.expression) {
-        return { type: 'Error', result: 'Function is empty', errorKind: 'runtime' }
+        return { type: 'Error', result: 'Function is empty', meta: 'runtime' }
       }
 
       for (const { e, index } of ctx.Arguments[0].children?.expression.map((e: CstElement, index: number) => ({

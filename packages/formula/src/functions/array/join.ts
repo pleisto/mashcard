@@ -39,13 +39,13 @@ export const arrayJoin = createFunctionClause({
         ],
         ';;'
       ],
-      output: { type: 'Error', result: 'Join expects an array of strings', errorKind: 'runtime' }
+      output: { type: 'Error', result: 'Join expects an array of strings', meta: 'runtime' }
     }
   ],
   chain: true,
-  reference: (ctx, { subType, result }, { result: separator }) => {
-    if (!['string', 'number', 'void'].includes(subType)) {
-      return { type: 'Error', result: 'Join expects an array of strings', errorKind: 'runtime' }
+  reference: (ctx, { meta, result }, { result: separator }) => {
+    if (!['string', 'number', 'void'].includes(meta)) {
+      return { type: 'Error', result: 'Join expects an array of strings', meta: 'runtime' }
     }
 
     return { result: result.map(a => a.result).join(separator), type: 'string' }

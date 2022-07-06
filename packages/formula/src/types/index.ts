@@ -157,7 +157,7 @@ export interface BaseResult {
   result: any
   view?: ViewData<ViewType>
   type: Exclude<FormulaType, 'void'>
-  subType?: FormulaType
+  meta?: any
 }
 export interface NumberResult extends BaseResult {
   result: number
@@ -192,7 +192,7 @@ export interface BlankResult extends BaseResult {
 export interface ArrayResult extends BaseResult {
   result: AnyTypeResult[]
   type: 'Array'
-  subType: FormulaType
+  meta: FormulaType
 }
 
 export interface RecordType {
@@ -201,7 +201,7 @@ export interface RecordType {
 
 export interface RecordResult extends BaseResult {
   result: RecordType
-  subType: FormulaType
+  meta: FormulaType
   type: 'Record'
 }
 
@@ -243,7 +243,7 @@ export interface BlockResult extends BaseResult {
 export interface ErrorResult extends BaseResult {
   result: string
   type: 'Error'
-  errorKind: ErrorType
+  meta: ErrorType
 }
 
 export interface PredicateResult extends BaseResult {
@@ -314,7 +314,7 @@ interface SelfReference extends BaseReference {
   kind: 'self'
 }
 
-export type AnyResult =
+type AnyResult =
   | NumberResult
   | BooleanResult
   | StringResult
@@ -341,6 +341,7 @@ export type AnyResult =
   | WaitingResult
   | NoPersistResult
 
+// Ensure that the result type is valid
 export type AnyTypeResult = UsedFormulaType extends AnyResult['type'] ? AnyResult : never
 
 export type TypedResult<T extends FormulaType> = Extract<AnyTypeResult, { type: T }>

@@ -6,6 +6,6 @@ export const recordFieldOperator: OperatorType = {
   lhsType: 'any',
   rhsType: 'any',
   interpret: async ({ lhs, rhs }) => {
-    return { type: 'Record', subType: 'any', result: { key: lhs, value: rhs! } }
+    return { type: 'Record', meta: 'any', result: { key: lhs, value: rhs! } }
   }
 }
