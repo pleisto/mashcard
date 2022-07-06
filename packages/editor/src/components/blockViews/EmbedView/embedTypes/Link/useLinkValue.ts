@@ -1,9 +1,9 @@
+import { prependUrlScheme } from '@mashcard/active-support'
 import { toast } from '@mashcard/design-system'
 import { UploadProgress } from '@mashcard/uploader'
 import { Node } from '@tiptap/core'
 import { useState, useCallback, ChangeEventHandler } from 'react'
 import { EmbedOptions } from '../../../../../extensions'
-import { prependHttp } from '../../../../../helpers'
 import { useEditorI18n } from '../../../../../hooks'
 import { LinkTypeEmbedBlockProps } from './Link'
 import { useWebsiteMetaProgress } from './useWebsiteMetaProgress'
@@ -39,7 +39,7 @@ export function useLinkValue(
     }
 
     progressing()
-    const { success, data } = await extension.options.getUrlData(prependHttp(url))
+    const { success, data } = await extension.options.getUrlData(prependUrlScheme(url))
 
     if (!success) {
       resetProgress()
