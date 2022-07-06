@@ -51,6 +51,9 @@ const menuItemStyles = css({
   },
   variants: {
     danger,
+    active: {
+      true: active
+    }
   }
 })
 

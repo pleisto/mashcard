@@ -50,12 +50,13 @@ export const HistoryListMenu: React.FC<HistoryListMenuProps> = ({
           } else {
             dateStr = createdAt.format(formatT('date'))
           }
+          const active = historyId ? historyId === history.id : i === 0
           return (
             <MenuItem
               data-testid={TEST_ID_ENUM.editor.history.historyItem.id}
               key={i}
               itemKey={history.id}
-              active={historyId ? historyId === history.id : i === 0}
+              active={active}
               onClick={() =>
                 i === 0 ? navigate(`/${domain}/${docId}`) : navigate(`/${domain}/${docId}/histories/${history.id}`)
               }
