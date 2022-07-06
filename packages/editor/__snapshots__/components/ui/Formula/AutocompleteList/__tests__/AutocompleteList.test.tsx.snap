@@ -140,7 +140,7 @@ exports[`AutocompleteList Active Completion renders column kind correctly 1`] = 
         class="autocomplete-preview-column"
       >
         <div
-          class="mc-c-cAUDlT"
+          class="mc-c-eHDHJB"
         >
           <div
             class="node-spreadsheetBlock"
@@ -381,7 +381,7 @@ exports[`AutocompleteList Active Completion renders spreadsheet kind correctly 1
         class="autocomplete-preview-spreadsheet"
       >
         <div
-          class="mc-c-cAUDlT"
+          class="mc-c-eHDHJB"
         >
           <div
             class="node-spreadsheetBlock"
