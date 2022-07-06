@@ -257,13 +257,13 @@ export const spreadsheetStyles: CSS = {
           alignItems: 'stretch',
 
           '> .ProseMirror': {
-            padding: '7px 10px 7px !important',
+            padding: '7px 10px 7px',
             border: 0,
             borderRadius: 0,
             fontSize: 14,
             lineHeight: '22px',
             minHeight: 24,
-            outline: `2px solid ${tableActionHoverColor} !important`,
+            outline: `2px solid ${tableActionHoverColor}`,
             transition: 'none'
           },
 
