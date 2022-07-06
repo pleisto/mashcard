@@ -70,14 +70,9 @@ jobs:
         if: ${{ always() }}
         run: |
           echo ::set-output name=upload-date::$(TZ=":Asia/Shanghai" date +'%Y-%m-%d %H:%M')
-      - name: Send Slack Message
-        uses: slackapi/slack-github-action@v1.19.0
+      - name: Send a Teams Notification
+        uses: thechetantalwar/teams-notify@v2
         if: ${{ always() }}
         with:
-          payload: |
-            {
-              "upload_date": "${{ steps.date.outputs.upload-date }}",
-              "report_url": "${{ steps.allure.outputs.report-url }}"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.TRUNK_E2E_REPORT_SLACK_WEBHOOK_URL }}
+          teams_webhook_url: ${{ secrets.TRUNK_E2E_REPORT_TEAMS_HOOK }}
+          message: "Today's E2E test report has been uploaded to ${{ steps.allure.outputs.report-url }} at ${{ steps.allure.outputs.report-url }}."
