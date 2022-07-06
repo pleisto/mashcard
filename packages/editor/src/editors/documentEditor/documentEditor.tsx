@@ -155,6 +155,7 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
               gapcursor: false,
               hardBreak: true,
               heading: {
+                levels: [1, 2, 3, 4, 5],
                 HTMLAttributes: attrs => {
                   // 1. make selection as high as heading
                   // 2. make bgColor mark as high as heading
