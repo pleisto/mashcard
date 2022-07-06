@@ -82,13 +82,13 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
 
     try {
       const blocks: BlockInput[] = Array.from(dirtyBlocksMap.current.values())
-        .filter(
-          // commit only if parent block in doc
-          ({ parentId, id }) =>
-            (!parentId || id === rootId.current || cachedBlocksMap.current.get(parentId)) ??
-            docBlocksMap.current.get(parentId) ??
-            dirtyBlocksMap.current.get(parentId)
-        )
+        // .filter(
+        //   // commit only if parent block in doc
+        //   ({ parentId, id }) =>
+        //     (!parentId || id === rootId.current || cachedBlocksMap.current.get(parentId)) ??
+        //     docBlocksMap.current.get(parentId) ??
+        //     dirtyBlocksMap.current.get(parentId)
+        // )
         .map(b => {
           // HACK: delete all __typename
           const block = {
