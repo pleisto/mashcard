@@ -68,16 +68,9 @@ en-US:
   editor:
     placeholder:
       blockquote: Type something...
-      code_block: Enter or copy the code
       callout: Type something...
-      listItem: List
-      taskItem: To-do...
-      heading1: Heading 1
-      heading2: Heading 2
-      heading3: Heading 3
-      heading4: Heading 4
-      heading5: Heading 5
-      heading6: Heading 5
+      listItem: Type something...
+      taskItem: Type something...
       default: Type '/' for commands
     copy_hint: Copied to clipboard.
     explorer_menu:
@@ -401,8 +394,8 @@ en-US:
         gallery:
           search:
             placeholder: Search...
-          label: Add pictures from Unsplash.
-          description: Pictures from unsplash
+          label: Select a picture from Unsplash.
+          description: Unsplash image.
     user_block:
       anonymous: Anonymous
     page_link_block:
