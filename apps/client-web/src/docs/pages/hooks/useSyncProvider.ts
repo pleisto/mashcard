@@ -38,8 +38,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
   const { data, loading, refetch } = useGetChildrenBlocksQuery({
     fetchPolicy: 'no-cache',
     variables: {
-      rootId: queryVariables.rootId,
-      snapshotVersion: 0
+      rootId: queryVariables.rootId
     }
   })
 

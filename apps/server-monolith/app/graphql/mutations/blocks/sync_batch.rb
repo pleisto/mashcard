@@ -27,7 +27,6 @@ module Mutations
           return
         end
 
-        patches = []
         new_blocks_hash = {}
         preloads = {}
 
@@ -36,9 +35,6 @@ module Mutations
           paths_cache = root.paths_cache
           final_delete_ids = deleted_ids & paths_cache.keys
           if final_delete_ids.present?
-            patches += final_delete_ids.map do |id|
-              { id: id, path: paths_cache.fetch(id), payload: {}, patch_type: 'DELETE' }
-            end
             preloads = preloads.each_with_object({}) do |(id, b), h|
               b.soft_delete! if id.in?(final_delete_ids)
               h[id] = b
@@ -88,7 +84,6 @@ module Mutations
           end
 
           new_blocks_hash[block.id] = block
-          patches << block.dirty_patch
         end
 
         insert_histories = []
@@ -107,12 +102,7 @@ module Mutations
 
         ## Handle upsert block
         if upsert_data.present?
-          root&.prepare_descendants
-
-          upsert_blocks = upsert_data.map do |block|
-            block.history_version = block.realtime_history_version_increment
-            block
-          end
+          upsert_blocks = upsert_data
 
           insert_histories_2 = upsert_blocks.map do |block|
             block.history_attributes.merge('created_at' => now, 'updated_at' => now)
@@ -128,41 +118,6 @@ module Mutations
         ## Handle attachment
         attachment_data.each do |block, attachment|
           block.update!(attachment: attachment)
-        end
-
-        patches.compact!
-
-        root ||= new_blocks_hash.fetch(root_id)
-        root.maybe_save_snapshot!
-
-        # rubocop:disable Lint/LiteralAsCondition
-        if false && patches.present?
-          ## NOTE dirty data
-          if patches.any? { |patch| patch.fetch(:path).blank? }
-            root.clear_cache
-            paths_cache = root.paths_cache
-
-            patches = patches.map do |patch|
-              if patch.fetch(:path).blank?
-                parent_id = patch.fetch(:parent_id)
-                # rubocop:disable Metrics/BlockNesting
-                new_path = parent_id.nil? || patch.fetch(:id) == root_id ? [] : paths_cache.fetch(parent_id, [root_id])
-                new_path += [patch.fetch(:id)] if patch.fetch(:patch_type) != 'ADD'
-                patch.merge(path: new_path)
-              else
-                patch
-              end
-            end
-          end
-
-          trigger_payload = {
-            state: 'ACTIVE',
-            seq: root.patch_seq_increment,
-            patches: patches.map do |p|
-              p.merge(operator_id: operator_id)
-            end.sort_by { |p| -p.fetch(:path).length },
-          }
-          Docs::Block.broadcast(root_id, trigger_payload)
         end
 
         nil
