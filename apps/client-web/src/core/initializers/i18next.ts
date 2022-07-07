@@ -20,7 +20,7 @@ export const i18nextInit = (): void => {
       backend: {
         loadPath: '/.internal-apis/locales/%{ns}.%{lng}.json',
         queryStringParams: {
-          ver: globalThis.mashcardContext?.version
+          ver: globalThis.mashcardContext?.monorepoVersion
         }
       }
     })

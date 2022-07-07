@@ -15,7 +15,7 @@ export const sentryInit = (): void => {
     // We recommend adjusting this value in production
     tracesSampleRate: 1.0,
     maxValueLength: 2048,
-    release: `mashcard@${ctx.version}`
+    release: `mashcard@${ctx.monorepoVersion}`
   })
   const userDomain = ctx?.currentUser?.domain
   userDomain &&
