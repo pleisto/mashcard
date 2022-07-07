@@ -13,4 +13,4 @@ export type ErrorType =
   | 'name_invalid'
   | 'custom'
 
-export type FormulaErrorType = BaseResult<'Error', string, ErrorType>
+export type FormulaErrorType = BaseResult<'Error', string, string, ErrorType>

@@ -1,6 +1,6 @@
 import { Cell, CellType, Column, ColumnType, Row, RowType, SpreadsheetClass, SpreadsheetType } from '../controls'
 import { dispatchFormulaBlockNameChange } from '../events'
-import { PersistFormulaType, TypedResult, VariableMetadata } from '../type'
+import { AnyTypeResult, PersistFormulaType, VariableMetadata } from '../type'
 import { FormulaContext } from '../context/context'
 import { dumpValue, loadValue } from '../context/persist'
 import { generateUUIDs } from '../tests'
@@ -217,7 +217,7 @@ const cellTypes: CellType[] = [
 
 const testCases: {
   [P in PersistFormulaType]: {
-    cases: Array<TypedResult<P>>
+    cases: Array<AnyTypeResult<P>>
     stringifyError?: true
     serializesSameError?: true
   }

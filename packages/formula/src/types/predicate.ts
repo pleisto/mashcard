@@ -6,5 +6,6 @@ export type PredicateOperator = 'equal' | 'notEqual' | 'greaterThan' | 'greaterT
 export type FormulaPredicateType = BaseResult<
   'Predicate',
   number | string,
+  string,
   { column?: ColumnType; operator: PredicateOperator }
 >

@@ -129,15 +129,25 @@ export interface ViewData<T extends ViewType> {
   type: T
   attrs: ViewAttrs
 }
-export type BaseResult<Type extends UsedFormulaType, Result extends any, Meta extends any = never> = {
+export type BaseResult<
+  Type extends UsedFormulaType,
+  Result extends any,
+  Dump extends any = string,
+  Meta extends any = never
+> = {
   result: Result
   view?: ViewData<ViewType>
+  dump: Dump
   type: Type
 } & ([Meta] extends [never]
   ? {}
   : {
       meta: Meta
     })
+
+// export interface FormulaTypeAttributes<T extends BaseResult<any, any>> {
+//   // dump: (result: T) => Dump
+// }
 
 // Ensure that the result type is valid
 type EnsureTypeIsOk = UsedFormulaType extends FormulaTypes['type']
@@ -146,13 +156,15 @@ type EnsureTypeIsOk = UsedFormulaType extends FormulaTypes['type']
     : never
   : never
 
-export type TypedResult<T extends FormulaType> = Extract<EnsureTypeIsOk, { type: T }>
+type ExtractedType<T extends FormulaType> = Extract<EnsureTypeIsOk, { type: T }>
 
-export type AnyTypeResult<T extends FormulaType = UsedFormulaType> = T extends UsedFormulaType ? TypedResult<T> : never
+export type AnyTypeResult<T extends FormulaType = UsedFormulaType> = T extends UsedFormulaType
+  ? Omit<ExtractedType<T>, 'dump'>
+  : never
 
 type AnyFunctionResult<T extends FormulaType> = AnyTypeResult<T | 'Error'>
 
-type FormulaResult<T extends FormulaType> = TypedResult<T>['result']
+type FormulaResult<T extends FormulaType> = ExtractedType<T>['result']
 
 export type FormulaSourceType = 'normal' | 'spreadsheet'
 
@@ -181,7 +193,7 @@ export type Formula = BaseFormula & {
 export interface Argument<T extends UsedFormulaType = UsedFormulaType> {
   readonly name: string
   readonly type: T | readonly [T, ...T[]]
-  readonly default?: TypedResult<T>
+  readonly default?: AnyTypeResult<T>
   readonly spread?: boolean
 }
 
@@ -408,7 +420,7 @@ type FlattenType<
 type ArgumentArrayToResultTypeArray<
   Arguments extends Argument[],
   AcceptError extends boolean,
-  R extends Array<TypedResult<any>> = []
+  R extends Array<AnyTypeResult<any>> = []
 > = Arguments extends [infer First, ...infer Other]
   ? Other extends Argument[]
     ? First extends Argument
@@ -417,7 +429,7 @@ type ArgumentArrayToResultTypeArray<
           AcceptError,
           [
             ...R,
-            TypedResult<AcceptError extends true ? FlattenType<First['type']> | 'Error' : FlattenType<First['type']>>
+            AnyTypeResult<AcceptError extends true ? FlattenType<First['type']> | 'Error' : FlattenType<First['type']>>
           ]
         >
       : never

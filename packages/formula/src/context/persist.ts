@@ -211,3 +211,5 @@ export const loadValue = (ctx: FunctionContext, result: AnyTypeResult): AnyTypeR
 
   return result as AnyTypeResult
 }
+
+// export const dump = (v: VariableData):  => {

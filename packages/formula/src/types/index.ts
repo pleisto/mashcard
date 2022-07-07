@@ -50,3 +50,5 @@ export type FormulaTypes =
   | FormulaPendingType
   | FormulaButtonType
   | FormulaSwitchType
+
+// export const FormulaAttributes = [FormulaStringAttributes]
