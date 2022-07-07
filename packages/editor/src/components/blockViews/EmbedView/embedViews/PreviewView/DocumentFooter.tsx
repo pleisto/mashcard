@@ -1,6 +1,7 @@
 import { FC, ReactElement } from 'react'
 import { styled, theme } from '@mashcard/design-system'
 import { EmbedToolbar, EmbedToolbarProps } from '../EmbedToolbar'
+import { useEditorContext } from '../../../../../hooks'
 
 export interface DocumentFooterProps extends Omit<EmbedToolbarProps, 'mode'> {
   icon?: ReactElement | string | null
@@ -59,21 +60,26 @@ export const DocumentFooter: FC<DocumentFooterProps> = ({
   blockType,
   updateEmbedBlockAttributes,
   onFullScreen
-}) => (
-  <Footer>
-    <Info>
-      {icon && (typeof icon === 'string' ? <LinkIcon alt="" src={icon} /> : icon)}
-      <Name>{name}</Name>
-    </Info>
-    <EmbedToolbarContainer>
-      <EmbedToolbar
-        url={url}
-        displayName={displayName}
-        mode="preview"
-        blockType={blockType}
-        updateEmbedBlockAttributes={updateEmbedBlockAttributes}
-        onFullScreen={onFullScreen}
-      />
-    </EmbedToolbarContainer>
-  </Footer>
-)
+}) => {
+  const { documentEditable } = useEditorContext()
+  return (
+    <Footer>
+      <Info>
+        {icon && (typeof icon === 'string' ? <LinkIcon alt="" src={icon} /> : icon)}
+        <Name>{name}</Name>
+      </Info>
+      {documentEditable && (
+        <EmbedToolbarContainer>
+          <EmbedToolbar
+            url={url}
+            displayName={displayName}
+            mode="preview"
+            blockType={blockType}
+            updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+            onFullScreen={onFullScreen}
+          />
+        </EmbedToolbarContainer>
+      )}
+    </Footer>
+  )
+}
