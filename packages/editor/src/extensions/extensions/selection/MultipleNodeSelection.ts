@@ -42,7 +42,7 @@ export class MultipleNodeSelection extends Selection {
         ranges.push(new SelectionRange(doc.resolve(from), doc.resolve(from + node.nodeSize)))
       }
     } else {
-      doc.nodesBetween(from, to + 1, (node, pos) => {
+      doc.nodesBetween(from, Math.min(to + 1, MultipleNodeSelection.atEnd(doc).to), (node, pos) => {
         ranges.push(new SelectionRange(doc.resolve(pos), doc.resolve(pos + node.nodeSize)))
         return false
       })
