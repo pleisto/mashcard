@@ -29,5 +29,15 @@ export const predicateOperator: OperatorType = {
     }
 
     return { type: 'Predicate', result: result.result, meta: { operator: image } }
+  },
+  testCases: {
+    successTestCases: [
+      { definition: '= =1', result: 1 },
+      { definition: '=>=3', result: 3 },
+      { definition: '=!="foo"', result: 'foo' },
+      { definition: '=<>"123"', result: '123' },
+      { definition: '= <= (1+1)', result: 2 }
+    ],
+    errorTestCases: [{ definition: '=>=true', errorType: 'type', errorMessage: 'Expected number but got boolean' }]
   }
 }
