@@ -16,9 +16,10 @@ module GroupInviteable
   end
 
   def invite_secret=(value)
+    new_value = maybe_generate_invite_secret(value)
     Mashcard::Redis.with(:persistence) do |r|
-      if invite_secret.present?
-        r.set(invite_secret_redis_key, invite_secret)
+      if new_value.present?
+        r.set(invite_secret_redis_key, new_value)
       else
         r.del(invite_secret_redis_key)
       end
@@ -29,5 +30,13 @@ module GroupInviteable
 
   def invite_secret_redis_key
     "group_invite_secret:#{id}"
+  end
+
+  def maybe_generate_invite_secret(value)
+    return nil unless invite_enable
+    return value if value.present?
+
+    secret = Digest::SHA256.hexdigest("#{id}-#{Time.now.to_i}-#{Mashcard::Crypto.derive_key(:hash_salt)}")
+    "#{secret[0...16]}#{hashed_id}#{secret[60..64]}"
   end
 end
