@@ -146,50 +146,52 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
   const setBlockMetaUpdated = React.useCallback(
     (meta: blockMeta) => {
-      // TODO: refactor to remove BlockInfo
-      client.cache.modify({
-        id: client.cache.identify({ __typename: 'BlockInfo', id: blockId }),
-        fields: {
-          title() {
-            return meta.title
-          },
-          icon() {
-            return meta.icon
+      if (!historyId) {
+        // TODO: refactor to remove BlockInfo
+        client.cache.modify({
+          id: client.cache.identify({ __typename: 'BlockInfo', id: blockId }),
+          fields: {
+            title() {
+              return meta.title
+            },
+            icon() {
+              return meta.icon
+            }
           }
-        }
-      })
-      client.cache.modify({
-        id: client.cache.identify({ __typename: 'Block', id: blockId }),
-        fields: {
-          text() {
-            return meta.title
-          },
-          meta() {
-            return meta
+        })
+        client.cache.modify({
+          id: client.cache.identify({ __typename: 'Block', id: blockId }),
+          fields: {
+            text() {
+              return meta.title
+            },
+            meta() {
+              return meta
+            }
           }
-        }
-      })
-      client.cache.modify({
-        id: client.cache.identify({ __typename: 'DocumentInfo', id: blockId }),
-        fields: {
-          title() {
-            return meta.title
-          },
-          icon() {
-            return meta.icon
+        })
+        client.cache.modify({
+          id: client.cache.identify({ __typename: 'DocumentInfo', id: blockId }),
+          fields: {
+            title() {
+              return meta.title
+            },
+            icon() {
+              return meta.icon
+            }
           }
-        }
-      })
+        })
+        MashcardEventBus.dispatch(
+          BlockMetaUpdated({
+            id: blockId,
+            meta
+          })
+        )
+      }
       setBlockMeta(meta)
       latestMeta.current = meta
-      MashcardEventBus.dispatch(
-        BlockMetaUpdated({
-          id: blockId,
-          meta
-        })
-      )
     },
-    [blockId, setBlockMeta, client]
+    [blockId, historyId, setBlockMeta, client]
   )
 
   const commitState = React.useCallback(

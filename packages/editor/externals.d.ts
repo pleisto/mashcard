@@ -18,3 +18,8 @@ declare module '*.mp4' {
   const src: string
   export = src
 }
+
+declare module '*.svg' {
+  const src: string
+  export = src
+}

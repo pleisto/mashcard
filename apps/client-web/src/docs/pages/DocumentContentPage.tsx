@@ -17,8 +17,7 @@ import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
 import { AppError404 } from '@/core/app-error'
 import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
-
-/* const Layout = styled('div', base) */
+import { MashcardEventBus, HistoryListToggle } from '@mashcard/schema'
 
 export const DocumentContentPage: FC = () => {
   const { t } = useDocsI18n()
@@ -33,8 +32,7 @@ export const DocumentContentPage: FC = () => {
 
   const {
     data,
-    loading: blockLoading,
-    refetch
+    loading: blockLoading
   } = useBlockNewQuery({
     variables: { id: docid as string, historyId }
   })
@@ -46,14 +44,7 @@ export const DocumentContentPage: FC = () => {
   })
   const loading = !data || blockLoading || createBlockLoading
   const isAnonymous = !currentUser
-  const { state, pathname } = useLocation()
-
-  useEffect(() => {
-    // https://github.com/pleisto/corp/issues/1261
-    // The cache is not updated in time during the switchover
-    void refetch()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname])
+  const { state } = useLocation()
 
   // TODO: refactor DocMeta, separate frontend state and model data
   const docMeta: DocMeta = useMemo(() => {
@@ -72,6 +63,10 @@ export const DocumentContentPage: FC = () => {
     const alias = isAlias ? docid : documentInfo?.enabledAlias?.key
     const isRedirect = !!(state as any)?.redirect
     const isNotExist = !loading && !documentInfo?.id
+
+    if (historyId) {
+      MashcardEventBus.dispatch(HistoryListToggle({ visible: true }))
+    }
 
     return {
       id,
