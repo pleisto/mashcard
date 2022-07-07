@@ -26,9 +26,6 @@ RSpec.describe Docs::Block, type: :model do
       expect(child.descendants_raw.count).to eq(1)
       expect(child.root_id).to eq(child.parent_id)
       expect(parent.root_id).to eq(parent.id)
-
-      expect(parent.children_version_meta).to eq({ child.id => child.history_version,
-parent.id => parent.history_version, })
     end
 
     it 'create' do
@@ -38,39 +35,29 @@ parent.id => parent.history_version, })
     end
 
     it 'modify' do
-      old_version = block.history_version
       block.update!(meta: { title: 'changed title' })
-      expect(block.history_version).to eq(old_version + 1)
     end
 
     it 'order' do
-      old_version = block.history_version
       expect(block.sort).to eq(0)
       block.update!(sort: 101)
-      expect(block.history_version).to eq(old_version + 1)
     end
 
     it 'child to child: move same parent' do
-      old_version = child.history_version
       child.move!(child.parent_id, 100)
       expect(child.sort).to eq(100)
-      expect(child.history_version).to eq(old_version + 1)
     end
 
     it 'child to child: move different parent' do
-      old_version = child.history_version
       child.move!(block.id, 200)
       expect(child.sort).to eq(200)
       expect(child.parent_id).to eq(block.id)
-      expect(child.history_version).to eq(old_version + 1)
     end
 
     it 'root to root' do
-      old_version = block.history_version
       block.move!(nil, 168)
       expect(block.sort).to eq(168)
       expect(block.parent_id).to be_nil
-      expect(block.history_version).to eq(old_version + 1)
     end
 
     it 'error' do
@@ -80,22 +67,18 @@ parent.id => parent.history_version, })
 
     it 'root to child' do
       expect(block.type).to eq('doc')
-      old_version = block.history_version
       block.move!(child.id, 231)
       expect(block.sort).to eq(231)
       expect(block.parent_id).to eq(child.id)
       expect(block.type).to eq('doc')
-      expect(block.history_version).to eq(old_version + 1)
     end
 
     it 'child to root' do
       expect(child.type).to eq('doc')
-      old_version = child.history_version
       child.move!(nil, 412)
       expect(child.sort).to eq(412)
       expect(child.parent_id).to be_nil
       expect(child.type).to eq('doc')
-      expect(child.history_version).to eq(old_version + 1)
     end
   end
 

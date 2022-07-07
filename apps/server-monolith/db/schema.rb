@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_21_070648) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_07_053936) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
   enable_extension "pgcrypto"
@@ -84,8 +84,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_21_070648) do
     t.uuid "parent_id"
     t.jsonb "meta", default: {}, null: false, comment: "metadata"
     t.jsonb "data", null: false, comment: "data props"
-    t.bigint "history_version", default: 0, null: false
-    t.bigint "snapshot_version", default: 0, null: false
     t.bigint "sort", default: 0, null: false
     t.bigint "collaborators", default: [], null: false, array: true
     t.datetime "deleted_at"
