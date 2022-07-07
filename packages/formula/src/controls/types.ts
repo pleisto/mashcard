@@ -5,7 +5,6 @@ import {
   ColumnName,
   FormulaControlType,
   BaseFunctionContext,
-  FunctionResult,
   NamespaceId,
   uuid,
   VariableMetadata,
@@ -34,7 +33,7 @@ export interface ControlInitializer {}
 export interface ButtonType extends ControlType {
   kind: 'Button'
   name: string
-  fn: FunctionResult
+  fn: AnyTypeResult<'Function'>
   onClick?: VoidFunction
 }
 
@@ -214,17 +213,17 @@ export interface SpreadsheetType {
 
 export interface ButtonInitializer extends ControlInitializer {
   name: string
-  fn: FunctionResult
+  fn: AnyTypeResult<'Function'>
 }
 
 export interface SwitchType extends ControlType {
   kind: 'Switch'
   checked: boolean
-  fn: FunctionResult
+  fn: AnyTypeResult<'Function'>
   onChange?: (bool: boolean) => void
 }
 
 export interface SwitchInitializer extends ControlInitializer {
   checked: boolean
-  fn: FunctionResult
+  fn: AnyTypeResult<'Function'>
 }

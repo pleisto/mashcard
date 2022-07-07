@@ -3,7 +3,6 @@ import {
   AnyTypeResult,
   CodeFragment,
   ErrorMessage,
-  ErrorResult,
   EventDependency,
   EventScope,
   ExpressionType,
@@ -246,7 +245,7 @@ export const runtimeCheckType = (
   contextResultType: FormulaCheckType,
   label: string,
   ctx: FunctionContext
-): ErrorResult | undefined => {
+): AnyTypeResult<'Error'> | undefined => {
   if (skipCheck) {
     return undefined
   }

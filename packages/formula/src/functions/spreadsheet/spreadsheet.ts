@@ -1,17 +1,13 @@
 import { uuid } from '@mashcard/active-support'
 import { Column, Row, Cell, SpreadsheetInitializer, SpreadsheetClass } from '../../controls'
 import { columnDisplayIndex } from '../../grammar'
-import {
-  FunctionContext,
-  ArrayResult,
-  SpreadsheetResult,
-  ErrorResult,
-  RecordResult,
-  createFunctionClause
-} from '../../type'
+import { FunctionContext, createFunctionClause, AnyTypeResult } from '../../type'
 
-const Spreadsheet = (ctx: FunctionContext, { result, meta }: ArrayResult): SpreadsheetResult | ErrorResult => {
-  const defaultData: RecordResult[] = [
+const Spreadsheet = (
+  ctx: FunctionContext,
+  { result, meta }: AnyTypeResult<'Array'>
+): AnyTypeResult<'Spreadsheet' | 'Error'> => {
+  const defaultData: Array<AnyTypeResult<'Record'>> = [
     {
       type: 'Record',
       meta: 'string',
@@ -24,7 +20,9 @@ const Spreadsheet = (ctx: FunctionContext, { result, meta }: ArrayResult): Sprea
     }
   ]
 
-  const recordData: RecordResult[] = result.length ? (result as RecordResult[]) : defaultData
+  const recordData: Array<AnyTypeResult<'Record'>> = result.length
+    ? (result as Array<AnyTypeResult<'Record'>>)
+    : defaultData
 
   if (!['void', 'Record'].includes(meta)) {
     return { type: 'Error', result: `Spreadsheet type unmatched: ${meta}`, meta: 'runtime' }

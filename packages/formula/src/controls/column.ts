@@ -1,12 +1,10 @@
 import { ColumnType, Column, SpreadsheetType, Cell, getEventDependencyInput, CellType } from './types'
 import {
   AnyTypeResult,
-  CellResult,
   CodeFragment,
   ColumnId,
   ColumnName,
   ErrorMessage,
-  ErrorResult,
   EventDependency,
   FindKey,
   FormulaType,
@@ -74,7 +72,7 @@ export class ColumnClass implements ColumnType {
     }
   }
 
-  private findCellByNumber(meta: VariableMetadata, name: string): CellResult | ErrorResult {
+  private findCellByNumber(meta: VariableMetadata, name: string): AnyTypeResult<'Cell' | 'Error'> {
     const number = Number(name)
     if (isNaN(number)) {
       return { type: 'Error', result: `Need a number: ${name}`, meta: 'syntax' }

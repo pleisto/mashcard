@@ -1,4 +1,4 @@
-import { createFunctionClause, RecordResult } from '../../type'
+import { AnyTypeResult, createFunctionClause } from '../../type'
 
 /**
  * @source
@@ -22,7 +22,9 @@ export const spreadsheetToRecordArray = createFunctionClause({
     return {
       type: 'Array',
       meta: 'Record',
-      result: spreadsheet.toRecord().map<RecordResult>(row => ({ type: 'Record', meta: 'string', result: row }))
+      result: spreadsheet
+        .toRecord()
+        .map<AnyTypeResult<'Record'>>(row => ({ type: 'Record', meta: 'string', result: row }))
     }
   }
 })

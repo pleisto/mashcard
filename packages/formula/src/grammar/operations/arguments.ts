@@ -1,4 +1,4 @@
-import { ArrayResult } from '../../type'
+import { AnyTypeResult } from '../../type'
 import { OperatorType } from '../operator'
 import { extractSubType } from '../util'
 
@@ -12,11 +12,11 @@ export const argumentsOperator: OperatorType = {
   lhsType: 'any',
   rhsType: 'any',
   interpret: async ({ lhs, rhs }) => {
-    const { result: lhsResult, type, meta } = lhs as ArrayResult
+    const { result: lhsResult, type, meta } = lhs as AnyTypeResult<'Array'>
     return { type, meta, result: [...lhsResult, rhs!] }
   },
   packageInterpretResult: ({ result: inputResult }) => {
-    const result = inputResult as ArrayResult['result']
+    const result = inputResult as AnyTypeResult<'Array'>['result']
     return { type: 'Array', meta: extractSubType(result), result }
   }
 }

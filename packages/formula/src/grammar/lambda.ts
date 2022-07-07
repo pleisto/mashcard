@@ -1,11 +1,11 @@
-import { AnyTypeResult, FunctionContext, FunctionResult, PredicateFunction } from '../type'
+import { AnyTypeResult, FunctionContext, PredicateFunction } from '../type'
 import { ControlType } from '../controls'
 import { devLog } from '@mashcard/design-system'
 export type Lambda = VoidFunction
 
 export const functionResult2lambda = <T extends ControlType>(
   ctx: FunctionContext,
-  { result, type }: FunctionResult,
+  { result, type }: AnyTypeResult<'Function'>,
   ctrl: T
 ): Lambda => {
   if (type !== 'Function') {

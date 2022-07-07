@@ -1,5 +1,5 @@
 import { ButtonInitializer, ButtonType } from './types'
-import { ContextInterface, FunctionContext, FunctionResult, VariableMetadata } from '../type'
+import { AnyTypeResult, ContextInterface, FunctionContext, VariableMetadata } from '../type'
 import { functionResult2lambda } from '../grammar/lambda'
 
 export class ButtonClass implements ButtonType {
@@ -7,7 +7,7 @@ export class ButtonClass implements ButtonType {
   _formulaContext: ContextInterface
   _meta: VariableMetadata
   kind: 'Button' = 'Button'
-  fn: FunctionResult
+  fn: AnyTypeResult<'Function'>
   disabled: boolean
   onClick?: VoidFunction
 

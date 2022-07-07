@@ -1,4 +1,4 @@
-import { CodeFragment, ErrorMessage, RecordResult } from '../../type'
+import { AnyTypeResult, CodeFragment, ErrorMessage } from '../../type'
 import { codeFragment2string } from '../convert'
 import { OperatorType } from '../operator'
 import { extractSubType } from '../util'
@@ -40,15 +40,15 @@ export const recordOperator: OperatorType = {
     }
   },
   interpret: async ({ lhs, rhs }) => {
-    const { result: lhsResult, type, meta } = lhs as RecordResult
+    const { result: lhsResult, type, meta } = lhs as AnyTypeResult<'Record'>
     const {
       result: { key, value }
-    } = rhs as RecordResult
+    } = rhs as AnyTypeResult<'Record'>
 
     return { type, meta, result: { ...lhsResult, [key.result as string]: value } }
   },
   packageInterpretResult: ({ result: inputResult }) => {
-    const result = inputResult as RecordResult['result']
+    const result = inputResult as AnyTypeResult<'Record'>['result']
     return { type: 'Record', meta: extractSubType(Object.values(result)), result }
   },
   testCases: {

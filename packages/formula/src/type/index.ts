@@ -172,23 +172,23 @@ export type BaseResult<
 type NumberResult = BaseResult<'number', number, number>
 type BooleanResult = BaseResult<'boolean', boolean, boolean>
 type StringResult = BaseResult<'string', string>
-export type LiteralResult = BaseResult<'literal', string>
-export type NullResult = BaseResult<'null', null, null>
-export type BlankResult = BaseResult<'Blank', never, never>
-export type ErrorResult = BaseResult<'Error', string, string, ErrorType>
-export type ArrayResult = BaseResult<'Array', AnyTypeResult[], string, FormulaType>
+type LiteralResult = BaseResult<'literal', string>
+type NullResult = BaseResult<'null', null, null>
+type BlankResult = BaseResult<'Blank', never, never>
+type ErrorResult = BaseResult<'Error', string, string, ErrorType>
+type ArrayResult = BaseResult<'Array', AnyTypeResult[], string, FormulaType>
 
-export interface RecordType {
+interface RecordType {
   [key: string]: AnyTypeResult
 }
-export type RecordResult = BaseResult<'Record', RecordType, string, FormulaType>
-export type DateResult = BaseResult<'Date', Date>
-export type ColumnResult = BaseResult<'Column', ColumnType>
-export type RowResult = BaseResult<'Row', RowType>
-export type CellResult = BaseResult<'Cell', CellType>
-export type RangeResult = BaseResult<'Range', RangeType>
-export type SpreadsheetResult = BaseResult<'Spreadsheet', SpreadsheetType>
-export type BlockResult = BaseResult<'Block', BlockType>
+type RecordResult = BaseResult<'Record', RecordType, string, FormulaType>
+type DateResult = BaseResult<'Date', Date>
+type ColumnResult = BaseResult<'Column', ColumnType>
+type RowResult = BaseResult<'Row', RowType>
+type CellResult = BaseResult<'Cell', CellType>
+type RangeResult = BaseResult<'Range', RangeType>
+type SpreadsheetResult = BaseResult<'Spreadsheet', SpreadsheetType>
+type BlockResult = BaseResult<'Block', BlockType>
 type PredicateResult = BaseResult<
   'Predicate',
   number | string,
@@ -197,17 +197,17 @@ type PredicateResult = BaseResult<
 >
 interface FormulaFunction {
   name: FormulaFunctionKind
-  args: Array<ReferenceResult | CstResult>
+  args: Array<AnyTypeResult<'Cst' | 'Reference'>>
 }
 
-export type FunctionResult = BaseResult<'Function', [FormulaFunction, ...FormulaFunction[]]>
-export type CstResult = BaseResult<'Cst', CstNode>
-export type ReferenceResult = BaseResult<'Reference', Reference>
-export type ButtonResult = BaseResult<'Button', ButtonType>
-export type SwitchResult = BaseResult<'Switch', SwitchType>
-export type PendingResult = BaseResult<'Pending', string>
-export type WaitingResult = BaseResult<'Waiting', string>
-export type NoPersistResult = BaseResult<'NoPersist', null>
+type FunctionResult = BaseResult<'Function', [FormulaFunction, ...FormulaFunction[]]>
+type CstResult = BaseResult<'Cst', CstNode>
+type ReferenceResult = BaseResult<'Reference', Reference>
+type ButtonResult = BaseResult<'Button', ButtonType>
+type SwitchResult = BaseResult<'Switch', SwitchType>
+type PendingResult = BaseResult<'Pending', string>
+type WaitingResult = BaseResult<'Waiting', string>
+type NoPersistResult = BaseResult<'NoPersist', null>
 
 export type Reference = VariableReference | SelfReference
 
@@ -504,7 +504,7 @@ export interface FunctionContext extends BaseFunctionContext {
 }
 
 export interface InterpretContext {
-  readonly ctx: RecordType
+  readonly ctx: Record<string, AnyTypeResult>
   readonly arguments: AnyTypeResult[]
 }
 
@@ -709,7 +709,7 @@ interface SuccessVariableValue extends BaseVariableValue {
 
 interface ErrorVariableValue extends BaseVariableValue {
   readonly success: false
-  readonly result: ErrorResult
+  readonly result: AnyTypeResult<'Error'>
 }
 
 export type VariableValue = SuccessVariableValue | ErrorVariableValue

@@ -12,7 +12,6 @@ import {
   CodeFragmentResult,
   FunctionContext,
   BaseFormula,
-  ErrorResult,
   VariableTask,
   VariableParseResult,
   FormulaCheckType
@@ -355,17 +354,14 @@ const innerInterpretFirst = ({
   ctx: FunctionContext
 }): VariableValue | undefined => {
   if (errorMessages.length > 0) {
-    const result: ErrorResult = { result: errorMessages[0].message, type: 'Error', meta: errorMessages[0].type }
+    const result: AnyTypeResult<'Error'> = {
+      result: errorMessages[0].message,
+      type: 'Error',
+      meta: errorMessages[0].type
+    }
     return { success: false, result }
   }
 
-  // if (async) {
-  //   const result: PendingResult = { type: 'Pending', result: `Pending: ${ctx.meta.input}` }
-  //   return {
-  //     success: true,
-  //     result
-  //   }
-  // }
   if (kind === 'literal') {
     return { success: true, result: { type: 'literal', result: ctx.meta.input }, runtimeEventDependencies: [] }
   }
