@@ -1,4 +1,12 @@
 import { RangeType } from '../controls'
-import { BaseResult } from '../type'
+import { BaseResult, FormulaTypeAttributes } from '../type'
 
-export type FormulaRangeType = BaseResult<'Range', RangeType>
+const TypeName = 'Range' as const
+
+export type FormulaRangeType = BaseResult<typeof TypeName, RangeType>
+
+export const FormulaRangeAttributes: FormulaTypeAttributes<typeof TypeName> = {
+  type: TypeName,
+  dump: rest => ({ ...rest, result: 'Not supported' }),
+  cast: rest => ({ ...rest, result: 'Not supported', meta: 'runtime', type: 'Error' })
+}

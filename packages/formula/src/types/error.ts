@@ -1,4 +1,6 @@
-import { BaseResult } from '../type'
+import { BaseResult, FormulaTypeAttributes } from '../type'
+
+const TypeName = 'Error' as const
 
 export type ErrorType =
   | 'type'
@@ -13,4 +15,10 @@ export type ErrorType =
   | 'name_invalid'
   | 'custom'
 
-export type FormulaErrorType = BaseResult<'Error', string, string, ErrorType>
+export type FormulaErrorType = BaseResult<typeof TypeName, string, [ErrorType, string], ErrorType>
+
+export const FormulaErrorAttributes: FormulaTypeAttributes<typeof TypeName> = {
+  type: TypeName,
+  dump: ({ result, meta, ...rest }) => ({ ...rest, meta: undefined, result: [meta, result] }),
+  cast: ({ result, ...rest }) => ({ ...rest, result: result[1], meta: result[0] })
+}

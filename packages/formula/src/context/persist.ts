@@ -1,9 +1,16 @@
-import { AnyTypeResult, BaseResult, FunctionContext, NamespaceId, VariableData, VariableDisplayData } from '../type'
-import { SwitchClass, ButtonClass, ColumnClass, SpreadsheetClass, SpreadsheetDynamicPersistence } from '../controls'
-import { BlockClass } from '../controls/block'
+import {
+  AnyDumpResult,
+  AnyTypeResult,
+  ContextInterface,
+  FunctionContext,
+  NamespaceId,
+  UsedFormulaType,
+  VariableData,
+  VariableDisplayData
+} from '../type'
 import { fetchResult } from './variable'
 import { truncateArray, truncateString } from '../grammar'
-import { RowClass } from '../controls/row'
+import { FormulaAttributes } from '../types'
 
 export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayData => {
   return {
@@ -91,125 +98,28 @@ const innerDisplayValue = (v: AnyTypeResult, pageId: NamespaceId, disableTruncat
 }
 
 export const loadDisplayResult = (ctx: FunctionContext, displayResult: VariableDisplayData): VariableDisplayData => {
-  return { ...displayResult, result: loadValue(ctx, displayResult.result) as any }
+  return { ...displayResult, result: cast(displayResult.result as any, ctx.formulaContext) as any }
 }
 
-export const dumpValue = (result: AnyTypeResult, t?: VariableData): BaseResult => {
+export const dumpValue = (result: AnyTypeResult, t?: VariableData): any => {
   if (t && !t.variableParseResult.persist) {
     return { type: 'NoPersist', result: null }
   }
 
-  if (
-    result.result instanceof ColumnClass ||
-    result.result instanceof BlockClass ||
-    result.result instanceof RowClass ||
-    result.result instanceof ButtonClass ||
-    result.result instanceof SwitchClass
-  ) {
-    return { type: result.type, result: result.result.persistence() }
-  }
+  return dump(result)
+}
 
-  if (result.result instanceof SpreadsheetClass) {
-    return {
-      type: result.type,
-      result: result.result.persistAll()
-    }
-  }
-
+export const dump = <T extends UsedFormulaType, Value extends AnyTypeResult<T>, Dump extends AnyDumpResult<T>>(
+  v: Value
+): Dump => {
+  const result: any = FormulaAttributes[v.type].dump(v as any, dump)
   return result
 }
 
-// eslint-disable-next-line complexity
-export const loadValue = (ctx: FunctionContext, result: AnyTypeResult): AnyTypeResult => {
-  if (result.type === 'Date' && !(result.result instanceof Date)) {
-    return {
-      type: 'Date',
-      result: new Date(result.result)
-    }
-  }
-
-  if (result.type === 'Spreadsheet' && !(result.result instanceof SpreadsheetClass)) {
-    if (result.result.dynamic) {
-      const { spreadsheetId, spreadsheetName, columns, rows, cells, namespaceId }: SpreadsheetDynamicPersistence =
-        result.result.persistence!
-      return {
-        type: 'Spreadsheet',
-        result: new SpreadsheetClass({
-          ctx,
-          spreadsheetId,
-          namespaceId,
-          dynamic: true,
-          name: spreadsheetName,
-          columns,
-          rows,
-          getCell: ({ rowId, columnId }) => {
-            return cells.find(c => c.rowId === rowId && c.columnId === columnId)!
-          }
-        })
-      }
-    } else {
-      const spreadsheet = ctx.formulaContext.findSpreadsheet({
-        namespaceId: result.result.namespaceId,
-        value: result.result.spreadsheetId,
-        type: 'id'
-      })
-      if (spreadsheet) {
-        return { type: 'Spreadsheet', result: spreadsheet }
-      } else {
-        return { type: 'Error', result: `Spreadsheet not found`, meta: 'deps' }
-      }
-    }
-  }
-
-  if (result.type === 'Range') {
-    const spreadsheet = ctx.formulaContext.findSpreadsheet({
-      namespaceId: result.result.namespaceId,
-      type: 'id',
-      value: result.result.spreadsheetId
-    })
-    return { type: 'Range', result: { ...result.result, spreadsheet } }
-  }
-
-  if (result.type === 'Column' && !(result.result instanceof ColumnClass)) {
-    const column = ctx.formulaContext.findColumn(result.result.spreadsheetId, result.result.findKey)
-    if (column) {
-      return { type: 'Column', result: column }
-    } else {
-      return { type: 'Error', result: `Column not found`, meta: 'deps' }
-    }
-  }
-
-  if (result.type === 'Row' && !(result.result instanceof RowClass)) {
-    const row = ctx.formulaContext.findRow(result.result.spreadsheetId, result.result.findKey)
-    if (row) {
-      return { type: 'Row', result: row }
-    } else {
-      return { type: 'Error', result: `Row not found`, meta: 'deps' }
-    }
-  }
-
-  if (result.type === 'Block' && !(result.result instanceof BlockClass)) {
-    const block = ctx.formulaContext.findBlockById(result.result.id)
-    if (block) {
-      return { type: 'Block', result: block }
-    } else {
-      return { type: 'Error', result: `Block ${result.result.id} not found`, meta: 'deps' }
-    }
-  }
-
-  if (result.type === 'Button' && !(result.result instanceof ButtonClass)) {
-    const buttonResult = new ButtonClass(ctx, result.result)
-    return { type: 'Button', result: buttonResult }
-  }
-
-  if (result.type === 'Switch' && !(result.result instanceof SwitchClass)) {
-    const switchResult = new SwitchClass(ctx, result.result)
-    return { type: 'Switch', result: switchResult }
-  }
-
-  // devLog({ result })
-
-  return result as AnyTypeResult
+export const cast = <T extends UsedFormulaType, Value extends AnyTypeResult<T>, Dump extends AnyDumpResult<T>>(
+  dump: Dump,
+  ctx: ContextInterface
+): Value => {
+  const result: any = FormulaAttributes[dump.type].cast(dump as any, ctx, cast)
+  return result
 }
-
-// export const dump = (v: VariableData):  => {

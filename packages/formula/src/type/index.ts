@@ -145,9 +145,19 @@ export type BaseResult<
       meta: Meta
     })
 
-// export interface FormulaTypeAttributes<T extends BaseResult<any, any>> {
-//   // dump: (result: T) => Dump
-// }
+export interface FormulaTypeAttributes<
+  Type extends UsedFormulaType,
+  Dump extends AnyDumpResult<Type> = AnyDumpResult<Type>,
+  Value extends AnyTypeResult<Type> = AnyTypeResult<Type>
+> {
+  type: Type
+  dump: (result: Value, dumpF: (o: AnyTypeResult) => any) => Dump
+  cast: (
+    dump: Dump,
+    ctx: ContextInterface,
+    castF: (o: AnyDumpResult, ctx: ContextInterface) => AnyTypeResult
+  ) => Value | AnyTypeResult<'Error'>
+}
 
 // Ensure that the result type is valid
 type EnsureTypeIsOk = UsedFormulaType extends FormulaTypes['type']
@@ -156,10 +166,14 @@ type EnsureTypeIsOk = UsedFormulaType extends FormulaTypes['type']
     : never
   : never
 
-type ExtractedType<T extends FormulaType> = Extract<EnsureTypeIsOk, { type: T }>
+export type ExtractedType<T extends FormulaType> = Extract<EnsureTypeIsOk, { type: T }>
 
 export type AnyTypeResult<T extends FormulaType = UsedFormulaType> = T extends UsedFormulaType
   ? Omit<ExtractedType<T>, 'dump'>
+  : never
+
+export type AnyDumpResult<T extends FormulaType = UsedFormulaType> = T extends UsedFormulaType
+  ? Omit<ExtractedType<T>, 'dump' | 'meta' | 'result'> & { result: ExtractedType<T>['dump'] }
   : never
 
 type AnyFunctionResult<T extends FormulaType> = AnyTypeResult<T | 'Error'>

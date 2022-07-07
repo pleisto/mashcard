@@ -1,4 +1,12 @@
 import { ButtonType } from '../controls'
-import { BaseResult } from '../type'
+import { BaseResult, FormulaTypeAttributes } from '../type'
 
-export type FormulaButtonType = BaseResult<'Button', ButtonType>
+const TypeName = 'Button' as const
+
+export type FormulaButtonType = BaseResult<typeof TypeName, ButtonType>
+
+export const FormulaButtonAttributes: FormulaTypeAttributes<typeof TypeName> = {
+  type: TypeName,
+  dump: rest => ({ ...rest, result: 'Not supported' }),
+  cast: rest => ({ ...rest, result: 'Not supported', meta: 'runtime', type: 'Error' })
+}

@@ -1,3 +1,11 @@
-import { BaseResult } from '../type'
+import { BaseResult, FormulaTypeAttributes } from '../type'
 
-export type FormulaNumberType = BaseResult<'number', number>
+const TypeName = 'number' as const
+
+export type FormulaNumberType = BaseResult<typeof TypeName, number, number>
+
+export const FormulaNumberAttributes: FormulaTypeAttributes<typeof TypeName> = {
+  type: TypeName,
+  dump: rest => rest,
+  cast: rest => rest
+}
