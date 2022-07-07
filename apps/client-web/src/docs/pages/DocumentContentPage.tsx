@@ -19,8 +19,6 @@ import { AppError404 } from '@/core/app-error'
 import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
 import { MashcardEventBus, HistoryListToggle } from '@mashcard/schema'
 
-/* const Layout = styled('div', base) */
-
 export const DocumentContentPage: FC = () => {
   const { t } = useDocsI18n()
   const { domain, docid, historyId } = useParams() as unknown as {
@@ -34,8 +32,7 @@ export const DocumentContentPage: FC = () => {
 
   const {
     data,
-    loading: blockLoading,
-    refetch
+    loading: blockLoading
   } = useBlockNewQuery({
     variables: { id: docid as string, historyId }
   })
@@ -47,14 +44,7 @@ export const DocumentContentPage: FC = () => {
   })
   const loading = !data || blockLoading || createBlockLoading
   const isAnonymous = !currentUser
-  const { state, pathname } = useLocation()
-
-  useEffect(() => {
-    // https://github.com/pleisto/corp/issues/1261
-    // The cache is not updated in time during the switchover
-    void refetch()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname])
+  const { state } = useLocation()
 
   // TODO: refactor DocMeta, separate frontend state and model data
   const docMeta: DocMeta = useMemo(() => {
