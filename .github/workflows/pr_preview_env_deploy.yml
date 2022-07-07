@@ -5,13 +5,6 @@ concurrency:
 on:
   pull_request:
     types: [opened, synchronize]
-    paths-ignore:
-      - '.husky/**'
-      - '**/*.md'
-      - 'packages/**/Dockerfile'
-      - '**/LICENSE'
-      - '**/NOTICE'
-      - '**/VERSION'
 permissions:
   id-token: write
   pull-requests: write
@@ -67,7 +60,7 @@ jobs:
       name: pr_preview
       url: https://${{ env.domain }}/
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     needs: build
     steps:
       - name: Checkout the codebase
@@ -92,13 +85,11 @@ jobs:
       - name: Deployment to GKE
         run: |-
           helm upgrade mashcard-pr${{ github.event.pull_request.number }} ${{ github.workspace }}/tools/helm-charts/mashcard \
-           --install --atomic --timeout 15m --cleanup-on-fail --wait --namespace=cicd --set previewEnv=true \
+           --install --atomic --timeout 5m --cleanup-on-fail --wait --namespace=cicd --set previewEnv=true \
             --set-string image.name='${{ env.image }}' \
             --set-string ingress.host='${{ env.domain }}' \
             --set serviceAccount.create=false \
             --set-string serviceAccount.name='trunk-or-pr-main' \
-            --set-string resources.limits.cpu='0.5' \
-            --set-string resources.limits.memory='512Mi' \
             --set-string envs.SENTRY_DSN='https://4aa5075a3b484af6a251f3677a9f665e@o1150336.ingest.sentry.io/6257651' \
             --set-string envs.HOST='${{ env.domain }}' \
             --set-string license='I hereby swear that I have obtained written permission from the Pleisto Inc of this plugin to use it.' \

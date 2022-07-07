@@ -1,6 +1,6 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "baseBranch": "origin/master",
+  "baseBranch": "origin/main",
   "globalDependencies": ["$CI"],
   "pipeline": {
     "lint:eslint": {

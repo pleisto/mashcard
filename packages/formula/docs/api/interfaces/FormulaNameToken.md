@@ -15,7 +15,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:512](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L512)
+[packages/formula/src/types/index.ts:518](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L518)
 
 ---
 
@@ -25,4 +25,4 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:513](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L513)
+[packages/formula/src/types/index.ts:519](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L519)

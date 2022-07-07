@@ -32,7 +32,7 @@ spec:
               protocol: TCP
           resources:
             requests:
-              cpu: "0.05"
+              cpu: "0.005"
               memory: 32Mi
             limits:
               cpu: "0.5"
@@ -45,8 +45,8 @@ spec:
               protocol: TCP
           resources:
             requests:
-              cpu: "0.05"
-              memory: 16Mi
+              cpu: "0.005"
+              memory: 8Mi
             limits:
               cpu: "0.5"
               memory: 128Mi
@@ -54,7 +54,7 @@ spec:
           image: mailhog/mailhog:v1.0.1
           resources:
             requests:
-              cpu: "0.01"
+              cpu: "0.001"
               memory: 4Mi
             limits:
               cpu: "0.25"

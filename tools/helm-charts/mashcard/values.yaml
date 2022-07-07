@@ -28,7 +28,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-resources: {}
+
 # Preview ENV
 previewEnv: false
 postgresql:

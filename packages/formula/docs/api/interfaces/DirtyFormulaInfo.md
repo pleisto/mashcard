@@ -14,4 +14,4 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:516](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L516)
+[packages/formula/src/types/index.ts:522](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L522)

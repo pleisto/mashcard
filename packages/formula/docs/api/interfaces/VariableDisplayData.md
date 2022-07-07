@@ -8,7 +8,6 @@
 - [display](VariableDisplayData.md#display)
 - [meta](VariableDisplayData.md#meta)
 - [result](VariableDisplayData.md#result)
-- [version](VariableDisplayData.md#version)
 
 ## Properties
 
@@ -18,7 +17,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:786](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L786)
+[packages/formula/src/types/index.ts:792](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L792)
 
 ---
 
@@ -28,7 +27,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:790](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L790)
+[packages/formula/src/types/index.ts:795](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L795)
 
 ---
 
@@ -38,7 +37,7 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:789](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L789)
+[packages/formula/src/types/index.ts:794](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L794)
 
 ---
 
@@ -48,14 +47,4 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:787](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L787)
-
----
-
-### <a id="version" name="version"></a> version
-
-• **version**: `number`
-
-#### Defined in
-
-[packages/formula/src/types/index.ts:788](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L788)
+[packages/formula/src/types/index.ts:793](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L793)

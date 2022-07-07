@@ -32,7 +32,7 @@ jobs:
         with:
           token: ${{ secrets.PAT_FOR_BOT_CREATED_PR }}
           title: 'build(deps): upgrade dependencies'
-          body: This is an auto-created PR to upgrade our dependencies according to <https://github.com/mashcard/mashcard/blob/master/.github/workflows/dependency_updater.yml>.
+          body: This is an auto-created PR to upgrade our dependencies according to <https://github.com/mashcard/mashcard/blob/main/.github/workflows/dependency_updater.yml>.
           commit-message: 'build(deps): upgrade dependencies'
           branch: deps-automatic-upgrade
           labels: |
