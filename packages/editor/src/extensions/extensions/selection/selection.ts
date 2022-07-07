@@ -75,6 +75,10 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
     }
   },
 
+  addStorage() {
+    return {}
+  },
+
   addProseMirrorPlugins() {
     const domEvents = new MultipleNodeSelectionDomEvents(this.editor, {
       mouseSelectionClassName: this.options.nodeSelection?.mouseSelection?.className
@@ -82,38 +86,17 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
     return [
       new Plugin<SelectionState>({
         key: SelectionPluginKey,
-        state: {
-          init() {
-            return {
-              multiNodeSelecting: false
-            }
-          },
-          apply(tr, value, oldState, newState) {
-            const anchor = tr.getMeta('updateSelectionAnchor')
-            if (anchor) {
-              return { ...value, multiNodeSelecting: { anchor, selecting: false } }
-            }
-
-            const head = tr.getMeta('updateSelectionHead')
-
-            if (head && value.multiNodeSelecting) {
-              return { ...value, multiNodeSelecting: { ...value.multiNodeSelecting, head } }
-            }
-
-            if (tr.getMeta('multipleNodeSelecting') && value.multiNodeSelecting) {
-              return { ...value, multiNodeSelecting: { ...value.multiNodeSelecting, selecting: true } }
-            }
-
-            if (tr.getMeta('multipleNodeSelectingEnd')) {
-              return { ...value, multiNodeSelecting: false }
-            }
-
-            return { ...value }
-          }
-        },
         props: {
           handleDOMEvents: {
-            mousedown: (view, event) => domEvents.mousedown(view, event)
+            mousedown: (view, event) => {
+              if (!(event.target instanceof HTMLElement)) return false
+
+              // if click happens on the doc node, assume a Multiple Node Selection will happen.
+              // TODO: check ProseMirror className could be invalid someday.
+              if (!event.target.classList.contains('ProseMirror')) return false
+
+              return domEvents.mousedown(view, event)
+            }
           },
           decorations: (state: EditorState) => {
             const textDecorationSet = textSelectionDecoration(this.editor, this.options, state)

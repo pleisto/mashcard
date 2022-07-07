@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, useCallback, useEffect, useMemo, useState } from 'react'
+import { FC, MouseEventHandler, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Spin } from '@mashcard/design-system'
 import { EditorContent, useEditor } from '@mashcard/editor'
 import { DocumentTitle } from './components/DocumentTitle'
@@ -61,9 +61,14 @@ export const DocumentPage: FC<DocumentPageProps> = ({ mode }) => {
     if (!loading) setLatestLoading(false)
   }, [loading, setLatestLoading])
 
+  const pageRef = useRef<HTMLDivElement>(null)
+  const pageContentRef = useRef<HTMLDivElement>(null)
+
   // setup this mouse down handler to start node selection when click outside the document area
-  const handleMouseDown = useCallback<MouseEventHandler<HTMLDivElement>>(
+  const handleMultipleNodeSelectionMouseDown = useCallback<MouseEventHandler<HTMLDivElement>>(
     event => {
+      // only allows multiple node selection work on Page and PageContent
+      if (event.target !== pageRef.current && event.target !== pageContentRef.current) return
       editor?.commands.startMultipleNodeSelection(event.nativeEvent)
     },
     [editor?.commands]
@@ -81,13 +86,14 @@ export const DocumentPage: FC<DocumentPageProps> = ({ mode }) => {
     <>
       {docMeta.id && docMeta.documentInfo?.isDeleted && <TrashPrompt />}
       <Root.Page
+        ref={pageRef}
         width={{
           '@mdOnly': 'md',
           '@smDown': 'sm'
         }}
-        onMouseDown={handleMouseDown}>
+        onMouseDown={handleMultipleNodeSelectionMouseDown}>
         <DocumentTitle docBlock={currentRootBlock} editable={documentEditable} meta={meta} setMeta={setMeta} />
-        <Root.PageContent>
+        <Root.PageContent ref={pageContentRef}>
           <EditorContent
             editor={editor}
             editable={documentEditable}
