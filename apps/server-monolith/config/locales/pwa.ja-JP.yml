@@ -118,6 +118,8 @@ ja-JP:
         label: 見出し 4
       h5:
         label: 見出し 5
+      h6:
+        label: Heading 5
       bulletedList:
         label: Bulleted List
       orderedList:
@@ -176,6 +178,7 @@ ja-JP:
         h3: 見出し 3
         h4: 見出し 4
         h5: 見出し 5
+        h6: Heading 6
         numbered_list: Numbered list
         bulleted_list: Bulleted list
         formula: Formula
@@ -214,6 +217,7 @@ ja-JP:
           heading3: 見出し 3
           heading4: 見出し 4
           heading5: 見出し 5
+          heading6: Heading 6
           bulletList: Bulleted list
           orderedList: Numbered list
           taskList: Todo

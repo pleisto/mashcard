@@ -118,6 +118,8 @@ zh-CN:
         label: 四级标题
       h5:
         label: 五级标题
+      h6:
+        label: Heading 5
       bulletedList:
         label: 无序列表
       orderedList:
@@ -176,6 +178,7 @@ zh-CN:
         h3: 三级标题
         h4: 四级标题
         h5: 五级标题
+        h6: Heading 6
         numbered_list: 有序列表
         bulleted_list: 无序列表
         formula: 公式
@@ -214,6 +217,7 @@ zh-CN:
           heading3: 三级标题
           heading4: 四级标题
           heading5: 五级标题
+          heading6: Heading 6
           bulletList: 无序列表
           orderedList: 有序列表
           taskList: Todo
