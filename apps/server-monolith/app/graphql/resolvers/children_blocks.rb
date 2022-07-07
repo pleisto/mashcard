@@ -7,9 +7,7 @@ module Resolvers
     argument :root_id, GraphQL::Types::String, required: true,
       description: 'List all children from root id'
 
-    argument :snapshot_version, GraphQL::Types::Int, required: true, description: 'Snapshot version'
-
-    def resolve(root_id:, snapshot_version:)
+    def resolve(root_id:)
       return [] if root_id.blank?
 
       root = Docs::Block.unscoped.find_by(id: root_id)

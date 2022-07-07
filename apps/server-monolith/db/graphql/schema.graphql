@@ -1189,33 +1189,6 @@ type BlockRestorePayload {
   errors: [String!]!
 }
 
-type BlockSnapshot {
-  """
-  created at
-  """
-  createdAt: ISO8601DateTime!
-
-  """
-  object unique id
-  """
-  id: AutoIncrementID!
-
-  """
-  Snapshot name
-  """
-  name: String!
-
-  """
-  relative time
-  """
-  relativeTime: String!
-
-  """
-  Snapshot version
-  """
-  snapshotVersion: Int!
-}
-
 """
 InputObject type of Class
 """
@@ -3354,21 +3327,11 @@ type query {
   return share links by block id.
   """
   blockShareLinks(id: String!): [ShareLink!]!
-
-  """
-  return snapshots by block id.
-  """
-  blockSnapshots(id: String!): [BlockSnapshot!]
   childrenBlocks(
     """
     List all children from root id
     """
     rootId: String!
-
-    """
-    Snapshot version
-    """
-    snapshotVersion: Int!
   ): [Block!]
   conversationComments(pageIds: [UUID!]!): [Conversation!]
   documentHistories(

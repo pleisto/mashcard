@@ -621,20 +621,6 @@ export type BlockRestorePayload = {
   errors: Array<Scalars['String']>
 }
 
-export type BlockSnapshot = {
-  __typename?: 'BlockSnapshot'
-  /** created at */
-  createdAt: Scalars['ISO8601DateTime']
-  /** object unique id */
-  id: Scalars['AutoIncrementID']
-  /** Snapshot name */
-  name: Scalars['String']
-  /** relative time */
-  relativeTime: Scalars['String']
-  /** Snapshot version */
-  snapshotVersion: Scalars['Int']
-}
-
 /** InputObject type of Class */
 export type BlockSoftDeleteInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -1824,8 +1810,6 @@ export type Query = {
   blockSearch?: Maybe<Array<Block>>
   /** return share links by block id. */
   blockShareLinks: Array<ShareLink>
-  /** return snapshots by block id. */
-  blockSnapshots?: Maybe<Array<BlockSnapshot>>
   childrenBlocks?: Maybe<Array<Block>>
   conversationComments?: Maybe<Array<Conversation>>
   currentPodDomain: Scalars['String']
@@ -1881,13 +1865,8 @@ export type QueryBlockShareLinksArgs = {
   id: Scalars['String']
 }
 
-export type QueryBlockSnapshotsArgs = {
-  id: Scalars['String']
-}
-
 export type QueryChildrenBlocksArgs = {
   rootId: Scalars['String']
-  snapshotVersion: Scalars['Int']
 }
 
 export type QueryConversationCommentsArgs = {
@@ -2769,7 +2748,6 @@ export type GetBlockInfoQuery = {
 
 export type GetChildrenBlocksQueryVariables = Exact<{
   rootId: Scalars['String']
-  snapshotVersion: Scalars['Int']
 }>
 
 export type GetChildrenBlocksQuery = {
@@ -5476,8 +5454,8 @@ export type GetBlockInfoQueryHookResult = ReturnType<typeof useGetBlockInfoQuery
 export type GetBlockInfoLazyQueryHookResult = ReturnType<typeof useGetBlockInfoLazyQuery>
 export type GetBlockInfoQueryResult = Apollo.QueryResult<GetBlockInfoQuery, GetBlockInfoQueryVariables>
 export const GetChildrenBlocksDocument = gql`
-  query GetChildrenBlocks($rootId: String!, $snapshotVersion: Int!) {
-    childrenBlocks(rootId: $rootId, snapshotVersion: $snapshotVersion) {
+  query GetChildrenBlocks($rootId: String!) {
+    childrenBlocks(rootId: $rootId) {
       id
       sort
       parentId
@@ -5597,7 +5575,6 @@ export const GetChildrenBlocksDocument = gql`
  * const { data, loading, error } = useGetChildrenBlocksQuery({
  *   variables: {
  *      rootId: // value for 'rootId'
- *      snapshotVersion: // value for 'snapshotVersion'
  *   },
  * });
  */

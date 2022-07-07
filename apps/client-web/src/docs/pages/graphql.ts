@@ -225,8 +225,8 @@ export const queryBlockInfo = gql`
 `
 
 export const queryChildrenBlocks = gql`
-  query GetChildrenBlocks($rootId: String!, $snapshotVersion: Int!) {
-    childrenBlocks(rootId: $rootId, snapshotVersion: $snapshotVersion) {
+  query GetChildrenBlocks($rootId: String!) {
+    childrenBlocks(rootId: $rootId) {
       id
       sort
       parentId
