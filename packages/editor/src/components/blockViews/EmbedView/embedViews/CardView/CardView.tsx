@@ -18,6 +18,7 @@ import {
   LinkText,
   EmbedToolbarContainer
 } from './CardView.style'
+import { useEditorContext } from '../../../../../hooks'
 
 export interface CardViewProps {
   deleteNode: EmbedViewProps['deleteNode']
@@ -64,6 +65,7 @@ export const CardView: FC<CardViewProps> = ({
   deleteNode,
   updateEmbedBlockAttributes
 }) => {
+  const { documentEditable } = useEditorContext()
   const handleStopPropagation = useCallback((event: MouseEvent) => {
     event.stopPropagation()
   }, [])
@@ -79,6 +81,7 @@ export const CardView: FC<CardViewProps> = ({
       contentForCopy={linkUrl}
       deleteNode={deleteNode}
       getPos={getPos}
+      editable="custom"
       actionOptions={actionOptions}>
       <CardContainer
         contentType={type}
@@ -95,15 +98,17 @@ export const CardView: FC<CardViewProps> = ({
               <LinkText>{linkUrl}</LinkText>
             </Link>
           )}
-          <EmbedToolbarContainer onClick={handleStopPropagation}>
-            <EmbedToolbar
-              mode="card"
-              blockType={blockType}
-              displayName={displayName}
-              url={linkUrl}
-              updateEmbedBlockAttributes={updateEmbedBlockAttributes}
-            />
-          </EmbedToolbarContainer>
+          {documentEditable && (
+            <EmbedToolbarContainer onClick={handleStopPropagation}>
+              <EmbedToolbar
+                mode="card"
+                blockType={blockType}
+                displayName={displayName}
+                url={linkUrl}
+                updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+              />
+            </EmbedToolbarContainer>
+          )}
         </Content>
       </CardContainer>
     </BlockContainer>

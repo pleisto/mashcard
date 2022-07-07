@@ -16,6 +16,7 @@ import {
   TextViewContent,
   Name
 } from './TextView.style'
+import { useEditorContext } from '../../../../../hooks'
 
 export interface TextViewProps {
   blockType: EmbedBlockType
@@ -42,6 +43,7 @@ export const TextView: FC<TextViewProps> = ({
   fileType,
   url
 }) => {
+  const { documentEditable } = useEditorContext()
   const [actionOptions] = useActionOptions()
   const handleEmbedToolbarClick = useCallback((event: MouseEvent) => {
     event.stopPropagation()
@@ -55,22 +57,24 @@ export const TextView: FC<TextViewProps> = ({
       node={node}
       contentForCopy={url}
       deleteNode={deleteNode}
+      editable="custom"
       getPos={getPos}
-      actionOptions={actionOptions}
-    >
+      actionOptions={actionOptions}>
       <TextViewLayout>
-        <EmbedToolbarContainer onClick={handleEmbedToolbarClick}>
-          <EmbedToolbarContainerInner>
-            <EmbedToolbar
-              mode="text"
-              displayName={displayName}
-              extension={extension}
-              url={url}
-              blockType={blockType}
-              updateEmbedBlockAttributes={updateEmbedBlockAttributes}
-            />
-          </EmbedToolbarContainerInner>
-        </EmbedToolbarContainer>
+        {documentEditable && (
+          <EmbedToolbarContainer onClick={handleEmbedToolbarClick}>
+            <EmbedToolbarContainerInner>
+              <EmbedToolbar
+                mode="text"
+                displayName={displayName}
+                extension={extension}
+                url={url}
+                blockType={blockType}
+                updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+              />
+            </EmbedToolbarContainerInner>
+          </EmbedToolbarContainer>
+        )}
         <TextViewContainer>
           <TextViewContainerInner onClick={handleClick}>
             <TextViewIcon>

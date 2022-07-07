@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Spin, styled, theme } from '@mashcard/design-system'
+import { Spin } from '@mashcard/design-system'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { Controlled as ImagePreview } from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
@@ -8,8 +8,16 @@ import { BlockContainer } from '../../../BlockContainer'
 import { UpdateEmbedBlockAttributes } from '../../EmbedView'
 import { EmbedToolbar } from '../EmbedToolbar'
 import { Resizable } from 're-resizable'
-import { minWidth } from './ImageView.style'
 import { useImageState } from './useImageState'
+import {
+  ImageViewLayout,
+  SpinnerWrapper,
+  ImageViewContainer,
+  Img,
+  PreviewButton,
+  EmbedToolbarContainer
+} from './ImageView.style'
+import { useEditorContext } from '../../../../../hooks'
 
 export interface ImageViewProps {
   displayName: string
@@ -22,108 +30,6 @@ export interface ImageViewProps {
   node: EmbedViewProps['node']
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
 }
-
-const EmbedToolbarContainer = styled('div', {
-  background: theme.colors.backgroundPrimary,
-  borderRadius: '4px',
-  bottom: '.5rem',
-  opacity: 0,
-  pointerEvents: 'none',
-  position: 'absolute',
-  right: '.5rem',
-  transition: 'opacity 100ms ease-in-out'
-})
-
-const ImageViewContainer = styled('div', {
-  display: 'inline-flex',
-  maxWidth: '100%',
-  overflow: 'hidden',
-  position: 'relative',
-
-  '&:hover': {
-    [`& ${EmbedToolbarContainer}`]: {
-      opacity: 1,
-      pointerEvents: 'inherit'
-    }
-  },
-
-  [`[data-rmiz-wrap='hidden'], [data-rmiz-wrap='visible']`]: {
-    display: 'flex'
-  }
-})
-
-const ImageViewLayout = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-
-  variants: {
-    align: {
-      left: {
-        alignItems: 'flex-start'
-      },
-      center: {
-        alignItems: 'center'
-      },
-      right: {
-        alignItems: 'flex-end'
-      },
-      'full-width': {
-        alignItems: 'center',
-
-        [`& ${ImageViewContainer}`]: {
-          width: '100%'
-        }
-      }
-    }
-  }
-})
-
-const Img = styled('img', {
-  borderRadius: '4px',
-  maxWidth: '100%',
-  minWidth: `${minWidth}px`,
-  width: '100%',
-
-  variants: {
-    loading: {
-      true: {
-        display: 'none',
-        position: 'absolute'
-      },
-      false: {}
-    }
-  }
-})
-
-const SpinnerWrapper = styled('div', {
-  include: ['flexCenter'],
-
-  background: theme.colors.overlaySecondary,
-  display: 'flex',
-  height: '5.625rem',
-  maxWidth: '100%',
-  width: '100%'
-})
-
-const PreviewButton = styled('button', {
-  bottom: 0,
-  height: '100%',
-  left: 0,
-  position: 'absolute',
-  right: 0,
-  top: 0,
-  width: '100%',
-
-  /* reset styles */
-  appearance: 'none',
-  background: 'none',
-  border: 'none',
-  borderRadius: '0',
-  color: 'inherit',
-  font: 'inherit',
-  margin: 0,
-  padding: 0
-})
 
 export const ImageView: FC<ImageViewProps> = props => {
   const { displayName, url, align, width: imageWidth, deleteNode, getPos, node, updateEmbedBlockAttributes } = props
@@ -139,6 +45,8 @@ export const ImageView: FC<ImageViewProps> = props => {
     zoomOutImage
   } = useImageState(props)
 
+  const { documentEditable } = useEditorContext()
+
   const isFullWidth = align === 'full-width'
   const width = isFullWidth ? '100%' : imageWidth
 
@@ -146,6 +54,7 @@ export const ImageView: FC<ImageViewProps> = props => {
     <BlockContainer
       node={node}
       contentForCopy={url}
+      editable="custom"
       getPos={getPos}
       deleteNode={deleteNode}
       actionOptions={actionOptions}>
@@ -174,19 +83,21 @@ export const ImageView: FC<ImageViewProps> = props => {
             </ImagePreview>
             <PreviewButton data-testid={TEST_ID_ENUM.editor.imageBlock.zoomInButton.id} onDoubleClick={previewImage} />
           </Resizable>
-          <EmbedToolbarContainer>
-            <EmbedToolbar
-              url={url}
-              displayName={displayName}
-              mode="preview"
-              blockType="image"
-              updateEmbedBlockAttributes={updateEmbedBlockAttributes}
-              onFullScreen={previewImage}
-              zoomInImage={zoomInImage}
-              zoomOutImage={zoomOutImage}
-              align={align}
-            />
-          </EmbedToolbarContainer>
+          {documentEditable && (
+            <EmbedToolbarContainer>
+              <EmbedToolbar
+                url={url}
+                displayName={displayName}
+                mode="preview"
+                blockType="image"
+                updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+                onFullScreen={previewImage}
+                zoomInImage={zoomInImage}
+                zoomOutImage={zoomOutImage}
+                align={align}
+              />
+            </EmbedToolbarContainer>
+          )}
         </ImageViewContainer>
       </ImageViewLayout>
     </BlockContainer>

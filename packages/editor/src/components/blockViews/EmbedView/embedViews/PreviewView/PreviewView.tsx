@@ -54,6 +54,7 @@ export const PreviewView: FC<PreviewViewProps> = ({
       node={node}
       contentForCopy={fileUrl}
       deleteNode={deleteNode}
+      editable="custom"
       getPos={getPos}
       actionOptions={actionOptions}>
       <DocumentContainer>
