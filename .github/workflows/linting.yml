@@ -31,6 +31,8 @@ jobs:
           cache: yarn
       - name: Run yarn install
         run: yarn install --immutable
+      - name: Remove eslistcache
+        run: rm packages/design-system/.eslintcache
       - name: Run yarn lint
         run: yarn lint
   ruby:
