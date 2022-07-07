@@ -4,6 +4,7 @@ module ApplicationHelper
   def global_context
     {
       version: Mashcard::Runtime.version,
+      monorepoVersion: Mashcard::Runtime.monorepo_version,
       internalApiEndpoint: internal_graphql_api_path,
       currentUser: Current.user&.as_global_context,
       lastDomain: Mashcard::Runtime.cypress? ? nil : Current.user&.last_pod_username,

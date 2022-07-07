@@ -22,5 +22,6 @@ module Mashcard
   end
 
   VERSION = Oj.load(File.read(root.join('package.json')))['version'].freeze
+  MONOREPO_VERSION = Oj.load(File.read(monorepo_root.join('package.json')))['version'].freeze
   BOOTED_AT = Time.now.utc.freeze
 end
