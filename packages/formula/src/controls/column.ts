@@ -99,7 +99,7 @@ export class ColumnClass implements ColumnType {
   }
 
   newCell(cell: Cell, rowKey: string): CellType {
-    return new CellClass(this.spreadsheet, cell, {
+    return new CellClass(this.spreadsheet, cell, ['column', this.findKey, rowKey], {
       columnKey: this.key(),
       rowKey,
       cleanupEventDependency: this.eventDependency({})

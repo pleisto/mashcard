@@ -5,7 +5,6 @@ import { ContextInterface, FunctionContext, InterpretContext } from '../type'
 import { Cell, Column, Row, SpreadsheetClass, SpreadsheetType } from '../controls'
 import { columnDisplayIndex } from '../grammar'
 import {
-  BaseTestCase,
   CellInput,
   ColumnInput,
   DEFAULT_UUID_FUNCTION,
@@ -244,7 +243,7 @@ export const makeContext = async (options: MakeContextOptions): Promise<MakeCont
   return { formulaContext, interpretContext, buildMeta, fetchUUID }
 }
 
-export const trackTodo = (it: jest.It, testCases: Array<BaseTestCase<{}>>): void => {
+export const trackTodo = (it: jest.It, testCases: Array<{ todoMessage?: string; jestTitle: string }>): void => {
   testCases
     .filter(t => t.todoMessage)
     .forEach(t => {

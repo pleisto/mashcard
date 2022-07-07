@@ -139,8 +139,12 @@ export interface Cell {
   value: string
 }
 
+export type CellVia = ['column' | 'row', FindKey, string]
+
 export interface CellType extends Cell {
   spreadsheet: SpreadsheetType
+  _cell: Cell
+  via: CellVia
   columnKey: string
   rowKey: string
   eventDependency: getEventDependency

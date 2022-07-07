@@ -104,7 +104,7 @@ export class RowClass implements RowType {
   }
 
   newCell(cell: Cell, columnKey: string): CellType {
-    return new CellClass(this.spreadsheet, cell, {
+    return new CellClass(this.spreadsheet, cell, ['row', this.findKey, columnKey], {
       rowKey: this.key(),
       columnKey,
       cleanupEventDependency: this.eventDependency({})

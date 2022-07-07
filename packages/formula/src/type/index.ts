@@ -25,15 +25,12 @@ const FORMULA_TYPES = [...FORMULA_USED_TYPES, 'any', 'void'] as const
 export const CORE_FUNCTION_GROUPS = ['core'] as const
 export type CoreFunctionGroup = typeof CORE_FUNCTION_GROUPS[number]
 
-type FormulaComplexType = typeof FORMULA_COMPLEX_TYPES[number]
+// type FormulaComplexType = typeof FORMULA_COMPLEX_TYPES[number]
 export type FormulaControlType = typeof FORMULA_CONTROL_TYPES[number]
 export type FormulaType = typeof FORMULA_TYPES[number]
 export type UsedFormulaType = typeof FORMULA_USED_TYPES[number]
 
-export type PersistFormulaType = Exclude<
-  FormulaType,
-  'any' | 'void' | 'Blank' | 'Range' | FormulaControlType | FormulaComplexType
->
+// export type PersistFormulaType = Exclude<FormulaType, 'any' | 'void'>
 
 export type FormulaCheckType = FormulaType | readonly [FormulaType, ...FormulaType[]]
 
