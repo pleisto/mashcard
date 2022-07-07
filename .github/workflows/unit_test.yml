@@ -6,7 +6,6 @@ on:
   pull_request:
   push:
     branches:
-      - master
       - main
 env:
   YARN_CHECKSUM_BEHAVIOR: update
@@ -162,7 +161,7 @@ jobs:
         run: yarn server bundle exec rails db:prepare db:schema:dump
       - name: Add and commit everything
         uses: EndBug/add-and-commit@v9.0.0
-        if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/main'
+        if: github.ref != 'refs/heads/main'
         env:
           HUSKY: 0
         with:

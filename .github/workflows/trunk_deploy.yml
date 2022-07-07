@@ -9,7 +9,6 @@ on:
       - '**/NOTICE'
       - '**/VERSION'
     branches:
-      - master
       - main
 permissions:
   id-token: write
@@ -70,7 +69,7 @@ jobs:
       name: trunk
       url: https://${{ env.domain }}/
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     needs: build
     steps:
       - name: Checkout the codebase
@@ -89,16 +88,17 @@ jobs:
         with:
           cluster_name: 'kube-us-dev-clone-1'
           location: 'us-central1'
+      - name: Cleanup broken deployments
+        run: |-
+          helm list --pending --namespace=cicd --filter="^mashcard-trunk$" --output=json | jq '.[] | "sh.helm.release.v1." + .name + ".v" + .revision' | xargs --no-run-if-empty kubectl delete secret -n cicd
       - name: 'Deploy to GKE'
         run: |-
           helm upgrade mashcard-trunk ${{ github.workspace }}/tools/helm-charts/mashcard \
-           --install --atomic --timeout 15m --cleanup-on-fail --wait --namespace=cicd \
+           --install --atomic --timeout 5m --cleanup-on-fail --wait --namespace=cicd \
             --set-string image.name='${{ env.image }}' \
             --set-string ingress.host='${{ env.domain }}' \
             --set serviceAccount.create=false \
             --set-string serviceAccount.name='trunk-or-pr-main' \
-            --set-string resources.requests.cpu='0.5' \
-            --set-string resources.requests.memory='512Mi' \
             --set-string envs.SMTP_FROM='mashcard-ce-trunk@intl-email-service.mashcard.app' \
             --set-string envs.SENTRY_DSN='https://4aa5075a3b484af6a251f3677a9f665e@o1150336.ingest.sentry.io/6257651' \
             --set-string envs.HOST='${{ env.domain }}' \

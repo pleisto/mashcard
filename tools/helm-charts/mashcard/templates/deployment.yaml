@@ -52,20 +52,33 @@ spec:
             tcpSocket:
               port: http
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+            {{- if .Values.previewEnv }}
+            requests:
+              cpu: "0.01"
+              memory: 64Mi
+            limits:
+              cpu: "0.5"
+              memory: 512Mi
+            {{- else }}
+            requests:
+              cpu: "0.05"
+              memory: 1024Mi
+            {{- end }}
         - name: {{ .Chart.Name }}-sidekiq
           {{- include "mashcard.deploymentCommon" . }}
           command: ["bundle", "exec", "sidekiq", "-C", "/app/apps/server-monolith/config/sidekiq.yml"]
           resources:
             {{- if .Values.previewEnv }}
             requests:
-              cpu: "0.1"
+              cpu: "0.005"
               memory: 64Mi
             limits:
               cpu: "1.5"
               memory: 512Mi
             {{- else }}
-            {{- toYaml .Values.resources | nindent 12 }}
+            requests:
+              cpu: "0.005"
+              memory: 256Mi
             {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:

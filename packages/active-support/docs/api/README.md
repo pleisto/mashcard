@@ -76,6 +76,7 @@
 - [isBoolean](README.md#isboolean)
 - [isBuffer](README.md#isbuffer)
 - [isDate](README.md#isdate)
+- [isEmail](README.md#isemail)
 - [isEmpty](README.md#isempty)
 - [isEqual](README.md#isequal)
 - [isError](README.md#iserror)
@@ -122,6 +123,7 @@
 - [partition](README.md#partition)
 - [pick](README.md#pick)
 - [pluralize](README.md#pluralize)
+- [prependUrlScheme](README.md#prependurlscheme)
 - [pull](README.md#pull)
 - [pullAll](README.md#pullall)
 - [pullAllBy](README.md#pullallby)
@@ -4377,6 +4379,26 @@ Returns true if value is correctly classified, else false.
 
 ---
 
+### <a id="isemail" name="isemail"></a> isEmail
+
+▸ **isEmail**(`value`): `boolean`
+
+Checks if a given value is a email
+
+#### Parameters
+
+| Name    | Type     |
+| :------ | :------- |
+| `value` | `string` |
+
+#### Returns
+
+`boolean`
+
+true if the value is a email, false otherwise.
+
+---
+
 ### <a id="isempty" name="isempty"></a> isEmpty
 
 ▸ **isEmpty**(`value?`): `boolean`
@@ -5506,6 +5528,22 @@ Pluralizes the provided input considering irregular words
 `string`
 
 the plural form of the word in the string
+
+---
+
+### <a id="prependurlscheme" name="prependurlscheme"></a> prependUrlScheme
+
+▸ **prependUrlScheme**(`url`): `string`
+
+#### Parameters
+
+| Name  | Type     |
+| :---- | :------- |
+| `url` | `string` |
+
+#### Returns
+
+`string`
 
 ---
 
