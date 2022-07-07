@@ -427,7 +427,8 @@ export const SpreadsheetCellContainer: React.FC<{
   context: SpreadsheetContext
   cellId: SpreadsheetSelectionCellId
   children?: React.ReactNode
-}> = ({ children, context, cellId }) => {
+  disabledMenu?: boolean
+}> = ({ children, context, cellId, disabledMenu }) => {
   const [t] = useEditorI18n()
 
   const cellIdStr = `${cellId.rowId},${cellId.columnId}`
@@ -452,7 +453,15 @@ export const SpreadsheetCellContainer: React.FC<{
     }
   }
 
+  const onClickCell: React.MouseEventHandler = (e: React.MouseEvent): void => {
+    if ((e.target as Element).closest('.mashcard-formula-editor')) return
+    if (!selected) {
+      selectCell()
+    }
+  }
+
   const onContextMenu: React.MouseEventHandler = (e: React.MouseEvent): void => {
+    if ((e.target as Element).closest('.mashcard-formula-editor')) return
     if (!selected) {
       selectCell()
     }
@@ -475,7 +484,7 @@ export const SpreadsheetCellContainer: React.FC<{
   return (
     <td
       className={selected ? 'selected' : ''}
-      onClick={selectCell}
+      onClick={onClickCell}
       onContextMenu={onContextMenu}
       data-cell-id={cellIdStr}
     >

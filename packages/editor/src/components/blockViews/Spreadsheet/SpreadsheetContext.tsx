@@ -149,6 +149,7 @@ export const useSpreadsheetContext = (options: {
 
   React.useEffect(() => {
     const onKeyDown = (e: KeyboardEvent): void => {
+      if ((e.target as Element).closest('.mashcard-formula-editor')) return
       devLog(`key down ${e.code}`)
       const { cellIds, columnIds: selectedColumnIds, rowIds: selectedRowIds } = selection
       const thisSelected = cellIds?.length ?? selectedRowIds?.length ?? selectedColumnIds?.length
