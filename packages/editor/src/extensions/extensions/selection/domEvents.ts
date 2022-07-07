@@ -91,46 +91,38 @@ export class MultipleNodeSelectionDomEvents {
   }
 
   public mousedown(view: EditorView, event: MouseEvent): boolean {
-    const result = view.posAtCoords({ left: event.clientX, top: event.clientY })
-
-    // if click happens outside the doc nodes, assume a Multiple Node Selection will happen.
-    // case: result = null
-    // click outside the document
-    // case: result.inside === -1
-    // click on the doc node
-    if (!result || result.inside === -1) {
-      this.container.mouseSelection = {
-        ...this.container.mouseSelection,
-        anchor: {
-          x: event.clientX,
-          y: event.clientY
-        }
+    this.container.mouseSelection = {
+      ...this.container.mouseSelection,
+      anchor: {
+        x: event.clientX,
+        y: event.clientY
       }
-
-      const mouseup = (event: MouseEvent): void => {
-        this.mouseup(view, event)
-
-        window.removeEventListener('mouseup', mouseup)
-        window.removeEventListener('mousemove', mousemove)
-        window.removeEventListener('dragstart', dragstart)
-      }
-
-      const mousemove = (event: MouseEvent): void => {
-        this.mousemove(view, event)
-      }
-
-      const dragstart = (event: DragEvent): void => {
-        this.dragstart(view, event)
-        window.removeEventListener('mouseup', mouseup)
-        window.removeEventListener('mousemove', mousemove)
-        window.removeEventListener('dragstart', dragstart)
-      }
-
-      // register events inside the mousedown event for avoiding invalid event listener.
-      window.addEventListener('mouseup', mouseup)
-      window.addEventListener('mousemove', mousemove)
-      window.addEventListener('dragstart', dragstart)
     }
+
+    const mouseup = (event: MouseEvent): void => {
+      this.mouseup(view, event)
+
+      window.removeEventListener('mouseup', mouseup)
+      window.removeEventListener('mousemove', mousemove)
+      window.removeEventListener('dragstart', dragstart)
+    }
+
+    const mousemove = (event: MouseEvent): void => {
+      this.mousemove(view, event)
+    }
+
+    const dragstart = (event: DragEvent): void => {
+      this.dragstart(view, event)
+      window.removeEventListener('mouseup', mouseup)
+      window.removeEventListener('mousemove', mousemove)
+      window.removeEventListener('dragstart', dragstart)
+    }
+
+    // register events inside the mousedown event for avoiding invalid event listener.
+    window.addEventListener('mouseup', mouseup)
+    window.addEventListener('mousemove', mousemove)
+    window.addEventListener('dragstart', dragstart)
+    // }
 
     return false
   }
