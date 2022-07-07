@@ -75,7 +75,7 @@ Omit.formulaContext
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:567](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L567)
+[packages/formula/src/types/index.ts:573](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L573)
 
 ---
 
@@ -89,4 +89,4 @@ Omit.interpretContext
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:572](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L572)
+[packages/formula/src/types/index.ts:578](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L578)

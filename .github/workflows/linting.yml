@@ -6,7 +6,6 @@ on:
   pull_request:
   push:
     branches:
-      - master
       - main
 env:
   YARN_CHECKSUM_BEHAVIOR: update
