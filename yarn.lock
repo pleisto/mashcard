@@ -3204,6 +3204,7 @@ __metadata:
     "@graphql-codegen/typescript-operations": ^2.4.3
     "@graphql-codegen/typescript-react-apollo": ^3.2.17
     "@pleisto/eslint-plugin": ^1.0.3
+    "@sentry/cli": ^2.3.0
     "@swc/cli": ^0.1.57
     "@swc/core": ^1.2.209
     "@swc/helpers": ^0.4.3
@@ -3751,6 +3752,22 @@ __metadata:
     "@sentry/utils": 7.5.0
     tslib: ^1.9.3
   checksum: f101baa03953d1d544a8f007b8cdc14a67531cddeb3db2bade4537031bd49a5f8fb9e1dec1bc28c08a8591f1ec901c24cc7cd34fd14cd091b5e931f5a068f352
+  languageName: node
+  linkType: hard
+
+"@sentry/cli@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "@sentry/cli@npm:2.3.0"
+  dependencies:
+    https-proxy-agent: ^5.0.0
+    node-fetch: ^2.6.7
+    npmlog: ^6.0.1
+    progress: ^2.0.3
+    proxy-from-env: ^1.1.0
+    which: ^2.0.2
+  bin:
+    sentry-cli: bin/sentry-cli
+  checksum: b2b787ba77e4814409916c8c649a5c2b3e1e52ae21a3864569037674323def239ec8c20f4db639441404e97edb24ac1f682c8472de8376fc5a07b481c878c443
   languageName: node
   linkType: hard
 
@@ -18160,7 +18177,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npmlog@npm:^6.0.0":
+"npmlog@npm:^6.0.0, npmlog@npm:^6.0.1":
   version: 6.0.2
   resolution: "npmlog@npm:6.0.2"
   dependencies:
@@ -19430,6 +19447,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"progress@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "progress@npm:2.0.3"
+  checksum: f67403fe7b34912148d9252cb7481266a354bd99ce82c835f79070643bb3c6583d10dbcfda4d41e04bbc1d8437e9af0fb1e1f2135727878f5308682a579429b7
+  languageName: node
+  linkType: hard
+
 "promise-inflight@npm:^1.0.1":
   version: 1.0.1
   resolution: "promise-inflight@npm:1.0.1"
@@ -19655,6 +19679,13 @@ __metadata:
     forwarded: 0.2.0
     ipaddr.js: 1.9.1
   checksum: 29c6990ce9364648255454842f06f8c46fcd124d3e6d7c5066df44662de63cdc0bad032e9bf5a3d653ff72141cc7b6019873d685708ac8210c30458ad99f2b74
+  languageName: node
+  linkType: hard
+
+"proxy-from-env@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "proxy-from-env@npm:1.1.0"
+  checksum: ed7fcc2ba0a33404958e34d95d18638249a68c430e30fcb6c478497d72739ba64ce9810a24f53a7d921d0c065e5b78e3822759800698167256b04659366ca4d4
   languageName: node
   linkType: hard
 

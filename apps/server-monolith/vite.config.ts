@@ -1,6 +1,3 @@
-/**
- * TODO: delete me after rails project retired
- */
 import { defineConfig, searchForWorkspaceRoot } from 'vite'
 import RubyPlugin from 'vite-plugin-ruby'
 import react from '@vitejs/plugin-react'

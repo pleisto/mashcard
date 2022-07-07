@@ -33,7 +33,7 @@
     ]
   },
   "scripts": {
-    "postinstall": "husky install && ./tools/scripts/pdftron static",
+    "postinstall": "(is-ci || husky install) && ./tools/scripts/pdftron static",
     "analyze": "BUNDLE_STATS=1 yarn dist && open ./tmp/esm-bundle-stats.html",
     "build:rust": "turbo run build:rust",
     "lint": "turbo run lint:eslint lint:type",
@@ -73,6 +73,7 @@
     "@graphql-codegen/typescript-operations": "^2.4.3",
     "@graphql-codegen/typescript-react-apollo": "^3.2.17",
     "@pleisto/eslint-plugin": "^1.0.3",
+    "@sentry/cli": "^2.3.0",
     "@swc/cli": "^0.1.57",
     "@swc/jest": "^0.2.21",
     "@testing-library/jest-dom": "^5.16.4",
