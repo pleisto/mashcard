@@ -1,5 +1,6 @@
 import { tokenMatcher } from 'chevrotain'
-import { PredicateOperator, AnyTypeResult } from '../../type'
+import { AnyTypeResult } from '../../type'
+import { PredicateOperator } from '../../types/predicate'
 import { Equal, Equal2, NotEqual, NotEqual2, LessThan, GreaterThan, LessThanEqual, GreaterThanEqual } from '../lexer'
 import { OperatorType } from '../operator'
 

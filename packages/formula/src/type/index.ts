@@ -1,16 +1,9 @@
 import { RequireField } from '@mashcard/active-support'
 import { EventType } from '@mashcard/schema'
 import { CstNode } from 'chevrotain'
-import {
-  ButtonType,
-  ColumnType,
-  SpreadsheetType,
-  SwitchType,
-  BlockType,
-  RowType,
-  RangeType,
-  CellType
-} from '../controls'
+import { ColumnType, SpreadsheetType, BlockType, RowType } from '../controls'
+import { FormulaTypes } from '../types'
+import { ErrorType } from '../types/error'
 
 const FORMULA_BASIC_TYPES = ['number', 'string', 'boolean', 'null'] as const
 const FORMULA_OBJECT_TYPES = ['Date', 'Block', 'Blank', 'Record', 'Array', 'Error'] as const
@@ -94,19 +87,6 @@ export type Definition = string
 
 export type VariableKind = 'literal' | 'constant' | 'expression' | 'unknown'
 
-export type ErrorType =
-  | 'type'
-  | 'parse'
-  | 'syntax'
-  | 'runtime'
-  | 'fatal'
-  | 'deps'
-  | 'circular_dependency'
-  | 'name_unique'
-  | 'name_check'
-  | 'name_invalid'
-  | 'custom'
-
 export type ParseErrorType = 'parse' | 'syntax'
 
 export type FunctionKey = `${FunctionGroup}::${FunctionNameType}` | FunctionNameType
@@ -135,10 +115,6 @@ export type RowId = uuid
 export type Feature = string
 export type Features = Feature[]
 
-export type PredicateOperator = 'equal' | 'notEqual' | 'greaterThan' | 'greaterThanEqual' | 'lessThan' | 'lessThanEqual'
-
-export type FormulaFunctionKind = 'Set' | 'Lambda'
-
 export type ViewType = string
 export type ViewAttrs = Record<string, any>
 
@@ -153,15 +129,9 @@ export interface ViewData<T extends ViewType> {
   type: T
   attrs: ViewAttrs
 }
-export type BaseResult<
-  Type extends UsedFormulaType,
-  Result extends any,
-  Dump extends any = string,
-  Meta extends any = never
-> = {
+export type BaseResult<Type extends UsedFormulaType, Result extends any, Meta extends any = never> = {
   result: Result
   view?: ViewData<ViewType>
-  dump?: Dump
   type: Type
 } & ([Meta] extends [never]
   ? {}
@@ -169,106 +139,16 @@ export type BaseResult<
       meta: Meta
     })
 
-type NumberResult = BaseResult<'number', number, number>
-type BooleanResult = BaseResult<'boolean', boolean, boolean>
-type StringResult = BaseResult<'string', string>
-type LiteralResult = BaseResult<'literal', string>
-type NullResult = BaseResult<'null', null, null>
-type BlankResult = BaseResult<'Blank', never, never>
-type ErrorResult = BaseResult<'Error', string, string, ErrorType>
-type ArrayResult = BaseResult<'Array', AnyTypeResult[], string, FormulaType>
-
-interface RecordType {
-  [key: string]: AnyTypeResult
-}
-type RecordResult = BaseResult<'Record', RecordType, string, FormulaType>
-type DateResult = BaseResult<'Date', Date>
-type ColumnResult = BaseResult<'Column', ColumnType>
-type RowResult = BaseResult<'Row', RowType>
-type CellResult = BaseResult<'Cell', CellType>
-type RangeResult = BaseResult<'Range', RangeType>
-type SpreadsheetResult = BaseResult<'Spreadsheet', SpreadsheetType>
-type BlockResult = BaseResult<'Block', BlockType>
-type PredicateResult = BaseResult<
-  'Predicate',
-  number | string,
-  string,
-  { column?: ColumnType; operator: PredicateOperator }
->
-interface FormulaFunction {
-  name: FormulaFunctionKind
-  args: Array<AnyTypeResult<'Cst' | 'Reference'>>
-}
-
-type FunctionResult = BaseResult<'Function', [FormulaFunction, ...FormulaFunction[]]>
-type CstResult = BaseResult<'Cst', CstNode>
-type ReferenceResult = BaseResult<'Reference', Reference>
-type ButtonResult = BaseResult<'Button', ButtonType>
-type SwitchResult = BaseResult<'Switch', SwitchType>
-type PendingResult = BaseResult<'Pending', string>
-type WaitingResult = BaseResult<'Waiting', string>
-type NoPersistResult = BaseResult<'NoPersist', null>
-
-export type Reference = VariableReference | SelfReference
-
-interface BaseReference {
-  attribute?: string
-  kind: 'variable' | 'self'
-}
-
-interface VariableReference extends BaseReference {
-  kind: 'variable'
-  variableId: VariableId
-  namespaceId: NamespaceId
-}
-
-interface SelfReference extends BaseReference {
-  kind: 'self'
-}
-
-type AnyResult =
-  | NumberResult
-  | BooleanResult
-  | StringResult
-  | LiteralResult
-  | NullResult
-  | RecordResult
-  | BlankResult
-  | ArrayResult
-  | DateResult
-  | ColumnResult
-  | RowResult
-  | RangeResult
-  | CellResult
-  | SpreadsheetResult
-  | BlockResult
-  | PredicateResult
-  | ButtonResult
-  | SwitchResult
-  | ErrorResult
-  | FunctionResult
-  | CstResult
-  | ReferenceResult
-  | PendingResult
-  | WaitingResult
-  | NoPersistResult
-
 // Ensure that the result type is valid
-type EnsureTypeIsOk = UsedFormulaType extends AnyResult['type']
-  ? AnyResult['type'] extends UsedFormulaType
-    ? AnyResult
+type EnsureTypeIsOk = UsedFormulaType extends FormulaTypes['type']
+  ? FormulaTypes['type'] extends UsedFormulaType
+    ? FormulaTypes
     : never
   : never
 
 export type TypedResult<T extends FormulaType> = Extract<EnsureTypeIsOk, { type: T }>
 
-export type AnyTypeDump<T extends FormulaType = UsedFormulaType> = T extends UsedFormulaType
-  ? TypedResult<T>['dump']
-  : never
-
-export type AnyTypeResult<T extends FormulaType = UsedFormulaType> = T extends UsedFormulaType
-  ? Omit<TypedResult<T>, 'dump'>
-  : never
+export type AnyTypeResult<T extends FormulaType = UsedFormulaType> = T extends UsedFormulaType ? TypedResult<T> : never
 
 type AnyFunctionResult<T extends FormulaType> = AnyTypeResult<T | 'Error'>
 
