@@ -189,9 +189,9 @@ export type CellResult = BaseResult<'Cell', CellType>
 export type RangeResult = BaseResult<'Range', RangeType>
 export type SpreadsheetResult = BaseResult<'Spreadsheet', SpreadsheetType>
 export type BlockResult = BaseResult<'Block', BlockType>
-export type PredicateResult = BaseResult<
+type PredicateResult = BaseResult<
   'Predicate',
-  NumberResult | StringResult,
+  number | string,
   string,
   { column?: ColumnType; operator: PredicateOperator }
 >

@@ -1,15 +1,7 @@
 /* eslint-disable @typescript-eslint/return-await */
 /* eslint-disable no-continue */
 import { CstElement, CstNode, IToken } from 'chevrotain'
-import {
-  AnyTypeResult,
-  PredicateResult,
-  Argument,
-  FunctionContext,
-  FormulaType,
-  ExpressionType,
-  VariableParseResult
-} from '../type'
+import { AnyTypeResult, Argument, FunctionContext, FormulaType, ExpressionType, VariableParseResult } from '../type'
 import { extractSubType, runtimeCheckType, shouldReturnEarly } from './util'
 import { buildFunctionKey } from '../functions'
 import { ParserInstance } from './parser'
@@ -555,8 +547,8 @@ export class FormulaInterpreter extends InterpretCstVisitor {
           throw new Error(`Argument ${index} is not defined`)
         }
 
-        if (argType.type === 'Predicate' && ['number', 'string'].includes(v.type)) {
-          return { type: 'Predicate', result: v as PredicateResult['result'], meta: {operator: 'equal'} }
+        if (argType.type === 'Predicate' && (v.type === 'number' || v.type === 'string')) {
+          return { type: 'Predicate', result: v.result, meta: { operator: 'equal' } }
         } else {
           return v
         }

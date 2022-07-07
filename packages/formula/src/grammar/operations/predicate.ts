@@ -27,6 +27,6 @@ export const predicateOperator: OperatorType = {
       throw new Error(`Unexpected operator ${operator.image}`)
     }
 
-    return { type: 'Predicate', result, meta: { operator: image } }
+    return { type: 'Predicate', result: result.result, meta: { operator: image } }
   }
 }

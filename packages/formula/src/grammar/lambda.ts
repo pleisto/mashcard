@@ -1,4 +1,4 @@
-import { FunctionContext, FunctionResult, PredicateFunction, PredicateResult } from '../type'
+import { AnyTypeResult, FunctionContext, FunctionResult, PredicateFunction } from '../type'
 import { ControlType } from '../controls'
 import { devLog } from '@mashcard/design-system'
 export type Lambda = VoidFunction
@@ -48,7 +48,7 @@ export const functionResult2lambda = <T extends ControlType>(
   }
 }
 
-export const buildPredicate = ({ result: { result }, meta: { operator } }: PredicateResult): PredicateFunction => {
+export const buildPredicate = ({ result, meta: { operator } }: AnyTypeResult<'Predicate'>): PredicateFunction => {
   switch (operator) {
     case 'equal':
       return input => input === result
