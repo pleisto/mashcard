@@ -152,7 +152,7 @@ export function useFontColorGroup(): ToolbarSubMenuOption | null {
   const resetItemStyles = ResetItemStyles()
 
   const prevColor = localStorage.getItem(PREV_COLOR_KEY)
-  const prevBgColor = localStorage.getItem(PREV_BG_COLOR_KEY) ?? theme.colors.yellow4.value
+  const prevBgColor = localStorage.getItem(PREV_BG_COLOR_KEY) ?? theme.colors.yellow3.value
   const setColor = (color: string) => localStorage.setItem(PREV_COLOR_KEY, color)
   const setBgColor = (color: string) => localStorage.setItem(PREV_BG_COLOR_KEY, color)
 
