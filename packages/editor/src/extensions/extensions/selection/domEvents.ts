@@ -135,7 +135,6 @@ export class MultipleNodeSelectionDomEvents {
     if (this.container.mouseSelection.anchor) {
       this.markSelecting(true)
       const head = { x: event.clientX, y: event.clientY }
-      view.dispatch(view.state.tr.setMeta('updateSelectionHead', head))
       this.renderMouseSelection(view, this.container.mouseSelection.anchor, head)
       this.resolveSelection(view, head)
     }
