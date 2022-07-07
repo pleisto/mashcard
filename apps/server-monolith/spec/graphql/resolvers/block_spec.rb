@@ -61,8 +61,8 @@ describe Resolvers::Block, type: :query do
     GRAPHQL
 
     children_blocks_query = <<-'GRAPHQL'
-      query GetChildrenBlocks($root_id: String!, $snapshot_version: Int!) {
-        childrenBlocks(rootId: $root_id, snapshotVersion: $snapshot_version) {
+      query GetChildrenBlocks($root_id: String!) {
+        childrenBlocks(rootId: $root_id) {
           id
           deletedAt
           rootId
@@ -122,7 +122,7 @@ describe Resolvers::Block, type: :query do
       block3 = create(:docs_block, parent: block2, root_id: block2.id)
       block4 = create(:docs_block, parent: block2, collaborators: [user.id], root_id: block2.id)
 
-      graphql_execute(children_blocks_query, { root_id: block2.id, snapshot_version: 0 })
+      graphql_execute(children_blocks_query, { root_id: block2.id })
 
       expect(response.success?).to be true
       expect(response.data['childrenBlocks'].length).to eq 6
@@ -143,7 +143,7 @@ describe Resolvers::Block, type: :query do
       block.soft_delete!
       block.hard_delete!
 
-      graphql_execute(children_blocks_query, { root_id: block.id, snapshot_version: 0 })
+      graphql_execute(children_blocks_query, { root_id: block.id })
 
       expect(response.success?).to be false
       expect(response.errors[0]['message']).to eq(I18n.t('errors.graphql.argument_error.already_hard_deleted'))

@@ -18,8 +18,6 @@ RSpec.describe Docs::Block, type: :model do
     new_block = described_class.find(new_id)
     new_title = I18n.t('docs.duplicate.new_title', title: block.text)
 
-    expect(new_block.snapshot_version).to eq(1)
-
     expect(new_block.title).to eq(new_title)
     expect(new_block.meta['title']).to eq(new_title)
     expect(new_block.sort - block.sort).to eq(Docs::Block::DUPLICATE_SORT_GAP)

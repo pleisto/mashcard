@@ -60,13 +60,14 @@ module Mutations
             if args[:content]
               # TODO: store the text from content for search
               # Docs::Block.get_text_from_node(args[:content].to_unsafe_h)
+              block.content = args[:content]
             end
 
             # set block state id when have full state
             if state_model.state_type == 'full'
               block.state_id = args[:state_id]
-              block.save
             end
+            block.save
           end
 
           if states_count != args[:states_count]

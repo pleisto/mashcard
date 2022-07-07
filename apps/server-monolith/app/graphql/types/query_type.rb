@@ -10,7 +10,6 @@ module Types
     field :block_pins, resolver: Resolvers::BlockPins
     field :block_search, resolver: Resolvers::BlockSearch
     field :block_share_links, resolver: Resolvers::BlockShareLinks
-    field :block_snapshots, resolver: Resolvers::BlockSnapshots
     field :children_blocks, resolver: Resolvers::ChildrenBlocks
     field :conversation_comments, resolver: Resolvers::ConversationComments
     field :document_histories, resolver: Resolvers::DocumentHistories

@@ -146,22 +146,6 @@ export const queryFormulas = gql`
   }
 `
 
-export const NewPatch = gql`
-  subscription newPatch($docId: UUID!) {
-    newPatch(docId: $docId) {
-      state
-      seq
-      patches {
-        id
-        path
-        patchType
-        payload
-        operatorId
-      }
-    }
-  }
-`
-
 export const queryBlockInfo = gql`
   query GetBlockInfo($id: String!, $domain: String!) {
     blockInfo(id: $id, domain: $domain) {
@@ -225,8 +209,8 @@ export const queryBlockInfo = gql`
 `
 
 export const queryChildrenBlocks = gql`
-  query GetChildrenBlocks($rootId: String!, $snapshotVersion: Int!) {
-    childrenBlocks(rootId: $rootId, snapshotVersion: $snapshotVersion) {
+  query GetChildrenBlocks($rootId: String!) {
+    childrenBlocks(rootId: $rootId) {
       id
       sort
       parentId

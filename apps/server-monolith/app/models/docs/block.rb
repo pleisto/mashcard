@@ -11,10 +11,8 @@
 #  data(data props)         :jsonb            not null
 #  deleted_at               :datetime
 #  deleted_permanently_at   :datetime
-#  history_version          :bigint           default(0), not null
 #  meta(metadata)           :jsonb            not null
 #  page                     :boolean          default(FALSE), not null
-#  snapshot_version         :bigint           default(0), not null
 #  sort                     :bigint           default(0), not null
 #  text(node text)          :text             default("")
 #  type                     :string(32)
@@ -111,104 +109,6 @@ module Docs
 
     delegate :increment, to: :patch_seq, prefix: true
 
-    def redis_counter_key(type)
-      "#{type}_#{id}"
-    end
-
-    REDIS_EXPIRE_TIME = Rails.env.production? ? 1.day : 10.minutes
-
-    COUNTER_META = {
-      history_version: {
-        key_f: ->(id) { "history_#{id}" },
-        expire_time: REDIS_EXPIRE_TIME,
-      },
-      snapshot_version: {
-        key_f: ->(id) { "snapshot_#{id}" },
-        expire_time: REDIS_EXPIRE_TIME,
-      },
-    }
-
-    def prepare_descendants
-      data = descendants(unscoped: true)
-      ids = data.map(&:id)
-      keys = ids.flat_map { |id| ["snapshot_#{id}", "history_#{id}"] }
-      persist_values = Hash[*data.flat_map do |b|
-                              ["snapshot_#{b.id}", b.snapshot_version.to_s, "history_#{b.id}", b.history_version.to_s]
-                            end ]
-      Mashcard::Redis.with(:cache) do |redis|
-        exist_values = redis.mapped_mget(*keys)
-        rest_keys = exist_values.select { |_, v| v.nil? }.keys
-        rest_hash = persist_values.slice(*rest_keys)
-
-        redis.pipelined do |pipeline|
-          rest_hash.each do |k, v|
-            pipeline.setex(k, REDIS_EXPIRE_TIME, v)
-          end
-        end
-        final_hash = exist_values.merge(rest_hash)
-        Current.redis_values = final_hash
-      end
-      # data.each(&:prepare)
-    end
-
-    def dirty_patch
-      return nil unless changed?
-
-      payload = slice('id', 'type', 'parent_id', 'root_id').merge(
-        changes.slice('meta', 'data', 'sort', 'content').transform_values(&:last)
-      )
-      path = if parent_id.nil?
-        [id]
-      else
-        []
-      end
-
-      patch_type =
-        if new_record?
-          'ADD'
-        else
-          'UPDATE'
-        end
-
-      Rails.logger.info("DIRTY #{id} #{payload}")
-
-      { id: id, patch_type: patch_type, payload: payload, parent_id: parent_id, path: path }
-    end
-
-    ## NOTE Prepare counter to prevent collision
-    def prepare
-      realtime_history_version_value
-      realtime_snapshot_version_value
-    end
-
-    def realtime_version(type)
-      meta = COUNTER_META.fetch(type)
-      key = meta.fetch(:key_f).call(id)
-
-      Mashcard::Redis.with(:cache) do |redis|
-        counter = Current.redis_values.to_h[key] || redis.get(key)
-        return counter.to_i if counter
-
-        value = send(type)
-
-        redis.setex(key, meta.fetch(:expire_time), value)
-        value
-      end
-    end
-
-    def realtime_version_increment(type)
-      ## NOTE ensure counter exists
-      ## TODO remove this
-      _prepare_version = realtime_version(type)
-
-      meta = COUNTER_META.fetch(type)
-      key = meta.fetch(:key_f).call(id)
-
-      Mashcard::Redis.with(:cache) do |redis|
-        return redis.incr(key)
-      end
-    end
-
     def upsert_share_links!(target)
       exists_share_links = share_links.includes(:share_pod).to_a.index_by(&:share_domain)
       transaction do
@@ -237,22 +137,6 @@ module Docs
       end
     end
 
-    def realtime_history_version_value
-      realtime_version(:history_version)
-    end
-
-    def realtime_snapshot_version_value
-      realtime_version(:snapshot_version)
-    end
-
-    def realtime_history_version_increment
-      realtime_version_increment(:history_version)
-    end
-
-    def realtime_snapshot_version_increment
-      realtime_version_increment(:snapshot_version)
-    end
-
     before_create do
       self.root_id ||= id
     end
@@ -266,9 +150,6 @@ module Docs
       raise('parent_id_cause_endless_loop') if parent_id == id
 
       self.collaborators = collaborators.uniq
-      if important_field_changed?
-        self.history_version = realtime_history_version_increment
-      end
     end
 
     def block_attributes
@@ -313,10 +194,6 @@ module Docs
           'cover' => data[:cover]
         )
       end
-    end
-
-    def self.broadcast(id, payload)
-      MashcardSchema.subscriptions.trigger(:newPatch, { doc_id: id }, payload)
     end
 
     def duplicate!
@@ -444,8 +321,6 @@ module Docs
         ActiveStorage::Attachment.insert_all(insert_attachments) if insert_attachments.present?
         Docs::Block.insert_all(insert_data.values)
 
-        Docs::Block.find(new_root_id).save_snapshot!
-
         { 'id' => new_root_id, 'formula_ids' => insert_formulas.keys }
       end
     end
@@ -456,7 +331,6 @@ module Docs
       self.deleted_at = Time.current
       save!(validate: false)
       patch_seq.del
-      self.class.broadcast(id, { state: 'DELETED' })
     end
 
     def hard_delete!
@@ -690,38 +564,6 @@ module Docs
       end
 
       false
-    end
-
-    def latest_history
-      histories.find_by!(history_version: history_version)
-    end
-
-    SAVE_SNAPSHOT_SECONDS = 5
-
-    def maybe_save_snapshot!
-      throttle_key = "save_snapshot:#{id}"
-      Mashcard::Redis.with(:state) do |redis|
-        bol = redis.get(throttle_key)
-        return false if bol
-
-        redis.setex(throttle_key, SAVE_SNAPSHOT_SECONDS, 1)
-      end
-
-      save_snapshot!
-      true
-    rescue => _e
-      ## TODO handle error
-      false
-    end
-
-    def save_snapshot!(params = {})
-      transaction do
-        update!(snapshot_version: realtime_snapshot_version_increment)
-      end
-    end
-
-    def children_version_meta
-      descendants.pluck(:id, :history_version).to_h
     end
 
     def states
