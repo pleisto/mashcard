@@ -17,6 +17,7 @@ import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
 import { AppError404 } from '@/core/app-error'
 import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
+import { MashcardEventBus, HistoryListToggle } from '@mashcard/schema'
 
 /* const Layout = styled('div', base) */
 
@@ -72,6 +73,10 @@ export const DocumentContentPage: FC = () => {
     const alias = isAlias ? docid : documentInfo?.enabledAlias?.key
     const isRedirect = !!(state as any)?.redirect
     const isNotExist = !loading && !documentInfo?.id
+
+    if (historyId) {
+      MashcardEventBus.dispatch(HistoryListToggle({ visible: true }))
+    }
 
     return {
       id,
