@@ -1,13 +1,13 @@
 import { PlaceholderOptions, updatePlaceholder } from '../..'
 import { mockEditor } from '../../../../test'
-import { Embed, Paragraph } from '../../../blocks'
-import * as helpers from '../findParagraphWrapper'
+import { CodeBlock, Embed, Heading, Paragraph } from '../../../blocks'
+import * as helpers from '../findWrapper'
 
-jest.mock('../findParagraphWrapper')
+jest.mock('../findWrapper')
 
 describe('Placeholder', () => {
   it('does not update placeholder if editor is not editable', () => {
-    jest.spyOn(helpers, 'findParagraphWrapper').mockImplementation(() => undefined)
+    jest.spyOn(helpers, 'findWrapper').mockImplementation(() => undefined)
 
     const paragraph = document.createElement('p')
     paragraph.setAttribute('data-placeholder', '')
@@ -25,7 +25,7 @@ describe('Placeholder', () => {
   })
 
   it('does not throw error if can not find paragraph dom', () => {
-    jest.spyOn(helpers, 'findParagraphWrapper').mockImplementation(() => undefined)
+    jest.spyOn(helpers, 'findWrapper').mockImplementation(() => undefined)
 
     const text = document.createElement('span')
 
@@ -58,8 +58,84 @@ describe('Placeholder', () => {
     expect(() => updatePlaceholder(editor, options, storage)).not.toThrow()
   })
 
-  it('updates placeholder correctly', () => {
-    jest.spyOn(helpers, 'findParagraphWrapper').mockImplementation(() => undefined)
+  it('updates placeholder in heading correctly', () => {
+    jest.spyOn(helpers, 'findWrapper').mockImplementation(() => undefined)
+
+    const h1 = document.createElement('h1')
+    h1.setAttribute('data-node-view-content', '')
+    const text = document.createElement('span')
+    h1.appendChild(text)
+
+    const editor = mockEditor({
+      view: {
+        domAtPos: () => ({
+          node: text
+        })
+      },
+      state: {
+        selection: {
+          anchor: 1,
+          $anchor: {
+            node: () => ({
+              type: {
+                name: Heading.name
+              },
+              isLeaf: false,
+              childCount: 0
+            })
+          }
+        }
+      }
+    })
+    const options: PlaceholderOptions = {
+      placeholder: 'placeholder'
+    }
+    const storage = {}
+    updatePlaceholder(editor, options, storage)
+
+    expect(h1.getAttribute('data-placeholder')).toBe(options.placeholder)
+  })
+
+  it('updates placeholder in code block correctly', () => {
+    jest.spyOn(helpers, 'findWrapper').mockImplementation(() => undefined)
+
+    const code = document.createElement('code')
+    code.setAttribute('data-node-view-content', '')
+    const text = document.createElement('span')
+    code.appendChild(text)
+
+    const editor = mockEditor({
+      view: {
+        domAtPos: () => ({
+          node: text
+        })
+      },
+      state: {
+        selection: {
+          anchor: 1,
+          $anchor: {
+            node: () => ({
+              type: {
+                name: CodeBlock.name
+              },
+              isLeaf: false,
+              childCount: 0
+            })
+          }
+        }
+      }
+    })
+    const options: PlaceholderOptions = {
+      placeholder: 'placeholder'
+    }
+    const storage = {}
+    updatePlaceholder(editor, options, storage)
+
+    expect(code.getAttribute('data-placeholder')).toBe(options.placeholder)
+  })
+
+  it('updates placeholder in paragraph correctly', () => {
+    jest.spyOn(helpers, 'findWrapper').mockImplementation(() => undefined)
 
     const paragraph = document.createElement('p')
     paragraph.setAttribute('data-node-view-content', '')
@@ -97,7 +173,7 @@ describe('Placeholder', () => {
   })
 
   it('updates placeholder correctly if focus deep inside paragraph', () => {
-    jest.spyOn(helpers, 'findParagraphWrapper').mockImplementation(() => undefined)
+    jest.spyOn(helpers, 'findWrapper').mockImplementation(() => undefined)
 
     const paragraph = document.createElement('p')
     paragraph.setAttribute('data-node-view-content', '')
@@ -137,7 +213,7 @@ describe('Placeholder', () => {
   })
 
   it('clears placeholder correctly when focus another paragraph', () => {
-    jest.spyOn(helpers, 'findParagraphWrapper').mockImplementation(() => undefined)
+    jest.spyOn(helpers, 'findWrapper').mockImplementation(() => undefined)
 
     const latestFocusedElement = document.createElement('p')
     latestFocusedElement.setAttribute('data-placeholder', 'placeholder')
@@ -180,7 +256,7 @@ describe('Placeholder', () => {
   })
 
   it('clears placeholder correctly when focus another block', () => {
-    jest.spyOn(helpers, 'findParagraphWrapper').mockImplementation(() => undefined)
+    jest.spyOn(helpers, 'findWrapper').mockImplementation(() => undefined)
 
     const latestFocusedElement = document.createElement('p')
     latestFocusedElement.setAttribute('data-placeholder', 'placeholder')

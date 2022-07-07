@@ -16,13 +16,14 @@ exports[`documentEditor renders document editor correctly 1`] = `
         >
           <div
             data-node-view-wrapper=""
-            style="pointer-events: unset; white-space: normal;"
+            style="position: relative; pointer-events: unset; white-space: normal;"
           >
             <div
               class="mc-c-FZsgd"
             >
               <h1
                 as="h1"
+                class="mc-c-gkVTfJ mc-c-gkVTfJ-cOVgnz-level-1"
                 data-node-view-content=""
                 style="--selection-padding: calc((2.875rem - 1.875rem) / 2); --bgColor-padding: calc((2.875rem - 1.875rem) / 2); white-space: pre-wrap;"
               >
@@ -80,13 +81,14 @@ exports[`documentEditor renders document editor correctly 1`] = `
         >
           <div
             data-node-view-wrapper=""
-            style="pointer-events: unset; white-space: normal;"
+            style="position: relative; pointer-events: unset; white-space: normal;"
           >
             <div
               class="mc-c-FZsgd"
             >
               <h2
                 as="h2"
+                class="mc-c-gkVTfJ mc-c-gkVTfJ-gPLAez-level-2"
                 data-node-view-content=""
                 style="--selection-padding: calc((2rem - 1.625rem) / 2); --bgColor-padding: calc((2rem - 1.625rem) / 2); white-space: pre-wrap;"
               >
@@ -144,13 +146,14 @@ exports[`documentEditor renders document editor correctly 1`] = `
         >
           <div
             data-node-view-wrapper=""
-            style="pointer-events: unset; white-space: normal;"
+            style="position: relative; pointer-events: unset; white-space: normal;"
           >
             <div
               class="mc-c-FZsgd"
             >
               <h3
                 as="h3"
+                class="mc-c-gkVTfJ mc-c-gkVTfJ-llzMLw-level-3"
                 data-node-view-content=""
                 style="--selection-padding: calc((1.875rem - 1.375rem) / 2); --bgColor-padding: calc((1.875rem - 1.375rem) / 2); white-space: pre-wrap;"
               >
@@ -208,13 +211,14 @@ exports[`documentEditor renders document editor correctly 1`] = `
         >
           <div
             data-node-view-wrapper=""
-            style="pointer-events: unset; white-space: normal;"
+            style="position: relative; pointer-events: unset; white-space: normal;"
           >
             <div
               class="mc-c-FZsgd"
             >
               <h4
                 as="h4"
+                class="mc-c-gkVTfJ mc-c-gkVTfJ-dWBeGD-level-4"
                 data-node-view-content=""
                 style="--selection-padding: calc((1.875rem - 1.25rem) / 2); --bgColor-padding: calc((1.875rem - 1.25rem) / 2); white-space: pre-wrap;"
               >
@@ -272,13 +276,14 @@ exports[`documentEditor renders document editor correctly 1`] = `
         >
           <div
             data-node-view-wrapper=""
-            style="pointer-events: unset; white-space: normal;"
+            style="position: relative; pointer-events: unset; white-space: normal;"
           >
             <div
               class="mc-c-FZsgd"
             >
               <h5
                 as="h5"
+                class="mc-c-gkVTfJ mc-c-gkVTfJ-hCSGfy-level-5"
                 data-node-view-content=""
                 style="--selection-padding: calc((1.5rem - 1rem) / 2); --bgColor-padding: calc((1.5rem - 1rem) / 2); white-space: pre-wrap;"
               >

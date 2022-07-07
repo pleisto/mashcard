@@ -8,7 +8,7 @@ import { MashcardEventBus, EventSubscribed, SlashMenuHide, SlashMenuKeyboardEven
 import { addItemKey } from './recentItemsManager'
 import { meta } from './meta'
 import { createExtension } from '../../common'
-import { findParagraphWrapper } from '../placeholder/findParagraphWrapper'
+import { findParagraphWrapper } from '../placeholder/findWrapper'
 
 export const TRIGGER_CHAR = '/'
 const ALLOW_SPACES = false

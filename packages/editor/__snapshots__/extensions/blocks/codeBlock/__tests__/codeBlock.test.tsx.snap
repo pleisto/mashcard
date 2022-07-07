@@ -13,7 +13,7 @@ exports[`CodeBlock renders CodeBlock correctly 1`] = `
         class="react-renderer node-codeBlock"
       >
         <div
-          class="mc-c-eUWdaU"
+          class="mc-c-eUWdaU mc-c-gzEzdA"
           data-node-view-wrapper=""
           style="pointer-events: unset; white-space: normal;"
         >

@@ -4,10 +4,11 @@ exports[`HeadingView matches snapshot correctly 1`] = `
 <div>
   <div
     data-node-view-wrapper=""
-    style="pointer-events: unset; white-space: normal;"
+    style="position: relative; pointer-events: unset; white-space: normal;"
   >
     <h1
       as="h1"
+      class="mc-c-gkVTfJ mc-c-gkVTfJ-cOVgnz-level-1"
       data-node-view-content=""
       style="white-space: pre-wrap;"
     />
@@ -19,10 +20,11 @@ exports[`HeadingView renders correspond heading according to level level 2 1`] =
 <div>
   <div
     data-node-view-wrapper=""
-    style="pointer-events: unset; white-space: normal;"
+    style="position: relative; pointer-events: unset; white-space: normal;"
   >
     <h2
       as="h2"
+      class="mc-c-gkVTfJ mc-c-gkVTfJ-gPLAez-level-2"
       data-node-view-content=""
       style="white-space: pre-wrap;"
     />
@@ -34,10 +36,11 @@ exports[`HeadingView renders correspond heading according to level level 3 1`] =
 <div>
   <div
     data-node-view-wrapper=""
-    style="pointer-events: unset; white-space: normal;"
+    style="position: relative; pointer-events: unset; white-space: normal;"
   >
     <h3
       as="h3"
+      class="mc-c-gkVTfJ mc-c-gkVTfJ-llzMLw-level-3"
       data-node-view-content=""
       style="white-space: pre-wrap;"
     />
@@ -49,10 +52,11 @@ exports[`HeadingView renders correspond heading according to level level 4 1`] =
 <div>
   <div
     data-node-view-wrapper=""
-    style="pointer-events: unset; white-space: normal;"
+    style="position: relative; pointer-events: unset; white-space: normal;"
   >
     <h4
       as="h4"
+      class="mc-c-gkVTfJ mc-c-gkVTfJ-dWBeGD-level-4"
       data-node-view-content=""
       style="white-space: pre-wrap;"
     />
@@ -64,10 +68,11 @@ exports[`HeadingView renders correspond heading according to level level 5 1`] =
 <div>
   <div
     data-node-view-wrapper=""
-    style="pointer-events: unset; white-space: normal;"
+    style="position: relative; pointer-events: unset; white-space: normal;"
   >
     <h5
       as="h5"
+      class="mc-c-gkVTfJ mc-c-gkVTfJ-hCSGfy-level-5"
       data-node-view-content=""
       style="white-space: pre-wrap;"
     />
