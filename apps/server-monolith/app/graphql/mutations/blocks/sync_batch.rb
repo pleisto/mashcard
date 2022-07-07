@@ -102,8 +102,6 @@ module Mutations
 
         ## Handle upsert block
         if upsert_data.present?
-          root&.prepare_descendants
-
           upsert_blocks = upsert_data
 
           insert_histories_2 = upsert_blocks.map do |block|

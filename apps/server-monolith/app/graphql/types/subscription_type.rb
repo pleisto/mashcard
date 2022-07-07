@@ -6,6 +6,5 @@ module Types
 
     field :awareness, subscription: Subscriptions::Awareness
     field :document, subscription: Subscriptions::Document
-    field :new_patch, subscription: Subscriptions::NewPatch
   end
 end

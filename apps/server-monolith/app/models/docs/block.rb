@@ -109,34 +109,6 @@ module Docs
 
     delegate :increment, to: :patch_seq, prefix: true
 
-    def redis_counter_key(type)
-      "#{type}_#{id}"
-    end
-
-    REDIS_EXPIRE_TIME = Rails.env.production? ? 1.day : 10.minutes
-
-    def prepare_descendants
-      # data = descendants(unscoped: true)
-      # ids = data.map(&:id)
-      # keys = ids.flat_map { |id| ["snapshot_#{id}", "history_#{id}"] }
-      # persist_values = Hash[*data.flat_map do |b|
-      #                         ["snapshot_#{b.id}", b.snapshot_version.to_s, "history_#{b.id}", b.history_version.to_s]
-      #                       end ]
-      # Mashcard::Redis.with(:cache) do |redis|
-      #   exist_values = redis.mapped_mget(*keys)
-      #   rest_keys = exist_values.select { |_, v| v.nil? }.keys
-      #   rest_hash = persist_values.slice(*rest_keys)
-
-      #   redis.pipelined do |pipeline|
-      #     rest_hash.each do |k, v|
-      #       pipeline.setex(k, REDIS_EXPIRE_TIME, v)
-      #     end
-      #   end
-      #   final_hash = exist_values.merge(rest_hash)
-      #   Current.redis_values = final_hash
-      # end
-    end
-
     def upsert_share_links!(target)
       exists_share_links = share_links.includes(:share_pod).to_a.index_by(&:share_domain)
       transaction do
@@ -222,10 +194,6 @@ module Docs
           'cover' => data[:cover]
         )
       end
-    end
-
-    def self.broadcast(id, payload)
-      MashcardSchema.subscriptions.trigger(:newPatch, { doc_id: id }, payload)
     end
 
     def duplicate!
@@ -363,7 +331,6 @@ module Docs
       self.deleted_at = Time.current
       save!(validate: false)
       patch_seq.del
-      self.class.broadcast(id, { state: 'DELETED' })
     end
 
     def hard_delete!
@@ -597,14 +564,6 @@ module Docs
       end
 
       false
-    end
-
-    def latest_history
-      histories.find_by!(history_version: history_version)
-    end
-
-    def children_version_meta
-      descendants.pluck(:id, :history_version).to_h
     end
 
     def states
