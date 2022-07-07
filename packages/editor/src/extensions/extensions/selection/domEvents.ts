@@ -1,43 +1,89 @@
 import { Editor } from '@tiptap/core'
 import { EditorView } from 'prosemirror-view'
-import { SelectionPluginKey, SelectionState } from './selection'
+import { MultipleNodeSelection } from './MultipleNodeSelection'
 
 export interface MultipleNodeSelectionDomEventsOptions {
   mouseSelectionClassName?: string
 }
 
 export interface MultipleNodeSelectionContainer {
+  /**
+   * The state of mouse selection.
+   */
   mouseSelection: {
+    /**
+     * The element id of mouse selection element.
+     */
     id: string
+    /**
+     * HTML element of mouse selection.
+     */
     element: HTMLElement | null
+    /**
+     * Anchor point coordinate of mouse selection.
+     */
+    anchor:
+      | {
+          x: number
+          y: number
+        }
+      | undefined
+    /**
+     * Indicates whether mouse selection is happening or not.
+     */
+    selecting: boolean
   }
+  /**
+   * The available area for multiple node selecting.
+   */
   element: HTMLElement | null
+  /**
+   * The top of the available area.
+   */
   top: number | undefined
+  /**
+   * The left of the available area.
+   */
   left: number | undefined
+  /**
+   * The offset of the available area's left and top.
+   * It is useful when page scrolled, offset can help us calculate the original position of container's top and left.
+   */
   offset: {
     top: number
     left: number
   }
 }
 
-const initialContainer = (): MultipleNodeSelectionContainer => ({
-  element: null,
-  mouseSelection: {
-    id: 'multiple-node-selection-mouse-area',
-    element: null
-  },
-  top: undefined,
-  left: undefined,
-  offset: {
-    top: 0,
-    left: 0
-  }
-})
+const initialContainer = (): MultipleNodeSelectionContainer => {
+  MultipleNodeSelectionDomEvents.selecting = false
 
+  return {
+    element: null,
+    mouseSelection: {
+      id: 'multiple-node-selection-mouse-area',
+      element: null,
+      selecting: false,
+      anchor: undefined
+    },
+    top: undefined,
+    left: undefined,
+    offset: {
+      top: 0,
+      left: 0
+    }
+  }
+}
+
+/**
+ * The multiple node selection dom event handlers.
+ */
 export class MultipleNodeSelectionDomEvents {
   public editor: Editor
   public options: MultipleNodeSelectionDomEventsOptions
   public container: MultipleNodeSelectionContainer = initialContainer()
+
+  public static selecting = false
 
   constructor(editor: Editor, options: MultipleNodeSelectionDomEventsOptions) {
     this.editor = editor
@@ -53,12 +99,13 @@ export class MultipleNodeSelectionDomEvents {
     // case: result.inside === -1
     // click on the doc node
     if (!result || result.inside === -1) {
-      view.dispatch(
-        view.state.tr.setMeta('updateSelectionAnchor', {
+      this.container.mouseSelection = {
+        ...this.container.mouseSelection,
+        anchor: {
           x: event.clientX,
           y: event.clientY
-        })
-      )
+        }
+      }
 
       const mouseup = (event: MouseEvent): void => {
         this.mouseup(view, event)
@@ -79,6 +126,7 @@ export class MultipleNodeSelectionDomEvents {
         window.removeEventListener('dragstart', dragstart)
       }
 
+      // register events inside the mousedown event for avoiding invalid event listener.
       window.addEventListener('mouseup', mouseup)
       window.addEventListener('mousemove', mousemove)
       window.addEventListener('dragstart', dragstart)
@@ -88,42 +136,44 @@ export class MultipleNodeSelectionDomEvents {
   }
 
   public mousemove(view: EditorView, event: MouseEvent): boolean {
-    const pluginState = SelectionPluginKey.getState(view.state)
-    if (pluginState?.multiNodeSelecting) {
-      if (!pluginState.multiNodeSelecting.selecting) {
-        view.dispatch(view.state.tr.setMeta('multipleNodeSelecting', true))
-      }
+    // When mouse is moving:
+    // Renders the mouse selection area.
+    // Resolve the multiple node selection.
+
+    if (this.container.mouseSelection.anchor) {
+      this.markSelecting(true)
       const head = { x: event.clientX, y: event.clientY }
       view.dispatch(view.state.tr.setMeta('updateSelectionHead', head))
-      this.renderMouseSelection(view, pluginState.multiNodeSelecting.anchor, head)
-      this.resolveSelection(view, pluginState, head, this.container.offset)
+      this.renderMouseSelection(view, this.container.mouseSelection.anchor, head)
+      this.resolveSelection(view, head)
     }
 
     return false
   }
 
   public mouseup = (view: EditorView, event: MouseEvent): boolean => {
+    // When mouse up:
+    // Cleanup mouse selection if necessary.
+
     const element = document.getElementById(this.container.mouseSelection.id)
     if (element) document.body.removeChild(element)
 
-    this.container = initialContainer()
+    if (this.container.mouseSelection.selecting) {
+      this.cleanup()
 
-    setTimeout(() => {
-      const pluginState = SelectionPluginKey.getState(view.state)
-      if (pluginState?.multiNodeSelecting) {
-        view.dispatch(view.state.tr.setMeta('multipleNodeSelectingEnd', true))
-
-        if (pluginState.multiNodeSelecting.selecting) {
-          this.editor.commands.focus()
-        }
+      if (view.state.selection instanceof MultipleNodeSelection) {
+        this.editor.commands.focus()
       }
-    })
+    }
 
     return false
   }
 
   public dragstart = (view: EditorView, event: DragEvent): boolean => {
-    view.dispatch(view.state.tr.setMeta('multipleNodeSelectingEnd', true))
+    // Prevent multiple node selection when dragstart happened.
+    if (this.container.mouseSelection.anchor) {
+      this.cleanup()
+    }
     return false
   }
 
@@ -182,20 +232,14 @@ export class MultipleNodeSelectionDomEvents {
     return Math.min(position, inside)
   }
 
-  public resolveSelection(
-    view: EditorView,
-    pluginState: SelectionState,
-    headCoords: { x: number; y: number },
-    offset: { top: number; left: number }
-  ): void {
-    if (!pluginState.multiNodeSelecting) return
+  public resolveSelection(view: EditorView, headCoords: { x: number; y: number }): void {
+    if (!this.container.mouseSelection.selecting || !this.container.mouseSelection.anchor) return
 
-    const data = pluginState.multiNodeSelecting
     const rect = view.dom.getBoundingClientRect()
     const coordinates = this.resolveCoordinates(
       {
-        x: data.anchor.x - offset.left,
-        y: data.anchor.y - offset.top
+        x: this.container.mouseSelection.anchor.x - this.container.offset.left,
+        y: this.container.mouseSelection.anchor.y - this.container.offset.top
       },
       {
         x: headCoords.x,
@@ -270,5 +314,14 @@ export class MultipleNodeSelectionDomEvents {
     this.container.mouseSelection.element.style.top = `${Math.min(anchor.y - this.container.offset.top, head.y)}px`
     this.container.mouseSelection.element.style.width = `${Math.abs(anchor.x - head.x)}px`
     this.container.mouseSelection.element.style.height = `${Math.abs(anchor.y - this.container.offset.top - head.y)}px`
+  }
+
+  private markSelecting(selecting: boolean): void {
+    this.container.mouseSelection.selecting = selecting
+    MultipleNodeSelectionDomEvents.selecting = selecting
+  }
+
+  private cleanup(): void {
+    this.container = initialContainer()
   }
 }

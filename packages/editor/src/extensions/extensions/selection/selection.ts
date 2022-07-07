@@ -75,6 +75,10 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
     }
   },
 
+  addStorage() {
+    return {}
+  },
+
   addProseMirrorPlugins() {
     const domEvents = new MultipleNodeSelectionDomEvents(this.editor, {
       mouseSelectionClassName: this.options.nodeSelection?.mouseSelection?.className
@@ -82,35 +86,6 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
     return [
       new Plugin<SelectionState>({
         key: SelectionPluginKey,
-        state: {
-          init() {
-            return {
-              multiNodeSelecting: false
-            }
-          },
-          apply(tr, value, oldState, newState) {
-            const anchor = tr.getMeta('updateSelectionAnchor')
-            if (anchor) {
-              return { ...value, multiNodeSelecting: { anchor, selecting: false } }
-            }
-
-            const head = tr.getMeta('updateSelectionHead')
-
-            if (head && value.multiNodeSelecting) {
-              return { ...value, multiNodeSelecting: { ...value.multiNodeSelecting, head } }
-            }
-
-            if (tr.getMeta('multipleNodeSelecting') && value.multiNodeSelecting) {
-              return { ...value, multiNodeSelecting: { ...value.multiNodeSelecting, selecting: true } }
-            }
-
-            if (tr.getMeta('multipleNodeSelectingEnd')) {
-              return { ...value, multiNodeSelecting: false }
-            }
-
-            return { ...value }
-          }
-        },
         props: {
           handleDOMEvents: {
             mousedown: (view, event) => domEvents.mousedown(view, event)

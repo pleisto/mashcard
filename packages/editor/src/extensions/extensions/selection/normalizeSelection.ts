@@ -3,7 +3,7 @@ import { ResolvedPos } from 'prosemirror-model'
 import { TextSelection, Selection } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import { findNodesInSelection } from '../../../helpers'
-import { SelectionPluginKey } from './selection'
+import { MultipleNodeSelectionDomEvents } from './domEvents'
 
 export function normalizeSelection(
   editor: Editor,
@@ -13,9 +13,7 @@ export function normalizeSelection(
 ): Selection | null {
   if (!editor.isEditable) return null
 
-  const pluginState = SelectionPluginKey.getState(view.state)
-
-  if (pluginState?.multiNodeSelecting && pluginState.multiNodeSelecting.selecting) return view.state.selection
+  if (MultipleNodeSelectionDomEvents.selecting) return view.state.selection
 
   if ($anchor.pos === $head.pos) return null
   if (!(view.state.selection instanceof TextSelection)) return null
