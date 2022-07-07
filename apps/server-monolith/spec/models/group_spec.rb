@@ -27,7 +27,7 @@ describe Group, type: :model do
 
       group.update!(invite_enable: true)
       expect(group.invite_enable).to be(true)
-      expect(group.invite_secret).to be(nil)
+      expect(group.invite_secret).to be_nil
 
       group.update!(invite_secret: '123123')
       expect(group.invite_secret).to eq('123123')
@@ -37,15 +37,15 @@ describe Group, type: :model do
       expect(group.invite_secret).to eq('123123')
 
       group.update!(invite_secret: '')
-      expect(group.invite_secret).to be(nil)
+      expect(group.invite_secret).to be_nil
 
       group.update!(invite_enable: true, invite_secret: '')
       expect(group.invite_enable).to be(true)
-      expect(group.invite_secret).not_to be(nil)
+      expect(group.invite_secret).not_to be_nil
 
       group.update!(invite_enable: false, invite_secret: '')
       expect(group.invite_enable).to be(false)
-      expect(group.invite_secret).to be(nil)
+      expect(group.invite_secret).to be_nil
     end
   end
 
