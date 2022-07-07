@@ -1,26 +1,12 @@
 import { mockEditor } from '../../../../test'
 import { MultipleNodeSelectionDomEvents } from '../domEvents'
-import { SelectionPluginKey } from '../selection'
-
-jest.useFakeTimers()
+import { MultipleNodeSelection } from '../MultipleNodeSelection'
 
 describe('DomEvents', () => {
   it('calls mousedown correctly', () => {
-    const mockSetMeta = jest.fn()
     const x = 1
     const y = 1
-    const editor = mockEditor({
-      view: {
-        posAtCoords: () => ({
-          inside: -1
-        }),
-        state: {
-          tr: {
-            setMeta: mockSetMeta
-          }
-        }
-      }
-    })
+    const editor = mockEditor({})
     const domEvents = new MultipleNodeSelectionDomEvents(editor, {})
 
     const event: Partial<MouseEvent> = {
@@ -29,14 +15,13 @@ describe('DomEvents', () => {
     }
 
     expect(domEvents.mousedown(editor.view, event as MouseEvent)).toBeFalsy()
-    expect(mockSetMeta).toBeCalledWith('updateSelectionAnchor', {
+    expect(domEvents.container.mouseSelection.anchor).toMatchObject({
       x,
       y
     })
   })
 
   it('calls mousemove correctly', () => {
-    const mockSetMeta = jest.fn()
     const x = 1
     const y = 1
     const dom = document.createElement('div')
@@ -44,24 +29,7 @@ describe('DomEvents', () => {
     // @ts-expect-error
     const editor = mockEditor({
       view: {
-        dom,
-        posAtCoords: () => ({
-          inside: -1
-        }),
-        state: {
-          [(SelectionPluginKey as any).key]: {
-            multiNodeSelecting: {
-              selecting: false,
-              anchor: {
-                x,
-                y
-              }
-            }
-          },
-          tr: {
-            setMeta: mockSetMeta
-          }
-        }
+        dom
       }
     })
     const domEvents = new MultipleNodeSelectionDomEvents(editor, {})
@@ -71,38 +39,47 @@ describe('DomEvents', () => {
       clientY: y
     }
 
+    domEvents.container.mouseSelection = {
+      id: '',
+      element: dom,
+      selecting: false,
+      anchor: {
+        x: 0,
+        y: 0
+      }
+    }
+
     expect(domEvents.mousemove(editor.view, event as MouseEvent)).toBeFalsy()
-    expect(mockSetMeta).toBeCalledTimes(2)
+    expect(domEvents.container.mouseSelection.selecting).toBeTruthy()
   })
 
   it('calls mouseup correctly', () => {
-    const mockSetMeta = jest.fn()
     const x = 1
     const y = 1
     const dom = document.createElement('div')
+    const mockFocus = jest.fn()
     const editor = mockEditor({
       view: {
         dom,
-        posAtCoords: () => ({
-          inside: -1
-        }),
         state: {
-          [(SelectionPluginKey as any).key]: {
-            multiNodeSelecting: {
-              selecting: false,
-              anchor: {
-                x,
-                y
-              }
-            }
-          },
-          tr: {
-            setMeta: mockSetMeta
-          }
+          selection: Object.create(MultipleNodeSelection.prototype)
         }
+      },
+      commands: {
+        focus: mockFocus
       }
     })
     const domEvents = new MultipleNodeSelectionDomEvents(editor, {})
+
+    domEvents.container.mouseSelection = {
+      id: '',
+      element: dom,
+      selecting: true,
+      anchor: {
+        x: 0,
+        y: 0
+      }
+    }
 
     const event: Partial<MouseEvent> = {
       clientX: x,
@@ -110,38 +87,26 @@ describe('DomEvents', () => {
     }
 
     expect(domEvents.mouseup(editor.view, event as MouseEvent)).toBeFalsy()
-    jest.runAllTimers()
-    expect(mockSetMeta).toBeCalledWith('multipleNodeSelectingEnd', true)
+    expect(domEvents.container.mouseSelection.selecting).toBeFalsy()
+    expect(mockFocus).toBeCalled()
   })
 
   it('calls dragstart correctly', () => {
-    const mockSetMeta = jest.fn()
     const x = 1
     const y = 1
     const dom = document.createElement('div')
-    const editor = mockEditor({
-      view: {
-        dom,
-        posAtCoords: () => ({
-          inside: -1
-        }),
-        state: {
-          [(SelectionPluginKey as any).key]: {
-            multiNodeSelecting: {
-              selecting: false,
-              anchor: {
-                x,
-                y
-              }
-            }
-          },
-          tr: {
-            setMeta: mockSetMeta
-          }
-        }
-      }
-    })
+    const editor = mockEditor({})
     const domEvents = new MultipleNodeSelectionDomEvents(editor, {})
+
+    domEvents.container.mouseSelection = {
+      id: '',
+      element: dom,
+      selecting: true,
+      anchor: {
+        x: 0,
+        y: 0
+      }
+    }
 
     const event: Partial<DragEvent> = {
       clientX: x,
@@ -149,7 +114,7 @@ describe('DomEvents', () => {
     }
 
     expect(domEvents.dragstart(editor.view, event as any)).toBeFalsy()
-    expect(mockSetMeta).toBeCalledWith('multipleNodeSelectingEnd', true)
+    expect(domEvents.container.mouseSelection.selecting).toBeFalsy()
   })
 
   it('resolves position correctly', () => {
@@ -200,6 +165,39 @@ describe('DomEvents', () => {
           y: 3
         }
       })
+    })
+
+    it('renders mouse selection correctly', () => {
+      const editor = mockEditor()
+      const domEvents = new MultipleNodeSelectionDomEvents(editor, {})
+
+      domEvents.options = {
+        mouseSelectionClassName: 'mouseSelection'
+      }
+
+      domEvents.container.element = {
+        top: 1,
+        left: 2,
+        style: {},
+        getBoundingClientRect() {
+          return {
+            top: 1,
+            left: 2,
+            right: 3,
+            bottom: 4
+          }
+        }
+      } as any
+
+      domEvents.renderMouseSelection(editor.view, { x: 1, y: 2 }, { x: 3, y: 4 })
+
+      expect(domEvents.container.offset.top).toBe(0)
+      expect(domEvents.container.offset.left).toBe(0)
+      expect(domEvents.container.mouseSelection.element!.style.position).toBe('absolute')
+      expect(domEvents.container.mouseSelection.element!.style.left).toBe('1px')
+      expect(domEvents.container.mouseSelection.element!.style.top).toBe('2px')
+      expect(domEvents.container.mouseSelection.element!.style.width).toBe('2px')
+      expect(domEvents.container.mouseSelection.element!.style.height).toBe('2px')
     })
   })
 })
