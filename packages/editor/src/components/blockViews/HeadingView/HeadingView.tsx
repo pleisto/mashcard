@@ -4,6 +4,64 @@ import { css, theme } from '@mashcard/design-system'
 import { BlockContainer } from '../BlockContainer'
 import { HeadingViewProps } from '../../../extensions/blocks/heading/meta'
 
+const placeholderStyle = css({
+  '&:before': {
+    color: theme.colors.typeThirdary,
+    content: 'attr(data-placeholder)',
+    left: 0,
+    pointerEvents: 'none',
+    position: 'absolute',
+    top: 0,
+    whiteSpace: 'nowrap'
+  },
+  variants: {
+    level: {
+      1: {
+        '&:before': {
+          lineHeight: theme.lineHeights.title1,
+          height: theme.lineHeights.title1,
+          marginTop: theme.titleOffset.title1
+        }
+      },
+      2: {
+        '&:before': {
+          lineHeight: theme.lineHeights.title2,
+          height: theme.lineHeights.title2,
+          marginTop: theme.titleOffset.title2
+        }
+      },
+      3: {
+        '&:before': {
+          lineHeight: theme.lineHeights.title3,
+          height: theme.lineHeights.title3,
+          marginTop: theme.titleOffset.title3
+        }
+      },
+      4: {
+        '&:before': {
+          lineHeight: theme.lineHeights.title4,
+          height: theme.lineHeights.title4,
+          marginTop: theme.titleOffset.title4
+        }
+      },
+      5: {
+        '&:before': {
+          lineHeight: theme.lineHeights.title5,
+          height: theme.lineHeights.title5,
+          marginTop: theme.titleOffset.title5
+        }
+      },
+      6: {
+        '&:before': {
+          lineHeight: theme.lineHeights.title5,
+          height: theme.lineHeights.title5,
+          marginTop: theme.titleOffset.title5
+        }
+      }
+    }
+  }
+})
+
 const actionButtonStyle = css({
   include: ['flexCenter'],
   display: 'flex',
@@ -62,6 +120,7 @@ export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, extension,
   }, [node.attrs.level])
 
   const actionButtonClassName = actionButtonStyle({ level: node.attrs.level })
+  const placeholderClassName = placeholderStyle({ level: node.attrs.level })
 
   const HTMLAttributes =
     (typeof extension.options?.HTMLAttributes === 'function'
@@ -74,10 +133,13 @@ export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, extension,
       node={node}
       actionOptions={['cut', 'copy', 'delete', 'transform']}
       actionButtonClassName={actionButtonClassName}
+      style={{
+        position: 'relative'
+      }}
       getPos={getPos}
       deleteNode={deleteNode}
       contentForCopy={node.textContent}>
-      <NodeViewContent {...HTMLAttributes} as={as} />
+      <NodeViewContent {...HTMLAttributes} as={as} className={placeholderClassName} />
     </BlockContainer>
   )
 }

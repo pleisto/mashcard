@@ -1,9 +1,16 @@
 import { FC, useState } from 'react'
 import { LineDown, Check } from '@mashcard/design-icons'
-import { Menu, Input, Popover, Switch, styled, theme } from '@mashcard/design-system'
+import { Menu, Input, Popover, Switch, styled, theme, cx } from '@mashcard/design-system'
 import { NodeViewContent } from '@tiptap/react'
 import { BlockContainer } from '../BlockContainer'
-import { highlightStyle, ViewModeBar, CodeContainer, CodeScroll, SwitchContainer } from './styles/highlight.style'
+import {
+  highlightStyle,
+  ViewModeBar,
+  CodeContainer,
+  CodeScroll,
+  SwitchContainer,
+  placeholderStyle
+} from './styles/highlight.style'
 import { CodeBlockViewProps } from '../../../extensions/blocks/codeBlock/meta'
 import { CodeBlockAttributes } from '../../../extensions'
 import { languageNames } from '../../../extensions/blocks/codeBlock/refractorLanguagesBundle'
@@ -96,7 +103,7 @@ export const CodeBlockView: FC<CodeBlockViewProps> = ({ node, updateAttributes, 
     <BlockContainer
       editable="custom"
       node={node}
-      className={highlightStyle()}
+      className={cx(highlightStyle(), placeholderStyle())}
       getPos={getPos}
       deleteNode={deleteNode}
       actionOptions={actionOptions}>
