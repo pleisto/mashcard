@@ -18,6 +18,12 @@ declare module '*.webp' {
   export = src
 }
 
+declare module '*.svg' {
+  const src: string
+  export = src
+}
+
+
 declare namespace JSX {
   interface IntrinsicElements {
     'iconpark-icon': { name: string }

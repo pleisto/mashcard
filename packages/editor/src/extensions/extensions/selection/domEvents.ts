@@ -48,7 +48,6 @@ export class MultipleNodeSelectionDomEvents {
     const result = view.posAtCoords({ left: event.clientX, top: event.clientY })
 
     // if click happens outside the doc nodes, assume a Multiple Node Selection will happen.
-    // so call blur to avoid Text Selection happen.
     // case: result = null
     // click outside the document
     // case: result.inside === -1
@@ -110,8 +109,14 @@ export class MultipleNodeSelectionDomEvents {
     this.container = initialContainer()
 
     setTimeout(() => {
-      view.dispatch(view.state.tr.setMeta('multipleNodeSelectingEnd', true))
-      this.editor.commands.focus()
+      const pluginState = SelectionPluginKey.getState(view.state)
+      if (pluginState?.multiNodeSelecting) {
+        view.dispatch(view.state.tr.setMeta('multipleNodeSelectingEnd', true))
+
+        if (pluginState.multiNodeSelecting.selecting) {
+          this.editor.commands.focus()
+        }
+      }
     })
 
     return false

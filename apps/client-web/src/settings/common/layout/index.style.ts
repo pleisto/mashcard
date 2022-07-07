@@ -1,4 +1,4 @@
-import bg from '@/common/assets/ceramicBg.webp'
+import bg from '@/common/assets/ceramic-bg.webp'
 import { theme } from '@mashcard/design-system'
 
 export const layoutStyle = {

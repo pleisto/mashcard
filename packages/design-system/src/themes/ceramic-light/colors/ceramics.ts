@@ -1,27 +1,22 @@
 import { Palettes } from './palettes'
 import { Atomics } from './atomics'
+import triangleCompensationSvg from './triangle-compensation.svg'
 
 export const Ceramics = {
   ceramicPrimary: `linear-gradient(0deg, ${Atomics.cyan1_36p}, ${Atomics.cyan1_36p}),
      ${Atomics.white_74p}`,
   ceramicSecondary: `linear-gradient(0deg, ${Atomics.cyan1_36p}, ${Atomics.cyan1_36p}),
      ${Atomics.grey2_90p}`,
-
   ceramicQuaternary: `linear-gradient(0deg, ${Atomics.cyan1_36p}, ${Atomics.cyan1_36p}),
       ${Atomics.grey1_90p}`
 }
-
-const triangleCompensationSvg =
-  window.btoa(`<svg width="5" height="5" viewBox="0 0 5 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M3.01928 2.47619L1.33984 2L3.35 4L3.01928 2.47619Z" fill="#fff"/>
-</svg>`)
 
 const cornerFix = {
   '&::after': {
     content: '',
     width: 5,
     height: 5,
-    background: `url(data:image/svg+xml;base64,${triangleCompensationSvg})`,
+    background: `url(${triangleCompensationSvg})`,
     position: 'absolute',
     left: 0,
     bottom: -2
@@ -30,7 +25,7 @@ const cornerFix = {
     content: '',
     width: 5,
     height: 5,
-    background: `url(data:image/svg+xml;base64,${triangleCompensationSvg})`,
+    background: `url(${triangleCompensationSvg})`,
     position: 'absolute',
     right: -2,
     top: 0,

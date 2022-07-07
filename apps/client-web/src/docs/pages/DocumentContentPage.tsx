@@ -71,7 +71,7 @@ export const DocumentContentPage: FC = () => {
     const id = isAlias ? documentInfo?.id : docid
     const alias = isAlias ? docid : documentInfo?.enabledAlias?.key
     const isRedirect = !!(state as any)?.redirect
-    const isNotExist = !loading && !id
+    const isNotExist = !loading && !documentInfo?.id
 
     return {
       id,

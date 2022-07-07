@@ -1,4 +1,4 @@
-import bg from '@/common/assets/ceramicBg.webp'
+import bg from '@/common/assets/ceramic-bg.webp'
 import { Link } from 'react-router-dom'
 import { theme, styled, css } from '@mashcard/design-system'
 import { getNativeSidebarWdith } from '@/settings/common/sidebar'

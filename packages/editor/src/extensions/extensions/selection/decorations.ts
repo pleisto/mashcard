@@ -1,5 +1,5 @@
 import { Editor } from '@tiptap/core'
-import { EditorState, TextSelection, NodeSelection } from 'prosemirror-state'
+import { EditorState, TextSelection } from 'prosemirror-state'
 import { Decoration, DecorationSet } from 'prosemirror-view'
 import { SelectionOptions } from './meta'
 import { MultipleNodeSelection } from './MultipleNodeSelection'
@@ -30,13 +30,15 @@ export function textSelectionDecoration(
   return DecorationSet.create(editor.state.doc, decorations)
 }
 
+// TODO: highlight Node Selection correctly
+// need a solution to distinguish whether add a decoration to Node Selection or not.
 export function nodeSelectionDecoration(
   editor: Editor,
   options: SelectionOptions,
   state: EditorState
 ): DecorationSet | null {
   if (!editor.isEditable) return null
-  if (!(state.selection instanceof MultipleNodeSelection) && !(state.selection instanceof NodeSelection)) return null
+  if (!(state.selection instanceof MultipleNodeSelection)) return null
 
   const decorations: Decoration[] = []
 
