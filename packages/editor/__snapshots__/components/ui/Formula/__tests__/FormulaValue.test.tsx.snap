@@ -64,7 +64,7 @@ exports[`FormulaValue renders Number type correctly 1`] = `
     <span
       class="mashcard-formula-normal-display"
     >
-      display
+      1
     </span>
   </span>
 </div>
@@ -103,7 +103,7 @@ exports[`FormulaValue renders borderless correctly 1`] = `
     class="mashcard-formula-borderless"
     style="color: rgb(207, 31, 40);"
   >
-    display
+    [fatal] error
   </span>
 </div>
 `;

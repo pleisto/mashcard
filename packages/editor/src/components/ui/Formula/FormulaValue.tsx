@@ -18,7 +18,7 @@ export const FormulaValue: FC<FormulaValueProps> = ({
   border,
   selected,
   disablePopover,
-  displayData: { result: result, display, type }
+  displayData: { result, display, type }
 }) => {
   const colorType = resultToColorType(result)
   const { colorCode } = FORMULA_COLOR_METAS[colorType]
