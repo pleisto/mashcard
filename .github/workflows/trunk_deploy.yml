@@ -68,17 +68,11 @@ jobs:
     timeout-minutes: 8
     needs: build
     steps:
-      - name: Checkout the codebase
-        uses: actions/checkout@v3
       - name: GCP Login
         uses: google-github-actions/auth@v0
         with:
           workload_identity_provider: 'projects/992882677538/locations/global/workloadIdentityPools/cicd/providers/github-action'
           service_account: 'cicd-bot@${{ env.GCP_PROJECT }}.iam.gserviceaccount.com'
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v0'
-      - run: |-
-          gcloud --quiet auth configure-docker
       - name: 'Get the GKE cluster Configuration'
         uses: 'google-github-actions/get-gke-credentials@v0'
         with:
@@ -102,6 +96,7 @@ jobs:
             --set-string envs.GCP_KMS_FRN='projects/${{ env.GCP_PROJECT }}/locations/us-central1/keyRings/testnet/cryptoKeys/cicd' \
             --set-string envs.GCS_PRIVATE_BUCKET='trunk-pvt.testnet.user-owns-data.net' \
             --set-string envs.GCS_PUBLIC_BUCKET='trunk-pub.testnet.user-owns-data.net' \
+            --set-string envs.RAILS_MAX_THREADS='8'
             --set-string license='I hereby swear that I have obtained written permission from the Pleisto Inc of this plugin to use it.' \
             --set-string secrets.SECRET_KEY_SEED='${{ secrets.TRUNK_SECRET_KEY_SEED }}' \
             --set-string secrets.MASHCARD_DATABASE_URL='${{ secrets.TRUNK_POSTGRE_URL }}' \
