@@ -200,7 +200,7 @@ zh-CN:
       suggestion: 建议
       no_suggestion: 没有结果
       footer: 探索
-      tooltip: 探索斜杠菜单
+      tooltip: Explore slash menu
       explorer_menu:
         group:
           data:
@@ -548,7 +548,7 @@ zh-CN:
       tooltip: 在当前页面上显示评论
     history:
       menu: 历史
-      tooltip: 浏览全部更新
+      tooltip: View all updates
     more:
       tooltip: 更多选项
     share:
@@ -564,7 +564,7 @@ zh-CN:
       invite_placeholder: 按用户名添加人员
       invite_button: 邀请
       copy_hint: 已复制分享链接。
-      tooltip: 共享或发布到网络
+      tooltip: Share or publish to the web
     invite:
       learn: 了解共享
       type_hint: 在上方输入或粘贴Email 地址，以逗号分隔。
