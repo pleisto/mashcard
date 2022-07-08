@@ -1,4 +1,3 @@
-import { interpret, parse } from '../grammar/core'
 import { makeContext } from '../tests/testHelper'
 import { buildTestCases } from '../tests'
 
@@ -15,13 +14,11 @@ describe('async', () => {
   it.each(finalTestCases.successTestCases)('$jestTitle', async args => {
     jest.useRealTimers()
 
-    const newCtx = { ...ctx, meta: ctx.buildMeta(args) }
-    const parseResult = parse(newCtx)
+    const [tempT, parseResult] = await ctx.interpretDirectly(args)
+
     expect(parseResult.variableParseResult.valid).toBe(true)
     expect(parseResult.errorMessages).toEqual([])
     expect(parseResult.success).toBe(true)
-
-    const tempT = await interpret({ ctx: newCtx, parseResult })
     expect(tempT.task.async).toBe(parseResult.variableParseResult.async)
 
     const value = await tempT.task.variableValue

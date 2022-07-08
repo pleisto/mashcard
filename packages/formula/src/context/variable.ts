@@ -13,7 +13,8 @@ import {
   VariableRichType,
   EventDependency,
   VariableParseResult,
-  FormulaDefinition
+  FormulaDefinition,
+  ErrorMessage
 } from '../type'
 import { parse, interpret, generateVariable } from '../grammar/core'
 import { dumpValue } from './persist'
@@ -33,6 +34,14 @@ import {
 
 const MAX_LEVEL = 20
 
+export const fetchVariableTError = (t: VariableData | undefined): ErrorMessage | undefined => {
+  if (!t) return undefined
+  const task = t.task
+  if (task.async) return undefined
+  if (task.variableValue.success) return undefined
+  return { message: task.variableValue.result.result, type: task.variableValue.result.meta }
+}
+
 export const errorIsFatal = ({ task }: VariableData): boolean => {
   if (task.async) {
     return false
@@ -50,7 +59,9 @@ export const errorIsFatal = ({ task }: VariableData): boolean => {
   return false
 }
 
-export const fetchResult = ({ task }: VariableData): AnyTypeResult => {
+export const fetchResult = (t: VariableData | undefined): AnyTypeResult => {
+  if (!t) return { type: 'Blank', result: 'Blank' }
+  const task = t.task
   if (task.async) {
     const duration = new Date().getTime() - task.execStartTime.getTime()
     if (duration > 5000) {

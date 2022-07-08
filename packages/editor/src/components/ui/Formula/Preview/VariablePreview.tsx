@@ -29,7 +29,7 @@ export const VariablePreview: React.FC<VariablePreviewProps> = ({ variable, root
       <div className="autocomplete-preview-section">
         <div className="autocomplete-preview-section-head">Value</div>
         <span className="autocomplete-preview-output-tag">
-          <FormulaValue displayData={dumpDisplayResultForDisplay(variable.t)} />
+          <FormulaValue displayData={dumpDisplayResultForDisplay([variable.t])} />
         </span>
       </div>
     </div>

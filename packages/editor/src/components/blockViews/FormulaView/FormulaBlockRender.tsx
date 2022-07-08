@@ -17,21 +17,22 @@ export interface FormulaBlockRenderProps {
 }
 
 export const FormulaBlockRender: FC<FormulaBlockRenderProps> = ({
-  meta: { namespaceId: rootId, variableId: formulaId },
+  meta,
   width,
   minHeight,
   temporaryVariableT,
   formulaEditor,
   completion
 }) => {
+  const { namespaceId: rootId, variableId: formulaId } = meta
   const formulaResult = useMemo(
     () => (
       <Root.MashcardFormulaMenu>
-        <FormulaResult variableT={temporaryVariableT} pageId={rootId} />
+        <FormulaResult variableT={temporaryVariableT} meta={meta} />
         <AutocompleteList rootId={rootId} formulaId={formulaId} completion={completion} />
       </Root.MashcardFormulaMenu>
     ),
-    [completion, formulaId, rootId, temporaryVariableT]
+    [completion, formulaId, meta, rootId, temporaryVariableT]
   )
 
   const visible = !!(temporaryVariableT && temporaryVariableT.variableParseResult.kind !== 'literal')

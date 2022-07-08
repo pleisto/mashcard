@@ -291,10 +291,9 @@ exports[`formulaType [Empty] basic "=" 2`] = `
       <p>
         <mark
           class="mashcard-formula-mark"
-          data-code="literal"
+          data-code="Equal"
           data-display="="
           data-type="any"
-          style="color: #908B9C;"
         >
           =
         </mark>

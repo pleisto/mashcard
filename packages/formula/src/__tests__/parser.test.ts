@@ -1,4 +1,3 @@
-import { parse } from '../grammar'
 import { buildTestCases } from '../tests'
 import { makeContext } from '../tests/testHelper'
 
@@ -19,7 +18,7 @@ describe('parser', () => {
   )('$jestTitle <$position>', args => {
     const {
       variableParseResult: { definition: newInput, codeFragments, position: newPosition }
-    } = parse({ ...ctx, meta: ctx.buildMeta(args) })
+    } = ctx.parseDirectly(args)
     expect(codeFragments.map(c => c.display).join('')).toEqual(newInput)
     expect(newPosition).toEqual(args.position)
     expect(newInput).toEqual(args.newAbbrevInput ?? args.definition)

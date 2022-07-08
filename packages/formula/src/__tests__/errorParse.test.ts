@@ -1,4 +1,3 @@
-import { parse } from '../grammar'
 import { makeContext, buildTestCases, trackTodo } from '../tests'
 
 const [testCases] = buildTestCases()
@@ -13,8 +12,7 @@ describe('errorParse', () => {
   trackTodo(it, testCases.errorTestCases)
 
   it.each(testCases.errorTestCases)('$jestTitle', async args => {
-    const newCtx = { ...ctx, meta: ctx.buildMeta(args) }
-    const parseResult = parse(newCtx)
+    const parseResult = ctx.parseDirectly(args)
     expect(parseResult.success).toBe(false)
     expect([parseResult.errorMessages[0], parseResult.variableParseResult.valid]).toStrictEqual([
       { type: args.errorType, message: args.errorMessage },

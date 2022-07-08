@@ -12,7 +12,7 @@ import {
   SpreadsheetCellContainer,
   SpreadsheetColumnEditable
 } from './SpreadsheetView'
-import { VariableDisplayData } from '@mashcard/formula'
+import { display, VariableDisplayData } from '@mashcard/formula'
 import React from 'react'
 import { FormulaDisplay } from '../../ui/Formula'
 import { styled } from '@mashcard/design-system'
@@ -53,7 +53,12 @@ export const SpreadsheetRender: React.FC<SpreadsheetRenderProps> = ({
         const { rowId } = r
         return [
           r.rowId,
-          new Map(columns.map(c => [c.columnId, valuesMatrix.get(rowId)?.get(c.columnId)?.display.result ?? '']))
+          new Map(
+            columns.map(c => {
+              const displayData = valuesMatrix.get(rowId)?.get(c.columnId)
+              return [c.columnId, displayData ? display(displayData.result).result : '']
+            })
+          )
         ]
       })
     )

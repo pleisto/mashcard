@@ -71,7 +71,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
       disablePopover={noMenu || visible}
       selected={selected}
       name={savedVariableT?.meta.name ?? formulaName}
-      displayData={savedVariableT ? dumpDisplayResultForDisplay(savedVariableT) : displayData}
+      displayData={savedVariableT ? dumpDisplayResultForDisplay([savedVariableT]) : displayData}
       formulaType={formulaType}
     />
   )
@@ -123,7 +123,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
     async (v: VariableInterface | undefined) => {
       if (!v) return updateAttributes({ formula: { type: 'FORMULA' } })
 
-      const displayData: FormulaAttributes['formula']['displayData'] = dumpDisplayResultForDisplay(v.t)
+      const displayData: FormulaAttributes['formula']['displayData'] = dumpDisplayResultForDisplay([v.t])
       updateAttributes({ formula: { type: 'FORMULA', displayData } })
     },
     [updateAttributes]

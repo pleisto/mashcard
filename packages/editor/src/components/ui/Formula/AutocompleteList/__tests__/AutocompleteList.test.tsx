@@ -9,7 +9,6 @@ import {
   interpret,
   parse,
   SpreadsheetType,
-  SuccessParseResult,
   VariableMetadata
 } from '@mashcard/formula'
 import { AutocompleteList } from '../..'
@@ -218,7 +217,7 @@ describe('AutocompleteList', () => {
 
       const input = `=`
       const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, richType: { type: 'normal' } }
-      const parseResult = parse({ formulaContext, meta, interpretContext }) as SuccessParseResult
+      const parseResult = parse({ formulaContext, meta, interpretContext })
 
       const ctx = {
         formulaContext,

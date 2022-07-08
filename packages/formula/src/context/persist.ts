@@ -5,17 +5,28 @@ import {
   ContextInterface,
   UsedFormulaType,
   VariableData,
-  VariableDisplayData
+  VariableDisplayData,
+  VariableMetadata
 } from '../type'
 import { fetchResult } from './variable'
 import { FormulaAttributes } from '../types'
 
-export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayData => {
+export const dumpDisplayResultForDisplay = ([t, meta]:
+  | [t: VariableData]
+  | [t: VariableData, meta: VariableMetadata]
+  | [t: undefined, meta: VariableMetadata]): VariableDisplayData => {
+  if (t) {
+    return {
+      definition: t.variableParseResult.definition,
+      result: fetchResult(t),
+      type: t.meta.richType.type
+    }
+  }
+
   return {
-    definition: t.variableParseResult.definition,
-    result: fetchResult(t),
-    display: display(fetchResult(t)),
-    type: t.meta.richType.type
+    definition: meta.input,
+    result: { type: 'Blank', result: 'Blank' },
+    type: meta.richType.type
   }
 }
 

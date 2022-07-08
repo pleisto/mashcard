@@ -5,6 +5,8 @@ import { SpreadsheetInput, TestCaseInterface } from '../testType'
 const [namespaceId, spreadsheetId, firstColumnId, firstRowId, firstCellId, invalidColumnId] = generateUUIDs()
 const spreadsheetToken = 'SpreadsheetPage.spreadsheet'
 
+const richType = { type: 'spreadsheet', meta: { spreadsheetId, columnId: firstColumnId, rowId: firstRowId } } as const
+
 export const SpreadsheetTestCase: TestCaseInterface = {
   name: 'spreadsheet',
   testCases: {
@@ -47,6 +49,20 @@ export const SpreadsheetTestCase: TestCaseInterface = {
       }
     ],
     successTestCases: [
+      {
+        definition: '=',
+        namespaceId,
+        richType,
+        result: 'Blank',
+        expected: [{ key: 'codeFragments', matchType: 'toMatchSnapshot' }]
+      },
+      {
+        definition: '=   ',
+        namespaceId,
+        richType,
+        result: 'Blank',
+        expected: [{ key: 'codeFragments', matchType: 'toMatchSnapshot' }]
+      },
       {
         definition: `=${spreadsheetToken}."first"`,
         result: mockColumn('first', firstColumnId),

@@ -4,6 +4,8 @@ export const OtherTestCase: TestCaseInterface = {
   name: 'other',
   testCases: {
     successTestCases: [
+      { definition: '=', result: 'Blank', expected: [{ key: 'codeFragments', matchType: 'toMatchSnapshot' }] },
+      { definition: '= ', result: 'Blank', expected: [{ key: 'codeFragments', matchType: 'toMatchSnapshot' }] },
       { definition: '=1.123%', result: 0.01123 },
       { definition: '=01.2000100', result: 1.20001 }
     ],

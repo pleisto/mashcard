@@ -82,7 +82,7 @@ export type SpreadsheetName = string
 
 export type Definition = string
 
-export type VariableKind = 'literal' | 'constant' | 'expression' | 'unknown'
+export type VariableKind = 'literal' | 'blank' | 'constant' | 'expression' | 'unknown'
 
 export type ParseErrorType = 'parse' | 'syntax'
 
@@ -275,6 +275,7 @@ export type SpecialCodeFragmentType =
   | 'parseErrorOther3'
   | 'Space'
   | 'literal'
+  | 'blank'
 export type CodeFragmentCodes = ComplexCodeFragmentType | SimpleCodeFragmentType | SpecialCodeFragmentType
 
 interface CompletionReplacement {
@@ -624,7 +625,6 @@ interface ErrorVariableValue extends BaseVariableValue {
 export type VariableValue = SuccessVariableValue | ErrorVariableValue
 export interface VariableDisplayData {
   definition: Definition
-  display: AnyDisplayResult
   result: AnyTypeResult
   type: FormulaSourceType
 }

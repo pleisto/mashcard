@@ -1,4 +1,3 @@
-import { parse } from '../grammar/core'
 import { makeContext } from '../tests/testHelper'
 import { buildTestCases } from '../tests'
 
@@ -11,10 +10,9 @@ describe('cst', () => {
   })
 
   it.each([...testCases.successTestCases, ...testCases.errorTestCases])('$jestTitle', async args => {
-    const newCtx = { ...ctx, meta: ctx.buildMeta(args) }
     const {
       variableParseResult: { cst }
-    } = parse(newCtx)
+    } = ctx.parseDirectly(args)
     expect(cst).toMatchSnapshot()
   })
 })
