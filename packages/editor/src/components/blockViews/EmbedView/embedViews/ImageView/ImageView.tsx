@@ -49,6 +49,8 @@ export const ImageView: FC<ImageViewProps> = props => {
 
   const isFullWidth = align === 'full-width'
   const width = isFullWidth ? '100%' : imageWidth
+  // make toolbar center when image is too small
+  const embedToolbarCenter = typeof width === 'number' && width < 300
 
   return (
     <BlockContainer
@@ -84,7 +86,7 @@ export const ImageView: FC<ImageViewProps> = props => {
             <PreviewButton data-testid={TEST_ID_ENUM.editor.imageBlock.zoomInButton.id} onDoubleClick={previewImage} />
           </Resizable>
           {documentEditable && (
-            <EmbedToolbarContainer>
+            <EmbedToolbarContainer center={embedToolbarCenter}>
               <EmbedToolbar
                 url={url}
                 displayName={displayName}
