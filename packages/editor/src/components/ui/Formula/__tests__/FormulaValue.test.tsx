@@ -1,57 +1,24 @@
 import { render } from '@testing-library/react'
-import { VariableDisplayData } from '@mashcard/formula'
+import { buildTestCases, dumpDisplayResultForDisplay, makeContext } from '@mashcard/formula'
 import { FormulaValue } from '../FormulaValue'
 
+const [testCases] = buildTestCases(['basic'])
+
 describe('FormulaValue', () => {
-  it('renders borderless correctly', () => {
-    const data: VariableDisplayData = {
-      result: { type: 'Error', meta: 'fatal', result: 'error' },
-      display: { type: 'Error', result: '[fatal] error' },
-      type: 'normal',
-      definition: ''
-    }
-
-    const { container } = render(<FormulaValue border={false} displayData={data} />)
-
-    expect(container).toMatchSnapshot()
+  let ctx: Awaited<ReturnType<typeof makeContext>>
+  beforeAll(async () => {
+    jest.useRealTimers()
+    ctx = await makeContext(testCases.options)
+    jest.clearAllTimers()
   })
 
-  it('renders Waiting/Pending type correctly', () => {
-    const data: VariableDisplayData = {
-      result: { type: 'Waiting', result: 'waiting' },
-      display: { type: 'Waiting', result: 'waiting' },
-      type: 'normal',
-      definition: ''
-    }
+  it.each(testCases.basicTestCases)('$jestTitle', async args => {
+    const tempT = await ctx.interpretDirectly(args)
+    const displayData = dumpDisplayResultForDisplay(tempT)
+    const { container: container1 } = render(<FormulaValue border={false} displayData={displayData} />)
+    expect(container1).toMatchSnapshot()
 
-    const { container } = render(<FormulaValue border={true} displayData={data} />)
-
-    expect(container).toMatchSnapshot()
-  })
-
-  it('renders Error type correctly', () => {
-    const data: VariableDisplayData = {
-      result: { type: 'Error', meta: 'fatal', result: 'error' },
-      display: { type: 'Error', result: '[fatal] error' },
-      type: 'normal',
-      definition: ''
-    }
-
-    const { container } = render(<FormulaValue border={true} displayData={data} />)
-
-    expect(container).toMatchSnapshot()
-  })
-
-  it('renders Number type correctly', () => {
-    const data: VariableDisplayData = {
-      result: { type: 'number', result: 1 },
-      display: { type: 'number', result: '1' },
-      type: 'normal',
-      definition: ''
-    }
-
-    const { container } = render(<FormulaValue border={true} displayData={data} />)
-
-    expect(container).toMatchSnapshot()
+    const { container: container2 } = render(<FormulaValue border={true} displayData={displayData} />)
+    expect(container2).toMatchSnapshot()
   })
 })
