@@ -1,8 +1,8 @@
 import {
+  AnyDisplayResult,
   AnyDumpResult,
   AnyTypeResult,
   ContextInterface,
-  FunctionContext,
   UsedFormulaType,
   VariableData,
   VariableDisplayData
@@ -15,19 +15,8 @@ export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayDat
     definition: t.variableParseResult.definition,
     result: fetchResult(t),
     display: display(fetchResult(t)),
-    meta: {
-      namespaceId: t.meta.namespaceId,
-      variableId: t.meta.variableId,
-      name: t.meta.name,
-      position: t.variableParseResult.position,
-      input: t.variableParseResult.definition,
-      richType: t.meta.richType
-    }
+    type: t.meta.richType.type
   }
-}
-
-export const loadDisplayResult = (ctx: FunctionContext, displayResult: VariableDisplayData): VariableDisplayData => {
-  return { ...displayResult, result: cast(displayResult.result as any, ctx.formulaContext) as any }
 }
 
 export const dumpValue = (result: AnyTypeResult, t?: VariableData): any => {
@@ -53,6 +42,9 @@ export const cast = <T extends UsedFormulaType, Value extends AnyTypeResult<T>, 
   return result
 }
 
-export const display = <T extends UsedFormulaType, Value extends AnyTypeResult<T>>(v: Value): string => {
-  return FormulaAttributes[v.type].display(v as any, display)
+export const display = <T extends UsedFormulaType, Value extends AnyTypeResult<T>, Display extends AnyDisplayResult<T>>(
+  v: Value
+): Display => {
+  const result: any = FormulaAttributes[v.type].display(v as any, display)
+  return result
 }

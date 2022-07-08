@@ -8,5 +8,5 @@ export const FormulaBlankAttributes: FormulaTypeAttributes<typeof TypeName> = {
   type: TypeName,
   dump: rest => ({ ...rest, result: '#N/A' }),
   cast: rest => ({ ...rest, result: 'Blank' }),
-  display: () => '#N/A'
+  display: rest => ({ ...rest, result: '#N/A' })
 }

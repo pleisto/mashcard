@@ -2,13 +2,14 @@ import { FixedLengthTuple, RequireField } from '@mashcard/active-support'
 import { EventType } from '@mashcard/schema'
 import { FormulaContextArgs } from '../context'
 import { Cell } from '../controls'
-import { OperatorName } from '../grammar'
+import { OperatorName, ParseResult } from '../grammar'
 import {
   CodeFragment,
   Completion,
   ExpressionType,
   FormulaDefinition,
   FunctionContext,
+  VariableData,
   VariableMetadata,
   VariableParseResult
 } from '../type'
@@ -81,6 +82,7 @@ export interface PageInput {
 }
 type FeatureName =
   | 'async'
+  | 'basic'
   | 'format'
   | 'functionCall'
   | 'nameCheck'
@@ -178,6 +180,8 @@ export interface EventTestCaseType extends RequireField<BaseTestCase<{}>, 'defin
   events: DistributeEvents[]
 }
 
+export type BasicTestCaseType = BaseTestCase<{}> & { definition: string }
+
 type DependencyTypes = 'Variable' | 'Block'
 
 interface DependencyActionConfig {
@@ -223,6 +227,8 @@ export interface MakeContextOptions {
 
 export interface MakeContextResult extends Omit<FunctionContext, 'meta'> {
   buildMeta: (args: BaseTestCase<{}>) => FunctionContext['meta']
+  interpretDirectly: (args: BaseTestCase<{}>) => Promise<VariableData>
+  parseDirectly: (args: BaseTestCase<{}>) => ParseResult
   fetchUUID: (uuid: MockedUUIDV4) => string
 }
 
@@ -237,6 +243,7 @@ export interface TestCaseType {
   formatTestCases?: FormatTestCaseType[]
   eventTestCases?: EventTestCaseType[]
   dependencyTestCases?: AnyDependencyTestCaseType[]
+  basicTestCases?: BasicTestCaseType[]
 }
 
 export interface TestCaseInput {
@@ -247,6 +254,7 @@ export interface TestCaseInput {
   formatTestCases: Array<RequireField<FormatTestCaseType, 'groupOptions' | 'jestTitle'>>
   eventTestCases: Array<RequireField<EventTestCaseType, 'groupOptions' | 'jestTitle'>>
   dependencyTestCases: Array<RequireField<AnyDependencyTestCaseType, 'groupOptions' | 'jestTitle'>>
+  basicTestCases: Array<RequireField<BasicTestCaseType, 'groupOptions' | 'jestTitle'>>
 }
 
 type AllowEventsType = {

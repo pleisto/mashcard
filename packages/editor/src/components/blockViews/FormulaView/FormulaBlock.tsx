@@ -1,14 +1,6 @@
 import React from 'react'
 import { Editor, NodeViewProps } from '@tiptap/core'
-import {
-  ContextInterface,
-  display,
-  dumpDisplayResultForDisplay,
-  fetchResult,
-  VariableData,
-  VariableDisplayData,
-  VariableInterface
-} from '@mashcard/formula'
+import { ContextInterface, dumpDisplayResultForDisplay, VariableData, VariableInterface } from '@mashcard/formula'
 import { BlockContainer } from '../BlockContainer'
 import { FormulaDisplay } from '../../ui/Formula'
 import { FormulaMenuProps, useFormula, FormulaMenu, UseFormulaInput } from '.'
@@ -39,7 +31,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
   handleDelete,
   onUpdateFormula
 }) => {
-  const { attrs } = formula ?? {}
+  const { displayData } = formula ?? {}
   const defaultVisible = isNew
   const formulaId = uuid
   const { editor } = useEditorContext()
@@ -50,22 +42,12 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
   const formulaName = ''
   const meta: UseFormulaInput['meta'] = {
     namespaceId: rootId,
-    input: attrs?.display ?? '=',
-    position: attrs?.position ?? 0,
+    input: displayData?.definition ?? '=',
+    position: 0,
     variableId: formulaId,
     richType: { type: formulaType },
     name: formulaName
   }
-
-  const fallbackDisplayData: VariableDisplayData | undefined = attrs
-    ? {
-        definition: attrs.input,
-        display: attrs.display,
-        result: { type: 'string', result: attrs.display },
-        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-        meta: { richType: { type: 'normal' } } as VariableDisplayData['meta']
-      }
-    : undefined
 
   const {
     selected,
@@ -89,7 +71,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
       disablePopover={noMenu || visible}
       selected={selected}
       name={savedVariableT?.meta.name ?? formulaName}
-      displayData={savedVariableT ? dumpDisplayResultForDisplay(savedVariableT) : fallbackDisplayData}
+      displayData={savedVariableT ? dumpDisplayResultForDisplay(savedVariableT) : displayData}
       formulaType={formulaType}
     />
   )
@@ -141,15 +123,8 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
     async (v: VariableInterface | undefined) => {
       if (!v) return updateAttributes({ formula: { type: 'FORMULA' } })
 
-      const { name, input, position } = v.meta()
-      const attrs: FormulaAttributes['formula']['attrs'] = {
-        name,
-        input,
-        position,
-        display: display(fetchResult(v.t))
-      }
-
-      updateAttributes({ formula: { type: 'FORMULA', attrs } })
+      const displayData: FormulaAttributes['formula']['displayData'] = dumpDisplayResultForDisplay(v.t)
+      updateAttributes({ formula: { type: 'FORMULA', displayData } })
     },
     [updateAttributes]
   )

@@ -25,5 +25,5 @@ export const FormulaReferenceAttributes: FormulaTypeAttributes<typeof TypeName> 
   type: TypeName,
   dump: rest => ({ ...rest, result: 'Not supported' }),
   cast: rest => ({ ...rest, result: 'Not supported', meta: 'runtime', type: 'Error' }),
-  display: ({ result }) => `#<Reference>`
+  display: rest => ({ ...rest, result: '#<Reference>' })
 }
