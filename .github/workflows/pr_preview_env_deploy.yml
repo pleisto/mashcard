@@ -60,6 +60,8 @@ jobs:
     timeout-minutes: 8
     needs: build
     steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
       - name: GCP Login
         uses: google-github-actions/auth@v0
         with:
