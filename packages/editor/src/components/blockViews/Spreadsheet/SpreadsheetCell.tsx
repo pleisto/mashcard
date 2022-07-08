@@ -200,7 +200,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
         definition: displayResult,
         display: displayResult,
         meta: { ...meta, input: displayResult, position: displayResult.length },
-        result: { type: 'literal', result: displayResult }
+        resultToRefactor: { type: 'literal', result: displayResult }
       }
     : undefined
   const displayData: VariableDisplayData | undefined = savedVariableT

@@ -37,7 +37,7 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({
     return <div />
   }
 
-  const { result, meta } = displayData
+  const { resultToRefactor: result, meta } = displayData
 
   if (result.type === 'literal') {
     return (
@@ -52,7 +52,7 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({
 
   let preview: React.ReactElement | null = null
 
-  const dataResult = newDisplayData.result
+  const dataResult = newDisplayData.resultToRefactor
 
   if (dataResult.view) {
     const viewRender = formulaContext!.findViewRender(dataResult.view.type)

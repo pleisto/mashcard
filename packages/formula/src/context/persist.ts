@@ -14,7 +14,7 @@ import { FormulaAttributes } from '../types'
 export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayData => {
   return {
     definition: t.variableParseResult.definition,
-    result: fetchResult(t),
+    resultToRefactor: fetchResult(t),
     display: display(fetchResult(t)).result,
     meta: {
       namespaceId: t.meta.namespaceId,
@@ -28,7 +28,7 @@ export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayDat
 }
 
 export const loadDisplayResult = (ctx: FunctionContext, displayResult: VariableDisplayData): VariableDisplayData => {
-  return { ...displayResult, result: cast(displayResult.result as any, ctx.formulaContext) as any }
+  return { ...displayResult, resultToRefactor: cast(displayResult.resultToRefactor as any, ctx.formulaContext) as any }
 }
 
 export const dumpValue = (result: AnyTypeResult, t?: VariableData): any => {

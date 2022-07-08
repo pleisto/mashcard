@@ -19,7 +19,7 @@ export const FormulaValue: FC<FormulaValueProps> = ({
   selected,
   disablePopover,
   displayData: {
-    result,
+    resultToRefactor: result,
     display,
     meta: {
       richType: { type }

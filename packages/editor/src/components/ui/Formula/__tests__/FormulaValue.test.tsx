@@ -5,7 +5,7 @@ import { FormulaValue } from '../FormulaValue'
 describe('FormulaValue', () => {
   it('renders borderless correctly', () => {
     const data: VariableDisplayData = {
-      result: {
+      resultToRefactor: {
         type: 'Error',
         meta: 'fatal',
         result: 'error'
@@ -22,7 +22,7 @@ describe('FormulaValue', () => {
 
   it('renders Waiting/Pending type correctly', () => {
     const data: VariableDisplayData = {
-      result: {
+      resultToRefactor: {
         type: 'Waiting',
         result: 'waiting'
       },
@@ -38,7 +38,7 @@ describe('FormulaValue', () => {
 
   it('renders Error type correctly', () => {
     const data: VariableDisplayData = {
-      result: {
+      resultToRefactor: {
         type: 'Error',
         meta: 'fatal',
         result: 'error'
@@ -55,7 +55,7 @@ describe('FormulaValue', () => {
 
   it('renders Number type correctly', () => {
     const data: VariableDisplayData = {
-      result: {
+      resultToRefactor: {
         type: 'number',
         result: 1
       },

@@ -18,7 +18,7 @@ describe('FormulaDisplay', () => {
   it('renders literal kind correctly', () => {
     const displayData: VariableDisplayData = {
       definition: `="string"`,
-      result: {
+      resultToRefactor: {
         type: 'literal',
         result: 'string'
       },
@@ -33,7 +33,7 @@ describe('FormulaDisplay', () => {
   it('renders constant kind correctly', () => {
     const displayData: VariableDisplayData = {
       definition: `="string"`,
-      result: {
+      resultToRefactor: {
         type: 'string',
         result: 'string'
       },

@@ -624,7 +624,7 @@ interface ErrorVariableValue extends BaseVariableValue {
 export type VariableValue = SuccessVariableValue | ErrorVariableValue
 export interface VariableDisplayData {
   definition: Definition
-  result: AnyTypeResult
+  resultToRefactor: AnyTypeResult
   meta: VariableMetadata
   display: string
 }
