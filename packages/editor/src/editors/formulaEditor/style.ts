@@ -1,4 +1,5 @@
 import { css, theme } from '@mashcard/design-system'
+import { defaultSelectionStyles } from '../../styles/index.style'
 
 const onlyBottomBorder = {
   borderTopColor: 'transparent',
@@ -31,6 +32,7 @@ export const MashcardFomulaEditor = css({
     }
   },
   '.ProseMirror': {
+    ...defaultSelectionStyles,
     position: 'relative',
     display: 'inline-block',
     width: '100%',
