@@ -89,6 +89,11 @@ export const DragSecondary = createEditorIcon(
   theme.colors.primaryDefault.value
 )
 
+export const BlockActionAdd = createEditorIcon(
+  <Icon.BlockActionAdd theme="multi-color" fill={[theme.colors.primaryDefault.value, theme.colors.blue2.value]} />,
+  theme.colors.primaryDefault.value
+)
+
 export const Bulb = createEditorIcon(
   <Icon.Bulb fill={theme.colors.deepPurple4.value} />,
   theme.colors.deepPurple4.value

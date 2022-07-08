@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react'
+import { FC, ReactNode, useMemo } from 'react'
 import { MenuProps, styled } from '@mashcard/design-system'
 import { BasicActionOptionType, useBasicActionOptions } from './useBasicActionOptions'
 import {
@@ -32,7 +32,7 @@ export interface BlockActionsProps {
   buttonClassName?: string
   baseId?: MenuProps['baseId']
   options?: BlockActionOptions
-  children?: React.ReactNode
+  children?: ReactNode
 }
 
 const BlockActionButtonContainer = styled(BlockActionButton, {
