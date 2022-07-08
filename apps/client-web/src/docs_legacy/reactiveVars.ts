@@ -1,6 +1,6 @@
 import { makeVar } from '@apollo/client'
 import { ContextInterface } from '@mashcard/formula'
-import { awarenessInfo } from './pages/hooks/useDocSyncProvider'
+import { awarenessInfo } from './pages/hooks/useBlockSyncProvider'
 
 export const isSavingVar = makeVar(false)
 export const awarenessInfosVar = makeVar<awarenessInfo[]>([])

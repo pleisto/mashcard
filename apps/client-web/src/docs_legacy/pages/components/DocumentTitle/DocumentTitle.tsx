@@ -11,7 +11,7 @@ import {
   usePrepareFileUpload,
   useFetchUnsplashImages
 } from '../../hooks'
-import { blockMeta } from '../../hooks/useDocSyncProvider'
+import { blockMeta } from '../../hooks/useBlockSyncProvider'
 import { Block, FileSource } from '@/MashcardGraphQL'
 export interface DocumentTitleProps {
   docBlock: Block
