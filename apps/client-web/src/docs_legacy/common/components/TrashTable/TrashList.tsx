@@ -145,7 +145,21 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
   const showSpin = listLoading || actionLoading
 
   if (!showSpin && !data?.trashBlocks?.length) {
-    return <NotFound>{t('trash.not_found')}</NotFound>
+    return (
+      <>
+        <Item type="title" key="title">
+          <Page>
+            <SelectBlock />
+            {t('trash.pages')}
+          </Page>
+          <Time>{t('trash.deleted_at')}</Time>
+          <Action>
+            <Card />
+          </Action>
+        </Item>
+        <NotFound>{t('trash.not_found')}</NotFound>
+      </>
+    )
   }
 
   const onChange = (index: number) => (checked: boolean) => {
