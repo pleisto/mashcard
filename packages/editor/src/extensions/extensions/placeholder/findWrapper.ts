@@ -14,4 +14,4 @@ export const findWrapper = (position: ResolvedPos): ProsemirrorNode | undefined 
   findParentNodeClosestToPos(position, node => wrapperList.includes(node.type.name))?.node
 
 export const findParagraphWrapper = (position: ResolvedPos): ProsemirrorNode | undefined =>
-  findParentNodeClosestToPos(position, node => wrapperList.includes(node.type.name))?.node
+  findParentNodeClosestToPos(position, node => paragraphWrapperList.includes(node.type.name))?.node
