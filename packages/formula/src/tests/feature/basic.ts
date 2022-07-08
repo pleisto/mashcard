@@ -1,8 +1,12 @@
 import { VariableRichType } from '../../type'
-import { generateUUIDs } from '../testHelper'
 import { SpreadsheetInput, TestCaseInterface } from '../testType'
 
-const [namespaceId, spreadsheetId, columnId, rowId] = generateUUIDs()
+const [namespaceId, spreadsheetId, columnId, rowId] = [
+  'aaaa0000-0000-0000-0000-000000000000',
+  'aaaa1111-1111-1111-1111-111111111111',
+  'aaaa2222-2222-2222-2222-222222222222',
+  'aaaa3333-3333-3333-3333-333333333333'
+]
 
 const richType: VariableRichType = { type: 'spreadsheet', meta: { spreadsheetId, columnId, rowId } }
 
