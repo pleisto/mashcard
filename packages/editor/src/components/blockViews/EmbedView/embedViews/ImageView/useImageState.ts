@@ -1,5 +1,6 @@
 import { ResizableProps } from 're-resizable'
 import { useState, useCallback, SyntheticEvent, Dispatch, SetStateAction } from 'react'
+import { useEditorContext } from '../../../../../hooks'
 import { BlockActionOptions } from '../../../BlockActions'
 import { useActionOptions } from '../useActionOptions'
 import { ImageViewProps } from './ImageView'
@@ -17,6 +18,7 @@ export function useImageState({ url, node, updateEmbedBlockAttributes, width }: 
   zoomInImage: VoidFunction
   zoomOutImage: VoidFunction
 } {
+  const { documentEditable } = useEditorContext()
   const [loaded, setLoaded] = useState(false)
   const [showPreview, setShowPreview] = useState(false)
   const [actionOptions] = useActionOptions(url)
@@ -44,7 +46,11 @@ export function useImageState({ url, node, updateEmbedBlockAttributes, width }: 
     [node.attrs.image?.ratio, updateEmbedBlockAttributes]
   )
 
-  const resizableProps = useResizable(node.attrs.image.align === 'full-width', updateEmbedBlockAttributes, width)
+  const resizableProps = useResizable(
+    !documentEditable || node.attrs.image.align === 'full-width',
+    updateEmbedBlockAttributes,
+    width
+  )
 
   const d = 50
   const zoomInImage = useCallback(() => {

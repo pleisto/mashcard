@@ -15,6 +15,7 @@ declare global {
     lastDomain?: string
     env: string
     version: string
+    monorepoVersion: string
     locale: string
     rtl: boolean
     settings: { [key: string]: any }

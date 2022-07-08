@@ -68,9 +68,16 @@ zh-CN:
   editor:
     placeholder:
       blockquote: Type something...
+      code_block: Enter or copy the code
       callout: Type something...
-      listItem: Type something...
-      taskItem: Type something...
+      listItem: List
+      taskItem: To-do...
+      heading1: Heading 1
+      heading2: Heading 2
+      heading3: Heading 3
+      heading4: Heading 4
+      heading5: Heading 5
+      heading6: Heading 5
       default: Type '/' for commands
     copy_hint: 已复制到剪贴板
     explorer_menu:
@@ -394,8 +401,8 @@ zh-CN:
         gallery:
           search:
             placeholder: 搜索...
-          label: 从 Unsplash 中选择一张图片。
-          description: Unsplash 图片
+          label: Add pictures from Unsplash.
+          description: Pictures from unsplash
     user_block:
       anonymous: 匿名
     page_link_block:

@@ -2,8 +2,11 @@ import { EmbedType } from '@mashcard/schema'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { EmbedAttributes, EmbedOptions } from '../../../../extensions'
-import { mockBlockViewProps } from '../../../../test'
+import * as editorHooks from '../../../../hooks/useEditorContext'
+import { mockBlockViewProps, mockEditor } from '../../../../test'
 import { EmbedView } from '../EmbedView'
+
+jest.mock('../../../../hooks/useEditorContext')
 
 Object.assign(window, {
   open: () => {}
@@ -42,6 +45,11 @@ describe('EmbedView', () => {
   const prepareFileUpload = (() => {}) as any
 
   it('matches correct snapshot', () => {
+    jest.spyOn(editorHooks, 'useEditorContext').mockImplementation(() => ({
+      editor: mockEditor(),
+      documentEditable: true
+    }))
+
     const props = mockBlockViewProps<EmbedOptions, EmbedAttributes>({
       node: {
         uuid,

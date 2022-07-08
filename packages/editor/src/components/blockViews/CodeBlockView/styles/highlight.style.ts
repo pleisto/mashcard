@@ -39,6 +39,20 @@ export const SwitchContainer = styled('div', {
   }
 })
 
+export const placeholderStyle = css({
+  code: {
+    '&:before': {
+      color: theme.colors.typeThirdary,
+      content: 'attr(data-placeholder)',
+      left: 0,
+      pointerEvents: 'none',
+      position: 'absolute',
+      top: 0,
+      whiteSpace: 'nowrap'
+    }
+  }
+})
+
 export const highlightStyle = css({
   'code[class*="language-"], pre[class*="language-"]': {
     color: theme.colors.typePrimary,

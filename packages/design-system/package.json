@@ -23,7 +23,7 @@
     "dist"
   ],
   "dependencies": {
-    "@hookform/resolvers": "^2.9.3",
+    "@hookform/resolvers": "^2.9.4",
     "@mashcard/active-support": "workspace:^",
     "@mashcard/design-icons": "workspace:^",
     "@mashcard/test-helper": "workspace:^",
@@ -34,7 +34,7 @@
     "blurhash": "^1.1.5",
     "classnames": "^2.3.1",
     "fast-deep-equal": "^3.1.3",
-    "framer-motion": "^6.4.1",
+    "framer-motion": "^6.4.2",
     "node-polyfill-webpack-plugin": "^2.0.0",
     "polished": "^4.2.2",
     "rc-dropdown": "^4.0.1",
@@ -68,11 +68,11 @@
     "@types/react-transition-group": "^4.4.5",
     "babel-loader": "^8.2.5",
     "esbuild-loader": "^2.19.0",
-    "i18next": "^21.8.12",
+    "i18next": "^21.8.13",
     "react": "^18.2.0",
     "react-colorful": "^5.5.1",
     "react-dom": "^18.2.0",
-    "react-i18next": "^11.17.4",
+    "react-i18next": "^11.18.0",
     "react-json-view": "^1.21.3",
     "storybook-addon-designs": "^6.3.1"
   },

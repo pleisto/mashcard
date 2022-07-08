@@ -103,8 +103,8 @@ export function useResizable(
         bottom: false,
         bottomLeft: false,
         bottomRight: false,
-        left: true,
-        right: true
+        left: !disabled,
+        right: !disabled
       },
       size: {
         width: disabled ? '100%' : width ?? 'unset',

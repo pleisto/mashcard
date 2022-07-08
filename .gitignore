@@ -29,19 +29,17 @@ node_modules
 .bundle/*
 
 # Ignore all logfiles and tempfiles.
-apps/server-monolith/log
-apps/server-monolith/.log
-!apps/server-monolith/log/.keep
 apps/server-monolith/tmp/*
-!apps/server-monolith/tmp/.keep
+!apps/server-monolith/tmp/pids
+!apps/server-monolith/tmp/.gitkeep
 
 # Ignore pidfiles, but keep the directory.
 apps/server-monolith/tmp/pids/*
-!apps/server-monolith/tmp/pids/.keep
+!apps/server-monolith/tmp/pids/.gitkeep
 
 # Ignore uploaded files in development.
 apps/server-monolith/storage/*
-!apps/server-monolith/storage/.keep
+!apps/server-monolith/storage/.gitkeep
 
 .eslintcache
 .byebug_history
@@ -71,6 +69,7 @@ ehthumbs.db
 
 # testing
 .coverage-cache/
+.nyc_output/
 junit-reports/
 coverage/
 

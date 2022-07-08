@@ -59,6 +59,10 @@ module Mashcard
       def version
         Mashcard::VERSION
       end
+
+      def monorepo_version
+        Mashcard::MONOREPO_VERSION
+      end
     end
   end
 end
