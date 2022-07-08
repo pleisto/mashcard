@@ -10,7 +10,7 @@ exports[`CalloutView renders CalloutView with emoji icon correctly 1`] = `
       class="mc-c-PhqtK"
     >
       <div
-        class="mc-c-lnEYSH"
+        class="mc-c-PdSsz"
       >
         <button
           aria-haspopup="dialog"
@@ -28,7 +28,9 @@ exports[`CalloutView renders CalloutView with emoji icon correctly 1`] = `
       </div>
       <span
         as="span"
+        class="mc-c-hOefvj"
         data-node-view-content=""
+        data-placeholder=""
         style="white-space: pre-wrap;"
       />
     </div>

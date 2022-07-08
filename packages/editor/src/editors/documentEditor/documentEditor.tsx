@@ -13,7 +13,6 @@ import { BubbleMenu } from '../../components/extensionViews'
 import {
   Blockquote,
   BulletList,
-  Callout,
   CodeBlock,
   Embed,
   Formula,
@@ -224,24 +223,11 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
                 }
               },
               placeholder: {
-                placeholder: ({ wrapperNode }) => {
-                  switch (wrapperNode?.type.name) {
-                    case Heading.name:
-                      return t(`placeholder.heading${wrapperNode.attrs.level}`)
-                    case Blockquote.name:
-                      return t(`placeholder.blockquote`)
-                    case ListItem.name:
-                      return t(`placeholder.listItem`)
-                    case TaskItem.name:
-                      return t(`placeholder.taskItem`)
-                    case Callout.name:
-                      return t(`placeholder.callout`)
-                    case CodeBlock.name:
-                      return t(`placeholder.code_block`)
-                    default:
-                      return t(`placeholder.default`)
-                  }
-                }
+                placeholder: t('placeholder.default')
+                //     // case ListItem.name:
+                //     //   return t(`placeholder.listItem`)
+                //     // case TaskItem.name:
+                //     //   return t(`placeholder.taskItem`)
               },
               selection: {
                 nodeSelection: {

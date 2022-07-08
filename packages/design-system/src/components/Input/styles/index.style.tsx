@@ -42,7 +42,7 @@ export const inputStyle = css({
     width: '100%',
     display: 'inline-block',
     '&::placeholder': {
-      color: theme.colors.typeThirdary
+      color: theme.colors.typeDisabled
     },
     '&::selection': {
       background: theme.colors.secondarySelected
@@ -57,12 +57,12 @@ export const inputStyle = css({
       sm: {
         padding: '3px 6px',
         lineHeight: theme.lineHeights.callout,
-        fontSize: theme.fontSizes.callout,
+        fontSize: theme.fontSizes.callout
       },
       md: {
         padding: '4px 10px',
         lineHeight: theme.lineHeights.subHeadline,
-        fontSize: theme.fontSizes.subHeadline,
+        fontSize: theme.fontSizes.subHeadline
       },
       lg: {
         padding: '7px 14px',
@@ -170,14 +170,14 @@ export const inputStyle = css({
       css: {
         borderColor: `${theme.colors.errorDefault}!important`,
         boxShadow: `0 0 0 2px ${theme.colors.errorBorder}`,
-        backgroundColor: theme.colors.errorBg,
+        backgroundColor: theme.colors.errorBg
       }
     },
     {
       invalid: true,
       borderType: 'underline',
       css: {
-        borderBottomColor: `${theme.colors.errorDefault}!important`,
+        borderBottomColor: `${theme.colors.errorDefault}!important`
       }
     }
   ]

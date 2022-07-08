@@ -20,6 +20,7 @@ exports[`Heading renders Heading correctly 1`] = `
             as="h1"
             class="mc-c-gkVTfJ mc-c-gkVTfJ-cOVgnz-level-1"
             data-node-view-content=""
+            data-placeholder=""
             style="white-space: pre-wrap;"
           >
             <div
@@ -41,6 +42,7 @@ exports[`Heading renders Heading correctly 1`] = `
             as="h2"
             class="mc-c-gkVTfJ mc-c-gkVTfJ-gPLAez-level-2"
             data-node-view-content=""
+            data-placeholder=""
             style="white-space: pre-wrap;"
           >
             <div
@@ -62,6 +64,7 @@ exports[`Heading renders Heading correctly 1`] = `
             as="h3"
             class="mc-c-gkVTfJ mc-c-gkVTfJ-llzMLw-level-3"
             data-node-view-content=""
+            data-placeholder=""
             style="white-space: pre-wrap;"
           >
             <div
@@ -83,6 +86,7 @@ exports[`Heading renders Heading correctly 1`] = `
             as="h4"
             class="mc-c-gkVTfJ mc-c-gkVTfJ-dWBeGD-level-4"
             data-node-view-content=""
+            data-placeholder=""
             style="white-space: pre-wrap;"
           >
             <div
@@ -104,6 +108,7 @@ exports[`Heading renders Heading correctly 1`] = `
             as="h5"
             class="mc-c-gkVTfJ mc-c-gkVTfJ-hCSGfy-level-5"
             data-node-view-content=""
+            data-placeholder=""
             style="white-space: pre-wrap;"
           >
             <div

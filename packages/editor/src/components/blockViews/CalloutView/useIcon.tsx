@@ -8,6 +8,8 @@ import { useEditorI18n } from '../../../hooks'
 
 const size = '1.5rem'
 
+export const iconWidth = '2rem'
+
 const IconButton = styled(Button, {
   variants: {
     type: {
@@ -16,7 +18,7 @@ const IconButton = styled(Button, {
         border: 'none',
         height: '2rem',
         padding: 0,
-        width: '2rem'
+        width: iconWidth
       }
     }
   }

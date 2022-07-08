@@ -8,7 +8,9 @@ exports[`BlockquoteView renders blockquote correctly 1`] = `
   >
     <blockquote
       as="blockquote"
+      class="mc-c-geOTBT"
       data-node-view-content=""
+      data-placeholder=""
       style="white-space: pre-wrap;"
     />
   </div>

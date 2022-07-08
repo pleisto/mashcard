@@ -99,6 +99,10 @@ export const CodeBlockView: FC<CodeBlockViewProps> = ({ node, updateAttributes, 
   }
   const actionOptions: BlockActionOptions = ['cut', 'copy', 'delete']
 
+  const [t] = useEditorI18n()
+  const isEmpty = node.textContent.length === 0
+  const placeholder = isEmpty ? t(`placeholder.code_block`) : ''
+
   return (
     <BlockContainer
       editable="custom"
@@ -119,6 +123,7 @@ export const CodeBlockView: FC<CodeBlockViewProps> = ({ node, updateAttributes, 
           <NodeViewContent
             className={`${autoWrap ? undefined : CodeScroll()} language-${language ?? defaultLanguage}`}
             as="code"
+            data-placeholder={placeholder}
           />
         </pre>
       </CodeContainer>

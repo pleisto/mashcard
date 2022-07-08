@@ -10,6 +10,7 @@ exports[`HeadingView matches snapshot correctly 1`] = `
       as="h1"
       class="mc-c-gkVTfJ mc-c-gkVTfJ-cOVgnz-level-1"
       data-node-view-content=""
+      data-placeholder="placeholder.heading1"
       style="white-space: pre-wrap;"
     />
   </div>
@@ -26,6 +27,7 @@ exports[`HeadingView renders correspond heading according to level level 2 1`] =
       as="h2"
       class="mc-c-gkVTfJ mc-c-gkVTfJ-gPLAez-level-2"
       data-node-view-content=""
+      data-placeholder="placeholder.heading2"
       style="white-space: pre-wrap;"
     />
   </div>
@@ -42,6 +44,7 @@ exports[`HeadingView renders correspond heading according to level level 3 1`] =
       as="h3"
       class="mc-c-gkVTfJ mc-c-gkVTfJ-llzMLw-level-3"
       data-node-view-content=""
+      data-placeholder="placeholder.heading3"
       style="white-space: pre-wrap;"
     />
   </div>
@@ -58,6 +61,7 @@ exports[`HeadingView renders correspond heading according to level level 4 1`] =
       as="h4"
       class="mc-c-gkVTfJ mc-c-gkVTfJ-dWBeGD-level-4"
       data-node-view-content=""
+      data-placeholder="placeholder.heading4"
       style="white-space: pre-wrap;"
     />
   </div>
@@ -74,6 +78,7 @@ exports[`HeadingView renders correspond heading according to level level 5 1`] =
       as="h5"
       class="mc-c-gkVTfJ mc-c-gkVTfJ-hCSGfy-level-5"
       data-node-view-content=""
+      data-placeholder="placeholder.heading5"
       style="white-space: pre-wrap;"
     />
   </div>

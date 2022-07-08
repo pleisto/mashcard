@@ -7,6 +7,7 @@ describe('CalloutView', () => {
   it('renders CalloutView with emoji icon correctly', () => {
     const props = mockBlockViewProps<CalloutOptions, CalloutAttributes>({
       node: {
+        textContent: 'text content',
         attrs: {
           icon: {
             type: 'EMOJI',
