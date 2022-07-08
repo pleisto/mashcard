@@ -10,7 +10,7 @@ import {
 import { FormulaBlockRender, getFormulaContext, useFormula, UseFormulaInput } from '../FormulaView'
 import {
   columnDisplayIndex,
-  displayValue,
+  display,
   dumpDisplayResultForDisplay,
   fetchResult,
   SpreadsheetReloadViaId,
@@ -79,7 +79,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     async (variable: VariableInterface | undefined): Promise<void> => {
       if (!variable) return
       // TODO check no persist
-      const value = displayValue(fetchResult(variable.t), rootId, true)
+      const value = display(fetchResult(variable.t))
       const oldValue = block.text
       if (value === oldValue) return
       devLog('Spreadsheet cell formula updated', { cellId, value, rootId })
@@ -194,13 +194,13 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     latestEditing.current = false
   }
 
-  const display = savedVariableT ? displayValue(fetchResult(savedVariableT), rootId) : currentBlock.text
-  const fallbackDisplayData: VariableDisplayData | undefined = display
+  const displayResult = savedVariableT ? display(fetchResult(savedVariableT)) : currentBlock.text
+  const fallbackDisplayData: VariableDisplayData | undefined = displayResult
     ? {
-        definition: display,
-        display,
-        meta: { ...meta, input: display, position: display.length },
-        result: { type: 'literal', result: display }
+        definition: displayResult,
+        display: displayResult,
+        meta: { ...meta, input: displayResult, position: displayResult.length },
+        result: { type: 'literal', result: displayResult }
       }
     : undefined
   const displayData: VariableDisplayData | undefined = savedVariableT

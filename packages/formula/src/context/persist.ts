@@ -3,20 +3,18 @@ import {
   AnyTypeResult,
   ContextInterface,
   FunctionContext,
-  NamespaceId,
   UsedFormulaType,
   VariableData,
   VariableDisplayData
 } from '../type'
 import { fetchResult } from './variable'
-import { truncateArray, truncateString } from '../grammar'
 import { FormulaAttributes } from '../types'
 
 export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayData => {
   return {
     definition: t.variableParseResult.definition,
     result: fetchResult(t),
-    display: displayValue(fetchResult(t), ''),
+    display: display(fetchResult(t)),
     meta: {
       namespaceId: t.meta.namespaceId,
       variableId: t.meta.variableId,
@@ -26,75 +24,6 @@ export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayDat
       richType: t.meta.richType
     }
   }
-}
-
-export const displayValue = (v: AnyTypeResult, pageId: NamespaceId, disableTruncate: boolean = false): string => {
-  return innerDisplayValue(v, pageId, disableTruncate)
-}
-
-// eslint-disable-next-line complexity
-const innerDisplayValue = (v: AnyTypeResult, pageId: NamespaceId, disableTruncate: boolean = false): string => {
-  switch (v.type) {
-    case 'number':
-      return String(v.result)
-    case 'boolean':
-      // return v.result ? '✓' : '✗'
-      return String(v.result)
-    case 'literal':
-    case 'string':
-      return truncateString(v.result, disableTruncate ? -1 : undefined)
-    case 'Date':
-      if (isNaN(v.result as unknown as number)) return v.result.toDateString()
-      return v.result.toISOString()
-    case 'Error':
-      return `#<Error> ${v.result}`
-    case 'Spreadsheet':
-      return v.result.name()
-    case 'Block':
-      return v.result.name(pageId)
-    case 'Column':
-      return `${v.result.spreadsheet.name()}.${v.result.display()}`
-    case 'Row':
-      return `Row[${v.result.rowIndex}]`
-    case 'Range':
-      return `${v.result.columnSize}*${v.result.rowSize}`
-    case 'Cell':
-      return `${v.result.getValue()}`
-    case 'Predicate':
-      return `[${v.meta.operator}] ${v.result}`
-    case 'Record':
-      // eslint-disable-next-line no-case-declarations
-      const recordArray = Object.entries(v.result).map(
-        ([key, value]) => `${key}: ${displayValue(value as AnyTypeResult, pageId)}`
-      )
-      // eslint-disable-next-line no-case-declarations
-      const recordResult = truncateArray(recordArray).join(', ')
-      return `{ ${recordResult} }`
-    case 'Array':
-      // eslint-disable-next-line no-case-declarations
-      const arrayArray = v.result.map((v: AnyTypeResult) => displayValue(v, pageId))
-      // eslint-disable-next-line no-case-declarations
-      const arrayResult = truncateArray(arrayArray).join(', ')
-      return `[${arrayResult}]`
-    case 'Button':
-      return `#<${v.type}> ${v.result.name}`
-    case 'Switch':
-      return `#<${v.type}> ${v.result.checked}`
-    case 'Reference':
-      return `#<Reference> ${JSON.stringify(v.result)}`
-    case 'Function':
-      return `#<Function> ${v.result.map(
-        ({ name, args }) => `${name} ${args.map(a => displayValue(a, pageId)).join(', ')}`
-      )}`
-    case 'Cst':
-      return '#<Cst>'
-    case 'Blank':
-      return `#N/A`
-    case 'Pending':
-      return v.result
-  }
-
-  return JSON.stringify(v.result)
 }
 
 export const loadDisplayResult = (ctx: FunctionContext, displayResult: VariableDisplayData): VariableDisplayData => {
