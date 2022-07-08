@@ -12,7 +12,6 @@ import {
   DocumentInfo,
   User,
   Statetype,
-  useBlockNewQuery,
   useBlockCommitMutation,
   useDocumentSubscription,
   useAwarenessUpdateMutation,
