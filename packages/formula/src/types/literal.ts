@@ -7,5 +7,6 @@ export type FormulaLiteralType = BaseResult<typeof TypeName, string>
 export const FormulaLiteralAttributes: FormulaTypeAttributes<typeof TypeName> = {
   type: TypeName,
   dump: rest => rest,
-  cast: rest => rest
+  cast: rest => rest,
+  display: ({ result }) => result
 }

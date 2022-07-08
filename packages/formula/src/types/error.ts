@@ -20,5 +20,6 @@ export type FormulaErrorType = BaseResult<typeof TypeName, string, [ErrorType, s
 export const FormulaErrorAttributes: FormulaTypeAttributes<typeof TypeName> = {
   type: TypeName,
   dump: ({ result, meta, ...rest }) => ({ ...rest, meta: undefined, result: [meta, result] }),
-  cast: ({ result, ...rest }) => ({ ...rest, result: result[1], meta: result[0] })
+  cast: ({ result, ...rest }) => ({ ...rest, result: result[1], meta: result[0] }),
+  display: ({ result }) => `#<Error> ${result}`
 }

@@ -23,5 +23,6 @@ export const FormulaCellAttributes: FormulaTypeAttributes<typeof TypeName> = {
         ? { ...rest, result: row.newCell(cell, key) }
         : { ...rest, result: `Row not found`, meta: 'deps', type: 'Error' }
     }
-  }
+  },
+  display: ({ result }) => result.getValue()
 }

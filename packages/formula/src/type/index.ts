@@ -149,6 +149,7 @@ export interface FormulaTypeAttributes<
 > {
   type: Type
   dump: (result: Value, dumpF: (o: AnyTypeResult) => any) => Dump
+  display: (result: Value, displayF: (o: AnyTypeResult) => string) => string
   cast: (
     dump: Dump,
     ctx: ContextInterface,

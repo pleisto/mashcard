@@ -13,9 +13,14 @@ export type FormulaRecordType = BaseResult<
 
 export const FormulaRecordAttributes: FormulaTypeAttributes<typeof TypeName> = {
   type: TypeName,
-  dump: ({ result, meta, ...rest }, dumpF) => ({ ...rest, result: mapValues(result, a => dumpF(a)) }),
-  cast: ({ result, ...rest }, ctx, castF) => {
-    const record = mapValues(result, a => castF(a, ctx))
+  dump: ({ result, meta, ...rest }, f) => ({ ...rest, result: mapValues(result, a => f(a)) }),
+  cast: ({ result, ...rest }, ctx, f) => {
+    const record = mapValues(result, a => f(a, ctx))
     return { ...rest, result: record, meta: extractSubType(Object.values(record)) }
+  },
+  display: ({ result }, f) => {
+    const recordArray = Object.entries(result).map(([key, value]) => `${key}: ${f(value)}`)
+    const recordResult = recordArray.join(', ')
+    return `{${recordResult}}`
   }
 }

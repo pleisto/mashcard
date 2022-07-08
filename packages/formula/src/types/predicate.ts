@@ -15,5 +15,6 @@ export type FormulaPredicateType = BaseResult<
 export const FormulaPredicateAttributes: FormulaTypeAttributes<typeof TypeName> = {
   type: TypeName,
   dump: rest => ({ ...rest, result: 'Not supported' }),
-  cast: rest => ({ ...rest, result: 'Not supported', meta: 'runtime', type: 'Error' })
+  cast: rest => ({ ...rest, result: 'Not supported', meta: 'runtime', type: 'Error' }),
+  display: ({ result, meta }) => `[${meta.operator}] ${result}`
 }

@@ -123,3 +123,7 @@ export const cast = <T extends UsedFormulaType, Value extends AnyTypeResult<T>, 
   const result: any = FormulaAttributes[dump.type].cast(dump as any, ctx, cast)
   return result
 }
+
+export const display = <T extends UsedFormulaType, Value extends AnyTypeResult<T>>(v: Value): string => {
+  return FormulaAttributes[v.type].display(v as any, display)
+}

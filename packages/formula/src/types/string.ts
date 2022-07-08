@@ -7,5 +7,6 @@ export type FormulaStringType = BaseResult<typeof TypeName, string>
 export const FormulaStringAttributes: FormulaTypeAttributes<typeof TypeName> = {
   type: TypeName,
   dump: rest => rest,
-  cast: rest => rest
+  cast: rest => rest,
+  display: ({ result }) => result
 }

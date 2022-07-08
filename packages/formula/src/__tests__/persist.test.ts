@@ -14,7 +14,7 @@ import {
 import { dispatchFormulaBlockNameChange } from '../events'
 import { AnyDumpResult, AnyTypeResult, UsedFormulaType } from '../type'
 import { FormulaContext } from '../context/context'
-import { cast, dump } from '../context/persist'
+import { cast, dump, display } from '../context/persist'
 import { generateUUIDs, matchObject } from '../tests'
 import { BlockClass } from '../controls/block'
 
@@ -215,24 +215,41 @@ const testCases: {
     testCase: AnyTypeResult<P>
     dumpResult?: AnyDumpResult<P>
     matchTestCase?: AnyTypeResult<P | 'Error'>
+    displayResult: string | null
     snapshot?: true
     todoMessage?: string
   }>
 } = {
-  null: [{ testCase: { type: 'null', result: null }, dumpResult: { type: 'null', result: null } }],
-  boolean: [{ testCase: { type: 'boolean', result: true }, dumpResult: { type: 'boolean', result: true } }],
-  number: [{ testCase: { type: 'number', result: 1 }, dumpResult: { type: 'number', result: 1 } }],
+  null: [
+    { testCase: { type: 'null', result: null }, displayResult: 'null', dumpResult: { type: 'null', result: null } }
+  ],
+  boolean: [
+    {
+      testCase: { type: 'boolean', result: true },
+      displayResult: 'true',
+      dumpResult: { type: 'boolean', result: true }
+    }
+  ],
+  number: [{ testCase: { type: 'number', result: 1 }, displayResult: '1', dumpResult: { type: 'number', result: 1 } }],
   string: [
     {
       testCase: { type: 'string', result: '1', view: { type: '', attrs: {} } },
+      displayResult: '1',
       dumpResult: { type: 'string', result: '1', view: { type: '', attrs: {} } }
     }
   ],
-  literal: [{ testCase: { type: 'literal', result: '1' }, dumpResult: { type: 'literal', result: '1' } }],
+  literal: [
+    {
+      testCase: { type: 'literal', result: '1123' },
+      displayResult: '1123',
+      dumpResult: { type: 'literal', result: '1123' }
+    }
+  ],
   Cst: [
     {
       testCase: { type: 'Cst', result: { name: '', children: {} } },
       dumpResult: { result: 'Not supported', type: 'Cst' },
+      displayResult: '#<Cst>',
       matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
     }
   ],
@@ -240,6 +257,7 @@ const testCases: {
     {
       testCase: { type: 'Reference', result: { kind: 'self' } },
       dumpResult: { result: 'Not supported', type: 'Reference' },
+      displayResult: '#<Reference>',
       matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
     }
   ],
@@ -247,6 +265,7 @@ const testCases: {
     {
       testCase: { type: 'Function', result: [{ name: 'Set', args: [] }] },
       dumpResult: { result: 'Not supported', type: 'Function' },
+      displayResult: '#<Function>',
       matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
     }
   ],
@@ -254,6 +273,7 @@ const testCases: {
     {
       testCase: { type: 'Predicate', result: 123, meta: { operator: 'equal' } },
       dumpResult: { result: 'Not supported', type: 'Predicate' },
+      displayResult: '[equal] 123',
       matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
     }
   ],
@@ -261,6 +281,7 @@ const testCases: {
     {
       testCase: { type: 'Button', result: null as unknown as ButtonType },
       dumpResult: { result: 'Not supported', type: 'Button' },
+      displayResult: '#<Button>',
       matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
     }
   ],
@@ -268,82 +289,124 @@ const testCases: {
     {
       testCase: { type: 'Switch', result: null as unknown as SwitchType },
       dumpResult: { result: 'Not supported', type: 'Switch' },
+      displayResult: '#<Switch>',
       matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
     }
   ],
-  NoPersist: [{ testCase: { type: 'NoPersist', result: null }, dumpResult: { type: 'NoPersist', result: null } }],
-  Blank: [{ testCase: { type: 'Blank', result: 'Blank' }, dumpResult: { type: 'Blank', result: '#N/A' } }],
-  Pending: [{ testCase: { type: 'Pending', result: 'Pending' }, dumpResult: { type: 'Pending', result: 'Pending' } }],
-  Waiting: [{ testCase: { type: 'Waiting', result: 'Waiting' }, dumpResult: { type: 'Waiting', result: 'Waiting' } }],
+  NoPersist: [
+    {
+      testCase: { type: 'NoPersist', result: null },
+      displayResult: '#<NoPersist>',
+      dumpResult: { type: 'NoPersist', result: null }
+    }
+  ],
+  Blank: [
+    {
+      testCase: { type: 'Blank', result: 'Blank' },
+      displayResult: '#N/A',
+      dumpResult: { type: 'Blank', result: '#N/A' }
+    }
+  ],
+  Pending: [
+    {
+      testCase: { type: 'Pending', result: 'Pending' },
+      displayResult: '#<Pending>',
+      dumpResult: { type: 'Pending', result: 'Pending' }
+    }
+  ],
+  Waiting: [
+    {
+      testCase: { type: 'Waiting', result: 'Waiting' },
+      displayResult: '#<Waiting>',
+      dumpResult: { type: 'Waiting', result: 'Waiting' }
+    }
+  ],
   Date: [
-    { testCase: { type: 'Date', result: new Date() }, dumpResult: undefined },
+    { testCase: { type: 'Date', result: new Date() }, displayResult: null, dumpResult: undefined },
     {
       testCase: { type: 'Date', result: new Date('') },
       dumpResult: { type: 'Date', result: 'Invalid Date' },
+      displayResult: 'Invalid Date',
       snapshot: true
     },
     {
       testCase: { type: 'Date', result: new Date('foo bar') },
       dumpResult: { type: 'Date', result: 'Invalid Date' },
+      displayResult: 'Invalid Date',
       snapshot: true
     }
   ],
   Error: [
     {
       testCase: { type: 'Error', result: 'bang!', meta: 'runtime' },
+      displayResult: '#<Error> bang!',
       dumpResult: { type: 'Error', result: ['runtime', 'bang!'] }
     }
   ],
   Array: [
     {
       testCase: { type: 'Array', result: [{ type: 'number', result: 1 }], meta: 'number' },
+      displayResult: '[1]',
       dumpResult: { type: 'Array', result: [{ type: 'number', result: 1 }] }
     },
-    { testCase: { type: 'Array', result: [], meta: 'void' }, dumpResult: { type: 'Array', result: [] } }
+    {
+      testCase: { type: 'Array', result: [], meta: 'void' },
+      displayResult: '[]',
+      dumpResult: { type: 'Array', result: [] }
+    }
   ],
   Record: [
     {
       testCase: { type: 'Record', result: { foo: { type: 'number', result: 1 } }, meta: 'number' },
+      displayResult: '{foo: 1}',
       dumpResult: { type: 'Record', result: { foo: { type: 'number', result: 1 } } }
     },
     {
       testCase: { type: 'Record', result: {}, meta: 'void' },
+      displayResult: '{}',
       dumpResult: { type: 'Record', result: {} }
     }
   ],
   Block: [
     {
       testCase: { type: 'Block', result: formulaContext.findBlockById(namespaceId)! },
+      displayResult: 'Page1',
       dumpResult: { type: 'Block', result: namespaceId }
     },
     {
-      testCase: { type: 'Block', result: new BlockClass(formulaContext, { id: unknownNamespaceId, name: '' }) },
+      testCase: { type: 'Block', result: new BlockClass(formulaContext, { id: unknownNamespaceId, name: 'Page2' }) },
       dumpResult: { type: 'Block', result: unknownNamespaceId },
+      displayResult: 'Page2',
       matchTestCase: { result: `Block not found`, meta: 'deps', type: 'Error' }
     }
   ],
   Spreadsheet: [
     {
       testCase: { type: 'Spreadsheet', result: spreadsheet },
+      displayResult: 'MySpreadsheet',
       dumpResult: { type: 'Spreadsheet', result: [spreadsheet.namespaceId, spreadsheet.spreadsheetId] }
     }
   ],
   Column: columnTypes.map(c => ({
     testCase: { type: 'Column', result: c },
+    displayResult: `MySpreadsheet.${c.display()}`,
     dumpResult: { type: 'Column', result: [c.spreadsheetId, c.findKey] }
   })),
   Row: rowTypes.map(c => ({
     testCase: { type: 'Row', result: c },
+    displayResult: `Row[${c.rowIndex}]`,
     dumpResult: { type: 'Row', result: [c.spreadsheetId, c.findKey] }
   })),
   Cell: cellTypes.map(c => ({
     testCase: { type: 'Cell', result: c },
+    displayResult: c.getValue(),
     dumpResult: { type: 'Cell', result: [c.spreadsheetId, c.via, c._cell] }
   })),
   Range: [
     {
       testCase: { type: 'Range', result: null as unknown as RangeType },
       dumpResult: { result: 'Not supported', type: 'Range' },
+      displayResult: '#<Range>',
       matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
     }
   ]
@@ -357,7 +420,7 @@ describe('persist', () => {
   it.todo('RowClass and CellClass cast check.')
   it.todo('Date invalid')
 
-  it.each(input)('$jestTitle', async ({ jestTitle, testCase, dumpResult, snapshot, matchTestCase }) => {
+  it.each(input)('$jestTitle', async ({ testCase, dumpResult, snapshot, matchTestCase, displayResult }) => {
     const dumpedvalue = dump(testCase)
 
     if (dumpResult) {
@@ -377,6 +440,12 @@ describe('persist', () => {
     } else {
       // eslint-disable-next-line jest/no-conditional-expect
       expect(castedValue).toMatchObject(castedResult)
+    }
+
+    const displayValue = display(testCase)
+    if (displayResult !== null) {
+      // eslint-disable-next-line jest/no-conditional-expect
+      expect(displayValue).toEqual(displayResult)
     }
   })
 })

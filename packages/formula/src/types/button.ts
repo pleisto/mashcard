@@ -8,5 +8,6 @@ export type FormulaButtonType = BaseResult<typeof TypeName, ButtonType>
 export const FormulaButtonAttributes: FormulaTypeAttributes<typeof TypeName> = {
   type: TypeName,
   dump: rest => ({ ...rest, result: 'Not supported' }),
-  cast: rest => ({ ...rest, result: 'Not supported', meta: 'runtime', type: 'Error' })
+  cast: rest => ({ ...rest, result: 'Not supported', meta: 'runtime', type: 'Error' }),
+  display: () => '#<Button>'
 }
