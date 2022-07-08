@@ -12,5 +12,5 @@ export const FormulaArrayAttributes: FormulaTypeAttributes<typeof TypeName> = {
     const array = result.map(a => f(a, ctx))
     return { ...rest, result: array, meta: extractSubType(array) }
   },
-  display: ({ result }, f) => `[${result.map(v => f(v)).join('')}]`
+  display: ({ result, meta, ...rest }, f) => ({ ...rest, result: `[${result.map(v => f(v).result).join('')}]` })
 }

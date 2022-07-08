@@ -12,5 +12,5 @@ export const FormulaColumnAttributes: FormulaTypeAttributes<typeof TypeName> = {
     const column = ctx.findColumn(result[0], result[1])
     return column ? { ...rest, result: column } : { ...rest, result: `Column not found`, meta: 'deps', type: 'Error' }
   },
-  display: ({ result }) => `${result.spreadsheet.name()}.${result.display()}`
+  display: ({ result, ...rest }) => ({ ...rest, result: `${result.spreadsheet.name()}.${result.display()}` })
 }

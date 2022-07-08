@@ -8,5 +8,5 @@ export const FormulaWaitingAttributes: FormulaTypeAttributes<typeof TypeName> = 
   type: TypeName,
   dump: rest => rest,
   cast: rest => rest,
-  display: ({ result }) => `#<Waiting>`
+  display: rest => ({ ...rest, result: '#<Waiting>' })
 }

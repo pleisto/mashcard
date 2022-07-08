@@ -240,7 +240,20 @@ export const makeContext = async (options: MakeContextOptions): Promise<MakeCont
     return fetchUUIDSymbol(uuid, uuidState)!
   }
 
-  return { formulaContext, interpretContext, buildMeta, fetchUUID }
+  const parseDirectly: MakeContextResult['parseDirectly'] = args => {
+    const meta = buildMeta(args)
+    const ctx = { formulaContext, interpretContext, meta }
+    return parse(ctx)
+  }
+
+  const interpretDirectly: MakeContextResult['interpretDirectly'] = async args => {
+    const meta = buildMeta(args)
+    const ctx = { formulaContext, interpretContext, meta }
+    const parseResult = parse(ctx)
+    return await interpret({ ctx, parseResult })
+  }
+
+  return { formulaContext, interpretContext, buildMeta, fetchUUID, interpretDirectly, parseDirectly }
 }
 
 export const trackTodo = (it: jest.It, testCases: Array<{ todoMessage?: string; jestTitle: string }>): void => {

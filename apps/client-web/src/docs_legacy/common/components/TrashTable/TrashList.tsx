@@ -144,8 +144,26 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
 
   const showSpin = listLoading || actionLoading
 
+  const head = (
+    <Item type="title" key="title">
+      <Page>
+        <SelectBlock />
+        {t('trash.pages')}
+      </Page>
+      <Time>{t('trash.deleted_at')}</Time>
+      <Action>
+        <Card />
+      </Action>
+    </Item>
+  )
+
   if (!showSpin && !data?.trashBlocks?.length) {
-    return <NotFound>{t('trash.not_found')}</NotFound>
+    return (
+      <>
+        {head}
+        <NotFound>{t('trash.not_found')}</NotFound>
+      </>
+    )
   }
 
   const onChange = (index: number) => (checked: boolean) => {
@@ -166,16 +184,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
 
   return (
     <>
-      <Item type="title" key="title">
-        <Page>
-          <SelectBlock />
-          {t('trash.pages')}
-        </Page>
-        <Time>{t('trash.deleted_at')}</Time>
-        <Action>
-          <Card />
-        </Action>
-      </Item>
+      {head}
       <List>
         {showSpin && <Spin size="lg" className="trash-spin" />}
         {list.map((item: BlockWithChecked, index: number) => (

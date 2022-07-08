@@ -1,6 +1,886 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FormulaDisplay renders constant kind correctly 1`] = `
+exports[`FormulaDisplay [Block] basic "=BasicPage" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-egaYnV mc-c-egaYnV-hnkVPb-selected-false mc-c-kkMlKx"
+    >
+      <span
+        class="mashcard-formula-normal-icon"
+      >
+        <span
+          aria-label="function"
+          class="mc-icon mc-icon-function"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M4.02403 10.3944L2.0364 21H4.624L6.59951 10.3944H9.31412L9.69052 8.38797H6.96947L7.12697 7.40645L7.12713 7.40538C7.23453 6.7119 7.50783 6.17081 7.93972 5.76834C8.37395 5.36367 8.94124 5.15442 9.65936 5.15372C10.0443 5.16855 10.4251 5.21256 10.8021 5.28574L10.9984 5.32386L11.3253 3.23326L11.1433 3.1963C10.5072 3.0671 9.97256 3.00057 9.54287 3.00046C8.18911 2.98518 7.05862 3.35024 6.16862 4.10855C5.32054 4.83566 4.79246 5.83973 4.57597 7.10453L4.3823 8.38797H2.3764L2 10.3944H4.02403ZM6.93603 7.3751L6.74212 8.58362L6.93603 7.3751C6.93603 7.3751 6.93603 7.3751 6.93603 7.3751ZM9.45693 8.58362L9.15394 10.1987H6.43912L4.46361 20.8043L6.43912 10.1987H9.15393L9.45693 8.58362ZM9.07574 5.00716C8.57832 5.09502 8.15596 5.30078 7.80865 5.62444C7.42697 5.98013 7.16321 6.43322 7.01736 6.98371C7.16321 6.43322 7.42697 5.98014 7.80865 5.62444C8.15596 5.30078 8.57832 5.09502 9.07574 5.00716ZM11.3543 21L14.9165 16.6028L17.0071 21H19.8385L16.5498 14.7544L22 8.38797H18.7938L15.3685 12.6658L13.4228 8.38797H10.5782L13.7687 14.4972L8.15881 21H11.3543Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="mashcard-formula-normal-display"
+      >
+        BasicPage
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [Block] basic "=BasicPage" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(53, 108, 249);"
+    >
+      BasicPage
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [Date] basic "=DATE("1926-08-17")" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-hLAbsV mc-c-hLAbsV-hjvNAz-selected-false mc-c-kkMlKx"
+    >
+      <span
+        class="mashcard-formula-normal-icon"
+      >
+        <span
+          aria-label="calendar"
+          class="mc-icon mc-icon-calendar"
+          role="img"
+        >
+          <svg
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M24 0H0v24h24V0z"
+              fill="currentColor"
+              fill-opacity=".01"
+            />
+            <path
+              d="M2.5 9.5h19V20a1 1 0 0 1-1 1h-17a1 1 0 0 1-1-1V9.5zm0-5a1 1 0 0 1 1-1h17a1 1 0 0 1 1 1v5h-19v-5z"
+              stroke="currentColor"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+            <path
+              d="M8 2v4m8-4v4m-2 11h3M7 17h3m4-4h3M7 13h3"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="mashcard-formula-normal-display"
+      >
+        1926-08-17T00:00:00.000Z
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [Date] basic "=DATE("1926-08-17")" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(57, 179, 232);"
+    >
+      1926-08-17T00:00:00.000Z
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [Divide by zero error] basic "=1/0" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-fjgWBd mc-c-fjgWBd-dRQWqj-selected-false mc-c-eszAuu"
+    >
+      <span
+        aria-label="formula"
+        class="mc-icon mc-icon-formula mashcard-formula-error-icon"
+        role="img"
+      >
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M20 4.5 18.5 3H4l9 9-9 9h14.5l1.5-1.5"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [Divide by zero error] basic "=1/0" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(207, 31, 40);"
+    >
+      #&lt;Error&gt; Division by zero
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [Empty] basic "=" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-fjgWBd mc-c-fjgWBd-dRQWqj-selected-false mc-c-eszAuu"
+    >
+      <span
+        aria-label="formula"
+        class="mc-icon mc-icon-formula mashcard-formula-error-icon"
+        role="img"
+      >
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M20 4.5 18.5 3H4l9 9-9 9h14.5l1.5-1.5"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [Empty] basic "=" 2`] = `
+<div>
+  <span>
+    <span>
+      =
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [Spreadsheet] basic "=BasicPage.spreadsheet" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-egaYnV mc-c-egaYnV-hnkVPb-selected-false mc-c-kkMlKx"
+    >
+      <span
+        class="mashcard-formula-normal-icon"
+      >
+        <span
+          aria-label="table"
+          class="mc-icon mc-icon-table"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              d="M21 3H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z"
+              stroke="currentColor"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+            <path
+              d="M2 9h20M8.75 9v12m6.5-12v12M2 15h20m0-11v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="mashcard-formula-normal-display"
+      >
+        spreadsheet
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [Spreadsheet] basic "=BasicPage.spreadsheet" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(53, 108, 249);"
+    >
+      spreadsheet
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [Variable] basic "=BasicPage.bar" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-hLAbsV mc-c-hLAbsV-hjvNAz-selected-false mc-c-kkMlKx"
+    >
+      <span
+        class="mashcard-formula-normal-icon"
+      >
+        <span
+          aria-label="number"
+          class="mc-icon mc-icon-number"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M2.907 3.69231H4.5V14.3077H2.34097V7.09807C1.96589 7.36062 1.54956 7.56795 1.09712 7.72243L0.5 7.92631V5.31836L0.854286 5.21331C1.16032 5.12257 1.48936 4.96024 1.86587 4.71296C2.24221 4.43934 2.53851 4.16576 2.7681 3.87078L2.907 3.69231ZM11.9194 8.23086C12.2682 7.815 12.4286 7.39725 12.4286 6.96954C12.4286 6.51536 12.312 6.25325 12.1488 6.09677C11.9764 5.9315 11.6774 5.81182 11.2041 5.81182C10.7383 5.81182 10.4468 5.96819 10.2511 6.24634L10.2465 6.25286L10.2417 6.25919C10.019 6.55271 9.87651 7.01534 9.8526 7.74631L9.83854 8.17624H7.62228L7.62763 7.7254C7.64128 6.57324 7.95749 5.60478 8.61168 4.86633C9.28606 4.06524 10.1924 3.69231 11.2547 3.69231C12.198 3.69231 13.0289 3.97248 13.6796 4.59624L13.6832 4.59968C14.3179 5.22235 14.6412 6.02381 14.6412 6.9829C14.6412 7.9389 14.2864 8.78971 13.6458 9.53868L13.6361 9.54991C13.2487 9.97303 12.5963 10.5022 11.6939 11.1455L11.6906 11.1479C11.2164 11.4791 10.8501 11.7823 10.5841 12.0567C10.5585 12.0832 10.5339 12.1092 10.5105 12.1347H14.6538V14.3077H7.57692V13.8624C7.57692 12.8085 7.90401 11.8762 8.57902 11.0733C8.95092 10.6079 9.67863 10.0048 10.6959 9.26301C11.2968 8.81414 11.6959 8.4768 11.9194 8.23086ZM20.0673 5.60897C20.5536 5.60897 20.8731 5.72177 21.0657 5.90808C21.2401 6.08739 21.353 6.35379 21.353 6.76165C21.353 7.16535 21.2306 7.44072 21.0367 7.62053C20.8397 7.80316 20.5126 7.92774 20.0049 7.92774H19.0562V9.69697H20.0174C20.5674 9.69697 20.9323 9.82406 21.1531 10.0216L21.1627 10.0296C21.3896 10.217 21.5278 10.5196 21.5278 11.0105C21.5278 11.3981 21.4024 11.7014 21.1614 11.962C20.8778 12.2427 20.4965 12.4044 19.9924 12.4044C19.531 12.4044 19.1874 12.2648 18.931 12.0107L18.9236 12.0038C18.6309 11.7315 18.4667 11.3334 18.4443 10.7553L18.4318 10.4341H16.4231L16.4482 10.7943C16.5279 11.9346 16.9046 12.8448 17.6072 13.4786C18.2257 14.037 19.0393 14.3077 20.0049 14.3077C21.0162 14.3077 21.8796 13.992 22.5447 13.3671L22.5521 13.3598C23.1807 12.7298 23.5 11.9154 23.5 10.9435C23.5 10.3153 23.3317 9.76332 22.9744 9.33C22.7922 9.09967 22.5672 8.90447 22.3034 8.74431C22.5354 8.5864 22.7329 8.39537 22.8912 8.1694C23.1853 7.74961 23.3252 7.23641 23.3252 6.65443C23.3252 5.74588 23.0154 5.0049 22.4141 4.46687L22.4086 4.46212C21.7897 3.93356 21.0033 3.69231 20.0548 3.69231C19.1237 3.69231 18.3326 3.96491 17.7142 4.56655C17.0569 5.16914 16.7037 5.99292 16.6232 7.01491L16.5946 7.3782H18.5548L18.5806 7.07346C18.6255 6.54366 18.7893 6.18779 19.0174 5.96321C19.2424 5.74178 19.5819 5.60897 20.0673 5.60897Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M1 19H23V21H1V19Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="mashcard-formula-normal-display"
+      >
+        24
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [Variable] basic "=BasicPage.bar" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(57, 179, 232);"
+    >
+      24
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [async 1] basic "=SLEEP(123)" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-kEPOnE mc-c-kEPOnE-dMVoQm-selected-false mc-c-iKUZQK"
+    >
+      <span
+        aria-label="formula"
+        class="mc-icon mc-icon-formula mashcard-formula-pending-icon"
+        role="img"
+      >
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M20 4.5 18.5 3H4l9 9-9 9h14.5l1.5-1.5"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [async 1] basic "=SLEEP(123)" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(144, 139, 156);"
+    >
+      #&lt;Pending&gt;
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [async 2] basic "=BasicPage.lazy" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-kEPOnE mc-c-kEPOnE-dMVoQm-selected-false mc-c-iKUZQK"
+    >
+      <span
+        aria-label="formula"
+        class="mc-icon mc-icon-formula mashcard-formula-pending-icon"
+        role="img"
+      >
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M20 4.5 18.5 3H4l9 9-9 9h14.5l1.5-1.5"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [async 2] basic "=BasicPage.lazy" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(144, 139, 156);"
+    >
+      #&lt;Pending&gt;
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [cell] basic "=BasicPage.spreadsheet.first.1" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-jaffJo mc-c-jaffJo-lbdglW-selected-false mc-c-kkMlKx"
+    >
+      <span
+        class="mashcard-formula-normal-icon"
+      >
+        <span
+          aria-label="cell"
+          class="mc-icon mc-icon-cell"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M1 4C1 2.89543 1.89543 2 3 2H21C22.1046 2 23 2.89543 23 4V9C23 10.1046 22.1046 11 21 11H3C1.89543 11 1 10.1046 1 9V4ZM21 4H3V9H21V4Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M1 15C1 13.8954 1.89543 13 3 13H21C22.1046 13 23 13.8954 23 15V20C23 21.1046 22.1046 22 21 22H3C1.89543 22 1 21.1046 1 20V15ZM21 15H3V20H21V15Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="mashcard-formula-normal-display"
+      >
+        1
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [cell] basic "=BasicPage.spreadsheet.first.1" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(207, 31, 40);"
+    >
+      #&lt;Error&gt; Circular dependency found
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [column1] basic "=BasicPage.spreadsheet.first" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-egaYnV mc-c-egaYnV-hnkVPb-selected-false mc-c-kkMlKx"
+    >
+      <span
+        class="mashcard-formula-normal-icon"
+      >
+        <span
+          aria-label="column"
+          class="mc-icon mc-icon-column"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M1 4C1 2.89543 1.89543 2 3 2H21C22.1046 2 23 2.89543 23 4V20C23 21.1046 22.1046 22 21 22H3C1.89543 22 1 21.1046 1 20V4ZM21 4H3V20H21V4Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M8 9C8 8.44772 8.30526 8 8.68182 8H22.3182C22.6947 8 23 8.44772 23 9C23 9.55228 22.6947 10 22.3182 10H8.68182C8.30526 10 8 9.55228 8 9Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M8 15C8 14.4477 8.30526 14 8.68182 14H22.3182C22.6947 14 23 14.4477 23 15C23 15.5523 22.6947 16 22.3182 16H8.68182C8.30526 16 8 15.5523 8 15Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M9 3C9.55228 3 10 3.60761 10 4.35714V20.6429C10 21.3924 9.55228 22 9 22C8.44772 22 8 21.3924 8 20.6429V4.35714C8 3.60761 8.44772 3 9 3Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M2 3C2.55228 3 3 3.44772 3 4V20H21V4C21 3.44772 21.4477 3 22 3C22.5523 3 23 3.44772 23 4V20C23 21.1046 22.1046 22 21 22H3C1.89543 22 1 21.1046 1 20V4C1 3.44772 1.44772 3 2 3Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="mashcard-formula-normal-display"
+      >
+        spreadsheet.first
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [column1] basic "=BasicPage.spreadsheet.first" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(53, 108, 249);"
+    >
+      spreadsheet.first
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [column2] basic "=BasicPage.spreadsheet.A" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-hbUPka mc-c-hbUPka-ljRRNs-selected-false mc-c-kkMlKx"
+    >
+      <span
+        class="mashcard-formula-normal-icon"
+      >
+        <span
+          aria-label="column"
+          class="mc-icon mc-icon-column"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M1 4C1 2.89543 1.89543 2 3 2H21C22.1046 2 23 2.89543 23 4V20C23 21.1046 22.1046 22 21 22H3C1.89543 22 1 21.1046 1 20V4ZM21 4H3V20H21V4Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M8 9C8 8.44772 8.30526 8 8.68182 8H22.3182C22.6947 8 23 8.44772 23 9C23 9.55228 22.6947 10 22.3182 10H8.68182C8.30526 10 8 9.55228 8 9Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M8 15C8 14.4477 8.30526 14 8.68182 14H22.3182C22.6947 14 23 14.4477 23 15C23 15.5523 22.6947 16 22.3182 16H8.68182C8.30526 16 8 15.5523 8 15Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M9 3C9.55228 3 10 3.60761 10 4.35714V20.6429C10 21.3924 9.55228 22 9 22C8.44772 22 8 21.3924 8 20.6429V4.35714C8 3.60761 8.44772 3 9 3Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M2 3C2.55228 3 3 3.44772 3 4V20H21V4C21 3.44772 21.4477 3 22 3C22.5523 3 23 3.44772 23 4V20C23 21.1046 22.1046 22 21 22H3C1.89543 22 1 21.1046 1 20V4C1 3.44772 1.44772 3 2 3Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="mashcard-formula-normal-display"
+      >
+        spreadsheet.A
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [column2] basic "=BasicPage.spreadsheet.A" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(44, 173, 148);"
+    >
+      spreadsheet.A
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [literal string] basic "literal" 1`] = `
+<div>
+  <span>
+    <span>
+      literal
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [literal string] basic "literal" 2`] = `
+<div>
+  <span>
+    <span>
+      literal
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [parse error 1] basic "=1 ++ 1" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-fjgWBd mc-c-fjgWBd-dRQWqj-selected-false mc-c-eszAuu"
+    >
+      <span
+        aria-label="formula"
+        class="mc-icon mc-icon-formula mashcard-formula-error-icon"
+        role="img"
+      >
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M20 4.5 18.5 3H4l9 9-9 9h14.5l1.5-1.5"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [parse error 1] basic "=1 ++ 1" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(207, 31, 40);"
+    >
+      #&lt;Error&gt; Missing expression
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [partial error 1] basic "=1 +" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-fjgWBd mc-c-fjgWBd-dRQWqj-selected-false mc-c-eszAuu"
+    >
+      <span
+        aria-label="formula"
+        class="mc-icon mc-icon-formula mashcard-formula-error-icon"
+        role="img"
+      >
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M20 4.5 18.5 3H4l9 9-9 9h14.5l1.5-1.5"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [partial error 1] basic "=1 +" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(207, 31, 40);"
+    >
+      #&lt;Error&gt; Missing expression
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [partial error 2] basic "=custom::ADD(1)" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-fjgWBd mc-c-fjgWBd-dRQWqj-selected-false mc-c-eszAuu"
+    >
+      <span
+        aria-label="formula"
+        class="mc-icon mc-icon-formula mashcard-formula-error-icon"
+        role="img"
+      >
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M20 4.5 18.5 3H4l9 9-9 9h14.5l1.5-1.5"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [partial error 2] basic "=custom::ADD(1)" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(207, 31, 40);"
+    >
+      #&lt;Error&gt; Function custom::ADD not found
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [row] basic "=BasicPage.spreadsheet.1" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-hLAbsV mc-c-hLAbsV-hjvNAz-selected-false mc-c-kkMlKx"
+    >
+      <span
+        class="mashcard-formula-normal-icon"
+      >
+        <span
+          aria-label="row"
+          class="mc-icon mc-icon-row"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M1 4C1 2.89543 1.89543 2 3 2H21C22.1046 2 23 2.89543 23 4V20C23 21.1046 22.1046 22 21 22H3C1.89543 22 1 21.1046 1 20V4ZM21 4H3V20H21V4Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M2 9C2 8.44772 2.42736 8 2.95455 8H22.0455C22.5726 8 23 8.44772 23 9C23 9.55228 22.5726 10 22.0455 10H2.95455C2.42736 10 2 9.55228 2 9Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M2 15C2 14.4477 2.42736 14 2.95455 14H22.0455C22.5726 14 23 14.4477 23 15C23 15.5523 22.5726 16 22.0455 16H2.95455C2.42736 16 2 15.5523 2 15Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M2 3C2.55228 3 3 3.44772 3 4V20H21V4C21 3.44772 21.4477 3 22 3C22.5523 3 23 3.44772 23 4V20C23 21.1046 22.1046 22 21 22H3C1.89543 22 1 21.1046 1 20V4C1 3.44772 1.44772 3 2 3Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="mashcard-formula-normal-display"
+      >
+        Row[0]
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay [row] basic "=BasicPage.spreadsheet.1" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(57, 179, 232);"
+    >
+      Row[0]
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay basic "=   1 + 1 + 1   " 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-hLAbsV mc-c-hLAbsV-hjvNAz-selected-false mc-c-kkMlKx"
+    >
+      <span
+        class="mashcard-formula-normal-icon"
+      >
+        <span
+          aria-label="number"
+          class="mc-icon mc-icon-number"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M2.907 3.69231H4.5V14.3077H2.34097V7.09807C1.96589 7.36062 1.54956 7.56795 1.09712 7.72243L0.5 7.92631V5.31836L0.854286 5.21331C1.16032 5.12257 1.48936 4.96024 1.86587 4.71296C2.24221 4.43934 2.53851 4.16576 2.7681 3.87078L2.907 3.69231ZM11.9194 8.23086C12.2682 7.815 12.4286 7.39725 12.4286 6.96954C12.4286 6.51536 12.312 6.25325 12.1488 6.09677C11.9764 5.9315 11.6774 5.81182 11.2041 5.81182C10.7383 5.81182 10.4468 5.96819 10.2511 6.24634L10.2465 6.25286L10.2417 6.25919C10.019 6.55271 9.87651 7.01534 9.8526 7.74631L9.83854 8.17624H7.62228L7.62763 7.7254C7.64128 6.57324 7.95749 5.60478 8.61168 4.86633C9.28606 4.06524 10.1924 3.69231 11.2547 3.69231C12.198 3.69231 13.0289 3.97248 13.6796 4.59624L13.6832 4.59968C14.3179 5.22235 14.6412 6.02381 14.6412 6.9829C14.6412 7.9389 14.2864 8.78971 13.6458 9.53868L13.6361 9.54991C13.2487 9.97303 12.5963 10.5022 11.6939 11.1455L11.6906 11.1479C11.2164 11.4791 10.8501 11.7823 10.5841 12.0567C10.5585 12.0832 10.5339 12.1092 10.5105 12.1347H14.6538V14.3077H7.57692V13.8624C7.57692 12.8085 7.90401 11.8762 8.57902 11.0733C8.95092 10.6079 9.67863 10.0048 10.6959 9.26301C11.2968 8.81414 11.6959 8.4768 11.9194 8.23086ZM20.0673 5.60897C20.5536 5.60897 20.8731 5.72177 21.0657 5.90808C21.2401 6.08739 21.353 6.35379 21.353 6.76165C21.353 7.16535 21.2306 7.44072 21.0367 7.62053C20.8397 7.80316 20.5126 7.92774 20.0049 7.92774H19.0562V9.69697H20.0174C20.5674 9.69697 20.9323 9.82406 21.1531 10.0216L21.1627 10.0296C21.3896 10.217 21.5278 10.5196 21.5278 11.0105C21.5278 11.3981 21.4024 11.7014 21.1614 11.962C20.8778 12.2427 20.4965 12.4044 19.9924 12.4044C19.531 12.4044 19.1874 12.2648 18.931 12.0107L18.9236 12.0038C18.6309 11.7315 18.4667 11.3334 18.4443 10.7553L18.4318 10.4341H16.4231L16.4482 10.7943C16.5279 11.9346 16.9046 12.8448 17.6072 13.4786C18.2257 14.037 19.0393 14.3077 20.0049 14.3077C21.0162 14.3077 21.8796 13.992 22.5447 13.3671L22.5521 13.3598C23.1807 12.7298 23.5 11.9154 23.5 10.9435C23.5 10.3153 23.3317 9.76332 22.9744 9.33C22.7922 9.09967 22.5672 8.90447 22.3034 8.74431C22.5354 8.5864 22.7329 8.39537 22.8912 8.1694C23.1853 7.74961 23.3252 7.23641 23.3252 6.65443C23.3252 5.74588 23.0154 5.0049 22.4141 4.46687L22.4086 4.46212C21.7897 3.93356 21.0033 3.69231 20.0548 3.69231C19.1237 3.69231 18.3326 3.96491 17.7142 4.56655C17.0569 5.16914 16.7037 5.99292 16.6232 7.01491L16.5946 7.3782H18.5548L18.5806 7.07346C18.6255 6.54366 18.7893 6.18779 19.0174 5.96321C19.2424 5.74178 19.5819 5.60897 20.0673 5.60897Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M1 19H23V21H1V19Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="mashcard-formula-normal-display"
+      >
+        3
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay basic "=   1 + 1 + 1   " 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(57, 179, 232);"
+    >
+      3
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay basic "="string" & "fasd"" 1`] = `
 <div>
   <span>
     <span
@@ -44,18 +924,329 @@ exports[`FormulaDisplay renders constant kind correctly 1`] = `
       <span
         class="mashcard-formula-normal-display"
       >
-        string
+        stringfasd
       </span>
     </span>
   </span>
 </div>
 `;
 
-exports[`FormulaDisplay renders literal kind correctly 1`] = `
+exports[`FormulaDisplay basic "="string" & "fasd"" 2`] = `
 <div>
   <span>
-    <span>
-      string
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(216, 27, 96);"
+    >
+      stringfasd
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay basic "=[]" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-fiGCnR mc-c-fiGCnR-jZtCwb-selected-false mc-c-kkMlKx"
+    >
+      <span
+        class="mashcard-formula-normal-icon"
+      >
+        <span
+          aria-label="function"
+          class="mc-icon mc-icon-function"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M4.02403 10.3944L2.0364 21H4.624L6.59951 10.3944H9.31412L9.69052 8.38797H6.96947L7.12697 7.40645L7.12713 7.40538C7.23453 6.7119 7.50783 6.17081 7.93972 5.76834C8.37395 5.36367 8.94124 5.15442 9.65936 5.15372C10.0443 5.16855 10.4251 5.21256 10.8021 5.28574L10.9984 5.32386L11.3253 3.23326L11.1433 3.1963C10.5072 3.0671 9.97256 3.00057 9.54287 3.00046C8.18911 2.98518 7.05862 3.35024 6.16862 4.10855C5.32054 4.83566 4.79246 5.83973 4.57597 7.10453L4.3823 8.38797H2.3764L2 10.3944H4.02403ZM6.93603 7.3751L6.74212 8.58362L6.93603 7.3751C6.93603 7.3751 6.93603 7.3751 6.93603 7.3751ZM9.45693 8.58362L9.15394 10.1987H6.43912L4.46361 20.8043L6.43912 10.1987H9.15393L9.45693 8.58362ZM9.07574 5.00716C8.57832 5.09502 8.15596 5.30078 7.80865 5.62444C7.42697 5.98013 7.16321 6.43322 7.01736 6.98371C7.16321 6.43322 7.42697 5.98014 7.80865 5.62444C8.15596 5.30078 8.57832 5.09502 9.07574 5.00716ZM11.3543 21L14.9165 16.6028L17.0071 21H19.8385L16.5498 14.7544L22 8.38797H18.7938L15.3685 12.6658L13.4228 8.38797H10.5782L13.7687 14.4972L8.15881 21H11.3543Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="mashcard-formula-normal-display"
+      >
+        []
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay basic "=[]" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(230, 99, 0);"
+    >
+      []
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay basic "=[1,"1",false]" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-fiGCnR mc-c-fiGCnR-jZtCwb-selected-false mc-c-kkMlKx"
+    >
+      <span
+        class="mashcard-formula-normal-icon"
+      >
+        <span
+          aria-label="function"
+          class="mc-icon mc-icon-function"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M4.02403 10.3944L2.0364 21H4.624L6.59951 10.3944H9.31412L9.69052 8.38797H6.96947L7.12697 7.40645L7.12713 7.40538C7.23453 6.7119 7.50783 6.17081 7.93972 5.76834C8.37395 5.36367 8.94124 5.15442 9.65936 5.15372C10.0443 5.16855 10.4251 5.21256 10.8021 5.28574L10.9984 5.32386L11.3253 3.23326L11.1433 3.1963C10.5072 3.0671 9.97256 3.00057 9.54287 3.00046C8.18911 2.98518 7.05862 3.35024 6.16862 4.10855C5.32054 4.83566 4.79246 5.83973 4.57597 7.10453L4.3823 8.38797H2.3764L2 10.3944H4.02403ZM6.93603 7.3751L6.74212 8.58362L6.93603 7.3751C6.93603 7.3751 6.93603 7.3751 6.93603 7.3751ZM9.45693 8.58362L9.15394 10.1987H6.43912L4.46361 20.8043L6.43912 10.1987H9.15393L9.45693 8.58362ZM9.07574 5.00716C8.57832 5.09502 8.15596 5.30078 7.80865 5.62444C7.42697 5.98013 7.16321 6.43322 7.01736 6.98371C7.16321 6.43322 7.42697 5.98014 7.80865 5.62444C8.15596 5.30078 8.57832 5.09502 9.07574 5.00716ZM11.3543 21L14.9165 16.6028L17.0071 21H19.8385L16.5498 14.7544L22 8.38797H18.7938L15.3685 12.6658L13.4228 8.38797H10.5782L13.7687 14.4972L8.15881 21H11.3543Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="mashcard-formula-normal-display"
+      >
+        [11false]
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay basic "=[1,"1",false]" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(230, 99, 0);"
+    >
+      [11false]
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay basic "={}" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-fiGCnR mc-c-fiGCnR-jZtCwb-selected-false mc-c-kkMlKx"
+    >
+      <span
+        class="mashcard-formula-normal-icon"
+      >
+        <span
+          aria-label="copy"
+          class="mc-icon mc-icon-copy"
+          role="img"
+        >
+          <svg
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M8 3.406C8 3.182 8.182 3 8.406 3h12.188c.224 0 .406.182.406.406v12.188a.406.406 0 0 1-.406.406H19V7.406A2.406 2.406 0 0 0 16.594 5H8V3.406zM6 5V3.406A2.406 2.406 0 0 1 8.406 1h12.188A2.406 2.406 0 0 1 23 3.406v12.188A2.406 2.406 0 0 1 20.594 18H19v1.594A2.406 2.406 0 0 1 16.594 22H4.406A2.406 2.406 0 0 1 2 19.594V7.406A2.406 2.406 0 0 1 4.406 5H6zM4 7.406C4 7.182 4.182 7 4.406 7h12.188c.224 0 .406.182.406.406v12.188a.406.406 0 0 1-.406.406H4.406A.406.406 0 0 1 4 19.594V7.406z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="mashcard-formula-normal-display"
+      >
+        {}
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay basic "={}" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(230, 99, 0);"
+    >
+      {}
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay basic "={a: 1,b: false, c: "string", d: [1]}" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-fiGCnR mc-c-fiGCnR-jZtCwb-selected-false mc-c-kkMlKx"
+    >
+      <span
+        class="mashcard-formula-normal-icon"
+      >
+        <span
+          aria-label="copy"
+          class="mc-icon mc-icon-copy"
+          role="img"
+        >
+          <svg
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M8 3.406C8 3.182 8.182 3 8.406 3h12.188c.224 0 .406.182.406.406v12.188a.406.406 0 0 1-.406.406H19V7.406A2.406 2.406 0 0 0 16.594 5H8V3.406zM6 5V3.406A2.406 2.406 0 0 1 8.406 1h12.188A2.406 2.406 0 0 1 23 3.406v12.188A2.406 2.406 0 0 1 20.594 18H19v1.594A2.406 2.406 0 0 1 16.594 22H4.406A2.406 2.406 0 0 1 2 19.594V7.406A2.406 2.406 0 0 1 4.406 5H6zM4 7.406C4 7.182 4.182 7 4.406 7h12.188c.224 0 .406.182.406.406v12.188a.406.406 0 0 1-.406.406H4.406A.406.406 0 0 1 4 19.594V7.406z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="mashcard-formula-normal-display"
+      >
+        {a: 1, b: false, c: string, d: [1]}
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay basic "={a: 1,b: false, c: "string", d: [1]}" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(230, 99, 0);"
+    >
+      {a: 1, b: false, c: string, d: [1]}
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay basic "=null" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-jaffJo mc-c-jaffJo-lbdglW-selected-false mc-c-kkMlKx"
+    >
+      <span
+        class="mashcard-formula-normal-icon"
+      >
+        <span
+          aria-label="function"
+          class="mc-icon mc-icon-function"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M4.02403 10.3944L2.0364 21H4.624L6.59951 10.3944H9.31412L9.69052 8.38797H6.96947L7.12697 7.40645L7.12713 7.40538C7.23453 6.7119 7.50783 6.17081 7.93972 5.76834C8.37395 5.36367 8.94124 5.15442 9.65936 5.15372C10.0443 5.16855 10.4251 5.21256 10.8021 5.28574L10.9984 5.32386L11.3253 3.23326L11.1433 3.1963C10.5072 3.0671 9.97256 3.00057 9.54287 3.00046C8.18911 2.98518 7.05862 3.35024 6.16862 4.10855C5.32054 4.83566 4.79246 5.83973 4.57597 7.10453L4.3823 8.38797H2.3764L2 10.3944H4.02403ZM6.93603 7.3751L6.74212 8.58362L6.93603 7.3751C6.93603 7.3751 6.93603 7.3751 6.93603 7.3751ZM9.45693 8.58362L9.15394 10.1987H6.43912L4.46361 20.8043L6.43912 10.1987H9.15393L9.45693 8.58362ZM9.07574 5.00716C8.57832 5.09502 8.15596 5.30078 7.80865 5.62444C7.42697 5.98013 7.16321 6.43322 7.01736 6.98371C7.16321 6.43322 7.42697 5.98014 7.80865 5.62444C8.15596 5.30078 8.57832 5.09502 9.07574 5.00716ZM11.3543 21L14.9165 16.6028L17.0071 21H19.8385L16.5498 14.7544L22 8.38797H18.7938L15.3685 12.6658L13.4228 8.38797H10.5782L13.7687 14.4972L8.15881 21H11.3543Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="mashcard-formula-normal-display"
+      >
+        null
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay basic "=null" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(109, 71, 185);"
+    >
+      null
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay basic "=true && false" 1`] = `
+<div>
+  <span>
+    <span
+      class="mc-c-fjgWBd mc-c-fjgWBd-dRQWqj-selected-false mc-c-kkMlKx"
+    >
+      <span
+        class="mashcard-formula-normal-icon"
+      >
+        <span
+          aria-label="function"
+          class="mc-icon mc-icon-function"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M4.02403 10.3944L2.0364 21H4.624L6.59951 10.3944H9.31412L9.69052 8.38797H6.96947L7.12697 7.40645L7.12713 7.40538C7.23453 6.7119 7.50783 6.17081 7.93972 5.76834C8.37395 5.36367 8.94124 5.15442 9.65936 5.15372C10.0443 5.16855 10.4251 5.21256 10.8021 5.28574L10.9984 5.32386L11.3253 3.23326L11.1433 3.1963C10.5072 3.0671 9.97256 3.00057 9.54287 3.00046C8.18911 2.98518 7.05862 3.35024 6.16862 4.10855C5.32054 4.83566 4.79246 5.83973 4.57597 7.10453L4.3823 8.38797H2.3764L2 10.3944H4.02403ZM6.93603 7.3751L6.74212 8.58362L6.93603 7.3751C6.93603 7.3751 6.93603 7.3751 6.93603 7.3751ZM9.45693 8.58362L9.15394 10.1987H6.43912L4.46361 20.8043L6.43912 10.1987H9.15393L9.45693 8.58362ZM9.07574 5.00716C8.57832 5.09502 8.15596 5.30078 7.80865 5.62444C7.42697 5.98013 7.16321 6.43322 7.01736 6.98371C7.16321 6.43322 7.42697 5.98014 7.80865 5.62444C8.15596 5.30078 8.57832 5.09502 9.07574 5.00716ZM11.3543 21L14.9165 16.6028L17.0071 21H19.8385L16.5498 14.7544L22 8.38797H18.7938L15.3685 12.6658L13.4228 8.38797H10.5782L13.7687 14.4972L8.15881 21H11.3543Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        class="mashcard-formula-normal-display"
+      >
+        ✗
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`FormulaDisplay basic "=true && false" 2`] = `
+<div>
+  <span>
+    <span
+      class="mashcard-formula-borderless"
+      style="color: rgb(207, 31, 40);"
+    >
+      false
     </span>
   </span>
 </div>

@@ -8,5 +8,5 @@ export const FormulaPendingAttributes: FormulaTypeAttributes<typeof TypeName> = 
   type: TypeName,
   dump: rest => rest,
   cast: rest => rest,
-  display: ({ result }) => `#<Pending>`
+  display: rest => ({ ...rest, result: '#<Pending>' })
 }

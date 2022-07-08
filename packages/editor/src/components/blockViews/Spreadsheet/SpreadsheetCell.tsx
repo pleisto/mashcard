@@ -79,7 +79,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     async (variable: VariableInterface | undefined): Promise<void> => {
       if (!variable) return
       // TODO check no persist
-      const value = display(fetchResult(variable.t))
+      const value = display(fetchResult(variable.t)).result
       const oldValue = block.text
       if (value === oldValue) return
       devLog('Spreadsheet cell formula updated', { cellId, value, rootId })
@@ -194,13 +194,13 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     latestEditing.current = false
   }
 
-  const displayResult = savedVariableT ? display(fetchResult(savedVariableT)) : currentBlock.text
+  const displayResult = savedVariableT ? display(fetchResult(savedVariableT)).result : currentBlock.text
   const fallbackDisplayData: VariableDisplayData | undefined = displayResult
     ? {
         definition: displayResult,
-        display: displayResult,
-        meta: { ...meta, input: displayResult, position: displayResult.length },
-        result: { type: 'literal', result: displayResult }
+        type: 'spreadsheet',
+        result: { type: 'literal', result: displayResult },
+        display: { type: 'literal', result: displayResult }
       }
     : undefined
   const displayData: VariableDisplayData | undefined = savedVariableT

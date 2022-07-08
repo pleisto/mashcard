@@ -92,6 +92,13 @@ const reduceTestCaseInput = (testCases: TestCaseInterface[]): TestCaseInput => {
           )
         }))
       ],
+      basicTestCases: [
+        ...prev.basicTestCases,
+        ...(curr.testCases.basicTestCases ?? []).map((s, index) => ({
+          ...s,
+          ...buildRequiredFields(curr, s, s.definition, '')
+        }))
+      ],
       errorTestCases: [
         ...prev.errorTestCases,
         ...(curr.testCases.errorTestCases ?? []).map(s => ({
@@ -112,7 +119,8 @@ const reduceTestCaseInput = (testCases: TestCaseInterface[]): TestCaseInput => {
       formatTestCases: [],
       errorTestCases: [],
       eventTestCases: [],
-      dependencyTestCases: []
+      dependencyTestCases: [],
+      basicTestCases: []
     }
   )
 }
@@ -147,11 +155,15 @@ export const buildTestCases = (name?: TestCaseName[]): [TestCaseInput] => {
   const interfaces = OPERATION_TEST_INTERFACES.filter(
     o =>
       name.includes(o.name) ||
-      (o.testCases.successTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r))) ||
-      (o.testCases.errorTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r))) ||
-      (o.testCases.completeTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r))) ||
-      (o.testCases.dependencyTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r))) ||
-      (o.testCases.eventTestCases ?? []).some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r)))
+      [
+        ...(o.testCases.successTestCases ?? []),
+        ...(o.testCases.errorTestCases ?? []),
+        ...(o.testCases.completeTestCases ?? []),
+        ...(o.testCases.formatTestCases ?? []),
+        ...(o.testCases.eventTestCases ?? []),
+        ...(o.testCases.dependencyTestCases ?? []),
+        ...(o.testCases.basicTestCases ?? [])
+      ].some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r)))
   )
   const input = reduceTestCaseInput(interfaces)
 
@@ -166,7 +178,9 @@ export const buildTestCases = (name?: TestCaseName[]): [TestCaseInput] => {
       dependencyTestCases: input.dependencyTestCases.filter(v =>
         v.groupOptions.map(g => g.name).some(r => name.includes(r))
       ),
-      eventTestCases: input.eventTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r)))
+      eventTestCases: input.eventTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
+      formatTestCases: input.formatTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
+      basicTestCases: input.basicTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r)))
     }
   ]
 }

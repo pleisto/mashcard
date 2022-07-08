@@ -53,7 +53,7 @@ export const SpreadsheetRender: React.FC<SpreadsheetRenderProps> = ({
         const { rowId } = r
         return [
           r.rowId,
-          new Map(columns.map(c => [c.columnId, valuesMatrix.get(rowId)?.get(c.columnId)?.display ?? '']))
+          new Map(columns.map(c => [c.columnId, valuesMatrix.get(rowId)?.get(c.columnId)?.display.result ?? '']))
         ]
       })
     )
@@ -94,8 +94,7 @@ export const SpreadsheetRender: React.FC<SpreadsheetRenderProps> = ({
                       context={spreadsheetContext}
                       columnId={column.columnId}
                       columnActions={[]}
-                      draggable={false}
-                    >
+                      draggable={false}>
                       <SpreadsheetColumnEditable
                         context={spreadsheetContext}
                         index={i}
@@ -115,8 +114,7 @@ export const SpreadsheetRender: React.FC<SpreadsheetRenderProps> = ({
                           <SpreadsheetCellContainer
                             key={column.columnId}
                             context={spreadsheetContext}
-                            cellId={{ rowId: rowBlock.rowId, columnId: column.columnId }}
-                          >
+                            cellId={{ rowId: rowBlock.rowId, columnId: column.columnId }}>
                             <div className="cell">
                               <FormulaDisplay
                                 displayData={valuesMatrix.get(rowBlock.rowId)?.get(column.columnId)}

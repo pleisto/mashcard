@@ -18,13 +18,7 @@ export const FormulaValue: FC<FormulaValueProps> = ({
   border,
   selected,
   disablePopover,
-  displayData: {
-    result,
-    display,
-    meta: {
-      richType: { type }
-    }
-  }
+  displayData: { result, display, type }
 }) => {
   const colorType = resultToColorType(result)
   const { colorCode } = FORMULA_COLOR_METAS[colorType]
@@ -34,7 +28,7 @@ export const FormulaValue: FC<FormulaValueProps> = ({
   if (!hasBorder) {
     return (
       <span className="mashcard-formula-borderless" style={{ color: colorCode }}>
-        {display}
+        {display.result}
       </span>
     )
   }
@@ -42,7 +36,7 @@ export const FormulaValue: FC<FormulaValueProps> = ({
   const formulaStyle = FORMULA_STYLES[colorType]({ selected: !!selected })
 
   // eslint-disable-next-line no-nested-ternary
-  const finalDisplay = result.type === 'boolean' ? (result.result ? '✓' : '✗') : display
+  const finalDisplay = result.type === 'boolean' ? (result.result ? '✓' : '✗') : display.result
 
   let data: ReactElement
 

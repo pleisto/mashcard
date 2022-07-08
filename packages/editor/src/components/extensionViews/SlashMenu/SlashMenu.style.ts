@@ -91,7 +91,8 @@ export const Footer = styled('div', {
   padding: `0 ${menuItemSpacing}`,
   position: 'absolute',
   right: 0,
-  zIndex: 1
+  zIndex: 1,
+  borderRadius: '0 0 2px 4px'
 })
 
 export const ExploreItem = styled('div', {

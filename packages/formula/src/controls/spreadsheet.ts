@@ -449,7 +449,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     }
 
     const displayData = this._formulaContext.findVariableDisplayDataById(this.namespaceId, cell.variableId)
-    if (displayData) return displayData.display
+    if (displayData) return displayData.display.result
 
     return cell.value
   }

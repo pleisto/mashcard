@@ -55,7 +55,7 @@ export const Selection = createExtension<SelectionOptions, SelectAttributes>({
           if (dispatch) {
             const { doc } = tr
             const minPos = 0
-            const maxPos = MultipleNodeSelection.atEnd(doc).to
+            const maxPos = doc.content.size
 
             const resolvedAnchor = Math.max(Math.min(anchor, maxPos), minPos)
             const resolvedHead = Math.max(Math.min(head, maxPos), minPos)

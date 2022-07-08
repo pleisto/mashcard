@@ -8,5 +8,5 @@ export const FormulaNullAttributes: FormulaTypeAttributes<typeof TypeName> = {
   type: TypeName,
   dump: rest => rest,
   cast: rest => rest,
-  display: () => 'null'
+  display: ({ result, ...rest }) => ({ ...rest, result: 'null' })
 }
