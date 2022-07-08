@@ -24,5 +24,5 @@ export const FormulaCellAttributes: FormulaTypeAttributes<typeof TypeName> = {
         : { ...rest, result: `Row not found`, meta: 'deps', type: 'Error' }
     }
   },
-  display: ({ result }) => result.getValue()
+  display: ({ result, ...rest }) => ({ ...rest, result: result.getValue() })
 }

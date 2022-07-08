@@ -148,7 +148,7 @@ describe('Simple test case TODO', () => {
         expect(success).toEqual(true)
 
         if (display) {
-          expect(displayResult).toEqual(display)
+          expect(displayResult.result).toEqual(display)
         } else {
           expect(variableValue.result.result).toEqual(value)
           expect(variableValue.success).toEqual(true)

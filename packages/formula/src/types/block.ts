@@ -12,5 +12,5 @@ export const FormulaBlockAttributes: FormulaTypeAttributes<typeof TypeName> = {
     const block = ctx.findBlockById(result)
     return block ? { ...rest, result: block } : { ...rest, result: `Block not found`, meta: 'deps', type: 'Error' }
   },
-  display: ({ result }) => result.name('')
+  display: ({ result, ...rest }) => ({ ...rest, result: result.name('') })
 }

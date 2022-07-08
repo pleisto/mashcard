@@ -10,6 +10,7 @@ import { VariableTestCase } from './variable'
 import { EventTestCases } from './event'
 import { CompleteTestCase } from './complete'
 import { FormatTestCase } from './format'
+import { BasicTestCase } from './basic'
 
 export const FeatureTestCases: TestCaseInterface[] = [
   FunctionCallTestCase,
@@ -21,6 +22,7 @@ export const FeatureTestCases: TestCaseInterface[] = [
   FormatTestCase,
   DependencyTestCase,
   OtherTestCase,
+  BasicTestCase,
   ...EventTestCases,
   ...CompleteTestCase
 ]

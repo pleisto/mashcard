@@ -14,5 +14,5 @@ export const FormulaSpreadsheetAttributes: FormulaTypeAttributes<typeof TypeName
       ? { ...rest, result: spreadsheet }
       : { ...rest, result: `Spreadsheet not found`, meta: 'deps', type: 'Error' }
   },
-  display: ({ result }) => result.name()
+  display: ({ result, ...rest }) => ({ ...rest, result: result.name() })
 }

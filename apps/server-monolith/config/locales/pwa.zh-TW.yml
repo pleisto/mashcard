@@ -163,7 +163,7 @@ zh-TW:
       suggestion: Suggestions
       no_suggestion: No result
       footer: Explore
-      tooltip: Explore Slash Menu
+      tooltip: Explore slash menu
       explorer_menu:
         group:
           data:
@@ -507,7 +507,7 @@ zh-TW:
       tooltip: show comments on current page
     history:
       menu: History
-      tooltip: view all updates
+      tooltip: View all updates
     more:
       tooltip: more options
     share:
@@ -523,7 +523,7 @@ zh-TW:
       invite_placeholder: 按用戶名添加人員
       invite_button: Invite
       copy_hint: 分享網址已複製
-      tooltip: share or publish to the web
+      tooltip: Share or publish to the web
     invite:
       learn: Learn more about sharing
       type_hint: Type or paste in pod domain above, separated by commas.

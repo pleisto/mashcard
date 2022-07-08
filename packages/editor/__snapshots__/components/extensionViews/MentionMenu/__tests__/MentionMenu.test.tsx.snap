@@ -4,7 +4,7 @@ exports[`MentionMenu matches correct snapshot 1`] = `
 <div>
   <ul
     aria-orientation="vertical"
-    class="mc-c-bOsLjs mc-c-bOsLjs-lozdyt-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical mc-c-kWKsdj mc-c-kWKsdj-kWKsdj-size-md"
+    class="mc-c-bOsLjs mc-c-bOsLjs-hivZaV-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical mc-c-kWKsdj mc-c-kWKsdj-kWKsdj-size-md"
     data-testid="editor-link-menu"
     id="mention"
     role="menubar"

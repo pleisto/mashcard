@@ -12,5 +12,5 @@ export const FormulaDateAttributes: FormulaTypeAttributes<typeof TypeName> = {
   type: TypeName,
   dump: ({ result, ...rest }) => ({ ...rest, result: date2string(result) }),
   cast: ({ result, ...rest }) => ({ ...rest, result: new Date(result) }),
-  display: ({ result }) => date2string(result)
+  display: ({ result, ...rest }) => ({ ...rest, result: date2string(result) })
 }

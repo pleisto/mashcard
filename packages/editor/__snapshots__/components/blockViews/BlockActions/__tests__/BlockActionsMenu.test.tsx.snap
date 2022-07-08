@@ -93,7 +93,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
       <ul
         aria-label="subMenu"
         aria-orientation="vertical"
-        class="mc-c-bOsLjs mc-c-bOsLjs-lozdyt-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical mc-c-dKsgYN"
+        class="mc-c-bOsLjs mc-c-bOsLjs-hivZaV-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical mc-c-dKsgYN"
         data-dialog="true"
         hidden=""
         id="subMenu"
@@ -281,7 +281,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
       <ul
         aria-label="block_actions.add_block"
         aria-orientation="vertical"
-        class="mc-c-bOsLjs mc-c-bOsLjs-lozdyt-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical mc-c-dKsgYN"
+        class="mc-c-bOsLjs mc-c-bOsLjs-hivZaV-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical mc-c-dKsgYN"
         data-dialog="true"
         hidden=""
         id="menu-add-block"

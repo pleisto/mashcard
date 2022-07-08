@@ -24,7 +24,7 @@ export const menubarStyles = css({
   variants: {
     theme: {
       default: {
-        include: ['ceramicPrimary'],
+        include: ['ceramicPrimary', 'cornerFix'],
         borderRadius: '4px'
       },
       ghost: {}
@@ -57,7 +57,8 @@ const _Menu: React.ForwardRefRenderFunction<HTMLUListElement, MenuProps> = (prop
           {...restProps}
           orientation={orientation}
           className={menuBarClass}
-          ref={ref}>
+          ref={ref}
+        >
           {children}
         </ReakitMenuBar>
       </MenuContext.Provider>
