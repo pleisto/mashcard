@@ -3,7 +3,7 @@ import { Spin } from '@mashcard/design-system'
 import { Block } from '@mashcard/schema'
 import { EditorContent, useEditor } from '@mashcard/editor'
 import { DocumentTitle } from './components/DocumentTitle'
-import { useSyncProvider, useBlockSyncProvider, useDocHistoryProvider } from './hooks'
+import { useSyncProvider, useDocSyncProvider, useDocHistoryProvider } from './hooks'
 import { TrashPrompt } from '../common/components/TrashPrompt'
 import { useNavigate } from 'react-router-dom'
 import { awarenessInfosVar, isSavingVar } from '../reactiveVars'
@@ -11,14 +11,15 @@ import * as Root from './DocumentPage.style'
 import { useDocMeta } from '../store/DocMeta'
 import { useEditorOptions } from './hooks/useEditorOptions'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
+import { BlockNewQuery } from '@/MashcardGraphQL'
 
 interface DocumentPageProps {
-  // default: user can edit/view document normally
-  // presentation: just for viewing and can not edit it.
-  mode?: 'default' | 'presentation'
+  data?: BlockNewQuery
+  loading: boolean
+  editable: boolean
 }
 
-export const DocumentPage: FC<DocumentPageProps> = ({ mode }) => {
+export const DocumentPage: FC<DocumentPageProps> = ({ editable, loading, data }) => {
   const docMeta = useDocMeta()
   const navigate = useNavigate()
   const [latestLoading, setLatestLoading] = useState(true)
@@ -32,12 +33,11 @@ export const DocumentPage: FC<DocumentPageProps> = ({ mode }) => {
 
   const currentRootBlock = rootBlock.current
 
-  const documentEditable = mode !== 'presentation' && !docMeta.historyId
-
-  const { provider, loading, committing, awarenessInfos, meta, setMeta } = useBlockSyncProvider({
+  const { provider, committing, awarenessInfos, meta, setMeta } = useDocSyncProvider({
     blockId: docMeta.id as string,
     historyId: docMeta.historyId,
-    editable: documentEditable
+    editable,
+    data
   })
 
   useDocHistoryProvider(docMeta.id as string)
@@ -52,7 +52,7 @@ export const DocumentPage: FC<DocumentPageProps> = ({ mode }) => {
   const editorOptions = useEditorOptions({
     docMeta,
     provider,
-    documentEditable,
+    documentEditable: editable,
     documentBlock: rootBlock.current as Block
   })
 
@@ -92,12 +92,13 @@ export const DocumentPage: FC<DocumentPageProps> = ({ mode }) => {
           '@mdOnly': 'md',
           '@smDown': 'sm'
         }}
-        onMouseDown={handleMultipleNodeSelectionMouseDown}>
-        <DocumentTitle docBlock={currentRootBlock} editable={documentEditable} meta={meta} setMeta={setMeta} />
+        onMouseDown={handleMultipleNodeSelectionMouseDown}
+      >
+        <DocumentTitle docBlock={currentRootBlock} editable={editable} meta={meta} setMeta={setMeta} />
         <Root.PageContent ref={pageContentRef}>
           <EditorContent
             editor={editor}
-            editable={documentEditable}
+            editable={editable}
             rootId={docMeta.id}
             domain={docMeta.domain}
             historyId={docMeta.historyId}
