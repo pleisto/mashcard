@@ -1,7 +1,7 @@
 import { DragEventHandler, FC, MouseEventHandler, useCallback, useMemo, useState, ReactNode } from 'react'
 import { Button, IconProps, Popover, styled, theme } from '@mashcard/design-system'
 import { BlockActionsMenu, BlockActionsMenuProps } from '../BlockActionsMenu'
-import { DragSecondary } from '../../../ui'
+import { DragSecondary, BlockActionAdd } from '../../../ui'
 import { useBlockContext } from '../../../../hooks/useBlockContext'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
@@ -32,10 +32,12 @@ const Trigger: FC<{
   onDragStart?: DragEventHandler
   onDragEnd?: DragEventHandler
 }> = ({ className, onClick, onMouseEnter, onMouseLeave, onDragStart, onDragEnd, ...restProps }) => {
+  const { node } = useBlockContext()
+  const isEmpty = !node?.isLeaf && !node?.childCount
   const [hovered, setHovered] = useState(false)
   const iconProps = useMemo<IconProps>(() => {
     if (hovered) return {}
-    return { fill: [theme.colors.iconPrimary.value, theme.colors.grey3.value] }
+    return { fill: [theme.colors.typeSecondary.value, theme.colors.grey3.value] }
   }, [hovered])
   return (
     <div
@@ -66,8 +68,8 @@ const Trigger: FC<{
           setHovered(true)
         }}
         size="sm"
-        type="text">
-        <DragSecondary {...iconProps} />
+        type="unstyled">
+        {isEmpty ? <BlockActionAdd {...iconProps} /> : <DragSecondary {...iconProps} />}
       </StyledBlockActionButton>
     </div>
   )

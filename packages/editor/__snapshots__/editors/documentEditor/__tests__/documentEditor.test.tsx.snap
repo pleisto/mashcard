@@ -42,7 +42,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                 draggable="true"
               >
                 <button
-                  class="mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
+                  class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
                   role="button"
                   type="button"
                 >
@@ -66,7 +66,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                       <path
                         clip-rule="evenodd"
                         d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
-                        fill="#35313c"
+                        fill="#73707e"
                         fill-rule="evenodd"
                       />
                     </svg>
@@ -107,7 +107,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                 draggable="true"
               >
                 <button
-                  class="mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
+                  class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
                   role="button"
                   type="button"
                 >
@@ -131,7 +131,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                       <path
                         clip-rule="evenodd"
                         d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
-                        fill="#35313c"
+                        fill="#73707e"
                         fill-rule="evenodd"
                       />
                     </svg>
@@ -172,7 +172,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                 draggable="true"
               >
                 <button
-                  class="mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
+                  class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
                   role="button"
                   type="button"
                 >
@@ -196,7 +196,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                       <path
                         clip-rule="evenodd"
                         d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
-                        fill="#35313c"
+                        fill="#73707e"
                         fill-rule="evenodd"
                       />
                     </svg>
@@ -237,7 +237,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                 draggable="true"
               >
                 <button
-                  class="mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
+                  class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
                   role="button"
                   type="button"
                 >
@@ -261,7 +261,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                       <path
                         clip-rule="evenodd"
                         d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
-                        fill="#35313c"
+                        fill="#73707e"
                         fill-rule="evenodd"
                       />
                     </svg>
@@ -302,7 +302,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                 draggable="true"
               >
                 <button
-                  class="mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
+                  class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
                   role="button"
                   type="button"
                 >
@@ -326,7 +326,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                       <path
                         clip-rule="evenodd"
                         d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
-                        fill="#35313c"
+                        fill="#73707e"
                         fill-rule="evenodd"
                       />
                     </svg>
