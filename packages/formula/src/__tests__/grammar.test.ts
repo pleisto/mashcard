@@ -1,7 +1,7 @@
 /* eslint-disable jest/no-conditional-expect */
 import { parse, innerInterpret } from '../grammar/core'
 import { ParseErrorType } from '../type'
-import { display } from '../context/persist'
+import { display as displayF } from '../context/persist'
 import { makeContext } from '../tests/testHelper'
 
 interface TestCase {
@@ -140,7 +140,7 @@ describe('Simple test case TODO', () => {
 
       if (value !== undefined) {
         const variableValue = await innerInterpret({ parseResult, ctx: { ...ctx, meta: newMeta } })
-        const displayResult = display(variableValue.result)
+        const displayResult = displayF(variableValue.result)
 
         expect(errorMessages).toEqual([])
 

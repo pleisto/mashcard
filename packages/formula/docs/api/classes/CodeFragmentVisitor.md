@@ -71,9 +71,9 @@
 
 #### Parameters
 
-| Name                    | Type                                                  |
-| :---------------------- | :---------------------------------------------------- |
-| `__namedParameters`     | `Object`                                              |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
 | `__namedParameters.ctx` | [`FunctionContext`](../interfaces/FunctionContext.md) |
 
 #### Overrides
@@ -90,7 +90,7 @@ CodeFragmentCstVisitor.constructor
 
 [packages/formula/src/grammar/codeFragment.ts:74](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L74)
 
----
+___
 
 ### <a id="blockdependencies" name="blockdependencies"></a> blockDependencies
 
@@ -100,7 +100,7 @@ CodeFragmentCstVisitor.constructor
 
 [packages/formula/src/grammar/codeFragment.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L71)
 
----
+___
 
 ### <a id="ctx" name="ctx"></a> ctx
 
@@ -110,7 +110,7 @@ CodeFragmentCstVisitor.constructor
 
 [packages/formula/src/grammar/codeFragment.ts:66](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L66)
 
----
+___
 
 ### <a id="effect" name="effect"></a> effect
 
@@ -120,7 +120,7 @@ CodeFragmentCstVisitor.constructor
 
 [packages/formula/src/grammar/codeFragment.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L76)
 
----
+___
 
 ### <a id="eventdependencies" name="eventdependencies"></a> eventDependencies
 
@@ -130,7 +130,7 @@ CodeFragmentCstVisitor.constructor
 
 [packages/formula/src/grammar/codeFragment.ts:70](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L70)
 
----
+___
 
 ### <a id="flattenvariabledependencies" name="flattenvariabledependencies"></a> flattenVariableDependencies
 
@@ -140,7 +140,7 @@ CodeFragmentCstVisitor.constructor
 
 [packages/formula/src/grammar/codeFragment.ts:72](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L72)
 
----
+___
 
 ### <a id="functiondependencies" name="functiondependencies"></a> functionDependencies
 
@@ -150,17 +150,17 @@ CodeFragmentCstVisitor.constructor
 
 [packages/formula/src/grammar/codeFragment.ts:69](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L69)
 
----
+___
 
 ### <a id="kind" name="kind"></a> kind
 
-• **kind**: `"expression"` \| `"constant"` = `'constant'`
+• **kind**: ``"expression"`` \| ``"constant"`` = `'constant'`
 
 #### Defined in
 
 [packages/formula/src/grammar/codeFragment.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L73)
 
----
+___
 
 ### <a id="namedependencies" name="namedependencies"></a> nameDependencies
 
@@ -170,7 +170,7 @@ CodeFragmentCstVisitor.constructor
 
 [packages/formula/src/grammar/codeFragment.ts:68](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L68)
 
----
+___
 
 ### <a id="persist" name="persist"></a> persist
 
@@ -180,7 +180,7 @@ CodeFragmentCstVisitor.constructor
 
 [packages/formula/src/grammar/codeFragment.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L77)
 
----
+___
 
 ### <a id="pure" name="pure"></a> pure
 
@@ -190,7 +190,7 @@ CodeFragmentCstVisitor.constructor
 
 [packages/formula/src/grammar/codeFragment.ts:75](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L75)
 
----
+___
 
 ### <a id="variabledependencies" name="variabledependencies"></a> variableDependencies
 
@@ -208,18 +208,18 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name                | Type                                                        |
-| :------------------ | :---------------------------------------------------------- |
-| `ctx`               | `Object`                                                    |
-| `ctx.Comma`         | `IToken`[]                                                  |
-| `ctx.expression`    | `any`[]                                                     |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `Object` |
+| `ctx.Comma` | `IToken`[] |
+| `ctx.expression` | `any`[] |
 | `__namedParameters` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="booleanliteralexpression" name="booleanliteralexpression"></a> BooleanLiteralExpression
 
@@ -227,17 +227,17 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name                 | Type                                                        |
-| :------------------- | :---------------------------------------------------------- |
-| `ctx`                | `Object`                                                    |
-| `ctx.BooleanLiteral` | `IToken`[]                                                  |
-| `args`               | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `Object` |
+| `ctx.BooleanLiteral` | `IToken`[] |
+| `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="functioncall" name="functioncall"></a> FunctionCall
 
@@ -245,20 +245,20 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name                | Type                                                        |
-| :------------------ | :---------------------------------------------------------- |
-| `ctx`               | `Object`                                                    |
-| `ctx.Arguments`     | `CstNode` \| `CstNode`[]                                    |
-| `ctx.FunctionName`  | { `image`: `any` }[]                                        |
-| `ctx.LParen`        | `IToken`[]                                                  |
-| `ctx.RParen`        | `IToken`[]                                                  |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `Object` |
+| `ctx.Arguments` | `CstNode` \| `CstNode`[] |
+| `ctx.FunctionName` | { `image`: `any`  }[] |
+| `ctx.LParen` | `IToken`[] |
+| `ctx.RParen` | `IToken`[] |
 | `__namedParameters` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="functionnameexpression" name="functionnameexpression"></a> FunctionNameExpression
 
@@ -266,16 +266,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name                | Type                                                        |
-| :------------------ | :---------------------------------------------------------- |
-| `ctx`               | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `__namedParameters` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="numberliteralexpression" name="numberliteralexpression"></a> NumberLiteralExpression
 
@@ -283,20 +283,20 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name                 | Type                                                        |
-| :------------------- | :---------------------------------------------------------- |
-| `ctx`                | `Object`                                                    |
-| `ctx.DecimalLiteral` | `IToken`[]                                                  |
-| `ctx.Minus`          | `IToken`[]                                                  |
-| `ctx.NumberLiteral`  | `IToken`[]                                                  |
-| `ctx.Sign`           | `IToken`[]                                                  |
-| `args`               | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `Object` |
+| `ctx.DecimalLiteral` | `IToken`[] |
+| `ctx.Minus` | `IToken`[] |
+| `ctx.NumberLiteral` | `IToken`[] |
+| `ctx.Sign` | `IToken`[] |
+| `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="stringliteralexpression" name="stringliteralexpression"></a> StringLiteralExpression
 
@@ -304,16 +304,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="accessexpression" name="accessexpression"></a> accessExpression
 
@@ -321,16 +321,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name                | Type                                                        |
-| :------------------ | :---------------------------------------------------------- |
-| `ctx`               | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `__namedParameters` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="additionexpression" name="additionexpression"></a> additionExpression
 
@@ -338,16 +338,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="arrayexpression" name="arrayexpression"></a> arrayExpression
 
@@ -355,16 +355,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="atomicexpression" name="atomicexpression"></a> atomicExpression
 
@@ -372,20 +372,20 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name                         | Type                                                        |
-| :--------------------------- | :---------------------------------------------------------- |
-| `ctx`                        | `Object`                                                    |
-| `ctx.blockExpression`        | `CstNode` \| `CstNode`[]                                    |
-| `ctx.predicateExpression`    | `CstNode` \| `CstNode`[]                                    |
-| `ctx.referenceExpression`    | `CstNode` \| `CstNode`[]                                    |
-| `ctx.simpleAtomicExpression` | `CstNode` \| `CstNode`[]                                    |
-| `__namedParameters`          | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `Object` |
+| `ctx.blockExpression` | `CstNode` \| `CstNode`[] |
+| `ctx.predicateExpression` | `CstNode` \| `CstNode`[] |
+| `ctx.referenceExpression` | `CstNode` \| `CstNode`[] |
+| `ctx.simpleAtomicExpression` | `CstNode` \| `CstNode`[] |
+| `__namedParameters` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="blockexpression" name="blockexpression"></a> blockExpression
 
@@ -393,16 +393,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name                | Type                                                        |
-| :------------------ | :---------------------------------------------------------- |
-| `ctx`               | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `__namedParameters` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="chainexpression" name="chainexpression"></a> chainExpression
 
@@ -410,19 +410,19 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name                | Type                                                        |
-| :------------------ | :---------------------------------------------------------- |
-| `ctx`               | `Object`                                                    |
-| `ctx.Dot`           | `any`                                                       |
-| `ctx.lhs`           | `CstNode` \| `CstNode`[]                                    |
-| `ctx.rhs`           | `any`[]                                                     |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `Object` |
+| `ctx.Dot` | `any` |
+| `ctx.lhs` | `CstNode` \| `CstNode`[] |
+| `ctx.rhs` | `any`[] |
 | `__namedParameters` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="combineexpression" name="combineexpression"></a> combineExpression
 
@@ -430,16 +430,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="compareexpression" name="compareexpression"></a> compareExpression
 
@@ -447,16 +447,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="concatexpression" name="concatexpression"></a> concatExpression
 
@@ -464,16 +464,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="constantexpression" name="constantexpression"></a> constantExpression
 
@@ -481,20 +481,20 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name                           | Type                                                        |
-| :----------------------------- | :---------------------------------------------------------- |
-| `ctx`                          | `Object`                                                    |
-| `ctx.BooleanLiteralExpression` | `CstNode` \| `CstNode`[]                                    |
-| `ctx.NullLiteral`              | `IToken`[]                                                  |
-| `ctx.NumberLiteralExpression`  | `CstNode` \| `CstNode`[]                                    |
-| `ctx.StringLiteral`            | `IToken`[]                                                  |
-| `args`                         | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `Object` |
+| `ctx.BooleanLiteralExpression` | `CstNode` \| `CstNode`[] |
+| `ctx.NullLiteral` | `IToken`[] |
+| `ctx.NumberLiteralExpression` | `CstNode` \| `CstNode`[] |
+| `ctx.StringLiteral` | `IToken`[] |
+| `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="equalcompareexpression" name="equalcompareexpression"></a> equalCompareExpression
 
@@ -502,16 +502,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="expression" name="expression"></a> expression
 
@@ -519,16 +519,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="inexpression" name="inexpression"></a> inExpression
 
@@ -536,16 +536,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="keyexpression" name="keyexpression"></a> keyExpression
 
@@ -553,16 +553,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name                | Type                                                        |
-| :------------------ | :---------------------------------------------------------- |
-| `ctx`               | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `__namedParameters` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="lazyvariableexpression" name="lazyvariableexpression"></a> lazyVariableExpression
 
@@ -570,16 +570,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="multiplicationexpression" name="multiplicationexpression"></a> multiplicationExpression
 
@@ -587,16 +587,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="notexpression" name="notexpression"></a> notExpression
 
@@ -604,16 +604,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="parenthesisexpression" name="parenthesisexpression"></a> parenthesisExpression
 
@@ -621,16 +621,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="predicateexpression" name="predicateexpression"></a> predicateExpression
 
@@ -638,19 +638,19 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name                         | Type                                                        |
-| :--------------------------- | :---------------------------------------------------------- |
-| `ctx`                        | `Object`                                                    |
-| `ctx.CompareOperator`        | `IToken`[]                                                  |
-| `ctx.EqualCompareOperator`   | `IToken`[]                                                  |
-| `ctx.simpleAtomicExpression` | `CstNode` \| `CstNode`[]                                    |
-| `__namedParameters`          | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `Object` |
+| `ctx.CompareOperator` | `IToken`[] |
+| `ctx.EqualCompareOperator` | `IToken`[] |
+| `ctx.simpleAtomicExpression` | `CstNode` \| `CstNode`[] |
+| `__namedParameters` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="rangeexpression" name="rangeexpression"></a> rangeExpression
 
@@ -658,16 +658,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="recordexpression" name="recordexpression"></a> recordExpression
 
@@ -675,16 +675,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="recordfield" name="recordfield"></a> recordField
 
@@ -692,16 +692,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
-| `ctx`  | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="referenceexpression" name="referenceexpression"></a> referenceExpression
 
@@ -709,16 +709,16 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name                | Type                                                        |
-| :------------------ | :---------------------------------------------------------- |
-| `ctx`               | `any`                                                       |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 | `__namedParameters` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="simpleatomicexpression" name="simpleatomicexpression"></a> simpleAtomicExpression
 
@@ -726,23 +726,23 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name                         | Type                                                        |
-| :--------------------------- | :---------------------------------------------------------- |
-| `ctx`                        | `Object`                                                    |
-| `ctx.FunctionCall`           | `CstNode` \| `CstNode`[]                                    |
-| `ctx.FunctionName`           | `IToken`[]                                                  |
-| `ctx.arrayExpression`        | `CstNode` \| `CstNode`[]                                    |
-| `ctx.constantExpression`     | `CstNode` \| `CstNode`[]                                    |
-| `ctx.lazyVariableExpression` | `CstNode` \| `CstNode`[]                                    |
-| `ctx.parenthesisExpression`  | `CstNode` \| `CstNode`[]                                    |
-| `ctx.recordExpression`       | `CstNode` \| `CstNode`[]                                    |
-| `args`                       | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `Object` |
+| `ctx.FunctionCall` | `CstNode` \| `CstNode`[] |
+| `ctx.FunctionName` | `IToken`[] |
+| `ctx.arrayExpression` | `CstNode` \| `CstNode`[] |
+| `ctx.constantExpression` | `CstNode` \| `CstNode`[] |
+| `ctx.lazyVariableExpression` | `CstNode` \| `CstNode`[] |
+| `ctx.parenthesisExpression` | `CstNode` \| `CstNode`[] |
+| `ctx.recordExpression` | `CstNode` \| `CstNode`[] |
+| `args` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="startexpression" name="startexpression"></a> startExpression
 
@@ -750,18 +750,18 @@ CodeFragmentCstVisitor.constructor
 
 #### Parameters
 
-| Name                | Type                                                        |
-| :------------------ | :---------------------------------------------------------- |
-| `ctx`               | `Object`                                                    |
-| `ctx.Equal`         | `any`                                                       |
-| `ctx.expression`    | `CstNode` \| `CstNode`[]                                    |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `Object` |
+| `ctx.Equal` | `any` |
+| `ctx.expression` | `CstNode` \| `CstNode`[] |
 | `__namedParameters` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="validatevisitor" name="validatevisitor"></a> validateVisitor
 
@@ -775,7 +775,7 @@ CodeFragmentCstVisitor.constructor
 
 CodeFragmentCstVisitor.validateVisitor
 
----
+___
 
 ### <a id="visit" name="visit"></a> visit
 
@@ -783,10 +783,10 @@ CodeFragmentCstVisitor.validateVisitor
 
 #### Parameters
 
-| Name      | Type                                                        |
-| :-------- | :---------------------------------------------------------- |
-| `cstNode` | `CstNode` \| `CstNode`[]                                    |
-| `param?`  | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
+| Name | Type |
+| :------ | :------ |
+| `cstNode` | `CstNode` \| `CstNode`[] |
+| `param?` | [`CstVisitorArgument`](../interfaces/CstVisitorArgument.md) |
 
 #### Returns
 

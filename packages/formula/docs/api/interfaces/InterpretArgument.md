@@ -19,9 +19,9 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:52](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L52)
+[packages/formula/src/grammar/interpreter.ts:44](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L44)
 
----
+___
 
 ### <a id="finaltypes" name="finaltypes"></a> finalTypes
 
@@ -29,19 +29,19 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:49](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L49)
+[packages/formula/src/grammar/interpreter.ts:41](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L41)
 
----
+___
 
 ### <a id="firstargumenttype" name="firstargumenttype"></a> firstArgumentType
 
-• `Optional` `Readonly` **firstArgumentType**: `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"`
+• `Optional` `Readonly` **firstArgumentType**: ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"``
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:48](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L48)
+[packages/formula/src/grammar/interpreter.ts:40](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L40)
 
----
+___
 
 ### <a id="lazy" name="lazy"></a> lazy
 
@@ -49,9 +49,9 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:51](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L51)
+[packages/formula/src/grammar/interpreter.ts:43](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L43)
 
----
+___
 
 ### <a id="skipcheck" name="skipcheck"></a> skipCheck
 
@@ -59,9 +59,9 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:50](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L50)
+[packages/formula/src/grammar/interpreter.ts:42](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L42)
 
----
+___
 
 ### <a id="type" name="type"></a> type
 
@@ -69,4 +69,4 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:47](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L47)
+[packages/formula/src/grammar/interpreter.ts:39](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L39)

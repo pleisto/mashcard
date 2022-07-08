@@ -15,9 +15,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:759](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L759)
+[packages/formula/src/type/index.ts:588](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L588)
 
----
+___
 
 ### <a id="variableid" name="variableid"></a> variableId
 
@@ -25,4 +25,4 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:758](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L758)
+[packages/formula/src/type/index.ts:587](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L587)

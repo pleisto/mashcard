@@ -19,7 +19,7 @@
 
 [packages/formula/src/tests/testType.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L77)
 
----
+___
 
 ### <a id="pagename" name="pagename"></a> pageName
 
@@ -29,7 +29,7 @@
 
 [packages/formula/src/tests/testType.ts:78](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L78)
 
----
+___
 
 ### <a id="spreadsheets" name="spreadsheets"></a> spreadsheets
 
@@ -39,7 +39,7 @@
 
 [packages/formula/src/tests/testType.ts:80](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L80)
 
----
+___
 
 ### <a id="variables" name="variables"></a> variables
 

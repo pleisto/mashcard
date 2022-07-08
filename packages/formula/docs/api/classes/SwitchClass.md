@@ -32,9 +32,9 @@
 
 #### Parameters
 
-| Name                | Type                                                      |
-| :------------------ | :-------------------------------------------------------- |
-| `ctx`               | [`FunctionContext`](../interfaces/FunctionContext.md)     |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | [`FunctionContext`](../interfaces/FunctionContext.md) |
 | `__namedParameters` | [`SwitchInitializer`](../interfaces/SwitchInitializer.md) |
 
 ## Properties
@@ -45,13 +45,13 @@
 
 #### Implementation of
 
-[SwitchType](../interfaces/SwitchType.md).[\_formulaContext](../interfaces/SwitchType.md#_formulacontext)
+[SwitchType](../interfaces/SwitchType.md).[_formulaContext](../interfaces/SwitchType.md#_formulacontext)
 
 #### Defined in
 
 [packages/formula/src/controls/switch.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L7)
 
----
+___
 
 ### <a id="_meta" name="_meta"></a> \_meta
 
@@ -59,13 +59,13 @@
 
 #### Implementation of
 
-[SwitchType](../interfaces/SwitchType.md).[\_meta](../interfaces/SwitchType.md#_meta)
+[SwitchType](../interfaces/SwitchType.md).[_meta](../interfaces/SwitchType.md#_meta)
 
 #### Defined in
 
 [packages/formula/src/controls/switch.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L8)
 
----
+___
 
 ### <a id="checked" name="checked"></a> checked
 
@@ -79,7 +79,7 @@
 
 [packages/formula/src/controls/switch.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L6)
 
----
+___
 
 ### <a id="disabled" name="disabled"></a> disabled
 
@@ -93,11 +93,11 @@
 
 [packages/formula/src/controls/switch.ts:11](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L11)
 
----
+___
 
 ### <a id="fn" name="fn"></a> fn
 
-• **fn**: [`FunctionResult`](../interfaces/FunctionResult.md)
+• **fn**: `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\>
 
 #### Implementation of
 
@@ -107,11 +107,11 @@
 
 [packages/formula/src/controls/switch.ts:10](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L10)
 
----
+___
 
 ### <a id="kind" name="kind"></a> kind
 
-• **kind**: `"Switch"`
+• **kind**: ``"Switch"``
 
 #### Implementation of
 
@@ -121,7 +121,7 @@
 
 [packages/formula/src/controls/switch.ts:9](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L9)
 
----
+___
 
 ### <a id="onchange" name="onchange"></a> onChange
 
@@ -133,8 +133,8 @@
 
 ##### Parameters
 
-| Name   | Type      |
-| :----- | :-------- |
+| Name | Type |
+| :------ | :------ |
 | `bool` | `boolean` |
 
 ##### Returns

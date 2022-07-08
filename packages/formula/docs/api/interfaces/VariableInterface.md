@@ -37,8 +37,8 @@
 
 ##### Parameters
 
-| Name     | Type                                        |
-| :------- | :------------------------------------------ |
+| Name | Type |
+| :------ | :------ |
 | `input?` | [`FormulaDefinition`](FormulaDefinition.md) |
 
 ##### Returns
@@ -47,9 +47,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:915](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L915)
+[packages/formula/src/type/index.ts:744](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L744)
 
----
+___
 
 ### <a id="cleanup" name="cleanup"></a> cleanup
 
@@ -65,9 +65,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:916](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L916)
+[packages/formula/src/type/index.ts:745](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L745)
 
----
+___
 
 ### <a id="currentuuid" name="currentuuid"></a> currentUUID
 
@@ -75,9 +75,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:912](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L912)
+[packages/formula/src/type/index.ts:741](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L741)
 
----
+___
 
 ### <a id="formulacontext" name="formulacontext"></a> formulaContext
 
@@ -85,9 +85,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:913](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L913)
+[packages/formula/src/type/index.ts:742](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L742)
 
----
+___
 
 ### <a id="id" name="id"></a> id
 
@@ -95,9 +95,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:911](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L911)
+[packages/formula/src/type/index.ts:740](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L740)
 
----
+___
 
 ### <a id="isnew" name="isnew"></a> isNew
 
@@ -105,9 +105,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:910](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L910)
+[packages/formula/src/type/index.ts:739](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L739)
 
----
+___
 
 ### <a id="isreadyt" name="isreadyt"></a> isReadyT
 
@@ -115,9 +115,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:909](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L909)
+[packages/formula/src/type/index.ts:738](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L738)
 
----
+___
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -133,9 +133,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:923](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L923)
+[packages/formula/src/type/index.ts:752](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L752)
 
----
+___
 
 ### <a id="namedependency" name="namedependency"></a> nameDependency
 
@@ -151,9 +151,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:920](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L920)
+[packages/formula/src/type/index.ts:749](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L749)
 
----
+___
 
 ### <a id="namespacename" name="namespacename"></a> namespaceName
 
@@ -165,8 +165,8 @@
 
 ##### Parameters
 
-| Name     | Type     |
-| :------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `pageId` | `string` |
 
 ##### Returns
@@ -175,13 +175,13 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:921](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L921)
+[packages/formula/src/type/index.ts:750](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L750)
 
----
+___
 
 ### <a id="onupdate" name="onupdate"></a> onUpdate
 
-• **onUpdate**: (`__namedParameters`: { `skipPersist?`: `boolean` }) => `Promise`<`void`\>
+• **onUpdate**: (`__namedParameters`: { `skipPersist?`: `boolean`  }) => `Promise`<`void`\>
 
 #### Type declaration
 
@@ -189,9 +189,9 @@
 
 ##### Parameters
 
-| Name                             | Type      |
-| :------------------------------- | :-------- |
-| `__namedParameters`              | `Object`  |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
 | `__namedParameters.skipPersist?` | `boolean` |
 
 ##### Returns
@@ -200,9 +200,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:924](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L924)
+[packages/formula/src/type/index.ts:753](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L753)
 
----
+___
 
 ### <a id="save" name="save"></a> save
 
@@ -218,9 +218,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:919](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L919)
+[packages/formula/src/type/index.ts:748](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L748)
 
----
+___
 
 ### <a id="t" name="t"></a> t
 
@@ -228,9 +228,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:908](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L908)
+[packages/formula/src/type/index.ts:737](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L737)
 
----
+___
 
 ### <a id="trackdependency" name="trackdependency"></a> trackDependency
 
@@ -246,9 +246,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:917](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L917)
+[packages/formula/src/type/index.ts:746](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L746)
 
----
+___
 
 ### <a id="trackdirty" name="trackdirty"></a> trackDirty
 
@@ -256,9 +256,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:918](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L918)
+[packages/formula/src/type/index.ts:747](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L747)
 
----
+___
 
 ### <a id="updatedefinition" name="updatedefinition"></a> updateDefinition
 
@@ -270,8 +270,8 @@
 
 ##### Parameters
 
-| Name    | Type                                        |
-| :------ | :------------------------------------------ |
+| Name | Type |
+| :------ | :------ |
 | `input` | [`FormulaDefinition`](FormulaDefinition.md) |
 
 ##### Returns
@@ -280,4 +280,4 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:922](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L922)
+[packages/formula/src/type/index.ts:751](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L751)

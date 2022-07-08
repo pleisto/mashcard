@@ -21,9 +21,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:69](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L69)
+[packages/formula/src/controls/types.ts:67](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L67)
 
----
+___
 
 ### <a id="cleanup" name="cleanup"></a> cleanup
 
@@ -39,9 +39,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:72](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L72)
+[packages/formula/src/controls/types.ts:70](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L70)
 
----
+___
 
 ### <a id="handlecodefragments" name="handlecodefragments"></a> handleCodeFragments
 
@@ -49,9 +49,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:74](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L74)
+[packages/formula/src/controls/types.ts:72](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L72)
 
----
+___
 
 ### <a id="handleinterpret" name="handleinterpret"></a> handleInterpret
 
@@ -59,9 +59,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:75](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L75)
+[packages/formula/src/controls/types.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L73)
 
----
+___
 
 ### <a id="id" name="id"></a> id
 
@@ -69,9 +69,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:68](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L68)
+[packages/formula/src/controls/types.ts:66](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L66)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -83,8 +83,8 @@
 
 ##### Parameters
 
-| Name     | Type     |
-| :------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `pageId` | `string` |
 
 ##### Returns
@@ -93,9 +93,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:70](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L70)
+[packages/formula/src/controls/types.ts:68](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L68)
 
----
+___
 
 ### <a id="namedependency" name="namedependency"></a> nameDependency
 
@@ -111,9 +111,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L71)
+[packages/formula/src/controls/types.ts:69](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L69)
 
----
+___
 
 ### <a id="persistence" name="persistence"></a> persistence
 
@@ -129,4 +129,4 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L73)
+[packages/formula/src/controls/types.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L71)

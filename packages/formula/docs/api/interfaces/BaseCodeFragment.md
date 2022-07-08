@@ -28,9 +28,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:712](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L712)
+[packages/formula/src/type/index.ts:541](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L541)
 
----
+___
 
 ### <a id="display" name="display"></a> display
 
@@ -38,9 +38,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:713](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L713)
+[packages/formula/src/type/index.ts:542](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L542)
 
----
+___
 
 ### <a id="errors" name="errors"></a> errors
 
@@ -48,9 +48,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:717](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L717)
+[packages/formula/src/type/index.ts:546](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L546)
 
----
+___
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -58,9 +58,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:718](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L718)
+[packages/formula/src/type/index.ts:547](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L547)
 
----
+___
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -68,9 +68,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:715](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L715)
+[packages/formula/src/type/index.ts:544](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L544)
 
----
+___
 
 ### <a id="replacements" name="replacements"></a> replacements
 
@@ -78,14 +78,14 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:714](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L714)
+[packages/formula/src/type/index.ts:543](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L543)
 
----
+___
 
 ### <a id="type" name="type"></a> type
 
-• `Readonly` **type**: `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"`
+• `Readonly` **type**: ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"``
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:716](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L716)
+[packages/formula/src/type/index.ts:545](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L545)

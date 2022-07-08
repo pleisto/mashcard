@@ -2,9 +2,9 @@
 
 ## Type parameters
 
-| Name | Type                                          |
-| :--- | :-------------------------------------------- |
-| `T`  | extends `UsedFormulaType` = `UsedFormulaType` |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`UsedFormulaType`](../README.md#usedformulatype) = [`UsedFormulaType`](../README.md#usedformulatype) |
 
 ## Table of contents
 
@@ -19,13 +19,13 @@
 
 ### <a id="default" name="default"></a> default
 
-• `Optional` `Readonly` **default**: [`TypedResult`](../README.md#typedresult)<`T`\>
+• `Optional` `Readonly` **default**: [`AnyTypeResult`](../README.md#anytyperesult)<`T`\>
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:379](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L379)
+[packages/formula/src/type/index.ts:208](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L208)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -33,9 +33,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:377](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L377)
+[packages/formula/src/type/index.ts:206](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L206)
 
----
+___
 
 ### <a id="spread" name="spread"></a> spread
 
@@ -43,9 +43,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:380](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L380)
+[packages/formula/src/type/index.ts:209](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L209)
 
----
+___
 
 ### <a id="type" name="type"></a> type
 
@@ -53,4 +53,4 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:378](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L378)
+[packages/formula/src/type/index.ts:207](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L207)

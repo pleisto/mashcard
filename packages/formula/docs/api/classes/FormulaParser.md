@@ -18,7 +18,7 @@
 - [BooleanLiteralExpression](FormulaParser.md#booleanliteralexpression)
 - [FunctionCall](FormulaParser.md#functioncall)
 - [NumberLiteralExpression](FormulaParser.md#numberliteralexpression)
-- [RECORDING_PHASE](FormulaParser.md#recording_phase)
+- [RECORDING\_PHASE](FormulaParser.md#recording_phase)
 - [accessExpression](FormulaParser.md#accessexpression)
 - [additionExpression](FormulaParser.md#additionexpression)
 - [arrayExpression](FormulaParser.md#arrayexpression)
@@ -50,13 +50,13 @@
 ### Methods
 
 - [ACTION](FormulaParser.md#action)
-- [AT_LEAST_ONE](FormulaParser.md#at_least_one)
-- [AT_LEAST_ONE_SEP](FormulaParser.md#at_least_one_sep)
+- [AT\_LEAST\_ONE](FormulaParser.md#at_least_one)
+- [AT\_LEAST\_ONE\_SEP](FormulaParser.md#at_least_one_sep)
 - [BACKTRACK](FormulaParser.md#backtrack)
 - [CONSUME](FormulaParser.md#consume)
 - [LA](FormulaParser.md#la)
 - [MANY](FormulaParser.md#many)
-- [MANY_SEP](FormulaParser.md#many_sep)
+- [MANY\_SEP](FormulaParser.md#many_sep)
 - [OPTION](FormulaParser.md#option)
 - [OR](FormulaParser.md#or)
 - [OR1](FormulaParser.md#or1)
@@ -68,9 +68,9 @@
 - [OR7](FormulaParser.md#or7)
 - [OR8](FormulaParser.md#or8)
 - [OR9](FormulaParser.md#or9)
-- [OVERRIDE_RULE](FormulaParser.md#override_rule)
+- [OVERRIDE\_RULE](FormulaParser.md#override_rule)
 - [RULE](FormulaParser.md#rule)
-- [SKIP_TOKEN](FormulaParser.md#skip_token)
+- [SKIP\_TOKEN](FormulaParser.md#skip_token)
 - [SUBRULE](FormulaParser.md#subrule)
 - [atLeastOne](FormulaParser.md#atleastone)
 - [canTokenTypeBeDeletedInRecovery](FormulaParser.md#cantokentypebedeletedinrecovery)
@@ -110,7 +110,7 @@ CstParser.constructor
 
 [packages/formula/src/grammar/parser.ts:318](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L318)
 
----
+___
 
 ### <a id="booleanliteralexpression" name="booleanliteralexpression"></a> BooleanLiteralExpression
 
@@ -120,7 +120,7 @@ CstParser.constructor
 
 [packages/formula/src/grammar/parser.ts:300](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L300)
 
----
+___
 
 ### <a id="functioncall" name="functioncall"></a> FunctionCall
 
@@ -130,7 +130,7 @@ CstParser.constructor
 
 [packages/formula/src/grammar/parser.ts:304](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L304)
 
----
+___
 
 ### <a id="numberliteralexpression" name="numberliteralexpression"></a> NumberLiteralExpression
 
@@ -140,29 +140,28 @@ CstParser.constructor
 
 [packages/formula/src/grammar/parser.ts:289](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L289)
 
----
+___
 
-### <a id="recording_phase" name="recording_phase"></a> RECORDING_PHASE
+### <a id="recording_phase" name="recording_phase"></a> RECORDING\_PHASE
 
-• **RECORDING_PHASE**: `boolean`
+• **RECORDING\_PHASE**: `boolean`
 
 Flag indicating the Parser is at the recording phase.
 Can be used to implement methods similar to BaseParser.ACTION
 Or any other logic to requires knowledge of the recording phase.
 See:
-
-- https://chevrotain.io/docs/guide/internals.html#grammar-recording
-  to learn more on the recording phase and how Chevrotain works.
+  - https://chevrotain.io/docs/guide/internals.html#grammar-recording
+to learn more on the recording phase and how Chevrotain works.
 
 #### Inherited from
 
-CstParser.RECORDING_PHASE
+CstParser.RECORDING\_PHASE
 
 #### Defined in
 
 node_modules/@chevrotain/types/api.d.ts:40
 
----
+___
 
 ### <a id="accessexpression" name="accessexpression"></a> accessExpression
 
@@ -172,7 +171,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 [packages/formula/src/grammar/parser.ts:149](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L149)
 
----
+___
 
 ### <a id="additionexpression" name="additionexpression"></a> additionExpression
 
@@ -182,7 +181,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 [packages/formula/src/grammar/parser.ts:133](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L133)
 
----
+___
 
 ### <a id="arrayexpression" name="arrayexpression"></a> arrayExpression
 
@@ -192,7 +191,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 [packages/formula/src/grammar/parser.ts:215](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L215)
 
----
+___
 
 ### <a id="atomicexpression" name="atomicexpression"></a> atomicExpression
 
@@ -202,7 +201,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 [packages/formula/src/grammar/parser.ts:206](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L206)
 
----
+___
 
 ### <a id="blockexpression" name="blockexpression"></a> blockExpression
 
@@ -212,7 +211,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 [packages/formula/src/grammar/parser.ts:267](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L267)
 
----
+___
 
 ### <a id="chainexpression" name="chainexpression"></a> chainExpression
 
@@ -222,7 +221,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 [packages/formula/src/grammar/parser.ts:174](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L174)
 
----
+___
 
 ### <a id="combineexpression" name="combineexpression"></a> combineExpression
 
@@ -232,7 +231,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 [packages/formula/src/grammar/parser.ts:93](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L93)
 
----
+___
 
 ### <a id="compareexpression" name="compareexpression"></a> compareExpression
 
@@ -242,7 +241,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 [packages/formula/src/grammar/parser.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L109)
 
----
+___
 
 ### <a id="concatexpression" name="concatexpression"></a> concatExpression
 
@@ -252,7 +251,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 [packages/formula/src/grammar/parser.ts:125](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L125)
 
----
+___
 
 ### <a id="constantexpression" name="constantexpression"></a> constantExpression
 
@@ -262,7 +261,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 [packages/formula/src/grammar/parser.ts:272](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L272)
 
----
+___
 
 ### <a id="equalcompareexpression" name="equalcompareexpression"></a> equalCompareExpression
 
@@ -272,7 +271,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 [packages/formula/src/grammar/parser.ts:101](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L101)
 
----
+___
 
 ### <a id="errors" name="errors"></a> errors
 
@@ -286,7 +285,7 @@ CstParser.errors
 
 node_modules/@chevrotain/types/api.d.ts:30
 
----
+___
 
 ### <a id="expression" name="expression"></a> expression
 
@@ -296,7 +295,7 @@ node_modules/@chevrotain/types/api.d.ts:30
 
 [packages/formula/src/grammar/parser.ts:85](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L85)
 
----
+___
 
 ### <a id="inexpression" name="inexpression"></a> inExpression
 
@@ -306,7 +305,7 @@ node_modules/@chevrotain/types/api.d.ts:30
 
 [packages/formula/src/grammar/parser.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L117)
 
----
+___
 
 ### <a id="input" name="input"></a> input
 
@@ -320,7 +319,7 @@ CstParser.input
 
 node_modules/@chevrotain/types/api.d.ts:857
 
----
+___
 
 ### <a id="keyexpression" name="keyexpression"></a> keyExpression
 
@@ -330,7 +329,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 [packages/formula/src/grammar/parser.ts:186](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L186)
 
----
+___
 
 ### <a id="lazyvariableexpression" name="lazyvariableexpression"></a> lazyVariableExpression
 
@@ -340,7 +339,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 [packages/formula/src/grammar/parser.ts:256](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L256)
 
----
+___
 
 ### <a id="multiplicationexpression" name="multiplicationexpression"></a> multiplicationExpression
 
@@ -350,7 +349,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 [packages/formula/src/grammar/parser.ts:141](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L141)
 
----
+___
 
 ### <a id="notexpression" name="notexpression"></a> notExpression
 
@@ -360,7 +359,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 [packages/formula/src/grammar/parser.ts:158](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L158)
 
----
+___
 
 ### <a id="parenthesisexpression" name="parenthesisexpression"></a> parenthesisExpression
 
@@ -370,7 +369,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 [packages/formula/src/grammar/parser.ts:281](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L281)
 
----
+___
 
 ### <a id="predicateexpression" name="predicateexpression"></a> predicateExpression
 
@@ -380,7 +379,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 [packages/formula/src/grammar/parser.ts:242](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L242)
 
----
+___
 
 ### <a id="rangeexpression" name="rangeexpression"></a> rangeExpression
 
@@ -390,7 +389,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 [packages/formula/src/grammar/parser.ts:166](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L166)
 
----
+___
 
 ### <a id="recordexpression" name="recordexpression"></a> recordExpression
 
@@ -400,7 +399,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 [packages/formula/src/grammar/parser.ts:223](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L223)
 
----
+___
 
 ### <a id="recordfield" name="recordfield"></a> recordField
 
@@ -410,7 +409,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 [packages/formula/src/grammar/parser.ts:236](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L236)
 
----
+___
 
 ### <a id="referenceexpression" name="referenceexpression"></a> referenceExpression
 
@@ -420,7 +419,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 [packages/formula/src/grammar/parser.ts:251](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L251)
 
----
+___
 
 ### <a id="simpleatomicexpression" name="simpleatomicexpression"></a> simpleAtomicExpression
 
@@ -430,7 +429,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 [packages/formula/src/grammar/parser.ts:194](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L194)
 
----
+___
 
 ### <a id="startexpression" name="startexpression"></a> startExpression
 
@@ -448,24 +447,22 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 The Semantic Actions wrapper.
 Should be used to wrap semantic actions that either:
-
 - May fail when executing in "recording phase".
 - Have global side effects that should be avoided during "recording phase".
 
 For more information see:
-
-- https://chevrotain.io/docs/guide/internals.html#grammar-recording
+  - https://chevrotain.io/docs/guide/internals.html#grammar-recording
 
 #### Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 #### Parameters
 
-| Name   | Type      |
-| :----- | :-------- |
+| Name | Type |
+| :------ | :------ |
 | `impl` | () => `T` |
 
 #### Returns
@@ -476,9 +473,9 @@ For more information see:
 
 CstParser.ACTION
 
----
+___
 
-### <a id="at_least_one" name="at_least_one"></a> AT_LEAST_ONE
+### <a id="at_least_one" name="at_least_one"></a> AT\_LEAST\_ONE
 
 ▸ `Protected` **AT_LEAST_ONE**(`actionORMethodDef`): `void`
 
@@ -492,9 +489,9 @@ MANY
 
 #### Parameters
 
-| Name                | Type                                                      | Description                                                                                                                          |
-| :------------------ | :-------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
-| `actionORMethodDef` | `GrammarAction`<`any`\> \| `DSLMethodOptsWithErr`<`any`\> | The grammar action to optionally invoke multiple times or an "OPTIONS" object describing the grammar action and optional properties. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `actionORMethodDef` | `GrammarAction`<`any`\> \| `DSLMethodOptsWithErr`<`any`\> | The grammar action to optionally invoke multiple times                             or an "OPTIONS" object describing the grammar action and optional properties. |
 
 #### Returns
 
@@ -502,11 +499,11 @@ MANY
 
 #### Inherited from
 
-CstParser.AT_LEAST_ONE
+CstParser.AT\_LEAST\_ONE
 
----
+___
 
-### <a id="at_least_one_sep" name="at_least_one_sep"></a> AT_LEAST_ONE_SEP
+### <a id="at_least_one_sep" name="at_least_one_sep"></a> AT\_LEAST\_ONE\_SEP
 
 ▸ `Protected` **AT_LEAST_ONE_SEP**(`options`): `void`
 
@@ -522,8 +519,8 @@ MANY_SEP
 
 #### Parameters
 
-| Name      | Type                              | Description                                                                           |
-| :-------- | :-------------------------------- | :------------------------------------------------------------------------------------ |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `options` | `AtLeastOneSepMethodOpts`<`any`\> | An object defining the grammar of each iteration and the separator between iterations |
 
 #### Returns
@@ -532,9 +529,9 @@ MANY_SEP
 
 #### Inherited from
 
-CstParser.AT_LEAST_ONE_SEP
+CstParser.AT\_LEAST\_ONE\_SEP
 
----
+___
 
 ### <a id="backtrack" name="backtrack"></a> BACKTRACK
 
@@ -543,15 +540,15 @@ CstParser.AT_LEAST_ONE_SEP
 #### Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 #### Parameters
 
-| Name          | Type                        | Description                                         |
-| :------------ | :-------------------------- | :-------------------------------------------------- |
-| `grammarRule` | (...`args`: `any`[]) => `T` | The rule to try and parse in backtracking mode.     |
-| `args?`       | `any`[]                     | argument to be passed to the grammar rule execution |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `grammarRule` | (...`args`: `any`[]) => `T` | The rule to try and parse in backtracking mode. |
+| `args?` | `any`[] | argument to be passed to the grammar rule execution |
 
 #### Returns
 
@@ -571,7 +568,7 @@ a lookahead function that will try to parse the given grammarRule and will retur
 
 CstParser.BACKTRACK
 
----
+___
 
 ### <a id="consume" name="consume"></a> CONSUME
 
@@ -588,7 +585,6 @@ inside a the top level rule. What this means is that if a terminal appears
 more than once in a single rule, each appearance must have a **different** index.
 
 For example:
-
 ```
   this.RULE("qualifiedName", () => {
   this.CONSUME1(Identifier);
@@ -606,9 +602,9 @@ For example:
 
 #### Parameters
 
-| Name       | Type                | Description                                            |
-| :--------- | :------------------ | :----------------------------------------------------- |
-| `tokType`  | `TokenType`         | The Type of the token to be consumed.                  |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `tokType` | `TokenType` | The Type of the token to be consumed. |
 | `options?` | `ConsumeMethodOpts` | optional properties to modify the behavior of CONSUME. |
 
 #### Returns
@@ -619,7 +615,7 @@ For example:
 
 CstParser.CONSUME
 
----
+___
 
 ### <a id="la" name="la"></a> LA
 
@@ -639,8 +635,8 @@ https://chevrotain.io/docs/features/gates.html
 
 #### Parameters
 
-| Name      | Type     |
-| :-------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `howMuch` | `number` |
 
 #### Returns
@@ -651,7 +647,7 @@ https://chevrotain.io/docs/features/gates.html
 
 CstParser.LA
 
----
+___
 
 ### <a id="many" name="many"></a> MANY
 
@@ -661,9 +657,7 @@ Parsing DSL method, that indicates a repetition of zero or more.
 This is equivalent to EBNF repetition {...}.
 
 Note that there are two syntax forms:
-
 - Passing the grammar action directly:
-
   ```
     this.MANY(() => {
       this.CONSUME(Comma)
@@ -690,9 +684,9 @@ of the repetition production in it's top rule.
 
 #### Parameters
 
-| Name                | Type                                               | Description                                                                                                                          |
-| :------------------ | :------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
-| `actionORMethodDef` | `GrammarAction`<`any`\> \| `DSLMethodOpts`<`any`\> | The grammar action to optionally invoke multiple times or an "OPTIONS" object describing the grammar action and optional properties. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `actionORMethodDef` | `GrammarAction`<`any`\> \| `DSLMethodOpts`<`any`\> | The grammar action to optionally invoke multiple times                             or an "OPTIONS" object describing the grammar action and optional properties. |
 
 #### Returns
 
@@ -702,9 +696,9 @@ of the repetition production in it's top rule.
 
 CstParser.MANY
 
----
+___
 
-### <a id="many_sep" name="many_sep"></a> MANY_SEP
+### <a id="many_sep" name="many_sep"></a> MANY\_SEP
 
 ▸ `Protected` **MANY_SEP**(`options`): `void`
 
@@ -735,8 +729,8 @@ of the repetition production in it's top rule.
 
 #### Parameters
 
-| Name      | Type                        | Description                                                                           |
-| :-------- | :-------------------------- | :------------------------------------------------------------------------------------ |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `options` | `ManySepMethodOpts`<`any`\> | An object defining the grammar of each iteration and the separator between iterations |
 
 #### Returns
@@ -745,9 +739,9 @@ of the repetition production in it's top rule.
 
 #### Inherited from
 
-CstParser.MANY_SEP
+CstParser.MANY\_SEP
 
----
+___
 
 ### <a id="option" name="option"></a> OPTION
 
@@ -757,9 +751,7 @@ Parsing DSL Method that Indicates an Optional production.
 in EBNF notation this is equivalent to: "[...]".
 
 Note that there are two syntax forms:
-
 - Passing the grammar action directly:
-
   ```
     this.OPTION(() => {
       this.CONSUME(Digit)}
@@ -783,28 +775,28 @@ of the optional production in it's top rule.
 
 #### Type parameters
 
-| Name  |
-| :---- |
+| Name |
+| :------ |
 | `OUT` |
 
 #### Parameters
 
-| Name                | Type                                               | Description                                                                                                                |
-| :------------------ | :------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `actionORMethodDef` | `GrammarAction`<`OUT`\> \| `DSLMethodOpts`<`OUT`\> | The grammar action to optionally invoke once or an "OPTIONS" object describing the grammar action and optional properties. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `actionORMethodDef` | `GrammarAction`<`OUT`\> \| `DSLMethodOpts`<`OUT`\> | The grammar action to optionally invoke once                             or an "OPTIONS" object describing the grammar action and optional properties. |
 
 #### Returns
 
 `undefined` \| `OUT`
 
 The `GrammarAction` return value (OUT) if the optional syntax is encountered
-or `undefined` if not.
+         or `undefined` if not.
 
 #### Inherited from
 
 CstParser.OPTION
 
----
+___
 
 ### <a id="or" name="or"></a> OR
 
@@ -818,7 +810,6 @@ This means that the **first** matching alternative is always chosen.
 There are several forms for the inner alternatives array:
 
 - Passing alternatives array directly:
-
   ```
     this.OR([
       { ALT:() => { this.CONSUME(One) }},
@@ -828,7 +819,6 @@ There are several forms for the inner alternatives array:
   ```
 
 - Passing alternative array directly with predicates (GATE):
-
   ```
     this.OR([
       { GATE: predicateFunc1, ALT:() => { this.CONSUME(One) }},
@@ -838,7 +828,6 @@ There are several forms for the inner alternatives array:
   ```
 
 - These syntax forms can also be mixed:
-
   ```
     this.OR([
       {
@@ -871,13 +860,13 @@ of the alternation production in it's top rule.
 #### Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 #### Parameters
 
-| Name         | Type                                     | Description                                                                                       |
-| :----------- | :--------------------------------------- | :------------------------------------------------------------------------------------------------ |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `altsOrOpts` | `IOrAlt`<`T`\>[] \| `OrMethodOpts`<`T`\> | A set of alternatives or an "OPTIONS" object describing the alternatives and optional properties. |
 
 #### Returns
@@ -894,8 +883,8 @@ CstParser.OR
 
 #### Parameters
 
-| Name         | Type                                         |
-| :----------- | :------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `altsOrOpts` | `IOrAlt`<`any`\>[] \| `OrMethodOpts`<`any`\> |
 
 #### Returns
@@ -906,7 +895,7 @@ CstParser.OR
 
 CstParser.OR
 
----
+___
 
 ### <a id="or1" name="or1"></a> OR1
 
@@ -914,8 +903,8 @@ CstParser.OR
 
 #### Parameters
 
-| Name         | Type                                         |
-| :----------- | :------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `altsOrOpts` | `IOrAlt`<`any`\>[] \| `OrMethodOpts`<`any`\> |
 
 #### Returns
@@ -926,7 +915,7 @@ CstParser.OR
 
 CstParser.OR1
 
----
+___
 
 ### <a id="or2" name="or2"></a> OR2
 
@@ -934,8 +923,8 @@ CstParser.OR1
 
 #### Parameters
 
-| Name         | Type                                         |
-| :----------- | :------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `altsOrOpts` | `IOrAlt`<`any`\>[] \| `OrMethodOpts`<`any`\> |
 
 #### Returns
@@ -946,7 +935,7 @@ CstParser.OR1
 
 CstParser.OR2
 
----
+___
 
 ### <a id="or3" name="or3"></a> OR3
 
@@ -954,8 +943,8 @@ CstParser.OR2
 
 #### Parameters
 
-| Name         | Type                                         |
-| :----------- | :------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `altsOrOpts` | `IOrAlt`<`any`\>[] \| `OrMethodOpts`<`any`\> |
 
 #### Returns
@@ -966,7 +955,7 @@ CstParser.OR2
 
 CstParser.OR3
 
----
+___
 
 ### <a id="or4" name="or4"></a> OR4
 
@@ -974,8 +963,8 @@ CstParser.OR3
 
 #### Parameters
 
-| Name         | Type                                         |
-| :----------- | :------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `altsOrOpts` | `IOrAlt`<`any`\>[] \| `OrMethodOpts`<`any`\> |
 
 #### Returns
@@ -986,7 +975,7 @@ CstParser.OR3
 
 CstParser.OR4
 
----
+___
 
 ### <a id="or5" name="or5"></a> OR5
 
@@ -994,8 +983,8 @@ CstParser.OR4
 
 #### Parameters
 
-| Name         | Type                                         |
-| :----------- | :------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `altsOrOpts` | `IOrAlt`<`any`\>[] \| `OrMethodOpts`<`any`\> |
 
 #### Returns
@@ -1006,7 +995,7 @@ CstParser.OR4
 
 CstParser.OR5
 
----
+___
 
 ### <a id="or6" name="or6"></a> OR6
 
@@ -1014,8 +1003,8 @@ CstParser.OR5
 
 #### Parameters
 
-| Name         | Type                                         |
-| :----------- | :------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `altsOrOpts` | `IOrAlt`<`any`\>[] \| `OrMethodOpts`<`any`\> |
 
 #### Returns
@@ -1026,7 +1015,7 @@ CstParser.OR5
 
 CstParser.OR6
 
----
+___
 
 ### <a id="or7" name="or7"></a> OR7
 
@@ -1034,8 +1023,8 @@ CstParser.OR6
 
 #### Parameters
 
-| Name         | Type                                         |
-| :----------- | :------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `altsOrOpts` | `IOrAlt`<`any`\>[] \| `OrMethodOpts`<`any`\> |
 
 #### Returns
@@ -1046,7 +1035,7 @@ CstParser.OR6
 
 CstParser.OR7
 
----
+___
 
 ### <a id="or8" name="or8"></a> OR8
 
@@ -1054,8 +1043,8 @@ CstParser.OR7
 
 #### Parameters
 
-| Name         | Type                                         |
-| :----------- | :------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `altsOrOpts` | `IOrAlt`<`any`\>[] \| `OrMethodOpts`<`any`\> |
 
 #### Returns
@@ -1066,7 +1055,7 @@ CstParser.OR7
 
 CstParser.OR8
 
----
+___
 
 ### <a id="or9" name="or9"></a> OR9
 
@@ -1074,8 +1063,8 @@ CstParser.OR8
 
 #### Parameters
 
-| Name         | Type                                         |
-| :----------- | :------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `altsOrOpts` | `IOrAlt`<`any`\>[] \| `OrMethodOpts`<`any`\> |
 
 #### Returns
@@ -1086,9 +1075,9 @@ CstParser.OR8
 
 CstParser.OR9
 
----
+___
 
-### <a id="override_rule" name="override_rule"></a> OVERRIDE_RULE
+### <a id="override_rule" name="override_rule"></a> OVERRIDE\_RULE
 
 ▸ `Protected` **OVERRIDE_RULE**<`F`\>(`name`, `implementation`, `config?`): `ParserMethod`<`Parameters`<`F`\>, `CstNode`\>
 
@@ -1097,17 +1086,17 @@ See usage example in: https://github.com/chevrotain/chevrotain/blob/master/examp
 
 #### Type parameters
 
-| Name | Type                 |
-| :--- | :------------------- |
-| `F`  | extends () => `void` |
+| Name | Type |
+| :------ | :------ |
+| `F` | extends () => `void` |
 
 #### Parameters
 
-| Name             | Type                      |
-| :--------------- | :------------------------ |
-| `name`           | `string`                  |
-| `implementation` | `F`                       |
-| `config?`        | `IRuleConfig`<`CstNode`\> |
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+| `implementation` | `F` |
+| `config?` | `IRuleConfig`<`CstNode`\> |
 
 #### Returns
 
@@ -1115,9 +1104,9 @@ See usage example in: https://github.com/chevrotain/chevrotain/blob/master/examp
 
 #### Inherited from
 
-CstParser.OVERRIDE_RULE
+CstParser.OVERRIDE\_RULE
 
----
+___
 
 ### <a id="rule" name="rule"></a> RULE
 
@@ -1130,17 +1119,17 @@ be called without parameters during the grammar recording phase.
 
 #### Type parameters
 
-| Name | Type                 |
-| :--- | :------------------- |
-| `F`  | extends () => `void` |
+| Name | Type |
+| :------ | :------ |
+| `F` | extends () => `void` |
 
 #### Parameters
 
-| Name             | Type                      |
-| :--------------- | :------------------------ |
-| `name`           | `string`                  |
-| `implementation` | `F`                       |
-| `config?`        | `IRuleConfig`<`CstNode`\> |
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+| `implementation` | `F` |
+| `config?` | `IRuleConfig`<`CstNode`\> |
 
 #### Returns
 
@@ -1150,9 +1139,9 @@ be called without parameters during the grammar recording phase.
 
 CstParser.RULE
 
----
+___
 
-### <a id="skip_token" name="skip_token"></a> SKIP_TOKEN
+### <a id="skip_token" name="skip_token"></a> SKIP\_TOKEN
 
 ▸ `Protected` **SKIP_TOKEN**(): `IToken`
 
@@ -1162,9 +1151,9 @@ CstParser.RULE
 
 #### Inherited from
 
-CstParser.SKIP_TOKEN
+CstParser.SKIP\_TOKEN
 
----
+___
 
 ### <a id="subrule" name="subrule"></a> SUBRULE
 
@@ -1187,16 +1176,16 @@ of the sub rule invocation in its rule.
 
 #### Type parameters
 
-| Name   | Type                |
-| :----- | :------------------ |
+| Name | Type |
+| :------ | :------ |
 | `ARGS` | extends `unknown`[] |
 
 #### Parameters
 
-| Name         | Type                               |
-| :----------- | :--------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `ruleToCall` | `ParserMethod`<`ARGS`, `CstNode`\> |
-| `options?`   | `SubruleMethodOpts`<`ARGS`\>       |
+| `options?` | `SubruleMethodOpts`<`ARGS`\> |
 
 #### Returns
 
@@ -1206,7 +1195,7 @@ of the sub rule invocation in its rule.
 
 CstParser.SUBRULE
 
----
+___
 
 ### <a id="atleastone" name="atleastone"></a> atLeastOne
 
@@ -1224,9 +1213,9 @@ AT_LEAST_ONE
 
 #### Parameters
 
-| Name                | Type                                                      |
-| :------------------ | :-------------------------------------------------------- |
-| `idx`               | `number`                                                  |
+| Name | Type |
+| :------ | :------ |
+| `idx` | `number` |
 | `actionORMethodDef` | `GrammarAction`<`any`\> \| `DSLMethodOptsWithErr`<`any`\> |
 
 #### Returns
@@ -1237,7 +1226,7 @@ AT_LEAST_ONE
 
 CstParser.atLeastOne
 
----
+___
 
 ### <a id="cantokentypebedeletedinrecovery" name="cantokentypebedeletedinrecovery"></a> canTokenTypeBeDeletedInRecovery
 
@@ -1248,8 +1237,8 @@ The method receives the expected token type. The token that would be deleted can
 
 #### Parameters
 
-| Name      | Type        |
-| :-------- | :---------- |
+| Name | Type |
+| :------ | :------ |
 | `tokType` | `TokenType` |
 
 #### Returns
@@ -1260,7 +1249,7 @@ The method receives the expected token type. The token that would be deleted can
 
 CstParser.canTokenTypeBeDeletedInRecovery
 
----
+___
 
 ### <a id="cantokentypebeinsertedinrecovery" name="cantokentypebeinsertedinrecovery"></a> canTokenTypeBeInsertedInRecovery
 
@@ -1274,8 +1263,8 @@ as the max of the cardinality will be greater than the min value (and this is a 
 
 #### Parameters
 
-| Name      | Type        |
-| :-------- | :---------- |
+| Name | Type |
+| :------ | :------ |
 | `tokType` | `TokenType` |
 
 #### Returns
@@ -1286,7 +1275,7 @@ as the max of the cardinality will be greater than the min value (and this is a 
 
 CstParser.canTokenTypeBeInsertedInRecovery
 
----
+___
 
 ### <a id="computecontentassist" name="computecontentassist"></a> computeContentAssist
 
@@ -1294,9 +1283,9 @@ CstParser.canTokenTypeBeInsertedInRecovery
 
 #### Parameters
 
-| Name             | Type       | Description                                                     |
-| :--------------- | :--------- | :-------------------------------------------------------------- |
-| `startRuleName`  | `string`   |                                                                 |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `startRuleName` | `string` |  |
 | `precedingInput` | `IToken`[] | The token vector up to (not including) the content assist point |
 
 #### Returns
@@ -1307,7 +1296,7 @@ CstParser.canTokenTypeBeInsertedInRecovery
 
 CstParser.computeContentAssist
 
----
+___
 
 ### <a id="consume-1" name="consume-1"></a> consume
 
@@ -1325,10 +1314,10 @@ CONSUME
 
 #### Parameters
 
-| Name       | Type                |
-| :--------- | :------------------ |
-| `idx`      | `number`            |
-| `tokType`  | `TokenType`         |
+| Name | Type |
+| :------ | :------ |
+| `idx` | `number` |
+| `tokType` | `TokenType` |
 | `options?` | `ConsumeMethodOpts` |
 
 #### Returns
@@ -1339,7 +1328,7 @@ CONSUME
 
 CstParser.consume
 
----
+___
 
 ### <a id="getbasecstvisitorconstructor" name="getbasecstvisitorconstructor"></a> getBaseCstVisitorConstructor
 
@@ -1347,9 +1336,9 @@ CstParser.consume
 
 #### Type parameters
 
-| Name  | Type  |
-| :---- | :---- |
-| `IN`  | `any` |
+| Name | Type |
+| :------ | :------ |
+| `IN` | `any` |
 | `OUT` | `any` |
 
 #### Returns
@@ -1360,15 +1349,15 @@ CstParser.consume
 
 ##### Parameters
 
-| Name      | Type    |
-| :-------- | :------ |
+| Name | Type |
+| :------ | :------ |
 | `...args` | `any`[] |
 
 #### Inherited from
 
 CstParser.getBaseCstVisitorConstructor
 
----
+___
 
 ### <a id="getbasecstvisitorconstructorwithdefaults" name="getbasecstvisitorconstructorwithdefaults"></a> getBaseCstVisitorConstructorWithDefaults
 
@@ -1376,9 +1365,9 @@ CstParser.getBaseCstVisitorConstructor
 
 #### Type parameters
 
-| Name  | Type  |
-| :---- | :---- |
-| `IN`  | `any` |
+| Name | Type |
+| :------ | :------ |
+| `IN` | `any` |
 | `OUT` | `any` |
 
 #### Returns
@@ -1389,15 +1378,15 @@ CstParser.getBaseCstVisitorConstructor
 
 ##### Parameters
 
-| Name      | Type    |
-| :-------- | :------ |
+| Name | Type |
+| :------ | :------ |
 | `...args` | `any`[] |
 
 #### Inherited from
 
 CstParser.getBaseCstVisitorConstructorWithDefaults
 
----
+___
 
 ### <a id="getgastproductions" name="getgastproductions"></a> getGAstProductions
 
@@ -1411,7 +1400,7 @@ CstParser.getBaseCstVisitorConstructorWithDefaults
 
 CstParser.getGAstProductions
 
----
+___
 
 ### <a id="getnextpossibletokentypes" name="getnextpossibletokentypes"></a> getNextPossibleTokenTypes
 
@@ -1423,8 +1412,8 @@ CstParser.getGAstProductions
 
 #### Parameters
 
-| Name          | Type                |
-| :------------ | :------------------ |
+| Name | Type |
+| :------ | :------ |
 | `grammarPath` | `ITokenGrammarPath` |
 
 #### Returns
@@ -1435,7 +1424,7 @@ CstParser.getGAstProductions
 
 CstParser.getNextPossibleTokenTypes
 
----
+___
 
 ### <a id="getserializedgastproductions" name="getserializedgastproductions"></a> getSerializedGastProductions
 
@@ -1449,7 +1438,7 @@ CstParser.getNextPossibleTokenTypes
 
 CstParser.getSerializedGastProductions
 
----
+___
 
 ### <a id="gettokentoinsert" name="gettokentoinsert"></a> getTokenToInsert
 
@@ -1461,8 +1450,8 @@ For example if an IntegerToken is required provide one with the image '0' so it 
 
 #### Parameters
 
-| Name      | Type        |
-| :-------- | :---------- |
+| Name | Type |
+| :------ | :------ |
 | `tokType` | `TokenType` |
 
 #### Returns
@@ -1473,7 +1462,7 @@ For example if an IntegerToken is required provide one with the image '0' so it 
 
 CstParser.getTokenToInsert
 
----
+___
 
 ### <a id="many-1" name="many-1"></a> many
 
@@ -1491,9 +1480,9 @@ MANY
 
 #### Parameters
 
-| Name                | Type                                               |
-| :------------------ | :------------------------------------------------- |
-| `idx`               | `number`                                           |
+| Name | Type |
+| :------ | :------ |
+| `idx` | `number` |
 | `actionORMethodDef` | `GrammarAction`<`any`\> \| `DSLMethodOpts`<`any`\> |
 
 #### Returns
@@ -1504,7 +1493,7 @@ MANY
 
 CstParser.many
 
----
+___
 
 ### <a id="option-1" name="option-1"></a> option
 
@@ -1522,15 +1511,15 @@ OPTION
 
 #### Type parameters
 
-| Name  |
-| :---- |
+| Name |
+| :------ |
 | `OUT` |
 
 #### Parameters
 
-| Name                | Type                                               |
-| :------------------ | :------------------------------------------------- |
-| `idx`               | `number`                                           |
+| Name | Type |
+| :------ | :------ |
+| `idx` | `number` |
 | `actionORMethodDef` | `GrammarAction`<`OUT`\> \| `DSLMethodOpts`<`OUT`\> |
 
 #### Returns
@@ -1541,7 +1530,7 @@ OPTION
 
 CstParser.option
 
----
+___
 
 ### <a id="or-1" name="or-1"></a> or
 
@@ -1559,9 +1548,9 @@ OR
 
 #### Parameters
 
-| Name         | Type                                         |
-| :----------- | :------------------------------------------- |
-| `idx`        | `number`                                     |
+| Name | Type |
+| :------ | :------ |
+| `idx` | `number` |
 | `altsOrOpts` | `IOrAlt`<`any`\>[] \| `OrMethodOpts`<`any`\> |
 
 #### Returns
@@ -1577,14 +1566,14 @@ CstParser.or
 #### Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 #### Parameters
 
-| Name         | Type                                     |
-| :----------- | :--------------------------------------- |
-| `idx`        | `number`                                 |
+| Name | Type |
+| :------ | :------ |
+| `idx` | `number` |
 | `altsOrOpts` | `IOrAlt`<`T`\>[] \| `OrMethodOpts`<`T`\> |
 
 #### Returns
@@ -1595,7 +1584,7 @@ CstParser.or
 
 CstParser.or
 
----
+___
 
 ### <a id="performselfanalysis" name="performselfanalysis"></a> performSelfAnalysis
 
@@ -1612,7 +1601,7 @@ See: http://chevrotain.io/docs/tutorial/step2_parsing.html#under-the-hood
 
 CstParser.performSelfAnalysis
 
----
+___
 
 ### <a id="reset" name="reset"></a> reset
 
@@ -1629,7 +1618,7 @@ When overriding, remember to also invoke the super implementation!
 
 CstParser.reset
 
----
+___
 
 ### <a id="subrule-1" name="subrule-1"></a> subrule
 
@@ -1647,17 +1636,17 @@ SUBRULE
 
 #### Type parameters
 
-| Name   | Type                |
-| :----- | :------------------ |
+| Name | Type |
+| :------ | :------ |
 | `ARGS` | extends `unknown`[] |
 
 #### Parameters
 
-| Name         | Type                               |
-| :----------- | :--------------------------------- |
-| `idx`        | `number`                           |
+| Name | Type |
+| :------ | :------ |
+| `idx` | `number` |
 | `ruleToCall` | `ParserMethod`<`ARGS`, `CstNode`\> |
-| `options?`   | `SubruleMethodOpts`<`ARGS`\>       |
+| `options?` | `SubruleMethodOpts`<`ARGS`\> |
 
 #### Returns
 

@@ -18,9 +18,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:186](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L186)
+[packages/formula/src/controls/types.ts:188](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L188)
 
----
+___
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -28,9 +28,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:184](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L184)
+[packages/formula/src/controls/types.ts:186](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L186)
 
----
+___
 
 ### <a id="persistence" name="persistence"></a> persistence
 
@@ -38,9 +38,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:187](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L187)
+[packages/formula/src/controls/types.ts:189](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L189)
 
----
+___
 
 ### <a id="rowcount" name="rowcount"></a> rowCount
 
@@ -48,9 +48,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:185](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L185)
+[packages/formula/src/controls/types.ts:187](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L187)
 
----
+___
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
 
@@ -58,4 +58,4 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:183](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L183)
+[packages/formula/src/controls/types.ts:185](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L185)

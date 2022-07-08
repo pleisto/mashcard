@@ -20,7 +20,7 @@
 
 ### <a id="async" name="async"></a> async
 
-• **async**: `false`
+• **async**: ``false``
 
 #### Overrides
 
@@ -28,9 +28,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:813](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L813)
+[packages/formula/src/type/index.ts:642](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L642)
 
----
+___
 
 ### <a id="execendtime" name="execendtime"></a> execEndTime
 
@@ -42,9 +42,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:814](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L814)
+[packages/formula/src/type/index.ts:643](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L643)
 
----
+___
 
 ### <a id="execstarttime" name="execstarttime"></a> execStartTime
 
@@ -56,9 +56,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:801](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L801)
+[packages/formula/src/type/index.ts:630](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L630)
 
----
+___
 
 ### <a id="uuid" name="uuid"></a> uuid
 
@@ -70,9 +70,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:800](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L800)
+[packages/formula/src/type/index.ts:629](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L629)
 
----
+___
 
 ### <a id="variablevalue" name="variablevalue"></a> variableValue
 
@@ -84,4 +84,4 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:815](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L815)
+[packages/formula/src/type/index.ts:644](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L644)

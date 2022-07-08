@@ -17,7 +17,7 @@
 
 [packages/formula/src/tests/testType.ts:214](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L214)
 
----
+___
 
 ### <a id="testcases" name="testcases"></a> testCases
 

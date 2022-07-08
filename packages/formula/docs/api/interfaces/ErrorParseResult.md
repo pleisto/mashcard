@@ -31,9 +31,9 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:39](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L39)
+[packages/formula/src/grammar/core.ts:38](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L38)
 
----
+___
 
 ### <a id="errormessages" name="errormessages"></a> errorMessages
 
@@ -45,9 +45,9 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:64](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L64)
+[packages/formula/src/grammar/core.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L63)
 
----
+___
 
 ### <a id="errortype" name="errortype"></a> errorType
 
@@ -59,9 +59,9 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L65)
+[packages/formula/src/grammar/core.ts:64](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L64)
 
----
+___
 
 ### <a id="expressiontype" name="expressiontype"></a> expressionType
 
@@ -73,9 +73,9 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:36](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L36)
+[packages/formula/src/grammar/core.ts:35](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L35)
 
----
+___
 
 ### <a id="inputimage" name="inputimage"></a> inputImage
 
@@ -87,9 +87,9 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:34](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L34)
+[packages/formula/src/grammar/core.ts:33](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L33)
 
----
+___
 
 ### <a id="parseimage" name="parseimage"></a> parseImage
 
@@ -101,13 +101,13 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:35](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L35)
+[packages/formula/src/grammar/core.ts:34](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L34)
 
----
+___
 
 ### <a id="success" name="success"></a> success
 
-• **success**: `false`
+• **success**: ``false``
 
 #### Overrides
 
@@ -115,13 +115,13 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L63)
+[packages/formula/src/grammar/core.ts:62](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L62)
 
----
+___
 
 ### <a id="variableparseresult" name="variableparseresult"></a> variableParseResult
 
-• **variableParseResult**: [`VariableParseResult`](VariableParseResult.md) & { `cst`: `undefined` \| `CstNode` ; `kind`: `"unknown"` }
+• **variableParseResult**: [`VariableParseResult`](VariableParseResult.md) & { `cst`: `undefined` \| `CstNode` ; `kind`: ``"unknown"``  }
 
 #### Overrides
 
@@ -129,4 +129,4 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:66](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L66)
+[packages/formula/src/grammar/core.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L65)

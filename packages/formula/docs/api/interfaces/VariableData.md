@@ -12,13 +12,13 @@
 
 ### <a id="meta" name="meta"></a> meta
 
-• **meta**: `Pick`<[`VariableMetadata`](VariableMetadata.md), `"name"` \| `"namespaceId"` \| `"variableId"` \| `"richType"`\>
+• **meta**: `Pick`<[`VariableMetadata`](VariableMetadata.md), ``"name"`` \| ``"variableId"`` \| ``"namespaceId"`` \| ``"richType"``\>
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:876](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L876)
+[packages/formula/src/type/index.ts:705](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L705)
 
----
+___
 
 ### <a id="task" name="task"></a> task
 
@@ -26,9 +26,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:878](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L878)
+[packages/formula/src/type/index.ts:707](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L707)
 
----
+___
 
 ### <a id="variableparseresult" name="variableparseresult"></a> variableParseResult
 
@@ -36,4 +36,4 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:877](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L877)
+[packages/formula/src/type/index.ts:706](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L706)

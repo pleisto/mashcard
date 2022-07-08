@@ -20,9 +20,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:127](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L127)
+[packages/formula/src/controls/types.ts:125](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L125)
 
----
+___
 
 ### <a id="columnsize" name="columnsize"></a> columnSize
 
@@ -30,9 +30,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:124](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L124)
+[packages/formula/src/controls/types.ts:122](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L122)
 
----
+___
 
 ### <a id="endcell" name="endcell"></a> endCell
 
@@ -40,9 +40,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:129](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L129)
+[packages/formula/src/controls/types.ts:127](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L127)
 
----
+___
 
 ### <a id="rowids" name="rowids"></a> rowIds
 
@@ -50,9 +50,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:126](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L126)
+[packages/formula/src/controls/types.ts:124](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L124)
 
----
+___
 
 ### <a id="rowsize" name="rowsize"></a> rowSize
 
@@ -60,9 +60,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:125](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L125)
+[packages/formula/src/controls/types.ts:123](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L123)
 
----
+___
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
 
@@ -70,9 +70,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:123](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L123)
+[packages/formula/src/controls/types.ts:121](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L121)
 
----
+___
 
 ### <a id="startcell" name="startcell"></a> startCell
 
@@ -80,4 +80,4 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:128](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L128)
+[packages/formula/src/controls/types.ts:126](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L126)

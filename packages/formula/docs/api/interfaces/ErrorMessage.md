@@ -15,14 +15,14 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:932](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L932)
+[packages/formula/src/type/index.ts:761](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L761)
 
----
+___
 
 ### <a id="type" name="type"></a> type
 
-• `Readonly` **type**: [`ErrorType`](../README.md#errortype)
+• `Readonly` **type**: `ErrorType`
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:933](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L933)
+[packages/formula/src/type/index.ts:762](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L762)

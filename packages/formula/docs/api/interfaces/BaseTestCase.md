@@ -2,9 +2,9 @@
 
 ## Type parameters
 
-| Name | Type             |
-| :--- | :--------------- |
-| `T`  | extends `object` |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `object` |
 
 ## Table of contents
 
@@ -35,7 +35,7 @@
 
 [packages/formula/src/tests/testType.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L114)
 
----
+___
 
 ### <a id="definition" name="definition"></a> definition
 
@@ -45,7 +45,7 @@
 
 [packages/formula/src/tests/testType.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L110)
 
----
+___
 
 ### <a id="expected" name="expected"></a> expected
 
@@ -55,7 +55,7 @@
 
 [packages/formula/src/tests/testType.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L116)
 
----
+___
 
 ### <a id="expressiontype" name="expressiontype"></a> expressionType
 
@@ -65,7 +65,7 @@
 
 [packages/formula/src/tests/testType.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L113)
 
----
+___
 
 ### <a id="groupoptions" name="groupoptions"></a> groupOptions
 
@@ -75,7 +75,7 @@
 
 [packages/formula/src/tests/testType.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L112)
 
----
+___
 
 ### <a id="jesttitle" name="jesttitle"></a> jestTitle
 
@@ -85,7 +85,7 @@
 
 [packages/formula/src/tests/testType.ts:123](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L123)
 
----
+___
 
 ### <a id="label" name="label"></a> label
 
@@ -95,7 +95,7 @@
 
 [packages/formula/src/tests/testType.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L115)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -105,7 +105,7 @@
 
 [packages/formula/src/tests/testType.ts:119](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L119)
 
----
+___
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -115,7 +115,7 @@
 
 [packages/formula/src/tests/testType.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L117)
 
----
+___
 
 ### <a id="newabbrevinput" name="newabbrevinput"></a> newAbbrevInput
 
@@ -125,7 +125,7 @@
 
 [packages/formula/src/tests/testType.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L111)
 
----
+___
 
 ### <a id="position" name="position"></a> position
 
@@ -135,7 +135,7 @@
 
 [packages/formula/src/tests/testType.ts:121](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L121)
 
----
+___
 
 ### <a id="richtype" name="richtype"></a> richType
 
@@ -145,7 +145,7 @@
 
 [packages/formula/src/tests/testType.ts:120](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L120)
 
----
+___
 
 ### <a id="todomessage" name="todomessage"></a> todoMessage
 
@@ -155,7 +155,7 @@
 
 [packages/formula/src/tests/testType.ts:122](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L122)
 
----
+___
 
 ### <a id="variableid" name="variableid"></a> variableId
 

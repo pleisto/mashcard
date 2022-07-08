@@ -32,9 +32,9 @@ BaseCompletion.fallbackPositionOffset
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:482](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L482)
+[packages/formula/src/type/index.ts:311](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L311)
 
----
+___
 
 ### <a id="fallbackvalue" name="fallbackvalue"></a> fallbackValue
 
@@ -46,9 +46,9 @@ BaseCompletion.fallbackValue
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:481](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L481)
+[packages/formula/src/type/index.ts:310](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L310)
 
----
+___
 
 ### <a id="flags" name="flags"></a> flags
 
@@ -60,13 +60,13 @@ BaseCompletion.flags
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:479](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L479)
+[packages/formula/src/type/index.ts:308](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L308)
 
----
+___
 
 ### <a id="kind" name="kind"></a> kind
 
-• `Readonly` **kind**: `"spreadsheet"`
+• `Readonly` **kind**: ``"spreadsheet"``
 
 #### Overrides
 
@@ -74,9 +74,9 @@ BaseCompletion.kind
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:506](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L506)
+[packages/formula/src/type/index.ts:335](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L335)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -88,9 +88,9 @@ BaseCompletion.name
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:483](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L483)
+[packages/formula/src/type/index.ts:312](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L312)
 
----
+___
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -102,9 +102,9 @@ BaseCompletion.namespaceId
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:485](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L485)
+[packages/formula/src/type/index.ts:314](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L314)
 
----
+___
 
 ### <a id="preview" name="preview"></a> preview
 
@@ -116,9 +116,9 @@ BaseCompletion.preview
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:507](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L507)
+[packages/formula/src/type/index.ts:336](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L336)
 
----
+___
 
 ### <a id="replacements" name="replacements"></a> replacements
 
@@ -130,9 +130,9 @@ BaseCompletion.replacements
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:480](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L480)
+[packages/formula/src/type/index.ts:309](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L309)
 
----
+___
 
 ### <a id="weight" name="weight"></a> weight
 
@@ -144,4 +144,4 @@ BaseCompletion.weight
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:478](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L478)
+[packages/formula/src/type/index.ts:307](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L307)

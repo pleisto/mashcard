@@ -74,8 +74,8 @@
 
 #### Parameters
 
-| Name                | Type                                                        |
-| :------------------ | :---------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `__namedParameters` | [`FormulaContextArgs`](../interfaces/FormulaContextArgs.md) |
 
 ## Properties
@@ -92,7 +92,7 @@
 
 [packages/formula/src/context/context.ts:161](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L161)
 
----
+___
 
 ### <a id="blocks" name="blocks"></a> blocks
 
@@ -102,7 +102,7 @@
 
 [packages/formula/src/context/context.ts:127](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L127)
 
----
+___
 
 ### <a id="dirtyformulas" name="dirtyformulas"></a> dirtyFormulas
 
@@ -116,7 +116,7 @@
 
 [packages/formula/src/context/context.ts:120](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L120)
 
----
+___
 
 ### <a id="domain" name="domain"></a> domain
 
@@ -130,7 +130,7 @@
 
 [packages/formula/src/context/context.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L116)
 
----
+___
 
 ### <a id="eventlisteners" name="eventlisteners"></a> eventListeners
 
@@ -140,7 +140,7 @@
 
 [packages/formula/src/context/context.ts:163](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L163)
 
----
+___
 
 ### <a id="features" name="features"></a> features
 
@@ -154,7 +154,7 @@
 
 [packages/formula/src/context/context.ts:119](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L119)
 
----
+___
 
 ### <a id="functionclausesmap" name="functionclausesmap"></a> functionClausesMap
 
@@ -164,7 +164,7 @@
 
 [packages/formula/src/context/context.ts:160](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L160)
 
----
+___
 
 ### <a id="functionweights" name="functionweights"></a> functionWeights
 
@@ -174,7 +174,7 @@
 
 [packages/formula/src/context/context.ts:123](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L123)
 
----
+___
 
 ### <a id="names" name="names"></a> names
 
@@ -184,7 +184,7 @@
 
 [packages/formula/src/context/context.ts:126](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L126)
 
----
+___
 
 ### <a id="reservednames" name="reservednames"></a> reservedNames
 
@@ -198,7 +198,7 @@
 
 [packages/formula/src/context/context.ts:162](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L162)
 
----
+___
 
 ### <a id="reversefunctiondependencies" name="reversefunctiondependencies"></a> reverseFunctionDependencies
 
@@ -212,7 +212,7 @@
 
 [packages/formula/src/context/context.ts:159](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L159)
 
----
+___
 
 ### <a id="reversevariabledependencies" name="reversevariabledependencies"></a> reverseVariableDependencies
 
@@ -226,7 +226,7 @@
 
 [packages/formula/src/context/context.ts:158](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L158)
 
----
+___
 
 ### <a id="spreadsheets" name="spreadsheets"></a> spreadsheets
 
@@ -236,7 +236,7 @@
 
 [packages/formula/src/context/context.ts:125](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L125)
 
----
+___
 
 ### <a id="tickkey" name="tickkey"></a> tickKey
 
@@ -246,7 +246,7 @@
 
 [packages/formula/src/context/context.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L117)
 
----
+___
 
 ### <a id="ticktimeout" name="ticktimeout"></a> tickTimeout
 
@@ -256,17 +256,17 @@
 
 [packages/formula/src/context/context.ts:118](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L118)
 
----
+___
 
 ### <a id="variablenamecounter" name="variablenamecounter"></a> variableNameCounter
 
-• **variableNameCounter**: `Record`<`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"`, `Record`<`string`, `number`\>\>
+• **variableNameCounter**: `Record`<``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"``, `Record`<`string`, `number`\>\>
 
 #### Defined in
 
 [packages/formula/src/context/context.ts:128](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L128)
 
----
+___
 
 ### <a id="variableweights" name="variableweights"></a> variableWeights
 
@@ -276,7 +276,7 @@
 
 [packages/formula/src/context/context.ts:124](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L124)
 
----
+___
 
 ### <a id="variables" name="variables"></a> variables
 
@@ -286,7 +286,7 @@
 
 [packages/formula/src/context/context.ts:121](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L121)
 
----
+___
 
 ### <a id="viewrenders" name="viewrenders"></a> viewRenders
 
@@ -296,7 +296,7 @@
 
 [packages/formula/src/context/context.ts:122](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L122)
 
----
+___
 
 ### <a id="instance" name="instance"></a> instance
 
@@ -320,7 +320,7 @@
 
 ContextInterface.cleanup
 
----
+___
 
 ### <a id="commitdirty" name="commitdirty"></a> commitDirty
 
@@ -330,7 +330,7 @@ ContextInterface.cleanup
 
 `Promise`<`void`\>
 
----
+___
 
 ### <a id="commitvariable" name="commitvariable"></a> commitVariable
 
@@ -338,9 +338,9 @@ ContextInterface.cleanup
 
 #### Parameters
 
-| Name                         | Type                                                      |
-| :--------------------------- | :-------------------------------------------------------- |
-| `__namedParameters`          | `Object`                                                  |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
 | `__namedParameters.variable` | [`VariableInterface`](../interfaces/VariableInterface.md) |
 
 #### Returns
@@ -351,7 +351,7 @@ ContextInterface.cleanup
 
 ContextInterface.commitVariable
 
----
+___
 
 ### <a id="completions" name="completions"></a> completions
 
@@ -359,10 +359,10 @@ ContextInterface.commitVariable
 
 #### Parameters
 
-| Name          | Type                    |
-| :------------ | :---------------------- |
-| `namespaceId` | `string`                |
-| `variableId`  | `undefined` \| `string` |
+| Name | Type |
+| :------ | :------ |
+| `namespaceId` | `string` |
+| `variableId` | `undefined` \| `string` |
 
 #### Returns
 
@@ -372,7 +372,7 @@ ContextInterface.commitVariable
 
 ContextInterface.completions
 
----
+___
 
 ### <a id="findblockbyid" name="findblockbyid"></a> findBlockById
 
@@ -380,8 +380,8 @@ ContextInterface.completions
 
 #### Parameters
 
-| Name      | Type     |
-| :-------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `blockId` | `string` |
 
 #### Returns
@@ -392,7 +392,7 @@ ContextInterface.completions
 
 ContextInterface.findBlockById
 
----
+___
 
 ### <a id="findcolumn" name="findcolumn"></a> findColumn
 
@@ -400,10 +400,10 @@ ContextInterface.findBlockById
 
 #### Parameters
 
-| Name            | Type                                  |
-| :-------------- | :------------------------------------ |
-| `spreadsheetId` | `string`                              |
-| `key`           | [`FindKey`](../interfaces/FindKey.md) |
+| Name | Type |
+| :------ | :------ |
+| `spreadsheetId` | `string` |
+| `key` | [`FindKey`](../interfaces/FindKey.md) |
 
 #### Returns
 
@@ -413,7 +413,7 @@ ContextInterface.findBlockById
 
 ContextInterface.findColumn
 
----
+___
 
 ### <a id="findfunctionclause" name="findfunctionclause"></a> findFunctionClause
 
@@ -421,10 +421,10 @@ ContextInterface.findColumn
 
 #### Parameters
 
-| Name    | Type     |
-| :------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `group` | `string` |
-| `name`  | `string` |
+| `name` | `string` |
 
 #### Returns
 
@@ -434,7 +434,7 @@ ContextInterface.findColumn
 
 ContextInterface.findFunctionClause
 
----
+___
 
 ### <a id="findnames" name="findnames"></a> findNames
 
@@ -442,10 +442,10 @@ ContextInterface.findFunctionClause
 
 #### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
-| `name`        | `string` |
+| `name` | `string` |
 
 #### Returns
 
@@ -455,7 +455,7 @@ ContextInterface.findFunctionClause
 
 ContextInterface.findNames
 
----
+___
 
 ### <a id="findreference" name="findreference"></a> findReference
 
@@ -463,10 +463,10 @@ ContextInterface.findNames
 
 #### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
-| `variableId`  | `string` |
+| `variableId` | `string` |
 
 #### Returns
 
@@ -476,7 +476,7 @@ ContextInterface.findNames
 
 ContextInterface.findReference
 
----
+___
 
 ### <a id="findrow" name="findrow"></a> findRow
 
@@ -484,10 +484,10 @@ ContextInterface.findReference
 
 #### Parameters
 
-| Name            | Type                                  |
-| :-------------- | :------------------------------------ |
-| `spreadsheetId` | `string`                              |
-| `key`           | [`FindKey`](../interfaces/FindKey.md) |
+| Name | Type |
+| :------ | :------ |
+| `spreadsheetId` | `string` |
+| `key` | [`FindKey`](../interfaces/FindKey.md) |
 
 #### Returns
 
@@ -497,7 +497,7 @@ ContextInterface.findReference
 
 ContextInterface.findRow
 
----
+___
 
 ### <a id="findspreadsheet" name="findspreadsheet"></a> findSpreadsheet
 
@@ -505,8 +505,8 @@ ContextInterface.findRow
 
 #### Parameters
 
-| Name                | Type                                  |
-| :------------------ | :------------------------------------ |
+| Name | Type |
+| :------ | :------ |
 | `__namedParameters` | [`FindKey`](../interfaces/FindKey.md) |
 
 #### Returns
@@ -517,7 +517,7 @@ ContextInterface.findRow
 
 ContextInterface.findSpreadsheet
 
----
+___
 
 ### <a id="findvariablebyid" name="findvariablebyid"></a> findVariableById
 
@@ -525,10 +525,10 @@ ContextInterface.findSpreadsheet
 
 #### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
-| `variableId`  | `string` |
+| `variableId` | `string` |
 
 #### Returns
 
@@ -538,7 +538,7 @@ ContextInterface.findSpreadsheet
 
 ContextInterface.findVariableById
 
----
+___
 
 ### <a id="findvariablebyname" name="findvariablebyname"></a> findVariableByName
 
@@ -546,10 +546,10 @@ ContextInterface.findVariableById
 
 #### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
-| `name`        | `string` |
+| `name` | `string` |
 
 #### Returns
 
@@ -559,7 +559,7 @@ ContextInterface.findVariableById
 
 ContextInterface.findVariableByName
 
----
+___
 
 ### <a id="findvariabledisplaydatabyid" name="findvariabledisplaydatabyid"></a> findVariableDisplayDataById
 
@@ -567,10 +567,10 @@ ContextInterface.findVariableByName
 
 #### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
-| `variableId`  | `string` |
+| `variableId` | `string` |
 
 #### Returns
 
@@ -580,7 +580,7 @@ ContextInterface.findVariableByName
 
 ContextInterface.findVariableDisplayDataById
 
----
+___
 
 ### <a id="findviewrender" name="findviewrender"></a> findViewRender
 
@@ -588,8 +588,8 @@ ContextInterface.findVariableDisplayDataById
 
 #### Parameters
 
-| Name       | Type     |
-| :--------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `viewType` | `string` |
 
 #### Returns
@@ -600,50 +600,50 @@ ContextInterface.findVariableDisplayDataById
 
 ContextInterface.findViewRender
 
----
+___
 
 ### <a id="getdefaultvariablename" name="getdefaultvariablename"></a> getDefaultVariableName
 
-▸ **getDefaultVariableName**(`namespaceId`, `type`): \`function${number}\` \| \`null${number}\` \| \`block${number}\` \| \`void${number}\` \| \`array${number}\` \| \`spreadsheet${number}\` \| \`input${number}\` \| \`column${number}\` \| \`cst${number}\` \| \`predicate${number}\` \| \`range${number}\` \| \`record${number}\` \| \`str${number}\` \| \`num${number}\` \| \`bool${number}\` \| \`date${number}\` \| \`blank${number}\` \| \`row${number}\` \| \`cell${number}\` \| \`var${number}\` \| \`error${number}\` \| \`reference${number}\` \| \`button${number}\` \| \`switch${number}\` \| \`select${number}\` \| \`radio${number}\` \| \`rate${number}\` \| \`slider${number}\` \| \`pending${number}\` \| \`waiting${number}\` \| \`noPersist${number}\`
+▸ **getDefaultVariableName**(`namespaceId`, `type`): \`function${number}\` \| \`null${number}\` \| \`block${number}\` \| \`void${number}\` \| \`array${number}\` \| \`column${number}\` \| \`row${number}\` \| \`cell${number}\` \| \`spreadsheet${number}\` \| \`input${number}\` \| \`cst${number}\` \| \`predicate${number}\` \| \`range${number}\` \| \`record${number}\` \| \`str${number}\` \| \`num${number}\` \| \`bool${number}\` \| \`date${number}\` \| \`blank${number}\` \| \`var${number}\` \| \`error${number}\` \| \`reference${number}\` \| \`button${number}\` \| \`switch${number}\` \| \`select${number}\` \| \`radio${number}\` \| \`rate${number}\` \| \`slider${number}\` \| \`pending${number}\` \| \`waiting${number}\` \| \`noPersist${number}\`
 
 #### Parameters
 
-| Name          | Type                                                                                                                                                                                                                                                                                                                                                                                 |
-| :------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `namespaceId` | `string`                                                                                                                                                                                                                                                                                                                                                                             |
-| `type`        | `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"Button"` \| `"Switch"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"` |
+| Name | Type |
+| :------ | :------ |
+| `namespaceId` | `string` |
+| `type` | ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"`` |
 
 #### Returns
 
-\`function${number}\` \| \`null${number}\` \| \`block${number}\` \| \`void${number}\` \| \`array${number}\` \| \`spreadsheet${number}\` \| \`input${number}\` \| \`column${number}\` \| \`cst${number}\` \| \`predicate${number}\` \| \`range${number}\` \| \`record${number}\` \| \`str${number}\` \| \`num${number}\` \| \`bool${number}\` \| \`date${number}\` \| \`blank${number}\` \| \`row${number}\` \| \`cell${number}\` \| \`var${number}\` \| \`error${number}\` \| \`reference${number}\` \| \`button${number}\` \| \`switch${number}\` \| \`select${number}\` \| \`radio${number}\` \| \`rate${number}\` \| \`slider${number}\` \| \`pending${number}\` \| \`waiting${number}\` \| \`noPersist${number}\`
+\`function${number}\` \| \`null${number}\` \| \`block${number}\` \| \`void${number}\` \| \`array${number}\` \| \`column${number}\` \| \`row${number}\` \| \`cell${number}\` \| \`spreadsheet${number}\` \| \`input${number}\` \| \`cst${number}\` \| \`predicate${number}\` \| \`range${number}\` \| \`record${number}\` \| \`str${number}\` \| \`num${number}\` \| \`bool${number}\` \| \`date${number}\` \| \`blank${number}\` \| \`var${number}\` \| \`error${number}\` \| \`reference${number}\` \| \`button${number}\` \| \`switch${number}\` \| \`select${number}\` \| \`radio${number}\` \| \`rate${number}\` \| \`slider${number}\` \| \`pending${number}\` \| \`waiting${number}\` \| \`noPersist${number}\`
 
 #### Implementation of
 
 ContextInterface.getDefaultVariableName
 
----
+___
 
 ### <a id="invoke" name="invoke"></a> invoke
 
-▸ **invoke**(`name`, `ctx`, ...`args`): `Promise`<[`AnyResult`](../README.md#anyresult)\>
+▸ **invoke**(`name`, `ctx`, ...`args`): `Promise`<`Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](../interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"#N/A"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](../interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](../interfaces/FindKey.md)] ; `result`: [`RowType`](../interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](../README.md#cellvia), [`Cell`](../interfaces/Cell.md)] ; `result`: [`CellType`](../interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](../interfaces/FindKey.md)] ; `result`: [`ColumnType`](../interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](../interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](../interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](../interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\>\>
 
 #### Parameters
 
-| Name      | Type                                                  |
-| :-------- | :---------------------------------------------------- |
-| `name`    | `string`                                              |
-| `ctx`     | [`FunctionContext`](../interfaces/FunctionContext.md) |
-| `...args` | `any`[]                                               |
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+| `ctx` | [`FunctionContext`](../interfaces/FunctionContext.md) |
+| `...args` | `any`[] |
 
 #### Returns
 
-`Promise`<[`AnyResult`](../README.md#anyresult)\>
+`Promise`<`Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](../interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"#N/A"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](../interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](../interfaces/FindKey.md)] ; `result`: [`RowType`](../interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](../README.md#cellvia), [`Cell`](../interfaces/Cell.md)] ; `result`: [`CellType`](../interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](../interfaces/FindKey.md)] ; `result`: [`ColumnType`](../interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](../interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](../interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](../interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\>\>
 
 #### Implementation of
 
 ContextInterface.invoke
 
----
+___
 
 ### <a id="listvariables" name="listvariables"></a> listVariables
 
@@ -651,8 +651,8 @@ ContextInterface.invoke
 
 #### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
 
 #### Returns
@@ -663,7 +663,7 @@ ContextInterface.invoke
 
 ContextInterface.listVariables
 
----
+___
 
 ### <a id="parsecodefragments" name="parsecodefragments"></a> parseCodeFragments
 
@@ -671,15 +671,15 @@ ContextInterface.listVariables
 
 #### Parameters
 
-| Name    | Type     |
-| :------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `input` | `string` |
 
 #### Returns
 
 [`CodeFragment`](../README.md#codefragment)[]
 
----
+___
 
 ### <a id="removeblock" name="removeblock"></a> removeBlock
 
@@ -687,8 +687,8 @@ ContextInterface.listVariables
 
 #### Parameters
 
-| Name      | Type     |
-| :-------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `blockId` | `string` |
 
 #### Returns
@@ -699,7 +699,7 @@ ContextInterface.listVariables
 
 ContextInterface.removeBlock
 
----
+___
 
 ### <a id="removename" name="removename"></a> removeName
 
@@ -707,8 +707,8 @@ ContextInterface.removeBlock
 
 #### Parameters
 
-| Name | Type     |
-| :--- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `id` | `string` |
 
 #### Returns
@@ -719,7 +719,7 @@ ContextInterface.removeBlock
 
 ContextInterface.removeName
 
----
+___
 
 ### <a id="removespreadsheet" name="removespreadsheet"></a> removeSpreadsheet
 
@@ -727,8 +727,8 @@ ContextInterface.removeName
 
 #### Parameters
 
-| Name            | Type     |
-| :-------------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `spreadsheetId` | `string` |
 
 #### Returns
@@ -739,7 +739,7 @@ ContextInterface.removeName
 
 ContextInterface.removeSpreadsheet
 
----
+___
 
 ### <a id="removevariable" name="removevariable"></a> removeVariable
 
@@ -747,10 +747,10 @@ ContextInterface.removeSpreadsheet
 
 #### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
-| `variableId`  | `string` |
+| `variableId` | `string` |
 
 #### Returns
 
@@ -760,7 +760,7 @@ ContextInterface.removeSpreadsheet
 
 ContextInterface.removeVariable
 
----
+___
 
 ### <a id="resetformula" name="resetformula"></a> resetFormula
 
@@ -774,7 +774,7 @@ ContextInterface.removeVariable
 
 ContextInterface.resetFormula
 
----
+___
 
 ### <a id="setblock" name="setblock"></a> setBlock
 
@@ -782,16 +782,16 @@ ContextInterface.resetFormula
 
 #### Parameters
 
-| Name      | Type     |
-| :-------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `blockId` | `string` |
-| `name`    | `string` |
+| `name` | `string` |
 
 #### Returns
 
 `Promise`<`void`\>
 
----
+___
 
 ### <a id="setname" name="setname"></a> setName
 
@@ -799,8 +799,8 @@ ContextInterface.resetFormula
 
 #### Parameters
 
-| Name             | Type                                                                |
-| :--------------- | :------------------------------------------------------------------ |
+| Name | Type |
+| :------ | :------ |
 | `nameDependency` | [`NameDependencyWithKind`](../interfaces/NameDependencyWithKind.md) |
 
 #### Returns
@@ -811,7 +811,7 @@ ContextInterface.resetFormula
 
 ContextInterface.setName
 
----
+___
 
 ### <a id="setspreadsheet" name="setspreadsheet"></a> setSpreadsheet
 
@@ -819,8 +819,8 @@ ContextInterface.setName
 
 #### Parameters
 
-| Name          | Type                                                  |
-| :------------ | :---------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `spreadsheet` | [`SpreadsheetType`](../interfaces/SpreadsheetType.md) |
 
 #### Returns
@@ -831,7 +831,7 @@ ContextInterface.setName
 
 ContextInterface.setSpreadsheet
 
----
+___
 
 ### <a id="tick" name="tick"></a> tick
 
@@ -839,15 +839,15 @@ ContextInterface.setSpreadsheet
 
 #### Parameters
 
-| Name    | Type  |
-| :------ | :---- |
+| Name | Type |
+| :------ | :------ |
 | `state` | `any` |
 
 #### Returns
 
 `Promise`<`void`\>
 
----
+___
 
 ### <a id="variablecount" name="variablecount"></a> variableCount
 
@@ -861,7 +861,7 @@ ContextInterface.setSpreadsheet
 
 ContextInterface.variableCount
 
----
+___
 
 ### <a id="getinstance" name="getinstance"></a> getInstance
 
@@ -869,8 +869,8 @@ ContextInterface.variableCount
 
 #### Parameters
 
-| Name   | Type                                                        |
-| :----- | :---------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `args` | [`FormulaContextArgs`](../interfaces/FormulaContextArgs.md) |
 
 #### Returns
