@@ -48,7 +48,7 @@ const basicStyle = {
     paddingRight: distance
   },
   '&-inner': {
-    include: ['ceramicPrimary', 'refractionPrimary'],
+    include: ['ceramicPrimary', 'refractionPrimary', 'cornerFix'],
     backgroundColor: theme.colors.white,
     backgroundClip: 'padding-box',
     color: theme.colors.typePrimary,

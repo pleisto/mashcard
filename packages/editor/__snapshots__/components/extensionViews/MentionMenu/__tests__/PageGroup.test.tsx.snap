@@ -4,7 +4,7 @@ exports[`MentionMenuPageGroup matches correct snapshot 1`] = `
 <div>
   <ul
     aria-orientation="vertical"
-    class="mc-c-bOsLjs mc-c-bOsLjs-lozdyt-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical"
+    class="mc-c-bOsLjs mc-c-bOsLjs-hivZaV-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical"
     id="page-group"
     role="menubar"
   >

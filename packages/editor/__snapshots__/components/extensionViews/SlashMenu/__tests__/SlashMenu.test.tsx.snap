@@ -5,7 +5,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
   <ul
     aria-label="slash_menu.title"
     aria-orientation="vertical"
-    class="mc-c-bOsLjs mc-c-bOsLjs-lozdyt-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical mc-c-dstnVi mc-c-dstnVi-iAMRjR-withFooter-true"
+    class="mc-c-bOsLjs mc-c-bOsLjs-hivZaV-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical mc-c-dstnVi mc-c-dstnVi-iAMRjR-withFooter-true"
     id="slash-menu"
     role="menubar"
   >
@@ -202,7 +202,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
     </ul>
   </ul>
   <div
-    class="mc-c-kOxvwA"
+    class="mc-c-kHIgoU"
   >
     <span>
       slash_menu.footer
