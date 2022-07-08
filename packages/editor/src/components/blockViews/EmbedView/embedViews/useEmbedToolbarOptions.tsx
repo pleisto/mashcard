@@ -57,7 +57,8 @@ const EditInput = styled(Input, {
 export function useDisplayName(
   blockType: EmbedBlockType,
   displayName: string,
-  updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
+  updateEmbedBlockAttributes: UpdateEmbedBlockAttributes,
+  onSubmit?: (value: string) => void
 ): [string, ChangeEventHandler<HTMLInputElement>, VoidFunction] {
   const [editDisplayName, setEditDisplayName] = useState(displayName)
   const onDisplayNameChange = useCallback<ChangeEventHandler<HTMLInputElement>>(event => {
@@ -65,9 +66,10 @@ export function useDisplayName(
   }, [])
 
   const onSubmitDisplayName = useCallback(() => {
+    onSubmit?.(editDisplayName)
     if (displayName === editDisplayName) return
     updateEmbedBlockAttributes({ displayName: editDisplayName }, blockType)
-  }, [blockType, displayName, editDisplayName, updateEmbedBlockAttributes])
+  }, [blockType, displayName, editDisplayName, onSubmit, updateEmbedBlockAttributes])
 
   return [editDisplayName, onDisplayNameChange, onSubmitDisplayName]
 }
@@ -77,12 +79,14 @@ export const EditPanel: FC<{
   displayName: string
   blockType: EmbedBlockType
   extension?: EmbedViewProps['extension']
+  onSubmit?: (value: string) => void
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
-}> = ({ link, displayName, blockType, extension, updateEmbedBlockAttributes }) => {
+}> = ({ link, displayName, blockType, extension, updateEmbedBlockAttributes, onSubmit }) => {
   const [editDisplayName, onDisplayNameChange, onSubmitDisplayName] = useDisplayName(
     blockType,
     displayName,
-    updateEmbedBlockAttributes
+    updateEmbedBlockAttributes,
+    onSubmit
   )
   const [editLink, onLinkChange, , onSubmitLink, progress] = useLinkValue(updateEmbedBlockAttributes, extension, link)
 
@@ -154,6 +158,9 @@ export function useEmbedToolbarOptions({
   const setAlignFullWidth = useCallback((): void => {
     updateEmbedBlockAttributes({ align: 'full-width' }, blockType)
   }, [blockType, updateEmbedBlockAttributes])
+
+  const [editPanelVisible, setEditPanelVisible] = useState(false)
+  const closeEditPanel = useCallback(() => setEditPanelVisible(false), [])
 
   const options: ToolbarOptionGroup = [
     {
@@ -272,6 +279,8 @@ export function useEmbedToolbarOptions({
           tooltip: t('embed_block.edit.tooltip'),
           icon: (
             <Popover
+              visible={editPanelVisible}
+              onVisibleChange={setEditPanelVisible}
               compact={true}
               placement="bottom"
               trigger="click"
@@ -280,11 +289,11 @@ export function useEmbedToolbarOptions({
                   blockType={blockType}
                   extension={extension}
                   updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+                  onSubmit={closeEditPanel}
                   displayName={displayName}
                   link={url}
                 />
-              }
-            >
+              }>
               <Edit />
             </Popover>
           )

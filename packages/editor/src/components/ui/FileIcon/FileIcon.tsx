@@ -5,7 +5,7 @@ import IconPdf from './assets/file-pdf.png'
 import IconExcel from './assets/file-excel.png'
 import IconPpt from './assets/file-ppt.png'
 import IconWord from './assets/file-word.png'
-import { PaperClip, Image } from '@mashcard/design-icons'
+import { Image, Link } from '@mashcard/design-icons'
 
 export interface FileIconProps {
   fileType: FileType
@@ -34,7 +34,7 @@ export const FileIcon: FC<FileIconProps> = ({ fileType, className }) => {
   if (fileType === 'word') return <ImageIcon className={className} alt="" src={IconWord} />
   return (
     <Icon>
-      <PaperClip className={className} />
+      <Link className={className} />
     </Icon>
   )
 }
