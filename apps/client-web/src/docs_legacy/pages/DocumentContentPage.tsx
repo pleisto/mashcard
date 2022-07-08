@@ -31,7 +31,8 @@ export const DocumentContentPage: FC = () => {
   const preSidebarStyle = useMemo(getSidebarStyle, [])
 
   const { data, loading: blockLoading } = useBlockNewQuery({
-    variables: { id: docId as string, historyId }
+    variables: { id: docId as string, historyId },
+    fetchPolicy: 'no-cache'
   })
 
   const documentInfo = data?.blockNew?.documentInfo ? (data?.blockNew?.documentInfo as DocumentInfo) : undefined
@@ -49,7 +50,7 @@ export const DocumentContentPage: FC = () => {
     const isMine = !!documentInfo?.isMaster
     const isAlias = docId ? !isUUID(docId) : false
     const shareable = isMine
-    const editable = isMine || policy === Policytype.Edit
+    const editable = (isMine || policy === Policytype.Edit) && !isAnonymous && !documentInfo?.isDeleted && !historyId
     const viewable = isMine || (!!policy && [Policytype.View, Policytype.Edit].includes(policy))
     const isDeleted = documentInfo?.isDeleted !== false
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
@@ -162,16 +163,7 @@ export const DocumentContentPage: FC = () => {
             <section>
               <article id="article">
                 <Suspense>
-                  {docMeta.id && (
-                    <DocMetaProvider
-                      inherit
-                      docMeta={{
-                        editable: docMeta.editable && !isAnonymous && !documentInfo?.isDeleted
-                      }}
-                    >
-                      <DocumentPage mode={!docMeta.editable || isAnonymous ? 'presentation' : 'default'} />
-                    </DocMetaProvider>
-                  )}
+                  <DocumentPage data={data} loading={loading} editable={docMeta.editable} />
                 </Suspense>
               </article>
               {!isAnonymous && <aside id="aside" />}
