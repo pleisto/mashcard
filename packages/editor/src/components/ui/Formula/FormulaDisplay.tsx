@@ -1,6 +1,6 @@
 import React from 'react'
 import { Icon } from '@mashcard/design-system'
-import { FormulaSourceType, VariableDisplayData, loadDisplayResult } from '@mashcard/formula'
+import { FormulaSourceType, VariableDisplayData } from '@mashcard/formula'
 import { SelectedType } from '../../blockViews/FormulaView/useFormula'
 import { FormulaLiteral, FormulaValue } from '.'
 import * as Root from './Formula.style'
@@ -37,34 +37,29 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({
     return <div />
   }
 
-  const { resultToRefactor: result, metaToRefactor: meta } = displayData
+  const { result: result, type } = displayData
 
   if (result.type === 'literal') {
     return (
       <span {...props}>
-        <FormulaLiteral result={result} formulaType={meta.richType.type} />
+        <FormulaLiteral result={result} formulaType={type} />
       </span>
     )
   }
 
-  const ctx = { formulaContext: formulaContext!, meta, interpretContext: { ctx: {}, arguments: [] } }
-  const newDisplayData = loadDisplayResult(ctx, displayData)
-
   let preview: React.ReactElement | null = null
 
-  const dataResult = newDisplayData.resultToRefactor
-
-  if (dataResult.view) {
-    const viewRender = formulaContext!.findViewRender(dataResult.view.type)
+  if (result.view) {
+    const viewRender = formulaContext!.findViewRender(result.view.type)
     if (viewRender) {
-      preview = viewRender(dataResult.view.attrs, newDisplayData)
+      preview = viewRender(result.view.attrs, displayData)
     }
   }
 
   return (
     <span {...props}>
       <FormulaValue
-        displayData={newDisplayData}
+        displayData={displayData}
         name={name}
         selected={selected}
         disablePopover={disablePopover}

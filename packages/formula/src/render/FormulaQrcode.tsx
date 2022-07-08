@@ -16,10 +16,5 @@ const FormulaQrcode: React.FC<FormulaQrcodeProps> = ({ result }) => {
 
 export const qrcodeView: View = {
   type: 'qrcode',
-  render: (attrs, data) => (
-    <FormulaQrcode
-      result={data.resultToRefactor as AnyTypeResult<'string'>}
-      formulaType={data.metaToRefactor.richType.type}
-    />
-  )
+  render: (attrs, data) => <FormulaQrcode result={data.result as AnyTypeResult<'string'>} formulaType={data.type} />
 }

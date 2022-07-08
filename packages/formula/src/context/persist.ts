@@ -3,7 +3,6 @@ import {
   AnyDumpResult,
   AnyTypeResult,
   ContextInterface,
-  FunctionContext,
   UsedFormulaType,
   VariableData,
   VariableDisplayData
@@ -14,22 +13,10 @@ import { FormulaAttributes } from '../types'
 export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayData => {
   return {
     definition: t.variableParseResult.definition,
-    resultToRefactor: fetchResult(t),
+    result: fetchResult(t),
     display: display(fetchResult(t)),
-    type: t.meta.richType.type,
-    metaToRefactor: {
-      namespaceId: t.meta.namespaceId,
-      variableId: t.meta.variableId,
-      name: t.meta.name,
-      position: t.variableParseResult.position,
-      input: t.variableParseResult.definition,
-      richType: t.meta.richType
-    }
+    type: t.meta.richType.type
   }
-}
-
-export const loadDisplayResult = (ctx: FunctionContext, displayResult: VariableDisplayData): VariableDisplayData => {
-  return { ...displayResult, resultToRefactor: cast(displayResult.resultToRefactor as any, ctx.formulaContext) as any }
 }
 
 export const dumpValue = (result: AnyTypeResult, t?: VariableData): any => {

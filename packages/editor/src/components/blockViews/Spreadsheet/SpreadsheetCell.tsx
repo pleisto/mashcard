@@ -199,8 +199,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     ? {
         definition: displayResult,
         type: 'spreadsheet',
-        metaToRefactor: { ...meta, input: displayResult, position: displayResult.length },
-        resultToRefactor: { type: 'literal', result: displayResult },
+        result: { type: 'literal', result: displayResult },
         display: { type: 'literal', result: displayResult }
       }
     : undefined

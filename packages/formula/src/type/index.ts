@@ -625,8 +625,7 @@ export type VariableValue = SuccessVariableValue | ErrorVariableValue
 export interface VariableDisplayData {
   definition: Definition
   display: AnyDisplayResult
-  resultToRefactor: AnyTypeResult
-  metaToRefactor: VariableMetadata
+  result: AnyTypeResult
   type: FormulaSourceType
 }
 
