@@ -198,9 +198,9 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   const fallbackDisplayData: VariableDisplayData | undefined = displayResult
     ? {
         definition: displayResult,
-        display: displayResult,
         meta: { ...meta, input: displayResult, position: displayResult.length },
-        resultToRefactor: { type: 'literal', result: displayResult }
+        resultToRefactor: { type: 'literal', result: displayResult },
+        display: { type: 'literal', result: displayResult }
       }
     : undefined
   const displayData: VariableDisplayData | undefined = savedVariableT

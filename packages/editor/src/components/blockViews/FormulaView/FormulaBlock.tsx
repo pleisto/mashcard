@@ -60,8 +60,8 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
   const fallbackDisplayData: VariableDisplayData | undefined = attrs
     ? {
         definition: attrs.input,
-        display: attrs.display,
         resultToRefactor: { type: 'string', result: attrs.display },
+        display: { type: 'string', result: attrs.display },
         // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         meta: { richType: { type: 'normal' } } as VariableDisplayData['meta']
       }

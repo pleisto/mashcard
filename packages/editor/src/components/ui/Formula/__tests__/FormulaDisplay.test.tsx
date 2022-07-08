@@ -18,12 +18,9 @@ describe('FormulaDisplay', () => {
   it('renders literal kind correctly', () => {
     const displayData: VariableDisplayData = {
       definition: `="string"`,
-      resultToRefactor: {
-        type: 'literal',
-        result: 'string'
-      },
-      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 },
-      display: 'string'
+      resultToRefactor: { type: 'literal', result: 'string' },
+      display: { type: 'literal', result: 'string' },
+      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 }
     }
     const { container } = render(<FormulaDisplay formulaType="normal" displayData={displayData} />)
 
@@ -33,12 +30,9 @@ describe('FormulaDisplay', () => {
   it('renders constant kind correctly', () => {
     const displayData: VariableDisplayData = {
       definition: `="string"`,
-      resultToRefactor: {
-        type: 'string',
-        result: 'string'
-      },
-      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 },
-      display: 'string'
+      resultToRefactor: { type: 'string', result: 'string' },
+      display: { type: 'string', result: 'string' },
+      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 }
     }
     const { container } = render(<FormulaDisplay formulaType="normal" displayData={displayData} />)
 

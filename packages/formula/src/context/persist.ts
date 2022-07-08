@@ -15,7 +15,7 @@ export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayDat
   return {
     definition: t.variableParseResult.definition,
     resultToRefactor: fetchResult(t),
-    display: display(fetchResult(t)).result,
+    display: display(fetchResult(t)),
     meta: {
       namespaceId: t.meta.namespaceId,
       variableId: t.meta.variableId,
