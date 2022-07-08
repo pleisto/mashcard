@@ -1,5 +1,4 @@
 import { Editor } from '@tiptap/core'
-import { TextSelection } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import { Paragraph } from '../../blocks/paragraph'
 import { meta as paragraphMeta } from '../../blocks/paragraph/meta'
@@ -16,10 +15,10 @@ export const gapClickHandler = (editor: Editor, view: EditorView, position: numb
     return
   }
 
-  const endSelection = TextSelection.atEnd(editor.state.doc)
+  const $end = editor.state.doc.resolve(editor.state.doc.content.size)
 
-  if (position < endSelection.to) return
-  const node = endSelection.$to.node()
+  if (position < $end.pos) return
+  const node = $end.nodeBefore
 
   if (node && paragraphLikeBlockType.includes(node.type.name)) return
   insertNewLine(editor, position)
