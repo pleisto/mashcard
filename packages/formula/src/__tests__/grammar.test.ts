@@ -1,7 +1,7 @@
 /* eslint-disable jest/no-conditional-expect */
 import { parse, innerInterpret } from '../grammar/core'
-import { ParseErrorType } from '../types'
-import { displayValue } from '../context/persist'
+import { ParseErrorType } from '../type'
+import { display as displayF } from '../context/persist'
 import { makeContext } from '../tests/testHelper'
 
 interface TestCase {
@@ -20,27 +20,6 @@ const barVariableId = '44444444-4444-7777-9999-cccccccccccc'
 const bazVariableId = 'cccccccc-cccc-1111-bbbb-dddddddddddd'
 
 const testCases: TestCase[] = [
-  // {
-  //   input: '=[2, "foo", true, null].Map(1)',
-  //   label: 'Array Map',
-  //   value: [
-  //     { type: 'number', result: 1 },
-  //     { type: 'number', result: 1 },
-  //     { type: 'number', result: 1 },
-  //     { type: 'number', result: 1 }
-  //   ]
-  // },
-  // {
-  //   input: '=[2, "foo", true, null].Map($1)',
-  //   label: 'Array Map $1',
-  //   value: [
-  //     { type: 'number', result: 2 },
-  //     { type: 'string', result: 'foo' },
-  //     { type: 'boolean', result: true },
-  //     { type: 'null', result: null }
-  //   ]
-  // },
-  // Reference
   {
     input: `=Self`,
     value: { kind: 'self' }
@@ -101,34 +80,6 @@ const testCases: TestCase[] = [
     input: '=DATE("2022-2-22")',
     value: new Date('2022-2-22'),
     display: new Date('2022-2-22').toISOString()
-  },
-  // Predicate
-  {
-    input: '= =1',
-    value: { type: 'number', result: 1 }
-  },
-  {
-    input: '=>=3',
-    value: { type: 'number', result: 3 }
-  },
-  {
-    input: '=!="foo"',
-    value: { type: 'string', result: 'foo' }
-  },
-  {
-    input: '=>=true',
-    debug: true,
-    label: 'Predicate check type',
-    parseErrorType: 'syntax',
-    errorMessage: 'Expected number but got boolean'
-  },
-  {
-    input: '=<>"123"',
-    value: { type: 'string', result: '123' }
-  },
-  {
-    input: '= <= (1+1)',
-    value: { type: 'number', result: 2 }
   }
 ]
 
@@ -189,7 +140,7 @@ describe('Simple test case TODO', () => {
 
       if (value !== undefined) {
         const variableValue = await innerInterpret({ parseResult, ctx: { ...ctx, meta: newMeta } })
-        const displayResult = displayValue(variableValue.result, '')
+        const displayResult = displayF(variableValue.result)
 
         expect(errorMessages).toEqual([])
 

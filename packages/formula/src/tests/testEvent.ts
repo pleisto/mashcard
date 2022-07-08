@@ -7,7 +7,7 @@ import {
   dispatchFormulaSpreadsheetRowChange
 } from '../events'
 import { generateVariable, interpret, parse } from '../grammar/core'
-import { FormulaDefinition, FunctionContext, VariableInterface } from '../types'
+import { FormulaDefinition, FunctionContext, VariableInterface } from '../type'
 import { BaseTestCase, ExtendedCtx } from './testType'
 
 const interpretVariable = async (ctx: FunctionContext): Promise<VariableInterface> => {

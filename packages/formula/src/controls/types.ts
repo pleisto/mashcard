@@ -5,9 +5,7 @@ import {
   ColumnName,
   FormulaControlType,
   BaseFunctionContext,
-  FunctionResult,
   NamespaceId,
-  StringResult,
   uuid,
   VariableMetadata,
   ContextInterface,
@@ -21,7 +19,7 @@ import {
   EventDependency,
   FindKey,
   FormulaEventPayload
-} from '../types'
+} from '../type'
 
 export interface ControlType {
   _formulaContext: ContextInterface
@@ -35,7 +33,7 @@ export interface ControlInitializer {}
 export interface ButtonType extends ControlType {
   kind: 'Button'
   name: string
-  fn: FunctionResult
+  fn: AnyTypeResult<'Function'>
   onClick?: VoidFunction
 }
 
@@ -141,8 +139,12 @@ export interface Cell {
   value: string
 }
 
+export type CellVia = ['column' | 'row', FindKey, string]
+
 export interface CellType extends Cell {
   spreadsheet: SpreadsheetType
+  _cell: Cell
+  via: CellVia
   columnKey: string
   rowKey: string
   eventDependency: getEventDependency
@@ -209,23 +211,23 @@ export interface SpreadsheetType {
   findRow: (key: FindKey) => RowType | undefined
   findColumn: (key: FindKey) => ColumnType | undefined
   toArray: () => string[][]
-  toRecord: () => Array<Record<string, StringResult>>
+  toRecord: () => Array<Record<string, AnyTypeResult<'string'>>>
   persistAll: () => SpreadsheetAllPersistence
 }
 
 export interface ButtonInitializer extends ControlInitializer {
   name: string
-  fn: FunctionResult
+  fn: AnyTypeResult<'Function'>
 }
 
 export interface SwitchType extends ControlType {
   kind: 'Switch'
   checked: boolean
-  fn: FunctionResult
+  fn: AnyTypeResult<'Function'>
   onChange?: (bool: boolean) => void
 }
 
 export interface SwitchInitializer extends ControlInitializer {
   checked: boolean
-  fn: FunctionResult
+  fn: AnyTypeResult<'Function'>
 }

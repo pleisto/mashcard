@@ -2,7 +2,7 @@ import React from 'react'
 import { Editor, NodeViewProps } from '@tiptap/core'
 import {
   ContextInterface,
-  displayValue,
+  display,
   dumpDisplayResultForDisplay,
   fetchResult,
   VariableData,
@@ -146,7 +146,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
         name,
         input,
         position,
-        display: displayValue(fetchResult(v.t), '')
+        display: display(fetchResult(v.t))
       }
 
       updateAttributes({ formula: { type: 'FORMULA', attrs } })

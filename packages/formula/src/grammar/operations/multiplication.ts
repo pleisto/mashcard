@@ -18,7 +18,7 @@ export const multiplicationOperator: OperatorType = {
       result = lhsResult * rhsResult
     } else if (tokenMatcher(operator, Div)) {
       if (rhsResult === 0) {
-        return { type: 'Error', result: 'Division by zero', errorKind: 'runtime' }
+        return { type: 'Error', result: 'Division by zero', meta: 'runtime' }
       }
 
       result = lhsResult / rhsResult
@@ -29,7 +29,7 @@ export const multiplicationOperator: OperatorType = {
     }
 
     if (isNaN(result)) {
-      return { type: 'Error', result: `NaN`, errorKind: 'runtime' }
+      return { type: 'Error', result: `NaN`, meta: 'runtime' }
     }
 
     return { result, type: 'number' }

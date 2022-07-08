@@ -1,4 +1,4 @@
-import { createFunctionClause } from '../../types'
+import { createFunctionClause } from '../../type'
 
 /**
  * @source

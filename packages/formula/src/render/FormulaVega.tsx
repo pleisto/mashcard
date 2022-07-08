@@ -1,8 +1,8 @@
-import { FormulaSourceType, RecordResult, View } from '../types'
+import { AnyTypeResult, FormulaSourceType, View } from '../type'
 import { VegaLite, VisualizationSpec } from 'react-vega'
 
 interface FormulaVegaProps {
-  result: RecordResult
+  result: AnyTypeResult<'Record'>
   formulaType: FormulaSourceType
 }
 
@@ -27,5 +27,7 @@ const FormulaVegaBar: React.FC<FormulaVegaProps> = ({ result }) => {
 
 export const vegaBarView: View = {
   type: 'bar',
-  render: (attrs, data) => <FormulaVegaBar result={data.result as RecordResult} formulaType={data.meta.richType.type} />
+  render: (attrs, data) => (
+    <FormulaVegaBar result={data.result as AnyTypeResult<'Record'>} formulaType={data.meta.richType.type} />
+  )
 }

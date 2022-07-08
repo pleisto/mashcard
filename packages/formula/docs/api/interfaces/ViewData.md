@@ -2,9 +2,9 @@
 
 ## Type parameters
 
-| Name | Type                                        |
-| :--- | :------------------------------------------ |
-| `T`  | extends [`ViewType`](../README.md#viewtype) |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`ViewType`](../README.md#viewtype) |
 
 ## Table of contents
 
@@ -21,9 +21,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:154](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L154)
+[packages/formula/src/type/index.ts:127](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L127)
 
----
+___
 
 ### <a id="type" name="type"></a> type
 
@@ -31,4 +31,4 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:153](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L153)
+[packages/formula/src/type/index.ts:126](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L126)

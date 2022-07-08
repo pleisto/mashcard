@@ -1,5 +1,5 @@
 import { SwitchInitializer, SwitchType } from './types'
-import { ContextInterface, FunctionContext, FunctionResult, VariableMetadata } from '../types'
+import { AnyTypeResult, ContextInterface, FunctionContext, VariableMetadata } from '../type'
 import { functionResult2lambda } from '../grammar/lambda'
 
 export class SwitchClass implements SwitchType {
@@ -7,7 +7,7 @@ export class SwitchClass implements SwitchType {
   _formulaContext: ContextInterface
   _meta: VariableMetadata
   kind: 'Switch' = 'Switch'
-  fn: FunctionResult
+  fn: AnyTypeResult<'Function'>
   disabled: boolean
   onChange?: (bool: boolean) => void
 

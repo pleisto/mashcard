@@ -3,9 +3,9 @@
 ## Type parameters
 
 | Name |
-| :--- |
-| `T`  |
-| `E`  |
+| :------ |
+| `T` |
+| `E` |
 
 ## Implements
 
@@ -45,15 +45,15 @@
 #### Type parameters
 
 | Name |
-| :--- |
-| `T`  |
-| `E`  |
+| :------ |
+| `T` |
+| `E` |
 
 #### Parameters
 
-| Name    | Type |
-| :------ | :--- |
-| `error` | `E`  |
+| Name | Type |
+| :------ | :------ |
+| `error` | `E` |
 
 ## Properties
 
@@ -69,12 +69,12 @@ node_modules/neverthrow/dist/index.d.ts:192
 
 ### <a id="_unsafeunwrap" name="_unsafeunwrap"></a> \_unsafeUnwrap
 
-▸ **\_unsafeUnwrap**(`config?`): `T`
+▸ **_unsafeUnwrap**(`config?`): `T`
 
 #### Parameters
 
-| Name      | Type          |
-| :-------- | :------------ |
+| Name | Type |
+| :------ | :------ |
 | `config?` | `ErrorConfig` |
 
 #### Returns
@@ -85,16 +85,16 @@ node_modules/neverthrow/dist/index.d.ts:192
 
 IResult.\_unsafeUnwrap
 
----
+___
 
 ### <a id="_unsafeunwraperr" name="_unsafeunwraperr"></a> \_unsafeUnwrapErr
 
-▸ **\_unsafeUnwrapErr**(`_?`): `E`
+▸ **_unsafeUnwrapErr**(`_?`): `E`
 
 #### Parameters
 
-| Name | Type          |
-| :--- | :------------ |
+| Name | Type |
+| :------ | :------ |
 | `_?` | `ErrorConfig` |
 
 #### Returns
@@ -105,7 +105,7 @@ IResult.\_unsafeUnwrap
 
 IResult.\_unsafeUnwrapErr
 
----
+___
 
 ### <a id="andthen" name="andthen"></a> andThen
 
@@ -113,14 +113,14 @@ IResult.\_unsafeUnwrapErr
 
 #### Type parameters
 
-| Name | Type                                                           |
-| :--- | :------------------------------------------------------------- |
-| `R`  | extends [`Result`](../README.md#result)<`unknown`, `unknown`\> |
+| Name | Type |
+| :------ | :------ |
+| `R` | extends [`Result`](../README.md#result)<`unknown`, `unknown`\> |
 
 #### Parameters
 
-| Name | Type              |
-| :--- | :---------------- |
+| Name | Type |
+| :------ | :------ |
 | `_f` | (`t`: `T`) => `R` |
 
 #### Returns
@@ -136,14 +136,14 @@ IResult.andThen
 #### Type parameters
 
 | Name |
-| :--- |
-| `U`  |
-| `F`  |
+| :------ |
+| `U` |
+| `F` |
 
 #### Parameters
 
-| Name | Type                                                     |
-| :--- | :------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `_f` | (`t`: `T`) => [`Result`](../README.md#result)<`U`, `F`\> |
 
 #### Returns
@@ -154,7 +154,7 @@ IResult.andThen
 
 IResult.andThen
 
----
+___
 
 ### <a id="asyncandthen" name="asyncandthen"></a> asyncAndThen
 
@@ -163,14 +163,14 @@ IResult.andThen
 #### Type parameters
 
 | Name |
-| :--- |
-| `U`  |
-| `F`  |
+| :------ |
+| `U` |
+| `F` |
 
 #### Parameters
 
-| Name | Type                                                     |
-| :--- | :------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `_f` | (`t`: `T`) => [`ResultAsync`](ResultAsync.md)<`U`, `F`\> |
 
 #### Returns
@@ -181,7 +181,7 @@ IResult.andThen
 
 IResult.asyncAndThen
 
----
+___
 
 ### <a id="asyncmap" name="asyncmap"></a> asyncMap
 
@@ -190,13 +190,13 @@ IResult.asyncAndThen
 #### Type parameters
 
 | Name |
-| :--- |
-| `U`  |
+| :------ |
+| `U` |
 
 #### Parameters
 
-| Name | Type                          |
-| :--- | :---------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `_f` | (`t`: `T`) => `Promise`<`U`\> |
 
 #### Returns
@@ -207,7 +207,7 @@ IResult.asyncAndThen
 
 IResult.asyncMap
 
----
+___
 
 ### <a id="iserr" name="iserr"></a> isErr
 
@@ -221,7 +221,7 @@ this is Err<T, E\>
 
 IResult.isErr
 
----
+___
 
 ### <a id="isok" name="isok"></a> isOk
 
@@ -235,7 +235,7 @@ this is Ok<T, E\>
 
 IResult.isOk
 
----
+___
 
 ### <a id="map" name="map"></a> map
 
@@ -244,13 +244,13 @@ IResult.isOk
 #### Type parameters
 
 | Name |
-| :--- |
-| `A`  |
+| :------ |
+| `A` |
 
 #### Parameters
 
-| Name | Type              |
-| :--- | :---------------- |
+| Name | Type |
+| :------ | :------ |
 | `_f` | (`t`: `T`) => `A` |
 
 #### Returns
@@ -261,7 +261,7 @@ IResult.isOk
 
 IResult.map
 
----
+___
 
 ### <a id="maperr" name="maperr"></a> mapErr
 
@@ -270,14 +270,14 @@ IResult.map
 #### Type parameters
 
 | Name |
-| :--- |
-| `U`  |
+| :------ |
+| `U` |
 
 #### Parameters
 
-| Name | Type              |
-| :--- | :---------------- |
-| `f`  | (`e`: `E`) => `U` |
+| Name | Type |
+| :------ | :------ |
+| `f` | (`e`: `E`) => `U` |
 
 #### Returns
 
@@ -287,7 +287,7 @@ IResult.map
 
 IResult.mapErr
 
----
+___
 
 ### <a id="match" name="match"></a> match
 
@@ -296,13 +296,13 @@ IResult.mapErr
 #### Type parameters
 
 | Name |
-| :--- |
-| `A`  |
+| :------ |
+| `A` |
 
 #### Parameters
 
-| Name  | Type              |
-| :---- | :---------------- |
+| Name | Type |
+| :------ | :------ |
 | `_ok` | (`t`: `T`) => `A` |
 | `err` | (`e`: `E`) => `A` |
 
@@ -314,7 +314,7 @@ IResult.mapErr
 
 IResult.match
 
----
+___
 
 ### <a id="orelse" name="orelse"></a> orElse
 
@@ -322,15 +322,15 @@ IResult.match
 
 #### Type parameters
 
-| Name | Type                                                           |
-| :--- | :------------------------------------------------------------- |
-| `R`  | extends [`Result`](../README.md#result)<`unknown`, `unknown`\> |
+| Name | Type |
+| :------ | :------ |
+| `R` | extends [`Result`](../README.md#result)<`unknown`, `unknown`\> |
 
 #### Parameters
 
-| Name | Type              |
-| :--- | :---------------- |
-| `f`  | (`e`: `E`) => `R` |
+| Name | Type |
+| :------ | :------ |
+| `f` | (`e`: `E`) => `R` |
 
 #### Returns
 
@@ -345,14 +345,14 @@ IResult.orElse
 #### Type parameters
 
 | Name |
-| :--- |
-| `A`  |
+| :------ |
+| `A` |
 
 #### Parameters
 
-| Name | Type                                                     |
-| :--- | :------------------------------------------------------- |
-| `f`  | (`e`: `E`) => [`Result`](../README.md#result)<`T`, `A`\> |
+| Name | Type |
+| :------ | :------ |
+| `f` | (`e`: `E`) => [`Result`](../README.md#result)<`T`, `A`\> |
 
 #### Returns
 
@@ -362,7 +362,7 @@ IResult.orElse
 
 IResult.orElse
 
----
+___
 
 ### <a id="unwrapor" name="unwrapor"></a> unwrapOr
 
@@ -371,14 +371,14 @@ IResult.orElse
 #### Type parameters
 
 | Name |
-| :--- |
-| `A`  |
+| :------ |
+| `A` |
 
 #### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `v`  | `A`  |
+| :------ | :------ |
+| `v` | `A` |
 
 #### Returns
 

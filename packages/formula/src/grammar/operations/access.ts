@@ -1,4 +1,4 @@
-import { AnyTypeResult } from '../../types'
+import { AnyTypeResult } from '../../type'
 import { FormulaInterpreter } from '../interpreter'
 import { OperatorType } from '../operator'
 
@@ -27,20 +27,20 @@ export const accessAttribute = async (
     if (value) {
       return value
     } else {
-      return { type: 'Error', result: `Key ${key} not found`, errorKind: 'runtime' }
+      return { type: 'Error', result: `Key ${key} not found`, meta: 'runtime' }
     }
   }
 
   if (result.type === 'Array') {
     const number = Number(key)
     if (isNaN(number)) {
-      return { type: 'Error', result: `Need a number: ${key}`, errorKind: 'syntax' }
+      return { type: 'Error', result: `Need a number: ${key}`, meta: 'syntax' }
     } else {
       return (
         result.result[number - 1] || {
           type: 'Error',
           result: `Index ${number} out of bounds`,
-          errorKind: 'runtime'
+          meta: 'runtime'
         }
       )
     }
@@ -50,7 +50,7 @@ export const accessAttribute = async (
     return { type: 'Reference', result: { ...result.result, attribute: key } }
   }
 
-  return { type: 'Error', result: `Access not supported for ${result.type}`, errorKind: 'runtime' }
+  return { type: 'Error', result: `Access not supported for ${result.type}`, meta: 'runtime' }
 }
 
 export const accessOperator: OperatorType = {

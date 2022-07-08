@@ -14,7 +14,7 @@ import {
   EventDependency,
   VariableParseResult,
   FormulaDefinition
-} from '../types'
+} from '../type'
 import { parse, interpret, generateVariable } from '../grammar/core'
 import { dumpValue } from './persist'
 import { codeFragments2definition, variableKey } from '../grammar/convert'
@@ -42,7 +42,7 @@ export const errorIsFatal = ({ task }: VariableData): boolean => {
   if (
     !success &&
     result.type === 'Error' &&
-    ['name_unique', 'name_check', 'name_invalid', 'fatal'].includes(result.errorKind)
+    ['name_unique', 'name_check', 'name_invalid', 'fatal'].includes(result.meta)
   ) {
     return true
   }

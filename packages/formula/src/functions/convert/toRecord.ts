@@ -1,4 +1,4 @@
-import { createFunctionClause } from '../../types'
+import { createFunctionClause } from '../../type'
 
 /**
  * @source
@@ -19,7 +19,7 @@ export const convertToRecord = createFunctionClause({
       input: '=toRecord(new Date())',
       output: {
         type: 'Record',
-        subType: 'number',
+        meta: 'number',
         result: {
           month: { type: 'number', result: 0 },
           hour: { type: 'number', result: 0 },
@@ -37,7 +37,7 @@ export const convertToRecord = createFunctionClause({
   reference: (ctx, { result: date }) => {
     return {
       type: 'Record',
-      subType: 'number',
+      meta: 'number',
       result: {
         month: { type: 'number', result: date.getMonth() },
         hour: { type: 'number', result: date.getHours() },

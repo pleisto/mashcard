@@ -1,11 +1,10 @@
 import { generateVariable, interpret, parse } from '../grammar/core'
 import { FormulaContext, FormulaContextArgs } from '../context'
 import { dispatchFormulaBlockNameChange } from '../events'
-import { ContextInterface, FunctionContext, InterpretContext } from '../types'
+import { ContextInterface, FunctionContext, InterpretContext } from '../type'
 import { Cell, Column, Row, SpreadsheetClass, SpreadsheetType } from '../controls'
 import { columnDisplayIndex } from '../grammar'
 import {
-  BaseTestCase,
   CellInput,
   ColumnInput,
   DEFAULT_UUID_FUNCTION,
@@ -36,7 +35,7 @@ const quickInsert = async (
 
   const result = await variable.t.task.variableValue
   if (!ignoreSyntaxError) {
-    if (result.result.type === 'Error' && !['runtime'].includes(result.result.errorKind)) {
+    if (result.result.type === 'Error' && !['runtime'].includes(result.result.meta)) {
       throw new Error(result.result.result)
     }
   }
@@ -244,7 +243,7 @@ export const makeContext = async (options: MakeContextOptions): Promise<MakeCont
   return { formulaContext, interpretContext, buildMeta, fetchUUID }
 }
 
-export const trackTodo = (it: jest.It, testCases: Array<BaseTestCase<{}>>): void => {
+export const trackTodo = (it: jest.It, testCases: Array<{ todoMessage?: string; jestTitle: string }>): void => {
   testCases
     .filter(t => t.todoMessage)
     .forEach(t => {

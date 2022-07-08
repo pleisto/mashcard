@@ -21,14 +21,14 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:229](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L229)
+[packages/formula/src/controls/types.ts:231](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L231)
 
----
+___
 
 ### <a id="fn" name="fn"></a> fn
 
-• **fn**: [`FunctionResult`](FunctionResult.md)
+• **fn**: `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\>
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:230](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L230)
+[packages/formula/src/controls/types.ts:232](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L232)

@@ -1,22 +1,14 @@
 import { buildPredicate } from '../../grammar'
-import {
-  ColumnResult,
-  createFunctionClause,
-  ErrorResult,
-  FunctionContext,
-  NumberResult,
-  PredicateFunction,
-  PredicateResult
-} from '../../types'
+import { AnyTypeResult, createFunctionClause, FunctionContext, PredicateFunction } from '../../type'
 
 const AVERAGEIFS = (
   ctx: FunctionContext,
-  { result: column1 }: ColumnResult,
-  { result: column2 }: ColumnResult,
-  predicate: PredicateResult
-): NumberResult | ErrorResult => {
+  { result: column1 }: AnyTypeResult<'Column'>,
+  { result: column2 }: AnyTypeResult<'Column'>,
+  predicate: AnyTypeResult<'Predicate'>
+): AnyTypeResult<'number' | 'Error'> => {
   if (column1.spreadsheetId !== column2.spreadsheetId) {
-    return { type: 'Error', result: 'Columns must be in the same namespace', errorKind: 'runtime' }
+    return { type: 'Error', result: 'Columns must be in the same namespace', meta: 'runtime' }
   }
 
   const predicateFunction: PredicateFunction = buildPredicate(predicate)
@@ -33,7 +25,7 @@ const AVERAGEIFS = (
   })
 
   if (count === 0) {
-    return { type: 'Error', result: 'No matching values', errorKind: 'runtime' }
+    return { type: 'Error', result: 'No matching values', meta: 'runtime' }
   }
 
   return { type: 'number', result: sum / count }

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`persist dump Date 1 1`] = `
+Object {
+  "result": Date { NaN },
+  "type": "Date",
+}
+`;
+
+exports[`persist dump Date 2 1`] = `
+Object {
+  "result": Date { NaN },
+  "type": "Date",
+}
+`;

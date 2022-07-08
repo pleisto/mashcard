@@ -18,9 +18,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:734](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L734)
+[packages/formula/src/type/index.ts:563](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L563)
 
----
+___
 
 ### <a id="id" name="id"></a> id
 
@@ -28,9 +28,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:732](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L732)
+[packages/formula/src/type/index.ts:561](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L561)
 
----
+___
 
 ### <a id="kind" name="kind"></a> kind
 
@@ -38,9 +38,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:730](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L730)
+[packages/formula/src/type/index.ts:559](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L559)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -48,9 +48,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:733](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L733)
+[packages/formula/src/type/index.ts:562](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L562)
 
----
+___
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -58,4 +58,4 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:731](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L731)
+[packages/formula/src/type/index.ts:560](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L560)

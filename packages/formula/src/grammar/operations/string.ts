@@ -1,5 +1,5 @@
 import { BlockType } from '../../controls'
-import { FunctionContext } from '../../types'
+import { FunctionContext } from '../../type'
 import { block2codeFragment } from '../convert'
 import { parseTrackBlock } from '../dependency'
 import { OperatorType } from '../operator'

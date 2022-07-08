@@ -1,5 +1,5 @@
 import { MashcardEventBus, event } from '@mashcard/schema'
-import { FormulaEventPayload } from '../types'
+import { FormulaEventPayload } from '../type'
 
 /**
  * Dispatch Block Delete Event.

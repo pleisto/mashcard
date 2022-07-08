@@ -1,8 +1,8 @@
 import { Button } from '@mashcard/design-system'
-import { FormulaSourceType, ButtonResult } from '@mashcard/formula'
+import { FormulaSourceType, AnyTypeResult } from '@mashcard/formula'
 
 export interface FormulaButtonProps {
-  result: ButtonResult
+  result: AnyTypeResult<'Button'>
   formulaType: FormulaSourceType
 }
 

@@ -1,4 +1,4 @@
-import { FunctionContext, VariableTask, VariableValue } from '../types'
+import { FunctionContext, VariableTask, VariableValue } from '../type'
 import { uuid } from '@mashcard/active-support'
 import { MashcardEventBus } from '@mashcard/schema'
 import { ParseResult } from '../grammar'

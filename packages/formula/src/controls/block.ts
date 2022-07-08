@@ -7,7 +7,7 @@ import {
   FormulaType,
   NameDependencyWithKind,
   NamespaceId
-} from '../types'
+} from '../type'
 import {
   CodeFragmentVisitor,
   FormulaInterpreter,
@@ -102,7 +102,7 @@ export class BlockClass implements BlockType {
 
     const variable = this._formulaContext.findVariableByName(this.id, name)
     if (!variable) {
-      return { type: 'Error', result: `"${name}" not found`, errorKind: 'runtime' }
+      return { type: 'Error', result: `"${name}" not found`, meta: 'runtime' }
     }
 
     if (variable.t.task.async) {

@@ -1,5 +1,5 @@
 import { appendFormulas } from '../grammar/core'
-import { Formula } from '../types'
+import { Formula } from '../type'
 import { FormulaContext } from '../context/context'
 
 describe('appendFormulas TODO', () => {

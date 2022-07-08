@@ -19,9 +19,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:901](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L901)
+[packages/formula/src/type/index.ts:730](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L730)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -29,9 +29,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:903](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L903)
+[packages/formula/src/type/index.ts:732](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L732)
 
----
+___
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -39,9 +39,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:899](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L899)
+[packages/formula/src/type/index.ts:728](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L728)
 
----
+___
 
 ### <a id="position" name="position"></a> position
 
@@ -49,9 +49,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:902](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L902)
+[packages/formula/src/type/index.ts:731](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L731)
 
----
+___
 
 ### <a id="richtype" name="richtype"></a> richType
 
@@ -59,9 +59,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:904](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L904)
+[packages/formula/src/type/index.ts:733](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L733)
 
----
+___
 
 ### <a id="variableid" name="variableid"></a> variableId
 
@@ -69,4 +69,4 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:900](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L900)
+[packages/formula/src/type/index.ts:729](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L729)

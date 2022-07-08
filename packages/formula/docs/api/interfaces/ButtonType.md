@@ -31,13 +31,13 @@
 
 #### Inherited from
 
-[ControlType](ControlType.md).[\_formulaContext](ControlType.md#_formulacontext)
+[ControlType](ControlType.md).[_formulaContext](ControlType.md#_formulacontext)
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:27](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L27)
+[packages/formula/src/controls/types.ts:25](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L25)
 
----
+___
 
 ### <a id="_meta" name="_meta"></a> \_meta
 
@@ -45,13 +45,13 @@
 
 #### Inherited from
 
-[ControlType](ControlType.md).[\_meta](ControlType.md#_meta)
+[ControlType](ControlType.md).[_meta](ControlType.md#_meta)
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:28](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L28)
+[packages/formula/src/controls/types.ts:26](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L26)
 
----
+___
 
 ### <a id="disabled" name="disabled"></a> disabled
 
@@ -63,23 +63,23 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:30](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L30)
+[packages/formula/src/controls/types.ts:28](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L28)
 
----
+___
 
 ### <a id="fn" name="fn"></a> fn
 
-• **fn**: [`FunctionResult`](FunctionResult.md)
+• **fn**: `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\>
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:38](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L38)
+[packages/formula/src/controls/types.ts:36](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L36)
 
----
+___
 
 ### <a id="kind" name="kind"></a> kind
 
-• **kind**: `"Button"`
+• **kind**: ``"Button"``
 
 #### Overrides
 
@@ -87,9 +87,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:36](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L36)
+[packages/formula/src/controls/types.ts:34](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L34)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -97,9 +97,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:37](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L37)
+[packages/formula/src/controls/types.ts:35](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L35)
 
----
+___
 
 ### <a id="onclick" name="onclick"></a> onClick
 
@@ -107,9 +107,9 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:39](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L39)
+[packages/formula/src/controls/types.ts:37](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L37)
 
----
+___
 
 ### <a id="persistence" name="persistence"></a> persistence
 
@@ -129,4 +129,4 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:31](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L31)
+[packages/formula/src/controls/types.ts:29](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L29)

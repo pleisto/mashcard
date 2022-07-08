@@ -1,4 +1,4 @@
-export * from './types'
+export * from './type'
 export * from './controls'
 export * from './grammar'
 export * from './functions'

@@ -15,9 +15,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:368](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L368)
+[packages/formula/src/type/index.ts:197](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L197)
 
----
+___
 
 ### <a id="id" name="id"></a> id
 
@@ -25,4 +25,4 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:369](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L369)
+[packages/formula/src/type/index.ts:198](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L198)

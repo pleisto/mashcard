@@ -18,7 +18,7 @@
 
 [packages/formula/src/tests/testType.ts:219](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L219)
 
----
+___
 
 ### <a id="pages" name="pages"></a> pages
 
@@ -28,7 +28,7 @@
 
 [packages/formula/src/tests/testType.ts:221](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L221)
 
----
+___
 
 ### <a id="uuidfunction" name="uuidfunction"></a> uuidFunction
 
@@ -40,8 +40,8 @@
 
 ##### Parameters
 
-| Name     | Type     |
-| :------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `number` | `number` |
 
 ##### Returns

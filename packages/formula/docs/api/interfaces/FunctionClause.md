@@ -2,13 +2,13 @@
 
 ## Type parameters
 
-| Name          | Type                                                                        |
-| :------------ | :-------------------------------------------------------------------------- |
-| `T`           | extends `UsedFormulaType`                                                   |
-| `Async`       | extends `boolean`                                                           |
-| `Chain`       | extends `boolean`                                                           |
-| `AcceptError` | extends `boolean`                                                           |
-| `Arguments`   | extends `FormulaArgumentsType`<`Chain`\> = `FormulaArgumentsType`<`Chain`\> |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`UsedFormulaType`](../README.md#usedformulatype) |
+| `Async` | extends `boolean` |
+| `Chain` | extends `boolean` |
+| `AcceptError` | extends `boolean` |
+| `Arguments` | extends `FormulaArgumentsType`<`Chain`\> = `FormulaArgumentsType`<`Chain`\> |
 
 ## Table of contents
 
@@ -40,9 +40,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:685](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L685)
+[packages/formula/src/type/index.ts:514](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L514)
 
----
+___
 
 ### <a id="args" name="args"></a> args
 
@@ -50,9 +50,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:690](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L690)
+[packages/formula/src/type/index.ts:519](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L519)
 
----
+___
 
 ### <a id="async" name="async"></a> async
 
@@ -60,9 +60,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:678](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L678)
+[packages/formula/src/type/index.ts:507](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L507)
 
----
+___
 
 ### <a id="chain" name="chain"></a> chain
 
@@ -70,9 +70,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:679](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L679)
+[packages/formula/src/type/index.ts:508](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L508)
 
----
+___
 
 ### <a id="description" name="description"></a> description
 
@@ -80,9 +80,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:686](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L686)
+[packages/formula/src/type/index.ts:515](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L515)
 
----
+___
 
 ### <a id="effect" name="effect"></a> effect
 
@@ -90,9 +90,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:681](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L681)
+[packages/formula/src/type/index.ts:510](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L510)
 
----
+___
 
 ### <a id="examples" name="examples"></a> examples
 
@@ -100,9 +100,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:688](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L688)
+[packages/formula/src/type/index.ts:517](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L517)
 
----
+___
 
 ### <a id="feature" name="feature"></a> feature
 
@@ -110,9 +110,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:683](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L683)
+[packages/formula/src/type/index.ts:512](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L512)
 
----
+___
 
 ### <a id="group" name="group"></a> group
 
@@ -120,9 +120,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:687](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L687)
+[packages/formula/src/type/index.ts:516](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L516)
 
----
+___
 
 ### <a id="key" name="key"></a> key
 
@@ -130,9 +130,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:677](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L677)
+[packages/formula/src/type/index.ts:506](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L506)
 
----
+___
 
 ### <a id="lazy" name="lazy"></a> lazy
 
@@ -140,9 +140,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:684](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L684)
+[packages/formula/src/type/index.ts:513](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L513)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -150,9 +150,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:676](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L676)
+[packages/formula/src/type/index.ts:505](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L505)
 
----
+___
 
 ### <a id="persist" name="persist"></a> persist
 
@@ -160,9 +160,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:682](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L682)
+[packages/formula/src/type/index.ts:511](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L511)
 
----
+___
 
 ### <a id="pure" name="pure"></a> pure
 
@@ -170,34 +170,34 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:680](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L680)
+[packages/formula/src/type/index.ts:509](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L509)
 
----
+___
 
 ### <a id="reference" name="reference"></a> reference
 
-• `Readonly` **reference**: (`ctx`: [`FunctionContext`](FunctionContext.md), ...`args`: `ArgumentArrayToResultTypeArray`<`Arguments`, `AcceptError`, []\>) => `Async` extends `true` ? `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\> : [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>
+• `Readonly` **reference**: (`ctx`: [`FunctionContext`](FunctionContext.md), ...`args`: `ArgumentArrayToResultTypeArray`<`Arguments`, `AcceptError`, []\>) => `Async` extends ``true`` ? `Promise`<`AnyFunctionResult`<`T`\>\> : `AnyFunctionResult`<`T`\>
 
 #### Type declaration
 
-▸ (`ctx`, ...`args`): `Async` extends `true` ? `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\> : [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>
+▸ (`ctx`, ...`args`): `Async` extends ``true`` ? `Promise`<`AnyFunctionResult`<`T`\>\> : `AnyFunctionResult`<`T`\>
 
 ##### Parameters
 
-| Name      | Type                                                              |
-| :-------- | :---------------------------------------------------------------- |
-| `ctx`     | [`FunctionContext`](FunctionContext.md)                           |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | [`FunctionContext`](FunctionContext.md) |
 | `...args` | `ArgumentArrayToResultTypeArray`<`Arguments`, `AcceptError`, []\> |
 
 ##### Returns
 
-`Async` extends `true` ? `Promise`<[`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>\> : [`AnyFunctionResult`](../README.md#anyfunctionresult)<`T`\>
+`Async` extends ``true`` ? `Promise`<`AnyFunctionResult`<`T`\>\> : `AnyFunctionResult`<`T`\>
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:692](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L692)
+[packages/formula/src/type/index.ts:521](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L521)
 
----
+___
 
 ### <a id="returns" name="returns"></a> returns
 
@@ -205,9 +205,9 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:689](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L689)
+[packages/formula/src/type/index.ts:518](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L518)
 
----
+___
 
 ### <a id="testcases" name="testcases"></a> testCases
 
@@ -215,4 +215,4 @@
 
 #### Defined in
 
-[packages/formula/src/types/index.ts:691](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/types/index.ts#L691)
+[packages/formula/src/type/index.ts:520](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L520)

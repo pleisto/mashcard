@@ -1,5 +1,5 @@
 import { event } from '@mashcard/schema'
-import { FormulaEventPayload, VariableDependency, VariableInterface } from '../types'
+import { FormulaEventPayload, VariableDependency, VariableInterface } from '../type'
 
 export const FormulaUpdatedViaId = event<FormulaEventPayload<VariableInterface>, Promise<void>>()(
   'FormulaUpdatedViaId',

@@ -1,13 +1,26 @@
-import { Cell, CellType, Column, ColumnType, Row, RowType, SpreadsheetClass, SpreadsheetType } from '../controls'
+import {
+  ButtonType,
+  Cell,
+  CellType,
+  Column,
+  ColumnType,
+  RangeType,
+  Row,
+  RowType,
+  SpreadsheetClass,
+  SpreadsheetType,
+  SwitchType
+} from '../controls'
 import { dispatchFormulaBlockNameChange } from '../events'
-import { PersistFormulaType, TypedResult, VariableMetadata } from '../types'
+import { AnyDumpResult, AnyTypeResult, UsedFormulaType } from '../type'
 import { FormulaContext } from '../context/context'
-import { dumpValue, loadValue } from '../context/persist'
-import { generateUUIDs } from '../tests'
+import { cast, dump, display } from '../context/persist'
+import { generateUUIDs, matchObject } from '../tests'
+import { BlockClass } from '../controls/block'
 
 const [
   namespaceId,
-  variableId,
+  unknownNamespaceId,
   spreadsheetId,
   firstColumnId,
   secondColumnId,
@@ -181,24 +194,6 @@ const spreadsheet: SpreadsheetType = new SpreadsheetClass({
 
 void formulaContext.setSpreadsheet(spreadsheet)
 
-const meta: VariableMetadata = {
-  namespaceId,
-  variableId,
-  name: 'v',
-  input: '=!!!',
-  position: 0,
-  richType: { type: 'normal' }
-}
-
-const ctx = {
-  formulaContext,
-  interpretContext: {
-    ctx: {},
-    arguments: []
-  },
-  meta
-}
-
 const columnTypes: ColumnType[] = [
   spreadsheet.findColumn({ type: 'name', value: 'first', namespaceId })!,
   spreadsheet.findColumn({ type: 'name', value: 'A', namespaceId })!,
@@ -216,68 +211,241 @@ const cellTypes: CellType[] = [
 ]
 
 const testCases: {
-  [P in PersistFormulaType]: {
-    cases: Array<TypedResult<P>>
-    stringifyError?: true
-    serializesSameError?: true
-  }
+  [P in UsedFormulaType]: Array<{
+    testCase: AnyTypeResult<P>
+    dumpResult?: AnyDumpResult<P>
+    matchTestCase?: AnyTypeResult<P | 'Error'>
+    displayResult: string | null
+    snapshot?: true
+    todoMessage?: string
+  }>
 } = {
-  null: { cases: [{ type: 'null', result: null }] },
-  boolean: { cases: [{ type: 'boolean', result: true }] },
-  number: { cases: [{ type: 'number', result: 1 }] },
-  string: { cases: [{ type: 'string', result: '1' }] },
-  literal: { cases: [{ type: 'literal', result: '1' }] },
-  NoPersist: { cases: [{ type: 'NoPersist', result: null }] },
-  Pending: { cases: [{ type: 'Pending', result: 'Pending' }] },
-  Waiting: { cases: [{ type: 'Waiting', result: 'Waiting' }] },
-  Date: {
-    cases: [
-      { type: 'Date', result: new Date() },
-      { type: 'Date', result: new Date('') },
-      { type: 'Date', result: new Date('foo bar') }
-    ]
-  },
-  Error: { cases: [{ type: 'Error', result: 'bang!', errorKind: 'runtime' }] },
-  Array: {
-    cases: [
-      { type: 'Array', result: [{ type: 'number', result: 1 }], subType: 'number' },
-      { type: 'Array', result: [], subType: 'void' }
-    ]
-  },
-  Record: {
-    cases: [
-      { type: 'Record', result: { foo: { type: 'number', result: 1 } }, subType: 'number' },
-      { type: 'Record', result: {}, subType: 'void' }
-    ]
-  },
-  Spreadsheet: { cases: [{ type: 'Spreadsheet', result: spreadsheet }] },
-  Column: { cases: columnTypes.map(c => ({ type: 'Column', result: c })) },
-  Row: { cases: rowTypes.map(c => ({ type: 'Row', result: c })), serializesSameError: true },
-  Cell: { cases: cellTypes.map(c => ({ type: 'Cell', result: c })), stringifyError: true },
-  Block: { cases: [{ type: 'Block', result: formulaContext.findBlockById(namespaceId)! }] }
+  null: [
+    { testCase: { type: 'null', result: null }, displayResult: 'null', dumpResult: { type: 'null', result: null } }
+  ],
+  boolean: [
+    {
+      testCase: { type: 'boolean', result: true },
+      displayResult: 'true',
+      dumpResult: { type: 'boolean', result: true }
+    }
+  ],
+  number: [{ testCase: { type: 'number', result: 1 }, displayResult: '1', dumpResult: { type: 'number', result: 1 } }],
+  string: [
+    {
+      testCase: { type: 'string', result: '1', view: { type: '', attrs: {} } },
+      displayResult: '1',
+      dumpResult: { type: 'string', result: '1', view: { type: '', attrs: {} } }
+    }
+  ],
+  literal: [
+    {
+      testCase: { type: 'literal', result: '1123' },
+      displayResult: '1123',
+      dumpResult: { type: 'literal', result: '1123' }
+    }
+  ],
+  Cst: [
+    {
+      testCase: { type: 'Cst', result: { name: '', children: {} } },
+      dumpResult: { result: 'Not supported', type: 'Cst' },
+      displayResult: '#<Cst>',
+      matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
+    }
+  ],
+  Reference: [
+    {
+      testCase: { type: 'Reference', result: { kind: 'self' } },
+      dumpResult: { result: 'Not supported', type: 'Reference' },
+      displayResult: '#<Reference>',
+      matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
+    }
+  ],
+  Function: [
+    {
+      testCase: { type: 'Function', result: [{ name: 'Set', args: [] }] },
+      dumpResult: { result: 'Not supported', type: 'Function' },
+      displayResult: '#<Function>',
+      matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
+    }
+  ],
+  Predicate: [
+    {
+      testCase: { type: 'Predicate', result: 123, meta: { operator: 'equal' } },
+      dumpResult: { result: 'Not supported', type: 'Predicate' },
+      displayResult: '[equal] 123',
+      matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
+    }
+  ],
+  Button: [
+    {
+      testCase: { type: 'Button', result: null as unknown as ButtonType },
+      dumpResult: { result: 'Not supported', type: 'Button' },
+      displayResult: '#<Button>',
+      matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
+    }
+  ],
+  Switch: [
+    {
+      testCase: { type: 'Switch', result: null as unknown as SwitchType },
+      dumpResult: { result: 'Not supported', type: 'Switch' },
+      displayResult: '#<Switch>',
+      matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
+    }
+  ],
+  NoPersist: [
+    {
+      testCase: { type: 'NoPersist', result: null },
+      displayResult: '#<NoPersist>',
+      dumpResult: { type: 'NoPersist', result: null }
+    }
+  ],
+  Blank: [
+    {
+      testCase: { type: 'Blank', result: 'Blank' },
+      displayResult: '#N/A',
+      dumpResult: { type: 'Blank', result: '#N/A' }
+    }
+  ],
+  Pending: [
+    {
+      testCase: { type: 'Pending', result: 'Pending' },
+      displayResult: '#<Pending>',
+      dumpResult: { type: 'Pending', result: 'Pending' }
+    }
+  ],
+  Waiting: [
+    {
+      testCase: { type: 'Waiting', result: 'Waiting' },
+      displayResult: '#<Waiting>',
+      dumpResult: { type: 'Waiting', result: 'Waiting' }
+    }
+  ],
+  Date: [
+    { testCase: { type: 'Date', result: new Date() }, displayResult: null, dumpResult: undefined },
+    {
+      testCase: { type: 'Date', result: new Date('') },
+      dumpResult: { type: 'Date', result: 'Invalid Date' },
+      displayResult: 'Invalid Date',
+      snapshot: true
+    },
+    {
+      testCase: { type: 'Date', result: new Date('foo bar') },
+      dumpResult: { type: 'Date', result: 'Invalid Date' },
+      displayResult: 'Invalid Date',
+      snapshot: true
+    }
+  ],
+  Error: [
+    {
+      testCase: { type: 'Error', result: 'bang!', meta: 'runtime' },
+      displayResult: '#<Error> bang!',
+      dumpResult: { type: 'Error', result: ['runtime', 'bang!'] }
+    }
+  ],
+  Array: [
+    {
+      testCase: { type: 'Array', result: [{ type: 'number', result: 1 }], meta: 'number' },
+      displayResult: '[1]',
+      dumpResult: { type: 'Array', result: [{ type: 'number', result: 1 }] }
+    },
+    {
+      testCase: { type: 'Array', result: [], meta: 'void' },
+      displayResult: '[]',
+      dumpResult: { type: 'Array', result: [] }
+    }
+  ],
+  Record: [
+    {
+      testCase: { type: 'Record', result: { foo: { type: 'number', result: 1 } }, meta: 'number' },
+      displayResult: '{foo: 1}',
+      dumpResult: { type: 'Record', result: { foo: { type: 'number', result: 1 } } }
+    },
+    {
+      testCase: { type: 'Record', result: {}, meta: 'void' },
+      displayResult: '{}',
+      dumpResult: { type: 'Record', result: {} }
+    }
+  ],
+  Block: [
+    {
+      testCase: { type: 'Block', result: formulaContext.findBlockById(namespaceId)! },
+      displayResult: 'Page1',
+      dumpResult: { type: 'Block', result: namespaceId }
+    },
+    {
+      testCase: { type: 'Block', result: new BlockClass(formulaContext, { id: unknownNamespaceId, name: 'Page2' }) },
+      dumpResult: { type: 'Block', result: unknownNamespaceId },
+      displayResult: 'Page2',
+      matchTestCase: { result: `Block not found`, meta: 'deps', type: 'Error' }
+    }
+  ],
+  Spreadsheet: [
+    {
+      testCase: { type: 'Spreadsheet', result: spreadsheet },
+      displayResult: 'MySpreadsheet',
+      dumpResult: { type: 'Spreadsheet', result: [spreadsheet.namespaceId, spreadsheet.spreadsheetId] }
+    }
+  ],
+  Column: columnTypes.map(c => ({
+    testCase: { type: 'Column', result: c },
+    displayResult: `MySpreadsheet.${c.display()}`,
+    dumpResult: { type: 'Column', result: [c.spreadsheetId, c.findKey] }
+  })),
+  Row: rowTypes.map(c => ({
+    testCase: { type: 'Row', result: c },
+    displayResult: `Row[${c.rowIndex}]`,
+    dumpResult: { type: 'Row', result: [c.spreadsheetId, c.findKey] }
+  })),
+  Cell: cellTypes.map(c => ({
+    testCase: { type: 'Cell', result: c },
+    displayResult: c.getValue(),
+    dumpResult: { type: 'Cell', result: [c.spreadsheetId, c.via, c._cell] }
+  })),
+  Range: [
+    {
+      testCase: { type: 'Range', result: null as unknown as RangeType },
+      dumpResult: { result: 'Not supported', type: 'Range' },
+      displayResult: '#<Range>',
+      matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
+    }
+  ]
 }
 
-describe('persist TODO', () => {
-  const input = Object.entries(testCases).flatMap(([k, { cases, serializesSameError, stringifyError }]) => {
-    return cases.map((c, index) => ({ index, type: k, serializesSameError, stringifyError, testCase: c }))
+describe('persist', () => {
+  const input = Object.entries(testCases).flatMap(([k, cases]) => {
+    return cases.map((c, index) => ({ index, type: k, jestTitle: `dump ${k} ${index}`, ...c }))
   })
-  it.each(input)('dump and load: $type $index', async ({ testCase, serializesSameError, stringifyError }) => {
-    const dumpedvalue = dumpValue(testCase)
-    if (stringifyError) {
+
+  it.todo('RowClass and CellClass cast check.')
+  it.todo('Date invalid')
+
+  it.each(input)('$jestTitle', async ({ testCase, dumpResult, snapshot, matchTestCase, displayResult }) => {
+    const dumpedvalue = dump(testCase)
+
+    if (dumpResult) {
       // eslint-disable-next-line jest/no-conditional-expect
-      expect(() => {
-        JSON.stringify(dumpedvalue)
-      }).toThrowError('Converting circular structure to JSON')
-    } else {
-      JSON.stringify(dumpedvalue)
+      expect(dumpedvalue).toMatchObject(dumpResult)
     }
-    const loadedValue = loadValue(ctx, dumpedvalue)
-    if (serializesSameError) {
+
+    const castedValue = cast(dumpedvalue, formulaContext)
+    const castedResult = matchTestCase ?? testCase
+
+    if (snapshot) {
       // eslint-disable-next-line jest/no-conditional-expect
-      expect(loadedValue).not.toEqual(testCase)
+      expect(castedValue).toMatchSnapshot()
+    } else if (castedValue.type === 'Row' || castedValue.type === 'Cell') {
+      // eslint-disable-next-line jest/no-conditional-expect
+      expect(matchObject(castedValue)).toMatchObject(matchObject(castedResult))
     } else {
       // eslint-disable-next-line jest/no-conditional-expect
-      expect(loadedValue).toEqual(testCase)
+      expect(castedValue).toMatchObject(castedResult)
+    }
+
+    const displayValue = display(testCase)
+    if (displayResult !== null) {
+      // eslint-disable-next-line jest/no-conditional-expect
+      expect(displayValue).toEqual(displayResult)
     }
   })
 })

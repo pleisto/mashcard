@@ -1,5 +1,5 @@
 import { BlockType, ColumnType, SpreadsheetType } from '../../controls'
-import { FunctionContext, VariableInterface } from '../../types'
+import { FunctionContext, VariableInterface } from '../../type'
 import { OperatorType } from '../operator'
 import { block2codeFragment, column2codeFragment, spreadsheet2codeFragment, variable2codeFragment } from '../convert'
 import { fetchResult } from '../../context/variable'
@@ -79,7 +79,7 @@ export const nameOperator: OperatorType = {
   dynamicInterpretLhs: async ({ operators, interpreter }) => {
     const image = operators[0]!.image
     const [kind, result] = findToken(interpreter.ctx, image)
-    if (!kind) return { type: 'Error', result: buildNotFoundMessage(image), errorKind: 'deps' }
+    if (!kind) return { type: 'Error', result: buildNotFoundMessage(image), meta: 'deps' }
 
     switch (kind) {
       case 'Block':

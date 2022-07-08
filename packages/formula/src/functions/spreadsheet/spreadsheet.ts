@@ -1,33 +1,31 @@
 import { uuid } from '@mashcard/active-support'
 import { Column, Row, Cell, SpreadsheetInitializer, SpreadsheetClass } from '../../controls'
 import { columnDisplayIndex } from '../../grammar'
-import {
-  FunctionContext,
-  ArrayResult,
-  SpreadsheetResult,
-  ErrorResult,
-  RecordResult,
-  createFunctionClause
-} from '../../types'
+import { FunctionContext, createFunctionClause, AnyTypeResult } from '../../type'
 
-const Spreadsheet = (ctx: FunctionContext, { result, subType }: ArrayResult): SpreadsheetResult | ErrorResult => {
-  const defaultData: RecordResult[] = [
+const Spreadsheet = (
+  ctx: FunctionContext,
+  { result, meta }: AnyTypeResult<'Array'>
+): AnyTypeResult<'Spreadsheet' | 'Error'> => {
+  const defaultData: Array<AnyTypeResult<'Record'>> = [
     {
       type: 'Record',
-      subType: 'string',
+      meta: 'string',
       result: { Column1: { type: 'string', result: '1' }, Column2: { type: 'string', result: '2' } }
     },
     {
       type: 'Record',
-      subType: 'string',
+      meta: 'string',
       result: { Column1: { type: 'string', result: '3' }, Column2: { type: 'string', result: '4' } }
     }
   ]
 
-  const recordData: RecordResult[] = result.length ? (result as RecordResult[]) : defaultData
+  const recordData: Array<AnyTypeResult<'Record'>> = result.length
+    ? (result as Array<AnyTypeResult<'Record'>>)
+    : defaultData
 
-  if (!['void', 'Record'].includes(subType)) {
-    return { type: 'Error', result: `Spreadsheet type unmatched: ${subType}`, errorKind: 'runtime' }
+  if (!['void', 'Record'].includes(meta)) {
+    return { type: 'Error', result: `Spreadsheet type unmatched: ${meta}`, meta: 'runtime' }
   }
 
   const spreadsheetId = uuid()

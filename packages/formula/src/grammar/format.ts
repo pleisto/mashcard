@@ -1,4 +1,4 @@
-import { CodeFragment, FunctionContext, OPERATOR_TYPES } from '../types'
+import { CodeFragment, FunctionContext, OPERATOR_TYPES } from '../type'
 import { parse } from './core'
 
 interface FormatResult {

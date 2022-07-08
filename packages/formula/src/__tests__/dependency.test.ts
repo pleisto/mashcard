@@ -1,7 +1,7 @@
 /* eslint-disable jest/no-conditional-expect */
 import { makeContext } from '../tests/testHelper'
 import { buildTestCases, trackTodo } from '../tests'
-import { VariableInterface, VariableValue } from '../types'
+import { VariableInterface, VariableValue } from '../type'
 import { uuid } from '@mashcard/active-support'
 import { BlockType } from '../controls'
 

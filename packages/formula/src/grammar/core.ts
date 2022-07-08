@@ -12,11 +12,10 @@ import {
   CodeFragmentResult,
   FunctionContext,
   BaseFormula,
-  ErrorResult,
   VariableTask,
   VariableParseResult,
   FormulaCheckType
-} from '../types'
+} from '../type'
 import { VariableClass, castVariable } from '../context/variable'
 import { checkValidName, FormulaLexer } from './lexer'
 import { FORMULA_PARSER_VERSION } from '../version'
@@ -355,17 +354,14 @@ const innerInterpretFirst = ({
   ctx: FunctionContext
 }): VariableValue | undefined => {
   if (errorMessages.length > 0) {
-    const result: ErrorResult = { result: errorMessages[0].message, type: 'Error', errorKind: errorMessages[0].type }
+    const result: AnyTypeResult<'Error'> = {
+      result: errorMessages[0].message,
+      type: 'Error',
+      meta: errorMessages[0].type
+    }
     return { success: false, result }
   }
 
-  // if (async) {
-  //   const result: PendingResult = { type: 'Pending', result: `Pending: ${ctx.meta.input}` }
-  //   return {
-  //     success: true,
-  //     result
-  //   }
-  // }
   if (kind === 'literal') {
     return { success: true, result: { type: 'literal', result: ctx.meta.input }, runtimeEventDependencies: [] }
   }
@@ -396,7 +392,7 @@ export const innerInterpret = async ({
   } catch (e) {
     console.error(e)
     const message = `[FATAL] ${(e as any).message as string}`
-    return { success: false, result: { result: message, type: 'Error', errorKind: 'fatal' } }
+    return { success: false, result: { result: message, type: 'Error', meta: 'fatal' } }
   }
 }
 

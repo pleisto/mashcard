@@ -1,5 +1,6 @@
 import { tokenMatcher } from 'chevrotain'
-import { NumberResult, PredicateOperator, StringResult } from '../../types'
+import { AnyTypeResult } from '../../type'
+import { PredicateOperator } from '../../types/predicate'
 import { Equal, Equal2, NotEqual, NotEqual2, LessThan, GreaterThan, LessThanEqual, GreaterThanEqual } from '../lexer'
 import { OperatorType } from '../operator'
 
@@ -9,7 +10,7 @@ export const predicateOperator: OperatorType = {
   lhsType: ['number', 'string'],
   rhsType: 'any',
   interpret: async ({ lhs, operator }) => {
-    const result = lhs as NumberResult | StringResult
+    const result = lhs as AnyTypeResult<'number' | 'string'>
     let image: PredicateOperator
     if (tokenMatcher(operator, Equal) || tokenMatcher(operator, Equal2)) {
       image = 'equal'
@@ -27,6 +28,16 @@ export const predicateOperator: OperatorType = {
       throw new Error(`Unexpected operator ${operator.image}`)
     }
 
-    return { type: 'Predicate', result, operator: image }
+    return { type: 'Predicate', result: result.result, meta: { operator: image } }
+  },
+  testCases: {
+    successTestCases: [
+      { definition: '= =1', result: 1 },
+      { definition: '=>=3', result: 3 },
+      { definition: '=!="foo"', result: 'foo' },
+      { definition: '=<>"123"', result: '123' },
+      { definition: '= <= (1+1)', result: 2 }
+    ],
+    errorTestCases: [{ definition: '=>=true', errorType: 'type', errorMessage: 'Expected number but got boolean' }]
   }
 }

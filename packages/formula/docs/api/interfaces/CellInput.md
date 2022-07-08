@@ -2,7 +2,7 @@
 
 ## Hierarchy
 
-- `Pick`<[`Cell`](Cell.md), `"value"`\>
+- `Pick`<[`Cell`](Cell.md), ``"value"``\>
 
   ↳ **`CellInput`**
 
@@ -24,7 +24,7 @@
 
 [packages/formula/src/tests/testType.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L63)
 
----
+___
 
 ### <a id="value" name="value"></a> value
 
@@ -36,9 +36,9 @@ Pick.value
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:141](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L141)
+[packages/formula/src/controls/types.ts:139](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L139)
 
----
+___
 
 ### <a id="variableid" name="variableid"></a> variableId
 

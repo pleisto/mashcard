@@ -1,6 +1,6 @@
 import { FORMULA_FEATURE_CONTROL } from '../../context'
 import { ButtonClass } from '../../controls'
-import { createFunctionClause } from '../../types'
+import { createFunctionClause } from '../../type'
 
 /**
  * @source

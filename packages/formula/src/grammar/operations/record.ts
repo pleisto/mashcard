@@ -1,4 +1,4 @@
-import { CodeFragment, ErrorMessage, RecordResult } from '../../types'
+import { AnyTypeResult, CodeFragment, ErrorMessage } from '../../type'
 import { codeFragment2string } from '../convert'
 import { OperatorType } from '../operator'
 import { extractSubType } from '../util'
@@ -7,7 +7,7 @@ export const recordOperator: OperatorType = {
   name: 'record',
   expressionType: 'Record',
   skipReturnEarlyCheck: true,
-  dynamicInterpretLhs: async () => ({ type: 'Record', subType: 'void', result: {} }),
+  dynamicInterpretLhs: async () => ({ type: 'Record', meta: 'void', result: {} }),
   lhsType: 'any',
   rhsType: 'any',
   parseRhs: ({
@@ -40,16 +40,16 @@ export const recordOperator: OperatorType = {
     }
   },
   interpret: async ({ lhs, rhs }) => {
-    const { result: lhsResult, type, subType } = lhs as RecordResult
+    const { result: lhsResult, type, meta } = lhs as AnyTypeResult<'Record'>
     const {
       result: { key, value }
-    } = rhs as RecordResult
+    } = rhs as AnyTypeResult<'Record'>
 
-    return { type, subType, result: { ...lhsResult, [key.result as string]: value } }
+    return { type, meta, result: { ...lhsResult, [key.result as string]: value } }
   },
   packageInterpretResult: ({ result: inputResult }) => {
-    const result = inputResult as RecordResult['result']
-    return { type: 'Record', subType: extractSubType(Object.values(result)), result }
+    const result = inputResult as AnyTypeResult<'Record'>['result']
+    return { type: 'Record', meta: extractSubType(Object.values(result)), result }
   },
   testCases: {
     pages: [{ pageName: 'Record', variables: [{ variableName: 'bar', definition: '=123' }] }],
@@ -65,8 +65,8 @@ export const recordOperator: OperatorType = {
           bool: { type: 'boolean', result: true },
           nullz: { type: 'null', result: null },
           var: { type: 'number', result: 123 },
-          obj: { type: 'Record', subType: 'void', result: {} },
-          array: { type: 'Array', subType: 'number', result: [{ type: 'number', result: 1 }] }
+          obj: { type: 'Record', meta: 'void', result: {} },
+          array: { type: 'Array', meta: 'number', result: [{ type: 'number', result: 1 }] }
         }
       }
     ],

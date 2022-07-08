@@ -1,41 +1,33 @@
-import {
-  BooleanResult,
-  ColumnResult,
-  createFunctionClause,
-  ErrorResult,
-  FunctionContext,
-  SpreadsheetResult,
-  StringResult
-} from '../../types'
+import { AnyTypeResult, createFunctionClause, FunctionContext } from '../../type'
 
 const VLOOKUP = (
   ctx: FunctionContext,
-  { result: match }: StringResult,
-  { result: spreadsheet }: SpreadsheetResult,
-  { result: column }: ColumnResult,
-  { result: range }: BooleanResult
+  { result: match }: AnyTypeResult<'string'>,
+  { result: spreadsheet }: AnyTypeResult<'Spreadsheet'>,
+  { result: column }: AnyTypeResult<'Column'>,
+  { result: range }: AnyTypeResult<'boolean'>
 ): // eslint-disable-next-line max-params
-StringResult | ErrorResult => {
+AnyTypeResult<'string' | 'Error'> => {
   if (spreadsheet.spreadsheetId !== column.spreadsheetId) {
-    return { type: 'Error', result: 'Column must be in the same namespace', errorKind: 'runtime' }
+    return { type: 'Error', result: 'Column must be in the same namespace', meta: 'runtime' }
   }
 
   const columns = spreadsheet.listColumns()
 
   const firstColumn = columns[0]
   if (!firstColumn) {
-    return { type: 'Error', result: 'Spreadsheet is empty', errorKind: 'runtime' }
+    return { type: 'Error', result: 'Spreadsheet is empty', meta: 'runtime' }
   }
 
   if (firstColumn.columnId === column.columnId) {
-    return { type: 'Error', result: 'Column cannot be the same as the first column', errorKind: 'runtime' }
+    return { type: 'Error', result: 'Column cannot be the same as the first column', meta: 'runtime' }
   }
 
   if (!columns.find(c => c.columnId === column.columnId)) {
-    return { type: 'Error', result: 'Column not found', errorKind: 'runtime' }
+    return { type: 'Error', result: 'Column not found', meta: 'runtime' }
   }
 
-  let result: StringResult | ErrorResult = { type: 'Error', result: 'Not found', errorKind: 'runtime' }
+  let result: AnyTypeResult<'Error' | 'string'> = { type: 'Error', result: 'Not found', meta: 'runtime' }
 
   const matchData = String(match)
 

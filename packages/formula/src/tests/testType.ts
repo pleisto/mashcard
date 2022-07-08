@@ -6,13 +6,13 @@ import { OperatorName } from '../grammar'
 import {
   CodeFragment,
   Completion,
-  ErrorType,
   ExpressionType,
   FormulaDefinition,
   FunctionContext,
   VariableMetadata,
   VariableParseResult
-} from '../types'
+} from '../type'
+import { ErrorType } from '../types/error'
 import { AllowEvents } from './testEvent'
 
 export const DEFAULT_FIRST_NAMESPACEID = '00000000-0000-0000-0000-000000000000'

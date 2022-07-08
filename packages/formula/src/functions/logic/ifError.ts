@@ -1,4 +1,4 @@
-import { createFunctionClause, FORMULA_USED_TYPES } from '../../types'
+import { createFunctionClause, FORMULA_USED_TYPES } from '../../type'
 
 /**
  * @source
@@ -16,7 +16,7 @@ export const logicIfError = createFunctionClause({
   chain: true,
   examples: [
     { input: '=IFERROR(1, 2)', output: { type: 'number', result: 2 } },
-    { input: '=IFERROR(ERROR("foo bar"), "123")', output: { type: 'Error', result: 'foo bar', errorKind: 'runtime' } }
+    { input: '=IFERROR(ERROR("foo bar"), "123")', output: { type: 'Error', result: 'foo bar', meta: 'runtime' } }
   ],
   args: [
     { name: 'expr1', type: [...FORMULA_USED_TYPES] },

@@ -1,26 +1,19 @@
-import {
-  ColumnResult,
-  createFunctionClause,
-  ErrorResult,
-  FunctionContext,
-  NumberResult,
-  StringResult
-} from '../../types'
+import { AnyTypeResult, createFunctionClause, FunctionContext } from '../../type'
 
 const XLOOKUP = (
   ctx: FunctionContext,
-  { result: lookupValue }: StringResult,
-  { result: lookupColumn }: ColumnResult,
-  { result: returnColumn }: ColumnResult,
-  notFoundValue: StringResult,
-  { result: matchMode }: NumberResult
+  { result: lookupValue }: AnyTypeResult<'string'>,
+  { result: lookupColumn }: AnyTypeResult<'Column'>,
+  { result: returnColumn }: AnyTypeResult<'Column'>,
+  notFoundValue: AnyTypeResult<'string'>,
+  { result: matchMode }: AnyTypeResult<'number'>
 ): // eslint-disable-next-line max-params
-StringResult | ErrorResult => {
+AnyTypeResult<'string' | 'Error'> => {
   if (lookupColumn.spreadsheetId !== returnColumn.spreadsheetId) {
-    return { type: 'Error', result: 'Columns must be in the same namespace', errorKind: 'runtime' }
+    return { type: 'Error', result: 'Columns must be in the same namespace', meta: 'runtime' }
   }
 
-  let result: StringResult = notFoundValue
+  let result: AnyTypeResult<'string'> = notFoundValue
 
   lookupColumn.spreadsheet.listRows().forEach(row => {
     let bol = false

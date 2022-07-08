@@ -10,7 +10,7 @@ import {
   NamespaceId,
   SpreadsheetId,
   uuid
-} from '../types'
+} from '../type'
 import { CellClass } from './cell'
 import { Cell, CellType, getEventDependencyInput, Row, RowType, SpreadsheetType } from './types'
 
@@ -76,7 +76,7 @@ export class RowClass implements RowType {
       return {
         type: 'Error',
         result: `Column "${name}" not found`,
-        errorKind: 'runtime'
+        meta: 'runtime'
       }
     }
 
@@ -86,7 +86,7 @@ export class RowClass implements RowType {
         return {
           result: 'Circular dependency found',
           type: 'Error',
-          errorKind: 'circular_dependency'
+          meta: 'circular_dependency'
         }
       }
     }
@@ -96,7 +96,7 @@ export class RowClass implements RowType {
       return {
         type: 'Error',
         result: `Cell "${name}" not found`,
-        errorKind: 'runtime'
+        meta: 'runtime'
       }
     }
 
@@ -104,7 +104,7 @@ export class RowClass implements RowType {
   }
 
   newCell(cell: Cell, columnKey: string): CellType {
-    return new CellClass(this.spreadsheet, cell, {
+    return new CellClass(this.spreadsheet, cell, ['row', this.findKey, columnKey], {
       rowKey: this.key(),
       columnKey,
       cleanupEventDependency: this.eventDependency({})

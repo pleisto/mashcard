@@ -1,7 +1,7 @@
-import { FormulaSourceType, LiteralResult } from '@mashcard/formula'
+import { AnyTypeResult, FormulaSourceType } from '@mashcard/formula'
 
 export interface FormulaLiteralProps {
-  result: LiteralResult
+  result: AnyTypeResult<'literal'>
   formulaType: FormulaSourceType
 }
 

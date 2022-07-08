@@ -1,4 +1,4 @@
-import { AnyFunctionClause, FunctionGroup, FunctionKey, FunctionNameType } from '../types'
+import { AnyFunctionClause, FunctionGroup, FunctionKey, FunctionNameType } from '../type'
 import * as ApiFunctions from './api'
 import * as ArrayFunctions from './array'
 import * as ControlFunctions from './control'

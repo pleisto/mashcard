@@ -1,18 +1,16 @@
 import { ColumnType, Column, SpreadsheetType, Cell, getEventDependencyInput, CellType } from './types'
 import {
   AnyTypeResult,
-  CellResult,
   CodeFragment,
   ColumnId,
   ColumnName,
   ErrorMessage,
-  ErrorResult,
   EventDependency,
   FindKey,
   FormulaType,
   NamespaceId,
   VariableMetadata
-} from '../types'
+} from '../type'
 import { codeFragments2definition, CodeFragmentVisitor, FormulaInterpreter } from '../grammar'
 import { CellClass } from '.'
 import { SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../events'
@@ -74,16 +72,16 @@ export class ColumnClass implements ColumnType {
     }
   }
 
-  private findCellByNumber(meta: VariableMetadata, name: string): CellResult | ErrorResult {
+  private findCellByNumber(meta: VariableMetadata, name: string): AnyTypeResult<'Cell' | 'Error'> {
     const number = Number(name)
     if (isNaN(number)) {
-      return { type: 'Error', result: `Need a number: ${name}`, errorKind: 'syntax' }
+      return { type: 'Error', result: `Need a number: ${name}`, meta: 'syntax' }
     }
     const cells = this.cells()
     const cell = cells[number - 1]
 
     if (!cell) {
-      return { type: 'Error', result: `Cell out of range: ${cells.length}`, errorKind: 'runtime' }
+      return { type: 'Error', result: `Cell out of range: ${cells.length}`, meta: 'runtime' }
     }
 
     if (meta.richType.type === 'spreadsheet') {
@@ -92,7 +90,7 @@ export class ColumnClass implements ColumnType {
         return {
           result: 'Circular dependency found',
           type: 'Error',
-          errorKind: 'circular_dependency'
+          meta: 'circular_dependency'
         }
       }
     }
@@ -101,7 +99,7 @@ export class ColumnClass implements ColumnType {
   }
 
   newCell(cell: Cell, rowKey: string): CellType {
-    return new CellClass(this.spreadsheet, cell, {
+    return new CellClass(this.spreadsheet, cell, ['column', this.findKey, rowKey], {
       columnKey: this.key(),
       rowKey,
       cleanupEventDependency: this.eventDependency({})
@@ -150,7 +148,7 @@ export class ColumnClass implements ColumnType {
     const errors: ErrorMessage[] = []
 
     if (result.type === 'Error') {
-      errors.push({ type: result.errorKind, message: result.result })
+      errors.push({ type: result.meta, message: result.result })
       return {
         errors,
         firstArgumentType: undefined,

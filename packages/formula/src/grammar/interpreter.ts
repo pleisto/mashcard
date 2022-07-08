@@ -1,15 +1,7 @@
 /* eslint-disable @typescript-eslint/return-await */
 /* eslint-disable no-continue */
 import { CstElement, CstNode, IToken } from 'chevrotain'
-import {
-  AnyTypeResult,
-  PredicateResult,
-  Argument,
-  FunctionContext,
-  FormulaType,
-  ExpressionType,
-  VariableParseResult
-} from '../types'
+import { AnyTypeResult, Argument, FunctionContext, FormulaType, ExpressionType, VariableParseResult } from '../type'
 import { extractSubType, runtimeCheckType, shouldReturnEarly } from './util'
 import { buildFunctionKey } from '../functions'
 import { ParserInstance } from './parser'
@@ -429,7 +421,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
       if (result) {
         return result
       }
-      return { type: 'Error', result: `Argument ${number} not found`, errorKind: 'runtime' }
+      return { type: 'Error', result: `Argument ${number} not found`, meta: 'runtime' }
     } else if (ctx.Input) {
       const parentType: FormulaType = 'Record'
       const typeError = runtimeCheckType(args, parentType, 'lazyVariableExpression', this.ctx)
@@ -437,7 +429,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
 
       return {
         type: 'Record',
-        subType: extractSubType(Object.values(this.ctx.interpretContext.ctx)),
+        meta: extractSubType(Object.values(this.ctx.interpretContext.ctx)),
         result: this.ctx.interpretContext.ctx
       }
     } else {
@@ -513,7 +505,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
       const argsTypes = clause.args.map(arg => arg.type)
 
       if (!ctx.Arguments || !ctx.Arguments[0].children?.expression) {
-        return { type: 'Error', result: 'Function is empty', errorKind: 'runtime' }
+        return { type: 'Error', result: 'Function is empty', meta: 'runtime' }
       }
 
       for (const { e, index } of ctx.Arguments[0].children?.expression.map((e: CstElement, index: number) => ({
@@ -555,8 +547,8 @@ export class FormulaInterpreter extends InterpretCstVisitor {
           throw new Error(`Argument ${index} is not defined`)
         }
 
-        if (argType.type === 'Predicate' && ['number', 'string'].includes(v.type)) {
-          return { type: 'Predicate', result: v as PredicateResult['result'], operator: 'equal' }
+        if (argType.type === 'Predicate' && (v.type === 'number' || v.type === 'string')) {
+          return { type: 'Predicate', result: v.result, meta: { operator: 'equal' } }
         } else {
           return v
         }

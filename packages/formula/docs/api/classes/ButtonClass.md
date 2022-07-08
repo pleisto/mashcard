@@ -32,9 +32,9 @@
 
 #### Parameters
 
-| Name                | Type                                                      |
-| :------------------ | :-------------------------------------------------------- |
-| `ctx`               | [`FunctionContext`](../interfaces/FunctionContext.md)     |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | [`FunctionContext`](../interfaces/FunctionContext.md) |
 | `__namedParameters` | [`ButtonInitializer`](../interfaces/ButtonInitializer.md) |
 
 ## Properties
@@ -45,13 +45,13 @@
 
 #### Implementation of
 
-[ButtonType](../interfaces/ButtonType.md).[\_formulaContext](../interfaces/ButtonType.md#_formulacontext)
+[ButtonType](../interfaces/ButtonType.md).[_formulaContext](../interfaces/ButtonType.md#_formulacontext)
 
 #### Defined in
 
 [packages/formula/src/controls/button.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/button.ts#L7)
 
----
+___
 
 ### <a id="_meta" name="_meta"></a> \_meta
 
@@ -59,13 +59,13 @@
 
 #### Implementation of
 
-[ButtonType](../interfaces/ButtonType.md).[\_meta](../interfaces/ButtonType.md#_meta)
+[ButtonType](../interfaces/ButtonType.md).[_meta](../interfaces/ButtonType.md#_meta)
 
 #### Defined in
 
 [packages/formula/src/controls/button.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/button.ts#L8)
 
----
+___
 
 ### <a id="disabled" name="disabled"></a> disabled
 
@@ -79,11 +79,11 @@
 
 [packages/formula/src/controls/button.ts:11](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/button.ts#L11)
 
----
+___
 
 ### <a id="fn" name="fn"></a> fn
 
-• **fn**: [`FunctionResult`](../interfaces/FunctionResult.md)
+• **fn**: `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\>  }, ``"dump"``\>
 
 #### Implementation of
 
@@ -93,11 +93,11 @@
 
 [packages/formula/src/controls/button.ts:10](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/button.ts#L10)
 
----
+___
 
 ### <a id="kind" name="kind"></a> kind
 
-• **kind**: `"Button"`
+• **kind**: ``"Button"``
 
 #### Implementation of
 
@@ -107,7 +107,7 @@
 
 [packages/formula/src/controls/button.ts:9](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/button.ts#L9)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -121,7 +121,7 @@
 
 [packages/formula/src/controls/button.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/button.ts#L6)
 
----
+___
 
 ### <a id="onclick" name="onclick"></a> onClick
 

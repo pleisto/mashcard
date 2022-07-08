@@ -2,10 +2,10 @@
 
 ## Type parameters
 
-| Name          | Type             |
-| :------------ | :--------------- |
+| Name | Type |
+| :------ | :------ |
 | `ColumnCount` | extends `number` |
-| `RowCount`    | extends `number` |
+| `RowCount` | extends `number` |
 
 ## Table of contents
 
@@ -26,7 +26,7 @@
 
 [packages/formula/src/tests/testType.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L73)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -36,7 +36,7 @@
 
 [packages/formula/src/tests/testType.ts:72](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L72)
 
----
+___
 
 ### <a id="rows" name="rows"></a> rows
 
@@ -46,7 +46,7 @@
 
 [packages/formula/src/tests/testType.ts:74](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L74)
 
----
+___
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
 

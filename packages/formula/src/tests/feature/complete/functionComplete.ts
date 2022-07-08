@@ -1,5 +1,5 @@
 import { TestCaseInterface } from '../../testType'
-import { createFunctionClause } from '../../../types'
+import { createFunctionClause } from '../../../type'
 
 const functionClauses = [
   createFunctionClause({

@@ -1,6 +1,6 @@
 import { CstNode, IToken } from 'chevrotain'
 import { TestCaseType } from '../tests'
-import { AnyTypeResult, CodeFragment, CodeFragmentResult, ErrorMessage, FormulaCheckType, FormulaType } from '../types'
+import { AnyTypeResult, CodeFragment, CodeFragmentResult, ErrorMessage, FormulaCheckType, FormulaType } from '../type'
 import { CodeFragmentVisitor, CstVisitorArgument, token2fragment } from './codeFragment'
 import { InterpretArgument, FormulaInterpreter } from './interpreter'
 import { intersectType, runtimeCheckType, shouldReturnEarly } from './util'

@@ -1,4 +1,4 @@
-import { createFunctionClause, StringResult } from '../../types'
+import { AnyTypeResult, createFunctionClause } from '../../type'
 
 /**
  * @source
@@ -20,18 +20,18 @@ export const stringSplit = createFunctionClause({
   examples: [
     {
       input: '=Split("foo", ",")',
-      output: { type: 'Array', subType: 'string', result: [{ type: 'string', result: 'foo' }] }
+      output: { type: 'Array', meta: 'string', result: [{ type: 'string', result: 'foo' }] }
     }
   ],
   returns: 'Array',
   testCases: [
-    { input: ['', ';;'], output: { type: 'Array', subType: 'string', result: [{ type: 'string', result: '' }] } },
-    { input: ['a;b', ';;'], output: { type: 'Array', subType: 'string', result: [{ type: 'string', result: 'a;b' }] } },
+    { input: ['', ';;'], output: { type: 'Array', meta: 'string', result: [{ type: 'string', result: '' }] } },
+    { input: ['a;b', ';;'], output: { type: 'Array', meta: 'string', result: [{ type: 'string', result: 'a;b' }] } },
     {
       input: ['a;;b', ';;'],
       output: {
         type: 'Array',
-        subType: 'string',
+        meta: 'string',
         result: [
           { type: 'string', result: 'a' },
           { type: 'string', result: 'b' }
@@ -41,8 +41,8 @@ export const stringSplit = createFunctionClause({
   ],
   chain: true,
   reference: (ctx, string, separator) => ({
-    result: string.result.split(separator.result).map<StringResult>(s => ({ result: s, type: 'string' })),
-    subType: 'string',
+    result: string.result.split(separator.result).map<AnyTypeResult<'string'>>(s => ({ result: s, type: 'string' })),
+    meta: 'string',
     type: 'Array'
   })
 })

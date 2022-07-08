@@ -1,4 +1,4 @@
-import { CodeFragment, CodeFragmentStep } from '../../types'
+import { CodeFragment, CodeFragmentStep } from '../../type'
 
 /**
  * Add space to codeFragment

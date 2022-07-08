@@ -1,4 +1,4 @@
-import { createFunctionClause, RecordResult } from '../../types'
+import { AnyTypeResult, createFunctionClause } from '../../type'
 
 /**
  * @source
@@ -11,7 +11,7 @@ export const spreadsheetToRecordArray = createFunctionClause({
   persist: false,
   acceptError: false,
   effect: false,
-  examples: [{ input: '=123', output: { type: 'Array', result: [], subType: 'void' } }],
+  examples: [{ input: '=123', output: { type: 'Array', result: [], meta: 'void' } }],
   description: 'Converts the spreadsheet to a record.',
   group: 'core',
   args: [{ name: 'spreadsheet', type: 'Spreadsheet' }],
@@ -21,8 +21,10 @@ export const spreadsheetToRecordArray = createFunctionClause({
   reference: (ctx, { result: spreadsheet }) => {
     return {
       type: 'Array',
-      subType: 'Record',
-      result: spreadsheet.toRecord().map<RecordResult>(row => ({ type: 'Record', subType: 'string', result: row }))
+      meta: 'Record',
+      result: spreadsheet
+        .toRecord()
+        .map<AnyTypeResult<'Record'>>(row => ({ type: 'Record', meta: 'string', result: row }))
     }
   }
 })
