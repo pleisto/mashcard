@@ -117,6 +117,7 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
               onClick={handleUnsplashImageSelect(image)}>
               <ImageWithSpin
                 src={image.smallUrl}
+                style={{ width: 140, height: 105 }}
                 className="unsplash-image"
                 blurHash={image.blurHash}
               />

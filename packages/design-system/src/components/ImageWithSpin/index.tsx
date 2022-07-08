@@ -36,7 +36,7 @@ export const ImageWithSpin: React.FC<ImageWithSpinProps> = ({ src, alt, blurHash
       {isInitLoad &&
         loading &&
         (blurHash && otherProps.style ? (
-          <BlurHashWrapper>
+          <BlurHashWrapper data-testid="blurhash" role="progressbar" aria-busy>
             <Blurhash hash={blurHash} width={otherProps.style.width} height={otherProps.style.height} />
           </BlurHashWrapper>
         ) : (
