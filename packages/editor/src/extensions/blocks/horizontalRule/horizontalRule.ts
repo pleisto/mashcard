@@ -13,11 +13,22 @@ export const HorizontalRule = TiptapHorizontalRule.extend({
     return ReactNodeViewRenderer(HorizontalRuleView)
   },
 
+  addCommands() {
+    return {
+      setHorizontalRule:
+        () =>
+        ({ chain }) => {
+          return chain().insertContent({ type: this.name }).run()
+        }
+    }
+  },
+
   addInputRules() {
     return [
       nodeInputRule({
         find: /^(?:---|—-|___\s|\*\*\*\s)$/,
-        type: this.type
+        type: this.type,
+        editor: this.editor
       })
     ]
   }
