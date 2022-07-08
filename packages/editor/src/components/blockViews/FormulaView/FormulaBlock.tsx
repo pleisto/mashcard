@@ -146,7 +146,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
         name,
         input,
         position,
-        display: display(fetchResult(v.t))
+        display: display(fetchResult(v.t)).result
       }
 
       updateAttributes({ formula: { type: 'FORMULA', attrs } })

@@ -145,11 +145,12 @@ export type BaseResult<
 export interface FormulaTypeAttributes<
   Type extends UsedFormulaType,
   Dump extends AnyDumpResult<Type> = AnyDumpResult<Type>,
-  Value extends AnyTypeResult<Type> = AnyTypeResult<Type>
+  Value extends AnyTypeResult<Type> = AnyTypeResult<Type>,
+  Display extends AnyDisplayResult<Type> = AnyDisplayResult<Type>
 > {
   type: Type
   dump: (result: Value, dumpF: (o: AnyTypeResult) => any) => Dump
-  display: (result: Value, displayF: (o: AnyTypeResult) => string) => string
+  display: (result: Value, displayF: (o: AnyTypeResult) => Display) => Display
   cast: (
     dump: Dump,
     ctx: ContextInterface,
@@ -172,6 +173,10 @@ export type AnyTypeResult<T extends FormulaType = UsedFormulaType> = T extends U
 
 export type AnyDumpResult<T extends FormulaType = UsedFormulaType> = T extends UsedFormulaType
   ? Omit<ExtractedType<T>, 'dump' | 'meta' | 'result'> & { result: ExtractedType<T>['dump'] }
+  : never
+
+export type AnyDisplayResult<T extends FormulaType = UsedFormulaType> = T extends UsedFormulaType
+  ? Omit<ExtractedType<T>, 'dump' | 'meta' | 'result'> & { result: string }
   : never
 
 type AnyFunctionResult<T extends FormulaType> = AnyTypeResult<T | 'Error'>

@@ -12,7 +12,7 @@ import {
   SwitchType
 } from '../controls'
 import { dispatchFormulaBlockNameChange } from '../events'
-import { AnyDumpResult, AnyTypeResult, UsedFormulaType } from '../type'
+import { AnyDisplayResult, AnyDumpResult, AnyTypeResult, UsedFormulaType } from '../type'
 import { FormulaContext } from '../context/context'
 import { cast, dump, display } from '../context/persist'
 import { generateUUIDs, matchObject } from '../tests'
@@ -215,33 +215,43 @@ const testCases: {
     testCase: AnyTypeResult<P>
     dumpResult?: AnyDumpResult<P>
     matchTestCase?: AnyTypeResult<P | 'Error'>
-    displayResult: string | null
+    displayResult: AnyDisplayResult<P> | null
     snapshot?: true
     todoMessage?: string
   }>
 } = {
   null: [
-    { testCase: { type: 'null', result: null }, displayResult: 'null', dumpResult: { type: 'null', result: null } }
+    {
+      testCase: { type: 'null', result: null },
+      displayResult: { type: 'null', result: 'null' },
+      dumpResult: { type: 'null', result: null }
+    }
   ],
   boolean: [
     {
       testCase: { type: 'boolean', result: true },
-      displayResult: 'true',
+      displayResult: { type: 'boolean', result: 'true' },
       dumpResult: { type: 'boolean', result: true }
     }
   ],
-  number: [{ testCase: { type: 'number', result: 1 }, displayResult: '1', dumpResult: { type: 'number', result: 1 } }],
+  number: [
+    {
+      testCase: { type: 'number', result: 1 },
+      displayResult: { type: 'number', result: '1' },
+      dumpResult: { type: 'number', result: 1 }
+    }
+  ],
   string: [
     {
       testCase: { type: 'string', result: '1', view: { type: '', attrs: {} } },
-      displayResult: '1',
+      displayResult: { type: 'string', result: '1', view: { type: '', attrs: {} } },
       dumpResult: { type: 'string', result: '1', view: { type: '', attrs: {} } }
     }
   ],
   literal: [
     {
       testCase: { type: 'literal', result: '1123' },
-      displayResult: '1123',
+      displayResult: { type: 'literal', result: '1123' },
       dumpResult: { type: 'literal', result: '1123' }
     }
   ],
@@ -249,7 +259,7 @@ const testCases: {
     {
       testCase: { type: 'Cst', result: { name: '', children: {} } },
       dumpResult: { result: 'Not supported', type: 'Cst' },
-      displayResult: '#<Cst>',
+      displayResult: { type: 'Cst', result: '#<Cst>' },
       matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
     }
   ],
@@ -257,7 +267,7 @@ const testCases: {
     {
       testCase: { type: 'Reference', result: { kind: 'self' } },
       dumpResult: { result: 'Not supported', type: 'Reference' },
-      displayResult: '#<Reference>',
+      displayResult: { type: 'Reference', result: '#<Reference>' },
       matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
     }
   ],
@@ -265,7 +275,7 @@ const testCases: {
     {
       testCase: { type: 'Function', result: [{ name: 'Set', args: [] }] },
       dumpResult: { result: 'Not supported', type: 'Function' },
-      displayResult: '#<Function>',
+      displayResult: { type: 'Function', result: '#<Function>' },
       matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
     }
   ],
@@ -273,7 +283,7 @@ const testCases: {
     {
       testCase: { type: 'Predicate', result: 123, meta: { operator: 'equal' } },
       dumpResult: { result: 'Not supported', type: 'Predicate' },
-      displayResult: '[equal] 123',
+      displayResult: { type: 'Predicate', result: '[equal] 123' },
       matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
     }
   ],
@@ -281,7 +291,7 @@ const testCases: {
     {
       testCase: { type: 'Button', result: null as unknown as ButtonType },
       dumpResult: { result: 'Not supported', type: 'Button' },
-      displayResult: '#<Button>',
+      displayResult: { type: 'Button', result: '#<Button>' },
       matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
     }
   ],
@@ -289,35 +299,35 @@ const testCases: {
     {
       testCase: { type: 'Switch', result: null as unknown as SwitchType },
       dumpResult: { result: 'Not supported', type: 'Switch' },
-      displayResult: '#<Switch>',
+      displayResult: { type: 'Switch', result: '#<Switch>' },
       matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
     }
   ],
   NoPersist: [
     {
       testCase: { type: 'NoPersist', result: null },
-      displayResult: '#<NoPersist>',
+      displayResult: { type: 'NoPersist', result: '#<NoPersist>' },
       dumpResult: { type: 'NoPersist', result: null }
     }
   ],
   Blank: [
     {
       testCase: { type: 'Blank', result: 'Blank' },
-      displayResult: '#N/A',
+      displayResult: { type: 'Blank', result: '#N/A' },
       dumpResult: { type: 'Blank', result: '#N/A' }
     }
   ],
   Pending: [
     {
       testCase: { type: 'Pending', result: 'Pending' },
-      displayResult: '#<Pending>',
+      displayResult: { type: 'Pending', result: '#<Pending>' },
       dumpResult: { type: 'Pending', result: 'Pending' }
     }
   ],
   Waiting: [
     {
       testCase: { type: 'Waiting', result: 'Waiting' },
-      displayResult: '#<Waiting>',
+      displayResult: { type: 'Waiting', result: '#<Waiting>' },
       dumpResult: { type: 'Waiting', result: 'Waiting' }
     }
   ],
@@ -326,87 +336,87 @@ const testCases: {
     {
       testCase: { type: 'Date', result: new Date('') },
       dumpResult: { type: 'Date', result: 'Invalid Date' },
-      displayResult: 'Invalid Date',
+      displayResult: { type: 'Date', result: 'Invalid Date' },
       snapshot: true
     },
     {
       testCase: { type: 'Date', result: new Date('foo bar') },
       dumpResult: { type: 'Date', result: 'Invalid Date' },
-      displayResult: 'Invalid Date',
+      displayResult: { type: 'Date', result: 'Invalid Date' },
       snapshot: true
     }
   ],
   Error: [
     {
       testCase: { type: 'Error', result: 'bang!', meta: 'runtime' },
-      displayResult: '#<Error> bang!',
+      displayResult: { type: 'Error', result: '#<Error> bang!' },
       dumpResult: { type: 'Error', result: ['runtime', 'bang!'] }
     }
   ],
   Array: [
     {
       testCase: { type: 'Array', result: [{ type: 'number', result: 1 }], meta: 'number' },
-      displayResult: '[1]',
+      displayResult: { type: 'Array', result: '[1]' },
       dumpResult: { type: 'Array', result: [{ type: 'number', result: 1 }] }
     },
     {
       testCase: { type: 'Array', result: [], meta: 'void' },
-      displayResult: '[]',
+      displayResult: { type: 'Array', result: '[]' },
       dumpResult: { type: 'Array', result: [] }
     }
   ],
   Record: [
     {
       testCase: { type: 'Record', result: { foo: { type: 'number', result: 1 } }, meta: 'number' },
-      displayResult: '{foo: 1}',
+      displayResult: { type: 'Record', result: '{foo: 1}' },
       dumpResult: { type: 'Record', result: { foo: { type: 'number', result: 1 } } }
     },
     {
       testCase: { type: 'Record', result: {}, meta: 'void' },
-      displayResult: '{}',
+      displayResult: { type: 'Record', result: '{}' },
       dumpResult: { type: 'Record', result: {} }
     }
   ],
   Block: [
     {
       testCase: { type: 'Block', result: formulaContext.findBlockById(namespaceId)! },
-      displayResult: 'Page1',
+      displayResult: { type: 'Block', result: 'Page1' },
       dumpResult: { type: 'Block', result: namespaceId }
     },
     {
       testCase: { type: 'Block', result: new BlockClass(formulaContext, { id: unknownNamespaceId, name: 'Page2' }) },
       dumpResult: { type: 'Block', result: unknownNamespaceId },
-      displayResult: 'Page2',
+      displayResult: { type: 'Block', result: 'Page2' },
       matchTestCase: { result: `Block not found`, meta: 'deps', type: 'Error' }
     }
   ],
   Spreadsheet: [
     {
       testCase: { type: 'Spreadsheet', result: spreadsheet },
-      displayResult: 'MySpreadsheet',
+      displayResult: { type: 'Spreadsheet', result: 'MySpreadsheet' },
       dumpResult: { type: 'Spreadsheet', result: [spreadsheet.namespaceId, spreadsheet.spreadsheetId] }
     }
   ],
   Column: columnTypes.map(c => ({
     testCase: { type: 'Column', result: c },
-    displayResult: `MySpreadsheet.${c.display()}`,
+    displayResult: { type: 'Column', result: `MySpreadsheet.${c.display()}` },
     dumpResult: { type: 'Column', result: [c.spreadsheetId, c.findKey] }
   })),
   Row: rowTypes.map(c => ({
     testCase: { type: 'Row', result: c },
-    displayResult: `Row[${c.rowIndex}]`,
+    displayResult: { type: 'Row', result: `Row[${c.rowIndex}]` },
     dumpResult: { type: 'Row', result: [c.spreadsheetId, c.findKey] }
   })),
   Cell: cellTypes.map(c => ({
     testCase: { type: 'Cell', result: c },
-    displayResult: c.getValue(),
+    displayResult: { type: 'Cell', result: c.getValue() },
     dumpResult: { type: 'Cell', result: [c.spreadsheetId, c.via, c._cell] }
   })),
   Range: [
     {
       testCase: { type: 'Range', result: null as unknown as RangeType },
       dumpResult: { result: 'Not supported', type: 'Range' },
-      displayResult: '#<Range>',
+      displayResult: { type: 'Range', result: '#<Range>' },
       matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
     }
   ]

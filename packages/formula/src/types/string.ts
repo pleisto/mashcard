@@ -8,5 +8,5 @@ export const FormulaStringAttributes: FormulaTypeAttributes<typeof TypeName> = {
   type: TypeName,
   dump: rest => rest,
   cast: rest => rest,
-  display: ({ result }) => result
+  display: rest => rest
 }
