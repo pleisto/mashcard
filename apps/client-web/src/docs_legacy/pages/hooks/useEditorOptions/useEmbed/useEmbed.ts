@@ -7,8 +7,8 @@ import { useGetFileUrl } from './useGetFileUrl'
 import { usePrepareFileUpload } from './usePrepareFileUpload'
 import { useMemo } from 'react'
 
-export function useEmbed(blocks: Block[], docMeta: DocMeta): EmbedOptions {
-  const getFileUrl = useGetFileUrl(blocks, docMeta)
+export function useEmbed(documentBlock: Block, docMeta: DocMeta): EmbedOptions {
+  const getFileUrl = useGetFileUrl(documentBlock)
   const getGalleryImages = useGetGalleryImages()
   const getUrlData = useGetUrlData()
   const prepareFileUpload = usePrepareFileUpload(docMeta)

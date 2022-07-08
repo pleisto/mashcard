@@ -7,11 +7,11 @@ import { yDocToProsemirrorJSON } from 'y-prosemirror'
 
 import {
   BlockNew,
+  BlockNewQuery,
   DocumentHistory,
   DocumentInfo,
   User,
   Statetype,
-  useBlockNewQuery,
   useBlockCommitMutation,
   useDocumentSubscription,
   useAwarenessUpdateMutation,
@@ -40,9 +40,13 @@ export interface awarenessInfo {
   user: awarenessInfoUser
 }
 
-export function useBlockSyncProvider(queryVariables: { blockId: string; historyId?: string; editable: boolean }): {
+export function useDocSyncProvider(queryVariables: {
+  blockId: string
+  historyId?: string
+  editable: boolean
+  data?: BlockNewQuery
+}): {
   committing: boolean
-  loading: boolean
   provider?: blockProvider
   awarenessInfos: awarenessInfo[]
   meta: blockMeta
@@ -54,7 +58,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   const [blockCommit] = useBlockCommitMutation()
   const [awarenessUpdate] = useAwarenessUpdateMutation()
 
-  const { blockId, historyId, editable } = queryVariables
+  const { blockId, historyId, editable, data } = queryVariables
 
   const block = React.useRef<BlockNew>({ id: blockId })
   const [blockMeta, setBlockMeta] = React.useState<blockMeta>({})
@@ -67,11 +71,6 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   const blockMetaChanged = React.useRef<boolean>(false)
   const [committing, setCommitting] = React.useState<boolean>(false)
   const updatesToCommit = React.useRef(new Set<Uint8Array>())
-
-  const { data, loading } = useBlockNewQuery({
-    variables: { id: blockId, historyId },
-    fetchPolicy: 'no-cache'
-  })
 
   const awarenessChanged = React.useCallback(
     (awareness: awarenessProtocol.Awareness) => {
@@ -304,7 +303,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
   )
 
   React.useEffect(() => {
-    if (data && !loading) {
+    if (data) {
       const newYdoc = new Y.Doc()
       const awareness = new awarenessProtocol.Awareness(newYdoc)
       devLog('Ydoc initialized')
@@ -363,7 +362,7 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
         }
       }
     }
-  }, [blockId, historyId, data, loading, commitState, awarenessUpdate, awarenessChanged, setBlockMetaUpdated, editable])
+  }, [blockId, historyId, data, commitState, awarenessUpdate, awarenessChanged, setBlockMetaUpdated, editable])
 
   React.useEffect(() => {
     const subscriptions = [
@@ -382,7 +381,6 @@ export function useBlockSyncProvider(queryVariables: { blockId: string; historyI
 
   return {
     committing,
-    loading,
     provider,
     awarenessInfos,
     meta: blockMeta,

@@ -17,16 +17,16 @@ arguments but returning `Ok` if successful, `Err` if the function throws
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name | Type                                           |
+| :--- | :--------------------------------------------- |
 | `Fn` | extends (...`args`: readonly `any`[]) => `any` |
-| `E` | `E` |
+| `E`  | `E`                                            |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `fn` | `Fn` | function to wrap with ok on success or err on failure |
+| Name       | Type                    | Description                                                          |
+| :--------- | :---------------------- | :------------------------------------------------------------------- |
+| `fn`       | `Fn`                    | function to wrap with ok on success or err on failure                |
 | `errorFn?` | (`e`: `unknown`) => `E` | when an error is thrown, this will wrap the error result if provided |
 
 #### Returns
@@ -37,8 +37,8 @@ arguments but returning `Ok` if successful, `Err` if the function throws
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type                |
+| :-------- | :------------------ |
 | `...args` | `Parameters`<`Fn`\> |
 
 ##### Returns
