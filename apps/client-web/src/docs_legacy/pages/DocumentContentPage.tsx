@@ -31,7 +31,8 @@ export const DocumentContentPage: FC = () => {
   const preSidebarStyle = useMemo(getSidebarStyle, [])
 
   const { data, loading: blockLoading } = useBlockNewQuery({
-    variables: { id: docId as string, historyId }
+    variables: { id: docId as string, historyId },
+    fetchPolicy: 'no-cache'
   })
 
   const documentInfo = data?.blockNew?.documentInfo ? (data?.blockNew?.documentInfo as DocumentInfo) : undefined
