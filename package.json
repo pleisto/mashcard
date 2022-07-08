@@ -95,7 +95,6 @@
     "depcheck": "^1.4.3",
     "eslint": "^8.19.0",
     "fs-extra": "^10.1.0",
-    "glob": "^8.0.3",
     "graphql-tag": "^2.12.6",
     "husky": "^8.0.1",
     "identity-obj-proxy": "^3.0.0",

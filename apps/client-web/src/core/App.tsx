@@ -1,18 +1,20 @@
-import { Suspense, FC, useContext } from 'react'
-import { MashcardContext } from '@/common/mashcardContext'
 import { useErrorNotification } from '@/common/hooks'
+import { MashcardContext } from '@/common/mashcardContext'
+import { isLoadingVar } from '@/common/reactiveVars'
+import { initSidebarStyle } from '@/routes/$domain/settings/_shared/Sidebar.style'
 import { ApolloProvider, useReactiveVar } from '@apollo/client'
-import { Loading, globalStyle, Provider } from '@mashcard/design-system'
+import { globalStyle, Loading, Provider } from '@mashcard/design-system'
+import { ErrorBoundary, withProfiler } from '@sentry/react'
+import { FC, Suspense, useContext } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
-import { initSidebarStyle } from '@/settings/common/sidebar'
 import { apolloClient } from './apollo'
 import { RootRoutes } from './RootRoutes'
-import { withProfiler, ErrorBoundary } from '@sentry/react'
-import { isLoadingVar } from '@/common/reactiveVars'
 
 export const App: FC = () => {
   // Inject global styles
   globalStyle()
+
+  // TODO: this should be called at page level instead of app level
   initSidebarStyle()
 
   const context = useContext(MashcardContext)
