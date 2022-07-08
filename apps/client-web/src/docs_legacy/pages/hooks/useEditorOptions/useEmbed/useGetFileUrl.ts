@@ -1,15 +1,23 @@
+import { DocMeta } from '@/docs_legacy/store/DocMeta'
 import { EmbedOptions } from '@mashcard/editor'
 import { Block } from '@mashcard/schema'
-import { useCallback } from 'react'
+import { useCallback, useRef, useEffect } from 'react'
 
-export function useGetFileUrl(documentBlock: Block): EmbedOptions['getFileUrl'] {
+export function useGetFileUrl(blocks: Block[], docMeta: DocMeta): EmbedOptions['getFileUrl'] {
+  const currentBlocks = useRef<Block[]>(blocks)
+
+  useEffect(() => {
+    currentBlocks.current = blocks
+  }, [blocks])
 
   const getFileUrl = useCallback<NonNullable<EmbedOptions['getFileUrl']>>(
     (key, source): string | undefined => {
       if (source === 'EXTERNAL') return key
+      if (!docMeta.id) return undefined
 
       const blobs =
-        documentBlock
+        currentBlocks.current
+          .find(block => block.id === docMeta.id)
           ?.blobs?.map(blob => ({
             key: blob.blobKey,
             url: blob.url
@@ -18,7 +26,7 @@ export function useGetFileUrl(documentBlock: Block): EmbedOptions['getFileUrl'] 
       if (source === 'ORIGIN') return blobs.find(blob => blob.key === key)?.url
       return undefined
     },
-    [documentBlock]
+    [docMeta.id]
   )
 
   return getFileUrl

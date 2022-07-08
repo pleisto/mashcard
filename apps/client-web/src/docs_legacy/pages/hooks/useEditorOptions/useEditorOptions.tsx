@@ -7,25 +7,20 @@ import { useReactiveVar } from '@apollo/client'
 import { FormulaContextVar } from '@/docs_legacy/reactiveVars'
 import { useCallback, useMemo } from 'react'
 import { PageTree } from '@/docs_legacy/common/components/PageTree'
-import { blockProvider } from '../useDocSyncProvider'
+import { blockProvider } from '../useBlockSyncProvider'
 import { getCursorColor } from '@/docs_legacy/utils/cursorColor'
 import { useDiscussion } from './useDiscussion'
 
 export interface UseEditorOptions {
   docMeta: DocMeta
-  documentBlock: Block
+  blocks: Block[]
   documentEditable: boolean
   provider: blockProvider | undefined
 }
 
-export function useEditorOptions({
-  docMeta,
-  documentEditable,
-  documentBlock,
-  provider
-}: UseEditorOptions): EditorOptions {
+export function useEditorOptions({ docMeta, documentEditable, blocks, provider }: UseEditorOptions): EditorOptions {
   const discussion = useDiscussion(docMeta)
-  const embed = useEmbed(documentBlock, docMeta)
+  const embed = useEmbed(blocks, docMeta)
   const formulaContext = useReactiveVar(FormulaContextVar)
   const mentionCommands = useMentionCommands(docMeta)
   const renderView = useCallback(() => <PageTree mode="subPage" />, [])
