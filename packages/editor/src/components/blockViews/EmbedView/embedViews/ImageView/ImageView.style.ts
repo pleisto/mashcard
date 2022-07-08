@@ -11,13 +11,22 @@ export const EmbedToolbarContainer = styled('div', {
   pointerEvents: 'none',
   position: 'absolute',
   right: '.5rem',
-  transition: 'opacity 100ms ease-in-out'
+  transition: 'opacity 100ms ease-in-out',
+
+  variants: {
+    center: {
+      true: {
+        right: '50%',
+        transform: 'translateX(50%)'
+      },
+      false: {}
+    }
+  }
 })
 
 export const ImageViewContainer = styled('div', {
   display: 'inline-flex',
   maxWidth: '100%',
-  overflow: 'hidden',
   position: 'relative',
 
   '&:hover': {
@@ -35,6 +44,7 @@ export const ImageViewContainer = styled('div', {
 export const ImageViewLayout = styled('div', {
   display: 'flex',
   flexDirection: 'column',
+  overflow: 'hidden',
 
   variants: {
     align: {

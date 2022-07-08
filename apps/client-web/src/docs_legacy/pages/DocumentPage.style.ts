@@ -18,12 +18,12 @@ export const PageContent = styled('div', {
 export const Page = styled('div', {
   flex: 1,
   borderRadius: '2px',
+  width: '100%',
   variants: {
     width: {
       md: {},
       sm: {
         padding: 0,
-        width: '100%',
         [`${PageContent}`]: {
           padding: '0 1rem'
         }
