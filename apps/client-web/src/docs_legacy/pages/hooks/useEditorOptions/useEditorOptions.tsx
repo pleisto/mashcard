@@ -13,14 +13,14 @@ import { useDiscussion } from './useDiscussion'
 
 export interface UseEditorOptions {
   docMeta: DocMeta
-  blocks: Block[]
+  documentBlock: Block
   documentEditable: boolean
   provider: blockProvider | undefined
 }
 
-export function useEditorOptions({ docMeta, documentEditable, blocks, provider }: UseEditorOptions): EditorOptions {
+export function useEditorOptions({ docMeta, documentEditable, documentBlock, provider }: UseEditorOptions): EditorOptions {
   const discussion = useDiscussion(docMeta)
-  const embed = useEmbed(blocks, docMeta)
+  const embed = useEmbed(documentBlock, docMeta)
   const formulaContext = useReactiveVar(FormulaContextVar)
   const mentionCommands = useMentionCommands(docMeta)
   const renderView = useCallback(() => <PageTree mode="subPage" />, [])

@@ -1,5 +1,6 @@
 import { FC, MouseEventHandler, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Spin } from '@mashcard/design-system'
+import { Block } from '@mashcard/schema'
 import { EditorContent, useEditor } from '@mashcard/editor'
 import { DocumentTitle } from './components/DocumentTitle'
 import { useSyncProvider, useBlockSyncProvider, useDocHistoryProvider } from './hooks'
@@ -27,7 +28,7 @@ export const DocumentPage: FC<DocumentPageProps> = ({ mode }) => {
     [docMeta.id, docMeta.historyId, docMeta.domain]
   )
 
-  const { rootBlock, data, committing: blocksCommitting } = useSyncProvider(queryVariables)
+  const { rootBlock, committing: blocksCommitting } = useSyncProvider(queryVariables)
 
   const currentRootBlock = rootBlock.current
 
@@ -52,7 +53,7 @@ export const DocumentPage: FC<DocumentPageProps> = ({ mode }) => {
     docMeta,
     provider,
     documentEditable,
-    blocks: data?.childrenBlocks
+    documentBlock: rootBlock.current as Block
   })
 
   const editor = useEditor(editorOptions, [provider])
