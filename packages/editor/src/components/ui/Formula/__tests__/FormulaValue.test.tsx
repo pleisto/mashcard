@@ -7,8 +7,16 @@ describe('FormulaValue', () => {
     const data: VariableDisplayData = {
       resultToRefactor: { type: 'Error', meta: 'fatal', result: 'error' },
       display: { type: 'Error', result: '[fatal] error' },
+      type: 'normal',
       definition: '',
-      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 }
+      metaToRefactor: {
+        namespaceId: '',
+        variableId: '',
+        name: '',
+        richType: { type: 'normal' },
+        input: '',
+        position: 0
+      }
     }
 
     const { container } = render(<FormulaValue border={false} displayData={data} />)
@@ -20,8 +28,16 @@ describe('FormulaValue', () => {
     const data: VariableDisplayData = {
       resultToRefactor: { type: 'Waiting', result: 'waiting' },
       display: { type: 'Waiting', result: 'waiting' },
+      type: 'normal',
       definition: '',
-      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 }
+      metaToRefactor: {
+        namespaceId: '',
+        variableId: '',
+        name: '',
+        richType: { type: 'normal' },
+        input: '',
+        position: 0
+      }
     }
 
     const { container } = render(<FormulaValue border={true} displayData={data} />)
@@ -33,8 +49,16 @@ describe('FormulaValue', () => {
     const data: VariableDisplayData = {
       resultToRefactor: { type: 'Error', meta: 'fatal', result: 'error' },
       display: { type: 'Error', result: '[fatal] error' },
+      type: 'normal',
       definition: '',
-      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 }
+      metaToRefactor: {
+        namespaceId: '',
+        variableId: '',
+        name: '',
+        richType: { type: 'normal' },
+        input: '',
+        position: 0
+      }
     }
 
     const { container } = render(<FormulaValue border={true} displayData={data} />)
@@ -46,8 +70,16 @@ describe('FormulaValue', () => {
     const data: VariableDisplayData = {
       resultToRefactor: { type: 'number', result: 1 },
       display: { type: 'number', result: '1' },
+      type: 'normal',
       definition: '',
-      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 }
+      metaToRefactor: {
+        namespaceId: '',
+        variableId: '',
+        name: '',
+        richType: { type: 'normal' },
+        input: '',
+        position: 0
+      }
     }
 
     const { container } = render(<FormulaValue border={true} displayData={data} />)

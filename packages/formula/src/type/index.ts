@@ -626,7 +626,8 @@ export interface VariableDisplayData {
   definition: Definition
   display: AnyDisplayResult
   resultToRefactor: AnyTypeResult
-  meta: VariableMetadata
+  metaToRefactor: VariableMetadata
+  type: FormulaSourceType
 }
 
 export interface BaseVariableTask {

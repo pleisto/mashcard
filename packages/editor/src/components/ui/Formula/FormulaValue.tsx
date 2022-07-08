@@ -18,13 +18,7 @@ export const FormulaValue: FC<FormulaValueProps> = ({
   border,
   selected,
   disablePopover,
-  displayData: {
-    resultToRefactor: result,
-    display,
-    meta: {
-      richType: { type }
-    }
-  }
+  displayData: { resultToRefactor: result, display, type }
 }) => {
   const colorType = resultToColorType(result)
   const { colorCode } = FORMULA_COLOR_METAS[colorType]

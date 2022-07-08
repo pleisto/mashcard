@@ -20,7 +20,15 @@ describe('FormulaDisplay', () => {
       definition: `="string"`,
       resultToRefactor: { type: 'literal', result: 'string' },
       display: { type: 'literal', result: 'string' },
-      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 }
+      type: 'normal',
+      metaToRefactor: {
+        namespaceId: '',
+        variableId: '',
+        name: '',
+        richType: { type: 'normal' },
+        input: '',
+        position: 0
+      }
     }
     const { container } = render(<FormulaDisplay formulaType="normal" displayData={displayData} />)
 
@@ -32,7 +40,15 @@ describe('FormulaDisplay', () => {
       definition: `="string"`,
       resultToRefactor: { type: 'string', result: 'string' },
       display: { type: 'string', result: 'string' },
-      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 }
+      type: 'normal',
+      metaToRefactor: {
+        namespaceId: '',
+        variableId: '',
+        name: '',
+        richType: { type: 'normal' },
+        input: '',
+        position: 0
+      }
     }
     const { container } = render(<FormulaDisplay formulaType="normal" displayData={displayData} />)
 

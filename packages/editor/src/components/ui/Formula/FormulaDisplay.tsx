@@ -37,7 +37,7 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({
     return <div />
   }
 
-  const { resultToRefactor: result, meta } = displayData
+  const { resultToRefactor: result, metaToRefactor: meta } = displayData
 
   if (result.type === 'literal') {
     return (

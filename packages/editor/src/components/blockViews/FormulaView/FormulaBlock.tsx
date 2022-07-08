@@ -62,8 +62,9 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
         definition: attrs.input,
         resultToRefactor: { type: 'string', result: attrs.display },
         display: { type: 'string', result: attrs.display },
+        type: 'normal',
         // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-        meta: { richType: { type: 'normal' } } as VariableDisplayData['meta']
+        metaToRefactor: { richType: { type: 'normal' } } as VariableDisplayData['metaToRefactor']
       }
     : undefined
 
