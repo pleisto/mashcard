@@ -60,6 +60,11 @@ const Progress = styled('div', {
 
 export const EmbedBlockPlaceholder: FC<EmbedBlockPlaceholderProps> = props => {
   const { icon, label, description, progress, onClick, children, ...restProps } = props
+  const progressPercent = Math.min(
+    Math.floor((100 * (progress?.bytesUploaded ?? 0)) / (progress?.bytesTotal ?? Infinity)),
+    100
+  )
+
   return (
     <Placeholder {...restProps} role="button" onClick={onClick}>
       <IconContainer>{icon}</IconContainer>
@@ -67,9 +72,7 @@ export const EmbedBlockPlaceholder: FC<EmbedBlockPlaceholderProps> = props => {
         <Label>{label}</Label>
         <Description>{description}</Description>
       </MainContent>
-      <Progress
-        css={{ width: `${Math.floor((100 * (progress?.bytesUploaded ?? 0)) / (progress?.bytesTotal ?? Infinity))}%` }}
-      />
+      <Progress css={{ width: `${progressPercent}%` }} />
     </Placeholder>
   )
 }
