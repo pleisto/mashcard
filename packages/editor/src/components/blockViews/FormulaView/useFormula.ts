@@ -523,6 +523,12 @@ export const useFormula = ({
     return () => listener.unsubscribe()
   }, [innerUpdateVariable, variableId, namespaceId])
 
+  // TODO: force calculate when definition is blank
+  React.useEffect(() => {
+    if (temporaryVariableTRef.current) return
+    void doCalculate(false)
+  }, [doCalculate])
+
   return {
     formulaEditor,
     references,
