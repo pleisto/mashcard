@@ -17,6 +17,7 @@ export interface FormulaResultProps {
 }
 
 export const FormulaResult: FC<FormulaResultProps> = ({ variableT, meta }) => {
+  if (!variableT) return null
   const result = fetchResult(variableT)
   const colorType = resultToColorType(result)
   const icon = FORMULA_ICONS[colorType]
@@ -31,7 +32,7 @@ export const FormulaResult: FC<FormulaResultProps> = ({ variableT, meta }) => {
   ) : (
     <span className="formula-result-ok">
       <span className="formula-result-ok-equal">=</span>
-      <FormulaValue displayData={dumpDisplayResultForDisplay([variableT, meta])} />
+      <FormulaValue displayData={dumpDisplayResultForDisplay(variableT)} />
       <span className="formula-result-ok-icon">{icon}</span>
     </span>
   )

@@ -34,9 +34,7 @@ import {
 
 const MAX_LEVEL = 20
 
-export const fetchVariableTError = (t: VariableData | undefined): ErrorMessage | undefined => {
-  if (!t) return undefined
-  const task = t.task
+export const fetchVariableTError = ({ task }: VariableData): ErrorMessage | undefined => {
   if (task.async) return undefined
   if (task.variableValue.success) return undefined
   return { message: task.variableValue.result.result, type: task.variableValue.result.meta }
@@ -59,9 +57,7 @@ export const errorIsFatal = ({ task }: VariableData): boolean => {
   return false
 }
 
-export const fetchResult = (t: VariableData | undefined): AnyTypeResult => {
-  if (!t) return { type: 'Blank', result: 'Blank' }
-  const task = t.task
+export const fetchResult = ({ task }: VariableData): AnyTypeResult => {
   if (task.async) {
     const duration = new Date().getTime() - task.execStartTime.getTime()
     if (duration > 5000) {

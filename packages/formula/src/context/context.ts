@@ -422,7 +422,7 @@ export class FormulaContext implements ContextInterface {
   ): VariableDisplayData | undefined {
     const variable = this.findVariableById(namespaceId, variableId)
     if (!variable) return undefined
-    return dumpDisplayResultForDisplay([variable.t])
+    return dumpDisplayResultForDisplay(variable.t)
   }
 
   public findVariableByName(namespaceId: NamespaceId, name: string): VariableInterface | undefined {

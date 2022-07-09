@@ -314,13 +314,8 @@ export const useFormula = ({
     const errorFatal = errorIsFatal(temporaryVariableTRef.current)
     if (errorFatal) return true
 
-    if (formulaIsNormal) {
-      const definition = content2definition(inputRef.current.content, formulaIsNormal)[0]
-      const inputIsEmpty = ['', '='].includes(definition.trim())
-      if (inputIsEmpty) return true
-    }
     return false
-  }, [formulaContext, formulaIsNormal])
+  }, [formulaContext])
 
   const setCompletionByIndex = React.useCallback(
     (newIndex: number): void => {

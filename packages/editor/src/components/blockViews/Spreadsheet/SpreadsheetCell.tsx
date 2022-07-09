@@ -203,7 +203,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       }
     : undefined
   const displayData: VariableDisplayData | undefined = savedVariableT
-    ? dumpDisplayResultForDisplay([savedVariableT])
+    ? dumpDisplayResultForDisplay(savedVariableT)
     : formulaContext?.findVariableDisplayDataById(rootId, formulaId) ?? fallbackDisplayData
 
   return (
