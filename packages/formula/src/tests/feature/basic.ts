@@ -1,4 +1,3 @@
-import { VariableRichType } from '../../type'
 import { SpreadsheetInput, TestCaseInterface } from '../testType'
 
 const [namespaceId, spreadsheetId, columnId, rowId] = [
@@ -8,7 +7,7 @@ const [namespaceId, spreadsheetId, columnId, rowId] = [
   'aaaa3333-3333-3333-3333-333333333333'
 ]
 
-const richType: VariableRichType = { type: 'spreadsheet', meta: { spreadsheetId, columnId, rowId } }
+const richType = { type: 'spreadsheet', meta: { spreadsheetId, columnId, rowId } } as const
 
 export const BasicTestCase: TestCaseInterface = {
   name: 'basic',

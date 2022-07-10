@@ -3,7 +3,6 @@ import {
   ErrorMessage,
   ContextInterface,
   VariableData,
-  VariableKind,
   VariableValue,
   VariableInterface,
   Completion,
@@ -14,7 +13,9 @@ import {
   BaseFormula,
   VariableTask,
   VariableParseResult,
-  FormulaCheckType
+  FormulaCheckType,
+  CodeFragment,
+  VariableMetadata
 } from '../type'
 import { VariableClass, castVariable } from '../context/variable'
 import { checkValidName, FormulaLexer } from './lexer'
@@ -27,7 +28,8 @@ import { shouldReturnEarly } from './util'
 import { createVariableTask } from '../context'
 import { addSpaceStep } from './steps'
 
-export interface BaseParseResult {
+interface BaseParseResult {
+  meta: VariableMetadata
   variableParseResult: VariableParseResult
   success: boolean
   inputImage: string
@@ -38,17 +40,17 @@ export interface BaseParseResult {
   completions: Completion[]
 }
 
-export interface SuccessParseResult extends BaseParseResult {
+interface SuccessParseResult extends BaseParseResult {
   success: true
   errorMessages: []
   variableParseResult: VariableParseResult & {
     valid: true
-    kind: Exclude<VariableKind, 'literal'>
+    kind: 'constant' | 'expression'
     cst: CstNode
   }
 }
 
-export interface LiteralParseResult extends BaseParseResult {
+interface LiteralParseResult extends BaseParseResult {
   success: true
   errorMessages: []
   variableParseResult: VariableParseResult & {
@@ -58,7 +60,17 @@ export interface LiteralParseResult extends BaseParseResult {
   }
 }
 
-export interface ErrorParseResult extends BaseParseResult {
+interface BlankParseResult extends BaseParseResult {
+  success: true
+  errorMessages: []
+  variableParseResult: VariableParseResult & {
+    valid: true
+    kind: 'blank'
+    cst: undefined
+  }
+}
+
+interface ErrorParseResult extends BaseParseResult {
   success: false
   errorMessages: [ErrorMessage, ...ErrorMessage[]]
   errorType: ParseErrorType
@@ -68,24 +80,23 @@ export interface ErrorParseResult extends BaseParseResult {
   }
 }
 
-export type ParseResult = SuccessParseResult | ErrorParseResult | LiteralParseResult
+export type ParseResult = SuccessParseResult | ErrorParseResult | LiteralParseResult | BlankParseResult
 
 export const parse = (ctx: FunctionContext): ParseResult => {
+  const { formulaContext, meta } = ctx
   const {
-    formulaContext,
-    meta: {
-      namespaceId,
-      variableId,
-      input,
-      name,
-      richType: { type },
-      position
-    }
-  } = ctx
+    namespaceId,
+    variableId,
+    input,
+    name,
+    richType: { type },
+    position
+  } = meta
   const version = FORMULA_PARSER_VERSION
 
   const returnValue: BaseParseResult = {
     success: false,
+    meta,
     inputImage: '',
     parseImage: '',
     expressionType: 'any',
@@ -113,7 +124,7 @@ export const parse = (ctx: FunctionContext): ParseResult => {
     }
   }
 
-  if (!input.startsWith('=') || (type !== 'normal' && input.trim() === '=')) {
+  if (!input.startsWith('=')) {
     return {
       ...returnValue,
       errorType: undefined,
@@ -132,6 +143,35 @@ export const parse = (ctx: FunctionContext): ParseResult => {
             errors: [],
             attrs: undefined
           }
+        ]
+      }
+    }
+  }
+
+  if (input.trim() === '=') {
+    const rest = input.substring(1)
+    const restCodeFragments: CodeFragment[] = rest
+      ? [{ code: 'Space', display: rest, type: 'any', errors: [], attrs: undefined }]
+      : []
+    return {
+      ...returnValue,
+      errorType: undefined,
+      success: true,
+      errorMessages: [],
+      variableParseResult: {
+        ...returnValue.variableParseResult,
+        valid: true,
+        kind: 'blank',
+        cst: undefined,
+        codeFragments: [
+          {
+            code: 'Equal',
+            type: 'any',
+            display: '=',
+            errors: [],
+            attrs: undefined
+          },
+          ...restCodeFragments
         ]
       }
     }
@@ -364,6 +404,9 @@ const innerInterpretFirst = ({
 
   if (kind === 'literal') {
     return { success: true, result: { type: 'literal', result: ctx.meta.input }, runtimeEventDependencies: [] }
+  }
+  if (kind === 'blank') {
+    return { success: true, result: { type: 'Blank', result: 'Blank' }, runtimeEventDependencies: [] }
   }
   if (!cst) {
     return { success: true, result: { type: 'string', result: ctx.meta.input }, runtimeEventDependencies: [] }

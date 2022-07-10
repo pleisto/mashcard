@@ -13,7 +13,7 @@ describe('FormulaValue', () => {
   })
 
   it.each(testCases.basicTestCases)('$jestTitle', async args => {
-    const tempT = await ctx.interpretDirectly(args)
+    const [tempT] = await ctx.interpretDirectly(args)
     const displayData = dumpDisplayResultForDisplay(tempT)
     const { container: container1 } = render(<FormulaValue border={false} displayData={displayData} />)
     expect(container1).toMatchSnapshot()

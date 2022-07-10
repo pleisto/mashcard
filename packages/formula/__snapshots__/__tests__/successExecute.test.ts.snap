@@ -962,6 +962,80 @@ Array [
 ]
 `;
 
+exports[`successExecute other "= " -> Blank 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "Space",
+      "display": " ",
+      "errors": Array [],
+      "type": "any",
+    },
+  ],
+]
+`;
+
+exports[`successExecute other "=" -> Blank 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+  ],
+]
+`;
+
+exports[`successExecute spreadsheet "=   " -> Blank 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+    Object {
+      "attrs": undefined,
+      "code": "Space",
+      "display": "   ",
+      "errors": Array [],
+      "type": "any",
+    },
+  ],
+]
+`;
+
+exports[`successExecute spreadsheet "=" -> Blank 1`] = `
+Array [
+  "codeFragments",
+  Array [
+    Object {
+      "attrs": undefined,
+      "code": "Equal",
+      "display": "=",
+      "errors": Array [],
+      "type": "any",
+    },
+  ],
+]
+`;
+
 exports[`successExecute string "= "hello"" -> hello 1`] = `
 Array [
   "codeFragments",

@@ -13,13 +13,21 @@ describe('FormulaResult', () => {
   })
 
   it.each(testCases.basicTestCases)('$jestTitle', async args => {
-    const tempT = await ctx.interpretDirectly(args)
-    const { container } = render(<FormulaResult pageId="pageId" variableT={tempT} />)
+    const [tempT, parseResult] = await ctx.interpretDirectly(args)
+    const { container } = render(<FormulaResult meta={parseResult.meta} variableT={tempT} />)
     expect(container).toMatchSnapshot()
   })
 
   it('renders nothing if no variableT', () => {
-    const { container } = render(<FormulaResult pageId="pageId" variableT={undefined} />)
+    const meta = {
+      namespaceId: '',
+      variableId: '',
+      name: '',
+      input: '',
+      position: 0,
+      richType: { type: 'normal' }
+    } as const
+    const { container } = render(<FormulaResult meta={meta} variableT={undefined} />)
     expect(container).toMatchSnapshot()
   })
 })

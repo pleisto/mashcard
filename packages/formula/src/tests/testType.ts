@@ -227,7 +227,7 @@ export interface MakeContextOptions {
 
 export interface MakeContextResult extends Omit<FunctionContext, 'meta'> {
   buildMeta: (args: BaseTestCase<{}>) => FunctionContext['meta']
-  interpretDirectly: (args: BaseTestCase<{}>) => Promise<VariableData>
+  interpretDirectly: (args: BaseTestCase<{}>) => Promise<[VariableData, ParseResult]>
   parseDirectly: (args: BaseTestCase<{}>) => ParseResult
   fetchUUID: (uuid: MockedUUIDV4) => string
 }

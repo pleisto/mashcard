@@ -313,8 +313,8 @@ const testCases: {
   Blank: [
     {
       testCase: { type: 'Blank', result: 'Blank' },
-      displayResult: { type: 'Blank', result: '#N/A' },
-      dumpResult: { type: 'Blank', result: '#N/A' }
+      displayResult: { type: 'Blank', result: 'Blank' },
+      dumpResult: { type: 'Blank', result: 'Blank' }
     }
   ],
   Pending: [

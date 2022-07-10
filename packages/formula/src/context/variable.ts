@@ -13,7 +13,8 @@ import {
   VariableRichType,
   EventDependency,
   VariableParseResult,
-  FormulaDefinition
+  FormulaDefinition,
+  ErrorMessage
 } from '../type'
 import { parse, interpret, generateVariable } from '../grammar/core'
 import { dumpValue } from './persist'
@@ -32,6 +33,12 @@ import {
 } from '../events'
 
 const MAX_LEVEL = 20
+
+export const fetchVariableTError = ({ task }: VariableData): ErrorMessage | undefined => {
+  if (task.async) return undefined
+  if (task.variableValue.success) return undefined
+  return { message: task.variableValue.result.result, type: task.variableValue.result.meta }
+}
 
 export const errorIsFatal = ({ task }: VariableData): boolean => {
   if (task.async) {

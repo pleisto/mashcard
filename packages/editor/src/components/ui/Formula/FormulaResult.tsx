@@ -1,41 +1,28 @@
 import { FC } from 'react'
 import {
   dumpDisplayResultForDisplay,
-  errorIsFatal,
   ErrorMessage,
   fetchResult,
+  fetchVariableTError,
   resultToColorType,
   VariableData
 } from '@mashcard/formula'
 import { FormulaValue, FORMULA_ICONS } from '.'
 import * as Root from './Formula.style'
+import { UseFormulaInput } from '../../blockViews/FormulaView'
 
 export interface FormulaResultProps {
   variableT: VariableData | undefined
-  pageId: string
+  meta: UseFormulaInput['meta']
 }
 
-export const FormulaResult: FC<FormulaResultProps> = ({ variableT, pageId }) => {
-  if (!variableT) {
-    return null
-  }
-
-  if (
-    variableT.meta.richType.type === 'normal' &&
-    variableT.variableParseResult.definition.trim() === '=' &&
-    !errorIsFatal(variableT)
-  ) {
-    return null
-  }
-
+export const FormulaResult: FC<FormulaResultProps> = ({ variableT, meta }) => {
+  if (!variableT) return null
   const result = fetchResult(variableT)
   const colorType = resultToColorType(result)
   const icon = FORMULA_ICONS[colorType]
 
-  const error: ErrorMessage | undefined =
-    !variableT.task.async && !variableT.task.variableValue.success
-      ? { message: variableT.task.variableValue.result.result, type: variableT.task.variableValue.result.meta }
-      : undefined
+  const error: ErrorMessage | undefined = fetchVariableTError(variableT)
 
   const formulaResult = error ? (
     <span className="formula-result-error">

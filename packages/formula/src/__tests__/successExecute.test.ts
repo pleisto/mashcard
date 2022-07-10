@@ -1,4 +1,3 @@
-import { interpret, parse } from '../grammar'
 import { makeContext, buildTestCases, trackTodo } from '../tests'
 import { matchObject } from '../tests/testMock'
 
@@ -16,8 +15,7 @@ describe('successExecute', () => {
 
   it.each(testCases.successTestCases)('$jestTitle', async args => {
     jest.useRealTimers()
-    const newCtx = { ...ctx, meta: ctx.buildMeta(args) }
-    const parseResult = parse(newCtx)
+    const [tempT, parseResult] = await ctx.interpretDirectly(args)
     expect([parseResult.variableParseResult.valid, parseResult.success, parseResult.errorMessages]).toStrictEqual([
       true,
       true,
@@ -29,7 +27,6 @@ describe('successExecute', () => {
       expect(parseResult.expressionType).toStrictEqual(args.expressionType)
     }
 
-    const tempT = await interpret({ ctx: newCtx, parseResult })
     const value = await tempT.task.variableValue
     expect(matchObject(value.result)).toStrictEqual(args.result)
 

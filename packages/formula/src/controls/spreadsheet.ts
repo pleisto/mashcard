@@ -16,6 +16,7 @@ import {
   isKey,
   FormulaInterpreter
 } from '../grammar'
+import { display } from '../context'
 import { parseTrackColumn } from '../grammar/dependency'
 import {
   AnyTypeResult,
@@ -449,7 +450,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     }
 
     const displayData = this._formulaContext.findVariableDisplayDataById(this.namespaceId, cell.variableId)
-    if (displayData) return displayData.display.result
+    if (displayData) return display(displayData.result).result
 
     return cell.value
   }

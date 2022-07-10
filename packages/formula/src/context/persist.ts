@@ -14,7 +14,6 @@ export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayDat
   return {
     definition: t.variableParseResult.definition,
     result: fetchResult(t),
-    display: display(fetchResult(t)),
     type: t.meta.richType.type
   }
 }

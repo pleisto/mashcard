@@ -1,6 +1,7 @@
 import { SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../events'
 import { ColumnId, EventDependency, NamespaceId, SpreadsheetId, uuid } from '../type'
 import { CellType, SpreadsheetType, Cell, CellVia } from './types'
+import { display } from '../context'
 
 export class CellClass implements CellType {
   namespaceId: NamespaceId
@@ -51,7 +52,7 @@ export class CellClass implements CellType {
   getValue(): string {
     const displayData = this.spreadsheet.findCellDisplayData({ rowId: this.rowId, columnId: this.columnId })
     if (displayData) {
-      return displayData.display.result
+      return display(displayData.result).result
     }
     return this.value
   }

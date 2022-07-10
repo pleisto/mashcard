@@ -314,13 +314,8 @@ export const useFormula = ({
     const errorFatal = errorIsFatal(temporaryVariableTRef.current)
     if (errorFatal) return true
 
-    if (formulaIsNormal) {
-      const definition = content2definition(inputRef.current.content, formulaIsNormal)[0]
-      const inputIsEmpty = ['', '='].includes(definition.trim())
-      if (inputIsEmpty) return true
-    }
     return false
-  }, [formulaContext, formulaIsNormal])
+  }, [formulaContext])
 
   const setCompletionByIndex = React.useCallback(
     (newIndex: number): void => {
@@ -527,6 +522,12 @@ export const useFormula = ({
     )
     return () => listener.unsubscribe()
   }, [innerUpdateVariable, variableId, namespaceId])
+
+  // TODO: force calculate when definition is blank
+  React.useEffect(() => {
+    if (temporaryVariableTRef.current) return
+    void doCalculate(false)
+  }, [doCalculate])
 
   return {
     formulaEditor,

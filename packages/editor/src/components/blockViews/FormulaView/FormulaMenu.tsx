@@ -35,7 +35,7 @@ export interface FormulaMenuProps {
 
 export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   children,
-  meta: { namespaceId: rootId, variableId: formulaId },
+  meta,
   temporaryVariableT,
   handleDelete,
   references,
@@ -50,6 +50,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   nameRef,
   completion
 }) => {
+  const { namespaceId: rootId, variableId: formulaId } = meta
   const close = React.useCallback((): void => {
     setVisible(false)
     setMaxScreen(false)
@@ -159,7 +160,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           <FormulaEditor formulaEditor={formulaEditor} maxScreen={maxScreen} />
         </div>
       </div>
-      <FormulaResult variableT={temporaryVariableT} pageId={rootId} />
+      <FormulaResult variableT={temporaryVariableT} meta={meta} />
       <AutocompleteList rootId={rootId} formulaId={formulaId} completion={completion} />
     </Root.MashcardFormulaMenu>
   )

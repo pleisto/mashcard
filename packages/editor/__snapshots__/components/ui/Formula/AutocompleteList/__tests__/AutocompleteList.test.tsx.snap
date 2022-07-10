@@ -520,7 +520,7 @@ exports[`AutocompleteList Active Completion renders variable kind correctly 1`] 
           <span
             class="autocomplete-preview-input-tag"
           >
-            Error
+            Blank
           </span>
         </div>
         <div
@@ -536,9 +536,9 @@ exports[`AutocompleteList Active Completion renders variable kind correctly 1`] 
           >
             <span
               class="mashcard-formula-borderless"
-              style="color: rgb(207, 31, 40);"
+              style="color: rgb(144, 139, 156);"
             >
-              #&lt;Error&gt; Parse error: ""
+              Blank
             </span>
           </span>
         </div>
