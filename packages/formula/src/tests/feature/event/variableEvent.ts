@@ -1,6 +1,6 @@
 import { FormulaVariableDependencyUpdated } from '../../../events'
 import { generateUUIDs } from '../../testHelper'
-import { EventTestCaseType, TestCaseInterface } from '../../testType'
+import { TestCaseInterface } from '../../testType'
 
 const [page0Id, variableId, dependencyVariableId] = generateUUIDs()
 
@@ -28,7 +28,7 @@ export const VariableEventTestCase: TestCaseInterface = {
       ...[
         { events: [['variableDelete', {}] as const] },
         { events: [['variableUpdateDefinition', { definition: '=1' }] as const] }
-      ].map<EventTestCaseType>(a => ({
+      ].map<NonNullable<TestCaseInterface['testCases']['eventTestCases']>[0]>(a => ({
         ...a,
         definition: '=num0+1',
         label: 'variable dependency',

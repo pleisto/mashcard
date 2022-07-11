@@ -1,7 +1,7 @@
 import { Row } from '../../../controls'
 import { generateUUIDs } from '../../testHelper'
 import { mockRow } from '../../testMock'
-import { EventTestCaseType, SpreadsheetInput, TestCaseInterface } from '../../testType'
+import { SpreadsheetInput, TestCaseInterface } from '../../testType'
 
 const [namespaceId, spreadsheetId, column1Id, row1Id, row2Id, row3Id, cell1Id] = generateUUIDs()
 
@@ -68,7 +68,7 @@ export const RowEventTestCase: TestCaseInterface = {
           definition: '=spreadsheet1.2.second.toString()',
           resultBefore: '4'
         }
-      ].flatMap<EventTestCaseType>(a => [
+      ].flatMap<NonNullable<TestCaseInterface['testCases']['eventTestCases']>[0]>(a => [
         {
           ...a,
           label: 'empty event',
