@@ -5,7 +5,7 @@ exports[`ListView renders as bullet list 1`] = `
   <div
     class="mc-c-czDAcb"
     data-node-view-wrapper=""
-    style="pointer-events: unset; white-space: normal;"
+    style="white-space: normal; pointer-events: unset;"
   >
     <ul
       as="ul"
@@ -21,7 +21,7 @@ exports[`ListView renders as ordered list 1`] = `
   <div
     class="mc-c-dliBAz"
     data-node-view-wrapper=""
-    style="pointer-events: unset; white-space: normal;"
+    style="white-space: normal; pointer-events: unset;"
   >
     <ol
       as="ol"
@@ -37,7 +37,7 @@ exports[`ListView renders as task list 1`] = `
   <div
     class="mc-c-cEyQvV"
     data-node-view-wrapper=""
-    style="pointer-events: unset; white-space: normal;"
+    style="white-space: normal; pointer-events: unset;"
   >
     <ul
       as="ul"

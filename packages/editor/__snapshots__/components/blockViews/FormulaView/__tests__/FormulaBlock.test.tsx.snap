@@ -5,7 +5,7 @@ exports[`FormulaBlock matches correct snapshot 1`] = `
   <span
     as="span"
     data-node-view-wrapper=""
-    style="pointer-events: none; white-space: normal;"
+    style="white-space: normal; pointer-events: none;"
   >
     <span
       class="mc-c-bbClCh"

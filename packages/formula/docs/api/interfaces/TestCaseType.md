@@ -4,6 +4,8 @@
 
 ### Properties
 
+- [attrsCompleteTestCases](TestCaseType.md#attrscompletetestcases)
+- [basicTestCases](TestCaseType.md#basictestcases)
 - [completeTestCases](TestCaseType.md#completetestcases)
 - [dependencyTestCases](TestCaseType.md#dependencytestcases)
 - [errorTestCases](TestCaseType.md#errortestcases)
@@ -15,15 +17,35 @@
 
 ## Properties
 
+### <a id="attrscompletetestcases" name="attrscompletetestcases"></a> attrsCompleteTestCases
+
+• `Optional` **attrsCompleteTestCases**: `AttrsCompleteTestCaseType`[]
+
+#### Defined in
+
+[packages/formula/src/tests/testType.ts:250](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L250)
+
+---
+
+### <a id="basictestcases" name="basictestcases"></a> basicTestCases
+
+• `Optional` **basicTestCases**: `BasicTestCaseType`[]
+
+#### Defined in
+
+[packages/formula/src/tests/testType.ts:249](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L249)
+
+---
+
 ### <a id="completetestcases" name="completetestcases"></a> completeTestCases
 
 • `Optional` **completeTestCases**: `CompleteTestCaseType`[]
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:236](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L236)
+[packages/formula/src/tests/testType.ts:245](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L245)
 
-___
+---
 
 ### <a id="dependencytestcases" name="dependencytestcases"></a> dependencyTestCases
 
@@ -31,9 +53,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:239](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L239)
+[packages/formula/src/tests/testType.ts:248](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L248)
 
-___
+---
 
 ### <a id="errortestcases" name="errortestcases"></a> errorTestCases
 
@@ -41,19 +63,19 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:235](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L235)
+[packages/formula/src/tests/testType.ts:244](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L244)
 
-___
+---
 
 ### <a id="eventtestcases" name="eventtestcases"></a> eventTestCases
 
-• `Optional` **eventTestCases**: [`EventTestCaseType`](EventTestCaseType.md)[]
+• `Optional` **eventTestCases**: `EventTestCaseType`[]
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:238](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L238)
+[packages/formula/src/tests/testType.ts:247](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L247)
 
-___
+---
 
 ### <a id="formattestcases" name="formattestcases"></a> formatTestCases
 
@@ -61,9 +83,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:237](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L237)
+[packages/formula/src/tests/testType.ts:246](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L246)
 
-___
+---
 
 ### <a id="functionclauses" name="functionclauses"></a> functionClauses
 
@@ -71,9 +93,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:232](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L232)
+[packages/formula/src/tests/testType.ts:241](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L241)
 
-___
+---
 
 ### <a id="pages" name="pages"></a> pages
 
@@ -81,9 +103,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:233](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L233)
+[packages/formula/src/tests/testType.ts:242](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L242)
 
-___
+---
 
 ### <a id="successtestcases" name="successtestcases"></a> successTestCases
 
@@ -91,4 +113,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:234](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L234)
+[packages/formula/src/tests/testType.ts:243](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L243)

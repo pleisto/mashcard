@@ -19,9 +19,9 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:730](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L730)
+[packages/formula/src/type/index.ts:752](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L752)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -29,9 +29,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:732](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L732)
+[packages/formula/src/type/index.ts:754](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L754)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -39,9 +39,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:728](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L728)
+[packages/formula/src/type/index.ts:750](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L750)
 
-___
+---
 
 ### <a id="position" name="position"></a> position
 
@@ -49,9 +49,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:731](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L731)
+[packages/formula/src/type/index.ts:753](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L753)
 
-___
+---
 
 ### <a id="richtype" name="richtype"></a> richType
 
@@ -59,9 +59,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:733](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L733)
+[packages/formula/src/type/index.ts:755](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L755)
 
-___
+---
 
 ### <a id="variableid" name="variableid"></a> variableId
 
@@ -69,4 +69,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:729](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L729)
+[packages/formula/src/type/index.ts:751](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L751)

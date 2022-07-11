@@ -33,7 +33,7 @@
     ]
   },
   "scripts": {
-    "postinstall": "(is-ci || husky install) && ./tools/scripts/pdftron static",
+    "postinstall": "(is-ci || husky install) && ./tools/scripts/pdftron.js static",
     "analyze": "BUNDLE_STATS=1 yarn dist && open ./tmp/esm-bundle-stats.html",
     "build:rust": "turbo run build:rust",
     "lint": "turbo run lint:eslint lint:type",
@@ -88,14 +88,11 @@
     "@types/rails__activestorage": "^7.0.1",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
-    "@types/supertest": "^2.0.12",
-    "@types/uuid": "^8.3.4",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "depcheck": "^1.4.3",
     "eslint": "^8.19.0",
     "fs-extra": "^10.1.0",
-    "graphql-tag": "^2.12.6",
     "husky": "^8.0.1",
     "identity-obj-proxy": "^3.0.0",
     "is-ci": "^3.0.1",
@@ -110,24 +107,19 @@
     "typedoc": "^0.23.7",
     "typedoc-plugin-inline-sources": "^1.0.1",
     "typedoc-plugin-markdown": "^3.13.3",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "yargs": "^17.5.1"
   },
   "packageManager": "yarn@3.2.1",
   "resolutions": {
-    "preact": "10.6.6",
-    "cached-path-relative": ">=1.1.0",
-    "trim": ">= 1.0.1",
-    "dayjs": ">=1.11.1",
+    "@rails/actioncable": "patch:@rails/actioncable@npm:7.0.3#.yarn/patches/@rails-actioncable-npm-7.0.3-9e882d37e5.patch",
     "cpy": "npm:@pleisto/cpy@>=8.1.2-patch.1",
-    "@jest/transform": "npm:@jest/transform@>=27",
-    "prosemirror-view": "patch:prosemirror-view@npm:1.23.7#.yarn/patches/prosemirror-view-npm-1.23.7-5085f0bf9b",
-    "minimist": ">= 1.2.6",
-    "@rails/actioncable": "patch:@rails/actioncable@npm:7.0.3#.yarn/patches/@rails-actioncable-npm-7.0.3-9e882d37e5.patch"
+    "prosemirror-view": "patch:prosemirror-view@npm:1.26.5#.yarn/patches/prosemirror-view-npm-1.26.5-ab20b7a4ea.patch"
   },
   "dependencies": {
     "@swc/core": "^1.2.212",
     "@swc/helpers": "^0.4.3",
-    "dayjs": "^1.11.3",
+    "lodash-es": "^4.17.21",
     "ts-node": "^10.8.2"
   },
   "volta": {

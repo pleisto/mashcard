@@ -2,10 +2,10 @@
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name          | Type             |
+| :------------ | :--------------- |
 | `ColumnCount` | extends `number` |
-| `RowCount` | extends `number` |
+| `RowCount`    | extends `number` |
 
 ## Table of contents
 
@@ -24,9 +24,9 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L73)
+[packages/formula/src/tests/testType.ts:75](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L75)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -34,9 +34,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:72](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L72)
+[packages/formula/src/tests/testType.ts:74](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L74)
 
-___
+---
 
 ### <a id="rows" name="rows"></a> rows
 
@@ -44,9 +44,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:74](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L74)
+[packages/formula/src/tests/testType.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L76)
 
-___
+---
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
 
@@ -54,4 +54,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L71)
+[packages/formula/src/tests/testType.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L73)

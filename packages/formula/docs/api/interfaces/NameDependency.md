@@ -21,9 +21,9 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:593](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L593)
+[packages/formula/src/type/index.ts:616](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L616)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -31,4 +31,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:592](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L592)
+[packages/formula/src/type/index.ts:615](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L615)

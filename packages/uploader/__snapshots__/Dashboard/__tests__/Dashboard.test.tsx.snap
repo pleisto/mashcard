@@ -71,7 +71,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
       class="uploader-dashboard-emoji-panel"
     >
       <div
-        class="MuiInput-root mc-c-faqTV mc-c-faqTV-cROdoV-size-md mc-c-faqTV-kUUElh-bordered-true mc-c-faqTV-dQAfkO-borderType-outline mc-c-faqTV-gjYJKs-cv dashboard-emoji-search-input"
+        class="MuiInput-root mc-c-eANKNN mc-c-eANKNN-cROdoV-size-md mc-c-eANKNN-kUUElh-bordered-true mc-c-eANKNN-dQAfkO-borderType-outline mc-c-eANKNN-gjYJKs-cv dashboard-emoji-search-input"
       >
         <input
           class="MuiInput-input"
@@ -19125,7 +19125,7 @@ exports[`Dashboard Link matches correct snapshot 1`] = `
     class="uploader-dashboard-link-panel"
   >
     <div
-      class="MuiInput-root mc-c-faqTV mc-c-faqTV-clciy-size-sm mc-c-faqTV-kUUElh-bordered-true mc-c-faqTV-dQAfkO-borderType-outline mc-c-faqTV-gjYJKs-cv"
+      class="MuiInput-root mc-c-eANKNN mc-c-eANKNN-clciy-size-sm mc-c-eANKNN-kUUElh-bordered-true mc-c-eANKNN-dQAfkO-borderType-outline mc-c-eANKNN-gjYJKs-cv"
       data-testid="uploader-dashboard-modules-link-input"
     >
       <input

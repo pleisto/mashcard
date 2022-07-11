@@ -1,8 +1,8 @@
 diff --git a/dist/index.es.js b/dist/index.es.js
-index 5ef21226764e3772d677af29f432653fb5b3e478..346a0d311c37b95628e429928abf3cc99d2b095b 100644
+index 68715495bdca59a7eac434bf88bacc8678ef1adb..22d573b2f2221723292c1a72674e31af6e6c1dfb 100644
 --- a/dist/index.es.js
 +++ b/dist/index.es.js
-@@ -3734,6 +3734,7 @@ var MouseDown = function MouseDown(view, pos, event, flushed) {
+@@ -3765,6 +3765,7 @@ var MouseDown = function MouseDown(view, pos, event, flushed) {
    var ref = view.state;
    var selection = ref.selection;
    if (event.button == 0 &&

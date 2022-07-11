@@ -11,7 +11,6 @@ yargs(hideBin(process.argv))
     async () => {
       try {
         await fs.copy('./node_modules/@pdftron/webviewer/public', './apps/server-monolith/public/pdftron')
-        await fs.copy('./node_modules/@pdftron/pdfjs-express-viewer/public', './apps/server-monolith/public/pdfjs')
       } catch (err) {
         console.error(err)
       }

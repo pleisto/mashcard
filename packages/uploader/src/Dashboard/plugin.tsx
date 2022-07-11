@@ -110,17 +110,6 @@ export class DashboardPlugin extends BasePlugin {
     const targetElement = findDOMElement(target)
 
     if (targetElement) {
-      // API for plugins that require a synchronous rerender.
-      // this.rerender = (state) => {
-      //   // plugin could be removed, but this.rerender is debounced below,
-      //   // so it could still be called even after uppy.removePlugin or uppy.close
-      //   // hence the check
-      //   if (!this.uppy.getPlugin(this.id)) return
-      //   this.el = preact.render(this.render(state), targetElement, this.el)
-      //   this.afterUpdate()
-      // }
-      // this._updateUI = debounce(this.rerender)
-
       this.uppy.log(`Installing ${callerPluginName} to a DOM element '${target}'`)
 
       const root = createRoot(targetElement)

@@ -50,6 +50,7 @@ export function usePageDiscussionContextValue(commentedNodes: CommentedNode[]): 
       setDiscussion({
         conversations: response.data.map(item => ({
           ...item,
+          // eslint-disable-next-line max-nested-callbacks
           quotedContent: commentedNodes.find(node => node.markId === item.markId)?.node.textContent ?? ''
         }))
       })

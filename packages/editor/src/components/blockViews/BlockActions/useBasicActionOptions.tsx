@@ -1,4 +1,5 @@
 import { useCallback, useMemo } from 'react'
+// @ts-expect-error
 import { __serializeForClipboard } from 'prosemirror-view'
 import { NodeSelection } from 'prosemirror-state'
 import { Cutting, Link, Delete, CornerDownRight } from '@mashcard/design-icons'

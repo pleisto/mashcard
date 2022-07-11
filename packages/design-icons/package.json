@@ -14,7 +14,7 @@
     "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
     "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
-    "generate": "bin/icons-react-component-generator"
+    "generate": "./bin/generate-icon-components.js"
   },
   "peerDependencies": {
     "react": ">= 17.0.2",

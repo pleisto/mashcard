@@ -16,7 +16,7 @@ exports[`User renders User correctly 1`] = `
           <span
             as="span"
             data-node-view-wrapper=""
-            style="pointer-events: none; white-space: normal;"
+            style="white-space: normal; pointer-events: none;"
           >
             <span
               class="mc-c-bbClCh"
@@ -63,6 +63,10 @@ exports[`User renders User correctly 1`] = `
             </span>
           </span>
         </span>
+        <img
+          alt=""
+          class="ProseMirror-separator"
+        />
         <br
           class="ProseMirror-trailingBreak"
         />

@@ -2,7 +2,7 @@ import { omit } from '@mashcard/active-support'
 import { Button, Form, Input, toast, useBoolean } from '@mashcard/design-system'
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Navigate } from 'react-router'
+import { Navigate } from 'react-router-dom'
 import { object, ref, string } from 'yup'
 
 import { mutationResultHandler } from '@/common/utils'

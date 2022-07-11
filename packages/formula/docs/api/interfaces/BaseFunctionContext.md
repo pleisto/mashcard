@@ -21,9 +21,9 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:402](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L402)
+[packages/formula/src/type/index.ts:412](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L412)
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -31,4 +31,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:403](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L403)
+[packages/formula/src/type/index.ts:413](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L413)

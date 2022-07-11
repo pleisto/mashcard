@@ -2,9 +2,9 @@
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends [`FormulaEventPayload`](FormulaEventPayload.md)<`any`\> |
+| Name | Type                                                            |
+| :--- | :-------------------------------------------------------------- |
+| `T`  | extends [`FormulaEventPayload`](FormulaEventPayload.md)<`any`\> |
 
 ## Table of contents
 
@@ -27,9 +27,9 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:681](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L681)
+[packages/formula/src/type/index.ts:703](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L703)
 
-___
+---
 
 ### <a id="definitionhandler" name="definitionhandler"></a> definitionHandler
 
@@ -41,11 +41,11 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `deps` | [`EventDependency`](EventDependency.md)<`T`\> |
-| `variable` | [`VariableInterface`](VariableInterface.md) |
-| `payload` | `T` |
+| Name       | Type                                          |
+| :--------- | :-------------------------------------------- |
+| `deps`     | [`EventDependency`](EventDependency.md)<`T`\> |
+| `variable` | [`VariableInterface`](VariableInterface.md)   |
+| `payload`  | `T`                                           |
 
 ##### Returns
 
@@ -53,9 +53,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:680](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L680)
+[packages/formula/src/type/index.ts:702](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L702)
 
-___
+---
 
 ### <a id="event" name="event"></a> event
 
@@ -63,9 +63,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:675](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L675)
+[packages/formula/src/type/index.ts:697](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L697)
 
-___
+---
 
 ### <a id="eventid" name="eventid"></a> eventId
 
@@ -73,9 +73,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:676](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L676)
+[packages/formula/src/type/index.ts:698](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L698)
 
-___
+---
 
 ### <a id="key" name="key"></a> key
 
@@ -83,19 +83,19 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:678](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L678)
+[packages/formula/src/type/index.ts:700](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L700)
 
-___
+---
 
 ### <a id="kind" name="kind"></a> kind
 
-• `Readonly` **kind**: ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Variable"`` \| ``"SpreadsheetName"`` \| ``"ColumnName"`` \| ``"NameChange"`` \| ``"NameRemove"`` \| ``"BlockRename"`` \| ``"BlockDelete"``
+• `Readonly` **kind**: `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Variable"` \| `"SpreadsheetName"` \| `"ColumnName"` \| `"NameChange"` \| `"NameRemove"` \| `"BlockRename"` \| `"BlockDelete"`
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:663](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L663)
+[packages/formula/src/type/index.ts:685](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L685)
 
-___
+---
 
 ### <a id="scope" name="scope"></a> scope
 
@@ -103,9 +103,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:677](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L677)
+[packages/formula/src/type/index.ts:699](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L699)
 
-___
+---
 
 ### <a id="skipif" name="skipif"></a> skipIf
 
@@ -117,10 +117,10 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name       | Type                                        |
+| :--------- | :------------------------------------------ |
 | `variable` | [`VariableInterface`](VariableInterface.md) |
-| `payload` | `T` |
+| `payload`  | `T`                                         |
 
 ##### Returns
 
@@ -128,4 +128,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:679](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L679)
+[packages/formula/src/type/index.ts:701](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L701)

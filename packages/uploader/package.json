@@ -13,13 +13,18 @@
   },
   "dependencies": {
     "@mashcard/active-support": "workspace:^",
+    "@mashcard/design-icons": "workspace:^",
     "@mashcard/design-system": "workspace:^",
     "@mashcard/test-helper": "workspace:^",
     "@uppy/core": "^2.3.1",
-    "@uppy/dashboard": "^2.3.0",
-    "@uppy/react": "^2.2.2",
+    "@uppy/utils": "^4.1.0",
     "@uppy/xhr-upload": "^2.1.2",
+    "ahooks": "^3.5.2",
     "react-virtuoso": "^2.16.2"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2"
   },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",

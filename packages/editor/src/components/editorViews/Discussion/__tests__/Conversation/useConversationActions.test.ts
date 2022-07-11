@@ -114,6 +114,7 @@ describe('useConversationActions', () => {
         position: 1
       }
 
+      // eslint-disable-next-line max-nested-callbacks
       const { result, rerender } = renderHook(() => useConversationActions(conversationItem, commentedNode))
 
       expect(result.current.removeConfirm.visible).toBeFalsy()
@@ -131,6 +132,7 @@ describe('useConversationActions', () => {
 
     it('confirms remove correctly', () => {
       const removeConversation = jest.fn()
+      // eslint-disable-next-line max-nested-callbacks
       jest.spyOn(PageDiscussionContext, 'usePageDiscussionContext').mockImplementation(() => ({
         discussion: { conversations: [] },
         removeConversation
@@ -152,6 +154,7 @@ describe('useConversationActions', () => {
         position: 1
       }
 
+      // eslint-disable-next-line max-nested-callbacks
       const { result } = renderHook(() => useConversationActions(conversationItem, commentedNode))
 
       result.current.removeConfirm.onConfirm()

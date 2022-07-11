@@ -153,8 +153,8 @@ export function useFontColorGroup(): ToolbarSubMenuOption | null {
 
   const prevColor = localStorage.getItem(PREV_COLOR_KEY)
   const prevBgColor = localStorage.getItem(PREV_BG_COLOR_KEY) ?? theme.colors.yellow3.value
-  const setColor = (color: string) => localStorage.setItem(PREV_COLOR_KEY, color)
-  const setBgColor = (color: string) => localStorage.setItem(PREV_BG_COLOR_KEY, color)
+  const setColor = (color: string): void => localStorage.setItem(PREV_COLOR_KEY, color)
+  const setBgColor = (color: string): void => localStorage.setItem(PREV_BG_COLOR_KEY, color)
 
   const fontColorItems: BubbleItemMeta[] = useMemo(
     () =>
@@ -194,7 +194,7 @@ export function useFontColorGroup(): ToolbarSubMenuOption | null {
     editor?.chain().focus().unsetFontColor().unsetFontBgColor().run()
   }, [editor])
 
-  const setPrevColorConfig = () => {
+  const setPrevColorConfig = (): void => {
     if (prevColor) {
       editor?.chain().focus().setFontColor(prevColor).run()
     }
