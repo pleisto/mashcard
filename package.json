@@ -125,7 +125,7 @@
     "@rails/actioncable": "patch:@rails/actioncable@npm:7.0.3#.yarn/patches/@rails-actioncable-npm-7.0.3-9e882d37e5.patch"
   },
   "dependencies": {
-    "@swc/core": "^1.2.211",
+    "@swc/core": "^1.2.212",
     "@swc/helpers": "^0.4.3",
     "dayjs": "^1.11.3",
     "ts-node": "^10.8.2"
