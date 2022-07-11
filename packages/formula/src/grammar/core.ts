@@ -83,16 +83,17 @@ interface ErrorParseResult extends BaseParseResult {
 export type ParseResult = SuccessParseResult | ErrorParseResult | LiteralParseResult | BlankParseResult
 
 export const parse = (ctx: FunctionContext): ParseResult => {
-  const { formulaContext, meta } = ctx
-  const {
-    namespaceId,
-    variableId,
-    input,
-    name,
-    richType: { type },
-    position
-  } = meta
+  const { meta } = ctx
+  const { input, position } = meta
   const version = FORMULA_PARSER_VERSION
+  const equalCodeFragment: CodeFragment = {
+    code: 'Equal',
+    type: 'any',
+    display: '=',
+    meta: undefined,
+    errors: [],
+    attrs: undefined
+  }
 
   const returnValue: BaseParseResult = {
     success: false,
@@ -163,17 +164,76 @@ export const parse = (ctx: FunctionContext): ParseResult => {
         valid: true,
         kind: 'blank',
         cst: undefined,
-        codeFragments: [
-          {
-            code: 'Equal',
-            type: 'any',
-            display: '=',
-            errors: [],
-            attrs: undefined
-          },
-          ...restCodeFragments
-        ]
+        codeFragments: [equalCodeFragment, ...restCodeFragments]
       }
+    }
+  }
+
+  const newInput = input.substring(1)
+  const isHead = position === 0
+  const newPosition = Math.max(position - 1, 0)
+  const { inputImage, parseImage, variableParseResult, ...rest } = innerParse({
+    ...ctx,
+    meta: { ...meta, input: newInput, position: newPosition }
+  })
+
+  const newVariableParseResult: ParseResult['variableParseResult'] = {
+    ...variableParseResult,
+    definition: `=${variableParseResult.definition}`,
+    position: isHead && variableParseResult.position === 0 ? 0 : variableParseResult.position + 1,
+    codeFragments: [equalCodeFragment, ...variableParseResult.codeFragments]
+  }
+
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+  const parseResult = {
+    ...rest,
+    inputImage: `=${inputImage}`,
+    parseImage: `=${parseImage}`,
+    variableParseResult: newVariableParseResult
+  } as ParseResult
+
+  return parseResult
+}
+
+const innerParse = (ctx: FunctionContext): ParseResult => {
+  const { formulaContext, meta } = ctx
+  const {
+    namespaceId,
+    variableId,
+    input,
+    name,
+    richType: { type },
+    position
+  } = meta
+  const version = FORMULA_PARSER_VERSION
+
+  const returnValue: BaseParseResult = {
+    success: false,
+    meta,
+    inputImage: '',
+    parseImage: '',
+    expressionType: 'any',
+    errorType: 'parse',
+    errorMessages: [{ type: 'parse', message: '' }],
+    completions: [],
+    variableParseResult: {
+      valid: true,
+      async: false,
+      effect: false,
+      persist: false,
+      pure: true,
+      cst: undefined,
+      definition: input,
+      position,
+      version,
+      kind: 'unknown',
+      codeFragments: [],
+      variableDependencies: [],
+      nameDependencies: [],
+      functionDependencies: [],
+      eventDependencies: [],
+      blockDependencies: [],
+      flattenVariableDependencies: []
     }
   }
 
@@ -260,13 +320,11 @@ export const parse = (ctx: FunctionContext): ParseResult => {
 
   let parseCodeFragments = codeFragments
   if (parseError) {
-    const restImages = input.slice(1)
     parseCodeFragments = [
-      codeFragments[0],
       {
         code: 'parseErrorOther2',
         type: 'any',
-        display: restImages,
+        display: input,
         errors: finalErrorMessages,
         attrs: undefined
       }
@@ -278,8 +336,6 @@ export const parse = (ctx: FunctionContext): ParseResult => {
     (prev, step) => step({ input: prev, meta: { ...ctx.meta, input } }),
     { codeFragments: parseCodeFragments }
   )
-
-  // const newPosition = changePosition(finalCodeFragments, position, input, finalPositionFragment)
 
   completions = getCompletion({
     position: newPosition,

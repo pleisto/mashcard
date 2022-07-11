@@ -20,11 +20,6 @@ const maybeRemoveCodeFragmentsEqual = (codeFragments: CodeFragment[], formulaIsN
   const firstCodeFragment = codeFragments[0]
 
   if (firstCodeFragment.code === 'Equal') {
-    // HACK: parse `===`
-    const secondCodeFragment = codeFragments[1]
-    if (secondCodeFragment && secondCodeFragment.code === 'Equal2' && firstCodeFragment.display === '') {
-      return [{ ...secondCodeFragment, display: '=' }, ...codeFragments.slice(2)]
-    }
     return codeFragments.slice(1)
   }
 

@@ -60,13 +60,57 @@ export const FunctionCallTestCase: TestCaseInterface = {
         result: 2,
         expected: [
           { key: 'functionDependencies', matchType: 'toMatchObject', match: [{ name: functionClauses[0].name }] },
-          { key: 'codeFragments', matchType: 'toMatchSnapshot' }
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [
+              { code: 'Equal' },
+              { code: 'FunctionGroup', display: 'custom::' },
+              { code: 'Function', display: 'PLUS' },
+              {
+                code: 'LParen',
+                meta: {
+                  args: [
+                    { name: 'a', type: 'number' },
+                    { name: 'b', type: 'number' }
+                  ],
+                  endCode: 'RParen'
+                }
+              },
+              { code: 'NumberLiteral', display: '1', type: 'number' },
+              { code: 'Comma', display: ',' },
+              { code: 'Space' },
+              { code: 'NumberLiteral', display: '1' },
+              {
+                code: 'RParen',
+                meta: {
+                  args: [
+                    { name: 'a', type: 'number' },
+                    { name: 'b', type: 'number' }
+                  ],
+                  endCode: 'RParen'
+                }
+              }
+            ]
+          }
         ]
       },
       {
         definition: '=custom::FORTY_TWO()',
         result: 42,
-        expected: [{ key: 'codeFragments', matchType: 'toMatchSnapshot' }]
+        expected: [
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [
+              { code: 'Equal' },
+              { code: 'FunctionGroup', display: 'custom::' },
+              { code: 'Function', display: 'FORTY_TWO' },
+              { code: 'LParen', meta: { args: [], endCode: 'RParen' } },
+              { code: 'RParen', meta: { args: [], endCode: 'RParen' } }
+            ]
+          }
+        ]
       },
       {
         definition: '=custom::FORTY_TWO()+ (custom::PLUS(1, 1))',

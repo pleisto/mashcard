@@ -4,8 +4,6 @@ export const OtherTestCase: TestCaseInterface = {
   name: 'other',
   testCases: {
     successTestCases: [
-      { definition: '=', result: 'Blank', expected: [{ key: 'codeFragments', matchType: 'toMatchSnapshot' }] },
-      { definition: '= ', result: 'Blank', expected: [{ key: 'codeFragments', matchType: 'toMatchSnapshot' }] },
       { definition: '=1.123%', result: 0.01123 },
       { definition: '=01.2000100', result: 1.20001 }
     ],
@@ -26,14 +24,7 @@ export const OtherTestCase: TestCaseInterface = {
       { definition: '=<', errorType: 'parse', errorMessage: 'Parse error: ""', valid: false },
       { definition: '=<>', errorType: 'parse', errorMessage: 'Parse error: ""', valid: false },
       { definition: '=ABS(1 {a: 1}.a', errorType: 'type', errorMessage: 'Expected Cell but got number' },
-      { definition: '=(1 {}.', errorType: 'syntax', errorMessage: 'Missing closing token' },
-      {
-        definition: '== 1',
-        todoMessage: 'fix == space',
-        errorType: 'parse',
-        errorMessage: 'TODO mismatch token startExpression',
-        valid: false
-      }
+      { definition: '=(1 {}.', errorType: 'syntax', errorMessage: 'Missing closing token' }
     ]
   }
 }

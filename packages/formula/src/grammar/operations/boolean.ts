@@ -16,10 +16,30 @@ export const booleanOperator: OperatorType = {
   },
   testCases: {
     successTestCases: [
-      { definition: '=true', result: true, expected: [{ key: 'codeFragments', matchType: 'toMatchSnapshot' }] },
+      {
+        definition: '=true',
+        result: true,
+        expected: [
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [{ code: 'Equal' }, { code: 'BooleanLiteral', display: 'true', type: 'boolean' }]
+          }
+        ]
+      },
       { definition: '=True', result: true },
-      { definition: '=false', result: false, expected: [{ key: 'codeFragments', matchType: 'toMatchSnapshot' }] },
-      { definition: '=FALSE', result: false }
+      { definition: '=false', result: false },
+      {
+        definition: '=FALSE',
+        result: false,
+        expected: [
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [{ code: 'Equal' }, { code: 'BooleanLiteral', display: 'FALSE', type: 'boolean' }]
+          }
+        ]
+      }
     ],
     errorTestCases: [
       { definition: '=True + 1', errorType: 'type', errorMessage: 'Expected number,Cell but got boolean' }

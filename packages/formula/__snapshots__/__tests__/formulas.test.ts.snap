@@ -48,47 +48,6 @@ Array [
       ],
       "cst": Object {
         "children": Object {
-          "Equal": Array [
-            Object {
-              "endColumn": 1,
-              "endLine": 1,
-              "endOffset": 0,
-              "image": "=",
-              "startColumn": 1,
-              "startLine": 1,
-              "startOffset": 0,
-              "tokenType": Object {
-                "CATEGORIES": Array [
-                  Object {
-                    "CATEGORIES": Array [],
-                    "PATTERN": /NOT_APPLICABLE/,
-                    "categoryMatches": Array [
-                      20,
-                      21,
-                      23,
-                      24,
-                    ],
-                    "categoryMatchesMap": Object {
-                      "20": true,
-                      "21": true,
-                      "23": true,
-                      "24": true,
-                    },
-                    "isParent": true,
-                    "name": "EqualCompareOperator",
-                    "tokenTypeIdx": 3,
-                  },
-                ],
-                "PATTERN": /=/,
-                "categoryMatches": Array [],
-                "categoryMatchesMap": Object {},
-                "isParent": false,
-                "name": "Equal",
-                "tokenTypeIdx": 20,
-              },
-              "tokenTypeIdx": 20,
-            },
-          ],
           "expression": Array [
             Object {
               "children": Object {
@@ -139,13 +98,13 @@ Array [
                                                                                                         "children": Object {
                                                                                                           "NumberLiteral": Array [
                                                                                                             Object {
-                                                                                                              "endColumn": 4,
+                                                                                                              "endColumn": 3,
                                                                                                               "endLine": 1,
-                                                                                                              "endOffset": 3,
+                                                                                                              "endOffset": 2,
                                                                                                               "image": "123",
-                                                                                                              "startColumn": 2,
+                                                                                                              "startColumn": 1,
                                                                                                               "startLine": 1,
-                                                                                                              "startOffset": 1,
+                                                                                                              "startOffset": 0,
                                                                                                               "tokenType": Object {
                                                                                                                 "CATEGORIES": Array [],
                                                                                                                 "PATTERN": /\\[0-9\\]\\+/,
@@ -322,47 +281,6 @@ Array [
       ],
       "cst": Object {
         "children": Object {
-          "Equal": Array [
-            Object {
-              "endColumn": 1,
-              "endLine": 1,
-              "endOffset": 0,
-              "image": "=",
-              "startColumn": 1,
-              "startLine": 1,
-              "startOffset": 0,
-              "tokenType": Object {
-                "CATEGORIES": Array [
-                  Object {
-                    "CATEGORIES": Array [],
-                    "PATTERN": /NOT_APPLICABLE/,
-                    "categoryMatches": Array [
-                      20,
-                      21,
-                      23,
-                      24,
-                    ],
-                    "categoryMatchesMap": Object {
-                      "20": true,
-                      "21": true,
-                      "23": true,
-                      "24": true,
-                    },
-                    "isParent": true,
-                    "name": "EqualCompareOperator",
-                    "tokenTypeIdx": 3,
-                  },
-                ],
-                "PATTERN": /=/,
-                "categoryMatches": Array [],
-                "categoryMatchesMap": Object {},
-                "isParent": false,
-                "name": "Equal",
-                "tokenTypeIdx": 20,
-              },
-              "tokenTypeIdx": 20,
-            },
-          ],
           "expression": Array [
             Object {
               "children": Object {
@@ -386,13 +304,13 @@ Array [
                                                   "children": Object {
                                                     "AdditionOperator": Array [
                                                       Object {
-                                                        "endColumn": 7,
+                                                        "endColumn": 6,
                                                         "endLine": 1,
-                                                        "endOffset": 6,
+                                                        "endOffset": 5,
                                                         "image": "+",
-                                                        "startColumn": 7,
+                                                        "startColumn": 6,
                                                         "startLine": 1,
-                                                        "startOffset": 6,
+                                                        "startOffset": 5,
                                                         "tokenType": Object {
                                                           "CATEGORIES": Array [
                                                             Object {
@@ -450,13 +368,13 @@ Array [
                                                                                                         "children": Object {
                                                                                                           "NumberLiteral": Array [
                                                                                                             Object {
-                                                                                                              "endColumn": 5,
+                                                                                                              "endColumn": 4,
                                                                                                               "endLine": 1,
-                                                                                                              "endOffset": 4,
+                                                                                                              "endOffset": 3,
                                                                                                               "image": "123",
-                                                                                                              "startColumn": 3,
+                                                                                                              "startColumn": 2,
                                                                                                               "startLine": 1,
-                                                                                                              "startOffset": 2,
+                                                                                                              "startOffset": 1,
                                                                                                               "tokenType": Object {
                                                                                                                 "CATEGORIES": Array [],
                                                                                                                 "PATTERN": /\\[0-9\\]\\+/,

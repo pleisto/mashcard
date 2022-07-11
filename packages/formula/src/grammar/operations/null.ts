@@ -16,7 +16,17 @@ export const nullOperator: OperatorType = {
   },
   testCases: {
     successTestCases: [
-      { definition: '=null', result: null, expected: [{ key: 'codeFragments', matchType: 'toMatchSnapshot' }] },
+      {
+        definition: '=null',
+        result: null,
+        expected: [
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [{ code: 'Equal' }, { code: 'NullLiteral', display: 'null', type: 'null' }]
+          }
+        ]
+      },
       { definition: '=Null', result: null }
     ],
     errorTestCases: [{ definition: '=null + 1', errorType: 'type', errorMessage: 'Expected number,Cell but got null' }]

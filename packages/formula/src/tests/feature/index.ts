@@ -2,7 +2,7 @@ import { TestCaseInterface } from '../testType'
 import { AsyncTestCase } from './async'
 import { DependencyTestCase } from './dependency'
 import { FunctionCallTestCase } from './functionCall'
-import { NameTestCase } from './name'
+import { ParserTestCase } from './parser'
 import { OtherTestCase } from './other'
 import { PowerFxTestCase } from './powerfx'
 import { SpreadsheetTestCase } from './spreadsheet'
@@ -17,7 +17,7 @@ export const FeatureTestCases: TestCaseInterface[] = [
   VariableTestCase,
   PowerFxTestCase,
   SpreadsheetTestCase,
-  NameTestCase,
+  ParserTestCase,
   AsyncTestCase,
   FormatTestCase,
   DependencyTestCase,

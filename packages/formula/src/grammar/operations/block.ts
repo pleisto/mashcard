@@ -31,7 +31,14 @@ export const blockOperator: OperatorType = {
         definition: '=Block',
         result: mockBlock('Block', pageId),
         expected: [
-          { key: 'codeFragments', matchType: 'toMatchSnapshot' },
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [
+              { code: 'Equal' },
+              { code: 'Block', type: 'Block', display: 'Block', attrs: { findKey: {} }, namespaceId: pageId }
+            ]
+          },
           { key: 'nameDependencies', match: [] },
           { key: 'blockDependencies', match: [pageId] }
         ]
@@ -41,7 +48,16 @@ export const blockOperator: OperatorType = {
         newAbbrevInput: '=  Block ',
         result: mockBlock('Block', pageId),
         expected: [
-          { key: 'codeFragments', matchType: 'toMatchSnapshot' },
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [
+              { code: 'Equal' },
+              { code: 'Space' },
+              { code: 'Block', type: 'Block', display: 'Block', attrs: { findKey: {} }, namespaceId: pageId },
+              { code: 'Space' }
+            ]
+          },
           { key: 'nameDependencies', match: [] },
           { key: 'blockDependencies', match: [pageId] }
         ]
@@ -50,7 +66,22 @@ export const blockOperator: OperatorType = {
         definition: '=  "1 Block With Space" ',
         result: mockBlock('1 Block With Space', page2Id),
         expected: [
-          { key: 'codeFragments', matchType: 'toMatchSnapshot' },
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [
+              { code: 'Equal' },
+              { code: 'Space' },
+              {
+                code: 'Block',
+                type: 'Block',
+                display: '"1 Block With Space"',
+                attrs: { findKey: {} },
+                namespaceId: page2Id
+              },
+              { code: 'Space' }
+            ]
+          },
           { key: 'nameDependencies', match: [] },
           { key: 'blockDependencies', match: [page2Id] }
         ]
@@ -60,7 +91,14 @@ export const blockOperator: OperatorType = {
         result: mockBlock('Block', pageId),
         namespaceId: pageId,
         expected: [
-          { key: 'codeFragments', matchType: 'toMatchSnapshot' },
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [
+              { code: 'Equal' },
+              { code: 'Block', type: 'Block', display: '#CurrentBlock', attrs: { findKey: {} }, namespaceId: pageId }
+            ]
+          },
           { key: 'nameDependencies', match: [] },
           { key: 'blockDependencies', match: [pageId] }
         ]
@@ -70,7 +108,16 @@ export const blockOperator: OperatorType = {
         newAbbrevInput: '=   Block  ',
         result: mockBlock('Block', pageId),
         expected: [
-          { key: 'codeFragments', matchType: 'toMatchSnapshot' },
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [
+              { code: 'Equal' },
+              { code: 'Space' },
+              { code: 'Block', type: 'Block', display: 'Block', attrs: { findKey: {} }, namespaceId: pageId },
+              { code: 'Space' }
+            ]
+          },
           { key: 'nameDependencies', match: [] },
           { key: 'blockDependencies', match: [pageId] }
         ]
@@ -80,7 +127,20 @@ export const blockOperator: OperatorType = {
         result: mockBlock('1 Block With Space', page2Id),
         namespaceId: page2Id,
         expected: [
-          { key: 'codeFragments', matchType: 'toMatchSnapshot' },
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [
+              { code: 'Equal' },
+              {
+                code: 'Block',
+                type: 'Block',
+                display: '#CurrentBlock',
+                attrs: { findKey: {} },
+                namespaceId: page2Id
+              }
+            ]
+          },
           { key: 'nameDependencies', match: [] },
           { key: 'blockDependencies', match: [page2Id] }
         ]
@@ -90,7 +150,22 @@ export const blockOperator: OperatorType = {
         newAbbrevInput: '=  "1 Block With Space"  ',
         result: mockBlock('1 Block With Space', page2Id),
         expected: [
-          { key: 'codeFragments', matchType: 'toMatchSnapshot' },
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [
+              { code: 'Equal' },
+              { code: 'Space' },
+              {
+                code: 'Block',
+                type: 'Block',
+                display: '"1 Block With Space"',
+                attrs: { findKey: {} },
+                namespaceId: page2Id
+              },
+              { code: 'Space' }
+            ]
+          },
           { key: 'nameDependencies', match: [] },
           { key: 'blockDependencies', match: [page2Id] }
         ]

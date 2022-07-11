@@ -82,17 +82,8 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     this.validateVisitor()
   }
 
-  startExpression(
-    ctx: { expression: CstNode | CstNode[]; Equal: any },
-    { type }: CstVisitorArgument
-  ): CodeFragmentResult {
-    const operator = ctx.Equal[0] as IToken
-    const { type: newType, codeFragments, image }: CodeFragmentResult = this.visit(ctx.expression, { type })
-    return {
-      type: newType,
-      codeFragments: [token2fragment(operator, 'any'), ...codeFragments],
-      image: `${ctx.Equal[0].image}${image}`
-    }
+  startExpression(ctx: { expression: CstNode | CstNode[] }, { type }: CstVisitorArgument): CodeFragmentResult {
+    return this.visit(ctx.expression, { type })
   }
 
   expression(ctx: any, args: CstVisitorArgument): CodeFragmentResult {
