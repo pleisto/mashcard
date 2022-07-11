@@ -6,7 +6,7 @@ exports[`GalleryContent renders GalleryContent correctly 1`] = `
     class="mc-c-kCBlgu"
   >
     <div
-      class="MuiInput-root mc-c-faqTV mc-c-faqTV-cROdoV-size-md mc-c-faqTV-kUUElh-bordered-true mc-c-faqTV-dQAfkO-borderType-outline mc-c-faqTV-gjYJKs-cv mc-c-jybpWZ"
+      class="MuiInput-root mc-c-eANKNN mc-c-eANKNN-cROdoV-size-md mc-c-eANKNN-kUUElh-bordered-true mc-c-eANKNN-dQAfkO-borderType-outline mc-c-eANKNN-gjYJKs-cv mc-c-jybpWZ"
     >
       <input
         class="MuiInput-input"

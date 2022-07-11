@@ -36,7 +36,7 @@ exports[`Callout renders Callout correctly 1`] = `
             </div>
             <span
               as="span"
-              class="mc-c-hOefvj"
+              class="mc-c-hbPmqD"
               data-node-view-content=""
               data-placeholder="placeholder.callout"
               style="white-space: pre-wrap;"

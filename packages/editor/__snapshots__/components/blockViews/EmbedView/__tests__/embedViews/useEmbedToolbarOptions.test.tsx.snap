@@ -6,7 +6,7 @@ exports[`useEmbedToolbarOptions renders EditPanel correctly 1`] = `
     class="mc-c-ekYIPB"
   >
     <div
-      class="MuiInput-root mc-c-faqTV mc-c-faqTV-cROdoV-size-md mc-c-faqTV-kUUElh-bordered-true mc-c-faqTV-kIjfzT-borderType-underline mc-c-faqTV-gjYJKs-cv mc-c-PJLV mc-c-PJLV-cUBuKZ-size-md"
+      class="MuiInput-root mc-c-eANKNN mc-c-eANKNN-cROdoV-size-md mc-c-eANKNN-kUUElh-bordered-true mc-c-eANKNN-kIjfzT-borderType-underline mc-c-eANKNN-gjYJKs-cv mc-c-PJLV mc-c-PJLV-cUBuKZ-size-md"
     >
       <input
         class="MuiInput-input"
@@ -18,7 +18,7 @@ exports[`useEmbedToolbarOptions renders EditPanel correctly 1`] = `
       class="mc-c-kAeOEu"
     >
       <div
-        class="MuiInput-root MuiInput-adornedStart mc-c-faqTV mc-c-faqTV-cROdoV-size-md mc-c-faqTV-kUUElh-bordered-true mc-c-faqTV-kIjfzT-borderType-underline mc-c-faqTV-gjYJKs-cv mc-c-PJLV mc-c-PJLV-cUBuKZ-size-md"
+        class="MuiInput-root MuiInput-adornedStart mc-c-eANKNN mc-c-eANKNN-cROdoV-size-md mc-c-eANKNN-kUUElh-bordered-true mc-c-eANKNN-kIjfzT-borderType-underline mc-c-eANKNN-gjYJKs-cv mc-c-PJLV mc-c-PJLV-cUBuKZ-size-md"
       >
         <span
           aria-label="link"

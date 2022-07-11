@@ -23,7 +23,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
             >
               <h1
                 as="h1"
-                class="mc-c-gkVTfJ mc-c-gkVTfJ-cOVgnz-level-1"
+                class="mc-c-fHQyyx mc-c-fHQyyx-cOVgnz-level-1"
                 data-node-view-content=""
                 data-placeholder=""
                 style="--selection-padding: calc((2.875rem - 1.875rem) / 2); --bgColor-padding: calc((2.875rem - 1.875rem) / 2); white-space: pre-wrap;"
@@ -89,7 +89,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
             >
               <h2
                 as="h2"
-                class="mc-c-gkVTfJ mc-c-gkVTfJ-gPLAez-level-2"
+                class="mc-c-fHQyyx mc-c-fHQyyx-gPLAez-level-2"
                 data-node-view-content=""
                 data-placeholder=""
                 style="--selection-padding: calc((2rem - 1.625rem) / 2); --bgColor-padding: calc((2rem - 1.625rem) / 2); white-space: pre-wrap;"
@@ -155,7 +155,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
             >
               <h3
                 as="h3"
-                class="mc-c-gkVTfJ mc-c-gkVTfJ-llzMLw-level-3"
+                class="mc-c-fHQyyx mc-c-fHQyyx-llzMLw-level-3"
                 data-node-view-content=""
                 data-placeholder=""
                 style="--selection-padding: calc((1.875rem - 1.375rem) / 2); --bgColor-padding: calc((1.875rem - 1.375rem) / 2); white-space: pre-wrap;"
@@ -221,7 +221,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
             >
               <h4
                 as="h4"
-                class="mc-c-gkVTfJ mc-c-gkVTfJ-dWBeGD-level-4"
+                class="mc-c-fHQyyx mc-c-fHQyyx-dWBeGD-level-4"
                 data-node-view-content=""
                 data-placeholder=""
                 style="--selection-padding: calc((1.875rem - 1.25rem) / 2); --bgColor-padding: calc((1.875rem - 1.25rem) / 2); white-space: pre-wrap;"
@@ -287,7 +287,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
             >
               <h5
                 as="h5"
-                class="mc-c-gkVTfJ mc-c-gkVTfJ-hCSGfy-level-5"
+                class="mc-c-fHQyyx mc-c-fHQyyx-hCSGfy-level-5"
                 data-node-view-content=""
                 data-placeholder=""
                 style="--selection-padding: calc((1.5rem - 1rem) / 2); --bgColor-padding: calc((1.5rem - 1rem) / 2); white-space: pre-wrap;"
