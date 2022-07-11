@@ -80,6 +80,14 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
         ]
       },
       {
+        definition: '=SpreadsheetEventPage1.spreadsheet1foobar',
+        resultBefore: mockSpreadsheet('spreadsheet1foobar', spreadsheet1Id),
+        resultAfter: mockSpreadsheet('UntitledSpreadsheet', spreadsheet1Id),
+        variableParseResultAfter: { definition: '=SpreadsheetEventPage1.UntitledSpreadsheet' },
+        label: 'empty name',
+        events: [['spreadsheetChangeName', { spreadsheetId: spreadsheet1Id, title: '', namespaceId: page0Id }]]
+      },
+      {
         definition: '=spreadsheet1foobar',
         namespaceId: page0Id,
         resultBefore: mockSpreadsheet('spreadsheet1foobar', spreadsheet1Id),
