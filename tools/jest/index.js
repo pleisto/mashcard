@@ -1,5 +1,6 @@
 const isCI = require('is-ci')
 const path = require('path')
+const fs = require('node:fs')
 const esModules = [
   'lodash-es',
   'refractor',
@@ -17,6 +18,7 @@ const esModules = [
 ].join('|')
 
 const monoRoot = path.join(__dirname, '..', '..')
+const swcConfig = JSON.parse(fs.readFileSync(`${monoRoot}/.swcrc`, 'utf-8'))
 
 module.exports = {
   esModules,
@@ -27,7 +29,7 @@ module.exports = {
     },
     testEnvironment: hasDom ? 'jsdom' : 'node',
     transform: {
-      '^.+\\.(t|j)sx?$': ['@swc/jest']
+      '^.+\\.(t|j)sx?$': ['@swc/jest', swcConfig]
     },
     collectCoverage: true,
     collectCoverageFrom: [

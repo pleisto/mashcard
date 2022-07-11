@@ -16,19 +16,19 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:355](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L355)
+[packages/formula/src/type/index.ts:365](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L365)
 
-___
+---
 
 ### <a id="type" name="type"></a> type
 
-• **type**: ``"id"`` \| ``"name"``
+• **type**: `"id"` \| `"name"`
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:356](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L356)
+[packages/formula/src/type/index.ts:366](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L366)
 
-___
+---
 
 ### <a id="value" name="value"></a> value
 
@@ -36,4 +36,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:357](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L357)
+[packages/formula/src/type/index.ts:367](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L367)

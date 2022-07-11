@@ -1709,11 +1709,11 @@ var users = [
 
 #### Parameters
 
-| Name         | Type                                      | Description                     |
-| :----------- | :---------------------------------------- | :------------------------------ |
-| `collection` | `undefined` \| `null` \| `List`<`T`\>     | The collection to iterate over. |
-| `iteratees?` | `Many`<`ListIterator`<`T`, `unknown`\>\>  | The iteratees to sort by.       |
-| `orders?`    | `Many`<`boolean` \| `"asc"` \| `"desc"`\> | The sort orders of `iteratees`. |
+| Name         | Type                                      | Description                                                                                                        |
+| :----------- | :---------------------------------------- | :----------------------------------------------------------------------------------------------------------------- |
+| `collection` | `undefined` \| `null` \| `List`<`T`\>     | The collection to iterate over.                                                                                    |
+| `iteratees?` | `Many`<`ListIterator`<`T`, `unknown`\>\>  | The iteratees to sort by.                                                                                          |
+| `orders?`    | `Many`<`boolean` \| `"asc"` \| `"desc"`\> | The sort orders of `iteratees`. @param- {Object} [guard] Enables use as an iteratee for functions like `_.reduce`. |
 
 #### Returns
 
@@ -3999,7 +3999,7 @@ This method is like \_.forEach except that it iterates over elements of collecti
 
 | Name      | Type                    |
 | :-------- | :---------------------- |
-| `promise` | `Promise`<`T`\>         |
+| `promise` | `PromiseLike`<`T`\>     |
 | `errorFn` | (`e`: `unknown`) => `E` |
 
 #### Returns
@@ -4021,9 +4021,9 @@ This method is like \_.forEach except that it iterates over elements of collecti
 
 #### Parameters
 
-| Name      | Type            |
-| :-------- | :-------------- |
-| `promise` | `Promise`<`T`\> |
+| Name      | Type                |
+| :-------- | :------------------ |
+| `promise` | `PromiseLike`<`T`\> |
 
 #### Returns
 

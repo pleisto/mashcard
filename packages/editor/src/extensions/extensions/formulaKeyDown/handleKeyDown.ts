@@ -6,7 +6,7 @@ import { CodeFragment } from '@mashcard/formula'
 import { meta } from './meta'
 import { createExtension } from '../../common'
 
-export type KeyDownHandlerType = (view: EditorView<any>, event: KeyboardEvent) => boolean
+export type KeyDownHandlerType = (view: EditorView, event: KeyboardEvent) => boolean
 
 const gapHoverHandler = ({
   view,

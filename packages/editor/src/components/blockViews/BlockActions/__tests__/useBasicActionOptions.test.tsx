@@ -106,6 +106,7 @@ describe('useBasicActionOptions', () => {
     const text = 'text'
     const dom = document.createElement('div')
     dom.innerHTML = text
+    // @ts-expect-error
     jest.spyOn(prosemirrorView, '__serializeForClipboard').mockImplementation(() => ({
       dom,
       text

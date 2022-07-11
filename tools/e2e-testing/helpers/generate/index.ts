@@ -28,4 +28,4 @@ const createDir = async (moduleName: string): Promise<void> => {
   console.log('created successful!')
 }
 
-main()
+void main()

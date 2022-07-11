@@ -2,7 +2,7 @@
 
 ## Hierarchy
 
-- `Omit`<[`FunctionContext`](FunctionContext.md), ``"meta"``\>
+- `Omit`<[`FunctionContext`](FunctionContext.md), `"meta"`\>
 
   ↳ **`MakeContextResult`**
 
@@ -14,6 +14,8 @@
 - [fetchUUID](MakeContextResult.md#fetchuuid)
 - [formulaContext](MakeContextResult.md#formulacontext)
 - [interpretContext](MakeContextResult.md#interpretcontext)
+- [interpretDirectly](MakeContextResult.md#interpretdirectly)
+- [parseDirectly](MakeContextResult.md#parsedirectly)
 
 ## Properties
 
@@ -27,8 +29,8 @@
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                   |
+| :----- | :------------------------------------- |
 | `args` | [`BaseTestCase`](BaseTestCase.md)<{}\> |
 
 ##### Returns
@@ -37,9 +39,9 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:225](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L225)
+[packages/formula/src/tests/testType.ts:232](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L232)
 
-___
+---
 
 ### <a id="fetchuuid" name="fetchuuid"></a> fetchUUID
 
@@ -51,8 +53,8 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                        |
+| :----- | :------------------------------------------ |
 | `uuid` | [`MockedUUIDV4`](../README.md#mockeduuidv4) |
 
 ##### Returns
@@ -61,9 +63,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:226](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L226)
+[packages/formula/src/tests/testType.ts:235](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L235)
 
-___
+---
 
 ### <a id="formulacontext" name="formulacontext"></a> formulaContext
 
@@ -75,9 +77,9 @@ Omit.formulaContext
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:402](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L402)
+[packages/formula/src/type/index.ts:412](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L412)
 
-___
+---
 
 ### <a id="interpretcontext" name="interpretcontext"></a> interpretContext
 
@@ -89,4 +91,52 @@ Omit.interpretContext
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:407](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L407)
+[packages/formula/src/type/index.ts:417](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L417)
+
+---
+
+### <a id="interpretdirectly" name="interpretdirectly"></a> interpretDirectly
+
+• **interpretDirectly**: (`args`: [`BaseTestCase`](BaseTestCase.md)<{}\>) => `Promise`<[[`VariableData`](VariableData.md), [`ParseResult`](../README.md#parseresult)]\>
+
+#### Type declaration
+
+▸ (`args`): `Promise`<[[`VariableData`](VariableData.md), [`ParseResult`](../README.md#parseresult)]\>
+
+##### Parameters
+
+| Name   | Type                                   |
+| :----- | :------------------------------------- |
+| `args` | [`BaseTestCase`](BaseTestCase.md)<{}\> |
+
+##### Returns
+
+`Promise`<[[`VariableData`](VariableData.md), [`ParseResult`](../README.md#parseresult)]\>
+
+#### Defined in
+
+[packages/formula/src/tests/testType.ts:233](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L233)
+
+---
+
+### <a id="parsedirectly" name="parsedirectly"></a> parseDirectly
+
+• **parseDirectly**: (`args`: [`BaseTestCase`](BaseTestCase.md)<{}\>) => [`ParseResult`](../README.md#parseresult)
+
+#### Type declaration
+
+▸ (`args`): [`ParseResult`](../README.md#parseresult)
+
+##### Parameters
+
+| Name   | Type                                   |
+| :----- | :------------------------------------- |
+| `args` | [`BaseTestCase`](BaseTestCase.md)<{}\> |
+
+##### Returns
+
+[`ParseResult`](../README.md#parseresult)
+
+#### Defined in
+
+[packages/formula/src/tests/testType.ts:234](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L234)

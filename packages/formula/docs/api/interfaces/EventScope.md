@@ -15,9 +15,9 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:649](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L649)
+[packages/formula/src/type/index.ts:671](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L671)
 
-___
+---
 
 ### <a id="rows" name="rows"></a> rows
 
@@ -25,4 +25,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:648](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L648)
+[packages/formula/src/type/index.ts:670](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L670)

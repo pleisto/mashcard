@@ -14,7 +14,7 @@ exports[`Heading renders Heading correctly 1`] = `
       >
         <div
           data-node-view-wrapper=""
-          style="position: relative; pointer-events: unset; white-space: normal;"
+          style="white-space: normal; position: relative; pointer-events: unset;"
         >
           <h1
             as="h1"
@@ -36,7 +36,7 @@ exports[`Heading renders Heading correctly 1`] = `
       >
         <div
           data-node-view-wrapper=""
-          style="position: relative; pointer-events: unset; white-space: normal;"
+          style="white-space: normal; position: relative; pointer-events: unset;"
         >
           <h2
             as="h2"
@@ -58,7 +58,7 @@ exports[`Heading renders Heading correctly 1`] = `
       >
         <div
           data-node-view-wrapper=""
-          style="position: relative; pointer-events: unset; white-space: normal;"
+          style="white-space: normal; position: relative; pointer-events: unset;"
         >
           <h3
             as="h3"
@@ -80,7 +80,7 @@ exports[`Heading renders Heading correctly 1`] = `
       >
         <div
           data-node-view-wrapper=""
-          style="position: relative; pointer-events: unset; white-space: normal;"
+          style="white-space: normal; position: relative; pointer-events: unset;"
         >
           <h4
             as="h4"
@@ -102,7 +102,7 @@ exports[`Heading renders Heading correctly 1`] = `
       >
         <div
           data-node-view-wrapper=""
-          style="position: relative; pointer-events: unset; white-space: normal;"
+          style="white-space: normal; position: relative; pointer-events: unset;"
         >
           <h5
             as="h5"

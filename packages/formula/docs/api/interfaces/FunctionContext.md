@@ -26,9 +26,9 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:402](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L402)
+[packages/formula/src/type/index.ts:412](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L412)
 
-___
+---
 
 ### <a id="interpretcontext" name="interpretcontext"></a> interpretContext
 
@@ -36,9 +36,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:407](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L407)
+[packages/formula/src/type/index.ts:417](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L417)
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -50,4 +50,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:406](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L406)
+[packages/formula/src/type/index.ts:416](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L416)

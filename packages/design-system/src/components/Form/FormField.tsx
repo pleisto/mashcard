@@ -14,7 +14,7 @@ const MemoizedFormField = memo(
     const { name, options = {}, children, label, layout, formState, register, ...controlProps } = props
     const error = name && formState?.errors?.[name]
 
-    const getErrorMessage = () => {
+    const getErrorMessage = (): string | undefined => {
       if (typeof error !== 'object') {
         return undefined
       }

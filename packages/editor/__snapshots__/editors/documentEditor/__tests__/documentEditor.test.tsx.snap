@@ -16,7 +16,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
         >
           <div
             data-node-view-wrapper=""
-            style="position: relative; pointer-events: unset; white-space: normal;"
+            style="white-space: normal; position: relative; pointer-events: unset;"
           >
             <div
               class="mc-c-hKINpq"
@@ -26,7 +26,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                 class="mc-c-fHQyyx mc-c-fHQyyx-cOVgnz-level-1"
                 data-node-view-content=""
                 data-placeholder=""
-                style="--selection-padding: calc((2.875rem - 1.875rem) / 2); --bgColor-padding: calc((2.875rem - 1.875rem) / 2); white-space: pre-wrap;"
+                style="white-space: pre-wrap; --selection-padding: calc((2.875rem - 1.875rem) / 2); --bgColor-padding: calc((2.875rem - 1.875rem) / 2);"
               >
                 <div
                   style="white-space: inherit;"
@@ -83,7 +83,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
         >
           <div
             data-node-view-wrapper=""
-            style="position: relative; pointer-events: unset; white-space: normal;"
+            style="white-space: normal; position: relative; pointer-events: unset;"
           >
             <div
               class="mc-c-hKINpq"
@@ -93,7 +93,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                 class="mc-c-fHQyyx mc-c-fHQyyx-gPLAez-level-2"
                 data-node-view-content=""
                 data-placeholder=""
-                style="--selection-padding: calc((2rem - 1.625rem) / 2); --bgColor-padding: calc((2rem - 1.625rem) / 2); white-space: pre-wrap;"
+                style="white-space: pre-wrap; --selection-padding: calc((2rem - 1.625rem) / 2); --bgColor-padding: calc((2rem - 1.625rem) / 2);"
               >
                 <div
                   style="white-space: inherit;"
@@ -150,7 +150,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
         >
           <div
             data-node-view-wrapper=""
-            style="position: relative; pointer-events: unset; white-space: normal;"
+            style="white-space: normal; position: relative; pointer-events: unset;"
           >
             <div
               class="mc-c-hKINpq"
@@ -160,7 +160,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                 class="mc-c-fHQyyx mc-c-fHQyyx-llzMLw-level-3"
                 data-node-view-content=""
                 data-placeholder=""
-                style="--selection-padding: calc((1.875rem - 1.375rem) / 2); --bgColor-padding: calc((1.875rem - 1.375rem) / 2); white-space: pre-wrap;"
+                style="white-space: pre-wrap; --selection-padding: calc((1.875rem - 1.375rem) / 2); --bgColor-padding: calc((1.875rem - 1.375rem) / 2);"
               >
                 <div
                   style="white-space: inherit;"
@@ -217,7 +217,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
         >
           <div
             data-node-view-wrapper=""
-            style="position: relative; pointer-events: unset; white-space: normal;"
+            style="white-space: normal; position: relative; pointer-events: unset;"
           >
             <div
               class="mc-c-hKINpq"
@@ -227,7 +227,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                 class="mc-c-fHQyyx mc-c-fHQyyx-dWBeGD-level-4"
                 data-node-view-content=""
                 data-placeholder=""
-                style="--selection-padding: calc((1.875rem - 1.25rem) / 2); --bgColor-padding: calc((1.875rem - 1.25rem) / 2); white-space: pre-wrap;"
+                style="white-space: pre-wrap; --selection-padding: calc((1.875rem - 1.25rem) / 2); --bgColor-padding: calc((1.875rem - 1.25rem) / 2);"
               >
                 <div
                   style="white-space: inherit;"
@@ -284,7 +284,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
         >
           <div
             data-node-view-wrapper=""
-            style="position: relative; pointer-events: unset; white-space: normal;"
+            style="white-space: normal; position: relative; pointer-events: unset;"
           >
             <div
               class="mc-c-hKINpq"
@@ -294,7 +294,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                 class="mc-c-fHQyyx mc-c-fHQyyx-hCSGfy-level-5"
                 data-node-view-content=""
                 data-placeholder=""
-                style="--selection-padding: calc((1.5rem - 1rem) / 2); --bgColor-padding: calc((1.5rem - 1rem) / 2); white-space: pre-wrap;"
+                style="white-space: pre-wrap; --selection-padding: calc((1.5rem - 1rem) / 2); --bgColor-padding: calc((1.5rem - 1rem) / 2);"
               >
                 <div
                   style="white-space: inherit;"

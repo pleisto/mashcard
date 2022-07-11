@@ -5,7 +5,7 @@ exports[`CodeBlockView matches snapshot correctly 1`] = `
   <div
     class="mc-c-iuTWec mc-c-gzEzdA"
     data-node-view-wrapper=""
-    style="pointer-events: unset; white-space: normal;"
+    style="white-space: normal; pointer-events: unset;"
   >
     <div
       class="mc-c-hFlqDe"

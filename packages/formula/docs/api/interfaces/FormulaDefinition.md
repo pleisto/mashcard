@@ -16,9 +16,9 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:184](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L184)
+[packages/formula/src/type/index.ts:189](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L189)
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -26,9 +26,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:185](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L185)
+[packages/formula/src/type/index.ts:190](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L190)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -36,4 +36,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:186](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L186)
+[packages/formula/src/type/index.ts:191](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L191)

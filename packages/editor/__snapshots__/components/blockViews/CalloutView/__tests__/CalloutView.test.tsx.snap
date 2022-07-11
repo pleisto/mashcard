@@ -4,7 +4,7 @@ exports[`CalloutView renders CalloutView with emoji icon correctly 1`] = `
 <div>
   <div
     data-node-view-wrapper=""
-    style="pointer-events: unset; white-space: normal;"
+    style="white-space: normal; pointer-events: unset;"
   >
     <div
       class="mc-c-PhqtK"

@@ -4,6 +4,8 @@
 
 ### Properties
 
+- [attrsCompleteTestCases](TestCaseInput.md#attrscompletetestcases)
+- [basicTestCases](TestCaseInput.md#basictestcases)
 - [completeTestCases](TestCaseInput.md#completetestcases)
 - [dependencyTestCases](TestCaseInput.md#dependencytestcases)
 - [errorTestCases](TestCaseInput.md#errortestcases)
@@ -14,70 +16,90 @@
 
 ## Properties
 
-### <a id="completetestcases" name="completetestcases"></a> completeTestCases
+### <a id="attrscompletetestcases" name="attrscompletetestcases"></a> attrsCompleteTestCases
 
-• **completeTestCases**: `RequireField`<`CompleteTestCaseType`, ``"groupOptions"`` \| ``"jestTitle"``\>[]
+• **attrsCompleteTestCases**: `RequireField`<`AttrsCompleteTestCaseType`, `"groupOptions"` \| `"jestTitle"`\>[]
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:246](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L246)
+[packages/formula/src/tests/testType.ts:262](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L262)
 
-___
+---
+
+### <a id="basictestcases" name="basictestcases"></a> basicTestCases
+
+• **basicTestCases**: `RequireField`<`BasicTestCaseType`, `"groupOptions"` \| `"jestTitle"`\>[]
+
+#### Defined in
+
+[packages/formula/src/tests/testType.ts:261](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L261)
+
+---
+
+### <a id="completetestcases" name="completetestcases"></a> completeTestCases
+
+• **completeTestCases**: `RequireField`<`CompleteTestCaseType`, `"groupOptions"` \| `"jestTitle"`\>[]
+
+#### Defined in
+
+[packages/formula/src/tests/testType.ts:257](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L257)
+
+---
 
 ### <a id="dependencytestcases" name="dependencytestcases"></a> dependencyTestCases
 
-• **dependencyTestCases**: `RequireField`<`AnyDependencyTestCaseType`, ``"groupOptions"`` \| ``"jestTitle"``\>[]
+• **dependencyTestCases**: `RequireField`<`AnyDependencyTestCaseType`, `"groupOptions"` \| `"jestTitle"`\>[]
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:249](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L249)
+[packages/formula/src/tests/testType.ts:260](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L260)
 
-___
+---
 
 ### <a id="errortestcases" name="errortestcases"></a> errorTestCases
 
-• **errorTestCases**: `RequireField`<`ErrorTestCaseType`, ``"groupOptions"`` \| ``"jestTitle"``\>[]
+• **errorTestCases**: `RequireField`<`ErrorTestCaseType`, `"groupOptions"` \| `"jestTitle"`\>[]
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:245](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L245)
+[packages/formula/src/tests/testType.ts:256](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L256)
 
-___
+---
 
 ### <a id="eventtestcases" name="eventtestcases"></a> eventTestCases
 
-• **eventTestCases**: `RequireField`<[`EventTestCaseType`](EventTestCaseType.md), ``"groupOptions"`` \| ``"jestTitle"``\>[]
+• **eventTestCases**: `RequireField`<`EventTestCaseType`, `"groupOptions"` \| `"jestTitle"`\>[]
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:248](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L248)
+[packages/formula/src/tests/testType.ts:259](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L259)
 
-___
+---
 
 ### <a id="formattestcases" name="formattestcases"></a> formatTestCases
 
-• **formatTestCases**: `RequireField`<`FormatTestCaseType`, ``"groupOptions"`` \| ``"jestTitle"``\>[]
+• **formatTestCases**: `RequireField`<`FormatTestCaseType`, `"groupOptions"` \| `"jestTitle"`\>[]
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:247](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L247)
+[packages/formula/src/tests/testType.ts:258](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L258)
 
-___
+---
 
 ### <a id="options" name="options"></a> options
 
-• **options**: `RequireField`<[`MakeContextOptions`](MakeContextOptions.md), ``"initializeOptions"`` \| ``"pages"``\>
+• **options**: `RequireField`<[`MakeContextOptions`](MakeContextOptions.md), `"initializeOptions"` \| `"pages"`\>
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:243](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L243)
+[packages/formula/src/tests/testType.ts:254](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L254)
 
-___
+---
 
 ### <a id="successtestcases" name="successtestcases"></a> successTestCases
 
-• **successTestCases**: `RequireField`<`SuccessTestCaseType`, ``"groupOptions"`` \| ``"jestTitle"``\>[]
+• **successTestCases**: `RequireField`<`SuccessTestCaseType`, `"groupOptions"` \| `"jestTitle"`\>[]
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:244](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L244)
+[packages/formula/src/tests/testType.ts:255](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L255)

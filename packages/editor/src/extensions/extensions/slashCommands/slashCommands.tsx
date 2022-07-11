@@ -12,8 +12,8 @@ import { findParagraphWrapper } from '../placeholder/findWrapper'
 
 export const TRIGGER_CHAR = '/'
 const ALLOW_SPACES = false
-const PREFIX_SPACE = true
 const START_OF_LINE = true
+const ALLOWED_PREFIXES = [' ']
 
 export interface SlashCommandsOptions {}
 export interface SlashCommandsAttributes {}
@@ -52,7 +52,7 @@ export const SlashCommands = createExtension<SlashCommandsOptions, SlashCommands
         char: TRIGGER_CHAR,
         startOfLine: START_OF_LINE,
         allowSpaces: ALLOW_SPACES,
-        prefixSpace: PREFIX_SPACE,
+        allowedPrefixes: ALLOWED_PREFIXES,
         allow: ({ editor }) => editor.isEditable && this.storage.triggered,
         command: ({ editor, range, props }) => {
           props.command({ editor, range })
@@ -98,7 +98,7 @@ export const SlashCommands = createExtension<SlashCommandsOptions, SlashCommands
                 editor: props.editor as Editor
               })
 
-              popup = createPopup(props.clientRect!, reactRenderer.element as HTMLElement, 'bottom-start')
+              popup = createPopup(() => props.clientRect!()!, reactRenderer.element as HTMLElement, 'bottom-start')
             },
             onUpdate: props => {
               if (!this.editor.isEditable) return
@@ -106,7 +106,7 @@ export const SlashCommands = createExtension<SlashCommandsOptions, SlashCommands
               reactRenderer?.updateProps(props)
 
               popup?.setProps({
-                getReferenceClientRect: props.clientRect
+                getReferenceClientRect: () => props.clientRect!()!
               })
             },
             onKeyDown: ({ event }) => {

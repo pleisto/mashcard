@@ -14,7 +14,7 @@ exports[`Callout renders Callout correctly 1`] = `
       >
         <div
           data-node-view-wrapper=""
-          style="pointer-events: unset; white-space: normal;"
+          style="white-space: normal; pointer-events: unset;"
         >
           <div
             class="mc-c-PhqtK"

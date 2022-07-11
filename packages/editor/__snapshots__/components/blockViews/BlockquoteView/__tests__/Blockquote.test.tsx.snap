@@ -4,7 +4,7 @@ exports[`BlockquoteView renders blockquote correctly 1`] = `
 <div>
   <div
     data-node-view-wrapper=""
-    style="pointer-events: unset; white-space: normal;"
+    style="white-space: normal; pointer-events: unset;"
   >
     <blockquote
       as="blockquote"

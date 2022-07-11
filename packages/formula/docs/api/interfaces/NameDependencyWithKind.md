@@ -24,19 +24,19 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:597](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L597)
+[packages/formula/src/type/index.ts:620](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L620)
 
-___
+---
 
 ### <a id="kind" name="kind"></a> kind
 
-• `Readonly` **kind**: ``"Block"`` \| ``"Spreadsheet"`` \| ``"Variable"``
+• `Readonly` **kind**: `"Block"` \| `"Spreadsheet"` \| `"Variable"`
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:598](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L598)
+[packages/formula/src/type/index.ts:621](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L621)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -48,9 +48,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:593](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L593)
+[packages/formula/src/type/index.ts:616](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L616)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -62,9 +62,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:592](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L592)
+[packages/formula/src/type/index.ts:615](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L615)
 
-___
+---
 
 ### <a id="rendertokens" name="rendertokens"></a> renderTokens
 
@@ -76,10 +76,10 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name               | Type      |
+| :----------------- | :-------- |
 | `namespaceIsExist` | `boolean` |
-| `namespaceId` | `string` |
+| `namespaceId`      | `string`  |
 
 ##### Returns
 
@@ -87,4 +87,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:599](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L599)
+[packages/formula/src/type/index.ts:622](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L622)

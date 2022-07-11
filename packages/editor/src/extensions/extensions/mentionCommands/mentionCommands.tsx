@@ -52,7 +52,7 @@ export const MentionCommands = createExtension<MentionCommandsOptions, MentionCo
                 editor: props.editor as ReactEditor
               })
 
-              popup = createPopup(props.clientRect!, reactRenderer.element as HTMLElement, 'bottom-start')
+              popup = createPopup(() => props.clientRect!()!, reactRenderer.element as HTMLElement, 'bottom-start')
             },
             onUpdate: props => {
               if (!this.editor.isEditable) return
@@ -64,7 +64,7 @@ export const MentionCommands = createExtension<MentionCommandsOptions, MentionCo
               })
 
               popup?.setProps({
-                getReferenceClientRect: props.clientRect
+                getReferenceClientRect: () => props.clientRect!()!
               })
             },
             onKeyDown: ({ event }) => {

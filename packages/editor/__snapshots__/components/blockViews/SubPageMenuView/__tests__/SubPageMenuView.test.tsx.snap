@@ -4,7 +4,7 @@ exports[`SubPageMenuView matches correct snapshot 1`] = `
 <div>
   <div
     data-node-view-wrapper=""
-    style="pointer-events: none; white-space: normal;"
+    style="white-space: normal; pointer-events: none;"
   >
     <div
       class="mc-c-gpEbDT"

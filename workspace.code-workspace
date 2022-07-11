@@ -59,10 +59,6 @@
     {
       "name": "tools/e2e-testing",
       "path": "tools/e2e-testing"
-    },
-    {
-      "name": "tools/schematics",
-      "path": "tools/schematics"
     }
   ],
   "settings": {
@@ -137,8 +133,7 @@
       "plugins/dotcom",
       "plugins/github_auth",
       "plugins/google_auth",
-      "tools/e2e-testing",
-      "tools/schematics"
+      "tools/e2e-testing"
     ],
     "pgsql.debugServerPort": 13000,
     "ruby.useBundler": false,

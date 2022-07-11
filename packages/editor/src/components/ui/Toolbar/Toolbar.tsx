@@ -1,6 +1,5 @@
 import { FC, Key, ReactElement, ReactNode, useMemo } from 'react'
-import { CSS } from '@stitches/react'
-import { MenuProps, PopoverProps, styled, theme, Tooltip } from '@mashcard/design-system'
+import { MenuProps, PopoverProps, styled, theme, Tooltip, CSS } from '@mashcard/design-system'
 import { ToolbarMenuItem } from './MenuItem'
 import { ToolbarMenuSubMenuItem } from './MenuSubMenuItem'
 import { useEditorI18n } from '../../../hooks'

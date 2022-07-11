@@ -3,8 +3,8 @@
 ## Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 ## Table of contents
 
@@ -26,9 +26,9 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:657](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L657)
+[packages/formula/src/type/index.ts:679](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L679)
 
-___
+---
 
 ### <a id="key" name="key"></a> key
 
@@ -36,9 +36,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:653](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L653)
+[packages/formula/src/type/index.ts:675](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L675)
 
-___
+---
 
 ### <a id="level" name="level"></a> level
 
@@ -46,9 +46,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:654](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L654)
+[packages/formula/src/type/index.ts:676](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L676)
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -56,9 +56,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:659](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L659)
+[packages/formula/src/type/index.ts:681](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L681)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -66,19 +66,19 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:658](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L658)
+[packages/formula/src/type/index.ts:680](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L680)
 
-___
+---
 
 ### <a id="scope" name="scope"></a> scope
 
-• `Readonly` **scope**: ``null`` \| [`EventScope`](EventScope.md)
+• `Readonly` **scope**: `null` \| [`EventScope`](EventScope.md)
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:656](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L656)
+[packages/formula/src/type/index.ts:678](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L678)
 
-___
+---
 
 ### <a id="username" name="username"></a> username
 
@@ -86,4 +86,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:655](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L655)
+[packages/formula/src/type/index.ts:677](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L677)
