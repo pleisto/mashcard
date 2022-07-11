@@ -42,7 +42,7 @@ export const spreadsheetStyles: CSS = {
     },
     '.spreadsheet-action': {
       position: 'absolute',
-      top: 42,
+      top: theme.lineHeights.body,
       zIndex: 100
     },
     'table.spreadsheet-row-actions': {
