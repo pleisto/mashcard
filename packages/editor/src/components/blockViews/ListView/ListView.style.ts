@@ -1,4 +1,5 @@
 import { css, CSS, theme } from '@mashcard/design-system'
+import checkedIcon from '@mashcard/design-icons/assets/basic/check.svg'
 
 export const listLevelStyles = {
   'ul[data-node-view-content=""]': {
@@ -101,14 +102,30 @@ export const taskListStyles = css({
       flexDirection: 'row',
 
       label: {
-        lineHeight: '1.75rem',
+        position: 'relative',
         marginRight: '.5rem',
+        marginTop: '0.125rem',
+        height: '1.125rem',
+        width: '1.125rem',
+        borderRadius: '100%',
+        outline: '2px solid',
+        outlineOffset: -2,
+        outlineColor: theme.colors.overlaySecondary,
+        cursor: 'pointer',
 
         'input[type="checkbox"]': {
-          height: '.875rem',
-          width: '.875rem'
+          opacity: 0,
+          cursor: 'pointer',
         }
+      },
+
+      p: {
+        lineHeight: '1.5rem'
       }
+    },
+
+    'li + li': {
+      marginTop: 6
     },
 
     'li[data-checked="false"]': {
@@ -116,7 +133,13 @@ export const taskListStyles = css({
     },
 
     'li[data-checked="true"]': {
-      color: theme.colors.typeDisabled
+      color: theme.colors.typeDisabled,
+
+      label: {
+        outline: 'unset',
+        background: `${theme.colors.primaryDefault} url(${checkedIcon}) no-repeat center/16px 16px`
+      }
     }
   }
 })
+ 
