@@ -5,6 +5,7 @@ import { Cell } from '../controls'
 import { OperatorName, ParseResult } from '../grammar'
 import {
   CodeFragment,
+  CodeFragmentCodes,
   Completion,
   ExpressionType,
   FormulaDefinition,
@@ -95,6 +96,7 @@ type FeatureName =
   | 'spreadsheetComplete'
   | 'functionComplete'
   | 'blockComplete'
+  | 'attrsComplete'
   | 'blockEvent'
   | 'variableEvent'
   | 'spreadsheetEvent'
@@ -124,8 +126,7 @@ export interface BaseTestCase<T extends object> {
   todoMessage?: string
   jestTitle?: string
 }
-export interface SuccessTestCaseType
-  extends RequireField<BaseTestCase<{ key: keyof VariableParseResult }>, 'definition'> {
+interface SuccessTestCaseType extends RequireField<BaseTestCase<{ key: keyof VariableParseResult }>, 'definition'> {
   result: any
 }
 
@@ -171,7 +172,7 @@ interface TriggerEvent {
 
 export type ExtendedCtx = MakeContextResult & { meta: VariableMetadata }
 
-export interface EventTestCaseType extends RequireField<BaseTestCase<{}>, 'definition'> {
+interface EventTestCaseType extends RequireField<BaseTestCase<{}>, 'definition'> {
   resultBefore: any
   resultAfter?: any
   resultAfterAsync?: true
@@ -181,7 +182,8 @@ export interface EventTestCaseType extends RequireField<BaseTestCase<{}>, 'defin
   events: DistributeEvents[]
 }
 
-export type BasicTestCaseType = BaseTestCase<{}> & { definition: string }
+type BasicTestCaseType = RequireField<BaseTestCase<{}>, 'definition'>
+type AttrsCompleteTestCaseType = RequireField<BaseTestCase<{ code: CodeFragmentCodes }>, 'definition' | 'expected'>
 
 type DependencyTypes = 'Variable' | 'Block'
 
@@ -245,6 +247,7 @@ export interface TestCaseType {
   eventTestCases?: EventTestCaseType[]
   dependencyTestCases?: AnyDependencyTestCaseType[]
   basicTestCases?: BasicTestCaseType[]
+  attrsCompleteTestCases?: AttrsCompleteTestCaseType[]
 }
 
 export interface TestCaseInput {
@@ -256,6 +259,7 @@ export interface TestCaseInput {
   eventTestCases: Array<RequireField<EventTestCaseType, 'groupOptions' | 'jestTitle'>>
   dependencyTestCases: Array<RequireField<AnyDependencyTestCaseType, 'groupOptions' | 'jestTitle'>>
   basicTestCases: Array<RequireField<BasicTestCaseType, 'groupOptions' | 'jestTitle'>>
+  attrsCompleteTestCases: Array<RequireField<AttrsCompleteTestCaseType, 'groupOptions' | 'jestTitle'>>
 }
 
 type AllowEventsType = {

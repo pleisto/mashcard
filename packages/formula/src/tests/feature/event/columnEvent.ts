@@ -1,7 +1,7 @@
 import { Column } from '../../../controls'
 import { generateUUIDs } from '../../testHelper'
 import { mockColumn } from '../../testMock'
-import { EventTestCaseType, SpreadsheetInput, TestCaseInterface } from '../../testType'
+import { SpreadsheetInput, TestCaseInterface } from '../../testType'
 
 const [namespaceId, spreadsheetId, column1Id, column2Id] = generateUUIDs()
 
@@ -71,7 +71,7 @@ export const ColumnEventTestCase: TestCaseInterface = {
           label: 'same',
           resultBefore: mockColumn('second', column2Id)
         }
-      ].map<EventTestCaseType>(a => ({
+      ].map<NonNullable<TestCaseInterface['testCases']['eventTestCases']>[0]>(a => ({
         ...a,
         namespaceId,
         events: [

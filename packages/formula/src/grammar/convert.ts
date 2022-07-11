@@ -5,7 +5,8 @@ import {
   VariableInterface,
   VariableKey,
   CodeFragmentAttrs,
-  CodeFragment
+  CodeFragment,
+  AnyFunctionClauseWithKeyAndExample
 } from '../type'
 import { BlockType, ColumnType, RowType, SpreadsheetType } from '../controls'
 import { encodeString, maybeEncodeString, parseString } from './util'
@@ -57,6 +58,13 @@ export const row2attrs = (row: RowType): CodeFragmentAttrs => ({
   id: row.rowId,
   name: row.display(),
   findKey: row.findKey
+})
+
+export const function2attrs = (clause: AnyFunctionClauseWithKeyAndExample): CodeFragmentAttrs => ({
+  kind: 'Function',
+  id: clause.key,
+  name: clause.name,
+  group: clause.group
 })
 
 export const codeFragment2string = (codeFragment: CodeFragment): string => {

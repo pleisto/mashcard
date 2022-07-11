@@ -1,7 +1,7 @@
 import { parse } from '../grammar/core'
 import { makeContext, splitDefinition$ } from '../tests/testHelper'
 import { buildTestCases, trackTodo } from '../tests'
-import { getLastCodeFragment, applyCompletion } from '../grammar'
+import { getLastCodeFragment, applyCompletion, attrs2completion } from '../grammar'
 import { CompleteNames } from '../tests/feature/complete'
 
 const [testCases] = buildTestCases(CompleteNames)
@@ -12,7 +12,39 @@ describe('completer', () => {
     ctx = await makeContext(testCases.options)
   })
 
-  trackTodo(it, testCases.completeTestCases)
+  trackTodo(it, [...testCases.completeTestCases, ...testCases.attrsCompleteTestCases])
+
+  it.each(testCases.attrsCompleteTestCases)('$jestTitle', async args => {
+    const {
+      variableParseResult: { codeFragments },
+      meta: { namespaceId }
+    } = ctx.parseDirectly(args)
+
+    for (const { code, match, matchType } of args.expected) {
+      const codeFragment = codeFragments.find(c => c.code === code)
+      const completion = codeFragment?.attrs
+        ? attrs2completion(ctx.formulaContext, codeFragment.attrs, namespaceId)
+        : undefined
+
+      const matchData = [code, [codeFragment?.attrs, completion]]
+
+      switch (matchType) {
+        case undefined:
+        case 'toStrictEqual':
+          // eslint-disable-next-line jest/no-conditional-expect
+          expect(matchData).toStrictEqual([code, match])
+          break
+        case 'toMatchObject':
+          // eslint-disable-next-line jest/no-conditional-expect
+          expect(matchData).toMatchObject([code, match])
+          break
+        case 'toMatchSnapshot':
+          // eslint-disable-next-line jest/no-conditional-expect
+          expect(matchData).toMatchSnapshot()
+          break
+      }
+    }
+  })
 
   it.each(testCases.completeTestCases)('$jestTitle', async args => {
     const [definitionAfterSplit, positionAfterSplit] = splitDefinition$(args.definition$)
@@ -30,13 +62,6 @@ describe('completer', () => {
       codeFragments,
       position
     )
-
-    // console.log('completionTest', completions.slice(0, 4), {
-    //   firstCompletion,
-    //   replacements: firstCompletion.replacements,
-    //   args,
-    //   firstNonSpaceCodeFragment
-    // })
 
     expect({
       firstCompletion,

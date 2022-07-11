@@ -36,7 +36,7 @@ export const blockOperator: OperatorType = {
             matchType: 'toMatchObject',
             match: [
               { code: 'Equal' },
-              { code: 'Block', type: 'Block', display: 'Block', attrs: { findKey: {} }, namespaceId: pageId }
+              { code: 'Block', type: 'Block', display: 'Block', attrs: { kind: 'Block' }, namespaceId: pageId }
             ]
           },
           { key: 'nameDependencies', match: [] },
@@ -54,7 +54,7 @@ export const blockOperator: OperatorType = {
             match: [
               { code: 'Equal' },
               { code: 'Space' },
-              { code: 'Block', type: 'Block', display: 'Block', attrs: { findKey: {} }, namespaceId: pageId },
+              { code: 'Block', type: 'Block', display: 'Block', attrs: { kind: 'Block' }, namespaceId: pageId },
               { code: 'Space' }
             ]
           },
@@ -76,7 +76,7 @@ export const blockOperator: OperatorType = {
                 code: 'Block',
                 type: 'Block',
                 display: '"1 Block With Space"',
-                attrs: { findKey: {} },
+                attrs: { kind: 'Block' },
                 namespaceId: page2Id
               },
               { code: 'Space' }
@@ -96,7 +96,7 @@ export const blockOperator: OperatorType = {
             matchType: 'toMatchObject',
             match: [
               { code: 'Equal' },
-              { code: 'Block', type: 'Block', display: '#CurrentBlock', attrs: { findKey: {} }, namespaceId: pageId }
+              { code: 'Block', type: 'Block', display: '#CurrentBlock', attrs: { kind: 'Block' }, namespaceId: pageId }
             ]
           },
           { key: 'nameDependencies', match: [] },
@@ -114,7 +114,7 @@ export const blockOperator: OperatorType = {
             match: [
               { code: 'Equal' },
               { code: 'Space' },
-              { code: 'Block', type: 'Block', display: 'Block', attrs: { findKey: {} }, namespaceId: pageId },
+              { code: 'Block', type: 'Block', display: 'Block', attrs: { kind: 'Block' }, namespaceId: pageId },
               { code: 'Space' }
             ]
           },
@@ -136,7 +136,7 @@ export const blockOperator: OperatorType = {
                 code: 'Block',
                 type: 'Block',
                 display: '#CurrentBlock',
-                attrs: { findKey: {} },
+                attrs: { kind: 'Block' },
                 namespaceId: page2Id
               }
             ]
@@ -160,7 +160,7 @@ export const blockOperator: OperatorType = {
                 code: 'Block',
                 type: 'Block',
                 display: '"1 Block With Space"',
-                attrs: { findKey: {} },
+                attrs: { kind: 'Block' },
                 namespaceId: page2Id
               },
               { code: 'Space' }

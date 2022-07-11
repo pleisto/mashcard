@@ -94,9 +94,16 @@ const reduceTestCaseInput = (testCases: TestCaseInterface[]): TestCaseInput => {
       ],
       basicTestCases: [
         ...prev.basicTestCases,
-        ...(curr.testCases.basicTestCases ?? []).map((s, index) => ({
+        ...(curr.testCases.basicTestCases ?? []).map(s => ({
           ...s,
           ...buildRequiredFields(curr, s, s.definition, '')
+        }))
+      ],
+      attrsCompleteTestCases: [
+        ...prev.attrsCompleteTestCases,
+        ...(curr.testCases.attrsCompleteTestCases ?? []).map((s, index) => ({
+          ...s,
+          ...buildRequiredFields(curr, s, `${index} ${s.definition}`, `${JSON.stringify(s.expected)}`)
         }))
       ],
       errorTestCases: [
@@ -120,7 +127,8 @@ const reduceTestCaseInput = (testCases: TestCaseInterface[]): TestCaseInput => {
       errorTestCases: [],
       eventTestCases: [],
       dependencyTestCases: [],
-      basicTestCases: []
+      basicTestCases: [],
+      attrsCompleteTestCases: []
     }
   )
 }
@@ -162,7 +170,8 @@ export const buildTestCases = (name?: TestCaseName[]): [TestCaseInput] => {
         ...(o.testCases.formatTestCases ?? []),
         ...(o.testCases.eventTestCases ?? []),
         ...(o.testCases.dependencyTestCases ?? []),
-        ...(o.testCases.basicTestCases ?? [])
+        ...(o.testCases.basicTestCases ?? []),
+        ...(o.testCases.attrsCompleteTestCases ?? [])
       ].some(t => t.groupOptions?.map(g => g.name).some(r => name.includes(r)))
   )
   const input = reduceTestCaseInput(interfaces)
@@ -180,7 +189,10 @@ export const buildTestCases = (name?: TestCaseName[]): [TestCaseInput] => {
       ),
       eventTestCases: input.eventTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
       formatTestCases: input.formatTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
-      basicTestCases: input.basicTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r)))
+      basicTestCases: input.basicTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
+      attrsCompleteTestCases: input.attrsCompleteTestCases.filter(v =>
+        v.groupOptions.map(g => g.name).some(r => name.includes(r))
+      )
     }
   ]
 }

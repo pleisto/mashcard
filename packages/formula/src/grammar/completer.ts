@@ -232,11 +232,13 @@ const dotSpreadsheetExpandCompleter: ExpandCompleter = ({ codeFragment, prev2Cod
   if (codeFragment.code !== 'Dot') return []
   if (!prev2CodeFragment) return []
   if (prev2CodeFragment.type !== 'Spreadsheet') return []
+  const attrs = prev2CodeFragment.attrs!
+  if (attrs.kind !== 'Spreadsheet') return []
 
   const spreadsheet = ctx.formulaContext.findSpreadsheet({
-    namespaceId: prev2CodeFragment.attrs!.namespaceId,
+    namespaceId: attrs.namespaceId,
     type: 'id',
-    value: prev2CodeFragment.attrs!.id
+    value: attrs.id
   })
   if (!spreadsheet) return []
   return generateColumnCompletions(ctx, spreadsheet)
@@ -555,13 +557,19 @@ export const function2completion = (functionClause: AnyFunctionClause, weight: n
 
 export const attrs2completion = (
   formulaContext: ContextInterface,
-  { kind, id, namespaceId }: CodeFragmentAttrs,
+  attrs: CodeFragmentAttrs,
   pageId: string
 ): Completion | undefined => {
-  if (kind === 'Variable') {
-    const variable = formulaContext.findVariableById(namespaceId, id)
+  if (attrs.kind === 'Variable') {
+    const variable = formulaContext.findVariableById(attrs.namespaceId, attrs.id)
     if (!variable) return undefined
     return variable2completion(variable, pageId)
+  }
+
+  if (attrs.kind === 'Function') {
+    const functionClause = formulaContext.findFunctionClause(attrs.group, attrs.name)
+    if (!functionClause) return undefined
+    return function2completion(functionClause, 0)
   }
 
   return undefined
