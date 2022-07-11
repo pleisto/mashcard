@@ -15,7 +15,7 @@ import {
 import { buildFunctionKey } from '../functions'
 import { ParserInstance } from './parser'
 import { intersectType, parseString } from './util'
-import { block2codeFragment } from './convert'
+import { block2codeFragment, function2attrs } from './convert'
 import {
   additionOperator,
   arrayOperator,
@@ -345,7 +345,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 
         if (firstArgumentType === 'Spreadsheet') {
           const attrs: CodeFragmentAttrs | undefined = codeFragments[codeFragments.length - 2]?.attrs
-          if (attrs) {
+          if (attrs && attrs.kind === 'Spreadsheet') {
             object = this.ctx.formulaContext.findSpreadsheet(attrs.findKey)
           }
           if (!object) {
@@ -355,7 +355,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 
         if (firstArgumentType === 'Column') {
           const attrs: CodeFragmentAttrs | undefined = codeFragments[codeFragments.length - 2]?.attrs
-          if (attrs) {
+          if (attrs && (attrs.kind === 'LogicColumn' || attrs.kind === 'Column')) {
             object = this.ctx.formulaContext.findColumn(attrs.namespaceId, attrs.findKey)
           }
           if (!object) {
@@ -365,7 +365,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 
         if (firstArgumentType === 'Row') {
           const attrs: CodeFragmentAttrs | undefined = codeFragments[codeFragments.length - 2]?.attrs
-          if (attrs) {
+          if (attrs && (attrs.kind === 'Row' || attrs.kind === 'LogicRow')) {
             object = this.ctx.formulaContext.findRow(attrs.namespaceId, attrs.findKey)
           }
           if (!object) {
@@ -817,6 +817,8 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     const clause = this.ctx.formulaContext.findFunctionClause(group, name)
     const meta = clause ? { args: clause.args, endCode: 'RParen' } : {}
 
+    const functionAttrs = clause ? function2attrs(clause) : undefined
+
     const functionKey = buildFunctionKey(group, name, true)
 
     const nameFragments: CodeFragment[] =
@@ -827,7 +829,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
               errors: [],
               type: 'any',
               display: functionKey,
-              attrs: undefined
+              attrs: functionAttrs
             }
           ]
         : [
@@ -836,14 +838,14 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
               errors: [],
               type: 'any',
               display: `${group}::`,
-              attrs: undefined
+              attrs: functionAttrs
             },
             {
               code: 'Function',
               errors: [],
               type: 'any',
               display: name,
-              attrs: undefined
+              attrs: functionAttrs
             }
           ]
 

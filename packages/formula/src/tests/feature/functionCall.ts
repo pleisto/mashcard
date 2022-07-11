@@ -65,8 +65,8 @@ export const FunctionCallTestCase: TestCaseInterface = {
             matchType: 'toMatchObject',
             match: [
               { code: 'Equal' },
-              { code: 'FunctionGroup', display: 'custom::' },
-              { code: 'Function', display: 'PLUS' },
+              { code: 'FunctionGroup', display: 'custom::', attrs: { kind: 'Function' } },
+              { code: 'Function', display: 'PLUS', attrs: { kind: 'Function' } },
               {
                 code: 'LParen',
                 meta: {
@@ -104,8 +104,8 @@ export const FunctionCallTestCase: TestCaseInterface = {
             matchType: 'toMatchObject',
             match: [
               { code: 'Equal' },
-              { code: 'FunctionGroup', display: 'custom::' },
-              { code: 'Function', display: 'FORTY_TWO' },
+              { code: 'FunctionGroup', display: 'custom::', attrs: { kind: 'Function' } },
+              { code: 'Function', display: 'FORTY_TWO', attrs: { kind: 'Function' } },
               { code: 'LParen', meta: { args: [], endCode: 'RParen' } },
               { code: 'RParen', meta: { args: [], endCode: 'RParen' } }
             ]
@@ -125,8 +125,54 @@ export const FunctionCallTestCase: TestCaseInterface = {
       }
     ],
     errorTestCases: [
-      { definition: '=UNKNOWN ()', errorType: 'deps', errorMessage: 'Function UNKNOWN not found' },
-      { definition: '=ABS(', errorType: 'deps', errorMessage: 'Miss argument' },
+      {
+        definition: '=UNKNOWN ()',
+        errorType: 'deps',
+        errorMessage: 'Function UNKNOWN not found',
+        expected: [
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [
+              { code: 'Equal' },
+              {
+                code: 'Function',
+                display: 'UNKNOWN',
+                attrs: undefined,
+                errors: [{ message: 'Function UNKNOWN not found' }]
+              },
+              { code: 'Space' },
+              { code: 'LParen', meta: {}, errors: [] },
+              { code: 'RParen', meta: {}, errors: [] }
+            ]
+          }
+        ]
+      },
+      {
+        definition: '=ABS(',
+        errorType: 'deps',
+        errorMessage: 'Miss argument',
+        expected: [
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [
+              { code: 'Equal' },
+              {
+                code: 'Function',
+                display: 'ABS',
+                attrs: { kind: 'Function' },
+                errors: [{ message: 'Miss argument' }, { message: 'TODO mismatch token FunctionCall' }]
+              },
+              {
+                code: 'LParen',
+                meta: { args: [{ name: 'number', type: 'number' }], endCode: 'RParen' },
+                errors: [{ message: 'Missing closing parenthesis' }]
+              }
+            ]
+          }
+        ]
+      },
       { definition: '=ABS(1', errorType: 'syntax', errorMessage: 'Missing closing parenthesis' },
       { definition: '=POWER(1,', errorType: 'syntax', errorMessage: 'Missing closing parenthesis' },
       { definition: '=POWER(1,2', errorType: 'syntax', errorMessage: 'Missing closing parenthesis' },

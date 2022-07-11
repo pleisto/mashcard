@@ -227,6 +227,8 @@ export type ComplexCodeFragmentType =
   | 'ThisRow'
   | 'ThisRecord'
 
+export type FunctionCodeFragmentType = 'Function' | 'FunctionGroup'
+
 export const OPERATOR_TYPES = [
   'Plus',
   'Minus',
@@ -251,8 +253,6 @@ export const OPERATOR_TYPES = [
 export type SimpleCodeFragmentType =
   | typeof OPERATOR_TYPES[number]
   | 'FunctionName'
-  | 'Function'
-  | 'FunctionGroup'
   | 'DoubleColon'
   | 'StringLiteral'
   | 'NumberLiteral'
@@ -276,7 +276,11 @@ export type SpecialCodeFragmentType =
   | 'Space'
   | 'literal'
   | 'blank'
-export type CodeFragmentCodes = ComplexCodeFragmentType | SimpleCodeFragmentType | SpecialCodeFragmentType
+export type CodeFragmentCodes =
+  | ComplexCodeFragmentType
+  | SimpleCodeFragmentType
+  | FunctionCodeFragmentType
+  | SpecialCodeFragmentType
 
 interface CompletionReplacement {
   readonly matcher: string
@@ -543,7 +547,7 @@ export const createFunctionClause = <
 
 export type AnyFunctionClauseWithKeyAndExample = RequireField<AnyFunctionClause, 'key'>
 
-export interface BaseCodeFragment {
+interface BaseCodeFragment {
   readonly code: CodeFragmentCodes
   readonly display: string
   readonly replacements?: [string, ...string[]]
@@ -552,16 +556,20 @@ export interface BaseCodeFragment {
   readonly errors: ErrorMessage[]
   readonly meta?: any
 }
-export interface SpecialCodeFragment extends BaseCodeFragment {
+interface SpecialCodeFragment extends BaseCodeFragment {
   readonly code: ComplexCodeFragmentType
   readonly attrs: CodeFragmentAttrs
 }
-export interface OtherCodeFragment extends BaseCodeFragment {
-  readonly code: Exclude<CodeFragmentCodes, ComplexCodeFragmentType>
+interface FunctionCodeFragment extends BaseCodeFragment {
+  readonly code: FunctionCodeFragmentType
+  readonly attrs: CodeFragmentAttrs | undefined
+}
+interface OtherCodeFragment extends BaseCodeFragment {
+  readonly code: SimpleCodeFragmentType | SpecialCodeFragmentType
   readonly attrs: undefined
 }
 
-export interface CodeFragmentAttrs {
+interface ComplexCodeFragmentAttrs {
   readonly kind: ComplexCodeFragmentType
   readonly namespaceId: NamespaceId
   readonly id: uuid
@@ -569,7 +577,16 @@ export interface CodeFragmentAttrs {
   readonly findKey: FindKey
 }
 
-export type CodeFragment = SpecialCodeFragment | OtherCodeFragment
+interface FunctionCodeFragmentAttrs {
+  readonly kind: FunctionCodeFragmentType
+  readonly id: string
+  readonly name: string
+  readonly group: string
+}
+
+export type CodeFragmentAttrs = ComplexCodeFragmentAttrs | FunctionCodeFragmentAttrs
+
+export type CodeFragment = SpecialCodeFragment | FunctionCodeFragment | OtherCodeFragment
 
 export interface CodeFragmentStepInput {
   codeFragments: CodeFragment[]

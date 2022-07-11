@@ -13,7 +13,12 @@ Array [
       "type": "any",
     },
     Object {
-      "attrs": undefined,
+      "attrs": Object {
+        "group": "core",
+        "id": "ABS",
+        "kind": "Function",
+        "name": "ABS",
+      },
       "code": "Function",
       "display": "Abs",
       "errors": Array [],
@@ -81,7 +86,12 @@ Array [
       "type": "any",
     },
     Object {
-      "attrs": undefined,
+      "attrs": Object {
+        "group": "core",
+        "id": "ABS",
+        "kind": "Function",
+        "name": "ABS",
+      },
       "code": "Function",
       "display": "abs",
       "errors": Array [],
@@ -149,7 +159,12 @@ Array [
       "type": "any",
     },
     Object {
-      "attrs": undefined,
+      "attrs": Object {
+        "group": "core",
+        "id": "ABS",
+        "kind": "Function",
+        "name": "ABS",
+      },
       "code": "Function",
       "display": "ABS",
       "errors": Array [],
@@ -217,14 +232,24 @@ Array [
       "type": "any",
     },
     Object {
-      "attrs": undefined,
+      "attrs": Object {
+        "group": "core",
+        "id": "ABS",
+        "kind": "Function",
+        "name": "ABS",
+      },
       "code": "FunctionGroup",
       "display": "core::",
       "errors": Array [],
       "type": "any",
     },
     Object {
-      "attrs": undefined,
+      "attrs": Object {
+        "group": "core",
+        "id": "ABS",
+        "kind": "Function",
+        "name": "ABS",
+      },
       "code": "Function",
       "display": "ABS",
       "errors": Array [],

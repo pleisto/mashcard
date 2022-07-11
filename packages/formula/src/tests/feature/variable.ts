@@ -39,7 +39,7 @@ export const VariableTestCase: TestCaseInterface = {
             matchType: 'toMatchObject',
             match: [
               { code: 'Equal' },
-              { code: 'Variable', display: 'num1', namespaceId: pageId, type: 'number', attrs: { findKey: {} } }
+              { code: 'Variable', display: 'num1', namespaceId: pageId, type: 'number', attrs: { kind: 'Variable' } }
             ]
           },
           { key: 'blockDependencies', match: [] },
@@ -67,12 +67,12 @@ export const VariableTestCase: TestCaseInterface = {
                 code: 'Block',
                 display: 'Variable',
                 type: 'Block',
-                attrs: { findKey: {} },
+                attrs: { kind: 'Block' },
                 replacements: blockReplacements,
                 namespaceId: pageId
               },
               { code: 'Dot' },
-              { code: 'Variable', display: 'num1', type: 'number', attrs: { findKey: {} }, namespaceId: pageId },
+              { code: 'Variable', display: 'num1', type: 'number', attrs: { kind: 'Variable' }, namespaceId: pageId },
               { code: 'Space' }
             ]
           },
@@ -96,12 +96,12 @@ export const VariableTestCase: TestCaseInterface = {
                 code: 'Block',
                 display: 'Variable',
                 type: 'Block',
-                attrs: { findKey: {} },
+                attrs: { kind: 'Block' },
                 replacements: blockReplacements,
                 namespaceId: pageId
               },
               { code: 'Dot' },
-              { code: 'Variable', display: 'num1', type: 'number', attrs: { findKey: {} }, namespaceId: pageId },
+              { code: 'Variable', display: 'num1', type: 'number', attrs: { kind: 'Variable' }, namespaceId: pageId },
               { code: 'Space' }
             ]
           },
@@ -123,12 +123,12 @@ export const VariableTestCase: TestCaseInterface = {
                 code: 'Block',
                 display: '#CurrentBlock',
                 type: 'Block',
-                attrs: { findKey: {} },
+                attrs: { kind: 'Block' },
                 replacements: blockReplacements,
                 namespaceId: pageId
               },
               { code: 'Dot' },
-              { code: 'Variable', display: 'num1', type: 'number', attrs: { findKey: {} }, namespaceId: pageId }
+              { code: 'Variable', display: 'num1', type: 'number', attrs: { kind: 'Variable' }, namespaceId: pageId }
             ]
           },
           { key: 'blockDependencies', match: [pageId] },
@@ -207,7 +207,7 @@ export const VariableTestCase: TestCaseInterface = {
                 code: 'Block',
                 display: 'Variable',
                 type: 'Block',
-                attrs: { findKey: {} },
+                attrs: { kind: 'Block' },
                 replacements: blockReplacements,
                 namespaceId: pageId
               },
@@ -239,7 +239,7 @@ export const VariableTestCase: TestCaseInterface = {
                 code: 'Block',
                 display: '#CurrentBlock',
                 type: 'Block',
-                attrs: { findKey: {} },
+                attrs: { kind: 'Block' },
                 replacements: [`#${DEFAULT_FIRST_NAMESPACEID}`, 'Default', '"Default"'],
                 namespaceId: DEFAULT_FIRST_NAMESPACEID
               },
