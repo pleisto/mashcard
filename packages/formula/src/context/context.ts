@@ -389,7 +389,6 @@ export class FormulaContext implements ContextInterface {
     if (this.spreadsheets[spreadsheet.spreadsheetId]) return
 
     this.spreadsheets[spreadsheet.spreadsheetId] = spreadsheet
-    // this.setBlock(spreadsheet.namespaceId, '')
     await this.setName(spreadsheet.nameDependency())
     const result = MashcardEventBus.dispatch(
       SpreadsheetReloadViaId({

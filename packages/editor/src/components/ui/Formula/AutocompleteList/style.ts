@@ -106,6 +106,13 @@ export const FormulaAutocomplete = styled('div', {
     fontWeight: 600
   },
 
+  '.autocomplete-preview-namespace': {
+    fontSize: 18,
+    color: theme.colors.typePrimary,
+    lineHeight: 1.5,
+    fontWeight: 600
+  },
+
   '.autocomplete-preview-tag': {
     ...tagStyle
   },

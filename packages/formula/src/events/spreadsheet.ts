@@ -40,7 +40,7 @@ export const dispatchFormulaSpreadsheetNameChange = async ({
     SpreadsheetUpdateNameViaId({
       username,
       id: spreadsheetId,
-      meta: title,
+      meta: title || 'UntitledSpreadsheet',
       scope: null,
       key: spreadsheetId,
       namespaceId

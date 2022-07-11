@@ -66,6 +66,14 @@ export const BlockEventTestCase: TestCaseInterface = {
         events: [['blockChangeName', { id: page0Id, name: 'BlockEventPage222' }]]
       },
       {
+        definition: '=BlockEventPage1',
+        resultBefore: mockBlock('BlockEventPage1', page0Id),
+        resultAfter: mockBlock('Untitled', page0Id),
+        label: 'empty name',
+        variableParseResultAfter: { definition: '=Untitled' },
+        events: [['blockChangeName', { id: page0Id, name: '' }]]
+      },
+      {
         definition: '=BlockEventPage1.num0',
         resultBefore: 0,
         resultAfter: 0,

@@ -30,7 +30,7 @@ export class BlockClass implements BlockType {
   constructor(_formulaContext: ContextInterface, { id, name }: BlockInitializer) {
     this._formulaContext = _formulaContext
     this.id = id
-    this._name = name || 'Untitled'
+    this._name = name
     this.name = (pageId: NamespaceId) => {
       return this._name
     }
@@ -38,7 +38,7 @@ export class BlockClass implements BlockType {
     const blockNameSubscription = MashcardEventBus.subscribe(
       FormulaBlockNameChangedTrigger,
       async e => {
-        this._name = e.payload.meta || 'Untitled'
+        this._name = e.payload.meta
         await this._formulaContext.setName(this.nameDependency())
       },
       { subscribeId: `Block#${this.id}`, eventId: `${this._formulaContext.domain}#${this.id}` }

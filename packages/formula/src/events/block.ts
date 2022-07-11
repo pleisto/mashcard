@@ -48,6 +48,8 @@ export const dispatchFormulaBlockNameChange = async ({
   name: string
   username: string
 }): Promise<void> => {
+  const newName = name || 'Untitled'
+
   const result1 = MashcardEventBus.dispatch(
     FormulaBlockNameModifiedWithUsername({
       id,
@@ -55,13 +57,13 @@ export const dispatchFormulaBlockNameChange = async ({
       key: id,
       scope: null,
       username,
-      meta: name
+      meta: newName
     })
   )
   await Promise.all(result1)
 
   const result2 = MashcardEventBus.dispatch(
-    FormulaBlockNameChangedTrigger({ id, namespaceId: id, key: id, scope: null, username, meta: name })
+    FormulaBlockNameChangedTrigger({ id, namespaceId: id, key: id, scope: null, username, meta: newName })
   )
   await Promise.all(result2)
 }
