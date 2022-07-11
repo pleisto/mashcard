@@ -3,7 +3,7 @@
 exports[`CodeBlockView matches snapshot correctly 1`] = `
 <div>
   <div
-    class="mc-c-eUWdaU mc-c-gzEzdA"
+    class="mc-c-iuTWec mc-c-gzEzdA"
     data-node-view-wrapper=""
     style="pointer-events: unset; white-space: normal;"
   >
