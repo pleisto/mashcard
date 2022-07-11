@@ -13,9 +13,17 @@ export const VariablePreview: React.FC<VariablePreviewProps> = ({ variable, root
     ? codeFragments2content(variable.t.variableParseResult.codeFragments, true)[0]
     : definition2content(variable.t.variableParseResult.definition, true)[0]
 
+  const namespace =
+    variable.t.meta.namespaceId === rootId ? (
+      <></>
+    ) : (
+      <div className="autocomplete-preview-namespace">A formula on {variable.namespaceName(rootId)}.</div>
+    )
+
   return (
     <div className="formula-autocomplete-preview-variable">
       <div className="autocomplete-preview-name">{variable.t.meta.name}</div>
+      {namespace}
       <div className="autocomplete-preview-section">
         <div className="autocomplete-preview-section-head">Definition</div>
         <div className="autocomplete-preview-definition">
