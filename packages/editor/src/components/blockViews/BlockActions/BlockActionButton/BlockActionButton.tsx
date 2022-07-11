@@ -8,6 +8,7 @@ import { TEST_ID_ENUM } from '@mashcard/test-helper'
 export interface BlockActionButtonProps extends Omit<BlockActionsMenuProps, 'onClose'> {
   className?: string
   children?: ReactNode
+  setActive?: (active: boolean) => void
 }
 
 const StyledBlockActionButton = styled(Button, {
@@ -31,14 +32,15 @@ const Trigger: FC<{
   onMouseLeave?: MouseEventHandler
   onDragStart?: DragEventHandler
   onDragEnd?: DragEventHandler
-}> = ({ className, onClick, onMouseEnter, onMouseLeave, onDragStart, onDragEnd, ...restProps }) => {
+  active: boolean
+}> = ({ className, onClick, onMouseEnter, onMouseLeave, onDragStart, onDragEnd, active, ...restProps }) => {
   const { node } = useBlockContext()
   const isEmpty = !node?.isLeaf && !node?.childCount
   const [hovered, setHovered] = useState(false)
   const iconProps = useMemo<IconProps>(() => {
-    if (hovered) return {}
+    if (hovered || active) return {}
     return { fill: [theme.colors.typeSecondary.value, theme.colors.grey3.value] }
-  }, [hovered])
+  }, [hovered, active])
   return (
     <div
       onMouseLeave={event => {
@@ -55,6 +57,9 @@ const Trigger: FC<{
       draggable={true}
       data-drag-handle
       data-testid={TEST_ID_ENUM.editor.blockAction.button.id}
+      style={{
+        zIndex: 2
+      }}
       {...restProps}>
       <StyledBlockActionButton
         onClick={event => {
@@ -75,12 +80,13 @@ const Trigger: FC<{
   )
 }
 
-export const BlockActionButton: FC<BlockActionButtonProps> = ({ className, children, ...props }) => {
+export const BlockActionButton: FC<BlockActionButtonProps> = ({ className, children, setActive, ...props }) => {
   const { updateDraggingStatus } = useBlockContext()
   const [visible, setVisible] = useState(false)
   const handleVisibleChange = useCallback((visible: boolean) => {
     setVisible(visible)
-  }, [])
+    setActive?.(visible)
+  }, [setActive])
   const handleCloseMenu = useCallback(() => setVisible(false), [])
   const handleDragStart = useCallback(() => {
     setTimeout(() => {
@@ -102,9 +108,9 @@ export const BlockActionButton: FC<BlockActionButtonProps> = ({ className, child
       autoAdjustOverflow={true}
       destroyTooltipOnHide={true}
       trigger="hover"
-      placement="startTop"
+      placement="bottomStart"
       content={<BlockActionsMenu onClose={handleCloseMenu} {...props} />}>
-      <Trigger className={className} onDragStart={handleDragStart} onDragEnd={handleDragEnd} />
+      <Trigger active={visible} className={className} onDragStart={handleDragStart} onDragEnd={handleDragEnd} />
     </Popover>
   )
 }

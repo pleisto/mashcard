@@ -8,6 +8,7 @@ exports[`BlockActionButton matches snapshot correctly 1`] = `
     data-drag-handle="true"
     data-testid="editor-block-action-button"
     draggable="true"
+    style="z-index: 2;"
   >
     <button
       class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
@@ -50,6 +51,7 @@ exports[`BlockActionButton triggers mouse enter/leave event normally 1`] = `
     data-drag-handle="true"
     data-testid="editor-block-action-button"
     draggable="true"
+    style="z-index: 2;"
   >
     <button
       class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
@@ -92,6 +94,7 @@ exports[`BlockActionButton triggers mouse enter/leave event normally 2`] = `
     data-drag-handle="true"
     data-testid="editor-block-action-button"
     draggable="true"
+    style="z-index: 2;"
   >
     <button
       class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
