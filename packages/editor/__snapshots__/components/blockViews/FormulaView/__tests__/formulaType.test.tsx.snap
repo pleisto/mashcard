@@ -72,6 +72,7 @@ exports[`formulaType [Date] basic "=DATE("1926-08-17")" 1`] = `
       <p>
         <mark
           class="mashcard-formula-mark"
+          data-attrs="{\\"kind\\":\\"Function\\",\\"id\\":\\"DATE\\",\\"name\\":\\"DATE\\",\\"group\\":\\"core\\"}"
           data-code="Function"
           data-display="DATE"
           data-type="any"
@@ -130,6 +131,7 @@ exports[`formulaType [Date] basic "=DATE("1926-08-17")" 2`] = `
         </mark>
         <mark
           class="mashcard-formula-mark"
+          data-attrs="{\\"kind\\":\\"Function\\",\\"id\\":\\"DATE\\",\\"name\\":\\"DATE\\",\\"group\\":\\"core\\"}"
           data-code="Function"
           data-display="DATE"
           data-type="any"
@@ -507,6 +509,7 @@ exports[`formulaType [async 1] basic "=SLEEP(123)" 1`] = `
       <p>
         <mark
           class="mashcard-formula-mark"
+          data-attrs="{\\"kind\\":\\"Function\\",\\"id\\":\\"SLEEP\\",\\"name\\":\\"SLEEP\\",\\"group\\":\\"core\\"}"
           data-code="Function"
           data-display="SLEEP"
           data-type="any"
@@ -565,6 +568,7 @@ exports[`formulaType [async 1] basic "=SLEEP(123)" 2`] = `
         </mark>
         <mark
           class="mashcard-formula-mark"
+          data-attrs="{\\"kind\\":\\"Function\\",\\"id\\":\\"SLEEP\\",\\"name\\":\\"SLEEP\\",\\"group\\":\\"core\\"}"
           data-code="Function"
           data-display="SLEEP"
           data-type="any"
