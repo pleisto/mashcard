@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
-import { buildTestCases, dumpDisplayResultForDisplay, makeContext } from '@mashcard/formula'
+import { BasicNames, buildTestCases, dumpDisplayResultForDisplay, makeContext } from '@mashcard/formula'
 import { FormulaValue } from '../FormulaValue'
 
-const [testCases] = buildTestCases(['basic'])
+const [testCases] = buildTestCases(BasicNames)
 
 describe('FormulaValue', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>

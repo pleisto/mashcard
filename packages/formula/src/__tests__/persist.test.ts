@@ -176,7 +176,7 @@ const cells: Cell[] = [
   }
 ]
 
-const formulaContext = new FormulaContext({ domain: 'test' })
+const formulaContext = FormulaContext.getInstance({ domain: 'test' })
 void dispatchFormulaBlockNameChange({ id: namespaceId, name: 'Page1', username: 'test' })
 
 const spreadsheet: SpreadsheetType = new SpreadsheetClass({

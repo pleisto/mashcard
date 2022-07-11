@@ -1,8 +1,7 @@
 import { parse } from '../grammar/core'
 import { makeContext, splitDefinition$ } from '../tests/testHelper'
-import { buildTestCases, trackTodo } from '../tests'
+import { buildTestCases, CompleteNames, trackTodo } from '../tests'
 import { getLastCodeFragment, applyCompletion, attrs2completion } from '../grammar'
-import { CompleteNames } from '../tests/feature/complete'
 
 const [testCases] = buildTestCases(CompleteNames)
 

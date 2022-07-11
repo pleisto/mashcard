@@ -1,0 +1,10 @@
+en-US:
+  formula:
+    errors:
+      parse:
+        name:
+          reserved: Variable name is reserved
+          invalid: Variable name is not valid
+          duplicated: Name exist in same namespace
+        deps:
+          circular_dependency: Circular dependency found

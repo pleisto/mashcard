@@ -1,4 +1,4 @@
-import { SpreadsheetInput, TestCaseInterface } from '../testType'
+import { SpreadsheetInput, TestCaseInterface } from '../../testType'
 
 const [namespaceId, spreadsheetId, columnId, rowId] = [
   'aaaa0000-0000-0000-0000-000000000000',
@@ -9,12 +9,12 @@ const [namespaceId, spreadsheetId, columnId, rowId] = [
 
 const richType = { type: 'spreadsheet', meta: { spreadsheetId, columnId, rowId } } as const
 
-export const BasicTestCase: TestCaseInterface = {
-  name: 'basic',
+export const BasicTypeTestCase: TestCaseInterface = {
+  name: 'basicType',
   testCases: {
     pages: [
       {
-        pageName: 'BasicPage',
+        pageName: 'BasicTypePage',
         pageId: namespaceId,
         variables: [
           { definition: '=24', variableName: 'bar' },

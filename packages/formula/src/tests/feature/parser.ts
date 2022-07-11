@@ -143,7 +143,7 @@ export const ParserTestCase: TestCaseInterface = {
       {
         definition: '="if"',
         errorType: 'name_check',
-        errorMessage: 'Variable name is reserved',
+        errorMessage: 'errors.parse.name.reserved',
         expected: [
           {
             key: 'codeFragments',
@@ -169,7 +169,7 @@ export const ParserTestCase: TestCaseInterface = {
         ...t,
         definition: '="bar"',
         errorType: 'name_invalid',
-        errorMessage: 'Variable name is not valid',
+        errorMessage: 'errors.parse.name.invalid',
         namespaceId,
         expected: [
           {
@@ -191,7 +191,7 @@ export const ParserTestCase: TestCaseInterface = {
         ...t,
         definition: '="bar"',
         errorType: 'name_unique',
-        errorMessage: 'Name exist in same namespace',
+        errorMessage: 'errors.parse.name.duplicated',
         expected: [
           {
             key: 'codeFragments',

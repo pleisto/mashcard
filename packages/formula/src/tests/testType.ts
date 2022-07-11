@@ -83,7 +83,7 @@ export interface PageInput {
 }
 type FeatureName =
   | 'async'
-  | 'basic'
+  | 'basicType'
   | 'format'
   | 'functionCall'
   | 'parser'

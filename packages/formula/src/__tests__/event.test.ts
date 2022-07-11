@@ -1,10 +1,9 @@
 import { interpret, parse, generateVariable } from '../grammar'
 import { buildEvent, makeContext } from '../tests/testHelper'
-import { buildTestCases, matchObject, trackTodo } from '../tests'
+import { buildTestCases, EventNames, matchObject, trackTodo } from '../tests'
 import { uuid } from '@mashcard/active-support'
 import { MashcardEventBus } from '@mashcard/schema'
 import { fetchResult } from '../context'
-import { EventNames } from '../tests/feature/event'
 
 const [testCases] = buildTestCases(EventNames)
 

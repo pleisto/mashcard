@@ -10,6 +10,7 @@ import {
 import { FormulaValue, FORMULA_ICONS } from '.'
 import * as Root from './Formula.style'
 import { UseFormulaInput } from '../../blockViews/FormulaView'
+import { useFormulaI18n } from '../../../hooks/useFormulaI18n'
 
 export interface FormulaResultProps {
   variableT: VariableData | undefined
@@ -17,6 +18,8 @@ export interface FormulaResultProps {
 }
 
 export const FormulaResult: FC<FormulaResultProps> = ({ variableT, meta }) => {
+  const { t } = useFormulaI18n()
+
   if (!variableT) return null
   const result = fetchResult(variableT)
   const colorType = resultToColorType(result)
@@ -27,7 +30,7 @@ export const FormulaResult: FC<FormulaResultProps> = ({ variableT, meta }) => {
   const formulaResult = error ? (
     <span className="formula-result-error">
       <span className="formula-result-error-type">{error.type}</span>
-      <span className="formula-result-error-message">{error.message}</span>
+      <span className="formula-result-error-message">{t(error.message)}</span>
     </span>
   ) : (
     <span className="formula-result-ok">
