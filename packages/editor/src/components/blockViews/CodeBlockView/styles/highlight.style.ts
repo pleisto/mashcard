@@ -65,7 +65,8 @@ export const highlightStyle = css({
     wordBreak: 'normal',
     wordWrap: 'normal',
     tabSize: 2,
-    hyphens: 'none'
+    hyphens: 'none',
+    background: theme.colors.backgroundPrimary,
   },
   'pre[class*="language-"]::selection, pre[class*="language-"]::selection, code[class*="language-"]::selection, code[class*="language-"]::selection':
     {
