@@ -3,12 +3,12 @@ import { NodeViewContent } from '@tiptap/react'
 import { css, cx, theme } from '@mashcard/design-system'
 import { BlockContainer } from '../BlockContainer'
 import { ParagraphViewProps } from '../../../extensions/blocks/paragraph/meta'
+import { usePlaceholder } from './usePlaceholder'
 
 const placeholderStyle = css({
   '&:before': {
-    color: theme.colors.typeThirdary,
+    color: theme.colors.typeDisabled,
     content: 'attr(data-placeholder)',
-    fontSize: theme.fontSizes.body,
     fontWeight: 400,
     left: 0,
     pointerEvents: 'none',
@@ -24,9 +24,10 @@ const paragraphStyles = css({
 })
 
 export const ParagraphView: FC<ParagraphViewProps> = props => {
-  const { node, getPos, deleteNode, extension } = props
+  const { node, getPos, deleteNode, extension, editor } = props
   const placeholderClassName = placeholderStyle()
   const paragraphClassName = paragraphStyles()
+  const placeholder = usePlaceholder(editor, node, getPos)
 
   return (
     <BlockContainer
@@ -39,7 +40,7 @@ export const ParagraphView: FC<ParagraphViewProps> = props => {
       <NodeViewContent
         {...extension.options.HTMLAttributes}
         draggable={false}
-        data-placeholder=""
+        data-placeholder={placeholder}
         as="p"
         className={cx(placeholderClassName, paragraphClassName)}
       />

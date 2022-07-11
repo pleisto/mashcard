@@ -129,7 +129,11 @@ const blockquoteStyles: CSS = {
     borderLeft: `2px solid ${theme.colors.backgroundThirdary}`,
     color: theme.colors.typeSecondary,
     fontWeight: 450,
-    paddingLeft: '1rem'
+    margin: 0,
+    marginBlock: 0,
+    marginInline: 0,
+    paddingLeft: '1rem',
+    position: 'relative'
   }
 }
 

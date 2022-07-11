@@ -76,6 +76,7 @@ exports[`CodeBlockView matches snapshot correctly 1`] = `
           as="code"
           class="undefined language-javascript"
           data-node-view-content=""
+          data-placeholder=""
           style="white-space: pre-wrap;"
         />
       </pre>

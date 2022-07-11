@@ -2,8 +2,12 @@ import { FC } from 'react'
 import { NodeViewContent } from '@tiptap/react'
 import { BlockContainer } from '../BlockContainer'
 import { CalloutViewProps } from '../../../extensions/blocks/callout/meta'
-import { styled, theme } from '@mashcard/design-system'
-import { useIcon } from './useIcon'
+import { css, styled, theme } from '@mashcard/design-system'
+import { iconWidth, useIcon } from './useIcon'
+import { useEditorI18n } from '../../../hooks'
+
+const verticalPadding = '1.5rem'
+const iconMarginRight = '0.75rem'
 
 const CalloutContainer = styled('div', {
   background: theme.colors.yellow1,
@@ -11,12 +15,26 @@ const CalloutContainer = styled('div', {
   borderRadius: '4px',
   display: 'flex',
   flexDirection: 'row',
-  padding: '1.25rem 1.5rem',
+  padding: `1.25rem ${verticalPadding}`,
   maxWidth: '45rem'
 })
 
+const placeholderStyle = css({
+  '&:before': {
+    color: theme.colors.typeDisabled,
+    content: 'attr(data-placeholder)',
+    fontWeight: 400,
+    left: `calc(${iconWidth} + ${verticalPadding} + ${iconMarginRight})`,
+    pointerEvents: 'none',
+    position: 'absolute',
+    transform: 'translateY(-50%)',
+    top: '50%',
+    whiteSpace: 'nowrap'
+  }
+})
+
 const IconContainer = styled('div', {
-  marginRight: '.75rem'
+  marginRight: iconMarginRight
 })
 
 export const CalloutView: FC<CalloutViewProps> = ({ deleteNode, node, extension, getPos, updateAttributes }) => {
@@ -24,6 +42,11 @@ export const CalloutView: FC<CalloutViewProps> = ({ deleteNode, node, extension,
     extension,
     updateAttributes
   })
+  const [t] = useEditorI18n()
+  const isEmpty = node.textContent.length === 0
+  const placeholder = isEmpty ? t(`placeholder.callout`) : ''
+  const placeholderClassName = placeholderStyle()
+
   return (
     <BlockContainer
       editable="custom"
@@ -33,7 +56,7 @@ export const CalloutView: FC<CalloutViewProps> = ({ deleteNode, node, extension,
       getPos={getPos}>
       <CalloutContainer>
         <IconContainer>{icon}</IconContainer>
-        <NodeViewContent as="span" />
+        <NodeViewContent as="span" className={placeholderClassName} data-placeholder={placeholder} />
       </CalloutContainer>
     </BlockContainer>
   )

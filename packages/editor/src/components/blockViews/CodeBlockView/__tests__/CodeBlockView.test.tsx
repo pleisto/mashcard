@@ -9,6 +9,7 @@ describe('CodeBlockView', () => {
   const props = mockBlockViewProps<CodeBlockOptions, CodeBlockAttributes>({
     node: {
       uuid,
+      textContent: 'text content',
       attrs: {
         language: 'javascript'
       }

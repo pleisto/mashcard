@@ -20,7 +20,7 @@ exports[`Callout renders Callout correctly 1`] = `
             class="mc-c-PhqtK"
           >
             <div
-              class="mc-c-lnEYSH"
+              class="mc-c-PdSsz"
             >
               <button
                 aria-haspopup="dialog"
@@ -36,7 +36,9 @@ exports[`Callout renders Callout correctly 1`] = `
             </div>
             <span
               as="span"
+              class="mc-c-hbPmqD"
               data-node-view-content=""
+              data-placeholder="placeholder.callout"
               style="white-space: pre-wrap;"
             >
               <div

@@ -86,6 +86,7 @@ exports[`CodeBlock renders CodeBlock correctly 1`] = `
                 as="code"
                 class="undefined language-typescript"
                 data-node-view-content=""
+                data-placeholder=""
                 style="white-space: pre-wrap;"
               >
                 <div

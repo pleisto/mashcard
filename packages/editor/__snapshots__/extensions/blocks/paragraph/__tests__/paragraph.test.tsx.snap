@@ -18,7 +18,7 @@ exports[`Paragraph renders Paragraph correctly 1`] = `
         >
           <p
             as="p"
-            class="mc-c-jIptkL mc-c-qcqS"
+            class="mc-c-dfUVHB mc-c-qcqS"
             data-node-view-content=""
             data-placeholder=""
             draggable="false"

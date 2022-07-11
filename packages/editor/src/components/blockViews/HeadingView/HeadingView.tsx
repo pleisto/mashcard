@@ -3,10 +3,11 @@ import { NodeViewContent } from '@tiptap/react'
 import { css, theme } from '@mashcard/design-system'
 import { BlockContainer } from '../BlockContainer'
 import { HeadingViewProps } from '../../../extensions/blocks/heading/meta'
+import { useEditorI18n } from '../../../hooks'
 
 const placeholderStyle = css({
   '&:before': {
-    color: theme.colors.typeThirdary,
+    color: theme.colors.typeDisabled,
     content: 'attr(data-placeholder)',
     left: 0,
     pointerEvents: 'none',
@@ -121,6 +122,9 @@ export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, extension,
 
   const actionButtonClassName = actionButtonStyle({ level: node.attrs.level })
   const placeholderClassName = placeholderStyle({ level: node.attrs.level })
+  const [t] = useEditorI18n()
+  const isEmpty = !node.isLeaf && !node.childCount
+  const placeholder = isEmpty ? t(`placeholder.heading${node.attrs.level}`) : ''
 
   const HTMLAttributes =
     (typeof extension.options?.HTMLAttributes === 'function'
@@ -139,7 +143,7 @@ export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, extension,
       getPos={getPos}
       deleteNode={deleteNode}
       contentForCopy={node.textContent}>
-      <NodeViewContent {...HTMLAttributes} as={as} className={placeholderClassName} />
+      <NodeViewContent {...HTMLAttributes} as={as} className={placeholderClassName} data-placeholder={placeholder} />
     </BlockContainer>
   )
 }
