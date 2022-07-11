@@ -33,8 +33,28 @@ export const numberOperator: OperatorType = {
   },
   testCases: {
     successTestCases: [
-      { definition: '=-123123%', result: -1231.23, expected: [{ key: 'codeFragments', matchType: 'toMatchSnapshot' }] },
-      { definition: '=-1.2%', result: -0.012, expected: [{ key: 'codeFragments', matchType: 'toMatchSnapshot' }] },
+      {
+        definition: '=-123123%',
+        result: -1231.23,
+        expected: [
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [{ code: 'Equal' }, { code: 'NumberLiteral', display: '-123123%', type: 'number' }]
+          }
+        ]
+      },
+      {
+        definition: '=-1.2%',
+        result: -0.012,
+        expected: [
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [{ code: 'Equal' }, { code: 'NumberLiteral', display: '-1.2%', type: 'number' }]
+          }
+        ]
+      },
       { definition: '= -0.123%', label: 'caret and sign', result: -0.00123 },
       { definition: '=123123123123123123123', label: 'js precision', result: 123123123123123130000 },
       { definition: '=0', result: 0 },

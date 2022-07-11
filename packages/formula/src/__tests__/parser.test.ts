@@ -17,10 +17,12 @@ describe('parser', () => {
     }))
   )('$jestTitle <$position>', args => {
     const {
-      variableParseResult: { definition: newInput, codeFragments, position: newPosition }
+      variableParseResult: { definition, codeFragments, position }
     } = ctx.parseDirectly(args)
-    expect(codeFragments.map(c => c.display).join('')).toEqual(newInput)
-    expect(newPosition).toEqual(args.position)
-    expect(newInput).toEqual(args.newAbbrevInput ?? args.definition)
+    expect([codeFragments.map(c => c.display).join(''), definition, position]).toEqual([
+      definition,
+      args.newAbbrevInput ?? args.definition,
+      args.position
+    ])
   })
 })

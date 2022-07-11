@@ -8,7 +8,6 @@ import {
   RParen,
   Comma,
   CompareOperator,
-  Equal,
   BooleanLiteral,
   Minus,
   CombineOperator,
@@ -78,7 +77,7 @@ export class FormulaParser extends CstParser {
   }
 
   public startExpression = this.RULE('startExpression', () => {
-    this.CONSUME(Equal)
+    // this.CONSUME(Equal)
     this.SUBRULE(this.expression)
   })
 

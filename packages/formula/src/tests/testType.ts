@@ -85,7 +85,7 @@ type FeatureName =
   | 'basic'
   | 'format'
   | 'functionCall'
-  | 'nameCheck'
+  | 'parser'
   | 'powerfx'
   | 'spreadsheet'
   | 'variable'
@@ -115,7 +115,7 @@ export interface BaseTestCase<T extends object> {
   expressionType?: ExpressionType
   currentGroupOption?: any
   label?: string
-  expected?: [ExpectedType<T>, ...Array<ExpectedType<T>>]
+  expected?: readonly [ExpectedType<T>, ...Array<ExpectedType<T>>]
   namespaceId?: MockedUUIDV4
   variableId?: MockedUUIDV4
   name?: VariableMetadata['name']
@@ -124,7 +124,8 @@ export interface BaseTestCase<T extends object> {
   todoMessage?: string
   jestTitle?: string
 }
-interface SuccessTestCaseType extends RequireField<BaseTestCase<{ key: keyof VariableParseResult }>, 'definition'> {
+export interface SuccessTestCaseType
+  extends RequireField<BaseTestCase<{ key: keyof VariableParseResult }>, 'definition'> {
   result: any
 }
 

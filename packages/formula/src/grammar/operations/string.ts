@@ -40,7 +40,17 @@ export const stringOperator: OperatorType = {
   testCases: {
     successTestCases: [
       { definition: '=""', result: '' },
-      { definition: '= "hello"', result: 'hello', expected: [{ key: 'codeFragments', matchType: 'toMatchSnapshot' }] },
+      {
+        definition: '= "hello"',
+        result: 'hello',
+        expected: [
+          {
+            key: 'codeFragments',
+            matchType: 'toMatchObject',
+            match: [{ code: 'Equal' }, { code: 'Space' }, { code: 'StringLiteral', display: '"hello"', type: 'string' }]
+          }
+        ]
+      },
       { definition: '= "hel\'lo"', result: "hel'lo" }
     ],
     errorTestCases: [

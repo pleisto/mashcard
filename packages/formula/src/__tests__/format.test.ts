@@ -18,18 +18,26 @@ describe('format', () => {
     const [definition, position] = splitDefinition$(args.definition$)
     const newCtx = { ...ctx, meta: ctx.buildMeta({ ...args, definition, position }) }
 
-    const { minify, format } = applyFormat(newCtx)
+    const { minify, format, valid } = applyFormat(newCtx)
 
     if (args.minifyResult$ !== SKIP_FLAG) {
       const [minifyDefinition, minifyPosition] = splitDefinition$(args.minifyResult$ ?? args.definition$)
       // eslint-disable-next-line jest/no-conditional-expect
-      expect(['minify', minify]).toEqual(['minify', { definition: minifyDefinition, position: minifyPosition }])
+      expect(['minify', valid, minify]).toEqual([
+        'minify',
+        valid,
+        { definition: minifyDefinition, position: minifyPosition }
+      ])
     }
 
     if (args.formatResult$ !== SKIP_FLAG) {
       const [formatDefinition, formatPosition] = splitDefinition$(args.formatResult$ ?? args.definition$)
       // eslint-disable-next-line jest/no-conditional-expect
-      expect(['format', format]).toEqual(['format', { definition: formatDefinition, position: formatPosition }])
+      expect(['format', valid, format]).toEqual([
+        'format',
+        valid,
+        { definition: formatDefinition, position: formatPosition }
+      ])
     }
   })
 })

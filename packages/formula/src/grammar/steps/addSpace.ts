@@ -15,6 +15,13 @@ export const addSpaceStep: CodeFragmentStep = ({ input: { codeFragments }, meta:
 
   let restInput = input
   let error: any
+  const prefixSpaceCount = restInput.length - restInput.trimStart().length
+  if (prefixSpaceCount > 0) {
+    const spaceValue = restInput.substring(0, prefixSpaceCount)
+    finalCodeFragments.push({ ...spaceCodeFragment, display: spaceValue })
+    restInput = restInput.substring(prefixSpaceCount)
+  }
+
   codeFragments.forEach((codeFragment, index) => {
     if (error) return
     const replacements = [...(codeFragment.replacements ?? []), codeFragment.display]

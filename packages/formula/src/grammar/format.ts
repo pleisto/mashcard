@@ -111,7 +111,7 @@ const insertSpaceOrNewline = (codeFragments: CodeFragment[], position: number): 
 /**
  * Apply format to the formula.
  */
-export const applyFormat = (ctx: FunctionContext): { format: FormatResult; minify: FormatResult } => {
+export const applyFormat = (ctx: FunctionContext): { format: FormatResult; minify: FormatResult; valid: boolean } => {
   const {
     meta: { input: definition, position }
   } = ctx
@@ -120,7 +120,7 @@ export const applyFormat = (ctx: FunctionContext): { format: FormatResult; minif
     variableParseResult: { codeFragments, valid }
   } = parse(ctx)
 
-  if (!valid) return { format: { position, definition }, minify: { position, definition } }
+  if (!valid) return { format: { position, definition }, minify: { position, definition }, valid }
 
   // 1. remove old space or newline
   const [newCodeFragments, newPosition] = removeSpaceOrNewline(codeFragments, position)
@@ -130,6 +130,7 @@ export const applyFormat = (ctx: FunctionContext): { format: FormatResult; minif
 
   return {
     format: { position: newPosition2, definition: newCodeFragments2.map(c => c.display).join('') },
-    minify: { position: newPosition, definition: newCodeFragments.map(c => c.display).join('') }
+    minify: { position: newPosition, definition: newCodeFragments.map(c => c.display).join('') },
+    valid
   }
 }
