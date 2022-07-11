@@ -1,4 +1,6 @@
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
+import { Blurhash } from 'react-blurhash'
+
 import { ImageWithSpin } from '../index'
 
 jest.mock('react-blurhash')
@@ -23,6 +25,6 @@ describe('ImageWithSpin', () => {
       style: { width: 100, height: 100 }
     }
     render(<ImageWithSpin {...args} />)
-    expect(screen.queryByTestId('blurhash')).toBeInTheDocument()
+    expect(Blurhash).toHaveBeenCalled()
   })
 })

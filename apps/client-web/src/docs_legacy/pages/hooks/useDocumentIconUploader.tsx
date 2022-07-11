@@ -104,7 +104,7 @@ export function useDocumentIconUploader(
         onUploaded={onUploaded}
         onFileLoaded={onLoaded}
         importSources={ICON_IMPORT_SOURCES}
-        canbeRemove={!!icon}
+        showRemoveButton={!!icon}
       />
     )
   }

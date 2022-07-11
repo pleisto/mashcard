@@ -1,22 +1,21 @@
 import * as React from 'react'
-import { Button, Popover, PopoverProps, ImageWithSpin } from '@mashcard/design-system'
-import { BlockColor, BlockImage, BlockType } from '@/MashcardGraphQL'
+import { Button, Popover, PopoverProps } from '@mashcard/design-system'
+import { BlockType, FileSource } from '@/MashcardGraphQL'
 import { useDocsI18n } from '@/docs_legacy/common/hooks'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import * as Root from './DocumentCover.style'
 
-interface DocumentCoverImage extends BlockImage {
+export interface DocumentCoverMeta {
   type: BlockType.Image
+  key: string
+  source: FileSource
+  width?: number
+  height?: number
+  blurHash?: string
 }
-
-interface DocumentCoverColor extends BlockColor {
-  type: BlockType.Color
-}
-
-export type DocumentCoverMeta = DocumentCoverImage | DocumentCoverColor
 
 export interface DocumentCoverProps {
-  documentCoverMeta?: DocumentCoverMeta | null
+  documentCoverMeta: DocumentCoverMeta
   popoverProps: PopoverProps
   editable: boolean
   localUrl?: string
@@ -35,9 +34,6 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
 }) => {
   const { t } = useDocsI18n()
   const [value, setValue] = React.useState('unset')
-  if (documentCoverMeta?.type === BlockType.Color && value !== documentCoverMeta.color) {
-    setValue(documentCoverMeta.color)
-  }
   if (documentCoverMeta?.type === BlockType.Image) {
     const url = getDocCoverUrl() ?? localUrl ?? ''
     if (url && value !== url) {
@@ -45,18 +41,11 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
     }
   }
 
-  const style = {
-    backgroundColor: documentCoverMeta?.type === BlockType.Color ? value : 'unset'
-  }
-
   return (
-    <Root.Cover
-      data-testid={TEST_ID_ENUM.page.DocumentPage.cover.id}
-      uncover={!documentCoverMeta}
-      className={className}
-      css={style}
-    >
-      {documentCoverMeta?.type === BlockType.Image && <ImageWithSpin src={value} />}
+    <Root.Cover data-testid={TEST_ID_ENUM.page.DocumentPage.cover.id} className={className}>
+      {documentCoverMeta?.type === BlockType.Image && (
+        <Root.CoverImage src={value} blurHash={documentCoverMeta.blurHash} />
+      )}
       <Root.Actions>
         {editable && (
           <>

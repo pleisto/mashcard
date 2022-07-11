@@ -51,7 +51,7 @@ export interface ActionButtonOption {
 
 export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSources, pluginOptions }) => {
   const sourceType = importSources[0].type
-  const { canbeRemove } = pluginOptions
+  const { showRemoveButton } = pluginOptions
   const [activeSource, setActiveSource] = React.useState(importSources[0])
   const [recentEmojis, handleSelectEmoji] = useEmoji(
     pluginOptions,
@@ -77,7 +77,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
   let actionButtons: ActionButtonOption[] = []
 
   if (sourceType === 'emoji') {
-    if (canbeRemove) {
+    if (showRemoveButton) {
       EMOJI_ACTION_BUTTONS.push({
         label: 'Remove',
         icon: Delete,
@@ -88,7 +88,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
   }
 
   if (sourceType === 'unsplash' || sourceType === 'gallery') {
-    if (canbeRemove) {
+    if (showRemoveButton) {
       GALLERY_ACTION_BUTTONS.push({
         label: 'Remove',
         icon: Delete,

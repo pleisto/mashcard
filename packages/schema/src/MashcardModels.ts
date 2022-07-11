@@ -327,6 +327,8 @@ export type BlockImage = {
   __typename?: 'BlockImage'
   /** align */
   align?: Maybe<Scalars['String']>
+  /** blurhash */
+  blurHash?: Maybe<Scalars['String']>
   /** display name */
   displayName?: Maybe<Scalars['String']>
   /** height */

@@ -1,6 +1,8 @@
 import { FC, useEffect, useRef } from 'react'
 import { Uppy } from '@uppy/core'
 import XhrUploadPlugin from '@uppy/xhr-upload'
+import ThumbnailGenerator from '@uppy/thumbnail-generator'
+
 import { DashboardPlugin, DashboardPluginName, DashboardPluginOptions } from './plugin'
 
 export type {
@@ -21,7 +23,7 @@ export interface DashboardProps {
   fetchUnsplashImages?: DashboardPluginOptions['fetchUnsplashImages']
   fileType?: DashboardPluginOptions['fileType']
   importSources: DashboardPluginOptions['importSources']
-  canbeRemove?: DashboardPluginOptions['canbeRemove']
+  showRemoveButton?: DashboardPluginOptions['showRemoveButton']
 }
 
 export const Dashboard: FC<DashboardProps> = ({
@@ -33,7 +35,7 @@ export const Dashboard: FC<DashboardProps> = ({
   fileType,
   onFileLoaded,
   onProgress,
-  canbeRemove = false
+  showRemoveButton = false
 }) => {
   const container = useRef<HTMLElement>()
   const uppy = useRef<Uppy>()
@@ -49,12 +51,16 @@ export const Dashboard: FC<DashboardProps> = ({
       fetchUnsplashImages,
       importSources,
       fileType: fileType!,
-      canbeRemove
+      showRemoveButton
     }
 
     if (!uppy.current) {
       uppy.current = new Uppy()
       // TODO: use active storage instead
+      uppy.current.use(ThumbnailGenerator, {
+        thumbnailWidth: 200,
+        waitForThumbnailsBeforeUpload: true
+      })
       uppy.current.use(XhrUploadPlugin, {
         endpoint: '/',
         method: 'PUT',
@@ -69,7 +75,7 @@ export const Dashboard: FC<DashboardProps> = ({
     }
   }, [
     blockId,
-    canbeRemove,
+    showRemoveButton,
     fetchUnsplashImages,
     fileType,
     importSources,

@@ -45,7 +45,7 @@ describe('Dashboard', () => {
         target: {} as any,
         importSources: sources,
         fileType: 'image',
-        canbeRemove: true
+        showRemoveButton: true
       }
 
       const { container } = render(
@@ -98,7 +98,7 @@ describe('Dashboard', () => {
         target: {} as any,
         importSources: sources,
         fileType: 'image',
-        canbeRemove: true
+        showRemoveButton: true
       }
 
       const { container } = render(
@@ -173,7 +173,7 @@ describe('Dashboard', () => {
         target: {} as any,
         importSources: sources,
         fileType: 'image',
-        canbeRemove: true
+        showRemoveButton: true
       }
 
       const { container } = render(
@@ -226,7 +226,7 @@ describe('Dashboard', () => {
         importSources: sources,
         fileType: 'image',
         onUploaded: jest.fn(),
-        canbeRemove: true
+        showRemoveButton: true
       }
 
       render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
@@ -255,7 +255,7 @@ describe('Dashboard', () => {
         target: {} as any,
         importSources: sources,
         fileType: 'image',
-        canbeRemove: true
+        showRemoveButton: true
       }
 
       const { container } = render(
@@ -340,7 +340,7 @@ describe('Dashboard', () => {
         importSources: sources,
         fileType: 'image',
         onUploaded: jest.fn(),
-        canbeRemove: true
+        showRemoveButton: true
       }
 
       render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)

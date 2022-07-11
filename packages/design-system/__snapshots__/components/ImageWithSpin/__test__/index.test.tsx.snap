@@ -2,122 +2,68 @@
 
 exports[`ImageWithSpin matches snapshot correctly 1`] = `
 <div
-  class="mc-c-icOKAJ baidu-icon"
+  class="mc-c-gtBYOe baidu-icon"
 >
   <img
     alt="baidu"
-    class="mc-c-bUHPNh mc-c-bUHPNh-bbPWAj-spining-true mc-c-bUHPNh-rTblN-hidePic-true"
+    class="mc-c-jTFviV mc-c-jTFviV-cCitdK-hidePic-true"
     src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
   />
-  <svg
-    class="mc-c-hsxsfB mc-c-hsxsfB-eNLjdr-size-lg mc-c-hsxsfB-llIIr-color-dark cover-spin"
-    fill="none"
-    height="20"
-    style="opacity: 1;"
-    viewBox="0 0 20 20"
-    width="20"
-    xmlns="http://www.w3.org/2000/svg"
+  <div
+    aria-busy="true"
+    aria-hidden="false"
+    class="mc-c-fOtKLj mc-c-fOtKLj-bDGmTT-visible-true"
+    role="progressbar"
   >
-    <circle
-      cx="10"
-      cy="10"
-      opacity="0.05"
-      r="9"
-      stroke="black"
-      stroke-linecap="round"
-      stroke-width="2"
-    />
-    <circle
-      cx="10"
-      cy="10"
-      opacity="0.1"
-      r="9"
-      stroke="black"
-      stroke-dasharray="1000"
-      stroke-linecap="round"
-      stroke-width="2"
-    />
-    <circle
-      cx="10"
-      cy="10"
-      opacity="0.2"
-      r="9"
-      stroke="black"
-      stroke-dasharray="1000"
-      stroke-linecap="round"
-      stroke-width="2"
-    />
-    <circle
-      cx="10"
-      cy="10"
-      opacity="1.0"
-      r="9"
-      stroke="black"
-      stroke-dasharray="1000"
-      stroke-linecap="round"
-      stroke-width="2"
-    />
-  </svg>
-</div>
-`;
-
-exports[`tag matches snapshot correctly 1`] = `
-<div
-  class="mc-c-icOKAJ baidu-icon"
->
-  <img
-    alt="baidu"
-    class="mc-c-bUHPNh mc-c-bUHPNh-bbPWAj-spining-true mc-c-bUHPNh-rTblN-hidePic-true"
-    src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
-  />
-  <svg
-    class="mc-c-hsxsfB mc-c-hsxsfB-eNLjdr-size-lg mc-c-hsxsfB-llIIr-color-dark cover-spin"
-    fill="none"
-    height="20"
-    style="opacity: 1;"
-    viewBox="0 0 20 20"
-    width="20"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle
-      cx="10"
-      cy="10"
-      opacity="0.05"
-      r="9"
-      stroke="black"
-      stroke-linecap="round"
-      stroke-width="2"
-    />
-    <circle
-      cx="10"
-      cy="10"
-      opacity="0.1"
-      r="9"
-      stroke="black"
-      stroke-dasharray="1000"
-      stroke-linecap="round"
-      stroke-width="2"
-    />
-    <circle
-      cx="10"
-      cy="10"
-      opacity="0.2"
-      r="9"
-      stroke="black"
-      stroke-dasharray="1000"
-      stroke-linecap="round"
-      stroke-width="2"
-    />
-    <circle
-      cx="10"
-      cy="10"
-      opacity="1.0"
-      r="9"
-      stroke="black"
-      stroke-dasharray="1000"
-      stroke-linecap="round"
-      stroke-width="2"
-    />
-  </svg>
+    <svg
+      class="mc-c-hsxsfB mc-c-hsxsfB-eNLjdr-size-lg mc-c-hsxsfB-llIIr-color-dark cover-spin"
+      fill="none"
+      height="20"
+      style="opacity: 1;"
+      viewBox="0 0 20 20"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="10"
+        cy="10"
+        opacity="0.05"
+        r="9"
+        stroke="black"
+        stroke-linecap="round"
+        stroke-width="2"
+      />
+      <circle
+        cx="10"
+        cy="10"
+        opacity="0.1"
+        r="9"
+        stroke="black"
+        stroke-dasharray="1000"
+        stroke-linecap="round"
+        stroke-width="2"
+      />
+      <circle
+        cx="10"
+        cy="10"
+        opacity="0.2"
+        r="9"
+        stroke="black"
+        stroke-dasharray="1000"
+        stroke-linecap="round"
+        stroke-width="2"
+      />
+      <circle
+        cx="10"
+        cy="10"
+        opacity="1.0"
+        r="9"
+        stroke="black"
+        stroke-dasharray="1000"
+        stroke-linecap="round"
+        stroke-width="2"
+      />
+    </svg>
+  </div>
 </div>
 `;

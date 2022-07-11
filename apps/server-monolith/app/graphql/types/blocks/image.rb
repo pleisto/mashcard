@@ -5,6 +5,7 @@ module Types
     class Image < Attachment
       graphql_name 'BlockImage'
       field :align, String, 'align', null: true
+      field :blur_hash, String, 'blurhash', null: true
       field :display_name, String, 'display name', null: true
       field :height, Int, 'height', null: true
       field :key, String, 'key', null: true

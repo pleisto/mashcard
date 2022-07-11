@@ -2,8 +2,10 @@ import { Button } from '@mashcard/design-system'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { Uppy, UppyFile } from '@uppy/core'
 import React from 'react'
+
 import { ImportSourceOption } from './Dashboard'
 import { DashboardPluginOptions } from './plugin'
+import { calculateImageFileBlurHash } from './imageUtils'
 
 interface UploadPanelProps {
   pluginOptions: DashboardPluginOptions
@@ -14,7 +16,12 @@ interface UploadPanelProps {
 
 export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pluginId, pluginOptions }) => {
   React.useEffect(() => {
-    const handleUploadSuccess = (file: UppyFile): void => {
+    const handleUploadSuccess = async (file: UppyFile): Promise<void> => {
+      const blurHash = await calculateImageFileBlurHash(file.preview)
+
+      // Clear the file from the Uppy state, so it allows users to upload the same file again
+      uppy.removeFile(file.id, 'removed-by-user')
+
       pluginOptions.onUploaded!({
         action: 'add',
         url: uploadMeta.current!.blobKey,
@@ -24,7 +31,8 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pl
         meta: {
           name: file.name,
           size: file.size,
-          source: 'origin'
+          source: 'origin',
+          ...(blurHash && { blurHash })
         }
       })
     }
@@ -105,7 +113,8 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pl
         data-testid={TEST_ID_ENUM.uploader.Dashboard.modules.upload.button.id}
         type="primary"
         onClick={handleChooseFile}
-        className="dashboard-panel-button">
+        className="dashboard-panel-button"
+      >
         {importSource.buttonText}
       </Button>
       <div className="dashboard-panel-hint">{importSource.buttonHint}</div>
