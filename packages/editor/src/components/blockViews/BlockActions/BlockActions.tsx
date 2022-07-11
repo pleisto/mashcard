@@ -1,4 +1,4 @@
-import { FC, ReactNode, useMemo } from 'react'
+import { FC, ReactNode, useMemo, useState } from 'react'
 import { MenuProps, styled } from '@mashcard/design-system'
 import { BasicActionOptionType, useBasicActionOptions } from './useBasicActionOptions'
 import {
@@ -46,17 +46,16 @@ const BlockActionButtonContainer = styled(BlockActionButton, {
     content: '',
     position: 'absolute',
     height: '100%',
-    width: 55,
-    top: 0,
+    width: 45,
+    top:'100%',
     left: -20,
     display: 'block',
-    zIndex: -1
   }
 })
 
 const BlockActionsContainer = styled('div', {
   position: 'relative',
-  '&:hover': {
+  '&:hover, &.hover': {
     [`& ${BlockActionButtonContainer}`]: {
       opacity: 1
     }
@@ -80,6 +79,7 @@ const BlockActionsContainer = styled('div', {
 })
 
 export const BlockActions: FC<BlockActionsProps> = ({ options, buttonClassName, baseId, children }) => {
+  const [visible, setVisible] = useState(false)
   const basicOptionTypes = useMemo<BasicActionOptionType[]>(
     () => (options?.filter(option => typeof option === 'string') as BasicActionOptionType[]) ?? [],
     [options]
@@ -91,9 +91,10 @@ export const BlockActions: FC<BlockActionsProps> = ({ options, buttonClassName, 
   const basicOptions = useBasicActionOptions({ types: basicOptionTypes })
 
   return (
-    <BlockActionsContainer disabled={!options || options.length === 0}>
+    <BlockActionsContainer className={visible? 'hover': ''} disabled={!options || options.length === 0}>
       {children}
       <BlockActionButtonContainer
+        setActive={setVisible}
         className={buttonClassName}
         baseId={baseId}
         extraOptions={extraOptions}

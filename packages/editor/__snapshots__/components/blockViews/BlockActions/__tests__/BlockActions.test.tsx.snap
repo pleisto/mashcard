@@ -3,15 +3,16 @@
 exports[`BlockActions matches snapshot correctly 1`] = `
 <div>
   <div
-    class="mc-c-FZsgd"
+    class="mc-c-hKINpq"
   >
     <div
       aria-haspopup="dialog"
-      class="mc-c-cdcUGx"
+      class="mc-c-jXdbNa"
       contenteditable="false"
       data-drag-handle="true"
       data-testid="editor-block-action-button"
       draggable="true"
+      style="z-index: 2;"
     >
       <button
         class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"

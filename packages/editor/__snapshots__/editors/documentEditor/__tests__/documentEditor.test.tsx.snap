@@ -19,7 +19,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
             style="position: relative; pointer-events: unset; white-space: normal;"
           >
             <div
-              class="mc-c-FZsgd"
+              class="mc-c-hKINpq"
             >
               <h1
                 as="h1"
@@ -35,11 +35,12 @@ exports[`documentEditor renders document editor correctly 1`] = `
               </h1>
               <div
                 aria-haspopup="dialog"
-                class="mc-c-cdcUGx mc-c-hjKsOe mc-c-hjKsOe-egdRHa-level-1"
+                class="mc-c-jXdbNa mc-c-hjKsOe mc-c-hjKsOe-egdRHa-level-1"
                 contenteditable="false"
                 data-drag-handle="true"
                 data-testid="editor-block-action-button"
                 draggable="true"
+                style="z-index: 2;"
               >
                 <button
                   class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
@@ -84,7 +85,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
             style="position: relative; pointer-events: unset; white-space: normal;"
           >
             <div
-              class="mc-c-FZsgd"
+              class="mc-c-hKINpq"
             >
               <h2
                 as="h2"
@@ -100,11 +101,12 @@ exports[`documentEditor renders document editor correctly 1`] = `
               </h2>
               <div
                 aria-haspopup="dialog"
-                class="mc-c-cdcUGx mc-c-hjKsOe mc-c-hjKsOe-iyJHSq-level-2"
+                class="mc-c-jXdbNa mc-c-hjKsOe mc-c-hjKsOe-iyJHSq-level-2"
                 contenteditable="false"
                 data-drag-handle="true"
                 data-testid="editor-block-action-button"
                 draggable="true"
+                style="z-index: 2;"
               >
                 <button
                   class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
@@ -149,7 +151,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
             style="position: relative; pointer-events: unset; white-space: normal;"
           >
             <div
-              class="mc-c-FZsgd"
+              class="mc-c-hKINpq"
             >
               <h3
                 as="h3"
@@ -165,11 +167,12 @@ exports[`documentEditor renders document editor correctly 1`] = `
               </h3>
               <div
                 aria-haspopup="dialog"
-                class="mc-c-cdcUGx mc-c-hjKsOe mc-c-hjKsOe-hhWJgB-level-3"
+                class="mc-c-jXdbNa mc-c-hjKsOe mc-c-hjKsOe-hhWJgB-level-3"
                 contenteditable="false"
                 data-drag-handle="true"
                 data-testid="editor-block-action-button"
                 draggable="true"
+                style="z-index: 2;"
               >
                 <button
                   class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
@@ -214,7 +217,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
             style="position: relative; pointer-events: unset; white-space: normal;"
           >
             <div
-              class="mc-c-FZsgd"
+              class="mc-c-hKINpq"
             >
               <h4
                 as="h4"
@@ -230,11 +233,12 @@ exports[`documentEditor renders document editor correctly 1`] = `
               </h4>
               <div
                 aria-haspopup="dialog"
-                class="mc-c-cdcUGx mc-c-hjKsOe mc-c-hjKsOe-grfFzG-level-4"
+                class="mc-c-jXdbNa mc-c-hjKsOe mc-c-hjKsOe-grfFzG-level-4"
                 contenteditable="false"
                 data-drag-handle="true"
                 data-testid="editor-block-action-button"
                 draggable="true"
+                style="z-index: 2;"
               >
                 <button
                   class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
@@ -279,7 +283,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
             style="position: relative; pointer-events: unset; white-space: normal;"
           >
             <div
-              class="mc-c-FZsgd"
+              class="mc-c-hKINpq"
             >
               <h5
                 as="h5"
@@ -295,11 +299,12 @@ exports[`documentEditor renders document editor correctly 1`] = `
               </h5>
               <div
                 aria-haspopup="dialog"
-                class="mc-c-cdcUGx mc-c-hjKsOe mc-c-hjKsOe-dFWSDb-level-5"
+                class="mc-c-jXdbNa mc-c-hjKsOe mc-c-hjKsOe-dFWSDb-level-5"
                 contenteditable="false"
                 data-drag-handle="true"
                 data-testid="editor-block-action-button"
                 draggable="true"
+                style="z-index: 2;"
               >
                 <button
                   class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
