@@ -27,7 +27,7 @@
     "@mashcard/active-support": "workspace:^",
     "@mashcard/design-icons": "workspace:^",
     "@mashcard/test-helper": "workspace:^",
-    "@mui/base": "^5.0.0-alpha.88",
+    "@mui/base": "^5.0.0-alpha.89",
     "@stitches/core": "^1.2.8",
     "@stitches/react": "^1.2.8",
     "ahooks": "^3.5.2",
