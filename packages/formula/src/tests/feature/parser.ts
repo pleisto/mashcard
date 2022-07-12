@@ -94,7 +94,7 @@ export const ParserTestCase: TestCaseInterface = {
         definition: '====',
         label: 'equal 3',
         errorType: 'syntax',
-        errorMessage: 'Missing expression',
+        errorMessage: 'errors.parse.missing.expression',
         expected: [
           {
             key: 'codeFragments',
@@ -105,7 +105,7 @@ export const ParserTestCase: TestCaseInterface = {
               {
                 code: 'Equal',
                 errors: [
-                  { message: 'Missing expression' },
+                  { message: 'errors.parse.missing.expression' },
                   { message: 'Parse error: "="' },
                   { message: 'Parse error: ""' }
                 ],
@@ -119,7 +119,7 @@ export const ParserTestCase: TestCaseInterface = {
         definition: '=====',
         label: 'equal 4',
         errorType: 'syntax',
-        errorMessage: 'Missing expression',
+        errorMessage: 'errors.parse.missing.expression',
         expected: [
           {
             key: 'codeFragments',
@@ -130,7 +130,7 @@ export const ParserTestCase: TestCaseInterface = {
               {
                 code: 'Equal2',
                 errors: [
-                  { message: 'Missing expression' },
+                  { message: 'errors.parse.missing.expression' },
                   { message: 'Parse error: "=="' },
                   { message: 'Parse error: ""' }
                 ],

@@ -15,7 +15,7 @@ const secondCellId = 'cccccccc-cccc-bbbb-aaaa-222222222222'
 const richType = { type: 'spreadsheet', meta: { spreadsheetId, columnId: firstColumnId, rowId: firstRowId } } as const
 
 const unavailableMessage: ErrorMessage = {
-  message: 'thisRecord is only available in spreadsheet',
+  message: 'errors.parse.unavailable.thisRecord',
   type: 'syntax'
 }
 
@@ -146,7 +146,8 @@ export const thisRecordOperator: OperatorType = {
       {
         definition: `=ThisRecord`,
         errorType: 'syntax',
-        errorMessage: `thisRecord is only available in spreadsheet`,
+        groupOptions: [{ name: 'basicError' }],
+        errorMessage: `errors.parse.unavailable.thisRecord`,
         namespaceId
       }
     ]

@@ -65,11 +65,11 @@ export const additionOperator: OperatorType = {
       { definition: '= 1/0 + 1', result: 'Division by zero', label: 'runtime error' }
     ],
     errorTestCases: [
-      { definition: '=+', errorType: 'syntax', errorMessage: 'Missing expression' },
+      { definition: '=+', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '=-', errorType: 'syntax', errorMessage: 'Missing number' },
       { definition: '=+1', errorType: 'parse', errorMessage: 'Parse error: "+"', valid: false },
-      { definition: '=1+', errorType: 'syntax', errorMessage: 'Missing expression' },
-      { definition: '= 1+$', errorType: 'syntax', errorMessage: 'Missing expression' }
+      { definition: '=1+', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
+      { definition: '= 1+$', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' }
     ]
   }
 }

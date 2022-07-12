@@ -283,7 +283,7 @@ const innerParse = ({
     prevType = rhsDataType
 
     if (!rhsValue.length) {
-      missingTokenErrorMessages.push({ message: 'Missing expression', type: 'syntax' })
+      missingTokenErrorMessages.push({ message: 'errors.parse.missing.expression', type: 'syntax' })
     }
 
     let operatorTokenCodeFragments: CodeFragment[] = []

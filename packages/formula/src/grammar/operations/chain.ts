@@ -55,15 +55,15 @@ export const chainOperator: OperatorType = {
       { definition: '=1.START_WITH("123")', errorType: 'type', errorMessage: 'Expected string but got number' },
       { definition: '=123.ABS()', errorType: 'deps', errorMessage: 'core::ABS is not chainable' },
 
-      { definition: '=ABS(1).', errorType: 'syntax', errorMessage: 'Missing expression' },
-      { definition: '="FOO".', errorType: 'syntax', errorMessage: 'Missing expression' },
+      { definition: '=ABS(1).', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
+      { definition: '="FOO".', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '="FOO".T', errorType: 'syntax', errorMessage: 'Access error' },
       { definition: '="foo".START_WITH(123)', errorType: 'type', errorMessage: 'Expected string but got number' },
       { definition: '=true.START_WITH("123")', errorType: 'type', errorMessage: 'Expected string but got boolean' },
       { definition: '="123".LEN()', errorType: 'deps', errorMessage: 'core::LEN is not chainable' },
 
       // Visit
-      { definition: '=#CurrentBlock.', errorType: 'syntax', errorMessage: 'Missing expression' }
+      { definition: '=#CurrentBlock.', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' }
     ]
   }
 }

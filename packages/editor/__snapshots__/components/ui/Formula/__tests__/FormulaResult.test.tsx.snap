@@ -1292,7 +1292,7 @@ exports[`FormulaResult [parse error 1] basic "=1 ++ 1" 1`] = `
       <span
         class="formula-result-error-message"
       >
-        Missing expression
+        errors.parse.missing.expression
       </span>
     </span>
   </div>
@@ -1315,7 +1315,7 @@ exports[`FormulaResult [parse error 1] basic "=1 ++ 1" 2`] = `
       <span
         class="formula-result-error-message"
       >
-        Missing expression
+        errors.parse.missing.expression
       </span>
     </span>
   </div>
@@ -1338,7 +1338,7 @@ exports[`FormulaResult [partial error 1] basic "=1 +" 1`] = `
       <span
         class="formula-result-error-message"
       >
-        Missing expression
+        errors.parse.missing.expression
       </span>
     </span>
   </div>
@@ -1361,7 +1361,7 @@ exports[`FormulaResult [partial error 1] basic "=1 +" 2`] = `
       <span
         class="formula-result-error-message"
       >
-        Missing expression
+        errors.parse.missing.expression
       </span>
     </span>
   </div>
@@ -1538,6 +1538,52 @@ exports[`FormulaResult [row] basic "=BasicPage.spreadsheet.1" 2`] = `
             />
           </svg>
         </span>
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`FormulaResult access "=[1][" -> [syntax] "errors.parse.missing.closing_bracket" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        syntax
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.missing.closing_bracket
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`FormulaResult array "=[1,]" -> [syntax] "errors.parse.mismatch.expression_count" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        syntax
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.mismatch.expression_count
       </span>
     </span>
   </div>
@@ -2324,6 +2370,98 @@ exports[`FormulaResult basic "=true && false" 2`] = `
 </div>
 `;
 
+exports[`FormulaResult block "=#" -> [syntax] "errors.parse.missing.expression" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        syntax
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.missing.expression
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`FormulaResult functionCall "=ABS ()" -> [deps] "errors.parse.missing.argument" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        deps
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.missing.argument
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`FormulaResult functionCall "=ABS(1" -> [syntax] "errors.parse.missing.closing_parenthesis" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        syntax
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.missing.closing_parenthesis
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`FormulaResult functionCall "=custom::FORTY_TWO(1, 1, 1)" -> [deps] "errors.parse.mismatch.argument_count" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        deps
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.mismatch.argument_count
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
 exports[`FormulaResult parser "="bar"" -> [name_invalid] "errors.parse.name.invalid" 1`] = `
 <div>
   <div
@@ -2395,6 +2533,29 @@ exports[`FormulaResult parser "="if"" -> [name_check] "errors.parse.name.reserve
 
 exports[`FormulaResult renders nothing if no variableT 1`] = `<div />`;
 
+exports[`FormulaResult thisRecord "=ThisRecord" -> [syntax] "errors.parse.unavailable.thisRecord" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        syntax
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.unavailable.thisRecord
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
 exports[`FormulaResult thisRecord "=ThisRecord.A.1" -> [circular_dependency] "errors.interpret.circular_dependency.spreadsheet" 1`] = `
 <div>
   <div
@@ -2412,6 +2573,29 @@ exports[`FormulaResult thisRecord "=ThisRecord.A.1" -> [circular_dependency] "er
         class="formula-result-error-message"
       >
         errors.interpret.circular_dependency.spreadsheet
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`FormulaResult thisRow "=ThisRow" -> [syntax] "errors.parse.unavailable.thisRow" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        syntax
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.unavailable.thisRow
       </span>
     </span>
   </div>

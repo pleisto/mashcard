@@ -675,7 +675,7 @@ exports[`FormulaDisplay [parse error 1] basic "=1 ++ 1" 2`] = `
       class="mashcard-formula-borderless"
       style="color: rgb(207, 31, 40);"
     >
-      #&lt;Error&gt; Missing expression
+      #&lt;Error&gt; errors.parse.missing.expression
     </span>
   </span>
 </div>
@@ -717,7 +717,7 @@ exports[`FormulaDisplay [partial error 1] basic "=1 +" 2`] = `
       class="mashcard-formula-borderless"
       style="color: rgb(207, 31, 40);"
     >
-      #&lt;Error&gt; Missing expression
+      #&lt;Error&gt; errors.parse.missing.expression
     </span>
   </span>
 </div>

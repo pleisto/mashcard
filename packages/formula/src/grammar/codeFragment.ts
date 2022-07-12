@@ -204,10 +204,12 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 
     ctx.LBracket.forEach((dotOperand: CstNode | CstNode[], idx: number) => {
       const rhsCst = ctx.rhs?.[idx]
-      const missingRhsErrors: ErrorMessage[] = rhsCst ? [] : [{ message: 'Missing expression', type: 'syntax' }]
+      const missingRhsErrors: ErrorMessage[] = rhsCst
+        ? []
+        : [{ message: 'errors.parse.missing.expression', type: 'syntax' }]
       const missingRBracketErrors: ErrorMessage[] = ctx.RBracket?.[idx]
         ? []
-        : [{ message: 'Missing closing bracket', type: 'syntax' }]
+        : [{ message: 'errors.parse.missing.closing_bracket', type: 'syntax' }]
 
       codeFragments.push({
         ...token2fragment(ctx.LBracket[idx], 'any'),
@@ -288,7 +290,9 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     // eslint-disable-next-line complexity
     ctx.Dot.forEach((dotOperand: CstNode | CstNode[], idx: number) => {
       const rhsCst = ctx.rhs?.[idx]
-      const missingRhsErrors: ErrorMessage[] = rhsCst ? [] : [{ message: 'Missing expression', type: 'syntax' }]
+      const missingRhsErrors: ErrorMessage[] = rhsCst
+        ? []
+        : [{ message: 'errors.parse.missing.expression', type: 'syntax' }]
 
       codeFragments.push({
         ...token2fragment(ctx.Dot[0], 'any'),
@@ -509,7 +513,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     const ampersandCodeFragment = token2fragment(ctx.Ampersand[0], 'any')
     const ampersandErrors: ErrorMessage[] = ctx.lazyVariableExpression
       ? []
-      : [{ type: 'syntax', message: 'Missing variable' }]
+      : [{ type: 'syntax', message: 'Missing variable' }] // NOTE: this is unused
     codeFragments.push({ ...ampersandCodeFragment, errors: ampersandErrors })
 
     if (ctx.lazyVariableExpression) {
@@ -710,7 +714,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 
     if (!namespaceToken) {
       return {
-        codeFragments: [{ ...SharpFragment, errors: [{ message: `Miss expression`, type: 'syntax' }] }],
+        codeFragments: [{ ...SharpFragment, errors: [{ message: 'errors.parse.missing.expression', type: 'syntax' }] }],
         image: SharpFragment.display,
         type: 'any'
       }
@@ -864,7 +868,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 
     const rParenErrorMessages: ErrorMessage[] = ctx.RParen
       ? []
-      : [{ message: 'Missing closing parenthesis', type: 'syntax' }]
+      : [{ message: 'errors.parse.missing.closing_parenthesis', type: 'syntax' }]
     const rparenCodeFragments = ctx.RParen ? [token2fragment(ctx.RParen[0], clause ? clause.returns : 'any', meta)] : []
 
     const clauseErrorMessages: ErrorMessage[] = []
@@ -917,7 +921,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
         : { codeFragments: [], image: '' }
       const argsErrorMessages: ErrorMessage[] =
         clauseArgs.filter(a => !a.default).length > 0 && argsCodeFragments.length === 0
-          ? [{ message: 'Miss argument', type: 'deps' }]
+          ? [{ message: 'errors.parse.missing.argument', type: 'deps' }]
           : []
 
       images.push(ctx.LParen[0].image, image, ctx.RParen ? ctx.RParen[0].image : '')
@@ -997,11 +1001,13 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     })
 
     const expressionMatchErrorMessages: ErrorMessage[] =
-      validExpressionCount === commaIndex + 1 ? [] : [{ message: 'Expression count mismatch', type: 'syntax' }]
+      validExpressionCount === commaIndex + 1
+        ? []
+        : [{ message: 'errors.parse.mismatch.expression_count', type: 'syntax' }]
 
     const errorMessages: ErrorMessage[] =
       !!args && (ctx.expression.length > argumentTypes.length || ctx.expression.length < nonDefaultArgumentCount)
-        ? [{ message: 'Argument count mismatch', type: 'deps' }]
+        ? [{ message: 'errors.parse.mismatch.argument_count', type: 'deps' }]
         : []
     return {
       image: images.join(''),

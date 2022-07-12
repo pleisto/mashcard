@@ -160,8 +160,8 @@ export const inOperator: OperatorType = {
         errorType: 'type',
         errorMessage: 'Expected Array but got string'
       },
-      { definition: '= "foo" in', errorType: 'syntax', errorMessage: 'Missing expression' },
-      { definition: '=in', errorType: 'syntax', errorMessage: 'Missing expression' },
+      { definition: '= "foo" in', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
+      { definition: '=in', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '=in 123', errorType: 'type', errorMessage: 'Expected Array but got number' },
       { definition: '=in []', errorType: 'parse', errorMessage: 'Parse error: "in"', valid: false }
     ]

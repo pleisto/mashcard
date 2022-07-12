@@ -6,7 +6,7 @@ import { row2attrs, row2codeFragment } from '../convert'
 import { OperatorType } from '../operator'
 
 const unavailableMessage: ErrorMessage = {
-  message: 'thisRow is only available in spreadsheet',
+  message: 'errors.parse.unavailable.thisRow',
   type: 'syntax'
 }
 
@@ -153,7 +153,12 @@ export const thisRowOperator: OperatorType = {
       { definition: `=ThisRow["second"] + 1`, result: 3, richType, namespaceId }
     ],
     errorTestCases: [
-      { definition: `=ThisRow`, errorType: 'syntax', errorMessage: `thisRow is only available in spreadsheet` },
+      {
+        definition: `=ThisRow`,
+        errorType: 'syntax',
+        errorMessage: 'errors.parse.unavailable.thisRow',
+        groupOptions: [{ name: 'basicError' }]
+      },
       {
         definition: `=ThisRow.A`,
         errorType: 'circular_dependency',

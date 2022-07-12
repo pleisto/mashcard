@@ -2,6 +2,9 @@ en-US:
   formula:
     errors:
       parse:
+        unavailable:
+          thisRecord: thisRecord is only available in spreadsheet
+          thisRow: thisRow is only available in spreadsheet
         name:
           reserved: Variable name is reserved
           invalid: Variable name is not valid
@@ -9,6 +12,14 @@ en-US:
         circular_dependency:
           variable: Circular dependency found in variable
           spreadsheet: Circular dependency found in spreadsheet when parse
+        mismatch:
+          argument_count: Argument count mismatch
+          expression_count: Expression count mismatch
+        missing:
+          argument: Missing argument
+          expression: Missing expression
+          closing_parenthesis: Missing closing parenthesis
+          closing_bracket: Missing closing bracket
       interpret:
         circular_dependency:
           spreadsheet: Circular dependency found in spreadsheet when run

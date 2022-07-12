@@ -222,7 +222,7 @@ Array [
       "variableValue": Object {
         "result": Object {
           "meta": "syntax",
-          "result": "Missing expression",
+          "result": "errors.parse.missing.expression",
           "type": "Error",
         },
         "success": false,
@@ -267,7 +267,7 @@ Array [
           "display": "+",
           "errors": Array [
             Object {
-              "message": "Missing expression",
+              "message": "errors.parse.missing.expression",
               "type": "syntax",
             },
             Object {
