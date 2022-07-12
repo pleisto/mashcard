@@ -1,6 +1,7 @@
-import { makeContext, buildTestCases, trackTodo } from '../tests'
+import { makeContext, trackTodo, ALL_TEST_CASE } from '../tests'
 
-const [testCases] = buildTestCases()
+const testCases = ALL_TEST_CASE
+
 describe('errorParse', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {

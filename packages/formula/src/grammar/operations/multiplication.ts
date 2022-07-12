@@ -18,7 +18,7 @@ export const multiplicationOperator: OperatorType = {
       result = lhsResult * rhsResult
     } else if (tokenMatcher(operator, Div)) {
       if (rhsResult === 0) {
-        return { type: 'Error', result: 'Division by zero', meta: 'runtime' }
+        return { type: 'Error', result: 'errors.interpret.runtime.division_by_zero', meta: 'runtime' }
       }
 
       result = lhsResult / rhsResult
@@ -53,7 +53,11 @@ export const multiplicationOperator: OperatorType = {
       }
     ],
     successTestCases: [
-      { definition: '=1/0', result: 'Division by zero' },
+      {
+        definition: '=1/0',
+        result: 'errors.interpret.runtime.division_by_zero',
+        groupOptions: [{ name: 'basicError' }]
+      },
       { definition: '=2*2', result: 4 },
       { definition: '=1.4 / 2', result: 0.7 },
       { definition: '= 2 ^ 4', result: 16 },
@@ -75,7 +79,7 @@ export const multiplicationOperator: OperatorType = {
     errorTestCases: [
       { definition: '= 2 ^ true', errorType: 'type', errorMessage: 'Expected number,Cell but got boolean' },
       { definition: '= 2 * (2 = 4)', errorType: 'type', errorMessage: 'Expected number,Cell but got boolean' },
-      { definition: '=1**2', errorType: 'syntax', errorMessage: 'Missing expression' }
+      { definition: '=1**2', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' }
     ]
   }
 }

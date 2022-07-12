@@ -71,8 +71,8 @@ export const numberOperator: OperatorType = {
       { definition: '=-', errorType: 'syntax', errorMessage: 'Missing number' },
       { definition: '=-%', errorType: 'syntax', errorMessage: 'Missing number' },
       { definition: '=%', errorType: 'parse', errorMessage: 'Parse error: "%"', valid: false },
-      { definition: '=-1.', errorType: 'syntax', errorMessage: 'Missing expression' },
-      { definition: '=1.%', errorType: 'syntax', errorMessage: 'Missing expression' },
+      { definition: '=-1.', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
+      { definition: '=1.%', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '=1 & "123"', errorType: 'type', errorMessage: 'Expected string but got number' }
     ]
   }

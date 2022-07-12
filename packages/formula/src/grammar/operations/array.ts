@@ -33,12 +33,17 @@ export const arrayOperator: OperatorType = {
       }
     ],
     errorTestCases: [
-      { definition: '=[', errorType: 'syntax', errorMessage: 'Missing closing token' },
+      { definition: '=[', errorType: 'syntax', errorMessage: 'errors.parse.missing.token' },
       { definition: '=]', errorType: 'parse', errorMessage: 'Parse error: "]"', valid: false },
-      { definition: '=[1', errorType: 'syntax', errorMessage: 'Missing closing token' },
-      { definition: '=[1,', errorType: 'syntax', errorMessage: 'Missing closing token' },
-      { definition: '=[1,]', errorType: 'syntax', errorMessage: 'Expression count mismatch' },
-      { definition: '=[1,2', errorType: 'syntax', errorMessage: 'Missing closing token' }
+      { definition: '=[1', errorType: 'syntax', errorMessage: 'errors.parse.missing.token' },
+      { definition: '=[1,', errorType: 'syntax', errorMessage: 'errors.parse.missing.token' },
+      {
+        definition: '=[1,]',
+        errorType: 'syntax',
+        errorMessage: 'errors.parse.mismatch.expression_count',
+        groupOptions: [{ name: 'basicError' }]
+      },
+      { definition: '=[1,2', errorType: 'syntax', errorMessage: 'errors.parse.missing.token' }
     ]
   }
 }

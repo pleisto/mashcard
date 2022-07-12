@@ -84,7 +84,7 @@ export class RowClass implements RowType {
       const { spreadsheetId, rowId, columnId } = interpreter.ctx.meta.richType.meta
       if (spreadsheetId === this.spreadsheetId && rowId === this.rowId && columnId === column.columnId) {
         return {
-          result: 'Circular dependency found',
+          result: 'errors.interpret.circular_dependency.spreadsheet',
           type: 'Error',
           meta: 'circular_dependency'
         }
@@ -143,7 +143,7 @@ export class RowClass implements RowType {
       const { spreadsheetId, rowId, columnId } = visitor.ctx.meta.richType.meta
       if (spreadsheetId === this.spreadsheetId && rowId === this.rowId && columnId === column.columnId) {
         return {
-          errors: [{ type: 'circular_dependency', message: `Circular dependency found` }],
+          errors: [{ type: 'circular_dependency', message: 'errors.parse.circular_dependency.spreadsheet' }],
           firstArgumentType: undefined,
           codeFragments
         }

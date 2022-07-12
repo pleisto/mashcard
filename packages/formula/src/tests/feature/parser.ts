@@ -94,7 +94,7 @@ export const ParserTestCase: TestCaseInterface = {
         definition: '====',
         label: 'equal 3',
         errorType: 'syntax',
-        errorMessage: 'Missing expression',
+        errorMessage: 'errors.parse.missing.expression',
         expected: [
           {
             key: 'codeFragments',
@@ -105,7 +105,7 @@ export const ParserTestCase: TestCaseInterface = {
               {
                 code: 'Equal',
                 errors: [
-                  { message: 'Missing expression' },
+                  { message: 'errors.parse.missing.expression' },
                   { message: 'Parse error: "="' },
                   { message: 'Parse error: ""' }
                 ],
@@ -119,7 +119,7 @@ export const ParserTestCase: TestCaseInterface = {
         definition: '=====',
         label: 'equal 4',
         errorType: 'syntax',
-        errorMessage: 'Missing expression',
+        errorMessage: 'errors.parse.missing.expression',
         expected: [
           {
             key: 'codeFragments',
@@ -130,7 +130,7 @@ export const ParserTestCase: TestCaseInterface = {
               {
                 code: 'Equal2',
                 errors: [
-                  { message: 'Missing expression' },
+                  { message: 'errors.parse.missing.expression' },
                   { message: 'Parse error: "=="' },
                   { message: 'Parse error: ""' }
                 ],
@@ -142,8 +142,9 @@ export const ParserTestCase: TestCaseInterface = {
       },
       {
         definition: '="if"',
+        groupOptions: [{ name: 'basicError' }] as const,
         errorType: 'name_check',
-        errorMessage: 'Variable name is reserved',
+        errorMessage: 'errors.parse.name.reserved',
         expected: [
           {
             key: 'codeFragments',
@@ -158,7 +159,7 @@ export const ParserTestCase: TestCaseInterface = {
         name: 'if'
       },
       ...[
-        { name: 'in' },
+        { name: 'in', groupOptions: [{ name: 'basicError' }] as const },
         { name: '1asd' },
         { name: 'asd$asd' },
         { name: '' },
@@ -169,7 +170,7 @@ export const ParserTestCase: TestCaseInterface = {
         ...t,
         definition: '="bar"',
         errorType: 'name_invalid',
-        errorMessage: 'Variable name is not valid',
+        errorMessage: 'errors.parse.name.invalid',
         namespaceId,
         expected: [
           {
@@ -183,7 +184,7 @@ export const ParserTestCase: TestCaseInterface = {
         ]
       })),
       ...[
-        { name: 'bar' },
+        { name: 'bar', groupOptions: [{ name: 'basicError' }] as const },
         { name: 'BaR' },
         { name: 'ParserPage', label: 'block name' },
         { name: 'spreadsheet123', label: 'spreadsheet name' }
@@ -191,7 +192,7 @@ export const ParserTestCase: TestCaseInterface = {
         ...t,
         definition: '="bar"',
         errorType: 'name_unique',
-        errorMessage: 'Name exist in same namespace',
+        errorMessage: 'errors.parse.name.duplicated',
         expected: [
           {
             key: 'codeFragments',

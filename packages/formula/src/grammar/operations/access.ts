@@ -78,7 +78,12 @@ export const accessOperator: OperatorType = {
     ],
     errorTestCases: [
       { definition: '=[1,2,3][]', errorType: 'parse', errorMessage: 'Parse error: "]"', valid: false },
-      { definition: '=[1][', errorType: 'syntax', errorMessage: 'Missing closing bracket' },
+      {
+        definition: '=[1][',
+        errorType: 'syntax',
+        errorMessage: 'errors.parse.missing.closing_bracket',
+        groupOptions: [{ name: 'basicError' }]
+      },
       { definition: '={a: 1}[a]', errorType: 'syntax', errorMessage: '"a" not found' }
     ]
   }

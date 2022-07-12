@@ -23,7 +23,7 @@ export const recordOperator: OperatorType = {
       const key = codeFragment2string(keyFragments)
       const keyArray = rhsCodeFragments.map(c => codeFragment2string(c))
       if (key && keyArray.includes(key)) {
-        nameDuplicateErrors.push({ message: 'Record key duplicated', type: 'syntax' })
+        nameDuplicateErrors.push({ message: 'errors.parse.record.key_duplicated', type: 'syntax' })
       }
     }
 
@@ -71,21 +71,31 @@ export const recordOperator: OperatorType = {
       }
     ],
     errorTestCases: [
-      { definition: '={', errorType: 'syntax', errorMessage: 'Missing closing token' },
+      { definition: '={', errorType: 'syntax', errorMessage: 'errors.parse.missing.token' },
       { definition: '=}', errorType: 'parse', errorMessage: 'Parse error: "}"', valid: false },
       { definition: '={a}', errorType: 'parse', errorMessage: 'TODO mismatch token recordField', valid: false },
-      { definition: '={a', errorType: 'syntax', errorMessage: 'Missing closing token' },
-      { definition: '={a: }', errorType: 'syntax', errorMessage: 'Missing expression' },
-      { definition: '={a: 1', errorType: 'syntax', errorMessage: 'Missing closing token' },
-      { definition: '={"foo":}', errorType: 'syntax', errorMessage: 'Missing expression' },
-      { definition: '={a: 1, a: []}', errorType: 'syntax', errorMessage: 'Record key duplicated' },
-      { definition: '={a: 1, "a": 2}', errorType: 'syntax', errorMessage: 'Record key duplicated' },
-      { definition: '={null: 1}', errorType: 'syntax', label: 'todo null key', errorMessage: 'Missing closing token' },
+      { definition: '={a', errorType: 'syntax', errorMessage: 'errors.parse.missing.token' },
+      { definition: '={a: }', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
+      { definition: '={a: 1', errorType: 'syntax', errorMessage: 'errors.parse.missing.token' },
+      { definition: '={"foo":}', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
+      { definition: '={a: 1, a: []}', errorType: 'syntax', errorMessage: 'errors.parse.record.key_duplicated' },
+      {
+        definition: '={a: 1, "a": 2}',
+        errorType: 'syntax',
+        errorMessage: 'errors.parse.record.key_duplicated',
+        groupOptions: [{ name: 'basicError' }]
+      },
+      {
+        definition: '={null: 1}',
+        errorType: 'syntax',
+        label: 'todo null key',
+        errorMessage: 'errors.parse.missing.token'
+      },
       {
         definition: '={true: true}',
         errorType: 'syntax',
         label: 'todo null key',
-        errorMessage: 'Missing closing token'
+        errorMessage: 'errors.parse.missing.token'
       }
     ]
   }

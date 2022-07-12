@@ -1,21 +1,21 @@
 /* eslint-disable jest/no-conditional-expect */
 import { makeContext } from '../tests/testHelper'
-import { buildTestCases, trackTodo } from '../tests'
+import { buildTestCases, TestCaseInput, trackTodo } from '../tests'
 import { VariableInterface, VariableValue } from '../type'
 import { uuid } from '@mashcard/active-support'
 import { BlockType } from '../controls'
 
-const [testCases] = buildTestCases(['dependency'])
+const [input, testCases] = buildTestCases<TestCaseInput['dependencyTestCases'][0]>(['dependency'])
 
 describe('dependency', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeEach(async () => {
-    ctx = await makeContext({ ...testCases.options, uuidFunction: index => uuid() })
+    ctx = await makeContext({ ...input.options, uuidFunction: index => uuid() })
   })
 
-  trackTodo(it, testCases.dependencyTestCases)
+  trackTodo(it, testCases)
 
-  it.each(testCases.dependencyTestCases)('$jestTitle', async args => {
+  it.each(testCases)('$jestTitle', async args => {
     let v: VariableInterface, b: BlockType
 
     if (args.type === 'Variable') {

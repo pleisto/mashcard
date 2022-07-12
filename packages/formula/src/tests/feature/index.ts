@@ -22,7 +22,11 @@ export const FeatureTestCases: TestCaseInterface[] = [
   FormatTestCase,
   DependencyTestCase,
   OtherTestCase,
-  BasicTestCase,
+  ...BasicTestCase,
   ...EventTestCases,
   ...CompleteTestCase
 ]
+
+export { BasicNames } from './basic'
+export { CompleteNames } from './complete'
+export { EventNames } from './event'

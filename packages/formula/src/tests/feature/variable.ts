@@ -308,7 +308,8 @@ export const VariableTestCase: TestCaseInterface = {
         variableId: num0Id,
         name: 'num0',
         errorType: 'circular_dependency',
-        errorMessage: 'Circular dependency found'
+        groupOptions: [{ name: 'basicError' }],
+        errorMessage: 'errors.parse.circular_dependency.variable'
       },
       {
         definition: '=num4',
@@ -316,7 +317,7 @@ export const VariableTestCase: TestCaseInterface = {
         variableId: num0Id,
         name: 'num0',
         errorType: 'circular_dependency',
-        errorMessage: 'Circular dependency found'
+        errorMessage: 'errors.parse.circular_dependency.variable'
       },
       {
         definition: '=IF(false, 1, num4)',
@@ -324,7 +325,7 @@ export const VariableTestCase: TestCaseInterface = {
         variableId: num0Id,
         name: 'num0',
         errorType: 'circular_dependency',
-        errorMessage: 'Circular dependency found'
+        errorMessage: 'errors.parse.circular_dependency.variable'
       }
     ]
   }

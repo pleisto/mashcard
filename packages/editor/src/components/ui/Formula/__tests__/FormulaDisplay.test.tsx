@@ -2,17 +2,17 @@ import { buildTestCases, dumpDisplayResultForDisplay, makeContext } from '@mashc
 import { render } from '@testing-library/react'
 import { FormulaDisplay } from '..'
 
-const [testCases] = buildTestCases(['basic'])
+const [input] = buildTestCases(['basic'])
 
 describe('FormulaDisplay', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
     jest.useRealTimers()
-    ctx = await makeContext(testCases.options)
+    ctx = await makeContext(input.options)
     jest.clearAllTimers()
   })
 
-  it.each(testCases.basicTestCases)('$jestTitle', async args => {
+  it.each(input.basicTestCases)('$jestTitle', async args => {
     const [tempT] = await ctx.interpretDirectly(args)
     const displayData = dumpDisplayResultForDisplay(tempT)
     const { container } = render(<FormulaDisplay formulaType="normal" displayData={displayData} />)

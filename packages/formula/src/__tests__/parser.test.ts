@@ -1,7 +1,7 @@
-import { buildTestCases } from '../tests'
+import { ALL_TEST_CASE } from '../tests'
 import { makeContext } from '../tests/testHelper'
 
-const [testCases] = buildTestCases()
+const testCases = ALL_TEST_CASE
 
 describe('parser', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>

@@ -205,7 +205,7 @@ export const parseByOperator = (input: ParseInput): CodeFragmentResult => {
   if (prefixToken?.[0]) {
     codeFragments.unshift({
       ...token2fragment(prefixToken[0], 'any'),
-      errors: suffixToken?.[0] ? [] : [{ message: 'Missing closing token', type: 'syntax' }]
+      errors: suffixToken?.[0] ? [] : [{ message: 'errors.parse.missing.token', type: 'syntax' }]
     })
     finalImages.unshift(prefixToken[0].image)
   }
@@ -283,7 +283,7 @@ const innerParse = ({
     prevType = rhsDataType
 
     if (!rhsValue.length) {
-      missingTokenErrorMessages.push({ message: 'Missing expression', type: 'syntax' })
+      missingTokenErrorMessages.push({ message: 'errors.parse.missing.expression', type: 'syntax' })
     }
 
     let operatorTokenCodeFragments: CodeFragment[] = []

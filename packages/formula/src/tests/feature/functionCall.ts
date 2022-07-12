@@ -46,7 +46,7 @@ export const FunctionCallTestCase: TestCaseInterface = {
   testCases: {
     functionClauses,
     successTestCases: [
-      { definition: '= ABS(1/0)', result: 'Division by zero' },
+      { definition: '= ABS(1/0)', result: 'errors.interpret.runtime.division_by_zero' },
       {
         definition: '=Abs(-1) + abs(1) + ABS(1) + core::ABS(-1)',
         result: 4,
@@ -151,7 +151,7 @@ export const FunctionCallTestCase: TestCaseInterface = {
       {
         definition: '=ABS(',
         errorType: 'deps',
-        errorMessage: 'Miss argument',
+        errorMessage: 'errors.parse.missing.argument',
         expected: [
           {
             key: 'codeFragments',
@@ -162,29 +162,43 @@ export const FunctionCallTestCase: TestCaseInterface = {
                 code: 'Function',
                 display: 'ABS',
                 attrs: { kind: 'Function' },
-                errors: [{ message: 'Miss argument' }, { message: 'TODO mismatch token FunctionCall' }]
+                errors: [{ message: 'errors.parse.missing.argument' }, { message: 'TODO mismatch token FunctionCall' }]
               },
               {
                 code: 'LParen',
                 meta: { args: [{ name: 'number', type: 'number' }], endCode: 'RParen' },
-                errors: [{ message: 'Missing closing parenthesis' }]
+                errors: [{ message: 'errors.parse.missing.closing_parenthesis' }]
               }
             ]
           }
         ]
       },
-      { definition: '=ABS(1', errorType: 'syntax', errorMessage: 'Missing closing parenthesis' },
-      { definition: '=POWER(1,', errorType: 'syntax', errorMessage: 'Missing closing parenthesis' },
-      { definition: '=POWER(1,2', errorType: 'syntax', errorMessage: 'Missing closing parenthesis' },
-
-      { definition: '=custom::FORTY_TWO(1, 1, 1)', errorType: 'deps', errorMessage: 'Argument count mismatch' },
+      {
+        definition: '=ABS(1',
+        errorType: 'syntax',
+        errorMessage: 'errors.parse.missing.closing_parenthesis',
+        groupOptions: [{ name: 'basicError' }]
+      },
+      { definition: '=POWER(1,', errorType: 'syntax', errorMessage: 'errors.parse.missing.closing_parenthesis' },
+      { definition: '=POWER(1,2', errorType: 'syntax', errorMessage: 'errors.parse.missing.closing_parenthesis' },
+      {
+        definition: '=custom::FORTY_TWO(1, 1, 1)',
+        errorType: 'deps',
+        errorMessage: 'errors.parse.mismatch.argument_count',
+        groupOptions: [{ name: 'basicError' }]
+      },
       { definition: '=ABS ( "a" )', errorType: 'type', errorMessage: 'Expected number but got string' },
       { definition: '=IF(1, -3, -4)', errorType: 'type', errorMessage: 'Expected boolean but got number' },
       { definition: '=ABS( NOW() )', errorType: 'type', errorMessage: 'Expected number but got Date' },
       { definition: '=ABS ( true )', errorType: 'type', errorMessage: 'Expected number but got boolean' },
-      { definition: '=ABS ()', errorType: 'deps', errorMessage: 'Miss argument' },
-      { definition: '=ABS(1,2)', errorType: 'deps', errorMessage: 'Argument count mismatch' },
-      { definition: '=AVERAGE()', errorType: 'deps', errorMessage: 'Miss argument' }
+      {
+        definition: '=ABS ()',
+        errorType: 'deps',
+        errorMessage: 'errors.parse.missing.argument',
+        groupOptions: [{ name: 'basicError' }]
+      },
+      { definition: '=ABS(1,2)', errorType: 'deps', errorMessage: 'errors.parse.mismatch.argument_count' },
+      { definition: '=AVERAGE()', errorType: 'deps', errorMessage: 'errors.parse.missing.argument' }
     ]
   }
 }

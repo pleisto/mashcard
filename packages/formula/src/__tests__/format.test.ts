@@ -1,20 +1,20 @@
 import { makeContext, splitDefinition$ } from '../tests/testHelper'
-import { buildTestCases, trackTodo } from '../tests'
+import { buildTestCases, TestCaseInput, trackTodo } from '../tests'
 import { applyFormat } from '../grammar/format'
 
-const [testCases] = buildTestCases(['format'])
+const [input, testCases] = buildTestCases<TestCaseInput['formatTestCases'][0]>(['format'])
 
 const SKIP_FLAG = '<SKIP>'
 
 describe('format', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
-    ctx = await makeContext(testCases.options)
+    ctx = await makeContext(input.options)
   })
 
-  trackTodo(it, testCases.formatTestCases)
+  trackTodo(it, testCases)
 
-  it.each(testCases.formatTestCases)('$jestTitle', async args => {
+  it.each(testCases)('$jestTitle', async args => {
     const [definition, position] = splitDefinition$(args.definition$)
     const newCtx = { ...ctx, meta: ctx.buildMeta({ ...args, definition, position }) }
 

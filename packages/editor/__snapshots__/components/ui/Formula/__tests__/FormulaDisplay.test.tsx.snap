@@ -150,7 +150,7 @@ exports[`FormulaDisplay [Divide by zero error] basic "=1/0" 2`] = `
       class="mashcard-formula-borderless"
       style="color: rgb(207, 31, 40);"
     >
-      #&lt;Error&gt; Division by zero
+      #&lt;Error&gt; errors.interpret.runtime.division_by_zero
     </span>
   </span>
 </div>
@@ -461,7 +461,7 @@ exports[`FormulaDisplay [cell] basic "=BasicPage.spreadsheet.first.1" 2`] = `
       class="mashcard-formula-borderless"
       style="color: rgb(207, 31, 40);"
     >
-      #&lt;Error&gt; Circular dependency found
+      #&lt;Error&gt; errors.interpret.circular_dependency.spreadsheet
     </span>
   </span>
 </div>
@@ -675,7 +675,7 @@ exports[`FormulaDisplay [parse error 1] basic "=1 ++ 1" 2`] = `
       class="mashcard-formula-borderless"
       style="color: rgb(207, 31, 40);"
     >
-      #&lt;Error&gt; Missing expression
+      #&lt;Error&gt; errors.parse.missing.expression
     </span>
   </span>
 </div>
@@ -717,7 +717,7 @@ exports[`FormulaDisplay [partial error 1] basic "=1 +" 2`] = `
       class="mashcard-formula-borderless"
       style="color: rgb(207, 31, 40);"
     >
-      #&lt;Error&gt; Missing expression
+      #&lt;Error&gt; errors.parse.missing.expression
     </span>
   </span>
 </div>

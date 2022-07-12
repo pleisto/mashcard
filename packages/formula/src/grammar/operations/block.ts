@@ -172,7 +172,12 @@ export const blockOperator: OperatorType = {
       }
     ],
     errorTestCases: [
-      { definition: `=#`, errorType: 'syntax', errorMessage: 'Miss expression' },
+      {
+        definition: `=#`,
+        errorType: 'syntax',
+        errorMessage: 'errors.parse.missing.expression',
+        groupOptions: [{ name: 'basicError' }]
+      },
       {
         definition: '=UnknownBlock',
         errorType: 'syntax',

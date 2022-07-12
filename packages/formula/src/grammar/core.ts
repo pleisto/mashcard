@@ -373,7 +373,7 @@ const innerParse = (ctx: FunctionContext): ParseResult => {
       ...returnValue,
       success: false,
       errorType: 'syntax',
-      errorMessages: [{ message: 'Circular dependency found', type: 'circular_dependency' }],
+      errorMessages: [{ message: 'errors.parse.circular_dependency.variable', type: 'circular_dependency' }],
       variableParseResult: {
         ...returnValue.variableParseResult,
         kind: 'unknown'
@@ -386,7 +386,7 @@ const innerParse = (ctx: FunctionContext): ParseResult => {
       ...returnValue,
       success: false,
       errorType: 'syntax',
-      errorMessages: [{ message: 'Variable name is not valid', type: 'name_invalid' }],
+      errorMessages: [{ message: 'errors.parse.name.invalid', type: 'name_invalid' }],
       variableParseResult: {
         ...returnValue.variableParseResult,
         kind: 'unknown'
@@ -399,7 +399,7 @@ const innerParse = (ctx: FunctionContext): ParseResult => {
       ...returnValue,
       success: false,
       errorType: 'syntax',
-      errorMessages: [{ message: 'Variable name is reserved', type: 'name_check' }],
+      errorMessages: [{ message: 'errors.parse.name.reserved', type: 'name_check' }],
       variableParseResult: {
         ...returnValue.variableParseResult,
         kind: 'unknown'
@@ -414,7 +414,7 @@ const innerParse = (ctx: FunctionContext): ParseResult => {
       ...returnValue,
       success: false,
       errorType: 'syntax',
-      errorMessages: [{ message: 'Name exist in same namespace', type: 'name_unique' }],
+      errorMessages: [{ message: 'errors.parse.name.duplicated', type: 'name_unique' }],
       variableParseResult: {
         ...returnValue.variableParseResult,
         kind: 'unknown'
