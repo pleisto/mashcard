@@ -49,6 +49,21 @@ describe Group, type: :model do
     end
   end
 
+  describe '.destroy' do
+    it 'ok' do
+      group = described_class.create!(display_name: FFaker::Name.name, username: Time.now.to_i.to_s(36), owner_id: create(:owner).id)
+      group.update!(invite_enable: true, invite_secret: 'foo bar')
+      group.destroy_group!
+
+      expect(group.invite_enable).to be(false)
+      expect(group.invite_secret).to be_nil
+
+      group.reload
+
+      expect(group.deleted_at).not_to be_nil
+    end
+  end
+
   describe '.relation' do
     it 'group member' do
       user = create(:accounts_user)

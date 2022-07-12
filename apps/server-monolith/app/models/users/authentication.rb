@@ -42,6 +42,8 @@
 #
 module Users
   class Authentication < ApplicationRecord
+    include Hashedidable
+
     belongs_to :user, optional: true
 
     ## Devise

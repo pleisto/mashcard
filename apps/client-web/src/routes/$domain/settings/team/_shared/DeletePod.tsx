@@ -2,7 +2,7 @@ import { Button, FormControl, Input, Modal, toast, useBoolean } from '@mashcard/
 import { FC, useState } from 'react'
 import { Trans } from 'react-i18next'
 
-import { usePodDestroyMutation } from '@/MashcardGraphQL'
+import { useGroupDestroyMutation } from '@/MashcardGraphQL'
 import { Panel } from '../../_shared/Panel'
 import { SettingsContextProps } from '../../_shared/SettingContext'
 import { useSettingsI18n } from '../../_shared/useSettingsI18n'
@@ -11,20 +11,20 @@ import * as Root from './DeletePod.style'
 export const DeletePod: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
   const { t } = useSettingsI18n()
   const [isOpen, { setTrue: setOpen, setFalse: setClose }] = useBoolean(false)
-  const [deletePod, { loading: deleting }] = usePodDestroyMutation()
+  const [deleteGroup, { loading: deleting }] = useGroupDestroyMutation()
   const [inputVal, setInputVal] = useState('')
 
   const podUsername = pod!.domain
 
   const deletePodHandler = async (): Promise<void> => {
-    const result = await deletePod({
+    const result = await deleteGroup({
       variables: {
         input: {
-          domain: podUsername
+          username: podUsername
         }
       }
     })
-    const errors = result.data?.podDestroy?.errors
+    const errors = result.data?.groupDestroy?.errors
     if (errors && errors?.length > 0) {
       toast.error(errors.join('\n'))
     } else {
@@ -64,8 +64,7 @@ export const DeletePod: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => 
                 }}
               />
             </Root.ModalDesc>
-          }
-        >
+          }>
           <Input type="text" onChange={e => setInputVal(e.target.value)} />
         </FormControl>
         <Root.ModalBtnGroup>
@@ -75,8 +74,7 @@ export const DeletePod: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => 
             }}
             type="secondary"
             block
-            size="lg"
-          >
+            size="lg">
             {t('account.delete_account_confirm_cancel')}
           </Button>
           <Button
@@ -85,8 +83,7 @@ export const DeletePod: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => 
             loading={deleting}
             block
             size="lg"
-            disabled={inputVal !== podUsername}
-          >
+            disabled={inputVal !== podUsername}>
             {t('team.delete_pod_confirm_btn')}
           </Button>
         </Root.ModalBtnGroup>

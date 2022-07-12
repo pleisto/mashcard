@@ -100,7 +100,12 @@ class User < Pod
 
     ActiveRecord::Base.transaction do
       authentication&.destroy_authentication!
-      destroy!
+      update_columns(
+        name: "delete user #{hashed_id}",
+        domain: "deleted_user_#{hashed_id}",
+        bio: "masked username #{username.to_data_masking} has ben deleted",
+        deleted_at: Time.current
+      )
       true
     end
   end
