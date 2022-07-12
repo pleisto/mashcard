@@ -28,7 +28,7 @@ exports[`MentionMenuUserGroup matches correct snapshot 1`] = `
         class="mc-c-llTUqV"
       >
         <li
-          class="mc-c-bcnCdR mc-c-klLbby"
+          class="mc-c-jCYxqH mc-c-klLbby"
           id="user-group-1"
           role="menuitem"
           tabindex="0"
@@ -48,7 +48,7 @@ exports[`MentionMenuUserGroup matches correct snapshot 1`] = `
           </span>
         </li>
         <li
-          class="mc-c-bcnCdR mc-c-klLbby"
+          class="mc-c-jCYxqH mc-c-klLbby"
           id="user-group-2"
           role="menuitem"
           tabindex="-1"
@@ -68,7 +68,7 @@ exports[`MentionMenuUserGroup matches correct snapshot 1`] = `
           </span>
         </li>
         <li
-          class="mc-c-bcnCdR mc-c-klLbby"
+          class="mc-c-jCYxqH mc-c-klLbby"
           id="user-group-3"
           role="menuitem"
           tabindex="-1"

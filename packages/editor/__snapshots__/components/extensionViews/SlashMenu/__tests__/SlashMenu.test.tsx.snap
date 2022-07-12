@@ -5,7 +5,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
   <ul
     aria-label="block_selector.title"
     aria-orientation="vertical"
-    class="mc-c-bOsLjs mc-c-bOsLjs-hivZaV-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical mc-c-dstnVi mc-c-dstnVi-iAMRjR-withFooter-true"
+    class="mc-c-bOsLjs mc-c-bOsLjs-hivZaV-theme-default mc-c-bOsLjs-iTKOFX-orientation-vertical mc-c-cHngwI mc-c-cHngwI-iAMRjR-withFooter-true"
     id="block-selector"
     role="menubar"
   >
@@ -26,7 +26,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </span>
       </span>
       <li
-        class="mc-c-bcnCdR mc-c-bcnCdR-cOuhSn-active-true"
+        class="mc-c-jCYxqH mc-c-jCYxqH-cOuhSn-active-true"
         id="block-selector-1"
         label="blocks.formula.label"
         role="menuitem"
@@ -50,7 +50,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="formula"
@@ -93,7 +93,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-2"
         label="blocks.spreadsheet.label"
         role="menuitem"
@@ -117,7 +117,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="table"
@@ -168,7 +168,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-3"
         label="blocks.upload.label"
         role="menuitem"
@@ -192,7 +192,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="upload"
@@ -244,7 +244,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-4"
         label="blocks.link.label"
         role="menuitem"
@@ -268,7 +268,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="link"
@@ -310,7 +310,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-5"
         label="blocks.embed.label"
         role="menuitem"
@@ -334,7 +334,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="compass"
@@ -438,7 +438,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-6"
         label="blocks.h1.label"
         role="menuitem"
@@ -462,7 +462,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="rte-h1"
@@ -510,7 +510,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-7"
         label="blocks.h2.label"
         role="menuitem"
@@ -534,7 +534,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="rte-h2"
@@ -582,7 +582,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-8"
         label="blocks.h3.label"
         role="menuitem"
@@ -606,7 +606,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="rte-h3"
@@ -654,7 +654,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-9"
         label="blocks.h4.label"
         role="menuitem"
@@ -678,7 +678,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="rte-h4"
@@ -726,7 +726,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-10"
         label="blocks.h5.label"
         role="menuitem"
@@ -750,7 +750,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="rte-h5"
@@ -798,7 +798,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-11"
         label="blocks.bulletedList.label"
         role="menuitem"
@@ -822,7 +822,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="list-unordered"
@@ -866,7 +866,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-12"
         label="blocks.orderedList.label"
         role="menuitem"
@@ -890,7 +890,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="list-ordered"
@@ -934,7 +934,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-13"
         label="blocks.taskList.label"
         role="menuitem"
@@ -958,7 +958,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="checkbox-circle"
@@ -1008,7 +1008,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-14"
         label="blocks.code.label"
         role="menuitem"
@@ -1032,7 +1032,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="code"
@@ -1076,7 +1076,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-15"
         label="blocks.blockquote.label"
         role="menuitem"
@@ -1100,7 +1100,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="quote"
@@ -1142,7 +1142,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-16"
         label="blocks.callout.label"
         role="menuitem"
@@ -1166,7 +1166,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="bulb"
@@ -1210,7 +1210,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-17"
         label="blocks.divider.label"
         role="menuitem"
@@ -1234,7 +1234,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="divider"
@@ -1284,7 +1284,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-18"
         label="blocks.toc.label"
         role="menuitem"
@@ -1308,7 +1308,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="toc"
@@ -1358,7 +1358,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="block-selector-19"
         label="blocks.subPageMenu.label"
         role="menuitem"
@@ -1382,7 +1382,7 @@ exports[`SlashMenu renders SlashMenu correctly 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="mindmap-list"

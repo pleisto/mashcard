@@ -21,8 +21,3 @@ export const itemCommon = {
   ...hover,
   ...pressed
 }
-
-export const LinkInputWrapper = styled('div', {
-  width: 204,
-  margin: '4px 16px'
-})

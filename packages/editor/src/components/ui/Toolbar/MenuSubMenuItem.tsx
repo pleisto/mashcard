@@ -2,7 +2,7 @@ import { FC, Fragment, ReactElement, useState } from 'react'
 import { Icon, Menu, Popover, styled, theme } from '@mashcard/design-system'
 import { ToolbarSubMenuOption, ToolbarItemOption, ToolbarItemGroupOption } from './Toolbar'
 import { ToolbarMenuItem } from './MenuItem'
-import { itemCommon, itemHeight, LinkInputWrapper } from './styles/index.style'
+import { itemCommon, itemHeight } from './styles/index.style'
 import { variants } from './styles/variants.style'
 
 const SubMenuItem = styled('li', {
@@ -50,8 +50,7 @@ const renderMenuInner = (option: ToolbarItemGroupOption, closeMenu: VoidFunction
       onAction={key => {
         item.onAction?.(key)
         if (item.closeOnAction) closeMenu()
-      }}
-    >
+      }}>
       {item.content}
     </Menu.Item>
   ))
@@ -79,9 +78,6 @@ const renderMenu = (
             </Fragment>
           )
         }
-        if (menuItem.name === 'linkInput') {
-          return <LinkInputWrapper key={menuItem.name}>{menuItem.content}</LinkInputWrapper>
-        }
         return (
           <Menu.Item
             key={menuItem.name}
@@ -92,8 +88,7 @@ const renderMenu = (
             onAction={key => {
               menuItem.onAction?.(key)
               if (menuItem.closeOnAction) closeMenu()
-            }}
-          >
+            }}>
             {menuItem.content}
           </Menu.Item>
         )
@@ -121,8 +116,7 @@ export const ToolbarMenuSubMenuItem: FC<ToolbarMenuSubMenuItemProps> = ({ option
       placement="bottom"
       compact={true}
       content={MenuContent}
-      destroyTooltipOnHide={true}
-    >
+      destroyTooltipOnHide={true}>
       {hasContent && <ToolbarMenuItem option={option} />}
       {!hasContent && (
         <SubMenuItem role="menuitem" aria-label={option.label ?? option.name} active={option.active} css={option.css}>

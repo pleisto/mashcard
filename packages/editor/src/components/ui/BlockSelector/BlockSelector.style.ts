@@ -5,7 +5,7 @@ import { IconBackground } from '../../ui'
 const footerHeight = '2rem'
 
 export const BlockSelectorContainer = styled(Menu as FC<MenuProps>, {
-  maxHeight: 'inherit',
+  maxHeight: '23rem',
   overflow: 'auto',
   paddingBottom: footerHeight,
   width: '16.5rem',

@@ -8,7 +8,8 @@ const POPUP_MIN_HEIGHT = 318
 export function createPopup(
   clientRect: GetReferenceClientRect,
   content: HTMLElement,
-  placement: Placement = 'bottom-start'
+  placement: Placement = 'bottom-start',
+  options?: Partial<Props>
 ): Instance<Props> {
   // @popperjs Modifier
   const applyMaxSize: any = {
@@ -41,8 +42,18 @@ export function createPopup(
     trigger: 'manual',
     placement,
     popperOptions: {
-      // auto detect overflow of viewport
-      modifiers: [maxSize, applyMaxSize]
-    }
+      modifiers: [
+        maxSize,
+        applyMaxSize,
+        {
+          name: 'flip',
+          options: {
+            fallbackPlacements: ['top', 'right']
+          }
+        }
+      ],
+      ...options?.popperOptions
+    },
+    ...options
   })[0]
 }

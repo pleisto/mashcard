@@ -25,7 +25,7 @@ exports[`MentionMenuPageGroup matches correct snapshot 1`] = `
         </span>
       </span>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="page-group-1"
         label="page name 0"
         role="menuitem"
@@ -48,7 +48,7 @@ exports[`MentionMenuPageGroup matches correct snapshot 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 icon 0
               </span>
@@ -69,7 +69,7 @@ exports[`MentionMenuPageGroup matches correct snapshot 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="page-group-2"
         label="page name 1"
         role="menuitem"
@@ -92,7 +92,7 @@ exports[`MentionMenuPageGroup matches correct snapshot 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 icon 1
               </span>
@@ -113,7 +113,7 @@ exports[`MentionMenuPageGroup matches correct snapshot 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-bcnCdR"
+        class="mc-c-jCYxqH"
         id="page-group-3"
         label="page name 2"
         role="menuitem"
@@ -136,7 +136,7 @@ exports[`MentionMenuPageGroup matches correct snapshot 1`] = `
                 class="mc-c-BfbNy"
               />
               <span
-                class="mc-c-jVLVTy"
+                class="mc-c-jMiygT"
               >
                 <span
                   aria-label="file-pages"

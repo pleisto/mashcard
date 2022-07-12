@@ -1,5 +1,6 @@
 import { css, CSS, globalCss, theme } from '@mashcard/design-system'
 import { spreadsheetStyles } from '../../components/blockViews/Spreadsheet/Spreadsheet.style'
+import { LINK_CLASS_NAME } from '../../extensions/marks/link'
 import { defaultSelectionStyles } from '../../styles/index.style'
 import anchorLine from './assets/anchor-line.png'
 
@@ -111,7 +112,7 @@ const discussionMarkStyles: CSS = {
 }
 
 const linkStyles: CSS = {
-  'a.mashcard-link': {
+  [`a.${LINK_CLASS_NAME}`]: {
     color: 'inherit',
     textDecoration: 'none',
     borderBottom: `1px solid ${theme.colors.grey5}`
