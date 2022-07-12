@@ -858,7 +858,7 @@ exports[`formulaType [cell] basic "=BasicPage.spreadsheet.first.1" 2`] = `
           class="mashcard-formula-mark"
           data-code="NumberLiteral"
           data-display="1"
-          data-errors="Circular dependency found"
+          data-errors="errors.interpret.circular_dependency.spreadsheet"
           data-type="number"
           style="color: #39b3e8;; 
   text-decoration: underline;
@@ -1219,7 +1219,7 @@ exports[`formulaType [parse error 1] basic "=1 ++ 1" 1`] = `
           class="mashcard-formula-mark"
           data-code="Plus"
           data-display="+"
-          data-errors="Missing expression"
+          data-errors="errors.parse.missing.expression"
           data-type="number"
           style="
   text-decoration: underline;
@@ -1299,7 +1299,7 @@ exports[`formulaType [parse error 1] basic "=1 ++ 1" 2`] = `
           class="mashcard-formula-mark"
           data-code="Plus"
           data-display="+"
-          data-errors="Missing expression"
+          data-errors="errors.parse.missing.expression"
           data-type="number"
           style="
   text-decoration: underline;
@@ -1371,7 +1371,7 @@ exports[`formulaType [partial error 1] basic "=1 +" 1`] = `
           class="mashcard-formula-mark"
           data-code="Plus"
           data-display="+"
-          data-errors="Missing expression"
+          data-errors="errors.parse.missing.expression"
           data-type="number"
           style="
   text-decoration: underline;
@@ -1426,7 +1426,7 @@ exports[`formulaType [partial error 1] basic "=1 +" 2`] = `
           class="mashcard-formula-mark"
           data-code="Plus"
           data-display="+"
-          data-errors="Missing expression"
+          data-errors="errors.parse.missing.expression"
           data-type="number"
           style="
   text-decoration: underline;
