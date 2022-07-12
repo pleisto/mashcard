@@ -156,7 +156,7 @@ exports[`FormulaValue [Divide by zero error] basic "=1/0" 1`] = `
     class="mashcard-formula-borderless"
     style="color: rgb(207, 31, 40);"
   >
-    #&lt;Error&gt; Division by zero
+    #&lt;Error&gt; errors.interpret.runtime.division_by_zero
   </span>
 </div>
 `;
@@ -194,7 +194,7 @@ exports[`FormulaValue [Divide by zero error] basic "=1/0" 3`] = `
     class="mashcard-formula-borderless"
     style="color: rgb(207, 31, 40);"
   >
-    #&lt;Error&gt; Division by zero
+    #&lt;Error&gt; errors.interpret.runtime.division_by_zero
   </span>
 </div>
 `;
@@ -205,7 +205,7 @@ exports[`FormulaValue [Divide by zero error] basic "=1/0" 4`] = `
     class="mashcard-formula-borderless"
     style="color: rgb(207, 31, 40);"
   >
-    #&lt;Error&gt; Division by zero
+    #&lt;Error&gt; errors.interpret.runtime.division_by_zero
   </span>
 </div>
 `;
