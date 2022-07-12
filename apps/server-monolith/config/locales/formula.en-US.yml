@@ -20,6 +20,9 @@ en-US:
           expression: Missing expression
           closing_parenthesis: Missing closing parenthesis
           closing_bracket: Missing closing bracket
+          token: Missing closing token
+        record:
+          key_duplicated: Record key duplicated
       interpret:
         circular_dependency:
           spreadsheet: Circular dependency found in spreadsheet when run

@@ -24,7 +24,12 @@ export const OtherTestCase: TestCaseInterface = {
       { definition: '=<', errorType: 'parse', errorMessage: 'Parse error: ""', valid: false },
       { definition: '=<>', errorType: 'parse', errorMessage: 'Parse error: ""', valid: false },
       { definition: '=ABS(1 {a: 1}.a', errorType: 'type', errorMessage: 'Expected Cell but got number' },
-      { definition: '=(1 {}.', errorType: 'syntax', errorMessage: 'Missing closing token' }
+      {
+        definition: '=(1 {}.',
+        errorType: 'syntax',
+        errorMessage: 'errors.parse.missing.token',
+        groupOptions: [{ name: 'basicError' }]
+      }
     ]
   }
 }

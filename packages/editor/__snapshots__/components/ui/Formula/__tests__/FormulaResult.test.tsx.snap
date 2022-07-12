@@ -2462,6 +2462,29 @@ exports[`FormulaResult functionCall "=custom::FORTY_TWO(1, 1, 1)" -> [deps] "err
 </div>
 `;
 
+exports[`FormulaResult other "=(1 {}." -> [syntax] "errors.parse.missing.token" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        syntax
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.missing.token
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
 exports[`FormulaResult parser "="bar"" -> [name_invalid] "errors.parse.name.invalid" 1`] = `
 <div>
   <div
@@ -2525,6 +2548,29 @@ exports[`FormulaResult parser "="if"" -> [name_check] "errors.parse.name.reserve
         class="formula-result-error-message"
       >
         errors.parse.name.reserved
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`FormulaResult record "={a: 1, "a": 2}" -> [syntax] "errors.parse.record.key_duplicated" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        syntax
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.record.key_duplicated
       </span>
     </span>
   </div>
