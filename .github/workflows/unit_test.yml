@@ -44,6 +44,8 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: frontend-unit
+          fail_ci_if_error: true
+          verbose: true
   rspec:
     name: Rspec
     runs-on: ubuntu-latest
@@ -136,10 +138,12 @@ jobs:
           check_name: Rails RSpec Test Setting Report
       - name: Publish RSpec code coverage reports
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: backend-unit
+          fail_ci_if_error: true
+          verbose: true
       - name: Get changed database migrations
         id: changed-db-migrations
         uses: tj-actions/changed-files@v23
