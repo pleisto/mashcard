@@ -1,4 +1,5 @@
-import { css, theme, styled, Input as input } from '@mashcard/design-system'
+import { css, theme, styled } from '@mashcard/design-system'
+import TextareaAutosize from '@mui/base/TextareaAutosize'
 
 export const MaxWidth = styled('div', {
   width: '100%',
@@ -59,24 +60,22 @@ export const popover = css({
   }
 })
 
-export const Input = styled(input, {
+export const Textarea = styled(TextareaAutosize, {
+  width: '100%',
   fontSize: theme.fontSizes.titlePage,
   padding: '0px !important',
-  input: {
-    lineHeight: '54px',
-    fontSize: '2.5rem',
-    fontWeight: 600,
-    border: 'none',
-    padding: 0
-  },
-  background: 'none',
+  lineHeight: '54px',
+  fontWeight: 600,
+  border: 'none',
+  background: 'unset',
+  resize: 'none',
+  outline: 'none',
   variants: {
     disabledVariant: {
       false: {},
       true: {
         cursor: 'not-allowed',
-        color: theme.colors.typePrimary,
-        background: 'none'
+        color: theme.colors.typePrimary
       }
     }
   }
@@ -91,7 +90,6 @@ export const TitleWrapper = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   padding: '0 40px',
-
   '&:hover': {
     [`${Actions}`]: {
       pointerEvents: 'unset',
@@ -115,8 +113,8 @@ export const TitleWrapper = styled('div', {
         [`${TitleRow}`]: {
           height: '42px'
         },
-        [`${Input}`]: {
-          input: {
+        [`${Textarea}`]: {
+          textarea: {
             fontSize: '26px',
             lineHeight: '32px'
           }
