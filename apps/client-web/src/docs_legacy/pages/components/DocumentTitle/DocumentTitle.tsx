@@ -128,9 +128,8 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, docBlock
                 <DocumentIcon getDocIconUrl={docIconGetter} localUrl={localIcon} documentIconMeta={documentIconMeta} />
               </Popover>
             )}
-            <Root.Input
-              type="text"
-              bordered={false}
+            <Root.Textarea
+              minRows={1}
               value={title || ''}
               data-testid={TEST_ID_ENUM.page.DocumentPage.titleInput.id}
               onChange={(e: any) => {
