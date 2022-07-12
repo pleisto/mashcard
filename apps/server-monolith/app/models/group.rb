@@ -31,6 +31,7 @@ class Group < Pod
   has_one :owner_member, -> { where(role: :owner).enabled }, class_name: 'Groups::Member', inverse_of: :group, dependent: :destroy
   has_many :users, through: :members
   has_one :owner, through: :owner_member, source: :user
+  has_many :share_links, dependent: :restrict_with_exception, foreign_key: :pod_id, inverse_of: :pod, class_name: 'Docs::ShareLink'
 
   validates :owner_id, presence: true, on: :create
 
@@ -41,6 +42,21 @@ class Group < Pod
   attr_accessor :owner_id
 
   after_create :maybe_persist_owner!
+
+  def destroy_group!
+    ActiveRecord::Base.transaction do
+      share_links.destroy_all
+      update!(invite_enable: nil, invite_secret: nil)
+      # all validatrs and callbacks are skipped
+      update_columns(
+        name: "delete group #{hashed_id}",
+        domain: "deleted_group_#{hashed_id}",
+        bio: "masked username #{username.to_data_masking} has ben deleted",
+        deleted_at: Time.current
+      )
+      true
+    end
+  end
 
   private
 

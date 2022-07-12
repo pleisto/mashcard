@@ -24,9 +24,9 @@ export const UserDestroy = gql`
   }
 `
 
-export const PodDestroy = gql`
-  mutation PodDestroy($input: PodDestroyInput!) {
-    podDestroy(input: $input) {
+export const GroupDestroy = gql`
+  mutation GroupDestroy($input: GroupDestroyInput!) {
+    groupDestroy(input: $input) {
       errors
     }
   }

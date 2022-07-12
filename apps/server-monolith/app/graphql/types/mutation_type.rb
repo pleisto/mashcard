@@ -22,8 +22,8 @@ module Types
     field :create_direct_upload, mutation: Mutations::CreateDirectUpload
     field :create_or_update_pod, mutation: Mutations::Pods::CreateOrUpdate
     field :formula_commit, mutation: Mutations::FormulaCommit
+    field :group_destroy, mutation: Mutations::Groups::Destroy
     field :join_pod, mutation: Mutations::Pods::Join
-    field :pod_destroy, mutation: Mutations::Pods::Destroy
     field :pod_leave, mutation: Mutations::Pods::Leave
     field :update_domain, mutation: Mutations::Pods::UpdateDomain
     field :update_member, mutation: Mutations::Pods::UpdateMember

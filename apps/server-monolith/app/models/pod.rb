@@ -34,7 +34,6 @@ class Pod < ApplicationRecord
                                                                                                         }, }
   validates :display_name, presence: true
   has_many :blocks, class_name: 'Docs::Block', dependent: :destroy
-  has_many :share_links, dependent: :restrict_with_exception, class_name: 'Docs::ShareLink'
 
   ANYONE_DOMAIN = 'anyone'
   ANONYMOUS_DOMAIN = 'anonymous'
@@ -88,20 +87,5 @@ class Pod < ApplicationRecord
 
   def as_session_context
     { 'id' => id, 'username' => username, 'domain' => username }
-  end
-
-  def destroy_pod!
-    ActiveRecord::Base.transaction do
-      share_links.destroy_all
-      # all validatrs and callbacks are skipped
-      update_columns(
-        name: "delete user #{hashed_id}",
-        domain: "deleted_user_#{hashed_id}",
-        bio: "masked domain #{domain.to_data_masking} has ben deleted",
-        invite_enable: false
-      )
-      destroy!
-      true
-    end
   end
 end
