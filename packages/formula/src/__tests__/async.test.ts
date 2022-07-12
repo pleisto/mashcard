@@ -1,17 +1,17 @@
 import { makeContext } from '../tests/testHelper'
 import { buildTestCases } from '../tests'
 
-const [finalTestCases] = buildTestCases(['async'])
+const [input] = buildTestCases(['async'])
 
 describe('async', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
     jest.useRealTimers()
-    ctx = await makeContext(finalTestCases.options)
+    ctx = await makeContext(input.options)
     jest.clearAllTimers()
   })
 
-  it.each(finalTestCases.successTestCases)('$jestTitle', async args => {
+  it.each(input.successTestCases)('$jestTitle', async args => {
     jest.useRealTimers()
 
     const [tempT, parseResult] = await ctx.interpretDirectly(args)

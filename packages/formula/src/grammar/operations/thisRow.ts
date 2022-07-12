@@ -157,7 +157,8 @@ export const thisRowOperator: OperatorType = {
       {
         definition: `=ThisRow.A`,
         errorType: 'circular_dependency',
-        errorMessage: 'Circular dependency found',
+        groupOptions: [{ name: 'basicError' }],
+        errorMessage: 'errors.parse.circular_dependency.spreadsheet',
         richType,
         namespaceId
       }

@@ -1,7 +1,7 @@
-import { makeContext, buildTestCases, trackTodo } from '../tests'
+import { makeContext, trackTodo, ALL_TEST_CASE } from '../tests'
 import { matchObject } from '../tests/testMock'
 
-const [testCases] = buildTestCases()
+const testCases = ALL_TEST_CASE
 
 describe('successExecute', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>

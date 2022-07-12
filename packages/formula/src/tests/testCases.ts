@@ -138,7 +138,7 @@ const OPERATION_TEST_INTERFACES: TestCaseInterface[] = [
   ...FeatureTestCases
 ]
 
-const ALL_TEST_CASE = reduceTestCaseInput(OPERATION_TEST_INTERFACES)
+export const ALL_TEST_CASE = reduceTestCaseInput(OPERATION_TEST_INTERFACES)
 
 const allUUIDs = ALL_TEST_CASE.options.pages
   .flatMap(p => [
@@ -157,9 +157,7 @@ if (allUUIDs.length !== new Set(allUUIDs).size) {
   throw new Error('Duplicate UUIDs')
 }
 
-export const buildTestCases = (name?: TestCaseName[]): [TestCaseInput] => {
-  if (!name || !name.length) return [ALL_TEST_CASE]
-
+export const buildTestCases = <TestCase>(name: TestCaseName[]): [TestCaseInput, TestCase[]] => {
   const interfaces = OPERATION_TEST_INTERFACES.filter(
     o =>
       name.includes(o.name) ||
@@ -176,23 +174,32 @@ export const buildTestCases = (name?: TestCaseName[]): [TestCaseInput] => {
   )
   const input = reduceTestCaseInput(interfaces)
 
-  return [
-    {
-      ...input,
-      successTestCases: input.successTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
-      errorTestCases: input.errorTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
-      completeTestCases: input.completeTestCases.filter(v =>
-        v.groupOptions.map(g => g.name).some(r => name.includes(r))
-      ),
-      dependencyTestCases: input.dependencyTestCases.filter(v =>
-        v.groupOptions.map(g => g.name).some(r => name.includes(r))
-      ),
-      eventTestCases: input.eventTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
-      formatTestCases: input.formatTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
-      basicTestCases: input.basicTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
-      attrsCompleteTestCases: input.attrsCompleteTestCases.filter(v =>
-        v.groupOptions.map(g => g.name).some(r => name.includes(r))
-      )
-    }
-  ]
+  const testCaseInput: TestCaseInput = {
+    ...input,
+    successTestCases: input.successTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
+    errorTestCases: input.errorTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
+    completeTestCases: input.completeTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
+    dependencyTestCases: input.dependencyTestCases.filter(v =>
+      v.groupOptions.map(g => g.name).some(r => name.includes(r))
+    ),
+    eventTestCases: input.eventTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
+    formatTestCases: input.formatTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
+    basicTestCases: input.basicTestCases.filter(v => v.groupOptions.map(g => g.name).some(r => name.includes(r))),
+    attrsCompleteTestCases: input.attrsCompleteTestCases.filter(v =>
+      v.groupOptions.map(g => g.name).some(r => name.includes(r))
+    )
+  }
+
+  const testCases = [
+    ...testCaseInput.successTestCases,
+    ...testCaseInput.errorTestCases,
+    ...testCaseInput.completeTestCases,
+    ...testCaseInput.dependencyTestCases,
+    ...testCaseInput.eventTestCases,
+    ...testCaseInput.formatTestCases,
+    ...testCaseInput.basicTestCases,
+    ...testCaseInput.attrsCompleteTestCases
+  ] as unknown as TestCase[]
+
+  return [testCaseInput, testCases]
 }

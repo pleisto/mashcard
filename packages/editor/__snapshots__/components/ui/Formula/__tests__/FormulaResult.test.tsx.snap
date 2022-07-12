@@ -867,7 +867,7 @@ exports[`FormulaResult [cell] basic "=BasicPage.spreadsheet.first.1" 2`] = `
       <span
         class="formula-result-error-message"
       >
-        Circular dependency found
+        errors.interpret.circular_dependency.spreadsheet
       </span>
     </span>
   </div>
@@ -2324,4 +2324,142 @@ exports[`FormulaResult basic "=true && false" 2`] = `
 </div>
 `;
 
+exports[`FormulaResult parser "="bar"" -> [name_invalid] "errors.parse.name.invalid" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        name_invalid
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.name.invalid
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`FormulaResult parser "="bar"" -> [name_unique] "errors.parse.name.duplicated" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        name_unique
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.name.duplicated
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`FormulaResult parser "="if"" -> [name_check] "errors.parse.name.reserved" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        name_check
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.name.reserved
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
 exports[`FormulaResult renders nothing if no variableT 1`] = `<div />`;
+
+exports[`FormulaResult thisRecord "=ThisRecord.A.1" -> [circular_dependency] "errors.interpret.circular_dependency.spreadsheet" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        circular_dependency
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.interpret.circular_dependency.spreadsheet
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`FormulaResult thisRow "=ThisRow.A" -> [circular_dependency] "errors.parse.circular_dependency.spreadsheet" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        circular_dependency
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.circular_dependency.spreadsheet
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`FormulaResult variable "=num5" -> [circular_dependency] "errors.parse.circular_dependency.variable" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        circular_dependency
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.circular_dependency.variable
+      </span>
+    </span>
+  </div>
+</div>
+`;

@@ -3,17 +3,17 @@ import { makeContext, splitDefinition$ } from '../tests/testHelper'
 import { buildTestCases, CompleteNames, trackTodo } from '../tests'
 import { getLastCodeFragment, applyCompletion, attrs2completion } from '../grammar'
 
-const [testCases] = buildTestCases(CompleteNames)
+const [input] = buildTestCases(CompleteNames)
 
 describe('completer', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
-    ctx = await makeContext(testCases.options)
+    ctx = await makeContext(input.options)
   })
 
-  trackTodo(it, [...testCases.completeTestCases, ...testCases.attrsCompleteTestCases])
+  trackTodo(it, [...input.completeTestCases, ...input.attrsCompleteTestCases])
 
-  it.each(testCases.attrsCompleteTestCases)('$jestTitle', async args => {
+  it.each(input.attrsCompleteTestCases)('$jestTitle', async args => {
     const {
       variableParseResult: { codeFragments },
       meta: { namespaceId }
@@ -45,7 +45,7 @@ describe('completer', () => {
     }
   })
 
-  it.each(testCases.completeTestCases)('$jestTitle', async args => {
+  it.each(input.completeTestCases)('$jestTitle', async args => {
     const [definitionAfterSplit, positionAfterSplit] = splitDefinition$(args.definition$)
 
     const newCtx = {

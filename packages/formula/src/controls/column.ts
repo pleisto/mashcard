@@ -88,7 +88,7 @@ export class ColumnClass implements ColumnType {
       const { spreadsheetId, rowId, columnId } = meta.richType.meta
       if (spreadsheetId === this.spreadsheetId && rowId === cell.rowId && columnId === cell.columnId) {
         return {
-          result: 'Circular dependency found',
+          result: 'errors.interpret.circular_dependency.spreadsheet',
           type: 'Error',
           meta: 'circular_dependency'
         }
@@ -161,7 +161,7 @@ export class ColumnClass implements ColumnType {
       const { spreadsheetId, rowId, columnId } = visitor.ctx.meta.richType.meta
       if (spreadsheetId === this.spreadsheetId && rowId === cell.rowId && columnId === cell.columnId) {
         return {
-          errors: [{ type: 'circular_dependency', message: `Circular dependency found` }],
+          errors: [{ type: 'circular_dependency', message: 'errors.parse.circular_dependency.spreadsheet' }],
           firstArgumentType: undefined,
           codeFragments
         }

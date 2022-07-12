@@ -373,7 +373,7 @@ const innerParse = (ctx: FunctionContext): ParseResult => {
       ...returnValue,
       success: false,
       errorType: 'syntax',
-      errorMessages: [{ message: 'Circular dependency found', type: 'circular_dependency' }],
+      errorMessages: [{ message: 'errors.parse.circular_dependency.variable', type: 'circular_dependency' }],
       variableParseResult: {
         ...returnValue.variableParseResult,
         kind: 'unknown'

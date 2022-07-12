@@ -461,7 +461,7 @@ exports[`FormulaDisplay [cell] basic "=BasicPage.spreadsheet.first.1" 2`] = `
       class="mashcard-formula-borderless"
       style="color: rgb(207, 31, 40);"
     >
-      #&lt;Error&gt; Circular dependency found
+      #&lt;Error&gt; errors.interpret.circular_dependency.spreadsheet
     </span>
   </span>
 </div>

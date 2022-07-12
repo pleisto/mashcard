@@ -83,7 +83,8 @@ export interface PageInput {
 }
 type FeatureName =
   | 'async'
-  | 'basicType'
+  | 'basic'
+  | 'basicError'
   | 'format'
   | 'functionCall'
   | 'parser'
@@ -113,7 +114,7 @@ interface GroupOption {
 export interface BaseTestCase<T extends object> {
   definition?: string
   newAbbrevInput?: string
-  groupOptions?: GroupOption[]
+  groupOptions?: readonly GroupOption[]
   expressionType?: ExpressionType
   currentGroupOption?: any
   label?: string

@@ -1,15 +1,15 @@
 import { makeContext } from '../tests/testHelper'
-import { buildTestCases } from '../tests'
+import { buildTestCases, TestCaseInput } from '../tests'
 
-const [testCases] = buildTestCases(['cst'])
+const [input, testCases] = buildTestCases<TestCaseInput['basicTestCases'][0]>(['cst'])
 
 describe('cst', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
-    ctx = await makeContext(testCases.options)
+    ctx = await makeContext(input.options)
   })
 
-  it.each([...testCases.successTestCases, ...testCases.errorTestCases])('$jestTitle', async args => {
+  it.each(testCases)('$jestTitle', async args => {
     const {
       variableParseResult: { cst }
     } = ctx.parseDirectly(args)

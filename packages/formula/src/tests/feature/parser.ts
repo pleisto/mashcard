@@ -142,6 +142,7 @@ export const ParserTestCase: TestCaseInterface = {
       },
       {
         definition: '="if"',
+        groupOptions: [{ name: 'basicError' }] as const,
         errorType: 'name_check',
         errorMessage: 'errors.parse.name.reserved',
         expected: [
@@ -158,7 +159,7 @@ export const ParserTestCase: TestCaseInterface = {
         name: 'if'
       },
       ...[
-        { name: 'in' },
+        { name: 'in', groupOptions: [{ name: 'basicError' }] as const },
         { name: '1asd' },
         { name: 'asd$asd' },
         { name: '' },
@@ -183,7 +184,7 @@ export const ParserTestCase: TestCaseInterface = {
         ]
       })),
       ...[
-        { name: 'bar' },
+        { name: 'bar', groupOptions: [{ name: 'basicError' }] as const },
         { name: 'BaR' },
         { name: 'ParserPage', label: 'block name' },
         { name: 'spreadsheet123', label: 'spreadsheet name' }

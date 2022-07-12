@@ -10,11 +10,11 @@ const [namespaceId, spreadsheetId, columnId, rowId] = [
 const richType = { type: 'spreadsheet', meta: { spreadsheetId, columnId, rowId } } as const
 
 export const BasicTypeTestCase: TestCaseInterface = {
-  name: 'basicType',
+  name: 'basic',
   testCases: {
     pages: [
       {
-        pageName: 'BasicTypePage',
+        pageName: 'BasicPage',
         pageId: namespaceId,
         variables: [
           { definition: '=24', variableName: 'bar' },
