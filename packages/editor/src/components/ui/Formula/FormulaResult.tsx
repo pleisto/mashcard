@@ -1,7 +1,6 @@
-import { FC } from 'react'
+import { FC, Suspense } from 'react'
 import {
   dumpDisplayResultForDisplay,
-  ErrorMessage,
   fetchResult,
   fetchVariableTError,
   resultToColorType,
@@ -10,7 +9,7 @@ import {
 import { FormulaValue, FORMULA_ICONS } from '.'
 import * as Root from './Formula.style'
 import { UseFormulaInput } from '../../blockViews/FormulaView'
-import { useFormulaI18n } from '../../../hooks/useFormulaI18n'
+import { FormulaError } from './FormulaError'
 
 export interface FormulaResultProps {
   variableT: VariableData | undefined
@@ -18,20 +17,17 @@ export interface FormulaResultProps {
 }
 
 export const FormulaResult: FC<FormulaResultProps> = ({ variableT, meta }) => {
-  const { t } = useFormulaI18n()
-
   if (!variableT) return null
   const result = fetchResult(variableT)
   const colorType = resultToColorType(result)
   const icon = FORMULA_ICONS[colorType]
 
-  const error: ErrorMessage | undefined = fetchVariableTError(variableT)
+  const error = fetchVariableTError(variableT)
 
   const formulaResult = error ? (
-    <span className="formula-result-error">
-      <span className="formula-result-error-type">{error.type}</span>
-      <span className="formula-result-error-message">{t(error.message)}</span>
-    </span>
+    <Suspense fallback={<></>}>
+      <FormulaError error={error} />
+    </Suspense>
   ) : (
     <span className="formula-result-ok">
       <span className="formula-result-ok-equal">=</span>
