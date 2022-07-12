@@ -264,8 +264,6 @@ export const MashcardUploaderDashboard = styled('div', {
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       borderRadius: 2,
-      width: 140,
-      height: 105,
 
       '&::after': {
         content: ' ',

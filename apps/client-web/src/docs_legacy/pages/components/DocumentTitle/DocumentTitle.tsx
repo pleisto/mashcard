@@ -81,13 +81,15 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, docBlock
 
   return (
     <>
-      <DocumentCover
-        editable={editable}
-        localUrl={localCover}
-        getDocCoverUrl={docCoverGetter}
-        documentCoverMeta={documentCoverMeta}
-        popoverProps={coverPopoverProps}
-      />
+      {documentCoverMeta && (
+        <DocumentCover
+          editable={editable}
+          localUrl={localCover}
+          getDocCoverUrl={docCoverGetter}
+          documentCoverMeta={documentCoverMeta}
+          popoverProps={coverPopoverProps}
+        />
+      )}
 
       <Root.TitleWrapper
         width={{

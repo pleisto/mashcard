@@ -81,7 +81,8 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
       action: 'add',
       url: image.fullUrl,
       meta: {
-        source: 'external'
+        source: 'external',
+        blurHash: image.blurHash
       }
     })
   }
@@ -114,9 +115,11 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
               type="text"
               key={image.id}
               className="unsplash-image-item"
-              onClick={handleUnsplashImageSelect(image)}>
+              onClick={handleUnsplashImageSelect(image)}
+            >
               <ImageWithSpin
                 src={image.smallUrl}
+                style={{ width: 140, height: 105 }}
                 className="unsplash-image"
                 blurHash={image.blurHash}
               />

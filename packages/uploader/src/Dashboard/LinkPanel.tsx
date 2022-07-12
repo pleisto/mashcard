@@ -3,7 +3,7 @@ import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import React from 'react'
 import { ImportSourceOption } from './Dashboard'
 import { DashboardPluginOptions } from './plugin'
-import { isValidImageUrl } from './checkImageUrl'
+import { isValidImageUrl } from './imageUtils'
 
 interface LinkPanelProps {
   importSource: ImportSourceOption
@@ -41,7 +41,8 @@ export const LinkPanel: React.FC<LinkPanelProps> = ({ importSource, pluginOption
         type="primary"
         data-testid={TEST_ID_ENUM.uploader.Dashboard.modules.link.button.id}
         onClick={handleLinkSubmit}
-        className="dashboard-panel-button">
+        className="dashboard-panel-button"
+      >
         {importSource.buttonText}
       </Button>
       <div className="dashboard-panel-hint">{importSource.buttonHint}</div>

@@ -31,7 +31,10 @@ export interface UploadResultData {
   meta?: {
     name?: string
     size?: number
+    blurHash?: string
     contentType?: string
+    width?: number
+    height?: number
     source: 'origin' | 'external'
   }
 }
@@ -77,7 +80,7 @@ export interface DashboardPluginOptions {
   ) => Promise<{ success: boolean; data: UnsplashImage[] }>
   fileType: string
   importSources: ImportSourceOption[]
-  canbeRemove?: boolean
+  showRemoveButton?: boolean
 }
 
 export type SourceType = 'upload' | 'link' | 'unsplash' | 'emoji' | 'gallery'

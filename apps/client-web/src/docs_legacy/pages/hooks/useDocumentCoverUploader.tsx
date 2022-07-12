@@ -66,17 +66,11 @@ export function useDocumentCoverUploader(
 
     if (url) {
       documentCoverMeta = {
-        __typename: 'BlockImage',
         type: BlockType.Image,
         // TODO: align types
         source: meta?.source === 'external' ? FileSource.External : FileSource.Origin,
-        key: url
-      }
-    } else if (color) {
-      documentCoverMeta = {
-        __typename: 'BlockColor',
-        type: BlockType.Color,
-        color
+        key: url,
+        blurHash: meta?.blurHash
       }
     } else {
       return
@@ -99,7 +93,7 @@ export function useDocumentCoverUploader(
         onUploaded={onUploaded}
         onFileLoaded={onLoaded}
         importSources={IMPORT_SOURCES}
-        canbeRemove={!!cover}
+        showRemoveButton={!!cover}
       />
     )
   }

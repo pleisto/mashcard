@@ -580,6 +580,11 @@ type BlockImage {
   align: String
 
   """
+  blurhash
+  """
+  blurHash: String
+
+  """
   display name
   """
   displayName: String

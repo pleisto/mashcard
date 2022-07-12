@@ -1,8 +1,10 @@
-import * as React from 'react'
-import { Blurhash } from 'react-blurhash'
-import { ImageWithSpinWrapper, Image, BlurHashWrapper } from './style'
-import { Spin } from '../Spin'
 import { CSSProperties } from '@stitches/react'
+import { useSize } from 'ahooks'
+import { FC, useEffect, useRef, useState } from 'react'
+import { Blurhash } from 'react-blurhash'
+
+import { Spin } from '../Spin'
+import { Image, ImageWithSpinWrapper, SpinnerWrapper } from './style'
 
 interface ImageWithSpinProps {
   alt?: string
@@ -12,36 +14,65 @@ interface ImageWithSpinProps {
   style?: CSSProperties
 }
 
-export const ImageWithSpin: React.FC<ImageWithSpinProps> = ({ src, alt, blurHash, ...otherProps }) => {
-  const [loading, setLoading] = React.useState(true)
-  const [isInitLoad, setIsInitLoad] = React.useState(true)
-  const [currentSrc, setSrc] = React.useState<string | undefined>(src)
-  React.useEffect(() => {
+export const ImageWithSpin: FC<ImageWithSpinProps> = ({ src, alt, blurHash, ...otherProps }) => {
+  const [loading, setLoading] = useState(true)
+  const [isInitLoad, setIsInitLoad] = useState(true)
+  const [currentSrc, setSrc] = useState<string | undefined>(src)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const containerSize = useSize(containerRef)
+  const blurHashSize = {
+    width: otherProps.style?.width ?? containerSize?.width,
+    height: otherProps.style?.height ?? containerSize?.height
+  }
+  const [spinnerInDom, setSpinnerInDom] = useState(true)
+  const spinnerVisible = loading && (Boolean(blurHash) || isInitLoad)
+
+  useEffect(() => {
     if (currentSrc && src !== currentSrc) {
       setSrc(src)
       setLoading(true)
       setIsInitLoad(false)
     }
   }, [src, currentSrc])
+
+  useEffect(() => {
+    if (spinnerVisible) {
+      setSpinnerInDom(true)
+    } else {
+      // Delay DOM removal until animation ends
+      const timeout = setTimeout(() => {
+        setSpinnerInDom(false)
+      }, 300)
+      return () => clearTimeout(timeout)
+    }
+  }, [spinnerVisible])
+
   // Make the image completely transparent before loading to hide the image when it is first loaded
   return (
-    <ImageWithSpinWrapper {...otherProps}>
+    <ImageWithSpinWrapper ref={containerRef} {...otherProps}>
       <Image
         hidePic={isInitLoad && loading}
-        spining={loading}
+        blur={!blurHash && !isInitLoad && loading}
         alt={alt}
         src={currentSrc}
         onLoad={() => setLoading(false)}
       />
-      {isInitLoad &&
-        loading &&
-        (blurHash && otherProps.style ? (
-          <BlurHashWrapper>
-            <Blurhash hash={blurHash} width={otherProps.style.width} height={otherProps.style.height} />
-          </BlurHashWrapper>
-        ) : (
-          <Spin size="lg" className="cover-spin" />
-        ))}
+
+      {spinnerInDom && (
+        <SpinnerWrapper
+          role="progressbar"
+          aria-busy={spinnerVisible}
+          aria-hidden={!spinnerVisible}
+          visible={spinnerVisible}
+        >
+          {blurHash ? (
+            blurHashSize.width &&
+            blurHashSize.height && <Blurhash hash={blurHash} width={blurHashSize.width} height={blurHashSize.height} />
+          ) : (
+            <Spin size="lg" className="cover-spin" />
+          )}
+        </SpinnerWrapper>
+      )}
     </ImageWithSpinWrapper>
   )
 }
