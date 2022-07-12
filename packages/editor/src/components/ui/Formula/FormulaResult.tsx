@@ -25,7 +25,7 @@ export const FormulaResult: FC<FormulaResultProps> = ({ variableT, meta }) => {
   const error = fetchVariableTError(variableT)
 
   const formulaResult = error ? (
-    <Suspense fallback={<></>}>
+    <Suspense>
       <FormulaError error={error} />
     </Suspense>
   ) : (
