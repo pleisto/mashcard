@@ -4,7 +4,7 @@ import { Dropdown, Menu, Button, Icon } from '@mashcard/design-system'
 
 import { useEditorI18n } from '../../../hooks'
 
-import { MenuIcon } from '../../extensionViews/SlashMenu/SlashMenu.style'
+import { MenuIcon } from '../../ui/BlockSelector/BlockSelector.style'
 
 import { SpreadsheetContext, SpreadsheetSelectionCellId } from './SpreadsheetContext'
 import { SpreadsheetColumn } from './useSpreadsheet'
@@ -208,8 +208,7 @@ export const SpreadsheetHeaderColumn: React.FC<{
           : {})
       }}
       onMouseDown={onMouseDown}
-      onContextMenu={onContextMenu}
-    >
+      onContextMenu={onContextMenu}>
       {children}
       {columnActions ? (
         <Dropdown
@@ -232,8 +231,7 @@ export const SpreadsheetHeaderColumn: React.FC<{
           placement="bottomStart"
           visible={dropdownVisible}
           onVisibleChange={onDropdownVisibleChange}
-          aria-label={t('spreadsheet.column.actions')}
-        >
+          aria-label={t('spreadsheet.column.actions')}>
           <span>⌄</span>
         </Dropdown>
       ) : (
@@ -323,8 +321,7 @@ export const SpreadsheetRowAction: React.FC<{
             }
           : {})
       }}
-      data-row-id={rowId}
-    >
+      data-row-id={rowId}>
       <td className="row-action-panel" onContextMenu={onContextMenu}>
         <div className="row-action-panel-layer" onMouseDown={onMouseDown}>
           <Button className="row-number" onClick={onClickRowNumber}>
@@ -351,8 +348,7 @@ export const SpreadsheetRowAction: React.FC<{
               placement="bottomStart"
               visible={dropdownVisible}
               onVisibleChange={onDropdownVisibleChange}
-              aria-label={t('spreadsheet.row.actions')}
-            >
+              aria-label={t('spreadsheet.row.actions')}>
               <span>⌄</span>
             </Dropdown>
           ) : (
@@ -416,8 +412,7 @@ export const SpreadsheetRow: React.FC<{
       onMouseOver={onOver}
       onFocus={onOver}
       onMouseOut={onOut}
-      onBlur={onOut}
-    >
+      onBlur={onOut}>
       {children}
     </tr>
   )
@@ -486,8 +481,7 @@ export const SpreadsheetCellContainer: React.FC<{
       className={selected ? 'selected' : ''}
       onClick={onClickCell}
       onContextMenu={onContextMenu}
-      data-cell-id={cellIdStr}
-    >
+      data-cell-id={cellIdStr}>
       <Dropdown
         overlay={SpreadsheetMenu({
           items: cellActions,
@@ -497,8 +491,7 @@ export const SpreadsheetCellContainer: React.FC<{
         })}
         placement="bottomStart"
         visible={dropdownVisible}
-        aria-label={t('spreadsheet.cell.actions')}
-      >
+        aria-label={t('spreadsheet.cell.actions')}>
         {children}
       </Dropdown>
     </td>

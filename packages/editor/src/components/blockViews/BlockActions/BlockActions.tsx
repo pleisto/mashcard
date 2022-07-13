@@ -97,7 +97,7 @@ export const BlockActions: FC<BlockActionsProps> = ({ options, buttonClassName, 
     <BlockActionsContainer className={visible ? 'hover' : ''} disabled={!options || options.length === 0}>
       {children}
       <BlockActionButtonContainer
-        setActive={setVisible}
+        onMenuVisibleChange={setVisible}
         className={buttonClassName}
         baseId={baseId}
         extraOptions={extraOptions}

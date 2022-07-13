@@ -2,10 +2,8 @@ import { ReactRenderer, Editor } from '@tiptap/react'
 import { PluginKey, Plugin } from 'prosemirror-state'
 import { Suggestion } from '@tiptap/suggestion'
 import { createPopup, PopupInstance } from '../../../helpers/popup'
-import { SlashMenu } from '../../../components/extensionViews'
-import { getSuggestionItems, TYPE_ITEMS, getRecentItems } from './items'
+import { SlashMenu, SlashMenuProps } from '../../../components/extensionViews'
 import { MashcardEventBus, EventSubscribed, SlashMenuHide, SlashMenuKeyboardEventTrigger } from '@mashcard/schema'
-import { addItemKey } from './recentItemsManager'
 import { meta } from './meta'
 import { createExtension } from '../../common'
 import { findParagraphWrapper } from '../placeholder/findWrapper'
@@ -54,18 +52,7 @@ export const SlashCommands = createExtension<SlashCommandsOptions, SlashCommands
         allowSpaces: ALLOW_SPACES,
         allowedPrefixes: ALLOWED_PREFIXES,
         allow: ({ editor }) => editor.isEditable && this.storage.triggered,
-        command: ({ editor, range, props }) => {
-          props.command({ editor, range })
-          addItemKey(props.key)
-        },
         editor: this.editor,
-        items: ({ query }) =>
-          ({
-            query,
-            recent: getRecentItems(),
-            suggestion: getSuggestionItems(query),
-            type: TYPE_ITEMS
-          } as any),
         render: () => {
           let reactRenderer: ReactRenderer
           let popup: PopupInstance
@@ -93,8 +80,15 @@ export const SlashCommands = createExtension<SlashCommandsOptions, SlashCommands
                 exit()
               })
 
+              const onBlockSelect: NonNullable<SlashMenuProps['onBlockSelect']> = item => {
+                item.command({ editor: props.editor, range: props.range })
+              }
+
               reactRenderer = new ReactRenderer(SlashMenu, {
-                props,
+                props: {
+                  query: props.query,
+                  onBlockSelect
+                },
                 editor: props.editor as Editor
               })
 
@@ -103,7 +97,14 @@ export const SlashCommands = createExtension<SlashCommandsOptions, SlashCommands
             onUpdate: props => {
               if (!this.editor.isEditable) return
 
-              reactRenderer?.updateProps(props)
+              const onBlockSelect: NonNullable<SlashMenuProps['onBlockSelect']> = item => {
+                item.command({ editor: props.editor, range: props.range })
+              }
+
+              reactRenderer?.updateProps({
+                query: props.query,
+                onBlockSelect
+              })
 
               popup?.setProps({
                 getReferenceClientRect: () => props.clientRect!()!
