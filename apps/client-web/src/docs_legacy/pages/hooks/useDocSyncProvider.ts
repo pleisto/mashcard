@@ -7,7 +7,7 @@ import { yDocToProsemirrorJSON } from 'y-prosemirror'
 
 import {
   BlockNew,
-  BlockNewQuery,
+  DocumentBlockQuery,
   DocumentHistory,
   DocumentInfo,
   User,
@@ -44,7 +44,7 @@ export function useDocSyncProvider(queryVariables: {
   blockId: string
   historyId?: string
   editable: boolean
-  data?: BlockNewQuery
+  data?: DocumentBlockQuery
 }): {
   committing: boolean
   provider?: blockProvider

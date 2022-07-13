@@ -13,6 +13,7 @@ module Types
       field :states, [State], 'Block States', null: true, method: :states_sorted
       field :states_count, Integer, null: true
 
+      field :blobs, [Types::Blob], 'blobs', null: true
       field :document_info, DocumentInfo, null: true
 
       def states_count

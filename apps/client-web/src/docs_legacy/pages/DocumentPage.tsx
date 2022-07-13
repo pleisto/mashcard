@@ -11,10 +11,10 @@ import * as Root from './DocumentPage.style'
 import { useDocMeta } from '../store/DocMeta'
 import { useEditorOptions } from './hooks/useEditorOptions'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
-import { BlockNewQuery } from '@/MashcardGraphQL'
+import { DocumentBlockQuery } from '@/MashcardGraphQL'
 
 interface DocumentPageProps {
-  data?: BlockNewQuery
+  data?: DocumentBlockQuery
   loading: boolean
   editable: boolean
 }
@@ -28,9 +28,9 @@ export const DocumentPage: FC<DocumentPageProps> = ({ editable, loading, data })
     [docMeta.id, docMeta.historyId, docMeta.domain]
   )
 
-  const { rootBlock, committing: blocksCommitting } = useSyncProvider(queryVariables)
+  const { committing: blocksCommitting } = useSyncProvider(queryVariables)
 
-  const currentRootBlock = rootBlock.current
+  const documentBlobs = data?.blockNew?.blobs ?? []
 
   const { provider, committing, awarenessInfos, meta, setMeta } = useDocSyncProvider({
     blockId: docMeta.id as string,
@@ -50,9 +50,9 @@ export const DocumentPage: FC<DocumentPageProps> = ({ editable, loading, data })
 
   const editorOptions = useEditorOptions({
     docMeta,
+    docBlobs: documentBlobs,
     provider,
-    documentEditable: editable,
-    documentBlock: rootBlock.current as Block
+    editable
   })
 
   const editor = useEditor(editorOptions, [provider])
@@ -70,7 +70,7 @@ export const DocumentPage: FC<DocumentPageProps> = ({ editable, loading, data })
     [editor?.commands]
   )
 
-  if (loading || !currentRootBlock) {
+  if (loading || !docMeta.id) {
     return (
       <Root.PageSpinWrapper>
         <Spin size="lg" data-testid={TEST_ID_ENUM.page.DocumentPage.loading.id} />
@@ -89,7 +89,7 @@ export const DocumentPage: FC<DocumentPageProps> = ({ editable, loading, data })
         }}
         onMouseDown={handleMultipleNodeSelectionMouseDown}
       >
-        <DocumentTitle docBlock={currentRootBlock} editable={editable} meta={meta} setMeta={setMeta} />
+        <DocumentTitle docId={docMeta.id} docBlobs={documentBlobs} editable={editable} meta={meta} setMeta={setMeta} />
         <Root.PageContent ref={pageContentRef}>
           <EditorContent
             editor={editor}

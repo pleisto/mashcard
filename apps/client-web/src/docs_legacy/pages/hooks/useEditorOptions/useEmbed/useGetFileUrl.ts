@@ -1,24 +1,22 @@
 import { EmbedOptions } from '@mashcard/editor'
-import { Block } from '@mashcard/schema'
+import { Blob } from '@mashcard/schema'
 import { useCallback } from 'react'
 
-export function useGetFileUrl(documentBlock: Block): EmbedOptions['getFileUrl'] {
-
+export function useGetFileUrl(docBlobs: Blob[]): EmbedOptions['getFileUrl'] {
   const getFileUrl = useCallback<NonNullable<EmbedOptions['getFileUrl']>>(
     (key, source): string | undefined => {
       if (source === 'EXTERNAL') return key
 
       const blobs =
-        documentBlock
-          ?.blobs?.map(blob => ({
-            key: blob.blobKey,
-            url: blob.url
-          })) ?? []
+        docBlobs.map(blob => ({
+          key: blob.blobKey,
+          url: blob.url
+        })) ?? []
 
       if (source === 'ORIGIN') return blobs.find(blob => blob.key === key)?.url
       return undefined
     },
-    [documentBlock]
+    [docBlobs]
   )
 
   return getFileUrl

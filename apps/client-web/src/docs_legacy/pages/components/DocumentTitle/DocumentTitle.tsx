@@ -12,15 +12,16 @@ import {
   useFetchUnsplashImages
 } from '../../hooks'
 import { blockMeta } from '../../hooks/useDocSyncProvider'
-import { Block, FileSource } from '@/MashcardGraphQL'
+import { Blob, FileSource } from '@/MashcardGraphQL'
 export interface DocumentTitleProps {
-  docBlock: Block
+  docId: string
+  docBlobs: Blob[]
   editable: boolean
   meta: blockMeta
   setMeta: (meta: blockMeta) => void
 }
 
-export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, docBlock, meta, setMeta }) => {
+export const DocumentTitle: React.FC<DocumentTitleProps> = ({ docId, docBlobs, editable, meta, setMeta }) => {
   const { t } = useDocsI18n()
 
   const icon = meta.icon
@@ -43,12 +44,12 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, docBlock
           return meta[field].key
         }
         if (meta[field]?.source === FileSource.Origin) {
-          const blob = docBlock?.blobs?.find(blob => blob.blobKey === meta[field].key)
+          const blob = docBlobs.find(blob => blob.blobKey === meta[field].key)
           return blob?.url
         }
       }
     },
-    [meta, docBlock]
+    [meta, docBlobs]
   )
 
   const docIconGetter = createDocBlobGetter('icon')
@@ -63,7 +64,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, docBlock
   const [localIcon, setLocalIcon] = React.useState('')
   const [localCover, setLocalCover] = React.useState('')
   const [documentIconMeta, iconPopoverProps] = useDocumentIconUploader(icon, {
-    blockId: docBlock.id,
+    blockId: docId,
     prepareFileUpload,
     fetchUnsplashImages,
     overlayClassName: Root.Popover,
@@ -71,7 +72,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, docBlock
     onFileLoaded: setLocalIcon
   })
   const [documentCoverMeta, coverPopoverProps] = useDocumentCoverUploader(cover, {
-    blockId: docBlock.id,
+    blockId: docId,
     prepareFileUpload,
     fetchUnsplashImages,
     overlayClassName: Root.Popover,

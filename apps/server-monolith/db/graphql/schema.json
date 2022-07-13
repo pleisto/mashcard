@@ -3091,6 +3091,28 @@
           "description": "MashCard Docs::Block New Scheme",
           "fields": [
             {
+              "name": "blobs",
+              "description": "blobs",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Blob",
+                    "ofType": null
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "blockType",
               "description": "Block Type",
               "args": [

@@ -7,7 +7,7 @@ import { ContentSidebar } from './components/ContentSidebar'
 import { DocumentPage } from './DocumentPage'
 import { MashcardContext } from '@/common/mashcardContext'
 import { Helmet } from 'react-helmet-async'
-import { Policytype, useBlockCreateMutation, useBlockNewQuery, DocumentInfo } from '@/MashcardGraphQL'
+import { Policytype, useBlockCreateMutation, useDocumentBlockQuery, DocumentInfo } from '@/MashcardGraphQL'
 import { useDocsI18n } from '../common/hooks'
 import { queryPageBlocks } from '../common/graphql'
 import { FormulaContextVar } from '../reactiveVars'
@@ -31,7 +31,7 @@ export const DocumentContentPage: FC = () => {
   const preSidebarStyle = useMemo(getSidebarStyle, [])
   const [latestLoading, setLatestLoading] = useState(true)
 
-  const { data, loading: blockLoading } = useBlockNewQuery({
+  const { data, loading: blockLoading } = useDocumentBlockQuery({
     variables: { id: docId as string, historyId },
     fetchPolicy: 'no-cache'
   })

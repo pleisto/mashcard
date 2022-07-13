@@ -926,6 +926,11 @@ MashCard Docs::Block New Scheme
 """
 type BlockNew {
   """
+  blobs
+  """
+  blobs: [Blob!]
+
+  """
   Block Type
   """
   blockType: String

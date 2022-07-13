@@ -488,6 +488,8 @@ export type BlockMovePayload = {
 /** MashCard Docs::Block New Scheme */
 export type BlockNew = {
   __typename?: 'BlockNew'
+  /** blobs */
+  blobs?: Maybe<Array<Blob>>
   /** Block Type */
   blockType?: Maybe<Scalars['String']>
   documentInfo?: Maybe<DocumentInfo>
@@ -2704,12 +2706,12 @@ export type GetSpreadsheetChildrenQuery = {
   } | null
 }
 
-export type BlockNewQueryVariables = Exact<{
+export type DocumentBlockQueryVariables = Exact<{
   id: Scalars['String']
   historyId?: InputMaybe<Scalars['String']>
 }>
 
-export type BlockNewQuery = {
+export type DocumentBlockQuery = {
   __typename?: 'query'
   blockNew?: {
     __typename?: 'BlockNew'
@@ -2761,6 +2763,7 @@ export type BlockNewQuery = {
         avatarData?: { __typename?: 'Avatar'; url: string } | null
       }>
     } | null
+    blobs?: Array<{ __typename?: 'Blob'; blobKey: string; downloadUrl: string; url: string }> | null
   } | null
 }
 
@@ -5089,8 +5092,8 @@ export type GetSpreadsheetChildrenQueryResult = Apollo.QueryResult<
   GetSpreadsheetChildrenQuery,
   GetSpreadsheetChildrenQueryVariables
 >
-export const BlockNewDocument = gql`
-  query BlockNew($id: String!, $historyId: String) {
+export const DocumentBlockDocument = gql`
+  query DocumentBlock($id: String!, $historyId: String) {
     blockNew(id: $id, historyId: $historyId) {
       id
       statesCount
@@ -5155,38 +5158,47 @@ export const BlockNewDocument = gql`
           }
         }
       }
+      blobs {
+        blobKey
+        downloadUrl
+        url
+      }
     }
   }
 `
 
 /**
- * __useBlockNewQuery__
+ * __useDocumentBlockQuery__
  *
- * To run a query within a React component, call `useBlockNewQuery` and pass it any options that fit your needs.
- * When your component renders, `useBlockNewQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useDocumentBlockQuery` and pass it any options that fit your needs.
+ * When your component renders, `useDocumentBlockQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useBlockNewQuery({
+ * const { data, loading, error } = useDocumentBlockQuery({
  *   variables: {
  *      id: // value for 'id'
  *      historyId: // value for 'historyId'
  *   },
  * });
  */
-export function useBlockNewQuery(baseOptions: Apollo.QueryHookOptions<BlockNewQuery, BlockNewQueryVariables>) {
+export function useDocumentBlockQuery(
+  baseOptions: Apollo.QueryHookOptions<DocumentBlockQuery, DocumentBlockQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<BlockNewQuery, BlockNewQueryVariables>(BlockNewDocument, options)
+  return Apollo.useQuery<DocumentBlockQuery, DocumentBlockQueryVariables>(DocumentBlockDocument, options)
 }
-export function useBlockNewLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlockNewQuery, BlockNewQueryVariables>) {
+export function useDocumentBlockLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<DocumentBlockQuery, DocumentBlockQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<BlockNewQuery, BlockNewQueryVariables>(BlockNewDocument, options)
+  return Apollo.useLazyQuery<DocumentBlockQuery, DocumentBlockQueryVariables>(DocumentBlockDocument, options)
 }
-export type BlockNewQueryHookResult = ReturnType<typeof useBlockNewQuery>
-export type BlockNewLazyQueryHookResult = ReturnType<typeof useBlockNewLazyQuery>
-export type BlockNewQueryResult = Apollo.QueryResult<BlockNewQuery, BlockNewQueryVariables>
+export type DocumentBlockQueryHookResult = ReturnType<typeof useDocumentBlockQuery>
+export type DocumentBlockLazyQueryHookResult = ReturnType<typeof useDocumentBlockLazyQuery>
+export type DocumentBlockQueryResult = Apollo.QueryResult<DocumentBlockQuery, DocumentBlockQueryVariables>
 export const DocumentHistoriesDocument = gql`
   query documentHistories($id: String!) {
     documentHistories(id: $id) {
