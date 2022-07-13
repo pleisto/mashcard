@@ -1,4 +1,3 @@
-/* eslint-disable max-nested-callbacks */
 import { renderHook } from '@testing-library/react-hooks'
 import { act } from 'react-dom/test-utils'
 import { usePageDiscussionContextValue } from '../PageDiscussionContext'
@@ -131,7 +130,6 @@ describe('PageDiscussionContext', () => {
       const commentedNodes: CommentedNode[] = [{} as any]
 
       void act(async () => {
-        // eslint-disable-next-line max-nested-callbacks
         const { result } = renderHook(() => usePageDiscussionContextValue(commentedNodes))
 
         // wait for getConversations resolved
@@ -171,7 +169,6 @@ describe('PageDiscussionContext', () => {
       const commentedNodes: CommentedNode[] = []
 
       await act(async () => {
-        // eslint-disable-next-line max-nested-callbacks
         const { result } = renderHook(() => usePageDiscussionContextValue(commentedNodes))
 
         // wait for getConversations resolved
@@ -192,7 +189,6 @@ describe('PageDiscussionContext', () => {
       const markId = 'markId'
       const commentedNodes: CommentedNode[] = []
 
-      // eslint-disable-next-line max-nested-callbacks
       const { result } = renderHook(() => usePageDiscussionContextValue(commentedNodes))
       const { addConversation } = result.current
 

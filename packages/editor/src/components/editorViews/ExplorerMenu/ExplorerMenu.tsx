@@ -41,7 +41,6 @@ export const ExplorerMenu: React.FC<ExplorerMenuProps> = () => {
         setGroupSource(
           slashMenuGroup.map(group => ({
             label: t(`slash_menu.explorer_menu.group.${group.key}.label`),
-            // eslint-disable-next-line max-nested-callbacks
             items: group.items.map(item => ({
               label: t(`blocks.${item.key}.label`),
               labelText: t(`blocks.${item.key}.label`),

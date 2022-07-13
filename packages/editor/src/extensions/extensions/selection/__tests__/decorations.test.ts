@@ -71,7 +71,6 @@ describe('Selection Decorations', () => {
       const from = 1
       const to = 2
 
-      // eslint-disable-next-line max-nested-callbacks
       const { result } = renderHook(() =>
         useTestEditor({
           content: '<p>12</p>'
@@ -139,7 +138,6 @@ describe('Selection Decorations', () => {
       const from = 1
       const to = 2
 
-      // eslint-disable-next-line max-nested-callbacks
       const { result } = renderHook(() =>
         useTestEditor({
           content: '<p>12</p>',

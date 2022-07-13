@@ -1,4 +1,3 @@
-/* eslint-disable max-nested-callbacks */
 import { act, Renderer, renderHook, RenderHookResult } from '@testing-library/react-hooks'
 import { FC, ReactNode } from 'react'
 import { useDrawer, useDrawerService } from '..'

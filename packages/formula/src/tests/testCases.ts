@@ -145,7 +145,6 @@ const allUUIDs = ALL_TEST_CASE.options.pages
     p.pageId,
     ...(p.spreadsheets ?? [])?.flatMap((s: SpreadsheetInput<1, 1>) => [
       s.spreadsheetId,
-      // eslint-disable-next-line max-nested-callbacks
       ...s.columns.flatMap(c => [c.columnId, ...c.cells.map(cell => cell.cellId)]),
       ...(s.rows ?? []).map(r => r.rowId)
     ]),

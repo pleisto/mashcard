@@ -83,7 +83,6 @@ export const EmojiPanel: FC<EmojiPanelProps> = ({ emojiData, recentEmojis, onSel
       groupCounts: groups.map(group => group.lines.length),
       lines: groups.flatMap(group =>
         group.lines.map(line =>
-          // eslint-disable-next-line max-nested-callbacks
           line.map(item => {
             if (!item.name) {
               return null
@@ -95,9 +94,7 @@ export const EmojiPanel: FC<EmojiPanelProps> = ({ emojiData, recentEmojis, onSel
                 aria-label={item.name}
                 key={item.name}
                 type="text"
-                // eslint-disable-next-line max-nested-callbacks
-                onClick={() => onSelectEmoji(item, 'add')}
-              >
+                onClick={() => onSelectEmoji(item, 'add')}>
                 {item.emoji}
               </Button>
             )

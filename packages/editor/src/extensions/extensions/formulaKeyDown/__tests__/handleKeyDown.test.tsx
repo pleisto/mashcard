@@ -18,7 +18,6 @@ describe('formulaHandleKeyDown', () => {
     const editor = result.current
 
     expect(() => {
-      // eslint-disable-next-line max-nested-callbacks
       editor?.view.someProp('handleKeyDown', f => f(editor.view, new KeyboardEvent('keydown', { key: 'Enter' })))
     }).not.toThrow()
   })
@@ -38,7 +37,6 @@ describe('formulaHandleKeyDown', () => {
     const editor = result.current
 
     expect(() => {
-      // eslint-disable-next-line max-nested-callbacks
       editor?.view.someProp('handleClick', f => f(editor.view, 1, new MouseEvent('click', { bubbles: true })))
     }).not.toThrow()
   })

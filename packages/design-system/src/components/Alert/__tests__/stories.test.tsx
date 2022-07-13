@@ -1,4 +1,3 @@
-/* eslint-disable max-nested-callbacks */
 import { composeStories } from '@storybook/testing-react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'

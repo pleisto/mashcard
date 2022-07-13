@@ -84,7 +84,6 @@ describe('BubbleMenu', () => {
     })
 
     it('should show when selection does not contain forbidden node', () => {
-      /* eslint-disable max-nested-callbacks */
       jest.spyOn(helpers, 'findNodesInSelection').mockImplementation(() => [
         {
           node: { type: { name: 'text' }, text: 'text' } as any,
@@ -117,7 +116,6 @@ describe('BubbleMenu', () => {
           to: 2
         }
       ])
-      /* eslint-enable max-nested-callbacks */
 
       const editor = mockEditor({
         isEditable: true,
@@ -137,7 +135,6 @@ describe('BubbleMenu', () => {
     })
 
     it('should not show when selection contains forbidden node', () => {
-      /* eslint-disable max-nested-callbacks */
       jest.spyOn(helpers, 'findNodesInSelection').mockImplementation(() => [
         {
           node: { type: { name: 'text' }, text: 'text' } as any,
@@ -170,7 +167,6 @@ describe('BubbleMenu', () => {
           to: 2
         }
       ])
-      /* eslint-enable max-nested-callbacks */
 
       const editor = mockEditor({
         isEditable: true,
@@ -190,7 +186,6 @@ describe('BubbleMenu', () => {
     })
 
     it('should not show when selection text content is empty', () => {
-      /* eslint-disable max-nested-callbacks */
       jest.spyOn(helpers, 'findNodesInSelection').mockImplementation(() => [
         {
           node: { type: { name: 'text' }, text: '' } as any,
@@ -218,7 +213,6 @@ describe('BubbleMenu', () => {
           to: 2
         }
       ])
-      /* eslint-enable max-nested-callbacks */
 
       const editor = mockEditor({
         isEditable: true,

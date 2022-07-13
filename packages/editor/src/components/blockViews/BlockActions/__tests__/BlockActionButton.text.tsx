@@ -20,7 +20,6 @@ describe('BlockActionButton', () => {
 
     const button = screen.getByRole('button')
     expect(() => {
-      // eslint-disable-next-line max-nested-callbacks
       act(() => {
         fireEvent.dragStart(button)
         fireEvent.dragEnd(button)
@@ -35,7 +34,6 @@ describe('BlockActionButton', () => {
     render(<BlockActionButton {...props} />)
 
     expect(() => {
-      // eslint-disable-next-line max-nested-callbacks
       act(() => {
         fireEvent.click(screen.getByRole('button'))
       })
@@ -48,7 +46,6 @@ describe('BlockActionButton', () => {
     const { container, rerender } = render(<BlockActionButton {...props} />)
 
     expect(() => {
-      // eslint-disable-next-line max-nested-callbacks
       act(() => {
         fireEvent.mouseEnter(screen.getByRole('button'))
       })
@@ -59,7 +56,6 @@ describe('BlockActionButton', () => {
     expect(container).toMatchSnapshot()
 
     expect(() => {
-      // eslint-disable-next-line max-nested-callbacks
       act(() => {
         fireEvent.mouseLeave(screen.getByRole('button'))
       })
