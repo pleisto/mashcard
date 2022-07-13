@@ -1,14 +1,14 @@
 import { Dispatch, MutableRefObject, SetStateAction, useEffect, useRef } from 'react'
 import { MashcardEventBus, SlashMenuKeyboardEventTrigger, SlashMenuHide } from '@mashcard/schema'
-import { SlashMenuItem, SlashMenuProps } from '.'
+import { BlockSelectorItem, BlockSelectorProps } from './BlockSelector'
 
 // eslint-disable-next-line max-params
 export function useKeyboardEvent(
-  type: SlashMenuItem[],
-  currentItem: MutableRefObject<SlashMenuItem | undefined>,
+  type: BlockSelectorItem[],
+  currentItem: MutableRefObject<BlockSelectorItem | undefined>,
   itemLength: MutableRefObject<number>,
   setActiveIndex: Dispatch<SetStateAction<number>>,
-  command: SlashMenuProps['command']
+  onBlockSelect: BlockSelectorProps['onBlockSelect']
 ): [MutableRefObject<HTMLUListElement | undefined>] {
   const menuRef = useRef<HTMLUListElement>()
 
@@ -44,19 +44,19 @@ export function useKeyboardEvent(
           })
           break
         case 'Enter':
-          if (currentItem.current) command(currentItem.current)
+          if (currentItem.current) onBlockSelect?.(currentItem.current)
           break
         case 'Escape':
           MashcardEventBus.dispatch(SlashMenuHide({}))
           break
         case '=':
-          if (formulaMenuItem) command(formulaMenuItem)
+          if (formulaMenuItem) onBlockSelect?.(formulaMenuItem)
           break
       }
     })
     return () => listener.unsubscribe()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [command])
+  }, [onBlockSelect])
 
   return [menuRef]
 }

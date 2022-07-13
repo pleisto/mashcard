@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'mashcard-slash-menu-recent-items'
+const STORAGE_KEY = 'mashcard-node-selector-recent-items'
 
 export function getRecentItemKey(): string[] {
   return (localStorage.getItem(STORAGE_KEY) ?? '').split(',').filter(i => !!i)

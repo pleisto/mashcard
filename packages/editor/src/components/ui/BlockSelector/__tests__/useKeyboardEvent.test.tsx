@@ -1,16 +1,16 @@
 import { MashcardEventBus, SlashMenuHide, SlashMenuKeyboardEventTrigger } from '@mashcard/schema'
 import { renderHook } from '@testing-library/react'
 import { useRef } from 'react'
-import { SlashMenuItem } from '../SlashMenu'
+import { BlockSelectorItem } from '../BlockSelector'
 import { useKeyboardEvent } from '../useKeyboardEvent'
 
 describe('useKeyboardEvent', () => {
-  const formulaItem: SlashMenuItem = {
+  const formulaItem: BlockSelectorItem = {
     key: 'formula',
     icon: <span>icon</span>,
     command: () => {}
   }
-  const item: SlashMenuItem = {
+  const item: BlockSelectorItem = {
     key: 'key',
     icon: <span>icon</span>,
     command: () => {}

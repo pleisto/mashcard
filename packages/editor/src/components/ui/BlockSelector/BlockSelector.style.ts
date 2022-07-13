@@ -4,7 +4,7 @@ import { IconBackground } from '../../ui'
 
 const footerHeight = '2rem'
 
-export const StyledSlashMenu = styled(Menu as FC<MenuProps>, {
+export const BlockSelectorContainer = styled(Menu as FC<MenuProps>, {
   maxHeight: 'inherit',
   overflow: 'auto',
   paddingBottom: footerHeight,
@@ -21,7 +21,7 @@ export const StyledSlashMenu = styled(Menu as FC<MenuProps>, {
   }
 })
 
-export const SlashMenuGroupLabel = styled('span', {
+export const BlockSelectorGroupLabel = styled('span', {
   color: theme.colors.typeThirdary,
   fontSize: theme.fontSizes.callout,
   fontWeight: 450

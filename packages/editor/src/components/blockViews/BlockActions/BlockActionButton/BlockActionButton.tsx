@@ -4,11 +4,13 @@ import { BlockActionsMenu, BlockActionsMenuProps } from '../BlockActionsMenu'
 import { DragSecondary, BlockActionAdd } from '../../../ui'
 import { useBlockContext } from '../../../../hooks/useBlockContext'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
+import { useEditorContext } from '../../../../hooks'
+import { BlockSelector, BlockSelectorProps } from '../../../ui/BlockSelector'
 
 export interface BlockActionButtonProps extends Omit<BlockActionsMenuProps, 'onClose'> {
   className?: string
   children?: ReactNode
-  setActive?: (active: boolean) => void
+  onMenuVisibleChange?: (visible: boolean) => void
 }
 
 const StyledBlockActionButton = styled(Button, {
@@ -80,37 +82,96 @@ const Trigger: FC<{
   )
 }
 
-export const BlockActionButton: FC<BlockActionButtonProps> = ({ className, children, setActive, ...props }) => {
-  const { updateDraggingStatus } = useBlockContext()
-  const [visible, setVisible] = useState(false)
-  const handleVisibleChange = useCallback((visible: boolean) => {
-    setVisible(visible)
-    setActive?.(visible)
-  }, [setActive])
-  const handleCloseMenu = useCallback(() => setVisible(false), [])
-  const handleDragStart = useCallback(() => {
+type OnBlockSelect = NonNullable<BlockSelectorProps['onBlockSelect']>
+
+export function useBlockActionHandlers(onMenuVisibleChange: BlockActionButtonProps['onMenuVisibleChange']): {
+  menuVisible: boolean
+  onMenuVisibleChange: (visible: boolean) => void
+  onCloseMenu: () => void
+  onDragStart: DragEventHandler
+  onDragEnd: DragEventHandler
+  onBlockSelect: OnBlockSelect
+} {
+  const { editor } = useEditorContext()
+  const { updateDraggingStatus, getPosition, node } = useBlockContext()
+  const [menuVisible, setMenuVisible] = useState(false)
+  const handleMenuVisibleChange = useCallback(
+    (visible: boolean) => {
+      setMenuVisible(visible)
+      onMenuVisibleChange?.(visible)
+    },
+    [onMenuVisibleChange]
+  )
+  const onCloseMenu = useCallback(() => setMenuVisible(false), [])
+  const onDragStart = useCallback(() => {
     setTimeout(() => {
       updateDraggingStatus(true)
     })
-    setVisible(false)
+    setMenuVisible(false)
   }, [updateDraggingStatus])
-  const handleDragEnd = useCallback(() => {
+  const onDragEnd = useCallback(() => {
     setTimeout(() => {
       updateDraggingStatus(false)
     })
   }, [updateDraggingStatus])
 
+  const onBlockSelect = useCallback<OnBlockSelect>(
+    item => {
+      const position = getPosition()
+      if (!node || !editor || position === undefined) return
+
+      const from = position + 1
+      item.command({ editor, range: from })
+      setMenuVisible(false)
+    },
+    [editor, getPosition, node]
+  )
+
+  return {
+    menuVisible,
+    onCloseMenu,
+    onDragStart,
+    onDragEnd,
+    onMenuVisibleChange: handleMenuVisibleChange,
+    onBlockSelect
+  }
+}
+
+export const BlockActionButton: FC<BlockActionButtonProps> = ({
+  className,
+  children,
+  onMenuVisibleChange,
+  ...props
+}) => {
+  const { node } = useBlockContext()
+  const isEmpty = !node?.isLeaf && !node?.childCount
+
+  const {
+    menuVisible,
+    onCloseMenu: handleCloseMenu,
+    onMenuVisibleChange: handleMenuVisibleChange,
+    onDragStart: handleDragStart,
+    onDragEnd: handleDragEnd,
+    onBlockSelect: handleBlockSelect
+  } = useBlockActionHandlers(onMenuVisibleChange)
+
   return (
     <Popover
-      onVisibleChange={handleVisibleChange}
-      visible={visible}
+      onVisibleChange={handleMenuVisibleChange}
+      visible={menuVisible}
       compact={true}
       autoAdjustOverflow={true}
       destroyTooltipOnHide={true}
       trigger="hover"
       placement="bottomStart"
-      content={<BlockActionsMenu onClose={handleCloseMenu} {...props} />}>
-      <Trigger active={visible} className={className} onDragStart={handleDragStart} onDragEnd={handleDragEnd} />
+      content={
+        isEmpty ? (
+          <BlockSelector onBlockSelect={handleBlockSelect} />
+        ) : (
+          <BlockActionsMenu onClose={handleCloseMenu} {...props} />
+        )
+      }>
+      <Trigger active={menuVisible} className={className} onDragStart={handleDragStart} onDragEnd={handleDragEnd} />
     </Popover>
   )
 }

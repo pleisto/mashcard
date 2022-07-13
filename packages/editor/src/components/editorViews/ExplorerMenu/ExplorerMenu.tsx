@@ -12,10 +12,41 @@ import {
   SearchInput,
   SearchInputContainer
 } from './ExplorerMenu.style'
+import * as BLOCK from '../../../helpers/block'
 import { Drawer } from '../../ui'
 import { useDrawer } from '../../ui/Drawer'
-import { slashMenuGroup } from '../../../extensions/extensions/slashCommands/items'
 import { useEditorI18n } from '../../../hooks'
+
+const blockGroups = [
+  {
+    key: 'data',
+    items: [BLOCK.FORMULA, BLOCK.SPREADSHEET]
+  },
+  {
+    key: 'embed',
+    items: [BLOCK.UPLOAD, BLOCK.LINK, BLOCK.EMBED, BLOCK.GALLERY]
+  },
+  {
+    key: 'text',
+    items: [
+      BLOCK.HEADING_1,
+      BLOCK.HEADING_2,
+      BLOCK.HEADING_3,
+      BLOCK.HEADING_4,
+      BLOCK.HEADING_5,
+      BLOCK.BULLETED_LIST,
+      BLOCK.ORDERED_LIST,
+      BLOCK.TASK_LIST,
+      BLOCK.CODE,
+      BLOCK.BLOCKQUOTE,
+      BLOCK.CALLOUT
+    ]
+  },
+  {
+    key: 'others',
+    items: [BLOCK.DIVIDER, BLOCK.TOC, BLOCK.SUB_PAGE_MENU]
+  }
+]
 
 export interface ExplorerMenuProps {
   editor: Editor | null
@@ -39,14 +70,14 @@ export const ExplorerMenu: React.FC<ExplorerMenuProps> = () => {
     () =>
       MashcardEventBus.subscribe(ExplorerMenuTrigger, () => {
         setGroupSource(
-          slashMenuGroup.map(group => ({
-            label: t(`slash_menu.explorer_menu.group.${group.key}.label`),
+          blockGroups.map(group => ({
+            label: t(`explorer_menu.group.${group.key}.label`),
             // eslint-disable-next-line max-nested-callbacks
             items: group.items.map(item => ({
               label: t(`blocks.${item.key}.label`),
               labelText: t(`blocks.${item.key}.label`),
               key: item.key,
-              icon: item.icon
+              icon: item.squareIcon
             }))
           }))
         )
