@@ -146,68 +146,6 @@ export const queryFormulas = gql`
   }
 `
 
-export const queryBlockInfo = gql`
-  query GetBlockInfo($id: String!, $domain: String!) {
-    blockInfo(id: $id, domain: $domain) {
-      title
-      id
-      enabledAlias {
-        key
-        payload
-      }
-      icon {
-        ... on BlockImage {
-          type
-          source
-          key
-          height
-          width
-        }
-
-        ... on BlockEmoji {
-          type
-          name
-          emoji
-        }
-      }
-      isDeleted
-      isMaster
-      pin
-      pathArray {
-        id
-        text
-        icon {
-          ... on BlockImage {
-            type
-            source
-            key
-            height
-            width
-          }
-
-          ... on BlockEmoji {
-            type
-            name
-            emoji
-          }
-        }
-      }
-      permission {
-        key
-        policy
-        state
-      }
-      collaborators {
-        name
-        domain
-        avatarData {
-          url
-        }
-      }
-    }
-  }
-`
-
 export const queryChildrenBlocks = gql`
   query GetChildrenBlocks($rootId: String!) {
     childrenBlocks(rootId: $rootId) {

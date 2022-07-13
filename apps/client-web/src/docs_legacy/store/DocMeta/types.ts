@@ -1,9 +1,5 @@
-import { GetBlockInfoQuery, DocumentInfo } from '@/MashcardGraphQL'
+import { DocumentInfo } from '@/MashcardGraphQL'
 import { createContext } from 'react'
-
-// type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
-export type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['pathArray'][0]
-// type Icon = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['icon']
 
 export interface DocMeta {
   id: string | undefined

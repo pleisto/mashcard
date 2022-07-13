@@ -26,7 +26,6 @@ import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'
 import { queryPageBlocks } from '../../graphql'
 import { useDocsI18n } from '../../hooks'
-import { queryBlockInfo } from '@/docs_legacy/pages/graphql'
 import { pagesVar } from '@/docs_legacy/reactiveVars'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { useDocMeta } from '@/docs_legacy/store/DocMeta'
@@ -213,8 +212,6 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
           })
           .sort((a, b) => a.sort - b.sort)
       )
-    } else if (id === sourceBlock.id) {
-      await blockMoveClient.refetchQueries({ include: [queryBlockInfo] })
     }
   }
 
