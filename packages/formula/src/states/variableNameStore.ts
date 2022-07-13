@@ -1,37 +1,8 @@
 import create from 'zustand/vanilla'
-import { FormulaType, NamespaceId } from '../type'
+import { FormulaType, FORMULA_SHORT_NAMES, NamespaceId } from '../type'
 import { mapValues } from 'lodash'
 
-// TODO getShortName from FormulaAttributes
-const shortNames = [
-  'str',
-  'literal',
-  'num',
-  'bool',
-  'blank',
-  'cst',
-  'switch',
-  'button',
-  'predicate',
-  'pending',
-  'waiting',
-  'noPersist',
-  'function',
-  'reference',
-  'null',
-  'record',
-  'array',
-  'date',
-  'error',
-  'spreadsheet',
-  'column',
-  'range',
-  'row',
-  'cell',
-  'block'
-] as const
-
-type SpecialDefaultVariableNameType = typeof shortNames[number] | 'void' | 'var'
+type SpecialDefaultVariableNameType = typeof FORMULA_SHORT_NAMES[number] | 'void' | 'var'
 
 const FormulaTypeCastName: Record<FormulaType, SpecialDefaultVariableNameType> = {
   string: 'str',
@@ -47,7 +18,7 @@ const FormulaTypeCastName: Record<FormulaType, SpecialDefaultVariableNameType> =
   Waiting: 'waiting',
   NoPersist: 'noPersist',
   Function: 'function',
-  Reference: 'reference',
+  Reference: 'ref',
   null: 'null',
   Record: 'record',
   Array: 'array',
@@ -63,7 +34,7 @@ const FormulaTypeCastName: Record<FormulaType, SpecialDefaultVariableNameType> =
   any: 'var'
 }
 
-const matchRegex = new RegExp(`(${shortNames.join('|')}|var|void)([0-9]+)$`)
+const matchRegex = new RegExp(`(${FORMULA_SHORT_NAMES.join('|')}|var|void)([0-9]+)$`)
 
 const ReverseCastName = Object.entries(FormulaTypeCastName).reduce(
   (acc, [key, value]) => ({ ...acc, [value]: key }),

@@ -12,6 +12,34 @@ const FORMULA_COMPLEX_TYPES = ['Cst', 'Reference', 'Function', 'Predicate'] as c
 const FORMULA_CONTROL_TYPES = ['Button', 'Switch'] as const
 const FORMULA_OTHER_TYPES = ['literal', 'Pending', 'Waiting', 'NoPersist'] as const
 
+export const FORMULA_SHORT_NAMES = [
+  'str',
+  'literal',
+  'num',
+  'bool',
+  'blank',
+  'cst',
+  'switch',
+  'button',
+  'predicate',
+  'pending',
+  'waiting',
+  'noPersist',
+  'function',
+  'ref',
+  'null',
+  'record',
+  'array',
+  'date',
+  'error',
+  'spreadsheet',
+  'column',
+  'range',
+  'row',
+  'cell',
+  'block'
+] as const
+
 export const FORMULA_USED_TYPES = [
   ...FORMULA_BASIC_TYPES,
   ...FORMULA_OBJECT_TYPES,
@@ -109,7 +137,7 @@ export type BaseResult<
 
 export interface FormulaTypeAttributes<
   Type extends UsedFormulaType,
-  ShortName extends string,
+  ShortName extends typeof FORMULA_SHORT_NAMES[number],
   Dump extends AnyDumpResult<Type> = AnyDumpResult<Type>,
   Value extends AnyTypeResult<Type> = AnyTypeResult<Type>,
   Display extends AnyDisplayResult<Type> = AnyDisplayResult<Type>
