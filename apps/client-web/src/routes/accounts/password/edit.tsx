@@ -49,7 +49,7 @@ export const Edit: React.FC = () => {
   })
 
   if (didRedirectToSignInPage) {
-    return <Navigate to="../sign_in" />
+    return <Navigate to="../sign-in" />
   }
 
   return (

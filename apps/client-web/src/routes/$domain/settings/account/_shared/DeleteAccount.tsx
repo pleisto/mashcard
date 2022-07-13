@@ -31,7 +31,7 @@ export const DeleteAccount: FC = () => {
     if (errors && errors?.length > 0) {
       toast.error(errors.join('\n'))
     } else {
-      globalThis.location.href = `/accounts/sign_in`
+      globalThis.location.href = `/accounts/sign-in`
     }
   }
 
