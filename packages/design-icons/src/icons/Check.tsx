@@ -25,7 +25,7 @@ export default IconWrapper(
                 fillRule="evenodd"
                 clipRule="evenodd"
                 d="M18.223 6.754c.5.4.58 1.128.181 1.627l-6.947 8.684a1.158 1.158 0 0 1-1.723.096L5.68 13.108a1.158 1.158 0 0 1 1.638-1.637l3.138 3.138 6.139-7.674c.4-.5 1.128-.58 1.627-.181Z"
-                fill={props.colors[0]}
+                fill={props.colors[2]}
             />
         </svg>
     )
