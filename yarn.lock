@@ -3254,7 +3254,7 @@ __metadata:
     unplugin-swc: ^1.3.2
     vite: ^3.0.0
     vite-plugin-pwa: ^0.12.3
-    vite-plugin-ruby: ^3.0.12
+    vite-plugin-ruby: ^3.1.0
   languageName: unknown
   linkType: soft
 
@@ -23915,15 +23915,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-ruby@npm:^3.0.12":
-  version: 3.0.12
-  resolution: "vite-plugin-ruby@npm:3.0.12"
+"vite-plugin-ruby@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "vite-plugin-ruby@npm:3.1.0"
   dependencies:
-    debug: ^4.3.3
+    debug: ^4.3.4
     fast-glob: ^3.2.11
   peerDependencies:
     vite: ">=2.5.0"
-  checksum: 8a5a5df36ed5b30cd9ce0c9af0683ead5cf306e966d922287526426aad038a855a1f62282a3cfec1e08cd5a39b0ef78eb0e4164a38acc6d662e7d33acb81e3dd
+  checksum: 66fbff2715e57bab7d84d69a0d975864887914f35e1e1dc4216ae1dd2a7ba747e601727c8e00e1ea9ba69f4b078e987e3f00ef93eaeafad44c23900770ba8ecf
   languageName: node
   linkType: hard
 
