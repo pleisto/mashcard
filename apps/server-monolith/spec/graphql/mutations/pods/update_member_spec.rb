@@ -8,7 +8,7 @@ describe Mutations::Pods::UpdateMember, type: :mutation do
       mutation updateMember($input: UpdateMemberInput!) {
         updateMember(input: $input) {
           errors
-       }
+        }
       }
     GRAPHQL
 

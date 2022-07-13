@@ -25,9 +25,12 @@ describe Group, type: :model do
     it 'invite enable' do
       group = described_class.create!(display_name: FFaker::Name.name, username: Time.now.to_i.to_s(36), owner_id: create(:owner).id)
 
+      expect(group.invite_enable).to be(false)
+      expect(group.invite_secret).to be_nil
+
       group.update!(invite_enable: true)
       expect(group.invite_enable).to be(true)
-      expect(group.invite_secret).to be_nil
+      expect(group.invite_secret).not_to be_nil
 
       group.update!(invite_secret: '123123')
       expect(group.invite_secret).to eq('123123')
