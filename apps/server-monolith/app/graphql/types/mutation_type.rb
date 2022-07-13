@@ -23,10 +23,10 @@ module Types
     field :create_or_update_pod, mutation: Mutations::Pods::CreateOrUpdate
     field :formula_commit, mutation: Mutations::FormulaCommit
     field :group_destroy, mutation: Mutations::Groups::Destroy
-    field :join_pod, mutation: Mutations::Pods::Join
-    field :pod_leave, mutation: Mutations::Pods::Leave
+    field :group_join, mutation: Mutations::Groups::Join
+    field :group_leave, mutation: Mutations::Groups::Leave
+    field :group_update_member, mutation: Mutations::Groups::UpdateMember
     field :update_domain, mutation: Mutations::Pods::UpdateDomain
-    field :update_member, mutation: Mutations::Pods::UpdateMember
     field :user_appearance_update, mutation: Mutations::Users::AppearanceUpdate
     field :user_confirmation_email_resend, mutation: Mutations::Users::ConfirmationEmailResend
     field :user_create, mutation: Mutations::Users::Create

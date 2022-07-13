@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 module Mutations
-  module Pods
+  module Groups
     class UpdateMember < ::Mutations::BaseMutation
-      # TODO: rename graphql_name to podUpdateMember
-      graphql_name 'UpdateMember'
+      graphql_name 'GroupUpdateMember'
       argument :domain, String, 'domain', required: true
       argument :role, Types::Pods::MemberRole, 'role', required: true
       argument :state, Types::Pods::MemberState, 'state', required: true

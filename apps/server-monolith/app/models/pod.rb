@@ -65,6 +65,21 @@ class Pod < ApplicationRecord
     owner.id === Current.user&.id
   end
 
+  # Update the username of the pod
+  def update_username(new_username)
+    return true if new_username == username
+
+    old_username = username
+    self.username = new_username
+    save
+
+    return false if errors.present?
+
+    Pod.where(last_pod_username: old_username).update_all(last_pod_username: new_username) if old_username.present?
+
+    true
+  end
+
   def self.domain_available?(username)
     instance = new
     instance.username = username

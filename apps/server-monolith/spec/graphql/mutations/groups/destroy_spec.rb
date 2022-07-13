@@ -5,7 +5,7 @@ require 'rails_helper'
 describe Mutations::Groups::Destroy, type: :mutation do
   describe '#resolve' do
     mutation = <<-'TEXT'
-      mutation GroupDestroy($input: GroupDestroyInput!) {
+      mutation groupDestroy($input: GroupDestroyInput!) {
         groupDestroy(input: $input) {
           errors
         }

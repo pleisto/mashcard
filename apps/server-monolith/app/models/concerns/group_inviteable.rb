@@ -3,6 +3,12 @@
 module GroupInviteable
   extend ActiveSupport::Concern
 
+  included do
+    def self.invite_secret_to_id(secret)
+      Mashcard::Crypto.int_id_deobfuscate(secret.to_s[16..-1].to_s[0..-5].to_s)
+    end
+  end
+
   def invite_enable
     config.get(:group_invite_enable)
   end
