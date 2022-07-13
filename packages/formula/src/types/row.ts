@@ -2,11 +2,13 @@ import { RowType } from '../controls'
 import { BaseResult, FindKey, FormulaTypeAttributes } from '../type'
 
 const TypeName = 'Row' as const
+const ShortName = 'row' as const
 
 export type FormulaRowType = BaseResult<typeof TypeName, RowType, [string, FindKey]>
 
-export const FormulaRowAttributes: FormulaTypeAttributes<typeof TypeName> = {
+export const FormulaRowAttributes: FormulaTypeAttributes<typeof TypeName, typeof ShortName> = {
   type: TypeName,
+  shortName: ShortName,
   dump: ({ result, ...rest }) => ({ ...rest, result: [result.spreadsheetId, result.findKey] }),
   cast: ({ result, ...rest }, ctx) => {
     const row = ctx.findRow(result[0], result[1])

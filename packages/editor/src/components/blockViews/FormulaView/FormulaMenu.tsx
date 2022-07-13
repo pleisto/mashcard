@@ -14,6 +14,7 @@ import {
 } from '@mashcard/schema'
 import * as Root from '../../ui/Formula/Formula.style'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
+import { useFormulaMenuStore } from './useFormulaMenuState'
 
 export interface FormulaMenuProps {
   meta: UseFormulaInput['meta']
@@ -51,11 +52,14 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   completion
 }) => {
   const { namespaceId: rootId, variableId: formulaId } = meta
+  const [tryOpenMenu, closeMenu] = useFormulaMenuStore(state => [state.tryOpenMenu, state.closeMenu])
+
   const close = React.useCallback((): void => {
     setVisible(false)
     setMaxScreen(false)
     onVisibleChange?.(false)
-  }, [onVisibleChange, setMaxScreen, setVisible])
+    closeMenu()
+  }, [closeMenu, onVisibleChange, setMaxScreen, setVisible])
 
   const triggerCalculate = async (): Promise<void> => {
     const result = MashcardEventBus.dispatch(FormulaCalculateTrigger({ skipExecute: true, formulaId, rootId }))
@@ -78,10 +82,12 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       await handleSave()
       return
     }
+    const success = tryOpenMenu(formulaId)
+    if (!success) return
     await triggerCalculate()
     formulaEditor?.commands.focus()
-    onVisibleChange?.(value)
-    setVisible(value)
+    onVisibleChange?.(true)
+    setVisible(true)
   }
 
   const onClickToggleMaxScreen = (): void => {

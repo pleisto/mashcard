@@ -12,6 +12,34 @@ const FORMULA_COMPLEX_TYPES = ['Cst', 'Reference', 'Function', 'Predicate'] as c
 const FORMULA_CONTROL_TYPES = ['Button', 'Switch'] as const
 const FORMULA_OTHER_TYPES = ['literal', 'Pending', 'Waiting', 'NoPersist'] as const
 
+export const FORMULA_SHORT_NAMES = [
+  'str',
+  'literal',
+  'num',
+  'bool',
+  'blank',
+  'cst',
+  'switch',
+  'button',
+  'predicate',
+  'pending',
+  'waiting',
+  'noPersist',
+  'function',
+  'ref',
+  'null',
+  'record',
+  'array',
+  'date',
+  'error',
+  'spreadsheet',
+  'column',
+  'range',
+  'row',
+  'cell',
+  'block'
+] as const
+
 export const FORMULA_USED_TYPES = [
   ...FORMULA_BASIC_TYPES,
   ...FORMULA_OBJECT_TYPES,
@@ -40,39 +68,6 @@ export type FormulaColorType = Exclude<FormulaType, 'boolean'> | FormulaCodeFrag
 
 export type ExpressionType = FormulaCheckType | undefined
 
-export type SpecialDefaultVariableName =
-  | 'str'
-  | 'num'
-  | 'bool'
-  | 'cst'
-  | 'record'
-  | 'array'
-  | 'date'
-  | 'blank'
-  | 'column'
-  | 'row'
-  | 'cell'
-  | 'range'
-  | 'block'
-  | 'var'
-  | 'null'
-  | 'error'
-  | 'void'
-  | 'predicate'
-  | 'spreadsheet'
-  | 'reference'
-  | 'function'
-  | 'button'
-  | 'switch'
-  | 'select'
-  | 'input'
-  | 'radio'
-  | 'rate'
-  | 'slider'
-  | 'pending'
-  | 'waiting'
-  | 'noPersist'
-
 export type FunctionGroup = CoreFunctionGroup | string
 
 export type FunctionNameType = string
@@ -94,8 +89,6 @@ export type SpreadsheetKey = `#${NamespaceId}.${SpreadsheetId}`
 
 // TODO blockName -> string
 export type BlockName = NamespaceId
-
-export type DefaultVariableName = `${SpecialDefaultVariableName}${number}`
 
 export type PredicateFunction = (input: any) => boolean
 
@@ -144,11 +137,13 @@ export type BaseResult<
 
 export interface FormulaTypeAttributes<
   Type extends UsedFormulaType,
+  ShortName extends typeof FORMULA_SHORT_NAMES[number],
   Dump extends AnyDumpResult<Type> = AnyDumpResult<Type>,
   Value extends AnyTypeResult<Type> = AnyTypeResult<Type>,
   Display extends AnyDisplayResult<Type> = AnyDisplayResult<Type>
 > {
   type: Type
+  shortName: ShortName
   dump: (result: Value, dumpF: (o: AnyTypeResult) => any) => Dump
   display: (result: Value, displayF: (o: AnyTypeResult) => Display) => Display
   cast: (
@@ -371,13 +366,14 @@ export interface ContextInterface {
   domain: string
   features: string[]
   dirtyFormulas: Record<VariableKey, DirtyFormulaInfo>
+  checkName: (name: string, namespaceId: NamespaceId, variableId: VariableId) => ErrorMessage | undefined
   reservedNames: string[]
   reverseVariableDependencies: Record<VariableKey, VariableDependency[]>
   reverseFunctionDependencies: Record<FunctionKey, VariableDependency[]>
   invoke: (name: FunctionNameType, ctx: FunctionContext, ...args: any[]) => Promise<AnyTypeResult>
   backendActions: BackendActions | undefined
   variableCount: () => number
-  getDefaultVariableName: (namespaceId: NamespaceId, type: FormulaType) => DefaultVariableName
+  getDefaultVariableName: (namespaceId: NamespaceId, type: FormulaType) => string
   completions: (namespaceId: NamespaceId, variableId: VariableId | undefined) => Completion[]
   findViewRender: (viewType: ViewType) => ViewRender | undefined
   findBlockById: (blockId: NamespaceId) => BlockType | undefined

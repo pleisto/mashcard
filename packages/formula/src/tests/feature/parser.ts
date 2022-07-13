@@ -140,24 +140,42 @@ export const ParserTestCase: TestCaseInterface = {
           }
         ]
       },
-      {
-        definition: '="if"',
-        groupOptions: [{ name: 'basicError' }] as const,
+      ...[
+        {
+          definition: '="if"',
+          groupOptions: [{ name: 'basicError' }] as const,
+          expected: [
+            {
+              key: 'codeFragments',
+              matchType: 'toMatchObject',
+              match: [
+                { code: 'Equal', errors: [] },
+                { code: 'StringLiteral', errors: [] }
+              ]
+            }
+          ] as const
+        },
+        {
+          definition: '=  ',
+          label: 'blank vs nameCheck priority',
+          expected: [
+            {
+              key: 'codeFragments',
+              matchType: 'toMatchObject',
+              match: [
+                { code: 'Equal', errors: [] },
+                { code: 'Space', errors: [] }
+              ]
+            }
+          ] as const
+        }
+      ].map<NonNullable<TestCaseInterface['testCases']['errorTestCases']>[0]>(t => ({
         errorType: 'name_check',
         errorMessage: 'errors.parse.name.reserved',
-        expected: [
-          {
-            key: 'codeFragments',
-            matchType: 'toMatchObject',
-            match: [
-              { code: 'Equal', errors: [] },
-              { code: 'StringLiteral', errors: [] }
-            ]
-          }
-        ],
         namespaceId,
-        name: 'if'
-      },
+        name: 'if',
+        ...t
+      })),
       ...[
         { name: 'in', groupOptions: [{ name: 'basicError' }] as const },
         { name: '1asd' },
@@ -167,7 +185,6 @@ export const ParserTestCase: TestCaseInterface = {
         { name: '  ' },
         { name: 'asd foo bar' }
       ].map<NonNullable<TestCaseInterface['testCases']['errorTestCases']>[0]>(t => ({
-        ...t,
         definition: '="bar"',
         errorType: 'name_invalid',
         errorMessage: 'errors.parse.name.invalid',
@@ -181,7 +198,8 @@ export const ParserTestCase: TestCaseInterface = {
               { code: 'StringLiteral', errors: [] }
             ]
           }
-        ]
+        ],
+        ...t
       })),
       ...[
         { name: 'bar', groupOptions: [{ name: 'basicError' }] as const },
@@ -189,7 +207,6 @@ export const ParserTestCase: TestCaseInterface = {
         { name: 'ParserPage', label: 'block name' },
         { name: 'spreadsheet123', label: 'spreadsheet name' }
       ].map<NonNullable<TestCaseInterface['testCases']['errorTestCases']>[0]>(t => ({
-        ...t,
         definition: '="bar"',
         errorType: 'name_unique',
         errorMessage: 'errors.parse.name.duplicated',
@@ -203,7 +220,8 @@ export const ParserTestCase: TestCaseInterface = {
             ]
           }
         ],
-        namespaceId
+        namespaceId,
+        ...t
       }))
     ]
   }
