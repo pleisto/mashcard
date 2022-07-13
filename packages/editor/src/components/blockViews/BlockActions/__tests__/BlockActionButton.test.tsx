@@ -1,5 +1,4 @@
-import { render, renderHook, screen, fireEvent } from '@testing-library/react'
-import { act } from 'react-dom/test-utils'
+import { render, renderHook, screen, fireEvent, act } from '@testing-library/react'
 import { BlockSelectorItem } from '../../../ui/BlockSelector'
 import { BlockActionButton, BlockActionButtonProps, useBlockActionHandlers } from '../BlockActionButton'
 import * as editorHooks from '../../../../hooks/useEditorContext'
@@ -142,7 +141,9 @@ describe('BlockActionButton', () => {
       const visible = true
       const { result } = renderHook(() => useBlockActionHandlers(onVisibleChange))
 
-      result.current.onMenuVisibleChange(visible)
+      act(() => {
+        result.current.onMenuVisibleChange(visible)
+      })
 
       expect(result.current.menuVisible).toBe(visible)
       expect(onVisibleChange).toBeCalledWith(visible)
@@ -152,7 +153,9 @@ describe('BlockActionButton', () => {
       const onVisibleChange = jest.fn()
       const { result } = renderHook(() => useBlockActionHandlers(onVisibleChange))
 
-      result.current.onCloseMenu()
+      act(() => {
+        result.current.onCloseMenu()
+      })
 
       expect(result.current.menuVisible).toBe(false)
     })
@@ -183,7 +186,9 @@ describe('BlockActionButton', () => {
       }
       const { result } = renderHook(() => useBlockActionHandlers(onVisibleChange))
 
-      result.current.onBlockSelect(item)
+      act(() => {
+        result.current.onBlockSelect(item)
+      })
 
       expect(item.command).toBeCalledWith({ editor, range: position + 1 })
     })
