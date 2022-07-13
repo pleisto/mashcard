@@ -1,4 +1,5 @@
 import { FormulaVariableDependencyUpdated } from '../../../events'
+import { FunctionContext } from '../../../type'
 import { generateUUIDs } from '../../testHelper'
 import { TestCaseInterface } from '../../testType'
 
@@ -15,6 +16,32 @@ export const VariableEventTestCase: TestCaseInterface = {
       }
     ],
     eventTestCases: [
+      ...[
+        {
+          name: 'foobar',
+          expected: [
+            {
+              fn: (ctx: FunctionContext) => ctx.formulaContext.getDefaultVariableName(page0Id, 'string'),
+              match: 'str0'
+            }
+          ] as const
+        },
+        {
+          name: 'str1',
+          expected: [
+            {
+              fn: (ctx: FunctionContext) => ctx.formulaContext.getDefaultVariableName(page0Id, 'string'),
+              match: 'str2'
+            }
+          ] as const
+        }
+      ].map(t => ({
+        definition: '=1',
+        resultBefore: 1,
+        namespaceId: page0Id,
+        events: [],
+        ...t
+      })),
       {
         definition: '=VariableEventPage1.num0',
         resultBefore: 0,

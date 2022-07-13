@@ -173,7 +173,7 @@ interface TriggerEvent {
 
 export type ExtendedCtx = MakeContextResult & { meta: VariableMetadata }
 
-interface EventTestCaseType extends RequireField<BaseTestCase<{}>, 'definition'> {
+interface EventTestCaseType extends RequireField<BaseTestCase<{ fn: (ctx: FunctionContext) => any }>, 'definition'> {
   resultBefore: any
   resultAfter?: any
   resultAfterAsync?: true

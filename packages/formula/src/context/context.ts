@@ -1,66 +1,66 @@
+import { devWarning } from '@mashcard/design-system'
+import { EventSubscribed, MashcardEventBus } from '@mashcard/schema'
 import { CstNode, ILexingResult } from 'chevrotain'
-import { ColumnType, SpreadsheetType, BlockType, RowType } from '../controls'
-import {
-  ContextInterface,
-  NamespaceId,
-  VariableDependency,
-  VariableId,
-  BackendActions,
-  VariableInterface,
-  FormulaType,
-  SpecialDefaultVariableName,
-  Completion,
-  FunctionNameType,
-  FunctionGroup,
-  FunctionKey,
-  VariableKey,
-  DefaultVariableName,
-  CodeFragment,
-  AnyFunctionClause,
-  FunctionCompletion,
-  VariableCompletion,
-  SpreadsheetCompletion,
-  Features,
-  AnyTypeResult,
-  FunctionContext,
-  BlockCompletion,
-  ViewType,
-  ViewRender,
-  View,
-  DirtyFormulaInfo,
-  Formula,
-  DeleteFormula,
-  SpreadsheetId,
-  NameDependencyWithKind,
-  FindKey,
-  AnyFunctionClauseWithKeyAndExample,
-  VariableDisplayData,
-  ErrorMessage
-} from '../type'
-import { variableKey } from '../grammar/convert'
-import { buildFunctionKey, BUILTIN_CLAUSES } from '../functions'
-import { CodeFragmentVisitor } from '../grammar/codeFragment'
-import { FormulaParser } from '../grammar/parser'
-import { checkValidName, FormulaLexer } from '../grammar/lexer'
-import { MashcardEventBus, EventSubscribed } from '@mashcard/schema'
-import { FORMULA_FEATURE_CONTROL } from './features'
+
+import { BlockType, ColumnType, RowType, SpreadsheetType } from '../controls'
 import { BlockClass } from '../controls/block'
-import { DEFAULT_VIEWS } from '../render'
 import {
-  FormulaContextTickTrigger,
+  FormulaBlockNameModifiedWithUsername,
   FormulaContextNameChanged,
   FormulaContextNameRemove,
-  SpreadsheetReloadViaId,
-  FormulaBlockNameModifiedWithUsername
+  FormulaContextTickTrigger,
+  SpreadsheetReloadViaId
 } from '../events'
+import { buildFunctionKey, BUILTIN_CLAUSES } from '../functions'
+import { CodeFragmentVisitor } from '../grammar/codeFragment'
 import {
-  function2completion,
   block2completion,
-  variable2completion,
-  spreadsheet2completion
+  function2completion,
+  spreadsheet2completion,
+  variable2completion
 } from '../grammar/completer'
+import { variableKey } from '../grammar/convert'
+import { checkValidName, FormulaLexer } from '../grammar/lexer'
+import { FormulaParser } from '../grammar/parser'
+import { DEFAULT_VIEWS } from '../render'
+import { variableNameStore } from '../states'
+import {
+  AnyFunctionClause,
+  AnyFunctionClauseWithKeyAndExample,
+  AnyTypeResult,
+  BackendActions,
+  BlockCompletion,
+  CodeFragment,
+  Completion,
+  ContextInterface,
+  DeleteFormula,
+  DirtyFormulaInfo,
+  ErrorMessage,
+  Features,
+  FindKey,
+  Formula,
+  FormulaType,
+  FunctionCompletion,
+  FunctionContext,
+  FunctionGroup,
+  FunctionKey,
+  FunctionNameType,
+  NameDependencyWithKind,
+  NamespaceId,
+  SpreadsheetCompletion,
+  SpreadsheetId,
+  VariableCompletion,
+  VariableDependency,
+  VariableDisplayData,
+  VariableId,
+  VariableInterface,
+  VariableKey,
+  View,
+  ViewRender,
+  ViewType
+} from '../type'
+import { FORMULA_FEATURE_CONTROL } from './features'
 import { dumpDisplayResultForDisplay } from './persist'
-import { devWarning } from '@mashcard/design-system'
 
 export interface FormulaContextArgs {
   domain: string
@@ -71,47 +71,6 @@ export interface FormulaContextArgs {
 }
 
 export type ContextState = any
-
-const matchRegex =
-  // eslint-disable-next-line max-len
-  /(str|num|bool|record|blank|cst|array|null|date|predicate|reference|literal|spreadsheet|function|column|row|cell|range|button|switch|error|block|var)([0-9]+)$/
-export const FormulaTypeCastName: Record<FormulaType, SpecialDefaultVariableName> = {
-  string: 'str',
-  literal: 'str',
-  number: 'num',
-  boolean: 'bool',
-  void: 'void',
-  Blank: 'blank',
-  Cst: 'cst',
-  Switch: 'switch',
-  Button: 'button',
-  Predicate: 'predicate',
-  Pending: 'pending',
-  Waiting: 'waiting',
-  NoPersist: 'noPersist',
-  Function: 'function',
-  Reference: 'reference',
-  null: 'null',
-  Record: 'record',
-  Array: 'array',
-  Date: 'date',
-  Error: 'error',
-  Spreadsheet: 'spreadsheet',
-  Column: 'column',
-  Range: 'range',
-  Row: 'row',
-  Cell: 'cell',
-  Block: 'block',
-  any: 'var'
-}
-
-const ReverseCastName = Object.entries(FormulaTypeCastName).reduce(
-  (acc, [key, value]) => ({
-    ...acc,
-    [value]: key
-  }),
-  {}
-) as Record<SpecialDefaultVariableName, FormulaType>
 
 export class FormulaContext implements ContextInterface {
   private static instance?: FormulaContext
@@ -127,35 +86,6 @@ export class FormulaContext implements ContextInterface {
   spreadsheets: Record<string, SpreadsheetType> = {}
   names: Record<string, NameDependencyWithKind> = {}
   blocks: Record<string, BlockType> = {}
-  variableNameCounter: Record<FormulaType, Record<NamespaceId, number>> = {
-    string: {},
-    number: {},
-    Button: {},
-    Switch: {},
-    literal: {},
-    void: {},
-    Function: {},
-    boolean: {},
-    Blank: {},
-    Record: {},
-    Predicate: {},
-    Cst: {},
-    Reference: {},
-    Error: {},
-    Spreadsheet: {},
-    Array: {},
-    null: {},
-    Date: {},
-    Column: {},
-    Row: {},
-    Cell: {},
-    Range: {},
-    Block: {},
-    Pending: {},
-    Waiting: {},
-    NoPersist: {},
-    any: {}
-  }
 
   reverseVariableDependencies: Record<VariableKey, VariableDependency[]> = {}
   reverseFunctionDependencies: Record<FunctionKey, VariableDependency[]> = {}
@@ -163,6 +93,7 @@ export class FormulaContext implements ContextInterface {
   backendActions: BackendActions | undefined
   reservedNames: string[] = []
   eventListeners: EventSubscribed[] = []
+  variableNameStore: typeof variableNameStore = variableNameStore
 
   constructor({
     domain,
@@ -277,9 +208,8 @@ export class FormulaContext implements ContextInterface {
     return [...functions, ...variables, ...blocks, ...spreadsheets].sort((a, b) => b.weight - a.weight)
   }
 
-  public getDefaultVariableName(namespaceId: NamespaceId, type: FormulaType): DefaultVariableName {
-    const oldCounter = this.variableNameCounter[type][namespaceId] || 0
-    return `${FormulaTypeCastName[type]}${oldCounter + 1}`
+  public getDefaultVariableName(namespaceId: NamespaceId, type: FormulaType): string {
+    return this.variableNameStore.getState().getDefaultVariableName(namespaceId, type)
   }
 
   public variableCount(): number {
@@ -467,15 +397,7 @@ export class FormulaContext implements ContextInterface {
     this.variables[variableKey(namespaceId, variableId)] = variable
 
     // 3. update name counter
-    const match = variable.t.meta.name.match(matchRegex)
-    if (match) {
-      const [, defaultName, count] = match
-      const realName = ReverseCastName[defaultName as SpecialDefaultVariableName]
-      this.variableNameCounter[realName][namespaceId] = Math.max(
-        this.variableNameCounter[realName][namespaceId] || 0,
-        Number(count)
-      )
-    }
+    this.variableNameStore.getState().maybeAddVariableName(variable.t.meta.name, namespaceId)
 
     // 4. track dependencies
     await variable.trackDependency()
