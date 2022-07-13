@@ -34,13 +34,14 @@ import {
   NameDependencyWithKind,
   FindKey,
   AnyFunctionClauseWithKeyAndExample,
-  VariableDisplayData
+  VariableDisplayData,
+  ErrorMessage
 } from '../type'
 import { variableKey } from '../grammar/convert'
 import { buildFunctionKey, BUILTIN_CLAUSES } from '../functions'
 import { CodeFragmentVisitor } from '../grammar/codeFragment'
 import { FormulaParser } from '../grammar/parser'
-import { FormulaLexer } from '../grammar/lexer'
+import { checkValidName, FormulaLexer } from '../grammar/lexer'
 import { MashcardEventBus, EventSubscribed } from '@mashcard/schema'
 import { FORMULA_FEATURE_CONTROL } from './features'
 import { BlockClass } from '../controls/block'
@@ -319,6 +320,21 @@ export class FormulaContext implements ContextInterface {
     return Object.values(this.names).filter(
       n => n.name.toUpperCase() === name.toUpperCase() && (n.kind === 'Block' || n.namespaceId === namespaceId)
     )
+  }
+
+  public checkName(name: string, namespaceId: NamespaceId, variableId: VariableId): ErrorMessage | undefined {
+    if (!checkValidName(name)) {
+      return { message: 'errors.parse.name.invalid', type: 'name_invalid' }
+    }
+    if (this.reservedNames.includes(name.toUpperCase())) {
+      return { message: 'errors.parse.name.reserved', type: 'name_check' }
+    }
+    const sameNameVariable = this.findNames(namespaceId, name).filter(v => v.id !== variableId)[0]
+
+    if (sameNameVariable) {
+      return { message: 'errors.parse.name.duplicated', type: 'name_unique' }
+    }
+    return undefined
   }
 
   public async setName(nameDependency: NameDependencyWithKind): Promise<void> {

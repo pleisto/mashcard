@@ -371,6 +371,7 @@ export interface ContextInterface {
   domain: string
   features: string[]
   dirtyFormulas: Record<VariableKey, DirtyFormulaInfo>
+  checkName: (name: string, namespaceId: NamespaceId, variableId: VariableId) => ErrorMessage | undefined
   reservedNames: string[]
   reverseVariableDependencies: Record<VariableKey, VariableDependency[]>
   reverseFunctionDependencies: Record<FunctionKey, VariableDependency[]>
