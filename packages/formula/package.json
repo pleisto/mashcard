@@ -11,6 +11,7 @@
   "volta": {
     "extends": "../../package.json"
   },
+  "sideEffects": false,
   "dependencies": {
     "@mashcard/active-support": "workspace:^",
     "@mashcard/design-system": "workspace:^",

@@ -36,7 +36,8 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{woff,woff2,ttf,js,svg,mp4,jpg,png,webp,webm,mov}'],
+        maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
+        globPatterns: ['**/*.{woff,woff2,ttf,js,css,svg,mp4,jpg,png,webp,webm,mov}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/s3\.brickdoc\.com\/npmjs\/.*/i,
@@ -50,7 +51,7 @@ export default defineConfig({
             }
           },
           {
-            urlPattern: /^https:\/\/s3\.brickdoc\.com\/webfonts\/.*/i,
+            urlPattern: /^https:\/\/s3\.brickapis\.com\/webfonts\/.*/i,
             handler: 'CacheFirst',
             options: {
               cacheName: 'mashcard-webfonts-cache',
@@ -72,42 +73,13 @@ export default defineConfig({
       : undefined
   ],
   build: {
-    chunkSizeWarningLimit: 1024,
-    sourcemap: true,
-    target: ['chrome74', 'ios13', 'safari13'],
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor1: ['react', 'react-dom', '@apollo/client'],
-          vendor2: ['i18next', 'react-i18next', 'yup', 'dayjs', 'framer-motion'],
-          vendor3: ['chevrotain', 'refractor', 'lodash-es'],
-          vendor4: ['yjs', '@tiptap/core', '@tiptap/react'],
-          vendor5: ['rc-dropdown', 'rc-select', 'rc-tabs', 'rc-trigger', 'rc-virtual-list', '@uiw/react-split'],
-          vendor6: ['react-vega'],
-          telemetry: ['@sentry/react', '@sentry/tracing', '@sentry/integrations'],
-          common: [
-            '@mashcard/active-support',
-            '@mashcard/design-system',
-            '@mashcard/design-icons',
-            '@mashcard/schema',
-            '@mashcard/test-helper'
-          ],
-          editor: ['@mashcard/editor'],
-          formula: ['@mashcard/formula'],
-          uploader: ['@mashcard/uploader']
-        }
-      }
-    }
-  },
-  optimizeDeps: {
-    include: ['dayjs', 'yup', 'lodash-es', 'framer-motion', 'yup']
+    sourcemap: true
   },
   resolve: {
     alias: {
       lodash: 'lodash-es',
       plugins: join(__dirname, '../../plugins')
-    },
-    dedupe: ['react', 'react-dom', 'i18next', 'react-i18next']
+    }
   },
   server: {
     fs: {

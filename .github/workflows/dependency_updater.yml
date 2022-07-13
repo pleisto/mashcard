@@ -24,7 +24,7 @@ jobs:
       - name: Update yarn packages
         run: eval "yarn up $PATTERNS --mode=update-lockfile && yarn up $PATTERNS --recursive --mode=update-lockfile"
         env:
-          PATTERNS: "'!(ms|vite-plugin-ruby)' '@!(mashcard|rails)/*'"
+          PATTERNS: "'!(ms|vite-plugin-ruby)' '@!(mashcard)/*'"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         env:

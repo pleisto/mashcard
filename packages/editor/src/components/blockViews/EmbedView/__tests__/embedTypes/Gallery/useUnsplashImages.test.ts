@@ -77,7 +77,6 @@ describe('useUnsplashImages', () => {
       cb: any
 
       constructor(cb: (param: any) => void) {
-        // eslint-disable-next-line node/no-callback-literal
         this.cb = cb
         this.check(1)
       }
