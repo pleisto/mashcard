@@ -81,6 +81,15 @@ zh-CN:
       default: Type '/' for commands
     copy_hint: 已复制到剪贴板
     explorer_menu:
+      group:
+        data:
+          label: Data
+        embed:
+          label: Embed
+        text:
+          label: Text
+        others:
+          label: Others
       title: 探索
       search:
         placeholder: 搜索
@@ -193,27 +202,16 @@ zh-CN:
         spreadsheet: 电子表格
         upload: 上传
         gallery: 相册
-    slash_menu:
-      title: 斜杠菜单
-      recent: 最近使用
-      type: 类型
-      suggestion: 建议
-      no_suggestion: 没有结果
-      footer: 探索
+    block_selector:
+      recent: Recently used
+      type: Type
+      suggestion: Suggestions
+      no_suggestion: No result
+      footer: Explore
       tooltip: Explore slash menu
-      explorer_menu:
-        group:
-          data:
-            label: 数据
-          embed:
-            label: 嵌入
-          text:
-            label: 文本
-          others:
-            label: 其它
       items:
         explore:
-          label: 探索
+          label: Explore
     bubble_menu:
       node:
         section_title: 切换为

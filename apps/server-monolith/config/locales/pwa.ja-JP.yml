@@ -81,6 +81,15 @@ ja-JP:
       default: Type '/' for commands
     copy_hint: Copied to clipboard.
     explorer_menu:
+      group:
+        data:
+          label: Data
+        embed:
+          label: Embed
+        text:
+          label: Text
+        others:
+          label: Others
       title: Explore
       search:
         placeholder: 検索
@@ -193,24 +202,13 @@ ja-JP:
         spreadsheet: スプレッドシートツール
         upload: Upload
         gallery: Gallery
-    slash_menu:
-      title: スラッシュメニュー
+    block_selector:
       recent: Recently used
       type: Type
-      suggestion: 予測
-      no_suggestion: 結果なし
+      suggestion: Suggestions
+      no_suggestion: No result
       footer: Explore
       tooltip: Explore slash menu
-      explorer_menu:
-        group:
-          data:
-            label: データ
-          embed:
-            label: Embed
-          text:
-            label: Text
-          others:
-            label: その他
       items:
         explore:
           label: Explore
