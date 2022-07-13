@@ -2,7 +2,7 @@ import React from 'react'
 import { Y } from '@mashcard/editor'
 import * as awarenessProtocol from 'y-protocols/awareness'
 import { base64 } from 'rfc4648'
-import { uuid } from '@mashcard/active-support'
+import { uuid, isEqual } from '@mashcard/active-support'
 import { yDocToProsemirrorJSON } from 'y-prosemirror'
 
 import {
@@ -145,6 +145,7 @@ export function useDocSyncProvider(queryVariables: {
 
   const setBlockMetaUpdated = React.useCallback(
     (meta: blockMeta) => {
+      if (isEqual(meta, latestMeta)) return
       if (!historyId) {
         // TODO: refactor to remove BlockInfo
         client.cache.modify({

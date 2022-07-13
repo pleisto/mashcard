@@ -37,13 +37,12 @@ export const DocumentTopBar: FC = () => {
     )
   }
 
-  const headMenu = id && (
+  const headMenu = (
     <>
-      {!isAnonymous && <Root.Menu as={PathBreadcrumb as any} />}
       {isAnonymous ? (
         <Root.LogoIconTry role="button" onClick={() => navigate('/')} src={Logo_Try} alt="Try MashCard" />
       ) : (
-        <Root.LogoIcon src={Logo} alt="MashCard" />
+        <Root.Menu as={PathBreadcrumb as any} />
       )}
     </>
   )

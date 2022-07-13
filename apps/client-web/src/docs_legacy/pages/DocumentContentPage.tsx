@@ -17,7 +17,7 @@ import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
 import { AppError404 } from '@/routes/_shared/AppError'
 import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
-import { MashcardEventBus, HistoryListToggle } from '@mashcard/schema'
+import { MashcardEventBus, HistoryListToggle, BlockMetaUpdated } from '@mashcard/schema'
 
 export const DocumentContentPage: FC = () => {
   const { t } = useDocsI18n()
@@ -30,13 +30,12 @@ export const DocumentContentPage: FC = () => {
   const navigate = useNavigate()
   const preSidebarStyle = useMemo(getSidebarStyle, [])
   const [latestLoading, setLatestLoading] = useState(true)
+  const [documentInfo, setDocumentInfo] = useState<DocumentInfo>()
 
   const { data, loading: blockLoading } = useDocumentBlockQuery({
     variables: { id: docId as string, historyId },
     fetchPolicy: 'no-cache'
   })
-
-  const documentInfo = data?.blockNew?.documentInfo ? (data?.blockNew?.documentInfo as DocumentInfo) : undefined
 
   const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({
     refetchQueries: [queryPageBlocks]
@@ -46,6 +45,26 @@ export const DocumentContentPage: FC = () => {
   useEffect(() => {
     if (!loading) setLatestLoading(false)
   }, [loading, setLatestLoading])
+
+  // NOTE: temp fix title updating by turning DocumentInfo to state before we migrated to zustand
+  useEffect(() => {
+    if (data?.blockNew?.documentInfo) {
+      setDocumentInfo(data.blockNew.documentInfo as DocumentInfo)
+    }
+    const subscription = MashcardEventBus.subscribe(
+      BlockMetaUpdated,
+      ({ payload }) => {
+        if (data?.blockNew?.documentInfo) {
+          setDocumentInfo({
+            ...(data.blockNew.documentInfo as DocumentInfo),
+            title: payload.meta.title as string,
+            icon: payload.meta.icon
+          })
+        }
+      },
+      { subscribeId: docId }
+    )
+  }, [data, setDocumentInfo])
 
   const isAnonymous = !currentUser
   const { state } = useLocation()
