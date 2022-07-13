@@ -9,10 +9,15 @@ module Mutations
 
       def resolve(domain:, user_domain:)
         group = current_user.groups.find { |p| p.username == domain }
-        forbidden = group.blank? || (group.owner != current_user && user_domain != current_user.domain)
+        return { errors: [I18n.t('settings.errors.invalid_operation_type')] } if group.nil?
+
+        forbidden = group.owner != current_user && user_domain != current_user.domain
         return { errors: [I18n.t('settings.errors.invalid_operation_type')] } if forbidden
 
-        success = pod.members.find { |m| m.user.domain == user_domain }.destroy
+        member = group.members.find { |p| p.user.username == user_domain }
+        return { errors: [I18n.t('settings.errors.invalid_operation_type')] } if member.nil?
+
+        success = member.destroy
         success ? {} : { errors: errors_on_object(id) }
       end
     end

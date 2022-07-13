@@ -15,10 +15,10 @@ describe Mutations::Groups::Join, type: :mutation do
     it 'invalid secret' do
       user = create(:accounts_user)
       self.current_user = user
-      input = { input: { inviteSecret: "invalid string" } }
+      input = { input: { inviteSecret: 'invalid string' } }
       graphql_execute(mutation, input)
       expect(response.success?).to be true
-      expect(response.data).to eq('groupJoin' => {"errors" => [I18n.t('errors.graphql.argument_error.invalid_pod')]})
+      expect(response.data).to eq('groupJoin' => { 'errors' => [I18n.t('errors.graphql.argument_error.invalid_pod')] })
     end
 
     it 'disabled' do
@@ -36,7 +36,7 @@ describe Mutations::Groups::Join, type: :mutation do
       input = { input: { inviteSecret: invite_secret } }
       graphql_execute(mutation, input)
       expect(response.success?).to be true
-      expect(response.data).to eq('groupJoin' => {"errors" => [I18n.t('errors.graphql.argument_error.pod_disable_invite')]})
+      expect(response.data).to eq('groupJoin' => { 'errors' => [I18n.t('errors.graphql.argument_error.pod_disable_invite')] })
     end
 
     it 'create or enable' do
@@ -53,7 +53,7 @@ describe Mutations::Groups::Join, type: :mutation do
       input = { input: { inviteSecret: invite_secret } }
       graphql_execute(mutation, input)
       expect(response.success?).to be true
-      expect(response.data).to eq('groupJoin' => {"errors" => []})
+      expect(response.data).to eq('groupJoin' => { 'errors' => [] })
 
       member = group.members.find_by(user_id: user.id)
       expect(member).not_to be_nil
@@ -61,14 +61,14 @@ describe Mutations::Groups::Join, type: :mutation do
       member.disabled!
       graphql_execute(mutation, input)
       expect(response.success?).to be true
-      expect(response.data).to eq('groupJoin' => {"errors" => []})
+      expect(response.data).to eq('groupJoin' => { 'errors' => [] })
 
       member.reload
       expect(member.state).to eq('enabled')
 
       graphql_execute(mutation, input)
       expect(response.success?).to be true
-      expect(response.data).to eq('groupJoin' => {"errors" => [I18n.t('errors.graphql.argument_error.already_invited')]})
+      expect(response.data).to eq('groupJoin' => { 'errors' => [I18n.t('errors.graphql.argument_error.already_invited')] })
 
       self.current_user = nil
     end

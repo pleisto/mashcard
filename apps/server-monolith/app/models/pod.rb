@@ -71,9 +71,9 @@ class Pod < ApplicationRecord
 
     old_username = username
     self.username = new_username
-    self.save
+    save
 
-    return false if self.errors.present?
+    return false if errors.present?
 
     Pod.where(last_pod_username: old_username).update_all(last_pod_username: new_username) if old_username.present?
 
