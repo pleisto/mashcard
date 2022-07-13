@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect, useMemo, Suspense } from 'react'
+import { FC, useContext, useEffect, useMemo, useState, Suspense } from 'react'
 import { getSidebarStyle, logSideBarWidth } from '@/common/utils/sidebarStyle'
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import Split from '@uiw/react-split'
@@ -7,7 +7,7 @@ import { ContentSidebar } from './components/ContentSidebar'
 import { DocumentPage } from './DocumentPage'
 import { MashcardContext } from '@/common/mashcardContext'
 import { Helmet } from 'react-helmet-async'
-import { Policytype, useBlockCreateMutation, useBlockNewQuery, DocumentInfo } from '@/MashcardGraphQL'
+import { Policytype, useBlockCreateMutation, useDocumentBlockQuery, DocumentInfo } from '@/MashcardGraphQL'
 import { useDocsI18n } from '../common/hooks'
 import { queryPageBlocks } from '../common/graphql'
 import { FormulaContextVar } from '../reactiveVars'
@@ -17,7 +17,7 @@ import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
 import { AppError404 } from '@/routes/_shared/AppError'
 import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
-import { MashcardEventBus, HistoryListToggle } from '@mashcard/schema'
+import { MashcardEventBus, HistoryListToggle, BlockMetaUpdated } from '@mashcard/schema'
 
 export const DocumentContentPage: FC = () => {
   const { t } = useDocsI18n()
@@ -29,18 +29,46 @@ export const DocumentContentPage: FC = () => {
   const { currentUser, lastDomain, lastBlockIds, featureFlags } = useContext(MashcardContext)
   const navigate = useNavigate()
   const preSidebarStyle = useMemo(getSidebarStyle, [])
+  const [latestLoading, setLatestLoading] = useState(true)
+  const [documentInfo, setDocumentInfo] = useState<DocumentInfo>()
 
-  const { data, loading: blockLoading } = useBlockNewQuery({
+  const { data, loading: blockLoading } = useDocumentBlockQuery({
     variables: { id: docId as string, historyId },
     fetchPolicy: 'no-cache'
   })
-
-  const documentInfo = data?.blockNew?.documentInfo ? (data?.blockNew?.documentInfo as DocumentInfo) : undefined
 
   const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({
     refetchQueries: [queryPageBlocks]
   })
   const loading = !data || blockLoading || createBlockLoading
+
+  useEffect(() => {
+    if (!loading) setLatestLoading(false)
+  }, [loading, setLatestLoading])
+
+  // NOTE: temp fix title updating by turning DocumentInfo to state before we migrated to zustand
+  useEffect(() => {
+    if (data?.blockNew?.documentInfo) {
+      setDocumentInfo(data.blockNew.documentInfo as DocumentInfo)
+    }
+    const subscription = MashcardEventBus.subscribe(
+      BlockMetaUpdated,
+      ({ payload }) => {
+        if (data?.blockNew?.documentInfo) {
+          setDocumentInfo({
+            ...(data.blockNew.documentInfo as DocumentInfo),
+            title: payload.meta.title as string,
+            icon: payload.meta.icon
+          })
+        }
+      },
+      { subscribeId: docId }
+    )
+    return () => {
+      subscription.unsubscribe()
+    }
+  }, [data, setDocumentInfo, docId])
+
   const isAnonymous = !currentUser
   const { state } = useLocation()
 
@@ -163,7 +191,7 @@ export const DocumentContentPage: FC = () => {
             <section>
               <article id="article">
                 <Suspense>
-                  <DocumentPage data={data} loading={loading} editable={docMeta.editable} />
+                  <DocumentPage data={data} loading={latestLoading} editable={docMeta.editable} />
                 </Suspense>
               </article>
               {!isAnonymous && <aside id="aside" />}

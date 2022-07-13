@@ -485,6 +485,8 @@ export type BlockMovePayload = {
 /** MashCard Docs::Block New Scheme */
 export type BlockNew = {
   __typename?: 'BlockNew'
+  /** blobs */
+  blobs?: Maybe<Array<Blob>>
   /** Block Type */
   blockType?: Maybe<Scalars['String']>
   documentInfo?: Maybe<DocumentInfo>

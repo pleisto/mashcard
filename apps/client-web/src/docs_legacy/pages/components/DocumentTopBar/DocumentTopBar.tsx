@@ -12,7 +12,6 @@ import { isSavingVar } from '../../../reactiveVars'
 import { DiscussionMenu } from '@/docs_legacy/common/components/DiscussionMenu'
 import { HistoryMenu } from '../../../common/components/HistoryMenu'
 import { MashcardContext } from '@/common/mashcardContext'
-import Logo from '@/common/assets/logo_brickdoc.svg'
 import Logo_Try from '@/common/assets/logo-brickdoc-try.svg'
 import * as Root from './DocumentTopBar.style'
 import loadingIcon from './loading.png'
@@ -28,16 +27,21 @@ export const DocumentTopBar: FC = () => {
   const { id, viewable, editable, isAnonymous, documentInfo } = useDocMeta()
 
   if (!viewable) {
-    return <></>
+    return (
+      <Root.TopBar
+        width={{
+          '@mdDown': 'md'
+        }}
+      />
+    )
   }
 
-  const headMenu = id && (
+  const headMenu = (
     <>
-      {!isAnonymous && <Root.Menu as={PathBreadcrumb as any} />}
       {isAnonymous ? (
         <Root.LogoIconTry role="button" onClick={() => navigate('/')} src={Logo_Try} alt="Try MashCard" />
       ) : (
-        <Root.LogoIcon src={Logo} alt="MashCard" />
+        <Root.Menu as={PathBreadcrumb as any} />
       )}
     </>
   )

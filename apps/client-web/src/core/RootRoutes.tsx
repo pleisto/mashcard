@@ -7,7 +7,6 @@ const Index = lazy(async () => await import('@/routes/index'))
 const DomainIndex = lazy(async () => await import('@/routes/$domain/index'))
 const DomainTrash = lazy(async () => await import('@/routes/$domain/trash'))
 const DomainDocIdIndex = lazy(async () => await import('@/routes/$domain/$docId/index'))
-const DomainDocIdHistoriesHistoryId = lazy(async () => await import('@/routes/$domain/$docId/histories/$historyId'))
 const DomainJoinSecret = lazy(async () => await import('@/routes/$domain/join/$secret'))
 const DomainSettingsLayout = lazy(async () => await import('@/routes/$domain/settings/_'))
 const DomainSettingsIndex = lazy(async () => await import('@/routes/$domain/settings/index'))
@@ -30,12 +29,8 @@ export const RootRoutes: FC = () => {
         <Route path=":domain">
           <Route index element={<DomainIndex />} />
           <Route path="trash" element={<DomainTrash />} />
-          <Route path=":docId">
-            <Route index element={<DomainDocIdIndex />} />
-            <Route path="histories">
-              <Route path=":historyId" element={<DomainDocIdHistoriesHistoryId />} />
-            </Route>
-          </Route>
+          <Route path=":docId/histories/:historyId" element={<DomainDocIdIndex />} />
+          <Route path=":docId" element={<DomainDocIdIndex />} />
           <Route path="join">
             <Route path=":secret" element={<DomainJoinSecret />} />
           </Route>

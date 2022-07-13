@@ -1,5 +1,5 @@
 import { EditorOptions } from '@mashcard/editor'
-import { Block } from '@mashcard/schema'
+import { Blob } from '@mashcard/schema'
 import { DocMeta } from '@/docs_legacy/store/DocMeta'
 import { useMentionCommands } from './useMentionCommands'
 import { useEmbed } from './useEmbed'
@@ -13,19 +13,14 @@ import { useDiscussion } from './useDiscussion'
 
 export interface UseEditorOptions {
   docMeta: DocMeta
-  documentBlock: Block
-  documentEditable: boolean
+  docBlobs: Blob[]
+  editable: boolean
   provider: blockProvider | undefined
 }
 
-export function useEditorOptions({
-  docMeta,
-  documentEditable,
-  documentBlock,
-  provider
-}: UseEditorOptions): EditorOptions {
+export function useEditorOptions({ docMeta, docBlobs, editable, provider }: UseEditorOptions): EditorOptions {
   const discussion = useDiscussion(docMeta)
-  const embed = useEmbed(documentBlock, docMeta)
+  const embed = useEmbed(docBlobs, docMeta)
   const formulaContext = useReactiveVar(FormulaContextVar)
   const mentionCommands = useMentionCommands(docMeta)
   const renderView = useCallback(() => <PageTree mode="subPage" />, [])
@@ -64,8 +59,8 @@ export function useEditorOptions({
           renderView
         }
       },
-      editable: documentEditable
+      editable
     }),
-    [discussion, documentEditable, embed, formulaContext, mentionCommands, renderView, provider, currentUser]
+    [discussion, editable, embed, formulaContext, mentionCommands, renderView, provider, currentUser]
   )
 }

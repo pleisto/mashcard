@@ -334,8 +334,8 @@ export const querySpreadsheetChildren = gql`
   }
 `
 
-export const queryBlockNew = gql`
-  query BlockNew($id: String!, $historyId: String) {
+export const queryDocumentBlock = gql`
+  query DocumentBlock($id: String!, $historyId: String) {
     blockNew(id: $id, historyId: $historyId) {
       id
       statesCount
@@ -401,6 +401,11 @@ export const queryBlockNew = gql`
             url
           }
         }
+      }
+      blobs {
+        blobKey
+        downloadUrl
+        url
       }
     }
   }
