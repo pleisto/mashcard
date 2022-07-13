@@ -11,7 +11,8 @@ import { useWebsiteMetaProgress } from './useWebsiteMetaProgress'
 export function useLinkValue(
   updateEmbedBlockAttributes: LinkTypeEmbedBlockProps['updateEmbedBlockAttributes'],
   extension?: Node<EmbedOptions>,
-  defaultUrl?: string
+  defaultUrl?: string,
+  onSubmit?: (value: string) => void
 ): [string, ChangeEventHandler<HTMLInputElement>, () => void, () => void, UploadProgress] {
   const [t] = useEditorI18n()
   const [url, setUrl] = useState(defaultUrl ?? '')
@@ -35,6 +36,7 @@ export function useLinkValue(
 
         'attachment'
       )
+      onSubmit?.(url)
       return
     }
 
@@ -75,7 +77,9 @@ export function useLinkValue(
         'attachment'
       )
     }
-  }, [extension?.options, progressing, resetProgress, t, updateEmbedBlockAttributes, url])
+
+    onSubmit?.(url)
+  }, [extension?.options, onSubmit, progressing, resetProgress, t, updateEmbedBlockAttributes, url])
 
   const handleLinkChange = useCallback<ChangeEventHandler<HTMLInputElement>>(event => {
     setUrl(event.target.value)

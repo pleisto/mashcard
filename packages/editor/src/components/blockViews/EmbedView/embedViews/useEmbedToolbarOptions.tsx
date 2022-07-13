@@ -88,7 +88,12 @@ export const EditPanel: FC<{
     updateEmbedBlockAttributes,
     onSubmit
   )
-  const [editLink, onLinkChange, , onSubmitLink, progress] = useLinkValue(updateEmbedBlockAttributes, extension, link)
+  const [editLink, onLinkChange, , onSubmitLink, progress] = useLinkValue(
+    updateEmbedBlockAttributes,
+    extension,
+    link,
+    onSubmit
+  )
 
   return (
     <EditPanelContainer>
