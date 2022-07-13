@@ -1,6 +1,5 @@
 import { FC, MouseEventHandler, useCallback, useEffect, useMemo, useRef } from 'react'
 import { Spin } from '@mashcard/design-system'
-import { Block } from '@mashcard/schema'
 import { EditorContent, useEditor } from '@mashcard/editor'
 import { DocumentTitle } from './components/DocumentTitle'
 import { useSyncProvider, useDocSyncProvider, useDocHistoryProvider } from './hooks'

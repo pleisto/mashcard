@@ -64,7 +64,10 @@ export const DocumentContentPage: FC = () => {
       },
       { subscribeId: docId }
     )
-  }, [data, setDocumentInfo])
+    return () => {
+      subscription.unsubscribe()
+    }
+  }, [data, setDocumentInfo, docId])
 
   const isAnonymous = !currentUser
   const { state } = useLocation()
