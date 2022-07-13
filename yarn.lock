@@ -3200,7 +3200,6 @@ __metadata:
     "@swc/jest": ^0.2.21
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.3.0
-    "@testing-library/react-hooks": ^8.0.1
     "@testing-library/user-event": ^14.2.1
     "@types/is-ci": ^3.0.0
     "@types/jest": ^28.1.5
@@ -3608,10 +3607,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/actioncable@npm:^7.0.3-1":
+"@rails/actioncable@npm:7.0.3":
   version: 7.0.3
   resolution: "@rails/actioncable@npm:7.0.3"
   checksum: 6ae5de0f9aaa8261117c2cc8b82ab41854222687422697158de952b8bf04a3f0c9e98620516129f6541970119ee3e4ae8af4b9cd4621c6617c0dae151eb07d64
+  languageName: node
+  linkType: hard
+
+"@rails/actioncable@patch:@rails/actioncable@npm:7.0.3#.yarn/patches/@rails-actioncable-npm-7.0.3-9e882d37e5.patch::locator=%40mashcard%2Fmonorepo%40workspace%3A.":
+  version: 7.0.3
+  resolution: "@rails/actioncable@patch:@rails/actioncable@npm%3A7.0.3#.yarn/patches/@rails-actioncable-npm-7.0.3-9e882d37e5.patch::version=7.0.3&hash=1881c5&locator=%40mashcard%2Fmonorepo%40workspace%3A."
+  checksum: eee6595e1a8188d5d1a627ac6699fcdb3ad8d57bfac7de44cce0b3c2392cb89ac9b2be683a006cfc776dd04a676f27d9bb6fc41bde5baba49118b51084962d0b
   languageName: node
   linkType: hard
 
@@ -5346,28 +5352,6 @@ __metadata:
     lodash: ^4.17.15
     redent: ^3.0.0
   checksum: 4240501223b72b97a44d4e3c669f39b208c49fb645d11d08d5f178d607265c5dfad07efbe027f41a0e2458178ff1fd5bf437fc05661b9109dcd013b95a37079e
-  languageName: node
-  linkType: hard
-
-"@testing-library/react-hooks@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "@testing-library/react-hooks@npm:8.0.1"
-  dependencies:
-    "@babel/runtime": ^7.12.5
-    react-error-boundary: ^3.1.0
-  peerDependencies:
-    "@types/react": ^16.9.0 || ^17.0.0
-    react: ^16.9.0 || ^17.0.0
-    react-dom: ^16.9.0 || ^17.0.0
-    react-test-renderer: ^16.9.0 || ^17.0.0
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-    react-dom:
-      optional: true
-    react-test-renderer:
-      optional: true
-  checksum: 7fe44352e920deb5cb1876f80d64e48615232072c9d5382f1e0284b3aab46bb1c659a040b774c45cdf084a5257b8fe463f7e08695ad8480d8a15635d4d3d1f6d
   languageName: node
   linkType: hard
 
@@ -19567,17 +19551,6 @@ __metadata:
     react: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1
     react-dom: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1
   checksum: 42bcd4423f12e9ee21b2d3f0c2a28805ff4953bd82b6be4c1f5b5f9a371115aafa36a6f3d82726d43b4912179b79e99550c2b9a772c7fe6a5cd8f7e93ff34ceb
-  languageName: node
-  linkType: hard
-
-"react-error-boundary@npm:^3.1.0":
-  version: 3.1.4
-  resolution: "react-error-boundary@npm:3.1.4"
-  dependencies:
-    "@babel/runtime": ^7.12.5
-  peerDependencies:
-    react: ">=16.13.1"
-  checksum: f36270a5d775a25c8920f854c0d91649ceea417b15b5bc51e270a959b0476647bb79abb4da3be7dd9a4597b029214e8fe43ea914a7f16fa7543c91f784977f1b
   languageName: node
   linkType: hard
 
