@@ -24,7 +24,7 @@ describe Mutations::Users::AppearanceUpdate, type: :mutation do
       graphql_execute(mutation, input)
 
       expect(response.success?).to be true
-      expect(response.data['userAppearanceUpdate']).to eq({'errors' => []})
+      expect(response.data['userAppearanceUpdate']).to eq({ 'errors' => [] })
 
       expect(user.timezone).to eq(timezone)
       self.current_user = nil
