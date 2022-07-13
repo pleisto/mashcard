@@ -44,7 +44,7 @@ export const ListUnordered = createEditorIcon(
   theme.colors.purple4.value
 )
 export const CheckboxSquare = createEditorIcon(
-  <Icon.CheckboxSquare fill={theme.colors.purple4.value} />,
+  <Icon.CheckboxCircle fill={theme.colors.purple4.value} />,
   theme.colors.purple4.value
 )
 export const Quote = createEditorIcon(<Icon.Quote fill={theme.colors.cyan4.value} />, theme.colors.cyan4.value)
