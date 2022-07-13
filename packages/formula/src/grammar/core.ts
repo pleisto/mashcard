@@ -27,6 +27,7 @@ import { CodeFragmentVisitor } from './codeFragment'
 import { shouldReturnEarly } from './util'
 import { createVariableTask } from '../context'
 import { addSpaceStep } from './steps'
+import { devWarning } from '@mashcard/design-system'
 
 interface BaseParseResult {
   meta: VariableMetadata
@@ -489,7 +490,7 @@ export const innerInterpret = async ({
 
     return { success: true, result, runtimeEventDependencies: interpreter.runtimeEventDependencies }
   } catch (e) {
-    console.error(e)
+    devWarning(true, e)
     const message = `[FATAL] ${(e as any).message as string}`
     return { success: false, result: { result: message, type: 'Error', meta: 'fatal' } }
   }

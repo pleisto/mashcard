@@ -1,7 +1,6 @@
 import { escape } from '@mashcard/active-support'
 import { EmbedType } from '@mashcard/schema'
-import { render } from '@testing-library/react'
-import { renderHook } from '@testing-library/react-hooks'
+import { render, renderHook } from '@testing-library/react'
 import { TestEditorContent, useTestEditor } from '../../../../test/testEditor'
 import { Embed } from '../embed'
 

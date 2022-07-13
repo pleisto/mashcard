@@ -1,5 +1,4 @@
-import { act } from '@testing-library/react'
-import { renderHook } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react'
 import { EmbedAttributes, EmbedOptions } from '../../../../../../extensions'
 import { mockBlockViewProps } from '../../../../../../test'
 import { useImageState } from '../../../embedViews/ImageView/useImageState'

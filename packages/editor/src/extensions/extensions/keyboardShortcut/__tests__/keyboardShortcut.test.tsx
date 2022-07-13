@@ -1,5 +1,4 @@
-import { render } from '@testing-library/react'
-import { renderHook } from '@testing-library/react-hooks'
+import { render, renderHook } from '@testing-library/react'
 import { EditorContent } from '@tiptap/react'
 import { useTestEditor } from '../../../../test/testEditor'
 import { Paragraph, SubPageMenu } from '../../../blocks'

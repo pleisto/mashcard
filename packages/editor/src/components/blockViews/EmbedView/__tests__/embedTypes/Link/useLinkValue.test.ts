@@ -1,6 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react'
 import { useLinkValue } from '../../../embedTypes/Link/useLinkValue'
-import { act } from 'react-dom/test-utils'
 
 jest.mock('../../../embedTypes/Link/useWebsiteMetaProgress.ts', () => ({
   useWebsiteMetaProgress: () => [0, () => {}, () => {}]

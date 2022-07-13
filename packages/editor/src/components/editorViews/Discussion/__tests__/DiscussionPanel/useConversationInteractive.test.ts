@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 import { useConversationInteractive } from '../../DiscussionPanel/useConversationInteractive'
 
 describe('useConversationInteractive', () => {

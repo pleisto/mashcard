@@ -1,5 +1,4 @@
-import { render } from '@testing-library/react'
-import { renderHook } from '@testing-library/react-hooks'
+import { render, renderHook } from '@testing-library/react'
 import { EditorContent, useEditor } from '../documentEditor'
 import * as Y from 'yjs'
 import * as awarenessProtocol from 'y-protocols/awareness'

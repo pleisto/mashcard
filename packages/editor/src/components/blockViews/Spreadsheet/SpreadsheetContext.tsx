@@ -192,7 +192,6 @@ export const useSpreadsheetContext = (options: {
       const thisSelected = cellIds?.length ?? selectedRowIds?.length ?? selectedColumnIds?.length
       if (text && thisSelected) {
         const pasteMatrix = parsePasteTable(text)
-        console.log('paste to spreadsheet', [text])
         devLog('paste to spreadsheet', [text])
         devLog('parsed', pasteMatrix)
         pasteToSpreadsheet(pasteMatrix)

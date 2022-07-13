@@ -7,7 +7,7 @@ import {
   useBlockSyncBatchMutation,
   GetSpreadsheetChildrenDocument
 } from '@/MashcardGraphQL'
-import { devLog } from '@mashcard/design-system'
+import { devLog, devWarning } from '@mashcard/design-system'
 import {
   MashcardEventBus,
   Event,
@@ -142,7 +142,7 @@ export function useSyncProvider(queryVariables: { rootId: string; historyId?: st
         })
       }
     } catch (e) {
-      console.error(e)
+      devWarning(true, e)
     } finally {
       setCommitting(false)
     }
