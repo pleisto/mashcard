@@ -30,7 +30,6 @@ const Info = styled('div', {
 })
 
 const Name = styled('span', {
-  maxWidth: '80%',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap'
