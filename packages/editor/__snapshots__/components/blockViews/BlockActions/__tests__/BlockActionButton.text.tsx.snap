@@ -11,7 +11,7 @@ exports[`BlockActionButton matches snapshot correctly 1`] = `
     style="z-index: 2;"
   >
     <button
-      class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
+      class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm"
       role="button"
       type="button"
     >
@@ -54,7 +54,7 @@ exports[`BlockActionButton triggers mouse enter/leave event normally 1`] = `
     style="z-index: 2;"
   >
     <button
-      class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
+      class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm"
       role="button"
       type="button"
     >
@@ -97,7 +97,7 @@ exports[`BlockActionButton triggers mouse enter/leave event normally 2`] = `
     style="z-index: 2;"
   >
     <button
-      class="mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm ButtonUnstyled-root"
+      class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-dzgAdI-btnType-unstyled mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-klARUB-size-sm"
       role="button"
       type="button"
     >

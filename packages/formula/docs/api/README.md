@@ -169,6 +169,7 @@
 
 ### Variables
 
+- [ALL_TEST_CASE](README.md#all_test_case)
 - [AdditionOperator](README.md#additionoperator)
 - [Ampersand](README.md#ampersand)
 - [And](README.md#and)
@@ -176,6 +177,7 @@
 - [At](README.md#at)
 - [BUILTIN_CLAUSES](README.md#builtin_clauses)
 - [BUILTIN_STRINGS](README.md#builtin_strings)
+- [BasicNames](README.md#basicnames)
 - [BooleanLiteral](README.md#booleanliteral)
 - [CORE_FUNCTION_GROUPS](README.md#core_function_groups)
 - [Caret](README.md#caret)
@@ -183,6 +185,7 @@
 - [CombineOperator](README.md#combineoperator)
 - [Comma](README.md#comma)
 - [CompareOperator](README.md#compareoperator)
+- [CompleteNames](README.md#completenames)
 - [CurrentBlock](README.md#currentblock)
 - [DEFAULT_FIRST_NAMESPACEID](README.md#default_first_namespaceid)
 - [DEFAULT_VIEWS](README.md#default_views)
@@ -194,11 +197,13 @@
 - [Equal](README.md#equal)
 - [Equal2](README.md#equal2)
 - [EqualCompareOperator](README.md#equalcompareoperator)
+- [EventNames](README.md#eventnames)
 - [ExactIn](README.md#exactin)
 - [FORMULA_FEATURE_CONTROL](README.md#formula_feature_control)
 - [FORMULA_PARSER_VERSION](README.md#formula_parser_version)
 - [FORMULA_USED_TYPES](README.md#formula_used_types)
 - [FUNCTION_NAME_REGEX](README.md#function_name_regex)
+- [FeatureTestCases](README.md#featuretestcases)
 - [FormulaLexer](README.md#formulalexer)
 - [FormulaTypeCastName](README.md#formulatypecastname)
 - [FunctionName](README.md#functionname)
@@ -718,7 +723,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:269](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L269)
+[packages/formula/src/tests/testType.ts:270](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L270)
 
 ---
 
@@ -738,7 +743,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:173](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L173)
+[packages/formula/src/tests/testType.ts:174](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L174)
 
 ---
 
@@ -1048,7 +1053,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L106)
+[packages/formula/src/tests/testType.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L107)
 
 ---
 
@@ -1197,6 +1202,16 @@
 
 ## Variables
 
+### <a id="all_test_case" name="all_test_case"></a> ALL_TEST_CASE
+
+• `Const` **ALL_TEST_CASE**: [`TestCaseInput`](interfaces/TestCaseInput.md)
+
+#### Defined in
+
+[packages/formula/src/tests/testCases.ts:141](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L141)
+
+---
+
 ### <a id="additionoperator" name="additionoperator"></a> AdditionOperator
 
 • `Const` **AdditionOperator**: `TokenType`
@@ -1267,6 +1282,16 @@
 
 ---
 
+### <a id="basicnames" name="basicnames"></a> BasicNames
+
+• `Const` **BasicNames**: [`TestCaseName`](README.md#testcasename)[]
+
+#### Defined in
+
+[packages/formula/src/tests/feature/basic/index.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/basic/index.ts#L7)
+
+---
+
 ### <a id="booleanliteral" name="booleanliteral"></a> BooleanLiteral
 
 • `Const` **BooleanLiteral**: `TokenType`
@@ -1334,6 +1359,16 @@
 #### Defined in
 
 [packages/formula/src/grammar/lexer.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L4)
+
+---
+
+### <a id="completenames" name="completenames"></a> CompleteNames
+
+• `Const` **CompleteNames**: [`TestCaseName`](README.md#testcasename)[]
+
+#### Defined in
+
+[packages/formula/src/tests/feature/complete/index.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/complete/index.ts#L16)
 
 ---
 
@@ -1447,6 +1482,16 @@
 
 ---
 
+### <a id="eventnames" name="eventnames"></a> EventNames
+
+• `Const` **EventNames**: [`TestCaseName`](README.md#testcasename)[]
+
+#### Defined in
+
+[packages/formula/src/tests/feature/event/index.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/event/index.ts#L16)
+
+---
+
 ### <a id="exactin" name="exactin"></a> ExactIn
 
 • `Const` **ExactIn**: `TokenType`
@@ -1494,6 +1539,16 @@
 #### Defined in
 
 [packages/formula/src/grammar/lexer.ts:12](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L12)
+
+---
+
+### <a id="featuretestcases" name="featuretestcases"></a> FeatureTestCases
+
+• `Const` **FeatureTestCases**: [`TestCaseInterface`](interfaces/TestCaseInterface.md)[]
+
+#### Defined in
+
+[packages/formula/src/tests/feature/index.ts:15](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/index.ts#L15)
 
 ---
 
@@ -3369,17 +3424,23 @@ Apply format to the formula.
 
 ### <a id="buildtestcases" name="buildtestcases"></a> buildTestCases
 
-▸ **buildTestCases**(`name?`): [[`TestCaseInput`](interfaces/TestCaseInput.md)]
+▸ **buildTestCases**<`TestCase`\>(`name`): [[`TestCaseInput`](interfaces/TestCaseInput.md), `TestCase`[]]
+
+#### Type parameters
+
+| Name       |
+| :--------- |
+| `TestCase` |
 
 #### Parameters
 
-| Name    | Type                                       |
-| :------ | :----------------------------------------- |
-| `name?` | [`TestCaseName`](README.md#testcasename)[] |
+| Name   | Type                                       |
+| :----- | :----------------------------------------- |
+| `name` | [`TestCaseName`](README.md#testcasename)[] |
 
 #### Returns
 
-[[`TestCaseInput`](interfaces/TestCaseInput.md)]
+[[`TestCaseInput`](interfaces/TestCaseInput.md), `TestCase`[]]
 
 ---
 
