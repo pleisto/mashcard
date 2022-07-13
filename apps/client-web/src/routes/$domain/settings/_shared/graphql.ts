@@ -32,9 +32,9 @@ export const GroupDestroy = gql`
   }
 `
 
-export const PodLeave = gql`
-  mutation PodLeave($input: PodLeaveInput!) {
-    podLeave(input: $input) {
+export const GroupLeave = gql`
+  mutation GroupLeave($input: GroupLeaveInput!) {
+    groupLeave(input: $input) {
       errors
     }
   }

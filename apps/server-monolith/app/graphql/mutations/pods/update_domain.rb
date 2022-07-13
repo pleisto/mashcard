@@ -13,8 +13,7 @@ module Mutations
         pod = current_user.pods.find { |p| p.username == domain }
         return { errors: [I18n.t('accounts.errors.pod_not_exist')] } if pod.nil?
 
-        pod.username = new_domain
-        success = pod.save
+        success = pod.update_username(new_domain)
         return { errors: pod.errors.full_messages } unless success
 
         {}

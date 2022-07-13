@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Mutations
-  module Pods
+  module Groups
     class Join < ::Mutations::BaseMutation
-      graphql_name 'JoinPod'
+      graphql_name 'GroupJoin'
       argument :invite_secret, String, 'invite secret', required: false
 
       def resolve(invite_secret:)

@@ -2,11 +2,11 @@
 
 require 'rails_helper'
 
-describe Mutations::Pods::UpdateMember, type: :mutation do
+describe Mutations::Groups::UpdateMember, type: :mutation do
   describe '#resolve' do
     mutation = <<-'GRAPHQL'
-      mutation updateMember($input: UpdateMemberInput!) {
-        updateMember(input: $input) {
+      mutation groupUpdateMember($input: GroupUpdateMemberInput!) {
+        groupUpdateMember(input: $input) {
           errors
         }
       }
@@ -65,7 +65,7 @@ describe Mutations::Pods::UpdateMember, type: :mutation do
       graphql_execute(mutation, input)
       expect(response.success?).to be true
       expect(response.errors).to eq({})
-      expect(response.data).to eq('updateMember' => nil)
+      expect(response.data).to eq('groupUpdateMember' => nil)
 
       member.reload
 

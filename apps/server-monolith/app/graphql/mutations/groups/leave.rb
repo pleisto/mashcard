@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Mutations
-  module Pods
+  module Groups
     class Leave < ::Mutations::BaseMutation
-      graphql_name 'PodLeave'
+      graphql_name 'GroupLeave'
       argument :domain, String, 'Pod domain', required: true
       argument :user_domain, String, 'User domain', required: true
 
