@@ -10,16 +10,20 @@ export const EmbedToolbarContainer = styled('div', {
   opacity: 0,
   pointerEvents: 'none',
   position: 'absolute',
-  right: '.5rem',
   transition: 'opacity 100ms ease-in-out',
 
   variants: {
-    center: {
-      true: {
+    align: {
+      left: {
+        left: '.5rem'
+      },
+      center: {
         right: '50%',
         transform: 'translateX(50%)'
       },
-      false: {}
+      right: {
+        right: '.5rem'
+      }
     }
   }
 })
