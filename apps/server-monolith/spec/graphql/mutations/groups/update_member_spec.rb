@@ -4,13 +4,13 @@ require 'rails_helper'
 
 describe Mutations::Groups::UpdateMember, type: :mutation do
   describe '#resolve' do
-    mutation = <<-'GRAPHQL'
+    mutation = <<-'TEXT'
       mutation groupUpdateMember($input: GroupUpdateMemberInput!) {
         groupUpdateMember(input: $input) {
           errors
         }
       }
-    GRAPHQL
+    TEXT
 
     it 'invalid pod' do
       self.current_pod = Pod::ANONYMOUS_CONTEXT

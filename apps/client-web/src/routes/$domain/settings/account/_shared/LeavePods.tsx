@@ -4,7 +4,7 @@ import { Trans } from 'react-i18next'
 
 import { PodCard } from '@/common/components/PodCard'
 import { MashcardContext } from '@/common/mashcardContext'
-import { GetPodsQuery, useGetPodsQuery, usePodLeaveMutation } from '@/MashcardGraphQL'
+import { GetPodsQuery, useGetPodsQuery, useGroupLeaveMutation } from '@/MashcardGraphQL'
 import { Panel } from '../../_shared/Panel'
 import { useSettingsI18n } from '../../_shared/useSettingsI18n'
 import * as Root from './LeavePods.style'
@@ -13,7 +13,7 @@ export const LeavePods: FC = () => {
   const { t } = useSettingsI18n()
   const [isOpen, { setTrue: setOpen, setFalse: setClose }] = useBoolean(false)
   const [selectedPod, setSelectedPod] = useState<GetPodsQuery['pods'][0]>()
-  const [podLeave, { loading: leaveing }] = usePodLeaveMutation()
+  const [groupLeave, { loading: leaveing }] = useGroupLeaveMutation()
   const context = useContext(MashcardContext)
   const userDomain = context.currentUser!.domain
   const { loading, data, refetch } = useGetPodsQuery()
@@ -22,7 +22,7 @@ export const LeavePods: FC = () => {
   const teamPods = data?.pods.filter(p => !p.personal)
 
   const handleLeave = async (domain: string): Promise<void> => {
-    const result = await podLeave({
+    const result = await groupLeave({
       variables: {
         input: {
           domain,
@@ -30,7 +30,7 @@ export const LeavePods: FC = () => {
         }
       }
     })
-    const errors = result.data?.podLeave?.errors
+    const errors = result.data?.groupLeave?.errors
     if (errors && errors.length > 0) {
       toast.error(errors.join('\n'))
     } else {
@@ -56,8 +56,7 @@ export const LeavePods: FC = () => {
                 onClick={() => {
                   setSelectedPod(pod)
                   setOpen()
-                }}
-              >
+                }}>
                 {t('account.leave_btn')}
               </Button>
             </li>
@@ -73,8 +72,7 @@ export const LeavePods: FC = () => {
         onCancel={setClose}
         onConfirm={async () => {
           await handleLeave(selectedPod!.domain)
-        }}
-      >
+        }}>
         <Trans
           t={t}
           i18nKey="account.leave_pod_confirm"

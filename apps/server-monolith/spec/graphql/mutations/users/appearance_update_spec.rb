@@ -4,13 +4,13 @@ require 'rails_helper'
 
 describe Mutations::Users::AppearanceUpdate, type: :mutation do
   describe '#resolve' do
-    mutation = <<-'GRAPHQL'
-      mutation UserAppearanceUpdate($input: UserAppearanceUpdateInput!) {
+    mutation = <<-'TEXT'
+      mutation userAppearanceUpdate($input: UserAppearanceUpdateInput!) {
         userAppearanceUpdate(input: $input) {
           errors
         }
       }
-    GRAPHQL
+    TEXT
 
     it 'ok' do
       user = create(:accounts_user)

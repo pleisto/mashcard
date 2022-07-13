@@ -4,13 +4,13 @@ require 'rails_helper'
 
 describe Mutations::Groups::Leave, type: :mutation, focus: true do
   describe '#resolve' do
-    mutation = <<-'GRAPHQL'
-      mutation GroupLeave($input: GroupLeaveInput!) {
+    mutation = <<-'TEXT'
+      mutation groupLeave($input: GroupLeaveInput!) {
         groupLeave(input: $input) {
           errors
         }
       }
-    GRAPHQL
+    TEXT
 
     it 'work' do
       user = create(:accounts_user)

@@ -4,7 +4,7 @@ import { Trans } from 'react-i18next'
 
 import { PodCard } from '@/common/components/PodCard'
 import { MashcardContext } from '@/common/mashcardContext'
-import { GetPodMembersQuery, useGetPodMembersQuery, usePodLeaveMutation } from '@/MashcardGraphQL'
+import { GetPodMembersQuery, useGetPodMembersQuery, useGroupLeaveMutation } from '@/MashcardGraphQL'
 import { Panel } from '../../_shared/Panel'
 import { SettingsContextProps } from '../../_shared/SettingContext'
 import { useSettingsI18n } from '../../_shared/useSettingsI18n'
@@ -13,7 +13,7 @@ export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
   const { t } = useSettingsI18n()
   const [isOpen, { setTrue: setOpen, setFalse: setClose }] = useBoolean(false)
   const [selectedUser, setSelectedUser] = useState<NonNullable<GetPodMembersQuery['podMembers']>[0]>()
-  const [podLeave, { loading: leaveing }] = usePodLeaveMutation()
+  const [groupLeave, { loading: leaveing }] = useGroupLeaveMutation()
   const context = useContext(MashcardContext)
   const currentUserDomain = context.currentUser!.domain
   const { loading, data, refetch } = useGetPodMembersQuery()
@@ -21,7 +21,7 @@ export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
   const members = data?.podMembers
 
   const handleLeave = async (userDomain: string): Promise<void> => {
-    const result = await podLeave({
+    const result = await groupLeave({
       variables: {
         input: {
           domain: pod!.domain,
@@ -29,7 +29,7 @@ export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
         }
       }
     })
-    const errors = result.data?.podLeave?.errors
+    const errors = result.data?.groupLeave?.errors
     if (errors && errors.length > 0) {
       toast.error(errors.join('\n'))
     } else {
@@ -62,8 +62,7 @@ export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
               }
             }
           }}
-          as="ul"
-        >
+          as="ul">
           {members?.map(user => (
             <li key={user.user.domain}>
               <PodCard pod={user.user} key={user.user.domain} label={user.user.domain} />
@@ -72,8 +71,7 @@ export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
                 onClick={() => {
                   setSelectedUser(user)
                   setOpen()
-                }}
-              >
+                }}>
                 {t(user.user.domain === currentUserDomain ? 'account.leave_btn' : 'account.remove_btn')}
               </Button>
             </li>
@@ -89,8 +87,7 @@ export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
         onCancel={setClose}
         onConfirm={async () => {
           await handleLeave(selectedUser!.user.domain)
-        }}
-      >
+        }}>
         <Trans
           t={t}
           i18nKey="team.leave_user_confirm"

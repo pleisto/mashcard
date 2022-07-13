@@ -5478,7 +5478,7 @@ export type UpdateDomainMutationOptions = Apollo.BaseMutationOptions<
   UpdateDomainMutationVariables
 >
 export const UserAppearanceUpdateDocument = gql`
-  mutation UserAppearanceUpdate($input: UserAppearanceUpdateInput!) {
+  mutation userAppearanceUpdate($input: UserAppearanceUpdateInput!) {
     userAppearanceUpdate(input: $input) {
       errors
     }
@@ -5522,7 +5522,7 @@ export type UserAppearanceUpdateMutationOptions = Apollo.BaseMutationOptions<
   UserAppearanceUpdateMutationVariables
 >
 export const UserDestroyDocument = gql`
-  mutation UserDestroy($input: UserDestroyInput!) {
+  mutation userDestroy($input: UserDestroyInput!) {
     userDestroy(input: $input) {
       errors
     }
@@ -5557,7 +5557,7 @@ export type UserDestroyMutationHookResult = ReturnType<typeof useUserDestroyMuta
 export type UserDestroyMutationResult = Apollo.MutationResult<UserDestroyMutation>
 export type UserDestroyMutationOptions = Apollo.BaseMutationOptions<UserDestroyMutation, UserDestroyMutationVariables>
 export const GroupDestroyDocument = gql`
-  mutation GroupDestroy($input: GroupDestroyInput!) {
+  mutation groupDestroy($input: GroupDestroyInput!) {
     groupDestroy(input: $input) {
       errors
     }
@@ -5595,7 +5595,7 @@ export type GroupDestroyMutationOptions = Apollo.BaseMutationOptions<
   GroupDestroyMutationVariables
 >
 export const GroupLeaveDocument = gql`
-  mutation GroupLeave($input: GroupLeaveInput!) {
+  mutation groupLeave($input: GroupLeaveInput!) {
     groupLeave(input: $input) {
       errors
     }

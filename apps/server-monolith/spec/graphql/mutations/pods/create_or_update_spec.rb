@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe Mutations::Pods::CreateOrUpdate, type: :mutation do
   describe '#resolve' do
-    mutation = <<-'GRAPHQL'
+    mutation = <<-'TEXT'
       mutation createOrUpdatePod($input: CreateOrUpdatePodInput!) {
         createOrUpdatePod(input: $input) {
           errors
@@ -21,7 +21,7 @@ describe Mutations::Pods::CreateOrUpdate, type: :mutation do
           }
         }
       }
-    GRAPHQL
+    TEXT
 
     let(:user) { create(:accounts_user) }
 

@@ -4,13 +4,13 @@ require 'rails_helper'
 
 describe Mutations::Groups::Join, type: :mutation, focus: true do
   describe '#resolve' do
-    mutation = <<-'GRAPHQL'
+    mutation = <<-'TEXT'
       mutation groupJoin($input: GroupJoinInput!) {
         groupJoin(input: $input) {
           errors
         }
       }
-    GRAPHQL
+    TEXT
 
     it 'work' do
       user = create(:accounts_user)
