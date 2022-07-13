@@ -49,8 +49,8 @@ export const RootRoutes: FC = () => {
         </Route>
         <Route path="accounts" element={<AccountsLayout />}>
           <Route index element={<AccountsIndex />} />
-          <Route path="sign-in" element={<AccountsSignIn />} />
-          <Route path="sign-up" element={<AccountsSignUp />} />
+          <Route path="sign_in" element={<AccountsSignIn />} />
+          <Route path="sign_up" element={<AccountsSignUp />} />
           <Route path="password">
             <Route path="edit" element={<AccountsPasswordEdit />} />
             <Route path="forget" element={<AccountsPasswordForget />} />
