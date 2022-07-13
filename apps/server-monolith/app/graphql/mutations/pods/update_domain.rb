@@ -10,10 +10,10 @@ module Mutations
 
       def resolve(domain:, new_domain:)
         # TODO: permission check
-        pod = current_user.pods.find { |p| p.domain == domain }
+        pod = current_user.pods.find { |p| p.username == domain }
         return { errors: [I18n.t('accounts.errors.pod_not_exist')] } if pod.nil?
 
-        pod.domain = new_domain
+        pod.username = new_domain
         success = pod.save
         return { errors: pod.errors.full_messages } unless success
 

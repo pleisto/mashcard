@@ -60,16 +60,17 @@ export const DomainUpdate: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) 
           <Form.Field name="new_domain" label={t('docs:pods.domain')}>
             <Input type="text" />
           </Form.Field>
+
+          <Root.Desc>
+            {t('general.change_domain_desc')}
+            <a target="_blank" href={settings?.kb_articles?.changing_domain}>
+              {t('general.change_domain_more')}
+            </a>
+          </Root.Desc>
+          <Button type="primary" htmlType="submit" loading={loading}>
+            {t(`general.change_domain_btn`)}
+          </Button>
         </Form>
-        <Root.Desc>
-          {t('general.change_domain_desc')}
-          <a target="_blank" href={settings?.kb_articles?.changing_domain}>
-            {t('general.change_domain_more')}
-          </a>
-        </Root.Desc>
-        <Button type="primary" htmlType="submit" loading={loading}>
-          {t(`general.change_domain_btn`)}
-        </Button>
       </Root.Warp>
     </Panel>
   )

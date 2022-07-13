@@ -10,7 +10,7 @@ module Mutations
 
       def resolve(locale:, timezone:)
         current_user.config.set(:locale, locale) if locale.present?
-        current_user.config.set(:timezone, timezon) if timezone.present?
+        current_user.config.set(:timezone, timezone) if timezone.present?
 
         {}
       end

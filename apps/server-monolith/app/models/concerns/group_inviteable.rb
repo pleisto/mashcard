@@ -9,6 +9,7 @@ module GroupInviteable
 
   def invite_enable=(value)
     config.set(:group_invite_enable, value)
+    self.invite_secret = '' if value
   end
 
   def invite_secret
