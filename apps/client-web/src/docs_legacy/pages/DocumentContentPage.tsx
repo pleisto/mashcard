@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect, useMemo, Suspense } from 'react'
+import { FC, useContext, useEffect, useMemo, useState, Suspense } from 'react'
 import { getSidebarStyle, logSideBarWidth } from '@/common/utils/sidebarStyle'
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import Split from '@uiw/react-split'
@@ -29,6 +29,7 @@ export const DocumentContentPage: FC = () => {
   const { currentUser, lastDomain, lastBlockIds, featureFlags } = useContext(MashcardContext)
   const navigate = useNavigate()
   const preSidebarStyle = useMemo(getSidebarStyle, [])
+  const [latestLoading, setLatestLoading] = useState(true)
 
   const { data, loading: blockLoading } = useBlockNewQuery({
     variables: { id: docId as string, historyId },
@@ -41,6 +42,11 @@ export const DocumentContentPage: FC = () => {
     refetchQueries: [queryPageBlocks]
   })
   const loading = !data || blockLoading || createBlockLoading
+
+  useEffect(() => {
+    if (!loading) setLatestLoading(false)
+  }, [loading, setLatestLoading])
+
   const isAnonymous = !currentUser
   const { state } = useLocation()
 
@@ -163,7 +169,7 @@ export const DocumentContentPage: FC = () => {
             <section>
               <article id="article">
                 <Suspense>
-                  <DocumentPage data={data} loading={loading} editable={docMeta.editable} />
+                  <DocumentPage data={data} loading={latestLoading} editable={docMeta.editable} />
                 </Suspense>
               </article>
               {!isAnonymous && <aside id="aside" />}

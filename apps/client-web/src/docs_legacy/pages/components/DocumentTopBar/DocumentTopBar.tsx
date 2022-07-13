@@ -28,7 +28,13 @@ export const DocumentTopBar: FC = () => {
   const { id, viewable, editable, isAnonymous, documentInfo } = useDocMeta()
 
   if (!viewable) {
-    return <></>
+    return (
+      <Root.TopBar
+        width={{
+          '@mdDown': 'md'
+        }}
+      />
+    )
   }
 
   const headMenu = id && (

@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { FC, MouseEventHandler, useCallback, useEffect, useMemo, useRef } from 'react'
 import { Spin } from '@mashcard/design-system'
 import { Block } from '@mashcard/schema'
 import { EditorContent, useEditor } from '@mashcard/editor'
@@ -22,7 +22,6 @@ interface DocumentPageProps {
 export const DocumentPage: FC<DocumentPageProps> = ({ editable, loading, data }) => {
   const docMeta = useDocMeta()
   const navigate = useNavigate()
-  const [latestLoading, setLatestLoading] = useState(true)
 
   const queryVariables = useMemo(
     () => ({ rootId: docMeta.id as string, historyId: docMeta.historyId, domain: docMeta.domain }),
@@ -58,10 +57,6 @@ export const DocumentPage: FC<DocumentPageProps> = ({ editable, loading, data })
 
   const editor = useEditor(editorOptions, [provider])
 
-  useEffect(() => {
-    if (!loading) setLatestLoading(false)
-  }, [loading, setLatestLoading])
-
   const pageRef = useRef<HTMLDivElement>(null)
   const pageContentRef = useRef<HTMLDivElement>(null)
 
@@ -75,7 +70,7 @@ export const DocumentPage: FC<DocumentPageProps> = ({ editable, loading, data })
     [editor?.commands]
   )
 
-  if (latestLoading || !currentRootBlock) {
+  if (loading || !currentRootBlock) {
     return (
       <Root.PageSpinWrapper>
         <Spin size="lg" data-testid={TEST_ID_ENUM.page.DocumentPage.loading.id} />
