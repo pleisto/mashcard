@@ -1,4 +1,4 @@
-import { act, Renderer, renderHook, RenderHookResult } from '@testing-library/react-hooks'
+import { act, renderHook, RenderHookResult } from '@testing-library/react'
 import { FC, ReactNode } from 'react'
 import { FormulaMenuStore, useFormulaMenuStore } from '../useFormulaMenuState'
 
@@ -8,7 +8,7 @@ describe('useFormulaMenuState', () => {
     return <>{children}</>
   }
 
-  let renderedHook: RenderHookResult<{}, FormulaMenuStore, Renderer<{}>>
+  let renderedHook: RenderHookResult<FormulaMenuStore, {}>
   beforeEach(() => {
     renderedHook = renderHook(() => useFormulaMenuStore(), {
       wrapper: Wrapper
