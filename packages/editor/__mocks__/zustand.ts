@@ -1,5 +1,5 @@
 import actualCreate from 'zustand'
-import { act } from 'react-dom/test-utils'
+import { act } from '@testing-library/react'
 
 // a variable to hold reset functions for all stores declared in the app
 const storeResetFns = new Set<Function>()

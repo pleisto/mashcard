@@ -1,5 +1,4 @@
-/* eslint-disable max-nested-callbacks */
-import { act, Renderer, renderHook, RenderHookResult } from '@testing-library/react-hooks'
+import { act, renderHook, RenderHookResult } from '@testing-library/react'
 import { FC, ReactNode } from 'react'
 import { useDrawer, useDrawerService } from '..'
 import { UseDrawerReturn } from '../drawer-service'
@@ -24,7 +23,7 @@ describe('useDrawer', () => {
 
   describe('for a built-in drawer view', () => {
     const view: DrawerView = 'explorerMenu'
-    let renderedHook: RenderHookResult<{}, UseDrawerReturn, Renderer<{}>>
+    let renderedHook: RenderHookResult<UseDrawerReturn, {}>
     beforeEach(() => {
       renderedHook = renderHook(() => useDrawer(view), {
         wrapper: Wrapper

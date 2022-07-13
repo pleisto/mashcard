@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 import { ToolbarGroupOption, ToolbarItemOption } from '../../../../ui'
 import { useActionOptions } from '../../embedViews/useActionOptions'
 

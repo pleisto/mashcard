@@ -25,15 +25,14 @@ index 2187eb90bf097ad8bd2fa1e9922ec0101d7f3cf3..b5b1b9f6906af3f8bad467805b253527
  ConnectionMonitor.reconnectionBackoffRate = .15;
  
 diff --git a/app/assets/javascripts/actioncable.js b/app/assets/javascripts/actioncable.js
-index b3cc4299dbc94da1edee2a699853d57a5117fbd1..45a245784337bfa95ec20208e16b640230ff598c 100644
+index b3cc4299dbc94da1edee2a699853d57a5117fbd1..d06cba9469ed082d0a67256a5e5bc45a3f1ce4de 100644
 --- a/app/assets/javascripts/actioncable.js
 +++ b/app/assets/javascripts/actioncable.js
-@@ -108,7 +108,8 @@
+@@ -108,7 +108,7 @@
        }
      }
    }
 -  ConnectionMonitor.staleThreshold = 6;
-+  // Patched: Server:: Connections:: BEAT_INTERVAL * 2(missed two pings)
 +  ConnectionMonitor.staleThreshold = 60;
    ConnectionMonitor.reconnectionBackoffRate = .15;
    var INTERNAL = {

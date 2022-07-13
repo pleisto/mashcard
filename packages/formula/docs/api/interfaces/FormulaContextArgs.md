@@ -18,9 +18,9 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:67](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L67)
+[packages/formula/src/context/context.ts:68](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L68)
 
-___
+---
 
 ### <a id="domain" name="domain"></a> domain
 
@@ -28,9 +28,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:64](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L64)
+[packages/formula/src/context/context.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L65)
 
-___
+---
 
 ### <a id="features" name="features"></a> features
 
@@ -38,9 +38,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:68](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L68)
+[packages/formula/src/context/context.ts:69](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L69)
 
-___
+---
 
 ### <a id="functionclauses" name="functionclauses"></a> functionClauses
 
@@ -48,9 +48,9 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:66](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L66)
+[packages/formula/src/context/context.ts:67](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L67)
 
-___
+---
 
 ### <a id="ticktimeout" name="ticktimeout"></a> tickTimeout
 
@@ -58,4 +58,4 @@ ___
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L65)
+[packages/formula/src/context/context.ts:66](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L66)

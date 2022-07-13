@@ -1,5 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react'
-import { act } from 'react-dom/test-utils'
+import { render, screen, fireEvent, act } from '@testing-library/react'
 import { VirtuosoProps, GroupedVirtuosoProps } from 'react-virtuoso'
 import { Dashboard, ImportSourceOption } from '../Dashboard'
 import { DashboardPluginOptions } from '../plugin'

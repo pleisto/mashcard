@@ -1,7 +1,8 @@
 import { debounce, uniqBy } from '@mashcard/active-support'
+import { devWarning } from '@mashcard/design-system'
 import { UnsplashImage } from '@mashcard/uploader'
 import { Node } from '@tiptap/core'
-import { useState, useRef, useCallback, useEffect, ChangeEvent, RefObject } from 'react'
+import { ChangeEvent, RefObject, useCallback, useEffect, useRef, useState } from 'react'
 import { EmbedOptions } from '../../../../../extensions'
 
 const UNSPLASH_PER_PAGE = 20
@@ -40,7 +41,7 @@ export function useUnsplashImages(
           page.current += 1
         }
       } catch (error) {
-        console.error(error)
+        devWarning(true, error)
       }
 
       setFetching(false)

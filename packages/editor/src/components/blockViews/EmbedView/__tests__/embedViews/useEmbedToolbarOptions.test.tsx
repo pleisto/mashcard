@@ -1,6 +1,4 @@
-import { render } from '@testing-library/react'
-import { renderHook } from '@testing-library/react-hooks'
-import { act } from 'react-dom/test-utils'
+import { render, renderHook, act } from '@testing-library/react'
 import { ToolbarGroupOption, ToolbarItemGroupOption, ToolbarItemOption } from '../../../../ui'
 import { EditPanel, useDisplayName, useEmbedToolbarOptions } from '../../embedViews/useEmbedToolbarOptions'
 

@@ -1,5 +1,4 @@
-import { render, screen } from '@testing-library/react'
-import { renderHook } from '@testing-library/react-hooks'
+import { render, renderHook, screen } from '@testing-library/react'
 import { BlockActionsProps } from '../../BlockActions'
 import { useBlockElement } from '../useBlockElement'
 

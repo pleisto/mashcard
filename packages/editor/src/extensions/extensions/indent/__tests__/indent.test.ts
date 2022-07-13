@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 import { useTestEditor } from '../../../../test/testEditor'
 import { BulletList, OrderedList, TaskItem, TaskList } from '../../../blocks'
 import { Indent } from '../indent'

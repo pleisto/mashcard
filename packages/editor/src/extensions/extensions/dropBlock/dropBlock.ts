@@ -17,7 +17,7 @@ export class DropBlockView {
     editorView.dom.addEventListener('dragover', this.dragover as EventListener)
   }
 
-  drop = (e: DragEvent) => {
+  drop = (e: DragEvent): void => {
     const key = e.dataTransfer?.getData('AddBlockKey')
     if (!this.editorView.editable) return
     const position = this.editorView.posAtCoords({ left: e.clientX, top: e.clientY })
@@ -30,7 +30,7 @@ export class DropBlockView {
     e.preventDefault()
   }
 
-  dragover = (e: DragEvent) => {
+  dragover = (e: DragEvent): void => {
     e.preventDefault()
   }
 

@@ -1,6 +1,4 @@
-/* eslint-disable max-nested-callbacks */
-import { renderHook } from '@testing-library/react-hooks'
-import { act } from 'react-dom/test-utils'
+import { renderHook, act } from '@testing-library/react'
 import { usePageDiscussionContextValue } from '../PageDiscussionContext'
 import { CommentedNode } from '../useCommentedNodes'
 import * as editorHooks from '../../../../hooks/useEditorContext'
@@ -130,15 +128,14 @@ describe('PageDiscussionContext', () => {
       jest.useRealTimers()
       const commentedNodes: CommentedNode[] = [{} as any]
 
-      void act(async () => {
-        // eslint-disable-next-line max-nested-callbacks
-        const { result } = renderHook(() => usePageDiscussionContextValue(commentedNodes))
+      const { result } = renderHook(() => usePageDiscussionContextValue(commentedNodes))
 
+      await act(async () => {
         // wait for getConversations resolved
         await new Promise(resolve => setTimeout(resolve, 10))
-
-        expect(result.current.discussion.conversations).toHaveLength(1)
       })
+
+      expect(result.current.discussion.conversations).toHaveLength(1)
     })
 
     it('does nothing if fetch conversations failed', async () => {
@@ -170,15 +167,14 @@ describe('PageDiscussionContext', () => {
 
       const commentedNodes: CommentedNode[] = []
 
-      await act(async () => {
-        // eslint-disable-next-line max-nested-callbacks
-        const { result } = renderHook(() => usePageDiscussionContextValue(commentedNodes))
+      const { result } = renderHook(() => usePageDiscussionContextValue(commentedNodes))
 
+      await act(async () => {
         // wait for getConversations resolved
         await new Promise(resolve => setTimeout(resolve, 10))
-
-        expect(result.current.discussion.conversations).toHaveLength(0)
       })
+
+      expect(result.current.discussion.conversations).toHaveLength(0)
     })
 
     it('triggers addConversation normally', async () => {
@@ -192,7 +188,6 @@ describe('PageDiscussionContext', () => {
       const markId = 'markId'
       const commentedNodes: CommentedNode[] = []
 
-      // eslint-disable-next-line max-nested-callbacks
       const { result } = renderHook(() => usePageDiscussionContextValue(commentedNodes))
       const { addConversation } = result.current
 

@@ -1,4 +1,5 @@
 import { RequiredKeys } from '@mashcard/active-support'
+import { devWarning } from '@mashcard/design-system'
 import {
   Mark,
   MarkConfig as TipTapMarkConfig,
@@ -88,7 +89,7 @@ export const createJSONAttributeHtmlParser = (attributeName: string) => (element
   try {
     return JSON.parse(value)
   } catch (error) {
-    console.error(error)
+    devWarning(true, error)
   }
 
   return null
@@ -98,7 +99,7 @@ export const createJSONAttributeHtmlRender = (key: string, htmlKey: string) => (
   try {
     return { [htmlKey]: JSON.stringify(attributes[key]) }
   } catch (error) {
-    console.error(error)
+    devWarning(true, error)
   }
 
   return {}

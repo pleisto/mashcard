@@ -13,13 +13,13 @@
 
 ### <a id="clausearguments" name="clausearguments"></a> clauseArguments
 
-• `Optional` `Readonly` **clauseArguments**: [`Argument`](Argument.md)<``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"Button"`` \| ``"Switch"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"``\>[]
+• `Optional` `Readonly` **clauseArguments**: [`Argument`](Argument.md)<`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`\>[]
 
 #### Defined in
 
 [packages/formula/src/grammar/codeFragment.ts:59](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L59)
 
-___
+---
 
 ### <a id="firstargumenttype" name="firstargumenttype"></a> firstArgumentType
 
@@ -29,7 +29,7 @@ ___
 
 [packages/formula/src/grammar/codeFragment.ts:58](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L58)
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -39,7 +39,7 @@ ___
 
 [packages/formula/src/grammar/codeFragment.ts:60](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L60)
 
-___
+---
 
 ### <a id="type" name="type"></a> type
 

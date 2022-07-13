@@ -3,7 +3,6 @@
   "version": "0.1.1",
   "license": "Apache-2.0",
   "packageManager": "yarn@3.0.0",
-  "sideEffects": false,
   "main": "src/index.ts",
   "module": "src/index.ts",
   "volta": {
@@ -16,6 +15,7 @@
     "lint:type": "run -T tsc",
     "generate": "./bin/generate-icon-components.js"
   },
+  "sideEffects": false,
   "peerDependencies": {
     "react": ">= 17.0.2",
     "react-dom": ">= 17.0.2"

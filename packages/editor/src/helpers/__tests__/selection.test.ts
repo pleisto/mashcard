@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 import Paragraph from '@tiptap/extension-paragraph'
 import { useTestEditor } from '../../test/testEditor'
 import { findFirstSelectedNodes, findNodesInSelection } from '../selection'

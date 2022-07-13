@@ -39,3 +39,18 @@ Object.assign(navigator, {
 
 window.scrollTo = () => {}
 window.scroll = () => {}
+
+const t = str => str
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useTranslation: () => {
+    const ret = {
+      t,
+      i18n: {
+        changeLanguage: () => new Promise(() => {})
+      },
+      ready: true
+    }
+    return [ret.t, ret.i18n, ret.ready]
+  }
+}))

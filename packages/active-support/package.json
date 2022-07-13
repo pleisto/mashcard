@@ -16,6 +16,7 @@
     "test:jest": "run -T jest",
     "tsdoc": "run -T typedoc --options ../../tools/typedoc/config.json --out ./docs/api ./src/index.ts"
   },
+  "sideEffects": false,
   "dependencies": {
     "@lukeed/uuid": "^2.0.0",
     "lodash": "^4.17.21",
@@ -24,7 +25,6 @@
     "neverthrow": "^4.4.2",
     "performant-array-to-tree": "^1.11.0"
   },
-  "sideEffects": false,
   "devDependencies": {
     "@types/lodash": "^4.14.182"
   }

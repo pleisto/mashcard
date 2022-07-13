@@ -1,5 +1,5 @@
 import { MashcardEventBus, SlashMenuHide, SlashMenuKeyboardEventTrigger } from '@mashcard/schema'
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 import { useRef } from 'react'
 import { SlashMenuItem } from '../SlashMenu'
 import { useKeyboardEvent } from '../useKeyboardEvent'

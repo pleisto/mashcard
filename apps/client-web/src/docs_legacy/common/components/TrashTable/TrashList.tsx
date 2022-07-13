@@ -5,7 +5,7 @@ import {
   useBlockRestoreMutation,
   useBlockHardDeleteMutation
 } from '@/MashcardGraphQL'
-import { Spin, useList, Checkbox, Button, theme, ConfirmDialog, toast } from '@mashcard/design-system'
+import { Spin, useList, Checkbox, Button, theme, ConfirmDialog, toast, devWarning } from '@mashcard/design-system'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
@@ -85,7 +85,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
         if (e instanceof Error) {
           toast.error(`${e.message})`)
         }
-        console.error(e)
+        devWarning(true, e)
         void refetch()
       }
 
@@ -118,7 +118,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
         if (e instanceof Error) {
           toast.error(`${e.message})`)
         }
-        console.error(e)
+        devWarning(true, e)
         void refetch()
       }
       setActionLoading(false)

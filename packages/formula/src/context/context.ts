@@ -59,6 +59,7 @@ import {
   spreadsheet2completion
 } from '../grammar/completer'
 import { dumpDisplayResultForDisplay } from './persist'
+import { devWarning } from '@mashcard/design-system'
 
 export interface FormulaContextArgs {
   domain: string
@@ -524,7 +525,7 @@ export class FormulaContext implements ContextInterface {
       if (success) {
         this.dirtyFormulas = {}
       } else {
-        console.error('commit dirty failed')
+        devWarning(true, 'commit dirty failed')
       }
     }
   }
