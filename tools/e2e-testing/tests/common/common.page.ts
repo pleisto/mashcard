@@ -51,7 +51,6 @@ export class CommonPage {
   }
 
   async createScreenshot(mask?: Locator[]): Promise<void> {
-    await this.page.waitForTimeout(500)
     const maskList = mask ?? []
     await expect(this.page).toHaveScreenshot({
       mask: [
