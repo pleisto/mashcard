@@ -20,9 +20,9 @@ module Mashcard
           @loader
         end
 
-        # convert plugin assets relative path to vite url
+        # resolve plugin assets url
         def asset_url(path)
-          Plugins::Vite.get_path "#{@path}/#{path}"
+          File.join("/$plugin.#{@id}", path)
         end
 
         # define or get settings for the plugin

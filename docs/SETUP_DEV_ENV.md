@@ -47,8 +47,8 @@ We provide an out-of-box workspace file for VSCode, which contains all the neces
 
 ### Database
 
-> TIPS: you can run docker compose to quickly start a local database.
-> See [This configure](../tools/scripts/docker-compose.yml) for more details.
+> TIPS: you can run `yarn dev-support run-dev-deps` to quickly start a local database with docker-compose.
+> See [This configure](../packages/dev-support/dev-deps-compose.yml) for more details.
 
 [PostgreSQL 14+](https://www.postgresql.org/) is the only supported RDS.
 

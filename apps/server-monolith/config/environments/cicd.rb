@@ -18,9 +18,8 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
   config.active_record.verbose_query_logs  = true
 
-  # Disable serving static files from the `/public` folder by default since
-  # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  # Enable serving frontent assets from 'public'
+  config.public_file_server.enabled = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = 'http://assets.example.com'

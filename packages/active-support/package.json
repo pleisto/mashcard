@@ -14,7 +14,7 @@
     "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
     "test:jest": "run -T jest",
-    "tsdoc": "run -T typedoc --options ../../tools/typedoc/config.json --out ./docs/api ./src/index.ts"
+    "tsdoc": "run -T typedoc --options ../../packages/dev-support/typedoc.json --out ./docs/api ./src/index.ts"
   },
   "sideEffects": false,
   "dependencies": {
@@ -26,6 +26,7 @@
     "performant-array-to-tree": "^1.11.0"
   },
   "devDependencies": {
+    "@mashcard/dev-support": "workspace:^",
     "@types/lodash": "^4.14.182"
   }
 }

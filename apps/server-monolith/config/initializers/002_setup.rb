@@ -27,7 +27,7 @@ Rails.application.reloader.to_prepare do
 
   Rails.application.default_url_options = {
     host: MashcardConfig.host,
-    port: Rails.env.development? ? 3000 : nil,
+    port: Rails.env.development? ? 3036 : nil,
   }
 
   ## ActiveStorage

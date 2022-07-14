@@ -33,7 +33,7 @@
     ]
   },
   "scripts": {
-    "postinstall": "(is-ci || husky install) && ./tools/scripts/pdftron.js static",
+    "postinstall": "(is-ci || husky install) && yarn dev-support copy-pdftron-assets",
     "analyze": "BUNDLE_STATS=1 yarn dist && open ./tmp/esm-bundle-stats.html",
     "rust:build": "SYSINFO=$(uname -a) turbo run rust:build",
     "rust:build:dev": "turbo run rust:build:dev",
@@ -49,7 +49,7 @@
     "test:playwright": "yarn e2e-testing start",
     "tsdoc": "turbo run tsdoc",
     "commit": "git add . && cz",
-    "cleanup": "rimraf node_modules/.cache public/esm-bundle '{packages,tools,apps}/*/{dist,coverage,.turbo,.nyc_output,.eslintcache,.next}' 'tools/e2e-testing/{allure-report,allure-results,test-results,storageState-*.json}'",
+    "cleanup": "rimraf node_modules/.cache apps/server-monolith/public '{packages,tools,apps}/*/{dist,coverage,.turbo,.nyc_output,.eslintcache,.next}' 'tools/e2e-testing/{allure-report,allure-results,test-results,storageState-*.json}'",
     "schema": "yarn workspace @mashcard/schema",
     "design-system": "yarn workspace @mashcard/design-system",
     "design-icons": "yarn workspace @mashcard/design-icons",
@@ -59,6 +59,7 @@
     "web": "yarn workspace @mashcard/client-web",
     "e2e-testing": "yarn workspace @mashcard/e2e-testing",
     "active-support": "yarn workspace @mashcard/active-support",
+    "dev-support": "yarn workspace @mashcard/dev-support",
     "server": "yarn workspace @mashcard/server-monolith",
     "github-auth": "yarn workspace @mashcard/github-auth",
     "google-auth": "yarn workspace @mashcard/google-auth",
@@ -85,7 +86,6 @@
     "@types/react-dom": "^18.0.6",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
-    "depcheck": "^1.4.3",
     "eslint": "^8.19.0",
     "fs-extra": "^10.1.0",
     "husky": "^8.0.1",
@@ -101,8 +101,7 @@
     "typedoc": "^0.23.7",
     "typedoc-plugin-inline-sources": "^1.0.1",
     "typedoc-plugin-markdown": "^3.13.3",
-    "typescript": "^4.7.4",
-    "yargs": "^17.5.1"
+    "typescript": "^4.7.4"
   },
   "packageManager": "yarn@3.2.1",
   "resolutions": {

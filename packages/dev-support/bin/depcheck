@@ -3,6 +3,9 @@
 YELLOW='\033[0;33m'
 NC='\033[0m'
 
+BASEDIR=$(dirname "$0")
+cd "$BASEDIR/../../.."
+
 for d in $(yarn workspaces list | awk '{print $3}'); do
   if [[ $d == 'Done' ]]; then
     continue
@@ -13,5 +16,5 @@ for d in $(yarn workspaces list | awk '{print $3}'); do
     package=$d
   fi
   echo -e "${YELLOW}Checking dependencies for $package...${NC}"
-  yarn depcheck $d
+  yarn exec depcheck $d
 done

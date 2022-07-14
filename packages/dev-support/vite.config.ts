@@ -1,26 +1,22 @@
-import { defineConfig, searchForWorkspaceRoot } from 'vite'
-import RubyPlugin from 'vite-plugin-ruby'
 import react from '@vitejs/plugin-react'
-import { VitePWA } from 'vite-plugin-pwa'
-import { join } from 'node:path/posix'
-import swc from 'unplugin-swc'
+import { resolve } from 'node:path'
 import { visualizer } from 'rollup-plugin-visualizer'
+import { defineConfig } from 'vite'
+import { VitePWA } from 'vite-plugin-pwa'
+
+const clientWebPackageRoot = resolve(__dirname, '../../apps/client-web')
+const serverMonolithPackageRoot = resolve(__dirname, '../../apps/server-monolith')
 
 // eslint-disable-next-line import/no-default-export
 export default defineConfig({
   plugins: [
-    RubyPlugin(),
-    react({
-      babel: {
-        parserOpts: {
-          plugins: ['decorators-legacy']
-        }
-      }
-    }),
+    react(),
     VitePWA({
-      injectRegister: 'script',
+      registerType: 'autoUpdate',
       manifest: {
         name: 'MashCard',
+        short_name: 'MashCard',
+        description: 'An open-source web-based OS and no-code PaaS to boost productivity.',
         theme_color: '#ffffff',
         icons: [
           {
@@ -37,7 +33,9 @@ export default defineConfig({
       },
       workbox: {
         maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
-        globPatterns: ['**/*.{woff,woff2,ttf,js,css,svg,mp4,jpg,png,webp,webm,mov}'],
+        globPatterns: ['**/*.{html,css,js,json,txt,woff,woff2,ttf,svg,ico,jpg,png,heif,webp,mp4,webm,mov}'],
+        // Requests starting with '$'/'.' are usually backend-related requests, so we bypass them
+        navigateFallbackDenylist: [/^\/(\$|\.)/],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/s3\.brickdoc\.com\/npmjs\/.*/i,
@@ -64,29 +62,36 @@ export default defineConfig({
         ]
       }
     }),
-    swc.vite(),
     process.env.BUNDLE_STATS
       ? visualizer({
           brotliSize: true,
+          // TODO: ignore tmp
           filename: './tmp/esm-bundle-stats.html'
         })
       : undefined
   ],
   build: {
-    sourcemap: true
+    sourcemap: true,
+    outDir: `${serverMonolithPackageRoot}/public`,
+    emptyOutDir: true,
+    rollupOptions: {
+      external: ['./$server-context.js']
+    }
   },
   resolve: {
     alias: {
+      '@/': `${clientWebPackageRoot}/src/`,
       lodash: 'lodash-es',
-      plugins: join(__dirname, '../../plugins')
+      plugins: resolve(__dirname, '../../plugins')
     }
   },
   server: {
-    fs: {
-      allow: [
-        // Define correct path for monorepo
-        searchForWorkspaceRoot(join(process.cwd(), '..', '..'))
-      ]
+    port: 3000,
+    proxy: {
+      '^/(\\$|\\.)': {
+        target: 'http://localhost:3036',
+        ws: true
+      }
     }
   }
 })

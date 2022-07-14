@@ -2,7 +2,7 @@
 
 devise_for :users,
   class_name: 'Users::Authentication',
-  path: 'accounts',
+  path: '$internal-apis/accounts',
   controllers: {
     sessions: 'accounts/sessions',
     registrations: 'accounts/registrations',
@@ -10,8 +10,4 @@ devise_for :users,
     confirmations: 'accounts/confirmations',
     unlocks: 'accounts/unlocks_callbacks',
     passwords: 'accounts/passwords',
-  },
-  path_names: {
-    sign_in: 'sign-in',
-    sign_up: 'sign-up',
   }

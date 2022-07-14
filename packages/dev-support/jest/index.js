@@ -1,4 +1,4 @@
-const path = require('path')
+const { resolve } = require('node:path')
 const fs = require('node:fs')
 const esModules = [
   'lodash-es',
@@ -16,7 +16,7 @@ const esModules = [
   'preact'
 ].join('|')
 
-const monoRoot = path.join(__dirname, '..', '..')
+const monoRoot = resolve(__dirname, '../../..')
 const swcConfig = JSON.parse(fs.readFileSync(`${monoRoot}/.swcrc`, 'utf-8'))
 
 module.exports = {
@@ -40,16 +40,16 @@ module.exports = {
     coverageReporters: ['lcov', 'text-summary'],
     moduleNameMapper: hasDom
       ? {
-          '\\.(css|less|scss|sass|mp4)$': 'identity-obj-proxy',
-          '\\.(png|webp|gif|svg)$': `${monoRoot}/tools/jest/image-mock.js`
+          '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+          '\\.(mp4|png|webp|gif|svg)$': resolve(__dirname, 'image-mock.js')
         }
       : {},
-    setupFilesAfterEnv: hasDom ? [`${monoRoot}/tools/jest/dom.js`] : [],
+    setupFilesAfterEnv: hasDom ? [resolve(__dirname, 'dom.js')] : [],
     fakeTimers: {
       enableGlobally: hasDom
     },
     testMatch: ['**/**/__tests__/**/*.(ts|tsx)', '**/**/*.@(spec|test).(ts|tsx)', '!**/dist/**'],
-    snapshotResolver: hasDom ? `${monoRoot}/tools/jest/snapshot-resolver.js` : undefined,
+    snapshotResolver: hasDom ? resolve(__dirname, 'snapshot-resolver.js') : undefined,
     reporters: ['default', 'github-actions'],
     transformIgnorePatterns: [`${monoRoot}/node_modules/(?!(${esModules})/)`]
   })

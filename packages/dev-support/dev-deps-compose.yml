@@ -1,4 +1,5 @@
 # Quickly spin up a local development environment with `docker-compose up`
+name: mashcard-dev-deps
 services:
   postgres:
     image: postgres

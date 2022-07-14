@@ -9,7 +9,9 @@ module Mashcard
       PLUGINS_PATHS = Mashcard.monorepo_root.join('plugins')
 
       # JSON Schema validator for plugin metadata
-      SCHEMA = Utils::JSONSchema.new(File.read(Rails.public_path.join('json-schema/plugin.draft-2205.json')))
+      SCHEMA = Utils::JSONSchema.new(File.read(
+        Mashcard.monorepo_root.join('apps/client-web/src/public/json-schema/plugin.draft-2205.json')
+      ))
 
       # Load all plugins
       # - Find all plugins in the plugins directory

@@ -40,7 +40,7 @@ export class CommonPage {
   async waitForResponse(operationName: string): Promise<void> {
     await this.page.waitForResponse(
       response =>
-        response.url().includes('.internal-apis/$graph') &&
+        response.url().includes('$internal-apis/$graph') &&
         response.request().postDataJSON().operationName === operationName &&
         response.ok()
     )

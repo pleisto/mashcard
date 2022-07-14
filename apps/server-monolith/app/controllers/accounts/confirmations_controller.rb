@@ -6,17 +6,18 @@ module Accounts
 
     # GET /resource/confirmation/new
     def new
-      render 'pages/pwa'
-    end
-
-    def show
-      render 'pages/pwa'
+      raise ActionController::NotImplemented
     end
 
     # POST /resource/confirmation
     def create
       # Only Support GraphQL API
       raise ActionController::RoutingError, 'Not Found'
+    end
+
+    # GET /resource/confirmation?confirmation_token=abcdef
+    def show
+      raise ActionController::NotImplemented
     end
   end
 end

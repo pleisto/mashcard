@@ -87,7 +87,11 @@ export const SignUp: React.FC = () => {
 
   // Loading Status
   const loading = configLoading || sessionLoading
-  isLoadingVar(loading)
+
+  useEffect(() => {
+    isLoadingVar(loading)
+  }, [loading])
+
   if (loading) {
     return <></>
   }

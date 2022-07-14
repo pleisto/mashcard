@@ -20,6 +20,11 @@ module Mashcard
           entrypoint = load_entrypoint(path)
           parse = DSLParser.new(instance.id, path)
 
+          # Expose `public` directory of the plugin
+          if Dir.exist?("#{path}/public")
+            Rails.application.config.middleware.insert_after(Rack::Sendfile, StaticFileMiddleware, plugin_instance: instance)
+          end
+
           # Push lib directory to load path if it is exist
           parse.loader.plugin_dir = path
           parse.loader.push_dir('lib')
