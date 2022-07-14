@@ -30,7 +30,6 @@ import { pagesVar } from '@/docs_legacy/reactiveVars'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { useDocMeta } from '@/docs_legacy/store/DocMeta'
 import { dispatchFormulaBlockNameChange } from '@mashcard/formula'
-import { MashcardEventBus, BlockMetaUpdated } from '@mashcard/schema'
 
 export interface PageTreeProps {
   mode?: 'default' | 'subPage'
@@ -89,7 +88,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
     )
   }, [data?.pageBlocks])
 
-  const [blockMove, { client: blockMoveClient }] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
+  const [blockMove] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
   const [draggable, setDraggable] = useState<boolean>(true)
 
   const { data: pinData } = useGetBlockPinsQuery()
