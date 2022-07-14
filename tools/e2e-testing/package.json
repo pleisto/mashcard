@@ -29,7 +29,7 @@
     "@types/inquirer": "^8.2.1",
     "allure-commandline": "^2.18.1",
     "allure-playwright": "^2.0.0-beta.18",
-    "inquirer": "^9.0.0",
-    "ts-node": "^10.8.2"
+    "inquirer": "^9.0.1",
+    "ts-node": "^10.9.1"
   }
 }
