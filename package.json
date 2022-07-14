@@ -73,16 +73,16 @@
     "@graphql-codegen/typescript-operations": "^2.5.1",
     "@graphql-codegen/typescript-react-apollo": "^3.3.1",
     "@pleisto/eslint-plugin": "^1.0.5",
-    "@sentry/cli": "^2.4.0",
+    "@sentry/cli": "^2.4.1",
     "@swc/cli": "^0.1.57",
     "@swc/jest": "^0.2.21",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^14.2.1",
+    "@testing-library/user-event": "^14.2.3",
     "@types/is-ci": "^3.0.0",
     "@types/jest": "^28.1.5",
     "@types/jest-axe": "^3.5.4",
-    "@types/node": "^18.0.3",
+    "@types/node": "^18.0.4",
     "@types/rails__actioncable": "^6.1.6",
     "@types/rails__activestorage": "^7.0.1",
     "@types/react": "^18.0.15",
@@ -116,10 +116,10 @@
     "prosemirror-view": "patch:prosemirror-view@npm:1.26.5#.yarn/patches/prosemirror-view-npm-1.26.5-ab20b7a4ea.patch"
   },
   "dependencies": {
-    "@swc/core": "^1.2.213",
+    "@swc/core": "^1.2.215",
     "@swc/helpers": "^0.4.3",
     "lodash-es": "^4.17.21",
-    "ts-node": "^10.8.2"
+    "ts-node": "^10.9.1"
   },
   "volta": {
     "node": "18.4.0",
