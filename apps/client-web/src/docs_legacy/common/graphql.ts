@@ -118,29 +118,17 @@ export const queryPageBlocks = gql`
       sort
       nextSort
       firstChildSort
-      rootId
       parentId
-      type
-      text
-      content
-      data
-      meta {
-        cover {
-          ... on BlockImage {
-            type
-            source
-            key
-          }
-          ... on BlockColor {
-            type
-            color
-          }
-        }
+      documentInfo {
+        id
+        title
         icon {
           ... on BlockImage {
             type
             source
             key
+            height
+            width
           }
 
           ... on BlockEmoji {
@@ -149,6 +137,7 @@ export const queryPageBlocks = gql`
             emoji
           }
         }
+        pin
       }
     }
   }

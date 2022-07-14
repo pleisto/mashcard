@@ -9,31 +9,19 @@ describe Resolvers::PageBlocks, type: :query do
         pageBlocks(domain: $domain) {
           id
           sort
-          rootId
-          parentId
           nextSort
           firstChildSort
-          type
-          data
-          text
-          content
-          meta {
-            cover {
-              ... on BlockImage {
-                type
-                key
-                source
-              }
-              ... on BlockColor {
-                type
-                color
-              }
-            }
+          parentId
+          documentInfo {
+            id
+            title
             icon {
               ... on BlockImage {
                 type
-                key
                 source
+                key
+                height
+                width
               }
 
               ... on BlockEmoji {
@@ -42,6 +30,7 @@ describe Resolvers::PageBlocks, type: :query do
                 emoji
               }
             }
+            pin
           }
         }
       }

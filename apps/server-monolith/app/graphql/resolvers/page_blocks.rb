@@ -2,7 +2,7 @@
 
 module Resolvers
   class PageBlocks < BaseResolver
-    type [Types::Block], null: true
+    type [Types::Blocks::New], null: true
 
     argument :domain, GraphQL::Types::String, required: true,
       description: 'List all pages for pod domain'

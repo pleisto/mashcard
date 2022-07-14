@@ -490,8 +490,18 @@ export type BlockNew = {
   /** Block Type */
   blockType?: Maybe<Scalars['String']>
   documentInfo?: Maybe<DocumentInfo>
+  /** block first child sort */
+  firstChildSort: Scalars['BigInt']
   /** object unique id */
   id: Scalars['UUID']
+  /** block next sort */
+  nextSort: Scalars['BigInt']
+  /** parent uuid */
+  parentId?: Maybe<Scalars['UUID']>
+  /** root uuid */
+  rootId: Scalars['UUID']
+  /** block sort */
+  sort: Scalars['BigInt']
   /** Latest State Id */
   stateId?: Maybe<Scalars['String']>
   /** Block States */
@@ -1789,7 +1799,7 @@ export type Query = {
   formulas?: Maybe<Array<Formula>>
   /** Return information about current MashCard server instance. */
   metadata: Metadata
-  pageBlocks?: Maybe<Array<Block>>
+  pageBlocks?: Maybe<Array<BlockNew>>
   /** Check password available. */
   passwordAvailable: ValidateResult
   /** return current pod for user. */

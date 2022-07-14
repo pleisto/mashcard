@@ -493,8 +493,18 @@ export type BlockNew = {
   /** Block Type */
   blockType?: Maybe<Scalars['String']>
   documentInfo?: Maybe<DocumentInfo>
+  /** block first child sort */
+  firstChildSort: Scalars['BigInt']
   /** object unique id */
   id: Scalars['UUID']
+  /** block next sort */
+  nextSort: Scalars['BigInt']
+  /** parent uuid */
+  parentId?: Maybe<Scalars['UUID']>
+  /** root uuid */
+  rootId: Scalars['UUID']
+  /** block sort */
+  sort: Scalars['BigInt']
   /** Latest State Id */
   stateId?: Maybe<Scalars['String']>
   /** Block States */
@@ -1792,7 +1802,7 @@ export type Query = {
   formulas?: Maybe<Array<Formula>>
   /** Return information about current MashCard server instance. */
   metadata: Metadata
-  pageBlocks?: Maybe<Array<Block>>
+  pageBlocks?: Maybe<Array<BlockNew>>
   /** Check password available. */
   passwordAvailable: ValidateResult
   /** return current pod for user. */
@@ -2186,28 +2196,29 @@ export type GetPageBlocksQueryVariables = Exact<{
 export type GetPageBlocksQuery = {
   __typename?: 'query'
   pageBlocks?: Array<{
-    __typename?: 'Block'
+    __typename?: 'BlockNew'
     id: string
     sort: any
     nextSort: any
     firstChildSort: any
-    rootId: string
     parentId?: string | null
-    type: string
-    text: string
-    content: Array<any>
-    data: any
-    meta: {
-      __typename?: 'BlockMeta'
-      cover?:
-        | { __typename?: 'BlockColor'; type?: BlockType | null; color: string }
-        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
-        | null
+    documentInfo?: {
+      __typename?: 'DocumentInfo'
+      id: string
+      title: string
+      pin: boolean
       icon?:
         | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
-        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
+        | {
+            __typename?: 'BlockImage'
+            type?: BlockType | null
+            source?: FileSource | null
+            key?: string | null
+            height?: number | null
+            width?: number | null
+          }
         | null
-    }
+    } | null
   }> | null
 }
 
@@ -3723,29 +3734,17 @@ export const GetPageBlocksDocument = gql`
       sort
       nextSort
       firstChildSort
-      rootId
       parentId
-      type
-      text
-      content
-      data
-      meta {
-        cover {
-          ... on BlockImage {
-            type
-            source
-            key
-          }
-          ... on BlockColor {
-            type
-            color
-          }
-        }
+      documentInfo {
+        id
+        title
         icon {
           ... on BlockImage {
             type
             source
             key
+            height
+            width
           }
           ... on BlockEmoji {
             type
@@ -3753,6 +3752,7 @@ export const GetPageBlocksDocument = gql`
             emoji
           }
         }
+        pin
       }
     }
   }

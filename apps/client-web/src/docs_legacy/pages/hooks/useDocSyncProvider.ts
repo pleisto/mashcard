@@ -6,7 +6,6 @@ import { uuid, isEqual } from '@mashcard/active-support'
 import { yDocToProsemirrorJSON } from 'y-prosemirror'
 
 import {
-  BlockNew,
   DocumentBlockQuery,
   DocumentHistory,
   DocumentInfo,
@@ -21,6 +20,8 @@ import { devLog } from '@mashcard/design-system'
 import { useApolloClient } from '@apollo/client'
 
 import { MashcardEventBus, docHistoryReceived, BlockMetaUpdated, UpdateBlockMeta } from '@mashcard/schema'
+
+type BlockType = Exclude<Exclude<DocumentBlockQuery['blockNew'], undefined>, null>
 
 export interface blockMeta {
   [key: string]: any
@@ -60,7 +61,7 @@ export function useDocSyncProvider(queryVariables: {
 
   const { blockId, historyId, editable, data } = queryVariables
 
-  const block = React.useRef<BlockNew>({ id: blockId })
+  const block = React.useRef<BlockType>({ id: blockId })
   const [blockMeta, setBlockMeta] = React.useState<blockMeta>({})
   const [documentInfo, setDocumentInfo] = React.useState<DocumentInfo>()
   const latestMeta = React.useRef<blockMeta>({})
@@ -147,29 +148,6 @@ export function useDocSyncProvider(queryVariables: {
     (meta: blockMeta) => {
       if (isEqual(meta, latestMeta)) return
       if (!historyId) {
-        // TODO: refactor to remove BlockInfo
-        client.cache.modify({
-          id: client.cache.identify({ __typename: 'BlockInfo', id: blockId }),
-          fields: {
-            title() {
-              return meta.title
-            },
-            icon() {
-              return meta.icon
-            }
-          }
-        })
-        client.cache.modify({
-          id: client.cache.identify({ __typename: 'Block', id: blockId }),
-          fields: {
-            text() {
-              return meta.title
-            },
-            meta() {
-              return meta
-            }
-          }
-        })
         client.cache.modify({
           id: client.cache.identify({ __typename: 'DocumentInfo', id: blockId }),
           fields: {

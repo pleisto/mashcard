@@ -18,6 +18,7 @@ export function useMentionCommands(docMeta: DocMeta): MentionCommandsOptions {
     [data?.podMembers]
   )
 
+  // TODO: migrate to zustand
   const documentPages = useReactiveVar(pagesVar)
 
   const pages = useMemo(
