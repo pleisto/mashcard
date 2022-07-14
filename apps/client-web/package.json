@@ -52,8 +52,8 @@
     "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
     "test:jest": "run -T jest",
-    "start": "run -T server vite:start",
-    "dist": "run -T server vite:build",
+    "start": "run -T dev-support vite:start",
+    "dist": "run -T dev-support vite:build",
     "generate:routes": "./bin/generate-routes.mjs",
     "generate:graphql": "graphql-codegen"
   }
