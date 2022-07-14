@@ -123,7 +123,6 @@ jobs:
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         env:
           RAILS_ENV: test
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: yarn server bundle exec rspec --format RspecJunitFormatter --out junit-reports/rspec.xml
       - name: Publish RSpec test reports
         if: always() && steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
@@ -137,6 +136,14 @@ jobs:
         with:
           report_paths: junit-reports/rspec_setting.xml
           check_name: Rails RSpec Test Setting Report
+      - name: Publish RSpec code coverage reports
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: backend-unit
+          fail_ci_if_error: true
+          verbose: true
       - name: Get changed database migrations
         id: changed-db-migrations
         uses: tj-actions/changed-files@v23
