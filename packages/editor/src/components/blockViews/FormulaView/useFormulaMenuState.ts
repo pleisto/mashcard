@@ -5,7 +5,7 @@ type View = string
 export interface FormulaMenuStore {
   state: null | View
   tryOpenMenu: (view: View) => boolean
-  closeMenu: () => void
+  tryCloseMenu: (view: View) => void
 }
 
 // Ensure only one menu can be open at a time
@@ -18,7 +18,8 @@ export const useFormulaMenuStore = create<FormulaMenuStore>((set, get) => ({
     set({ state: view })
     return true
   },
-  closeMenu() {
+  tryCloseMenu(view: View) {
+    if (get().state !== view) return
     set({ state: null })
   }
 }))

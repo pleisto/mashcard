@@ -52,14 +52,14 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   completion
 }) => {
   const { namespaceId: rootId, variableId: formulaId } = meta
-  const [tryOpenMenu, closeMenu] = useFormulaMenuStore(state => [state.tryOpenMenu, state.closeMenu])
+  const [tryOpenMenu, tryCloseMenu] = useFormulaMenuStore(state => [state.tryOpenMenu, state.tryCloseMenu])
 
   const close = React.useCallback((): void => {
     setVisible(false)
     setMaxScreen(false)
     onVisibleChange?.(false)
-    closeMenu()
-  }, [closeMenu, onVisibleChange, setMaxScreen, setVisible])
+    tryCloseMenu(formulaId)
+  }, [tryCloseMenu, formulaId, onVisibleChange, setMaxScreen, setVisible])
 
   const triggerCalculate = async (): Promise<void> => {
     const result = MashcardEventBus.dispatch(FormulaCalculateTrigger({ skipExecute: true, formulaId, rootId }))
@@ -114,7 +114,13 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const handleNameKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>): Promise<void> => {
     if (e.key === 'Enter') {
       const result = MashcardEventBus.dispatch(
-        FormulaKeyboardEventTrigger({ event: e, formulaId, rootId, type: 'name', completionIndex: -1 })
+        FormulaKeyboardEventTrigger({
+          event: { ...e, key: e.key },
+          formulaId,
+          rootId,
+          type: 'name',
+          completionIndex: -1
+        })
       )
       await Promise.all(result)
     }
