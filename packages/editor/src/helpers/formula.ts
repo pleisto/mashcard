@@ -1,4 +1,4 @@
-import { CodeFragment } from '@mashcard/formula'
+import { CodeFragmentWithIndex } from '@mashcard/formula'
 import { JSONContent } from '@tiptap/core'
 import { FormulaInput } from '../components/blockViews'
 
@@ -13,7 +13,10 @@ const maybeRemoveDefinitionEqual = (definition: string | undefined, formulaIsNor
   return definition
 }
 
-const maybeRemoveCodeFragmentsEqual = (codeFragments: CodeFragment[], formulaIsNormal: boolean): CodeFragment[] => {
+const maybeRemoveCodeFragmentsEqual = (
+  codeFragments: CodeFragmentWithIndex[],
+  formulaIsNormal: boolean
+): CodeFragmentWithIndex[] => {
   if (!codeFragments.length) return []
   if (!formulaIsNormal) return codeFragments
 
@@ -30,7 +33,19 @@ export const buildJSONContentByArray = (content: JSONContent[]): JSONContent => 
   return { type: 'doc', content: [{ type: 'paragraph', content }] }
 }
 
-const attrsToJSONContent = (attrs: CodeFragment): JSONContent => {
+export const content2contents = (content: JSONContent): JSONContent[] => {
+  if (!content) return []
+  if (content.type !== 'doc') return []
+
+  const firstParagraph = content.content?.[0]
+  if (!firstParagraph) return []
+  if (firstParagraph.type !== 'paragraph') return []
+  if (!firstParagraph.content) return []
+
+  return firstParagraph.content
+}
+
+const attrsToJSONContent = (attrs: CodeFragmentWithIndex): JSONContent => {
   return { type: 'text', text: attrs.display, marks: [{ type: 'FormulaType', attrs }] }
 }
 
@@ -59,9 +74,9 @@ export const input2content = (
 }
 
 export const codeFragments2content = (
-  codeFragments: CodeFragment[] | undefined,
+  codeFragments: CodeFragmentWithIndex[] | undefined,
   formulaIsNormal: boolean
-): [JSONContent | undefined, CodeFragment[]] => {
+): [JSONContent | undefined, CodeFragmentWithIndex[]] => {
   if (!codeFragments) return [undefined, []]
   const newCodeFragments = maybeRemoveCodeFragmentsEqual(codeFragments, formulaIsNormal)
   if (newCodeFragments.length === 0) return [undefined, []]

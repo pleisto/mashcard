@@ -164,7 +164,8 @@ const parse1 = (ctx: FunctionContext): ParseResult => {
             type: 'any',
             display: input,
             errors: [],
-            attrs: undefined
+            attrs: undefined,
+            index: 0
           }
         ]
       }
@@ -186,7 +187,7 @@ const parse1 = (ctx: FunctionContext): ParseResult => {
         valid: true,
         kind: 'blank',
         cst: undefined,
-        codeFragments: [equalCodeFragment, ...restCodeFragments]
+        codeFragments: [equalCodeFragment, ...restCodeFragments].map((c, index) => ({ ...c, index }))
       }
     }
   }
@@ -203,7 +204,7 @@ const parse1 = (ctx: FunctionContext): ParseResult => {
     ...variableParseResult,
     definition: `=${variableParseResult.definition}`,
     position: isHead && variableParseResult.position === 0 ? 0 : variableParseResult.position + 1,
-    codeFragments: [equalCodeFragment, ...variableParseResult.codeFragments]
+    codeFragments: [equalCodeFragment, ...variableParseResult.codeFragments].map((c, index) => ({ ...c, index }))
   }
 
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
@@ -360,7 +361,7 @@ const parse2 = (ctx: FunctionContext): ParseResult => {
     ctx
   })
 
-  returnValue.variableParseResult.codeFragments = finalCodeFragments
+  returnValue.variableParseResult.codeFragments = finalCodeFragments.map((c, index) => ({ ...c, index }))
   returnValue.variableParseResult.definition = finalCodeFragments.map(f => f.display).join('')
   returnValue.variableParseResult.position = newPosition
   returnValue.completions = completions

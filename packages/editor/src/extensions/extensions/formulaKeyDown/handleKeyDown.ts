@@ -3,9 +3,10 @@ import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { EditorView } from 'prosemirror-view'
 import { Plugin, PluginKey } from 'prosemirror-state'
 import { MashcardEventBus, FormulaEditorHoverEventTrigger, FormulaKeyboardEventTrigger } from '@mashcard/schema'
-import { CodeFragment } from '@mashcard/formula'
+import { CodeFragmentWithIndex } from '@mashcard/formula'
 import { meta } from './meta'
 import { createExtension } from '../../common'
+import { buildJSONContentByArray, content2contents } from '../../../helpers'
 
 const ACTIVE_CLASS_NAME = 'mashcard-formula-mark-active'
 
@@ -32,7 +33,7 @@ const removeActiveMark = (): void => {
   activeHTMLElement?.classList.remove(ACTIVE_CLASS_NAME)
 }
 
-const node2codeFragment = (node: ProsemirrorNode | null): CodeFragment | undefined => {
+const node2codeFragment = (node: ProsemirrorNode | null): CodeFragmentWithIndex | undefined => {
   if (!node) return undefined
   const mark = node.marks[0]
 
@@ -40,7 +41,7 @@ const node2codeFragment = (node: ProsemirrorNode | null): CodeFragment | undefin
 
   if (mark.type.name !== 'FormulaType') return undefined
 
-  const attrs = mark.attrs as CodeFragment
+  const attrs = mark.attrs as CodeFragmentWithIndex
 
   return attrs
 }
@@ -118,8 +119,27 @@ export const FormulaHandleKeyDown = createExtension<FormulaHandleKeyDownOptions,
             const attrs = node2codeFragment(node)
 
             if (attrs && attrs.code === 'Variable' && key === 'Backspace') {
-              console.log('position and attrs', position, attrs)
-              return true
+              const oldContents = content2contents(editor.getJSON())
+
+              const newContents = []
+              let match = false
+              let newPosition = 0
+              for (const c of oldContents) {
+                if (c.marks?.[0]?.attrs?.index === attrs.index) {
+                  match = true
+                } else {
+                  newContents.push(c)
+                }
+                if (!match) newPosition += c.text?.length ?? 0
+              }
+
+              if (!match) return false
+
+              editor
+                .chain()
+                .replaceRoot(buildJSONContentByArray(newContents))
+                .setTextSelection(newPosition + 1)
+                .run()
             }
 
             if (key !== 'Enter' && key !== 'Tab' && key !== 'ArrowUp' && key !== 'ArrowDown' && key !== 'Escape') {
