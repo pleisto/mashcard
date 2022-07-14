@@ -493,8 +493,18 @@ export type BlockNew = {
   /** Block Type */
   blockType?: Maybe<Scalars['String']>
   documentInfo?: Maybe<DocumentInfo>
+  /** block first child sort */
+  firstChildSort: Scalars['BigInt']
   /** object unique id */
   id: Scalars['UUID']
+  /** block next sort */
+  nextSort: Scalars['BigInt']
+  /** parent uuid */
+  parentId?: Maybe<Scalars['UUID']>
+  /** root uuid */
+  rootId: Scalars['UUID']
+  /** block sort */
+  sort: Scalars['BigInt']
   /** Latest State Id */
   stateId?: Maybe<Scalars['String']>
   /** Block States */
@@ -1792,7 +1802,7 @@ export type Query = {
   formulas?: Maybe<Array<Formula>>
   /** Return information about current MashCard server instance. */
   metadata: Metadata
-  pageBlocks?: Maybe<Array<Block>>
+  pageBlocks?: Maybe<Array<BlockNew>>
   /** Check password available. */
   passwordAvailable: ValidateResult
   /** return current pod for user. */
@@ -2186,28 +2196,29 @@ export type GetPageBlocksQueryVariables = Exact<{
 export type GetPageBlocksQuery = {
   __typename?: 'query'
   pageBlocks?: Array<{
-    __typename?: 'Block'
+    __typename?: 'BlockNew'
     id: string
     sort: any
     nextSort: any
     firstChildSort: any
-    rootId: string
     parentId?: string | null
-    type: string
-    text: string
-    content: Array<any>
-    data: any
-    meta: {
-      __typename?: 'BlockMeta'
-      cover?:
-        | { __typename?: 'BlockColor'; type?: BlockType | null; color: string }
-        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
-        | null
+    documentInfo?: {
+      __typename?: 'DocumentInfo'
+      id: string
+      title: string
+      pin: boolean
       icon?:
         | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
-        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
+        | {
+            __typename?: 'BlockImage'
+            type?: BlockType | null
+            source?: FileSource | null
+            key?: string | null
+            height?: number | null
+            width?: number | null
+          }
         | null
-    }
+    } | null
   }> | null
 }
 
@@ -2524,58 +2535,6 @@ export type GetFormulasQuery = {
     type: string
     meta: any
   }> | null
-}
-
-export type GetBlockInfoQueryVariables = Exact<{
-  id: Scalars['String']
-  domain: Scalars['String']
-}>
-
-export type GetBlockInfoQuery = {
-  __typename?: 'query'
-  blockInfo?: {
-    __typename?: 'BlockInfo'
-    title: string
-    id: string
-    isDeleted: boolean
-    isMaster: boolean
-    pin: boolean
-    enabledAlias?: { __typename?: 'BlockAlias'; key: string; payload: any } | null
-    icon?:
-      | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
-      | {
-          __typename?: 'BlockImage'
-          type?: BlockType | null
-          source?: FileSource | null
-          key?: string | null
-          height?: number | null
-          width?: number | null
-        }
-      | null
-    pathArray: Array<{
-      __typename?: 'BlockPath'
-      id: string
-      text: string
-      icon?:
-        | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
-        | {
-            __typename?: 'BlockImage'
-            type?: BlockType | null
-            source?: FileSource | null
-            key?: string | null
-            height?: number | null
-            width?: number | null
-          }
-        | null
-    }>
-    permission?: { __typename?: 'ShareLink'; key: string; policy: Policytype; state: ShareLinkState } | null
-    collaborators: Array<{
-      __typename?: 'PodBase'
-      name: string
-      domain: string
-      avatarData?: { __typename?: 'Avatar'; url: string } | null
-    }>
-  } | null
 }
 
 export type GetChildrenBlocksQueryVariables = Exact<{
@@ -3781,29 +3740,17 @@ export const GetPageBlocksDocument = gql`
       sort
       nextSort
       firstChildSort
-      rootId
       parentId
-      type
-      text
-      content
-      data
-      meta {
-        cover {
-          ... on BlockImage {
-            type
-            source
-            key
-          }
-          ... on BlockColor {
-            type
-            color
-          }
-        }
+      documentInfo {
+        id
+        title
         icon {
           ... on BlockImage {
             type
             source
             key
+            height
+            width
           }
           ... on BlockEmoji {
             type
@@ -3811,6 +3758,7 @@ export const GetPageBlocksDocument = gql`
             emoji
           }
         }
+        pin
       }
     }
   }
@@ -4807,98 +4755,6 @@ export function useGetFormulasLazyQuery(
 export type GetFormulasQueryHookResult = ReturnType<typeof useGetFormulasQuery>
 export type GetFormulasLazyQueryHookResult = ReturnType<typeof useGetFormulasLazyQuery>
 export type GetFormulasQueryResult = Apollo.QueryResult<GetFormulasQuery, GetFormulasQueryVariables>
-export const GetBlockInfoDocument = gql`
-  query GetBlockInfo($id: String!, $domain: String!) {
-    blockInfo(id: $id, domain: $domain) {
-      title
-      id
-      enabledAlias {
-        key
-        payload
-      }
-      icon {
-        ... on BlockImage {
-          type
-          source
-          key
-          height
-          width
-        }
-        ... on BlockEmoji {
-          type
-          name
-          emoji
-        }
-      }
-      isDeleted
-      isMaster
-      pin
-      pathArray {
-        id
-        text
-        icon {
-          ... on BlockImage {
-            type
-            source
-            key
-            height
-            width
-          }
-          ... on BlockEmoji {
-            type
-            name
-            emoji
-          }
-        }
-      }
-      permission {
-        key
-        policy
-        state
-      }
-      collaborators {
-        name
-        domain
-        avatarData {
-          url
-        }
-      }
-    }
-  }
-`
-
-/**
- * __useGetBlockInfoQuery__
- *
- * To run a query within a React component, call `useGetBlockInfoQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetBlockInfoQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetBlockInfoQuery({
- *   variables: {
- *      id: // value for 'id'
- *      domain: // value for 'domain'
- *   },
- * });
- */
-export function useGetBlockInfoQuery(
-  baseOptions: Apollo.QueryHookOptions<GetBlockInfoQuery, GetBlockInfoQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetBlockInfoQuery, GetBlockInfoQueryVariables>(GetBlockInfoDocument, options)
-}
-export function useGetBlockInfoLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetBlockInfoQuery, GetBlockInfoQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetBlockInfoQuery, GetBlockInfoQueryVariables>(GetBlockInfoDocument, options)
-}
-export type GetBlockInfoQueryHookResult = ReturnType<typeof useGetBlockInfoQuery>
-export type GetBlockInfoLazyQueryHookResult = ReturnType<typeof useGetBlockInfoLazyQuery>
-export type GetBlockInfoQueryResult = Apollo.QueryResult<GetBlockInfoQuery, GetBlockInfoQueryVariables>
 export const GetChildrenBlocksDocument = gql`
   query GetChildrenBlocks($rootId: String!) {
     childrenBlocks(rootId: $rootId) {

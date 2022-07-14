@@ -937,9 +937,34 @@ type BlockNew {
   documentInfo: DocumentInfo
 
   """
+  block first child sort
+  """
+  firstChildSort: BigInt!
+
+  """
   object unique id
   """
   id: UUID!
+
+  """
+  block next sort
+  """
+  nextSort: BigInt!
+
+  """
+  parent uuid
+  """
+  parentId: UUID
+
+  """
+  root uuid
+  """
+  rootId: UUID!
+
+  """
+  block sort
+  """
+  sort: BigInt!
 
   """
   Latest State Id
@@ -3331,7 +3356,7 @@ type query {
     List all pages for pod domain
     """
     domain: String!
-  ): [Block!]
+  ): [BlockNew!]
 
   """
   Check password available.

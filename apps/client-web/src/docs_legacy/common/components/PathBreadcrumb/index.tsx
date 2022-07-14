@@ -1,10 +1,10 @@
 import React from 'react'
-import { BlockEmoji, BlockType } from '@/MashcardGraphQL'
+import { BlockEmoji, BlockType, BlockPath } from '@/MashcardGraphQL'
 import { Tooltip, Popover, Menu } from '@mashcard/design-system'
 import { useDocsI18n } from '../../hooks'
 import * as Root from './index.style'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
-import { useNonNullDocMeta, type Path } from '@/docs_legacy/store/DocMeta'
+import { useNonNullDocMeta } from '@/docs_legacy/store/DocMeta'
 
 interface PathBreadcrumbProps {
   className: string
@@ -13,11 +13,16 @@ interface PathBreadcrumbProps {
 export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ className }) => {
   const { t } = useDocsI18n()
   const { id, title, domain, documentInfo } = useNonNullDocMeta()
-  const paths: Path[] = documentInfo
+  const paths: BlockPath[] = documentInfo
     ? documentInfo.pathArray.concat([{ id, text: title, icon: documentInfo.icon }])
     : []
 
-  const renderPath = (path: Path, idx: number, showSplit: boolean, fullwidth: Boolean = false): React.ReactNode => {
+  const renderPath = (
+    path: BlockPath,
+    idx: number,
+    showSplit: boolean,
+    fullwidth: Boolean = false
+  ): React.ReactNode => {
     const link = `/${domain}/${path.id}`
     const hasEmoji = path.icon && path.icon.type === BlockType.Emoji
     const emoji = hasEmoji ? (path.icon as BlockEmoji).emoji : ''

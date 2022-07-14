@@ -22,31 +22,19 @@ describe Resolvers::Block, type: :query do
         pageBlocks(domain: $domain) {
           id
           sort
-          rootId
-          parentId
           nextSort
           firstChildSort
-          type
-          data
-          text
-          content
-          meta {
-            cover {
-              ... on BlockImage {
-                type
-                key
-                source
-              }
-              ... on BlockColor {
-                type
-                color
-              }
-            }
+          parentId
+          documentInfo {
+            id
+            title
             icon {
               ... on BlockImage {
                 type
-                key
                 source
+                key
+                height
+                width
               }
 
               ... on BlockEmoji {
@@ -55,6 +43,7 @@ describe Resolvers::Block, type: :query do
                 emoji
               }
             }
+            pin
           }
         }
       }
@@ -103,7 +92,6 @@ describe Resolvers::Block, type: :query do
       expect(response.data['pageBlocks'].length).to eq 4
       root = response.data['pageBlocks'].find { |b| b.fetch('parentId').nil? }
       expect(root['id']).to eq block2.id
-      expect(root['rootId']).to eq block2.id
       expect(root['nextSort'].class).to eq String
       expect(root['nextSort'].to_i).not_to eq 0
       expect(root['firstChildSort'].to_i).to eq child1.reload.sort

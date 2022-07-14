@@ -4,7 +4,7 @@ import {
   useBlockMoveMutation,
   BlockMoveInput,
   Block,
-  BlockType,
+  BlockType as BlockEnum,
   BlockEmoji,
   useGetBlockPinsQuery,
   GetPageBlocksQuery
@@ -26,16 +26,16 @@ import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'
 import { queryPageBlocks } from '../../graphql'
 import { useDocsI18n } from '../../hooks'
-import { queryBlockInfo } from '@/docs_legacy/pages/graphql'
 import { pagesVar } from '@/docs_legacy/reactiveVars'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { useDocMeta } from '@/docs_legacy/store/DocMeta'
 import { dispatchFormulaBlockNameChange } from '@mashcard/formula'
-import { MashcardEventBus, BlockMetaUpdated } from '@mashcard/schema'
 
 export interface PageTreeProps {
   mode?: 'default' | 'subPage'
 }
+
+type BlockType = Exclude<Exclude<GetPageBlocksQuery['pageBlocks'], undefined>, null>[0]
 
 const subPageModeNodeStyle = css({
   borderRadius: '0 !important',
@@ -68,7 +68,6 @@ const FOOTER_HEIGHT = 46
 
 export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
   const { t } = useDocsI18n()
-  type BlockType = Exclude<Exclude<GetPageBlocksQuery['pageBlocks'], undefined>, null>[0]
   const mutable = mode !== 'subPage'
   const hideHeading = mode === 'subPage'
 
@@ -89,50 +88,29 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
     )
   }, [data?.pageBlocks])
 
-  // NOTE: temp fix for no updating page tree when apollo cache has been changed
-  // TODO: refactor PageTree
-  React.useEffect(() => {
-    const subscription = MashcardEventBus.subscribe(BlockMetaUpdated, e => {
-      setDataPageBlocks(
-        dataPageBlocks.map(block => {
-          if (block.id === e.payload.id) {
-            return {
-              ...block,
-              text: e.payload.meta.title ?? block.text,
-              meta: { ...block.meta, ...e.payload.meta }
-            }
-          } else {
-            return { ...block }
-          }
-        }) ?? []
-      )
-    })
-    return () => subscription.unsubscribe()
-  }, [dataPageBlocks])
-
-  const [blockMove, { client: blockMoveClient }] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
+  const [blockMove] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
   const [draggable, setDraggable] = useState<boolean>(true)
 
   const { data: pinData } = useGetBlockPinsQuery()
   const pinIds = pinData?.blockPins?.map(pin => pin.blockId) ?? []
 
-  const getTitle = useMemoizedFn((text: string): string => {
-    if (/^\s*$/.test(text)) {
+  const getTitle = useMemoizedFn((block: BlockType): string => {
+    const title = block.documentInfo?.title
+    if (!title || /^\s*$/.test(title)) {
       return t('title.untitled')
     } else {
-      return text
+      return title
     }
   })
 
   const getIcon = useMemoizedFn((block: BlockType): string | null => {
-    if (block.meta.icon?.type === BlockType.Emoji) {
-      return (block.meta.icon as BlockEmoji).emoji
+    if (block.documentInfo?.icon?.type === BlockEnum.Emoji) {
+      return (block.documentInfo?.icon as BlockEmoji).emoji
+    } else {
+      return ''
     }
-
-    return ''
   })
 
-  //
   const onDrop: TreeProps['onDrop'] = async (attrs): Promise<void> => {
     const { sourceId, targetId, targetSpot } = attrs
     setDraggable(false)
@@ -213,8 +191,6 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
           })
           .sort((a, b) => a.sort - b.sort)
       )
-    } else if (id === sourceBlock.id) {
-      await blockMoveClient.refetchQueries({ include: [queryBlockInfo] })
     }
   }
 
@@ -227,7 +203,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
         pin={pin}
         pageId={node.id}
         icon={!!node.icon}
-        title={getTitle(node.text)}
+        title={node.text}
         titleText={node.text}
         nearNodeId={node.nearNodeId}
         parentId={node.parentId}
@@ -245,13 +221,12 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
         return {
           id: b.id,
           value: b.id,
-          rootId: b.rootId,
           parentId: b.parentId,
           sort: b.sort,
           icon: getIcon(b),
+          text: getTitle(b),
           nextSort: b.nextSort,
-          firstChildSort: b.firstChildSort,
-          text: b.text
+          firstChildSort: b.firstChildSort
         }
       })
       .sort((a, b) => Number(a.sort) - Number(b.sort))
@@ -297,8 +272,8 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
 
   useEffect(() => {
     pageBlocks.forEach(b => {
-      if (!b.parentId || b.type === 'doc') {
-        void dispatchFormulaBlockNameChange({ id: b.id, name: b.text, username: domain })
+      if (!b.parentId) {
+        void dispatchFormulaBlockNameChange({ id: b.id, name: b.documentInfo?.title ?? '', username: domain })
       }
     })
   }, [pageBlocks, domain])
@@ -306,17 +281,16 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
   useEffect(() => {
     const flattedData = (dataPageBlocks ?? [])
       .map(b => {
-        const title = getTitle(b.text)
+        const title = getTitle(b)
         return {
           key: b.id,
           value: b.id,
           parentId: b.parentId,
-          rootId: b.rootId,
           sort: b.sort,
           icon: getIcon(b),
           nextSort: b.nextSort,
           firstChildSort: b.firstChildSort,
-          text: b.text,
+          text: title,
           title
         }
       })
