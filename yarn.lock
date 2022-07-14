@@ -5681,7 +5681,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/react@npm:^2.0.0-beta.114":
+"@tiptap/react@npm:2.0.0-beta.114":
   version: 2.0.0-beta.114
   resolution: "@tiptap/react@npm:2.0.0-beta.114"
   dependencies:
@@ -5693,6 +5693,21 @@ __metadata:
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
   checksum: c438228764ec3a20285802cb8a40317b6560e5b93225a842bd40ee435a26d123f1ce5a52aeccf109a812bfd98bff418602f980450fd3fdc8176b7f7b319983d4
+  languageName: node
+  linkType: hard
+
+"@tiptap/react@patch:@tiptap/react@npm:2.0.0-beta.114#.yarn/patches/@tiptap-react-npm-2.0.0-beta.114-77e1d9a671.patch::locator=%40mashcard%2Fmonorepo%40workspace%3A.":
+  version: 2.0.0-beta.114
+  resolution: "@tiptap/react@patch:@tiptap/react@npm%3A2.0.0-beta.114#.yarn/patches/@tiptap-react-npm-2.0.0-beta.114-77e1d9a671.patch::version=2.0.0-beta.114&hash=e3e868&locator=%40mashcard%2Fmonorepo%40workspace%3A."
+  dependencies:
+    "@tiptap/extension-bubble-menu": ^2.0.0-beta.61
+    "@tiptap/extension-floating-menu": ^2.0.0-beta.56
+    prosemirror-view: 1.26.2
+  peerDependencies:
+    "@tiptap/core": ^2.0.0-beta.1
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 4450ab6a304cb7233d6e26d7218d6a54c6a305c9b5c95756a04a7cb6d3e4ee39a3e20e162fb36ad0a1295cf59ef4ddcae6bcaf69e2d9cf7f79311d3e55fe1761
   languageName: node
   linkType: hard
 

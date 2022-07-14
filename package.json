@@ -113,7 +113,8 @@
   "resolutions": {
     "@rails/actioncable": "patch:@rails/actioncable@npm:7.0.3#.yarn/patches/@rails-actioncable-npm-7.0.3-9e882d37e5.patch",
     "cpy": "npm:@pleisto/cpy@>=8.1.2-patch.1",
-    "prosemirror-view": "patch:prosemirror-view@npm:1.26.5#.yarn/patches/prosemirror-view-npm-1.26.5-ab20b7a4ea.patch"
+    "prosemirror-view": "patch:prosemirror-view@npm:1.26.5#.yarn/patches/prosemirror-view-npm-1.26.5-ab20b7a4ea.patch",
+    "@tiptap/react": "patch:@tiptap/react@npm:2.0.0-beta.114#.yarn/patches/@tiptap-react-npm-2.0.0-beta.114-77e1d9a671.patch"
   },
   "dependencies": {
     "@swc/core": "^1.2.213",
