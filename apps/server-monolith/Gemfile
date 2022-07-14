@@ -82,6 +82,8 @@ group :development, :test do
   gem 'rspec_junit_formatter', '>= 0.4'
   gem 'benchmark-ips', '~> 2.10', require: false
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'codecov', require: false
+  gem 'simplecov', require: false
 end
 
 group :test do
