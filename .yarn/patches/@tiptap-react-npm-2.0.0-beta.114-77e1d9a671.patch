@@ -1,0 +1,39 @@
+diff --git a/dist/tiptap-react.esm.js b/dist/tiptap-react.esm.js
+index 51ec93eaa81d86b19bd328e10dc3dd5b3758ea58..f426cf353f2fa4a9fbc59957261d2efd07351bc6 100644
+--- a/dist/tiptap-react.esm.js
++++ b/dist/tiptap-react.esm.js
+@@ -184,11 +184,13 @@ class ReactRenderer {
+             };
+         }
+         this.reactElement = React.createElement(Component, { ...props });
+-        if ((_a = this.editor) === null || _a === void 0 ? void 0 : _a.contentComponent) {
+-            this.editor.contentComponent.setState({
+-                renderers: this.editor.contentComponent.state.renderers.set(this.id, this),
+-            });
+-        }
++        ReactDOM.flushSync(() => {
++          if ((_a = this.editor) === null || _a === void 0 ? void 0 : _a.contentComponent) {
++              this.editor.contentComponent.setState({
++                  renderers: this.editor.contentComponent.state.renderers.set(this.id, this),
++              });
++          }
++        });
+     }
+     updateProps(props = {}) {
+         this.props = {
+@@ -198,6 +200,7 @@ class ReactRenderer {
+         this.render();
+     }
+     destroy() {
++      ReactDOM.flushSync(() => {
+         var _a;
+         if ((_a = this.editor) === null || _a === void 0 ? void 0 : _a.contentComponent) {
+             const { renderers } = this.editor.contentComponent.state;
+@@ -206,6 +209,7 @@ class ReactRenderer {
+                 renderers,
+             });
+         }
++      });
+     }
+ }
+ 
