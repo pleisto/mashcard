@@ -10,7 +10,7 @@ import { findParagraphWrapper } from '../placeholder/findWrapper'
 
 export const TRIGGER_CHAR = '/'
 const ALLOW_SPACES = false
-const START_OF_LINE = true
+const START_OF_LINE = false
 const ALLOWED_PREFIXES = [' ']
 
 export interface SlashCommandsOptions {}
@@ -35,10 +35,7 @@ export const SlashCommands = createExtension<SlashCommandsOptions, SlashCommands
             const key = event.key
 
             if (key === TRIGGER_CHAR) {
-              const $position = this.editor.state.selection.$from
-              const text = $position.nodeBefore?.isText && $position.nodeBefore.text
-
-              if (!text) this.storage.triggered = true
+              this.storage.triggered = true
             }
 
             return false
