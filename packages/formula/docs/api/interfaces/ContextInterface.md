@@ -52,7 +52,7 @@
 
 [packages/formula/src/type/index.ts:374](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L374)
 
----
+___
 
 ### <a id="checkname" name="checkname"></a> checkName
 
@@ -64,11 +64,11 @@
 
 ##### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
-| `name`        | `string` |
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
 | `namespaceId` | `string` |
-| `variableId`  | `string` |
+| `variableId` | `string` |
 
 ##### Returns
 
@@ -78,7 +78,7 @@
 
 [packages/formula/src/type/index.ts:369](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L369)
 
----
+___
 
 ### <a id="cleanup" name="cleanup"></a> cleanup
 
@@ -88,11 +88,11 @@
 
 [packages/formula/src/type/index.ts:398](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L398)
 
----
+___
 
 ### <a id="commitvariable" name="commitvariable"></a> commitVariable
 
-• **commitVariable**: (`__namedParameters`: { `variable`: [`VariableInterface`](VariableInterface.md) }) => `Promise`<`void`\>
+• **commitVariable**: (`__namedParameters`: { `variable`: [`VariableInterface`](VariableInterface.md)  }) => `Promise`<`void`\>
 
 #### Type declaration
 
@@ -100,9 +100,9 @@
 
 ##### Parameters
 
-| Name                         | Type                                        |
-| :--------------------------- | :------------------------------------------ |
-| `__namedParameters`          | `Object`                                    |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
 | `__namedParameters.variable` | [`VariableInterface`](VariableInterface.md) |
 
 ##### Returns
@@ -113,7 +113,7 @@
 
 [packages/formula/src/type/index.ts:394](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L394)
 
----
+___
 
 ### <a id="completions" name="completions"></a> completions
 
@@ -125,10 +125,10 @@
 
 ##### Parameters
 
-| Name          | Type                    |
-| :------------ | :---------------------- |
-| `namespaceId` | `string`                |
-| `variableId`  | `undefined` \| `string` |
+| Name | Type |
+| :------ | :------ |
+| `namespaceId` | `string` |
+| `variableId` | `undefined` \| `string` |
 
 ##### Returns
 
@@ -138,7 +138,7 @@
 
 [packages/formula/src/type/index.ts:377](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L377)
 
----
+___
 
 ### <a id="dirtyformulas" name="dirtyformulas"></a> dirtyFormulas
 
@@ -148,7 +148,7 @@
 
 [packages/formula/src/type/index.ts:368](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L368)
 
----
+___
 
 ### <a id="domain" name="domain"></a> domain
 
@@ -158,7 +158,7 @@
 
 [packages/formula/src/type/index.ts:366](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L366)
 
----
+___
 
 ### <a id="features" name="features"></a> features
 
@@ -168,7 +168,7 @@
 
 [packages/formula/src/type/index.ts:367](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L367)
 
----
+___
 
 ### <a id="findblockbyid" name="findblockbyid"></a> findBlockById
 
@@ -180,8 +180,8 @@
 
 ##### Parameters
 
-| Name      | Type     |
-| :-------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `blockId` | `string` |
 
 ##### Returns
@@ -192,7 +192,7 @@
 
 [packages/formula/src/type/index.ts:379](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L379)
 
----
+___
 
 ### <a id="findcolumn" name="findcolumn"></a> findColumn
 
@@ -204,10 +204,10 @@
 
 ##### Parameters
 
-| Name            | Type                    |
-| :-------------- | :---------------------- |
-| `spreadsheetId` | `string`                |
-| `key`           | [`FindKey`](FindKey.md) |
+| Name | Type |
+| :------ | :------ |
+| `spreadsheetId` | `string` |
+| `key` | [`FindKey`](FindKey.md) |
 
 ##### Returns
 
@@ -217,7 +217,7 @@
 
 [packages/formula/src/type/index.ts:385](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L385)
 
----
+___
 
 ### <a id="findfunctionclause" name="findfunctionclause"></a> findFunctionClause
 
@@ -229,10 +229,10 @@
 
 ##### Parameters
 
-| Name    | Type     |
-| :------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `group` | `string` |
-| `name`  | `string` |
+| `name` | `string` |
 
 ##### Returns
 
@@ -242,7 +242,7 @@
 
 [packages/formula/src/type/index.ts:396](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L396)
 
----
+___
 
 ### <a id="findnames" name="findnames"></a> findNames
 
@@ -254,10 +254,10 @@
 
 ##### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
-| `name`        | `string` |
+| `name` | `string` |
 
 ##### Returns
 
@@ -267,7 +267,7 @@
 
 [packages/formula/src/type/index.ts:383](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L383)
 
----
+___
 
 ### <a id="findreference" name="findreference"></a> findReference
 
@@ -279,10 +279,10 @@
 
 ##### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
-| `variableId`  | `string` |
+| `variableId` | `string` |
 
 ##### Returns
 
@@ -292,7 +292,7 @@
 
 [packages/formula/src/type/index.ts:387](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L387)
 
----
+___
 
 ### <a id="findrow" name="findrow"></a> findRow
 
@@ -304,10 +304,10 @@
 
 ##### Parameters
 
-| Name            | Type                    |
-| :-------------- | :---------------------- |
-| `spreadsheetId` | `string`                |
-| `key`           | [`FindKey`](FindKey.md) |
+| Name | Type |
+| :------ | :------ |
+| `spreadsheetId` | `string` |
+| `key` | [`FindKey`](FindKey.md) |
 
 ##### Returns
 
@@ -317,7 +317,7 @@
 
 [packages/formula/src/type/index.ts:386](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L386)
 
----
+___
 
 ### <a id="findspreadsheet" name="findspreadsheet"></a> findSpreadsheet
 
@@ -329,8 +329,8 @@
 
 ##### Parameters
 
-| Name  | Type                    |
-| :---- | :---------------------- |
+| Name | Type |
+| :------ | :------ |
 | `key` | [`FindKey`](FindKey.md) |
 
 ##### Returns
@@ -341,7 +341,7 @@
 
 [packages/formula/src/type/index.ts:384](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L384)
 
----
+___
 
 ### <a id="findvariablebyid" name="findvariablebyid"></a> findVariableById
 
@@ -353,10 +353,10 @@
 
 ##### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
-| `variableId`  | `string` |
+| `variableId` | `string` |
 
 ##### Returns
 
@@ -366,7 +366,7 @@
 
 [packages/formula/src/type/index.ts:391](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L391)
 
----
+___
 
 ### <a id="findvariablebyname" name="findvariablebyname"></a> findVariableByName
 
@@ -378,10 +378,10 @@
 
 ##### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
-| `name`        | `string` |
+| `name` | `string` |
 
 ##### Returns
 
@@ -391,7 +391,7 @@
 
 [packages/formula/src/type/index.ts:393](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L393)
 
----
+___
 
 ### <a id="findvariabledisplaydatabyid" name="findvariabledisplaydatabyid"></a> findVariableDisplayDataById
 
@@ -403,10 +403,10 @@
 
 ##### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
-| `variableId`  | `string` |
+| `variableId` | `string` |
 
 ##### Returns
 
@@ -416,7 +416,7 @@
 
 [packages/formula/src/type/index.ts:392](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L392)
 
----
+___
 
 ### <a id="findviewrender" name="findviewrender"></a> findViewRender
 
@@ -428,8 +428,8 @@
 
 ##### Parameters
 
-| Name       | Type     |
-| :--------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `viewType` | `string` |
 
 ##### Returns
@@ -440,11 +440,11 @@
 
 [packages/formula/src/type/index.ts:378](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L378)
 
----
+___
 
 ### <a id="getdefaultvariablename" name="getdefaultvariablename"></a> getDefaultVariableName
 
-• **getDefaultVariableName**: (`namespaceId`: `string`, `type`: `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"`) => `string`
+• **getDefaultVariableName**: (`namespaceId`: `string`, `type`: ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"``) => `string`
 
 #### Type declaration
 
@@ -452,10 +452,10 @@
 
 ##### Parameters
 
-| Name          | Type                                                                                                                                                                                                                                                                                                                                                                                 |
-| :------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `namespaceId` | `string`                                                                                                                                                                                                                                                                                                                                                                             |
-| `type`        | `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"` |
+| Name | Type |
+| :------ | :------ |
+| `namespaceId` | `string` |
+| `type` | ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"`` |
 
 ##### Returns
 
@@ -465,33 +465,33 @@
 
 [packages/formula/src/type/index.ts:376](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L376)
 
----
+___
 
 ### <a id="invoke" name="invoke"></a> invoke
 
-• **invoke**: (`name`: `string`, `ctx`: [`FunctionContext`](FunctionContext.md), ...`args`: `any`[]) => `Promise`<`Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](FindKey.md)] ; `result`: [`RowType`](RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](../README.md#cellvia), [`Cell`](Cell.md)] ; `result`: [`CellType`](CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](FindKey.md)] ; `result`: [`ColumnType`](ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\>\>
+• **invoke**: (`name`: `string`, `ctx`: [`FunctionContext`](FunctionContext.md), ...`args`: `any`[]) => `Promise`<`Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](FindKey.md)] ; `result`: [`RowType`](RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](../README.md#cellvia), [`Cell`](Cell.md)] ; `result`: [`CellType`](CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](FindKey.md)] ; `result`: [`ColumnType`](ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\>\>
 
 #### Type declaration
 
-▸ (`name`, `ctx`, ...`args`): `Promise`<`Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](FindKey.md)] ; `result`: [`RowType`](RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](../README.md#cellvia), [`Cell`](Cell.md)] ; `result`: [`CellType`](CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](FindKey.md)] ; `result`: [`ColumnType`](ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\>\>
+▸ (`name`, `ctx`, ...`args`): `Promise`<`Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](FindKey.md)] ; `result`: [`RowType`](RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](../README.md#cellvia), [`Cell`](Cell.md)] ; `result`: [`CellType`](CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](FindKey.md)] ; `result`: [`ColumnType`](ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\>\>
 
 ##### Parameters
 
-| Name      | Type                                    |
-| :-------- | :-------------------------------------- |
-| `name`    | `string`                                |
-| `ctx`     | [`FunctionContext`](FunctionContext.md) |
-| `...args` | `any`[]                                 |
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+| `ctx` | [`FunctionContext`](FunctionContext.md) |
+| `...args` | `any`[] |
 
 ##### Returns
 
-`Promise`<`Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](FindKey.md)] ; `result`: [`RowType`](RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](../README.md#cellvia), [`Cell`](Cell.md)] ; `result`: [`CellType`](CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](FindKey.md)] ; `result`: [`ColumnType`](ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\>\>
+`Promise`<`Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](FindKey.md)] ; `result`: [`RowType`](RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](../README.md#cellvia), [`Cell`](Cell.md)] ; `result`: [`CellType`](CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](FindKey.md)] ; `result`: [`ColumnType`](ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\>\>
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:373](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L373)
 
----
+___
 
 ### <a id="listvariables" name="listvariables"></a> listVariables
 
@@ -503,8 +503,8 @@
 
 ##### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
 
 ##### Returns
@@ -515,7 +515,7 @@
 
 [packages/formula/src/type/index.ts:390](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L390)
 
----
+___
 
 ### <a id="removeblock" name="removeblock"></a> removeBlock
 
@@ -527,8 +527,8 @@
 
 ##### Parameters
 
-| Name      | Type     |
-| :-------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `blockId` | `string` |
 
 ##### Returns
@@ -539,7 +539,7 @@
 
 [packages/formula/src/type/index.ts:380](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L380)
 
----
+___
 
 ### <a id="removename" name="removename"></a> removeName
 
@@ -551,8 +551,8 @@
 
 ##### Parameters
 
-| Name | Type     |
-| :--- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `id` | `string` |
 
 ##### Returns
@@ -563,7 +563,7 @@
 
 [packages/formula/src/type/index.ts:382](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L382)
 
----
+___
 
 ### <a id="removespreadsheet" name="removespreadsheet"></a> removeSpreadsheet
 
@@ -575,8 +575,8 @@
 
 ##### Parameters
 
-| Name            | Type     |
-| :-------------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `spreadsheetId` | `string` |
 
 ##### Returns
@@ -587,7 +587,7 @@
 
 [packages/formula/src/type/index.ts:389](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L389)
 
----
+___
 
 ### <a id="removevariable" name="removevariable"></a> removeVariable
 
@@ -599,10 +599,10 @@
 
 ##### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
-| `variableId`  | `string` |
+| `variableId` | `string` |
 
 ##### Returns
 
@@ -612,7 +612,7 @@
 
 [packages/formula/src/type/index.ts:395](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L395)
 
----
+___
 
 ### <a id="reservednames" name="reservednames"></a> reservedNames
 
@@ -622,7 +622,7 @@
 
 [packages/formula/src/type/index.ts:370](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L370)
 
----
+___
 
 ### <a id="resetformula" name="resetformula"></a> resetFormula
 
@@ -632,7 +632,7 @@
 
 [packages/formula/src/type/index.ts:397](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L397)
 
----
+___
 
 ### <a id="reversefunctiondependencies" name="reversefunctiondependencies"></a> reverseFunctionDependencies
 
@@ -642,7 +642,7 @@
 
 [packages/formula/src/type/index.ts:372](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L372)
 
----
+___
 
 ### <a id="reversevariabledependencies" name="reversevariabledependencies"></a> reverseVariableDependencies
 
@@ -652,7 +652,7 @@
 
 [packages/formula/src/type/index.ts:371](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L371)
 
----
+___
 
 ### <a id="setname" name="setname"></a> setName
 
@@ -664,8 +664,8 @@
 
 ##### Parameters
 
-| Name             | Type                                                  |
-| :--------------- | :---------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `nameDependency` | [`NameDependencyWithKind`](NameDependencyWithKind.md) |
 
 ##### Returns
@@ -676,7 +676,7 @@
 
 [packages/formula/src/type/index.ts:381](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L381)
 
----
+___
 
 ### <a id="setspreadsheet" name="setspreadsheet"></a> setSpreadsheet
 
@@ -688,8 +688,8 @@
 
 ##### Parameters
 
-| Name          | Type                                    |
-| :------------ | :-------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `spreadsheet` | [`SpreadsheetType`](SpreadsheetType.md) |
 
 ##### Returns
@@ -700,7 +700,7 @@
 
 [packages/formula/src/type/index.ts:388](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L388)
 
----
+___
 
 ### <a id="variablecount" name="variablecount"></a> variableCount
 

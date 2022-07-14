@@ -18,7 +18,7 @@
 
 [packages/formula/src/tests/testType.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L54)
 
----
+___
 
 ### <a id="counter" name="counter"></a> counter
 
@@ -28,7 +28,7 @@
 
 [packages/formula/src/tests/testType.ts:53](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L53)
 
----
+___
 
 ### <a id="uuidfunction" name="uuidfunction"></a> uuidFunction
 
@@ -40,8 +40,8 @@
 
 ##### Parameters
 
-| Name     | Type     |
-| :------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `number` | `number` |
 
 ##### Returns

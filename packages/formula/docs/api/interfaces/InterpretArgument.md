@@ -21,7 +21,7 @@
 
 [packages/formula/src/grammar/interpreter.ts:44](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L44)
 
----
+___
 
 ### <a id="finaltypes" name="finaltypes"></a> finalTypes
 
@@ -31,17 +31,17 @@
 
 [packages/formula/src/grammar/interpreter.ts:41](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L41)
 
----
+___
 
 ### <a id="firstargumenttype" name="firstargumenttype"></a> firstArgumentType
 
-• `Optional` `Readonly` **firstArgumentType**: `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"`
+• `Optional` `Readonly` **firstArgumentType**: ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"``
 
 #### Defined in
 
 [packages/formula/src/grammar/interpreter.ts:40](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L40)
 
----
+___
 
 ### <a id="lazy" name="lazy"></a> lazy
 
@@ -51,7 +51,7 @@
 
 [packages/formula/src/grammar/interpreter.ts:43](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L43)
 
----
+___
 
 ### <a id="skipcheck" name="skipcheck"></a> skipCheck
 
@@ -61,7 +61,7 @@
 
 [packages/formula/src/grammar/interpreter.ts:42](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L42)
 
----
+___
 
 ### <a id="type" name="type"></a> type
 

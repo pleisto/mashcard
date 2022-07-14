@@ -34,7 +34,7 @@ BaseCompletion.fallbackPositionOffset
 
 [packages/formula/src/type/index.ts:316](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L316)
 
----
+___
 
 ### <a id="fallbackvalue" name="fallbackvalue"></a> fallbackValue
 
@@ -48,7 +48,7 @@ BaseCompletion.fallbackValue
 
 [packages/formula/src/type/index.ts:315](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L315)
 
----
+___
 
 ### <a id="flags" name="flags"></a> flags
 
@@ -62,11 +62,11 @@ BaseCompletion.flags
 
 [packages/formula/src/type/index.ts:313](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L313)
 
----
+___
 
 ### <a id="kind" name="kind"></a> kind
 
-• `Readonly` **kind**: `"spreadsheet"`
+• `Readonly` **kind**: ``"spreadsheet"``
 
 #### Overrides
 
@@ -76,7 +76,7 @@ BaseCompletion.kind
 
 [packages/formula/src/type/index.ts:340](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L340)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -90,7 +90,7 @@ BaseCompletion.name
 
 [packages/formula/src/type/index.ts:317](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L317)
 
----
+___
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -104,7 +104,7 @@ BaseCompletion.namespaceId
 
 [packages/formula/src/type/index.ts:319](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L319)
 
----
+___
 
 ### <a id="preview" name="preview"></a> preview
 
@@ -118,7 +118,7 @@ BaseCompletion.preview
 
 [packages/formula/src/type/index.ts:341](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L341)
 
----
+___
 
 ### <a id="replacements" name="replacements"></a> replacements
 
@@ -132,7 +132,7 @@ BaseCompletion.replacements
 
 [packages/formula/src/type/index.ts:314](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L314)
 
----
+___
 
 ### <a id="weight" name="weight"></a> weight
 

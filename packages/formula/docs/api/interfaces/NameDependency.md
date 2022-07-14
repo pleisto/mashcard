@@ -23,7 +23,7 @@
 
 [packages/formula/src/type/index.ts:614](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L614)
 
----
+___
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 

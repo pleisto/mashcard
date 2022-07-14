@@ -6,11 +6,12 @@ tmp/
 log/
 node_modules/
 /public/esm-bundle/
-apps/server-monolith/db/*
+/apps/server-monolith/db/*
+**/docs/api
 
 CHANGELOG.*
 *.env
-tools/helm-charts/**/*.yaml
+/tools/helm-charts/**/*.yaml
 *.datauri.ts
 .next
 *.tsbuildinfo

@@ -168,17 +168,17 @@
 
 ### Variables
 
-- [ALL_TEST_CASE](README.md#all_test_case)
+- [ALL\_TEST\_CASE](README.md#all_test_case)
 - [AdditionOperator](README.md#additionoperator)
 - [Ampersand](README.md#ampersand)
 - [And](README.md#and)
 - [AnyName](README.md#anyname)
 - [At](README.md#at)
-- [BUILTIN_CLAUSES](README.md#builtin_clauses)
-- [BUILTIN_STRINGS](README.md#builtin_strings)
+- [BUILTIN\_CLAUSES](README.md#builtin_clauses)
+- [BUILTIN\_STRINGS](README.md#builtin_strings)
 - [BasicNames](README.md#basicnames)
 - [BooleanLiteral](README.md#booleanliteral)
-- [CORE_FUNCTION_GROUPS](README.md#core_function_groups)
+- [CORE\_FUNCTION\_GROUPS](README.md#core_function_groups)
 - [Caret](README.md#caret)
 - [Colon](README.md#colon)
 - [CombineOperator](README.md#combineoperator)
@@ -186,8 +186,8 @@
 - [CompareOperator](README.md#compareoperator)
 - [CompleteNames](README.md#completenames)
 - [CurrentBlock](README.md#currentblock)
-- [DEFAULT_FIRST_NAMESPACEID](README.md#default_first_namespaceid)
-- [DEFAULT_VIEWS](README.md#default_views)
+- [DEFAULT\_FIRST\_NAMESPACEID](README.md#default_first_namespaceid)
+- [DEFAULT\_VIEWS](README.md#default_views)
 - [DecimalLiteral](README.md#decimalliteral)
 - [Div](README.md#div)
 - [Dollar](README.md#dollar)
@@ -198,11 +198,11 @@
 - [EqualCompareOperator](README.md#equalcompareoperator)
 - [EventNames](README.md#eventnames)
 - [ExactIn](README.md#exactin)
-- [FORMULA_FEATURE_CONTROL](README.md#formula_feature_control)
-- [FORMULA_PARSER_VERSION](README.md#formula_parser_version)
-- [FORMULA_SHORT_NAMES](README.md#formula_short_names)
-- [FORMULA_USED_TYPES](README.md#formula_used_types)
-- [FUNCTION_NAME_REGEX](README.md#function_name_regex)
+- [FORMULA\_FEATURE\_CONTROL](README.md#formula_feature_control)
+- [FORMULA\_PARSER\_VERSION](README.md#formula_parser_version)
+- [FORMULA\_SHORT\_NAMES](README.md#formula_short_names)
+- [FORMULA\_USED\_TYPES](README.md#formula_used_types)
+- [FUNCTION\_NAME\_REGEX](README.md#function_name_regex)
 - [FeatureTestCases](README.md#featuretestcases)
 - [FormulaLexer](README.md#formulalexer)
 - [FunctionName](README.md#functionname)
@@ -220,16 +220,16 @@
 - [Minus](README.md#minus)
 - [Multi](README.md#multi)
 - [MultiplicationOperator](README.md#multiplicationoperator)
-- [NAME_SPECIAL_INVALID_CHARS](README.md#name_special_invalid_chars)
-- [NAME_VALID_PREFIX](README.md#name_valid_prefix)
-- [NAME_VALID_SUFFIX_ONLY](README.md#name_valid_suffix_only)
+- [NAME\_SPECIAL\_INVALID\_CHARS](README.md#name_special_invalid_chars)
+- [NAME\_VALID\_PREFIX](README.md#name_valid_prefix)
+- [NAME\_VALID\_SUFFIX\_ONLY](README.md#name_valid_suffix_only)
 - [Not](README.md#not)
 - [NotEqual](README.md#notequal)
 - [NotEqual2](README.md#notequal2)
 - [NullLiteral](README.md#nullliteral)
 - [NumberLiteral](README.md#numberliteral)
 - [OPERATORS](README.md#operators)
-- [OPERATOR_TYPES](README.md#operator_types)
+- [OPERATOR\_TYPES](README.md#operator_types)
 - [Or](README.md#or)
 - [ParserInstance](README.md#parserinstance)
 - [Plus](README.md#plus)
@@ -241,7 +241,7 @@
 - [Sharp](README.md#sharp)
 - [Sign](README.md#sign)
 - [StringLiteral](README.md#stringliteral)
-- [TOKEN_SUFFIX_PATTERN](README.md#token_suffix_pattern)
+- [TOKEN\_SUFFIX\_PATTERN](README.md#token_suffix_pattern)
 - [ThisRecord](README.md#thisrecord)
 - [ThisRow](README.md#thisrow)
 - [UUID](README.md#uuid-1)
@@ -330,7 +330,7 @@
 
 ### Functions
 
-- [DEFAULT_UUID_FUNCTION](README.md#default_uuid_function)
+- [DEFAULT\_UUID\_FUNCTION](README.md#default_uuid_function)
 - [FormulaBlockNameChangedTrigger](README.md#formulablocknamechangedtrigger)
 - [FormulaBlockNameDeletedTrigger](README.md#formulablocknamedeletedtrigger)
 - [FormulaBlockNameModifiedWithUsername](README.md#formulablocknamemodifiedwithusername)
@@ -438,90 +438,90 @@
 
 ### <a id="anydisplayresult" name="anydisplayresult"></a> AnyDisplayResult
 
-Ƭ **AnyDisplayResult**<`T`\>: `T` extends [`UsedFormulaType`](README.md#usedformulatype) ? `Omit`<[`ExtractedType`](README.md#extractedtype)<`T`\>, `"dump"` \| `"meta"` \| `"result"`\> & { `result`: `string` } : `never`
+Ƭ **AnyDisplayResult**<`T`\>: `T` extends [`UsedFormulaType`](README.md#usedformulatype) ? `Omit`<[`ExtractedType`](README.md#extractedtype)<`T`\>, ``"dump"`` \| ``"meta"`` \| ``"result"``\> & { `result`: `string`  } : `never`
 
 #### Type parameters
 
-| Name | Type                                                                                            |
-| :--- | :---------------------------------------------------------------------------------------------- |
-| `T`  | extends [`FormulaType`](README.md#formulatype) = [`UsedFormulaType`](README.md#usedformulatype) |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`FormulaType`](README.md#formulatype) = [`UsedFormulaType`](README.md#usedformulatype) |
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:173](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L173)
 
----
+___
 
 ### <a id="anydumpresult" name="anydumpresult"></a> AnyDumpResult
 
-Ƭ **AnyDumpResult**<`T`\>: `T` extends [`UsedFormulaType`](README.md#usedformulatype) ? `Omit`<[`ExtractedType`](README.md#extractedtype)<`T`\>, `"dump"` \| `"meta"` \| `"result"`\> & { `result`: [`ExtractedType`](README.md#extractedtype)<`T`\>[``"dump"``] } : `never`
+Ƭ **AnyDumpResult**<`T`\>: `T` extends [`UsedFormulaType`](README.md#usedformulatype) ? `Omit`<[`ExtractedType`](README.md#extractedtype)<`T`\>, ``"dump"`` \| ``"meta"`` \| ``"result"``\> & { `result`: [`ExtractedType`](README.md#extractedtype)<`T`\>[``"dump"``]  } : `never`
 
 #### Type parameters
 
-| Name | Type                                                                                            |
-| :--- | :---------------------------------------------------------------------------------------------- |
-| `T`  | extends [`FormulaType`](README.md#formulatype) = [`UsedFormulaType`](README.md#usedformulatype) |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`FormulaType`](README.md#formulatype) = [`UsedFormulaType`](README.md#usedformulatype) |
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:169](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L169)
 
----
+___
 
 ### <a id="anyfunctionclausewithkeyandexample" name="anyfunctionclausewithkeyandexample"></a> AnyFunctionClauseWithKeyAndExample
 
-Ƭ **AnyFunctionClauseWithKeyAndExample**: `RequireField`<[`AnyFunctionClause`](interfaces/AnyFunctionClause.md), `"key"`\>
+Ƭ **AnyFunctionClauseWithKeyAndExample**: `RequireField`<[`AnyFunctionClause`](interfaces/AnyFunctionClause.md), ``"key"``\>
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:544](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L544)
 
----
+___
 
 ### <a id="anytyperesult" name="anytyperesult"></a> AnyTypeResult
 
-Ƭ **AnyTypeResult**<`T`\>: `T` extends [`UsedFormulaType`](README.md#usedformulatype) ? `Omit`<[`ExtractedType`](README.md#extractedtype)<`T`\>, `"dump"`\> : `never`
+Ƭ **AnyTypeResult**<`T`\>: `T` extends [`UsedFormulaType`](README.md#usedformulatype) ? `Omit`<[`ExtractedType`](README.md#extractedtype)<`T`\>, ``"dump"``\> : `never`
 
 #### Type parameters
 
-| Name | Type                                                                                            |
-| :--- | :---------------------------------------------------------------------------------------------- |
-| `T`  | extends [`FormulaType`](README.md#formulatype) = [`UsedFormulaType`](README.md#usedformulatype) |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`FormulaType`](README.md#formulatype) = [`UsedFormulaType`](README.md#usedformulatype) |
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:165](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L165)
 
----
+___
 
 ### <a id="baseresult" name="baseresult"></a> BaseResult
 
-Ƭ **BaseResult**<`Type`, `Result`, `Dump`, `Meta`\>: { `dump`: `Dump` ; `result`: `Result` ; `type`: `Type` ; `view?`: [`ViewData`](interfaces/ViewData.md)<[`ViewType`](README.md#viewtype)\> } & [`Meta`] extends [`never`] ? {} : { `meta`: `Meta` }
+Ƭ **BaseResult**<`Type`, `Result`, `Dump`, `Meta`\>: { `dump`: `Dump` ; `result`: `Result` ; `type`: `Type` ; `view?`: [`ViewData`](interfaces/ViewData.md)<[`ViewType`](README.md#viewtype)\>  } & [`Meta`] extends [`never`] ? {} : { `meta`: `Meta`  }
 
 #### Type parameters
 
-| Name     | Type                                                   |
-| :------- | :----------------------------------------------------- |
-| `Type`   | extends [`UsedFormulaType`](README.md#usedformulatype) |
-| `Result` | extends `any`                                          |
-| `Dump`   | extends `any` = `string`                               |
-| `Meta`   | extends `any` = `never`                                |
+| Name | Type |
+| :------ | :------ |
+| `Type` | extends [`UsedFormulaType`](README.md#usedformulatype) |
+| `Result` | extends `any` |
+| `Dump` | extends `any` = `string` |
+| `Meta` | extends `any` = `never` |
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:122](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L122)
 
----
+___
 
 ### <a id="blockkey" name="blockkey"></a> BlockKey
 
-Ƭ **BlockKey**: `"#CurrentBlock"` \| \`#${NamespaceId}\`
+Ƭ **BlockKey**: ``"#CurrentBlock"`` \| \`#${NamespaceId}\`
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:86](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L86)
 
----
+___
 
 ### <a id="blockname" name="blockname"></a> BlockName
 
@@ -531,17 +531,17 @@
 
 [packages/formula/src/type/index.ts:91](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L91)
 
----
+___
 
 ### <a id="cellvia" name="cellvia"></a> CellVia
 
-Ƭ **CellVia**: [`"column"` \| `"row"`, [`FindKey`](interfaces/FindKey.md), `string`]
+Ƭ **CellVia**: [``"column"`` \| ``"row"``, [`FindKey`](interfaces/FindKey.md), `string`]
 
 #### Defined in
 
 [packages/formula/src/controls/types.ts:142](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L142)
 
----
+___
 
 ### <a id="codefragment" name="codefragment"></a> CodeFragment
 
@@ -551,7 +551,7 @@
 
 [packages/formula/src/type/index.ts:585](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L585)
 
----
+___
 
 ### <a id="codefragmentattrs" name="codefragmentattrs"></a> CodeFragmentAttrs
 
@@ -561,7 +561,7 @@
 
 [packages/formula/src/type/index.ts:583](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L583)
 
----
+___
 
 ### <a id="codefragmentcodes" name="codefragmentcodes"></a> CodeFragmentCodes
 
@@ -571,24 +571,38 @@
 
 [packages/formula/src/type/index.ts:274](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L274)
 
----
+___
 
 ### <a id="codefragmentstep" name="codefragmentstep"></a> CodeFragmentStep
 
-Ƭ **CodeFragmentStep**: (`{ input, meta }`: { `input`: [`CodeFragmentStepInput`](interfaces/CodeFragmentStepInput.md) ; `meta`: [`VariableMetadata`](interfaces/VariableMetadata.md) }) => [`CodeFragmentStepInput`](interfaces/CodeFragmentStepInput.md)
+Ƭ **CodeFragmentStep**: (`{
+  input,
+  meta
+}`: { `input`: [`CodeFragmentStepInput`](interfaces/CodeFragmentStepInput.md) ; `meta`: [`VariableMetadata`](interfaces/VariableMetadata.md)  }) => [`CodeFragmentStepInput`](interfaces/CodeFragmentStepInput.md)
 
 #### Type declaration
 
-▸ (`{ input, meta }`): [`CodeFragmentStepInput`](interfaces/CodeFragmentStepInput.md)
+▸ (`{
+  input,
+  meta
+}`): [`CodeFragmentStepInput`](interfaces/CodeFragmentStepInput.md)
 
 ##### Parameters
 
 | Name | Type |
-| :--- | :--- |
-
-| `{ input, meta }` | `Object` |
-| `{ input, meta }.input` | [`CodeFragmentStepInput`](interfaces/CodeFragmentStepInput.md) |
-| `{ input, meta }.meta` | [`VariableMetadata`](interfaces/VariableMetadata.md) |
+| :------ | :------ |
+| `{
+  input,
+  meta
+}` | `Object` |
+| `{
+  input,
+  meta
+}.input` | [`CodeFragmentStepInput`](interfaces/CodeFragmentStepInput.md) |
+| `{
+  input,
+  meta
+}.meta` | [`VariableMetadata`](interfaces/VariableMetadata.md) |
 
 ##### Returns
 
@@ -608,7 +622,7 @@
 
 [packages/formula/src/type/index.ts:587](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L587)
 
----
+___
 
 ### <a id="columnid" name="columnid"></a> ColumnId
 
@@ -618,7 +632,7 @@
 
 [packages/formula/src/type/index.ts:101](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L101)
 
----
+___
 
 ### <a id="columnkey" name="columnkey"></a> ColumnKey
 
@@ -628,7 +642,7 @@
 
 [packages/formula/src/type/index.ts:87](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L87)
 
----
+___
 
 ### <a id="columnname" name="columnname"></a> ColumnName
 
@@ -638,7 +652,7 @@
 
 [packages/formula/src/type/index.ts:75](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L75)
 
----
+___
 
 ### <a id="completion" name="completion"></a> Completion
 
@@ -648,37 +662,37 @@
 
 [packages/formula/src/type/index.ts:344](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L344)
 
----
+___
 
 ### <a id="completionflag" name="completionflag"></a> CompletionFlag
 
-Ƭ **CompletionFlag**: `"exact"` \| `"dynamicColumn"` \| `"compareTypeMatched"` \| `"compareTypeNotMatched"` \| `"chainTypeMatched"` \| `"chainTypeNotMatched"` \| `"contextNamespace"` \| `"defaultNamespace"` \| `"blockNamespace"` \| `"chainNamespace"` \| `"block"` \| `"variable"` \| `"spreadsheet"` \| `"column"` \| `"function"` \| `"variable"` \| `"nameEqual"` \| `"nameIncludes"` \| `"nameStartsWith"` \| `"functionNameEqual"` \| `"functionNameIncludes"` \| `"functionNameStartsWith"`
+Ƭ **CompletionFlag**: ``"exact"`` \| ``"dynamicColumn"`` \| ``"compareTypeMatched"`` \| ``"compareTypeNotMatched"`` \| ``"chainTypeMatched"`` \| ``"chainTypeNotMatched"`` \| ``"contextNamespace"`` \| ``"defaultNamespace"`` \| ``"blockNamespace"`` \| ``"chainNamespace"`` \| ``"block"`` \| ``"variable"`` \| ``"spreadsheet"`` \| ``"column"`` \| ``"function"`` \| ``"variable"`` \| ``"nameEqual"`` \| ``"nameIncludes"`` \| ``"nameStartsWith"`` \| ``"functionNameEqual"`` \| ``"functionNameIncludes"`` \| ``"functionNameStartsWith"``
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:286](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L286)
 
----
+___
 
 ### <a id="completionkind" name="completionkind"></a> CompletionKind
 
-Ƭ **CompletionKind**: `"function"` \| `"variable"` \| `"spreadsheet"` \| `"column"` \| `"block"`
+Ƭ **CompletionKind**: ``"function"`` \| ``"variable"`` \| ``"spreadsheet"`` \| ``"column"`` \| ``"block"``
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:212](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L212)
 
----
+___
 
 ### <a id="complexcodefragmenttype" name="complexcodefragmenttype"></a> ComplexCodeFragmentType
 
-Ƭ **ComplexCodeFragmentType**: `"Spreadsheet"` \| `"Column"` \| `"Variable"` \| `"Block"` \| `"UUID"` \| `"LogicColumn"` \| `"Row"` \| `"LogicRow"` \| `"ThisRow"` \| `"ThisRecord"`
+Ƭ **ComplexCodeFragmentType**: ``"Spreadsheet"`` \| ``"Column"`` \| ``"Variable"`` \| ``"Block"`` \| ``"UUID"`` \| ``"LogicColumn"`` \| ``"Row"`` \| ``"LogicRow"`` \| ``"ThisRow"`` \| ``"ThisRecord"``
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:213](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L213)
 
----
+___
 
 ### <a id="contextstate" name="contextstate"></a> ContextState
 
@@ -688,7 +702,7 @@
 
 [packages/formula/src/context/context.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L73)
 
----
+___
 
 ### <a id="corefunctiongroup" name="corefunctiongroup"></a> CoreFunctionGroup
 
@@ -698,7 +712,7 @@
 
 [packages/formula/src/type/index.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L54)
 
----
+___
 
 ### <a id="definition" name="definition"></a> Definition
 
@@ -708,7 +722,7 @@
 
 [packages/formula/src/type/index.ts:78](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L78)
 
----
+___
 
 ### <a id="distributeevents" name="distributeevents"></a> DistributeEvents
 
@@ -716,15 +730,15 @@
 
 #### Type parameters
 
-| Name    | Type                                                      |
-| :------ | :-------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `Event` | extends keyof `AllowEventsType` = keyof `AllowEventsType` |
 
 #### Defined in
 
 [packages/formula/src/tests/testType.ts:270](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L270)
 
----
+___
 
 ### <a id="expressiontype" name="expressiontype"></a> ExpressionType
 
@@ -734,33 +748,33 @@
 
 [packages/formula/src/type/index.ts:69](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L69)
 
----
+___
 
 ### <a id="extendedctx" name="extendedctx"></a> ExtendedCtx
 
-Ƭ **ExtendedCtx**: [`MakeContextResult`](interfaces/MakeContextResult.md) & { `meta`: [`VariableMetadata`](interfaces/VariableMetadata.md) }
+Ƭ **ExtendedCtx**: [`MakeContextResult`](interfaces/MakeContextResult.md) & { `meta`: [`VariableMetadata`](interfaces/VariableMetadata.md)  }
 
 #### Defined in
 
 [packages/formula/src/tests/testType.ts:174](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L174)
 
----
+___
 
 ### <a id="extractedtype" name="extractedtype"></a> ExtractedType
 
-Ƭ **ExtractedType**<`T`\>: `Extract`<`EnsureTypeIsOk`, { `type`: `T` }\>
+Ƭ **ExtractedType**<`T`\>: `Extract`<`EnsureTypeIsOk`, { `type`: `T`  }\>
 
 #### Type parameters
 
-| Name | Type                                           |
-| :--- | :--------------------------------------------- |
-| `T`  | extends [`FormulaType`](README.md#formulatype) |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`FormulaType`](README.md#formulatype) |
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:163](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L163)
 
----
+___
 
 ### <a id="feature" name="feature"></a> Feature
 
@@ -770,7 +784,7 @@
 
 [packages/formula/src/type/index.ts:105](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L105)
 
----
+___
 
 ### <a id="features" name="features"></a> Features
 
@@ -780,17 +794,17 @@
 
 [packages/formula/src/type/index.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L106)
 
----
+___
 
 ### <a id="formula" name="formula"></a> Formula
 
-Ƭ **Formula**: [`BaseFormula`](interfaces/BaseFormula.md) & { `definition`: [`Definition`](README.md#definition) }
+Ƭ **Formula**: [`BaseFormula`](interfaces/BaseFormula.md) & { `definition`: [`Definition`](README.md#definition)  }
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:201](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L201)
 
----
+___
 
 ### <a id="formulachecktype" name="formulachecktype"></a> FormulaCheckType
 
@@ -800,17 +814,17 @@
 
 [packages/formula/src/type/index.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L63)
 
----
+___
 
 ### <a id="formulacolortype" name="formulacolortype"></a> FormulaColorType
 
-Ƭ **FormulaColorType**: `Exclude`<[`FormulaType`](README.md#formulatype), `"boolean"`\> \| `FormulaCodeFragmentType`
+Ƭ **FormulaColorType**: `Exclude`<[`FormulaType`](README.md#formulatype), ``"boolean"``\> \| `FormulaCodeFragmentType`
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:67](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L67)
 
----
+___
 
 ### <a id="formulacontroltype" name="formulacontroltype"></a> FormulaControlType
 
@@ -820,17 +834,17 @@
 
 [packages/formula/src/type/index.ts:57](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L57)
 
----
+___
 
 ### <a id="formulasourcetype" name="formulasourcetype"></a> FormulaSourceType
 
-Ƭ **FormulaSourceType**: `"normal"` \| `"spreadsheet"`
+Ƭ **FormulaSourceType**: ``"normal"`` \| ``"spreadsheet"``
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:181](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L181)
 
----
+___
 
 ### <a id="formulatype" name="formulatype"></a> FormulaType
 
@@ -840,17 +854,17 @@
 
 [packages/formula/src/type/index.ts:58](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L58)
 
----
+___
 
 ### <a id="functioncodefragmenttype" name="functioncodefragmenttype"></a> FunctionCodeFragmentType
 
-Ƭ **FunctionCodeFragmentType**: `"Function"` \| `"FunctionGroup"`
+Ƭ **FunctionCodeFragmentType**: ``"Function"`` \| ``"FunctionGroup"``
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:225](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L225)
 
----
+___
 
 ### <a id="functiongroup" name="functiongroup"></a> FunctionGroup
 
@@ -860,7 +874,7 @@
 
 [packages/formula/src/type/index.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L71)
 
----
+___
 
 ### <a id="functionkey" name="functionkey"></a> FunctionKey
 
@@ -870,7 +884,7 @@
 
 [packages/formula/src/type/index.ts:84](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L84)
 
----
+___
 
 ### <a id="functionnametype" name="functionnametype"></a> FunctionNameType
 
@@ -880,7 +894,7 @@
 
 [packages/formula/src/type/index.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L73)
 
----
+___
 
 ### <a id="lambda" name="lambda"></a> Lambda
 
@@ -890,7 +904,7 @@
 
 [packages/formula/src/grammar/lambda.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lambda.ts#L4)
 
----
+___
 
 ### <a id="mockeduuidv4" name="mockeduuidv4"></a> MockedUUIDV4
 
@@ -900,7 +914,7 @@
 
 [packages/formula/src/tests/testType.ts:49](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L49)
 
----
+___
 
 ### <a id="namespaceid" name="namespaceid"></a> NamespaceId
 
@@ -910,27 +924,27 @@
 
 [packages/formula/src/type/index.ts:99](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L99)
 
----
+___
 
 ### <a id="operatorname" name="operatorname"></a> OperatorName
 
-Ƭ **OperatorName**: `"name"` \| `"string"` \| `"null"` \| `"boolean"` \| `"number"` \| `"access"` \| `"addition"` \| `"arguments"` \| `"array"` \| `"block"` \| `"chain"` \| `"combine"` \| `"compare"` \| `"concat"` \| `"equalCompare"` \| `"expression"` \| `"in"` \| `"multiplication"` \| `"not"` \| `"parenthesis"` \| `"predicate"` \| `"range"` \| `"record"` \| `"recordField"` \| `"thisRecord"` \| `"thisRow"`
+Ƭ **OperatorName**: ``"name"`` \| ``"string"`` \| ``"null"`` \| ``"boolean"`` \| ``"number"`` \| ``"access"`` \| ``"addition"`` \| ``"arguments"`` \| ``"array"`` \| ``"block"`` \| ``"chain"`` \| ``"combine"`` \| ``"compare"`` \| ``"concat"`` \| ``"equalCompare"`` \| ``"expression"`` \| ``"in"`` \| ``"multiplication"`` \| ``"not"`` \| ``"parenthesis"`` \| ``"predicate"`` \| ``"range"`` \| ``"record"`` \| ``"recordField"`` \| ``"thisRecord"`` \| ``"thisRow"``
 
 #### Defined in
 
 [packages/formula/src/grammar/operator.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operator.ts#L8)
 
----
+___
 
 ### <a id="parseerrortype" name="parseerrortype"></a> ParseErrorType
 
-Ƭ **ParseErrorType**: `"parse"` \| `"syntax"`
+Ƭ **ParseErrorType**: ``"parse"`` \| ``"syntax"``
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:82](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L82)
 
----
+___
 
 ### <a id="parseresult" name="parseresult"></a> ParseResult
 
@@ -940,7 +954,7 @@
 
 [packages/formula/src/grammar/core.ts:84](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L84)
 
----
+___
 
 ### <a id="predicatefunction" name="predicatefunction"></a> PredicateFunction
 
@@ -952,8 +966,8 @@
 
 ##### Parameters
 
-| Name    | Type  |
-| :------ | :---- |
+| Name | Type |
+| :------ | :------ |
 | `input` | `any` |
 
 ##### Returns
@@ -964,7 +978,7 @@
 
 [packages/formula/src/type/index.ts:93](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L93)
 
----
+___
 
 ### <a id="rowid" name="rowid"></a> RowId
 
@@ -974,27 +988,27 @@
 
 [packages/formula/src/type/index.ts:103](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L103)
 
----
+___
 
 ### <a id="simplecodefragmenttype" name="simplecodefragmenttype"></a> SimpleCodeFragmentType
 
-Ƭ **SimpleCodeFragmentType**: typeof [`OPERATOR_TYPES`](README.md#operator_types)[`number`] \| `"FunctionName"` \| `"DoubleColon"` \| `"StringLiteral"` \| `"NumberLiteral"` \| `"BooleanLiteral"` \| `"NullLiteral"` \| `"Dot"` \| `"LParen"` \| `"RParen"` \| `"LBracket"` \| `"RBracket"` \| `"LBrace"` \| `"RBrace"` \| `"Not"` \| `"Comma"` \| `"Semicolon"`
+Ƭ **SimpleCodeFragmentType**: typeof [`OPERATOR_TYPES`](README.md#operator_types)[`number`] \| ``"FunctionName"`` \| ``"DoubleColon"`` \| ``"StringLiteral"`` \| ``"NumberLiteral"`` \| ``"BooleanLiteral"`` \| ``"NullLiteral"`` \| ``"Dot"`` \| ``"LParen"`` \| ``"RParen"`` \| ``"LBracket"`` \| ``"RBracket"`` \| ``"LBrace"`` \| ``"RBrace"`` \| ``"Not"`` \| ``"Comma"`` \| ``"Semicolon"``
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:248](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L248)
 
----
+___
 
 ### <a id="specialcodefragmenttype" name="specialcodefragmenttype"></a> SpecialCodeFragmentType
 
-Ƭ **SpecialCodeFragmentType**: `"unknown"` \| `"parseErrorOther1"` \| `"parseErrorOther2"` \| `"parseErrorOther3"` \| `"Space"` \| `"literal"` \| `"blank"`
+Ƭ **SpecialCodeFragmentType**: ``"unknown"`` \| ``"parseErrorOther1"`` \| ``"parseErrorOther2"`` \| ``"parseErrorOther3"`` \| ``"Space"`` \| ``"literal"`` \| ``"blank"``
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:266](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L266)
 
----
+___
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> SpreadsheetId
 
@@ -1004,7 +1018,7 @@
 
 [packages/formula/src/type/index.ts:102](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L102)
 
----
+___
 
 ### <a id="spreadsheetkey" name="spreadsheetkey"></a> SpreadsheetKey
 
@@ -1014,7 +1028,7 @@
 
 [packages/formula/src/type/index.ts:88](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L88)
 
----
+___
 
 ### <a id="spreadsheetname" name="spreadsheetname"></a> SpreadsheetName
 
@@ -1024,17 +1038,17 @@
 
 [packages/formula/src/type/index.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L76)
 
----
+___
 
 ### <a id="spreadsheetupdatenamepayload" name="spreadsheetupdatenamepayload"></a> SpreadsheetUpdateNamePayload
 
-Ƭ **SpreadsheetUpdateNamePayload**: [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`null`\>
+Ƭ **SpreadsheetUpdateNamePayload**: [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<``null``\>
 
 #### Defined in
 
 [packages/formula/src/events/spreadsheet.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/spreadsheet.ts#L4)
 
----
+___
 
 ### <a id="testcasename" name="testcasename"></a> TestCaseName
 
@@ -1044,7 +1058,7 @@
 
 [packages/formula/src/tests/testType.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L107)
 
----
+___
 
 ### <a id="usedformulatype" name="usedformulatype"></a> UsedFormulaType
 
@@ -1054,7 +1068,7 @@
 
 [packages/formula/src/type/index.ts:59](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L59)
 
----
+___
 
 ### <a id="variableid" name="variableid"></a> VariableId
 
@@ -1064,7 +1078,7 @@
 
 [packages/formula/src/type/index.ts:100](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L100)
 
----
+___
 
 ### <a id="variablekey" name="variablekey"></a> VariableKey
 
@@ -1074,17 +1088,17 @@
 
 [packages/formula/src/type/index.ts:85](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L85)
 
----
+___
 
 ### <a id="variablekind" name="variablekind"></a> VariableKind
 
-Ƭ **VariableKind**: `"literal"` \| `"blank"` \| `"constant"` \| `"expression"` \| `"unknown"`
+Ƭ **VariableKind**: ``"literal"`` \| ``"blank"`` \| ``"constant"`` \| ``"expression"`` \| ``"unknown"``
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:80](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L80)
 
----
+___
 
 ### <a id="variablename" name="variablename"></a> VariableName
 
@@ -1094,17 +1108,17 @@
 
 [packages/formula/src/type/index.ts:74](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L74)
 
----
+___
 
 ### <a id="variablerichtype" name="variablerichtype"></a> VariableRichType
 
-Ƭ **VariableRichType**: { `type`: [`FormulaSourceType`](README.md#formulasourcetype) } & { `meta?`: `undefined` ; `type`: `"normal"` } \| { `meta`: { `columnId`: [`ColumnId`](README.md#columnid) ; `rowId`: [`uuid`](README.md#uuid) ; `spreadsheetId`: [`SpreadsheetId`](README.md#spreadsheetid) } ; `type`: `"spreadsheet"` }
+Ƭ **VariableRichType**: { `type`: [`FormulaSourceType`](README.md#formulasourcetype)  } & { `meta?`: `undefined` ; `type`: ``"normal"``  } \| { `meta`: { `columnId`: [`ColumnId`](README.md#columnid) ; `rowId`: [`uuid`](README.md#uuid) ; `spreadsheetId`: [`SpreadsheetId`](README.md#spreadsheetid)  } ; `type`: ``"spreadsheet"``  }
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:730](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L730)
 
----
+___
 
 ### <a id="variabletask" name="variabletask"></a> VariableTask
 
@@ -1114,7 +1128,7 @@
 
 [packages/formula/src/type/index.ts:704](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L704)
 
----
+___
 
 ### <a id="variablevalue" name="variablevalue"></a> VariableValue
 
@@ -1124,7 +1138,7 @@
 
 [packages/formula/src/type/index.ts:640](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L640)
 
----
+___
 
 ### <a id="viewattrs" name="viewattrs"></a> ViewAttrs
 
@@ -1134,7 +1148,7 @@
 
 [packages/formula/src/type/index.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L109)
 
----
+___
 
 ### <a id="viewrender" name="viewrender"></a> ViewRender
 
@@ -1146,10 +1160,10 @@
 
 ##### Parameters
 
-| Name    | Type                                                       |
-| :------ | :--------------------------------------------------------- |
-| `attrs` | [`ViewAttrs`](README.md#viewattrs)                         |
-| `data`  | [`VariableDisplayData`](interfaces/VariableDisplayData.md) |
+| Name | Type |
+| :------ | :------ |
+| `attrs` | [`ViewAttrs`](README.md#viewattrs) |
+| `data` | [`VariableDisplayData`](interfaces/VariableDisplayData.md) |
 
 ##### Returns
 
@@ -1159,7 +1173,7 @@
 
 [packages/formula/src/type/index.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L111)
 
----
+___
 
 ### <a id="viewtype" name="viewtype"></a> ViewType
 
@@ -1169,17 +1183,17 @@
 
 [packages/formula/src/type/index.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L108)
 
----
+___
 
 ### <a id="geteventdependencyinput" name="geteventdependencyinput"></a> getEventDependencyInput
 
-Ƭ **getEventDependencyInput**: { `columnKey?`: `string` ; `rowKey?`: `string` } & { `rowKey`: `string` } \| { `columnKey`: `string` } \| {}
+Ƭ **getEventDependencyInput**: { `columnKey?`: `string` ; `rowKey?`: `string`  } & { `rowKey`: `string`  } \| { `columnKey`: `string`  } \| {}
 
 #### Defined in
 
 [packages/formula/src/controls/types.ts:46](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L46)
 
----
+___
 
 ### <a id="uuid" name="uuid"></a> uuid
 
@@ -1191,15 +1205,15 @@
 
 ## Variables
 
-### <a id="all_test_case" name="all_test_case"></a> ALL_TEST_CASE
+### <a id="all_test_case" name="all_test_case"></a> ALL\_TEST\_CASE
 
-• `Const` **ALL_TEST_CASE**: [`TestCaseInput`](interfaces/TestCaseInput.md)
+• `Const` **ALL\_TEST\_CASE**: [`TestCaseInput`](interfaces/TestCaseInput.md)
 
 #### Defined in
 
 [packages/formula/src/tests/testCases.ts:141](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L141)
 
----
+___
 
 ### <a id="additionoperator" name="additionoperator"></a> AdditionOperator
 
@@ -1209,7 +1223,7 @@
 
 [packages/formula/src/grammar/lexer.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L5)
 
----
+___
 
 ### <a id="ampersand" name="ampersand"></a> Ampersand
 
@@ -1219,7 +1233,7 @@
 
 [packages/formula/src/grammar/lexer.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L113)
 
----
+___
 
 ### <a id="and" name="and"></a> And
 
@@ -1229,7 +1243,7 @@
 
 [packages/formula/src/grammar/lexer.ts:42](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L42)
 
----
+___
 
 ### <a id="anyname" name="anyname"></a> AnyName
 
@@ -1239,7 +1253,7 @@
 
 [packages/formula/src/grammar/lexer.ts:219](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L219)
 
----
+___
 
 ### <a id="at" name="at"></a> At
 
@@ -1249,27 +1263,27 @@
 
 [packages/formula/src/grammar/lexer.ts:134](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L134)
 
----
+___
 
-### <a id="builtin_clauses" name="builtin_clauses"></a> BUILTIN_CLAUSES
+### <a id="builtin_clauses" name="builtin_clauses"></a> BUILTIN\_CLAUSES
 
-• `Const` **BUILTIN_CLAUSES**: [`AnyFunctionClause`](interfaces/AnyFunctionClause.md)[]
+• `Const` **BUILTIN\_CLAUSES**: [`AnyFunctionClause`](interfaces/AnyFunctionClause.md)[]
 
 #### Defined in
 
 [packages/formula/src/functions/index.ts:46](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/index.ts#L46)
 
----
+___
 
-### <a id="builtin_strings" name="builtin_strings"></a> BUILTIN_STRINGS
+### <a id="builtin_strings" name="builtin_strings"></a> BUILTIN\_STRINGS
 
-• `Const` **BUILTIN_STRINGS**: `string`[]
+• `Const` **BUILTIN\_STRINGS**: `string`[]
 
 #### Defined in
 
 [packages/formula/src/tests/testCases.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L7)
 
----
+___
 
 ### <a id="basicnames" name="basicnames"></a> BasicNames
 
@@ -1279,7 +1293,7 @@
 
 [packages/formula/src/tests/feature/basic/index.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/basic/index.ts#L7)
 
----
+___
 
 ### <a id="booleanliteral" name="booleanliteral"></a> BooleanLiteral
 
@@ -1289,17 +1303,17 @@
 
 [packages/formula/src/grammar/lexer.ts:194](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L194)
 
----
+___
 
-### <a id="core_function_groups" name="core_function_groups"></a> CORE_FUNCTION_GROUPS
+### <a id="core_function_groups" name="core_function_groups"></a> CORE\_FUNCTION\_GROUPS
 
-• `Const` **CORE_FUNCTION_GROUPS**: readonly [``"core"``]
+• `Const` **CORE\_FUNCTION\_GROUPS**: readonly [``"core"``]
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:53](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L53)
 
----
+___
 
 ### <a id="caret" name="caret"></a> Caret
 
@@ -1309,7 +1323,7 @@
 
 [packages/formula/src/grammar/lexer.ts:118](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L118)
 
----
+___
 
 ### <a id="colon" name="colon"></a> Colon
 
@@ -1319,7 +1333,7 @@
 
 [packages/formula/src/grammar/lexer.ts:215](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L215)
 
----
+___
 
 ### <a id="combineoperator" name="combineoperator"></a> CombineOperator
 
@@ -1329,7 +1343,7 @@
 
 [packages/formula/src/grammar/lexer.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L7)
 
----
+___
 
 ### <a id="comma" name="comma"></a> Comma
 
@@ -1339,7 +1353,7 @@
 
 [packages/formula/src/grammar/lexer.ts:209](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L209)
 
----
+___
 
 ### <a id="compareoperator" name="compareoperator"></a> CompareOperator
 
@@ -1349,7 +1363,7 @@
 
 [packages/formula/src/grammar/lexer.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L4)
 
----
+___
 
 ### <a id="completenames" name="completenames"></a> CompleteNames
 
@@ -1359,7 +1373,7 @@
 
 [packages/formula/src/tests/feature/complete/index.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/complete/index.ts#L16)
 
----
+___
 
 ### <a id="currentblock" name="currentblock"></a> CurrentBlock
 
@@ -1369,27 +1383,27 @@
 
 [packages/formula/src/grammar/lexer.ts:28](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L28)
 
----
+___
 
-### <a id="default_first_namespaceid" name="default_first_namespaceid"></a> DEFAULT_FIRST_NAMESPACEID
+### <a id="default_first_namespaceid" name="default_first_namespaceid"></a> DEFAULT\_FIRST\_NAMESPACEID
 
-• `Const` **DEFAULT_FIRST_NAMESPACEID**: `"00000000-0000-0000-0000-000000000000"`
+• `Const` **DEFAULT\_FIRST\_NAMESPACEID**: ``"00000000-0000-0000-0000-000000000000"``
 
 #### Defined in
 
 [packages/formula/src/tests/testType.ts:20](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L20)
 
----
+___
 
-### <a id="default_views" name="default_views"></a> DEFAULT_VIEWS
+### <a id="default_views" name="default_views"></a> DEFAULT\_VIEWS
 
-• `Const` **DEFAULT_VIEWS**: [`View`](interfaces/View.md)[]
+• `Const` **DEFAULT\_VIEWS**: [`View`](interfaces/View.md)[]
 
 #### Defined in
 
 [packages/formula/src/render/index.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/render/index.ts#L5)
 
----
+___
 
 ### <a id="decimalliteral" name="decimalliteral"></a> DecimalLiteral
 
@@ -1399,7 +1413,7 @@
 
 [packages/formula/src/grammar/lexer.ts:189](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L189)
 
----
+___
 
 ### <a id="div" name="div"></a> Div
 
@@ -1409,7 +1423,7 @@
 
 [packages/formula/src/grammar/lexer.ts:166](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L166)
 
----
+___
 
 ### <a id="dollar" name="dollar"></a> Dollar
 
@@ -1419,7 +1433,7 @@
 
 [packages/formula/src/grammar/lexer.ts:129](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L129)
 
----
+___
 
 ### <a id="dot" name="dot"></a> Dot
 
@@ -1429,7 +1443,7 @@
 
 [packages/formula/src/grammar/lexer.ts:144](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L144)
 
----
+___
 
 ### <a id="doublecolon" name="doublecolon"></a> DoubleColon
 
@@ -1439,7 +1453,7 @@
 
 [packages/formula/src/grammar/lexer.ts:213](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L213)
 
----
+___
 
 ### <a id="equal" name="equal"></a> Equal
 
@@ -1449,7 +1463,7 @@
 
 [packages/formula/src/grammar/lexer.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L65)
 
----
+___
 
 ### <a id="equal2" name="equal2"></a> Equal2
 
@@ -1459,7 +1473,7 @@
 
 [packages/formula/src/grammar/lexer.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L71)
 
----
+___
 
 ### <a id="equalcompareoperator" name="equalcompareoperator"></a> EqualCompareOperator
 
@@ -1469,7 +1483,7 @@
 
 [packages/formula/src/grammar/lexer.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L3)
 
----
+___
 
 ### <a id="eventnames" name="eventnames"></a> EventNames
 
@@ -1479,7 +1493,7 @@
 
 [packages/formula/src/tests/feature/event/index.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/event/index.ts#L16)
 
----
+___
 
 ### <a id="exactin" name="exactin"></a> ExactIn
 
@@ -1489,57 +1503,57 @@
 
 [packages/formula/src/grammar/lexer.ts:21](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L21)
 
----
+___
 
-### <a id="formula_feature_control" name="formula_feature_control"></a> FORMULA_FEATURE_CONTROL
+### <a id="formula_feature_control" name="formula_feature_control"></a> FORMULA\_FEATURE\_CONTROL
 
-• `Const` **FORMULA_FEATURE_CONTROL**: `"formula-controls"`
+• `Const` **FORMULA\_FEATURE\_CONTROL**: ``"formula-controls"``
 
 #### Defined in
 
 [packages/formula/src/context/features.ts:1](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/features.ts#L1)
 
----
+___
 
-### <a id="formula_parser_version" name="formula_parser_version"></a> FORMULA_PARSER_VERSION
+### <a id="formula_parser_version" name="formula_parser_version"></a> FORMULA\_PARSER\_VERSION
 
-• `Const` **FORMULA_PARSER_VERSION**: `0`
+• `Const` **FORMULA\_PARSER\_VERSION**: ``0``
 
 #### Defined in
 
 [packages/formula/src/version.ts:1](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/version.ts#L1)
 
----
+___
 
-### <a id="formula_short_names" name="formula_short_names"></a> FORMULA_SHORT_NAMES
+### <a id="formula_short_names" name="formula_short_names"></a> FORMULA\_SHORT\_NAMES
 
-• `Const` **FORMULA_SHORT_NAMES**: readonly [``"str"``, ``"literal"``, ``"num"``, ``"bool"``, ``"blank"``, ``"cst"``, ``"switch"``, ``"button"``, ``"predicate"``, ``"pending"``, ``"waiting"``, ``"noPersist"``, ``"function"``, ``"ref"``, ``"null"``, ``"record"``, ``"array"``, ``"date"``, ``"error"``, ``"spreadsheet"``, ``"column"``, ``"range"``, ``"row"``, ``"cell"``, ``"block"``]
+• `Const` **FORMULA\_SHORT\_NAMES**: readonly [``"str"``, ``"literal"``, ``"num"``, ``"bool"``, ``"blank"``, ``"cst"``, ``"switch"``, ``"button"``, ``"predicate"``, ``"pending"``, ``"waiting"``, ``"noPersist"``, ``"function"``, ``"ref"``, ``"null"``, ``"record"``, ``"array"``, ``"date"``, ``"error"``, ``"spreadsheet"``, ``"column"``, ``"range"``, ``"row"``, ``"cell"``, ``"block"``]
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:15](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L15)
 
----
+___
 
-### <a id="formula_used_types" name="formula_used_types"></a> FORMULA_USED_TYPES
+### <a id="formula_used_types" name="formula_used_types"></a> FORMULA\_USED\_TYPES
 
-• `Const` **FORMULA_USED_TYPES**: readonly [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``, ``"Button"``, ``"Switch"``, ``"literal"``, ``"Pending"``, ``"Waiting"``, ``"NoPersist"``]
+• `Const` **FORMULA\_USED\_TYPES**: readonly [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``, ``"Button"``, ``"Switch"``, ``"literal"``, ``"Pending"``, ``"Waiting"``, ``"NoPersist"``]
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:43](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L43)
 
----
+___
 
-### <a id="function_name_regex" name="function_name_regex"></a> FUNCTION_NAME_REGEX
+### <a id="function_name_regex" name="function_name_regex"></a> FUNCTION\_NAME\_REGEX
 
-• `Const` **FUNCTION_NAME_REGEX**: `RegExp`
+• `Const` **FUNCTION\_NAME\_REGEX**: `RegExp`
 
 #### Defined in
 
 [packages/formula/src/grammar/lexer.ts:12](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L12)
 
----
+___
 
 ### <a id="featuretestcases" name="featuretestcases"></a> FeatureTestCases
 
@@ -1549,7 +1563,7 @@
 
 [packages/formula/src/tests/feature/index.ts:15](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/index.ts#L15)
 
----
+___
 
 ### <a id="formulalexer" name="formulalexer"></a> FormulaLexer
 
@@ -1559,7 +1573,7 @@
 
 [packages/formula/src/grammar/lexer.ts:322](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L322)
 
----
+___
 
 ### <a id="functionname" name="functionname"></a> FunctionName
 
@@ -1569,7 +1583,7 @@
 
 [packages/formula/src/grammar/lexer.ts:217](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L217)
 
----
+___
 
 ### <a id="greaterthan" name="greaterthan"></a> GreaterThan
 
@@ -1579,7 +1593,7 @@
 
 [packages/formula/src/grammar/lexer.ts:59](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L59)
 
----
+___
 
 ### <a id="greaterthanequal" name="greaterthanequal"></a> GreaterThanEqual
 
@@ -1589,7 +1603,7 @@
 
 [packages/formula/src/grammar/lexer.ts:95](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L95)
 
----
+___
 
 ### <a id="in" name="in"></a> In
 
@@ -1599,7 +1613,7 @@
 
 [packages/formula/src/grammar/lexer.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L16)
 
----
+___
 
 ### <a id="inoperator" name="inoperator"></a> InOperator
 
@@ -1609,7 +1623,7 @@
 
 [packages/formula/src/grammar/lexer.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L8)
 
----
+___
 
 ### <a id="input" name="input"></a> Input
 
@@ -1619,7 +1633,7 @@
 
 [packages/formula/src/grammar/lexer.ts:32](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L32)
 
----
+___
 
 ### <a id="lbrace" name="lbrace"></a> LBrace
 
@@ -1629,7 +1643,7 @@
 
 [packages/formula/src/grammar/lexer.ts:178](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L178)
 
----
+___
 
 ### <a id="lbracket" name="lbracket"></a> LBracket
 
@@ -1639,7 +1653,7 @@
 
 [packages/formula/src/grammar/lexer.ts:175](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L175)
 
----
+___
 
 ### <a id="lparen" name="lparen"></a> LParen
 
@@ -1649,7 +1663,7 @@
 
 [packages/formula/src/grammar/lexer.ts:172](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L172)
 
----
+___
 
 ### <a id="lambdaargumentnumber" name="lambdaargumentnumber"></a> LambdaArgumentNumber
 
@@ -1659,7 +1673,7 @@
 
 [packages/formula/src/grammar/lexer.ts:181](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L181)
 
----
+___
 
 ### <a id="lessthan" name="lessthan"></a> LessThan
 
@@ -1669,7 +1683,7 @@
 
 [packages/formula/src/grammar/lexer.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L77)
 
----
+___
 
 ### <a id="lessthanequal" name="lessthanequal"></a> LessThanEqual
 
@@ -1679,7 +1693,7 @@
 
 [packages/formula/src/grammar/lexer.ts:101](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L101)
 
----
+___
 
 ### <a id="minus" name="minus"></a> Minus
 
@@ -1689,7 +1703,7 @@
 
 [packages/formula/src/grammar/lexer.ts:154](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L154)
 
----
+___
 
 ### <a id="multi" name="multi"></a> Multi
 
@@ -1699,7 +1713,7 @@
 
 [packages/formula/src/grammar/lexer.ts:160](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L160)
 
----
+___
 
 ### <a id="multiplicationoperator" name="multiplicationoperator"></a> MultiplicationOperator
 
@@ -1709,37 +1723,37 @@
 
 [packages/formula/src/grammar/lexer.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L6)
 
----
+___
 
-### <a id="name_special_invalid_chars" name="name_special_invalid_chars"></a> NAME_SPECIAL_INVALID_CHARS
+### <a id="name_special_invalid_chars" name="name_special_invalid_chars"></a> NAME\_SPECIAL\_INVALID\_CHARS
 
-• `Const` **NAME_SPECIAL_INVALID_CHARS**: `string`[]
+• `Const` **NAME\_SPECIAL\_INVALID\_CHARS**: `string`[]
 
 #### Defined in
 
 [packages/formula/src/tests/testCases.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L5)
 
----
+___
 
-### <a id="name_valid_prefix" name="name_valid_prefix"></a> NAME_VALID_PREFIX
+### <a id="name_valid_prefix" name="name_valid_prefix"></a> NAME\_VALID\_PREFIX
 
-• `Const` **NAME_VALID_PREFIX**: `string`[]
+• `Const` **NAME\_VALID\_PREFIX**: `string`[]
 
 #### Defined in
 
 [packages/formula/src/tests/testCases.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L8)
 
----
+___
 
-### <a id="name_valid_suffix_only" name="name_valid_suffix_only"></a> NAME_VALID_SUFFIX_ONLY
+### <a id="name_valid_suffix_only" name="name_valid_suffix_only"></a> NAME\_VALID\_SUFFIX\_ONLY
 
-• `Const` **NAME_VALID_SUFFIX_ONLY**: `string`[]
+• `Const` **NAME\_VALID\_SUFFIX\_ONLY**: `string`[]
 
 #### Defined in
 
 [packages/formula/src/tests/testCases.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L6)
 
----
+___
 
 ### <a id="not" name="not"></a> Not
 
@@ -1749,7 +1763,7 @@
 
 [packages/formula/src/grammar/lexer.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L54)
 
----
+___
 
 ### <a id="notequal" name="notequal"></a> NotEqual
 
@@ -1759,7 +1773,7 @@
 
 [packages/formula/src/grammar/lexer.ts:83](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L83)
 
----
+___
 
 ### <a id="notequal2" name="notequal2"></a> NotEqual2
 
@@ -1769,7 +1783,7 @@
 
 [packages/formula/src/grammar/lexer.ts:89](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L89)
 
----
+___
 
 ### <a id="nullliteral" name="nullliteral"></a> NullLiteral
 
@@ -1779,7 +1793,7 @@
 
 [packages/formula/src/grammar/lexer.ts:204](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L204)
 
----
+___
 
 ### <a id="numberliteral" name="numberliteral"></a> NumberLiteral
 
@@ -1789,7 +1803,7 @@
 
 [packages/formula/src/grammar/lexer.ts:183](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L183)
 
----
+___
 
 ### <a id="operators" name="operators"></a> OPERATORS
 
@@ -1799,17 +1813,17 @@
 
 [packages/formula/src/grammar/operations/index.ts:56](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/index.ts#L56)
 
----
+___
 
-### <a id="operator_types" name="operator_types"></a> OPERATOR_TYPES
+### <a id="operator_types" name="operator_types"></a> OPERATOR\_TYPES
 
-• `Const` **OPERATOR_TYPES**: readonly [``"Plus"``, ``"Minus"``, ``"Multi"``, ``"Div"``, ``"Ampersand"``, ``"Caret"``, ``"Equal2"``, ``"Equal"``, ``"NotEqual2"``, ``"NotEqual"``, ``"And"``, ``"Or"``, ``"GreaterThan"``, ``"LessThanEqual"``, ``"GreaterThanEqual"``, ``"LessThan"``, ``"ExactIn"``, ``"In"``]
+• `Const` **OPERATOR\_TYPES**: readonly [``"Plus"``, ``"Minus"``, ``"Multi"``, ``"Div"``, ``"Ampersand"``, ``"Caret"``, ``"Equal2"``, ``"Equal"``, ``"NotEqual2"``, ``"NotEqual"``, ``"And"``, ``"Or"``, ``"GreaterThan"``, ``"LessThanEqual"``, ``"GreaterThanEqual"``, ``"LessThan"``, ``"ExactIn"``, ``"In"``]
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:227](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L227)
 
----
+___
 
 ### <a id="or" name="or"></a> Or
 
@@ -1819,7 +1833,7 @@
 
 [packages/formula/src/grammar/lexer.ts:48](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L48)
 
----
+___
 
 ### <a id="parserinstance" name="parserinstance"></a> ParserInstance
 
@@ -1829,7 +1843,7 @@
 
 [packages/formula/src/grammar/parser.ts:326](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L326)
 
----
+___
 
 ### <a id="plus" name="plus"></a> Plus
 
@@ -1839,7 +1853,7 @@
 
 [packages/formula/src/grammar/lexer.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L107)
 
----
+___
 
 ### <a id="rbrace" name="rbrace"></a> RBrace
 
@@ -1849,7 +1863,7 @@
 
 [packages/formula/src/grammar/lexer.ts:179](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L179)
 
----
+___
 
 ### <a id="rbracket" name="rbracket"></a> RBracket
 
@@ -1859,7 +1873,7 @@
 
 [packages/formula/src/grammar/lexer.ts:176](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L176)
 
----
+___
 
 ### <a id="rparen" name="rparen"></a> RParen
 
@@ -1869,7 +1883,7 @@
 
 [packages/formula/src/grammar/lexer.ts:173](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L173)
 
----
+___
 
 ### <a id="self" name="self"></a> Self
 
@@ -1879,7 +1893,7 @@
 
 [packages/formula/src/grammar/lexer.ts:27](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L27)
 
----
+___
 
 ### <a id="semicolon" name="semicolon"></a> Semicolon
 
@@ -1889,7 +1903,7 @@
 
 [packages/formula/src/grammar/lexer.ts:211](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L211)
 
----
+___
 
 ### <a id="sharp" name="sharp"></a> Sharp
 
@@ -1899,7 +1913,7 @@
 
 [packages/formula/src/grammar/lexer.ts:139](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L139)
 
----
+___
 
 ### <a id="sign" name="sign"></a> Sign
 
@@ -1909,7 +1923,7 @@
 
 [packages/formula/src/grammar/lexer.ts:124](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L124)
 
----
+___
 
 ### <a id="stringliteral" name="stringliteral"></a> StringLiteral
 
@@ -1919,17 +1933,17 @@
 
 [packages/formula/src/grammar/lexer.ts:199](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L199)
 
----
+___
 
-### <a id="token_suffix_pattern" name="token_suffix_pattern"></a> TOKEN_SUFFIX_PATTERN
+### <a id="token_suffix_pattern" name="token_suffix_pattern"></a> TOKEN\_SUFFIX\_PATTERN
 
-• `Const` **TOKEN_SUFFIX_PATTERN**: `string`
+• `Const` **TOKEN\_SUFFIX\_PATTERN**: `string`
 
 #### Defined in
 
 [packages/formula/src/grammar/lexer.ts:14](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L14)
 
----
+___
 
 ### <a id="thisrecord" name="thisrecord"></a> ThisRecord
 
@@ -1939,7 +1953,7 @@
 
 [packages/formula/src/grammar/lexer.ts:37](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L37)
 
----
+___
 
 ### <a id="thisrow" name="thisrow"></a> ThisRow
 
@@ -1949,7 +1963,7 @@
 
 [packages/formula/src/grammar/lexer.ts:33](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L33)
 
----
+___
 
 ### <a id="uuid-1" name="uuid-1"></a> UUID
 
@@ -1959,7 +1973,7 @@
 
 [packages/formula/src/grammar/lexer.ts:149](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L149)
 
----
+___
 
 ### <a id="whitespace" name="whitespace"></a> WhiteSpace
 
@@ -1969,7 +1983,7 @@
 
 [packages/formula/src/grammar/lexer.ts:222](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L222)
 
----
+___
 
 ### <a id="accessoperator" name="accessoperator"></a> accessOperator
 
@@ -1979,7 +1993,7 @@
 
 [packages/formula/src/grammar/operations/access.ts:56](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/access.ts#L56)
 
----
+___
 
 ### <a id="additionoperator-1" name="additionoperator-1"></a> additionOperator
 
@@ -1989,7 +2003,7 @@
 
 [packages/formula/src/grammar/operations/addition.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/addition.ts#L7)
 
----
+___
 
 ### <a id="alltokens" name="alltokens"></a> allTokens
 
@@ -1999,11 +2013,11 @@
 
 [packages/formula/src/grammar/lexer.ts:228](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L228)
 
----
+___
 
 ### <a id="apicurrentposition" name="apicurrentposition"></a> apiCurrentPosition
 
-• `Const` **apiCurrentPosition**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Record"`, `true`, `false`, `false`, []\>
+• `Const` **apiCurrentPosition**: [`FunctionClause`](interfaces/FunctionClause.md)<``"Record"``, ``true``, ``false``, ``false``, []\>
 
 **`Source`**
 
@@ -2011,11 +2025,11 @@
 
 [packages/formula/src/functions/api/currentPosition.ts:42](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/api/currentPosition.ts#L42)
 
----
+___
 
 ### <a id="apiexchange" name="apiexchange"></a> apiExchange
 
-• `Const` **apiExchange**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Record"`, `true`, `false`, `false`, [{ `name`: `string` = 'url'; `type`: ``"string"`` = 'string' }]\>
+• `Const` **apiExchange**: [`FunctionClause`](interfaces/FunctionClause.md)<``"Record"``, ``true``, ``false``, ``false``, [{ `name`: `string` = 'url'; `type`: ``"string"`` = 'string' }]\>
 
 **`Source`**
 
@@ -2023,7 +2037,7 @@
 
 [packages/formula/src/functions/api/exchange.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/api/exchange.ts#L8)
 
----
+___
 
 ### <a id="argumentsoperator" name="argumentsoperator"></a> argumentsOperator
 
@@ -2033,11 +2047,11 @@
 
 [packages/formula/src/grammar/operations/arguments.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/arguments.ts#L5)
 
----
+___
 
 ### <a id="arrayaverage" name="arrayaverage"></a> arrayAverage
 
-• `Const` **arrayAverage**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }]\>
+• `Const` **arrayAverage**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }]\>
 
 **`Source`**
 
@@ -2045,11 +2059,11 @@
 
 [packages/formula/src/functions/array/average.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/array/average.ts#L6)
 
----
+___
 
 ### <a id="arrayjoin" name="arrayjoin"></a> arrayJoin
 
-• `Const` **arrayJoin**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }, { `default`: { `result`: `string` = ','; `type`: ``"string"`` = 'string' } ; `name`: `string` = 'separator'; `type`: ``"string"`` = 'string' }]\>
+• `Const` **arrayJoin**: [`FunctionClause`](interfaces/FunctionClause.md)<``"string"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }, { `default`: { `result`: `string` = ','; `type`: ``"string"`` = 'string' } ; `name`: `string` = 'separator'; `type`: ``"string"`` = 'string' }]\>
 
 **`Source`**
 
@@ -2057,7 +2071,7 @@
 
 [packages/formula/src/functions/array/join.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/array/join.ts#L6)
 
----
+___
 
 ### <a id="arrayoperator" name="arrayoperator"></a> arrayOperator
 
@@ -2067,11 +2081,11 @@
 
 [packages/formula/src/grammar/operations/array.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/array.ts#L5)
 
----
+___
 
 ### <a id="arraysum" name="arraysum"></a> arraySum
 
-• `Const` **arraySum**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }]\>
+• `Const` **arraySum**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }]\>
 
 **`Source`**
 
@@ -2079,7 +2093,7 @@
 
 [packages/formula/src/functions/array/sum.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/array/sum.ts#L6)
 
----
+___
 
 ### <a id="blockoperator" name="blockoperator"></a> blockOperator
 
@@ -2089,7 +2103,7 @@
 
 [packages/formula/src/grammar/operations/block.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/block.ts#L8)
 
----
+___
 
 ### <a id="booleanoperator" name="booleanoperator"></a> booleanOperator
 
@@ -2099,7 +2113,7 @@
 
 [packages/formula/src/grammar/operations/boolean.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/boolean.ts#L3)
 
----
+___
 
 ### <a id="chainoperator" name="chainoperator"></a> chainOperator
 
@@ -2109,7 +2123,7 @@
 
 [packages/formula/src/grammar/operations/chain.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/chain.ts#L4)
 
----
+___
 
 ### <a id="combineoperator-1" name="combineoperator-1"></a> combineOperator
 
@@ -2119,7 +2133,7 @@
 
 [packages/formula/src/grammar/operations/combine.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/combine.ts#L5)
 
----
+___
 
 ### <a id="compareoperator-1" name="compareoperator-1"></a> compareOperator
 
@@ -2129,7 +2143,7 @@
 
 [packages/formula/src/grammar/operations/compare.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/compare.ts#L5)
 
----
+___
 
 ### <a id="concatoperator" name="concatoperator"></a> concatOperator
 
@@ -2139,11 +2153,11 @@
 
 [packages/formula/src/grammar/operations/concat.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/concat.ts#L3)
 
----
+___
 
 ### <a id="controlbutton" name="controlbutton"></a> controlButton
 
-• `Const` **controlButton**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Button"`, `false`, `false`, `false`, [{ `name`: `string` = 'name'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'onClick'; `type`: ``"Function"`` = 'Function' }]\>
+• `Const` **controlButton**: [`FunctionClause`](interfaces/FunctionClause.md)<``"Button"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'name'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'onClick'; `type`: ``"Function"`` = 'Function' }]\>
 
 **`Source`**
 
@@ -2151,11 +2165,11 @@
 
 [packages/formula/src/functions/control/button.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/control/button.ts#L8)
 
----
+___
 
 ### <a id="controlswitch" name="controlswitch"></a> controlSwitch
 
-• `Const` **controlSwitch**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Switch"`, `false`, `false`, `false`, [{ `name`: `string` = 'name'; `type`: ``"boolean"`` = 'boolean' }, { `name`: `string` = 'onChange'; `type`: ``"Function"`` = 'Function' }]\>
+• `Const` **controlSwitch**: [`FunctionClause`](interfaces/FunctionClause.md)<``"Switch"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'name'; `type`: ``"boolean"`` = 'boolean' }, { `name`: `string` = 'onChange'; `type`: ``"Function"`` = 'Function' }]\>
 
 **`Source`**
 
@@ -2163,11 +2177,11 @@
 
 [packages/formula/src/functions/control/switch.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/control/switch.ts#L8)
 
----
+___
 
 ### <a id="converttoarray" name="converttoarray"></a> convertToArray
 
-• `Const` **convertToArray**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Array"`, `false`, `true`, `false`, [{ `name`: `string` = 'input'; `type`: [``"number"``, ``"Spreadsheet"``] }]\>
+• `Const` **convertToArray**: [`FunctionClause`](interfaces/FunctionClause.md)<``"Array"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'input'; `type`: [``"number"``, ``"Spreadsheet"``]  }]\>
 
 **`Source`**
 
@@ -2175,11 +2189,11 @@
 
 [packages/formula/src/functions/convert/toArray.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/convert/toArray.ts#L6)
 
----
+___
 
 ### <a id="converttoboolean" name="converttoboolean"></a> convertToBoolean
 
-• `Const` **convertToBoolean**: [`FunctionClause`](interfaces/FunctionClause.md)<`"boolean"`, `false`, `true`, `false`, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }]\>
+• `Const` **convertToBoolean**: [`FunctionClause`](interfaces/FunctionClause.md)<``"boolean"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }]\>
 
 **`Source`**
 
@@ -2187,11 +2201,11 @@
 
 [packages/formula/src/functions/convert/toBoolean.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/convert/toBoolean.ts#L6)
 
----
+___
 
 ### <a id="converttonumber" name="converttonumber"></a> convertToNumber
 
-• `Const` **convertToNumber**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'string'; `type`: [``"string"``, ``"Cell"``] }]\>
+• `Const` **convertToNumber**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'string'; `type`: [``"string"``, ``"Cell"``]  }]\>
 
 **`Source`**
 
@@ -2199,11 +2213,11 @@
 
 [packages/formula/src/functions/convert/toNumber.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/convert/toNumber.ts#L6)
 
----
+___
 
 ### <a id="converttorecord" name="converttorecord"></a> convertToRecord
 
-• `Const` **convertToRecord**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Record"`, `false`, `true`, `false`, [{ `name`: `string` = 'input'; `type`: ``"Date"`` = 'Date' }]\>
+• `Const` **convertToRecord**: [`FunctionClause`](interfaces/FunctionClause.md)<``"Record"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'input'; `type`: ``"Date"`` = 'Date' }]\>
 
 **`Source`**
 
@@ -2211,11 +2225,11 @@
 
 [packages/formula/src/functions/convert/toRecord.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/convert/toRecord.ts#L6)
 
----
+___
 
 ### <a id="converttostring" name="converttostring"></a> convertToString
 
-• `Const` **convertToString**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'input'; `type`: [``"number"``, ``"Array"``, ``"Cell"``, ``"boolean"``, ``"null"``] }]\>
+• `Const` **convertToString**: [`FunctionClause`](interfaces/FunctionClause.md)<``"string"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'input'; `type`: [``"number"``, ``"Array"``, ``"Cell"``, ``"boolean"``, ``"null"``]  }]\>
 
 **`Source`**
 
@@ -2223,11 +2237,11 @@
 
 [packages/formula/src/functions/convert/toString.ts:24](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/convert/toString.ts#L24)
 
----
+___
 
 ### <a id="coreset" name="coreset"></a> coreSet
 
-• `Const` **coreSet**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Function"`, `false`, `false`, `false`, [{ `name`: `string` = 'name'; `type`: ``"Reference"`` = 'Reference' }, { `name`: `string` = 'body'; `type`: ``"Cst"`` = 'Cst' }]\>
+• `Const` **coreSet**: [`FunctionClause`](interfaces/FunctionClause.md)<``"Function"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'name'; `type`: ``"Reference"`` = 'Reference' }, { `name`: `string` = 'body'; `type`: ``"Cst"`` = 'Cst' }]\>
 
 **`Source`**
 
@@ -2235,11 +2249,11 @@
 
 [packages/formula/src/functions/core/set.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/core/set.ts#L6)
 
----
+___
 
 ### <a id="datedate" name="datedate"></a> dateDate
 
-• `Const` **dateDate**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Date"`, `false`, `false`, `false`, [{ `name`: `string` = 'input'; `type`: ``"string"`` = 'string' }]\>
+• `Const` **dateDate**: [`FunctionClause`](interfaces/FunctionClause.md)<``"Date"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'input'; `type`: ``"string"`` = 'string' }]\>
 
 **`Source`**
 
@@ -2247,11 +2261,11 @@
 
 [packages/formula/src/functions/date/date.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/date/date.ts#L6)
 
----
+___
 
 ### <a id="datenow" name="datenow"></a> dateNow
 
-• `Const` **dateNow**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Date"`, `false`, `false`, `false`, []\>
+• `Const` **dateNow**: [`FunctionClause`](interfaces/FunctionClause.md)<``"Date"``, ``false``, ``false``, ``false``, []\>
 
 **`Source`**
 
@@ -2259,7 +2273,7 @@
 
 [packages/formula/src/functions/date/now.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/date/now.ts#L6)
 
----
+___
 
 ### <a id="equalcompareoperator-1" name="equalcompareoperator-1"></a> equalCompareOperator
 
@@ -2269,11 +2283,11 @@
 
 [packages/formula/src/grammar/operations/equalCompare.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/equalCompare.ts#L5)
 
----
+___
 
 ### <a id="errorerror" name="errorerror"></a> errorError
 
-• `Const` **errorError**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Error"`, `false`, `true`, `false`, [{ `name`: `string` = 'reason'; `type`: ``"string"`` = 'string' }]\>
+• `Const` **errorError**: [`FunctionClause`](interfaces/FunctionClause.md)<``"Error"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'reason'; `type`: ``"string"`` = 'string' }]\>
 
 **`Source`**
 
@@ -2281,7 +2295,7 @@
 
 [packages/formula/src/functions/error/error.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/error/error.ts#L6)
 
----
+___
 
 ### <a id="expressionoperator" name="expressionoperator"></a> expressionOperator
 
@@ -2291,7 +2305,7 @@
 
 [packages/formula/src/grammar/operations/expression.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/expression.ts#L3)
 
----
+___
 
 ### <a id="inoperator-1" name="inoperator-1"></a> inOperator
 
@@ -2301,11 +2315,11 @@
 
 [packages/formula/src/grammar/operations/in.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/in.ts#L7)
 
----
+___
 
 ### <a id="logicif" name="logicif"></a> logicIf
 
-• `Const` **logicIf**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`, `false`, `false`, `false`, [{ `name`: `string` = 'condition'; `type`: `"boolean"` = 'boolean' }, { `name`: `string` = 'ifTrue'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }, { `name`: `string` = 'ifFalse'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }]\>
+• `Const` **logicIf**: [`FunctionClause`](interfaces/FunctionClause.md)<``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'condition'; `type`: ``"boolean"`` = 'boolean' }, { `name`: `string` = 'ifTrue'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``]  }, { `name`: `string` = 'ifFalse'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``]  }]\>
 
 **`Source`**
 
@@ -2313,11 +2327,11 @@
 
 [packages/formula/src/functions/logic/if.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/logic/if.ts#L6)
 
----
+___
 
 ### <a id="logiciferror" name="logiciferror"></a> logicIfError
 
-• `Const` **logicIfError**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`, `false`, `true`, `true`, [{ `name`: `string` = 'expr1'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }, { `name`: `string` = 'expr2'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }]\>
+• `Const` **logicIfError**: [`FunctionClause`](interfaces/FunctionClause.md)<``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"``, ``false``, ``true``, ``true``, [{ `name`: `string` = 'expr1'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``]  }, { `name`: `string` = 'expr2'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``]  }]\>
 
 **`Source`**
 
@@ -2325,11 +2339,11 @@
 
 [packages/formula/src/functions/logic/ifError.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/logic/ifError.ts#L6)
 
----
+___
 
 ### <a id="mathabs" name="mathabs"></a> mathAbs
 
-• `Const` **mathAbs**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
+• `Const` **mathAbs**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
 **`Source`**
 
@@ -2337,11 +2351,11 @@
 
 [packages/formula/src/functions/math/abs.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/abs.ts#L6)
 
----
+___
 
 ### <a id="mathfloor" name="mathfloor"></a> mathFloor
 
-• `Const` **mathFloor**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
+• `Const` **mathFloor**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
 **`Source`**
 
@@ -2349,11 +2363,11 @@
 
 [packages/formula/src/functions/math/floor.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/floor.ts#L6)
 
----
+___
 
 ### <a id="mathint" name="mathint"></a> mathInt
 
-• `Const` **mathInt**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
+• `Const` **mathInt**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
 **`Source`**
 
@@ -2361,11 +2375,11 @@
 
 [packages/formula/src/functions/math/int.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/int.ts#L6)
 
----
+___
 
 ### <a id="mathln" name="mathln"></a> mathLn
 
-• `Const` **mathLn**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
+• `Const` **mathLn**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
 **`Source`**
 
@@ -2373,11 +2387,11 @@
 
 [packages/formula/src/functions/math/ln.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/ln.ts#L6)
 
----
+___
 
 ### <a id="mathlog10" name="mathlog10"></a> mathLog10
 
-• `Const` **mathLog10**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
+• `Const` **mathLog10**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
 **`Source`**
 
@@ -2385,11 +2399,11 @@
 
 [packages/formula/src/functions/math/log10.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/log10.ts#L6)
 
----
+___
 
 ### <a id="mathpi" name="mathpi"></a> mathPi
 
-• `Const` **mathPi**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, []\>
+• `Const` **mathPi**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``false``, ``false``, []\>
 
 **`Source`**
 
@@ -2397,11 +2411,11 @@
 
 [packages/formula/src/functions/math/pi.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/pi.ts#L6)
 
----
+___
 
 ### <a id="mathpower" name="mathpower"></a> mathPower
 
-• `Const` **mathPower**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }, { `name`: `string` = 'power'; `type`: ``"number"`` = 'number' }]\>
+• `Const` **mathPower**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }, { `name`: `string` = 'power'; `type`: ``"number"`` = 'number' }]\>
 
 **`Source`**
 
@@ -2409,11 +2423,11 @@
 
 [packages/formula/src/functions/math/power.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/power.ts#L6)
 
----
+___
 
 ### <a id="mathrand" name="mathrand"></a> mathRand
 
-• `Const` **mathRand**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, []\>
+• `Const` **mathRand**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``false``, ``false``, []\>
 
 **`Source`**
 
@@ -2421,11 +2435,11 @@
 
 [packages/formula/src/functions/math/rand.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/rand.ts#L6)
 
----
+___
 
 ### <a id="mathround" name="mathround"></a> mathRound
 
-• `Const` **mathRound**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
+• `Const` **mathRound**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
 **`Source`**
 
@@ -2433,11 +2447,11 @@
 
 [packages/formula/src/functions/math/round.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/round.ts#L6)
 
----
+___
 
 ### <a id="mathtrunc" name="mathtrunc"></a> mathTrunc
 
-• `Const` **mathTrunc**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
+• `Const` **mathTrunc**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
 **`Source`**
 
@@ -2445,7 +2459,7 @@
 
 [packages/formula/src/functions/math/trunc.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/trunc.ts#L6)
 
----
+___
 
 ### <a id="multiplicationoperator-1" name="multiplicationoperator-1"></a> multiplicationOperator
 
@@ -2455,7 +2469,7 @@
 
 [packages/formula/src/grammar/operations/multiplication.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/multiplication.ts#L7)
 
----
+___
 
 ### <a id="nameoperator" name="nameoperator"></a> nameOperator
 
@@ -2465,7 +2479,7 @@
 
 [packages/formula/src/grammar/operations/name.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/name.ts#L73)
 
----
+___
 
 ### <a id="notoperator" name="notoperator"></a> notOperator
 
@@ -2475,7 +2489,7 @@
 
 [packages/formula/src/grammar/operations/not.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/not.ts#L3)
 
----
+___
 
 ### <a id="nulloperator" name="nulloperator"></a> nullOperator
 
@@ -2485,7 +2499,7 @@
 
 [packages/formula/src/grammar/operations/null.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/null.ts#L3)
 
----
+___
 
 ### <a id="numberoperator" name="numberoperator"></a> numberOperator
 
@@ -2495,11 +2509,11 @@
 
 [packages/formula/src/grammar/operations/number.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/number.ts#L4)
 
----
+___
 
 ### <a id="objectt" name="objectt"></a> objectT
 
-• `Const` **objectT**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`, `false`, `true`, `true`, [{ `name`: `string` = 'obj'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }]\>
+• `Const` **objectT**: [`FunctionClause`](interfaces/FunctionClause.md)<``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"``, ``false``, ``true``, ``true``, [{ `name`: `string` = 'obj'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``]  }]\>
 
 **`Source`**
 
@@ -2507,11 +2521,11 @@
 
 [packages/formula/src/functions/object/t.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/object/t.ts#L6)
 
----
+___
 
 ### <a id="objecttype" name="objecttype"></a> objectType
 
-• `Const` **objectType**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `true`, [{ `name`: `string` = 'obj'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``] }]\>
+• `Const` **objectType**: [`FunctionClause`](interfaces/FunctionClause.md)<``"string"``, ``false``, ``true``, ``true``, [{ `name`: `string` = 'obj'; `type`: [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``]  }]\>
 
 **`Source`**
 
@@ -2519,7 +2533,7 @@
 
 [packages/formula/src/functions/object/type.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/object/type.ts#L6)
 
----
+___
 
 ### <a id="parenthesisoperator" name="parenthesisoperator"></a> parenthesisOperator
 
@@ -2529,11 +2543,11 @@
 
 [packages/formula/src/grammar/operations/parenthesis.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/parenthesis.ts#L3)
 
----
+___
 
 ### <a id="powerfxcountif" name="powerfxcountif"></a> powerfxCountIf
 
-• `Const` **powerfxCountIf**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }, { `name`: `string` = 'predicate'; `type`: ``"Predicate"`` = 'Predicate' }]\>
+• `Const` **powerfxCountIf**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }, { `name`: `string` = 'predicate'; `type`: ``"Predicate"`` = 'Predicate' }]\>
 
 **`Source`**
 
@@ -2541,7 +2555,7 @@
 
 [packages/formula/src/functions/powerfx/countIf.ts:39](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/powerfx/countIf.ts#L39)
 
----
+___
 
 ### <a id="predicateoperator" name="predicateoperator"></a> predicateOperator
 
@@ -2551,11 +2565,11 @@
 
 [packages/formula/src/grammar/operations/predicate.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/predicate.ts#L7)
 
----
+___
 
 ### <a id="processsleep" name="processsleep"></a> processSleep
 
-• `Const` **processSleep**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `true`, `false`, `false`, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
+• `Const` **processSleep**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``true``, ``false``, ``false``, [{ `name`: `string` = 'number'; `type`: ``"number"`` = 'number' }]\>
 
 **`Source`**
 
@@ -2563,7 +2577,7 @@
 
 [packages/formula/src/functions/process/sleep.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/process/sleep.ts#L6)
 
----
+___
 
 ### <a id="rangeoperator" name="rangeoperator"></a> rangeOperator
 
@@ -2573,7 +2587,7 @@
 
 [packages/formula/src/grammar/operations/range.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/range.ts#L4)
 
----
+___
 
 ### <a id="recordfieldoperator" name="recordfieldoperator"></a> recordFieldOperator
 
@@ -2583,7 +2597,7 @@
 
 [packages/formula/src/grammar/operations/recordField.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/recordField.ts#L3)
 
----
+___
 
 ### <a id="recordoperator" name="recordoperator"></a> recordOperator
 
@@ -2593,11 +2607,11 @@
 
 [packages/formula/src/grammar/operations/record.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/record.ts#L6)
 
----
+___
 
 ### <a id="requestget" name="requestget"></a> requestGet
 
-• `Const` **requestGet**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`, `true`, `false`, `false`, [{ `name`: `string` = 'url'; `type`: ``"string"`` = 'string' }]\>
+• `Const` **requestGet**: [`FunctionClause`](interfaces/FunctionClause.md)<``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"``, ``true``, ``false``, ``false``, [{ `name`: `string` = 'url'; `type`: ``"string"`` = 'string' }]\>
 
 **`Source`**
 
@@ -2605,11 +2619,11 @@
 
 [packages/formula/src/functions/request/get.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/request/get.ts#L8)
 
----
+___
 
 ### <a id="spreadsheetaverageifs" name="spreadsheetaverageifs"></a> spreadsheetAverageIfs
 
-• `Const` **spreadsheetAverageIfs**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'column1'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'column2'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'condition'; `type`: ``"Predicate"`` = 'Predicate' }]\>
+• `Const` **spreadsheetAverageIfs**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'column1'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'column2'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'condition'; `type`: ``"Predicate"`` = 'Predicate' }]\>
 
 **`Source`**
 
@@ -2617,11 +2631,11 @@
 
 [packages/formula/src/functions/spreadsheet/averageIfs.ts:37](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/averageIfs.ts#L37)
 
----
+___
 
 ### <a id="spreadsheetcolumncount" name="spreadsheetcolumncount"></a> spreadsheetColumnCount
 
-• `Const` **spreadsheetColumnCount**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }]\>
+• `Const` **spreadsheetColumnCount**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }]\>
 
 **`Source`**
 
@@ -2629,11 +2643,11 @@
 
 [packages/formula/src/functions/spreadsheet/columnCount.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/columnCount.ts#L6)
 
----
+___
 
 ### <a id="spreadsheetcounta" name="spreadsheetcounta"></a> spreadsheetCountA
 
-• `Const` **spreadsheetCountA**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }]\>
+• `Const` **spreadsheetCountA**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }]\>
 
 **`Source`**
 
@@ -2641,11 +2655,11 @@
 
 [packages/formula/src/functions/spreadsheet/countA.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/countA.ts#L6)
 
----
+___
 
 ### <a id="spreadsheetcountifs" name="spreadsheetcountifs"></a> spreadsheetCountIfs
 
-• `Const` **spreadsheetCountIfs**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'condition'; `type`: ``"Predicate"`` = 'Predicate' }]\>
+• `Const` **spreadsheetCountIfs**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'condition'; `type`: ``"Predicate"`` = 'Predicate' }]\>
 
 **`Source`**
 
@@ -2653,11 +2667,11 @@
 
 [packages/formula/src/functions/spreadsheet/countIfs.ts:25](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/countIfs.ts#L25)
 
----
+___
 
 ### <a id="spreadsheetmax" name="spreadsheetmax"></a> spreadsheetMax
 
-• `Const` **spreadsheetMax**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }]\>
+• `Const` **spreadsheetMax**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }]\>
 
 **`Source`**
 
@@ -2665,11 +2679,11 @@
 
 [packages/formula/src/functions/spreadsheet/max.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/max.ts#L6)
 
----
+___
 
 ### <a id="spreadsheetrow" name="spreadsheetrow"></a> spreadsheetRow
 
-• `Const` **spreadsheetRow**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'input'; `type`: [``"Cell"``, ``"Row"``] }]\>
+• `Const` **spreadsheetRow**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'input'; `type`: [``"Cell"``, ``"Row"``]  }]\>
 
 **`Source`**
 
@@ -2677,11 +2691,11 @@
 
 [packages/formula/src/functions/spreadsheet/row.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/row.ts#L6)
 
----
+___
 
 ### <a id="spreadsheetrowcount" name="spreadsheetrowcount"></a> spreadsheetRowCount
 
-• `Const` **spreadsheetRowCount**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }]\>
+• `Const` **spreadsheetRowCount**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }]\>
 
 **`Source`**
 
@@ -2689,11 +2703,11 @@
 
 [packages/formula/src/functions/spreadsheet/rowCount.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/rowCount.ts#L6)
 
----
+___
 
 ### <a id="spreadsheetspreadsheet" name="spreadsheetspreadsheet"></a> spreadsheetSpreadsheet
 
-• `Const` **spreadsheetSpreadsheet**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Spreadsheet"`, `false`, `true`, `false`, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }]\>
+• `Const` **spreadsheetSpreadsheet**: [`FunctionClause`](interfaces/FunctionClause.md)<``"Spreadsheet"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'array'; `type`: ``"Array"`` = 'Array' }]\>
 
 **`Source`**
 
@@ -2701,11 +2715,11 @@
 
 [packages/formula/src/functions/spreadsheet/spreadsheet.ts:99](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/spreadsheet.ts#L99)
 
----
+___
 
 ### <a id="spreadsheetsum" name="spreadsheetsum"></a> spreadsheetSum
 
-• `Const` **spreadsheetSum**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `true`, `false`, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }]\>
+• `Const` **spreadsheetSum**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }]\>
 
 **`Source`**
 
@@ -2713,11 +2727,11 @@
 
 [packages/formula/src/functions/spreadsheet/sum.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/sum.ts#L6)
 
----
+___
 
 ### <a id="spreadsheetsumifs" name="spreadsheetsumifs"></a> spreadsheetSumIfs
 
-• `Const` **spreadsheetSumIfs**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'column1'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'column2'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'condition'; `type`: ``"Predicate"`` = 'Predicate' }]\>
+• `Const` **spreadsheetSumIfs**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'column1'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'column2'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'condition'; `type`: ``"Predicate"`` = 'Predicate' }]\>
 
 **`Source`**
 
@@ -2725,11 +2739,11 @@
 
 [packages/formula/src/functions/spreadsheet/sumIfs.ts:31](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/sumIfs.ts#L31)
 
----
+___
 
 ### <a id="spreadsheetsumproduct" name="spreadsheetsumproduct"></a> spreadsheetSumProduct
 
-• `Const` **spreadsheetSumProduct**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'column1'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'column2'; `type`: ``"Column"`` = 'Column' }]\>
+• `Const` **spreadsheetSumProduct**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'column1'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'column2'; `type`: ``"Column"`` = 'Column' }]\>
 
 **`Source`**
 
@@ -2737,11 +2751,11 @@
 
 [packages/formula/src/functions/spreadsheet/sumProduct.ts:26](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/sumProduct.ts#L26)
 
----
+___
 
 ### <a id="spreadsheettorecordarray" name="spreadsheettorecordarray"></a> spreadsheetToRecordArray
 
-• `Const` **spreadsheetToRecordArray**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Array"`, `false`, `true`, `false`, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }]\>
+• `Const` **spreadsheetToRecordArray**: [`FunctionClause`](interfaces/FunctionClause.md)<``"Array"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }]\>
 
 **`Source`**
 
@@ -2749,11 +2763,11 @@
 
 [packages/formula/src/functions/spreadsheet/toRecordArray.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/toRecordArray.ts#L6)
 
----
+___
 
 ### <a id="spreadsheetvlookup" name="spreadsheetvlookup"></a> spreadsheetVlookup
 
-• `Const` **spreadsheetVlookup**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'match'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }, { `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }, { `default`: { `result`: ``true`` = true; `type`: ``"boolean"`` = 'boolean' } ; `name`: `string` = 'range'; `type`: ``"boolean"`` = 'boolean' }]\>
+• `Const` **spreadsheetVlookup**: [`FunctionClause`](interfaces/FunctionClause.md)<``"string"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'match'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'spreadsheet'; `type`: ``"Spreadsheet"`` = 'Spreadsheet' }, { `name`: `string` = 'column'; `type`: ``"Column"`` = 'Column' }, { `default`: { `result`: ``true`` = true; `type`: ``"boolean"`` = 'boolean' } ; `name`: `string` = 'range'; `type`: ``"boolean"`` = 'boolean' }]\>
 
 **`Source`**
 
@@ -2761,11 +2775,11 @@
 
 [packages/formula/src/functions/spreadsheet/vlookup.ts:55](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/vlookup.ts#L55)
 
----
+___
 
 ### <a id="spreadsheetxlookup" name="spreadsheetxlookup"></a> spreadsheetXlookup
 
-• `Const` **spreadsheetXlookup**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'lookupValue'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'lookupColumn'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'returnColumn'; `type`: ``"Column"`` = 'Column' }, { `default`: { `result`: `string` = ''; `type`: ``"string"`` = 'string' } ; `name`: `string` = 'notFoundValue'; `type`: ``"string"`` = 'string' }, { `default`: { `result`: `number` = 0; `type`: ``"number"`` = 'number' } ; `name`: `string` = 'matchMode'; `type`: ``"number"`` = 'number' }]\>
+• `Const` **spreadsheetXlookup**: [`FunctionClause`](interfaces/FunctionClause.md)<``"string"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'lookupValue'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'lookupColumn'; `type`: ``"Column"`` = 'Column' }, { `name`: `string` = 'returnColumn'; `type`: ``"Column"`` = 'Column' }, { `default`: { `result`: `string` = ''; `type`: ``"string"`` = 'string' } ; `name`: `string` = 'notFoundValue'; `type`: ``"string"`` = 'string' }, { `default`: { `result`: `number` = 0; `type`: ``"number"`` = 'number' } ; `name`: `string` = 'matchMode'; `type`: ``"number"`` = 'number' }]\>
 
 **`Source`**
 
@@ -2773,11 +2787,11 @@
 
 [packages/formula/src/functions/spreadsheet/xlookup.ts:51](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/xlookup.ts#L51)
 
----
+___
 
 ### <a id="stringlen" name="stringlen"></a> stringLen
 
-• `Const` **stringLen**: [`FunctionClause`](interfaces/FunctionClause.md)<`"number"`, `false`, `false`, `false`, [{ `name`: `string` = 'str'; `type`: ``"string"`` = 'string' }]\>
+• `Const` **stringLen**: [`FunctionClause`](interfaces/FunctionClause.md)<``"number"``, ``false``, ``false``, ``false``, [{ `name`: `string` = 'str'; `type`: ``"string"`` = 'string' }]\>
 
 **`Source`**
 
@@ -2785,7 +2799,7 @@
 
 [packages/formula/src/functions/string/len.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/string/len.ts#L6)
 
----
+___
 
 ### <a id="stringoperator" name="stringoperator"></a> stringOperator
 
@@ -2795,11 +2809,11 @@
 
 [packages/formula/src/grammar/operations/string.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/string.ts#L17)
 
----
+___
 
 ### <a id="stringsplit" name="stringsplit"></a> stringSplit
 
-• `Const` **stringSplit**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Array"`, `false`, `true`, `false`, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }, { `default`: { `result`: `string` = ''; `type`: ``"string"`` = 'string' } ; `name`: `string` = 'separator'; `type`: ``"string"`` = 'string' }]\>
+• `Const` **stringSplit**: [`FunctionClause`](interfaces/FunctionClause.md)<``"Array"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }, { `default`: { `result`: `string` = ''; `type`: ``"string"`` = 'string' } ; `name`: `string` = 'separator'; `type`: ``"string"`` = 'string' }]\>
 
 **`Source`**
 
@@ -2807,11 +2821,11 @@
 
 [packages/formula/src/functions/string/split.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/string/split.ts#L6)
 
----
+___
 
 ### <a id="stringstartwith" name="stringstartwith"></a> stringStartWith
 
-• `Const` **stringStartWith**: [`FunctionClause`](interfaces/FunctionClause.md)<`"boolean"`, `false`, `true`, `false`, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'prefix'; `type`: ``"string"`` = 'string' }]\>
+• `Const` **stringStartWith**: [`FunctionClause`](interfaces/FunctionClause.md)<``"boolean"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }, { `name`: `string` = 'prefix'; `type`: ``"string"`` = 'string' }]\>
 
 **`Source`**
 
@@ -2819,11 +2833,11 @@
 
 [packages/formula/src/functions/string/startWith.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/string/startWith.ts#L6)
 
----
+___
 
 ### <a id="stringtobar" name="stringtobar"></a> stringToBar
 
-• `Const` **stringToBar**: [`FunctionClause`](interfaces/FunctionClause.md)<`"Record"`, `false`, `true`, `false`, [{ `name`: `string` = 'record'; `type`: ``"Record"`` = 'Record' }]\>
+• `Const` **stringToBar**: [`FunctionClause`](interfaces/FunctionClause.md)<``"Record"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'record'; `type`: ``"Record"`` = 'Record' }]\>
 
 **`Source`**
 
@@ -2831,11 +2845,11 @@
 
 [packages/formula/src/functions/string/toBar.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/string/toBar.ts#L6)
 
----
+___
 
 ### <a id="stringtoqrcode" name="stringtoqrcode"></a> stringToQrcode
 
-• `Const` **stringToQrcode**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }]\>
+• `Const` **stringToQrcode**: [`FunctionClause`](interfaces/FunctionClause.md)<``"string"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'string'; `type`: ``"string"`` = 'string' }]\>
 
 **`Source`**
 
@@ -2843,11 +2857,11 @@
 
 [packages/formula/src/functions/string/toQrcode.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/string/toQrcode.ts#L6)
 
----
+___
 
 ### <a id="stringtrim" name="stringtrim"></a> stringTrim
 
-• `Const` **stringTrim**: [`FunctionClause`](interfaces/FunctionClause.md)<`"string"`, `false`, `true`, `false`, [{ `name`: `string` = 'str'; `type`: ``"string"`` = 'string' }]\>
+• `Const` **stringTrim**: [`FunctionClause`](interfaces/FunctionClause.md)<``"string"``, ``false``, ``true``, ``false``, [{ `name`: `string` = 'str'; `type`: ``"string"`` = 'string' }]\>
 
 **`Source`**
 
@@ -2855,7 +2869,7 @@
 
 [packages/formula/src/functions/string/trim.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/string/trim.ts#L6)
 
----
+___
 
 ### <a id="thisrecordoperator" name="thisrecordoperator"></a> thisRecordOperator
 
@@ -2865,7 +2879,7 @@
 
 [packages/formula/src/grammar/operations/thisRecord.ts:22](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/thisRecord.ts#L22)
 
----
+___
 
 ### <a id="thisrowoperator" name="thisrowoperator"></a> thisRowOperator
 
@@ -2875,7 +2889,7 @@
 
 [packages/formula/src/grammar/operations/thisRow.ts:22](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/thisRow.ts#L22)
 
----
+___
 
 ### <a id="tokenvocabulary" name="tokenvocabulary"></a> tokenVocabulary
 
@@ -2887,21 +2901,21 @@
 
 ## Functions
 
-### <a id="default_uuid_function" name="default_uuid_function"></a> DEFAULT_UUID_FUNCTION
+### <a id="default_uuid_function" name="default_uuid_function"></a> DEFAULT\_UUID\_FUNCTION
 
 ▸ **DEFAULT_UUID_FUNCTION**(`number`): `string`
 
 #### Parameters
 
-| Name     | Type     |
-| :------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `number` | `number` |
 
 #### Returns
 
 `string`
 
----
+___
 
 ### <a id="formulablocknamechangedtrigger" name="formulablocknamechangedtrigger"></a> FormulaBlockNameChangedTrigger
 
@@ -2909,15 +2923,15 @@
 
 #### Parameters
 
-| Name   | Type                                                                  |
-| :----- | :-------------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\> |
 
 #### Returns
 
 `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="formulablocknamedeletedtrigger" name="formulablocknamedeletedtrigger"></a> FormulaBlockNameDeletedTrigger
 
@@ -2925,15 +2939,15 @@
 
 #### Parameters
 
-| Name   | Type                                                                  |
-| :----- | :-------------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\> |
 
 #### Returns
 
 `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="formulablocknamemodifiedwithusername" name="formulablocknamemodifiedwithusername"></a> FormulaBlockNameModifiedWithUsername
 
@@ -2941,140 +2955,140 @@
 
 #### Parameters
 
-| Name   | Type                                                                  |
-| :----- | :-------------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\> |
 
 #### Returns
 
 `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="formulacontextnamechanged" name="formulacontextnamechanged"></a> FormulaContextNameChanged
 
-▸ **FormulaContextNameChanged**(`args`): `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\>, `Promise`<`void`\>\>
+▸ **FormulaContextNameChanged**(`args`): `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string`  }\>, `Promise`<`void`\>\>
 
 #### Parameters
 
-| Name   | Type                                                                                                 |
-| :----- | :--------------------------------------------------------------------------------------------------- |
-| `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\> |
+| Name | Type |
+| :------ | :------ |
+| `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string`  }\> |
 
 #### Returns
 
-`Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\>, `Promise`<`void`\>\>
+`Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string`  }\>, `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="formulacontextnameremove" name="formulacontextnameremove"></a> FormulaContextNameRemove
 
-▸ **FormulaContextNameRemove**(`args`): `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\>, `Promise`<`void`\>\>
+▸ **FormulaContextNameRemove**(`args`): `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string`  }\>, `Promise`<`void`\>\>
 
 #### Parameters
 
-| Name   | Type                                                                                                 |
-| :----- | :--------------------------------------------------------------------------------------------------- |
-| `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\> |
+| Name | Type |
+| :------ | :------ |
+| `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string`  }\> |
 
 #### Returns
 
-`Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\>, `Promise`<`void`\>\>
+`Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string`  }\>, `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="formulacontextticktrigger" name="formulacontextticktrigger"></a> FormulaContextTickTrigger
 
-▸ **FormulaContextTickTrigger**(`args`): `Event`<{ `domain`: `string` ; `state`: `any` }, `Promise`<`void`\>\>
+▸ **FormulaContextTickTrigger**(`args`): `Event`<{ `domain`: `string` ; `state`: `any`  }, `Promise`<`void`\>\>
 
 #### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
-| `args`        | `Object` |
+| Name | Type |
+| :------ | :------ |
+| `args` | `Object` |
 | `args.domain` | `string` |
-| `args.state`  | `any`    |
+| `args.state` | `any` |
 
 #### Returns
 
-`Event`<{ `domain`: `string` ; `state`: `any` }, `Promise`<`void`\>\>
+`Event`<{ `domain`: `string` ; `state`: `any`  }, `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="formuladocsoftdeleted" name="formuladocsoftdeleted"></a> FormulaDocSoftDeleted
 
-▸ **FormulaDocSoftDeleted**(`args`): `Event`<{ `id`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+▸ **FormulaDocSoftDeleted**(`args`): `Event`<{ `id`: `string` ; `username`: `string`  }, `Promise`<`void`\>\>
 
 #### Parameters
 
-| Name            | Type     |
-| :-------------- | :------- |
-| `args`          | `Object` |
-| `args.id`       | `string` |
+| Name | Type |
+| :------ | :------ |
+| `args` | `Object` |
+| `args.id` | `string` |
 | `args.username` | `string` |
 
 #### Returns
 
-`Event`<{ `id`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+`Event`<{ `id`: `string` ; `username`: `string`  }, `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="formulaspreadsheetdeleted" name="formulaspreadsheetdeleted"></a> FormulaSpreadsheetDeleted
 
-▸ **FormulaSpreadsheetDeleted**(`args`): `Event`<{ `id`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+▸ **FormulaSpreadsheetDeleted**(`args`): `Event`<{ `id`: `string` ; `username`: `string`  }, `Promise`<`void`\>\>
 
 #### Parameters
 
-| Name            | Type     |
-| :-------------- | :------- |
-| `args`          | `Object` |
-| `args.id`       | `string` |
+| Name | Type |
+| :------ | :------ |
+| `args` | `Object` |
+| `args.id` | `string` |
 | `args.username` | `string` |
 
 #### Returns
 
-`Event`<{ `id`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+`Event`<{ `id`: `string` ; `username`: `string`  }, `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="formulataskcompleted" name="formulataskcompleted"></a> FormulaTaskCompleted
 
-▸ **FormulaTaskCompleted**(`args`): `Event`<{ `namespaceId`: `string` ; `task`: [`VariableTask`](README.md#variabletask) ; `username`: `string` ; `variableId`: `string` }, `Promise`<`void`\>\>
+▸ **FormulaTaskCompleted**(`args`): `Event`<{ `namespaceId`: `string` ; `task`: [`VariableTask`](README.md#variabletask) ; `username`: `string` ; `variableId`: `string`  }, `Promise`<`void`\>\>
 
 #### Parameters
 
-| Name               | Type                                     |
-| :----------------- | :--------------------------------------- |
-| `args`             | `Object`                                 |
-| `args.namespaceId` | `string`                                 |
-| `args.task`        | [`VariableTask`](README.md#variabletask) |
-| `args.username`    | `string`                                 |
-| `args.variableId`  | `string`                                 |
+| Name | Type |
+| :------ | :------ |
+| `args` | `Object` |
+| `args.namespaceId` | `string` |
+| `args.task` | [`VariableTask`](README.md#variabletask) |
+| `args.username` | `string` |
+| `args.variableId` | `string` |
 
 #### Returns
 
-`Event`<{ `namespaceId`: `string` ; `task`: [`VariableTask`](README.md#variabletask) ; `username`: `string` ; `variableId`: `string` }, `Promise`<`void`\>\>
+`Event`<{ `namespaceId`: `string` ; `task`: [`VariableTask`](README.md#variabletask) ; `username`: `string` ; `variableId`: `string`  }, `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="formulatickviaid" name="formulatickviaid"></a> FormulaTickViaId
 
-▸ **FormulaTickViaId**(`args`): `Event`<{ `namespaceId`: `string` ; `uuid`: `string` ; `variableId`: `string` }, `Promise`<`void`\>\>
+▸ **FormulaTickViaId**(`args`): `Event`<{ `namespaceId`: `string` ; `uuid`: `string` ; `variableId`: `string`  }, `Promise`<`void`\>\>
 
 #### Parameters
 
-| Name               | Type     |
-| :----------------- | :------- |
-| `args`             | `Object` |
+| Name | Type |
+| :------ | :------ |
+| `args` | `Object` |
 | `args.namespaceId` | `string` |
-| `args.uuid`        | `string` |
-| `args.variableId`  | `string` |
+| `args.uuid` | `string` |
+| `args.variableId` | `string` |
 
 #### Returns
 
-`Event`<{ `namespaceId`: `string` ; `uuid`: `string` ; `variableId`: `string` }, `Promise`<`void`\>\>
+`Event`<{ `namespaceId`: `string` ; `uuid`: `string` ; `variableId`: `string`  }, `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="formulaupdatedviaid" name="formulaupdatedviaid"></a> FormulaUpdatedViaId
 
@@ -3082,15 +3096,15 @@
 
 #### Parameters
 
-| Name   | Type                                                                                                                |
-| :----- | :------------------------------------------------------------------------------------------------------------------ |
+| Name | Type |
+| :------ | :------ |
 | `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<[`VariableInterface`](interfaces/VariableInterface.md)\> |
 
 #### Returns
 
 `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<[`VariableInterface`](interfaces/VariableInterface.md)\>, `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="formulavariabledependencyupdated" name="formulavariabledependencyupdated"></a> FormulaVariableDependencyUpdated
 
@@ -3098,15 +3112,15 @@
 
 #### Parameters
 
-| Name   | Type                                                                                                                    |
-| :----- | :---------------------------------------------------------------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<[`VariableDependency`](interfaces/VariableDependency.md)[]\> |
 
 #### Returns
 
 `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<[`VariableDependency`](interfaces/VariableDependency.md)[]\>, `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="spreadsheetreloadviaid" name="spreadsheetreloadviaid"></a> SpreadsheetReloadViaId
 
@@ -3114,36 +3128,36 @@
 
 #### Parameters
 
-| Name   | Type                                                                     |
-| :----- | :----------------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `args` | [`SpreadsheetUpdateNamePayload`](README.md#spreadsheetupdatenamepayload) |
 
 #### Returns
 
 `Event`<[`SpreadsheetUpdateNamePayload`](README.md#spreadsheetupdatenamepayload), `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="spreadsheetupdatecolumnsviaid" name="spreadsheetupdatecolumnsviaid"></a> SpreadsheetUpdateColumnsViaId
 
-▸ **SpreadsheetUpdateColumnsViaId**(`args`): `Event`<{ `columns`: [`Column`](interfaces/Column.md)[] ; `key`: `string` ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+▸ **SpreadsheetUpdateColumnsViaId**(`args`): `Event`<{ `columns`: [`Column`](interfaces/Column.md)[] ; `key`: `string` ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `string`  }, `Promise`<`void`\>\>
 
 #### Parameters
 
-| Name                 | Type                               |
-| :------------------- | :--------------------------------- |
-| `args`               | `Object`                           |
-| `args.columns`       | [`Column`](interfaces/Column.md)[] |
-| `args.key`           | `string`                           |
-| `args.namespaceId`   | `string`                           |
-| `args.spreadsheetId` | `string`                           |
-| `args.username`      | `string`                           |
+| Name | Type |
+| :------ | :------ |
+| `args` | `Object` |
+| `args.columns` | [`Column`](interfaces/Column.md)[] |
+| `args.key` | `string` |
+| `args.namespaceId` | `string` |
+| `args.spreadsheetId` | `string` |
+| `args.username` | `string` |
 
 #### Returns
 
-`Event`<{ `columns`: [`Column`](interfaces/Column.md)[] ; `key`: `string` ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+`Event`<{ `columns`: [`Column`](interfaces/Column.md)[] ; `key`: `string` ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `string`  }, `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="spreadsheetupdatenameviaid" name="spreadsheetupdatenameviaid"></a> SpreadsheetUpdateNameViaId
 
@@ -3151,54 +3165,54 @@
 
 #### Parameters
 
-| Name   | Type                                                                  |
-| :----- | :-------------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `args` | [`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\> |
 
 #### Returns
 
 `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="spreadsheetupdaterowsviaid" name="spreadsheetupdaterowsviaid"></a> SpreadsheetUpdateRowsViaId
 
-▸ **SpreadsheetUpdateRowsViaId**(`args`): `Event`<{ `key`: `string` ; `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+▸ **SpreadsheetUpdateRowsViaId**(`args`): `Event`<{ `key`: `string` ; `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `string`  }, `Promise`<`void`\>\>
 
 #### Parameters
 
-| Name                 | Type                         |
-| :------------------- | :--------------------------- |
-| `args`               | `Object`                     |
-| `args.key`           | `string`                     |
-| `args.namespaceId`   | `string`                     |
-| `args.rows`          | [`Row`](interfaces/Row.md)[] |
-| `args.spreadsheetId` | `string`                     |
-| `args.username`      | `string`                     |
+| Name | Type |
+| :------ | :------ |
+| `args` | `Object` |
+| `args.key` | `string` |
+| `args.namespaceId` | `string` |
+| `args.rows` | [`Row`](interfaces/Row.md)[] |
+| `args.spreadsheetId` | `string` |
+| `args.username` | `string` |
 
 #### Returns
 
-`Event`<{ `key`: `string` ; `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+`Event`<{ `key`: `string` ; `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `string`  }, `Promise`<`void`\>\>
 
----
+___
 
 ### <a id="accessattribute" name="accessattribute"></a> accessAttribute
 
-▸ **accessAttribute**(`interpreter`, `result`, `key`): `Promise`<`Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>\>
+▸ **accessAttribute**(`interpreter`, `result`, `key`): `Promise`<`Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\>\>
 
 #### Parameters
 
-| Name          | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `interpreter` | [`FormulaInterpreter`](classes/FormulaInterpreter.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `result`      | `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> |
-| `key`         | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Name | Type |
+| :------ | :------ |
+| `interpreter` | [`FormulaInterpreter`](classes/FormulaInterpreter.md) |
+| `result` | `Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> |
+| `key` | `string` |
 
 #### Returns
 
-`Promise`<`Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>\>
+`Promise`<`Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\>\>
 
----
+___
 
 ### <a id="appendformulas" name="appendformulas"></a> appendFormulas
 
@@ -3206,16 +3220,16 @@
 
 #### Parameters
 
-| Name             | Type                                                 |
-| :--------------- | :--------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `formulaContext` | [`ContextInterface`](interfaces/ContextInterface.md) |
-| `formulas`       | [`BaseFormula`](interfaces/BaseFormula.md)[]         |
+| `formulas` | [`BaseFormula`](interfaces/BaseFormula.md)[] |
 
 #### Returns
 
 `Promise`<`void`\>
 
----
+___
 
 ### <a id="applycompletion" name="applycompletion"></a> applyCompletion
 
@@ -3223,16 +3237,16 @@
 
 #### Parameters
 
-| Name         | Type                                               |
-| :----------- | :------------------------------------------------- |
-| `ctx`        | [`FunctionContext`](interfaces/FunctionContext.md) |
-| `completion` | [`Completion`](README.md#completion)               |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | [`FunctionContext`](interfaces/FunctionContext.md) |
+| `completion` | [`Completion`](README.md#completion) |
 
 #### Returns
 
 `CompleteResult`
 
----
+___
 
 ### <a id="applyformat" name="applyformat"></a> applyFormat
 
@@ -3242,21 +3256,21 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name  | Type                                               |
-| :---- | :------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `ctx` | [`FunctionContext`](interfaces/FunctionContext.md) |
 
 #### Returns
 
 `Object`
 
-| Name     | Type           |
-| :------- | :------------- |
+| Name | Type |
+| :------ | :------ |
 | `format` | `FormatResult` |
 | `minify` | `FormatResult` |
-| `valid`  | `boolean`      |
+| `valid` | `boolean` |
 
----
+___
 
 ### <a id="attrs2completion" name="attrs2completion"></a> attrs2completion
 
@@ -3264,17 +3278,17 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name             | Type                                                 |
-| :--------------- | :--------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `formulaContext` | [`ContextInterface`](interfaces/ContextInterface.md) |
-| `attrs`          | [`CodeFragmentAttrs`](README.md#codefragmentattrs)   |
-| `pageId`         | `string`                                             |
+| `attrs` | [`CodeFragmentAttrs`](README.md#codefragmentattrs) |
+| `pageId` | `string` |
 
 #### Returns
 
 `undefined` \| [`Completion`](README.md#completion)
 
----
+___
 
 ### <a id="attrstocolortype" name="attrstocolortype"></a> attrsToColorType
 
@@ -3282,15 +3296,15 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name                | Type                                     |
-| :------------------ | :--------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `__namedParameters` | [`CodeFragment`](README.md#codefragment) |
 
 #### Returns
 
 `string`
 
----
+___
 
 ### <a id="block2codefragment" name="block2codefragment"></a> block2codeFragment
 
@@ -3298,16 +3312,16 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name     | Type                                   |
-| :------- | :------------------------------------- |
-| `block`  | [`BlockType`](interfaces/BlockType.md) |
-| `pageId` | `string`                               |
+| Name | Type |
+| :------ | :------ |
+| `block` | [`BlockType`](interfaces/BlockType.md) |
+| `pageId` | `string` |
 
 #### Returns
 
 [`CodeFragment`](README.md#codefragment)
 
----
+___
 
 ### <a id="block2completion" name="block2completion"></a> block2completion
 
@@ -3315,17 +3329,17 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name     | Type                                                 |
-| :------- | :--------------------------------------------------- |
-| `ctx`    | [`ContextInterface`](interfaces/ContextInterface.md) |
-| `block`  | [`BlockType`](interfaces/BlockType.md)               |
-| `pageId` | `string`                                             |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | [`ContextInterface`](interfaces/ContextInterface.md) |
+| `block` | [`BlockType`](interfaces/BlockType.md) |
+| `pageId` | `string` |
 
 #### Returns
 
 [`BlockCompletion`](interfaces/BlockCompletion.md)
 
----
+___
 
 ### <a id="blockkey-1" name="blockkey-1"></a> blockKey
 
@@ -3333,15 +3347,15 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
 
 #### Returns
 
 \`#${string}\`
 
----
+___
 
 ### <a id="buildevent" name="buildevent"></a> buildEvent
 
@@ -3349,14 +3363,14 @@ Apply format to the formula.
 
 #### Type parameters
 
-| Name   | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Args` | extends (readonly [``"empty_sync"``, `any`] \| readonly [``"empty_async"``, `any`] \| readonly [``"blockChangeName"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `name`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| readonly [``"blockDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetChangeName"``, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `spreadsheetId`: `string` ; `title`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"columnChange"`, `OmitUsername`<(`__namedParameters`: { `columns`: [`Column`](interfaces/Column.md)[] ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"rowChange"`, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"variableInsertOnly"`, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| readonly [`"variableInsertAndAwait"`, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| readonly [``"variableDelete"``, {}] \| readonly [`"variableUpdateDefinition"`, [`FormulaDefinition`](interfaces/FormulaDefinition.md)])[] |
+| Name | Type |
+| :------ | :------ |
+| `Args` | extends (readonly [``"empty_sync"``, `any`] \| readonly [``"empty_async"``, `any`] \| readonly [``"blockChangeName"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `name`: `string` ; `username`: `string`  }) => `Promise`<`void`\>\>] \| readonly [``"blockDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `string`  }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetChangeName"``, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `spreadsheetId`: `string` ; `title`: `string` ; `username`: `undefined` \| `string`  }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `undefined` \| `string`  }) => `Promise`<`void`\>\>] \| readonly [``"columnChange"``, `OmitUsername`<(`__namedParameters`: { `columns`: [`Column`](interfaces/Column.md)[] ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string`  }) => `Promise`<`void`\>\>] \| readonly [``"rowChange"``, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string`  }) => `Promise`<`void`\>\>] \| readonly [``"variableInsertOnly"``, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| readonly [``"variableInsertAndAwait"``, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| readonly [``"variableDelete"``, {}] \| readonly [``"variableUpdateDefinition"``, [`FormulaDefinition`](interfaces/FormulaDefinition.md)])[] |
 
 #### Parameters
 
-| Name    | Type   |
-| :------ | :----- |
+| Name | Type |
+| :------ | :------ |
 | `input` | `Args` |
 
 #### Returns
@@ -3367,15 +3381,15 @@ Apply format to the formula.
 
 ##### Parameters
 
-| Name  | Type                                   |
-| :---- | :------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `ctx` | [`ExtendedCtx`](README.md#extendedctx) |
 
 ##### Returns
 
 `Promise`<`void`\>
 
----
+___
 
 ### <a id="buildfunctionkey" name="buildfunctionkey"></a> buildFunctionKey
 
@@ -3383,17 +3397,17 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name             | Type      |
-| :--------------- | :-------- |
-| `group`          | `string`  |
-| `name`           | `string`  |
+| Name | Type |
+| :------ | :------ |
+| `group` | `string` |
+| `name` | `string` |
 | `disableUpcase?` | `boolean` |
 
 #### Returns
 
 `string`
 
----
+___
 
 ### <a id="buildpredicate" name="buildpredicate"></a> buildPredicate
 
@@ -3401,15 +3415,15 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name                | Type                                      |
-| :------------------ | :---------------------------------------- |
-| `__namedParameters` | `Omit`<`FormulaPredicateType`, `"dump"`\> |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Omit`<`FormulaPredicateType`, ``"dump"``\> |
 
 #### Returns
 
 [`PredicateFunction`](README.md#predicatefunction)
 
----
+___
 
 ### <a id="buildtestcases" name="buildtestcases"></a> buildTestCases
 
@@ -3417,21 +3431,21 @@ Apply format to the formula.
 
 #### Type parameters
 
-| Name       |
-| :--------- |
+| Name |
+| :------ |
 | `TestCase` |
 
 #### Parameters
 
-| Name   | Type                                       |
-| :----- | :----------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `name` | [`TestCaseName`](README.md#testcasename)[] |
 
 #### Returns
 
 [[`TestCaseInput`](interfaces/TestCaseInput.md), `TestCase`[]]
 
----
+___
 
 ### <a id="cast" name="cast"></a> cast
 
@@ -3439,40 +3453,40 @@ Apply format to the formula.
 
 #### Type parameters
 
-| Name    | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| :------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `T`     | extends `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| `Value` | extends `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `Dump`  | extends `Omit`<`FormulaErrorType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`ErrorType`, `string`] } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `number` } \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `boolean` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `null` } \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `"Blank"` } \| `Omit`<`FormulaRecordType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `Record`<`string`, `any`\> } \| `Omit`<`FormulaArrayType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `any`[] } \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, `string`] } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)] } \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)] } \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<`FormulaPredicateType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `null` } |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` |
+| `Value` | extends `Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> |
+| `Dump` | extends `Omit`<`FormulaErrorType`, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: [`ErrorType`, `string`]  } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `number`  } \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `boolean`  } \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: ``null``  } \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: ``"Blank"``  } \| `Omit`<`FormulaRecordType`, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `Record`<`string`, `any`\>  } \| `Omit`<`FormulaArrayType`, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `any`[]  } \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: [`string`, `string`]  } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)]  } \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)]  } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)]  } \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<`FormulaPredicateType`, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: ``null``  } |
 
 #### Parameters
 
-| Name   | Type                                                 |
-| :----- | :--------------------------------------------------- |
-| `dump` | `Dump`                                               |
-| `ctx`  | [`ContextInterface`](interfaces/ContextInterface.md) |
+| Name | Type |
+| :------ | :------ |
+| `dump` | `Dump` |
+| `ctx` | [`ContextInterface`](interfaces/ContextInterface.md) |
 
 #### Returns
 
 `Value`
 
----
+___
 
 ### <a id="castdata" name="castdata"></a> castData
 
-▸ **castData**(`data`): `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>
+▸ **castData**(`data`): `Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\>
 
 #### Parameters
 
-| Name   | Type  |
-| :----- | :---- |
+| Name | Type |
+| :------ | :------ |
 | `data` | `any` |
 
 #### Returns
 
-`Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>
+`Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\>
 
----
+___
 
 ### <a id="castnumber" name="castnumber"></a> castNumber
 
@@ -3480,15 +3494,15 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name   | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| :----- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data` | `undefined` \| `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> |
+| Name | Type |
+| :------ | :------ |
+| `data` | `undefined` \| `Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> |
 
 #### Returns
 
 `number`
 
----
+___
 
 ### <a id="castvariable" name="castvariable"></a> castVariable
 
@@ -3496,17 +3510,17 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name                | Type                                                                  |
-| :------------------ | :-------------------------------------------------------------------- |
-| `oldVariable`       | `undefined` \| [`VariableInterface`](interfaces/VariableInterface.md) |
-| `formulaContext`    | [`ContextInterface`](interfaces/ContextInterface.md)                  |
-| `__namedParameters` | [`BaseFormula`](interfaces/BaseFormula.md)                            |
+| Name | Type |
+| :------ | :------ |
+| `oldVariable` | `undefined` \| [`VariableInterface`](interfaces/VariableInterface.md) |
+| `formulaContext` | [`ContextInterface`](interfaces/ContextInterface.md) |
+| `__namedParameters` | [`BaseFormula`](interfaces/BaseFormula.md) |
 
 #### Returns
 
 `Promise`<[`VariableInterface`](interfaces/VariableInterface.md)\>
 
----
+___
 
 ### <a id="checkvalidname" name="checkvalidname"></a> checkValidName
 
@@ -3514,15 +3528,15 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name   | Type     |
-| :----- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `name` | `string` |
 
 #### Returns
 
 `boolean`
 
----
+___
 
 ### <a id="cleanupeventdependency" name="cleanupeventdependency"></a> cleanupEventDependency
 
@@ -3530,16 +3544,16 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name           | Type                                                         |
-| :------------- | :----------------------------------------------------------- |
-| `label`        | `string`                                                     |
+| Name | Type |
+| :------ | :------ |
+| `label` | `string` |
 | `dependencies` | [`EventDependency`](interfaces/EventDependency.md)<`any`\>[] |
 
 #### Returns
 
 [`EventDependency`](interfaces/EventDependency.md)<`any`\>[]
 
----
+___
 
 ### <a id="codefragment2string" name="codefragment2string"></a> codeFragment2string
 
@@ -3547,15 +3561,15 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name           | Type                                     |
-| :------------- | :--------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `codeFragment` | [`CodeFragment`](README.md#codefragment) |
 
 #### Returns
 
 `string`
 
----
+___
 
 ### <a id="codefragment2value" name="codefragment2value"></a> codeFragment2value
 
@@ -3563,16 +3577,16 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name                | Type                                     |
-| :------------------ | :--------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `__namedParameters` | [`CodeFragment`](README.md#codefragment) |
-| `pageId`            | `undefined` \| `string`                  |
+| `pageId` | `undefined` \| `string` |
 
 #### Returns
 
 `string`
 
----
+___
 
 ### <a id="codefragments2definition" name="codefragments2definition"></a> codeFragments2definition
 
@@ -3580,16 +3594,16 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name            | Type                                       |
-| :-------------- | :----------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `codeFragments` | [`CodeFragment`](README.md#codefragment)[] |
-| `pageId`        | `string`                                   |
+| `pageId` | `string` |
 
 #### Returns
 
 `string`
 
----
+___
 
 ### <a id="column2attrs" name="column2attrs"></a> column2attrs
 
@@ -3597,15 +3611,15 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name     | Type                                     |
-| :------- | :--------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `column` | [`ColumnType`](interfaces/ColumnType.md) |
 
 #### Returns
 
 [`CodeFragmentAttrs`](README.md#codefragmentattrs)
 
----
+___
 
 ### <a id="column2codefragment" name="column2codefragment"></a> column2codeFragment
 
@@ -3613,16 +3627,16 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name     | Type                                     |
-| :------- | :--------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `column` | [`ColumnType`](interfaces/ColumnType.md) |
-| `pageId` | `string`                                 |
+| `pageId` | `string` |
 
 #### Returns
 
 [`CodeFragment`](README.md#codefragment)
 
----
+___
 
 ### <a id="columndisplayindex" name="columndisplayindex"></a> columnDisplayIndex
 
@@ -3630,15 +3644,15 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name    | Type     |
-| :------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `index` | `number` |
 
 #### Returns
 
 `string`
 
----
+___
 
 ### <a id="createfunctionclause" name="createfunctionclause"></a> createFunctionClause
 
@@ -3646,26 +3660,26 @@ Apply format to the formula.
 
 #### Type parameters
 
-| Name          | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Return`      | extends `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| readonly [``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"``, ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"``] |
-| `Async`       | extends `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `Chain`       | extends `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `AcceptError` | extends `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `Arguments`   | extends [...args: (Chain extends true ? [firstArgs: Argument<"string" \| "number" \| "boolean" \| "null" \| "Block" \| "Button" \| "Switch" \| "Date" \| "Blank" \| "Record" \| "Array" \| "Error" \| "Spreadsheet" \| "Row" \| "Cell" \| "Column" \| "Range" \| "Cst" \| "Reference" \| "Function" \| "Predicate" \| "literal" \| "Pending" \| "Waiting" \| "NoPersist"\>, ...args: Argument<"string" \| "number" \| "boolean" \| "null" \| "Block" \| "Button" \| "Switch" \| "Date" \| "Blank" \| "Record" \| "Array" \| "Error" \| "Spreadsheet" \| "Row" \| "Cell" \| "Column" \| "Range" \| "Cst" \| "Reference" \| "Function" \| "Predicate" \| "literal" \| "Pending" \| "Waiting" \| "NoPersist"\>[]] : Argument<"string" \| "number" \| "boolean" \| "null" \| "Block" \| "Button" \| "Switch" \| "Date" \| "Blank" \| "Record" \| "Array" \| "Error" \| "Spreadsheet" \| "Row" \| "Cell" \| "Column" \| "Range" \| "Cst" \| "Reference" \| "Function" \| "Predicate" \| "literal" \| "Pending" \| "Waiting" \| "NoPersist"\>[])[]]                                                                                                                                                                        |
-| `RealReturn`  | extends `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` = `FlattenType`<`Return`, `never`\>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Name | Type |
+| :------ | :------ |
+| `Return` | extends ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| readonly [``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"``, ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"``] |
+| `Async` | extends `boolean` |
+| `Chain` | extends `boolean` |
+| `AcceptError` | extends `boolean` |
+| `Arguments` | extends [...args: (Chain extends true ? [firstArgs: Argument<"string" \| "number" \| "boolean" \| "null" \| "Block" \| "Button" \| "Switch" \| "Date" \| "Blank" \| "Record" \| "Array" \| "Error" \| "Spreadsheet" \| "Row" \| "Cell" \| "Column" \| "Range" \| "Cst" \| "Reference" \| "Function" \| "Predicate" \| "literal" \| "Pending" \| "Waiting" \| "NoPersist"\>, ...args: Argument<"string" \| "number" \| "boolean" \| "null" \| "Block" \| "Button" \| "Switch" \| "Date" \| "Blank" \| "Record" \| "Array" \| "Error" \| "Spreadsheet" \| "Row" \| "Cell" \| "Column" \| "Range" \| "Cst" \| "Reference" \| "Function" \| "Predicate" \| "literal" \| "Pending" \| "Waiting" \| "NoPersist"\>[]] : Argument<"string" \| "number" \| "boolean" \| "null" \| "Block" \| "Button" \| "Switch" \| "Date" \| "Blank" \| "Record" \| "Array" \| "Error" \| "Spreadsheet" \| "Row" \| "Cell" \| "Column" \| "Range" \| "Cst" \| "Reference" \| "Function" \| "Predicate" \| "literal" \| "Pending" \| "Waiting" \| "NoPersist"\>[])[]] |
+| `RealReturn` | extends ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` = `FlattenType`<`Return`, `never`\> |
 
 #### Parameters
 
-| Name | Type                                                                                                          |
-| :--- | :------------------------------------------------------------------------------------------------------------ |
-| `t`  | [`FunctionClause`](interfaces/FunctionClause.md)<`RealReturn`, `Async`, `Chain`, `AcceptError`, `Arguments`\> |
+| Name | Type |
+| :------ | :------ |
+| `t` | [`FunctionClause`](interfaces/FunctionClause.md)<`RealReturn`, `Async`, `Chain`, `AcceptError`, `Arguments`\> |
 
 #### Returns
 
 [`FunctionClause`](interfaces/FunctionClause.md)<`RealReturn`, `Async`, `Chain`, `AcceptError`, `Arguments`\>
 
----
+___
 
 ### <a id="createvariabletask" name="createvariabletask"></a> createVariableTask
 
@@ -3673,15 +3687,15 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name                | Type        |
-| :------------------ | :---------- |
+| Name | Type |
+| :------ | :------ |
 | `__namedParameters` | `TaskInput` |
 
 #### Returns
 
 [`VariableTask`](README.md#variabletask)
 
----
+___
 
 ### <a id="currentblockkey" name="currentblockkey"></a> currentBlockKey
 
@@ -3689,16 +3703,16 @@ Apply format to the formula.
 
 #### Parameters
 
-| Name          | Type                    |
-| :------------ | :---------------------- |
-| `namespaceId` | `string`                |
-| `pageId`      | `undefined` \| `string` |
+| Name | Type |
+| :------ | :------ |
+| `namespaceId` | `string` |
+| `pageId` | `undefined` \| `string` |
 
 #### Returns
 
 \`#${string}\`
 
----
+___
 
 ### <a id="dispatchformulablocknamechange" name="dispatchformulablocknamechange"></a> dispatchFormulaBlockNameChange
 
@@ -3708,18 +3722,18 @@ Dispatch Block Rename Event.
 
 #### Parameters
 
-| Name                         | Type     |
-| :--------------------------- | :------- |
-| `__namedParameters`          | `Object` |
-| `__namedParameters.id`       | `string` |
-| `__namedParameters.name`     | `string` |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+| `__namedParameters.id` | `string` |
+| `__namedParameters.name` | `string` |
 | `__namedParameters.username` | `string` |
 
 #### Returns
 
 `Promise`<`void`\>
 
----
+___
 
 ### <a id="dispatchformulablocksoftdelete" name="dispatchformulablocksoftdelete"></a> dispatchFormulaBlockSoftDelete
 
@@ -3729,17 +3743,17 @@ Dispatch Block Delete Event.
 
 #### Parameters
 
-| Name                         | Type     |
-| :--------------------------- | :------- |
-| `__namedParameters`          | `Object` |
-| `__namedParameters.id`       | `string` |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+| `__namedParameters.id` | `string` |
 | `__namedParameters.username` | `string` |
 
 #### Returns
 
 `Promise`<`void`\>
 
----
+___
 
 ### <a id="dispatchformulaspreadsheetcolumnchange" name="dispatchformulaspreadsheetcolumnchange"></a> dispatchFormulaSpreadsheetColumnChange
 
@@ -3747,19 +3761,19 @@ Dispatch Block Delete Event.
 
 #### Parameters
 
-| Name                              | Type                               |
-| :-------------------------------- | :--------------------------------- |
-| `__namedParameters`               | `Object`                           |
-| `__namedParameters.columns`       | [`Column`](interfaces/Column.md)[] |
-| `__namedParameters.namespaceId`   | `string`                           |
-| `__namedParameters.spreadsheetId` | `string`                           |
-| `__namedParameters.username`      | `undefined` \| `string`            |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+| `__namedParameters.columns` | [`Column`](interfaces/Column.md)[] |
+| `__namedParameters.namespaceId` | `string` |
+| `__namedParameters.spreadsheetId` | `string` |
+| `__namedParameters.username` | `undefined` \| `string` |
 
 #### Returns
 
 `Promise`<`void`\>
 
----
+___
 
 ### <a id="dispatchformulaspreadsheetnamechange" name="dispatchformulaspreadsheetnamechange"></a> dispatchFormulaSpreadsheetNameChange
 
@@ -3767,19 +3781,19 @@ Dispatch Block Delete Event.
 
 #### Parameters
 
-| Name                              | Type                    |
-| :-------------------------------- | :---------------------- |
-| `__namedParameters`               | `Object`                |
-| `__namedParameters.namespaceId`   | `string`                |
-| `__namedParameters.spreadsheetId` | `string`                |
-| `__namedParameters.title`         | `string`                |
-| `__namedParameters.username`      | `undefined` \| `string` |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+| `__namedParameters.namespaceId` | `string` |
+| `__namedParameters.spreadsheetId` | `string` |
+| `__namedParameters.title` | `string` |
+| `__namedParameters.username` | `undefined` \| `string` |
 
 #### Returns
 
 `Promise`<`void`\>
 
----
+___
 
 ### <a id="dispatchformulaspreadsheetremove" name="dispatchformulaspreadsheetremove"></a> dispatchFormulaSpreadsheetRemove
 
@@ -3787,17 +3801,17 @@ Dispatch Block Delete Event.
 
 #### Parameters
 
-| Name                         | Type                    |
-| :--------------------------- | :---------------------- |
-| `__namedParameters`          | `Object`                |
-| `__namedParameters.id`       | `string`                |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+| `__namedParameters.id` | `string` |
 | `__namedParameters.username` | `undefined` \| `string` |
 
 #### Returns
 
 `Promise`<`void`\>
 
----
+___
 
 ### <a id="dispatchformulaspreadsheetrowchange" name="dispatchformulaspreadsheetrowchange"></a> dispatchFormulaSpreadsheetRowChange
 
@@ -3805,19 +3819,19 @@ Dispatch Block Delete Event.
 
 #### Parameters
 
-| Name                              | Type                         |
-| :-------------------------------- | :--------------------------- |
-| `__namedParameters`               | `Object`                     |
-| `__namedParameters.namespaceId`   | `string`                     |
-| `__namedParameters.rows`          | [`Row`](interfaces/Row.md)[] |
-| `__namedParameters.spreadsheetId` | `string`                     |
-| `__namedParameters.username`      | `undefined` \| `string`      |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+| `__namedParameters.namespaceId` | `string` |
+| `__namedParameters.rows` | [`Row`](interfaces/Row.md)[] |
+| `__namedParameters.spreadsheetId` | `string` |
+| `__namedParameters.username` | `undefined` \| `string` |
 
 #### Returns
 
 `Promise`<`void`\>
 
----
+___
 
 ### <a id="display" name="display"></a> display
 
@@ -3825,23 +3839,23 @@ Dispatch Block Delete Event.
 
 #### Type parameters
 
-| Name      | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `T`       | extends `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| `Value`   | extends `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| `Display` | extends `Omit`<`FormulaErrorType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<`FormulaRecordType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<`FormulaArrayType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<`FormulaPredicateType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` |
+| `Value` | extends `Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> |
+| `Display` | extends `Omit`<`FormulaErrorType`, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<`FormulaRecordType`, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<`FormulaArrayType`, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<`FormulaPredicateType`, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } |
 
 #### Parameters
 
-| Name | Type    |
-| :--- | :------ |
-| `v`  | `Value` |
+| Name | Type |
+| :------ | :------ |
+| `v` | `Value` |
 
 #### Returns
 
 `Display`
 
----
+___
 
 ### <a id="dump" name="dump"></a> dump
 
@@ -3849,23 +3863,23 @@ Dispatch Block Delete Event.
 
 #### Type parameters
 
-| Name    | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| :------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `T`     | extends `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| `Value` | extends `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `Dump`  | extends `Omit`<`FormulaErrorType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`ErrorType`, `string`] } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `number` } \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `boolean` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `null` } \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `"Blank"` } \| `Omit`<`FormulaRecordType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `Record`<`string`, `any`\> } \| `Omit`<`FormulaArrayType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `any`[] } \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, `string`] } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)] } \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)] } \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<`FormulaPredicateType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `null` } |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` |
+| `Value` | extends `Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> |
+| `Dump` | extends `Omit`<`FormulaErrorType`, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: [`ErrorType`, `string`]  } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `number`  } \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `boolean`  } \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: ``null``  } \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: ``"Blank"``  } \| `Omit`<`FormulaRecordType`, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `Record`<`string`, `any`\>  } \| `Omit`<`FormulaArrayType`, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `any`[]  } \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: [`string`, `string`]  } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)]  } \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)]  } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)]  } \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<`FormulaPredicateType`, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: `string`  } \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"meta"`` \| ``"result"`` \| ``"dump"``\> & { `result`: ``null``  } |
 
 #### Parameters
 
-| Name | Type    |
-| :--- | :------ |
-| `v`  | `Value` |
+| Name | Type |
+| :------ | :------ |
+| `v` | `Value` |
 
 #### Returns
 
 `Dump`
 
----
+___
 
 ### <a id="dumpdisplayresultfordisplay" name="dumpdisplayresultfordisplay"></a> dumpDisplayResultForDisplay
 
@@ -3873,15 +3887,15 @@ Dispatch Block Delete Event.
 
 #### Parameters
 
-| Name | Type                                         |
-| :--- | :------------------------------------------- |
-| `t`  | [`VariableData`](interfaces/VariableData.md) |
+| Name | Type |
+| :------ | :------ |
+| `t` | [`VariableData`](interfaces/VariableData.md) |
 
 #### Returns
 
 [`VariableDisplayData`](interfaces/VariableDisplayData.md)
 
----
+___
 
 ### <a id="dumpvalue" name="dumpvalue"></a> dumpValue
 
@@ -3889,16 +3903,16 @@ Dispatch Block Delete Event.
 
 #### Parameters
 
-| Name     | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `result` | `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> |
-| `t?`     | [`VariableData`](interfaces/VariableData.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Name | Type |
+| :------ | :------ |
+| `result` | `Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> |
+| `t?` | [`VariableData`](interfaces/VariableData.md) |
 
 #### Returns
 
 `any`
 
----
+___
 
 ### <a id="encodestring" name="encodestring"></a> encodeString
 
@@ -3909,20 +3923,20 @@ Encode string.
 **`Example`**
 
 ```typescript
-encodeString('foo') // => "\"foo\""
+encodeString("foo") // => "\"foo\""
 ```
 
 #### Parameters
 
-| Name  | Type     |
-| :---- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `str` | `string` |
 
 #### Returns
 
 `string`
 
----
+___
 
 ### <a id="errorisfatal" name="errorisfatal"></a> errorIsFatal
 
@@ -3930,47 +3944,47 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name                | Type                                         |
-| :------------------ | :------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `__namedParameters` | [`VariableData`](interfaces/VariableData.md) |
 
 #### Returns
 
 `boolean`
 
----
+___
 
 ### <a id="extractsubtype" name="extractsubtype"></a> extractSubType
 
-▸ **extractSubType**(`array`): `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"`
+▸ **extractSubType**(`array`): ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"``
 
 #### Parameters
 
-| Name    | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `array` | (`Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>)[] |
+| Name | Type |
+| :------ | :------ |
+| `array` | (`Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\>)[] |
 
 #### Returns
 
-`"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"`
+``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"``
 
----
+___
 
 ### <a id="fetchresult" name="fetchresult"></a> fetchResult
 
-▸ **fetchResult**(`__namedParameters`): `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>
+▸ **fetchResult**(`__namedParameters`): `Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\>
 
 #### Parameters
 
-| Name                | Type                                         |
-| :------------------ | :------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `__namedParameters` | [`VariableData`](interfaces/VariableData.md) |
 
 #### Returns
 
-`Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>
+`Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\>
 
----
+___
 
 ### <a id="fetchvariableterror" name="fetchvariableterror"></a> fetchVariableTError
 
@@ -3978,15 +3992,15 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name                | Type                                         |
-| :------------------ | :------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `__namedParameters` | [`VariableData`](interfaces/VariableData.md) |
 
 #### Returns
 
 `undefined` \| [`ErrorMessage`](interfaces/ErrorMessage.md)
 
----
+___
 
 ### <a id="function2attrs" name="function2attrs"></a> function2attrs
 
@@ -3994,15 +4008,15 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name     | Type                                                                                 |
-| :------- | :----------------------------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `clause` | [`AnyFunctionClauseWithKeyAndExample`](README.md#anyfunctionclausewithkeyandexample) |
 
 #### Returns
 
 [`CodeFragmentAttrs`](README.md#codefragmentattrs)
 
----
+___
 
 ### <a id="function2completion" name="function2completion"></a> function2completion
 
@@ -4010,16 +4024,16 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name             | Type                                                           |
-| :--------------- | :------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `functionClause` | [`AnyFunctionClause`](interfaces/AnyFunctionClause.md)<`any`\> |
-| `weight`         | `number`                                                       |
+| `weight` | `number` |
 
 #### Returns
 
 [`FunctionCompletion`](interfaces/FunctionCompletion.md)
 
----
+___
 
 ### <a id="functionresult2lambda" name="functionresult2lambda"></a> functionResult2lambda
 
@@ -4027,23 +4041,23 @@ encodeString('foo') // => "\"foo\""
 
 #### Type parameters
 
-| Name | Type                                               |
-| :--- | :------------------------------------------------- |
-| `T`  | extends [`ControlType`](interfaces/ControlType.md) |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`ControlType`](interfaces/ControlType.md) |
 
 #### Parameters
 
-| Name                | Type                                                                                                                                                                            |
-| :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `ctx`               | [`FunctionContext`](interfaces/FunctionContext.md)                                                                                                                              |
-| `__namedParameters` | `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> |
-| `ctrl`              | `T`                                                                                                                                                                             |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | [`FunctionContext`](interfaces/FunctionContext.md) |
+| `__namedParameters` | `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> |
+| `ctrl` | `T` |
 
 #### Returns
 
 `VoidFunction`
 
----
+___
 
 ### <a id="generateuuids" name="generateuuids"></a> generateUUIDs
 
@@ -4053,7 +4067,7 @@ encodeString('foo') // => "\"foo\""
 
 `string`[]
 
----
+___
 
 ### <a id="generatevariable" name="generatevariable"></a> generateVariable
 
@@ -4061,19 +4075,19 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name                               | Type                                                 |
-| :--------------------------------- | :--------------------------------------------------- |
-| `__namedParameters`                | `Object`                                             |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
 | `__namedParameters.formulaContext` | [`ContextInterface`](interfaces/ContextInterface.md) |
-| `__namedParameters.isLoad?`        | `boolean`                                            |
-| `__namedParameters.skipExecute?`   | `boolean`                                            |
-| `__namedParameters.t`              | [`VariableData`](interfaces/VariableData.md)         |
+| `__namedParameters.isLoad?` | `boolean` |
+| `__namedParameters.skipExecute?` | `boolean` |
+| `__namedParameters.t` | [`VariableData`](interfaces/VariableData.md) |
 
 #### Returns
 
 [`VariableInterface`](interfaces/VariableInterface.md)
 
----
+___
 
 ### <a id="getcompletion" name="getcompletion"></a> getCompletion
 
@@ -4081,15 +4095,15 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name                | Type                 |
-| :------------------ | :------------------- |
+| Name | Type |
+| :------ | :------ |
 | `__namedParameters` | `GetCompletionInput` |
 
 #### Returns
 
 [`Completion`](README.md#completion)[]
 
----
+___
 
 ### <a id="getlastcodefragment" name="getlastcodefragment"></a> getLastCodeFragment
 
@@ -4097,16 +4111,16 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name            | Type                                       |
-| :-------------- | :----------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `codeFragments` | [`CodeFragment`](README.md#codefragment)[] |
-| `position`      | `number`                                   |
+| `position` | `number` |
 
 #### Returns
 
 [`undefined` \| [`CodeFragment`](README.md#codefragment), `undefined` \| [`CodeFragment`](README.md#codefragment), `undefined` \| [`CodeFragment`](README.md#codefragment)]
 
----
+___
 
 ### <a id="innerinterpret" name="innerinterpret"></a> innerInterpret
 
@@ -4114,19 +4128,19 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name                                                | Type                                                                                                  |
-| :-------------------------------------------------- | :---------------------------------------------------------------------------------------------------- |
-| `__namedParameters`                                 | `Object`                                                                                              |
-| `__namedParameters.ctx`                             | [`FunctionContext`](interfaces/FunctionContext.md)                                                    |
-| `__namedParameters.parseResult`                     | `Object`                                                                                              |
-| `__namedParameters.parseResult.errorMessages`       | [`ErrorMessage`](interfaces/ErrorMessage.md)[]                                                        |
-| `__namedParameters.parseResult.variableParseResult` | `Pick`<[`VariableParseResult`](interfaces/VariableParseResult.md), `"async"` \| `"kind"` \| `"cst"`\> |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+| `__namedParameters.ctx` | [`FunctionContext`](interfaces/FunctionContext.md) |
+| `__namedParameters.parseResult` | `Object` |
+| `__namedParameters.parseResult.errorMessages` | [`ErrorMessage`](interfaces/ErrorMessage.md)[] |
+| `__namedParameters.parseResult.variableParseResult` | `Pick`<[`VariableParseResult`](interfaces/VariableParseResult.md), ``"async"`` \| ``"kind"`` \| ``"cst"``\> |
 
 #### Returns
 
 `Promise`<[`VariableValue`](README.md#variablevalue)\>
 
----
+___
 
 ### <a id="interpret" name="interpret"></a> interpret
 
@@ -4134,41 +4148,41 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name                             | Type                                                   |
-| :------------------------------- | :----------------------------------------------------- |
-| `__namedParameters`              | `Object`                                               |
-| `__namedParameters.ctx`          | [`FunctionContext`](interfaces/FunctionContext.md)     |
-| `__namedParameters.parseResult`  | [`ParseResult`](README.md#parseresult)                 |
-| `__namedParameters.skipExecute?` | `boolean`                                              |
-| `__namedParameters.variable?`    | [`VariableInterface`](interfaces/VariableInterface.md) |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+| `__namedParameters.ctx` | [`FunctionContext`](interfaces/FunctionContext.md) |
+| `__namedParameters.parseResult` | [`ParseResult`](README.md#parseresult) |
+| `__namedParameters.skipExecute?` | `boolean` |
+| `__namedParameters.variable?` | [`VariableInterface`](interfaces/VariableInterface.md) |
 
 #### Returns
 
 `Promise`<[`VariableData`](interfaces/VariableData.md)\>
 
----
+___
 
 ### <a id="interpretbyoperator" name="interpretbyoperator"></a> interpretByOperator
 
-▸ **interpretByOperator**(`__namedParameters`): `Promise`<`Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>\>
+▸ **interpretByOperator**(`__namedParameters`): `Promise`<`Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\>\>
 
 #### Parameters
 
-| Name                            | Type                                                   |
-| :------------------------------ | :----------------------------------------------------- |
-| `__namedParameters`             | `Object`                                               |
-| `__namedParameters.args`        | [`InterpretArgument`](interfaces/InterpretArgument.md) |
-| `__namedParameters.interpreter` | [`FormulaInterpreter`](classes/FormulaInterpreter.md)  |
-| `__namedParameters.lhs`         | `undefined` \| `CstNode`[]                             |
-| `__namedParameters.operator`    | [`OperatorType`](interfaces/OperatorType.md)           |
-| `__namedParameters.operators`   | (`undefined` \| `IToken`)[]                            |
-| `__namedParameters.rhs`         | `undefined` \| `CstNode`[]                             |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+| `__namedParameters.args` | [`InterpretArgument`](interfaces/InterpretArgument.md) |
+| `__namedParameters.interpreter` | [`FormulaInterpreter`](classes/FormulaInterpreter.md) |
+| `__namedParameters.lhs` | `undefined` \| `CstNode`[] |
+| `__namedParameters.operator` | [`OperatorType`](interfaces/OperatorType.md) |
+| `__namedParameters.operators` | (`undefined` \| `IToken`)[] |
+| `__namedParameters.rhs` | `undefined` \| `CstNode`[] |
 
 #### Returns
 
-`Promise`<`Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>\>
+`Promise`<`Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\>\>
 
----
+___
 
 ### <a id="intersecttype" name="intersecttype"></a> intersectType
 
@@ -4176,23 +4190,23 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name                   | Type                                               |
-| :--------------------- | :------------------------------------------------- |
-| `expectedArgumentType` | [`ExpressionType`](README.md#expressiontype)       |
-| `contextResultType`    | [`FormulaCheckType`](README.md#formulachecktype)   |
-| `label`                | `string`                                           |
-| `ctx`                  | [`FunctionContext`](interfaces/FunctionContext.md) |
+| Name | Type |
+| :------ | :------ |
+| `expectedArgumentType` | [`ExpressionType`](README.md#expressiontype) |
+| `contextResultType` | [`FormulaCheckType`](README.md#formulachecktype) |
+| `label` | `string` |
+| `ctx` | [`FunctionContext`](interfaces/FunctionContext.md) |
 
 #### Returns
 
 `Object`
 
-| Name            | Type                                             |
-| :-------------- | :----------------------------------------------- |
-| `errorMessages` | [`ErrorMessage`](interfaces/ErrorMessage.md)[]   |
-| `newType`       | [`FormulaCheckType`](README.md#formulachecktype) |
+| Name | Type |
+| :------ | :------ |
+| `errorMessages` | [`ErrorMessage`](interfaces/ErrorMessage.md)[] |
+| `newType` | [`FormulaCheckType`](README.md#formulachecktype) |
 
----
+___
 
 ### <a id="iskey" name="iskey"></a> isKey
 
@@ -4200,15 +4214,15 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name                | Type                                     |
-| :------------------ | :--------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `__namedParameters` | [`CodeFragment`](README.md#codefragment) |
 
 #### Returns
 
 `boolean`
 
----
+___
 
 ### <a id="makecontext" name="makecontext"></a> makeContext
 
@@ -4216,15 +4230,15 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name      | Type                                                     |
-| :-------- | :------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `options` | [`MakeContextOptions`](interfaces/MakeContextOptions.md) |
 
 #### Returns
 
 `Promise`<[`MakeContextResult`](interfaces/MakeContextResult.md)\>
 
----
+___
 
 ### <a id="matchobject" name="matchobject"></a> matchObject
 
@@ -4232,15 +4246,15 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name                | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `__namedParameters` | `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> |
 
 #### Returns
 
 `any`
 
----
+___
 
 ### <a id="maybeencodestring" name="maybeencodestring"></a> maybeEncodeString
 
@@ -4248,15 +4262,15 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name  | Type     |
-| :---- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `str` | `string` |
 
 #### Returns
 
 [`boolean`, `string`]
 
----
+___
 
 ### <a id="mockblock" name="mockblock"></a> mockBlock
 
@@ -4264,16 +4278,16 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
-| `name`        | `string` |
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
 | `namespaceId` | `string` |
 
 #### Returns
 
 `any`
 
----
+___
 
 ### <a id="mockcell" name="mockcell"></a> mockCell
 
@@ -4281,18 +4295,18 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name        | Type     |
-| :---------- | :------- |
-| `value`     | `string` |
-| `cellId`    | `string` |
+| Name | Type |
+| :------ | :------ |
+| `value` | `string` |
+| `cellId` | `string` |
 | `columnKey` | `string` |
-| `rowKey`    | `string` |
+| `rowKey` | `string` |
 
 #### Returns
 
 `any`
 
----
+___
 
 ### <a id="mockcolumn" name="mockcolumn"></a> mockColumn
 
@@ -4300,16 +4314,16 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name       | Type     |
-| :--------- | :------- |
-| `display`  | `string` |
+| Name | Type |
+| :------ | :------ |
+| `display` | `string` |
 | `columnId` | `string` |
 
 #### Returns
 
 `any`
 
----
+___
 
 ### <a id="mockrow" name="mockrow"></a> mockRow
 
@@ -4317,15 +4331,15 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name      | Type     |
-| :-------- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `display` | `string` |
 
 #### Returns
 
 `any`
 
----
+___
 
 ### <a id="mockspreadsheet" name="mockspreadsheet"></a> mockSpreadsheet
 
@@ -4333,16 +4347,16 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
-| `name`        | `string` |
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
 | `namespaceId` | `string` |
 
 #### Returns
 
 `any`
 
----
+___
 
 ### <a id="objectdiff" name="objectdiff"></a> objectDiff
 
@@ -4351,21 +4365,21 @@ encodeString('foo') // => "\"foo\""
 #### Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 #### Parameters
 
-| Name | Type  |
-| :--- | :---- |
-| `a`  | `T`[] |
-| `b`  | `T`[] |
+| Name | Type |
+| :------ | :------ |
+| `a` | `T`[] |
+| `b` | `T`[] |
 
 #### Returns
 
 `Record`<`number`, `T`\>
 
----
+___
 
 ### <a id="parse" name="parse"></a> parse
 
@@ -4373,15 +4387,15 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name  | Type                                               |
-| :---- | :------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `ctx` | [`FunctionContext`](interfaces/FunctionContext.md) |
 
 #### Returns
 
 [`ParseResult`](README.md#parseresult)
 
----
+___
 
 ### <a id="parsebyoperator" name="parsebyoperator"></a> parseByOperator
 
@@ -4389,15 +4403,15 @@ encodeString('foo') // => "\"foo\""
 
 #### Parameters
 
-| Name    | Type         |
-| :------ | :----------- |
+| Name | Type |
+| :------ | :------ |
 | `input` | `ParseInput` |
 
 #### Returns
 
 [`CodeFragmentResult`](interfaces/CodeFragmentResult.md)
 
----
+___
 
 ### <a id="parsestring" name="parsestring"></a> parseString
 
@@ -4410,20 +4424,20 @@ Parse string.
 **`Example`**
 
 ```typescript
-parseString('"foo"') // => "foo"
+parseString("\"foo\"") // => "foo"
 ```
 
 #### Parameters
 
-| Name  | Type     |
-| :---- | :------- |
+| Name | Type |
+| :------ | :------ |
 | `str` | `string` |
 
 #### Returns
 
 `string`
 
----
+___
 
 ### <a id="resulttocolortype" name="resulttocolortype"></a> resultToColorType
 
@@ -4431,15 +4445,15 @@ parseString('"foo"') // => "foo"
 
 #### Parameters
 
-| Name                | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `__namedParameters` | `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> |
 
 #### Returns
 
 [`FormulaColorType`](README.md#formulacolortype)
 
----
+___
 
 ### <a id="reversetraversalstring" name="reversetraversalstring"></a> reverseTraversalString
 
@@ -4450,22 +4464,22 @@ Traversal and collect string from end to start.
 **`Example`**
 
 ```typescript
-reverseTraversal('bar') // => ["bar", "ba", "b"]
-reverseTraversal('bar', 2) // => ["bar", "ba"]
+reverseTraversal("bar")     // => ["bar", "ba", "b"]
+reverseTraversal("bar", 2)  // => ["bar", "ba"]
 ```
 
 #### Parameters
 
-| Name  | Type     | Default value |
-| :---- | :------- | :------------ |
-| `str` | `string` | `undefined`   |
-| `min` | `number` | `1`           |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `str` | `string` | `undefined` |
+| `min` | `number` | `1` |
 
 #### Returns
 
 `string`[]
 
----
+___
 
 ### <a id="row2attrs" name="row2attrs"></a> row2attrs
 
@@ -4473,15 +4487,15 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name  | Type                               |
-| :---- | :--------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `row` | [`RowType`](interfaces/RowType.md) |
 
 #### Returns
 
 [`CodeFragmentAttrs`](README.md#codefragmentattrs)
 
----
+___
 
 ### <a id="row2codefragment" name="row2codefragment"></a> row2codeFragment
 
@@ -4489,35 +4503,35 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name     | Type                               |
-| :------- | :--------------------------------- |
-| `row`    | [`RowType`](interfaces/RowType.md) |
-| `pageId` | `string`                           |
+| Name | Type |
+| :------ | :------ |
+| `row` | [`RowType`](interfaces/RowType.md) |
+| `pageId` | `string` |
 
 #### Returns
 
 [`CodeFragment`](README.md#codefragment)
 
----
+___
 
 ### <a id="runtimechecktype" name="runtimechecktype"></a> runtimeCheckType
 
-▸ **runtimeCheckType**(`__namedParameters`, `contextResultType`, `label`, `ctx`): `undefined` \| `Omit`<`FormulaErrorType`, `"dump"`\>
+▸ **runtimeCheckType**(`__namedParameters`, `contextResultType`, `label`, `ctx`): `undefined` \| `Omit`<`FormulaErrorType`, ``"dump"``\>
 
 #### Parameters
 
-| Name                | Type                                                   |
-| :------------------ | :----------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `__namedParameters` | [`InterpretArgument`](interfaces/InterpretArgument.md) |
-| `contextResultType` | [`FormulaCheckType`](README.md#formulachecktype)       |
-| `label`             | `string`                                               |
-| `ctx`               | [`FunctionContext`](interfaces/FunctionContext.md)     |
+| `contextResultType` | [`FormulaCheckType`](README.md#formulachecktype) |
+| `label` | `string` |
+| `ctx` | [`FunctionContext`](interfaces/FunctionContext.md) |
 
 #### Returns
 
-`undefined` \| `Omit`<`FormulaErrorType`, `"dump"`\>
+`undefined` \| `Omit`<`FormulaErrorType`, ``"dump"``\>
 
----
+___
 
 ### <a id="shouldreceiveevent" name="shouldreceiveevent"></a> shouldReceiveEvent
 
@@ -4525,16 +4539,16 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name            | Type                                               |
-| :-------------- | :------------------------------------------------- |
-| `listenedScope` | [`EventScope`](interfaces/EventScope.md)           |
-| `eventScope`    | `null` \| [`EventScope`](interfaces/EventScope.md) |
+| Name | Type |
+| :------ | :------ |
+| `listenedScope` | [`EventScope`](interfaces/EventScope.md) |
+| `eventScope` | ``null`` \| [`EventScope`](interfaces/EventScope.md) |
 
 #### Returns
 
 `boolean`
 
----
+___
 
 ### <a id="shouldreturnearly" name="shouldreturnearly"></a> shouldReturnEarly
 
@@ -4542,16 +4556,16 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name                    | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| :---------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `result`                | `undefined` \| `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> |
-| `skipReturnEarlyCheck?` | `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Name | Type |
+| :------ | :------ |
+| `result` | `undefined` \| `Omit`<`FormulaRecordType`, ``"dump"``\> \| `Omit`<`FormulaErrorType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"string"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: ``"number"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: ``"boolean"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"null"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: ``"Block"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: ``"Button"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: ``"Switch"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: ``"Date"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``"Blank"`` ; `result`: ``"Blank"`` ; `type`: ``"Blank"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaArrayType`, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: ``"Spreadsheet"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: ``"Row"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: ``"Cell"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: ``"Column"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: ``"Range"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: ``"Cst"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: ``"Reference"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<`FormulaPredicateType`, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"literal"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Pending"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: ``"Waiting"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> \| `Omit`<{ `dump`: ``null`` ; `result`: ``null`` ; `type`: ``"NoPersist"`` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\>  }, ``"dump"``\> |
+| `skipReturnEarlyCheck?` | `boolean` |
 
 #### Returns
 
 `boolean`
 
----
+___
 
 ### <a id="splitdefinition$" name="splitdefinition$"></a> splitDefinition$
 
@@ -4559,15 +4573,15 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `definition$` | `string` |
 
 #### Returns
 
 [definition: string, position: number]
 
----
+___
 
 ### <a id="spreadsheet2attrs" name="spreadsheet2attrs"></a> spreadsheet2attrs
 
@@ -4575,15 +4589,15 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name          | Type                                               |
-| :------------ | :------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `spreadsheet` | [`SpreadsheetType`](interfaces/SpreadsheetType.md) |
 
 #### Returns
 
 [`CodeFragmentAttrs`](README.md#codefragmentattrs)
 
----
+___
 
 ### <a id="spreadsheet2codefragment" name="spreadsheet2codefragment"></a> spreadsheet2codeFragment
 
@@ -4591,16 +4605,16 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name          | Type                                               |
-| :------------ | :------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `spreadsheet` | [`SpreadsheetType`](interfaces/SpreadsheetType.md) |
-| `pageId`      | `string`                                           |
+| `pageId` | `string` |
 
 #### Returns
 
 [`CodeFragment`](README.md#codefragment)
 
----
+___
 
 ### <a id="spreadsheet2completion" name="spreadsheet2completion"></a> spreadsheet2completion
 
@@ -4608,16 +4622,16 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name          | Type                                               |
-| :------------ | :------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `spreadsheet` | [`SpreadsheetType`](interfaces/SpreadsheetType.md) |
-| `pageId`      | `string`                                           |
+| `pageId` | `string` |
 
 #### Returns
 
 [`SpreadsheetCompletion`](interfaces/SpreadsheetCompletion.md)
 
----
+___
 
 ### <a id="token2fragment" name="token2fragment"></a> token2fragment
 
@@ -4625,17 +4639,17 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name    | Type                                                                                                                                                                                                                                                                                                                                                                                 |
-| :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `token` | `IToken`                                                                                                                                                                                                                                                                                                                                                                             |
-| `type`  | `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"` |
-| `meta?` | `any`                                                                                                                                                                                                                                                                                                                                                                                |
+| Name | Type |
+| :------ | :------ |
+| `token` | `IToken` |
+| `type` | ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"null"`` \| ``"Block"`` \| ``"Button"`` \| ``"Switch"`` \| ``"Date"`` \| ``"Blank"`` \| ``"Record"`` \| ``"Array"`` \| ``"Error"`` \| ``"Spreadsheet"`` \| ``"Row"`` \| ``"Cell"`` \| ``"Column"`` \| ``"Range"`` \| ``"Cst"`` \| ``"Reference"`` \| ``"Function"`` \| ``"Predicate"`` \| ``"literal"`` \| ``"Pending"`` \| ``"Waiting"`` \| ``"NoPersist"`` \| ``"any"`` \| ``"void"`` |
+| `meta?` | `any` |
 
 #### Returns
 
 [`CodeFragment`](README.md#codefragment)
 
----
+___
 
 ### <a id="tracktodo" name="tracktodo"></a> trackTodo
 
@@ -4643,16 +4657,16 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name        | Type                                                   |
-| :---------- | :----------------------------------------------------- |
-| `it`        | `It`                                                   |
-| `testCases` | { `jestTitle`: `string` ; `todoMessage?`: `string` }[] |
+| Name | Type |
+| :------ | :------ |
+| `it` | `It` |
+| `testCases` | { `jestTitle`: `string` ; `todoMessage?`: `string`  }[] |
 
 #### Returns
 
 `void`
 
----
+___
 
 ### <a id="truncatearray" name="truncatearray"></a> truncateArray
 
@@ -4660,16 +4674,16 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name     | Type     | Default value |
-| :------- | :------- | :------------ |
-| `array`  | `any`[]  | `undefined`   |
-| `length` | `number` | `8`           |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `array` | `any`[] | `undefined` |
+| `length` | `number` | `8` |
 
 #### Returns
 
 `any`[]
 
----
+___
 
 ### <a id="truncatestring" name="truncatestring"></a> truncateString
 
@@ -4677,16 +4691,16 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name     | Type     | Default value |
-| :------- | :------- | :------------ |
-| `str`    | `string` | `undefined`   |
-| `length` | `number` | `20`          |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `str` | `string` | `undefined` |
+| `length` | `number` | `20` |
 
 #### Returns
 
 `string`
 
----
+___
 
 ### <a id="variable2attrs" name="variable2attrs"></a> variable2attrs
 
@@ -4694,15 +4708,15 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name       | Type                                                   |
-| :--------- | :----------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `variable` | [`VariableInterface`](interfaces/VariableInterface.md) |
 
 #### Returns
 
 [`CodeFragmentAttrs`](README.md#codefragmentattrs)
 
----
+___
 
 ### <a id="variable2codefragment" name="variable2codefragment"></a> variable2codeFragment
 
@@ -4710,16 +4724,16 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name       | Type                                                   |
-| :--------- | :----------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `variable` | [`VariableInterface`](interfaces/VariableInterface.md) |
-| `pageId`   | `string`                                               |
+| `pageId` | `string` |
 
 #### Returns
 
 [`CodeFragment`](README.md#codefragment)
 
----
+___
 
 ### <a id="variable2completion" name="variable2completion"></a> variable2completion
 
@@ -4727,16 +4741,16 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name       | Type                                                   |
-| :--------- | :----------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `variable` | [`VariableInterface`](interfaces/VariableInterface.md) |
-| `pageId`   | `string`                                               |
+| `pageId` | `string` |
 
 #### Returns
 
 [`VariableCompletion`](interfaces/VariableCompletion.md)
 
----
+___
 
 ### <a id="variablekey-1" name="variablekey-1"></a> variableKey
 
@@ -4744,10 +4758,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Parameters
 
-| Name          | Type     |
-| :------------ | :------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceId` | `string` |
-| `variableId`  | `string` |
+| `variableId` | `string` |
 
 #### Returns
 

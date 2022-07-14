@@ -21,7 +21,7 @@
 
 [packages/formula/src/type/index.ts:750](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L750)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -31,7 +31,7 @@
 
 [packages/formula/src/type/index.ts:752](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L752)
 
----
+___
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -41,7 +41,7 @@
 
 [packages/formula/src/type/index.ts:748](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L748)
 
----
+___
 
 ### <a id="position" name="position"></a> position
 
@@ -51,7 +51,7 @@
 
 [packages/formula/src/type/index.ts:751](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L751)
 
----
+___
 
 ### <a id="richtype" name="richtype"></a> richType
 
@@ -61,7 +61,7 @@
 
 [packages/formula/src/type/index.ts:753](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L753)
 
----
+___
 
 ### <a id="variableid" name="variableid"></a> variableId
 

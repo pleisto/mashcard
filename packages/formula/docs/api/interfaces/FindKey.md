@@ -18,17 +18,17 @@
 
 [packages/formula/src/type/index.ts:360](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L360)
 
----
+___
 
 ### <a id="type" name="type"></a> type
 
-• **type**: `"id"` \| `"name"`
+• **type**: ``"id"`` \| ``"name"``
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:361](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L361)
 
----
+___
 
 ### <a id="value" name="value"></a> value
 

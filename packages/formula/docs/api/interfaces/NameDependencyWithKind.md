@@ -26,17 +26,17 @@
 
 [packages/formula/src/type/index.ts:618](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L618)
 
----
+___
 
 ### <a id="kind" name="kind"></a> kind
 
-• `Readonly` **kind**: `"Block"` \| `"Spreadsheet"` \| `"Variable"`
+• `Readonly` **kind**: ``"Block"`` \| ``"Spreadsheet"`` \| ``"Variable"``
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:619](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L619)
 
----
+___
 
 ### <a id="name" name="name"></a> name
 
@@ -50,7 +50,7 @@
 
 [packages/formula/src/type/index.ts:614](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L614)
 
----
+___
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -64,7 +64,7 @@
 
 [packages/formula/src/type/index.ts:613](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L613)
 
----
+___
 
 ### <a id="rendertokens" name="rendertokens"></a> renderTokens
 
@@ -76,10 +76,10 @@
 
 ##### Parameters
 
-| Name               | Type      |
-| :----------------- | :-------- |
+| Name | Type |
+| :------ | :------ |
 | `namespaceIsExist` | `boolean` |
-| `namespaceId`      | `string`  |
+| `namespaceId` | `string` |
 
 ##### Returns
 

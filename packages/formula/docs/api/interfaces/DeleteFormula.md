@@ -17,7 +17,7 @@
 
 [packages/formula/src/type/index.ts:197](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L197)
 
----
+___
 
 ### <a id="id" name="id"></a> id
 

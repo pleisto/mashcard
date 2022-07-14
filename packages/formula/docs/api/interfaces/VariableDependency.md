@@ -17,7 +17,7 @@
 
 [packages/formula/src/type/index.ts:609](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L609)
 
----
+___
 
 ### <a id="variableid" name="variableid"></a> variableId
 
