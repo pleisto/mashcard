@@ -17,6 +17,11 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'vcr'
+require 'simplecov'
+SimpleCov.start
+
+require 'simplecov-cobertura'
+SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
 
 RSpec.configure do |config|
   # VCR mock
