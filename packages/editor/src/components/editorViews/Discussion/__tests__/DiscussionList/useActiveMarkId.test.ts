@@ -1,8 +1,7 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react'
 import { MashcardEventBus, DiscussionMarkActive, DiscussionMarkInactive } from '@mashcard/schema'
 import { useActiveMarkId } from '../../DiscussionList/useActiveMarkId'
 import { CommentedNode } from '../../useCommentedNodes'
-import { act } from 'react-dom/test-utils'
 
 describe('useActiveMarkId', () => {
   it('handles active mark event correctly', () => {

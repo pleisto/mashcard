@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react'
 import { useUnsplashImages } from '../../../embedTypes/Gallery/useUnsplashImages'
 import { useRef } from 'react'
 
@@ -32,23 +32,23 @@ describe('useUnsplashImages', () => {
       unobserve: jest.fn()
     })) as any
 
-    await act(async () => {
-      const { result } = renderHook(() => {
-        const ref = useRef<HTMLDivElement>(document.createElement('div'))
-        return useUnsplashImages(ref, extension)
-      })
+    const { result } = renderHook(() => {
+      const ref = useRef<HTMLDivElement>(document.createElement('div'))
+      return useUnsplashImages(ref, extension)
+    })
 
-      // wait for async effect
+    // wait for async effect
+    await act(async () => {
       await new Promise<void>(resolve => {
         setTimeout(() => {
           resolve()
         }, 10)
       })
-
-      const [images] = result.current
-
-      expect(images).toHaveLength(1)
     })
+
+    const [images] = result.current
+
+    expect(images).toHaveLength(1)
   })
 
   it('fetches images correctly when observer triggers', async () => {
@@ -77,7 +77,6 @@ describe('useUnsplashImages', () => {
       cb: any
 
       constructor(cb: (param: any) => void) {
-        // eslint-disable-next-line node/no-callback-literal
         this.cb = cb
         this.check(1)
       }
@@ -93,23 +92,23 @@ describe('useUnsplashImages', () => {
       unobserve(): void {}
     } as any
 
-    await act(async () => {
-      const { result } = renderHook(() => {
-        const ref = useRef<HTMLDivElement>(document.createElement('div'))
-        return useUnsplashImages(ref, extension)
-      })
+    const { result } = renderHook(() => {
+      const ref = useRef<HTMLDivElement>(document.createElement('div'))
+      return useUnsplashImages(ref, extension)
+    })
 
-      // wait for async effect
+    // wait for async effect
+    await act(async () => {
       await new Promise<void>(resolve => {
         setTimeout(() => {
           resolve()
         }, 10)
       })
-
-      const [images] = result.current
-
-      expect(images).toHaveLength(1)
     })
+
+    const [images] = result.current
+
+    expect(images).toHaveLength(1)
   })
 
   it('fetches images by query correctly', async () => {
@@ -139,14 +138,14 @@ describe('useUnsplashImages', () => {
       unobserve: jest.fn()
     })) as any
 
+    const { result } = renderHook(() => {
+      const ref = useRef<HTMLDivElement>(document.createElement('div'))
+      return useUnsplashImages(ref, extension)
+    })
+
+    const [, , search] = result.current
+
     await act(async () => {
-      const { result } = renderHook(() => {
-        const ref = useRef<HTMLDivElement>(document.createElement('div'))
-        return useUnsplashImages(ref, extension)
-      })
-
-      const [, , search] = result.current
-
       // wait for async effect
       await new Promise<void>(resolve => {
         setTimeout(() => {
@@ -162,10 +161,10 @@ describe('useUnsplashImages', () => {
           resolve()
         }, 500)
       })
-
-      const [images] = result.current
-
-      expect(images).toHaveLength(1)
     })
+
+    const [images] = result.current
+
+    expect(images).toHaveLength(1)
   })
 })

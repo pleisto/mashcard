@@ -1,17 +1,16 @@
 import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react'
-import { SlashMenuProps } from '.'
-import { SlashMenuItem } from './SlashMenu'
+import { BlockSelectorItem, BlockSelectorProps } from './BlockSelector'
 import { useKeyboardEvent } from './useKeyboardEvent'
 
 export function useActiveStatus(
-  recent: SlashMenuItem[],
-  suggestion: SlashMenuItem[],
-  type: SlashMenuItem[],
-  command: SlashMenuProps['command']
+  recent: BlockSelectorItem[],
+  suggestion: BlockSelectorItem[],
+  type: BlockSelectorItem[],
+  onBlockSelect: BlockSelectorProps['onBlockSelect']
 ): [number | undefined, (activeIndex: number) => void, MutableRefObject<HTMLUListElement | undefined>] {
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const itemLength = useRef(0)
-  const currentItem = useRef<SlashMenuItem>()
+  const currentItem = useRef<BlockSelectorItem>()
 
   // record active item
   useEffect(() => {
@@ -35,7 +34,7 @@ export function useActiveStatus(
   }, [type.length, suggestion.length, recent.length])
 
   // keyboard events
-  const [menuRef] = useKeyboardEvent(type, currentItem, itemLength, setActiveIndex, command)
+  const [menuRef] = useKeyboardEvent(type, currentItem, itemLength, setActiveIndex, onBlockSelect)
 
   const handleActiveIndexChange = useCallback((index: number) => {
     setActiveIndex((index + itemLength.current) % itemLength.current)

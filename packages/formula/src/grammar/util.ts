@@ -1,3 +1,4 @@
+import { devWarning } from '@mashcard/design-system'
 import { intersection, fromPairs, differenceWith, toPairs, isEqual } from 'lodash'
 import {
   AnyTypeResult,
@@ -76,7 +77,7 @@ export const cleanupEventDependency = (
       if (lastDependency.key === dependency.cleanup.key) {
         finalEventDependencies.pop()
       } else {
-        console.error('cleanupEventDependency not matched', { label, dependency, lastDependency, dependencies })
+        devWarning(true, 'cleanupEventDependency not matched', { label, dependency, lastDependency, dependencies })
       }
     }
 

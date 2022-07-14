@@ -1,6 +1,7 @@
 import { BaseResult, FormulaTypeAttributes } from '../type'
 
 const TypeName = 'Reference' as const
+const ShortName = 'ref' as const
 
 type Reference = VariableReference | SelfReference
 
@@ -21,8 +22,9 @@ interface SelfReference extends BaseReference {
 
 export type FormulaReferenceType = BaseResult<typeof TypeName, Reference>
 
-export const FormulaReferenceAttributes: FormulaTypeAttributes<typeof TypeName> = {
+export const FormulaReferenceAttributes: FormulaTypeAttributes<typeof TypeName, typeof ShortName> = {
   type: TypeName,
+  shortName: ShortName,
   dump: rest => ({ ...rest, result: 'Not supported' }),
   cast: rest => ({ ...rest, result: 'Not supported', meta: 'runtime', type: 'Error' }),
   display: rest => ({ ...rest, result: '#<Reference>' })

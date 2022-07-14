@@ -4,13 +4,13 @@ require 'rails_helper'
 
 describe Mutations::Pods::UpdateDomain, type: :mutation do
   describe '#resolve' do
-    mutation = <<-'GRAPHQL'
+    mutation = <<-'TEXT'
       mutation updateDomain($input: UpdateDomainInput!) {
         updateDomain(input: $input) {
           errors
         }
       }
-    GRAPHQL
+    TEXT
 
     it 'invalid pod' do
       user = create(:accounts_user)

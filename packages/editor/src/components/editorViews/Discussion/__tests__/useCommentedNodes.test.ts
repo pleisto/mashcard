@@ -1,9 +1,8 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react'
 import * as editorContextHooks from '../../../../hooks/useEditorContext'
 import { mockEditor } from '../../../../test/editor'
 import { useCommentedNodes } from '../useCommentedNodes'
 import { meta as discussionMeta } from '../../../../extensions/marks/discussion/meta'
-import { act } from 'react-dom/test-utils'
 
 jest.mock('../../../../hooks/useEditorContext', () => {
   const { useEditorContext } = jest.requireActual('../../../../hooks/useEditorContext')

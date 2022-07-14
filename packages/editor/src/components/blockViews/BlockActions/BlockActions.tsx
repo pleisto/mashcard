@@ -1,5 +1,5 @@
 import { FC, ReactNode, useMemo, useState } from 'react'
-import { MenuProps, styled } from '@mashcard/design-system'
+import { MenuProps, styled, theme } from '@mashcard/design-system'
 import { BasicActionOptionType, useBasicActionOptions } from './useBasicActionOptions'
 import {
   ToolbarSubMenuOption,
@@ -36,7 +36,10 @@ export interface BlockActionsProps {
 }
 
 const BlockActionButtonContainer = styled(BlockActionButton, {
+  include: ['flexCenter'],
+  display: 'flex',
   left: 0,
+  height: theme.lineHeights.body,
   opacity: 0,
   position: 'absolute',
   transform: 'translateX(calc(-100% - 0.6875rem))',
@@ -47,9 +50,9 @@ const BlockActionButtonContainer = styled(BlockActionButton, {
     position: 'absolute',
     height: '100%',
     width: 45,
-    top:'100%',
+    top: '100%',
     left: -20,
-    display: 'block',
+    display: 'block'
   }
 })
 
@@ -91,10 +94,10 @@ export const BlockActions: FC<BlockActionsProps> = ({ options, buttonClassName, 
   const basicOptions = useBasicActionOptions({ types: basicOptionTypes })
 
   return (
-    <BlockActionsContainer className={visible? 'hover': ''} disabled={!options || options.length === 0}>
+    <BlockActionsContainer className={visible ? 'hover' : ''} disabled={!options || options.length === 0}>
       {children}
       <BlockActionButtonContainer
-        setActive={setVisible}
+        onMenuVisibleChange={setVisible}
         className={buttonClassName}
         baseId={baseId}
         extraOptions={extraOptions}

@@ -1,6 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react'
 import { useRef } from 'react'
-import { act } from 'react-dom/test-utils'
 import { EmbedAttributes, EmbedOptions } from '../../../../../../extensions'
 import { mockBlockViewProps } from '../../../../../../test'
 import { useUploadProgress } from '../../../embedTypes/Upload/useUploadPorgress'

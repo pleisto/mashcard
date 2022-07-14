@@ -3,6 +3,7 @@ import { AnyTypeResult, BaseResult, FormulaType, FormulaTypeAttributes } from '.
 import { mapValues } from 'lodash'
 
 const TypeName = 'Record' as const
+const ShortName = 'record' as const
 
 export type FormulaRecordType = BaseResult<
   typeof TypeName,
@@ -11,8 +12,9 @@ export type FormulaRecordType = BaseResult<
   FormulaType
 >
 
-export const FormulaRecordAttributes: FormulaTypeAttributes<typeof TypeName> = {
+export const FormulaRecordAttributes: FormulaTypeAttributes<typeof TypeName, typeof ShortName> = {
   type: TypeName,
+  shortName: ShortName,
   dump: ({ result, meta, ...rest }, f) => ({ ...rest, result: mapValues(result, a => f(a)) }),
   cast: ({ result, ...rest }, ctx, f) => {
     const record = mapValues(result, a => f(a, ctx))

@@ -18,7 +18,7 @@ import {
   VariableMetadata
 } from '../type'
 import { VariableClass, castVariable } from '../context/variable'
-import { checkValidName, FormulaLexer } from './lexer'
+import { FormulaLexer } from './lexer'
 import { FORMULA_PARSER_VERSION } from '../version'
 import { FormulaParser } from './parser'
 import { getCompletion } from './completer'
@@ -27,6 +27,7 @@ import { CodeFragmentVisitor } from './codeFragment'
 import { shouldReturnEarly } from './util'
 import { createVariableTask } from '../context'
 import { addSpaceStep } from './steps'
+import { devWarning } from '@mashcard/design-system'
 
 interface BaseParseResult {
   meta: VariableMetadata
@@ -83,6 +84,27 @@ interface ErrorParseResult extends BaseParseResult {
 export type ParseResult = SuccessParseResult | ErrorParseResult | LiteralParseResult | BlankParseResult
 
 export const parse = (ctx: FunctionContext): ParseResult => {
+  const {
+    formulaContext,
+    meta: { name, namespaceId, variableId }
+  } = ctx
+  const parseResult = parse1(ctx)
+  const nameError = formulaContext.checkName(name, namespaceId, variableId)
+  if (!nameError) return parseResult
+
+  return {
+    ...parseResult,
+    success: false,
+    errorType: 'syntax',
+    errorMessages: [nameError, ...parseResult.errorMessages],
+    variableParseResult: {
+      ...parseResult.variableParseResult,
+      kind: 'unknown'
+    }
+  }
+}
+
+const parse1 = (ctx: FunctionContext): ParseResult => {
   const { meta } = ctx
   const { input, position } = meta
   const version = FORMULA_PARSER_VERSION
@@ -172,7 +194,7 @@ export const parse = (ctx: FunctionContext): ParseResult => {
   const newInput = input.substring(1)
   const isHead = position === 0
   const newPosition = Math.max(position - 1, 0)
-  const { inputImage, parseImage, variableParseResult, ...rest } = innerParse({
+  const { inputImage, parseImage, variableParseResult, ...rest } = parse2({
     ...ctx,
     meta: { ...meta, input: newInput, position: newPosition }
   })
@@ -195,16 +217,9 @@ export const parse = (ctx: FunctionContext): ParseResult => {
   return parseResult
 }
 
-const innerParse = (ctx: FunctionContext): ParseResult => {
+const parse2 = (ctx: FunctionContext): ParseResult => {
   const { formulaContext, meta } = ctx
-  const {
-    namespaceId,
-    variableId,
-    input,
-    name,
-    richType: { type },
-    position
-  } = meta
+  const { namespaceId, variableId, input, position } = meta
   const version = FORMULA_PARSER_VERSION
 
   const returnValue: BaseParseResult = {
@@ -381,47 +396,6 @@ const innerParse = (ctx: FunctionContext): ParseResult => {
     }
   }
 
-  if (type === 'normal' && !checkValidName(name)) {
-    return {
-      ...returnValue,
-      success: false,
-      errorType: 'syntax',
-      errorMessages: [{ message: 'errors.parse.name.invalid', type: 'name_invalid' }],
-      variableParseResult: {
-        ...returnValue.variableParseResult,
-        kind: 'unknown'
-      }
-    }
-  }
-
-  if (formulaContext.reservedNames.includes(name.toUpperCase())) {
-    return {
-      ...returnValue,
-      success: false,
-      errorType: 'syntax',
-      errorMessages: [{ message: 'errors.parse.name.reserved', type: 'name_check' }],
-      variableParseResult: {
-        ...returnValue.variableParseResult,
-        kind: 'unknown'
-      }
-    }
-  }
-
-  const sameNameVariable = formulaContext.findNames(namespaceId, name).filter(v => v.id !== variableId)[0]
-
-  if (type === 'normal' && sameNameVariable) {
-    return {
-      ...returnValue,
-      success: false,
-      errorType: 'syntax',
-      errorMessages: [{ message: 'errors.parse.name.duplicated', type: 'name_unique' }],
-      variableParseResult: {
-        ...returnValue.variableParseResult,
-        kind: 'unknown'
-      }
-    }
-  }
-
   return {
     ...returnValue,
     errorType: undefined,
@@ -489,7 +463,7 @@ export const innerInterpret = async ({
 
     return { success: true, result, runtimeEventDependencies: interpreter.runtimeEventDependencies }
   } catch (e) {
-    console.error(e)
+    devWarning(true, e)
     const message = `[FATAL] ${(e as any).message as string}`
     return { success: false, result: { result: message, type: 'Error', meta: 'fatal' } }
   }

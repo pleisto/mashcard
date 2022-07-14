@@ -54,29 +54,29 @@ export class BubbleMenuView {
     this.element.style.visibility = 'visible'
   }
 
-  elementMousedownHandler = () => {
+  elementMousedownHandler = (): void => {
     this.preventHide = true
   }
 
-  mousedownHandler = () => {
+  mousedownHandler = (): void => {
     this.maybeSelecting = true
   }
 
-  mouseupHandler = () => {
+  mouseupHandler = (): void => {
     this.maybeSelecting = false
     this.createBubbleMenuPopover(this.editor.view, this.editor.state.selection)
   }
 
-  dragstartHandler = () => {
+  dragstartHandler = (): void => {
     this.hide()
   }
 
-  focusHandler = () => {
+  focusHandler = (): void => {
     // we use `setTimeout` to make sure `selection` is already updated
     setTimeout(() => this.update(this.editor.view))
   }
 
-  blurHandler = ({ event }: { event: FocusEvent }) => {
+  blurHandler = ({ event }: { event: FocusEvent }): void => {
     if (this.preventHide) {
       this.preventHide = false
 

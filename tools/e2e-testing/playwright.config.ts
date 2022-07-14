@@ -43,14 +43,7 @@ const config: PlaywrightTestConfig = {
     //     storageState: './storageState-firefox.json'
     //   }
     // }
-  ],
-  webServer: !isCI
-    ? {
-        command:
-          'NODE_ENV=test RAILS_ENV=test yarn run -T web dist && (cd ../../; RAILS_ENV=test ./apps/server-monolith/bin/rails server)',
-        port: 3000
-      }
-    : undefined
+  ]
 }
 
 export default config

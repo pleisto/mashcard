@@ -7,7 +7,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
     style="white-space: normal; pointer-events: unset;"
   >
     <div
-      class="mc-c-hKINpq"
+      class="mc-c-edKofp"
     >
       <button
         class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-TfyyP-btnType-secondary mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-jFlAGq-contentType-default mc-c-PJLV-ipCccR-size-md"
@@ -196,7 +196,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
       </button>
       <div
         aria-haspopup="dialog"
-        class="mc-c-jXdbNa"
+        class="mc-c-krrmpR"
         contenteditable="false"
         data-drag-handle="true"
         data-testid="editor-block-action-button"

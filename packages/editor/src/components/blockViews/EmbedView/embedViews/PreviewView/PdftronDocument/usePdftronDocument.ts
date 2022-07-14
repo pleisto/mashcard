@@ -1,5 +1,6 @@
-import { RefObject, useCallback, useEffect, useRef, useState } from 'react'
+import { devWarning } from '@mashcard/design-system'
 import WebViewer, { WebViewerInstance } from '@pdftron/webviewer'
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react'
 
 export type DocumentStatus = 'ready' | 'error' | 'loading'
 
@@ -27,7 +28,7 @@ export function usePdftronDocument(initialDoc: string): [DocumentStatus, RefObje
         setDocumentStatus('ready')
       })
       instance.UI.addEventListener(instance.UI.Events.LOAD_ERROR, err => {
-        console.error(err)
+        devWarning(true, err)
         setDocumentStatus('error')
       })
     })

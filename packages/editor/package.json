@@ -11,6 +11,7 @@
   "volta": {
     "extends": "../../package.json"
   },
+  "sideEffects": false,
   "dependencies": {
     "@mashcard/active-support": "workspace:^",
     "@mashcard/design-icons": "workspace:^",
@@ -50,7 +51,7 @@
     "@tiptap/react": "^2.0.0-beta.114",
     "@tiptap/suggestion": "^2.0.0-beta.97",
     "dayjs": "^1.11.3",
-    "framer-motion": "^6.4.3",
+    "framer-motion": "^6.5.0",
     "lodash": "^4.17.21",
     "popper-max-size-modifier": "^0.2.0",
     "re-resizable": "^6.9.9",

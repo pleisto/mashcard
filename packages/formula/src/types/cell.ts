@@ -2,11 +2,13 @@ import { Cell, CellType, CellVia } from '../controls'
 import { BaseResult, FormulaTypeAttributes } from '../type'
 
 const TypeName = 'Cell' as const
+const ShortName = 'cell' as const
 
 export type FormulaCellType = BaseResult<typeof TypeName, CellType, [string, CellVia, Cell]>
 
-export const FormulaCellAttributes: FormulaTypeAttributes<typeof TypeName> = {
+export const FormulaCellAttributes: FormulaTypeAttributes<typeof TypeName, typeof ShortName> = {
   type: TypeName,
+  shortName: ShortName,
   dump: ({ result, ...rest }) => ({
     ...rest,
     result: [result.spreadsheetId, result.via, result._cell]

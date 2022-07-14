@@ -1,11 +1,13 @@
-import {
-  useFormulaCommitMutation,
-  GetFormulasDocument,
-  GetFormulasQueryVariables as Variables,
-  GetFormulasQuery as Query
-} from '@/MashcardGraphQL'
+import { devLog } from '@mashcard/design-system'
 import { AnyFunctionClause, BackendActions, createFunctionClause } from '@mashcard/formula'
+
 import { useImperativeQuery } from '@/common/hooks'
+import {
+  GetFormulasDocument,
+  GetFormulasQuery as Query,
+  GetFormulasQueryVariables as Variables,
+  useFormulaCommitMutation
+} from '@/MashcardGraphQL'
 
 interface useFormulaActionsResult {
   commitFormula: BackendActions['commit']
@@ -31,7 +33,7 @@ export function useFormulaActions(): useFormulaActionsResult {
           success: !errors || errors.length === 0
         }
       } catch (e) {
-        console.log('commit error', e)
+        devLog('commit error', e)
         return { success: false }
       }
     },

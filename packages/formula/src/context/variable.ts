@@ -31,6 +31,7 @@ import {
   FormulaUpdatedViaId,
   FormulaVariableDependencyUpdated
 } from '../events'
+import { devWarning } from '@mashcard/design-system'
 
 const MAX_LEVEL = 20
 
@@ -389,7 +390,7 @@ export class VariableClass implements VariableInterface {
     // )
 
     if (level > MAX_LEVEL) {
-      console.error('reparse: max level reached', source, sourceUuid)
+      devWarning(true, 'reparse: max level reached', source, sourceUuid)
       return
     }
 

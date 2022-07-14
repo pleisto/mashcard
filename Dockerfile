@@ -54,8 +54,10 @@ ENV SENTRY_PROJECT=$SENTRY_PROJECT
 COPY . .
 
 RUN sed -i "s/[\"]version[\"]: [\"]0.0.0[\"]/\"version\": \"$VERSION\"/g" package.json
-RUN cd apps/server-monolith && chmod a+x bin/* && NODE_ENV=$RAILS_ENV bin/vite build
-RUN if [ "$VERSION" != "0.0.0" ] && [ "$SENTRY_AUTH_TOKEN" ]; then yarn sentry-cli releases files mashcard@$VERSION upload-sourcemaps ./apps/server-monolith/public/esm-bundle --url-prefix '~/esm-bundle'; fi
+RUN cd apps/server-monolith && chmod a+x bin/* && NODE_ENV=production bin/vite build
+
+# TODO: upload sourcemap to Sentry for SaaS deployments
+# RUN if [ "$VERSION" != "0.0.0" ] && [ "$SENTRY_AUTH_TOKEN" ]; then yarn sentry-cli releases files mashcard@$VERSION upload-sourcemaps ./apps/server-monolith/public/esm-bundle --url-prefix '~/esm-bundle'; fi
 
 RUN rm -rf node_modules .yarn apps/client-web dist apps/server-monolith/public/esm-bundle/stats.json yarn.lock \
   && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + \

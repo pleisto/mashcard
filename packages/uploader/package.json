@@ -11,6 +11,7 @@
   "volta": {
     "extends": "../../package.json"
   },
+  "sideEffects": false,
   "dependencies": {
     "@mashcard/active-support": "workspace:^",
     "@mashcard/design-icons": "workspace:^",
@@ -22,7 +23,7 @@
     "@uppy/xhr-upload": "^2.1.2",
     "ahooks": "^3.5.2",
     "blurhash": "^1.1.5",
-    "react-virtuoso": "^2.16.3"
+    "react-virtuoso": "^2.16.4"
   },
   "peerDependencies": {
     "react": ">=17.0.2",

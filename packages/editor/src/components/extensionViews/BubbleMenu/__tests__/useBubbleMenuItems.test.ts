@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 import * as editorContextHook from '../../../../hooks/useEditorContext'
 import * as selectionHelpers from '../../../../helpers/selection'
 import { useNodeGroup } from '../useBubbleMenuItems/useNodeGroup'

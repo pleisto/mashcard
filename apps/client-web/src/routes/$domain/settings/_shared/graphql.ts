@@ -9,7 +9,7 @@ export const ChangeDomain = gql`
 `
 
 export const UserAppearanceUpdate = gql`
-  mutation UserAppearanceUpdate($input: UserAppearanceUpdateInput!) {
+  mutation userAppearanceUpdate($input: UserAppearanceUpdateInput!) {
     userAppearanceUpdate(input: $input) {
       errors
     }
@@ -17,7 +17,7 @@ export const UserAppearanceUpdate = gql`
 `
 
 export const UserDestroy = gql`
-  mutation UserDestroy($input: UserDestroyInput!) {
+  mutation userDestroy($input: UserDestroyInput!) {
     userDestroy(input: $input) {
       errors
     }
@@ -25,16 +25,16 @@ export const UserDestroy = gql`
 `
 
 export const GroupDestroy = gql`
-  mutation GroupDestroy($input: GroupDestroyInput!) {
+  mutation groupDestroy($input: GroupDestroyInput!) {
     groupDestroy(input: $input) {
       errors
     }
   }
 `
 
-export const PodLeave = gql`
-  mutation PodLeave($input: PodLeaveInput!) {
-    podLeave(input: $input) {
+export const GroupLeave = gql`
+  mutation groupLeave($input: GroupLeaveInput!) {
+    groupLeave(input: $input) {
       errors
     }
   }

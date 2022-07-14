@@ -33,6 +33,9 @@ export const PodSelect: FC = () => {
 
   if (!pod) {
     devWarning(true, 'Domain does not match the current user', domain, data)
+    // NOTE: This is a temporary solution to resolve the issue of the pod not found.
+    // Triggerred when the user is not in the pod.
+    globalThis.location.href = '/'
     return <></>
   }
 

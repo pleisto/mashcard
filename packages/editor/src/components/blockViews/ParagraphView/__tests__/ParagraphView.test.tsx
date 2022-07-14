@@ -1,5 +1,4 @@
-import { render } from '@testing-library/react'
-import { renderHook } from '@testing-library/react-hooks'
+import { render, renderHook } from '@testing-library/react'
 import ListItem from '@tiptap/extension-list-item'
 import { ParagraphAttributes, ParagraphOptions } from '../../../../extensions'
 import { mockBlockViewProps } from '../../../../test'

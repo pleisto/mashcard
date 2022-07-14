@@ -2,13 +2,13 @@ import { Alert, Box, Loading } from '@mashcard/design-system'
 import { FC, ReactElement, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { useGetPodsQuery, useJoinPodMutation } from '@/MashcardGraphQL'
+import { useGetPodsQuery, useGroupJoinMutation } from '@/MashcardGraphQL'
 import { RequireLogin } from '../../_shared/RequireLogin'
 
 export const JoinPod: FC = () => {
   const navigate = useNavigate()
   const { loading, data } = useGetPodsQuery()
-  const [joinPod, { loading: joinLoading }] = useJoinPodMutation()
+  const [groupJoin, { loading: joinLoading }] = useGroupJoinMutation()
   const [errorMsg, setErrorMsg] = useState<string | undefined>()
   const { domain, secret } = useParams()
   const podUrl = `/${domain}`
@@ -17,14 +17,14 @@ export const JoinPod: FC = () => {
   useEffect(() => {
     const join = async (): Promise<void> => {
       if (existed) navigate(podUrl)
-      const result = await joinPod({
+      const result = await groupJoin({
         variables: {
           input: {
             inviteSecret: secret
           }
         }
       })
-      const errors = result.data?.joinPod?.errors
+      const errors = result.data?.groupJoin?.errors
       if (errors) {
         setErrorMsg(errors?.join('\n'))
       } else {
@@ -32,7 +32,7 @@ export const JoinPod: FC = () => {
       }
     }
     void join()
-  }, [existed, podUrl, navigate, joinPod, secret])
+  }, [existed, podUrl, navigate, groupJoin, secret])
 
   if (loading || joinLoading) return <Loading />
 
@@ -47,8 +47,7 @@ export const JoinPod: FC = () => {
             width: '100%',
             height: '100%',
             position: 'absolute'
-          }}
-        >
+          }}>
           <main>
             <Alert message={errorMsg} title="Operation Failed" type="error" />
           </main>

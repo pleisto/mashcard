@@ -28,6 +28,7 @@ class Group < Pod
   include GroupInviteable
 
   has_many :members, -> { enabled }, class_name: 'Groups::Member', inverse_of: :group, dependent: :destroy
+  has_many :all_members, class_name: 'Groups::Member', inverse_of: :group, dependent: :destroy
   has_one :owner_member, -> { where(role: :owner).enabled }, class_name: 'Groups::Member', inverse_of: :group, dependent: :destroy
   has_many :users, through: :members
   has_one :owner, through: :owner_member, source: :user

@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 import * as uploader from '@mashcard/uploader/src/imperativeUpload'
 import { EmbedAttributes, EmbedOptions } from '../../../../../../extensions/blocks/embed/meta'
 import { mockBlockViewProps } from '../../../../../../test'

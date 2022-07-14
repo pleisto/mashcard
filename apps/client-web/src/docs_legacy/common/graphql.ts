@@ -84,17 +84,17 @@ export const CreateOrUpdatePod = gql`
   }
 `
 
-export const JoinPod = gql`
-  mutation joinPod($input: JoinPodInput!) {
-    joinPod(input: $input) {
+export const GroupJoin = gql`
+  mutation groupJoin($input: GroupJoinInput!) {
+    groupJoin(input: $input) {
       errors
     }
   }
 `
 
-export const UpdateMember = gql`
-  mutation updateMember($input: UpdateMemberInput!) {
-    updateMember(input: $input) {
+export const GroupUpdateMember = gql`
+  mutation groupUpdateMember($input: GroupUpdateMemberInput!) {
+    groupUpdateMember(input: $input) {
       errors
     }
   }

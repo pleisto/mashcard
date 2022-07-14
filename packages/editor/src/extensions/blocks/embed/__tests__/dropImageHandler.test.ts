@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 import { useTestEditor } from '../../../../test/testEditor'
 import { Embed } from '../embed'
 import { dropImageHandler } from '../dropImageHandler'
