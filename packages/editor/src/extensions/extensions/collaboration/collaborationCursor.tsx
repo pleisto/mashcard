@@ -1,6 +1,6 @@
 import { Extension } from '@tiptap/core'
 import { yCursorPlugin } from 'y-prosemirror'
-import * as ReactDOM from 'react-dom/client'
+import { createRoot } from 'react-dom/client'
 import { CursorAvatar } from '../../../components/extensionViews/CollaborationCursorViews'
 
 interface CollaborationCursorUsers extends Array<{ clientId: number; [key: string]: any }> {}
@@ -59,7 +59,7 @@ export const CollaborationCursor = Extension.create<CollaborationCursorOptions, 
         label.setAttribute('style', `background-color: ${user.color}`)
 
         const avatarElm = document.createElement('span')
-        const avatarRoot = ReactDOM.createRoot(avatarElm)
+        const avatarRoot = createRoot(avatarElm)
         const avatar = <CursorAvatar size="xxs" initials={user.name} />
 
         avatarRoot.render(avatar)

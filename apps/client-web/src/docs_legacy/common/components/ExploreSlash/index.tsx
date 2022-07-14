@@ -16,9 +16,9 @@ export const ExploreSlash: React.FC<DiscussionMenuProps> = ({ className }) => {
   }, [])
 
   return (
-    <Tooltip title={t('slash_menu.tooltip')}>
+    <Tooltip title={t('block_selector.tooltip')}>
       <Button className={className} type="text" onClick={onClick} css={itemStyle}>
-        <Icon.Explore aria-label={t('slash_menu.title')} />
+        <Icon.Explore aria-label={t('block_selector.title')} />
       </Button>
     </Tooltip>
   )
