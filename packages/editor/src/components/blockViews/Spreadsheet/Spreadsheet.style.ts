@@ -1,4 +1,4 @@
-import { CSS, theme, styled, Input } from '@mashcard/design-system'
+import { CSS, theme, styled } from '@mashcard/design-system'
 
 const tableHeaderColor = '#908B9C'
 const tableBg = 'rgba(0, 0, 0, 3%)'

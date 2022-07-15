@@ -54,7 +54,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
   }
 
   const getDocSpreadsheetTitles = (): { [uuid: string]: string } => {
-    const { state, view } = editor
+    const { state } = editor
     const spreadsheetTitles: { [uuid: string]: string } = {}
     state.doc.descendants(otherNode => {
       if (otherNode.type.name === node.type.name) {
