@@ -33,6 +33,10 @@ module Mashcard
 
     config.action_mailer.deliver_later_queue_name = :default
 
+    # https://discuss.rubyonrails.org/t/cve-2022-32224-possible-rce-escalation-bug-with-serialized-columns-in-active-record/81017
+    # Allow symbols to be used as keys of hash-type values for MashcardConfig
+    config.active_record.yaml_column_permitted_classes = [Symbol]
+
     config.active_record.query_log_tags_enabled = true
     config.active_job.queue_adapter = :async
     config.logger = ::Logger.new($stdout)

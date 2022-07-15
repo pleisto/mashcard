@@ -8,3 +8,4 @@ updates:
     directory: '/apps/server-monolith'
     schedule:
       interval: 'daily'
+# npm dependencies are updated by the `upgrade_deps.yml` workflow

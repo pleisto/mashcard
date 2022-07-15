@@ -3,39 +3,48 @@
   "baseBranch": "origin/main",
   "pipeline": {
     "lint:eslint": {
-      "inputs": ["**/*.ts", "**/*.tsx", ".eslintrc.yml", ".eslintignore"],
+      "inputs": ["**/*.ts", "**/*.tsx", "**/.eslintrc.yml", "**/.eslintignore"],
       "outputs": []
     },
     "lint:fix": {
-      "inputs": ["**/*.ts", "**/*.tsx", ".eslintrc.yml", ".eslintignore", "**/*.rb", "Gemfile"],
+      "inputs": [
+        "**/*.ts",
+        "**/*.tsx",
+        "**/.eslintrc.yml",
+        "**/.eslintignore",
+        "**/*.rb",
+        "**/Gemfile",
+        "**/Gemfile.lock"
+      ],
       "outputs": []
     },
     "lint:type": {
       "dependsOn": ["^lint:type"],
-      "inputs": ["**/*.ts", "**/*.tsx", "tsconfig.json"],
+      "inputs": ["**/*.ts", "**/*.tsx", "**/tsconfig.json"],
       "outputs": ["**/tsconfig.tsbuildinfo"]
     },
     "lint:rubocop": {
-      "inputs": ["**/*.rb", "Gemfile"],
+      "inputs": ["**/*.rb", "**/Gemfile", "**/Gemfile.lock"],
       "outputs": ["**/rubocop_cache/**"]
     },
     "rust:build": {
       "dependsOn": ["$SYSINFO"],
-      "inputs": ["**/*.rs", "Cargo.toml", "Cargo.lock"],
+      "inputs": ["**/*.rs", "**/Cargo.toml", "**/Cargo.lock"],
       "outputs": ["lib/**/*.so"]
     },
     "rust:build:dev": {
       "dependsOn": ["$SYSINFO"],
+      "inputs": ["**/*.rs", "**/Cargo.toml", "**/Cargo.lock"],
       "outputs": ["lib/**/*.so"]
     },
     "test:jest": {
       "dependsOn": ["^test:jest"],
-      "inputs": ["**/*.ts", "**/*.tsx", "jest.config.js"],
+      "inputs": ["**/*.ts", "**/*.tsx", "**/jest.config.js"],
       "outputs": ["coverage/**"]
     },
     "test:rspec": {
       "dependsOn": ["^test:rspec", "rust:build"],
-      "inputs": ["**/*.rb", "Gemfile", "Gemfile.lock", ".rspec"],
+      "inputs": ["**/*.rb", "**/Gemfile", "**/Gemfile.lock", "**/.rspec"],
       "outputs": ["coverage/**"]
     },
     "tsdoc": {

@@ -11,13 +11,13 @@ ruby '3.1.2'
 if ENV['NIGHTLY'] == 'true'
   gem 'rails', github: 'rails/rails'
 else
-  gem 'rails', '7.0.3'
+  gem 'rails', '7.0.3.1'
 end
 
-gem 'pg', '~> 1.3.5'
+gem 'pg', '~> 1.4.1'
 gem 'puma', '~> 5.6.4'
 gem 'puma_worker_killer', '~> 0.3.1'
-gem 'redis', '~> 4.5.1' # redis-objects 1.6 maxiumum supported redis version is 4.5
+gem 'redis', '~> 4.7.1'
 gem 'redis-objects', '~>1.6'
 gem 'dotenv-rails'
 gem 'connection_pool', '~> 2.2', '>= 2.2.5'
@@ -37,14 +37,14 @@ gem 'nokogiri', '>= 1.13.6'
 gem 'bootsnap', require: false
 gem 'tzinfo-data', '~> 1.2022' # Don't rely on Linux/macOS timezone data.
 gem 'rbnacl', '~> 7.1', '>= 7.1.1'
-gem 'dry-container', '~> 0.9.0'
+gem 'dry-container', '~> 0.10.0'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'default_value_for', github: 'mashcard/default_value_for'
 
 # Feature toggles
-gem 'flipper', '~> 0.24.1'
-gem 'flipper-active_record', '~> 0.24.1'
-gem 'flipper-active_support_cache_store', '~> 0.24.1'
+gem 'flipper', '~> 0.25.0'
+gem 'flipper-active_record', '~> 0.25.0'
+gem 'flipper-active_support_cache_store', '~> 0.25.0'
 
 gem 'google-cloud-storage', '~> 1.36', '>= 1.36.2'
 gem 'google-cloud-kms', '~> 2.3'
