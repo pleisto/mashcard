@@ -1,4 +1,4 @@
-import { CSS, theme, styled } from '@mashcard/design-system'
+import { CSS, theme, styled, Input } from '@mashcard/design-system'
 
 const tableHeaderColor = '#908B9C'
 const tableBg = 'rgba(0, 0, 0, 3%)'
@@ -8,6 +8,7 @@ const tableActionBorderColor = 'rgba(0, 0, 0, 5%)'
 const tableSelectBg = 'rgba(44, 91, 255, 0.18)'
 const tableSelectBorderColor = '#c0cdff'
 const tableActionHoverColor = '#356cf9'
+const spreadsheetBorderColor = '#87B6E8'
 
 export const spreadsheetStyles: CSS = {
   '.mashcard-spreadsheet-block': {
@@ -261,6 +262,37 @@ export const spreadsheetStyles: CSS = {
   }
 }
 
+export const SpreadsheetTitleEditing = styled('div', {
+  position: 'relative'
+})
+
+export const SpreadsheetTitleInput = styled('input', {
+  fontWeight: 'normal',
+  padding: 0,
+  border: 0,
+  background: 'transparent',
+  margin: 0,
+  borderRadius: 0,
+  boxShadow: 'none',
+  fontSize: '1rem',
+  lineHeight: 1.5,
+  marginBottom: 8,
+  '&:focus': {
+    border: 0,
+    boxShadow: 'none',
+    outline: '0 none'
+  },
+  variants: {
+    danger: {
+      true: {
+        color: theme.colors.errorDefault,
+        textDecoration: 'underline',
+        textUnderlineOffset: '6px'
+      }
+    }
+  }
+})
+
 export const SpreadsheetCellDisplay = styled('div', {
   width: '100%',
   overflowX: 'hidden',
@@ -288,14 +320,14 @@ export const SpreadsheetColumnEditing = styled('div', {
   width: '100%',
   background: theme.colors.backgroundSecondary,
   // boxShadow: `0 0 0 2px ${theme.colors.borderOverlayThirdary}`,
-  outline: `2px solid ${theme.colors.borderOverlayThirdary}`,
+  outline: `2px solid ${spreadsheetBorderColor}`,
   display: 'flex',
   variants: {
     danger: {
       true: {
         background: theme.colors.errorBg,
         // boxShadow: `0 0 0 2px ${theme.colors.errorDefault}`,
-        outline: `2px solid ${theme.colors.errorDefault}`,
+        outline: `2px solid ${theme.colors.errorDefault}`
       }
     }
   }
@@ -352,6 +384,15 @@ export const SpreadsheetTooltip = styled('div', {
   textAlign: 'center',
   fontSize: '12px',
   lineHeight: '18px',
+  zIndex: theme.zIndices.tooltip
+})
+
+export const SpreadsheetTitleTooltip = styled(SpreadsheetTooltip, {
+  bottom: '-10px',
+  left: '20px'
+})
+
+export const SpreadsheetColumnTooltip = styled(SpreadsheetTooltip, {
   bottom: '-28px',
   left: '20px'
 })

@@ -415,6 +415,9 @@ en-US:
     spreadsheet:
       delete: Delete
       copy: Copy
+      title:
+        duplicated_with_spreadsheet: 'Title is duplicated with spreadsheet:'
+        empty: Title can not be empty
       row:
         actions: Actions
         add_above: Add row above
@@ -426,6 +429,7 @@ en-US:
         add_right: Add column to the right
         delete: Delete
         duplicated_name: 'Duplicated column name:'
+        duplicated_name_with_spreadsheet: 'Column name is duplicated with spreadsheet:'
     table:
       untitled: Untitled
       new_row:

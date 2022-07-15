@@ -11,7 +11,7 @@ import { SpreadsheetColumn } from './useSpreadsheet'
 import { columnDisplayIndex } from './helper'
 
 import {
-  SpreadsheetTooltip,
+  SpreadsheetColumnTooltip,
   SpreadsheetColumnDisplay,
   SpreadsheetColumnInput,
   SpreadsheetColumnEditing,
@@ -541,9 +541,10 @@ export const SpreadsheetColumnEditable: React.FC<{
       const msg = onSave?.(inputRef.current.value)
       if (msg) {
         inputRef.current?.focus()
-        setEditing(true)
         setErrorMsg(msg)
+        setEditing(true)
       } else {
+        setErrorMsg(undefined)
         setEditing(false)
       }
     }
@@ -573,7 +574,7 @@ export const SpreadsheetColumnEditable: React.FC<{
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
       />
-      {errorMsg && <SpreadsheetTooltip>{errorMsg}</SpreadsheetTooltip>}
+      {errorMsg && <SpreadsheetColumnTooltip>{errorMsg}</SpreadsheetColumnTooltip>}
     </SpreadsheetColumnEditing>
   ) : (
     <SpreadsheetColumnDisplay onDoubleClick={editable ? handleEnterEdit : undefined}>
