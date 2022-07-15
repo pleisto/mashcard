@@ -26,7 +26,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:679](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L679)
+[packages/formula/src/type/index.ts:677](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L677)
 
 ---
 
@@ -36,7 +36,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:675](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L675)
+[packages/formula/src/type/index.ts:673](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L673)
 
 ---
 
@@ -46,7 +46,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:676](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L676)
+[packages/formula/src/type/index.ts:674](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L674)
 
 ---
 
@@ -56,7 +56,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:681](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L681)
+[packages/formula/src/type/index.ts:679](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L679)
 
 ---
 
@@ -66,7 +66,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:680](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L680)
+[packages/formula/src/type/index.ts:678](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L678)
 
 ---
 
@@ -76,7 +76,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:678](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L678)
+[packages/formula/src/type/index.ts:676](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L676)
 
 ---
 
@@ -86,4 +86,4 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:677](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L677)
+[packages/formula/src/type/index.ts:675](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L675)

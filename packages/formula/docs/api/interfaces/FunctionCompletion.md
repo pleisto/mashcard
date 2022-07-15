@@ -32,7 +32,7 @@ BaseCompletion.fallbackPositionOffset
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:321](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L321)
+[packages/formula/src/type/index.ts:316](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L316)
 
 ---
 
@@ -46,7 +46,7 @@ BaseCompletion.fallbackValue
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:320](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L320)
+[packages/formula/src/type/index.ts:315](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L315)
 
 ---
 
@@ -60,7 +60,7 @@ BaseCompletion.flags
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:318](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L318)
+[packages/formula/src/type/index.ts:313](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L313)
 
 ---
 
@@ -74,7 +74,7 @@ BaseCompletion.kind
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:327](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L327)
+[packages/formula/src/type/index.ts:322](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L322)
 
 ---
 
@@ -88,7 +88,7 @@ BaseCompletion.name
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:322](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L322)
+[packages/formula/src/type/index.ts:317](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L317)
 
 ---
 
@@ -102,7 +102,7 @@ BaseCompletion.namespaceId
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:324](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L324)
+[packages/formula/src/type/index.ts:319](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L319)
 
 ---
 
@@ -116,7 +116,7 @@ BaseCompletion.preview
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:328](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L328)
+[packages/formula/src/type/index.ts:323](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L323)
 
 ---
 
@@ -130,7 +130,7 @@ BaseCompletion.replacements
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:319](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L319)
+[packages/formula/src/type/index.ts:314](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L314)
 
 ---
 
@@ -144,4 +144,4 @@ BaseCompletion.weight
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:317](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L317)
+[packages/formula/src/type/index.ts:312](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L312)

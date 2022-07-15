@@ -110,6 +110,7 @@
 - [CodeFragmentAttrs](README.md#codefragmentattrs)
 - [CodeFragmentCodes](README.md#codefragmentcodes)
 - [CodeFragmentStep](README.md#codefragmentstep)
+- [CodeFragmentWithIndex](README.md#codefragmentwithindex)
 - [ColumnId](README.md#columnid)
 - [ColumnKey](README.md#columnkey)
 - [ColumnName](README.md#columnname)
@@ -119,7 +120,6 @@
 - [ComplexCodeFragmentType](README.md#complexcodefragmenttype)
 - [ContextState](README.md#contextstate)
 - [CoreFunctionGroup](README.md#corefunctiongroup)
-- [DefaultVariableName](README.md#defaultvariablename)
 - [Definition](README.md#definition)
 - [DistributeEvents](README.md#distributeevents)
 - [ExpressionType](README.md#expressiontype)
@@ -147,7 +147,6 @@
 - [RowId](README.md#rowid)
 - [SimpleCodeFragmentType](README.md#simplecodefragmenttype)
 - [SpecialCodeFragmentType](README.md#specialcodefragmenttype)
-- [SpecialDefaultVariableName](README.md#specialdefaultvariablename)
 - [SpreadsheetId](README.md#spreadsheetid)
 - [SpreadsheetKey](README.md#spreadsheetkey)
 - [SpreadsheetName](README.md#spreadsheetname)
@@ -201,11 +200,11 @@
 - [ExactIn](README.md#exactin)
 - [FORMULA_FEATURE_CONTROL](README.md#formula_feature_control)
 - [FORMULA_PARSER_VERSION](README.md#formula_parser_version)
+- [FORMULA_SHORT_NAMES](README.md#formula_short_names)
 - [FORMULA_USED_TYPES](README.md#formula_used_types)
 - [FUNCTION_NAME_REGEX](README.md#function_name_regex)
 - [FeatureTestCases](README.md#featuretestcases)
 - [FormulaLexer](README.md#formulalexer)
-- [FormulaTypeCastName](README.md#formulatypecastname)
 - [FunctionName](README.md#functionname)
 - [GreaterThan](README.md#greaterthan)
 - [GreaterThanEqual](README.md#greaterthanequal)
@@ -449,7 +448,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:178](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L178)
+[packages/formula/src/type/index.ts:173](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L173)
 
 ---
 
@@ -465,7 +464,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:174](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L174)
+[packages/formula/src/type/index.ts:169](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L169)
 
 ---
 
@@ -475,7 +474,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:548](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L548)
+[packages/formula/src/type/index.ts:544](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L544)
 
 ---
 
@@ -491,7 +490,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:170](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L170)
+[packages/formula/src/type/index.ts:165](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L165)
 
 ---
 
@@ -510,7 +509,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:129](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L129)
+[packages/formula/src/type/index.ts:122](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L122)
 
 ---
 
@@ -520,7 +519,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:91](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L91)
+[packages/formula/src/type/index.ts:86](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L86)
 
 ---
 
@@ -530,7 +529,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:96](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L96)
+[packages/formula/src/type/index.ts:91](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L91)
 
 ---
 
@@ -550,7 +549,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:589](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L589)
+[packages/formula/src/type/index.ts:585](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L585)
 
 ---
 
@@ -560,7 +559,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:587](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L587)
+[packages/formula/src/type/index.ts:583](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L583)
 
 ---
 
@@ -570,7 +569,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:279](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L279)
+[packages/formula/src/type/index.ts:274](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L274)
 
 ---
 
@@ -597,7 +596,17 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:595](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L595)
+[packages/formula/src/type/index.ts:593](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L593)
+
+---
+
+### <a id="codefragmentwithindex" name="codefragmentwithindex"></a> CodeFragmentWithIndex
+
+Ƭ **CodeFragmentWithIndex**: [`CodeFragment`](README.md#codefragment) & { `index`: `number` }
+
+#### Defined in
+
+[packages/formula/src/type/index.ts:587](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L587)
 
 ---
 
@@ -607,7 +616,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L108)
+[packages/formula/src/type/index.ts:101](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L101)
 
 ---
 
@@ -617,7 +626,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:92](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L92)
+[packages/formula/src/type/index.ts:87](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L87)
 
 ---
 
@@ -627,7 +636,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:80](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L80)
+[packages/formula/src/type/index.ts:75](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L75)
 
 ---
 
@@ -637,7 +646,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:349](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L349)
+[packages/formula/src/type/index.ts:344](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L344)
 
 ---
 
@@ -647,7 +656,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:291](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L291)
+[packages/formula/src/type/index.ts:286](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L286)
 
 ---
 
@@ -657,7 +666,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:217](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L217)
+[packages/formula/src/type/index.ts:212](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L212)
 
 ---
 
@@ -667,7 +676,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:218](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L218)
+[packages/formula/src/type/index.ts:213](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L213)
 
 ---
 
@@ -677,7 +686,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:72](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L72)
+[packages/formula/src/context/context.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L73)
 
 ---
 
@@ -687,17 +696,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:26](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L26)
-
----
-
-### <a id="defaultvariablename" name="defaultvariablename"></a> DefaultVariableName
-
-Ƭ **DefaultVariableName**: \`${SpecialDefaultVariableName}${number}\`
-
-#### Defined in
-
-[packages/formula/src/type/index.ts:98](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L98)
+[packages/formula/src/type/index.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L54)
 
 ---
 
@@ -707,7 +706,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:83](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L83)
+[packages/formula/src/type/index.ts:78](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L78)
 
 ---
 
@@ -733,7 +732,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:41](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L41)
+[packages/formula/src/type/index.ts:69](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L69)
 
 ---
 
@@ -759,7 +758,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:168](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L168)
+[packages/formula/src/type/index.ts:163](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L163)
 
 ---
 
@@ -769,7 +768,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L112)
+[packages/formula/src/type/index.ts:105](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L105)
 
 ---
 
@@ -779,7 +778,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L113)
+[packages/formula/src/type/index.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L106)
 
 ---
 
@@ -789,7 +788,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:206](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L206)
+[packages/formula/src/type/index.ts:201](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L201)
 
 ---
 
@@ -799,7 +798,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:35](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L35)
+[packages/formula/src/type/index.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L63)
 
 ---
 
@@ -809,7 +808,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:39](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L39)
+[packages/formula/src/type/index.ts:67](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L67)
 
 ---
 
@@ -819,7 +818,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:29](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L29)
+[packages/formula/src/type/index.ts:57](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L57)
 
 ---
 
@@ -829,7 +828,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:186](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L186)
+[packages/formula/src/type/index.ts:181](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L181)
 
 ---
 
@@ -839,7 +838,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:30](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L30)
+[packages/formula/src/type/index.ts:58](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L58)
 
 ---
 
@@ -849,7 +848,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:230](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L230)
+[packages/formula/src/type/index.ts:225](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L225)
 
 ---
 
@@ -859,7 +858,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L76)
+[packages/formula/src/type/index.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L71)
 
 ---
 
@@ -869,7 +868,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:89](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L89)
+[packages/formula/src/type/index.ts:84](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L84)
 
 ---
 
@@ -879,7 +878,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:78](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L78)
+[packages/formula/src/type/index.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L73)
 
 ---
 
@@ -909,7 +908,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L106)
+[packages/formula/src/type/index.ts:99](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L99)
 
 ---
 
@@ -929,7 +928,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:87](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L87)
+[packages/formula/src/type/index.ts:82](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L82)
 
 ---
 
@@ -963,7 +962,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:100](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L100)
+[packages/formula/src/type/index.ts:93](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L93)
 
 ---
 
@@ -973,7 +972,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L110)
+[packages/formula/src/type/index.ts:103](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L103)
 
 ---
 
@@ -983,7 +982,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:253](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L253)
+[packages/formula/src/type/index.ts:248](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L248)
 
 ---
 
@@ -993,17 +992,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:271](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L271)
-
----
-
-### <a id="specialdefaultvariablename" name="specialdefaultvariablename"></a> SpecialDefaultVariableName
-
-Ƭ **SpecialDefaultVariableName**: `"str"` \| `"num"` \| `"bool"` \| `"cst"` \| `"record"` \| `"array"` \| `"date"` \| `"blank"` \| `"column"` \| `"row"` \| `"cell"` \| `"range"` \| `"block"` \| `"var"` \| `"null"` \| `"error"` \| `"void"` \| `"predicate"` \| `"spreadsheet"` \| `"reference"` \| `"function"` \| `"button"` \| `"switch"` \| `"select"` \| `"input"` \| `"radio"` \| `"rate"` \| `"slider"` \| `"pending"` \| `"waiting"` \| `"noPersist"`
-
-#### Defined in
-
-[packages/formula/src/type/index.ts:43](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L43)
+[packages/formula/src/type/index.ts:266](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L266)
 
 ---
 
@@ -1013,7 +1002,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L109)
+[packages/formula/src/type/index.ts:102](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L102)
 
 ---
 
@@ -1023,7 +1012,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:93](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L93)
+[packages/formula/src/type/index.ts:88](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L88)
 
 ---
 
@@ -1033,7 +1022,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:81](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L81)
+[packages/formula/src/type/index.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L76)
 
 ---
 
@@ -1063,7 +1052,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:31](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L31)
+[packages/formula/src/type/index.ts:59](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L59)
 
 ---
 
@@ -1073,7 +1062,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L107)
+[packages/formula/src/type/index.ts:100](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L100)
 
 ---
 
@@ -1083,7 +1072,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:90](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L90)
+[packages/formula/src/type/index.ts:85](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L85)
 
 ---
 
@@ -1093,7 +1082,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:85](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L85)
+[packages/formula/src/type/index.ts:80](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L80)
 
 ---
 
@@ -1103,7 +1092,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:79](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L79)
+[packages/formula/src/type/index.ts:74](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L74)
 
 ---
 
@@ -1113,7 +1102,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:732](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L732)
+[packages/formula/src/type/index.ts:730](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L730)
 
 ---
 
@@ -1123,7 +1112,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:706](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L706)
+[packages/formula/src/type/index.ts:704](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L704)
 
 ---
 
@@ -1133,7 +1122,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:642](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L642)
+[packages/formula/src/type/index.ts:640](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L640)
 
 ---
 
@@ -1143,7 +1132,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L116)
+[packages/formula/src/type/index.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L109)
 
 ---
 
@@ -1168,7 +1157,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:118](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L118)
+[packages/formula/src/type/index.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L111)
 
 ---
 
@@ -1178,7 +1167,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L115)
+[packages/formula/src/type/index.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L108)
 
 ---
 
@@ -1198,7 +1187,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:104](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L104)
+[packages/formula/src/type/index.ts:97](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L97)
 
 ## Variables
 
@@ -1308,7 +1297,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:25](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L25)
+[packages/formula/src/type/index.ts:53](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L53)
 
 ---
 
@@ -1522,13 +1511,23 @@
 
 ---
 
+### <a id="formula_short_names" name="formula_short_names"></a> FORMULA_SHORT_NAMES
+
+• `Const` **FORMULA_SHORT_NAMES**: readonly [``"str"``, ``"literal"``, ``"num"``, ``"bool"``, ``"blank"``, ``"cst"``, ``"switch"``, ``"button"``, ``"predicate"``, ``"pending"``, ``"waiting"``, ``"noPersist"``, ``"function"``, ``"ref"``, ``"null"``, ``"record"``, ``"array"``, ``"date"``, ``"error"``, ``"spreadsheet"``, ``"column"``, ``"range"``, ``"row"``, ``"cell"``, ``"block"``]
+
+#### Defined in
+
+[packages/formula/src/type/index.ts:15](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L15)
+
+---
+
 ### <a id="formula_used_types" name="formula_used_types"></a> FORMULA_USED_TYPES
 
 • `Const` **FORMULA_USED_TYPES**: readonly [``"number"``, ``"string"``, ``"boolean"``, ``"null"``, ``"Date"``, ``"Block"``, ``"Blank"``, ``"Record"``, ``"Array"``, ``"Error"``, ``"Spreadsheet"``, ``"Row"``, ``"Cell"``, ``"Column"``, ``"Range"``, ``"Cst"``, ``"Reference"``, ``"Function"``, ``"Predicate"``, ``"Button"``, ``"Switch"``, ``"literal"``, ``"Pending"``, ``"Waiting"``, ``"NoPersist"``]
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:15](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L15)
+[packages/formula/src/type/index.ts:43](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L43)
 
 ---
 
@@ -1559,16 +1558,6 @@
 #### Defined in
 
 [packages/formula/src/grammar/lexer.ts:322](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L322)
-
----
-
-### <a id="formulatypecastname" name="formulatypecastname"></a> FormulaTypeCastName
-
-• `Const` **FormulaTypeCastName**: `Record`<[`FormulaType`](README.md#formulatype), [`SpecialDefaultVariableName`](README.md#specialdefaultvariablename)\>
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L77)
 
 ---
 
@@ -1818,7 +1807,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:232](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L232)
+[packages/formula/src/type/index.ts:227](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L227)
 
 ---
 
@@ -3454,7 +3443,7 @@ Apply format to the formula.
 | :------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `T`     | extends `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `Value` | extends `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `Dump`  | extends `Omit`<`FormulaArrayType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `any`[] } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `number` } \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `boolean` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `null` } \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `"Blank"` } \| `Omit`<`FormulaRecordType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `Record`<`string`, `any`\> } \| `Omit`<`FormulaErrorType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`ErrorType`, `string`] } \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, `string`] } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)] } \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)] } \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<`FormulaPredicateType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `null` } |
+| `Dump`  | extends `Omit`<`FormulaErrorType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`ErrorType`, `string`] } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `number` } \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `boolean` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `null` } \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `"Blank"` } \| `Omit`<`FormulaRecordType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `Record`<`string`, `any`\> } \| `Omit`<`FormulaArrayType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `any`[] } \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, `string`] } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)] } \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)] } \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<`FormulaPredicateType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `null` } |
 
 #### Parameters
 
@@ -3840,7 +3829,7 @@ Dispatch Block Delete Event.
 | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `T`       | extends `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | `Value`   | extends `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| `Display` | extends `Omit`<`FormulaArrayType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<`FormulaRecordType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<`FormulaErrorType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<`FormulaPredicateType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } |
+| `Display` | extends `Omit`<`FormulaErrorType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<`FormulaRecordType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<`FormulaArrayType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<`FormulaPredicateType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } |
 
 #### Parameters
 
@@ -3864,7 +3853,7 @@ Dispatch Block Delete Event.
 | :------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `T`     | extends `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `Value` | extends `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<`FormulaErrorType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `Dump`  | extends `Omit`<`FormulaArrayType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `any`[] } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `number` } \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `boolean` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `null` } \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `"Blank"` } \| `Omit`<`FormulaRecordType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `Record`<`string`, `any`\> } \| `Omit`<`FormulaErrorType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`ErrorType`, `string`] } \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, `string`] } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)] } \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)] } \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<`FormulaPredicateType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `null` } |
+| `Dump`  | extends `Omit`<`FormulaErrorType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`ErrorType`, `string`] } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `number` } \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `boolean` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `null` } \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `"Blank"` } \| `Omit`<`FormulaRecordType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `Record`<`string`, `any`\> } \| `Omit`<`FormulaArrayType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `any`[] } \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, `string`] } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)] } \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] } \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: [`string`, [`FindKey`](interfaces/FindKey.md)] } \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<`FormulaPredicateType`, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `string` } \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"meta"` \| `"result"` \| `"dump"`\> & { `result`: `null` } |
 
 #### Parameters
 
