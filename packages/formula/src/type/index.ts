@@ -401,7 +401,7 @@ export interface ContextInterface {
 interface Example<T extends FormulaType> {
   readonly input: Definition
   readonly output: AnyFunctionResult<T> | null
-  readonly codeFragments?: CodeFragment[]
+  readonly codeFragments?: CodeFragmentWithIndex[]
 }
 
 export interface BaseFunctionContext {
@@ -584,6 +584,8 @@ export type CodeFragmentAttrs = ComplexCodeFragmentAttrs | FunctionCodeFragmentA
 
 export type CodeFragment = SpecialCodeFragment | FunctionCodeFragment | OtherCodeFragment
 
+export type CodeFragmentWithIndex = CodeFragment & { index: number }
+
 export interface CodeFragmentStepInput {
   codeFragments: CodeFragment[]
 }
@@ -711,7 +713,7 @@ export interface VariableParseResult {
   version: number
   valid: boolean
   cst: CstNode | undefined
-  codeFragments: CodeFragment[]
+  codeFragments: CodeFragmentWithIndex[]
   flattenVariableDependencies: VariableDependency[]
   nameDependencies: NameDependency[]
   variableDependencies: VariableDependency[]

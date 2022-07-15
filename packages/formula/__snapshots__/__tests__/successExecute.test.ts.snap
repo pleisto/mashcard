@@ -9,6 +9,7 @@ Array [
       "code": "Equal",
       "display": "=",
       "errors": Array [],
+      "index": 0,
       "meta": undefined,
       "type": "any",
     },
@@ -22,6 +23,7 @@ Array [
       "code": "Function",
       "display": "Abs",
       "errors": Array [],
+      "index": 1,
       "type": "any",
     },
     Object {
@@ -29,6 +31,7 @@ Array [
       "code": "LParen",
       "display": "(",
       "errors": Array [],
+      "index": 2,
       "meta": Object {
         "args": Array [
           Object {
@@ -45,6 +48,7 @@ Array [
       "code": "NumberLiteral",
       "display": "-1",
       "errors": Array [],
+      "index": 3,
       "type": "number",
     },
     Object {
@@ -52,6 +56,7 @@ Array [
       "code": "RParen",
       "display": ")",
       "errors": Array [],
+      "index": 4,
       "meta": Object {
         "args": Array [
           Object {
@@ -68,6 +73,7 @@ Array [
       "code": "Space",
       "display": " ",
       "errors": Array [],
+      "index": 5,
       "type": "any",
     },
     Object {
@@ -75,6 +81,7 @@ Array [
       "code": "Plus",
       "display": "+",
       "errors": Array [],
+      "index": 6,
       "meta": undefined,
       "type": "number",
     },
@@ -83,6 +90,7 @@ Array [
       "code": "Space",
       "display": " ",
       "errors": Array [],
+      "index": 7,
       "type": "any",
     },
     Object {
@@ -95,6 +103,7 @@ Array [
       "code": "Function",
       "display": "abs",
       "errors": Array [],
+      "index": 8,
       "type": "any",
     },
     Object {
@@ -102,6 +111,7 @@ Array [
       "code": "LParen",
       "display": "(",
       "errors": Array [],
+      "index": 9,
       "meta": Object {
         "args": Array [
           Object {
@@ -118,6 +128,7 @@ Array [
       "code": "NumberLiteral",
       "display": "1",
       "errors": Array [],
+      "index": 10,
       "type": "number",
     },
     Object {
@@ -125,6 +136,7 @@ Array [
       "code": "RParen",
       "display": ")",
       "errors": Array [],
+      "index": 11,
       "meta": Object {
         "args": Array [
           Object {
@@ -141,6 +153,7 @@ Array [
       "code": "Space",
       "display": " ",
       "errors": Array [],
+      "index": 12,
       "type": "any",
     },
     Object {
@@ -148,6 +161,7 @@ Array [
       "code": "Plus",
       "display": "+",
       "errors": Array [],
+      "index": 13,
       "meta": undefined,
       "type": "number",
     },
@@ -156,6 +170,7 @@ Array [
       "code": "Space",
       "display": " ",
       "errors": Array [],
+      "index": 14,
       "type": "any",
     },
     Object {
@@ -168,6 +183,7 @@ Array [
       "code": "Function",
       "display": "ABS",
       "errors": Array [],
+      "index": 15,
       "type": "any",
     },
     Object {
@@ -175,6 +191,7 @@ Array [
       "code": "LParen",
       "display": "(",
       "errors": Array [],
+      "index": 16,
       "meta": Object {
         "args": Array [
           Object {
@@ -191,6 +208,7 @@ Array [
       "code": "NumberLiteral",
       "display": "1",
       "errors": Array [],
+      "index": 17,
       "type": "number",
     },
     Object {
@@ -198,6 +216,7 @@ Array [
       "code": "RParen",
       "display": ")",
       "errors": Array [],
+      "index": 18,
       "meta": Object {
         "args": Array [
           Object {
@@ -214,6 +233,7 @@ Array [
       "code": "Space",
       "display": " ",
       "errors": Array [],
+      "index": 19,
       "type": "any",
     },
     Object {
@@ -221,6 +241,7 @@ Array [
       "code": "Plus",
       "display": "+",
       "errors": Array [],
+      "index": 20,
       "meta": undefined,
       "type": "number",
     },
@@ -229,6 +250,7 @@ Array [
       "code": "Space",
       "display": " ",
       "errors": Array [],
+      "index": 21,
       "type": "any",
     },
     Object {
@@ -241,6 +263,7 @@ Array [
       "code": "FunctionGroup",
       "display": "core::",
       "errors": Array [],
+      "index": 22,
       "type": "any",
     },
     Object {
@@ -253,6 +276,7 @@ Array [
       "code": "Function",
       "display": "ABS",
       "errors": Array [],
+      "index": 23,
       "type": "any",
     },
     Object {
@@ -260,6 +284,7 @@ Array [
       "code": "LParen",
       "display": "(",
       "errors": Array [],
+      "index": 24,
       "meta": Object {
         "args": Array [
           Object {
@@ -276,6 +301,7 @@ Array [
       "code": "NumberLiteral",
       "display": "-1",
       "errors": Array [],
+      "index": 25,
       "type": "number",
     },
     Object {
@@ -283,6 +309,7 @@ Array [
       "code": "RParen",
       "display": ")",
       "errors": Array [],
+      "index": 26,
       "meta": Object {
         "args": Array [
           Object {

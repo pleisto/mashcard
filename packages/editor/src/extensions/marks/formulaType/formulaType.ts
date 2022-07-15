@@ -1,4 +1,4 @@
-import { attrsToColorType, CodeFragment } from '@mashcard/formula'
+import { attrsToColorType, CodeFragmentWithIndex } from '@mashcard/formula'
 import { JSONContent, mergeAttributes } from '@tiptap/core'
 import { SetDocAttrStep } from '../../extensions/sync/SetDocAttrStep'
 import { meta } from './meta'
@@ -17,7 +17,7 @@ declare module '@tiptap/core' {
 export const FORMULA_CLASS_NAME = 'mashcard-formula-mark'
 
 export interface FormulaTypeOptions {}
-export type FormulaTypeAttributes = CodeFragment
+export type FormulaTypeAttributes = CodeFragmentWithIndex
 
 export const FormulaType = createMark<FormulaTypeOptions, FormulaTypeAttributes>({
   name: meta.name,
@@ -33,7 +33,7 @@ export const FormulaType = createMark<FormulaTypeOptions, FormulaTypeAttributes>
             return {}
           }
 
-          const style = formulaCodeStyle(attrsToColorType(attributes as CodeFragment))
+          const style = formulaCodeStyle(attrsToColorType(attributes as CodeFragmentWithIndex))
           return { 'data-code': attributes.code, ...(style ? { style } : {}) }
         }
       },
@@ -78,6 +78,20 @@ export const FormulaType = createMark<FormulaTypeOptions, FormulaTypeAttributes>
 
           return {
             'data-display': attributes.display
+          }
+        }
+      },
+      index: {
+        default: null,
+        keepOnSplit: true,
+        parseHTML: element => element.getAttribute('data-index'),
+        renderHTML: attributes => {
+          if (!attributes.index) {
+            return {}
+          }
+
+          return {
+            'data-index': attributes.index
           }
         }
       },

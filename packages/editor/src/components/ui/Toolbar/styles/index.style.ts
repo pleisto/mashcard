@@ -16,7 +16,8 @@ export const pressed = {
 
 export const itemCommon = {
   borderRadius: '2px',
-  padding: '0 .25rem',
+  padding: '0 .125rem',
+  minWidth: '1.25rem',
   transition: `all .3s ${theme.transitions.easeInOut}`,
   ...hover,
   ...pressed

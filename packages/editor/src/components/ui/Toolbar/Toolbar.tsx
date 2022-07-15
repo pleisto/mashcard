@@ -127,10 +127,18 @@ const ToolbarMenuGroup = styled('ul', {
 })
 
 const ToolbarSeparator = styled('li', {
-  background: theme.colors.dividerOverlayPrimary,
   height: '1rem',
   margin: '2px 4px',
-  width: '1px'
+  width: '9px',
+  position: 'relative',
+  '&::before': {
+    content: '',
+    width: 1,
+    height: '100%',
+    background: theme.colors.dividerOverlayPrimary,
+    position: 'absolute',
+    left: 4,
+  }
 })
 
 const TooltipTitle = styled('div', {

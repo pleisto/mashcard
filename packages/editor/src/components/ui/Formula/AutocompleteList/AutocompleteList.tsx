@@ -48,8 +48,16 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({ rootId, form
   }
 
   const onKeyDown: React.KeyboardEventHandler<HTMLDivElement> = async event => {
+    const key = event.key
+    if (key !== 'Enter' && key !== 'Tab' && key !== 'ArrowUp' && key !== 'ArrowDown' && key !== 'Escape') return
     const result = MashcardEventBus.dispatch(
-      FormulaKeyboardEventTrigger({ event, formulaId, rootId, type: 'autoComplete', completionIndex: -1 })
+      FormulaKeyboardEventTrigger({
+        event: { ...event, key },
+        formulaId,
+        rootId,
+        type: 'autoComplete',
+        completionIndex: -1
+      })
     )
     await Promise.all(result)
   }

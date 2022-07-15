@@ -78,7 +78,7 @@ export const MashcardFomulaEditor = css({
       color: theme.colors.typeSecondary,
       backgroundColor: 'unset',
 
-      '&:hover': {
+      '&.mashcard-formula-mark-active': {
         backgroundColor: theme.colors.secondaryHover
       }
     }
