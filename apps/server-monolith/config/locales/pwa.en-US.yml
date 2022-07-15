@@ -549,7 +549,7 @@ en-US:
       selected: selected
     discussion:
       menu: Comment
-      tooltip: show comments on current page
+      tooltip: Show comments on current page
     history:
       menu: History
       tooltip: View all updates

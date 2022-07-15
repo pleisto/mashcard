@@ -32,7 +32,7 @@ files.forEach(file => {
 })
 
 let imports = ''
-const renderedRoutes = mapRoute({ children: routes }, '', 4)
+const renderedRoutes = mapRoute({ children: routes, layoutRoute: {} }, '', '', 4)
 
 fs.writeFileSync(
   path.resolve(srcDir, 'core/RootRoutes.tsx'),
@@ -49,37 +49,54 @@ ${renderedRoutes}
       </Routes>
     </BrowserRouter>
   )
-}`
+}
+`
 )
 
-function mapRoute(root, pathPrefix, depth) {
-  return root.children
-    .map(route => {
-      const basename = path.basename(route.fileName, path.extname(route.fileName))
-      const routePath = basename === '$' ? '*' : basename.replaceAll('$', ':')
-      const importPath = `${pathPrefix}/${basename}`
-      const componentName = pascalCase(
+function mapRoute(root, importPrefix, pathPrefix, depth) {
+  const children = root.children.map(route => {
+    const basename = path.basename(route.fileName, path.extname(route.fileName))
+    const routePath = basename === '$' ? '*' : basename.replaceAll('$', ':')
+    return {
+      children: route.children,
+      routePath,
+      importPath: `${importPrefix}/${basename}`,
+      fullRoutePath: `${pathPrefix}${routePath === 'index' ? '' : `${routePath}/`}`,
+      componentName: pascalCase(
         // eslint-disable-next-line no-nested-ternary
-        `${pathPrefix}/${routePath === '*' ? 'match-all' : routePath === '_' ? 'layout' : routePath}`
+        `${importPrefix}/${routePath === '*' ? 'match-all' : routePath === '_' ? 'layout' : routePath}`
       )
-      if (routePath === '_') {
+    }
+  })
+  const layoutChildIndex = children.findIndex(route => route.routePath === '_')
+  if (layoutChildIndex > -1) {
+    const [layoutRoute] = children.splice(layoutChildIndex, 1)
+    root.layoutRoute = layoutRoute
+    imports += `const ${layoutRoute.componentName} = lazy(async () => await import('@/routes${layoutRoute.importPath}'))\n`
+    // eslint-disable-next-line no-param-reassign
+    depth += 1
+  }
+  return children
+    .map(route => {
+      const { routePath, importPath, fullRoutePath, componentName } = route
+      let pathSegment = `path="${fullRoutePath.replace(/\/$/, '')}"`
+      if (root.layoutRoute) {
+        pathSegment = routePath === 'index' ? 'index' : `path="${routePath}"`
+      }
+      if (route.children.length === 0) {
         imports += `const ${componentName} = lazy(async () => await import('@/routes${importPath}'))\n`
-        root.componentName = componentName
-        return ''
+        return `${' '.repeat(depth * 2)}<Route ${pathSegment} element={<${componentName} />} />`
       } else {
-        const pathSegment = routePath === 'index' ? 'index' : `path="${routePath}"`
-        if (route.children.length === 0) {
-          imports += `const ${componentName} = lazy(async () => await import('@/routes${importPath}'))\n`
-          return `<Route ${pathSegment} element={<${componentName} />} />`
+        const childRoutes = mapRoute(route, importPath, root.layoutRoute ? `${routePath}/` : fullRoutePath, depth)
+        if (route.layoutRoute) {
+          return `${' '.repeat(depth * 2)}<Route ${pathSegment} element={<${
+            route.layoutRoute.componentName
+          } />}>\n${childRoutes}\n${' '.repeat(depth * 2)}</Route>`
         } else {
-          const childRoutes = mapRoute(route, importPath, depth + 1)
-          return `<Route ${routePath === 'index' ? 'index' : `path="${routePath}"`}${
-            route.componentName ? ` element={<${route.componentName} />}` : ''
-          }>\n${childRoutes}\n${' '.repeat(depth * 2)}</Route>`
+          return childRoutes
         }
       }
     })
     .filter(Boolean)
-    .map(line => `${' '.repeat(depth * 2)}${line}`)
     .join('\n')
 }
