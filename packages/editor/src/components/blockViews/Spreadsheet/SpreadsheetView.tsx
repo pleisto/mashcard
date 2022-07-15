@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Dropdown, Menu, Button, Icon, Tooltip } from '@mashcard/design-system'
+import { Dropdown, Menu, Button, Icon } from '@mashcard/design-system'
 
 import { useEditorI18n } from '../../../hooks'
 

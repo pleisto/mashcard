@@ -1,6 +1,6 @@
 import React from 'react'
 import { TextSelection } from 'prosemirror-state'
-import { Input, Icon, devWarning } from '@mashcard/design-system'
+import { Input, Icon } from '@mashcard/design-system'
 import { useEditorI18n, useDocumentEditable } from '../../../hooks'
 import { BlockContainer, BlockContainerProps } from '../BlockContainer'
 import { SpreadsheetViewProps } from '../../../extensions/blocks/spreadsheet/meta'
