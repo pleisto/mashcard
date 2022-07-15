@@ -115,6 +115,8 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
         const dupTitleId = getDocSpreadsheetTitles()[newTitle]
         if (dupTitleId && dupTitleId !== parentId) {
           setTitleErrorMsg(`${t('spreadsheet.title.duplicated_with_spreadsheet')} '${newTitle}'`)
+        } else if (columns.some(c => c.title === newTitle)) {
+          setTitleErrorMsg(`${t('spreadsheet.title.duplicated_with_column')} '${newTitle}'`)
         } else {
           updateAttributes({ title: newTitle, isDefaultTitle: false })
           setTitleErrorMsg(undefined)

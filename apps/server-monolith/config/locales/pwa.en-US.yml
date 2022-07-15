@@ -417,6 +417,7 @@ en-US:
       copy: Copy
       title:
         duplicated_with_spreadsheet: 'Title is duplicated with spreadsheet:'
+        duplicated_with_column: 'Title is duplicated with column:'
         empty: Title can not be empty
       row:
         actions: Actions
