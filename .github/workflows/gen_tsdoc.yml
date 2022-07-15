@@ -32,6 +32,8 @@ jobs:
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT_FOR_BOT_CREATED_PR }}
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:

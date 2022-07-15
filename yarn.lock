@@ -2967,6 +2967,10 @@ __metadata:
   resolution: "@mashcard/client-web@workspace:apps/client-web"
   dependencies:
     "@apollo/client": ^3.6.9
+    "@graphql-codegen/cli": ^2.8.1
+    "@graphql-codegen/typescript": ^2.7.1
+    "@graphql-codegen/typescript-operations": ^2.5.1
+    "@graphql-codegen/typescript-react-apollo": ^3.3.1
     "@mashcard/active-support": "workspace:^"
     "@mashcard/design-icons": "workspace:^"
     "@mashcard/design-system": "workspace:^"
@@ -3188,10 +3192,6 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^17.0.3
     "@commitlint/config-conventional": ^17.0.3
-    "@graphql-codegen/cli": ^2.8.1
-    "@graphql-codegen/typescript": ^2.7.1
-    "@graphql-codegen/typescript-operations": ^2.5.1
-    "@graphql-codegen/typescript-react-apollo": ^3.3.1
     "@pleisto/eslint-plugin": ^1.0.5
     "@sentry/cli": ^2.4.1
     "@swc/cli": ^0.1.57

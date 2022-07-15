@@ -49,7 +49,6 @@
     "test:playwright": "yarn e2e-testing start",
     "tsdoc": "turbo run tsdoc",
     "commit": "git add . && cz",
-    "graphql": "yarn server bundle exec rails graphql:schema:dump && yarn web run -T graphql-codegen --config codegen.yml",
     "cleanup": "rimraf node_modules/.cache public/esm-bundle '{packages,tools,apps}/*/{dist,coverage,.turbo,.nyc_output,.eslintcache,.next}' 'tools/e2e-testing/{allure-report,allure-results,test-results,storageState-*.json}'",
     "schema": "yarn workspace @mashcard/schema",
     "design-system": "yarn workspace @mashcard/design-system",
@@ -69,10 +68,6 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
-    "@graphql-codegen/cli": "^2.8.1",
-    "@graphql-codegen/typescript": "^2.7.1",
-    "@graphql-codegen/typescript-operations": "^2.5.1",
-    "@graphql-codegen/typescript-react-apollo": "^3.3.1",
     "@pleisto/eslint-plugin": "^1.0.5",
     "@sentry/cli": "^2.4.1",
     "@swc/cli": "^0.1.57",

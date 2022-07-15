@@ -92,7 +92,9 @@ yarn lint:type # Run TypeScript checking only
 
 yarn cleanup # Clean up all the building artifacts / intermediates
 
-yarn graphql # Generate GraphQL schema and run graphql-codegen
+# Generate GraphQL schema and run graphql-codegen
+yarn server dump:graphql
+yarn web generate:graphql
 
 # Monolith Server
 yarn server s # rails server

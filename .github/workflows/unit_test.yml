@@ -78,17 +78,37 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 2 # To retrieve the preceding commit.
-      - name: Get changed ruby files
+      - name: Get changed ruby/rust files
         id: changed-ruby-or-rust-files
         uses: tj-actions/changed-files@v23
         with:
           files: |
             **/*.rb
-            **/*.rs'
-            apps\/server-monolith\/Gemfile.lock
-            apps\/server-monolith\/Cargo.lock
-            .github/workflows/*.yml
+            **/*.rs
+            **/Gemfile
+            **/Gemfile.lock
+            **/Cargo.toml
+            **/Cargo.lock
+      - name: Get changed database migrations
+        id: changed-db-migrations
+        uses: tj-actions/changed-files@v23
+        with:
+          files: |
+            apps/server-monolith/db/migrate
+      - name: Get changed GraphQL type definitions (ruby)
+        id: changed-gql-typeds-ruby
+        uses: tj-actions/changed-files@v23
+        with:
+          files: |
+            apps/server-monolith/app/graphql
+      - name: Get changed GraphQL type definitions (ts)
+        id: changed-gql-typeds-ts
+        uses: tj-actions/changed-files@v23
+        with:
+          files: |
+            **/graphql.ts
       - name: Install Dependencies
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         run: sudo apt-get update && sudo apt-get install libsodium23
       - name: Setup Rust
         uses: actions-rs/toolchain@v1
@@ -104,13 +124,13 @@ jobs:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Setup NodeJS
         uses: actions/setup-node@v3
-        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true' || steps.changed-gql-typeds-ts.outputs.any_changed == 'true'
         with:
           node-version: 18
           cache: yarn
       - name: Run yarn install
-        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
-        run: yarn install --immutable
+        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true' || steps.changed-gql-typeds-ts.outputs.any_changed == 'true'
+        run: yarn install --immutable && yarn husky install
       - name: Build native ext
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         run: yarn turbo run rust:build
@@ -132,25 +152,15 @@ jobs:
           flags: backend-unit
           fail_ci_if_error: true
           verbose: true
-      - name: Get changed database migrations
-        id: changed-db-migrations
-        uses: tj-actions/changed-files@v23
-        with:
-          files: |
-            apps\/server-monolith\/db\/migrate
-      - name: Get changed GraphQL type definitions
-        id: changed-gql-typeds
-        uses: tj-actions/changed-files@v23
-        with:
-          files: |
-            apps\/server-monolith\/app\/graphql
-            graphql.ts$
-      - name: Dump the graphql schema
-        if: steps.changed-gql-typeds.outputs.any_changed == 'true'
-        run: yarn graphql
       - name: Dump the database schema
         if: steps.changed-db-migrations.outputs.any_changed == 'true'
-        run: yarn server bundle exec rails db:prepare db:schema:dump
+        run: yarn server dump:db
+      - name: Dump the graphql schema
+        if: steps.changed-gql-typeds-ruby.outputs.any_changed == 'true'
+        run: yarn server dump:graphql
+      - name: Run graphql-codegen
+        if: steps.changed-gql-typeds-ruby.outputs.any_changed == 'true' || steps.changed-gql-typeds-ts.outputs.any_changed == 'true'
+        run: yarn web generate:graphql
       - name: Add and commit everything
         uses: EndBug/add-and-commit@v9
         if: github.ref != 'refs/heads/main'
