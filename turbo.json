@@ -1,35 +1,46 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "baseBranch": "origin/main",
-  "globalDependencies": ["$CI"],
   "pipeline": {
     "lint:eslint": {
-      "outputs": [".eslintcache"],
-      "inputs": ["src/**/*.tsx", "src/**/*.ts"]
+      "inputs": ["**/*.ts", "**/*.tsx", ".eslintrc.yml", ".eslintignore"],
+      "outputs": []
     },
     "lint:fix": {
-      "outputs": [".eslintcache", "tmp/cache/rubocop_cache/**"]
+      "inputs": ["**/*.ts", "**/*.tsx", ".eslintrc.yml", ".eslintignore", "**/*.rb", "Gemfile"],
+      "outputs": []
     },
     "lint:type": {
-      "outputs": ["dist/tsconfig.tsbuildinfo"]
+      "dependsOn": ["^lint:type"],
+      "inputs": ["**/*.ts", "**/*.tsx", "tsconfig.json"],
+      "outputs": ["**/tsconfig.tsbuildinfo"]
     },
     "lint:rubocop": {
-      "outputs": ["tmp/cache/rubocop_cache/**"],
-      "inputs": ["**/*.rb", "Gemfile"]
+      "inputs": ["**/*.rb", "Gemfile"],
+      "outputs": ["**/rubocop_cache/**"]
+    },
+    "rust:build": {
+      "dependsOn": ["$SYSINFO"],
+      "inputs": ["**/*.rs", "Cargo.toml", "Cargo.lock"],
+      "outputs": ["lib/**/*.so"]
+    },
+    "rust:build:dev": {
+      "dependsOn": ["$SYSINFO"],
+      "outputs": ["lib/**/*.so"]
     },
     "test:jest": {
-      "outputs": ["coverage/**", "junit-reports/jest.xml"],
-      "inputs": ["src/**/*.tsx", "src/**/*.ts", "package.json"]
+      "dependsOn": ["^test:jest"],
+      "inputs": ["**/*.ts", "**/*.tsx", "jest.config.js"],
+      "outputs": ["coverage/**"]
     },
     "test:rspec": {
-      "inputs": ["**/*.rb", "Gemfile"]
+      "dependsOn": ["^test:rspec", "rust:build"],
+      "inputs": ["**/*.rb", "Gemfile", "Gemfile.lock", ".rspec"],
+      "outputs": ["coverage/**"]
     },
     "tsdoc": {
+      "inputs": ["**/*.ts", "**/*.tsx"],
       "outputs": ["docs/api/**"]
-    },
-    "build:rust": {
-      "dependsOn": ["$OSTYPE"],
-      "outputs": ["*.node", "index.d.ts", "index.js"]
     }
   }
 }

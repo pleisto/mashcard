@@ -40,7 +40,7 @@ jobs:
       - name: Run yarn install
         run: yarn install --immutable && yarn husky install
       - name: Generate API docs
-        run: yarn tsdoc
+        run: yarn turbo run tsdoc
       - name: Fix permissions
         run: "{ git ls-files --modified && git ls-files -o --exclude-standard; } | xargs -I{} sh -c 'chmod -x {}'"
       - name: Add and commit everything

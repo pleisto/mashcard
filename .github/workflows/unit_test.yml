@@ -21,6 +21,7 @@ env:
   REDIS_URL: redis://localhost:6379
   MASHCARD_DATABASE_URL: postgres://postgres:just4testing@localhost:5432
   MASHCARD_DOTCOM_LICENSE: 'I hereby swear that I have obtained written permission from the Pleisto Inc of this plugin to use it.'
+  SYSINFO: GITHUB_CI
 jobs:
   jest:
     name: Jest
@@ -37,13 +38,7 @@ jobs:
       - name: Run yarn install
         run: yarn install --immutable
       - name: Run Jest tests
-        run: yarn test:jest
-      - name: Publish Jest test reports
-        if: always()
-        uses: mikepenz/action-junit-report@v3.0.3
-        with:
-          report_paths: '**/junit-reports/jest.xml'
-          check_name: Jest Test Report
+        run: yarn turbo run test:jest
       - name: Publish Jest code coverage reports
         uses: codecov/codecov-action@v3
         with:
@@ -116,9 +111,9 @@ jobs:
       - name: Run yarn install
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         run: yarn install --immutable
-      - name: Run native build
-        run: yarn server build
+      - name: Build native ext
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
+        run: yarn turbo run rust:build
       - name: Run DB migrations
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         run: yarn server bundle exec rails db:prepare
@@ -128,19 +123,7 @@ jobs:
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         env:
           RAILS_ENV: test
-        run: yarn server bundle exec rspec --format RspecJunitFormatter --out junit-reports/rspec.xml
-      - name: Publish RSpec test reports
-        if: always() && steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
-        uses: mikepenz/action-junit-report@v2
-        with:
-          report_paths: junit-reports/rspec.xml
-          check_name: Rails RSpec Test Report
-      - name: Publish RSpec setting test reports
-        if: always() && steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
-        uses: mikepenz/action-junit-report@v2
-        with:
-          report_paths: junit-reports/rspec_setting.xml
-          check_name: Rails RSpec Test Setting Report
+        run: yarn turbo run test:rspec
       - name: Publish RSpec code coverage reports
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         uses: codecov/codecov-action@v3
@@ -164,7 +147,7 @@ jobs:
             graphql.ts$
       - name: Dump the graphql schema
         if: steps.changed-gql-typeds.outputs.any_changed == 'true'
-        run: yarn install --immutable && yarn graphql
+        run: yarn graphql
       - name: Dump the database schema
         if: steps.changed-db-migrations.outputs.any_changed == 'true'
         run: yarn server bundle exec rails db:prepare db:schema:dump

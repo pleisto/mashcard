@@ -79,7 +79,7 @@ group :development, :test do
   gem 'rubocop-rails', '~> 2.14', '>= 2.14.2', require: false
   gem 'factory_bot_rails', '>= 6.2'
   gem 'rspec-rails', '>= 5.1.2'
-  gem 'rspec_junit_formatter', '>= 0.4'
+  gem 'rspec-github', require: false
   gem 'benchmark-ips', '~> 2.10', require: false
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'simplecov', require: false

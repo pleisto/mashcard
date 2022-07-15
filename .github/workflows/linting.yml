@@ -1,4 +1,4 @@
-name: Linting Code
+name: Lint Code
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -22,8 +22,8 @@ env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: brickdoc
 jobs:
-  es:
-    name: TypeScript
+  eslint:
+    name: ESLint
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -36,8 +36,24 @@ jobs:
           cache: yarn
       - name: Run yarn install
         run: yarn install --immutable
-      - name: Run yarn lint
-        run: yarn lint
+      - name: Run lint:eslint
+        run: yarn turbo run lint:eslint
+  tsc:
+    name: TypeScript Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+      - name: Run yarn install
+        run: yarn install --immutable
+      - name: Run lint:type
+        run: yarn turbo run lint:type
   ruby:
     name: Ruby
     runs-on: ubuntu-latest
@@ -90,14 +106,11 @@ jobs:
       - name: Run yarn install
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         run: yarn install --immutable
-      - name: Run native build
-        run: yarn server build
-        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
       - name: Run Rubocop
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         run: |
           echo "::add-matcher::.github/matchers/rubocop.json"
-          yarn lint:rubocop
+          yarn turbo run lint:rubocop
       - name: Run Brakeman
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         run: |

@@ -1,4 +1,3 @@
-const isCI = require('is-ci')
 const path = require('path')
 const fs = require('node:fs')
 const esModules = [
@@ -51,13 +50,7 @@ module.exports = {
     },
     testMatch: ['**/**/__tests__/**/*.(ts|tsx)', '**/**/*.@(spec|test).(ts|tsx)', '!**/dist/**'],
     snapshotResolver: hasDom ? `${monoRoot}/tools/jest/snapshot-resolver.js` : undefined,
-    reporters: isCI
-      ? [
-          'default',
-          'github-actions',
-          ['jest-junit', { outputDirectory: 'junit-reports', outputName: 'jest.xml', suiteName: 'jest' }]
-        ]
-      : ['default'],
+    reporters: ['default', 'github-actions'],
     transformIgnorePatterns: [`${monoRoot}/node_modules/(?!(${esModules})/)`]
   })
 }

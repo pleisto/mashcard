@@ -35,8 +35,8 @@
     "lint:fix": "bundle exec rubocop --config .rubocop.yml -A",
     "vite:start": "./bin/vite dev",
     "vite:build": "./bin/vite build",
-    "build": "rake rust:build",
-    "build:dev": "rake rust:build PROFILE=dev",
+    "rust:build": "rake rust:build",
+    "rust:build:dev": "rake rust:build PROFILE=dev",
     "lint:clippy": "rake rust:clippy",
     "fmt:rust": "rake rust:fmt"
   }

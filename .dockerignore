@@ -68,7 +68,6 @@ ehthumbs.db
 # testing
 .coverage-cache/
 .nyc_output/
-junit-reports/
 coverage/
 
 # build
