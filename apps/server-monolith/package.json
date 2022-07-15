@@ -16,9 +16,11 @@
     "vite-plugin-ruby": "^3.1.2"
   },
   "scripts": {
-    "lint:rubocop": "bundle exec rubocop --parallel --config .rubocop.yml",
-    "test:rspec": "bundle exec rspec",
+    "rails": "rails",
+    "rake": "rake",
+    "bundle": "bundle",
     "start": "rails s",
+    "console": "rails c",
     "i": "bundle install && rake rust:build",
     "s": "rails s",
     "g": "rails g",
@@ -27,16 +29,17 @@
     "db:drop": "rails db:drop",
     "db:migrate": "rails db:migrate",
     "db:rollback": "rails db:rollback",
-    "console": "rails c",
     "dump:graphql": "bundle exec rails graphql:schema:dump",
     "dump:db": "bundle exec rails db:prepare db:schema:dump",
-    "lint:brakeman": "bundle exec brakeman  --no-pager --exit-on-warn",
-    "lint:fix": "bundle exec rubocop --config .rubocop.yml -A",
     "vite:start": "./bin/vite dev",
     "vite:build": "./bin/vite build",
     "rust:build": "rake rust:build",
     "rust:build:dev": "rake rust:build PROFILE=dev",
-    "lint:clippy": "rake rust:clippy",
-    "fmt:rust": "rake rust:fmt"
+    "fmt:rust": "rake rust:fmt",
+    "test:rspec": "bundle exec rspec",
+    "lint:rubocop": "bundle exec rubocop --parallel --config .rubocop.yml",
+    "lint:brakeman": "bundle exec brakeman  --no-pager --exit-on-warn",
+    "lint:fix": "bundle exec rubocop --config .rubocop.yml -A",
+    "lint:clippy": "rake rust:clippy"
   }
 }
