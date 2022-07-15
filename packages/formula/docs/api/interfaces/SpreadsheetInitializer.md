@@ -23,7 +23,7 @@
 
 [packages/formula/src/controls/types.ts:160](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L160)
 
-___
+---
 
 ### <a id="ctx" name="ctx"></a> ctx
 
@@ -33,7 +33,7 @@ ___
 
 [packages/formula/src/controls/types.ts:157](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L157)
 
-___
+---
 
 ### <a id="dynamic" name="dynamic"></a> dynamic
 
@@ -43,11 +43,11 @@ ___
 
 [packages/formula/src/controls/types.ts:158](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L158)
 
-___
+---
 
 ### <a id="getcell" name="getcell"></a> getCell
 
-• **getCell**: (`__namedParameters`: { `columnId`: `string` ; `columnIndex`: `number` ; `rowId`: `string` ; `rowIndex`: `number`  }) => [`Cell`](Cell.md)
+• **getCell**: (`__namedParameters`: { `columnId`: `string` ; `columnIndex`: `number` ; `rowId`: `string` ; `rowIndex`: `number` }) => [`Cell`](Cell.md)
 
 #### Type declaration
 
@@ -55,13 +55,13 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-| `__namedParameters.columnId` | `string` |
+| Name                            | Type     |
+| :------------------------------ | :------- |
+| `__namedParameters`             | `Object` |
+| `__namedParameters.columnId`    | `string` |
 | `__namedParameters.columnIndex` | `number` |
-| `__namedParameters.rowId` | `string` |
-| `__namedParameters.rowIndex` | `number` |
+| `__namedParameters.rowId`       | `string` |
+| `__namedParameters.rowIndex`    | `number` |
 
 ##### Returns
 
@@ -71,7 +71,7 @@ ___
 
 [packages/formula/src/controls/types.ts:162](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L162)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -81,7 +81,7 @@ ___
 
 [packages/formula/src/controls/types.ts:159](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L159)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -91,7 +91,7 @@ ___
 
 [packages/formula/src/controls/types.ts:156](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L156)
 
-___
+---
 
 ### <a id="rows" name="rows"></a> rows
 
@@ -101,7 +101,7 @@ ___
 
 [packages/formula/src/controls/types.ts:161](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L161)
 
-___
+---
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
 

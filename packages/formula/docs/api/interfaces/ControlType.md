@@ -28,7 +28,7 @@
 
 [packages/formula/src/controls/types.ts:25](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L25)
 
-___
+---
 
 ### <a id="_meta" name="_meta"></a> \_meta
 
@@ -38,7 +38,7 @@ ___
 
 [packages/formula/src/controls/types.ts:26](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L26)
 
-___
+---
 
 ### <a id="disabled" name="disabled"></a> disabled
 
@@ -48,17 +48,17 @@ ___
 
 [packages/formula/src/controls/types.ts:28](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L28)
 
-___
+---
 
 ### <a id="kind" name="kind"></a> kind
 
-• **kind**: ``"Button"`` \| ``"Switch"``
+• **kind**: `"Button"` \| `"Switch"`
 
 #### Defined in
 
 [packages/formula/src/controls/types.ts:27](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L27)
 
-___
+---
 
 ### <a id="persistence" name="persistence"></a> persistence
 

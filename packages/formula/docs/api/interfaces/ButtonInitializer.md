@@ -17,13 +17,13 @@
 
 ### <a id="fn" name="fn"></a> fn
 
-• **fn**: `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: ``"Function"`` ; `view?`: [`ViewData`](ViewData.md)<`string`\>  }, ``"dump"``\>
+• **fn**: `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](ViewData.md)<`string`\> }, `"dump"`\>
 
 #### Defined in
 
 [packages/formula/src/controls/types.ts:220](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L220)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 

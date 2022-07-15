@@ -47,7 +47,7 @@
 
 [packages/formula/src/controls/types.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L112)
 
-___
+---
 
 ### <a id="eventdependency" name="eventdependency"></a> eventDependency
 
@@ -57,7 +57,7 @@ ___
 
 [packages/formula/src/controls/types.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L117)
 
-___
+---
 
 ### <a id="findkey" name="findkey"></a> findKey
 
@@ -67,7 +67,7 @@ ___
 
 [packages/formula/src/controls/types.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L109)
 
-___
+---
 
 ### <a id="handlecodefragments" name="handlecodefragments"></a> handleCodeFragments
 
@@ -77,7 +77,7 @@ ___
 
 [packages/formula/src/controls/types.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L115)
 
-___
+---
 
 ### <a id="handleinterpret" name="handleinterpret"></a> handleInterpret
 
@@ -87,7 +87,7 @@ ___
 
 [packages/formula/src/controls/types.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L116)
 
-___
+---
 
 ### <a id="key" name="key"></a> key
 
@@ -105,7 +105,7 @@ ___
 
 [packages/formula/src/controls/types.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L113)
 
-___
+---
 
 ### <a id="listcells" name="listcells"></a> listCells
 
@@ -123,7 +123,7 @@ ___
 
 [packages/formula/src/controls/types.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L110)
 
-___
+---
 
 ### <a id="logic" name="logic"></a> logic
 
@@ -133,7 +133,7 @@ ___
 
 [packages/formula/src/controls/types.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L111)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -143,7 +143,7 @@ ___
 
 [packages/formula/src/controls/types.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L108)
 
-___
+---
 
 ### <a id="newcell" name="newcell"></a> newCell
 
@@ -155,10 +155,10 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `cell` | [`Cell`](Cell.md) |
-| `columnKey` | `string` |
+| Name        | Type              |
+| :---------- | :---------------- |
+| `cell`      | [`Cell`](Cell.md) |
+| `columnKey` | `string`          |
 
 ##### Returns
 
@@ -168,7 +168,7 @@ ___
 
 [packages/formula/src/controls/types.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L114)
 
-___
+---
 
 ### <a id="rowid" name="rowid"></a> rowId
 
@@ -182,7 +182,7 @@ ___
 
 [packages/formula/src/controls/types.ts:102](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L102)
 
-___
+---
 
 ### <a id="rowindex" name="rowindex"></a> rowIndex
 
@@ -196,7 +196,7 @@ ___
 
 [packages/formula/src/controls/types.ts:103](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L103)
 
-___
+---
 
 ### <a id="spreadsheet" name="spreadsheet"></a> spreadsheet
 
@@ -206,7 +206,7 @@ ___
 
 [packages/formula/src/controls/types.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L107)
 
-___
+---
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
 

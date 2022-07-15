@@ -24,7 +24,7 @@
 
 [packages/formula/src/controls/types.ts:102](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L102)
 
-___
+---
 
 ### <a id="rowindex" name="rowindex"></a> rowIndex
 
@@ -34,7 +34,7 @@ ___
 
 [packages/formula/src/controls/types.ts:103](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L103)
 
-___
+---
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
 

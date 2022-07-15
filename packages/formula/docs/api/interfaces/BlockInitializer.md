@@ -17,7 +17,7 @@
 
 [packages/formula/src/controls/types.ts:41](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L41)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 

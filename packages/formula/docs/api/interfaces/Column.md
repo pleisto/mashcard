@@ -28,7 +28,7 @@
 
 [packages/formula/src/controls/types.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L77)
 
-___
+---
 
 ### <a id="displayindex" name="displayindex"></a> displayIndex
 
@@ -38,7 +38,7 @@ ___
 
 [packages/formula/src/controls/types.ts:81](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L81)
 
-___
+---
 
 ### <a id="index" name="index"></a> index
 
@@ -48,7 +48,7 @@ ___
 
 [packages/formula/src/controls/types.ts:82](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L82)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 
@@ -58,7 +58,7 @@ ___
 
 [packages/formula/src/controls/types.ts:79](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L79)
 
-___
+---
 
 ### <a id="sort" name="sort"></a> sort
 
@@ -68,7 +68,7 @@ ___
 
 [packages/formula/src/controls/types.ts:83](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L83)
 
-___
+---
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
 
@@ -78,7 +78,7 @@ ___
 
 [packages/formula/src/controls/types.ts:78](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L78)
 
-___
+---
 
 ### <a id="title" name="title"></a> title
 

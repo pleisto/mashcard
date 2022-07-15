@@ -22,7 +22,7 @@
 
 [packages/formula/src/controls/types.ts:125](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L125)
 
-___
+---
 
 ### <a id="columnsize" name="columnsize"></a> columnSize
 
@@ -32,7 +32,7 @@ ___
 
 [packages/formula/src/controls/types.ts:122](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L122)
 
-___
+---
 
 ### <a id="endcell" name="endcell"></a> endCell
 
@@ -42,7 +42,7 @@ ___
 
 [packages/formula/src/controls/types.ts:127](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L127)
 
-___
+---
 
 ### <a id="rowids" name="rowids"></a> rowIds
 
@@ -52,7 +52,7 @@ ___
 
 [packages/formula/src/controls/types.ts:124](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L124)
 
-___
+---
 
 ### <a id="rowsize" name="rowsize"></a> rowSize
 
@@ -62,7 +62,7 @@ ___
 
 [packages/formula/src/controls/types.ts:123](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L123)
 
-___
+---
 
 ### <a id="spreadsheetid" name="spreadsheetid"></a> spreadsheetId
 
@@ -72,7 +72,7 @@ ___
 
 [packages/formula/src/controls/types.ts:121](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L121)
 
-___
+---
 
 ### <a id="startcell" name="startcell"></a> startCell
 
