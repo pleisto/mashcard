@@ -425,6 +425,7 @@ en-US:
         add_left: Add column to the left
         add_right: Add column to the right
         delete: Delete
+        duplicated_name: 'Duplicated column name:'
     table:
       untitled: Untitled
       new_row:

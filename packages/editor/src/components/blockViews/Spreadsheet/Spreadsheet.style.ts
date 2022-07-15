@@ -14,7 +14,7 @@ export const spreadsheetStyles: CSS = {
     overflow: 'auto',
     whiteSpace: 'nowrap',
     paddingBottom: 20,
-    position: 'relative',
+    position: 'relative'
   },
 
   '.node-spreadsheetBlock': {
@@ -186,7 +186,7 @@ export const spreadsheetStyles: CSS = {
 
         '.cell': {
           padding: '4px 6px'
-        },
+        }
       },
 
       'th.dragging': {
@@ -278,18 +278,27 @@ export const SpreadsheetCellDisplay = styled('div', {
 export const SpreadsheetColumnDisplay = styled(SpreadsheetCellDisplay, {
   padding: '4px 6px',
   color: theme.colors.typePrimary,
-  'small': {
+  small: {
     marginLeft: '2px',
-    color: theme.colors.typeThirdary,
+    color: theme.colors.typeThirdary
   }
 })
-
 
 export const SpreadsheetColumnEditing = styled('div', {
   width: '100%',
   background: theme.colors.backgroundSecondary,
-  boxShadow: `0 0 0 1.5px ${theme.colors.borderOverlayThirdary}`,
-  display: 'flex'
+  // boxShadow: `0 0 0 2px ${theme.colors.borderOverlayThirdary}`,
+  outline: `2px solid ${theme.colors.borderOverlayThirdary}`,
+  display: 'flex',
+  variants: {
+    danger: {
+      true: {
+        background: theme.colors.errorBg,
+        // boxShadow: `0 0 0 2px ${theme.colors.errorDefault}`,
+        outline: `2px solid ${theme.colors.errorDefault}`,
+      }
+    }
+  }
 })
 
 export const SpreadsheetColumnIndex = styled('div', {
@@ -310,6 +319,13 @@ export const SpreadsheetInput = styled('input', {
     border: 0,
     boxShadow: 'none',
     outline: '0 none'
+  },
+  variants: {
+    danger: {
+      true: {
+        color: theme.colors.errorDefault
+      }
+    }
   }
 })
 
@@ -323,5 +339,19 @@ export const SpreadsheetColumnInput = styled(SpreadsheetInput, {
   minHeight: '22px',
   padding: '4px 6px 4px 2px',
   textAlign: 'left',
-  color: theme.colors.typePrimary,
+  color: theme.colors.typePrimary
+})
+
+export const SpreadsheetTooltip = styled('div', {
+  position: 'absolute',
+  borderRadius: '2px',
+  padding: '1px 4px',
+  backgroundColor: theme.colors.grey9,
+  color: theme.colors.white,
+  textDecoration: 'none',
+  textAlign: 'center',
+  fontSize: '12px',
+  lineHeight: '18px',
+  bottom: '-28px',
+  left: '20px'
 })

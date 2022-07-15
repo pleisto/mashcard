@@ -194,7 +194,8 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
       node={node}
       deleteNode={handleDeleteNode}
       actionOptions={actionOptions}
-      onMouseDown={onSpreadsheetClick}>
+      onMouseDown={onSpreadsheetClick}
+    >
       {documentEditable ? (
         <Input
           bordered={false}
@@ -249,14 +250,11 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
           <SpreadsheetView>
             <SpreadsheetHeader rowId="first" context={spreadsheetContext}>
               {columns.map((column, i) => {
-                const handleTitleSave = (value: string): boolean => {
+                const handleTitleSave = (value: string): string | undefined => {
                   if (value && columns.some(c => c.title === value && c.uuid !== column.uuid)) {
-                    // TODO: UI
-                    devWarning(true, 'duplicate column name', value, columns)
-                    return false
+                    return `${t('spreadsheet.column.duplicated_name')} '${value}'`
                   } else {
                     updateColumn({ ...column, title: value })
-                    return true
                   }
                 }
                 const onResize = (width: number): void => {
@@ -295,7 +293,8 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                     draggable={documentEditable}
                     onResize={onResize}
                     width={finalColumnWidths[column.uuid]}
-                    setWidth={number => setColumnWidths({ ...columnWidths, [column.uuid]: number })}>
+                    setWidth={number => setColumnWidths({ ...columnWidths, [column.uuid]: number })}
+                  >
                     <SpreadsheetColumnEditable
                       context={spreadsheetContext}
                       index={i}
@@ -316,14 +315,16 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                     rowId={rowBlock.id}
                     onHeightChange={(height: number) =>
                       setRowLayoutHeights({ ...rowLayoutHeights, [rowBlock.id]: height })
-                    }>
+                    }
+                  >
                     {columns.map((column, columnIdx) => {
                       const block = getCellBlock(rowBlock.id, column.uuid)
                       return (
                         <SpreadsheetCellContainer
                           key={block.id}
                           context={spreadsheetContext}
-                          cellId={{ rowId: rowBlock.id, columnId: column.uuid }}>
+                          cellId={{ rowId: rowBlock.id, columnId: column.uuid }}
+                        >
                           {documentEditable ? (
                             <SpreadsheetCell
                               context={spreadsheetContext}
