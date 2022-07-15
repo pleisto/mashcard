@@ -1,6 +1,6 @@
 name: Deploy PR Preview
 concurrency:
-  group: pr-preview-env-${{ github.ref }}
+  group: pr-preview-env-${{github.event.pull_request.number}}
   cancel-in-progress: true
 on:
   pull_request:
