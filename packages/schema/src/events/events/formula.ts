@@ -10,7 +10,11 @@ interface FormulaEditorEventType {
 
 export const FormulaKeyboardEventTrigger = event<
   {
-    event: Pick<KeyboardEvent, 'key' | 'metaKey' | 'ctrlKey' | 'altKey'> | null
+    event:
+      | (Pick<KeyboardEvent, 'key' | 'metaKey' | 'ctrlKey' | 'altKey'> & {
+          key: 'Enter' | 'Tab' | 'ArrowUp' | 'ArrowDown' | 'Escape'
+        })
+      | null
     formulaId: string
     rootId: string
     completionIndex: number

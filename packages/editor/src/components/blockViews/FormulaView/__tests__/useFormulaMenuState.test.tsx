@@ -26,7 +26,7 @@ describe('useFormulaMenuState', () => {
     const success2 = result.current.tryOpenMenu('foobar222')
     expect(success2).toBe(false)
 
-    result.current.closeMenu()
+    result.current.tryCloseMenu('foobar')
     const success3 = result.current.tryOpenMenu('foobar222')
     expect(success3).toBe(true)
   })
@@ -39,7 +39,7 @@ describe('useFormulaMenuState', () => {
     rerender()
     expect(result.current.state).toBe('foobar')
     act(() => {
-      result.current.closeMenu()
+      result.current.tryCloseMenu('foobar')
     })
     rerender()
     expect(result.current.state).toBe(null)
