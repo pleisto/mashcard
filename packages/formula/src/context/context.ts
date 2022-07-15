@@ -1,7 +1,6 @@
 import { devWarning } from '@mashcard/design-system'
 import { EventSubscribed, MashcardEventBus } from '@mashcard/schema'
 import { CstNode, ILexingResult } from 'chevrotain'
-
 import { BlockType, ColumnType, RowType, SpreadsheetType } from '../controls'
 import { BlockClass } from '../controls/block'
 import {
@@ -31,6 +30,7 @@ import {
   BackendActions,
   BlockCompletion,
   CodeFragment,
+  CodeFragmentWithIndex,
   Completion,
   ContextInterface,
   DeleteFormula,
@@ -468,7 +468,7 @@ export class FormulaContext implements ContextInterface {
     }
   }
 
-  private parseCodeFragments(input: string): CodeFragment[] {
+  private parseCodeFragments(input: string): CodeFragmentWithIndex[] {
     const lexResult: ILexingResult = FormulaLexer.tokenize(input)
     if (lexResult.errors.length > 0) {
       return []
@@ -489,7 +489,7 @@ export class FormulaContext implements ContextInterface {
       codeFragments: []
     }
 
-    return codeFragments
+    return codeFragments.map((c, index) => ({ ...c, index }))
   }
 
   public static getInstance(args: FormulaContextArgs): FormulaContext {
