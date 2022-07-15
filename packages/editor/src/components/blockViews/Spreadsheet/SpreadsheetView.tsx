@@ -10,6 +10,8 @@ import { SpreadsheetContext, SpreadsheetSelectionCellId } from './SpreadsheetCon
 import { SpreadsheetColumn } from './useSpreadsheet'
 import { columnDisplayIndex } from './helper'
 
+import { SpreadsheetColumnDisplay, SpreadsheetColumnInput, SpreadsheetColumnEditing, SpreadsheetColumnIndex } from './Spreadsheet.style'
+
 /* eslint-disable jsx-a11y/no-static-element-interactions, jsx-a11y/interactive-supports-focus,
   jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 
@@ -538,23 +540,20 @@ export const SpreadsheetColumnEditable: React.FC<{
   const displayIndex = columnDisplayIndex(index)
 
   return editing ? (
-    <input
-      autoFocus // eslint-disable-line jsx-a11y/no-autofocus
-      ref={inputRef}
-      className="column"
-      defaultValue={column.title}
-      onBlur={handleBlur}
-      onKeyDown={handleKeyDown}
-    />
+    <SpreadsheetColumnEditing>
+      <SpreadsheetColumnIndex>{displayIndex}</SpreadsheetColumnIndex>
+      <SpreadsheetColumnInput
+        autoFocus // eslint-disable-line jsx-a11y/no-autofocus
+        ref={inputRef}
+        defaultValue={column.title}
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
+      />
+    </SpreadsheetColumnEditing>
   ) : (
-    <div className="column" onDoubleClick={editable ? handleEnterEdit : undefined}>
-      {column.title ? (
-        <>
-          <strong>{column.title}</strong> ({displayIndex})
-        </>
-      ) : (
-        displayIndex
-      )}
-    </div>
+    <SpreadsheetColumnDisplay onDoubleClick={editable ? handleEnterEdit : undefined}>
+      {displayIndex}
+      {column.title && <small>({column.title})</small>}
+    </SpreadsheetColumnDisplay>
   )
 }

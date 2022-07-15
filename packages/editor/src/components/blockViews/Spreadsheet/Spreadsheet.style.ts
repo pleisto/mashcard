@@ -1,4 +1,4 @@
-import { CSS, theme } from '@mashcard/design-system'
+import { CSS, theme, styled } from '@mashcard/design-system'
 
 const tableHeaderColor = '#908B9C'
 const tableBg = 'rgba(0, 0, 0, 3%)'
@@ -15,20 +15,6 @@ export const spreadsheetStyles: CSS = {
     whiteSpace: 'nowrap',
     paddingBottom: 20,
     position: 'relative',
-
-    input: {
-      fontWeight: 'normal',
-      padding: 0,
-      border: 0,
-      background: 'transparent',
-      margin: 0,
-      borderRadius: 0,
-      boxShadow: 'none',
-
-      '&:focus': {
-        border: 0
-      }
-    }
   },
 
   '.node-spreadsheetBlock': {
@@ -165,16 +151,6 @@ export const spreadsheetStyles: CSS = {
         fontWeight: 'normal',
         minWidth: 230,
 
-        input: {
-          color: tableHeaderColor,
-          textAlign: 'center',
-          padding: 0,
-
-          '&:focus': {
-            color: theme.colors.deepPurple9
-          }
-        },
-
         '.column-action': {
           opacity: 0,
           cursor: 'pointer',
@@ -208,12 +184,9 @@ export const spreadsheetStyles: CSS = {
           background: 'transparent'
         },
 
-        '.column, .cell': {
+        '.cell': {
           padding: '4px 6px'
         },
-        'input.column': {
-          padding: '4px 5px'
-        }
       },
 
       'th.dragging': {
@@ -287,3 +260,68 @@ export const spreadsheetStyles: CSS = {
     }
   }
 }
+
+export const SpreadsheetCellDisplay = styled('div', {
+  width: '100%',
+  overflowX: 'hidden',
+  position: 'relative',
+  display: 'block',
+  lineHeight: '22px',
+  fontSize: 14,
+  minHeight: 22,
+
+  '&::selection': {
+    background: 'transparent'
+  }
+})
+
+export const SpreadsheetColumnDisplay = styled(SpreadsheetCellDisplay, {
+  padding: '4px 6px',
+  color: theme.colors.typePrimary,
+  'small': {
+    marginLeft: '2px',
+    color: theme.colors.typeThirdary,
+  }
+})
+
+
+export const SpreadsheetColumnEditing = styled('div', {
+  width: '100%',
+  background: theme.colors.backgroundSecondary,
+  boxShadow: `0 0 0 1.5px ${theme.colors.borderOverlayThirdary}`,
+  display: 'flex'
+})
+
+export const SpreadsheetColumnIndex = styled('div', {
+  color: theme.colors.typeDisabled,
+  fontSize: '12px',
+  padding: '4px 2px 4px 4px'
+})
+
+export const SpreadsheetInput = styled('input', {
+  fontWeight: 'normal',
+  padding: 0,
+  border: 0,
+  background: 'transparent',
+  margin: 0,
+  borderRadius: 0,
+  boxShadow: 'none',
+  '&:focus': {
+    border: 0,
+    boxShadow: 'none',
+    outline: '0 none'
+  }
+})
+
+export const SpreadsheetColumnInput = styled(SpreadsheetInput, {
+  width: '100%',
+  overflowX: 'hidden',
+  position: 'relative',
+  display: 'block',
+  lineHeight: '22px',
+  fontSize: '12px',
+  minHeight: '22px',
+  padding: '4px 6px 4px 2px',
+  textAlign: 'left',
+  color: theme.colors.typePrimary,
+})
