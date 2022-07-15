@@ -10,6 +10,14 @@ import { SpreadsheetContext, SpreadsheetSelectionCellId } from './SpreadsheetCon
 import { SpreadsheetColumn } from './useSpreadsheet'
 import { columnDisplayIndex } from './helper'
 
+import {
+  SpreadsheetColumnTooltip,
+  SpreadsheetColumnDisplay,
+  SpreadsheetColumnInput,
+  SpreadsheetColumnEditing,
+  SpreadsheetColumnIndex
+} from './Spreadsheet.style'
+
 /* eslint-disable jsx-a11y/no-static-element-interactions, jsx-a11y/interactive-supports-focus,
   jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 
@@ -152,7 +160,13 @@ export const SpreadsheetHeaderColumn: React.FC<{
     }
   }
 
+  const onClickColumn: React.MouseEventHandler<HTMLElement> = (e): void => {
+    if ((e.target as Element)?.tagName?.toLowerCase() === 'input') return
+    selectColumn()
+  }
+
   const onMouseDown: React.MouseEventHandler<HTMLElement> = (e): void => {
+    if ((e.target as Element)?.tagName?.toLowerCase() === 'input') return
     if (e.button !== 0 || !draggable) return
     context.setDragging({ columnId })
   }
@@ -197,7 +211,7 @@ export const SpreadsheetHeaderColumn: React.FC<{
       className={`${className} ${selected ? 'selected' : ''} ${dragging ? 'dragging' : ''} ${
         draggingOver ? 'dragging-over' : ''
       }`}
-      onClick={selectColumn}
+      onClick={onClickColumn}
       style={{
         ...(dragging ? { transform: `translateX(${context.dragging.movementX}px)` } : {}),
         ...(width
@@ -208,7 +222,8 @@ export const SpreadsheetHeaderColumn: React.FC<{
           : {})
       }}
       onMouseDown={onMouseDown}
-      onContextMenu={onContextMenu}>
+      onContextMenu={onContextMenu}
+    >
       {children}
       {columnActions ? (
         <Dropdown
@@ -231,7 +246,8 @@ export const SpreadsheetHeaderColumn: React.FC<{
           placement="bottomStart"
           visible={dropdownVisible}
           onVisibleChange={onDropdownVisibleChange}
-          aria-label={t('spreadsheet.column.actions')}>
+          aria-label={t('spreadsheet.column.actions')}
+        >
           <span>⌄</span>
         </Dropdown>
       ) : (
@@ -321,7 +337,8 @@ export const SpreadsheetRowAction: React.FC<{
             }
           : {})
       }}
-      data-row-id={rowId}>
+      data-row-id={rowId}
+    >
       <td className="row-action-panel" onContextMenu={onContextMenu}>
         <div className="row-action-panel-layer" onMouseDown={onMouseDown}>
           <Button className="row-number" onClick={onClickRowNumber}>
@@ -348,7 +365,8 @@ export const SpreadsheetRowAction: React.FC<{
               placement="bottomStart"
               visible={dropdownVisible}
               onVisibleChange={onDropdownVisibleChange}
-              aria-label={t('spreadsheet.row.actions')}>
+              aria-label={t('spreadsheet.row.actions')}
+            >
               <span>⌄</span>
             </Dropdown>
           ) : (
@@ -412,7 +430,8 @@ export const SpreadsheetRow: React.FC<{
       onMouseOver={onOver}
       onFocus={onOver}
       onMouseOut={onOut}
-      onBlur={onOut}>
+      onBlur={onOut}
+    >
       {children}
     </tr>
   )
@@ -481,7 +500,8 @@ export const SpreadsheetCellContainer: React.FC<{
       className={selected ? 'selected' : ''}
       onClick={onClickCell}
       onContextMenu={onContextMenu}
-      data-cell-id={cellIdStr}>
+      data-cell-id={cellIdStr}
+    >
       <Dropdown
         overlay={SpreadsheetMenu({
           items: cellActions,
@@ -491,7 +511,8 @@ export const SpreadsheetCellContainer: React.FC<{
         })}
         placement="bottomStart"
         visible={dropdownVisible}
-        aria-label={t('spreadsheet.cell.actions')}>
+        aria-label={t('spreadsheet.cell.actions')}
+      >
         {children}
       </Dropdown>
     </td>
@@ -502,10 +523,11 @@ export const SpreadsheetColumnEditable: React.FC<{
   context?: SpreadsheetContext
   column: SpreadsheetColumn
   index: number
-  onSave?: (value: string) => void
+  onSave?: (value: string) => string | undefined
   editable?: boolean
 }> = ({ column, index, onSave, context, editable }) => {
   const [editing, setEditing] = React.useState(false)
+  const [errorMsg, setErrorMsg] = React.useState<string | undefined>()
 
   const inputRef = React.createRef<HTMLInputElement>()
 
@@ -516,11 +538,14 @@ export const SpreadsheetColumnEditable: React.FC<{
 
   const handleSave = (): void => {
     if (inputRef.current) {
-      if (onSave?.(inputRef.current.value)) {
-        setEditing(false)
-      } else {
+      const msg = onSave?.(inputRef.current.value)
+      if (msg) {
         inputRef.current?.focus()
+        setErrorMsg(msg)
         setEditing(true)
+      } else {
+        setErrorMsg(undefined)
+        setEditing(false)
       }
     }
   }
@@ -530,6 +555,7 @@ export const SpreadsheetColumnEditable: React.FC<{
   }
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e): void => {
+    setErrorMsg(undefined)
     if (e.key === 'Enter') {
       handleSave()
     }
@@ -538,23 +564,22 @@ export const SpreadsheetColumnEditable: React.FC<{
   const displayIndex = columnDisplayIndex(index)
 
   return editing ? (
-    <input
-      autoFocus // eslint-disable-line jsx-a11y/no-autofocus
-      ref={inputRef}
-      className="column"
-      defaultValue={column.title}
-      onBlur={handleBlur}
-      onKeyDown={handleKeyDown}
-    />
+    <SpreadsheetColumnEditing danger={!!errorMsg}>
+      <SpreadsheetColumnIndex>{displayIndex}</SpreadsheetColumnIndex>
+      <SpreadsheetColumnInput
+        autoFocus // eslint-disable-line jsx-a11y/no-autofocus
+        danger={!!errorMsg}
+        ref={inputRef}
+        defaultValue={column.title}
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
+      />
+      {errorMsg && <SpreadsheetColumnTooltip>{errorMsg}</SpreadsheetColumnTooltip>}
+    </SpreadsheetColumnEditing>
   ) : (
-    <div className="column" onDoubleClick={editable ? handleEnterEdit : undefined}>
-      {column.title ? (
-        <>
-          <strong>{column.title}</strong> ({displayIndex})
-        </>
-      ) : (
-        displayIndex
-      )}
-    </div>
+    <SpreadsheetColumnDisplay onDoubleClick={editable ? handleEnterEdit : undefined}>
+      {displayIndex}
+      {column.title && <small>({column.title})</small>}
+    </SpreadsheetColumnDisplay>
   )
 }
