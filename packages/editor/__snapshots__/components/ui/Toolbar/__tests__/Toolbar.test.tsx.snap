@@ -14,7 +14,7 @@ exports[`Toolbar matches snapshot correctly 1`] = `
         aria-describedby=""
         aria-haspopup="false"
         aria-label="item1"
-        class="mc-c-ewLfqI"
+        class="mc-c-fCKOrw"
         role="menuitem"
       >
         <span>
@@ -25,7 +25,7 @@ exports[`Toolbar matches snapshot correctly 1`] = `
         aria-describedby=""
         aria-haspopup="false"
         aria-label="item2"
-        class="mc-c-ewLfqI"
+        class="mc-c-fCKOrw"
         role="menuitem"
       >
         <span>
@@ -36,7 +36,7 @@ exports[`Toolbar matches snapshot correctly 1`] = `
         aria-describedby=""
         aria-haspopup="false"
         aria-label="item3"
-        class="mc-c-ewLfqI"
+        class="mc-c-fCKOrw"
         role="menuitem"
       >
         <span>
@@ -48,7 +48,7 @@ exports[`Toolbar matches snapshot correctly 1`] = `
       >
         <li
           aria-label="subMenu renderItems"
-          class="mc-c-fUQkwR"
+          class="mc-c-dKibPg"
           role="menuitem"
         >
           subMenu renderItems
@@ -79,7 +79,7 @@ exports[`Toolbar matches snapshot correctly 1`] = `
       >
         <li
           aria-label="subMenu"
-          class="mc-c-fUQkwR"
+          class="mc-c-dKibPg"
           role="menuitem"
         >
           subMenu
@@ -107,13 +107,13 @@ exports[`Toolbar matches snapshot correctly 1`] = `
       </span>
       <li
         aria-label="toolbar.separator"
-        class="mc-c-jWEVxl"
+        class="mc-c-iLiPnb"
       />
     </ul>
     <li
       aria-describedby=""
       aria-label="item2"
-      class="mc-c-ewLfqI"
+      class="mc-c-fCKOrw"
       role="menuitem"
     >
       <span>
