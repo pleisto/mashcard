@@ -3,8 +3,8 @@
 ## Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 ## Table of contents
 
@@ -28,7 +28,7 @@
 
 [packages/formula/src/type/index.ts:677](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L677)
 
-___
+---
 
 ### <a id="key" name="key"></a> key
 
@@ -38,7 +38,7 @@ ___
 
 [packages/formula/src/type/index.ts:673](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L673)
 
-___
+---
 
 ### <a id="level" name="level"></a> level
 
@@ -48,7 +48,7 @@ ___
 
 [packages/formula/src/type/index.ts:674](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L674)
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -58,7 +58,7 @@ ___
 
 [packages/formula/src/type/index.ts:679](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L679)
 
-___
+---
 
 ### <a id="namespaceid" name="namespaceid"></a> namespaceId
 
@@ -68,17 +68,17 @@ ___
 
 [packages/formula/src/type/index.ts:678](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L678)
 
-___
+---
 
 ### <a id="scope" name="scope"></a> scope
 
-• `Readonly` **scope**: ``null`` \| [`EventScope`](EventScope.md)
+• `Readonly` **scope**: `null` \| [`EventScope`](EventScope.md)
 
 #### Defined in
 
 [packages/formula/src/type/index.ts:676](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L676)
 
-___
+---
 
 ### <a id="username" name="username"></a> username
 

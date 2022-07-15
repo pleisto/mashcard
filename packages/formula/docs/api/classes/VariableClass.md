@@ -50,11 +50,11 @@
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
+| Name                               | Type                                                    |
+| :--------------------------------- | :------------------------------------------------------ |
+| `__namedParameters`                | `Object`                                                |
 | `__namedParameters.formulaContext` | [`ContextInterface`](../interfaces/ContextInterface.md) |
-| `__namedParameters.t` | [`VariableData`](../interfaces/VariableData.md) |
+| `__namedParameters.t`              | [`VariableData`](../interfaces/VariableData.md)         |
 
 ## Properties
 
@@ -66,7 +66,7 @@
 
 [packages/formula/src/context/variable.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L113)
 
-___
+---
 
 ### <a id="currentuuid" name="currentuuid"></a> currentUUID
 
@@ -80,7 +80,7 @@ ___
 
 [packages/formula/src/context/variable.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L112)
 
-___
+---
 
 ### <a id="eventdependencies" name="eventdependencies"></a> eventDependencies
 
@@ -90,7 +90,7 @@ ___
 
 [packages/formula/src/context/variable.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L114)
 
-___
+---
 
 ### <a id="eventlisteners" name="eventlisteners"></a> eventListeners
 
@@ -100,7 +100,7 @@ ___
 
 [packages/formula/src/context/variable.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L111)
 
-___
+---
 
 ### <a id="formulacontext" name="formulacontext"></a> formulaContext
 
@@ -114,7 +114,7 @@ ___
 
 [packages/formula/src/context/variable.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L107)
 
-___
+---
 
 ### <a id="id" name="id"></a> id
 
@@ -128,7 +128,7 @@ ___
 
 [packages/formula/src/context/variable.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L108)
 
-___
+---
 
 ### <a id="isnew" name="isnew"></a> isNew
 
@@ -142,7 +142,7 @@ ___
 
 [packages/formula/src/context/variable.ts:105](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L105)
 
-___
+---
 
 ### <a id="isreadyt" name="isreadyt"></a> isReadyT
 
@@ -156,7 +156,7 @@ ___
 
 [packages/formula/src/context/variable.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L106)
 
-___
+---
 
 ### <a id="t" name="t"></a> t
 
@@ -170,7 +170,7 @@ ___
 
 [packages/formula/src/context/variable.ts:104](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L104)
 
-___
+---
 
 ### <a id="ticktimeout" name="ticktimeout"></a> tickTimeout
 
@@ -188,8 +188,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type                                                      |
+| :------- | :-------------------------------------------------------- |
 | `input?` | [`FormulaDefinition`](../interfaces/FormulaDefinition.md) |
 
 #### Returns
@@ -200,7 +200,7 @@ ___
 
 VariableInterface.buildFormula
 
-___
+---
 
 ### <a id="cleanup" name="cleanup"></a> cleanup
 
@@ -214,7 +214,7 @@ ___
 
 VariableInterface.cleanup
 
-___
+---
 
 ### <a id="completetask" name="completetask"></a> completeTask
 
@@ -222,16 +222,16 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
+| Name                     | Type                                        |
+| :----------------------- | :------------------------------------------ |
+| `__namedParameters`      | `Object`                                    |
 | `__namedParameters.task` | [`VariableTask`](../README.md#variabletask) |
 
 #### Returns
 
 `Promise`<`void`\>
 
-___
+---
 
 ### <a id="maybereparseandpersist" name="maybereparseandpersist"></a> maybeReparseAndPersist
 
@@ -239,18 +239,18 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `source` | `string` |
-| `sourceUuid` | `string` |
-| `level` | `number` |
-| `input?` | [`FormulaDefinition`](../interfaces/FormulaDefinition.md) |
+| Name         | Type                                                      |
+| :----------- | :-------------------------------------------------------- |
+| `source`     | `string`                                                  |
+| `sourceUuid` | `string`                                                  |
+| `level`      | `number`                                                  |
+| `input?`     | [`FormulaDefinition`](../interfaces/FormulaDefinition.md) |
 
 #### Returns
 
 `Promise`<`void`\>
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -264,7 +264,7 @@ ___
 
 VariableInterface.meta
 
-___
+---
 
 ### <a id="namedependency" name="namedependency"></a> nameDependency
 
@@ -278,7 +278,7 @@ ___
 
 VariableInterface.nameDependency
 
-___
+---
 
 ### <a id="namespacename" name="namespacename"></a> namespaceName
 
@@ -286,8 +286,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type     |
+| :------- | :------- |
 | `pageId` | `string` |
 
 #### Returns
@@ -298,7 +298,7 @@ ___
 
 VariableInterface.namespaceName
 
-___
+---
 
 ### <a id="onupdate" name="onupdate"></a> onUpdate
 
@@ -306,10 +306,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-| `__namedParameters.level?` | `number` |
+| Name                             | Type      |
+| :------------------------------- | :-------- |
+| `__namedParameters`              | `Object`  |
+| `__namedParameters.level?`       | `number`  |
 | `__namedParameters.skipPersist?` | `boolean` |
 
 #### Returns
@@ -320,7 +320,7 @@ ___
 
 VariableInterface.onUpdate
 
-___
+---
 
 ### <a id="save" name="save"></a> save
 
@@ -334,7 +334,7 @@ ___
 
 VariableInterface.save
 
-___
+---
 
 ### <a id="setupeventdependencies" name="setupeventdependencies"></a> setupEventDependencies
 
@@ -344,7 +344,7 @@ ___
 
 `void`
 
-___
+---
 
 ### <a id="subscribedependencies" name="subscribedependencies"></a> subscribeDependencies
 
@@ -354,7 +354,7 @@ ___
 
 `void`
 
-___
+---
 
 ### <a id="tick" name="tick"></a> tick
 
@@ -362,15 +362,15 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type     |
+| :----- | :------- |
 | `uuid` | `string` |
 
 #### Returns
 
 `Promise`<`void`\>
 
-___
+---
 
 ### <a id="trackdependency" name="trackdependency"></a> trackDependency
 
@@ -384,7 +384,7 @@ ___
 
 VariableInterface.trackDependency
 
-___
+---
 
 ### <a id="trackdirty" name="trackdirty"></a> trackDirty
 
@@ -398,7 +398,7 @@ ___
 
 VariableInterface.trackDirty
 
-___
+---
 
 ### <a id="unsubscripeevents" name="unsubscripeevents"></a> unsubscripeEvents
 
@@ -408,7 +408,7 @@ ___
 
 `void`
 
-___
+---
 
 ### <a id="updatedefinition" name="updatedefinition"></a> updateDefinition
 
@@ -416,8 +416,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type                                                      |
+| :------ | :-------------------------------------------------------- |
 | `input` | [`FormulaDefinition`](../interfaces/FormulaDefinition.md) |
 
 #### Returns

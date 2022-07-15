@@ -2,7 +2,7 @@
 
 ## Hierarchy
 
-- `Omit`<[`FunctionContext`](FunctionContext.md), ``"meta"``\>
+- `Omit`<[`FunctionContext`](FunctionContext.md), `"meta"`\>
 
   ↳ **`MakeContextResult`**
 
@@ -29,8 +29,8 @@
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                   |
+| :----- | :------------------------------------- |
 | `args` | [`BaseTestCase`](BaseTestCase.md)<{}\> |
 
 ##### Returns
@@ -41,7 +41,7 @@
 
 [packages/formula/src/tests/testType.ts:233](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L233)
 
-___
+---
 
 ### <a id="fetchuuid" name="fetchuuid"></a> fetchUUID
 
@@ -53,8 +53,8 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                        |
+| :----- | :------------------------------------------ |
 | `uuid` | [`MockedUUIDV4`](../README.md#mockeduuidv4) |
 
 ##### Returns
@@ -65,7 +65,7 @@ ___
 
 [packages/formula/src/tests/testType.ts:236](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L236)
 
-___
+---
 
 ### <a id="formulacontext" name="formulacontext"></a> formulaContext
 
@@ -79,7 +79,7 @@ Omit.formulaContext
 
 [packages/formula/src/type/index.ts:408](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L408)
 
-___
+---
 
 ### <a id="interpretcontext" name="interpretcontext"></a> interpretContext
 
@@ -93,7 +93,7 @@ Omit.interpretContext
 
 [packages/formula/src/type/index.ts:413](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L413)
 
-___
+---
 
 ### <a id="interpretdirectly" name="interpretdirectly"></a> interpretDirectly
 
@@ -105,8 +105,8 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                   |
+| :----- | :------------------------------------- |
 | `args` | [`BaseTestCase`](BaseTestCase.md)<{}\> |
 
 ##### Returns
@@ -117,7 +117,7 @@ ___
 
 [packages/formula/src/tests/testType.ts:234](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L234)
 
-___
+---
 
 ### <a id="parsedirectly" name="parsedirectly"></a> parseDirectly
 
@@ -129,8 +129,8 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                   |
+| :----- | :------------------------------------- |
 | `args` | [`BaseTestCase`](BaseTestCase.md)<{}\> |
 
 ##### Returns

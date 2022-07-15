@@ -18,7 +18,7 @@
 
 [packages/formula/src/type/index.ts:602](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L602)
 
-___
+---
 
 ### <a id="image" name="image"></a> image
 
@@ -28,7 +28,7 @@ ___
 
 [packages/formula/src/type/index.ts:604](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L604)
 
-___
+---
 
 ### <a id="type" name="type"></a> type
 

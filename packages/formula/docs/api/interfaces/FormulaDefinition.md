@@ -18,7 +18,7 @@
 
 [packages/formula/src/type/index.ts:184](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L184)
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 
@@ -28,7 +28,7 @@ ___
 
 [packages/formula/src/type/index.ts:185](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L185)
 
-___
+---
 
 ### <a id="name" name="name"></a> name
 

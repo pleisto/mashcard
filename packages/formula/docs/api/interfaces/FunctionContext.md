@@ -28,7 +28,7 @@
 
 [packages/formula/src/type/index.ts:408](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L408)
 
-___
+---
 
 ### <a id="interpretcontext" name="interpretcontext"></a> interpretContext
 
@@ -38,7 +38,7 @@ ___
 
 [packages/formula/src/type/index.ts:413](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L413)
 
-___
+---
 
 ### <a id="meta" name="meta"></a> meta
 

@@ -32,7 +32,7 @@
 
 [packages/formula/src/type/index.ts:708](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L708)
 
-___
+---
 
 ### <a id="blockdependencies" name="blockdependencies"></a> blockDependencies
 
@@ -42,7 +42,7 @@ ___
 
 [packages/formula/src/type/index.ts:720](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L720)
 
-___
+---
 
 ### <a id="codefragments" name="codefragments"></a> codeFragments
 
@@ -52,7 +52,7 @@ ___
 
 [packages/formula/src/type/index.ts:716](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L716)
 
-___
+---
 
 ### <a id="cst" name="cst"></a> cst
 
@@ -62,7 +62,7 @@ ___
 
 [packages/formula/src/type/index.ts:715](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L715)
 
-___
+---
 
 ### <a id="definition" name="definition"></a> definition
 
@@ -72,7 +72,7 @@ ___
 
 [packages/formula/src/type/index.ts:706](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L706)
 
-___
+---
 
 ### <a id="effect" name="effect"></a> effect
 
@@ -82,7 +82,7 @@ ___
 
 [packages/formula/src/type/index.ts:709](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L709)
 
-___
+---
 
 ### <a id="eventdependencies" name="eventdependencies"></a> eventDependencies
 
@@ -92,7 +92,7 @@ ___
 
 [packages/formula/src/type/index.ts:721](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L721)
 
-___
+---
 
 ### <a id="flattenvariabledependencies" name="flattenvariabledependencies"></a> flattenVariableDependencies
 
@@ -102,7 +102,7 @@ ___
 
 [packages/formula/src/type/index.ts:717](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L717)
 
-___
+---
 
 ### <a id="functiondependencies" name="functiondependencies"></a> functionDependencies
 
@@ -112,7 +112,7 @@ ___
 
 [packages/formula/src/type/index.ts:722](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L722)
 
-___
+---
 
 ### <a id="kind" name="kind"></a> kind
 
@@ -122,7 +122,7 @@ ___
 
 [packages/formula/src/type/index.ts:712](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L712)
 
-___
+---
 
 ### <a id="namedependencies" name="namedependencies"></a> nameDependencies
 
@@ -132,7 +132,7 @@ ___
 
 [packages/formula/src/type/index.ts:718](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L718)
 
-___
+---
 
 ### <a id="persist" name="persist"></a> persist
 
@@ -142,7 +142,7 @@ ___
 
 [packages/formula/src/type/index.ts:711](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L711)
 
-___
+---
 
 ### <a id="position" name="position"></a> position
 
@@ -152,7 +152,7 @@ ___
 
 [packages/formula/src/type/index.ts:707](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L707)
 
-___
+---
 
 ### <a id="pure" name="pure"></a> pure
 
@@ -162,7 +162,7 @@ ___
 
 [packages/formula/src/type/index.ts:710](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L710)
 
-___
+---
 
 ### <a id="valid" name="valid"></a> valid
 
@@ -172,7 +172,7 @@ ___
 
 [packages/formula/src/type/index.ts:714](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L714)
 
-___
+---
 
 ### <a id="variabledependencies" name="variabledependencies"></a> variableDependencies
 
@@ -182,7 +182,7 @@ ___
 
 [packages/formula/src/type/index.ts:719](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L719)
 
-___
+---
 
 ### <a id="version" name="version"></a> version
 

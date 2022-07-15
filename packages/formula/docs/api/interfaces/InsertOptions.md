@@ -11,17 +11,17 @@
 
 ### <a id="ignoreparseerror" name="ignoreparseerror"></a> ignoreParseError
 
-• `Optional` **ignoreParseError**: ``true``
+• `Optional` **ignoreParseError**: `true`
 
 #### Defined in
 
 [packages/formula/src/tests/testType.ts:36](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L36)
 
-___
+---
 
 ### <a id="ignoresyntaxerror" name="ignoresyntaxerror"></a> ignoreSyntaxError
 
-• `Optional` **ignoreSyntaxError**: ``true``
+• `Optional` **ignoreSyntaxError**: `true`
 
 #### Defined in
 

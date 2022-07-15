@@ -2,9 +2,9 @@
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends [`ViewType`](../README.md#viewtype) |
+| Name | Type                                        |
+| :--- | :------------------------------------------ |
+| `T`  | extends [`ViewType`](../README.md#viewtype) |
 
 ## Table of contents
 
@@ -23,7 +23,7 @@
 
 [packages/formula/src/type/index.ts:120](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L120)
 
-___
+---
 
 ### <a id="type" name="type"></a> type
 
