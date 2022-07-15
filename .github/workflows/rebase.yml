@@ -1,7 +1,14 @@
 name: Automatic Rebase
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   issue_comment:
-    types: [created]
+    types:
+      - created
+
 jobs:
   rebase:
     name: Rebase
@@ -12,9 +19,9 @@ jobs:
       - name: Checkout the latest code
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.PAT_FOR_PACAKGES }}
+          token: ${{ secrets.PAT_FOR_BOT_CREATED_PR }}
           fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
       - name: Automatic Rebase
         uses: cirrus-actions/rebase@1.7
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_FOR_PACAKGES }}
+          GITHUB_TOKEN: ${{ secrets.PAT_FOR_BOT_CREATED_PR }}

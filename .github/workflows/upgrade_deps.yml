@@ -1,18 +1,24 @@
----
-name: Upgrade Dependencies
+name: Upgrade Deps
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   workflow_dispatch:
   schedule:
+    # At 16:00 on every day-of-week from Sunday through Thursday (UTC)
     - cron: '0 16 * * 0-4'
+
+env:
+  NODE_OPTIONS: '--max-old-space-size=5950'
+  YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
 jobs:
   dependency_updater:
     name: Check and Upgrade
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    env:
-      YARN_ENABLE_IMMUTABLE_INSTALLS: false
-      NODE_OPTIONS: '--max-old-space-size=5950'
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3
@@ -27,13 +33,11 @@ jobs:
           PATTERNS: "'!(ms)' '@!(mashcard)/*'"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
-        env:
-          HUSKY: 0
         with:
           token: ${{ secrets.PAT_FOR_BOT_CREATED_PR }}
-          title: 'build(deps): upgrade dependencies'
-          body: This is an auto-created PR to upgrade our dependencies according to <https://github.com/mashcard/mashcard/blob/main/.github/workflows/dependency_updater.yml>.
-          commit-message: 'build(deps): upgrade dependencies'
+          title: 'chore(deps): upgrade dependencies'
+          body: This is an [auto-created](https://github.com/mashcard/mashcard/blob/main/.github/workflows/dependency_updater.yml) PR to upgrade dependencies.
+          commit-message: 'chore(deps): upgrade dependencies'
           branch: deps-automatic-upgrade
           labels: |
             dependencies

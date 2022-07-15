@@ -1,10 +1,11 @@
-name: Destroy PR Preview Env
+name: Destroy PR Preview
 concurrency:
-  group: monolith-preview-env-${{ github.ref }}
+  group: pr-preview-env-${{ github.ref }}
   cancel-in-progress: true
 on:
   pull_request:
-    types: [closed]
+    types:
+      - closed
 permissions:
   id-token: write
   pull-requests: write
@@ -17,7 +18,7 @@ env:
   GCP_PROJECT: brickdoc-testnet
 jobs:
   clean:
-    name: 'Helm Remove'
+    name: Uninstall Release
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

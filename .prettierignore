@@ -2,7 +2,6 @@
 
 dist/
 coverage/
-junit-reports/
 tmp/
 log/
 node_modules/

@@ -1,25 +1,31 @@
-name: Linting Code
+name: Lint Code
 concurrency:
-  group: monolith-linting-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 on:
   pull_request:
   push:
     branches:
       - main
+    paths-ignore:
+      - '.husky/**'
+      - '**.md'
+      - '**/LICENSE'
+      - '.github/**'
+      - '!.github/workflows/linting.yml'
+      - 'tools/e2e-testing/**'
+      - '**.snap'
 env:
-  YARN_CHECKSUM_BEHAVIOR: update
+  # GitHub-hosted runner have 7 gb RAM.
+  # 5250mb === 7gb * 0.75
+  NODE_OPTIONS: '--max-old-space-size=5950'
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: brickdoc
 jobs:
-  es:
-    name: ECMAScript
+  eslint:
+    name: ESLint
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    env:
-      # GitHub-hosted runner have 7 gb RAM.
-      # 5250mb === 7gb * 0.75
-      NODE_OPTIONS: '--max-old-space-size=5950'
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3
@@ -30,8 +36,24 @@ jobs:
           cache: yarn
       - name: Run yarn install
         run: yarn install --immutable
-      - name: Run yarn lint
-        run: yarn lint
+      - name: Run lint:eslint
+        run: yarn turbo run lint:eslint
+  tsc:
+    name: TypeScript Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+      - name: Run yarn install
+        run: yarn install --immutable
+      - name: Run lint:type
+        run: yarn turbo run lint:type
   ruby:
     name: Ruby
     runs-on: ubuntu-latest
@@ -84,14 +106,11 @@ jobs:
       - name: Run yarn install
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         run: yarn install --immutable
-      - name: Run native build
-        run: yarn server build
-        if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
       - name: Run Rubocop
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         run: |
           echo "::add-matcher::.github/matchers/rubocop.json"
-          yarn lint:rubocop
+          yarn turbo run lint:rubocop
       - name: Run Brakeman
         if: steps.changed-ruby-or-rust-files.outputs.any_changed == 'true'
         run: |

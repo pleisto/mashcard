@@ -1,10 +1,9 @@
-name: Deploy PR Preview Env
+name: Deploy PR Preview
 concurrency:
-  group: monolith-preview-env-${{ github.ref }}
+  group: pr-preview-env-${{ github.ref }}
   cancel-in-progress: true
 on:
   pull_request:
-    types: [opened, synchronize]
 permissions:
   id-token: write
   pull-requests: write
@@ -14,16 +13,15 @@ permissions:
   statuses: write
   actions: write
 env:
-  YARN_CHECKSUM_BEHAVIOR: update
-  image: ghcr.io/mashcard/mashcard-snapshot:${{github.event.pull_request.number}}
-  domain: pr${{ github.event.pull_request.number }}.mashcard.dev
+  IMAGE: ghcr.io/mashcard/mashcard-snapshot:${{github.event.pull_request.number}}
+  DOMAIN: pr${{ github.event.pull_request.number }}.mashcard.dev
   GCP_PROJECT: brickdoc-testnet
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
   SENTRY_ORG: pleisto
   SENTRY_PROJECT: mashcard-dev
 jobs:
   build:
-    name: 'Build and Push Docker Image'
+    name: Build Image
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -48,14 +46,14 @@ jobs:
             SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
             SENTRY_ORG=${{ env.SENTRY_ORG }}
             SENTRY_PROJECT=${{ env.SENTRY_PROJECT }}
-          tags: ${{ env.image }}
+          tags: ${{ env.IMAGE }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
   deploy:
-    name: 'Deployment to GKE'
+    name: Deploy to GKE
     environment:
       name: pr_preview
-      url: https://${{ env.domain }}/
+      url: https://${{ env.DOMAIN }}/
     runs-on: ubuntu-latest
     timeout-minutes: 8
     needs: build
@@ -79,12 +77,12 @@ jobs:
         run: |-
           helm upgrade mashcard-pr${{ github.event.pull_request.number }} ${{ github.workspace }}/tools/helm-charts/mashcard \
            --install --atomic --timeout 5m --cleanup-on-fail --wait --namespace=cicd --set previewEnv=true \
-            --set-string image.name='${{ env.image }}' \
-            --set-string ingress.host='${{ env.domain }}' \
+            --set-string image.name='${{ env.IMAGE }}' \
+            --set-string ingress.host='${{ env.DOMAIN }}' \
             --set serviceAccount.create=false \
             --set-string serviceAccount.name='trunk-or-pr-main' \
             --set-string envs.SENTRY_DSN='https://4aa5075a3b484af6a251f3677a9f665e@o1150336.ingest.sentry.io/6257651' \
-            --set-string envs.HOST='${{ env.domain }}' \
+            --set-string envs.HOST='${{ env.DOMAIN }}' \
             --set-string license='I hereby swear that I have obtained written permission from the Pleisto Inc of this plugin to use it.' \
             --set-string secrets.SECRET_KEY_SEED='${{ secrets.PR_SECRET_KEY_SEED }}' \
             --set-string secrets.UNSPLASH_API_ACCESS_KEY='${{ secrets.UNSPLASH_API_ACCESS_KEY }}' \
@@ -103,9 +101,9 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            This pull request has been built and is available for preview at [${{ env.domain }}](https://${{ env.domain }}).
+            This pull request has been built and is available for preview at [${{ env.DOMAIN }}](https://${{ env.DOMAIN }}).
             Default username/password is `test1@example.com` & `test1234`.
             ## Devtools
-            * [Mailer Mock](https://${{ env.domain }}/devtools/mailer)
+            * [Mailer Mock](https://${{ env.DOMAIN }}/devtools/mailer)
             * [Pod Logs (For internal use only)](https://console.cloud.google.com/logs/query?project=brickdoc-testnet)
           edit-mode: replace

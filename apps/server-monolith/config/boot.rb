@@ -11,7 +11,7 @@ rescue LoadError
   puts <<~MSG
 
     Error: Native extensions not found.
-    Please run `yarn server build` to build the native extensions.
+    Please run `yarn server rust:build` to build the native extensions.
 
   MSG
   raise
