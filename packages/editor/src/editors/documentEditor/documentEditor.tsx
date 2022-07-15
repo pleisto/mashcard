@@ -53,6 +53,10 @@ import {
 } from './documentEditor.style'
 import { merge } from 'lodash'
 import { To, NavigateOptions } from 'react-router-dom'
+import {
+  MashcardEventBus,
+  HistoryListToggle,
+} from '@mashcard/schema'
 
 export interface EditorContentProps {
   editor: TiptapEditor | null
@@ -74,6 +78,10 @@ export const EditorContent: FC<EditorContentProps> = ({ editor, editable, rootId
   const enableSelection =
     !editable || !editor?.extensionManager.extensions.find(extension => extension.name === Selection.name)
   const documentEditorClassName = documentEditorStyles({ enableSelection })
+
+  if (props.historyId) {
+    MashcardEventBus.dispatch(HistoryListToggle({visible: true}))
+  }
 
   return (
     <DocumentContext.Provider value={documentContext}>

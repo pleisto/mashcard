@@ -17,7 +17,7 @@ import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
 import { AppError404 } from '@/routes/_shared/AppError'
 import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
-import { MashcardEventBus, HistoryListToggle, BlockMetaUpdated } from '@mashcard/schema'
+import { MashcardEventBus, BlockMetaUpdated } from '@mashcard/schema'
 
 export const DocumentContentPage: FC = () => {
   const { t } = useDocsI18n()
@@ -89,10 +89,6 @@ export const DocumentContentPage: FC = () => {
     const alias = isAlias ? docId : documentInfo?.enabledAlias?.key
     const isRedirect = !!(state as any)?.redirect
     const isNotExist = !loading && !documentInfo?.id
-
-    if (historyId) {
-      MashcardEventBus.dispatch(HistoryListToggle({ visible: true }))
-    }
 
     return {
       id,
