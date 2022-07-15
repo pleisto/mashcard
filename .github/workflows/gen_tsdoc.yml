@@ -1,0 +1,50 @@
+name: Generate API Docs
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '.husky/**'
+      - '**.md'
+      - '**/LICENSE'
+      - '.github/**'
+      - '!.github/workflows/gen_tsdoc.yml'
+      - 'tools/e2e-testing/**'
+      - '**.test.tsx?'
+      - '**.spec.tsx?'
+      - '**.snap'
+
+env:
+  NODE_OPTIONS: '--max-old-space-size=5950'
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: brickdoc
+
+jobs:
+  gen_api_docs:
+    name: Check and Upgrade
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+      - name: Run yarn install
+        run: yarn install --immutable && yarn husky install
+      - name: Generate API docs
+        run: yarn tsdoc
+      - name: Fix permissions
+        run: "{ git ls-files --modified && git ls-files -o --exclude-standard; } | xargs -I{} sh -c 'chmod -x {}'"
+      - name: Add and commit everything
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: 'docs: regenerate API docs'

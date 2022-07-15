@@ -1,8 +1,9 @@
 ---
-name: PR Preview Env GC
+name: Cleanup Leftover PR Previews
 on:
   workflow_dispatch:
   schedule:
+    # At 16:00 (UTC)
     - cron: '0 16 * * *'
 permissions:
   id-token: write
@@ -16,7 +17,7 @@ env:
   GCP_PROJECT: brickdoc-testnet
 jobs:
   gc:
-    name: Garbage Collection of Unused Container
+    name: Uninstall Releases
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -32,7 +33,7 @@ jobs:
         with:
           cluster_name: 'kube-us-dev-clone-1'
           location: 'us-central1'
-      - name: helm deployments gc
+      - name: Uninstall helm releases
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           APPS_PREFIX: mashcard-pr

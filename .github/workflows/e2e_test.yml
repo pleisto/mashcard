@@ -3,9 +3,11 @@ name: E2E Test
 on:
   workflow_dispatch:
   schedule:
+    # At 18:00 (UTC)
     - cron: '0 18 * * *'
 
 env:
+  NODE_OPTIONS: '--max-old-space-size=5950'
   YARN_CHECKSUM_BEHAVIOR: update
 
 jobs:
@@ -32,7 +34,6 @@ jobs:
       - name: Run Playwright tests
         run: yarn e2e-testing run-playwright:${{ matrix.browser }}
         env:
-          NODE_OPTIONS: '--max-old-space-size=5950'
           PLAYWRIGHT_BASE_URL: https://trunk.mashcard.dev
           E2E_CHROMIUM_LOGIN_EMAIL: ${{ secrets.TRUNK_E2E_USER_CHROMIUM_EMAIL }}
           E2E_CHROMIUM_LOGIN_PASSWORD: ${{ secrets.TRUNK_E2E_USER_CHROMIUM_PASSWORD }}
@@ -48,7 +49,7 @@ jobs:
   report:
     if: ${{ always() }}
     needs: playwright
-    name: Send report
+    name: Send Report
     runs-on: ubuntu-latest
     steps:
       - run: mkdir -p tools/e2e-testing/allure-results

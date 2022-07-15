@@ -1,15 +1,18 @@
-name: Deploy Trunk Env
+name: Deploy Trunk
 on:
   push:
-    paths-ignore:
-      - '.husky/**'
-      - '**/*.md'
-      - '**/crowdin.yml'
-      - '**/LICENSE'
-      - '**/NOTICE'
-      - '**/VERSION'
     branches:
       - main
+    paths-ignore:
+      - '.husky/**'
+      - '**.md'
+      - '**/LICENSE'
+      - '.github/**'
+      - '!.github/workflows/trunk_deploy.yml'
+      - 'tools/e2e-testing/**'
+      - '**.test.tsx?'
+      - '**.spec.tsx?'
+      - '**.snap'
 permissions:
   id-token: write
   pull-requests: write
@@ -19,19 +22,18 @@ permissions:
   statuses: write
   actions: write
 env:
-  YARN_CHECKSUM_BEHAVIOR: update
-  image: ghcr.io/mashcard/mashcard-nightly:${{ github.run_id }}
-  domain: trunk.mashcard.dev
+  IMAGE: ghcr.io/mashcard/mashcard-nightly:${{ github.run_id }}
+  DOMAIN: trunk.mashcard.dev
   GCP_PROJECT: brickdoc-testnet
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
   SENTRY_ORG: pleisto
   SENTRY_PROJECT: mashcard-dev
 concurrency:
-  group: monolith-trunk-cd
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   build:
-    name: 'Build and Push Docker Image'
+    name: Build Image
     runs-on: ubuntu-20.04
     timeout-minutes: 20
     steps:
@@ -56,14 +58,14 @@ jobs:
             SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
             SENTRY_ORG=${{ env.SENTRY_ORG }}
             SENTRY_PROJECT=${{ env.SENTRY_PROJECT }}
-          tags: ${{ env.image }}
+          tags: ${{ env.IMAGE }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
   deploy:
-    name: 'Deployment to GKE'
+    name: Deploy to GKE
     environment:
       name: trunk
-      url: https://${{ env.domain }}/
+      url: https://${{ env.DOMAIN }}/
     runs-on: ubuntu-latest
     timeout-minutes: 8
     needs: build
@@ -87,13 +89,13 @@ jobs:
         run: |-
           helm upgrade mashcard-trunk ${{ github.workspace }}/tools/helm-charts/mashcard \
            --install --atomic --timeout 5m --cleanup-on-fail --wait --namespace=cicd \
-            --set-string image.name='${{ env.image }}' \
-            --set-string ingress.host='${{ env.domain }}' \
+            --set-string image.name='${{ env.IMAGE }}' \
+            --set-string ingress.host='${{ env.DOMAIN }}' \
             --set serviceAccount.create=false \
             --set-string serviceAccount.name='trunk-or-pr-main' \
             --set-string envs.SMTP_FROM='mashcard-ce-trunk@intl-email-service.mashcard.app' \
             --set-string envs.SENTRY_DSN='https://4aa5075a3b484af6a251f3677a9f665e@o1150336.ingest.sentry.io/6257651' \
-            --set-string envs.HOST='${{ env.domain }}' \
+            --set-string envs.HOST='${{ env.DOMAIN }}' \
             --set-string envs.GOOGLE_CLOUD_PROJECT='${{ env.GCP_PROJECT }}' \
             --set-string envs.GCP_KMS_FRN='projects/${{ env.GCP_PROJECT }}/locations/us-central1/keyRings/testnet/cryptoKeys/cicd' \
             --set-string envs.GCS_PRIVATE_BUCKET='trunk-pvt.testnet.user-owns-data.net' \

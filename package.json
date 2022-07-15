@@ -17,7 +17,7 @@
     }
   },
   "lint-staged": {
-    "*.{json,yml,yaml,md,graphql,gql,css,js,jsx,ts,tsx}": [
+    "*.{json,yml,yaml,md,mdx,graphql,gql,graphql,css,js,jsx,ts,tsx,code-workspace}": [
       "prettier --write"
     ],
     "packages/design-icons/assets/**/*.svg": [
