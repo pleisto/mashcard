@@ -132,6 +132,7 @@ export const SelectBlock = styled('div', {
 })
 
 export const Item = styled('li', {
+  flexShrink: 0,
   position: 'relative',
   display: 'flex',
   flexDirection: 'row',

@@ -42,6 +42,7 @@ export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {
           label: t(`bubble_menu.node.items.${nodeKey ?? 'paragraph'}`),
           tooltip: t('bubble_menu.node.section_title') as string,
           trigger: 'hover',
+          css: { padding: 0 },
           items: TRANS_TYPE_LIST.map(blocks => {
             return {
               type: 'group',

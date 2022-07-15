@@ -44,22 +44,6 @@ export const Name = styled('span', {
   marginLeft: 6
 })
 
-export const TitleRow = styled('div', {
-  display: 'flex',
-  alignItems: 'center',
-  width: '100%'
-})
-
-export const popover = css({
-  ':global(.mc-popover-arrow)': {
-    display: 'none'
-  },
-  ':global(.mc-popover-inner-content)': {
-    padding: 0,
-    color: 'unset'
-  }
-})
-
 export const Textarea = styled(TextareaAutosize, {
   width: '100%',
   fontSize: theme.fontSizes.titlePage,
@@ -78,6 +62,22 @@ export const Textarea = styled(TextareaAutosize, {
         color: theme.colors.typePrimary
       }
     }
+  }
+})
+
+export const TitleRow = styled('div', {
+  display: 'flex',
+  alignItems: 'flex-start',
+  width: '100%'
+})
+
+export const popover = css({
+  ':global(.mc-popover-arrow)': {
+    display: 'none'
+  },
+  ':global(.mc-popover-inner-content)': {
+    padding: 0,
+    color: 'unset'
   }
 })
 
@@ -111,7 +111,9 @@ export const TitleWrapper = styled('div', {
           w: '42px'
         },
         [`${TitleRow}`]: {
-          height: '42px'
+          [`${Textarea}`]: {
+            lineHeight: '42px'
+          }
         },
         [`${Textarea}`]: {
           textarea: {
