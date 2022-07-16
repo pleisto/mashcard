@@ -14,6 +14,7 @@ jobs:
     timeout-minutes: 30
     permissions:
       id-token: write
+      packages: write
     steps:
       - name: GCP Login
         uses: google-github-actions/auth@v0
@@ -39,6 +40,7 @@ jobs:
             echo "Uninstall $i..."
             helm uninstall $i -n cicd  || true
           done
+          echo "gh api /orgs/${{ github.repository_owner }}/packages/container/$IMAGE_NAME/versions -X GET -f per_page=100"
           IMAGES=$(gh api /orgs/${{ github.repository_owner }}/packages/container/$IMAGE_NAME/versions -X GET -f per_page=100 --jq 'map({ pr: .metadata.container.tags[0], id: .id }) | .[] | select(.pr)')
           echo $IMAGES | jq -r "[inputs.pr] - ($OPENED_PR|split(\",\")) | .[]" | while read i; do
             echo "Deleting image $IMAGE_NAME:$i..."
