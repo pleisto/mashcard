@@ -19,7 +19,7 @@ jobs:
       pull-requests: write
     steps:
       - name: debug
-        run: echo '${{ toJSON(github.event.issue.pull_request) }}'
+        run: echo '${{ toJSON(github.event) }}'
       # - name: 'Give :eyes: reaction'
       #   uses: peter-evans/create-or-update-comment@v2
       #   with:
