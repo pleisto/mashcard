@@ -7,15 +7,6 @@ concurrency:
 on:
   pull_request:
   push:
-    branches:
-      - main
-    paths-ignore:
-      - '.husky/**'
-      - '**.md'
-      - '**/LICENSE'
-      - '.github/**'
-      - '!.github/workflows/codeql.yml'
-      - '**.snap'
   workflow_dispatch:
   schedule:
     # At 16:17 on Wednesday (UTC)

@@ -16,18 +16,23 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
-      issues: write
+      pull-requests: write
     steps:
       - name: 'Give :eyes: reaction'
         uses: peter-evans/create-or-update-comment@v2
         with:
           comment-id: ${{ github.event.comment.id }}
           reactions: eyes
+      - name: Find PR head
+        id: get-head
+        run: echo ::set-output name=head::$(gh pr view ${{ github.event.issue.pull_request.html_url }} --json headRefName,headRepositoryOwner --jq '.headRepositoryOwner.login + ":" + .headRefName')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: peter-evans/rebase@v2
         id: rebase
         with:
           token: ${{ secrets.PAT_FOR_BOT_CREATED_PR }}
-          head: ${{ github.event.issue.pull_request.head.label }}
+          head: ${{ steps.get-head.outputs.head }}
       - name: 'Give :rocket: reaction on success'
         if: steps.rebase.outputs.rebased-count == 1
         uses: peter-evans/create-or-update-comment@v2

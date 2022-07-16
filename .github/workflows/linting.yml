@@ -60,9 +60,9 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Checkout the codebase
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 2 # To retrieve the preceding commit.
+          fetch-depth: 2 # Retrieve the preceding commit to calculate changed files
       - name: Get changed ruby files
         id: changed-ruby-files
         uses: tj-actions/changed-files@v23

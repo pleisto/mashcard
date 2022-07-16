@@ -5,14 +5,6 @@ on:
   schedule:
     # At 16:00 (UTC)
     - cron: '0 16 * * *'
-permissions:
-  id-token: write
-  pull-requests: write
-  contents: read
-  deployments: write
-  packages: write
-  statuses: write
-  actions: write
 env:
   GCP_PROJECT: brickdoc-testnet
 jobs:
@@ -20,9 +12,9 @@ jobs:
     name: Uninstall Releases
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      id-token: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
       - name: GCP Login
         uses: google-github-actions/auth@v0
         with:
@@ -38,7 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           APPS_PREFIX: mashcard-pr
         run: |
-          OPENED_PR=$(gh pr list -s open --json number | jq 'map(.number)|join(",")')
+          OPENED_PR=$(gh pr list -s open --json number --repo ${{ github.repository }} | jq 'map(.number)|join(",")')
           echo "Opened PRs: $OPENED_PR"
           OPENED_HELM=$(helm list -a -n cicd -f "$mashcard-pr.+" -o json  | jq "map(.name|sub(\"$APPS_PREFIX\";\"\"))|join(\",\")")
           echo "Opened Helm releases: $OPENED_HELM"
