@@ -549,7 +549,7 @@ zh-CN:
       selected: 选中
     discussion:
       menu: 评论
-      tooltip: 在当前页面上显示评论
+      tooltip: Show comments on current page
     history:
       menu: 历史
       tooltip: View all updates

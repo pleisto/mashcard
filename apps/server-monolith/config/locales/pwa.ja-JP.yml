@@ -549,7 +549,7 @@ ja-JP:
       selected: selected
     discussion:
       menu: コメント
-      tooltip: show comments on current page
+      tooltip: Show comments on current page
     history:
       menu: History
       tooltip: View all updates
