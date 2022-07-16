@@ -114,9 +114,9 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
       if (newTitle.length > 0) {
         const dupTitleId = getDocSpreadsheetTitles()[newTitle]
         if (dupTitleId && dupTitleId !== parentId) {
-          setTitleErrorMsg(`${t('spreadsheet.title.duplicated_with_spreadsheet')} '${newTitle}'`)
+          setTitleErrorMsg(`'${newTitle}' ${t('spreadsheet.title.used')}`)
         } else if (columns.some(c => c.title === newTitle)) {
-          setTitleErrorMsg(`${t('spreadsheet.title.duplicated_with_column')} '${newTitle}'`)
+          setTitleErrorMsg(`'${newTitle}' ${t('spreadsheet.title.used')}`)
         } else {
           updateAttributes({ title: newTitle, isDefaultTitle: false })
           setTitleErrorMsg(undefined)
@@ -274,9 +274,9 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
               {columns.map((column, i) => {
                 const handleTitleSave = (value: string): string | undefined => {
                   if (value && columns.some(c => c.title === value && c.uuid !== column.uuid)) {
-                    return `${t('spreadsheet.column.duplicated_name')} '${value}'`
+                    return `'${value}' ${t('spreadsheet.column.name_used')}`
                   } else if (value === title) {
-                    return `${t('spreadsheet.column.duplicated_name_with_spreadsheet')} '${value}'`
+                    return `'${value}' ${t('spreadsheet.column.name_used')}`
                   } else {
                     updateColumn({ ...column, title: value })
                   }
