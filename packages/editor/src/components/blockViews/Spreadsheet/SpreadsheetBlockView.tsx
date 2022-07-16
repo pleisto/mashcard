@@ -114,9 +114,9 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
       if (newTitle.length > 0) {
         const dupTitleId = getDocSpreadsheetTitles()[newTitle]
         if (dupTitleId && dupTitleId !== parentId) {
-          setTitleErrorMsg(`${t('spreadsheet.title.duplicated_with_spreadsheet')} '${newTitle}'`)
+          setTitleErrorMsg(`'${newTitle}' ${t('spreadsheet.title.used')}`)
         } else if (columns.some(c => c.title === newTitle)) {
-          setTitleErrorMsg(`${t('spreadsheet.title.duplicated_with_column')} '${newTitle}'`)
+          setTitleErrorMsg(`'${newTitle}' ${t('spreadsheet.title.used')}`)
         } else {
           updateAttributes({ title: newTitle, isDefaultTitle: false })
           setTitleErrorMsg(undefined)
@@ -232,36 +232,36 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
       <SpreadsheetContainer context={spreadsheetContext}>
         <SpreadsheetPanel context={spreadsheetContext}>
           {rows.map((rowBlock, rowIdx) => {
+            const rowActions: SpreadsheetActionItem[] = []
+            if (documentEditable) {
+              rowActions.push({
+                name: 'addRowAbove',
+                title: t('spreadsheet.row.add_above'),
+                icon: <Icon.ArrowUp />,
+                onAction: () => addRow(rowIdx)
+              })
+              rowActions.push({
+                name: 'addRowBelow',
+                title: t('spreadsheet.row.add_below'),
+                icon: <Icon.ArrowDown />,
+                onAction: () => addRow(rowIdx + 1)
+              })
+              if (rows.length > 1) {
+                rowActions.push({
+                  name: 'deleteRow',
+                  title: t('spreadsheet.row.delete'),
+                  icon: <Icon.Delete />,
+                  onAction: () => removeRow(rowIdx)
+                })
+              }
+            }
             return (
               <SpreadsheetRowAction
                 key={rowIdx}
                 context={spreadsheetContext}
                 rowId={rowBlock.id}
                 rowNumber={`${rowIdx + 1}`}
-                rowActions={
-                  documentEditable
-                    ? [
-                        {
-                          name: 'addRowAbove',
-                          title: t('spreadsheet.row.add_above'),
-                          icon: <Icon.ArrowUp />,
-                          onAction: () => addRow(rowIdx)
-                        },
-                        {
-                          name: 'addRowBelow',
-                          title: t('spreadsheet.row.add_below'),
-                          icon: <Icon.ArrowDown />,
-                          onAction: () => addRow(rowIdx + 1)
-                        },
-                        {
-                          name: 'deleteRow',
-                          title: t('spreadsheet.row.delete'),
-                          icon: <Icon.Delete />,
-                          onAction: () => removeRow(rowIdx)
-                        }
-                      ]
-                    : []
-                }
+                rowActions={rowActions}
                 draggable={documentEditable}
                 height={rowLayoutHeights[rowBlock.id]}
               />
@@ -274,9 +274,9 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
               {columns.map((column, i) => {
                 const handleTitleSave = (value: string): string | undefined => {
                   if (value && columns.some(c => c.title === value && c.uuid !== column.uuid)) {
-                    return `${t('spreadsheet.column.duplicated_name')} '${value}'`
+                    return `'${value}' ${t('spreadsheet.column.name_used')}`
                   } else if (value === title) {
-                    return `${t('spreadsheet.column.duplicated_name_with_spreadsheet')} '${value}'`
+                    return `'${value}' ${t('spreadsheet.column.name_used')}`
                   } else {
                     updateColumn({ ...column, title: value })
                   }
