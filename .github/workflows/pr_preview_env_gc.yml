@@ -39,7 +39,7 @@ jobs:
             echo "Uninstall $i..."
             helm uninstall $i -n cicd  || true
           done
-          IMAGES=$(gh api /orgs/${{.github.repository_owner }}/packages/container/$IMAGE_NAME/versions -X GET -f per_page=100 --jq 'map({ pr: .metadata.container.tags[0], id: .id }) | .[] | select(.pr)')
+          IMAGES=$(gh api /orgs/${{ github.repository_owner }}/packages/container/$IMAGE_NAME/versions -X GET -f per_page=100 --jq 'map({ pr: .metadata.container.tags[0], id: .id }) | .[] | select(.pr)')
           echo $IMAGES | jq -r "[inputs.pr] - ($OPENED_PR|split(\",\")) | .[]" | while read i; do
             echo "Deleting image $IMAGE_NAME:$i..."
             VERSION=$(echo $IMAGES | jq -r "select(.pr == \"$i\") | .id")
@@ -47,5 +47,5 @@ jobs:
               -s -X DELETE \
               -H "Accept: application/vnd.github+json" \
               -H "Authorization: token $GITHUB_TOKEN" \
-              https://api.github.com/orgs/${{.github.repository_owner }}/packages/container/$IMAGE_NAME/versions/$VERSION
+              https://api.github.com/orgs/${{ github.repository_owner }}/packages/container/$IMAGE_NAME/versions/$VERSION
           done
