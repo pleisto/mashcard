@@ -25,16 +25,27 @@ jobs:
         with:
           cluster_name: 'kube-us-dev-clone-1'
           location: 'us-central1'
-      - name: Uninstall helm releases
+      - name: Uninstall helm releases & remove unused images
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           APPS_PREFIX: mashcard-pr
+          IMAGE_NAME: mashcard-snapshot
         run: |
           OPENED_PR=$(gh pr list -s open --json number --repo ${{ github.repository }} | jq 'map(.number)|join(",")')
           echo "Opened PRs: $OPENED_PR"
           OPENED_HELM=$(helm list -a -n cicd -f "$mashcard-pr.+" -o json  | jq "map(.name|sub(\"$APPS_PREFIX\";\"\"))|join(\",\")")
           echo "Opened Helm releases: $OPENED_HELM"
-          jq -n -r "{gh:$OPENED_PR|split(\",\"),helm:$OPENED_HELM|split(\",\")}|.helm-.gh|map(\"$APPS_PREFIX\(.)\") |.[]" | while read i; do
-            echo "uninstall $i...."
+          jq -n -r "{gh:$OPENED_PR|split(\",\"),helm:$OPENED_HELM|split(\",\")} | .helm-.gh | map(\"$APPS_PREFIX\(.)\") |.[]" | while read i; do
+            echo "Uninstall $i..."
             helm uninstall $i -n cicd  || true
+          done
+          IMAGES=$(gh api /orgs/${{.github.repository_owner }}/packages/container/$IMAGE_NAME/versions -X GET -f per_page=100 --jq 'map({ pr: .metadata.container.tags[0], id: .id }) | .[] | select(.pr)')
+          echo $IMAGES | jq -r "[inputs.pr] - ($OPENED_PR|split(\",\")) | .[]" | while read i; do
+            echo "Deleting image $IMAGE_NAME:$i..."
+            VERSION=$(echo $IMAGES | jq -r "select(.pr == \"$i\") | .id")
+            curl \
+              -s -X DELETE \
+              -H "Accept: application/vnd.github+json" \
+              -H "Authorization: token $GITHUB_TOKEN" \
+              https://api.github.com/orgs/${{.github.repository_owner }}/packages/container/$IMAGE_NAME/versions/$VERSION
           done
