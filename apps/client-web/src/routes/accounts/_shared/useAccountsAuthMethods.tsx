@@ -15,7 +15,7 @@ export interface authMethod {
 function redirectToOAuthProvider(provider: string, csrfToken: string): void {
   const form = document.createElement('form')
   form.method = 'post'
-  form.action = `/accounts/auth/${provider}`
+  form.action = `/$internal-apis/accounts/auth/${provider}`
   form.innerHTML = `
     <input name="_method" value="POST" type="hidden" />
     <input name="authenticity_token" value="${csrfToken}" type="hidden" />

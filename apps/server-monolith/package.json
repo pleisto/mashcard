@@ -31,8 +31,6 @@
     "db:rollback": "rails db:rollback",
     "dump:graphql": "bundle exec rails graphql:schema:dump",
     "dump:db": "bundle exec rails db:prepare db:schema:dump",
-    "vite:start": "./bin/vite dev",
-    "vite:build": "./bin/vite build",
     "rust:build": "rake rust:build",
     "rust:build:dev": "rake rust:build PROFILE=dev",
     "fmt:rust": "rake rust:fmt",

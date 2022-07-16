@@ -1,3 +1,3 @@
 module.exports = {
-  ...require('../../tools/jest').baseConfig(false)
+  ...require('@mashcard/dev-support/jest').baseConfig(false)
 }

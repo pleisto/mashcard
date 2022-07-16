@@ -5,7 +5,10 @@ module ApplicationHelper
     {
       version: Mashcard::Runtime.version,
       monorepoVersion: Mashcard::Runtime.monorepo_version,
-      internalApiEndpoint: internal_graphql_api_path,
+      internalApiEndpoint: {
+        graphql: internal_graphql_api_path,
+        actionCable: ActionCable.server.config.url || ActionCable.server.config.mount_path,
+      },
       currentUser: Current.user&.as_global_context,
       lastDomain: Mashcard::Runtime.cypress? ? nil : Current.user&.last_pod_username,
       lastBlockIds: Mashcard::Runtime.cypress? ? nil : Current.user&.last_block_ids,
@@ -23,30 +26,6 @@ module ApplicationHelper
       serverMessage: flash[:alert] == I18n.t('devise.failure.unauthenticated') ? nil : flash[:alert],
       sentryDsn: ENV['SENTRY_DSN'],
     }
-  end
-
-  # Loads js-bundle plugins entrypoint js file.
-  def vite_plugin_bundle_tags
-    entrypoints = Mashcard::Plugins::JsBundlePlugin.enabled_entrypoints
-    return if entrypoints.blank?
-
-    entrypoints.map do |entrypoint|
-      concat javascript_include_tag Mashcard::Plugins::Vite.get_path(entrypoint), extname: false
-    end
-  end
-
-  # Get asset url for /apps/server-monolith/app/frontend/assets folder.
-  def vite_frontend_asset_path(path)
-    full_path = Mashcard::Plugins::Vite.get_path(Rails.root.join('app/frontend/assets', path)) || path
-    url_to_asset full_path
-  end
-
-  # Get entrypoint typescript tag for /apps/server-monolith/app/frontend/entrypoints folder.
-  def vite_frontend_entrypoint_tag(entrypoint, **options)
-    options = { extname: false, crossorigin: :anonymous, type: :module }.merge(options)
-    javascript_include_tag Mashcard::Plugins::Vite.get_path(
-      Rails.root.join('app/frontend/entrypoints', entrypoint)
-    ), **options
   end
 
   # Render a partial when it is exist. The main purpose of this method is to

@@ -16,12 +16,12 @@ const securityLink = setContext((_, { headers }) => {
 
 const httpLink = securityLink.concat(
   createHttpLink({
-    uri: globalThis.mashcardContext?.internalApiEndpoint,
+    uri: globalThis.mashcardContext.internalApiEndpoint.graphql,
     credentials: 'same-origin'
   })
 )
 
-export const cable = ActionCable.createConsumer()
+export const cable = ActionCable.createConsumer(globalThis.mashcardContext.internalApiEndpoint.actionCable)
 
 const websocketLink = new ActionCableLink({ cable, channelName: 'InternalGraphQLChannel' })
 

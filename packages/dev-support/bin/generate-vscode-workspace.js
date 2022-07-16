@@ -2,13 +2,14 @@
 /**
  * @file Generate a VSCode workspace file from available yarn workspace projects.
  */
-const { spawnSync } = require('child_process')
-const { readFileSync, writeFileSync, existsSync } = require('fs')
+const { spawnSync } = require('node:child_process')
+const { readFileSync, writeFileSync, existsSync } = require('node:fs')
+const { resolve } = require('node:path')
 
 const out = spawnSync('yarn', ['workspaces', 'list'])
 const matches = out.stdout.toString().matchAll(/YN0000: (.+\/.+)/gm)
 
-const workspaceFile = 'workspace.code-workspace'
+const workspaceFile = resolve(__dirname, '../../../workspace.code-workspace')
 const result = existsSync(workspaceFile) ? JSON.parse(readFileSync(workspaceFile, 'utf8')) : {}
 result.folders = [
   { name: '/', path: '.' },

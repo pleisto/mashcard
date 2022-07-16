@@ -27,8 +27,7 @@
   <mj-body background-color="#FCFCFA" width="600px">
     <mj-section full-width="full-width" padding-bottom="40px">
       <mj-column>
-        <mj-image css-class="logo" src="<%= vite_frontend_asset_path 'mailer/logo.png' %>"
-          alt="MashCard" align="left" width="80px" />
+        <mj-image css-class="logo" src="/mailer/logo.png" alt="MashCard" align="left" width="80px" />
       </mj-column>
     </mj-section>
     <mj-wrapper padding-top="0" padding-bottom="0" css-class="body-section">

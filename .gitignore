@@ -28,24 +28,9 @@ node_modules
 .pnp.*
 .bundle/*
 
-# Ignore all logfiles and tempfiles.
-apps/server-monolith/tmp/*
-!apps/server-monolith/tmp/pids
-!apps/server-monolith/tmp/.gitkeep
-
-# Ignore pidfiles, but keep the directory.
-apps/server-monolith/tmp/pids/*
-!apps/server-monolith/tmp/pids/.gitkeep
-
-# Ignore uploaded files in development.
-apps/server-monolith/storage/*
-!apps/server-monolith/storage/.gitkeep
-
+# Dev-only files
 .eslintcache
 .byebug_history
-apps/server-monolith/public/esm-bundle/
-apps/server-monolith/public/packs-test/
-
 .env.local
 .env.development.local
 .env.test.local
@@ -78,13 +63,4 @@ storybook-static/
 *.gem
 apps/server-monolith/vendor
 target/
-
-# Vite Ruby
-/apps/server-monolith/public/vite
-/apps/server-monolith/public/vite-dev
-/apps/server-monolith/public/vite-test
-*.local
-
-# Pdftron
-/apps/server-monolith/public/pdftron
-/apps/server-monolith/public/pdfjs
+tmp/

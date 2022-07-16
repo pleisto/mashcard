@@ -63,6 +63,7 @@
     "zustand": "^4.0.0-rc.1"
   },
   "devDependencies": {
+    "@mashcard/dev-support": "workspace:^",
     "@types/lodash": "^4.14.182"
   },
   "peerDependencies": {

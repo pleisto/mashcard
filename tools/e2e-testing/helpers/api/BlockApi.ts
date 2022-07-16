@@ -16,7 +16,7 @@ import { compareAttributeItem } from '../utils/sortByAttribute'
 export class BlockApi {
   private readonly page
   private readonly request
-  private readonly REQUEST_URL = '/.internal-apis/$graph'
+  private readonly REQUEST_URL = '/$internal-apis/$graph'
   private readonly REQUEST_HEADER
 
   constructor(page: Page, csrfToken: string) {

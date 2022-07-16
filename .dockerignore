@@ -30,12 +30,9 @@ node_modules
 .bundle/*
 
 # Ignore all logfiles and tempfiles.
-apps/server-monolith/tmp/*
-!apps/server-monolith/tmp/pids
+tmp/
 !apps/server-monolith/tmp/.gitkeep
-
-# Ignore pidfiles, but keep the directory.
-apps/server-monolith/tmp/pids/*
+!apps/server-monolith/tmp/pids
 !apps/server-monolith/tmp/pids/.gitkeep
 
 # Ignore uploaded files in development.
@@ -77,12 +74,6 @@ storybook-static/
 apps/server-monolith/vendor
 target/
 
-# Vite Ruby
-/apps/server-monolith/public/vite
-/apps/server-monolith/public/vite-dev
-/apps/server-monolith/public/vite-test
-*.local
-
 # Pdftron
-/apps/server-monolith/public/pdftron
-/apps/server-monolith/public/pdfjs
+/apps/client-web/src/public/pdftron
+/apps/client-web/src/public/pdfjs

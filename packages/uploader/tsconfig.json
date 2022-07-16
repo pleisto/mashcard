@@ -1,5 +1,5 @@
 {
-  "extends": "../../tools/typescript/tsconfig.shared.json",
+  "extends": "../../packages/dev-support/tsconfig.shared.json",
   "compilerOptions": {
     "outDir": "dist"
   },

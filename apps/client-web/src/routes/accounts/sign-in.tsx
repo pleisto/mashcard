@@ -19,7 +19,10 @@ export const SignIn: React.FC = () => {
     if (!loading && preferredAuthMethod.name === AuthMethod.EmailPassword) enableEmailPwdSignIn()
   })
 
-  isLoadingVar(loading)
+  useEffect(() => {
+    isLoadingVar(loading)
+  }, [loading])
+
   if (loading) return <></>
 
   const otherAuthMethods = renderEmailPasswordForm

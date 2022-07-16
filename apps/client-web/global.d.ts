@@ -1,6 +1,9 @@
 declare global {
   interface MashcardServerContext {
-    internalApiEndpoint: string
+    internalApiEndpoint: {
+      graphql: string
+      actionCable: string
+    }
     currentUser?: {
       domain: string
       name: string

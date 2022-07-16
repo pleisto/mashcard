@@ -9,7 +9,17 @@ module Mashcard
       PLUGINS_PATHS = Mashcard.monorepo_root.join('plugins')
 
       # JSON Schema validator for plugin metadata
-      SCHEMA = Utils::JSONSchema.new(File.read(Rails.public_path.join('json-schema/plugin.draft-2205.json')))
+      SCHEMA = begin
+        schema_file = 'plugin.draft-2205.json'
+        client_public_dic = Mashcard.monorepo_root.join('apps/client-web/src/public')
+        # client-web is deleted during the build process, in that case we use the one under server's `public` dir
+        path = if Dir.exist?(client_public_dic)
+          client_public_dic.join("json-schema/#{schema_file}")
+        else
+          Mashcard.root.join("public/json-schema/#{schema_file}")
+        end
+        Utils::JSONSchema.new(File.read(path))
+      end
 
       # Load all plugins
       # - Find all plugins in the plugins directory
