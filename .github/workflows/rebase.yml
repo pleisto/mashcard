@@ -16,27 +16,29 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
-      issues: write
+      pull-requests: write
     steps:
-      - name: 'Give :eyes: reaction'
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          comment-id: ${{ github.event.comment.id }}
-          reactions: eyes
-      - uses: peter-evans/rebase@v2
-        id: rebase
-        with:
-          token: ${{ secrets.PAT_FOR_BOT_CREATED_PR }}
-          head: ${{ github.event.issue.pull_request.head.label }}
-      - name: 'Give :rocket: reaction on success'
-        if: steps.rebase.outputs.rebased-count == 1
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          comment-id: ${{ github.event.comment.id }}
-          reactions: rocket
-      - name: 'Give :confused: reaction on error'
-        if: steps.rebase.outputs.rebased-count != 1
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          comment-id: ${{ github.event.comment.id }}
-          reactions: confused
+      - name: debug
+        run: echo '${{ toJSON(github.event.issue.pull_request) }}'
+      # - name: 'Give :eyes: reaction'
+      #   uses: peter-evans/create-or-update-comment@v2
+      #   with:
+      #     comment-id: ${{ github.event.comment.id }}
+      #     reactions: eyes
+      # - uses: peter-evans/rebase@v2
+      #   id: rebase
+      #   with:
+      #     token: ${{ secrets.PAT_FOR_BOT_CREATED_PR }}
+      #     head: ${{ github.event.issue.pull_request.head.label }}
+      # - name: 'Give :rocket: reaction on success'
+      #   if: steps.rebase.outputs.rebased-count == 1
+      #   uses: peter-evans/create-or-update-comment@v2
+      #   with:
+      #     comment-id: ${{ github.event.comment.id }}
+      #     reactions: rocket
+      # - name: 'Give :confused: reaction on error'
+      #   if: steps.rebase.outputs.rebased-count != 1
+      #   uses: peter-evans/create-or-update-comment@v2
+      #   with:
+      #     comment-id: ${{ github.event.comment.id }}
+      #     reactions: confused
