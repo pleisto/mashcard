@@ -14,7 +14,6 @@ jobs:
     timeout-minutes: 30
     permissions:
       id-token: write
-      packages: write
     steps:
       - name: GCP Login
         uses: google-github-actions/auth@v0
@@ -31,7 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           APPS_PREFIX: mashcard-pr
         run: |
-          OPENED_PR=$(gh pr list -s open --json number | jq 'map(.number)|join(",")')
+          OPENED_PR=$(gh pr list -s open --json number --repo ${{ github.repository }} | jq 'map(.number)|join(",")')
           echo "Opened PRs: $OPENED_PR"
           OPENED_HELM=$(helm list -a -n cicd -f "$mashcard-pr.+" -o json  | jq "map(.name|sub(\"$APPS_PREFIX\";\"\"))|join(\",\")")
           echo "Opened Helm releases: $OPENED_HELM"
