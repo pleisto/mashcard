@@ -18,16 +18,25 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: 'Give :rocket: reaction'
-        run: gh api /repos/${{ github.repository }}/issues/comments/${{ github.event.comment.id }}/reactions -f content='rocket'
-        env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-      - name: Checkout the latest code
-        uses: actions/checkout@v3
+      - name: 'Give :eyes: reaction'
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: eyes
+      - uses: peter-evans/rebase@v2
+        id: rebase
         with:
           token: ${{ secrets.PAT_FOR_BOT_CREATED_PR }}
-          fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
-      - name: Automatic Rebase
-        uses: cirrus-actions/rebase@1.7
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_FOR_BOT_CREATED_PR }}
+          head: ${{ github.event.issue.pull_request.head.label }}
+      - name: 'Give :rocket: reaction on success'
+        if: steps.rebase.outputs.rebased-count == 1
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: rocket
+      - name: 'Give :confused: reaction on error'
+        if: steps.rebase.outputs.rebased-count != 1
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: confused
