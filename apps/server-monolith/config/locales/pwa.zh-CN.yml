@@ -416,8 +416,7 @@ zh-CN:
       delete: 刪除
       copy: 复制
       title:
-        duplicated_with_spreadsheet: 'Title is duplicated with spreadsheet:'
-        duplicated_with_column: 'Title is duplicated with column:'
+        used: 'has already been used'
         empty: Title can not be empty
       row:
         actions: 动作
@@ -429,8 +428,7 @@ zh-CN:
         add_left: 在左侧添加列
         add_right: 在右侧添加列
         delete: 刪除
-        duplicated_name: 'Duplicated column name:'
-        duplicated_name_with_spreadsheet: 'Column name is duplicated with spreadsheet:'
+        name_used: 'has already been used'
     table:
       untitled: 未命名
       new_row:

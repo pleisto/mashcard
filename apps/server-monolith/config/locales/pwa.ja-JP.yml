@@ -416,8 +416,7 @@ ja-JP:
       delete: Delete
       copy: 複製
       title:
-        duplicated_with_spreadsheet: 'Title is duplicated with spreadsheet:'
-        duplicated_with_column: 'Title is duplicated with column:'
+        used: 'has already been used'
         empty: Title can not be empty
       row:
         actions: Actions
@@ -429,8 +428,7 @@ ja-JP:
         add_left: Add column to the left
         add_right: Add column to the right
         delete: Delete
-        duplicated_name: 'Duplicated column name:'
-        duplicated_name_with_spreadsheet: 'Column name is duplicated with spreadsheet:'
+        name_used: 'has already been used'
     table:
       untitled: Untitled
       new_row:
