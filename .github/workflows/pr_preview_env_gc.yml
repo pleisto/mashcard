@@ -27,7 +27,7 @@ jobs:
           location: 'us-central1'
       - name: Uninstall helm releases & remove unused images
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_FOR_PACKAGES }}
+          GITHUB_TOKEN: ${{ secrets.PAT_FOR_PACAKGES }}
           APPS_PREFIX: mashcard-pr
           IMAGE_NAME: mashcard-snapshot
         run: |
