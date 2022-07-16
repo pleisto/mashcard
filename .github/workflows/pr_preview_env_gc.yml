@@ -5,14 +5,6 @@ on:
   schedule:
     # At 16:00 (UTC)
     - cron: '0 16 * * *'
-permissions:
-  id-token: write
-  pull-requests: write
-  contents: read
-  deployments: write
-  packages: write
-  statuses: write
-  actions: write
 env:
   GCP_PROJECT: brickdoc-testnet
 jobs:
@@ -20,9 +12,10 @@ jobs:
     name: Uninstall Releases
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      id-token: write
+      packages: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
       - name: GCP Login
         uses: google-github-actions/auth@v0
         with:
