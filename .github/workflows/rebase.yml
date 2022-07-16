@@ -12,10 +12,16 @@ on:
 jobs:
   rebase:
     name: Rebase
-    if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/rebase')
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '/rebase')
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      issues: write
     steps:
+      - name: 'Give :rocket: reaction'
+        run: gh api /repos/${{ github.repository }}/issues/comments/${{ github.event.comment.id }}/reactions -f content='rocket'
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       - name: Checkout the latest code
         uses: actions/checkout@v3
         with:
