@@ -232,36 +232,36 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
       <SpreadsheetContainer context={spreadsheetContext}>
         <SpreadsheetPanel context={spreadsheetContext}>
           {rows.map((rowBlock, rowIdx) => {
+            const rowActions: SpreadsheetActionItem[] = []
+            if (documentEditable) {
+              rowActions.push({
+                name: 'addRowAbove',
+                title: t('spreadsheet.row.add_above'),
+                icon: <Icon.ArrowUp />,
+                onAction: () => addRow(rowIdx)
+              })
+              rowActions.push({
+                name: 'addRowBelow',
+                title: t('spreadsheet.row.add_below'),
+                icon: <Icon.ArrowDown />,
+                onAction: () => addRow(rowIdx + 1)
+              })
+              if (rows.length > 1) {
+                rowActions.push({
+                  name: 'deleteRow',
+                  title: t('spreadsheet.row.delete'),
+                  icon: <Icon.Delete />,
+                  onAction: () => removeRow(rowIdx)
+                })
+              }
+            }
             return (
               <SpreadsheetRowAction
                 key={rowIdx}
                 context={spreadsheetContext}
                 rowId={rowBlock.id}
                 rowNumber={`${rowIdx + 1}`}
-                rowActions={
-                  documentEditable
-                    ? [
-                        {
-                          name: 'addRowAbove',
-                          title: t('spreadsheet.row.add_above'),
-                          icon: <Icon.ArrowUp />,
-                          onAction: () => addRow(rowIdx)
-                        },
-                        {
-                          name: 'addRowBelow',
-                          title: t('spreadsheet.row.add_below'),
-                          icon: <Icon.ArrowDown />,
-                          onAction: () => addRow(rowIdx + 1)
-                        },
-                        {
-                          name: 'deleteRow',
-                          title: t('spreadsheet.row.delete'),
-                          icon: <Icon.Delete />,
-                          onAction: () => removeRow(rowIdx)
-                        }
-                      ]
-                    : []
-                }
+                rowActions={rowActions}
                 draggable={documentEditable}
                 height={rowLayoutHeights[rowBlock.id]}
               />
