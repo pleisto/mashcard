@@ -75,9 +75,10 @@ jobs:
           --health-retries 5
     steps:
       - name: Checkout the codebase
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 2 # To retrieve the preceding commit.
+          fetch-depth: 2 # Retrieve the preceding commit to calculate changed files
+          token: ${{ secrets.PAT_FOR_BOT_CREATED_PR }}
       - name: Get changed ruby/rust files
         id: changed-ruby-or-rust-files
         uses: tj-actions/changed-files@v23
@@ -168,4 +169,3 @@ jobs:
           default_author: github_actions
           push: origin HEAD:${{ github.head_ref }}
           message: 'chore: bump schemas and dists'
-          add: 'apps/server-monolith/db packages'

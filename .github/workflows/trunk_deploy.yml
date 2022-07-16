@@ -13,14 +13,6 @@ on:
       - '**.test.tsx?'
       - '**.spec.tsx?'
       - '**.snap'
-permissions:
-  id-token: write
-  pull-requests: write
-  contents: read
-  deployments: write
-  packages: write
-  statuses: write
-  actions: write
 env:
   IMAGE: ghcr.io/mashcard/mashcard-nightly:${{ github.run_id }}
   DOMAIN: trunk.mashcard.dev
@@ -36,6 +28,9 @@ jobs:
     name: Build Image
     runs-on: ubuntu-20.04
     timeout-minutes: 20
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Get the version
         id: get_version
@@ -69,6 +64,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     needs: build
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3
