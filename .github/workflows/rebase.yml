@@ -25,7 +25,7 @@ jobs:
           reactions: eyes
       - name: Find PR head
         id: get-head
-        run: echo ::set-output name=head::$(gh pr view ${{ github.event.issue.pull_request.html_url }} --json headRefName,headRepositoryOwner --jq '.headRefName + ":" + .headRepositoryOwner.login')
+        run: echo ::set-output name=head::$(gh pr view ${{ github.event.issue.pull_request.html_url }} --json headRefName,headRepositoryOwner --jq '.headRepositoryOwner.login + ":" + .headRefName')
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: peter-evans/rebase@v2
