@@ -1,11 +1,12 @@
 # Ignore build artifacts
 lib/mashcard_ext.*
 public/
+vendor/
 
 # Ignore pidfiles, but keep the directory.
-tmp/pids/*
+tmp/pids
 !tmp/pids/.gitkeep
 
 # Ignore uploaded files in development.
-storage/*
+storage/
 !storage/.gitkeep

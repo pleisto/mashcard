@@ -10,23 +10,23 @@
 *.rvmrc
 
 # IDE - VSCode
-.vscode/*
+.vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
 # dependencies
-.turbo
-node_modules
-.yarn/*
+.turbo/
+node_modules/
+.yarn/
 !.yarn/patches
 !.yarn/releases
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
-.bundle/*
+.bundle/
 
 # Dev-only files
 .eslintcache
@@ -61,6 +61,5 @@ coverage/
 dist/
 storybook-static/
 *.gem
-apps/server-monolith/vendor
 target/
 tmp/
