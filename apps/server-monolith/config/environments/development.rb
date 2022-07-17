@@ -16,13 +16,11 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
-  if ViteRuby.instance.dev_server_running?
-    vite_config = ViteRuby.instance.config
-    config.action_controller.asset_host = "http://#{vite_config.host}:#{vite_config.port}"
-  end
-
   # Store uploaded files on the local file system (see config/storage.yml for options).
   # config.active_storage.service = :local
+
+  # We use vite server to serve frontend assets during development.
+  config.public_file_server.enabled = false
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

@@ -25,8 +25,8 @@ module Mashcard
         return if @loaded
 
         ServerPlugin.load!(self) if extension_points.include?(:server)
-        JsBundlePlugin.load!(self) if extension_points.include?(:js_bundle)
-        # TODO: block and formula extension point is not supported yet
+        # TODO: jsbundle / block / formula extension point is not supported yet
+        raise NotImplementedError, 'js bundle extension is under development' if extension_points.include?(:js_bundle)
         raise NotImplementedError, 'block extension is under development' if extension_points.include?(:block)
         raise NotImplementedError, 'formula extension is under development' if extension_points.include?(:formula)
 

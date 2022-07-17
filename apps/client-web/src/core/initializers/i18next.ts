@@ -18,7 +18,7 @@ export const i18nextInit = (): void => {
         suffix: '}'
       },
       backend: {
-        loadPath: '/.internal-apis/locales/%{ns}.%{lng}.json',
+        loadPath: '/$internal-apis/locales/%{ns}.%{lng}.json',
         queryStringParams: {
           ver: globalThis.mashcardContext?.monorepoVersion
         }

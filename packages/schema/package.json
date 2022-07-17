@@ -15,6 +15,9 @@
   "dependencies": {
     "@tiptap/core": "^2.0.0-beta.182"
   },
+  "devDependencies": {
+    "@mashcard/dev-support": "workspace:^"
+  },
   "peerDependencies": {
     "react": ">=17.0.2"
   },

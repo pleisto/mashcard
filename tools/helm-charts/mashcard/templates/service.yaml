@@ -6,8 +6,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 3000
-      targetPort: 3000
+    - port: 3036
+      targetPort: 3036
       protocol: TCP
       name: http
   selector: {{- include "mashcard.selectorLabels" . | nindent 4 }}

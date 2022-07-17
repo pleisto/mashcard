@@ -37,26 +37,6 @@
       "note": ""
     },
     {
-      "warning_type": "Command Injection",
-      "warning_code": 14,
-      "fingerprint": "6da5a9cba445ed076882808ad96bf3e0dcc908583e7c728e766336d59a36ae02",
-      "check_name": "Execute",
-      "message": "Possible command injection",
-      "file": "gems/webpacker/lib/webpacker/compiler.rb",
-      "line": 82,
-      "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
-      "code": "Open3.capture3(webpack_env, \"#{optional_ruby_runner} ./bin/webpack\", :chdir => File.expand_path(config.root_path))",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "Webpacker::Compiler",
-        "method": "run_webpack"
-      },
-      "user_input": "optional_ruby_runner",
-      "confidence": "Medium",
-      "note": "webpacker is devtools"
-    },
-    {
       "warning_type": "SQL Injection",
       "warning_code": 0,
       "fingerprint": "d21f51ff4f398c08b3589bab7a1c89c4029017e57baab1e170ea4c08181656e5",

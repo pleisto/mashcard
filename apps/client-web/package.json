@@ -42,6 +42,7 @@
     "@graphql-codegen/typescript": "^2.7.1",
     "@graphql-codegen/typescript-operations": "^2.5.1",
     "@graphql-codegen/typescript-react-apollo": "^3.3.1",
+    "@mashcard/dev-support": "workspace:^",
     "change-case": "^4.1.2",
     "globby": "^13.1.2"
   },
@@ -51,8 +52,8 @@
     "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
     "test:jest": "run -T jest",
-    "start": "run -T server vite:start",
-    "dist": "run -T server vite:build",
+    "start": "run -T dev-support vite:start",
+    "dist": "run -T dev-support vite:build",
     "generate:routes": "./bin/generate-routes.mjs",
     "generate:graphql": "graphql-codegen"
   }

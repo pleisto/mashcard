@@ -6,5 +6,5 @@ settings do
 end
 
 on :oauth_provider do
-  [:github, settings.client_id, settings.client_secret, { logo: asset_url('assets/logo.svg') }]
+  [:github, settings.client_id, settings.client_secret, { logo: asset_url('logo.svg') }]
 end

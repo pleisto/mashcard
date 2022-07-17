@@ -4,7 +4,7 @@ module Accounts
   class PasswordsController < ::Devise::PasswordsController
     # GET /resource/password/new
     def new
-      render 'pages/pwa'
+      raise ActionController::NotImplemented
     end
 
     # POST /resource/password
@@ -13,8 +13,9 @@ module Accounts
       raise ActionController::RoutingError, 'Not Found'
     end
 
+    # GET /resource/password/edit?reset_password_token=abcdef
     def edit
-      render 'pages/pwa'
+      redirect_to '/accounts/password/edit'
     end
 
     def update

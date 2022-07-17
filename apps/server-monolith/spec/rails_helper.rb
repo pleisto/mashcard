@@ -72,11 +72,6 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-
-  config.before do
-    # Mock Vite
-    allow(Mashcard::Plugins::Vite).to receive(:get_path).and_return('mock-path')
-  end
 end
 
 Shoulda::Matchers.configure do |config|

@@ -9,7 +9,7 @@ RUN --mount=type=bind,target=/docker-context \
   cd /docker-context && \
   find . -name package.json -exec cp --parents {} /app/ \; && \
   cp -rf yarn.lock .yarnrc.yml .yarn .cargo .ruby-version /app && \
-  mkdir -p /app/tools/scripts && cp tools/scripts/pdftron.js /app/tools/scripts && \
+  mkdir -p /app/packages/dev-support/bin && cp packages/dev-support/bin/copy-pdftron-assets.js /app/packages/dev-support/bin && \
   mkdir -p /bundle/apps/server-monolith && mkdir -p /cargo/apps/server-monolith && \
   find . \( -name Gemfile -o -name Rakefile \) -exec cp --parents {} /bundle/ \; && \
   cd apps/server-monolith && \
@@ -54,12 +54,12 @@ ENV SENTRY_PROJECT=$SENTRY_PROJECT
 COPY . .
 
 RUN sed -i "s/[\"]version[\"]: [\"]0.0.0[\"]/\"version\": \"$VERSION\"/g" package.json
-RUN cd apps/server-monolith && chmod a+x bin/* && NODE_ENV=production bin/vite build
+RUN yarn dev-support vite:build
 
 # TODO: upload sourcemap to Sentry for SaaS deployments
 # RUN if [ "$VERSION" != "0.0.0" ] && [ "$SENTRY_AUTH_TOKEN" ]; then yarn sentry-cli releases files mashcard@$VERSION upload-sourcemaps ./apps/server-monolith/public/esm-bundle --url-prefix '~/esm-bundle'; fi
 
-RUN rm -rf node_modules .yarn apps/client-web dist apps/server-monolith/public/esm-bundle/stats.json yarn.lock \
+RUN rm -rf node_modules .yarn apps/client-web dist yarn.lock \
   && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + \
   && rm -rf ./packages ./tools && rm -rf ./apps/server-monolith/ext && rm -rf ./apps/server-monolith/target
 
@@ -79,5 +79,5 @@ COPY --from=builder /usr/local/bundle /usr/local/bundle
 COPY --from=builder /app .
 
 WORKDIR /app/apps/server-monolith
-EXPOSE 3000
+EXPOSE 3036
 ENTRYPOINT ["bundle", "exec" ,"pumactl", "-F" ,"/app/apps/server-monolith/config/puma.rb", "start"]

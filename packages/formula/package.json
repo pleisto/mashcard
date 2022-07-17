@@ -22,9 +22,11 @@
     "qrcode.react": "^3.1.0",
     "react-vega": "^7.6.0",
     "vega": "^5.22.1",
-    "vega-lite": "^5.3.0"
+    "vega-lite": "^5.3.0",
+    "zustand": "^4.0.0-rc.1"
   },
   "devDependencies": {
+    "@mashcard/dev-support": "workspace:^",
     "@types/lodash": "^4.14.182",
     "@types/qrcode.react": "^1.0.2"
   },
@@ -35,6 +37,6 @@
     "lint:type": "run -T tsc",
     "test:jest": "run -T jest",
     "test:jest:fix": "run -T jest --silent -u",
-    "tsdoc": "run -T typedoc --options ../../tools/typedoc/config.json --externalPattern './src/functions/**/*.ts' --out ./docs/api --entryPoints ./src/index.ts"
+    "tsdoc": "run -T typedoc --options ../../packages/dev-support/typedoc.json --externalPattern './src/functions/**/*.ts' --out ./docs/api --entryPoints ./src/index.ts"
   }
 }

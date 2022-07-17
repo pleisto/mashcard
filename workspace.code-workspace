@@ -25,6 +25,10 @@
       "path": "packages/design-system"
     },
     {
+      "name": "packages/dev-support",
+      "path": "packages/dev-support"
+    },
+    {
       "name": "packages/editor",
       "path": "packages/editor"
     },
@@ -127,9 +131,17 @@
     "jest.jestCommandLine": "yarn run -T jest",
     "jest.disabledWorkspaceFolders": [
       "/",
+      "apps/client-web",
       "apps/server-monolith",
+      "packages/active-support",
       "packages/design-icons",
+      "packages/design-system",
+      "packages/dev-support",
+      "packages/editor",
+      "packages/formula",
+      "packages/schema",
       "packages/test-helper",
+      "packages/uploader",
       "plugins/dotcom",
       "plugins/github_auth",
       "plugins/google_auth",

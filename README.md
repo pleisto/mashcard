@@ -1,9 +1,6 @@
 # MashCard - A bicycle of the mind to Internet OS
 
-[![commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![Crowdin](https://badges.crowdin.net/mashcard/localized.svg)](https://crowdin.com/project/mashcard) [![codecov](https://codecov.io/gh/mashcard/mashcard/branch/main/graph/badge.svg?token=x3u3HXQA0P)](https://codecov.io/gh/mashcard/mashcard)
-[![Lint Code](https://github.com/mashcard/mashcard/actions/workflows/linting.yml/badge.svg)](https://github.com/mashcard/mashcard/mashcard/workflows/linting.yml)
-[![Unit Test](https://github.com/mashcard/mashcard/actions/workflows/unit_test.yml/badge.svg)](https://github.com/mashcard/mashcard/actions/workflows/unit_test.yml)
+[![commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![Crowdin](https://badges.crowdin.net/mashcard/localized.svg)](https://crowdin.com/project/mashcard) [![codecov](https://codecov.io/gh/mashcard/mashcard/branch/main/graph/badge.svg?token=x3u3HXQA0P)](https://codecov.io/gh/mashcard/mashcard) [![Lint Code](https://github.com/mashcard/mashcard/actions/workflows/linting.yml/badge.svg)](https://github.com/mashcard/mashcard/mashcard/workflows/linting.yml) [![Unit Test](https://github.com/mashcard/mashcard/actions/workflows/unit_test.yml/badge.svg)](https://github.com/mashcard/mashcard/actions/workflows/unit_test.yml)
 
 > :warning: **Note:** This software is currently under active development. Some features may be available in the future, and the API and interface may change.
 

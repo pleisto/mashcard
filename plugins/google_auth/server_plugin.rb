@@ -6,5 +6,5 @@ settings do
 end
 
 on :oauth_provider do
-  [:google_oauth2, settings.client_id, settings.client_secret, { logo: asset_url('assets/google_icon.svg') }]
+  [:google_oauth2, settings.client_id, settings.client_secret, { logo: asset_url('google_icon.svg') }]
 end

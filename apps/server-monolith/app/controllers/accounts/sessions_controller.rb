@@ -6,7 +6,7 @@ module Accounts
 
     # GET /resource/sign_in
     def new
-      render 'pages/pwa'
+      redirect_to '/accounts/sign-in'
     end
 
     # POST /resource/sign_in
@@ -16,8 +16,8 @@ module Accounts
     end
 
     # DELETE /resource/sign_out
-    # def destroy
-    #   super
-    # end
+    def destroy
+      super
+    end
   end
 end

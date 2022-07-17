@@ -42,7 +42,7 @@ spec:
           {{- include "mashcard.deploymentCommon" . }}
           ports:
             - name: http
-              containerPort: 3000
+              containerPort: 3036
               protocol: TCP
           livenessProbe:
             initialDelaySeconds: 180

@@ -54,10 +54,6 @@ gem 'graphql', '~> 2.0', '>= 2.0.11'
 gem 'graphql-fragment_cache', '~> 1.11'
 gem 'graphql-batch', '~> 0.5.1'
 
-# Frontend
-gem 'vite_rails', '~> 3.0.10'
-gem 'inertia_rails', '~> 2.0'
-
 ## IAM
 gem 'action_policy', '~> 0.6.1'
 gem 'action_policy-graphql', '~> 0.5.3'
