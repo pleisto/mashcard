@@ -11,25 +11,34 @@
   "volta": {
     "extends": "../../package.json"
   },
+  "bin": "./src/cli.mjs",
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",
-    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx .",
-    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx . --fix",
-    "lint:type": "run -T tsc",
-    "vite:start": "vite ../../apps/client-web/src --config vite.config.ts",
-    "vite:build": "vite build ../../apps/client-web/src --config vite.config.ts",
-    "vite:optimize": "vite optimize ../../apps/client-web/src --config vite.config.ts",
-    "vite:preview": "vite preview ../../apps/client-web/src --config vite.config.ts",
-    "depcheck": "./bin/depcheck",
-    "generate-vscode-workspace": "./bin/generate-vscode-workspace.js",
-    "copy-pdftron-assets": "./bin/copy-pdftron-assets.js",
-    "run-dev-deps": "docker-compose -f ./dev-deps-compose.yml up"
+    "lint:eslint": "TIMING=1 dev-support eslint --cache --ext ts,tsx .",
+    "lint:fix": "TIMING=1 dev-support eslint --cache --ext ts,tsx . --fix",
+    "lint:type": "run -T tsc"
   },
   "sideEffects": false,
-  "devDependencies": {
+  "dependencies": {
+    "@graphql-codegen/cli": "^2.8.1",
+    "@graphql-codegen/typescript": "^2.7.1",
+    "@graphql-codegen/typescript-operations": "^2.5.1",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.1",
+    "@pleisto/eslint-plugin": "^1.0.5",
+    "@sentry/cli": "^2.4.1",
     "@vitejs/plugin-react": "^2.0.0",
+    "chalk": "^5.0.1",
+    "commander": "^9.4.0",
     "depcheck": "^1.4.3",
-    "rollup-plugin-visualizer": "^5.7.0",
+    "eslint": "^8.20.0",
+    "fs-extra": "^10.1.0",
+    "is-ci": "^3.0.1",
+    "open": "^8.4.0",
+    "prettier": "^2.7.1",
+    "rollup-plugin-visualizer": "^5.7.1",
+    "typedoc": "^0.23.7",
+    "typedoc-plugin-inline-sources": "^1.0.1",
+    "typedoc-plugin-markdown": "^3.13.3",
     "vite": "^3.0.0",
     "vite-plugin-pwa": "^0.12.3"
   }

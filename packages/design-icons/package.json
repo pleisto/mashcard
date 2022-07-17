@@ -10,8 +10,8 @@
   },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",
-    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
-    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
+    "lint:eslint": "TIMING=1 dev-support eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 dev-support eslint --cache --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
     "generate": "./bin/generate-icon-components.js"
   },
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@icon-park/compiler": "^1.0.7",
+    "@mashcard/dev-support": "workspace:^",
     "glob": "^8.0.3",
     "mkdirp": "^1.0.4"
   }

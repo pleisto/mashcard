@@ -10,11 +10,11 @@
   },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",
-    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
-    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
+    "lint:eslint": "TIMING=1 dev-support eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 dev-support eslint --cache --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
     "test:jest": "run -T jest",
-    "tsdoc": "run -T typedoc --options ../../packages/dev-support/typedoc.json --out ./docs/api ./src/index.ts"
+    "tsdoc": "dev-support typedoc --out ./docs/api ./src/index.ts"
   },
   "sideEffects": false,
   "dependencies": {

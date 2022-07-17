@@ -9,7 +9,7 @@ RUN --mount=type=bind,target=/docker-context \
   cd /docker-context && \
   find . -name package.json -exec cp --parents {} /app/ \; && \
   cp -rf yarn.lock .yarnrc.yml .yarn .cargo .ruby-version /app && \
-  mkdir -p /app/packages/dev-support/bin && cp packages/dev-support/bin/copy-pdftron-assets.js /app/packages/dev-support/bin && \
+  mkdir -p /app/packages/dev-support/src && cp -rf packages/dev-support/src /app/packages/dev-support/src && \
   mkdir -p /bundle/apps/server-monolith && mkdir -p /cargo/apps/server-monolith && \
   find . \( -name Gemfile -o -name Rakefile \) -exec cp --parents {} /bundle/ \; && \
   cd apps/server-monolith && \
@@ -53,8 +53,8 @@ ENV SENTRY_PROJECT=$SENTRY_PROJECT
 
 COPY . .
 
-RUN sed -i "s/[\"]version[\"]: [\"]0.0.0[\"]/\"version\": \"$VERSION\"/g" package.json
-RUN yarn dev-support vite:build
+RUN sed -i "s/[\"]version[\"]: [\"]0.0.0[\"]/\"version\": \"$VERSION\"/g" package.json && \
+  yarn dev-support vite build
 
 # TODO: upload sourcemap to Sentry for SaaS deployments
 # RUN if [ "$VERSION" != "0.0.0" ] && [ "$SENTRY_AUTH_TOKEN" ]; then yarn sentry-cli releases files mashcard@$VERSION upload-sourcemaps ./apps/server-monolith/public/esm-bundle --url-prefix '~/esm-bundle'; fi

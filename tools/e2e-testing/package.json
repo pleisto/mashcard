@@ -18,18 +18,21 @@
     "allure:generate": "allure generate ./allure-results --clean",
     "allure:open": "allure open ./allure-report",
     "lint": "yarn lint:eslint && yarn lint:type",
-    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx .",
-    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx . --fix",
+    "lint:eslint": "TIMING=1 dev-support eslint --cache --ext ts,tsx .",
+    "lint:fix": "TIMING=1 dev-support eslint --cache --ext ts,tsx . --fix",
     "lint:type": "run -T tsc",
     "generate": "ts-node ./helpers/generate"
   },
   "devDependencies": {
+    "@mashcard/dev-support": "workspace:^",
     "@mashcard/test-helper": "workspace:^",
-    "@playwright/test": "^1.23.3",
+    "@playwright/test": "^1.23.4",
     "@types/inquirer": "^8.2.1",
+    "@types/is-ci": "^3.0.0",
     "allure-commandline": "^2.18.1",
     "allure-playwright": "^2.0.0-beta.18",
     "inquirer": "^9.0.1",
+    "is-ci": "^3.0.1",
     "ts-node": "^10.9.1"
   }
 }

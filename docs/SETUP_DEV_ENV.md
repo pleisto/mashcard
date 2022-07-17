@@ -73,7 +73,7 @@ Some plugins require external dependencies such as api keys, credentials, etc. Y
 1. Run `yarn install && yarn server i` to install all dependencies and build rust native extensions for server.
 2. Run `yarn server g dotenv` to initialize the dotenv file.
 3. Run `yarn server db:create && yarn server db:migrate` to updates your database using migrations.
-4. Run `yarn server s` && `yarn web start` to start the development server.
+4. Run `yarn web start` && `yarn server start` to start the development server.
 5. Visit `http://localhost:3000`, and you should now see the login page.
 
 - To lint your code, run `yarn lint`

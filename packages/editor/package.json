@@ -20,7 +20,7 @@
     "@mashcard/schema": "workspace:^",
     "@mashcard/test-helper": "workspace:^",
     "@mashcard/uploader": "workspace:^",
-    "@pdftron/webviewer": "^8.6.1",
+    "@pdftron/webviewer": "^8.7.0",
     "@tiptap/core": "^2.0.0-beta.182",
     "@tiptap/extension-blockquote": "^2.0.0-beta.29",
     "@tiptap/extension-bold": "^2.0.0-beta.28",
@@ -60,7 +60,7 @@
     "tippy.js": "^6.3.7",
     "y-protocols": "^1.0.5",
     "yjs": "^13.5.39",
-    "zustand": "^4.0.0-rc.1"
+    "zustand": "^4.0.0-rc.2"
   },
   "devDependencies": {
     "@mashcard/dev-support": "workspace:^",
@@ -74,8 +74,8 @@
   },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",
-    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
-    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
+    "lint:eslint": "TIMING=1 dev-support eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 dev-support eslint --cache --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
     "test:jest": "run -T jest",
     "test:jest:fix": "run -T jest --silent -u"
