@@ -9,7 +9,7 @@ RUN --mount=type=bind,target=/docker-context \
   cd /docker-context && \
   find . -name package.json -exec cp --parents {} /app/ \; && \
   cp -rf yarn.lock .yarnrc.yml .yarn .cargo .ruby-version /app && \
-  mkdir -p /app/packages/dev-support/src && cp -rf packages/dev-support/src /app/packages/dev-support/src && \
+  mkdir -p /app/packages/dev-support && cp -rf packages/dev-support/src /app/packages/dev-support && \
   mkdir -p /bundle/apps/server-monolith && mkdir -p /cargo/apps/server-monolith && \
   find . \( -name Gemfile -o -name Rakefile \) -exec cp --parents {} /bundle/ \; && \
   cd apps/server-monolith && \
