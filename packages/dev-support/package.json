@@ -29,7 +29,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^2.0.0",
     "depcheck": "^1.4.3",
-    "rollup-plugin-visualizer": "^5.7.0",
+    "rollup-plugin-visualizer": "^5.7.1",
     "vite": "^3.0.0",
     "vite-plugin-pwa": "^0.12.3"
   }

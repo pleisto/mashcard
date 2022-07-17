@@ -23,7 +23,7 @@
     "@uppy/xhr-upload": "^2.1.2",
     "ahooks": "^3.5.2",
     "blurhash": "^1.1.5",
-    "react-virtuoso": "^2.16.4"
+    "react-virtuoso": "^2.16.5"
   },
   "devDependencies": {
     "@mashcard/dev-support": "workspace:^"
