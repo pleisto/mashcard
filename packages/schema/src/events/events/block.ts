@@ -33,3 +33,7 @@ export const BlockMetaUpdated = event<{ id: string; meta: BlockMeta }>()('BlockM
 export const UpdateBlockMeta = event<{ id: string; meta: BlockMeta }>()('UpdateBlockMeta', ({ id }) => {
   return { id }
 })
+
+export const ReloadDocument = event<{ id: string }>()('ReloadDocument', ({ id }) => {
+  return { id }
+})

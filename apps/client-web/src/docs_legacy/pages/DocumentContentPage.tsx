@@ -17,7 +17,7 @@ import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
 import { AppError404 } from '@/routes/_shared/AppError'
 import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
-import { MashcardEventBus, BlockMetaUpdated } from '@mashcard/schema'
+import { MashcardEventBus, BlockMetaUpdated, ReloadDocument } from '@mashcard/schema'
 
 export const DocumentContentPage: FC = () => {
   const { t } = useDocsI18n()
@@ -32,7 +32,11 @@ export const DocumentContentPage: FC = () => {
   const [latestLoading, setLatestLoading] = useState(true)
   const [documentInfo, setDocumentInfo] = useState<DocumentInfo>()
 
-  const { data, loading: blockLoading } = useDocumentBlockQuery({
+  const {
+    data,
+    refetch,
+    loading: blockLoading
+  } = useDocumentBlockQuery({
     variables: { id: docId as string, historyId },
     fetchPolicy: 'no-cache'
   })
@@ -46,28 +50,37 @@ export const DocumentContentPage: FC = () => {
     if (!loading) setLatestLoading(false)
   }, [loading, setLatestLoading])
 
-  // NOTE: temp fix title updating by turning DocumentInfo to state before we migrated to zustand
+  // NOTE: temp fix title updating / reloading by turning DocumentInfo to state before we migrated to zustand
   useEffect(() => {
     if (data?.blockNew?.documentInfo) {
       setDocumentInfo(data.blockNew.documentInfo as DocumentInfo)
     }
-    const subscription = MashcardEventBus.subscribe(
-      BlockMetaUpdated,
-      ({ payload }) => {
-        if (data?.blockNew?.documentInfo) {
-          setDocumentInfo({
-            ...(data.blockNew.documentInfo as DocumentInfo),
-            title: payload.meta.title as string,
-            icon: payload.meta.icon
-          })
-        }
-      },
-      { subscribeId: docId }
-    )
+    const subscriptions = [
+      MashcardEventBus.subscribe(
+        BlockMetaUpdated,
+        ({ payload }) => {
+          if (data?.blockNew?.documentInfo) {
+            setDocumentInfo({
+              ...(data.blockNew.documentInfo as DocumentInfo),
+              title: payload.meta.title as string,
+              icon: payload.meta.icon
+            })
+          }
+        },
+        { subscribeId: docId }
+      ),
+      MashcardEventBus.subscribe(
+        ReloadDocument,
+        ({ payload }) => {
+          refetch()
+        },
+        { subscribeId: docId }
+      )
+    ]
     return () => {
-      subscription.unsubscribe()
+      subscriptions.forEach(s => s.unsubscribe())
     }
-  }, [data, setDocumentInfo, docId])
+  }, [data, setDocumentInfo, docId, refetch])
 
   const isAnonymous = !currentUser
   const { state } = useLocation()

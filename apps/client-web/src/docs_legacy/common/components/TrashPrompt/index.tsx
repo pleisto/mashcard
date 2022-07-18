@@ -14,6 +14,7 @@ import { queryPageBlocks } from '../../graphql'
 import { useApolloClient } from '@apollo/client'
 import * as Root from './index.style'
 import { useNonNullDocMeta } from '@/docs_legacy/store/DocMeta'
+import { MashcardEventBus, ReloadDocument } from '@mashcard/schema'
 
 export const TrashPrompt: FC = () => {
   const { t } = useDocsI18n()
@@ -40,13 +41,14 @@ export const TrashPrompt: FC = () => {
     const input: BlockRestoreInput = { ids: [id] }
     await blockRestore({ variables: { input } })
     client.cache.modify({
-      id: client.cache.identify({ __typename: 'BlockInfo', id }),
+      id: client.cache.identify({ __typename: 'DocumentInfo', id }),
       fields: {
         isDeleted() {
           return false
         }
       }
     })
+    MashcardEventBus.dispatch(ReloadDocument({ id }))
     setRestoreButtonLoading(false)
   }
 
