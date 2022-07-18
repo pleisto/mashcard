@@ -1,15 +1,15 @@
-name: Deploy Trunk
+name: Deploy SaaS Production
 on:
   push:
     tags:
       - v*
 env:
   IMAGE: ghcr.io/mashcard/mashcard-saas
-  DOMAIN: trunk.mashcard.dev
+  DOMAIN: mashcard.cloud
   GCP_PROJECT: golden-union-341912
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
   SENTRY_ORG: pleisto
-  SENTRY_PROJECT: mashcard-dev
+  SENTRY_PROJECT: mashcard-saas-prod
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
