@@ -54,7 +54,11 @@ export const stringOperator: OperatorType = {
       { definition: '= "hel\'lo"', result: "hel'lo" }
     ],
     errorTestCases: [
-      { definition: '="123" + 1', errorType: 'type', errorMessage: 'Expected number,Cell but got string' },
+      {
+        definition: '="123" + 1',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'string' }]
+      },
       {
         definition: '="',
         errorType: 'parse',

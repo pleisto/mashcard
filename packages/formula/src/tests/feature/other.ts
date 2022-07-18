@@ -26,10 +26,23 @@ export const OtherTestCase: TestCaseInterface = {
         errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"中文\\"123asd"' }],
         valid: false
       },
-      { definition: '=1:', errorType: 'type', errorMessage: 'Expected Cell but got number' },
-      { definition: '=1:1', errorType: 'type', errorMessage: 'Expected Cell but got number' },
+      {
+        definition: '=1:',
+        errorType: 'type',
+        groupOptions: [{ name: 'basicError' }],
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'Cell', got: 'number' }]
+      },
+      {
+        definition: '=1:1',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'Cell', got: 'number' }]
+      },
       { definition: '=1.%', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
-      { definition: '="123":1', errorType: 'type', errorMessage: 'Expected Cell but got string' },
+      {
+        definition: '="123":1',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'Cell', got: 'string' }]
+      },
       { definition: '=)=', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       {
         definition: '=>=',
@@ -50,7 +63,11 @@ export const OtherTestCase: TestCaseInterface = {
         errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '""' }],
         valid: false
       },
-      { definition: '=ABS(1 {a: 1}.a', errorType: 'type', errorMessage: 'Expected Cell but got number' },
+      {
+        definition: '=ABS(1 {a: 1}.a',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'Cell', got: 'number' }]
+      },
       {
         definition: '=(1 {}.',
         errorType: 'syntax',

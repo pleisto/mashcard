@@ -128,7 +128,8 @@ export const FunctionCallTestCase: TestCaseInterface = {
       {
         definition: '=UNKNOWN ()',
         errorType: 'deps',
-        errorMessage: 'Function UNKNOWN not found',
+        errorMessage: ['errors.parse.not_found.function', { key: 'UNKNOWN' }],
+        groupOptions: [{ name: 'basicError' }],
         expected: [
           {
             key: 'codeFragments',
@@ -139,7 +140,7 @@ export const FunctionCallTestCase: TestCaseInterface = {
                 code: 'Function',
                 display: 'UNKNOWN',
                 attrs: undefined,
-                errors: [{ message: 'Function UNKNOWN not found' }]
+                errors: [{ message: ['errors.parse.not_found.function', { key: 'UNKNOWN' }] }]
               },
               { code: 'Space' },
               { code: 'LParen', meta: {}, errors: [] },
@@ -190,10 +191,26 @@ export const FunctionCallTestCase: TestCaseInterface = {
         errorMessage: 'errors.parse.mismatch.argument_count',
         groupOptions: [{ name: 'basicError' }]
       },
-      { definition: '=ABS ( "a" )', errorType: 'type', errorMessage: 'Expected number but got string' },
-      { definition: '=IF(1, -3, -4)', errorType: 'type', errorMessage: 'Expected boolean but got number' },
-      { definition: '=ABS( NOW() )', errorType: 'type', errorMessage: 'Expected number but got Date' },
-      { definition: '=ABS ( true )', errorType: 'type', errorMessage: 'Expected number but got boolean' },
+      {
+        definition: '=ABS ( "a" )',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number', got: 'string' }]
+      },
+      {
+        definition: '=IF(1, -3, -4)',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'boolean', got: 'number' }]
+      },
+      {
+        definition: '=ABS( NOW() )',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number', got: 'Date' }]
+      },
+      {
+        definition: '=ABS ( true )',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number', got: 'boolean' }]
+      },
       {
         definition: '=ABS ()',
         errorType: 'deps',

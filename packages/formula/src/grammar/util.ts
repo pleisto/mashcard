@@ -237,7 +237,15 @@ export const intersectType = (
   // console.error('type error', { expectedArgumentType, contextResultType, label, ctx })
 
   return {
-    errorMessages: [{ type: 'type', message: `Expected ${expectedArgumentType} but got ${contextResultType}` }],
+    errorMessages: [
+      {
+        type: 'type',
+        message: [
+          'errors.parse.mismatch.type',
+          { expected: [expectedArgumentType].flat().join(','), got: [contextResultType].flat().join(',') }
+        ]
+      }
+    ],
     newType: contextResultType
   }
 }

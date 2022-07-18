@@ -19,7 +19,11 @@ export const notOperator: OperatorType = {
       { definition: '=!123', result: false }
     ],
     errorTestCases: [
-      { definition: '=!1+1', errorType: 'type', errorMessage: 'Expected number,Cell but got boolean' },
+      {
+        definition: '=!1+1',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'boolean' }]
+      },
       {
         definition: '=!',
         errorType: 'parse',

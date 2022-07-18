@@ -14,7 +14,7 @@ export const FormulaRowAttributes: FormulaTypeAttributes<typeof TypeName, typeof
     const row = ctx.findRow(result[0], result[1])
     return row
       ? { ...rest, result: row }
-      : { ...rest, result: { message: `Row not found`, type: 'deps' }, type: 'Error' }
+      : { ...rest, result: { message: 'errors.parse.not_found.row', type: 'deps' }, type: 'Error' }
   },
   display: ({ result, ...rest }) => ({ ...rest, result: `Row[${result.rowIndex}]` })
 }

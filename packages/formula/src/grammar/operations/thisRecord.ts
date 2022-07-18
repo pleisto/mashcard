@@ -70,7 +70,7 @@ export const thisRecordOperator: OperatorType = {
         image,
         codeFragments: codeFragments.map(c => ({
           ...c,
-          errors: [{ type: 'syntax', message: 'Spreadsheet not found' }, ...c.errors]
+          errors: [{ type: 'syntax', message: 'errors.parse.not_found.spreadsheet' }, ...c.errors]
         })),
         type
       }

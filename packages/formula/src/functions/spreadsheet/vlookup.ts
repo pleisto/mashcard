@@ -9,14 +9,17 @@ const VLOOKUP = (
 ): // eslint-disable-next-line max-params
 AnyTypeResult<'string' | 'Error'> => {
   if (spreadsheet.spreadsheetId !== column.spreadsheetId) {
-    return { type: 'Error', result: { message: 'Column must be in the same namespace', type: 'runtime' } }
+    return {
+      type: 'Error',
+      result: { message: 'errors.interpret.spreadsheet.column_same_namespace_check', type: 'runtime' }
+    }
   }
 
   const columns = spreadsheet.listColumns()
 
   const firstColumn = columns[0]
   if (!firstColumn) {
-    return { type: 'Error', result: { message: 'Spreadsheet is empty', type: 'runtime' } }
+    return { type: 'Error', result: { message: 'errors.interpret.spreadsheet.empty', type: 'runtime' } }
   }
 
   if (firstColumn.columnId === column.columnId) {
@@ -24,7 +27,7 @@ AnyTypeResult<'string' | 'Error'> => {
   }
 
   if (!columns.find(c => c.columnId === column.columnId)) {
-    return { type: 'Error', result: { message: 'Column not found', type: 'runtime' } }
+    return { type: 'Error', result: { message: 'errors.interpret.not_found.column', type: 'runtime' } }
   }
 
   let result: AnyTypeResult<'Error' | 'string'> = { type: 'Error', result: { message: 'Not found', type: 'runtime' } }

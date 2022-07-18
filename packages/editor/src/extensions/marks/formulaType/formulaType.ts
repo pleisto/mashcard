@@ -48,7 +48,7 @@ export const FormulaType = createMark<FormulaTypeOptions, FormulaTypeAttributes>
           }
 
           return {
-            'data-errors': attributes.errors[0].message,
+            'data-errors': JSON.stringify(attributes.errors[0].message),
             style: FORMULA_CODE_ERROR_STYLE
           }
         }

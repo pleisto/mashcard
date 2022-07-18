@@ -387,7 +387,7 @@ const testCases: {
       testCase: { type: 'Block', result: new BlockClass(formulaContext, { id: unknownNamespaceId, name: 'Page2' }) },
       dumpResult: { type: 'Block', result: unknownNamespaceId },
       displayResult: { type: 'Block', result: 'Page2' },
-      matchTestCase: { result: { message: `Block not found`, type: 'deps' }, type: 'Error' }
+      matchTestCase: { result: { message: 'errors.parse.not_found.block', type: 'deps' }, type: 'Error' }
     }
   ],
   Spreadsheet: [

@@ -78,7 +78,11 @@ export const numberOperator: OperatorType = {
       },
       { definition: '=-1.', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '=1.%', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
-      { definition: '=1 & "123"', errorType: 'type', errorMessage: 'Expected string but got number' }
+      {
+        definition: '=1 & "123"',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'string', got: 'number' }]
+      }
     ]
   }
 }

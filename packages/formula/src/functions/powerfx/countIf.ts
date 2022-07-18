@@ -12,12 +12,15 @@ const CountIf = (
   }
 
   if (spreadsheet.spreadsheetId !== column.spreadsheetId) {
-    return { type: 'Error', result: { message: 'Column must be in the same namespace', type: 'runtime' } }
+    return {
+      type: 'Error',
+      result: { message: 'errors.interpret.spreadsheet.column_same_namespace_check', type: 'runtime' }
+    }
   }
   const columns = spreadsheet.listColumns()
 
   if (!columns.find(c => c.columnId === column.columnId)) {
-    return { type: 'Error', result: { message: 'Column not found', type: 'runtime' } }
+    return { type: 'Error', result: { message: 'errors.interpret.not_found.column', type: 'runtime' } }
   }
 
   const predicateFunction: PredicateFunction = buildPredicate(predicate)

@@ -84,8 +84,16 @@ export const multiplicationOperator: OperatorType = {
       }
     ],
     errorTestCases: [
-      { definition: '= 2 ^ true', errorType: 'type', errorMessage: 'Expected number,Cell but got boolean' },
-      { definition: '= 2 * (2 = 4)', errorType: 'type', errorMessage: 'Expected number,Cell but got boolean' },
+      {
+        definition: '= 2 ^ true',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'boolean' }]
+      },
+      {
+        definition: '= 2 * (2 = 4)',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'boolean' }]
+      },
       { definition: '=1**2', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' }
     ]
   }

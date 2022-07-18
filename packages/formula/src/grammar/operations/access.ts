@@ -27,7 +27,7 @@ export const accessAttribute = async (
     if (value) {
       return value
     } else {
-      return { type: 'Error', result: { message: `Key ${key} not found`, type: 'runtime' } }
+      return { type: 'Error', result: { message: ['errors.interpret.not_found.key', { key }], type: 'runtime' } }
     }
   }
 
@@ -66,9 +66,18 @@ export const accessOperator: OperatorType = {
       { definition: '=[1,2,3][0]', result: { message: 'Index 0 out of bounds', type: 'runtime' } },
       { definition: '=[][1]', result: { message: 'Index 1 out of bounds', type: 'runtime' } },
       { definition: '={a: 1}["a" & ""]', result: 1 },
-      { definition: '={a: 1}[1+1]', result: { message: 'Key 2 not found', type: 'runtime' } },
-      { definition: '={a: 1}["b"]', result: { message: 'Key b not found', type: 'runtime' } },
-      { definition: '={}["a"]', result: { message: 'Key a not found', type: 'runtime' } },
+      {
+        definition: '={a: 1}[1+1]',
+        result: { message: ['errors.interpret.not_found.key', { key: '2' }], type: 'runtime' }
+      },
+      {
+        definition: '={a: 1}["b"]',
+        result: { message: ['errors.interpret.not_found.key', { key: 'b' }], type: 'runtime' }
+      },
+      {
+        definition: '={}["a"]',
+        result: { message: ['errors.interpret.not_found.key', { key: 'a' }], type: 'runtime' }
+      },
       {
         definition: '=1[1]',
         label: 'TODO check',

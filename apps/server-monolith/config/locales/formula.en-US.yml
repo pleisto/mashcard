@@ -17,6 +17,7 @@ en-US:
           variable: Circular dependency found in variable
           spreadsheet: Circular dependency found in spreadsheet when parse
         mismatch:
+          type: Expected %{expected} but got %{got}
           argument_count: Argument count mismatch
           expression_count: Expression count mismatch
         missing:
@@ -27,11 +28,24 @@ en-US:
           token: Missing closing token
         record:
           key_duplicated: Record key duplicated
+        not_found:
+          spreadsheet: Spreadsheet not found
+          column: Column not found
+          row: Row not found
+          block: Block not found
+          function: Function %{key} not found
       interpret:
         not_a_number: NaN
         circular_dependency:
           spreadsheet: Circular dependency found in spreadsheet when run
         runtime:
           division_by_zero: Division by zero
+        not_found:
+          spreadsheet: Spreadsheet not found
+          column: Column not found
+          key: Key %{key} not found
+        spreadsheet:
+          empty: Spreadsheet is empty
+          column_same_namespace_check: Column must be in the same namespace
     other:
       not_supported: Not supported

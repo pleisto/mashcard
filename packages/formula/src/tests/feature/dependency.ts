@@ -122,17 +122,26 @@ export const DependencyTestCase: TestCaseInterface = {
               {
                 name: 'num3',
                 namespaceId: parentPageNamespaceId,
-                match: { message: 'Expected number,Cell but got string', type: 'type' }
+                match: {
+                  message: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'string' }],
+                  type: 'type'
+                }
               },
               {
                 name: 'num4',
                 namespaceId: parentPageNamespaceId,
-                match: { message: 'Expected number,Cell but got string', type: 'type' }
+                match: {
+                  message: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'string' }],
+                  type: 'type'
+                }
               },
               {
                 name: 'num5',
                 namespaceId: parentPageNamespaceId,
-                match: { message: 'Expected number,Cell but got string', type: 'type' }
+                match: {
+                  message: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'string' }],
+                  type: 'type'
+                }
               }
             ]
           },

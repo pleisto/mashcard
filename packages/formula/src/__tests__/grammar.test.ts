@@ -47,7 +47,7 @@ const testCases: TestCase[] = [
   // Combine
   {
     input: '=Input.foo',
-    value: { message: 'Key foo not found', type: 'runtime' }
+    value: { message: ['errors.interpret.not_found.key', { key: 'foo' }], type: 'runtime' }
   },
   {
     input: '=Input.bar',

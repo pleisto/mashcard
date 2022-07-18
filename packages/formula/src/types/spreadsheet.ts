@@ -14,7 +14,7 @@ export const FormulaSpreadsheetAttributes: FormulaTypeAttributes<typeof TypeName
     const spreadsheet = ctx.findSpreadsheet({ type: 'id', namespaceId: result[0], value: result[1] })
     return spreadsheet
       ? { ...rest, result: spreadsheet }
-      : { ...rest, result: { message: `Spreadsheet not found`, type: 'deps' }, type: 'Error' }
+      : { ...rest, result: { message: 'errors.parse.not_found.spreadsheet', type: 'deps' }, type: 'Error' }
   },
   display: ({ result, ...rest }) => ({ ...rest, result: result.name() })
 }
