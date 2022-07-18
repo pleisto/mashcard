@@ -10,7 +10,13 @@ export const OtherTestCase: TestCaseInterface = {
     errorTestCases: [
       { definition: '=a', errorType: 'syntax', errorMessage: '"a" not found' },
       { definition: '=nottrue', errorType: 'syntax', errorMessage: '"nottrue" not found' },
-      { definition: '=1a1', errorType: 'parse', errorMessage: 'Not all input parsed: a1', valid: false },
+      {
+        definition: '=1a1',
+        errorType: 'parse',
+        errorMessage: ['errors.parse.chevrotain.not_all_input_parsed', { image: 'a1' }],
+        groupOptions: [{ name: 'basicError' }],
+        valid: false
+      },
       { definition: '=-1.%', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '=hel"lo', errorType: 'syntax', errorMessage: '"hel" not found' },
       { definition: '=he中文"', errorType: 'syntax', errorMessage: '"he中文" not found' },

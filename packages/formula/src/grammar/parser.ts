@@ -44,8 +44,7 @@ const errorProvider: IParserErrorMessageProvider = {
     return buildErrorMessage(['errors.parse.chevrotain.mismatch_token', { image: options.ruleName }])
   },
   buildNotAllInputParsedMessage(options) {
-    // changing the template of the error message #1
-    return `Not all input parsed: ${options.firstRedundant.image}`
+    return buildErrorMessage(['errors.parse.chevrotain.not_all_input_parsed', { image: options.firstRedundant.image }])
   },
 
   buildNoViableAltMessage(options) {

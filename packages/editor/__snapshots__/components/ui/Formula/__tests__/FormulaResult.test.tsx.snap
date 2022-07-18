@@ -2579,6 +2579,29 @@ exports[`FormulaResult other "=(1 {}." -> [syntax] "errors.parse.missing.token" 
 </div>
 `;
 
+exports[`FormulaResult other "=1a1" -> [parse] "errors.parse.chevrotain.not_all_input_parsed,[object Object]" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        parse
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.chevrotain.not_all_input_parsed {"image":"a1"}
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
 exports[`FormulaResult parser "="bar"" -> [name_invalid] "errors.parse.name.invalid" 1`] = `
 <div>
   <div

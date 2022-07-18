@@ -68,7 +68,7 @@ export const stringOperator: OperatorType = {
         definition: '= "hel"lo"',
         label: 'lex error when parse "hel"lo" => parseError',
         errorType: 'parse',
-        errorMessage: 'Not all input parsed: lo',
+        errorMessage: ['errors.parse.chevrotain.not_all_input_parsed', { image: 'lo' }],
         valid: false
       },
       {

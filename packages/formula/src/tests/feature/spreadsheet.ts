@@ -130,19 +130,19 @@ export const SpreadsheetTestCase: TestCaseInterface = {
       {
         definition: `=${spreadsheetToken}[1].A`,
         errorType: 'parse',
-        errorMessage: 'Not all input parsed: .',
+        errorMessage: ['errors.parse.chevrotain.not_all_input_parsed', { image: '.' }],
         valid: false
       },
       {
         definition: `=${spreadsheetToken}[1].first`,
         errorType: 'parse',
-        errorMessage: 'Not all input parsed: .',
+        errorMessage: ['errors.parse.chevrotain.not_all_input_parsed', { image: '.' }],
         valid: false
       },
       {
         definition: `=${spreadsheetToken}["A"].1`,
         errorType: 'parse',
-        errorMessage: 'Not all input parsed: .',
+        errorMessage: ['errors.parse.chevrotain.not_all_input_parsed', { image: '.' }],
         valid: false
       },
       {
