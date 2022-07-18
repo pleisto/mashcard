@@ -254,10 +254,15 @@ ja-JP:
         remove: Remove anchor mark
       link:
         title: リンク
-        placeholder: リンクを貼り付け
-        confirm: Link to web page
-        copy: リンクをコピー
-        delete: リンクを削除
+    inline_link:
+      edit:
+        title: Add Link
+        placeholder: Paste link or search pages...
+        remove: Remove
+        blank: Link can not be blank.
+        options:
+          group_label: Link to page
+          link_web: Link to web
     image_block:
       hint: 画像を追加する
       deletion_confirm:
