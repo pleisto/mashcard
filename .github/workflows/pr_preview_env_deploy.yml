@@ -5,7 +5,7 @@ concurrency:
 on:
   pull_request:
 env:
-  IMAGE: ghcr.io/mashcard/mashcard-snapshot:${{github.event.pull_request.number}}
+  IMAGE_TAG: ghcr.io/mashcard/mashcard-snapshot:${{github.event.pull_request.number}}
   DOMAIN: pr${{ github.event.pull_request.number }}.mashcard.dev
   GCP_PROJECT: brickdoc-testnet
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -41,7 +41,7 @@ jobs:
             SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
             SENTRY_ORG=${{ env.SENTRY_ORG }}
             SENTRY_PROJECT=${{ env.SENTRY_PROJECT }}
-          tags: ${{ env.IMAGE }}
+          tags: ${{ env.IMAGE_TAG }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
   deploy:
@@ -76,7 +76,7 @@ jobs:
         run: |-
           helm upgrade mashcard-pr${{ github.event.pull_request.number }} ${{ github.workspace }}/tools/helm-charts/mashcard \
            --install --atomic --timeout 5m --cleanup-on-fail --wait --namespace=cicd --set previewEnv=true \
-            --set-string image.name='${{ env.IMAGE }}' \
+            --set-string image.name='${{ env.IMAGE_TAG }}' \
             --set-string ingress.host='${{ env.DOMAIN }}' \
             --set serviceAccount.create=false \
             --set-string serviceAccount.name='trunk-or-pr-main' \

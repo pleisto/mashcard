@@ -1,0 +1,100 @@
+name: Deploy Trunk
+on:
+  push:
+    tags:
+      - v*
+env:
+  IMAGE: ghcr.io/mashcard/mashcard-saas
+  DOMAIN: trunk.mashcard.dev
+  GCP_PROJECT: golden-union-341912
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  SENTRY_ORG: pleisto
+  SENTRY_PROJECT: mashcard-dev
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    name: Build Image
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/v}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          build-args: |
+            RAILS_ENV=production
+            VERSION=${{ steps.get_version.outputs.VERSION }}
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
+            SENTRY_ORG=${{ env.SENTRY_ORG }}
+            SENTRY_PROJECT=${{ env.SENTRY_PROJECT }}
+          tags: ${{ env.IMAGE }}:${{ steps.get_version.outputs.VERSION }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+  deploy:
+    name: Deploy to GKE
+    environment:
+      name: saas_prod
+      url: https://${{ env.DOMAIN }}/
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    needs: build
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/v}
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+      - name: GCP Login
+        uses: google-github-actions/auth@v0
+        with:
+          workload_identity_provider: 'projects/909250635156/locations/global/workloadIdentityPools/cicd/providers/github-action'
+          service_account: 'cicd-bot@${{ env.GCP_PROJECT }}.iam.gserviceaccount.com'
+      - name: 'Get the GKE cluster Configuration'
+        uses: 'google-github-actions/get-gke-credentials@v0'
+        with:
+          cluster_name: 'kube-us-central'
+          location: 'us-central1'
+      - name: 'Deploy to GKE'
+        run: |-
+          helm upgrade mashcard-saas-prod ${{ github.workspace }}/tools/helm-charts/mashcard \
+           --install --atomic --timeout 5m --cleanup-on-fail --wait --namespace=saas \
+            --set-string image.name='${{ env.IMAGE }}:${{ steps.get_version.outputs.VERSION }}' \
+            --set-string ingress.host='${{ env.DOMAIN }}' \
+            --set serviceAccount.create=false \
+            --set-string serviceAccount.name='saas-main-app' \
+            --set-string envs.SMTP_FROM='mashcard@intl-email-service.mashcard.app' \
+            --set-string envs.SENTRY_DSN='https://f44be883f4d7479bb089213767508c1a@o1150336.ingest.sentry.io/6223078' \
+            --set-string envs.HOST='${{ env.DOMAIN }}' \
+            --set-string envs.GOOGLE_CLOUD_PROJECT='${{ env.GCP_PROJECT }}' \
+            --set-string envs.GCP_KMS_FRN='projects/${{ env.GCP_PROJECT }}/locations/us-central1/keyRings/global-saas/cryptoKeys/saas-master-key' \
+            --set-string envs.GCS_PRIVATE_BUCKET='pvt.us-edge.user-owns-data.net' \
+            --set-string envs.GCS_PUBLIC_BUCKET='pub.us-edge.user-owns-data.net' \
+            --set-string license='I hereby swear that I have obtained written permission from the Pleisto Inc of this plugin to use it.' \
+            --set-string secrets.SECRET_KEY_SEED='${{ secrets.SAAS_PROD_SECRET_KEY_SEED }}' \
+            --set-string secrets.MASHCARD_DATABASE_URL='${{ secrets.SAAS_PROD_POSTGRE_URL }}' \
+            --set-string secrets.REDIS_URL='${{ secrets.SAAS_PROD_REDIS_URL }}' \
+            --set-string secrets.UNSPLASH_API_ACCESS_KEY='${{ secrets.SAAS_PROD_UNSPLASH_API_ACCESS_KEY }}' \
+            --set-string secrets.UNSPLASH_API_SECRET='${{ secrets.SAAS_PROD_UNSPLASH_API_SECRET }}' \
+            --set-string secrets.IFRAMELY_API_ACCESS_KEY='${{ secrets.SAAS_PROD_IFRAMELY_API_ACCESS_KEY }}' \
+            --set-string secrets.SMTP_URL='${{ secrets.SAAS_PROD_SMTP_URL }}' \
+            --set-string secrets.GOOGLE_OAUTH2_ID='${{ secrets.SAAS_PROD_GOOGLE_OAUTH2_ID }}' \
+            --set-string secrets.GOOGLE_OAUTH2_SECRET='${{ secrets.SAAS_PROD_GOOGLE_OAUTH2_SECRET }}'
