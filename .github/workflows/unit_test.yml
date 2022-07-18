@@ -154,13 +154,13 @@ jobs:
           fail_ci_if_error: true
           verbose: true
       - name: Dump the database schema
-        if: steps.changed-db-migrations.outputs.any_changed == 'true'
+        if: github.ref != 'refs/heads/main' && steps.changed-db-migrations.outputs.any_changed == 'true'
         run: yarn server dump:db
       - name: Dump the graphql schema
-        if: steps.changed-gql-typeds-ruby.outputs.any_changed == 'true'
+        if: github.ref != 'refs/heads/main' && steps.changed-gql-typeds-ruby.outputs.any_changed == 'true'
         run: yarn server dump:graphql
       - name: Run graphql-codegen
-        if: steps.changed-gql-typeds-ruby.outputs.any_changed == 'true' || steps.changed-gql-typeds-ts.outputs.any_changed == 'true'
+        if: github.ref != 'refs/heads/main' && (steps.changed-gql-typeds-ruby.outputs.any_changed == 'true' || steps.changed-gql-typeds-ts.outputs.any_changed == 'true')
         run: yarn web generate:graphql
       - name: Add and commit everything
         uses: EndBug/add-and-commit@v9

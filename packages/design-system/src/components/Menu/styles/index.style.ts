@@ -33,21 +33,6 @@ export const menuStyle = css({
     '&:hover, &:focus, &:active': {
       background: theme.colors.secondaryHover
     },
-    input: {
-      background: theme.colors.ceramicQuaternary,
-      border: `1px solid ${theme.colors.borderPrimary}`,
-      borderRadius: '4px',
-      fontSize: theme.fontSizes.subHeadline,
-      fontWeight: 500,
-      lineHeight: '1.25rem',
-      margin: `${itemSpacing} 0`,
-      height: '28px',
-      outline: 'none',
-      padding: '.5rem .625rem',
-      '&::placeholder': {
-        color: theme.colors.typeThirdary
-      }
-    },
     '&-danger': danger
   }
 })

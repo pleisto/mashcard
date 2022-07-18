@@ -135,7 +135,10 @@ export const Base = Extension.create<BaseOptions>({
     if (this.options.indent) extensions.push(EXTENSION.Indent.configure(getConfigure(this.options?.indent)))
     if (this.options.italic) extensions.push(EXTENSION.Italic.configure(getConfigure(this.options?.italic)))
     if (this.options.keyboardShortcut) extensions.push(EXTENSION.KeyboardShortcut)
-    if (this.options.link) extensions.push(EXTENSION.Link.configure(getConfigure(this.options?.link)))
+    if (this.options.link) {
+      extensions.push(EXTENSION.Link.configure(getConfigure(this.options?.link)))
+      extensions.push(EXTENSION.LinkEdit.configure())
+    }
     if (this.options.listItem) extensions.push(EXTENSION.ListItem.configure(getConfigure(this.options?.listItem)))
     if (this.options.mentionCommands)
       extensions.push(EXTENSION.MentionCommands.configure(getConfigure(this.options?.mentionCommands)))

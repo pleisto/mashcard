@@ -5,7 +5,6 @@ import { useNodeGroup } from '../useBubbleMenuItems/useNodeGroup'
 import { mockEditor } from '../../../../test/editor'
 import { ToolbarGroupOption, ToolbarItemGroupOption, ToolbarItemOption, ToolbarSubMenuOption } from '../../../ui'
 import { useTextStyleGroup } from '../useBubbleMenuItems/useTextStyleGroup'
-import { useLinkGroup } from '../useBubbleMenuItems/useLinkGroup'
 import { useFontColorGroup } from '../useBubbleMenuItems/useFontColorGroup'
 import { useFormulaItem } from '../useBubbleMenuItems/useFormulaItem'
 import { useCommentItemGroup } from '../useBubbleMenuItems/useCommentItemGroup'
@@ -229,100 +228,6 @@ describe('useBubbleMenuItems', () => {
       expect(mockToggleItalic).toBeCalled()
       expect(mockToggleStrike).toBeCalled()
       expect(mockToggleUnderline).toBeCalled()
-    })
-  })
-
-  describe('Link Group', () => {
-    it('adds link correctly', () => {
-      const mockSetLink = jest.fn()
-      const link = 'https://mashcard.cloud'
-
-      const editor = mockEditor({
-        commands: {
-          setLink: mockSetLink
-        },
-        getAttributes: () => ({
-          href: link
-        }),
-        state: {
-          selection: {
-            from: 1,
-            to: 10
-          }
-        }
-      })
-      jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        editor,
-        documentEditable: true
-      }))
-      const { result } = renderHook(() => useLinkGroup())
-
-      const items = (result.current[0] as ToolbarSubMenuOption).items as ToolbarItemOption[]
-
-      // confirm
-      items[1]!.onAction?.('')
-
-      expect(mockSetLink).toBeCalledWith({ href: link })
-    })
-
-    it('copies link normally', () => {
-      const link = 'https://mashcard.cloud'
-      const mockCopy = jest.fn()
-      jest.spyOn(navigator.clipboard, 'writeText').mockImplementation(content => mockCopy(content))
-
-      const editor = mockEditor({
-        getAttributes: () => ({
-          href: link
-        }),
-        state: {
-          selection: {
-            from: 1,
-            to: 10
-          }
-        }
-      })
-      jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        editor,
-        documentEditable: true
-      }))
-      const { result } = renderHook(() => useLinkGroup())
-      const items = (result.current[0] as ToolbarSubMenuOption).items as ToolbarItemOption[]
-
-      // copy
-      items[2].onAction?.('')
-
-      expect(mockCopy).toBeCalledWith(link)
-    })
-
-    it('removes link normally', () => {
-      const mockUnsetLink = jest.fn()
-      const link = 'https://mashcard.cloud'
-
-      const editor = mockEditor({
-        commands: {
-          unsetLink: mockUnsetLink
-        },
-        getAttributes: () => ({
-          href: link
-        }),
-        state: {
-          selection: {
-            from: 1,
-            to: 10
-          }
-        }
-      })
-      jest.spyOn(editorContextHook, 'useEditorContext').mockImplementation(() => ({
-        editor,
-        documentEditable: true
-      }))
-      const { result } = renderHook(() => useLinkGroup())
-      const items = (result.current[0] as ToolbarSubMenuOption).items as ToolbarItemOption[]
-
-      // delete
-      items[3].onAction?.('')
-
-      expect(mockUnsetLink).toBeCalled()
     })
   })
 

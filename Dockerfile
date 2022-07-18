@@ -73,7 +73,6 @@ LABEL org.opencontainers.image.source="https://github.com/mashcard/mashcard"
 
 ARG RAILS_ENV=production
 ENV RAILS_ENV=$RAILS_ENV
-ENV RAILS_SERVE_STATIC_FILES=true
 ENV BUNDLE_WITHOUT="test development"
 COPY --from=builder /usr/local/bundle /usr/local/bundle
 COPY --from=builder /app .

@@ -10,6 +10,7 @@ import { PageTree } from '@/docs_legacy/common/components/PageTree'
 import { blockProvider } from '../useDocSyncProvider'
 import { getCursorColor } from '@/docs_legacy/utils/cursorColor'
 import { useDiscussion } from './useDiscussion'
+import { useLink } from './useLink'
 
 export interface UseEditorOptions {
   docMeta: DocMeta
@@ -23,6 +24,7 @@ export function useEditorOptions({ docMeta, docBlobs, editable, provider }: UseE
   const embed = useEmbed(docBlobs, docMeta)
   const formulaContext = useReactiveVar(FormulaContextVar)
   const mentionCommands = useMentionCommands(docMeta)
+  const link = useLink(docMeta)
   const renderView = useCallback(() => <PageTree mode="subPage" />, [])
   const { currentUser } = globalThis.mashcardContext
 
@@ -51,6 +53,7 @@ export function useEditorOptions({ docMeta, docBlobs, editable, provider }: UseE
         formula: {
           formulaContext
         },
+        link,
         mentionCommands,
         pageLink: {
           pages: mentionCommands.pages
@@ -61,6 +64,6 @@ export function useEditorOptions({ docMeta, docBlobs, editable, provider }: UseE
       },
       editable
     }),
-    [discussion, editable, embed, formulaContext, mentionCommands, renderView, provider, currentUser]
+    [embed, provider, currentUser, discussion, formulaContext, link, mentionCommands, renderView, editable]
   )
 }

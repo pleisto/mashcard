@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 import { styled, theme } from '@mashcard/design-system'
 
 // TODO: replace by theme token
@@ -34,10 +34,12 @@ const IconBackgroundPanel = styled('span', {
 })
 
 const IconContainer = styled('span', {
+  display: 'inline-flex',
+  lineHeight: 1,
   zIndex: 1
 })
 
-export interface IconBackgroundProps {
+export interface IconBackgroundProps extends HTMLAttributes<HTMLSpanElement> {
   color?: string
   className?: string
   children?: React.ReactNode

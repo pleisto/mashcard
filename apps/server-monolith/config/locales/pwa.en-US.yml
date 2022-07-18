@@ -254,10 +254,15 @@ en-US:
         remove: Remove anchor mark
       link:
         title: Link
-        placeholder: Paste link
-        confirm: Link to web page
-        copy: Copy link
-        delete: Remove link
+    inline_link:
+      edit:
+        title: Add Link
+        placeholder: Paste link or search pages...
+        remove: Remove
+        blank: Link can not be blank.
+        options:
+          group_label: Link to page
+          link_web: Link to web
     image_block:
       hint: Add an image
       deletion_confirm:

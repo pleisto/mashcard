@@ -1,4 +1,11 @@
-import { ForwardRefRenderFunction, createRef, forwardRef, InputHTMLAttributes } from 'react'
+import {
+  ForwardRefRenderFunction,
+  createRef,
+  forwardRef,
+  InputHTMLAttributes,
+  KeyboardEventHandler,
+  ReactNode
+} from 'react'
 import InputUnstyled from '@mui/base/InputUnstyled'
 import { inputStyle } from './styles/index.style'
 import { CSS } from '@stitches/react'
@@ -7,12 +14,12 @@ import { styled, config } from '../../themes'
 
 export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'css' | 'startAdornment' | 'endAdornment'> {
-  onPressEnter?: React.KeyboardEventHandler<HTMLInputElement>
+  onPressEnter?: KeyboardEventHandler<HTMLInputElement>
   size?: 'sm' | 'md' | 'lg'
   borderType?: 'outline' | 'underline'
   bordered?: boolean
-  prefix?: React.ReactNode
-  suffix?: React.ReactNode
+  prefix?: ReactNode
+  suffix?: ReactNode
   css?: CSS<typeof config>
 }
 

@@ -109,7 +109,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const newTitle = event.target.value
-    if (newTitle !== title) {
+    if ((newTitle !== title) || (titleErrorMsg)) {
       setTitle(newTitle)
       if (newTitle.length > 0) {
         const dupTitleId = getDocSpreadsheetTitles()[newTitle]
@@ -222,6 +222,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
             value={isDefaultTitle ? '' : title}
             placeholder={title}
             onChange={handleTitleChange}
+            onBlur={handleTitleChange}
             danger={!!titleErrorMsg}
           />
           {titleErrorMsg && <SpreadsheetTitleTooltip>{titleErrorMsg}</SpreadsheetTitleTooltip>}
