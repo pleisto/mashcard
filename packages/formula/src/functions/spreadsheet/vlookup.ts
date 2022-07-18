@@ -9,25 +9,25 @@ const VLOOKUP = (
 ): // eslint-disable-next-line max-params
 AnyTypeResult<'string' | 'Error'> => {
   if (spreadsheet.spreadsheetId !== column.spreadsheetId) {
-    return { type: 'Error', result: 'Column must be in the same namespace', meta: 'runtime' }
+    return { type: 'Error', result: { message: 'Column must be in the same namespace', type: 'runtime' } }
   }
 
   const columns = spreadsheet.listColumns()
 
   const firstColumn = columns[0]
   if (!firstColumn) {
-    return { type: 'Error', result: 'Spreadsheet is empty', meta: 'runtime' }
+    return { type: 'Error', result: { message: 'Spreadsheet is empty', type: 'runtime' } }
   }
 
   if (firstColumn.columnId === column.columnId) {
-    return { type: 'Error', result: 'Column cannot be the same as the first column', meta: 'runtime' }
+    return { type: 'Error', result: { message: 'Column cannot be the same as the first column', type: 'runtime' } }
   }
 
   if (!columns.find(c => c.columnId === column.columnId)) {
-    return { type: 'Error', result: 'Column not found', meta: 'runtime' }
+    return { type: 'Error', result: { message: 'Column not found', type: 'runtime' } }
   }
 
-  let result: AnyTypeResult<'Error' | 'string'> = { type: 'Error', result: 'Not found', meta: 'runtime' }
+  let result: AnyTypeResult<'Error' | 'string'> = { type: 'Error', result: { message: 'Not found', type: 'runtime' } }
 
   const matchData = String(match)
 

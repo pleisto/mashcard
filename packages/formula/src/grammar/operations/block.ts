@@ -18,7 +18,7 @@ export const blockOperator: OperatorType = {
     const block = interpreter.ctx.formulaContext.findBlockById(namespaceId)
     if (block) return { type: 'Block', result: block }
 
-    return { type: 'Error', result: `Block ${namespaceId} not found`, meta: 'runtime' }
+    return { type: 'Error', result: { message: `Block ${namespaceId} not found`, type: 'runtime' } }
   },
   interpret: async ({ lhs }) => lhs,
   testCases: {

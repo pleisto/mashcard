@@ -23,7 +23,7 @@ export const additionOperator: OperatorType = {
     }
 
     if (isNaN(result)) {
-      return { type: 'Error', result: `NaN`, meta: 'runtime' }
+      return { type: 'Error', result: { message: `NaN`, type: 'runtime' } }
     }
 
     return { result, type: 'number' }
@@ -58,11 +58,18 @@ export const additionOperator: OperatorType = {
       { definition: '=Addition.spreadsheet.first.1 + 1', result: 2 },
       { definition: '=1 + Addition.spreadsheet.first.1', result: 2 },
       { definition: '=Addition.spreadsheet.first.1 + Addition.spreadsheet.first.2', result: 4 },
-      { definition: '=Addition.spreadsheet.first.3 + 0', result: 'NaN' },
+      { definition: '=Addition.spreadsheet.first.3 + 0', result: { message: 'NaN', type: 'runtime' } },
       { definition: '=Addition.spreadsheet.first.4 + 0', result: 0 },
       { definition: '=Addition.spreadsheet.first.4 + 0 + Addition.spreadsheet.first.2', result: 3 },
-      { definition: '=Addition.spreadsheet.first.2 + Addition.spreadsheet.first.3', result: 'NaN' },
-      { definition: '= 1/0 + 1', result: 'errors.interpret.runtime.division_by_zero', label: 'runtime error' }
+      {
+        definition: '=Addition.spreadsheet.first.2 + Addition.spreadsheet.first.3',
+        result: { message: 'NaN', type: 'runtime' }
+      },
+      {
+        definition: '= 1/0 + 1',
+        result: { message: 'errors.interpret.runtime.division_by_zero', type: 'runtime' },
+        label: 'runtime error'
+      }
     ],
     errorTestCases: [
       { definition: '=+', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },

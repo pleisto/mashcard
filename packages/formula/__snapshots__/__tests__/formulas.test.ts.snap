@@ -223,8 +223,10 @@ Array [
       "uuid": null,
       "variableValue": Object {
         "result": Object {
-          "meta": "syntax",
-          "result": "errors.parse.missing.expression",
+          "result": Object {
+            "message": "errors.parse.missing.expression",
+            "type": "syntax",
+          },
           "type": "Error",
         },
         "success": false,

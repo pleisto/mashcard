@@ -17,7 +17,7 @@ export const rangeOperator: OperatorType = {
     })
 
     if (!spreadsheet) {
-      return { type: 'Error', result: 'Spreadsheet not found', meta: 'runtime' }
+      return { type: 'Error', result: { message: 'Spreadsheet not found', type: 'runtime' } }
     }
 
     const columnIndexMax = Math.max(startCell.columnIndex, endCell.columnIndex)

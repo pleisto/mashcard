@@ -46,7 +46,7 @@ export const FunctionCallTestCase: TestCaseInterface = {
   testCases: {
     functionClauses,
     successTestCases: [
-      { definition: '= ABS(1/0)', result: 'errors.interpret.runtime.division_by_zero' },
+      { definition: '= ABS(1/0)', result: { message: 'errors.interpret.runtime.division_by_zero', type: 'runtime' } },
       {
         definition: '=Abs(-1) + abs(1) + ABS(1) + core::ABS(-1)',
         result: 4,

@@ -18,7 +18,7 @@ export const multiplicationOperator: OperatorType = {
       result = lhsResult * rhsResult
     } else if (tokenMatcher(operator, Div)) {
       if (rhsResult === 0) {
-        return { type: 'Error', result: 'errors.interpret.runtime.division_by_zero', meta: 'runtime' }
+        return { type: 'Error', result: { message: 'errors.interpret.runtime.division_by_zero', type: 'runtime' } }
       }
 
       result = lhsResult / rhsResult
@@ -29,7 +29,7 @@ export const multiplicationOperator: OperatorType = {
     }
 
     if (isNaN(result)) {
-      return { type: 'Error', result: `NaN`, meta: 'runtime' }
+      return { type: 'Error', result: { message: `NaN`, type: 'runtime' } }
     }
 
     return { result, type: 'number' }
@@ -55,7 +55,7 @@ export const multiplicationOperator: OperatorType = {
     successTestCases: [
       {
         definition: '=1/0',
-        result: 'errors.interpret.runtime.division_by_zero',
+        result: { message: 'errors.interpret.runtime.division_by_zero', type: 'runtime' },
         groupOptions: [{ name: 'basicError' }]
       },
       { definition: '=2*2', result: 4 },
@@ -71,10 +71,13 @@ export const multiplicationOperator: OperatorType = {
       { definition: '=Multi.spreadsheet.first.1 / 2', result: 1 },
       { definition: '=3 * Multi.spreadsheet.first.1', result: 6 },
       { definition: '=Multi.spreadsheet.first.1 * Multi.spreadsheet.first.2', result: 6 },
-      { definition: '=Multi.spreadsheet.first.3 * 0', result: 'NaN' },
+      { definition: '=Multi.spreadsheet.first.3 * 0', result: { message: 'NaN', type: 'runtime' } },
       { definition: '=Multi.spreadsheet.first.4 * 10', result: 0 },
       { definition: '=Multi.spreadsheet.first.4 * 1 * Multi.spreadsheet.first.2', result: 0 },
-      { definition: '=Multi.spreadsheet.first.2 + Multi.spreadsheet.first.3', result: 'NaN' }
+      {
+        definition: '=Multi.spreadsheet.first.2 + Multi.spreadsheet.first.3',
+        result: { message: 'NaN', type: 'runtime' }
+      }
     ],
     errorTestCases: [
       { definition: '= 2 ^ true', errorType: 'type', errorMessage: 'Expected number,Cell but got boolean' },

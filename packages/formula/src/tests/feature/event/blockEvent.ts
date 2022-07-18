@@ -17,18 +17,18 @@ export const BlockEventTestCase: TestCaseInterface = {
     eventTestCases: [
       {
         definition: '=UnknownToken',
-        resultBefore: '"UnknownToken" not found',
+        resultBefore: { message: '"UnknownToken" not found', type: 'syntax' },
         events: []
       },
       {
         definition: '=Page1',
-        resultBefore: '"Page1" not found',
+        resultBefore: { message: '"Page1" not found', type: 'syntax' },
         resultAfter: mockBlock('Page1', page1Id),
         events: [['blockChangeName', { id: page1Id, name: 'Page1' }]]
       },
       {
         definition: '=Page1',
-        resultBefore: '"Page1" not found',
+        resultBefore: { message: '"Page1" not found', type: 'syntax' },
         resultAfter: mockBlock('Page1 modified', page1Id),
         variableParseResultAfter: { definition: '="Page1 modified"' },
         events: [
@@ -38,13 +38,13 @@ export const BlockEventTestCase: TestCaseInterface = {
       },
       {
         definition: '=Page1.num0',
-        resultBefore: '"Page1" not found',
+        resultBefore: { message: '"Page1" not found', type: 'syntax' },
         resultAfter: 0,
         events: [['blockChangeName', { id: page0Id, name: 'Page1' }]]
       },
       {
         definition: '=Page1.num0',
-        resultBefore: '"Page1" not found',
+        resultBefore: { message: '"Page1" not found', type: 'syntax' },
         resultAfter: 0,
         variableParseResultAfter: { definition: '="Page1 modified2".num0' },
         events: [
@@ -92,13 +92,13 @@ export const BlockEventTestCase: TestCaseInterface = {
       },
       {
         definition: '=BlockEventPage1.unknownVariable',
-        resultBefore: '"unknownVariable" not found',
+        resultBefore: { message: '"unknownVariable" not found', type: 'deps' },
         variableParseResultAfter: { definition: '=BlockEventPage1.unknownVariable' },
         events: [['blockChangeName', { id: page0Id, name: 'BlockEventPage1' }]]
       },
       {
         definition: '=BlockEventPage1.unknownVariable',
-        resultBefore: '"unknownVariable" not found',
+        resultBefore: { message: '"unknownVariable" not found', type: 'deps' },
         variableParseResultAfter: { definition: '="BlockEventPage222 new".unknownVariable' },
         events: [
           ['blockChangeName', { id: page0Id, name: 'BlockEventPage222' }],
@@ -108,14 +108,14 @@ export const BlockEventTestCase: TestCaseInterface = {
       {
         definition: '=BlockEventPage1',
         resultBefore: mockBlock('BlockEventPage1', page0Id),
-        resultAfter: '"BlockEventPage1" not found',
+        resultAfter: { message: '"BlockEventPage1" not found', type: 'syntax' },
         variableParseResultAfter: { definition: '=BlockEventPage1' },
         events: [['blockDelete', { id: page0Id }]]
       },
       {
         definition: '=BlockEventPage1.num0',
         resultBefore: 0,
-        resultAfter: '"BlockEventPage1" not found',
+        resultAfter: { message: '"BlockEventPage1" not found', type: 'syntax' },
         variableParseResultAfter: { definition: '=BlockEventPage1.num0' },
         events: [['blockDelete', { id: page0Id }]]
       },

@@ -10,6 +10,6 @@ export const FormulaRangeAttributes: FormulaTypeAttributes<typeof TypeName, type
   type: TypeName,
   shortName: ShortName,
   dump: rest => ({ ...rest, result: 'Not supported' }),
-  cast: rest => ({ ...rest, result: 'Not supported', meta: 'runtime', type: 'Error' }),
+  cast: rest => ({ ...rest, result: { message: 'Not supported', type: 'runtime' }, type: 'Error' }),
   display: rest => ({ ...rest, result: '#<Range>' })
 }

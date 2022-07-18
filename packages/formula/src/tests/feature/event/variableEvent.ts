@@ -49,7 +49,7 @@ export const VariableEventTestCase: TestCaseInterface = {
       },
       {
         definition: '=VariableEventPage1.unknownVariable',
-        resultBefore: '"unknownVariable" not found',
+        resultBefore: { message: '"unknownVariable" not found', type: 'deps' },
         events: []
       },
       ...[
@@ -79,14 +79,14 @@ export const VariableEventTestCase: TestCaseInterface = {
       })),
       {
         definition: '=num2+1',
-        resultBefore: '"num2" not found',
+        resultBefore: { message: '"num2" not found', type: 'syntax' },
         namespaceId: page0Id,
         resultAfter: 124,
         events: [['variableInsertOnly', { definition: '=123', name: 'num2', namespaceId: page0Id }]]
       },
       {
         definition: '=num2+1',
-        resultBefore: '"num2" not found',
+        resultBefore: { message: '"num2" not found', type: 'syntax' },
         namespaceId: page0Id,
         resultAfter: 'Loading...',
         resultAfterAsync: true,
@@ -95,7 +95,7 @@ export const VariableEventTestCase: TestCaseInterface = {
       {
         definition: '=num2+1',
         todoMessage: 'async event refactor',
-        resultBefore: '"num2" not found',
+        resultBefore: { message: '"num2" not found', type: 'syntax' },
         namespaceId: page0Id,
         resultAfter: 'Loading...',
         resultAfterAsync: true,

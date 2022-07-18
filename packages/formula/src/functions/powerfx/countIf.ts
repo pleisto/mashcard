@@ -8,16 +8,16 @@ const CountIf = (
 ): AnyTypeResult<'number' | 'Error'> => {
   const column = predicate.meta.column
   if (!column) {
-    return { type: 'Error', result: 'Column is missing', meta: 'runtime' }
+    return { type: 'Error', result: { message: 'Column is missing', type: 'runtime' } }
   }
 
   if (spreadsheet.spreadsheetId !== column.spreadsheetId) {
-    return { type: 'Error', result: 'Column must be in the same namespace', meta: 'runtime' }
+    return { type: 'Error', result: { message: 'Column must be in the same namespace', type: 'runtime' } }
   }
   const columns = spreadsheet.listColumns()
 
   if (!columns.find(c => c.columnId === column.columnId)) {
-    return { type: 'Error', result: 'Column not found', meta: 'runtime' }
+    return { type: 'Error', result: { message: 'Column not found', type: 'runtime' } }
   }
 
   const predicateFunction: PredicateFunction = buildPredicate(predicate)

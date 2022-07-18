@@ -102,7 +102,7 @@ export class BlockClass implements BlockType {
 
     const variable = this._formulaContext.findVariableByName(this.id, name)
     if (!variable) {
-      return { type: 'Error', result: `"${name}" not found`, meta: 'runtime' }
+      return { type: 'Error', result: { message: `"${name}" not found`, type: 'runtime' } }
     }
 
     if (variable.t.task.async) {

@@ -6,7 +6,7 @@ const SUMPRODUCT = (
   { result: column2 }: AnyTypeResult<'Column'>
 ): AnyTypeResult<'number' | 'Error'> => {
   if (column1.spreadsheetId !== column2.spreadsheetId) {
-    return { type: 'Error', result: 'Columns must be in the same namespace', meta: 'runtime' }
+    return { type: 'Error', result: { message: 'Columns must be in the same namespace', type: 'runtime' } }
   }
 
   let sum: number = 0

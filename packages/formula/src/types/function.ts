@@ -16,6 +16,6 @@ export const FormulaFunctionAttributes: FormulaTypeAttributes<typeof TypeName, t
   type: TypeName,
   shortName: ShortName,
   dump: rest => ({ ...rest, result: 'Not supported' }),
-  cast: rest => ({ ...rest, result: 'Not supported', meta: 'runtime', type: 'Error' }),
+  cast: rest => ({ ...rest, result: { message: 'Not supported', type: 'runtime' }, type: 'Error' }),
   display: rest => ({ ...rest, result: '#<Function>' })
 }

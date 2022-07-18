@@ -47,7 +47,7 @@ const testCases: TestCase[] = [
   // Combine
   {
     input: '=Input.foo',
-    value: 'Key foo not found'
+    value: { message: 'Key foo not found', type: 'runtime' }
   },
   {
     input: '=Input.bar',
@@ -59,7 +59,7 @@ const testCases: TestCase[] = [
   },
   {
     input: '=$2',
-    value: 'Argument 2 not found'
+    value: { message: 'Argument 2 not found', type: 'runtime' }
   },
   // Error
   {

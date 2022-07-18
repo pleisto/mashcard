@@ -18,12 +18,12 @@ export const FormulaCellAttributes: FormulaTypeAttributes<typeof TypeName, typeo
       const column = ctx.findColumn(spreadsheetId, findKey)
       return column
         ? { ...rest, result: column.newCell(cell, key) }
-        : { ...rest, result: `Column not found`, meta: 'deps', type: 'Error' }
+        : { ...rest, result: { message: `Column not found`, type: 'deps' }, type: 'Error' }
     } else {
       const row = ctx.findRow(spreadsheetId, findKey)
       return row
         ? { ...rest, result: row.newCell(cell, key) }
-        : { ...rest, result: `Row not found`, meta: 'deps', type: 'Error' }
+        : { ...rest, result: { message: `Row not found`, type: 'deps' }, type: 'Error' }
     }
   },
   display: ({ result, ...rest }) => ({ ...rest, result: result.getValue() })

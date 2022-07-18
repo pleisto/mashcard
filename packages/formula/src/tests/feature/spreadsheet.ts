@@ -99,17 +99,23 @@ export const SpreadsheetTestCase: TestCaseInterface = {
       { definition: `=AVERAGEIFS(${spreadsheetToken}.first, ${spreadsheetToken}.second, >3)`, result: 4 },
       {
         definition: `=AVERAGEIFS(${spreadsheetToken}.first, ${spreadsheetToken}.second, >100)`,
-        result: 'No matching values'
+        result: { message: 'No matching values', type: 'runtime' }
       },
       { definition: `=COUNTIFS(${spreadsheetToken}.first, >2)`, result: 2 },
       { definition: `=COUNTIFS(${spreadsheetToken}.first, 3)`, result: 1 },
-      { definition: `=VLOOKUP("", ${spreadsheetToken}, ${spreadsheetToken}.second)`, result: 'Not found' },
+      {
+        definition: `=VLOOKUP("", ${spreadsheetToken}, ${spreadsheetToken}.second)`,
+        result: { message: 'Not found', type: 'runtime' }
+      },
       {
         definition: `=VLOOKUP("", ${spreadsheetToken}, ${spreadsheetToken}.first)`,
-        result: 'Column cannot be the same as the first column'
+        result: { message: 'Column cannot be the same as the first column', type: 'runtime' }
       },
       { definition: `=VLOOKUP("1", ${spreadsheetToken}, ${spreadsheetToken}.second)`, result: '2' },
-      { definition: `=VLOOKUP("2", ${spreadsheetToken}, ${spreadsheetToken}.second, false)`, result: 'Not found' },
+      {
+        definition: `=VLOOKUP("2", ${spreadsheetToken}, ${spreadsheetToken}.second, false)`,
+        result: { message: 'Not found', type: 'runtime' }
+      },
       { definition: `=VLOOKUP("2", ${spreadsheetToken}, ${spreadsheetToken}.second)`, result: '2' },
       { definition: `=VLOOKUP("2", ${spreadsheetToken}, ${spreadsheetToken}.second, true)`, result: '2' },
       { definition: `=VLOOKUP("1", ${spreadsheetToken}, ${spreadsheetToken}.second, true)`, result: '2' },

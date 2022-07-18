@@ -2462,7 +2462,7 @@ exports[`FormulaResult functionCall "=custom::FORTY_TWO(1, 1, 1)" -> [deps] "err
 </div>
 `;
 
-exports[`FormulaResult multiplication "=1/0" -> errors.interpret.runtime.division_by_zero 1`] = `
+exports[`FormulaResult multiplication "=1/0" -> [object Object] 1`] = `
 <div>
   <div
     class="mc-c-dRDYhj"

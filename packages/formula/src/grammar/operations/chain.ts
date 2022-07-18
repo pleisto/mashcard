@@ -31,13 +31,13 @@ export const chainOperator: OperatorType = {
   testCases: {
     successTestCases: [
       { definition: '={a:1} . a', result: 1 },
-      { definition: '={a:1}.b', result: 'Key b not found' },
+      { definition: '={a:1}.b', result: { message: 'Key b not found', type: 'runtime' } },
       { definition: '=[1,2,3].1', result: 1 },
-      { definition: '=[123].b', result: 'Need a number: b' },
+      { definition: '=[123].b', result: { message: 'Need a number: b', type: 'syntax' } },
       { definition: '={a:1}."a"', result: 1 },
       { definition: '=[2, "foo", true].2', result: 'foo' },
-      { definition: '=[2, "foo", true].4', result: 'Index 4 out of bounds' },
-      { definition: '=[2, "foo", true].foo', result: 'Need a number: foo' },
+      { definition: '=[2, "foo", true].4', result: { message: 'Index 4 out of bounds', type: 'runtime' } },
+      { definition: '=[2, "foo", true].foo', result: { message: 'Need a number: foo', type: 'syntax' } },
       // Function call
       { definition: '=1.T()', result: 1 },
       { definition: '=1 . T()', result: 1 },

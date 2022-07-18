@@ -75,22 +75,21 @@ export class ColumnClass implements ColumnType {
   private findCellByNumber(meta: VariableMetadata, name: string): AnyTypeResult<'Cell' | 'Error'> {
     const number = Number(name)
     if (isNaN(number)) {
-      return { type: 'Error', result: `Need a number: ${name}`, meta: 'syntax' }
+      return { type: 'Error', result: { message: `Need a number: ${name}`, type: 'syntax' } }
     }
     const cells = this.cells()
     const cell = cells[number - 1]
 
     if (!cell) {
-      return { type: 'Error', result: `Cell out of range: ${cells.length}`, meta: 'runtime' }
+      return { type: 'Error', result: { message: `Cell out of range: ${cells.length}`, type: 'runtime' } }
     }
 
     if (meta.richType.type === 'spreadsheet') {
       const { spreadsheetId, rowId, columnId } = meta.richType.meta
       if (spreadsheetId === this.spreadsheetId && rowId === cell.rowId && columnId === cell.columnId) {
         return {
-          result: 'errors.interpret.circular_dependency.spreadsheet',
-          type: 'Error',
-          meta: 'circular_dependency'
+          result: { message: 'errors.interpret.circular_dependency.spreadsheet', type: 'circular_dependency' },
+          type: 'Error'
         }
       }
     }
@@ -148,7 +147,7 @@ export class ColumnClass implements ColumnType {
     const errors: ErrorMessage[] = []
 
     if (result.type === 'Error') {
-      errors.push({ type: result.meta, message: result.result })
+      errors.push(result.result)
       return {
         errors,
         firstArgumentType: undefined,

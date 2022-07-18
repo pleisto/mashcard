@@ -64,7 +64,7 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
       },
       {
         definition: '=SpreadsheetEventPage1.unknownVariable',
-        resultBefore: '"unknownVariable" not found',
+        resultBefore: { message: '"unknownVariable" not found', type: 'deps' },
         events: []
       },
       {
@@ -138,7 +138,7 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
       },
       {
         definition: '=SpreadsheetEventPage1.unknownVariable',
-        resultBefore: '"unknownVariable" not found',
+        resultBefore: { message: '"unknownVariable" not found', type: 'deps' },
         resultAfter: mockSpreadsheet('foo bar zzz', spreadsheet1Id),
         variableParseResultAfter: { definition: '=SpreadsheetEventPage1."foo bar zzz"' },
         events: [
@@ -149,7 +149,7 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
       {
         definition: '=SpreadsheetEventPage1.spreadsheet1foobar',
         resultBefore: mockSpreadsheet('spreadsheet1foobar', spreadsheet1Id),
-        resultAfter: '"spreadsheet1foobar" not found',
+        resultAfter: { message: '"spreadsheet1foobar" not found', type: 'deps' },
         triggerEvents: ctx => [
           {
             event: FormulaSpreadsheetDeleted,
@@ -175,7 +175,7 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
       {
         definition: '=SpreadsheetEventPage1.spreadsheet1foobar',
         resultBefore: mockSpreadsheet('spreadsheet1foobar', spreadsheet1Id),
-        resultAfter: '"spreadsheet1foobar" not found',
+        resultAfter: { message: '"spreadsheet1foobar" not found', type: 'deps' },
         triggerEvents: ctx => [
           {
             event: FormulaSpreadsheetDeleted,

@@ -27,20 +27,19 @@ export const accessAttribute = async (
     if (value) {
       return value
     } else {
-      return { type: 'Error', result: `Key ${key} not found`, meta: 'runtime' }
+      return { type: 'Error', result: { message: `Key ${key} not found`, type: 'runtime' } }
     }
   }
 
   if (result.type === 'Array') {
     const number = Number(key)
     if (isNaN(number)) {
-      return { type: 'Error', result: `Need a number: ${key}`, meta: 'syntax' }
+      return { type: 'Error', result: { message: `Need a number: ${key}`, type: 'syntax' } }
     } else {
       return (
         result.result[number - 1] || {
           type: 'Error',
-          result: `Index ${number} out of bounds`,
-          meta: 'runtime'
+          result: { message: `Index ${number} out of bounds`, type: 'runtime' }
         }
       )
     }
@@ -50,7 +49,7 @@ export const accessAttribute = async (
     return { type: 'Reference', result: { ...result.result, attribute: key } }
   }
 
-  return { type: 'Error', result: `Access not supported for ${result.type}`, meta: 'runtime' }
+  return { type: 'Error', result: { message: `Access not supported for ${result.type}`, type: 'runtime' } }
 }
 
 export const accessOperator: OperatorType = {
@@ -64,14 +63,22 @@ export const accessOperator: OperatorType = {
   testCases: {
     successTestCases: [
       { definition: '=[1,2,3] [1]', result: 1 },
-      { definition: '=[1,2,3][0]', result: 'Index 0 out of bounds' },
-      { definition: '=[][1]', result: 'Index 1 out of bounds' },
+      { definition: '=[1,2,3][0]', result: { message: 'Index 0 out of bounds', type: 'runtime' } },
+      { definition: '=[][1]', result: { message: 'Index 1 out of bounds', type: 'runtime' } },
       { definition: '={a: 1}["a" & ""]', result: 1 },
-      { definition: '={a: 1}[1+1]', result: 'Key 2 not found' },
-      { definition: '={a: 1}["b"]', result: 'Key b not found' },
-      { definition: '={}["a"]', result: 'Key a not found' },
-      { definition: '=1[1]', label: 'TODO check', result: 'Access not supported for number' },
-      { definition: '="123"[1]', label: 'TODO check', result: 'Access not supported for string' },
+      { definition: '={a: 1}[1+1]', result: { message: 'Key 2 not found', type: 'runtime' } },
+      { definition: '={a: 1}["b"]', result: { message: 'Key b not found', type: 'runtime' } },
+      { definition: '={}["a"]', result: { message: 'Key a not found', type: 'runtime' } },
+      {
+        definition: '=1[1]',
+        label: 'TODO check',
+        result: { message: 'Access not supported for number', type: 'runtime' }
+      },
+      {
+        definition: '="123"[1]',
+        label: 'TODO check',
+        result: { message: 'Access not supported for string', type: 'runtime' }
+      },
       { definition: '=[2, "foo", true][2]', result: 'foo' },
       { definition: '=[2, "foo", true]["2"]', result: 'foo' },
       { definition: '=[2, "foo", true][1]+1 * 12', result: 14 }

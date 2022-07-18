@@ -426,9 +426,8 @@ const innerInterpretFirst = ({
 }): VariableValue | undefined => {
   if (errorMessages.length > 0) {
     const result: AnyTypeResult<'Error'> = {
-      result: errorMessages[0].message,
       type: 'Error',
-      meta: errorMessages[0].type
+      result: { message: errorMessages[0].message, type: errorMessages[0].type }
     }
     return { success: false, result }
   }
@@ -466,7 +465,7 @@ export const innerInterpret = async ({
   } catch (e) {
     devWarning(true, e)
     const message = `[FATAL] ${(e as any).message as string}`
-    return { success: false, result: { result: message, type: 'Error', meta: 'fatal' } }
+    return { success: false, result: { result: { message, type: 'fatal' }, type: 'Error' } }
   }
 }
 
