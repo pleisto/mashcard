@@ -1,6 +1,12 @@
 flag_management:
   default_rules:
     carryforward: true
+coverage:
+  status:
+    # It's noisey to have failed checks on PRs.
+    # Because we already have Codecov bot commenting on PRs, here we disable the status check.
+    project: off
+    patch: off
 ignore:
   - 'apps/server-monolith/config/**/*'
   - 'apps/server-monolith/public/**/*'

@@ -65,7 +65,6 @@ export default defineConfig({
     process.env.BUNDLE_STATS
       ? visualizer({
           brotliSize: true,
-          // TODO: ignore tmp
           filename: './tmp/esm-bundle-stats.html'
         })
       : undefined

@@ -23,7 +23,7 @@
     "@uppy/xhr-upload": "^2.1.2",
     "ahooks": "^3.5.2",
     "blurhash": "^1.1.5",
-    "react-virtuoso": "^2.16.4"
+    "react-virtuoso": "^2.16.5"
   },
   "devDependencies": {
     "@mashcard/dev-support": "workspace:^"
@@ -34,8 +34,8 @@
   },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",
-    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
-    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
+    "lint:eslint": "TIMING=1 dev-support eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 dev-support eslint --cache --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
     "test:jest": "run -T jest"
   }

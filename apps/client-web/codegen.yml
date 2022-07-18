@@ -34,4 +34,4 @@ generates:
         Nil: null | undefined
 hooks:
   afterAllFileWrite:
-    - prettier --write
+    - dev-support prettier --write
