@@ -85,7 +85,7 @@ jobs:
             --set-string envs.SENTRY_DSN='https://f44be883f4d7479bb089213767508c1a@o1150336.ingest.sentry.io/6223078' \
             --set-string envs.HOST='${{ env.DOMAIN }}' \
             --set-string envs.GOOGLE_CLOUD_PROJECT='${{ env.GCP_PROJECT }}' \
-            --set-string envs.GCP_KMS_FRN='projects/${{ env.GCP_PROJECT }}/locations/us-central1/keyRings/global-saas/cryptoKeys/saas-master-key' \
+            --set-string envs.GCP_KMS_FRN='projects/${{ env.GCP_PROJECT }}/locations/global/keyRings/global-saas/cryptoKeys/saas-master-key' \
             --set-string envs.GCS_PRIVATE_BUCKET='pvt.us-edge.user-owns-data.net' \
             --set-string envs.GCS_PUBLIC_BUCKET='pub.us-edge.user-owns-data.net' \
             --set-string license='I hereby swear that I have obtained written permission from the Pleisto Inc of this plugin to use it.' \
