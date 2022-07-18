@@ -21,7 +21,7 @@ program
   .command('run-dev-deps')
   .description('Quickly spin up postgres/redis/etc. instances for development with Docker')
   .action(() => {
-    spawn('docker-compose', ['-f', './dev-deps-compose.yml', 'up'], { stdio: 'inherit', cwd: devSupportRoot })
+    spawn('docker', ['compose', '-f', './dev-deps-compose.yml', 'up'], { stdio: 'inherit', cwd: devSupportRoot })
   })
 
 program
