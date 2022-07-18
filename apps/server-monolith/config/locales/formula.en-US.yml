@@ -28,3 +28,5 @@ en-US:
           spreadsheet: Circular dependency found in spreadsheet when run
         runtime:
           division_by_zero: Division by zero
+    other:
+      not_supported: Not supported
