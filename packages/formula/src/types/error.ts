@@ -23,5 +23,6 @@ export const FormulaErrorAttributes: FormulaTypeAttributes<typeof TypeName, type
   shortName: ShortName,
   dump: rest => rest,
   cast: rest => rest,
+  // TODO add i18n to display
   display: ({ result, ...rest }) => ({ ...rest, result: `#<Error> ${result.message}` })
 }

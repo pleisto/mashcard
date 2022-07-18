@@ -40,7 +40,7 @@ export const equalCompareOperator: OperatorType = {
       {
         definition: '= (1 = 1) > 3',
         errorType: 'type',
-        errorMessage: ['errors.parse.mismatch.type', { expected: 'boolean', got: 'number' }]
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number', got: 'boolean' }]
       }
     ]
   }

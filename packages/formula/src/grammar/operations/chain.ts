@@ -69,7 +69,7 @@ export const chainOperator: OperatorType = {
       {
         definition: '="foo".START_WITH(123)',
         errorType: 'type',
-        errorMessage: ['errors.parse.mismatch.type', { expected: 'number', got: 'string' }]
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'string', got: 'number' }]
       },
       {
         definition: '=true.START_WITH("123")',
