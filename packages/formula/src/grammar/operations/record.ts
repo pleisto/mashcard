@@ -72,7 +72,12 @@ export const recordOperator: OperatorType = {
     ],
     errorTestCases: [
       { definition: '={', errorType: 'syntax', errorMessage: 'errors.parse.missing.token' },
-      { definition: '=}', errorType: 'parse', errorMessage: 'Parse error: "}"', valid: false },
+      {
+        definition: '=}',
+        errorType: 'parse',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"}"' }],
+        valid: false
+      },
       {
         definition: '={a}',
         errorType: 'parse',

@@ -1,6 +1,6 @@
 /* eslint-disable jest/no-conditional-expect */
 import { parse, innerInterpret } from '../grammar/core'
-import { ParseErrorType } from '../type'
+import { ErrorMessageType, ParseErrorType } from '../type'
 import { display as displayF } from '../context/persist'
 import { makeContext } from '../tests/testHelper'
 
@@ -10,7 +10,7 @@ interface TestCase {
   label?: string
   display?: string
   parseErrorType?: ParseErrorType
-  errorMessage?: string
+  errorMessage?: ErrorMessageType
   debug?: true
 }
 
@@ -28,13 +28,13 @@ const testCases: TestCase[] = [
     input: `=&#${barNamespaceId}.bar`,
     // value: { kind: 'variable', namespaceId: barNamespaceId, variableId: barVariableId }
     parseErrorType: 'syntax',
-    errorMessage: 'Parse error: "#"'
+    errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"#"' }]
   },
   {
     input: `=&#${barNamespaceId}.bar.foo`,
     // value: { kind: 'variable', namespaceId: barNamespaceId, variableId: barVariableId, attribute: 'foo' }
     parseErrorType: 'syntax',
-    errorMessage: 'Parse error: "#"'
+    errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"#"' }]
   },
   {
     input: '=&Self',
@@ -155,7 +155,7 @@ describe('Simple test case TODO', () => {
         }
       } else if (parseErrorType) {
         expect(errorMessages[0]).not.toEqual(undefined)
-        expect(errorMessages[0]!.message).toContain(errorMessage)
+        expect(errorMessages[0]!.message).toEqual(errorMessage)
         expect(errorType).toEqual(parseErrorType)
       } else {
         throw new Error('Unexpected error')

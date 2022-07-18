@@ -5,6 +5,7 @@ en-US:
         chevrotain:
           mismatch_token: 'Mismatch token: %{image}'
           not_all_input_parsed: 'Not all input parsed: %{image}'
+          build_no_viable_alt: 'Parse error: %{image}'
         unavailable:
           thisRecord: thisRecord is only available in spreadsheet
           thisRow: thisRow is only available in spreadsheet

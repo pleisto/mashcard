@@ -76,7 +76,12 @@ export const expressionOperator: OperatorType = {
       },
       { definition: '=1; 2;', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '=;', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
-      { definition: '=;123', errorType: 'parse', errorMessage: 'Parse error: ";"', valid: false }
+      {
+        definition: '=;123',
+        errorType: 'parse',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '";"' }],
+        valid: false
+      }
     ]
   }
 }

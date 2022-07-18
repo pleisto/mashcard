@@ -55,13 +55,18 @@ export const stringOperator: OperatorType = {
     ],
     errorTestCases: [
       { definition: '="123" + 1', errorType: 'type', errorMessage: 'Expected number,Cell but got string' },
-      { definition: '="', errorType: 'parse', errorMessage: 'Parse error: "\\""', valid: false },
+      {
+        definition: '="',
+        errorType: 'parse',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"\\""' }],
+        valid: false
+      },
       { definition: '=foo"', errorType: 'syntax', errorMessage: '"foo" not found' },
       {
         definition: '= "Hello',
         label: 'ParseError without closing quote',
         errorType: 'parse',
-        errorMessage: 'Parse error: "\\"Hello"',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"\\"Hello"' }],
         valid: false
       },
       {
@@ -75,7 +80,7 @@ export const stringOperator: OperatorType = {
         definition: "= 'hello'",
         label: 'Single quote => parseError',
         errorType: 'parse',
-        errorMessage: 'Parse error: "\'hello\'"',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"\'hello\'"' }],
         valid: false
       }
     ]

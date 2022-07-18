@@ -31,7 +31,12 @@ export const combineOperator: OperatorType = {
       { definition: '=1 and 2', errorType: 'type', errorMessage: 'Expected boolean but got number' },
       { definition: '=1 and false or 3', errorType: 'type', errorMessage: 'Expected boolean but got number' },
       { definition: '=true and', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
-      { definition: '=and false', errorType: 'parse', errorMessage: 'Parse error: "and"', valid: false },
+      {
+        definition: '=and false',
+        errorType: 'parse',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"and"' }],
+        valid: false
+      },
       { definition: '=and', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       {
         definition: '="f" &&& 1',

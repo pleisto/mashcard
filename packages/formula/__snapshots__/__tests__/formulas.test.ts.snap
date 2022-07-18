@@ -279,7 +279,12 @@ Array [
               "type": "syntax",
             },
             Object {
-              "message": "Parse error: \\"\\"",
+              "message": Array [
+                "errors.parse.chevrotain.build_no_viable_alt",
+                Object {
+                  "image": "\\"\\"",
+                },
+              ],
               "type": "parse",
             },
           ],

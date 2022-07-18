@@ -20,7 +20,12 @@ export const notOperator: OperatorType = {
     ],
     errorTestCases: [
       { definition: '=!1+1', errorType: 'type', errorMessage: 'Expected number,Cell but got boolean' },
-      { definition: '=!', errorType: 'parse', errorMessage: 'Parse error: ""', valid: false }
+      {
+        definition: '=!',
+        errorType: 'parse',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '""' }],
+        valid: false
+      }
     ]
   }
 }

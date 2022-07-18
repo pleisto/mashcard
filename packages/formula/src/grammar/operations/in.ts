@@ -163,7 +163,12 @@ export const inOperator: OperatorType = {
       { definition: '= "foo" in', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '=in', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '=in 123', errorType: 'type', errorMessage: 'Expected Array but got number' },
-      { definition: '=in []', errorType: 'parse', errorMessage: 'Parse error: "in"', valid: false }
+      {
+        definition: '=in []',
+        errorType: 'parse',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"in"' }],
+        valid: false
+      }
     ]
   }
 }

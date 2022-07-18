@@ -84,7 +84,12 @@ export const accessOperator: OperatorType = {
       { definition: '=[2, "foo", true][1]+1 * 12', result: 14 }
     ],
     errorTestCases: [
-      { definition: '=[1,2,3][]', errorType: 'parse', errorMessage: 'Parse error: "]"', valid: false },
+      {
+        definition: '=[1,2,3][]',
+        errorType: 'parse',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"]"' }],
+        valid: false
+      },
       {
         definition: '=[1][',
         errorType: 'syntax',

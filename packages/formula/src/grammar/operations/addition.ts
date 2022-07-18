@@ -77,7 +77,12 @@ export const additionOperator: OperatorType = {
     errorTestCases: [
       { definition: '=+', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '=-', errorType: 'syntax', errorMessage: 'Missing number' },
-      { definition: '=+1', errorType: 'parse', errorMessage: 'Parse error: "+"', valid: false },
+      {
+        definition: '=+1',
+        errorType: 'parse',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"+"' }],
+        valid: false
+      },
       { definition: '=1+', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '= 1+$', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' }
     ]
