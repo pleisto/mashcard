@@ -38,7 +38,7 @@ const MAX_LEVEL = 20
 export const fetchVariableTError = ({ task }: VariableData): ErrorMessage | undefined => {
   if (task.async) return undefined
   if (task.variableValue.success) return undefined
-  return { message: task.variableValue.result.result, type: task.variableValue.result.meta }
+  return task.variableValue.result.result
 }
 
 export const errorIsFatal = ({ task }: VariableData): boolean => {
@@ -50,7 +50,7 @@ export const errorIsFatal = ({ task }: VariableData): boolean => {
   if (
     !success &&
     result.type === 'Error' &&
-    ['name_unique', 'name_check', 'name_invalid', 'fatal'].includes(result.meta)
+    ['name_unique', 'name_check', 'name_invalid', 'fatal'].includes(result.result.type)
   ) {
     return true
   }

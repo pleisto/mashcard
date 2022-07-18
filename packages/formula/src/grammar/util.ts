@@ -4,6 +4,7 @@ import {
   AnyTypeResult,
   CodeFragment,
   ErrorMessage,
+  ErrorMessageType,
   EventDependency,
   EventScope,
   ExpressionType,
@@ -236,7 +237,15 @@ export const intersectType = (
   // console.error('type error', { expectedArgumentType, contextResultType, label, ctx })
 
   return {
-    errorMessages: [{ type: 'type', message: `Expected ${expectedArgumentType} but got ${contextResultType}` }],
+    errorMessages: [
+      {
+        type: 'type',
+        message: [
+          'errors.parse.mismatch.type',
+          { expected: [expectedArgumentType].flat().join(','), got: [contextResultType].flat().join(',') }
+        ]
+      }
+    ],
     newType: contextResultType
   }
 }
@@ -256,7 +265,7 @@ export const runtimeCheckType = (
   if (errorMessages.length > 0) {
     const { type, message } = errorMessages[0]
     // console.error('runtimeCheckType', { label, expectedArgumentType, contextResultType, errorMessages })
-    return { type: 'Error', result: message, meta: type }
+    return { type: 'Error', result: { message, type } }
   }
 
   return undefined
@@ -340,4 +349,23 @@ export const castData = (data: any): AnyTypeResult => {
   })
 
   return { type: 'Record', result: newObject, meta: extractSubType(Object.values(newObject)) }
+}
+
+export const errorMessageToString = ({ message }: ErrorMessage): string => {
+  if (typeof message === 'string') return message
+  return `${message[0]}: ${JSON.stringify(message[1])}`
+}
+
+const PARSE_PREFIX_FLAG = '###'
+
+export const buildErrorMessage = (msg: ErrorMessageType): string => {
+  if (typeof msg === 'string') return msg
+  return `${PARSE_PREFIX_FLAG}${JSON.stringify(msg)}`
+}
+
+export const parseErrorMessage = (message: string): ErrorMessageType => {
+  if (!message.startsWith(PARSE_PREFIX_FLAG)) return message
+
+  const [msg, context] = JSON.parse(message.substring(PARSE_PREFIX_FLAG.length))
+  return [msg, context]
 }

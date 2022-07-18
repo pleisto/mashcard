@@ -57,7 +57,7 @@ export const ColumnEventTestCase: TestCaseInterface = {
         definition: '=spreadsheet1.first',
         namespaceId,
         resultBefore: mockColumn('first', column1Id),
-        resultAfter: 'Column "first" not found',
+        resultAfter: { message: 'Column "first" not found', type: 'deps' },
         events: [['columnChange', { spreadsheetId, namespaceId, columns: [] }]]
       },
       ...[

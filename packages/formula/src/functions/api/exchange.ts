@@ -21,7 +21,7 @@ export const apiExchange = createFunctionClause({
   returns: 'Record',
   chain: false,
   reference: async (ctx, { result: code }) => {
-    if (!code) return { type: 'Error', result: 'CODE is blank', meta: 'runtime' }
+    if (!code) return { type: 'Error', result: { message: 'CODE is blank', type: 'runtime' } }
     // TODO config secret
     const { data } = await axios.get(`https://v6.exchangerate-api.com/v6/3648761394fd50008e3c3e31/latest/${code}`)
     return castData(data.conversion_rates) as AnyTypeResult<'Record'>

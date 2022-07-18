@@ -8,7 +8,10 @@ const SUMIFS = (
   predicate: AnyTypeResult<'Predicate'>
 ): AnyTypeResult<'number' | 'Error'> => {
   if (column1.spreadsheetId !== column2.spreadsheetId) {
-    return { type: 'Error', result: 'Columns must be in the same namespace', meta: 'runtime' }
+    return {
+      type: 'Error',
+      result: { message: 'errors.interpret.spreadsheet.column_same_namespace_check', type: 'runtime' }
+    }
   }
 
   const predicateFunction: PredicateFunction = buildPredicate(predicate)

@@ -21,7 +21,7 @@ export const requestGet = createFunctionClause({
   returns: 'Record',
   chain: false,
   reference: async (ctx, { result: url }) => {
-    if (!url) return { type: 'Error', result: 'URL is blank', meta: 'runtime' }
+    if (!url) return { type: 'Error', result: { message: 'URL is blank', type: 'runtime' } }
     const response = await axios.get(url)
     return castData(response)
   }

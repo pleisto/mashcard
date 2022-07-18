@@ -46,7 +46,7 @@ export const FunctionCallTestCase: TestCaseInterface = {
   testCases: {
     functionClauses,
     successTestCases: [
-      { definition: '= ABS(1/0)', result: 'errors.interpret.runtime.division_by_zero' },
+      { definition: '= ABS(1/0)', result: { message: 'errors.interpret.runtime.division_by_zero', type: 'runtime' } },
       {
         definition: '=Abs(-1) + abs(1) + ABS(1) + core::ABS(-1)',
         result: 4,
@@ -128,7 +128,8 @@ export const FunctionCallTestCase: TestCaseInterface = {
       {
         definition: '=UNKNOWN ()',
         errorType: 'deps',
-        errorMessage: 'Function UNKNOWN not found',
+        errorMessage: ['errors.parse.not_found.function', { key: 'UNKNOWN' }],
+        groupOptions: [{ name: 'basicError' }],
         expected: [
           {
             key: 'codeFragments',
@@ -139,7 +140,7 @@ export const FunctionCallTestCase: TestCaseInterface = {
                 code: 'Function',
                 display: 'UNKNOWN',
                 attrs: undefined,
-                errors: [{ message: 'Function UNKNOWN not found' }]
+                errors: [{ message: ['errors.parse.not_found.function', { key: 'UNKNOWN' }] }]
               },
               { code: 'Space' },
               { code: 'LParen', meta: {}, errors: [] },
@@ -162,7 +163,10 @@ export const FunctionCallTestCase: TestCaseInterface = {
                 code: 'Function',
                 display: 'ABS',
                 attrs: { kind: 'Function' },
-                errors: [{ message: 'errors.parse.missing.argument' }, { message: 'TODO mismatch token FunctionCall' }]
+                errors: [
+                  { message: 'errors.parse.missing.argument' },
+                  { message: ['errors.parse.chevrotain.mismatch_token', { image: 'FunctionCall' }] }
+                ]
               },
               {
                 code: 'LParen',
@@ -187,10 +191,26 @@ export const FunctionCallTestCase: TestCaseInterface = {
         errorMessage: 'errors.parse.mismatch.argument_count',
         groupOptions: [{ name: 'basicError' }]
       },
-      { definition: '=ABS ( "a" )', errorType: 'type', errorMessage: 'Expected number but got string' },
-      { definition: '=IF(1, -3, -4)', errorType: 'type', errorMessage: 'Expected boolean but got number' },
-      { definition: '=ABS( NOW() )', errorType: 'type', errorMessage: 'Expected number but got Date' },
-      { definition: '=ABS ( true )', errorType: 'type', errorMessage: 'Expected number but got boolean' },
+      {
+        definition: '=ABS ( "a" )',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number', got: 'string' }]
+      },
+      {
+        definition: '=IF(1, -3, -4)',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'boolean', got: 'number' }]
+      },
+      {
+        definition: '=ABS( NOW() )',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number', got: 'Date' }]
+      },
+      {
+        definition: '=ABS ( true )',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number', got: 'boolean' }]
+      },
       {
         definition: '=ABS ()',
         errorType: 'deps',

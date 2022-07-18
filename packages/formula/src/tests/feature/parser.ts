@@ -60,7 +60,7 @@ export const ParserTestCase: TestCaseInterface = {
         definition: '==',
         label: 'equal 1',
         errorType: 'parse',
-        errorMessage: 'Parse error: ""',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '""' }],
         valid: false,
         expected: [
           {
@@ -77,7 +77,7 @@ export const ParserTestCase: TestCaseInterface = {
         definition: '===',
         label: 'equal 2',
         errorType: 'parse',
-        errorMessage: 'Parse error: ""',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '""' }],
         valid: false,
         expected: [
           {
@@ -106,8 +106,8 @@ export const ParserTestCase: TestCaseInterface = {
                 code: 'Equal',
                 errors: [
                   { message: 'errors.parse.missing.expression' },
-                  { message: 'Parse error: "="' },
-                  { message: 'Parse error: ""' }
+                  { message: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"="' }] },
+                  { message: ['errors.parse.chevrotain.build_no_viable_alt', { image: '""' }] }
                 ],
                 type: 'boolean'
               }
@@ -131,8 +131,8 @@ export const ParserTestCase: TestCaseInterface = {
                 code: 'Equal2',
                 errors: [
                   { message: 'errors.parse.missing.expression' },
-                  { message: 'Parse error: "=="' },
-                  { message: 'Parse error: ""' }
+                  { message: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"=="' }] },
+                  { message: ['errors.parse.chevrotain.build_no_viable_alt', { image: '""' }] }
                 ],
                 type: 'boolean'
               }

@@ -87,7 +87,7 @@ export const RowEventTestCase: TestCaseInterface = {
         label: 'empty rows',
         namespaceId,
         resultBefore: 'Foo',
-        resultAfter: 'Row "3" not found',
+        resultAfter: { message: 'Row "3" not found', type: 'deps' },
         events: [['rowChange', { spreadsheetId, namespaceId, rows: [] }]]
       }
     ]

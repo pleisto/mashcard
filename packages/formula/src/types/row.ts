@@ -12,7 +12,9 @@ export const FormulaRowAttributes: FormulaTypeAttributes<typeof TypeName, typeof
   dump: ({ result, ...rest }) => ({ ...rest, result: [result.spreadsheetId, result.findKey] }),
   cast: ({ result, ...rest }, ctx) => {
     const row = ctx.findRow(result[0], result[1])
-    return row ? { ...rest, result: row } : { ...rest, result: `Row not found`, meta: 'deps', type: 'Error' }
+    return row
+      ? { ...rest, result: row }
+      : { ...rest, result: { message: 'errors.parse.not_found.row', type: 'deps' }, type: 'Error' }
   },
   display: ({ result, ...rest }) => ({ ...rest, result: `Row[${result.rowIndex}]` })
 }

@@ -54,28 +54,37 @@ export const stringOperator: OperatorType = {
       { definition: '= "hel\'lo"', result: "hel'lo" }
     ],
     errorTestCases: [
-      { definition: '="123" + 1', errorType: 'type', errorMessage: 'Expected number,Cell but got string' },
-      { definition: '="', errorType: 'parse', errorMessage: 'Parse error: "\\""', valid: false },
+      {
+        definition: '="123" + 1',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'string' }]
+      },
+      {
+        definition: '="',
+        errorType: 'parse',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"\\""' }],
+        valid: false
+      },
       { definition: '=foo"', errorType: 'syntax', errorMessage: '"foo" not found' },
       {
         definition: '= "Hello',
         label: 'ParseError without closing quote',
         errorType: 'parse',
-        errorMessage: 'Parse error: "\\"Hello"',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"\\"Hello"' }],
         valid: false
       },
       {
         definition: '= "hel"lo"',
         label: 'lex error when parse "hel"lo" => parseError',
         errorType: 'parse',
-        errorMessage: 'Not all input parsed: lo',
+        errorMessage: ['errors.parse.chevrotain.not_all_input_parsed', { image: 'lo' }],
         valid: false
       },
       {
         definition: "= 'hello'",
         label: 'Single quote => parseError',
         errorType: 'parse',
-        errorMessage: 'Parse error: "\'hello\'"',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"\'hello\'"' }],
         valid: false
       }
     ]

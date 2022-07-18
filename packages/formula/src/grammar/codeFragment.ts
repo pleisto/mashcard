@@ -343,7 +343,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 
           object = this.ctx.formulaContext.findBlockById(namespaceId)
           if (!object) {
-            extraErrorMessages.push({ type: 'syntax', message: 'Block not found' })
+            extraErrorMessages.push({ type: 'syntax', message: 'errors.parse.not_found.block' })
           }
         }
 
@@ -353,7 +353,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
             object = this.ctx.formulaContext.findSpreadsheet(attrs.findKey)
           }
           if (!object) {
-            extraErrorMessages.push({ type: 'syntax', message: 'Spreadsheet not found' })
+            extraErrorMessages.push({ type: 'syntax', message: 'errors.parse.not_found.spreadsheet' })
           }
         }
 
@@ -363,7 +363,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
             object = this.ctx.formulaContext.findColumn(attrs.namespaceId, attrs.findKey)
           }
           if (!object) {
-            extraErrorMessages.push({ type: 'syntax', message: 'Column not found' })
+            extraErrorMessages.push({ type: 'syntax', message: 'errors.parse.not_found.column' })
           }
         }
 
@@ -373,7 +373,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
             object = this.ctx.formulaContext.findRow(attrs.namespaceId, attrs.findKey)
           }
           if (!object) {
-            extraErrorMessages.push({ type: 'syntax', message: 'Row not found' })
+            extraErrorMessages.push({ type: 'syntax', message: 'errors.parse.not_found.row' })
           }
         }
 
@@ -749,7 +749,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
         SharpFragment,
         {
           ...token2fragment(namespaceToken, 'any'),
-          errors: [{ message: `Block not found: ${namespaceId}`, type: 'deps' }]
+          errors: [{ message: 'errors.parse.not_found.block', type: 'deps' }]
         }
       ],
       image: `#${namespaceToken.image}`,
@@ -859,7 +859,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
       return {
         codeFragments: nameFragments.map(c => ({
           ...c,
-          errors: [{ message: `Unknown function ${functionKey}`, type: 'syntax' }]
+          errors: [{ message: ['errors.parse.not_found.function', { key: functionKey }], type: 'syntax' }]
         })),
         image: images.join(''),
         type: 'any'
@@ -873,7 +873,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 
     const clauseErrorMessages: ErrorMessage[] = []
     if (!clause) {
-      clauseErrorMessages.push({ message: `Function ${functionKey} not found`, type: 'deps' })
+      clauseErrorMessages.push({ message: ['errors.parse.not_found.function', { key: functionKey }], type: 'deps' })
     } else if (clause.feature && !this.ctx.formulaContext.features.includes(clause.feature)) {
       clauseErrorMessages.push({ message: `Feature ${clause.feature} not enabled`, type: 'deps' })
     }

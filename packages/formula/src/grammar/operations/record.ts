@@ -72,8 +72,19 @@ export const recordOperator: OperatorType = {
     ],
     errorTestCases: [
       { definition: '={', errorType: 'syntax', errorMessage: 'errors.parse.missing.token' },
-      { definition: '=}', errorType: 'parse', errorMessage: 'Parse error: "}"', valid: false },
-      { definition: '={a}', errorType: 'parse', errorMessage: 'TODO mismatch token recordField', valid: false },
+      {
+        definition: '=}',
+        errorType: 'parse',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"}"' }],
+        valid: false
+      },
+      {
+        definition: '={a}',
+        errorType: 'parse',
+        errorMessage: ['errors.parse.chevrotain.mismatch_token', { image: 'recordField' }],
+        groupOptions: [{ name: 'basicError' }],
+        valid: false
+      },
       { definition: '={a', errorType: 'syntax', errorMessage: 'errors.parse.missing.token' },
       { definition: '={a: }', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '={a: 1', errorType: 'syntax', errorMessage: 'errors.parse.missing.token' },

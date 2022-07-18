@@ -29,6 +29,12 @@ export const nullOperator: OperatorType = {
       },
       { definition: '=Null', result: null }
     ],
-    errorTestCases: [{ definition: '=null + 1', errorType: 'type', errorMessage: 'Expected number,Cell but got null' }]
+    errorTestCases: [
+      {
+        definition: '=null + 1',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'null' }]
+      }
+    ]
   }
 }

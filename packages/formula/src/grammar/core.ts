@@ -24,7 +24,7 @@ import { FormulaParser } from './parser'
 import { getCompletion } from './completer'
 import { FormulaInterpreter } from './interpreter'
 import { CodeFragmentVisitor } from './codeFragment'
-import { shouldReturnEarly } from './util'
+import { parseErrorMessage, shouldReturnEarly } from './util'
 import { createVariableTask } from '../context'
 import { addSpaceStep } from './steps'
 import { devWarning } from '@mashcard/design-system'
@@ -312,7 +312,7 @@ const parse2 = (ctx: FunctionContext): ParseResult => {
 
   if (lexErrors.length > 0 || parseErrors.length > 0) {
     const errorMessages = (lexErrors.length ? lexErrors : parseErrors).map(e => ({
-      message: e.message,
+      message: parseErrorMessage(e.message),
       type: 'parse'
     })) as [ErrorMessage, ...ErrorMessage[]]
 
@@ -426,9 +426,8 @@ const innerInterpretFirst = ({
 }): VariableValue | undefined => {
   if (errorMessages.length > 0) {
     const result: AnyTypeResult<'Error'> = {
-      result: errorMessages[0].message,
       type: 'Error',
-      meta: errorMessages[0].type
+      result: { message: errorMessages[0].message, type: errorMessages[0].type }
     }
     return { success: false, result }
   }
@@ -466,7 +465,7 @@ export const innerInterpret = async ({
   } catch (e) {
     devWarning(true, e)
     const message = `[FATAL] ${(e as any).message as string}`
-    return { success: false, result: { result: message, type: 'Error', meta: 'fatal' } }
+    return { success: false, result: { result: { message, type: 'fatal' }, type: 'Error' } }
   }
 }
 

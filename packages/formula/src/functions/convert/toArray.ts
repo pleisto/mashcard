@@ -44,7 +44,7 @@ export const convertToArray = createFunctionClause({
       }
 
     if (result < 0) {
-      return { type: 'Error', result: 'Number should be positive', meta: 'runtime' }
+      return { type: 'Error', result: { message: 'Number should be positive', type: 'runtime' } }
     }
     return {
       type: 'Array',

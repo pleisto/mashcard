@@ -27,7 +27,7 @@ export const thisRecordOperator: OperatorType = {
   rhsType: 'any',
   dynamicInterpretLhs: async ({ args, operators, interpreter }) => {
     if (interpreter.ctx.meta.richType.type !== 'spreadsheet') {
-      return { type: 'Error', result: unavailableMessage.message, meta: 'runtime' }
+      return { type: 'Error', result: { message: unavailableMessage.message, type: 'runtime' } }
     }
 
     const {
@@ -42,7 +42,8 @@ export const thisRecordOperator: OperatorType = {
       value: spreadsheetId,
       type: 'id'
     })
-    if (!spreadsheet) return { type: 'Error', result: `Spreadsheet ${spreadsheet} not found`, meta: 'runtime' }
+    if (!spreadsheet)
+      return { type: 'Error', result: { message: `Spreadsheet ${spreadsheet} not found`, type: 'runtime' } }
 
     return { type: 'Spreadsheet', result: spreadsheet }
   },
@@ -69,7 +70,7 @@ export const thisRecordOperator: OperatorType = {
         image,
         codeFragments: codeFragments.map(c => ({
           ...c,
-          errors: [{ type: 'syntax', message: 'Spreadsheet not found' }, ...c.errors]
+          errors: [{ type: 'syntax', message: 'errors.parse.not_found.spreadsheet' }, ...c.errors]
         })),
         type
       }

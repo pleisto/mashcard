@@ -258,49 +258,49 @@ const testCases: {
   Cst: [
     {
       testCase: { type: 'Cst', result: { name: '', children: {} } },
-      dumpResult: { result: 'Not supported', type: 'Cst' },
+      dumpResult: { result: 'other.not_supported', type: 'Cst' },
       displayResult: { type: 'Cst', result: '#<Cst>' },
-      matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
+      matchTestCase: { result: { message: 'other.not_supported', type: 'runtime' }, type: 'Error' }
     }
   ],
   Reference: [
     {
       testCase: { type: 'Reference', result: { kind: 'self' } },
-      dumpResult: { result: 'Not supported', type: 'Reference' },
+      dumpResult: { result: 'other.not_supported', type: 'Reference' },
       displayResult: { type: 'Reference', result: '#<Reference>' },
-      matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
+      matchTestCase: { result: { message: 'other.not_supported', type: 'runtime' }, type: 'Error' }
     }
   ],
   Function: [
     {
       testCase: { type: 'Function', result: [{ name: 'Set', args: [] }] },
-      dumpResult: { result: 'Not supported', type: 'Function' },
+      dumpResult: { result: 'other.not_supported', type: 'Function' },
       displayResult: { type: 'Function', result: '#<Function>' },
-      matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
+      matchTestCase: { result: { message: 'other.not_supported', type: 'runtime' }, type: 'Error' }
     }
   ],
   Predicate: [
     {
       testCase: { type: 'Predicate', result: 123, meta: { operator: 'equal' } },
-      dumpResult: { result: 'Not supported', type: 'Predicate' },
+      dumpResult: { result: 'other.not_supported', type: 'Predicate' },
       displayResult: { type: 'Predicate', result: '[equal] 123' },
-      matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
+      matchTestCase: { result: { message: 'other.not_supported', type: 'runtime' }, type: 'Error' }
     }
   ],
   Button: [
     {
       testCase: { type: 'Button', result: null as unknown as ButtonType },
-      dumpResult: { result: 'Not supported', type: 'Button' },
+      dumpResult: { result: 'other.not_supported', type: 'Button' },
       displayResult: { type: 'Button', result: '#<Button>' },
-      matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
+      matchTestCase: { result: { message: 'other.not_supported', type: 'runtime' }, type: 'Error' }
     }
   ],
   Switch: [
     {
       testCase: { type: 'Switch', result: null as unknown as SwitchType },
-      dumpResult: { result: 'Not supported', type: 'Switch' },
+      dumpResult: { result: 'other.not_supported', type: 'Switch' },
       displayResult: { type: 'Switch', result: '#<Switch>' },
-      matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
+      matchTestCase: { result: { message: 'other.not_supported', type: 'runtime' }, type: 'Error' }
     }
   ],
   NoPersist: [
@@ -348,9 +348,9 @@ const testCases: {
   ],
   Error: [
     {
-      testCase: { type: 'Error', result: 'bang!', meta: 'runtime' },
+      testCase: { type: 'Error', result: { message: 'bang!', type: 'runtime' } },
       displayResult: { type: 'Error', result: '#<Error> bang!' },
-      dumpResult: { type: 'Error', result: ['runtime', 'bang!'] }
+      dumpResult: { type: 'Error', result: { message: 'bang!', type: 'runtime' } }
     }
   ],
   Array: [
@@ -387,7 +387,7 @@ const testCases: {
       testCase: { type: 'Block', result: new BlockClass(formulaContext, { id: unknownNamespaceId, name: 'Page2' }) },
       dumpResult: { type: 'Block', result: unknownNamespaceId },
       displayResult: { type: 'Block', result: 'Page2' },
-      matchTestCase: { result: `Block not found`, meta: 'deps', type: 'Error' }
+      matchTestCase: { result: { message: 'errors.parse.not_found.block', type: 'deps' }, type: 'Error' }
     }
   ],
   Spreadsheet: [
@@ -415,9 +415,9 @@ const testCases: {
   Range: [
     {
       testCase: { type: 'Range', result: null as unknown as RangeType },
-      dumpResult: { result: 'Not supported', type: 'Range' },
+      dumpResult: { result: 'other.not_supported', type: 'Range' },
       displayResult: { type: 'Range', result: '#<Range>' },
-      matchTestCase: { result: 'Not supported', meta: 'runtime', type: 'Error' }
+      matchTestCase: { result: { message: 'other.not_supported', type: 'runtime' }, type: 'Error' }
     }
   ]
 }

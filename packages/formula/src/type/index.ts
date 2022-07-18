@@ -777,7 +777,9 @@ export interface BackendActions {
   commit: (commitFormulas: Formula[], deleteFormulas: DeleteFormula[]) => Promise<{ success: boolean }>
 }
 
+export type ErrorMessageType = string | [`errors.${string}`, Record<string, string>]
+
 export interface ErrorMessage {
-  readonly message: string
+  readonly message: ErrorMessageType
   readonly type: ErrorType
 }

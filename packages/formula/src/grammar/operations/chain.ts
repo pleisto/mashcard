@@ -31,13 +31,17 @@ export const chainOperator: OperatorType = {
   testCases: {
     successTestCases: [
       { definition: '={a:1} . a', result: 1 },
-      { definition: '={a:1}.b', result: 'Key b not found' },
+      {
+        definition: '={a:1}.b',
+        groupOptions: [{ name: 'basicError' }],
+        result: { message: ['errors.interpret.not_found.key', { key: 'b' }], type: 'runtime' }
+      },
       { definition: '=[1,2,3].1', result: 1 },
-      { definition: '=[123].b', result: 'Need a number: b' },
+      { definition: '=[123].b', result: { message: 'Need a number: b', type: 'syntax' } },
       { definition: '={a:1}."a"', result: 1 },
       { definition: '=[2, "foo", true].2', result: 'foo' },
-      { definition: '=[2, "foo", true].4', result: 'Index 4 out of bounds' },
-      { definition: '=[2, "foo", true].foo', result: 'Need a number: foo' },
+      { definition: '=[2, "foo", true].4', result: { message: 'Index 4 out of bounds', type: 'runtime' } },
+      { definition: '=[2, "foo", true].foo', result: { message: 'Need a number: foo', type: 'syntax' } },
       // Function call
       { definition: '=1.T()', result: 1 },
       { definition: '=1 . T()', result: 1 },
@@ -52,14 +56,26 @@ export const chainOperator: OperatorType = {
       { definition: '=1."a"', errorType: 'syntax', errorMessage: 'Access error' },
       { definition: '=true.a', errorType: 'syntax', errorMessage: 'Access error' },
       // Function call
-      { definition: '=1.START_WITH("123")', errorType: 'type', errorMessage: 'Expected string but got number' },
+      {
+        definition: '=1.START_WITH("123")',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'string', got: 'number' }]
+      },
       { definition: '=123.ABS()', errorType: 'deps', errorMessage: 'core::ABS is not chainable' },
 
       { definition: '=ABS(1).', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '="FOO".', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '="FOO".T', errorType: 'syntax', errorMessage: 'Access error' },
-      { definition: '="foo".START_WITH(123)', errorType: 'type', errorMessage: 'Expected string but got number' },
-      { definition: '=true.START_WITH("123")', errorType: 'type', errorMessage: 'Expected string but got boolean' },
+      {
+        definition: '="foo".START_WITH(123)',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'string', got: 'number' }]
+      },
+      {
+        definition: '=true.START_WITH("123")',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'string', got: 'boolean' }]
+      },
       { definition: '="123".LEN()', errorType: 'deps', errorMessage: 'core::LEN is not chainable' },
 
       // Visit

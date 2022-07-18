@@ -25,7 +25,7 @@ const Spreadsheet = (
     : defaultData
 
   if (!['void', 'Record'].includes(meta)) {
-    return { type: 'Error', result: `Spreadsheet type unmatched: ${meta}`, meta: 'runtime' }
+    return { type: 'Error', result: { message: `Spreadsheet type unmatched: ${meta}`, type: 'runtime' } }
   }
 
   const spreadsheetId = uuid()

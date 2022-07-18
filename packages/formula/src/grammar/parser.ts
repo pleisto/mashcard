@@ -1,4 +1,4 @@
-import { CstParser, IParserErrorMessageProvider } from 'chevrotain'
+import { CstParser, defaultParserErrorProvider, IParserErrorMessageProvider } from 'chevrotain'
 import {
   allTokens,
   AdditionOperator,
@@ -37,26 +37,25 @@ import {
   ThisRow,
   ThisRecord
 } from './lexer'
+import { buildErrorMessage } from './util'
 
 const errorProvider: IParserErrorMessageProvider = {
   buildMismatchTokenMessage(options) {
-    return `TODO mismatch token ${options.ruleName}`
+    return buildErrorMessage(['errors.parse.chevrotain.mismatch_token', { image: options.ruleName }])
   },
   buildNotAllInputParsedMessage(options) {
-    // changing the template of the error message #1
-    return `Not all input parsed: ${options.firstRedundant.image}`
+    return buildErrorMessage(['errors.parse.chevrotain.not_all_input_parsed', { image: options.firstRedundant.image }])
   },
 
   buildNoViableAltMessage(options) {
-    return `Parse error: ${JSON.stringify(options.actual[0].image)}`
-    // devLog(options)
-    // defer to the default implementation for `buildNoViableAltMessage`
-    // return defaultParserErrorProvider.buildNoViableAltMessage(options)
+    return buildErrorMessage([
+      'errors.parse.chevrotain.build_no_viable_alt',
+      { image: JSON.stringify(options.actual[0].image) }
+    ])
   },
 
   buildEarlyExitMessage(options) {
-    // translating the error message to Spanish
-    return `TODO early exit: ${options.expectedIterationPaths[0][0].name}`
+    return defaultParserErrorProvider.buildEarlyExitMessage(options)
   }
 }
 

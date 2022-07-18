@@ -3,7 +3,7 @@ import { FormulaContext, FormulaContextArgs } from '../context'
 import { dispatchFormulaBlockNameChange } from '../events'
 import { ContextInterface, FunctionContext, InterpretContext } from '../type'
 import { Cell, Column, Row, SpreadsheetClass, SpreadsheetType } from '../controls'
-import { columnDisplayIndex } from '../grammar'
+import { columnDisplayIndex, errorMessageToString } from '../grammar'
 import {
   CellInput,
   ColumnInput,
@@ -27,7 +27,7 @@ const quickInsert = async (
 ): Promise<void> => {
   const parseResult = parse(ctx)
   if (!parseResult.success && !ignoreParseError) {
-    throw new Error(parseResult.errorMessages[0]!.message)
+    throw new Error(errorMessageToString(parseResult.errorMessages[0]!))
   }
 
   const tempT = await interpret({ parseResult, ctx })
@@ -35,8 +35,8 @@ const quickInsert = async (
 
   const result = await variable.t.task.variableValue
   if (!ignoreSyntaxError) {
-    if (result.result.type === 'Error' && !['runtime'].includes(result.result.meta)) {
-      throw new Error(result.result.result)
+    if (result.result.type === 'Error' && !['runtime'].includes(result.result.result.type)) {
+      throw new Error(errorMessageToString(result.result.result))
     }
   }
   await variable.save()
@@ -178,7 +178,7 @@ export const makeContext = async (options: MakeContextOptions): Promise<MakeCont
   }
 
   let firstNamespaceId: string | undefined
-  const checkVariables: Array<{ namespaceId: string; variableId: string; name: string; result: any }> = []
+  const checkVariables = []
   for (const { pageId, pageName, variables, spreadsheets } of [...options.pages]) {
     const [namespaceId, state] = getUuid(pageId, uuidState)
     uuidState = state
@@ -204,7 +204,7 @@ export const makeContext = async (options: MakeContextOptions): Promise<MakeCont
         insertOptions ?? {}
       )
       if (result !== undefined) {
-        checkVariables.push({ namespaceId, variableId: finalVariableId, name: variableName, result })
+        checkVariables.push({ namespaceId, variableId: finalVariableId, pageName, name: variableName, result })
       }
     }
 
@@ -215,14 +215,15 @@ export const makeContext = async (options: MakeContextOptions): Promise<MakeCont
     }
   }
 
-  for (const { namespaceId, variableId, name, result } of checkVariables) {
+  for (const { namespaceId, variableId, name, result, pageName } of checkVariables) {
     const v = formulaContext.findVariableById(namespaceId, variableId)!
-    if (!v) throw new Error(`variable ${name} not found`)
+    if (!v) throw new Error(`[${pageName}] variable ${name} not found`)
     const value = (await v!.t.task.variableValue).result.result
-    if (value !== result) throw new Error(`variable ${name} value mismatch: "${value}" !== "${result}"`)
+    if (JSON.stringify(value) !== JSON.stringify(result))
+      throw new Error(`[${pageName}] variable ${name} value mismatch: "${value}" !== "${result}"`)
     const v2 = formulaContext.findVariableByName(namespaceId, name)
-    if (!v2) throw new Error(`variable ${name} not found`)
-    if (v2.t.meta.variableId !== v.t.meta.variableId) throw new Error(`variable ${name} id mismatch`)
+    if (!v2) throw new Error(`[${pageName}] variable ${name} not found`)
+    if (v2.t.meta.variableId !== v.t.meta.variableId) throw new Error(`[${pageName}] variable ${name} id mismatch`)
   }
 
   const buildMeta: MakeContextResult['buildMeta'] = args => {

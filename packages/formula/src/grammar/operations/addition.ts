@@ -23,7 +23,7 @@ export const additionOperator: OperatorType = {
     }
 
     if (isNaN(result)) {
-      return { type: 'Error', result: `NaN`, meta: 'runtime' }
+      return { type: 'Error', result: { message: 'errors.interpret.not_a_number', type: 'runtime' } }
     }
 
     return { result, type: 'number' }
@@ -58,16 +58,31 @@ export const additionOperator: OperatorType = {
       { definition: '=Addition.spreadsheet.first.1 + 1', result: 2 },
       { definition: '=1 + Addition.spreadsheet.first.1', result: 2 },
       { definition: '=Addition.spreadsheet.first.1 + Addition.spreadsheet.first.2', result: 4 },
-      { definition: '=Addition.spreadsheet.first.3 + 0', result: 'NaN' },
+      {
+        definition: '=Addition.spreadsheet.first.3 + 0',
+        result: { message: 'errors.interpret.not_a_number', type: 'runtime' }
+      },
       { definition: '=Addition.spreadsheet.first.4 + 0', result: 0 },
       { definition: '=Addition.spreadsheet.first.4 + 0 + Addition.spreadsheet.first.2', result: 3 },
-      { definition: '=Addition.spreadsheet.first.2 + Addition.spreadsheet.first.3', result: 'NaN' },
-      { definition: '= 1/0 + 1', result: 'errors.interpret.runtime.division_by_zero', label: 'runtime error' }
+      {
+        definition: '=Addition.spreadsheet.first.2 + Addition.spreadsheet.first.3',
+        result: { message: 'errors.interpret.not_a_number', type: 'runtime' }
+      },
+      {
+        definition: '= 1/0 + 1',
+        result: { message: 'errors.interpret.runtime.division_by_zero', type: 'runtime' },
+        label: 'runtime error'
+      }
     ],
     errorTestCases: [
       { definition: '=+', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '=-', errorType: 'syntax', errorMessage: 'Missing number' },
-      { definition: '=+1', errorType: 'parse', errorMessage: 'Parse error: "+"', valid: false },
+      {
+        definition: '=+1',
+        errorType: 'parse',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"+"' }],
+        valid: false
+      },
       { definition: '=1+', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '= 1+$', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' }
     ]

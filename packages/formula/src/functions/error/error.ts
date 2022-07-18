@@ -11,16 +11,12 @@ export const errorError = createFunctionClause({
   lazy: false,
   acceptError: false,
   effect: false,
-  examples: [{ input: '=ERROR("foo bar")', output: { type: 'Error', result: 'foo bar', meta: 'custom' } }],
+  examples: [{ input: '=ERROR("foo bar")', output: { type: 'Error', result: { message: 'foo bar', type: 'custom' } } }],
   description: 'Returns an error with the given message.',
   group: 'core',
   args: [{ name: 'reason', type: 'string' }],
-  testCases: [{ input: ['foo bar'], output: { type: 'Error', result: 'foo bar', meta: 'custom' } }],
+  testCases: [{ input: ['foo bar'], output: { type: 'Error', result: { message: 'foo bar', type: 'custom' } } }],
   returns: 'Error',
   chain: true,
-  reference: (ctx, reason) => ({
-    result: reason.result,
-    type: 'Error',
-    meta: 'custom'
-  })
+  reference: (ctx, reason) => ({ result: { message: reason.result, type: 'custom' }, type: 'Error' })
 })

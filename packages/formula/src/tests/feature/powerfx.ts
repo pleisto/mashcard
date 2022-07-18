@@ -34,20 +34,24 @@ export const PowerFxTestCase: TestCaseInterface = {
       }
     ],
     successTestCases: [
-      { definition: `=CountIf(${spreadsheetToken}, >= 3)`, result: 'Column is missing', label: 'CountIf error1' }
+      {
+        definition: `=CountIf(${spreadsheetToken}, >= 3)`,
+        result: { message: 'Column is missing', type: 'runtime' },
+        label: 'CountIf error1'
+      }
     ],
     errorTestCases: [
       {
         label: 'CountIf ok',
         definition: `=CountIf(${spreadsheetToken}, ${spreadsheetToken}.first >= 3)`,
-        errorMessage: 'Expected number but got Column',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number', got: 'Column' }],
         errorType: 'type'
       },
       {
         label: 'CountIf ok',
         definition: `=CountIf(${spreadsheetToken}, ${spreadsheetToken}."first" >= 3)`,
         newAbbrevInput: `=CountIf(${spreadsheetToken}, ${spreadsheetToken}.first >= 3)`,
-        errorMessage: 'Expected number but got Column',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number', got: 'Column' }],
         errorType: 'type'
       }
     ]

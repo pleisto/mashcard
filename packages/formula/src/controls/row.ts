@@ -73,31 +73,22 @@ export class RowClass implements RowType {
   async handleInterpret(interpreter: FormulaInterpreter, name: string): Promise<AnyTypeResult> {
     const column = this.spreadsheet.findColumn({ namespaceId: this.namespaceId, value: name, type: 'name' })
     if (!column) {
-      return {
-        type: 'Error',
-        result: `Column "${name}" not found`,
-        meta: 'runtime'
-      }
+      return { type: 'Error', result: { message: `Column "${name}" not found`, type: 'runtime' } }
     }
 
     if (interpreter.ctx.meta.richType.type === 'spreadsheet') {
       const { spreadsheetId, rowId, columnId } = interpreter.ctx.meta.richType.meta
       if (spreadsheetId === this.spreadsheetId && rowId === this.rowId && columnId === column.columnId) {
         return {
-          result: 'errors.interpret.circular_dependency.spreadsheet',
           type: 'Error',
-          meta: 'circular_dependency'
+          result: { message: 'errors.interpret.circular_dependency.spreadsheet', type: 'circular_dependency' }
         }
       }
     }
 
     const cell = this.spreadsheet.listCells({ rowId: this.rowId, columnId: column.columnId })[0]
     if (!cell) {
-      return {
-        type: 'Error',
-        result: `Cell "${name}" not found`,
-        meta: 'runtime'
-      }
+      return { type: 'Error', result: { message: `Cell "${name}" not found`, type: 'runtime' } }
     }
 
     return { type: 'Cell', result: this.newCell(cell, name) }

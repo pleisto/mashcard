@@ -38,6 +38,12 @@ export const predicateOperator: OperatorType = {
       { definition: '=<>"123"', result: '123' },
       { definition: '= <= (1+1)', result: 2 }
     ],
-    errorTestCases: [{ definition: '=>=true', errorType: 'type', errorMessage: 'Expected number but got boolean' }]
+    errorTestCases: [
+      {
+        definition: '=>=true',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number', got: 'boolean' }]
+      }
+    ]
   }
 }

@@ -26,7 +26,7 @@ export const coreSet = createFunctionClause({
     if (reference.kind === 'variable') {
       const variable = ctx.formulaContext.findVariableById(reference.namespaceId, reference.variableId)
       if (!variable) {
-        return { type: 'Error', meta: 'runtime', result: 'Variable not found' }
+        return { type: 'Error', result: { message: 'Variable not found', type: 'runtime' } }
       }
     }
     return { type: 'Function', result: [{ name: 'Set', args: [ref, cst] }] }

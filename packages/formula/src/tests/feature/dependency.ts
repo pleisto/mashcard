@@ -21,7 +21,7 @@ export const DependencyTestCase: TestCaseInterface = {
             variableName: 'var2',
             definition: '=DependencySubPage.var1',
             insertOptions: { ignoreSyntaxError: true, ignoreParseError: true },
-            result: '"var0" not found'
+            result: { message: '"var0" not found', type: 'deps' }
           }
         ]
       },
@@ -34,7 +34,7 @@ export const DependencyTestCase: TestCaseInterface = {
             variableName: 'var1',
             definition: '=DependencyParentPage.var0',
             insertOptions: { ignoreSyntaxError: true, ignoreParseError: true },
-            result: '"var0" not found'
+            result: { message: '"var0" not found', type: 'deps' }
           }
         ]
       }
@@ -48,10 +48,22 @@ export const DependencyTestCase: TestCaseInterface = {
           {
             action: { name: 'removeVariable' },
             expected: [
-              { name: 'num3', namespaceId: parentPageNamespaceId, match: '"num0" not found' },
-              { name: 'num4', namespaceId: parentPageNamespaceId, match: '"num0" not found' },
-              { name: 'num5', namespaceId: parentPageNamespaceId, match: '"num0" not found' },
-              { name: 'num0', namespaceId: subPageNamespaceId, match: '"num0" not found' }
+              {
+                name: 'num3',
+                namespaceId: parentPageNamespaceId,
+                match: { message: '"num0" not found', type: 'syntax' }
+              },
+              {
+                name: 'num4',
+                namespaceId: parentPageNamespaceId,
+                match: { message: '"num0" not found', type: 'syntax' }
+              },
+              {
+                name: 'num5',
+                namespaceId: parentPageNamespaceId,
+                match: { message: '"num0" not found', type: 'syntax' }
+              },
+              { name: 'num0', namespaceId: subPageNamespaceId, match: { message: '"num0" not found', type: 'deps' } }
             ]
           }
         ]
@@ -63,7 +75,13 @@ export const DependencyTestCase: TestCaseInterface = {
         testCases: [
           {
             action: { name: 'removeBlock' },
-            expected: [{ name: 'num0', namespaceId: subPageNamespaceId, match: '"DependencyParentPage" not found' }]
+            expected: [
+              {
+                name: 'num0',
+                namespaceId: subPageNamespaceId,
+                match: { message: '"DependencyParentPage" not found', type: 'syntax' }
+              }
+            ]
           }
         ]
       },
@@ -101,9 +119,30 @@ export const DependencyTestCase: TestCaseInterface = {
             action: { name: 'updateDefinition', formula: { definition: '="123"' }, result: '123' },
             expected: [
               { name: 'num2', namespaceId: parentPageNamespaceId, match: '123' },
-              { name: 'num3', namespaceId: parentPageNamespaceId, match: 'Expected number,Cell but got string' },
-              { name: 'num4', namespaceId: parentPageNamespaceId, match: 'Expected number,Cell but got string' },
-              { name: 'num5', namespaceId: parentPageNamespaceId, match: 'Expected number,Cell but got string' }
+              {
+                name: 'num3',
+                namespaceId: parentPageNamespaceId,
+                match: {
+                  message: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'string' }],
+                  type: 'type'
+                }
+              },
+              {
+                name: 'num4',
+                namespaceId: parentPageNamespaceId,
+                match: {
+                  message: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'string' }],
+                  type: 'type'
+                }
+              },
+              {
+                name: 'num5',
+                namespaceId: parentPageNamespaceId,
+                match: {
+                  message: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'string' }],
+                  type: 'type'
+                }
+              }
             ]
           },
           {
@@ -123,12 +162,28 @@ export const DependencyTestCase: TestCaseInterface = {
         type: 'Variable',
         testCases: [
           {
-            action: { name: 'updateDefinition', formula: { definition: '=err' }, result: '"err" not found' },
+            action: {
+              name: 'updateDefinition',
+              formula: { definition: '=err' },
+              result: { message: '"err" not found', type: 'syntax' }
+            },
             expected: [
-              { name: 'num3', namespaceId: parentPageNamespaceId, match: '"err" not found' },
-              { name: 'num4', namespaceId: parentPageNamespaceId, match: '"err" not found' },
-              { name: 'num5', namespaceId: parentPageNamespaceId, match: '"err" not found' },
-              { name: 'num0', namespaceId: subPageNamespaceId, match: '"err" not found' }
+              {
+                name: 'num3',
+                namespaceId: parentPageNamespaceId,
+                match: { message: '"err" not found', type: 'syntax' }
+              },
+              {
+                name: 'num4',
+                namespaceId: parentPageNamespaceId,
+                match: { message: '"err" not found', type: 'syntax' }
+              },
+              {
+                name: 'num5',
+                namespaceId: parentPageNamespaceId,
+                match: { message: '"err" not found', type: 'syntax' }
+              },
+              { name: 'num0', namespaceId: subPageNamespaceId, match: { message: '"err" not found', type: 'syntax' } }
             ]
           },
           {
@@ -145,6 +200,7 @@ export const DependencyTestCase: TestCaseInterface = {
       {
         name: 'num0',
         label: 'rename: num0 -> var0',
+        todoMessage: 'why num0 is deps',
         namespaceId: parentPageNamespaceId,
         type: 'Variable',
         testCases: [
@@ -173,12 +229,28 @@ export const DependencyTestCase: TestCaseInterface = {
           {
             action: { name: 'removeVariable' },
             expected: [
-              { name: 'num3', namespaceId: parentPageNamespaceId, match: '"num0" not found' },
-              { name: 'num4', namespaceId: parentPageNamespaceId, match: '"num0" not found' },
-              { name: 'num5', namespaceId: parentPageNamespaceId, match: '"num0" not found' },
-              { name: 'num0', namespaceId: subPageNamespaceId, match: '"num0" not found' },
-              { name: 'var2', namespaceId: parentPageNamespaceId, match: '"num0" not found' },
-              { name: 'var1', namespaceId: subPageNamespaceId, match: '"num0" not found' }
+              {
+                name: 'num3',
+                namespaceId: parentPageNamespaceId,
+                match: { message: '"num0" not found', type: 'syntax' }
+              },
+              {
+                name: 'num4',
+                namespaceId: parentPageNamespaceId,
+                match: { message: '"num0" not found', type: 'syntax' }
+              },
+              {
+                name: 'num5',
+                namespaceId: parentPageNamespaceId,
+                match: { message: '"num0" not found', type: 'syntax' }
+              },
+              { name: 'num0', namespaceId: subPageNamespaceId, match: { message: '"num0" not found', type: 'deps' } },
+              {
+                name: 'var2',
+                namespaceId: parentPageNamespaceId,
+                match: { message: '"num0" not found', type: 'deps' }
+              },
+              { name: 'var1', namespaceId: subPageNamespaceId, match: { message: '"num0" not found', type: 'deps' } }
             ]
           }
         ]

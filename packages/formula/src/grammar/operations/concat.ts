@@ -18,8 +18,16 @@ export const concatOperator: OperatorType = {
       { definition: '= "" & ""', result: '' }
     ],
     errorTestCases: [
-      { definition: '= 1 & "foo"', errorType: 'type', errorMessage: 'Expected string but got number' },
-      { definition: '= "foo" & 1', errorType: 'type', errorMessage: 'Expected string but got number' }
+      {
+        definition: '= 1 & "foo"',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'string', got: 'number' }]
+      },
+      {
+        definition: '= "foo" & 1',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'string', got: 'number' }]
+      }
     ]
   }
 }

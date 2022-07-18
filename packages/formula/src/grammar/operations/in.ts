@@ -25,7 +25,7 @@ export const inOperator: OperatorType = {
 
       const firstColumn = columns[0]
       if (!firstColumn) {
-        return { type: 'Error', result: 'Spreadsheet is empty', meta: 'runtime' }
+        return { type: 'Error', result: { message: 'errors.interpret.spreadsheet.empty', type: 'runtime' } }
       }
 
       const row = spreadsheet.listRows().find(row => {
@@ -53,7 +53,7 @@ export const inOperator: OperatorType = {
         value: column.spreadsheetId
       })
       if (!spreadsheet) {
-        return { type: 'Error', result: 'Spreadsheet not found', meta: 'runtime' }
+        return { type: 'Error', result: { message: 'errors.interpret.not_found.spreadsheet', type: 'runtime' } }
       }
 
       const row = spreadsheet.listRows().find(row => {
@@ -153,17 +153,26 @@ export const inOperator: OperatorType = {
       {
         definition: '= "foo" in 123',
         errorType: 'type',
-        errorMessage: 'Expected string,Array,Spreadsheet,Column but got number'
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'string,Array,Spreadsheet,Column', got: 'number' }]
       },
       {
         definition: '= false exactin "foo"',
         errorType: 'type',
-        errorMessage: 'Expected Array but got string'
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'Array', got: 'string' }]
       },
       { definition: '= "foo" in', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
       { definition: '=in', errorType: 'syntax', errorMessage: 'errors.parse.missing.expression' },
-      { definition: '=in 123', errorType: 'type', errorMessage: 'Expected Array but got number' },
-      { definition: '=in []', errorType: 'parse', errorMessage: 'Parse error: "in"', valid: false }
+      {
+        definition: '=in 123',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'Array', got: 'number' }]
+      },
+      {
+        definition: '=in []',
+        errorType: 'parse',
+        errorMessage: ['errors.parse.chevrotain.build_no_viable_alt', { image: '"in"' }],
+        valid: false
+      }
     ]
   }
 }

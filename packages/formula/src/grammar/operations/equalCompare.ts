@@ -34,10 +34,14 @@ export const equalCompareOperator: OperatorType = {
       { definition: '= 1 <> "a"', result: true },
       { definition: '= 4 > 3 = true', result: true },
       { definition: '= 2 * 2 > 3 != false', result: true },
-      { definition: '= 3 = 1/0', result: 'errors.interpret.runtime.division_by_zero' }
+      { definition: '= 3 = 1/0', result: { message: 'errors.interpret.runtime.division_by_zero', type: 'runtime' } }
     ],
     errorTestCases: [
-      { definition: '= (1 = 1) > 3', errorType: 'type', errorMessage: 'Expected number but got boolean' }
+      {
+        definition: '= (1 = 1) > 3',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number', got: 'boolean' }]
+      }
     ]
   }
 }

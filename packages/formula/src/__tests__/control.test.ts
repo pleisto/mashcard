@@ -18,7 +18,7 @@ describe('Controls', () => {
     const noFeatureCtx = await makeContext({ initializeOptions: { domain: 'test', features: [] }, pages: [page] })
     const input = `=Button("Foo", Set(#${namespaceId}.${testName1}, (1 + #${namespaceId}.${testName1})))`
     const { errorMessages: errorMessage1 } = noFeatureCtx.parseDirectly({ definition: input, namespaceId })
-    expect(errorMessage1).toEqual([{ message: 'Function Button not found', type: 'deps' }])
+    expect(errorMessage1).toEqual([{ message: ['errors.parse.not_found.function', { key: 'Button' }], type: 'deps' }])
 
     const featureCtx = await makeContext({ initializeOptions: { domain: 'test' }, pages: [page] })
     featureCtx.formulaContext.features = []

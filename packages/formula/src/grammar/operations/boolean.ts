@@ -42,7 +42,11 @@ export const booleanOperator: OperatorType = {
       }
     ],
     errorTestCases: [
-      { definition: '=True + 1', errorType: 'type', errorMessage: 'Expected number,Cell but got boolean' }
+      {
+        definition: '=True + 1',
+        errorType: 'type',
+        errorMessage: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'boolean' }]
+      }
     ]
   }
 }

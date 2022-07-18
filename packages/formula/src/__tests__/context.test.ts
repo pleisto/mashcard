@@ -20,8 +20,7 @@ describe('context', () => {
       { type: 'number', result: -1 }
     )
     expect(result2).toEqual({
-      meta: 'fatal',
-      result: 'Function core::ABS not found',
+      result: { type: 'fatal', message: ['errors.parse.not_found.function', { key: 'core::ABS' }] },
       type: 'Error'
     })
   })
