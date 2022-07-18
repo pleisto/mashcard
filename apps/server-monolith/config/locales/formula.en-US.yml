@@ -2,6 +2,8 @@ en-US:
   formula:
     errors:
       parse:
+        chevrotain:
+          mismatch_token: 'Mismatch token: %{image}'
         unavailable:
           thisRecord: thisRecord is only available in spreadsheet
           thisRow: thisRow is only available in spreadsheet

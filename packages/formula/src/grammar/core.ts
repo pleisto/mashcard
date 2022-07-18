@@ -24,7 +24,7 @@ import { FormulaParser } from './parser'
 import { getCompletion } from './completer'
 import { FormulaInterpreter } from './interpreter'
 import { CodeFragmentVisitor } from './codeFragment'
-import { shouldReturnEarly } from './util'
+import { parseErrorMessage, shouldReturnEarly } from './util'
 import { createVariableTask } from '../context'
 import { addSpaceStep } from './steps'
 import { devWarning } from '@mashcard/design-system'
@@ -312,7 +312,7 @@ const parse2 = (ctx: FunctionContext): ParseResult => {
 
   if (lexErrors.length > 0 || parseErrors.length > 0) {
     const errorMessages = (lexErrors.length ? lexErrors : parseErrors).map(e => ({
-      message: e.message,
+      message: parseErrorMessage(e.message),
       type: 'parse'
     })) as [ErrorMessage, ...ErrorMessage[]]
 

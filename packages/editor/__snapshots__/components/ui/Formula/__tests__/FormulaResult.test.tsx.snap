@@ -2671,6 +2671,29 @@ exports[`FormulaResult record "={a: 1, "a": 2}" -> [syntax] "errors.parse.record
 </div>
 `;
 
+exports[`FormulaResult record "={a}" -> [parse] "errors.parse.chevrotain.mismatch_token,[object Object]" 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-error"
+    >
+      <span
+        class="formula-result-error-type"
+      >
+        parse
+      </span>
+      <span
+        class="formula-result-error-message"
+      >
+        errors.parse.chevrotain.mismatch_token {"image":"recordField"}
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
 exports[`FormulaResult renders nothing if no variableT 1`] = `<div />`;
 
 exports[`FormulaResult thisRecord "=ThisRecord" -> [syntax] "errors.parse.unavailable.thisRecord" 1`] = `

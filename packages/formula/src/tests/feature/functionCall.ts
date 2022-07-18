@@ -162,7 +162,10 @@ export const FunctionCallTestCase: TestCaseInterface = {
                 code: 'Function',
                 display: 'ABS',
                 attrs: { kind: 'Function' },
-                errors: [{ message: 'errors.parse.missing.argument' }, { message: 'TODO mismatch token FunctionCall' }]
+                errors: [
+                  { message: 'errors.parse.missing.argument' },
+                  { message: ['errors.parse.chevrotain.mismatch_token', { image: 'FunctionCall' }] }
+                ]
               },
               {
                 code: 'LParen',

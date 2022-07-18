@@ -7,6 +7,7 @@ import {
   CodeFragment,
   CodeFragmentCodes,
   Completion,
+  ErrorMessageType,
   ExpressionType,
   FormulaDefinition,
   FunctionContext,
@@ -134,7 +135,7 @@ interface SuccessTestCaseType extends RequireField<BaseTestCase<{ key: keyof Var
 interface ErrorTestCaseType extends RequireField<BaseTestCase<{ key: keyof VariableParseResult }>, 'definition'> {
   valid?: boolean
   errorType: ErrorType
-  errorMessage: string
+  errorMessage: ErrorMessageType
 }
 
 interface CompleteInput {

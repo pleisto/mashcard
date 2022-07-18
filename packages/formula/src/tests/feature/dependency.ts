@@ -63,7 +63,7 @@ export const DependencyTestCase: TestCaseInterface = {
                 namespaceId: parentPageNamespaceId,
                 match: { message: '"num0" not found', type: 'syntax' }
               },
-              { name: 'num0', namespaceId: subPageNamespaceId, match: { message: '"num0" not found', type: 'syntax' } }
+              { name: 'num0', namespaceId: subPageNamespaceId, match: { message: '"num0" not found', type: 'deps' } }
             ]
           }
         ]
@@ -239,9 +239,9 @@ export const DependencyTestCase: TestCaseInterface = {
               {
                 name: 'var2',
                 namespaceId: parentPageNamespaceId,
-                match: { message: '"num0" not found', type: 'syntax' }
+                match: { message: '"num0" not found', type: 'deps' }
               },
-              { name: 'var1', namespaceId: subPageNamespaceId, match: { message: '"num0" not found', type: 'syntax' } }
+              { name: 'var1', namespaceId: subPageNamespaceId, match: { message: '"num0" not found', type: 'deps' } }
             ]
           }
         ]

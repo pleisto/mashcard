@@ -4,6 +4,7 @@ import {
   AnyTypeResult,
   CodeFragment,
   ErrorMessage,
+  ErrorMessageType,
   EventDependency,
   EventScope,
   ExpressionType,
@@ -340,4 +341,23 @@ export const castData = (data: any): AnyTypeResult => {
   })
 
   return { type: 'Record', result: newObject, meta: extractSubType(Object.values(newObject)) }
+}
+
+export const errorMessageToString = ({ message }: ErrorMessage): string => {
+  if (typeof message === 'string') return message
+  return `${message[0]}: ${JSON.stringify(message[1])}`
+}
+
+const PARSE_PREFIX_FLAG = '###'
+
+export const buildErrorMessage = (msg: ErrorMessageType): string => {
+  if (typeof msg === 'string') return msg
+  return `${PARSE_PREFIX_FLAG}${JSON.stringify(msg)}`
+}
+
+export const parseErrorMessage = (message: string): ErrorMessageType => {
+  if (!message.startsWith(PARSE_PREFIX_FLAG)) return message
+
+  const [msg, context] = JSON.parse(message.substring(PARSE_PREFIX_FLAG.length))
+  return [msg, context]
 }

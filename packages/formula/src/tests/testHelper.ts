@@ -3,7 +3,7 @@ import { FormulaContext, FormulaContextArgs } from '../context'
 import { dispatchFormulaBlockNameChange } from '../events'
 import { ContextInterface, FunctionContext, InterpretContext } from '../type'
 import { Cell, Column, Row, SpreadsheetClass, SpreadsheetType } from '../controls'
-import { columnDisplayIndex } from '../grammar'
+import { columnDisplayIndex, errorMessageToString } from '../grammar'
 import {
   CellInput,
   ColumnInput,
@@ -27,7 +27,7 @@ const quickInsert = async (
 ): Promise<void> => {
   const parseResult = parse(ctx)
   if (!parseResult.success && !ignoreParseError) {
-    throw new Error(parseResult.errorMessages[0]!.message)
+    throw new Error(errorMessageToString(parseResult.errorMessages[0]!))
   }
 
   const tempT = await interpret({ parseResult, ctx })
@@ -36,7 +36,7 @@ const quickInsert = async (
   const result = await variable.t.task.variableValue
   if (!ignoreSyntaxError) {
     if (result.result.type === 'Error' && !['runtime'].includes(result.result.result.type)) {
-      throw new Error(result.result.result.message)
+      throw new Error(errorMessageToString(result.result.result))
     }
   }
   await variable.save()

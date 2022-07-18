@@ -37,10 +37,11 @@ import {
   ThisRow,
   ThisRecord
 } from './lexer'
+import { buildErrorMessage } from './util'
 
 const errorProvider: IParserErrorMessageProvider = {
   buildMismatchTokenMessage(options) {
-    return `TODO mismatch token ${options.ruleName}`
+    return buildErrorMessage(['errors.parse.chevrotain.mismatch_token', { image: options.ruleName }])
   },
   buildNotAllInputParsedMessage(options) {
     // changing the template of the error message #1
