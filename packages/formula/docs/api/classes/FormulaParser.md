@@ -108,7 +108,7 @@ CstParser.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:317](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L317)
+[packages/formula/src/grammar/parser.ts:316](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L316)
 
 ---
 
@@ -118,7 +118,7 @@ CstParser.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:299](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L299)
+[packages/formula/src/grammar/parser.ts:298](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L298)
 
 ---
 
@@ -128,7 +128,7 @@ CstParser.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:303](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L303)
+[packages/formula/src/grammar/parser.ts:302](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L302)
 
 ---
 
@@ -138,7 +138,7 @@ CstParser.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:288](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L288)
+[packages/formula/src/grammar/parser.ts:287](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L287)
 
 ---
 
@@ -170,7 +170,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:148](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L148)
+[packages/formula/src/grammar/parser.ts:147](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L147)
 
 ---
 
@@ -180,7 +180,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:132](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L132)
+[packages/formula/src/grammar/parser.ts:131](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L131)
 
 ---
 
@@ -190,7 +190,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:214](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L214)
+[packages/formula/src/grammar/parser.ts:213](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L213)
 
 ---
 
@@ -200,7 +200,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:205](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L205)
+[packages/formula/src/grammar/parser.ts:204](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L204)
 
 ---
 
@@ -210,7 +210,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:266](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L266)
+[packages/formula/src/grammar/parser.ts:265](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L265)
 
 ---
 
@@ -220,7 +220,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:173](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L173)
+[packages/formula/src/grammar/parser.ts:172](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L172)
 
 ---
 
@@ -230,7 +230,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:92](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L92)
+[packages/formula/src/grammar/parser.ts:91](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L91)
 
 ---
 
@@ -240,7 +240,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L108)
+[packages/formula/src/grammar/parser.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L107)
 
 ---
 
@@ -250,7 +250,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:124](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L124)
+[packages/formula/src/grammar/parser.ts:123](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L123)
 
 ---
 
@@ -260,7 +260,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:271](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L271)
+[packages/formula/src/grammar/parser.ts:270](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L270)
 
 ---
 
@@ -270,7 +270,7 @@ node_modules/@chevrotain/types/api.d.ts:40
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:100](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L100)
+[packages/formula/src/grammar/parser.ts:99](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L99)
 
 ---
 
@@ -294,7 +294,7 @@ node_modules/@chevrotain/types/api.d.ts:30
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:84](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L84)
+[packages/formula/src/grammar/parser.ts:83](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L83)
 
 ---
 
@@ -304,7 +304,7 @@ node_modules/@chevrotain/types/api.d.ts:30
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L116)
+[packages/formula/src/grammar/parser.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L115)
 
 ---
 
@@ -328,7 +328,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:185](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L185)
+[packages/formula/src/grammar/parser.ts:184](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L184)
 
 ---
 
@@ -338,7 +338,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:255](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L255)
+[packages/formula/src/grammar/parser.ts:254](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L254)
 
 ---
 
@@ -348,7 +348,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:140](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L140)
+[packages/formula/src/grammar/parser.ts:139](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L139)
 
 ---
 
@@ -358,7 +358,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:157](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L157)
+[packages/formula/src/grammar/parser.ts:156](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L156)
 
 ---
 
@@ -368,7 +368,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:280](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L280)
+[packages/formula/src/grammar/parser.ts:279](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L279)
 
 ---
 
@@ -378,7 +378,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:241](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L241)
+[packages/formula/src/grammar/parser.ts:240](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L240)
 
 ---
 
@@ -388,7 +388,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:165](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L165)
+[packages/formula/src/grammar/parser.ts:164](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L164)
 
 ---
 
@@ -398,7 +398,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:222](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L222)
+[packages/formula/src/grammar/parser.ts:221](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L221)
 
 ---
 
@@ -408,7 +408,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:235](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L235)
+[packages/formula/src/grammar/parser.ts:234](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L234)
 
 ---
 
@@ -418,7 +418,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:250](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L250)
+[packages/formula/src/grammar/parser.ts:249](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L249)
 
 ---
 
@@ -428,7 +428,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:193](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L193)
+[packages/formula/src/grammar/parser.ts:192](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L192)
 
 ---
 
@@ -438,7 +438,7 @@ node_modules/@chevrotain/types/api.d.ts:857
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:79](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L79)
+[packages/formula/src/grammar/parser.ts:78](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L78)
 
 ## Methods
 

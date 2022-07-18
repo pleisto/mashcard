@@ -11,11 +11,11 @@
 
 ### <a id="message" name="message"></a> message
 
-• `Readonly` **message**: `string`
+• `Readonly` **message**: [`ErrorMessageType`](../README.md#errormessagetype)
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:781](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L781)
+[packages/formula/src/type/index.ts:783](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L783)
 
 ---
 
@@ -25,4 +25,4 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:782](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L782)
+[packages/formula/src/type/index.ts:784](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L784)
