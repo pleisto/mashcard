@@ -24,6 +24,7 @@ en-US:
         record:
           key_duplicated: Record key duplicated
       interpret:
+        not_a_number: NaN
         circular_dependency:
           spreadsheet: Circular dependency found in spreadsheet when run
         runtime:

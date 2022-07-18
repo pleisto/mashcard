@@ -23,7 +23,7 @@ export const additionOperator: OperatorType = {
     }
 
     if (isNaN(result)) {
-      return { type: 'Error', result: { message: `NaN`, type: 'runtime' } }
+      return { type: 'Error', result: { message: 'errors.interpret.not_a_number', type: 'runtime' } }
     }
 
     return { result, type: 'number' }
@@ -58,12 +58,15 @@ export const additionOperator: OperatorType = {
       { definition: '=Addition.spreadsheet.first.1 + 1', result: 2 },
       { definition: '=1 + Addition.spreadsheet.first.1', result: 2 },
       { definition: '=Addition.spreadsheet.first.1 + Addition.spreadsheet.first.2', result: 4 },
-      { definition: '=Addition.spreadsheet.first.3 + 0', result: { message: 'NaN', type: 'runtime' } },
+      {
+        definition: '=Addition.spreadsheet.first.3 + 0',
+        result: { message: 'errors.interpret.not_a_number', type: 'runtime' }
+      },
       { definition: '=Addition.spreadsheet.first.4 + 0', result: 0 },
       { definition: '=Addition.spreadsheet.first.4 + 0 + Addition.spreadsheet.first.2', result: 3 },
       {
         definition: '=Addition.spreadsheet.first.2 + Addition.spreadsheet.first.3',
-        result: { message: 'NaN', type: 'runtime' }
+        result: { message: 'errors.interpret.not_a_number', type: 'runtime' }
       },
       {
         definition: '= 1/0 + 1',

@@ -29,7 +29,7 @@ export const multiplicationOperator: OperatorType = {
     }
 
     if (isNaN(result)) {
-      return { type: 'Error', result: { message: `NaN`, type: 'runtime' } }
+      return { type: 'Error', result: { message: 'errors.interpret.not_a_number', type: 'runtime' } }
     }
 
     return { result, type: 'number' }
@@ -71,12 +71,16 @@ export const multiplicationOperator: OperatorType = {
       { definition: '=Multi.spreadsheet.first.1 / 2', result: 1 },
       { definition: '=3 * Multi.spreadsheet.first.1', result: 6 },
       { definition: '=Multi.spreadsheet.first.1 * Multi.spreadsheet.first.2', result: 6 },
-      { definition: '=Multi.spreadsheet.first.3 * 0', result: { message: 'NaN', type: 'runtime' } },
+      {
+        definition: '=Multi.spreadsheet.first.3 * 0',
+        result: { message: 'errors.interpret.not_a_number', type: 'runtime' },
+        groupOptions: [{ name: 'basicError' }]
+      },
       { definition: '=Multi.spreadsheet.first.4 * 10', result: 0 },
       { definition: '=Multi.spreadsheet.first.4 * 1 * Multi.spreadsheet.first.2', result: 0 },
       {
         definition: '=Multi.spreadsheet.first.2 + Multi.spreadsheet.first.3',
-        result: { message: 'NaN', type: 'runtime' }
+        result: { message: 'errors.interpret.not_a_number', type: 'runtime' }
       }
     ],
     errorTestCases: [

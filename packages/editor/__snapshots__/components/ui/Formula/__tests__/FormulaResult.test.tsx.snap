@@ -2509,6 +2509,53 @@ exports[`FormulaResult multiplication "=1/0" -> [object Object] 1`] = `
 </div>
 `;
 
+exports[`FormulaResult multiplication "=Multi.spreadsheet.first.3 * 0" -> [object Object] 1`] = `
+<div>
+  <div
+    class="mc-c-dRDYhj"
+  >
+    <span
+      class="formula-result-ok"
+    >
+      <span
+        class="formula-result-ok-equal"
+      >
+        =
+      </span>
+      <span
+        class="mashcard-formula-borderless"
+        style="color: rgb(207, 31, 40);"
+      >
+        #&lt;Error&gt; errors.interpret.not_a_number
+      </span>
+      <span
+        class="formula-result-ok-icon"
+      >
+        <span
+          aria-label="function"
+          class="mc-icon mc-icon-function"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M4.02403 10.3944L2.0364 21H4.624L6.59951 10.3944H9.31412L9.69052 8.38797H6.96947L7.12697 7.40645L7.12713 7.40538C7.23453 6.7119 7.50783 6.17081 7.93972 5.76834C8.37395 5.36367 8.94124 5.15442 9.65936 5.15372C10.0443 5.16855 10.4251 5.21256 10.8021 5.28574L10.9984 5.32386L11.3253 3.23326L11.1433 3.1963C10.5072 3.0671 9.97256 3.00057 9.54287 3.00046C8.18911 2.98518 7.05862 3.35024 6.16862 4.10855C5.32054 4.83566 4.79246 5.83973 4.57597 7.10453L4.3823 8.38797H2.3764L2 10.3944H4.02403ZM6.93603 7.3751L6.74212 8.58362L6.93603 7.3751C6.93603 7.3751 6.93603 7.3751 6.93603 7.3751ZM9.45693 8.58362L9.15394 10.1987H6.43912L4.46361 20.8043L6.43912 10.1987H9.15393L9.45693 8.58362ZM9.07574 5.00716C8.57832 5.09502 8.15596 5.30078 7.80865 5.62444C7.42697 5.98013 7.16321 6.43322 7.01736 6.98371C7.16321 6.43322 7.42697 5.98014 7.80865 5.62444C8.15596 5.30078 8.57832 5.09502 9.07574 5.00716ZM11.3543 21L14.9165 16.6028L17.0071 21H19.8385L16.5498 14.7544L22 8.38797H18.7938L15.3685 12.6658L13.4228 8.38797H10.5782L13.7687 14.4972L8.15881 21H11.3543Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
 exports[`FormulaResult other "=(1 {}." -> [syntax] "errors.parse.missing.token" 1`] = `
 <div>
   <div
