@@ -13,7 +13,7 @@ describe('event', () => {
     ctx = await makeContext({
       ...input.options,
       uuidFunction: index => uuid(),
-      initializeOptions: { domain: uuid() }
+      initializeOptions: { username: uuid() }
     })
   })
 

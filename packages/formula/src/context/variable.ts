@@ -137,7 +137,7 @@ export class VariableClass implements VariableInterface {
         await this.completeTask(e.payload)
       },
       {
-        eventId: `${formulaContext.domain}#${t.meta.namespaceId},${t.meta.variableId}`,
+        eventId: `${formulaContext.username}#${t.meta.namespaceId},${t.meta.variableId}`,
         subscribeId: `Task#${t.meta.namespaceId},${t.meta.variableId}`
       }
     )
@@ -150,7 +150,7 @@ export class VariableClass implements VariableInterface {
         meta: this,
         scope: null,
         key: this.id,
-        username: this.formulaContext.domain,
+        username: this.formulaContext.username,
         level,
         namespaceId: this.t.meta.namespaceId,
         id: this.t.meta.variableId
@@ -220,7 +220,7 @@ export class VariableClass implements VariableInterface {
           meta: newVariableDependencies,
           scope: null,
           key: this.id,
-          username: this.formulaContext.domain,
+          username: this.formulaContext.username,
           level: 0,
           namespaceId: dependency.namespaceId,
           id: dependency.variableId
@@ -279,7 +279,7 @@ export class VariableClass implements VariableInterface {
           meta: newVariableDependencies,
           scope: null,
           key: this.id,
-          username: this.formulaContext.domain,
+          username: this.formulaContext.username,
           level: 0,
           namespaceId: dependency.namespaceId,
           id: dependency.variableId
@@ -482,7 +482,7 @@ export class VariableClass implements VariableInterface {
       > = {
         kind: 'BlockRename',
         event: FormulaBlockNameChangedTrigger,
-        eventId: `${this.formulaContext.domain}#${blockId}`,
+        eventId: `${this.formulaContext.username}#${blockId}`,
         scope: {},
         key: `BlockRename#${blockId}`,
         definitionHandler: (deps, variable, payload) => {
@@ -499,7 +499,7 @@ export class VariableClass implements VariableInterface {
       > = {
         kind: 'BlockDelete',
         event: FormulaBlockNameDeletedTrigger,
-        eventId: `${this.formulaContext.domain}#${blockId}`,
+        eventId: `${this.formulaContext.username}#${blockId}`,
         scope: {},
         key: `BlockDelete#${blockId}`
       }
@@ -513,7 +513,7 @@ export class VariableClass implements VariableInterface {
       > = {
         kind: 'NameChange',
         event: FormulaContextNameChanged,
-        eventId: `${this.formulaContext.domain}#${namespaceId}#${name}`,
+        eventId: `${this.formulaContext.username}#${namespaceId}#${name}`,
         scope: {},
         key: `OtherNameChange#${namespaceId}#${name}`,
         skipIf: (variable, payload) => variable.isReadyT
@@ -525,7 +525,7 @@ export class VariableClass implements VariableInterface {
       > = {
         kind: 'NameChange',
         event: FormulaContextNameChanged,
-        eventId: `${this.formulaContext.domain}#$Block#${name}`,
+        eventId: `${this.formulaContext.username}#$Block#${name}`,
         scope: {},
         key: `BlockNameChange#${namespaceId}#${name}`,
         skipIf: (variable, payload) => variable.isReadyT
@@ -538,7 +538,7 @@ export class VariableClass implements VariableInterface {
       > = {
         kind: 'NameRemove',
         event: FormulaContextNameRemove,
-        eventId: `${this.formulaContext.domain}#${namespaceId}#${name}`,
+        eventId: `${this.formulaContext.username}#${namespaceId}#${name}`,
         scope: {},
         key: `OtherNameRemove#${namespaceId}#${name}`,
         skipIf: (variable, payload) => !variable.isReadyT

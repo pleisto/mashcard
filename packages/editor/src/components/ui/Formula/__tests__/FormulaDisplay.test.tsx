@@ -1,8 +1,16 @@
 import { buildTestCases, dumpDisplayResultForDisplay, makeContext } from '@mashcard/formula'
 import { render } from '@testing-library/react'
 import { FormulaDisplay } from '..'
+import { Formula } from '../../../../extensions'
+import { mockEditor } from '../../../../test'
+import * as editorHooks from '../../../../hooks/useEditorContext'
 
 const [input] = buildTestCases(['basic'])
+
+jest.mock('../../../../hooks/useEditorContext', () => {
+  const { useEditorContext } = jest.requireActual('../../../../hooks/useEditorContext')
+  return { useEditorContext: jest.fn().mockImplementation(useEditorContext) }
+})
 
 describe('FormulaDisplay', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
@@ -10,6 +18,14 @@ describe('FormulaDisplay', () => {
     jest.useRealTimers()
     ctx = await makeContext(input.options)
     jest.clearAllTimers()
+
+    const editor = mockEditor({
+      extensionManager: {
+        extensions: [{ name: Formula.name, options: { formulaContext: ctx.formulaContext } }]
+      }
+    })
+
+    jest.spyOn(editorHooks, 'useEditorContext').mockImplementation(() => ({ editor, documentEditable: true }))
   })
 
   it.each(input.basicTestCases)('$jestTitle', async args => {

@@ -873,7 +873,10 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 
     const clauseErrorMessages: ErrorMessage[] = []
     if (!clause) {
-      clauseErrorMessages.push({ message: ['errors.parse.not_found.function', { key: functionKey }], type: 'deps' })
+      clauseErrorMessages.push({
+        message: ['errors.parse.not_found.function', { key: functionKey }],
+        type: 'deps'
+      })
     } else if (clause.feature && !this.ctx.formulaContext.features.includes(clause.feature)) {
       clauseErrorMessages.push({ message: `Feature ${clause.feature} not enabled`, type: 'deps' })
     }

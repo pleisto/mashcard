@@ -145,7 +145,11 @@ export interface FormulaTypeAttributes<
   type: Type
   shortName: ShortName
   dump: (result: Value, dumpF: (o: AnyTypeResult) => any) => Dump
-  display: (result: Value, displayF: (o: AnyTypeResult) => Display) => Display
+  display: (
+    result: Value,
+    ctx: ContextInterface,
+    displayF: (o: AnyTypeResult, ctx: ContextInterface) => Display
+  ) => Display
   cast: (
     dump: Dump,
     ctx: ContextInterface,
@@ -363,7 +367,8 @@ export interface FindKey {
 }
 
 export interface ContextInterface {
-  domain: string
+  username: string
+  i18n: I18N
   features: string[]
   dirtyFormulas: Record<VariableKey, DirtyFormulaInfo>
   checkName: (name: string, namespaceId: NamespaceId, variableId: VariableId) => ErrorMessage | undefined
@@ -371,7 +376,6 @@ export interface ContextInterface {
   reverseVariableDependencies: Record<VariableKey, VariableDependency[]>
   reverseFunctionDependencies: Record<FunctionKey, VariableDependency[]>
   invoke: (name: FunctionNameType, ctx: FunctionContext, ...args: any[]) => Promise<AnyTypeResult>
-  backendActions: BackendActions | undefined
   variableCount: () => number
   getDefaultVariableName: (namespaceId: NamespaceId, type: FormulaType) => string
   completions: (namespaceId: NamespaceId, variableId: VariableId | undefined) => Completion[]
@@ -783,3 +787,5 @@ export interface ErrorMessage {
   readonly message: ErrorMessageType
   readonly type: ErrorType
 }
+
+export type I18N = (input: ErrorMessageType) => string

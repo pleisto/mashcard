@@ -46,7 +46,10 @@ export const FunctionCallTestCase: TestCaseInterface = {
   testCases: {
     functionClauses,
     successTestCases: [
-      { definition: '= ABS(1/0)', result: { message: 'errors.interpret.runtime.division_by_zero', type: 'runtime' } },
+      {
+        definition: '= ABS(1/0)',
+        result: { message: 'errors.interpret.runtime.division_by_zero', type: 'runtime' }
+      },
       {
         definition: '=Abs(-1) + abs(1) + ABS(1) + core::ABS(-1)',
         result: 4,
@@ -183,8 +186,16 @@ export const FunctionCallTestCase: TestCaseInterface = {
         errorMessage: 'errors.parse.missing.closing_parenthesis',
         groupOptions: [{ name: 'basicError' }]
       },
-      { definition: '=POWER(1,', errorType: 'syntax', errorMessage: 'errors.parse.missing.closing_parenthesis' },
-      { definition: '=POWER(1,2', errorType: 'syntax', errorMessage: 'errors.parse.missing.closing_parenthesis' },
+      {
+        definition: '=POWER(1,',
+        errorType: 'syntax',
+        errorMessage: 'errors.parse.missing.closing_parenthesis'
+      },
+      {
+        definition: '=POWER(1,2',
+        errorType: 'syntax',
+        errorMessage: 'errors.parse.missing.closing_parenthesis'
+      },
       {
         definition: '=custom::FORTY_TWO(1, 1, 1)',
         errorType: 'deps',

@@ -18,7 +18,10 @@ export const multiplicationOperator: OperatorType = {
       result = lhsResult * rhsResult
     } else if (tokenMatcher(operator, Div)) {
       if (rhsResult === 0) {
-        return { type: 'Error', result: { message: 'errors.interpret.runtime.division_by_zero', type: 'runtime' } }
+        return {
+          type: 'Error',
+          result: { message: 'errors.interpret.runtime.division_by_zero', type: 'runtime' }
+        }
       }
 
       result = lhsResult / rhsResult

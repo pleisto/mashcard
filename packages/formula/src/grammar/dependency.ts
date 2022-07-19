@@ -42,7 +42,7 @@ export const parseTrackSpreadsheet = (visitor: Visitor, spreadsheet: Spreadsheet
   const spreadsheetNameEventDependency: EventDependency<
     typeof SpreadsheetUpdateNameViaId extends EventType<infer X> ? X : never
   > = {
-    eventId: `${visitor.ctx.formulaContext.domain}#${spreadsheet.namespaceId},${spreadsheet.spreadsheetId}`,
+    eventId: `${visitor.ctx.formulaContext.username}#${spreadsheet.namespaceId},${spreadsheet.spreadsheetId}`,
     event: SpreadsheetUpdateNameViaId,
     kind: 'SpreadsheetName',
     key: `SpreadsheetName#${spreadsheet.spreadsheetId}`,

@@ -20,8 +20,8 @@ export const FormulaRecordAttributes: FormulaTypeAttributes<typeof TypeName, typ
     const record = mapValues(result, a => f(a, ctx))
     return { ...rest, result: record, meta: extractSubType(Object.values(record)) }
   },
-  display: ({ result, meta, ...rest }, f) => {
-    const recordArray = Object.entries(result).map(([key, value]) => `${key}: ${f(value).result}`)
+  display: ({ result, meta, ...rest }, ctx, f) => {
+    const recordArray = Object.entries(result).map(([key, value]) => `${key}: ${f(value, ctx).result}`)
     const recordResult = recordArray.join(', ')
     return { ...rest, result: `{${recordResult}}` }
   }

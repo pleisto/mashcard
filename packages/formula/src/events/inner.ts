@@ -23,10 +23,10 @@ export const FormulaContextNameRemove = event<FormulaEventPayload<{ name: string
   }
 )
 
-export const FormulaContextTickTrigger = event<{ domain: string; state: ContextState }, Promise<void>>()(
+export const FormulaContextTickTrigger = event<{ username: string; state: ContextState }, Promise<void>>()(
   'FormulaContextTickTrigger',
-  ({ domain, state }) => {
-    return { id: `FormulaContext#${domain}` }
+  ({ username, state }) => {
+    return { id: `FormulaContext#${username}` }
   }
 )
 

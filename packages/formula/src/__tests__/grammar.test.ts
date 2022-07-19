@@ -140,7 +140,7 @@ describe('Simple test case TODO', () => {
 
       if (value !== undefined) {
         const variableValue = await innerInterpret({ parseResult, ctx: { ...ctx, meta: newMeta } })
-        const displayResult = displayF(variableValue.result)
+        const displayResult = displayF(variableValue.result, ctx.formulaContext)
 
         expect(errorMessages).toEqual([])
 

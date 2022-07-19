@@ -167,7 +167,7 @@ const buildSpreadsheet = (
   ]
 }
 
-const defaultInitializeOptions: FormulaContextArgs = { domain: 'test' }
+const defaultInitializeOptions: FormulaContextArgs = { username: 'test' }
 
 export const makeContext = async (options: MakeContextOptions): Promise<MakeContextResult> => {
   let uuidState: UUIDState = { uuidFunction: options.uuidFunction ?? DEFAULT_UUID_FUNCTION, counter: 0, cache: {} }
@@ -183,7 +183,7 @@ export const makeContext = async (options: MakeContextOptions): Promise<MakeCont
     const [namespaceId, state] = getUuid(pageId, uuidState)
     uuidState = state
     if (!firstNamespaceId) firstNamespaceId = namespaceId
-    await dispatchFormulaBlockNameChange({ id: namespaceId, name: pageName, username: formulaContext.domain })
+    await dispatchFormulaBlockNameChange({ id: namespaceId, name: pageName, username: formulaContext.username })
 
     for (const { variableName, result, variableId, definition, position, insertOptions } of variables ?? []) {
       const [finalVariableId, state] = getUuid(variableId, uuidState)
@@ -270,7 +270,7 @@ export const generateUUIDs = (): string[] => [...Array(20)].map(() => uuid())
 export const buildEvent = <Args extends DistributeEvents[]>(input: Args): ((ctx: ExtendedCtx) => Promise<void>) => {
   return async ctx => {
     for (const [f, args] of input) {
-      await AllowEvents[f](ctx, { ...args, username: ctx.formulaContext.domain } as any)
+      await AllowEvents[f](ctx, { ...args, username: ctx.formulaContext.username } as any)
     }
   }
 }
