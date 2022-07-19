@@ -49,8 +49,8 @@
       "path": "packages/uploader"
     },
     {
-      "name": "plugins/dotcom",
-      "path": "plugins/dotcom"
+      "name": "plugins/cloud",
+      "path": "plugins/cloud"
     },
     {
       "name": "plugins/github_auth",

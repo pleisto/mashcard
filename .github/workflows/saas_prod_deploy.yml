@@ -97,4 +97,6 @@ jobs:
             --set-string secrets.IFRAMELY_API_ACCESS_KEY='${{ secrets.SAAS_PROD_IFRAMELY_API_ACCESS_KEY }}' \
             --set-string secrets.SMTP_URL='${{ secrets.SAAS_PROD_SMTP_URL }}' \
             --set-string secrets.GOOGLE_OAUTH2_ID='${{ secrets.SAAS_PROD_GOOGLE_OAUTH2_ID }}' \
-            --set-string secrets.GOOGLE_OAUTH2_SECRET='${{ secrets.SAAS_PROD_GOOGLE_OAUTH2_SECRET }}'
+            --set-string secrets.GOOGLE_OAUTH2_SECRET='${{ secrets.SAAS_PROD_GOOGLE_OAUTH2_SECRET }}' \
+            --set-string secrets.GITHUB_KEY='${{ secrets.SAAS_PROD_GITHUB_KEY }}' \
+            --set-string secrets.GITHUB_SECRET='${{ secrets.SAAS_PROD_GITHUB_SECRET }}' \
