@@ -350,7 +350,7 @@ export function useDocSyncProvider(queryVariables: {
         ({ payload }) => {
           setMeta({ ...blockMeta, ...payload.meta })
         },
-        { subscribeId: blockId }
+        { eventId: blockId }
       )
     ]
     return () => {
