@@ -46,6 +46,10 @@
 | `logic`             | `boolean`                                             |
 | `findKey`           | [`FindKey`](../interfaces/FindKey.md)                 |
 
+#### Defined in
+
+[packages/formula/src/controls/row.ts:26](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/row.ts#L26)
+
 ## Properties
 
 ### <a id="findkey" name="findkey"></a> findKey
@@ -180,6 +184,10 @@
 
 RowType.display
 
+#### Defined in
+
+[packages/formula/src/controls/row.ts:37](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/row.ts#L37)
+
 ---
 
 ### <a id="eventdependency" name="eventdependency"></a> eventDependency
@@ -199,6 +207,10 @@ RowType.display
 #### Implementation of
 
 RowType.eventDependency
+
+#### Defined in
+
+[packages/formula/src/controls/row.ts:58](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/row.ts#L58)
 
 ---
 
@@ -228,6 +240,10 @@ RowType.eventDependency
 
 RowType.handleCodeFragments
 
+#### Defined in
+
+[packages/formula/src/controls/row.ts:105](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/row.ts#L105)
+
 ---
 
 ### <a id="handleinterpret" name="handleinterpret"></a> handleInterpret
@@ -249,6 +265,10 @@ RowType.handleCodeFragments
 
 RowType.handleInterpret
 
+#### Defined in
+
+[packages/formula/src/controls/row.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/row.ts#L73)
+
 ---
 
 ### <a id="key" name="key"></a> key
@@ -262,6 +282,10 @@ RowType.handleInterpret
 #### Implementation of
 
 RowType.key
+
+#### Defined in
+
+[packages/formula/src/controls/row.ts:41](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/row.ts#L41)
 
 ---
 
@@ -284,6 +308,10 @@ RowType.key
 
 RowType.newCell
 
+#### Defined in
+
+[packages/formula/src/controls/row.ts:97](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/row.ts#L97)
+
 ---
 
 ### <a id="persistence" name="persistence"></a> persistence
@@ -293,3 +321,7 @@ RowType.newCell
 #### Returns
 
 [`Row`](../interfaces/Row.md) & { `findKey`: [`FindKey`](../interfaces/FindKey.md) }
+
+#### Defined in
+
+[packages/formula/src/controls/row.ts:49](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/row.ts#L49)

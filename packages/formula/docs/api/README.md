@@ -2915,6 +2915,10 @@
 
 `string`
 
+#### Defined in
+
+[packages/formula/src/tests/testType.ts:53](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L53)
+
 ---
 
 ### <a id="formulablocknamechangedtrigger" name="formulablocknamechangedtrigger"></a> FormulaBlockNameChangedTrigger
@@ -2930,6 +2934,10 @@
 #### Returns
 
 `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
+
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -2947,6 +2955,10 @@
 
 `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
 
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+
 ---
 
 ### <a id="formulablocknamemodifiedwithusername" name="formulablocknamemodifiedwithusername"></a> FormulaBlockNameModifiedWithUsername
@@ -2962,6 +2974,10 @@
 #### Returns
 
 `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
+
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -2979,6 +2995,10 @@
 
 `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\>, `Promise`<`void`\>\>
 
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+
 ---
 
 ### <a id="formulacontextnameremove" name="formulacontextnameremove"></a> FormulaContextNameRemove
@@ -2994,6 +3014,10 @@
 #### Returns
 
 `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<{ `kind`: `string` ; `name`: `string` }\>, `Promise`<`void`\>\>
+
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3013,6 +3037,10 @@
 
 `Event`<{ `domain`: `string` ; `state`: `any` }, `Promise`<`void`\>\>
 
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+
 ---
 
 ### <a id="formuladocsoftdeleted" name="formuladocsoftdeleted"></a> FormulaDocSoftDeleted
@@ -3031,6 +3059,10 @@
 
 `Event`<{ `id`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
 
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+
 ---
 
 ### <a id="formulaspreadsheetdeleted" name="formulaspreadsheetdeleted"></a> FormulaSpreadsheetDeleted
@@ -3048,6 +3080,10 @@
 #### Returns
 
 `Event`<{ `id`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
+
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3069,6 +3105,10 @@
 
 `Event`<{ `namespaceId`: `string` ; `task`: [`VariableTask`](README.md#variabletask) ; `username`: `string` ; `variableId`: `string` }, `Promise`<`void`\>\>
 
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+
 ---
 
 ### <a id="formulatickviaid" name="formulatickviaid"></a> FormulaTickViaId
@@ -3088,6 +3128,10 @@
 
 `Event`<{ `namespaceId`: `string` ; `uuid`: `string` ; `variableId`: `string` }, `Promise`<`void`\>\>
 
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+
 ---
 
 ### <a id="formulaupdatedviaid" name="formulaupdatedviaid"></a> FormulaUpdatedViaId
@@ -3103,6 +3147,10 @@
 #### Returns
 
 `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<[`VariableInterface`](interfaces/VariableInterface.md)\>, `Promise`<`void`\>\>
+
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3120,6 +3168,10 @@
 
 `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<[`VariableDependency`](interfaces/VariableDependency.md)[]\>, `Promise`<`void`\>\>
 
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+
 ---
 
 ### <a id="spreadsheetreloadviaid" name="spreadsheetreloadviaid"></a> SpreadsheetReloadViaId
@@ -3135,6 +3187,10 @@
 #### Returns
 
 `Event`<[`SpreadsheetUpdateNamePayload`](README.md#spreadsheetupdatenamepayload), `Promise`<`void`\>\>
+
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3157,6 +3213,10 @@
 
 `Event`<{ `columns`: [`Column`](interfaces/Column.md)[] ; `key`: `string` ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
 
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+
 ---
 
 ### <a id="spreadsheetupdatenameviaid" name="spreadsheetupdatenameviaid"></a> SpreadsheetUpdateNameViaId
@@ -3172,6 +3232,10 @@
 #### Returns
 
 `Event`<[`FormulaEventPayload`](interfaces/FormulaEventPayload.md)<`string`\>, `Promise`<`void`\>\>
+
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3194,6 +3258,10 @@
 
 `Event`<{ `key`: `string` ; `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `string` }, `Promise`<`void`\>\>
 
+#### Defined in
+
+[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+
 ---
 
 ### <a id="accessattribute" name="accessattribute"></a> accessAttribute
@@ -3212,6 +3280,10 @@
 
 `Promise`<`Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<{ `dump`: [`ErrorMessage`](interfaces/ErrorMessage.md) ; `result`: [`ErrorMessage`](interfaces/ErrorMessage.md) ; `type`: `"Error"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>\>
 
+#### Defined in
+
+[packages/formula/src/grammar/operations/access.ts:14](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/access.ts#L14)
+
 ---
 
 ### <a id="appendformulas" name="appendformulas"></a> appendFormulas
@@ -3229,6 +3301,10 @@
 
 `Promise`<`void`\>
 
+#### Defined in
+
+[packages/formula/src/grammar/core.ts:568](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L568)
+
 ---
 
 ### <a id="applycompletion" name="applycompletion"></a> applyCompletion
@@ -3245,6 +3321,10 @@
 #### Returns
 
 `CompleteResult`
+
+#### Defined in
+
+[packages/formula/src/grammar/completer.ts:90](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L90)
 
 ---
 
@@ -3270,6 +3350,10 @@ Apply format to the formula.
 | `minify` | `FormatResult` |
 | `valid`  | `boolean`      |
 
+#### Defined in
+
+[packages/formula/src/grammar/format.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/format.ts#L114)
+
 ---
 
 ### <a id="attrs2completion" name="attrs2completion"></a> attrs2completion
@@ -3288,6 +3372,10 @@ Apply format to the formula.
 
 `undefined` \| [`Completion`](README.md#completion)
 
+#### Defined in
+
+[packages/formula/src/grammar/completer.ts:558](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L558)
+
 ---
 
 ### <a id="attrstocolortype" name="attrstocolortype"></a> attrsToColorType
@@ -3303,6 +3391,10 @@ Apply format to the formula.
 #### Returns
 
 `string`
+
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:291](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L291)
 
 ---
 
@@ -3320,6 +3412,10 @@ Apply format to the formula.
 #### Returns
 
 [`CodeFragment`](README.md#codefragment)
+
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:95](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L95)
 
 ---
 
@@ -3339,6 +3435,10 @@ Apply format to the formula.
 
 [`BlockCompletion`](interfaces/BlockCompletion.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/completer.ts:474](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L474)
+
 ---
 
 ### <a id="blockkey-1" name="blockkey-1"></a> blockKey
@@ -3355,6 +3455,10 @@ Apply format to the formula.
 
 \`#${string}\`
 
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:18](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L18)
+
 ---
 
 ### <a id="builderrormessage" name="builderrormessage"></a> buildErrorMessage
@@ -3370,6 +3474,10 @@ Apply format to the formula.
 #### Returns
 
 `string`
+
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:361](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L361)
 
 ---
 
@@ -3405,6 +3513,10 @@ Apply format to the formula.
 
 `Promise`<`void`\>
 
+#### Defined in
+
+[packages/formula/src/tests/testHelper.ts:270](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L270)
+
 ---
 
 ### <a id="buildfunctionkey" name="buildfunctionkey"></a> buildFunctionKey
@@ -3423,6 +3535,10 @@ Apply format to the formula.
 
 `string`
 
+#### Defined in
+
+[packages/formula/src/functions/index.ts:34](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/index.ts#L34)
+
 ---
 
 ### <a id="buildpredicate" name="buildpredicate"></a> buildPredicate
@@ -3438,6 +3554,10 @@ Apply format to the formula.
 #### Returns
 
 [`PredicateFunction`](README.md#predicatefunction)
+
+#### Defined in
+
+[packages/formula/src/grammar/lambda.ts:51](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lambda.ts#L51)
 
 ---
 
@@ -3460,6 +3580,10 @@ Apply format to the formula.
 #### Returns
 
 [[`TestCaseInput`](interfaces/TestCaseInput.md), `TestCase`[]]
+
+#### Defined in
+
+[packages/formula/src/tests/testCases.ts:160](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L160)
 
 ---
 
@@ -3486,6 +3610,10 @@ Apply format to the formula.
 
 `Value`
 
+#### Defined in
+
+[packages/formula/src/context/persist.ts:36](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/persist.ts#L36)
+
 ---
 
 ### <a id="castdata" name="castdata"></a> castData
@@ -3502,6 +3630,10 @@ Apply format to the formula.
 
 `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<{ `dump`: [`ErrorMessage`](interfaces/ErrorMessage.md) ; `result`: [`ErrorMessage`](interfaces/ErrorMessage.md) ; `type`: `"Error"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>
 
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:319](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L319)
+
 ---
 
 ### <a id="castnumber" name="castnumber"></a> castNumber
@@ -3517,6 +3649,10 @@ Apply format to the formula.
 #### Returns
 
 `number`
+
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:309](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L309)
 
 ---
 
@@ -3536,6 +3672,10 @@ Apply format to the formula.
 
 `Promise`<[`VariableInterface`](interfaces/VariableInterface.md)\>
 
+#### Defined in
+
+[packages/formula/src/context/variable.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L73)
+
 ---
 
 ### <a id="checkvalidname" name="checkvalidname"></a> checkValidName
@@ -3551,6 +3691,10 @@ Apply format to the formula.
 #### Returns
 
 `boolean`
+
+#### Defined in
+
+[packages/formula/src/grammar/lexer.ts:332](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L332)
 
 ---
 
@@ -3569,6 +3713,10 @@ Apply format to the formula.
 
 [`EventDependency`](interfaces/EventDependency.md)<`any`\>[]
 
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:67](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L67)
+
 ---
 
 ### <a id="codefragment2string" name="codefragment2string"></a> codeFragment2string
@@ -3584,6 +3732,10 @@ Apply format to the formula.
 #### Returns
 
 `string`
+
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:70](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L70)
 
 ---
 
@@ -3602,6 +3754,10 @@ Apply format to the formula.
 
 `string`
 
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:83](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L83)
+
 ---
 
 ### <a id="codefragments2definition" name="codefragments2definition"></a> codeFragments2definition
@@ -3619,6 +3775,10 @@ Apply format to the formula.
 
 `string`
 
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:79](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L79)
+
 ---
 
 ### <a id="column2attrs" name="column2attrs"></a> column2attrs
@@ -3634,6 +3794,10 @@ Apply format to the formula.
 #### Returns
 
 [`CodeFragmentAttrs`](README.md#codefragmentattrs)
+
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:47](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L47)
 
 ---
 
@@ -3652,6 +3816,10 @@ Apply format to the formula.
 
 [`CodeFragment`](README.md#codefragment)
 
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L107)
+
 ---
 
 ### <a id="columndisplayindex" name="columndisplayindex"></a> columnDisplayIndex
@@ -3667,6 +3835,10 @@ Apply format to the formula.
 #### Returns
 
 `string`
+
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:274](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L274)
 
 ---
 
@@ -3695,6 +3867,10 @@ Apply format to the formula.
 
 [`FunctionClause`](interfaces/FunctionClause.md)<`RealReturn`, `Async`, `Chain`, `AcceptError`, `Arguments`\>
 
+#### Defined in
+
+[packages/formula/src/type/index.ts:533](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L533)
+
 ---
 
 ### <a id="createvariabletask" name="createvariabletask"></a> createVariableTask
@@ -3710,6 +3886,10 @@ Apply format to the formula.
 #### Returns
 
 [`VariableTask`](README.md#variabletask)
+
+#### Defined in
+
+[packages/formula/src/context/task.ts:21](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/task.ts#L21)
 
 ---
 
@@ -3727,6 +3907,10 @@ Apply format to the formula.
 #### Returns
 
 \`#${string}\`
+
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:20](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L20)
 
 ---
 
@@ -3749,6 +3933,10 @@ Dispatch Block Rename Event.
 
 `Promise`<`void`\>
 
+#### Defined in
+
+[packages/formula/src/events/block.ts:42](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/block.ts#L42)
+
 ---
 
 ### <a id="dispatchformulablocksoftdelete" name="dispatchformulablocksoftdelete"></a> dispatchFormulaBlockSoftDelete
@@ -3768,6 +3956,10 @@ Dispatch Block Delete Event.
 #### Returns
 
 `Promise`<`void`\>
+
+#### Defined in
+
+[packages/formula/src/events/block.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/block.ts#L7)
 
 ---
 
@@ -3789,6 +3981,10 @@ Dispatch Block Delete Event.
 
 `Promise`<`void`\>
 
+#### Defined in
+
+[packages/formula/src/events/column.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/column.ts#L17)
+
 ---
 
 ### <a id="dispatchformulaspreadsheetnamechange" name="dispatchformulaspreadsheetnamechange"></a> dispatchFormulaSpreadsheetNameChange
@@ -3809,6 +4005,10 @@ Dispatch Block Delete Event.
 
 `Promise`<`void`\>
 
+#### Defined in
+
+[packages/formula/src/events/spreadsheet.ts:27](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/spreadsheet.ts#L27)
+
 ---
 
 ### <a id="dispatchformulaspreadsheetremove" name="dispatchformulaspreadsheetremove"></a> dispatchFormulaSpreadsheetRemove
@@ -3826,6 +4026,10 @@ Dispatch Block Delete Event.
 #### Returns
 
 `Promise`<`void`\>
+
+#### Defined in
+
+[packages/formula/src/events/spreadsheet.ts:52](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/spreadsheet.ts#L52)
 
 ---
 
@@ -3846,6 +4050,10 @@ Dispatch Block Delete Event.
 #### Returns
 
 `Promise`<`void`\>
+
+#### Defined in
+
+[packages/formula/src/events/row.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/row.ts#L17)
 
 ---
 
@@ -3871,6 +4079,10 @@ Dispatch Block Delete Event.
 
 `Display`
 
+#### Defined in
+
+[packages/formula/src/context/persist.ts:44](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/persist.ts#L44)
+
 ---
 
 ### <a id="dump" name="dump"></a> dump
@@ -3895,6 +4107,10 @@ Dispatch Block Delete Event.
 
 `Dump`
 
+#### Defined in
+
+[packages/formula/src/context/persist.ts:29](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/persist.ts#L29)
+
 ---
 
 ### <a id="dumpdisplayresultfordisplay" name="dumpdisplayresultfordisplay"></a> dumpDisplayResultForDisplay
@@ -3910,6 +4126,10 @@ Dispatch Block Delete Event.
 #### Returns
 
 [`VariableDisplayData`](interfaces/VariableDisplayData.md)
+
+#### Defined in
+
+[packages/formula/src/context/persist.ts:13](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/persist.ts#L13)
 
 ---
 
@@ -3927,6 +4147,10 @@ Dispatch Block Delete Event.
 #### Returns
 
 `any`
+
+#### Defined in
+
+[packages/formula/src/context/persist.ts:21](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/persist.ts#L21)
 
 ---
 
@@ -3952,6 +4176,10 @@ encodeString('foo') // => "\"foo\""
 
 `string`
 
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:136](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L136)
+
 ---
 
 ### <a id="errorisfatal" name="errorisfatal"></a> errorIsFatal
@@ -3967,6 +4195,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 `boolean`
+
+#### Defined in
+
+[packages/formula/src/context/variable.ts:44](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L44)
 
 ---
 
@@ -3984,6 +4216,10 @@ encodeString('foo') // => "\"foo\""
 
 `string`
 
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:354](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L354)
+
 ---
 
 ### <a id="extractsubtype" name="extractsubtype"></a> extractSubType
@@ -3999,6 +4235,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 `"string"` \| `"number"` \| `"boolean"` \| `"null"` \| `"Block"` \| `"Button"` \| `"Switch"` \| `"Date"` \| `"Blank"` \| `"Record"` \| `"Array"` \| `"Error"` \| `"Spreadsheet"` \| `"Row"` \| `"Cell"` \| `"Column"` \| `"Range"` \| `"Cst"` \| `"Reference"` \| `"Function"` \| `"Predicate"` \| `"literal"` \| `"Pending"` \| `"Waiting"` \| `"NoPersist"` \| `"any"` \| `"void"`
+
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:174](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L174)
 
 ---
 
@@ -4016,6 +4256,10 @@ encodeString('foo') // => "\"foo\""
 
 `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<{ `dump`: [`ErrorMessage`](interfaces/ErrorMessage.md) ; `result`: [`ErrorMessage`](interfaces/ErrorMessage.md) ; `type`: `"Error"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>
 
+#### Defined in
+
+[packages/formula/src/context/variable.ts:61](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L61)
+
 ---
 
 ### <a id="fetchvariableterror" name="fetchvariableterror"></a> fetchVariableTError
@@ -4031,6 +4275,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 `undefined` \| [`ErrorMessage`](interfaces/ErrorMessage.md)
+
+#### Defined in
+
+[packages/formula/src/context/variable.ts:38](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L38)
 
 ---
 
@@ -4048,6 +4296,10 @@ encodeString('foo') // => "\"foo\""
 
 [`CodeFragmentAttrs`](README.md#codefragmentattrs)
 
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L63)
+
 ---
 
 ### <a id="function2completion" name="function2completion"></a> function2completion
@@ -4064,6 +4316,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 [`FunctionCompletion`](interfaces/FunctionCompletion.md)
+
+#### Defined in
+
+[packages/formula/src/grammar/completer.ts:527](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L527)
 
 ---
 
@@ -4089,6 +4345,10 @@ encodeString('foo') // => "\"foo\""
 
 `VoidFunction`
 
+#### Defined in
+
+[packages/formula/src/grammar/lambda.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lambda.ts#L6)
+
 ---
 
 ### <a id="generateuuids" name="generateuuids"></a> generateUUIDs
@@ -4098,6 +4358,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 `string`[]
+
+#### Defined in
+
+[packages/formula/src/tests/testHelper.ts:268](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L268)
 
 ---
 
@@ -4119,6 +4383,10 @@ encodeString('foo') // => "\"foo\""
 
 [`VariableInterface`](interfaces/VariableInterface.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/core.ts:548](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L548)
+
 ---
 
 ### <a id="getcompletion" name="getcompletion"></a> getCompletion
@@ -4134,6 +4402,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 [`Completion`](README.md#completion)[]
+
+#### Defined in
+
+[packages/formula/src/grammar/completer.ts:371](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L371)
 
 ---
 
@@ -4151,6 +4423,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 [`undefined` \| [`CodeFragment`](README.md#codefragment), `undefined` \| [`CodeFragment`](README.md#codefragment), `undefined` \| [`CodeFragment`](README.md#codefragment)]
+
+#### Defined in
+
+[packages/formula/src/grammar/completer.ts:169](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L169)
 
 ---
 
@@ -4172,6 +4448,10 @@ encodeString('foo') // => "\"foo\""
 
 `Promise`<[`VariableValue`](README.md#variablevalue)\>
 
+#### Defined in
+
+[packages/formula/src/grammar/core.ts:447](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L447)
+
 ---
 
 ### <a id="interpret" name="interpret"></a> interpret
@@ -4191,6 +4471,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 `Promise`<[`VariableData`](interfaces/VariableData.md)\>
+
+#### Defined in
+
+[packages/formula/src/grammar/core.ts:525](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L525)
 
 ---
 
@@ -4213,6 +4497,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 `Promise`<`Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<{ `dump`: [`ErrorMessage`](interfaces/ErrorMessage.md) ; `result`: [`ErrorMessage`](interfaces/ErrorMessage.md) ; `type`: `"Error"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`RowType`](interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](README.md#cellvia), [`Cell`](interfaces/Cell.md)] ; `result`: [`CellType`](interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](interfaces/FindKey.md)] ; `result`: [`ColumnType`](interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>\>
+
+#### Defined in
+
+[packages/formula/src/grammar/operator.ts:102](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operator.ts#L102)
 
 ---
 
@@ -4238,6 +4526,10 @@ encodeString('foo') // => "\"foo\""
 | `errorMessages` | [`ErrorMessage`](interfaces/ErrorMessage.md)[]   |
 | `newType`       | [`FormulaCheckType`](README.md#formulachecktype) |
 
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:189](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L189)
+
 ---
 
 ### <a id="iskey" name="iskey"></a> isKey
@@ -4253,6 +4545,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 `boolean`
+
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:1023](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L1023)
 
 ---
 
@@ -4270,6 +4566,10 @@ encodeString('foo') // => "\"foo\""
 
 `Promise`<[`MakeContextResult`](interfaces/MakeContextResult.md)\>
 
+#### Defined in
+
+[packages/formula/src/tests/testHelper.ts:172](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L172)
+
 ---
 
 ### <a id="matchobject" name="matchobject"></a> matchObject
@@ -4285,6 +4585,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 `any`
+
+#### Defined in
+
+[packages/formula/src/tests/testMock.ts:25](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L25)
 
 ---
 
@@ -4302,6 +4606,10 @@ encodeString('foo') // => "\"foo\""
 
 [`boolean`, `string`]
 
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:140](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L140)
+
 ---
 
 ### <a id="mockblock" name="mockblock"></a> mockBlock
@@ -4318,6 +4626,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 `any`
+
+#### Defined in
+
+[packages/formula/src/tests/testMock.ts:9](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L9)
 
 ---
 
@@ -4338,6 +4650,10 @@ encodeString('foo') // => "\"foo\""
 
 `any`
 
+#### Defined in
+
+[packages/formula/src/tests/testMock.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L17)
+
 ---
 
 ### <a id="mockcolumn" name="mockcolumn"></a> mockColumn
@@ -4355,6 +4671,10 @@ encodeString('foo') // => "\"foo\""
 
 `any`
 
+#### Defined in
+
+[packages/formula/src/tests/testMock.ts:15](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L15)
+
 ---
 
 ### <a id="mockrow" name="mockrow"></a> mockRow
@@ -4370,6 +4690,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 `any`
+
+#### Defined in
+
+[packages/formula/src/tests/testMock.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L16)
 
 ---
 
@@ -4387,6 +4711,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 `any`
+
+#### Defined in
+
+[packages/formula/src/tests/testMock.ts:10](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L10)
 
 ---
 
@@ -4411,6 +4739,10 @@ encodeString('foo') // => "\"foo\""
 
 `Record`<`number`, `T`\>
 
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:158](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L158)
+
 ---
 
 ### <a id="parse" name="parse"></a> parse
@@ -4426,6 +4758,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 [`ParseResult`](README.md#parseresult)
+
+#### Defined in
+
+[packages/formula/src/grammar/core.ts:86](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L86)
 
 ---
 
@@ -4443,6 +4779,10 @@ encodeString('foo') // => "\"foo\""
 
 [`CodeFragmentResult`](interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/operator.ts:195](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operator.ts#L195)
+
 ---
 
 ### <a id="parseerrormessage" name="parseerrormessage"></a> parseErrorMessage
@@ -4458,6 +4798,10 @@ encodeString('foo') // => "\"foo\""
 #### Returns
 
 [`ErrorMessageType`](README.md#errormessagetype)
+
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:366](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L366)
 
 ---
 
@@ -4485,6 +4829,10 @@ parseString('"foo"') // => "foo"
 
 `string`
 
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:121](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L121)
+
 ---
 
 ### <a id="resulttocolortype" name="resulttocolortype"></a> resultToColorType
@@ -4500,6 +4848,10 @@ parseString('"foo"') // => "foo"
 #### Returns
 
 [`FormulaColorType`](README.md#formulacolortype)
+
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:280](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L280)
 
 ---
 
@@ -4527,6 +4879,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 `string`[]
 
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:101](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L101)
+
 ---
 
 ### <a id="row2attrs" name="row2attrs"></a> row2attrs
@@ -4542,6 +4898,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 #### Returns
 
 [`CodeFragmentAttrs`](README.md#codefragmentattrs)
+
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:55](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L55)
 
 ---
 
@@ -4559,6 +4919,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 #### Returns
 
 [`CodeFragment`](README.md#codefragment)
+
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:120](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L120)
 
 ---
 
@@ -4579,6 +4943,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 `undefined` \| `Omit`<{ `dump`: [`ErrorMessage`](interfaces/ErrorMessage.md) ; `result`: [`ErrorMessage`](interfaces/ErrorMessage.md) ; `type`: `"Error"` ; `view?`: [`ViewData`](interfaces/ViewData.md)<`string`\> }, `"dump"`\>
 
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:253](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L253)
+
 ---
 
 ### <a id="shouldreceiveevent" name="shouldreceiveevent"></a> shouldReceiveEvent
@@ -4595,6 +4963,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 #### Returns
 
 `boolean`
+
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:20](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L20)
 
 ---
 
@@ -4613,6 +4985,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 `boolean`
 
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:148](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L148)
+
 ---
 
 ### <a id="splitdefinition$" name="splitdefinition$"></a> splitDefinition$
@@ -4629,6 +5005,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 [definition: string, position: number]
 
+#### Defined in
+
+[packages/formula/src/tests/testHelper.ts:278](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L278)
+
 ---
 
 ### <a id="spreadsheet2attrs" name="spreadsheet2attrs"></a> spreadsheet2attrs
@@ -4644,6 +5024,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 #### Returns
 
 [`CodeFragmentAttrs`](README.md#codefragmentattrs)
+
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:39](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L39)
 
 ---
 
@@ -4662,6 +5046,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 [`CodeFragment`](README.md#codefragment)
 
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:142](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L142)
+
 ---
 
 ### <a id="spreadsheet2completion" name="spreadsheet2completion"></a> spreadsheet2completion
@@ -4678,6 +5066,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 #### Returns
 
 [`SpreadsheetCompletion`](interfaces/SpreadsheetCompletion.md)
+
+#### Defined in
+
+[packages/formula/src/grammar/completer.ts:435](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L435)
 
 ---
 
@@ -4697,6 +5089,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 [`CodeFragment`](README.md#codefragment)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:45](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L45)
+
 ---
 
 ### <a id="tracktodo" name="tracktodo"></a> trackTodo
@@ -4713,6 +5109,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 #### Returns
 
 `void`
+
+#### Defined in
+
+[packages/formula/src/tests/testHelper.ts:260](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L260)
 
 ---
 
@@ -4731,6 +5131,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 `any`[]
 
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:168](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L168)
+
 ---
 
 ### <a id="truncatestring" name="truncatestring"></a> truncateString
@@ -4748,6 +5152,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 `string`
 
+#### Defined in
+
+[packages/formula/src/grammar/util.ts:161](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L161)
+
 ---
 
 ### <a id="variable2attrs" name="variable2attrs"></a> variable2attrs
@@ -4763,6 +5171,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 #### Returns
 
 [`CodeFragmentAttrs`](README.md#codefragmentattrs)
+
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:31](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L31)
 
 ---
 
@@ -4781,6 +5193,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 [`CodeFragment`](README.md#codefragment)
 
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:131](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L131)
+
 ---
 
 ### <a id="variable2completion" name="variable2completion"></a> variable2completion
@@ -4798,6 +5214,10 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 [`VariableCompletion`](interfaces/VariableCompletion.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/completer.ts:494](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L494)
+
 ---
 
 ### <a id="variablekey-1" name="variablekey-1"></a> variableKey
@@ -4814,3 +5234,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 #### Returns
 
 \`#${string}.${string}\`
+
+#### Defined in
+
+[packages/formula/src/grammar/convert.ts:15](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L15)

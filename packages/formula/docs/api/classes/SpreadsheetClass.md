@@ -62,6 +62,10 @@
 | :------------------ | :------------------------------------------------------------------ |
 | `__namedParameters` | [`SpreadsheetInitializer`](../interfaces/SpreadsheetInitializer.md) |
 
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L73)
+
 ## Properties
 
 ### <a id="_columns" name="_columns"></a> \_columns
@@ -232,6 +236,10 @@
 
 SpreadsheetType.cleanup
 
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:229](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L229)
+
 ---
 
 ### <a id="columncount" name="columncount"></a> columnCount
@@ -245,6 +253,10 @@ SpreadsheetType.cleanup
 #### Implementation of
 
 SpreadsheetType.columnCount
+
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:409](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L409)
 
 ---
 
@@ -265,6 +277,10 @@ SpreadsheetType.columnCount
 #### Implementation of
 
 SpreadsheetType.eventDependency
+
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:274](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L274)
 
 ---
 
@@ -288,6 +304,10 @@ SpreadsheetType.eventDependency
 
 SpreadsheetType.findCellDisplayData
 
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:458](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L458)
+
 ---
 
 ### <a id="findcellvalue" name="findcellvalue"></a> findCellValue
@@ -310,6 +330,10 @@ SpreadsheetType.findCellDisplayData
 
 SpreadsheetType.findCellValue
 
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:446](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L446)
+
 ---
 
 ### <a id="findcolumn" name="findcolumn"></a> findColumn
@@ -330,6 +354,10 @@ SpreadsheetType.findCellValue
 
 SpreadsheetType.findColumn
 
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:429](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L429)
+
 ---
 
 ### <a id="findrow" name="findrow"></a> findRow
@@ -349,6 +377,10 @@ SpreadsheetType.findColumn
 #### Implementation of
 
 SpreadsheetType.findRow
+
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:417](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L417)
 
 ---
 
@@ -372,6 +404,10 @@ SpreadsheetType.findRow
 
 SpreadsheetType.handleCodeFragments
 
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:313](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L313)
+
 ---
 
 ### <a id="handlecodefragmentscolumn" name="handlecodefragmentscolumn"></a> handleCodeFragmentsColumn
@@ -390,6 +426,10 @@ SpreadsheetType.handleCodeFragments
 
 [`handleCodeFragmentsResult`](../interfaces/handleCodeFragmentsResult.md)
 
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:355](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L355)
+
 ---
 
 ### <a id="handlecodefragmentsrow" name="handlecodefragmentsrow"></a> handleCodeFragmentsRow
@@ -407,6 +447,10 @@ SpreadsheetType.handleCodeFragments
 #### Returns
 
 [`handleCodeFragmentsResult`](../interfaces/handleCodeFragmentsResult.md)
+
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:325](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L325)
 
 ---
 
@@ -429,6 +473,10 @@ SpreadsheetType.handleCodeFragments
 
 SpreadsheetType.handleInterpret
 
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:258](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L258)
+
 ---
 
 ### <a id="handleinterpretcolumn" name="handleinterpretcolumn"></a> handleInterpretColumn
@@ -446,6 +494,10 @@ SpreadsheetType.handleInterpret
 
 `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<{ `dump`: [`ErrorMessage`](../interfaces/ErrorMessage.md) ; `result`: [`ErrorMessage`](../interfaces/ErrorMessage.md) ; `type`: `"Error"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](../interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](../interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](../interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](../interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](../interfaces/FindKey.md)] ; `result`: [`RowType`](../interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](../README.md#cellvia), [`Cell`](../interfaces/Cell.md)] ; `result`: [`CellType`](../interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](../interfaces/FindKey.md)] ; `result`: [`ColumnType`](../interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](../interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\>
 
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:266](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L266)
+
 ---
 
 ### <a id="handleinterpretrow" name="handleinterpretrow"></a> handleInterpretRow
@@ -461,6 +513,10 @@ SpreadsheetType.handleInterpret
 #### Returns
 
 `Omit`<`FormulaRecordType`, `"dump"`\> \| `Omit`<{ `dump`: [`ErrorMessage`](../interfaces/ErrorMessage.md) ; `result`: [`ErrorMessage`](../interfaces/ErrorMessage.md) ; `type`: `"Error"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"string"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `number` ; `result`: `number` ; `type`: `"number"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `boolean` ; `result`: `boolean` ; `type`: `"boolean"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"null"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`BlockType`](../interfaces/BlockType.md) ; `type`: `"Block"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`ButtonType`](../interfaces/ButtonType.md) ; `type`: `"Button"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`SwitchType`](../interfaces/SwitchType.md) ; `type`: `"Switch"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Date` ; `type`: `"Date"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `"Blank"` ; `result`: `"Blank"` ; `type`: `"Blank"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaArrayType`, `"dump"`\> \| `Omit`<{ `dump`: [`string`, `string`] ; `result`: [`SpreadsheetType`](../interfaces/SpreadsheetType.md) ; `type`: `"Spreadsheet"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](../interfaces/FindKey.md)] ; `result`: [`RowType`](../interfaces/RowType.md) ; `type`: `"Row"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](../README.md#cellvia), [`Cell`](../interfaces/Cell.md)] ; `result`: [`CellType`](../interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`FindKey`](../interfaces/FindKey.md)] ; `result`: [`ColumnType`](../interfaces/ColumnType.md) ; `type`: `"Column"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`RangeType`](../interfaces/RangeType.md) ; `type`: `"Range"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `CstNode` ; `type`: `"Cst"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `Reference` ; `type`: `"Reference"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: [`FormulaFunction`, ...FormulaFunction[]] ; `type`: `"Function"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<`FormulaPredicateType`, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"literal"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Pending"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `string` ; `result`: `string` ; `type`: `"Waiting"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: `null` ; `result`: `null` ; `type`: `"NoPersist"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\>
+
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:304](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L304)
 
 ---
 
@@ -484,6 +540,10 @@ SpreadsheetType.handleInterpret
 
 SpreadsheetType.listCells
 
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:216](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L216)
+
 ---
 
 ### <a id="listcolumns" name="listcolumns"></a> listColumns
@@ -497,6 +557,10 @@ SpreadsheetType.listCells
 #### Implementation of
 
 SpreadsheetType.listColumns
+
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:208](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L208)
 
 ---
 
@@ -512,6 +576,10 @@ SpreadsheetType.listColumns
 
 SpreadsheetType.listRows
 
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:212](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L212)
+
 ---
 
 ### <a id="namedependency" name="namedependency"></a> nameDependency
@@ -525,6 +593,10 @@ SpreadsheetType.listRows
 #### Implementation of
 
 SpreadsheetType.nameDependency
+
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:236](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L236)
 
 ---
 
@@ -546,6 +618,10 @@ SpreadsheetType.nameDependency
 
 SpreadsheetType.namespaceName
 
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:199](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L199)
+
 ---
 
 ### <a id="persistall" name="persistall"></a> persistAll
@@ -560,6 +636,10 @@ SpreadsheetType.namespaceName
 
 SpreadsheetType.persistAll
 
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:399](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L399)
+
 ---
 
 ### <a id="persistdynamic" name="persistdynamic"></a> persistDynamic
@@ -569,6 +649,10 @@ SpreadsheetType.persistAll
 #### Returns
 
 [`SpreadsheetDynamicPersistence`](../interfaces/SpreadsheetDynamicPersistence.md)
+
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:388](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L388)
 
 ---
 
@@ -584,6 +668,10 @@ SpreadsheetType.persistAll
 
 SpreadsheetType.rowCount
 
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:413](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L413)
+
 ---
 
 ### <a id="toarray" name="toarray"></a> toArray
@@ -598,6 +686,10 @@ SpreadsheetType.rowCount
 
 SpreadsheetType.toArray
 
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:467](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L467)
+
 ---
 
 ### <a id="torecord" name="torecord"></a> toRecord
@@ -611,3 +703,7 @@ SpreadsheetType.toArray
 #### Implementation of
 
 SpreadsheetType.toRecord
+
+#### Defined in
+
+[packages/formula/src/controls/spreadsheet.ts:486](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L486)
