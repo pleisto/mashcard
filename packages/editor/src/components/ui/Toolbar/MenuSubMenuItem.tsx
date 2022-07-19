@@ -10,7 +10,7 @@ const SubMenuItem = styled('li', {
   color: theme.colors.typePrimary,
   cursor: 'pointer',
   display: 'flex',
-  fontSize: theme.fontSizes.subHeadline,
+  fontSize: theme.fontSizes.body,
   fontWeight: 500,
   height: itemHeight,
   lineHeight: itemHeight,
