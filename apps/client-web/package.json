@@ -25,7 +25,7 @@
     "dayjs": "^1.11.3",
     "framer-motion": "^6.5.1",
     "graphql": "^16.5.0",
-    "graphql-ruby-client": "^1.11.0",
+    "graphql-ruby-client": "^1.11.1",
     "i18next": "^21.8.14",
     "i18next-http-backend": "^1.4.1",
     "react": "^18.2.0",
