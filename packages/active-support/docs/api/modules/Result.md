@@ -44,7 +44,3 @@ arguments but returning `Ok` if successful, `Err` if the function throws
 ##### Returns
 
 [`Result`](../README.md#result)<`ReturnType`<`Fn`\>, `E`\>
-
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:56

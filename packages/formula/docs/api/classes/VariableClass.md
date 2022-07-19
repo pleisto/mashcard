@@ -56,10 +56,6 @@
 | `__namedParameters.formulaContext` | [`ContextInterface`](../interfaces/ContextInterface.md) |
 | `__namedParameters.t`              | [`VariableData`](../interfaces/VariableData.md)         |
 
-#### Defined in
-
-[packages/formula/src/context/variable.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L116)
-
 ## Properties
 
 ### <a id="builtineventlisteners" name="builtineventlisteners"></a> builtinEventListeners
@@ -204,10 +200,6 @@
 
 VariableInterface.buildFormula
 
-#### Defined in
-
-[packages/formula/src/context/variable.ts:360](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L360)
-
 ---
 
 ### <a id="cleanup" name="cleanup"></a> cleanup
@@ -221,10 +213,6 @@ VariableInterface.buildFormula
 #### Implementation of
 
 VariableInterface.cleanup
-
-#### Defined in
-
-[packages/formula/src/context/variable.ts:197](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L197)
 
 ---
 
@@ -242,10 +230,6 @@ VariableInterface.cleanup
 #### Returns
 
 `Promise`<`void`\>
-
-#### Defined in
-
-[packages/formula/src/context/variable.ts:189](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L189)
 
 ---
 
@@ -266,10 +250,6 @@ VariableInterface.cleanup
 
 `Promise`<`void`\>
 
-#### Defined in
-
-[packages/formula/src/context/variable.ts:378](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L378)
-
 ---
 
 ### <a id="meta" name="meta"></a> meta
@@ -284,10 +264,6 @@ VariableInterface.cleanup
 
 VariableInterface.meta
 
-#### Defined in
-
-[packages/formula/src/context/variable.ts:323](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L323)
-
 ---
 
 ### <a id="namedependency" name="namedependency"></a> nameDependency
@@ -301,10 +277,6 @@ VariableInterface.meta
 #### Implementation of
 
 VariableInterface.nameDependency
-
-#### Defined in
-
-[packages/formula/src/context/variable.ts:334](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L334)
 
 ---
 
@@ -325,10 +297,6 @@ VariableInterface.nameDependency
 #### Implementation of
 
 VariableInterface.namespaceName
-
-#### Defined in
-
-[packages/formula/src/context/variable.ts:314](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L314)
 
 ---
 
@@ -352,10 +320,6 @@ VariableInterface.namespaceName
 
 VariableInterface.onUpdate
 
-#### Defined in
-
-[packages/formula/src/context/variable.ts:147](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L147)
-
 ---
 
 ### <a id="save" name="save"></a> save
@@ -370,10 +334,6 @@ VariableInterface.onUpdate
 
 VariableInterface.save
 
-#### Defined in
-
-[packages/formula/src/context/variable.ts:356](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L356)
-
 ---
 
 ### <a id="setupeventdependencies" name="setupeventdependencies"></a> setupEventDependencies
@@ -384,10 +344,6 @@ VariableInterface.save
 
 `void`
 
-#### Defined in
-
-[packages/formula/src/context/variable.ts:435](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L435)
-
 ---
 
 ### <a id="subscribedependencies" name="subscribedependencies"></a> subscribeDependencies
@@ -397,10 +353,6 @@ VariableInterface.save
 #### Returns
 
 `void`
-
-#### Defined in
-
-[packages/formula/src/context/variable.ts:567](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L567)
 
 ---
 
@@ -418,10 +370,6 @@ VariableInterface.save
 
 `Promise`<`void`\>
 
-#### Defined in
-
-[packages/formula/src/context/variable.ts:177](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L177)
-
 ---
 
 ### <a id="trackdependency" name="trackdependency"></a> trackDependency
@@ -435,10 +383,6 @@ VariableInterface.save
 #### Implementation of
 
 VariableInterface.trackDependency
-
-#### Defined in
-
-[packages/formula/src/context/variable.ts:255](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L255)
 
 ---
 
@@ -454,10 +398,6 @@ VariableInterface.trackDependency
 
 VariableInterface.trackDirty
 
-#### Defined in
-
-[packages/formula/src/context/variable.ts:170](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L170)
-
 ---
 
 ### <a id="unsubscripeevents" name="unsubscripeevents"></a> unsubscripeEvents
@@ -467,10 +407,6 @@ VariableInterface.trackDirty
 #### Returns
 
 `void`
-
-#### Defined in
-
-[packages/formula/src/context/variable.ts:599](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L599)
 
 ---
 
@@ -491,7 +427,3 @@ VariableInterface.trackDirty
 #### Implementation of
 
 VariableInterface.updateDefinition
-
-#### Defined in
-
-[packages/formula/src/context/variable.ts:431](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L431)

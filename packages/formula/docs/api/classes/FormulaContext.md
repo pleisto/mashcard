@@ -79,10 +79,6 @@
 | :------------------ | :---------------------------------------------------------- |
 | `__namedParameters` | [`FormulaContextArgs`](../interfaces/FormulaContextArgs.md) |
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:98](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L98)
-
 ## Properties
 
 ### <a id="backendactions" name="backendactions"></a> backendActions
@@ -333,10 +329,6 @@
 
 ContextInterface.checkName
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:255](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L255)
-
 ---
 
 ### <a id="cleanup" name="cleanup"></a> cleanup
@@ -351,10 +343,6 @@ ContextInterface.checkName
 
 ContextInterface.cleanup
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:173](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L173)
-
 ---
 
 ### <a id="commitdirty" name="commitdirty"></a> commitDirty
@@ -364,10 +352,6 @@ ContextInterface.cleanup
 #### Returns
 
 `Promise`<`void`\>
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:442](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L442)
 
 ---
 
@@ -390,10 +374,6 @@ ContextInterface.cleanup
 
 ContextInterface.commitVariable
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:385](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L385)
-
 ---
 
 ### <a id="completions" name="completions"></a> completions
@@ -415,10 +395,6 @@ ContextInterface.commitVariable
 
 ContextInterface.completions
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:189](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L189)
-
 ---
 
 ### <a id="findblockbyid" name="findblockbyid"></a> findBlockById
@@ -438,10 +414,6 @@ ContextInterface.completions
 #### Implementation of
 
 ContextInterface.findBlockById
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:223](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L223)
 
 ---
 
@@ -464,10 +436,6 @@ ContextInterface.findBlockById
 
 ContextInterface.findColumn
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:323](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L323)
-
 ---
 
 ### <a id="findfunctionclause" name="findfunctionclause"></a> findFunctionClause
@@ -488,10 +456,6 @@ ContextInterface.findColumn
 #### Implementation of
 
 ContextInterface.findFunctionClause
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:420](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L420)
 
 ---
 
@@ -514,10 +478,6 @@ ContextInterface.findFunctionClause
 
 ContextInterface.findNames
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:248](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L248)
-
 ---
 
 ### <a id="findreference" name="findreference"></a> findReference
@@ -538,10 +498,6 @@ ContextInterface.findNames
 #### Implementation of
 
 ContextInterface.findReference
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:227](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L227)
 
 ---
 
@@ -564,10 +520,6 @@ ContextInterface.findReference
 
 ContextInterface.findRow
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:329](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L329)
-
 ---
 
 ### <a id="findspreadsheet" name="findspreadsheet"></a> findSpreadsheet
@@ -587,10 +539,6 @@ ContextInterface.findRow
 #### Implementation of
 
 ContextInterface.findSpreadsheet
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:313](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L313)
 
 ---
 
@@ -613,10 +561,6 @@ ContextInterface.findSpreadsheet
 
 ContextInterface.findVariableById
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:361](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L361)
-
 ---
 
 ### <a id="findvariablebyname" name="findvariablebyname"></a> findVariableByName
@@ -637,10 +581,6 @@ ContextInterface.findVariableById
 #### Implementation of
 
 ContextInterface.findVariableByName
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:374](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L374)
 
 ---
 
@@ -663,10 +603,6 @@ ContextInterface.findVariableByName
 
 ContextInterface.findVariableDisplayDataById
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:365](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L365)
-
 ---
 
 ### <a id="findviewrender" name="findviewrender"></a> findViewRender
@@ -686,10 +622,6 @@ ContextInterface.findVariableDisplayDataById
 #### Implementation of
 
 ContextInterface.findViewRender
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:219](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L219)
 
 ---
 
@@ -711,10 +643,6 @@ ContextInterface.findViewRender
 #### Implementation of
 
 ContextInterface.getDefaultVariableName
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:211](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L211)
 
 ---
 
@@ -738,10 +666,6 @@ ContextInterface.getDefaultVariableName
 
 ContextInterface.invoke
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:180](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L180)
-
 ---
 
 ### <a id="listvariables" name="listvariables"></a> listVariables
@@ -762,10 +686,6 @@ ContextInterface.invoke
 
 ContextInterface.listVariables
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:381](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L381)
-
 ---
 
 ### <a id="parsecodefragments" name="parsecodefragments"></a> parseCodeFragments
@@ -781,10 +701,6 @@ ContextInterface.listVariables
 #### Returns
 
 [`CodeFragmentWithIndex`](../README.md#codefragmentwithindex)[]
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:471](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L471)
 
 ---
 
@@ -806,10 +722,6 @@ ContextInterface.listVariables
 
 ContextInterface.removeBlock
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:239](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L239)
-
 ---
 
 ### <a id="removename" name="removename"></a> removeName
@@ -830,10 +742,6 @@ ContextInterface.removeBlock
 
 ContextInterface.removeName
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:291](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L291)
-
 ---
 
 ### <a id="removespreadsheet" name="removespreadsheet"></a> removeSpreadsheet
@@ -853,10 +761,6 @@ ContextInterface.removeName
 #### Implementation of
 
 ContextInterface.removeSpreadsheet
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:353](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L353)
 
 ---
 
@@ -879,10 +783,6 @@ ContextInterface.removeSpreadsheet
 
 ContextInterface.removeVariable
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:409](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L409)
-
 ---
 
 ### <a id="resetformula" name="resetformula"></a> resetFormula
@@ -896,10 +796,6 @@ ContextInterface.removeVariable
 #### Implementation of
 
 ContextInterface.resetFormula
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:427](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L427)
 
 ---
 
@@ -917,10 +813,6 @@ ContextInterface.resetFormula
 #### Returns
 
 `Promise`<`void`\>
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:232](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L232)
 
 ---
 
@@ -942,10 +834,6 @@ ContextInterface.resetFormula
 
 ContextInterface.setName
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:270](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L270)
-
 ---
 
 ### <a id="setspreadsheet" name="setspreadsheet"></a> setSpreadsheet
@@ -966,10 +854,6 @@ ContextInterface.setName
 
 ContextInterface.setSpreadsheet
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:335](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L335)
-
 ---
 
 ### <a id="tick" name="tick"></a> tick
@@ -986,10 +870,6 @@ ContextInterface.setSpreadsheet
 
 `Promise`<`void`\>
 
-#### Defined in
-
-[packages/formula/src/context/context.ts:435](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L435)
-
 ---
 
 ### <a id="variablecount" name="variablecount"></a> variableCount
@@ -1003,10 +883,6 @@ ContextInterface.setSpreadsheet
 #### Implementation of
 
 ContextInterface.variableCount
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:215](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L215)
 
 ---
 
@@ -1023,7 +899,3 @@ ContextInterface.variableCount
 #### Returns
 
 [`FormulaContext`](FormulaContext.md)
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:495](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L495)

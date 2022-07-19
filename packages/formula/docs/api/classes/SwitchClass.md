@@ -37,10 +37,6 @@
 | `ctx`               | [`FunctionContext`](../interfaces/FunctionContext.md)     |
 | `__namedParameters` | [`SwitchInitializer`](../interfaces/SwitchInitializer.md) |
 
-#### Defined in
-
-[packages/formula/src/controls/switch.ts:14](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L14)
-
 ## Properties
 
 ### <a id="_formulacontext" name="_formulacontext"></a> \_formulaContext
@@ -166,7 +162,3 @@
 #### Implementation of
 
 SwitchType.persistence
-
-#### Defined in
-
-[packages/formula/src/controls/switch.ts:33](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L33)

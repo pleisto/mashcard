@@ -37,10 +37,6 @@
 | `ctx`               | [`FunctionContext`](../interfaces/FunctionContext.md)     |
 | `__namedParameters` | [`ButtonInitializer`](../interfaces/ButtonInitializer.md) |
 
-#### Defined in
-
-[packages/formula/src/controls/button.ts:14](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/button.ts#L14)
-
 ## Properties
 
 ### <a id="_formulacontext" name="_formulacontext"></a> \_formulaContext
@@ -152,7 +148,3 @@
 #### Implementation of
 
 ButtonType.persistence
-
-#### Defined in
-
-[packages/formula/src/controls/button.ts:23](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/button.ts#L23)

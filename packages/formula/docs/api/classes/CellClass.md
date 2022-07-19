@@ -51,10 +51,6 @@
 | `__namedParameters.columnKey`              | `string`                                                                                                                            |
 | `__namedParameters.rowKey`                 | `string`                                                                                                                            |
 
-#### Defined in
-
-[packages/formula/src/controls/cell.ts:23](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L23)
-
 ## Properties
 
 ### <a id="_cell" name="_cell"></a> \_cell
@@ -275,10 +271,6 @@
 
 CellType.eventDependency
 
-#### Defined in
-
-[packages/formula/src/controls/cell.ts:60](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L60)
-
 ---
 
 ### <a id="getvalue" name="getvalue"></a> getValue
@@ -292,7 +284,3 @@ CellType.eventDependency
 #### Implementation of
 
 CellType.getValue
-
-#### Defined in
-
-[packages/formula/src/controls/cell.ts:52](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/cell.ts#L52)
