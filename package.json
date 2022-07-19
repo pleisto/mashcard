@@ -70,13 +70,13 @@
     "@commitlint/config-conventional": "^17.0.3",
     "@mashcard/dev-support": "workspace:^",
     "@swc/cli": "^0.1.57",
-    "@swc/jest": "^0.2.22",
+    "@swc/jest": "^0.2.21",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^14.2.6",
+    "@testing-library/user-event": "^14.2.5",
     "@types/jest": "^28.1.6",
     "@types/jest-axe": "^3.5.4",
-    "@types/node": "^18.0.6",
+    "@types/node": "^18.0.5",
     "@types/rails__actioncable": "^6.1.6",
     "@types/rails__activestorage": "^7.0.1",
     "@types/react": "^18.0.15",
@@ -101,7 +101,7 @@
     "@tiptap/react": "patch:@tiptap/react@npm:2.0.0-beta.114#.yarn/patches/@tiptap-react-npm-2.0.0-beta.114-77e1d9a671.patch"
   },
   "dependencies": {
-    "@swc/core": "^1.2.218",
+    "@swc/core": "^1.2.215",
     "@swc/helpers": "^0.4.3",
     "lodash-es": "^4.17.21",
     "ts-node": "^10.9.1"
