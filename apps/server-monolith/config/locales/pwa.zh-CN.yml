@@ -254,10 +254,15 @@ zh-CN:
         remove: 删除锚点标记
       link:
         title: 链接
-        placeholder: 粘贴链接
-        confirm: 链接到网页
-        copy: 复制链接
-        delete: 移除链接
+    inline_link:
+      edit:
+        title: Add Link
+        placeholder: Paste link or search pages...
+        remove: Remove
+        blank: Link can not be blank.
+        options:
+          group_label: Link to page
+          link_web: Link to web
     image_block:
       hint: 添加图片
       deletion_confirm:

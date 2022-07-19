@@ -52,6 +52,10 @@
 | :---- | :----------------------------------------------------- |
 | `res` | `Promise`<[`Result`](../README.md#result)<`T`, `E`\>\> |
 
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:3
+
 ## Properties
 
 ### <a id="_promise" name="_promise"></a> \_promise
@@ -84,6 +88,10 @@ node_modules/neverthrow/dist/index.d.ts:2
 
 [`ResultAsync`](ResultAsync.md)<`InferOkTypes`<`R`\>, `E` \| `InferErrTypes`<`R`\>\>
 
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:8
+
 ▸ **andThen**<`R`\>(`f`): [`ResultAsync`](ResultAsync.md)<`InferAsyncOkTypes`<`R`\>, `E` \| `InferAsyncErrTypes`<`R`\>\>
 
 #### Type parameters
@@ -101,6 +109,10 @@ node_modules/neverthrow/dist/index.d.ts:2
 #### Returns
 
 [`ResultAsync`](ResultAsync.md)<`InferAsyncOkTypes`<`R`\>, `E` \| `InferAsyncErrTypes`<`R`\>\>
+
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:9
 
 ▸ **andThen**<`U`, `F`\>(`f`): [`ResultAsync`](ResultAsync.md)<`U`, `E` \| `F`\>
 
@@ -120,6 +132,10 @@ node_modules/neverthrow/dist/index.d.ts:2
 #### Returns
 
 [`ResultAsync`](ResultAsync.md)<`U`, `E` \| `F`\>
+
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:10
 
 ---
 
@@ -143,6 +159,10 @@ node_modules/neverthrow/dist/index.d.ts:2
 
 [`ResultAsync`](ResultAsync.md)<`A`, `E`\>
 
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:6
+
 ---
 
 ### <a id="maperr" name="maperr"></a> mapErr
@@ -164,6 +184,10 @@ node_modules/neverthrow/dist/index.d.ts:2
 #### Returns
 
 [`ResultAsync`](ResultAsync.md)<`T`, `U`\>
+
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:7
 
 ---
 
@@ -188,6 +212,10 @@ node_modules/neverthrow/dist/index.d.ts:2
 
 `Promise`<`A`\>
 
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:14
+
 ---
 
 ### <a id="orelse" name="orelse"></a> orElse
@@ -210,6 +238,10 @@ node_modules/neverthrow/dist/index.d.ts:2
 
 [`ResultAsync`](ResultAsync.md)<`T`, `InferErrTypes`<`R`\>\>
 
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:11
+
 ▸ **orElse**<`R`\>(`f`): [`ResultAsync`](ResultAsync.md)<`T`, `InferAsyncErrTypes`<`R`\>\>
 
 #### Type parameters
@@ -228,6 +260,10 @@ node_modules/neverthrow/dist/index.d.ts:2
 
 [`ResultAsync`](ResultAsync.md)<`T`, `InferAsyncErrTypes`<`R`\>\>
 
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:12
+
 ▸ **orElse**<`A`\>(`f`): [`ResultAsync`](ResultAsync.md)<`T`, `A`\>
 
 #### Type parameters
@@ -245,6 +281,10 @@ node_modules/neverthrow/dist/index.d.ts:2
 #### Returns
 
 [`ResultAsync`](ResultAsync.md)<`T`, `A`\>
+
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:13
 
 ---
 
@@ -274,6 +314,10 @@ node_modules/neverthrow/dist/index.d.ts:2
 
 PromiseLike.then
 
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:16
+
 ---
 
 ### <a id="unwrapor" name="unwrapor"></a> unwrapOr
@@ -295,6 +339,10 @@ PromiseLike.then
 #### Returns
 
 `Promise`<`T` \| `A`\>
+
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:15
 
 ---
 
@@ -320,6 +368,10 @@ PromiseLike.then
 
 [`ResultAsync`](ResultAsync.md)<`T`, `E`\>
 
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:5
+
 ---
 
 ### <a id="fromsafepromise" name="fromsafepromise"></a> fromSafePromise
@@ -342,3 +394,7 @@ PromiseLike.then
 #### Returns
 
 [`ResultAsync`](ResultAsync.md)<`T`, `E`\>
+
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:4

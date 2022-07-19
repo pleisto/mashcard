@@ -80,6 +80,10 @@
 
 CodeFragmentCstVisitor.constructor
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:79](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L79)
+
 ## Properties
 
 ### <a id="async" name="async"></a> async
@@ -219,6 +223,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:967](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L967)
+
 ---
 
 ### <a id="booleanliteralexpression" name="booleanliteralexpression"></a> BooleanLiteralExpression
@@ -236,6 +244,10 @@ CodeFragmentCstVisitor.constructor
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
+
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:699](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L699)
 
 ---
 
@@ -258,6 +270,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:801](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L801)
+
 ---
 
 ### <a id="functionnameexpression" name="functionnameexpression"></a> FunctionNameExpression
@@ -274,6 +290,10 @@ CodeFragmentCstVisitor.constructor
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
+
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:662](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L662)
 
 ---
 
@@ -296,6 +316,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:684](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L684)
+
 ---
 
 ### <a id="stringliteralexpression" name="stringliteralexpression"></a> StringLiteralExpression
@@ -312,6 +336,10 @@ CodeFragmentCstVisitor.constructor
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
+
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:672](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L672)
 
 ---
 
@@ -330,6 +358,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:188](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L188)
+
 ---
 
 ### <a id="additionexpression" name="additionexpression"></a> additionExpression
@@ -347,6 +379,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:155](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L155)
+
 ---
 
 ### <a id="arrayexpression" name="arrayexpression"></a> arrayExpression
@@ -363,6 +399,10 @@ CodeFragmentCstVisitor.constructor
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
+
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:581](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L581)
 
 ---
 
@@ -385,6 +425,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:482](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L482)
+
 ---
 
 ### <a id="blockexpression" name="blockexpression"></a> blockExpression
@@ -401,6 +445,10 @@ CodeFragmentCstVisitor.constructor
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
+
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:711](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L711)
 
 ---
 
@@ -422,6 +470,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:270](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L270)
+
 ---
 
 ### <a id="combineexpression" name="combineexpression"></a> combineExpression
@@ -438,6 +490,10 @@ CodeFragmentCstVisitor.constructor
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
+
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:100](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L100)
 
 ---
 
@@ -456,6 +512,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:122](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L122)
+
 ---
 
 ### <a id="concatexpression" name="concatexpression"></a> concatExpression
@@ -472,6 +532,10 @@ CodeFragmentCstVisitor.constructor
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
+
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:144](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L144)
 
 ---
 
@@ -494,6 +558,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:631](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L631)
+
 ---
 
 ### <a id="equalcompareexpression" name="equalcompareexpression"></a> equalCompareExpression
@@ -510,6 +578,10 @@ CodeFragmentCstVisitor.constructor
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
+
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L111)
 
 ---
 
@@ -528,6 +600,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:89](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L89)
+
 ---
 
 ### <a id="inexpression" name="inexpression"></a> inExpression
@@ -544,6 +620,10 @@ CodeFragmentCstVisitor.constructor
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
+
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:133](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L133)
 
 ---
 
@@ -562,6 +642,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:430](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L430)
+
 ---
 
 ### <a id="lazyvariableexpression" name="lazyvariableexpression"></a> lazyVariableExpression
@@ -578,6 +662,10 @@ CodeFragmentCstVisitor.constructor
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
+
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:760](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L760)
 
 ---
 
@@ -596,6 +684,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:166](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L166)
+
 ---
 
 ### <a id="notexpression" name="notexpression"></a> notExpression
@@ -613,6 +705,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:177](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L177)
+
 ---
 
 ### <a id="parenthesisexpression" name="parenthesisexpression"></a> parenthesisExpression
@@ -629,6 +725,10 @@ CodeFragmentCstVisitor.constructor
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
+
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:618](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L618)
 
 ---
 
@@ -650,6 +750,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:540](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L540)
+
 ---
 
 ### <a id="rangeexpression" name="rangeexpression"></a> rangeExpression
@@ -666,6 +770,10 @@ CodeFragmentCstVisitor.constructor
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
+
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:259](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L259)
 
 ---
 
@@ -684,6 +792,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:594](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L594)
+
 ---
 
 ### <a id="recordfield" name="recordfield"></a> recordField
@@ -701,6 +813,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:607](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L607)
+
 ---
 
 ### <a id="referenceexpression" name="referenceexpression"></a> referenceExpression
@@ -717,6 +833,10 @@ CodeFragmentCstVisitor.constructor
 #### Returns
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
+
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:505](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L505)
 
 ---
 
@@ -742,6 +862,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:442](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L442)
+
 ---
 
 ### <a id="startexpression" name="startexpression"></a> startExpression
@@ -760,6 +884,10 @@ CodeFragmentCstVisitor.constructor
 
 [`CodeFragmentResult`](../interfaces/CodeFragmentResult.md)
 
+#### Defined in
+
+[packages/formula/src/grammar/codeFragment.ts:85](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L85)
+
 ---
 
 ### <a id="validatevisitor" name="validatevisitor"></a> validateVisitor
@@ -773,6 +901,10 @@ CodeFragmentCstVisitor.constructor
 #### Inherited from
 
 CodeFragmentCstVisitor.validateVisitor
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:1897
 
 ---
 
@@ -794,3 +926,7 @@ CodeFragmentCstVisitor.validateVisitor
 #### Inherited from
 
 CodeFragmentCstVisitor.visit
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:1896

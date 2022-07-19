@@ -51,6 +51,10 @@
 | `logic`             | `boolean`                                             |
 | `findKey`           | [`FindKey`](../interfaces/FindKey.md)                 |
 
+#### Defined in
+
+[packages/formula/src/controls/column.ts:31](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L31)
+
 ## Properties
 
 ### <a id="columnid" name="columnid"></a> columnId
@@ -219,6 +223,10 @@
 
 ColumnType.cells
 
+#### Defined in
+
+[packages/formula/src/controls/column.ts:58](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L58)
+
 ---
 
 ### <a id="display" name="display"></a> display
@@ -232,6 +240,10 @@ ColumnType.cells
 #### Implementation of
 
 ColumnType.display
+
+#### Defined in
+
+[packages/formula/src/controls/column.ts:50](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L50)
 
 ---
 
@@ -253,6 +265,10 @@ ColumnType.display
 
 ColumnType.eventDependency
 
+#### Defined in
+
+[packages/formula/src/controls/column.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L108)
+
 ---
 
 ### <a id="findcellbynumber" name="findcellbynumber"></a> findCellByNumber
@@ -269,6 +285,10 @@ ColumnType.eventDependency
 #### Returns
 
 `Omit`<{ `dump`: [`ErrorMessage`](../interfaces/ErrorMessage.md) ; `result`: [`ErrorMessage`](../interfaces/ErrorMessage.md) ; `type`: `"Error"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](../README.md#cellvia), [`Cell`](../interfaces/Cell.md)] ; `result`: [`CellType`](../interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\>
+
+#### Defined in
+
+[packages/formula/src/controls/column.ts:75](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L75)
 
 ---
 
@@ -298,6 +318,10 @@ ColumnType.eventDependency
 
 ColumnType.handleCodeFragments
 
+#### Defined in
+
+[packages/formula/src/controls/column.ts:139](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L139)
+
 ---
 
 ### <a id="handleinterpret" name="handleinterpret"></a> handleInterpret
@@ -319,6 +343,10 @@ ColumnType.handleCodeFragments
 
 ColumnType.handleInterpret
 
+#### Defined in
+
+[packages/formula/src/controls/column.ts:135](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L135)
+
 ---
 
 ### <a id="key" name="key"></a> key
@@ -332,6 +360,10 @@ ColumnType.handleInterpret
 #### Implementation of
 
 ColumnType.key
+
+#### Defined in
+
+[packages/formula/src/controls/column.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L54)
 
 ---
 
@@ -354,6 +386,10 @@ ColumnType.key
 
 ColumnType.newCell
 
+#### Defined in
+
+[packages/formula/src/controls/column.ts:100](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L100)
+
 ---
 
 ### <a id="persistence" name="persistence"></a> persistence
@@ -363,3 +399,7 @@ ColumnType.newCell
 #### Returns
 
 [`Column`](../interfaces/Column.md) & { `findKey`: [`FindKey`](../interfaces/FindKey.md) }
+
+#### Defined in
+
+[packages/formula/src/controls/column.ts:62](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L62)
