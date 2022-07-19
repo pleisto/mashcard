@@ -65,14 +65,14 @@ export const VariableEventTestCase: TestCaseInterface = {
         saveEvents: ctx => [
           {
             event: FormulaVariableDependencyUpdated,
-            eventId: `${ctx.formulaContext.domain}#${page0Id},${variableId}`,
+            eventId: `${ctx.formulaContext.username}#${page0Id},${variableId}`,
             payload: { meta: [{ namespaceId: page0Id, variableId: dependencyVariableId }], id: variableId }
           }
         ],
         triggerEvents: ctx => [
           {
             event: FormulaVariableDependencyUpdated,
-            eventId: `${ctx.formulaContext.domain}#${page0Id},${variableId}`,
+            eventId: `${ctx.formulaContext.username}#${page0Id},${variableId}`,
             payload: { meta: [], id: variableId }
           }
         ]

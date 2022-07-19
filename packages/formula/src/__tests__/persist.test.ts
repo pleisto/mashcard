@@ -176,7 +176,7 @@ const cells: Cell[] = [
   }
 ]
 
-const formulaContext = FormulaContext.getInstance({ domain: 'test' })
+const formulaContext = FormulaContext.getFormulaInstance({ username: 'test' })
 void dispatchFormulaBlockNameChange({ id: namespaceId, name: 'Page1', username: 'test' })
 
 const spreadsheet: SpreadsheetType = new SpreadsheetClass({
@@ -351,6 +351,28 @@ const testCases: {
       testCase: { type: 'Error', result: { message: 'bang!', type: 'runtime' } },
       displayResult: { type: 'Error', result: '#<Error> bang!' },
       dumpResult: { type: 'Error', result: { message: 'bang!', type: 'runtime' } }
+    },
+    {
+      testCase: {
+        type: 'Error',
+        result: { message: 'errors.interpret.runtime.division_by_zero', type: 'runtime' }
+      },
+      displayResult: { type: 'Error', result: '#<Error> errors.interpret.runtime.division_by_zero' },
+      dumpResult: {
+        type: 'Error',
+        result: { message: 'errors.interpret.runtime.division_by_zero', type: 'runtime' }
+      }
+    },
+    {
+      testCase: {
+        type: 'Error',
+        result: { message: ['errors.interpret.not_found.key', { key: 'foo' }], type: 'runtime' }
+      },
+      displayResult: { type: 'Error', result: '#<Error> errors.interpret.not_found.key {"key":"foo"}' },
+      dumpResult: {
+        type: 'Error',
+        result: { message: ['errors.interpret.not_found.key', { key: 'foo' }], type: 'runtime' }
+      }
     }
   ],
   Array: [
@@ -452,7 +474,7 @@ describe('persist', () => {
       expect(castedValue).toMatchObject(castedResult)
     }
 
-    const displayValue = display(testCase)
+    const displayValue = display(testCase, formulaContext)
     if (displayResult !== null) {
       // eslint-disable-next-line jest/no-conditional-expect
       expect(displayValue).toEqual(displayResult)

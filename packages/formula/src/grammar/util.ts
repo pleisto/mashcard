@@ -11,7 +11,8 @@ import {
   FormulaCheckType,
   FormulaColorType,
   FormulaType,
-  FunctionContext
+  FunctionContext,
+  I18N
 } from '../type'
 import { InterpretArgument } from './interpreter'
 import { checkValidName } from './lexer'
@@ -368,4 +369,9 @@ export const parseErrorMessage = (message: string): ErrorMessageType => {
 
   const [msg, context] = JSON.parse(message.substring(PARSE_PREFIX_FLAG.length))
   return [msg, context]
+}
+
+export const defaultI18n: I18N = input => {
+  if (typeof input === 'string') return input
+  return `${input[0]} ${JSON.stringify(input[1])}`
 }

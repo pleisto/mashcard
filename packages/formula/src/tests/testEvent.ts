@@ -36,17 +36,17 @@ export const AllowEvents = {
   empty_sync: (ctx: ExtendedCtx, args: any) => {},
   empty_async: async (ctx: ExtendedCtx, args: any) => {},
   blockChangeName: async (ctx: ExtendedCtx, args: OmitUsername<typeof dispatchFormulaBlockNameChange>) =>
-    await dispatchFormulaBlockNameChange({ ...args, username: ctx.formulaContext.domain }),
+    await dispatchFormulaBlockNameChange({ ...args, username: ctx.formulaContext.username }),
   blockDelete: async (ctx: ExtendedCtx, args: OmitUsername<typeof dispatchFormulaBlockSoftDelete>) =>
-    await dispatchFormulaBlockSoftDelete({ ...args, username: ctx.formulaContext.domain }),
+    await dispatchFormulaBlockSoftDelete({ ...args, username: ctx.formulaContext.username }),
   spreadsheetChangeName: async (ctx: ExtendedCtx, args: OmitUsername<typeof dispatchFormulaSpreadsheetNameChange>) =>
-    await dispatchFormulaSpreadsheetNameChange({ ...args, username: ctx.formulaContext.domain }),
+    await dispatchFormulaSpreadsheetNameChange({ ...args, username: ctx.formulaContext.username }),
   spreadsheetDelete: async (ctx: ExtendedCtx, args: OmitUsername<typeof dispatchFormulaSpreadsheetRemove>) =>
-    await dispatchFormulaSpreadsheetRemove({ ...args, username: ctx.formulaContext.domain }),
+    await dispatchFormulaSpreadsheetRemove({ ...args, username: ctx.formulaContext.username }),
   columnChange: async (ctx: ExtendedCtx, args: OmitUsername<typeof dispatchFormulaSpreadsheetColumnChange>) =>
-    await dispatchFormulaSpreadsheetColumnChange({ ...args, username: ctx.formulaContext.domain }),
+    await dispatchFormulaSpreadsheetColumnChange({ ...args, username: ctx.formulaContext.username }),
   rowChange: async (ctx: ExtendedCtx, args: OmitUsername<typeof dispatchFormulaSpreadsheetRowChange>) =>
-    await dispatchFormulaSpreadsheetRowChange({ ...args, username: ctx.formulaContext.domain }),
+    await dispatchFormulaSpreadsheetRowChange({ ...args, username: ctx.formulaContext.username }),
   variableInsertOnly: async (ctx: ExtendedCtx, args: Parameters<typeof variableInsertOnlyEvent>[1]) =>
     await variableInsertOnlyEvent(ctx, args),
   variableInsertAndAwait: async (ctx: ExtendedCtx, args: Parameters<typeof variableInsertAndAwaitEvent>[1]) =>

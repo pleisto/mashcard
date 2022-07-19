@@ -111,7 +111,7 @@ export class SpreadsheetClass implements SpreadsheetType {
         await this._formulaContext.setName(this.nameDependency())
       },
       {
-        eventId: `${this._formulaContext.domain}#${namespaceId},${spreadsheetId}`,
+        eventId: `${this._formulaContext.username}#${namespaceId},${spreadsheetId}`,
         subscribeId: `Spreadsheet#${spreadsheetId}`
       }
     )
@@ -122,7 +122,7 @@ export class SpreadsheetClass implements SpreadsheetType {
       async e => {
         await this._formulaContext.removeSpreadsheet(spreadsheetId)
       },
-      { eventId: `${this._formulaContext.domain}#${spreadsheetId}`, subscribeId: `Spreadsheet#${spreadsheetId}` }
+      { eventId: `${this._formulaContext.username}#${spreadsheetId}`, subscribeId: `Spreadsheet#${spreadsheetId}` }
     )
 
     this.eventListeners.push(spreadsheetDeleteSubcription)
@@ -144,7 +144,7 @@ export class SpreadsheetClass implements SpreadsheetType {
         const result = MashcardEventBus.dispatch(
           SpreadsheetReloadViaId({
             id: this.spreadsheetId,
-            username: this._formulaContext.domain,
+            username: this._formulaContext.username,
             scope: { columns: changedColumnIds },
             namespaceId: this.namespaceId,
             key: this.spreadsheetId,
@@ -154,7 +154,7 @@ export class SpreadsheetClass implements SpreadsheetType {
         await Promise.all(result)
       },
       {
-        eventId: `${this._formulaContext.domain}#${namespaceId},${spreadsheetId}`,
+        eventId: `${this._formulaContext.username}#${namespaceId},${spreadsheetId}`,
         subscribeId: `Spreadsheet#${spreadsheetId}`
       }
     )
@@ -179,7 +179,7 @@ export class SpreadsheetClass implements SpreadsheetType {
         const result = MashcardEventBus.dispatch(
           SpreadsheetReloadViaId({
             id: this.spreadsheetId,
-            username: this._formulaContext.domain,
+            username: this._formulaContext.username,
             scope: { rows: changedRowIds },
             namespaceId: this.namespaceId,
             key: this.spreadsheetId,
@@ -189,7 +189,7 @@ export class SpreadsheetClass implements SpreadsheetType {
         await Promise.all(result)
       },
       {
-        eventId: `${this._formulaContext.domain}#${namespaceId},${spreadsheetId}`,
+        eventId: `${this._formulaContext.username}#${namespaceId},${spreadsheetId}`,
         subscribeId: `Spreadsheet#${spreadsheetId}`
       }
     )
@@ -450,7 +450,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     }
 
     const displayData = this._formulaContext.findVariableDisplayDataById(this.namespaceId, cell.variableId)
-    if (displayData) return display(displayData.result).result
+    if (displayData) return display(displayData.result, this._formulaContext).result
 
     return cell.value
   }

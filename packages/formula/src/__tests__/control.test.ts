@@ -15,12 +15,12 @@ const page: PageInput = {
 
 describe('Controls', () => {
   it('feature', async () => {
-    const noFeatureCtx = await makeContext({ initializeOptions: { domain: 'test', features: [] }, pages: [page] })
+    const noFeatureCtx = await makeContext({ initializeOptions: { username: 'test', features: [] }, pages: [page] })
     const input = `=Button("Foo", Set(#${namespaceId}.${testName1}, (1 + #${namespaceId}.${testName1})))`
     const { errorMessages: errorMessage1 } = noFeatureCtx.parseDirectly({ definition: input, namespaceId })
     expect(errorMessage1).toEqual([{ message: ['errors.parse.not_found.function', { key: 'Button' }], type: 'deps' }])
 
-    const featureCtx = await makeContext({ initializeOptions: { domain: 'test' }, pages: [page] })
+    const featureCtx = await makeContext({ initializeOptions: { username: 'test' }, pages: [page] })
     featureCtx.formulaContext.features = []
     const { errorMessages: errorMessage2 } = featureCtx.parseDirectly({ definition: input, namespaceId })
     expect(errorMessage2).toEqual([{ message: 'Feature formula-controls not enabled', type: 'deps' }])

@@ -1,5 +1,6 @@
-import { CodeFragmentWithIndex } from '@mashcard/formula'
+import { CodeFragmentWithIndex, ErrorMessageType, I18N } from '@mashcard/formula'
 import { JSONContent } from '@tiptap/core'
+import { TFunction } from 'react-i18next'
 import { FormulaInput } from '../components/blockViews'
 
 const maybeRemoveDefinitionEqual = (definition: string | undefined, formulaIsNormal: boolean): string => {
@@ -84,3 +85,13 @@ export const codeFragments2content = (
   const contents = newCodeFragments.map<JSONContent>(codeFragment => attrsToJSONContent(codeFragment))
   return [buildJSONContentByArray(contents), newCodeFragments]
 }
+
+export const formulaI18n =
+  (t: TFunction): I18N =>
+  (message: ErrorMessageType) => {
+    if (typeof message === 'string') {
+      return t(message)
+    } else {
+      return t(message[0], message[1])
+    }
+  }

@@ -4,7 +4,7 @@ import { FormulaContext } from '../context/context'
 
 describe('appendFormulas TODO', () => {
   it('constant', async () => {
-    const formulaContext = new FormulaContext({ domain: 'test' })
+    const formulaContext = new FormulaContext({ username: 'test' })
     await appendFormulas(formulaContext, [])
 
     expect(formulaContext.variables).toEqual({})
@@ -40,7 +40,7 @@ describe('appendFormulas TODO', () => {
   })
 
   it('parse error', async () => {
-    const formulaContext = new FormulaContext({ domain: 'test' })
+    const formulaContext = new FormulaContext({ username: 'test' })
     await appendFormulas(formulaContext, [])
 
     expect(formulaContext.variables).toEqual({})

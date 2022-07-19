@@ -42,8 +42,9 @@ export const cast = <T extends UsedFormulaType, Value extends AnyTypeResult<T>, 
 }
 
 export const display = <T extends UsedFormulaType, Value extends AnyTypeResult<T>, Display extends AnyDisplayResult<T>>(
-  v: Value
+  v: Value,
+  ctx: ContextInterface
 ): Display => {
-  const result: any = FormulaAttributes[v.type].display(v as any, display)
+  const result: any = FormulaAttributes[v.type].display(v as any, ctx, display)
   return result
 }

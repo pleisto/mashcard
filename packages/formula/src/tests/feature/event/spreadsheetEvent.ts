@@ -153,12 +153,12 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
         triggerEvents: ctx => [
           {
             event: FormulaSpreadsheetDeleted,
-            eventId: `${ctx.formulaContext.domain}#${spreadsheet1Id}`,
-            payload: { id: spreadsheet1Id, username: ctx.formulaContext.domain }
+            eventId: `${ctx.formulaContext.username}#${spreadsheet1Id}`,
+            payload: { id: spreadsheet1Id, username: ctx.formulaContext.username }
           },
           {
             event: FormulaContextNameRemove,
-            eventId: `${ctx.formulaContext.domain}#${page0Id}#spreadsheet1foobar`
+            eventId: `${ctx.formulaContext.username}#${page0Id}#spreadsheet1foobar`
           },
           {
             event: FormulaUpdatedViaId,
@@ -166,7 +166,7 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
           },
           {
             event: FormulaContextNameChanged,
-            eventId: `${ctx.formulaContext.domain}#${ctx.meta.namespaceId}#${ctx.meta.name}`,
+            eventId: `${ctx.formulaContext.username}#${ctx.meta.namespaceId}#${ctx.meta.name}`,
             callLength: 0
           }
         ],
@@ -179,12 +179,12 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
         triggerEvents: ctx => [
           {
             event: FormulaSpreadsheetDeleted,
-            eventId: `${ctx.formulaContext.domain}#${spreadsheet1Id}`,
-            payload: { id: spreadsheet1Id, username: ctx.formulaContext.domain }
+            eventId: `${ctx.formulaContext.username}#${spreadsheet1Id}`,
+            payload: { id: spreadsheet1Id, username: ctx.formulaContext.username }
           },
           {
             event: FormulaContextNameRemove,
-            eventId: `${ctx.formulaContext.domain}#${page0Id}#spreadsheet1foobar`
+            eventId: `${ctx.formulaContext.username}#${page0Id}#spreadsheet1foobar`
           },
           {
             event: FormulaUpdatedViaId,
@@ -192,7 +192,7 @@ export const SpreadsheetEventTestCase: TestCaseInterface = {
           },
           {
             event: FormulaContextNameChanged,
-            eventId: `${ctx.formulaContext.domain}#${ctx.meta.namespaceId}#${ctx.meta.name}`,
+            eventId: `${ctx.formulaContext.username}#${ctx.meta.namespaceId}#${ctx.meta.name}`,
             callLength: 0
           }
         ],

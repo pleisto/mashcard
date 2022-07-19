@@ -12,7 +12,7 @@ import {
   SpreadsheetCellContainer,
   SpreadsheetColumnEditable
 } from './SpreadsheetView'
-import { display, VariableDisplayData } from '@mashcard/formula'
+import { display, SpreadsheetType, VariableDisplayData } from '@mashcard/formula'
 import React from 'react'
 import { FormulaDisplay } from '../../ui/Formula'
 import { styled } from '@mashcard/design-system'
@@ -29,7 +29,7 @@ export interface Column {
 }
 
 export interface SpreadsheetRenderProps {
-  title: string
+  spreadsheet: SpreadsheetType
   rows: Row[]
   valuesMatrix: Map<string, Map<string, VariableDisplayData | undefined>>
   columns: Column[]
@@ -38,7 +38,7 @@ export interface SpreadsheetRenderProps {
 
 export const SpreadsheetRender: React.FC<SpreadsheetRenderProps> = ({
   rows,
-  title,
+  spreadsheet,
   columns,
   valuesMatrix,
   defaultSelection
@@ -56,7 +56,7 @@ export const SpreadsheetRender: React.FC<SpreadsheetRenderProps> = ({
           new Map(
             columns.map(c => {
               const displayData = valuesMatrix.get(rowId)?.get(c.columnId)
-              return [c.columnId, displayData ? display(displayData.result).result : '']
+              return [c.columnId, displayData ? display(displayData.result, spreadsheet._formulaContext).result : '']
             })
           )
         ]
@@ -99,7 +99,8 @@ export const SpreadsheetRender: React.FC<SpreadsheetRenderProps> = ({
                       context={spreadsheetContext}
                       columnId={column.columnId}
                       columnActions={[]}
-                      draggable={false}>
+                      draggable={false}
+                    >
                       <SpreadsheetColumnEditable
                         context={spreadsheetContext}
                         index={i}
@@ -119,7 +120,8 @@ export const SpreadsheetRender: React.FC<SpreadsheetRenderProps> = ({
                           <SpreadsheetCellContainer
                             key={column.columnId}
                             context={spreadsheetContext}
-                            cellId={{ rowId: rowBlock.rowId, columnId: column.columnId }}>
+                            cellId={{ rowId: rowBlock.rowId, columnId: column.columnId }}
+                          >
                             <div className="cell">
                               <FormulaDisplay
                                 displayData={valuesMatrix.get(rowBlock.rowId)?.get(column.columnId)}

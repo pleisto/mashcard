@@ -65,9 +65,9 @@ export function useFormulaSpreadsheet({
       spreadsheetId,
       title,
       namespaceId: rootId,
-      username: formulaContext?.domain
+      username: formulaContext?.username
     })
-  }, [formulaContext?.domain, rootId, spreadsheetId, title])
+  }, [formulaContext?.username, rootId, spreadsheetId, title])
 
   React.useEffect(() => {
     // TODO: remove this when switch pages
@@ -75,18 +75,18 @@ export function useFormulaSpreadsheet({
       spreadsheetId,
       namespaceId: rootId,
       rows: rowData,
-      username: formulaContext?.domain
+      username: formulaContext?.username
     })
-  }, [rootId, spreadsheetId, rowData, formulaContext?.domain])
+  }, [rootId, spreadsheetId, rowData, formulaContext?.username])
 
   React.useEffect(() => {
     void dispatchFormulaSpreadsheetColumnChange({
       spreadsheetId,
       namespaceId: rootId,
       columns: columnData,
-      username: formulaContext?.domain
+      username: formulaContext?.username
     })
-  }, [rootId, spreadsheetId, columnData, formulaContext?.domain])
+  }, [rootId, spreadsheetId, columnData, formulaContext?.username])
 
   React.useEffect(() => {
     if (!formulaContext) return
@@ -123,7 +123,7 @@ export function useFormulaSpreadsheet({
 
   return {
     deleteSpreadsheet: () => {
-      void dispatchFormulaSpreadsheetRemove({ id: spreadsheetId, username: formulaContext?.domain })
+      void dispatchFormulaSpreadsheetRemove({ id: spreadsheetId, username: formulaContext?.username })
     }
   }
 }

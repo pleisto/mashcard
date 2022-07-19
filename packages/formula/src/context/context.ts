@@ -11,6 +11,7 @@ import {
   SpreadsheetReloadViaId
 } from '../events'
 import { buildFunctionKey, BUILTIN_CLAUSES } from '../functions'
+import { defaultI18n } from '../grammar'
 import { CodeFragmentVisitor } from '../grammar/codeFragment'
 import {
   block2completion,
@@ -45,6 +46,7 @@ import {
   FunctionGroup,
   FunctionKey,
   FunctionNameType,
+  I18N,
   NameDependencyWithKind,
   NamespaceId,
   SpreadsheetCompletion,
@@ -63,7 +65,8 @@ import { FORMULA_FEATURE_CONTROL } from './features'
 import { dumpDisplayResultForDisplay } from './persist'
 
 export interface FormulaContextArgs {
-  domain: string
+  username: string
+  i18n?: I18N
   tickTimeout?: number
   functionClauses?: AnyFunctionClause[]
   backendActions?: BackendActions
@@ -74,9 +77,10 @@ export type ContextState = any
 
 export class FormulaContext implements ContextInterface {
   private static instance?: FormulaContext
-  domain: string
+  options: FormulaContextArgs
+  username: string
+  i18n: I18N
   tickKey: string
-  tickTimeout: number
   features: Features
   dirtyFormulas: Record<VariableKey, DirtyFormulaInfo> = {}
   variables: Record<VariableKey, VariableInterface> = {}
@@ -90,25 +94,20 @@ export class FormulaContext implements ContextInterface {
   reverseVariableDependencies: Record<VariableKey, VariableDependency[]> = {}
   reverseFunctionDependencies: Record<FunctionKey, VariableDependency[]> = {}
   functionClausesMap: Record<FunctionKey, AnyFunctionClauseWithKeyAndExample> = {}
-  backendActions: BackendActions | undefined
   reservedNames: string[] = []
   eventListeners: EventSubscribed[] = []
   variableNameStore: typeof variableNameStore = variableNameStore
 
-  constructor({
-    domain,
-    tickTimeout,
-    functionClauses = [],
-    backendActions,
-    features = [FORMULA_FEATURE_CONTROL]
-  }: FormulaContextArgs) {
-    this.domain = domain
-    this.tickTimeout = tickTimeout ?? 1000
-    this.tickKey = `FormulaContext#${domain}`
+  constructor(options: FormulaContextArgs) {
+    this.options = options
+
+    const { username, i18n, functionClauses = [], features = [FORMULA_FEATURE_CONTROL] } = options
+
+    this.username = username
+    this.tickKey = `FormulaContext#${username}`
     this.features = features
-    if (backendActions) {
-      this.backendActions = backendActions
-    }
+
+    this.i18n = i18n ?? defaultI18n
 
     this.viewRenders = DEFAULT_VIEWS.reduce((o: Record<ViewType, ViewRender>, acc: View) => {
       o[acc.type] = acc.render
@@ -120,7 +119,7 @@ export class FormulaContext implements ContextInterface {
       async e => {
         await this.setBlock(e.payload.id, e.payload.meta)
       },
-      { subscribeId: `Domain#${this.domain}`, eventId: this.domain }
+      { subscribeId: `Domain#${this.username}`, eventId: this.username }
     )
 
     this.eventListeners.push(blockNameSubscription)
@@ -130,10 +129,7 @@ export class FormulaContext implements ContextInterface {
       async e => {
         await this.tick(e.payload.state)
       },
-      {
-        eventId: this.tickKey,
-        subscribeId: `Domain#${this.domain}`
-      }
+      { eventId: this.tickKey, subscribeId: `Domain#${this.username}` }
     )
 
     this.eventListeners.push(tickSubscription)
@@ -180,7 +176,10 @@ export class FormulaContext implements ContextInterface {
   public async invoke(name: string, ctx: FunctionContext, ...args: any[]): Promise<AnyTypeResult> {
     const clause = this.functionClausesMap[name]
     if (!clause) {
-      return { type: 'Error', result: { message: ['errors.parse.not_found.function', { key: name }], type: 'fatal' } }
+      return {
+        type: 'Error',
+        result: { message: ['errors.parse.not_found.function', { key: name }], type: 'fatal' }
+      }
     }
 
     return await (clause.reference as (ctx: FunctionContext, ...args: any[]) => Promise<any>)(ctx, ...args)
@@ -277,7 +276,7 @@ export class FormulaContext implements ContextInterface {
         id: nameDependency.id,
         namespaceId: nameDependency.namespaceId,
         key: nameDependency.id,
-        username: this.domain,
+        username: this.username,
         scope: null,
         meta: {
           name: nameDependency.name,
@@ -299,7 +298,7 @@ export class FormulaContext implements ContextInterface {
         id: oldName.id,
         namespaceId: oldName.namespaceId,
         key: oldName.id,
-        username: this.domain,
+        username: this.username,
         scope: null,
         meta: {
           name: oldName.name,
@@ -341,7 +340,7 @@ export class FormulaContext implements ContextInterface {
       SpreadsheetReloadViaId({
         id: spreadsheet.spreadsheetId,
         namespaceId: spreadsheet.namespaceId,
-        username: this.domain,
+        username: this.username,
         scope: null,
         meta: null,
         key: spreadsheet.spreadsheetId
@@ -435,12 +434,12 @@ export class FormulaContext implements ContextInterface {
   private async tick(state: ContextState): Promise<void> {
     await this.commitDirty()
     const newState = state
-    await new Promise(resolve => setTimeout(resolve, this.tickTimeout))
-    MashcardEventBus.dispatch(FormulaContextTickTrigger({ domain: this.domain, state: newState }))
+    await new Promise(resolve => setTimeout(resolve, this.options.tickTimeout))
+    MashcardEventBus.dispatch(FormulaContextTickTrigger({ username: this.username, state: newState }))
   }
 
   private async commitDirty(): Promise<void> {
-    if (!this.backendActions) {
+    if (!this.options.backendActions) {
       this.dirtyFormulas = {}
       return
     }
@@ -458,8 +457,8 @@ export class FormulaContext implements ContextInterface {
       }
     })
     if (commitFormulas.length > 0 || deleteFormulas.length > 0) {
-      // console.log('commit dirty', commitFormulas, deleteFormulas, this.backendActions)
-      const { success } = await this.backendActions.commit(commitFormulas, deleteFormulas)
+      // console.log('commit dirty', commitFormulas, deleteFormulas, this.options.backendActions)
+      const { success } = await this.options.backendActions.commit(commitFormulas, deleteFormulas)
       if (success) {
         this.dirtyFormulas = {}
       } else {
@@ -492,7 +491,7 @@ export class FormulaContext implements ContextInterface {
     return codeFragments.map((c, index) => ({ ...c, index }))
   }
 
-  public static getInstance(args: FormulaContextArgs): FormulaContext {
+  public static getFormulaInstance(args: FormulaContextArgs): FormulaContext {
     if (this.instance === undefined) {
       this.instance = new FormulaContext(args)
     }

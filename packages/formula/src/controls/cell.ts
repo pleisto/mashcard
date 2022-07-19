@@ -52,7 +52,7 @@ export class CellClass implements CellType {
   getValue(): string {
     const displayData = this.spreadsheet.findCellDisplayData({ rowId: this.rowId, columnId: this.columnId })
     if (displayData) {
-      return display(displayData.result).result
+      return display(displayData.result, this.spreadsheet._formulaContext).result
     }
     return this.value
   }

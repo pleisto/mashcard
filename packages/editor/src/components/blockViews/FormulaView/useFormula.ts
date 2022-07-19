@@ -505,12 +505,12 @@ export const useFormula = ({
         setReferences(e.payload.meta)
       },
       {
-        eventId: `${formulaContext?.domain}#${namespaceId},${variableId}`,
+        eventId: `${formulaContext?.username}#${namespaceId},${variableId}`,
         subscribeId: `UseFormula#${namespaceId},${variableId}`
       }
     )
     return () => listener.unsubscribe()
-  }, [formulaContext?.domain, namespaceId, variableId])
+  }, [formulaContext?.username, namespaceId, variableId])
 
   React.useEffect(() => {
     const listener = MashcardEventBus.subscribe(

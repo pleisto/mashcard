@@ -2410,7 +2410,7 @@ exports[`FormulaResult chain "={a:1}.b" -> [object Object] 1`] = `
         class="mashcard-formula-borderless"
         style="color: rgb(207, 31, 40);"
       >
-        #&lt;Error&gt; errors.interpret.not_found.key,[object Object]
+        #&lt;Error&gt; errors.interpret.not_found.key {"key":"b"}
       </span>
       <span
         class="formula-result-ok-icon"
