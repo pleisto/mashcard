@@ -1,6 +1,6 @@
 import { DocMeta } from '@/docs_legacy/store/DocMeta'
 import { ConversationCommentAppendMutation, ConversationCommentCreateMutation } from '@/MashcardGraphQL'
-import { BaseOptions, CommentData, ConversationData } from '@mashcard/editor'
+import { BaseOptions, CommentData, ConversationData } from '@mashcard/legacy-editor'
 import { useMemo } from 'react'
 import { useCreateComment } from './useCreateComment'
 import { useCreateConversation } from './useCreateConversation'

@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { useConversationCommentAppendMutation } from '@/MashcardGraphQL'
-import { DiscussionOptions } from '@mashcard/editor'
+import { DiscussionOptions } from '@mashcard/legacy-editor'
 import { commentToData } from './useDiscussion'
 
 export function useCreateComment(): DiscussionOptions['createComment'] {

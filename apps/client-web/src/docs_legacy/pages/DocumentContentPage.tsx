@@ -18,8 +18,9 @@ import { useFormulaActions } from './hooks/useFormulaActions'
 import { AppError404 } from '@/routes/_shared/AppError'
 import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
 import { MashcardEventBus, BlockMetaUpdated, ReloadDocument } from '@mashcard/schema'
-import { formulaI18n } from '@mashcard/editor/src/helpers'
-import { useFormulaI18n } from '@mashcard/editor/src/hooks/useFormulaI18n'
+// TOD: fix these imports
+import { formulaI18n } from '@mashcard/legacy-editor/src/helpers'
+import { useFormulaI18n } from '@mashcard/legacy-editor/src/hooks/useFormulaI18n'
 
 export const DocumentContentPage: FC = () => {
   const { t } = useDocsI18n()

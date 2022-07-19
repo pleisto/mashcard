@@ -5,7 +5,7 @@ import {
   GetConversationCommentsDocument
 } from '@/MashcardGraphQL'
 import { useImperativeQuery } from '@/common/hooks'
-import { DiscussionOptions } from '@mashcard/editor'
+import { DiscussionOptions } from '@mashcard/legacy-editor'
 import { DocMeta } from '@/docs_legacy/store/DocMeta'
 import { conversationToData } from './useDiscussion'
 

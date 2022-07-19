@@ -29,8 +29,8 @@
       "path": "packages/dev-support"
     },
     {
-      "name": "packages/editor",
-      "path": "packages/editor"
+      "name": "packages/legacy-editor",
+      "path": "packages/legacy-editor"
     },
     {
       "name": "packages/formula",

@@ -1,6 +1,6 @@
 import { FC, MouseEventHandler, useCallback, useEffect, useMemo, useRef } from 'react'
 import { Spin } from '@mashcard/design-system'
-import { EditorContent, useEditor } from '@mashcard/editor'
+import { EditorContent, useEditor } from '@mashcard/legacy-editor'
 import { DocumentTitle } from './components/DocumentTitle'
 import { useSyncProvider, useDocSyncProvider, useDocHistoryProvider } from './hooks'
 import { TrashPrompt } from '../common/components/TrashPrompt'
