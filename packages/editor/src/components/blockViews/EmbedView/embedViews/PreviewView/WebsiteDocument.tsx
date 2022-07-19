@@ -3,10 +3,12 @@ import { FC } from 'react'
 import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../../EmbedView'
 import { DocumentFooter } from './DocumentFooter'
 import { DocumentUnavailable } from './DocumentUnavailable'
+import { PreviewViewProps } from './PreviewView'
 import { useWebsiteDocumentStatus } from './useWebsiteDocumentStatus'
 
 export interface WebsiteDocumentProps {
   blockType: EmbedBlockType
+  extension: PreviewViewProps['extension']
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
   url: string
   title?: string
@@ -29,6 +31,7 @@ const WebsiteFrame = styled('iframe', {
 })
 
 export const WebsiteDocument: FC<WebsiteDocumentProps> = ({
+  extension,
   blockType,
   updateEmbedBlockAttributes,
   icon,
@@ -44,6 +47,7 @@ export const WebsiteDocument: FC<WebsiteDocumentProps> = ({
       <DocumentFooter
         displayName={displayName}
         url={url}
+        extension={extension}
         name={url}
         icon={icon}
         blockType={blockType}

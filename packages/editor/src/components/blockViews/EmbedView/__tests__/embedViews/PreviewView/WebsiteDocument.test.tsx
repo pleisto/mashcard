@@ -18,6 +18,7 @@ describe('WebsiteDocument', () => {
         blockType="link"
         icon="icon"
         title="title"
+        extension={{} as any}
         displayName="displayName"
         updateEmbedBlockAttributes={updateEmbedBlockAttributes}
         url="url"

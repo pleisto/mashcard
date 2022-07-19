@@ -47,6 +47,7 @@ const renderImage = (
         icon={<FileIcon fileType="image" />}
         linkUrl={imageUrl}
         node={node}
+        extension={extension}
         deleteNode={deleteNode}
         getPos={getPos}
         updateEmbedBlockAttributes={updateEmbedBlockAttributes}
@@ -90,6 +91,7 @@ const renderAttachment = (
         deleteNode={deleteNode}
         getPos={getPos}
         node={node}
+        extension={extension}
         updateEmbedBlockAttributes={updateEmbedBlockAttributes}
       />
     )
@@ -104,6 +106,7 @@ const renderAttachment = (
         icon={<FileIcon fileType={fileType} />}
         linkUrl={fileUrl}
         node={node}
+        extension={extension}
         deleteNode={deleteNode}
         getPos={getPos}
         updateEmbedBlockAttributes={updateEmbedBlockAttributes}
@@ -187,6 +190,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
           blockType="link"
           updateEmbedBlockAttributes={updateEmbedBlockAttributes}
           node={node}
+          extension={extension}
           deleteNode={deleteNode}
           cover={cover}
           description={description}
@@ -203,6 +207,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
           blockType="link"
           updateEmbedBlockAttributes={updateEmbedBlockAttributes}
           node={node}
+          extension={extension}
           fileUrl={linkUrl}
           fileType="html"
           fileName={title ?? ''}

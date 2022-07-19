@@ -7,9 +7,11 @@ import { usePdftronDocument } from './usePdftronDocument'
 import { DocumentFooter } from '../DocumentFooter'
 import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../../../EmbedView'
 import { DocumentUnavailable } from '../DocumentUnavailable'
+import { PreviewViewProps } from '../PreviewView'
 
 export interface PdftronDocumentProps {
   blockType: EmbedBlockType
+  extension: PreviewViewProps['extension']
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
   displayName: string
   fileName: string
@@ -56,6 +58,7 @@ const DocumentFileIcon = styled(FileIcon, {
 
 export const PdftronDocument: FC<PdftronDocumentProps> = ({
   blockType,
+  extension,
   updateEmbedBlockAttributes,
   fileName,
   fileType,
@@ -79,6 +82,7 @@ export const PdftronDocument: FC<PdftronDocumentProps> = ({
         icon={<DocumentFileIcon fileType={fileType} />}
         name={fileName}
         blockType={blockType}
+        extension={extension}
         updateEmbedBlockAttributes={updateEmbedBlockAttributes}
         onFullScreen={toggleFullScreen}
       />
