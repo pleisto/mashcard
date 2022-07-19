@@ -100,6 +100,10 @@
 
 CstParser.constructor
 
+#### Defined in
+
+[packages/formula/src/grammar/parser.ts:67](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L67)
+
 ## Properties
 
 ### <a id="arguments" name="arguments"></a> Arguments
@@ -476,6 +480,10 @@ For more information see:
 
 CstParser.ACTION
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:89
+
 ---
 
 ### <a id="at_least_one" name="at_least_one"></a> AT_LEAST_ONE
@@ -503,6 +511,10 @@ MANY
 #### Inherited from
 
 CstParser.AT_LEAST_ONE
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:683
 
 ---
 
@@ -533,6 +545,10 @@ MANY_SEP
 #### Inherited from
 
 CstParser.AT_LEAST_ONE_SEP
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:772
 
 ---
 
@@ -570,6 +586,10 @@ a lookahead function that will try to parse the given grammarRule and will retur
 #### Inherited from
 
 CstParser.BACKTRACK
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:75
 
 ---
 
@@ -619,6 +639,10 @@ For example:
 
 CstParser.CONSUME
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:186
+
 ---
 
 ### <a id="la" name="la"></a> LA
@@ -650,6 +674,10 @@ https://chevrotain.io/docs/features/gates.html
 #### Inherited from
 
 CstParser.LA
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:874
 
 ---
 
@@ -702,6 +730,10 @@ of the repetition production in it's top rule.
 
 CstParser.MANY
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:511
+
 ---
 
 ### <a id="many_sep" name="many_sep"></a> MANY_SEP
@@ -746,6 +778,10 @@ of the repetition production in it's top rule.
 #### Inherited from
 
 CstParser.MANY_SEP
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:616
 
 ---
 
@@ -803,6 +839,10 @@ or `undefined` if not.
 #### Inherited from
 
 CstParser.OPTION
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:275
 
 ---
 
@@ -890,6 +930,10 @@ The result of invoking the chosen alternative.
 
 CstParser.OR
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:411
+
 ▸ `Protected` **OR**(`altsOrOpts`): `any`
 
 #### Parameters
@@ -905,6 +949,10 @@ CstParser.OR
 #### Inherited from
 
 CstParser.OR
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:412
 
 ---
 
@@ -926,6 +974,10 @@ CstParser.OR
 
 CstParser.OR1
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:419
+
 ---
 
 ### <a id="or2" name="or2"></a> OR2
@@ -945,6 +997,10 @@ CstParser.OR1
 #### Inherited from
 
 CstParser.OR2
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:426
 
 ---
 
@@ -966,6 +1022,10 @@ CstParser.OR2
 
 CstParser.OR3
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:433
+
 ---
 
 ### <a id="or4" name="or4"></a> OR4
@@ -985,6 +1045,10 @@ CstParser.OR3
 #### Inherited from
 
 CstParser.OR4
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:440
 
 ---
 
@@ -1006,6 +1070,10 @@ CstParser.OR4
 
 CstParser.OR5
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:447
+
 ---
 
 ### <a id="or6" name="or6"></a> OR6
@@ -1025,6 +1093,10 @@ CstParser.OR5
 #### Inherited from
 
 CstParser.OR6
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:454
 
 ---
 
@@ -1046,6 +1118,10 @@ CstParser.OR6
 
 CstParser.OR7
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:461
+
 ---
 
 ### <a id="or8" name="or8"></a> OR8
@@ -1066,6 +1142,10 @@ CstParser.OR7
 
 CstParser.OR8
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:468
+
 ---
 
 ### <a id="or9" name="or9"></a> OR9
@@ -1085,6 +1165,10 @@ CstParser.OR8
 #### Inherited from
 
 CstParser.OR9
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:475
 
 ---
 
@@ -1116,6 +1200,10 @@ See usage example in: https://github.com/chevrotain/chevrotain/blob/master/examp
 #### Inherited from
 
 CstParser.OVERRIDE_RULE
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:901
 
 ---
 
@@ -1150,6 +1238,10 @@ be called without parameters during the grammar recording phase.
 
 CstParser.RULE
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:891
+
 ---
 
 ### <a id="skip_token" name="skip_token"></a> SKIP_TOKEN
@@ -1163,6 +1255,10 @@ CstParser.RULE
 #### Inherited from
 
 CstParser.SKIP_TOKEN
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:859
 
 ---
 
@@ -1206,6 +1302,10 @@ of the sub rule invocation in its rule.
 
 CstParser.SUBRULE
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:938
+
 ---
 
 ### <a id="atleastone" name="atleastone"></a> atLeastOne
@@ -1237,6 +1337,10 @@ AT_LEAST_ONE
 
 CstParser.atLeastOne
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:150
+
 ---
 
 ### <a id="cantokentypebedeletedinrecovery" name="cantokentypebedeletedinrecovery"></a> canTokenTypeBeDeletedInRecovery
@@ -1259,6 +1363,10 @@ The method receives the expected token type. The token that would be deleted can
 #### Inherited from
 
 CstParser.canTokenTypeBeDeletedInRecovery
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:848
 
 ---
 
@@ -1286,6 +1394,10 @@ as the max of the cardinality will be greater than the min value (and this is a 
 
 CstParser.canTokenTypeBeInsertedInRecovery
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:842
+
 ---
 
 ### <a id="computecontentassist" name="computecontentassist"></a> computeContentAssist
@@ -1306,6 +1418,10 @@ CstParser.canTokenTypeBeInsertedInRecovery
 #### Inherited from
 
 CstParser.computeContentAssist
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:64
 
 ---
 
@@ -1339,6 +1455,10 @@ CONSUME
 
 CstParser.consume
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:99
+
 ---
 
 ### <a id="getbasecstvisitorconstructor" name="getbasecstvisitorconstructor"></a> getBaseCstVisitorConstructor
@@ -1367,6 +1487,10 @@ CstParser.consume
 #### Inherited from
 
 CstParser.getBaseCstVisitorConstructor
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:48
 
 ---
 
@@ -1397,6 +1521,10 @@ CstParser.getBaseCstVisitorConstructor
 
 CstParser.getBaseCstVisitorConstructorWithDefaults
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:52
+
 ---
 
 ### <a id="getgastproductions" name="getgastproductions"></a> getGAstProductions
@@ -1410,6 +1538,10 @@ CstParser.getBaseCstVisitorConstructorWithDefaults
 #### Inherited from
 
 CstParser.getGAstProductions
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:56
 
 ---
 
@@ -1435,6 +1567,10 @@ CstParser.getGAstProductions
 
 CstParser.getNextPossibleTokenTypes
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:853
+
 ---
 
 ### <a id="getserializedgastproductions" name="getserializedgastproductions"></a> getSerializedGastProductions
@@ -1448,6 +1584,10 @@ CstParser.getNextPossibleTokenTypes
 #### Inherited from
 
 CstParser.getSerializedGastProductions
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:58
 
 ---
 
@@ -1472,6 +1612,10 @@ For example if an IntegerToken is required provide one with the image '0' so it 
 #### Inherited from
 
 CstParser.getTokenToInsert
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:833
 
 ---
 
@@ -1503,6 +1647,10 @@ MANY
 #### Inherited from
 
 CstParser.many
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:137
 
 ---
 
@@ -1541,6 +1689,10 @@ OPTION
 
 CstParser.option
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:113
+
 ---
 
 ### <a id="or-1" name="or-1"></a> or
@@ -1572,6 +1724,10 @@ OR
 
 CstParser.or
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:126
+
 ▸ `Protected` **or**<`T`\>(`idx`, `altsOrOpts`): `T`
 
 #### Type parameters
@@ -1595,6 +1751,10 @@ CstParser.or
 
 CstParser.or
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:127
+
 ---
 
 ### <a id="performselfanalysis" name="performselfanalysis"></a> performSelfAnalysis
@@ -1612,6 +1772,10 @@ See: http://chevrotain.io/docs/tutorial/step2_parsing.html#under-the-hood
 
 CstParser.performSelfAnalysis
 
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:17
+
 ---
 
 ### <a id="reset" name="reset"></a> reset
@@ -1628,6 +1792,10 @@ When overriding, remember to also invoke the super implementation!
 #### Inherited from
 
 CstParser.reset
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:46
 
 ---
 
@@ -1666,3 +1834,7 @@ SUBRULE
 #### Inherited from
 
 CstParser.subrule
+
+#### Defined in
+
+node_modules/@chevrotain/types/api.d.ts:915
