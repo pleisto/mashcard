@@ -71,6 +71,12 @@ export const LinkEdit = createExtension<LinkOptions>({
                   } as any)
                   .setTextSelection(to)
                   .run()
+
+                reactRenderer.updateProps({
+                  type,
+                  href: type === 'link' ? linkOrPageId : '',
+                  pageId: type === 'page' ? linkOrPageId : ''
+                })
               }
 
               const handleUnsetLink = (): void => {

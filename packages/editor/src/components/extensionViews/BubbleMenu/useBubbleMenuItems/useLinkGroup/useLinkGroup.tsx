@@ -11,16 +11,22 @@ export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
   const [t] = useEditorI18n()
   const { editor } = useEditorContext()
   const { href, type, pageId } = (editor?.getAttributes('link') ?? {}) as LinkAttributes
-  const [inputLink, setInputLink] = useState(href ?? '')
+
+  const [attributes, setAttributes] = useState<LinkAttributes>({ href, type, pageId })
 
   useEffect(() => {
-    setInputLink(href ?? '')
-  }, [href])
+    setAttributes(attrs => ({
+      ...attrs,
+      href,
+      type,
+      pageId
+    }))
+  }, [href, type, pageId])
 
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
-    const handleConfirm = (type: LinkAttributes['type'], linkOrPageId: string): boolean =>
+    const handleConfirm = (type: LinkAttributes['type'], linkOrPageId: string): void => {
       editor
         .chain()
         .focus()
@@ -31,6 +37,14 @@ export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
           // TODO: fix this type, override setLink type
         } as any)
         .run()
+
+      setAttributes(attrs => ({
+        ...attrs,
+        type,
+        href: type === 'link' ? linkOrPageId : '',
+        pageId: type === 'page' ? linkOrPageId : ''
+      }))
+    }
 
     const handleUnsetLink = (): boolean => editor.chain().focus().unsetLink().run()
 
@@ -47,7 +61,7 @@ export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
             defaultEdit={!type && !href}
             type={type}
             pageId={pageId}
-            link={inputLink}
+            link={attributes.href ?? ''}
             onLinkChange={handleConfirm}
             onUnsetLink={handleUnsetLink}
           />
@@ -66,7 +80,7 @@ export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
 
     return linkGroup
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [editor?.state.selection, inputLink])
+  }, [editor?.state.selection, attributes.href])
 
   return [option]
 }
