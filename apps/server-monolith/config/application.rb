@@ -48,7 +48,7 @@ module Mashcard
         '@mashcard/github-auth',
         '@mashcard/google-auth',
       ]
-      default_plugins.push '@mashcard/dotcom' if ENV['MASHCARD_DOTCOM_LICENSE'].present?
+      default_plugins.push '@pleisto/cloud' if ENV['MASHCARD_CLOUD_LICENSE'].present?
       default_plugins.each do |name|
         plugin = Mashcard::Plugins.find(name)
         raise "Plugin #{name} not found, but it should be enabled by default" if plugin.nil?

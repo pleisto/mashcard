@@ -1,4 +1,4 @@
-import { styled, theme } from '@mashcard/design-system'
+import { theme } from '@mashcard/design-system'
 
 export const itemHeight = '1.25rem'
 

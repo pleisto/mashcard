@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 
 export type StrokeLinejoin = 'miter' | 'round' | 'bevel'
 export type StrokeLinecap = 'butt' | 'round' | 'square'
@@ -201,6 +201,6 @@ export function IconWrapper(name: string, rtl: boolean, render: IconRender) {
   }
 }
 
-export const ImageIcon: React.FC<{ src: string; alt?: string }> = props => {
-  return <img src={props.src} alt={props.alt} className="mc-icon mc-icon-img" />
+export const ImageIcon: React.FC<{ src: string; alt?: string; style?: CSSProperties }> = props => {
+  return <img src={props.src} alt={props.alt} style={props.style} className="mc-icon mc-icon-img" />
 }

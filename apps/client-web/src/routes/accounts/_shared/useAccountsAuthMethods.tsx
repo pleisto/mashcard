@@ -47,7 +47,7 @@ export const useAccountsAuthMethods = (
     config?.accountsFederatedProviders
       ?.map(i => ({
         name: i.name,
-        logo: <ImageIcon src={i.logo} alt={`${i.name} logo`} />,
+        logo: <ImageIcon src={i.logo} style={{ maxWidth: '1em' }} alt={`${i.name} logo`} />,
         action: () => redirectToOAuthProvider(i.name, csrfToken)
       }))
       // Add EmailPassword Auth if it enabled.

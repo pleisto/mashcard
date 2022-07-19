@@ -88,7 +88,7 @@ jobs:
             --set-string envs.GCP_KMS_FRN='projects/${{ env.GCP_PROJECT }}/locations/global/keyRings/global-saas/cryptoKeys/sass-master-key' \
             --set-string envs.GCS_PRIVATE_BUCKET='pvt.us-edge.user-owns-data.net' \
             --set-string envs.GCS_PUBLIC_BUCKET='pub.us-edge.user-owns-data.net' \
-            --set-string license='I hereby swear that I have obtained written permission from the Pleisto Inc of this plugin to use it.' \
+            --set-string license='I hereby swear that I have obtained written permission from the Brickdoc Inc of this plugin to use it.' \
             --set-string secrets.SECRET_KEY_SEED='${{ secrets.SAAS_PROD_SECRET_KEY_SEED }}' \
             --set-string secrets.MASHCARD_DATABASE_URL='${{ secrets.SAAS_PROD_POSTGRE_URL }}' \
             --set-string secrets.REDIS_URL='${{ secrets.SAAS_PROD_REDIS_URL }}' \
@@ -97,4 +97,6 @@ jobs:
             --set-string secrets.IFRAMELY_API_ACCESS_KEY='${{ secrets.SAAS_PROD_IFRAMELY_API_ACCESS_KEY }}' \
             --set-string secrets.SMTP_URL='${{ secrets.SAAS_PROD_SMTP_URL }}' \
             --set-string secrets.GOOGLE_OAUTH2_ID='${{ secrets.SAAS_PROD_GOOGLE_OAUTH2_ID }}' \
-            --set-string secrets.GOOGLE_OAUTH2_SECRET='${{ secrets.SAAS_PROD_GOOGLE_OAUTH2_SECRET }}'
+            --set-string secrets.GOOGLE_OAUTH2_SECRET='${{ secrets.SAAS_PROD_GOOGLE_OAUTH2_SECRET }}' \
+            --set-string secrets.GITHUB_KEY='${{ secrets.SAAS_PROD_GITHUB_KEY }}' \
+            --set-string secrets.GITHUB_SECRET='${{ secrets.SAAS_PROD_GITHUB_SECRET }}' \

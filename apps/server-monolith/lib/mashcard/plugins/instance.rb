@@ -42,7 +42,7 @@ module Mashcard
 
       # Set plugin enabled state
       def enabled=(enabled)
-        config.set(enabled_field_name, enabled, allow_global: true)
+        config.set(enabled_field_name, enabled)
         load! if enabled
       end
 
