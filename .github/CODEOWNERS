@@ -1,4 +1,4 @@
-* @stackia
+- @stackia
 
 /app @aligo @Darmody @clszzyh
 /db @aligo @Darmody @clszzyh @0xding
@@ -7,7 +7,7 @@
 /gems @aligo @Darmody @clszzyh
 /apps/client-web/ @melchior-voidwolf @Darmody
 /packages/design-system/ @melchior-voidwolf @wizcas
-/packages/editor/ @Darmody @clszzyh
+/packages/legacy-editor/ @Darmody @clszzyh
 /packages/formula/ @clszzyh @aligo
 /packages/uploader/ @Darmody @aligo
 /packages/schema/ @aligo @clszzyh

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Y } from '@mashcard/editor'
+import { Y } from '@mashcard/legacy-editor'
 import * as awarenessProtocol from 'y-protocols/awareness'
 import { base64 } from 'rfc4648'
 import { uuid, isEqual } from '@mashcard/active-support'

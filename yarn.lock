@@ -2972,8 +2972,8 @@ __metadata:
     "@mashcard/design-icons": "workspace:^"
     "@mashcard/design-system": "workspace:^"
     "@mashcard/dev-support": "workspace:^"
-    "@mashcard/editor": "workspace:^"
     "@mashcard/formula": "workspace:^"
+    "@mashcard/legacy-editor": "workspace:^"
     "@mashcard/schema": "workspace:^"
     "@mashcard/test-helper": "workspace:^"
     "@mashcard/uploader": "workspace:^"
@@ -3121,9 +3121,42 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@mashcard/editor@workspace:^, @mashcard/editor@workspace:packages/editor":
+"@mashcard/formula@workspace:^, @mashcard/formula@workspace:packages/formula":
   version: 0.0.0-use.local
-  resolution: "@mashcard/editor@workspace:packages/editor"
+  resolution: "@mashcard/formula@workspace:packages/formula"
+  dependencies:
+    "@mashcard/active-support": "workspace:^"
+    "@mashcard/design-system": "workspace:^"
+    "@mashcard/dev-support": "workspace:^"
+    "@mashcard/schema": "workspace:^"
+    "@types/lodash": ^4.14.182
+    "@types/qrcode.react": ^1.0.2
+    axios: ^0.27.2
+    chevrotain: ^10.1.2
+    lodash: ^4.17.21
+    qrcode.react: ^3.1.0
+    react-vega: ^7.6.0
+    vega: ^5.22.1
+    vega-lite: ^5.3.0
+    zustand: ^4.0.0-rc.2
+  languageName: unknown
+  linkType: soft
+
+"@mashcard/github-auth@workspace:plugins/github_auth":
+  version: 0.0.0-use.local
+  resolution: "@mashcard/github-auth@workspace:plugins/github_auth"
+  languageName: unknown
+  linkType: soft
+
+"@mashcard/google-auth@workspace:plugins/google_auth":
+  version: 0.0.0-use.local
+  resolution: "@mashcard/google-auth@workspace:plugins/google_auth"
+  languageName: unknown
+  linkType: soft
+
+"@mashcard/legacy-editor@workspace:^, @mashcard/legacy-editor@workspace:packages/legacy-editor":
+  version: 0.0.0-use.local
+  resolution: "@mashcard/legacy-editor@workspace:packages/legacy-editor"
   dependencies:
     "@mashcard/active-support": "workspace:^"
     "@mashcard/design-icons": "workspace:^"
@@ -3180,39 +3213,6 @@ __metadata:
     react-dom: ">=17.0.2"
     react-i18next: ">=11.12.0"
     react-router-dom: ">=6.3.0"
-  languageName: unknown
-  linkType: soft
-
-"@mashcard/formula@workspace:^, @mashcard/formula@workspace:packages/formula":
-  version: 0.0.0-use.local
-  resolution: "@mashcard/formula@workspace:packages/formula"
-  dependencies:
-    "@mashcard/active-support": "workspace:^"
-    "@mashcard/design-system": "workspace:^"
-    "@mashcard/dev-support": "workspace:^"
-    "@mashcard/schema": "workspace:^"
-    "@types/lodash": ^4.14.182
-    "@types/qrcode.react": ^1.0.2
-    axios: ^0.27.2
-    chevrotain: ^10.1.2
-    lodash: ^4.17.21
-    qrcode.react: ^3.1.0
-    react-vega: ^7.6.0
-    vega: ^5.22.1
-    vega-lite: ^5.3.0
-    zustand: ^4.0.0-rc.2
-  languageName: unknown
-  linkType: soft
-
-"@mashcard/github-auth@workspace:plugins/github_auth":
-  version: 0.0.0-use.local
-  resolution: "@mashcard/github-auth@workspace:plugins/github_auth"
-  languageName: unknown
-  linkType: soft
-
-"@mashcard/google-auth@workspace:plugins/google_auth":
-  version: 0.0.0-use.local
-  resolution: "@mashcard/google-auth@workspace:plugins/google_auth"
   languageName: unknown
   linkType: soft
 

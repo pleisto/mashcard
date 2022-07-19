@@ -1,0 +1,83 @@
+{
+  "name": "@mashcard/legacy-editor",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "@mashcard/active-support": "workspace:^",
+    "@mashcard/design-icons": "workspace:^",
+    "@mashcard/design-system": "workspace:^",
+    "@mashcard/formula": "workspace:^",
+    "@mashcard/schema": "workspace:^",
+    "@mashcard/test-helper": "workspace:^",
+    "@mashcard/uploader": "workspace:^",
+    "@pdftron/webviewer": "^8.7.0",
+    "@tiptap/core": "^2.0.0-beta.182",
+    "@tiptap/extension-blockquote": "^2.0.0-beta.29",
+    "@tiptap/extension-bold": "^2.0.0-beta.28",
+    "@tiptap/extension-bullet-list": "^2.0.0-beta.29",
+    "@tiptap/extension-code": "^2.0.0-beta.28",
+    "@tiptap/extension-code-block": "^2.0.0-beta.42",
+    "@tiptap/extension-collaboration": "^2.0.0-beta.38",
+    "@tiptap/extension-document": "^2.0.0-beta.17",
+    "@tiptap/extension-dropcursor": "^2.0.0-beta.29",
+    "@tiptap/extension-gapcursor": "^2.0.0-beta.39",
+    "@tiptap/extension-hard-break": "^2.0.0-beta.33",
+    "@tiptap/extension-heading": "^2.0.0-beta.29",
+    "@tiptap/extension-history": "^2.0.0-beta.26",
+    "@tiptap/extension-horizontal-rule": "^2.0.0-beta.36",
+    "@tiptap/extension-italic": "^2.0.0-beta.28",
+    "@tiptap/extension-link": "^2.0.0-beta.43",
+    "@tiptap/extension-list-item": "^2.0.0-beta.23",
+    "@tiptap/extension-ordered-list": "^2.0.0-beta.30",
+    "@tiptap/extension-paragraph": "^2.0.0-beta.26",
+    "@tiptap/extension-placeholder": "^2.0.0-beta.53",
+    "@tiptap/extension-strike": "^2.0.0-beta.29",
+    "@tiptap/extension-task-item": "^2.0.0-beta.37",
+    "@tiptap/extension-task-list": "^2.0.0-beta.29",
+    "@tiptap/extension-text": "^2.0.0-beta.17",
+    "@tiptap/extension-text-style": "^2.0.0-beta.26",
+    "@tiptap/extension-underline": "^2.0.0-beta.25",
+    "@tiptap/extension-unique-id": "^2.0.0-beta.4",
+    "@tiptap/react": "^2.0.0-beta.114",
+    "@tiptap/suggestion": "^2.0.0-beta.97",
+    "dayjs": "^1.11.3",
+    "framer-motion": "^6.5.1",
+    "lodash": "^4.17.21",
+    "popper-max-size-modifier": "^0.2.0",
+    "re-resizable": "^6.9.9",
+    "react-medium-image-zoom": "^4.4.3",
+    "refractor": "^4.7.0",
+    "tippy.js": "^6.3.7",
+    "y-protocols": "^1.0.5",
+    "yjs": "^13.5.39",
+    "zustand": "^4.0.0-rc.2"
+  },
+  "devDependencies": {
+    "@mashcard/dev-support": "workspace:^",
+    "@types/lodash": "^4.14.182"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2",
+    "react-i18next": ">=11.12.0",
+    "react-router-dom": ">=6.3.0"
+  },
+  "scripts": {
+    "lint": "yarn lint:eslint && yarn lint:type",
+    "lint:eslint": "TIMING=1 dev-support eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 dev-support eslint --cache --ext ts,tsx src --fix",
+    "lint:type": "run -T tsc",
+    "test:jest": "run -T jest",
+    "test:jest:fix": "run -T jest --silent -u"
+  }
+}

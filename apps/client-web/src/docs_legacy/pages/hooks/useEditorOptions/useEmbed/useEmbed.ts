@@ -1,6 +1,6 @@
 import { DocMeta } from '@/docs_legacy/store/DocMeta'
 import { Blob } from '@mashcard/schema'
-import { EmbedOptions } from '@mashcard/editor'
+import { EmbedOptions } from '@mashcard/legacy-editor'
 import { useGetGalleryImages } from './useGetGalleryImages'
 import { useGetUrlData } from './useGetUrlData'
 import { useGetFileUrl } from './useGetFileUrl'
