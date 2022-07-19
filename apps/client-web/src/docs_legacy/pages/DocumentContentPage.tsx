@@ -180,7 +180,7 @@ export const DocumentContentPage: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blockCreate, docId, history, domain, docMeta, lastDomain, lastBlockIds])
 
-  if (docMeta.isNotExist) {
+  if (docMeta.isNotExist && !latestLoading) {
     return <AppError404 btnCallback={() => navigate('/')} />
   }
 
