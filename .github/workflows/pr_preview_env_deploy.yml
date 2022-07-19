@@ -82,7 +82,7 @@ jobs:
             --set-string serviceAccount.name='trunk-or-pr-main' \
             --set-string envs.SENTRY_DSN='https://4aa5075a3b484af6a251f3677a9f665e@o1150336.ingest.sentry.io/6257651' \
             --set-string envs.HOST='${{ env.DOMAIN }}' \
-            --set-string license='I hereby swear that I have obtained written permission from the Pleisto Inc of this plugin to use it.' \
+            --set-string license='I hereby swear that I have obtained written permission from the Brickdoc Inc of this plugin to use it.' \
             --set-string secrets.SECRET_KEY_SEED='${{ secrets.PR_SECRET_KEY_SEED }}' \
             --set-string secrets.UNSPLASH_API_ACCESS_KEY='${{ secrets.UNSPLASH_API_ACCESS_KEY }}' \
             --set-string secrets.UNSPLASH_API_SECRET='${{ secrets.UNSPLASH_API_SECRET }}' \
