@@ -15,7 +15,7 @@ on:
       - '!.github/workflows/unit_test.yml'
       - 'tools/e2e-testing/**'
 env:
-  NODE_OPTIONS: '--max-old-space-size=6457'
+  NODE_OPTIONS: '--max-old-space-size=5950'
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: brickdoc
   REDIS_URL: redis://localhost:6379

@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y git build-essential && \
 
 ARG RAILS_ENV=production
 ENV RAILS_ENV=$RAILS_ENV
-ENV NODE_OPTIONS=--max-old-space-size=6457
+ENV NODE_OPTIONS=--max-old-space-size=5950
 ENV PATH /root/.volta/bin:/root/.cargo/bin:$PATH
 ENV CI=1
 

@@ -20,7 +20,7 @@ on:
       - '**.snap'
 
 env:
-  NODE_OPTIONS: '--max-old-space-size=6457'
+  NODE_OPTIONS: '--max-old-space-size=5950'
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: brickdoc
 
