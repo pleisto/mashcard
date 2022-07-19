@@ -1,10 +1,10 @@
 import { styled, theme } from '@mashcard/design-system'
+import { isNonEmptyString } from '@mashcard/active-support'
 import { FC } from 'react'
 import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../../EmbedView'
 import { DocumentFooter } from './DocumentFooter'
 import { DocumentUnavailable } from './DocumentUnavailable'
 import { PreviewViewProps } from './PreviewView'
-import { useWebsiteDocumentStatus } from './useWebsiteDocumentStatus'
 
 export interface WebsiteDocumentProps {
   blockType: EmbedBlockType
@@ -14,6 +14,7 @@ export interface WebsiteDocumentProps {
   title?: string
   displayName: string
   icon?: string | null
+  previewHtml?: string | null
 }
 
 const WebsiteDocumentContainer = styled('div', {
@@ -26,8 +27,11 @@ const WebsiteDocumentContainer = styled('div', {
   width: '60rem'
 })
 
-const WebsiteFrame = styled('iframe', {
-  height: '37rem'
+const WebsiteFrame = styled('div', {
+  '.iframely-embed, .iframely-responsive, iframe': {
+    height: '37rem',
+    width: '100%'
+  }
 })
 
 export const WebsiteDocument: FC<WebsiteDocumentProps> = ({
@@ -37,13 +41,22 @@ export const WebsiteDocument: FC<WebsiteDocumentProps> = ({
   icon,
   url,
   title,
-  displayName
+  displayName,
+  previewHtml
 }) => {
-  const [error, handleLoad] = useWebsiteDocumentStatus()
+  const hasContent = isNonEmptyString(previewHtml)
 
   return (
     <WebsiteDocumentContainer>
-      {error ? <DocumentUnavailable url={url} /> : <WebsiteFrame src={url} title={title ?? ''} onLoad={handleLoad} />}
+      {hasContent ? (
+        <WebsiteFrame
+          dangerouslySetInnerHTML={{
+            __html: previewHtml
+          }}
+        />
+      ) : (
+        <DocumentUnavailable url={url} />
+      )}
       <DocumentFooter
         displayName={displayName}
         url={url}

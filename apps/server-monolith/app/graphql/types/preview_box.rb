@@ -6,6 +6,7 @@ module Types
 
     field :cover, String, 'preview cover', null: true
     field :description, String, 'preview description', null: true
+    field :html, String, 'preview html', null: true
     field :icon, String, 'preview icon', null: true
     field :size, String, 'preview conetent size', null: true
     field :title, String, 'preview title', null: false

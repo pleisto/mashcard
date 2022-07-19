@@ -5,11 +5,24 @@ exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
   <div
     class="mc-c-cuwhsA"
   >
-    <iframe
-      class="mc-c-dfAJdS"
-      src="url"
-      title="title"
-    />
+    <div
+      class="mc-c-gQyGGr"
+    >
+      <span
+        class="mc-c-iYDmhm"
+      >
+        embed_block.view_types.preview.unavailable.tip
+      </span>
+      <button
+        class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-TfyyP-btnType-secondary mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-kHuXXI-size-md"
+        role="button"
+        type="button"
+      >
+        <span>
+          embed_block.view_types.preview.unavailable.link_button
+        </span>
+      </button>
+    </div>
     <div
       class="mc-c-ijXLft"
     >

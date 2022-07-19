@@ -61,7 +61,8 @@ export function useLinkValue(
           title: data.title,
           description: data.description,
           cover: data.cover,
-          icon: data.icon
+          icon: data.icon,
+          html: data.html
         },
         'link'
       )

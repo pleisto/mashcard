@@ -22,6 +22,8 @@ export interface PreviewViewProps {
   fileType: FileType
   fileUrl: string
   icon?: string | null
+  // previewHtml is PreviewBox's html attribute
+  previewHtml?: string | null
 }
 
 const DocumentContainer = styled('div', {
@@ -44,6 +46,7 @@ export const PreviewView: FC<PreviewViewProps> = ({
   fileName,
   fileType,
   fileUrl,
+  previewHtml,
   icon,
   node,
   extension
@@ -66,6 +69,7 @@ export const PreviewView: FC<PreviewViewProps> = ({
             extension={extension}
             blockType={blockType}
             updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+            previewHtml={previewHtml}
             url={fileUrl}
             displayName={displayName}
             icon={icon}

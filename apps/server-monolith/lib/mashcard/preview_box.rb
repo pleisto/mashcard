@@ -17,9 +17,10 @@ module Mashcard
     end
 
     def self.preview(url)
-      response = @connection.get('/api/iframely', { url: url })
+      response = @connection.get('/api/iframely', { url: url, omit_script: 1, omit_css: 1, media: 1, iframe: 0 })
       thumbnail = response.body.dig('links', 'thumbnail') || []
       icon = response.body.dig('links', 'icon') || []
+      html = response.body.dig('html')
       medium = response.body.dig('meta', 'medium')
 
       if response.status == 200
@@ -31,6 +32,7 @@ module Mashcard
                                               end&.dig('href') || '',
           icon: icon.find { |i| i['rel']&.include?('shortcut') }&.dig('href') || '',
           type: 'website',
+          html: html,
         }
 
         if medium == 'image'
