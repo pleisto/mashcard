@@ -48,7 +48,7 @@ exports[`Toolbar matches snapshot correctly 1`] = `
       >
         <li
           aria-label="subMenu renderItems"
-          class="mc-c-dKibPg"
+          class="mc-c-dRVQcf"
           role="menuitem"
         >
           subMenu renderItems
@@ -79,7 +79,7 @@ exports[`Toolbar matches snapshot correctly 1`] = `
       >
         <li
           aria-label="subMenu"
-          class="mc-c-dKibPg"
+          class="mc-c-dRVQcf"
           role="menuitem"
         >
           subMenu
