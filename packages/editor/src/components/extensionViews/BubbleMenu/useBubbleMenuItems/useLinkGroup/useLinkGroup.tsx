@@ -15,13 +15,15 @@ export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
   const [attributes, setAttributes] = useState<LinkAttributes>({ href, type, pageId })
 
   useEffect(() => {
-    setAttributes(attrs => ({
-      ...attrs,
+    if (attributes.href === href && attributes.type === type && attributes.pageId === pageId) return
+
+    setAttributes({
+      ...attributes,
       href,
       type,
       pageId
-    }))
-  }, [href, type, pageId])
+    })
+  }, [href, type, pageId, attributes])
 
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
