@@ -31,7 +31,7 @@ import { useFormulaActions } from '@/docs_legacy/pages/hooks/useFormulaActions'
 import { sleep } from '@/common/utils'
 import { useDocMeta } from '@/docs_legacy/store/DocMeta'
 import { useBlockSoftDelete } from '../../hooks/useBlockSoftDelete'
-import { MashcardEventBus, UpdateBlockMeta } from '@mashcard/schema'
+import { MashcardEventBus, UpdateBlockMeta, BlockMetaUpdated } from '@mashcard/schema'
 
 type UUID = Scalars['UUID']
 
@@ -138,14 +138,21 @@ export const PageMenu: React.FC<PageMenuProps> = ({
       // if (editor && !editor.isDestroyed) {
       //   editor.commands.setDocAttrs({ ...editor.state.doc.attrs, title })
       // }
-
       MashcardEventBus.dispatch(
         UpdateBlockMeta({
           id,
           meta: { title }
         })
       )
+    } else {
+      MashcardEventBus.dispatch(
+        BlockMetaUpdated({
+          id: pageId,
+          meta: { title }
+        })
+      )
     }
+
     setPopoverVisible(false)
   }
 

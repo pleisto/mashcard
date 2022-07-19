@@ -67,16 +67,30 @@ export const DocumentContentPage: FC = () => {
             })
           }
         },
-        { subscribeId: docId }
+        { eventId: docId }
       ),
       MashcardEventBus.subscribe(
         ReloadDocument,
         ({ payload }) => {
           refetch()
         },
-        { subscribeId: docId }
+        { eventId: docId }
       )
     ]
+    const pathArray = data?.blockNew?.documentInfo?.pathArray
+    if (pathArray) {
+      pathArray.forEach(path => {
+        subscriptions.push(
+          MashcardEventBus.subscribe(
+            BlockMetaUpdated,
+            ({ payload }) => {
+              refetch()
+            },
+            { eventId: path.id }
+          )
+        )
+      })
+    }
     return () => {
       subscriptions.forEach(s => s.unsubscribe())
     }
