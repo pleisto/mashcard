@@ -24,24 +24,26 @@ export function useLinkValue(
       return
     }
 
+    const normalizedUrl = prependUrlScheme(url)
+
     if (!extension?.options.getUrlData) {
       updateEmbedBlockAttributes(
         {
           type: 'ATTACHMENT',
-          key: url,
+          key: normalizedUrl,
           source: 'EXTERNAL',
           contentType: 'unknown',
-          name: url
+          name: normalizedUrl
         },
 
         'attachment'
       )
-      onSubmit?.(url)
+      onSubmit?.(normalizedUrl)
       return
     }
 
     progressing()
-    const { success, data } = await extension.options.getUrlData(prependUrlScheme(url))
+    const { success, data } = await extension.options.getUrlData(normalizedUrl)
 
     if (!success) {
       resetProgress()
@@ -72,13 +74,13 @@ export function useLinkValue(
           key: data.url,
           source: 'EXTERNAL',
           contentType: data.type,
-          name: url
+          name: data.url
         },
         'attachment'
       )
     }
 
-    onSubmit?.(url)
+    onSubmit?.(data.url)
   }, [extension?.options, onSubmit, progressing, resetProgress, t, updateEmbedBlockAttributes, url])
 
   const handleLinkChange = useCallback<ChangeEventHandler<HTMLInputElement>>(event => {

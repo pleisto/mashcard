@@ -15,6 +15,7 @@ export interface PreviewViewProps {
   deleteNode: EmbedViewProps['deleteNode']
   getPos: EmbedViewProps['getPos']
   node: EmbedViewProps['node']
+  extension: EmbedViewProps['extension']
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
   displayName: string
   fileName: string
@@ -44,7 +45,8 @@ export const PreviewView: FC<PreviewViewProps> = ({
   fileType,
   fileUrl,
   icon,
-  node
+  node,
+  extension
 }) => {
   const isWebsite = fileType === 'html'
   const [actionOptions] = useActionOptions(isWebsite ? undefined : fileUrl)
@@ -56,10 +58,12 @@ export const PreviewView: FC<PreviewViewProps> = ({
       deleteNode={deleteNode}
       editable="custom"
       getPos={getPos}
-      actionOptions={actionOptions}>
+      actionOptions={actionOptions}
+    >
       <DocumentContainer>
         {isWebsite ? (
           <WebsiteDocument
+            extension={extension}
             blockType={blockType}
             updateEmbedBlockAttributes={updateEmbedBlockAttributes}
             url={fileUrl}
@@ -69,6 +73,7 @@ export const PreviewView: FC<PreviewViewProps> = ({
           />
         ) : (
           <PdftronDocument
+            extension={extension}
             blockType={blockType}
             updateEmbedBlockAttributes={updateEmbedBlockAttributes}
             displayName={displayName}

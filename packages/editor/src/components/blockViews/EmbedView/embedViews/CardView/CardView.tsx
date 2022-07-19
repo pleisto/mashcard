@@ -24,6 +24,7 @@ export interface CardViewProps {
   deleteNode: EmbedViewProps['deleteNode']
   getPos: EmbedViewProps['getPos']
   node: EmbedViewProps['node']
+  extension: EmbedViewProps['extension']
   cover?: string | null
   icon?: string | ReactElement
   displayName: string
@@ -61,6 +62,7 @@ export const CardView: FC<CardViewProps> = ({
   description,
   blockType,
   node,
+  extension,
   getPos,
   deleteNode,
   updateEmbedBlockAttributes
@@ -82,12 +84,14 @@ export const CardView: FC<CardViewProps> = ({
       deleteNode={deleteNode}
       getPos={getPos}
       editable="custom"
-      actionOptions={actionOptions}>
+      actionOptions={actionOptions}
+    >
       <CardContainer
         contentType={type}
         data-testid={TEST_ID_ENUM.editor.embedBlock.link.id}
         size="md"
-        onClick={onClick}>
+        onClick={onClick}
+      >
         <CardCover blockType={blockType} cover={cover} icon={icon} />
         <Content type={type}>
           {displayName && <Title type={type}>{displayName}</Title>}
@@ -102,6 +106,7 @@ export const CardView: FC<CardViewProps> = ({
             <EmbedToolbarContainer onClick={handleStopPropagation}>
               <EmbedToolbar
                 mode="card"
+                extension={extension}
                 blockType={blockType}
                 displayName={displayName}
                 url={linkUrl}
