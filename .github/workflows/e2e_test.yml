@@ -7,7 +7,7 @@ on:
     - cron: '0 18 * * *'
 
 env:
-  NODE_OPTIONS: '--max-old-space-size=5950'
+  NODE_OPTIONS: '--max-old-space-size=6457'
   YARN_CHECKSUM_BEHAVIOR: update
 
 jobs:

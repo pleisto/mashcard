@@ -11,7 +11,7 @@ on:
     - cron: '0 16 * * 0-4'
 
 env:
-  NODE_OPTIONS: '--max-old-space-size=5950'
+  NODE_OPTIONS: '--max-old-space-size=6457'
   YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
 jobs:

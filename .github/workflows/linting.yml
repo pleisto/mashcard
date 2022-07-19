@@ -17,8 +17,8 @@ on:
       - '**.snap'
 env:
   # GitHub-hosted runner have 7 gb RAM.
-  # 5250mb === 7gb * 0.75
-  NODE_OPTIONS: '--max-old-space-size=5950'
+  # 6451mb === 7gb * 0.9
+  NODE_OPTIONS: '--max-old-space-size=6457'
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: brickdoc
 jobs:
