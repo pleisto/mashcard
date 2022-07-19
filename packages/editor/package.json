@@ -1,0 +1,36 @@
+{
+  "name": "@mashcard/editor",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@mashcard/dev-support": "workspace:^"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2"
+  },
+  "scripts": {
+    "lint": "yarn lint:eslint && yarn lint:type",
+    "lint:eslint": "TIMING=1 dev-support eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 dev-support eslint --cache --ext ts,tsx src --fix",
+    "lint:type": "run -T tsc",
+    "test:jest": "run -T jest",
+    "test:jest:fix": "run -T jest --silent -u"
+  },
+  "dependencies": {
+    "prosemirror-model": "^1.18.1",
+    "prosemirror-state": "^1.4.1",
+    "prosemirror-transform": "^1.6.0",
+    "prosemirror-view": "^1.26.5"
+  }
+}

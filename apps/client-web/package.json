@@ -11,6 +11,7 @@
     "@mashcard/active-support": "workspace:^",
     "@mashcard/design-icons": "workspace:^",
     "@mashcard/design-system": "workspace:^",
+    "@mashcard/editor": "workspace:^",
     "@mashcard/formula": "workspace:^",
     "@mashcard/legacy-editor": "workspace:^",
     "@mashcard/schema": "workspace:^",

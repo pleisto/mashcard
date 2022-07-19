@@ -8,6 +8,7 @@
 /apps/client-web/ @melchior-voidwolf @Darmody
 /packages/design-system/ @melchior-voidwolf @wizcas
 /packages/legacy-editor/ @Darmody @clszzyh
+/packages/editor/ @Darmody @clszzyh
 /packages/formula/ @clszzyh @aligo
 /packages/uploader/ @Darmody @aligo
 /packages/schema/ @aligo @clszzyh
