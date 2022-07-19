@@ -35,7 +35,7 @@ export function useDocHistoryProvider(docId: string): void {
           devLog(`loading doc history ${docId}`)
           void fetchHistories()
         },
-        { subscribeId: docId }
+        { eventId: docId }
       )
     ]
     return () => {

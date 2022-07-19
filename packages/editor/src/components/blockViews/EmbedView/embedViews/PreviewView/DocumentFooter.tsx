@@ -57,6 +57,7 @@ export const DocumentFooter: FC<DocumentFooterProps> = ({
   name,
   icon,
   blockType,
+  extension,
   updateEmbedBlockAttributes,
   onFullScreen
 }) => {
@@ -71,6 +72,7 @@ export const DocumentFooter: FC<DocumentFooterProps> = ({
         <EmbedToolbarContainer>
           <EmbedToolbar
             url={url}
+            extension={extension}
             displayName={displayName}
             mode="preview"
             blockType={blockType}

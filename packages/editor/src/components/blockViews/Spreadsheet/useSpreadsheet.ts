@@ -25,7 +25,7 @@ export interface SpreadsheetRows extends Array<BlockInput> {}
 
 export interface SpreadsheetCellsMap extends Map<string, Map<string, BlockInput>> {}
 
-export const useSpreadsheet = (options: {
+export function useSpreadsheet(options: {
   isNew: boolean
   parentId: string
   data: Record<string, any>
@@ -43,7 +43,7 @@ export const useSpreadsheet = (options: {
   getCellBlock: (rowId: string, columnId: string) => BlockInput
   saveCellBlock: (block: BlockInput) => void
   cellsMap: SpreadsheetCellsMap
-} => {
+} {
   const { isNew, parentId, data, updateAttributeData } = options
   const [columns, setColumns] = React.useState<SpreadsheetColumns>(data.columns ?? [])
   // const latestColumns = React.useRef<SpreadsheetColumns>(columns)
