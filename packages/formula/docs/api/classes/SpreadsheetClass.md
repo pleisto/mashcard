@@ -82,6 +82,10 @@
 
 • **\_formulaContext**: [`ContextInterface`](../interfaces/ContextInterface.md)
 
+#### Implementation of
+
+[SpreadsheetType](../interfaces/SpreadsheetType.md).[\_formulaContext](../interfaces/SpreadsheetType.md#_formulacontext)
+
 #### Defined in
 
 [packages/formula/src/controls/spreadsheet.ts:50](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/spreadsheet.ts#L50)

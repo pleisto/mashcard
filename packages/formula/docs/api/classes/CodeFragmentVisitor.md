@@ -225,7 +225,7 @@ CodeFragmentCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/codeFragment.ts:967](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L967)
+[packages/formula/src/grammar/codeFragment.ts:970](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L970)
 
 ---
 

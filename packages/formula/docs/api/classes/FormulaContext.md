@@ -12,21 +12,21 @@
 
 ### Properties
 
-- [backendActions](FormulaContext.md#backendactions)
 - [blocks](FormulaContext.md#blocks)
 - [dirtyFormulas](FormulaContext.md#dirtyformulas)
-- [domain](FormulaContext.md#domain)
 - [eventListeners](FormulaContext.md#eventlisteners)
 - [features](FormulaContext.md#features)
 - [functionClausesMap](FormulaContext.md#functionclausesmap)
 - [functionWeights](FormulaContext.md#functionweights)
+- [i18n](FormulaContext.md#i18n)
 - [names](FormulaContext.md#names)
+- [options](FormulaContext.md#options)
 - [reservedNames](FormulaContext.md#reservednames)
 - [reverseFunctionDependencies](FormulaContext.md#reversefunctiondependencies)
 - [reverseVariableDependencies](FormulaContext.md#reversevariabledependencies)
 - [spreadsheets](FormulaContext.md#spreadsheets)
 - [tickKey](FormulaContext.md#tickkey)
-- [tickTimeout](FormulaContext.md#ticktimeout)
+- [username](FormulaContext.md#username)
 - [variableNameStore](FormulaContext.md#variablenamestore)
 - [variableWeights](FormulaContext.md#variableweights)
 - [variables](FormulaContext.md#variables)
@@ -65,39 +65,25 @@
 - [setSpreadsheet](FormulaContext.md#setspreadsheet)
 - [tick](FormulaContext.md#tick)
 - [variableCount](FormulaContext.md#variablecount)
-- [getInstance](FormulaContext.md#getinstance)
+- [getFormulaInstance](FormulaContext.md#getformulainstance)
 
 ## Constructors
 
 ### <a id="constructor" name="constructor"></a> constructor
 
-• **new FormulaContext**(`__namedParameters`)
+• **new FormulaContext**(`options`)
 
 #### Parameters
 
-| Name                | Type                                                        |
-| :------------------ | :---------------------------------------------------------- |
-| `__namedParameters` | [`FormulaContextArgs`](../interfaces/FormulaContextArgs.md) |
+| Name      | Type                                                        |
+| :-------- | :---------------------------------------------------------- |
+| `options` | [`FormulaContextArgs`](../interfaces/FormulaContextArgs.md) |
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:98](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L98)
+[packages/formula/src/context/context.ts:101](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L101)
 
 ## Properties
-
-### <a id="backendactions" name="backendactions"></a> backendActions
-
-• **backendActions**: `undefined` \| [`BackendActions`](../interfaces/BackendActions.md)
-
-#### Implementation of
-
-[ContextInterface](../interfaces/ContextInterface.md).[backendActions](../interfaces/ContextInterface.md#backendactions)
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:93](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L93)
-
----
 
 ### <a id="blocks" name="blocks"></a> blocks
 
@@ -105,7 +91,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:88](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L88)
+[packages/formula/src/context/context.ts:92](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L92)
 
 ---
 
@@ -119,21 +105,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:81](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L81)
-
----
-
-### <a id="domain" name="domain"></a> domain
-
-• **domain**: `string`
-
-#### Implementation of
-
-[ContextInterface](../interfaces/ContextInterface.md).[domain](../interfaces/ContextInterface.md#domain)
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L77)
+[packages/formula/src/context/context.ts:85](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L85)
 
 ---
 
@@ -143,7 +115,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:95](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L95)
+[packages/formula/src/context/context.ts:98](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L98)
 
 ---
 
@@ -157,7 +129,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:80](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L80)
+[packages/formula/src/context/context.ts:84](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L84)
 
 ---
 
@@ -167,7 +139,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:92](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L92)
+[packages/formula/src/context/context.ts:96](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L96)
 
 ---
 
@@ -177,7 +149,21 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:84](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L84)
+[packages/formula/src/context/context.ts:88](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L88)
+
+---
+
+### <a id="i18n" name="i18n"></a> i18n
+
+• **i18n**: [`I18N`](../README.md#i18n)
+
+#### Implementation of
+
+[ContextInterface](../interfaces/ContextInterface.md).[i18n](../interfaces/ContextInterface.md#i18n)
+
+#### Defined in
+
+[packages/formula/src/context/context.ts:82](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L82)
 
 ---
 
@@ -187,7 +173,17 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:87](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L87)
+[packages/formula/src/context/context.ts:91](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L91)
+
+---
+
+### <a id="options" name="options"></a> options
+
+• **options**: [`FormulaContextArgs`](../interfaces/FormulaContextArgs.md)
+
+#### Defined in
+
+[packages/formula/src/context/context.ts:80](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L80)
 
 ---
 
@@ -201,7 +197,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:94](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L94)
+[packages/formula/src/context/context.ts:97](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L97)
 
 ---
 
@@ -215,7 +211,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:91](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L91)
+[packages/formula/src/context/context.ts:95](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L95)
 
 ---
 
@@ -229,7 +225,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:90](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L90)
+[packages/formula/src/context/context.ts:94](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L94)
 
 ---
 
@@ -239,7 +235,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:86](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L86)
+[packages/formula/src/context/context.ts:90](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L90)
 
 ---
 
@@ -249,17 +245,21 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:78](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L78)
+[packages/formula/src/context/context.ts:83](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L83)
 
 ---
 
-### <a id="ticktimeout" name="ticktimeout"></a> tickTimeout
+### <a id="username" name="username"></a> username
 
-• **tickTimeout**: `number`
+• **username**: `string`
+
+#### Implementation of
+
+[ContextInterface](../interfaces/ContextInterface.md).[username](../interfaces/ContextInterface.md#username)
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:79](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L79)
+[packages/formula/src/context/context.ts:81](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L81)
 
 ---
 
@@ -269,7 +269,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:96](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L96)
+[packages/formula/src/context/context.ts:99](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L99)
 
 ---
 
@@ -279,7 +279,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:85](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L85)
+[packages/formula/src/context/context.ts:89](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L89)
 
 ---
 
@@ -289,7 +289,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:82](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L82)
+[packages/formula/src/context/context.ts:86](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L86)
 
 ---
 
@@ -299,7 +299,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:83](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L83)
+[packages/formula/src/context/context.ts:87](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L87)
 
 ---
 
@@ -309,7 +309,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L76)
+[packages/formula/src/context/context.ts:79](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L79)
 
 ## Methods
 
@@ -335,7 +335,7 @@ ContextInterface.checkName
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:255](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L255)
+[packages/formula/src/context/context.ts:254](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L254)
 
 ---
 
@@ -353,7 +353,7 @@ ContextInterface.cleanup
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:173](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L173)
+[packages/formula/src/context/context.ts:169](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L169)
 
 ---
 
@@ -367,7 +367,7 @@ ContextInterface.cleanup
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:442](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L442)
+[packages/formula/src/context/context.ts:441](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L441)
 
 ---
 
@@ -392,7 +392,7 @@ ContextInterface.commitVariable
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:385](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L385)
+[packages/formula/src/context/context.ts:384](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L384)
 
 ---
 
@@ -417,7 +417,7 @@ ContextInterface.completions
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:189](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L189)
+[packages/formula/src/context/context.ts:188](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L188)
 
 ---
 
@@ -441,7 +441,7 @@ ContextInterface.findBlockById
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:223](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L223)
+[packages/formula/src/context/context.ts:222](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L222)
 
 ---
 
@@ -466,7 +466,7 @@ ContextInterface.findColumn
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:323](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L323)
+[packages/formula/src/context/context.ts:322](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L322)
 
 ---
 
@@ -491,7 +491,7 @@ ContextInterface.findFunctionClause
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:420](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L420)
+[packages/formula/src/context/context.ts:419](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L419)
 
 ---
 
@@ -516,7 +516,7 @@ ContextInterface.findNames
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:248](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L248)
+[packages/formula/src/context/context.ts:247](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L247)
 
 ---
 
@@ -541,7 +541,7 @@ ContextInterface.findReference
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:227](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L227)
+[packages/formula/src/context/context.ts:226](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L226)
 
 ---
 
@@ -566,7 +566,7 @@ ContextInterface.findRow
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:329](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L329)
+[packages/formula/src/context/context.ts:328](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L328)
 
 ---
 
@@ -590,7 +590,7 @@ ContextInterface.findSpreadsheet
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:313](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L313)
+[packages/formula/src/context/context.ts:312](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L312)
 
 ---
 
@@ -615,7 +615,7 @@ ContextInterface.findVariableById
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:361](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L361)
+[packages/formula/src/context/context.ts:360](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L360)
 
 ---
 
@@ -640,7 +640,7 @@ ContextInterface.findVariableByName
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:374](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L374)
+[packages/formula/src/context/context.ts:373](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L373)
 
 ---
 
@@ -665,7 +665,7 @@ ContextInterface.findVariableDisplayDataById
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:365](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L365)
+[packages/formula/src/context/context.ts:364](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L364)
 
 ---
 
@@ -689,7 +689,7 @@ ContextInterface.findViewRender
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:219](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L219)
+[packages/formula/src/context/context.ts:218](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L218)
 
 ---
 
@@ -714,7 +714,7 @@ ContextInterface.getDefaultVariableName
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:211](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L211)
+[packages/formula/src/context/context.ts:210](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L210)
 
 ---
 
@@ -740,7 +740,7 @@ ContextInterface.invoke
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:180](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L180)
+[packages/formula/src/context/context.ts:176](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L176)
 
 ---
 
@@ -764,7 +764,7 @@ ContextInterface.listVariables
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:381](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L381)
+[packages/formula/src/context/context.ts:380](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L380)
 
 ---
 
@@ -784,7 +784,7 @@ ContextInterface.listVariables
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:471](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L471)
+[packages/formula/src/context/context.ts:470](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L470)
 
 ---
 
@@ -808,7 +808,7 @@ ContextInterface.removeBlock
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:239](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L239)
+[packages/formula/src/context/context.ts:238](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L238)
 
 ---
 
@@ -832,7 +832,7 @@ ContextInterface.removeName
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:291](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L291)
+[packages/formula/src/context/context.ts:290](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L290)
 
 ---
 
@@ -856,7 +856,7 @@ ContextInterface.removeSpreadsheet
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:353](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L353)
+[packages/formula/src/context/context.ts:352](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L352)
 
 ---
 
@@ -881,7 +881,7 @@ ContextInterface.removeVariable
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:409](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L409)
+[packages/formula/src/context/context.ts:408](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L408)
 
 ---
 
@@ -899,7 +899,7 @@ ContextInterface.resetFormula
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:427](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L427)
+[packages/formula/src/context/context.ts:426](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L426)
 
 ---
 
@@ -920,7 +920,7 @@ ContextInterface.resetFormula
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:232](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L232)
+[packages/formula/src/context/context.ts:231](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L231)
 
 ---
 
@@ -944,7 +944,7 @@ ContextInterface.setName
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:270](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L270)
+[packages/formula/src/context/context.ts:269](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L269)
 
 ---
 
@@ -968,7 +968,7 @@ ContextInterface.setSpreadsheet
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:335](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L335)
+[packages/formula/src/context/context.ts:334](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L334)
 
 ---
 
@@ -988,7 +988,7 @@ ContextInterface.setSpreadsheet
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:435](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L435)
+[packages/formula/src/context/context.ts:434](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L434)
 
 ---
 
@@ -1006,13 +1006,13 @@ ContextInterface.variableCount
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:215](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L215)
+[packages/formula/src/context/context.ts:214](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L214)
 
 ---
 
-### <a id="getinstance" name="getinstance"></a> getInstance
+### <a id="getformulainstance" name="getformulainstance"></a> getFormulaInstance
 
-▸ `Static` **getInstance**(`args`): [`FormulaContext`](FormulaContext.md)
+▸ `Static` **getFormulaInstance**(`args`): [`FormulaContext`](FormulaContext.md)
 
 #### Parameters
 
@@ -1026,4 +1026,4 @@ ContextInterface.variableCount
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:495](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L495)
+[packages/formula/src/context/context.ts:494](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L494)
