@@ -41,7 +41,6 @@ export const EmbedToolbar: FC<EmbedToolbarProps> = ({
     zoomInImage,
     zoomOutImage
   })
-
   return <Toolbar type="transparent" options={options} />
 }
 
