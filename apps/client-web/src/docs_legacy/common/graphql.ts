@@ -48,7 +48,7 @@ export const queryPreviewBox = gql`
       icon
       type
       size
-      html
+      iframeUrl
     }
   }
 `

@@ -2708,14 +2708,14 @@ type PreviewBox {
   description: String
 
   """
-  preview html
-  """
-  html: String
-
-  """
   preview icon
   """
   icon: String
+
+  """
+  iframe url for preview
+  """
+  iframeUrl: String
 
   """
   preview conetent size

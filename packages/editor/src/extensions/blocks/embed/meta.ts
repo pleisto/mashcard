@@ -24,7 +24,7 @@ export interface UrlData {
   title: string | null
   type?: string | null
   url: string
-  html?: string | null
+  iframeUrl?: string | null
 }
 
 export interface EmbedOptions {
@@ -67,7 +67,7 @@ export interface EmbedAttributes {
     cover?: string | null
     icon?: string | null
     mode?: EmbedViewMode
-    html?: string | null
+    iframeUrl?: string | null
   }
   image: {
     type: 'IMAGE'

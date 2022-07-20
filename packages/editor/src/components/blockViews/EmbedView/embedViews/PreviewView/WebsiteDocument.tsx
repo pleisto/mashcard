@@ -14,7 +14,7 @@ export interface WebsiteDocumentProps {
   title?: string
   displayName: string
   icon?: string | null
-  previewHtml?: string | null
+  iframeUrl?: string | null
 }
 
 const WebsiteDocumentContainer = styled('div', {
@@ -27,11 +27,9 @@ const WebsiteDocumentContainer = styled('div', {
   width: '60rem'
 })
 
-const WebsiteFrame = styled('div', {
-  '.iframely-embed, .iframely-responsive, iframe': {
-    height: '37rem',
-    width: '100%'
-  }
+const WebsiteFrame = styled('iframe', {
+  height: '37rem',
+  width: '100%'
 })
 
 export const WebsiteDocument: FC<WebsiteDocumentProps> = ({
@@ -42,18 +40,14 @@ export const WebsiteDocument: FC<WebsiteDocumentProps> = ({
   url,
   title,
   displayName,
-  previewHtml
+  iframeUrl
 }) => {
-  const hasContent = isNonEmptyString(previewHtml)
+  const hasFrame = isNonEmptyString(iframeUrl)
 
   return (
     <WebsiteDocumentContainer>
-      {hasContent ? (
-        <WebsiteFrame
-          dangerouslySetInnerHTML={{
-            __html: previewHtml
-          }}
-        />
+      {hasFrame ? (
+        <WebsiteFrame src={iframeUrl} loading="lazy" title={title ?? ''} />
       ) : (
         <DocumentUnavailable url={url} />
       )}

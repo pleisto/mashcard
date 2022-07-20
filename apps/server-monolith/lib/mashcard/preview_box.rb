@@ -16,12 +16,20 @@ module Mashcard
       end
     end
 
+    # Extract the iframe src from the iframely html snippet
+    def self.extract_iframe_url(html)
+      dom = Nokogiri::HTML.parse(html).xpath('//iframe').first
+      dom.present? ? dom['src'] : nil
+    end
+
     def self.preview(url)
       response = @connection.get('/api/iframely', { url: url, omit_script: 1, omit_css: 1, media: 1, iframe: 0 })
       thumbnail = response.body.dig('links', 'thumbnail') || []
       icon = response.body.dig('links', 'icon') || []
       html = response.body.dig('html')
       medium = response.body.dig('meta', 'medium')
+
+      iframe_url = html.present? ? extract_iframe_url(html) : nil
 
       if response.status == 200
         data = {
@@ -32,7 +40,7 @@ module Mashcard
                                               end&.dig('href') || '',
           icon: icon.find { |i| i['rel']&.include?('shortcut') }&.dig('href') || '',
           type: 'website',
-          html: html,
+          iframe_url: iframe_url,
         }
 
         if medium == 'image'

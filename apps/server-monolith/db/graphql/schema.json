@@ -8697,8 +8697,8 @@
               "deprecationReason": null
             },
             {
-              "name": "html",
-              "description": "preview html",
+              "name": "icon",
+              "description": "preview icon",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -8709,8 +8709,8 @@
               "deprecationReason": null
             },
             {
-              "name": "icon",
-              "description": "preview icon",
+              "name": "iframeUrl",
+              "description": "iframe url for preview",
               "args": [],
               "type": {
                 "kind": "SCALAR",

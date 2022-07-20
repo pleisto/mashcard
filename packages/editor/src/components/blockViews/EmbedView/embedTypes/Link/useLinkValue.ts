@@ -62,7 +62,7 @@ export function useLinkValue(
           description: data.description,
           cover: data.cover,
           icon: data.icon,
-          html: data.html
+          iframeUrl: data.iframeUrl
         },
         'link'
       )

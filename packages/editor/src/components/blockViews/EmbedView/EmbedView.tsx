@@ -181,7 +181,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
   // link
   const linkUrl = node.attrs.link?.key
   if (linkUrl) {
-    const { title, displayName, description, cover, icon, mode, html } = node.attrs.link
+    const { title, displayName, description, cover, icon, mode, iframeUrl } = node.attrs.link
 
     if (mode === 'card') {
       return (
@@ -208,7 +208,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
           node={node}
           extension={extension}
           fileUrl={linkUrl}
-          previewHtml={html}
+          iframeUrl={iframeUrl}
           fileType="html"
           fileName={title ?? ''}
           displayName={displayName! || title! || ''}
