@@ -34,7 +34,7 @@ exports[`BlockActionButton renders BlockActionButton when node is empty correctl
           />
           <path
             d="M13 8C13 7.44772 12.5523 7 12 7C11.4477 7 11 7.44772 11 8V11H8C7.44772 11 7 11.4477 7 12C7 12.5523 7.44772 13 8 13H11V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V13H16C16.5523 13 17 12.5523 17 12C17 11.4477 16.5523 11 16 11H13V8Z"
-            fill="#73707e"
+            fill="#84818e"
           />
         </svg>
       </span>
@@ -78,7 +78,7 @@ exports[`BlockActionButton renders BlockActionButton when node is not empty corr
           <path
             clip-rule="evenodd"
             d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
-            fill="#73707e"
+            fill="#84818e"
             fill-rule="evenodd"
           />
         </svg>
@@ -117,13 +117,13 @@ exports[`BlockActionButton triggers mouse enter/leave event normally 1`] = `
           <path
             clip-rule="evenodd"
             d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Zm11-9a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"
-            fill="#dee7fe"
+            fill="#d7e9ff"
             fill-rule="evenodd"
           />
           <path
             clip-rule="evenodd"
             d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
-            fill="#356cf9"
+            fill="#3476bc"
             fill-rule="evenodd"
           />
         </svg>
@@ -168,7 +168,7 @@ exports[`BlockActionButton triggers mouse enter/leave event normally 2`] = `
           <path
             clip-rule="evenodd"
             d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
-            fill="#73707e"
+            fill="#84818e"
             fill-rule="evenodd"
           />
         </svg>

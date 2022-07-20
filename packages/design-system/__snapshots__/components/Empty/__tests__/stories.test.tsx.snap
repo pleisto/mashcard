@@ -281,7 +281,7 @@ exports[`tag matches snapshot correctly 1`] = `
     </svg>
   </div>
   <p
-    class="mc-c-jDLdqF"
+    class="mc-c-fPPkcp"
   >
     There is empty.
   </p>
@@ -289,7 +289,7 @@ exports[`tag matches snapshot correctly 1`] = `
     class="mc-c-ivRCAi"
   >
     <button
-      class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-cVBYSe-btnType-primary mc-c-iiEeHJ-fTTzJN-size-sm"
+      class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-hgbWBu-btnType-primary mc-c-iiEeHJ-fTTzJN-size-sm"
       role="button"
       type="button"
     >

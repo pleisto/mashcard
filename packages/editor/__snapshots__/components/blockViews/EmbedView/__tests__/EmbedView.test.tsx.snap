@@ -10,7 +10,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
       class="mc-c-edKofp"
     >
       <button
-        class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-TfyyP-btnType-secondary mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-jFlAGq-contentType-default mc-c-PJLV-ipCccR-size-md"
+        class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-kQqyOW-btnType-secondary mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-jFlAGq-contentType-default mc-c-PJLV-ipCccR-size-md"
         data-testid="editor-embed-block-link"
         role="button"
         type="button"
@@ -28,12 +28,12 @@ exports[`EmbedView matches correct snapshot 1`] = `
             mashcard
           </div>
           <div
-            class="mc-c-uBSYZ mc-c-uBSYZ-mFKrh-type-default"
+            class="mc-c-fIcixx mc-c-fIcixx-mFKrh-type-default"
           >
             desc
           </div>
           <div
-            class="mc-c-kmuDDf"
+            class="mc-c-lUGVv"
           >
             <span
               class="mc-c-XzYTI"
@@ -56,7 +56,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
                   aria-describedby=""
                   aria-haspopup="false"
                   aria-label="embed_block.view_types.preview.name"
-                  class="mc-c-fCKOrw"
+                  class="mc-c-iOJlHA"
                   role="menuitem"
                 >
                   <span
@@ -88,11 +88,11 @@ exports[`EmbedView matches correct snapshot 1`] = `
                   aria-describedby=""
                   aria-haspopup="false"
                   aria-label="embed_block.view_types.card.name"
-                  class="mc-c-fCKOrw mc-c-fCKOrw-gPOEbt-active-true"
+                  class="mc-c-iOJlHA mc-c-iOJlHA-eFgYyE-active-true"
                   role="menuitem"
                 >
                   <span
-                    class="mc-c-PJLV mc-c-PJLV-isezAM-active-true"
+                    class="mc-c-PJLV mc-c-PJLV-loVWlz-active-true"
                   >
                     <span
                       aria-label="bookmark-view"
@@ -119,7 +119,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
                   aria-describedby=""
                   aria-haspopup="false"
                   aria-label="embed_block.view_types.text.name"
-                  class="mc-c-fCKOrw"
+                  class="mc-c-iOJlHA"
                   role="menuitem"
                 >
                   <span
@@ -160,7 +160,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
                   aria-describedby=""
                   aria-haspopup="false"
                   aria-label="edit"
-                  class="mc-c-fCKOrw"
+                  class="mc-c-iOJlHA"
                   role="menuitem"
                 >
                   <span
@@ -227,7 +227,7 @@ exports[`EmbedView matches correct snapshot 1`] = `
               />
               <path
                 d="M13 8C13 7.44772 12.5523 7 12 7C11.4477 7 11 7.44772 11 8V11H8C7.44772 11 7 11.4477 7 12C7 12.5523 7.44772 13 8 13H11V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V13H16C16.5523 13 17 12.5523 17 12C17 11.4477 16.5523 11 16 11H13V8Z"
-                fill="#73707e"
+                fill="#84818e"
               />
             </svg>
           </span>

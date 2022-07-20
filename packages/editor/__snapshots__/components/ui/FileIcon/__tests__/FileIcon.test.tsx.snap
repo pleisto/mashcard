@@ -13,7 +13,7 @@ exports[`FileIcon renders excel icon correctly 1`] = `
 exports[`FileIcon renders image icon correctly 1`] = `
 <div>
   <span
-    class="mc-c-jtKtfz"
+    class="mc-c-ecPOcT"
   >
     <span
       aria-label="image"
@@ -71,7 +71,7 @@ exports[`FileIcon renders ppt icon correctly 1`] = `
 exports[`FileIcon renders unknown file icon correctly 1`] = `
 <div>
   <span
-    class="mc-c-jtKtfz"
+    class="mc-c-ecPOcT"
   >
     <span
       aria-label="link"

@@ -6,7 +6,7 @@ exports[`commentEditor renders commentEditor correctly 1`] = `
     class="mc-c-kwvkik"
   >
     <span
-      class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-lhlSdI-size-sm mc-c-gYWVfz-koJJPr-default-true mc-c-gYWVfz-iPJLV-css mc-c-bBZZVR"
+      class="mc-c-kEyFKe mc-c-kEyFKe-hECRKn-shape-circle mc-c-kEyFKe-lhlSdI-size-sm mc-c-kEyFKe-PSaFj-default-true mc-c-kEyFKe-iPJLV-css mc-c-bBZZVR"
     >
       <span
         aria-label="user"
@@ -28,7 +28,7 @@ exports[`commentEditor renders commentEditor correctly 1`] = `
       </span>
     </span>
     <div
-      class="mc-c-fFVwCQ"
+      class="mc-c-iXznah"
       data-placeholder="discussion.editor.placeholder"
     >
       <div

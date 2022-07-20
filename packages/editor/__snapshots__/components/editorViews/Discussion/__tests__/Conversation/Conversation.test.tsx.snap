@@ -3,17 +3,17 @@
 exports[`DiscussionList > Conversation matches correct snapshot 1`] = `
 <div>
   <div
-    class="mc-c-eygFJX"
+    class="mc-c-eIAwRH"
   >
     <div
       class="mc-c-dgjiLV"
     >
       <blockquote
-        class="mc-c-jICBJi"
+        class="mc-c-dTparP"
       />
       <button
         aria-haspopup="dialog"
-        class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-iiEeHJ-eqqWRo-hasIcon-true mc-c-PJLV mc-c-PJLV-jTsETH-size-sm"
+        class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-diTQz-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-iiEeHJ-eqqWRo-hasIcon-true mc-c-PJLV mc-c-PJLV-ewfJB-size-sm"
         role="button"
         type="button"
       >
@@ -33,12 +33,12 @@ exports[`DiscussionList > Conversation matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-iiEeHJ-eqqWRo-hasIcon-true mc-c-PJLV mc-c-PJLV-jTsETH-size-sm"
+        class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-diTQz-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-iiEeHJ-eqqWRo-hasIcon-true mc-c-PJLV mc-c-PJLV-ewfJB-size-sm"
         role="button"
         type="button"
       >
         <span
-          class="mc-c-cxiHKx mc-c-cxiHKx-ibPCDO-status-opened"
+          class="mc-c-jFNTPl mc-c-jFNTPl-ibPCDO-status-opened"
         >
           <span
             aria-label="check"
@@ -66,7 +66,7 @@ exports[`DiscussionList > Conversation matches correct snapshot 1`] = `
       class="mc-c-kwvkik"
     >
       <span
-        class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-lhlSdI-size-sm mc-c-gYWVfz-koJJPr-default-true mc-c-gYWVfz-iPJLV-css mc-c-bBZZVR"
+        class="mc-c-kEyFKe mc-c-kEyFKe-hECRKn-shape-circle mc-c-kEyFKe-lhlSdI-size-sm mc-c-kEyFKe-PSaFj-default-true mc-c-kEyFKe-iPJLV-css mc-c-bBZZVR"
       >
         <span
           aria-label="user"
@@ -88,7 +88,7 @@ exports[`DiscussionList > Conversation matches correct snapshot 1`] = `
         </span>
       </span>
       <div
-        class="mc-c-fFVwCQ"
+        class="mc-c-iXznah"
         data-placeholder=""
       >
         <div

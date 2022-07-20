@@ -7,7 +7,7 @@ exports[`TocView matches correct snapshot 1`] = `
     style="white-space: normal; pointer-events: none;"
   >
     <div
-      class="mc-c-GdvDd"
+      class="mc-c-fQONvH"
       role="presentation"
     >
       <div
@@ -19,12 +19,12 @@ exports[`TocView matches correct snapshot 1`] = `
           role="menuitem"
         >
           <span
-            class="mc-c-boQJHo mc-c-boQJHo-ftgEku-level-1"
+            class="mc-c-dXyXKB mc-c-dXyXKB-ftgEku-level-1"
             data-testid="editor-toc-block-item-title"
           >
             <span
               aria-label="arrow-fille-right"
-              class="mc-icon mc-icon-arrow-fille-right mc-c-fuekdn mc-c-fuekdn-gkDMCb-collapse-false"
+              class="mc-icon mc-icon-arrow-fille-right mc-c-kffSDP mc-c-kffSDP-gkDMCb-collapse-false"
               data-testid="editor-toc-block-item-toggle-icon"
               role="img"
             >
@@ -57,12 +57,12 @@ exports[`TocView matches correct snapshot 1`] = `
               role="menuitem"
             >
               <span
-                class="mc-c-boQJHo mc-c-boQJHo-khxYkf-level-2"
+                class="mc-c-dXyXKB mc-c-dXyXKB-khxYkf-level-2"
                 data-testid="editor-toc-block-item-title"
               >
                 <span
                   aria-label="arrow-fille-right"
-                  class="mc-icon mc-icon-arrow-fille-right mc-c-fuekdn mc-c-fuekdn-gkDMCb-collapse-false"
+                  class="mc-icon mc-icon-arrow-fille-right mc-c-kffSDP mc-c-kffSDP-gkDMCb-collapse-false"
                   data-testid="editor-toc-block-item-toggle-icon"
                   role="img"
                 >
@@ -95,7 +95,7 @@ exports[`TocView matches correct snapshot 1`] = `
                   role="menuitem"
                 >
                   <span
-                    class="mc-c-boQJHo mc-c-boQJHo-bjpAUv-level-5"
+                    class="mc-c-dXyXKB mc-c-dXyXKB-bjpAUv-level-5"
                     data-testid="editor-toc-block-item-title"
                   >
                     <span
@@ -120,12 +120,12 @@ exports[`TocView matches correct snapshot 1`] = `
           role="menuitem"
         >
           <span
-            class="mc-c-boQJHo mc-c-boQJHo-ftgEku-level-1"
+            class="mc-c-dXyXKB mc-c-dXyXKB-ftgEku-level-1"
             data-testid="editor-toc-block-item-title"
           >
             <span
               aria-label="arrow-fille-right"
-              class="mc-icon mc-icon-arrow-fille-right mc-c-fuekdn mc-c-fuekdn-gkDMCb-collapse-false"
+              class="mc-icon mc-icon-arrow-fille-right mc-c-kffSDP mc-c-kffSDP-gkDMCb-collapse-false"
               data-testid="editor-toc-block-item-toggle-icon"
               role="img"
             >
@@ -158,12 +158,12 @@ exports[`TocView matches correct snapshot 1`] = `
               role="menuitem"
             >
               <span
-                class="mc-c-boQJHo mc-c-boQJHo-euyVNX-level-3"
+                class="mc-c-dXyXKB mc-c-dXyXKB-euyVNX-level-3"
                 data-testid="editor-toc-block-item-title"
               >
                 <span
                   aria-label="arrow-fille-right"
-                  class="mc-icon mc-icon-arrow-fille-right mc-c-fuekdn mc-c-fuekdn-gkDMCb-collapse-false"
+                  class="mc-icon mc-icon-arrow-fille-right mc-c-kffSDP mc-c-kffSDP-gkDMCb-collapse-false"
                   data-testid="editor-toc-block-item-toggle-icon"
                   role="img"
                 >
@@ -196,12 +196,12 @@ exports[`TocView matches correct snapshot 1`] = `
                   role="menuitem"
                 >
                   <span
-                    class="mc-c-boQJHo mc-c-boQJHo-hfNeJr-level-4"
+                    class="mc-c-dXyXKB mc-c-dXyXKB-hfNeJr-level-4"
                     data-testid="editor-toc-block-item-title"
                   >
                     <span
                       aria-label="arrow-fille-right"
-                      class="mc-icon mc-icon-arrow-fille-right mc-c-fuekdn mc-c-fuekdn-gkDMCb-collapse-false"
+                      class="mc-icon mc-icon-arrow-fille-right mc-c-kffSDP mc-c-kffSDP-gkDMCb-collapse-false"
                       data-testid="editor-toc-block-item-toggle-icon"
                       role="img"
                     >
@@ -234,7 +234,7 @@ exports[`TocView matches correct snapshot 1`] = `
                       role="menuitem"
                     >
                       <span
-                        class="mc-c-boQJHo mc-c-boQJHo-bjpAUv-level-5"
+                        class="mc-c-dXyXKB mc-c-dXyXKB-bjpAUv-level-5"
                         data-testid="editor-toc-block-item-title"
                       >
                         <span
@@ -259,12 +259,12 @@ exports[`TocView matches correct snapshot 1`] = `
               role="menuitem"
             >
               <span
-                class="mc-c-boQJHo mc-c-boQJHo-khxYkf-level-2"
+                class="mc-c-dXyXKB mc-c-dXyXKB-khxYkf-level-2"
                 data-testid="editor-toc-block-item-title"
               >
                 <span
                   aria-label="arrow-fille-right"
-                  class="mc-icon mc-icon-arrow-fille-right mc-c-fuekdn mc-c-fuekdn-gkDMCb-collapse-false"
+                  class="mc-icon mc-icon-arrow-fille-right mc-c-kffSDP mc-c-kffSDP-gkDMCb-collapse-false"
                   data-testid="editor-toc-block-item-toggle-icon"
                   role="img"
                 >
@@ -297,7 +297,7 @@ exports[`TocView matches correct snapshot 1`] = `
                   role="menuitem"
                 >
                   <span
-                    class="mc-c-boQJHo mc-c-boQJHo-jmJBBb-level-text"
+                    class="mc-c-dXyXKB mc-c-dXyXKB-jmJBBb-level-text"
                     data-testid="editor-toc-block-item-title"
                   >
                     <span
@@ -322,7 +322,7 @@ exports[`TocView matches correct snapshot 1`] = `
           role="menuitem"
         >
           <span
-            class="mc-c-boQJHo mc-c-boQJHo-ftgEku-level-1"
+            class="mc-c-dXyXKB mc-c-dXyXKB-ftgEku-level-1"
             data-testid="editor-toc-block-item-title"
           >
             <span

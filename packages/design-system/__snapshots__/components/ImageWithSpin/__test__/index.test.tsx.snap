@@ -16,7 +16,7 @@ exports[`ImageWithSpin matches snapshot correctly 1`] = `
     role="progressbar"
   >
     <svg
-      class="mc-c-hsxsfB mc-c-hsxsfB-eNLjdr-size-lg mc-c-hsxsfB-llIIr-color-dark cover-spin"
+      class="mc-c-hsxsfB mc-c-hsxsfB-eNLjdr-size-lg mc-c-hsxsfB-jXUdPs-color-dark cover-spin"
       fill="none"
       height="20"
       style="opacity: 1;"

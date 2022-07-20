@@ -17,10 +17,10 @@ exports[`MentionMenu matches correct snapshot 1`] = `
     >
       <span
         aria-label="mention.people.head"
-        class="mc-c-iSZMdl"
+        class="mc-c-cEWwGU"
       >
         <span
-          class="mc-c-fbvDaU"
+          class="mc-c-enkbug"
         >
           mention.people.head
         </span>
@@ -29,14 +29,14 @@ exports[`MentionMenu matches correct snapshot 1`] = `
         class="mc-c-llTUqV"
       >
         <li
-          class="mc-c-jCYxqH mc-c-jCYxqH-cOuhSn-active-true mc-c-klLbby"
+          class="mc-c-dadCix mc-c-dadCix-cgQZvB-active-true mc-c-klLbby"
           id="mention-1"
           role="menuitem"
           tabindex="0"
           title=""
         >
           <span
-            class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-kRzPmM-size-md mc-c-gYWVfz-ihPXSzQ-css"
+            class="mc-c-kEyFKe mc-c-kEyFKe-hECRKn-shape-circle mc-c-kEyFKe-kRzPmM-size-md mc-c-kEyFKe-ihPXSzQ-css"
           >
             <img
               src="avatar"
@@ -58,16 +58,16 @@ exports[`MentionMenu matches correct snapshot 1`] = `
     >
       <span
         aria-label="mention.page_link.head"
-        class="mc-c-iSZMdl"
+        class="mc-c-cEWwGU"
       >
         <span
-          class="mc-c-fbvDaU"
+          class="mc-c-enkbug"
         >
           mention.page_link.head
         </span>
       </span>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="mention-2"
         label="page name"
         role="menuitem"
@@ -81,10 +81,10 @@ exports[`MentionMenu matches correct snapshot 1`] = `
             class="mc-c-OVPdU"
           >
             <span
-              class="mc-c-frQDkN mc-c-iJjxbJ"
+              class="mc-c-frQDkN mc-c-bAtsVZ"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iPJLV-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-iPJLV-css"
               />
               <div
                 class="mc-c-BfbNy"

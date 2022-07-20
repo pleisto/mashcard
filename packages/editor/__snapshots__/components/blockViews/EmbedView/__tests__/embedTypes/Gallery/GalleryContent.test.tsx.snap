@@ -6,7 +6,7 @@ exports[`GalleryContent renders GalleryContent correctly 1`] = `
     class="mc-c-kCBlgu"
   >
     <div
-      class="MuiInput-root mc-c-eANKNN mc-c-eANKNN-cROdoV-size-md mc-c-eANKNN-kUUElh-bordered-true mc-c-eANKNN-dQAfkO-borderType-outline mc-c-eANKNN-gjYJKs-cv mc-c-jybpWZ"
+      class="MuiInput-root mc-c-cGmAJj mc-c-cGmAJj-cROdoV-size-md mc-c-cGmAJj-kUUElh-bordered-true mc-c-cGmAJj-cQmNWY-borderType-outline mc-c-cGmAJj-gjYJKs-cv mc-c-jybpWZ"
     >
       <input
         class="MuiInput-input"
@@ -35,7 +35,7 @@ exports[`GalleryContent renders GalleryContent correctly 1`] = `
             role="progressbar"
           >
             <svg
-              class="mc-c-hsxsfB mc-c-hsxsfB-eNLjdr-size-lg mc-c-hsxsfB-llIIr-color-dark cover-spin"
+              class="mc-c-hsxsfB mc-c-hsxsfB-eNLjdr-size-lg mc-c-hsxsfB-jXUdPs-color-dark cover-spin"
               fill="none"
               height="20"
               style="opacity: 1;"
@@ -96,7 +96,7 @@ exports[`GalleryContent renders GalleryContent correctly 1`] = `
         </div>
       </div>
       <svg
-        class="mc-c-hsxsfB mc-c-hsxsfB-iixNcA-size-md mc-c-hsxsfB-llIIr-color-dark"
+        class="mc-c-hsxsfB mc-c-hsxsfB-iixNcA-size-md mc-c-hsxsfB-jXUdPs-color-dark"
         fill="none"
         height="20"
         style="opacity: 1;"

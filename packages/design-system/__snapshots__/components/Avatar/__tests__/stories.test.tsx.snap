@@ -3,7 +3,7 @@
 exports[`Avatar AnonymousAvatar should match the snapshot 1`] = `
 <div>
   <span
-    class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-kRzPmM-size-md mc-c-gYWVfz-koJJPr-default-true mc-c-gYWVfz-iPJLV-css"
+    class="mc-c-kEyFKe mc-c-kEyFKe-hECRKn-shape-circle mc-c-kEyFKe-kRzPmM-size-md mc-c-kEyFKe-PSaFj-default-true mc-c-kEyFKe-iPJLV-css"
   >
     <i
       data-testid="mock-icon-User"
@@ -15,7 +15,7 @@ exports[`Avatar AnonymousAvatar should match the snapshot 1`] = `
 exports[`Avatar Basic should match the snapshot 1`] = `
 <div>
   <span
-    class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-kRzPmM-size-md mc-c-gYWVfz-iilQgtF-css"
+    class="mc-c-kEyFKe mc-c-kEyFKe-hECRKn-shape-circle mc-c-kEyFKe-kRzPmM-size-md mc-c-kEyFKe-iilQgtF-css"
   >
     <span>
       JS
@@ -27,7 +27,7 @@ exports[`Avatar Basic should match the snapshot 1`] = `
 exports[`Avatar ImageAvatar should match the snapshot 1`] = `
 <div>
   <span
-    class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-kRzPmM-size-md mc-c-gYWVfz-iPJLV-css"
+    class="mc-c-kEyFKe mc-c-kEyFKe-hECRKn-shape-circle mc-c-kEyFKe-kRzPmM-size-md mc-c-kEyFKe-iPJLV-css"
   >
     <img
       alt="John Smith Avatar"
@@ -40,7 +40,7 @@ exports[`Avatar ImageAvatar should match the snapshot 1`] = `
 exports[`Avatar SquareAvatar should match the snapshot 1`] = `
 <div>
   <span
-    class="mc-c-gYWVfz mc-c-gYWVfz-liDPBl-shape-square mc-c-gYWVfz-bFVlRr-size-lg mc-c-gYWVfz-iilQgtF-css"
+    class="mc-c-kEyFKe mc-c-kEyFKe-liDPBl-shape-square mc-c-kEyFKe-bFVlRr-size-lg mc-c-kEyFKe-iilQgtF-css"
   >
     <span>
       JS
