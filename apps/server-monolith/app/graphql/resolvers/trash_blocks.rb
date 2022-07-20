@@ -2,7 +2,7 @@
 
 module Resolvers
   class TrashBlocks < BaseResolver
-    type [Types::Block], null: true
+    type [Types::Blocks::New], null: true
 
     argument :block_id, Scalars::UUID, required: false
     argument :domain, GraphQL::Types::String, required: true
