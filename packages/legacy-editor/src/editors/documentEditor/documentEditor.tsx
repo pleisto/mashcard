@@ -1,10 +1,6 @@
 import { useMemo, FC, useEffect, DependencyList } from 'react'
-import {
-  useEditor as useTiptapEditor,
-  EditorContent as TiptapEditorContent,
-  Editor as TiptapEditor
-} from '@tiptap/react'
-import { EditorOptions as TiptapEditorOptions } from '@tiptap/core'
+import { useEditor as useTiptapEditor, EditorContent as TiptapEditorContent } from '../../tiptapRefactor'
+import { Editor as TiptapEditor, EditorOptions as TiptapEditorOptions } from '@tiptap/core'
 import { theme } from '@mashcard/design-system'
 import { useEditorI18n } from '../../hooks'
 import { EditorContext, EditorContextData, DocumentContext, DocumentContextData } from '../../context'

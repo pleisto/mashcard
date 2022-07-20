@@ -1,4 +1,5 @@
-import { ReactRenderer, Editor } from '@tiptap/react'
+import { Editor } from '@tiptap/core'
+import { ReactRenderer } from '../../../tiptapRefactor'
 import { PluginKey, Plugin } from 'prosemirror-state'
 import { Suggestion } from '@tiptap/suggestion'
 import { createPopup, PopupInstance } from '../../../helpers/popup'

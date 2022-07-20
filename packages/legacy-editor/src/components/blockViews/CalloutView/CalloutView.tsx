@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { NodeViewContent } from '@tiptap/react'
+import { NodeViewContent } from '../../../tiptapRefactor'
 import { BlockContainer } from '../BlockContainer'
 import { CalloutViewProps } from '../../../extensions/blocks/callout/meta'
 import { css, styled, theme } from '@mashcard/design-system'

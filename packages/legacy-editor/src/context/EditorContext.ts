@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { Editor } from '@tiptap/react'
+import { Editor } from '@tiptap/core'
 
 export interface EditorContextData {
   editor?: Editor | null

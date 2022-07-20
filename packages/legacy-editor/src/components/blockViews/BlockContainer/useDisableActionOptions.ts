@@ -1,4 +1,4 @@
-import { Editor } from '@tiptap/react'
+import { Editor } from '@tiptap/core'
 import { useMemo } from 'react'
 import { BlockContainerProps } from './BlockContainer'
 import { findParagraphWrapper } from '../../../extensions/extensions/placeholder/findWrapper'

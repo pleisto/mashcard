@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { MashcardEventBus, Undo } from '@mashcard/schema'
-import { Editor as TiptapEditor } from '@tiptap/react'
+import { Editor } from '@tiptap/core'
 
-export const useUndo = (editor: TiptapEditor | null): void => {
+export const useUndo = (editor: Editor | null): void => {
   useEffect(
     () =>
       MashcardEventBus.subscribe(Undo, () => {

@@ -1,5 +1,5 @@
 import { DeepPartial } from '@mashcard/active-support'
-import { Editor } from '@tiptap/react'
+import { Editor } from '@tiptap/core'
 import { merge } from 'lodash'
 
 export interface MockEditorProps extends DeepPartial<Editor> {}

@@ -7,8 +7,8 @@ describe('HorizontalRule', () => {
     const content = `
     <hr />
     `
-    const { container } = render(<TestEditorContent content={content} extensions={[HorizontalRule]} />)
 
+    const { container } = render(<TestEditorContent content={content} extensions={[HorizontalRule]} />)
     expect(container).toMatchSnapshot()
   })
 })

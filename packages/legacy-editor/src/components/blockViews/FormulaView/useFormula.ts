@@ -29,12 +29,11 @@ import {
   FormulaEditorUpdateTrigger,
   FormulaEditorCloseTrigger
 } from '@mashcard/schema'
-import { JSONContent } from '@tiptap/core'
+import { JSONContent, Editor } from '@tiptap/core'
 import { devLog } from '@mashcard/design-system'
 import React from 'react'
 import { codeFragments2content, content2definition, definition2content, input2content } from '../../../helpers'
 import { useFormulaEditor } from '../../../editors/formulaEditor/useFormulaEditor'
-import { Editor } from '@tiptap/react'
 
 export interface UseFormulaInput {
   meta: VariableMetadata

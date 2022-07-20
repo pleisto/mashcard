@@ -1,5 +1,4 @@
-import { ExtendedRegExpMatchArray, InputRule, InputRuleFinder } from '@tiptap/react'
-import { Editor } from '@tiptap/core'
+import { Editor, ExtendedRegExpMatchArray, InputRule, InputRuleFinder } from '@tiptap/core'
 import { TextSelection } from 'prosemirror-state'
 import { NodeType } from 'prosemirror-model'
 import { Paragraph } from '../paragraph'

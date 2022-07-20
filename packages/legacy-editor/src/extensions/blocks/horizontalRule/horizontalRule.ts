@@ -1,4 +1,4 @@
-import { ReactNodeViewRenderer } from '@tiptap/react'
+import { ReactNodeViewRenderer } from '../../../tiptapRefactor'
 import { HorizontalRule as TiptapHorizontalRule } from '@tiptap/extension-horizontal-rule'
 import { HorizontalRuleView } from '../../../components/blockViews'
 import { meta } from './meta'

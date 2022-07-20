@@ -1,5 +1,5 @@
 import { BulletList as TiptapBulletList } from '@tiptap/extension-bullet-list'
-import { ReactNodeViewRenderer } from '@tiptap/react'
+import { ReactNodeViewRenderer } from '../../../tiptapRefactor'
 import { ListView } from '../../../components/blockViews'
 import { meta } from './meta'
 

@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext } from 'react'
+import { createContext, Dispatch, ReactNode, SetStateAction, useContext } from 'react'
 
 /**
  * A portal contains dom container and react node.
@@ -7,7 +7,7 @@ export interface NodePortal {
   /**
    * the container mounted the react node.
    */
-  container: HTMLElement
+  container: Element
   /**
    * the react node mounted in the portal.
    */
@@ -19,7 +19,7 @@ export interface NodePortal {
  */
 export const NodePortalsContext = createContext<{
   nodePortals: NodePortal[]
-  setNodePortals: (nodePortals: NodePortal[]) => void
+  setNodePortals: Dispatch<SetStateAction<NodePortal[]>>
 }>({ nodePortals: [], setNodePortals(nodePortals) {} })
 
 /**
@@ -28,7 +28,7 @@ export const NodePortalsContext = createContext<{
  */
 export function useNodePortals(): {
   nodePortals: NodePortal[]
-  setNodePortals: (nodePortals: NodePortal[]) => void
+  setNodePortals: Dispatch<SetStateAction<NodePortal[]>>
 } {
   return useContext(NodePortalsContext)
 }

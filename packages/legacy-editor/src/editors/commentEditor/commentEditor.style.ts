@@ -1,5 +1,5 @@
 import { styled, theme, Avatar } from '@mashcard/design-system'
-import { EditorContent } from '@tiptap/react'
+import { EditorContent } from '../../tiptapRefactor'
 
 export const EditorInput = styled(EditorContent, {
   background: theme.colors.backgroundOverlayPrimary,

@@ -1,5 +1,6 @@
 import { CSSProperties, FC, forwardRef, MouseEventHandler, ReactNode, useState } from 'react'
-import { NodeViewWrapper, NodeViewWrapperProps, NodeViewProps } from '@tiptap/react'
+import { NodeViewWrapper, NodeViewWrapperProps } from '../../../tiptapRefactor'
+import { NodeViewProps } from '@tiptap/core'
 import { BlockActionsProps } from '../BlockActions'
 import { BlockContext } from '../../../context/BlockContext'
 import { useDocumentEditable, useEditorContext } from '../../../hooks'

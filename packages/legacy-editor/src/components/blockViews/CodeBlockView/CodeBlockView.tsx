@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { LineDown, Check } from '@mashcard/design-icons'
 import { Menu, Input, Popover, Switch, styled, theme, cx } from '@mashcard/design-system'
-import { NodeViewContent } from '@tiptap/react'
+import { NodeViewContent } from '../../../tiptapRefactor'
 import { BlockContainer } from '../BlockContainer'
 import {
   highlightStyle,

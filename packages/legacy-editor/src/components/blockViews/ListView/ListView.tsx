@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { NodeViewContent } from '@tiptap/react'
+import { NodeViewContent } from '../../../tiptapRefactor'
 import { BlockContainer } from '../BlockContainer'
 import { BlockViewProps } from '../../../extensions/common'
 import { BulletList, OrderedList, TaskList } from '../../../extensions'

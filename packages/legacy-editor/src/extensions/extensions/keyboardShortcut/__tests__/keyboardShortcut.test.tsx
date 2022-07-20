@@ -1,5 +1,5 @@
 import { render, renderHook } from '@testing-library/react'
-import { EditorContent } from '@tiptap/react'
+import { EditorContent } from '../../../../tiptapRefactor'
 import { useTestEditor } from '../../../../test/testEditor'
 import { Paragraph, SubPageMenu } from '../../../blocks'
 import { KeyboardShortcut } from '../keyboardShortcut'

@@ -1,5 +1,6 @@
 import React from 'react'
-import { EditorContent, Editor, JSONContent } from '@tiptap/react'
+import { Editor, JSONContent } from '@tiptap/core'
+import { EditorContent } from '../../tiptapRefactor'
 import { MashcardFomulaEditor } from './style'
 import { useFormulaEditor } from './useFormulaEditor'
 import { globalCss, theme } from '@mashcard/design-system'

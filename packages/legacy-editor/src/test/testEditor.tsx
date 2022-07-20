@@ -1,12 +1,6 @@
-import { DependencyList, FC } from 'react'
-import {
-  Editor,
-  EditorContent as TiptapEditorContent,
-  EditorOptions,
-  Extensions,
-  JSONContent,
-  useEditor
-} from '@tiptap/react'
+import { DependencyList, FC, useEffect } from 'react'
+import { Editor, EditorOptions, Extensions, JSONContent } from '@tiptap/core'
+import { EditorContent as TiptapEditorContent, useEditor } from '../tiptapRefactor'
 import { Document } from '@tiptap/extension-document'
 import { Paragraph } from '@tiptap/extension-paragraph'
 import { Text } from '@tiptap/extension-text'
@@ -43,6 +37,10 @@ export const TestEditorContent: FC<TestEditorContentProps> = ({ content, extensi
     content,
     extensions
   })
+
+  useEffect(() => {
+    editor?.createNodeViews()
+  }, [editor])
 
   return <TiptapEditorContent editor={editor} />
 }
