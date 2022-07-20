@@ -3,7 +3,7 @@
 exports[`FormulaResult [Block] basic "=BasicPage" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -15,7 +15,7 @@ exports[`FormulaResult [Block] basic "=BasicPage" 1`] = `
       </span>
       <span
         class="mashcard-formula-borderless"
-        style="color: rgb(53, 108, 249);"
+        style="color: rgb(64, 137, 216);"
       >
         BasicPage
       </span>
@@ -50,7 +50,7 @@ exports[`FormulaResult [Block] basic "=BasicPage" 1`] = `
 exports[`FormulaResult [Block] basic "=BasicPage" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -62,7 +62,7 @@ exports[`FormulaResult [Block] basic "=BasicPage" 2`] = `
       </span>
       <span
         class="mashcard-formula-borderless"
-        style="color: rgb(53, 108, 249);"
+        style="color: rgb(64, 137, 216);"
       >
         BasicPage
       </span>
@@ -97,7 +97,7 @@ exports[`FormulaResult [Block] basic "=BasicPage" 2`] = `
 exports[`FormulaResult [Date] basic "=DATE("1926-08-17")" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -154,7 +154,7 @@ exports[`FormulaResult [Date] basic "=DATE("1926-08-17")" 1`] = `
 exports[`FormulaResult [Date] basic "=DATE("1926-08-17")" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -211,7 +211,7 @@ exports[`FormulaResult [Date] basic "=DATE("1926-08-17")" 2`] = `
 exports[`FormulaResult [Divide by zero error] basic "=1/0" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -258,7 +258,7 @@ exports[`FormulaResult [Divide by zero error] basic "=1/0" 1`] = `
 exports[`FormulaResult [Divide by zero error] basic "=1/0" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -305,7 +305,7 @@ exports[`FormulaResult [Divide by zero error] basic "=1/0" 2`] = `
 exports[`FormulaResult [Empty] basic "=" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -352,7 +352,7 @@ exports[`FormulaResult [Empty] basic "=" 1`] = `
 exports[`FormulaResult [Empty] basic "=" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -399,7 +399,7 @@ exports[`FormulaResult [Empty] basic "=" 2`] = `
 exports[`FormulaResult [Spreadsheet] basic "=BasicPage.spreadsheet" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -411,7 +411,7 @@ exports[`FormulaResult [Spreadsheet] basic "=BasicPage.spreadsheet" 1`] = `
       </span>
       <span
         class="mashcard-formula-borderless"
-        style="color: rgb(53, 108, 249);"
+        style="color: rgb(64, 137, 216);"
       >
         spreadsheet
       </span>
@@ -453,7 +453,7 @@ exports[`FormulaResult [Spreadsheet] basic "=BasicPage.spreadsheet" 1`] = `
 exports[`FormulaResult [Spreadsheet] basic "=BasicPage.spreadsheet" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -465,7 +465,7 @@ exports[`FormulaResult [Spreadsheet] basic "=BasicPage.spreadsheet" 2`] = `
       </span>
       <span
         class="mashcard-formula-borderless"
-        style="color: rgb(53, 108, 249);"
+        style="color: rgb(64, 137, 216);"
       >
         spreadsheet
       </span>
@@ -507,7 +507,7 @@ exports[`FormulaResult [Spreadsheet] basic "=BasicPage.spreadsheet" 2`] = `
 exports[`FormulaResult [Variable] basic "=BasicPage.bar" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -560,7 +560,7 @@ exports[`FormulaResult [Variable] basic "=BasicPage.bar" 1`] = `
 exports[`FormulaResult [Variable] basic "=BasicPage.bar" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -613,7 +613,7 @@ exports[`FormulaResult [Variable] basic "=BasicPage.bar" 2`] = `
 exports[`FormulaResult [async 1] basic "=SLEEP(123)" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -660,7 +660,7 @@ exports[`FormulaResult [async 1] basic "=SLEEP(123)" 1`] = `
 exports[`FormulaResult [async 1] basic "=SLEEP(123)" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -707,7 +707,7 @@ exports[`FormulaResult [async 1] basic "=SLEEP(123)" 2`] = `
 exports[`FormulaResult [async 2] basic "=BasicPage.lazy" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -754,7 +754,7 @@ exports[`FormulaResult [async 2] basic "=BasicPage.lazy" 1`] = `
 exports[`FormulaResult [async 2] basic "=BasicPage.lazy" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -801,7 +801,7 @@ exports[`FormulaResult [async 2] basic "=BasicPage.lazy" 2`] = `
 exports[`FormulaResult [cell] basic "=BasicPage.spreadsheet.first.1" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -813,7 +813,7 @@ exports[`FormulaResult [cell] basic "=BasicPage.spreadsheet.first.1" 1`] = `
       </span>
       <span
         class="mashcard-formula-borderless"
-        style="color: rgb(109, 71, 185);"
+        style="color: rgb(135, 157, 224);"
       >
         1
       </span>
@@ -854,7 +854,7 @@ exports[`FormulaResult [cell] basic "=BasicPage.spreadsheet.first.1" 1`] = `
 exports[`FormulaResult [cell] basic "=BasicPage.spreadsheet.first.1" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -877,7 +877,7 @@ exports[`FormulaResult [cell] basic "=BasicPage.spreadsheet.first.1" 2`] = `
 exports[`FormulaResult [column1] basic "=BasicPage.spreadsheet.first" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -889,7 +889,7 @@ exports[`FormulaResult [column1] basic "=BasicPage.spreadsheet.first" 1`] = `
       </span>
       <span
         class="mashcard-formula-borderless"
-        style="color: rgb(53, 108, 249);"
+        style="color: rgb(64, 137, 216);"
       >
         spreadsheet.first
       </span>
@@ -948,7 +948,7 @@ exports[`FormulaResult [column1] basic "=BasicPage.spreadsheet.first" 1`] = `
 exports[`FormulaResult [column1] basic "=BasicPage.spreadsheet.first" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -960,7 +960,7 @@ exports[`FormulaResult [column1] basic "=BasicPage.spreadsheet.first" 2`] = `
       </span>
       <span
         class="mashcard-formula-borderless"
-        style="color: rgb(53, 108, 249);"
+        style="color: rgb(64, 137, 216);"
       >
         spreadsheet.first
       </span>
@@ -1019,7 +1019,7 @@ exports[`FormulaResult [column1] basic "=BasicPage.spreadsheet.first" 2`] = `
 exports[`FormulaResult [column2] basic "=BasicPage.spreadsheet.A" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -1090,7 +1090,7 @@ exports[`FormulaResult [column2] basic "=BasicPage.spreadsheet.A" 1`] = `
 exports[`FormulaResult [column2] basic "=BasicPage.spreadsheet.A" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -1161,7 +1161,7 @@ exports[`FormulaResult [column2] basic "=BasicPage.spreadsheet.A" 2`] = `
 exports[`FormulaResult [literal string] basic "literal" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -1220,7 +1220,7 @@ exports[`FormulaResult [literal string] basic "literal" 1`] = `
 exports[`FormulaResult [literal string] basic "literal" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -1279,7 +1279,7 @@ exports[`FormulaResult [literal string] basic "literal" 2`] = `
 exports[`FormulaResult [parse error 1] basic "=1 ++ 1" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -1302,7 +1302,7 @@ exports[`FormulaResult [parse error 1] basic "=1 ++ 1" 1`] = `
 exports[`FormulaResult [parse error 1] basic "=1 ++ 1" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -1325,7 +1325,7 @@ exports[`FormulaResult [parse error 1] basic "=1 ++ 1" 2`] = `
 exports[`FormulaResult [partial error 1] basic "=1 +" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -1348,7 +1348,7 @@ exports[`FormulaResult [partial error 1] basic "=1 +" 1`] = `
 exports[`FormulaResult [partial error 1] basic "=1 +" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -1371,7 +1371,7 @@ exports[`FormulaResult [partial error 1] basic "=1 +" 2`] = `
 exports[`FormulaResult [partial error 2] basic "=custom::ADD(1)" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -1394,7 +1394,7 @@ exports[`FormulaResult [partial error 2] basic "=custom::ADD(1)" 1`] = `
 exports[`FormulaResult [partial error 2] basic "=custom::ADD(1)" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -1417,7 +1417,7 @@ exports[`FormulaResult [partial error 2] basic "=custom::ADD(1)" 2`] = `
 exports[`FormulaResult [row] basic "=BasicPage.spreadsheet.1" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -1482,7 +1482,7 @@ exports[`FormulaResult [row] basic "=BasicPage.spreadsheet.1" 1`] = `
 exports[`FormulaResult [row] basic "=BasicPage.spreadsheet.1" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -1547,7 +1547,7 @@ exports[`FormulaResult [row] basic "=BasicPage.spreadsheet.1" 2`] = `
 exports[`FormulaResult access "=[1][" -> [syntax] "errors.parse.missing.closing_bracket" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -1570,7 +1570,7 @@ exports[`FormulaResult access "=[1][" -> [syntax] "errors.parse.missing.closing_
 exports[`FormulaResult array "=[1,]" -> [syntax] "errors.parse.mismatch.expression_count" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -1593,7 +1593,7 @@ exports[`FormulaResult array "=[1,]" -> [syntax] "errors.parse.mismatch.expressi
 exports[`FormulaResult basic "=   1 + 1 + 1   " 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -1646,7 +1646,7 @@ exports[`FormulaResult basic "=   1 + 1 + 1   " 1`] = `
 exports[`FormulaResult basic "=   1 + 1 + 1   " 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -1699,7 +1699,7 @@ exports[`FormulaResult basic "=   1 + 1 + 1   " 2`] = `
 exports[`FormulaResult basic "="string" & "fasd"" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -1758,7 +1758,7 @@ exports[`FormulaResult basic "="string" & "fasd"" 1`] = `
 exports[`FormulaResult basic "="string" & "fasd"" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -1817,7 +1817,7 @@ exports[`FormulaResult basic "="string" & "fasd"" 2`] = `
 exports[`FormulaResult basic "=[]" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -1864,7 +1864,7 @@ exports[`FormulaResult basic "=[]" 1`] = `
 exports[`FormulaResult basic "=[]" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -1911,7 +1911,7 @@ exports[`FormulaResult basic "=[]" 2`] = `
 exports[`FormulaResult basic "=[1,"1",false]" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -1958,7 +1958,7 @@ exports[`FormulaResult basic "=[1,"1",false]" 1`] = `
 exports[`FormulaResult basic "=[1,"1",false]" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -2005,7 +2005,7 @@ exports[`FormulaResult basic "=[1,"1",false]" 2`] = `
 exports[`FormulaResult basic "={}" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -2050,7 +2050,7 @@ exports[`FormulaResult basic "={}" 1`] = `
 exports[`FormulaResult basic "={}" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -2095,7 +2095,7 @@ exports[`FormulaResult basic "={}" 2`] = `
 exports[`FormulaResult basic "={a: 1,b: false, c: "string", d: [1]}" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -2140,7 +2140,7 @@ exports[`FormulaResult basic "={a: 1,b: false, c: "string", d: [1]}" 1`] = `
 exports[`FormulaResult basic "={a: 1,b: false, c: "string", d: [1]}" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -2185,7 +2185,7 @@ exports[`FormulaResult basic "={a: 1,b: false, c: "string", d: [1]}" 2`] = `
 exports[`FormulaResult basic "=null" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -2197,7 +2197,7 @@ exports[`FormulaResult basic "=null" 1`] = `
       </span>
       <span
         class="mashcard-formula-borderless"
-        style="color: rgb(109, 71, 185);"
+        style="color: rgb(135, 157, 224);"
       >
         null
       </span>
@@ -2232,7 +2232,7 @@ exports[`FormulaResult basic "=null" 1`] = `
 exports[`FormulaResult basic "=null" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -2244,7 +2244,7 @@ exports[`FormulaResult basic "=null" 2`] = `
       </span>
       <span
         class="mashcard-formula-borderless"
-        style="color: rgb(109, 71, 185);"
+        style="color: rgb(135, 157, 224);"
       >
         null
       </span>
@@ -2279,7 +2279,7 @@ exports[`FormulaResult basic "=null" 2`] = `
 exports[`FormulaResult basic "=true && false" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -2326,7 +2326,7 @@ exports[`FormulaResult basic "=true && false" 1`] = `
 exports[`FormulaResult basic "=true && false" 2`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -2373,7 +2373,7 @@ exports[`FormulaResult basic "=true && false" 2`] = `
 exports[`FormulaResult block "=#" -> [syntax] "errors.parse.missing.expression" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2396,7 +2396,7 @@ exports[`FormulaResult block "=#" -> [syntax] "errors.parse.missing.expression" 
 exports[`FormulaResult chain "={a:1}.b" -> [object Object] 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -2443,7 +2443,7 @@ exports[`FormulaResult chain "={a:1}.b" -> [object Object] 1`] = `
 exports[`FormulaResult functionCall "=ABS ()" -> [deps] "errors.parse.missing.argument" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2466,7 +2466,7 @@ exports[`FormulaResult functionCall "=ABS ()" -> [deps] "errors.parse.missing.ar
 exports[`FormulaResult functionCall "=ABS(1" -> [syntax] "errors.parse.missing.closing_parenthesis" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2489,7 +2489,7 @@ exports[`FormulaResult functionCall "=ABS(1" -> [syntax] "errors.parse.missing.c
 exports[`FormulaResult functionCall "=UNKNOWN ()" -> [deps] "errors.parse.not_found.function,[object Object]" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2512,7 +2512,7 @@ exports[`FormulaResult functionCall "=UNKNOWN ()" -> [deps] "errors.parse.not_fo
 exports[`FormulaResult functionCall "=custom::FORTY_TWO(1, 1, 1)" -> [deps] "errors.parse.mismatch.argument_count" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2535,7 +2535,7 @@ exports[`FormulaResult functionCall "=custom::FORTY_TWO(1, 1, 1)" -> [deps] "err
 exports[`FormulaResult multiplication "=1/0" -> [object Object] 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -2582,7 +2582,7 @@ exports[`FormulaResult multiplication "=1/0" -> [object Object] 1`] = `
 exports[`FormulaResult multiplication "=Multi.spreadsheet.first.3 * 0" -> [object Object] 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-ok"
@@ -2629,7 +2629,7 @@ exports[`FormulaResult multiplication "=Multi.spreadsheet.first.3 * 0" -> [objec
 exports[`FormulaResult other "=(1 {}." -> [syntax] "errors.parse.missing.token" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2652,7 +2652,7 @@ exports[`FormulaResult other "=(1 {}." -> [syntax] "errors.parse.missing.token" 
 exports[`FormulaResult other "=>=" -> [parse] "errors.parse.chevrotain.build_no_viable_alt,[object Object]" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2675,7 +2675,7 @@ exports[`FormulaResult other "=>=" -> [parse] "errors.parse.chevrotain.build_no_
 exports[`FormulaResult other "=1:" -> [type] "errors.parse.mismatch.type,[object Object]" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2698,7 +2698,7 @@ exports[`FormulaResult other "=1:" -> [type] "errors.parse.mismatch.type,[object
 exports[`FormulaResult other "=1a1" -> [parse] "errors.parse.chevrotain.not_all_input_parsed,[object Object]" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2721,7 +2721,7 @@ exports[`FormulaResult other "=1a1" -> [parse] "errors.parse.chevrotain.not_all_
 exports[`FormulaResult parser "="bar"" -> [name_invalid] "errors.parse.name.invalid" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2744,7 +2744,7 @@ exports[`FormulaResult parser "="bar"" -> [name_invalid] "errors.parse.name.inva
 exports[`FormulaResult parser "="bar"" -> [name_unique] "errors.parse.name.duplicated" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2767,7 +2767,7 @@ exports[`FormulaResult parser "="bar"" -> [name_unique] "errors.parse.name.dupli
 exports[`FormulaResult parser "="if"" -> [name_check] "errors.parse.name.reserved" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2790,7 +2790,7 @@ exports[`FormulaResult parser "="if"" -> [name_check] "errors.parse.name.reserve
 exports[`FormulaResult record "={a: 1, "a": 2}" -> [syntax] "errors.parse.record.key_duplicated" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2813,7 +2813,7 @@ exports[`FormulaResult record "={a: 1, "a": 2}" -> [syntax] "errors.parse.record
 exports[`FormulaResult record "={a}" -> [parse] "errors.parse.chevrotain.mismatch_token,[object Object]" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2838,7 +2838,7 @@ exports[`FormulaResult renders nothing if no variableT 1`] = `<div />`;
 exports[`FormulaResult thisRecord "=ThisRecord" -> [syntax] "errors.parse.unavailable.thisRecord" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2861,7 +2861,7 @@ exports[`FormulaResult thisRecord "=ThisRecord" -> [syntax] "errors.parse.unavai
 exports[`FormulaResult thisRecord "=ThisRecord.A.1" -> [circular_dependency] "errors.interpret.circular_dependency.spreadsheet" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2884,7 +2884,7 @@ exports[`FormulaResult thisRecord "=ThisRecord.A.1" -> [circular_dependency] "er
 exports[`FormulaResult thisRow "=ThisRow" -> [syntax] "errors.parse.unavailable.thisRow" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2907,7 +2907,7 @@ exports[`FormulaResult thisRow "=ThisRow" -> [syntax] "errors.parse.unavailable.
 exports[`FormulaResult thisRow "=ThisRow.A" -> [circular_dependency] "errors.parse.circular_dependency.spreadsheet" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"
@@ -2930,7 +2930,7 @@ exports[`FormulaResult thisRow "=ThisRow.A" -> [circular_dependency] "errors.par
 exports[`FormulaResult variable "=num5" -> [circular_dependency] "errors.parse.circular_dependency.variable" 1`] = `
 <div>
   <div
-    class="mc-c-dRDYhj"
+    class="mc-c-cKFnpX"
   >
     <span
       class="formula-result-error"

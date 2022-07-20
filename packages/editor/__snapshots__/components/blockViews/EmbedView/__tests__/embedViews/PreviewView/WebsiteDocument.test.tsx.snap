@@ -14,7 +14,7 @@ exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
       class="mc-c-ijXLft"
     >
       <div
-        class="mc-c-hAANqN"
+        class="mc-c-iRJkWV"
       >
         <img
           alt=""
@@ -42,11 +42,11 @@ exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
               aria-describedby=""
               aria-haspopup="false"
               aria-label="embed_block.view_types.preview.name"
-              class="mc-c-fCKOrw mc-c-fCKOrw-gPOEbt-active-true"
+              class="mc-c-iOJlHA mc-c-iOJlHA-eFgYyE-active-true"
               role="menuitem"
             >
               <span
-                class="mc-c-PJLV mc-c-PJLV-isezAM-active-true"
+                class="mc-c-PJLV mc-c-PJLV-loVWlz-active-true"
               >
                 <span
                   aria-label="preview"
@@ -74,7 +74,7 @@ exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
               aria-describedby=""
               aria-haspopup="false"
               aria-label="embed_block.view_types.card.name"
-              class="mc-c-fCKOrw"
+              class="mc-c-iOJlHA"
               role="menuitem"
             >
               <span
@@ -105,7 +105,7 @@ exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
               aria-describedby=""
               aria-haspopup="false"
               aria-label="embed_block.view_types.text.name"
-              class="mc-c-fCKOrw"
+              class="mc-c-iOJlHA"
               role="menuitem"
             >
               <span
@@ -146,7 +146,7 @@ exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
               aria-describedby=""
               aria-haspopup="false"
               aria-label="edit"
-              class="mc-c-fCKOrw"
+              class="mc-c-iOJlHA"
               role="menuitem"
             >
               <span

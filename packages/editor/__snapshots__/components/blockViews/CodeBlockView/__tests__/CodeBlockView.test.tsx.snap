@@ -3,15 +3,15 @@
 exports[`CodeBlockView matches snapshot correctly 1`] = `
 <div>
   <div
-    class="mc-c-iuTWec mc-c-gzEzdA"
+    class="mc-c-bxRahZ mc-c-eNvXfk"
     data-node-view-wrapper=""
     style="white-space: normal; pointer-events: unset;"
   >
     <div
-      class="mc-c-hFlqDe"
+      class="mc-c-gBernw"
     >
       <div
-        class="mc-c-ezcVMp"
+        class="mc-c-elNHRJ"
       >
         <div
           aria-haspopup="dialog"
@@ -51,7 +51,7 @@ exports[`CodeBlockView matches snapshot correctly 1`] = `
             class="mc-c-kHLHuS"
           >
             <div
-              class="mc-c-dYMIXn mc-c-dYMIXn-blnpOb-checked-true mc-c-dYMIXn-epWpGu-size-sm mc-c-dYMIXn-gsmDXe-disabled-false"
+              class="mc-c-dYMIXn mc-c-dYMIXn-ibGlfj-checked-true mc-c-dYMIXn-eVHRHK-size-sm mc-c-dYMIXn-gsmDXe-disabled-false"
             >
               <div
                 class="mc-c-dENxiO"
@@ -62,7 +62,7 @@ exports[`CodeBlockView matches snapshot correctly 1`] = `
                 />
               </div>
               <div
-                class="mc-c-RJek"
+                class="mc-c-fliaiQ"
               />
             </div>
           </label>

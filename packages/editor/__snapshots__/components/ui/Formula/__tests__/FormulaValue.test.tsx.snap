@@ -4,7 +4,7 @@ exports[`FormulaValue [Block] basic "=BasicPage" 1`] = `
 <div>
   <span
     class="mashcard-formula-borderless"
-    style="color: rgb(53, 108, 249);"
+    style="color: rgb(64, 137, 216);"
   >
     BasicPage
   </span>
@@ -14,7 +14,7 @@ exports[`FormulaValue [Block] basic "=BasicPage" 1`] = `
 exports[`FormulaValue [Block] basic "=BasicPage" 2`] = `
 <div>
   <span
-    class="mc-c-egaYnV mc-c-egaYnV-hnkVPb-selected-false mc-c-kkMlKx"
+    class="mc-c-bllAhl mc-c-bllAhl-lfpQoP-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -52,7 +52,7 @@ exports[`FormulaValue [Block] basic "=BasicPage" 3`] = `
 <div>
   <span
     class="mashcard-formula-borderless"
-    style="color: rgb(53, 108, 249);"
+    style="color: rgb(64, 137, 216);"
   >
     BasicPage
   </span>
@@ -63,7 +63,7 @@ exports[`FormulaValue [Block] basic "=BasicPage" 4`] = `
 <div>
   <span
     class="mashcard-formula-borderless"
-    style="color: rgb(53, 108, 249);"
+    style="color: rgb(64, 137, 216);"
   >
     BasicPage
   </span>
@@ -84,7 +84,7 @@ exports[`FormulaValue [Date] basic "=DATE("1926-08-17")" 1`] = `
 exports[`FormulaValue [Date] basic "=DATE("1926-08-17")" 2`] = `
 <div>
   <span
-    class="mc-c-hLAbsV mc-c-hLAbsV-hjvNAz-selected-false mc-c-kkMlKx"
+    class="mc-c-jBkqaR mc-c-jBkqaR-iuzjbz-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -164,7 +164,7 @@ exports[`FormulaValue [Divide by zero error] basic "=1/0" 1`] = `
 exports[`FormulaValue [Divide by zero error] basic "=1/0" 2`] = `
 <div>
   <span
-    class="mc-c-fjgWBd mc-c-fjgWBd-dRQWqj-selected-false mc-c-eszAuu"
+    class="mc-c-WqjaP mc-c-WqjaP-LXbKV-selected-false mc-c-eszAuu"
   >
     <span
       aria-label="formula"
@@ -224,7 +224,7 @@ exports[`FormulaValue [Empty] basic "=" 1`] = `
 exports[`FormulaValue [Empty] basic "=" 2`] = `
 <div>
   <span
-    class="mc-c-hbUPka mc-c-hbUPka-ljRRNs-selected-false mc-c-kkMlKx"
+    class="mc-c-kcdpKu mc-c-kcdpKu-jIYkxw-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -284,7 +284,7 @@ exports[`FormulaValue [Spreadsheet] basic "=BasicPage.spreadsheet" 1`] = `
 <div>
   <span
     class="mashcard-formula-borderless"
-    style="color: rgb(53, 108, 249);"
+    style="color: rgb(64, 137, 216);"
   >
     spreadsheet
   </span>
@@ -294,7 +294,7 @@ exports[`FormulaValue [Spreadsheet] basic "=BasicPage.spreadsheet" 1`] = `
 exports[`FormulaValue [Spreadsheet] basic "=BasicPage.spreadsheet" 2`] = `
 <div>
   <span
-    class="mc-c-egaYnV mc-c-egaYnV-hnkVPb-selected-false mc-c-kkMlKx"
+    class="mc-c-bllAhl mc-c-bllAhl-lfpQoP-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -339,7 +339,7 @@ exports[`FormulaValue [Spreadsheet] basic "=BasicPage.spreadsheet" 3`] = `
 <div>
   <span
     class="mashcard-formula-borderless"
-    style="color: rgb(53, 108, 249);"
+    style="color: rgb(64, 137, 216);"
   >
     spreadsheet
   </span>
@@ -350,7 +350,7 @@ exports[`FormulaValue [Spreadsheet] basic "=BasicPage.spreadsheet" 4`] = `
 <div>
   <span
     class="mashcard-formula-borderless"
-    style="color: rgb(53, 108, 249);"
+    style="color: rgb(64, 137, 216);"
   >
     spreadsheet
   </span>
@@ -371,7 +371,7 @@ exports[`FormulaValue [Variable] basic "=BasicPage.bar" 1`] = `
 exports[`FormulaValue [Variable] basic "=BasicPage.bar" 2`] = `
 <div>
   <span
-    class="mc-c-hLAbsV mc-c-hLAbsV-hjvNAz-selected-false mc-c-kkMlKx"
+    class="mc-c-jBkqaR mc-c-jBkqaR-iuzjbz-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -557,7 +557,7 @@ exports[`FormulaValue [cell] basic "=BasicPage.spreadsheet.first.1" 1`] = `
 <div>
   <span
     class="mashcard-formula-borderless"
-    style="color: rgb(109, 71, 185);"
+    style="color: rgb(135, 157, 224);"
   >
     1
   </span>
@@ -567,7 +567,7 @@ exports[`FormulaValue [cell] basic "=BasicPage.spreadsheet.first.1" 1`] = `
 exports[`FormulaValue [cell] basic "=BasicPage.spreadsheet.first.1" 2`] = `
 <div>
   <span
-    class="mc-c-jaffJo mc-c-jaffJo-lbdglW-selected-false mc-c-kkMlKx"
+    class="mc-c-jYCoxW mc-c-jYCoxW-iwKKbw-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -633,7 +633,7 @@ exports[`FormulaValue [column1] basic "=BasicPage.spreadsheet.first" 1`] = `
 <div>
   <span
     class="mashcard-formula-borderless"
-    style="color: rgb(53, 108, 249);"
+    style="color: rgb(64, 137, 216);"
   >
     spreadsheet.first
   </span>
@@ -643,7 +643,7 @@ exports[`FormulaValue [column1] basic "=BasicPage.spreadsheet.first" 1`] = `
 exports[`FormulaValue [column1] basic "=BasicPage.spreadsheet.first" 2`] = `
 <div>
   <span
-    class="mc-c-egaYnV mc-c-egaYnV-hnkVPb-selected-false mc-c-kkMlKx"
+    class="mc-c-bllAhl mc-c-bllAhl-lfpQoP-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -705,7 +705,7 @@ exports[`FormulaValue [column1] basic "=BasicPage.spreadsheet.first" 3`] = `
 <div>
   <span
     class="mashcard-formula-borderless"
-    style="color: rgb(53, 108, 249);"
+    style="color: rgb(64, 137, 216);"
   >
     spreadsheet.first
   </span>
@@ -716,7 +716,7 @@ exports[`FormulaValue [column1] basic "=BasicPage.spreadsheet.first" 4`] = `
 <div>
   <span
     class="mashcard-formula-borderless"
-    style="color: rgb(53, 108, 249);"
+    style="color: rgb(64, 137, 216);"
   >
     spreadsheet.first
   </span>
@@ -737,7 +737,7 @@ exports[`FormulaValue [column2] basic "=BasicPage.spreadsheet.A" 1`] = `
 exports[`FormulaValue [column2] basic "=BasicPage.spreadsheet.A" 2`] = `
 <div>
   <span
-    class="mc-c-hbUPka mc-c-hbUPka-ljRRNs-selected-false mc-c-kkMlKx"
+    class="mc-c-kcdpKu mc-c-kcdpKu-jIYkxw-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -913,7 +913,7 @@ exports[`FormulaValue [parse error 1] basic "=1 ++ 1" 1`] = `
 exports[`FormulaValue [parse error 1] basic "=1 ++ 1" 2`] = `
 <div>
   <span
-    class="mc-c-fjgWBd mc-c-fjgWBd-dRQWqj-selected-false mc-c-eszAuu"
+    class="mc-c-WqjaP mc-c-WqjaP-LXbKV-selected-false mc-c-eszAuu"
   >
     <span
       aria-label="formula"
@@ -973,7 +973,7 @@ exports[`FormulaValue [partial error 1] basic "=1 +" 1`] = `
 exports[`FormulaValue [partial error 1] basic "=1 +" 2`] = `
 <div>
   <span
-    class="mc-c-fjgWBd mc-c-fjgWBd-dRQWqj-selected-false mc-c-eszAuu"
+    class="mc-c-WqjaP mc-c-WqjaP-LXbKV-selected-false mc-c-eszAuu"
   >
     <span
       aria-label="formula"
@@ -1033,7 +1033,7 @@ exports[`FormulaValue [partial error 2] basic "=custom::ADD(1)" 1`] = `
 exports[`FormulaValue [partial error 2] basic "=custom::ADD(1)" 2`] = `
 <div>
   <span
-    class="mc-c-fjgWBd mc-c-fjgWBd-dRQWqj-selected-false mc-c-eszAuu"
+    class="mc-c-WqjaP mc-c-WqjaP-LXbKV-selected-false mc-c-eszAuu"
   >
     <span
       aria-label="formula"
@@ -1093,7 +1093,7 @@ exports[`FormulaValue [row] basic "=BasicPage.spreadsheet.1" 1`] = `
 exports[`FormulaValue [row] basic "=BasicPage.spreadsheet.1" 2`] = `
 <div>
   <span
-    class="mc-c-hLAbsV mc-c-hLAbsV-hjvNAz-selected-false mc-c-kkMlKx"
+    class="mc-c-jBkqaR mc-c-jBkqaR-iuzjbz-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -1181,7 +1181,7 @@ exports[`FormulaValue basic "=   1 + 1 + 1   " 1`] = `
 exports[`FormulaValue basic "=   1 + 1 + 1   " 2`] = `
 <div>
   <span
-    class="mc-c-hLAbsV mc-c-hLAbsV-hjvNAz-selected-false mc-c-kkMlKx"
+    class="mc-c-jBkqaR mc-c-jBkqaR-iuzjbz-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -1257,7 +1257,7 @@ exports[`FormulaValue basic "="string" & "fasd"" 1`] = `
 exports[`FormulaValue basic "="string" & "fasd"" 2`] = `
 <div>
   <span
-    class="mc-c-iirzmp mc-c-iirzmp-zQVcS-selected-false mc-c-kkMlKx"
+    class="mc-c-bMJpKY mc-c-bMJpKY-cGrSuP-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -1339,7 +1339,7 @@ exports[`FormulaValue basic "=[]" 1`] = `
 exports[`FormulaValue basic "=[]" 2`] = `
 <div>
   <span
-    class="mc-c-fiGCnR mc-c-fiGCnR-jZtCwb-selected-false mc-c-kkMlKx"
+    class="mc-c-hxKKul mc-c-hxKKul-PqrNX-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -1409,7 +1409,7 @@ exports[`FormulaValue basic "=[1,"1",false]" 1`] = `
 exports[`FormulaValue basic "=[1,"1",false]" 2`] = `
 <div>
   <span
-    class="mc-c-fiGCnR mc-c-fiGCnR-jZtCwb-selected-false mc-c-kkMlKx"
+    class="mc-c-hxKKul mc-c-hxKKul-PqrNX-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -1479,7 +1479,7 @@ exports[`FormulaValue basic "={}" 1`] = `
 exports[`FormulaValue basic "={}" 2`] = `
 <div>
   <span
-    class="mc-c-fiGCnR mc-c-fiGCnR-jZtCwb-selected-false mc-c-kkMlKx"
+    class="mc-c-hxKKul mc-c-hxKKul-PqrNX-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -1547,7 +1547,7 @@ exports[`FormulaValue basic "={a: 1,b: false, c: "string", d: [1]}" 1`] = `
 exports[`FormulaValue basic "={a: 1,b: false, c: "string", d: [1]}" 2`] = `
 <div>
   <span
-    class="mc-c-fiGCnR mc-c-fiGCnR-jZtCwb-selected-false mc-c-kkMlKx"
+    class="mc-c-hxKKul mc-c-hxKKul-PqrNX-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -1605,7 +1605,7 @@ exports[`FormulaValue basic "=null" 1`] = `
 <div>
   <span
     class="mashcard-formula-borderless"
-    style="color: rgb(109, 71, 185);"
+    style="color: rgb(135, 157, 224);"
   >
     null
   </span>
@@ -1615,7 +1615,7 @@ exports[`FormulaValue basic "=null" 1`] = `
 exports[`FormulaValue basic "=null" 2`] = `
 <div>
   <span
-    class="mc-c-jaffJo mc-c-jaffJo-lbdglW-selected-false mc-c-kkMlKx"
+    class="mc-c-jYCoxW mc-c-jYCoxW-iwKKbw-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"
@@ -1653,7 +1653,7 @@ exports[`FormulaValue basic "=null" 3`] = `
 <div>
   <span
     class="mashcard-formula-borderless"
-    style="color: rgb(109, 71, 185);"
+    style="color: rgb(135, 157, 224);"
   >
     null
   </span>
@@ -1664,7 +1664,7 @@ exports[`FormulaValue basic "=null" 4`] = `
 <div>
   <span
     class="mashcard-formula-borderless"
-    style="color: rgb(109, 71, 185);"
+    style="color: rgb(135, 157, 224);"
   >
     null
   </span>
@@ -1685,7 +1685,7 @@ exports[`FormulaValue basic "=true && false" 1`] = `
 exports[`FormulaValue basic "=true && false" 2`] = `
 <div>
   <span
-    class="mc-c-fjgWBd mc-c-fjgWBd-dRQWqj-selected-false mc-c-kkMlKx"
+    class="mc-c-WqjaP mc-c-WqjaP-LXbKV-selected-false mc-c-kkMlKx"
   >
     <span
       class="mashcard-formula-normal-icon"

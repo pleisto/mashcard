@@ -4,7 +4,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
 <div>
   <div>
     <div
-      class="mc-c-hSNWmD mc-c-hSNWmD-gHONcO-enableSelection-false"
+      class="mc-c-MmqUL mc-c-MmqUL-gHONcO-enableSelection-false"
     >
       <div
         class="ProseMirror"
@@ -68,7 +68,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                       <path
                         clip-rule="evenodd"
                         d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
-                        fill="#73707e"
+                        fill="#84818e"
                         fill-rule="evenodd"
                       />
                     </svg>
@@ -135,7 +135,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                       <path
                         clip-rule="evenodd"
                         d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
-                        fill="#73707e"
+                        fill="#84818e"
                         fill-rule="evenodd"
                       />
                     </svg>
@@ -202,7 +202,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                       <path
                         clip-rule="evenodd"
                         d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
-                        fill="#73707e"
+                        fill="#84818e"
                         fill-rule="evenodd"
                       />
                     </svg>
@@ -269,7 +269,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                       <path
                         clip-rule="evenodd"
                         d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
-                        fill="#73707e"
+                        fill="#84818e"
                         fill-rule="evenodd"
                       />
                     </svg>
@@ -336,7 +336,7 @@ exports[`documentEditor renders document editor correctly 1`] = `
                       <path
                         clip-rule="evenodd"
                         d="M7.833 8.5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Zm0 5c-.46 0-.833.448-.833 1s.373 1 .833 1h8.334c.46 0 .833-.448.833-1s-.373-1-.833-1H7.833Z"
-                        fill="#73707e"
+                        fill="#84818e"
                         fill-rule="evenodd"
                       />
                     </svg>

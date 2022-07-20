@@ -17,7 +17,7 @@ exports[`formulaType [Block] basic "=BasicPage" 1`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -52,7 +52,7 @@ exports[`formulaType [Block] basic "=BasicPage" 2`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -79,7 +79,7 @@ exports[`formulaType [Date] basic "=DATE("1926-08-17")" 1`] = `
           data-display="DATE"
           data-index="1"
           data-type="any"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           DATE
         </mark>
@@ -142,7 +142,7 @@ exports[`formulaType [Date] basic "=DATE("1926-08-17")" 2`] = `
           data-display="DATE"
           data-index="1"
           data-type="any"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           DATE
         </mark>
@@ -338,7 +338,7 @@ exports[`formulaType [Spreadsheet] basic "=BasicPage.spreadsheet" 1`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -358,7 +358,7 @@ exports[`formulaType [Spreadsheet] basic "=BasicPage.spreadsheet" 1`] = `
           data-display="spreadsheet"
           data-index="3"
           data-type="Spreadsheet"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           spreadsheet
         </mark>
@@ -393,7 +393,7 @@ exports[`formulaType [Spreadsheet] basic "=BasicPage.spreadsheet" 2`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -413,7 +413,7 @@ exports[`formulaType [Spreadsheet] basic "=BasicPage.spreadsheet" 2`] = `
           data-display="spreadsheet"
           data-index="3"
           data-type="Spreadsheet"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           spreadsheet
         </mark>
@@ -440,7 +440,7 @@ exports[`formulaType [Variable] basic "=BasicPage.bar" 1`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -495,7 +495,7 @@ exports[`formulaType [Variable] basic "=BasicPage.bar" 2`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -542,7 +542,7 @@ exports[`formulaType [async 1] basic "=SLEEP(123)" 1`] = `
           data-display="SLEEP"
           data-index="1"
           data-type="any"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           SLEEP
         </mark>
@@ -605,7 +605,7 @@ exports[`formulaType [async 1] basic "=SLEEP(123)" 2`] = `
           data-display="SLEEP"
           data-index="1"
           data-type="any"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           SLEEP
         </mark>
@@ -660,7 +660,7 @@ exports[`formulaType [async 2] basic "=BasicPage.lazy" 1`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -715,7 +715,7 @@ exports[`formulaType [async 2] basic "=BasicPage.lazy" 2`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -762,7 +762,7 @@ exports[`formulaType [cell] basic "=BasicPage.spreadsheet.first.1" 1`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -782,7 +782,7 @@ exports[`formulaType [cell] basic "=BasicPage.spreadsheet.first.1" 1`] = `
           data-display="spreadsheet"
           data-index="3"
           data-type="Spreadsheet"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           spreadsheet
         </mark>
@@ -802,7 +802,7 @@ exports[`formulaType [cell] basic "=BasicPage.spreadsheet.first.1" 1`] = `
           data-display="first"
           data-index="5"
           data-type="Column"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           first
         </mark>
@@ -856,7 +856,7 @@ exports[`formulaType [cell] basic "=BasicPage.spreadsheet.first.1" 2`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -876,7 +876,7 @@ exports[`formulaType [cell] basic "=BasicPage.spreadsheet.first.1" 2`] = `
           data-display="spreadsheet"
           data-index="3"
           data-type="Spreadsheet"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           spreadsheet
         </mark>
@@ -896,7 +896,7 @@ exports[`formulaType [cell] basic "=BasicPage.spreadsheet.first.1" 2`] = `
           data-display="first"
           data-index="5"
           data-type="Column"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           first
         </mark>
@@ -947,7 +947,7 @@ exports[`formulaType [column1] basic "=BasicPage.spreadsheet.first" 1`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -967,7 +967,7 @@ exports[`formulaType [column1] basic "=BasicPage.spreadsheet.first" 1`] = `
           data-display="spreadsheet"
           data-index="3"
           data-type="Spreadsheet"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           spreadsheet
         </mark>
@@ -987,7 +987,7 @@ exports[`formulaType [column1] basic "=BasicPage.spreadsheet.first" 1`] = `
           data-display="first"
           data-index="5"
           data-type="Column"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           first
         </mark>
@@ -1022,7 +1022,7 @@ exports[`formulaType [column1] basic "=BasicPage.spreadsheet.first" 2`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -1042,7 +1042,7 @@ exports[`formulaType [column1] basic "=BasicPage.spreadsheet.first" 2`] = `
           data-display="spreadsheet"
           data-index="3"
           data-type="Spreadsheet"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           spreadsheet
         </mark>
@@ -1062,7 +1062,7 @@ exports[`formulaType [column1] basic "=BasicPage.spreadsheet.first" 2`] = `
           data-display="first"
           data-index="5"
           data-type="Column"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           first
         </mark>
@@ -1089,7 +1089,7 @@ exports[`formulaType [column2] basic "=BasicPage.spreadsheet.A" 1`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -1109,7 +1109,7 @@ exports[`formulaType [column2] basic "=BasicPage.spreadsheet.A" 1`] = `
           data-display="spreadsheet"
           data-index="3"
           data-type="Spreadsheet"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           spreadsheet
         </mark>
@@ -1164,7 +1164,7 @@ exports[`formulaType [column2] basic "=BasicPage.spreadsheet.A" 2`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -1184,7 +1184,7 @@ exports[`formulaType [column2] basic "=BasicPage.spreadsheet.A" 2`] = `
           data-display="spreadsheet"
           data-index="3"
           data-type="Spreadsheet"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           spreadsheet
         </mark>
@@ -1568,7 +1568,7 @@ exports[`formulaType [partial error 2] basic "=custom::ADD(1)" 1`] = `
           data-errors="[\\"errors.parse.not_found.function\\",{\\"key\\":\\"custom::ADD\\"}]"
           data-index="2"
           data-type="any"
-          style="color: #356cf9;; 
+          style="color: #4089d8;; 
   text-decoration: underline;
   text-decoration-style: wavy;
   text-decoration-color: #cf1f28;
@@ -1650,7 +1650,7 @@ exports[`formulaType [partial error 2] basic "=custom::ADD(1)" 2`] = `
           data-errors="[\\"errors.parse.not_found.function\\",{\\"key\\":\\"custom::ADD\\"}]"
           data-index="2"
           data-type="any"
-          style="color: #356cf9;; 
+          style="color: #4089d8;; 
   text-decoration: underline;
   text-decoration-style: wavy;
   text-decoration-color: #cf1f28;
@@ -1709,7 +1709,7 @@ exports[`formulaType [row] basic "=BasicPage.spreadsheet.1" 1`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -1729,7 +1729,7 @@ exports[`formulaType [row] basic "=BasicPage.spreadsheet.1" 1`] = `
           data-display="spreadsheet"
           data-index="3"
           data-type="Spreadsheet"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           spreadsheet
         </mark>
@@ -1784,7 +1784,7 @@ exports[`formulaType [row] basic "=BasicPage.spreadsheet.1" 2`] = `
           data-display="BasicPage"
           data-index="1"
           data-type="Block"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           BasicPage
         </mark>
@@ -1804,7 +1804,7 @@ exports[`formulaType [row] basic "=BasicPage.spreadsheet.1" 2`] = `
           data-display="spreadsheet"
           data-index="3"
           data-type="Spreadsheet"
-          style="color: #356cf9;"
+          style="color: #4089d8;"
         >
           spreadsheet
         </mark>
@@ -3058,7 +3058,7 @@ exports[`formulaType basic "=null" 1`] = `
           data-display="null"
           data-index="1"
           data-type="null"
-          style="color: #6d47b9;"
+          style="color: #879de0;"
         >
           null
         </mark>
@@ -3092,7 +3092,7 @@ exports[`formulaType basic "=null" 2`] = `
           data-display="null"
           data-index="1"
           data-type="null"
-          style="color: #6d47b9;"
+          style="color: #879de0;"
         >
           null
         </mark>

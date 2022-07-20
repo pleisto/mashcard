@@ -2,7 +2,7 @@
 
 exports[`tag matches snapshot correctly 1`] = `
 <div
-  class="mc-c-eOocXO mc-c-eOocXO-bFdWuZ-size-md mc-c-eOocXO-jroqRg-color-primary"
+  class="mc-c-eijiWX mc-c-eijiWX-bFdWuZ-size-md mc-c-eijiWX-jroqRg-color-primary"
 >
   test
 </div>
@@ -10,7 +10,7 @@ exports[`tag matches snapshot correctly 1`] = `
 
 exports[`tagGroup matches snapshot correctly 1`] = `
 <div
-  class="mc-c-eOocXO mc-c-eOocXO-gsTuFi-size-lg mc-c-eOocXO-jroqRg-color-primary"
+  class="mc-c-eijiWX mc-c-eijiWX-gsTuFi-size-lg mc-c-eijiWX-jroqRg-color-primary"
 >
   Abc
 </div>

@@ -7,14 +7,14 @@ exports[`CalloutView renders CalloutView with emoji icon correctly 1`] = `
     style="white-space: normal; pointer-events: unset;"
   >
     <div
-      class="mc-c-PhqtK"
+      class="mc-c-gUWvsV"
     >
       <div
         class="mc-c-PdSsz"
       >
         <button
           aria-haspopup="dialog"
-          class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-TfyyP-btnType-secondary mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-hKMQnl-type-text"
+          class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-kQqyOW-btnType-secondary mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-hKMQnl-type-text"
           role="button"
           type="button"
         >

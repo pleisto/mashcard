@@ -16,10 +16,10 @@ exports[`MentionMenuUserGroup matches correct snapshot 1`] = `
     >
       <span
         aria-label="mention.people.head"
-        class="mc-c-iSZMdl"
+        class="mc-c-cEWwGU"
       >
         <span
-          class="mc-c-fbvDaU"
+          class="mc-c-enkbug"
         >
           mention.people.head
         </span>
@@ -28,14 +28,14 @@ exports[`MentionMenuUserGroup matches correct snapshot 1`] = `
         class="mc-c-llTUqV"
       >
         <li
-          class="mc-c-jCYxqH mc-c-klLbby"
+          class="mc-c-dadCix mc-c-klLbby"
           id="user-group-1"
           role="menuitem"
           tabindex="0"
           title=""
         >
           <span
-            class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-kRzPmM-size-md mc-c-gYWVfz-idEWtdF-css"
+            class="mc-c-kEyFKe mc-c-kEyFKe-hECRKn-shape-circle mc-c-kEyFKe-kRzPmM-size-md mc-c-kEyFKe-idEWtdF-css"
           >
             <img
               src="avatar 0"
@@ -48,14 +48,14 @@ exports[`MentionMenuUserGroup matches correct snapshot 1`] = `
           </span>
         </li>
         <li
-          class="mc-c-jCYxqH mc-c-klLbby"
+          class="mc-c-dadCix mc-c-klLbby"
           id="user-group-2"
           role="menuitem"
           tabindex="-1"
           title=""
         >
           <span
-            class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-kRzPmM-size-md mc-c-gYWVfz-ijZQJgr-css"
+            class="mc-c-kEyFKe mc-c-kEyFKe-hECRKn-shape-circle mc-c-kEyFKe-kRzPmM-size-md mc-c-kEyFKe-ijZQJgr-css"
           >
             <img
               src="avatar 1"
@@ -68,14 +68,14 @@ exports[`MentionMenuUserGroup matches correct snapshot 1`] = `
           </span>
         </li>
         <li
-          class="mc-c-jCYxqH mc-c-klLbby"
+          class="mc-c-dadCix mc-c-klLbby"
           id="user-group-3"
           role="menuitem"
           tabindex="-1"
           title=""
         >
           <span
-            class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-kRzPmM-size-md mc-c-gYWVfz-ieqGPpq-css"
+            class="mc-c-kEyFKe mc-c-kEyFKe-hECRKn-shape-circle mc-c-kEyFKe-kRzPmM-size-md mc-c-kEyFKe-ieqGPpq-css"
           >
             <img
               src="avatar 2"
