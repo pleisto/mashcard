@@ -47,6 +47,8 @@ module Mashcard
           @is_extended_edition
         end
 
+        attr_reader :id
+
         # Define a hook for the server plugin and inject it to the DI container.
         # @param [Symbol] hook_name {Mashcard::Plugins::ServerPlugin::Hooks.methods}
         # @param [lambda] &block

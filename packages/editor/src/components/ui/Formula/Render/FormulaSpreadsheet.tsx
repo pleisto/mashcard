@@ -38,7 +38,7 @@ export const FormulaSpreadsheet: React.FC<FormulaSpreadsheetProps> = ({
 
   return (
     <SpreadsheetRender
-      title={spreadsheet.name()}
+      spreadsheet={spreadsheet}
       valuesMatrix={valuesMatrix}
       rows={rows}
       columns={columns}

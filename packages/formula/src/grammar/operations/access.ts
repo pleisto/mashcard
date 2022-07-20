@@ -27,7 +27,10 @@ export const accessAttribute = async (
     if (value) {
       return value
     } else {
-      return { type: 'Error', result: { message: ['errors.interpret.not_found.key', { key }], type: 'runtime' } }
+      return {
+        type: 'Error',
+        result: { message: ['errors.interpret.not_found.key', { key }], type: 'runtime' }
+      }
     }
   }
 

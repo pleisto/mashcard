@@ -3104,12 +3104,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@mashcard/dotcom@workspace:plugins/dotcom":
-  version: 0.0.0-use.local
-  resolution: "@mashcard/dotcom@workspace:plugins/dotcom"
-  languageName: unknown
-  linkType: soft
-
 "@mashcard/e2e-testing@workspace:tools/e2e-testing":
   version: 0.0.0-use.local
   resolution: "@mashcard/e2e-testing@workspace:tools/e2e-testing"
@@ -3565,6 +3559,12 @@ __metadata:
   checksum: 7004308fde2c3ff1062b50115f9db9eb74d3e0c6cdee42d723a3a4ccbf811c3cf2be934c75d706c464c17a8839ae9237c2abbf90ec46bd3ddec8d34c24dc9c4b
   languageName: node
   linkType: hard
+
+"@pleisto/cloud@workspace:plugins/cloud":
+  version: 0.0.0-use.local
+  resolution: "@pleisto/cloud@workspace:plugins/cloud"
+  languageName: unknown
+  linkType: soft
 
 "@pleisto/eslint-plugin@npm:^1.0.5":
   version: 1.0.5

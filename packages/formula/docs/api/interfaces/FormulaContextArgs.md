@@ -5,10 +5,11 @@
 ### Properties
 
 - [backendActions](FormulaContextArgs.md#backendactions)
-- [domain](FormulaContextArgs.md#domain)
 - [features](FormulaContextArgs.md#features)
 - [functionClauses](FormulaContextArgs.md#functionclauses)
+- [i18n](FormulaContextArgs.md#i18n)
 - [tickTimeout](FormulaContextArgs.md#ticktimeout)
+- [username](FormulaContextArgs.md#username)
 
 ## Properties
 
@@ -18,17 +19,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:69](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L69)
-
----
-
-### <a id="domain" name="domain"></a> domain
-
-• **domain**: `string`
-
-#### Defined in
-
-[packages/formula/src/context/context.ts:66](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L66)
+[packages/formula/src/context/context.ts:72](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L72)
 
 ---
 
@@ -38,7 +29,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:70](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L70)
+[packages/formula/src/context/context.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L73)
 
 ---
 
@@ -48,7 +39,17 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:68](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L68)
+[packages/formula/src/context/context.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L71)
+
+---
+
+### <a id="i18n" name="i18n"></a> i18n
+
+• `Optional` **i18n**: [`I18N`](../README.md#i18n)
+
+#### Defined in
+
+[packages/formula/src/context/context.ts:69](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L69)
 
 ---
 
@@ -58,4 +59,14 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:67](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L67)
+[packages/formula/src/context/context.ts:70](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L70)
+
+---
+
+### <a id="username" name="username"></a> username
+
+• **username**: `string`
+
+#### Defined in
+
+[packages/formula/src/context/context.ts:68](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L68)

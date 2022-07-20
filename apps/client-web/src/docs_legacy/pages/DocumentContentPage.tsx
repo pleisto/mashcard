@@ -18,9 +18,12 @@ import { useFormulaActions } from './hooks/useFormulaActions'
 import { AppError404 } from '@/routes/_shared/AppError'
 import { type DocMeta, DocMetaProvider } from '../store/DocMeta'
 import { MashcardEventBus, BlockMetaUpdated, ReloadDocument } from '@mashcard/schema'
+import { formulaI18n } from '@mashcard/editor/src/helpers'
+import { useFormulaI18n } from '@mashcard/editor/src/hooks/useFormulaI18n'
 
 export const DocumentContentPage: FC = () => {
   const { t } = useDocsI18n()
+  const { t: formulaT } = useFormulaI18n()
   const { domain, docId, historyId } = useParams() as unknown as {
     domain: string
     docId?: string
@@ -141,8 +144,9 @@ export const DocumentContentPage: FC = () => {
 
   useEffect(() => {
     const functionClauses = generateFormulaFunctionClauses()
-    const formulaContext = FormulaContext.getInstance({
-      domain,
+    const formulaContext = FormulaContext.getFormulaInstance({
+      username: domain,
+      i18n: formulaI18n(formulaT),
       backendActions: { commit: commitFormula },
       functionClauses,
       features: featureFlags

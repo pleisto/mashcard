@@ -1,6 +1,6 @@
 {
   "$schema": "../../apps/client-web/src/public/json-schema/plugin.draft-2205.json",
-  "name": "@mashcard/dotcom",
+  "name": "@pleisto/cloud",
   "private": true,
   "version": "0.1.0",
   "sideEffects": false,

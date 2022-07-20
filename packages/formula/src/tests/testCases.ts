@@ -120,7 +120,7 @@ const reduceTestCaseInput = (testCases: TestCaseInterface[]): TestCaseInput => {
       ]
     }),
     {
-      options: { pages: [{ pageName: 'Default' }], initializeOptions: { domain: 'test' } },
+      options: { pages: [{ pageName: 'Default' }], initializeOptions: { username: 'test' } },
       successTestCases: [],
       completeTestCases: [],
       formatTestCases: [],

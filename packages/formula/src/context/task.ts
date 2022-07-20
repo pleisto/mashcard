@@ -48,7 +48,7 @@ export const createVariableTask = ({
   void variableValue.then(async value => {
     const newTask: VariableTask = { ...task, variableValue: value, execEndTime: new Date(), async: false }
     const result = MashcardEventBus.dispatch(
-      FormulaTaskCompleted({ task: newTask, namespaceId, variableId, username: formulaContext.domain })
+      FormulaTaskCompleted({ task: newTask, namespaceId, variableId, username: formulaContext.username })
     )
     await Promise.all(result)
   })

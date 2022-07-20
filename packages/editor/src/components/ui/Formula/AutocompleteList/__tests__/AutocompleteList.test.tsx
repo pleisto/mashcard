@@ -208,7 +208,7 @@ describe('AutocompleteList', () => {
     })
 
     it('renders variable kind correctly', async () => {
-      const formulaContext = FormulaContext.getInstance({ domain: 'test' })
+      const formulaContext = FormulaContext.getFormulaInstance({ username: 'test' })
       const interpretContext = { ctx: {}, arguments: [] }
 
       const namespaceId = '37198be0-d10d-42dc-ae8b-20d45a95401b'

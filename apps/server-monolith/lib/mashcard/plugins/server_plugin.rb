@@ -29,15 +29,13 @@ module Mashcard
           parse.loader.plugin_dir = path
           parse.loader.push_dir('lib')
           parse.loader.setup
+          parse.loader.eager_load
 
           # Execute the entrypoint in DSL parser
           parse.instance_eval(entrypoint)
 
           # Load as extended edition if it is declared
           load_extended_edition!(parse, path) if parse.extended_edition?
-
-          # Ensure that eager load is called last
-          parse.loader.eager_load
         end
 
         # Register a hook as dependency injection container.
@@ -72,6 +70,16 @@ module Mashcard
           find_hook(hook_name).keys
         end
 
+        # prepend a conerce module from the extended edition
+        def prepend_from_extended_edition!(klass)
+          ee = 'ExtendedEdition'.safe_constantize
+          return unless ee
+
+          name = klass.name
+          const = ee.const_defined?(name, false) && ee.const_get(name, false)
+          klass.prepend(const) if const
+        end
+
         private
 
         # Validate the entrypoint file of the plugin exists and load it.
@@ -103,13 +111,14 @@ module Mashcard
 
           # add app/* path to auto load path
           [
-            'app/models',
-            'app/controllers',
-            'apps/helpers',
-            'app/policies',
-            'app/graphql',
+            'models',
+            'controllers',
+            'helpers',
+            'policies',
+            'graphql',
           ].each do |dir|
-            parse.loader.push_dir(dir)
+            full_path = "#{parse.loader.plugin_dir}/app/#{dir}"
+            Rails.autoloaders.main.push_dir(full_path) if File.directory?(full_path)
           end
         end
       end

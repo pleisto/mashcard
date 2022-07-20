@@ -14,7 +14,7 @@
             - name: {{ $key }}
               value: {{ $value | quote }}
             {{- end }}
-            - name: MASHCARD_DOTCOM_LICENSE
+            - name: MASHCARD_CLOUD_LICENSE
               value: {{ .Values.license | quote }}
             {{- if .Values.previewEnv }}
             - name: PREVIEW_ENV

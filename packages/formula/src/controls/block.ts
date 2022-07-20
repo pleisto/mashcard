@@ -41,7 +41,7 @@ export class BlockClass implements BlockType {
         this._name = e.payload.meta
         await this._formulaContext.setName(this.nameDependency())
       },
-      { subscribeId: `Block#${this.id}`, eventId: `${this._formulaContext.domain}#${this.id}` }
+      { subscribeId: `Block#${this.id}`, eventId: `${this._formulaContext.username}#${this.id}` }
     )
 
     const blockDeleteSubcription = MashcardEventBus.subscribe(
@@ -49,7 +49,7 @@ export class BlockClass implements BlockType {
       async e => {
         await this._formulaContext.removeBlock(this.id)
       },
-      { subscribeId: `Block#${this.id}`, eventId: `${this._formulaContext.domain}#${this.id}` }
+      { subscribeId: `Block#${this.id}`, eventId: `${this._formulaContext.username}#${this.id}` }
     )
 
     this.eventListeners.push(blockNameSubscription, blockDeleteSubcription)
@@ -86,7 +86,7 @@ export class BlockClass implements BlockType {
         id: this.id,
         namespaceId: this.id,
         key: this.id,
-        username: this._formulaContext.domain,
+        username: this._formulaContext.username,
         scope: null,
         meta: this._name
       })

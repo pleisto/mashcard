@@ -190,6 +190,7 @@ export interface SpreadsheetAllPersistence {
 }
 
 export interface SpreadsheetType {
+  _formulaContext: ContextInterface
   spreadsheetId: SpreadsheetId
   namespaceId: NamespaceId
   namespaceName: (pageId: NamespaceId) => string
