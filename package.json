@@ -34,7 +34,6 @@
   },
   "scripts": {
     "postinstall": "(dev-support is-ci || husky install) && dev-support pdftron-post-setup",
-    "analyze": "BUNDLE_STATS=1 yarn dist && open ./tmp/esm-bundle-stats.html",
     "rust:build": "SYSINFO=$(uname -a) turbo run rust:build",
     "rust:build:dev": "turbo run rust:build:dev",
     "lint": "turbo run lint:eslint lint:rubocop lint:type",

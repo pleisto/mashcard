@@ -74,6 +74,7 @@ jobs:
           cluster_name: 'kube-us-central'
           location: 'us-central1'
       - name: 'Deploy to GKE'
+        # `sass-master-key` has a typo in the name (sass -> saas), but that's what in the GCP now and cannot be easily renamed on GCP
         run: |-
           helm upgrade mashcard-saas-prod ${{ github.workspace }}/tools/helm-charts/mashcard \
            --install --atomic --timeout 5m --cleanup-on-fail --wait --namespace=saas \
