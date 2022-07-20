@@ -1,6 +1,6 @@
 import { findParagraphWrapper, findWrapper } from '../findWrapper'
 
-jest.mock('@tiptap/react', () => ({
+jest.mock('@tiptap/core', () => ({
   findParentNodeClosestToPos: (_pos: any, cb: Function) => {
     const node = { type: { name: 'unknown' } }
     return cb(node)

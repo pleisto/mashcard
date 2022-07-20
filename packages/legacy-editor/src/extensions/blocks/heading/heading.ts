@@ -1,5 +1,5 @@
 import { Heading as TiptapHeading } from '@tiptap/extension-heading'
-import { ReactNodeViewRenderer } from '@tiptap/react'
+import { ReactNodeViewRenderer } from '../../../tiptapRefactor'
 import { HeadingView } from '../../../components/blockViews'
 import { meta } from './meta'
 

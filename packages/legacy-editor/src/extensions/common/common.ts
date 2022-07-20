@@ -7,9 +7,10 @@ import {
   ExtensionConfig as TipTapExtensionConfig,
   Attribute as TiptapAttribute,
   Node,
+  Editor,
+  NodeViewProps,
   Extension
 } from '@tiptap/core'
-import { Editor, NodeViewProps } from '@tiptap/react'
 import { Node as ProseMirrorNode } from 'prosemirror-model'
 
 type GenericConfig = TipTapMarkConfig | TipTapNodeConfig | TipTapExtensionConfig

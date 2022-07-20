@@ -1,5 +1,5 @@
 import { mergeAttributes, Content } from '@tiptap/core'
-import { ReactNodeViewRenderer } from '@tiptap/react'
+import { ReactNodeViewRenderer } from '../../../tiptapRefactor'
 import { Plugin, PluginKey } from 'prosemirror-state'
 import { BlockJustCreated, MashcardEventBus, EmbedType } from '@mashcard/schema'
 import { EmbedView } from '../../../components/blockViews'

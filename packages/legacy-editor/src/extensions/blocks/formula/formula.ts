@@ -1,5 +1,5 @@
 import { mergeAttributes } from '@tiptap/core'
-import { ReactNodeViewRenderer } from '@tiptap/react'
+import { ReactNodeViewRenderer } from '../../../tiptapRefactor'
 import { createBlock, createJSONAttributeHtmlParser, createJSONAttributeHtmlRender } from '../../common'
 import { FormulaBlock } from '../../../components/blockViews'
 import { FormulaAttributes, FormulaOptions, meta } from './meta'

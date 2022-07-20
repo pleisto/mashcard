@@ -1,5 +1,5 @@
 import { Paragraph as TiptapParagraph } from '@tiptap/extension-paragraph'
-import { ReactNodeViewRenderer } from '@tiptap/react'
+import { ReactNodeViewRenderer } from '../../../tiptapRefactor'
 import { ParagraphView } from '../../../components/blockViews'
 import { meta } from './meta'
 

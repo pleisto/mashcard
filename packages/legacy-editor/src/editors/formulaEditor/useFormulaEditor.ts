@@ -1,5 +1,6 @@
 import React from 'react'
-import { useEditor, JSONContent, EditorEvents, Editor } from '@tiptap/react'
+import { JSONContent, EditorEvents, Editor } from '@tiptap/core'
+import { useEditor } from '../../tiptapRefactor'
 import { Placeholder } from '@tiptap/extension-placeholder'
 import {
   MashcardEventBus,

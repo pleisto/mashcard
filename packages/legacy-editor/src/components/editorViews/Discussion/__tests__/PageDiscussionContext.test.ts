@@ -4,8 +4,7 @@ import { CommentedNode } from '../useCommentedNodes'
 import * as editorHooks from '../../../../hooks/useEditorContext'
 import { mockEditor } from '../../../../test'
 import { CommentData, ConversationData, Discussion } from '../../../../extensions'
-import { JSONContent } from '@tiptap/core'
-import { Editor } from '@tiptap/react'
+import { JSONContent, Editor } from '@tiptap/core'
 
 jest.mock('../../../../hooks/useEditorContext', () => {
   const { useEditorContext } = jest.requireActual('../../../../hooks/useEditorContext')

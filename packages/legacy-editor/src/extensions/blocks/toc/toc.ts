@@ -1,5 +1,5 @@
 import { mergeAttributes } from '@tiptap/core'
-import { ReactNodeViewRenderer } from '@tiptap/react'
+import { ReactNodeViewRenderer } from '../../../tiptapRefactor'
 import { TocView } from '../../../components/blockViews/TocView'
 import { createBlock } from '../../common'
 import { meta, TocOptions, TocAttributes } from './meta'

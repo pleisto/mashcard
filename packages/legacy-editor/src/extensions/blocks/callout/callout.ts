@@ -1,5 +1,5 @@
 import { mergeAttributes } from '@tiptap/core'
-import { ReactNodeViewRenderer } from '@tiptap/react'
+import { ReactNodeViewRenderer } from '../../../tiptapRefactor'
 import { CalloutView } from '../../../components/blockViews/CalloutView'
 import { createBlock, createJSONAttributeHtmlParser, createJSONAttributeHtmlRender } from '../../common'
 import { CalloutAttributes, CalloutOptions, meta } from './meta'

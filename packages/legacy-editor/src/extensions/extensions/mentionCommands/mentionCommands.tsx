@@ -1,5 +1,6 @@
 // ref: https://github.com/ueberdosis/tiptap/blob/main/packages/suggestion/src/suggestion.ts
-import { ReactRenderer, Editor as ReactEditor } from '@tiptap/react'
+import { Editor } from '@tiptap/core'
+import { ReactRenderer } from '../../../tiptapRefactor'
 import { PluginKey } from 'prosemirror-state'
 import Suggestion from '@tiptap/suggestion'
 import { createPopup, PopupInstance } from '../../../helpers/popup'
@@ -49,7 +50,7 @@ export const MentionCommands = createExtension<MentionCommandsOptions, MentionCo
                   items: filterMenuItemsByQuery(this.options)({ query: '' }),
                   size: this.options.size
                 },
-                editor: props.editor as ReactEditor
+                editor: props.editor as Editor
               })
 
               popup = createPopup(() => props.clientRect!()!, reactRenderer.element as HTMLElement, 'bottom-start')

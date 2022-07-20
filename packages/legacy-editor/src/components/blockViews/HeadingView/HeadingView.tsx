@@ -1,5 +1,5 @@
 import { FC, useMemo } from 'react'
-import { NodeViewContent } from '@tiptap/react'
+import { NodeViewContent } from '../../../tiptapRefactor'
 import { css, theme } from '@mashcard/design-system'
 import { BlockContainer } from '../BlockContainer'
 import { HeadingViewProps } from '../../../extensions/blocks/heading/meta'

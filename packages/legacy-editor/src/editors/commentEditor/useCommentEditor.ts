@@ -1,4 +1,5 @@
-import { useEditor, Editor, Content } from '@tiptap/react'
+import { Editor, Content } from '@tiptap/core'
+import { useEditor } from '../../tiptapRefactor'
 import { Base, BaseOptions } from '../../extensions/base'
 
 export interface CommentEditorOptions {

@@ -1,5 +1,5 @@
 import { Blockquote as TiptapBlockquote } from '@tiptap/extension-blockquote'
-import { ReactNodeViewRenderer } from '@tiptap/react'
+import { ReactNodeViewRenderer } from '../../../tiptapRefactor'
 import { BlockquoteView } from '../../../components/blockViews/BlockquoteView'
 import { meta } from './meta'
 

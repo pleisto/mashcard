@@ -1,5 +1,5 @@
 import { mergeAttributes } from '@tiptap/core'
-import { ReactNodeViewRenderer } from '@tiptap/react'
+import { ReactNodeViewRenderer } from '../../../tiptapRefactor'
 import { uuid } from '@mashcard/active-support'
 import { SpreadsheetBlockView } from '../../../components/blockViews'
 import { createBlock } from '../../common'

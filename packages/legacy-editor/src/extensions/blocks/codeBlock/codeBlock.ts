@@ -1,6 +1,6 @@
 import { refractor } from './refractorLanguagesBundle'
 import { CodeBlock as TiptapCodeBlock } from '@tiptap/extension-code-block'
-import { ReactNodeViewRenderer } from '@tiptap/react'
+import { ReactNodeViewRenderer } from '../../../tiptapRefactor'
 import { RefractorPlugin } from './refractor-plugin'
 import { CodeBlockView } from '../../../components/blockViews'
 import { CodeBlockOptions, meta } from './meta'

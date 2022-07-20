@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { NodeViewContent } from '@tiptap/react'
+import { NodeViewContent } from '../../../tiptapRefactor'
 import { css, cx, theme } from '@mashcard/design-system'
 import { BlockContainer } from '../BlockContainer'
 import { ParagraphViewProps } from '../../../extensions/blocks/paragraph/meta'

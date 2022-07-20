@@ -3143,10 +3143,6 @@ __metadata:
   resolution: "@mashcard/editor@workspace:packages/editor"
   dependencies:
     "@mashcard/dev-support": "workspace:^"
-    prosemirror-model: ^1.18.1
-    prosemirror-state: ^1.4.1
-    prosemirror-transform: ^1.6.0
-    prosemirror-view: ^1.26.5
   peerDependencies:
     react: ">=17.0.2"
     react-dom: ">=17.0.2"
@@ -3194,6 +3190,7 @@ __metadata:
     "@mashcard/design-icons": "workspace:^"
     "@mashcard/design-system": "workspace:^"
     "@mashcard/dev-support": "workspace:^"
+    "@mashcard/editor": "workspace:^"
     "@mashcard/formula": "workspace:^"
     "@mashcard/schema": "workspace:^"
     "@mashcard/test-helper": "workspace:^"
@@ -3226,7 +3223,6 @@ __metadata:
     "@tiptap/extension-text-style": ^2.0.0-beta.26
     "@tiptap/extension-underline": ^2.0.0-beta.25
     "@tiptap/extension-unique-id": ^2.0.0-beta.4
-    "@tiptap/react": ^2.0.0-beta.114
     "@tiptap/suggestion": ^2.0.0-beta.97
     "@types/lodash": ^4.14.182
     dayjs: ^1.11.4
@@ -5471,19 +5467,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-bubble-menu@npm:^2.0.0-beta.61":
-  version: 2.0.0-beta.61
-  resolution: "@tiptap/extension-bubble-menu@npm:2.0.0-beta.61"
-  dependencies:
-    prosemirror-state: 1.4.1
-    prosemirror-view: 1.26.2
-    tippy.js: ^6.3.7
-  peerDependencies:
-    "@tiptap/core": ^2.0.0-beta.1
-  checksum: e348212e1e8f71d8040e58cce0702bd66784e18d91246056679a45ee0991689ab0de57123f70368ec692a68ae6ede5745bb5ddd660f551d4bfee917917f8d111
-  languageName: node
-  linkType: hard
-
 "@tiptap/extension-bullet-list@npm:^2.0.0-beta.29":
   version: 2.0.0-beta.29
   resolution: "@tiptap/extension-bullet-list@npm:2.0.0-beta.29"
@@ -5542,19 +5525,6 @@ __metadata:
   peerDependencies:
     "@tiptap/core": ^2.0.0-beta.1
   checksum: 19527cb38b2cb161657424a02c926e5e31bca1848c87cf0a849fab283fe5392159d31014fb205112e9b2c5775bfc5da30a195569c25941683e3307b8a30afb96
-  languageName: node
-  linkType: hard
-
-"@tiptap/extension-floating-menu@npm:^2.0.0-beta.56":
-  version: 2.0.0-beta.56
-  resolution: "@tiptap/extension-floating-menu@npm:2.0.0-beta.56"
-  dependencies:
-    prosemirror-state: 1.4.1
-    prosemirror-view: 1.26.2
-    tippy.js: ^6.3.7
-  peerDependencies:
-    "@tiptap/core": ^2.0.0-beta.1
-  checksum: 0c9e0d4c060fb49a1dc23b8659f04b1c71c023cc23d563925914c04501eaa617f75af352e5c56ef4ccd3d2978c0c8cd03600c73893f5591961936059d677153f
   languageName: node
   linkType: hard
 
@@ -5738,36 +5708,6 @@ __metadata:
   peerDependencies:
     "@tiptap/core": ^2.0.0-beta.1
   checksum: b479e95a1d51c9e833615a92b1aa814230aa6434056f912920b5c52020e14ff53505123b2adb660d24e45a94cb3588682482c61661e079b9d1088f0709cbf4b6
-  languageName: node
-  linkType: hard
-
-"@tiptap/react@npm:2.0.0-beta.114":
-  version: 2.0.0-beta.114
-  resolution: "@tiptap/react@npm:2.0.0-beta.114"
-  dependencies:
-    "@tiptap/extension-bubble-menu": ^2.0.0-beta.61
-    "@tiptap/extension-floating-menu": ^2.0.0-beta.56
-    prosemirror-view: 1.26.2
-  peerDependencies:
-    "@tiptap/core": ^2.0.0-beta.1
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
-  checksum: c438228764ec3a20285802cb8a40317b6560e5b93225a842bd40ee435a26d123f1ce5a52aeccf109a812bfd98bff418602f980450fd3fdc8176b7f7b319983d4
-  languageName: node
-  linkType: hard
-
-"@tiptap/react@patch:@tiptap/react@npm:2.0.0-beta.114#.yarn/patches/@tiptap-react-npm-2.0.0-beta.114-77e1d9a671.patch::locator=%40mashcard%2Fmonorepo%40workspace%3A.":
-  version: 2.0.0-beta.114
-  resolution: "@tiptap/react@patch:@tiptap/react@npm%3A2.0.0-beta.114#.yarn/patches/@tiptap-react-npm-2.0.0-beta.114-77e1d9a671.patch::version=2.0.0-beta.114&hash=e3e868&locator=%40mashcard%2Fmonorepo%40workspace%3A."
-  dependencies:
-    "@tiptap/extension-bubble-menu": ^2.0.0-beta.61
-    "@tiptap/extension-floating-menu": ^2.0.0-beta.56
-    prosemirror-view: 1.26.2
-  peerDependencies:
-    "@tiptap/core": ^2.0.0-beta.1
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
-  checksum: 4450ab6a304cb7233d6e26d7218d6a54c6a305c9b5c95756a04a7cb6d3e4ee39a3e20e162fb36ad0a1295cf59ef4ddcae6bcaf69e2d9cf7f79311d3e55fe1761
   languageName: node
   linkType: hard
 
@@ -18838,7 +18778,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prosemirror-model@npm:1.18.1, prosemirror-model@npm:^1.0.0, prosemirror-model@npm:^1.15.0, prosemirror-model@npm:^1.16.0, prosemirror-model@npm:^1.18.1":
+"prosemirror-model@npm:1.18.1, prosemirror-model@npm:^1.0.0, prosemirror-model@npm:^1.15.0, prosemirror-model@npm:^1.16.0":
   version: 1.18.1
   resolution: "prosemirror-model@npm:1.18.1"
   dependencies:
@@ -18858,7 +18798,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prosemirror-state@npm:1.4.1, prosemirror-state@npm:^1.0.0, prosemirror-state@npm:^1.2.2, prosemirror-state@npm:^1.3.4, prosemirror-state@npm:^1.4.1":
+"prosemirror-state@npm:1.4.1, prosemirror-state@npm:^1.0.0, prosemirror-state@npm:^1.2.2, prosemirror-state@npm:^1.3.4":
   version: 1.4.1
   resolution: "prosemirror-state@npm:1.4.1"
   dependencies:
@@ -18868,7 +18808,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prosemirror-transform@npm:1.6.0, prosemirror-transform@npm:^1.0.0, prosemirror-transform@npm:^1.1.0, prosemirror-transform@npm:^1.3.3, prosemirror-transform@npm:^1.6.0":
+"prosemirror-transform@npm:1.6.0, prosemirror-transform@npm:^1.0.0, prosemirror-transform@npm:^1.1.0, prosemirror-transform@npm:^1.3.3":
   version: 1.6.0
   resolution: "prosemirror-transform@npm:1.6.0"
   dependencies:
