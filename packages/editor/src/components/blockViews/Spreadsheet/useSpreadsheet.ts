@@ -41,8 +41,6 @@ export function useSpreadsheet(options: {
   removeRow: (index: number) => void
   moveRow: (srcId: string, targetId: string) => void
   getCellBlock: (rowId: string, columnId: string) => BlockInput
-  // getCellBlockByIdx: (rowIdx: number, columnIdx: number) => BlockInput
-  // getCellIdxByBlockId: (cellId: string) => ([number, number] | undefined)
   saveCellBlock: (block: BlockInput) => void
   cellsMap: SpreadsheetCellsMap
 } {
@@ -319,8 +317,6 @@ export function useSpreadsheet(options: {
     removeRow,
     moveRow,
     getCellBlock,
-    // getCellBlockByIdx,
-    // getCellIdxByBlock,
     saveCellBlock,
     cellsMap: cellsMap.current
   }
