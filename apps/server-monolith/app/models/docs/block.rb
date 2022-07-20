@@ -465,7 +465,7 @@ module Docs
     end
 
     def path_object
-      { id: id, text: text, icon: icon }.compact
+      { id: id, title: text, icon: icon, is_deleted: !!deleted_at }.compact
     end
 
     def parent_path_array
