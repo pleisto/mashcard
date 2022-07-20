@@ -1,7 +1,8 @@
 zh-CN:
+  meta:
+    personal_pod_desc: My Pod
   settings:
     app_title: MashCard Settings
-    personal_pod_desc: 我的 Pod
     group_pod_desc: 团队 Pod
     errors:
       invalid_operation_type: 无效的操作类型
