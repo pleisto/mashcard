@@ -489,6 +489,8 @@ export type BlockNew = {
   blobs?: Maybe<Array<Blob>>
   /** Block Type */
   blockType?: Maybe<Scalars['String']>
+  /** deleted_at */
+  deletedAt?: Maybe<Scalars['ISO8601DateTime']>
   documentInfo?: Maybe<DocumentInfo>
   /** block first child sort */
   firstChildSort: Scalars['BigInt']
@@ -1813,7 +1815,7 @@ export type Query = {
   /** return preview box data of url */
   previewBox: PreviewBox
   spreadsheetChildren?: Maybe<SpreadsheetChildren>
-  trashBlocks?: Maybe<Array<Block>>
+  trashBlocks?: Maybe<Array<BlockNew>>
   /** return images from unsplash by search */
   unsplashImage?: Maybe<Array<UnsplashImage>>
 }

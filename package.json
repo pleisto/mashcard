@@ -63,7 +63,8 @@
     "github-auth": "yarn workspace @mashcard/github-auth",
     "google-auth": "yarn workspace @mashcard/google-auth",
     "dotcom": "yarn workspace @mashcard/dotcom",
-    "i": "yarn install && yarn server i"
+    "i": "yarn install && yarn server i",
+    "graphql": "yarn server dump:graphql && yarn web generate:graphql"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",

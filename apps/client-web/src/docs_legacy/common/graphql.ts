@@ -148,54 +148,41 @@ export const queryTrashBlocks = gql`
     trashBlocks(domain: $domain, blockId: $blockId, search: $search) {
       id
       deletedAt
-      pathArray {
+      documentInfo {
         id
-        text
+        title
         icon {
           ... on BlockImage {
             type
             source
             key
+            height
+            width
           }
+
           ... on BlockEmoji {
             type
             name
             emoji
           }
         }
-      }
-      rootId
-      parentId
-      type
-      text
-      meta {
-        people {
-          type
-          domain
-          name
-          avatarUrl
-        }
-        cover {
-          ... on BlockImage {
-            type
-            source
-            key
-          }
-          ... on BlockColor {
-            type
-            color
-          }
-        }
-        icon {
-          ... on BlockImage {
-            type
-            source
-            key
-          }
-          ... on BlockEmoji {
-            type
-            name
-            emoji
+        pathArray {
+          id
+          text
+          icon {
+            ... on BlockImage {
+              type
+              source
+              key
+              height
+              width
+            }
+
+            ... on BlockEmoji {
+              type
+              name
+              emoji
+            }
           }
         }
       }

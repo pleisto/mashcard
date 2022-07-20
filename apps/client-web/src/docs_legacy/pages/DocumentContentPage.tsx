@@ -72,7 +72,7 @@ export const DocumentContentPage: FC = () => {
       MashcardEventBus.subscribe(
         ReloadDocument,
         ({ payload }) => {
-          refetch()
+          void refetch()
         },
         { eventId: docId }
       )
@@ -84,7 +84,7 @@ export const DocumentContentPage: FC = () => {
           MashcardEventBus.subscribe(
             BlockMetaUpdated,
             ({ payload }) => {
-              refetch()
+              void refetch()
             },
             { eventId: path.id }
           )

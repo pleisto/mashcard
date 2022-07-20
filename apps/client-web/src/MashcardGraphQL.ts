@@ -492,6 +492,8 @@ export type BlockNew = {
   blobs?: Maybe<Array<Blob>>
   /** Block Type */
   blockType?: Maybe<Scalars['String']>
+  /** deleted_at */
+  deletedAt?: Maybe<Scalars['ISO8601DateTime']>
   documentInfo?: Maybe<DocumentInfo>
   /** block first child sort */
   firstChildSort: Scalars['BigInt']
@@ -1816,7 +1818,7 @@ export type Query = {
   /** return preview box data of url */
   previewBox: PreviewBox
   spreadsheetChildren?: Maybe<SpreadsheetChildren>
-  trashBlocks?: Maybe<Array<Block>>
+  trashBlocks?: Maybe<Array<BlockNew>>
   /** return images from unsplash by search */
   unsplashImage?: Maybe<Array<UnsplashImage>>
 }
@@ -2231,40 +2233,41 @@ export type GetTrashBlocksQueryVariables = Exact<{
 export type GetTrashBlocksQuery = {
   __typename?: 'query'
   trashBlocks?: Array<{
-    __typename?: 'Block'
+    __typename?: 'BlockNew'
     id: string
     deletedAt?: any | null
-    rootId: string
-    parentId?: string | null
-    type: string
-    text: string
-    pathArray: Array<{
-      __typename?: 'BlockPath'
+    documentInfo?: {
+      __typename?: 'DocumentInfo'
       id: string
-      text: string
+      title: string
       icon?:
         | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
-        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
+        | {
+            __typename?: 'BlockImage'
+            type?: BlockType | null
+            source?: FileSource | null
+            key?: string | null
+            height?: number | null
+            width?: number | null
+          }
         | null
-    }>
-    meta: {
-      __typename?: 'BlockMeta'
-      people?: {
-        __typename?: 'BlockPeople'
-        type?: BlockType | null
-        domain: string
-        name?: string | null
-        avatarUrl?: string | null
-      } | null
-      cover?:
-        | { __typename?: 'BlockColor'; type?: BlockType | null; color: string }
-        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
-        | null
-      icon?:
-        | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
-        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
-        | null
-    }
+      pathArray: Array<{
+        __typename?: 'BlockPath'
+        id: string
+        text: string
+        icon?:
+          | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
+          | {
+              __typename?: 'BlockImage'
+              type?: BlockType | null
+              source?: FileSource | null
+              key?: string | null
+              height?: number | null
+              width?: number | null
+            }
+          | null
+      }>
+    } | null
   }> | null
 }
 
@@ -3800,14 +3803,16 @@ export const GetTrashBlocksDocument = gql`
     trashBlocks(domain: $domain, blockId: $blockId, search: $search) {
       id
       deletedAt
-      pathArray {
+      documentInfo {
         id
-        text
+        title
         icon {
           ... on BlockImage {
             type
             source
             key
+            height
+            width
           }
           ... on BlockEmoji {
             type
@@ -3815,39 +3820,22 @@ export const GetTrashBlocksDocument = gql`
             emoji
           }
         }
-      }
-      rootId
-      parentId
-      type
-      text
-      meta {
-        people {
-          type
-          domain
-          name
-          avatarUrl
-        }
-        cover {
-          ... on BlockImage {
-            type
-            source
-            key
-          }
-          ... on BlockColor {
-            type
-            color
-          }
-        }
-        icon {
-          ... on BlockImage {
-            type
-            source
-            key
-          }
-          ... on BlockEmoji {
-            type
-            name
-            emoji
+        pathArray {
+          id
+          text
+          icon {
+            ... on BlockImage {
+              type
+              source
+              key
+              height
+              width
+            }
+            ... on BlockEmoji {
+              type
+              name
+              emoji
+            }
           }
         }
       }
