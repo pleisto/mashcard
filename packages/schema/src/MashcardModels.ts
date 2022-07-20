@@ -1477,6 +1477,8 @@ export type PreviewBox = {
   description?: Maybe<Scalars['String']>
   /** preview icon */
   icon?: Maybe<Scalars['String']>
+  /** iframe url for preview */
+  iframeUrl?: Maybe<Scalars['String']>
   /** preview conetent size */
   size?: Maybe<Scalars['String']>
   /** preview title */

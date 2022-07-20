@@ -22,6 +22,7 @@ export interface PreviewViewProps {
   fileType: FileType
   fileUrl: string
   icon?: string | null
+  iframeUrl?: string | null
 }
 
 const DocumentContainer = styled('div', {
@@ -44,6 +45,7 @@ export const PreviewView: FC<PreviewViewProps> = ({
   fileName,
   fileType,
   fileUrl,
+  iframeUrl,
   icon,
   node,
   extension
@@ -66,6 +68,7 @@ export const PreviewView: FC<PreviewViewProps> = ({
             extension={extension}
             blockType={blockType}
             updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+            iframeUrl={iframeUrl}
             url={fileUrl}
             displayName={displayName}
             icon={icon}
