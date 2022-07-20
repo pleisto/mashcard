@@ -8755,9 +8755,7 @@
             {
               "name": "iframeUrl",
               "description": "iframe url for preview",
-              "args": [
-
-              ],
+              "args": [],
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
