@@ -1,7 +1,27 @@
 import { fontFaceSets } from './fontFaceSets.style'
+import { getNativeScrollbarWidth } from '../../utilities'
+
+const scrollbarStyles = getNativeScrollbarWidth()
+  ? {
+      '::-webkit-scrollbar': {
+        width: 4,
+        height: 4,
+        background: 'transparent'
+      },
+      '::-webkit-scrollbar-track': {
+        background: 'transparent'
+      },
+      '::-webkit-scrollbar-thumb': {
+        background: '$colors$overlayPrimary',
+        '-webkit-border-radius': '4px',
+        transform: 'transfromX(-4px)'
+      }
+    }
+  : {}
 
 export const globalStyleSheet = {
   ...fontFaceSets,
+  ...scrollbarStyles,
   html: {
     fontFamily: 'sans-serif',
     fontSize: '100%',

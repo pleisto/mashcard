@@ -7,7 +7,6 @@ import { object, ref, string } from 'yup'
 
 import { useDomainAvailableValidator } from '@/common/hooks'
 import { useEmailAvailableValidator } from '@/common/hooks/useEmailAvailableValidator'
-import { isLoadingVar } from '@/common/reactiveVars'
 import { mutationResultHandler } from '@/common/utils'
 import {
   useGetAccountsConfigFromWsQuery,
@@ -22,7 +21,7 @@ import { useSignUpInitialValues } from './_shared/useSignUpInitialValues'
 export const SignUp: React.FC = () => {
   const { t } = useAccountsI18n()
   const [didShowConfirmationEmailTips, { setTrue: showConfirmationEmailTips }] = useBoolean(false)
-  const { loading: configLoading, data: configData } = useGetAccountsConfigFromWsQuery()
+  const { data: configData } = useGetAccountsConfigFromWsQuery()
 
   // Set Form initial values
   const { loading: sessionLoading, data: sessionData } = useGetFederatedIdentitySessionQuery()
@@ -84,17 +83,6 @@ export const SignUp: React.FC = () => {
     yup: hasFederatedIdentity ? basicValidation : emailPasswordFormValidation,
     defaultValues: initialValues
   })
-
-  // Loading Status
-  const loading = configLoading || sessionLoading
-
-  useEffect(() => {
-    isLoadingVar(loading)
-  }, [loading])
-
-  if (loading) {
-    return <></>
-  }
 
   // Email unactive tips
   if (didShowConfirmationEmailTips) {

@@ -55,8 +55,9 @@ ${renderedRoutes}
 
 function mapRoute(root, importPrefix, pathPrefix, depth) {
   const children = root.children.map(route => {
-    const basename = path.basename(route.fileName, path.extname(route.fileName))
-    const routePath = basename === '$' ? '*' : basename.replaceAll('$', ':')
+    const isDir = route.children.length > 0
+    const basename = isDir ? route.fileName : path.basename(route.fileName, path.extname(route.fileName))
+    const routePath = basename === '$' ? '*' : basename.replaceAll('$', ':').replaceAll('.', '/')
     return {
       children: route.children,
       routePath,
@@ -72,7 +73,7 @@ function mapRoute(root, importPrefix, pathPrefix, depth) {
   if (layoutChildIndex > -1) {
     const [layoutRoute] = children.splice(layoutChildIndex, 1)
     root.layoutRoute = layoutRoute
-    imports += `const ${layoutRoute.componentName} = lazy(async () => await import('@/routes${layoutRoute.importPath}'))\n`
+    imports += `const ${layoutRoute.componentName} = lazy(async () => await import('../routes${layoutRoute.importPath}'))\n`
     // eslint-disable-next-line no-param-reassign
     depth += 1
   }
@@ -84,7 +85,7 @@ function mapRoute(root, importPrefix, pathPrefix, depth) {
         pathSegment = routePath === 'index' ? 'index' : `path="${routePath}"`
       }
       if (route.children.length === 0) {
-        imports += `const ${componentName} = lazy(async () => await import('@/routes${importPath}'))\n`
+        imports += `const ${componentName} = lazy(async () => await import('../routes${importPath}'))\n`
         return `${' '.repeat(depth * 2)}<Route ${pathSegment} element={<${componentName} />} />`
       } else {
         const childRoutes = mapRoute(route, importPath, root.layoutRoute ? `${routePath}/` : fullRoutePath, depth)

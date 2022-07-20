@@ -2066,298 +2066,49 @@ export type GetPodMembersQuery = {
   }> | null
 }
 
-export type GetBlockPinsQueryVariables = Exact<{ [key: string]: never }>
-
-export type GetBlockPinsQuery = {
-  __typename?: 'query'
-  blockPins?: Array<{
-    __typename?: 'Pin'
-    blockId: string
-    text: string
-    meta: {
-      __typename?: 'BlockMeta'
-      icon?:
-        | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
-        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
-        | null
-    }
-  }> | null
-}
-
-export type QueryUnsplashImageQueryVariables = Exact<{
-  query?: InputMaybe<Scalars['String']>
-  page?: InputMaybe<Scalars['Int']>
-  perPage?: InputMaybe<Scalars['Int']>
+export type UpdateDomainMutationVariables = Exact<{
+  input: UpdateDomainInput
 }>
 
-export type QueryUnsplashImageQuery = {
-  __typename?: 'query'
-  unsplashImage?: Array<{
-    __typename?: 'UnsplashImage'
-    id: string
-    width?: number | null
-    height?: number | null
-    fullUrl: string
-    smallUrl: string
-    username?: string | null
-    blurHash?: string | null
-  }> | null
-}
-
-export type QueryPreviewBoxQueryVariables = Exact<{
-  url: Scalars['String']
-}>
-
-export type QueryPreviewBoxQuery = {
-  __typename?: 'query'
-  previewBox: {
-    __typename?: 'PreviewBox'
-    url: string
-    title: string
-    description?: string | null
-    cover?: string | null
-    icon?: string | null
-    type?: string | null
-    size?: string | null
-    iframeUrl?: string | null
-  }
-}
-
-export type QueryPodSearchQueryVariables = Exact<{
-  input: Scalars['String']
-}>
-
-export type QueryPodSearchQuery = {
-  __typename?: 'query'
-  podSearch: Array<{
-    __typename?: 'PodBase'
-    domain: string
-    name: string
-    avatarData?: { __typename?: 'Avatar'; url: string } | null
-  }>
-}
-
-export type CreateOrUpdatePodMutationVariables = Exact<{
-  input: CreateOrUpdatePodInput
-}>
-
-export type CreateOrUpdatePodMutation = {
+export type UpdateDomainMutation = {
   __typename?: 'Mutation'
-  createOrUpdatePod?: {
-    __typename?: 'CreateOrUpdatePodPayload'
-    errors: Array<string>
-    pod?:
-      | { __typename?: 'Group'; domain: string; name: string; inviteEnable: boolean; inviteSecret?: string | null }
-      | { __typename?: 'User'; domain: string; name: string }
-      | null
-  } | null
+  updateDomain?: { __typename?: 'UpdateDomainPayload'; errors: Array<string> } | null
 }
 
-export type GroupJoinMutationVariables = Exact<{
-  input: GroupJoinInput
+export type UserAppearanceUpdateMutationVariables = Exact<{
+  input: UserAppearanceUpdateInput
 }>
 
-export type GroupJoinMutation = {
+export type UserAppearanceUpdateMutation = {
   __typename?: 'Mutation'
-  groupJoin?: { __typename?: 'GroupJoinPayload'; errors: Array<string> } | null
+  userAppearanceUpdate?: { __typename?: 'UserAppearanceUpdatePayload'; errors: Array<string> } | null
 }
 
-export type GetBlockSearchQueryVariables = Exact<{
-  domain: Scalars['String']
-  input: Scalars['String']
+export type UserDestroyMutationVariables = Exact<{
+  input: UserDestroyInput
 }>
 
-export type GetBlockSearchQuery = {
-  __typename?: 'query'
-  blockSearch?: Array<{ __typename?: 'Block'; id: string; type: string; text: string; rootId: string }> | null
-}
-
-export type GetPageBlocksQueryVariables = Exact<{
-  domain: Scalars['String']
-}>
-
-export type GetPageBlocksQuery = {
-  __typename?: 'query'
-  pageBlocks?: Array<{
-    __typename?: 'BlockNew'
-    id: string
-    sort: any
-    nextSort: any
-    firstChildSort: any
-    parentId?: string | null
-    documentInfo?: {
-      __typename?: 'DocumentInfo'
-      id: string
-      title: string
-      pin: boolean
-      icon?:
-        | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
-        | {
-            __typename?: 'BlockImage'
-            type?: BlockType | null
-            source?: FileSource | null
-            key?: string | null
-            height?: number | null
-            width?: number | null
-          }
-        | null
-    } | null
-  }> | null
-}
-
-export type GetTrashBlocksQueryVariables = Exact<{
-  domain: Scalars['String']
-  blockId?: InputMaybe<Scalars['UUID']>
-  search?: InputMaybe<Scalars['String']>
-}>
-
-export type GetTrashBlocksQuery = {
-  __typename?: 'query'
-  trashBlocks?: Array<{
-    __typename?: 'BlockNew'
-    id: string
-    documentInfo?: {
-      __typename?: 'DocumentInfo'
-      id: string
-      title: string
-      deletedAt?: any | null
-      restorable: boolean
-      icon?:
-        | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
-        | {
-            __typename?: 'BlockImage'
-            type?: BlockType | null
-            source?: FileSource | null
-            key?: string | null
-            height?: number | null
-            width?: number | null
-          }
-        | null
-      pathArray: Array<{
-        __typename?: 'BlockPath'
-        id: string
-        title: string
-        isDeleted: boolean
-        icon?:
-          | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
-          | {
-              __typename?: 'BlockImage'
-              type?: BlockType | null
-              source?: FileSource | null
-              key?: string | null
-              height?: number | null
-              width?: number | null
-            }
-          | null
-      }>
-    } | null
-  }> | null
-}
-
-export type GetBlockShareLinksQueryVariables = Exact<{
-  id: Scalars['String']
-}>
-
-export type GetBlockShareLinksQuery = {
-  __typename?: 'query'
-  blockShareLinks: Array<{
-    __typename?: 'ShareLink'
-    key: string
-    policy: Policytype
-    state: ShareLinkState
-    sharePodData: {
-      __typename?: 'PodBase'
-      name: string
-      domain: string
-      avatarData?: { __typename?: 'Avatar'; url: string } | null
-    }
-  }>
-}
-
-export type BlockDuplicateMutationVariables = Exact<{
-  input: BlockDuplicateInput
-}>
-
-export type BlockDuplicateMutation = {
+export type UserDestroyMutation = {
   __typename?: 'Mutation'
-  blockDuplicate?: {
-    __typename?: 'BlockDuplicatePayload'
-    id: string
-    formulaIds: Array<string>
-    errors: Array<string>
-  } | null
+  userDestroy?: { __typename?: 'UserDestroyPayload'; errors: Array<string> } | null
 }
 
-export type BlockSoftDeleteMutationVariables = Exact<{
-  input: BlockSoftDeleteInput
+export type GroupDestroyMutationVariables = Exact<{
+  input: GroupDestroyInput
 }>
 
-export type BlockSoftDeleteMutation = {
+export type GroupDestroyMutation = {
   __typename?: 'Mutation'
-  blockSoftDelete?: { __typename?: 'BlockSoftDeletePayload'; errors: Array<string> } | null
+  groupDestroy?: { __typename?: 'GroupDestroyPayload'; errors: Array<string> } | null
 }
 
-export type BlockHardDeleteMutationVariables = Exact<{
-  input: BlockHardDeleteInput
+export type GroupLeaveMutationVariables = Exact<{
+  input: GroupLeaveInput
 }>
 
-export type BlockHardDeleteMutation = {
+export type GroupLeaveMutation = {
   __typename?: 'Mutation'
-  blockHardDelete?: { __typename?: 'BlockHardDeletePayload'; errors: Array<string> } | null
-}
-
-export type BlockRestoreMutationVariables = Exact<{
-  input: BlockRestoreInput
-}>
-
-export type BlockRestoreMutation = {
-  __typename?: 'Mutation'
-  blockRestore?: { __typename?: 'BlockRestorePayload'; errors: Array<string> } | null
-}
-
-export type BlockPinOrUnpinMutationVariables = Exact<{
-  input: BlockPinOrUnpinInput
-}>
-
-export type BlockPinOrUnpinMutation = {
-  __typename?: 'Mutation'
-  blockPinOrUnpin?: { __typename?: 'BlockPinOrUnpinPayload'; errors: Array<string> } | null
-}
-
-export type BlockCreateMutationVariables = Exact<{
-  input: BlockCreateInput
-}>
-
-export type BlockCreateMutation = {
-  __typename?: 'Mutation'
-  blockCreate?: { __typename?: 'BlockCreatePayload'; id: string; errors: Array<string> } | null
-}
-
-export type BlockCreateShareLinkMutationVariables = Exact<{
-  input: BlockCreateShareLinkInput
-}>
-
-export type BlockCreateShareLinkMutation = {
-  __typename?: 'Mutation'
-  blockCreateShareLink?: { __typename?: 'BlockCreateShareLinkPayload'; errors: Array<string> } | null
-}
-
-export type BlockMoveMutationVariables = Exact<{
-  input: BlockMoveInput
-}>
-
-export type BlockMoveMutation = {
-  __typename?: 'Mutation'
-  blockMove?: { __typename?: 'BlockMovePayload'; errors: Array<string> } | null
-}
-
-export type BlockRenameMutationVariables = Exact<{
-  input: BlockRenameInput
-}>
-
-export type BlockRenameMutation = {
-  __typename?: 'Mutation'
-  blockRename?: { __typename?: 'BlockRenamePayload'; errors: Array<string> } | null
+  groupLeave?: { __typename?: 'GroupLeavePayload'; errors: Array<string> } | null
 }
 
 export type BlockSyncBatchMutationVariables = Exact<{
@@ -2802,49 +2553,298 @@ export type AwarenessSubscription = {
   awareness: { __typename?: 'AwarenessPayload'; operatorId?: string | null; updates: string }
 }
 
-export type UpdateDomainMutationVariables = Exact<{
-  input: UpdateDomainInput
+export type QueryUnsplashImageQueryVariables = Exact<{
+  query?: InputMaybe<Scalars['String']>
+  page?: InputMaybe<Scalars['Int']>
+  perPage?: InputMaybe<Scalars['Int']>
 }>
 
-export type UpdateDomainMutation = {
-  __typename?: 'Mutation'
-  updateDomain?: { __typename?: 'UpdateDomainPayload'; errors: Array<string> } | null
+export type QueryUnsplashImageQuery = {
+  __typename?: 'query'
+  unsplashImage?: Array<{
+    __typename?: 'UnsplashImage'
+    id: string
+    width?: number | null
+    height?: number | null
+    fullUrl: string
+    smallUrl: string
+    username?: string | null
+    blurHash?: string | null
+  }> | null
 }
 
-export type UserAppearanceUpdateMutationVariables = Exact<{
-  input: UserAppearanceUpdateInput
+export type QueryPreviewBoxQueryVariables = Exact<{
+  url: Scalars['String']
 }>
 
-export type UserAppearanceUpdateMutation = {
-  __typename?: 'Mutation'
-  userAppearanceUpdate?: { __typename?: 'UserAppearanceUpdatePayload'; errors: Array<string> } | null
+export type QueryPreviewBoxQuery = {
+  __typename?: 'query'
+  previewBox: {
+    __typename?: 'PreviewBox'
+    url: string
+    title: string
+    description?: string | null
+    cover?: string | null
+    icon?: string | null
+    type?: string | null
+    size?: string | null
+    iframeUrl?: string | null
+  }
 }
 
-export type UserDestroyMutationVariables = Exact<{
-  input: UserDestroyInput
+export type QueryPodSearchQueryVariables = Exact<{
+  input: Scalars['String']
 }>
 
-export type UserDestroyMutation = {
-  __typename?: 'Mutation'
-  userDestroy?: { __typename?: 'UserDestroyPayload'; errors: Array<string> } | null
+export type QueryPodSearchQuery = {
+  __typename?: 'query'
+  podSearch: Array<{
+    __typename?: 'PodBase'
+    domain: string
+    name: string
+    avatarData?: { __typename?: 'Avatar'; url: string } | null
+  }>
 }
 
-export type GroupDestroyMutationVariables = Exact<{
-  input: GroupDestroyInput
+export type CreateOrUpdatePodMutationVariables = Exact<{
+  input: CreateOrUpdatePodInput
 }>
 
-export type GroupDestroyMutation = {
+export type CreateOrUpdatePodMutation = {
   __typename?: 'Mutation'
-  groupDestroy?: { __typename?: 'GroupDestroyPayload'; errors: Array<string> } | null
+  createOrUpdatePod?: {
+    __typename?: 'CreateOrUpdatePodPayload'
+    errors: Array<string>
+    pod?:
+      | { __typename?: 'Group'; domain: string; name: string; inviteEnable: boolean; inviteSecret?: string | null }
+      | { __typename?: 'User'; domain: string; name: string }
+      | null
+  } | null
 }
 
-export type GroupLeaveMutationVariables = Exact<{
-  input: GroupLeaveInput
+export type GroupJoinMutationVariables = Exact<{
+  input: GroupJoinInput
 }>
 
-export type GroupLeaveMutation = {
+export type GroupJoinMutation = {
   __typename?: 'Mutation'
-  groupLeave?: { __typename?: 'GroupLeavePayload'; errors: Array<string> } | null
+  groupJoin?: { __typename?: 'GroupJoinPayload'; errors: Array<string> } | null
+}
+
+export type GetBlockSearchQueryVariables = Exact<{
+  domain: Scalars['String']
+  input: Scalars['String']
+}>
+
+export type GetBlockSearchQuery = {
+  __typename?: 'query'
+  blockSearch?: Array<{ __typename?: 'Block'; id: string; type: string; text: string; rootId: string }> | null
+}
+
+export type GetBlockShareLinksQueryVariables = Exact<{
+  id: Scalars['String']
+}>
+
+export type GetBlockShareLinksQuery = {
+  __typename?: 'query'
+  blockShareLinks: Array<{
+    __typename?: 'ShareLink'
+    key: string
+    policy: Policytype
+    state: ShareLinkState
+    sharePodData: {
+      __typename?: 'PodBase'
+      name: string
+      domain: string
+      avatarData?: { __typename?: 'Avatar'; url: string } | null
+    }
+  }>
+}
+
+export type BlockDuplicateMutationVariables = Exact<{
+  input: BlockDuplicateInput
+}>
+
+export type BlockDuplicateMutation = {
+  __typename?: 'Mutation'
+  blockDuplicate?: {
+    __typename?: 'BlockDuplicatePayload'
+    id: string
+    formulaIds: Array<string>
+    errors: Array<string>
+  } | null
+}
+
+export type BlockSoftDeleteMutationVariables = Exact<{
+  input: BlockSoftDeleteInput
+}>
+
+export type BlockSoftDeleteMutation = {
+  __typename?: 'Mutation'
+  blockSoftDelete?: { __typename?: 'BlockSoftDeletePayload'; errors: Array<string> } | null
+}
+
+export type BlockHardDeleteMutationVariables = Exact<{
+  input: BlockHardDeleteInput
+}>
+
+export type BlockHardDeleteMutation = {
+  __typename?: 'Mutation'
+  blockHardDelete?: { __typename?: 'BlockHardDeletePayload'; errors: Array<string> } | null
+}
+
+export type BlockRestoreMutationVariables = Exact<{
+  input: BlockRestoreInput
+}>
+
+export type BlockRestoreMutation = {
+  __typename?: 'Mutation'
+  blockRestore?: { __typename?: 'BlockRestorePayload'; errors: Array<string> } | null
+}
+
+export type BlockPinOrUnpinMutationVariables = Exact<{
+  input: BlockPinOrUnpinInput
+}>
+
+export type BlockPinOrUnpinMutation = {
+  __typename?: 'Mutation'
+  blockPinOrUnpin?: { __typename?: 'BlockPinOrUnpinPayload'; errors: Array<string> } | null
+}
+
+export type BlockCreateMutationVariables = Exact<{
+  input: BlockCreateInput
+}>
+
+export type BlockCreateMutation = {
+  __typename?: 'Mutation'
+  blockCreate?: { __typename?: 'BlockCreatePayload'; id: string; errors: Array<string> } | null
+}
+
+export type BlockCreateShareLinkMutationVariables = Exact<{
+  input: BlockCreateShareLinkInput
+}>
+
+export type BlockCreateShareLinkMutation = {
+  __typename?: 'Mutation'
+  blockCreateShareLink?: { __typename?: 'BlockCreateShareLinkPayload'; errors: Array<string> } | null
+}
+
+export type BlockMoveMutationVariables = Exact<{
+  input: BlockMoveInput
+}>
+
+export type BlockMoveMutation = {
+  __typename?: 'Mutation'
+  blockMove?: { __typename?: 'BlockMovePayload'; errors: Array<string> } | null
+}
+
+export type BlockRenameMutationVariables = Exact<{
+  input: BlockRenameInput
+}>
+
+export type BlockRenameMutation = {
+  __typename?: 'Mutation'
+  blockRename?: { __typename?: 'BlockRenamePayload'; errors: Array<string> } | null
+}
+
+export type GetPageBlocksQueryVariables = Exact<{
+  domain: Scalars['String']
+}>
+
+export type GetPageBlocksQuery = {
+  __typename?: 'query'
+  pageBlocks?: Array<{
+    __typename?: 'BlockNew'
+    id: string
+    sort: any
+    nextSort: any
+    firstChildSort: any
+    parentId?: string | null
+    documentInfo?: {
+      __typename?: 'DocumentInfo'
+      id: string
+      title: string
+      pin: boolean
+      icon?:
+        | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
+        | {
+            __typename?: 'BlockImage'
+            type?: BlockType | null
+            source?: FileSource | null
+            key?: string | null
+            height?: number | null
+            width?: number | null
+          }
+        | null
+    } | null
+  }> | null
+}
+
+export type GetTrashBlocksQueryVariables = Exact<{
+  domain: Scalars['String']
+  blockId?: InputMaybe<Scalars['UUID']>
+  search?: InputMaybe<Scalars['String']>
+}>
+
+export type GetTrashBlocksQuery = {
+  __typename?: 'query'
+  trashBlocks?: Array<{
+    __typename?: 'BlockNew'
+    id: string
+    documentInfo?: {
+      __typename?: 'DocumentInfo'
+      id: string
+      title: string
+      deletedAt?: any | null
+      restorable: boolean
+      icon?:
+        | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
+        | {
+            __typename?: 'BlockImage'
+            type?: BlockType | null
+            source?: FileSource | null
+            key?: string | null
+            height?: number | null
+            width?: number | null
+          }
+        | null
+      pathArray: Array<{
+        __typename?: 'BlockPath'
+        id: string
+        title: string
+        isDeleted: boolean
+        icon?:
+          | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
+          | {
+              __typename?: 'BlockImage'
+              type?: BlockType | null
+              source?: FileSource | null
+              key?: string | null
+              height?: number | null
+              width?: number | null
+            }
+          | null
+      }>
+    } | null
+  }> | null
+}
+
+export type GetBlockPinsQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetBlockPinsQuery = {
+  __typename?: 'query'
+  blockPins?: Array<{
+    __typename?: 'Pin'
+    blockId: string
+    text: string
+    meta: {
+      __typename?: 'BlockMeta'
+      icon?:
+        | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
+        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
+        | null
+    }
+  }> | null
 }
 
 export type UserEmailPasswordSignInMutationVariables = Exact<{
@@ -3349,882 +3349,196 @@ export function useGetPodMembersLazyQuery(
 export type GetPodMembersQueryHookResult = ReturnType<typeof useGetPodMembersQuery>
 export type GetPodMembersLazyQueryHookResult = ReturnType<typeof useGetPodMembersLazyQuery>
 export type GetPodMembersQueryResult = Apollo.QueryResult<GetPodMembersQuery, GetPodMembersQueryVariables>
-export const GetBlockPinsDocument = gql`
-  query GetBlockPins {
-    blockPins {
-      blockId
-      text
-      meta {
-        icon {
-          ... on BlockImage {
-            type
-            source
-            key
-          }
-          ... on BlockEmoji {
-            type
-            name
-            emoji
-          }
-        }
-      }
+export const UpdateDomainDocument = gql`
+  mutation updateDomain($input: UpdateDomainInput!) {
+    updateDomain(input: $input) {
+      errors
     }
   }
 `
+export type UpdateDomainMutationFn = Apollo.MutationFunction<UpdateDomainMutation, UpdateDomainMutationVariables>
 
 /**
- * __useGetBlockPinsQuery__
+ * __useUpdateDomainMutation__
  *
- * To run a query within a React component, call `useGetBlockPinsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetBlockPinsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
+ * To run a mutation, you first call `useUpdateDomainMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateDomainMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
  *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const { data, loading, error } = useGetBlockPinsQuery({
+ * const [updateDomainMutation, { data, loading, error }] = useUpdateDomainMutation({
  *   variables: {
+ *      input: // value for 'input'
  *   },
  * });
  */
-export function useGetBlockPinsQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetBlockPinsQuery, GetBlockPinsQueryVariables>
+export function useUpdateDomainMutation(
+  baseOptions?: Apollo.MutationHookOptions<UpdateDomainMutation, UpdateDomainMutationVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetBlockPinsQuery, GetBlockPinsQueryVariables>(GetBlockPinsDocument, options)
+  return Apollo.useMutation<UpdateDomainMutation, UpdateDomainMutationVariables>(UpdateDomainDocument, options)
 }
-export function useGetBlockPinsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetBlockPinsQuery, GetBlockPinsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetBlockPinsQuery, GetBlockPinsQueryVariables>(GetBlockPinsDocument, options)
-}
-export type GetBlockPinsQueryHookResult = ReturnType<typeof useGetBlockPinsQuery>
-export type GetBlockPinsLazyQueryHookResult = ReturnType<typeof useGetBlockPinsLazyQuery>
-export type GetBlockPinsQueryResult = Apollo.QueryResult<GetBlockPinsQuery, GetBlockPinsQueryVariables>
-export const QueryUnsplashImageDocument = gql`
-  query QueryUnsplashImage($query: String, $page: Int, $perPage: Int) {
-    unsplashImage(query: $query, page: $page, perPage: $perPage) {
-      id
-      width
-      height
-      fullUrl
-      smallUrl
-      username
-      blurHash
+export type UpdateDomainMutationHookResult = ReturnType<typeof useUpdateDomainMutation>
+export type UpdateDomainMutationResult = Apollo.MutationResult<UpdateDomainMutation>
+export type UpdateDomainMutationOptions = Apollo.BaseMutationOptions<
+  UpdateDomainMutation,
+  UpdateDomainMutationVariables
+>
+export const UserAppearanceUpdateDocument = gql`
+  mutation userAppearanceUpdate($input: UserAppearanceUpdateInput!) {
+    userAppearanceUpdate(input: $input) {
+      errors
     }
   }
 `
+export type UserAppearanceUpdateMutationFn = Apollo.MutationFunction<
+  UserAppearanceUpdateMutation,
+  UserAppearanceUpdateMutationVariables
+>
 
 /**
- * __useQueryUnsplashImageQuery__
+ * __useUserAppearanceUpdateMutation__
  *
- * To run a query within a React component, call `useQueryUnsplashImageQuery` and pass it any options that fit your needs.
- * When your component renders, `useQueryUnsplashImageQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
+ * To run a mutation, you first call `useUserAppearanceUpdateMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUserAppearanceUpdateMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
  *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const { data, loading, error } = useQueryUnsplashImageQuery({
+ * const [userAppearanceUpdateMutation, { data, loading, error }] = useUserAppearanceUpdateMutation({
  *   variables: {
- *      query: // value for 'query'
- *      page: // value for 'page'
- *      perPage: // value for 'perPage'
+ *      input: // value for 'input'
  *   },
  * });
  */
-export function useQueryUnsplashImageQuery(
-  baseOptions?: Apollo.QueryHookOptions<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>
+export function useUserAppearanceUpdateMutation(
+  baseOptions?: Apollo.MutationHookOptions<UserAppearanceUpdateMutation, UserAppearanceUpdateMutationVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>(QueryUnsplashImageDocument, options)
-}
-export function useQueryUnsplashImageLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>(
-    QueryUnsplashImageDocument,
+  return Apollo.useMutation<UserAppearanceUpdateMutation, UserAppearanceUpdateMutationVariables>(
+    UserAppearanceUpdateDocument,
     options
   )
 }
-export type QueryUnsplashImageQueryHookResult = ReturnType<typeof useQueryUnsplashImageQuery>
-export type QueryUnsplashImageLazyQueryHookResult = ReturnType<typeof useQueryUnsplashImageLazyQuery>
-export type QueryUnsplashImageQueryResult = Apollo.QueryResult<
-  QueryUnsplashImageQuery,
-  QueryUnsplashImageQueryVariables
+export type UserAppearanceUpdateMutationHookResult = ReturnType<typeof useUserAppearanceUpdateMutation>
+export type UserAppearanceUpdateMutationResult = Apollo.MutationResult<UserAppearanceUpdateMutation>
+export type UserAppearanceUpdateMutationOptions = Apollo.BaseMutationOptions<
+  UserAppearanceUpdateMutation,
+  UserAppearanceUpdateMutationVariables
 >
-export const QueryPreviewBoxDocument = gql`
-  query QueryPreviewBox($url: String!) {
-    previewBox(url: $url) {
-      url
-      title
-      description
-      cover
-      icon
-      type
-      size
-      iframeUrl
-    }
-  }
-`
-
-/**
- * __useQueryPreviewBoxQuery__
- *
- * To run a query within a React component, call `useQueryPreviewBoxQuery` and pass it any options that fit your needs.
- * When your component renders, `useQueryPreviewBoxQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useQueryPreviewBoxQuery({
- *   variables: {
- *      url: // value for 'url'
- *   },
- * });
- */
-export function useQueryPreviewBoxQuery(
-  baseOptions: Apollo.QueryHookOptions<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>(QueryPreviewBoxDocument, options)
-}
-export function useQueryPreviewBoxLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>(QueryPreviewBoxDocument, options)
-}
-export type QueryPreviewBoxQueryHookResult = ReturnType<typeof useQueryPreviewBoxQuery>
-export type QueryPreviewBoxLazyQueryHookResult = ReturnType<typeof useQueryPreviewBoxLazyQuery>
-export type QueryPreviewBoxQueryResult = Apollo.QueryResult<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>
-export const QueryPodSearchDocument = gql`
-  query QueryPodSearch($input: String!) {
-    podSearch(input: $input) {
-      domain
-      name
-      avatarData {
-        url
-      }
-    }
-  }
-`
-
-/**
- * __useQueryPodSearchQuery__
- *
- * To run a query within a React component, call `useQueryPodSearchQuery` and pass it any options that fit your needs.
- * When your component renders, `useQueryPodSearchQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useQueryPodSearchQuery({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useQueryPodSearchQuery(
-  baseOptions: Apollo.QueryHookOptions<QueryPodSearchQuery, QueryPodSearchQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<QueryPodSearchQuery, QueryPodSearchQueryVariables>(QueryPodSearchDocument, options)
-}
-export function useQueryPodSearchLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<QueryPodSearchQuery, QueryPodSearchQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<QueryPodSearchQuery, QueryPodSearchQueryVariables>(QueryPodSearchDocument, options)
-}
-export type QueryPodSearchQueryHookResult = ReturnType<typeof useQueryPodSearchQuery>
-export type QueryPodSearchLazyQueryHookResult = ReturnType<typeof useQueryPodSearchLazyQuery>
-export type QueryPodSearchQueryResult = Apollo.QueryResult<QueryPodSearchQuery, QueryPodSearchQueryVariables>
-export const CreateOrUpdatePodDocument = gql`
-  mutation createOrUpdatePod($input: CreateOrUpdatePodInput!) {
-    createOrUpdatePod(input: $input) {
+export const UserDestroyDocument = gql`
+  mutation userDestroy($input: UserDestroyInput!) {
+    userDestroy(input: $input) {
       errors
-      pod {
-        ... on User {
-          domain
-          name
-        }
-        ... on Group {
-          domain
-          name
-          inviteEnable
-          inviteSecret
-        }
-      }
     }
   }
 `
-export type CreateOrUpdatePodMutationFn = Apollo.MutationFunction<
-  CreateOrUpdatePodMutation,
-  CreateOrUpdatePodMutationVariables
->
+export type UserDestroyMutationFn = Apollo.MutationFunction<UserDestroyMutation, UserDestroyMutationVariables>
 
 /**
- * __useCreateOrUpdatePodMutation__
+ * __useUserDestroyMutation__
  *
- * To run a mutation, you first call `useCreateOrUpdatePodMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateOrUpdatePodMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useUserDestroyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUserDestroyMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [createOrUpdatePodMutation, { data, loading, error }] = useCreateOrUpdatePodMutation({
+ * const [userDestroyMutation, { data, loading, error }] = useUserDestroyMutation({
  *   variables: {
  *      input: // value for 'input'
  *   },
  * });
  */
-export function useCreateOrUpdatePodMutation(
-  baseOptions?: Apollo.MutationHookOptions<CreateOrUpdatePodMutation, CreateOrUpdatePodMutationVariables>
+export function useUserDestroyMutation(
+  baseOptions?: Apollo.MutationHookOptions<UserDestroyMutation, UserDestroyMutationVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<CreateOrUpdatePodMutation, CreateOrUpdatePodMutationVariables>(
-    CreateOrUpdatePodDocument,
-    options
-  )
+  return Apollo.useMutation<UserDestroyMutation, UserDestroyMutationVariables>(UserDestroyDocument, options)
 }
-export type CreateOrUpdatePodMutationHookResult = ReturnType<typeof useCreateOrUpdatePodMutation>
-export type CreateOrUpdatePodMutationResult = Apollo.MutationResult<CreateOrUpdatePodMutation>
-export type CreateOrUpdatePodMutationOptions = Apollo.BaseMutationOptions<
-  CreateOrUpdatePodMutation,
-  CreateOrUpdatePodMutationVariables
->
-export const GroupJoinDocument = gql`
-  mutation groupJoin($input: GroupJoinInput!) {
-    groupJoin(input: $input) {
+export type UserDestroyMutationHookResult = ReturnType<typeof useUserDestroyMutation>
+export type UserDestroyMutationResult = Apollo.MutationResult<UserDestroyMutation>
+export type UserDestroyMutationOptions = Apollo.BaseMutationOptions<UserDestroyMutation, UserDestroyMutationVariables>
+export const GroupDestroyDocument = gql`
+  mutation groupDestroy($input: GroupDestroyInput!) {
+    groupDestroy(input: $input) {
       errors
     }
   }
 `
-export type GroupJoinMutationFn = Apollo.MutationFunction<GroupJoinMutation, GroupJoinMutationVariables>
+export type GroupDestroyMutationFn = Apollo.MutationFunction<GroupDestroyMutation, GroupDestroyMutationVariables>
 
 /**
- * __useGroupJoinMutation__
+ * __useGroupDestroyMutation__
  *
- * To run a mutation, you first call `useGroupJoinMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useGroupJoinMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useGroupDestroyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useGroupDestroyMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [groupJoinMutation, { data, loading, error }] = useGroupJoinMutation({
+ * const [groupDestroyMutation, { data, loading, error }] = useGroupDestroyMutation({
  *   variables: {
  *      input: // value for 'input'
  *   },
  * });
  */
-export function useGroupJoinMutation(
-  baseOptions?: Apollo.MutationHookOptions<GroupJoinMutation, GroupJoinMutationVariables>
+export function useGroupDestroyMutation(
+  baseOptions?: Apollo.MutationHookOptions<GroupDestroyMutation, GroupDestroyMutationVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<GroupJoinMutation, GroupJoinMutationVariables>(GroupJoinDocument, options)
+  return Apollo.useMutation<GroupDestroyMutation, GroupDestroyMutationVariables>(GroupDestroyDocument, options)
 }
-export type GroupJoinMutationHookResult = ReturnType<typeof useGroupJoinMutation>
-export type GroupJoinMutationResult = Apollo.MutationResult<GroupJoinMutation>
-export type GroupJoinMutationOptions = Apollo.BaseMutationOptions<GroupJoinMutation, GroupJoinMutationVariables>
-export const GetBlockSearchDocument = gql`
-  query GetBlockSearch($domain: String!, $input: String!) {
-    blockSearch(domain: $domain, input: $input) {
-      id
-      type
-      text
-      rootId
-    }
-  }
-`
-
-/**
- * __useGetBlockSearchQuery__
- *
- * To run a query within a React component, call `useGetBlockSearchQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetBlockSearchQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetBlockSearchQuery({
- *   variables: {
- *      domain: // value for 'domain'
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useGetBlockSearchQuery(
-  baseOptions: Apollo.QueryHookOptions<GetBlockSearchQuery, GetBlockSearchQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetBlockSearchQuery, GetBlockSearchQueryVariables>(GetBlockSearchDocument, options)
-}
-export function useGetBlockSearchLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetBlockSearchQuery, GetBlockSearchQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetBlockSearchQuery, GetBlockSearchQueryVariables>(GetBlockSearchDocument, options)
-}
-export type GetBlockSearchQueryHookResult = ReturnType<typeof useGetBlockSearchQuery>
-export type GetBlockSearchLazyQueryHookResult = ReturnType<typeof useGetBlockSearchLazyQuery>
-export type GetBlockSearchQueryResult = Apollo.QueryResult<GetBlockSearchQuery, GetBlockSearchQueryVariables>
-export const GetPageBlocksDocument = gql`
-  query GetPageBlocks($domain: String!) {
-    pageBlocks(domain: $domain) {
-      id
-      sort
-      nextSort
-      firstChildSort
-      parentId
-      documentInfo {
-        id
-        title
-        icon {
-          ... on BlockImage {
-            type
-            source
-            key
-            height
-            width
-          }
-          ... on BlockEmoji {
-            type
-            name
-            emoji
-          }
-        }
-        pin
-      }
-    }
-  }
-`
-
-/**
- * __useGetPageBlocksQuery__
- *
- * To run a query within a React component, call `useGetPageBlocksQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetPageBlocksQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetPageBlocksQuery({
- *   variables: {
- *      domain: // value for 'domain'
- *   },
- * });
- */
-export function useGetPageBlocksQuery(
-  baseOptions: Apollo.QueryHookOptions<GetPageBlocksQuery, GetPageBlocksQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetPageBlocksQuery, GetPageBlocksQueryVariables>(GetPageBlocksDocument, options)
-}
-export function useGetPageBlocksLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetPageBlocksQuery, GetPageBlocksQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetPageBlocksQuery, GetPageBlocksQueryVariables>(GetPageBlocksDocument, options)
-}
-export type GetPageBlocksQueryHookResult = ReturnType<typeof useGetPageBlocksQuery>
-export type GetPageBlocksLazyQueryHookResult = ReturnType<typeof useGetPageBlocksLazyQuery>
-export type GetPageBlocksQueryResult = Apollo.QueryResult<GetPageBlocksQuery, GetPageBlocksQueryVariables>
-export const GetTrashBlocksDocument = gql`
-  query GetTrashBlocks($domain: String!, $blockId: UUID, $search: String) {
-    trashBlocks(domain: $domain, blockId: $blockId, search: $search) {
-      id
-      documentInfo {
-        id
-        title
-        deletedAt
-        restorable
-        icon {
-          ... on BlockImage {
-            type
-            source
-            key
-            height
-            width
-          }
-          ... on BlockEmoji {
-            type
-            name
-            emoji
-          }
-        }
-        pathArray {
-          id
-          title
-          isDeleted
-          icon {
-            ... on BlockImage {
-              type
-              source
-              key
-              height
-              width
-            }
-            ... on BlockEmoji {
-              type
-              name
-              emoji
-            }
-          }
-        }
-      }
-    }
-  }
-`
-
-/**
- * __useGetTrashBlocksQuery__
- *
- * To run a query within a React component, call `useGetTrashBlocksQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetTrashBlocksQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetTrashBlocksQuery({
- *   variables: {
- *      domain: // value for 'domain'
- *      blockId: // value for 'blockId'
- *      search: // value for 'search'
- *   },
- * });
- */
-export function useGetTrashBlocksQuery(
-  baseOptions: Apollo.QueryHookOptions<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>(GetTrashBlocksDocument, options)
-}
-export function useGetTrashBlocksLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>(GetTrashBlocksDocument, options)
-}
-export type GetTrashBlocksQueryHookResult = ReturnType<typeof useGetTrashBlocksQuery>
-export type GetTrashBlocksLazyQueryHookResult = ReturnType<typeof useGetTrashBlocksLazyQuery>
-export type GetTrashBlocksQueryResult = Apollo.QueryResult<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>
-export const GetBlockShareLinksDocument = gql`
-  query GetBlockShareLinks($id: String!) {
-    blockShareLinks(id: $id) {
-      key
-      policy
-      state
-      sharePodData {
-        name
-        domain
-        avatarData {
-          url
-        }
-      }
-    }
-  }
-`
-
-/**
- * __useGetBlockShareLinksQuery__
- *
- * To run a query within a React component, call `useGetBlockShareLinksQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetBlockShareLinksQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetBlockShareLinksQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useGetBlockShareLinksQuery(
-  baseOptions: Apollo.QueryHookOptions<GetBlockShareLinksQuery, GetBlockShareLinksQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetBlockShareLinksQuery, GetBlockShareLinksQueryVariables>(GetBlockShareLinksDocument, options)
-}
-export function useGetBlockShareLinksLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetBlockShareLinksQuery, GetBlockShareLinksQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetBlockShareLinksQuery, GetBlockShareLinksQueryVariables>(
-    GetBlockShareLinksDocument,
-    options
-  )
-}
-export type GetBlockShareLinksQueryHookResult = ReturnType<typeof useGetBlockShareLinksQuery>
-export type GetBlockShareLinksLazyQueryHookResult = ReturnType<typeof useGetBlockShareLinksLazyQuery>
-export type GetBlockShareLinksQueryResult = Apollo.QueryResult<
-  GetBlockShareLinksQuery,
-  GetBlockShareLinksQueryVariables
+export type GroupDestroyMutationHookResult = ReturnType<typeof useGroupDestroyMutation>
+export type GroupDestroyMutationResult = Apollo.MutationResult<GroupDestroyMutation>
+export type GroupDestroyMutationOptions = Apollo.BaseMutationOptions<
+  GroupDestroyMutation,
+  GroupDestroyMutationVariables
 >
-export const BlockDuplicateDocument = gql`
-  mutation blockDuplicate($input: BlockDuplicateInput!) {
-    blockDuplicate(input: $input) {
-      id
-      formulaIds
+export const GroupLeaveDocument = gql`
+  mutation groupLeave($input: GroupLeaveInput!) {
+    groupLeave(input: $input) {
       errors
     }
   }
 `
-export type BlockDuplicateMutationFn = Apollo.MutationFunction<BlockDuplicateMutation, BlockDuplicateMutationVariables>
+export type GroupLeaveMutationFn = Apollo.MutationFunction<GroupLeaveMutation, GroupLeaveMutationVariables>
 
 /**
- * __useBlockDuplicateMutation__
+ * __useGroupLeaveMutation__
  *
- * To run a mutation, you first call `useBlockDuplicateMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useBlockDuplicateMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useGroupLeaveMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useGroupLeaveMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [blockDuplicateMutation, { data, loading, error }] = useBlockDuplicateMutation({
+ * const [groupLeaveMutation, { data, loading, error }] = useGroupLeaveMutation({
  *   variables: {
  *      input: // value for 'input'
  *   },
  * });
  */
-export function useBlockDuplicateMutation(
-  baseOptions?: Apollo.MutationHookOptions<BlockDuplicateMutation, BlockDuplicateMutationVariables>
+export function useGroupLeaveMutation(
+  baseOptions?: Apollo.MutationHookOptions<GroupLeaveMutation, GroupLeaveMutationVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<BlockDuplicateMutation, BlockDuplicateMutationVariables>(BlockDuplicateDocument, options)
+  return Apollo.useMutation<GroupLeaveMutation, GroupLeaveMutationVariables>(GroupLeaveDocument, options)
 }
-export type BlockDuplicateMutationHookResult = ReturnType<typeof useBlockDuplicateMutation>
-export type BlockDuplicateMutationResult = Apollo.MutationResult<BlockDuplicateMutation>
-export type BlockDuplicateMutationOptions = Apollo.BaseMutationOptions<
-  BlockDuplicateMutation,
-  BlockDuplicateMutationVariables
->
-export const BlockSoftDeleteDocument = gql`
-  mutation blockSoftDelete($input: BlockSoftDeleteInput!) {
-    blockSoftDelete(input: $input) {
-      errors
-    }
-  }
-`
-export type BlockSoftDeleteMutationFn = Apollo.MutationFunction<
-  BlockSoftDeleteMutation,
-  BlockSoftDeleteMutationVariables
->
-
-/**
- * __useBlockSoftDeleteMutation__
- *
- * To run a mutation, you first call `useBlockSoftDeleteMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useBlockSoftDeleteMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [blockSoftDeleteMutation, { data, loading, error }] = useBlockSoftDeleteMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useBlockSoftDeleteMutation(
-  baseOptions?: Apollo.MutationHookOptions<BlockSoftDeleteMutation, BlockSoftDeleteMutationVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<BlockSoftDeleteMutation, BlockSoftDeleteMutationVariables>(BlockSoftDeleteDocument, options)
-}
-export type BlockSoftDeleteMutationHookResult = ReturnType<typeof useBlockSoftDeleteMutation>
-export type BlockSoftDeleteMutationResult = Apollo.MutationResult<BlockSoftDeleteMutation>
-export type BlockSoftDeleteMutationOptions = Apollo.BaseMutationOptions<
-  BlockSoftDeleteMutation,
-  BlockSoftDeleteMutationVariables
->
-export const BlockHardDeleteDocument = gql`
-  mutation blockHardDelete($input: BlockHardDeleteInput!) {
-    blockHardDelete(input: $input) {
-      errors
-    }
-  }
-`
-export type BlockHardDeleteMutationFn = Apollo.MutationFunction<
-  BlockHardDeleteMutation,
-  BlockHardDeleteMutationVariables
->
-
-/**
- * __useBlockHardDeleteMutation__
- *
- * To run a mutation, you first call `useBlockHardDeleteMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useBlockHardDeleteMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [blockHardDeleteMutation, { data, loading, error }] = useBlockHardDeleteMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useBlockHardDeleteMutation(
-  baseOptions?: Apollo.MutationHookOptions<BlockHardDeleteMutation, BlockHardDeleteMutationVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<BlockHardDeleteMutation, BlockHardDeleteMutationVariables>(BlockHardDeleteDocument, options)
-}
-export type BlockHardDeleteMutationHookResult = ReturnType<typeof useBlockHardDeleteMutation>
-export type BlockHardDeleteMutationResult = Apollo.MutationResult<BlockHardDeleteMutation>
-export type BlockHardDeleteMutationOptions = Apollo.BaseMutationOptions<
-  BlockHardDeleteMutation,
-  BlockHardDeleteMutationVariables
->
-export const BlockRestoreDocument = gql`
-  mutation blockRestore($input: BlockRestoreInput!) {
-    blockRestore(input: $input) {
-      errors
-    }
-  }
-`
-export type BlockRestoreMutationFn = Apollo.MutationFunction<BlockRestoreMutation, BlockRestoreMutationVariables>
-
-/**
- * __useBlockRestoreMutation__
- *
- * To run a mutation, you first call `useBlockRestoreMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useBlockRestoreMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [blockRestoreMutation, { data, loading, error }] = useBlockRestoreMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useBlockRestoreMutation(
-  baseOptions?: Apollo.MutationHookOptions<BlockRestoreMutation, BlockRestoreMutationVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<BlockRestoreMutation, BlockRestoreMutationVariables>(BlockRestoreDocument, options)
-}
-export type BlockRestoreMutationHookResult = ReturnType<typeof useBlockRestoreMutation>
-export type BlockRestoreMutationResult = Apollo.MutationResult<BlockRestoreMutation>
-export type BlockRestoreMutationOptions = Apollo.BaseMutationOptions<
-  BlockRestoreMutation,
-  BlockRestoreMutationVariables
->
-export const BlockPinOrUnpinDocument = gql`
-  mutation blockPinOrUnpin($input: BlockPinOrUnpinInput!) {
-    blockPinOrUnpin(input: $input) {
-      errors
-    }
-  }
-`
-export type BlockPinOrUnpinMutationFn = Apollo.MutationFunction<
-  BlockPinOrUnpinMutation,
-  BlockPinOrUnpinMutationVariables
->
-
-/**
- * __useBlockPinOrUnpinMutation__
- *
- * To run a mutation, you first call `useBlockPinOrUnpinMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useBlockPinOrUnpinMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [blockPinOrUnpinMutation, { data, loading, error }] = useBlockPinOrUnpinMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useBlockPinOrUnpinMutation(
-  baseOptions?: Apollo.MutationHookOptions<BlockPinOrUnpinMutation, BlockPinOrUnpinMutationVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<BlockPinOrUnpinMutation, BlockPinOrUnpinMutationVariables>(BlockPinOrUnpinDocument, options)
-}
-export type BlockPinOrUnpinMutationHookResult = ReturnType<typeof useBlockPinOrUnpinMutation>
-export type BlockPinOrUnpinMutationResult = Apollo.MutationResult<BlockPinOrUnpinMutation>
-export type BlockPinOrUnpinMutationOptions = Apollo.BaseMutationOptions<
-  BlockPinOrUnpinMutation,
-  BlockPinOrUnpinMutationVariables
->
-export const BlockCreateDocument = gql`
-  mutation blockCreate($input: BlockCreateInput!) {
-    blockCreate(input: $input) {
-      id
-      errors
-    }
-  }
-`
-export type BlockCreateMutationFn = Apollo.MutationFunction<BlockCreateMutation, BlockCreateMutationVariables>
-
-/**
- * __useBlockCreateMutation__
- *
- * To run a mutation, you first call `useBlockCreateMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useBlockCreateMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [blockCreateMutation, { data, loading, error }] = useBlockCreateMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useBlockCreateMutation(
-  baseOptions?: Apollo.MutationHookOptions<BlockCreateMutation, BlockCreateMutationVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<BlockCreateMutation, BlockCreateMutationVariables>(BlockCreateDocument, options)
-}
-export type BlockCreateMutationHookResult = ReturnType<typeof useBlockCreateMutation>
-export type BlockCreateMutationResult = Apollo.MutationResult<BlockCreateMutation>
-export type BlockCreateMutationOptions = Apollo.BaseMutationOptions<BlockCreateMutation, BlockCreateMutationVariables>
-export const BlockCreateShareLinkDocument = gql`
-  mutation blockCreateShareLink($input: BlockCreateShareLinkInput!) {
-    blockCreateShareLink(input: $input) {
-      errors
-    }
-  }
-`
-export type BlockCreateShareLinkMutationFn = Apollo.MutationFunction<
-  BlockCreateShareLinkMutation,
-  BlockCreateShareLinkMutationVariables
->
-
-/**
- * __useBlockCreateShareLinkMutation__
- *
- * To run a mutation, you first call `useBlockCreateShareLinkMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useBlockCreateShareLinkMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [blockCreateShareLinkMutation, { data, loading, error }] = useBlockCreateShareLinkMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useBlockCreateShareLinkMutation(
-  baseOptions?: Apollo.MutationHookOptions<BlockCreateShareLinkMutation, BlockCreateShareLinkMutationVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<BlockCreateShareLinkMutation, BlockCreateShareLinkMutationVariables>(
-    BlockCreateShareLinkDocument,
-    options
-  )
-}
-export type BlockCreateShareLinkMutationHookResult = ReturnType<typeof useBlockCreateShareLinkMutation>
-export type BlockCreateShareLinkMutationResult = Apollo.MutationResult<BlockCreateShareLinkMutation>
-export type BlockCreateShareLinkMutationOptions = Apollo.BaseMutationOptions<
-  BlockCreateShareLinkMutation,
-  BlockCreateShareLinkMutationVariables
->
-export const BlockMoveDocument = gql`
-  mutation blockMove($input: BlockMoveInput!) {
-    blockMove(input: $input) {
-      errors
-    }
-  }
-`
-export type BlockMoveMutationFn = Apollo.MutationFunction<BlockMoveMutation, BlockMoveMutationVariables>
-
-/**
- * __useBlockMoveMutation__
- *
- * To run a mutation, you first call `useBlockMoveMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useBlockMoveMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [blockMoveMutation, { data, loading, error }] = useBlockMoveMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useBlockMoveMutation(
-  baseOptions?: Apollo.MutationHookOptions<BlockMoveMutation, BlockMoveMutationVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<BlockMoveMutation, BlockMoveMutationVariables>(BlockMoveDocument, options)
-}
-export type BlockMoveMutationHookResult = ReturnType<typeof useBlockMoveMutation>
-export type BlockMoveMutationResult = Apollo.MutationResult<BlockMoveMutation>
-export type BlockMoveMutationOptions = Apollo.BaseMutationOptions<BlockMoveMutation, BlockMoveMutationVariables>
-export const BlockRenameDocument = gql`
-  mutation blockRename($input: BlockRenameInput!) {
-    blockRename(input: $input) {
-      errors
-    }
-  }
-`
-export type BlockRenameMutationFn = Apollo.MutationFunction<BlockRenameMutation, BlockRenameMutationVariables>
-
-/**
- * __useBlockRenameMutation__
- *
- * To run a mutation, you first call `useBlockRenameMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useBlockRenameMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [blockRenameMutation, { data, loading, error }] = useBlockRenameMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useBlockRenameMutation(
-  baseOptions?: Apollo.MutationHookOptions<BlockRenameMutation, BlockRenameMutationVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<BlockRenameMutation, BlockRenameMutationVariables>(BlockRenameDocument, options)
-}
-export type BlockRenameMutationHookResult = ReturnType<typeof useBlockRenameMutation>
-export type BlockRenameMutationResult = Apollo.MutationResult<BlockRenameMutation>
-export type BlockRenameMutationOptions = Apollo.BaseMutationOptions<BlockRenameMutation, BlockRenameMutationVariables>
+export type GroupLeaveMutationHookResult = ReturnType<typeof useGroupLeaveMutation>
+export type GroupLeaveMutationResult = Apollo.MutationResult<GroupLeaveMutation>
+export type GroupLeaveMutationOptions = Apollo.BaseMutationOptions<GroupLeaveMutation, GroupLeaveMutationVariables>
 export const BlockSyncBatchDocument = gql`
   mutation blockSyncBatch($input: BlockSyncBatchInput!) {
     blockSyncBatch(input: $input) {
@@ -5227,196 +4541,882 @@ export function useAwarenessSubscription(
 }
 export type AwarenessSubscriptionHookResult = ReturnType<typeof useAwarenessSubscription>
 export type AwarenessSubscriptionResult = Apollo.SubscriptionResult<AwarenessSubscription>
-export const UpdateDomainDocument = gql`
-  mutation updateDomain($input: UpdateDomainInput!) {
-    updateDomain(input: $input) {
-      errors
+export const QueryUnsplashImageDocument = gql`
+  query QueryUnsplashImage($query: String, $page: Int, $perPage: Int) {
+    unsplashImage(query: $query, page: $page, perPage: $perPage) {
+      id
+      width
+      height
+      fullUrl
+      smallUrl
+      username
+      blurHash
     }
   }
 `
-export type UpdateDomainMutationFn = Apollo.MutationFunction<UpdateDomainMutation, UpdateDomainMutationVariables>
 
 /**
- * __useUpdateDomainMutation__
+ * __useQueryUnsplashImageQuery__
  *
- * To run a mutation, you first call `useUpdateDomainMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateDomainMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
+ * To run a query within a React component, call `useQueryUnsplashImageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useQueryUnsplashImageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
  *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const [updateDomainMutation, { data, loading, error }] = useUpdateDomainMutation({
+ * const { data, loading, error } = useQueryUnsplashImageQuery({
  *   variables: {
- *      input: // value for 'input'
+ *      query: // value for 'query'
+ *      page: // value for 'page'
+ *      perPage: // value for 'perPage'
  *   },
  * });
  */
-export function useUpdateDomainMutation(
-  baseOptions?: Apollo.MutationHookOptions<UpdateDomainMutation, UpdateDomainMutationVariables>
+export function useQueryUnsplashImageQuery(
+  baseOptions?: Apollo.QueryHookOptions<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<UpdateDomainMutation, UpdateDomainMutationVariables>(UpdateDomainDocument, options)
+  return Apollo.useQuery<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>(QueryUnsplashImageDocument, options)
 }
-export type UpdateDomainMutationHookResult = ReturnType<typeof useUpdateDomainMutation>
-export type UpdateDomainMutationResult = Apollo.MutationResult<UpdateDomainMutation>
-export type UpdateDomainMutationOptions = Apollo.BaseMutationOptions<
-  UpdateDomainMutation,
-  UpdateDomainMutationVariables
->
-export const UserAppearanceUpdateDocument = gql`
-  mutation userAppearanceUpdate($input: UserAppearanceUpdateInput!) {
-    userAppearanceUpdate(input: $input) {
-      errors
-    }
-  }
-`
-export type UserAppearanceUpdateMutationFn = Apollo.MutationFunction<
-  UserAppearanceUpdateMutation,
-  UserAppearanceUpdateMutationVariables
->
-
-/**
- * __useUserAppearanceUpdateMutation__
- *
- * To run a mutation, you first call `useUserAppearanceUpdateMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUserAppearanceUpdateMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [userAppearanceUpdateMutation, { data, loading, error }] = useUserAppearanceUpdateMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useUserAppearanceUpdateMutation(
-  baseOptions?: Apollo.MutationHookOptions<UserAppearanceUpdateMutation, UserAppearanceUpdateMutationVariables>
+export function useQueryUnsplashImageLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<UserAppearanceUpdateMutation, UserAppearanceUpdateMutationVariables>(
-    UserAppearanceUpdateDocument,
+  return Apollo.useLazyQuery<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>(
+    QueryUnsplashImageDocument,
     options
   )
 }
-export type UserAppearanceUpdateMutationHookResult = ReturnType<typeof useUserAppearanceUpdateMutation>
-export type UserAppearanceUpdateMutationResult = Apollo.MutationResult<UserAppearanceUpdateMutation>
-export type UserAppearanceUpdateMutationOptions = Apollo.BaseMutationOptions<
-  UserAppearanceUpdateMutation,
-  UserAppearanceUpdateMutationVariables
+export type QueryUnsplashImageQueryHookResult = ReturnType<typeof useQueryUnsplashImageQuery>
+export type QueryUnsplashImageLazyQueryHookResult = ReturnType<typeof useQueryUnsplashImageLazyQuery>
+export type QueryUnsplashImageQueryResult = Apollo.QueryResult<
+  QueryUnsplashImageQuery,
+  QueryUnsplashImageQueryVariables
 >
-export const UserDestroyDocument = gql`
-  mutation userDestroy($input: UserDestroyInput!) {
-    userDestroy(input: $input) {
-      errors
+export const QueryPreviewBoxDocument = gql`
+  query QueryPreviewBox($url: String!) {
+    previewBox(url: $url) {
+      url
+      title
+      description
+      cover
+      icon
+      type
+      size
+      iframeUrl
     }
   }
 `
-export type UserDestroyMutationFn = Apollo.MutationFunction<UserDestroyMutation, UserDestroyMutationVariables>
 
 /**
- * __useUserDestroyMutation__
+ * __useQueryPreviewBoxQuery__
  *
- * To run a mutation, you first call `useUserDestroyMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUserDestroyMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
+ * To run a query within a React component, call `useQueryPreviewBoxQuery` and pass it any options that fit your needs.
+ * When your component renders, `useQueryPreviewBoxQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
  *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const [userDestroyMutation, { data, loading, error }] = useUserDestroyMutation({
+ * const { data, loading, error } = useQueryPreviewBoxQuery({
+ *   variables: {
+ *      url: // value for 'url'
+ *   },
+ * });
+ */
+export function useQueryPreviewBoxQuery(
+  baseOptions: Apollo.QueryHookOptions<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>(QueryPreviewBoxDocument, options)
+}
+export function useQueryPreviewBoxLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>(QueryPreviewBoxDocument, options)
+}
+export type QueryPreviewBoxQueryHookResult = ReturnType<typeof useQueryPreviewBoxQuery>
+export type QueryPreviewBoxLazyQueryHookResult = ReturnType<typeof useQueryPreviewBoxLazyQuery>
+export type QueryPreviewBoxQueryResult = Apollo.QueryResult<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>
+export const QueryPodSearchDocument = gql`
+  query QueryPodSearch($input: String!) {
+    podSearch(input: $input) {
+      domain
+      name
+      avatarData {
+        url
+      }
+    }
+  }
+`
+
+/**
+ * __useQueryPodSearchQuery__
+ *
+ * To run a query within a React component, call `useQueryPodSearchQuery` and pass it any options that fit your needs.
+ * When your component renders, `useQueryPodSearchQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useQueryPodSearchQuery({
  *   variables: {
  *      input: // value for 'input'
  *   },
  * });
  */
-export function useUserDestroyMutation(
-  baseOptions?: Apollo.MutationHookOptions<UserDestroyMutation, UserDestroyMutationVariables>
+export function useQueryPodSearchQuery(
+  baseOptions: Apollo.QueryHookOptions<QueryPodSearchQuery, QueryPodSearchQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<UserDestroyMutation, UserDestroyMutationVariables>(UserDestroyDocument, options)
+  return Apollo.useQuery<QueryPodSearchQuery, QueryPodSearchQueryVariables>(QueryPodSearchDocument, options)
 }
-export type UserDestroyMutationHookResult = ReturnType<typeof useUserDestroyMutation>
-export type UserDestroyMutationResult = Apollo.MutationResult<UserDestroyMutation>
-export type UserDestroyMutationOptions = Apollo.BaseMutationOptions<UserDestroyMutation, UserDestroyMutationVariables>
-export const GroupDestroyDocument = gql`
-  mutation groupDestroy($input: GroupDestroyInput!) {
-    groupDestroy(input: $input) {
+export function useQueryPodSearchLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<QueryPodSearchQuery, QueryPodSearchQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<QueryPodSearchQuery, QueryPodSearchQueryVariables>(QueryPodSearchDocument, options)
+}
+export type QueryPodSearchQueryHookResult = ReturnType<typeof useQueryPodSearchQuery>
+export type QueryPodSearchLazyQueryHookResult = ReturnType<typeof useQueryPodSearchLazyQuery>
+export type QueryPodSearchQueryResult = Apollo.QueryResult<QueryPodSearchQuery, QueryPodSearchQueryVariables>
+export const CreateOrUpdatePodDocument = gql`
+  mutation createOrUpdatePod($input: CreateOrUpdatePodInput!) {
+    createOrUpdatePod(input: $input) {
       errors
+      pod {
+        ... on User {
+          domain
+          name
+        }
+        ... on Group {
+          domain
+          name
+          inviteEnable
+          inviteSecret
+        }
+      }
     }
   }
 `
-export type GroupDestroyMutationFn = Apollo.MutationFunction<GroupDestroyMutation, GroupDestroyMutationVariables>
-
-/**
- * __useGroupDestroyMutation__
- *
- * To run a mutation, you first call `useGroupDestroyMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useGroupDestroyMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [groupDestroyMutation, { data, loading, error }] = useGroupDestroyMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useGroupDestroyMutation(
-  baseOptions?: Apollo.MutationHookOptions<GroupDestroyMutation, GroupDestroyMutationVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<GroupDestroyMutation, GroupDestroyMutationVariables>(GroupDestroyDocument, options)
-}
-export type GroupDestroyMutationHookResult = ReturnType<typeof useGroupDestroyMutation>
-export type GroupDestroyMutationResult = Apollo.MutationResult<GroupDestroyMutation>
-export type GroupDestroyMutationOptions = Apollo.BaseMutationOptions<
-  GroupDestroyMutation,
-  GroupDestroyMutationVariables
+export type CreateOrUpdatePodMutationFn = Apollo.MutationFunction<
+  CreateOrUpdatePodMutation,
+  CreateOrUpdatePodMutationVariables
 >
-export const GroupLeaveDocument = gql`
-  mutation groupLeave($input: GroupLeaveInput!) {
-    groupLeave(input: $input) {
-      errors
-    }
-  }
-`
-export type GroupLeaveMutationFn = Apollo.MutationFunction<GroupLeaveMutation, GroupLeaveMutationVariables>
 
 /**
- * __useGroupLeaveMutation__
+ * __useCreateOrUpdatePodMutation__
  *
- * To run a mutation, you first call `useGroupLeaveMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useGroupLeaveMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useCreateOrUpdatePodMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateOrUpdatePodMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [groupLeaveMutation, { data, loading, error }] = useGroupLeaveMutation({
+ * const [createOrUpdatePodMutation, { data, loading, error }] = useCreateOrUpdatePodMutation({
  *   variables: {
  *      input: // value for 'input'
  *   },
  * });
  */
-export function useGroupLeaveMutation(
-  baseOptions?: Apollo.MutationHookOptions<GroupLeaveMutation, GroupLeaveMutationVariables>
+export function useCreateOrUpdatePodMutation(
+  baseOptions?: Apollo.MutationHookOptions<CreateOrUpdatePodMutation, CreateOrUpdatePodMutationVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<GroupLeaveMutation, GroupLeaveMutationVariables>(GroupLeaveDocument, options)
+  return Apollo.useMutation<CreateOrUpdatePodMutation, CreateOrUpdatePodMutationVariables>(
+    CreateOrUpdatePodDocument,
+    options
+  )
 }
-export type GroupLeaveMutationHookResult = ReturnType<typeof useGroupLeaveMutation>
-export type GroupLeaveMutationResult = Apollo.MutationResult<GroupLeaveMutation>
-export type GroupLeaveMutationOptions = Apollo.BaseMutationOptions<GroupLeaveMutation, GroupLeaveMutationVariables>
+export type CreateOrUpdatePodMutationHookResult = ReturnType<typeof useCreateOrUpdatePodMutation>
+export type CreateOrUpdatePodMutationResult = Apollo.MutationResult<CreateOrUpdatePodMutation>
+export type CreateOrUpdatePodMutationOptions = Apollo.BaseMutationOptions<
+  CreateOrUpdatePodMutation,
+  CreateOrUpdatePodMutationVariables
+>
+export const GroupJoinDocument = gql`
+  mutation groupJoin($input: GroupJoinInput!) {
+    groupJoin(input: $input) {
+      errors
+    }
+  }
+`
+export type GroupJoinMutationFn = Apollo.MutationFunction<GroupJoinMutation, GroupJoinMutationVariables>
+
+/**
+ * __useGroupJoinMutation__
+ *
+ * To run a mutation, you first call `useGroupJoinMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useGroupJoinMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [groupJoinMutation, { data, loading, error }] = useGroupJoinMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useGroupJoinMutation(
+  baseOptions?: Apollo.MutationHookOptions<GroupJoinMutation, GroupJoinMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<GroupJoinMutation, GroupJoinMutationVariables>(GroupJoinDocument, options)
+}
+export type GroupJoinMutationHookResult = ReturnType<typeof useGroupJoinMutation>
+export type GroupJoinMutationResult = Apollo.MutationResult<GroupJoinMutation>
+export type GroupJoinMutationOptions = Apollo.BaseMutationOptions<GroupJoinMutation, GroupJoinMutationVariables>
+export const GetBlockSearchDocument = gql`
+  query GetBlockSearch($domain: String!, $input: String!) {
+    blockSearch(domain: $domain, input: $input) {
+      id
+      type
+      text
+      rootId
+    }
+  }
+`
+
+/**
+ * __useGetBlockSearchQuery__
+ *
+ * To run a query within a React component, call `useGetBlockSearchQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBlockSearchQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBlockSearchQuery({
+ *   variables: {
+ *      domain: // value for 'domain'
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useGetBlockSearchQuery(
+  baseOptions: Apollo.QueryHookOptions<GetBlockSearchQuery, GetBlockSearchQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetBlockSearchQuery, GetBlockSearchQueryVariables>(GetBlockSearchDocument, options)
+}
+export function useGetBlockSearchLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetBlockSearchQuery, GetBlockSearchQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetBlockSearchQuery, GetBlockSearchQueryVariables>(GetBlockSearchDocument, options)
+}
+export type GetBlockSearchQueryHookResult = ReturnType<typeof useGetBlockSearchQuery>
+export type GetBlockSearchLazyQueryHookResult = ReturnType<typeof useGetBlockSearchLazyQuery>
+export type GetBlockSearchQueryResult = Apollo.QueryResult<GetBlockSearchQuery, GetBlockSearchQueryVariables>
+export const GetBlockShareLinksDocument = gql`
+  query GetBlockShareLinks($id: String!) {
+    blockShareLinks(id: $id) {
+      key
+      policy
+      state
+      sharePodData {
+        name
+        domain
+        avatarData {
+          url
+        }
+      }
+    }
+  }
+`
+
+/**
+ * __useGetBlockShareLinksQuery__
+ *
+ * To run a query within a React component, call `useGetBlockShareLinksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBlockShareLinksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBlockShareLinksQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetBlockShareLinksQuery(
+  baseOptions: Apollo.QueryHookOptions<GetBlockShareLinksQuery, GetBlockShareLinksQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetBlockShareLinksQuery, GetBlockShareLinksQueryVariables>(GetBlockShareLinksDocument, options)
+}
+export function useGetBlockShareLinksLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetBlockShareLinksQuery, GetBlockShareLinksQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetBlockShareLinksQuery, GetBlockShareLinksQueryVariables>(
+    GetBlockShareLinksDocument,
+    options
+  )
+}
+export type GetBlockShareLinksQueryHookResult = ReturnType<typeof useGetBlockShareLinksQuery>
+export type GetBlockShareLinksLazyQueryHookResult = ReturnType<typeof useGetBlockShareLinksLazyQuery>
+export type GetBlockShareLinksQueryResult = Apollo.QueryResult<
+  GetBlockShareLinksQuery,
+  GetBlockShareLinksQueryVariables
+>
+export const BlockDuplicateDocument = gql`
+  mutation blockDuplicate($input: BlockDuplicateInput!) {
+    blockDuplicate(input: $input) {
+      id
+      formulaIds
+      errors
+    }
+  }
+`
+export type BlockDuplicateMutationFn = Apollo.MutationFunction<BlockDuplicateMutation, BlockDuplicateMutationVariables>
+
+/**
+ * __useBlockDuplicateMutation__
+ *
+ * To run a mutation, you first call `useBlockDuplicateMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBlockDuplicateMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [blockDuplicateMutation, { data, loading, error }] = useBlockDuplicateMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useBlockDuplicateMutation(
+  baseOptions?: Apollo.MutationHookOptions<BlockDuplicateMutation, BlockDuplicateMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<BlockDuplicateMutation, BlockDuplicateMutationVariables>(BlockDuplicateDocument, options)
+}
+export type BlockDuplicateMutationHookResult = ReturnType<typeof useBlockDuplicateMutation>
+export type BlockDuplicateMutationResult = Apollo.MutationResult<BlockDuplicateMutation>
+export type BlockDuplicateMutationOptions = Apollo.BaseMutationOptions<
+  BlockDuplicateMutation,
+  BlockDuplicateMutationVariables
+>
+export const BlockSoftDeleteDocument = gql`
+  mutation blockSoftDelete($input: BlockSoftDeleteInput!) {
+    blockSoftDelete(input: $input) {
+      errors
+    }
+  }
+`
+export type BlockSoftDeleteMutationFn = Apollo.MutationFunction<
+  BlockSoftDeleteMutation,
+  BlockSoftDeleteMutationVariables
+>
+
+/**
+ * __useBlockSoftDeleteMutation__
+ *
+ * To run a mutation, you first call `useBlockSoftDeleteMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBlockSoftDeleteMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [blockSoftDeleteMutation, { data, loading, error }] = useBlockSoftDeleteMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useBlockSoftDeleteMutation(
+  baseOptions?: Apollo.MutationHookOptions<BlockSoftDeleteMutation, BlockSoftDeleteMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<BlockSoftDeleteMutation, BlockSoftDeleteMutationVariables>(BlockSoftDeleteDocument, options)
+}
+export type BlockSoftDeleteMutationHookResult = ReturnType<typeof useBlockSoftDeleteMutation>
+export type BlockSoftDeleteMutationResult = Apollo.MutationResult<BlockSoftDeleteMutation>
+export type BlockSoftDeleteMutationOptions = Apollo.BaseMutationOptions<
+  BlockSoftDeleteMutation,
+  BlockSoftDeleteMutationVariables
+>
+export const BlockHardDeleteDocument = gql`
+  mutation blockHardDelete($input: BlockHardDeleteInput!) {
+    blockHardDelete(input: $input) {
+      errors
+    }
+  }
+`
+export type BlockHardDeleteMutationFn = Apollo.MutationFunction<
+  BlockHardDeleteMutation,
+  BlockHardDeleteMutationVariables
+>
+
+/**
+ * __useBlockHardDeleteMutation__
+ *
+ * To run a mutation, you first call `useBlockHardDeleteMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBlockHardDeleteMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [blockHardDeleteMutation, { data, loading, error }] = useBlockHardDeleteMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useBlockHardDeleteMutation(
+  baseOptions?: Apollo.MutationHookOptions<BlockHardDeleteMutation, BlockHardDeleteMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<BlockHardDeleteMutation, BlockHardDeleteMutationVariables>(BlockHardDeleteDocument, options)
+}
+export type BlockHardDeleteMutationHookResult = ReturnType<typeof useBlockHardDeleteMutation>
+export type BlockHardDeleteMutationResult = Apollo.MutationResult<BlockHardDeleteMutation>
+export type BlockHardDeleteMutationOptions = Apollo.BaseMutationOptions<
+  BlockHardDeleteMutation,
+  BlockHardDeleteMutationVariables
+>
+export const BlockRestoreDocument = gql`
+  mutation blockRestore($input: BlockRestoreInput!) {
+    blockRestore(input: $input) {
+      errors
+    }
+  }
+`
+export type BlockRestoreMutationFn = Apollo.MutationFunction<BlockRestoreMutation, BlockRestoreMutationVariables>
+
+/**
+ * __useBlockRestoreMutation__
+ *
+ * To run a mutation, you first call `useBlockRestoreMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBlockRestoreMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [blockRestoreMutation, { data, loading, error }] = useBlockRestoreMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useBlockRestoreMutation(
+  baseOptions?: Apollo.MutationHookOptions<BlockRestoreMutation, BlockRestoreMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<BlockRestoreMutation, BlockRestoreMutationVariables>(BlockRestoreDocument, options)
+}
+export type BlockRestoreMutationHookResult = ReturnType<typeof useBlockRestoreMutation>
+export type BlockRestoreMutationResult = Apollo.MutationResult<BlockRestoreMutation>
+export type BlockRestoreMutationOptions = Apollo.BaseMutationOptions<
+  BlockRestoreMutation,
+  BlockRestoreMutationVariables
+>
+export const BlockPinOrUnpinDocument = gql`
+  mutation blockPinOrUnpin($input: BlockPinOrUnpinInput!) {
+    blockPinOrUnpin(input: $input) {
+      errors
+    }
+  }
+`
+export type BlockPinOrUnpinMutationFn = Apollo.MutationFunction<
+  BlockPinOrUnpinMutation,
+  BlockPinOrUnpinMutationVariables
+>
+
+/**
+ * __useBlockPinOrUnpinMutation__
+ *
+ * To run a mutation, you first call `useBlockPinOrUnpinMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBlockPinOrUnpinMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [blockPinOrUnpinMutation, { data, loading, error }] = useBlockPinOrUnpinMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useBlockPinOrUnpinMutation(
+  baseOptions?: Apollo.MutationHookOptions<BlockPinOrUnpinMutation, BlockPinOrUnpinMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<BlockPinOrUnpinMutation, BlockPinOrUnpinMutationVariables>(BlockPinOrUnpinDocument, options)
+}
+export type BlockPinOrUnpinMutationHookResult = ReturnType<typeof useBlockPinOrUnpinMutation>
+export type BlockPinOrUnpinMutationResult = Apollo.MutationResult<BlockPinOrUnpinMutation>
+export type BlockPinOrUnpinMutationOptions = Apollo.BaseMutationOptions<
+  BlockPinOrUnpinMutation,
+  BlockPinOrUnpinMutationVariables
+>
+export const BlockCreateDocument = gql`
+  mutation blockCreate($input: BlockCreateInput!) {
+    blockCreate(input: $input) {
+      id
+      errors
+    }
+  }
+`
+export type BlockCreateMutationFn = Apollo.MutationFunction<BlockCreateMutation, BlockCreateMutationVariables>
+
+/**
+ * __useBlockCreateMutation__
+ *
+ * To run a mutation, you first call `useBlockCreateMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBlockCreateMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [blockCreateMutation, { data, loading, error }] = useBlockCreateMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useBlockCreateMutation(
+  baseOptions?: Apollo.MutationHookOptions<BlockCreateMutation, BlockCreateMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<BlockCreateMutation, BlockCreateMutationVariables>(BlockCreateDocument, options)
+}
+export type BlockCreateMutationHookResult = ReturnType<typeof useBlockCreateMutation>
+export type BlockCreateMutationResult = Apollo.MutationResult<BlockCreateMutation>
+export type BlockCreateMutationOptions = Apollo.BaseMutationOptions<BlockCreateMutation, BlockCreateMutationVariables>
+export const BlockCreateShareLinkDocument = gql`
+  mutation blockCreateShareLink($input: BlockCreateShareLinkInput!) {
+    blockCreateShareLink(input: $input) {
+      errors
+    }
+  }
+`
+export type BlockCreateShareLinkMutationFn = Apollo.MutationFunction<
+  BlockCreateShareLinkMutation,
+  BlockCreateShareLinkMutationVariables
+>
+
+/**
+ * __useBlockCreateShareLinkMutation__
+ *
+ * To run a mutation, you first call `useBlockCreateShareLinkMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBlockCreateShareLinkMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [blockCreateShareLinkMutation, { data, loading, error }] = useBlockCreateShareLinkMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useBlockCreateShareLinkMutation(
+  baseOptions?: Apollo.MutationHookOptions<BlockCreateShareLinkMutation, BlockCreateShareLinkMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<BlockCreateShareLinkMutation, BlockCreateShareLinkMutationVariables>(
+    BlockCreateShareLinkDocument,
+    options
+  )
+}
+export type BlockCreateShareLinkMutationHookResult = ReturnType<typeof useBlockCreateShareLinkMutation>
+export type BlockCreateShareLinkMutationResult = Apollo.MutationResult<BlockCreateShareLinkMutation>
+export type BlockCreateShareLinkMutationOptions = Apollo.BaseMutationOptions<
+  BlockCreateShareLinkMutation,
+  BlockCreateShareLinkMutationVariables
+>
+export const BlockMoveDocument = gql`
+  mutation blockMove($input: BlockMoveInput!) {
+    blockMove(input: $input) {
+      errors
+    }
+  }
+`
+export type BlockMoveMutationFn = Apollo.MutationFunction<BlockMoveMutation, BlockMoveMutationVariables>
+
+/**
+ * __useBlockMoveMutation__
+ *
+ * To run a mutation, you first call `useBlockMoveMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBlockMoveMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [blockMoveMutation, { data, loading, error }] = useBlockMoveMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useBlockMoveMutation(
+  baseOptions?: Apollo.MutationHookOptions<BlockMoveMutation, BlockMoveMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<BlockMoveMutation, BlockMoveMutationVariables>(BlockMoveDocument, options)
+}
+export type BlockMoveMutationHookResult = ReturnType<typeof useBlockMoveMutation>
+export type BlockMoveMutationResult = Apollo.MutationResult<BlockMoveMutation>
+export type BlockMoveMutationOptions = Apollo.BaseMutationOptions<BlockMoveMutation, BlockMoveMutationVariables>
+export const BlockRenameDocument = gql`
+  mutation blockRename($input: BlockRenameInput!) {
+    blockRename(input: $input) {
+      errors
+    }
+  }
+`
+export type BlockRenameMutationFn = Apollo.MutationFunction<BlockRenameMutation, BlockRenameMutationVariables>
+
+/**
+ * __useBlockRenameMutation__
+ *
+ * To run a mutation, you first call `useBlockRenameMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBlockRenameMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [blockRenameMutation, { data, loading, error }] = useBlockRenameMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useBlockRenameMutation(
+  baseOptions?: Apollo.MutationHookOptions<BlockRenameMutation, BlockRenameMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<BlockRenameMutation, BlockRenameMutationVariables>(BlockRenameDocument, options)
+}
+export type BlockRenameMutationHookResult = ReturnType<typeof useBlockRenameMutation>
+export type BlockRenameMutationResult = Apollo.MutationResult<BlockRenameMutation>
+export type BlockRenameMutationOptions = Apollo.BaseMutationOptions<BlockRenameMutation, BlockRenameMutationVariables>
+export const GetPageBlocksDocument = gql`
+  query GetPageBlocks($domain: String!) {
+    pageBlocks(domain: $domain) {
+      id
+      sort
+      nextSort
+      firstChildSort
+      parentId
+      documentInfo {
+        id
+        title
+        icon {
+          ... on BlockImage {
+            type
+            source
+            key
+            height
+            width
+          }
+          ... on BlockEmoji {
+            type
+            name
+            emoji
+          }
+        }
+        pin
+      }
+    }
+  }
+`
+
+/**
+ * __useGetPageBlocksQuery__
+ *
+ * To run a query within a React component, call `useGetPageBlocksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPageBlocksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPageBlocksQuery({
+ *   variables: {
+ *      domain: // value for 'domain'
+ *   },
+ * });
+ */
+export function useGetPageBlocksQuery(
+  baseOptions: Apollo.QueryHookOptions<GetPageBlocksQuery, GetPageBlocksQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetPageBlocksQuery, GetPageBlocksQueryVariables>(GetPageBlocksDocument, options)
+}
+export function useGetPageBlocksLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetPageBlocksQuery, GetPageBlocksQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetPageBlocksQuery, GetPageBlocksQueryVariables>(GetPageBlocksDocument, options)
+}
+export type GetPageBlocksQueryHookResult = ReturnType<typeof useGetPageBlocksQuery>
+export type GetPageBlocksLazyQueryHookResult = ReturnType<typeof useGetPageBlocksLazyQuery>
+export type GetPageBlocksQueryResult = Apollo.QueryResult<GetPageBlocksQuery, GetPageBlocksQueryVariables>
+export const GetTrashBlocksDocument = gql`
+  query GetTrashBlocks($domain: String!, $blockId: UUID, $search: String) {
+    trashBlocks(domain: $domain, blockId: $blockId, search: $search) {
+      id
+      documentInfo {
+        id
+        title
+        deletedAt
+        restorable
+        icon {
+          ... on BlockImage {
+            type
+            source
+            key
+            height
+            width
+          }
+          ... on BlockEmoji {
+            type
+            name
+            emoji
+          }
+        }
+        pathArray {
+          id
+          title
+          isDeleted
+          icon {
+            ... on BlockImage {
+              type
+              source
+              key
+              height
+              width
+            }
+            ... on BlockEmoji {
+              type
+              name
+              emoji
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+/**
+ * __useGetTrashBlocksQuery__
+ *
+ * To run a query within a React component, call `useGetTrashBlocksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTrashBlocksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTrashBlocksQuery({
+ *   variables: {
+ *      domain: // value for 'domain'
+ *      blockId: // value for 'blockId'
+ *      search: // value for 'search'
+ *   },
+ * });
+ */
+export function useGetTrashBlocksQuery(
+  baseOptions: Apollo.QueryHookOptions<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>(GetTrashBlocksDocument, options)
+}
+export function useGetTrashBlocksLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>(GetTrashBlocksDocument, options)
+}
+export type GetTrashBlocksQueryHookResult = ReturnType<typeof useGetTrashBlocksQuery>
+export type GetTrashBlocksLazyQueryHookResult = ReturnType<typeof useGetTrashBlocksLazyQuery>
+export type GetTrashBlocksQueryResult = Apollo.QueryResult<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>
+export const GetBlockPinsDocument = gql`
+  query GetBlockPins {
+    blockPins {
+      blockId
+      text
+      meta {
+        icon {
+          ... on BlockImage {
+            type
+            source
+            key
+          }
+          ... on BlockEmoji {
+            type
+            name
+            emoji
+          }
+        }
+      }
+    }
+  }
+`
+
+/**
+ * __useGetBlockPinsQuery__
+ *
+ * To run a query within a React component, call `useGetBlockPinsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBlockPinsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBlockPinsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetBlockPinsQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetBlockPinsQuery, GetBlockPinsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetBlockPinsQuery, GetBlockPinsQueryVariables>(GetBlockPinsDocument, options)
+}
+export function useGetBlockPinsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetBlockPinsQuery, GetBlockPinsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetBlockPinsQuery, GetBlockPinsQueryVariables>(GetBlockPinsDocument, options)
+}
+export type GetBlockPinsQueryHookResult = ReturnType<typeof useGetBlockPinsQuery>
+export type GetBlockPinsLazyQueryHookResult = ReturnType<typeof useGetBlockPinsLazyQuery>
+export type GetBlockPinsQueryResult = Apollo.QueryResult<GetBlockPinsQuery, GetBlockPinsQueryVariables>
 export const UserEmailPasswordSignInDocument = gql`
   mutation userEmailPasswordSignIn($input: UserEmailPasswordSignInInput!) {
     userEmailPasswordSignIn(input: $input) {

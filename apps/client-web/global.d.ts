@@ -30,7 +30,6 @@ declare global {
     sentryDsn: string
   }
   interface MashcardClientContext {
-    wsCable: ActionCable.Consumer
     uuid: string
   }
   type MashcardContext = MashcardServerContext & MashcardClientContext

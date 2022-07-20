@@ -2,24 +2,25 @@
 import { FC, lazy } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-const MatchAll = lazy(async () => await import('@/routes/$'))
-const Index = lazy(async () => await import('@/routes/index'))
-const DomainIndex = lazy(async () => await import('@/routes/$domain/index'))
-const DomainTrash = lazy(async () => await import('@/routes/$domain/trash'))
-const DomainDocIdIndex = lazy(async () => await import('@/routes/$domain/$docId/index'))
-const DomainDocIdHistoriesHistoryId = lazy(async () => await import('@/routes/$domain/$docId/histories/$historyId'))
-const DomainJoinSecret = lazy(async () => await import('@/routes/$domain/join/$secret'))
-const DomainSettingsLayout = lazy(async () => await import('@/routes/$domain/settings/_'))
-const DomainSettingsIndex = lazy(async () => await import('@/routes/$domain/settings/index'))
-const DomainSettingsAccountIndex = lazy(async () => await import('@/routes/$domain/settings/account/index'))
-const DomainSettingsGeneralIndex = lazy(async () => await import('@/routes/$domain/settings/general/index'))
-const DomainSettingsTeamIndex = lazy(async () => await import('@/routes/$domain/settings/team/index'))
-const AccountsLayout = lazy(async () => await import('@/routes/accounts/_'))
-const AccountsIndex = lazy(async () => await import('@/routes/accounts/index'))
-const AccountsSignIn = lazy(async () => await import('@/routes/accounts/sign-in'))
-const AccountsSignUp = lazy(async () => await import('@/routes/accounts/sign-up'))
-const AccountsPasswordEdit = lazy(async () => await import('@/routes/accounts/password/edit'))
-const AccountsPasswordForget = lazy(async () => await import('@/routes/accounts/password/forget'))
+const MatchAll = lazy(async () => await import('../routes/$'))
+const Index = lazy(async () => await import('../routes/index'))
+const DomainLayout = lazy(async () => await import('../routes/$domain/_'))
+const DomainIndex = lazy(async () => await import('../routes/$domain/index'))
+const DomainTrash = lazy(async () => await import('../routes/$domain/trash'))
+const DomainDocIdIndex = lazy(async () => await import('../routes/$domain/$docId/index'))
+const DomainDocIdHistoriesHistoryId = lazy(async () => await import('../routes/$domain/$docId/histories/$historyId'))
+const DomainJoinSecret = lazy(async () => await import('../routes/$domain.join/$secret'))
+const DomainSettingsLayout = lazy(async () => await import('../routes/$domain.settings/_'))
+const DomainSettingsIndex = lazy(async () => await import('../routes/$domain.settings/index'))
+const DomainSettingsAccountIndex = lazy(async () => await import('../routes/$domain.settings/account/index'))
+const DomainSettingsGeneralIndex = lazy(async () => await import('../routes/$domain.settings/general/index'))
+const DomainSettingsTeamIndex = lazy(async () => await import('../routes/$domain.settings/team/index'))
+const AccountsLayout = lazy(async () => await import('../routes/accounts/_'))
+const AccountsIndex = lazy(async () => await import('../routes/accounts/index'))
+const AccountsSignIn = lazy(async () => await import('../routes/accounts/sign-in'))
+const AccountsSignUp = lazy(async () => await import('../routes/accounts/sign-up'))
+const AccountsPasswordEdit = lazy(async () => await import('../routes/accounts/password/edit'))
+const AccountsPasswordForget = lazy(async () => await import('../routes/accounts/password/forget'))
 
 export const RootRoutes: FC = () => {
   return (
@@ -27,10 +28,12 @@ export const RootRoutes: FC = () => {
       <Routes>
         <Route path="*" element={<MatchAll />} />
         <Route index element={<Index />} />
-        <Route path=":domain" element={<DomainIndex />} />
-        <Route path=":domain/trash" element={<DomainTrash />} />
-        <Route path=":domain/:docId" element={<DomainDocIdIndex />} />
-        <Route path=":domain/:docId/histories/:historyId" element={<DomainDocIdHistoriesHistoryId />} />
+        <Route path=":domain" element={<DomainLayout />}>
+          <Route index element={<DomainIndex />} />
+          <Route path="trash" element={<DomainTrash />} />
+          <Route path=":docId" element={<DomainDocIdIndex />} />
+          <Route path=":docId/histories/:historyId" element={<DomainDocIdHistoriesHistoryId />} />
+        </Route>
         <Route path=":domain/join/:secret" element={<DomainJoinSecret />} />
         <Route path=":domain/settings" element={<DomainSettingsLayout />}>
           <Route index element={<DomainSettingsIndex />} />

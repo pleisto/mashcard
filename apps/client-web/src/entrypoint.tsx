@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client'
-import { MashcardPWA } from '@/core/App'
-import { initialization } from '@/core/initializers'
+import { MashcardPWA } from './core/App'
+import { initialization } from './core/initializers'
 import { devLog } from '@mashcard/design-system'
 
 initialization()

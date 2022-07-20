@@ -2,7 +2,6 @@ import { Box, Button, useBoolean } from '@mashcard/design-system'
 import React, { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 
-import { isLoadingVar } from '@/common/reactiveVars'
 import { AuthMethod } from '@/MashcardGraphQL'
 import { EmailPasswordSignIn } from './_shared/EmailPasswordSignIn'
 import { MoreAuthMethods } from './_shared/MoreAuthMethods'
@@ -18,12 +17,6 @@ export const SignIn: React.FC = () => {
   useEffect(() => {
     if (!loading && preferredAuthMethod?.name === AuthMethod.EmailPassword) enableEmailPwdSignIn()
   }, [enableEmailPwdSignIn, loading, preferredAuthMethod?.name])
-
-  useEffect(() => {
-    isLoadingVar(loading)
-  }, [loading])
-
-  if (loading) return <></>
 
   const otherAuthMethods = renderEmailPasswordForm
     ? // skip EmailPassword if emailPassword has been rendered.
