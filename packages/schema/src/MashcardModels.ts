@@ -491,8 +491,6 @@ export type BlockNew = {
   blobs?: Maybe<Array<Blob>>
   /** Block Type */
   blockType?: Maybe<Scalars['String']>
-  /** deleted_at */
-  deletedAt?: Maybe<Scalars['ISO8601DateTime']>
   documentInfo?: Maybe<DocumentInfo>
   /** block first child sort */
   firstChildSort: Scalars['BigInt']
@@ -967,6 +965,8 @@ export type DocumentInfo = {
   __typename?: 'DocumentInfo'
   /** pod */
   collaborators: Array<PodBase>
+  /** deleted_at */
+  deletedAt?: Maybe<Scalars['ISO8601DateTime']>
   /** alias */
   enabledAlias?: Maybe<BlockAlias>
   /** icon */
@@ -983,6 +983,8 @@ export type DocumentInfo = {
   permission?: Maybe<ShareLink>
   /** pin */
   pin: Scalars['Boolean']
+  /** restorable */
+  restorable: Scalars['Boolean']
   /** title */
   title: Scalars['String']
 }

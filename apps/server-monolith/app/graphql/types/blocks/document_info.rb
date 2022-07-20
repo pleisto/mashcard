@@ -20,6 +20,9 @@ module Types
       field :pin, Boolean, 'pin', null: false
       field :title, String, 'title', null: false
 
+      field :deleted_at, GraphQL::Types::ISO8601DateTime, 'deleted_at', null: true
+      field :restorable, Boolean, 'restorable', null: false
+
       def states_count
         object.states.count
       end
@@ -36,6 +39,10 @@ module Types
 
       def is_deleted
         !!object.deleted_at
+      end
+
+      def restorable
+        is_deleted && !object.path_array.any? { |i| i[:is_deleted] }
       end
 
       def permission

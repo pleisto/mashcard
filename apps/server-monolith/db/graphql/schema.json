@@ -2847,18 +2847,6 @@
               "deprecationReason": null
             },
             {
-              "name": "deletedAt",
-              "description": "deleted_at",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "ISO8601DateTime",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "documentInfo",
               "description": null,
               "args": [],
@@ -5700,6 +5688,18 @@
               "deprecationReason": null
             },
             {
+              "name": "deletedAt",
+              "description": "deleted_at",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "ISO8601DateTime",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "enabledAlias",
               "description": "alias",
               "args": [],
@@ -5810,6 +5810,22 @@
             {
               "name": "pin",
               "description": "pin",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "restorable",
+              "description": "restorable",
               "args": [],
               "type": {
                 "kind": "NON_NULL",

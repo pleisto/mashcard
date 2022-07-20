@@ -87,6 +87,7 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
             checked={!!block.checked}
             onChange={onChange as any}
             noLabel
+            disabled={!documentInfo?.restorable}
             checkboxStyle={
               block.checked ? undefined : { border: '2px solid', borderColor: theme.colors.overlaySecondary.value }
             }
@@ -102,19 +103,21 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
         </PageTile>
       </Page>
       <Time data-testid={TEST_ID_ENUM.trash.pageItem.deletedAt.id}>
-        {block.deletedAt && dayjs(block.deletedAt).format('YYYY-MM-DD HH:mm:ss')}
+        {documentInfo?.deletedAt && dayjs(documentInfo.deletedAt).format('YYYY-MM-DD HH:mm:ss')}
       </Time>
       <Action>
         {!block.checked && (
           <>
-            <Button
-              css={ActionButtonStyle}
-              type="text"
-              onClick={onClickRestore}
-              data-testid={TEST_ID_ENUM.trash.pageItem.button.restore.id}
-            >
-              <Undo />
-            </Button>
+            {documentInfo?.restorable && (
+              <Button
+                css={ActionButtonStyle}
+                type="text"
+                onClick={onClickRestore}
+                data-testid={TEST_ID_ENUM.trash.pageItem.button.restore.id}
+              >
+                <Undo />
+              </Button>
+            )}
             <Button
               css={ActionButtonStyle}
               type="text"

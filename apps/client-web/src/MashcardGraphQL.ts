@@ -494,8 +494,6 @@ export type BlockNew = {
   blobs?: Maybe<Array<Blob>>
   /** Block Type */
   blockType?: Maybe<Scalars['String']>
-  /** deleted_at */
-  deletedAt?: Maybe<Scalars['ISO8601DateTime']>
   documentInfo?: Maybe<DocumentInfo>
   /** block first child sort */
   firstChildSort: Scalars['BigInt']
@@ -970,6 +968,8 @@ export type DocumentInfo = {
   __typename?: 'DocumentInfo'
   /** pod */
   collaborators: Array<PodBase>
+  /** deleted_at */
+  deletedAt?: Maybe<Scalars['ISO8601DateTime']>
   /** alias */
   enabledAlias?: Maybe<BlockAlias>
   /** icon */
@@ -986,6 +986,8 @@ export type DocumentInfo = {
   permission?: Maybe<ShareLink>
   /** pin */
   pin: Scalars['Boolean']
+  /** restorable */
+  restorable: Scalars['Boolean']
   /** title */
   title: Scalars['String']
 }
@@ -2242,11 +2244,12 @@ export type GetTrashBlocksQuery = {
   trashBlocks?: Array<{
     __typename?: 'BlockNew'
     id: string
-    deletedAt?: any | null
     documentInfo?: {
       __typename?: 'DocumentInfo'
       id: string
       title: string
+      deletedAt?: any | null
+      restorable: boolean
       icon?:
         | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
         | {
@@ -3811,10 +3814,11 @@ export const GetTrashBlocksDocument = gql`
   query GetTrashBlocks($domain: String!, $blockId: UUID, $search: String) {
     trashBlocks(domain: $domain, blockId: $blockId, search: $search) {
       id
-      deletedAt
       documentInfo {
         id
         title
+        deletedAt
+        restorable
         icon {
           ... on BlockImage {
             type

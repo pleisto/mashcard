@@ -939,11 +939,6 @@ type BlockNew {
   Block Type
   """
   blockType: String
-
-  """
-  deleted_at
-  """
-  deletedAt: ISO8601DateTime
   documentInfo: DocumentInfo
 
   """
@@ -1846,6 +1841,11 @@ type DocumentInfo {
   collaborators: [PodBase!]!
 
   """
+  deleted_at
+  """
+  deletedAt: ISO8601DateTime
+
+  """
   alias
   """
   enabledAlias: BlockAlias
@@ -1884,6 +1884,11 @@ type DocumentInfo {
   pin
   """
   pin: Boolean!
+
+  """
+  restorable
+  """
+  restorable: Boolean!
 
   """
   title

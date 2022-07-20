@@ -21,7 +21,6 @@ module Types
 
       # field :data, GraphQL::Types::JSON, null: false
       # field :meta, GraphQL::Types::JSON, null: false
-      field :deleted_at, GraphQL::Types::ISO8601DateTime, 'deleted_at', null: true
 
       field :blobs, [Types::Blob], 'blobs', null: true
       field :document_info, DocumentInfo, null: true
