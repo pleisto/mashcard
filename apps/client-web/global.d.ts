@@ -9,9 +9,6 @@ declare global {
       name: string
       avatarData?: { url: string; downloadUrl: string; signedId: string }
     }
-    currentPod: {
-      domain: string
-    }
     lastBlockIds?: {
       [domain: string]: string
     }

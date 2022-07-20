@@ -1,6 +1,7 @@
 import { init as SentryInit, setUser, setContext } from '@sentry/react'
 import { Integrations } from '@sentry/tracing'
 import { Offline as OfflineIntegration } from '@sentry/integrations'
+import { currentPodUsername } from '@/common/utils/currentPodUsername'
 
 export const sentryInit = (): void => {
   const ctx = globalThis.mashcardContext
@@ -25,10 +26,10 @@ export const sentryInit = (): void => {
       // connection between your app and Sentry's server.
       ip_address: '{{auto}}'
     })
-  const currentPod = ctx?.currentPod?.domain
-  currentPod &&
+  const currentUsername = currentPodUsername(ctx)
+  currentUsername &&
     setContext('pod', {
-      currentPod,
-      lastBlockIds: ctx?.lastBlockIds?.[currentPod]
+      currentPod: currentUsername,
+      lastBlockIds: ctx?.lastBlockIds?.[currentUsername]
     })
 }

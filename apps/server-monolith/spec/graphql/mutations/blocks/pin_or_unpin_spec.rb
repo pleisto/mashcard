@@ -16,7 +16,6 @@ describe Mutations::Blocks::PinOrUnpin, type: :mutation do
 
     it 'work' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       block = create(:docs_block, pod: user.personal_pod)
 
@@ -37,7 +36,6 @@ describe Mutations::Blocks::PinOrUnpin, type: :mutation do
       expect(pin.deleted_at).not_to be_nil
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end

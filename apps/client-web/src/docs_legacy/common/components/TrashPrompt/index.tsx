@@ -69,7 +69,7 @@ export const TrashPrompt: FC = () => {
       if (hasPages && data.pageBlocks?.[0]?.id) {
         path = `/${domain}/${data.pageBlocks[0].id}`
       } else {
-        const { data: blockCreateData } = await blockCreate({ variables: { input: { title: '' } } })
+        const { data: blockCreateData } = await blockCreate({ variables: { input: { title: '', username: domain } } })
         if (blockCreateData?.blockCreate?.id) {
           await refetch()
           setHardDeleteModalVisible(false)

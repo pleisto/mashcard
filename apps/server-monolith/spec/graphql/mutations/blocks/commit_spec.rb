@@ -29,7 +29,6 @@ describe Mutations::Blocks::Commit, type: :mutation do
 
     it 'can save fresh block with full state' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       state = Random.bytes(50)
       state_id = Mashcard::Utils::Encoding::UUID.gen_v4
@@ -58,15 +57,13 @@ describe Mutations::Blocks::Commit, type: :mutation do
       expect(block_model.state_id).to eq(state_model.id)
 
       expect(state_model.user_id).to eq(current_user.id)
-      expect(state_model.pod_id).to eq(current_pod['id'])
+      expect(state_model.pod_id).to eq(current_user.id)
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'can save block with full state which is next state' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       block.state_id = Mashcard::Utils::Encoding::UUID.gen_v4
       block.save
@@ -105,15 +102,13 @@ describe Mutations::Blocks::Commit, type: :mutation do
       expect(block_model.state_id).to eq(state_model.id)
 
       expect(state_model.user_id).to eq(current_user.id)
-      expect(state_model.pod_id).to eq(current_pod['id'])
+      expect(state_model.pod_id).to eq(current_user.id)
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'can save block with update state which is next state and not to change block state id' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       block.state_id = Mashcard::Utils::Encoding::UUID.gen_v4
       block.save
@@ -151,15 +146,13 @@ describe Mutations::Blocks::Commit, type: :mutation do
       expect(block_model.state_id).to eq(input[:input][:prevStateId])
 
       expect(state_model.user_id).to eq(current_user.id)
-      expect(state_model.pod_id).to eq(current_pod['id'])
+      expect(state_model.pod_id).to eq(current_user.id)
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'cannot save block with state which is not next state' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       block.state_id = Mashcard::Utils::Encoding::UUID.gen_v4
       block.save
@@ -241,12 +234,10 @@ describe Mutations::Blocks::Commit, type: :mutation do
       end.to raise_exception(ActiveRecord::RecordNotFound)
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'can not save block with update state which is have too many updates' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       block.state_id = Mashcard::Utils::Encoding::UUID.gen_v4
       block.save
@@ -291,12 +282,10 @@ describe Mutations::Blocks::Commit, type: :mutation do
       expect(block_model.state_id).to eq(prev_state.id)
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'can save block meta' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       state = Random.bytes(50)
       state_id = Mashcard::Utils::Encoding::UUID.gen_v4
@@ -337,15 +326,13 @@ describe Mutations::Blocks::Commit, type: :mutation do
       expect(block_model.meta['icon']['emoji']).to eq('😀')
 
       expect(state_model.user_id).to eq(current_user.id)
-      expect(state_model.pod_id).to eq(current_pod['id'])
+      expect(state_model.pod_id).to eq(current_user.id)
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'can save block meta without title' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       state = Random.bytes(50)
       state_id = Mashcard::Utils::Encoding::UUID.gen_v4
@@ -385,10 +372,9 @@ describe Mutations::Blocks::Commit, type: :mutation do
       expect(block_model.meta['icon']['emoji']).to eq('😀')
 
       expect(state_model.user_id).to eq(current_user.id)
-      expect(state_model.pod_id).to eq(current_pod['id'])
+      expect(state_model.pod_id).to eq(current_user.id)
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end

@@ -2,12 +2,16 @@ import { rootPath } from '../paths'
 
 const fakeID = 'ffff-ffff-ffff-ffff'
 describe('.paths', () => {
+  beforeAll(() => {
+    jest.spyOn(globalThis, 'location', 'get').mockImplementation(() => ({ pathname: '/alice' } as any))
+  })
+  afterAll(() => {
+    jest.restoreAllMocks()
+  })
+
   it('.rootPath should work', () => {
     expect(
       rootPath({
-        currentPod: {
-          domain: 'alice'
-        },
         lastDomain: undefined
       } as any)
     ).toEqual('/alice')
@@ -17,9 +21,6 @@ describe('.paths', () => {
         lastDomain: 'bob',
         lastBlockIds: {
           bob: fakeID
-        },
-        currentPod: {
-          domain: 'alice'
         }
       } as any)
     ).toEqual(`/bob/${fakeID}`)

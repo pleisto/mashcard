@@ -12,7 +12,6 @@ module CurrentContextSetter
 
   def set_current_model
     Current.user = current_user
-    Current.pod = current_pod
   end
 
   def set_current_config

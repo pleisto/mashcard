@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WebsiteDocument renders WebsiteDocument correctly 1`] = `
+<div>
+  <div
+    class="mc-c-cuwhsA"
+  >
+    <div
+      class="mc-c-gQyGGr"
+    >
+      <span
+        class="mc-c-fDjqfC"
+      >
+        embed_block.view_types.preview.unavailable.tip
+      </span>
+      <button
+        class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-kQqyOW-btnType-secondary mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV mc-c-PJLV-hwqXEh-size-md"
+        role="button"
+        type="button"
+      >
+        <span>
+          embed_block.view_types.preview.unavailable.link_button
+        </span>
+      </button>
+    </div>
+    <div
+      class="mc-c-ijXLft"
+    >
+      <div
+        class="mc-c-iRJkWV"
+      >
+        <img
+          alt=""
+          class="mc-c-fHCTpr"
+          src="icon"
+        />
+        <span
+          class="mc-c-iepcqn"
+        >
+          url
+        </span>
+      </div>
+      <div
+        class="mc-c-drZPNu"
+      >
+        <ul
+          class="mc-c-clKdcO"
+          role="menu"
+        >
+          <ul
+            class="mc-c-gYAvyC"
+            role="presentation"
+          >
+            <li
+              aria-describedby=""
+              aria-haspopup="false"
+              aria-label="embed_block.view_types.preview.name"
+              class="mc-c-iOJlHA mc-c-iOJlHA-eFgYyE-active-true"
+              role="menuitem"
+            >
+              <span
+                class="mc-c-PJLV mc-c-PJLV-loVWlz-active-true"
+              >
+                <span
+                  aria-label="preview"
+                  class="mc-icon mc-icon-preview"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      d="M19.5 5h-15C3.672 5 3 5.756 3 6.688v5.625C3 13.244 3.672 14 4.5 14h15c.828 0 1.5-.755 1.5-1.688V6.689C21 5.755 20.328 5 19.5 5ZM3 18h18"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </li>
+            <li
+              aria-describedby=""
+              aria-haspopup="false"
+              aria-label="embed_block.view_types.card.name"
+              class="mc-c-iOJlHA"
+              role="menuitem"
+            >
+              <span
+                class="mc-c-PJLV"
+              >
+                <span
+                  aria-label="bookmark-view"
+                  class="mc-icon mc-icon-bookmark-view"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M4 9.6875C4 9.19382 4.33133 9 4.5 9H8L8 16H4.5C4.33133 16 4 15.8062 4 15.3125V9.6875ZM10 16H19.5C19.6687 16 20 15.8062 20 15.3125V9.6875C20 9.19382 19.6687 9 19.5 9H10L10 16ZM4.5 7C3.01181 7 2 8.31722 2 9.6875V15.3125C2 16.6828 3.01181 18 4.5 18H19.5C20.9882 18 22 16.6828 22 15.3125V9.6875C22 8.31722 20.9882 7 19.5 7H4.5Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </li>
+            <li
+              aria-describedby=""
+              aria-haspopup="false"
+              aria-label="embed_block.view_types.text.name"
+              class="mc-c-iOJlHA"
+              role="menuitem"
+            >
+              <span
+                class="mc-c-PJLV"
+              >
+                <span
+                  aria-label="text-view"
+                  class="mc-icon mc-icon-text-view"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      d="M8 11h13M3 11h2"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </li>
+            <li
+              aria-label="toolbar.separator"
+              class="mc-c-iLiPnb"
+            />
+          </ul>
+          <ul
+            class="mc-c-gYAvyC"
+            role="presentation"
+          >
+            <li
+              aria-describedby=""
+              aria-haspopup="false"
+              aria-label="edit"
+              class="mc-c-iOJlHA"
+              role="menuitem"
+            >
+              <span
+                aria-haspopup="dialog"
+                aria-label="edit"
+                class="mc-icon mc-icon-edit"
+                role="img"
+              >
+                <svg
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M2.662 21.75h4.243L22.461 6.194 18.22 1.95 2.662 17.507v4.243z"
+                    stroke="currentColor"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="m13.976 6.194 4.243 4.242"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  />
+                </svg>
+              </span>
+            </li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,4 +1,4 @@
-import { EmbedOptions } from '@mashcard/editor'
+import { EmbedOptions } from '@mashcard/legacy-editor'
 import { Blob } from '@mashcard/schema'
 import { useCallback } from 'react'
 

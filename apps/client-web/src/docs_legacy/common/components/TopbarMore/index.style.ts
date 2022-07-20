@@ -1,5 +1,6 @@
 import { theme, styled } from '@mashcard/design-system'
-import { IconBackgroundOverlay } from '@mashcard/editor/src/components/ui/Icon/IconBackground'
+// TODO: avoid import like this way
+import { IconBackgroundOverlay } from '@mashcard/legacy-editor/src/components/ui/Icon/IconBackground'
 
 export const KeyBindTip = styled('span', {
   lineHeight: theme.lineHeights.callout,

@@ -2,7 +2,7 @@ import { pagesVar } from '@/docs_legacy/reactiveVars'
 import { DocMeta } from '@/docs_legacy/store/DocMeta'
 import { useReactiveVar } from '@apollo/client'
 import { useMemo } from 'react'
-import { LinkOptions, LinkPage } from '@mashcard/editor'
+import { LinkOptions, LinkPage } from '@mashcard/legacy-editor'
 import { useNavigate } from 'react-router-dom'
 
 function getParentPath(

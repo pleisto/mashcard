@@ -85,7 +85,7 @@ const PopMenu: FC<{ menuToggle: (state: boolean) => void }> = ({ menuToggle }) =
   const onDel = useCallback(async (): Promise<void> => {
     const input = { id: id!, hardDelete: false }
     const createNewAndJump = async (): Promise<void> => {
-      const newPageInput = { title: '' }
+      const newPageInput = { title: '', username: domain }
       const { data } = await blockCreate({ variables: { input: newPageInput } })
       if (data?.blockCreate?.id) {
         await sleep(100)

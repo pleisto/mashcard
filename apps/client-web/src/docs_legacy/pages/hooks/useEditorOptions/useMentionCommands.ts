@@ -2,7 +2,7 @@ import { useGetPodMembersQuery } from '@/MashcardGraphQL'
 import { pagesVar } from '@/docs_legacy/reactiveVars'
 import { DocMeta } from '@/docs_legacy/store/DocMeta'
 import { useReactiveVar } from '@apollo/client'
-import { MentionCommandsOptions } from '@mashcard/editor'
+import { MentionCommandsOptions } from '@mashcard/legacy-editor'
 import { useMemo } from 'react'
 
 export function useMentionCommands(docMeta: DocMeta): MentionCommandsOptions {

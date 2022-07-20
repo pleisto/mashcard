@@ -1,0 +1,332 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TocView matches correct snapshot 1`] = `
+<div>
+  <div
+    data-node-view-wrapper=""
+    style="white-space: normal; pointer-events: none;"
+  >
+    <div
+      class="mc-c-fQONvH"
+      role="presentation"
+    >
+      <div
+        class="mc-c-ihePFc"
+      >
+        <div
+          class="mc-c-jhjCFt"
+          data-testid="editor-toc-block-item-id"
+          role="menuitem"
+        >
+          <span
+            class="mc-c-dXyXKB mc-c-dXyXKB-ftgEku-level-1"
+            data-testid="editor-toc-block-item-title"
+          >
+            <span
+              aria-label="right"
+              class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
+              data-testid="editor-toc-block-item-toggle-icon"
+              role="img"
+            >
+              <svg
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m16 12-7 6V6l7 6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            <span
+              class="mc-c-ivBHOz"
+            >
+              h1
+            </span>
+          </span>
+          <div
+            class="mc-c-dEbctz"
+            data-testid="editor-toc-block-item-content-panel"
+            style="max-height: 100%;"
+          >
+            <div
+              class="mc-c-jhjCFt"
+              data-testid="editor-toc-block-item-id"
+              role="menuitem"
+            >
+              <span
+                class="mc-c-dXyXKB mc-c-dXyXKB-khxYkf-level-2"
+                data-testid="editor-toc-block-item-title"
+              >
+                <span
+                  aria-label="right"
+                  class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
+                  data-testid="editor-toc-block-item-toggle-icon"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="m16 12-7 6V6l7 6z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="mc-c-ivBHOz"
+                >
+                  h2
+                </span>
+              </span>
+              <div
+                class="mc-c-dEbctz"
+                data-testid="editor-toc-block-item-content-panel"
+                style="max-height: 100%;"
+              >
+                <div
+                  class="mc-c-jhjCFt"
+                  data-testid="editor-toc-block-item-id"
+                  role="menuitem"
+                >
+                  <span
+                    class="mc-c-dXyXKB mc-c-dXyXKB-bjpAUv-level-5"
+                    data-testid="editor-toc-block-item-title"
+                  >
+                    <span
+                      class="mc-c-ivBHOz"
+                    >
+                      h5\`
+                    </span>
+                  </span>
+                  <div
+                    class="mc-c-dEbctz"
+                    data-testid="editor-toc-block-item-content-panel"
+                    style="max-height: 100%;"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mc-c-jhjCFt"
+          data-testid="editor-toc-block-item-id"
+          role="menuitem"
+        >
+          <span
+            class="mc-c-dXyXKB mc-c-dXyXKB-ftgEku-level-1"
+            data-testid="editor-toc-block-item-title"
+          >
+            <span
+              aria-label="right"
+              class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
+              data-testid="editor-toc-block-item-toggle-icon"
+              role="img"
+            >
+              <svg
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m16 12-7 6V6l7 6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            <span
+              class="mc-c-ivBHOz"
+            >
+              h1\`
+            </span>
+          </span>
+          <div
+            class="mc-c-dEbctz"
+            data-testid="editor-toc-block-item-content-panel"
+            style="max-height: 100%;"
+          >
+            <div
+              class="mc-c-jhjCFt"
+              data-testid="editor-toc-block-item-id"
+              role="menuitem"
+            >
+              <span
+                class="mc-c-dXyXKB mc-c-dXyXKB-euyVNX-level-3"
+                data-testid="editor-toc-block-item-title"
+              >
+                <span
+                  aria-label="right"
+                  class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
+                  data-testid="editor-toc-block-item-toggle-icon"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="m16 12-7 6V6l7 6z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="mc-c-ivBHOz"
+                >
+                  h3
+                </span>
+              </span>
+              <div
+                class="mc-c-dEbctz"
+                data-testid="editor-toc-block-item-content-panel"
+                style="max-height: 100%;"
+              >
+                <div
+                  class="mc-c-jhjCFt"
+                  data-testid="editor-toc-block-item-id"
+                  role="menuitem"
+                >
+                  <span
+                    class="mc-c-dXyXKB mc-c-dXyXKB-hfNeJr-level-4"
+                    data-testid="editor-toc-block-item-title"
+                  >
+                    <span
+                      aria-label="right"
+                      class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
+                      data-testid="editor-toc-block-item-toggle-icon"
+                      role="img"
+                    >
+                      <svg
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="m16 12-7 6V6l7 6z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                    <span
+                      class="mc-c-ivBHOz"
+                    >
+                      h4
+                    </span>
+                  </span>
+                  <div
+                    class="mc-c-dEbctz"
+                    data-testid="editor-toc-block-item-content-panel"
+                    style="max-height: 100%;"
+                  >
+                    <div
+                      class="mc-c-jhjCFt"
+                      data-testid="editor-toc-block-item-id"
+                      role="menuitem"
+                    >
+                      <span
+                        class="mc-c-dXyXKB mc-c-dXyXKB-bjpAUv-level-5"
+                        data-testid="editor-toc-block-item-title"
+                      >
+                        <span
+                          class="mc-c-ivBHOz"
+                        >
+                          h5
+                        </span>
+                      </span>
+                      <div
+                        class="mc-c-dEbctz"
+                        data-testid="editor-toc-block-item-content-panel"
+                        style="max-height: 100%;"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mc-c-jhjCFt"
+              data-testid="editor-toc-block-item-id"
+              role="menuitem"
+            >
+              <span
+                class="mc-c-dXyXKB mc-c-dXyXKB-khxYkf-level-2"
+                data-testid="editor-toc-block-item-title"
+              >
+                <span
+                  aria-label="right"
+                  class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
+                  data-testid="editor-toc-block-item-toggle-icon"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="m16 12-7 6V6l7 6z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="mc-c-ivBHOz"
+                >
+                  blocks.toc.untitled
+                </span>
+              </span>
+              <div
+                class="mc-c-dEbctz"
+                data-testid="editor-toc-block-item-content-panel"
+                style="max-height: 100%;"
+              >
+                <div
+                  class="mc-c-jhjCFt"
+                  data-testid="editor-toc-block-item-id"
+                  role="menuitem"
+                >
+                  <span
+                    class="mc-c-dXyXKB mc-c-dXyXKB-jmJBBb-level-text"
+                    data-testid="editor-toc-block-item-title"
+                  >
+                    <span
+                      class="mc-c-ivBHOz"
+                    >
+                      anchor
+                    </span>
+                  </span>
+                  <div
+                    class="mc-c-dEbctz"
+                    data-testid="editor-toc-block-item-content-panel"
+                    style="max-height: 100%;"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mc-c-jhjCFt"
+          data-testid="editor-toc-block-item-id"
+          role="menuitem"
+        >
+          <span
+            class="mc-c-dXyXKB mc-c-dXyXKB-ftgEku-level-1"
+            data-testid="editor-toc-block-item-title"
+          >
+            <span
+              class="mc-c-ivBHOz"
+            >
+              h1\`\`
+            </span>
+          </span>
+          <div
+            class="mc-c-dEbctz"
+            data-testid="editor-toc-block-item-content-panel"
+            style="max-height: 100%;"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

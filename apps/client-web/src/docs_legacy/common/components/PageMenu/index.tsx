@@ -93,7 +93,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
 
   const deletePage = async (): Promise<void> => {
     const createNew = async (): Promise<void> => {
-      const newPageInput = { title: '' }
+      const newPageInput = { title: '', username: domain }
       const { data } = await blockCreate({ variables: { input: newPageInput } })
       if (data?.blockCreate?.id) {
         await sleep(100)
@@ -120,7 +120,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   }
 
   const onPressAddSubPage = async (): Promise<void> => {
-    const input = { parentId: pageId, title: '' }
+    const input = { parentId: pageId, title: '', username: domain }
     const { data } = await blockCreate({ variables: { input } })
     if (data?.blockCreate?.id) {
       navigate(`/${domain}/${data?.blockCreate?.id}`)

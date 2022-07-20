@@ -382,6 +382,11 @@ input BlockCreateInput {
   title
   """
   title: String!
+
+  """
+  username
+  """
+  username: String!
 }
 
 """
@@ -2721,6 +2726,11 @@ type PreviewBox {
   preview icon
   """
   icon: String
+
+  """
+  iframe url for preview
+  """
+  iframeUrl: String
 
   """
   preview conetent size
