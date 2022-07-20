@@ -5,7 +5,7 @@ exports[`Alert Basic should match the snapshot 1`] = `
   <div
     aria-labelledby="alert-basic-should-match-the-snapshot-0"
     aria-live="polite"
-    class="mc-c-fXOvIo mc-c-fXOvIo-kYLUGc-size-lg mc-c-fXOvIo-fFEasr-variant-info"
+    class="mc-c-fPuqXo mc-c-fPuqXo-kYLUGc-size-lg mc-c-fPuqXo-bZrcGI-variant-info"
     role="status"
   >
     <div
@@ -39,7 +39,7 @@ exports[`Alert Basic should match the snapshot 1`] = `
         </div>
         <button
           aria-label="Dismiss Button"
-          class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV"
+          class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-diTQz-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV"
           role="button"
           type="button"
         >
@@ -58,7 +58,7 @@ exports[`Alert MessageOnly should match the snapshot 1`] = `
   <div
     aria-labelledby="alert-messageonly-should-match-the-snapshot-0"
     aria-live="assertive"
-    class="mc-c-fXOvIo mc-c-fXOvIo-kcCYGG-size-sm mc-c-fXOvIo-cTpWRe-variant-error"
+    class="mc-c-fPuqXo mc-c-fPuqXo-kcCYGG-size-sm mc-c-fPuqXo-jbWxsd-variant-error"
     role="alert"
   >
     <div
@@ -87,7 +87,7 @@ exports[`Alert MessageOnly should match the snapshot 1`] = `
         </div>
         <button
           aria-label="Dismiss Button"
-          class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV"
+          class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-diTQz-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV"
           role="button"
           type="button"
         >
@@ -106,7 +106,7 @@ exports[`Alert WithAction should match the snapshot 1`] = `
   <div
     aria-labelledby="alert-withaction-should-match-the-snapshot-0"
     aria-live="assertive"
-    class="mc-c-fXOvIo mc-c-fXOvIo-kYLUGc-size-lg mc-c-fXOvIo-lgwBVE-variant-warning"
+    class="mc-c-fPuqXo mc-c-fPuqXo-kYLUGc-size-lg mc-c-fPuqXo-cnHCuW-variant-warning"
     role="alert"
   >
     <div
@@ -142,7 +142,7 @@ exports[`Alert WithAction should match the snapshot 1`] = `
           class="mc-c-jesGki"
         >
           <button
-            class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-cVBYSe-btnType-primary mc-c-iiEeHJ-fcHofs-size-md"
+            class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-hgbWBu-btnType-primary mc-c-iiEeHJ-fcHofs-size-md"
             role="button"
             type="button"
           >
@@ -153,7 +153,7 @@ exports[`Alert WithAction should match the snapshot 1`] = `
         </div>
         <button
           aria-label="Dismiss Button"
-          class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-UZJIs-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV"
+          class="ButtonUnstyled-root mc-c-iiEeHJ mc-c-iiEeHJ-diTQz-btnType-text mc-c-iiEeHJ-fcHofs-size-md mc-c-PJLV"
           role="button"
           type="button"
         >

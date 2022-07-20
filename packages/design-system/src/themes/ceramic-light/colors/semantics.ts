@@ -5,15 +5,15 @@ export const Semantics = {
   /**
    * Primary
    */
-  primaryDefault: Palettes.blue6,
-  primaryHover: Palettes.blue7,
-  primaryPressed: Palettes.blue8,
+  primaryDefault: Palettes.blue7,
+  primaryHover: Palettes.blue8,
+  primaryPressed: Palettes.blue9,
   primaryDisable: Palettes.blue3,
 
   /**
    * Type
    */
-  typePrimary: Palettes.deepPurple7,
+  typePrimary: Palettes.deepPurple9,
   typeSecondary: Palettes.deepPurple5,
   typeThirdary: Palettes.deepPurple4,
   typeDisabled: Palettes.deepPurple3,
@@ -21,8 +21,8 @@ export const Semantics = {
   /**
    * Icon
    */
-  iconPrimary: Palettes.deepPurple7,
-  iconSecondary: Palettes.deepPurple6,
+  iconPrimary: Palettes.deepPurple8,
+  iconSecondary: Palettes.deepPurple5,
   iconThirdary: Palettes.deepPurple4,
   iconDisable: Palettes.deepPurple3,
 
@@ -30,14 +30,14 @@ export const Semantics = {
    * Secondary
    */
   secondaryHover: Atomics.blue6_10p,
-  secondaryPressed: Atomics.black_10p,
-  secondarySelected: Atomics.blue6_18p,
-  secondaryDrag: Atomics.blue6_12p,
+  secondaryPressed: Atomics.black_8p,
+  secondarySelected: Atomics.blue6_20p,
+  secondaryDrag: Atomics.blue6_14p,
 
   /**
    * Thirdary
    */
-  thirdaryHover: Atomics.white_70p,
+  thirdaryHover: Atomics.white_50p,
   thirdaryPressed: Atomics.black_12p,
 
   /**
@@ -56,10 +56,11 @@ export const Semantics = {
    */
   borderPrimary: Palettes.grey2,
   borderSecondary: Palettes.grey3,
-  borderThirdary: Palettes.grey8,
+  borderThirdary: Palettes.grey7,
+  borderQuaternary: Palettes.blue4,
   borderOverlayPrimary: Atomics.white_20p,
   borderOverlaySecondary: Atomics.blue6_4p,
-  borderOverlayThirdary: Atomics.blue6_60p,
+  borderOverlayThirdary: Atomics.blue6_70p,
 
   /**
    * Divider

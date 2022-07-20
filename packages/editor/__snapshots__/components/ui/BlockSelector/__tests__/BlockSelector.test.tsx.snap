@@ -17,16 +17,16 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
     >
       <span
         aria-label="block_selector.type"
-        class="mc-c-iSZMdl"
+        class="mc-c-cEWwGU"
       >
         <span
-          class="mc-c-fNUFJE"
+          class="mc-c-cRukNM"
         >
           block_selector.type
         </span>
       </span>
       <li
-        class="mc-c-jCYxqH mc-c-jCYxqH-cOuhSn-active-true"
+        class="mc-c-dadCix mc-c-dadCix-cgQZvB-active-true"
         id="block-selector-1"
         label="blocks.formula.label"
         role="menuitem"
@@ -44,7 +44,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iimHIdk-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ibjcPei-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -63,7 +63,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                   >
                     <path
                       d="M20 4.5 18.5 3H4l9 9-9 9h14.5l1.5-1.5"
-                      stroke="#85d1f1"
+                      stroke="#bdebff"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
@@ -93,7 +93,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-2"
         label="blocks.spreadsheet.label"
         role="menuitem"
@@ -111,7 +111,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -132,13 +132,13 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                   >
                     <path
                       d="M21 3H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z"
-                      stroke="#908b9c"
+                      stroke="#adaab6"
                       stroke-linejoin="round"
                       stroke-width="2"
                     />
                     <path
                       d="M2 9h20M8.75 9v12m6.5-12v12M2 15h20m0-11v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4"
-                      stroke="#908b9c"
+                      stroke="#adaab6"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
@@ -168,7 +168,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-3"
         label="blocks.upload.label"
         role="menuitem"
@@ -186,7 +186,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -207,14 +207,14 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                   >
                     <path
                       d="m12.004 20.5-.004-9m8.259 5.658A4.605 4.605 0 0 0 22 12c-.607-1.915-2.465-2.964-4.474-2.963h-1.16A7.369 7.369 0 1 0 3.71 15.752"
-                      stroke="#908b9c"
+                      stroke="#adaab6"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
                     />
                     <path
                       d="M15.182 13.818 12 10.636l-3.182 3.182"
-                      stroke="#908b9c"
+                      stroke="#adaab6"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
@@ -244,7 +244,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-4"
         label="blocks.link.label"
         role="menuitem"
@@ -262,7 +262,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -283,7 +283,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                   >
                     <path
                       d="M10.456 8.1774C11.8793 8.1774 13.2443 8.74263 14.2509 9.74881C14.6415 10.1392 14.6416 10.7724 14.2512 11.163C13.8608 11.5536 13.2276 11.5537 12.837 11.1633C12.2055 10.532 11.349 10.1773 10.456 10.1773C9.63748 10.1773 8.84963 10.4753 8.23756 11.0112L8.0751 11.1632L4.9863 14.251C4.35476 14.8826 3.99994 15.7392 3.99994 16.6324C3.99994 17.5255 4.35476 18.3821 4.9863 19.0137C5.61788 19.6452 6.47448 20.0001 7.36763 20.0001C8.18636 20.0001 8.97436 19.7019 9.58648 19.1658L9.74895 19.0137L11.2929 17.4697C11.6834 17.0792 12.3166 17.0792 12.7071 17.4697C13.0676 17.8302 13.0953 18.3974 12.7903 18.7897L12.7071 18.8839L11.1631 20.4279C10.1565 21.4345 8.7912 22 7.36763 22C5.94407 22 4.57878 21.4345 3.57215 20.4279C2.56552 19.4213 2 18.056 2 16.6324C2 15.2977 2.49704 14.0144 3.38869 13.0296L3.57225 12.8368L6.6612 9.7488C7.6678 8.74263 9.03279 8.1774 10.456 8.1774ZM16.6324 2C18.056 2 19.4213 2.56552 20.4279 3.57215C21.4345 4.57878 22 5.94407 22 7.36763C22 8.70223 21.503 9.98559 20.6113 10.9703L20.4277 11.1632L17.3388 14.2512C16.3323 15.2574 14.9672 15.8226 13.544 15.8226C12.1206 15.8226 10.7557 15.2574 9.74909 14.2512C9.3585 13.8607 9.35838 13.2276 9.74882 12.837C10.1393 12.4464 10.7724 12.4463 11.163 12.8367C11.7945 13.468 12.6509 13.8226 13.544 13.8226C14.3625 13.8226 15.1504 13.5247 15.7624 12.9888L15.9249 12.8368L19.0137 9.74896C19.6452 9.11738 20.0001 8.26079 20.0001 7.36763C20.0001 6.47448 19.6452 5.61788 19.0137 4.9863C18.3821 4.35476 17.5255 3.99994 16.6324 3.99994C15.8136 3.99994 15.0256 4.29808 14.4135 4.83423L14.251 4.98631L12.7071 6.53027C12.3166 6.92078 11.6834 6.92078 11.2929 6.53026C10.9324 6.16979 10.9047 5.60257 11.2097 5.2103L11.2929 5.11609L12.8369 3.57215C13.8435 2.56552 15.2088 2 16.6324 2Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                     />
                   </svg>
                 </span>
@@ -310,7 +310,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-5"
         label="blocks.embed.label"
         role="menuitem"
@@ -328,7 +328,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -350,67 +350,67 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                     <path
                       clip-rule="evenodd"
                       d="M2.5 13.5C2.5 8.25332 6.75332 4 12 4C17.2467 4 21.5 8.25332 21.5 13.5C21.5 18.7467 17.2467 23 12 23C6.75332 23 2.5 18.7467 2.5 13.5ZM12 6C7.85788 6 4.5 9.35788 4.5 13.5C4.5 17.6421 7.85788 21 12 21C16.1421 21 19.5 17.6421 19.5 13.5C19.5 9.35788 16.1421 6 12 6Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M8.5 2C8.5 1.44772 8.94772 1 9.5 1H14.5C15.0523 1 15.5 1.44772 15.5 2C15.5 2.55228 15.0523 3 14.5 3H9.5C8.94772 3 8.5 2.55228 8.5 2Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M12 9C12.3589 9 12.6902 9.19229 12.8682 9.50386L14.8682 13.0039C15.0439 13.3113 15.0439 13.6887 14.8682 13.9961L12.8682 17.4961C12.6902 17.8077 12.3589 18 12 18C11.6411 18 11.3098 17.8077 11.1318 17.4961L9.13176 13.9961C8.95608 13.6887 8.95608 13.3113 9.13176 13.0039L11.1318 9.50386C11.3098 9.19229 11.6411 9 12 9ZM11.1518 13.5L12 14.9844L12.8482 13.5L12 12.0156L11.1518 13.5Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M2.5 13.5C2.5 12.9477 2.94772 12.5 3.5 12.5H5.5C6.05228 12.5 6.5 12.9477 6.5 13.5C6.5 14.0523 6.05228 14.5 5.5 14.5H3.5C2.94772 14.5 2.5 14.0523 2.5 13.5Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M17.5 13.5C17.5 12.9477 17.9477 12.5 18.5 12.5H20.5C21.0523 12.5 21.5 12.9477 21.5 13.5C21.5 14.0523 21.0523 14.5 20.5 14.5H18.5C17.9477 14.5 17.5 14.0523 17.5 13.5Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M12 4C12.5523 4 13 4.44772 13 5V7C13 7.55228 12.5523 8 12 8C11.4477 8 11 7.55228 11 7V5C11 4.44772 11.4477 4 12 4Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M12 19C12.5523 19 13 19.4477 13 20V22C13 22.5523 12.5523 23 12 23C11.4477 23 11 22.5523 11 22V20C11 19.4477 11.4477 19 12 19Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M7.82612 20.9739C8.03744 20.4637 8.6224 20.2213 9.13265 20.4327C10.0146 20.7979 10.9825 21 12 21C13.0176 21 13.9854 20.7979 14.8674 20.4327C15.3776 20.2213 15.9626 20.4637 16.1739 20.9739C16.3852 21.4842 16.1429 22.0691 15.6327 22.2805C14.5122 22.7445 13.2847 23 12 23C10.7154 23 9.48779 22.7445 8.36738 22.2805C7.85713 22.0691 7.61479 21.4842 7.82612 20.9739Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M4.52608 9.3261C5.03634 9.53742 5.27868 10.1224 5.06736 10.6326C4.70208 11.5146 4.5 12.4825 4.5 13.5C4.5 14.5175 4.70208 15.4854 5.06736 16.3674C5.27868 16.8776 5.03634 17.4626 4.52608 17.6739C4.01582 17.8852 3.43087 17.6429 3.21955 17.1326C2.75556 16.0122 2.5 14.7847 2.5 13.5C2.5 12.2153 2.75556 10.9878 3.21955 9.86738C3.43087 9.35712 4.01582 9.11478 4.52608 9.3261Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M19.4738 9.3261C19.9841 9.11478 20.569 9.35711 20.7804 9.86737C21.2444 10.9878 21.4999 12.2153 21.4999 13.5C21.4999 14.7847 21.2444 16.0122 20.7804 17.1326C20.569 17.6429 19.9841 17.8852 19.4738 17.6739C18.9636 17.4626 18.7212 16.8776 18.9326 16.3674C19.2978 15.4854 19.4999 14.5175 19.4999 13.5C19.4999 12.4825 19.2978 11.5146 18.9326 10.6326C18.7212 10.1224 18.9636 9.53743 19.4738 9.3261Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M12.0001 6C10.8986 6 9.85517 6.2368 8.91565 6.6613C8.41236 6.8887 7.82001 6.66504 7.59261 6.16174C7.36521 5.65845 7.58887 5.0661 8.09216 4.8387C9.28534 4.2996 10.6091 4 12.0001 4C13.391 4 14.7148 4.2996 15.908 4.8387C16.4113 5.0661 16.6349 5.65845 16.4075 6.16174C16.1801 6.66504 15.5878 6.8887 15.0845 6.6613C14.1449 6.2368 13.1015 6 12.0001 6Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -438,7 +438,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-6"
         label="blocks.h1.label"
         role="menuitem"
@@ -456,7 +456,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iiMjPUo-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ijyLKRZ-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -478,12 +478,12 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                     <path
                       clip-rule="evenodd"
                       d="M20.407 13H22v9h-2.159v-6.113a5.331 5.331 0 0 1-1.244.53L18 16.59v-2.211l.354-.09a4.204 4.204 0 0 0 1.012-.424 4.19 4.19 0 0 0 .902-.714l.139-.151Z"
-                      fill="#85a6fc"
+                      fill="#87b6e8"
                       fill-rule="evenodd"
                     />
                     <path
                       d="M2 2v20h2.578v-8.964h8.844V22H16V2h-2.578v8.431H4.578V2H2Z"
-                      fill="#85a6fc"
+                      fill="#87b6e8"
                     />
                   </svg>
                 </span>
@@ -510,7 +510,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-7"
         label="blocks.h2.label"
         role="menuitem"
@@ -528,7 +528,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -550,12 +550,12 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                     <path
                       clip-rule="evenodd"
                       d="M20.682 16.848c.295-.353.431-.707.431-1.07 0-.385-.098-.607-.237-.74-.146-.14-.4-.241-.8-.241-.396 0-.643.133-.809.368l-.004.006-.004.005c-.189.25-.31.641-.33 1.261l-.011.365h-1.88l.005-.383c.012-.976.28-1.798.834-2.424.572-.679 1.34-.995 2.241-.995.8 0 1.504.238 2.056.766l.003.003c.538.528.812 1.208.812 2.02 0 .811-.3 1.533-.844 2.168l-.008.01c-.328.358-.881.807-1.646 1.352l-.003.002a6.507 6.507 0 0 0-1 .837H23V22h-6v-.378c0-.893.277-1.683.85-2.364.315-.395.932-.906 1.794-1.535.51-.38.848-.667 1.038-.875Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       d="M1 2v20h2.578v-8.964h8.844V22H15V2h-2.578v8.431H3.578V2H1Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                     />
                   </svg>
                 </span>
@@ -582,7 +582,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-8"
         label="blocks.h3.label"
         role="menuitem"
@@ -600,7 +600,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-ibOHShY-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-idlaRbP-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -622,12 +622,12 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                     <path
                       clip-rule="evenodd"
                       d="M20.592 14.087c-.19-.175-.506-.281-.987-.281-.48 0-.816.125-1.039.333-.226.212-.388.547-.432 1.046l-.026.287H16.17l.028-.342c.08-.963.429-1.739 1.08-2.306.61-.567 1.393-.824 2.314-.824.938 0 1.716.227 2.328.725l.006.005c.595.506.901 1.204.901 2.06 0 .549-.138 1.032-.43 1.428a2.198 2.198 0 0 1-.58.541c.26.151.483.335.663.552.354.408.52.928.52 1.52 0 .915-.316 1.683-.938 2.276l-.007.007c-.658.589-1.512.886-2.512.886-.955 0-1.76-.255-2.372-.781-.695-.597-1.067-1.454-1.146-2.529L16 18.351h1.987l.012.303c.022.544.185.92.474 1.176l.008.006c.253.24.593.371 1.05.371.498 0 .875-.152 1.156-.417.238-.245.362-.53.362-.896 0-.462-.136-.748-.36-.924l-.01-.008c-.219-.186-.58-.305-1.124-.305h-.95V15.99h.938c.502 0 .826-.117 1.02-.29.192-.169.313-.428.313-.809 0-.384-.111-.635-.284-.804Z"
-                      fill="#9578d0"
+                      fill="#abbaea"
                       fill-rule="evenodd"
                     />
                     <path
                       d="M1 2v20h2.578v-8.964h8.844V22H15V2h-2.578v8.431H3.578V2H1Z"
-                      fill="#9578d0"
+                      fill="#abbaea"
                     />
                   </svg>
                 </span>
@@ -654,7 +654,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-9"
         label="blocks.h4.label"
         role="menuitem"
@@ -672,7 +672,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iiMjPUo-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ijyLKRZ-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -693,12 +693,12 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                   >
                     <path
                       d="M1 2v20h2.578v-8.964h8.844V22H15V2h-2.578v8.431H3.578V2H1Z"
-                      fill="#85a6fc"
+                      fill="#87b6e8"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M21.95 13.182h-1.656l-4.316 5.564v1.668h4.14v1.836h1.832v-1.836h1.272v-1.616H21.95v-5.616Zm-1.832 5.616v-2.904l-2.241 2.904h2.241Z"
-                      fill="#85a6fc"
+                      fill="#87b6e8"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -726,7 +726,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-10"
         label="blocks.h5.label"
         role="menuitem"
@@ -744,7 +744,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iimHIdk-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ibjcPei-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -765,12 +765,12 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                   >
                     <path
                       d="M1 2v20h2.578v-8.964h8.844V22H15V2h-2.578v8.431H3.578V2H1Z"
-                      fill="#85d1f1"
+                      fill="#bdebff"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M23.628 11.754h-6.567l-.594 6.128h1.948l.071-.128c.172-.306.4-.522.702-.667l.004-.001c.262-.132.599-.198 1.008-.198.598 0 1.02.168 1.294.487l.003.003c.286.321.455.789.455 1.416 0 .552-.185.973-.52 1.285-.356.318-.798.481-1.33.481-.51 0-.887-.118-1.14-.302-.296-.215-.48-.551-.544-1.048l-.028-.218h-2.1l.02.269c.076.992.501 1.801 1.29 2.393.691.526 1.53.792 2.488.792 1.048 0 1.958-.312 2.733-.938l.004-.002c.84-.706 1.265-1.617 1.265-2.726 0-1.127-.323-2.048-.965-2.72-.64-.672-1.479-1.002-2.477-1.002a3.62 3.62 0 0 0-1.304.225c-.257.09-.494.21-.713.36l.199-1.947h4.798v-1.942Z"
-                      fill="#85d1f1"
+                      fill="#bdebff"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -798,7 +798,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-11"
         label="blocks.bulletedList.label"
         role="menuitem"
@@ -816,7 +816,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-ibOHShY-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-idlaRbP-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -838,7 +838,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                     <path
                       clip-rule="evenodd"
                       d="M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm2-10a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM8 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 20a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 4a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Z"
-                      fill="#9578d0"
+                      fill="#abbaea"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -866,7 +866,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-12"
         label="blocks.orderedList.label"
         role="menuitem"
@@ -884,7 +884,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iiMjPUo-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ijyLKRZ-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -906,7 +906,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                     <path
                       clip-rule="evenodd"
                       d="M4.004 1H5v5H3.65V2.604a3.568 3.568 0 0 1-.777.294l-.373.096V1.766l.221-.05a2.82 2.82 0 0 0 .633-.235c.235-.13.42-.258.564-.397L4.004 1Zm.45 10.351c.198-.215.288-.431.288-.653 0-.235-.066-.371-.158-.452-.097-.086-.266-.148-.534-.148-.263 0-.428.081-.539.225l-.002.004-.003.003c-.126.152-.206.392-.22.77l-.008.223H2.026l.003-.233c.007-.597.186-1.1.556-1.482C2.966 9.193 3.478 9 4.079 9c.533 0 1.003.145 1.37.468l.002.002c.36.323.542.738.542 1.235 0 .495-.2.936-.563 1.324l-.005.006c-.22.22-.588.493-1.098.827h-.002a4.288 4.288 0 0 0-.667.512H6V14.5H2v-.23c0-.547.185-1.03.566-1.446.21-.24.622-.553 1.197-.938.34-.232.565-.407.691-.534Zm-.394 6.732c.275 0 .455.064.564.17.099.1.162.251.162.482 0 .228-.069.384-.178.485-.112.104-.297.174-.583.174h-.537v1h.544c.31 0 .517.072.641.183l.006.005c.128.106.206.277.206.554 0 .22-.07.39-.207.538-.16.159-.376.25-.66.25-.261 0-.456-.079-.6-.222l-.005-.004c-.165-.154-.258-.38-.27-.706l-.008-.181H2l.014.203c.045.645.258 1.16.655 1.517.35.316.81.469 1.355.469.572 0 1.06-.178 1.436-.532l.004-.004C5.82 22.108 6 21.648 6 21.1c0-.356-.095-.668-.297-.913-.103-.13-.23-.24-.38-.33.132-.09.243-.198.333-.326.166-.237.245-.527.245-.856 0-.513-.175-.932-.515-1.236l-.003-.003c-.35-.299-.794-.435-1.33-.435-.527 0-.974.154-1.323.494-.372.34-.571.806-.617 1.384l-.016.205h1.108l.014-.172c.026-.3.118-.5.247-.627.128-.126.32-.2.594-.2ZM8 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 20a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 4a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Z"
-                      fill="#85a6fc"
+                      fill="#87b6e8"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -934,7 +934,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-13"
         label="blocks.taskList.label"
         role="menuitem"
@@ -952,7 +952,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-ibOHShY-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-idlaRbP-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -974,13 +974,13 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                     <path
                       clip-rule="evenodd"
                       d="M12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
-                      fill="#9578d0"
+                      fill="#abbaea"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M17.3211 8.05752C17.8416 8.511 17.896 9.30059 17.4425 9.82111L12.2152 15.8211C11.9938 16.0752 11.6793 16.2291 11.3428 16.248C11.0063 16.2669 10.6765 16.1492 10.4281 15.9214L7.15534 12.9214C6.64645 12.455 6.61207 11.6642 7.07856 11.1553C7.54505 10.6464 8.33576 10.6121 8.84466 11.0786L11.1724 13.2123L15.5575 8.1789C16.011 7.65837 16.8006 7.60403 17.3211 8.05752Z"
-                      fill="#9578d0"
+                      fill="#abbaea"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -1008,7 +1008,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-14"
         label="blocks.code.label"
         role="menuitem"
@@ -1026,7 +1026,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iimHIdk-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ibjcPei-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -1048,7 +1048,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                     <path
                       clip-rule="evenodd"
                       d="M7.694 6.28a1 1 0 0 1 .026 1.414l-4.306 4.46 4.28 4.126a1 1 0 0 1-1.388 1.44l-5-4.82a1 1 0 0 1-.026-1.414l5-5.18a1 1 0 0 1 1.414-.026ZM16.305 6.28a1 1 0 0 1 1.415.026l5 5.18a1 1 0 0 1-.026 1.414l-5 4.82a1 1 0 0 1-1.388-1.44l4.28-4.125-4.305-4.46a1 1 0 0 1 .024-1.415ZM14.217 2.024a1 1 0 0 1 .76 1.193l-4 18a1 1 0 1 1-1.953-.434l4-18a1 1 0 0 1 1.193-.76Z"
-                      fill="#85d1f1"
+                      fill="#bdebff"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -1076,7 +1076,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-15"
         label="blocks.blockquote.label"
         role="menuitem"
@@ -1094,7 +1094,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iimHIdk-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ibjcPei-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -1114,7 +1114,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                     <path
                       clip-rule="evenodd"
                       d="M9.427 4.558C5.66 6.976 3.57 9.791 3.15 13.001 2.5 18 6.97 20.447 9.234 18.248c2.265-2.198.907-4.988-.733-5.75-1.64-.764-2.643-.498-2.468-1.517.175-1.02 2.509-3.845 4.558-5.161a.374.374 0 0 0 .057-.51l-.507-.66c-.22-.286-.43-.275-.715-.092zm9.913 0c-3.766 2.418-5.858 5.233-6.276 8.443-.651 4.999 3.82 7.446 6.084 5.247 2.265-2.198.907-4.988-.733-5.75-1.64-.764-2.643-.498-2.468-1.517.175-1.02 2.508-3.845 4.558-5.161a.374.374 0 0 0 .057-.51l-.507-.66c-.22-.286-.43-.275-.715-.092z"
-                      fill="#85d1f1"
+                      fill="#bdebff"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -1142,7 +1142,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-16"
         label="blocks.callout.label"
         role="menuitem"
@@ -1160,7 +1160,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -1182,7 +1182,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                     <path
                       clip-rule="evenodd"
                       d="M12 3.0625C8.75087 3.0625 6.5 5.38625 6.5 8.21875C6.5 9.57175 7.083 10.4531 7.853 11.3868L8.14725 11.7346C8.45388 12.0976 8.7935 12.4991 9.07262 12.9006C9.46312 13.4657 9.811 14.1326 9.9265 14.9494C9.95403 15.2147 9.87768 15.4804 9.71348 15.6906C9.54928 15.9008 9.31001 16.0392 9.04592 16.0768C8.78183 16.1143 8.51346 16.0481 8.29718 15.892C8.08089 15.7358 7.93352 15.502 7.886 15.2395C7.831 14.8518 7.66188 14.4874 7.37725 14.0749C7.14458 13.751 6.89586 13.4389 6.632 13.1399C6.5165 13.0024 6.39413 12.858 6.2635 12.6999C5.40138 11.6562 4.4375 10.3033 4.4375 8.21875C4.4375 4.17625 7.68663 1 12 1C16.3134 1 19.5625 4.17625 19.5625 8.21875C19.5625 10.3033 18.5986 11.6562 17.7365 12.6999C17.6059 12.858 17.4835 13.0024 17.368 13.1385C17.0834 13.4754 16.8414 13.7614 16.6241 14.0749C16.3381 14.4874 16.1704 14.8518 16.1154 15.2395C16.0962 15.3736 16.0509 15.5026 15.9819 15.6191C15.9129 15.7356 15.8216 15.8375 15.7133 15.9187C15.605 16 15.4817 16.0591 15.3505 16.0927C15.2193 16.1264 15.0828 16.1338 14.9487 16.1147C14.8146 16.0955 14.6856 16.0502 14.5691 15.9812C14.4525 15.9122 14.3507 15.8209 14.2695 15.7126C14.1882 15.6043 14.1291 15.481 14.0954 15.3498C14.0618 15.2186 14.0544 15.0821 14.0735 14.948C14.189 14.1326 14.5369 13.4657 14.9274 12.9006C15.2065 12.4991 15.5461 12.0976 15.8527 11.7346C15.9559 11.6136 16.0549 11.4967 16.1456 11.3868C16.917 10.4531 17.5 9.57175 17.5 8.21875C17.5 5.38625 15.2491 3.0625 12 3.0625ZM9.25 21.9688C9.25 21.6952 9.35865 21.4329 9.55205 21.2395C9.74544 21.0462 10.0077 20.9375 10.2812 20.9375H13.7188C13.9923 20.9375 14.2546 21.0462 14.448 21.2395C14.6413 21.4329 14.75 21.6952 14.75 21.9688C14.75 22.2423 14.6413 22.5046 14.448 22.698C14.2546 22.8913 13.9923 23 13.7188 23H10.2812C10.0077 23 9.74544 22.8913 9.55205 22.698C9.35865 22.5046 9.25 22.2423 9.25 21.9688ZM8.90625 17.5C8.63275 17.5 8.37044 17.6087 8.17705 17.802C7.98365 17.9954 7.875 18.2577 7.875 18.5312C7.875 18.8048 7.98365 19.0671 8.17705 19.2605C8.37044 19.4538 8.63275 19.5625 8.90625 19.5625H15.0938C15.3673 19.5625 15.6296 19.4538 15.823 19.2605C16.0163 19.0671 16.125 18.8048 16.125 18.5312C16.125 18.2577 16.0163 17.9954 15.823 17.802C15.6296 17.6087 15.3673 17.5 15.0938 17.5H8.90625Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -1210,7 +1210,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-17"
         label="blocks.divider.label"
         role="menuitem"
@@ -1228,7 +1228,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-ibOHShY-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-idlaRbP-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -1250,13 +1250,13 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                     <path
                       clip-rule="evenodd"
                       d="M1 12a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1Z"
-                      fill="#9578d0"
+                      fill="#abbaea"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M2 5a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1ZM2 19a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1Z"
-                      fill="rgba(149,120,208,0.3)"
+                      fill="rgba(171,186,234,0.3)"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -1284,7 +1284,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-18"
         label="blocks.toc.label"
         role="menuitem"
@@ -1302,7 +1302,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iiMjPUo-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ijyLKRZ-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -1324,13 +1324,13 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                     <path
                       clip-rule="evenodd"
                       d="M1 5a1 1 0 0 1 1-1h13a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1ZM6 10a1 1 0 0 1 1-1h15a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1ZM6 15a1 1 0 0 1 1-1h15a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1Z"
-                      fill="#85a6fc"
+                      fill="#87b6e8"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M1 20a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1Z"
-                      fill="rgba(133,166,252,0.3)"
+                      fill="rgba(135,182,232,0.3)"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -1358,7 +1358,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-19"
         label="blocks.subPageMenu.label"
         role="menuitem"
@@ -1376,7 +1376,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -1398,7 +1398,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
                     <path
                       clip-rule="evenodd"
                       d="M12 12a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2h-9a1 1 0 0 1-1-1ZM6 12a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1ZM8 19a1 1 0 0 1 1-1h13a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM2 19a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1ZM8 5a1 1 0 0 1 1-1h13a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM2 5a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -1428,7 +1428,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
     </ul>
   </ul>
   <div
-    class="mc-c-kHIgoU"
+    class="mc-c-kSWkZc"
   >
     <span>
       block_selector.footer
@@ -1476,16 +1476,16 @@ exports[`BlockSelector renders BlockSelector with query correctly 1`] = `
     >
       <span
         aria-label="block_selector.suggestion"
-        class="mc-c-iSZMdl"
+        class="mc-c-cEWwGU"
       >
         <span
-          class="mc-c-fNUFJE"
+          class="mc-c-cRukNM"
         >
           block_selector.suggestion
         </span>
       </span>
       <li
-        class="mc-c-jCYxqH mc-c-jCYxqH-cOuhSn-active-true"
+        class="mc-c-dadCix mc-c-dadCix-cgQZvB-active-true"
         id="block-selector-1"
         label="blocks.embed.label"
         role="menuitem"
@@ -1502,7 +1502,7 @@ exports[`BlockSelector renders BlockSelector with query correctly 1`] = `
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -1524,67 +1524,67 @@ exports[`BlockSelector renders BlockSelector with query correctly 1`] = `
                     <path
                       clip-rule="evenodd"
                       d="M2.5 13.5C2.5 8.25332 6.75332 4 12 4C17.2467 4 21.5 8.25332 21.5 13.5C21.5 18.7467 17.2467 23 12 23C6.75332 23 2.5 18.7467 2.5 13.5ZM12 6C7.85788 6 4.5 9.35788 4.5 13.5C4.5 17.6421 7.85788 21 12 21C16.1421 21 19.5 17.6421 19.5 13.5C19.5 9.35788 16.1421 6 12 6Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M8.5 2C8.5 1.44772 8.94772 1 9.5 1H14.5C15.0523 1 15.5 1.44772 15.5 2C15.5 2.55228 15.0523 3 14.5 3H9.5C8.94772 3 8.5 2.55228 8.5 2Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M12 9C12.3589 9 12.6902 9.19229 12.8682 9.50386L14.8682 13.0039C15.0439 13.3113 15.0439 13.6887 14.8682 13.9961L12.8682 17.4961C12.6902 17.8077 12.3589 18 12 18C11.6411 18 11.3098 17.8077 11.1318 17.4961L9.13176 13.9961C8.95608 13.6887 8.95608 13.3113 9.13176 13.0039L11.1318 9.50386C11.3098 9.19229 11.6411 9 12 9ZM11.1518 13.5L12 14.9844L12.8482 13.5L12 12.0156L11.1518 13.5Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M2.5 13.5C2.5 12.9477 2.94772 12.5 3.5 12.5H5.5C6.05228 12.5 6.5 12.9477 6.5 13.5C6.5 14.0523 6.05228 14.5 5.5 14.5H3.5C2.94772 14.5 2.5 14.0523 2.5 13.5Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M17.5 13.5C17.5 12.9477 17.9477 12.5 18.5 12.5H20.5C21.0523 12.5 21.5 12.9477 21.5 13.5C21.5 14.0523 21.0523 14.5 20.5 14.5H18.5C17.9477 14.5 17.5 14.0523 17.5 13.5Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M12 4C12.5523 4 13 4.44772 13 5V7C13 7.55228 12.5523 8 12 8C11.4477 8 11 7.55228 11 7V5C11 4.44772 11.4477 4 12 4Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M12 19C12.5523 19 13 19.4477 13 20V22C13 22.5523 12.5523 23 12 23C11.4477 23 11 22.5523 11 22V20C11 19.4477 11.4477 19 12 19Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M7.82612 20.9739C8.03744 20.4637 8.6224 20.2213 9.13265 20.4327C10.0146 20.7979 10.9825 21 12 21C13.0176 21 13.9854 20.7979 14.8674 20.4327C15.3776 20.2213 15.9626 20.4637 16.1739 20.9739C16.3852 21.4842 16.1429 22.0691 15.6327 22.2805C14.5122 22.7445 13.2847 23 12 23C10.7154 23 9.48779 22.7445 8.36738 22.2805C7.85713 22.0691 7.61479 21.4842 7.82612 20.9739Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M4.52608 9.3261C5.03634 9.53742 5.27868 10.1224 5.06736 10.6326C4.70208 11.5146 4.5 12.4825 4.5 13.5C4.5 14.5175 4.70208 15.4854 5.06736 16.3674C5.27868 16.8776 5.03634 17.4626 4.52608 17.6739C4.01582 17.8852 3.43087 17.6429 3.21955 17.1326C2.75556 16.0122 2.5 14.7847 2.5 13.5C2.5 12.2153 2.75556 10.9878 3.21955 9.86738C3.43087 9.35712 4.01582 9.11478 4.52608 9.3261Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M19.4738 9.3261C19.9841 9.11478 20.569 9.35711 20.7804 9.86737C21.2444 10.9878 21.4999 12.2153 21.4999 13.5C21.4999 14.7847 21.2444 16.0122 20.7804 17.1326C20.569 17.6429 19.9841 17.8852 19.4738 17.6739C18.9636 17.4626 18.7212 16.8776 18.9326 16.3674C19.2978 15.4854 19.4999 14.5175 19.4999 13.5C19.4999 12.4825 19.2978 11.5146 18.9326 10.6326C18.7212 10.1224 18.9636 9.53743 19.4738 9.3261Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M12.0001 6C10.8986 6 9.85517 6.2368 8.91565 6.6613C8.41236 6.8887 7.82001 6.66504 7.59261 6.16174C7.36521 5.65845 7.58887 5.0661 8.09216 4.8387C9.28534 4.2996 10.6091 4 12.0001 4C13.391 4 14.7148 4.2996 15.908 4.8387C16.4113 5.0661 16.6349 5.65845 16.4075 6.16174C16.1801 6.66504 15.5878 6.8887 15.0845 6.6613C14.1449 6.2368 13.1015 6 12.0001 6Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -1612,7 +1612,7 @@ exports[`BlockSelector renders BlockSelector with query correctly 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-2"
         label="blocks.explore.label"
         role="menuitem"
@@ -1620,7 +1620,7 @@ exports[`BlockSelector renders BlockSelector with query correctly 1`] = `
         title="blocks.explore.label"
       >
         <div
-          class="mc-c-gtPjpP"
+          class="mc-c-fCNhRX"
         >
           <span
             aria-label="block_selector.items.explore.label"
@@ -1674,10 +1674,10 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
     >
       <span
         aria-label="block_selector.recent"
-        class="mc-c-iSZMdl"
+        class="mc-c-cEWwGU"
       >
         <span
-          class="mc-c-fNUFJE"
+          class="mc-c-cRukNM"
         >
           block_selector.recent
         </span>
@@ -1688,7 +1688,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         title=""
       >
         <li
-          class="mc-c-jCYxqH mc-c-jCYxqH-cOuhSn-active-true mc-c-hUvGWJ"
+          class="mc-c-dadCix mc-c-dadCix-cgQZvB-active-true mc-c-hUvGWJ"
           id="block-selector-1"
           role="menuitem"
           tabindex="0"
@@ -1698,7 +1698,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
             class="mc-c-frQDkN mc-c-ktkyHc"
           >
             <div
-              class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+              class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
             />
             <div
               class="mc-c-BfbNy"
@@ -1720,67 +1720,67 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                   <path
                     clip-rule="evenodd"
                     d="M2.5 13.5C2.5 8.25332 6.75332 4 12 4C17.2467 4 21.5 8.25332 21.5 13.5C21.5 18.7467 17.2467 23 12 23C6.75332 23 2.5 18.7467 2.5 13.5ZM12 6C7.85788 6 4.5 9.35788 4.5 13.5C4.5 17.6421 7.85788 21 12 21C16.1421 21 19.5 17.6421 19.5 13.5C19.5 9.35788 16.1421 6 12 6Z"
-                    fill="#908b9c"
+                    fill="#adaab6"
                     fill-rule="evenodd"
                   />
                   <path
                     clip-rule="evenodd"
                     d="M8.5 2C8.5 1.44772 8.94772 1 9.5 1H14.5C15.0523 1 15.5 1.44772 15.5 2C15.5 2.55228 15.0523 3 14.5 3H9.5C8.94772 3 8.5 2.55228 8.5 2Z"
-                    fill="#908b9c"
+                    fill="#adaab6"
                     fill-rule="evenodd"
                   />
                   <path
                     clip-rule="evenodd"
                     d="M12 9C12.3589 9 12.6902 9.19229 12.8682 9.50386L14.8682 13.0039C15.0439 13.3113 15.0439 13.6887 14.8682 13.9961L12.8682 17.4961C12.6902 17.8077 12.3589 18 12 18C11.6411 18 11.3098 17.8077 11.1318 17.4961L9.13176 13.9961C8.95608 13.6887 8.95608 13.3113 9.13176 13.0039L11.1318 9.50386C11.3098 9.19229 11.6411 9 12 9ZM11.1518 13.5L12 14.9844L12.8482 13.5L12 12.0156L11.1518 13.5Z"
-                    fill="#908b9c"
+                    fill="#adaab6"
                     fill-rule="evenodd"
                   />
                   <path
                     clip-rule="evenodd"
                     d="M2.5 13.5C2.5 12.9477 2.94772 12.5 3.5 12.5H5.5C6.05228 12.5 6.5 12.9477 6.5 13.5C6.5 14.0523 6.05228 14.5 5.5 14.5H3.5C2.94772 14.5 2.5 14.0523 2.5 13.5Z"
-                    fill="#908b9c"
+                    fill="#adaab6"
                     fill-rule="evenodd"
                   />
                   <path
                     clip-rule="evenodd"
                     d="M17.5 13.5C17.5 12.9477 17.9477 12.5 18.5 12.5H20.5C21.0523 12.5 21.5 12.9477 21.5 13.5C21.5 14.0523 21.0523 14.5 20.5 14.5H18.5C17.9477 14.5 17.5 14.0523 17.5 13.5Z"
-                    fill="#908b9c"
+                    fill="#adaab6"
                     fill-rule="evenodd"
                   />
                   <path
                     clip-rule="evenodd"
                     d="M12 4C12.5523 4 13 4.44772 13 5V7C13 7.55228 12.5523 8 12 8C11.4477 8 11 7.55228 11 7V5C11 4.44772 11.4477 4 12 4Z"
-                    fill="#908b9c"
+                    fill="#adaab6"
                     fill-rule="evenodd"
                   />
                   <path
                     clip-rule="evenodd"
                     d="M12 19C12.5523 19 13 19.4477 13 20V22C13 22.5523 12.5523 23 12 23C11.4477 23 11 22.5523 11 22V20C11 19.4477 11.4477 19 12 19Z"
-                    fill="#908b9c"
+                    fill="#adaab6"
                     fill-rule="evenodd"
                   />
                   <path
                     clip-rule="evenodd"
                     d="M7.82612 20.9739C8.03744 20.4637 8.6224 20.2213 9.13265 20.4327C10.0146 20.7979 10.9825 21 12 21C13.0176 21 13.9854 20.7979 14.8674 20.4327C15.3776 20.2213 15.9626 20.4637 16.1739 20.9739C16.3852 21.4842 16.1429 22.0691 15.6327 22.2805C14.5122 22.7445 13.2847 23 12 23C10.7154 23 9.48779 22.7445 8.36738 22.2805C7.85713 22.0691 7.61479 21.4842 7.82612 20.9739Z"
-                    fill="#908b9c"
+                    fill="#adaab6"
                     fill-rule="evenodd"
                   />
                   <path
                     clip-rule="evenodd"
                     d="M4.52608 9.3261C5.03634 9.53742 5.27868 10.1224 5.06736 10.6326C4.70208 11.5146 4.5 12.4825 4.5 13.5C4.5 14.5175 4.70208 15.4854 5.06736 16.3674C5.27868 16.8776 5.03634 17.4626 4.52608 17.6739C4.01582 17.8852 3.43087 17.6429 3.21955 17.1326C2.75556 16.0122 2.5 14.7847 2.5 13.5C2.5 12.2153 2.75556 10.9878 3.21955 9.86738C3.43087 9.35712 4.01582 9.11478 4.52608 9.3261Z"
-                    fill="#908b9c"
+                    fill="#adaab6"
                     fill-rule="evenodd"
                   />
                   <path
                     clip-rule="evenodd"
                     d="M19.4738 9.3261C19.9841 9.11478 20.569 9.35711 20.7804 9.86737C21.2444 10.9878 21.4999 12.2153 21.4999 13.5C21.4999 14.7847 21.2444 16.0122 20.7804 17.1326C20.569 17.6429 19.9841 17.8852 19.4738 17.6739C18.9636 17.4626 18.7212 16.8776 18.9326 16.3674C19.2978 15.4854 19.4999 14.5175 19.4999 13.5C19.4999 12.4825 19.2978 11.5146 18.9326 10.6326C18.7212 10.1224 18.9636 9.53743 19.4738 9.3261Z"
-                    fill="#908b9c"
+                    fill="#adaab6"
                     fill-rule="evenodd"
                   />
                   <path
                     clip-rule="evenodd"
                     d="M12.0001 6C10.8986 6 9.85517 6.2368 8.91565 6.6613C8.41236 6.8887 7.82001 6.66504 7.59261 6.16174C7.36521 5.65845 7.58887 5.0661 8.09216 4.8387C9.28534 4.2996 10.6091 4 12.0001 4C13.391 4 14.7148 4.2996 15.908 4.8387C16.4113 5.0661 16.6349 5.65845 16.4075 6.16174C16.1801 6.66504 15.5878 6.8887 15.0845 6.6613C14.1449 6.2368 13.1015 6 12.0001 6Z"
-                    fill="#908b9c"
+                    fill="#adaab6"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -1798,16 +1798,16 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
     >
       <span
         aria-label="block_selector.type"
-        class="mc-c-iSZMdl"
+        class="mc-c-cEWwGU"
       >
         <span
-          class="mc-c-fNUFJE"
+          class="mc-c-cRukNM"
         >
           block_selector.type
         </span>
       </span>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-2"
         label="blocks.formula.label"
         role="menuitem"
@@ -1825,7 +1825,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iimHIdk-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ibjcPei-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -1844,7 +1844,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                   >
                     <path
                       d="M20 4.5 18.5 3H4l9 9-9 9h14.5l1.5-1.5"
-                      stroke="#85d1f1"
+                      stroke="#bdebff"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
@@ -1874,7 +1874,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-3"
         label="blocks.spreadsheet.label"
         role="menuitem"
@@ -1892,7 +1892,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -1913,13 +1913,13 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                   >
                     <path
                       d="M21 3H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z"
-                      stroke="#908b9c"
+                      stroke="#adaab6"
                       stroke-linejoin="round"
                       stroke-width="2"
                     />
                     <path
                       d="M2 9h20M8.75 9v12m6.5-12v12M2 15h20m0-11v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4"
-                      stroke="#908b9c"
+                      stroke="#adaab6"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
@@ -1949,7 +1949,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-4"
         label="blocks.upload.label"
         role="menuitem"
@@ -1967,7 +1967,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -1988,14 +1988,14 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                   >
                     <path
                       d="m12.004 20.5-.004-9m8.259 5.658A4.605 4.605 0 0 0 22 12c-.607-1.915-2.465-2.964-4.474-2.963h-1.16A7.369 7.369 0 1 0 3.71 15.752"
-                      stroke="#908b9c"
+                      stroke="#adaab6"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
                     />
                     <path
                       d="M15.182 13.818 12 10.636l-3.182 3.182"
-                      stroke="#908b9c"
+                      stroke="#adaab6"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
@@ -2025,7 +2025,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-5"
         label="blocks.link.label"
         role="menuitem"
@@ -2043,7 +2043,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -2064,7 +2064,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                   >
                     <path
                       d="M10.456 8.1774C11.8793 8.1774 13.2443 8.74263 14.2509 9.74881C14.6415 10.1392 14.6416 10.7724 14.2512 11.163C13.8608 11.5536 13.2276 11.5537 12.837 11.1633C12.2055 10.532 11.349 10.1773 10.456 10.1773C9.63748 10.1773 8.84963 10.4753 8.23756 11.0112L8.0751 11.1632L4.9863 14.251C4.35476 14.8826 3.99994 15.7392 3.99994 16.6324C3.99994 17.5255 4.35476 18.3821 4.9863 19.0137C5.61788 19.6452 6.47448 20.0001 7.36763 20.0001C8.18636 20.0001 8.97436 19.7019 9.58648 19.1658L9.74895 19.0137L11.2929 17.4697C11.6834 17.0792 12.3166 17.0792 12.7071 17.4697C13.0676 17.8302 13.0953 18.3974 12.7903 18.7897L12.7071 18.8839L11.1631 20.4279C10.1565 21.4345 8.7912 22 7.36763 22C5.94407 22 4.57878 21.4345 3.57215 20.4279C2.56552 19.4213 2 18.056 2 16.6324C2 15.2977 2.49704 14.0144 3.38869 13.0296L3.57225 12.8368L6.6612 9.7488C7.6678 8.74263 9.03279 8.1774 10.456 8.1774ZM16.6324 2C18.056 2 19.4213 2.56552 20.4279 3.57215C21.4345 4.57878 22 5.94407 22 7.36763C22 8.70223 21.503 9.98559 20.6113 10.9703L20.4277 11.1632L17.3388 14.2512C16.3323 15.2574 14.9672 15.8226 13.544 15.8226C12.1206 15.8226 10.7557 15.2574 9.74909 14.2512C9.3585 13.8607 9.35838 13.2276 9.74882 12.837C10.1393 12.4464 10.7724 12.4463 11.163 12.8367C11.7945 13.468 12.6509 13.8226 13.544 13.8226C14.3625 13.8226 15.1504 13.5247 15.7624 12.9888L15.9249 12.8368L19.0137 9.74896C19.6452 9.11738 20.0001 8.26079 20.0001 7.36763C20.0001 6.47448 19.6452 5.61788 19.0137 4.9863C18.3821 4.35476 17.5255 3.99994 16.6324 3.99994C15.8136 3.99994 15.0256 4.29808 14.4135 4.83423L14.251 4.98631L12.7071 6.53027C12.3166 6.92078 11.6834 6.92078 11.2929 6.53026C10.9324 6.16979 10.9047 5.60257 11.2097 5.2103L11.2929 5.11609L12.8369 3.57215C13.8435 2.56552 15.2088 2 16.6324 2Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                     />
                   </svg>
                 </span>
@@ -2091,7 +2091,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-6"
         label="blocks.embed.label"
         role="menuitem"
@@ -2109,7 +2109,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -2131,67 +2131,67 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                     <path
                       clip-rule="evenodd"
                       d="M2.5 13.5C2.5 8.25332 6.75332 4 12 4C17.2467 4 21.5 8.25332 21.5 13.5C21.5 18.7467 17.2467 23 12 23C6.75332 23 2.5 18.7467 2.5 13.5ZM12 6C7.85788 6 4.5 9.35788 4.5 13.5C4.5 17.6421 7.85788 21 12 21C16.1421 21 19.5 17.6421 19.5 13.5C19.5 9.35788 16.1421 6 12 6Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M8.5 2C8.5 1.44772 8.94772 1 9.5 1H14.5C15.0523 1 15.5 1.44772 15.5 2C15.5 2.55228 15.0523 3 14.5 3H9.5C8.94772 3 8.5 2.55228 8.5 2Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M12 9C12.3589 9 12.6902 9.19229 12.8682 9.50386L14.8682 13.0039C15.0439 13.3113 15.0439 13.6887 14.8682 13.9961L12.8682 17.4961C12.6902 17.8077 12.3589 18 12 18C11.6411 18 11.3098 17.8077 11.1318 17.4961L9.13176 13.9961C8.95608 13.6887 8.95608 13.3113 9.13176 13.0039L11.1318 9.50386C11.3098 9.19229 11.6411 9 12 9ZM11.1518 13.5L12 14.9844L12.8482 13.5L12 12.0156L11.1518 13.5Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M2.5 13.5C2.5 12.9477 2.94772 12.5 3.5 12.5H5.5C6.05228 12.5 6.5 12.9477 6.5 13.5C6.5 14.0523 6.05228 14.5 5.5 14.5H3.5C2.94772 14.5 2.5 14.0523 2.5 13.5Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M17.5 13.5C17.5 12.9477 17.9477 12.5 18.5 12.5H20.5C21.0523 12.5 21.5 12.9477 21.5 13.5C21.5 14.0523 21.0523 14.5 20.5 14.5H18.5C17.9477 14.5 17.5 14.0523 17.5 13.5Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M12 4C12.5523 4 13 4.44772 13 5V7C13 7.55228 12.5523 8 12 8C11.4477 8 11 7.55228 11 7V5C11 4.44772 11.4477 4 12 4Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M12 19C12.5523 19 13 19.4477 13 20V22C13 22.5523 12.5523 23 12 23C11.4477 23 11 22.5523 11 22V20C11 19.4477 11.4477 19 12 19Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M7.82612 20.9739C8.03744 20.4637 8.6224 20.2213 9.13265 20.4327C10.0146 20.7979 10.9825 21 12 21C13.0176 21 13.9854 20.7979 14.8674 20.4327C15.3776 20.2213 15.9626 20.4637 16.1739 20.9739C16.3852 21.4842 16.1429 22.0691 15.6327 22.2805C14.5122 22.7445 13.2847 23 12 23C10.7154 23 9.48779 22.7445 8.36738 22.2805C7.85713 22.0691 7.61479 21.4842 7.82612 20.9739Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M4.52608 9.3261C5.03634 9.53742 5.27868 10.1224 5.06736 10.6326C4.70208 11.5146 4.5 12.4825 4.5 13.5C4.5 14.5175 4.70208 15.4854 5.06736 16.3674C5.27868 16.8776 5.03634 17.4626 4.52608 17.6739C4.01582 17.8852 3.43087 17.6429 3.21955 17.1326C2.75556 16.0122 2.5 14.7847 2.5 13.5C2.5 12.2153 2.75556 10.9878 3.21955 9.86738C3.43087 9.35712 4.01582 9.11478 4.52608 9.3261Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M19.4738 9.3261C19.9841 9.11478 20.569 9.35711 20.7804 9.86737C21.2444 10.9878 21.4999 12.2153 21.4999 13.5C21.4999 14.7847 21.2444 16.0122 20.7804 17.1326C20.569 17.6429 19.9841 17.8852 19.4738 17.6739C18.9636 17.4626 18.7212 16.8776 18.9326 16.3674C19.2978 15.4854 19.4999 14.5175 19.4999 13.5C19.4999 12.4825 19.2978 11.5146 18.9326 10.6326C18.7212 10.1224 18.9636 9.53743 19.4738 9.3261Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M12.0001 6C10.8986 6 9.85517 6.2368 8.91565 6.6613C8.41236 6.8887 7.82001 6.66504 7.59261 6.16174C7.36521 5.65845 7.58887 5.0661 8.09216 4.8387C9.28534 4.2996 10.6091 4 12.0001 4C13.391 4 14.7148 4.2996 15.908 4.8387C16.4113 5.0661 16.6349 5.65845 16.4075 6.16174C16.1801 6.66504 15.5878 6.8887 15.0845 6.6613C14.1449 6.2368 13.1015 6 12.0001 6Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -2219,7 +2219,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-7"
         label="blocks.h1.label"
         role="menuitem"
@@ -2237,7 +2237,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iiMjPUo-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ijyLKRZ-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -2259,12 +2259,12 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                     <path
                       clip-rule="evenodd"
                       d="M20.407 13H22v9h-2.159v-6.113a5.331 5.331 0 0 1-1.244.53L18 16.59v-2.211l.354-.09a4.204 4.204 0 0 0 1.012-.424 4.19 4.19 0 0 0 .902-.714l.139-.151Z"
-                      fill="#85a6fc"
+                      fill="#87b6e8"
                       fill-rule="evenodd"
                     />
                     <path
                       d="M2 2v20h2.578v-8.964h8.844V22H16V2h-2.578v8.431H4.578V2H2Z"
-                      fill="#85a6fc"
+                      fill="#87b6e8"
                     />
                   </svg>
                 </span>
@@ -2291,7 +2291,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-8"
         label="blocks.h2.label"
         role="menuitem"
@@ -2309,7 +2309,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -2331,12 +2331,12 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                     <path
                       clip-rule="evenodd"
                       d="M20.682 16.848c.295-.353.431-.707.431-1.07 0-.385-.098-.607-.237-.74-.146-.14-.4-.241-.8-.241-.396 0-.643.133-.809.368l-.004.006-.004.005c-.189.25-.31.641-.33 1.261l-.011.365h-1.88l.005-.383c.012-.976.28-1.798.834-2.424.572-.679 1.34-.995 2.241-.995.8 0 1.504.238 2.056.766l.003.003c.538.528.812 1.208.812 2.02 0 .811-.3 1.533-.844 2.168l-.008.01c-.328.358-.881.807-1.646 1.352l-.003.002a6.507 6.507 0 0 0-1 .837H23V22h-6v-.378c0-.893.277-1.683.85-2.364.315-.395.932-.906 1.794-1.535.51-.38.848-.667 1.038-.875Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                     <path
                       d="M1 2v20h2.578v-8.964h8.844V22H15V2h-2.578v8.431H3.578V2H1Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                     />
                   </svg>
                 </span>
@@ -2363,7 +2363,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-9"
         label="blocks.h3.label"
         role="menuitem"
@@ -2381,7 +2381,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-ibOHShY-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-idlaRbP-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -2403,12 +2403,12 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                     <path
                       clip-rule="evenodd"
                       d="M20.592 14.087c-.19-.175-.506-.281-.987-.281-.48 0-.816.125-1.039.333-.226.212-.388.547-.432 1.046l-.026.287H16.17l.028-.342c.08-.963.429-1.739 1.08-2.306.61-.567 1.393-.824 2.314-.824.938 0 1.716.227 2.328.725l.006.005c.595.506.901 1.204.901 2.06 0 .549-.138 1.032-.43 1.428a2.198 2.198 0 0 1-.58.541c.26.151.483.335.663.552.354.408.52.928.52 1.52 0 .915-.316 1.683-.938 2.276l-.007.007c-.658.589-1.512.886-2.512.886-.955 0-1.76-.255-2.372-.781-.695-.597-1.067-1.454-1.146-2.529L16 18.351h1.987l.012.303c.022.544.185.92.474 1.176l.008.006c.253.24.593.371 1.05.371.498 0 .875-.152 1.156-.417.238-.245.362-.53.362-.896 0-.462-.136-.748-.36-.924l-.01-.008c-.219-.186-.58-.305-1.124-.305h-.95V15.99h.938c.502 0 .826-.117 1.02-.29.192-.169.313-.428.313-.809 0-.384-.111-.635-.284-.804Z"
-                      fill="#9578d0"
+                      fill="#abbaea"
                       fill-rule="evenodd"
                     />
                     <path
                       d="M1 2v20h2.578v-8.964h8.844V22H15V2h-2.578v8.431H3.578V2H1Z"
-                      fill="#9578d0"
+                      fill="#abbaea"
                     />
                   </svg>
                 </span>
@@ -2435,7 +2435,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-10"
         label="blocks.h4.label"
         role="menuitem"
@@ -2453,7 +2453,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iiMjPUo-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ijyLKRZ-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -2474,12 +2474,12 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                   >
                     <path
                       d="M1 2v20h2.578v-8.964h8.844V22H15V2h-2.578v8.431H3.578V2H1Z"
-                      fill="#85a6fc"
+                      fill="#87b6e8"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M21.95 13.182h-1.656l-4.316 5.564v1.668h4.14v1.836h1.832v-1.836h1.272v-1.616H21.95v-5.616Zm-1.832 5.616v-2.904l-2.241 2.904h2.241Z"
-                      fill="#85a6fc"
+                      fill="#87b6e8"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -2507,7 +2507,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-11"
         label="blocks.h5.label"
         role="menuitem"
@@ -2525,7 +2525,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iimHIdk-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ibjcPei-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -2546,12 +2546,12 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                   >
                     <path
                       d="M1 2v20h2.578v-8.964h8.844V22H15V2h-2.578v8.431H3.578V2H1Z"
-                      fill="#85d1f1"
+                      fill="#bdebff"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M23.628 11.754h-6.567l-.594 6.128h1.948l.071-.128c.172-.306.4-.522.702-.667l.004-.001c.262-.132.599-.198 1.008-.198.598 0 1.02.168 1.294.487l.003.003c.286.321.455.789.455 1.416 0 .552-.185.973-.52 1.285-.356.318-.798.481-1.33.481-.51 0-.887-.118-1.14-.302-.296-.215-.48-.551-.544-1.048l-.028-.218h-2.1l.02.269c.076.992.501 1.801 1.29 2.393.691.526 1.53.792 2.488.792 1.048 0 1.958-.312 2.733-.938l.004-.002c.84-.706 1.265-1.617 1.265-2.726 0-1.127-.323-2.048-.965-2.72-.64-.672-1.479-1.002-2.477-1.002a3.62 3.62 0 0 0-1.304.225c-.257.09-.494.21-.713.36l.199-1.947h4.798v-1.942Z"
-                      fill="#85d1f1"
+                      fill="#bdebff"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -2579,7 +2579,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-12"
         label="blocks.bulletedList.label"
         role="menuitem"
@@ -2597,7 +2597,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-ibOHShY-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-idlaRbP-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -2619,7 +2619,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                     <path
                       clip-rule="evenodd"
                       d="M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm2-10a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM8 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 20a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 4a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Z"
-                      fill="#9578d0"
+                      fill="#abbaea"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -2647,7 +2647,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-13"
         label="blocks.orderedList.label"
         role="menuitem"
@@ -2665,7 +2665,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iiMjPUo-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ijyLKRZ-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -2687,7 +2687,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                     <path
                       clip-rule="evenodd"
                       d="M4.004 1H5v5H3.65V2.604a3.568 3.568 0 0 1-.777.294l-.373.096V1.766l.221-.05a2.82 2.82 0 0 0 .633-.235c.235-.13.42-.258.564-.397L4.004 1Zm.45 10.351c.198-.215.288-.431.288-.653 0-.235-.066-.371-.158-.452-.097-.086-.266-.148-.534-.148-.263 0-.428.081-.539.225l-.002.004-.003.003c-.126.152-.206.392-.22.77l-.008.223H2.026l.003-.233c.007-.597.186-1.1.556-1.482C2.966 9.193 3.478 9 4.079 9c.533 0 1.003.145 1.37.468l.002.002c.36.323.542.738.542 1.235 0 .495-.2.936-.563 1.324l-.005.006c-.22.22-.588.493-1.098.827h-.002a4.288 4.288 0 0 0-.667.512H6V14.5H2v-.23c0-.547.185-1.03.566-1.446.21-.24.622-.553 1.197-.938.34-.232.565-.407.691-.534Zm-.394 6.732c.275 0 .455.064.564.17.099.1.162.251.162.482 0 .228-.069.384-.178.485-.112.104-.297.174-.583.174h-.537v1h.544c.31 0 .517.072.641.183l.006.005c.128.106.206.277.206.554 0 .22-.07.39-.207.538-.16.159-.376.25-.66.25-.261 0-.456-.079-.6-.222l-.005-.004c-.165-.154-.258-.38-.27-.706l-.008-.181H2l.014.203c.045.645.258 1.16.655 1.517.35.316.81.469 1.355.469.572 0 1.06-.178 1.436-.532l.004-.004C5.82 22.108 6 21.648 6 21.1c0-.356-.095-.668-.297-.913-.103-.13-.23-.24-.38-.33.132-.09.243-.198.333-.326.166-.237.245-.527.245-.856 0-.513-.175-.932-.515-1.236l-.003-.003c-.35-.299-.794-.435-1.33-.435-.527 0-.974.154-1.323.494-.372.34-.571.806-.617 1.384l-.016.205h1.108l.014-.172c.026-.3.118-.5.247-.627.128-.126.32-.2.594-.2ZM8 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 20a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 4a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Z"
-                      fill="#85a6fc"
+                      fill="#87b6e8"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -2715,7 +2715,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-14"
         label="blocks.taskList.label"
         role="menuitem"
@@ -2733,7 +2733,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-ibOHShY-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-idlaRbP-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -2755,13 +2755,13 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                     <path
                       clip-rule="evenodd"
                       d="M12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
-                      fill="#9578d0"
+                      fill="#abbaea"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M17.3211 8.05752C17.8416 8.511 17.896 9.30059 17.4425 9.82111L12.2152 15.8211C11.9938 16.0752 11.6793 16.2291 11.3428 16.248C11.0063 16.2669 10.6765 16.1492 10.4281 15.9214L7.15534 12.9214C6.64645 12.455 6.61207 11.6642 7.07856 11.1553C7.54505 10.6464 8.33576 10.6121 8.84466 11.0786L11.1724 13.2123L15.5575 8.1789C16.011 7.65837 16.8006 7.60403 17.3211 8.05752Z"
-                      fill="#9578d0"
+                      fill="#abbaea"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -2789,7 +2789,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-15"
         label="blocks.code.label"
         role="menuitem"
@@ -2807,7 +2807,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iimHIdk-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ibjcPei-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -2829,7 +2829,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                     <path
                       clip-rule="evenodd"
                       d="M7.694 6.28a1 1 0 0 1 .026 1.414l-4.306 4.46 4.28 4.126a1 1 0 0 1-1.388 1.44l-5-4.82a1 1 0 0 1-.026-1.414l5-5.18a1 1 0 0 1 1.414-.026ZM16.305 6.28a1 1 0 0 1 1.415.026l5 5.18a1 1 0 0 1-.026 1.414l-5 4.82a1 1 0 0 1-1.388-1.44l4.28-4.125-4.305-4.46a1 1 0 0 1 .024-1.415ZM14.217 2.024a1 1 0 0 1 .76 1.193l-4 18a1 1 0 1 1-1.953-.434l4-18a1 1 0 0 1 1.193-.76Z"
-                      fill="#85d1f1"
+                      fill="#bdebff"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -2857,7 +2857,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-16"
         label="blocks.blockquote.label"
         role="menuitem"
@@ -2875,7 +2875,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iimHIdk-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ibjcPei-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -2895,7 +2895,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                     <path
                       clip-rule="evenodd"
                       d="M9.427 4.558C5.66 6.976 3.57 9.791 3.15 13.001 2.5 18 6.97 20.447 9.234 18.248c2.265-2.198.907-4.988-.733-5.75-1.64-.764-2.643-.498-2.468-1.517.175-1.02 2.509-3.845 4.558-5.161a.374.374 0 0 0 .057-.51l-.507-.66c-.22-.286-.43-.275-.715-.092zm9.913 0c-3.766 2.418-5.858 5.233-6.276 8.443-.651 4.999 3.82 7.446 6.084 5.247 2.265-2.198.907-4.988-.733-5.75-1.64-.764-2.643-.498-2.468-1.517.175-1.02 2.508-3.845 4.558-5.161a.374.374 0 0 0 .057-.51l-.507-.66c-.22-.286-.43-.275-.715-.092z"
-                      fill="#85d1f1"
+                      fill="#bdebff"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -2923,7 +2923,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-17"
         label="blocks.callout.label"
         role="menuitem"
@@ -2941,7 +2941,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -2963,7 +2963,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                     <path
                       clip-rule="evenodd"
                       d="M12 3.0625C8.75087 3.0625 6.5 5.38625 6.5 8.21875C6.5 9.57175 7.083 10.4531 7.853 11.3868L8.14725 11.7346C8.45388 12.0976 8.7935 12.4991 9.07262 12.9006C9.46312 13.4657 9.811 14.1326 9.9265 14.9494C9.95403 15.2147 9.87768 15.4804 9.71348 15.6906C9.54928 15.9008 9.31001 16.0392 9.04592 16.0768C8.78183 16.1143 8.51346 16.0481 8.29718 15.892C8.08089 15.7358 7.93352 15.502 7.886 15.2395C7.831 14.8518 7.66188 14.4874 7.37725 14.0749C7.14458 13.751 6.89586 13.4389 6.632 13.1399C6.5165 13.0024 6.39413 12.858 6.2635 12.6999C5.40138 11.6562 4.4375 10.3033 4.4375 8.21875C4.4375 4.17625 7.68663 1 12 1C16.3134 1 19.5625 4.17625 19.5625 8.21875C19.5625 10.3033 18.5986 11.6562 17.7365 12.6999C17.6059 12.858 17.4835 13.0024 17.368 13.1385C17.0834 13.4754 16.8414 13.7614 16.6241 14.0749C16.3381 14.4874 16.1704 14.8518 16.1154 15.2395C16.0962 15.3736 16.0509 15.5026 15.9819 15.6191C15.9129 15.7356 15.8216 15.8375 15.7133 15.9187C15.605 16 15.4817 16.0591 15.3505 16.0927C15.2193 16.1264 15.0828 16.1338 14.9487 16.1147C14.8146 16.0955 14.6856 16.0502 14.5691 15.9812C14.4525 15.9122 14.3507 15.8209 14.2695 15.7126C14.1882 15.6043 14.1291 15.481 14.0954 15.3498C14.0618 15.2186 14.0544 15.0821 14.0735 14.948C14.189 14.1326 14.5369 13.4657 14.9274 12.9006C15.2065 12.4991 15.5461 12.0976 15.8527 11.7346C15.9559 11.6136 16.0549 11.4967 16.1456 11.3868C16.917 10.4531 17.5 9.57175 17.5 8.21875C17.5 5.38625 15.2491 3.0625 12 3.0625ZM9.25 21.9688C9.25 21.6952 9.35865 21.4329 9.55205 21.2395C9.74544 21.0462 10.0077 20.9375 10.2812 20.9375H13.7188C13.9923 20.9375 14.2546 21.0462 14.448 21.2395C14.6413 21.4329 14.75 21.6952 14.75 21.9688C14.75 22.2423 14.6413 22.5046 14.448 22.698C14.2546 22.8913 13.9923 23 13.7188 23H10.2812C10.0077 23 9.74544 22.8913 9.55205 22.698C9.35865 22.5046 9.25 22.2423 9.25 21.9688ZM8.90625 17.5C8.63275 17.5 8.37044 17.6087 8.17705 17.802C7.98365 17.9954 7.875 18.2577 7.875 18.5312C7.875 18.8048 7.98365 19.0671 8.17705 19.2605C8.37044 19.4538 8.63275 19.5625 8.90625 19.5625H15.0938C15.3673 19.5625 15.6296 19.4538 15.823 19.2605C16.0163 19.0671 16.125 18.8048 16.125 18.5312C16.125 18.2577 16.0163 17.9954 15.823 17.802C15.6296 17.6087 15.3673 17.5 15.0938 17.5H8.90625Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -2991,7 +2991,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-18"
         label="blocks.divider.label"
         role="menuitem"
@@ -3009,7 +3009,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-ibOHShY-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-idlaRbP-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -3031,13 +3031,13 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                     <path
                       clip-rule="evenodd"
                       d="M1 12a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1Z"
-                      fill="#9578d0"
+                      fill="#abbaea"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M2 5a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1ZM2 19a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1Z"
-                      fill="rgba(149,120,208,0.3)"
+                      fill="rgba(171,186,234,0.3)"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -3065,7 +3065,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-19"
         label="blocks.toc.label"
         role="menuitem"
@@ -3083,7 +3083,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iiMjPUo-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-ijyLKRZ-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -3105,13 +3105,13 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                     <path
                       clip-rule="evenodd"
                       d="M1 5a1 1 0 0 1 1-1h13a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1ZM6 10a1 1 0 0 1 1-1h15a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1ZM6 15a1 1 0 0 1 1-1h15a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1Z"
-                      fill="#85a6fc"
+                      fill="#87b6e8"
                       fill-rule="evenodd"
                     />
                     <path
                       clip-rule="evenodd"
                       d="M1 20a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1Z"
-                      fill="rgba(133,166,252,0.3)"
+                      fill="rgba(135,182,232,0.3)"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -3139,7 +3139,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="block-selector-20"
         label="blocks.subPageMenu.label"
         role="menuitem"
@@ -3157,7 +3157,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
               class="mc-c-frQDkN mc-c-diqauH"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iexuFlu-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-icoyBJm-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -3179,7 +3179,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
                     <path
                       clip-rule="evenodd"
                       d="M12 12a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2h-9a1 1 0 0 1-1-1ZM6 12a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1ZM8 19a1 1 0 0 1 1-1h13a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM2 19a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1ZM8 5a1 1 0 0 1 1-1h13a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM2 5a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1Z"
-                      fill="#908b9c"
+                      fill="#adaab6"
                       fill-rule="evenodd"
                     />
                   </svg>
@@ -3209,7 +3209,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
     </ul>
   </ul>
   <div
-    class="mc-c-kHIgoU"
+    class="mc-c-kSWkZc"
   >
     <span>
       block_selector.footer

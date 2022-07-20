@@ -16,16 +16,16 @@ exports[`MentionMenuPageGroup matches correct snapshot 1`] = `
     >
       <span
         aria-label="mention.page_link.head"
-        class="mc-c-iSZMdl"
+        class="mc-c-cEWwGU"
       >
         <span
-          class="mc-c-fbvDaU"
+          class="mc-c-enkbug"
         >
           mention.page_link.head
         </span>
       </span>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="page-group-1"
         label="page name 0"
         role="menuitem"
@@ -39,10 +39,10 @@ exports[`MentionMenuPageGroup matches correct snapshot 1`] = `
             class="mc-c-OVPdU"
           >
             <span
-              class="mc-c-frQDkN mc-c-iJjxbJ"
+              class="mc-c-frQDkN mc-c-bAtsVZ"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iPJLV-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-iPJLV-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -69,7 +69,7 @@ exports[`MentionMenuPageGroup matches correct snapshot 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="page-group-2"
         label="page name 1"
         role="menuitem"
@@ -83,10 +83,10 @@ exports[`MentionMenuPageGroup matches correct snapshot 1`] = `
             class="mc-c-OVPdU"
           >
             <span
-              class="mc-c-frQDkN mc-c-iJjxbJ"
+              class="mc-c-frQDkN mc-c-bAtsVZ"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iPJLV-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-iPJLV-css"
               />
               <div
                 class="mc-c-BfbNy"
@@ -113,7 +113,7 @@ exports[`MentionMenuPageGroup matches correct snapshot 1`] = `
         </div>
       </li>
       <li
-        class="mc-c-jCYxqH"
+        class="mc-c-dadCix"
         id="page-group-3"
         label="page name 2"
         role="menuitem"
@@ -127,10 +127,10 @@ exports[`MentionMenuPageGroup matches correct snapshot 1`] = `
             class="mc-c-OVPdU"
           >
             <span
-              class="mc-c-frQDkN mc-c-iJjxbJ"
+              class="mc-c-frQDkN mc-c-bAtsVZ"
             >
               <div
-                class="mc-c-yaLQE mc-c-yaLQE-iPJLV-css"
+                class="mc-c-dSTlhs mc-c-dSTlhs-iPJLV-css"
               />
               <div
                 class="mc-c-BfbNy"

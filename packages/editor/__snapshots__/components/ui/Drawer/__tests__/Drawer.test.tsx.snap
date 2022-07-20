@@ -24,14 +24,14 @@ exports[`Drawer renders Drawer visible correctly 1`] = `
           <path
             clip-rule="evenodd"
             d="M4.707 3.293a1 1 0 0 0-1.414 1.414L10.586 12l-7.293 7.293a1 1 0 1 0 1.414 1.414L12 13.414l7.293 7.293a1 1 0 0 0 1.414-1.414L13.414 12l7.293-7.293a1 1 0 0 0-1.414-1.414L12 10.586 4.707 3.293z"
-            fill="#908b9c"
+            fill="#adaab6"
             fill-rule="evenodd"
           />
         </svg>
       </span>
     </button>
     <div
-      class="mc-c-gsvlll"
+      class="mc-c-jWMYps"
     />
     <div
       class="mc-c-euHcXx"

@@ -25,10 +25,10 @@ exports[`User renders User correctly 1`] = `
                
             </span>
             <span
-              class="mc-c-fpAZSs"
+              class="mc-c-dUBPbm"
             >
               <span
-                class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-kRzPmM-size-md mc-c-gYWVfz-koJJPr-default-true mc-c-gYWVfz-iPJLV-css mc-c-kRnupi mc-c-kRnupi-cruuqr-size-sm"
+                class="mc-c-kEyFKe mc-c-kEyFKe-hECRKn-shape-circle mc-c-kEyFKe-kRzPmM-size-md mc-c-kEyFKe-PSaFj-default-true mc-c-kEyFKe-iPJLV-css mc-c-kRnupi mc-c-kRnupi-cruuqr-size-sm"
               >
                 <span
                   aria-label="user"
@@ -50,7 +50,7 @@ exports[`User renders User correctly 1`] = `
                 </span>
               </span>
               <span
-                class="mc-c-lRKiB mc-c-lRKiB-dHzspo-size-md"
+                class="mc-c-khUlPc mc-c-khUlPc-dHzspo-size-md"
               >
                 user_block.anonymous
               </span>

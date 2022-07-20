@@ -13,7 +13,7 @@ exports[`TaskList renders TaskList correctly 1`] = `
         class="react-renderer node-taskList"
       >
         <div
-          class="mc-c-cEyQvV"
+          class="mc-c-divPrt"
           data-node-view-wrapper=""
           style="white-space: normal; pointer-events: unset;"
         >

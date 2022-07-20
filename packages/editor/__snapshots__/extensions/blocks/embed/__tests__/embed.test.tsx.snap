@@ -23,7 +23,7 @@ exports[`Embed renders Embed correctly 1`] = `
             role="button"
           >
             <span
-              class="mc-c-TJqJI"
+              class="mc-c-kdMFDs"
             >
               <span
                 aria-label="upload"
@@ -57,7 +57,7 @@ exports[`Embed renders Embed correctly 1`] = `
               class="mc-c-fixGjY"
             >
               <span
-                class="mc-c-goNtdK"
+                class="mc-c-bIyLez"
               >
                 embed_block.embed_types.upload.label
               </span>
@@ -68,7 +68,7 @@ exports[`Embed renders Embed correctly 1`] = `
               </span>
             </div>
             <div
-              class="mc-c-fJCuub mc-c-fJCuub-ikwCcSA-css"
+              class="mc-c-ifsUss mc-c-ifsUss-ikwCcSA-css"
             />
           </div>
           <input

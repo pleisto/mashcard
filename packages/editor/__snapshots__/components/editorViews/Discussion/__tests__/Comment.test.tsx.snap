@@ -6,7 +6,7 @@ exports[`DiscussionList > Comment renders UserBlock content normally 1`] = `
     class="mc-c-knJJIL"
   >
     <span
-      class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-lhlSdI-size-sm mc-c-gYWVfz-ibPjhUn-css"
+      class="mc-c-kEyFKe mc-c-kEyFKe-hECRKn-shape-circle mc-c-kEyFKe-lhlSdI-size-sm mc-c-kEyFKe-ibPjhUn-css"
     >
       <span>
         N
@@ -17,12 +17,12 @@ exports[`DiscussionList > Comment renders UserBlock content normally 1`] = `
     >
       <div>
         <span
-          class="mc-c-bHgAqc"
+          class="mc-c-fiTErs"
         >
           name
         </span>
         <span
-          class="mc-c-BZuio"
+          class="mc-c-bElyeM"
         >
           2022-06-17 16:50
         </span>
@@ -31,10 +31,10 @@ exports[`DiscussionList > Comment renders UserBlock content normally 1`] = `
         class="mc-c-lbvXeI"
       >
         <span
-          class="mc-c-fpAZSs"
+          class="mc-c-dUBPbm"
         >
           <span
-            class="mc-c-lRKiB mc-c-lRKiB-iJVNBC-size-sm"
+            class="mc-c-khUlPc mc-c-khUlPc-iJVNBC-size-sm"
           >
             @
             name
@@ -52,7 +52,7 @@ exports[`DiscussionList > Comment renders paragraph content normally 1`] = `
     class="mc-c-knJJIL"
   >
     <span
-      class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-lhlSdI-size-sm mc-c-gYWVfz-ibPjhUn-css"
+      class="mc-c-kEyFKe mc-c-kEyFKe-hECRKn-shape-circle mc-c-kEyFKe-lhlSdI-size-sm mc-c-kEyFKe-ibPjhUn-css"
     >
       <span>
         N
@@ -63,12 +63,12 @@ exports[`DiscussionList > Comment renders paragraph content normally 1`] = `
     >
       <div>
         <span
-          class="mc-c-bHgAqc"
+          class="mc-c-fiTErs"
         >
           name
         </span>
         <span
-          class="mc-c-BZuio"
+          class="mc-c-bElyeM"
         >
           2022-06-17 16:50
         </span>
@@ -93,7 +93,7 @@ exports[`DiscussionList > Comment renders text content normally 1`] = `
     class="mc-c-knJJIL"
   >
     <span
-      class="mc-c-gYWVfz mc-c-gYWVfz-hECRKn-shape-circle mc-c-gYWVfz-lhlSdI-size-sm mc-c-gYWVfz-ibPjhUn-css"
+      class="mc-c-kEyFKe mc-c-kEyFKe-hECRKn-shape-circle mc-c-kEyFKe-lhlSdI-size-sm mc-c-kEyFKe-ibPjhUn-css"
     >
       <span>
         N
@@ -104,12 +104,12 @@ exports[`DiscussionList > Comment renders text content normally 1`] = `
     >
       <div>
         <span
-          class="mc-c-bHgAqc"
+          class="mc-c-fiTErs"
         >
           name
         </span>
         <span
-          class="mc-c-BZuio"
+          class="mc-c-bElyeM"
         >
           2022-06-17 16:50
         </span>

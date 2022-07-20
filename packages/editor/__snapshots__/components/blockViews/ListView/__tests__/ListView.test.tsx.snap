@@ -35,7 +35,7 @@ exports[`ListView renders as ordered list 1`] = `
 exports[`ListView renders as task list 1`] = `
 <div>
   <div
-    class="mc-c-cEyQvV"
+    class="mc-c-divPrt"
     data-node-view-wrapper=""
     style="white-space: normal; pointer-events: unset;"
   >
