@@ -14,12 +14,12 @@ enum AuthMethod {
   email_password
 
   """
-   Federated Authentication
+  Federated Authentication
   """
   github
 
   """
-   Federated Authentication
+  Federated Authentication
   """
   google_oauth2
 }
@@ -934,6 +934,11 @@ type BlockNew {
   Block Type
   """
   blockType: String
+
+  """
+  deleted_at
+  """
+  deletedAt: ISO8601DateTime
   documentInfo: DocumentInfo
 
   """
@@ -1057,9 +1062,14 @@ type BlockPath {
   id: UUID!
 
   """
-  cover
+  is deleted
   """
-  text: String!
+  isDeleted: Boolean!
+
+  """
+  title
+  """
+  title: String!
 }
 
 type BlockPeople {
@@ -3393,7 +3403,7 @@ type query {
     """
     parentId: String!
   ): SpreadsheetChildren
-  trashBlocks(blockId: UUID, domain: String!, search: String): [Block!]
+  trashBlocks(blockId: UUID, domain: String!, search: String): [BlockNew!]
 
   """
   return images from unsplash by search

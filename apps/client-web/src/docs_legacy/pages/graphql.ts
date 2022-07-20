@@ -310,7 +310,7 @@ export const queryDocumentBlock = gql`
         pin
         pathArray {
           id
-          text
+          title
           icon {
             ... on BlockImage {
               type
