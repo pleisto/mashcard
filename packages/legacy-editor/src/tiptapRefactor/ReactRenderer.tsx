@@ -67,7 +67,7 @@ export class ReactRenderer<R = unknown, P = unknown> {
 
     this.reactElement = <Component {...props} />
 
-    this.editor?.updatePortal(this.element, this.reactElement)
+    this.editor?.updatePortal?.(this.element, this.reactElement)
   }
 
   updateProps(props: Record<string, any> = {}): void {

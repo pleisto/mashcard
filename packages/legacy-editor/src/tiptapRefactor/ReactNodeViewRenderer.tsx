@@ -30,10 +30,8 @@ export interface ReactNodeViewRendererOptions extends NodeViewRendererOptions {
 }
 
 class ReactNodeView extends NodeView<FunctionComponent, Editor, ReactNodeViewRendererOptions> {
-  // property declaration will cause property be override by undefined
-  // because property assignment is inside mount() but not constructor
-  // contentDOMElement!: HTMLElement | null
-  // renderer!: ReactRenderer
+  declare contentDOMElement: HTMLElement | null
+  declare renderer: ReactRenderer | null
 
   override mount(): void {
     const props: NodeViewProps = {
@@ -59,9 +57,7 @@ class ReactNodeView extends NodeView<FunctionComponent, Editor, ReactNodeViewRen
       const Component = this.component
       const onDragStart = this.onDragStart.bind(this)
       const nodeViewContentRef: ReactNodeViewContextProps['nodeViewContentRef'] = element => {
-        // @ts-expect-error
         if (element && this.contentDOMElement && element.firstChild !== this.contentDOMElement) {
-          // @ts-expect-error
           element.appendChild(this.contentDOMElement)
         }
       }
@@ -76,15 +72,12 @@ class ReactNodeView extends NodeView<FunctionComponent, Editor, ReactNodeViewRen
 
     ReactNodeViewProvider.displayName = 'ReactNodeView'
 
-    // @ts-expect-error
     this.contentDOMElement = this.node.isLeaf ? null : document.createElement(this.node.isInline ? 'span' : 'div')
 
-    // @ts-expect-error
     if (this.contentDOMElement) {
       // For some reason the whiteSpace prop is not inherited properly in Chrome and Safari
       // With this fix it seems to work fine
       // See: https://github.com/ueberdosis/tiptap/issues/1197
-      // @ts-expect-error
       this.contentDOMElement.style.whiteSpace = 'inherit'
     }
 
@@ -97,8 +90,7 @@ class ReactNodeView extends NodeView<FunctionComponent, Editor, ReactNodeViewRen
     const { className = '' } = this.options
 
     flushSync(() => {
-      // @ts-expect-error
-      this.reactRenderer = new ReactRenderer(ReactNodeViewProvider, {
+      this.renderer = new ReactRenderer(ReactNodeViewProvider, {
         editor: this.editor,
         props,
         as,
@@ -109,16 +101,13 @@ class ReactNodeView extends NodeView<FunctionComponent, Editor, ReactNodeViewRen
 
   override get dom(): HTMLElement {
     if (
-      // @ts-expect-error
-      this.reactRenderer.element.firstElementChild &&
-      // @ts-expect-error
-      !this.reactRenderer.element.firstElementChild?.hasAttribute('data-node-view-wrapper')
+      this.renderer?.element.firstElementChild &&
+      !this.renderer?.element.firstElementChild?.hasAttribute('data-node-view-wrapper')
     ) {
       throw Error('Please use the NodeViewWrapper component for your node view.')
     }
 
-    // @ts-expect-error
-    return this.reactRenderer.element as HTMLElement
+    return this.renderer?.element as HTMLElement
   }
 
   override get contentDOM(): HTMLElement | null {
@@ -126,14 +115,12 @@ class ReactNodeView extends NodeView<FunctionComponent, Editor, ReactNodeViewRen
       return null
     }
 
-    // @ts-expect-error
     return this.contentDOMElement
   }
 
   update(node: ProseMirrorNode, decorations: Decoration[]): boolean {
     const updateProps = (props?: Record<string, any>): void => {
-      // @ts-expect-error
-      this.reactRenderer.updateProps(props)
+      this.renderer?.updateProps(props)
     }
 
     if (node.type !== this.node.type) {
@@ -169,23 +156,19 @@ class ReactNodeView extends NodeView<FunctionComponent, Editor, ReactNodeViewRen
   }
 
   selectNode(): void {
-    // @ts-expect-error
-    this.reactRenderer.updateProps({
+    this.renderer?.updateProps({
       selected: true
     })
   }
 
   deselectNode(): void {
-    // @ts-expect-error
-    this.reactRenderer.updateProps({
+    this.renderer?.updateProps({
       selected: false
     })
   }
 
   destroy(): void {
-    // @ts-expect-error
-    this.reactRenderer.destroy()
-    // @ts-expect-error
+    this.renderer?.destroy()
     this.contentDOMElement = null
   }
 }

@@ -1,6 +1,7 @@
-import { FC, forwardRef, HTMLProps, ReactNode, useEffect, useRef } from 'react'
+import { FC, HTMLProps, ReactNode, useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Editor } from '@tiptap/core'
-import { NodePortal, NodePortalContainer, useNodePortals } from '@mashcard/editor'
+import { NodePortal } from '@mashcard/editor'
 import { Editor as ExtendEditor } from './Editor'
 
 export interface EditorContentProps extends HTMLProps<HTMLDivElement> {
@@ -13,32 +14,9 @@ const portalUpdater = (index: number, container: Element, child: ReactNode) => (
   return portal
 }
 
-const EditorContentInner = forwardRef<HTMLDivElement, EditorContentProps>(({ editor, ...props }, ref) => {
-  const { setNodePortals } = useNodePortals()
-
-  useEffect(() => {
-    if (!editor) return
-    ;(editor as ExtendEditor).updatePortal = (container, child) => {
-      setNodePortals(nodePortals => {
-        const index = nodePortals.findIndex(containerMatcher(container))
-
-        if (index >= 0) {
-          return nodePortals.map(portalUpdater(index, container, child))
-        } else {
-          return [...nodePortals, { container, child }]
-        }
-      })
-    }
-    ;(editor as ExtendEditor).removePortal = container => {
-      setNodePortals(nodePortals => nodePortals.filter(portal => portal.container !== container))
-    }
-  }, [editor, setNodePortals])
-
-  return <div {...props} ref={ref} />
-})
-
 export const EditorContent: FC<EditorContentProps> = ({ editor, ...props }) => {
   const editorContentRef = useRef<HTMLDivElement>(null)
+  const [nodePortals, setNodePortals] = useState<NodePortal[]>([])
 
   // initial editor content
   useEffect(() => {
@@ -57,11 +35,24 @@ export const EditorContent: FC<EditorContentProps> = ({ editor, ...props }) => {
     editor.setOptions({
       element
     })
+    ;(editor as ExtendEditor).updatePortal = (container, child) => {
+      setNodePortals(nodePortals => {
+        const index = nodePortals.findIndex(containerMatcher(container))
 
-    // // creates node view in async way
-    // setTimeout(() => {
-    //   editor.createNodeViews()
-    // })
+        if (index >= 0) {
+          return nodePortals.map(portalUpdater(index, container, child))
+        } else {
+          return [...nodePortals, { container, child }]
+        }
+      })
+    }
+    ;(editor as ExtendEditor).removePortal = container => {
+      setNodePortals(nodePortals => nodePortals.filter(portal => portal.container !== container))
+    }
+
+    setTimeout(() => {
+      editor.createNodeViews()
+    })
   }, [editor])
 
   // umount
@@ -74,6 +65,8 @@ export const EditorContent: FC<EditorContentProps> = ({ editor, ...props }) => {
           nodeViews: {}
         })
       }
+
+      ;(editor as ExtendEditor).updatePortal = undefined
 
       if (!editor.options.element.firstChild) return
 
@@ -88,10 +81,10 @@ export const EditorContent: FC<EditorContentProps> = ({ editor, ...props }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )
-
   return (
-    <NodePortalContainer>
-      <EditorContentInner editor={editor} {...props} ref={editorContentRef} />
-    </NodePortalContainer>
+    <>
+      <div {...props} ref={editorContentRef} />
+      {nodePortals.map(({ container, child }) => createPortal(child, container))}
+    </>
   )
 }

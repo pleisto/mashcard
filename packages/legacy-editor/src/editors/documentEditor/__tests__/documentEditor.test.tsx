@@ -2,6 +2,7 @@ import { render, renderHook } from '@testing-library/react'
 import { EditorContent, useEditor } from '../documentEditor'
 import * as Y from 'yjs'
 import * as awarenessProtocol from 'y-protocols/awareness'
+import { FC, useEffect } from 'react'
 
 jest.mock('react-router-dom', () => ({
   useNavigate: () => () => {}
@@ -37,7 +38,15 @@ describe('documentEditor', () => {
     )
     const editor = result.current
 
-    const { container } = render(<EditorContent editor={editor} editable={true} navigate={jest.fn()} />, {
+    const TestEditorContent: FC<any> = ({ editor }) => {
+      useEffect(() => {
+        editor?.createNodeViews()
+      }, [editor])
+
+      return <EditorContent editor={editor} editable={true} navigate={jest.fn()} />
+    }
+
+    const { container } = render(<TestEditorContent editor={editor} />, {
       // prosemirror will modify dom manually, add a wrapper for this purpose
       wrapper: ({ children }) => <div>{children}</div>
     })
