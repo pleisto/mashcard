@@ -75,7 +75,7 @@ export const PodSelect: FC = () => {
       <MenuLabel aria-label={userDomain}>{userDomain}</MenuLabel>
       {data?.pods.map(p => (
         <MenuItem as={Menu.Item} active={p.domain === pod.domain} itemKey={`pod-${p.domain}`} key={p.domain}>
-          <PodCard pod={p} label={p.personal ? 'My Pod' : false} />
+          <PodCard pod={p} />
           <ActionsGroup>
             {p.owned && (
               <Tooltip title={t(p.personal ? 'user_setting.text' : 'pod_setting.text')}>

@@ -166,7 +166,7 @@ export const DocumentContentPage: FC = () => {
       if (lastBlockIds && (lastBlockIds as any)[domain]) {
         navigate(`/${domain}/${(lastBlockIds as any)[domain]}`)
       } else {
-        const { data: blockCreateData } = await blockCreate({ variables: { input: { title: '' } } })
+        const { data: blockCreateData } = await blockCreate({ variables: { input: { title: '', username: domain } } })
         if (blockCreateData?.blockCreate?.id) {
           navigate(`/${domain}/${blockCreateData?.blockCreate?.id}`)
         }

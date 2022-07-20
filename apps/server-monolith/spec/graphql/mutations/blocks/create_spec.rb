@@ -19,11 +19,10 @@ describe Mutations::Blocks::Create, type: :mutation do
 
     it 'sub block' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       expect(block.descendants.count).to eq(1)
 
-      input = { input: { parentId: block.id, title: 'child block1' } }
+      input = { input: { parentId: block.id, title: 'child block1', username: user.username } }
       graphql_execute(mutation, input)
       expect(response.errors).to eq({})
       expect(response.data['blockCreate']['id']).not_to be_nil
@@ -32,20 +31,18 @@ describe Mutations::Blocks::Create, type: :mutation do
       expect(block.descendants_raw.find { |b| b.id != block.id }.sort).to eq(Docs::Block::SORT_GAP)
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'root block' do
       self.current_user = user
       self.current_pod = user.personal_pod.as_session_context
 
-      input = { input: { title: 'child block1' } }
+      input = { input: { title: 'child block1', username: user.username } }
       graphql_execute(mutation, input)
       expect(response.errors).to eq({})
       expect(response.data['blockCreate']['id']).not_to be_nil
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end
