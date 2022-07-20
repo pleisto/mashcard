@@ -53,6 +53,7 @@
     "schema": "yarn workspace @mashcard/schema",
     "design-system": "yarn workspace @mashcard/design-system",
     "design-icons": "yarn workspace @mashcard/design-icons",
+    "legacy-editor": "yarn workspace @mashcard/legacy-editor",
     "editor": "yarn workspace @mashcard/editor",
     "formula": "yarn workspace @mashcard/formula",
     "uploader": "yarn workspace @mashcard/uploader",

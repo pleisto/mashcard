@@ -29,6 +29,10 @@
       "path": "packages/dev-support"
     },
     {
+      "name": "packages/legacy-editor",
+      "path": "packages/legacy-editor"
+    },
+    {
       "name": "packages/editor",
       "path": "packages/editor"
     },

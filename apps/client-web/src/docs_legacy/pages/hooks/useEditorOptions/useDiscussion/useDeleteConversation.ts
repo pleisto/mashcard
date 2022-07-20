@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { useConversationDeleteMutation } from '@/MashcardGraphQL'
-import { DiscussionOptions } from '@mashcard/editor'
+import { DiscussionOptions } from '@mashcard/legacy-editor'
 
 export function useDeleteConversation(): DiscussionOptions['deleteConversation'] {
   const [deleteConversation] = useConversationDeleteMutation()

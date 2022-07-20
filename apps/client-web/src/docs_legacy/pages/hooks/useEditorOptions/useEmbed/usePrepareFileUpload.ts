@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { Upload, useCreateDirectUploadMutation } from '@/MashcardGraphQL'
-import { EmbedOptions } from '@mashcard/editor'
+import { EmbedOptions } from '@mashcard/legacy-editor'
 import { checksum } from '../../usePrepareFileUpload'
 import { DocMeta } from '@/docs_legacy/store/DocMeta'
 import { CreateDirectUploadInput } from '@mashcard/schema'

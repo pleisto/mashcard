@@ -1,4 +1,4 @@
-import { EditorOptions } from '@mashcard/editor'
+import { EditorOptions } from '@mashcard/legacy-editor'
 import { Blob } from '@mashcard/schema'
 import { DocMeta } from '@/docs_legacy/store/DocMeta'
 import { useMentionCommands } from './useMentionCommands'

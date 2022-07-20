@@ -13,6 +13,7 @@
     "@mashcard/design-system": "workspace:^",
     "@mashcard/editor": "workspace:^",
     "@mashcard/formula": "workspace:^",
+    "@mashcard/legacy-editor": "workspace:^",
     "@mashcard/schema": "workspace:^",
     "@mashcard/test-helper": "workspace:^",
     "@mashcard/uploader": "workspace:^",

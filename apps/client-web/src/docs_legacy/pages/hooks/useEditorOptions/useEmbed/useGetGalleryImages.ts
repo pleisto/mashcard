@@ -5,7 +5,7 @@ import {
   QueryUnsplashImageDocument
 } from '@/MashcardGraphQL'
 import { useImperativeQuery } from '@/common/hooks'
-import { EmbedOptions, GalleryImage } from '@mashcard/editor'
+import { EmbedOptions, GalleryImage } from '@mashcard/legacy-editor'
 
 export function useGetGalleryImages(): EmbedOptions['getGalleryImages'] {
   const queryUnsplashImages = useImperativeQuery<Query, Variables>(QueryUnsplashImageDocument)
