@@ -1,4 +1,5 @@
 {
+  "$schema": "https://typedoc.org/schema.json",
   "readme": "none",
   "githubPages": false,
   "plugin": ["typedoc-plugin-markdown", "typedoc-plugin-inline-sources"],
