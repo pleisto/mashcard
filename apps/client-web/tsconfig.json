@@ -4,7 +4,8 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/common/*": ["./src/common/*"],
+      "@/MashcardGraphQL": ["./src/MashcardGraphQL"]
     }
   },
   "include": ["**/*", "../server-monolith/vite.config.ts"],

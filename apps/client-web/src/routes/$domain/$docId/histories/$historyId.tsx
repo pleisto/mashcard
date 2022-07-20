@@ -1,4 +1,4 @@
-import DocumentContentPage from '@/docs_legacy/pages/DocumentContentPage'
+import Index from '../'
 
 // eslint-disable-next-line import/no-default-export
-export default DocumentContentPage
+export default Index
