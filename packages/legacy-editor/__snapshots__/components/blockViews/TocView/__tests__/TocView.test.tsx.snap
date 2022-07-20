@@ -24,7 +24,7 @@ exports[`TocView matches correct snapshot 1`] = `
           >
             <span
               aria-label="right"
-              class="mc-icon mc-icon-right mc-c-jilSPc mc-c-jilSPc-hFVFuC-collapse-false"
+              class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
               data-testid="editor-toc-block-item-toggle-icon"
               role="img"
             >
@@ -60,7 +60,7 @@ exports[`TocView matches correct snapshot 1`] = `
               >
                 <span
                   aria-label="right"
-                  class="mc-icon mc-icon-right mc-c-jilSPc mc-c-jilSPc-hFVFuC-collapse-false"
+                  class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
                   data-testid="editor-toc-block-item-toggle-icon"
                   role="img"
                 >
@@ -121,7 +121,7 @@ exports[`TocView matches correct snapshot 1`] = `
           >
             <span
               aria-label="right"
-              class="mc-icon mc-icon-right mc-c-jilSPc mc-c-jilSPc-hFVFuC-collapse-false"
+              class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
               data-testid="editor-toc-block-item-toggle-icon"
               role="img"
             >
@@ -157,7 +157,7 @@ exports[`TocView matches correct snapshot 1`] = `
               >
                 <span
                   aria-label="right"
-                  class="mc-icon mc-icon-right mc-c-jilSPc mc-c-jilSPc-hFVFuC-collapse-false"
+                  class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
                   data-testid="editor-toc-block-item-toggle-icon"
                   role="img"
                 >
@@ -193,7 +193,7 @@ exports[`TocView matches correct snapshot 1`] = `
                   >
                     <span
                       aria-label="right"
-                      class="mc-icon mc-icon-right mc-c-jilSPc mc-c-jilSPc-hFVFuC-collapse-false"
+                      class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
                       data-testid="editor-toc-block-item-toggle-icon"
                       role="img"
                     >
@@ -254,7 +254,7 @@ exports[`TocView matches correct snapshot 1`] = `
               >
                 <span
                   aria-label="right"
-                  class="mc-icon mc-icon-right mc-c-jilSPc mc-c-jilSPc-hFVFuC-collapse-false"
+                  class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
                   data-testid="editor-toc-block-item-toggle-icon"
                   role="img"
                 >
