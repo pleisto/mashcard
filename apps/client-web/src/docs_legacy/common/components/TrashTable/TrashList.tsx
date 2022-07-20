@@ -1,5 +1,5 @@
 import {
-  Block,
+  BlockNew,
   GetTrashBlocksQueryVariables,
   useGetTrashBlocksQuery,
   useBlockRestoreMutation,
@@ -23,7 +23,7 @@ interface PageTrashProps {
   keyword: string | undefined
 }
 
-export interface BlockWithChecked extends Block {
+export interface BlockWithChecked extends BlockNew {
   checked?: boolean
 }
 
