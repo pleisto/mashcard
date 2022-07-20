@@ -41,6 +41,10 @@ describe('FormulaResult', () => {
     jest.spyOn(editorHooks, 'useEditorContext').mockImplementation(() => ({ editor, documentEditable: true }))
   })
 
+  afterAll(() => {
+    jest.restoreAllMocks()
+  })
+
   it.each(testCases)('$jestTitle', async args => {
     const [tempT, parseResult] = await ctx.interpretDirectly(args)
     const { container } = render(<FormulaResult meta={parseResult.meta} variableT={tempT} />)
