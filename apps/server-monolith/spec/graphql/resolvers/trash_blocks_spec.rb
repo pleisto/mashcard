@@ -8,20 +8,18 @@ describe Resolvers::TrashBlocks, type: :query do
       query GetTrashBlocks($domain: String!, $blockId: UUID, $search: String) {
         trashBlocks(domain: $domain, blockId: $blockId, search: $search) {
           id
-          sort
-          nextSort
-          firstChildSort
-          rootId
-          parentId
-          type
-          pathArray {
+          documentInfo {
             id
-            text
+            title
+            deletedAt
+            restorable
             icon {
               ... on BlockImage {
                 type
                 source
                 key
+                height
+                width
               }
 
               ... on BlockEmoji {
@@ -30,8 +28,27 @@ describe Resolvers::TrashBlocks, type: :query do
                 emoji
               }
             }
+            pathArray {
+              id
+              title
+              isDeleted
+              icon {
+                ... on BlockImage {
+                  type
+                  source
+                  key
+                  height
+                  width
+                }
+
+                ... on BlockEmoji {
+                  type
+                  name
+                  emoji
+                }
+              }
+            }
           }
-          text
         }
       }
     GRAPHQL

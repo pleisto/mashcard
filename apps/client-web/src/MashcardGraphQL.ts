@@ -550,8 +550,10 @@ export type BlockPath = {
   icon?: Maybe<BlockIcon>
   /** icon */
   id: Scalars['UUID']
-  /** cover */
-  text: Scalars['String']
+  /** is deleted */
+  isDeleted: Scalars['Boolean']
+  /** title */
+  title: Scalars['String']
 }
 
 export type BlockPeople = {
@@ -966,6 +968,8 @@ export type DocumentInfo = {
   __typename?: 'DocumentInfo'
   /** pod */
   collaborators: Array<PodBase>
+  /** deleted_at */
+  deletedAt?: Maybe<Scalars['ISO8601DateTime']>
   /** alias */
   enabledAlias?: Maybe<BlockAlias>
   /** icon */
@@ -982,6 +986,8 @@ export type DocumentInfo = {
   permission?: Maybe<ShareLink>
   /** pin */
   pin: Scalars['Boolean']
+  /** restorable */
+  restorable: Scalars['Boolean']
   /** title */
   title: Scalars['String']
 }
@@ -1820,7 +1826,7 @@ export type Query = {
   /** return preview box data of url */
   previewBox: PreviewBox
   spreadsheetChildren?: Maybe<SpreadsheetChildren>
-  trashBlocks?: Maybe<Array<Block>>
+  trashBlocks?: Maybe<Array<BlockNew>>
   /** return images from unsplash by search */
   unsplashImage?: Maybe<Array<UnsplashImage>>
 }
@@ -2236,40 +2242,43 @@ export type GetTrashBlocksQueryVariables = Exact<{
 export type GetTrashBlocksQuery = {
   __typename?: 'query'
   trashBlocks?: Array<{
-    __typename?: 'Block'
+    __typename?: 'BlockNew'
     id: string
-    deletedAt?: any | null
-    rootId: string
-    parentId?: string | null
-    type: string
-    text: string
-    pathArray: Array<{
-      __typename?: 'BlockPath'
+    documentInfo?: {
+      __typename?: 'DocumentInfo'
       id: string
-      text: string
+      title: string
+      deletedAt?: any | null
+      restorable: boolean
       icon?:
         | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
-        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
+        | {
+            __typename?: 'BlockImage'
+            type?: BlockType | null
+            source?: FileSource | null
+            key?: string | null
+            height?: number | null
+            width?: number | null
+          }
         | null
-    }>
-    meta: {
-      __typename?: 'BlockMeta'
-      people?: {
-        __typename?: 'BlockPeople'
-        type?: BlockType | null
-        domain: string
-        name?: string | null
-        avatarUrl?: string | null
-      } | null
-      cover?:
-        | { __typename?: 'BlockColor'; type?: BlockType | null; color: string }
-        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
-        | null
-      icon?:
-        | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
-        | { __typename?: 'BlockImage'; type?: BlockType | null; source?: FileSource | null; key?: string | null }
-        | null
-    }
+      pathArray: Array<{
+        __typename?: 'BlockPath'
+        id: string
+        title: string
+        isDeleted: boolean
+        icon?:
+          | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
+          | {
+              __typename?: 'BlockImage'
+              type?: BlockType | null
+              source?: FileSource | null
+              key?: string | null
+              height?: number | null
+              width?: number | null
+            }
+          | null
+      }>
+    } | null
   }> | null
 }
 
@@ -2706,7 +2715,7 @@ export type DocumentBlockQuery = {
       pathArray: Array<{
         __typename?: 'BlockPath'
         id: string
-        text: string
+        title: string
         icon?:
           | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
           | {
@@ -3805,15 +3814,18 @@ export const GetTrashBlocksDocument = gql`
   query GetTrashBlocks($domain: String!, $blockId: UUID, $search: String) {
     trashBlocks(domain: $domain, blockId: $blockId, search: $search) {
       id
-      deletedAt
-      pathArray {
+      documentInfo {
         id
-        text
+        title
+        deletedAt
+        restorable
         icon {
           ... on BlockImage {
             type
             source
             key
+            height
+            width
           }
           ... on BlockEmoji {
             type
@@ -3821,39 +3833,23 @@ export const GetTrashBlocksDocument = gql`
             emoji
           }
         }
-      }
-      rootId
-      parentId
-      type
-      text
-      meta {
-        people {
-          type
-          domain
-          name
-          avatarUrl
-        }
-        cover {
-          ... on BlockImage {
-            type
-            source
-            key
-          }
-          ... on BlockColor {
-            type
-            color
-          }
-        }
-        icon {
-          ... on BlockImage {
-            type
-            source
-            key
-          }
-          ... on BlockEmoji {
-            type
-            name
-            emoji
+        pathArray {
+          id
+          title
+          isDeleted
+          icon {
+            ... on BlockImage {
+              type
+              source
+              key
+              height
+              width
+            }
+            ... on BlockEmoji {
+              type
+              name
+              emoji
+            }
           }
         }
       }
@@ -4997,7 +4993,7 @@ export const DocumentBlockDocument = gql`
         pin
         pathArray {
           id
-          text
+          title
           icon {
             ... on BlockImage {
               type

@@ -91,9 +91,11 @@ export const TrashPrompt: FC = () => {
         icon={false}
         action={
           <>
-            <Button size="sm" disabled={restoreButtonLoading} onClick={onRestoreClick}>
-              {t('trash.restore_action')}
-            </Button>
+            {documentInfo?.restorable && (
+              <Button size="sm" disabled={restoreButtonLoading} onClick={onRestoreClick}>
+                {t('trash.restore_action')}
+              </Button>
+            )}
             &nbsp;
             <Button size="sm" type="primary" danger onClick={onHardDeleteClick}>
               {t('trash.hard_delete_action')}

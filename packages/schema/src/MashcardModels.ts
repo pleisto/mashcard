@@ -547,8 +547,10 @@ export type BlockPath = {
   icon?: Maybe<BlockIcon>
   /** icon */
   id: Scalars['UUID']
-  /** cover */
-  text: Scalars['String']
+  /** is deleted */
+  isDeleted: Scalars['Boolean']
+  /** title */
+  title: Scalars['String']
 }
 
 export type BlockPeople = {
@@ -963,6 +965,8 @@ export type DocumentInfo = {
   __typename?: 'DocumentInfo'
   /** pod */
   collaborators: Array<PodBase>
+  /** deleted_at */
+  deletedAt?: Maybe<Scalars['ISO8601DateTime']>
   /** alias */
   enabledAlias?: Maybe<BlockAlias>
   /** icon */
@@ -979,6 +983,8 @@ export type DocumentInfo = {
   permission?: Maybe<ShareLink>
   /** pin */
   pin: Scalars['Boolean']
+  /** restorable */
+  restorable: Scalars['Boolean']
   /** title */
   title: Scalars['String']
 }
@@ -1817,7 +1823,7 @@ export type Query = {
   /** return preview box data of url */
   previewBox: PreviewBox
   spreadsheetChildren?: Maybe<SpreadsheetChildren>
-  trashBlocks?: Maybe<Array<Block>>
+  trashBlocks?: Maybe<Array<BlockNew>>
   /** return images from unsplash by search */
   unsplashImage?: Maybe<Array<UnsplashImage>>
 }
