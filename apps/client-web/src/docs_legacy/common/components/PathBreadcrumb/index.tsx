@@ -14,7 +14,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ className }) => 
   const { t } = useDocsI18n()
   const { id, title, domain, documentInfo } = useNonNullDocMeta()
   const paths: BlockPath[] = documentInfo
-    ? documentInfo.pathArray.concat([{ id, text: title, icon: documentInfo.icon }])
+    ? documentInfo.pathArray.concat([{ id, title, icon: documentInfo.icon, isDeleted: false }])
     : []
 
   const renderPath = (
@@ -31,7 +31,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ className }) => 
         key={idx}
         title={
           <Root.Tip>
-            {emoji} {path.text || t('title.untitled')}
+            {emoji} {path.title ?? t('title.untitled')}
           </Root.Tip>
         }
       >
@@ -40,7 +40,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ className }) => 
             {emoji}
           </Root.Emoji>
           <Root.Path data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.text.id}>
-            {path.text || t('title.untitled')}
+            {path.title ?? t('title.untitled')}
           </Root.Path>
           <Root.Split show={showSplit}>/</Root.Split>
         </Root.Warp>

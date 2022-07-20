@@ -1062,9 +1062,14 @@ type BlockPath {
   id: UUID!
 
   """
-  cover
+  is deleted
   """
-  text: String!
+  isDeleted: Boolean!
+
+  """
+  title
+  """
+  title: String!
 }
 
 type BlockPeople {

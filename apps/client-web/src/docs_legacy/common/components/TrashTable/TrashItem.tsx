@@ -60,7 +60,7 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
       <></>
     ) : (
       <div className="path ellipsis" data-testid={TEST_ID_ENUM.trash.pageItem.path.id}>
-        {documentInfo.pathArray.map(p => `${getEmoji(p)}${p.text || t('title.untitled')}`).join(' / ')}
+        {documentInfo.pathArray.map(p => `${getEmoji(p)}${p.title ?? t('title.untitled')}`).join(' / ')}
       </div>
     )
   const onDeleteConfrim = async (): Promise<void> => {

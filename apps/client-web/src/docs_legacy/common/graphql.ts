@@ -168,7 +168,8 @@ export const queryTrashBlocks = gql`
         }
         pathArray {
           id
-          text
+          title
+          isDeleted
           icon {
             ... on BlockImage {
               type

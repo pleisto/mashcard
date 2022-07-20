@@ -547,8 +547,10 @@ export type BlockPath = {
   icon?: Maybe<BlockIcon>
   /** icon */
   id: Scalars['UUID']
-  /** cover */
-  text: Scalars['String']
+  /** is deleted */
+  isDeleted: Scalars['Boolean']
+  /** title */
+  title: Scalars['String']
 }
 
 export type BlockPeople = {

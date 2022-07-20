@@ -550,8 +550,10 @@ export type BlockPath = {
   icon?: Maybe<BlockIcon>
   /** icon */
   id: Scalars['UUID']
-  /** cover */
-  text: Scalars['String']
+  /** is deleted */
+  isDeleted: Scalars['Boolean']
+  /** title */
+  title: Scalars['String']
 }
 
 export type BlockPeople = {
@@ -2254,7 +2256,8 @@ export type GetTrashBlocksQuery = {
       pathArray: Array<{
         __typename?: 'BlockPath'
         id: string
-        text: string
+        title: string
+        isDeleted: boolean
         icon?:
           | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
           | {
@@ -2704,7 +2707,7 @@ export type DocumentBlockQuery = {
       pathArray: Array<{
         __typename?: 'BlockPath'
         id: string
-        text: string
+        title: string
         icon?:
           | { __typename?: 'BlockEmoji'; type?: BlockType | null; name: string; emoji: string }
           | {
@@ -3822,7 +3825,8 @@ export const GetTrashBlocksDocument = gql`
         }
         pathArray {
           id
-          text
+          title
+          isDeleted
           icon {
             ... on BlockImage {
               type
@@ -4979,7 +4983,7 @@ export const DocumentBlockDocument = gql`
         pin
         pathArray {
           id
-          text
+          title
           icon {
             ... on BlockImage {
               type
