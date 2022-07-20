@@ -1,10 +1,10 @@
 import { styled, theme } from '@mashcard/design-system'
+import { isNonEmptyString } from '@mashcard/active-support'
 import { FC } from 'react'
 import { EmbedBlockType, UpdateEmbedBlockAttributes } from '../../EmbedView'
 import { DocumentFooter } from './DocumentFooter'
 import { DocumentUnavailable } from './DocumentUnavailable'
 import { PreviewViewProps } from './PreviewView'
-import { useWebsiteDocumentStatus } from './useWebsiteDocumentStatus'
 
 export interface WebsiteDocumentProps {
   blockType: EmbedBlockType
@@ -14,6 +14,7 @@ export interface WebsiteDocumentProps {
   title?: string
   displayName: string
   icon?: string | null
+  iframeUrl?: string | null
 }
 
 const WebsiteDocumentContainer = styled('div', {
@@ -27,7 +28,8 @@ const WebsiteDocumentContainer = styled('div', {
 })
 
 const WebsiteFrame = styled('iframe', {
-  height: '37rem'
+  height: '37rem',
+  width: '100%'
 })
 
 export const WebsiteDocument: FC<WebsiteDocumentProps> = ({
@@ -37,13 +39,18 @@ export const WebsiteDocument: FC<WebsiteDocumentProps> = ({
   icon,
   url,
   title,
-  displayName
+  displayName,
+  iframeUrl
 }) => {
-  const [error, handleLoad] = useWebsiteDocumentStatus()
+  const hasFrame = isNonEmptyString(iframeUrl)
 
   return (
     <WebsiteDocumentContainer>
-      {error ? <DocumentUnavailable url={url} /> : <WebsiteFrame src={url} title={title ?? ''} onLoad={handleLoad} />}
+      {hasFrame ? (
+        <WebsiteFrame src={iframeUrl} loading="lazy" title={title ?? ''} />
+      ) : (
+        <DocumentUnavailable url={url} />
+      )}
       <DocumentFooter
         displayName={displayName}
         url={url}
