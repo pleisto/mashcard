@@ -62,6 +62,7 @@
     "server": "yarn workspace @mashcard/server-monolith",
     "github-auth": "yarn workspace @mashcard/github-auth",
     "google-auth": "yarn workspace @mashcard/google-auth",
+    "graphql": "yarn server dump:graphql && yarn web generate:graphql",
     "cloud": "yarn workspace @pleisto/cloud",
     "i": "yarn install && yarn server i"
   },
