@@ -21,7 +21,6 @@ describe Resolvers::PodSearch, type: :query do
 
     it 'works' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       graphql_execute(query, { input: '' })
       expect(response.success?).to be(true)
@@ -40,7 +39,6 @@ describe Resolvers::PodSearch, type: :query do
       expect(response.data['podSearch'][0]['domain']).to eq(user.domain)
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end

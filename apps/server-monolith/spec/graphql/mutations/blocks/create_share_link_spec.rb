@@ -18,7 +18,6 @@ describe Mutations::Blocks::CreateShareLink, type: :mutation do
 
     it 'work' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       input = { input: { id: block.id, target: [{ policy: 'view', state: 'enabled', domain: Pod::ANYONE_DOMAIN }] } }
       graphql_execute(mutation, input)
@@ -31,12 +30,10 @@ describe Mutations::Blocks::CreateShareLink, type: :mutation do
       expect(response.data).to eq({ 'blockCreateShareLink' => nil })
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'error' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       input = { input: { id: block.id, target: [{ policy: 'view', state: 'enabled', domain: 'foobar' }] } }
       graphql_execute(mutation, input)
@@ -44,7 +41,6 @@ describe Mutations::Blocks::CreateShareLink, type: :mutation do
       expect(response.errors[0]['message']).to include(I18n.t('errors.messages.domain_presence_invalid'))
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end

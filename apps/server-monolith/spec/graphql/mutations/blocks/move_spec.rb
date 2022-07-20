@@ -30,7 +30,6 @@ describe Mutations::Blocks::Move, type: :mutation do
 
     it 'root to root' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       root = block1
 
@@ -41,12 +40,10 @@ describe Mutations::Blocks::Move, type: :mutation do
       expect(response.data[:blockMove]).to be_nil
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'child to child: same parent' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       root = block1
       child = root.descendants.find_by!(sort: 100)
@@ -58,12 +55,10 @@ describe Mutations::Blocks::Move, type: :mutation do
       expect(response.data[:blockMove]).to be_nil
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'child to child: different parent' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       root = block1
       root2 = block2
@@ -76,12 +71,10 @@ describe Mutations::Blocks::Move, type: :mutation do
       expect(response.data[:blockMove]).to be_nil
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'root to child' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       root = block1
       child = root.descendants.find_by!(sort: 300)
@@ -93,12 +86,10 @@ describe Mutations::Blocks::Move, type: :mutation do
       expect(response.data[:blockMove]).to be_nil
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'child to root' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       root = block1
 
@@ -109,12 +100,10 @@ describe Mutations::Blocks::Move, type: :mutation do
       expect(response.data[:blockMove]).to be_nil
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'self' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       root = block1
 
@@ -124,12 +113,10 @@ describe Mutations::Blocks::Move, type: :mutation do
       expect(response.data[:blockMove]).to eq({ 'errors' => ['Invalid target'] })
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'descendants' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       root = block1
 
@@ -142,7 +129,6 @@ describe Mutations::Blocks::Move, type: :mutation do
       expect(response.data[:blockMove]).to eq({ 'errors' => ['Invalid target'] })
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end

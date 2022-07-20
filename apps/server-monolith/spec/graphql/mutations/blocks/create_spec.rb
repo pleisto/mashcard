@@ -35,7 +35,6 @@ describe Mutations::Blocks::Create, type: :mutation do
 
     it 'root block' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       input = { input: { title: 'child block1', username: user.username } }
       graphql_execute(mutation, input)

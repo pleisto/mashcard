@@ -25,7 +25,6 @@ module Types
     field :group_destroy, mutation: Mutations::Groups::Destroy
     field :group_join, mutation: Mutations::Groups::Join
     field :group_leave, mutation: Mutations::Groups::Leave
-    field :group_update_member, mutation: Mutations::Groups::UpdateMember
     field :update_domain, mutation: Mutations::Pods::UpdateDomain
     field :user_appearance_update, mutation: Mutations::Users::AppearanceUpdate
     field :user_confirmation_email_resend, mutation: Mutations::Users::ConfirmationEmailResend

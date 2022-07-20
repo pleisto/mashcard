@@ -16,7 +16,6 @@ describe Mutations::Blocks::Rename, type: :mutation do
 
     it 'work' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       block = create(:docs_block, pod: user.personal_pod)
       title = 'new title'
@@ -36,7 +35,6 @@ describe Mutations::Blocks::Rename, type: :mutation do
       expect(response.errors[0]['message']).to eq(I18n.t('errors.graphql.argument_error.empty_title'))
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end

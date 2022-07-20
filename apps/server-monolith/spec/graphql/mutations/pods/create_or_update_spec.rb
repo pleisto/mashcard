@@ -27,7 +27,6 @@ describe Mutations::Pods::CreateOrUpdate, type: :mutation do
 
     it 'update' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       new_name = 'NEWNAME'
 
@@ -53,12 +52,10 @@ describe Mutations::Pods::CreateOrUpdate, type: :mutation do
       expect(response.data[:createOrUpdatePod][:errors]).to eq([I18n.t('accounts.errors.pod_not_exist')])
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'create' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       new_domain = "new#{user.id}"
       new_name = 'NEWNAME'
@@ -77,7 +74,6 @@ describe Mutations::Pods::CreateOrUpdate, type: :mutation do
       expect(response.data[:createOrUpdatePod][:errors]).to eq([I18n.t('accounts.errors.pod_exist')])
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end

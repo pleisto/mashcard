@@ -17,7 +17,6 @@ describe Mutations::ConversationResolve, type: :mutation do
 
     it 'resolve' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       conversation = Docs::Conversation.create!(
         doc_id: block.id,
@@ -37,7 +36,6 @@ describe Mutations::ConversationResolve, type: :mutation do
       expect(response.success?).to be(true)
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end

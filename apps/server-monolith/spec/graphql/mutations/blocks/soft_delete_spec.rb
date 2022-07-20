@@ -16,7 +16,6 @@ describe Mutations::Blocks::SoftDelete, type: :mutation do
 
     it 'soft delete' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       root_block = create(:docs_block, pod: user.personal_pod)
       expect(root_block.deleted_at).to be_nil
@@ -36,12 +35,10 @@ describe Mutations::Blocks::SoftDelete, type: :mutation do
       # expect(response.errors[0]['message']).to eq(I18n.t("errors.graphql.argument_error.already_soft_delete"))
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'hard delete' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       root_block = create(:docs_block, pod: user.personal_pod)
       expect(root_block.deleted_at).to be_nil
@@ -56,7 +53,6 @@ describe Mutations::Blocks::SoftDelete, type: :mutation do
       expect(root_block.deleted_permanently_at).not_to be_nil
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end

@@ -27,7 +27,6 @@ describe Resolvers::BlockShareLinks, type: :query do
       user = create(:accounts_user)
       self.current_user = user
       pod = create(:pod)
-      self.current_pod = pod.as_session_context
       block = create(:docs_block, pod: pod, collaborators: [user.id])
 
       graphql_execute(query, { id: block.id })
@@ -45,7 +44,6 @@ describe Resolvers::BlockShareLinks, type: :query do
       expect(response.data['blockShareLinks'][0]['state']).to eq('disabled')
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end

@@ -57,7 +57,6 @@ describe Resolvers::TrashBlocks, type: :query do
       user = create(:accounts_user)
       self.current_user = user
       pod = create(:pod)
-      self.current_pod = pod.as_session_context
 
       block = create(:docs_block, pod: pod, collaborators: [user.id], text: 'foo bar zzz')
       block.soft_delete!
@@ -75,14 +74,12 @@ describe Resolvers::TrashBlocks, type: :query do
       expect(response.data['trashBlocks'].any? { |b| b['id'] == block.id }).to be(true)
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'current page (child page)' do
       user = create(:accounts_user)
       self.current_user = user
       pod = create(:pod)
-      self.current_pod = pod.as_session_context
 
       root = create(:docs_block, pod: pod, collaborators: [user.id])
       block = create(:docs_block, pod: pod, parent: root, root_id: root.id)
@@ -94,14 +91,12 @@ describe Resolvers::TrashBlocks, type: :query do
       expect(response.data['trashBlocks'].any? { |b| b['id'] == block.id }).to be(true)
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'current page (sub page)' do
       user = create(:accounts_user)
       self.current_user = user
       pod = create(:pod)
-      self.current_pod = pod.as_session_context
 
       root = create(:docs_block, pod: pod, collaborators: [user.id])
       block = root.create_sub_block!('abc')
@@ -113,14 +108,12 @@ describe Resolvers::TrashBlocks, type: :query do
       expect(response.data['trashBlocks'].any? { |b| b['id'] == block.id }).to be(true)
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'hard delete dangling' do
       user = create(:accounts_user)
       self.current_user = user
       pod = create(:pod)
-      self.current_pod = pod.as_session_context
 
       root = create(:docs_block, pod: pod, collaborators: [user.id])
       block = root.create_sub_block!('abc')
@@ -156,7 +149,6 @@ describe Resolvers::TrashBlocks, type: :query do
       expect(response.data['trashBlocks'].count).to eq(0)
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end
