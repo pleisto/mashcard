@@ -38,7 +38,7 @@ describe Resolvers::BlockInfo, type: :query do
           }
           pathArray {
             id
-            text
+            title
             icon {
               ... on BlockImage {
                 type
