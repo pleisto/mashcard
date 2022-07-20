@@ -1,3 +1,4 @@
+import { useSettingsI18n } from '@/routes/$domain/settings/_shared/useSettingsI18n'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import React from 'react'
 import { PodAvatar } from '../PodAvatar'
@@ -22,7 +23,8 @@ interface PodCardProps {
 }
 
 export const PodCard: React.FC<PodCardProps> = ({ pod, label, aliasName, size = 'md' }) => {
-  const extra = label !== false && (label ?? pod.domain)
+  const { t } = useSettingsI18n()
+  const extra = label ?? (pod.personal ? t('personal_pod_desc') : pod.domain)
   return (
     <Root.Card size={size} data-testid={TEST_ID_ENUM.layout.sidebar.podSelect.id}>
       <Root.AvatarWrapper>

@@ -28,6 +28,10 @@ describe('FormulaValue', () => {
     jest.spyOn(editorHooks, 'useEditorContext').mockImplementation(() => ({ editor, documentEditable: true }))
   })
 
+  afterAll(() => {
+    jest.restoreAllMocks()
+  })
+
   it.each(input.basicTestCases)('$jestTitle', async args => {
     const [tempT] = await ctx.interpretDirectly(args)
     const displayData = dumpDisplayResultForDisplay(tempT)

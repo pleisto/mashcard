@@ -16,7 +16,7 @@ import * as Root from './ProfileEdit.style'
 
 const profileValidation = object({
   name: string().required(),
-  bio: string().max(140)
+  bio: string().max(140).nullable()
 })
 
 export const ProfileEdit: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {

@@ -23,7 +23,7 @@ export const NewPage: FC = () => {
     if (createBlockLoading) {
       return
     }
-    const input = { title: '' }
+    const input = { title: '', username: domain }
     const { data } = await blockCreate({ variables: { input } })
     if (data?.blockCreate?.id) {
       navigate(`/${domain}/${data?.blockCreate?.id}`)

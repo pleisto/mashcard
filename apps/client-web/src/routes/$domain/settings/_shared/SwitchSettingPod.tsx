@@ -40,7 +40,7 @@ export const SwitchSettingPod: FC = () => {
         .filter(p => p.owned)
         .map(p => (
           <Menu.Item active={p.domain === pod?.domain} itemKey={p.domain} key={p.domain}>
-            <PodCard pod={p} label={false} />
+            <PodCard pod={p} />
           </Menu.Item>
         ))}
     </Menu>

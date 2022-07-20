@@ -46,7 +46,7 @@ module Mutations
           state_model.prev_state_id = args[:prev_state_id]
           state_model.document_id = args[:document_id]
           state_model.block_id = args[:block_id]
-          state_model.pod_id = current_pod.fetch('id')
+          state_model.pod_id = block.pod_id
           state_model.user_id = current_user.id
           Docs::Block.transaction do
             state_model.save!

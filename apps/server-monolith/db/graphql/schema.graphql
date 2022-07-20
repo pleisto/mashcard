@@ -14,12 +14,12 @@ enum AuthMethod {
   email_password
 
   """
-  Federated Authentication
+   Federated Authentication
   """
   github
 
   """
-  Federated Authentication
+   Federated Authentication
   """
   google_oauth2
 }
@@ -382,6 +382,11 @@ input BlockCreateInput {
   title
   """
   title: String!
+
+  """
+  username
+  """
+  username: String!
 }
 
 """

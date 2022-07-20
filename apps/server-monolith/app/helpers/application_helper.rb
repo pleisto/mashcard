@@ -12,7 +12,6 @@ module ApplicationHelper
       currentUser: Current.user&.as_global_context,
       lastDomain: Mashcard::Runtime.cypress? ? nil : Current.user&.last_pod_username,
       lastBlockIds: Mashcard::Runtime.cypress? ? nil : Current.user&.last_block_ids,
-      currentPod: Current.pod,
       env: Rails.env,
       locale: Mashcard::I18n.locale,
       rtl: t('meta.dir') == 'rtl',

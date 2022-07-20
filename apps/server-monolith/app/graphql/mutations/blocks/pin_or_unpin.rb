@@ -8,8 +8,9 @@ module Mutations
       argument :pin, Boolean, 'pin', required: true
 
       def resolve(block_id:, pin:)
+        block = Docs::Block.unscoped.find(block_id)
         obj = Docs::Pin.find_or_create_by!(
-          user_id: current_user.id, pod_id: current_pod.fetch('id'), block_id: block_id
+          user_id: current_user.id, pod_id: block.pod_id, block_id: block.id
         )
         obj.update!(deleted_at: pin ? nil : Time.current)
 
