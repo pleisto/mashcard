@@ -64,6 +64,3 @@ root_block = Docs::Block.find_by!(parent_id: nil)
 
 ## Automatic save history when edit
 root_block.update!(meta: root_block.meta.merge('changed' => true))
-
-## Manual save snapshot
-root_block.save_snapshot!
