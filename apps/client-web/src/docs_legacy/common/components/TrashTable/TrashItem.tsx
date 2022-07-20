@@ -24,11 +24,14 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
   const { t } = useDocsI18n()
   const [actionLoading, setActionLoading] = useState(false)
   const [hardDeleteModalVisible, setHardDeleteModalVisible] = useState(false)
+
+  const documentInfo = block.documentInfo
+
   // TODO support image type
   const avatar = (
     <AvatarEmoji data-testid={TEST_ID_ENUM.trash.pageItem.icon.id}>
-      {block.meta.icon?.type === BlockType.Emoji ? (
-        (block.meta.icon as BlockEmoji).emoji
+      {block.documentInfo?.icon?.type === BlockType.Emoji ? (
+        (block.documentInfo.icon as BlockEmoji).emoji
       ) : (
         <FilePages size="1.25rem" color={theme.colors.typeThirdary.value} />
       )}
@@ -49,15 +52,15 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
 
   const title = (
     <span className="ellipsis" data-testid={TEST_ID_ENUM.trash.pageItem.title.id}>
-      {block.text || t('title.untitled')}
+      {documentInfo?.title ?? t('title.untitled')}
     </span>
   )
   const titleData =
-    block.pathArray.length === 0 ? (
+    documentInfo?.pathArray.length === 0 || !documentInfo ? (
       <></>
     ) : (
       <div className="path ellipsis" data-testid={TEST_ID_ENUM.trash.pageItem.path.id}>
-        {block.pathArray.map(p => `${getEmoji(p)}${p.text || t('title.untitled')}`).join(' / ')}
+        {documentInfo.pathArray.map(p => `${getEmoji(p)}${p.title ?? t('title.untitled')}`).join(' / ')}
       </div>
     )
   const onDeleteConfrim = async (): Promise<void> => {
