@@ -37,7 +37,6 @@ describe Resolvers::ConversationComments, type: :query do
     it 'empty' do
       user = create(:accounts_user)
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       block = create(:docs_block, pod: user.personal_pod)
 
@@ -51,7 +50,6 @@ describe Resolvers::ConversationComments, type: :query do
     it 'conversation' do
       user = create(:accounts_user)
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       block = create(:docs_block, pod: user.personal_pod)
       conversation = Docs::Conversation.create!(

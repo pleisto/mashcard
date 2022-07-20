@@ -18,7 +18,6 @@ describe Mutations::FormulaCommit, type: :mutation do
 
     it 'create' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       input = { input: {
         commitFormulas: [{
@@ -37,12 +36,10 @@ describe Mutations::FormulaCommit, type: :mutation do
       expect(response.success?).to be(true)
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'update' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       formula = Docs::Formula.create!(
         block_id: block.id,
@@ -76,12 +73,10 @@ describe Mutations::FormulaCommit, type: :mutation do
       expect(formula.name).to eq(new_name)
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'delete' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       formula = Docs::Formula.create!(
         block_id: block.id, id: Mashcard::Utils::Encoding::UUID.gen_v4, name: 'formula delete', meta: {},
@@ -101,7 +96,6 @@ describe Mutations::FormulaCommit, type: :mutation do
       end.to raise_error(ActiveRecord::RecordNotFound)
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end

@@ -5,9 +5,9 @@ module Resolvers
     description 'return all pod users'
     type [Types::Pods::Member], null: true
     # authenticate_user!
+    argument :username, GraphQL::Types::String, required: true
 
-    def resolve
-      username = current_pod.fetch('username')
+    def resolve(username:)
       pod = ::Pod.find_by(username: username)
       raise Mashcard::GraphQL::Errors::ArgumentError, :invalid_pod if pod.nil?
 

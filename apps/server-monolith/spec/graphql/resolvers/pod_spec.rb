@@ -48,27 +48,23 @@ describe Resolvers::Pod, type: :query do
     it 'invalid' do
       user = create(:accounts_user)
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
       graphql_execute(query, { domain: 'invalid domain' })
 
       expect(response.success?).to be false
       expect(response.errors[0]['message']).to eq(I18n.t('errors.graphql.argument_error.invalid_pod'))
 
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'works' do
       user = create(:accounts_user)
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
       graphql_execute(query, { domain: user.domain })
 
       expect(response.success?).to be true
       expect(response.data['pod']['domain']).to eq(user.domain)
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end

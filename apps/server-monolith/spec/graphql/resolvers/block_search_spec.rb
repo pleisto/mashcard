@@ -18,7 +18,6 @@ describe Resolvers::BlockSearch, type: :query do
     it 'works' do
       user = create(:accounts_user)
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       graphql_execute(query, domain: user.domain, input: '')
       expect(response.success?).to be(true)
@@ -41,7 +40,6 @@ describe Resolvers::BlockSearch, type: :query do
       expect(response.data['blockSearch']).to eq([])
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end

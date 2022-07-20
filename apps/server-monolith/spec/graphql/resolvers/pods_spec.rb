@@ -47,7 +47,6 @@ describe Resolvers::Pods, type: :query do
 
       user = create(:accounts_user)
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       user.create_own_group!(username: 'podsSpec', display_name: 'PodsSpec')
 
@@ -67,7 +66,6 @@ describe Resolvers::Pods, type: :query do
       expect(response.data['pods'][1]['personal']).to be(false)
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end

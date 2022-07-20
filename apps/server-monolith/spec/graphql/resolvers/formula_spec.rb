@@ -23,7 +23,6 @@ describe Resolvers::Formulas, type: :query do
     it 'normal' do
       user = create(:accounts_user)
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
       block = create(:docs_block, pod: user.personal_pod)
       formula = Docs::Formula.create!(

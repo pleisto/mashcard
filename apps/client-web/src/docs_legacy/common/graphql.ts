@@ -93,14 +93,6 @@ export const GroupJoin = gql`
   }
 `
 
-export const GroupUpdateMember = gql`
-  mutation groupUpdateMember($input: GroupUpdateMemberInput!) {
-    groupUpdateMember(input: $input) {
-      errors
-    }
-  }
-`
-
 export const queryBlockSearch = gql`
   query GetBlockSearch($domain: String!, $input: String!) {
     blockSearch(domain: $domain, input: $input) {

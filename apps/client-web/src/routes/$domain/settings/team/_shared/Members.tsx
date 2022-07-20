@@ -16,7 +16,7 @@ export const Members: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
   const [groupLeave, { loading: leaveing }] = useGroupLeaveMutation()
   const context = useContext(MashcardContext)
   const currentUserDomain = context.currentUser!.domain
-  const { loading, data, refetch } = useGetPodMembersQuery()
+  const { loading, data, refetch } = useGetPodMembersQuery({})
   if (loading) return <></>
   const members = data?.podMembers
 

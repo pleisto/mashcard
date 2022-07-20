@@ -5,8 +5,8 @@ require 'rails_helper'
 describe Resolvers::PodMembers, type: :query do
   describe '#resolver' do
     query = <<-'GRAPHQL'
-      query GetPodUsers {
-        podMembers {
+      query GetPodMembers($username: String!) {
+        podMembers(username: $username) {
           role
           state
           user {
@@ -23,8 +23,7 @@ describe Resolvers::PodMembers, type: :query do
     GRAPHQL
 
     it 'invalid' do
-      self.current_pod = Pod::ANONYMOUS_CONTEXT
-      graphql_execute(query)
+      graphql_execute(query, { username: 'anonymous' })
       expect(response.success?).to be false
       expect(response.errors[0]['message']).to eq(I18n.t('errors.graphql.argument_error.invalid_pod'))
       expect(response.data).to eq('podMembers' => nil)
@@ -33,9 +32,8 @@ describe Resolvers::PodMembers, type: :query do
     it 'personal' do
       user = create(:accounts_user)
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
 
-      graphql_execute(query)
+      graphql_execute(query, { username: user.username })
       expect(response.success?).to be true
       expect(response.data['podMembers'].length).to eq(0)
     end
@@ -46,9 +44,8 @@ describe Resolvers::PodMembers, type: :query do
       pod = user.create_own_group!(username: domain, display_name: domain)
 
       self.current_user = user
-      self.current_pod = pod.as_session_context
 
-      graphql_execute(query)
+      graphql_execute(query, { username: pod.username })
       expect(response.success?).to be true
       expect(response.data['podMembers'][0]['user']['domain']).to eq(user.domain)
       expect(response.data['podMembers'][0]['user']['name']).to eq(user.name)
@@ -57,13 +54,13 @@ describe Resolvers::PodMembers, type: :query do
       user2 = create(:accounts_user)
       member = pod.members.create!(user_id: user2.id, role: :admin)
 
-      graphql_execute(query)
+      graphql_execute(query, { username: pod.username })
       expect(response.success?).to be true
       expect(response.data['podMembers'].count).to eq(2)
 
       member.disabled!
 
-      graphql_execute(query)
+      graphql_execute(query, { username: pod.username })
       expect(response.success?).to be true
       expect(response.data['podMembers'].count).to eq(1)
     end

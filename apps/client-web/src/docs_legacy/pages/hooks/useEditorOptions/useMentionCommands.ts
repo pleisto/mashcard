@@ -6,7 +6,7 @@ import { MentionCommandsOptions } from '@mashcard/legacy-editor'
 import { useMemo } from 'react'
 
 export function useMentionCommands(docMeta: DocMeta): MentionCommandsOptions {
-  const { data } = useGetPodMembersQuery()
+  const { data } = useGetPodMembersQuery({})
 
   const users = useMemo(
     () =>

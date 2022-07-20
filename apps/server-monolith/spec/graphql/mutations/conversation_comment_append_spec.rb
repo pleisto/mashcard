@@ -17,8 +17,6 @@ describe Mutations::ConversationCommentAppend, type: :mutation do
 
     it 'create' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
-
       comment = Docs::Conversation.create_conversation_comment!(
         creator: user,
         doc: block,
@@ -35,7 +33,6 @@ describe Mutations::ConversationCommentAppend, type: :mutation do
       expect(response.success?).to be(true)
 
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end

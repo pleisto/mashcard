@@ -147,8 +147,9 @@ export const queryCurrentPod = gql`
 `
 
 export const queryPodMembers = gql`
-  query GetPodMembers {
-    podMembers {
+  query GetPodMembers($username: String!) {
+    currentPodDomain @client @export(as: "username")
+    podMembers(username: $username) {
       role
       state
       user {

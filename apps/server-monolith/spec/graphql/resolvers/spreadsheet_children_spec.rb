@@ -8,7 +8,6 @@ describe Resolvers::SpreadsheetChildren, type: :query do
       user = create(:accounts_user)
       self.current_user = user
       pod = create(:pod)
-      self.current_pod = pod.as_session_context
 
       parent_block = create(:docs_block, pod: pod, type: 'spreadsheetBlock', collaborators: [user.id])
       _rows_blocks = create_list(:docs_block, 10, pod: pod, type: 'spreadsheetRow', parent: parent_block)
