@@ -1,6 +1,6 @@
 import { FC, MouseEvent, useCallback, useEffect, useRef, useState } from 'react'
 import { styled, theme } from '@mashcard/design-system'
-import { ArrowFilleRight } from '@mashcard/design-icons'
+import { Right } from '@mashcard/design-icons'
 import { isEmpty } from '@mashcard/active-support'
 import { TocNode } from './tocTree'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
@@ -14,7 +14,7 @@ export interface TocNodePanelProps {
 const itemGap = 7
 
 const TocItemTitleText = styled('span', {
-  lineHeight: 1,
+  lineHeight: 1.5,
   display: '-webkit-box',
   '-webkit-line-clamp': 1,
   '-webkit-box-orient': 'vertical',
@@ -82,22 +82,24 @@ const TocStyledItem = styled('div', {
   width: '100%'
 })
 
-const ToggleIcon = styled(ArrowFilleRight, {
-  color: theme.colors.typePrimary,
-  display: 'inline',
-  fontSize: '.45rem',
-  left: '0',
+const ToggleIcon = styled(Right, {
+  color: theme.colors.iconSecondary,
+  fontSize: '1rem',
   position: 'absolute',
-  transform: 'translate(-.75rem, -29%)',
   transition: 'rotate .1s ease-out',
-  top: '50%',
+  top: '0',
+  left: '-1rem',
+  height: '1.5rem',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
   variants: {
     collapse: {
-      true: {
-        transform: 'translate(-.75rem, -29%) rotate(0)'
-      },
+      true: {},
       false: {
-        transform: 'translate(-.75rem, -29%) rotate(90deg)'
+        svg: {
+          transform: 'rotate(90deg)'
+        }
       }
     }
   }

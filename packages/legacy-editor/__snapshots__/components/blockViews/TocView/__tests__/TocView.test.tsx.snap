@@ -23,25 +23,23 @@ exports[`TocView matches correct snapshot 1`] = `
             data-testid="editor-toc-block-item-title"
           >
             <span
-              aria-label="arrow-fille-right"
-              class="mc-icon mc-icon-arrow-fille-right mc-c-kffSDP mc-c-kffSDP-gkDMCb-collapse-false"
+              aria-label="right"
+              class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
               data-testid="editor-toc-block-item-toggle-icon"
               role="img"
             >
               <svg
                 fill="none"
-                height="1em"
                 viewBox="0 0 24 24"
-                width="1em"
               >
                 <path
-                  d="m7 6-7 6V0l7 6Z"
+                  d="m16 12-7 6V6l7 6z"
                   fill="currentColor"
                 />
               </svg>
             </span>
             <span
-              class="mc-c-joWkEA"
+              class="mc-c-ivBHOz"
             >
               h1
             </span>
@@ -61,25 +59,23 @@ exports[`TocView matches correct snapshot 1`] = `
                 data-testid="editor-toc-block-item-title"
               >
                 <span
-                  aria-label="arrow-fille-right"
-                  class="mc-icon mc-icon-arrow-fille-right mc-c-kffSDP mc-c-kffSDP-gkDMCb-collapse-false"
+                  aria-label="right"
+                  class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
                   data-testid="editor-toc-block-item-toggle-icon"
                   role="img"
                 >
                   <svg
                     fill="none"
-                    height="1em"
                     viewBox="0 0 24 24"
-                    width="1em"
                   >
                     <path
-                      d="m7 6-7 6V0l7 6Z"
+                      d="m16 12-7 6V6l7 6z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
                 <span
-                  class="mc-c-joWkEA"
+                  class="mc-c-ivBHOz"
                 >
                   h2
                 </span>
@@ -99,7 +95,7 @@ exports[`TocView matches correct snapshot 1`] = `
                     data-testid="editor-toc-block-item-title"
                   >
                     <span
-                      class="mc-c-joWkEA"
+                      class="mc-c-ivBHOz"
                     >
                       h5\`
                     </span>
@@ -124,25 +120,23 @@ exports[`TocView matches correct snapshot 1`] = `
             data-testid="editor-toc-block-item-title"
           >
             <span
-              aria-label="arrow-fille-right"
-              class="mc-icon mc-icon-arrow-fille-right mc-c-kffSDP mc-c-kffSDP-gkDMCb-collapse-false"
+              aria-label="right"
+              class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
               data-testid="editor-toc-block-item-toggle-icon"
               role="img"
             >
               <svg
                 fill="none"
-                height="1em"
                 viewBox="0 0 24 24"
-                width="1em"
               >
                 <path
-                  d="m7 6-7 6V0l7 6Z"
+                  d="m16 12-7 6V6l7 6z"
                   fill="currentColor"
                 />
               </svg>
             </span>
             <span
-              class="mc-c-joWkEA"
+              class="mc-c-ivBHOz"
             >
               h1\`
             </span>
@@ -162,25 +156,23 @@ exports[`TocView matches correct snapshot 1`] = `
                 data-testid="editor-toc-block-item-title"
               >
                 <span
-                  aria-label="arrow-fille-right"
-                  class="mc-icon mc-icon-arrow-fille-right mc-c-kffSDP mc-c-kffSDP-gkDMCb-collapse-false"
+                  aria-label="right"
+                  class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
                   data-testid="editor-toc-block-item-toggle-icon"
                   role="img"
                 >
                   <svg
                     fill="none"
-                    height="1em"
                     viewBox="0 0 24 24"
-                    width="1em"
                   >
                     <path
-                      d="m7 6-7 6V0l7 6Z"
+                      d="m16 12-7 6V6l7 6z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
                 <span
-                  class="mc-c-joWkEA"
+                  class="mc-c-ivBHOz"
                 >
                   h3
                 </span>
@@ -200,25 +192,23 @@ exports[`TocView matches correct snapshot 1`] = `
                     data-testid="editor-toc-block-item-title"
                   >
                     <span
-                      aria-label="arrow-fille-right"
-                      class="mc-icon mc-icon-arrow-fille-right mc-c-kffSDP mc-c-kffSDP-gkDMCb-collapse-false"
+                      aria-label="right"
+                      class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
                       data-testid="editor-toc-block-item-toggle-icon"
                       role="img"
                     >
                       <svg
                         fill="none"
-                        height="1em"
                         viewBox="0 0 24 24"
-                        width="1em"
                       >
                         <path
-                          d="m7 6-7 6V0l7 6Z"
+                          d="m16 12-7 6V6l7 6z"
                           fill="currentColor"
                         />
                       </svg>
                     </span>
                     <span
-                      class="mc-c-joWkEA"
+                      class="mc-c-ivBHOz"
                     >
                       h4
                     </span>
@@ -238,7 +228,7 @@ exports[`TocView matches correct snapshot 1`] = `
                         data-testid="editor-toc-block-item-title"
                       >
                         <span
-                          class="mc-c-joWkEA"
+                          class="mc-c-ivBHOz"
                         >
                           h5
                         </span>
@@ -263,25 +253,23 @@ exports[`TocView matches correct snapshot 1`] = `
                 data-testid="editor-toc-block-item-title"
               >
                 <span
-                  aria-label="arrow-fille-right"
-                  class="mc-icon mc-icon-arrow-fille-right mc-c-kffSDP mc-c-kffSDP-gkDMCb-collapse-false"
+                  aria-label="right"
+                  class="mc-icon mc-icon-right mc-c-cQabcc mc-c-cQabcc-hFVFuC-collapse-false"
                   data-testid="editor-toc-block-item-toggle-icon"
                   role="img"
                 >
                   <svg
                     fill="none"
-                    height="1em"
                     viewBox="0 0 24 24"
-                    width="1em"
                   >
                     <path
-                      d="m7 6-7 6V0l7 6Z"
+                      d="m16 12-7 6V6l7 6z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
                 <span
-                  class="mc-c-joWkEA"
+                  class="mc-c-ivBHOz"
                 >
                   blocks.toc.untitled
                 </span>
@@ -301,7 +289,7 @@ exports[`TocView matches correct snapshot 1`] = `
                     data-testid="editor-toc-block-item-title"
                   >
                     <span
-                      class="mc-c-joWkEA"
+                      class="mc-c-ivBHOz"
                     >
                       anchor
                     </span>
@@ -326,7 +314,7 @@ exports[`TocView matches correct snapshot 1`] = `
             data-testid="editor-toc-block-item-title"
           >
             <span
-              class="mc-c-joWkEA"
+              class="mc-c-ivBHOz"
             >
               h1\`\`
             </span>
