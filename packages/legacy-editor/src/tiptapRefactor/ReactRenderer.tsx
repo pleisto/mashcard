@@ -1,6 +1,7 @@
 import { Editor } from '@tiptap/core'
 import { Editor as ExtendedEditor } from './Editor'
 import React from 'react'
+import { flushSync } from 'react-dom'
 
 function isClassComponent(Component: any): boolean {
   return !!(typeof Component === 'function' && Component.prototype && Component.prototype.isReactComponent)
@@ -52,7 +53,9 @@ export class ReactRenderer<R = unknown, P = unknown> {
       this.element.classList.add(...className.split(' '))
     }
 
-    this.render()
+    flushSync(() => {
+      this.render()
+    })
   }
 
   render(): void {
@@ -79,7 +82,5 @@ export class ReactRenderer<R = unknown, P = unknown> {
     this.render()
   }
 
-  destroy(): void {
-    this.editor?.removePortal(this.element)
-  }
+  destroy(): void {}
 }

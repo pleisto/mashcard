@@ -16,6 +16,7 @@ const portalUpdater = (index: number, container: Element, child: ReactNode) => (
 
 export const EditorContent: FC<EditorContentProps> = ({ editor, ...props }) => {
   const editorContentRef = useRef<HTMLDivElement>(null)
+  // TODO: remove unused nodePortals
   const [nodePortals, setNodePortals] = useState<NodePortal[]>([])
 
   // initial editor content
@@ -45,9 +46,6 @@ export const EditorContent: FC<EditorContentProps> = ({ editor, ...props }) => {
           return [...nodePortals, { container, child }]
         }
       })
-    }
-    ;(editor as ExtendEditor).removePortal = container => {
-      setNodePortals(nodePortals => nodePortals.filter(portal => portal.container !== container))
     }
 
     setTimeout(() => {
