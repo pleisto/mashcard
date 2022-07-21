@@ -1,4 +1,8 @@
 export const getNativeScrollbarWidth = (): number => {
+  const window = globalThis?.window
+  if (!window) {
+    return 0
+  }
   const wrapper = window.document.createElement('div')
   wrapper.style.visibility = 'hidden'
   wrapper.style.width = '100px'
