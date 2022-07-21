@@ -49,7 +49,7 @@ module Mashcard
         '@mashcard/google-auth',
       ]
       default_plugins.push '@pleisto/cloud' if ENV['MASHCARD_CLOUD_LICENSE'].present?
-      default_plugins.push '@mashcard/mock-auth' if ENV['RAILS_ENV'] == 'test'
+      default_plugins.push '@mashcard/mock-auth' if ENV['RAILS_ENV'].in?(['test', 'cicd'])
       default_plugins.each do |name|
         plugin = Mashcard::Plugins.find(name)
         raise "Plugin #{name} not found, but it should be enabled by default" if plugin.nil?
