@@ -240,6 +240,14 @@ export const documentEditorStyles = css({
       marginBottom: 0
     },
 
+    // Tiptap adds wrong height/width style properties to .ProseMirror-separator
+    // Prosemirror: https://github.com/ProseMirror/prosemirror-view/blob/aaa50d592074c8063fc2ef77907ab6d0373822fb/style/prosemirror.css#L47-L51
+    // Tiptap: https://github.com/ueberdosis/tiptap/blob/e07a5b625d90c77fc5820e5eefa093d3cfb96512/packages/core/src/style.ts#L26-L32
+    'img.ProseMirror-separator': {
+      height: 'unset !important',
+      width: 'unset !important'
+    },
+
     ...headingStyles,
 
     ...paragraphStyles,
