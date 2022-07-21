@@ -76,8 +76,10 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
     moveRow,
     getCellBlock,
     saveCellBlock,
-    cellsMap
+    cellsMap,
+    deleteSpreadsheet
   } = useSpreadsheet({
+    title,
     isNew: node.attrs.isNew ?? false,
     parentId,
     data: prevData,
@@ -99,8 +101,6 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
     valuesMatrix,
     editable: documentEditable
   })
-
-  const { deleteSpreadsheet } = useFormulaSpreadsheet({ spreadsheetId: parentId, rows, columns, getCellBlock, title })
 
   const handleDeleteNode = (): void => {
     deleteSpreadsheet()

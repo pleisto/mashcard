@@ -13,6 +13,7 @@ import {
 } from '@mashcard/schema'
 import { useEditorContext } from '../../../hooks'
 import { getFormulaContext } from '../FormulaView'
+import { useFormulaSpreadsheet } from './useFormulaSpreadsheet'
 
 export interface SpreadsheetColumn {
   uuid: string
@@ -30,6 +31,7 @@ export interface SpreadsheetCellsMap extends Map<string, Map<string, BlockInput>
 export function useSpreadsheet(options: {
   isNew: boolean
   parentId: string
+  title: string
   data: Record<string, any>
   updateAttributeData: (data: Record<string, any>) => void
 }): {
@@ -44,11 +46,12 @@ export function useSpreadsheet(options: {
   moveRow: (srcId: string, targetId: string) => void
   getCellBlock: (spreadsheetId: string, rowId: string, columnId: string) => BlockInput
   saveCellBlock: (block: BlockInput) => void
+  deleteSpreadsheet: () => void
   cellsMap: SpreadsheetCellsMap
 } {
   const { editor } = useEditorContext()
   const formulaContext = getFormulaContext(editor)
-  const { isNew, parentId, data, updateAttributeData } = options
+  const { isNew, parentId, data, updateAttributeData, title } = options
   const [columns, setColumns] = React.useState<SpreadsheetColumns>(data.columns ?? [])
   // const latestColumns = React.useRef<SpreadsheetColumns>(columns)
   const latestRowsCount = React.useRef<number>(data.rowsCount || 0)
@@ -266,6 +269,15 @@ export function useSpreadsheet(options: {
     [formulaContext, setBlockToCellsMap]
   )
 
+  const { deleteSpreadsheet } = useFormulaSpreadsheet({
+    spreadsheetId: parentId,
+    formulaContext,
+    rows,
+    columns,
+    getCellBlock,
+    title
+  })
+
   // const getCellBlockByIdx = React.useCallback(
   //   (rowIdx: number, columnIdx: number): BlockInput => {
   //     return getCellBlock(
@@ -325,6 +337,7 @@ export function useSpreadsheet(options: {
     moveRow,
     getCellBlock,
     saveCellBlock,
+    deleteSpreadsheet,
     cellsMap: cellsMap.current
   }
 }
