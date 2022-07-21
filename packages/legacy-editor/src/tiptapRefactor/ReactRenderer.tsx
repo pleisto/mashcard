@@ -1,7 +1,7 @@
 import { Editor } from '@tiptap/core'
-import { Editor as ExtendedEditor } from './Editor'
 import React from 'react'
 import { flushSync } from 'react-dom'
+import { createRoot, Root } from 'react-dom/client'
 
 function isClassComponent(Component: any): boolean {
   return !!(typeof Component === 'function' && Component.prototype && Component.prototype.isReactComponent)
@@ -26,11 +26,13 @@ type ComponentType<R, P> =
 export class ReactRenderer<R = unknown, P = unknown> {
   id: string
 
-  editor: ExtendedEditor | null
+  editor: Editor
 
   component: any
 
   element: Element
+
+  root: Root
 
   props: Record<string, any>
 
@@ -44,10 +46,11 @@ export class ReactRenderer<R = unknown, P = unknown> {
   ) {
     this.id = Math.floor(Math.random() * 0xffffffff).toString()
     this.component = component
-    this.editor = editor as ExtendedEditor
+    this.editor = editor
     this.props = props
     this.element = document.createElement(as)
     this.element.classList.add('react-renderer')
+    this.root = createRoot(this.element)
 
     if (className) {
       this.element.classList.add(...className.split(' '))
@@ -70,7 +73,7 @@ export class ReactRenderer<R = unknown, P = unknown> {
 
     this.reactElement = <Component {...props} />
 
-    this.editor?.updatePortal?.(this.element, this.reactElement)
+    this.root.render(this.reactElement)
   }
 
   updateProps(props: Record<string, any> = {}): void {
@@ -82,5 +85,7 @@ export class ReactRenderer<R = unknown, P = unknown> {
     this.render()
   }
 
-  destroy(): void {}
+  destroy(): void {
+    this.root.unmount()
+  }
 }

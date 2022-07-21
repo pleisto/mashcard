@@ -6,7 +6,6 @@ import {
   NodeViewRendererOptions,
   NodeViewRendererProps
 } from '@tiptap/core'
-import { Editor as ExtendedEditor } from './Editor'
 import { Node as ProseMirrorNode } from 'prosemirror-model'
 import { Decoration, NodeView as ProseMirrorNodeView } from 'prosemirror-view'
 import { FunctionComponent } from 'react'
@@ -176,9 +175,7 @@ export function ReactNodeViewRenderer(
 ): NodeViewRenderer {
   return (props: NodeViewRendererProps) => {
     // try to get the parent component
-    // this is important for vue devtools to show the component hierarchy correctly
-    // maybe it’s `undefined` because <editor-content> isn’t rendered yet
-    if (!(props.editor as ExtendedEditor).updatePortal) {
+    if (!props.editor.options.element.isConnected) {
       return {}
     }
 
