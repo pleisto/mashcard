@@ -91,6 +91,9 @@ export class MultipleNodeSelectionDomEvents {
   }
 
   public mousedown(view: EditorView, event: MouseEvent): boolean {
+    // 0 represent for left-click, only accept left-lick case.
+    if (event.button !== 0) return false
+
     this.container.mouseSelection = {
       ...this.container.mouseSelection,
       anchor: {
