@@ -9,7 +9,8 @@ export const drawerStyles = css({
   position: 'sticky',
   top: 0,
   left: 0,
-  overflow: 'scroll'
+  overflow: 'scroll',
+  overscrollBehavior: 'contain'
 })
 
 export const SearchInputContainer = styled('div', {
