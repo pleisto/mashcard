@@ -18794,25 +18794,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prosemirror-view@npm:1.26.5":
-  version: 1.26.5
-  resolution: "prosemirror-view@npm:1.26.5"
+"prosemirror-view@npm:1.27.0":
+  version: 1.27.0
+  resolution: "prosemirror-view@npm:1.27.0"
   dependencies:
     prosemirror-model: ^1.16.0
     prosemirror-state: ^1.0.0
     prosemirror-transform: ^1.1.0
-  checksum: 5fd375e68de30346edbe0a8e570d978e1fc727781030607ee7dca53bf05a4cf1993ee9d457429613a729493745dc5a5a1dc4d8f6b16cc3fc0911a81035a1052a
+  checksum: 5a4a454b8ce6ddf8a1ac67d2e398ab30d58c547c8fdeda6e29bb8283d2176bef044ba7d6d255aaa7aaaa34d4c99fdbc579eaef18d73cde5a1b087ee92e6fa064
   languageName: node
   linkType: hard
 
-"prosemirror-view@patch:prosemirror-view@npm:1.26.5#.yarn/patches/prosemirror-view-npm-1.26.5-ab20b7a4ea.patch::locator=%40mashcard%2Fmonorepo%40workspace%3A.":
-  version: 1.26.5
-  resolution: "prosemirror-view@patch:prosemirror-view@npm%3A1.26.5#.yarn/patches/prosemirror-view-npm-1.26.5-ab20b7a4ea.patch::version=1.26.5&hash=341eb8&locator=%40mashcard%2Fmonorepo%40workspace%3A."
+"prosemirror-view@patch:prosemirror-view@npm:1.27.0#.yarn/patches/prosemirror-view-npm-1.27.0-fee90688e2.patch::locator=%40mashcard%2Fmonorepo%40workspace%3A.":
+  version: 1.27.0
+  resolution: "prosemirror-view@patch:prosemirror-view@npm%3A1.27.0#.yarn/patches/prosemirror-view-npm-1.27.0-fee90688e2.patch::version=1.27.0&hash=2ee921&locator=%40mashcard%2Fmonorepo%40workspace%3A."
   dependencies:
     prosemirror-model: ^1.16.0
     prosemirror-state: ^1.0.0
     prosemirror-transform: ^1.1.0
-  checksum: 4393dcb7210380b5b010fe23bb1505c48f94b25267b193df277c736c1fe7b01060926a04a655e284f118843de09acdabc43c395b60be60df4f96cd1e7c1c2939
+  checksum: c25429a1fff064d399a572243e3b8ee872f3f8c79f7222eb9b974ff53e66d903288cae5814812e137be3ef073bf6b075e7022a4e0f8747ce944dede153c613e5
   languageName: node
   linkType: hard
 
