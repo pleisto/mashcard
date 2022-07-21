@@ -1,0 +1,39 @@
+diff --git a/dist/index.cjs b/dist/index.cjs
+index ab8c682d33ed1a930072c5034a43efc2626133e2..5570572920b354a253ba4b41377f2a1ae6920b94 100644
+--- a/dist/index.cjs
++++ b/dist/index.cjs
+@@ -3499,7 +3499,9 @@ var MouseDown = function () {
+     var targetDesc = target ? view.docView.nearestDesc(target, true) : null;
+     this.target = targetDesc ? targetDesc.dom : null;
+     var selection = view.state.selection;
+-    if (event.button == 0 && targetNode.type.spec.draggable && targetNode.type.spec.selectable !== false || selection instanceof prosemirrorState.NodeSelection && selection.from <= targetPos && selection.to > targetPos) this.mightDrag = {
++    if (event.button == 0
++      && (!this.target || this.target.draggable !== false)
++      && targetNode.type.spec.draggable && targetNode.type.spec.selectable !== false || selection instanceof prosemirrorState.NodeSelection && selection.from <= targetPos && selection.to > targetPos) this.mightDrag = {
+       node: targetNode,
+       pos: targetPos,
+       addAttr: !!(this.target && !this.target.draggable),
+diff --git a/dist/index.es.js b/dist/index.es.js
+index 68715495bdca59a7eac434bf88bacc8678ef1adb..22d573b2f2221723292c1a72674e31af6e6c1dfb 100644
+--- a/dist/index.es.js
++++ b/dist/index.es.js
+@@ -3765,6 +3765,7 @@ var MouseDown = function MouseDown(view, pos, event, flushed) {
+   var ref = view.state;
+   var selection = ref.selection;
+   if (event.button == 0 &&
++      (!this.target || this.target.draggable !== false) &&
+       targetNode.type.spec.draggable && targetNode.type.spec.selectable !== false ||
+       selection instanceof NodeSelection && selection.from <= targetPos && selection.to > targetPos)
+     { this.mightDrag = {node: targetNode,
+diff --git a/dist/index.js b/dist/index.js
+index 8148ec92e1fe40dfa7f3096eb999493bb94a7747..d5636ae31c6546b67a9679046c63682ad1d46934 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -3061,6 +3061,7 @@ class MouseDown {
+         this.target = targetDesc ? targetDesc.dom : null;
+         let { selection } = view.state;
+         if (event.button == 0 &&
++            (!this.target || this.target.draggable !== false) &&
+             targetNode.type.spec.draggable && targetNode.type.spec.selectable !== false ||
+             selection instanceof NodeSelection && selection.from <= targetPos && selection.to > targetPos)
+             this.mightDrag = {
