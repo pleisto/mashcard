@@ -20,7 +20,6 @@ describe Mutations::CreateDirectUpload, type: :mutation do
 
     it 'avatar' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
       input = { input: { type: 'AVATAR',
                          input: { filename: 'foo.txt', checksum: '123123', byteSize: 123, contentType: 'text' }, } }
       graphql_execute(mutation, input)
@@ -28,12 +27,10 @@ describe Mutations::CreateDirectUpload, type: :mutation do
       expect(response.errors).to eq({})
       expect(response.data[:createDirectUpload][:directUpload][:viewUrl]).not_to be_blank
       self.current_user = nil
-      self.current_pod = nil
     end
 
     it 'doc' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
       block = create(:docs_block, pod: user.personal_pod)
       input = { input: { type: 'DOC', blockId: block.id,
                          input: { filename: 'foo.txt', checksum: '123123', byteSize: 123, contentType: 'text' }, } }
@@ -42,7 +39,6 @@ describe Mutations::CreateDirectUpload, type: :mutation do
       expect(response.errors).to eq({})
       expect(response.data[:createDirectUpload][:directUpload][:viewUrl]).not_to be_blank
       self.current_user = nil
-      self.current_pod = nil
     end
   end
 end
