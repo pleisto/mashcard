@@ -11,7 +11,7 @@ import {
   BlockInput,
   Block
 } from '@mashcard/schema'
-import { useEditorContext } from '../../../hooks'
+import { useEditorContext, useEditorI18n } from '../../../hooks'
 import { getFormulaContext } from '../FormulaView'
 import { useFormulaSpreadsheet } from './useFormulaSpreadsheet'
 
@@ -37,7 +37,7 @@ export function useSpreadsheet(options: {
 }): {
   columns: SpreadsheetColumns
   addColumn: (index?: number) => void
-  updateColumn: (column: SpreadsheetColumn) => void
+  updateColumn: (column: SpreadsheetColumn) => string | undefined
   removeColumn: (column: SpreadsheetColumn) => void
   moveColumn: (srcId: string, targetId: string) => void
   rows: SpreadsheetRows
@@ -49,6 +49,7 @@ export function useSpreadsheet(options: {
   deleteSpreadsheet: () => void
   cellsMap: SpreadsheetCellsMap
 } {
+  const [t] = useEditorI18n()
   const { editor } = useEditorContext()
   const formulaContext = getFormulaContext(editor)
   const { isNew, parentId, data, updateAttributeData, title } = options
@@ -162,8 +163,13 @@ export function useSpreadsheet(options: {
   )
 
   const updateColumn = React.useCallback(
-    (column: SpreadsheetColumn): void => {
+    (column: SpreadsheetColumn): string | undefined => {
       const oldColumns = columns.filter(c => c.uuid !== column.uuid)
+      if (column.title && oldColumns.some(c => c.title === column.title)) {
+        return `'${column.title}' ${t('spreadsheet.column.name_used')}`
+      } else if (column.title && column.title === title) {
+        return `'${column.title}' ${t('spreadsheet.column.name_used')}`
+      }
       updateSpreadsheetAttributes(
         [...oldColumns.slice(0, column.sort), column, ...oldColumns.slice(column.sort)].map((c, i) => ({
           ...c,
@@ -171,7 +177,7 @@ export function useSpreadsheet(options: {
         }))
       )
     },
-    [columns, updateSpreadsheetAttributes]
+    [columns, updateSpreadsheetAttributes, title, t]
   )
 
   const addColumn = React.useCallback(

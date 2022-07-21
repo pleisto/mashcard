@@ -128,7 +128,8 @@ export const useSpreadsheetContext = (options: {
   )
 
   const pasteToSpreadsheet = React.useCallback(
-    (pasteMatrix: string[][]) => {
+    (pasteMatrix: string[][], selection: SpreadsheetSelection) => {
+      const { columnIds: selectedColumnIds } = selection
       let { rowIdx, columnIdx } = getSelectedIdx()
       if (rowIdx === rowIds.length) {
         rowIdx = 0
@@ -136,12 +137,14 @@ export const useSpreadsheetContext = (options: {
       if (columnIdx === columnIds.length) {
         columnIdx = 0
       }
-
+      let rowDelta = 0
       pasteMatrix.forEach((r: string[], ri: number) => {
         r.forEach((c: string, ci: number) => {
-          const rowId = rowIds[rowIdx + ri]
+          const rowId = rowIds[rowIdx + ri + rowDelta]
           const columnId = columnIds[columnIdx + ci]
-          if (rowId && columnId) {
+          if (selectedColumnIds?.includes(columnId) && ri === 0) {
+            rowDelta -= 1
+          } else if (rowId && columnId) {
             const cellId = `${rowId},${columnId}`
             MashcardEventBus.dispatch(SpreadsheetUpdateCellValue({ parentId: parentId!, cellId, value: c }))
           }
@@ -166,11 +169,11 @@ export const useSpreadsheetContext = (options: {
           if (movement[2]) {
             if (nColumnIdx >= columnIds.length) {
               nColumnIdx = 0
-              nRowIdx = nRowIdx + 1
+              nRowIdx += 1
               if (nRowIdx >= rowIds.length) nRowIdx = 0
             }
-          } else {
-            if (nColumnIdx > columnIds.length) nColumnIdx = 0
+          } else if (nColumnIdx > columnIds.length) {
+            nColumnIdx = 0
           }
           if (nColumnIdx < 0) nColumnIdx = columnIds.length
           if (nRowIdx > rowIds.length) nRowIdx = 0
@@ -206,7 +209,7 @@ export const useSpreadsheetContext = (options: {
         const pasteMatrix = parsePasteTable(text)
         devLog('paste to spreadsheet', [text])
         devLog('parsed', pasteMatrix)
-        pasteToSpreadsheet(pasteMatrix)
+        pasteToSpreadsheet(pasteMatrix, selection)
         e.preventDefault()
       }
     }
