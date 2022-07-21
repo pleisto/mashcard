@@ -28,7 +28,6 @@ import {
 import { useSpreadsheetContext } from './SpreadsheetContext'
 
 import { SpreadsheetCell } from './SpreadsheetCell'
-import { useFormulaSpreadsheet } from './useFormulaSpreadsheet'
 
 export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
   editor,

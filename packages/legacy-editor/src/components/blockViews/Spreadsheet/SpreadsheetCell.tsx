@@ -4,6 +4,7 @@ import {
   MashcardEventBus,
   BlockInput,
   SpreadsheetUpdateCellValue,
+  FormulaCalculateTrigger,
   FormulaEditorBlurTrigger,
   FormulaEditorCloseTrigger
 } from '@mashcard/schema'
@@ -150,6 +151,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   const handleEnterEdit = (): void => {
     context.clearSelection()
     setEditing(true)
+    MashcardEventBus.dispatch(FormulaCalculateTrigger({ skipExecute: true, formulaId, rootId }))
   }
 
   React.useEffect(() => {
