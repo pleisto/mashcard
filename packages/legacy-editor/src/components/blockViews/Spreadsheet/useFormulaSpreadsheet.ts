@@ -7,25 +7,27 @@ import {
   dispatchFormulaSpreadsheetNameChange,
   dispatchFormulaSpreadsheetRemove,
   dispatchFormulaSpreadsheetRowChange,
-  dispatchFormulaSpreadsheetColumnChange
+  dispatchFormulaSpreadsheetColumnChange,
+  ContextInterface
 } from '@mashcard/formula'
 import { BlockInput } from '@mashcard/schema'
 import { SpreadsheetColumn } from './useSpreadsheet'
 import { columnDisplayIndex, columnDisplayTitle } from './helper'
-import { useEditorContext, useDocumentContext } from '../../../hooks'
-import { getFormulaContext } from '../FormulaView'
+import { useDocumentContext } from '../../../hooks'
 
 interface useFormulaSpreadsheetProps {
   spreadsheetId: string
   columns: SpreadsheetColumn[]
+  formulaContext: ContextInterface | undefined | null
   rows: BlockInput[]
-  getCellBlock: (rowId: string, columnId: string) => BlockInput
+  getCellBlock: (spreadsheetId: string, rowId: string, columnId: string) => BlockInput
   title: string
 }
 
 export function useFormulaSpreadsheet({
   spreadsheetId,
   columns,
+  formulaContext,
   rows,
   title: originalTitle,
   getCellBlock
@@ -33,11 +35,11 @@ export function useFormulaSpreadsheet({
   deleteSpreadsheet: () => void
 } {
   const title = originalTitle || 'Untitled Spreadsheet'
-  const { editor } = useEditorContext()
   const { docId } = useDocumentContext()
   const rootId = docId!
-  const formulaContext = getFormulaContext(editor)
   const titleRef = React.useRef(title)
+
+  console.log('rootId rerender', rootId)
 
   const rowData: Row[] = React.useMemo(
     () => rows.map((row, rowIndex) => ({ rowId: row.id, rowIndex, spreadsheetId })),
@@ -102,7 +104,7 @@ export function useFormulaSpreadsheet({
       columns: columnsRef.current,
       rows: rowsRef.current,
       getCell: ({ rowId, columnId, rowIndex, columnIndex }) => {
-        const cellBlock = getCellBlock(rowId, columnId)
+        const cellBlock = getCellBlock(spreadsheetId, rowId, columnId)
 
         return {
           namespaceId: rootId,

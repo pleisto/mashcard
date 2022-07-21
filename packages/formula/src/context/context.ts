@@ -57,6 +57,7 @@ import {
   VariableId,
   VariableInterface,
   VariableKey,
+  VariableRichType,
   View,
   ViewRender,
   ViewType
@@ -359,6 +360,14 @@ export class FormulaContext implements ContextInterface {
 
   public findVariableById(namespaceId: NamespaceId, variableId: VariableId): VariableInterface | undefined {
     return this.variables[variableKey(namespaceId, variableId)]
+  }
+
+  public findVariableByCellMeta(
+    meta: Extract<VariableRichType, { type: 'spreadsheet' }>['meta']
+  ): VariableInterface | undefined {
+    return Object.values(this.variables).find(
+      v => v.t.meta.richType.type === 'spreadsheet' && JSON.stringify(v.t.meta.richType.meta) === JSON.stringify(meta)
+    )
   }
 
   public findVariableDisplayDataById(
