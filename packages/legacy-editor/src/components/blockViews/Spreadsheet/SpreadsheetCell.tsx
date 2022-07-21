@@ -57,6 +57,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
 
   const cellId = `${rowId},${columnId}`
   const formulaId = currentBlock.data.formulaId
+
   const formulaName = `Cell_${rowId}_${columnId}`.replaceAll('-', '')
 
   const editing = context?.editingCellId === formulaName
@@ -106,7 +107,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       // console.log('dispatch update cell', variable)
       // setEditing(false)
     },
-    [rootId, block, cellId, saveBlock, tableId, rowIdx, rowId, columnSort, columnTitle, formulaContext]
+    [formulaContext, block, cellId, rootId, saveBlock, tableId, rowIdx, rowId, columnSort, columnTitle]
   )
 
   const meta: UseFormulaInput['meta'] = {

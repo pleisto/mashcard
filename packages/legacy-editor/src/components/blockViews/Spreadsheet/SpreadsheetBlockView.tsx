@@ -343,7 +343,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                     }
                   >
                     {columns.map((column, columnIdx) => {
-                      const block = getCellBlock(rowBlock.id, column.uuid)
+                      const block = getCellBlock(parentId, rowBlock.id, column.uuid)
                       return (
                         <SpreadsheetCellContainer
                           key={block.id}

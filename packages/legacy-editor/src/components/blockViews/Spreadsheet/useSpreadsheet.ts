@@ -11,6 +11,8 @@ import {
   BlockInput,
   Block
 } from '@mashcard/schema'
+import { useEditorContext } from '../../../hooks'
+import { getFormulaContext } from '../FormulaView'
 
 export interface SpreadsheetColumn {
   uuid: string
@@ -40,10 +42,12 @@ export function useSpreadsheet(options: {
   addRow: (index?: number) => void
   removeRow: (index: number) => void
   moveRow: (srcId: string, targetId: string) => void
-  getCellBlock: (rowId: string, columnId: string) => BlockInput
+  getCellBlock: (spreadsheetId: string, rowId: string, columnId: string) => BlockInput
   saveCellBlock: (block: BlockInput) => void
   cellsMap: SpreadsheetCellsMap
 } {
+  const { editor } = useEditorContext()
+  const formulaContext = getFormulaContext(editor)
   const { isNew, parentId, data, updateAttributeData } = options
   const [columns, setColumns] = React.useState<SpreadsheetColumns>(data.columns ?? [])
   // const latestColumns = React.useRef<SpreadsheetColumns>(columns)
@@ -239,9 +243,12 @@ export function useSpreadsheet(options: {
   )
 
   const getCellBlock = React.useCallback(
-    (rowId: string, columnId: string): BlockInput => {
+    (spreadsheetId: string, rowId: string, columnId: string): BlockInput => {
       let block = cellsMap.current.get(rowId)?.get(columnId)
       if (!block) {
+        // TODO: This should be refactored when we have formula state management.
+        const formulaId =
+          formulaContext?.findVariableByCellMeta({ spreadsheetId, columnId, rowId })?.t.meta.variableId ?? uuid()
         block = {
           id: uuid(),
           sort: 0,
@@ -250,13 +257,13 @@ export function useSpreadsheet(options: {
           content: [],
           meta: {},
           text: '',
-          data: { columnId, formulaId: uuid() }
+          data: { columnId, formulaId }
         }
         setBlockToCellsMap(block)
       }
       return block
     },
-    [setBlockToCellsMap]
+    [formulaContext, setBlockToCellsMap]
   )
 
   // const getCellBlockByIdx = React.useCallback(
@@ -286,7 +293,7 @@ export function useSpreadsheet(options: {
 
   const saveCellBlock = React.useCallback(
     (block: BlockInput): void => {
-      devLog(`Saving cell block`, block)
+      devLog(`Saving cell block`, block, cellsMap.current)
       setBlockToCellsMap(block)
       blocksMap.current.set(block.id, block)
       MashcardEventBus.dispatch(UpdateBlock({ block: block as Block }))

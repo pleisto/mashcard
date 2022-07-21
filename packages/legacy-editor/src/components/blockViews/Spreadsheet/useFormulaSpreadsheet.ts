@@ -19,7 +19,7 @@ interface useFormulaSpreadsheetProps {
   spreadsheetId: string
   columns: SpreadsheetColumn[]
   rows: BlockInput[]
-  getCellBlock: (rowId: string, columnId: string) => BlockInput
+  getCellBlock: (spreadsheetId: string, rowId: string, columnId: string) => BlockInput
   title: string
 }
 
@@ -102,7 +102,7 @@ export function useFormulaSpreadsheet({
       columns: columnsRef.current,
       rows: rowsRef.current,
       getCell: ({ rowId, columnId, rowIndex, columnIndex }) => {
-        const cellBlock = getCellBlock(rowId, columnId)
+        const cellBlock = getCellBlock(spreadsheetId, rowId, columnId)
 
         return {
           namespaceId: rootId,
