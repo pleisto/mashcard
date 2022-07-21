@@ -40,6 +40,7 @@ gem 'rbnacl', '~> 7.1', '>= 7.1.1'
 gem 'dry-container', '~> 0.10.0'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'default_value_for', github: 'mashcard/default_value_for'
+gem 'rack-cors'
 
 # Feature toggles
 gem 'flipper', '~> 0.25.0'

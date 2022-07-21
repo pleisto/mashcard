@@ -17,34 +17,35 @@ module Mutations
     def resolve(args)
       input = args[:input]
       type = args[:type]
+
+      if type == 'DOC'
+        raise Mashcard::GraphQL::Errors::ArgumentError, :need_block_id if args[:block_id].nil?
+
+        block = Docs::Block.unscoped.find(args[:block_id])
+        pod = block.pod
+      else
+        pod = current_user
+      end
+
       service = SERVICE_MAP.fetch(type)
       # https://edgeapi.rubyonrails.org/classes/ActiveStorage/Blob.html#method-c-create_before_direct_upload-21
       new_input = input.to_h.merge(service_name: service)
 
       block_id = args[:block_id] || 'global'
-      key = "#{current_pod.fetch('username')}/#{block_id}/#{ActiveStorage::Blob.generate_unique_secure_token}_#{input[:filename]}"
-      todo = new_input.merge(
-        key: key,
-        operation_type: type,
-        pod_id: current_pod.fetch('id'),
-        user_id: current_user.id,
-        block_id: args[:block_id]
-      )
-      Rails.logger.debug todo.to_json
+
+      key = "#{pod.username}/#{block_id}/#{ActiveStorage::Blob.generate_unique_secure_token}_#{input[:filename]}"
       # https://github.com/rails/rails/blob/main/activestorage/app/models/active_storage/blob.rb#L116
       blob = ActiveStorage::Blob.create!(
         new_input.merge(
           key: key,
           operation_type: type,
-          pod_id: current_pod.fetch('id'),
+          pod_id: pod.id,
           user_id: current_user.id,
           block_id: args[:block_id]
         )
       )
 
       if type == 'DOC'
-        raise Mashcard::GraphQL::Errors::ArgumentError, 'Need a block_id' if args[:block_id].nil?
-
         block = Docs::Block.find_by(id: args[:block_id])
 
         ## Ensure exist

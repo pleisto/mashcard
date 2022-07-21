@@ -7,7 +7,7 @@ import { ImageViewProps } from './ImageView'
 import { maxWidth, minWidth } from './ImageView.style'
 import { useResizable } from './useResizable'
 
-export function useImageState({ url, node, updateEmbedBlockAttributes, width }: ImageViewProps): {
+export function useImageState({ url, downloadUrl, node, updateEmbedBlockAttributes, width }: ImageViewProps): {
   actionOptions: BlockActionOptions
   loaded: boolean
   showPreview: boolean
@@ -21,7 +21,7 @@ export function useImageState({ url, node, updateEmbedBlockAttributes, width }: 
   const { documentEditable } = useEditorContext()
   const [loaded, setLoaded] = useState(false)
   const [showPreview, setShowPreview] = useState(false)
-  const [actionOptions] = useActionOptions(url)
+  const [actionOptions] = useActionOptions(downloadUrl)
 
   const previewImage = useCallback((): void => {
     if (!node.attrs.image?.key || !loaded || showPreview) return

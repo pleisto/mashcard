@@ -17,7 +17,7 @@ describe('useImageState', () => {
       }
     })
     const updateEmbedBlockAttributes = jest.fn()
-    const props: any = { displayName, url, node, updateEmbedBlockAttributes }
+    const props: any = { displayName, url, downloadUrl: url, node, updateEmbedBlockAttributes }
     const { result } = renderHook(() => useImageState(props))
 
     const { onImageLoad } = result.current
@@ -48,7 +48,7 @@ describe('useImageState', () => {
         }
       }
     })
-    const props: any = { displayName, url, node }
+    const props: any = { displayName, url, downloadUrl: url, node }
     const { result } = renderHook(() => useImageState(props))
 
     const { previewImage } = result.current
@@ -71,7 +71,7 @@ describe('useImageState', () => {
         }
       }
     })
-    const props: any = { displayName, url, node, updateEmbedBlockAttributes }
+    const props: any = { displayName, url, downloadUrl: url, node, updateEmbedBlockAttributes }
     const { result } = renderHook(() => useImageState(props))
 
     const { onImageLoad } = result.current
@@ -101,7 +101,7 @@ describe('useImageState', () => {
       }
     })
     const updateEmbedBlockAttributes = jest.fn()
-    const props: any = { displayName, url, node, updateEmbedBlockAttributes }
+    const props: any = { displayName, url, downloadUrl: url, node, updateEmbedBlockAttributes }
     const { result } = renderHook(() => useImageState(props))
 
     const { zoomInImage } = result.current
@@ -124,7 +124,7 @@ describe('useImageState', () => {
       }
     })
     const updateEmbedBlockAttributes = jest.fn()
-    const props: any = { displayName, url, node, updateEmbedBlockAttributes }
+    const props: any = { displayName, url, downloadUrl: url, node, updateEmbedBlockAttributes }
     const { result } = renderHook(() => useImageState(props))
 
     const { zoomOutImage } = result.current

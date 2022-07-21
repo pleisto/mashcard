@@ -28,7 +28,7 @@ export interface UrlData {
 }
 
 export interface EmbedOptions {
-  getFileUrl?: (key: string, source: 'EXTERNAL' | 'ORIGIN') => string | undefined | null
+  getFileUrl?: (key: string, source: 'EXTERNAL' | 'ORIGIN') => { url: string; downloadUrl: string } | undefined
   getGalleryImages?: (options: {
     query?: string
     page: number
@@ -74,6 +74,7 @@ export interface EmbedAttributes {
     name?: string
     key?: string
     viewUrl?: string
+    downloadUrl?: string
     displayName?: string | null
     source?: 'EXTERNAL' | 'ORIGIN'
     mode?: EmbedViewMode
@@ -88,6 +89,7 @@ export interface EmbedAttributes {
     displayName?: string | null
     key?: string
     viewUrl?: string
+    downloadUrl?: string
     contentType?: string | null
     type: 'ATTACHMENT'
     source?: 'EXTERNAL' | 'ORIGIN'

@@ -16,6 +16,7 @@ export type UpdateEmbedBlockAttributes = <T extends 'link' | 'image' | 'attachme
 
 const renderImage = (
   imageUrl: string,
+  downloadUrl: string,
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes,
   { node, deleteNode, getPos, extension }: EmbedViewProps
 ): ReactElement => {
@@ -26,6 +27,7 @@ const renderImage = (
       <ImageView
         displayName={displayName! || name! || ''}
         url={imageUrl}
+        downloadUrl={downloadUrl}
         height={height}
         width={width}
         align={align}
@@ -46,6 +48,7 @@ const renderImage = (
         cover={imageUrl}
         icon={<FileIcon fileType="image" />}
         linkUrl={imageUrl}
+        downloadUrl={downloadUrl}
         node={node}
         extension={extension}
         deleteNode={deleteNode}
@@ -73,6 +76,7 @@ const renderImage = (
 
 const renderAttachment = (
   fileUrl: string,
+  downloadUrl: string,
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes,
   { node, deleteNode, extension, getPos }: EmbedViewProps
 ): ReactElement => {
@@ -88,6 +92,7 @@ const renderAttachment = (
         fileName={name ?? ''}
         fileType={fileType}
         fileUrl={fileUrl}
+        downloadUrl={downloadUrl}
         deleteNode={deleteNode}
         getPos={getPos}
         node={node}
@@ -105,6 +110,7 @@ const renderAttachment = (
         description={sizeFormat(size)}
         icon={<FileIcon fileType={fileType} />}
         linkUrl={fileUrl}
+        downloadUrl={downloadUrl}
         node={node}
         extension={extension}
         deleteNode={deleteNode}
@@ -161,20 +167,26 @@ export const EmbedView: FC<EmbedViewProps> = props => {
   )
   // image
   if (node.attrs.image?.key) {
-    const imageUrl =
-      extension.options.getFileUrl?.(node.attrs.image.key, node.attrs.image.source!) ?? node.attrs.image.viewUrl
+    const { url: imageUrl, downloadUrl } = extension.options.getFileUrl?.(
+      node.attrs.image.key,
+      node.attrs.image.source!
+    ) ?? {
+      url: node.attrs.image.viewUrl,
+      downloadUrl: node.attrs.image.downloadUrl!
+    }
     if (imageUrl) {
-      return renderImage(imageUrl, updateEmbedBlockAttributes, props)
+      return renderImage(imageUrl, downloadUrl, updateEmbedBlockAttributes, props)
     }
   }
 
   // file
   if (node.attrs.attachment?.key) {
-    const fileUrl =
-      node.attrs.attachment.viewUrl! ||
-      extension.options.getFileUrl?.(node.attrs.attachment.key, node.attrs.attachment.source!)
+    const { url: fileUrl, downloadUrl } = extension.options.getFileUrl?.(
+      node.attrs.attachment.key,
+      node.attrs.attachment.source!
+    ) ?? { url: node.attrs.attachment.viewUrl!, downloadUrl: node.attrs.attachment.downloadUrl! }
     if (fileUrl) {
-      return renderAttachment(fileUrl, updateEmbedBlockAttributes, props)
+      return renderAttachment(fileUrl, downloadUrl, updateEmbedBlockAttributes, props)
     }
   }
 
@@ -196,6 +208,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
           getPos={getPos}
           displayName={displayName! || title! || ''}
           linkUrl={linkUrl}
+          downloadUrl={linkUrl}
         />
       )
     }
@@ -208,6 +221,7 @@ export const EmbedView: FC<EmbedViewProps> = props => {
           node={node}
           extension={extension}
           fileUrl={linkUrl}
+          downloadUrl={linkUrl}
           iframeUrl={iframeUrl}
           fileType="html"
           fileName={title ?? ''}
