@@ -32,7 +32,7 @@ export class UploaderDashboardPage extends CommonPage {
   }
 
   async uploadImage(path: string): Promise<void> {
-    await this.waitForResponseWithAction('blockSyncBatch', this.getUploadImageButton().setInputFiles(path))
+    await this.waitForResponseWithAction('blockCommit', this.getUploadImageButton().setInputFiles(path))
   }
 
   async pasteImageLink(link: string): Promise<void> {

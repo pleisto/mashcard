@@ -1,14 +1,10 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import * as crypto from 'crypto'
 import { BrowserContext } from '@playwright/test'
 import { FixtureReturnType } from '@/helpers/types/fixture.types'
+import { generateUUID } from '@/helpers/utils/uuid'
 
 const istanbulCLIOutput = path.join(process.cwd(), '.nyc_output')
-
-export function generateUUID(): string {
-  return crypto.randomBytes(16).toString('hex')
-}
 
 export function coverageFixture(): FixtureReturnType<BrowserContext> {
   return async ({ context }, use): Promise<void> => {

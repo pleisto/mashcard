@@ -1,9 +1,9 @@
 import { graphqlGroupType } from '@/helpers/types/graphql.types'
 
 export const GRAPHQL_GROUP: graphqlGroupType = {
-  BLOCK_SYNC_BATCH: `
-    mutation blockSyncBatch($input: BlockSyncBatchInput!) {
-      blockSyncBatch(input: $input) {
+  BLOCK_COMMIT: `
+    mutation blockCommit($input: BlockCommitInput!) {
+      blockCommit(input: $input) {
         errors
         __typename
       }
@@ -31,7 +31,9 @@ export const GRAPHQL_GROUP: graphqlGroupType = {
       pageBlocks(domain: $domain) {
         id
         parentId
-        text
+        documentInfo {
+          title
+        }
       }
     }
   `,
