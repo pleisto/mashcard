@@ -41,11 +41,15 @@ export interface SpreadsheetContext {
   editable: boolean
 }
 
-export const keyDownMovements: { [key: string]: [number, number] } = {
-  ArrowUp: [-1, 0],
-  ArrowDown: [1, 0],
-  ArrowLeft: [0, -1],
-  ArrowRight: [0, 1]
+export const keyDownMovements: {
+  // movement: [row, column, if jump to next row]
+  [key: string]: [number, number, boolean]
+} = {
+  ArrowUp: [-1, 0, false],
+  ArrowDown: [1, 0, false],
+  ArrowLeft: [0, -1, false],
+  ArrowRight: [0, 1, false],
+  Tab: [0, 1, true]
 }
 
 export const useSpreadsheetContext = (options: {
@@ -159,10 +163,18 @@ export const useSpreadsheetContext = (options: {
           const { rowIdx, columnIdx } = getSelectedIdx()
           let nRowIdx = rowIdx + movement[0]
           let nColumnIdx = columnIdx + movement[1]
+          if (movement[1]) {
+            if (nColumnIdx >= columnIds.length) {
+              nColumnIdx = 0
+              nRowIdx = nRowIdx + 1
+              if (nRowIdx >= rowIds.length) nRowIdx = 0
+            }
+          } else {
+            if (nColumnIdx > columnIds.length) nColumnIdx = 0
+          }
+          if (nColumnIdx < 0) nColumnIdx = columnIds.length
           if (nRowIdx > rowIds.length) nRowIdx = 0
           if (nRowIdx < 0) nRowIdx = rowIds.length
-          if (nColumnIdx > columnIds.length) nColumnIdx = 0
-          if (nColumnIdx < 0) nColumnIdx = columnIds.length
           if (nRowIdx === rowIds.length) {
             setSelection({ columnIds: [columnIds[nColumnIdx]] })
           } else if (nColumnIdx === columnIds.length) {
