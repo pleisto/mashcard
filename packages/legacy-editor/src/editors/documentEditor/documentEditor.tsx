@@ -225,10 +225,6 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
               },
               placeholder: {
                 placeholder: t('placeholder.default')
-                //     // case ListItem.name:
-                //     //   return t(`placeholder.listItem`)
-                //     // case TaskItem.name:
-                //     //   return t(`placeholder.taskItem`)
               },
               selection: {
                 nodeSelection: {
@@ -266,7 +262,7 @@ export function useEditor(options: EditorOptions, deps?: DependencyList): Tiptap
           )
         )
       ],
-      autofocus: true,
+      autofocus: false,
       editable,
       ...restOptions
     }
