@@ -1,7 +1,7 @@
 import { test, expect } from '@/fixtures'
 import { rem2Pixel } from '@/helpers/utils/rem2Pixel'
 import { PageTreePage } from '@/tests/sidebar/pageTree/pageTree.page'
-import { INITIAL_PAGE } from '@/tests/common/common.data'
+import { COMMON_STYLE, INITIAL_PAGE } from '@/tests/common/common.data'
 import { DocumentTitlePage } from './documentTitle.page'
 
 test.describe('Document Title', () => {
@@ -19,7 +19,7 @@ test.describe('Document Title', () => {
   })
 
   test('Verify the font-size is equal 2.5rem', async () => {
-    await expect(documentTitle.getDocumentTitle()).toHaveCSS('font-size', rem2Pixel('2.5rem'))
+    await expect(documentTitle.getDocumentTitle()).toHaveCSS('font-size', rem2Pixel('2.25rem'))
   })
 
   test('Verify the initial page value and placeholder are equal Untitled', async ({ page }) => {
@@ -45,11 +45,11 @@ test.describe('Document Title', () => {
     await documentTitle.getDocumentTitle().hover()
     await documentTitle.getAddIconButton().hover()
 
-    await expect(documentTitle.getAddIconButton()).toHaveCSS('background-color', 'rgba(53, 108, 249, 0.1)')
+    await expect(documentTitle.getAddIconButton()).toHaveCSS('background-color', COMMON_STYLE.hoverBackground)
 
     await documentTitle.getDocumentTitle().hover()
     await documentTitle.getAddCoverButton().hover()
 
-    await expect(documentTitle.getAddCoverButton()).toHaveCSS('background-color', 'rgba(53, 108, 249, 0.1)')
+    await expect(documentTitle.getAddCoverButton()).toHaveCSS('background-color', COMMON_STYLE.hoverBackground)
   })
 })

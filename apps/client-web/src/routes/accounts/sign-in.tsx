@@ -38,13 +38,13 @@ export const SignIn: React.FC = () => {
           ) : (
             <Button
               size="lg"
-              icon={preferredAuthMethod.logo}
-              id={`auth-btn-${preferredAuthMethod.name}`}
+              icon={preferredAuthMethod?.logo}
+              id={`auth-btn-${preferredAuthMethod?.name}`}
               style={{ marginTop: '2rem' }}
-              onClick={preferredAuthMethod.action}
+              onClick={preferredAuthMethod?.action}
               block
             >
-              {t('sessions.login_via', { provider: t(`provider.${preferredAuthMethod.name}`) })}
+              {t('sessions.login_via', { provider: t(`provider.${preferredAuthMethod?.name}`) })}
             </Button>
           )
         }

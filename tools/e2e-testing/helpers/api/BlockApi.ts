@@ -1,5 +1,5 @@
-import { blockSyncBatchConverter } from '@/helpers/converter/blockSyncBatchConverter'
-import { Page } from '@playwright/test'
+import { blockCommitConverter } from '@/helpers/converter/blockCommitConverter'
+import { APIResponse, Page } from '@playwright/test'
 import { createBlockConverter } from '@/helpers/converter/createBlockConverter'
 import { PageBlock } from '@/helpers/types/data.types'
 import { GRAPHQL_GROUP } from './graphql'
@@ -27,8 +27,16 @@ export class BlockApi {
     }
   }
 
+  async getUsername(): Promise<string> {
+    return await this.page.evaluate(() => (window as any).location.pathname.split('/')[1])
+  }
+
   async pageReload(): Promise<void> {
     await this.page.reload({ waitUntil: 'networkidle' })
+  }
+
+  async post(options: OptionsType): Promise<APIResponse> {
+    return await this.request.post(this.REQUEST_URL, options)
   }
 
   options(gqlQuery: string, operationName: OperationName, variables: InputType): OptionsType {
@@ -42,29 +50,25 @@ export class BlockApi {
     }
   }
 
-  async getBlocks(domain: string): Promise<PageType[]> {
-    const response = await this.request.post(
-      this.REQUEST_URL,
+  async getBlocks(username: string): Promise<PageType[]> {
+    const response = await this.post(
       this.options(GRAPHQL_GROUP.GET_PAGE_BLOCKS, 'GetPageBlocks', {
-        domain
+        domain: username
       })
     )
     return (await response.json()).data.pageBlocks
   }
 
   async removePage(variables: BlockSoftDeleteInput): Promise<void> {
-    await this.request.post(
-      this.REQUEST_URL,
-      this.options(GRAPHQL_GROUP.BLOCK_SOFT_DELETE, 'blockSoftDelete', variables)
-    )
+    await this.post(this.options(GRAPHQL_GROUP.BLOCK_SOFT_DELETE, 'blockSoftDelete', variables))
   }
 
   async removeAllPages(options?: { isHardDeleted?: boolean; isSorted?: boolean }): Promise<void> {
     const isHardDeleted = options?.isHardDeleted ?? true
     const isSorted = options?.isSorted ?? false
 
-    const domain = await this.page.evaluate(() => (window as any).location.pathname.split('/')[1])
-    const pages = (await this.getBlocks(domain)).sort(compareAttributeItem)
+    const username = await this.getUsername()
+    const pages = (await this.getBlocks(username)).sort(compareAttributeItem)
 
     isSorted
       ? await this.orderRemoveAllPage(pages, isHardDeleted)
@@ -90,8 +94,9 @@ export class BlockApi {
   }
 
   async createPage(page: PageBlock, parentId?: string): Promise<void> {
-    const id = await this.createPageApi(createBlockConverter(page, parentId))
-    await this.blockSyncBatch(page, id)
+    const username = await this.getUsername()
+    const id = await this.createPageApi(createBlockConverter(page, username, parentId))
+    await this.blockCommit(page, id)
     if (page.children) {
       for (const child of page.children) {
         await this.createPage(child, id)
@@ -106,23 +111,19 @@ export class BlockApi {
   }
 
   async createPageApi(variables: CreateBlockInput): Promise<string> {
-    const response = await this.request.post(
-      this.REQUEST_URL,
-      this.options(GRAPHQL_GROUP.CREATE_BLOCK, 'blockCreate', variables)
-    )
+    const response = await this.post(this.options(GRAPHQL_GROUP.CREATE_BLOCK, 'blockCreate', variables))
     return (await response.json()).data.blockCreate.id
   }
 
-  async blockSyncBatch(page: PageBlock, id: string): Promise<void> {
-    const variables = blockSyncBatchConverter(page, id)
-    await this.request.post(this.REQUEST_URL, this.options(GRAPHQL_GROUP.BLOCK_SYNC_BATCH, 'blockSyncBatch', variables))
+  async blockCommit(page: PageBlock, id: string): Promise<void> {
+    const variables = blockCommitConverter(page, id)
+    await this.post(this.options(GRAPHQL_GROUP.BLOCK_COMMIT, 'blockCommit', variables))
   }
 
-  async getTrashBlock(domain: string, search: string = ''): Promise<PageType[]> {
-    const response = await this.request.post(
-      this.REQUEST_URL,
+  async getTrashBlock(username: string, search: string = ''): Promise<PageType[]> {
+    const response = await this.post(
       this.options(GRAPHQL_GROUP.GET_TRASH_BLOCKS, 'GetTrashBlocks', {
-        domain,
+        domain: username,
         search
       })
     )
@@ -130,12 +131,9 @@ export class BlockApi {
   }
 
   async removeAllTrashPages(): Promise<void> {
-    const domain = await this.page.evaluate(() => (window as any).location.pathname.split('/')[1])
-    const pages = (await this.getTrashBlock(domain)).map(page => page.id)
+    const username = await this.getUsername()
+    const pages = (await this.getTrashBlock(username)).map(page => page.id)
 
-    await this.request.post(
-      this.REQUEST_URL,
-      this.options(GRAPHQL_GROUP.BLOCK_HARD_DELETE, 'blockHardDelete', { input: { ids: pages } })
-    )
+    await this.post(this.options(GRAPHQL_GROUP.BLOCK_HARD_DELETE, 'blockHardDelete', { input: { ids: pages } }))
   }
 }

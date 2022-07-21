@@ -46,7 +46,7 @@ export class DocumentTitlePage extends CommonPage {
   }
 
   async fillTitle(title: string): Promise<void> {
-    await this.waitForResponseWithAction('blockSyncBatch', this.getDocumentTitle().fill(title))
+    await this.getDocumentTitle().fill(title)
   }
 
   async openIconPopup(): Promise<IconPage> {

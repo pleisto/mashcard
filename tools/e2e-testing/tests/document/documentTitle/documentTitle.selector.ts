@@ -2,7 +2,7 @@ import { TEST_ID_ENUM } from '@/../../packages/test-helper/src'
 
 export const DOCUMENT_TITLE_SELECTORS = {
   article: '#article',
-  documentTitle: `[data-testid=${TEST_ID_ENUM.page.DocumentPage.titleInput.id}] input`,
+  documentTitle: `[data-testid=${TEST_ID_ENUM.page.DocumentPage.titleInput.id}]`,
   documentEmoji: `[data-testid=${TEST_ID_ENUM.page.DocumentPage.titleIcon.id}] span`,
   documentImageIcon: `[data-testid=${TEST_ID_ENUM.page.DocumentPage.titleIcon.id}] div`,
   actionButtons: `[data-testid=${TEST_ID_ENUM.page.DocumentPage.actionButtons.id}]`,
