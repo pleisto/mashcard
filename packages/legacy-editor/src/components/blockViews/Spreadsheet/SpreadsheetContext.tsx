@@ -42,7 +42,7 @@ export interface SpreadsheetContext {
 }
 
 export const keyDownMovements: {
-  // movement: [row, column, if jump to next row]
+  // movement: [row, column, if jump to next row when last column]
   [key: string]: [number, number, boolean]
 } = {
   ArrowUp: [-1, 0, false],
@@ -163,7 +163,7 @@ export const useSpreadsheetContext = (options: {
           const { rowIdx, columnIdx } = getSelectedIdx()
           let nRowIdx = rowIdx + movement[0]
           let nColumnIdx = columnIdx + movement[1]
-          if (movement[1]) {
+          if (movement[2]) {
             if (nColumnIdx >= columnIds.length) {
               nColumnIdx = 0
               nRowIdx = nRowIdx + 1
