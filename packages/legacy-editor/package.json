@@ -60,7 +60,7 @@
     "tippy.js": "^6.3.7",
     "y-protocols": "^1.0.5",
     "yjs": "^13.5.39",
-    "zustand": "^4.0.0-rc.3"
+    "zustand": "^4.0.0-rc.4"
   },
   "devDependencies": {
     "@mashcard/dev-support": "workspace:^",
