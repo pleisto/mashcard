@@ -30,6 +30,7 @@ export interface CardViewProps {
   displayName: string
   description?: string | null
   linkUrl: string
+  downloadUrl: string
   updateEmbedBlockAttributes: UpdateEmbedBlockAttributes
   blockType: EmbedBlockType
 }
@@ -56,6 +57,7 @@ export const CardIcon: FC<Pick<CardViewProps, 'blockType' | 'icon'>> = ({ blockT
 
 export const CardView: FC<CardViewProps> = ({
   linkUrl,
+  downloadUrl,
   cover,
   icon,
   displayName,
@@ -74,7 +76,7 @@ export const CardView: FC<CardViewProps> = ({
   const isWebsite = blockType === 'link'
   const isFile = blockType === 'attachment' || blockType === 'image'
   const type = isFile ? 'file' : 'default'
-  const [actionOptions] = useActionOptions(isWebsite ? undefined : linkUrl)
+  const [actionOptions] = useActionOptions(isWebsite ? undefined : downloadUrl)
   const onClick = useCallback(() => window.open(linkUrl, '_blank'), [linkUrl])
 
   return (

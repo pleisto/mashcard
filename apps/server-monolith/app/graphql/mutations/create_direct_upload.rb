@@ -20,6 +20,7 @@ module Mutations
 
       if type == 'DOC'
         raise Mashcard::GraphQL::Errors::ArgumentError, :need_block_id if args[:block_id].nil?
+
         block = Docs::Block.unscoped.find(args[:block_id])
         pod = block.pod
       else

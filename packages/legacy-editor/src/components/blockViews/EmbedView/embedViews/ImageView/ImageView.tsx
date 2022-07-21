@@ -22,6 +22,7 @@ import { useEditorContext } from '../../../../../hooks'
 export interface ImageViewProps {
   displayName: string
   url: string
+  downloadUrl: string
   height?: number | null
   width?: number | null
   align?: EmbedAttributes['image']['align']

@@ -21,6 +21,7 @@ export interface PreviewViewProps {
   fileName: string
   fileType: FileType
   fileUrl: string
+  downloadUrl: string
   icon?: string | null
   iframeUrl?: string | null
 }
@@ -45,13 +46,14 @@ export const PreviewView: FC<PreviewViewProps> = ({
   fileName,
   fileType,
   fileUrl,
+  downloadUrl,
   iframeUrl,
   icon,
   node,
   extension
 }) => {
   const isWebsite = fileType === 'html'
-  const [actionOptions] = useActionOptions(isWebsite ? undefined : fileUrl)
+  const [actionOptions] = useActionOptions(isWebsite ? undefined : downloadUrl)
 
   return (
     <BlockContainer
