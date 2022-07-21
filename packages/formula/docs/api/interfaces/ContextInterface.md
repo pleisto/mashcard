@@ -21,6 +21,7 @@
 - [findReference](ContextInterface.md#findreference)
 - [findRow](ContextInterface.md#findrow)
 - [findSpreadsheet](ContextInterface.md#findspreadsheet)
+- [findVariableByCellMeta](ContextInterface.md#findvariablebycellmeta)
 - [findVariableById](ContextInterface.md#findvariablebyid)
 - [findVariableByName](ContextInterface.md#findvariablebyname)
 - [findVariableDisplayDataById](ContextInterface.md#findvariabledisplaydatabyid)
@@ -76,7 +77,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:402](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L402)
+[packages/formula/src/type/index.ts:405](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L405)
 
 ---
 
@@ -101,7 +102,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:398](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L398)
+[packages/formula/src/type/index.ts:401](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L401)
 
 ---
 
@@ -220,7 +221,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:400](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L400)
+[packages/formula/src/type/index.ts:403](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L403)
 
 ---
 
@@ -323,6 +324,33 @@
 
 ---
 
+### <a id="findvariablebycellmeta" name="findvariablebycellmeta"></a> findVariableByCellMeta
+
+• **findVariableByCellMeta**: (`meta`: { `columnId`: `string` ; `rowId`: `string` ; `spreadsheetId`: `string` }) => `undefined` \| [`VariableInterface`](VariableInterface.md)
+
+#### Type declaration
+
+▸ (`meta`): `undefined` \| [`VariableInterface`](VariableInterface.md)
+
+##### Parameters
+
+| Name                 | Type     |
+| :------------------- | :------- |
+| `meta`               | `Object` |
+| `meta.columnId`      | `string` |
+| `meta.rowId`         | `string` |
+| `meta.spreadsheetId` | `string` |
+
+##### Returns
+
+`undefined` \| [`VariableInterface`](VariableInterface.md)
+
+#### Defined in
+
+[packages/formula/src/type/index.ts:396](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L396)
+
+---
+
 ### <a id="findvariablebyid" name="findvariablebyid"></a> findVariableById
 
 • **findVariableById**: (`namespaceId`: `string`, `variableId`: `string`) => `undefined` \| [`VariableInterface`](VariableInterface.md)
@@ -369,7 +397,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:397](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L397)
+[packages/formula/src/type/index.ts:400](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L400)
 
 ---
 
@@ -394,7 +422,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:396](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L396)
+[packages/formula/src/type/index.ts:399](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L399)
 
 ---
 
@@ -600,7 +628,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:399](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L399)
+[packages/formula/src/type/index.ts:402](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L402)
 
 ---
 
@@ -620,7 +648,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:401](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L401)
+[packages/formula/src/type/index.ts:404](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L404)
 
 ---
 

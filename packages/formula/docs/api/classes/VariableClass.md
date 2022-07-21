@@ -386,7 +386,7 @@ VariableInterface.save
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:435](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L435)
+[packages/formula/src/context/variable.ts:436](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L436)
 
 ---
 
@@ -400,7 +400,7 @@ VariableInterface.save
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:567](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L567)
+[packages/formula/src/context/variable.ts:568](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L568)
 
 ---
 
@@ -470,7 +470,7 @@ VariableInterface.trackDirty
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:599](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L599)
+[packages/formula/src/context/variable.ts:600](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L600)
 
 ---
 
@@ -494,4 +494,4 @@ VariableInterface.updateDefinition
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:431](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L431)
+[packages/formula/src/context/variable.ts:432](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L432)

@@ -480,7 +480,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:548](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L548)
+[packages/formula/src/type/index.ts:551](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L551)
 
 ---
 
@@ -555,7 +555,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:589](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L589)
+[packages/formula/src/type/index.ts:592](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L592)
 
 ---
 
@@ -565,7 +565,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:587](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L587)
+[packages/formula/src/type/index.ts:590](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L590)
 
 ---
 
@@ -602,7 +602,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:597](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L597)
+[packages/formula/src/type/index.ts:600](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L600)
 
 ---
 
@@ -612,7 +612,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:591](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L591)
+[packages/formula/src/type/index.ts:594](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L594)
 
 ---
 
@@ -692,7 +692,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L76)
+[packages/formula/src/context/context.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L77)
 
 ---
 
@@ -738,7 +738,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:784](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L784)
+[packages/formula/src/type/index.ts:787](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L787)
 
 ---
 
@@ -918,7 +918,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:791](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L791)
+[packages/formula/src/type/index.ts:794](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L794)
 
 ---
 
@@ -1142,7 +1142,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:734](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L734)
+[packages/formula/src/type/index.ts:737](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L737)
 
 ---
 
@@ -1152,7 +1152,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:708](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L708)
+[packages/formula/src/type/index.ts:711](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L711)
 
 ---
 
@@ -1162,7 +1162,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:644](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L644)
+[packages/formula/src/type/index.ts:647](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L647)
 
 ---
 
@@ -3895,7 +3895,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:537](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L537)
+[packages/formula/src/type/index.ts:540](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L540)
 
 ---
 
@@ -3956,7 +3956,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:791](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L791)
+[packages/formula/src/type/index.ts:794](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L794)
 
 ---
 

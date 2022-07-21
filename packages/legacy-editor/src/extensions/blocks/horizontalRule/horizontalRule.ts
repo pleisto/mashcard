@@ -9,6 +9,8 @@ export const HorizontalRule = TiptapHorizontalRule.extend({
 
   selectable: false,
 
+  draggable: true,
+
   addNodeView() {
     return ReactNodeViewRenderer(HorizontalRuleView)
   },

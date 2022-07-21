@@ -328,6 +328,12 @@ export function useDocSyncProvider(queryVariables: {
     }
     awareness.on('update', awarenessUpdateHandler)
 
+    if (globalThis.mashcardContext.env === 'development') {
+      (globalThis as any).debugDumpDocumentState = () => {
+        return base64.stringify(Y.encodeStateAsUpdate(ydoc))
+      }
+    }
+
     return () => {
       ydoc.off('update', ydocUpdateHandler)
       awareness.off('update', awarenessUpdateHandler)

@@ -13,7 +13,6 @@ import { FunctionComponent } from 'react'
 
 import { ReactRenderer } from './ReactRenderer'
 import { ReactNodeViewContext, ReactNodeViewContextProps } from './useReactNodeView'
-import { flushSync } from 'react-dom'
 
 export interface ReactNodeViewRendererOptions extends NodeViewRendererOptions {
   update:
@@ -89,13 +88,11 @@ class ReactNodeView extends NodeView<FunctionComponent, Editor, ReactNodeViewRen
 
     const { className = '' } = this.options
 
-    flushSync(() => {
-      this.renderer = new ReactRenderer(ReactNodeViewProvider, {
-        editor: this.editor,
-        props,
-        as,
-        className: `node-${this.node.type.name} ${className}`.trim()
-      })
+    this.renderer = new ReactRenderer(ReactNodeViewProvider, {
+      editor: this.editor,
+      props,
+      as,
+      className: `node-${this.node.type.name} ${className}`.trim()
     })
   }
 

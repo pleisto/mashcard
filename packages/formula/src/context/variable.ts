@@ -33,7 +33,7 @@ import {
 } from '../events'
 import { devWarning } from '@mashcard/design-system'
 
-const MAX_LEVEL = 20
+const MAX_LEVEL = 8
 
 export const fetchVariableTError = ({ task }: VariableData): ErrorMessage | undefined => {
   if (task.async) return undefined
@@ -386,7 +386,8 @@ export class VariableClass implements VariableInterface {
     //   { sourceUuid, id: this.id },
     //   this.t.meta.name,
     //   source,
-    //   input
+    //   input,
+    //   this
     // )
 
     if (level > MAX_LEVEL) {

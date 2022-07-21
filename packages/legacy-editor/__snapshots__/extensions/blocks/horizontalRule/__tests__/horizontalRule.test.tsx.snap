@@ -11,6 +11,7 @@ exports[`HorizontalRule renders HorizontalRule correctly 1`] = `
     >
       <div
         class="react-renderer node-horizontalRule"
+        draggable="true"
       >
         <div
           data-node-view-wrapper=""

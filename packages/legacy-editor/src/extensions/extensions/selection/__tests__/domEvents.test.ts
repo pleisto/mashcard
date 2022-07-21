@@ -10,6 +10,7 @@ describe('DomEvents', () => {
     const domEvents = new MultipleNodeSelectionDomEvents(editor, {})
 
     const event: Partial<MouseEvent> = {
+      button: 0,
       clientX: x,
       clientY: y
     }

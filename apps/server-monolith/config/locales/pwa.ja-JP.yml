@@ -1,7 +1,8 @@
 ja-JP:
+  meta:
+    personal_pod_desc: My Pod
   settings:
     app_title: MashCard Settings
-    personal_pod_desc: 私のポッド
     group_pod_desc: チームポッド
     errors:
       invalid_operation_type: Invalid operation type
