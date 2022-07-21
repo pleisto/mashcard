@@ -54,7 +54,11 @@ export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {
                 icon: <NodeIcon>{item.icon}</NodeIcon>,
                 onAction: () => {
                   if (!editor) return
-                  item.setBlock(editor.chain()).setTextSelection(editor.state.selection.to).focus().run()
+                  item
+                    .setBlock(editor.chain().liftBrickList())
+                    .setTextSelection(editor.state.selection.to)
+                    .focus()
+                    .run()
                 }
               }))
             }

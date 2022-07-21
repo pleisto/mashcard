@@ -20,15 +20,33 @@ export interface Block {
 export interface PageType {
   id: string
   parentId: string
-  text: string
+  documentInfo: {
+    title: string
+  }
 }
 
-export interface BlockSyncBatchInput {
+export interface BlockCommitInput {
   input: {
-    blocks: Block[]
-    deletedIds: []
-    rootId: string
+    documentId: string
+    blockId: string
     operatorId: '54701a5a-f151-499f-8cc3-069950144ad3'
+    stateType: 'full'
+    state: string
+    stateId: string
+    statesCount: 1
+    meta: {
+      title: string
+      icon?: {
+        __typename: 'BlockEmoji'
+        type: 'EMOJI'
+        name: string
+        emoji: string
+      }
+    }
+    content: {
+      type: 'doc'
+      content: []
+    }
   }
 }
 
@@ -36,6 +54,7 @@ export interface CreateBlockInput {
   input: {
     parentId?: string
     title: string
+    username: string
   }
 }
 
@@ -64,7 +83,7 @@ export interface GetTrashBlocksInput {
 export type OperationName =
   | 'GetPageBlocks'
   | 'GetTrashBlocks'
-  | 'blockSyncBatch'
+  | 'blockCommit'
   | 'blockCreate'
   | 'blockSoftDelete'
   | 'blockHardDelete'
@@ -72,13 +91,13 @@ export type OperationName =
 export type InputType =
   | GetPageBlocksInput
   | GetTrashBlocksInput
-  | BlockSyncBatchInput
+  | BlockCommitInput
   | CreateBlockInput
   | BlockSoftDeleteInput
   | BlockHardDeleteInput
 
 export interface graphqlGroupType {
-  BLOCK_SYNC_BATCH: string
+  BLOCK_COMMIT: string
   CREATE_BLOCK: string
   BLOCK_SOFT_DELETE: string
   GET_PAGE_BLOCKS: string

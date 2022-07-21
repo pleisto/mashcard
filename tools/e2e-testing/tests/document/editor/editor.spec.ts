@@ -32,11 +32,11 @@ test.describe('Editor', () => {
       await expect(editor.getNodes()).toHaveCount(1)
     })
 
-    test('Verify it will create paragraph when click under the last non-empty block', async () => {
+    test('Verify it will not create paragraph when click under the last non-empty block', async () => {
       await editor.fillToBlock('test')
       const paragraphHeight = (await editor.getNodeByIndex().boundingBox())?.height as number
       await editor.getEditorContent().click({ position: { x: 20, y: paragraphHeight * 1.5 } })
-      await expect(editor.getNodes()).toHaveCount(2)
+      await expect(editor.getNodes()).toHaveCount(1)
     })
 
     test('Verify blockAction is visible when hover node', async () => {

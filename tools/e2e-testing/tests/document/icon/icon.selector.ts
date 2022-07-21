@@ -5,6 +5,6 @@ export enum IconTab {
 }
 
 export const ICON_SELECTOR = {
-  emojiSearchInput: '.dashboard-emoji-search-input',
+  emojiSearchInput: '.dashboard-emoji-search-input input',
   emojiItem: (index: number) => `button.dashboard-emoji-item >> nth=${index}`
 }

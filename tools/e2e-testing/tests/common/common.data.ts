@@ -14,3 +14,7 @@ export const TWO_LAYER_PAGE_TREE: PageBlock[] = [
     ]
   }
 ]
+
+export const COMMON_STYLE = {
+  hoverBackground: 'rgba(64, 137, 216, 0.1)'
+}

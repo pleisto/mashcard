@@ -4,6 +4,7 @@ import { DocumentTitlePage } from '@/tests/document/documentTitle/documentTitle.
 import { PageTreePage } from '@/tests/sidebar/pageTree/pageTree.page'
 import { TRASH_PAGE_TREE, TRASH_PAGE_TREE_FOR_VISUAL, TRASH_SINGLE_PAGE } from './trash.data'
 import { TrashPage } from './trash.page'
+import { COMMON_STYLE } from '@/tests/common/common.data'
 
 test.describe('Trash', () => {
   let trash: TrashPage
@@ -49,7 +50,7 @@ test.describe('Trash', () => {
     test('Verify trash item has background-color and action button will be shown when hover', async () => {
       await trash.getItemByIndex().hover()
 
-      await expect(trash.getItemByIndex()).toHaveCSS('background-color', 'rgba(53, 108, 249, 0.1)')
+      await expect(trash.getItemByIndex()).toHaveCSS('background-color', COMMON_STYLE.hoverBackground)
       await expect(trash.getItemRestoreButton()).toBeVisible()
       await expect(trash.getItemRemoveButton()).toBeVisible()
     })
