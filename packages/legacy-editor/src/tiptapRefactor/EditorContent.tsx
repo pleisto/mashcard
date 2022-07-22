@@ -1,4 +1,4 @@
-import { FC, HTMLProps, ReactNode, useEffect, useRef, useState } from 'react'
+import { FC, HTMLProps, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Editor } from '@tiptap/core'
 import { NodePortal } from '@mashcard/editor'
@@ -8,15 +8,14 @@ export interface EditorContentProps extends HTMLProps<HTMLDivElement> {
   editor: Editor | null
 }
 
-const containerMatcher = (container: Element) => (value: NodePortal) => value.container === container
-const portalUpdater = (index: number, container: Element, child: ReactNode) => (portal: NodePortal, i: number) => {
-  if (i === index) return { container, child }
-  return portal
+const containerMatcher = (id: string) => (value: NodePortal) => value.id === id
+const portalUpdater = (index: number, nodePortal: NodePortal) => (value: NodePortal, i: number) => {
+  if (i === index) return nodePortal
+  return value
 }
 
 export const EditorContent: FC<EditorContentProps> = ({ editor, ...props }) => {
   const editorContentRef = useRef<HTMLDivElement>(null)
-  // TODO: remove unused nodePortals
   const [nodePortals, setNodePortals] = useState<NodePortal[]>([])
 
   // initial editor content
@@ -36,14 +35,14 @@ export const EditorContent: FC<EditorContentProps> = ({ editor, ...props }) => {
     editor.setOptions({
       element
     })
-    ;(editor as ExtendEditor).updatePortal = (container, child) => {
+    ;(editor as ExtendEditor).updatePortal = nodePortal => {
       setNodePortals(nodePortals => {
-        const index = nodePortals.findIndex(containerMatcher(container))
+        const index = nodePortals.findIndex(containerMatcher(nodePortal.id))
 
         if (index >= 0) {
-          return nodePortals.map(portalUpdater(index, container, child))
+          return nodePortals.map(portalUpdater(index, nodePortal))
         } else {
-          return [...nodePortals, { container, child }]
+          return [...nodePortals, nodePortal]
         }
       })
     }
@@ -82,7 +81,7 @@ export const EditorContent: FC<EditorContentProps> = ({ editor, ...props }) => {
   return (
     <>
       <div {...props} ref={editorContentRef} />
-      {nodePortals.map(({ container, child }) => createPortal(child, container))}
+      {nodePortals.map(({ container, child, id }) => createPortal(child, container, id))}
     </>
   )
 }

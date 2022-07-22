@@ -70,7 +70,7 @@ export class ReactRenderer<R = unknown, P = unknown> {
 
     this.reactElement = <Component {...props} />
 
-    this.editor?.updatePortal?.(this.element, this.reactElement)
+    this.editor?.updatePortal?.({ id: this.id, child: this.reactElement, container: this.element })
   }
 
   updateProps(props: Record<string, any> = {}): void {
@@ -82,5 +82,7 @@ export class ReactRenderer<R = unknown, P = unknown> {
     this.render()
   }
 
-  destroy(): void {}
+  destroy(): void {
+    this.editor?.removePortal?.(this.id)
+  }
 }

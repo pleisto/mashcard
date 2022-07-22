@@ -16,6 +16,7 @@ describe('NodePortalContainer', () => {
       useEffect(() => {
         setNodePortals([
           {
+            id: 'id',
             container: portalContainer,
             child: <span>{text}</span>
           }

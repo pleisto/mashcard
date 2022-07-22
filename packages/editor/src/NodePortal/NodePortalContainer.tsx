@@ -23,7 +23,7 @@ export const NodePortalContainer: FC<NodePortalContainerProps> = ({ children }) 
   return (
     <NodePortalsContext.Provider value={contextValue}>
       {children}
-      {nodePortals.map(({ container, child }) => createPortal(child, container))}
+      {nodePortals.map(({ container, child, id }) => createPortal(child, container, id))}
     </NodePortalsContext.Provider>
   )
 }
