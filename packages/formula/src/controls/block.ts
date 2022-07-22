@@ -154,7 +154,7 @@ export class BlockClass implements BlockType {
 
     const firstArgumentType = fetchResult(variable.t).type
 
-    parseTrackVariable(visitor, variable, this.id)
+    parseTrackVariable(visitor, variable)
 
     let finalCodeFragments = codeFragments
 

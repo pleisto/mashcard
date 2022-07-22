@@ -1,5 +1,6 @@
 import { SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../events'
 import { CodeFragmentVisitor, FormulaInterpreter } from '../grammar'
+import { parseTrackCell } from '../grammar/dependency'
 import {
   AnyTypeResult,
   CodeFragment,
@@ -129,6 +130,7 @@ export class RowClass implements RowType {
     }
 
     const errors: ErrorMessage[] = []
+    parseTrackCell(visitor, cell)
 
     if (visitor.ctx.meta.richType.type === 'spreadsheet') {
       const { spreadsheetId, rowId, columnId } = visitor.ctx.meta.richType.meta

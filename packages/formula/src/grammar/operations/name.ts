@@ -129,7 +129,7 @@ export const nameOperator: OperatorType = {
           type: 'Column'
         }
       case 'Variable':
-        parseTrackVariable(cstVisitor, result, cstVisitor.ctx.meta.namespaceId)
+        parseTrackVariable(cstVisitor, result)
         return {
           codeFragments: [variable2codeFragment(result, cstVisitor.ctx.meta.namespaceId)],
           image,

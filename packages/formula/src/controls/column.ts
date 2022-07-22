@@ -14,6 +14,7 @@ import {
 import { codeFragments2definition, CodeFragmentVisitor, FormulaInterpreter } from '../grammar'
 import { CellClass } from '.'
 import { SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../events'
+import { parseTrackCell } from '../grammar/dependency'
 
 export class ColumnClass implements ColumnType {
   columnId: ColumnId
@@ -166,6 +167,7 @@ export class ColumnClass implements ColumnType {
     }
 
     const cell = result.result
+    parseTrackCell(visitor, cell)
     if (visitor.ctx.meta.richType.type === 'spreadsheet') {
       const { spreadsheetId, rowId, columnId } = visitor.ctx.meta.richType.meta
       if (spreadsheetId === this.spreadsheetId && rowId === cell.rowId && columnId === cell.columnId) {
