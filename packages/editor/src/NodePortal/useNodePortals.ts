@@ -5,6 +5,10 @@ import { createContext, Dispatch, ReactNode, SetStateAction, useContext } from '
  */
 export interface NodePortal {
   /**
+   * unique id
+   */
+  id: string
+  /**
    * the container mounted the react node.
    */
   container: Element
