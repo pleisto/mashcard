@@ -867,7 +867,7 @@ exports[`FormulaResult [cell] basic "=BasicPage.spreadsheet.first.1" 2`] = `
       <span
         class="formula-result-error-message"
       >
-        errors.interpret.circular_dependency.spreadsheet
+        errors.parse.circular_dependency.spreadsheet
       </span>
     </span>
   </div>
@@ -2852,29 +2852,6 @@ exports[`FormulaResult thisRecord "=ThisRecord" -> [syntax] "errors.parse.unavai
         class="formula-result-error-message"
       >
         errors.parse.unavailable.thisRecord
-      </span>
-    </span>
-  </div>
-</div>
-`;
-
-exports[`FormulaResult thisRecord "=ThisRecord.A.1" -> [circular_dependency] "errors.interpret.circular_dependency.spreadsheet" 1`] = `
-<div>
-  <div
-    class="mc-c-cKFnpX"
-  >
-    <span
-      class="formula-result-error"
-    >
-      <span
-        class="formula-result-error-type"
-      >
-        circular_dependency
-      </span>
-      <span
-        class="formula-result-error-message"
-      >
-        errors.interpret.circular_dependency.spreadsheet
       </span>
     </span>
   </div>

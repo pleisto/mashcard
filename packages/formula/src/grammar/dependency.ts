@@ -1,5 +1,5 @@
 import { EventType } from '@mashcard/schema'
-import { BlockType, ColumnType, SpreadsheetType } from '../controls'
+import { BlockType, Cell, ColumnType, SpreadsheetType } from '../controls'
 import { SpreadsheetUpdateNameViaId, SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../events'
 import { EventDependency, VariableInterface } from '../type'
 import { CodeFragmentVisitor } from './codeFragment'
@@ -64,10 +64,19 @@ export const parseTrackColumn = (visitor: Visitor, column: ColumnType): void => 
   visitor.eventDependencies.push(column.eventDependency({}))
 }
 
+export const parseTrackCell = (visitor: Visitor, cell: Cell): void => {
+  const variable = visitor.ctx.formulaContext.findVariableById(cell.namespaceId, cell.variableId)
+  if (variable) {
+    parseTrackVariable(visitor, variable)
+  } else {
+    visitor.variableDependencies.push({ namespaceId: cell.namespaceId, variableId: cell.variableId })
+  }
+}
+
 /**
  * Track variableDependencies and flattenVariableDependencies when parse variable
  */
-export const parseTrackVariable = (visitor: Visitor, variable: VariableInterface, namespaceId: string): void => {
+export const parseTrackVariable = (visitor: Visitor, variable: VariableInterface): void => {
   if (variable.t.variableParseResult.async) {
     visitor.async = true
   }
@@ -80,10 +89,11 @@ export const parseTrackVariable = (visitor: Visitor, variable: VariableInterface
   if (!variable.t.variableParseResult.pure) {
     visitor.pure = false
   }
+  const { namespaceId, variableId } = variable.t.meta
 
-  visitor.variableDependencies.push({ namespaceId, variableId: variable.t.meta.variableId })
+  visitor.variableDependencies.push({ namespaceId, variableId })
   visitor.flattenVariableDependencies.push(...variable.t.variableParseResult.flattenVariableDependencies, {
     namespaceId,
-    variableId: variable.t.meta.variableId
+    variableId
   })
 }

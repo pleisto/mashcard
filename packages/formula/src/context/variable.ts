@@ -381,7 +381,7 @@ export class VariableClass implements VariableInterface {
     level: number,
     input?: FormulaDefinition
   ): Promise<void> {
-    // console.debug(
+    // console.log(
     //   `reparse: ${sourceUuid && this.currentUUID === sourceUuid}`,
     //   { sourceUuid, id: this.id },
     //   this.t.meta.name,
@@ -418,6 +418,16 @@ export class VariableClass implements VariableInterface {
     }
 
     const parseResult = parse(ctx)
+    if (parseResult.errorMessages[0]?.type === 'circular_dependency') {
+      if (
+        !this.t.task.async &&
+        this.t.task.variableValue.result.type === 'Error' &&
+        this.t.task.variableValue.result.result.type === 'circular_dependency'
+      ) {
+        // Skip circular dependency
+        return
+      }
+    }
     const tempT = await interpret({ variable: this, ctx, parseResult })
     await this.cleanup()
     this.t = tempT

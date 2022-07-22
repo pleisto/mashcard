@@ -129,7 +129,7 @@ export const nameOperator: OperatorType = {
           type: 'Column'
         }
       case 'Variable':
-        parseTrackVariable(cstVisitor, result, cstVisitor.ctx.meta.namespaceId)
+        parseTrackVariable(cstVisitor, result)
         return {
           codeFragments: [variable2codeFragment(result, cstVisitor.ctx.meta.namespaceId)],
           image,
@@ -198,7 +198,7 @@ export const nameOperator: OperatorType = {
       { definition: '=A', errorMessage: '"A" not found', errorType: 'syntax', namespaceId },
       {
         definition: '=A.1',
-        errorMessage: 'errors.interpret.circular_dependency.spreadsheet',
+        errorMessage: 'errors.parse.circular_dependency.spreadsheet',
         errorType: 'circular_dependency',
         richType,
         namespaceId

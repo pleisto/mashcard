@@ -139,8 +139,7 @@ export const thisRecordOperator: OperatorType = {
       {
         definition: `=ThisRecord.A.1`,
         errorType: 'circular_dependency',
-        groupOptions: [{ name: 'basicError' }],
-        errorMessage: 'errors.interpret.circular_dependency.spreadsheet',
+        errorMessage: 'errors.parse.circular_dependency.spreadsheet',
         richType,
         namespaceId
       },

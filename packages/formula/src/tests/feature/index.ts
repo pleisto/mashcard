@@ -11,10 +11,12 @@ import { EventTestCases } from './event'
 import { CompleteTestCase } from './complete'
 import { FormatTestCase } from './format'
 import { BasicTestCase } from './basic'
+import { SpreadsheetVariableTestCase } from './spreadsheetVariable'
 
 export const FeatureTestCases: TestCaseInterface[] = [
   FunctionCallTestCase,
   VariableTestCase,
+  SpreadsheetVariableTestCase,
   PowerFxTestCase,
   SpreadsheetTestCase,
   ParserTestCase,

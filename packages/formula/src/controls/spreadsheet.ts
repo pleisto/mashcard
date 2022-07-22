@@ -139,6 +139,7 @@ export class SpreadsheetClass implements SpreadsheetType {
         const changedColumnIds = [
           ...new Set([...Object.values(pairs1), ...Object.values(pairs2)].flatMap(p => [p.columnId, p.displayIndex]))
         ]
+
         if (!changedColumnIds.length) return
 
         const result = MashcardEventBus.dispatch(

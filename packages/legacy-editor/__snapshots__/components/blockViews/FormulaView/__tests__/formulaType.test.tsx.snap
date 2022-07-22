@@ -913,7 +913,7 @@ exports[`formulaType [cell] basic "=BasicPage.spreadsheet.first.1" 2`] = `
           class="mashcard-formula-mark"
           data-code="NumberLiteral"
           data-display="1"
-          data-errors="\\"errors.interpret.circular_dependency.spreadsheet\\""
+          data-errors="\\"errors.parse.circular_dependency.spreadsheet\\""
           data-index="7"
           data-type="number"
           style="color: #39b3e8;; 

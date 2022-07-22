@@ -255,6 +255,7 @@ export function useSpreadsheet(options: {
     (spreadsheetId: string, rowId: string, columnId: string): BlockInput => {
       let block = cellsMap.current.get(rowId)?.get(columnId)
       if (!block) {
+        // TODO: variable is not persisted cause circular dependency: A1: =A2 && A2: =A1
         // TODO: This should be refactored when we have formula state management.
         const formulaId =
           formulaContext?.findVariableByCellMeta({ spreadsheetId, columnId, rowId })?.t.meta.variableId ?? uuid()
