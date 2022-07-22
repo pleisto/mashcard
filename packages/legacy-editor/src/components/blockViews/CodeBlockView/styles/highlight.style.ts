@@ -39,15 +39,18 @@ export const SwitchContainer = styled('div', {
   }
 })
 
+const prePaddingLeft = '3rem'
+const prePaddingTop = '1rem'
+
 export const placeholderStyle = css({
-  code: {
+  pre: {
     '&:before': {
       color: theme.colors.typeThirdary,
       content: 'attr(data-placeholder)',
-      left: 0,
+      left: prePaddingLeft,
       pointerEvents: 'none',
       position: 'absolute',
-      top: 0,
+      top: prePaddingTop,
       whiteSpace: 'nowrap'
     }
   }
@@ -74,7 +77,7 @@ export const highlightStyle = css({
     },
   'pre[class*="language-"].line-numbers': {
     position: 'relative',
-    paddingLeft: '3rem',
+    paddingLeft: prePaddingLeft,
     counterReset: 'linenumber'
   },
   'pre[class*="language-"].line-numbers > code': {
@@ -107,6 +110,7 @@ export const highlightStyle = css({
   },
   'pre[class*="language-"]': {
     padding: '1em',
+    paddingTop: prePaddingTop,
     margin: '.5em 0',
     overflow: 'auto'
   },

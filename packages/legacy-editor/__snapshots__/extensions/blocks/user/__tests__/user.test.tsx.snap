@@ -11,7 +11,7 @@ exports[`User renders User correctly 1`] = `
     >
       <p>
         <span
-          class="react-renderer node-userBlock"
+          contenteditable="false"
         >
           <span
             as="span"
@@ -63,10 +63,6 @@ exports[`User renders User correctly 1`] = `
             </span>
           </span>
         </span>
-        <img
-          alt=""
-          class="ProseMirror-separator"
-        />
         <br
           class="ProseMirror-trailingBreak"
         />

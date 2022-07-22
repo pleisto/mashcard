@@ -10,25 +10,18 @@ exports[`Paragraph renders Paragraph correctly 1`] = `
       translate="no"
     >
       <div
-        class="react-renderer node-paragraph"
+        contenteditable="true"
       >
         <div
           data-node-view-wrapper=""
           style="white-space: normal; position: relative; pointer-events: unset;"
         >
           <p
-            as="p"
             class="mc-c-dfUVHB mc-c-qcqS"
-            data-node-view-content=""
             data-placeholder=""
             draggable="false"
-            style="white-space: pre-wrap;"
           >
-            <div
-              style="white-space: inherit;"
-            >
-              paragraph
-            </div>
+            paragraph
           </p>
         </div>
       </div>

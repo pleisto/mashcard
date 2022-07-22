@@ -3,14 +3,12 @@
 exports[`ListView renders as bullet list 1`] = `
 <div>
   <div
-    class="mc-c-czDAcb"
+    class="mc-c-bybahD"
     data-node-view-wrapper=""
     style="white-space: normal; pointer-events: unset;"
   >
     <ul
-      as="ul"
-      data-node-view-content=""
-      style="white-space: pre-wrap;"
+      data-list-view=""
     />
   </div>
 </div>
@@ -19,14 +17,12 @@ exports[`ListView renders as bullet list 1`] = `
 exports[`ListView renders as ordered list 1`] = `
 <div>
   <div
-    class="mc-c-dliBAz"
+    class="mc-c-fEhhnJ"
     data-node-view-wrapper=""
     style="white-space: normal; pointer-events: unset;"
   >
     <ol
-      as="ol"
-      data-node-view-content=""
-      style="white-space: pre-wrap;"
+      data-list-view=""
     />
   </div>
 </div>
@@ -35,15 +31,12 @@ exports[`ListView renders as ordered list 1`] = `
 exports[`ListView renders as task list 1`] = `
 <div>
   <div
-    class="mc-c-divPrt"
+    class="mc-c-dytFtL"
     data-node-view-wrapper=""
     style="white-space: normal; pointer-events: unset;"
   >
     <ul
-      as="ul"
-      data-node-view-content=""
-      data-task-list=""
-      style="white-space: pre-wrap;"
+      data-list-view=""
     />
   </div>
 </div>

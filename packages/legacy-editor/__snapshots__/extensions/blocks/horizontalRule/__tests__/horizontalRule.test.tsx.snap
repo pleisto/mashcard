@@ -10,8 +10,7 @@ exports[`HorizontalRule renders HorizontalRule correctly 1`] = `
       translate="no"
     >
       <div
-        class="react-renderer node-horizontalRule"
-        draggable="true"
+        contenteditable="false"
       >
         <div
           data-node-view-wrapper=""

@@ -1,10 +1,10 @@
 import { FC } from 'react'
-import { NodeViewContent } from '../../../tiptapRefactor'
 import { BlockContainer } from '../BlockContainer'
 import { CalloutViewProps } from '../../../extensions/blocks/callout/meta'
 import { css, styled, theme } from '@mashcard/design-system'
 import { iconWidth, useIcon } from './useIcon'
 import { useEditorI18n } from '../../../hooks'
+import { useNodeContent } from '@mashcard/editor'
 
 const verticalPadding = '1.5rem'
 const iconMarginRight = '0.75rem'
@@ -46,6 +46,7 @@ export const CalloutView: FC<CalloutViewProps> = ({ deleteNode, node, extension,
   const isEmpty = node.textContent.length === 0
   const placeholder = isEmpty ? t(`placeholder.callout`) : ''
   const placeholderClassName = placeholderStyle()
+  const nodeContentRef = useNodeContent()
 
   return (
     <BlockContainer
@@ -53,11 +54,10 @@ export const CalloutView: FC<CalloutViewProps> = ({ deleteNode, node, extension,
       node={node}
       actionOptions={['cut', 'copy', 'delete']}
       deleteNode={deleteNode}
-      getPos={getPos}
-    >
+      getPos={getPos}>
       <CalloutContainer>
         <IconContainer>{icon}</IconContainer>
-        <NodeViewContent as="span" className={placeholderClassName} data-placeholder={placeholder} />
+        <span ref={nodeContentRef} className={placeholderClassName} data-placeholder={placeholder} />
       </CalloutContainer>
     </BlockContainer>
   )

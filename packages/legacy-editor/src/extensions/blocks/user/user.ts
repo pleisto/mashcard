@@ -49,7 +49,7 @@ export const User = createBlock<UserOptions, UserAttributes>({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(UserView)
+    return ReactNodeViewRenderer(UserView, { as: 'span', contentEditable: false })
   },
 
   addCommands() {

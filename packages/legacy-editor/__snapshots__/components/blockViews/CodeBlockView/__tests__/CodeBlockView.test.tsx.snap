@@ -3,7 +3,7 @@
 exports[`CodeBlockView matches snapshot correctly 1`] = `
 <div>
   <div
-    class="mc-c-bxRahZ mc-c-eNvXfk"
+    class="mc-c-gSKecW mc-c-kMAtnc"
     data-node-view-wrapper=""
     style="white-space: normal; pointer-events: unset;"
   >
@@ -70,14 +70,11 @@ exports[`CodeBlockView matches snapshot correctly 1`] = `
       </div>
       <pre
         class="line-numbers language-javascript"
+        data-placeholder=""
         spellcheck="false"
       >
         <code
-          as="code"
           class="undefined language-javascript"
-          data-node-view-content=""
-          data-placeholder=""
-          style="white-space: pre-wrap;"
         />
       </pre>
     </div>

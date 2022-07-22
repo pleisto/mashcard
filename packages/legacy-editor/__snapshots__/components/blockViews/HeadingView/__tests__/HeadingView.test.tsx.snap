@@ -7,11 +7,8 @@ exports[`HeadingView matches snapshot correctly 1`] = `
     style="white-space: normal; position: relative; pointer-events: unset;"
   >
     <h1
-      as="h1"
       class="mc-c-fHQyyx mc-c-fHQyyx-cOVgnz-level-1"
-      data-node-view-content=""
       data-placeholder="placeholder.heading1"
-      style="white-space: pre-wrap;"
     />
   </div>
 </div>
@@ -24,11 +21,8 @@ exports[`HeadingView renders correspond heading according to level level 2 1`] =
     style="white-space: normal; position: relative; pointer-events: unset;"
   >
     <h2
-      as="h2"
       class="mc-c-fHQyyx mc-c-fHQyyx-gPLAez-level-2"
-      data-node-view-content=""
       data-placeholder="placeholder.heading2"
-      style="white-space: pre-wrap;"
     />
   </div>
 </div>
@@ -41,11 +35,8 @@ exports[`HeadingView renders correspond heading according to level level 3 1`] =
     style="white-space: normal; position: relative; pointer-events: unset;"
   >
     <h3
-      as="h3"
       class="mc-c-fHQyyx mc-c-fHQyyx-llzMLw-level-3"
-      data-node-view-content=""
       data-placeholder="placeholder.heading3"
-      style="white-space: pre-wrap;"
     />
   </div>
 </div>
@@ -58,11 +49,8 @@ exports[`HeadingView renders correspond heading according to level level 4 1`] =
     style="white-space: normal; position: relative; pointer-events: unset;"
   >
     <h4
-      as="h4"
       class="mc-c-fHQyyx mc-c-fHQyyx-dWBeGD-level-4"
-      data-node-view-content=""
       data-placeholder="placeholder.heading4"
-      style="white-space: pre-wrap;"
     />
   </div>
 </div>
@@ -75,11 +63,8 @@ exports[`HeadingView renders correspond heading according to level level 5 1`] =
     style="white-space: normal; position: relative; pointer-events: unset;"
   >
     <h5
-      as="h5"
       class="mc-c-fHQyyx mc-c-fHQyyx-hCSGfy-level-5"
-      data-node-view-content=""
       data-placeholder="placeholder.heading5"
-      style="white-space: pre-wrap;"
     />
   </div>
 </div>

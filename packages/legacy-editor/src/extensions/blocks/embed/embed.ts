@@ -80,7 +80,7 @@ export const Embed = createBlock<EmbedOptions, EmbedAttributes>({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(EmbedView)
+    return ReactNodeViewRenderer(EmbedView, { contentEditable: false })
   },
 
   addCommands() {
