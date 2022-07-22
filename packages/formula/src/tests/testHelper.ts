@@ -70,12 +70,14 @@ const getUuid = (uuid: MockedUUIDV4 | undefined, state: UUIDState): [string, UUI
   return [state.uuidFunction(state.counter), { ...state, counter: state.counter + 1 }]
 }
 
-const buildSpreadsheet = (
+const buildSpreadsheet = async (
   oldState: UUIDState,
   namespaceId: string,
   formulaContext: ContextInterface,
+  interpretContext: InterpretContext,
   { spreadsheetId: oldSpreadsheetId, name, rows, columns, getCell }: SpreadsheetInput<number, number>
-): [SpreadsheetType, UUIDState] => {
+): // eslint-disable-next-line max-params
+Promise<[SpreadsheetType, UUIDState]> => {
   let uuidState = oldState
   const [spreadsheetId, state] = getUuid(oldSpreadsheetId, uuidState)
   uuidState = state
@@ -152,6 +154,24 @@ const buildSpreadsheet = (
     })
   })
 
+  for (const { namespaceId, variableId, value, columnId, rowId, spreadsheetId } of cells) {
+    await quickInsert(
+      {
+        formulaContext,
+        interpretContext,
+        meta: {
+          namespaceId,
+          variableId,
+          input: value,
+          position: 0,
+          name: `Cell_${rowId}_${columnId}`.replaceAll('-', ''),
+          richType: { type: 'spreadsheet', meta: { rowId, columnId, spreadsheetId } }
+        }
+      },
+      { ignoreParseError: true, ignoreSyntaxError: true }
+    )
+  }
+
   return [
     new SpreadsheetClass({
       name,
@@ -210,7 +230,13 @@ export const makeContext = async (options: MakeContextOptions): Promise<MakeCont
     }
 
     for (const spreadsheetInput of spreadsheets ?? []) {
-      const [spreadsheet, state] = buildSpreadsheet(uuidState, namespaceId, formulaContext, spreadsheetInput)
+      const [spreadsheet, state] = await buildSpreadsheet(
+        uuidState,
+        namespaceId,
+        formulaContext,
+        interpretContext,
+        spreadsheetInput
+      )
       uuidState = state
       await formulaContext.setSpreadsheet(spreadsheet)
     }

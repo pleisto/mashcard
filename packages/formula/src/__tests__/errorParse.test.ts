@@ -14,8 +14,8 @@ describe('errorParse', () => {
 
   it.each(testCases.errorTestCases)('$jestTitle', async args => {
     const parseResult = ctx.parseDirectly(args)
-    expect(parseResult.success).toBe(false)
-    expect([parseResult.errorMessages[0], parseResult.variableParseResult.valid]).toStrictEqual([
+    expect([parseResult.success, parseResult.errorMessages[0], parseResult.variableParseResult.valid]).toStrictEqual([
+      false,
       { type: args.errorType, message: args.errorMessage },
       args.valid ?? true
     ])

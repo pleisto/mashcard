@@ -66,7 +66,6 @@ export const parseTrackColumn = (visitor: Visitor, column: ColumnType): void => 
 
 export const parseTrackCell = (visitor: Visitor, cell: Cell): void => {
   const variable = visitor.ctx.formulaContext.findVariableById(cell.namespaceId, cell.variableId)
-  console.log('parseTrackCell', cell, variable)
   if (variable) {
     parseTrackVariable(visitor, variable)
   } else {
