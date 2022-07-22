@@ -38,7 +38,7 @@
     "rollup-plugin-visualizer": "^5.7.1",
     "typedoc": "^0.23.8",
     "typedoc-plugin-inline-sources": "^1.0.1",
-    "typedoc-plugin-markdown": "^3.13.3",
+    "typedoc-plugin-markdown": "^3.13.4",
     "vite": "^3.0.2",
     "vite-plugin-pwa": "^0.12.3"
   }
