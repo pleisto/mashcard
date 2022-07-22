@@ -12,6 +12,7 @@
 ### Properties
 
 - [columns](SpreadsheetInput.md#columns)
+- [getCell](SpreadsheetInput.md#getcell)
 - [name](SpreadsheetInput.md#name)
 - [rows](SpreadsheetInput.md#rows)
 - [spreadsheetId](SpreadsheetInput.md#spreadsheetid)
@@ -25,6 +26,34 @@
 #### Defined in
 
 [packages/formula/src/tests/testType.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L76)
+
+---
+
+### <a id="getcell" name="getcell"></a> getCell
+
+• `Optional` **getCell**: (`__namedParameters`: { `columnId`: `string` ; `columnIndex`: `number` ; `rowId`: `string` ; `rowIndex`: `number` }) => [`Cell`](Cell.md)
+
+#### Type declaration
+
+▸ (`__namedParameters`): [`Cell`](Cell.md)
+
+##### Parameters
+
+| Name                            | Type     |
+| :------------------------------ | :------- |
+| `__namedParameters`             | `Object` |
+| `__namedParameters.columnId`    | `string` |
+| `__namedParameters.columnIndex` | `number` |
+| `__namedParameters.rowId`       | `string` |
+| `__namedParameters.rowIndex`    | `number` |
+
+##### Returns
+
+[`Cell`](Cell.md)
+
+#### Defined in
+
+[packages/formula/src/tests/testType.ts:78](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L78)
 
 ---
 

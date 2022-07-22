@@ -728,7 +728,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:271](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L271)
+[packages/formula/src/tests/testType.ts:273](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L273)
 
 ---
 
@@ -758,7 +758,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:175](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L175)
+[packages/formula/src/tests/testType.ts:177](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L177)
 
 ---
 
@@ -1082,7 +1082,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L108)
+[packages/formula/src/tests/testType.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L110)
 
 ---
 
@@ -1517,7 +1517,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/feature/event/index.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/event/index.ts#L16)
+[packages/formula/src/tests/feature/event/index.ts:18](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/event/index.ts#L18)
 
 ---
 
@@ -1587,7 +1587,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/feature/index.ts:15](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/index.ts#L15)
+[packages/formula/src/tests/feature/index.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/index.ts#L16)
 
 ---
 
@@ -3541,7 +3541,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/tests/testHelper.ts:270](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L270)
+[packages/formula/src/tests/testHelper.ts:297](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L297)
 
 ---
 
@@ -4408,7 +4408,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/tests/testHelper.ts:268](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L268)
+[packages/formula/src/tests/testHelper.ts:295](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L295)
 
 ---
 
@@ -4615,7 +4615,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/tests/testHelper.ts:172](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L172)
+[packages/formula/src/tests/testHelper.ts:193](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L193)
 
 ---
 
@@ -5054,7 +5054,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/tests/testHelper.ts:278](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L278)
+[packages/formula/src/tests/testHelper.ts:305](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L305)
 
 ---
 
@@ -5159,7 +5159,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/tests/testHelper.ts:260](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L260)
+[packages/formula/src/tests/testHelper.ts:287](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L287)
 
 ---
 

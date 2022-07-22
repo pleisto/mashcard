@@ -53,7 +53,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:31](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L31)
+[packages/formula/src/controls/column.ts:32](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L32)
 
 ## Properties
 
@@ -67,7 +67,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:19](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L19)
+[packages/formula/src/controls/column.ts:20](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L20)
 
 ---
 
@@ -81,7 +81,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:27](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L27)
+[packages/formula/src/controls/column.ts:28](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L28)
 
 ---
 
@@ -95,7 +95,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:23](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L23)
+[packages/formula/src/controls/column.ts:24](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L24)
 
 ---
 
@@ -109,7 +109,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:24](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L24)
+[packages/formula/src/controls/column.ts:25](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L25)
 
 ---
 
@@ -123,7 +123,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:29](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L29)
+[packages/formula/src/controls/column.ts:30](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L30)
 
 ---
 
@@ -137,7 +137,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:20](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L20)
+[packages/formula/src/controls/column.ts:21](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L21)
 
 ---
 
@@ -151,7 +151,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:21](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L21)
+[packages/formula/src/controls/column.ts:22](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L22)
 
 ---
 
@@ -165,7 +165,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:25](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L25)
+[packages/formula/src/controls/column.ts:26](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L26)
 
 ---
 
@@ -179,7 +179,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:28](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L28)
+[packages/formula/src/controls/column.ts:29](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L29)
 
 ---
 
@@ -193,7 +193,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:22](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L22)
+[packages/formula/src/controls/column.ts:23](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L23)
 
 ---
 
@@ -207,7 +207,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:26](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L26)
+[packages/formula/src/controls/column.ts:27](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L27)
 
 ## Methods
 
@@ -225,7 +225,7 @@ ColumnType.cells
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:58](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L58)
+[packages/formula/src/controls/column.ts:59](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L59)
 
 ---
 
@@ -243,7 +243,7 @@ ColumnType.display
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:50](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L50)
+[packages/formula/src/controls/column.ts:51](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L51)
 
 ---
 
@@ -267,13 +267,13 @@ ColumnType.eventDependency
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L108)
+[packages/formula/src/controls/column.ts:119](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L119)
 
 ---
 
 ### <a id="findcellbynumber" name="findcellbynumber"></a> findCellByNumber
 
-▸ `Private` **findCellByNumber**(`meta`, `name`): `Omit`<{ `dump`: [`ErrorMessage`](../interfaces/ErrorMessage.md) ; `result`: [`ErrorMessage`](../interfaces/ErrorMessage.md) ; `type`: `"Error"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](../README.md#cellvia), [`Cell`](../interfaces/Cell.md)] ; `result`: [`CellType`](../interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\>
+▸ `Private` **findCellByNumber**(`meta`, `name`, `kind`): `Omit`<{ `dump`: [`ErrorMessage`](../interfaces/ErrorMessage.md) ; `result`: [`ErrorMessage`](../interfaces/ErrorMessage.md) ; `type`: `"Error"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\> \| `Omit`<{ `dump`: [`string`, [`CellVia`](../README.md#cellvia), [`Cell`](../interfaces/Cell.md)] ; `result`: [`CellType`](../interfaces/CellType.md) ; `type`: `"Cell"` ; `view?`: [`ViewData`](../interfaces/ViewData.md)<`string`\> }, `"dump"`\>
 
 #### Parameters
 
@@ -281,6 +281,7 @@ ColumnType.eventDependency
 | :----- | :------------------------------------------------------ |
 | `meta` | [`VariableMetadata`](../interfaces/VariableMetadata.md) |
 | `name` | `string`                                                |
+| `kind` | `"parse"` \| `"interpret"`                              |
 
 #### Returns
 
@@ -288,7 +289,7 @@ ColumnType.eventDependency
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:75](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L75)
+[packages/formula/src/controls/column.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L76)
 
 ---
 
@@ -320,7 +321,7 @@ ColumnType.handleCodeFragments
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:139](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L139)
+[packages/formula/src/controls/column.ts:150](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L150)
 
 ---
 
@@ -345,7 +346,7 @@ ColumnType.handleInterpret
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:135](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L135)
+[packages/formula/src/controls/column.ts:146](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L146)
 
 ---
 
@@ -363,7 +364,7 @@ ColumnType.key
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L54)
+[packages/formula/src/controls/column.ts:55](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L55)
 
 ---
 
@@ -388,7 +389,7 @@ ColumnType.newCell
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:100](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L100)
+[packages/formula/src/controls/column.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L111)
 
 ---
 
@@ -402,4 +403,4 @@ ColumnType.newCell
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:62](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L62)
+[packages/formula/src/controls/column.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L63)
