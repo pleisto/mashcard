@@ -613,7 +613,7 @@ exports[`FormulaValue [cell] basic "=BasicPage.spreadsheet.first.1" 3`] = `
     class="mashcard-formula-borderless"
     style="color: rgb(207, 31, 40);"
   >
-    #&lt;Error&gt; errors.interpret.circular_dependency.spreadsheet
+    #&lt;Error&gt; errors.parse.circular_dependency.spreadsheet
   </span>
 </div>
 `;
@@ -624,7 +624,7 @@ exports[`FormulaValue [cell] basic "=BasicPage.spreadsheet.first.1" 4`] = `
     class="mashcard-formula-borderless"
     style="color: rgb(207, 31, 40);"
   >
-    #&lt;Error&gt; errors.interpret.circular_dependency.spreadsheet
+    #&lt;Error&gt; errors.parse.circular_dependency.spreadsheet
   </span>
 </div>
 `;

@@ -1,7 +1,7 @@
 import { FixedLengthTuple, RequireField } from '@mashcard/active-support'
 import { EventType } from '@mashcard/schema'
 import { FormulaContextArgs } from '../context'
-import { Cell } from '../controls'
+import { Cell, SpreadsheetInitializer } from '../controls'
 import { OperatorName, ParseResult } from '../grammar'
 import {
   CodeFragment,
@@ -75,6 +75,7 @@ export interface SpreadsheetInput<ColumnCount extends number, RowCount extends n
   name: string
   columns: FixedLengthTuple<ColumnInput<RowCount>, ColumnCount>
   rows?: FixedLengthTuple<RowInput, RowCount>
+  getCell?: SpreadsheetInitializer['getCell']
 }
 export interface PageInput {
   pageId?: MockedUUIDV4
@@ -102,6 +103,7 @@ type FeatureName =
   | 'blockEvent'
   | 'variableEvent'
   | 'spreadsheetEvent'
+  | 'spreadsheetDeadlockEvent'
   | 'columnEvent'
   | 'rowEvent'
 type FeatureTestName = 'cst'

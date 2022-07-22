@@ -72,7 +72,11 @@ export class ColumnClass implements ColumnType {
     }
   }
 
-  private findCellByNumber(meta: VariableMetadata, name: string): AnyTypeResult<'Cell' | 'Error'> {
+  private findCellByNumber(
+    meta: VariableMetadata,
+    name: string,
+    kind: 'parse' | 'interpret'
+  ): AnyTypeResult<'Cell' | 'Error'> {
     const number = Number(name)
     if (isNaN(number)) {
       return { type: 'Error', result: { message: `Need a number: ${name}`, type: 'syntax' } }
@@ -88,7 +92,13 @@ export class ColumnClass implements ColumnType {
       const { spreadsheetId, rowId, columnId } = meta.richType.meta
       if (spreadsheetId === this.spreadsheetId && rowId === cell.rowId && columnId === cell.columnId) {
         return {
-          result: { message: 'errors.interpret.circular_dependency.spreadsheet', type: 'circular_dependency' },
+          result: {
+            message:
+              kind === 'parse'
+                ? 'errors.parse.circular_dependency.spreadsheet'
+                : 'errors.interpret.circular_dependency.spreadsheet',
+            type: 'circular_dependency'
+          },
           type: 'Error'
         }
       }
@@ -133,7 +143,7 @@ export class ColumnClass implements ColumnType {
   }
 
   async handleInterpret(interpreter: FormulaInterpreter, name: string): Promise<AnyTypeResult> {
-    return this.findCellByNumber(interpreter.ctx.meta, name)
+    return this.findCellByNumber(interpreter.ctx.meta, name, 'interpret')
   }
 
   handleCodeFragments(
@@ -143,7 +153,7 @@ export class ColumnClass implements ColumnType {
   ): { errors: ErrorMessage[]; firstArgumentType: FormulaType | undefined; codeFragments: CodeFragment[] } {
     visitor.eventDependencies.push(this.eventDependency({ rowKey: name }))
 
-    const result = this.findCellByNumber(visitor.ctx.meta, name)
+    const result = this.findCellByNumber(visitor.ctx.meta, name, 'parse')
     const errors: ErrorMessage[] = []
 
     if (result.type === 'Error') {

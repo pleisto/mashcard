@@ -74,7 +74,7 @@ const buildSpreadsheet = (
   oldState: UUIDState,
   namespaceId: string,
   formulaContext: ContextInterface,
-  { spreadsheetId: oldSpreadsheetId, name, rows, columns }: SpreadsheetInput<number, number>
+  { spreadsheetId: oldSpreadsheetId, name, rows, columns, getCell }: SpreadsheetInput<number, number>
 ): [SpreadsheetType, UUIDState] => {
   let uuidState = oldState
   const [spreadsheetId, state] = getUuid(oldSpreadsheetId, uuidState)
@@ -89,7 +89,7 @@ const buildSpreadsheet = (
         namespaceId,
         columns: [],
         rows: [],
-        getCell: ({ rowId, columnId }) => null!
+        getCell: args => getCell?.(args) ?? null!
       }),
       uuidState
     ]
@@ -119,7 +119,7 @@ const buildSpreadsheet = (
         namespaceId,
         columns: columnResult,
         rows: [],
-        getCell: ({ rowId, columnId }) => null!
+        getCell: args => getCell?.(args) ?? null!
       }),
       uuidState
     ]
@@ -161,7 +161,8 @@ const buildSpreadsheet = (
       namespaceId,
       columns: columnResult,
       rows: rowResult,
-      getCell: ({ rowId, columnId }) => cells.find(cell => cell.rowId === rowId && cell.columnId === columnId)!
+      getCell: args =>
+        cells.find(cell => cell.rowId === args.rowId && cell.columnId === args.columnId) ?? getCell?.(args) ?? null!
     }),
     uuidState
   ]
