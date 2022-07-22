@@ -39,8 +39,6 @@ export function useFormulaSpreadsheet({
   const rootId = docId!
   const titleRef = React.useRef(title)
 
-  console.log('rootId rerender', rootId)
-
   const rowData: Row[] = React.useMemo(
     () => rows.map((row, rowIndex) => ({ rowId: row.id, rowIndex, spreadsheetId })),
     [rows, spreadsheetId]
