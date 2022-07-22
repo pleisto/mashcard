@@ -272,14 +272,8 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
           <SpreadsheetView>
             <SpreadsheetHeader rowId="first" context={spreadsheetContext}>
               {columns.map((column, i) => {
-                const handleTitleSave = (value: string): string | undefined => {
-                  if (value && columns.some(c => c.title === value && c.uuid !== column.uuid)) {
-                    return `'${value}' ${t('spreadsheet.column.name_used')}`
-                  } else if (value === title) {
-                    return `'${value}' ${t('spreadsheet.column.name_used')}`
-                  } else {
-                    updateColumn({ ...column, title: value })
-                  }
+                const handleTitleSave = (title: string): string | undefined => {
+                  return updateColumn({ ...column, title })
                 }
                 const onResize = (width: number): void => {
                   updateColumn({ ...column, width })
