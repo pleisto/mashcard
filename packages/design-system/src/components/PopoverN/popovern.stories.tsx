@@ -2,15 +2,13 @@ import { PopoverN } from './index'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { Button } from '..'
 
-
 export default {
   title: 'Components/PopoverN',
   component: PopoverN,
   args: {
-    placement: 'top-start',
+    placement: 'top-start'
   },
-  argTypes: {
-  },
+  argTypes: {},
   parameters: {
     docs: {
       description: {
@@ -54,7 +52,7 @@ export const Basic = Template.bind({})
 
 Basic.args = {
   render: () => <p>42 is the meaning of life</p>,
-  children: <Button>What does 42 mean?</Button>
+  children: 'What does 42 mean?'
 }
 
 export const ContextMenu = Template.bind({})
