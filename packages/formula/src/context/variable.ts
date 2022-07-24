@@ -14,7 +14,8 @@ import {
   EventDependency,
   VariableParseResult,
   FormulaDefinition,
-  ErrorMessage
+  ErrorMessage,
+  VariableDependency
 } from '../type'
 import { parse, interpret, generateVariable } from '../grammar/core'
 import { dumpValue } from './persist'
@@ -199,7 +200,7 @@ export class VariableClass implements VariableInterface {
 
     const promises = []
 
-    for (const dependency of this.t.variableParseResult.variableDependencies) {
+    for (const dependency of this.wholeVariableDependencies()) {
       const dependencyKey = variableKey(dependency.namespaceId, dependency.variableId)
       if (
         !this.formulaContext.reverseVariableDependencies[dependencyKey]?.some(
@@ -257,7 +258,7 @@ export class VariableClass implements VariableInterface {
 
     const promises = []
 
-    for (const dependency of this.t.variableParseResult.variableDependencies) {
+    for (const dependency of this.wholeVariableDependencies()) {
       const dependencyKey = variableKey(dependency.namespaceId, dependency.variableId)
       if (
         this.formulaContext.reverseVariableDependencies[dependencyKey]?.some(
@@ -357,6 +358,28 @@ export class VariableClass implements VariableInterface {
     await this.formulaContext.commitVariable({ variable: this })
   }
 
+  public wholeFlattenVariableDependencies(): VariableDependency[] {
+    const dependencies: VariableDependency[] = []
+
+    if (!this.t.task.async) {
+      dependencies.push(...(this.t.task.variableValue.runtimeFlattenVariableDependencies ?? []))
+    }
+
+    dependencies.push(...this.t.variableParseResult.flattenVariableDependencies)
+
+    return [...new Map(dependencies.map(item => [item.variableId, item])).values()]
+  }
+
+  public wholeVariableDependencies(): VariableDependency[] {
+    const dependencies: VariableDependency[] = []
+    if (!this.t.task.async) {
+      dependencies.push(...(this.t.task.variableValue.runtimeVariableDependencies ?? []))
+    }
+
+    dependencies.push(...this.t.variableParseResult.variableDependencies)
+    return [...new Map(dependencies.map(item => [item.variableId, item])).values()]
+  }
+
   public buildFormula(input?: FormulaDefinition): Formula {
     const formula: Omit<Formula, 'type' | 'meta'> = {
       blockId: this.t.meta.namespaceId,
@@ -429,6 +452,7 @@ export class VariableClass implements VariableInterface {
       }
     }
     const tempT = await interpret({ variable: this, ctx, parseResult })
+
     await this.cleanup()
     this.t = tempT
 
@@ -446,7 +470,7 @@ export class VariableClass implements VariableInterface {
   private setupEventDependencies(): void {
     const {
       task,
-      variableParseResult: { eventDependencies, variableDependencies, blockDependencies, nameDependencies }
+      variableParseResult: { eventDependencies, blockDependencies, nameDependencies }
     } = this.t
     this.eventDependencies = []
 
@@ -464,7 +488,7 @@ export class VariableClass implements VariableInterface {
     this.eventDependencies.push(...finalEventDependencies)
 
     // Variable Dependency Update
-    variableDependencies.forEach(({ variableId, namespaceId }) => {
+    this.wholeVariableDependencies().forEach(({ variableId, namespaceId }) => {
       const variableEventDependency: EventDependency<
         typeof FormulaUpdatedViaId extends EventType<infer X> ? X : never
       > = {

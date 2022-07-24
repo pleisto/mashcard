@@ -433,13 +433,31 @@ const innerInterpretFirst = ({
   }
 
   if (kind === 'literal') {
-    return { success: true, result: { type: 'literal', result: ctx.meta.input }, runtimeEventDependencies: [] }
+    return {
+      success: true,
+      result: { type: 'literal', result: ctx.meta.input },
+      runtimeEventDependencies: [],
+      runtimeVariableDependencies: [],
+      runtimeFlattenVariableDependencies: []
+    }
   }
   if (kind === 'blank') {
-    return { success: true, result: { type: 'Blank', result: 'Blank' }, runtimeEventDependencies: [] }
+    return {
+      success: true,
+      result: { type: 'Blank', result: 'Blank' },
+      runtimeEventDependencies: [],
+      runtimeVariableDependencies: [],
+      runtimeFlattenVariableDependencies: []
+    }
   }
   if (!cst) {
-    return { success: true, result: { type: 'string', result: ctx.meta.input }, runtimeEventDependencies: [] }
+    return {
+      success: true,
+      result: { type: 'string', result: ctx.meta.input },
+      runtimeEventDependencies: [],
+      runtimeVariableDependencies: [],
+      runtimeFlattenVariableDependencies: []
+    }
   }
   return undefined
 }
@@ -461,7 +479,27 @@ export const innerInterpret = async ({
     const result: AnyTypeResult = await interpreter.visit(variableParseResult.cst!, { type: 'any', finalTypes: [] })
     // const lazy = interpreter.lazy
 
-    return { success: true, result, runtimeEventDependencies: interpreter.runtimeEventDependencies }
+    if (
+      interpreter.runtimeFlattenVariableDependencies.find(
+        v => v.namespaceId === ctx.meta.namespaceId && v.variableId === ctx.meta.variableId
+      )
+    ) {
+      return {
+        success: false,
+        result: {
+          type: 'Error',
+          result: { message: 'errors.interpret.circular_dependency.variable', type: 'circular_dependency' }
+        }
+      }
+    }
+
+    return {
+      success: true,
+      result,
+      runtimeEventDependencies: interpreter.runtimeEventDependencies,
+      runtimeVariableDependencies: interpreter.runtimeVariableDependencies,
+      runtimeFlattenVariableDependencies: interpreter.runtimeFlattenVariableDependencies
+    }
   } catch (e) {
     devWarning(true, e)
     const message = `[FATAL] ${(e as any).message as string}`

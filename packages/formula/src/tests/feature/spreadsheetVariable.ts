@@ -64,19 +64,37 @@ export const SpreadsheetVariableTestCase: TestCaseInterface = {
             ]
           }
         ]
-      }
+      },
+      ...[
+        { definition: '=A[2]' },
+        { definition: '=B[2]' },
+        { definition: '=ThisRow["A"]', message: 'errors.interpret.circular_dependency.spreadsheet' },
+        { definition: '=ThisRecord.A[2]' },
+        { definition: '=ThisRecord["A"][2]' },
+        { definition: '=spreadsheet.A[2]' },
+        { definition: '=spreadsheet["A"][2]' }
+      ].map<NonNullable<TestCaseInterface['testCases']['successTestCases']>[0]>(t => ({
+        namespaceId,
+        variableId,
+        richType: A1CellRichType,
+        result: { message: t.message ?? 'errors.interpret.circular_dependency.variable', type: 'circular_dependency' },
+        ...t
+      }))
     ],
     errorTestCases: [
       ...[
-        { definition: `=A.2` },
-        { definition: `=B.2`, label: 'flattenVariableDependencies' },
+        { definition: '=A.2' },
+        { definition: '=B.2', label: 'flattenVariableDependencies' },
+        { definition: '=ThisRow.A', message: 'errors.parse.circular_dependency.spreadsheet' },
+        { definition: '=ThisRecord.A.2' },
+        { definition: '=spreadsheet.A.2' },
         { definition: '=num0', label: 'normal variable flatten ok' }
       ].map<NonNullable<TestCaseInterface['testCases']['errorTestCases']>[0]>(t => ({
         namespaceId,
         variableId,
         richType: A1CellRichType,
         errorType: 'circular_dependency',
-        errorMessage: 'errors.parse.circular_dependency.variable',
+        errorMessage: t.message ?? 'errors.parse.circular_dependency.variable',
         ...t
       }))
     ]

@@ -1,3 +1,4 @@
+import { generateVariable } from '../grammar'
 import { makeContext, trackTodo, ALL_TEST_CASE } from '../tests'
 
 const testCases = ALL_TEST_CASE
@@ -13,7 +14,7 @@ describe('errorParse', () => {
   trackTodo(it, testCases.errorTestCases)
 
   it.each(testCases.errorTestCases)('$jestTitle', async args => {
-    const parseResult = ctx.parseDirectly(args)
+    const [tempT, parseResult] = await ctx.interpretDirectly(args)
     expect([parseResult.success, parseResult.errorMessages[0], parseResult.variableParseResult.valid]).toStrictEqual([
       false,
       { type: args.errorType, message: args.errorMessage },
@@ -44,5 +45,16 @@ describe('errorParse', () => {
           break
       }
     }
+
+    // Ensure value is not changed after save.
+    const variable = generateVariable({ formulaContext: ctx.formulaContext, t: tempT })
+    await variable.save()
+    expect((await variable.t.task.variableValue).result).toStrictEqual({
+      type: 'Error',
+      result: {
+        type: args.errorType,
+        message: args.errorMessage
+      }
+    })
   })
 })

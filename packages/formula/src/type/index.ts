@@ -631,11 +631,15 @@ interface BaseVariableValue {
   readonly success: boolean
   readonly result: AnyTypeResult
   readonly runtimeEventDependencies?: Array<EventDependency<FormulaEventPayload<any>>>
+  readonly runtimeVariableDependencies?: VariableDependency[]
+  readonly runtimeFlattenVariableDependencies?: VariableDependency[]
 }
 
 interface SuccessVariableValue extends BaseVariableValue {
   readonly success: true
   readonly runtimeEventDependencies: Array<EventDependency<FormulaEventPayload<any>>>
+  readonly runtimeVariableDependencies: VariableDependency[]
+  readonly runtimeFlattenVariableDependencies: VariableDependency[]
   readonly result: AnyTypeResult
 }
 
@@ -767,6 +771,8 @@ export interface VariableInterface {
   id: string
   currentUUID: string
   formulaContext: ContextInterface
+  wholeFlattenVariableDependencies: () => VariableDependency[]
+  wholeVariableDependencies: () => VariableDependency[]
 
   buildFormula: (input?: FormulaDefinition) => Formula
   cleanup: () => Promise<void>
