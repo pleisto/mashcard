@@ -164,13 +164,13 @@ const deleteFirstRowEvent: DistributeEvents = [
   }
 ]
 
-const definitionCases: (
-  column: string,
-  row: string
-) => Array<{ definition: string; logicRow?: true; error: any; todoError?: any }> = (column, row) => [
-  { definition: `=${column}.${row}`, error: PARSE_ERROR, todoError: INTERPRET_ERROR },
-  { definition: `=spreadsheet1.${column}.${row}`, error: PARSE_ERROR, todoError: INTERPRET_ERROR },
-  { definition: `=ThisRecord.${column}.${row}`, error: INTERPRET_ERROR, todo: 'fix error' },
+const definitionCases: (column: string, row: string) => Array<{ definition: string; logicRow?: true; error: any }> = (
+  column,
+  row
+) => [
+  { definition: `=${column}.${row}`, error: PARSE_ERROR },
+  { definition: `=spreadsheet1.${column}.${row}`, error: PARSE_ERROR },
+  { definition: `=ThisRecord.${column}.${row}`, error: PARSE_ERROR },
   { definition: `=ThisRow.${column}`, logicRow: true, error: PARSE_ERROR },
 
   { definition: `=${column}[${row}]`, error: INTERPRET_ERROR },
@@ -249,7 +249,7 @@ export const SpreadsheetDeadlockEventTestCase: TestCaseInterface = {
           namespaceId,
           richType: A2CellRichType,
           resultBefore: a.logicRow ? a.error : mockCell('1', CELL_A1_ID, 'A', '1'),
-          resultAfter: a.todoError ?? a.error,
+          resultAfter: a.error,
           events: [deleteFirstRowEvent],
           ...a
         }
