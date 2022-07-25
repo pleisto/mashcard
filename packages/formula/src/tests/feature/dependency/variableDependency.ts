@@ -1,10 +1,10 @@
-import { generateUUIDs } from '../testHelper'
-import { TestCaseInterface } from '../testType'
+import { generateUUIDs } from '../../testHelper'
+import { TestCaseInterface } from '../../testType'
 
 const [parentPageNamespaceId, subPageNamespaceId] = generateUUIDs()
 
-export const DependencyTestCase: TestCaseInterface = {
-  name: 'dependency',
+export const VariableDependencyTestCase: TestCaseInterface = {
+  name: 'variableDependency',
   testCases: {
     pages: [
       {
@@ -95,8 +95,8 @@ export const DependencyTestCase: TestCaseInterface = {
             expected: [
               { name: 'num3', namespaceId: parentPageNamespaceId, match: 10 },
               { name: 'num4', namespaceId: parentPageNamespaceId, match: 10 },
-              { name: 'num5', namespaceId: parentPageNamespaceId, match: 20 },
-              { name: 'num0', namespaceId: subPageNamespaceId, match: 10 }
+              { name: 'num0', namespaceId: subPageNamespaceId, match: 10 },
+              { name: 'num5', namespaceId: parentPageNamespaceId, match: 20 }
             ]
           },
           {
@@ -150,8 +150,22 @@ export const DependencyTestCase: TestCaseInterface = {
             expected: [
               { name: 'num2', namespaceId: parentPageNamespaceId, match: 0 },
               { name: 'num3', namespaceId: parentPageNamespaceId, match: 0 },
-              { name: 'num4', namespaceId: parentPageNamespaceId, match: 0 },
-              { name: 'num5', namespaceId: parentPageNamespaceId, match: 0 }
+              {
+                name: 'num4',
+                namespaceId: parentPageNamespaceId,
+                match: {
+                  message: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'string' }],
+                  type: 'type'
+                }
+              },
+              {
+                name: 'num5',
+                namespaceId: parentPageNamespaceId,
+                match: {
+                  message: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'string' }],
+                  type: 'type'
+                }
+              }
             ]
           }
         ]

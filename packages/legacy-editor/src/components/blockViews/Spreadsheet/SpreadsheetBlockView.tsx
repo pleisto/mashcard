@@ -346,13 +346,10 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                           {documentEditable ? (
                             <SpreadsheetCell
                               context={spreadsheetContext}
-                              tableId={parentId}
+                              spreadsheetId={parentId}
                               key={block.id}
                               block={block}
-                              rowIdx={rowIdx}
                               saveBlock={saveCellBlock}
-                              columnTitle={column.title}
-                              columnSort={column.sort}
                               width={finalColumnWidths[column.uuid]}
                               height={rowLayoutHeights[rowBlock.id]}
                             />

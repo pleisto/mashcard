@@ -93,7 +93,7 @@ type FeatureName =
   | 'powerfx'
   | 'spreadsheet'
   | 'variable'
-  | 'dependency'
+  | 'variableDependency'
   | 'other'
   | 'variableComplete'
   | 'spreadsheetComplete'

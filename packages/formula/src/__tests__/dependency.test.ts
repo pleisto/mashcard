@@ -4,8 +4,9 @@ import { buildTestCases, TestCaseInput, trackTodo } from '../tests'
 import { VariableInterface, VariableValue } from '../type'
 import { uuid } from '@mashcard/active-support'
 import { BlockType } from '../controls'
+import { DependencyNames } from '../tests/feature/dependency'
 
-const [input, testCases] = buildTestCases<TestCaseInput['dependencyTestCases'][0]>(['dependency'])
+const [input, testCases] = buildTestCases<TestCaseInput['dependencyTestCases'][0]>(DependencyNames)
 
 describe('dependency', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>

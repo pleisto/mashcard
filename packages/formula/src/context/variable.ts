@@ -146,12 +146,20 @@ export class VariableClass implements VariableInterface {
     this.builtinEventListeners.push(taskCompleteSubscription)
   }
 
-  public async onUpdate({ skipPersist, level }: { skipPersist?: boolean; level?: number }): Promise<void> {
+  public async onUpdate({
+    skipPersist,
+    level,
+    uuid
+  }: {
+    skipPersist?: boolean
+    level?: number
+    uuid?: string
+  }): Promise<void> {
     const result = MashcardEventBus.dispatch(
       FormulaUpdatedViaId({
         meta: this,
         scope: null,
-        key: this.id,
+        key: uuid ?? this.id,
         username: this.formulaContext.username,
         level,
         namespaceId: this.t.meta.namespaceId,
@@ -187,9 +195,10 @@ export class VariableClass implements VariableInterface {
                 columns: [columnId, columnDisplayIndex(cell.columnIndex), ...(column ? [column.display()] : [])]
               },
               meta: null,
+              level,
               namespaceId: this.t.meta.namespaceId,
               username: this.formulaContext.username,
-              key: this.currentUUID ?? spreadsheetId
+              key: uuid ?? this.id
             })
           )
           await Promise.all(result)
@@ -434,22 +443,15 @@ export class VariableClass implements VariableInterface {
     level: number,
     input?: FormulaDefinition
   ): Promise<void> {
-    // console.log(
-    //   `reparse: ${sourceUuid && this.currentUUID === sourceUuid}`,
-    //   { sourceUuid, id: this.id },
-    //   this.t.meta.name,
-    //   source,
-    //   input,
-    //   this
-    // )
+    // console.log('reparse', [sourceUuid, this.currentUUID, this.id], [this.t.meta.name, source, level, input])
 
     if (level > MAX_LEVEL) {
       devWarning(true, 'reparse: max level reached', source, sourceUuid)
       return
     }
 
-    // TODO check circular dependency
-    // if (sourceUuid && this.currentUUID === sourceUuid) return
+    if (sourceUuid === this.id) return
+    if (sourceUuid === this.currentUUID) return
 
     this.currentUUID = sourceUuid
 
@@ -489,7 +491,7 @@ export class VariableClass implements VariableInterface {
     await this.trackDependency()
     this.currentUUID = uuid()
     if (!this.t.task.async) {
-      await this.onUpdate({ level: level + 1 })
+      await this.onUpdate({ level: level + 1, uuid: sourceUuid })
     }
   }
 
@@ -637,7 +639,7 @@ export class VariableClass implements VariableInterface {
       const eventSubscription = MashcardEventBus.subscribe(
         dependency.event,
         async e => {
-          // console.log('event', dependency.event.eventType, this.currentUUID, {
+          // console.log('event', dependency.event.eventType, this.currentUUID, e.payload.key, e.payload.level, {
           //   type: e.type,
           //   payload: e.payload,
           //   dependency

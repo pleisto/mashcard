@@ -24,10 +24,7 @@ import { useEditorContext, useDocumentContext } from '../../../hooks'
 export interface SpreadsheetCellProps {
   context: SpreadsheetContext
   block: BlockInput
-  rowIdx: number
-  columnSort: number
-  columnTitle: string | undefined
-  tableId: string
+  spreadsheetId: string
   saveBlock: (block: BlockInput) => void
   width?: number
   height?: number
@@ -35,11 +32,8 @@ export interface SpreadsheetCellProps {
 
 export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   context,
-  tableId,
+  spreadsheetId,
   block,
-  rowIdx,
-  columnSort,
-  columnTitle,
   saveBlock,
   width,
   height
@@ -98,14 +92,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     input: '',
     position: 0,
     name: formulaName,
-    richType: {
-      type: 'spreadsheet',
-      meta: {
-        spreadsheetId: tableId,
-        columnId,
-        rowId
-      }
-    }
+    richType: { type: 'spreadsheet', meta: { spreadsheetId, columnId, rowId } }
   }
 
   const { temporaryVariableT, savedVariableT, formulaEditor, onSaveFormula, commitFormula, completion } = useFormula({
@@ -114,7 +101,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     formulaContext
   })
 
-  const eventId = `${tableId},${cellId}`
+  const eventId = `${spreadsheetId},${cellId}`
 
   React.useEffect(() => {
     const listener = MashcardEventBus.subscribe(
