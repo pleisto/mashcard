@@ -26,12 +26,13 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ className }) => 
     const link = `/${domain}/${path.id}`
     const hasEmoji = path.icon && path.icon.type === BlockType.Emoji
     const emoji = hasEmoji ? (path.icon as BlockEmoji).emoji : ''
+    const title = path.title.length > 0 ? path.title : t('title.untitled')
     return (
       <Tooltip
         key={idx}
         title={
           <Root.Tip>
-            {emoji} {path.title ?? t('title.untitled')}
+            {emoji} {title}
           </Root.Tip>
         }
       >
@@ -39,9 +40,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ className }) => 
           <Root.Emoji show={Boolean(hasEmoji)} data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.emoji.id}>
             {emoji}
           </Root.Emoji>
-          <Root.Path data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.text.id}>
-            {path.title ?? t('title.untitled')}
-          </Root.Path>
+          <Root.Path data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.item.text.id}>{title}</Root.Path>
           <Root.Split show={showSplit}>/</Root.Split>
         </Root.Warp>
       </Tooltip>
