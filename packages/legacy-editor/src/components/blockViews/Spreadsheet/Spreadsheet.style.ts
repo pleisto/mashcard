@@ -176,18 +176,6 @@ export const spreadsheetStyles: CSS = {
             opacity: 1
           }
         },
-        '.resize-handler': {
-          height: '100%',
-          width: 2,
-          position: 'absolute',
-          right: -1,
-          top: 0,
-          border: 0,
-          padding: 0,
-          cursor: 'ew-resize',
-          background: 'transparent'
-        },
-
         '.cell': {
           padding: '4px 6px'
         }
@@ -398,4 +386,16 @@ export const SpreadsheetTitleTooltip = styled(SpreadsheetTooltip, {
 export const SpreadsheetColumnTooltip = styled(SpreadsheetTooltip, {
   bottom: '-28px',
   left: '20px'
+})
+
+export const SpreadsheetColumnResizeHandler = styled('button', {
+  height: '100%',
+  width: 6,
+  position: 'absolute',
+  right: -3,
+  top: 0,
+  border: 0,
+  padding: 0,
+  cursor: 'ew-resize',
+  background: 'transparent'
 })

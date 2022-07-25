@@ -16,6 +16,7 @@ import {
   SpreadsheetColumnInput,
   SpreadsheetColumnEditing,
   SpreadsheetColumnIndex,
+  SpreadsheetColumnResizeHandler,
   columnDefaultWidth
 } from './Spreadsheet.style'
 
@@ -254,7 +255,7 @@ export const SpreadsheetHeaderColumn: React.FC<{
       ) : (
         <></>
       )}
-      {onResize ? <button className="resize-handler" onMouseDown={onResizeMouseDown} /> : <></>}
+      {onResize ? <SpreadsheetColumnResizeHandler onMouseDown={onResizeMouseDown} /> : <></>}
     </th>
   )
 }
