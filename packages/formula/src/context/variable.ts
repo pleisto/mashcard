@@ -21,7 +21,7 @@ import { parse, interpret, generateVariable } from '../grammar/core'
 import { dumpValue } from './persist'
 import { codeFragments2definition, variableKey } from '../grammar/convert'
 import { uuid } from '@mashcard/active-support'
-import { cleanupEventDependency, maybeEncodeString, shouldReceiveEvent } from '../grammar'
+import { cleanupEventDependency, columnDisplayIndex, maybeEncodeString, shouldReceiveEvent } from '../grammar'
 import {
   FormulaBlockNameDeletedTrigger,
   FormulaBlockNameChangedTrigger,
@@ -30,7 +30,8 @@ import {
   FormulaTaskCompleted,
   FormulaTickViaId,
   FormulaUpdatedViaId,
-  FormulaVariableDependencyUpdated
+  FormulaVariableDependencyUpdated,
+  SpreadsheetReloadViaId
 } from '../events'
 import { devWarning } from '@mashcard/design-system'
 
@@ -165,6 +166,35 @@ export class VariableClass implements VariableInterface {
     if (!this.t.task.async) {
       const { result, success } = this.t.task.variableValue
       this.isReadyT = success && result.type !== 'Error'
+    }
+
+    if (this.t.meta.richType.type === 'spreadsheet') {
+      const { spreadsheetId, columnId, rowId } = this.t.meta.richType.meta
+      const spreadsheet = this.formulaContext.findSpreadsheet({
+        namespaceId: this.t.meta.namespaceId,
+        type: 'id',
+        value: spreadsheetId
+      })
+      if (spreadsheet) {
+        const cell = spreadsheet.listCells({ rowId, columnId })[0]
+        const column = spreadsheet.findColumn({ type: 'id', value: columnId, namespaceId: spreadsheet.namespaceId })
+        if (cell && column) {
+          const result = MashcardEventBus.dispatch(
+            SpreadsheetReloadViaId({
+              id: spreadsheetId,
+              scope: {
+                rows: [String(cell.rowIndex + 1), rowId],
+                columns: [columnId, columnDisplayIndex(cell.columnIndex), ...(column ? [column.display()] : [])]
+              },
+              meta: null,
+              namespaceId: this.t.meta.namespaceId,
+              username: this.formulaContext.username,
+              key: this.currentUUID ?? spreadsheetId
+            })
+          )
+          await Promise.all(result)
+        }
+      }
     }
   }
 

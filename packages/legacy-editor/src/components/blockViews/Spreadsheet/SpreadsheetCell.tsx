@@ -10,11 +10,9 @@ import {
 } from '@mashcard/schema'
 import { FormulaBlockRender, getFormulaContext, useFormula, UseFormulaInput } from '../FormulaView'
 import {
-  columnDisplayIndex,
   display,
   dumpDisplayResultForDisplay,
   fetchResult,
-  SpreadsheetReloadViaId,
   VariableDisplayData,
   VariableInterface
 } from '@mashcard/formula'
@@ -88,27 +86,10 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       const newBlock = { ...block, text: value }
       setCurrentBlock(newBlock)
       saveBlock(newBlock)
-
-      if (!formulaContext || !rootId) return
-
-      const result = MashcardEventBus.dispatch(
-        SpreadsheetReloadViaId({
-          id: tableId,
-          scope: {
-            rows: [String(rowIdx + 1), rowId],
-            columns: [block.data.columnId, columnDisplayIndex(columnSort), ...(columnTitle ? [columnTitle] : [])]
-          },
-          meta: null,
-          namespaceId: rootId,
-          username: formulaContext.username,
-          key: variable?.currentUUID ?? tableId
-        })
-      )
-      await Promise.all(result)
       // console.log('dispatch update cell', variable)
       // setEditing(false)
     },
-    [formulaContext, block, cellId, rootId, saveBlock, tableId, rowIdx, rowId, columnSort, columnTitle]
+    [formulaContext, block, cellId, rootId, saveBlock]
   )
 
   const meta: UseFormulaInput['meta'] = {
