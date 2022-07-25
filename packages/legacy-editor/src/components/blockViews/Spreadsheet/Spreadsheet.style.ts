@@ -10,6 +10,9 @@ const tableSelectBorderColor = '#c0cdff'
 const tableActionHoverColor = '#356cf9'
 const spreadsheetBorderColor = '#87B6E8'
 
+export const columnDefaultWidth = 230
+export const columnMinWidth = 70
+
 export const spreadsheetStyles: CSS = {
   '.mashcard-spreadsheet-block': {
     overflow: 'auto',

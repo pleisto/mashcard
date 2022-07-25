@@ -15,7 +15,8 @@ import {
   SpreadsheetColumnDisplay,
   SpreadsheetColumnInput,
   SpreadsheetColumnEditing,
-  SpreadsheetColumnIndex
+  SpreadsheetColumnIndex,
+  columnDefaultWidth
 } from './Spreadsheet.style'
 
 /* eslint-disable jsx-a11y/no-static-element-interactions, jsx-a11y/interactive-supports-focus,
@@ -192,7 +193,7 @@ export const SpreadsheetHeaderColumn: React.FC<{
     document.addEventListener('mousemove', onResizeMouseMove)
     document.addEventListener('mouseup', onResizeMouseUp)
     context.clearSelection()
-    latestMovement.current = width ?? columnRef.current?.clientWidth ?? 230
+    latestMovement.current = width ?? columnRef.current?.clientWidth ?? columnDefaultWidth
   }
 
   const onContextMenu: React.MouseEventHandler = (e: React.MouseEvent): void => {
