@@ -11,6 +11,11 @@ export interface PopoverProps extends AbstractTriggerProps {
   compact?: boolean
 }
 
+/**
+ *
+ * @deprecated This component is planned to be abandoned and PopoverN is now recommended.
+ *  You can continue to use this component now, but popoverN will replace it later
+ */
 const Popover: ForwardRefRenderFunction<unknown, PopoverProps> = (props, ref) => {
   const { title, content, role = 'dialog', compact, ...otherProps } = props
 
