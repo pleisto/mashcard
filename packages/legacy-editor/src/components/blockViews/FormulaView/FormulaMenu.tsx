@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
-import { Input, Popover, Icon } from '@mashcard/design-system'
+import { Input, PopoverN, Icon } from '@mashcard/design-system'
 import { VariableData } from '@mashcard/formula'
 import { FormulaEditor } from '../../../editors/formulaEditor'
 import { FormulaResult, AutocompleteList } from '../../ui/Formula'
@@ -31,14 +31,13 @@ export interface FormulaMenuProps {
   isDisableSave: () => boolean
   onSaveFormula: UseFormulaOutput['onSaveFormula']
   completion: CompletionType
-  children?: React.ReactNode
+  children?: JSX.Element
 }
 
 export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   children,
   meta,
   temporaryVariableT,
-  handleDelete,
   references,
   formulaEditor,
   defaultVisible,
@@ -178,18 +177,18 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   )
 
   return (
-    <Popover
+    <PopoverN
       onVisibleChange={onPopoverVisibleChange}
       defaultVisible={defaultVisible}
       visible={visible}
       className={Root.MashcardFormulaMenuPopover}
       overlayInnerStyle={{ padding: '8px 16px' }}
       destroyTooltipOnHide
-      content={menu}
-      placement="bottomStart"
-      trigger={['click']}
+      render={() => menu}
+      placement="bottom-start"
+      offset={10}
     >
-      {children}
-    </Popover>
+      {children ?? <div />}
+    </PopoverN>
   )
 }

@@ -24,6 +24,7 @@
   ],
   "sideEffects": false,
   "dependencies": {
+    "@floating-ui/react-dom-interactions": "^0.8.1",
     "@hookform/resolvers": "^2.9.6",
     "@mashcard/active-support": "workspace:^",
     "@mashcard/design-icons": "workspace:^",
