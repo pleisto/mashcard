@@ -191,6 +191,7 @@
 - [DEFAULT_FIRST_NAMESPACEID](README.md#default_first_namespaceid)
 - [DEFAULT_VIEWS](README.md#default_views)
 - [DecimalLiteral](README.md#decimalliteral)
+- [DependencyNames](README.md#dependencynames)
 - [Div](README.md#div)
 - [Dollar](README.md#dollar)
 - [Dot](README.md#dot)
@@ -728,7 +729,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:273](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L273)
+[packages/formula/src/tests/testType.ts:274](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L274)
 
 ---
 
@@ -738,7 +739,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:787](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L787)
+[packages/formula/src/type/index.ts:805](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L805)
 
 ---
 
@@ -758,7 +759,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:177](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L177)
+[packages/formula/src/tests/testType.ts:178](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L178)
 
 ---
 
@@ -918,7 +919,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:794](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L794)
+[packages/formula/src/type/index.ts:812](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L812)
 
 ---
 
@@ -1082,7 +1083,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L110)
+[packages/formula/src/tests/testType.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L111)
 
 ---
 
@@ -1142,7 +1143,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:737](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L737)
+[packages/formula/src/type/index.ts:754](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L754)
 
 ---
 
@@ -1152,7 +1153,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:711](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L711)
+[packages/formula/src/type/index.ts:728](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L728)
 
 ---
 
@@ -1162,7 +1163,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:647](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L647)
+[packages/formula/src/type/index.ts:651](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L651)
 
 ---
 
@@ -1438,6 +1439,16 @@
 #### Defined in
 
 [packages/formula/src/grammar/lexer.ts:189](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L189)
+
+---
+
+### <a id="dependencynames" name="dependencynames"></a> DependencyNames
+
+• `Const` **DependencyNames**: [`TestCaseName`](README.md#testcasename)[]
+
+#### Defined in
+
+[packages/formula/src/tests/feature/dependency/index.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/dependency/index.ts#L7)
 
 ---
 
@@ -3329,7 +3340,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:568](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L568)
+[packages/formula/src/grammar/core.ts:606](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L606)
 
 ---
 
@@ -3515,7 +3526,7 @@ Apply format to the formula.
 
 | Name   | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Args` | extends (readonly [``"empty_sync"``, `any`] \| readonly [``"empty_async"``, `any`] \| readonly [``"blockChangeName"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `name`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| readonly [``"blockDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetChangeName"``, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `spreadsheetId`: `string` ; `title`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"columnChange"`, `OmitUsername`<(`__namedParameters`: { `columns`: [`Column`](interfaces/Column.md)[] ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"rowChange"`, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"variableInsertOnly"`, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| readonly [`"variableInsertAndAwait"`, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| readonly [``"variableDelete"``, {}] \| readonly [`"variableUpdateDefinition"`, [`FormulaDefinition`](interfaces/FormulaDefinition.md)])[] |
+| `Args` | extends (readonly [`"columnChange"`, `OmitUsername`<(`__namedParameters`: { `columns`: [`Column`](interfaces/Column.md)[] ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"rowChange"`, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [``"blockDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| readonly [``"empty_sync"``, `any`] \| readonly [``"empty_async"``, `any`] \| readonly [``"blockChangeName"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `name`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetChangeName"``, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `spreadsheetId`: `string` ; `title`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"variableInsertOnly"`, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| readonly [`"variableInsertAndAwait"`, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| readonly [``"variableDelete"``, {}] \| readonly [`"variableUpdateDefinition"`, [`FormulaDefinition`](interfaces/FormulaDefinition.md)])[] |
 
 #### Parameters
 
@@ -3541,7 +3552,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/tests/testHelper.ts:297](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L297)
+[packages/formula/src/tests/testHelper.ts:298](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L298)
 
 ---
 
@@ -3700,7 +3711,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L73)
+[packages/formula/src/context/variable.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L76)
 
 ---
 
@@ -3956,7 +3967,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:794](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L794)
+[packages/formula/src/type/index.ts:812](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L812)
 
 ---
 
@@ -4245,7 +4256,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:44](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L44)
+[packages/formula/src/context/variable.ts:47](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L47)
 
 ---
 
@@ -4305,7 +4316,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:61](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L61)
+[packages/formula/src/context/variable.ts:64](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L64)
 
 ---
 
@@ -4325,7 +4336,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:38](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L38)
+[packages/formula/src/context/variable.ts:41](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L41)
 
 ---
 
@@ -4408,7 +4419,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/tests/testHelper.ts:295](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L295)
+[packages/formula/src/tests/testHelper.ts:296](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L296)
 
 ---
 
@@ -4432,7 +4443,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:548](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L548)
+[packages/formula/src/grammar/core.ts:586](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L586)
 
 ---
 
@@ -4497,7 +4508,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:447](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L447)
+[packages/formula/src/grammar/core.ts:465](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L465)
 
 ---
 
@@ -4521,7 +4532,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:525](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L525)
+[packages/formula/src/grammar/core.ts:563](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L563)
 
 ---
 
@@ -5054,7 +5065,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/tests/testHelper.ts:305](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L305)
+[packages/formula/src/tests/testHelper.ts:306](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L306)
 
 ---
 
@@ -5159,7 +5170,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/tests/testHelper.ts:287](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L287)
+[packages/formula/src/tests/testHelper.ts:288](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L288)
 
 ---
 

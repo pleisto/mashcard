@@ -321,7 +321,7 @@ ColumnType.handleCodeFragments
 
 #### Defined in
 
-[packages/formula/src/controls/column.ts:150](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L150)
+[packages/formula/src/controls/column.ts:155](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/column.ts#L155)
 
 ---
 
