@@ -88,6 +88,7 @@ export const TrashPrompt: FC = () => {
       <Root.TrashAlert
         message={t('trash.in_trash_prompt')}
         type="error"
+        closeIcon={false}
         icon={false}
         action={
           <>

@@ -306,6 +306,7 @@ export const queryDocumentBlock = gql`
           }
         }
         isDeleted
+        restorable
         isMaster
         pin
         pathArray {

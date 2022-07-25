@@ -2421,6 +2421,7 @@ export type DocumentBlockQuery = {
       id: string
       title: string
       isDeleted: boolean
+      restorable: boolean
       isMaster: boolean
       pin: boolean
       enabledAlias?: { __typename?: 'BlockAlias'; key: string; payload: any } | null
@@ -4233,6 +4234,7 @@ export const DocumentBlockDocument = gql`
           }
         }
         isDeleted
+        restorable
         isMaster
         pin
         pathArray {
