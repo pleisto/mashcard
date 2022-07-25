@@ -8,7 +8,7 @@ export const VariableDependencyTestCase: TestCaseInterface = {
   testCases: {
     pages: [
       {
-        pageName: 'DependencyParentPage',
+        pageName: 'VariableDependencyParentPage',
         pageId: parentPageNamespaceId,
         variables: [
           { variableName: 'num0', definition: '=0' },
@@ -19,20 +19,20 @@ export const VariableDependencyTestCase: TestCaseInterface = {
           { variableName: 'num5', definition: '=num4+num0' },
           {
             variableName: 'var2',
-            definition: '=DependencySubPage.var1',
+            definition: '=VariableDependencySubPage.var1',
             insertOptions: { ignoreSyntaxError: true, ignoreParseError: true },
             result: { message: '"var0" not found', type: 'deps' }
           }
         ]
       },
       {
-        pageName: 'DependencySubPage',
+        pageName: 'VariableDependencySubPage',
         pageId: subPageNamespaceId,
         variables: [
-          { variableName: 'num0', definition: '=DependencyParentPage.num0', result: 0 },
+          { variableName: 'num0', definition: '=VariableDependencyParentPage.num0', result: 0 },
           {
             variableName: 'var1',
-            definition: '=DependencyParentPage.var0',
+            definition: '=VariableDependencyParentPage.var0',
             insertOptions: { ignoreSyntaxError: true, ignoreParseError: true },
             result: { message: '"var0" not found', type: 'deps' }
           }
@@ -79,7 +79,7 @@ export const VariableDependencyTestCase: TestCaseInterface = {
               {
                 name: 'num0',
                 namespaceId: subPageNamespaceId,
-                match: { message: '"DependencyParentPage" not found', type: 'syntax' }
+                match: { message: '"VariableDependencyParentPage" not found', type: 'syntax' }
               }
             ]
           }
@@ -224,9 +224,24 @@ export const VariableDependencyTestCase: TestCaseInterface = {
               { name: 'num3', namespaceId: parentPageNamespaceId, match: 10, definition: '=num1+var0' },
               { name: 'num4', namespaceId: parentPageNamespaceId, match: 10, definition: '=num3+num2' },
               { name: 'num5', namespaceId: parentPageNamespaceId, match: 20, definition: '=num4+var0' },
-              { name: 'num0', namespaceId: subPageNamespaceId, match: 10, definition: '=DependencyParentPage.var0' },
-              { name: 'var2', namespaceId: parentPageNamespaceId, match: 10, definition: '=DependencySubPage.var1' },
-              { name: 'var1', namespaceId: subPageNamespaceId, match: 10, definition: '=DependencyParentPage.var0' }
+              {
+                name: 'num0',
+                namespaceId: subPageNamespaceId,
+                match: 10,
+                definition: '=VariableDependencyParentPage.var0'
+              },
+              {
+                name: 'var2',
+                namespaceId: parentPageNamespaceId,
+                match: 10,
+                definition: '=VariableDependencySubPage.var1'
+              },
+              {
+                name: 'var1',
+                namespaceId: subPageNamespaceId,
+                match: 10,
+                definition: '=VariableDependencyParentPage.var0'
+              }
             ]
           },
           {
@@ -235,9 +250,24 @@ export const VariableDependencyTestCase: TestCaseInterface = {
               { name: 'num3', namespaceId: parentPageNamespaceId, match: 100, definition: '=num1+num0' },
               { name: 'num4', namespaceId: parentPageNamespaceId, match: 100, definition: '=num3+num2' },
               { name: 'num5', namespaceId: parentPageNamespaceId, match: 200, definition: '=num4+num0' },
-              { name: 'num0', namespaceId: subPageNamespaceId, match: 100, definition: '=DependencyParentPage.num0' },
-              { name: 'var2', namespaceId: parentPageNamespaceId, match: 100, definition: '=DependencySubPage.var1' },
-              { name: 'var1', namespaceId: subPageNamespaceId, match: 100, definition: '=DependencyParentPage.num0' }
+              {
+                name: 'num0',
+                namespaceId: subPageNamespaceId,
+                match: 100,
+                definition: '=VariableDependencyParentPage.num0'
+              },
+              {
+                name: 'var2',
+                namespaceId: parentPageNamespaceId,
+                match: 100,
+                definition: '=VariableDependencySubPage.var1'
+              },
+              {
+                name: 'var1',
+                namespaceId: subPageNamespaceId,
+                match: 100,
+                definition: '=VariableDependencyParentPage.num0'
+              }
             ]
           },
           {

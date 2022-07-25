@@ -5,6 +5,7 @@ import { VariableInterface, VariableValue } from '../type'
 import { uuid } from '@mashcard/active-support'
 import { BlockType } from '../controls'
 import { DependencyNames } from '../tests/feature/dependency'
+import { matchObject } from '../tests/testMock'
 
 const [input, testCases] = buildTestCases<TestCaseInput['dependencyTestCases'][0]>(DependencyNames)
 
@@ -57,7 +58,11 @@ describe('dependency', () => {
           expect(v2.t.variableParseResult.definition).toStrictEqual(definition)
         }
 
-        const matchData = [action, { namespaceId, name }, (v2.t.task.variableValue as VariableValue).result.result]
+        const matchData = [
+          action,
+          { namespaceId, name },
+          matchObject((v2.t.task.variableValue as VariableValue).result)
+        ]
 
         switch (matchType) {
           case undefined:

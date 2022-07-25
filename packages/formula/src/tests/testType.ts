@@ -94,6 +94,7 @@ type FeatureName =
   | 'spreadsheet'
   | 'variable'
   | 'variableDependency'
+  | 'spreadsheetDependency'
   | 'other'
   | 'variableComplete'
   | 'spreadsheetComplete'
