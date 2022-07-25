@@ -150,22 +150,8 @@ export const VariableDependencyTestCase: TestCaseInterface = {
             expected: [
               { name: 'num2', namespaceId: parentPageNamespaceId, match: 0 },
               { name: 'num3', namespaceId: parentPageNamespaceId, match: 0 },
-              {
-                name: 'num4',
-                namespaceId: parentPageNamespaceId,
-                match: {
-                  message: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'string' }],
-                  type: 'type'
-                }
-              },
-              {
-                name: 'num5',
-                namespaceId: parentPageNamespaceId,
-                match: {
-                  message: ['errors.parse.mismatch.type', { expected: 'number,Cell', got: 'string' }],
-                  type: 'type'
-                }
-              }
+              { name: 'num4', namespaceId: parentPageNamespaceId, match: 0 },
+              { name: 'num5', namespaceId: parentPageNamespaceId, match: 0 }
             ]
           }
         ]

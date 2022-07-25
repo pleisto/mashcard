@@ -159,7 +159,7 @@ export class VariableClass implements VariableInterface {
       FormulaUpdatedViaId({
         meta: this,
         scope: null,
-        source: [{ id: this.id, type: 'reload' }, ...(source ?? [])],
+        source: [...(source ?? []), { id: this.id, type: 'reload' }],
         username: this.formulaContext.username,
         level,
         namespaceId: this.t.meta.namespaceId,
@@ -198,7 +198,7 @@ export class VariableClass implements VariableInterface {
               level,
               namespaceId: this.t.meta.namespaceId,
               username: this.formulaContext.username,
-              source: [{ id: this.id, type: 'cellUpdate' }, ...(source ?? [])]
+              source: [...(source ?? []), { id: this.id, type: 'cellUpdate' }]
             })
           )
           await Promise.all(result)
@@ -648,11 +648,11 @@ export class VariableClass implements VariableInterface {
           //   [this.t.meta.name, dependency.event.eventType, e.payload.level, definition]
           // )
 
-          await this.maybeReparseAndPersist(
-            [...e.payload.source, { id: `${dependency.event.eventType}_${dependency.eventId}`, type: 'dynamic' }],
-            e.payload.level ?? 0,
-            { definition }
-          )
+          const currentSource = { id: `${dependency.event.eventType}_${dependency.eventId}`, type: 'dynamic' } as const
+
+          if (e.payload.source.find(s => s.id === currentSource.id && s.type === currentSource.type)) return
+
+          await this.maybeReparseAndPersist([...e.payload.source, currentSource], e.payload.level ?? 0, { definition })
         },
         {
           eventId: dependency.eventId,
