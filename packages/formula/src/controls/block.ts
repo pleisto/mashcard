@@ -85,7 +85,7 @@ export class BlockClass implements BlockType {
       FormulaBlockNameDeletedTrigger({
         id: this.id,
         namespaceId: this.id,
-        key: this.id,
+        source: [{ id: this.id, type: 'blockDelete' }],
         username: this._formulaContext.username,
         scope: null,
         meta: this._name

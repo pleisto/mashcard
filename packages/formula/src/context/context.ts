@@ -276,7 +276,7 @@ export class FormulaContext implements ContextInterface {
       FormulaContextNameChanged({
         id: nameDependency.id,
         namespaceId: nameDependency.namespaceId,
-        key: nameDependency.id,
+        source: [{ id: nameDependency.id, type: 'nameChange' }],
         username: this.username,
         scope: null,
         meta: {
@@ -298,7 +298,7 @@ export class FormulaContext implements ContextInterface {
       FormulaContextNameRemove({
         id: oldName.id,
         namespaceId: oldName.namespaceId,
-        key: oldName.id,
+        source: [{ id: oldName.id, type: 'nameDelete' }],
         username: this.username,
         scope: null,
         meta: {
@@ -344,7 +344,7 @@ export class FormulaContext implements ContextInterface {
         username: this.username,
         scope: null,
         meta: null,
-        key: spreadsheet.spreadsheetId
+        source: [{ id: spreadsheet.spreadsheetId, type: 'spreadsheetInitialize' }]
       })
     )
     await Promise.all(result)

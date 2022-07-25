@@ -15,7 +15,8 @@ import {
   VariableParseResult,
   FormulaDefinition,
   ErrorMessage,
-  VariableDependency
+  VariableDependency,
+  FormulaEventPayload
 } from '../type'
 import { parse, interpret, generateVariable } from '../grammar/core'
 import { dumpValue } from './persist'
@@ -148,17 +149,17 @@ export class VariableClass implements VariableInterface {
   public async onUpdate({
     skipPersist,
     level,
-    uuid
+    source
   }: {
     skipPersist?: boolean
     level?: number
-    uuid?: string
+    source?: FormulaEventPayload<any>['source']
   }): Promise<void> {
     const result = MashcardEventBus.dispatch(
       FormulaUpdatedViaId({
         meta: this,
         scope: null,
-        key: uuid ?? this.id,
+        source: [{ id: this.id, type: 'reload' }, ...(source ?? [])],
         username: this.formulaContext.username,
         level,
         namespaceId: this.t.meta.namespaceId,
@@ -197,7 +198,7 @@ export class VariableClass implements VariableInterface {
               level,
               namespaceId: this.t.meta.namespaceId,
               username: this.formulaContext.username,
-              key: uuid ?? this.id
+              source: [{ id: this.id, type: 'cellUpdate' }, ...(source ?? [])]
             })
           )
           await Promise.all(result)
@@ -258,7 +259,7 @@ export class VariableClass implements VariableInterface {
         FormulaVariableDependencyUpdated({
           meta: newVariableDependencies,
           scope: null,
-          key: this.id,
+          source: [{ id: this.id, type: 'dependencyUpdate' }],
           username: this.formulaContext.username,
           level: 0,
           namespaceId: dependency.namespaceId,
@@ -317,7 +318,7 @@ export class VariableClass implements VariableInterface {
         FormulaVariableDependencyUpdated({
           meta: newVariableDependencies,
           scope: null,
-          key: this.id,
+          source: [{ id: this.id, type: 'dependencyUpdate' }],
           username: this.formulaContext.username,
           level: 0,
           namespaceId: dependency.namespaceId,
@@ -437,17 +438,16 @@ export class VariableClass implements VariableInterface {
   }
 
   private async maybeReparseAndPersist(
-    source: string,
-    sourceUuid: string,
+    source: FormulaEventPayload<any>['source'],
     level: number,
     input?: FormulaDefinition
   ): Promise<void> {
     if (level > MAX_LEVEL) {
-      devWarning(true, 'reparse: max level reached', source, sourceUuid)
+      devWarning(true, 'reparse: max level reached', source)
       return
     }
 
-    if (sourceUuid === this.id) return
+    if (source.find(x => x.id === this.id)) return
 
     const formula = this.buildFormula(input)
 
@@ -484,12 +484,12 @@ export class VariableClass implements VariableInterface {
 
     await this.trackDependency()
     if (!this.t.task.async) {
-      await this.onUpdate({ level: level + 1, uuid: sourceUuid })
+      await this.onUpdate({ level: level + 1, source })
     }
   }
 
   public async updateDefinition(input: FormulaDefinition): Promise<void> {
-    await this.maybeReparseAndPersist('updateDefinition', uuid(), 0, input)
+    await this.maybeReparseAndPersist([], 0, input)
   }
 
   private setupEventDependencies(): void {
@@ -640,16 +640,16 @@ export class VariableClass implements VariableInterface {
           if (!shouldReceiveEvent(dependency.scope, e.payload.scope)) return
           if (dependency.skipIf?.(this, e.payload)) return
           const definition = dependency.definitionHandler?.(dependency, this, e.payload)
-          console.warn(
-            'reparse',
-            [dependency.scope, e.payload.scope],
-            [e.payload.key, this.id],
-            [this.t.meta.name, dependency.event.eventType, e.payload.level, definition]
-          )
+
+          // console.log(
+          //   'reparse',
+          //   [dependency.scope, dependency.key],
+          //   [e.payload.scope, e.payload.source, this.id],
+          //   [this.t.meta.name, dependency.event.eventType, e.payload.level, definition]
+          // )
 
           await this.maybeReparseAndPersist(
-            `${dependency.event.eventType}_${dependency.eventId}`,
-            e.payload.key,
+            [...e.payload.source, { id: `${dependency.event.eventType}_${dependency.eventId}`, type: 'dynamic' }],
             e.payload.level ?? 0,
             { definition }
           )

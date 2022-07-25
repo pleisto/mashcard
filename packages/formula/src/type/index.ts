@@ -681,7 +681,20 @@ export interface EventScope {
 }
 
 export interface FormulaEventPayload<T> {
-  readonly key: string
+  readonly source: Array<{
+    id: string
+    type:
+      | 'dynamic'
+      | 'dependencyUpdate'
+      | 'reload'
+      | 'nameChange'
+      | 'nameDelete'
+      | 'columnChange'
+      | 'rowChange'
+      | 'spreadsheetInitialize'
+      | 'blockDelete'
+      | 'cellUpdate'
+  }>
   readonly level?: number
   readonly username: string
   readonly scope: EventScope | null
