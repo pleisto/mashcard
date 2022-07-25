@@ -111,7 +111,6 @@ export class VariableClass implements VariableInterface {
 
   tickTimeout: number = 100000
   eventListeners: EventSubscribed[] = []
-  currentUUID: string = uuid()
   builtinEventListeners: EventSubscribed[] = []
   eventDependencies: VariableParseResult['eventDependencies'] = []
 
@@ -443,17 +442,12 @@ export class VariableClass implements VariableInterface {
     level: number,
     input?: FormulaDefinition
   ): Promise<void> {
-    // console.log('reparse', [sourceUuid, this.currentUUID, this.id], [this.t.meta.name, source, level, input])
-
     if (level > MAX_LEVEL) {
       devWarning(true, 'reparse: max level reached', source, sourceUuid)
       return
     }
 
     if (sourceUuid === this.id) return
-    if (sourceUuid === this.currentUUID) return
-
-    this.currentUUID = sourceUuid
 
     const formula = this.buildFormula(input)
 
@@ -489,7 +483,6 @@ export class VariableClass implements VariableInterface {
     this.t = tempT
 
     await this.trackDependency()
-    this.currentUUID = uuid()
     if (!this.t.task.async) {
       await this.onUpdate({ level: level + 1, uuid: sourceUuid })
     }
@@ -639,7 +632,7 @@ export class VariableClass implements VariableInterface {
       const eventSubscription = MashcardEventBus.subscribe(
         dependency.event,
         async e => {
-          // console.log('event', dependency.event.eventType, this.currentUUID, e.payload.key, e.payload.level, {
+          // console.log('event', dependency.event.eventType, e.payload.key, e.payload.level, {
           //   type: e.type,
           //   payload: e.payload,
           //   dependency
@@ -647,6 +640,13 @@ export class VariableClass implements VariableInterface {
           if (!shouldReceiveEvent(dependency.scope, e.payload.scope)) return
           if (dependency.skipIf?.(this, e.payload)) return
           const definition = dependency.definitionHandler?.(dependency, this, e.payload)
+          console.warn(
+            'reparse',
+            [dependency.scope, e.payload.scope],
+            [e.payload.key, this.id],
+            [this.t.meta.name, dependency.event.eventType, e.payload.level, definition]
+          )
+
           await this.maybeReparseAndPersist(
             `${dependency.event.eventType}_${dependency.eventId}`,
             e.payload.key,

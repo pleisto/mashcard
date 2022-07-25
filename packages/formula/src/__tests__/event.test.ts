@@ -8,18 +8,16 @@ import { fetchResult } from '../context'
 const [input] = buildTestCases(EventNames)
 
 describe('event', () => {
-  let ctx: Awaited<ReturnType<typeof makeContext>>
-  beforeEach(async () => {
-    ctx = await makeContext({
+  trackTodo(it, input.eventTestCases)
+
+  it.concurrent.each(input.eventTestCases)('$jestTitle', async args => {
+    const ctx = await makeContext({
       ...input.options,
       uuidFunction: index => uuid(),
       initializeOptions: { username: uuid() }
     })
-  })
 
-  trackTodo(it, input.eventTestCases)
-
-  it.each(input.eventTestCases)('$jestTitle', async args => {
+    console.log(args.jestTitle)
     jest.useRealTimers()
     const newCtx = { ...ctx, meta: ctx.buildMeta(args) }
     const parseResult = parse(newCtx)

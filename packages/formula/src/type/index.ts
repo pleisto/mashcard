@@ -769,7 +769,6 @@ export interface VariableInterface {
   isReadyT: boolean
   isNew: boolean
   id: string
-  currentUUID: string
   formulaContext: ContextInterface
   wholeFlattenVariableDependencies: () => VariableDependency[]
   wholeVariableDependencies: () => VariableDependency[]

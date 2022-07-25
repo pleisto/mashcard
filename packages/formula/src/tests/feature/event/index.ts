@@ -7,11 +7,11 @@ import { SpreadsheetEventTestCase } from './spreadsheetEvent'
 import { VariableEventTestCase } from './variableEvent'
 
 export const EventTestCases: TestCaseInterface[] = [
-  BlockEventTestCase,
-  SpreadsheetEventTestCase,
-  VariableEventTestCase,
-  ColumnEventTestCase,
-  RowEventTestCase,
+  // BlockEventTestCase,
+  // SpreadsheetEventTestCase,
+  // VariableEventTestCase,
+  // ColumnEventTestCase,
+  // RowEventTestCase,
   SpreadsheetDeadlockEventTestCase
 ]
 
