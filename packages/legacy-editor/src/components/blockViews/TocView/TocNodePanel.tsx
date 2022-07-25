@@ -79,7 +79,8 @@ const TocStyledItem = styled('div', {
   alignItems: 'start',
   display: 'flex',
   flexDirection: 'column',
-  width: '100%'
+  width: '100%',
+  paddingLeft: '1.25rem'
 })
 
 const ToggleIcon = styled(Right, {
@@ -88,7 +89,7 @@ const ToggleIcon = styled(Right, {
   position: 'absolute',
   transition: 'rotate .1s ease-out',
   top: '0',
-  left: '-1rem',
+  left: '-1.25rem',
   height: '1.5rem',
   display: 'flex',
   justifyContent: 'center',
