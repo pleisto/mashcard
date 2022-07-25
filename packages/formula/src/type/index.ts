@@ -631,11 +631,15 @@ interface BaseVariableValue {
   readonly success: boolean
   readonly result: AnyTypeResult
   readonly runtimeEventDependencies?: Array<EventDependency<FormulaEventPayload<any>>>
+  readonly runtimeVariableDependencies?: VariableDependency[]
+  readonly runtimeFlattenVariableDependencies?: VariableDependency[]
 }
 
 interface SuccessVariableValue extends BaseVariableValue {
   readonly success: true
   readonly runtimeEventDependencies: Array<EventDependency<FormulaEventPayload<any>>>
+  readonly runtimeVariableDependencies: VariableDependency[]
+  readonly runtimeFlattenVariableDependencies: VariableDependency[]
   readonly result: AnyTypeResult
 }
 
@@ -677,7 +681,20 @@ export interface EventScope {
 }
 
 export interface FormulaEventPayload<T> {
-  readonly key: string
+  readonly source: Array<{
+    id: string
+    type:
+      | 'dynamic'
+      | 'dependencyUpdate'
+      | 'reload'
+      | 'nameChange'
+      | 'nameDelete'
+      | 'columnChange'
+      | 'rowChange'
+      | 'spreadsheetInitialize'
+      | 'blockDelete'
+      | 'cellUpdate'
+  }>
   readonly level?: number
   readonly username: string
   readonly scope: EventScope | null
@@ -765,8 +782,9 @@ export interface VariableInterface {
   isReadyT: boolean
   isNew: boolean
   id: string
-  currentUUID: string
   formulaContext: ContextInterface
+  wholeFlattenVariableDependencies: () => VariableDependency[]
+  wholeVariableDependencies: () => VariableDependency[]
 
   buildFormula: (input?: FormulaDefinition) => Formula
   cleanup: () => Promise<void>

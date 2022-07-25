@@ -148,7 +148,7 @@ export class SpreadsheetClass implements SpreadsheetType {
             username: this._formulaContext.username,
             scope: { columns: changedColumnIds },
             namespaceId: this.namespaceId,
-            key: this.spreadsheetId,
+            source: [{ id: this.spreadsheetId, type: 'columnChange' }],
             meta: null
           })
         )
@@ -183,7 +183,7 @@ export class SpreadsheetClass implements SpreadsheetType {
             username: this._formulaContext.username,
             scope: { rows: changedRowIds },
             namespaceId: this.namespaceId,
-            key: this.spreadsheetId,
+            source: [{ id: this.spreadsheetId, type: 'rowChange' }],
             meta: null
           })
         )

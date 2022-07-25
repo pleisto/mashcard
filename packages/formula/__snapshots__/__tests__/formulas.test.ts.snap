@@ -23,6 +23,8 @@ Array [
           "type": "number",
         },
         "runtimeEventDependencies": Array [],
+        "runtimeFlattenVariableDependencies": Array [],
+        "runtimeVariableDependencies": Array [],
         "success": true,
       },
     },

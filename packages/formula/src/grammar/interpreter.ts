@@ -50,6 +50,8 @@ export class FormulaInterpreter extends InterpretCstVisitor {
   ctx: FunctionContext
   lazy: boolean = false
   runtimeEventDependencies: VariableParseResult['eventDependencies'] = []
+  runtimeVariableDependencies: VariableParseResult['variableDependencies'] = []
+  runtimeFlattenVariableDependencies: VariableParseResult['flattenVariableDependencies'] = []
 
   constructor({ ctx }: { ctx: FunctionContext }) {
     super()

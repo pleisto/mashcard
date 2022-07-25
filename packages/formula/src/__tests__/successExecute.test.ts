@@ -1,3 +1,4 @@
+import { generateVariable } from '../grammar'
 import { makeContext, trackTodo, ALL_TEST_CASE } from '../tests'
 import { matchObject } from '../tests/testMock'
 
@@ -48,6 +49,11 @@ describe('successExecute', () => {
           break
       }
     }
+
+    // Ensure value is not changed after save.
+    const variable = generateVariable({ formulaContext: ctx.formulaContext, t: tempT })
+    await variable.save()
+    expect(await variable.t.task.variableValue).toStrictEqual(value)
 
     jest.clearAllTimers()
   })

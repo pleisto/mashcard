@@ -1,6 +1,6 @@
 import { SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../events'
 import { CodeFragmentVisitor, FormulaInterpreter } from '../grammar'
-import { parseTrackCell } from '../grammar/dependency'
+import { interpretTrackCell, parseTrackCell } from '../grammar/dependency'
 import {
   AnyTypeResult,
   CodeFragment,
@@ -92,7 +92,10 @@ export class RowClass implements RowType {
       return { type: 'Error', result: { message: `Cell "${name}" not found`, type: 'runtime' } }
     }
 
-    return { type: 'Cell', result: this.newCell(cell, name) }
+    const cellObject = this.newCell(cell, name)
+    interpretTrackCell(interpreter, cellObject)
+
+    return { type: 'Cell', result: cellObject }
   }
 
   newCell(cell: Cell, columnKey: string): CellType {

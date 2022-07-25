@@ -34,24 +34,24 @@ const reduceTestCaseInput = (testCases: TestCaseInterface[]): TestCaseInput => {
       },
       dependencyTestCases: [
         ...prev.dependencyTestCases,
-        ...(curr.testCases.dependencyTestCases ?? []).map((s, index) => ({
+        ...(curr.testCases.dependencyTestCases ?? []).map((s, index, ary) => ({
           ...s,
           ...buildRequiredFields(
             curr,
             s,
-            `[${index}] ${s.name} ${s.testCases.map(s => `${JSON.stringify(s.action)}`).join(',')}`,
+            `[${index}/${ary.length}] ${s.name} ${s.testCases.map(s => `${JSON.stringify(s.action)}`).join(',')}`,
             ''
           )
         }))
       ],
       eventTestCases: [
         ...prev.eventTestCases,
-        ...(curr.testCases.eventTestCases ?? []).map((s, index) => ({
+        ...(curr.testCases.eventTestCases ?? []).map((s, index, ary) => ({
           ...s,
           ...buildRequiredFields(
             curr,
             s,
-            `[${index}] ${s.definition}`,
+            `[${index}/${ary.length}] ${s.definition}`,
             `${JSON.stringify(s.resultAfter)} ${JSON.stringify(s.events)}`
           )
         }))
