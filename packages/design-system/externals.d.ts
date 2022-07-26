@@ -1,3 +1,12 @@
+// If bundled with vite, the imported asset will be a url string
+// If bundled with next (webpack), the imported asset will be StaticImageData
+interface StaticImageData {
+  src: string
+  height: number
+  width: number
+  blurDataURL?: string
+}
+
 declare module '*.less' {
   const resource: { [key: string]: string }
   export = resource
@@ -20,19 +29,19 @@ declare module '*.mp4' {
 }
 
 declare module '*.png' {
-  const content: string
+  const content: string | StaticImageData
 
   export = content
 }
 
 declare module '*.jpg' {
-  const content: string
+  const content: string | StaticImageData
 
   export = content
 }
 
 declare module '*.webp' {
-  const content: string
+  const content: string | StaticImageData
 
   export = content
 }

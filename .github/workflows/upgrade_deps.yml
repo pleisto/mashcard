@@ -31,13 +31,13 @@ jobs:
         run: eval "yarn up $PATTERNS --mode=update-lockfile && yarn up $PATTERNS --recursive --mode=update-lockfile"
         env:
           # core-js: https://github.com/zloirock/core-js/issues/1110
-          PATTERNS: "'!(core-js-compat|core-js-pure|core-js)' '@!(mashcard)/*'"
+          PATTERNS: "'!(core-js-compat|core-js-pure|core-js)'"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.PAT_FOR_BOT_CREATED_PR }}
           title: 'chore(deps): upgrade dependencies'
-          body: This is an [auto-created](https://github.com/mashcard/mashcard/blob/main/.github/workflows/dependency_updater.yml) PR to upgrade dependencies.
+          body: This is an [auto-created](https://github.com/mashcard/mashcard/blob/main/.github/workflows/upgrade_deps.yml) PR to upgrade dependencies.
           commit-message: 'chore(deps): upgrade dependencies'
           branch: deps-automatic-upgrade
           labels: |

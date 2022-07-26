@@ -9,7 +9,11 @@ import fse from 'fs-extra'
 
 const program = new Command()
 const devSupportRoot = new URL('..', import.meta.url).pathname
-const monorepoRoot = path.resolve(devSupportRoot, '../..')
+let monorepoRoot = path.resolve(devSupportRoot, '../..')
+if (fse.existsSync(path.resolve(monorepoRoot, '../package.json'))) {
+  // If this repo is put inside another monorepo, we need to find the root
+  monorepoRoot = path.resolve(monorepoRoot, '..')
+}
 
 program
   .name('dev-support')
@@ -34,9 +38,8 @@ program
   .description('Run some post-setup steps required by @pdftron/webviewer')
   .action(() => {
     // https://www.pdftron.com/documentation/web/get-started/npm/#2-copy-static-assets
-    const srcDir = './node_modules/@pdftron/webviewer/public'
-    const targetDir = './apps/client-web/src/public/pdftron'
-    fse.copySync(path.resolve(monorepoRoot, srcDir), path.resolve(monorepoRoot, targetDir))
+    const targetDir = path.resolve(devSupportRoot, '../../apps/client-web/src/public/pdftron')
+    fse.copySync(path.resolve(monorepoRoot, './node_modules/@pdftron/webviewer/public'), targetDir)
     console.log(chalk.green(`Copied PDFTron static assets to ${targetDir}.`))
   })
 

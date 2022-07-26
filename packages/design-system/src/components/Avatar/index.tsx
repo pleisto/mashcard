@@ -106,7 +106,7 @@ const Avatar: ForwardRefRenderFunction<HTMLSpanElement, AvatarProps> = (props, r
   let childrenNode = src ?? (initialsObj ? <span>{initialsObj.text}</span> : null) ?? <User theme="filled" />
   if (typeof childrenNode === 'string') {
     if (!childrenNode) {
-      childrenNode = defaultAvatar
+      childrenNode = typeof defaultAvatar === 'string' ? defaultAvatar : defaultAvatar.src
     } else {
       childrenNode = childrenNode.length <= 4 ? childrenNode : <img src={childrenNode} alt={alt} />
     }
@@ -131,8 +131,7 @@ const Avatar: ForwardRefRenderFunction<HTMLSpanElement, AvatarProps> = (props, r
       default={!src && !initials}
       shape={shape}
       size={isCustomSize ? undefined : (size as AvatarSize)}
-      className={className}
-    >
+      className={className}>
       {childrenNode}
     </AvatarWrapper>
   )
