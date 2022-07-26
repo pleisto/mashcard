@@ -27,9 +27,6 @@ export interface SpreadsheetCellProps {
   block: BlockInput
   rowIdx: number
   columnIdx: number
-  columnSort: number
-  columnTitle: string | undefined
-  tableId: string
   spreadsheetId: string
   saveBlock: (block: BlockInput) => void
   width?: number
@@ -42,8 +39,6 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   block,
   rowIdx,
   columnIdx,
-  columnSort,
-  columnTitle,
   saveBlock,
   width,
   height
