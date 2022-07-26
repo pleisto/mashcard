@@ -52,6 +52,7 @@ exports[`CodeBlockView matches snapshot correctly 1`] = `
           >
             <div
               class="mc-c-dYMIXn mc-c-dYMIXn-ibGlfj-checked-true mc-c-dYMIXn-eVHRHK-size-sm mc-c-dYMIXn-gsmDXe-disabled-false"
+              data-testid="component-switch"
             >
               <div
                 class="mc-c-dENxiO"
