@@ -5,11 +5,9 @@ coverage/
 tmp/
 log/
 node_modules/
-/apps/server-monolith/public/
 .yarn/
 CHANGELOG.*
 *.env
-/tools/helm-charts/**/*.yaml
 .next/
 *.tsbuildinfo
 .eslintcache
@@ -18,3 +16,6 @@ CHANGELOG.*
 dist/
 storybook-static/
 target/
+
+/apps/server-monolith/public/
+/tools/helm-charts/**/*.yaml
