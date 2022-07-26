@@ -17,8 +17,11 @@
     }
   },
   "lint-staged": {
-    "*.{json,yml,yaml,md,mdx,graphql,gql,graphql,css,js,jsx,ts,tsx,code-workspace}": [
+    "*.{json,yml,yaml,md,mdx,graphql,gql,graphql,css,js,jsx,ts,tsx}": [
       "dev-support prettier --write"
+    ],
+    "*.code-workspace": [
+      "dev-support prettier --parser json --write"
     ],
     "packages/design-icons/assets/**/*.svg": [
       "yarn design-icons generate"
@@ -77,7 +80,7 @@
     "@testing-library/user-event": "^14.3.0",
     "@types/jest": "^28.1.6",
     "@types/jest-axe": "^3.5.4",
-    "@types/node": "^18.0.6",
+    "@types/node": "^18.6.1",
     "@types/rails__actioncable": "^6.1.6",
     "@types/rails__activestorage": "^7.0.1",
     "@types/react": "^18.0.15",
