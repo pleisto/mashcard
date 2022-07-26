@@ -8,7 +8,6 @@ describe('parser', () => {
   beforeAll(async () => {
     jest.useRealTimers()
     ctx = await makeContext(testCases.options)
-    jest.clearAllTimers()
   })
   it.each(
     [...testCases.successTestCases, ...testCases.errorTestCases].map(t => ({

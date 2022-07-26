@@ -17,7 +17,6 @@ describe('FormulaValue', () => {
   beforeAll(async () => {
     jest.useRealTimers()
     ctx = await makeContext(input.options)
-    jest.clearAllTimers()
 
     const editor = mockEditor({
       extensionManager: {

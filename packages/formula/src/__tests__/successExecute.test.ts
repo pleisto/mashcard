@@ -9,7 +9,6 @@ describe('successExecute', () => {
   beforeAll(async () => {
     jest.useRealTimers()
     ctx = await makeContext(testCases.options)
-    jest.clearAllTimers()
   })
 
   trackTodo(it, testCases.successTestCases)
@@ -54,7 +53,5 @@ describe('successExecute', () => {
     const variable = generateVariable({ formulaContext: ctx.formulaContext, t: tempT })
     await variable.save()
     expect(await variable.t.task.variableValue).toStrictEqual(value)
-
-    jest.clearAllTimers()
   })
 })

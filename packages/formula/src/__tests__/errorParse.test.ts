@@ -8,7 +8,6 @@ describe('errorParse', () => {
   beforeAll(async () => {
     jest.useRealTimers()
     ctx = await makeContext(testCases.options)
-    jest.clearAllTimers()
   })
 
   trackTodo(it, testCases.errorTestCases)

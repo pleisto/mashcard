@@ -8,7 +8,6 @@ describe('async', () => {
   beforeAll(async () => {
     jest.useRealTimers()
     ctx = await makeContext(input.options)
-    jest.clearAllTimers()
   })
 
   it.each(input.successTestCases)('$jestTitle', async args => {
@@ -23,7 +22,5 @@ describe('async', () => {
 
     const value = await tempT.task.variableValue
     expect(value.result.result).toEqual(args.result)
-
-    jest.clearAllTimers()
   })
 })

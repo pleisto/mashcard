@@ -11,7 +11,6 @@ describe('formulaType', () => {
   beforeAll(async () => {
     jest.useRealTimers()
     ctx = await makeContext(input.options)
-    jest.clearAllTimers()
   })
 
   it.each(input.basicTestCases)('$jestTitle', args => {
