@@ -17,6 +17,8 @@
 - [ctx](FormulaInterpreter.md#ctx)
 - [lazy](FormulaInterpreter.md#lazy)
 - [runtimeEventDependencies](FormulaInterpreter.md#runtimeeventdependencies)
+- [runtimeFlattenVariableDependencies](FormulaInterpreter.md#runtimeflattenvariabledependencies)
+- [runtimeVariableDependencies](FormulaInterpreter.md#runtimevariabledependencies)
 
 ### Methods
 
@@ -73,7 +75,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L54)
+[packages/formula/src/grammar/interpreter.ts:56](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L56)
 
 ## Properties
 
@@ -105,6 +107,26 @@ InterpretCstVisitor.constructor
 
 [packages/formula/src/grammar/interpreter.ts:52](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L52)
 
+---
+
+### <a id="runtimeflattenvariabledependencies" name="runtimeflattenvariabledependencies"></a> runtimeFlattenVariableDependencies
+
+• **runtimeFlattenVariableDependencies**: [`VariableDependency`](../interfaces/VariableDependency.md)[] = `[]`
+
+#### Defined in
+
+[packages/formula/src/grammar/interpreter.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L54)
+
+---
+
+### <a id="runtimevariabledependencies" name="runtimevariabledependencies"></a> runtimeVariableDependencies
+
+• **runtimeVariableDependencies**: [`VariableDependency`](../interfaces/VariableDependency.md)[] = `[]`
+
+#### Defined in
+
+[packages/formula/src/grammar/interpreter.ts:53](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L53)
+
 ## Methods
 
 ### <a id="arguments" name="arguments"></a> Arguments
@@ -124,7 +146,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:561](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L561)
+[packages/formula/src/grammar/interpreter.ts:563](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L563)
 
 ---
 
@@ -146,7 +168,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:455](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L455)
+[packages/formula/src/grammar/interpreter.ts:457](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L457)
 
 ---
 
@@ -169,7 +191,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:467](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L467)
+[packages/formula/src/grammar/interpreter.ts:469](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L469)
 
 ---
 
@@ -191,7 +213,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:338](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L338)
+[packages/formula/src/grammar/interpreter.ts:340](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L340)
 
 ---
 
@@ -216,7 +238,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:441](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L441)
+[packages/formula/src/grammar/interpreter.ts:443](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L443)
 
 ---
 
@@ -238,7 +260,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:327](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L327)
+[packages/formula/src/grammar/interpreter.ts:329](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L329)
 
 ---
 
@@ -259,7 +281,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:153](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L153)
+[packages/formula/src/grammar/interpreter.ts:155](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L155)
 
 ---
 
@@ -280,7 +302,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:131](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L131)
+[packages/formula/src/grammar/interpreter.ts:133](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L133)
 
 ---
 
@@ -301,7 +323,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:283](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L283)
+[packages/formula/src/grammar/interpreter.ts:285](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L285)
 
 ---
 
@@ -326,7 +348,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:248](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L248)
+[packages/formula/src/grammar/interpreter.ts:250](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L250)
 
 ---
 
@@ -347,7 +369,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:375](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L375)
+[packages/formula/src/grammar/interpreter.ts:377](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L377)
 
 ---
 
@@ -368,7 +390,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:186](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L186)
+[packages/formula/src/grammar/interpreter.ts:188](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L188)
 
 ---
 
@@ -389,7 +411,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L76)
+[packages/formula/src/grammar/interpreter.ts:78](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L78)
 
 ---
 
@@ -410,7 +432,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:98](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L98)
+[packages/formula/src/grammar/interpreter.ts:100](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L100)
 
 ---
 
@@ -431,7 +453,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:120](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L120)
+[packages/formula/src/grammar/interpreter.ts:122](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L122)
 
 ---
 
@@ -456,7 +478,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:346](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L346)
+[packages/formula/src/grammar/interpreter.ts:348](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L348)
 
 ---
 
@@ -477,7 +499,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:87](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L87)
+[packages/formula/src/grammar/interpreter.ts:89](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L89)
 
 ---
 
@@ -498,7 +520,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L65)
+[packages/formula/src/grammar/interpreter.ts:67](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L67)
 
 ---
 
@@ -519,7 +541,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L109)
+[packages/formula/src/grammar/interpreter.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L111)
 
 ---
 
@@ -540,7 +562,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:197](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L197)
+[packages/formula/src/grammar/interpreter.ts:199](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L199)
 
 ---
 
@@ -561,7 +583,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:394](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L394)
+[packages/formula/src/grammar/interpreter.ts:396](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L396)
 
 ---
 
@@ -582,7 +604,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:142](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L142)
+[packages/formula/src/grammar/interpreter.ts:144](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L144)
 
 ---
 
@@ -603,7 +625,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:164](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L164)
+[packages/formula/src/grammar/interpreter.ts:166](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L166)
 
 ---
 
@@ -624,7 +646,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:316](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L316)
+[packages/formula/src/grammar/interpreter.ts:318](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L318)
 
 ---
 
@@ -645,7 +667,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:271](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L271)
+[packages/formula/src/grammar/interpreter.ts:273](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L273)
 
 ---
 
@@ -666,7 +688,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:175](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L175)
+[packages/formula/src/grammar/interpreter.ts:177](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L177)
 
 ---
 
@@ -687,7 +709,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:294](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L294)
+[packages/formula/src/grammar/interpreter.ts:296](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L296)
 
 ---
 
@@ -708,7 +730,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:305](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L305)
+[packages/formula/src/grammar/interpreter.ts:307](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L307)
 
 ---
 
@@ -730,7 +752,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:387](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L387)
+[packages/formula/src/grammar/interpreter.ts:389](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L389)
 
 ---
 
@@ -758,7 +780,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:209](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L209)
+[packages/formula/src/grammar/interpreter.ts:211](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L211)
 
 ---
 
@@ -780,7 +802,7 @@ InterpretCstVisitor.constructor
 
 #### Defined in
 
-[packages/formula/src/grammar/interpreter.ts:61](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L61)
+[packages/formula/src/grammar/interpreter.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/interpreter.ts#L63)
 
 ---
 

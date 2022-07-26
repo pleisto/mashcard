@@ -11,11 +11,9 @@ import {
 } from '@mashcard/schema'
 import { FormulaBlockRender, getFormulaContext, useFormula, UseFormulaInput } from '../FormulaView'
 import {
-  columnDisplayIndex,
   display,
   dumpDisplayResultForDisplay,
   fetchResult,
-  SpreadsheetReloadViaId,
   VariableDisplayData,
   VariableInterface
 } from '@mashcard/formula'
@@ -32,6 +30,7 @@ export interface SpreadsheetCellProps {
   columnSort: number
   columnTitle: string | undefined
   tableId: string
+  spreadsheetId: string
   saveBlock: (block: BlockInput) => void
   width?: number
   height?: number
@@ -39,7 +38,7 @@ export interface SpreadsheetCellProps {
 
 export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   context,
-  tableId,
+  spreadsheetId,
   block,
   rowIdx,
   columnIdx,
@@ -91,27 +90,10 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       const newBlock = { ...block, text: value }
       setCurrentBlock(newBlock)
       saveBlock(newBlock)
-
-      if (!formulaContext || !rootId) return
-
-      const result = MashcardEventBus.dispatch(
-        SpreadsheetReloadViaId({
-          id: tableId,
-          scope: {
-            rows: [String(rowIdx + 1), rowId],
-            columns: [block.data.columnId, columnDisplayIndex(columnSort), ...(columnTitle ? [columnTitle] : [])]
-          },
-          meta: null,
-          namespaceId: rootId,
-          username: formulaContext.username,
-          key: variable?.currentUUID ?? tableId
-        })
-      )
-      await Promise.all(result)
       // console.log('dispatch update cell', variable)
       // setEditing(false)
     },
-    [formulaContext, block, cellId, rootId, saveBlock, tableId, rowIdx, rowId, columnSort, columnTitle]
+    [formulaContext, block, cellId, rootId, saveBlock]
   )
 
   const meta: UseFormulaInput['meta'] = {
@@ -120,14 +102,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     input: '',
     position: 0,
     name: formulaName,
-    richType: {
-      type: 'spreadsheet',
-      meta: {
-        spreadsheetId: tableId,
-        columnId,
-        rowId
-      }
-    }
+    richType: { type: 'spreadsheet', meta: { spreadsheetId, columnId, rowId } }
   }
 
   const { temporaryVariableT, savedVariableT, formulaEditor, onSaveFormula, commitFormula, completion } = useFormula({
@@ -136,8 +111,8 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     formulaContext
   })
 
-  const eventId = `${tableId},${cellId}`
-  const eventIdx = `${tableId},${rowIdx},${columnIdx}`
+  const eventId = `${spreadsheetId},${cellId}`
+  const eventIdx = `${spreadsheetId},${rowIdx},${columnIdx}`
 
   React.useEffect(() => {
     const subscriptions = [

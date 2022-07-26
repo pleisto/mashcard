@@ -54,7 +54,7 @@ export const dispatchFormulaBlockNameChange = async ({
     FormulaBlockNameModifiedWithUsername({
       id,
       namespaceId: id,
-      key: id,
+      source: [{ id, type: 'nameChange' }],
       scope: null,
       username,
       meta: newName
@@ -63,7 +63,14 @@ export const dispatchFormulaBlockNameChange = async ({
   await Promise.all(result1)
 
   const result2 = MashcardEventBus.dispatch(
-    FormulaBlockNameChangedTrigger({ id, namespaceId: id, key: id, scope: null, username, meta: newName })
+    FormulaBlockNameChangedTrigger({
+      id,
+      namespaceId: id,
+      source: [{ id, type: 'nameChange' }],
+      scope: null,
+      username,
+      meta: newName
+    })
   )
   await Promise.all(result2)
 }

@@ -19,7 +19,8 @@ const createSwcLoader = () => {
           react: {
             runtime: 'automatic'
           }
-        }
+        },
+        externalHelpers: false
       }
     }
   }

@@ -242,7 +242,7 @@ RowType.handleCodeFragments
 
 #### Defined in
 
-[packages/formula/src/controls/row.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/row.ts#L106)
+[packages/formula/src/controls/row.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/row.ts#L109)
 
 ---
 
@@ -310,7 +310,7 @@ RowType.newCell
 
 #### Defined in
 
-[packages/formula/src/controls/row.ts:98](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/row.ts#L98)
+[packages/formula/src/controls/row.ts:101](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/row.ts#L101)
 
 ---
 

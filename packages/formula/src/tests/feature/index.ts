@@ -1,6 +1,5 @@
 import { TestCaseInterface } from '../testType'
 import { AsyncTestCase } from './async'
-import { DependencyTestCase } from './dependency'
 import { FunctionCallTestCase } from './functionCall'
 import { ParserTestCase } from './parser'
 import { OtherTestCase } from './other'
@@ -12,6 +11,7 @@ import { CompleteTestCase } from './complete'
 import { FormatTestCase } from './format'
 import { BasicTestCase } from './basic'
 import { SpreadsheetVariableTestCase } from './spreadsheetVariable'
+import { DependencyTestCase } from './dependency'
 
 export const FeatureTestCases: TestCaseInterface[] = [
   FunctionCallTestCase,
@@ -22,13 +22,14 @@ export const FeatureTestCases: TestCaseInterface[] = [
   ParserTestCase,
   AsyncTestCase,
   FormatTestCase,
-  DependencyTestCase,
   OtherTestCase,
   ...BasicTestCase,
   ...EventTestCases,
-  ...CompleteTestCase
+  ...CompleteTestCase,
+  ...DependencyTestCase
 ]
 
 export { BasicNames } from './basic'
 export { CompleteNames } from './complete'
 export { EventNames } from './event'
+export { DependencyNames } from './dependency'

@@ -4,8 +4,10 @@ import { SpreadsheetUpdateNameViaId, SpreadsheetReloadViaId, SpreadsheetUpdateNa
 import { EventDependency, VariableInterface } from '../type'
 import { CodeFragmentVisitor } from './codeFragment'
 import { codeFragments2definition } from './convert'
+import { FormulaInterpreter } from './interpreter'
 
 type Visitor = CodeFragmentVisitor
+type Interpreter = FormulaInterpreter
 
 /**
  * Track nameDependencies when parse name
@@ -74,6 +76,25 @@ export const parseTrackCell = (visitor: Visitor, cell: Cell): void => {
   }
 }
 
+export const interpretTrackCell = (interpreter: Interpreter, cell: Cell): void => {
+  const variable = interpreter.ctx.formulaContext.findVariableById(cell.namespaceId, cell.variableId)
+  if (variable) {
+    interpretTrackVariable(interpreter, variable)
+  } else {
+    interpreter.runtimeVariableDependencies.push({ namespaceId: cell.namespaceId, variableId: cell.variableId })
+    interpreter.runtimeFlattenVariableDependencies.push({ namespaceId: cell.namespaceId, variableId: cell.variableId })
+  }
+}
+
+export const interpretTrackVariable = (interpreter: Interpreter, variable: VariableInterface): void => {
+  const { namespaceId, variableId } = variable.t.meta
+  interpreter.runtimeVariableDependencies.push({ namespaceId, variableId })
+  interpreter.runtimeFlattenVariableDependencies.push(...variable.wholeFlattenVariableDependencies(), {
+    namespaceId,
+    variableId
+  })
+}
+
 /**
  * Track variableDependencies and flattenVariableDependencies when parse variable
  */
@@ -93,8 +114,5 @@ export const parseTrackVariable = (visitor: Visitor, variable: VariableInterface
   const { namespaceId, variableId } = variable.t.meta
 
   visitor.variableDependencies.push({ namespaceId, variableId })
-  visitor.flattenVariableDependencies.push(...variable.t.variableParseResult.flattenVariableDependencies, {
-    namespaceId,
-    variableId
-  })
+  visitor.flattenVariableDependencies.push(...variable.wholeFlattenVariableDependencies(), { namespaceId, variableId })
 }

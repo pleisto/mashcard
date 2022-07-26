@@ -14,7 +14,7 @@ import {
 import { codeFragments2definition, CodeFragmentVisitor, FormulaInterpreter } from '../grammar'
 import { CellClass } from '.'
 import { SpreadsheetReloadViaId, SpreadsheetUpdateNamePayload } from '../events'
-import { parseTrackCell } from '../grammar/dependency'
+import { interpretTrackCell, parseTrackCell } from '../grammar/dependency'
 
 export class ColumnClass implements ColumnType {
   columnId: ColumnId
@@ -144,7 +144,12 @@ export class ColumnClass implements ColumnType {
   }
 
   async handleInterpret(interpreter: FormulaInterpreter, name: string): Promise<AnyTypeResult> {
-    return this.findCellByNumber(interpreter.ctx.meta, name, 'interpret')
+    const result = this.findCellByNumber(interpreter.ctx.meta, name, 'interpret')
+    if (result.type === 'Cell') {
+      interpretTrackCell(interpreter, result.result)
+    }
+
+    return result
   }
 
   handleCodeFragments(

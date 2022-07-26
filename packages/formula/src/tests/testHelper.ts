@@ -254,11 +254,12 @@ export const makeContext = async (options: MakeContextOptions): Promise<MakeCont
   }
 
   const buildMeta: MakeContextResult['buildMeta'] = args => {
+    const variableId = fetchUUIDSymbol(args.variableId, uuidState) ?? uuid()
     return {
-      variableId: fetchUUIDSymbol(args.variableId, uuidState) ?? uuid(),
+      variableId,
       input: args.definition!,
       namespaceId: fetchUUIDSymbol(args.namespaceId, uuidState) ?? firstNamespaceId ?? uuid(),
-      name: args.name ?? 'testInput',
+      name: args.name ?? `testInput${variableId}`.replaceAll('-', ''),
       position: args.position ?? 0,
       richType: args.richType ?? { type: 'normal' }
     }
