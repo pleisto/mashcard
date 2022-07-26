@@ -85,7 +85,7 @@ jobs:
           fetch-depth: 2 # Retrieve the preceding commit to calculate changed files
       - name: Get changed ruby/rust files
         id: changed-ruby-or-rust-files
-        uses: tj-actions/changed-files@v23
+        uses: tj-actions/changed-files@v24
         with:
           files: |
             **/*.rb
@@ -96,19 +96,19 @@ jobs:
             **/Cargo.lock
       - name: Get changed database migrations
         id: changed-db-migrations
-        uses: tj-actions/changed-files@v23
+        uses: tj-actions/changed-files@v24
         with:
           files: |
             apps/server-monolith/db/migrate
       - name: Get changed GraphQL type definitions (ruby)
         id: changed-gql-typeds-ruby
-        uses: tj-actions/changed-files@v23
+        uses: tj-actions/changed-files@v24
         with:
           files: |
             apps/server-monolith/app/graphql
       - name: Get changed GraphQL type definitions (ts)
         id: changed-gql-typeds-ts
-        uses: tj-actions/changed-files@v23
+        uses: tj-actions/changed-files@v24
         with:
           files: |
             **/graphql.ts
