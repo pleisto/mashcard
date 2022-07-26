@@ -5,7 +5,7 @@ import { FC, useContext } from 'react'
 import { useGetPodsQuery } from '@/MashcardGraphQL'
 import { PodCard } from '../../_shared/PodCard'
 import { SettingsContext } from './SettingContext'
-import { useSettingsI18n } from './useSettingsI18n'
+import { useMetaI18n } from '../../_shared/useMetaI18n'
 
 const PodSwitcher = styled('div', {
   display: 'flex',
@@ -24,7 +24,7 @@ const PodSwitcher = styled('div', {
 })
 
 export const SwitchSettingPod: FC = () => {
-  const { t } = useSettingsI18n()
+  const { t } = useMetaI18n()
   const { pod } = useContext(SettingsContext)!
   const { loading, data } = useGetPodsQuery()
 

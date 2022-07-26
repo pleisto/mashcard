@@ -1,12 +1,12 @@
 import { FC } from 'react'
-import { NodeViewContent } from '../../../tiptapRefactor'
 import { BlockContainer } from '../BlockContainer'
 import { BlockViewProps } from '../../../extensions/common'
 import { BulletList, OrderedList, TaskList } from '../../../extensions'
 import { orderedListStyles, bulletListStyles, taskListStyles } from './ListView.style'
+import { useNodeContent } from '@mashcard/editor'
 
 export const ListView: FC<BlockViewProps<{}, {}>> = ({ deleteNode, node, getPos }) => {
-  const as = node.type.name === OrderedList.name ? 'ol' : 'ul'
+  const Tag = node.type.name === OrderedList.name ? 'ol' : 'ul'
 
   let className = ''
   if (node.type.name === OrderedList.name) {
@@ -17,6 +17,8 @@ export const ListView: FC<BlockViewProps<{}, {}>> = ({ deleteNode, node, getPos 
     className = taskListStyles()
   }
 
+  const nodeContentRef = useNodeContent<HTMLOListElement>()
+
   return (
     <BlockContainer
       editable="custom"
@@ -24,9 +26,8 @@ export const ListView: FC<BlockViewProps<{}, {}>> = ({ deleteNode, node, getPos 
       className={className}
       actionOptions={['cut', 'copy', 'delete']}
       deleteNode={deleteNode}
-      getPos={getPos}
-    >
-      <NodeViewContent as={as} data-task-list={TaskList.name === node.type.name ? '' : undefined} />
+      getPos={getPos}>
+      <Tag ref={nodeContentRef} data-list-view="" />
     </BlockContainer>
   )
 }

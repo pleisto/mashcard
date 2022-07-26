@@ -9,10 +9,12 @@ import {
 import { Editor as ExtendedEditor } from './Editor'
 import { Node as ProseMirrorNode } from 'prosemirror-model'
 import { Decoration, NodeView as ProseMirrorNodeView } from 'prosemirror-view'
-import { FunctionComponent } from 'react'
+import { ComponentType, createElement, FC, FunctionComponent } from 'react'
 
 import { ReactRenderer } from './ReactRenderer'
 import { ReactNodeViewContext, ReactNodeViewContextProps } from './useReactNodeView'
+
+import { ReactNodeView } from './ReactNodeView'
 
 export interface ReactNodeViewRendererOptions extends NodeViewRendererOptions {
   update:
@@ -26,9 +28,10 @@ export interface ReactNodeViewRendererOptions extends NodeViewRendererOptions {
     | null
   as?: string
   className?: string
+  contentEditable?: boolean
 }
 
-class ReactNodeView extends NodeView<FunctionComponent, Editor, ReactNodeViewRendererOptions> {
+class LegacyReactNodeView extends NodeView<FunctionComponent, Editor, ReactNodeViewRendererOptions> {
   declare contentDOMElement: HTMLElement | null
   declare renderer: ReactRenderer | null
 
@@ -170,7 +173,10 @@ class ReactNodeView extends NodeView<FunctionComponent, Editor, ReactNodeViewRen
   }
 }
 
-export function ReactNodeViewRenderer(
+/**
+ * @deprecated
+ */
+export function LegacyReactNodeViewRenderer(
   component: any,
   options?: Partial<ReactNodeViewRendererOptions>
 ): NodeViewRenderer {
@@ -182,6 +188,28 @@ export function ReactNodeViewRenderer(
       return {}
     }
 
-    return new ReactNodeView(component, props, options) as unknown as ProseMirrorNodeView
+    return new LegacyReactNodeView(component, props, options) as unknown as ProseMirrorNodeView
+  }
+}
+
+export function ReactNodeViewRenderer(
+  component: ComponentType<any>,
+  options?: Partial<ReactNodeViewRendererOptions>
+): NodeViewRenderer {
+  return (props: NodeViewRendererProps) => {
+    // try to get the parent component
+    // this is important for vue devtools to show the component hierarchy correctly
+    // maybe it’s `undefined` because <editor-content> isn’t rendered yet
+    const editor = props.editor as ExtendedEditor
+    if (!editor.updatePortal) {
+      return {}
+    }
+
+    const nodeViewComponent: FC<NodeViewProps> = props => createElement(component, props)
+
+    return new ReactNodeView(editor, props, options ?? {}, nodeViewComponent, {
+      set: editor.updatePortal,
+      remove: editor.removePortal!
+    })
   }
 }

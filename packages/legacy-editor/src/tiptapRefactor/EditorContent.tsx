@@ -46,6 +46,9 @@ export const EditorContent: FC<EditorContentProps> = ({ editor, ...props }) => {
         }
       })
     }
+    ;(editor as ExtendEditor).removePortal = (id: string) => {
+      setNodePortals(nodePortals => nodePortals.filter(portal => portal.id !== id))
+    }
 
     setTimeout(() => {
       editor.createNodeViews()

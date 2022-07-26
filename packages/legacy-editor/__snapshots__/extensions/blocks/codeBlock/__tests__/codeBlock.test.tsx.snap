@@ -10,10 +10,10 @@ exports[`CodeBlock renders CodeBlock correctly 1`] = `
       translate="no"
     >
       <div
-        class="react-renderer node-codeBlock"
+        contenteditable="true"
       >
         <div
-          class="mc-c-bxRahZ mc-c-eNvXfk"
+          class="mc-c-gSKecW mc-c-kMAtnc"
           data-node-view-wrapper=""
           style="white-space: normal; pointer-events: unset;"
         >
@@ -80,38 +80,31 @@ exports[`CodeBlock renders CodeBlock correctly 1`] = `
             </div>
             <pre
               class="line-numbers language-typescript"
+              data-placeholder=""
               spellcheck="false"
             >
               <code
-                as="code"
                 class="undefined language-typescript"
-                data-node-view-content=""
-                data-placeholder=""
-                style="white-space: pre-wrap;"
               >
                 <div
-                  style="white-space: inherit;"
-                >
-                  <div
-                    class="line-numbers-rows ProseMirror-widget"
-                  />
-                        
-
-                  <div
-                    class="line-numbers-rows ProseMirror-widget"
-                  />
-                          code content
-
-                  <div
-                    class="line-numbers-rows ProseMirror-widget"
-                  />
-                        
-
-                  <div
-                    class="line-numbers-rows ProseMirror-widget"
-                  />
+                  class="line-numbers-rows ProseMirror-widget"
+                />
                       
-                </div>
+
+                <div
+                  class="line-numbers-rows ProseMirror-widget"
+                />
+                        code content
+
+                <div
+                  class="line-numbers-rows ProseMirror-widget"
+                />
+                      
+
+                <div
+                  class="line-numbers-rows ProseMirror-widget"
+                />
+                    
               </code>
             </pre>
           </div>

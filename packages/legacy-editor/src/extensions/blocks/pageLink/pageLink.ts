@@ -54,7 +54,7 @@ export const PageLink = createBlock<PageLinkOptions, PageLinkAttributes>({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(PageLinkView)
+    return ReactNodeViewRenderer(PageLinkView, { as: 'span', contentEditable: false })
   },
 
   addCommands() {

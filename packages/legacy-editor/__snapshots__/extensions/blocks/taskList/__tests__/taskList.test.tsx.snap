@@ -10,54 +10,47 @@ exports[`TaskList renders TaskList correctly 1`] = `
       translate="no"
     >
       <div
-        class="react-renderer node-taskList"
+        contenteditable="true"
       >
         <div
-          class="mc-c-divPrt"
+          class="mc-c-dytFtL"
           data-node-view-wrapper=""
           style="white-space: normal; pointer-events: unset;"
         >
           <ul
-            as="ul"
-            data-node-view-content=""
-            data-task-list=""
-            style="white-space: pre-wrap;"
+            data-list-view=""
           >
-            <div
-              style="white-space: inherit;"
+            <li
+              data-checked="true"
             >
-              <li
-                data-checked="true"
-              >
-                <label>
-                  <input
-                    checked="checked"
-                    type="checkbox"
-                  />
-                  <span />
-                </label>
-                <div>
-                  <p>
-                    A list item
-                  </p>
-                </div>
-              </li>
-              <li
-                data-checked="false"
-              >
-                <label>
-                  <input
-                    type="checkbox"
-                  />
-                  <span />
-                </label>
-                <div>
-                  <p>
-                    And another one
-                  </p>
-                </div>
-              </li>
-            </div>
+              <label>
+                <input
+                  checked="checked"
+                  type="checkbox"
+                />
+                <span />
+              </label>
+              <div>
+                <p>
+                  A list item
+                </p>
+              </div>
+            </li>
+            <li
+              data-checked="false"
+            >
+              <label>
+                <input
+                  type="checkbox"
+                />
+                <span />
+              </label>
+              <div>
+                <p>
+                  And another one
+                </p>
+              </div>
+            </li>
           </ul>
         </div>
       </div>

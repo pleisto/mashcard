@@ -1,9 +1,10 @@
 import { FC } from 'react'
-import { NodeViewContent } from '../../../tiptapRefactor'
 import { BlockContainer } from '../BlockContainer'
 import { BlockViewProps } from '../../../extensions/common'
 import { useEditorI18n } from '../../../hooks'
 import { css, theme } from '@mashcard/design-system'
+import { useNodeContent } from '@mashcard/editor'
+import { BlockquoteAttributes, BlockquoteOptions } from '../../../extensions'
 
 const placeholderStyle = css({
   '&:before': {
@@ -19,11 +20,17 @@ const placeholderStyle = css({
   }
 })
 
-export const BlockquoteView: FC<BlockViewProps<{}, {}>> = ({ deleteNode, node, getPos }) => {
+export const BlockquoteView: FC<BlockViewProps<BlockquoteOptions, BlockquoteAttributes>> = ({
+  deleteNode,
+  node,
+  getPos
+}) => {
   const [t] = useEditorI18n()
   const isEmpty = node.textContent.length === 0
   const placeholder = isEmpty ? t(`placeholder.blockquote`) : ''
   const placeholderClassName = placeholderStyle()
+
+  const nodeContentRef = useNodeContent<HTMLQuoteElement>()
 
   return (
     <BlockContainer
@@ -31,9 +38,8 @@ export const BlockquoteView: FC<BlockViewProps<{}, {}>> = ({ deleteNode, node, g
       node={node}
       actionOptions={['cut', 'copy', 'delete']}
       deleteNode={deleteNode}
-      getPos={getPos}
-    >
-      <NodeViewContent as="blockquote" data-placeholder={placeholder} className={placeholderClassName} />
+      getPos={getPos}>
+      <blockquote ref={nodeContentRef} data-placeholder={placeholder} className={placeholderClassName} />
     </BlockContainer>
   )
 }

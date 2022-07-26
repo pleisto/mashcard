@@ -54,7 +54,7 @@ export const Formula = createBlock<FormulaOptions, FormulaAttributes>({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(FormulaBlock)
+    return ReactNodeViewRenderer(FormulaBlock, { as: 'span', contentEditable: false })
   },
 
   addCommands() {

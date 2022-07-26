@@ -29,4 +29,4 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:802](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L802)
+[packages/formula/src/type/index.ts:811](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L811)

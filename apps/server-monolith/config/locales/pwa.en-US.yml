@@ -1,9 +1,9 @@
 en-US:
   meta:
     personal_pod_desc: My Pod
+    group_pod_desc: Team Pod
   settings:
     app_title: MashCard Settings
-    group_pod_desc: Team Pod
     errors:
       invalid_operation_type: Invalid operation type
     menu:

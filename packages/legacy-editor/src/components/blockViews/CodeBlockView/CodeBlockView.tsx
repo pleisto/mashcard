@@ -1,7 +1,6 @@
 import { FC, useState } from 'react'
 import { LineDown, Check } from '@mashcard/design-icons'
 import { Menu, Input, Popover, Switch, styled, theme, cx } from '@mashcard/design-system'
-import { NodeViewContent } from '../../../tiptapRefactor'
 import { BlockContainer } from '../BlockContainer'
 import {
   highlightStyle,
@@ -16,6 +15,7 @@ import { CodeBlockAttributes } from '../../../extensions'
 import { languageNames } from '../../../extensions/blocks/codeBlock/refractorLanguagesBundle'
 import { useEditorI18n } from '../../../hooks'
 import { BlockActionOptions } from '../BlockActions'
+import { useNodeContent } from '@mashcard/editor'
 
 const LanguageChecked = styled(Check, {
   fontSize: '1rem',
@@ -79,8 +79,7 @@ const LanguageSelect: FC<ILanguageSelect> = (props: ILanguageSelect) => {
       compact={true}
       getPopupContainer={element => element}
       content={menu}
-      destroyTooltipOnHide={true}
-    >
+      destroyTooltipOnHide={true}>
       <div role="tab" tabIndex={0} onClick={updateVisible} onKeyDown={updateVisible}>
         {t(`code_block.languages.${language}`)} <LineDown />
       </div>
@@ -103,6 +102,7 @@ export const CodeBlockView: FC<CodeBlockViewProps> = ({ node, updateAttributes, 
   const [t] = useEditorI18n()
   const isEmpty = node.textContent.length === 0
   const placeholder = isEmpty ? t(`placeholder.code_block`) : ''
+  const nodeContentRef = useNodeContent()
 
   return (
     <BlockContainer
@@ -111,8 +111,7 @@ export const CodeBlockView: FC<CodeBlockViewProps> = ({ node, updateAttributes, 
       className={cx(highlightStyle(), placeholderStyle())}
       getPos={getPos}
       deleteNode={deleteNode}
-      actionOptions={actionOptions}
-    >
+      actionOptions={actionOptions}>
       <CodeContainer>
         <ViewModeBar>
           <LanguageSelect language={language ?? defaultLanguage} updateAttributes={updateAttributes} />
@@ -121,11 +120,13 @@ export const CodeBlockView: FC<CodeBlockViewProps> = ({ node, updateAttributes, 
             <Switch checked={!!autoWrap} size="sm" onChange={onAutoWrapChange} />
           </SwitchContainer>
         </ViewModeBar>
-        <pre className={`line-numbers language-${language ?? defaultLanguage}`} spellCheck={false}>
-          <NodeViewContent
+        <pre
+          className={`line-numbers language-${language ?? defaultLanguage}`}
+          spellCheck={false}
+          data-placeholder={placeholder}>
+          <code
+            ref={nodeContentRef}
             className={`${autoWrap ? undefined : CodeScroll()} language-${language ?? defaultLanguage}`}
-            as="code"
-            data-placeholder={placeholder}
           />
         </pre>
       </CodeContainer>
