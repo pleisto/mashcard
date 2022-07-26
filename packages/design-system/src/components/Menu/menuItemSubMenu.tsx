@@ -91,6 +91,10 @@ const SubMenuItem = React.forwardRef<HTMLLIElement, MenuItemSubMenuProps>((props
   )
 })
 
+/**
+ *
+ * @deprecated This component is planned to be abandoned. Use the PopoverN component if needed to implement
+ */
 export const MenuItemSubMenu: React.FC<MenuItemSubMenuProps> = props => {
   const menuProps = React.useContext(MenuContext)
   const value = React.useMemo<SubMenuItemContextValue>(

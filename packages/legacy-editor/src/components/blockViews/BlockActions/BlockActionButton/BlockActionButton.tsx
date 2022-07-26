@@ -6,7 +6,6 @@ import { useBlockContext } from '../../../../hooks/useBlockContext'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { useEditorContext } from '../../../../hooks'
 import { BlockSelector, BlockSelectorProps } from '../../../ui/BlockSelector'
-
 export interface BlockActionButtonProps extends Omit<BlockActionsMenuProps, 'onClose'> {
   className?: string
   children?: ReactNode

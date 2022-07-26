@@ -2,14 +2,19 @@ import { theme, styled } from '../../../themes'
 
 export const PopoverWrapper = styled('div', {
   position: 'relative',
-  display: 'inline'
+  display: 'inline',
 })
 
 export const ChildWrapper = styled('button', {
   position: 'relative',
   border: 'none',
   background: 'transparent',
-  padding: 0
+  padding: 0,
+  textAlign: 'left',
+  '&:focus-visible': {
+    outline: 'none',
+    border: 'none'
+  }
 })
 
 export const ContentWrapper = styled('div', {
@@ -23,5 +28,6 @@ export const ContentWrapper = styled('div', {
   minWidth: '10rem',
   // The outline here should appear internally
   outline: `0.2px solid ${theme.colors.white}`,
-  outlineOffset: '-0.2px'
+  outlineOffset: '-0.2px',
+  textAlign: 'left',
 })
