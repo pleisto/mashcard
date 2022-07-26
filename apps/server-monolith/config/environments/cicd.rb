@@ -82,4 +82,8 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  # https://edgeguides.rubyonrails.org/configuring.html#config-action-controller-default-protect-from-forgery
+  # Disable CSRF protection for development / test / cicd.
+  config.action_controller.default_protect_from_forgery = false
 end

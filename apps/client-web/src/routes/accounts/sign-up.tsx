@@ -80,9 +80,18 @@ export const SignUp: React.FC = () => {
   const form = Form.useForm<UserCreateInput>({
     mode: 'onBlur',
     reValidateMode: 'onBlur',
-    yup: hasFederatedIdentity ? basicValidation : emailPasswordFormValidation,
-    defaultValues: initialValues
+    yup: hasFederatedIdentity ? basicValidation : emailPasswordFormValidation
   })
+
+  // https://react-hook-form.com/api/useform/reset
+  React.useEffect(() => {
+    form.reset({
+      domain: initialValues.domain,
+      name: initialValues.name,
+      locale: initialValues.locale,
+      timezone: initialValues.timezone
+    })
+  }, [form, initialValues.domain, initialValues.name, initialValues.locale, initialValues.timezone])
 
   // Email unactive tips
   if (didShowConfirmationEmailTips) {

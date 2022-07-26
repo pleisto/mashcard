@@ -67,4 +67,8 @@ Rails.application.configure do
   config.log_level = ENV['ENABLED_DEBUG_LOG'].present? ? :debug : :warn
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  # https://edgeguides.rubyonrails.org/configuring.html#config-action-controller-default-protect-from-forgery
+  # Disable CSRF protection for development / test / cicd.
+  config.action_controller.default_protect_from_forgery = false
 end

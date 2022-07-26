@@ -55,4 +55,8 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # https://edgeguides.rubyonrails.org/configuring.html#config-action-controller-default-protect-from-forgery
+  # Disable CSRF protection for development / test / cicd.
+  config.action_controller.default_protect_from_forgery = false
 end
