@@ -1,4 +1,4 @@
-import React, { cloneElement, useEffect, useState } from 'react'
+import React, { cloneElement, FC, useEffect, useState } from 'react'
 import {
   Placement,
   offset,
@@ -19,13 +19,13 @@ import {
 } from '@floating-ui/react-dom-interactions'
 import { PopoverWrapper, ChildWrapper, ContentWrapper } from './styles/index.style'
 
-type tirggerType = 'click' | 'hover'
+type TriggerType = 'click' | 'hover'
 interface PopoverNProps {
   render: (data: { close: () => void; labelId: string; descriptionId: string }) => React.ReactNode
   children: React.ReactNode
   onOpenChange?: (open: boolean) => void
   placement?: Placement
-  middleware?: Array<Middleware>
+  middleware?: Middleware[]
   strategy?: Strategy
   overlayInnerStyle?: React.CSSProperties
   visible?: boolean
@@ -34,10 +34,10 @@ interface PopoverNProps {
   className?: string
   destroyTooltipOnHide?: boolean
   offset?: number
-  trigger?: tirggerType | Array<tirggerType>
+  trigger?: TriggerType | TriggerType[]
 }
 
-const PopoverN = ({
+const PopoverN: FC<PopoverNProps> = ({
   children,
   render,
   placement,
@@ -52,7 +52,7 @@ const PopoverN = ({
   offset: _offset,
   trigger
 }: PopoverNProps) => {
-  const open = visible !== undefined ? visible : defaultVisible !== undefined ? defaultVisible : false
+  const open = visible ?? defaultVisible ?? false
   const [isOpen, setInnerOpen] = useState(open)
   useEffect(() => {
     setInnerOpen(open)
@@ -74,10 +74,11 @@ const PopoverN = ({
   const labelId = `${id}-label`
   const descriptionId = `${id}-description`
 
-  const triggerList = trigger ? (Array.isArray(trigger) ? trigger : [trigger]) : ['click']
+  let triggerList = ['click']
+  if (trigger) triggerList = Array.isArray(trigger) ? trigger : [trigger]
 
-  const isClickEnable = triggerList.indexOf('click') >= 0
-  const isHoverEnable = triggerList.indexOf('hover') >= 0
+  const isClickEnable = triggerList.includes('click')
+  const isHoverEnable = triggerList.includes('hover')
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
     useClick(context, { enabled: isClickEnable }),
@@ -105,7 +106,8 @@ const PopoverN = ({
               },
               'aria-labelledby': labelId,
               'aria-describedby': descriptionId
-            })}>
+            })}
+          >
             {render({
               labelId,
               descriptionId,

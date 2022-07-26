@@ -21,7 +21,12 @@ program
   .command('run-dev-deps')
   .description('Quickly spin up postgres/redis/etc. instances for development with Docker')
   .action(() => {
-    spawn('docker', ['compose', '-f', './dev-deps-compose.yml', 'up'], { stdio: 'inherit', cwd: devSupportRoot })
+    exitOnExit(
+      spawn('docker', ['compose', '-f', './dev-deps-compose.yml', 'up'], {
+        stdio: 'inherit',
+        cwd: devSupportRoot
+      })
+    )
   })
 
 program
@@ -79,6 +84,7 @@ program
 const viteCommand = program
   .command('vite')
   .description('Run vite to build the client-web app (config: packages/dev-support/vite.config.ts)')
+
 ;['start', 'build', 'optimize', 'preview'].forEach(subCommand => {
   let realCommand = `vite ${subCommand}`
   const preArgs = [subCommand, '../../apps/client-web/src', '--config', 'vite.config.ts']
@@ -94,10 +100,12 @@ const viteCommand = program
     .allowUnknownOption()
     .action(args => {
       const vitePath = resolveNodeModulesBin('vite')
-      spawn(vitePath, [...preArgs, args], {
-        stdio: 'inherit',
-        cwd: devSupportRoot
-      })
+      exitOnExit(
+        spawn(vitePath, [...preArgs, args], {
+          stdio: 'inherit',
+          cwd: devSupportRoot
+        })
+      )
     })
 })
 
@@ -130,7 +138,11 @@ program
   .allowUnknownOption()
   .action(args => {
     const typedocPath = resolveNodeModulesBin('typedoc')
-    spawn(typedocPath, ['--options', path.resolve(devSupportRoot, './typedoc.json'), ...args], { stdio: 'inherit' })
+    exitOnExit(
+      spawn(typedocPath, ['--options', path.resolve(devSupportRoot, './typedoc.json'), ...args], {
+        stdio: 'inherit'
+      })
+    )
   })
 
 // Expose some tools listed in package.json
@@ -143,7 +155,7 @@ program
     .allowUnknownOption()
     .action(args => {
       const toolPath = resolveNodeModulesBin(toolName)
-      spawn(toolPath, args, { stdio: 'inherit' })
+      exitOnExit(spawn(toolPath, args, { stdio: 'inherit' }))
     })
 })
 
@@ -156,4 +168,8 @@ function listProjectsInMonorepo() {
 
 function resolveNodeModulesBin(binName) {
   return spawnSync('yarn', ['bin', binName], { cwd: devSupportRoot }).stdout.toString().trim()
+}
+
+function exitOnExit(childProcess) {
+  childProcess.on('exit', () => process.exit(childProcess.exitCode))
 }

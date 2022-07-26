@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
 import { Input, PopoverN, Icon } from '@mashcard/design-system'
-import { VariableData } from '@mashcard/formula'
 import { FormulaEditor } from '../../../editors/formulaEditor'
 import { FormulaResult, AutocompleteList } from '../../ui/Formula'
 import { CompletionType, UseFormulaInput, UseFormulaOutput } from './useFormula'
@@ -27,7 +26,6 @@ export interface FormulaMenuProps {
   defaultVisible: boolean
   visibleState: [boolean, React.Dispatch<React.SetStateAction<boolean>>]
   onVisibleChange: (visible: boolean) => void
-  handleDelete: (variable?: VariableData) => void
   isDisableSave: () => boolean
   onSaveFormula: UseFormulaOutput['onSaveFormula']
   completion: CompletionType

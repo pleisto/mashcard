@@ -24,6 +24,7 @@ export class ReactNodeView extends EditorReactNodeView<NodeViewProps> {
 
   private componentProps: NodeViewProps
 
+  // eslint-disable-next-line max-params
   constructor(
     editor: Editor,
     props: NodeViewRendererProps,

@@ -66,7 +66,8 @@ export const BlockActionsMenu: FC<BlockActionsMenuProps> = ({ extraOptions, basi
             onAction={key => {
               option.onAction?.(key)
               if (option.closeOnAction !== false) onClose?.()
-            }}>
+            }}
+          >
             {option.content}
           </ActionMenuItem>
         )
@@ -76,7 +77,7 @@ export const BlockActionsMenu: FC<BlockActionsMenuProps> = ({ extraOptions, basi
             <PopoverN
               overlayInnerStyle={{ padding: 0 }}
               placement="right-start"
-              trigger={'hover'}
+              trigger="hover"
               render={() => {
                 return typeof option.items === 'function'
                   ? option.items()
@@ -92,14 +93,16 @@ export const BlockActionsMenu: FC<BlockActionsMenuProps> = ({ extraOptions, basi
 
                       return [...elements, renderMenuItem(option, option.name, onClose)]
                     }, [])
-              }}>
+              }}
+            >
               <Menu.Item
                 style={{ background: 'transparent' }}
                 tip={<SubMenuRightArrow />}
                 key={key}
                 itemKey={option.name}
                 label={option.label}
-                icon={option.icon}></Menu.Item>
+                icon={option.icon}
+              />
             </PopoverN>
           </PopoverWrapper>
         )
@@ -138,7 +141,7 @@ export const BlockActionsMenu: FC<BlockActionsMenuProps> = ({ extraOptions, basi
         <PopoverN
           overlayInnerStyle={{ padding: 0 }}
           placement="right-start"
-          trigger={'hover'}
+          trigger="hover"
           render={() => {
             return blockOptions?.reduce<ReactElement[]>((elements, option, index, array) => {
               if (option.type === 'group')
@@ -152,7 +155,8 @@ export const BlockActionsMenu: FC<BlockActionsMenuProps> = ({ extraOptions, basi
 
               return [...elements, renderMenuItem(option, option.name, onClose)]
             }, [])
-          }}>
+          }}
+        >
           <Menu.Item
             style={{ background: 'transparent' }}
             tip={<SubMenuRightArrow />}

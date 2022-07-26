@@ -20,6 +20,7 @@ export const useEditor = (options: Partial<EditorOptions> = {}, deps: Dependency
 
     instance.on('transaction', () => {
       requestAnimationFrame(() => {
+        // eslint-disable-next-line max-nested-callbacks
         requestAnimationFrame(() => {
           if (isMounted) {
             forceUpdate()

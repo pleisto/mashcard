@@ -1,6 +1,6 @@
 import React from 'react'
 import { Editor, NodeViewProps } from '@tiptap/core'
-import { ContextInterface, dumpDisplayResultForDisplay, VariableData, VariableInterface } from '@mashcard/formula'
+import { ContextInterface, dumpDisplayResultForDisplay, VariableInterface } from '@mashcard/formula'
 import { BlockContainer } from '../BlockContainer'
 import { FormulaDisplay } from '../../ui/Formula'
 import { FormulaMenuProps, useFormula, FormulaMenu, UseFormulaInput } from '.'
@@ -14,7 +14,6 @@ type FormulaBlockAttributes = FormulaAttributes & { uuid: string }
 export interface FormulaRenderProps {
   attributes: FormulaBlockAttributes
   handleDefaultPopoverVisibleChange?: FormulaMenuProps['onVisibleChange']
-  handleDelete?: FormulaMenuProps['handleDelete']
   onUpdateFormula?: UseFormulaInput['onUpdateFormula']
 }
 
@@ -28,7 +27,6 @@ export function getFormulaContext(editor: Editor | undefined | null): ContextInt
 export const FormulaRender: React.FC<FormulaRenderProps> = ({
   attributes: { isNew, uuid, formula },
   handleDefaultPopoverVisibleChange,
-  handleDelete,
   onUpdateFormula
 }) => {
   const { displayData } = formula ?? {}
@@ -63,7 +61,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
     formulaFormat
   } = useFormula({ meta, formulaContext, onUpdateFormula })
 
-  const noMenu = !(handleDefaultPopoverVisibleChange && handleDelete)
+  const noMenu = !handleDefaultPopoverVisibleChange
   const [visible, setVisible] = React.useState(defaultVisible)
 
   const renderData = (
@@ -95,28 +93,16 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
       onSaveFormula={onSaveFormula}
       nameRef={nameRef}
       completion={completion}
-      handleDelete={handleDelete}
     >
       {renderData}
     </FormulaMenu>
   )
 }
 
-export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, updateAttributes, getPos }) => {
+export const FormulaBlock: React.FC<FormulaBlockProps> = ({ node, updateAttributes }) => {
   const attrs: FormulaBlockAttributes = node.attrs as any
 
   const defaultVisible = attrs.isNew
-  const formulaContext = getFormulaContext(editor)
-
-  const handleDelete = React.useCallback(
-    async (variableT?: VariableData): Promise<void> => {
-      const position = getPos()
-      variableT && (await formulaContext?.removeVariable(variableT.meta.namespaceId, variableT.meta.variableId))
-      if (!position || !node) return
-      editor.commands.deleteRange({ from: position, to: position + node.nodeSize })
-    },
-    [editor.commands, formulaContext, getPos, node]
-  )
 
   const handleTurnOffVisible = React.useCallback(() => updateAttributes({ isNew: false }), [updateAttributes])
 
@@ -144,7 +130,6 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
       <FormulaRender
         attributes={attrs}
         handleDefaultPopoverVisibleChange={handleDefaultPopoverVisibleChange}
-        handleDelete={handleDelete}
         onUpdateFormula={onUpdateFormula}
       />
     </BlockContainer>
