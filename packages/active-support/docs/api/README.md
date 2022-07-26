@@ -140,6 +140,7 @@
 - [shuffle](README.md#shuffle)
 - [singularize](README.md#singularize)
 - [size](README.md#size)
+- [sleep](README.md#sleep)
 - [slice](README.md#slice)
 - [snakeCase](README.md#snakecase)
 - [sortBy](README.md#sortby)
@@ -2990,7 +2991,7 @@ Converts an array of items with ids and parent ids to a nested tree in a perform
 
 #### Defined in
 
-[packages/active-support/src/index.ts:23](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/index.ts#L23)
+[packages/active-support/src/index.ts:24](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/index.ts#L24)
 
 ---
 
@@ -6847,6 +6848,31 @@ Returns the size of collection.
 #### Defined in
 
 node_modules/@types/lodash/common/collection.d.ts:1815
+
+---
+
+### <a id="sleep" name="sleep"></a> sleep
+
+▸ **sleep**(`milliseconds`): `Object`
+
+#### Parameters
+
+| Name           | Type     |
+| :------------- | :------- |
+| `milliseconds` | `number` |
+
+#### Returns
+
+`Object`
+
+| Name      | Type               |
+| :-------- | :----------------- |
+| `cancel`  | () => `void`       |
+| `promise` | `Promise`<`void`\> |
+
+#### Defined in
+
+[packages/active-support/src/sleep.ts:1](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/sleep.ts#L1)
 
 ---
 
