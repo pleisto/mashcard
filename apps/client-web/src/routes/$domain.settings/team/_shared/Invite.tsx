@@ -6,6 +6,7 @@ import { Panel } from '../../_shared/Panel'
 import { SettingsContextProps } from '../../_shared/SettingContext'
 import { useSettingsI18n } from '../../_shared/useSettingsI18n'
 import * as Root from './Invite.style'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 export const Invite: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
   const { t } = useSettingsI18n(['docs'])
@@ -81,8 +82,8 @@ export const Invite: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
         </Root.Warp>
         {inviteEnabled && (
           <Root.InviteLink>
-            <Input value={inviteUrl} readOnly />
-            <Button type="secondary" onClick={setOpen}>
+            <Input value={inviteUrl} readOnly data-testid={TEST_ID_ENUM.pod.teamPod.inviteInput.id}/>
+            <Button type="secondary" onClick={setOpen} data-testid={TEST_ID_ENUM.pod.teamPod.reset.id}>
               {t(`team.invite_secret_reset`)}
             </Button>
           </Root.InviteLink>

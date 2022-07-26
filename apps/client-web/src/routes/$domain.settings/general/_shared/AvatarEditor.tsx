@@ -7,6 +7,7 @@ import { usePrepareFileUpload } from '../../../$domain/_shared/usePrepareFileUpl
 import { PodOperation, useCreateOrUpdatePodMutation } from '@/MashcardGraphQL'
 import { SettingsContext } from '../../_shared/SettingContext'
 import { useSettingsI18n } from '../../_shared/useSettingsI18n'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 const Wrapper = styled(Popover, {
   margin: '.5rem 0',
@@ -72,6 +73,7 @@ export const AvatarEditor: FC = () => {
           bottom: '0',
           right: '0'
         }}
+        data-testid={TEST_ID_ENUM.pod.profile.avatarUpdate.id}
       />
     </Wrapper>
   )

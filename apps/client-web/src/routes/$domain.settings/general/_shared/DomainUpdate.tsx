@@ -9,6 +9,7 @@ import { Panel } from '../../_shared/Panel'
 import { SettingsContextProps } from '../../_shared/SettingContext'
 import { useSettingsI18n } from '../../_shared/useSettingsI18n'
 import * as Root from './DomainUpdate.style'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 export const DomainUpdate: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
   const { t } = useSettingsI18n(['docs'])
@@ -58,7 +59,7 @@ export const DomainUpdate: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) 
       <Root.Warp>
         <Form form={form} onSubmit={onSubmit}>
           <Form.Field name="new_domain" label={t('docs:pods.domain')}>
-            <Input type="text" />
+            <Input type="text" data-testid={TEST_ID_ENUM.pod.domain.input.id} />
           </Form.Field>
 
           <Root.Desc>
@@ -67,7 +68,11 @@ export const DomainUpdate: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) 
               {t('general.change_domain_more')}
             </a>
           </Root.Desc>
-          <Button type="primary" htmlType="submit" loading={loading}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            loading={loading}
+            data-testid={TEST_ID_ENUM.pod.domain.updateButton.id}>
             {t(`general.change_domain_btn`)}
           </Button>
         </Form>

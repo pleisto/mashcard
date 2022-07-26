@@ -1,4 +1,4 @@
-import { TEST_ID_ENUM } from '@/../../packages/test-helper/src'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 export const TRASH_SELECTOR = {
   trashButton: `button[data-testid=${TEST_ID_ENUM.trash.button.id}]`,

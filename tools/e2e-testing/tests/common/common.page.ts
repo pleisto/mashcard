@@ -1,7 +1,7 @@
 import { Locator, Page } from '@playwright/test'
-import { COMMON_SELECTORS } from './common.selector'
+import { ActionType, COMMON_SELECTORS } from './common.selector'
 import { expect } from '@/fixtures'
-import { TEST_ID_ENUM } from '@/../../packages/test-helper/src'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 export class CommonPage {
   constructor(readonly page: Page) {}
@@ -18,8 +18,20 @@ export class CommonPage {
     return this.page.locator(COMMON_SELECTORS.dialog.component)
   }
 
-  getDialogCancelButton(): Locator {
-    return this.page.locator(COMMON_SELECTORS.dialog.cancelButton)
+  getDialogActionButton(action: ActionType): Locator {
+    return this.page.locator(COMMON_SELECTORS.dialog.actionButton(action))
+  }
+
+  getDialogInput(): Locator {
+    return this.page.locator(COMMON_SELECTORS.dialog.input)
+  }
+
+  getListItems(): Locator {
+    return this.page.locator(COMMON_SELECTORS.listBox.listItems)
+  }
+
+  getListItemByName(name: string): Locator {
+    return this.page.locator(COMMON_SELECTORS.listBox.listItem(name))
   }
 
   getDialogDeleteButton(): Locator {

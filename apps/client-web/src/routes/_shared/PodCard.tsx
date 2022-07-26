@@ -28,10 +28,10 @@ export const PodCard: React.FC<PodCardProps> = ({ pod, label, aliasName, size = 
   return (
     <Root.Card size={size} data-testid={TEST_ID_ENUM.layout.sidebar.podSelect.id}>
       <Root.AvatarWrapper>
-        <PodAvatar className="avatar" pod={pod} size={size} />
+        <PodAvatar className="avatar" pod={pod} size={size} data-testid={TEST_ID_ENUM.pod.icon.id} />
       </Root.AvatarWrapper>
       <Root.Content>
-        <Root.Name>{aliasName ?? pod.name}</Root.Name>
+        <Root.Name data-testid={TEST_ID_ENUM.pod.name.id}>{aliasName ?? pod.name}</Root.Name>
         {extra && size === 'md' && <Root.Email>{extra}</Root.Email>}
       </Root.Content>
     </Root.Card>
