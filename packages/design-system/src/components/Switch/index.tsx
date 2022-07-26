@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { Rotation } from '@mashcard/design-icons'
 import { styled } from '../../themes'
 import { root, switcher, switcherHandle as SwitcherHandle } from './styles/index.style'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 export interface SwitchProps extends CheckboxProps {
   size?: 'sm' | 'md' | 'lg'
@@ -39,7 +40,12 @@ const Switch: ForwardRefRenderFunction<any, SwitchProps> = (props, ref) => {
   return (
     <SwitchWrapper transition={spring} ref={ref} className={className} style={style}>
       {labelFirst && children && <span>{children}</span>}
-      <Switcher checked={checked} loading={loading} disabled={disabled} size={size}>
+      <Switcher
+        checked={checked}
+        loading={loading}
+        disabled={disabled}
+        size={size}
+        data-testid={TEST_ID_ENUM.component.switch.id}>
         <VisuallyHidden>
           <input {...getInputProps()} />
         </VisuallyHidden>

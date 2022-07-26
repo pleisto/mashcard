@@ -1,4 +1,4 @@
-import { TEST_ID_ENUM } from '@/../../packages/test-helper/src'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { COMMON_SELECTORS } from '@/tests/common/common.selector'
 
 export const PAGE_SELECTOR = {

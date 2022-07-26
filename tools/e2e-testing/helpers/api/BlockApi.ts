@@ -3,15 +3,10 @@ import { APIResponse, Page } from '@playwright/test'
 import { createBlockConverter } from '@/helpers/converter/createBlockConverter'
 import { PageBlock } from '@/helpers/types/data.types'
 import { GRAPHQL_GROUP } from './graphql'
-import {
-  BlockSoftDeleteInput,
-  CreateBlockInput,
-  InputType,
-  OperationName,
-  OptionsType,
-  PageType
-} from '@/helpers/types/graphql.types'
-import { compareAttributeItem } from '../utils/sortByAttribute'
+import { OperationName, OptionsType, PageType } from '@/helpers/types/graphql/block.types'
+import { compareAttributeItem } from '@/helpers/utils/sortByAttribute'
+import { BlockSoftDeleteInput, CreateBlockInput, InputType } from '@/helpers/types/graphql/input.types'
+import { PodOutput } from '@/helpers/types/graphql/output.types'
 
 export class BlockApi {
   private readonly page
@@ -39,7 +34,7 @@ export class BlockApi {
     return await this.request.post(this.REQUEST_URL, options)
   }
 
-  options(gqlQuery: string, operationName: OperationName, variables: InputType): OptionsType {
+  options(gqlQuery: string, operationName: OperationName, variables?: InputType): OptionsType {
     return {
       data: {
         query: gqlQuery,
@@ -135,5 +130,32 @@ export class BlockApi {
     const pages = (await this.getTrashBlock(username)).map(page => page.id)
 
     await this.post(this.options(GRAPHQL_GROUP.BLOCK_HARD_DELETE, 'blockHardDelete', { input: { ids: pages } }))
+  }
+
+  async getPods(): Promise<PodOutput[]> {
+    const response = await this.request.post(this.REQUEST_URL, this.options(GRAPHQL_GROUP.GET_PODS, 'GetPods'))
+    return (await response.json()).data.pods
+  }
+
+  async destroyPod(username: string): Promise<void> {
+    await this.request.post(
+      this.REQUEST_URL,
+      this.options(GRAPHQL_GROUP.POD_DESTROY, 'groupDestroy', { input: { username } })
+    )
+  }
+
+  async destroyAllCreatedPod(): Promise<void> {
+    const createdPods = (await this.getPods()).filter(pod => !pod.personal)
+
+    await Promise.all(createdPods.map(async pod => await this.destroyPod(pod.domain)))
+  }
+
+  async createPod(name: string): Promise<void> {
+    await this.request.post(
+      this.REQUEST_URL,
+      this.options(GRAPHQL_GROUP.CREATE_OR_UPDATE_POD, 'createOrUpdatePod', {
+        input: { type: 'CREATE', domain: name, name }
+      })
+    )
   }
 }

@@ -327,5 +327,53 @@ export const TEST_ID_ENUM = {
         }
       }
     }
+  },
+  pod: {
+    icon: {
+      id: 'pod-current-icon'
+    },
+    name: {
+      id: 'pod-current-name'
+    },
+    profile: {
+      nameInput: {
+        id: 'pod-profile-nameInput'
+      },
+      bioInput: {
+        id: 'pod-profile-bioInput'
+      },
+      updateButton: {
+        id: 'pod-profile-updateButton'
+      },
+      avatarUpdate: {
+        id: 'pod-profile-avatarUpdate'
+      }
+    },
+    domain: {
+      input: {
+        id: 'pod-domain-input'
+      },
+      updateButton: {
+        id: 'pod-domain-updateButton'
+      }
+    },
+    display: {
+      saveButton: {
+        id: 'pod-display-saveButton'
+      }
+    },
+    teamPod: {
+      inviteInput: {
+        id: 'pod-teamPod-inviteInput'
+      },
+      reset: {
+        id: 'pod-teamPod-reset'
+      }
+    }
+  },
+  component: {
+    switch: {
+      id: 'component-switch'
+    }
   }
 }

@@ -13,6 +13,7 @@ import { SettingsContextProps } from '../../_shared/SettingContext'
 import { useSettingsI18n } from '../../_shared/useSettingsI18n'
 import { AvatarEditor } from './AvatarEditor'
 import * as Root from './ProfileEdit.style'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 const profileValidation = object({
   name: string().required(),
@@ -63,13 +64,20 @@ export const ProfileEdit: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) =
         <Root.Box>
           <Root.BoxLeft>
             <Form.Field name="name" label={t('docs:pods.name')}>
-              <Input type="text" />
+              <Input type="text" data-testid={TEST_ID_ENUM.pod.profile.nameInput.id} />
             </Form.Field>
             <Form.Field name="bio" label={t('docs:pods.bio.label')}>
-              <TextArea placeholder={t('docs:pods.bio.placeholder')} />
+              <TextArea
+                placeholder={t('docs:pods.bio.placeholder')}
+                data-testid={TEST_ID_ENUM.pod.profile.bioInput.id}
+              />
             </Form.Field>
             <Form.Field>
-              <Button type="primary" htmlType="submit" loading={profileSubmitting}>
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={profileSubmitting}
+                data-testid={TEST_ID_ENUM.pod.profile.updateButton.id}>
                 {t('general.update_profile')}
               </Button>
             </Form.Field>

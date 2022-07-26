@@ -1,4 +1,4 @@
-import { PageType } from '../types/graphql.types'
+import { PageType } from '@/helpers/types/graphql/block.types'
 
 export function compareAttributeItem(item1: PageType, item2: PageType): number {
   const title1 = item1.documentInfo.title.toLowerCase().trim()

@@ -11,6 +11,7 @@ import { Panel } from '../../_shared/Panel'
 import { SettingsContextProps } from '../../_shared/SettingContext'
 import { useSettingsI18n } from '../../_shared/useSettingsI18n'
 import * as Root from './Display.style'
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 const AppearanceSelect: FC<{
   name: string
@@ -69,7 +70,7 @@ export const Display: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
             <AppearanceSelect name="locale" control={form.control} options={availableLocales} />
           </FormControl>
           <FormControl>
-            <Button type="primary" htmlType="submit" loading={loading}>
+            <Button type="primary" htmlType="submit" loading={loading} data-testid={TEST_ID_ENUM.pod.display.saveButton.id}>
               {t('general.update_appearance')}
             </Button>
           </FormControl>

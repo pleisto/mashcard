@@ -1,4 +1,4 @@
-import { graphqlGroupType } from '@/helpers/types/graphql.types'
+import { graphqlGroupType } from '@/helpers/types/graphql/block.types'
 
 export const GRAPHQL_GROUP: graphqlGroupType = {
   BLOCK_COMMIT: `
@@ -49,6 +49,37 @@ export const GRAPHQL_GROUP: graphqlGroupType = {
     query GetTrashBlocks($domain: String!, $search: String) {
       trashBlocks(domain: $domain, search: $search) {
         id
+      }
+    }
+  `,
+  POD_DESTROY: `
+    mutation groupDestroy($input: GroupDestroyInput!) {
+      groupDestroy(input: $input) {
+        errors
+        __typename
+      }
+    }
+  `,
+  GET_PODS: `
+    query GetPods {
+      pods {
+        ... on User {
+          id
+          domain
+          personal
+        }
+        ... on Group {
+          id
+          domain
+          personal
+        }
+      }
+    }
+  `,
+  CREATE_OR_UPDATE_POD: `
+    mutation createOrUpdatePod($input: CreateOrUpdatePodInput!) {
+      createOrUpdatePod(input: $input) {
+        errors
       }
     }
   `

@@ -1,6 +1,6 @@
-import { BlockCommitInput } from '@/helpers/types/graphql.types'
 import { PageBlock } from '@/helpers/types/data.types'
 import { generateUUID } from '@/helpers/utils/uuid'
+import { BlockCommitInput } from '@/helpers/types/graphql/input.types'
 
 export function blockCommitConverter(page: PageBlock, id: string): BlockCommitInput {
   return {

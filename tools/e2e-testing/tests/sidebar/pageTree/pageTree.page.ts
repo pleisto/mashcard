@@ -9,6 +9,10 @@ export class PageTreePage extends CommonPage {
     return this.page.locator(PAGE_SELECTOR.pages)
   }
 
+  getAddPageButton(): Locator {
+    return this.page.locator(PAGE_SELECTOR.addPageButton)
+  }
+
   getPageSectionTitle(): Locator {
     return this.page.locator(PAGE_SELECTOR.pageSection)
   }
@@ -59,7 +63,7 @@ export class PageTreePage extends CommonPage {
   }
 
   async addPage(): Promise<void> {
-    await this.waitForResponseWithAction('GetPageBlocks', this.page.locator(PAGE_SELECTOR.addPageButton).click())
+    await this.waitForResponseWithAction('GetPageBlocks', this.getAddPageButton().click())
   }
 
   async addSubPage(index?: number): Promise<void> {
