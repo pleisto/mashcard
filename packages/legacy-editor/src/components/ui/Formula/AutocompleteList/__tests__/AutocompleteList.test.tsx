@@ -183,7 +183,7 @@ describe('AutocompleteList', () => {
         ],
         examples: [
           {
-            codeFragments: [],
+            codeFragments: () => [],
             input: 'input',
             output: null
           }
