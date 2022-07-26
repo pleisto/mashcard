@@ -1,0 +1,16 @@
+{
+  "$schema": "../../apps/client-web/src/public/json-schema/plugin.draft-2205.json",
+  "name": "@mashcard/mock-auth",
+  "license": "Apache-2.0",
+  "version": "0.1.0",
+  "sideEffects": false,
+  "engines": {
+    "mashcard": ">=0.1.0"
+  },
+  "extensionPoints": [
+    "server"
+  ],
+  "scripts": {
+    "lint:rubocop": "BUNDLE_GEMFILE=../../apps/server-monolith/Gemfile bundle exec rubocop --parallel --config .rubocop.yml"
+  }
+}
