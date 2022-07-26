@@ -1,13 +1,13 @@
 import { interpret, parse, generateVariable } from '../grammar'
 import { buildEvent, makeContext } from '../tests/testHelper'
-import { buildTestCases, EventNames, matchObject, trackTodo } from '../tests'
+import { buildTestCases, matchObject, trackTodo } from '../tests'
 import { uuid } from '@mashcard/active-support'
 import { MashcardEventBus } from '@mashcard/schema'
 import { fetchResult } from '../context'
 
-const [input] = buildTestCases(EventNames.filter(e => e !== 'spreadsheetDeadlockEvent'))
+const [input] = buildTestCases(['spreadsheetDeadlockEvent'])
 
-describe('event', () => {
+describe('deadlockEvent', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeEach(async () => {
     ctx = await makeContext({
@@ -19,7 +19,7 @@ describe('event', () => {
 
   trackTodo(it, input.eventTestCases)
 
-  it.each(input.eventTestCases)('$jestTitle', async args => {
+  it.each([...input.eventTestCases.slice(0, 30)])('$jestTitle', async args => {
     const newCtx = { ...ctx, meta: ctx.buildMeta(args) }
     const parseResult = parse(newCtx)
     const triggerTest = []

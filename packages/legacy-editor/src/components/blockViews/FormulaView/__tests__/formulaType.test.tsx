@@ -9,9 +9,7 @@ const [input] = buildTestCases(['basic'])
 describe('formulaType', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
-    jest.useRealTimers()
     ctx = await makeContext(input.options)
-    jest.clearAllTimers()
   })
 
   it.each(input.basicTestCases)('$jestTitle', args => {

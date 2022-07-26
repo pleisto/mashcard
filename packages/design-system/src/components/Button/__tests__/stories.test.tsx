@@ -87,12 +87,6 @@ describe('Button', () => {
   })
 
   describe('loading state', () => {
-    beforeEach(() => {
-      jest.useFakeTimers()
-    })
-    afterEach(() => {
-      jest.useRealTimers()
-    })
     const POSITIVE_DELAY = 1000
     // TODO: changed spin, owe first~
     /* function findLoadingIcon() {

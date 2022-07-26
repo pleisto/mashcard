@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react'
+import { renderHook, act, waitFor } from '@testing-library/react'
 import { usePageDiscussionContextValue } from '../PageDiscussionContext'
 import { CommentedNode } from '../useCommentedNodes'
 import * as editorHooks from '../../../../hooks/useEditorContext'
@@ -124,17 +124,13 @@ describe('PageDiscussionContext', () => {
         documentEditable: true
       }))
 
-      jest.useRealTimers()
       const commentedNodes: CommentedNode[] = [{} as any]
 
       const { result } = renderHook(() => usePageDiscussionContextValue(commentedNodes))
 
-      await act(async () => {
-        // wait for getConversations resolved
-        await new Promise(resolve => setTimeout(resolve, 10))
+      await waitFor(() => {
+        expect(result.current.discussion.conversations).toHaveLength(1)
       })
-
-      expect(result.current.discussion.conversations).toHaveLength(1)
     })
 
     it('does nothing if fetch conversations failed', async () => {
@@ -162,18 +158,13 @@ describe('PageDiscussionContext', () => {
         documentEditable: true
       }))
 
-      jest.useRealTimers()
-
       const commentedNodes: CommentedNode[] = []
 
       const { result } = renderHook(() => usePageDiscussionContextValue(commentedNodes))
 
-      await act(async () => {
-        // wait for getConversations resolved
-        await new Promise(resolve => setTimeout(resolve, 10))
+      await waitFor(() => {
+        expect(result.current.discussion.conversations).toHaveLength(0)
       })
-
-      expect(result.current.discussion.conversations).toHaveLength(0)
     })
 
     it('triggers addConversation normally', async () => {

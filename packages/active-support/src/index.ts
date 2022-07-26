@@ -8,6 +8,7 @@ export * from './inflections'
 export * from 'neverthrow' // rust style error handing
 export * from './results'
 export * from './prependUrlScheme'
+export * from './sleep'
 export * from './typescript'
 
 export {

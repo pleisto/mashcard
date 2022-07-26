@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react'
+import { renderHook, waitFor } from '@testing-library/react'
 import { usePdftronDocument } from '../../../../embedViews/PreviewView/PdftronDocument/usePdftronDocument'
 
 jest.mock('@pdftron/webviewer', () => ({
@@ -29,40 +29,27 @@ jest.mock('@pdftron/webviewer', () => ({
     })
 }))
 
-jest.useRealTimers()
-
 describe('usePdftronDocument', () => {
   it('marks document ready when document has been setup', async () => {
     const { result } = renderHook(() => usePdftronDocument('doc'))
 
-    // wait for async effect
-    await act(async () => {
-      await new Promise<void>(resolve => {
-        setTimeout(() => {
-          resolve()
-        }, 10)
-      })
+    await waitFor(() => {
+      const [documentStatus] = result.current
+      expect(documentStatus).toBe('ready')
     })
-
-    const [documentStatus] = result.current
-
-    expect(documentStatus).toBe('ready')
   })
 
   it('toggles full screen correctly', async () => {
     const { result } = renderHook(() => usePdftronDocument('doc'))
 
-    // wait for async effect
-    await act(async () => {
-      await new Promise<void>(resolve => {
-        setTimeout(() => {
-          resolve()
-        }, 10)
-      })
+    await waitFor(() => {
+      const [documentStatus] = result.current
+      expect(documentStatus).toBe('ready')
     })
 
+    const [, , toggleFullScreen] = result.current
     expect(() => {
-      result.current[2]()
+      toggleFullScreen()
     }).not.toThrow()
   })
 })

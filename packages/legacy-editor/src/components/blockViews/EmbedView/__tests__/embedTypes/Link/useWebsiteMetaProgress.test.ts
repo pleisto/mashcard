@@ -1,8 +1,6 @@
 import { renderHook, act } from '@testing-library/react'
 import { useWebsiteMetaProgress } from '../../../embedTypes/Link/useWebsiteMetaProgress'
 
-jest.useFakeTimers()
-
 describe('useWebsiteMetaProgress', () => {
   it('progressing correctly', () => {
     const { result } = renderHook(() => useWebsiteMetaProgress())

@@ -9,8 +9,6 @@ jest.mock('../../../../hooks/useEditorContext', () => {
   return { useEditorContext: jest.fn().mockImplementation(useEditorContext) }
 })
 
-jest.useFakeTimers()
-
 describe('useCommentedNodes', () => {
   it('fetches commentedNodes correctly', () => {
     const editor = mockEditor({

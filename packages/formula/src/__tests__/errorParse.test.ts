@@ -6,9 +6,7 @@ const testCases = ALL_TEST_CASE
 describe('errorParse', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
-    jest.useRealTimers()
     ctx = await makeContext(testCases.options)
-    jest.clearAllTimers()
   })
 
   trackTodo(it, testCases.errorTestCases)

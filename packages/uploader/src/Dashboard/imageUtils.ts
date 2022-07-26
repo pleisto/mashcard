@@ -2,12 +2,12 @@ import { encode as blurHashEncode } from 'blurhash'
 
 export async function isValidImageUrl(link: string): Promise<Boolean> {
   return await new Promise((resolve, reject) => {
-    const ImgObj = new Image()
-    ImgObj.src = link
-    ImgObj.onload = () => {
+    const img = new Image()
+    img.src = link
+    img.onload = () => {
       resolve(true)
     }
-    ImgObj.onerror = () => {
+    img.onerror = () => {
       resolve(false)
     }
   })

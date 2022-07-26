@@ -1,3 +1,4 @@
+import { sampleSize } from '@mashcard/active-support'
 import { Cell, Column, Row } from '../../../controls'
 import { generateUUIDs } from '../../testHelper'
 import { mockCell } from '../../testMock'
@@ -167,19 +168,23 @@ const deleteFirstRowEvent: DistributeEvents = [
 const definitionCases: (column: string, row: string) => Array<{ definition: string; logicRow?: true; error: any }> = (
   column,
   row
-) => [
-  { definition: `=${column}.${row}`, error: PARSE_ERROR },
-  { definition: `=spreadsheet1.${column}.${row}`, error: PARSE_ERROR },
-  { definition: `=ThisRecord.${column}.${row}`, error: PARSE_ERROR },
-  { definition: `=ThisRow.${column}`, logicRow: true, error: PARSE_ERROR },
+) =>
+  sampleSize(
+    [
+      { definition: `=${column}.${row}`, error: PARSE_ERROR },
+      { definition: `=spreadsheet1.${column}.${row}`, error: PARSE_ERROR },
+      { definition: `=ThisRecord.${column}.${row}`, error: PARSE_ERROR },
+      { definition: `=ThisRow.${column}`, logicRow: true, error: PARSE_ERROR },
 
-  { definition: `=${column}[${row}]`, error: INTERPRET_ERROR },
-  { definition: `=spreadsheet1.${column}[${row}]`, error: INTERPRET_ERROR },
-  { definition: `=ThisRecord.${column}[${row}]`, error: INTERPRET_ERROR },
-  { definition: `=spreadsheet1["${column}"][${row}]`, error: INTERPRET_ERROR },
-  { definition: `=ThisRecord["${column}"][${row}]`, error: INTERPRET_ERROR },
-  { definition: `=ThisRow["${column}"]`, logicRow: true, error: INTERPRET_ERROR }
-]
+      { definition: `=${column}[${row}]`, error: INTERPRET_ERROR },
+      { definition: `=spreadsheet1.${column}[${row}]`, error: INTERPRET_ERROR },
+      { definition: `=ThisRecord.${column}[${row}]`, error: INTERPRET_ERROR },
+      { definition: `=spreadsheet1["${column}"][${row}]`, error: INTERPRET_ERROR },
+      { definition: `=ThisRecord["${column}"][${row}]`, error: INTERPRET_ERROR },
+      { definition: `=ThisRow["${column}"]`, logicRow: true, error: INTERPRET_ERROR }
+    ],
+    5
+  )
 
 export const SpreadsheetDeadlockEventTestCase: TestCaseInterface = {
   name: 'spreadsheetDeadlockEvent',

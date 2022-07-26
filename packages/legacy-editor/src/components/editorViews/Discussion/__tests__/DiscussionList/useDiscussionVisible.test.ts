@@ -30,7 +30,6 @@ describe('useDiscussionVisible', () => {
       } as any
     ]
     const setActiveMarkId = jest.fn()
-    jest.useFakeTimers()
     jest.spyOn(URLSearchParams.prototype, 'get').mockImplementation(() => markId)
     jest.spyOn(DrawerService, 'useDrawer').mockImplementation(() => ({
       visible: false,

@@ -7,15 +7,12 @@ const testCases = ALL_TEST_CASE
 describe('successExecute', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
-    jest.useRealTimers()
     ctx = await makeContext(testCases.options)
-    jest.clearAllTimers()
   })
 
   trackTodo(it, testCases.successTestCases)
 
   it.each(testCases.successTestCases)('$jestTitle', async args => {
-    jest.useRealTimers()
     const [tempT, parseResult] = await ctx.interpretDirectly(args)
     expect([parseResult.variableParseResult.valid, parseResult.success, parseResult.errorMessages]).toStrictEqual([
       true,
@@ -54,7 +51,5 @@ describe('successExecute', () => {
     const variable = generateVariable({ formulaContext: ctx.formulaContext, t: tempT })
     await variable.save()
     expect(await variable.t.task.variableValue).toStrictEqual(value)
-
-    jest.clearAllTimers()
   })
 })

@@ -1,8 +1,9 @@
-import { render, screen, fireEvent, act } from '@testing-library/react'
+import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
 import { VirtuosoProps, GroupedVirtuosoProps } from 'react-virtuoso'
 import { Dashboard, ImportSourceOption } from '../Dashboard'
 import { DashboardPluginOptions } from '../plugin'
 import { RECENT_EMOJI_LOCAL_STORAGE_KEY } from '../useEmoji'
+import * as imageUtils from '../imageUtils'
 
 jest.mock('react-virtuoso', () => {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -24,6 +25,11 @@ jest.mock('react-virtuoso', () => {
   }
 
   return { ...jest.requireActual('react-virtuoso'), Virtuoso, GroupedVirtuoso }
+})
+
+jest.mock('../imageUtils', () => {
+  const { isValidImageUrl } = jest.requireActual('../imageUtils')
+  return { isValidImageUrl: jest.fn().mockImplementation(isValidImageUrl) }
 })
 
 describe('Dashboard', () => {
@@ -79,19 +85,6 @@ describe('Dashboard', () => {
     const sources: ImportSourceOption[] = [source]
     const uppy: any = {}
 
-    let onloadRef: Function | undefined
-    beforeAll(() => {
-      Object.defineProperty(Image.prototype, 'onload', {
-        get() {
-          return this._onload
-        },
-        set(onload: Function) {
-          onloadRef = onload
-          this._onload = onload
-        }
-      })
-    })
-
     it('matches correct snapshot', () => {
       const options: DashboardPluginOptions = {
         target: {} as any,
@@ -138,7 +131,6 @@ describe('Dashboard', () => {
     })
 
     it('inputs link normally', async () => {
-      jest.useRealTimers()
       const url = 'https://avatars.githubusercontent.com/u/41993484'
       const options: DashboardPluginOptions = {
         target: {} as any,
@@ -150,12 +142,12 @@ describe('Dashboard', () => {
       render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
 
       fireEvent.change(screen.getByPlaceholderText(source.linkInputPlaceholder!), { target: { value: url } })
+
+      jest.spyOn(imageUtils, 'isValidImageUrl').mockResolvedValue(true)
       fireEvent.click(screen.getByText(source.buttonText!))
-      // jest limit， can't test image load
-      onloadRef!()
-      await new Promise(resolve => setTimeout(resolve, 50))
-      expect(options.onUploaded).toBeCalledTimes(1)
-      expect(options.onUploaded).toBeCalledWith({ action: 'add', url, meta: { source: 'external' } })
+      await waitFor(() => {
+        expect(options.onUploaded).toBeCalledWith({ action: 'add', url, meta: { source: 'external' } })
+      })
     })
   })
 
@@ -277,7 +269,6 @@ describe('Dashboard', () => {
     })
 
     it('searches emoji correctly', () => {
-      jest.useFakeTimers()
       const options: DashboardPluginOptions = {
         target: {} as any,
         importSources: sources,
