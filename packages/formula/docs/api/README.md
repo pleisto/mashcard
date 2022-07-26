@@ -739,7 +739,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:805](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L805)
+[packages/formula/src/type/index.ts:814](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L814)
 
 ---
 
@@ -919,7 +919,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:812](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L812)
+[packages/formula/src/type/index.ts:821](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L821)
 
 ---
 
@@ -1143,7 +1143,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:754](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L754)
+[packages/formula/src/type/index.ts:756](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L756)
 
 ---
 
@@ -1153,7 +1153,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:728](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L728)
+[packages/formula/src/type/index.ts:730](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L730)
 
 ---
 
@@ -3340,7 +3340,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:606](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L606)
+[packages/formula/src/grammar/core.ts:599](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L599)
 
 ---
 
@@ -3526,7 +3526,7 @@ Apply format to the formula.
 
 | Name   | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Args` | extends (readonly [`"columnChange"`, `OmitUsername`<(`__namedParameters`: { `columns`: [`Column`](interfaces/Column.md)[] ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"rowChange"`, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [``"blockDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| readonly [``"empty_sync"``, `any`] \| readonly [``"empty_async"``, `any`] \| readonly [``"blockChangeName"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `name`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetChangeName"``, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `spreadsheetId`: `string` ; `title`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"variableInsertOnly"`, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| readonly [`"variableInsertAndAwait"`, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| readonly [``"variableDelete"``, {}] \| readonly [`"variableUpdateDefinition"`, [`FormulaDefinition`](interfaces/FormulaDefinition.md)])[] |
+| `Args` | extends (readonly [``"variableDelete"``, {}] \| readonly [`"columnChange"`, `OmitUsername`<(`__namedParameters`: { `columns`: [`Column`](interfaces/Column.md)[] ; `namespaceId`: `string` ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"rowChange"`, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `rows`: [`Row`](interfaces/Row.md)[] ; `spreadsheetId`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [``"blockDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| readonly [``"empty_sync"``, `any`] \| readonly [``"empty_async"``, `any`] \| readonly [``"blockChangeName"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `name`: `string` ; `username`: `string` }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetChangeName"``, `OmitUsername`<(`__namedParameters`: { `namespaceId`: `string` ; `spreadsheetId`: `string` ; `title`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [``"spreadsheetDelete"``, `OmitUsername`<(`__namedParameters`: { `id`: `string` ; `username`: `undefined` \| `string` }) => `Promise`<`void`\>\>] \| readonly [`"variableInsertOnly"`, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| readonly [`"variableInsertAndAwait"`, [`BaseTestCase`](interfaces/BaseTestCase.md)<{}\>] \| readonly [`"variableUpdateDefinition"`, [`FormulaDefinition`](interfaces/FormulaDefinition.md)])[] |
 
 #### Parameters
 
@@ -3711,7 +3711,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L76)
+[packages/formula/src/context/variable.ts:75](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L75)
 
 ---
 
@@ -3967,7 +3967,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:812](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L812)
+[packages/formula/src/type/index.ts:821](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L821)
 
 ---
 
@@ -4256,7 +4256,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:47](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L47)
+[packages/formula/src/context/variable.ts:46](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L46)
 
 ---
 
@@ -4316,7 +4316,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:64](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L64)
+[packages/formula/src/context/variable.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L63)
 
 ---
 
@@ -4336,7 +4336,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:41](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L41)
+[packages/formula/src/context/variable.ts:40](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L40)
 
 ---
 
@@ -4443,7 +4443,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:586](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L586)
+[packages/formula/src/grammar/core.ts:579](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L579)
 
 ---
 
@@ -4508,7 +4508,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:465](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L465)
+[packages/formula/src/grammar/core.ts:458](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L458)
 
 ---
 
@@ -4532,7 +4532,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:563](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L563)
+[packages/formula/src/grammar/core.ts:556](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L556)
 
 ---
 

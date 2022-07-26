@@ -24,7 +24,6 @@
 - [trackDirty](VariableInterface.md#trackdirty)
 - [updateDefinition](VariableInterface.md#updatedefinition)
 - [wholeFlattenVariableDependencies](VariableInterface.md#wholeflattenvariabledependencies)
-- [wholeVariableDependencies](VariableInterface.md#wholevariabledependencies)
 
 ## Properties
 
@@ -48,7 +47,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:789](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L789)
+[packages/formula/src/type/index.ts:790](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L790)
 
 ---
 
@@ -66,7 +65,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:790](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L790)
+[packages/formula/src/type/index.ts:791](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L791)
 
 ---
 
@@ -76,7 +75,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:785](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L785)
+[packages/formula/src/type/index.ts:787](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L787)
 
 ---
 
@@ -86,7 +85,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:784](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L784)
+[packages/formula/src/type/index.ts:786](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L786)
 
 ---
 
@@ -96,7 +95,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:783](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L783)
+[packages/formula/src/type/index.ts:785](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L785)
 
 ---
 
@@ -106,7 +105,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:782](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L782)
+[packages/formula/src/type/index.ts:784](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L784)
 
 ---
 
@@ -124,7 +123,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:797](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L797)
+[packages/formula/src/type/index.ts:798](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L798)
 
 ---
 
@@ -142,7 +141,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:794](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L794)
+[packages/formula/src/type/index.ts:795](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L795)
 
 ---
 
@@ -166,13 +165,13 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:795](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L795)
+[packages/formula/src/type/index.ts:796](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L796)
 
 ---
 
 ### <a id="onupdate" name="onupdate"></a> onUpdate
 
-• **onUpdate**: (`__namedParameters`: { `skipPersist?`: `boolean` }) => `Promise`<`void`\>
+• **onUpdate**: (`__namedParameters`: { `level?`: `number` ; `skipPersist?`: `boolean` ; `source?`: { `id`: `string` ; `type`: `"nameChange"` \| `"dynamic"` \| `"dependencyUpdate"` \| `"reload"` \| `"variableSave"` \| `"variableDelete"` \| `"nameDelete"` \| `"columnChange"` \| `"rowChange"` \| `"spreadsheetInitialize"` \| `"blockDelete"` \| `"cellUpdate"` }[] }) => `Promise`<`void`\>
 
 #### Type declaration
 
@@ -180,10 +179,12 @@
 
 ##### Parameters
 
-| Name                             | Type      |
-| :------------------------------- | :-------- |
-| `__namedParameters`              | `Object`  |
-| `__namedParameters.skipPersist?` | `boolean` |
+| Name                             | Type                                                                                                                                                                                                                                                                  |
+| :------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `__namedParameters`              | `Object`                                                                                                                                                                                                                                                              |
+| `__namedParameters.level?`       | `number`                                                                                                                                                                                                                                                              |
+| `__namedParameters.skipPersist?` | `boolean`                                                                                                                                                                                                                                                             |
+| `__namedParameters.source?`      | { `id`: `string` ; `type`: `"nameChange"` \| `"dynamic"` \| `"dependencyUpdate"` \| `"reload"` \| `"variableSave"` \| `"variableDelete"` \| `"nameDelete"` \| `"columnChange"` \| `"rowChange"` \| `"spreadsheetInitialize"` \| `"blockDelete"` \| `"cellUpdate"` }[] |
 
 ##### Returns
 
@@ -191,7 +192,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:798](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L798)
+[packages/formula/src/type/index.ts:799](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L799)
 
 ---
 
@@ -209,7 +210,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:793](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L793)
+[packages/formula/src/type/index.ts:794](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L794)
 
 ---
 
@@ -219,7 +220,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:781](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L781)
+[packages/formula/src/type/index.ts:783](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L783)
 
 ---
 
@@ -237,7 +238,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:791](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L791)
+[packages/formula/src/type/index.ts:792](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L792)
 
 ---
 
@@ -247,7 +248,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:792](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L792)
+[packages/formula/src/type/index.ts:793](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L793)
 
 ---
 
@@ -271,7 +272,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:796](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L796)
+[packages/formula/src/type/index.ts:797](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L797)
 
 ---
 
@@ -289,22 +290,4 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:786](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L786)
-
----
-
-### <a id="wholevariabledependencies" name="wholevariabledependencies"></a> wholeVariableDependencies
-
-• **wholeVariableDependencies**: () => [`VariableDependency`](VariableDependency.md)[]
-
-#### Type declaration
-
-▸ (): [`VariableDependency`](VariableDependency.md)[]
-
-##### Returns
-
-[`VariableDependency`](VariableDependency.md)[]
-
-#### Defined in
-
-[packages/formula/src/type/index.ts:787](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L787)
+[packages/formula/src/type/index.ts:788](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L788)

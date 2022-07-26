@@ -40,6 +40,7 @@
 - [trackDirty](VariableClass.md#trackdirty)
 - [unsubscripeEvents](VariableClass.md#unsubscripeevents)
 - [updateDefinition](VariableClass.md#updatedefinition)
+- [wholeEventDependencies](VariableClass.md#wholeeventdependencies)
 - [wholeFlattenVariableDependencies](VariableClass.md#wholeflattenvariabledependencies)
 - [wholeVariableDependencies](VariableClass.md#wholevariabledependencies)
 
@@ -59,7 +60,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:118](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L118)
+[packages/formula/src/context/variable.ts:117](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L117)
 
 ## Properties
 
@@ -69,7 +70,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L115)
+[packages/formula/src/context/variable.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L114)
 
 ---
 
@@ -79,7 +80,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:116](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L116)
+[packages/formula/src/context/variable.ts:115](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L115)
 
 ---
 
@@ -89,7 +90,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L114)
+[packages/formula/src/context/variable.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L113)
 
 ---
 
@@ -103,7 +104,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L110)
+[packages/formula/src/context/variable.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L109)
 
 ---
 
@@ -117,7 +118,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L111)
+[packages/formula/src/context/variable.ts:110](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L110)
 
 ---
 
@@ -131,7 +132,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L108)
+[packages/formula/src/context/variable.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L107)
 
 ---
 
@@ -145,7 +146,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L109)
+[packages/formula/src/context/variable.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L108)
 
 ---
 
@@ -159,7 +160,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L107)
+[packages/formula/src/context/variable.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L106)
 
 ---
 
@@ -169,7 +170,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L113)
+[packages/formula/src/context/variable.ts:112](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L112)
 
 ## Methods
 
@@ -193,7 +194,7 @@ VariableInterface.buildFormula
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:422](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L422)
+[packages/formula/src/context/variable.ts:421](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L421)
 
 ---
 
@@ -211,7 +212,7 @@ VariableInterface.cleanup
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:237](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L237)
+[packages/formula/src/context/variable.ts:236](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L236)
 
 ---
 
@@ -232,7 +233,7 @@ VariableInterface.cleanup
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:229](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L229)
+[packages/formula/src/context/variable.ts:228](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L228)
 
 ---
 
@@ -242,11 +243,11 @@ VariableInterface.cleanup
 
 #### Parameters
 
-| Name     | Type                                                                                                                                                                                                                        |
-| :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `source` | { `id`: `string` ; `type`: `"nameChange"` \| `"dynamic"` \| `"dependencyUpdate"` \| `"reload"` \| `"nameDelete"` \| `"columnChange"` \| `"rowChange"` \| `"spreadsheetInitialize"` \| `"blockDelete"` \| `"cellUpdate"` }[] |
-| `level`  | `number`                                                                                                                                                                                                                    |
-| `input?` | [`FormulaDefinition`](../interfaces/FormulaDefinition.md)                                                                                                                                                                   |
+| Name     | Type                                                                                                                                                                                                                                                                  |
+| :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `source` | { `id`: `string` ; `type`: `"nameChange"` \| `"dynamic"` \| `"dependencyUpdate"` \| `"reload"` \| `"variableSave"` \| `"variableDelete"` \| `"nameDelete"` \| `"columnChange"` \| `"rowChange"` \| `"spreadsheetInitialize"` \| `"blockDelete"` \| `"cellUpdate"` }[] |
+| `level`  | `number`                                                                                                                                                                                                                                                              |
+| `input?` | [`FormulaDefinition`](../interfaces/FormulaDefinition.md)                                                                                                                                                                                                             |
 
 #### Returns
 
@@ -254,7 +255,7 @@ VariableInterface.cleanup
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:440](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L440)
+[packages/formula/src/context/variable.ts:439](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L439)
 
 ---
 
@@ -272,7 +273,7 @@ VariableInterface.meta
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:363](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L363)
+[packages/formula/src/context/variable.ts:362](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L362)
 
 ---
 
@@ -290,7 +291,7 @@ VariableInterface.nameDependency
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:374](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L374)
+[packages/formula/src/context/variable.ts:373](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L373)
 
 ---
 
@@ -314,7 +315,7 @@ VariableInterface.namespaceName
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:354](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L354)
+[packages/formula/src/context/variable.ts:353](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L353)
 
 ---
 
@@ -324,12 +325,12 @@ VariableInterface.namespaceName
 
 #### Parameters
 
-| Name                             | Type                                                                                                                                                                                                                        |
-| :------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `__namedParameters`              | `Object`                                                                                                                                                                                                                    |
-| `__namedParameters.level?`       | `number`                                                                                                                                                                                                                    |
-| `__namedParameters.skipPersist?` | `boolean`                                                                                                                                                                                                                   |
-| `__namedParameters.source?`      | { `id`: `string` ; `type`: `"nameChange"` \| `"dynamic"` \| `"dependencyUpdate"` \| `"reload"` \| `"nameDelete"` \| `"columnChange"` \| `"rowChange"` \| `"spreadsheetInitialize"` \| `"blockDelete"` \| `"cellUpdate"` }[] |
+| Name                             | Type                                                                                                                                                                                                                                                                  |
+| :------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `__namedParameters`              | `Object`                                                                                                                                                                                                                                                              |
+| `__namedParameters.level?`       | `number`                                                                                                                                                                                                                                                              |
+| `__namedParameters.skipPersist?` | `boolean`                                                                                                                                                                                                                                                             |
+| `__namedParameters.source?`      | { `id`: `string` ; `type`: `"nameChange"` \| `"dynamic"` \| `"dependencyUpdate"` \| `"reload"` \| `"variableSave"` \| `"variableDelete"` \| `"nameDelete"` \| `"columnChange"` \| `"rowChange"` \| `"spreadsheetInitialize"` \| `"blockDelete"` \| `"cellUpdate"` }[] |
 
 #### Returns
 
@@ -341,7 +342,7 @@ VariableInterface.onUpdate
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:149](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L149)
+[packages/formula/src/context/variable.ts:148](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L148)
 
 ---
 
@@ -359,7 +360,7 @@ VariableInterface.save
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:396](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L396)
+[packages/formula/src/context/variable.ts:395](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L395)
 
 ---
 
@@ -373,7 +374,7 @@ VariableInterface.save
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:495](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L495)
+[packages/formula/src/context/variable.ts:505](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L505)
 
 ---
 
@@ -407,7 +408,7 @@ VariableInterface.save
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:217](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L217)
+[packages/formula/src/context/variable.ts:216](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L216)
 
 ---
 
@@ -425,7 +426,7 @@ VariableInterface.trackDependency
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:295](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L295)
+[packages/formula/src/context/variable.ts:294](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L294)
 
 ---
 
@@ -443,7 +444,7 @@ VariableInterface.trackDirty
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:210](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L210)
+[packages/formula/src/context/variable.ts:209](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L209)
 
 ---
 
@@ -481,7 +482,21 @@ VariableInterface.updateDefinition
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:491](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L491)
+[packages/formula/src/context/variable.ts:490](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L490)
+
+---
+
+### <a id="wholeeventdependencies" name="wholeeventdependencies"></a> wholeEventDependencies
+
+▸ `Private` **wholeEventDependencies**(): [`EventDependency`](../interfaces/EventDependency.md)<[`FormulaEventPayload`](../interfaces/FormulaEventPayload.md)<`any`\>\>[]
+
+#### Returns
+
+[`EventDependency`](../interfaces/EventDependency.md)<[`FormulaEventPayload`](../interfaces/FormulaEventPayload.md)<`any`\>\>[]
+
+#### Defined in
+
+[packages/formula/src/context/variable.ts:494](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L494)
 
 ---
 
@@ -499,22 +514,18 @@ VariableInterface.wholeFlattenVariableDependencies
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:400](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L400)
+[packages/formula/src/context/variable.ts:399](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L399)
 
 ---
 
 ### <a id="wholevariabledependencies" name="wholevariabledependencies"></a> wholeVariableDependencies
 
-▸ **wholeVariableDependencies**(): [`VariableDependency`](../interfaces/VariableDependency.md)[]
+▸ `Private` **wholeVariableDependencies**(): [`VariableDependency`](../interfaces/VariableDependency.md)[]
 
 #### Returns
 
 [`VariableDependency`](../interfaces/VariableDependency.md)[]
 
-#### Implementation of
-
-VariableInterface.wholeVariableDependencies
-
 #### Defined in
 
-[packages/formula/src/context/variable.ts:412](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L412)
+[packages/formula/src/context/variable.ts:411](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L411)
