@@ -32,8 +32,8 @@ module Mutations
 
         if root
           preloads = root.descendants(unscoped: true).index_by(&:id)
-          paths_cache = root.paths_cache
-          final_delete_ids = deleted_ids & paths_cache.keys
+          preloads.merge! Docs::Block.where(id: deleted_ids).index_by(&:id)
+          final_delete_ids = deleted_ids
           if final_delete_ids.present?
             preloads = preloads.each_with_object({}) do |(id, b), h|
               b.soft_delete! if id.in?(final_delete_ids)

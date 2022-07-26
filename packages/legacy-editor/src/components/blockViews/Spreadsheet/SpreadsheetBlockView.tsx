@@ -91,10 +91,12 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
     updateAttributeData
   })
 
+  rows
+
   const valuesMatrix = new Map(
-    Array.from(cellsMap.entries()).map(([rowId, row]) => [
-      rowId,
-      new Map(Array.from(row.entries()).map(([columnId, cell]) => [columnId, cell.text]))
+    rows.map(row => [
+      row.id,
+      new Map(Array.from(cellsMap.get(row.id)?.entries() ?? []).map(([columnId, cell]) => [columnId, cell.text]))
     ])
   )
 
@@ -143,8 +145,6 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
       return [id, finalWidth]
     })
   )
-
-  console.log(finalColumnWidths)
 
   React.useEffect(() => {
     const onDraggingMouseMove = (e: MouseEvent): void => {
@@ -368,6 +368,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                               key={block.id}
                               block={block}
                               rowIdx={rowIdx}
+                              columnIdx={columnIdx}
                               saveBlock={saveCellBlock}
                               columnTitle={column.title}
                               columnSort={column.sort}

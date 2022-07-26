@@ -4,6 +4,7 @@ import {
   MashcardEventBus,
   BlockInput,
   SpreadsheetUpdateCellValue,
+  SpreadsheetUpdateCellValueByIdx,
   FormulaCalculateTrigger,
   FormulaEditorBlurTrigger,
   FormulaEditorCloseTrigger
@@ -27,6 +28,7 @@ export interface SpreadsheetCellProps {
   context: SpreadsheetContext
   block: BlockInput
   rowIdx: number
+  columnIdx: number
   columnSort: number
   columnTitle: string | undefined
   tableId: string
@@ -40,6 +42,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   tableId,
   block,
   rowIdx,
+  columnIdx,
   columnSort,
   columnTitle,
   saveBlock,
@@ -134,19 +137,31 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   })
 
   const eventId = `${tableId},${cellId}`
+  const eventIdx = `${tableId},${rowIdx},${columnIdx}`
 
   React.useEffect(() => {
-    const listener = MashcardEventBus.subscribe(
-      SpreadsheetUpdateCellValue,
-      e => {
-        const { value } = e.payload
-        devLog('Spreadsheet update cell', { eventId, value })
-        void commitFormula(value)
-      },
-      { eventId, subscribeId: eventId }
-    )
-    return () => listener.unsubscribe()
-  }, [commitFormula, eventId])
+    const subscriptions = [
+      MashcardEventBus.subscribe(
+        SpreadsheetUpdateCellValue,
+        e => {
+          const { value } = e.payload
+          devLog('Spreadsheet update cell', { eventId, value })
+          void commitFormula(value)
+        },
+        { eventId, subscribeId: eventId }
+      ),
+      MashcardEventBus.subscribe(
+        SpreadsheetUpdateCellValueByIdx,
+        e => {
+          const { value } = e.payload
+          devLog('Spreadsheet update cell', { eventId, value })
+          void commitFormula(value)
+        },
+        { eventId: eventIdx, subscribeId: eventId }
+      )
+    ]
+    return () => subscriptions.forEach(s => s.unsubscribe())
+  }, [commitFormula, eventId, eventIdx])
 
   const handleEnterEdit = (): void => {
     context.clearSelection()

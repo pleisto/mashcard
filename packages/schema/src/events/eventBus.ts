@@ -86,7 +86,8 @@ class EventBus {
       }
     }
 
-    this.eventsPool[eventType.eventType]?.forEach(event => {
+    this.eventsPool[typeName]?.forEach(event => {
+      console.log(event)
       this.consume<Payload, Result>(event as Event<Payload, Result>)
     })
 
