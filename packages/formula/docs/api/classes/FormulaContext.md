@@ -798,7 +798,7 @@ ContextInterface.listVariables
 
 ### <a id="parsecodefragments" name="parsecodefragments"></a> parseCodeFragments
 
-▸ `Private` **parseCodeFragments**(`input`): [`CodeFragmentWithIndex`](../README.md#codefragmentwithindex)[]
+▸ `Private` **parseCodeFragments**(`input`): () => [`CodeFragmentWithIndex`](../README.md#codefragmentwithindex)[]
 
 #### Parameters
 
@@ -807,6 +807,12 @@ ContextInterface.listVariables
 | `input` | `string` |
 
 #### Returns
+
+`fn`
+
+▸ (): [`CodeFragmentWithIndex`](../README.md#codefragmentwithindex)[]
+
+##### Returns
 
 [`CodeFragmentWithIndex`](../README.md#codefragmentwithindex)[]
 
@@ -1054,4 +1060,4 @@ ContextInterface.variableCount
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:500](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L500)
+[packages/formula/src/context/context.ts:518](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L518)
