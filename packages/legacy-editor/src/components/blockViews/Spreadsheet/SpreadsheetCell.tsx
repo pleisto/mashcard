@@ -24,6 +24,8 @@ import { useEditorContext, useDocumentContext } from '../../../hooks'
 export interface SpreadsheetCellProps {
   context: SpreadsheetContext
   block: BlockInput
+  rowIdx: number
+  columnIdx: number
   spreadsheetId: string
   saveBlock: (block: BlockInput) => void
   width?: number
@@ -34,6 +36,8 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   context,
   spreadsheetId,
   block,
+  rowIdx,
+  columnIdx,
   saveBlock,
   width,
   height
@@ -104,16 +108,18 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   const eventId = `${spreadsheetId},${cellId}`
 
   React.useEffect(() => {
-    const listener = MashcardEventBus.subscribe(
-      SpreadsheetUpdateCellValue,
-      e => {
-        const { value } = e.payload
-        devLog('Spreadsheet update cell', { eventId, value })
-        void commitFormula(value)
-      },
-      { eventId, subscribeId: eventId }
-    )
-    return () => listener.unsubscribe()
+    const subscriptions = [
+      MashcardEventBus.subscribe(
+        SpreadsheetUpdateCellValue,
+        e => {
+          const { value } = e.payload
+          devLog('Spreadsheet update cell', { eventId, value })
+          void commitFormula(value)
+        },
+        { eventId, subscribeId: eventId }
+      )
+    ]
+    return () => subscriptions.forEach(s => s.unsubscribe())
   }, [commitFormula, eventId])
 
   const handleEnterEdit = (): void => {

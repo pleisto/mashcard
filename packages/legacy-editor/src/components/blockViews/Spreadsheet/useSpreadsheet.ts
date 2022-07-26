@@ -8,6 +8,10 @@ import {
   CommitBlocks,
   loadSpreadsheetBlocks,
   SpreadsheetLoaded,
+  SpreadsheetAddRow,
+  SpreadsheetAddColumn,
+  SpreadsheetUpdateCellValue,
+  SpreadsheetUpdateCellValueByIdx,
   BlockInput,
   Block
 } from '@mashcard/schema'
@@ -20,6 +24,13 @@ export interface SpreadsheetColumn {
   title?: string
   sort: number
   width?: number
+}
+
+export interface SpreadsheetUpdateCell {
+  parentId: string
+  rowIdx: number
+  columnIdx: number
+  value: string
 }
 
 export interface SpreadsheetColumns extends Array<SpreadsheetColumn> {}
@@ -64,6 +75,10 @@ export function useSpreadsheet(options: {
   const blocksMap = React.useRef<Map<string, BlockInput>>(new Map<string, BlockInput>())
   const cellsMap = React.useRef<SpreadsheetCellsMap>(new Map<string, Map<string, BlockInput>>())
 
+  const addRowsQueue = React.useRef<number[]>([])
+  const addColumnsQueue = React.useRef<number[]>([])
+  const updateCellsQueue = React.useRef<SpreadsheetUpdateCell[]>([])
+
   const updateSpreadsheetAttributes = React.useCallback(
     (columns: any): void => {
       setColumns(columns)
@@ -105,26 +120,6 @@ export function useSpreadsheet(options: {
       rowCellsMap.set(block.data.columnId, block)
     }
   }, [])
-
-  MashcardEventBus.subscribe(
-    SpreadsheetLoaded,
-    e => {
-      const { parentId, blocks } = e.payload
-      devLog(`loaded spreadsheet ${parentId}`, blocks)
-      const newRows = [...rows]
-      blocks.forEach((block: BlockInput) => {
-        blocksMap.current.set(block.id, block)
-        if (block.type === 'spreadsheetRow') {
-          newRows[parseInt(block.sort, 10)] = block
-        } else if (block.type === 'spreadsheetCell') {
-          setBlockToCellsMap(block)
-        }
-      })
-      setRows(newRows)
-      loaded.current = true
-    },
-    { eventId: parentId, subscribeId: parentId }
-  )
 
   const saveRowBlocks = React.useCallback(
     (newRows: SpreadsheetRows): void => {
@@ -285,31 +280,6 @@ export function useSpreadsheet(options: {
     title
   })
 
-  // const getCellBlockByIdx = React.useCallback(
-  //   (rowIdx: number, columnIdx: number): BlockInput => {
-  //     return getCellBlock(
-  //       rows[rowIdx].id,
-  //       columns[columnIdx].uuid
-  //     )
-  //   },
-  //   [rows, columns]
-  // )
-
-  // const getCellIdxByBlockId = React.useCallback(
-  //   (blockId: string): ([number, number] | undefined) => {
-  //     const block = blocksMap.current.get(blockId)
-  //     if (block) {
-  //       const rowId = block.parentId
-  //       const { columnId } = block.data
-  //       const rowIdx = rows.findIndex(row => row.id === rowId)
-  //       const columnIdx = columns.findIndex(column => column.uuid === columnId)
-  //       return [rowIdx, columnIdx]
-  //     }
-  //     return undefined
-  //   },
-  //   [rows, columns]
-  // )
-
   const saveCellBlock = React.useCallback(
     (block: BlockInput): void => {
       devLog(`Saving cell block`, block, cellsMap.current)
@@ -331,6 +301,102 @@ export function useSpreadsheet(options: {
       MashcardEventBus.dispatch(loadSpreadsheetBlocks(parentId))
     }
   }, [parentId, columns, latestRowsCount, addColumn, saveRowBlocks, getRowBlock, updateSpreadsheetAttributes])
+
+  const tryAddRow = React.useCallback(
+    (rowIdx: number) => {
+      if (rows[rowIdx - 1]) {
+        addRow(rowIdx)
+      } else {
+        addRowsQueue.current.push(rowIdx)
+      }
+    },
+    [addRow, rows]
+  )
+
+  const tryAddColumn = React.useCallback(
+    (columnIdx: number) => {
+      if (columns[columnIdx - 1]) {
+        addColumn(columnIdx)
+      } else {
+        addColumnsQueue.current.push(columnIdx)
+      }
+    },
+    [addColumn, columns]
+  )
+
+  React.useEffect(() => {
+    const subscriptions = [
+      MashcardEventBus.subscribe(
+        SpreadsheetLoaded,
+        e => {
+          cellsMap.current = new Map<string, Map<string, BlockInput>>()
+          const { parentId, blocks } = e.payload
+          devLog(`loaded spreadsheet ${parentId}`, blocks)
+          const newRows = [...rows]
+          blocks.forEach((block: BlockInput) => {
+            blocksMap.current.set(block.id, block)
+            if (block.type === 'spreadsheetRow') {
+              newRows[parseInt(block.sort, 10)] = block
+            } else if (block.type === 'spreadsheetCell') {
+              setBlockToCellsMap(block)
+            }
+          })
+          setRows(newRows)
+          loaded.current = true
+        },
+        { eventId: parentId, subscribeId: parentId }
+      ),
+      MashcardEventBus.subscribe(
+        SpreadsheetAddRow,
+        e => {
+          const { idx } = e.payload
+          tryAddRow(idx)
+        },
+        { eventId: parentId, subscribeId: parentId }
+      ),
+      MashcardEventBus.subscribe(
+        SpreadsheetAddColumn,
+        e => {
+          const { idx } = e.payload
+          tryAddColumn(idx)
+        },
+        { eventId: parentId, subscribeId: parentId }
+      ),
+      MashcardEventBus.subscribe(
+        SpreadsheetUpdateCellValueByIdx,
+        e => {
+          updateCellsQueue.current.push(e.payload)
+        },
+        { eventId: parentId, subscribeId: parentId }
+      )
+    ]
+    return () => subscriptions.forEach(s => s.unsubscribe())
+  }, [tryAddRow, tryAddColumn, parentId, rows, setBlockToCellsMap])
+
+  React.useEffect(() => {
+    addRowsQueue.current.forEach((rowIdx, i) => {
+      if (rows[rowIdx - 1]) {
+        addRow(rowIdx)
+        addRowsQueue.current.splice(i, 1)
+      }
+    })
+    addColumnsQueue.current.forEach((columnIdx, i) => {
+      if (columns[columnIdx - 1]) {
+        addColumn(columnIdx)
+        addColumnsQueue.current.splice(i, 1)
+      }
+    })
+    updateCellsQueue.current.forEach((updateCell, i) => {
+      const row = rows[updateCell.rowIdx]
+      const column = columns[updateCell.columnIdx]
+      if (row && column) {
+        MashcardEventBus.dispatch(
+          SpreadsheetUpdateCellValue({ parentId, cellId: `${row.id},${column.uuid}`, value: updateCell.value })
+        )
+        updateCellsQueue.current.splice(i, 1)
+      }
+    })
+  }, [addRow, addColumn, rows, columns, parentId])
 
   return {
     columns,

@@ -1,6 +1,12 @@
 import React from 'react'
 import { devLog } from '@mashcard/design-system'
-import { MashcardEventBus, SpreadsheetUpdateCellValue } from '@mashcard/schema'
+import {
+  MashcardEventBus,
+  SpreadsheetUpdateCellValue,
+  SpreadsheetUpdateCellValueByIdx,
+  SpreadsheetAddRow,
+  SpreadsheetAddColumn
+} from '@mashcard/schema'
 import { parsePasteTable } from './helper'
 
 export interface SpreadsheetSelectionCellId {
@@ -140,13 +146,25 @@ export const useSpreadsheetContext = (options: {
       let rowDelta = 0
       pasteMatrix.forEach((r: string[], ri: number) => {
         r.forEach((c: string, ci: number) => {
-          const rowId = rowIds[rowIdx + ri + rowDelta]
-          const columnId = columnIds[columnIdx + ci]
+          const nRowIdx = rowIdx + ri + rowDelta
+          const nColumnIdx = columnIdx + ci
+          const rowId = rowIds[nRowIdx]
+          const columnId = columnIds[nColumnIdx]
           if (selectedColumnIds?.includes(columnId) && ri === 0) {
             rowDelta -= 1
           } else if (rowId && columnId) {
             const cellId = `${rowId},${columnId}`
             MashcardEventBus.dispatch(SpreadsheetUpdateCellValue({ parentId: parentId!, cellId, value: c }))
+          } else if (c && c.length > 0) {
+            if (nRowIdx >= rowIds.length) {
+              MashcardEventBus.dispatch(SpreadsheetAddRow({ parentId: parentId!, idx: nRowIdx }))
+            }
+            if (nColumnIdx >= columnIds.length) {
+              MashcardEventBus.dispatch(SpreadsheetAddColumn({ parentId: parentId!, idx: nColumnIdx }))
+            }
+            MashcardEventBus.dispatch(
+              SpreadsheetUpdateCellValueByIdx({ parentId: parentId!, rowIdx: nRowIdx, columnIdx: nColumnIdx, value: c })
+            )
           }
         })
       })

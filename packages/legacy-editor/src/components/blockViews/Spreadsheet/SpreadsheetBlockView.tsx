@@ -6,7 +6,13 @@ import { BlockContainer, BlockContainerProps } from '../BlockContainer'
 import { SpreadsheetViewProps } from '../../../extensions/blocks/spreadsheet/meta'
 import { MenuIcon } from '../../ui/BlockSelector/BlockSelector.style'
 
-import { SpreadsheetTitleEditing, SpreadsheetTitleInput, SpreadsheetTitleTooltip } from './Spreadsheet.style'
+import {
+  SpreadsheetTitleEditing,
+  SpreadsheetTitleInput,
+  SpreadsheetTitleTooltip,
+  columnDefaultWidth,
+  columnMinWidth
+} from './Spreadsheet.style'
 import { useSpreadsheet } from './useSpreadsheet'
 import { columnDisplayTitle } from './helper'
 
@@ -86,10 +92,12 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
   })
 
   const valuesMatrix = new Map(
-    Array.from(cellsMap.entries()).map(([rowId, row]) => [
-      rowId,
-      new Map(Array.from(row.entries()).map(([columnId, cell]) => [columnId, cell.text]))
-    ])
+    rows
+      .flat(1)
+      .map(row => [
+        row.id,
+        new Map(columns.map(column => [column.uuid, cellsMap.get(row.id)?.get(column.uuid)?.text ?? '']))
+      ])
   )
 
   const spreadsheetContext = useSpreadsheetContext({
@@ -130,7 +138,13 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
 
   const [columnWidths, setColumnWidths] = React.useState(Object.fromEntries(columns.map(c => [c.uuid, c.width])))
 
-  const finalColumnWidths = Object.fromEntries(Object.entries(columnWidths).map(([id, width]) => [id, width ?? 230]))
+  const finalColumnWidths = Object.fromEntries(
+    Object.entries(columnWidths).map(([id, width]) => {
+      let finalWidth = width ?? columnDefaultWidth
+      if (finalWidth < columnMinWidth) finalWidth = columnMinWidth
+      return [id, finalWidth]
+    })
+  )
 
   React.useEffect(() => {
     const onDraggingMouseMove = (e: MouseEvent): void => {
@@ -311,7 +325,11 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                     draggable={documentEditable}
                     onResize={onResize}
                     width={finalColumnWidths[column.uuid]}
-                    setWidth={number => setColumnWidths({ ...columnWidths, [column.uuid]: number })}
+                    setWidth={width => {
+                      let newWidth = width
+                      if (newWidth < columnMinWidth) newWidth = columnMinWidth
+                      setColumnWidths({ ...columnWidths, [column.uuid]: newWidth })
+                    }}
                   >
                     <SpreadsheetColumnEditable
                       context={spreadsheetContext}
@@ -349,6 +367,8 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                               spreadsheetId={parentId}
                               key={block.id}
                               block={block}
+                              rowIdx={rowIdx}
+                              columnIdx={columnIdx}
                               saveBlock={saveCellBlock}
                               width={finalColumnWidths[column.uuid]}
                               height={rowLayoutHeights[rowBlock.id]}
