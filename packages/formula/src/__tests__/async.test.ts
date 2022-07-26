@@ -6,13 +6,10 @@ const [input] = buildTestCases(['async'])
 describe('async', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
-    jest.useRealTimers()
     ctx = await makeContext(input.options)
   })
 
   it.each(input.successTestCases)('$jestTitle', async args => {
-    jest.useRealTimers()
-
     const [tempT, parseResult] = await ctx.interpretDirectly(args)
 
     expect(parseResult.variableParseResult.valid).toBe(true)

@@ -6,7 +6,6 @@ const testCases = ALL_TEST_CASE
 describe('parser', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
-    jest.useRealTimers()
     ctx = await makeContext(testCases.options)
   })
   it.each(

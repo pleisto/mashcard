@@ -1,5 +1,4 @@
 import { useImperativeQuery } from '@/common/hooks'
-import { sleep } from '@/common/utils'
 import {
   GetTrashBlocksDocument,
   Scalars,
@@ -9,6 +8,7 @@ import {
   useBlockRenameMutation
 } from '@/MashcardGraphQL'
 import { useApolloClient, useReactiveVar } from '@apollo/client'
+import { sleep } from '@mashcard/active-support'
 import {
   Button,
   devWarning,
@@ -96,7 +96,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
       const newPageInput = { title: '', username: domain }
       const { data } = await blockCreate({ variables: { input: newPageInput } })
       if (data?.blockCreate?.id) {
-        await sleep(100)
+        await sleep(100).promise
         navigate(`/${domain}/${data?.blockCreate?.id}`)
       }
     }
@@ -112,7 +112,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
       return
     }
     if (nearNodeId ?? parentId) {
-      await sleep(100)
+      await sleep(100).promise
       navigate(`/${domain}/${nearNodeId ?? parentId}`)
       return
     }

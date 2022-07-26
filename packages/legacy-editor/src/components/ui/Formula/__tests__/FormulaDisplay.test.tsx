@@ -15,7 +15,6 @@ jest.mock('../../../../hooks/useEditorContext', () => {
 describe('FormulaDisplay', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
-    jest.useRealTimers()
     ctx = await makeContext(input.options)
 
     const editor = mockEditor({

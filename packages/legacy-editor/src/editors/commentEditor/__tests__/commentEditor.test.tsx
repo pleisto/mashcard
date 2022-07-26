@@ -2,8 +2,6 @@ import { fireEvent, render, screen, act } from '@testing-library/react'
 import { CommentEditorContent } from '../commentEditor'
 import { getDraft, setDraft } from '../draft'
 
-jest.useFakeTimers()
-
 describe('commentEditor', () => {
   it('renders commentEditor correctly', () => {
     const { container } = render(<CommentEditorContent markId="markId" mentionCommandsOptions={{}} />)

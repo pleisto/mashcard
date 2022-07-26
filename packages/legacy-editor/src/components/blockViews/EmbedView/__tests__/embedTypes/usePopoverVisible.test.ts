@@ -2,8 +2,6 @@ import { BlockJustCreated, MashcardEventBus } from '@mashcard/schema'
 import { renderHook, act } from '@testing-library/react'
 import { usePopoverVisible } from '../../embedTypes/usePopoverVisible'
 
-jest.useFakeTimers()
-
 describe('EmbedView > usePopoverVisible', () => {
   it('responds for BlockJustCreated event correctly', () => {
     const id = 'id'

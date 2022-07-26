@@ -20,7 +20,6 @@ describe('event', () => {
   trackTodo(it, input.eventTestCases)
 
   it.each(input.eventTestCases)('$jestTitle', async args => {
-    jest.useRealTimers()
     const newCtx = { ...ctx, meta: ctx.buildMeta(args) }
     const parseResult = parse(newCtx)
     const triggerTest = []

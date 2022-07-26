@@ -13,8 +13,6 @@ jest.mock('../../../../hooks/useBlockContext', () => {
   return { useBlockContext: jest.fn().mockImplementation(useBlockContext) }
 })
 
-jest.useFakeTimers()
-
 describe('BlockActionButton', () => {
   it(`renders BlockActionButton when node is empty correctly`, () => {
     const props: BlockActionButtonProps = {}

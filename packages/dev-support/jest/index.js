@@ -1,4 +1,5 @@
 const { resolve } = require('node:path')
+const os = require('node:os')
 const fs = require('node:fs')
 const esModules = [
   'lodash-es',
@@ -23,6 +24,8 @@ module.exports = {
   esModules,
   baseConfig: hasDom => ({
     passWithNoTests: true,
+    // More than 24 workers on HEDT CPUs will slow down the tests
+    maxWorkers: Math.min(os.cpus().length - 1, 24),
     testEnvironmentOptions: {
       url: 'http://localhost'
     },
@@ -46,10 +49,10 @@ module.exports = {
       : {},
     setupFilesAfterEnv: hasDom ? [resolve(__dirname, 'dom.js')] : [],
     fakeTimers: {
-      enableGlobally: hasDom
+      enableGlobally: true
     },
     testMatch: ['**/**/__tests__/**/*.(ts|tsx)', '**/**/*.@(spec|test).(ts|tsx)', '!**/dist/**'],
-    snapshotResolver: hasDom ? resolve(__dirname, 'snapshot-resolver.js') : undefined,
+    snapshotResolver: resolve(__dirname, 'snapshot-resolver.js'),
     reporters: ['default', 'github-actions'],
     transformIgnorePatterns: [`${monoRoot}/node_modules/(?!(${esModules})/)`]
   })

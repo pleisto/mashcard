@@ -7,14 +7,12 @@ const testCases = ALL_TEST_CASE
 describe('successExecute', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeAll(async () => {
-    jest.useRealTimers()
     ctx = await makeContext(testCases.options)
   })
 
   trackTodo(it, testCases.successTestCases)
 
   it.each(testCases.successTestCases)('$jestTitle', async args => {
-    jest.useRealTimers()
     const [tempT, parseResult] = await ctx.interpretDirectly(args)
     expect([parseResult.variableParseResult.valid, parseResult.success, parseResult.errorMessages]).toStrictEqual([
       true,

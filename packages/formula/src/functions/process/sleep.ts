@@ -1,3 +1,4 @@
+import { sleep } from '@mashcard/active-support'
 import { createFunctionClause } from '../../type'
 
 /**
@@ -24,7 +25,7 @@ export const processSleep = createFunctionClause({
   returns: 'number',
   chain: false,
   reference: async (ctx, number) => {
-    await new Promise(resolve => setTimeout(resolve, number.result))
+    await sleep(number.result).promise
     return number
   }
 })

@@ -1,8 +1,6 @@
-import { act, renderHook } from '@testing-library/react'
+import { renderHook, waitFor } from '@testing-library/react'
 import { useUnsplashImages } from '../../../embedTypes/Gallery/useUnsplashImages'
 import { useRef } from 'react'
-
-jest.useRealTimers()
 
 describe('useUnsplashImages', () => {
   it('fetches images correctly', async () => {
@@ -37,24 +35,16 @@ describe('useUnsplashImages', () => {
       return useUnsplashImages(ref, extension)
     })
 
-    // wait for async effect
-    await act(async () => {
-      await new Promise<void>(resolve => {
-        setTimeout(() => {
-          resolve()
-        }, 10)
-      })
+    await waitFor(() => {
+      const [images] = result.current
+      expect(images).toHaveLength(1)
     })
-
-    const [images] = result.current
-
-    expect(images).toHaveLength(1)
   })
 
   it('fetches images correctly when observer triggers', async () => {
     const extension: any = {
       options: {
-        getGalleryImages: async () => {
+        getGalleryImages: jest.fn(async () => {
           return {
             success: true,
             data: [
@@ -69,7 +59,7 @@ describe('useUnsplashImages', () => {
               }
             ]
           }
-        }
+        })
       }
     }
 
@@ -92,29 +82,20 @@ describe('useUnsplashImages', () => {
       unobserve(): void {}
     } as any
 
-    const { result } = renderHook(() => {
+    renderHook(() => {
       const ref = useRef<HTMLDivElement>(document.createElement('div'))
       return useUnsplashImages(ref, extension)
     })
 
-    // wait for async effect
-    await act(async () => {
-      await new Promise<void>(resolve => {
-        setTimeout(() => {
-          resolve()
-        }, 10)
-      })
+    await waitFor(() => {
+      expect(extension.options.getGalleryImages).toBeCalledTimes(2)
     })
-
-    const [images] = result.current
-
-    expect(images).toHaveLength(1)
   })
 
   it('fetches images by query correctly', async () => {
     const extension: any = {
       options: {
-        getGalleryImages: async () => {
+        getGalleryImages: jest.fn(async () => {
           return {
             success: true,
             data: [
@@ -129,7 +110,7 @@ describe('useUnsplashImages', () => {
               }
             ]
           }
-        }
+        })
       }
     }
 
@@ -145,26 +126,10 @@ describe('useUnsplashImages', () => {
 
     const [, , search] = result.current
 
-    await act(async () => {
-      // wait for async effect
-      await new Promise<void>(resolve => {
-        setTimeout(() => {
-          resolve()
-        }, 10)
-      })
+    search({ target: { value: 'cat' } } as any)
 
-      search({ target: { value: 'cat' } } as any)
-
-      // wait for debounce
-      await new Promise<void>(resolve => {
-        setTimeout(() => {
-          resolve()
-        }, 500)
-      })
+    await waitFor(() => {
+      expect(extension.options.getGalleryImages).toBeCalledTimes(2)
     })
-
-    const [images] = result.current
-
-    expect(images).toHaveLength(1)
   })
 })

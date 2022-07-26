@@ -1,5 +1,4 @@
 import { useImperativeQuery } from '@/common/hooks'
-import { sleep } from '@/common/utils'
 import {
   GetTrashBlocksDocument,
   useBlockCreateMutation,
@@ -7,7 +6,7 @@ import {
   useBlockPinOrUnpinMutation
 } from '@/MashcardGraphQL'
 import { useApolloClient, useReactiveVar } from '@apollo/client'
-import { array2Tree } from '@mashcard/active-support'
+import { array2Tree, sleep } from '@mashcard/active-support'
 import { Button, Icon, Menu, Popover } from '@mashcard/design-system'
 import { appendFormulas } from '@mashcard/formula'
 import { MashcardEventBus, Undo } from '@mashcard/schema'
@@ -88,7 +87,7 @@ const PopMenu: FC<{ menuToggle: (state: boolean) => void }> = ({ menuToggle }) =
       const newPageInput = { title: '', username: domain }
       const { data } = await blockCreate({ variables: { input: newPageInput } })
       if (data?.blockCreate?.id) {
-        await sleep(100)
+        await sleep(100).promise
         navigate(`/${domain}/${data?.blockCreate?.id}`)
       }
     }
