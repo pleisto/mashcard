@@ -14,8 +14,8 @@ ja-JP:
           invalid: Variable name is not valid
           duplicated: Name exist in same namespace
         circular_dependency:
-          variable: Circular dependency found in variable
-          spreadsheet: Circular dependency found in spreadsheet when parse
+          variable: Circular dependency problem found with variable
+          spreadsheet: Circular dependency problem found with spreadsheet
         mismatch:
           type: Expected %{expected} but got %{got}
           argument_count: Argument count mismatch
@@ -37,7 +37,8 @@ ja-JP:
       interpret:
         not_a_number: NaN
         circular_dependency:
-          spreadsheet: Circular dependency found in spreadsheet when run
+          variable: Circular dependency problem found with variable at runtime
+          spreadsheet: Circular dependency problem found with spreadsheet at runtime
         runtime:
           division_by_zero: Division by zero
         not_found:
