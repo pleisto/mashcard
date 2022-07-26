@@ -4,7 +4,6 @@ import {
   MashcardEventBus,
   BlockInput,
   SpreadsheetUpdateCellValue,
-  SpreadsheetUpdateCellValueByIdx,
   FormulaCalculateTrigger,
   FormulaEditorBlurTrigger,
   FormulaEditorCloseTrigger
@@ -107,7 +106,6 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   })
 
   const eventId = `${spreadsheetId},${cellId}`
-  const eventIdx = `${spreadsheetId},${rowIdx},${columnIdx}`
 
   React.useEffect(() => {
     const subscriptions = [
@@ -119,19 +117,10 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
           void commitFormula(value)
         },
         { eventId, subscribeId: eventId }
-      ),
-      MashcardEventBus.subscribe(
-        SpreadsheetUpdateCellValueByIdx,
-        e => {
-          const { value } = e.payload
-          devLog('Spreadsheet update cell', { eventId, value })
-          void commitFormula(value)
-        },
-        { eventId: eventIdx, subscribeId: eventId }
       )
     ]
     return () => subscriptions.forEach(s => s.unsubscribe())
-  }, [commitFormula, eventId, eventIdx])
+  }, [commitFormula, eventId])
 
   const handleEnterEdit = (): void => {
     context.clearSelection()

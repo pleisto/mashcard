@@ -24,15 +24,15 @@ export const SpreadsheetUpdateCellValueByIdx = event<{
   rowIdx: number
   columnIdx: number
   value: string
-}>({ sticky: true })('SpreadsheetUpdateCellValue', ({ parentId, rowIdx, columnIdx, value }) => {
-  return { id: `${parentId},${rowIdx},${columnIdx}` }
-})
-
-export const SpreadsheetAddRow = event<{ parentId: string; idx?: number }>()('SpreadsheetAddRow', ({ parentId }) => {
+}>()('SpreadsheetUpdateCellValueByIdx', ({ parentId, rowIdx, columnIdx, value }) => {
   return { id: parentId }
 })
 
-export const SpreadsheetAddColumn = event<{ parentId: string; idx?: number }>()(
+export const SpreadsheetAddRow = event<{ parentId: string; idx: number }>()('SpreadsheetAddRow', ({ parentId }) => {
+  return { id: parentId }
+})
+
+export const SpreadsheetAddColumn = event<{ parentId: string; idx: number }>()(
   'SpreadsheetAddColumn',
   ({ parentId }) => {
     return { id: parentId }

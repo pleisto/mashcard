@@ -91,13 +91,13 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
     updateAttributeData
   })
 
-  rows
-
   const valuesMatrix = new Map(
-    rows.map(row => [
-      row.id,
-      new Map(Array.from(cellsMap.get(row.id)?.entries() ?? []).map(([columnId, cell]) => [columnId, cell.text]))
-    ])
+    rows
+      .flat(1)
+      .map(row => [
+        row.id,
+        new Map(columns.map(column => [column.uuid, cellsMap.get(row.id)?.get(column.uuid)?.text ?? '']))
+      ])
   )
 
   const spreadsheetContext = useSpreadsheetContext({

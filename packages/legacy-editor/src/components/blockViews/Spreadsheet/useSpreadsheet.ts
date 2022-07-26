@@ -10,6 +10,8 @@ import {
   SpreadsheetLoaded,
   SpreadsheetAddRow,
   SpreadsheetAddColumn,
+  SpreadsheetUpdateCellValue,
+  SpreadsheetUpdateCellValueByIdx,
   BlockInput,
   Block
 } from '@mashcard/schema'
@@ -22,6 +24,13 @@ export interface SpreadsheetColumn {
   title?: string
   sort: number
   width?: number
+}
+
+export interface SpreadsheetUpdateCell {
+  parentId: string
+  rowIdx: number
+  columnIdx: number
+  value: string
 }
 
 export interface SpreadsheetColumns extends Array<SpreadsheetColumn> {}
@@ -65,6 +74,10 @@ export function useSpreadsheet(options: {
 
   const blocksMap = React.useRef<Map<string, BlockInput>>(new Map<string, BlockInput>())
   const cellsMap = React.useRef<SpreadsheetCellsMap>(new Map<string, Map<string, BlockInput>>())
+
+  const addRowsQueue = React.useRef<number[]>([])
+  const addColumnsQueue = React.useRef<number[]>([])
+  const updateCellsQueue = React.useRef<SpreadsheetUpdateCell[]>([])
 
   const updateSpreadsheetAttributes = React.useCallback(
     (columns: any): void => {
@@ -289,6 +302,28 @@ export function useSpreadsheet(options: {
     }
   }, [parentId, columns, latestRowsCount, addColumn, saveRowBlocks, getRowBlock, updateSpreadsheetAttributes])
 
+  const tryAddRow = React.useCallback(
+    (rowIdx: number) => {
+      if (rows[rowIdx - 1]) {
+        addRow(rowIdx)
+      } else {
+        addRowsQueue.current.push(rowIdx)
+      }
+    },
+    [addRow, rows]
+  )
+
+  const tryAddColumn = React.useCallback(
+    (columnIdx: number) => {
+      if (columns[columnIdx - 1]) {
+        addColumn(columnIdx)
+      } else {
+        addColumnsQueue.current.push(columnIdx)
+      }
+    },
+    [addColumn, columns]
+  )
+
   React.useEffect(() => {
     const subscriptions = [
       MashcardEventBus.subscribe(
@@ -315,7 +350,7 @@ export function useSpreadsheet(options: {
         SpreadsheetAddRow,
         e => {
           const { idx } = e.payload
-          addRow(idx)
+          tryAddRow(idx)
         },
         { eventId: parentId, subscribeId: parentId }
       ),
@@ -323,13 +358,45 @@ export function useSpreadsheet(options: {
         SpreadsheetAddColumn,
         e => {
           const { idx } = e.payload
-          addColumn(idx)
+          tryAddColumn(idx)
+        },
+        { eventId: parentId, subscribeId: parentId }
+      ),
+      MashcardEventBus.subscribe(
+        SpreadsheetUpdateCellValueByIdx,
+        e => {
+          updateCellsQueue.current.push(e.payload)
         },
         { eventId: parentId, subscribeId: parentId }
       )
     ]
     return () => subscriptions.forEach(s => s.unsubscribe())
-  }, [addColumn, addRow, parentId, rows, setBlockToCellsMap])
+  }, [tryAddRow, tryAddColumn, parentId, rows, setBlockToCellsMap])
+
+  React.useEffect(() => {
+    addRowsQueue.current.forEach((rowIdx, i) => {
+      if (rows[rowIdx - 1]) {
+        addRow(rowIdx)
+        addRowsQueue.current.splice(i, 1)
+      }
+    })
+    addColumnsQueue.current.forEach((columnIdx, i) => {
+      if (columns[columnIdx - 1]) {
+        addColumn(columnIdx)
+        addColumnsQueue.current.splice(i, 1)
+      }
+    })
+    updateCellsQueue.current.forEach((updateCell, i) => {
+      const row = rows[updateCell.rowIdx]
+      const column = columns[updateCell.columnIdx]
+      if (row && column) {
+        MashcardEventBus.dispatch(
+          SpreadsheetUpdateCellValue({ parentId, cellId: `${row.id},${column.uuid}`, value: updateCell.value })
+        )
+        updateCellsQueue.current.splice(i, 1)
+      }
+    })
+  }, [addRow, addColumn, rows, columns, parentId])
 
   return {
     columns,
