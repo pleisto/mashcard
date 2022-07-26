@@ -5,11 +5,12 @@ import { uuid } from '@mashcard/active-support'
 import { MashcardEventBus } from '@mashcard/schema'
 import { fetchResult } from '../context'
 
-const [input] = buildTestCases(EventNames.filter(e => e !== 'spreadsheetDeadlockEvent'))
+const [input] = buildTestCases(EventNames)
 
 describe('event', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeEach(async () => {
+    MashcardEventBus.reset()
     ctx = await makeContext({
       ...input.options,
       uuidFunction: index => uuid(),

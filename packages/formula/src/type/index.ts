@@ -408,7 +408,7 @@ export interface ContextInterface {
 interface Example<T extends FormulaType> {
   readonly input: Definition
   readonly output: AnyFunctionResult<T> | null
-  readonly codeFragments?: CodeFragmentWithIndex[]
+  readonly codeFragments?: () => CodeFragmentWithIndex[]
 }
 
 export interface BaseFunctionContext {
