@@ -15,7 +15,6 @@ import {
   VariableParseResult,
   FormulaDefinition,
   ErrorMessage,
-  VariableDependency,
   FormulaEventPayload
 } from '../type'
 import { parse, interpret, generateVariable } from '../grammar/core'
@@ -397,8 +396,8 @@ export class VariableClass implements VariableInterface {
     await this.formulaContext.commitVariable({ variable: this })
   }
 
-  public wholeFlattenVariableDependencies(): VariableDependency[] {
-    const dependencies: VariableDependency[] = []
+  public wholeFlattenVariableDependencies(): VariableParseResult['flattenVariableDependencies'] {
+    const dependencies: VariableParseResult['flattenVariableDependencies'] = []
 
     if (!this.t.task.async) {
       dependencies.push(...(this.t.task.variableValue.runtimeFlattenVariableDependencies ?? []))
@@ -409,8 +408,8 @@ export class VariableClass implements VariableInterface {
     return [...new Map(dependencies.map(item => [item.variableId, item])).values()]
   }
 
-  public wholeVariableDependencies(): VariableDependency[] {
-    const dependencies: VariableDependency[] = []
+  private wholeVariableDependencies(): VariableParseResult['variableDependencies'] {
+    const dependencies: VariableParseResult['variableDependencies'] = []
     if (!this.t.task.async) {
       dependencies.push(...(this.t.task.variableValue.runtimeVariableDependencies ?? []))
     }
@@ -492,25 +491,21 @@ export class VariableClass implements VariableInterface {
     await this.maybeReparseAndPersist([], 0, input)
   }
 
+  private wholeEventDependencies(): VariableParseResult['eventDependencies'] {
+    const runtime = this.t.task.async ? [] : this.t.task.variableValue.runtimeEventDependencies ?? []
+    const parse = this.t.variableParseResult.eventDependencies
+    const result = [...cleanupEventDependency('runtime', runtime), ...cleanupEventDependency('parse', parse)]
+    return [
+      ...new Map(
+        result.map(item => [`${item.kind},${item.event.eventType},${item.eventId},${item.key}`, item])
+      ).values()
+    ]
+  }
+
   private setupEventDependencies(): void {
-    const {
-      task,
-      variableParseResult: { eventDependencies, blockDependencies, nameDependencies }
-    } = this.t
-    this.eventDependencies = []
+    const finalEventDependencies: VariableParseResult['eventDependencies'] = []
 
-    const finalEventDependencies = task.async
-      ? cleanupEventDependency('parse', eventDependencies)
-      : [
-          ...new Map(
-            [
-              ...cleanupEventDependency('parse', eventDependencies),
-              ...cleanupEventDependency('runtime', task.variableValue.runtimeEventDependencies ?? [])
-            ].map(item => [`${item.kind},${item.event.eventType},${item.eventId},${item.key}`, item])
-          ).values()
-        ]
-
-    this.eventDependencies.push(...finalEventDependencies)
+    finalEventDependencies.push(...this.wholeEventDependencies())
 
     // Variable Dependency Update
     this.wholeVariableDependencies().forEach(({ variableId, namespaceId }) => {
@@ -532,11 +527,11 @@ export class VariableClass implements VariableInterface {
           return codeFragments2definition(newCodeFragments, this.t.meta.namespaceId)
         }
       }
-      this.eventDependencies.push(variableEventDependency)
+      finalEventDependencies.push(variableEventDependency)
     })
 
     // Block rename or delete
-    blockDependencies.forEach(blockId => {
+    this.t.variableParseResult.blockDependencies.forEach(blockId => {
       const blockNameChangedEventDependency: EventDependency<
         typeof FormulaBlockNameChangedTrigger extends EventType<infer X> ? X : never
       > = {
@@ -563,10 +558,10 @@ export class VariableClass implements VariableInterface {
         scope: {},
         key: `BlockDelete#${blockId}`
       }
-      this.eventDependencies.push(blockNameChangedEventDependency, blockNameDeleteEventDependency)
+      finalEventDependencies.push(blockNameChangedEventDependency, blockNameDeleteEventDependency)
     })
 
-    nameDependencies.forEach(({ name, namespaceId }) => {
+    this.t.variableParseResult.nameDependencies.forEach(({ name, namespaceId }) => {
       // 1. Variable or Spreadsheet name
       const nameChangeEventDependency: EventDependency<
         typeof FormulaContextNameChanged extends EventType<infer X> ? X : never
@@ -590,7 +585,6 @@ export class VariableClass implements VariableInterface {
         key: `BlockNameChange#${namespaceId}#${name}`,
         skipIf: (variable, payload) => variable.isReadyT
       }
-      this.eventDependencies.push(blockNameChangeEventDependency)
 
       // 3. Variable or Spreadsheet delete
       const nameRemoveEventDependency: EventDependency<
@@ -615,13 +609,19 @@ export class VariableClass implements VariableInterface {
       //   key: `BlockNameRemove#${namespaceId}#${name}`
       // }
 
-      this.eventDependencies.push(
+      finalEventDependencies.push(
         nameChangeEventDependency,
         blockNameChangeEventDependency,
         nameRemoveEventDependency
         // blockNameRemoveEventDependency
       )
     })
+
+    this.eventDependencies = [
+      ...new Map(
+        finalEventDependencies.map(item => [`${item.kind},${item.event.eventType},${item.eventId},${item.key}`, item])
+      ).values()
+    ]
   }
 
   private subscribeDependencies(): void {
