@@ -29,16 +29,16 @@
       "path": "packages/dev-support"
     },
     {
-      "name": "packages/legacy-editor",
-      "path": "packages/legacy-editor"
-    },
-    {
       "name": "packages/editor",
       "path": "packages/editor"
     },
     {
       "name": "packages/formula",
       "path": "packages/formula"
+    },
+    {
+      "name": "packages/legacy-editor",
+      "path": "packages/legacy-editor"
     },
     {
       "name": "packages/schema",
@@ -63,6 +63,10 @@
     {
       "name": "plugins/google_auth",
       "path": "plugins/google_auth"
+    },
+    {
+      "name": "plugins/mock_auth",
+      "path": "plugins/mock_auth"
     },
     {
       "name": "tools/e2e-testing",

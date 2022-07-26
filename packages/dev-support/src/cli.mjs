@@ -42,16 +42,16 @@ program
 
 program
   .command('sync-vscode-workspace')
-  .description('Update the VSCode workspace file (workspace.code-workspace) to list all projects in this monorepo')
+  .description('Update the VSCode workspace file (mashcard.code-workspace) to list all projects in this monorepo')
   .action(() => {
     const projects = listProjectsInMonorepo()
-    const vscWorkspaceFile = path.resolve(monorepoRoot, './workspace.code-workspace')
+    const vscWorkspaceFile = path.resolve(monorepoRoot, './mashcard.code-workspace')
     const result = fse.existsSync(vscWorkspaceFile) ? JSON.parse(fse.readFileSync(vscWorkspaceFile)) : {}
     result.folders = [
       { name: '/', path: '.' },
-      ...projects.map(match => ({
-        name: match[1],
-        path: match[1]
+      ...projects.map(project => ({
+        name: project,
+        path: project
       }))
     ]
     fse.writeFileSync(vscWorkspaceFile, JSON.stringify(result, null, 2))

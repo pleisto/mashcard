@@ -30,7 +30,8 @@ jobs:
       - name: Update yarn packages
         run: eval "yarn up $PATTERNS --mode=update-lockfile && yarn up $PATTERNS --recursive --mode=update-lockfile"
         env:
-          PATTERNS: "'!(ms)' '@!(mashcard)/*'"
+          # core-js: https://github.com/zloirock/core-js/issues/1110
+          PATTERNS: "'!(core-js-compat|core-js-pure|core-js)' '@!(mashcard)/*'"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
