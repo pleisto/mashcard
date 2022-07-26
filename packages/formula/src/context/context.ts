@@ -279,10 +279,7 @@ export class FormulaContext implements ContextInterface {
         source: [{ id: nameDependency.id, type: 'nameChange' }],
         username: this.username,
         scope: null,
-        meta: {
-          name: nameDependency.name,
-          kind: nameDependency.kind
-        }
+        meta: { name: nameDependency.name, kind: nameDependency.kind }
       })
     )
     await Promise.all(result)
@@ -411,7 +408,7 @@ export class FormulaContext implements ContextInterface {
     await variable.trackDependency()
 
     // 5. Persist
-    await variable.onUpdate({})
+    await variable.onUpdate({ source: [{ id: variable.t.meta.variableId, type: 'variableSave' }] })
   }
 
   public async removeVariable(namespaceId: NamespaceId, variableId: VariableId): Promise<void> {
@@ -422,7 +419,7 @@ export class FormulaContext implements ContextInterface {
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete this.variables[key]
     await variable.cleanup()
-    await variable.onUpdate({})
+    await variable.onUpdate({ source: [{ id: variable.t.meta.variableId, type: 'variableDelete' }] })
   }
 
   public findFunctionClause(

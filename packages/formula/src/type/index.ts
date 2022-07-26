@@ -630,16 +630,16 @@ export interface NameDependencyWithKind extends NameDependency {
 interface BaseVariableValue {
   readonly success: boolean
   readonly result: AnyTypeResult
-  readonly runtimeEventDependencies?: Array<EventDependency<FormulaEventPayload<any>>>
-  readonly runtimeVariableDependencies?: VariableDependency[]
-  readonly runtimeFlattenVariableDependencies?: VariableDependency[]
+  readonly runtimeEventDependencies?: VariableParseResult['eventDependencies']
+  readonly runtimeVariableDependencies?: VariableParseResult['variableDependencies']
+  readonly runtimeFlattenVariableDependencies?: VariableParseResult['flattenVariableDependencies']
 }
 
 interface SuccessVariableValue extends BaseVariableValue {
   readonly success: true
-  readonly runtimeEventDependencies: Array<EventDependency<FormulaEventPayload<any>>>
-  readonly runtimeVariableDependencies: VariableDependency[]
-  readonly runtimeFlattenVariableDependencies: VariableDependency[]
+  readonly runtimeEventDependencies: VariableParseResult['eventDependencies']
+  readonly runtimeVariableDependencies: VariableParseResult['variableDependencies']
+  readonly runtimeFlattenVariableDependencies: VariableParseResult['flattenVariableDependencies']
   readonly result: AnyTypeResult
 }
 
@@ -687,6 +687,8 @@ export interface FormulaEventPayload<T> {
       | 'dynamic'
       | 'dependencyUpdate'
       | 'reload'
+      | 'variableSave'
+      | 'variableDelete'
       | 'nameChange'
       | 'nameDelete'
       | 'columnChange'
@@ -783,8 +785,7 @@ export interface VariableInterface {
   isNew: boolean
   id: string
   formulaContext: ContextInterface
-  wholeFlattenVariableDependencies: () => VariableDependency[]
-  wholeVariableDependencies: () => VariableDependency[]
+  wholeFlattenVariableDependencies: () => VariableParseResult['flattenVariableDependencies']
 
   buildFormula: (input?: FormulaDefinition) => Formula
   cleanup: () => Promise<void>
@@ -795,7 +796,15 @@ export interface VariableInterface {
   namespaceName: (pageId: NamespaceId) => string
   updateDefinition: (input: FormulaDefinition) => Promise<void>
   meta: () => VariableMetadata
-  onUpdate: ({ skipPersist }: { skipPersist?: boolean }) => Promise<void>
+  onUpdate: ({
+    skipPersist,
+    level,
+    source
+  }: {
+    skipPersist?: boolean
+    level?: number
+    source?: FormulaEventPayload<any>['source']
+  }) => Promise<void>
 }
 
 export interface BackendActions {

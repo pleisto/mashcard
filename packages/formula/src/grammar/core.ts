@@ -290,14 +290,7 @@ const parse2 = (ctx: FunctionContext): ParseResult => {
     ...new Map(codeFragmentVisitor.blockDependencies.map(item => [item, item])).values()
   ]
 
-  returnValue.variableParseResult.eventDependencies = [
-    ...new Map(
-      codeFragmentVisitor.eventDependencies.map(item => [
-        `${item.kind},${item.event.eventType},${item.eventId},${item.key}`,
-        item
-      ])
-    ).values()
-  ]
+  returnValue.variableParseResult.eventDependencies = codeFragmentVisitor.eventDependencies
   returnValue.variableParseResult.flattenVariableDependencies = [
     ...new Map(codeFragmentVisitor.flattenVariableDependencies.map(item => [item.variableId, item])).values()
   ]
