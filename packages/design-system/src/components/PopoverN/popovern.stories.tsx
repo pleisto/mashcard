@@ -1,6 +1,5 @@
 import { PopoverN } from './index'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { Button } from '..'
 
 export default {
   title: 'Components/PopoverN',
