@@ -5655,37 +5655,17 @@ node_modules/moize/index.d.ts:205
 
 ### <a id="ms" name="ms"></a> ms
 
-▸ **ms**(`value`, `options?`): `number`
-
-Parse or format the given `val`.
-
-**`Throws`**
-
-Error if `value` is not a non-empty string or a number
-
-#### Parameters
-
-| Name       | Type          | Description                     |
-| :--------- | :------------ | :------------------------------ |
-| `value`    | `StringValue` | The string or number to convert |
-| `options?` | `Options`     | Options for the conversion      |
-
-#### Returns
-
-`number`
-
-#### Defined in
-
-node_modules/ms/dist/index.d.ts:17
-
 ▸ **ms**(`value`, `options?`): `string`
 
+Short/Long format for `value`.
+
 #### Parameters
 
-| Name       | Type      |
-| :--------- | :-------- |
-| `value`    | `number`  |
-| `options?` | `Options` |
+| Name           | Type      |
+| :------------- | :-------- |
+| `value`        | `number`  |
+| `options?`     | `Object`  |
+| `options.long` | `boolean` |
 
 #### Returns
 
@@ -5693,7 +5673,25 @@ node_modules/ms/dist/index.d.ts:17
 
 #### Defined in
 
-node_modules/ms/dist/index.d.ts:18
+node_modules/@types/ms/index.d.ts:15
+
+▸ **ms**(`value`): `number`
+
+Parse the given `value` and return milliseconds.
+
+#### Parameters
+
+| Name    | Type     |
+| :------ | :------- |
+| `value` | `string` |
+
+#### Returns
+
+`number`
+
+#### Defined in
+
+node_modules/@types/ms/index.d.ts:23
 
 ---
 
