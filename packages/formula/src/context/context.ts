@@ -473,28 +473,46 @@ export class FormulaContext implements ContextInterface {
     }
   }
 
-  private parseCodeFragments(input: string): CodeFragmentWithIndex[] {
-    const lexResult: ILexingResult = FormulaLexer.tokenize(input)
-    if (lexResult.errors.length > 0) {
-      return []
-    }
-    const parser = new FormulaParser()
-    const codeFragmentVisitor = new CodeFragmentVisitor({
-      ctx: {
-        formulaContext: this,
-        meta: { name: 'unknown', input, namespaceId: '', variableId: '', position: 0, richType: { type: 'normal' } },
-        interpretContext: { ctx: {}, arguments: [] }
+  private parseCodeFragments(input: string): () => CodeFragmentWithIndex[] {
+    let result: CodeFragmentWithIndex[] | undefined
+
+    return () => {
+      if (!result) {
+        const lexResult: ILexingResult = FormulaLexer.tokenize(input)
+        if (lexResult.errors.length > 0) {
+          result = []
+        } else {
+          const parser = new FormulaParser()
+          const codeFragmentVisitor = new CodeFragmentVisitor({
+            ctx: {
+              formulaContext: this,
+              meta: {
+                name: 'unknown',
+                input,
+                namespaceId: '',
+                variableId: '',
+                position: 0,
+                richType: { type: 'normal' }
+              },
+              interpretContext: { ctx: {}, arguments: [] }
+            }
+          })
+          const tokens = lexResult.tokens
+          parser.input = tokens
+
+          const cst: CstNode = parser.startExpression()
+          const { codeFragments }: { codeFragments: CodeFragment[] } = codeFragmentVisitor.visit(cst, {
+            type: 'any'
+          }) ?? {
+            codeFragments: []
+          }
+
+          result = codeFragments.map((c, index) => ({ ...c, index }))
+        }
       }
-    })
-    const tokens = lexResult.tokens
-    parser.input = tokens
 
-    const cst: CstNode = parser.startExpression()
-    const { codeFragments }: { codeFragments: CodeFragment[] } = codeFragmentVisitor.visit(cst, { type: 'any' }) ?? {
-      codeFragments: []
+      return result
     }
-
-    return codeFragments.map((c, index) => ({ ...c, index }))
   }
 
   public static getFormulaInstance(args: FormulaContextArgs): FormulaContext {

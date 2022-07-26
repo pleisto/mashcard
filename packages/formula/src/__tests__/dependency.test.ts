@@ -6,12 +6,14 @@ import { uuid } from '@mashcard/active-support'
 import { BlockType } from '../controls'
 import { DependencyNames } from '../tests/feature/dependency'
 import { matchObject } from '../tests/testMock'
+import { MashcardEventBus } from '@mashcard/schema'
 
 const [input, testCases] = buildTestCases<TestCaseInput['dependencyTestCases'][0]>(DependencyNames)
 
 describe('dependency', () => {
   let ctx: Awaited<ReturnType<typeof makeContext>>
   beforeEach(async () => {
+    MashcardEventBus.reset()
     ctx = await makeContext({ ...input.options, uuidFunction: index => uuid() })
   })
 
