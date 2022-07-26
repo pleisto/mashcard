@@ -7,12 +7,9 @@ exports[`ParagraphView matches snapshot correctly 1`] = `
     style="white-space: normal; position: relative; pointer-events: unset;"
   >
     <p
-      as="p"
       class="mc-c-dfUVHB mc-c-qcqS"
-      data-node-view-content=""
       data-placeholder=""
       draggable="false"
-      style="white-space: pre-wrap;"
     />
   </div>
 </div>

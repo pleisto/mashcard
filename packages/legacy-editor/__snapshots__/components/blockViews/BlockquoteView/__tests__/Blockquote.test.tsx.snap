@@ -7,11 +7,8 @@ exports[`BlockquoteView renders blockquote correctly 1`] = `
     style="white-space: normal; pointer-events: unset;"
   >
     <blockquote
-      as="blockquote"
       class="mc-c-fGUTRT"
-      data-node-view-content=""
       data-placeholder=""
-      style="white-space: pre-wrap;"
     />
   </div>
 </div>

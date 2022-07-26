@@ -10,8 +10,7 @@ exports[`Embed renders Embed correctly 1`] = `
       translate="no"
     >
       <div
-        class="react-renderer node-embedBlock"
-        draggable="true"
+        contenteditable="false"
       >
         <div
           data-node-view-wrapper=""

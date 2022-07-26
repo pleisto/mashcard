@@ -39,7 +39,7 @@ export const Toc = createBlock<TocOptions, TocAttributes>({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(TocView)
+    return ReactNodeViewRenderer(TocView, { contentEditable: false })
   },
 
   addCommands() {

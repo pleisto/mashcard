@@ -10,112 +10,77 @@ exports[`Heading renders Heading correctly 1`] = `
       translate="no"
     >
       <div
-        class="react-renderer node-heading"
+        contenteditable="true"
       >
         <div
           data-node-view-wrapper=""
           style="white-space: normal; position: relative; pointer-events: unset;"
         >
           <h1
-            as="h1"
             class="mc-c-fHQyyx mc-c-fHQyyx-cOVgnz-level-1"
-            data-node-view-content=""
             data-placeholder=""
-            style="white-space: pre-wrap;"
           >
-            <div
-              style="white-space: inherit;"
-            >
-              h1
-            </div>
+            h1
           </h1>
         </div>
       </div>
       <div
-        class="react-renderer node-heading"
+        contenteditable="true"
       >
         <div
           data-node-view-wrapper=""
           style="white-space: normal; position: relative; pointer-events: unset;"
         >
           <h2
-            as="h2"
             class="mc-c-fHQyyx mc-c-fHQyyx-gPLAez-level-2"
-            data-node-view-content=""
             data-placeholder=""
-            style="white-space: pre-wrap;"
           >
-            <div
-              style="white-space: inherit;"
-            >
-              h2
-            </div>
+            h2
           </h2>
         </div>
       </div>
       <div
-        class="react-renderer node-heading"
+        contenteditable="true"
       >
         <div
           data-node-view-wrapper=""
           style="white-space: normal; position: relative; pointer-events: unset;"
         >
           <h3
-            as="h3"
             class="mc-c-fHQyyx mc-c-fHQyyx-llzMLw-level-3"
-            data-node-view-content=""
             data-placeholder=""
-            style="white-space: pre-wrap;"
           >
-            <div
-              style="white-space: inherit;"
-            >
-              h3
-            </div>
+            h3
           </h3>
         </div>
       </div>
       <div
-        class="react-renderer node-heading"
+        contenteditable="true"
       >
         <div
           data-node-view-wrapper=""
           style="white-space: normal; position: relative; pointer-events: unset;"
         >
           <h4
-            as="h4"
             class="mc-c-fHQyyx mc-c-fHQyyx-dWBeGD-level-4"
-            data-node-view-content=""
             data-placeholder=""
-            style="white-space: pre-wrap;"
           >
-            <div
-              style="white-space: inherit;"
-            >
-              h4
-            </div>
+            h4
           </h4>
         </div>
       </div>
       <div
-        class="react-renderer node-heading"
+        contenteditable="true"
       >
         <div
           data-node-view-wrapper=""
           style="white-space: normal; position: relative; pointer-events: unset;"
         >
           <h5
-            as="h5"
             class="mc-c-fHQyyx mc-c-fHQyyx-hCSGfy-level-5"
-            data-node-view-content=""
             data-placeholder=""
-            style="white-space: pre-wrap;"
           >
-            <div
-              style="white-space: inherit;"
-            >
-              h5
-            </div>
+            h5
           </h5>
         </div>
       </div>

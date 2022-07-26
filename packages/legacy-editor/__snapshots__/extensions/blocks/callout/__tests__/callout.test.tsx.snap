@@ -10,7 +10,7 @@ exports[`Callout renders Callout correctly 1`] = `
       translate="no"
     >
       <div
-        class="react-renderer node-callout"
+        contenteditable="true"
       >
         <div
           data-node-view-wrapper=""
@@ -35,21 +35,14 @@ exports[`Callout renders Callout correctly 1`] = `
               </button>
             </div>
             <span
-              as="span"
               class="mc-c-hbPmqD"
-              data-node-view-content=""
               data-placeholder="placeholder.callout"
-              style="white-space: pre-wrap;"
             >
-              <div
-                style="white-space: inherit;"
-              >
-                <p>
-                  <br
-                    class="ProseMirror-trailingBreak"
-                  />
-                </p>
-              </div>
+              <p>
+                <br
+                  class="ProseMirror-trailingBreak"
+                />
+              </p>
             </span>
           </div>
         </div>

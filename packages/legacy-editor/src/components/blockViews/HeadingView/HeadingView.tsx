@@ -1,9 +1,9 @@
 import { FC, useMemo } from 'react'
-import { NodeViewContent } from '../../../tiptapRefactor'
 import { css, theme } from '@mashcard/design-system'
 import { BlockContainer } from '../BlockContainer'
 import { HeadingViewProps } from '../../../extensions/blocks/heading/meta'
 import { useEditorI18n } from '../../../hooks'
+import { useNodeContent } from '@mashcard/editor'
 
 const placeholderStyle = css({
   '&:before': {
@@ -103,7 +103,7 @@ const actionButtonStyle = css({
 })
 
 export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, extension, getPos }) => {
-  const as = useMemo(() => {
+  const Tag = useMemo(() => {
     switch (Number(node.attrs.level)) {
       case 2:
         return 'h2'
@@ -123,6 +123,7 @@ export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, extension,
   const actionButtonClassName = actionButtonStyle({ level: node.attrs.level })
   const placeholderClassName = placeholderStyle({ level: node.attrs.level })
   const [t] = useEditorI18n()
+  const nodeContentRef = useNodeContent()
   const isEmpty = !node.isLeaf && !node.childCount
   const placeholder = isEmpty ? t(`placeholder.heading${node.attrs.level}`) : ''
 
@@ -142,9 +143,8 @@ export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, extension,
       }}
       getPos={getPos}
       deleteNode={deleteNode}
-      contentForCopy={node.textContent}
-    >
-      <NodeViewContent {...HTMLAttributes} as={as} className={placeholderClassName} data-placeholder={placeholder} />
+      contentForCopy={node.textContent}>
+      <Tag ref={nodeContentRef} {...HTMLAttributes} className={placeholderClassName} data-placeholder={placeholder} />
     </BlockContainer>
   )
 }

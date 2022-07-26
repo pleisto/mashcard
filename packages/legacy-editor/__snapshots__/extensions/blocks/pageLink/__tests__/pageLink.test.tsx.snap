@@ -11,7 +11,7 @@ exports[`PageLink renders PageLink correctly 1`] = `
     >
       <p>
         <span
-          class="react-renderer node-pageLinkBlock"
+          contenteditable="false"
         >
           <span
             as="span"
@@ -77,10 +77,6 @@ exports[`PageLink renders PageLink correctly 1`] = `
             </span>
           </span>
         </span>
-        <img
-          alt=""
-          class="ProseMirror-separator"
-        />
         <br
           class="ProseMirror-trailingBreak"
         />

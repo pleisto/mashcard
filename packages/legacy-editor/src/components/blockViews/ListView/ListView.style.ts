@@ -2,7 +2,7 @@ import { css, CSS, theme } from '@mashcard/design-system'
 import checkedIcon from '@mashcard/design-icons/assets/basic/check.svg'
 
 export const listLevelStyles = {
-  'ul[data-node-view-content=""]': {
+  'ul[data-list-view=""]': {
     listStyleType: 'disc',
 
     ul: {
@@ -39,10 +39,10 @@ export const listItemStyles: CSS = {
 }
 
 export const bulletListStyles = css({
-  'ul[data-node-view-content=""]': {
+  'ul[data-list-view=""]': {
     margin: 0,
     padding: '0 0 0 1.5rem',
-    ...listLevelStyles['ul[data-node-view-content=""]'],
+    ...listLevelStyles['ul[data-list-view=""]'],
 
     li: {
       fontSize: '1rem',
@@ -66,7 +66,7 @@ export const bulletListStyles = css({
 })
 
 export const orderedListStyles = css({
-  'ol[data-node-view-content=""]': {
+  'ol[data-list-view=""]': {
     counterReset: 'item',
     listStyleType: 'none',
     padding: 0,
@@ -92,7 +92,7 @@ export const orderedListStyles = css({
 })
 
 export const taskListStyles = css({
-  'ul[data-node-view-content=""]': {
+  'ul[data-list-view=""]': {
     listStyleType: 'none',
     paddingLeft: 0,
 
