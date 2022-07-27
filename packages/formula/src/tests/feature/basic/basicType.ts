@@ -54,6 +54,7 @@ export const BasicTypeTestCase: TestCaseInterface = {
         { definition: '=   1 + 1 + 1   ' },
         { definition: '="string" & "fasd"' },
         { definition: '=true && false' },
+        { definition: '=TRUE' },
         { definition: '=null' },
         { definition: '=[]' },
         { definition: '=DATE("1926-08-17")', label: 'Date' },

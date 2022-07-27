@@ -38,5 +38,10 @@ describe('FormulaValue', () => {
 
     const { container: container2 } = render(<FormulaValue border={true} displayData={displayData} />)
     expect(container2).toMatchSnapshot()
+
+    const { container: container3 } = render(
+      <FormulaValue border={true} selected={{ formulaId: '', rootId: '' }} displayData={displayData} />
+    )
+    expect(container3).toMatchSnapshot()
   })
 })
