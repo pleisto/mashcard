@@ -1,7 +1,6 @@
 import { ForwardRefRenderFunction, useMemo, RefObject, forwardRef, createRef, HTMLProps } from 'react'
 import { User } from '@mashcard/design-icons'
 import { name2Initials, string2Color } from './initials'
-import defaultAvatar from './assets/avatars.png'
 import { styled, theme } from '../../themes'
 
 type AvatarSize = 'sm' | 'md' | 'lg' | 'xs' | 'xxs'
@@ -103,13 +102,11 @@ const Avatar: ForwardRefRenderFunction<HTMLSpanElement, AvatarProps> = (props, r
   }, [initials])
 
   const isCustomSize = typeof size === 'number' ? size : undefined
-  let childrenNode = src ?? (initialsObj ? <span>{initialsObj.text}</span> : null) ?? <User theme="filled" />
-  if (typeof childrenNode === 'string') {
-    if (!childrenNode) {
-      childrenNode = typeof defaultAvatar === 'string' ? defaultAvatar : defaultAvatar.src
-    } else {
-      childrenNode = childrenNode.length <= 4 ? childrenNode : <img src={childrenNode} alt={alt} />
-    }
+  let childrenNode = src ?? (initialsObj ? <span>{initialsObj.text}</span> : null)
+  if (!childrenNode) {
+    childrenNode = <User theme="filled" />
+  } else if (typeof childrenNode === 'string') {
+    childrenNode = childrenNode.length <= 4 ? childrenNode : <img src={childrenNode} alt={alt} />
   }
 
   const customSizeCss = isCustomSize
