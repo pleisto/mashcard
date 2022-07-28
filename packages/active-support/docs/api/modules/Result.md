@@ -4,9 +4,63 @@
 
 ### Functions
 
+- [combine](Result.md#combine)
+- [combineWithAllErrors](Result.md#combinewithallerrors)
 - [fromThrowable](Result.md#fromthrowable)
 
 ## Functions
+
+### <a id="combine" name="combine"></a> combine
+
+▸ **combine**<`T`\>(`resultList`): [`Result`](../README.md#result)<`ExtractOkTypes`<`T`\>, `ExtractErrTypes`<`T`\>[`number`]\>
+
+#### Type parameters
+
+| Name | Type                                                                      |
+| :--- | :------------------------------------------------------------------------ |
+| `T`  | extends readonly [`Result`](../README.md#result)<`unknown`, `unknown`\>[] |
+
+#### Parameters
+
+| Name         | Type |
+| :----------- | :--- |
+| `resultList` | `T`  |
+
+#### Returns
+
+[`Result`](../README.md#result)<`ExtractOkTypes`<`T`\>, `ExtractErrTypes`<`T`\>[`number`]\>
+
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:55
+
+---
+
+### <a id="combinewithallerrors" name="combinewithallerrors"></a> combineWithAllErrors
+
+▸ **combineWithAllErrors**<`T`\>(`resultList`): [`Result`](../README.md#result)<`ExtractOkTypes`<`T`\>, `ExtractErrTypes`<`T`\>[`number`][]\>
+
+#### Type parameters
+
+| Name | Type                                                                      |
+| :--- | :------------------------------------------------------------------------ |
+| `T`  | extends readonly [`Result`](../README.md#result)<`unknown`, `unknown`\>[] |
+
+#### Parameters
+
+| Name         | Type |
+| :----------- | :--- |
+| `resultList` | `T`  |
+
+#### Returns
+
+[`Result`](../README.md#result)<`ExtractOkTypes`<`T`\>, `ExtractErrTypes`<`T`\>[`number`][]\>
+
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:56
+
+---
 
 ### <a id="fromthrowable" name="fromthrowable"></a> fromThrowable
 
@@ -47,4 +101,4 @@ arguments but returning `Ok` if successful, `Err` if the function throws
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:56
+node_modules/neverthrow/dist/index.d.ts:54

@@ -39,8 +39,6 @@
 - [chunk](README.md#chunk)
 - [clamp](README.md#clamp)
 - [cloneDeep](README.md#clonedeep)
-- [combine](README.md#combine)
-- [combineWithAllErrors](README.md#combinewithallerrors)
 - [compact](README.md#compact)
 - [countBy](README.md#countby)
 - [debounce](README.md#debounce)
@@ -2886,7 +2884,7 @@ pick all required properties from an object.
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:48
+node_modules/neverthrow/dist/index.d.ts:46
 
 node_modules/neverthrow/dist/index.d.ts:58
 
@@ -3163,102 +3161,6 @@ Returns the cloned value.
 #### Defined in
 
 [packages/active-support/src/modernLodash.ts:188](https://github.com/mashcard/mashcard/blob/main/packages/active-support/src/modernLodash.ts#L188)
-
----
-
-### <a id="combine" name="combine"></a> combine
-
-▸ **combine**<`T`\>(`resultList`): [`Result`](README.md#result)<`ExtractOkTypes`<`T`\>, `ExtractErrTypes`<`T`\>[`number`]\>
-
-#### Type parameters
-
-| Name | Type                                                                   |
-| :--- | :--------------------------------------------------------------------- |
-| `T`  | extends readonly [`Result`](README.md#result)<`unknown`, `unknown`\>[] |
-
-#### Parameters
-
-| Name         | Type |
-| :----------- | :--- |
-| `resultList` | `T`  |
-
-#### Returns
-
-[`Result`](README.md#result)<`ExtractOkTypes`<`T`\>, `ExtractErrTypes`<`T`\>[`number`]\>
-
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:39
-
-▸ **combine**<`T`\>(`asyncResultList`): [`ResultAsync`](classes/ResultAsync.md)<`ExtractOkAsyncTypes`<`T`\>, `ExtractErrAsyncTypes`<`T`\>[`number`]\>
-
-#### Type parameters
-
-| Name | Type                                                                              |
-| :--- | :-------------------------------------------------------------------------------- |
-| `T`  | extends readonly [`ResultAsync`](classes/ResultAsync.md)<`unknown`, `unknown`\>[] |
-
-#### Parameters
-
-| Name              | Type |
-| :---------------- | :--- |
-| `asyncResultList` | `T`  |
-
-#### Returns
-
-[`ResultAsync`](classes/ResultAsync.md)<`ExtractOkAsyncTypes`<`T`\>, `ExtractErrAsyncTypes`<`T`\>[`number`]\>
-
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:40
-
----
-
-### <a id="combinewithallerrors" name="combinewithallerrors"></a> combineWithAllErrors
-
-▸ **combineWithAllErrors**<`T`\>(`resultList`): [`Result`](README.md#result)<`ExtractOkTypes`<`T`\>, `ExtractErrTypes`<`T`\>[`number`][]\>
-
-#### Type parameters
-
-| Name | Type                                                                   |
-| :--- | :--------------------------------------------------------------------- |
-| `T`  | extends readonly [`Result`](README.md#result)<`unknown`, `unknown`\>[] |
-
-#### Parameters
-
-| Name         | Type |
-| :----------- | :--- |
-| `resultList` | `T`  |
-
-#### Returns
-
-[`Result`](README.md#result)<`ExtractOkTypes`<`T`\>, `ExtractErrTypes`<`T`\>[`number`][]\>
-
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:41
-
-▸ **combineWithAllErrors**<`T`\>(`asyncResultList`): [`ResultAsync`](classes/ResultAsync.md)<`ExtractOkAsyncTypes`<`T`\>, `ExtractErrAsyncTypes`<`T`\>[`number`][]\>
-
-#### Type parameters
-
-| Name | Type                                                                              |
-| :--- | :-------------------------------------------------------------------------------- |
-| `T`  | extends readonly [`ResultAsync`](classes/ResultAsync.md)<`unknown`, `unknown`\>[] |
-
-#### Parameters
-
-| Name              | Type |
-| :---------------- | :--- |
-| `asyncResultList` | `T`  |
-
-#### Returns
-
-[`ResultAsync`](classes/ResultAsync.md)<`ExtractOkAsyncTypes`<`T`\>, `ExtractErrAsyncTypes`<`T`\>[`number`][]\>
-
-#### Defined in
-
-node_modules/neverthrow/dist/index.d.ts:42
 
 ---
 
@@ -3891,7 +3793,7 @@ node_modules/neverthrow/dist/index.d.ts:60
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:19
+node_modules/neverthrow/dist/index.d.ts:21
 
 ---
 
@@ -4575,7 +4477,7 @@ arguments but returning `Ok` if successful, `Err` if the function throws
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:56
+node_modules/neverthrow/dist/index.d.ts:54
 
 ---
 
@@ -5800,7 +5702,7 @@ node_modules/neverthrow/dist/index.d.ts:59
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:18
+node_modules/neverthrow/dist/index.d.ts:20
 
 ---
 
@@ -6562,7 +6464,7 @@ arguments but returning `Ok` if successful, `Err` if the function throws
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:56
+node_modules/neverthrow/dist/index.d.ts:54
 
 ---
 

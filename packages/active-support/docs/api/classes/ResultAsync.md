@@ -30,6 +30,8 @@
 - [orElse](ResultAsync.md#orelse)
 - [then](ResultAsync.md#then)
 - [unwrapOr](ResultAsync.md#unwrapor)
+- [combine](ResultAsync.md#combine)
+- [combineWithAllErrors](ResultAsync.md#combinewithallerrors)
 - [fromPromise](ResultAsync.md#frompromise)
 - [fromSafePromise](ResultAsync.md#fromsafepromise)
 
@@ -90,7 +92,7 @@ node_modules/neverthrow/dist/index.d.ts:2
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:8
+node_modules/neverthrow/dist/index.d.ts:10
 
 ▸ **andThen**<`R`\>(`f`): [`ResultAsync`](ResultAsync.md)<`InferAsyncOkTypes`<`R`\>, `E` \| `InferAsyncErrTypes`<`R`\>\>
 
@@ -112,7 +114,7 @@ node_modules/neverthrow/dist/index.d.ts:8
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:9
+node_modules/neverthrow/dist/index.d.ts:11
 
 ▸ **andThen**<`U`, `F`\>(`f`): [`ResultAsync`](ResultAsync.md)<`U`, `E` \| `F`\>
 
@@ -135,7 +137,7 @@ node_modules/neverthrow/dist/index.d.ts:9
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:10
+node_modules/neverthrow/dist/index.d.ts:12
 
 ---
 
@@ -161,7 +163,7 @@ node_modules/neverthrow/dist/index.d.ts:10
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:6
+node_modules/neverthrow/dist/index.d.ts:8
 
 ---
 
@@ -187,7 +189,7 @@ node_modules/neverthrow/dist/index.d.ts:6
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:7
+node_modules/neverthrow/dist/index.d.ts:9
 
 ---
 
@@ -214,7 +216,7 @@ node_modules/neverthrow/dist/index.d.ts:7
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:14
+node_modules/neverthrow/dist/index.d.ts:16
 
 ---
 
@@ -240,7 +242,7 @@ node_modules/neverthrow/dist/index.d.ts:14
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:11
+node_modules/neverthrow/dist/index.d.ts:13
 
 ▸ **orElse**<`R`\>(`f`): [`ResultAsync`](ResultAsync.md)<`T`, `InferAsyncErrTypes`<`R`\>\>
 
@@ -262,7 +264,7 @@ node_modules/neverthrow/dist/index.d.ts:11
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:12
+node_modules/neverthrow/dist/index.d.ts:14
 
 ▸ **orElse**<`A`\>(`f`): [`ResultAsync`](ResultAsync.md)<`T`, `A`\>
 
@@ -284,7 +286,7 @@ node_modules/neverthrow/dist/index.d.ts:12
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:13
+node_modules/neverthrow/dist/index.d.ts:15
 
 ---
 
@@ -316,7 +318,7 @@ PromiseLike.then
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:16
+node_modules/neverthrow/dist/index.d.ts:18
 
 ---
 
@@ -342,7 +344,59 @@ node_modules/neverthrow/dist/index.d.ts:16
 
 #### Defined in
 
-node_modules/neverthrow/dist/index.d.ts:15
+node_modules/neverthrow/dist/index.d.ts:17
+
+---
+
+### <a id="combine" name="combine"></a> combine
+
+▸ `Static` **combine**<`T`\>(`asyncResultList`): [`ResultAsync`](ResultAsync.md)<`ExtractOkAsyncTypes`<`T`\>, `ExtractErrAsyncTypes`<`T`\>[`number`]\>
+
+#### Type parameters
+
+| Name | Type                                                                      |
+| :--- | :------------------------------------------------------------------------ |
+| `T`  | extends readonly [`ResultAsync`](ResultAsync.md)<`unknown`, `unknown`\>[] |
+
+#### Parameters
+
+| Name              | Type |
+| :---------------- | :--- |
+| `asyncResultList` | `T`  |
+
+#### Returns
+
+[`ResultAsync`](ResultAsync.md)<`ExtractOkAsyncTypes`<`T`\>, `ExtractErrAsyncTypes`<`T`\>[`number`]\>
+
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:6
+
+---
+
+### <a id="combinewithallerrors" name="combinewithallerrors"></a> combineWithAllErrors
+
+▸ `Static` **combineWithAllErrors**<`T`\>(`asyncResultList`): [`ResultAsync`](ResultAsync.md)<`ExtractOkAsyncTypes`<`T`\>, `ExtractErrAsyncTypes`<`T`\>[`number`][]\>
+
+#### Type parameters
+
+| Name | Type                                                                      |
+| :--- | :------------------------------------------------------------------------ |
+| `T`  | extends readonly [`ResultAsync`](ResultAsync.md)<`unknown`, `unknown`\>[] |
+
+#### Parameters
+
+| Name              | Type |
+| :---------------- | :--- |
+| `asyncResultList` | `T`  |
+
+#### Returns
+
+[`ResultAsync`](ResultAsync.md)<`ExtractOkAsyncTypes`<`T`\>, `ExtractErrAsyncTypes`<`T`\>[`number`][]\>
+
+#### Defined in
+
+node_modules/neverthrow/dist/index.d.ts:7
 
 ---
 
