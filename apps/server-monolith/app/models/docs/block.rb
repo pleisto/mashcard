@@ -528,7 +528,6 @@ module Docs
       parent.attributes.slice('id', 'type', 'sort', 'meta', 'data').merge('children' => children)
     end
 
-
     # TODO: should we move this policy checking codes to the policy model?
     def show_policy?(user)
       preload_enabled_share_links = nil
