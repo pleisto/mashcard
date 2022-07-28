@@ -18,7 +18,7 @@ async function globalSetup(): Promise<void> {
 
   if (!fs.existsSync(fileName)) {
     const requestContext = await request.newContext()
-    const response = await requestContext.post(`${baseURL}/$internal-apis/accounts/auth/developer/callback`, {
+    const response = await requestContext.post(`${baseURL}$internal-apis/accounts/auth/developer/callback`, {
       data: userParams,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
