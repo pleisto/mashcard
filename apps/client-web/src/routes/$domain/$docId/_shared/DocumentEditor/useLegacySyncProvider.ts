@@ -1,10 +1,4 @@
-import {
-  Block,
-  BlockInput,
-  GetSpreadsheetChildrenDocument,
-  useBlockSyncBatchMutation,
-  useGetChildrenBlocksQuery
-} from '@/MashcardGraphQL'
+import { Block, BlockInput, GetSpreadsheetChildrenDocument, useBlockSyncBatchMutation } from '@/MashcardGraphQL'
 import { useApolloClient } from '@apollo/client'
 import { devLog, devWarning } from '@mashcard/design-system'
 import { dispatchFormulaBlockNameChange } from '@mashcard/formula'
@@ -20,7 +14,7 @@ import {
   SpreadsheetLoaded,
   UpdateBlock
 } from '@mashcard/schema'
-import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 export type UpdateBlocks = (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
 
@@ -28,51 +22,22 @@ export type UpdateBlocks = (blocks: BlockInput[], toDeleteIds: string[]) => Prom
  * @deprecated
  */
 export function useLegacySyncProvider(queryVariables: { rootId: string; historyId?: string; domain: string }): {
-  rootBlock: MutableRefObject<Block | undefined>
-  data: any
   committing: boolean
-  loading: boolean
-  refetch: any
   updateBlocks: UpdateBlocks
-  // updateCachedDocBlock: (block: Block, toDelete: boolean) => void
 } {
   const rootId = useRef<string>(queryVariables.rootId)
-
-  const { data, loading, refetch } = useGetChildrenBlocksQuery({
-    fetchPolicy: 'no-cache',
-    variables: {
-      rootId: queryVariables.rootId
-    }
-  })
 
   const client = useApolloClient()
   const [blockSyncBatch] = useBlockSyncBatchMutation()
 
   const [committing, setCommitting] = useState<boolean>(false)
 
-  const cachedBlocksMap = useRef(new Map<string, Block>())
-  const docBlocksMap = useRef(new Map<string, Block>())
-  const rootBlock = useRef<Block | undefined>()
-
   const dirtyBlocksMap = useRef(new Map<string, BlockInput>())
   const dirtyToDeleteIds = useRef(new Set<string>())
 
   useEffect(() => {
     rootId.current = queryVariables.rootId
-    cachedBlocksMap.current = new Map<string, Block>()
-    docBlocksMap.current = new Map<string, Block>()
-    dirtyBlocksMap.current = new Map<string, Block>()
-    dirtyToDeleteIds.current = new Set<string>()
-    data?.childrenBlocks?.forEach(_block => {
-      const block = _block as Block
-      // cachedBlocksMap.current.set(block.id, block)
-      docBlocksMap.current.set(block.id, block)
-    })
-    rootBlock.current = docBlocksMap.current.get(rootId.current)
-    // if (rootBlock.current) {
-    //   const { id, meta } = rootBlock.current
-    // }
-  }, [queryVariables, data?.childrenBlocks])
+  }, [queryVariables])
 
   const commitDirty = useCallback(async (): Promise<void> => {
     if (!dirtyBlocksMap.current.size && !dirtyToDeleteIds.current.size) return
@@ -81,37 +46,25 @@ export function useLegacySyncProvider(queryVariables: { rootId: string; historyI
     setCommitting(true)
 
     try {
-      const blocks: BlockInput[] = Array.from(dirtyBlocksMap.current.values())
-        // .filter(
-        //   // commit only if parent block in doc
-        //   ({ parentId, id }) =>
-        //     (!parentId || id === rootId.current || cachedBlocksMap.current.get(parentId)) ??
-        //     docBlocksMap.current.get(parentId) ??
-        //     dirtyBlocksMap.current.get(parentId)
-        // )
-        .map(b => {
-          // HACK: delete all __typename
-          const block = {
-            __typename: undefined,
-            deletedAt: undefined,
-            blobs: undefined,
-            rootId: undefined,
-            ...b,
-            meta: b.meta ?? {}
-          }
-          if (b.id === rootBlock.current?.id) {
-            block.meta = { ...rootBlock.current.meta, ...block.meta }
-            block.text = block.meta.title ?? ''
-          }
-          delete block.__typename
-          delete block.deletedAt
-          delete block.blobs
-          delete block.rootId
-          if (!block.parentId) {
-            delete block.parentId
-          }
-          return block
-        })
+      const blocks: BlockInput[] = Array.from(dirtyBlocksMap.current.values()).map(b => {
+        // HACK: delete all __typename
+        const block = {
+          __typename: undefined,
+          deletedAt: undefined,
+          blobs: undefined,
+          rootId: undefined,
+          ...b,
+          meta: b.meta ?? {}
+        }
+        delete block.__typename
+        delete block.deletedAt
+        delete block.blobs
+        delete block.rootId
+        if (!block.parentId) {
+          delete block.parentId
+        }
+        return block
+      })
 
       const deletedIds = [...dirtyToDeleteIds.current]
 
@@ -162,13 +115,6 @@ export function useLegacySyncProvider(queryVariables: { rootId: string; historyI
     BlockUpdated,
     e => {
       const block = e.payload
-      const oldBlock = docBlocksMap.current.get(block.id) ?? {}
-      if (docBlocksMap.current.get(block.id)) {
-        // update only on doc blocks
-        docBlocksMap.current.set(block.id, { ...oldBlock, ...block })
-      } else {
-        cachedBlocksMap.current.set(block.id, { ...oldBlock, ...block })
-      }
 
       if (block.id === rootId.current) {
         client.cache.modify({
@@ -206,14 +152,13 @@ export function useLegacySyncProvider(queryVariables: { rootId: string; historyI
     { subscribeId: 'SyncProvider' }
   )
 
-  MashcardEventBus.subscribe(
-    BlockDeleted,
-    e => {
-      const block = e.payload
-      docBlocksMap.current.delete(block.id)
-    },
-    { subscribeId: 'SyncProvider' }
-  )
+  // MashcardEventBus.subscribe(
+  //   BlockDeleted,
+  //   e => {
+  //     const block = e.payload
+  //   },
+  //   { subscribeId: 'SyncProvider' }
+  // )
 
   MashcardEventBus.subscribe(
     UpdateBlock,
@@ -264,9 +209,6 @@ export function useLegacySyncProvider(queryVariables: { rootId: string; historyI
           fetchPolicy: 'no-cache'
         })
         const { blocks } = data.spreadsheetChildren
-        blocks.forEach((block: Block) => {
-          cachedBlocksMap.current.set(block.id, block)
-        })
         MashcardEventBus.dispatch(
           SpreadsheetLoaded({
             parentId,
@@ -287,11 +229,7 @@ export function useLegacySyncProvider(queryVariables: { rootId: string; historyI
   }
 
   return {
-    rootBlock,
-    data,
     committing,
-    loading,
-    refetch,
     updateBlocks
   }
 }

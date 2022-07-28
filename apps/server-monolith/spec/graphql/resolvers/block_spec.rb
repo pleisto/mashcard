@@ -49,16 +49,6 @@ describe Resolvers::Block, type: :query do
       }
     GRAPHQL
 
-    children_blocks_query = <<-'GRAPHQL'
-      query GetChildrenBlocks($root_id: String!) {
-        childrenBlocks(rootId: $root_id) {
-          id
-          deletedAt
-          rootId
-        }
-      }
-    GRAPHQL
-
     it 'check permission' do
       user = create(:accounts_user)
       self.current_user = user
@@ -105,39 +95,6 @@ describe Resolvers::Block, type: :query do
         h[x['id']] = [x['sort'].to_i, x['nextSort'].to_i] if x['id'] != block2.id
       end).to eq(sort_map)
       expect(child2.reload.sort).to eq(Docs::Block::SORT_GAP)
-
-      # childrenBlocks
-      block3 = create(:docs_block, parent: block2, root_id: block2.id)
-      block4 = create(:docs_block, parent: block2, collaborators: [user.id], root_id: block2.id)
-
-      graphql_execute(children_blocks_query, { root_id: block2.id })
-
-      expect(response.success?).to be true
-      expect(response.data['childrenBlocks'].length).to eq 6
-      expect(response.data['childrenBlocks'].map do |b|
-               b['id']
-             end.sort).to eq [block2.id, child1.id, child2.id, child3.id, block3.id, block4.id].sort
-    end
-
-    it 'hard deleted' do
-      user = create(:accounts_user)
-      self.current_user = user
-
-      pod = create(:pod)
-
-      self.current_pod = pod.as_session_context
-
-      block = create(:docs_block, pod: pod, collaborators: [user.id])
-      block.soft_delete!
-      block.hard_delete!
-
-      graphql_execute(children_blocks_query, { root_id: block.id })
-
-      expect(response.success?).to be false
-      expect(response.errors[0]['message']).to eq(I18n.t('errors.graphql.argument_error.already_hard_deleted'))
-
-      self.current_user = nil
-      self.current_pod = nil
     end
   end
 end
