@@ -8,8 +8,10 @@ module Mutations
 
       def resolve(ids:)
         Docs::Block.transaction do
-          ids.each do |id|
-            Docs::Block.unscoped.find(id).hard_delete!
+          Docs::Block.unscoped.where(id: ids).find_each do |block|
+            if allowed_to?(:edit?, block)
+              block.hard_delete!
+            end
           end
         end
         nil

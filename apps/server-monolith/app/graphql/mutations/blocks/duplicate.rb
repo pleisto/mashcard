@@ -11,6 +11,7 @@ module Mutations
 
       def resolve(id:)
         block = Docs::Block.find(id)
+        authorize! block, to: :edit?
         block.duplicate!
       rescue => e
         raise Mashcard::GraphQL::Errors::ArgumentError, e.message

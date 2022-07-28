@@ -9,6 +9,7 @@ module Mutations
 
       def resolve(id:, hard_delete:)
         block = Docs::Block.find(id)
+        authorize! block, to: :edit?
         block.soft_delete!
 
         block.hard_delete! if hard_delete

@@ -9,6 +9,7 @@ module Mutations
 
       def resolve(id:, title:)
         block = Docs::Block.non_deleted.find(id)
+        authorize! block, to: :edit?
         raise 'empty_title' if title.blank?
 
         block.update!(text: title, meta: block.meta.merge('title' => title))
