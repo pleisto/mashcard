@@ -22,6 +22,9 @@ module Mutations
 
         Rails.logger.info("resolve #{root_id} #{operator_id} #{deleted_ids} #{blocks}")
         root = Docs::Block.find_by(id: root_id)
+        if root
+          authorize! root, to: :edit?
+        end
 
         if root&.deleted_at
           return

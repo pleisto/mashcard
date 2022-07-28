@@ -10,6 +10,7 @@ module Mutations
 
       def resolve(args)
         block = Docs::Block.non_deleted.find(args[:id])
+        authorize! block, to: :edit?
         block.move!(args[:target_parent_id], args[:sort])
 
         nil

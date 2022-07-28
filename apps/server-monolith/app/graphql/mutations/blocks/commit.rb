@@ -22,6 +22,7 @@ module Mutations
 
       def resolve(args)
         block = Docs::Block.non_deleted.find(args[:block_id])
+        authorize! block, to: :edit?
         states_count = block.states.count
 
         diff_states = []
