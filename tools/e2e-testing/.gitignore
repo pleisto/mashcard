@@ -5,3 +5,6 @@
 test-results/
 allure-report/
 allure-results/
+
+MODULE
+storage/
