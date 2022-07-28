@@ -9,12 +9,11 @@ module Resolvers
 
     def resolve(id:, history_id: nil)
       block = Docs::Block.find_by(id: id)
+      authorize! block, to: :show?
       if history_id.present?
         block.cur_history_id = history_id
       end
-      if block.show_policy?(current_user)
-        block
-      end
+      block
     end
   end
 end
