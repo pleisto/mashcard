@@ -20,7 +20,7 @@ jobs:
           node-version: 18
           cache: yarn
       - name: Run yarn install
-        run: yarn install --immutable
+        run: yarn e2e-testing install
       - name: Set Matrix
         id: matrix
         run: |
@@ -52,7 +52,7 @@ jobs:
       - name: Install Playwright
         run: yarn e2e-testing install-deps ${{ matrix.browser }}
       - name: Run Playwright tests
-        run: yarn e2e-testing action --module=${{ matrix.module }} --project=${{ matrix.browser }}
+        run: yarn e2e-testing parallel --module=${{ matrix.module }} --project=${{ matrix.browser }}
         env:
           NODE_OPTIONS: '--max-old-space-size=5950'
           PLAYWRIGHT_BASE_URL: ${{ github.event.deployment_status.environment_url }}
