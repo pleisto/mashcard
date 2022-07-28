@@ -1,86 +1,89 @@
-import { Icon, css } from '@mashcard/design-system'
+import { Icon, css, theme } from '@mashcard/design-system'
 import { Palettes } from '@mashcard/design-system/src/themes/ceramic-light/colors/palettes'
 import { FormulaColorType } from '@mashcard/formula'
 import { mapValues } from 'lodash'
 
-const primary = '#35313C' // palette/type/primary
-const thirdary = '#908B9C' // palette/type/thirdary
+const primary = theme.colors.typePrimary
+
+type ColorType = string | typeof theme.colors[keyof typeof theme.colors]
 export interface FormulaColorMeta {
-  colorMain: string
-  colorCode: string
-  color1: string
-  color2: string
-  color3: string
+  // Page rest
+  color: ColorType
+  // Code
+  codeColor: ColorType
+  backgroundColor: ColorType
+  selectedBorderColor: ColorType
+  hoveredBackgroundColor: ColorType
+  pressedBackgroundColor: ColorType
 }
 
 const defaultColorMeta: FormulaColorMeta = {
-  colorMain: primary,
-  colorCode: '#908B9C',
-  color1: '#F9F9F9',
-  color2: '#F0F0F0',
-  color3: '#F0F0F0'
+  color: primary,
+  codeColor: theme.colors.typeSecondary,
+  backgroundColor: theme.colors.backgroundSecondary,
+  selectedBorderColor: theme.colors.backgroundThirdary,
+  hoveredBackgroundColor: theme.colors.backgroundThirdary,
+  pressedBackgroundColor: theme.colors.backgroundThirdary
 }
 
 const blueColorMeta: FormulaColorMeta = {
-  colorMain: primary,
-  colorCode: Palettes.blue6,
-  color1: Palettes.blue1,
-  color2: Palettes.blue2,
-  color3: Palettes.blue3
+  color: primary,
+  codeColor: Palettes.blue7,
+  selectedBorderColor: Palettes.blue6,
+  backgroundColor: Palettes.blue1,
+  hoveredBackgroundColor: Palettes.blue2,
+  pressedBackgroundColor: Palettes.blue3
 }
 
 const cyanColorMeta: FormulaColorMeta = {
-  colorMain: primary,
-  colorCode: Palettes.cyan6,
-  color1: Palettes.cyan1,
-  color2: Palettes.cyan2,
-  color3: Palettes.cyan3
+  color: primary,
+  codeColor: Palettes.cyan9,
+  selectedBorderColor: Palettes.cyan6,
+  backgroundColor: Palettes.cyan1,
+  hoveredBackgroundColor: Palettes.cyan2,
+  pressedBackgroundColor: Palettes.cyan3
 }
 
 const greenColorMeta: FormulaColorMeta = {
-  colorMain: primary,
-  colorCode: Palettes.green6,
-  color1: Palettes.green1,
-  color2: Palettes.green2,
-  color3: Palettes.green3
-}
-
-const pinkColorMeta: FormulaColorMeta = {
-  colorMain: Palettes.pink6,
-  colorCode: Palettes.pink6,
-  color1: Palettes.pink1,
-  color2: Palettes.pink2,
-  color3: Palettes.pink3
+  color: primary,
+  codeColor: Palettes.green8,
+  selectedBorderColor: Palettes.green6,
+  backgroundColor: Palettes.green1,
+  hoveredBackgroundColor: Palettes.green2,
+  pressedBackgroundColor: Palettes.green3
 }
 
 const redColorMeta: FormulaColorMeta = {
-  colorMain: primary,
-  colorCode: Palettes.red7,
-  color1: Palettes.red1,
-  color2: Palettes.red2,
-  color3: Palettes.red3
+  color: primary,
+  codeColor: Palettes.red6,
+  selectedBorderColor: Palettes.red6,
+  backgroundColor: Palettes.red1,
+  hoveredBackgroundColor: Palettes.red2,
+  pressedBackgroundColor: Palettes.red3
 }
 
 const purpleColorMeta: FormulaColorMeta = {
-  colorMain: primary,
-  colorCode: Palettes.purple5,
-  color1: Palettes.purple1,
-  color2: Palettes.purple2,
-  color3: Palettes.purple3
+  color: primary,
+  codeColor: Palettes.purple8,
+  selectedBorderColor: Palettes.purple6,
+  backgroundColor: Palettes.purple1,
+  hoveredBackgroundColor: Palettes.purple2,
+  pressedBackgroundColor: Palettes.purple3
 }
 
 const orangeColorMeta: FormulaColorMeta = {
-  colorMain: primary,
-  colorCode: Palettes.orange7,
-  color1: Palettes.orange1,
-  color2: Palettes.orange2,
-  color3: Palettes.orange3
+  color: primary,
+  codeColor: Palettes.orange8,
+  selectedBorderColor: Palettes.orange6,
+  backgroundColor: Palettes.orange1,
+  hoveredBackgroundColor: Palettes.orange2,
+  pressedBackgroundColor: Palettes.orange3
 }
 
 export const formulaCodeStyle = (colorType: string): string => {
   const colorMeta = FORMULA_COLOR_METAS[colorType as FormulaColorType]
   if (!colorMeta) return ''
-  return `color: ${colorMeta.colorCode};`
+  return `color: ${colorMeta.codeColor};`
 }
 
 export const FORMULA_CODE_ERROR_STYLE = `
@@ -89,71 +92,90 @@ export const FORMULA_CODE_ERROR_STYLE = `
   text-decoration-color: ${Palettes.red7};
 `
 
-export const FORMULA_COLOR_METAS: Record<FormulaColorType, FormulaColorMeta> = {
-  null: purpleColorMeta,
-  number: cyanColorMeta,
-  string: pinkColorMeta,
-  literal: defaultColorMeta,
-  Record: orangeColorMeta,
-  Array: orangeColorMeta,
-  Date: cyanColorMeta,
-  Error: redColorMeta,
-  Column: blueColorMeta,
-  LogicColumn: greenColorMeta,
-  Row: blueColorMeta,
-  LogicRow: cyanColorMeta,
-  Range: redColorMeta,
-  Cell: purpleColorMeta,
-  Block: blueColorMeta,
+const FORMULA_COLOR_METAS: Record<FormulaColorType, FormulaColorMeta> = {
+  Blank: { ...greenColorMeta, codeColor: theme.colors.typeSecondary },
+  TRUE: greenColorMeta,
+  FALSE: redColorMeta,
   Spreadsheet: blueColorMeta,
-  Function: blueColorMeta,
-  Blank: { ...greenColorMeta, colorCode: thirdary },
+
+  LogicColumn: greenColorMeta,
+  LogicRow: cyanColorMeta,
+
+  Column: blueColorMeta,
+  Row: blueColorMeta,
+
+  Cell: purpleColorMeta,
+  null: purpleColorMeta,
+
   Predicate: cyanColorMeta,
+  Cst: cyanColorMeta,
+  Date: cyanColorMeta,
+
+  number: cyanColorMeta,
+
+  Array: orangeColorMeta,
+  Record: orangeColorMeta,
+
   Button: blueColorMeta,
+
+  // TODO 1
+  Variable: blueColorMeta,
+
+  // TOOD 2
+  Range: redColorMeta,
+  Reference: redColorMeta,
+
+  string: greenColorMeta,
+  literal: defaultColorMeta,
+
+  Function: blueColorMeta,
+  FunctionName: blueColorMeta,
+
+  Error: { ...redColorMeta, codeColor: theme.colors.errorDefault },
+
+  Block: blueColorMeta,
 
   // Unknown
   Switch: defaultColorMeta,
   void: defaultColorMeta,
-  Cst: cyanColorMeta,
-  Reference: pinkColorMeta,
   any: defaultColorMeta,
-  // Other
-  TRUE: greenColorMeta,
-  FALSE: redColorMeta,
-  FunctionName: pinkColorMeta,
-  Variable: pinkColorMeta,
+
   Pending: defaultColorMeta,
   Waiting: defaultColorMeta,
   NoPersist: defaultColorMeta
 }
 
-export const FORMULA_STYLES = mapValues(FORMULA_COLOR_METAS, ({ colorMain, color1, color2, color3 }) => {
-  return css({
-    color: colorMain,
-    backgroundColor: color1,
-    border: '1px solid',
-    '&:hover': {
-      color: colorMain,
-      borderColor: color2,
-      backgroundColor: color2
-    },
-    '&:focus, &:active': {
-      color: colorMain,
-      borderColor: color3,
-      backgroundColor: color3
-    },
-    variants: {
-      selected: {
-        true: {
-          borderColor: colorMain
-        },
-        false: {
-          borderColor: color1
+export const FORMULA_BORDERLESS_STYPES = mapValues(FORMULA_COLOR_METAS, ({ codeColor }) => css({ color: codeColor }))
+
+export const FORMULA_STYLES = mapValues(
+  FORMULA_COLOR_METAS,
+  ({ color, selectedBorderColor, backgroundColor, hoveredBackgroundColor, pressedBackgroundColor }) =>
+    css({
+      color,
+      backgroundColor,
+      border: '1px solid',
+      '&:hover': {
+        color,
+        borderColor: hoveredBackgroundColor,
+        backgroundColor: hoveredBackgroundColor
+      },
+      '&:focus, &:active': {
+        color,
+        borderColor: pressedBackgroundColor,
+        backgroundColor: pressedBackgroundColor
+      },
+      variants: {
+        selected: {
+          true: {
+            borderColor: selectedBorderColor
+          },
+          false: {
+            borderColor: backgroundColor
+          }
         }
       }
-    }
-  })
-})
+    })
+)
 
 const defaultIcon = <Icon.Function />
 export const FORMULA_ICONS: Record<FormulaColorType, JSX.Element> = {

@@ -14,8 +14,7 @@ exports[`FormulaResult [Block] basic "=BasicPage" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(64, 137, 216);"
+        class="mc-c-digCEO mashcard-formula-borderless"
       >
         BasicPage
       </span>
@@ -61,8 +60,7 @@ exports[`FormulaResult [Block] basic "=BasicPage" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(64, 137, 216);"
+        class="mc-c-digCEO mashcard-formula-borderless"
       >
         BasicPage
       </span>
@@ -108,8 +106,7 @@ exports[`FormulaResult [Date] basic "=DATE("1926-08-17")" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(57, 179, 232);"
+        class="mc-c-lbGZhW mashcard-formula-borderless"
       >
         1926-08-17T00:00:00.000Z
       </span>
@@ -165,8 +162,7 @@ exports[`FormulaResult [Date] basic "=DATE("1926-08-17")" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(57, 179, 232);"
+        class="mc-c-lbGZhW mashcard-formula-borderless"
       >
         1926-08-17T00:00:00.000Z
       </span>
@@ -222,8 +218,7 @@ exports[`FormulaResult [Divide by zero error] basic "=1/0" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(207, 31, 40);"
+        class="mc-c-expksB mashcard-formula-borderless"
       >
         #&lt;Error&gt; errors.interpret.runtime.division_by_zero
       </span>
@@ -269,8 +264,7 @@ exports[`FormulaResult [Divide by zero error] basic "=1/0" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(207, 31, 40);"
+        class="mc-c-expksB mashcard-formula-borderless"
       >
         #&lt;Error&gt; errors.interpret.runtime.division_by_zero
       </span>
@@ -316,8 +310,7 @@ exports[`FormulaResult [Empty] basic "=" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(144, 139, 156);"
+        class="mc-c-hwqXEh mashcard-formula-borderless"
       >
         Blank
       </span>
@@ -363,8 +356,7 @@ exports[`FormulaResult [Empty] basic "=" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(144, 139, 156);"
+        class="mc-c-hwqXEh mashcard-formula-borderless"
       >
         Blank
       </span>
@@ -410,8 +402,7 @@ exports[`FormulaResult [Spreadsheet] basic "=BasicPage.spreadsheet" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(64, 137, 216);"
+        class="mc-c-digCEO mashcard-formula-borderless"
       >
         spreadsheet
       </span>
@@ -464,8 +455,7 @@ exports[`FormulaResult [Spreadsheet] basic "=BasicPage.spreadsheet" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(64, 137, 216);"
+        class="mc-c-digCEO mashcard-formula-borderless"
       >
         spreadsheet
       </span>
@@ -518,8 +508,7 @@ exports[`FormulaResult [Variable] basic "=BasicPage.bar" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(57, 179, 232);"
+        class="mc-c-lbGZhW mashcard-formula-borderless"
       >
         24
       </span>
@@ -571,8 +560,7 @@ exports[`FormulaResult [Variable] basic "=BasicPage.bar" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(57, 179, 232);"
+        class="mc-c-lbGZhW mashcard-formula-borderless"
       >
         24
       </span>
@@ -624,8 +612,7 @@ exports[`FormulaResult [async 1] basic "=SLEEP(123)" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(144, 139, 156);"
+        class="mc-c-hwqXEh mashcard-formula-borderless"
       >
         #&lt;Pending&gt;
       </span>
@@ -671,8 +658,7 @@ exports[`FormulaResult [async 1] basic "=SLEEP(123)" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(144, 139, 156);"
+        class="mc-c-hwqXEh mashcard-formula-borderless"
       >
         #&lt;Pending&gt;
       </span>
@@ -718,8 +704,7 @@ exports[`FormulaResult [async 2] basic "=BasicPage.lazy" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(144, 139, 156);"
+        class="mc-c-hwqXEh mashcard-formula-borderless"
       >
         #&lt;Pending&gt;
       </span>
@@ -765,8 +750,7 @@ exports[`FormulaResult [async 2] basic "=BasicPage.lazy" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(144, 139, 156);"
+        class="mc-c-hwqXEh mashcard-formula-borderless"
       >
         #&lt;Pending&gt;
       </span>
@@ -812,8 +796,7 @@ exports[`FormulaResult [cell] basic "=BasicPage.spreadsheet.first.1" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(135, 157, 224);"
+        class="mc-c-hWKdpy mashcard-formula-borderless"
       >
         1
       </span>
@@ -888,8 +871,7 @@ exports[`FormulaResult [column1] basic "=BasicPage.spreadsheet.first" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(64, 137, 216);"
+        class="mc-c-digCEO mashcard-formula-borderless"
       >
         spreadsheet.first
       </span>
@@ -959,8 +941,7 @@ exports[`FormulaResult [column1] basic "=BasicPage.spreadsheet.first" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(64, 137, 216);"
+        class="mc-c-digCEO mashcard-formula-borderless"
       >
         spreadsheet.first
       </span>
@@ -1030,8 +1011,7 @@ exports[`FormulaResult [column2] basic "=BasicPage.spreadsheet.A" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(44, 173, 148);"
+        class="mc-c-bMYaVJ mashcard-formula-borderless"
       >
         spreadsheet.A
       </span>
@@ -1101,8 +1081,7 @@ exports[`FormulaResult [column2] basic "=BasicPage.spreadsheet.A" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(44, 173, 148);"
+        class="mc-c-bMYaVJ mashcard-formula-borderless"
       >
         spreadsheet.A
       </span>
@@ -1172,8 +1151,7 @@ exports[`FormulaResult [literal string] basic "literal" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(144, 139, 156);"
+        class="mc-c-hwqXEh mashcard-formula-borderless"
       >
         literal
       </span>
@@ -1231,8 +1209,7 @@ exports[`FormulaResult [literal string] basic "literal" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(144, 139, 156);"
+        class="mc-c-hwqXEh mashcard-formula-borderless"
       >
         literal
       </span>
@@ -1428,8 +1405,7 @@ exports[`FormulaResult [row] basic "=BasicPage.spreadsheet.1" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(57, 179, 232);"
+        class="mc-c-lbGZhW mashcard-formula-borderless"
       >
         Row[0]
       </span>
@@ -1493,8 +1469,7 @@ exports[`FormulaResult [row] basic "=BasicPage.spreadsheet.1" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(57, 179, 232);"
+        class="mc-c-lbGZhW mashcard-formula-borderless"
       >
         Row[0]
       </span>
@@ -1604,8 +1579,7 @@ exports[`FormulaResult basic "=   1 + 1 + 1   " 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(57, 179, 232);"
+        class="mc-c-lbGZhW mashcard-formula-borderless"
       >
         3
       </span>
@@ -1657,8 +1631,7 @@ exports[`FormulaResult basic "=   1 + 1 + 1   " 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(57, 179, 232);"
+        class="mc-c-lbGZhW mashcard-formula-borderless"
       >
         3
       </span>
@@ -1710,8 +1683,7 @@ exports[`FormulaResult basic "="string" & "fasd"" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(216, 27, 96);"
+        class="mc-c-bMYaVJ mashcard-formula-borderless"
       >
         stringfasd
       </span>
@@ -1769,8 +1741,7 @@ exports[`FormulaResult basic "="string" & "fasd"" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(216, 27, 96);"
+        class="mc-c-bMYaVJ mashcard-formula-borderless"
       >
         stringfasd
       </span>
@@ -1828,8 +1799,7 @@ exports[`FormulaResult basic "=[]" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(230, 99, 0);"
+        class="mc-c-dyPSCN mashcard-formula-borderless"
       >
         []
       </span>
@@ -1875,8 +1845,7 @@ exports[`FormulaResult basic "=[]" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(230, 99, 0);"
+        class="mc-c-dyPSCN mashcard-formula-borderless"
       >
         []
       </span>
@@ -1922,8 +1891,7 @@ exports[`FormulaResult basic "=[1,"1",false]" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(230, 99, 0);"
+        class="mc-c-dyPSCN mashcard-formula-borderless"
       >
         [11false]
       </span>
@@ -1969,8 +1937,7 @@ exports[`FormulaResult basic "=[1,"1",false]" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(230, 99, 0);"
+        class="mc-c-dyPSCN mashcard-formula-borderless"
       >
         [11false]
       </span>
@@ -2016,8 +1983,7 @@ exports[`FormulaResult basic "={}" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(230, 99, 0);"
+        class="mc-c-dyPSCN mashcard-formula-borderless"
       >
         {}
       </span>
@@ -2061,8 +2027,7 @@ exports[`FormulaResult basic "={}" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(230, 99, 0);"
+        class="mc-c-dyPSCN mashcard-formula-borderless"
       >
         {}
       </span>
@@ -2106,8 +2071,7 @@ exports[`FormulaResult basic "={a: 1,b: false, c: "string", d: [1]}" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(230, 99, 0);"
+        class="mc-c-dyPSCN mashcard-formula-borderless"
       >
         {a: 1, b: false, c: string, d: [1]}
       </span>
@@ -2151,8 +2115,7 @@ exports[`FormulaResult basic "={a: 1,b: false, c: "string", d: [1]}" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(230, 99, 0);"
+        class="mc-c-dyPSCN mashcard-formula-borderless"
       >
         {a: 1, b: false, c: string, d: [1]}
       </span>
@@ -2182,6 +2145,98 @@ exports[`FormulaResult basic "={a: 1,b: false, c: "string", d: [1]}" 2`] = `
 </div>
 `;
 
+exports[`FormulaResult basic "=TRUE" 1`] = `
+<div>
+  <div
+    class="mc-c-cKFnpX"
+  >
+    <span
+      class="formula-result-ok"
+    >
+      <span
+        class="formula-result-ok-equal"
+      >
+        =
+      </span>
+      <span
+        class="mc-c-bMYaVJ mashcard-formula-borderless"
+      >
+        true
+      </span>
+      <span
+        class="formula-result-ok-icon"
+      >
+        <span
+          aria-label="function"
+          class="mc-icon mc-icon-function"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M4.02403 10.3944L2.0364 21H4.624L6.59951 10.3944H9.31412L9.69052 8.38797H6.96947L7.12697 7.40645L7.12713 7.40538C7.23453 6.7119 7.50783 6.17081 7.93972 5.76834C8.37395 5.36367 8.94124 5.15442 9.65936 5.15372C10.0443 5.16855 10.4251 5.21256 10.8021 5.28574L10.9984 5.32386L11.3253 3.23326L11.1433 3.1963C10.5072 3.0671 9.97256 3.00057 9.54287 3.00046C8.18911 2.98518 7.05862 3.35024 6.16862 4.10855C5.32054 4.83566 4.79246 5.83973 4.57597 7.10453L4.3823 8.38797H2.3764L2 10.3944H4.02403ZM6.93603 7.3751L6.74212 8.58362L6.93603 7.3751C6.93603 7.3751 6.93603 7.3751 6.93603 7.3751ZM9.45693 8.58362L9.15394 10.1987H6.43912L4.46361 20.8043L6.43912 10.1987H9.15393L9.45693 8.58362ZM9.07574 5.00716C8.57832 5.09502 8.15596 5.30078 7.80865 5.62444C7.42697 5.98013 7.16321 6.43322 7.01736 6.98371C7.16321 6.43322 7.42697 5.98014 7.80865 5.62444C8.15596 5.30078 8.57832 5.09502 9.07574 5.00716ZM11.3543 21L14.9165 16.6028L17.0071 21H19.8385L16.5498 14.7544L22 8.38797H18.7938L15.3685 12.6658L13.4228 8.38797H10.5782L13.7687 14.4972L8.15881 21H11.3543Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`FormulaResult basic "=TRUE" 2`] = `
+<div>
+  <div
+    class="mc-c-cKFnpX"
+  >
+    <span
+      class="formula-result-ok"
+    >
+      <span
+        class="formula-result-ok-equal"
+      >
+        =
+      </span>
+      <span
+        class="mc-c-bMYaVJ mashcard-formula-borderless"
+      >
+        true
+      </span>
+      <span
+        class="formula-result-ok-icon"
+      >
+        <span
+          aria-label="function"
+          class="mc-icon mc-icon-function"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M4.02403 10.3944L2.0364 21H4.624L6.59951 10.3944H9.31412L9.69052 8.38797H6.96947L7.12697 7.40645L7.12713 7.40538C7.23453 6.7119 7.50783 6.17081 7.93972 5.76834C8.37395 5.36367 8.94124 5.15442 9.65936 5.15372C10.0443 5.16855 10.4251 5.21256 10.8021 5.28574L10.9984 5.32386L11.3253 3.23326L11.1433 3.1963C10.5072 3.0671 9.97256 3.00057 9.54287 3.00046C8.18911 2.98518 7.05862 3.35024 6.16862 4.10855C5.32054 4.83566 4.79246 5.83973 4.57597 7.10453L4.3823 8.38797H2.3764L2 10.3944H4.02403ZM6.93603 7.3751L6.74212 8.58362L6.93603 7.3751C6.93603 7.3751 6.93603 7.3751 6.93603 7.3751ZM9.45693 8.58362L9.15394 10.1987H6.43912L4.46361 20.8043L6.43912 10.1987H9.15393L9.45693 8.58362ZM9.07574 5.00716C8.57832 5.09502 8.15596 5.30078 7.80865 5.62444C7.42697 5.98013 7.16321 6.43322 7.01736 6.98371C7.16321 6.43322 7.42697 5.98014 7.80865 5.62444C8.15596 5.30078 8.57832 5.09502 9.07574 5.00716ZM11.3543 21L14.9165 16.6028L17.0071 21H19.8385L16.5498 14.7544L22 8.38797H18.7938L15.3685 12.6658L13.4228 8.38797H10.5782L13.7687 14.4972L8.15881 21H11.3543Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
 exports[`FormulaResult basic "=null" 1`] = `
 <div>
   <div
@@ -2196,8 +2251,7 @@ exports[`FormulaResult basic "=null" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(135, 157, 224);"
+        class="mc-c-hWKdpy mashcard-formula-borderless"
       >
         null
       </span>
@@ -2243,8 +2297,7 @@ exports[`FormulaResult basic "=null" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(135, 157, 224);"
+        class="mc-c-hWKdpy mashcard-formula-borderless"
       >
         null
       </span>
@@ -2290,8 +2343,7 @@ exports[`FormulaResult basic "=true && false" 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(207, 31, 40);"
+        class="mc-c-AhNZw mashcard-formula-borderless"
       >
         false
       </span>
@@ -2337,8 +2389,7 @@ exports[`FormulaResult basic "=true && false" 2`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(207, 31, 40);"
+        class="mc-c-AhNZw mashcard-formula-borderless"
       >
         false
       </span>
@@ -2407,8 +2458,7 @@ exports[`FormulaResult chain "={a:1}.b" -> [object Object] 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(207, 31, 40);"
+        class="mc-c-expksB mashcard-formula-borderless"
       >
         #&lt;Error&gt; errors.interpret.not_found.key {"key":"b"}
       </span>
@@ -2546,8 +2596,7 @@ exports[`FormulaResult multiplication "=1/0" -> [object Object] 1`] = `
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(207, 31, 40);"
+        class="mc-c-expksB mashcard-formula-borderless"
       >
         #&lt;Error&gt; errors.interpret.runtime.division_by_zero
       </span>
@@ -2593,8 +2642,7 @@ exports[`FormulaResult multiplication "=Multi.spreadsheet.first.3 * 0" -> [objec
         =
       </span>
       <span
-        class="mashcard-formula-borderless"
-        style="color: rgb(207, 31, 40);"
+        class="mc-c-expksB mashcard-formula-borderless"
       >
         #&lt;Error&gt; errors.interpret.not_a_number
       </span>
