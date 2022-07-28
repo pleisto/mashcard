@@ -1,0 +1,79 @@
+name: E2E Test
+
+on:
+  workflow_dispatch:
+  schedule:
+    # At 18:00 (UTC)
+    - cron: '0 18 * * *'
+
+env:
+  NODE_OPTIONS: '--max-old-space-size=5950'
+  YARN_CHECKSUM_BEHAVIOR: update
+
+jobs:
+  playwright:
+    name: Playwright
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    timeout-minutes: 60
+    strategy:
+      matrix:
+        browser: ['chromium', 'firefox']
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+      - name: Run yarn install
+        run: yarn install --immutable
+      - name: Install Playwright
+        run: yarn e2e-testing install-deps ${{ matrix.browser }}
+      - name: Run Playwright tests
+        run: yarn e2e-testing run-playwright:${{ matrix.browser }}
+        env:
+          PLAYWRIGHT_BASE_URL: https://trunk.mashcard.dev
+          E2E_CHROMIUM_LOGIN_EMAIL: ${{ secrets.TRUNK_E2E_USER_CHROMIUM_EMAIL }}
+          E2E_CHROMIUM_LOGIN_PASSWORD: ${{ secrets.TRUNK_E2E_USER_CHROMIUM_PASSWORD }}
+          E2E_FIREFOX_LOGIN_EMAIL: ${{ secrets.TRUNK_E2E_USER_FIREFOX_EMAIL }}
+          E2E_FIREFOX_LOGIN_PASSWORD: ${{ secrets.TRUNK_E2E_USER_FIREFOX_PASSWORD }}
+      - name: Upload allure reports
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-reports
+          path: tools/e2e-testing/allure-results
+          retention-days: 1
+  report:
+    if: ${{ always() }}
+    needs: playwright
+    name: Send Report
+    runs-on: ubuntu-latest
+    steps:
+      - run: mkdir -p tools/e2e-testing/allure-results
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        id: download
+        with:
+          name: allure-reports
+          path: tools/e2e-testing/allure-results
+      - name: Send reports to the allure server
+        uses: Xotabu4/send-to-allure-server-action@1
+        id: allure
+        if: ${{ always() }}
+        with:
+          allure-server-url: https://allure.pleisto.com/
+          allure-results: tools/e2e-testing/allure-results
+      - name: Get current date
+        id: date
+        if: ${{ always() }}
+        run: |
+          echo ::set-output name=upload-date::$(TZ=":Asia/Shanghai" date +'%Y-%m-%d %H:%M')
+      - name: Send a Teams Notification
+        uses: thechetantalwar/teams-notify@v2
+        if: ${{ always() }}
+        with:
+          teams_webhook_url: ${{ secrets.TRUNK_E2E_REPORT_TEAMS_HOOK }}
+          message: "Today's E2E test report has been uploaded to ${{ steps.allure.outputs.report-url }} at ${{ steps.allure.outputs.report-url }}."

@@ -20,7 +20,7 @@ jobs:
           node-version: 18
           cache: yarn
       - name: Run yarn install
-        run: yarn e2e-testing install
+        run: yarn install --immutable
       - name: Set Matrix
         id: matrix
         run: |
