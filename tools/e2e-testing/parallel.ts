@@ -20,6 +20,11 @@ const runCommand = ({ project, module, debug }: commandLineArgs.CommandLineOptio
       TEST_BROWSER: `${project}`
     },
     stdio: 'inherit'
+  }).on('exit', code => {
+    // When code equals 1, it means the child process has failed
+    if (code === 1) {
+      process.exit(1)
+    }
   })
 }
 
