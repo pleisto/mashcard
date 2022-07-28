@@ -59,7 +59,7 @@
     "refractor": "^4.7.0",
     "tippy.js": "^6.3.7",
     "y-protocols": "^1.0.5",
-    "yjs": "^13.5.40",
+    "yjs": "^13.5.41",
     "zustand": "^4.0.0"
   },
   "devDependencies": {

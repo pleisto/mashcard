@@ -32,7 +32,7 @@
     "@mui/base": "^5.0.0-alpha.91",
     "@stitches/core": "^1.2.8",
     "@stitches/react": "^1.2.8",
-    "ahooks": "^3.5.2",
+    "ahooks": "^3.6.2",
     "blurhash": "^1.1.5",
     "classnames": "^2.3.1",
     "fast-deep-equal": "^3.1.3",
