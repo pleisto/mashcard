@@ -21,7 +21,7 @@
     "@uppy/thumbnail-generator": "^2.2.0",
     "@uppy/utils": "^4.1.0",
     "@uppy/xhr-upload": "^2.1.2",
-    "ahooks": "^3.5.2",
+    "ahooks": "^3.6.2",
     "blurhash": "^1.1.5",
     "react-virtuoso": "^2.16.5"
   },
