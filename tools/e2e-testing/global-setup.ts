@@ -37,6 +37,7 @@ async function globalSetup(): Promise<void> {
         await context.tracing.start({ screenshots: true, snapshots: true })
 
         await page.goto('/accounts/sign-up')
+        await page.waitForSelector('main div h1:has-text("Sign Up with Developer")')
         await page.locator('button[type="submit"]').click()
         await page.waitForNavigation()
         await page.context().storageState({ path: fileName })
