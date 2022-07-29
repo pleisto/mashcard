@@ -244,6 +244,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
         draggable={draggable && isDraggable}
         onDrop={onDrop}
         renderNode={titleRender}
+        expandParentOnSelect={true}
       />
     )
   }
@@ -340,8 +341,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ mode }) => {
         {!hideHeading && (
           <PageTreeHeading
             style={{ top: showPin ? TREE_HEAD_HEIGHT : 0, bottom: FOOTER_HEIGHT }} // Consider also the two cases of sticking to the bottom and the top
-            data-testid={TEST_ID_ENUM.page.pageTree.heading.id}
-          >
+            data-testid={TEST_ID_ENUM.page.pageTree.heading.id}>
             Pages
           </PageTreeHeading>
         )}
