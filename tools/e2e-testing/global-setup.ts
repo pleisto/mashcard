@@ -31,12 +31,27 @@ async function globalSetup(): Promise<void> {
     // When the user not exist, will redirect to sign up page to create it.
     if (response.url().includes('/accounts/sign-up')) {
       const browser = await browserList[project].launch()
-      const page = await browser.newPage({ baseURL, storageState: fileName })
+      const context = await browser.newContext({ baseURL, storageState: fileName })
+      const page = await context.newPage()
+      try {
+        await context.tracing.start({ screenshots: true, snapshots: true })
 
-      await page.goto('/accounts/sign-up')
-      await page.locator('button[type="submit"]').click()
-      await page.waitForNavigation()
-      await page.context().storageState({ path: fileName })
+        await page.goto('/accounts/sign-up')
+        await page.locator('button[type="submit"]').click()
+        await page.waitForNavigation()
+        await page.context().storageState({ path: fileName })
+
+        await context.tracing.stop({
+          path: './test-results/setup-trace.zip'
+        })
+        await page.close()
+      } catch (error) {
+        await context.tracing.stop({
+          path: './test-results/failed-setup-trace.zip'
+        })
+        await page.close()
+        throw error
+      }
     }
   }
 }
