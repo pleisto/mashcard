@@ -1,4 +1,4 @@
-import Logo from '@/common/assets/logo-brickdoc-without-name.svg'
+import Logo from '@/common/assets/logo-without-name.svg'
 import { FC } from 'react'
 import { NewPage } from './NewPage'
 import { PageTree } from './PageTree'
