@@ -26,7 +26,7 @@
   "devDependencies": {
     "@mashcard/dev-support": "workspace:^",
     "@mashcard/test-helper": "workspace:^",
-    "@playwright/test": "^1.24.1",
+    "@playwright/test": "^1.24.2",
     "@types/inquirer": "^8.2.1",
     "@types/is-ci": "^3.0.0",
     "allure-commandline": "^2.18.1",
