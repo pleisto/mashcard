@@ -58,33 +58,28 @@ export class BlockApi {
     await this.post(this.options(GRAPHQL_GROUP.BLOCK_SOFT_DELETE, 'blockSoftDelete', variables))
   }
 
-  async removeAllPages(options?: { isHardDeleted?: boolean; isSorted?: boolean }): Promise<void> {
-    const isHardDeleted = options?.isHardDeleted ?? true
+  async removeAllPages(options?: { isSorted?: boolean }): Promise<void> {
     const isSorted = options?.isSorted ?? false
 
     const username = await this.getUsername()
     const pages = (await this.getBlocks(username)).sort(compareAttributeItem)
 
-    isSorted
-      ? await this.orderRemoveAllPage(pages, isHardDeleted)
-      : await this.outOfOrderRemoveAllPage(pages, isHardDeleted)
+    isSorted ? await this.orderRemoveAllPage(pages) : await this.outOfOrderRemoveAllPage(pages)
   }
 
-  async orderRemoveAllPage(pages: PageType[], isHardDeleted: boolean): Promise<void> {
+  async orderRemoveAllPage(pages: PageType[]): Promise<void> {
     for (let index = 0; index < pages.length; index++) {
       const page = pages[index]
 
       if (!page.parentId) {
-        await this.removePage({ input: { id: page.id, hardDelete: isHardDeleted } })
+        await this.removePage({ input: { id: page.id, hardDelete: false } })
       }
     }
   }
 
-  async outOfOrderRemoveAllPage(pages: PageType[], isHardDeleted: boolean): Promise<void> {
+  async outOfOrderRemoveAllPage(pages: PageType[]): Promise<void> {
     await Promise.all(
-      pages.map(page =>
-        !page.parentId ? this.removePage({ input: { id: page.id, hardDelete: isHardDeleted } }) : undefined
-      )
+      pages.map(page => (!page.parentId ? this.removePage({ input: { id: page.id, hardDelete: false } }) : undefined))
     )
   }
 

@@ -15,7 +15,7 @@ test.describe('Trash', () => {
       await api.removeAllTrashPages()
 
       await api.createPageTree(TRASH_PAGE_TREE)
-      await api.removeAllPages({ isHardDeleted: false })
+      await api.removeAllPages()
       trash = new TrashPage(page)
       await trash.openTrashPage()
     })
@@ -37,7 +37,7 @@ test.describe('Trash', () => {
       await api.removeAllTrashPages()
 
       await api.createPage(TRASH_SINGLE_PAGE)
-      await api.removeAllPages({ isHardDeleted: false })
+      await api.removeAllPages()
       trash = new TrashPage(page)
       await trash.openTrashPage()
     })
@@ -107,7 +107,7 @@ test.describe('Trash', () => {
       await api.removeAllTrashPages()
 
       await api.createPageTree(TRASH_PAGE_TREE)
-      await api.removeAllPages({ isHardDeleted: false })
+      await api.removeAllPages()
       trash = new TrashPage(page)
       await trash.openTrashPage()
     })
@@ -166,7 +166,6 @@ test.describe('Trash', () => {
 
       await api.createPageTree(TRASH_PAGE_TREE_FOR_VISUAL)
       await api.removeAllPages({
-        isHardDeleted: false,
         isSorted: true
       })
       trash = new TrashPage(page)
@@ -177,15 +176,15 @@ test.describe('Trash', () => {
       await trash.createScreenshot(await trash.getDeletedAtList())
     })
 
-    test('hover item one', async () => {
+    test.only('hover item one', async () => {
       await trash.getItemByIndex().hover()
     })
 
-    test('select item one', async () => {
+    test.only('select item one', async () => {
       await trash.getItemCheckbox().click()
     })
 
-    test('select all', async () => {
+    test.only('select all', async () => {
       await trash.selectedAll()
     })
   })
