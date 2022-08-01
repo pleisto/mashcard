@@ -43,7 +43,7 @@ const Label = styled('span', {
 })
 
 const Description = styled('span', {
-  color: theme.colors.typeDisabled,
+  color: theme.colors.typeThirdary,
   fontSize: theme.fontSizes.callout,
   lineHeight: '1.125rem'
 })

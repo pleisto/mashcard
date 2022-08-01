@@ -57,6 +57,6 @@ export const MenuItem = styled(Menu.Item, {
 })
 
 export const MenuGroupLabel = styled('span', {
-  color: theme.colors.typeThirdary,
+  color: theme.colors.typeSecondary,
   fontWeight: 600
 })

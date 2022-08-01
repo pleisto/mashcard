@@ -34,12 +34,12 @@ export const MashcardUploaderDashboard = styled('div', {
         cursor: 'pointer',
 
         '.dashboard-action-button-icon': {
-          color: '#a6a6a6',
+          color: theme.colors.typeSecondary,
           fontSize: 14
         },
 
         '.dashboard-action-button-label': {
-          color: '#a6a6a6',
+          color: theme.colors.typeSecondary,
           fontSize: theme.fontSizes.callout,
           fontWeight: 500,
           marginLeft: 4
@@ -56,7 +56,7 @@ export const MashcardUploaderDashboard = styled('div', {
       height: '100%',
       position: 'relative',
       padding: '0 12px',
-      color: theme.colors.typeThirdary,
+      color: theme.colors.typeSecondary,
 
       '&.active, &.focus, &.hover': {
         color: theme.colors.primaryDefault
