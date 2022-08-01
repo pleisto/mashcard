@@ -1,5 +1,7 @@
 name: Playwright Test
-on: [deployment_status]
+on:
+  # [deployment_status]
+  workflow_dispatch:
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true

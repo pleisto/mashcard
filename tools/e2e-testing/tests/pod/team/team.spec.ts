@@ -1,4 +1,5 @@
 import { test, expect } from '@/fixtures'
+import { generateUUID } from '@/helpers/utils/uuid'
 import { PodSidebarPage } from '../podSidebar/podSidebar.page'
 import { PodSettingTab } from '../podSidebar/podSidebar.selector'
 import { SwitchPodMenuPage } from '../switchPodMenu/switchPodMenu.page'
@@ -8,11 +9,12 @@ test.describe('Team Pod', () => {
   let switchPodMenu: SwitchPodMenuPage
   let podSideBar: PodSidebarPage
   let teamPod: TeamPage
-  const podName = 'testPod'
+  const podName = generateUUID()
 
   test.beforeEach(async ({ api, page }) => {
     await api.destroyAllCreatedPod()
     await api.createPod(podName)
+    await api.pageReload()
     switchPodMenu = new SwitchPodMenuPage(page)
     podSideBar = (await switchPodMenu.gotoPublicSetting(1)).podSideBar
     teamPod = (await podSideBar.toggleTab(PodSettingTab['Team Pod'])) as TeamPage

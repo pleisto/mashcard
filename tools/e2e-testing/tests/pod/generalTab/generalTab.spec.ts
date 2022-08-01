@@ -77,7 +77,7 @@ test.describe('General Tab', () => {
   })
 
   test.describe('Display', () => {
-    test.beforeEach(async ({ api, page }) => {
+    test.beforeEach(async ({ page }) => {
       switchPodMenu = new SwitchPodMenuPage(page)
       const pod = await switchPodMenu.gotoPersonalSetting()
       generalTab = pod.generalTab

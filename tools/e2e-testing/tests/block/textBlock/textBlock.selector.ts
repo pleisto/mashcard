@@ -1,3 +1,3 @@
 export const TEXT_BLOCK_SELECTORS = {
-  textBlock: '.ProseMirror .node-paragraph >> nth=0'
+  block: (index: number) => `.ProseMirror > div div[data-node-view-wrapper] p >> nth=${index}`
 }

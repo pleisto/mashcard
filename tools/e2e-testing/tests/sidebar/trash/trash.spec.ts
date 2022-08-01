@@ -90,8 +90,7 @@ test.describe('Trash', () => {
     })
 
     test('Verify there has pages path as subtitle when remove subPage', async ({ api, page }) => {
-      const domain = await page.evaluate(() => (window as any).location.pathname.split('/')[1])
-      const subPageId = (await api.getBlocks(domain)).filter(item => item.parentId)[0].id
+      const subPageId = (await api.getBlocks()).filter(item => item.parentId)[0].id
       await api.removePage({ input: { id: subPageId, hardDelete: false } })
 
       trash = new TrashPage(page)
@@ -176,15 +175,15 @@ test.describe('Trash', () => {
       await trash.createScreenshot(await trash.getDeletedAtList())
     })
 
-    test.only('hover item one', async () => {
+    test('hover item one', async () => {
       await trash.getItemByIndex().hover()
     })
 
-    test.only('select item one', async () => {
+    test('select item one', async () => {
       await trash.getItemCheckbox().click()
     })
 
-    test.only('select all', async () => {
+    test('select all', async () => {
       await trash.selectedAll()
     })
   })
