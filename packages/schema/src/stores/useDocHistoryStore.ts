@@ -18,26 +18,41 @@ export const useDocHistoryStore = (
     users: {},
     loaded: false
   })
-  MashcardEventBus.subscribe(
-    docHistoryReceived,
-    ({ payload }) => {
-      const old = store
-      setStore({
-        ...old,
-        histories: {
-          ...old.histories,
-          ...payload.histories
+  React.useEffect(() => {
+    setStore({
+      histories: {},
+      users: {},
+      loaded: false
+    })
+  }, [docId])
+
+  React.useEffect(() => {
+    const subscriptions = [
+      MashcardEventBus.subscribe(
+        docHistoryReceived,
+        ({ payload }) => {
+          const old = store
+          setStore({
+            ...old,
+            histories: {
+              ...old.histories,
+              ...payload.histories
+            },
+            users: {
+              ...old.users,
+              ...payload.users
+            }
+          })
         },
-        users: {
-          ...old.users,
-          ...payload.users
+        {
+          eventId: docId
         }
-      })
-    },
-    {
-      subscribeId: docId
+      )
+    ]
+    return () => {
+      subscriptions.forEach(sub => sub.unsubscribe())
     }
-  )
+  }, [docId, store])
 
   const refetch = React.useCallback(() => {
     MashcardEventBus.dispatch(loadDocHistory(docId))

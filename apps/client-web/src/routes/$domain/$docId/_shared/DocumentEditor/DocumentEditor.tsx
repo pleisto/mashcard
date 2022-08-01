@@ -41,7 +41,7 @@ export const DocumentEditor: FC<DocumentEditorProps> = ({ editable, loading, dat
     data
   })
 
-  useDocHistoryProvider(docMeta.id as string)
+  useDocHistoryProvider()
 
   useEffect(() => {
     isSavingVar(blocksCommitting || committing)
