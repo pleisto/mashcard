@@ -28,6 +28,7 @@ export const FormulaResult = styled('div', {
 
   '.formula-result-ok': {
     '.formula-result-ok-equal': {
+      color: theme.colors.typeSecondary,
       marginRight: 12
     },
     '.formula-result-ok-icon': {
@@ -87,7 +88,7 @@ export const MashcardFormulaMenu = styled('div', {
           float: 'right'
         },
         '.formula-menu-item-screen-icon': {
-          color: theme.colors.typeThirdary,
+          color: theme.colors.iconSecondary,
           paddingLeft: 16,
           paddingRight: 2,
           float: 'right'

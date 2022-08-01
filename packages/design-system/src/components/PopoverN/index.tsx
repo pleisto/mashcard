@@ -54,6 +54,7 @@ const PopoverN: FC<PopoverNProps> = ({
 }: PopoverNProps) => {
   const open = visible ?? defaultVisible ?? false
   const [isOpen, setInnerOpen] = useState(open)
+
   useEffect(() => {
     setInnerOpen(open)
   }, [open])
@@ -62,7 +63,6 @@ const PopoverN: FC<PopoverNProps> = ({
     open,
     onOpenChange: status => {
       onVisibleChange?.(status)
-      setInnerOpen(status)
     },
     middleware: middleware ?? [offset(_offset ?? 5), flip(), shift()],
     placement,
@@ -106,8 +106,7 @@ const PopoverN: FC<PopoverNProps> = ({
               },
               'aria-labelledby': labelId,
               'aria-describedby': descriptionId
-            })}
-          >
+            })}>
             {render({
               labelId,
               descriptionId,

@@ -20,7 +20,7 @@ const Footer = styled('div', {
 
 const Info = styled('div', {
   alignItems: 'center',
-  color: theme.colors.typeThirdary,
+  color: theme.colors.typeSecondary,
   display: 'flex',
   flexDirection: 'row',
   fontSize: '.875rem',

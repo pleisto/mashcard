@@ -12,7 +12,7 @@ import webmVideo404 from '@/common/assets/http-status/404.webm'
 import mp4Video500 from '@/common/assets/http-status/500.mp4'
 import pic500 from '@/common/assets/http-status/500.png'
 import webmVideo500 from '@/common/assets/http-status/500.webm'
-import logo from '@/common/assets/logo-brickdoc-2.svg'
+import logo from '@/common/assets/logo.svg'
 import { useAccountsI18n } from '../accounts/_shared/useAccountsI18n'
 
 // safari platform needs hevc-encoded video,
@@ -63,8 +63,7 @@ export const AppError: React.FC<AppErrorProps> = ({
           width: 982,
           display: 'flex',
           boxSizing: 'border-box'
-        }}
-      >
+        }}>
         {mediaContent}
         <div
           style={{
@@ -74,15 +73,13 @@ export const AppError: React.FC<AppErrorProps> = ({
             padding: 24,
             width: 358,
             boxSizing: 'border-box'
-          }}
-        >
+          }}>
           <h1
             style={{
               fontSize: 24,
               lineHeight: 1.5,
               marginBottom: 4
-            }}
-          >
+            }}>
             {title}
           </h1>
           <p
@@ -90,8 +87,7 @@ export const AppError: React.FC<AppErrorProps> = ({
               fontSize: 18,
               lineHeight: 1.555,
               color: theme.colors.typeThirdary.value
-            }}
-          >
+            }}>
             {content}
           </p>
           <Button type="primary" onClick={btnCallback ?? jumpToIndex} {...btnProps}>

@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async'
 import { Navigate, Outlet } from 'react-router-dom'
 
 import ceramicBackground from '@/common/assets/ceramic-bg.webp'
-import Logo from '@/common/assets/logo_brickdoc.svg'
+import Logo from '@/common/assets/logo.svg'
 import { MashcardContext } from '@/common/mashcardContext'
 import { rootPath } from '@/common/utils'
 import { useAccountsI18n } from './_shared/useAccountsI18n'
@@ -15,15 +15,11 @@ const PanelLayout = styled('div', {
   alignItems: 'center',
   minHeight: '100vh',
   header: {
-    display: 'flex',
-    alignItems: 'center',
     width: '100%',
-    padding: '1.5rem 2rem',
-    a: {
-      marginRight: '2rem'
-    },
+    display: 'flex',
+    padding: '80px 80px 0',
     'a img': {
-      height: '2.5rem'
+      height: '3rem'
     }
   },
   main: {
@@ -77,8 +73,7 @@ export const Layout: FC = () => {
         theme={{
           '@smDown': 'fluid',
           '@smUp': 'ceramic'
-        }}
-      >
+        }}>
         <header>
           <a href="/">
             <img src={Logo} alt="MashCard" />
