@@ -11,10 +11,10 @@ exports[`TocView matches correct snapshot 1`] = `
       role="presentation"
     >
       <div
-        class="mc-c-ihePFc"
+        class="mc-c-eFVbsV"
       >
         <div
-          class="mc-c-bxKgVv"
+          class="mc-c-jhjCFt"
           data-testid="editor-toc-block-item-id"
           role="menuitem"
         >
@@ -50,7 +50,7 @@ exports[`TocView matches correct snapshot 1`] = `
             style="max-height: 100%;"
           >
             <div
-              class="mc-c-bxKgVv"
+              class="mc-c-jhjCFt"
               data-testid="editor-toc-block-item-id"
               role="menuitem"
             >
@@ -86,7 +86,7 @@ exports[`TocView matches correct snapshot 1`] = `
                 style="max-height: 100%;"
               >
                 <div
-                  class="mc-c-bxKgVv"
+                  class="mc-c-jhjCFt"
                   data-testid="editor-toc-block-item-id"
                   role="menuitem"
                 >
@@ -111,7 +111,7 @@ exports[`TocView matches correct snapshot 1`] = `
           </div>
         </div>
         <div
-          class="mc-c-bxKgVv"
+          class="mc-c-jhjCFt"
           data-testid="editor-toc-block-item-id"
           role="menuitem"
         >
@@ -147,7 +147,7 @@ exports[`TocView matches correct snapshot 1`] = `
             style="max-height: 100%;"
           >
             <div
-              class="mc-c-bxKgVv"
+              class="mc-c-jhjCFt"
               data-testid="editor-toc-block-item-id"
               role="menuitem"
             >
@@ -183,7 +183,7 @@ exports[`TocView matches correct snapshot 1`] = `
                 style="max-height: 100%;"
               >
                 <div
-                  class="mc-c-bxKgVv"
+                  class="mc-c-jhjCFt"
                   data-testid="editor-toc-block-item-id"
                   role="menuitem"
                 >
@@ -219,7 +219,7 @@ exports[`TocView matches correct snapshot 1`] = `
                     style="max-height: 100%;"
                   >
                     <div
-                      class="mc-c-bxKgVv"
+                      class="mc-c-jhjCFt"
                       data-testid="editor-toc-block-item-id"
                       role="menuitem"
                     >
@@ -244,7 +244,7 @@ exports[`TocView matches correct snapshot 1`] = `
               </div>
             </div>
             <div
-              class="mc-c-bxKgVv"
+              class="mc-c-jhjCFt"
               data-testid="editor-toc-block-item-id"
               role="menuitem"
             >
@@ -280,7 +280,7 @@ exports[`TocView matches correct snapshot 1`] = `
                 style="max-height: 100%;"
               >
                 <div
-                  class="mc-c-bxKgVv"
+                  class="mc-c-jhjCFt"
                   data-testid="editor-toc-block-item-id"
                   role="menuitem"
                 >
@@ -305,7 +305,7 @@ exports[`TocView matches correct snapshot 1`] = `
           </div>
         </div>
         <div
-          class="mc-c-bxKgVv"
+          class="mc-c-jhjCFt"
           data-testid="editor-toc-block-item-id"
           role="menuitem"
         >

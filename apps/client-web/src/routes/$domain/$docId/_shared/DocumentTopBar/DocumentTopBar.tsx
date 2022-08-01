@@ -1,4 +1,4 @@
-import Logo_Try from '@/common/assets/logo-brickdoc-try.svg'
+import Logo_Try from '@/common/assets/try.svg'
 import { MashcardContext } from '@/common/mashcardContext'
 import { useReactiveVar } from '@apollo/client'
 import { Box, Button } from '@mashcard/design-system'
@@ -71,8 +71,7 @@ export const DocumentTopBar: FC = () => {
     <Root.TopBar
       width={{
         '@mdDown': 'md'
-      }}
-    >
+      }}>
       <Box>{headMenu}</Box>
       <Box style={{ flexShrink: 0 }}>
         <Root.Menu>

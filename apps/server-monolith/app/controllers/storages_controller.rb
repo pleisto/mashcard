@@ -13,6 +13,7 @@ class StoragesController < ApplicationController
   ## NOTE Rails 7.0.0-alpha2
 
   # https://github.com/rails/rails/blob/main/activestorage/app/controllers/active_storage/base_controller.rb
+  # https://github.com/rails/rails/blob/v7.0.0.alpha2/activestorage/app/controllers/active_storage/base_controller.rb
   self.etag_with_template_digest = false
 
   before_action :set_blob, except: [:disk]
@@ -32,12 +33,14 @@ class StoragesController < ApplicationController
   end
 
   # https://github.com/rails/rails/blob/main/activestorage/app/controllers/active_storage/blobs/redirect_controller.rb#L13
+  # https://github.com/rails/rails/blob/v7.0.0.alpha2/activestorage/app/controllers/active_storage/blobs/redirect_controller.rb#L13
   def blob_redirect
     expires_in ActiveStorage.service_urls_expire_in
     redirect_to @blob.url(disposition: params[:disposition]), allow_other_host: true
   end
 
   # https://github.com/rails/rails/blob/main/activestorage/app/controllers/active_storage/blobs/proxy_controller.rb
+  # https://github.com/rails/rails/blob/v7.0.0.alpha2/activestorage/app/controllers/active_storage/blobs/proxy_controller.rb
   def blob_proxy
     if request.headers['Range'].present?
       send_blob_byte_range_data @blob, request.headers['Range']
@@ -46,21 +49,23 @@ class StoragesController < ApplicationController
         response.headers['Accept-Ranges'] = 'bytes'
         response.headers['Content-Length'] = @blob.byte_size.to_s
 
-        send_blob_stream @blob
+        send_blob_stream @blob, disposition: params[:disposition]
       end
     end
   end
 
   # https://github.com/rails/rails/blob/main/activestorage/app/controllers/active_storage/representations/redirect_controller.rb#L11
+  # https://github.com/rails/rails/blob/v7.0.0.alpha2/activestorage/app/controllers/active_storage/representations/redirect_controller.rb#L11
   def representation_redirect
     expires_in ActiveStorage.service_urls_expire_in
     redirect_to @representation.url(disposition: params[:disposition]), allow_other_host: true
   end
 
   # https://github.com/rails/rails/blob/main/activestorage/app/controllers/active_storage/representations/proxy_controller.rb#L13
+  # https://github.com/rails/rails/blob/v7.0.0.alpha2/activestorage/app/controllers/active_storage/representations/proxy_controller.rb#L13
   def representation_proxy
     http_cache_forever public: true do
-      send_blob_stream @representation.image
+      send_blob_stream @representation.image, disposition: params[:disposition]
     end
   end
 
@@ -103,6 +108,7 @@ class StoragesController < ApplicationController
   end
 
   # https://github.com/rails/rails/blob/main/activestorage/app/controllers/active_storage/representations/base_controller.rb#L3
+  # https://github.com/rails/rails/blob/v7.0.0.alpha2/activestorage/app/controllers/active_storage/representations/base_controller.rb#L3
   def blob_scope
     ActiveStorage::Blob.scope_for_strict_loading
   end

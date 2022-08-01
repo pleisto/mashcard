@@ -54,6 +54,11 @@ export const Textarea = styled(TextareaAutosize, {
   background: 'unset',
   resize: 'none',
   outline: 'none',
+
+  '&::placeholder': {
+    color: theme.colors.typeSecondary
+  },
+
   variants: {
     disabledVariant: {
       false: {},

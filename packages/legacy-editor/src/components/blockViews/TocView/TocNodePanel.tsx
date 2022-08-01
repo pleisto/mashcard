@@ -79,8 +79,7 @@ const TocStyledItem = styled('div', {
   alignItems: 'start',
   display: 'flex',
   flexDirection: 'column',
-  width: '100%',
-  paddingLeft: '1.25rem'
+  width: '100%'
 })
 
 const ToggleIcon = styled(Right, {
@@ -130,7 +129,7 @@ const TocStyledContainerInner = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   overflow: 'hidden',
-  padding: `0 2rem`
+  padding: '0 2rem 0 3rem'
 })
 
 export interface TocContainerProps {
@@ -187,8 +186,7 @@ export const TocNodePanel: FC<TocNodePanelProps> = ({ tocNode }) => {
       <TocItemTitle
         level={tocNode.item.level}
         onClick={onItemClick}
-        data-testid={TEST_ID_ENUM.editor.tocBlock.item.title.id}
-      >
+        data-testid={TEST_ID_ENUM.editor.tocBlock.item.title.id}>
         {tocNode.children.length > 0 && (
           <ToggleIcon
             data-testid={TEST_ID_ENUM.editor.tocBlock.item.toggleIcon.id}

@@ -8,7 +8,7 @@ import { BlockquoteAttributes, BlockquoteOptions } from '../../../extensions'
 
 const placeholderStyle = css({
   '&:before': {
-    color: theme.colors.typeDisabled,
+    color: theme.colors.typeThirdary,
     content: 'attr(data-placeholder)',
     fontWeight: 400,
     left: 'calc(1rem+2px)',
