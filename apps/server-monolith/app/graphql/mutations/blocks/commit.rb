@@ -16,7 +16,7 @@ module Mutations
       argument :content, GraphQL::Types::JSON, 'content', required: false
       argument :meta, Scalars::MetaJson, 'meta', required: false
 
-      argument :new_history, Boolean, 'make new history', required: false
+      argument :restore_version, Boolean, 'restore_version', required: false
 
       field :block, Types::Blocks::New, null: true
       field :diff_states, [Types::Blocks::State], 'Differ Block States with current state', null: true
@@ -52,6 +52,10 @@ module Mutations
           state_model.pod_id = block.pod_id
           state_model.user_id = current_user.id
           Docs::Block.transaction do
+            if args[:restore_version]
+              state_model.new_history!
+            end
+
             state_model.save!
 
             if args[:meta]
@@ -73,7 +77,7 @@ module Mutations
             block.save
           end
 
-          if states_count != args[:states_count]
+          if !args[:restore_version] && (states_count != args[:states_count])
             diff_states = block.states_sorted
           end
 

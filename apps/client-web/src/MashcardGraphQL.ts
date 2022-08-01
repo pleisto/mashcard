@@ -184,12 +184,12 @@ export type BlockCommitInput = {
   documentId: Scalars['UUID']
   /** meta */
   meta?: InputMaybe<Scalars['MetaJson']>
-  /** make new history */
-  newHistory?: InputMaybe<Scalars['Boolean']>
   /** operator id */
   operatorId: Scalars['String']
   /** previous state id */
   prevStateId?: InputMaybe<Scalars['UUID']>
+  /** restore_version */
+  restoreVersion?: InputMaybe<Scalars['Boolean']>
   /** full or update state */
   state: Scalars['String']
   /** state id */

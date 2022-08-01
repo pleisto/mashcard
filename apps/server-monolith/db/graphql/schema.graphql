@@ -309,11 +309,6 @@ input BlockCommitInput {
   meta: MetaJson
 
   """
-  make new history
-  """
-  newHistory: Boolean
-
-  """
   operator id
   """
   operatorId: String!
@@ -322,6 +317,11 @@ input BlockCommitInput {
   previous state id
   """
   prevStateId: UUID
+
+  """
+  restore_version
+  """
+  restoreVersion: Boolean
 
   """
   full or update state

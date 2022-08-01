@@ -168,7 +168,7 @@ export function useDocSyncProvider(queryVariables: {
       ydoc: Y.Doc,
       update?: Uint8Array,
       forceFull: boolean = false,
-      newHistory: boolean = false
+      restoreVersion: boolean = false
     ): Promise<void> => {
       devLog(`try commit state, committing:`, blockCommitting.current)
       if (update) updatesToCommit.current.add(update)
@@ -202,7 +202,7 @@ export function useDocSyncProvider(queryVariables: {
             statesCount,
             meta,
             content,
-            newHistory
+            restoreVersion
           }
         }
       })

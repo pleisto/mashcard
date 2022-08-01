@@ -1057,8 +1057,8 @@
               "deprecationReason": null
             },
             {
-              "name": "newHistory",
-              "description": "make new history",
+              "name": "restoreVersion",
+              "description": "restore_version",
               "type": {
                 "kind": "SCALAR",
                 "name": "Boolean",

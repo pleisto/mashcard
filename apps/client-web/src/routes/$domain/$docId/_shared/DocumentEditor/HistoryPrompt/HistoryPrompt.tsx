@@ -1,7 +1,7 @@
 import { Button, ConfirmDialog } from '@mashcard/design-system'
 import React, { FC, useState } from 'react'
-// import { useNavigate } from 'react-router-dom'
-// import { useNonNullDocMeta } from '../../../../_shared/DocMeta'
+import { useNavigate } from 'react-router-dom'
+import { useNonNullDocMeta } from '../../../../_shared/DocMeta'
 import { useDocsI18n } from '../../../../_shared/useDocsI18n'
 import * as Root from './HistoryPrompt.style'
 
@@ -11,11 +11,11 @@ interface HistoryPromptProps {
 
 export const HistoryPrompt: FC<HistoryPromptProps> = ({ restoreHistory }) => {
   const { t } = useDocsI18n()
-  // const { id, domain } = useNonNullDocMeta()
+  const { id, domain } = useNonNullDocMeta()
   const [restoreModalVisible, setRestoreModalVisible] = useState<boolean>(false)
   const [restoreConfirmLoading, setRestoreConfirmLoading] = React.useState<boolean>(false)
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const onRestoreClick = (): void => {
     setRestoreModalVisible(true)
@@ -30,7 +30,7 @@ export const HistoryPrompt: FC<HistoryPromptProps> = ({ restoreHistory }) => {
     await restoreHistory()
     setRestoreModalVisible(false)
     setRestoreConfirmLoading(false)
-    // navigate(`/${domain}/${id}`)
+    navigate(`/${domain}/${id}`)
   }
 
   return (
