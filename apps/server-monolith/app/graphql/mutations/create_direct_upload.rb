@@ -8,7 +8,7 @@ module Mutations
     field :direct_upload, Types::DirectUpload, null: false
 
     SERVICE_MAP =
-      if Rails.env.in?(['development', 'test'])
+      if Rails.env.in?(['development', 'test', 'cicd'])
         { 'AVATAR' => :local_public, 'DOC' => :local_private, 'THIRD' => :local_public }
       else
         { 'AVATAR' => :gcs_public, 'DOC' => :gcs_privtae, 'THIRD' => :gcs_public }
