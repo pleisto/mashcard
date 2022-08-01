@@ -17,13 +17,13 @@
     "@mashcard/design-icons": "workspace:^",
     "@mashcard/design-system": "workspace:^",
     "@mashcard/test-helper": "workspace:^",
-    "@uppy/core": "^2.3.1",
+    "@uppy/core": "^2.3.2",
     "@uppy/thumbnail-generator": "^2.2.0",
     "@uppy/utils": "^4.1.0",
     "@uppy/xhr-upload": "^2.1.2",
     "ahooks": "^3.6.2",
     "blurhash": "^1.1.5",
-    "react-virtuoso": "^2.16.5"
+    "react-virtuoso": "^2.16.6"
   },
   "devDependencies": {
     "@mashcard/dev-support": "workspace:^"

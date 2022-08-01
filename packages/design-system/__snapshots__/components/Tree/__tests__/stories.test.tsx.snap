@@ -800,7 +800,7 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
               </div>
             </div>
             <div
-              class="mc-c-edcIyF mc-c-edcIyF-iPJLV-css"
+              class="mc-c-edcIyF mc-c-edcIyF-frnnev-selected-true mc-c-edcIyF-iPJLV-css"
               data-handler-id="mock-id"
               data-testid="page-tree-virtual-list-node"
               role="button"

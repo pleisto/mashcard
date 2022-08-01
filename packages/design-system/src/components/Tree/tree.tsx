@@ -31,6 +31,7 @@ export interface TreeProps {
   treeNodeClassName?: string
   expandAll?: boolean
   expandOnSelect?: boolean
+  expandParentOnSelect?: boolean
   draggable?: boolean
   onDrop?: (attrs: NodeMovement) => void
   renderNode?: TreeNodeRenderer
@@ -54,6 +55,7 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
     data: nextData,
     expandAll,
     expandOnSelect,
+    expandParentOnSelect,
     renderNode,
     emptyNode,
     initialSelectedId,
@@ -70,11 +72,11 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
   // to the tree data.
   const redraw = useUpdate()
   const data = useDeepMemo(nextData, redraw)
+  const allNodes = flattenNodes(data)
 
   const listRef = useRef<ListRef>(null)
   const [expandedIds, setExpandedIds] = useState<string[]>(() => {
     if (expandAll) {
-      const allNodes = flattenNodes(data)
       return allNodes.map(({ id }) => id)
     }
     let ids = data.filter(node => node.isExpanded).map(node => node.id)
@@ -86,13 +88,26 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
   })
 
   const [selectedId, setSelectedId] = useState<string | undefined>(initialSelectedId)
+  const prevCurrentSelectedId = useRef<string>()
 
   useEffect(() => {
-    /**
-     * To replace the highlights
-     */
-    setSelectedId(currentSelectedId)
-  }, [currentSelectedId])
+    if (currentSelectedId !== prevCurrentSelectedId.current) {
+      const node = allNodes.find(n => n.id === currentSelectedId)
+      if (node) {
+        if (expandParentOnSelect && node?.parentId) {
+          const nextExpandedIds = joinNodeIdsByPath(data, node.parentId, expandedIds)
+          if (!deepEqual(nextExpandedIds, expandedIds)) {
+            setExpandedIds(nextExpandedIds)
+          }
+        }
+        /**
+         * To replace the highlights
+         */
+        setSelectedId(currentSelectedId)
+        prevCurrentSelectedId.current = currentSelectedId
+      }
+    }
+  }, [currentSelectedId, allNodes, data, expandParentOnSelect, expandedIds])
 
   const nodeList = useMemo(() => {
     const runner = (indent: number) => (node: TreeNode, index: number, arr: TreeNode[]) => {
@@ -174,8 +189,7 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
             data-testid={TEST_ID_ENUM.page.pageTree.virtualList.id}
             itemHeight={NODE_HEIGHT}
             itemKey="id"
-            ref={ref ?? listRef}
-          >
+            ref={ref ?? listRef}>
             {(item, index) => (
               <Node
                 className={treeNodeClassName}
