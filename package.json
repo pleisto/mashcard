@@ -104,7 +104,7 @@
     "prosemirror-view": "patch:prosemirror-view@npm:1.27.0#.yarn/patches/prosemirror-view-npm-1.27.0-fee90688e2.patch"
   },
   "dependencies": {
-    "@swc/core": "^1.2.220",
+    "@swc/core": "^1.2.222",
     "@swc/helpers": "^0.4.3",
     "lodash-es": "^4.17.21",
     "ts-node": "^10.9.1"
