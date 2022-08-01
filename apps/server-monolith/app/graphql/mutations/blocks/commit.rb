@@ -16,6 +16,8 @@ module Mutations
       argument :content, GraphQL::Types::JSON, 'content', required: false
       argument :meta, Scalars::MetaJson, 'meta', required: false
 
+      argument :new_history, Boolean, 'make new history', required: false
+
       field :block, Types::Blocks::New, null: true
       field :diff_states, [Types::Blocks::State], 'Differ Block States with current state', null: true
       field :require_full, Boolean, null: true

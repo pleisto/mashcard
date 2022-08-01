@@ -45,4 +45,14 @@ class Docs::BlockState < ApplicationRecord # rubocop:disable Style/ClassAndModul
       history.save
     end
   end
+
+  def new_history!
+    self.history = Docs::DocumentHistory.new(
+      document_id: document_id,
+      pod_id: pod_id,
+      user_id:  user_id
+    )
+    history.created_at = Time.zone.now
+    history.save
+  end
 end

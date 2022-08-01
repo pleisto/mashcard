@@ -43,6 +43,7 @@ export function useDocSyncProvider(queryVariables: {
   meta: blockMeta
   documentInfo?: DocumentInfo
   setMeta: (meta: blockMeta) => void
+  restoreHistory: () => Promise<void>
 } {
   const client = useApolloClient()
 
@@ -163,8 +164,12 @@ export function useDocSyncProvider(queryVariables: {
   )
 
   const commitState = useCallback(
-    async (ydoc: Y.Doc, update?: Uint8Array, forceFull: boolean = false): Promise<void> => {
-      if (historyId) return
+    async (
+      ydoc: Y.Doc,
+      update?: Uint8Array,
+      forceFull: boolean = false,
+      newHistory: boolean = false
+    ): Promise<void> => {
       devLog(`try commit state, committing:`, blockCommitting.current)
       if (update) updatesToCommit.current.add(update)
       if (blockCommitting.current) return
@@ -196,7 +201,8 @@ export function useDocSyncProvider(queryVariables: {
             prevStateId: block.current.stateId ? block.current.stateId : undefined,
             statesCount,
             meta,
-            content
+            content,
+            newHistory
           }
         }
       })
@@ -246,8 +252,14 @@ export function useDocSyncProvider(queryVariables: {
         blockCommitting.current = false
       }
     },
-    [blockCommit, blockId, historyId, setCommitting, setBlockMetaUpdated]
+    [blockCommit, blockId, setCommitting, setBlockMetaUpdated]
   )
+
+  const restoreHistory = useCallback(async () => {
+    if (provider?.document && historyId) {
+      void commitState(provider.document, Y.encodeStateAsUpdate(provider.document), true, true)
+    }
+  }, [commitState, historyId, provider?.document])
 
   const setMeta = useCallback(
     (newMeta: blockMeta) => {
@@ -329,7 +341,7 @@ export function useDocSyncProvider(queryVariables: {
     awareness.on('update', awarenessUpdateHandler)
 
     if (globalThis.mashcardContext.env === 'development') {
-      (globalThis as any).debugDumpDocumentState = () => {
+      ;(globalThis as any).debugDumpDocumentState = () => {
         return base64.stringify(Y.encodeStateAsUpdate(ydoc))
       }
     }
@@ -361,6 +373,7 @@ export function useDocSyncProvider(queryVariables: {
     awarenessInfos,
     meta: blockMeta,
     documentInfo,
-    setMeta
+    setMeta,
+    restoreHistory
   }
 }
