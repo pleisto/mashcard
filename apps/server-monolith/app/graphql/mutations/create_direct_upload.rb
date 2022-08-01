@@ -14,6 +14,8 @@ module Mutations
         { 'AVATAR' => :gcs_public, 'DOC' => :gcs_privtae, 'THIRD' => :gcs_public }
       end
 
+    DEFAULT_MIME_TYPE = 'application/octet-stream'
+
     def resolve(args)
       input = args[:input]
       type = args[:type]
@@ -38,6 +40,7 @@ module Mutations
       blob = ActiveStorage::Blob.create!(
         new_input.merge(
           key: key,
+          content_type: input[:content_type].presence || DEFAULT_MIME_TYPE,
           operation_type: type,
           pod_id: pod.id,
           user_id: current_user.id,
