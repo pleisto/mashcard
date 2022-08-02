@@ -46,7 +46,7 @@ export class PageTreePage extends CommonPage {
   }
 
   async clickPage(index?: number): Promise<void> {
-    await this.waitForResponseWithAction('GetChildrenBlocks', this.getPageByIndex(index).click())
+    await this.waitForResponseWithAction('DocumentBlock', this.getPageByIndex(index).click())
   }
 
   async expandArrow(index?: number): Promise<void> {

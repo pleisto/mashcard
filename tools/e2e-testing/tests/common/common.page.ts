@@ -67,6 +67,7 @@ export class CommonPage {
     await expect(this.page).toHaveScreenshot({
       mask: [
         this.page.locator(`[data-testid=${TEST_ID_ENUM.page.topBar.saving.id}]`),
+        this.page.locator(`[data-testid=${TEST_ID_ENUM.page.topBar.collaboratorMenu.id}]`),
         this.page.locator(`[data-testid=${TEST_ID_ENUM.page.DocumentPage.loading.id}]`),
         this.page.locator(`[data-testid=${TEST_ID_ENUM.layout.sidebar.podSelect.id}]`),
         ...maskList

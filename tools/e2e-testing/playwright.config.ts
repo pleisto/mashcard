@@ -16,7 +16,8 @@ const config: PlaywrightTestConfig = {
     trace: 'retain-on-failure',
     video: 'off',
     screenshot: 'off',
-    navigationTimeout: 10000
+    navigationTimeout: 10000,
+    storageState: `./storage/${process.env.TEST_BROWSER}-${process.env.TEST_MODULE}.json`
   },
   globalSetup: './global-setup',
   projects: [
@@ -24,7 +25,6 @@ const config: PlaywrightTestConfig = {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        storageState: './storageState-chromium.json',
         viewport: { width: 1780, height: 720 }
       }
     },
@@ -32,7 +32,6 @@ const config: PlaywrightTestConfig = {
       name: 'firefox',
       use: {
         ...devices['Desktop Firefox'],
-        storageState: './storageState-firefox.json',
         viewport: { width: 1780, height: 720 }
       }
     }

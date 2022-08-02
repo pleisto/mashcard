@@ -1,3 +1,3 @@
 export const BULLET_LIST_BLOCK_SELECTORS = {
-  bulletListBlock: '.ProseMirror .node-bulletList >> nth=0'
+  block: (index: number) => `.ProseMirror div[data-node-view-wrapper] ul[data-list-view] >> nth=${index}`
 }

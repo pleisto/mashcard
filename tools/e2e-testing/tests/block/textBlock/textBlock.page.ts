@@ -3,7 +3,7 @@ import { CommonPage } from '@/tests/common/common.page'
 import { TEXT_BLOCK_SELECTORS } from './textBlock.selector'
 
 export class TextBlock extends CommonPage {
-  getTextBlock(): Locator {
-    return this.page.locator(TEXT_BLOCK_SELECTORS.textBlock)
+  getParagraphBlock(index: number = 0): Locator {
+    return this.page.locator(TEXT_BLOCK_SELECTORS.block(index))
   }
 }

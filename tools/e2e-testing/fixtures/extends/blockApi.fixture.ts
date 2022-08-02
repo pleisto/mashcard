@@ -3,7 +3,7 @@ import { FixtureReturnType } from '@/helpers/types/fixture.types'
 
 export function apiFixture(): FixtureReturnType<BlockApi> {
   return async ({ page }, use): Promise<void> => {
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'networkidle' })
     const csrfToken: string = await page.evaluate(() => (window as any).mashcardContext.csrfToken)
     const blockApi = new BlockApi(page, csrfToken)
     await use(blockApi)

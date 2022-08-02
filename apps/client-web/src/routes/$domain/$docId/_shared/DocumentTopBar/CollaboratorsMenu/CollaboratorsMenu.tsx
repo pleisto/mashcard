@@ -1,3 +1,4 @@
+import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { FC } from 'react'
 import { awarenessInfosVar } from '../../../../_shared/reactiveVars'
 import { Avatar, CollaboratorsConatainer } from './CollaboratorsMenu.style'
@@ -24,7 +25,7 @@ export const CollaboratorsMenu: FC = () => {
     const pod = { ...info.user, domain: info.user.name }
     return (
       <CollaboratorsConatainer title={info.user.name} key={i}>
-        <span>
+        <span data-testid={TEST_ID_ENUM.page.topBar.collaboratorMenu.id}>
           <Avatar size={24} pod={pod} style={{ outlineColor: info.user.color }} />
         </span>
       </CollaboratorsConatainer>

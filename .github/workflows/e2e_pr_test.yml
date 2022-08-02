@@ -1,0 +1,68 @@
+name: Playwright Test
+on:
+  # [deployment_status]
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+env:
+  YARN_CHECKSUM_BEHAVIOR: update
+
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      module: ${{ steps.matrix.outputs.MODULE }}
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+      - name: Run yarn install
+        run: yarn install --immutable
+      - name: Set Matrix
+        id: matrix
+        run: |
+          yarn e2e-testing module
+          echo "::set-output name=MODULE::$(cat tools/e2e-testing/MODULE)"
+
+  playwright:
+    name: Playwright Test
+    if: github.event.deployment_status.state == 'success' && (github.event.deployment_status.environment == 'pr_preview' || github.event.deployment_status.environment == 'trunk')
+    needs: matrix
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    timeout-minutes: 60
+    strategy:
+      matrix:
+        browser: ['chromium', 'firefox']
+        module: ${{ fromJson(needs.matrix.outputs.module) }}
+      fail-fast: false
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+      - name: Run yarn install
+        run: yarn install --immutable
+      - name: Install Playwright
+        run: yarn e2e-testing install-deps ${{ matrix.browser }}
+      - name: Run Playwright tests
+        run: yarn e2e-testing parallel --module=${{ matrix.module }} --project=${{ matrix.browser }}
+        env:
+          NODE_OPTIONS: '--max-old-space-size=5950'
+          PLAYWRIGHT_BASE_URL: ${{ github.event.deployment_status.environment_url }}
+      - name: Upload Playwright traces (when failed)
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: playwright-test-results
+          if-no-files-found: ignore
+          retention-days: 2
+          path: tools/e2e-testing/test-results/
