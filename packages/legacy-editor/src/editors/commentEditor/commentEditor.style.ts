@@ -23,7 +23,8 @@ export const EditorInput = styled(EditorContent, {
     '& p': {
       fontSize: theme.fontSizes.callout,
       lineHeight: '1rem',
-      marginBottom: 0
+      margin: 0,
+      wordBreak: 'break-all'
     }
   }
 })

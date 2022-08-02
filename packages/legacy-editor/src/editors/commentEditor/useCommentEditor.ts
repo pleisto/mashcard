@@ -1,13 +1,19 @@
 import { Editor, Content } from '@tiptap/core'
 import { useEditor } from '../../tiptapRefactor'
+import { Comment } from '../../extensions'
 import { Base, BaseOptions } from '../../extensions/base'
 
 export interface CommentEditorOptions {
   defaultContent?: Content
+  onSendComment: () => void
   mentionCommands: BaseOptions['mentionCommands']
 }
 
-export function useCommentEditor({ defaultContent, mentionCommands }: CommentEditorOptions): Editor | null {
+export function useCommentEditor({
+  defaultContent,
+  mentionCommands,
+  onSendComment
+}: CommentEditorOptions): Editor | null {
   return useEditor({
     autofocus: 'end',
     content: defaultContent,
@@ -34,6 +40,9 @@ export function useCommentEditor({ defaultContent, mentionCommands }: CommentEdi
         user: {
           size: 'sm'
         }
+      }),
+      Comment.configure({
+        onSendComment
       })
     ]
   })

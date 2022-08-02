@@ -1,4 +1,4 @@
-import { FC, MouseEvent, useCallback, useEffect } from 'react'
+import { FC, MouseEvent, useCallback, useEffect, useRef } from 'react'
 import { Editor, JSONContent } from '@tiptap/core'
 import { Button } from '@mashcard/design-system'
 import { MashcardEventBus, DiscussionMarkInactive } from '@mashcard/schema'
@@ -18,15 +18,32 @@ export interface CommentEditorProps {
 
 export const CommentEditorContent: FC<CommentEditorProps> = ({ markId, onSend, mentionCommandsOptions }) => {
   const [t] = useEditorI18n()
-  const editor = useCommentEditor({ defaultContent: getDraft(markId), mentionCommands: mentionCommandsOptions })
-  const [placeholder] = usePlaceholder(editor)
 
-  useContentUpdated(editor, markId)
+  const editor = useRef<Editor | null>(null)
+
+  const handleSend = useCallback(
+    (event?: MouseEvent) => {
+      event?.stopPropagation()
+      console.log('editor', editor)
+      if (!editor.current) return
+      onSend?.(editor.current, getDraft(markId))
+    },
+    [markId, onSend]
+  )
+
+  editor.current = useCommentEditor({
+    defaultContent: getDraft(markId),
+    mentionCommands: mentionCommandsOptions,
+    onSendComment: handleSend
+  })
+  const [placeholder] = usePlaceholder(editor.current)
+
+  useContentUpdated(editor.current, markId)
 
   useEffect(() => {
     // setTimeout for avoiding scroll event conflict with discussion mark
     setTimeout(() => {
-      if (editor?.isFocused) editor?.commands.scrollIntoView()
+      if (editor.current?.isFocused) editor.current?.commands.scrollIntoView()
     }, 70)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -40,15 +57,6 @@ export const CommentEditorContent: FC<CommentEditorProps> = ({ markId, onSend, m
     [markId]
   )
 
-  const handleSend = useCallback(
-    (event: MouseEvent) => {
-      event.stopPropagation()
-      if (!editor) return
-      onSend?.(editor, getDraft(markId))
-    },
-    [editor, markId, onSend]
-  )
-
   const handleContainerClick = useCallback((event: MouseEvent) => {
     event.stopPropagation()
   }, [])
@@ -57,9 +65,9 @@ export const CommentEditorContent: FC<CommentEditorProps> = ({ markId, onSend, m
     <>
       <EditorContainer onClick={handleContainerClick}>
         <EditorAvatar size="sm" />
-        <EditorInput editor={editor} data-placeholder={placeholder} />
+        <EditorInput editor={editor.current} data-placeholder={placeholder} />
       </EditorContainer>
-      {!editor?.isEmpty && (
+      {!editor.current?.isEmpty && (
         <ActionsRow onClick={handleContainerClick}>
           <Button onClick={handleCancel} size="sm">
             {t('discussion.editor.cancel')}

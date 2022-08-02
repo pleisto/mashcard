@@ -1,6 +1,7 @@
 export * from './brickList'
 export * from './bubbleMenu'
 export * from './commandHelper'
+export * from './comment'
 export * from './dropBlock'
 export * from './dropcursor'
 export * from './eventHandler'
