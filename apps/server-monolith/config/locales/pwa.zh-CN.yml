@@ -557,6 +557,11 @@ zh-CN:
     history:
       menu: 历史
       tooltip: View all updates
+      in_history_prompt: This is a history version of the document.
+      restore: Restore version
+      restore_confirmation_body: Are you sure you would like to restore to this version?
+      restore_confirmation_cancel: Cancel
+      restore_confirmation_ok: Restore
     more:
       tooltip: 更多选项
     share:
