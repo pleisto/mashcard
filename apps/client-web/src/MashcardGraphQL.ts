@@ -188,6 +188,8 @@ export type BlockCommitInput = {
   operatorId: Scalars['String']
   /** previous state id */
   prevStateId?: InputMaybe<Scalars['UUID']>
+  /** restore_version */
+  restoreVersion?: InputMaybe<Scalars['Boolean']>
   /** full or update state */
   state: Scalars['String']
   /** state id */
@@ -1773,7 +1775,6 @@ export type Query = {
   blockSearch?: Maybe<Array<Block>>
   /** return share links by block id. */
   blockShareLinks: Array<ShareLink>
-  childrenBlocks?: Maybe<Array<Block>>
   conversationComments?: Maybe<Array<Conversation>>
   currentPodDomain: Scalars['String']
   documentHistories?: Maybe<DocumentHistories>
@@ -1826,10 +1827,6 @@ export type QueryBlockSearchArgs = {
 
 export type QueryBlockShareLinksArgs = {
   id: Scalars['String']
-}
-
-export type QueryChildrenBlocksArgs = {
-  rootId: Scalars['String']
 }
 
 export type QueryConversationCommentsArgs = {

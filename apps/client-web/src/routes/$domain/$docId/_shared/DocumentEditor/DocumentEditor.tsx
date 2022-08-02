@@ -8,6 +8,7 @@ import { useDocMeta } from '../../../_shared/DocMeta'
 import { awarenessInfosVar, isSavingVar } from '../../../_shared/reactiveVars'
 import { DocumentTitle } from './DocumentTitle'
 import { TrashPrompt } from './TrashPrompt'
+import { HistoryPrompt } from './HistoryPrompt'
 import { useDocHistoryProvider } from './useDocHistoryProvider'
 import { useDocSyncProvider } from './useDocSyncProvider'
 import { useEditorOptions } from './useEditorOptions'
@@ -33,14 +34,14 @@ export const DocumentEditor: FC<DocumentEditorProps> = ({ editable, loading, dat
 
   const documentBlobs = data?.blockNew?.blobs ?? []
 
-  const { provider, committing, awarenessInfos, meta, setMeta } = useDocSyncProvider({
+  const { provider, committing, awarenessInfos, meta, setMeta, restoreHistory } = useDocSyncProvider({
     blockId: docMeta.id as string,
     historyId: docMeta.historyId,
     editable,
     data
   })
 
-  useDocHistoryProvider(docMeta.id as string)
+  useDocHistoryProvider()
 
   useEffect(() => {
     isSavingVar(blocksCommitting || committing)
@@ -82,14 +83,14 @@ export const DocumentEditor: FC<DocumentEditorProps> = ({ editable, loading, dat
   const PageElement = (
     <>
       {docMeta.id && docMeta.documentInfo?.isDeleted && <TrashPrompt />}
+      {docMeta.historyId && <HistoryPrompt restoreHistory={restoreHistory} />}
       <Root.Page
         ref={pageRef}
         width={{
           '@mdOnly': 'md',
           '@smDown': 'sm'
         }}
-        onMouseDown={handleMultipleNodeSelectionMouseDown}
-      >
+        onMouseDown={handleMultipleNodeSelectionMouseDown}>
         <DocumentTitle docId={docMeta.id} docBlobs={documentBlobs} editable={editable} meta={meta} setMeta={setMeta} />
         <Root.PageContent ref={pageContentRef}>
           <EditorContent
