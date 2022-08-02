@@ -23,7 +23,7 @@ export function useConversationEffects(
         await addComment?.(conversationItem.id, content)
       }
 
-      editor.commands.clearContent(true)
+      editor.commands.clearContent()
     },
     [addComment, addConversation, conversationItem]
   )
