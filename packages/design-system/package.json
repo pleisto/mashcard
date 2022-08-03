@@ -29,7 +29,7 @@
     "@mashcard/active-support": "workspace:^",
     "@mashcard/design-icons": "workspace:^",
     "@mashcard/test-helper": "workspace:^",
-    "@mui/base": "^5.0.0-alpha.91",
+    "@mui/base": "^5.0.0-alpha.92",
     "@stitches/core": "^1.2.8",
     "@stitches/react": "^1.2.8",
     "ahooks": "^3.6.2",
@@ -55,7 +55,7 @@
     "stitches-mixins": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.9",
+    "@babel/core": "^7.18.10",
     "@mashcard/dev-support": "workspace:^",
     "@storybook/addon-a11y": "^6.5.9",
     "@storybook/addon-actions": "^6.5.9",
