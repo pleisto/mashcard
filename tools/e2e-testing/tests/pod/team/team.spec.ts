@@ -1,7 +1,6 @@
 import { test, expect } from '@/fixtures'
 import { generateUUID } from '@/helpers/utils/uuid'
 import { PodSidebarPage } from '../podSidebar/podSidebar.page'
-import { PodSettingTab } from '../podSidebar/podSidebar.selector'
 import { SwitchPodMenuPage } from '../switchPodMenu/switchPodMenu.page'
 import { TeamPage } from './team.page'
 
@@ -17,33 +16,33 @@ test.describe('Team Pod', () => {
     await api.pageReload()
     switchPodMenu = new SwitchPodMenuPage(page)
     podSideBar = (await switchPodMenu.gotoPublicSetting(1)).podSideBar
-    teamPod = (await podSideBar.toggleTab(PodSettingTab['Team Pod'])) as TeamPage
+    teamPod = (await podSideBar.toggleTab('teamTab')) as TeamPage
   })
 
   test('Verify toggle invite link button is working well', async () => {
     await teamPod.toggleInvite('enable')
-    await expect(teamPod.getInviteInput()).toBeVisible()
+    await expect(teamPod.inviteInput).toBeVisible()
 
     await teamPod.toggleInvite('disable')
-    await expect(teamPod.getInviteInput()).not.toBeVisible()
+    await expect(teamPod.inviteInput).not.toBeVisible()
   })
 
   test('Verify it will generate a new link when click reset', async () => {
     await teamPod.toggleInvite('enable')
-    const link = await teamPod.getInviteInput().inputValue()
+    const link = await teamPod.inviteInput.inputValue()
     const newLink = await teamPod.resetInviteLink()
 
     expect(newLink).not.toEqual(link)
   })
 
   test('Verify that the first member can not leave', async () => {
-    await expect(teamPod.getLeaveByIndex()).toHaveAttribute('disabled', '')
+    await expect(teamPod.memberLeaves.nth(0)).toHaveAttribute('disabled', '')
   })
 
-  test('Verify pod can be removed', async () => {
+  test.only('Verify pod can be removed', async () => {
     const page = await teamPod.deletePod(podName)
 
-    await expect(page.getAddPageButton()).toBeVisible()
+    await expect(page.addPageButton).toBeVisible()
   })
 
   /**

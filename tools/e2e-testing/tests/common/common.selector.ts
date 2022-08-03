@@ -1,19 +1,14 @@
-export enum ActionType {
-  Cancel = 'Cancel',
-  Confirm = 'Confirm',
-  'Delete Pod' = 'Delete Pod',
-  'Delete Page' = 'Delete Page',
-  'Create' = 'Create'
-}
-
 export const COMMON_SELECTORS = {
   tooltip: '[role="tooltip"]',
+  errorTooltip: 'span[role="img"].mc-icon.mc-icon-close-one',
   menubarItems: '[role="menubar"] li[role=menuitem]',
   dialog: {
     component: 'div[role=presentation]',
     cancelButton: 'div[role=presentation] button:has-text("Cancel")',
-    deleteButton: 'div[role=presentation] button:has-text("Delete Page")',
-    actionButton: (action: ActionType) => `div[role=presentation] button:has-text("${action}")`,
+    confirmButton: 'div[role=presentation] button:has-text("Confirm")',
+    deletePageButton: 'div[role=presentation] button:has-text("Delete Page")',
+    deletePodButton: 'div[role=presentation] button:has-text("Delete Pod")',
+    createButton: 'div[role=presentation] button:has-text("Create")',
     input: 'div[role=presentation] .MuiInput-input'
   },
   listBox: {

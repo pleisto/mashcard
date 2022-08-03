@@ -3,23 +3,15 @@ import { CommonPage } from '@/tests/common/common.page'
 import { BREADCRUMB_SELECTOR } from './breadcrumb.selector'
 
 export class BreadcrumbPage extends CommonPage {
-  getBreadcrumbTextByIndex(index: number = 0): Locator {
-    return this.getBreadcrumbItemsByIndex(index).locator(BREADCRUMB_SELECTOR.breadcrumbText)
-  }
+  readonly texts = this.get('texts')
+  readonly icons = this.get('icons')
+  readonly items = this.get('items')
 
-  getBreadcrumbIconByIndex(index: number = 0): Locator {
-    return this.getBreadcrumbItemsByIndex(index).locator(BREADCRUMB_SELECTOR.breadcrumbIcon)
-  }
-
-  getBreadcrumbItems(): Locator {
-    return this.page.locator(BREADCRUMB_SELECTOR.breadcrumbItems)
-  }
-
-  getBreadcrumbItemsByIndex(index: number = 0): Locator {
-    return this.page.locator(BREADCRUMB_SELECTOR.breadcrumbItems).nth(index)
+  get(selector: keyof typeof BREADCRUMB_SELECTOR): Locator {
+    return this.locator(BREADCRUMB_SELECTOR[selector])
   }
 
   async redirectToPage(isInDialog: boolean = false, index: number = 0): Promise<void> {
-    isInDialog ? await this.getItemsInMenubar().nth(index).click() : await this.getBreadcrumbTextByIndex(index).click()
+    isInDialog ? await this.menubarItems.nth(index).click() : await this.texts.nth(index).click()
   }
 }

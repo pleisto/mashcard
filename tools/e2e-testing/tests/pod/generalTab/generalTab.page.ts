@@ -3,100 +3,63 @@ import { CommonPage } from '@/tests/common/common.page'
 import { GENERAL_TAB_SELECTOR } from './generalTab.selector'
 
 export class GeneralTabPage extends CommonPage {
-  getGeneralTabTitle(): Locator {
-    return this.page.locator(GENERAL_TAB_SELECTOR.title)
-  }
+  readonly titles = this.get('titles')
+  readonly nameInput = this.get('nameInput')
+  readonly bioInput = this.get('bioInput')
+  readonly updateProfileButton = this.get('updateProfileButton')
+  readonly avatar = this.get('avatarImg')
+  readonly editAvatarButton = this.get('editAvatar')
+  readonly dialogTab = this.get('dialogTab')
+  readonly uploadAvatarButton = this.get('uploadAvatarButton')
+  readonly domainInput = this.get('domainInput')
+  readonly updateDomainButton = this.get('updateDomainButton')
+  readonly learnMore = this.get('learnMore')
+  readonly timezone = this.get('timezone')
+  readonly language = this.get('language')
+  readonly saveButton = this.get('saveButton')
 
-  getProfileNameInput(): Locator {
-    return this.page.locator(GENERAL_TAB_SELECTOR.profile.nameInput)
-  }
-
-  getProfileBioInput(): Locator {
-    return this.page.locator(GENERAL_TAB_SELECTOR.profile.bioInput)
-  }
-
-  getProfileUpdateButton(): Locator {
-    return this.page.locator(GENERAL_TAB_SELECTOR.profile.updateButton)
-  }
-
-  getAvatar(): Locator {
-    return this.page.locator(GENERAL_TAB_SELECTOR.profile.avatar.avatarImg)
-  }
-
-  getEditAvatarButton(): Locator {
-    return this.page.locator(GENERAL_TAB_SELECTOR.profile.avatar.editAvatar)
-  }
-
-  getUploadDashboard(): Locator {
-    return this.page.locator(GENERAL_TAB_SELECTOR.profile.avatar.dialogTab)
-  }
-
-  getUploadAvatarButton(): Locator {
-    return this.page.locator(GENERAL_TAB_SELECTOR.profile.avatar.uploadButton)
-  }
-
-  getDomainInput(): Locator {
-    return this.page.locator(GENERAL_TAB_SELECTOR.domain.input)
-  }
-
-  getDomainUpdateButton(): Locator {
-    return this.page.locator(GENERAL_TAB_SELECTOR.domain.updateButton)
-  }
-
-  getDomainLearnMore(): Locator {
-    return this.page.locator(GENERAL_TAB_SELECTOR.domain.learnMore)
-  }
-
-  getTimezoneInput(): Locator {
-    return this.page.locator(GENERAL_TAB_SELECTOR.display.timezone)
-  }
-
-  getLanguageInput(): Locator {
-    return this.page.locator(GENERAL_TAB_SELECTOR.display.language)
-  }
-
-  getDisplaySaveButton(): Locator {
-    return this.page.locator(GENERAL_TAB_SELECTOR.display.saveButton)
+  get(selector: keyof typeof GENERAL_TAB_SELECTOR): Locator {
+    return this.locator(GENERAL_TAB_SELECTOR[selector])
   }
 
   async updateProfileName(name: string): Promise<void> {
-    await this.getProfileNameInput().fill(name)
-    await this.waitForResponseWithAction('createOrUpdatePod', this.getProfileUpdateButton().click())
+    await this.nameInput.fill(name)
+    await this.waitForResponseWithAction('createOrUpdatePod', this.updateProfileButton.click())
   }
 
   async updateProfileBio(bio: string): Promise<void> {
-    await this.getProfileBioInput().fill(bio)
-    await this.getProfileUpdateButton().click()
+    await this.bioInput.fill(bio)
+    await this.updateProfileButton.click()
   }
 
   async updateDomainName(name: string): Promise<void> {
-    await this.getDomainInput().fill(name)
-    await this.getDomainUpdateButton().click()
+    await this.domainInput.fill(name)
+    await this.updateDomainButton.click()
   }
 
   async domainLearnMore(): Promise<void> {
-    await this.getDomainLearnMore().click()
+    await this.learnMore.click()
   }
 
   async openUploadAvatarDialog(): Promise<void> {
-    await this.getEditAvatarButton().click()
+    await this.editAvatarButton.click()
   }
 
   async updateAvatar(path: string): Promise<void> {
     await this.openUploadAvatarDialog()
-    await this.waitForResponseWithAction('createDirectUpload', this.getUploadAvatarButton().setInputFiles(path))
+    await this.waitForResponseWithAction('createDirectUpload', this.uploadAvatarButton.setInputFiles(path))
   }
 
   async updateTimezone(timezone: string): Promise<void> {
-    await this.getTimezoneInput().click()
-    await this.getListItemByName(timezone).scrollIntoViewIfNeeded()
-    await this.getListItemByName(timezone).click()
-    await this.waitForResponseWithAction('UserAppearanceUpdate', this.getDisplaySaveButton().click())
+    await this.timezone.click()
+    await this.listItems.locator(`text=${timezone}`).scrollIntoViewIfNeeded()
+    await this.listItems.locator(`text=${timezone}`).click()
+    await this.waitForResponseWithAction('UserAppearanceUpdate', this.saveButton.click())
   }
 
   async updateLanguage(language: string): Promise<void> {
-    await this.getLanguageInput().click()
-    await this.getListItemByName(language).click()
-    await this.waitForResponseWithAction('UserAppearanceUpdate', this.getDisplaySaveButton().click())
+    await this.language.click()
+    await this.listItems.locator(`text=${language}`).click()
+    await this.waitForResponseWithAction('UserAppearanceUpdate', this.saveButton.click())
   }
 }

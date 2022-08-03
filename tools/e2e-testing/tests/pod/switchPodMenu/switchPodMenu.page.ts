@@ -1,83 +1,62 @@
 import { Locator } from '@playwright/test'
 import { CommonPage } from '@/tests/common/common.page'
-import { ActionType, COMMON_SELECTORS } from '@/tests/common/common.selector'
 import { SWITCH_POD_MENU_SELECTOR } from './switchPodMenu.selector'
 import { SignInPage } from '@/tests/account/signIn/signIn.page'
 import { GeneralTabPage } from '../generalTab/generalTab.page'
 import { PodSidebarPage } from '../podSidebar/podSidebar.page'
 
 export class SwitchPodMenuPage extends CommonPage {
-  getOpenSwitchPodMenuButton(): Locator {
-    return this.page.locator(SWITCH_POD_MENU_SELECTOR.openMenuButton)
-  }
+  readonly openMenuButton = this.get('openMenuButton')
+  readonly currentPodName = this.get('currentPodName')
+  readonly podName = this.get('podName')
+  readonly createPodButton = this.get('createPod')
+  readonly podNameInput = this.get('podNameInput')
+  readonly logOutButton = this.get('logOutButton')
+  readonly settingPods = this.get('settingPods')
 
-  getCurrentPodName(): Locator {
-    return this.page.locator(SWITCH_POD_MENU_SELECTOR.currentPodName)
-  }
-
-  getPodByName(name: string): Locator {
-    return this.page.locator(COMMON_SELECTORS.menubarItems).locator(SWITCH_POD_MENU_SELECTOR.podName(name))
-  }
-
-  getPods(): Locator {
-    return this.page.locator(COMMON_SELECTORS.menubarItems)
-  }
-
-  getCreatePodButton(): Locator {
-    return this.page.locator(SWITCH_POD_MENU_SELECTOR.createPod)
-  }
-
-  getLogOutButton(): Locator {
-    return this.page.locator(SWITCH_POD_MENU_SELECTOR.logOutButton)
-  }
-
-  getPodInput(): Locator {
-    return this.page.locator(SWITCH_POD_MENU_SELECTOR.podNameInput)
-  }
-
-  getPodSettingButton(index: number = 0): Locator {
-    return this.page.locator(SWITCH_POD_MENU_SELECTOR.settingPod(index))
+  get(selector: keyof typeof SWITCH_POD_MENU_SELECTOR): Locator {
+    return this.locator(SWITCH_POD_MENU_SELECTOR[selector])
   }
 
   async openSwitchPodMenu(): Promise<void> {
-    await this.getOpenSwitchPodMenuButton().click()
+    await this.openMenuButton.click()
   }
 
   async switchPod(podName: string): Promise<void> {
     await this.openSwitchPodMenu()
-    await this.getPodByName(podName).click()
+    await this.podName.locator(`text=${podName}`).click()
   }
 
   async openCreatePodDialog(): Promise<void> {
     await this.openSwitchPodMenu()
-    await this.getCreatePodButton().click()
+    await this.createPodButton.click()
   }
 
   async logOut(): Promise<SignInPage> {
     await this.openSwitchPodMenu()
-    await this.getLogOutButton().click()
+    await this.logOutButton.click()
     await this.page.waitForNavigation()
     return new SignInPage(this.page)
   }
 
   async cancelCreatePod(): Promise<void> {
     await this.openCreatePodDialog()
-    await this.getDialogActionButton(ActionType.Cancel).click()
+    await this.dialogCancelButton.click()
   }
 
   async createPod(name: string): Promise<void> {
     await this.openCreatePodDialog()
-    await this.getPodInput().fill(name)
-    await this.getDialogActionButton(ActionType.Create).click()
+    await this.podNameInput.fill(name)
+    await this.dialogCreateButton.click()
   }
 
   async gotoPersonalSetting(): Promise<{
     generalTab: GeneralTabPage
     podSideBar: PodSidebarPage
   }> {
-    await this.getOpenSwitchPodMenuButton().click()
-    await this.getPods().nth(0).hover()
-    await this.getPodSettingButton().click()
+    await this.openMenuButton.click()
+    await this.menubarItems.nth(0).hover()
+    await this.settingPods.nth(0).click()
     await this.page.waitForNavigation()
     return {
       generalTab: new GeneralTabPage(this.page),
@@ -89,9 +68,9 @@ export class SwitchPodMenuPage extends CommonPage {
     generalTab: GeneralTabPage
     podSideBar: PodSidebarPage
   }> {
-    await this.getOpenSwitchPodMenuButton().click()
-    await this.getPods().nth(index).hover()
-    await this.getPodSettingButton(index).click()
+    await this.openMenuButton.click()
+    await this.menubarItems.nth(index).hover()
+    await this.settingPods.nth(index).click()
     await this.page.waitForNavigation()
     return {
       generalTab: new GeneralTabPage(this.page),

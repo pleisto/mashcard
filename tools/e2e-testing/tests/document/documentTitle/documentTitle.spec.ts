@@ -19,11 +19,11 @@ test.describe('Document Title', () => {
   })
 
   test('Verify the font-size is equal 2.5rem', async () => {
-    await expect(documentTitle.getDocumentTitle()).toHaveCSS('font-size', rem2Pixel('2.25rem'))
+    await expect(documentTitle.title).toHaveCSS('font-size', rem2Pixel('2.25rem'))
   })
 
   test('Verify the initial page value and placeholder are equal Untitled', async ({ page }) => {
-    await expect(documentTitle.getDocumentTitle()).toHaveAttribute('placeholder', 'Untitled')
+    await expect(documentTitle.title).toHaveAttribute('placeholder', 'Untitled')
     await expect(page).toHaveTitle('Untitled - MashCard')
   })
 
@@ -34,22 +34,22 @@ test.describe('Document Title', () => {
   })
 
   test('Verify Add icon & Add cover are shown when hover', async () => {
-    await expect(documentTitle.getActionButtons()).toHaveCSS('opacity', '0')
+    await expect(documentTitle.actionButtons).toHaveCSS('opacity', '0')
 
-    await documentTitle.getDocumentTitle().hover()
+    await documentTitle.title.hover()
 
-    await expect(documentTitle.getActionButtons()).toHaveCSS('opacity', '1')
+    await expect(documentTitle.actionButtons).toHaveCSS('opacity', '1')
   })
 
   test('Verify Add icon & Add cover are changed background when hover', async () => {
-    await documentTitle.getDocumentTitle().hover()
-    await documentTitle.getAddIconButton().hover()
+    await documentTitle.title.hover()
+    await documentTitle.addIconButton.hover()
 
-    await expect(documentTitle.getAddIconButton()).toHaveCSS('background-color', COMMON_STYLE.hoverBackground)
+    await expect(documentTitle.addIconButton).toHaveCSS('background-color', COMMON_STYLE.hoverBackground)
 
-    await documentTitle.getDocumentTitle().hover()
-    await documentTitle.getAddCoverButton().hover()
+    await documentTitle.title.hover()
+    await documentTitle.addCoverButton.hover()
 
-    await expect(documentTitle.getAddCoverButton()).toHaveCSS('background-color', COMMON_STYLE.hoverBackground)
+    await expect(documentTitle.addCoverButton).toHaveCSS('background-color', COMMON_STYLE.hoverBackground)
   })
 })

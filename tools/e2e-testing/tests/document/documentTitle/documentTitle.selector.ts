@@ -2,9 +2,9 @@ import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 export const DOCUMENT_TITLE_SELECTORS = {
   article: '#article',
-  documentTitle: `[data-testid=${TEST_ID_ENUM.page.DocumentPage.titleInput.id}]`,
-  documentEmoji: `[data-testid=${TEST_ID_ENUM.page.DocumentPage.titleIcon.id}] span`,
-  documentImageIcon: `[data-testid=${TEST_ID_ENUM.page.DocumentPage.titleIcon.id}] div`,
+  title: `[data-testid=${TEST_ID_ENUM.page.DocumentPage.titleInput.id}]`,
+  emoji: `[data-testid=${TEST_ID_ENUM.page.DocumentPage.titleIcon.id}] span`,
+  imageIcon: `[data-testid=${TEST_ID_ENUM.page.DocumentPage.titleIcon.id}] div`,
   actionButtons: `[data-testid=${TEST_ID_ENUM.page.DocumentPage.actionButtons.id}]`,
   addIconButton: '#article button:has-text("Add icon")',
   addCoverButton: '#article button:has-text("Add cover")',

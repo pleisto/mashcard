@@ -1,7 +1,6 @@
 import { test, expect } from '@/fixtures'
 import { SwitchPodMenuPage } from '../switchPodMenu/switchPodMenu.page'
 import { PodSidebarPage } from './podSidebar.page'
-import { PodSettingTab } from './podSidebar.selector'
 
 test.describe('Pod Sidebar', () => {
   let switchPodMenu: SwitchPodMenuPage
@@ -18,23 +17,23 @@ test.describe('Pod Sidebar', () => {
   test('Verify switch pods is working well', async () => {
     await podSideBar.switchPod(1)
 
-    await expect(podSideBar.getCurrentPodName()).toContainText(podName)
+    await expect(podSideBar.currentPodName).toContainText(podName)
   })
 
   test('Verify back to pod when click button', async () => {
     const page = await podSideBar.backToPod()
 
-    await expect(page.getAddPageButton()).toBeVisible()
+    await expect(page.addPageButton).toBeVisible()
   })
 
   test('Verify that default tab is General', async () => {
-    await expect(podSideBar.getSideBarTab(PodSettingTab.General)).toHaveClass(/active/)
+    await expect(podSideBar.generalTab).toHaveClass(/active/)
   })
 
   test('Verify toggle to Account setting page when click Account Tab', async () => {
-    await podSideBar.toggleTab(PodSettingTab.Account)
+    await podSideBar.toggleTab('accountTab')
 
-    await expect(podSideBar.getSideBarTab(PodSettingTab.General)).not.toHaveClass(/active/)
-    await expect(podSideBar.getSideBarTab(PodSettingTab.Account)).toHaveClass(/active/)
+    await expect(podSideBar.generalTab).not.toHaveClass(/active/)
+    await expect(podSideBar.accountTab).toHaveClass(/active/)
   })
 })

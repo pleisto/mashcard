@@ -3,21 +3,20 @@ import { UploaderDashboardPage } from '@/tests/document/uploaderDashboard/upload
 import { ICON_SELECTOR } from './icon.selector'
 
 export class IconPage extends UploaderDashboardPage {
-  getEmojiSearchInput(): Locator {
-    return this.page.locator(ICON_SELECTOR.emojiSearchInput)
-  }
+  readonly items = this.get('items')
+  readonly searchInput = this.get('searchInput')
 
-  getEmojiByIndex(index: number = 0): Locator {
-    return this.page.locator(ICON_SELECTOR.emojiItem(index))
+  get(selector: keyof typeof ICON_SELECTOR): Locator {
+    return this.locator(ICON_SELECTOR[selector])
   }
 
   async searchEmoji(emojiName: string): Promise<void> {
-    await this.getEmojiSearchInput().fill(emojiName)
+    await this.searchInput.fill(emojiName)
     await this.page.waitForTimeout(300)
   }
 
   async addEmoji(name: string): Promise<void> {
     await this.searchEmoji(name)
-    await this.waitForResponseWithAction('BlockCommit', this.getEmojiByIndex().click())
+    await this.waitForResponseWithAction('BlockCommit', this.items.nth(0).click())
   }
 }

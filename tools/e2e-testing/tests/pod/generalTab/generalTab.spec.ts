@@ -23,7 +23,7 @@ test.describe('General Tab', () => {
     test('Verify rename pod is working well', async () => {
       await generalTab.updateProfileName(podName)
 
-      await expect(podSideBar.getCurrentPodName()).toContainText(podName)
+      await expect(podSideBar.currentPodName).toContainText(podName)
     })
 
     // Skip it for now, because the method to get input value needs to be reconsidered
@@ -31,20 +31,20 @@ test.describe('General Tab', () => {
       const bio = 'This is the bio'
       await generalTab.updateProfileBio(bio)
       await page.reload()
-      await expect(generalTab.getProfileBioInput()).toContainText(bio)
+      await expect(generalTab.bioInput).toContainText(bio)
     })
 
     test('Verify it will open uploader when click avatar', async () => {
       await generalTab.openUploadAvatarDialog()
 
-      await expect(generalTab.getUploadDashboard()).toContainText('Local File')
+      await expect(generalTab.dialogTab).toContainText('Local File')
     })
 
     // CORS issue, blocked by: https://github.com/pleisto/corp/issues/1637
     test.skip('Verify avatar will be updated when upload photo', async () => {
       await generalTab.updateAvatar(path.join(__dirname, './generalTab.data.jpg'))
 
-      await expect(generalTab.getAvatar()).toHaveAttribute('src', /https*/)
+      await expect(generalTab.avatar).toHaveAttribute('src', /https*/)
     })
   })
 
@@ -64,13 +64,13 @@ test.describe('General Tab', () => {
       await generalTab.updateDomainName(domainName)
       await page.reload()
 
-      await expect(generalTab.getDomainInput()).toContainText(domainName)
+      await expect(generalTab.domainInput).toContainText(domainName)
     })
 
     test('Verify it will open a new tab when click learn moe', async ({ context }) => {
       const [newPage] = await Promise.all([
         context.waitForEvent('page'),
-        generalTab.getDomainLearnMore().click() // Opens a new tab
+        generalTab.learnMore.click() // Opens a new tab
       ])
       await expect(newPage).toHaveURL('https://help.mashacard.cloud/en/articles/5972616-mashcard-username-policy')
     })
@@ -88,7 +88,7 @@ test.describe('General Tab', () => {
       const timezone = 'US/Central'
       await generalTab.updateTimezone(timezone)
 
-      await expect(generalTab.getTimezoneInput()).toContainText(timezone)
+      await expect(generalTab.timezone).toContainText(timezone)
     })
   })
 })
