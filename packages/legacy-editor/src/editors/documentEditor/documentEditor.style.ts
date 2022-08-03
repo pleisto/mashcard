@@ -1,5 +1,4 @@
 import { css, CSS, globalCss, theme } from '@mashcard/design-system'
-import { spreadsheetStyles } from '../../components/blockViews/Spreadsheet/Spreadsheet.style'
 import { LINK_CLASS_NAME } from '../../extensions/marks/link'
 import { defaultSelectionStyles } from '../../styles/index.style'
 import anchorLine from './assets/anchor-line.png'
@@ -272,8 +271,6 @@ export const documentEditorStyles = css({
 
     ...formulaMarkStyles,
 
-    ...dividerStyles,
-
-    ...spreadsheetStyles
+    ...dividerStyles
   }
 })
