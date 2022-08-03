@@ -39,7 +39,7 @@ test.describe('Team Pod', () => {
     await expect(teamPod.memberLeaves.nth(0)).toHaveAttribute('disabled', '')
   })
 
-  test.only('Verify pod can be removed', async () => {
+  test('Verify pod can be removed', async () => {
     const page = await teamPod.deletePod(podName)
 
     await expect(page.addPageButton).toBeVisible()

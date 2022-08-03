@@ -175,15 +175,15 @@ test.describe('Trash', () => {
       await trash.createScreenshot(await trash.getDeletedAtList())
     })
 
-    test.only('hover item one', async () => {
+    test('hover item one', async () => {
       await trash.trashes.nth(0).hover()
     })
 
-    test.only('select item one', async () => {
+    test('select item one', async () => {
       await trash.itemCheckboxes.nth(0).click()
     })
 
-    test.only('select all', async () => {
+    test('select all', async () => {
       await trash.selectedAll()
     })
   })
