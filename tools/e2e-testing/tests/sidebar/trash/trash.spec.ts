@@ -21,13 +21,13 @@ test.describe('Trash', () => {
     })
 
     test('Verify it can redirect to Trash page when click trash button', async () => {
-      await expect(trash.getTitle()).toContainText('Trash')
+      await expect(trash.title).toContainText('Trash')
     })
 
     test('Verify search is working well', async () => {
       await trash.searchTrash('for search')
 
-      await expect(trash.getTrashes()).toHaveCount(2)
+      await expect(trash.trashes).toHaveCount(2)
     })
   })
 
@@ -43,41 +43,41 @@ test.describe('Trash', () => {
     })
 
     test('Verify UI is working well', async () => {
-      await expect(trash.getItemTitle()).toHaveClass('ellipsis')
-      await expect(trash.getItemIcon()).toContainText(`${TRASH_SINGLE_PAGE.icon?.emoji}`)
+      await expect(trash.itemTitles.nth(0)).toHaveClass('ellipsis')
+      await expect(trash.itemIcons.nth(0)).toContainText(`${TRASH_SINGLE_PAGE.icon?.emoji}`)
     })
 
     test('Verify trash item has background-color and action button will be shown when hover', async () => {
-      await trash.getItemByIndex().hover()
+      await trash.trashes.nth(0).hover()
 
-      await expect(trash.getItemByIndex()).toHaveCSS('background-color', COMMON_STYLE.hoverBackground)
-      await expect(trash.getItemRestoreButton()).toBeVisible()
-      await expect(trash.getItemRemoveButton()).toBeVisible()
+      await expect(trash.trashes.nth(0)).toHaveCSS('background-color', COMMON_STYLE.hoverBackground)
+      await expect(trash.itemRestoreButtons.nth(0)).toBeVisible()
+      await expect(trash.itemRemoveButtons.nth(0)).toBeVisible()
     })
 
     test('Verify it can redirect to editor but uneditable when click on trash item', async ({ page }) => {
-      await trash.getItemTitle().click()
+      await trash.itemTitles.nth(0).click()
 
       const editor = new EditorPage(page)
-      await expect(editor.getEditorContent()).toHaveAttribute('contenteditable', 'false')
+      await expect(editor.content).toHaveAttribute('contenteditable', 'false')
 
       const documentTitle = new DocumentTitlePage(page)
-      await expect(documentTitle.getArticle()).toContainText('This page is in trash.')
+      await expect(documentTitle.article).toContainText('This page is in trash.')
     })
 
     test('Verify restore item is working well', async ({ page }) => {
       await trash.itemRestore()
 
-      await expect(trash.getTrashes()).toHaveCount(0)
+      await expect(trash.trashes).toHaveCount(0)
 
       const pageTree = new PageTreePage(page)
-      await expect(pageTree.getPageByIndex()).toContainText(TRASH_SINGLE_PAGE.title)
+      await expect(pageTree.pages.nth(0)).toContainText(TRASH_SINGLE_PAGE.title)
     })
 
     test('Verify remove item is working well', async () => {
       await trash.itemRemove()
 
-      await expect(trash.getTrashes()).toHaveCount(0)
+      await expect(trash.trashes).toHaveCount(0)
     })
   })
 
@@ -96,7 +96,7 @@ test.describe('Trash', () => {
       trash = new TrashPage(page)
       await trash.openTrashPage()
 
-      await expect(trash.getItemPath()).toContainText(`${TRASH_SINGLE_PAGE.icon?.emoji}${TRASH_SINGLE_PAGE.title}`)
+      await expect(trash.itemPaths.nth(0)).toContainText(`${TRASH_SINGLE_PAGE.icon?.emoji}${TRASH_SINGLE_PAGE.title}`)
     })
   })
 
@@ -112,49 +112,49 @@ test.describe('Trash', () => {
     })
 
     test('Verify selected footer is shown when select item', async () => {
-      await trash.getItemCheckbox().click()
+      await trash.itemCheckboxes.nth(0).click()
 
-      await expect(trash.getSelectedCount()).toContainText('selected')
+      await expect(trash.selectedCount).toContainText('selected')
     })
 
     test('Verify selected checkbox behavior is correct', async () => {
-      await trash.getItemCheckbox().click()
+      await trash.itemCheckboxes.nth(0).click()
 
-      await expect(trash.getImmediateCheckbox()).toBeVisible()
+      await expect(trash.indeterminate).toBeVisible()
 
-      await trash.getItemCheckbox(1).click()
-      await trash.getItemCheckbox(2).click()
+      await trash.itemCheckboxes.nth(1).click()
+      await trash.itemCheckboxes.nth(2).click()
 
-      await expect(trash.getSelectedAllCheckbox()).toBeVisible()
+      await expect(trash.selectedAllButton).toBeVisible()
     })
 
     test('Verify restore selected is working well', async ({ page }) => {
       await trash.searchTrash('for search')
-      await trash.getItemCheckbox().click()
-      await trash.getItemCheckbox(1).click()
+      await trash.itemCheckboxes.nth(0).click()
+      await trash.itemCheckboxes.nth(1).click()
       await trash.selectedBarRestore()
 
-      await expect(trash.getTrashes()).toHaveCount(0)
+      await expect(trash.trashes).toHaveCount(0)
       const pageTree = new PageTreePage(page)
-      await expect(pageTree.getPageByIndex()).toContainText('for search')
-      await expect(pageTree.getPageByIndex(1)).toContainText('for search')
+      await expect(pageTree.pages.nth(0)).toContainText('for search')
+      await expect(pageTree.pages.nth(1)).toContainText('for search')
     })
 
     test('Verify remove selected is working well', async () => {
-      await trash.getItemCheckbox().click()
-      await trash.getItemCheckbox(1).click()
+      await trash.itemCheckboxes.nth(0).click()
+      await trash.itemCheckboxes.nth(1).click()
       await trash.selectedBarRemove()
 
-      await expect(trash.getTrashes()).toHaveCount(1)
+      await expect(trash.trashes).toHaveCount(1)
     })
 
     test('Verify it will not trigger dialog when click item checkbox', async () => {
-      await trash.getItemCheckbox().click()
-      await trash.getItemCheckbox(1).click()
+      await trash.itemCheckboxes.nth(0).click()
+      await trash.itemCheckboxes.nth(1).click()
       await trash.selectedBarRemove()
-      await trash.getItemCheckbox().click()
+      await trash.itemCheckboxes.nth(0).click()
 
-      await expect(trash.getDialog()).not.toBeVisible()
+      await expect(trash.dialog).not.toBeVisible()
     })
   })
 
@@ -176,11 +176,11 @@ test.describe('Trash', () => {
     })
 
     test('hover item one', async () => {
-      await trash.getItemByIndex().hover()
+      await trash.trashes.nth(0).hover()
     })
 
     test('select item one', async () => {
-      await trash.getItemCheckbox().click()
+      await trash.itemCheckboxes.nth(0).click()
     })
 
     test('select all', async () => {

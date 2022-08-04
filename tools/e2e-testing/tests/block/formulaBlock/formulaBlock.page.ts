@@ -3,7 +3,9 @@ import { CommonPage } from '@/tests/common/common.page'
 import { FORMULA_BLOCK_SELECTORS } from './formulaBlock.selector'
 
 export class FormulaBlock extends CommonPage {
-  getFormulaPopup(): Locator {
-    return this.page.locator(FORMULA_BLOCK_SELECTORS.formulaPopup)
+  readonly formulaPopup = this.get('formulaPopup')
+
+  get(selector: keyof typeof FORMULA_BLOCK_SELECTORS): Locator {
+    return this.locator(FORMULA_BLOCK_SELECTORS[selector])
   }
 }

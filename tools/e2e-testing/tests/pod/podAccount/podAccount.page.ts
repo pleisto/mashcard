@@ -3,15 +3,14 @@ import { CommonPage } from '@/tests/common/common.page'
 import { ACCOUNT_SELECTOR } from './podAccount.selector'
 
 export class AccountPage extends CommonPage {
-  getLeavesByIndex(index: number = 0): Locator {
-    return this.page.locator(ACCOUNT_SELECTOR.leave(index))
-  }
+  readonly leaves = this.get('leaves')
+  readonly deleteAccountButton = this.get('deleteAccount')
 
-  getDeleteAccountButton(): Locator {
-    return this.page.locator(ACCOUNT_SELECTOR.deleteAccount)
+  get(selector: keyof typeof ACCOUNT_SELECTOR): Locator {
+    return this.locator(ACCOUNT_SELECTOR[selector])
   }
 
   async deleteAccount(): Promise<void> {
-    await this.getDeleteAccountButton().click()
+    await this.deleteAccountButton.click()
   }
 }

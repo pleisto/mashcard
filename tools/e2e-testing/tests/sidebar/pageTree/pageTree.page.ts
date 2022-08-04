@@ -5,54 +5,32 @@ import { PAGE_SELECTOR } from './page.selector'
 type ActionButton = 'Pin page' | 'Copy link' | 'Duplicate' | 'Rename' | 'Delete'
 
 export class PageTreePage extends CommonPage {
-  getPages(): Locator {
-    return this.page.locator(PAGE_SELECTOR.pages)
+  readonly pageSection = this.get('pageSection')
+  readonly pageTree = this.get('pageTree')
+  readonly addPageButton = this.get('addPageButton')
+  readonly addSubPageButtons = this.get('addSubPageButtons')
+  readonly moreActionIcons = this.get('moreActionIcons')
+  readonly pages = this.get('pages')
+  readonly subPages = this.get('subPages')
+  readonly renameInput = this.get('renameInput')
+  readonly arrows = this.get('arrows')
+
+  get(selector: keyof typeof PAGE_SELECTOR): Locator {
+    return this.locator(PAGE_SELECTOR[selector])
   }
 
-  getAddPageButton(): Locator {
-    return this.page.locator(PAGE_SELECTOR.addPageButton)
+  getMoreButtonByAction(actionButton: ActionButton, index: number = 0): Locator {
+    return this.menubarItems.locator(`text=${actionButton}`).nth(index)
   }
 
-  getPageSectionTitle(): Locator {
-    return this.page.locator(PAGE_SELECTOR.pageSection)
+  async clickPage(index: number = 0): Promise<void> {
+    await this.waitForResponseWithAction('DocumentBlock', this.pages.nth(index).click())
   }
 
-  getAddSubPageButton(index: number = 0): Locator {
-    return this.page.locator(PAGE_SELECTOR.addSubPageButton(index))
-  }
-
-  getPageByIndex(index: number = 0): Locator {
-    return this.page.locator(PAGE_SELECTOR.pageItem(index))
-  }
-
-  getSubPage(index: number = 0): Locator {
-    return this.page.locator(PAGE_SELECTOR.pageIndent(index))
-  }
-
-  getMoreActionIcon(index: number = 0): Locator {
-    return this.page.locator(PAGE_SELECTOR.moreActionIcon(index))
-  }
-
-  getMoreButtonByText(actionButton: ActionButton, index: number = 0): Locator {
-    return this.page.locator(PAGE_SELECTOR.actionButton(actionButton, index))
-  }
-
-  getArrow(index: number = 0): Locator {
-    return this.page.locator(PAGE_SELECTOR.arrow(index))
-  }
-
-  getRenameInput(): Locator {
-    return this.page.locator(PAGE_SELECTOR.renameInput)
-  }
-
-  async clickPage(index?: number): Promise<void> {
-    await this.waitForResponseWithAction('DocumentBlock', this.getPageByIndex(index).click())
-  }
-
-  async expandArrow(index?: number): Promise<void> {
-    const arrowClass = await this.getArrow(index).getAttribute('class')
+  async expandArrow(index: number = 0): Promise<void> {
+    const arrowClass = await this.arrows.nth(index).getAttribute('class')
     if (!arrowClass?.includes('-isExpanded-true')) {
-      await this.getArrow(index).click()
+      await this.arrows.nth(index).click()
     }
   }
 
@@ -63,26 +41,26 @@ export class PageTreePage extends CommonPage {
   }
 
   async addPage(): Promise<void> {
-    await this.waitForResponseWithAction('GetPageBlocks', this.getAddPageButton().click())
+    await this.waitForResponseWithAction('GetPageBlocks', this.addPageButton.click())
   }
 
-  async addSubPage(index?: number): Promise<void> {
-    await this.getPageByIndex(index).hover()
-    await this.waitForResponseWithAction('GetPageBlocks', this.getAddSubPageButton(index).click())
+  async addSubPage(index: number = 0): Promise<void> {
+    await this.pages.nth(index).hover()
+    await this.waitForResponseWithAction('DocumentBlock', this.addSubPageButtons.nth(index).click())
     await this.expandArrow()
   }
 
-  async removePage(index?: number): Promise<void> {
-    await this.getPageByIndex(index).hover()
-    await this.getMoreActionIcon(index).click()
-    await this.waitForResponseWithAction('GetPageBlocks', this.getMoreButtonByText('Delete', index).click())
+  async removePage(index: number = 0): Promise<void> {
+    await this.pages.nth(index).hover()
+    await this.moreActionIcons.nth(index).click()
+    await this.waitForResponseWithAction('GetPageBlocks', this.getMoreButtonByAction('Delete', index).click())
   }
 
-  async renamePage(pageName: string, index?: number): Promise<void> {
-    await this.getPageByIndex(index).hover()
-    await this.getMoreActionIcon(index).click()
-    await this.getMoreButtonByText('Rename', index).click()
-    await this.getRenameInput().fill(pageName)
-    await this.waitForResponseWithAction('GetPageBlocks', this.getRenameInput().press('Enter'))
+  async renamePage(pageName: string, index: number = 0): Promise<void> {
+    await this.pages.nth(index).hover()
+    await this.moreActionIcons.nth(index).click()
+    await this.getMoreButtonByAction('Rename', index).click()
+    await this.renameInput.fill(pageName)
+    await this.waitForResponseWithAction('GetPageBlocks', this.renameInput.press('Enter'))
   }
 }

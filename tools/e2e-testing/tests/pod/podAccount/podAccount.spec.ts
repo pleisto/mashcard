@@ -1,6 +1,5 @@
 import { test } from '@/fixtures'
 import { PodSidebarPage } from '../podSidebar/podSidebar.page'
-import { PodSettingTab } from '../podSidebar/podSidebar.selector'
 import { SwitchPodMenuPage } from '../switchPodMenu/switchPodMenu.page'
 import { AccountPage } from './podAccount.page'
 
@@ -13,7 +12,7 @@ test.describe('Team Pod', () => {
     await api.destroyAllCreatedPod()
     switchPodMenu = new SwitchPodMenuPage(page)
     podSideBar = (await switchPodMenu.gotoPersonalSetting()).podSideBar
-    account = (await podSideBar.toggleTab(PodSettingTab.Account)) as AccountPage
+    account = (await podSideBar.toggleTab('accountTab')) as AccountPage
   })
 
   test('not as a owner of a pod, can delete account', async () => {

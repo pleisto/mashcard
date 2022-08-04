@@ -6,7 +6,6 @@ import path from 'path'
 import { INITIAL_PAGE } from '@/tests/common/common.data'
 import { COMMON_SELECTORS } from '@/tests/common/common.selector'
 import { CoverPage } from './cover.page'
-import { CoverTab } from './cover.selector'
 
 test.describe('Add Cover', () => {
   let cover: CoverPage
@@ -30,15 +29,15 @@ test.describe('Add Cover', () => {
     })
 
     test('Verify popup will be closed when click out of popup', async () => {
-      await documentTitle.getArticle().click({ position: { x: 10, y: 10 } })
+      await documentTitle.article.click({ position: { x: 10, y: 10 } })
 
-      await expect(cover.getTooltip()).not.toBeVisible()
+      await expect(cover.tooltip).not.toBeVisible()
     })
 
     test('Verify select cover will close popup when has not cover', async () => {
       await cover.addCover()
 
-      await expect(cover.getTooltip()).not.toBeVisible()
+      await expect(cover.tooltip).not.toBeVisible()
     })
 
     test('Verify select cover will not close popup when has cover', async () => {
@@ -47,7 +46,7 @@ test.describe('Add Cover', () => {
 
       await cover.addCover(1)
 
-      await expect(cover.getTooltip()).toBeVisible()
+      await expect(cover.tooltip).toBeVisible()
     })
   })
 
@@ -55,19 +54,19 @@ test.describe('Add Cover', () => {
     const ACTIVE_CLASS = /active/
 
     test('Verify focused on Unsplash Tab by default', async () => {
-      await expect(cover.getTab(CoverTab.Unsplash)).toHaveClass(ACTIVE_CLASS)
+      await expect(cover.unsplashTab).toHaveClass(ACTIVE_CLASS)
     })
 
     test('Verify toggle Tab is working well', async () => {
-      await cover.switchTab(CoverTab.Upload)
+      await cover.switchTab('uploadTab')
 
-      await expect(cover.getTab(CoverTab.Unsplash)).not.toHaveClass(ACTIVE_CLASS)
-      await expect(cover.getTab(CoverTab.Upload)).toHaveClass(ACTIVE_CLASS)
+      await expect(cover.unsplashTab).not.toHaveClass(ACTIVE_CLASS)
+      await expect(cover.uploadTab).toHaveClass(ACTIVE_CLASS)
 
-      await cover.switchTab(CoverTab.Link)
+      await cover.switchTab('linkTab')
 
-      await expect(cover.getTab(CoverTab.Upload)).not.toHaveClass(ACTIVE_CLASS)
-      await expect(cover.getTab(CoverTab.Link)).toHaveClass(ACTIVE_CLASS)
+      await expect(cover.uploadTab).not.toHaveClass(ACTIVE_CLASS)
+      await expect(cover.linkTab).toHaveClass(ACTIVE_CLASS)
     })
   })
 
@@ -75,46 +74,46 @@ test.describe('Add Cover', () => {
     test('Verify it will show responding image when search by name', async () => {
       await cover.searchImage('work')
 
-      await expect(cover.getUnsplashImageByIndex()).toBeVisible()
+      await expect(cover.unsplashImages.nth(0)).toBeVisible()
     })
 
     test('Verify image can be added as cover', async () => {
       await cover.addCover()
 
-      await expect(documentTitle.getPageCover()).toHaveAttribute('src', /https:*/)
+      await expect(documentTitle.pageCover).toHaveAttribute('src', /https:*/)
     })
   })
 
   // CORS issue, blocked by: https://github.com/pleisto/corp/issues/1637
   test.skip('Upload an Image', async () => {
     test('Verify cover will be added when upload an image', async () => {
-      await cover.switchTab(CoverTab.Upload)
+      await cover.switchTab('uploadTab')
 
       await cover.uploadImage(path.join(__dirname, './cover.data.jpg'))
 
-      await expect(documentTitle.getPageCover()).toHaveAttribute('src', /https:*/)
+      await expect(documentTitle.pageCover).toHaveAttribute('src', /https:*/)
     })
   })
 
   test.describe('Link', async () => {
     test('Verify will show error tooltip when paste invalid image url', async () => {
-      await cover.switchTab(CoverTab.Link)
+      await cover.switchTab('linkTab')
       await cover.pasteImageLink(UPLOADER_DATA.INVALID_URL)
 
-      await expect(cover.getErrorTooltip()).toBeVisible()
+      await expect(cover.errorTooltip).toBeVisible()
     })
 
     test('Verify cover will be added when paste valid image url', async () => {
-      await cover.switchTab(CoverTab.Link)
+      await cover.switchTab('linkTab')
       await cover.pasteImageLink(UPLOADER_DATA.CORRECT_URL)
 
-      await expect(documentTitle.getPageCover()).toHaveAttribute('src', /https:*/)
+      await expect(documentTitle.pageCover).toHaveAttribute('src', /https:*/)
     })
   })
 
   test.describe('Cover Remove', async () => {
     test('Verify Remove button is not shown when no cover', async () => {
-      await expect(cover.getRemoveButton()).not.toBeVisible()
+      await expect(cover.removeButton).not.toBeVisible()
     })
 
     test('Verify cover will be removed when click remove button', async () => {
@@ -123,8 +122,8 @@ test.describe('Add Cover', () => {
 
       await cover.remove()
 
-      await expect(cover.getTooltip()).not.toBeVisible()
-      await expect(documentTitle.getPageCover()).not.toBeVisible()
+      await expect(cover.tooltip).not.toBeVisible()
+      await expect(documentTitle.pageCover).not.toBeVisible()
     })
   })
 })

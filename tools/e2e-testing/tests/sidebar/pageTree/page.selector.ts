@@ -5,16 +5,10 @@ export const PAGE_SELECTOR = {
   pageSection: `[data-testid=${TEST_ID_ENUM.page.pageTree.heading.id}]`,
   pageTree: `[data-testid=${TEST_ID_ENUM.page.pageTree.virtualList.id}]`,
   addPageButton: `button[data-testid=${TEST_ID_ENUM.page.DocumentPage.addPageButton.id}]`,
-  addSubPageButton: (index: number) =>
-    `[data-testid=${TEST_ID_ENUM.page.pageTree.virtualList.node.item.content.action.id}] .mc-icon-add >> nth=${index}`,
-  moreActionIcon: (index: number) =>
-    `[data-testid=${TEST_ID_ENUM.page.pageTree.virtualList.node.item.content.action.id}] .mc-icon-more >> nth=${index}`,
+  addSubPageButtons: `[data-testid=${TEST_ID_ENUM.page.pageTree.virtualList.node.item.content.action.id}] .mc-icon-add`,
+  moreActionIcons: `[data-testid=${TEST_ID_ENUM.page.pageTree.virtualList.node.item.content.action.id}] .mc-icon-more`,
   pages: `[data-testid=${TEST_ID_ENUM.page.pageTree.virtualList.node.id}]`,
-  pageItem: (index: number) => `[data-testid=${TEST_ID_ENUM.page.pageTree.virtualList.node.id}] >> nth=${index}`,
-  pageIndent: (index: number) =>
-    `[data-testid=${TEST_ID_ENUM.page.pageTree.virtualList.node.indent.id}] >> nth=${index}`,
-  actionButton: (button: string, index: number) => `[role="menuitem"]:has-text("${button}") >> nth=${index}`,
+  subPages: `[data-testid=${TEST_ID_ENUM.page.pageTree.virtualList.node.indent.id}]`,
   renameInput: `${COMMON_SELECTORS.tooltip} .MuiInput-input`,
-  arrow: (index: number) =>
-    `[data-testid=${TEST_ID_ENUM.page.pageTree.virtualList.node.item.content.arrow.id}] >> nth=${index}`
+  arrows: `[data-testid=${TEST_ID_ENUM.page.pageTree.virtualList.node.item.content.arrow.id}]`
 }

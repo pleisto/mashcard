@@ -1,41 +1,25 @@
 import { Locator, Page } from '@playwright/test'
-import { ActionType, COMMON_SELECTORS } from './common.selector'
+import { COMMON_SELECTORS } from './common.selector'
 import { expect } from '@/fixtures'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 
 export class CommonPage {
+  readonly tooltip = this.locator(COMMON_SELECTORS.tooltip)
+  readonly errorTooltip = this.locator(COMMON_SELECTORS.errorTooltip)
+  readonly menubarItems = this.locator(COMMON_SELECTORS.menubarItems)
+  readonly dialog = this.locator(COMMON_SELECTORS.dialog.component)
+  readonly dialogCancelButton = this.locator(COMMON_SELECTORS.dialog.cancelButton)
+  readonly dialogCreateButton = this.locator(COMMON_SELECTORS.dialog.createButton)
+  readonly dialogConfirmButton = this.locator(COMMON_SELECTORS.dialog.confirmButton)
+  readonly dialogDeletePageButton = this.locator(COMMON_SELECTORS.dialog.deletePageButton)
+  readonly dialogDeletePodButton = this.locator(COMMON_SELECTORS.dialog.deletePodButton)
+  readonly dialogInput = this.locator(COMMON_SELECTORS.dialog.input)
+  readonly listItems = this.locator(COMMON_SELECTORS.listBox.listItems)
+
   constructor(readonly page: Page) {}
 
-  getTooltip(): Locator {
-    return this.page.locator(COMMON_SELECTORS.tooltip)
-  }
-
-  getItemsInMenubar(): Locator {
-    return this.page.locator(COMMON_SELECTORS.menubarItems)
-  }
-
-  getDialog(): Locator {
-    return this.page.locator(COMMON_SELECTORS.dialog.component)
-  }
-
-  getDialogActionButton(action: ActionType): Locator {
-    return this.page.locator(COMMON_SELECTORS.dialog.actionButton(action))
-  }
-
-  getDialogInput(): Locator {
-    return this.page.locator(COMMON_SELECTORS.dialog.input)
-  }
-
-  getListItems(): Locator {
-    return this.page.locator(COMMON_SELECTORS.listBox.listItems)
-  }
-
-  getListItemByName(name: string): Locator {
-    return this.page.locator(COMMON_SELECTORS.listBox.listItem(name))
-  }
-
-  getDialogDeleteButton(): Locator {
-    return this.page.locator(COMMON_SELECTORS.dialog.deleteButton)
+  locator(selector: string): Locator {
+    return this.page.locator(selector)
   }
 
   async scrollUntilElementIntoView(waitingSelector: string, scrollSelector: string, offset = 100): Promise<void> {
@@ -66,10 +50,10 @@ export class CommonPage {
     const maskList = mask ?? []
     await expect(this.page).toHaveScreenshot({
       mask: [
-        this.page.locator(`[data-testid=${TEST_ID_ENUM.page.topBar.saving.id}]`),
-        this.page.locator(`[data-testid=${TEST_ID_ENUM.page.topBar.collaboratorMenu.id}]`),
-        this.page.locator(`[data-testid=${TEST_ID_ENUM.page.DocumentPage.loading.id}]`),
-        this.page.locator(`[data-testid=${TEST_ID_ENUM.layout.sidebar.podSelect.id}]`),
+        this.locator(`[data-testid=${TEST_ID_ENUM.page.topBar.saving.id}]`),
+        this.locator(`[data-testid=${TEST_ID_ENUM.page.topBar.collaboratorMenu.id}]`),
+        this.locator(`[data-testid=${TEST_ID_ENUM.page.DocumentPage.loading.id}]`),
+        this.locator(`[data-testid=${TEST_ID_ENUM.layout.sidebar.podSelect.id}]`),
         ...maskList
       ]
     })

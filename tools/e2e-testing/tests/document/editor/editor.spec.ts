@@ -20,34 +20,34 @@ test.describe('Editor', () => {
 
   test.describe('Editor', () => {
     test('Verify editor is editable & there has a paragraph node by default', async ({ page }) => {
-      await expect(editor.getEditorContent()).toHaveAttribute('contenteditable', 'true')
-      await editor.getEditorContent().click()
+      await expect(editor.content).toHaveAttribute('contenteditable', 'true')
+      await editor.content.click()
       const paragraph = new TextBlock(page)
-      await expect(paragraph.getParagraphBlock()).toBeVisible()
+      await expect(paragraph.paragraphs.nth(0)).toBeVisible()
     })
 
     test('Verify it will not create node when click node border', async () => {
-      await editor.getEditorContent().click()
-      const paragraphHeight = (await editor.getNodeByIndex().boundingBox())?.height as number
-      await editor.getNodeByIndex().click({ position: { x: 20, y: 0 }, force: true })
-      await editor.getNodeByIndex().click({ position: { x: 20, y: paragraphHeight }, force: true })
+      await editor.content.click()
+      const paragraphHeight = (await editor.nodes.nth(0).boundingBox())?.height as number
+      await editor.nodes.nth(0).click({ position: { x: 20, y: 0 }, force: true })
+      await editor.nodes.nth(0).click({ position: { x: 20, y: paragraphHeight }, force: true })
 
-      await expect(editor.getNodes()).toHaveCount(1)
+      await expect(editor.nodes).toHaveCount(1)
     })
 
     test('Verify it will not create paragraph when click under the last non-empty block', async () => {
       await editor.fillToBlock('test')
-      const paragraphHeight = (await editor.getNodeByIndex().boundingBox())?.height as number
-      await editor.getEditorContent().click({ position: { x: 20, y: paragraphHeight * 1.5 } })
-      await expect(editor.getNodes()).toHaveCount(1)
+      const paragraphHeight = (await editor.nodes.nth(0).boundingBox())?.height as number
+      await editor.content.click({ position: { x: 20, y: paragraphHeight * 1.5 } })
+      await expect(editor.nodes).toHaveCount(1)
     })
 
     test('Verify blockAction is visible when hover node', async () => {
-      await expect(editor.getBlockAction()).toHaveCSS('opacity', '0')
+      await expect(editor.blockActions.nth(0)).toHaveCSS('opacity', '0')
 
-      await editor.getNodeByIndex().hover()
+      await editor.nodes.nth(0).hover()
 
-      await expect(editor.getBlockAction()).toHaveCSS('opacity', '1')
+      await expect(editor.blockActions.nth(0)).toHaveCSS('opacity', '1')
     })
   })
 
@@ -55,51 +55,51 @@ test.describe('Editor', () => {
     test('Verify type "/" can create Slash Menu', async () => {
       const slashMenu = await editor.triggerSlashMenuInBlock()
 
-      await expect(slashMenu.getSlashMenu()).toBeVisible()
+      await expect(slashMenu.slashMenu).toBeVisible()
     })
 
     test('Verify type "Enter" can create Text Block', async ({ page }) => {
       const paragraph = await editor.createTextBelowIndex()
 
-      await expect(paragraph.getParagraphBlock(1)).toHaveAttribute('data-placeholder', "Type '/' for commands")
+      await expect(paragraph.paragraphs.nth(1)).toHaveAttribute('data-placeholder', "Type '/' for commands")
     })
 
     test('Verify type "- " can create BulletList Block', async () => {
       const bulletList = await editor.createBulletListInBlock()
 
-      await expect(bulletList.getBulletList()).toBeVisible()
+      await expect(bulletList.bulletLists.nth(0)).toBeVisible()
     })
 
     test('Verify type "1. " can create OrderedList Block', async () => {
       const orderedList = await editor.createOrderedListInBlock()
 
-      await expect(orderedList.getOrderedList()).toBeVisible()
+      await expect(orderedList.orderedLists.nth(0)).toBeVisible()
     })
 
     test('Verify type "/=" can create Formula Block', async () => {
       const formula = await editor.createFormulaInBlock()
 
-      await expect(formula.getFormulaPopup()).toBeVisible()
+      await expect(formula.formulaPopup).toBeVisible()
     })
 
     test('Verify type "@" can create LinkMenu Block', async () => {
       const formula = await editor.triggerLinkMenuInBlock()
 
-      await expect(formula.getLinkMenuPopup()).toBeVisible()
+      await expect(formula.linkMenuPopup).toBeVisible()
     })
   })
 
   test.describe('Drag', () => {
     test('drags element in Text block only', async () => {
       test.setTimeout(30000)
-      await editor.getNodeByIndex().fill('000')
+      await editor.nodes.nth(0).fill('000')
       await editor.createTextBelowIndex()
-      await editor.getNodeByIndex(1).fill('111')
+      await editor.nodes.nth(1).fill('111')
       await editor.createTextBelowIndex()
-      await editor.getNodeByIndex(2).fill('222')
+      await editor.nodes.nth(2).fill('222')
       await editor.dragTo(2, 0)
 
-      await expect(editor.getNodeByIndex(0)).toHaveText('222')
+      await expect(editor.nodes.nth(0)).toHaveText('222')
     })
 
     // TODO: more Drag-and-drop tests that include more complex blocks

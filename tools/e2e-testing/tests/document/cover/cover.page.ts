@@ -3,19 +3,18 @@ import { UploaderDashboardPage } from '@/tests/document/uploaderDashboard/upload
 import { COVER_SELECTOR } from './cover.selector'
 
 export class CoverPage extends UploaderDashboardPage {
-  getSearchInput(): Locator {
-    return this.page.locator(COVER_SELECTOR.searchInput)
+  readonly unsplashImages = this.get('unsplashImages')
+  readonly searchInput = this.get('searchInput')
+
+  get(selector: keyof typeof COVER_SELECTOR): Locator {
+    return this.locator(COVER_SELECTOR[selector])
   }
 
-  getUnsplashImageByIndex(index: number = 0): Locator {
-    return this.page.locator(COVER_SELECTOR.unsplashImage(index))
-  }
-
-  async addCover(index?: number): Promise<void> {
-    await this.getUnsplashImageByIndex(index).click()
+  async addCover(index: number = 0): Promise<void> {
+    await this.unsplashImages.nth(index).click()
   }
 
   async searchImage(name: string): Promise<void> {
-    await this.waitForResponseWithAction('QueryUnsplashImage', this.getSearchInput().fill(name))
+    await this.waitForResponseWithAction('QueryUnsplashImage', this.searchInput.fill(name))
   }
 }

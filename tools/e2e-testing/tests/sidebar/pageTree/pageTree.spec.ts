@@ -17,7 +17,7 @@ test.describe('Page List', () => {
       await api.pageReload()
       await pageTree.addPage()
 
-      await expect(pageTree.getPageSectionTitle()).toContainText('Pages')
+      await expect(pageTree.pageSection).toContainText('Pages')
     })
 
     test('Verify sub page can be added', async ({ api }) => {
@@ -26,7 +26,7 @@ test.describe('Page List', () => {
 
       await pageTree.addSubPage()
 
-      await expect(pageTree.getSubPage(1)).toHaveCSS('width', rem2Pixel('1rem'))
+      await expect(pageTree.subPages.nth(1)).toHaveCSS('width', rem2Pixel('1rem'))
     })
   })
 
@@ -35,27 +35,27 @@ test.describe('Page List', () => {
       await api.createPage(INITIAL_PAGE)
       await api.pageReload()
 
-      await pageTree.getPageByIndex().hover()
+      await pageTree.pages.nth(0).hover()
 
-      await expect(pageTree.getMoreActionIcon()).toBeVisible()
-      await expect(pageTree.getAddSubPageButton()).toBeVisible()
+      await expect(pageTree.moreActionIcons.nth(0)).toBeVisible()
+      await expect(pageTree.addSubPageButtons.nth(0)).toBeVisible()
     })
 
     test('Verify page can collapse when click arrow', async ({ api }) => {
       await api.createPageTree(TWO_LAYER_PAGE_TREE)
       await api.pageReload()
 
-      const arrowClass = await pageTree.getArrow().getAttribute('class')
+      const arrowClass = await pageTree.arrows.nth(0).getAttribute('class')
       if (arrowClass?.includes('-isExpanded-true')) {
-        await pageTree.getArrow().click()
-        expect(await pageTree.getArrow().getAttribute('class')).not.toMatch(/.+-isExpanded-true.*/g)
-        await pageTree.getArrow().click()
-        expect(await pageTree.getArrow().getAttribute('class')).toMatch(/.+-isExpanded-true.*/g)
+        await pageTree.arrows.nth(0).click()
+        expect(await pageTree.arrows.nth(0).getAttribute('class')).not.toMatch(/.+-isExpanded-true.*/g)
+        await pageTree.arrows.nth(0).click()
+        expect(await pageTree.arrows.nth(0).getAttribute('class')).toMatch(/.+-isExpanded-true.*/g)
       } else {
-        await pageTree.getArrow().click()
-        expect(await pageTree.getArrow().getAttribute('class')).toMatch(/.+-isExpanded-true.*/g)
-        await pageTree.getArrow().click()
-        expect(await pageTree.getArrow().getAttribute('class')).not.toMatch(/.+-isExpanded-true.*/g)
+        await pageTree.arrows.nth(0).click()
+        expect(await pageTree.arrows.nth(0).getAttribute('class')).toMatch(/.+-isExpanded-true.*/g)
+        await pageTree.arrows.nth(0).click()
+        expect(await pageTree.arrows.nth(0).getAttribute('class')).not.toMatch(/.+-isExpanded-true.*/g)
       }
     })
   })
@@ -67,7 +67,7 @@ test.describe('Page List', () => {
 
       await pageTree.removePage()
 
-      await expect(pageTree.getPageSectionTitle()).not.toBeVisible()
+      await expect(pageTree.pageSection).not.toBeVisible()
     })
 
     test('Verify remove last page with subPage will create a default page', async ({ api }) => {
@@ -76,7 +76,7 @@ test.describe('Page List', () => {
 
       await pageTree.removePage()
 
-      await expect(pageTree.getPages()).toHaveCount(1)
+      await expect(pageTree.pages.nth(0)).toHaveCount(1)
     })
 
     test('Verify remove last page without subPage will create a default page', async ({ api }) => {
@@ -85,7 +85,7 @@ test.describe('Page List', () => {
 
       await pageTree.removePage()
 
-      await expect(pageTree.getPages()).toHaveCount(1)
+      await expect(pageTree.pages.nth(0)).toHaveCount(1)
     })
   })
 
