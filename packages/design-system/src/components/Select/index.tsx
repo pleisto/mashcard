@@ -11,7 +11,7 @@ export interface SelectProps<ValueType = any, OptionType extends BaseOptionType 
 }
 
 const Select: ForwardRefRenderFunction<BaseSelectRef, SelectProps> = (props, ref) => {
-  const { virtual = true, borderless = false, getPopupContainer, className, ...otherProps } = props
+  const { virtual = false, borderless = false, getPopupContainer, className, ...otherProps } = props
   const prefixCls = props.prefixCls ?? selectStyle()
   return (
     <RcSelect

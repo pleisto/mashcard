@@ -298,8 +298,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
       visible={popoverVisible}
       onVisibleChange={onRenamePopoverVisibleChange}
       destroyTooltipOnHide={true}
-      overlayInnerStyle={{ marginLeft: icon ? -25 : 0 }}
-    >
+      overlayInnerStyle={{ marginLeft: icon ? -25 : 0 }}>
       <Root.Title to={linkPath}>{title}</Root.Title>
     </Popover>
   )
@@ -316,8 +315,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
         destoryPopupOnHide={true}
         visible={dropdownVisible}
         onVisibleChange={onDropdownVisibleChange}
-        placement="bottomStart"
-      >
+        placement="bottomStart">
         <Root.Menu>
           {linkData}
           <div>
@@ -329,13 +327,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
               </Dropdown>
             </Tooltip>
             <Tooltip title={t('blocks.create_sub_pages')}>
-              <Button
-                className="addBtn"
-                type="text"
-                onClick={onPressAddSubPage}
-                loading={createBlockLoading}
-                disabled={createBlockLoading}
-              >
+              <Button className="addBtn" type="text" onClick={onPressAddSubPage} disabled={createBlockLoading}>
                 <Icon.Add />
               </Button>
             </Tooltip>
