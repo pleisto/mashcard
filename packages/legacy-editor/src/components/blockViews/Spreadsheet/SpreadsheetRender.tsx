@@ -3,8 +3,6 @@ import {
   SpreadsheetContainer,
   SpreadsheetPanel,
   SpreadsheetRowAction,
-  SpreadsheetScrollView,
-  SpreadsheetView,
   SpreadsheetHeader,
   SpreadsheetHeaderColumn,
   SpreadsheetBody,
@@ -15,8 +13,7 @@ import {
 import { display, SpreadsheetType, VariableDisplayData } from '@mashcard/formula'
 import React from 'react'
 import { FormulaDisplay } from '../../ui/Formula'
-import { styled } from '@mashcard/design-system'
-import { spreadsheetStyles } from './Spreadsheet.style'
+import { SpreadsheetScrollView, SpreadsheetRowsView } from './Spreadsheet.style'
 
 export interface Row {
   rowId: string
@@ -68,77 +65,69 @@ export const SpreadsheetRender: React.FC<SpreadsheetRenderProps> = ({
     spreadsheetContext.setSelection(defaultSelection)
   }, [defaultSelection, spreadsheetContext])
 
-  const SpreadsheetRenderContainer = styled('div', spreadsheetStyles)
-
   return (
-    <SpreadsheetRenderContainer>
-      <div className="node-spreadsheetBlock">
-        <SpreadsheetContainer context={spreadsheetContext}>
-          {/* <div className="spreadsheet-title">{title}</div> */}
-          <SpreadsheetPanel context={spreadsheetContext}>
-            {rows.map(({ rowId }, rowIdx) => {
+    <SpreadsheetContainer context={spreadsheetContext}>
+      {/* <SpreadsheetTitleDisplay>{title}</SpreadsheetTitleDisplay> */}
+      <SpreadsheetPanel context={spreadsheetContext}>
+        {rows.map(({ rowId }, rowIdx) => {
+          return (
+            <SpreadsheetRowAction
+              key={rowIdx}
+              context={spreadsheetContext}
+              rowId={rowId}
+              rowNumber={`${rowIdx + 1}`}
+              rowActions={[]}
+              draggable={false}
+            />
+          )
+        })}
+      </SpreadsheetPanel>
+      <SpreadsheetScrollView>
+        <SpreadsheetRowsView>
+          <SpreadsheetHeader rowId="first" context={spreadsheetContext}>
+            {columns.map((column, i) => {
               return (
-                <SpreadsheetRowAction
-                  key={rowIdx}
+                <SpreadsheetHeaderColumn
+                  key={column.columnId}
                   context={spreadsheetContext}
-                  rowId={rowId}
-                  rowNumber={`${rowIdx + 1}`}
-                  rowActions={[]}
-                  draggable={false}
-                />
+                  columnId={column.columnId}
+                  columnActions={[]}
+                  draggable={false}>
+                  <SpreadsheetColumnEditable
+                    context={spreadsheetContext}
+                    index={i}
+                    column={{ ...column, uuid: column.columnId }}
+                    editable={false}
+                  />
+                </SpreadsheetHeaderColumn>
               )
             })}
-          </SpreadsheetPanel>
-          <SpreadsheetScrollView>
-            <SpreadsheetView>
-              <SpreadsheetHeader rowId="first" context={spreadsheetContext}>
-                {columns.map((column, i) => {
-                  return (
-                    <SpreadsheetHeaderColumn
-                      key={column.columnId}
-                      context={spreadsheetContext}
-                      columnId={column.columnId}
-                      columnActions={[]}
-                      draggable={false}
-                    >
-                      <SpreadsheetColumnEditable
+          </SpreadsheetHeader>
+          <SpreadsheetBody>
+            {rows.map((rowBlock, rowIdx) => {
+              return (
+                <SpreadsheetRow key={rowIdx} context={spreadsheetContext} rowId={rowBlock.rowId}>
+                  {columns.map((column, columnIdx) => {
+                    return (
+                      <SpreadsheetCellContainer
+                        key={column.columnId}
                         context={spreadsheetContext}
-                        index={i}
-                        column={{ ...column, uuid: column.columnId }}
-                        editable={false}
-                      />
-                    </SpreadsheetHeaderColumn>
-                  )
-                })}
-              </SpreadsheetHeader>
-              <SpreadsheetBody>
-                {rows.map((rowBlock, rowIdx) => {
-                  return (
-                    <SpreadsheetRow key={rowIdx} context={spreadsheetContext} rowId={rowBlock.rowId}>
-                      {columns.map((column, columnIdx) => {
-                        return (
-                          <SpreadsheetCellContainer
-                            key={column.columnId}
-                            context={spreadsheetContext}
-                            cellId={{ rowId: rowBlock.rowId, columnId: column.columnId }}
-                          >
-                            <div className="cell">
-                              <FormulaDisplay
-                                displayData={valuesMatrix.get(rowBlock.rowId)?.get(column.columnId)}
-                                formulaType="spreadsheet"
-                              />
-                            </div>
-                          </SpreadsheetCellContainer>
-                        )
-                      })}
-                    </SpreadsheetRow>
-                  )
-                })}
-              </SpreadsheetBody>
-            </SpreadsheetView>
-          </SpreadsheetScrollView>
-        </SpreadsheetContainer>
-      </div>
-    </SpreadsheetRenderContainer>
+                        cellId={{ rowId: rowBlock.rowId, columnId: column.columnId }}>
+                        <div className="cell">
+                          <FormulaDisplay
+                            displayData={valuesMatrix.get(rowBlock.rowId)?.get(column.columnId)}
+                            formulaType="spreadsheet"
+                          />
+                        </div>
+                      </SpreadsheetCellContainer>
+                    )
+                  })}
+                </SpreadsheetRow>
+              )
+            })}
+          </SpreadsheetBody>
+        </SpreadsheetRowsView>
+      </SpreadsheetScrollView>
+    </SpreadsheetContainer>
   )
 }

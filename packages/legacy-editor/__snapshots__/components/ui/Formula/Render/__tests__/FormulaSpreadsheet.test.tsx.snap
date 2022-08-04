@@ -3,42 +3,34 @@
 exports[`FormulaSpreadsheet renders FormulaSpreadsheet correctly 1`] = `
 <div>
   <div
-    class="mc-c-jczSvQ"
+    class="mc-c-eKKnvs hover"
   >
-    <div
-      class="node-spreadsheetBlock"
+    <table
+      class="mc-c-iUOaDX spreadsheet-row-actions"
     >
-      <span
-        class=" hover"
+      <thead>
+        <tr
+          data-row-id="first"
+        >
+          <th />
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+    <div
+      class="mc-c-kJlRVF"
+    >
+      <table
+        class="mc-c-cglxYd"
       >
-        <table
-          class="spreadsheet-row-actions "
-        >
-          <thead>
-            <tr
-              data-row-id="first"
-            >
-              <th />
-            </tr>
-          </thead>
-          <tbody />
-        </table>
-        <div
-          class="mashcard-spreadsheet-block"
-        >
-          <table
-            class="spreadsheet-rows"
-          >
-            <thead>
-              <tr
-                class=""
-                data-row-id="first"
-              />
-            </thead>
-            <tbody />
-          </table>
-        </div>
-      </span>
+        <thead>
+          <tr
+            class=""
+            data-row-id="first"
+          />
+        </thead>
+        <tbody />
+      </table>
     </div>
   </div>
 </div>

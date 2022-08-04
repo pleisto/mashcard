@@ -5,8 +5,12 @@ import { useEditorI18n, useDocumentEditable } from '../../../hooks'
 import { BlockContainer, BlockContainerProps } from '../BlockContainer'
 import { SpreadsheetViewProps } from '../../../extensions/blocks/spreadsheet/meta'
 import { MenuIcon } from '../../ui/BlockSelector/BlockSelector.style'
+import { useNodeContent } from '@mashcard/editor'
 
 import {
+  SpreadsheetScrollView,
+  SpreadsheetRowsView,
+  SpreadsheetTitleDisplay,
   SpreadsheetTitleEditing,
   SpreadsheetTitleInput,
   SpreadsheetTitleTooltip,
@@ -18,9 +22,7 @@ import { columnDisplayTitle } from './helper'
 
 import {
   SpreadsheetContainer,
-  SpreadsheetScrollView,
   SpreadsheetPanel,
-  SpreadsheetView,
   SpreadsheetHeader,
   SpreadsheetHeaderColumn,
   SpreadsheetBody,
@@ -42,6 +44,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
   updateAttributes,
   getPos
 }) => {
+  const nodeContentRef = useNodeContent<HTMLDivElement>()
   const [t] = useEditorI18n()
   const [documentEditable] = useDocumentEditable(undefined)
 
@@ -227,23 +230,22 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
       node={node}
       deleteNode={handleDeleteNode}
       actionOptions={actionOptions}
-      onMouseDown={onSpreadsheetClick}
-    >
-      {documentEditable ? (
-        <SpreadsheetTitleEditing>
-          <SpreadsheetTitleInput
-            value={isDefaultTitle ? '' : title}
-            placeholder={title}
-            onChange={handleTitleChange}
-            onBlur={handleTitleChange}
-            danger={!!titleErrorMsg}
-          />
-          {titleErrorMsg && <SpreadsheetTitleTooltip>{titleErrorMsg}</SpreadsheetTitleTooltip>}
-        </SpreadsheetTitleEditing>
-      ) : (
-        <div className="spreadsheet-title">{title}</div>
-      )}
-      <SpreadsheetContainer context={spreadsheetContext}>
+      onMouseDown={onSpreadsheetClick}>
+      <SpreadsheetContainer context={spreadsheetContext} ref={nodeContentRef}>
+        {documentEditable ? (
+          <SpreadsheetTitleEditing>
+            <SpreadsheetTitleInput
+              value={isDefaultTitle ? '' : title}
+              placeholder={title}
+              onChange={handleTitleChange}
+              onBlur={handleTitleChange}
+              danger={!!titleErrorMsg}
+            />
+            {titleErrorMsg && <SpreadsheetTitleTooltip>{titleErrorMsg}</SpreadsheetTitleTooltip>}
+          </SpreadsheetTitleEditing>
+        ) : (
+          <SpreadsheetTitleDisplay>{title}</SpreadsheetTitleDisplay>
+        )}
         <SpreadsheetPanel context={spreadsheetContext}>
           {rows.map((rowBlock, rowIdx) => {
             const rowActions: SpreadsheetActionItem[] = []
@@ -283,7 +285,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
           })}
         </SpreadsheetPanel>
         <SpreadsheetScrollView>
-          <SpreadsheetView>
+          <SpreadsheetRowsView>
             <SpreadsheetHeader rowId="first" context={spreadsheetContext}>
               {columns.map((column, i) => {
                 const handleTitleSave = (title: string): string | undefined => {
@@ -329,8 +331,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                       let newWidth = width
                       if (newWidth < columnMinWidth) newWidth = columnMinWidth
                       setColumnWidths({ ...columnWidths, [column.uuid]: newWidth })
-                    }}
-                  >
+                    }}>
                     <SpreadsheetColumnEditable
                       context={spreadsheetContext}
                       index={i}
@@ -351,16 +352,14 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                     rowId={rowBlock.id}
                     onHeightChange={(height: number) =>
                       setRowLayoutHeights({ ...rowLayoutHeights, [rowBlock.id]: height })
-                    }
-                  >
+                    }>
                     {columns.map((column, columnIdx) => {
                       const block = getCellBlock(parentId, rowBlock.id, column.uuid)
                       return (
                         <SpreadsheetCellContainer
                           key={block.id}
                           context={spreadsheetContext}
-                          cellId={{ rowId: rowBlock.id, columnId: column.uuid }}
-                        >
+                          cellId={{ rowId: rowBlock.id, columnId: column.uuid }}>
                           {documentEditable ? (
                             <SpreadsheetCell
                               context={spreadsheetContext}
@@ -383,7 +382,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                 )
               })}
             </SpreadsheetBody>
-          </SpreadsheetView>
+          </SpreadsheetRowsView>
         </SpreadsheetScrollView>
       </SpreadsheetContainer>
     </BlockContainer>

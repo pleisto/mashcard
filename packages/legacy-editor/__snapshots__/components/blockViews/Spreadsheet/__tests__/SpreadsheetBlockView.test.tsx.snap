@@ -7,13 +7,13 @@ exports[`SpreadsheetBlockView matches correct snapshot 1`] = `
     style="white-space: normal; pointer-events: none;"
   >
     <div
-      class="spreadsheet-title"
-    />
-    <span
-      class=" "
+      class="mc-c-eKKnvs"
     >
+      <div
+        class="mc-c-kJGXmb"
+      />
       <table
-        class="spreadsheet-row-actions "
+        class="mc-c-iUOaDX spreadsheet-row-actions"
       >
         <thead>
           <tr
@@ -25,10 +25,10 @@ exports[`SpreadsheetBlockView matches correct snapshot 1`] = `
         <tbody />
       </table>
       <div
-        class="mashcard-spreadsheet-block"
+        class="mc-c-kJlRVF"
       >
         <table
-          class="spreadsheet-rows"
+          class="mc-c-cglxYd"
         >
           <thead>
             <tr
@@ -39,7 +39,7 @@ exports[`SpreadsheetBlockView matches correct snapshot 1`] = `
           <tbody />
         </table>
       </div>
-    </span>
+    </div>
   </div>
 </div>
 `;

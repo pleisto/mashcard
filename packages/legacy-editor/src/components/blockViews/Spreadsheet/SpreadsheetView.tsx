@@ -11,6 +11,8 @@ import { SpreadsheetColumn } from './useSpreadsheet'
 import { columnDisplayIndex } from './helper'
 
 import {
+  SpreadsheetContainerDiv,
+  SpreadsheetActionsView,
   SpreadsheetColumnTooltip,
   SpreadsheetColumnDisplay,
   SpreadsheetColumnInput,
@@ -77,21 +79,17 @@ export const SpreadsheetMenu = (options: {
 export const SpreadsheetContainer: React.FC<{
   children: React.ReactNode
   context: SpreadsheetContext
-  className?: string
-}> = ({ children, context, className = '' }) => {
+  ref?: React.RefObject<HTMLDivElement>
+}> = ({ children, context, ref }) => {
   const { selection } = context
 
   const hover = selection.all ?? selection.columnIds?.length ?? selection.rowIds?.length ?? selection.cellIds?.length
 
-  return <span className={`${className} ${hover ? 'hover' : ''}`}>{children}</span>
-}
-
-export const SpreadsheetScrollView: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <div className="mashcard-spreadsheet-block">{children}</div>
-}
-
-export const SpreadsheetView: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <table className="spreadsheet-rows">{children}</table>
+  return (
+    <SpreadsheetContainerDiv ref={ref} className={hover ? 'hover' : ''}>
+      {children}
+    </SpreadsheetContainerDiv>
+  )
 }
 
 export const SpreadsheetPanel: React.FC<{
@@ -99,14 +97,14 @@ export const SpreadsheetPanel: React.FC<{
   context: SpreadsheetContext
 }> = ({ children, context }) => {
   return (
-    <table className={`spreadsheet-row-actions ${context.dragging?.rowId ? 'dragging' : ''}`}>
+    <SpreadsheetActionsView className={`spreadsheet-row-actions ${context.dragging?.rowId ? 'dragging' : ''}`}>
       <thead>
         <tr data-row-id="first">
           <th />
         </tr>
       </thead>
       <tbody>{children}</tbody>
-    </table>
+    </SpreadsheetActionsView>
   )
 }
 
@@ -224,8 +222,7 @@ export const SpreadsheetHeaderColumn: React.FC<{
           : {})
       }}
       onMouseDown={onMouseDown}
-      onContextMenu={onContextMenu}
-    >
+      onContextMenu={onContextMenu}>
       {children}
       {columnActions ? (
         <Dropdown
@@ -248,8 +245,7 @@ export const SpreadsheetHeaderColumn: React.FC<{
           placement="bottomStart"
           visible={dropdownVisible}
           onVisibleChange={onDropdownVisibleChange}
-          aria-label={t('spreadsheet.column.actions')}
-        >
+          aria-label={t('spreadsheet.column.actions')}>
           <span>⌄</span>
         </Dropdown>
       ) : (
@@ -339,8 +335,7 @@ export const SpreadsheetRowAction: React.FC<{
             }
           : {})
       }}
-      data-row-id={rowId}
-    >
+      data-row-id={rowId}>
       <td className="row-action-panel" onContextMenu={onContextMenu}>
         <div className="row-action-panel-layer" onMouseDown={onMouseDown}>
           <Button className="row-number" onClick={onClickRowNumber}>
@@ -367,8 +362,7 @@ export const SpreadsheetRowAction: React.FC<{
               placement="bottomStart"
               visible={dropdownVisible}
               onVisibleChange={onDropdownVisibleChange}
-              aria-label={t('spreadsheet.row.actions')}
-            >
+              aria-label={t('spreadsheet.row.actions')}>
               <span>⌄</span>
             </Dropdown>
           ) : (
@@ -432,8 +426,7 @@ export const SpreadsheetRow: React.FC<{
       onMouseOver={onOver}
       onFocus={onOver}
       onMouseOut={onOut}
-      onBlur={onOut}
-    >
+      onBlur={onOut}>
       {children}
     </tr>
   )
@@ -502,8 +495,7 @@ export const SpreadsheetCellContainer: React.FC<{
       className={selected ? 'selected' : ''}
       onClick={onClickCell}
       onContextMenu={onContextMenu}
-      data-cell-id={cellIdStr}
-    >
+      data-cell-id={cellIdStr}>
       <Dropdown
         overlay={SpreadsheetMenu({
           items: cellActions,
@@ -513,8 +505,7 @@ export const SpreadsheetCellContainer: React.FC<{
         })}
         placement="bottomStart"
         visible={dropdownVisible}
-        aria-label={t('spreadsheet.cell.actions')}
-      >
+        aria-label={t('spreadsheet.cell.actions')}>
         {children}
       </Dropdown>
     </td>
