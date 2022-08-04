@@ -8,9 +8,9 @@ export const LogoIcon = styled('img', {
 })
 
 export const LogoIconTry = styled('img', {
-  height: '20px',
-  width: '110px',
-  margin: '18px 0 18px 16px',
+  height: '24px',
+  width: '125px',
+  margin: '16px 0',
   display: 'block'
 })
 

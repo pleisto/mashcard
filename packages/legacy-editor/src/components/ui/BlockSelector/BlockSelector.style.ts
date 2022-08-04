@@ -22,7 +22,7 @@ export const BlockSelectorContainer = styled(Menu as FC<MenuProps>, {
 })
 
 export const BlockSelectorGroupLabel = styled('span', {
-  color: theme.colors.typeThirdary,
+  color: theme.colors.typeSecondary,
   fontSize: theme.fontSizes.callout,
   fontWeight: 450
 })

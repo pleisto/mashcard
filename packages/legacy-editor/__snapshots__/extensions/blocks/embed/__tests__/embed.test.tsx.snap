@@ -61,7 +61,7 @@ exports[`Embed renders Embed correctly 1`] = `
                 embed_block.embed_types.upload.label
               </span>
               <span
-                class="mc-c-kMnWvg"
+                class="mc-c-eFVLbo"
               >
                 embed_block.embed_types.upload.description
               </span>

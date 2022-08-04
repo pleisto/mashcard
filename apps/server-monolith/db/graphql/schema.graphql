@@ -14,12 +14,12 @@ enum AuthMethod {
   email_password
 
   """
-   Federated Authentication
+  Federated Authentication
   """
   github
 
   """
-   Federated Authentication
+  Federated Authentication
   """
   google_oauth2
 }
@@ -317,6 +317,11 @@ input BlockCommitInput {
   previous state id
   """
   prevStateId: UUID
+
+  """
+  restore_version
+  """
+  restoreVersion: Boolean
 
   """
   full or update state
@@ -3290,12 +3295,6 @@ type query {
   return share links by block id.
   """
   blockShareLinks(id: String!): [ShareLink!]!
-  childrenBlocks(
-    """
-    List all children from root id
-    """
-    rootId: String!
-  ): [Block!]
   conversationComments(pageIds: [UUID!]!): [Conversation!]
   documentHistories(
     """

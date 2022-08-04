@@ -2,6 +2,7 @@ import { test, expect } from '@/fixtures'
 import { PageTreePage } from '@/tests/sidebar/pageTree/pageTree.page'
 import { INITIAL_PAGE } from '@/tests/common/common.data'
 import { EditorPage } from './editor.page'
+import { TextBlock } from '@/tests/block/textBlock/textBlock.page'
 
 test.describe('Editor', () => {
   let pageTree: PageTreePage
@@ -18,9 +19,11 @@ test.describe('Editor', () => {
   })
 
   test.describe('Editor', () => {
-    test('Verify editor is editable & there has a paragraph node by default', async () => {
+    test('Verify editor is editable & there has a paragraph node by default', async ({ page }) => {
       await expect(editor.getEditorContent()).toHaveAttribute('contenteditable', 'true')
-      await expect(editor.getNodeByIndex()).toHaveClass(/node-paragraph/)
+      await editor.getEditorContent().click()
+      const paragraph = new TextBlock(page)
+      await expect(paragraph.getParagraphBlock()).toBeVisible()
     })
 
     test('Verify it will not create node when click node border', async () => {
@@ -55,22 +58,22 @@ test.describe('Editor', () => {
       await expect(slashMenu.getSlashMenu()).toBeVisible()
     })
 
-    test('Verify type "Enter" can create Text Block', async () => {
-      await editor.createTextBelowIndex()
+    test('Verify type "Enter" can create Text Block', async ({ page }) => {
+      const paragraph = await editor.createTextBelowIndex()
 
-      await expect(editor.getNodeByIndex(1)).toHaveClass(/node-paragraph/)
+      await expect(paragraph.getParagraphBlock(1)).toHaveAttribute('data-placeholder', "Type '/' for commands")
     })
 
     test('Verify type "- " can create BulletList Block', async () => {
-      await editor.createBulletListInBlock()
+      const bulletList = await editor.createBulletListInBlock()
 
-      await expect(editor.getNodeByIndex()).toHaveClass(/node-bulletList/)
+      await expect(bulletList.getBulletList()).toBeVisible()
     })
 
     test('Verify type "1. " can create OrderedList Block', async () => {
-      await editor.createOrderedListInBlock()
+      const orderedList = await editor.createOrderedListInBlock()
 
-      await expect(editor.getNodeByIndex()).toHaveClass(/node-orderedList/)
+      await expect(orderedList.getOrderedList()).toBeVisible()
     })
 
     test('Verify type "/=" can create Formula Block', async () => {

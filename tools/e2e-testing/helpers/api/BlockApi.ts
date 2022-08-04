@@ -45,7 +45,8 @@ export class BlockApi {
     }
   }
 
-  async getBlocks(username: string): Promise<PageType[]> {
+  async getBlocks(): Promise<PageType[]> {
+    const username = await this.getUsername()
     const response = await this.post(
       this.options(GRAPHQL_GROUP.GET_PAGE_BLOCKS, 'GetPageBlocks', {
         domain: username
@@ -58,33 +59,27 @@ export class BlockApi {
     await this.post(this.options(GRAPHQL_GROUP.BLOCK_SOFT_DELETE, 'blockSoftDelete', variables))
   }
 
-  async removeAllPages(options?: { isHardDeleted?: boolean; isSorted?: boolean }): Promise<void> {
-    const isHardDeleted = options?.isHardDeleted ?? true
+  async removeAllPages(options?: { isSorted?: boolean }): Promise<void> {
     const isSorted = options?.isSorted ?? false
 
-    const username = await this.getUsername()
-    const pages = (await this.getBlocks(username)).sort(compareAttributeItem)
+    const pages = (await this.getBlocks()).sort(compareAttributeItem)
 
-    isSorted
-      ? await this.orderRemoveAllPage(pages, isHardDeleted)
-      : await this.outOfOrderRemoveAllPage(pages, isHardDeleted)
+    isSorted ? await this.orderRemoveAllPage(pages) : await this.outOfOrderRemoveAllPage(pages)
   }
 
-  async orderRemoveAllPage(pages: PageType[], isHardDeleted: boolean): Promise<void> {
+  async orderRemoveAllPage(pages: PageType[]): Promise<void> {
     for (let index = 0; index < pages.length; index++) {
       const page = pages[index]
 
       if (!page.parentId) {
-        await this.removePage({ input: { id: page.id, hardDelete: isHardDeleted } })
+        await this.removePage({ input: { id: page.id, hardDelete: false } })
       }
     }
   }
 
-  async outOfOrderRemoveAllPage(pages: PageType[], isHardDeleted: boolean): Promise<void> {
+  async outOfOrderRemoveAllPage(pages: PageType[]): Promise<void> {
     await Promise.all(
-      pages.map(page =>
-        !page.parentId ? this.removePage({ input: { id: page.id, hardDelete: isHardDeleted } }) : undefined
-      )
+      pages.map(page => (!page.parentId ? this.removePage({ input: { id: page.id, hardDelete: false } }) : undefined))
     )
   }
 
@@ -133,15 +128,12 @@ export class BlockApi {
   }
 
   async getPods(): Promise<PodOutput[]> {
-    const response = await this.request.post(this.REQUEST_URL, this.options(GRAPHQL_GROUP.GET_PODS, 'GetPods'))
+    const response = await this.post(this.options(GRAPHQL_GROUP.GET_PODS, 'GetPods'))
     return (await response.json()).data.pods
   }
 
   async destroyPod(username: string): Promise<void> {
-    await this.request.post(
-      this.REQUEST_URL,
-      this.options(GRAPHQL_GROUP.POD_DESTROY, 'groupDestroy', { input: { username } })
-    )
+    await this.post(this.options(GRAPHQL_GROUP.POD_DESTROY, 'groupDestroy', { input: { username } }))
   }
 
   async destroyAllCreatedPod(): Promise<void> {
@@ -151,8 +143,7 @@ export class BlockApi {
   }
 
   async createPod(name: string): Promise<void> {
-    await this.request.post(
-      this.REQUEST_URL,
+    await this.post(
       this.options(GRAPHQL_GROUP.CREATE_OR_UPDATE_POD, 'createOrUpdatePod', {
         input: { type: 'CREATE', domain: name, name }
       })

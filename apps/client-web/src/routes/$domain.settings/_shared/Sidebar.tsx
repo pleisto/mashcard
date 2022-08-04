@@ -3,7 +3,7 @@ import { Button } from '@mashcard/design-system'
 import { FC, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import Logo from '@/common/assets/logo-brickdoc-without-name.svg'
+import Logo from '@/common/assets/logo-without-name.svg'
 import { SwitchSettingPod } from './SwitchSettingPod'
 import { SettingsContext } from './SettingContext'
 import { MenuItem, SidebarWrapper } from './Sidebar.style'
@@ -35,8 +35,7 @@ export const Sidebar: FC = () => {
           block
           icon={<ArrowLeft />}
           css={{ height: '40px', margin: '0 1rem' }}
-          onClick={() => navigate(`/${pod!.domain}`)}
-        >
+          onClick={() => navigate(`/${pod!.domain}`)}>
           Back to Pod
         </Button>
       </footer>

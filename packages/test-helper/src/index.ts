@@ -88,6 +88,9 @@ export const TEST_ID_ENUM = {
     topBar: {
       saving: {
         id: 'page-topBar-saving'
+      },
+      collaboratorMenu: {
+        id: 'page-topBar-collaboratorMenu'
       }
     }
   },

@@ -44,7 +44,7 @@ export interface CreateBlockInput {
 export interface BlockSoftDeleteInput {
   input: {
     id: string
-    hardDelete: boolean
+    hardDelete: false
   }
 }
 

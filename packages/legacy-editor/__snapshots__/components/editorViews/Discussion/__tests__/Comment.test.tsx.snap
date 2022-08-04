@@ -28,7 +28,7 @@ exports[`DiscussionList > Comment renders UserBlock content normally 1`] = `
         </span>
       </div>
       <div
-        class="mc-c-lbvXeI"
+        class="mc-c-kgyTAE"
       >
         <span
           class="mc-c-dUBPbm"
@@ -74,7 +74,7 @@ exports[`DiscussionList > Comment renders paragraph content normally 1`] = `
         </span>
       </div>
       <div
-        class="mc-c-lbvXeI"
+        class="mc-c-kgyTAE"
       >
         <p>
           <span>
@@ -115,7 +115,7 @@ exports[`DiscussionList > Comment renders text content normally 1`] = `
         </span>
       </div>
       <div
-        class="mc-c-lbvXeI"
+        class="mc-c-kgyTAE"
       >
         <span>
           text

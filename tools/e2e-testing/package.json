@@ -8,6 +8,7 @@
   "scripts": {
     "install-deps": "playwright install --with-deps",
     "start": "yarn cleanup && (yarn run-playwright:chromium & yarn run-playwright:firefox)",
+    "run-playwright": "playwright test",
     "run-playwright:chromium": "TEST_BROWSER=chromium playwright test --project=chromium",
     "run-playwright:firefox": "TEST_BROWSER=firefox playwright test --project=firefox",
     "test:e2e": "yarn run-playwright:chromium --grep-invert @visual & yarn run-playwright:firefox --grep-invert @visual",
@@ -21,16 +22,20 @@
     "lint:eslint": "TIMING=1 dev-support eslint --cache --ext ts,tsx .",
     "lint:fix": "TIMING=1 dev-support eslint --cache --ext ts,tsx . --fix",
     "lint:type": "run -T tsc",
-    "generate": "ts-node ./helpers/generate"
+    "generate": "ts-node ./helpers/generate",
+    "parallel": "ts-node parallel.ts",
+    "module": "ts-node module.ts"
   },
   "devDependencies": {
     "@mashcard/dev-support": "workspace:^",
     "@mashcard/test-helper": "workspace:^",
-    "@playwright/test": "^1.24.1",
+    "@playwright/test": "^1.24.2",
+    "@types/command-line-args": "^5.2.0",
     "@types/inquirer": "^8.2.1",
     "@types/is-ci": "^3.0.0",
     "allure-commandline": "^2.18.1",
     "allure-playwright": "^2.0.0-beta.18",
+    "command-line-args": "^5.2.1",
     "inquirer": "^9.0.2",
     "is-ci": "^3.0.1",
     "ts-node": "^10.9.1"

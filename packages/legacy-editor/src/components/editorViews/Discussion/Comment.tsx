@@ -43,7 +43,8 @@ const CommentContent = styled('div', {
     fontSize: theme.fontSizes.callout,
     fontWeight: 400,
     lineHeight: '1.125rem',
-    marginBottom: 0
+    marginBottom: 0,
+    wordBreak: 'break-all'
   }
 })
 

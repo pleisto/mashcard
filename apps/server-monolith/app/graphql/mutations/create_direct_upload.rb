@@ -8,11 +8,13 @@ module Mutations
     field :direct_upload, Types::DirectUpload, null: false
 
     SERVICE_MAP =
-      if Rails.env.in?(['development', 'test'])
+      if Rails.env.in?(['development', 'test', 'cicd'])
         { 'AVATAR' => :local_public, 'DOC' => :local_private, 'THIRD' => :local_public }
       else
         { 'AVATAR' => :gcs_public, 'DOC' => :gcs_privtae, 'THIRD' => :gcs_public }
       end
+
+    DEFAULT_MIME_TYPE = 'application/octet-stream'
 
     def resolve(args)
       input = args[:input]
@@ -38,6 +40,7 @@ module Mutations
       blob = ActiveStorage::Blob.create!(
         new_input.merge(
           key: key,
+          content_type: input[:content_type].presence || DEFAULT_MIME_TYPE,
           operation_type: type,
           pod_id: pod.id,
           user_id: current_user.id,

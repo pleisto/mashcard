@@ -20,7 +20,7 @@ exports[`BlockSelector renders BlockSelector correctly 1`] = `
         class="mc-c-cEWwGU"
       >
         <span
-          class="mc-c-cRukNM"
+          class="mc-c-jtvAru"
         >
           block_selector.type
         </span>
@@ -1479,7 +1479,7 @@ exports[`BlockSelector renders BlockSelector with query correctly 1`] = `
         class="mc-c-cEWwGU"
       >
         <span
-          class="mc-c-cRukNM"
+          class="mc-c-jtvAru"
         >
           block_selector.suggestion
         </span>
@@ -1677,7 +1677,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         class="mc-c-cEWwGU"
       >
         <span
-          class="mc-c-cRukNM"
+          class="mc-c-jtvAru"
         >
           block_selector.recent
         </span>
@@ -1801,7 +1801,7 @@ exports[`BlockSelector renders BlockSelector with recent selected items correctl
         class="mc-c-cEWwGU"
       >
         <span
-          class="mc-c-cRukNM"
+          class="mc-c-jtvAru"
         >
           block_selector.type
         </span>

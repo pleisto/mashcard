@@ -15,7 +15,7 @@ test.describe('Trash', () => {
       await api.removeAllTrashPages()
 
       await api.createPageTree(TRASH_PAGE_TREE)
-      await api.removeAllPages({ isHardDeleted: false })
+      await api.removeAllPages()
       trash = new TrashPage(page)
       await trash.openTrashPage()
     })
@@ -37,7 +37,7 @@ test.describe('Trash', () => {
       await api.removeAllTrashPages()
 
       await api.createPage(TRASH_SINGLE_PAGE)
-      await api.removeAllPages({ isHardDeleted: false })
+      await api.removeAllPages()
       trash = new TrashPage(page)
       await trash.openTrashPage()
     })
@@ -90,8 +90,7 @@ test.describe('Trash', () => {
     })
 
     test('Verify there has pages path as subtitle when remove subPage', async ({ api, page }) => {
-      const domain = await page.evaluate(() => (window as any).location.pathname.split('/')[1])
-      const subPageId = (await api.getBlocks(domain)).filter(item => item.parentId)[0].id
+      const subPageId = (await api.getBlocks()).filter(item => item.parentId)[0].id
       await api.removePage({ input: { id: subPageId, hardDelete: false } })
 
       trash = new TrashPage(page)
@@ -107,7 +106,7 @@ test.describe('Trash', () => {
       await api.removeAllTrashPages()
 
       await api.createPageTree(TRASH_PAGE_TREE)
-      await api.removeAllPages({ isHardDeleted: false })
+      await api.removeAllPages()
       trash = new TrashPage(page)
       await trash.openTrashPage()
     })
@@ -166,7 +165,6 @@ test.describe('Trash', () => {
 
       await api.createPageTree(TRASH_PAGE_TREE_FOR_VISUAL)
       await api.removeAllPages({
-        isHardDeleted: false,
         isSorted: true
       })
       trash = new TrashPage(page)
