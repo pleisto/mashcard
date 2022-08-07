@@ -30,7 +30,7 @@ jobs:
       - name: Update yarn packages
         run: eval "yarn up $PATTERNS --mode=update-lockfile && yarn up $PATTERNS --recursive --mode=update-lockfile"
         env:
-          PATTERNS: "'*' '@*/*'"
+          PATTERNS: "'!(react-medium-image-zoom|rc-tabs)' '@*/*'"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
