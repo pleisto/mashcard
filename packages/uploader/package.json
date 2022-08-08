@@ -19,7 +19,7 @@
     "@mashcard/test-helper": "workspace:^",
     "@uppy/core": "^2.3.2",
     "@uppy/thumbnail-generator": "^2.2.0",
-    "@uppy/utils": "^4.1.0",
+    "@uppy/utils": "^4.1.1",
     "@uppy/xhr-upload": "^2.1.2",
     "ahooks": "^3.7.0",
     "blurhash": "^1.1.5",
