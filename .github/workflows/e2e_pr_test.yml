@@ -60,7 +60,7 @@ jobs:
           PLAYWRIGHT_BASE_URL: ${{ github.event.deployment_status.environment_url }}
       - name: Upload Playwright traces (when failed)
         if: failure()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: playwright-test-results
           if-no-files-found: ignore
