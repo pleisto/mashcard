@@ -46,7 +46,6 @@ module Mutations
         end
 
         pod_id = current_pod.fetch('id')
-        current_user.save_last_position!(current_pod.fetch('username'), root_id)
 
         insert_data = []
         upsert_data = []

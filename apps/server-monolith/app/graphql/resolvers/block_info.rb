@@ -20,8 +20,6 @@ module Resolvers
 
       return nil if !is_master && (permission.nil? || permission.disabled?)
 
-      current_user&.save_last_position!(domain, id)
-
       result = {
         title: block.title,
         icon: block.icon,
