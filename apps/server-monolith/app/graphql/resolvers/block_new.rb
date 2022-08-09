@@ -10,6 +10,9 @@ module Resolvers
     def resolve(id:, history_id: nil)
       block = Docs::Block.find_by(id: id)
       authorize! block, to: :show?
+
+      current_user&.save_last_position!(block.pod.username, block.id) if block
+
       if history_id.present?
         block.cur_history_id = history_id
       end

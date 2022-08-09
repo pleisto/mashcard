@@ -65,8 +65,8 @@ describe Mutations::Blocks::SyncBatch, type: :mutation do
 
       user.reload
 
-      expect(user.last_pod_username).to eq(user.domain)
-      expect(user.last_block_ids).to eq({ user.domain => root_id })
+      expect(user.last_pod_username).to be_nil
+      expect(user.last_block_ids).to eq({})
     end
 
     it 'works' do

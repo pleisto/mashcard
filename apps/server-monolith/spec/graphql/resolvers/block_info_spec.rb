@@ -108,8 +108,8 @@ describe Resolvers::BlockInfo, type: :query do
 
       user.reload
 
-      expect(user.last_pod_username).to eq(user.domain)
-      expect(user.last_block_ids).to eq({ user.domain => block.id })
+      expect(user.last_pod_username).to be_nil
+      expect(user.last_block_ids).to eq({})
     end
 
     it 'deleted' do
