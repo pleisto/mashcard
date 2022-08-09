@@ -24,7 +24,6 @@ export const CommentEditorContent: FC<CommentEditorProps> = ({ markId, onSend, m
   const handleSend = useCallback(
     (event?: MouseEvent) => {
       event?.stopPropagation()
-      console.log('editor', editor)
       if (!editor.current) return
       onSend?.(editor.current, getDraft(markId))
     },
