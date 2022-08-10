@@ -1,11 +1,12 @@
 import { DocumentBlockQuery } from '@/MashcardGraphQL'
+import { useEditorDataService } from '@mashcard/data-layer'
 import { Spin } from '@mashcard/design-system'
 import { EditorContent, useEditor } from '@mashcard/legacy-editor'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { FC, MouseEventHandler, useCallback, useEffect, useMemo, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDocMeta } from '../../../_shared/DocMeta'
-import { awarenessInfosVar, isSavingVar } from '../../../_shared/reactiveVars'
+import { awarenessInfosVar } from '../../../_shared/reactiveVars'
 import { DocumentTitle } from './DocumentTitle'
 import { TrashPrompt } from './TrashPrompt'
 import { HistoryPrompt } from './HistoryPrompt'
@@ -24,6 +25,7 @@ interface DocumentEditorProps {
 export const DocumentEditor: FC<DocumentEditorProps> = ({ editable, loading, data }) => {
   const docMeta = useDocMeta()
   const navigate = useNavigate()
+  const { setIsSaving } = useEditorDataService()
 
   const queryVariables = useMemo(
     () => ({ rootId: docMeta.id as string, historyId: docMeta.historyId, domain: docMeta.domain }),
@@ -44,8 +46,8 @@ export const DocumentEditor: FC<DocumentEditorProps> = ({ editable, loading, dat
   useDocHistoryProvider()
 
   useEffect(() => {
-    isSavingVar(blocksCommitting || committing)
-  }, [blocksCommitting, committing])
+    setIsSaving(blocksCommitting || committing)
+  }, [setIsSaving, blocksCommitting, committing])
   useEffect(() => {
     awarenessInfosVar(awarenessInfos)
   }, [awarenessInfos])

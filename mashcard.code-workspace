@@ -17,6 +17,10 @@
       "path": "packages/active-support"
     },
     {
+      "name": "packages/data-layer",
+      "path": "packages/data-layer"
+    },
+    {
       "name": "packages/design-icons",
       "path": "packages/design-icons"
     },

@@ -11,7 +11,6 @@ export interface AwarenessInfo {
   user: AwarenessInfoUser
 }
 
-export const isSavingVar = makeVar(false)
 export const awarenessInfosVar = makeVar<AwarenessInfo[]>([])
 
 export const pagesVar = makeVar<

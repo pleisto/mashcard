@@ -3032,6 +3032,7 @@ __metadata:
   dependencies:
     "@apollo/client": ^3.6.9
     "@mashcard/active-support": "workspace:^"
+    "@mashcard/data-layer": "workspace:^"
     "@mashcard/design-icons": "workspace:^"
     "@mashcard/design-system": "workspace:^"
     "@mashcard/dev-support": "workspace:^"
@@ -3063,6 +3064,19 @@ __metadata:
     rfc4648: ^1.5.2
     yup: ^0.32.11
     zustand: ^4.0.0
+  languageName: unknown
+  linkType: soft
+
+"@mashcard/data-layer@workspace:^, @mashcard/data-layer@workspace:packages/data-layer":
+  version: 0.0.0-use.local
+  resolution: "@mashcard/data-layer@workspace:packages/data-layer"
+  dependencies:
+    "@mashcard/dev-support": "workspace:^"
+    ahooks: ^3.7.0
+    immer: ^9.0.15
+    rxjs: ^7.5.6
+  peerDependencies:
+    react: ">=17.0.2"
   languageName: unknown
   linkType: soft
 
@@ -13970,6 +13984,13 @@ __metadata:
   version: 3.0.6
   resolution: "immediate@npm:3.0.6"
   checksum: f9b3486477555997657f70318cc8d3416159f208bec4cca3ff3442fd266bc23f50f0c9bd8547e1371a6b5e82b821ec9a7044a4f7b944798b25aa3cc6d5e63e62
+  languageName: node
+  linkType: hard
+
+"immer@npm:^9.0.15":
+  version: 9.0.15
+  resolution: "immer@npm:9.0.15"
+  checksum: 92e3d63e810e3c3c2bb61b70c45443e37ef983ad12924e3edaf03725ae5979618f5b473439bb3bb4a8c4769f25132f18dec10ea15c40f0b20da5691ff96ff611
   languageName: node
   linkType: hard
 

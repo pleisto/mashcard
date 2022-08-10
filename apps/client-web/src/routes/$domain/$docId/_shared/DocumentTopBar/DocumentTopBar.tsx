@@ -1,12 +1,11 @@
 import Logo_Try from '@/common/assets/try.svg'
 import { MashcardContext } from '@/common/mashcardContext'
-import { useReactiveVar } from '@apollo/client'
+import { useEditorDataService } from '@mashcard/data-layer'
 import { Box, Button } from '@mashcard/design-system'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { FC, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDocMeta } from '../../../_shared/DocMeta'
-import { isSavingVar } from '../../../_shared/reactiveVars'
 import { useDocsI18n } from '../../../_shared/useDocsI18n'
 import { CollaboratorsMenu } from './CollaboratorsMenu'
 import { DiscussionMenu } from './DiscussionMenu'
@@ -21,7 +20,7 @@ import loadingIcon from './loading.png'
 export const DocumentTopBar: FC = () => {
   const { t } = useDocsI18n()
   const navigate = useNavigate()
-  const isSaving = useReactiveVar(isSavingVar)
+  const { isSaving } = useEditorDataService()
   const { features } = useContext(MashcardContext)
 
   const { id, viewable, editable, isAnonymous, documentInfo } = useDocMeta()

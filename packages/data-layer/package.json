@@ -1,0 +1,30 @@
+{
+  "name": "@mashcard/data-layer",
+  "version": "0.1.0",
+  "description": "Data persistance and state management for MashCard app.",
+  "license": "Apache-2.0",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "scripts": {
+    "lint": "yarn lint:eslint && yarn lint:type",
+    "lint:eslint": "TIMING=1 dev-support eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 dev-support eslint --cache --ext ts,tsx src --fix",
+    "lint:type": "run -T tsc",
+    "test:jest": "run -T jest"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "ahooks": "^3.7.0",
+    "immer": "^9.0.15",
+    "rxjs": "^7.5.6"
+  },
+  "devDependencies": {
+    "@mashcard/dev-support": "workspace:^"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.2"
+  }
+}

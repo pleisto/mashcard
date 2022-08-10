@@ -1,9 +1,10 @@
 import { useErrorNotification } from '@/common/hooks'
 import { MashcardContext } from '@/common/mashcardContext'
 import { ApolloProvider } from '@apollo/client'
+import { TransientStoreProvider, TransientStore, initialTransientState } from '@mashcard/data-layer'
 import { globalStyle, Loading, Provider as DesignSystemProvider } from '@mashcard/design-system'
 import { ErrorBoundary, withProfiler } from '@sentry/react'
-import { FC, Suspense, useContext } from 'react'
+import { FC, Suspense, useContext, useRef } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import { apolloClient } from './apollo'
 import { RootRoutes } from './RootRoutes'
@@ -13,6 +14,8 @@ export const App: FC = () => {
   globalStyle()
 
   const context = useContext(MashcardContext)
+  const transientStore = useRef<TransientStore>()
+  if (!transientStore.current) transientStore.current = new TransientStore(initialTransientState)
 
   useErrorNotification(context.serverMessage)
 
@@ -23,7 +26,9 @@ export const App: FC = () => {
           <DesignSystemProvider>
             <ApolloProvider client={apolloClient}>
               <HelmetProvider>
-                <RootRoutes />
+                <TransientStoreProvider value={transientStore.current}>
+                  <RootRoutes />
+                </TransientStoreProvider>
               </HelmetProvider>
             </ApolloProvider>
           </DesignSystemProvider>
