@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 require('@testing-library/jest-dom/extend-expect')
 const crypto = require('crypto')
 const { toHaveNoViolations } = require('jest-axe')
@@ -30,6 +31,10 @@ class ResizeObserver {
   disconnect() {}
 }
 window.ResizeObserver = ResizeObserver
+
+class ClipboardItem {}
+
+window.ClipboardItem = ClipboardItem
 
 Object.assign(navigator, {
   clipboard: {
