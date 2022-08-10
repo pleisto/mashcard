@@ -59,6 +59,7 @@ export const placeholderStyle = css({
 export const highlightStyle = css({
   'code[class*="language-"], pre[class*="language-"]': {
     color: theme.colors.typePrimary,
+    display: 'block',
     textShadow: '0 1px white',
     fontSize: theme.fontSizes.callout,
     lineHeight: theme.lineHeights.code,
@@ -87,8 +88,8 @@ export const highlightStyle = css({
   '.line-numbers .line-numbers-rows': {
     position: 'relative',
     pointerEvents: 'none',
-    width: 0,
-    height: 0,
+    width: 1,
+    height: 1,
     display: ' inline-block'
   },
   '.line-numbers-rows::after': {
