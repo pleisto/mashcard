@@ -39,7 +39,7 @@
     "typedoc": "^0.23.10",
     "typedoc-plugin-inline-sources": "^1.0.1",
     "typedoc-plugin-markdown": "^3.13.4",
-    "vite": "^3.0.4",
+    "vite": "^3.0.5",
     "vite-plugin-pwa": "^0.12.3"
   }
 }
