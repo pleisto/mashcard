@@ -1,7 +1,8 @@
 import { Editor, Content } from '@tiptap/core'
 import { useEditor } from '../../tiptapRefactor'
-import { Comment } from '../../extensions'
+import { Comment, CommentOptions } from '../../extensions'
 import { Base, BaseOptions } from '../../extensions/base'
+import { useEffect } from 'react'
 
 export interface CommentEditorOptions {
   defaultContent?: Content
@@ -14,7 +15,14 @@ export function useCommentEditor({
   mentionCommands,
   onSendComment
 }: CommentEditorOptions): Editor | null {
-  return useEditor({
+  let editor: Editor | null = null
+
+  useEffect(() => {
+    const comment = editor?.extensionManager.extensions.find(extension => extension.name === Comment.name)
+    if (comment) (comment?.options as CommentOptions).onSendComment = onSendComment
+  }, [editor, onSendComment])
+
+  editor = useEditor({
     autofocus: 'end',
     content: defaultContent,
     extensions: [
@@ -46,4 +54,6 @@ export function useCommentEditor({
       })
     ]
   })
+
+  return editor
 }
