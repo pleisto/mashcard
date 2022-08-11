@@ -9,7 +9,11 @@ import { CommonPage } from '@/tests/common/common.page'
 import { ${underlineModuleName.toUpperCase()}_SELECTOR } from './${camelModuleName}.selector'
 
 export class ${camelModuleName.slice(0, 1).toUpperCase() + camelModuleName.slice(1)}Page extends CommonPage {
+  readonly selector = this.get('selector')
 
+  get(selector: keyof typeof ${underlineModuleName.toUpperCase()}_SELECTOR): Locator {
+    return this.locator(${underlineModuleName.toUpperCase()}_SELECTOR[selector])
+  }
 }
 `
 
