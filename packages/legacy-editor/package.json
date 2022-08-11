@@ -51,7 +51,7 @@
     "@tiptap/extension-unique-id": "^2.0.0-beta.4",
     "@tiptap/suggestion": "^2.0.0-beta.97",
     "dayjs": "^1.11.4",
-    "framer-motion": "^7.0.0",
+    "framer-motion": "^7.1.0",
     "lodash": "^4.17.21",
     "popper-max-size-modifier": "^0.2.0",
     "re-resizable": "^6.9.9",

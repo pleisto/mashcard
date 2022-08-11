@@ -29,7 +29,7 @@
   "devDependencies": {
     "@mashcard/dev-support": "workspace:^",
     "@mashcard/test-helper": "workspace:^",
-    "@playwright/test": "^1.24.2",
+    "@playwright/test": "^1.25.0",
     "@types/command-line-args": "^5.2.0",
     "@types/inquirer": "^9.0.0",
     "@types/is-ci": "^3.0.0",
