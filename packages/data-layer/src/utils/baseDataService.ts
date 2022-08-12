@@ -1,7 +1,7 @@
+import { useObservable } from '@ngneat/react-rxjs'
 import { useDebugValue, useMemo, useRef } from 'react'
 import { Observable } from 'rxjs'
 import { TransientStore, useTransientStore } from '../transientStore'
-import { useObservableValue } from './useObservableValue'
 
 export class BaseDataService {
   constructor(protected readonly transientStore: TransientStore) {}
@@ -30,7 +30,7 @@ export class BaseDataService {
       for (const key of keys) {
         const value = serviceRef.current[key as keyof T]
         if (value instanceof Observable) {
-          resolvedService[key] = useObservableValue(value)
+          ;[resolvedService[key]] = useObservable(value)
         } else if (value instanceof Function) {
           resolvedService[key] = useMemo(() => value.bind(serviceRef.current), [])
         } else {

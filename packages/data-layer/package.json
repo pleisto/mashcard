@@ -17,7 +17,8 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "ahooks": "^3.7.0",
+    "@ngneat/elf": "^2.1.0",
+    "@ngneat/react-rxjs": "^1.1.0",
     "immer": "^9.0.15",
     "rxjs": "^7.5.6"
   },

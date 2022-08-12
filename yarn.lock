@@ -3072,7 +3072,8 @@ __metadata:
   resolution: "@mashcard/data-layer@workspace:packages/data-layer"
   dependencies:
     "@mashcard/dev-support": "workspace:^"
-    ahooks: ^3.7.0
+    "@ngneat/elf": ^2.1.0
+    "@ngneat/react-rxjs": ^1.1.0
     immer: ^9.0.15
     rxjs: ^7.5.6
   peerDependencies:
@@ -3567,6 +3568,25 @@ __metadata:
   peerDependencies:
     graphql: ^15.4.0 || ^16.0.0
   checksum: c50414f56f9aa7bc60cf73847498fe94dc220f069343a4b8a3feb4f94f588649ab5e9c713e45a7d9c930c0d4337d861fbdc971350b90147eec9215503bb8aeaa
+  languageName: node
+  linkType: hard
+
+"@ngneat/elf@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@ngneat/elf@npm:2.1.0"
+  peerDependencies:
+    typescript: ">= 4.1.2"
+  checksum: fd79b8796a969463a0135e6671c8a5e513e23dd5d1ca430dac4a0f4ceba7ea5877b6913ca87362f88bc8dd188da1facb50627118b448ae441cfd3b213abe2af8
+  languageName: node
+  linkType: hard
+
+"@ngneat/react-rxjs@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@ngneat/react-rxjs@npm:1.1.0"
+  peerDependencies:
+    react: "*"
+    rxjs: "*"
+  checksum: 19af02c75c6c7860d0710e36b1014beac988d90e16313288c62674453f7b8f19adc516a864280370ae69cb46ee5b31c7dff50c07c5dc7c07d5a5ad1d468e9de3
   languageName: node
   linkType: hard
 

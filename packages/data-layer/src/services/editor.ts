@@ -1,13 +1,16 @@
-import { map } from 'rxjs'
+import { select } from '@ngneat/elf'
 import { BaseDataService } from '../utils/baseDataService'
+import { write } from '../utils/write'
 
 export class EditorDataService extends BaseDataService {
-  isSaving = this.transientStore.pipe(map(state => state.isSaving))
+  isSaving = this.transientStore.pipe(select(state => state.isSaving))
 
   setIsSaving(isSaving: boolean): void {
-    this.transientStore.update(draft => {
-      draft.isSaving = isSaving
-    })
+    this.transientStore.update(
+      write(draft => {
+        draft.isSaving = isSaving
+      })
+    )
   }
 }
 

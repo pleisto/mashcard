@@ -1,7 +1,7 @@
 import { useErrorNotification } from '@/common/hooks'
 import { MashcardContext } from '@/common/mashcardContext'
 import { ApolloProvider } from '@apollo/client'
-import { TransientStoreProvider, TransientStore, initialTransientState } from '@mashcard/data-layer'
+import { TransientStoreProvider, TransientStore, createStore } from '@mashcard/data-layer'
 import { globalStyle, Loading, Provider as DesignSystemProvider } from '@mashcard/design-system'
 import { ErrorBoundary, withProfiler } from '@sentry/react'
 import { FC, Suspense, useContext, useRef } from 'react'
@@ -15,7 +15,7 @@ export const App: FC = () => {
 
   const context = useContext(MashcardContext)
   const transientStore = useRef<TransientStore>()
-  if (!transientStore.current) transientStore.current = new TransientStore(initialTransientState)
+  if (!transientStore.current) transientStore.current = createStore()
 
   useErrorNotification(context.serverMessage)
 

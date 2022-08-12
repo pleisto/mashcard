@@ -1,22 +1,25 @@
-import { BehaviorSubject } from 'rxjs'
-import { produce } from 'immer'
+import { createStore as createElfStore, withProps } from '@ngneat/elf'
 import { createContext, useContext } from 'react'
 
 export interface TransientState {
   isSaving: boolean
 }
 
-export const initialTransientState: TransientState = {
-  isSaving: false
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export function createStore() {
+  return createElfStore(
+    {
+      name: 'transient'
+    },
+    withProps<TransientState>({
+      isSaving: false
+    })
+  )
 }
 
-export class TransientStore extends BehaviorSubject<TransientState> {
-  update(recipe: (draft: TransientState) => void): void {
-    this.next(produce(this.value, recipe))
-  }
-}
+export type TransientStore = ReturnType<typeof createStore>
 
-const TransientStoreContext = createContext<TransientStore | undefined>(undefined)
+export const TransientStoreContext = createContext<TransientStore | undefined>(undefined)
 
 export const TransientStoreProvider = TransientStoreContext.Provider
 
