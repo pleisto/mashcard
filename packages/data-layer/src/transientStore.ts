@@ -1,9 +1,6 @@
 import { createStore as createElfStore, withProps } from '@ngneat/elf'
 import { createContext, useContext } from 'react'
-
-export interface TransientState {
-  isSaving: boolean
-}
+import { MainEditorTransientState, mainEditorInitialTransientState } from './services/mainEditor'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function createStore() {
@@ -11,9 +8,7 @@ export function createStore() {
     {
       name: 'transient'
     },
-    withProps<TransientState>({
-      isSaving: false
-    })
+    withProps<MainEditorTransientState>(mainEditorInitialTransientState)
   )
 }
 

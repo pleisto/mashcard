@@ -1,6 +1,6 @@
 import Logo_Try from '@/common/assets/try.svg'
 import { MashcardContext } from '@/common/mashcardContext'
-import { useEditorDataService } from '@mashcard/data-layer'
+import { useMainEditorDataService } from '@mashcard/data-layer'
 import { Box, Button } from '@mashcard/design-system'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
 import { FC, useContext } from 'react'
@@ -20,7 +20,7 @@ import loadingIcon from './loading.png'
 export const DocumentTopBar: FC = () => {
   const { t } = useDocsI18n()
   const navigate = useNavigate()
-  const { isSaving } = useEditorDataService()
+  const { isSaving } = useMainEditorDataService()
   const { features } = useContext(MashcardContext)
 
   const { id, viewable, editable, isAnonymous, documentInfo } = useDocMeta()

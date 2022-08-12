@@ -1,5 +1,5 @@
 import { DocumentBlockQuery } from '@/MashcardGraphQL'
-import { useEditorDataService } from '@mashcard/data-layer'
+import { useMainEditorDataService } from '@mashcard/data-layer'
 import { Spin } from '@mashcard/design-system'
 import { EditorContent, useEditor } from '@mashcard/legacy-editor'
 import { TEST_ID_ENUM } from '@mashcard/test-helper'
@@ -25,7 +25,7 @@ interface DocumentEditorProps {
 export const DocumentEditor: FC<DocumentEditorProps> = ({ editable, loading, data }) => {
   const docMeta = useDocMeta()
   const navigate = useNavigate()
-  const { setIsSaving } = useEditorDataService()
+  const { setIsSaving } = useMainEditorDataService()
 
   const queryVariables = useMemo(
     () => ({ rootId: docMeta.id as string, historyId: docMeta.historyId, domain: docMeta.domain }),

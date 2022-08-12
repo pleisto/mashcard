@@ -2,7 +2,15 @@ import { select } from '@ngneat/elf'
 import { BaseDataService } from '../utils/baseDataService'
 import { write } from '../utils/write'
 
-export class EditorDataService extends BaseDataService {
+export interface MainEditorTransientState {
+  isSaving: boolean
+}
+
+export const mainEditorInitialTransientState: MainEditorTransientState = {
+  isSaving: false
+}
+
+export class MainEditorDataService extends BaseDataService {
   isSaving = this.transientStore.pipe(select(state => state.isSaving))
 
   setIsSaving(isSaving: boolean): void {
@@ -14,4 +22,4 @@ export class EditorDataService extends BaseDataService {
   }
 }
 
-export const useEditorDataService = EditorDataService.toReactHook()
+export const useMainEditorDataService = MainEditorDataService.toReactHook()
