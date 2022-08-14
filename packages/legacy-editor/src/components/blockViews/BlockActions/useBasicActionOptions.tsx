@@ -33,6 +33,8 @@ export interface UseActionOptionsProps {
   types: BasicActionOptionType[]
 }
 
+const isClipboardWriteable = (): boolean => !!ClipboardItem
+
 export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionGroupOption | null {
   const [t] = useEditorI18n()
   const { deleteBlock, getPosition, contentForCopy, node } = useBlockContext()
@@ -90,7 +92,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionG
       return null
     }
 
-    if (types.includes('cut')) {
+    if (isClipboardWriteable() && types.includes('cut')) {
       group.items.push({
         label: t('block_actions.basic.cut'),
         name: 'cut',
@@ -103,7 +105,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionG
       })
     }
 
-    if (types.includes('copy')) {
+    if (isClipboardWriteable() && types.includes('copy')) {
       group.items.push({
         name: 'copy',
         label: t('block_actions.basic.copy'),
