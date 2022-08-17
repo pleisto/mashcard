@@ -33,7 +33,7 @@ export interface UseActionOptionsProps {
   types: BasicActionOptionType[]
 }
 
-const isClipboardWriteable = (): boolean => !!ClipboardItem
+const isClipboardWriteable = (): boolean => !!window.ClipboardItem
 
 export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionGroupOption | null {
   const [t] = useEditorI18n()
