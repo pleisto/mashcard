@@ -22,12 +22,12 @@
     "qrcode.react": "^3.1.0",
     "react-vega": "^7.6.0",
     "vega": "^5.22.1",
-    "vega-lite": "^5.4.0",
+    "vega-lite": "^5.5.0",
     "zustand": "^4.0.0"
   },
   "devDependencies": {
     "@mashcard/dev-support": "workspace:^",
-    "@types/lodash": "^4.14.182",
+    "@types/lodash": "^4.14.183",
     "@types/qrcode.react": "^1.0.2"
   },
   "scripts": {

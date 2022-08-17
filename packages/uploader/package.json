@@ -17,13 +17,13 @@
     "@mashcard/design-icons": "workspace:^",
     "@mashcard/design-system": "workspace:^",
     "@mashcard/test-helper": "workspace:^",
-    "@uppy/core": "^2.3.2",
-    "@uppy/thumbnail-generator": "^2.2.0",
-    "@uppy/utils": "^4.1.1",
-    "@uppy/xhr-upload": "^2.1.2",
+    "@uppy/core": "^3.0.0-beta.4",
+    "@uppy/thumbnail-generator": "^3.0.0-beta.2",
+    "@uppy/utils": "^5.0.0-beta.1",
+    "@uppy/xhr-upload": "^3.0.0-beta.3",
     "ahooks": "^3.7.0",
     "blurhash": "^1.1.5",
-    "react-virtuoso": "^2.16.6"
+    "react-virtuoso": "^2.17.1"
   },
   "devDependencies": {
     "@mashcard/dev-support": "workspace:^"

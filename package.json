@@ -78,9 +78,9 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.4.3",
-    "@types/jest": "^28.1.6",
+    "@types/jest": "^28.1.7",
     "@types/jest-axe": "^3.5.4",
-    "@types/node": "^18.7.1",
+    "@types/node": "^18.7.6",
     "@types/rails__actioncable": "^6.1.6",
     "@types/rails__activestorage": "^7.0.1",
     "@types/react": "^18.0.17",
@@ -104,8 +104,8 @@
     "prosemirror-view": "patch:prosemirror-view@npm:1.27.0#.yarn/patches/prosemirror-view-npm-1.27.0-fee90688e2.patch"
   },
   "dependencies": {
-    "@swc/core": "^1.2.224",
-    "@swc/helpers": "^0.4.3",
+    "@swc/core": "^1.2.237",
+    "@swc/helpers": "^0.4.6",
     "lodash-es": "^4.17.21",
     "ts-node": "^10.9.1"
   },

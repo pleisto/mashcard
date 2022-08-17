@@ -50,8 +50,8 @@
     "@tiptap/extension-underline": "^2.0.0-beta.25",
     "@tiptap/extension-unique-id": "^2.0.0-beta.4",
     "@tiptap/suggestion": "^2.0.0-beta.97",
-    "dayjs": "^1.11.4",
-    "framer-motion": "^7.1.0",
+    "dayjs": "^1.11.5",
+    "framer-motion": "^7.2.0",
     "lodash": "^4.17.21",
     "popper-max-size-modifier": "^0.2.0",
     "re-resizable": "^6.9.9",
@@ -64,7 +64,7 @@
   },
   "devDependencies": {
     "@mashcard/dev-support": "workspace:^",
-    "@types/lodash": "^4.14.182"
+    "@types/lodash": "^4.14.183"
   },
   "peerDependencies": {
     "react": ">=17.0.2",

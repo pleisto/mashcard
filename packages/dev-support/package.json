@@ -24,13 +24,13 @@
     "@graphql-codegen/typescript": "^2.7.3",
     "@graphql-codegen/typescript-operations": "^2.5.3",
     "@graphql-codegen/typescript-react-apollo": "^3.3.3",
-    "@pleisto/eslint-plugin": "^1.0.5",
-    "@sentry/cli": "^2.5.0",
-    "@vitejs/plugin-react": "^2.0.0",
+    "@pleisto/eslint-plugin": "^1.0.8",
+    "@sentry/cli": "^2.5.2",
+    "@vitejs/plugin-react": "^2.0.1",
     "chalk": "^5.0.1",
     "commander": "^9.4.0",
     "depcheck": "^1.4.3",
-    "eslint": "^8.21.0",
+    "eslint": "^8.22.0",
     "fs-extra": "^10.1.0",
     "is-ci": "^3.0.1",
     "open": "^8.4.0",
@@ -39,7 +39,7 @@
     "typedoc": "^0.23.10",
     "typedoc-plugin-inline-sources": "^1.0.1",
     "typedoc-plugin-markdown": "^3.13.4",
-    "vite": "^3.0.5",
+    "vite": "^3.0.8",
     "vite-plugin-pwa": "^0.12.3"
   }
 }
