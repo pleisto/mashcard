@@ -64,7 +64,10 @@ export const SignUp: React.FC = () => {
   // On Form Submit
   const [userCreate, { loading: userCreateLoading }] = useUserCreateMutation()
   const onFinish = async (values: object): Promise<void> => {
-    const input = omit(values, ['confirm_password']) as UserCreateInput
+    const input = omit(
+      values,
+      hasFederatedIdentity ? ['confirm_password', 'email', 'password'] : ['confirm_password']
+    ) as UserCreateInput
     const { data } = await userCreate({ variables: { input } })
     const result = data?.userCreate
     mutationResultHandler(result, () => {
