@@ -39,7 +39,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/switch.ts:14](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L14)
+[packages/formula/src/controls/switch.ts:14](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/controls/switch.ts#L14)
 
 ## Properties
 
@@ -53,7 +53,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/switch.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L7)
+[packages/formula/src/controls/switch.ts:7](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/controls/switch.ts#L7)
 
 ---
 
@@ -67,7 +67,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/switch.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L8)
+[packages/formula/src/controls/switch.ts:8](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/controls/switch.ts#L8)
 
 ---
 
@@ -81,7 +81,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/switch.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L6)
+[packages/formula/src/controls/switch.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/controls/switch.ts#L6)
 
 ---
 
@@ -95,7 +95,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/switch.ts:11](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L11)
+[packages/formula/src/controls/switch.ts:11](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/controls/switch.ts#L11)
 
 ---
 
@@ -109,7 +109,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/switch.ts:10](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L10)
+[packages/formula/src/controls/switch.ts:10](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/controls/switch.ts#L10)
 
 ---
 
@@ -123,7 +123,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/switch.ts:9](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L9)
+[packages/formula/src/controls/switch.ts:9](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/controls/switch.ts#L9)
 
 ---
 
@@ -151,7 +151,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/switch.ts:12](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L12)
+[packages/formula/src/controls/switch.ts:12](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/controls/switch.ts#L12)
 
 ## Methods
 
@@ -169,4 +169,4 @@ SwitchType.persistence
 
 #### Defined in
 
-[packages/formula/src/controls/switch.ts:33](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/switch.ts#L33)
+[packages/formula/src/controls/switch.ts:33](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/controls/switch.ts#L33)

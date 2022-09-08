@@ -455,7 +455,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:177](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L177)
+[packages/formula/src/type/index.ts:177](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L177)
 
 ---
 
@@ -471,7 +471,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:173](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L173)
+[packages/formula/src/type/index.ts:173](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L173)
 
 ---
 
@@ -481,7 +481,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:551](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L551)
+[packages/formula/src/type/index.ts:551](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L551)
 
 ---
 
@@ -497,7 +497,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:169](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L169)
+[packages/formula/src/type/index.ts:169](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L169)
 
 ---
 
@@ -516,7 +516,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:122](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L122)
+[packages/formula/src/type/index.ts:122](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L122)
 
 ---
 
@@ -526,7 +526,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:86](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L86)
+[packages/formula/src/type/index.ts:86](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L86)
 
 ---
 
@@ -536,7 +536,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:91](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L91)
+[packages/formula/src/type/index.ts:91](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L91)
 
 ---
 
@@ -546,7 +546,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:142](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L142)
+[packages/formula/src/controls/types.ts:142](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/controls/types.ts#L142)
 
 ---
 
@@ -556,7 +556,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:592](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L592)
+[packages/formula/src/type/index.ts:592](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L592)
 
 ---
 
@@ -566,7 +566,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:590](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L590)
+[packages/formula/src/type/index.ts:590](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L590)
 
 ---
 
@@ -576,7 +576,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:278](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L278)
+[packages/formula/src/type/index.ts:278](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L278)
 
 ---
 
@@ -603,7 +603,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:600](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L600)
+[packages/formula/src/type/index.ts:600](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L600)
 
 ---
 
@@ -613,7 +613,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:594](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L594)
+[packages/formula/src/type/index.ts:594](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L594)
 
 ---
 
@@ -623,7 +623,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:101](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L101)
+[packages/formula/src/type/index.ts:101](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L101)
 
 ---
 
@@ -633,7 +633,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:87](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L87)
+[packages/formula/src/type/index.ts:87](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L87)
 
 ---
 
@@ -643,7 +643,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:75](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L75)
+[packages/formula/src/type/index.ts:75](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L75)
 
 ---
 
@@ -653,7 +653,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:348](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L348)
+[packages/formula/src/type/index.ts:348](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L348)
 
 ---
 
@@ -663,7 +663,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:290](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L290)
+[packages/formula/src/type/index.ts:290](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L290)
 
 ---
 
@@ -673,7 +673,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:216](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L216)
+[packages/formula/src/type/index.ts:216](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L216)
 
 ---
 
@@ -683,7 +683,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:217](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L217)
+[packages/formula/src/type/index.ts:217](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L217)
 
 ---
 
@@ -693,7 +693,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/context.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/context.ts#L77)
+[packages/formula/src/context/context.ts:77](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/context/context.ts#L77)
 
 ---
 
@@ -703,7 +703,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L54)
+[packages/formula/src/type/index.ts:54](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L54)
 
 ---
 
@@ -713,7 +713,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:78](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L78)
+[packages/formula/src/type/index.ts:78](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L78)
 
 ---
 
@@ -729,7 +729,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:274](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L274)
+[packages/formula/src/tests/testType.ts:274](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testType.ts#L274)
 
 ---
 
@@ -739,7 +739,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:814](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L814)
+[packages/formula/src/type/index.ts:814](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L814)
 
 ---
 
@@ -749,7 +749,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:69](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L69)
+[packages/formula/src/type/index.ts:69](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L69)
 
 ---
 
@@ -759,7 +759,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:178](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L178)
+[packages/formula/src/tests/testType.ts:178](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testType.ts#L178)
 
 ---
 
@@ -775,7 +775,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:167](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L167)
+[packages/formula/src/type/index.ts:167](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L167)
 
 ---
 
@@ -785,7 +785,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:105](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L105)
+[packages/formula/src/type/index.ts:105](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L105)
 
 ---
 
@@ -795,7 +795,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:106](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L106)
+[packages/formula/src/type/index.ts:106](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L106)
 
 ---
 
@@ -805,7 +805,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:205](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L205)
+[packages/formula/src/type/index.ts:205](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L205)
 
 ---
 
@@ -815,7 +815,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L63)
+[packages/formula/src/type/index.ts:63](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L63)
 
 ---
 
@@ -825,7 +825,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:67](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L67)
+[packages/formula/src/type/index.ts:67](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L67)
 
 ---
 
@@ -835,7 +835,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:57](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L57)
+[packages/formula/src/type/index.ts:57](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L57)
 
 ---
 
@@ -845,7 +845,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:185](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L185)
+[packages/formula/src/type/index.ts:185](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L185)
 
 ---
 
@@ -855,7 +855,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:58](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L58)
+[packages/formula/src/type/index.ts:58](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L58)
 
 ---
 
@@ -865,7 +865,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:229](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L229)
+[packages/formula/src/type/index.ts:229](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L229)
 
 ---
 
@@ -875,7 +875,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L71)
+[packages/formula/src/type/index.ts:71](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L71)
 
 ---
 
@@ -885,7 +885,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:84](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L84)
+[packages/formula/src/type/index.ts:84](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L84)
 
 ---
 
@@ -895,7 +895,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L73)
+[packages/formula/src/type/index.ts:73](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L73)
 
 ---
 
@@ -919,7 +919,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:821](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L821)
+[packages/formula/src/type/index.ts:821](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L821)
 
 ---
 
@@ -929,7 +929,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lambda.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lambda.ts#L4)
+[packages/formula/src/grammar/lambda.ts:4](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lambda.ts#L4)
 
 ---
 
@@ -939,7 +939,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:50](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L50)
+[packages/formula/src/tests/testType.ts:50](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testType.ts#L50)
 
 ---
 
@@ -949,7 +949,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:99](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L99)
+[packages/formula/src/type/index.ts:99](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L99)
 
 ---
 
@@ -959,7 +959,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operator.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operator.ts#L8)
+[packages/formula/src/grammar/operator.ts:8](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operator.ts#L8)
 
 ---
 
@@ -969,7 +969,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:82](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L82)
+[packages/formula/src/type/index.ts:82](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L82)
 
 ---
 
@@ -979,7 +979,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:84](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L84)
+[packages/formula/src/grammar/core.ts:84](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/core.ts#L84)
 
 ---
 
@@ -1003,7 +1003,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:93](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L93)
+[packages/formula/src/type/index.ts:93](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L93)
 
 ---
 
@@ -1013,7 +1013,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:103](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L103)
+[packages/formula/src/type/index.ts:103](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L103)
 
 ---
 
@@ -1023,7 +1023,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:252](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L252)
+[packages/formula/src/type/index.ts:252](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L252)
 
 ---
 
@@ -1033,7 +1033,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:270](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L270)
+[packages/formula/src/type/index.ts:270](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L270)
 
 ---
 
@@ -1043,7 +1043,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:102](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L102)
+[packages/formula/src/type/index.ts:102](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L102)
 
 ---
 
@@ -1053,7 +1053,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:88](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L88)
+[packages/formula/src/type/index.ts:88](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L88)
 
 ---
 
@@ -1063,7 +1063,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:76](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L76)
+[packages/formula/src/type/index.ts:76](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L76)
 
 ---
 
@@ -1073,7 +1073,7 @@
 
 #### Defined in
 
-[packages/formula/src/events/spreadsheet.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/spreadsheet.ts#L4)
+[packages/formula/src/events/spreadsheet.ts:4](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/events/spreadsheet.ts#L4)
 
 ---
 
@@ -1083,7 +1083,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L111)
+[packages/formula/src/tests/testType.ts:111](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testType.ts#L111)
 
 ---
 
@@ -1093,7 +1093,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:59](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L59)
+[packages/formula/src/type/index.ts:59](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L59)
 
 ---
 
@@ -1103,7 +1103,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:100](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L100)
+[packages/formula/src/type/index.ts:100](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L100)
 
 ---
 
@@ -1113,7 +1113,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:85](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L85)
+[packages/formula/src/type/index.ts:85](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L85)
 
 ---
 
@@ -1123,7 +1123,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:80](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L80)
+[packages/formula/src/type/index.ts:80](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L80)
 
 ---
 
@@ -1133,7 +1133,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:74](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L74)
+[packages/formula/src/type/index.ts:74](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L74)
 
 ---
 
@@ -1143,7 +1143,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:756](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L756)
+[packages/formula/src/type/index.ts:756](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L756)
 
 ---
 
@@ -1153,7 +1153,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:730](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L730)
+[packages/formula/src/type/index.ts:730](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L730)
 
 ---
 
@@ -1163,7 +1163,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:651](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L651)
+[packages/formula/src/type/index.ts:651](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L651)
 
 ---
 
@@ -1173,7 +1173,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:109](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L109)
+[packages/formula/src/type/index.ts:109](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L109)
 
 ---
 
@@ -1198,7 +1198,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:111](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L111)
+[packages/formula/src/type/index.ts:111](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L111)
 
 ---
 
@@ -1208,7 +1208,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:108](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L108)
+[packages/formula/src/type/index.ts:108](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L108)
 
 ---
 
@@ -1218,7 +1218,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:46](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L46)
+[packages/formula/src/controls/types.ts:46](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/controls/types.ts#L46)
 
 ---
 
@@ -1228,7 +1228,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:97](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L97)
+[packages/formula/src/type/index.ts:97](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L97)
 
 ## Variables
 
@@ -1238,7 +1238,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testCases.ts:141](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L141)
+[packages/formula/src/tests/testCases.ts:141](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L141)
 
 ---
 
@@ -1248,7 +1248,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L5)
+[packages/formula/src/grammar/lexer.ts:5](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L5)
 
 ---
 
@@ -1258,7 +1258,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:113](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L113)
+[packages/formula/src/grammar/lexer.ts:113](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L113)
 
 ---
 
@@ -1268,7 +1268,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:42](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L42)
+[packages/formula/src/grammar/lexer.ts:42](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L42)
 
 ---
 
@@ -1278,7 +1278,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:219](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L219)
+[packages/formula/src/grammar/lexer.ts:219](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L219)
 
 ---
 
@@ -1288,7 +1288,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:134](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L134)
+[packages/formula/src/grammar/lexer.ts:134](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L134)
 
 ---
 
@@ -1298,7 +1298,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/index.ts:46](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/index.ts#L46)
+[packages/formula/src/functions/index.ts:46](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/index.ts#L46)
 
 ---
 
@@ -1308,7 +1308,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testCases.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L7)
+[packages/formula/src/tests/testCases.ts:7](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L7)
 
 ---
 
@@ -1318,7 +1318,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/feature/basic/index.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/basic/index.ts#L7)
+[packages/formula/src/tests/feature/basic/index.ts:7](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/feature/basic/index.ts#L7)
 
 ---
 
@@ -1328,7 +1328,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:194](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L194)
+[packages/formula/src/grammar/lexer.ts:194](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L194)
 
 ---
 
@@ -1338,7 +1338,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:53](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L53)
+[packages/formula/src/type/index.ts:53](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L53)
 
 ---
 
@@ -1348,7 +1348,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:118](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L118)
+[packages/formula/src/grammar/lexer.ts:118](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L118)
 
 ---
 
@@ -1358,7 +1358,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:215](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L215)
+[packages/formula/src/grammar/lexer.ts:215](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L215)
 
 ---
 
@@ -1368,7 +1368,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L7)
+[packages/formula/src/grammar/lexer.ts:7](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L7)
 
 ---
 
@@ -1378,7 +1378,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:209](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L209)
+[packages/formula/src/grammar/lexer.ts:209](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L209)
 
 ---
 
@@ -1388,7 +1388,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L4)
+[packages/formula/src/grammar/lexer.ts:4](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L4)
 
 ---
 
@@ -1398,7 +1398,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/feature/complete/index.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/complete/index.ts#L16)
+[packages/formula/src/tests/feature/complete/index.ts:16](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/feature/complete/index.ts#L16)
 
 ---
 
@@ -1408,7 +1408,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:28](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L28)
+[packages/formula/src/grammar/lexer.ts:28](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L28)
 
 ---
 
@@ -1418,7 +1418,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:21](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L21)
+[packages/formula/src/tests/testType.ts:21](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testType.ts#L21)
 
 ---
 
@@ -1428,7 +1428,7 @@
 
 #### Defined in
 
-[packages/formula/src/render/index.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/render/index.ts#L5)
+[packages/formula/src/render/index.ts:5](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/render/index.ts#L5)
 
 ---
 
@@ -1438,7 +1438,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:189](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L189)
+[packages/formula/src/grammar/lexer.ts:189](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L189)
 
 ---
 
@@ -1448,7 +1448,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/feature/dependency/index.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/dependency/index.ts#L7)
+[packages/formula/src/tests/feature/dependency/index.ts:7](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/feature/dependency/index.ts#L7)
 
 ---
 
@@ -1458,7 +1458,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:166](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L166)
+[packages/formula/src/grammar/lexer.ts:166](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L166)
 
 ---
 
@@ -1468,7 +1468,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:129](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L129)
+[packages/formula/src/grammar/lexer.ts:129](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L129)
 
 ---
 
@@ -1478,7 +1478,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:144](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L144)
+[packages/formula/src/grammar/lexer.ts:144](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L144)
 
 ---
 
@@ -1488,7 +1488,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:213](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L213)
+[packages/formula/src/grammar/lexer.ts:213](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L213)
 
 ---
 
@@ -1498,7 +1498,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:65](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L65)
+[packages/formula/src/grammar/lexer.ts:65](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L65)
 
 ---
 
@@ -1508,7 +1508,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:71](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L71)
+[packages/formula/src/grammar/lexer.ts:71](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L71)
 
 ---
 
@@ -1518,7 +1518,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L3)
+[packages/formula/src/grammar/lexer.ts:3](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L3)
 
 ---
 
@@ -1528,7 +1528,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/feature/event/index.ts:18](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/event/index.ts#L18)
+[packages/formula/src/tests/feature/event/index.ts:18](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/feature/event/index.ts#L18)
 
 ---
 
@@ -1538,7 +1538,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:21](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L21)
+[packages/formula/src/grammar/lexer.ts:21](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L21)
 
 ---
 
@@ -1548,7 +1548,7 @@
 
 #### Defined in
 
-[packages/formula/src/context/features.ts:1](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/features.ts#L1)
+[packages/formula/src/context/features.ts:1](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/context/features.ts#L1)
 
 ---
 
@@ -1558,7 +1558,7 @@
 
 #### Defined in
 
-[packages/formula/src/version.ts:1](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/version.ts#L1)
+[packages/formula/src/version.ts:1](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/version.ts#L1)
 
 ---
 
@@ -1568,7 +1568,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:15](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L15)
+[packages/formula/src/type/index.ts:15](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L15)
 
 ---
 
@@ -1578,7 +1578,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:43](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L43)
+[packages/formula/src/type/index.ts:43](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L43)
 
 ---
 
@@ -1588,7 +1588,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:12](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L12)
+[packages/formula/src/grammar/lexer.ts:12](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L12)
 
 ---
 
@@ -1598,7 +1598,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/feature/index.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/feature/index.ts#L16)
+[packages/formula/src/tests/feature/index.ts:16](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/feature/index.ts#L16)
 
 ---
 
@@ -1608,7 +1608,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:322](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L322)
+[packages/formula/src/grammar/lexer.ts:322](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L322)
 
 ---
 
@@ -1618,7 +1618,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:217](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L217)
+[packages/formula/src/grammar/lexer.ts:217](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L217)
 
 ---
 
@@ -1628,7 +1628,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:59](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L59)
+[packages/formula/src/grammar/lexer.ts:59](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L59)
 
 ---
 
@@ -1638,7 +1638,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:95](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L95)
+[packages/formula/src/grammar/lexer.ts:95](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L95)
 
 ---
 
@@ -1648,7 +1648,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L16)
+[packages/formula/src/grammar/lexer.ts:16](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L16)
 
 ---
 
@@ -1658,7 +1658,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L8)
+[packages/formula/src/grammar/lexer.ts:8](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L8)
 
 ---
 
@@ -1668,7 +1668,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:32](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L32)
+[packages/formula/src/grammar/lexer.ts:32](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L32)
 
 ---
 
@@ -1678,7 +1678,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:178](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L178)
+[packages/formula/src/grammar/lexer.ts:178](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L178)
 
 ---
 
@@ -1688,7 +1688,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:175](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L175)
+[packages/formula/src/grammar/lexer.ts:175](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L175)
 
 ---
 
@@ -1698,7 +1698,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:172](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L172)
+[packages/formula/src/grammar/lexer.ts:172](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L172)
 
 ---
 
@@ -1708,7 +1708,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:181](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L181)
+[packages/formula/src/grammar/lexer.ts:181](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L181)
 
 ---
 
@@ -1718,7 +1718,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:77](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L77)
+[packages/formula/src/grammar/lexer.ts:77](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L77)
 
 ---
 
@@ -1728,7 +1728,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:101](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L101)
+[packages/formula/src/grammar/lexer.ts:101](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L101)
 
 ---
 
@@ -1738,7 +1738,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:154](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L154)
+[packages/formula/src/grammar/lexer.ts:154](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L154)
 
 ---
 
@@ -1748,7 +1748,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:160](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L160)
+[packages/formula/src/grammar/lexer.ts:160](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L160)
 
 ---
 
@@ -1758,7 +1758,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L6)
+[packages/formula/src/grammar/lexer.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L6)
 
 ---
 
@@ -1768,7 +1768,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testCases.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L5)
+[packages/formula/src/tests/testCases.ts:5](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L5)
 
 ---
 
@@ -1778,7 +1778,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testCases.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L8)
+[packages/formula/src/tests/testCases.ts:8](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L8)
 
 ---
 
@@ -1788,7 +1788,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testCases.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L6)
+[packages/formula/src/tests/testCases.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L6)
 
 ---
 
@@ -1798,7 +1798,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L54)
+[packages/formula/src/grammar/lexer.ts:54](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L54)
 
 ---
 
@@ -1808,7 +1808,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:83](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L83)
+[packages/formula/src/grammar/lexer.ts:83](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L83)
 
 ---
 
@@ -1818,7 +1818,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:89](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L89)
+[packages/formula/src/grammar/lexer.ts:89](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L89)
 
 ---
 
@@ -1828,7 +1828,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:204](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L204)
+[packages/formula/src/grammar/lexer.ts:204](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L204)
 
 ---
 
@@ -1838,7 +1838,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:183](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L183)
+[packages/formula/src/grammar/lexer.ts:183](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L183)
 
 ---
 
@@ -1848,7 +1848,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/index.ts:56](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/index.ts#L56)
+[packages/formula/src/grammar/operations/index.ts:56](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/index.ts#L56)
 
 ---
 
@@ -1858,7 +1858,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:231](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L231)
+[packages/formula/src/type/index.ts:231](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L231)
 
 ---
 
@@ -1868,7 +1868,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:48](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L48)
+[packages/formula/src/grammar/lexer.ts:48](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L48)
 
 ---
 
@@ -1878,7 +1878,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/parser.ts:325](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L325)
+[packages/formula/src/grammar/parser.ts:325](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/parser.ts#L325)
 
 ---
 
@@ -1888,7 +1888,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L107)
+[packages/formula/src/grammar/lexer.ts:107](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L107)
 
 ---
 
@@ -1898,7 +1898,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:179](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L179)
+[packages/formula/src/grammar/lexer.ts:179](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L179)
 
 ---
 
@@ -1908,7 +1908,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:176](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L176)
+[packages/formula/src/grammar/lexer.ts:176](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L176)
 
 ---
 
@@ -1918,7 +1918,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:173](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L173)
+[packages/formula/src/grammar/lexer.ts:173](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L173)
 
 ---
 
@@ -1928,7 +1928,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:27](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L27)
+[packages/formula/src/grammar/lexer.ts:27](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L27)
 
 ---
 
@@ -1938,7 +1938,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:211](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L211)
+[packages/formula/src/grammar/lexer.ts:211](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L211)
 
 ---
 
@@ -1948,7 +1948,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:139](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L139)
+[packages/formula/src/grammar/lexer.ts:139](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L139)
 
 ---
 
@@ -1958,7 +1958,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:124](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L124)
+[packages/formula/src/grammar/lexer.ts:124](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L124)
 
 ---
 
@@ -1968,7 +1968,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:199](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L199)
+[packages/formula/src/grammar/lexer.ts:199](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L199)
 
 ---
 
@@ -1978,7 +1978,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:14](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L14)
+[packages/formula/src/grammar/lexer.ts:14](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L14)
 
 ---
 
@@ -1988,7 +1988,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:37](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L37)
+[packages/formula/src/grammar/lexer.ts:37](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L37)
 
 ---
 
@@ -1998,7 +1998,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:33](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L33)
+[packages/formula/src/grammar/lexer.ts:33](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L33)
 
 ---
 
@@ -2008,7 +2008,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:149](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L149)
+[packages/formula/src/grammar/lexer.ts:149](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L149)
 
 ---
 
@@ -2018,7 +2018,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:222](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L222)
+[packages/formula/src/grammar/lexer.ts:222](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L222)
 
 ---
 
@@ -2028,7 +2028,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/access.ts:58](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/access.ts#L58)
+[packages/formula/src/grammar/operations/access.ts:58](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/access.ts#L58)
 
 ---
 
@@ -2038,7 +2038,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/addition.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/addition.ts#L7)
+[packages/formula/src/grammar/operations/addition.ts:7](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/addition.ts#L7)
 
 ---
 
@@ -2048,7 +2048,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:228](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L228)
+[packages/formula/src/grammar/lexer.ts:228](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L228)
 
 ---
 
@@ -2060,7 +2060,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/api/currentPosition.ts:42](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/api/currentPosition.ts#L42)
+[packages/formula/src/functions/api/currentPosition.ts:42](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/api/currentPosition.ts#L42)
 
 ---
 
@@ -2072,7 +2072,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/api/exchange.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/api/exchange.ts#L8)
+[packages/formula/src/functions/api/exchange.ts:8](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/api/exchange.ts#L8)
 
 ---
 
@@ -2082,7 +2082,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/arguments.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/arguments.ts#L5)
+[packages/formula/src/grammar/operations/arguments.ts:5](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/arguments.ts#L5)
 
 ---
 
@@ -2094,7 +2094,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/array/average.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/array/average.ts#L6)
+[packages/formula/src/functions/array/average.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/array/average.ts#L6)
 
 ---
 
@@ -2106,7 +2106,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/array/join.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/array/join.ts#L6)
+[packages/formula/src/functions/array/join.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/array/join.ts#L6)
 
 ---
 
@@ -2116,7 +2116,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/array.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/array.ts#L5)
+[packages/formula/src/grammar/operations/array.ts:5](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/array.ts#L5)
 
 ---
 
@@ -2128,7 +2128,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/array/sum.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/array/sum.ts#L6)
+[packages/formula/src/functions/array/sum.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/array/sum.ts#L6)
 
 ---
 
@@ -2138,7 +2138,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/block.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/block.ts#L8)
+[packages/formula/src/grammar/operations/block.ts:8](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/block.ts#L8)
 
 ---
 
@@ -2148,7 +2148,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/boolean.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/boolean.ts#L3)
+[packages/formula/src/grammar/operations/boolean.ts:3](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/boolean.ts#L3)
 
 ---
 
@@ -2158,7 +2158,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/chain.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/chain.ts#L4)
+[packages/formula/src/grammar/operations/chain.ts:4](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/chain.ts#L4)
 
 ---
 
@@ -2168,7 +2168,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/combine.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/combine.ts#L5)
+[packages/formula/src/grammar/operations/combine.ts:5](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/combine.ts#L5)
 
 ---
 
@@ -2178,7 +2178,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/compare.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/compare.ts#L5)
+[packages/formula/src/grammar/operations/compare.ts:5](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/compare.ts#L5)
 
 ---
 
@@ -2188,7 +2188,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/concat.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/concat.ts#L3)
+[packages/formula/src/grammar/operations/concat.ts:3](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/concat.ts#L3)
 
 ---
 
@@ -2200,7 +2200,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/control/button.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/control/button.ts#L8)
+[packages/formula/src/functions/control/button.ts:8](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/control/button.ts#L8)
 
 ---
 
@@ -2212,7 +2212,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/control/switch.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/control/switch.ts#L8)
+[packages/formula/src/functions/control/switch.ts:8](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/control/switch.ts#L8)
 
 ---
 
@@ -2224,7 +2224,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/convert/toArray.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/convert/toArray.ts#L6)
+[packages/formula/src/functions/convert/toArray.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/convert/toArray.ts#L6)
 
 ---
 
@@ -2236,7 +2236,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/convert/toBoolean.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/convert/toBoolean.ts#L6)
+[packages/formula/src/functions/convert/toBoolean.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/convert/toBoolean.ts#L6)
 
 ---
 
@@ -2248,7 +2248,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/convert/toNumber.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/convert/toNumber.ts#L6)
+[packages/formula/src/functions/convert/toNumber.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/convert/toNumber.ts#L6)
 
 ---
 
@@ -2260,7 +2260,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/convert/toRecord.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/convert/toRecord.ts#L6)
+[packages/formula/src/functions/convert/toRecord.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/convert/toRecord.ts#L6)
 
 ---
 
@@ -2272,7 +2272,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/convert/toString.ts:24](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/convert/toString.ts#L24)
+[packages/formula/src/functions/convert/toString.ts:24](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/convert/toString.ts#L24)
 
 ---
 
@@ -2284,7 +2284,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/core/set.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/core/set.ts#L6)
+[packages/formula/src/functions/core/set.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/core/set.ts#L6)
 
 ---
 
@@ -2296,7 +2296,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/date/date.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/date/date.ts#L6)
+[packages/formula/src/functions/date/date.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/date/date.ts#L6)
 
 ---
 
@@ -2308,7 +2308,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/date/now.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/date/now.ts#L6)
+[packages/formula/src/functions/date/now.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/date/now.ts#L6)
 
 ---
 
@@ -2318,7 +2318,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/equalCompare.ts:5](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/equalCompare.ts#L5)
+[packages/formula/src/grammar/operations/equalCompare.ts:5](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/equalCompare.ts#L5)
 
 ---
 
@@ -2330,7 +2330,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/error/error.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/error/error.ts#L6)
+[packages/formula/src/functions/error/error.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/error/error.ts#L6)
 
 ---
 
@@ -2340,7 +2340,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/expression.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/expression.ts#L3)
+[packages/formula/src/grammar/operations/expression.ts:3](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/expression.ts#L3)
 
 ---
 
@@ -2350,7 +2350,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/in.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/in.ts#L7)
+[packages/formula/src/grammar/operations/in.ts:7](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/in.ts#L7)
 
 ---
 
@@ -2362,7 +2362,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/logic/if.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/logic/if.ts#L6)
+[packages/formula/src/functions/logic/if.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/logic/if.ts#L6)
 
 ---
 
@@ -2374,7 +2374,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/logic/ifError.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/logic/ifError.ts#L6)
+[packages/formula/src/functions/logic/ifError.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/logic/ifError.ts#L6)
 
 ---
 
@@ -2386,7 +2386,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/math/abs.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/abs.ts#L6)
+[packages/formula/src/functions/math/abs.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/math/abs.ts#L6)
 
 ---
 
@@ -2398,7 +2398,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/math/floor.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/floor.ts#L6)
+[packages/formula/src/functions/math/floor.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/math/floor.ts#L6)
 
 ---
 
@@ -2410,7 +2410,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/math/int.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/int.ts#L6)
+[packages/formula/src/functions/math/int.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/math/int.ts#L6)
 
 ---
 
@@ -2422,7 +2422,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/math/ln.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/ln.ts#L6)
+[packages/formula/src/functions/math/ln.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/math/ln.ts#L6)
 
 ---
 
@@ -2434,7 +2434,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/math/log10.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/log10.ts#L6)
+[packages/formula/src/functions/math/log10.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/math/log10.ts#L6)
 
 ---
 
@@ -2446,7 +2446,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/math/pi.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/pi.ts#L6)
+[packages/formula/src/functions/math/pi.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/math/pi.ts#L6)
 
 ---
 
@@ -2458,7 +2458,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/math/power.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/power.ts#L6)
+[packages/formula/src/functions/math/power.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/math/power.ts#L6)
 
 ---
 
@@ -2470,7 +2470,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/math/rand.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/rand.ts#L6)
+[packages/formula/src/functions/math/rand.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/math/rand.ts#L6)
 
 ---
 
@@ -2482,7 +2482,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/math/round.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/round.ts#L6)
+[packages/formula/src/functions/math/round.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/math/round.ts#L6)
 
 ---
 
@@ -2494,7 +2494,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/math/trunc.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/math/trunc.ts#L6)
+[packages/formula/src/functions/math/trunc.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/math/trunc.ts#L6)
 
 ---
 
@@ -2504,7 +2504,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/multiplication.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/multiplication.ts#L7)
+[packages/formula/src/grammar/operations/multiplication.ts:7](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/multiplication.ts#L7)
 
 ---
 
@@ -2514,7 +2514,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/name.ts:73](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/name.ts#L73)
+[packages/formula/src/grammar/operations/name.ts:73](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/name.ts#L73)
 
 ---
 
@@ -2524,7 +2524,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/not.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/not.ts#L3)
+[packages/formula/src/grammar/operations/not.ts:3](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/not.ts#L3)
 
 ---
 
@@ -2534,7 +2534,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/null.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/null.ts#L3)
+[packages/formula/src/grammar/operations/null.ts:3](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/null.ts#L3)
 
 ---
 
@@ -2544,7 +2544,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/number.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/number.ts#L4)
+[packages/formula/src/grammar/operations/number.ts:4](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/number.ts#L4)
 
 ---
 
@@ -2556,7 +2556,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/object/t.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/object/t.ts#L6)
+[packages/formula/src/functions/object/t.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/object/t.ts#L6)
 
 ---
 
@@ -2568,7 +2568,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/object/type.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/object/type.ts#L6)
+[packages/formula/src/functions/object/type.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/object/type.ts#L6)
 
 ---
 
@@ -2578,7 +2578,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/parenthesis.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/parenthesis.ts#L3)
+[packages/formula/src/grammar/operations/parenthesis.ts:3](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/parenthesis.ts#L3)
 
 ---
 
@@ -2590,7 +2590,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/powerfx/countIf.ts:42](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/powerfx/countIf.ts#L42)
+[packages/formula/src/functions/powerfx/countIf.ts:42](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/powerfx/countIf.ts#L42)
 
 ---
 
@@ -2600,7 +2600,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/predicate.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/predicate.ts#L7)
+[packages/formula/src/grammar/operations/predicate.ts:7](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/predicate.ts#L7)
 
 ---
 
@@ -2612,7 +2612,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/process/sleep.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/process/sleep.ts#L7)
+[packages/formula/src/functions/process/sleep.ts:7](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/process/sleep.ts#L7)
 
 ---
 
@@ -2622,7 +2622,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/range.ts:4](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/range.ts#L4)
+[packages/formula/src/grammar/operations/range.ts:4](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/range.ts#L4)
 
 ---
 
@@ -2632,7 +2632,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/recordField.ts:3](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/recordField.ts#L3)
+[packages/formula/src/grammar/operations/recordField.ts:3](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/recordField.ts#L3)
 
 ---
 
@@ -2642,7 +2642,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/record.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/record.ts#L6)
+[packages/formula/src/grammar/operations/record.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/record.ts#L6)
 
 ---
 
@@ -2654,7 +2654,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/request/get.ts:8](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/request/get.ts#L8)
+[packages/formula/src/functions/request/get.ts:8](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/request/get.ts#L8)
 
 ---
 
@@ -2666,7 +2666,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/spreadsheet/averageIfs.ts:40](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/averageIfs.ts#L40)
+[packages/formula/src/functions/spreadsheet/averageIfs.ts:40](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/spreadsheet/averageIfs.ts#L40)
 
 ---
 
@@ -2678,7 +2678,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/spreadsheet/columnCount.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/columnCount.ts#L6)
+[packages/formula/src/functions/spreadsheet/columnCount.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/spreadsheet/columnCount.ts#L6)
 
 ---
 
@@ -2690,7 +2690,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/spreadsheet/countA.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/countA.ts#L6)
+[packages/formula/src/functions/spreadsheet/countA.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/spreadsheet/countA.ts#L6)
 
 ---
 
@@ -2702,7 +2702,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/spreadsheet/countIfs.ts:25](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/countIfs.ts#L25)
+[packages/formula/src/functions/spreadsheet/countIfs.ts:25](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/spreadsheet/countIfs.ts#L25)
 
 ---
 
@@ -2714,7 +2714,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/spreadsheet/max.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/max.ts#L6)
+[packages/formula/src/functions/spreadsheet/max.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/spreadsheet/max.ts#L6)
 
 ---
 
@@ -2726,7 +2726,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/spreadsheet/row.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/row.ts#L6)
+[packages/formula/src/functions/spreadsheet/row.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/spreadsheet/row.ts#L6)
 
 ---
 
@@ -2738,7 +2738,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/spreadsheet/rowCount.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/rowCount.ts#L6)
+[packages/formula/src/functions/spreadsheet/rowCount.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/spreadsheet/rowCount.ts#L6)
 
 ---
 
@@ -2750,7 +2750,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/spreadsheet/spreadsheet.ts:99](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/spreadsheet.ts#L99)
+[packages/formula/src/functions/spreadsheet/spreadsheet.ts:99](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/spreadsheet/spreadsheet.ts#L99)
 
 ---
 
@@ -2762,7 +2762,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/spreadsheet/sum.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/sum.ts#L6)
+[packages/formula/src/functions/spreadsheet/sum.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/spreadsheet/sum.ts#L6)
 
 ---
 
@@ -2774,7 +2774,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/spreadsheet/sumIfs.ts:34](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/sumIfs.ts#L34)
+[packages/formula/src/functions/spreadsheet/sumIfs.ts:34](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/spreadsheet/sumIfs.ts#L34)
 
 ---
 
@@ -2786,7 +2786,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/spreadsheet/sumProduct.ts:29](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/sumProduct.ts#L29)
+[packages/formula/src/functions/spreadsheet/sumProduct.ts:29](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/spreadsheet/sumProduct.ts#L29)
 
 ---
 
@@ -2798,7 +2798,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/spreadsheet/toRecordArray.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/toRecordArray.ts#L6)
+[packages/formula/src/functions/spreadsheet/toRecordArray.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/spreadsheet/toRecordArray.ts#L6)
 
 ---
 
@@ -2810,7 +2810,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/spreadsheet/vlookup.ts:58](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/vlookup.ts#L58)
+[packages/formula/src/functions/spreadsheet/vlookup.ts:58](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/spreadsheet/vlookup.ts#L58)
 
 ---
 
@@ -2822,7 +2822,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/spreadsheet/xlookup.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/spreadsheet/xlookup.ts#L54)
+[packages/formula/src/functions/spreadsheet/xlookup.ts:54](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/spreadsheet/xlookup.ts#L54)
 
 ---
 
@@ -2834,7 +2834,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/string/len.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/string/len.ts#L6)
+[packages/formula/src/functions/string/len.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/string/len.ts#L6)
 
 ---
 
@@ -2844,7 +2844,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/string.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/string.ts#L17)
+[packages/formula/src/grammar/operations/string.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/string.ts#L17)
 
 ---
 
@@ -2856,7 +2856,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/string/split.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/string/split.ts#L6)
+[packages/formula/src/functions/string/split.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/string/split.ts#L6)
 
 ---
 
@@ -2868,7 +2868,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/string/startWith.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/string/startWith.ts#L6)
+[packages/formula/src/functions/string/startWith.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/string/startWith.ts#L6)
 
 ---
 
@@ -2880,7 +2880,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/string/toBar.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/string/toBar.ts#L6)
+[packages/formula/src/functions/string/toBar.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/string/toBar.ts#L6)
 
 ---
 
@@ -2892,7 +2892,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/string/toQrcode.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/string/toQrcode.ts#L6)
+[packages/formula/src/functions/string/toQrcode.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/string/toQrcode.ts#L6)
 
 ---
 
@@ -2904,7 +2904,7 @@
 
 #### Defined in
 
-[packages/formula/src/functions/string/trim.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/string/trim.ts#L6)
+[packages/formula/src/functions/string/trim.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/string/trim.ts#L6)
 
 ---
 
@@ -2914,7 +2914,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/thisRecord.ts:22](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/thisRecord.ts#L22)
+[packages/formula/src/grammar/operations/thisRecord.ts:22](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/thisRecord.ts#L22)
 
 ---
 
@@ -2924,7 +2924,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/thisRow.ts:22](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/thisRow.ts#L22)
+[packages/formula/src/grammar/operations/thisRow.ts:22](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/thisRow.ts#L22)
 
 ---
 
@@ -2934,7 +2934,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:327](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L327)
+[packages/formula/src/grammar/lexer.ts:327](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L327)
 
 ## Functions
 
@@ -2954,7 +2954,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:53](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L53)
+[packages/formula/src/tests/testType.ts:53](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testType.ts#L53)
 
 ---
 
@@ -2974,7 +2974,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -2994,7 +2994,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3014,7 +3014,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3034,7 +3034,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3054,7 +3054,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3076,7 +3076,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3098,7 +3098,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3120,7 +3120,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3144,7 +3144,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3167,7 +3167,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3187,7 +3187,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3207,7 +3207,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3227,7 +3227,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3252,7 +3252,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3272,7 +3272,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3297,7 +3297,7 @@
 
 #### Defined in
 
-[packages/schema/src/events/types.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
+[packages/schema/src/events/types.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/schema/src/events/types.ts#L17)
 
 ---
 
@@ -3319,7 +3319,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/operations/access.ts:14](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operations/access.ts#L14)
+[packages/formula/src/grammar/operations/access.ts:14](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operations/access.ts#L14)
 
 ---
 
@@ -3340,7 +3340,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:599](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L599)
+[packages/formula/src/grammar/core.ts:599](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/core.ts#L599)
 
 ---
 
@@ -3361,7 +3361,7 @@
 
 #### Defined in
 
-[packages/formula/src/grammar/completer.ts:90](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L90)
+[packages/formula/src/grammar/completer.ts:90](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L90)
 
 ---
 
@@ -3389,7 +3389,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/format.ts:114](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/format.ts#L114)
+[packages/formula/src/grammar/format.ts:114](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/format.ts#L114)
 
 ---
 
@@ -3411,7 +3411,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/completer.ts:558](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L558)
+[packages/formula/src/grammar/completer.ts:558](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L558)
 
 ---
 
@@ -3431,7 +3431,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:292](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L292)
+[packages/formula/src/grammar/util.ts:292](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L292)
 
 ---
 
@@ -3452,7 +3452,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:95](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L95)
+[packages/formula/src/grammar/convert.ts:95](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L95)
 
 ---
 
@@ -3474,7 +3474,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/completer.ts:474](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L474)
+[packages/formula/src/grammar/completer.ts:474](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L474)
 
 ---
 
@@ -3494,7 +3494,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:18](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L18)
+[packages/formula/src/grammar/convert.ts:18](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L18)
 
 ---
 
@@ -3514,7 +3514,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:362](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L362)
+[packages/formula/src/grammar/util.ts:362](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L362)
 
 ---
 
@@ -3552,7 +3552,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/tests/testHelper.ts:298](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L298)
+[packages/formula/src/tests/testHelper.ts:298](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L298)
 
 ---
 
@@ -3574,7 +3574,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/functions/index.ts:34](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/functions/index.ts#L34)
+[packages/formula/src/functions/index.ts:34](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/functions/index.ts#L34)
 
 ---
 
@@ -3594,7 +3594,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/lambda.ts:51](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lambda.ts#L51)
+[packages/formula/src/grammar/lambda.ts:51](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lambda.ts#L51)
 
 ---
 
@@ -3620,7 +3620,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/tests/testCases.ts:160](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L160)
+[packages/formula/src/tests/testCases.ts:160](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testCases.ts#L160)
 
 ---
 
@@ -3649,7 +3649,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/context/persist.ts:36](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/persist.ts#L36)
+[packages/formula/src/context/persist.ts:36](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/context/persist.ts#L36)
 
 ---
 
@@ -3669,7 +3669,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:320](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L320)
+[packages/formula/src/grammar/util.ts:320](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L320)
 
 ---
 
@@ -3689,7 +3689,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:310](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L310)
+[packages/formula/src/grammar/util.ts:310](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L310)
 
 ---
 
@@ -3711,7 +3711,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:75](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L75)
+[packages/formula/src/context/variable.ts:75](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/context/variable.ts#L75)
 
 ---
 
@@ -3731,7 +3731,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/lexer.ts:332](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L332)
+[packages/formula/src/grammar/lexer.ts:332](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lexer.ts#L332)
 
 ---
 
@@ -3752,7 +3752,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:68](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L68)
+[packages/formula/src/grammar/util.ts:68](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L68)
 
 ---
 
@@ -3772,7 +3772,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:70](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L70)
+[packages/formula/src/grammar/convert.ts:70](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L70)
 
 ---
 
@@ -3793,7 +3793,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:83](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L83)
+[packages/formula/src/grammar/convert.ts:83](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L83)
 
 ---
 
@@ -3814,7 +3814,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:79](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L79)
+[packages/formula/src/grammar/convert.ts:79](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L79)
 
 ---
 
@@ -3834,7 +3834,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:47](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L47)
+[packages/formula/src/grammar/convert.ts:47](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L47)
 
 ---
 
@@ -3855,7 +3855,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:107](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L107)
+[packages/formula/src/grammar/convert.ts:107](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L107)
 
 ---
 
@@ -3875,7 +3875,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:275](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L275)
+[packages/formula/src/grammar/util.ts:275](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L275)
 
 ---
 
@@ -3906,7 +3906,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:540](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L540)
+[packages/formula/src/type/index.ts:540](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L540)
 
 ---
 
@@ -3926,7 +3926,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/context/task.ts:21](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/task.ts#L21)
+[packages/formula/src/context/task.ts:21](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/context/task.ts#L21)
 
 ---
 
@@ -3947,7 +3947,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:20](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L20)
+[packages/formula/src/grammar/convert.ts:20](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L20)
 
 ---
 
@@ -3967,7 +3967,7 @@ Apply format to the formula.
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:821](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L821)
+[packages/formula/src/type/index.ts:821](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L821)
 
 ---
 
@@ -3992,7 +3992,7 @@ Dispatch Block Rename Event.
 
 #### Defined in
 
-[packages/formula/src/events/block.ts:42](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/block.ts#L42)
+[packages/formula/src/events/block.ts:42](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/events/block.ts#L42)
 
 ---
 
@@ -4016,7 +4016,7 @@ Dispatch Block Delete Event.
 
 #### Defined in
 
-[packages/formula/src/events/block.ts:7](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/block.ts#L7)
+[packages/formula/src/events/block.ts:7](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/events/block.ts#L7)
 
 ---
 
@@ -4040,7 +4040,7 @@ Dispatch Block Delete Event.
 
 #### Defined in
 
-[packages/formula/src/events/column.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/column.ts#L17)
+[packages/formula/src/events/column.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/events/column.ts#L17)
 
 ---
 
@@ -4064,7 +4064,7 @@ Dispatch Block Delete Event.
 
 #### Defined in
 
-[packages/formula/src/events/spreadsheet.ts:27](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/spreadsheet.ts#L27)
+[packages/formula/src/events/spreadsheet.ts:27](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/events/spreadsheet.ts#L27)
 
 ---
 
@@ -4086,7 +4086,7 @@ Dispatch Block Delete Event.
 
 #### Defined in
 
-[packages/formula/src/events/spreadsheet.ts:52](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/spreadsheet.ts#L52)
+[packages/formula/src/events/spreadsheet.ts:52](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/events/spreadsheet.ts#L52)
 
 ---
 
@@ -4110,7 +4110,7 @@ Dispatch Block Delete Event.
 
 #### Defined in
 
-[packages/formula/src/events/row.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/events/row.ts#L17)
+[packages/formula/src/events/row.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/events/row.ts#L17)
 
 ---
 
@@ -4139,7 +4139,7 @@ Dispatch Block Delete Event.
 
 #### Defined in
 
-[packages/formula/src/context/persist.ts:44](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/persist.ts#L44)
+[packages/formula/src/context/persist.ts:44](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/context/persist.ts#L44)
 
 ---
 
@@ -4167,7 +4167,7 @@ Dispatch Block Delete Event.
 
 #### Defined in
 
-[packages/formula/src/context/persist.ts:29](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/persist.ts#L29)
+[packages/formula/src/context/persist.ts:29](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/context/persist.ts#L29)
 
 ---
 
@@ -4187,7 +4187,7 @@ Dispatch Block Delete Event.
 
 #### Defined in
 
-[packages/formula/src/context/persist.ts:13](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/persist.ts#L13)
+[packages/formula/src/context/persist.ts:13](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/context/persist.ts#L13)
 
 ---
 
@@ -4208,7 +4208,7 @@ Dispatch Block Delete Event.
 
 #### Defined in
 
-[packages/formula/src/context/persist.ts:21](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/persist.ts#L21)
+[packages/formula/src/context/persist.ts:21](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/context/persist.ts#L21)
 
 ---
 
@@ -4236,7 +4236,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:137](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L137)
+[packages/formula/src/grammar/util.ts:137](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L137)
 
 ---
 
@@ -4256,7 +4256,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:46](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L46)
+[packages/formula/src/context/variable.ts:46](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/context/variable.ts#L46)
 
 ---
 
@@ -4276,7 +4276,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:355](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L355)
+[packages/formula/src/grammar/util.ts:355](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L355)
 
 ---
 
@@ -4296,7 +4296,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:175](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L175)
+[packages/formula/src/grammar/util.ts:175](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L175)
 
 ---
 
@@ -4316,7 +4316,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L63)
+[packages/formula/src/context/variable.ts:63](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/context/variable.ts#L63)
 
 ---
 
@@ -4336,7 +4336,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/context/variable.ts:40](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/context/variable.ts#L40)
+[packages/formula/src/context/variable.ts:40](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/context/variable.ts#L40)
 
 ---
 
@@ -4356,7 +4356,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:63](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L63)
+[packages/formula/src/grammar/convert.ts:63](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L63)
 
 ---
 
@@ -4377,7 +4377,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/completer.ts:527](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L527)
+[packages/formula/src/grammar/completer.ts:527](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L527)
 
 ---
 
@@ -4405,7 +4405,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/lambda.ts:6](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/lambda.ts#L6)
+[packages/formula/src/grammar/lambda.ts:6](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/lambda.ts#L6)
 
 ---
 
@@ -4419,7 +4419,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/tests/testHelper.ts:296](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L296)
+[packages/formula/src/tests/testHelper.ts:296](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L296)
 
 ---
 
@@ -4443,7 +4443,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:579](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L579)
+[packages/formula/src/grammar/core.ts:579](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/core.ts#L579)
 
 ---
 
@@ -4463,7 +4463,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/completer.ts:371](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L371)
+[packages/formula/src/grammar/completer.ts:371](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L371)
 
 ---
 
@@ -4484,7 +4484,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/completer.ts:169](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L169)
+[packages/formula/src/grammar/completer.ts:169](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L169)
 
 ---
 
@@ -4508,7 +4508,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:458](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L458)
+[packages/formula/src/grammar/core.ts:458](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/core.ts#L458)
 
 ---
 
@@ -4532,7 +4532,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:556](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L556)
+[packages/formula/src/grammar/core.ts:556](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/core.ts#L556)
 
 ---
 
@@ -4558,7 +4558,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/operator.ts:102](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operator.ts#L102)
+[packages/formula/src/grammar/operator.ts:102](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operator.ts#L102)
 
 ---
 
@@ -4586,7 +4586,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:190](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L190)
+[packages/formula/src/grammar/util.ts:190](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L190)
 
 ---
 
@@ -4606,7 +4606,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/codeFragment.ts:1026](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L1026)
+[packages/formula/src/grammar/codeFragment.ts:1026](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L1026)
 
 ---
 
@@ -4626,7 +4626,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/tests/testHelper.ts:193](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L193)
+[packages/formula/src/tests/testHelper.ts:193](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L193)
 
 ---
 
@@ -4646,7 +4646,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/tests/testMock.ts:25](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L25)
+[packages/formula/src/tests/testMock.ts:25](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L25)
 
 ---
 
@@ -4666,7 +4666,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:141](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L141)
+[packages/formula/src/grammar/util.ts:141](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L141)
 
 ---
 
@@ -4687,7 +4687,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/tests/testMock.ts:9](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L9)
+[packages/formula/src/tests/testMock.ts:9](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L9)
 
 ---
 
@@ -4710,7 +4710,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/tests/testMock.ts:17](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L17)
+[packages/formula/src/tests/testMock.ts:17](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L17)
 
 ---
 
@@ -4731,7 +4731,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/tests/testMock.ts:15](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L15)
+[packages/formula/src/tests/testMock.ts:15](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L15)
 
 ---
 
@@ -4751,7 +4751,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/tests/testMock.ts:16](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L16)
+[packages/formula/src/tests/testMock.ts:16](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L16)
 
 ---
 
@@ -4772,7 +4772,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/tests/testMock.ts:10](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L10)
+[packages/formula/src/tests/testMock.ts:10](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testMock.ts#L10)
 
 ---
 
@@ -4799,7 +4799,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:159](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L159)
+[packages/formula/src/grammar/util.ts:159](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L159)
 
 ---
 
@@ -4819,7 +4819,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/core.ts:86](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/core.ts#L86)
+[packages/formula/src/grammar/core.ts:86](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/core.ts#L86)
 
 ---
 
@@ -4839,7 +4839,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/operator.ts:195](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/operator.ts#L195)
+[packages/formula/src/grammar/operator.ts:195](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/operator.ts#L195)
 
 ---
 
@@ -4859,7 +4859,7 @@ encodeString('foo') // => "\"foo\""
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:367](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L367)
+[packages/formula/src/grammar/util.ts:367](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L367)
 
 ---
 
@@ -4889,7 +4889,7 @@ parseString('"foo"') // => "foo"
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:122](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L122)
+[packages/formula/src/grammar/util.ts:122](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L122)
 
 ---
 
@@ -4909,7 +4909,7 @@ parseString('"foo"') // => "foo"
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:281](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L281)
+[packages/formula/src/grammar/util.ts:281](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L281)
 
 ---
 
@@ -4939,7 +4939,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:102](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L102)
+[packages/formula/src/grammar/util.ts:102](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L102)
 
 ---
 
@@ -4959,7 +4959,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:55](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L55)
+[packages/formula/src/grammar/convert.ts:55](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L55)
 
 ---
 
@@ -4980,7 +4980,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:120](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L120)
+[packages/formula/src/grammar/convert.ts:120](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L120)
 
 ---
 
@@ -5003,7 +5003,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:254](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L254)
+[packages/formula/src/grammar/util.ts:254](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L254)
 
 ---
 
@@ -5024,7 +5024,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:21](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L21)
+[packages/formula/src/grammar/util.ts:21](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L21)
 
 ---
 
@@ -5045,7 +5045,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:149](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L149)
+[packages/formula/src/grammar/util.ts:149](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L149)
 
 ---
 
@@ -5065,7 +5065,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/tests/testHelper.ts:306](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L306)
+[packages/formula/src/tests/testHelper.ts:306](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L306)
 
 ---
 
@@ -5085,7 +5085,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:39](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L39)
+[packages/formula/src/grammar/convert.ts:39](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L39)
 
 ---
 
@@ -5106,7 +5106,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:142](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L142)
+[packages/formula/src/grammar/convert.ts:142](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L142)
 
 ---
 
@@ -5127,7 +5127,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/completer.ts:435](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L435)
+[packages/formula/src/grammar/completer.ts:435](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L435)
 
 ---
 
@@ -5149,7 +5149,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/codeFragment.ts:45](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L45)
+[packages/formula/src/grammar/codeFragment.ts:45](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/codeFragment.ts#L45)
 
 ---
 
@@ -5170,7 +5170,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/tests/testHelper.ts:288](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L288)
+[packages/formula/src/tests/testHelper.ts:288](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testHelper.ts#L288)
 
 ---
 
@@ -5191,7 +5191,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:169](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L169)
+[packages/formula/src/grammar/util.ts:169](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L169)
 
 ---
 
@@ -5212,7 +5212,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/util.ts:162](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/util.ts#L162)
+[packages/formula/src/grammar/util.ts:162](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/util.ts#L162)
 
 ---
 
@@ -5232,7 +5232,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:31](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L31)
+[packages/formula/src/grammar/convert.ts:31](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L31)
 
 ---
 
@@ -5253,7 +5253,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:131](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L131)
+[packages/formula/src/grammar/convert.ts:131](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L131)
 
 ---
 
@@ -5274,7 +5274,7 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/completer.ts:494](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L494)
+[packages/formula/src/grammar/completer.ts:494](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/completer.ts#L494)
 
 ---
 
@@ -5295,4 +5295,4 @@ reverseTraversal('bar', 2) // => ["bar", "ba"]
 
 #### Defined in
 
-[packages/formula/src/grammar/convert.ts:15](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L15)
+[packages/formula/src/grammar/convert.ts:15](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/grammar/convert.ts#L15)

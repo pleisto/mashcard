@@ -14,4 +14,4 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:360](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L360)
+[packages/formula/src/type/index.ts:360](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L360)

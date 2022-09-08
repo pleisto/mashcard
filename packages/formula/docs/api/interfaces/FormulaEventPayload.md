@@ -26,7 +26,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:703](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L703)
+[packages/formula/src/type/index.ts:703](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L703)
 
 ---
 
@@ -36,7 +36,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:700](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L700)
+[packages/formula/src/type/index.ts:700](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L700)
 
 ---
 
@@ -46,7 +46,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:705](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L705)
+[packages/formula/src/type/index.ts:705](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L705)
 
 ---
 
@@ -56,7 +56,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:704](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L704)
+[packages/formula/src/type/index.ts:704](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L704)
 
 ---
 
@@ -66,7 +66,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:702](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L702)
+[packages/formula/src/type/index.ts:702](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L702)
 
 ---
 
@@ -76,7 +76,7 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:684](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L684)
+[packages/formula/src/type/index.ts:684](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L684)
 
 ---
 
@@ -86,4 +86,4 @@
 
 #### Defined in
 
-[packages/formula/src/type/index.ts:701](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/type/index.ts#L701)
+[packages/formula/src/type/index.ts:701](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/type/index.ts#L701)

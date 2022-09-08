@@ -21,7 +21,7 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:221](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L221)
+[packages/formula/src/controls/types.ts:221](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/controls/types.ts#L221)
 
 ---
 
@@ -31,4 +31,4 @@
 
 #### Defined in
 
-[packages/formula/src/controls/types.ts:220](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/controls/types.ts#L220)
+[packages/formula/src/controls/types.ts:220](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/controls/types.ts#L220)

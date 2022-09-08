@@ -16,7 +16,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:55](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L55)
+[packages/formula/src/tests/testType.ts:55](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testType.ts#L55)
 
 ---
 
@@ -26,7 +26,7 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:54](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L54)
+[packages/formula/src/tests/testType.ts:54](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testType.ts#L54)
 
 ---
 
@@ -50,4 +50,4 @@
 
 #### Defined in
 
-[packages/formula/src/tests/testType.ts:53](https://github.com/mashcard/mashcard/blob/main/packages/formula/src/tests/testType.ts#L53)
+[packages/formula/src/tests/testType.ts:53](https://github.com/mashpod/mashcard/blob/main/packages/formula/src/tests/testType.ts#L53)
