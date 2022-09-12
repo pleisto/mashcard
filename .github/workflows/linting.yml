@@ -65,7 +65,7 @@ jobs:
           fetch-depth: 2 # Retrieve the preceding commit to calculate changed files
       - name: Get changed ruby files
         id: changed-ruby-files
-        uses: tj-actions/changed-files@v26.1
+        uses: tj-actions/changed-files@v29.0.4
         with:
           files: |
             **/*.rb
@@ -73,7 +73,7 @@ jobs:
             **/Gemfile.lock
       - name: Get changed rust files
         id: changed-rust-files
-        uses: tj-actions/changed-files@v26.1
+        uses: tj-actions/changed-files@v29.0.4
         with:
           files: |
             **/*.rs
