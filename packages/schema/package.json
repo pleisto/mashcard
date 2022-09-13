@@ -13,7 +13,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@tiptap/core": "^2.0.0-beta.182"
+    "@tiptap/core": "^2.0.0-beta.194"
   },
   "devDependencies": {
     "@mashcard/dev-support": "workspace:^"

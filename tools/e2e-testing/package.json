@@ -29,14 +29,14 @@
   "devDependencies": {
     "@mashcard/dev-support": "workspace:^",
     "@mashcard/test-helper": "workspace:^",
-    "@playwright/test": "^1.25.0",
+    "@playwright/test": "^1.25.2",
     "@types/command-line-args": "^5.2.0",
-    "@types/inquirer": "^9.0.0",
+    "@types/inquirer": "^9.0.1",
     "@types/is-ci": "^3.0.0",
     "allure-commandline": "^2.18.1",
     "allure-playwright": "^2.0.0-beta.19",
     "command-line-args": "^5.2.1",
-    "inquirer": "^9.1.0",
+    "inquirer": "^9.1.1",
     "is-ci": "^3.0.1",
     "ts-node": "^10.9.1"
   }
