@@ -1,8 +1,9 @@
-# MashCard - A bicycle of the mind to Internet OS
+# MashCard Ver 1.0
 
 [![commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![Crowdin](https://badges.crowdin.net/mashcard/localized.svg)](https://crowdin.com/project/mashcard) [![codecov](https://codecov.io/gh/mashcard/mashcard/branch/main/graph/badge.svg?token=x3u3HXQA0P)](https://codecov.io/gh/mashcard/mashcard) [![Lint Code](https://github.com/mashcard/mashcard/actions/workflows/linting.yml/badge.svg)](https://github.com/mashcard/mashcard/actions/workflows/linting.yml) [![Unit Test](https://github.com/mashcard/mashcard/actions/workflows/unit_test.yml/badge.svg)](https://github.com/mashcard/mashcard/actions/workflows/unit_test.yml)
 
-> :warning: **Note:** This software is currently under active development. Some features may be available in the future, and the API and interface may change.
+> :warning: **Note:** MashCard 1.0 is deprecated, and version 2.0 is in active development and will soon be open source.
+
 
 MashCard is an all-in-one workspace and low-code platform with Compound Document at its core. It's not only an open source alternative to Coda and Notion but also an Internet OS of an age when SaaS is eating the world.
 
